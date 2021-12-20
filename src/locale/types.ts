@@ -95,8 +95,6 @@ export type FormatRelativeFn = (
   options?: FormatRelativeFnOptions
 ) => string
 
-export type QuarterIndex = 0 | 1 | 2 | 3
-
 // TODO: You're real champion if you're actually get back to it. Proud of you!
 // Try to get rid of this and (especially) ArgCallback types because the only
 // case when it's helpful is when using quarter. Maybe.
@@ -108,7 +106,7 @@ export type LocalizeUnitIndex<
 
 export type LocalizeFn<
   Result extends LocaleUnit | number,
-  ArgCallback extends BuildLocalizeFnArgCallback<Result> | undefined
+  ArgCallback extends BuildLocalizeFnArgCallback<Result> | undefined = undefined
 > = (
   value: ArgCallback extends undefined
     ? Result

@@ -1,21 +1,19 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 import type { LocalizeFn } from '../../../types'
+import type { Quarter } from '../../../../types'
 
 const eraValues = {
-  narrow: ['e.ə', 'b.e'],
-  abbreviated: ['e.ə', 'b.e'],
-  wide: ['eramızdan əvvəl', 'bizim era'],
+  narrow: ['e.ə', 'b.e'] as const,
+  abbreviated: ['e.ə', 'b.e'] as const,
+  wide: ['eramızdan əvvəl', 'bizim era'] as const,
 }
 const quarterValues = {
-  narrow: ['1', '2', '3', '4'],
-  abbreviated: ['K1', 'K2', 'K3', 'K4'],
-  wide: ['1ci kvartal', '2ci kvartal', '3cü kvartal', '4cü kvartal'], // Note: in English, the names of days of the week and months are capitalized.
-  // If you are making a new locale based on this one, check if the same is true for the language you're working on.
-  // Generally, formatted dates should look like they are in the middle of a sentence,
-  // e.g. in Spanish language the weekdays and months should be in the lowercase.
+  narrow: ['1', '2', '3', '4'] as const,
+  abbreviated: ['K1', 'K2', 'K3', 'K4'] as const,
+  wide: ['1ci kvartal', '2ci kvartal', '3cü kvartal', '4cü kvartal'] as const,
 }
 const monthValues = {
-  narrow: ['Y', 'F', 'M', 'A', 'M', 'İ', 'İ', 'A', 'S', 'O', 'N', 'D'],
+  narrow: ['Y', 'F', 'M', 'A', 'M', 'İ', 'İ', 'A', 'S', 'O', 'N', 'D'] as const,
   abbreviated: [
     'Yan',
     'Fev',
@@ -29,7 +27,7 @@ const monthValues = {
     'Okt',
     'Noy',
     'Dek',
-  ],
+  ] as const,
   wide: [
     'Yanvar',
     'Fevral',
@@ -43,12 +41,12 @@ const monthValues = {
     'Oktyabr',
     'Noyabr',
     'Dekabr',
-  ],
+  ] as const,
 }
 const dayValues = {
-  narrow: ['B.', 'B.e', 'Ç.a', 'Ç.', 'C.a', 'C.', 'Ş.'],
-  short: ['B.', 'B.e', 'Ç.a', 'Ç.', 'C.a', 'C.', 'Ş.'],
-  abbreviated: ['Baz', 'Baz.e', 'Çər.a', 'Çər', 'Cüm.a', 'Cüm', 'Şə'],
+  narrow: ['B.', 'B.e', 'Ç.a', 'Ç.', 'C.a', 'C.', 'Ş.'] as const,
+  short: ['B.', 'B.e', 'Ç.a', 'Ç.', 'C.a', 'C.', 'Ş.'] as const,
+  abbreviated: ['Baz', 'Baz.e', 'Çər.a', 'Çər', 'Cüm.a', 'Cüm', 'Şə'] as const,
   wide: [
     'Bazar',
     'Bazar ertəsi',
@@ -57,7 +55,7 @@ const dayValues = {
     'Cümə axşamı',
     'Cümə',
     'Şənbə',
-  ],
+  ] as const,
 }
 const dayPeriodValues = {
   narrow: {
@@ -181,7 +179,7 @@ const localize = {
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: (quarter: number) => quarter - 1,
+    argumentCallback: (quarter) => (Number(quarter) - 1) as Quarter,
   }),
   month: buildLocalizeFn({
     values: monthValues,

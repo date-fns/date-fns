@@ -1,20 +1,26 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 import type { LocalizeFn } from '../../../types'
+import type { Quarter } from '../../../../types'
 
 const eraValues = {
-  narrow: ['ق', 'ب'],
-  abbreviated: ['ق.م.', 'ب.م.'],
-  wide: ['قبل الميلاد', 'بعد الميلاد'],
+  narrow: ['ق', 'ب'] as const,
+  abbreviated: ['ق.م.', 'ب.م.'] as const,
+  wide: ['قبل الميلاد', 'بعد الميلاد'] as const,
 }
 
 const quarterValues = {
-  narrow: ['1', '2', '3', '4'],
-  abbreviated: ['ر1', 'ر2', 'ر3', 'ر4'],
-  wide: ['الربع الأول', 'الربع الثاني', 'الربع الثالث', 'الربع الرابع'],
+  narrow: ['1', '2', '3', '4'] as const,
+  abbreviated: ['ر1', 'ر2', 'ر3', 'ر4'] as const,
+  wide: [
+    'الربع الأول',
+    'الربع الثاني',
+    'الربع الثالث',
+    'الربع الرابع',
+  ] as const,
 }
 
 const monthValues = {
-  narrow: ['ي', 'ف', 'م', 'أ', 'م', 'ي', 'ي', 'أ', 'س', 'أ', 'ن', 'د'],
+  narrow: ['ي', 'ف', 'م', 'أ', 'م', 'ي', 'ي', 'أ', 'س', 'أ', 'ن', 'د'] as const,
   abbreviated: [
     'ينا',
     'فبر',
@@ -28,7 +34,7 @@ const monthValues = {
     'أكتـ',
     'نوفـ',
     'ديسـ',
-  ],
+  ] as const,
   wide: [
     'يناير',
     'فبراير',
@@ -42,13 +48,13 @@ const monthValues = {
     'أكتوبر',
     'نوفمبر',
     'ديسمبر',
-  ],
+  ] as const,
 }
 
 const dayValues = {
-  narrow: ['ح', 'ن', 'ث', 'ر', 'خ', 'ج', 'س'],
-  short: ['أحد', 'اثنين', 'ثلاثاء', 'أربعاء', 'خميس', 'جمعة', 'سبت'],
-  abbreviated: ['أحد', 'اثنـ', 'ثلا', 'أربـ', 'خميـ', 'جمعة', 'سبت'],
+  narrow: ['ح', 'ن', 'ث', 'ر', 'خ', 'ج', 'س'] as const,
+  short: ['أحد', 'اثنين', 'ثلاثاء', 'أربعاء', 'خميس', 'جمعة', 'سبت'] as const,
+  abbreviated: ['أحد', 'اثنـ', 'ثلا', 'أربـ', 'خميـ', 'جمعة', 'سبت'] as const,
   wide: [
     'الأحد',
     'الاثنين',
@@ -57,7 +63,7 @@ const dayValues = {
     'الخميس',
     'الجمعة',
     'السبت',
-  ],
+  ] as const,
 }
 
 const dayPeriodValues = {
@@ -109,6 +115,7 @@ const formattingDayPeriodValues = {
     midnight: 'نصف الليل',
     noon: 'ظهر',
     morning: 'في الصباح',
+    afternoon: 'بعد الظهر',
     evening: 'في المساء',
     night: 'في الليل',
   },
@@ -117,6 +124,7 @@ const formattingDayPeriodValues = {
     pm: 'م',
     midnight: 'نصف الليل',
     noon: 'ظهر',
+    morning: 'صباحاً',
     afternoon: 'بعد الظـهر',
     evening: 'في المساء',
     night: 'في الليل',
@@ -138,7 +146,7 @@ const localize = {
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: (quarter: number) => quarter - 1,
+    argumentCallback: (quarter) => (Number(quarter) - 1) as Quarter,
   }),
 
   month: buildLocalizeFn({

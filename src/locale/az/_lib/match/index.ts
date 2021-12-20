@@ -1,5 +1,6 @@
 import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
 import buildMatchFn from '../../../_lib/buildMatchFn/index'
+import type { Quarter } from '../../../../types'
 
 const matchOrdinalNumberPattern = /^(\d+)(-?(ci|inci|nci|uncu|üncü|ncı))?/i
 const parseOrdinalNumberPattern = /\d+/i
@@ -9,7 +10,7 @@ const matchEraPatterns = {
   wide: /^(bizim eradan əvvəl|bizim era)$/i,
 }
 const parseEraPatterns = {
-  any: [/^b$/i, /^(a|c)$/i],
+  any: [/^b$/i, /^(a|c)$/i] as const,
 }
 const matchQuarterPatterns = {
   narrow: /^[1234]$/i,
@@ -17,7 +18,7 @@ const matchQuarterPatterns = {
   wide: /^[1234](ci)? kvartal$/i,
 }
 const parseQuarterPatterns = {
-  any: [/1/i, /2/i, /3/i, /4/i],
+  any: [/1/i, /2/i, /3/i, /4/i] as const,
 }
 const matchMonthPatterns = {
   narrow: /^[(?-i)yfmaisond]$/i,
@@ -38,7 +39,7 @@ const parseMonthPatterns = {
     /^[(?-i)o]$/i,
     /^[(?-i)n]$/i,
     /^[(?-i)d]$/i,
-  ],
+  ] as const,
   abbreviated: [
     /^Yan$/i,
     /^Fev$/i,
@@ -52,7 +53,7 @@ const parseMonthPatterns = {
     /^Okt$/i,
     /^Noy$/i,
     /^Dek$/i,
-  ],
+  ] as const,
   wide: [
     /^Yanvar$/i,
     /^Fevral$/i,
@@ -66,7 +67,7 @@ const parseMonthPatterns = {
     /^Oktyabr$/i,
     /^Noyabr$/i,
     /^Dekabr$/i,
-  ],
+  ] as const,
 }
 
 const matchDayPatterns = {
@@ -84,15 +85,16 @@ const parseDayPatterns = {
     /^C\.a$/i,
     /^C\.$/i,
     /^Ş\.$/i,
-  ],
+  ] as const,
   abbreviated: [
+    /^Baz$/i,
     /^Baz\.e$/i,
-    /^Çər$/i,
     /^Çər\.a$/i,
-    /^Cüm$/i,
+    /^Çər$/i,
     /^Cüm\.a$/i,
+    /^Cüm$/i,
     /^Şə$/i,
-  ],
+  ] as const,
   wide: [
     /^Bazar$/i,
     /^Bazar ertəsi$/i,
@@ -101,7 +103,7 @@ const parseDayPatterns = {
     /^Cümə axşamı$/i,
     /^Cümə$/i,
     /^Şənbə$/i,
-  ],
+  ] as const,
   any: [
     /^B\.$/i,
     /^B\.e$/i,
@@ -110,7 +112,7 @@ const parseDayPatterns = {
     /^C\.a$/i,
     /^C\.$/i,
     /^Ş\.$/i,
-  ],
+  ] as const,
 }
 
 const matchDayPeriodPatterns = {
@@ -146,13 +148,13 @@ const match = {
     defaultMatchWidth: 'wide',
     parsePatterns: parseQuarterPatterns,
     defaultParseWidth: 'any',
-    valueCallback: (index: number) => index + 1,
+    valueCallback: (index) => (Number(index) + 1) as Quarter,
   }),
   month: buildMatchFn({
     matchPatterns: matchMonthPatterns,
     defaultMatchWidth: 'wide',
     parsePatterns: parseMonthPatterns,
-    defaultParseWidth: 'any',
+    defaultParseWidth: 'narrow',
   }),
   day: buildMatchFn({
     matchPatterns: matchDayPatterns,

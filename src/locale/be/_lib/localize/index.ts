@@ -1,20 +1,21 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 import { LocalizeFn } from '../../../types'
+import type { Quarter } from '../../../../types'
 
 const eraValues = {
-  narrow: ['да н.э.', 'н.э.'],
-  abbreviated: ['да н. э.', 'н. э.'],
-  wide: ['да нашай эры', 'нашай эры'],
+  narrow: ['да н.э.', 'н.э.'] as const,
+  abbreviated: ['да н. э.', 'н. э.'] as const,
+  wide: ['да нашай эры', 'нашай эры'] as const,
 }
 
 const quarterValues = {
-  narrow: ['1', '2', '3', '4'],
-  abbreviated: ['1-ы кв.', '2-і кв.', '3-і кв.', '4-ы кв.'],
-  wide: ['1-ы квартал', '2-і квартал', '3-і квартал', '4-ы квартал'],
+  narrow: ['1', '2', '3', '4'] as const,
+  abbreviated: ['1-ы кв.', '2-і кв.', '3-і кв.', '4-ы кв.'] as const,
+  wide: ['1-ы квартал', '2-і квартал', '3-і квартал', '4-ы квартал'] as const,
 }
 
 const monthValues = {
-  narrow: ['С', 'Л', 'С', 'К', 'М', 'Ч', 'Л', 'Ж', 'В', 'К', 'Л', 'С'],
+  narrow: ['С', 'Л', 'С', 'К', 'М', 'Ч', 'Л', 'Ж', 'В', 'К', 'Л', 'С'] as const,
   abbreviated: [
     'студз.',
     'лют.',
@@ -28,7 +29,7 @@ const monthValues = {
     'кастр.',
     'ліст.',
     'снеж.',
-  ],
+  ] as const,
   wide: [
     'студзень',
     'люты',
@@ -42,10 +43,10 @@ const monthValues = {
     'кастрычнік',
     'лістапад',
     'снежань',
-  ],
+  ] as const,
 }
 const formattingMonthValues = {
-  narrow: ['С', 'Л', 'С', 'К', 'М', 'Ч', 'Л', 'Ж', 'В', 'К', 'Л', 'С'],
+  narrow: ['С', 'Л', 'С', 'К', 'М', 'Ч', 'Л', 'Ж', 'В', 'К', 'Л', 'С'] as const,
   abbreviated: [
     'студз.',
     'лют.',
@@ -59,7 +60,7 @@ const formattingMonthValues = {
     'кастр.',
     'ліст.',
     'снеж.',
-  ],
+  ] as const,
   wide: [
     'студзеня',
     'лютага',
@@ -73,13 +74,13 @@ const formattingMonthValues = {
     'кастрычніка',
     'лістапада',
     'снежня',
-  ],
+  ] as const,
 }
 
 const dayValues = {
-  narrow: ['Н', 'П', 'А', 'С', 'Ч', 'П', 'С'],
-  short: ['нд', 'пн', 'аў', 'ср', 'чц', 'пт', 'сб'],
-  abbreviated: ['нядз', 'пан', 'аўт', 'сер', 'чац', 'пят', 'суб'],
+  narrow: ['Н', 'П', 'А', 'С', 'Ч', 'П', 'С'] as const,
+  short: ['нд', 'пн', 'аў', 'ср', 'чц', 'пт', 'сб'] as const,
+  abbreviated: ['нядз', 'пан', 'аўт', 'сер', 'чац', 'пят', 'суб'] as const,
   wide: [
     'нядзеля',
     'панядзелак',
@@ -88,7 +89,7 @@ const dayValues = {
     'чацвер',
     'пятніца',
     'субота',
-  ],
+  ] as const,
 }
 
 const dayPeriodValues = {
@@ -201,7 +202,7 @@ const localize = {
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: (quarter: number) => quarter - 1,
+    argumentCallback: (quarter) => (Number(quarter) - 1) as Quarter,
   }),
 
   month: buildLocalizeFn({

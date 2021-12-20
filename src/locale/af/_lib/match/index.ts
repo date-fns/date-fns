@@ -1,5 +1,6 @@
 import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
 import buildMatchFn from '../../../_lib/buildMatchFn/index'
+import type { Quarter } from '../../../../types'
 
 const matchOrdinalNumberPattern = /^(\d+)(ste|de)?/i
 const parseOrdinalNumberPattern = /\d+/i
@@ -104,7 +105,7 @@ const match = {
     defaultMatchWidth: 'wide',
     parsePatterns: parseQuarterPatterns,
     defaultParseWidth: 'any',
-    valueCallback: (index) => index + 1,
+    valueCallback: (index) => (Number(index) + 1) as Quarter,
   }),
 
   month: buildMatchFn({

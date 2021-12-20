@@ -1,7 +1,7 @@
 import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
 import buildMatchFn from '../../../_lib/buildMatchFn/index'
 import type { Match } from '../../../types'
-import { Quarter } from 'src/types'
+import type { Quarter } from '../../../../types'
 
 const matchOrdinalNumberPattern = /^(\d+)(th|st|nd|rd)?/i
 const parseOrdinalNumberPattern = /\d+/i

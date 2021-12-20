@@ -1,21 +1,27 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
-import type { LocalizeFn, TimeUnit } from '../../../types'
+import type { LocalizeFn } from '../../../types'
+import { Quarter, Unit } from '../../../../types'
 
 const eraValues = {
-  narrow: ['пр.н.е.', 'н.е.'],
-  abbreviated: ['преди н. е.', 'н. е.'],
-  wide: ['преди новата ера', 'новата ера'],
+  narrow: ['пр.н.е.', 'н.е.'] as const,
+  abbreviated: ['преди н. е.', 'н. е.'] as const,
+  wide: ['преди новата ера', 'новата ера'] as const,
 }
 
 const quarterValues = {
-  narrow: ['1', '2', '3', '4'],
-  abbreviated: ['1-во тримес.', '2-ро тримес.', '3-то тримес.', '4-то тримес.'],
+  narrow: ['1', '2', '3', '4'] as const,
+  abbreviated: [
+    '1-во тримес.',
+    '2-ро тримес.',
+    '3-то тримес.',
+    '4-то тримес.',
+  ] as const,
   wide: [
     '1-во тримесечие',
     '2-ро тримесечие',
     '3-то тримесечие',
     '4-то тримесечие',
-  ],
+  ] as const,
 }
 
 const monthValues = {
@@ -32,7 +38,7 @@ const monthValues = {
     'окт',
     'ное',
     'дек',
-  ],
+  ] as const,
   wide: [
     'януари',
     'февруари',
@@ -46,13 +52,13 @@ const monthValues = {
     'октомври',
     'ноември',
     'декември',
-  ],
+  ] as const,
 }
 
 const dayValues = {
-  narrow: ['Н', 'П', 'В', 'С', 'Ч', 'П', 'С'],
-  short: ['нд', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'],
-  abbreviated: ['нед', 'пон', 'вто', 'сря', 'чет', 'пет', 'съб'],
+  narrow: ['Н', 'П', 'В', 'С', 'Ч', 'П', 'С'] as const,
+  short: ['нд', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'] as const,
+  abbreviated: ['нед', 'пон', 'вто', 'сря', 'чет', 'пет', 'съб'] as const,
   wide: [
     'неделя',
     'понеделник',
@@ -61,7 +67,7 @@ const dayValues = {
     'четвъртък',
     'петък',
     'събота',
-  ],
+  ] as const,
 }
 
 const dayPeriodValues = {
@@ -77,19 +83,19 @@ const dayPeriodValues = {
   },
 }
 
-function isFeminine(unit: TimeUnit): boolean {
+function isFeminine(unit: Unit): boolean {
   return (
     unit === 'year' || unit === 'week' || unit === 'minute' || unit === 'second'
   )
 }
 
-function isNeuter(unit: TimeUnit): boolean {
+function isNeuter(unit: Unit): boolean {
   return unit === 'quarter'
 }
 
 function numberWithSuffix(
   number: number,
-  unit: TimeUnit,
+  unit: Unit,
   masculine: string,
   feminine: string,
   neuter: string
@@ -103,7 +109,7 @@ function numberWithSuffix(
 }
 
 const ordinalNumber: LocalizeFn<number> = (dirtyNumber, options = {}) => {
-  const unit = String(options.unit) as TimeUnit
+  const unit = String(options.unit) as Unit
   const number = Number(dirtyNumber)
 
   if (number === 0) {
@@ -141,7 +147,7 @@ const localize = {
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: (quarter: number) => quarter - 1,
+    argumentCallback: (quarter) => (Number(quarter) - 1) as Quarter,
   }),
 
   month: buildLocalizeFn({
