@@ -1,19 +1,33 @@
+import type { Localize, LocalizeFn, QuarterIndex } from '../../../types'
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
-var eraValues = {
-  narrow: ['BC', 'AD'],
-  abbreviated: ['BC', 'AD'],
-  wide: ['기원전', '서기']
+const eraValues = {
+  narrow: ['BC', 'AD'] as const,
+  abbreviated: ['BC', 'AD'] as const,
+  wide: ['기원전', '서기'] as const,
 }
 
-var quarterValues = {
-  narrow: ['1', '2', '3', '4'],
-  abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
-  wide: ['1분기', '2분기', '3분기', '4분기']
+const quarterValues = {
+  narrow: ['1', '2', '3', '4'] as const,
+  abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'] as const,
+  wide: ['1분기', '2분기', '3분기', '4분기'] as const,
 }
 
-var monthValues = {
-  narrow: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+const monthValues = {
+  narrow: [
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '10',
+    '11',
+    '12',
+  ] as const,
   abbreviated: [
     '1월',
     '2월',
@@ -26,8 +40,8 @@ var monthValues = {
     '9월',
     '10월',
     '11월',
-    '12월'
-  ],
+    '12월',
+  ] as const,
   wide: [
     '1월',
     '2월',
@@ -40,18 +54,26 @@ var monthValues = {
     '9월',
     '10월',
     '11월',
-    '12월'
-  ]
+    '12월',
+  ] as const,
 }
 
-var dayValues = {
-  narrow: ['일', '월', '화', '수', '목', '금', '토'],
-  short: ['일', '월', '화', '수', '목', '금', '토'],
-  abbreviated: ['일', '월', '화', '수', '목', '금', '토'],
-  wide: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일']
+const dayValues = {
+  narrow: ['일', '월', '화', '수', '목', '금', '토'] as const,
+  short: ['일', '월', '화', '수', '목', '금', '토'] as const,
+  abbreviated: ['일', '월', '화', '수', '목', '금', '토'] as const,
+  wide: [
+    '일요일',
+    '월요일',
+    '화요일',
+    '수요일',
+    '목요일',
+    '금요일',
+    '토요일',
+  ] as const,
 }
 
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: '오전',
     pm: '오후',
@@ -60,7 +82,7 @@ var dayPeriodValues = {
     morning: '아침',
     afternoon: '오후',
     evening: '저녁',
-    night: '밤'
+    night: '밤',
   },
   abbreviated: {
     am: '오전',
@@ -70,7 +92,7 @@ var dayPeriodValues = {
     morning: '아침',
     afternoon: '오후',
     evening: '저녁',
-    night: '밤'
+    night: '밤',
   },
   wide: {
     am: '오전',
@@ -80,11 +102,11 @@ var dayPeriodValues = {
     morning: '아침',
     afternoon: '오후',
     evening: '저녁',
-    night: '밤'
-  }
+    night: '밤',
+  },
 }
 
-var formattingDayPeriodValues = {
+const formattingDayPeriodValues = {
   narrow: {
     am: '오전',
     pm: '오후',
@@ -93,7 +115,7 @@ var formattingDayPeriodValues = {
     morning: '아침',
     afternoon: '오후',
     evening: '저녁',
-    night: '밤'
+    night: '밤',
   },
   abbreviated: {
     am: '오전',
@@ -103,7 +125,7 @@ var formattingDayPeriodValues = {
     morning: '아침',
     afternoon: '오후',
     evening: '저녁',
-    night: '밤'
+    night: '밤',
   },
   wide: {
     am: '오전',
@@ -113,20 +135,23 @@ var formattingDayPeriodValues = {
     morning: '아침',
     afternoon: '오후',
     evening: '저녁',
-    night: '밤'
-  }
+    night: '밤',
+  },
 }
 
-function ordinalNumber(dirtyNumber, dirtyOptions) {
-  var number = Number(dirtyNumber)
+const ordinalNumber: LocalizeFn<number, undefined> = (
+  dirtyNumber,
+  dirtyOptions
+) => {
+  const number = Number(dirtyNumber)
 
-  var options = dirtyOptions || {}
-  var unit = String(options.unit)
+  const options = dirtyOptions || {}
+  const unit = String(options.unit)
 
   switch (unit) {
     case 'minute':
     case 'second':
-      return number
+      return String(number)
     case 'date':
       return number + '일'
     default:
@@ -134,38 +159,36 @@ function ordinalNumber(dirtyNumber, dirtyOptions) {
   }
 }
 
-var localize = {
-  ordinalNumber: ordinalNumber,
+const localize: Localize = {
+  ordinalNumber,
 
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
-      return Number(quarter) - 1
-    }
+    argumentCallback: (quarter) => (quarter - 1) as QuarterIndex,
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize
