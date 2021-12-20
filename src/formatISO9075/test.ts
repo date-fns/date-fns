@@ -1,7 +1,6 @@
-// @flow
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import formatISO9075 from '.'
 
 describe('formatISO9075', () => {
@@ -24,11 +23,11 @@ describe('formatISO9075', () => {
     const date = new Date(2019, 11 /* Dec */, 11, 1, 0, 0, 789)
     assert(
       formatISO9075(date, { representation: 'date', format: 'extended' }) ===
-        '2019-12-11'
+      '2019-12-11'
     )
     assert(
       formatISO9075(date, { representation: 'date', format: 'basic' }) ===
-        '20191211'
+      '20191211'
     )
   })
 
@@ -36,45 +35,47 @@ describe('formatISO9075', () => {
     const date = new Date(2019, 2 /* Mar */, 3, 19, 0, 52, 123)
     assert(
       formatISO9075(date, { representation: 'time', format: 'extended' }) ===
-        '19:00:52'
+      '19:00:52'
     )
     assert(
       formatISO9075(date, { representation: 'time', format: 'basic' }) ===
-        '190052'
+      '190052'
     )
   })
 
-  describe('implicitly converts options', function() {
-    it('`format`', function() {
+  describe('implicitly converts options', function () {
+    it('`format`', function () {
       // eslint-disable-next-line no-new-wrappers
-      var format = new String('basic')
-      var date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
-      // $ExpectedMistake
-      var result = formatISO9075(date, { format: format })
+      const format = new String('basic')
+      const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
+
+      // @ts-expect-error
+      const result = formatISO9075(date, { format: format })
       assert(result === '20191004 123013')
     })
 
-    it('`representation`', function() {
+    it('`representation`', function () {
       // eslint-disable-next-line no-new-wrappers
-      var representation = new String('time')
-      var date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
-      // $ExpectedMistake
-      var result = formatISO9075(date, { representation: representation })
+      const representation = new String('time')
+      const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
+
+      // @ts-expect-error
+      const result = formatISO9075(date, { representation: representation })
       assert(result === '12:30:13')
     })
   })
 
-  it("throws `RangeError` if `options.format` is not 'extended' or 'basic'", function() {
-    // $ExpectedMistake
-    var block = formatISO9075.bind(null, new Date(2019, 2 /* Mar */, 3), {
+  it("throws `RangeError` if `options.format` is not 'extended' or 'basic'", function () {
+    // @ts-expect-error
+    const block = formatISO9075.bind(null, new Date(2019, 2 /* Mar */, 3), {
       format: 'something else'
     })
     assert.throws(block, RangeError)
   })
 
-  it("throws `RangeError` if `options.representation` is not 'date', 'time' or 'complete'", function() {
-    // $ExpectedMistake
-    var block = formatISO9075.bind(null, new Date(2019, 2 /* Mar */, 3), {
+  it("throws `RangeError` if `options.representation` is not 'date', 'time' or 'complete'", function () {
+    // @ts-expect-error
+    const block = formatISO9075.bind(null, new Date(2019, 2 /* Mar */, 3), {
       representation: 'something else'
     })
     assert.throws(block, RangeError)
@@ -84,7 +85,8 @@ describe('formatISO9075', () => {
     assert.throws(formatISO9075.bind(null, new Date(NaN)), RangeError)
   })
 
-  it('throws TypeError exception if passed less than 1 argument', function() {
+  it('throws TypeError exception if passed less than 1 argument', function () {
+    // @ts-expect-error
     assert.throws(formatISO9075.bind(null), TypeError)
   })
 })

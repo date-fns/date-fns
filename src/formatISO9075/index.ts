@@ -2,6 +2,11 @@ import toDate from '../toDate/index'
 import isValid from '../isValid/index'
 import addLeadingZeros from '../_lib/addLeadingZeros/index'
 
+export interface FormatISO9075Options {
+  format?: 'extended' | 'basic'
+  representation?: 'complete' | 'date' | 'time'
+}
+
 /**
  * @name formatISO9075
  * @category Common Helpers
@@ -40,7 +45,10 @@ import addLeadingZeros from '../_lib/addLeadingZeros/index'
  * const result = formatISO9075(new Date(2019, 8, 18, 19, 0, 52), { representation: 'time' })
  * //=> '19:00:52'
  */
-export default function formatISO9075(dirtyDate, dirtyOptions) {
+export default function formatISO9075(
+  dirtyDate: Date | number,
+  dirtyOptions?: FormatISO9075Options
+): string {
   if (arguments.length < 1) {
     throw new TypeError(
       `1 argument required, but only ${arguments.length} present`
