@@ -39,9 +39,9 @@ export default function getWeekOfMonth(
   const defaultWeekStartsOn = options?.locale?.options?.weekStartsOn || 0
 
   const weekStartsOn =
-    options?.weekStartsOn !== undefined
-      ? toInteger(options.weekStartsOn)
-      : toInteger(defaultWeekStartsOn)
+    options?.weekStartsOn == null
+      ? toInteger(defaultWeekStartsOn)
+      : toInteger(options.weekStartsOn)
 
   if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {
     throw new RangeError('weekStartsOn must be between 0 and 6 inclusively')
