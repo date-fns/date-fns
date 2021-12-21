@@ -302,3 +302,29 @@ If now is January 1st, 2000, 00:00.
 | 1999-12-31T00:00:00.000Z | dünən 0:00 -də                |
 | 1999-12-27T00:00:00.000Z | sonuncu Bazar ertəsi 0:00 -də |
 | 1999-12-21T00:00:00.000Z | 21.12.1999                    |
+
+## `formatDuration`
+
+| Duration      | Result     |
+| ------------- | ---------- |
+| {"years":0}   | 0 il       |
+| {"years":1}   | 1 il       |
+| {"years":2}   | 2 il       |
+| {"months":0}  | 0 ay       |
+| {"months":1}  | 1 ay       |
+| {"months":2}  | 2 ay       |
+| {"weeks":0}   | 0 həftə    |
+| {"weeks":1}   | 1 həftə    |
+| {"weeks":2}   | 2 həftə    |
+| {"days":0}    | 0 gün      |
+| {"days":1}    | 1 gün      |
+| {"days":2}    | 2 gün      |
+| {"hours":0}   | 0 saat     |
+| {"hours":1}   | 1 saat     |
+| {"hours":2}   | 2 saat     |
+| {"minutes":0} | 0 dəqiqə   |
+| {"minutes":1} | bir dəqiqə |
+| {"minutes":2} | 2 dəqiqə   |
+| {"seconds":0} | 0 saniyə   |
+| {"seconds":1} | 1 saniyə   |
+| {"seconds":2} | 2 saniyə   |

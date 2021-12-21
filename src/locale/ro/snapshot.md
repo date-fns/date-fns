@@ -302,3 +302,29 @@ If now is January 1st, 2000, 00:00.
 | 1999-12-31T00:00:00.000Z | ieri la 00:00              |
 | 1999-12-27T00:00:00.000Z | luni trecută la 00:00      |
 | 1999-12-21T00:00:00.000Z | 21.12.1999                 |
+
+## `formatDuration`
+
+| Duration      | Result      |
+| ------------- | ----------- |
+| {"years":0}   | 0 ani       |
+| {"years":1}   | 1 an        |
+| {"years":2}   | 2 ani       |
+| {"months":0}  | 0 luni      |
+| {"months":1}  | 1 lună      |
+| {"months":2}  | 2 luni      |
+| {"weeks":0}   | 0 săptămâni |
+| {"weeks":1}   | 1 săptămână |
+| {"weeks":2}   | 2 săptămâni |
+| {"days":0}    | 0 zile      |
+| {"days":1}    | 1 zi        |
+| {"days":2}    | 2 zile      |
+| {"hours":0}   | 0 ore       |
+| {"hours":1}   | 1 oră       |
+| {"hours":2}   | 2 ore       |
+| {"minutes":0} | 0 minute    |
+| {"minutes":1} | 1 minut     |
+| {"minutes":2} | 2 minute    |
+| {"seconds":0} | 0 secunde   |
+| {"seconds":1} | 1 secundă   |
+| {"seconds":2} | 2 secunde   |

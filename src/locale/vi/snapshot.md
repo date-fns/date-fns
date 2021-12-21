@@ -302,3 +302,29 @@ If now is January 1st, 2000, 00:00.
 | 1999-12-31T00:00:00.000Z | hôm qua vào lúc 00:00            |
 | 1999-12-27T00:00:00.000Z | Thứ Hai tuần trước vào lúc 00:00 |
 | 1999-12-21T00:00:00.000Z | 21/12/1999                       |
+
+## `formatDuration`
+
+| Duration      | Result  |
+| ------------- | ------- |
+| {"years":0}   | 0 năm   |
+| {"years":1}   | 1 năm   |
+| {"years":2}   | 2 năm   |
+| {"months":0}  | 0 tháng |
+| {"months":1}  | 1 tháng |
+| {"months":2}  | 2 tháng |
+| {"weeks":0}   | 0 tuần  |
+| {"weeks":1}   | 1 tuần  |
+| {"weeks":2}   | 2 tuần  |
+| {"days":0}    | 0 ngày  |
+| {"days":1}    | 1 ngày  |
+| {"days":2}    | 2 ngày  |
+| {"hours":0}   | 0 giờ   |
+| {"hours":1}   | 1 giờ   |
+| {"hours":2}   | 2 giờ   |
+| {"minutes":0} | 0 phút  |
+| {"minutes":1} | 1 phút  |
+| {"minutes":2} | 2 phút  |
+| {"seconds":0} | 0 giây  |
+| {"seconds":1} | 1 giây  |
+| {"seconds":2} | 2 giây  |

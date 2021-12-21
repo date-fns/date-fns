@@ -302,3 +302,29 @@ If now is January 1st, 2000, 00:00.
 | 1999-12-31T00:00:00.000Z | jučer u 00:00              |
 | 1999-12-27T00:00:00.000Z | prošli ponedjeljak u 00:00 |
 | 1999-12-21T00:00:00.000Z | 21. 12. 1999.              |
+
+## `formatDuration`
+
+| Duration      | Result    |
+| ------------- | --------- |
+| {"years":0}   | 0 godina  |
+| {"years":1}   | 1 godina  |
+| {"years":2}   | 2 godine  |
+| {"months":0}  | 0 mjeseci |
+| {"months":1}  | 1 mjesec  |
+| {"months":2}  | 2 mjeseca |
+| {"weeks":0}   | 0 tjedana |
+| {"weeks":1}   | 1 tjedan  |
+| {"weeks":2}   | 2 tjedna  |
+| {"days":0}    | 0 dana    |
+| {"days":1}    | 1 dan     |
+| {"days":2}    | 2 dana    |
+| {"hours":0}   | 0 sati    |
+| {"hours":1}   | 1 sat     |
+| {"hours":2}   | 2 sata    |
+| {"minutes":0} | 0 minuta  |
+| {"minutes":1} | 1 minuta  |
+| {"minutes":2} | 2 minute  |
+| {"seconds":0} | 0 sekundi |
+| {"seconds":1} | 1 sekunda |
+| {"seconds":2} | 2 sekunde |

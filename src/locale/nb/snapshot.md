@@ -302,3 +302,29 @@ If now is January 1st, 2000, 00:00.
 | 1999-12-31T00:00:00.000Z | i går kl. 00:00          |
 | 1999-12-27T00:00:00.000Z | forrige mandag kl. 00:00 |
 | 1999-12-21T00:00:00.000Z | 21.12.1999               |
+
+## `formatDuration`
+
+| Duration      | Result     |
+| ------------- | ---------- |
+| {"years":0}   | 0 år       |
+| {"years":1}   | ett år     |
+| {"years":2}   | 2 år       |
+| {"months":0}  | 0 måneder  |
+| {"months":1}  | en måned   |
+| {"months":2}  | 2 måneder  |
+| {"weeks":0}   | 0 uker     |
+| {"weeks":1}   | en uke     |
+| {"weeks":2}   | 2 uker     |
+| {"days":0}    | 0 dager    |
+| {"days":1}    | en dag     |
+| {"days":2}    | 2 dager    |
+| {"hours":0}   | 0 timer    |
+| {"hours":1}   | en time    |
+| {"hours":2}   | 2 timer    |
+| {"minutes":0} | 0 minutter |
+| {"minutes":1} | ett minutt |
+| {"minutes":2} | 2 minutter |
+| {"seconds":0} | 0 sekunder |
+| {"seconds":1} | ett sekund |
+| {"seconds":2} | 2 sekunder |

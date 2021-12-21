@@ -302,3 +302,29 @@ If now is January 1st, 2000, 00:00.
 | 1999-12-31T00:00:00.000Z | ddoe am 12:00 yb               |
 | 1999-12-27T00:00:00.000Z | dydd Llun diwethaf am 12:00 yb |
 | 1999-12-21T00:00:00.000Z | 21/12/1999                     |
+
+## `formatDuration`
+
+| Duration      | Result     |
+| ------------- | ---------- |
+| {"years":0}   | 0 mlynedd  |
+| {"years":1}   | 1 flwyddyn |
+| {"years":2}   | 2 flynedd  |
+| {"months":0}  | 0 mis      |
+| {"months":1}  | 1 mis      |
+| {"months":2}  | 2 fis      |
+| {"weeks":0}   | 0 wythnos  |
+| {"weeks":1}   | 1 wythnos  |
+| {"weeks":2}   | pythefnos  |
+| {"days":0}    | 0 diwrnod  |
+| {"days":1}    | 1 diwrnod  |
+| {"days":2}    | 2 ddiwrnod |
+| {"hours":0}   | 0 awr      |
+| {"hours":1}   | 1 awr      |
+| {"hours":2}   | 2 awr      |
+| {"minutes":0} | 0 munud    |
+| {"minutes":1} | 1 munud    |
+| {"minutes":2} | 2 funud    |
+| {"seconds":0} | 0 eiliad   |
+| {"seconds":1} | 1 eiliad   |
+| {"seconds":2} | 2 eiliad   |

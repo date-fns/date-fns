@@ -302,3 +302,29 @@ If now is January 1st, 2000, 00:00.
 | 1999-12-31T00:00:00.000Z | včera v 0:00             |
 | 1999-12-27T00:00:00.000Z | poslední pondělí ve 0:00 |
 | 1999-12-21T00:00:00.000Z | 21.12.1999               |
+
+## `formatDuration`
+
+| Duration      | Result    |
+| ------------- | --------- |
+| {"years":0}   | 0 roků    |
+| {"years":1}   | rok       |
+| {"years":2}   | 2 roky    |
+| {"months":0}  | 0 měsíců  |
+| {"months":1}  | měsíc     |
+| {"months":2}  | 2 měsíce  |
+| {"weeks":0}   | 0 týdnů   |
+| {"weeks":1}   | týden     |
+| {"weeks":2}   | 2 týdny   |
+| {"days":0}    | 0 dní     |
+| {"days":1}    | den       |
+| {"days":2}    | 2 dny     |
+| {"hours":0}   | 0 hodin   |
+| {"hours":1}   | hodina    |
+| {"hours":2}   | 2 hodiny  |
+| {"minutes":0} | 0 minut   |
+| {"minutes":1} | minuta    |
+| {"minutes":2} | 2 minuty  |
+| {"seconds":0} | 0 sekund  |
+| {"seconds":1} | sekunda   |
+| {"seconds":2} | 2 sekundy |

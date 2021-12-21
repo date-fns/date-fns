@@ -302,3 +302,29 @@ If now is January 1st, 2000, 00:00.
 | 1999-12-31T00:00:00.000Z | í gær kl. 00:00        |
 | 1999-12-27T00:00:00.000Z | síðasta 0027 kl. 00:00 |
 | 1999-12-21T00:00:00.000Z | 21.12.1999             |
+
+## `formatDuration`
+
+| Duration      | Result          |
+| ------------- | --------------- |
+| {"years":0}   | 0 ár            |
+| {"years":1}   | 1 ár            |
+| {"years":2}   | 2 ár            |
+| {"months":0}  | 0 mánuðir       |
+| {"months":1}  | 1 mánuður       |
+| {"months":2}  | 2 mánuðir       |
+| {"weeks":0}   | 0 vikur         |
+| {"weeks":1}   | 1 viku          |
+| {"weeks":2}   | 2 vikur         |
+| {"days":0}    | 0 dagar         |
+| {"days":1}    | 1 dagur         |
+| {"days":2}    | 2 dagar         |
+| {"hours":0}   | 0 klukkustundir |
+| {"hours":1}   | 1 klukkustund   |
+| {"hours":2}   | 2 klukkustundir |
+| {"minutes":0} | 0 mínútur       |
+| {"minutes":1} | 1 mínúta        |
+| {"minutes":2} | 2 mínútur       |
+| {"seconds":0} | 0 sekúndur      |
+| {"seconds":1} | 1 sekúnda       |
+| {"seconds":2} | 2 sekúndur      |

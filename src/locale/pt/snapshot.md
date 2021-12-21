@@ -302,3 +302,29 @@ If now is January 1st, 2000, 00:00.
 | 1999-12-31T00:00:00.000Z | ontem às 00:00                   |
 | 1999-12-27T00:00:00.000Z | na última segunda-feira às 00:00 |
 | 1999-12-21T00:00:00.000Z | 21/12/1999                       |
+
+## `formatDuration`
+
+| Duration      | Result     |
+| ------------- | ---------- |
+| {"years":0}   | 0 anos     |
+| {"years":1}   | 1 ano      |
+| {"years":2}   | 2 anos     |
+| {"months":0}  | 0 meses    |
+| {"months":1}  | 1 mês      |
+| {"months":2}  | 2 meses    |
+| {"weeks":0}   | 0 semanas  |
+| {"weeks":1}   | 1 semana   |
+| {"weeks":2}   | 2 semanas  |
+| {"days":0}    | 0 dias     |
+| {"days":1}    | 1 dia      |
+| {"days":2}    | 2 dias     |
+| {"hours":0}   | 0 horas    |
+| {"hours":1}   | 1 hora     |
+| {"hours":2}   | 2 horas    |
+| {"minutes":0} | 0 minutos  |
+| {"minutes":1} | 1 minuto   |
+| {"minutes":2} | 2 minutos  |
+| {"seconds":0} | 0 segundos |
+| {"seconds":1} | 1 segundo  |
+| {"seconds":2} | 2 segundos |

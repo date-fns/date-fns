@@ -302,3 +302,29 @@ If now is January 1st, 2000, 00:00.
 | 1999-12-31T00:00:00.000Z | eile kell 00:00               |
 | 1999-12-27T00:00:00.000Z | eelmine esmaspäev kell 00:00  |
 | 1999-12-21T00:00:00.000Z | 21.12.1999                    |
+
+## `formatDuration`
+
+| Duration      | Result     |
+| ------------- | ---------- |
+| {"years":0}   | 0 aastat   |
+| {"years":1}   | üks aasta  |
+| {"years":2}   | 2 aastat   |
+| {"months":0}  | 0 kuud     |
+| {"months":1}  | üks kuu    |
+| {"months":2}  | 2 kuud     |
+| {"weeks":0}   | 0 nädalat  |
+| {"weeks":1}   | üks nädal  |
+| {"weeks":2}   | 2 nädalat  |
+| {"days":0}    | 0 päeva    |
+| {"days":1}    | üks päev   |
+| {"days":2}    | 2 päeva    |
+| {"hours":0}   | 0 tundi    |
+| {"hours":1}   | üks tund   |
+| {"hours":2}   | 2 tundi    |
+| {"minutes":0} | 0 minutit  |
+| {"minutes":1} | üks minut  |
+| {"minutes":2} | 2 minutit  |
+| {"seconds":0} | 0 sekundit |
+| {"seconds":1} | üks sekund |
+| {"seconds":2} | 2 sekundit |
