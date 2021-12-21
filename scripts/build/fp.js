@@ -29,9 +29,7 @@ function getFPFn(resultFnName, initialFnName, arity) {
     .concat(`import fn from '../../${initialFnName}/index'`)
     .concat(`import convertToFP from '../_lib/convertToFP/index'`)
     .concat('')
-    .concat(`var ${resultFnName} = convertToFP(fn, ${arity})`)
-    .concat('')
-    .concat(`export default ${resultFnName}`)
+    .concat(`export default convertToFP(fn, ${arity})`)
     .concat('')
     .join('\n')
 }
@@ -43,7 +41,7 @@ function buildFPFn({ title, generatedFrom, args: { length } }) {
   if (!fs.existsSync(fpFnDir)) {
     fs.mkdirSync(fpFnDir)
   }
-  fs.writeFileSync(`${fpFnDir}/index.js`, prettier(fpFnLines))
+  fs.writeFileSync(`${fpFnDir}/index.ts`, prettier(fpFnLines))
 }
 
 function buildFP(fns) {

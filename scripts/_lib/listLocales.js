@@ -7,7 +7,9 @@ const readDir = promisify(fs.readdir)
 
 const ignoredFiles = [
   'index.js',
+  'index.ts',
   'test.js',
+  'test.ts',
   'index.js.flow',
   'package.json',
   'types.ts',
