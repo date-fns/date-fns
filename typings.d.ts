@@ -669,6 +669,14 @@ declare module 'date-fns' {
   function isFuture(date: Date | number): boolean
   namespace isFuture {}
 
+  function isISOMatch(
+    dateString: string,
+    options?: {
+      representation?: 'complete' | 'date' | 'time'
+    }
+  ): boolean
+  namespace isISOMatch {}
+
   function isLastDayOfMonth(date: Date | number): boolean
   namespace isLastDayOfMonth {}
 
@@ -1748,6 +1756,11 @@ declare module 'date-fns/isFriday' {
 declare module 'date-fns/isFuture' {
   import { isFuture } from 'date-fns'
   export default isFuture
+}
+
+declare module 'date-fns/isISOMatch' {
+  import { isISOMatch } from 'date-fns'
+  export default isISOMatch
 }
 
 declare module 'date-fns/isLastDayOfMonth' {
@@ -2930,6 +2943,11 @@ declare module 'date-fns/isFuture/index' {
   export default isFuture
 }
 
+declare module 'date-fns/isISOMatch/index' {
+  import { isISOMatch } from 'date-fns'
+  export default isISOMatch
+}
+
 declare module 'date-fns/isLastDayOfMonth/index' {
   import { isLastDayOfMonth } from 'date-fns'
   export default isLastDayOfMonth
@@ -4108,6 +4126,11 @@ declare module 'date-fns/isFriday/index.js' {
 declare module 'date-fns/isFuture/index.js' {
   import { isFuture } from 'date-fns'
   export default isFuture
+}
+
+declare module 'date-fns/isISOMatch/index.js' {
+  import { isISOMatch } from 'date-fns'
+  export default isISOMatch
 }
 
 declare module 'date-fns/isLastDayOfMonth/index.js' {
@@ -5382,6 +5405,18 @@ declare module 'date-fns/fp' {
   const isFriday: CurriedFn1<Date | number, boolean>
   namespace isFriday {}
 
+  const isISOMatch: CurriedFn1<string, boolean>
+  namespace isISOMatch {}
+
+  const isISOMatchWithOptions: CurriedFn2<
+    {
+      representation?: 'complete' | 'date' | 'time'
+    },
+    string,
+    boolean
+  >
+  namespace isISOMatchWithOptions {}
+
   const isLastDayOfMonth: CurriedFn1<Date | number, boolean>
   namespace isLastDayOfMonth {}
 
@@ -6530,6 +6565,16 @@ declare module 'date-fns/fp/isFirstDayOfMonth' {
 declare module 'date-fns/fp/isFriday' {
   import { isFriday } from 'date-fns/fp'
   export default isFriday
+}
+
+declare module 'date-fns/fp/isISOMatch' {
+  import { isISOMatch } from 'date-fns/fp'
+  export default isISOMatch
+}
+
+declare module 'date-fns/fp/isISOMatchWithOptions' {
+  import { isISOMatchWithOptions } from 'date-fns/fp'
+  export default isISOMatchWithOptions
 }
 
 declare module 'date-fns/fp/isLastDayOfMonth' {
@@ -7792,6 +7837,16 @@ declare module 'date-fns/fp/isFriday/index' {
   export default isFriday
 }
 
+declare module 'date-fns/fp/isISOMatch/index' {
+  import { isISOMatch } from 'date-fns/fp'
+  export default isISOMatch
+}
+
+declare module 'date-fns/fp/isISOMatchWithOptions/index' {
+  import { isISOMatchWithOptions } from 'date-fns/fp'
+  export default isISOMatchWithOptions
+}
+
 declare module 'date-fns/fp/isLastDayOfMonth/index' {
   import { isLastDayOfMonth } from 'date-fns/fp'
   export default isLastDayOfMonth
@@ -9052,6 +9107,16 @@ declare module 'date-fns/fp/isFriday/index.js' {
   export default isFriday
 }
 
+declare module 'date-fns/fp/isISOMatch/index.js' {
+  import { isISOMatch } from 'date-fns/fp'
+  export default isISOMatch
+}
+
+declare module 'date-fns/fp/isISOMatchWithOptions/index.js' {
+  import { isISOMatchWithOptions } from 'date-fns/fp'
+  export default isISOMatchWithOptions
+}
+
 declare module 'date-fns/fp/isLastDayOfMonth/index.js' {
   import { isLastDayOfMonth } from 'date-fns/fp'
   export default isLastDayOfMonth
@@ -10241,6 +10306,14 @@ declare module 'date-fns/esm' {
   function isFuture(date: Date | number): boolean
   namespace isFuture {}
 
+  function isISOMatch(
+    dateString: string,
+    options?: {
+      representation?: 'complete' | 'date' | 'time'
+    }
+  ): boolean
+  namespace isISOMatch {}
+
   function isLastDayOfMonth(date: Date | number): boolean
   namespace isLastDayOfMonth {}
 
@@ -11320,6 +11393,11 @@ declare module 'date-fns/esm/isFriday' {
 declare module 'date-fns/esm/isFuture' {
   import { isFuture } from 'date-fns/esm'
   export default isFuture
+}
+
+declare module 'date-fns/esm/isISOMatch' {
+  import { isISOMatch } from 'date-fns/esm'
+  export default isISOMatch
 }
 
 declare module 'date-fns/esm/isLastDayOfMonth' {
@@ -12502,6 +12580,11 @@ declare module 'date-fns/esm/isFuture/index' {
   export default isFuture
 }
 
+declare module 'date-fns/esm/isISOMatch/index' {
+  import { isISOMatch } from 'date-fns/esm'
+  export default isISOMatch
+}
+
 declare module 'date-fns/esm/isLastDayOfMonth/index' {
   import { isLastDayOfMonth } from 'date-fns/esm'
   export default isLastDayOfMonth
@@ -13680,6 +13763,11 @@ declare module 'date-fns/esm/isFriday/index.js' {
 declare module 'date-fns/esm/isFuture/index.js' {
   import { isFuture } from 'date-fns/esm'
   export default isFuture
+}
+
+declare module 'date-fns/esm/isISOMatch/index.js' {
+  import { isISOMatch } from 'date-fns/esm'
+  export default isISOMatch
 }
 
 declare module 'date-fns/esm/isLastDayOfMonth/index.js' {
@@ -14954,6 +15042,18 @@ declare module 'date-fns/esm/fp' {
   const isFriday: CurriedFn1<Date | number, boolean>
   namespace isFriday {}
 
+  const isISOMatch: CurriedFn1<string, boolean>
+  namespace isISOMatch {}
+
+  const isISOMatchWithOptions: CurriedFn2<
+    {
+      representation?: 'complete' | 'date' | 'time'
+    },
+    string,
+    boolean
+  >
+  namespace isISOMatchWithOptions {}
+
   const isLastDayOfMonth: CurriedFn1<Date | number, boolean>
   namespace isLastDayOfMonth {}
 
@@ -16102,6 +16202,16 @@ declare module 'date-fns/esm/fp/isFirstDayOfMonth' {
 declare module 'date-fns/esm/fp/isFriday' {
   import { isFriday } from 'date-fns/esm/fp'
   export default isFriday
+}
+
+declare module 'date-fns/esm/fp/isISOMatch' {
+  import { isISOMatch } from 'date-fns/esm/fp'
+  export default isISOMatch
+}
+
+declare module 'date-fns/esm/fp/isISOMatchWithOptions' {
+  import { isISOMatchWithOptions } from 'date-fns/esm/fp'
+  export default isISOMatchWithOptions
 }
 
 declare module 'date-fns/esm/fp/isLastDayOfMonth' {
@@ -17364,6 +17474,16 @@ declare module 'date-fns/esm/fp/isFriday/index' {
   export default isFriday
 }
 
+declare module 'date-fns/esm/fp/isISOMatch/index' {
+  import { isISOMatch } from 'date-fns/esm/fp'
+  export default isISOMatch
+}
+
+declare module 'date-fns/esm/fp/isISOMatchWithOptions/index' {
+  import { isISOMatchWithOptions } from 'date-fns/esm/fp'
+  export default isISOMatchWithOptions
+}
+
 declare module 'date-fns/esm/fp/isLastDayOfMonth/index' {
   import { isLastDayOfMonth } from 'date-fns/esm/fp'
   export default isLastDayOfMonth
@@ -18624,6 +18744,16 @@ declare module 'date-fns/esm/fp/isFriday/index.js' {
   export default isFriday
 }
 
+declare module 'date-fns/esm/fp/isISOMatch/index.js' {
+  import { isISOMatch } from 'date-fns/esm/fp'
+  export default isISOMatch
+}
+
+declare module 'date-fns/esm/fp/isISOMatchWithOptions/index.js' {
+  import { isISOMatchWithOptions } from 'date-fns/esm/fp'
+  export default isISOMatchWithOptions
+}
+
 declare module 'date-fns/esm/fp/isLastDayOfMonth/index.js' {
   import { isLastDayOfMonth } from 'date-fns/esm/fp'
   export default isLastDayOfMonth
@@ -19495,6 +19625,9 @@ declare module 'date-fns/locale' {
   const uz: Locale
   namespace uz {}
 
+  const uzCyrl: Locale
+  namespace uzCyrl {}
+
   const vi: Locale
   namespace vi {}
 
@@ -19936,6 +20069,11 @@ declare module 'date-fns/locale/uk' {
 declare module 'date-fns/locale/uz' {
   import { uz } from 'date-fns/locale'
   export default uz
+}
+
+declare module 'date-fns/locale/uz-Cyrl' {
+  import { uzCyrl } from 'date-fns/locale'
+  export default uzCyrl
 }
 
 declare module 'date-fns/locale/vi' {
@@ -20388,6 +20526,11 @@ declare module 'date-fns/locale/uz/index' {
   export default uz
 }
 
+declare module 'date-fns/locale/uz-Cyrl/index' {
+  import { uzCyrl } from 'date-fns/locale'
+  export default uzCyrl
+}
+
 declare module 'date-fns/locale/vi/index' {
   import { vi } from 'date-fns/locale'
   export default vi
@@ -20838,6 +20981,11 @@ declare module 'date-fns/locale/uz/index.js' {
   export default uz
 }
 
+declare module 'date-fns/locale/uz-Cyrl/index.js' {
+  import { uzCyrl } from 'date-fns/locale'
+  export default uzCyrl
+}
+
 declare module 'date-fns/locale/vi/index.js' {
   import { vi } from 'date-fns/locale'
   export default vi
@@ -21118,6 +21266,9 @@ declare module 'date-fns/esm/locale' {
 
   const uz: Locale
   namespace uz {}
+
+  const uzCyrl: Locale
+  namespace uzCyrl {}
 
   const vi: Locale
   namespace vi {}
@@ -21560,6 +21711,11 @@ declare module 'date-fns/esm/locale/uk' {
 declare module 'date-fns/esm/locale/uz' {
   import { uz } from 'date-fns/esm/locale'
   export default uz
+}
+
+declare module 'date-fns/esm/locale/uz-Cyrl' {
+  import { uzCyrl } from 'date-fns/esm/locale'
+  export default uzCyrl
 }
 
 declare module 'date-fns/esm/locale/vi' {
@@ -22012,6 +22168,11 @@ declare module 'date-fns/esm/locale/uz/index' {
   export default uz
 }
 
+declare module 'date-fns/esm/locale/uz-Cyrl/index' {
+  import { uzCyrl } from 'date-fns/esm/locale'
+  export default uzCyrl
+}
+
 declare module 'date-fns/esm/locale/vi/index' {
   import { vi } from 'date-fns/esm/locale'
   export default vi
@@ -22460,6 +22621,11 @@ declare module 'date-fns/esm/locale/uk/index.js' {
 declare module 'date-fns/esm/locale/uz/index.js' {
   import { uz } from 'date-fns/esm/locale'
   export default uz
+}
+
+declare module 'date-fns/esm/locale/uz-Cyrl/index.js' {
+  import { uzCyrl } from 'date-fns/esm/locale'
+  export default uzCyrl
 }
 
 declare module 'date-fns/esm/locale/vi/index.js' {
@@ -22937,6 +23103,13 @@ interface dateFns {
   isFriday(date: Date | number): boolean
 
   isFuture(date: Date | number): boolean
+
+  isISOMatch(
+    dateString: string,
+    options?: {
+      representation?: 'complete' | 'date' | 'time'
+    }
+  ): boolean
 
   isLastDayOfMonth(date: Date | number): boolean
 

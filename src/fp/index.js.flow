@@ -428,6 +428,14 @@ declare module.exports: {
   isExists: CurriedFn3<number, number, number, boolean>,
   isFirstDayOfMonth: CurriedFn1<Date | number, boolean>,
   isFriday: CurriedFn1<Date | number, boolean>,
+  isISOMatch: CurriedFn1<string, boolean>,
+  isISOMatchWithOptions: CurriedFn2<
+    {
+      representation?: 'complete' | 'date' | 'time',
+    },
+    string,
+    boolean
+  >,
   isLastDayOfMonth: CurriedFn1<Date | number, boolean>,
   isLeapYear: CurriedFn1<Date | number, boolean>,
   isMatch: CurriedFn2<string, string, boolean>,

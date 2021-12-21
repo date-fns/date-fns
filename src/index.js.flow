@@ -512,6 +512,13 @@ declare module.exports: {
 
   isFuture: (date: Date | number) => boolean,
 
+  isISOMatch: (
+    dateString: string,
+    options?: {
+      representation?: 'complete' | 'date' | 'time',
+    }
+  ) => boolean,
+
   isLastDayOfMonth: (date: Date | number) => boolean,
 
   isLeapYear: (date: Date | number) => boolean,
