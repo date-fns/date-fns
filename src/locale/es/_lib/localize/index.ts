@@ -48,7 +48,7 @@ const monthValues = {
 
 const dayValues = {
   narrow: ['d', 'l', 'm', 'm', 'j', 'v', 's'],
-  short: ['do', 'lu', 'ma', 'mi', 'ju', 'vi', 'sa'],
+  short: ['do', 'lu', 'ma', 'mi', 'ju', 'vi', 'sá'],
   abbreviated: ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb'],
   wide: [
     'domingo',
