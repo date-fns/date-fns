@@ -3,6 +3,4 @@
 import fn from '../../differenceInWeeks/index'
 import convertToFP from '../_lib/convertToFP/index'
 
-var differenceInWeeksWithOptions = convertToFP(fn, 3)
-
-export default differenceInWeeksWithOptions
+export default convertToFP(fn, 3)

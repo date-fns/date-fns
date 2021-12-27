@@ -3,6 +3,4 @@
 import fn from '../../differenceInSeconds/index'
 import convertToFP from '../_lib/convertToFP/index'
 
-var differenceInSecondsWithOptions = convertToFP(fn, 3)
-
-export default differenceInSecondsWithOptions
+export default convertToFP(fn, 3)

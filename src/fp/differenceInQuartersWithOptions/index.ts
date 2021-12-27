@@ -3,6 +3,4 @@
 import fn from '../../differenceInQuarters/index'
 import convertToFP from '../_lib/convertToFP/index'
 
-var differenceInQuartersWithOptions = convertToFP(fn, 3)
-
-export default differenceInQuartersWithOptions
+export default convertToFP(fn, 3)
