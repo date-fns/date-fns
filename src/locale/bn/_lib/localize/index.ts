@@ -1,6 +1,8 @@
+import type { Quarter } from '../../../../types'
+import type { Localize, LocalizeFn } from '../../../types'
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
-var numberValues = {
+const numberValues = {
   locale: {
     '1': '১',
     '2': '২',
@@ -11,7 +13,7 @@ var numberValues = {
     '7': '৭',
     '8': '৮',
     '9': '৯',
-    '0': '০'
+    '0': '০',
   },
   number: {
     '১': '1',
@@ -23,23 +25,28 @@ var numberValues = {
     '৭': '7',
     '৮': '8',
     '৯': '9',
-    '০': '0'
-  }
+    '০': '0',
+  },
 }
 
-var eraValues = {
-  narrow: ['খ্রিঃপূঃ', 'খ্রিঃ'],
-  abbreviated: ['খ্রিঃপূর্ব', 'খ্রিঃ'],
-  wide: ['খ্রিস্টপূর্ব', 'খ্রিস্টাব্দ']
+const eraValues = {
+  narrow: ['খ্রিঃপূঃ', 'খ্রিঃ'] as const,
+  abbreviated: ['খ্রিঃপূর্ব', 'খ্রিঃ'] as const,
+  wide: ['খ্রিস্টপূর্ব', 'খ্রিস্টাব্দ'] as const,
 }
 
-var quarterValues = {
-  narrow: ['১', '২', '৩', '৪'],
-  abbreviated: ['১ত্রৈ', '২ত্রৈ', '৩ত্রৈ', '৪ত্রৈ'],
-  wide: ['১ম ত্রৈমাসিক', '২য় ত্রৈমাসিক', '৩য় ত্রৈমাসিক', '৪র্থ ত্রৈমাসিক']
+const quarterValues = {
+  narrow: ['১', '২', '৩', '৪'] as const,
+  abbreviated: ['১ত্রৈ', '২ত্রৈ', '৩ত্রৈ', '৪ত্রৈ'] as const,
+  wide: [
+    '১ম ত্রৈমাসিক',
+    '২য় ত্রৈমাসিক',
+    '৩য় ত্রৈমাসিক',
+    '৪র্থ ত্রৈমাসিক',
+  ] as const,
 }
 
-var monthValues = {
+const monthValues = {
   narrow: [
     'জানু',
     'ফেব্রু',
@@ -52,8 +59,8 @@ var monthValues = {
     'সেপ্ট',
     'অক্টো',
     'নভে',
-    'ডিসে'
-  ],
+    'ডিসে',
+  ] as const,
   abbreviated: [
     'জানু',
     'ফেব্রু',
@@ -66,8 +73,8 @@ var monthValues = {
     'সেপ্ট',
     'অক্টো',
     'নভে',
-    'ডিসে'
-  ],
+    'ডিসে',
+  ] as const,
   wide: [
     'জানুয়ারি',
     'ফেব্রুয়ারি',
@@ -80,14 +87,14 @@ var monthValues = {
     'সেপ্টেম্বর',
     'অক্টোবর',
     'নভেম্বর',
-    'ডিসেম্বর'
-  ]
+    'ডিসেম্বর',
+  ] as const,
 }
 
-var dayValues = {
-  narrow: ['র', 'সো', 'ম', 'বু', 'বৃ', 'শু', 'শ'],
-  short: ['রবি', 'সোম', 'মঙ্গল', 'বুধ', 'বৃহ', 'শুক্র', 'শনি'],
-  abbreviated: ['রবি', 'সোম', 'মঙ্গল', 'বুধ', 'বৃহ', 'শুক্র', 'শনি'],
+const dayValues = {
+  narrow: ['র', 'সো', 'ম', 'বু', 'বৃ', 'শু', 'শ'] as const,
+  short: ['রবি', 'সোম', 'মঙ্গল', 'বুধ', 'বৃহ', 'শুক্র', 'শনি'] as const,
+  abbreviated: ['রবি', 'সোম', 'মঙ্গল', 'বুধ', 'বৃহ', 'শুক্র', 'শনি'] as const,
   wide: [
     'রবিবার',
     'সোমবার',
@@ -95,11 +102,11 @@ var dayValues = {
     'বুধবার',
     'বৃহস্পতিবার ',
     'শুক্রবার',
-    'শনিবার'
-  ]
+    'শনিবার',
+  ] as const,
 }
 
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'পূ',
     pm: 'অপ',
@@ -108,7 +115,7 @@ var dayPeriodValues = {
     morning: 'সকাল',
     afternoon: 'বিকাল',
     evening: 'সন্ধ্যা',
-    night: 'রাত'
+    night: 'রাত',
   },
   abbreviated: {
     am: 'পূর্বাহ্ন',
@@ -118,7 +125,7 @@ var dayPeriodValues = {
     morning: 'সকাল',
     afternoon: 'বিকাল',
     evening: 'সন্ধ্যা',
-    night: 'রাত'
+    night: 'রাত',
   },
   wide: {
     am: 'পূর্বাহ্ন',
@@ -128,10 +135,11 @@ var dayPeriodValues = {
     morning: 'সকাল',
     afternoon: 'বিকাল',
     evening: 'সন্ধ্যা',
-    night: 'রাত'
-  }
+    night: 'রাত',
+  },
 }
-var formattingDayPeriodValues = {
+
+const formattingDayPeriodValues = {
   narrow: {
     am: 'পূ',
     pm: 'অপ',
@@ -140,7 +148,7 @@ var formattingDayPeriodValues = {
     morning: 'সকাল',
     afternoon: 'বিকাল',
     evening: 'সন্ধ্যা',
-    night: 'রাত'
+    night: 'রাত',
   },
   abbreviated: {
     am: 'পূর্বাহ্ন',
@@ -150,7 +158,7 @@ var formattingDayPeriodValues = {
     morning: 'সকাল',
     afternoon: 'বিকাল',
     evening: 'সন্ধ্যা',
-    night: 'রাত'
+    night: 'রাত',
   },
   wide: {
     am: 'পূর্বাহ্ন',
@@ -160,11 +168,11 @@ var formattingDayPeriodValues = {
     morning: 'সকাল',
     afternoon: 'বিকাল',
     evening: 'সন্ধ্যা',
-    night: 'রাত'
-  }
+    night: 'রাত',
+  },
 }
 
-function dateOrdinalNumber(number, localeNumber) {
+function dateOrdinalNumber(number: number, localeNumber: string): string {
   if (number > 18 && number <= 31) {
     return localeNumber + 'শে'
   } else {
@@ -182,17 +190,20 @@ function dateOrdinalNumber(number, localeNumber) {
   }
 }
 
-function ordinalNumber(dirtyNumber, dirtyOptions) {
-  var number = localize.localeToNumber(dirtyNumber)
-  var localeNumber = localize.numberToLocale(number)
-  var unit = dirtyOptions.unit
+const ordinalNumber: LocalizeFn<number, undefined> = (
+  dirtyNumber,
+  dirtyOptions
+) => {
+  const number = Number(dirtyNumber)
+  const localeNumber = numberToLocale(number)
+  const unit = dirtyOptions?.unit
 
   if (unit === 'date') {
     return dateOrdinalNumber(number, localeNumber)
   }
   if (number > 10 || number === 0) return localeNumber + 'তম'
 
-  var rem10 = number % 10
+  const rem10 = number % 10
   switch (rem10) {
     case 2:
     case 3:
@@ -201,65 +212,54 @@ function ordinalNumber(dirtyNumber, dirtyOptions) {
       return localeNumber + 'র্থ'
     case 6:
       return localeNumber + 'ষ্ঠ'
-    case 1:
-    case 5:
-    case 7:
-    case 8:
-    case 9:
-    case 0:
+    default:
       return localeNumber + 'ম'
   }
 }
 
-function localeToNumber(locale) {
-  var number = locale.toString().replace(/[১২৩৪৫৬৭৮৯০]/g, function(match) {
-    return numberValues.number[match]
+// function localeToNumber(locale: string): number {
+//   const enNumber = locale.toString().replace(/[১২৩৪৫৬৭৮৯০]/g, function (match) {
+//     return numberValues.number[match as keyof typeof numberValues.number]
+//   })
+//   return Number(enNumber)
+// }
+
+export function numberToLocale(enNumber: number) {
+  return enNumber.toString().replace(/\d/g, function (match) {
+    return numberValues.locale[match as keyof typeof numberValues.locale]
   })
-  return Number(number)
 }
 
-function numberToLocale(number) {
-  return number.toString().replace(/\d/g, function(match) {
-    return numberValues.locale[match]
-  })
-}
-
-var localize = {
-  localeToNumber: localeToNumber,
-
-  numberToLocale: numberToLocale,
-
-  ordinalNumber: ordinalNumber,
+const localize: Localize = {
+  ordinalNumber,
 
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
-      return Number(quarter) - 1
-    }
+    argumentCallback: (quarter) => (quarter - 1) as Quarter,
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize
