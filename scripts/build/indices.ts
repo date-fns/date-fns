@@ -23,7 +23,6 @@ interface File {
     (await readFile('./outdatedLocales.json')).toString()
   )
 
-  // TODO refactor listLocales with bool param to include outdated locales, default=true
   const locales = (await listLocales()).filter(
     ({ code }) => !outdatedLocales.includes(code)
   )
