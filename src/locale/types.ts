@@ -257,7 +257,7 @@ export type LocaleOptionUnit =
   | 'minute'
   | 'second'
 
-export type FormatLongWidth = 'full' | 'long' | 'medium' | 'short'
+export type FormatLongWidth = 'full' | 'long' | 'medium' | 'short' | 'any'
 
 export type DateTimeFormat = { [format in FormatLongWidth]: string }
 
