@@ -419,7 +419,11 @@ describe('formatDistanceStrict', function () {
 
   describe('custom locale', function () {
     it('can be passed to the function', function () {
-      function localizeDistance(token: string, count: number, options: { addSuffix: boolean; comparison: number }) {
+      function localizeDistance(
+        token: string,
+        count: number,
+        options: { addSuffix: boolean; comparison: number }
+      ) {
         assert(token === 'xSeconds')
         assert(count === 25)
         assert(options.addSuffix === true)
@@ -464,6 +468,72 @@ describe('formatDistanceStrict', function () {
       )
       assert(result === '28 days')
     })
+
+    describe('leap days', function () {
+      const LEAP_YEAR = 2020
+      it('knows there are 365 days in a normal year', function () {
+        const result = formatDistanceStrict(
+          new Date(LEAP_YEAR - 1, 1, 1),
+          new Date(LEAP_YEAR, 1, 1),
+          { unit: 'day' }
+        )
+        assert(result === '365 days')
+      })
+
+      it('knows there are 366 days in a leap year', function () {
+        const result = formatDistanceStrict(
+          new Date(LEAP_YEAR, 1, 1),
+          new Date(LEAP_YEAR + 1, 1, 1),
+          { unit: 'day' }
+        )
+        assert(result === '366 days')
+      })
+
+      it('knows that a day less than a full year on a normal year is not a year', function () {
+        const result = formatDistanceStrict(
+          new Date(LEAP_YEAR - 1, 1, 1),
+          new Date(LEAP_YEAR, 0, 31),
+          { roundingMethod: 'floor', unit: 'year' }
+        )
+        assert(result === '0 years')
+      })
+
+      it('knows that a day less than a full year on a leap year is not a year', function () {
+        const result = formatDistanceStrict(
+          new Date(LEAP_YEAR, 1, 1),
+          new Date(LEAP_YEAR + 1, 0, 31),
+          { roundingMethod: 'floor', unit: 'year' }
+        )
+        assert(result === '0 years')
+      })
+
+      it('is is a full month from february 1 to march 1 on regular year', function () {
+        const result = formatDistanceStrict(
+          new Date(LEAP_YEAR + 1, 1, 1),
+          new Date(LEAP_YEAR + 1, 2, 1),
+          { roundingMethod: 'floor', unit: 'month' }
+        )
+        assert(result === '1 month')
+      })
+
+      it('is not a full month from february 1 to february 29 on leap year', function () {
+        const result = formatDistanceStrict(
+          new Date(LEAP_YEAR, 1, 1),
+          new Date(LEAP_YEAR, 1, 29),
+          { roundingMethod: 'floor', unit: 'month' }
+        )
+        assert(result === '0 months')
+      })
+
+      it('has 120 * 12 months between 1900 and 2021', function () {
+        const result = formatDistanceStrict(
+          new Date(1900, 0, 1),
+          new Date(2021, 0, 1),
+          { roundingMethod: 'floor', unit: 'month' }
+        )
+        assert(result === '1440 months')
+      })
+    })
   })
 
   it('throws `RangeError` if the first date is `Invalid Date`', function () {
@@ -496,22 +566,24 @@ describe('formatDistanceStrict', function () {
   })
 
   it("throws `RangeError` if `options.roundingMethod` is not 'floor', 'ceil', 'round' or undefined", function () {
-    const block = () => formatDistanceStrict(
-      new Date(1986, 3, 4, 10, 32, 0),
-      new Date(1986, 3, 4, 10, 33, 29),
-      // @ts-expect-error
-      { roundingMethod: 'foobar' }
-    )
+    const block = () =>
+      formatDistanceStrict(
+        new Date(1986, 3, 4, 10, 32, 0),
+        new Date(1986, 3, 4, 10, 33, 29),
+        // @ts-expect-error
+        { roundingMethod: 'foobar' }
+      )
     assert.throws(block, RangeError)
   })
 
   it("throws `RangeError` if `options.unit` is not 's', 'm', 'h', 'd', 'M', 'Y' or undefined", function () {
-    const block = () => formatDistanceStrict(
-      new Date(1986, 3, 4, 10, 32, 0),
-      new Date(1986, 3, 4, 10, 33, 29),
-      // @ts-expect-error
-      { unit: 'foobar' }
-    )
+    const block = () =>
+      formatDistanceStrict(
+        new Date(1986, 3, 4, 10, 32, 0),
+        new Date(1986, 3, 4, 10, 33, 29),
+        // @ts-expect-error
+        { unit: 'foobar' }
+      )
     assert.throws(block, RangeError)
   })
 
