@@ -10,6 +10,7 @@ import formatLong from './_lib/formatLong/index'
  * @category Locales
  * @summary Italian locale (Switzerland).
  * @language Italian
+ * @iso-639-2 ita
  * @author Mike Peyer [@maic66]{@link https://github.com/maic66}
  */
 const locale: Locale = {
