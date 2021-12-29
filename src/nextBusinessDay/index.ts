@@ -1,40 +1,35 @@
-import { isWeekend, addDays, toDate, isEqual, startOfDay } from '..'
+import { addDays, isEqual, isWeekend, startOfDay, toDate } from '..'
 
 /**
  * @name nextBusinessDay
  * @category Day Helpers
- * @summary Returns the next business day
+ * @summary When is the next business day?
  *
  * @description Returns the next business day (Mon - Fri)
  *
  * @param {Date|Number} date - the initial date
- * @param {Number} [startFromDay=0] - The day that it starts to count, the
- * default is zero. So if the date is on a Monday it will return the current
- * date. To start counting from the next date set this to one.
- * @param {[Date]} excludeDates - An array of holidays or other dates that
- * should not be identified as business days
+ * @param {Number} [startFromDay=0] - the day that it starts counting from with 0 as a default value.
+ * To start counting from the next date set this to 1.
  *
+ * @param {[Date]} excludeDates - an array of dates to exclude e.g. holidays.
  * @returns {Date} the next business day
- *
  * @throws {TypeError} startFrom can't be a negative number
  *
- *
  * @example
- * // returns the next business date from  Sun July 4th, 2021
- * const date = nextBusinessDay(new Date(2021, 6, 4));
- * // => Mon Jul 4 2021 00:00:00
+ * // When is the next business day after July, 4 2021
+ * const result = nextBusinessDay(new Date(2021, 6, 4))
+ * //=> Mon Jul 05 2021 00:00:00
  *
- * // returns the next business day and skip the holidays
- * especified on the excludeDates param
- * const holidays = [new Date(2021, 8, 7)] // September 7h - Brazil Independence Day
- * const date = nextBusinessDay(new Date(2021, 8, 6), 1, holidays)
- * // => Wed Sep 8 2021 00:00:00
+ * // When is the next business day after September, 6 2021 with an excluded day?
+ * const holidays = [new Date(2021, 8, 7)] // September, 7 - Brazil Independence Day
+ * const result = nextBusinessDay(new Date(2021, 8, 6), 1, holidays)
+ * //=> Wed Sep 8 2021 00:00:00
  */
 
 export default function nextBusinessDay(
-  dirtyDate: Date,
+  dirtyDate: Date | number,
   startFromDay = 0,
-  excludeDates: Array<Date> = []
+  excludeDates: Array<Date | number> = []
 ): Date {
   const date = startOfDay(toDate(dirtyDate))
 
