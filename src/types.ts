@@ -35,7 +35,7 @@ export interface FormatOptions {
   format?: 'extended' | 'basic'
 }
 /**
- * FirstWeekContainsDate is used to determine which week is the first of the year, based on what day the 1 January is in that week.
+ * FirstWeekContainsDate is used to determine which week is the first week of the year, based on what day the 1 January is in that week.
  *
  * The day in that week can only be 1 (Monday) or 4 (Thursday).
  *
