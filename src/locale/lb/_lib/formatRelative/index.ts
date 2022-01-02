@@ -1,7 +1,9 @@
-var formatRelativeLocale = {
-  lastWeek: function(date) {
-    var day = date.getUTCDay()
-    var result = "'läschte"
+import type { FormatRelativeFn } from '../../../types'
+
+const formatRelativeLocale = {
+  lastWeek: (date: Date) => {
+    const day = date.getUTCDay()
+    let result = "'läschte"
     if (day === 2 || day === 4) {
       // Eifeler Regel: Add an n before the consonant d; Here "Dënschdeg" "and Donneschde".
       result += 'n'
@@ -13,11 +15,11 @@ var formatRelativeLocale = {
   today: "'haut um' p",
   tomorrow: "'moien um' p",
   nextWeek: "eeee 'um' p",
-  other: 'P'
+  other: 'P',
 }
 
-export default function formatRelative(token, date, _baseDate, _options) {
-  var format = formatRelativeLocale[token]
+const formatRelative: FormatRelativeFn = (token, date, _baseDate, _options) => {
+  const format = formatRelativeLocale[token]
 
   if (typeof format === 'function') {
     return format(date)
@@ -25,3 +27,5 @@ export default function formatRelative(token, date, _baseDate, _options) {
 
   return format
 }
+
+export default formatRelative
