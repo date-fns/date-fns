@@ -191,28 +191,28 @@ If now is January 1st, 2000, 00:00.
 
 | Date                     | Result            | `includeSeconds: true`  | `addSuffix: true`       |
 | ------------------------ | ----------------- | ----------------------- | ----------------------- |
-| 2006-01-01T00:00:00.000Z | apie 6 metai      | apie 6 metai            | po apie 6 metus         |
-| 2005-01-01T00:00:00.000Z | apie 5 metai      | apie 5 metai            | po apie 5 metus         |
-| 2004-01-01T00:00:00.000Z | apie 4 metai      | apie 4 metai            | po apie 4 metus         |
-| 2003-01-01T00:00:00.000Z | apie 3 metai      | apie 3 metai            | po apie 3 metus         |
-| 2002-01-01T00:00:00.000Z | apie 2 metai      | apie 2 metai            | po apie 2 metus         |
-| 2001-06-01T00:00:00.000Z | daugiau nei metai | daugiau nei metai       | po daugiau nei metus    |
-| 2001-02-01T00:00:00.000Z | apie metai        | apie metai              | po apie metus           |
-| 2001-01-01T00:00:00.000Z | apie metai        | apie metai              | po apie metus           |
-| 2000-06-01T00:00:00.000Z | 5 mėnesiai        | 5 mėnesiai              | po 5 mėnesius           |
-| 2000-03-01T00:00:00.000Z | 2 mėnesiai        | 2 mėnesiai              | po 2 mėnesius           |
-| 2000-02-01T00:00:00.000Z | apie mėnuo        | apie mėnuo              | po apie mėnesį          |
+| 2006-01-01T00:00:00.000Z | apie 6 metai      | apie 6 metai            | po apie 6 metų          |
+| 2005-01-01T00:00:00.000Z | apie 5 metai      | apie 5 metai            | po apie 5 metų          |
+| 2004-01-01T00:00:00.000Z | apie 4 metai      | apie 4 metai            | po apie 4 metų          |
+| 2003-01-01T00:00:00.000Z | apie 3 metai      | apie 3 metai            | po apie 3 metų          |
+| 2002-01-01T00:00:00.000Z | apie 2 metai      | apie 2 metai            | po apie 2 metų          |
+| 2001-06-01T00:00:00.000Z | daugiau nei metai | daugiau nei metai       | po daugiau nei metų     |
+| 2001-02-01T00:00:00.000Z | apie metai        | apie metai              | po apie metų            |
+| 2001-01-01T00:00:00.000Z | apie metai        | apie metai              | po apie metų            |
+| 2000-06-01T00:00:00.000Z | 5 mėnesiai        | 5 mėnesiai              | po 5 mėnesių            |
+| 2000-03-01T00:00:00.000Z | 2 mėnesiai        | 2 mėnesiai              | po 2 mėnesių            |
+| 2000-02-01T00:00:00.000Z | apie mėnuo        | apie mėnuo              | po apie mėnesio         |
 | 2000-01-15T00:00:00.000Z | 14 dienų          | 14 dienų                | po 14 dienų             |
-| 2000-01-02T00:00:00.000Z | diena             | diena                   | po dieną                |
-| 2000-01-01T06:00:00.000Z | apie 6 valandos   | apie 6 valandos         | po apie 6 valandas      |
-| 2000-01-01T01:00:00.000Z | apie valanda      | apie valanda            | po apie valandą         |
-| 2000-01-01T00:45:00.000Z | apie valanda      | apie valanda            | po apie valandą         |
+| 2000-01-02T00:00:00.000Z | diena             | diena                   | po dienos               |
+| 2000-01-01T06:00:00.000Z | apie 6 valandos   | apie 6 valandos         | po apie 6 valandų       |
+| 2000-01-01T01:00:00.000Z | apie valanda      | apie valanda            | po apie valandos        |
+| 2000-01-01T00:45:00.000Z | apie valanda      | apie valanda            | po apie valandos        |
 | 2000-01-01T00:30:00.000Z | 30 minučių        | 30 minučių              | po 30 minučių           |
 | 2000-01-01T00:15:00.000Z | 15 minučių        | 15 minučių              | po 15 minučių           |
-| 2000-01-01T00:01:00.000Z | minutė            | minutė                  | po minutę               |
-| 2000-01-01T00:00:25.000Z | mažiau nei minutė | pusė minutės            | po mažiau nei minutę    |
-| 2000-01-01T00:00:15.000Z | mažiau nei minutė | mažiau nei 20 sekundžių | po mažiau nei minutę    |
-| 2000-01-01T00:00:05.000Z | mažiau nei minutė | mažiau nei 10 sekundžių | po mažiau nei minutę    |
+| 2000-01-01T00:01:00.000Z | minutė            | minutė                  | po minutės              |
+| 2000-01-01T00:00:25.000Z | mažiau nei minutė | pusė minutės            | po mažiau nei minutės   |
+| 2000-01-01T00:00:15.000Z | mažiau nei minutė | mažiau nei 20 sekundžių | po mažiau nei minutės   |
+| 2000-01-01T00:00:05.000Z | mažiau nei minutė | mažiau nei 10 sekundžių | po mažiau nei minutės   |
 | 2000-01-01T00:00:00.000Z | mažiau nei minutė | mažiau nei 5 sekundė    | prieš mažiau nei minutę |
 | 1999-12-31T23:59:55.000Z | mažiau nei minutė | mažiau nei 10 sekundžių | prieš mažiau nei minutę |
 | 1999-12-31T23:59:45.000Z | mažiau nei minutė | mažiau nei 20 sekundžių | prieš mažiau nei minutę |
@@ -243,28 +243,28 @@ If now is January 1st, 2000, 00:00.
 
 | Date                     | Result       | `addSuffix: true`  | With forced unit (i.e. `hour`) |
 | ------------------------ | ------------ | ------------------ | ------------------------------ |
-| 2006-01-01T00:00:00.000Z | 6 metai      | po 6 metus         | 52608 valandos                 |
-| 2005-01-01T00:00:00.000Z | 5 metai      | po 5 metus         | 43848 valandos                 |
-| 2004-01-01T00:00:00.000Z | 4 metai      | po 4 metus         | 35064 valandos                 |
-| 2003-01-01T00:00:00.000Z | 3 metai      | po 3 metus         | 26304 valandos                 |
-| 2002-01-01T00:00:00.000Z | 2 metai      | po 2 metus         | 17544 valandos                 |
-| 2001-06-01T00:00:00.000Z | metai        | po metus           | 12408 valandos                 |
-| 2001-02-01T00:00:00.000Z | metai        | po metus           | 9528 valandos                  |
-| 2001-01-01T00:00:00.000Z | metai        | po metus           | 8784 valandos                  |
-| 2000-06-01T00:00:00.000Z | 5 mėnesiai   | po 5 mėnesius      | 3648 valandos                  |
-| 2000-03-01T00:00:00.000Z | 2 mėnesiai   | po 2 mėnesius      | 1440 valandų                   |
-| 2000-02-01T00:00:00.000Z | mėnuo        | po mėnesį          | 744 valandos                   |
+| 2006-01-01T00:00:00.000Z | 6 metai      | po 6 metų          | 52608 valandos                 |
+| 2005-01-01T00:00:00.000Z | 5 metai      | po 5 metų          | 43848 valandos                 |
+| 2004-01-01T00:00:00.000Z | 4 metai      | po 4 metų          | 35064 valandos                 |
+| 2003-01-01T00:00:00.000Z | 3 metai      | po 3 metų          | 26304 valandos                 |
+| 2002-01-01T00:00:00.000Z | 2 metai      | po 2 metų          | 17544 valandos                 |
+| 2001-06-01T00:00:00.000Z | metai        | po metų            | 12408 valandos                 |
+| 2001-02-01T00:00:00.000Z | metai        | po metų            | 9528 valandos                  |
+| 2001-01-01T00:00:00.000Z | metai        | po metų            | 8784 valandos                  |
+| 2000-06-01T00:00:00.000Z | 5 mėnesiai   | po 5 mėnesių       | 3648 valandos                  |
+| 2000-03-01T00:00:00.000Z | 2 mėnesiai   | po 2 mėnesių       | 1440 valandų                   |
+| 2000-02-01T00:00:00.000Z | mėnuo        | po mėnesio         | 744 valandos                   |
 | 2000-01-15T00:00:00.000Z | 14 dienų     | po 14 dienų        | 336 valandos                   |
-| 2000-01-02T00:00:00.000Z | diena        | po dieną           | 24 valandos                    |
-| 2000-01-01T06:00:00.000Z | 6 valandos   | po 6 valandas      | 6 valandos                     |
-| 2000-01-01T01:00:00.000Z | valanda      | po valandą         | valanda                        |
-| 2000-01-01T00:45:00.000Z | 45 minutės   | po 45 minutes      | valanda                        |
+| 2000-01-02T00:00:00.000Z | diena        | po dienos          | 24 valandos                    |
+| 2000-01-01T06:00:00.000Z | 6 valandos   | po 6 valandų       | 6 valandos                     |
+| 2000-01-01T01:00:00.000Z | valanda      | po valandos        | valanda                        |
+| 2000-01-01T00:45:00.000Z | 45 minutės   | po 45 minučių      | valanda                        |
 | 2000-01-01T00:30:00.000Z | 30 minučių   | po 30 minučių      | valanda                        |
 | 2000-01-01T00:15:00.000Z | 15 minučių   | po 15 minučių      | 0 valandų                      |
-| 2000-01-01T00:01:00.000Z | minutė       | po minutę          | 0 valandų                      |
-| 2000-01-01T00:00:25.000Z | 25 sekundė   | po 25 sekundes     | 0 valandų                      |
+| 2000-01-01T00:01:00.000Z | minutė       | po minutės         | 0 valandų                      |
+| 2000-01-01T00:00:25.000Z | 25 sekundė   | po 25 sekundžių    | 0 valandų                      |
 | 2000-01-01T00:00:15.000Z | 15 sekundžių | po 15 sekundžių    | 0 valandų                      |
-| 2000-01-01T00:00:05.000Z | 5 sekundė    | po 5 sekundes      | 0 valandų                      |
+| 2000-01-01T00:00:05.000Z | 5 sekundė    | po 5 sekundžių     | 0 valandų                      |
 | 2000-01-01T00:00:00.000Z | 0 sekundžių  | prieš 0 sekundžių  | 0 valandų                      |
 | 1999-12-31T23:59:55.000Z | 5 sekundė    | prieš 5 sekundes   | 0 valandų                      |
 | 1999-12-31T23:59:45.000Z | 15 sekundžių | prieš 15 sekundžių | 0 valandų                      |
