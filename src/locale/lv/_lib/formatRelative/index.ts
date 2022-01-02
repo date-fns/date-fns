@@ -1,39 +1,49 @@
 import isSameUTCWeek from '../../../../_lib/isSameUTCWeek/index'
-var weekdays = [
+import type { FormatRelativeFn, FormatRelativeFnOptions } from '../../../types'
+
+const weekdays = [
   'svētdienā',
   'pirmdienā',
   'otrdienā',
   'trešdienā',
   'ceturtdienā',
   'piektdienā',
-  'sestdienā'
+  'sestdienā',
 ]
 
-var formatRelativeLocale = {
-  lastWeek: function(date, baseDate, options) {
+const formatRelativeLocale = {
+  lastWeek: (
+    date: Date,
+    baseDate: Date,
+    options?: FormatRelativeFnOptions
+  ): string => {
     if (isSameUTCWeek(date, baseDate, options)) {
       return "eeee 'plkst.' p"
     }
 
-    var weekday = weekdays[date.getUTCDay()]
+    const weekday = weekdays[date.getUTCDay()]
     return "'Pagājušā " + weekday + " plkst.' p"
   },
   yesterday: "'Vakar plkst.' p",
   today: "'Šodien plkst.' p",
   tomorrow: "'Rīt plkst.' p",
-  nextWeek: function(date, baseDate, options) {
+  nextWeek: (
+    date: Date,
+    baseDate: Date,
+    options?: FormatRelativeFnOptions
+  ): string => {
     if (isSameUTCWeek(date, baseDate, options)) {
       return "eeee 'plkst.' p"
     }
 
-    var weekday = weekdays[date.getUTCDay()]
+    const weekday = weekdays[date.getUTCDay()]
     return "'Nākamajā " + weekday + " plkst.' p"
   },
-  other: 'P'
+  other: 'P',
 }
 
-export default function formatRelative(token, date, baseDate, options) {
-  var format = formatRelativeLocale[token]
+const formatRelative: FormatRelativeFn = (token, date, baseDate, options) => {
+  const format = formatRelativeLocale[token]
 
   if (typeof format === 'function') {
     return format(date, baseDate, options)
@@ -41,3 +51,5 @@ export default function formatRelative(token, date, baseDate, options) {
 
   return format
 }
+
+export default formatRelative

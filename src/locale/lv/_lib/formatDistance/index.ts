@@ -1,27 +1,45 @@
-function buildLocalizeTokenFn(schema) {
-  return function(count, options) {
+import type {
+  FormatDistanceFn,
+  FormatDistanceLocale,
+  FormatDistanceOptions,
+} from '../../../types'
+
+type Schema = {
+  one: string[]
+  other: string[]
+}
+
+type FormatDistanceTokenValue = (
+  // eslint-disable-next-line no-unused-vars
+  count: number,
+  // eslint-disable-next-line no-unused-vars
+  options?: FormatDistanceOptions
+) => string
+
+function buildLocalizeTokenFn(schema: Schema) {
+  return (count: number, options?: FormatDistanceOptions): string => {
     if (count === 1) {
-      if (options.addSuffix) {
+      if (options?.addSuffix) {
         return schema.one[0].replace('{{time}}', schema.one[2])
       } else {
         return schema.one[0].replace('{{time}}', schema.one[1])
       }
     } else {
-      var rem = count % 10 === 1 && count % 100 !== 11
-      if (options.addSuffix) {
+      const rem = count % 10 === 1 && count % 100 !== 11
+      if (options?.addSuffix) {
         return schema.other[0]
           .replace('{{time}}', rem ? schema.other[3] : schema.other[4])
-          .replace('{{count}}', count)
+          .replace('{{count}}', String(count))
       } else {
         return schema.other[0]
           .replace('{{time}}', rem ? schema.other[1] : schema.other[2])
-          .replace('{{count}}', count)
+          .replace('{{count}}', String(count))
       }
     }
   }
 }
 
-var formatDistanceLocale = {
+const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   lessThanXSeconds: buildLocalizeTokenFn({
     one: ['mazāk par {{time}}', 'sekundi', 'sekundi'],
     other: [
@@ -29,17 +47,23 @@ var formatDistanceLocale = {
       'sekunde',
       'sekundes',
       'sekundes',
-      'sekundēm'
-    ]
+      'sekundēm',
+    ],
   }),
 
   xSeconds: buildLocalizeTokenFn({
     one: ['1 {{time}}', 'sekunde', 'sekundes'],
-    other: ['{{count}} {{time}}', 'sekunde', 'sekundes', 'sekundes', 'sekundēm']
+    other: [
+      '{{count}} {{time}}',
+      'sekunde',
+      'sekundes',
+      'sekundes',
+      'sekundēm',
+    ],
   }),
 
-  halfAMinute: function(count, options) {
-    if (options.addSuffix) {
+  halfAMinute: (_count, options) => {
+    if (options?.addSuffix) {
       return 'pusminūtes'
     } else {
       return 'pusminūte'
@@ -53,13 +77,13 @@ var formatDistanceLocale = {
       'minūte',
       'minūtes',
       'minūtes',
-      'minūtēm'
-    ]
+      'minūtēm',
+    ],
   }),
 
   xMinutes: buildLocalizeTokenFn({
     one: ['1 {{time}}', 'minūte', 'minūtes'],
-    other: ['{{count}} {{time}}', 'minūte', 'minūtes', 'minūtes', 'minūtēm']
+    other: ['{{count}} {{time}}', 'minūte', 'minūtes', 'minūtes', 'minūtēm'],
   }),
 
   aboutXHours: buildLocalizeTokenFn({
@@ -69,18 +93,18 @@ var formatDistanceLocale = {
       'stunda',
       'stundas',
       'stundas',
-      'stundām'
-    ]
+      'stundām',
+    ],
   }),
 
   xHours: buildLocalizeTokenFn({
     one: ['1 {{time}}', 'stunda', 'stundas'],
-    other: ['{{count}} {{time}}', 'stunda', 'stundas', 'stundas', 'stundām']
+    other: ['{{count}} {{time}}', 'stunda', 'stundas', 'stundas', 'stundām'],
   }),
 
   xDays: buildLocalizeTokenFn({
     one: ['1 {{time}}', 'diena', 'dienas'],
-    other: ['{{count}} {{time}}', 'diena', 'dienas', 'dienas', 'dienām']
+    other: ['{{count}} {{time}}', 'diena', 'dienas', 'dienas', 'dienām'],
   }),
 
   aboutXWeeks: buildLocalizeTokenFn({
@@ -90,8 +114,8 @@ var formatDistanceLocale = {
       'nedēļa',
       'nedēļu',
       'nedēļas',
-      'nedēļām'
-    ]
+      'nedēļām',
+    ],
   }),
 
   xWeeks: buildLocalizeTokenFn({
@@ -101,8 +125,8 @@ var formatDistanceLocale = {
       'nedēļa',
       'nedēļu',
       'nedēļas',
-      'nedēļām'
-    ]
+      'nedēļām',
+    ],
   }),
 
   aboutXMonths: buildLocalizeTokenFn({
@@ -112,42 +136,41 @@ var formatDistanceLocale = {
       'mēnesis',
       'mēneši',
       'mēneša',
-      'mēnešiem'
-    ]
+      'mēnešiem',
+    ],
   }),
 
   xMonths: buildLocalizeTokenFn({
     one: ['1 {{time}}', 'mēnesis', 'mēneša'],
-    other: ['{{count}} {{time}}', 'mēnesis', 'mēneši', 'mēneša', 'mēnešiem']
+    other: ['{{count}} {{time}}', 'mēnesis', 'mēneši', 'mēneša', 'mēnešiem'],
   }),
 
   aboutXYears: buildLocalizeTokenFn({
     one: ['apmēram 1 {{time}}', 'gads', 'gada'],
-    other: ['apmēram {{count}} {{time}}', 'gads', 'gadi', 'gada', 'gadiem']
+    other: ['apmēram {{count}} {{time}}', 'gads', 'gadi', 'gada', 'gadiem'],
   }),
 
   xYears: buildLocalizeTokenFn({
     one: ['1 {{time}}', 'gads', 'gada'],
-    other: ['{{count}} {{time}}', 'gads', 'gadi', 'gada', 'gadiem']
+    other: ['{{count}} {{time}}', 'gads', 'gadi', 'gada', 'gadiem'],
   }),
 
   overXYears: buildLocalizeTokenFn({
     one: ['ilgāk par 1 {{time}}', 'gadu', 'gadu'],
-    other: ['vairāk nekā {{count}} {{time}}', 'gads', 'gadi', 'gada', 'gadiem']
+    other: ['vairāk nekā {{count}} {{time}}', 'gads', 'gadi', 'gada', 'gadiem'],
   }),
 
   almostXYears: buildLocalizeTokenFn({
     one: ['gandrīz 1 {{time}}', 'gads', 'gada'],
-    other: ['vairāk nekā {{count}} {{time}}', 'gads', 'gadi', 'gada', 'gadiem']
-  })
+    other: ['vairāk nekā {{count}} {{time}}', 'gads', 'gadi', 'gada', 'gadiem'],
+  }),
 }
 
-export default function formatDistance(token, count, options) {
-  options = options || {}
-  var result = formatDistanceLocale[token](count, options)
+const formatDistance: FormatDistanceFn = (token, count, options) => {
+  const result = formatDistanceLocale[token](count, options)
 
-  if (options.addSuffix) {
-    if (options.comparison > 0) {
+  if (options?.addSuffix) {
+    if (options.comparison && options.comparison > 0) {
       return 'pēc ' + result
     } else {
       return 'pirms ' + result
@@ -156,3 +179,5 @@ export default function formatDistance(token, count, options) {
 
   return result
 }
+
+export default formatDistance
