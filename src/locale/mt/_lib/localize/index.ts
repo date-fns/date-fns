@@ -1,19 +1,21 @@
+import type { Quarter } from '../../../../types'
+import type { Localize, LocalizeFn } from '../../../types'
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
-var eraValues = {
-  narrow: ['Q', 'W'],
-  abbreviated: ['QK', 'WK'],
-  wide: ['qabel Kristu', 'wara Kristu']
+const eraValues = {
+  narrow: ['Q', 'W'] as const,
+  abbreviated: ['QK', 'WK'] as const,
+  wide: ['qabel Kristu', 'wara Kristu'] as const,
 }
 
-var quarterValues = {
-  narrow: ['1', '2', '3', '4'],
-  abbreviated: ['K1', 'K2', 'K3', 'K4'],
-  wide: ['1. kwart', '2. kwart', '3. kwart', '4. kwart']
+const quarterValues = {
+  narrow: ['1', '2', '3', '4'] as const,
+  abbreviated: ['K1', 'K2', 'K3', 'K4'] as const,
+  wide: ['1. kwart', '2. kwart', '3. kwart', '4. kwart'] as const,
 }
 
-var monthValues = {
-  narrow: ['J', 'F', 'M', 'A', 'M', 'Ġ', 'L', 'A', 'S', 'O', 'N', 'D'],
+const monthValues = {
+  narrow: ['J', 'F', 'M', 'A', 'M', 'Ġ', 'L', 'A', 'S', 'O', 'N', 'D'] as const,
   abbreviated: [
     'Jan',
     'Fra',
@@ -26,8 +28,8 @@ var monthValues = {
     'Set',
     'Ott',
     'Nov',
-    'Diċ'
-  ],
+    'Diċ',
+  ] as const,
   wide: [
     'Jannar',
     'Frar',
@@ -40,14 +42,14 @@ var monthValues = {
     'Settembru',
     'Ottubru',
     'Novembru',
-    'Diċembru'
-  ]
+    'Diċembru',
+  ] as const,
 }
 
-var dayValues = {
-  narrow: ['Ħ', 'T', 'T', 'E', 'Ħ', 'Ġ', 'S'],
-  short: ['Ħa', 'Tn', 'Tl', 'Er', 'Ħa', 'Ġi', 'Si'],
-  abbreviated: ['Ħad', 'Tne', 'Tli', 'Erb', 'Ħam', 'Ġim', 'Sib'],
+const dayValues = {
+  narrow: ['Ħ', 'T', 'T', 'E', 'Ħ', 'Ġ', 'S'] as const,
+  short: ['Ħa', 'Tn', 'Tl', 'Er', 'Ħa', 'Ġi', 'Si'] as const,
+  abbreviated: ['Ħad', 'Tne', 'Tli', 'Erb', 'Ħam', 'Ġim', 'Sib'] as const,
   wide: [
     'Il-Ħadd',
     'It-Tnejn',
@@ -55,11 +57,11 @@ var dayValues = {
     'L-Erbgħa',
     'Il-Ħamis',
     'Il-Ġimgħa',
-    'Is-Sibt'
-  ]
+    'Is-Sibt',
+  ] as const,
 }
 
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'a',
     pm: 'p',
@@ -68,7 +70,7 @@ var dayPeriodValues = {
     morning: 'għodwa',
     afternoon: 'wara nofsinhar',
     evening: 'filgħaxija',
-    night: 'lejl'
+    night: 'lejl',
   },
   abbreviated: {
     am: 'AM',
@@ -78,7 +80,7 @@ var dayPeriodValues = {
     morning: 'għodwa',
     afternoon: 'wara nofsinhar',
     evening: 'filgħaxija',
-    night: 'lejl'
+    night: 'lejl',
   },
   wide: {
     am: 'a.m.',
@@ -88,11 +90,11 @@ var dayPeriodValues = {
     morning: 'għodwa',
     afternoon: 'wara nofsinhar',
     evening: 'filgħaxija',
-    night: 'lejl'
-  }
+    night: 'lejl',
+  },
 }
 
-var formattingDayPeriodValues = {
+const formattingDayPeriodValues = {
   narrow: {
     am: 'a',
     pm: 'p',
@@ -101,7 +103,7 @@ var formattingDayPeriodValues = {
     morning: 'filgħodu',
     afternoon: 'wara nofsinhar',
     evening: 'filgħaxija',
-    night: 'billejl'
+    night: 'billejl',
   },
   abbreviated: {
     am: 'AM',
@@ -111,7 +113,7 @@ var formattingDayPeriodValues = {
     morning: 'filgħodu',
     afternoon: 'wara nofsinhar',
     evening: 'filgħaxija',
-    night: 'billejl'
+    night: 'billejl',
   },
   wide: {
     am: 'a.m.',
@@ -121,47 +123,48 @@ var formattingDayPeriodValues = {
     morning: 'filgħodu',
     afternoon: 'wara nofsinhar',
     evening: 'filgħaxija',
-    night: 'billejl'
-  }
+    night: 'billejl',
+  },
 }
 
-function ordinalNumber(dirtyNumber) {
-  var number = Number(dirtyNumber)
+const ordinalNumber: LocalizeFn<number, undefined> = (
+  dirtyNumber,
+  _options
+) => {
+  const number = Number(dirtyNumber)
   return number + 'º'
 }
 
-var localize = {
-  ordinalNumber: ordinalNumber,
+const localize: Localize = {
+  ordinalNumber,
 
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
-      return Number(quarter) - 1
-    }
+    argumentCallback: (quarter) => (quarter - 1) as Quarter,
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize
