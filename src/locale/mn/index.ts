@@ -1,3 +1,4 @@
+import type { Locale } from '../types'
 import formatDistance from './_lib/formatDistance/index'
 import formatLong from './_lib/formatLong/index'
 import formatRelative from './_lib/formatRelative/index'
@@ -12,7 +13,7 @@ import match from './_lib/match/index'
  * @iso-639-2 mon
  * @author Bilguun Ochirbat [@bilguun0203]{@link https://github.com/bilguun0203}
  */
-var locale = {
+const locale: Locale = {
   code: 'mn',
   formatDistance: formatDistance,
   formatLong: formatLong,
@@ -21,8 +22,8 @@ var locale = {
   match: match,
   options: {
     weekStartsOn: 1 /* Monday */,
-    firstWeekContainsDate: 1
-  }
+    firstWeekContainsDate: 1,
+  },
 }
 
 export default locale

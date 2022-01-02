@@ -1,100 +1,109 @@
-var formatDistanceLocale = {
+import type { FormatDistanceFn, FormatDistanceLocale } from '../../../types'
+
+type FormatDistanceTokenValue =
+  | string
+  | {
+      one: string
+      other: string
+    }
+
+const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   lessThanXSeconds: {
     one: 'секунд хүрэхгүй',
-    other: '{{count}} секунд хүрэхгүй'
+    other: '{{count}} секунд хүрэхгүй',
   },
 
   xSeconds: {
     one: '1 секунд',
-    other: '{{count}} секунд'
+    other: '{{count}} секунд',
   },
 
   halfAMinute: 'хагас минут',
 
   lessThanXMinutes: {
     one: 'минут хүрэхгүй',
-    other: '{{count}} минут хүрэхгүй'
+    other: '{{count}} минут хүрэхгүй',
   },
 
   xMinutes: {
     one: '1 минут',
-    other: '{{count}} минут'
+    other: '{{count}} минут',
   },
 
   aboutXHours: {
     one: 'ойролцоогоор 1 цаг',
-    other: 'ойролцоогоор {{count}} цаг'
+    other: 'ойролцоогоор {{count}} цаг',
   },
 
   xHours: {
     one: '1 цаг',
-    other: '{{count}} цаг'
+    other: '{{count}} цаг',
   },
 
   xDays: {
     one: '1 өдөр',
-    other: '{{count}} өдөр'
+    other: '{{count}} өдөр',
   },
 
   aboutXWeeks: {
     one: 'ойролцоогоор 1 долоо хоног',
-    other: 'ойролцоогоор {{count}} долоо хоног'
+    other: 'ойролцоогоор {{count}} долоо хоног',
   },
 
   xWeeks: {
     one: '1 долоо хоног',
-    other: '{{count}} долоо хоног'
+    other: '{{count}} долоо хоног',
   },
 
   aboutXMonths: {
     one: 'ойролцоогоор 1 сар',
-    other: 'ойролцоогоор {{count}} сар'
+    other: 'ойролцоогоор {{count}} сар',
   },
 
   xMonths: {
     one: '1 сар',
-    other: '{{count}} сар'
+    other: '{{count}} сар',
   },
 
   aboutXYears: {
     one: 'ойролцоогоор 1 жил',
-    other: 'ойролцоогоор {{count}} жил'
+    other: 'ойролцоогоор {{count}} жил',
   },
 
   xYears: {
     one: '1 жил',
-    other: '{{count}} жил'
+    other: '{{count}} жил',
   },
 
   overXYears: {
     one: '1 жил гаран',
-    other: '{{count}} жил гаран'
+    other: '{{count}} жил гаран',
   },
 
   almostXYears: {
     one: 'бараг 1 жил',
-    other: 'бараг {{count}} жил'
-  }
+    other: 'бараг {{count}} жил',
+  },
 }
 
-export default function formatDistance(token, count, options) {
-  options = options || {}
+const formatDistance: FormatDistanceFn = (token, count, options) => {
+  let result
 
-  var result
-  if (typeof formatDistanceLocale[token] === 'string') {
-    result = formatDistanceLocale[token]
+  const tokenValue = formatDistanceLocale[token]
+  if (typeof tokenValue === 'string') {
+    result = tokenValue
   } else if (count === 1) {
-    result = formatDistanceLocale[token].one
+    result = tokenValue.one
   } else {
-    result = formatDistanceLocale[token].other.replace('{{count}}', count)
+    result = tokenValue.other.replace('{{count}}', String(count))
   }
 
-  if (options.addSuffix) {
+  if (options?.addSuffix) {
     /**
      * Append genitive case
      */
-    var words = result.split(' ')
-    var lastword = words.pop()
+    const words = result.split(' ')
+    const lastword = words.pop()
     result = words.join(' ')
     switch (lastword) {
       case 'секунд':
@@ -127,7 +136,8 @@ export default function formatDistance(token, count, options) {
       default:
         result += lastword + '-н'
     }
-    if (options.comparison > 0) {
+
+    if (options.comparison && options.comparison > 0) {
       return result + ' дараа'
     } else {
       return result + ' өмнө'
@@ -136,3 +146,5 @@ export default function formatDistance(token, count, options) {
 
   return result
 }
+
+export default formatDistance
