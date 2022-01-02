@@ -1,23 +1,43 @@
+import type { Quarter } from '../../../../types'
+import type { Localize, LocalizeFn } from '../../../types'
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
-var eraValues = {
-  narrow: ['C', 'O'],
-  abbreviated: ['CC', 'OC'],
-  wide: ['Cyn Crist', 'Ar ôl Crist']
+const eraValues = {
+  narrow: ['C', 'O'] as const,
+  abbreviated: ['CC', 'OC'] as const,
+  wide: ['Cyn Crist', 'Ar ôl Crist'] as const,
 }
 
-var quarterValues = {
-  narrow: ['1', '2', '3', '4'],
-  abbreviated: ['Ch1', 'Ch2', 'Ch3', 'Ch4'],
-  wide: ['Chwarter 1af', '2ail chwarter', '3ydd chwarter', '4ydd chwarter']
+const quarterValues = {
+  narrow: ['1', '2', '3', '4'] as const,
+  abbreviated: ['Ch1', 'Ch2', 'Ch3', 'Ch4'] as const,
+  wide: [
+    'Chwarter 1af',
+    '2ail chwarter',
+    '3ydd chwarter',
+    '4ydd chwarter',
+  ] as const,
 }
 
 // Note: in English, the names of days of the week and months are capitalized.
 // If you are making a new locale based on this one, check if the same is true for the language you're working on.
 // Generally, formatted dates should look like they are in the middle of a sentence,
 // e.g. in Spanish language the weekdays and months should be in the lowercase.
-var monthValues = {
-  narrow: ['I', 'Ch', 'Ma', 'E', 'Mi', 'Me', 'G', 'A', 'Md', 'H', 'T', 'Rh'],
+const monthValues = {
+  narrow: [
+    'I',
+    'Ch',
+    'Ma',
+    'E',
+    'Mi',
+    'Me',
+    'G',
+    'A',
+    'Md',
+    'H',
+    'T',
+    'Rh',
+  ] as const,
   abbreviated: [
     'Ion',
     'Chwe',
@@ -30,8 +50,8 @@ var monthValues = {
     'Med',
     'Hyd',
     'Tach',
-    'Rhag'
-  ],
+    'Rhag',
+  ] as const,
   wide: [
     'Ionawr',
     'Chwefror',
@@ -44,14 +64,14 @@ var monthValues = {
     'Medi',
     'Hydref',
     'Tachwedd',
-    'Rhagfyr'
-  ]
+    'Rhagfyr',
+  ] as const,
 }
 
-var dayValues = {
-  narrow: ['S', 'Ll', 'M', 'M', 'I', 'G', 'S'],
-  short: ['Su', 'Ll', 'Ma', 'Me', 'Ia', 'Gw', 'Sa'],
-  abbreviated: ['Sul', 'Llun', 'Maw', 'Mer', 'Iau', 'Gwe', 'Sad'],
+const dayValues = {
+  narrow: ['S', 'Ll', 'M', 'M', 'I', 'G', 'S'] as const,
+  short: ['Su', 'Ll', 'Ma', 'Me', 'Ia', 'Gw', 'Sa'] as const,
+  abbreviated: ['Sul', 'Llun', 'Maw', 'Mer', 'Iau', 'Gwe', 'Sad'] as const,
   wide: [
     'dydd Sul',
     'dydd Llun',
@@ -59,11 +79,11 @@ var dayValues = {
     'dydd Mercher',
     'dydd Iau',
     'dydd Gwener',
-    'dydd Sadwrn'
-  ]
+    'dydd Sadwrn',
+  ] as const,
 }
 
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'b',
     pm: 'h',
@@ -72,7 +92,7 @@ var dayPeriodValues = {
     morning: 'bore',
     afternoon: 'prynhawn',
     evening: "gyda'r nos",
-    night: 'nos'
+    night: 'nos',
   },
   abbreviated: {
     am: 'yb',
@@ -82,7 +102,7 @@ var dayPeriodValues = {
     morning: 'bore',
     afternoon: 'prynhawn',
     evening: "gyda'r nos",
-    night: 'nos'
+    night: 'nos',
   },
   wide: {
     am: 'y.b.',
@@ -92,10 +112,11 @@ var dayPeriodValues = {
     morning: 'bore',
     afternoon: 'prynhawn',
     evening: "gyda'r nos",
-    night: 'nos'
-  }
+    night: 'nos',
+  },
 }
-var formattingDayPeriodValues = {
+
+const formattingDayPeriodValues = {
   narrow: {
     am: 'b',
     pm: 'h',
@@ -104,7 +125,7 @@ var formattingDayPeriodValues = {
     morning: 'yn y bore',
     afternoon: 'yn y prynhawn',
     evening: "gyda'r nos",
-    night: 'yn y nos'
+    night: 'yn y nos',
   },
   abbreviated: {
     am: 'yb',
@@ -114,7 +135,7 @@ var formattingDayPeriodValues = {
     morning: 'yn y bore',
     afternoon: 'yn y prynhawn',
     evening: "gyda'r nos",
-    night: 'yn y nos'
+    night: 'yn y nos',
   },
   wide: {
     am: 'y.b.',
@@ -124,12 +145,15 @@ var formattingDayPeriodValues = {
     morning: 'yn y bore',
     afternoon: 'yn y prynhawn',
     evening: "gyda'r nos",
-    night: 'yn y nos'
-  }
+    night: 'yn y nos',
+  },
 }
 
-function ordinalNumber(dirtyNumber, _dirtyOptions) {
-  var number = Number(dirtyNumber)
+const ordinalNumber: LocalizeFn<number, undefined> = (
+  dirtyNumber,
+  _options
+) => {
+  const number = Number(dirtyNumber)
 
   if (number < 20) {
     switch (number) {
@@ -167,38 +191,36 @@ function ordinalNumber(dirtyNumber, _dirtyOptions) {
   return number + 'ain'
 }
 
-var localize = {
-  ordinalNumber: ordinalNumber,
+const localize: Localize = {
+  ordinalNumber,
 
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
-      return Number(quarter) - 1
-    }
+    argumentCallback: (quarter) => (quarter - 1) as Quarter,
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize
