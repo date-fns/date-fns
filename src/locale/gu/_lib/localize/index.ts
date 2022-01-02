@@ -1,19 +1,21 @@
+import type { Quarter } from '../../../../types'
+import type { Localize, LocalizeFn } from '../../../types'
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
 // https://www.unicode.org/cldr/charts/32/summary/gu.html
 // #1621 - #1630
-var eraValues = {
-  narrow: ['ઈસપૂ', 'ઈસ'],
-  abbreviated: ['ઈ.સ.પૂર્વે', 'ઈ.સ.'],
-  wide: ['ઈસવીસન પૂર્વે', 'ઈસવીસન']
+const eraValues = {
+  narrow: ['ઈસપૂ', 'ઈસ'] as const,
+  abbreviated: ['ઈ.સ.પૂર્વે', 'ઈ.સ.'] as const,
+  wide: ['ઈસવીસન પૂર્વે', 'ઈસવીસન'] as const,
 }
 
 // https://www.unicode.org/cldr/charts/32/summary/gu.html
 // #1631 - #1654
-var quarterValues = {
-  narrow: ['1', '2', '3', '4'],
-  abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
-  wide: ['1લો ત્રિમાસ', '2જો ત્રિમાસ', '3જો ત્રિમાસ', '4થો ત્રિમાસ']
+const quarterValues = {
+  narrow: ['1', '2', '3', '4'] as const,
+  abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'] as const,
+  wide: ['1લો ત્રિમાસ', '2જો ત્રિમાસ', '3જો ત્રિમાસ', '4થો ત્રિમાસ'] as const,
 }
 
 // Note: in English, the names of days of the week and months are capitalized.
@@ -23,8 +25,21 @@ var quarterValues = {
 
 // https://www.unicode.org/cldr/charts/32/summary/gu.html
 // #1655 - #1726
-var monthValues = {
-  narrow: ['જા', 'ફે', 'મા', 'એ', 'મે', 'જૂ', 'જુ', 'ઓ', 'સ', 'ઓ', 'ન', 'ડિ'],
+const monthValues = {
+  narrow: [
+    'જા',
+    'ફે',
+    'મા',
+    'એ',
+    'મે',
+    'જૂ',
+    'જુ',
+    'ઓ',
+    'સ',
+    'ઓ',
+    'ન',
+    'ડિ',
+  ] as const,
   abbreviated: [
     'જાન્યુ',
     'ફેબ્રુ',
@@ -37,8 +52,8 @@ var monthValues = {
     'સપ્ટે',
     'ઓક્ટો',
     'નવે',
-    'ડિસે'
-  ],
+    'ડિસે',
+  ] as const,
   wide: [
     'જાન્યુઆરી',
     'ફેબ્રુઆરી',
@@ -51,16 +66,16 @@ var monthValues = {
     'સપ્ટેમ્બર',
     'ઓક્ટોબર',
     'નવેમ્બર',
-    'ડિસેમ્બર'
-  ]
+    'ડિસેમ્બર',
+  ] as const,
 }
 
 // https://www.unicode.org/cldr/charts/32/summary/gu.html
 // #1727 - #1768
-var dayValues = {
-  narrow: ['ર', 'સો', 'મં', 'બુ', 'ગુ', 'શુ', 'શ'],
-  short: ['ર', 'સો', 'મં', 'બુ', 'ગુ', 'શુ', 'શ'],
-  abbreviated: ['રવિ', 'સોમ', 'મંગળ', 'બુધ', 'ગુરુ', 'શુક્ર', 'શનિ'],
+const dayValues = {
+  narrow: ['ર', 'સો', 'મં', 'બુ', 'ગુ', 'શુ', 'શ'] as const,
+  short: ['ર', 'સો', 'મં', 'બુ', 'ગુ', 'શુ', 'શ'] as const,
+  abbreviated: ['રવિ', 'સોમ', 'મંગળ', 'બુધ', 'ગુરુ', 'શુક્ર', 'શનિ'] as const,
   wide: [
     'રવિવાર' /* Sunday */,
     'સોમવાર' /* Monday */,
@@ -68,13 +83,13 @@ var dayValues = {
     'બુધવાર' /* Wednesday */,
     'ગુરુવાર' /* Thursday */,
     'શુક્રવાર' /* Friday */,
-    'શનિવાર' /* Saturday */
-  ]
+    'શનિવાર' /* Saturday */,
+  ] as const,
 }
 
 // https://www.unicode.org/cldr/charts/32/summary/gu.html
 // #1783 - #1824
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'AM',
     pm: 'PM',
@@ -83,7 +98,7 @@ var dayPeriodValues = {
     morning: 'સવારે',
     afternoon: 'બપોરે',
     evening: 'સાંજે',
-    night: 'રાત્રે'
+    night: 'રાત્રે',
   },
   abbreviated: {
     am: 'AM',
@@ -93,7 +108,7 @@ var dayPeriodValues = {
     morning: 'સવારે',
     afternoon: 'બપોરે',
     evening: 'સાંજે',
-    night: 'રાત્રે'
+    night: 'રાત્રે',
   },
   wide: {
     am: 'AM',
@@ -103,10 +118,11 @@ var dayPeriodValues = {
     morning: 'સવારે',
     afternoon: 'બપોરે',
     evening: 'સાંજે',
-    night: 'રાત્રે'
-  }
+    night: 'રાત્રે',
+  },
 }
-var formattingDayPeriodValues = {
+
+const formattingDayPeriodValues = {
   narrow: {
     am: 'AM',
     pm: 'PM',
@@ -115,7 +131,7 @@ var formattingDayPeriodValues = {
     morning: 'સવારે',
     afternoon: 'બપોરે',
     evening: 'સાંજે',
-    night: 'રાત્રે'
+    night: 'રાત્રે',
   },
   abbreviated: {
     am: 'AM',
@@ -125,7 +141,7 @@ var formattingDayPeriodValues = {
     morning: 'સવારે',
     afternoon: 'બપોરે',
     evening: 'સાંજે',
-    night: 'રાત્રે'
+    night: 'રાત્રે',
   },
   wide: {
     am: 'AM',
@@ -135,47 +151,47 @@ var formattingDayPeriodValues = {
     morning: 'સવારે',
     afternoon: 'બપોરે',
     evening: 'સાંજે',
-    night: 'રાત્રે'
-  }
+    night: 'રાત્રે',
+  },
 }
 
-function ordinalNumber(dirtyNumber, _dirtyOptions) {
-  var number = Number(dirtyNumber)
-  return number
+const ordinalNumber: LocalizeFn<number, undefined> = (
+  dirtyNumber,
+  _options
+) => {
+  return String(dirtyNumber)
 }
 
-var localize = {
-  ordinalNumber: ordinalNumber,
+const localize: Localize = {
+  ordinalNumber,
 
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
-      return Number(quarter) - 1
-    }
+    argumentCallback: (quarter) => (quarter - 1) as Quarter,
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize
