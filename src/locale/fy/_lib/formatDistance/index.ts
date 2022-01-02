@@ -1,4 +1,13 @@
-var formatDistanceLocale = {
+import type { FormatDistanceFn, FormatDistanceLocale } from '../../../types'
+
+type FormatDistanceTokenValue =
+  | string
+  | {
+      one: string
+      other: string
+    }
+
+const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   lessThanXSeconds: {
     one: 'minder as 1 sekonde',
     other: 'minder as {{count}} sekonden',
@@ -77,20 +86,20 @@ var formatDistanceLocale = {
   },
 }
 
-export default function formatDistance(token, count, options) {
-  options = options || {}
+const formatDistance: FormatDistanceFn = (token, count, options) => {
+  let result
 
-  var result
-  if (typeof formatDistanceLocale[token] === 'string') {
-    result = formatDistanceLocale[token]
+  const tokenValue = formatDistanceLocale[token]
+  if (typeof tokenValue === 'string') {
+    result = tokenValue
   } else if (count === 1) {
-    result = formatDistanceLocale[token].one
+    result = tokenValue.one
   } else {
-    result = formatDistanceLocale[token].other.replace('{{count}}', count)
+    result = tokenValue.other.replace('{{count}}', String(count))
   }
 
-  if (options.addSuffix) {
-    if (options.comparison > 0) {
+  if (options?.addSuffix) {
+    if (options.comparison && options.comparison > 0) {
       return 'oer ' + result
     } else {
       return result + ' lyn'
@@ -99,3 +108,5 @@ export default function formatDistance(token, count, options) {
 
   return result
 }
+
+export default formatDistance
