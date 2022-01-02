@@ -1,141 +1,148 @@
-function futureSeconds(text) {
+import type { FormatDistanceFn, FormatDistanceLocale } from '../../../types'
+
+type FormatDistanceTokenValue = {
+  one: string
+  other: string
+  // eslint-disable-next-line no-unused-vars
+  futureTense: (text: string) => string
+}
+
+function futureSeconds(text: string): string {
   return text.replace(/sekuntia?/, 'sekunnin')
 }
 
-function futureMinutes(text) {
+function futureMinutes(text: string): string {
   return text.replace(/minuuttia?/, 'minuutin')
 }
 
-function futureHours(text) {
+function futureHours(text: string): string {
   return text.replace(/tuntia?/, 'tunnin')
 }
 
-function futureDays(text) {
+function futureDays(text: string): string {
   return text.replace(/päivää?/, 'päivän')
 }
 
-function futureWeeks(text) {
+function futureWeeks(text: string): string {
   return text.replace(/(viikko|viikkoa)/, 'viikon')
 }
 
-function futureMonths(text) {
+function futureMonths(text: string): string {
   return text.replace(/(kuukausi|kuukautta)/, 'kuukauden')
 }
 
-function futureYears(text) {
+function futureYears(text: string): string {
   return text.replace(/(vuosi|vuotta)/, 'vuoden')
 }
 
-var formatDistanceLocale = {
+const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   lessThanXSeconds: {
     one: 'alle sekunti',
     other: 'alle {{count}} sekuntia',
-    futureTense: futureSeconds
+    futureTense: futureSeconds,
   },
 
   xSeconds: {
     one: 'sekunti',
     other: '{{count}} sekuntia',
-    futureTense: futureSeconds
+    futureTense: futureSeconds,
   },
 
   halfAMinute: {
     one: 'puoli minuuttia',
     other: 'puoli minuuttia',
-    futureTense: function(_text) {
-      return 'puolen minuutin'
-    }
+    futureTense: (_text) => 'puolen minuutin',
   },
 
   lessThanXMinutes: {
     one: 'alle minuutti',
     other: 'alle {{count}} minuuttia',
-    futureTense: futureMinutes
+    futureTense: futureMinutes,
   },
 
   xMinutes: {
     one: 'minuutti',
     other: '{{count}} minuuttia',
-    futureTense: futureMinutes
+    futureTense: futureMinutes,
   },
 
   aboutXHours: {
     one: 'noin tunti',
     other: 'noin {{count}} tuntia',
-    futureTense: futureHours
+    futureTense: futureHours,
   },
 
   xHours: {
     one: 'tunti',
     other: '{{count}} tuntia',
-    futureTense: futureHours
+    futureTense: futureHours,
   },
 
   xDays: {
     one: 'päivä',
     other: '{{count}} päivää',
-    futureTense: futureDays
+    futureTense: futureDays,
   },
 
   aboutXWeeks: {
     one: 'noin viikko',
     other: 'noin {{count}} viikkoa',
-    futureTense: futureWeeks
+    futureTense: futureWeeks,
   },
 
   xWeeks: {
     one: 'viikko',
     other: '{{count}} viikkoa',
-    futureTense: futureWeeks
+    futureTense: futureWeeks,
   },
 
   aboutXMonths: {
     one: 'noin kuukausi',
     other: 'noin {{count}} kuukautta',
-    futureTense: futureMonths
+    futureTense: futureMonths,
   },
 
   xMonths: {
     one: 'kuukausi',
     other: '{{count}} kuukautta',
-    futureTense: futureMonths
+    futureTense: futureMonths,
   },
 
   aboutXYears: {
     one: 'noin vuosi',
     other: 'noin {{count}} vuotta',
-    futureTense: futureYears
+    futureTense: futureYears,
   },
 
   xYears: {
     one: 'vuosi',
     other: '{{count}} vuotta',
-    futureTense: futureYears
+    futureTense: futureYears,
   },
 
   overXYears: {
     one: 'yli vuosi',
     other: 'yli {{count}} vuotta',
-    futureTense: futureYears
+    futureTense: futureYears,
   },
 
   almostXYears: {
     one: 'lähes vuosi',
     other: 'lähes {{count}} vuotta',
-    futureTense: futureYears
-  }
+    futureTense: futureYears,
+  },
 }
 
-export default function formatDistance(token, count, options) {
-  options = options || {}
+const formatDistance: FormatDistanceFn = (token, count, options) => {
+  const tokenValue = formatDistanceLocale[token]
+  let result =
+    count === 1
+      ? tokenValue.one
+      : tokenValue.other.replace('{{count}}', String(count))
 
-  var distance = formatDistanceLocale[token]
-  var result =
-    count === 1 ? distance.one : distance.other.replace('{{count}}', count)
-
-  if (options.addSuffix) {
-    if (options.comparison > 0) {
-      return distance.futureTense(result) + ' kuluttua'
+  if (options?.addSuffix) {
+    if (options.comparison && options.comparison > 0) {
+      return tokenValue.futureTense(result) + ' kuluttua'
     } else {
       return result + ' sitten'
     }
@@ -143,3 +150,5 @@ export default function formatDistance(token, count, options) {
 
   return result
 }
+
+export default formatDistance
