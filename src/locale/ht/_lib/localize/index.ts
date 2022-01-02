@@ -1,19 +1,21 @@
+import type { Quarter } from '../../../../types'
+import type { Localize, LocalizeFn } from '../../../types'
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
-var eraValues = {
-  narrow: ['av. J.-K', 'ap. J.-K'],
-  abbreviated: ['av. J.-K', 'ap. J.-K'],
-  wide: ['anvan Jezi Kris', 'apre Jezi Kris'],
+const eraValues = {
+  narrow: ['av. J.-K', 'ap. J.-K'] as const,
+  abbreviated: ['av. J.-K', 'ap. J.-K'] as const,
+  wide: ['anvan Jezi Kris', 'apre Jezi Kris'] as const,
 }
 
-var quarterValues = {
-  narrow: ['T1', 'T2', 'T3', 'T4'],
-  abbreviated: ['1ye trim.', '2yèm trim.', '3yèm trim.', '4yèm trim.'],
-  wide: ['1ye trimès', '2yèm trimès', '3yèm trimès', '4yèm trimès'],
+const quarterValues = {
+  narrow: ['T1', 'T2', 'T3', 'T4'] as const,
+  abbreviated: ['1ye trim.', '2yèm trim.', '3yèm trim.', '4yèm trim.'] as const,
+  wide: ['1ye trimès', '2yèm trimès', '3yèm trimès', '4yèm trimès'] as const,
 }
 
-var monthValues = {
-  narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'O', 'S', 'O', 'N', 'D'],
+const monthValues = {
+  narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'O', 'S', 'O', 'N', 'D'] as const,
   abbreviated: [
     'janv.',
     'fevr.',
@@ -27,7 +29,7 @@ var monthValues = {
     'okt.',
     'nov.',
     'des.',
-  ],
+  ] as const,
   wide: [
     'janvye',
     'fevrye',
@@ -41,17 +43,33 @@ var monthValues = {
     'oktòb',
     'novanm',
     'desanm',
-  ],
+  ] as const,
 }
 
-var dayValues = {
-  narrow: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
-  short: ['di', 'le', 'ma', 'mè', 'je', 'va', 'sa'],
-  abbreviated: ['dim.', 'len.', 'mad.', 'mèk.', 'jed.', 'van.', 'sam.'],
-  wide: ['dimanch', 'lendi', 'madi', 'mèkredi', 'jedi', 'vandredi', 'samdi'],
+const dayValues = {
+  narrow: ['D', 'L', 'M', 'M', 'J', 'V', 'S'] as const,
+  short: ['di', 'le', 'ma', 'mè', 'je', 'va', 'sa'] as const,
+  abbreviated: [
+    'dim.',
+    'len.',
+    'mad.',
+    'mèk.',
+    'jed.',
+    'van.',
+    'sam.',
+  ] as const,
+  wide: [
+    'dimanch',
+    'lendi',
+    'madi',
+    'mèkredi',
+    'jedi',
+    'vandredi',
+    'samdi',
+  ] as const,
 }
 
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'AM',
     pm: 'PM',
@@ -84,36 +102,21 @@ var dayPeriodValues = {
   },
 }
 
-function ordinalNumber(dirtyNumber, dirtyOptions) {
-  var number = Number(dirtyNumber)
+const ordinalNumber: LocalizeFn<number, undefined> = (
+  dirtyNumber,
+  _options
+) => {
+  const number = Number(dirtyNumber)
 
-  var options = dirtyOptions || {}
-  var unit = String(options.unit)
-  var suffix
+  if (number === 0) return String(number)
 
-  if (number === 0) {
-    return number
-  }
-
-  if (unit === 'year' || unit === 'hour' || unit === 'week') {
-    if (number === 1) {
-      suffix = 'ye'
-    } else {
-      suffix = 'yèm'
-    }
-  } else {
-    if (number === 1) {
-      suffix = 'ye'
-    } else {
-      suffix = 'yèm'
-    }
-  }
+  const suffix = number === 1 ? 'ye' : 'yèm'
 
   return number + suffix
 }
 
-var localize = {
-  ordinalNumber: ordinalNumber,
+const localize: Localize = {
+  ordinalNumber,
 
   era: buildLocalizeFn({
     values: eraValues,
@@ -123,9 +126,7 @@ var localize = {
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function (quarter) {
-      return Number(quarter) - 1
-    },
+    argumentCallback: (quarter) => (quarter - 1) as Quarter,
   }),
 
   month: buildLocalizeFn({
