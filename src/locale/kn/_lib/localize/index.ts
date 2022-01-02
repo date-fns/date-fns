@@ -1,22 +1,42 @@
-// Reference: https://www.unicode.org/cldr/charts/32/summary/kn.html
-
+import type { Quarter } from '../../../../types'
+import type { Localize, LocalizeFn } from '../../../types'
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
-var eraValues = {
-  narrow: ['ಕ್ರಿ.ಪೂ', 'ಕ್ರಿ.ಶ'],
-  abbreviated: ['ಕ್ರಿ.ಪೂ', 'ಕ್ರಿ.ಶ'], // CLDR #1618, #1620
-  wide: ['ಕ್ರಿಸ್ತ ಪೂರ್ವ', 'ಕ್ರಿಸ್ತ ಶಕ'] // CLDR #1614, #1616
+// Reference: https://www.unicode.org/cldr/charts/32/summary/kn.html
+
+const eraValues = {
+  narrow: ['ಕ್ರಿ.ಪೂ', 'ಕ್ರಿ.ಶ'] as const,
+  abbreviated: ['ಕ್ರಿ.ಪೂ', 'ಕ್ರಿ.ಶ'] as const, // CLDR #1618, #1620
+  wide: ['ಕ್ರಿಸ್ತ ಪೂರ್ವ', 'ಕ್ರಿಸ್ತ ಶಕ'] as const, // CLDR #1614, #1616
 }
 
-var quarterValues = {
-  narrow: ['1', '2', '3', '4'],
-  abbreviated: ['ತ್ರೈ 1', 'ತ್ರೈ 2', 'ತ್ರೈ 3', 'ತ್ರೈ 4'], // CLDR #1630 - #1638
-  wide: ['1ನೇ ತ್ರೈಮಾಸಿಕ', '2ನೇ ತ್ರೈಮಾಸಿಕ', '3ನೇ ತ್ರೈಮಾಸಿಕ', '4ನೇ ತ್ರೈಮಾಸಿಕ'] // CLDR #1622 - #1629
+const quarterValues = {
+  narrow: ['1', '2', '3', '4'] as const,
+  abbreviated: ['ತ್ರೈ 1', 'ತ್ರೈ 2', 'ತ್ರೈ 3', 'ತ್ರೈ 4'] as const, // CLDR #1630 - #1638
+  wide: [
+    '1ನೇ ತ್ರೈಮಾಸಿಕ',
+    '2ನೇ ತ್ರೈಮಾಸಿಕ',
+    '3ನೇ ತ್ರೈಮಾಸಿಕ',
+    '4ನೇ ತ್ರೈಮಾಸಿಕ',
+  ] as const, // CLDR #1622 - #1629
 }
 
 // CLDR #1646 - #1717
-var monthValues = {
-  narrow: ['ಜ', 'ಫೆ', 'ಮಾ', 'ಏ', 'ಮೇ', 'ಜೂ', 'ಜು', 'ಆ', 'ಸೆ', 'ಅ', 'ನ', 'ಡಿ'],
+const monthValues = {
+  narrow: [
+    'ಜ',
+    'ಫೆ',
+    'ಮಾ',
+    'ಏ',
+    'ಮೇ',
+    'ಜೂ',
+    'ಜು',
+    'ಆ',
+    'ಸೆ',
+    'ಅ',
+    'ನ',
+    'ಡಿ',
+  ] as const,
   abbreviated: [
     'ಜನ',
     'ಫೆಬ್ರ',
@@ -29,8 +49,8 @@ var monthValues = {
     'ಸೆಪ್ಟೆಂ',
     'ಅಕ್ಟೋ',
     'ನವೆಂ',
-    'ಡಿಸೆಂ'
-  ],
+    'ಡಿಸೆಂ',
+  ] as const,
   wide: [
     'ಜನವರಿ',
     'ಫೆಬ್ರವರಿ',
@@ -43,15 +63,15 @@ var monthValues = {
     'ಸೆಪ್ಟೆಂಬರ್',
     'ಅಕ್ಟೋಬರ್',
     'ನವೆಂಬರ್',
-    'ಡಿಸೆಂಬರ್'
-  ]
+    'ಡಿಸೆಂಬರ್',
+  ] as const,
 }
 
 // CLDR #1718 - #1773
-var dayValues = {
-  narrow: ['ಭಾ', 'ಸೋ', 'ಮಂ', 'ಬು', 'ಗು', 'ಶು', 'ಶ'],
-  short: ['ಭಾನು', 'ಸೋಮ', 'ಮಂಗಳ', 'ಬುಧ', 'ಗುರು', 'ಶುಕ್ರ', 'ಶನಿ'],
-  abbreviated: ['ಭಾನು', 'ಸೋಮ', 'ಮಂಗಳ', 'ಬುಧ', 'ಗುರು', 'ಶುಕ್ರ', 'ಶನಿ'],
+const dayValues = {
+  narrow: ['ಭಾ', 'ಸೋ', 'ಮಂ', 'ಬು', 'ಗು', 'ಶು', 'ಶ'] as const,
+  short: ['ಭಾನು', 'ಸೋಮ', 'ಮಂಗಳ', 'ಬುಧ', 'ಗುರು', 'ಶುಕ್ರ', 'ಶನಿ'] as const,
+  abbreviated: ['ಭಾನು', 'ಸೋಮ', 'ಮಂಗಳ', 'ಬುಧ', 'ಗುರು', 'ಶುಕ್ರ', 'ಶನಿ'] as const,
   wide: [
     'ಭಾನುವಾರ',
     'ಸೋಮವಾರ',
@@ -59,12 +79,12 @@ var dayValues = {
     'ಬುಧವಾರ',
     'ಗುರುವಾರ',
     'ಶುಕ್ರವಾರ',
-    'ಶನಿವಾರ'
-  ]
+    'ಶನಿವಾರ',
+  ] as const,
 }
 
 // CLDR #1774 - #1815
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'ಪೂರ್ವಾಹ್ನ',
     pm: 'ಅಪರಾಹ್ನ',
@@ -73,7 +93,7 @@ var dayPeriodValues = {
     morning: 'ಬೆಳಗ್ಗೆ',
     afternoon: 'ಮಧ್ಯಾಹ್ನ',
     evening: 'ಸಂಜೆ',
-    night: 'ರಾತ್ರಿ'
+    night: 'ರಾತ್ರಿ',
   },
   abbreviated: {
     am: 'ಪೂರ್ವಾಹ್ನ',
@@ -83,7 +103,7 @@ var dayPeriodValues = {
     morning: 'ಬೆಳಗ್ಗೆ',
     afternoon: 'ಮಧ್ಯಾನ್ಹ',
     evening: 'ಸಂಜೆ',
-    night: 'ರಾತ್ರಿ'
+    night: 'ರಾತ್ರಿ',
   },
   wide: {
     am: 'ಪೂರ್ವಾಹ್ನ',
@@ -93,10 +113,11 @@ var dayPeriodValues = {
     morning: 'ಬೆಳಗ್ಗೆ',
     afternoon: 'ಮಧ್ಯಾನ್ಹ',
     evening: 'ಸಂಜೆ',
-    night: 'ರಾತ್ರಿ'
-  }
+    night: 'ರಾತ್ರಿ',
+  },
 }
-var formattingDayPeriodValues = {
+
+const formattingDayPeriodValues = {
   narrow: {
     am: 'ಪೂ',
     pm: 'ಅ',
@@ -105,7 +126,7 @@ var formattingDayPeriodValues = {
     morning: 'ಬೆಳಗ್ಗೆ',
     afternoon: 'ಮಧ್ಯಾನ್ಹ',
     evening: 'ಸಂಜೆ',
-    night: 'ರಾತ್ರಿ'
+    night: 'ರಾತ್ರಿ',
   },
   abbreviated: {
     am: 'ಪೂರ್ವಾಹ್ನ',
@@ -115,7 +136,7 @@ var formattingDayPeriodValues = {
     morning: 'ಬೆಳಗ್ಗೆ',
     afternoon: 'ಮಧ್ಯಾನ್ಹ',
     evening: 'ಸಂಜೆ',
-    night: 'ರಾತ್ರಿ'
+    night: 'ರಾತ್ರಿ',
   },
   wide: {
     am: 'ಪೂರ್ವಾಹ್ನ',
@@ -125,47 +146,48 @@ var formattingDayPeriodValues = {
     morning: 'ಬೆಳಗ್ಗೆ',
     afternoon: 'ಮಧ್ಯಾನ್ಹ',
     evening: 'ಸಂಜೆ',
-    night: 'ರಾತ್ರಿ'
-  }
+    night: 'ರಾತ್ರಿ',
+  },
 }
 
-function ordinalNumber(dirtyNumber, _dirtyOptions) {
-  var number = Number(dirtyNumber)
+const ordinalNumber: LocalizeFn<number, undefined> = (
+  dirtyNumber,
+  _options
+) => {
+  const number = Number(dirtyNumber)
   return number + 'ನೇ'
 }
 
-var localize = {
-  ordinalNumber: ordinalNumber,
+const localize: Localize = {
+  ordinalNumber,
 
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
-      return Number(quarter) - 1
-    }
+    argumentCallback: (quarter) => (quarter - 1) as Quarter,
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize
