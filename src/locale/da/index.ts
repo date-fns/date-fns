@@ -1,3 +1,4 @@
+import type { Locale } from '../types'
 import formatDistance from './_lib/formatDistance/index'
 import formatLong from './_lib/formatLong/index'
 import formatRelative from './_lib/formatRelative/index'
@@ -15,7 +16,7 @@ import match from './_lib/match/index'
  * @author [@kgram]{@link https://github.com/kgram}
  * @author [@stefanbugge]{@link https://github.com/stefanbugge}
  */
-var locale = {
+const locale: Locale = {
   code: 'da',
   formatDistance: formatDistance,
   formatLong: formatLong,
@@ -24,8 +25,8 @@ var locale = {
   match: match,
   options: {
     weekStartsOn: 1 /* Monday */,
-    firstWeekContainsDate: 4
-  }
+    firstWeekContainsDate: 4,
+  },
 }
 
 export default locale
