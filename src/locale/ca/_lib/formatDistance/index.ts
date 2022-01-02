@@ -1,3 +1,5 @@
+import type { FormatDistanceFn, FormatDistanceLocale } from '../../../types'
+
 /**
  * Davant de les xifres que es diuen amb vocal inicial, 1 i 11, s'apostrofen els articles el i la i la preposició de igual que si estiguessin escrits amb lletres.
  *    l'1 de juliol ('l'u')
@@ -8,16 +10,25 @@
  *
  * Reference: https://aplicacions.llengua.gencat.cat/llc/AppJava/index.html?input_cercar=apostrofaci%25F3+davant+xifres&action=Principal&method=detall_completa&numPagina=1&idHit=11236&database=FITXES_PUB&tipusFont=Fitxes%20de%20l%27Optimot&idFont=11236&titol=apostrofaci%F3%20davant%20de%20xifres%20%2F%20apostrofaci%F3%20davant%20de%201%20i%2011&numeroResultat=1&clickLink=detall&tipusCerca=cerca.normes
  */
-var formatDistanceLocale = {
+
+type FormatDistanceTokenValue =
+  | string
+  | {
+      one: string
+      eleven?: string
+      other: string
+    }
+
+const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   lessThanXSeconds: {
     one: "menys d'un segon",
     eleven: "menys d'onze segons",
-    other: 'menys de {{count}} segons'
+    other: 'menys de {{count}} segons',
   },
 
   xSeconds: {
     one: '1 segon',
-    other: '{{count}} segons'
+    other: '{{count}} segons',
   },
 
   halfAMinute: 'mig minut',
@@ -25,87 +36,87 @@ var formatDistanceLocale = {
   lessThanXMinutes: {
     one: "menys d'un minut",
     eleven: "menys d'onze minuts",
-    other: 'menys de {{count}} minuts'
+    other: 'menys de {{count}} minuts',
   },
 
   xMinutes: {
     one: '1 minut',
-    other: '{{count}} minuts'
+    other: '{{count}} minuts',
   },
 
   aboutXHours: {
     one: 'aproximadament una hora',
-    other: 'aproximadament {{count}} hores'
+    other: 'aproximadament {{count}} hores',
   },
 
   xHours: {
     one: '1 hora',
-    other: '{{count}} hores'
+    other: '{{count}} hores',
   },
 
   xDays: {
     one: '1 dia',
-    other: '{{count}} dies'
+    other: '{{count}} dies',
   },
 
   aboutXWeeks: {
     one: 'aproximadament una setmana',
-    other: 'aproximadament {{count}} setmanes'
+    other: 'aproximadament {{count}} setmanes',
   },
 
   xWeeks: {
     one: '1 setmana',
-    other: '{{count}} setmanes'
+    other: '{{count}} setmanes',
   },
 
   aboutXMonths: {
     one: 'aproximadament un mes',
-    other: 'aproximadament {{count}} mesos'
+    other: 'aproximadament {{count}} mesos',
   },
 
   xMonths: {
     one: '1 mes',
-    other: '{{count}} mesos'
+    other: '{{count}} mesos',
   },
 
   aboutXYears: {
     one: 'aproximadament un any',
-    other: 'aproximadament {{count}} anys'
+    other: 'aproximadament {{count}} anys',
   },
 
   xYears: {
     one: '1 any',
-    other: '{{count}} anys'
+    other: '{{count}} anys',
   },
 
   overXYears: {
     one: "més d'un any",
     eleven: "més d'onze anys",
-    other: 'més de {{count}} anys'
+    other: 'més de {{count}} anys',
   },
 
   almostXYears: {
     one: 'gairebé un any',
-    other: 'gairebé {{count}} anys'
-  }
+    other: 'gairebé {{count}} anys',
+  },
 }
 
-export default function formatDistance(token, count, options) {
-  options = options || {}
+const formatDistance: FormatDistanceFn = (token, count, options) => {
+  let result
 
-  var result
-  if (typeof formatDistanceLocale[token] === 'string') {
-    result = formatDistanceLocale[token]
+  const tokenValue = formatDistanceLocale[token]
+  if (typeof tokenValue === 'string') {
+    result = tokenValue
   } else if (count === 1) {
-    result = formatDistanceLocale[token].one
-  } else if (count === 11 && formatDistanceLocale[token].eleven) {
-    result = formatDistanceLocale[token].eleven
+    result = tokenValue.one
+  } else if (count === 11 && tokenValue.eleven) {
+    result = tokenValue.eleven
   } else {
-    result = formatDistanceLocale[token].other.replace('{{count}}', count)
+    result = tokenValue.other.replace('{{count}}', String(count))
   }
 
-  if (options.addSuffix) {
-    if (options.comparison > 0) {
+  if (options?.addSuffix) {
+    if (options.comparison && options.comparison > 0) {
       return 'en ' + result
     } else {
       return 'fa ' + result
@@ -114,3 +125,5 @@ export default function formatDistance(token, count, options) {
 
   return result
 }
+
+export default formatDistance

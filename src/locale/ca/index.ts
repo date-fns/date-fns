@@ -1,3 +1,4 @@
+import type { Locale } from '../types'
 import formatDistance from './_lib/formatDistance/index'
 import formatLong from './_lib/formatLong/index'
 import formatRelative from './_lib/formatRelative/index'
@@ -13,7 +14,7 @@ import match from './_lib/match/index'
  * @author Guillermo Grau [@guigrpa]{@link https://github.com/guigrpa}
  * @author Alex Vizcaino [@avizcaino]{@link https://github.com/avizcaino}
  */
-var locale = {
+const locale: Locale = {
   code: 'ca',
   formatDistance: formatDistance,
   formatLong: formatLong,
@@ -22,8 +23,8 @@ var locale = {
   match: match,
   options: {
     weekStartsOn: 1 /* Monday */,
-    firstWeekContainsDate: 4
-  }
+    firstWeekContainsDate: 4,
+  },
 }
 
 export default locale

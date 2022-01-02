@@ -1,3 +1,5 @@
+import type { Quarter } from '../../../../types'
+import type { Localize, LocalizeFn } from '../../../types'
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
 /**
@@ -10,16 +12,21 @@ import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
  * Abans de Crist: https://aplicacions.llengua.gencat.cat/llc/AppJava/index.html?input_cercar=abans+de+crist&action=Principal&method=detall_completa&numPagina=1&idHit=6876&database=FITXES_PUB&tipusFont=Fitxes%20de%20l%27Optimot&idFont=6876&titol=abans%20de%20Crist%20(abreviatura)%20/%20abans%20de%20Crist%20(sigla)&numeroResultat=1&clickLink=detall&tipusCerca=cerca.fitxes
  * Desprest de Crist: https://aplicacions.llengua.gencat.cat/llc/AppJava/index.html?input_cercar=despr%E9s+de+crist&action=Principal&method=detall_completa&numPagina=1&idHit=6879&database=FITXES_PUB&tipusFont=Fitxes%20de%20l%27Optimot&idFont=6879&titol=despr%E9s%20de%20Crist%20(sigla)%20/%20despr%E9s%20de%20Crist%20(abreviatura)&numeroResultat=1&clickLink=detall&tipusCerca=cerca.fitxes
  */
-var eraValues = {
-  narrow: ['aC', 'dC'],
-  abbreviated: ['a. de C.', 'd. de C.'],
-  wide: ['abans de Crist', 'després de Crist']
+const eraValues = {
+  narrow: ['aC', 'dC'] as const,
+  abbreviated: ['a. de C.', 'd. de C.'] as const,
+  wide: ['abans de Crist', 'després de Crist'] as const,
 }
 
-var quarterValues = {
-  narrow: ['1', '2', '3', '4'],
-  abbreviated: ['T1', 'T2', 'T3', 'T4'],
-  wide: ['1r trimestre', '2n trimestre', '3r trimestre', '4t trimestre']
+const quarterValues = {
+  narrow: ['1', '2', '3', '4'] as const,
+  abbreviated: ['T1', 'T2', 'T3', 'T4'] as const,
+  wide: [
+    '1r trimestre',
+    '2n trimestre',
+    '3r trimestre',
+    '4t trimestre',
+  ] as const,
 }
 
 /**
@@ -28,7 +35,7 @@ var quarterValues = {
  *
  * Reference: https://aplicacions.llengua.gencat.cat/llc/AppJava/index.html?input_cercar=abreviacions+mesos&action=Principal&method=detall_completa&numPagina=1&idHit=8402&database=FITXES_PUB&tipusFont=Fitxes%20de%20l%27Optimot&idFont=8402&titol=abreviatures%20dels%20mesos%20de%20l%27any&numeroResultat=5&clickLink=detall&tipusCerca=cerca.fitxes
  */
-var monthValues = {
+const monthValues = {
   narrow: [
     'GN',
     'FB',
@@ -41,8 +48,8 @@ var monthValues = {
     'ST',
     'OC',
     'NV',
-    'DS'
-  ],
+    'DS',
+  ] as const,
   /**
    * Les abreviatures dels mesos de l'any es formen seguint una de les normes generals de formació d'abreviatures.
    * S'escriu la primera síl·laba i les consonants de la síl·laba següent anteriors a la primera vocal.
@@ -60,8 +67,8 @@ var monthValues = {
     'set.',
     'oct.',
     'nov.',
-    'des.'
-  ],
+    'des.',
+  ] as const,
   wide: [
     'gener',
     'febrer',
@@ -74,8 +81,8 @@ var monthValues = {
     'setembre',
     'octubre',
     'novembre',
-    'desembre'
-  ]
+    'desembre',
+  ] as const,
 }
 
 /**
@@ -89,10 +96,10 @@ var monthValues = {
  *
  * Reference: https://aplicacions.llengua.gencat.cat/llc/AppJava/index.html?input_cercar=abreviatures+dies&action=Principal&method=detall_completa&numPagina=1&idHit=8387&database=FITXES_PUB&tipusFont=Fitxes%20de%20l%27Optimot&idFont=8387&titol=abreviatures%20dels%20dies%20de%20la%20setmana&numeroResultat=1&clickLink=detall&tipusCerca=cerca.tot
  */
-var dayValues = {
-  narrow: ['dg.', 'dl.', 'dt.', 'dm.', 'dj.', 'dv.', 'ds.'],
-  short: ['dg.', 'dl.', 'dt.', 'dm.', 'dj.', 'dv.', 'ds.'],
-  abbreviated: ['dg.', 'dl.', 'dt.', 'dm.', 'dj.', 'dv.', 'ds.'],
+const dayValues = {
+  narrow: ['dg.', 'dl.', 'dt.', 'dm.', 'dj.', 'dv.', 'ds.'] as const,
+  short: ['dg.', 'dl.', 'dt.', 'dm.', 'dj.', 'dv.', 'ds.'] as const,
+  abbreviated: ['dg.', 'dl.', 'dt.', 'dm.', 'dj.', 'dv.', 'ds.'] as const,
   wide: [
     'diumenge',
     'dilluns',
@@ -100,14 +107,14 @@ var dayValues = {
     'dimecres',
     'dijous',
     'divendres',
-    'dissabte'
-  ]
+    'dissabte',
+  ] as const,
 }
 
 /**
  * Reference: https://aplicacions.llengua.gencat.cat/llc/AppJava/index.html?action=Principal&method=detall&input_cercar=parts+del+dia&numPagina=1&database=FITXES_PUB&idFont=12801&idHit=12801&tipusFont=Fitxes+de+l%27Optimot&numeroResultat=1&databases_avansada=&categories_avansada=&clickLink=detall&titol=Nom+de+les+parts+del+dia&tematica=&tipusCerca=cerca.fitxes
  */
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'am',
     pm: 'pm',
@@ -116,7 +123,7 @@ var dayPeriodValues = {
     morning: 'matí',
     afternoon: 'tarda',
     evening: 'vespre',
-    night: 'nit'
+    night: 'nit',
   },
   abbreviated: {
     am: 'a.m.',
@@ -126,7 +133,7 @@ var dayPeriodValues = {
     morning: 'matí',
     afternoon: 'tarda',
     evening: 'vespre',
-    night: 'nit'
+    night: 'nit',
   },
   wide: {
     am: 'ante meridiem',
@@ -136,10 +143,11 @@ var dayPeriodValues = {
     morning: 'matí',
     afternoon: 'tarda',
     evening: 'vespre',
-    night: 'nit'
-  }
+    night: 'nit',
+  },
 }
-var formattingDayPeriodValues = {
+
+const formattingDayPeriodValues = {
   narrow: {
     am: 'am',
     pm: 'pm',
@@ -148,7 +156,7 @@ var formattingDayPeriodValues = {
     morning: 'del matí',
     afternoon: 'de la tarda',
     evening: 'del vespre',
-    night: 'de la nit'
+    night: 'de la nit',
   },
   abbreviated: {
     am: 'AM',
@@ -158,7 +166,7 @@ var formattingDayPeriodValues = {
     morning: 'del matí',
     afternoon: 'de la tarda',
     evening: 'del vespre',
-    night: 'de la nit'
+    night: 'de la nit',
   },
   wide: {
     am: 'ante meridiem',
@@ -168,8 +176,8 @@ var formattingDayPeriodValues = {
     morning: 'del matí',
     afternoon: 'de la tarda',
     evening: 'del vespre',
-    night: 'de la nit'
-  }
+    night: 'de la nit',
+  },
 }
 
 /**
@@ -177,13 +185,13 @@ var formattingDayPeriodValues = {
  * És optatiu posar punt després de la lletra.
  *
  * Reference: https://aplicacions.llengua.gencat.cat/llc/AppJava/pdf/abrevia.pdf#page=18
- *
- * @param {Number} dirtyNumber
- * @param {Object} [_dirtyOptions]
  */
-function ordinalNumber(dirtyNumber, _dirtyOptions) {
-  var number = Number(dirtyNumber)
-  var rem100 = number % 100
+const ordinalNumber: LocalizeFn<number, undefined> = (
+  dirtyNumber,
+  _options
+) => {
+  const number = Number(dirtyNumber)
+  const rem100 = number % 100
   if (rem100 > 20 || rem100 < 10) {
     switch (rem100 % 10) {
       case 1:
@@ -199,38 +207,36 @@ function ordinalNumber(dirtyNumber, _dirtyOptions) {
   return number + 'è'
 }
 
-var localize = {
-  ordinalNumber: ordinalNumber,
+const localize: Localize = {
+  ordinalNumber,
 
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
-      return Number(quarter) - 1
-    }
+    argumentCallback: (quarter) => (quarter - 1) as Quarter,
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize
