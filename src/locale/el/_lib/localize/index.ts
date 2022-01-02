@@ -1,19 +1,21 @@
+import type { Quarter } from '../../../../types'
+import type { Localize, LocalizeFn } from '../../../types'
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
-var eraValues = {
-  narrow: ['πΧ', 'μΧ'],
-  abbreviated: ['π.Χ.', 'μ.Χ.'],
-  wide: ['προ Χριστού', 'μετά Χριστόν']
+const eraValues = {
+  narrow: ['πΧ', 'μΧ'] as const,
+  abbreviated: ['π.Χ.', 'μ.Χ.'] as const,
+  wide: ['προ Χριστού', 'μετά Χριστόν'] as const,
 }
 
-var quarterValues = {
-  narrow: ['1', '2', '3', '4'],
-  abbreviated: ['Τ1', 'Τ2', 'Τ3', 'Τ4'],
-  wide: ['1ο τρίμηνο', '2ο τρίμηνο', '3ο τρίμηνο', '4ο τρίμηνο']
+const quarterValues = {
+  narrow: ['1', '2', '3', '4'] as const,
+  abbreviated: ['Τ1', 'Τ2', 'Τ3', 'Τ4'] as const,
+  wide: ['1ο τρίμηνο', '2ο τρίμηνο', '3ο τρίμηνο', '4ο τρίμηνο'] as const,
 }
 
-var monthValues = {
-  narrow: ['Ι', 'Φ', 'Μ', 'Α', 'Μ', 'Ι', 'Ι', 'Α', 'Σ', 'Ο', 'Ν', 'Δ'],
+const monthValues = {
+  narrow: ['Ι', 'Φ', 'Μ', 'Α', 'Μ', 'Ι', 'Ι', 'Α', 'Σ', 'Ο', 'Ν', 'Δ'] as const,
   abbreviated: [
     'Ιαν',
     'Φεβ',
@@ -26,8 +28,8 @@ var monthValues = {
     'Σεπ',
     'Οκτ',
     'Νοέ',
-    'Δεκ'
-  ],
+    'Δεκ',
+  ] as const,
   wide: [
     'Ιανουάριος',
     'Φεβρουάριος',
@@ -40,12 +42,12 @@ var monthValues = {
     'Σεπτέμβριος',
     'Οκτώβριος',
     'Νοέμβριος',
-    'Δεκέμβριος'
-  ]
+    'Δεκέμβριος',
+  ] as const,
 }
 
-var formattingMonthValues = {
-  narrow: ['Ι', 'Φ', 'Μ', 'Α', 'Μ', 'Ι', 'Ι', 'Α', 'Σ', 'Ο', 'Ν', 'Δ'],
+const formattingMonthValues = {
+  narrow: ['Ι', 'Φ', 'Μ', 'Α', 'Μ', 'Ι', 'Ι', 'Α', 'Σ', 'Ο', 'Ν', 'Δ'] as const,
   abbreviated: [
     'Ιαν',
     'Φεβ',
@@ -58,8 +60,8 @@ var formattingMonthValues = {
     'Σεπ',
     'Οκτ',
     'Νοε',
-    'Δεκ'
-  ],
+    'Δεκ',
+  ] as const,
   wide: [
     'Ιανουαρίου',
     'Φεβρουαρίου',
@@ -72,14 +74,14 @@ var formattingMonthValues = {
     'Σεπτεμβρίου',
     'Οκτωβρίου',
     'Νοεμβρίου',
-    'Δεκεμβρίου'
-  ]
+    'Δεκεμβρίου',
+  ] as const,
 }
 
-var dayValues = {
-  narrow: ['Κ', 'Δ', 'T', 'Τ', 'Π', 'Π', 'Σ'],
-  short: ['Κυ', 'Δε', 'Τρ', 'Τε', 'Πέ', 'Πα', 'Σά'],
-  abbreviated: ['Κυρ', 'Δευ', 'Τρί', 'Τετ', 'Πέμ', 'Παρ', 'Σάβ'],
+const dayValues = {
+  narrow: ['Κ', 'Δ', 'T', 'Τ', 'Π', 'Π', 'Σ'] as const,
+  short: ['Κυ', 'Δε', 'Τρ', 'Τε', 'Πέ', 'Πα', 'Σά'] as const,
+  abbreviated: ['Κυρ', 'Δευ', 'Τρί', 'Τετ', 'Πέμ', 'Παρ', 'Σάβ'] as const,
   wide: [
     'Κυριακή',
     'Δευτέρα',
@@ -87,11 +89,11 @@ var dayValues = {
     'Τετάρτη',
     'Πέμπτη',
     'Παρασκευή',
-    'Σάββατο'
-  ]
+    'Σάββατο',
+  ] as const,
 }
 
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'πμ',
     pm: 'μμ',
@@ -100,7 +102,7 @@ var dayPeriodValues = {
     morning: 'πρωί',
     afternoon: 'απόγευμα',
     evening: 'βράδυ',
-    night: 'νύχτα'
+    night: 'νύχτα',
   },
   abbreviated: {
     am: 'π.μ.',
@@ -110,7 +112,7 @@ var dayPeriodValues = {
     morning: 'πρωί',
     afternoon: 'απόγευμα',
     evening: 'βράδυ',
-    night: 'νύχτα'
+    night: 'νύχτα',
   },
   wide: {
     am: 'π.μ.',
@@ -120,14 +122,14 @@ var dayPeriodValues = {
     morning: 'πρωί',
     afternoon: 'απόγευμα',
     evening: 'βράδυ',
-    night: 'νύχτα'
-  }
+    night: 'νύχτα',
+  },
 }
 
-function ordinalNumber(dirtyNumber, dirtyOptions) {
-  var options = dirtyOptions || {}
-  var unit = String(options.unit)
-  var suffix
+const ordinalNumber: LocalizeFn<number, undefined> = (dirtyNumber, options) => {
+  const number = Number(dirtyNumber)
+  const unit = options?.unit
+  let suffix
 
   if (unit === 'year' || unit === 'month') {
     suffix = 'ος'
@@ -143,36 +145,39 @@ function ordinalNumber(dirtyNumber, dirtyOptions) {
     suffix = 'ο'
   }
 
-  return dirtyNumber + suffix
+  return number + suffix
 }
 
-var localize = {
-  ordinalNumber: ordinalNumber,
+const localize: Localize = {
+  ordinalNumber,
+
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
+
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
-      return Number(quarter) - 1
-    }
+    argumentCallback: (quarter) => (quarter - 1) as Quarter,
   }),
+
   month: buildLocalizeFn({
     values: monthValues,
     defaultWidth: 'wide',
     formattingValues: formattingMonthValues,
-    defaultFormattingWidth: 'wide'
+    defaultFormattingWidth: 'wide',
   }),
+
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
+
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
-    defaultWidth: 'wide'
-  })
+    defaultWidth: 'wide',
+  }),
 }
 
 export default localize

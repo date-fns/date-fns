@@ -1,39 +1,42 @@
+import type { FormatLong } from '../../../types'
 import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index'
 
-var dateFormats = {
+const dateFormats = {
   full: 'EEEE, d MMMM y',
   long: 'd MMMM y',
   medium: 'd MMM y',
-  short: 'd/M/yy'
+  short: 'd/M/yy',
 }
 
-var timeFormats = {
+const timeFormats = {
   full: 'h:mm:ss a zzzz',
   long: 'h:mm:ss a z',
   medium: 'h:mm:ss a',
-  short: 'h:mm a'
+  short: 'h:mm a',
 }
 
-var dateTimeFormats = {
+const dateTimeFormats = {
   full: '{{date}} - {{time}}',
   long: '{{date}} - {{time}}',
   medium: '{{date}}, {{time}}',
-  short: '{{date}}, {{time}}'
+  short: '{{date}}, {{time}}',
 }
 
-var formatLong = {
+const formatLong: FormatLong = {
   date: buildFormatLongFn({
     formats: dateFormats,
-    defaultWidth: 'full'
+    defaultWidth: 'full',
   }),
+
   time: buildFormatLongFn({
     formats: timeFormats,
-    defaultWidth: 'full'
+    defaultWidth: 'full',
   }),
+
   dateTime: buildFormatLongFn({
     formats: dateTimeFormats,
-    defaultWidth: 'full'
-  })
+    defaultWidth: 'full',
+  }),
 }
 
 export default formatLong

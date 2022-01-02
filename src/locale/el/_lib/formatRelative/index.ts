@@ -1,5 +1,7 @@
-var formatRelativeLocale = {
-  lastWeek: function(date) {
+import type { FormatRelativeFn } from '../../../types'
+
+const formatRelativeLocale = {
+  lastWeek: (date: Date) => {
     switch (date.getUTCDay()) {
       case 6: //Σάββατο
         return "'το προηγούμενο' eeee 'στις' p"
@@ -11,13 +13,14 @@ var formatRelativeLocale = {
   today: "'σήμερα στις' p",
   tomorrow: "'αύριο στις' p",
   nextWeek: "eeee 'στις' p",
-  other: 'P'
+  other: 'P',
 }
 
-export default function formatRelative(token, date, baseDate, options) {
-  var format = formatRelativeLocale[token]
+const formatRelative: FormatRelativeFn = (token, date) => {
+  const format = formatRelativeLocale[token]
 
-  if (typeof format === 'function') return format(date, baseDate, options)
+  if (typeof format === 'function') return format(date)
 
   return format
 }
+export default formatRelative
