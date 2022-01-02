@@ -1,19 +1,34 @@
+import type { Quarter } from '../../../../types'
+import type { Localize, LocalizeFn } from '../../../types'
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
-var eraValues = {
-  narrow: ['לפנה״ס', 'לספירה'],
-  abbreviated: ['לפנה״ס', 'לספירה'],
-  wide: ['לפני הספירה', 'לספירה']
+const eraValues = {
+  narrow: ['לפנה״ס', 'לספירה'] as const,
+  abbreviated: ['לפנה״ס', 'לספירה'] as const,
+  wide: ['לפני הספירה', 'לספירה'] as const,
 }
 
-var quarterValues = {
-  narrow: ['1', '2', '3', '4'],
-  abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
-  wide: ['רבעון 1', 'רבעון 2', 'רבעון 3', 'רבעון 4']
+const quarterValues = {
+  narrow: ['1', '2', '3', '4'] as const,
+  abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'] as const,
+  wide: ['רבעון 1', 'רבעון 2', 'רבעון 3', 'רבעון 4'] as const,
 }
 
-var monthValues = {
-  narrow: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+const monthValues = {
+  narrow: [
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '10',
+    '11',
+    '12',
+  ] as const,
   abbreviated: [
     'ינו׳',
     'פבר׳',
@@ -26,8 +41,8 @@ var monthValues = {
     'ספט׳',
     'אוק׳',
     'נוב׳',
-    'דצמ׳'
-  ],
+    'דצמ׳',
+  ] as const,
   wide: [
     'ינואר',
     'פברואר',
@@ -40,13 +55,13 @@ var monthValues = {
     'ספטמבר',
     'אוקטובר',
     'נובמבר',
-    'דצמבר'
-  ]
+    'דצמבר',
+  ] as const,
 }
 
-var dayValues = {
-  narrow: ['א׳', 'ב׳', 'ג׳', 'ד׳', 'ה׳', 'ו׳', 'ש׳'],
-  short: ['א׳', 'ב׳', 'ג׳', 'ד׳', 'ה׳', 'ו׳', 'ש׳'],
+const dayValues = {
+  narrow: ['א׳', 'ב׳', 'ג׳', 'ד׳', 'ה׳', 'ו׳', 'ש׳'] as const,
+  short: ['א׳', 'ב׳', 'ג׳', 'ד׳', 'ה׳', 'ו׳', 'ש׳'] as const,
   abbreviated: [
     'יום א׳',
     'יום ב׳',
@@ -54,8 +69,8 @@ var dayValues = {
     'יום ד׳',
     'יום ה׳',
     'יום ו׳',
-    'שבת'
-  ],
+    'שבת',
+  ] as const,
   wide: [
     'יום ראשון',
     'יום שני',
@@ -63,11 +78,11 @@ var dayValues = {
     'יום רביעי',
     'יום חמישי',
     'יום שישי',
-    'יום שבת'
-  ]
+    'יום שבת',
+  ] as const,
 }
 
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'לפנה״צ',
     pm: 'אחה״צ',
@@ -76,7 +91,7 @@ var dayPeriodValues = {
     morning: 'בוקר',
     afternoon: 'אחר הצהריים',
     evening: 'ערב',
-    night: 'לילה'
+    night: 'לילה',
   },
   abbreviated: {
     am: 'לפנה״צ',
@@ -86,7 +101,7 @@ var dayPeriodValues = {
     morning: 'בוקר',
     afternoon: 'אחר הצהריים',
     evening: 'ערב',
-    night: 'לילה'
+    night: 'לילה',
   },
   wide: {
     am: 'לפנה״צ',
@@ -96,10 +111,11 @@ var dayPeriodValues = {
     morning: 'בוקר',
     afternoon: 'אחר הצהריים',
     evening: 'ערב',
-    night: 'לילה'
-  }
+    night: 'לילה',
+  },
 }
-var formattingDayPeriodValues = {
+
+const formattingDayPeriodValues = {
   narrow: {
     am: 'לפנה״צ',
     pm: 'אחה״צ',
@@ -108,7 +124,7 @@ var formattingDayPeriodValues = {
     morning: 'בבוקר',
     afternoon: 'בצהריים',
     evening: 'בערב',
-    night: 'בלילה'
+    night: 'בלילה',
   },
   abbreviated: {
     am: 'לפנה״צ',
@@ -118,7 +134,7 @@ var formattingDayPeriodValues = {
     morning: 'בבוקר',
     afternoon: 'אחר הצהריים',
     evening: 'בערב',
-    night: 'בלילה'
+    night: 'בלילה',
   },
   wide: {
     am: 'לפנה״צ',
@@ -128,22 +144,21 @@ var formattingDayPeriodValues = {
     morning: 'בבוקר',
     afternoon: 'אחר הצהריים',
     evening: 'בערב',
-    night: 'בלילה'
-  }
+    night: 'בלילה',
+  },
 }
 
-function ordinalNumber(dirtyNumber, dirtyOptions) {
-  var number = Number(dirtyNumber)
+const ordinalNumber: LocalizeFn<number, undefined> = (dirtyNumber, options) => {
+  const number = Number(dirtyNumber)
 
   // We only show words till 10
-  if (number <= 0 || number > 10) return number
+  if (number <= 0 || number > 10) return String(number)
 
-  var options = dirtyOptions || {}
-  var unit = String(options.unit)
+  const unit = String(options?.unit)
 
-  var isFemale = ['year', 'hour', 'minute', 'second'].indexOf(unit) >= 0
+  const isFemale = ['year', 'hour', 'minute', 'second'].indexOf(unit) >= 0
 
-  var male = [
+  const male = [
     'ראשון',
     'שני',
     'שלישי',
@@ -153,9 +168,9 @@ function ordinalNumber(dirtyNumber, dirtyOptions) {
     'שביעי',
     'שמיני',
     'תשיעי',
-    'עשירי'
+    'עשירי',
   ]
-  var female = [
+  const female = [
     'ראשונה',
     'שנייה',
     'שלישית',
@@ -165,45 +180,43 @@ function ordinalNumber(dirtyNumber, dirtyOptions) {
     'שביעית',
     'שמינית',
     'תשיעית',
-    'עשירית'
+    'עשירית',
   ]
 
-  var index = number - 1
+  const index = number - 1
   return isFemale ? female[index] : male[index]
 }
 
-var localize = {
-  ordinalNumber: ordinalNumber,
+const localize: Localize = {
+  ordinalNumber,
 
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
-      return Number(quarter) - 1
-    }
+    argumentCallback: (quarter) => (quarter - 1) as Quarter,
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize
