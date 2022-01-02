@@ -1,19 +1,31 @@
+import type { Quarter } from '../../../../types'
+import type { Localize, LocalizeFn } from '../../../types'
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
-var eraValues = {
-  narrow: ['př. n. l.', 'n. l.'],
-  abbreviated: ['př. n. l.', 'n. l.'],
-  wide: ['před naším letopočtem', 'našeho letopočtu']
+const eraValues = {
+  narrow: ['př. n. l.', 'n. l.'] as const,
+  abbreviated: ['př. n. l.', 'n. l.'] as const,
+  wide: ['před naším letopočtem', 'našeho letopočtu'] as const,
 }
 
-var quarterValues = {
-  narrow: ['1', '2', '3', '4'],
-  abbreviated: ['1. čtvrtletí', '2. čtvrtletí', '3. čtvrtletí', '4. čtvrtletí'],
-  wide: ['1. čtvrtletí', '2. čtvrtletí', '3. čtvrtletí', '4. čtvrtletí']
+const quarterValues = {
+  narrow: ['1', '2', '3', '4'] as const,
+  abbreviated: [
+    '1. čtvrtletí',
+    '2. čtvrtletí',
+    '3. čtvrtletí',
+    '4. čtvrtletí',
+  ] as const,
+  wide: [
+    '1. čtvrtletí',
+    '2. čtvrtletí',
+    '3. čtvrtletí',
+    '4. čtvrtletí',
+  ] as const,
 }
 
-var monthValues = {
-  narrow: ['L', 'Ú', 'B', 'D', 'K', 'Č', 'Č', 'S', 'Z', 'Ř', 'L', 'P'],
+const monthValues = {
+  narrow: ['L', 'Ú', 'B', 'D', 'K', 'Č', 'Č', 'S', 'Z', 'Ř', 'L', 'P'] as const,
   abbreviated: [
     'led',
     'úno',
@@ -26,8 +38,8 @@ var monthValues = {
     'zář',
     'říj',
     'lis',
-    'pro'
-  ],
+    'pro',
+  ] as const,
   wide: [
     'leden',
     'únor',
@@ -40,11 +52,12 @@ var monthValues = {
     'září',
     'říjen',
     'listopad',
-    'prosinec'
-  ]
+    'prosinec',
+  ] as const,
 }
-var formattingMonthValues = {
-  narrow: ['L', 'Ú', 'B', 'D', 'K', 'Č', 'Č', 'S', 'Z', 'Ř', 'L', 'P'],
+
+const formattingMonthValues = {
+  narrow: ['L', 'Ú', 'B', 'D', 'K', 'Č', 'Č', 'S', 'Z', 'Ř', 'L', 'P'] as const,
   abbreviated: [
     'led',
     'úno',
@@ -57,8 +70,8 @@ var formattingMonthValues = {
     'zář',
     'říj',
     'lis',
-    'pro'
-  ],
+    'pro',
+  ] as const,
   wide: [
     'ledna',
     'února',
@@ -71,18 +84,26 @@ var formattingMonthValues = {
     'září',
     'října',
     'listopadu',
-    'prosince'
-  ]
+    'prosince',
+  ] as const,
 }
 
-var dayValues = {
-  narrow: ['ne', 'po', 'út', 'st', 'čt', 'pá', 'so'],
-  short: ['ne', 'po', 'út', 'st', 'čt', 'pá', 'so'],
-  abbreviated: ['ned', 'pon', 'úte', 'stř', 'čtv', 'pát', 'sob'],
-  wide: ['neděle', 'pondělí', 'úterý', 'středa', 'čtvrtek', 'pátek', 'sobota']
+const dayValues = {
+  narrow: ['ne', 'po', 'út', 'st', 'čt', 'pá', 'so'] as const,
+  short: ['ne', 'po', 'út', 'st', 'čt', 'pá', 'so'] as const,
+  abbreviated: ['ned', 'pon', 'úte', 'stř', 'čtv', 'pát', 'sob'] as const,
+  wide: [
+    'neděle',
+    'pondělí',
+    'úterý',
+    'středa',
+    'čtvrtek',
+    'pátek',
+    'sobota',
+  ] as const,
 }
 
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'dop.',
     pm: 'odp.',
@@ -91,7 +112,7 @@ var dayPeriodValues = {
     morning: 'ráno',
     afternoon: 'odpoledne',
     evening: 'večer',
-    night: 'noc'
+    night: 'noc',
   },
   abbreviated: {
     am: 'dop.',
@@ -101,7 +122,7 @@ var dayPeriodValues = {
     morning: 'ráno',
     afternoon: 'odpoledne',
     evening: 'večer',
-    night: 'noc'
+    night: 'noc',
   },
   wide: {
     am: 'dopoledne',
@@ -111,11 +132,11 @@ var dayPeriodValues = {
     morning: 'ráno',
     afternoon: 'odpoledne',
     evening: 'večer',
-    night: 'noc'
-  }
+    night: 'noc',
+  },
 }
 
-var formattingDayPeriodValues = {
+const formattingDayPeriodValues = {
   narrow: {
     am: 'dop.',
     pm: 'odp.',
@@ -124,7 +145,7 @@ var formattingDayPeriodValues = {
     morning: 'ráno',
     afternoon: 'odpoledne',
     evening: 'večer',
-    night: 'noc'
+    night: 'noc',
   },
   abbreviated: {
     am: 'dop.',
@@ -134,7 +155,7 @@ var formattingDayPeriodValues = {
     morning: 'ráno',
     afternoon: 'odpoledne',
     evening: 'večer',
-    night: 'noc'
+    night: 'noc',
   },
   wide: {
     am: 'dopoledne',
@@ -144,49 +165,50 @@ var formattingDayPeriodValues = {
     morning: 'ráno',
     afternoon: 'odpoledne',
     evening: 'večer',
-    night: 'noc'
-  }
+    night: 'noc',
+  },
 }
 
-function ordinalNumber(dirtyNumber) {
-  var number = Number(dirtyNumber)
+const ordinalNumber: LocalizeFn<number, undefined> = (
+  dirtyNumber,
+  _options
+) => {
+  const number = Number(dirtyNumber)
   return number + '.'
 }
 
-var localize = {
-  ordinalNumber: ordinalNumber,
+const localize: Localize = {
+  ordinalNumber,
 
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
-      return Number(quarter) - 1
-    }
+    argumentCallback: (quarter) => (quarter - 1) as Quarter,
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
     defaultWidth: 'wide',
     formattingValues: formattingMonthValues,
-    defaultFormattingWidth: 'wide'
+    defaultFormattingWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize
