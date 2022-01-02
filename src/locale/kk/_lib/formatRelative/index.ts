@@ -1,36 +1,42 @@
+import type { Day } from '../../../../types'
 import isSameUTCWeek from '../../../../_lib/isSameUTCWeek/index'
+import type { FormatRelativeFn, FormatRelativeFnOptions } from '../../../types'
 
-var accusativeWeekdays = [
+const accusativeWeekdays = [
   'жексенбіде',
   'дүйсенбіде',
   'сейсенбіде',
   'сәрсенбіде',
   'бейсенбіде',
   'жұмада',
-  'сенбіде'
+  'сенбіде',
 ]
 
-function lastWeek(day) {
-  var weekday = accusativeWeekdays[day]
+function lastWeek(day: Day) {
+  const weekday = accusativeWeekdays[day]
 
   return "'өткен " + weekday + " сағат' p'-де'"
 }
 
-function thisWeek(day) {
-  var weekday = accusativeWeekdays[day]
+function thisWeek(day: Day) {
+  const weekday = accusativeWeekdays[day]
 
   return "'" + weekday + " сағат' p'-де'"
 }
 
-function nextWeek(day) {
-  var weekday = accusativeWeekdays[day]
+function nextWeek(day: Day) {
+  const weekday = accusativeWeekdays[day]
 
   return "'келесі " + weekday + " сағат' p'-де'"
 }
 
-var formatRelativeLocale = {
-  lastWeek: function(date, baseDate, options) {
-    var day = date.getUTCDay()
+const formatRelativeLocale = {
+  lastWeek: (
+    date: Date,
+    baseDate: Date,
+    options?: FormatRelativeFnOptions
+  ): string => {
+    const day = date.getUTCDay() as Day
     if (isSameUTCWeek(date, baseDate, options)) {
       return thisWeek(day)
     } else {
@@ -40,19 +46,23 @@ var formatRelativeLocale = {
   yesterday: "'кеше сағат' p'-де'",
   today: "'бүгін сағат' p'-де'",
   tomorrow: "'ертең сағат' p'-де'",
-  nextWeek: function(date, baseDate, options) {
-    var day = date.getUTCDay()
+  nextWeek: (
+    date: Date,
+    baseDate: Date,
+    options?: FormatRelativeFnOptions
+  ): string => {
+    const day = date.getUTCDay() as Day
     if (isSameUTCWeek(date, baseDate, options)) {
       return thisWeek(day)
     } else {
       return nextWeek(day)
     }
   },
-  other: 'P'
+  other: 'P',
 }
 
-export default function formatRelative(token, date, baseDate, options) {
-  var format = formatRelativeLocale[token]
+const formatRelative: FormatRelativeFn = (token, date, baseDate, options) => {
+  const format = formatRelativeLocale[token]
 
   if (typeof format === 'function') {
     return format(date, baseDate, options)
@@ -60,3 +70,4 @@ export default function formatRelative(token, date, baseDate, options) {
 
   return format
 }
+export default formatRelative
