@@ -1,3 +1,4 @@
+import type { Locale } from '../types'
 import formatDistance from './_lib/formatDistance/index'
 import formatLong from './_lib/formatLong/index'
 import formatRelative from './_lib/formatRelative/index'
@@ -15,7 +16,7 @@ import match from './_lib/match/index'
  * @author Lode Vanhove [@bitcrumb]{@link https://github.com/bitcrumb}
  * @author Alex Hoeing [@dcbn]{@link https://github.com/dcbn}
  */
-var locale = {
+const locale: Locale = {
   code: 'nl-BE',
   formatDistance: formatDistance,
   formatLong: formatLong,
@@ -24,8 +25,8 @@ var locale = {
   match: match,
   options: {
     weekStartsOn: 1 /* Monday */,
-    firstWeekContainsDate: 4
-  }
+    firstWeekContainsDate: 4,
+  },
 }
 
 export default locale
