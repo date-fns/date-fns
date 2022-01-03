@@ -20,6 +20,7 @@ const matchQuarterPatterns = {
   abbreviated: /^[1234](-?[ыои]?й?)? кв.?/i,
   wide: /^[1234](-?[ыои]?й?)? квартал/i,
 }
+
 const parseQuarterPatterns = {
   any: [/1/i, /2/i, /3/i, /4/i] as const,
 }
@@ -29,6 +30,7 @@ const matchMonthPatterns = {
   abbreviated: /^(янв|фев|март?|апр|ма[йя]|июн[ья]?|июл[ья]?|авг|сент?|окт|нояб?|дек)\.?/i,
   wide: /^(январ[ья]|феврал[ья]|марта?|апрел[ья]|ма[йя]|июн[ья]|июл[ья]|августа?|сентябр[ья]|октябр[ья]|октябр[ья]|ноябр[ья]|декабр[ья])/i,
 }
+
 const parseMonthPatterns = {
   narrow: [
     /^я/i,
@@ -66,6 +68,7 @@ const matchDayPatterns = {
   abbreviated: /^(вск|вос|пнд|пон|втр|вто|срд|сре|чтв|чет|птн|пят|суб).?/i,
   wide: /^(воскресень[ея]|понедельника?|вторника?|сред[аы]|четверга?|пятниц[аы]|суббот[аы])/i,
 }
+
 const parseDayPatterns = {
   narrow: [/^в/i, /^п/i, /^в/i, /^с/i, /^ч/i, /^п/i, /^с/i] as const,
   any: [
@@ -84,6 +87,7 @@ const matchDayPeriodPatterns = {
   abbreviated: /^([дп]п|полн\.?|полд\.?|утр[оа]|день|дня|веч\.?|ноч[ьи])/i,
   wide: /^([дп]п|полночь|полдень|утр[оа]|день|дня|вечера?|ноч[ьи])/i,
 }
+
 const parseDayPeriodPatterns = {
   any: {
     am: /^дп/i,
