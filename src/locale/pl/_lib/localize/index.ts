@@ -1,24 +1,21 @@
+import type { Quarter } from '../../../../types'
+import type { Localize, LocalizeFn } from '../../../types'
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
-function ordinalNumber(dirtyNumber) {
-  var number = Number(dirtyNumber)
-  return String(number)
+const eraValues = {
+  narrow: ['p.n.e.', 'n.e.'] as const,
+  abbreviated: ['p.n.e.', 'n.e.'] as const,
+  wide: ['przed naszą erą', 'naszej ery'] as const,
 }
 
-var eraValues = {
-  narrow: ['p.n.e.', 'n.e.'],
-  abbreviated: ['p.n.e.', 'n.e.'],
-  wide: ['przed naszą erą', 'naszej ery']
+const quarterValues = {
+  narrow: ['1', '2', '3', '4'] as const,
+  abbreviated: ['I kw.', 'II kw.', 'III kw.', 'IV kw.'] as const,
+  wide: ['I kwartał', 'II kwartał', 'III kwartał', 'IV kwartał'] as const,
 }
 
-var quarterValues = {
-  narrow: ['1', '2', '3', '4'],
-  abbreviated: ['I kw.', 'II kw.', 'III kw.', 'IV kw.'],
-  wide: ['I kwartał', 'II kwartał', 'III kwartał', 'IV kwartał']
-}
-
-var monthValues = {
-  narrow: ['S', 'L', 'M', 'K', 'M', 'C', 'L', 'S', 'W', 'P', 'L', 'G'],
+const monthValues = {
+  narrow: ['S', 'L', 'M', 'K', 'M', 'C', 'L', 'S', 'W', 'P', 'L', 'G'] as const,
   abbreviated: [
     'sty',
     'lut',
@@ -31,8 +28,8 @@ var monthValues = {
     'wrz',
     'paź',
     'lis',
-    'gru'
-  ],
+    'gru',
+  ] as const,
   wide: [
     'styczeń',
     'luty',
@@ -45,11 +42,11 @@ var monthValues = {
     'wrzesień',
     'październik',
     'listopad',
-    'grudzień'
-  ]
+    'grudzień',
+  ] as const,
 }
-var monthFormattingValues = {
-  narrow: ['s', 'l', 'm', 'k', 'm', 'c', 'l', 's', 'w', 'p', 'l', 'g'],
+const monthFormattingValues = {
+  narrow: ['s', 'l', 'm', 'k', 'm', 'c', 'l', 's', 'w', 'p', 'l', 'g'] as const,
   abbreviated: [
     'sty',
     'lut',
@@ -62,8 +59,8 @@ var monthFormattingValues = {
     'wrz',
     'paź',
     'lis',
-    'gru'
-  ],
+    'gru',
+  ] as const,
   wide: [
     'stycznia',
     'lutego',
@@ -76,14 +73,14 @@ var monthFormattingValues = {
     'września',
     'października',
     'listopada',
-    'grudnia'
-  ]
+    'grudnia',
+  ] as const,
 }
 
-var dayValues = {
-  narrow: ['N', 'P', 'W', 'Ś', 'C', 'P', 'S'],
-  short: ['nie', 'pon', 'wto', 'śro', 'czw', 'pią', 'sob'],
-  abbreviated: ['niedz.', 'pon.', 'wt.', 'śr.', 'czw.', 'pt.', 'sob.'],
+const dayValues = {
+  narrow: ['N', 'P', 'W', 'Ś', 'C', 'P', 'S'] as const,
+  short: ['nie', 'pon', 'wto', 'śro', 'czw', 'pią', 'sob'] as const,
+  abbreviated: ['niedz.', 'pon.', 'wt.', 'śr.', 'czw.', 'pt.', 'sob.'] as const,
   wide: [
     'niedziela',
     'poniedziałek',
@@ -91,13 +88,13 @@ var dayValues = {
     'środa',
     'czwartek',
     'piątek',
-    'sobota'
-  ]
+    'sobota',
+  ] as const,
 }
-var dayFormattingValues = {
-  narrow: ['n', 'p', 'w', 'ś', 'c', 'p', 's'],
-  short: ['nie', 'pon', 'wto', 'śro', 'czw', 'pią', 'sob'],
-  abbreviated: ['niedz.', 'pon.', 'wt.', 'śr.', 'czw.', 'pt.', 'sob.'],
+const dayFormattingValues = {
+  narrow: ['n', 'p', 'w', 'ś', 'c', 'p', 's'] as const,
+  short: ['nie', 'pon', 'wto', 'śro', 'czw', 'pią', 'sob'] as const,
+  abbreviated: ['niedz.', 'pon.', 'wt.', 'śr.', 'czw.', 'pt.', 'sob.'] as const,
   wide: [
     'niedziela',
     'poniedziałek',
@@ -105,11 +102,11 @@ var dayFormattingValues = {
     'środa',
     'czwartek',
     'piątek',
-    'sobota'
-  ]
+    'sobota',
+  ] as const,
 }
 
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'a',
     pm: 'p',
@@ -118,7 +115,7 @@ var dayPeriodValues = {
     morning: 'rano',
     afternoon: 'popoł.',
     evening: 'wiecz.',
-    night: 'noc'
+    night: 'noc',
   },
   abbreviated: {
     am: 'AM',
@@ -128,7 +125,7 @@ var dayPeriodValues = {
     morning: 'rano',
     afternoon: 'popołudnie',
     evening: 'wieczór',
-    night: 'noc'
+    night: 'noc',
   },
   wide: {
     am: 'AM',
@@ -138,10 +135,11 @@ var dayPeriodValues = {
     morning: 'rano',
     afternoon: 'popołudnie',
     evening: 'wieczór',
-    night: 'noc'
-  }
+    night: 'noc',
+  },
 }
-var dayPeriodFormattingValues = {
+
+const dayPeriodFormattingValues = {
   narrow: {
     am: 'a',
     pm: 'p',
@@ -150,7 +148,7 @@ var dayPeriodFormattingValues = {
     morning: 'rano',
     afternoon: 'po poł.',
     evening: 'wiecz.',
-    night: 'w nocy'
+    night: 'w nocy',
   },
   abbreviated: {
     am: 'AM',
@@ -160,7 +158,7 @@ var dayPeriodFormattingValues = {
     morning: 'rano',
     afternoon: 'po południu',
     evening: 'wieczorem',
-    night: 'w nocy'
+    night: 'w nocy',
   },
   wide: {
     am: 'AM',
@@ -170,46 +168,51 @@ var dayPeriodFormattingValues = {
     morning: 'rano',
     afternoon: 'po południu',
     evening: 'wieczorem',
-    night: 'w nocy'
-  }
+    night: 'w nocy',
+  },
 }
 
-var localize = {
-  ordinalNumber: ordinalNumber,
+const ordinalNumber: LocalizeFn<number, undefined> = (
+  dirtyNumber,
+  _options
+) => {
+  return String(dirtyNumber)
+}
+
+const localize: Localize = {
+  ordinalNumber,
 
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
-      return Number(quarter) - 1
-    }
+    argumentCallback: (quarter) => (quarter - 1) as Quarter,
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
     defaultWidth: 'wide',
     formattingValues: monthFormattingValues,
-    defaultFormattingWidth: 'wide'
+    defaultFormattingWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
     defaultWidth: 'wide',
     formattingValues: dayFormattingValues,
-    defaultFormattingWidth: 'wide'
+    defaultFormattingWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: dayPeriodFormattingValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize
