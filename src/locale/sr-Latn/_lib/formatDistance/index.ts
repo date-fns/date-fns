@@ -1,22 +1,36 @@
-var formatDistanceLocale = {
+import type { FormatDistanceFn, FormatDistanceLocale } from '../../../types'
+
+type FormatDistanceTokenValue =
+  | string
+  | {
+      one: {
+        standalone: string
+        withPrepositionAgo: string
+        withPrepositionIn: string
+      }
+      dual: string
+      other: string
+    }
+
+const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   lessThanXSeconds: {
     one: {
       standalone: 'manje od 1 sekunde',
       withPrepositionAgo: 'manje od 1 sekunde',
-      withPrepositionIn: 'manje od 1 sekundu'
+      withPrepositionIn: 'manje od 1 sekundu',
     },
     dual: 'manje od {{count}} sekunde',
-    other: 'manje od {{count}} sekundi'
+    other: 'manje od {{count}} sekundi',
   },
 
   xSeconds: {
     one: {
       standalone: '1 sekunda',
       withPrepositionAgo: '1 sekunde',
-      withPrepositionIn: '1 sekundu'
+      withPrepositionIn: '1 sekundu',
     },
     dual: '{{count}} sekunde',
-    other: '{{count}} sekundi'
+    other: '{{count}} sekundi',
   },
 
   halfAMinute: 'pola minute',
@@ -25,162 +39,161 @@ var formatDistanceLocale = {
     one: {
       standalone: 'manje od 1 minute',
       withPrepositionAgo: 'manje od 1 minute',
-      withPrepositionIn: 'manje od 1 minutu'
+      withPrepositionIn: 'manje od 1 minutu',
     },
     dual: 'manje od {{count}} minute',
-    other: 'manje od {{count}} minuta'
+    other: 'manje od {{count}} minuta',
   },
 
   xMinutes: {
     one: {
       standalone: '1 minuta',
       withPrepositionAgo: '1 minute',
-      withPrepositionIn: '1 minutu'
+      withPrepositionIn: '1 minutu',
     },
     dual: '{{count}} minute',
-    other: '{{count}} minuta'
+    other: '{{count}} minuta',
   },
 
   aboutXHours: {
     one: {
       standalone: 'oko 1 sat',
       withPrepositionAgo: 'oko 1 sat',
-      withPrepositionIn: 'oko 1 sat'
+      withPrepositionIn: 'oko 1 sat',
     },
     dual: 'oko {{count}} sata',
-    other: 'oko {{count}} sati'
+    other: 'oko {{count}} sati',
   },
 
   xHours: {
     one: {
       standalone: '1 sat',
       withPrepositionAgo: '1 sat',
-      withPrepositionIn: '1 sat'
+      withPrepositionIn: '1 sat',
     },
     dual: '{{count}} sata',
-    other: '{{count}} sati'
+    other: '{{count}} sati',
   },
 
   xDays: {
     one: {
       standalone: '1 dan',
       withPrepositionAgo: '1 dan',
-      withPrepositionIn: '1 dan'
+      withPrepositionIn: '1 dan',
     },
     dual: '{{count}} dana',
-    other: '{{count}} dana'
+    other: '{{count}} dana',
   },
 
   aboutXWeeks: {
     one: {
       standalone: 'oko 1 nedelju',
       withPrepositionAgo: 'oko 1 nedelju',
-      withPrepositionIn: 'oko 1 nedelju'
+      withPrepositionIn: 'oko 1 nedelju',
     },
     dual: 'oko {{count}} nedelje',
-    other: 'oko {{count}} nedelje'
+    other: 'oko {{count}} nedelje',
   },
 
   xWeeks: {
     one: {
       standalone: '1 nedelju',
       withPrepositionAgo: '1 nedelju',
-      withPrepositionIn: '1 nedelju'
+      withPrepositionIn: '1 nedelju',
     },
     dual: '{{count}} nedelje',
-    other: '{{count}} nedelje'
+    other: '{{count}} nedelje',
   },
 
   aboutXMonths: {
     one: {
       standalone: 'oko 1 mesec',
       withPrepositionAgo: 'oko 1 mesec',
-      withPrepositionIn: 'oko 1 mesec'
+      withPrepositionIn: 'oko 1 mesec',
     },
     dual: 'oko {{count}} meseca',
-    other: 'oko {{count}} meseci'
+    other: 'oko {{count}} meseci',
   },
 
   xMonths: {
     one: {
       standalone: '1 mesec',
       withPrepositionAgo: '1 mesec',
-      withPrepositionIn: '1 mesec'
+      withPrepositionIn: '1 mesec',
     },
     dual: '{{count}} meseca',
-    other: '{{count}} meseci'
+    other: '{{count}} meseci',
   },
 
   aboutXYears: {
     one: {
       standalone: 'oko 1 godinu',
       withPrepositionAgo: 'oko 1 godinu',
-      withPrepositionIn: 'oko 1 godinu'
+      withPrepositionIn: 'oko 1 godinu',
     },
     dual: 'oko {{count}} godine',
-    other: 'oko {{count}} godina'
+    other: 'oko {{count}} godina',
   },
 
   xYears: {
     one: {
       standalone: '1 godina',
       withPrepositionAgo: '1 godine',
-      withPrepositionIn: '1 godinu'
+      withPrepositionIn: '1 godinu',
     },
     dual: '{{count}} godine',
-    other: '{{count}} godina'
+    other: '{{count}} godina',
   },
 
   overXYears: {
     one: {
       standalone: 'preko 1 godinu',
       withPrepositionAgo: 'preko 1 godinu',
-      withPrepositionIn: 'preko 1 godinu'
+      withPrepositionIn: 'preko 1 godinu',
     },
     dual: 'preko {{count}} godine',
-    other: 'preko {{count}} godina'
+    other: 'preko {{count}} godina',
   },
 
   almostXYears: {
     one: {
       standalone: 'gotovo 1 godinu',
       withPrepositionAgo: 'gotovo 1 godinu',
-      withPrepositionIn: 'gotovo 1 godinu'
+      withPrepositionIn: 'gotovo 1 godinu',
     },
     dual: 'gotovo {{count}} godine',
-    other: 'gotovo {{count}} godina'
-  }
+    other: 'gotovo {{count}} godina',
+  },
 }
 
-export default function formatDistance(token, count, options) {
-  options = options || {}
+const formatDistance: FormatDistanceFn = (token, count, options) => {
+  let result
 
-  var result
-
-  if (typeof formatDistanceLocale[token] === 'string') {
-    result = formatDistanceLocale[token]
+  const tokenValue = formatDistanceLocale[token]
+  if (typeof tokenValue === 'string') {
+    result = tokenValue
   } else if (count === 1) {
-    if (options.addSuffix) {
-      if (options.comparison > 0) {
-        result = formatDistanceLocale[token].one.withPrepositionIn
+    if (options?.addSuffix) {
+      if (options.comparison && options.comparison > 0) {
+        result = tokenValue.one.withPrepositionIn
       } else {
-        result = formatDistanceLocale[token].one.withPrepositionAgo
+        result = tokenValue.one.withPrepositionAgo
       }
     } else {
-      result = formatDistanceLocale[token].one.standalone
+      result = tokenValue.one.standalone
     }
   } else if (
     count % 10 > 1 &&
     count % 10 < 5 && // if last digit is between 2 and 4
     String(count).substr(-2, 1) !== '1' // unless the 2nd to last digit is "1"
   ) {
-    result = formatDistanceLocale[token].dual.replace('{{count}}', count)
+    result = tokenValue.dual.replace('{{count}}', String(count))
   } else {
-    result = formatDistanceLocale[token].other.replace('{{count}}', count)
+    result = tokenValue.other.replace('{{count}}', String(count))
   }
 
-  if (options.addSuffix) {
-    if (options.comparison > 0) {
+  if (options?.addSuffix) {
+    if (options.comparison && options.comparison > 0) {
       return 'za ' + result
     } else {
       return 'pre ' + result
@@ -189,3 +202,5 @@ export default function formatDistance(token, count, options) {
 
   return result
 }
+
+export default formatDistance

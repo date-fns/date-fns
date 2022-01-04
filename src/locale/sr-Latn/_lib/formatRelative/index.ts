@@ -1,8 +1,8 @@
-var formatRelativeLocale = {
-  lastWeek: function(date) {
-    var day = date.getUTCDay()
+import type { FormatRelativeFn } from '../../../types'
 
-    switch (day) {
+const formatRelativeLocale = {
+  lastWeek: (date: Date): string => {
+    switch (date.getUTCDay()) {
       case 0:
         return "'prošle nedelje u' p"
       case 3:
@@ -16,10 +16,8 @@ var formatRelativeLocale = {
   yesterday: "'juče u' p",
   today: "'danas u' p",
   tomorrow: "'sutra u' p",
-  nextWeek: function(date) {
-    var day = date.getUTCDay()
-
-    switch (day) {
+  nextWeek: (date: Date): string => {
+    switch (date.getUTCDay()) {
       case 0:
         return "'sledeće nedelje u' p"
       case 3:
@@ -30,11 +28,11 @@ var formatRelativeLocale = {
         return "'sledeći' EEEE 'u' p"
     }
   },
-  other: 'P'
+  other: 'P',
 }
 
-export default function formatRelative(token, date, _baseDate, _options) {
-  var format = formatRelativeLocale[token]
+const formatRelative: FormatRelativeFn = (token, date, _baseDate, _options) => {
+  const format = formatRelativeLocale[token]
 
   if (typeof format === 'function') {
     return format(date)
@@ -42,3 +40,5 @@ export default function formatRelative(token, date, _baseDate, _options) {
 
   return format
 }
+
+export default formatRelative
