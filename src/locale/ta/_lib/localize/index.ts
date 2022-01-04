@@ -1,30 +1,45 @@
-// Ref: https://www.unicode.org/cldr/charts/32/summary/ta.html
-
+import type { Quarter } from '../../../../types'
+import type { Localize, LocalizeFn } from '../../../types'
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
-var eraValues = {
-  narrow: ['கி.மு.', 'கி.பி.'],
-  abbreviated: ['கி.மு.', 'கி.பி.'], // CLDR #1624, #1626
-  wide: ['கிறிஸ்துவுக்கு முன்', 'அன்னோ டோமினி'] // CLDR #1620, #1622
+// Ref: https://www.unicode.org/cldr/charts/32/summary/ta.html
+
+const eraValues = {
+  narrow: ['கி.மு.', 'கி.பி.'] as const,
+  abbreviated: ['கி.மு.', 'கி.பி.'] as const, // CLDR #1624, #1626
+  wide: ['கிறிஸ்துவுக்கு முன்', 'அன்னோ டோமினி'] as const, // CLDR #1620, #1622
 }
 
-var quarterValues = {
+const quarterValues = {
   // CLDR #1644 - #1647
-  narrow: ['1', '2', '3', '4'],
+  narrow: ['1', '2', '3', '4'] as const,
   // CLDR #1636 - #1639
-  abbreviated: ['காலா.1', 'காலா.2', 'காலா.3', 'காலா.4'],
+  abbreviated: ['காலா.1', 'காலா.2', 'காலா.3', 'காலா.4'] as const,
   // CLDR #1628 - #1631
   wide: [
     'ஒன்றாம் காலாண்டு',
     'இரண்டாம் காலாண்டு',
     'மூன்றாம் காலாண்டு',
-    'நான்காம் காலாண்டு'
-  ]
+    'நான்காம் காலாண்டு',
+  ] as const,
 }
 
-var monthValues = {
+const monthValues = {
   // CLDR #700 - #711
-  narrow: ['ஜ', 'பி', 'மா', 'ஏ', 'மே', 'ஜூ', 'ஜூ', 'ஆ', 'செ', 'அ', 'ந', 'டி'],
+  narrow: [
+    'ஜ',
+    'பி',
+    'மா',
+    'ஏ',
+    'மே',
+    'ஜூ',
+    'ஜூ',
+    'ஆ',
+    'செ',
+    'அ',
+    'ந',
+    'டி',
+  ] as const,
   // CLDR #1676 - #1687
   abbreviated: [
     'ஜன.',
@@ -38,8 +53,8 @@ var monthValues = {
     'செப்.',
     'அக்.',
     'நவ.',
-    'டிச.'
-  ],
+    'டிச.',
+  ] as const,
   // CLDR #1652 - #1663
   wide: [
     'ஜனவரி', // January
@@ -53,17 +68,25 @@ var monthValues = {
     'செப்டம்பர்', // September
     'அக்டோபர்', // October
     'நவம்பர்', // November
-    'டிசம்பர்' // December
-  ]
+    'டிசம்பர்', // December
+  ] as const,
 }
 
-var dayValues = {
+const dayValues = {
   // CLDR #1766 - #1772
-  narrow: ['ஞா', 'தி', 'செ', 'பு', 'வி', 'வெ', 'ச'],
+  narrow: ['ஞா', 'தி', 'செ', 'பு', 'வி', 'வெ', 'ச'] as const,
   // CLDR #1752 - #1758
-  short: ['ஞா', 'தி', 'செ', 'பு', 'வி', 'வெ', 'ச'],
+  short: ['ஞா', 'தி', 'செ', 'பு', 'வி', 'வெ', 'ச'] as const,
   // CLDR #1738 - #1744
-  abbreviated: ['ஞாயி.', 'திங்.', 'செவ்.', 'புத.', 'வியா.', 'வெள்.', 'சனி'],
+  abbreviated: [
+    'ஞாயி.',
+    'திங்.',
+    'செவ்.',
+    'புத.',
+    'வியா.',
+    'வெள்.',
+    'சனி',
+  ] as const,
   // CLDR #1724 - #1730
   wide: [
     'ஞாயிறு', // Sunday
@@ -72,12 +95,12 @@ var dayValues = {
     'புதன்', // Wednesday
     'வியாழன்', // Thursday
     'வெள்ளி', // Friday
-    'சனி' // Saturday
-  ]
+    'சனி', // Saturday
+  ] as const,
 }
 
 // CLDR #1780 - #1845
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'மு.ப',
     pm: 'பி.ப',
@@ -86,7 +109,7 @@ var dayPeriodValues = {
     morning: 'கா.',
     afternoon: 'மதி.',
     evening: 'மா.',
-    night: 'இர.'
+    night: 'இர.',
   },
   abbreviated: {
     am: 'முற்பகல்',
@@ -96,7 +119,7 @@ var dayPeriodValues = {
     morning: 'காலை',
     afternoon: 'மதியம்',
     evening: 'மாலை',
-    night: 'இரவு'
+    night: 'இரவு',
   },
   wide: {
     am: 'முற்பகல்',
@@ -106,12 +129,12 @@ var dayPeriodValues = {
     morning: 'காலை',
     afternoon: 'மதியம்',
     evening: 'மாலை',
-    night: 'இரவு'
-  }
+    night: 'இரவு',
+  },
 }
 
 // CLDR #1780 - #1845
-var formattingDayPeriodValues = {
+const formattingDayPeriodValues = {
   narrow: {
     am: 'மு.ப',
     pm: 'பி.ப',
@@ -120,7 +143,7 @@ var formattingDayPeriodValues = {
     morning: 'கா.',
     afternoon: 'மதி.',
     evening: 'மா.',
-    night: 'இர.'
+    night: 'இர.',
   },
   abbreviated: {
     am: 'முற்பகல்',
@@ -130,7 +153,7 @@ var formattingDayPeriodValues = {
     morning: 'காலை',
     afternoon: 'மதியம்',
     evening: 'மாலை',
-    night: 'இரவு'
+    night: 'இரவு',
   },
   wide: {
     am: 'முற்பகல்',
@@ -140,70 +163,47 @@ var formattingDayPeriodValues = {
     morning: 'காலை',
     afternoon: 'மதியம்',
     evening: 'மாலை',
-    night: 'இரவு'
-  }
+    night: 'இரவு',
+  },
 }
 
-function ordinalNumber(dirtyNumber, _dirtyOptions) {
-  var number = Number(dirtyNumber)
-
-  // If ordinal numbers depend on context, for example,
-  // if they are different for different grammatical genders,
-  // use `options.unit`:
-  //
-  //   var options = dirtyOptions || {}
-  //   var unit = String(options.unit)
-  //
-  // where `unit` can be 'year', 'quarter', 'month', 'week', 'date', 'dayOfYear',
-  // 'day', 'hour', 'minute', 'second'
-
-  // var rem100 = number % 100
-  // if (rem100 > 20 || rem100 < 10) {
-  //   switch (rem100 % 10) {
-  //     case 1:
-  //       return number + 'st'
-  //     case 2:
-  //       return number + 'nd'
-  //     case 3:
-  //       return number + 'rd'
-  //   }
-  // }
-  // return number + 'th'
-  return number
+const ordinalNumber: LocalizeFn<number, undefined> = (
+  dirtyNumber,
+  _options
+) => {
+  return String(dirtyNumber)
 }
 
-var localize = {
-  ordinalNumber: ordinalNumber,
+const localize: Localize = {
+  ordinalNumber,
 
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
-      return Number(quarter) - 1
-    }
+    argumentCallback: (quarter) => (quarter - 1) as Quarter,
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize
