@@ -1,3 +1,4 @@
+import type { Locale } from '../types'
 import formatDistance from './_lib/formatDistance/index'
 import formatLong from './_lib/formatLong/index'
 import formatRelative from './_lib/formatRelative/index'
@@ -13,7 +14,7 @@ import match from './_lib/match/index'
  * @author Adam Stradovnik [@Neoglyph]{@link https://github.com/Neoglyph}
  * @author Mato Žgajner [@mzgajner]{@link https://github.com/mzgajner}
  */
-var locale = {
+const locale: Locale = {
   code: 'sl',
   formatDistance: formatDistance,
   formatLong: formatLong,
@@ -22,8 +23,8 @@ var locale = {
   match: match,
   options: {
     weekStartsOn: 1 /* Monday */,
-    firstWeekContainsDate: 1
-  }
+    firstWeekContainsDate: 1,
+  },
 }
 
 export default locale

@@ -1,18 +1,26 @@
+import type { Quarter } from '../../../../types'
+import type { Localize, LocalizeFn } from '../../../types'
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
-function ordinalNumber(dirtyNumber) {
-  var number = Number(dirtyNumber)
-  return String(number).concat('.')
+const eraValues = {
+  narrow: ['pr. n. št.', 'po n. št.'] as const,
+  abbreviated: ['pr. n. št.', 'po n. št.'] as const,
+  wide: ['pred našim štetjem', 'po našem štetju'] as const,
 }
 
-var eraValues = {
-  narrow: ['pr. n. št.', 'po n. št.'],
-  abbreviated: ['pr. n. št.', 'po n. št.'],
-  wide: ['pred našim štetjem', 'po našem štetju']
+const quarterValues = {
+  narrow: ['1', '2', '3', '4'] as const,
+  abbreviated: ['1. čet.', '2. čet.', '3. čet.', '4. čet.'] as const,
+  wide: [
+    '1. četrtletje',
+    '2. četrtletje',
+    '3. četrtletje',
+    '4. četrtletje',
+  ] as const,
 }
 
-var monthValues = {
-  narrow: ['j', 'f', 'm', 'a', 'm', 'j', 'j', 'a', 's', 'o', 'n', 'd'],
+const monthValues = {
+  narrow: ['j', 'f', 'm', 'a', 'm', 'j', 'j', 'a', 's', 'o', 'n', 'd'] as const,
   abbreviated: [
     'jan.',
     'feb.',
@@ -25,8 +33,8 @@ var monthValues = {
     'sep.',
     'okt.',
     'nov.',
-    'dec.'
-  ],
+    'dec.',
+  ] as const,
   wide: [
     'januar',
     'februar',
@@ -39,20 +47,22 @@ var monthValues = {
     'september',
     'oktober',
     'november',
-    'december'
-  ]
+    'december',
+  ] as const,
 }
 
-var quarterValues = {
-  narrow: ['1', '2', '3', '4'],
-  abbreviated: ['1. čet.', '2. čet.', '3. čet.', '4. čet.'],
-  wide: ['1. četrtletje', '2. četrtletje', '3. četrtletje', '4. četrtletje']
-}
-
-var dayValues = {
-  narrow: ['n', 'p', 't', 's', 'č', 'p', 's'],
-  short: ['ned.', 'pon.', 'tor.', 'sre.', 'čet.', 'pet.', 'sob.'],
-  abbreviated: ['ned.', 'pon.', 'tor.', 'sre.', 'čet.', 'pet.', 'sob.'],
+const dayValues = {
+  narrow: ['n', 'p', 't', 's', 'č', 'p', 's'] as const,
+  short: ['ned.', 'pon.', 'tor.', 'sre.', 'čet.', 'pet.', 'sob.'] as const,
+  abbreviated: [
+    'ned.',
+    'pon.',
+    'tor.',
+    'sre.',
+    'čet.',
+    'pet.',
+    'sob.',
+  ] as const,
   wide: [
     'nedelja',
     'ponedeljek',
@@ -60,11 +70,11 @@ var dayValues = {
     'sreda',
     'četrtek',
     'petek',
-    'sobota'
-  ]
+    'sobota',
+  ] as const,
 }
 
-var dayPeriodValuesStandalone = {
+const dayPeriodValues = {
   narrow: {
     am: 'd',
     pm: 'p',
@@ -73,7 +83,7 @@ var dayPeriodValuesStandalone = {
     morning: 'j',
     afternoon: 'p',
     evening: 'v',
-    night: 'n'
+    night: 'n',
   },
   abbreviated: {
     am: 'dop.',
@@ -83,7 +93,7 @@ var dayPeriodValuesStandalone = {
     morning: 'jut.',
     afternoon: 'pop.',
     evening: 'več.',
-    night: 'noč'
+    night: 'noč',
   },
   wide: {
     am: 'dop.',
@@ -93,11 +103,11 @@ var dayPeriodValuesStandalone = {
     morning: 'jutro',
     afternoon: 'popoldne',
     evening: 'večer',
-    night: 'noč'
-  }
+    night: 'noč',
+  },
 }
 
-var dayPeriodValuesFormatting = {
+const formattingDayPeriodValues = {
   narrow: {
     am: 'd',
     pm: 'p',
@@ -106,7 +116,7 @@ var dayPeriodValuesFormatting = {
     morning: 'zj',
     afternoon: 'p',
     evening: 'zv',
-    night: 'po'
+    night: 'po',
   },
   abbreviated: {
     am: 'dop.',
@@ -116,7 +126,7 @@ var dayPeriodValuesFormatting = {
     morning: 'zjut.',
     afternoon: 'pop.',
     evening: 'zveč.',
-    night: 'ponoči'
+    night: 'ponoči',
   },
   wide: {
     am: 'dop.',
@@ -126,37 +136,48 @@ var dayPeriodValuesFormatting = {
     morning: 'zjutraj',
     afternoon: 'popoldan',
     evening: 'zvečer',
-    night: 'ponoči'
-  }
+    night: 'ponoči',
+  },
 }
 
-var localize = {
-  ordinalNumber: ordinalNumber,
+const ordinalNumber: LocalizeFn<number, undefined> = (
+  dirtyNumber,
+  _options
+) => {
+  const number = Number(dirtyNumber)
+  return number + '.'
+}
+
+const localize: Localize = {
+  ordinalNumber,
+
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
+
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
-      return Number(quarter) - 1
-    }
+    argumentCallback: (quarter) => (quarter - 1) as Quarter,
   }),
+
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
+
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
-  }),
-  dayPeriod: buildLocalizeFn({
-    values: dayPeriodValuesStandalone,
     defaultWidth: 'wide',
-    formattingValues: dayPeriodValuesFormatting,
-    defaultFormattingWidth: 'wide'
-  })
+  }),
+
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize
