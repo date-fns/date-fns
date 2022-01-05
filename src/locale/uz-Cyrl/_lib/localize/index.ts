@@ -1,19 +1,21 @@
+import type { Quarter } from '../../../../types'
+import type { Localize, LocalizeFn } from '../../../types'
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
-var eraValues = {
-  narrow: ['М.А', 'М'],
-  abbreviated: ['М.А', 'М'],
-  wide: ['Милоддан Аввалги', 'Милодий'],
+const eraValues = {
+  narrow: ['М.А', 'М'] as const,
+  abbreviated: ['М.А', 'М'] as const,
+  wide: ['Милоддан Аввалги', 'Милодий'] as const,
 }
 
-var quarterValues = {
-  narrow: ['1', '2', '3', '4'],
-  abbreviated: ['1-чор.', '2-чор.', '3-чор.', '4-чор.'],
-  wide: ['1-чорак', '2-чорак', '3-чорак', '4-чорак'],
+const quarterValues = {
+  narrow: ['1', '2', '3', '4'] as const,
+  abbreviated: ['1-чор.', '2-чор.', '3-чор.', '4-чор.'] as const,
+  wide: ['1-чорак', '2-чорак', '3-чорак', '4-чорак'] as const,
 }
 
-var monthValues = {
-  narrow: ['Я', 'Ф', 'М', 'А', 'М', 'И', 'И', 'А', 'С', 'О', 'Н', 'Д'],
+const monthValues = {
+  narrow: ['Я', 'Ф', 'М', 'А', 'М', 'И', 'И', 'А', 'С', 'О', 'Н', 'Д'] as const,
   abbreviated: [
     'янв',
     'фев',
@@ -27,7 +29,7 @@ var monthValues = {
     'окт',
     'ноя',
     'дек',
-  ],
+  ] as const,
   wide: [
     'январ',
     'феврал',
@@ -41,13 +43,13 @@ var monthValues = {
     'октабр',
     'ноябр',
     'декабр',
-  ],
+  ] as const,
 }
 
-var dayValues = {
-  narrow: ['Я', 'Д', 'С', 'Ч', 'П', 'Ж', 'Ш'],
-  short: ['як', 'ду', 'се', 'чо', 'па', 'жу', 'ша'],
-  abbreviated: ['якш', 'душ', 'сеш', 'чор', 'пай', 'жум', 'шан'],
+const dayValues = {
+  narrow: ['Я', 'Д', 'С', 'Ч', 'П', 'Ж', 'Ш'] as const,
+  short: ['як', 'ду', 'се', 'чо', 'па', 'жу', 'ша'] as const,
+  abbreviated: ['якш', 'душ', 'сеш', 'чор', 'пай', 'жум', 'шан'] as const,
   wide: [
     'якшанба',
     'душанба',
@@ -56,22 +58,10 @@ var dayValues = {
     'пайшанба',
     'жума',
     'шанба',
-  ],
+  ] as const,
 }
 
-var dayPeriodValues = {
-  any: {
-    am: 'П.О.',
-    pm: 'П.К.',
-    midnight: 'ярим тун',
-    noon: 'пешин',
-    morning: 'эрталаб',
-    afternoon: 'пешиндан кейин',
-    evening: 'кечаси',
-    night: 'тун',
-  },
-}
-var formattingDayPeriodValues = {
+const dayPeriodValues = {
   any: {
     am: 'П.О.',
     pm: 'П.К.',
@@ -84,13 +74,28 @@ var formattingDayPeriodValues = {
   },
 }
 
-function ordinalNumber(dirtyNumber, _dirtyOptions) {
-  var number = Number(dirtyNumber)
-  return number
+const formattingDayPeriodValues = {
+  any: {
+    am: 'П.О.',
+    pm: 'П.К.',
+    midnight: 'ярим тун',
+    noon: 'пешин',
+    morning: 'эрталаб',
+    afternoon: 'пешиндан кейин',
+    evening: 'кечаси',
+    night: 'тун',
+  },
 }
 
-var localize = {
-  ordinalNumber: ordinalNumber,
+const ordinalNumber: LocalizeFn<number, undefined> = (
+  dirtyNumber,
+  _options
+) => {
+  return String(dirtyNumber)
+}
+
+const localize: Localize = {
+  ordinalNumber,
 
   era: buildLocalizeFn({
     values: eraValues,
@@ -100,9 +105,7 @@ var localize = {
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function (quarter) {
-      return Number(quarter) - 1
-    },
+    argumentCallback: (quarter) => (quarter - 1) as Quarter,
   }),
 
   month: buildLocalizeFn({

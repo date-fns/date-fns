@@ -1,3 +1,4 @@
+import type { Locale } from '../types'
 import formatDistance from './_lib/formatDistance/index'
 import formatLong from './_lib/formatLong/index'
 import formatRelative from './_lib/formatRelative/index'
@@ -12,7 +13,7 @@ import match from './_lib/match/index'
  * @iso-639-2 uzb
  * @author Kamronbek Shodmonov [@kamronbek28]{@link https://github.com/kamronbek28}
  */
-var locale = {
+const locale: Locale = {
   code: 'uz-Cyrl',
   formatDistance: formatDistance,
   formatLong: formatLong,
