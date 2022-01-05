@@ -81,7 +81,7 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   },
 
   almostXYears: {
-    one: 'gaireben an',
+    one: 'gaireben un an',
     other: 'gaireben {{count}} ans',
   },
 }
