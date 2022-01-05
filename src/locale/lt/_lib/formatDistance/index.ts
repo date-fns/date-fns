@@ -53,7 +53,7 @@ const translateSingular: Translater = (_number, addSuffix, key, isFuture) => {
 }
 
 const translate: Translater = (number, addSuffix, key, isFuture) => {
-  var result = number + ' '
+  const result = number + ' '
   if (number === 1) {
     return result + translateSingular(number, addSuffix, key, isFuture)
   } else if (!addSuffix) {

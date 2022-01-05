@@ -182,10 +182,10 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   },
 }
 
-var EXCEPTION_CONSONANTS = ['d', 'h', 'n', 't', 'z']
-var VOWELS = ['a,', 'e', 'i', 'o', 'u']
-var DIGITS_SPOKEN_N_NEEDED = [0, 1, 2, 3, 8, 9]
-var FIRST_TWO_DIGITS_SPOKEN_NO_N_NEEDED = [40, 50, 60, 70]
+const EXCEPTION_CONSONANTS = ['d', 'h', 'n', 't', 'z']
+const VOWELS = ['a,', 'e', 'i', 'o', 'u']
+const DIGITS_SPOKEN_N_NEEDED = [0, 1, 2, 3, 8, 9]
+const FIRST_TWO_DIGITS_SPOKEN_NO_N_NEEDED = [40, 50, 60, 70]
 
 // Eifeler Regel
 function isFinalNNeeded(nextWords: string): boolean {

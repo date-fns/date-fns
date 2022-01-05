@@ -174,7 +174,7 @@ function declension(
 }
 
 const formatDistance: FormatDistanceFn = (token, count, options) => {
-  var scheme = formatDistanceLocale[token]
+  const scheme = formatDistanceLocale[token]
   if (!options?.addSuffix) {
     return declension(scheme, count, 'regular')
   }

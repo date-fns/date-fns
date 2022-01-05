@@ -30,8 +30,8 @@ function declension(scheme: Plural, count: number): string {
     return scheme.one
   }
 
-  var rem10 = count % 10
-  var rem100 = count % 100
+  const rem10 = count % 10
+  const rem100 = count % 100
 
   // 1, 21, 31, ...
   if (rem10 === 1 && rem100 !== 11) {

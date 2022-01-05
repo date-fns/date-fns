@@ -55,7 +55,7 @@ const monthValues = {
   ] as const,
 }
 
-var dayValues = {
+const dayValues = {
   narrow: ['Y', 'D', 'S', 'CH', 'P', 'J', 'SH'] as const,
   short: ['Ya', 'Du', 'Se', 'Cho', 'Pa', 'Ju', 'Sha'] as const,
   abbreviated: ['Yak', 'Dush', 'Sesh', 'Chor', 'Pay', 'Jum', 'Shan'] as const,

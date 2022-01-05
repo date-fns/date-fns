@@ -60,7 +60,7 @@ function nextWeek(day: Day): string {
   }
 }
 
-var formatRelativeLocale = {
+const formatRelativeLocale = {
   lastWeek: (
     date: Date,
     baseDate: Date,
