@@ -1,18 +1,20 @@
+import type { Quarter } from '../../../../types'
+import type { Localize, LocalizeFn } from '../../../types'
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
-var eraValues = {
-  narrow: ['前', '公元'],
-  abbreviated: ['前', '公元'],
-  wide: ['公元前', '公元'],
+const eraValues = {
+  narrow: ['前', '公元'] as const,
+  abbreviated: ['前', '公元'] as const,
+  wide: ['公元前', '公元'] as const,
 }
 
-var quarterValues = {
-  narrow: ['1', '2', '3', '4'],
-  abbreviated: ['第一季', '第二季', '第三季', '第四季'],
-  wide: ['第一季度', '第二季度', '第三季度', '第四季度'],
+const quarterValues = {
+  narrow: ['1', '2', '3', '4'] as const,
+  abbreviated: ['第一季', '第二季', '第三季', '第四季'] as const,
+  wide: ['第一季度', '第二季度', '第三季度', '第四季度'] as const,
 }
 
-var monthValues = {
+const monthValues = {
   narrow: [
     '一',
     '二',
@@ -26,7 +28,7 @@ var monthValues = {
     '十',
     '十一',
     '十二',
-  ],
+  ] as const,
   abbreviated: [
     '1月',
     '2月',
@@ -40,7 +42,7 @@ var monthValues = {
     '10月',
     '11月',
     '12月',
-  ],
+  ] as const,
   wide: [
     '一月',
     '二月',
@@ -54,17 +56,33 @@ var monthValues = {
     '十月',
     '十一月',
     '十二月',
-  ],
+  ] as const,
 }
 
-var dayValues = {
-  narrow: ['日', '一', '二', '三', '四', '五', '六'],
-  short: ['日', '一', '二', '三', '四', '五', '六'],
-  abbreviated: ['週日', '週一', '週二', '週三', '週四', '週五', '週六'],
-  wide: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
+const dayValues = {
+  narrow: ['日', '一', '二', '三', '四', '五', '六'] as const,
+  short: ['日', '一', '二', '三', '四', '五', '六'] as const,
+  abbreviated: [
+    '週日',
+    '週一',
+    '週二',
+    '週三',
+    '週四',
+    '週五',
+    '週六',
+  ] as const,
+  wide: [
+    '星期日',
+    '星期一',
+    '星期二',
+    '星期三',
+    '星期四',
+    '星期五',
+    '星期六',
+  ] as const,
 }
 
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: '上',
     pm: '下',
@@ -96,7 +114,8 @@ var dayPeriodValues = {
     night: '夜晚',
   },
 }
-var formattingDayPeriodValues = {
+
+const formattingDayPeriodValues = {
   narrow: {
     am: '上',
     pm: '下',
@@ -129,38 +148,25 @@ var formattingDayPeriodValues = {
   },
 }
 
-function ordinalNumber(dirtyNumber, dirtyOptions) {
-  var number = Number(dirtyNumber)
+const ordinalNumber: LocalizeFn<number, undefined> = (dirtyNumber, options) => {
+  const number = Number(dirtyNumber)
 
-  // If ordinal numbers depend on context, for example,
-  // if they are different for different grammatical genders,
-  // use `options.unit`:
-  //
-  //   var options = dirtyOptions || {}
-  //   var unit = String(options.unit)
-  //
-  // where `unit` can be 'year', 'quarter', 'month', 'week', 'date', 'dayOfYear',
-  // 'day', 'hour', 'minute', 'second'
-
-  var options = dirtyOptions || {}
-  var unit = String(options.unit)
-
-  switch (unit) {
+  switch (options?.unit) {
     case 'date':
-      return number.toString() + '日'
+      return number + '日'
     case 'hour':
-      return number.toString() + '時'
+      return number + '時'
     case 'minute':
-      return number.toString() + '分'
+      return number + '分'
     case 'second':
-      return number.toString() + '秒'
+      return number + '秒'
     default:
-      return '第 ' + number.toString()
+      return '第 ' + number
   }
 }
 
-var localize = {
-  ordinalNumber: ordinalNumber,
+const localize: Localize = {
+  ordinalNumber,
 
   era: buildLocalizeFn({
     values: eraValues,
@@ -170,9 +176,7 @@ var localize = {
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function (quarter) {
-      return Number(quarter) - 1
-    },
+    argumentCallback: (quarter) => (quarter - 1) as Quarter,
   }),
 
   month: buildLocalizeFn({
