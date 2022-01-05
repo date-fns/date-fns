@@ -1,33 +1,35 @@
-import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
+import type { Quarter } from '../../../../types'
+import type { Match } from '../../../types'
 import buildMatchFn from '../../../_lib/buildMatchFn/index'
+import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
 
-var matchOrdinalNumberPattern = /^(第\s*)?\d+(日|時|分|秒)?/i
-var parseOrdinalNumberPattern = /\d+/i
+const matchOrdinalNumberPattern = /^(第\s*)?\d+(日|時|分|秒)?/i
+const parseOrdinalNumberPattern = /\d+/i
 
-var matchEraPatterns = {
+const matchEraPatterns = {
   narrow: /^(前)/i,
   abbreviated: /^(前)/i,
-  wide: /^(公元前|公元)/i
+  wide: /^(公元前|公元)/i,
 }
-var parseEraPatterns = {
-  any: [/^(前)/i, /^(公元)/i]
+const parseEraPatterns = {
+  any: [/^(前)/i, /^(公元)/i] as const,
 }
 
-var matchQuarterPatterns = {
+const matchQuarterPatterns = {
   narrow: /^[1234]/i,
   abbreviated: /^第[一二三四]刻/i,
-  wide: /^第[一二三四]刻鐘/i
+  wide: /^第[一二三四]刻鐘/i,
 }
-var parseQuarterPatterns = {
-  any: [/(1|一)/i, /(2|二)/i, /(3|三)/i, /(4|四)/i]
+const parseQuarterPatterns = {
+  any: [/(1|一)/i, /(2|二)/i, /(3|三)/i, /(4|四)/i] as const,
 }
 
-var matchMonthPatterns = {
+const matchMonthPatterns = {
   narrow: /^(一|二|三|四|五|六|七|八|九|十[二一])/i,
   abbreviated: /^(一|二|三|四|五|六|七|八|九|十[二一]|\d|1[12])月/i,
-  wide: /^(一|二|三|四|五|六|七|八|九|十[二一])月/i
+  wide: /^(一|二|三|四|五|六|七|八|九|十[二一])月/i,
 }
-var parseMonthPatterns = {
+const parseMonthPatterns = {
   narrow: [
     /^一/i,
     /^二/i,
@@ -40,8 +42,8 @@ var parseMonthPatterns = {
     /^九/i,
     /^十(?!(一|二))/i,
     /^十一/i,
-    /^十二/i
-  ],
+    /^十二/i,
+  ] as const,
   any: [
     /^一|1/i,
     /^二|2/i,
@@ -54,24 +56,24 @@ var parseMonthPatterns = {
     /^九|9/i,
     /^十(?!(一|二))|10/i,
     /^十一|11/i,
-    /^十二|12/i
-  ]
+    /^十二|12/i,
+  ] as const,
 }
 
-var matchDayPatterns = {
+const matchDayPatterns = {
   narrow: /^[一二三四五六日]/i,
   short: /^[一二三四五六日]/i,
   abbreviated: /^週[一二三四五六日]/i,
-  wide: /^星期[一二三四五六日]/i
+  wide: /^星期[一二三四五六日]/i,
 }
-var parseDayPatterns = {
-  any: [/日/i, /一/i, /二/i, /三/i, /四/i, /五/i, /六/i]
+const parseDayPatterns = {
+  any: [/日/i, /一/i, /二/i, /三/i, /四/i, /五/i, /六/i] as const,
 }
 
-var matchDayPeriodPatterns = {
-  any: /^(上午?|下午?|午夜|[中正]午|早上?|下午|晚上?|凌晨)/i
+const matchDayPeriodPatterns = {
+  any: /^(上午?|下午?|午夜|[中正]午|早上?|下午|晚上?|凌晨)/i,
 }
-var parseDayPeriodPatterns = {
+const parseDayPeriodPatterns = {
   any: {
     am: /^上午?/i,
     pm: /^下午?/i,
@@ -80,24 +82,22 @@ var parseDayPeriodPatterns = {
     morning: /^早上/i,
     afternoon: /^下午/i,
     evening: /^晚上?/i,
-    night: /^凌晨/i
-  }
+    night: /^凌晨/i,
+  },
 }
 
-var match = {
+const match: Match = {
   ordinalNumber: buildMatchPatternFn({
     matchPattern: matchOrdinalNumberPattern,
     parsePattern: parseOrdinalNumberPattern,
-    valueCallback: function(value) {
-      return parseInt(value, 10)
-    }
+    valueCallback: (value) => parseInt(value, 10),
   }),
 
   era: buildMatchFn({
     matchPatterns: matchEraPatterns,
     defaultMatchWidth: 'wide',
     parsePatterns: parseEraPatterns,
-    defaultParseWidth: 'any'
+    defaultParseWidth: 'any',
   }),
 
   quarter: buildMatchFn({
@@ -105,31 +105,29 @@ var match = {
     defaultMatchWidth: 'wide',
     parsePatterns: parseQuarterPatterns,
     defaultParseWidth: 'any',
-    valueCallback: function(index) {
-      return index + 1
-    }
+    valueCallback: (index) => (index + 1) as Quarter,
   }),
 
   month: buildMatchFn({
     matchPatterns: matchMonthPatterns,
     defaultMatchWidth: 'wide',
     parsePatterns: parseMonthPatterns,
-    defaultParseWidth: 'any'
+    defaultParseWidth: 'any',
   }),
 
   day: buildMatchFn({
     matchPatterns: matchDayPatterns,
     defaultMatchWidth: 'wide',
     parsePatterns: parseDayPatterns,
-    defaultParseWidth: 'any'
+    defaultParseWidth: 'any',
   }),
 
   dayPeriod: buildMatchFn({
     matchPatterns: matchDayPeriodPatterns,
     defaultMatchWidth: 'any',
     parsePatterns: parseDayPeriodPatterns,
-    defaultParseWidth: 'any'
-  })
+    defaultParseWidth: 'any',
+  }),
 }
 
 export default match
