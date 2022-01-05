@@ -1,33 +1,48 @@
+import type { Quarter } from '../../../../types'
+import type { Localize, LocalizeFn } from '../../../types'
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
 // Vietnamese locale reference: http://www.localeplanet.com/icu/vi-VN/index.html
 // Capitalization reference: http://hcmup.edu.vn/index.php?option=com_content&view=article&id=4106%3Avit-hoa-trong-vn-bn-hanh-chinh&catid=2345%3Atham-kho&Itemid=4103&lang=vi&site=134
 
-var eraValues = {
-  narrow: ['TCN', 'SCN'],
-  abbreviated: ['trước CN', 'sau CN'],
-  wide: ['trước Công Nguyên', 'sau Công Nguyên']
+const eraValues = {
+  narrow: ['TCN', 'SCN'] as const,
+  abbreviated: ['trước CN', 'sau CN'] as const,
+  wide: ['trước Công Nguyên', 'sau Công Nguyên'] as const,
 }
 
-var quarterValues = {
-  narrow: ['1', '2', '3', '4'],
-  abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
-  wide: ['Quý 1', 'Quý 2', 'Quý 3', 'Quý 4']
+const quarterValues = {
+  narrow: ['1', '2', '3', '4'] as const,
+  abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'] as const,
+  wide: ['Quý 1', 'Quý 2', 'Quý 3', 'Quý 4'] as const,
 }
 
-var formattingQuarterValues = {
-  narrow: ['1', '2', '3', '4'],
-  abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
+const formattingQuarterValues = {
+  narrow: ['1', '2', '3', '4'] as const,
+  abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'] as const,
   // I notice many news outlet use this "quý II/2018"
-  wide: ['quý I', 'quý II', 'quý III', 'quý IV']
+  wide: ['quý I', 'quý II', 'quý III', 'quý IV'] as const,
 }
 
 // Note: in English, the names of days of the week and months are capitalized.
 // If you are making a new locale based on this one, check if the same is true for the language you're working on.
 // Generally, formatted dates should look like they are in the middle of a sentence,
 // e.g. in Spanish language the weekdays and months should be in the lowercase.
-var monthValues = {
-  narrow: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+const monthValues = {
+  narrow: [
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '10',
+    '11',
+    '12',
+  ] as const,
   abbreviated: [
     'Thg 1',
     'Thg 2',
@@ -40,8 +55,8 @@ var monthValues = {
     'Thg 9',
     'Thg 10',
     'Thg 11',
-    'Thg 12'
-  ],
+    'Thg 12',
+  ] as const,
   wide: [
     'Tháng Một',
     'Tháng Hai',
@@ -54,11 +69,11 @@ var monthValues = {
     'Tháng Chín',
     'Tháng Mười',
     'Tháng Mười Một',
-    'Tháng Mười Hai'
-  ]
+    'Tháng Mười Hai',
+  ] as const,
 }
 // In Vietnamese date formatting, month number less than 10 expected to have leading zero
-var formattingMonthValues = {
+const formattingMonthValues = {
   narrow: [
     '01',
     '02',
@@ -71,8 +86,8 @@ var formattingMonthValues = {
     '09',
     '10',
     '11',
-    '12'
-  ],
+    '12',
+  ] as const,
   abbreviated: [
     'thg 1',
     'thg 2',
@@ -85,8 +100,8 @@ var formattingMonthValues = {
     'thg 9',
     'thg 10',
     'thg 11',
-    'thg 12'
-  ],
+    'thg 12',
+  ] as const,
   wide: [
     'tháng 01',
     'tháng 02',
@@ -99,14 +114,22 @@ var formattingMonthValues = {
     'tháng 09',
     'tháng 10',
     'tháng 11',
-    'tháng 12'
-  ]
+    'tháng 12',
+  ] as const,
 }
 
-var dayValues = {
-  narrow: ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'],
-  short: ['CN', 'Th 2', 'Th 3', 'Th 4', 'Th 5', 'Th 6', 'Th 7'],
-  abbreviated: ['CN', 'Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7'],
+const dayValues = {
+  narrow: ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'] as const,
+  short: ['CN', 'Th 2', 'Th 3', 'Th 4', 'Th 5', 'Th 6', 'Th 7'] as const,
+  abbreviated: [
+    'CN',
+    'Thứ 2',
+    'Thứ 3',
+    'Thứ 4',
+    'Thứ 5',
+    'Thứ 6',
+    'Thứ 7',
+  ] as const,
   wide: [
     'Chủ Nhật',
     'Thứ Hai',
@@ -114,15 +137,15 @@ var dayValues = {
     'Thứ Tư',
     'Thứ Năm',
     'Thứ Sáu',
-    'Thứ Bảy'
-  ]
+    'Thứ Bảy',
+  ] as const,
 }
 
 // Vietnamese are used to AM/PM borrowing from English, hence `narrow` and
 // `abbreviated` are just like English but I'm leaving the `wide`
 // format being localized with abbreviations found in some systems (SÁng / CHiều);
 // however, personally, I don't think `Chiều` sounds appropriate for `PM`
-var dayPeriodValues = {
+const dayPeriodValues = {
   // narrow date period is extremely rare in Vietnamese
   // I used abbreviated form for noon, morning and afternoon
   // which are regconizable by Vietnamese, others cannot be any shorter
@@ -134,7 +157,7 @@ var dayPeriodValues = {
     morning: 'sg',
     afternoon: 'ch',
     evening: 'tối',
-    night: 'đêm'
+    night: 'đêm',
   },
   abbreviated: {
     am: 'AM',
@@ -144,7 +167,7 @@ var dayPeriodValues = {
     morning: 'sáng',
     afternoon: 'chiều',
     evening: 'tối',
-    night: 'đêm'
+    night: 'đêm',
   },
   wide: {
     am: 'SA',
@@ -154,11 +177,11 @@ var dayPeriodValues = {
     morning: 'sáng',
     afternoon: 'chiều',
     evening: 'tối',
-    night: 'đêm'
-  }
+    night: 'đêm',
+  },
 }
 
-var formattingDayPeriodValues = {
+const formattingDayPeriodValues = {
   narrow: {
     am: 'am',
     pm: 'pm',
@@ -167,7 +190,7 @@ var formattingDayPeriodValues = {
     morning: 'sg',
     afternoon: 'ch',
     evening: 'tối',
-    night: 'đêm'
+    night: 'đêm',
   },
   abbreviated: {
     am: 'AM',
@@ -177,7 +200,7 @@ var formattingDayPeriodValues = {
     morning: 'sáng',
     afternoon: 'chiều',
     evening: 'tối',
-    night: 'đêm'
+    night: 'đêm',
   },
   wide: {
     am: 'SA',
@@ -187,23 +210,13 @@ var formattingDayPeriodValues = {
     morning: 'vào buổi sáng',
     afternoon: 'vào buổi chiều',
     evening: 'vào buổi tối',
-    night: 'vào ban đêm'
-  }
+    night: 'vào ban đêm',
+  },
 }
 
-// If ordinal numbers depend on context, for example,
-// if they are different for different grammatical genders,
-// use `options.unit`:
-//
-//   var options = dirtyOptions || {}
-//   var unit = String(options.unit)
-//
-// where `unit` can be 'month', 'quarter', 'week', 'isoWeek', 'dayOfYear',
-// 'dayOfMonth' or 'dayOfWeek'
-function ordinalNumber(dirtyNumber, dirtyOptions) {
-  var options = dirtyOptions || {}
-  var unit = String(options.unit)
-  var number = parseInt(dirtyNumber, 10)
+const ordinalNumber: LocalizeFn<number, undefined> = (dirtyNumber, options) => {
+  const number = Number(dirtyNumber)
+  const unit = options?.unit
 
   if (unit === 'quarter') {
     // many news outlets use "quý I"...
@@ -251,15 +264,15 @@ function ordinalNumber(dirtyNumber, dirtyOptions) {
   }
 
   // there are no different forms of ordinal numbers in Vietnamese
-  return number
+  return String(number)
 }
 
-var localize = {
-  ordinalNumber: ordinalNumber,
+const localize: Localize = {
+  ordinalNumber,
 
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
@@ -267,29 +280,27 @@ var localize = {
     defaultWidth: 'wide',
     formattingValues: formattingQuarterValues,
     defaultFormattingWidth: 'wide',
-    argumentCallback: function(quarter) {
-      return Number(quarter) - 1
-    }
+    argumentCallback: (quarter) => (quarter - 1) as Quarter,
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
     defaultWidth: 'wide',
     formattingValues: formattingMonthValues,
-    defaultFormattingWidth: 'wide'
+    defaultFormattingWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize
