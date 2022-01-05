@@ -1,18 +1,25 @@
+import type { Quarter } from '../../../../types'
+import type { Localize, LocalizeFn } from '../../../types'
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
-var eraValues = {
-  narrow: ['ab. J.C.', 'apr. J.C.'],
-  abbreviated: ['ab. J.C.', 'apr. J.C.'],
-  wide: ['abans Jèsus-Crist', 'après Jèsus-Crist']
+const eraValues = {
+  narrow: ['ab. J.C.', 'apr. J.C.'] as const,
+  abbreviated: ['ab. J.C.', 'apr. J.C.'] as const,
+  wide: ['abans Jèsus-Crist', 'après Jèsus-Crist'] as const,
 }
 
-var quarterValues = {
-  narrow: ['1', '2', '3', '4'],
-  abbreviated: ['T1', 'T2', 'T3', 'T4'],
-  wide: ['1èr trimèstre', '2nd trimèstre', '3en trimèstre', '4en trimèstre']
+const quarterValues = {
+  narrow: ['1', '2', '3', '4'] as const,
+  abbreviated: ['T1', 'T2', 'T3', 'T4'] as const,
+  wide: [
+    '1èr trimèstre',
+    '2nd trimèstre',
+    '3en trimèstre',
+    '4en trimèstre',
+  ] as const,
 }
 
-var monthValues = {
+const monthValues = {
   narrow: [
     'GN',
     'FB',
@@ -25,9 +32,8 @@ var monthValues = {
     'ST',
     'OC',
     'NV',
-    'DC'
-  ],
-
+    'DC',
+  ] as const,
   abbreviated: [
     'gen.',
     'febr.',
@@ -40,8 +46,8 @@ var monthValues = {
     'set.',
     'oct.',
     'nov.',
-    'dec.'
-  ],
+    'dec.',
+  ] as const,
   wide: [
     'genièr',
     'febrièr',
@@ -54,14 +60,14 @@ var monthValues = {
     'setembre',
     'octòbre',
     'novembre',
-    'decembre'
-  ]
+    'decembre',
+  ] as const,
 }
 
-var dayValues = {
-  narrow: ['dg.', 'dl.', 'dm.', 'dc.', 'dj.', 'dv.', 'ds.'],
-  short: ['dg.', 'dl.', 'dm.', 'dc.', 'dj.', 'dv.', 'ds.'],
-  abbreviated: ['dg.', 'dl.', 'dm.', 'dc.', 'dj.', 'dv.', 'ds.'],
+const dayValues = {
+  narrow: ['dg.', 'dl.', 'dm.', 'dc.', 'dj.', 'dv.', 'ds.'] as const,
+  short: ['dg.', 'dl.', 'dm.', 'dc.', 'dj.', 'dv.', 'ds.'] as const,
+  abbreviated: ['dg.', 'dl.', 'dm.', 'dc.', 'dj.', 'dv.', 'ds.'] as const,
   wide: [
     'dimenge',
     'diluns',
@@ -69,11 +75,11 @@ var dayValues = {
     'dimècres',
     'dijòus',
     'divendres',
-    'dissabte'
-  ]
+    'dissabte',
+  ] as const,
 }
 
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'am',
     pm: 'pm',
@@ -82,7 +88,7 @@ var dayPeriodValues = {
     morning: 'matin',
     afternoon: 'aprèp-miègjorn',
     evening: 'vèspre',
-    night: 'nuèch'
+    night: 'nuèch',
   },
   abbreviated: {
     am: 'a.m.',
@@ -92,7 +98,7 @@ var dayPeriodValues = {
     morning: 'matin',
     afternoon: 'aprèp-miègjorn',
     evening: 'vèspre',
-    night: 'nuèch'
+    night: 'nuèch',
   },
   wide: {
     am: 'a.m.',
@@ -102,10 +108,11 @@ var dayPeriodValues = {
     morning: 'matin',
     afternoon: 'aprèp-miègjorn',
     evening: 'vèspre',
-    night: 'nuèch'
-  }
+    night: 'nuèch',
+  },
 }
-var formattingDayPeriodValues = {
+
+const formattingDayPeriodValues = {
   narrow: {
     am: 'am',
     pm: 'pm',
@@ -114,7 +121,7 @@ var formattingDayPeriodValues = {
     morning: 'del matin',
     afternoon: 'de l’aprèp-miègjorn',
     evening: 'del ser',
-    night: 'de la nuèch'
+    night: 'de la nuèch',
   },
   abbreviated: {
     am: 'AM',
@@ -124,7 +131,7 @@ var formattingDayPeriodValues = {
     morning: 'del matin',
     afternoon: 'de l’aprèp-miègjorn',
     evening: 'del ser',
-    night: 'de la nuèch'
+    night: 'de la nuèch',
   },
   wide: {
     am: 'ante meridiem',
@@ -134,69 +141,70 @@ var formattingDayPeriodValues = {
     morning: 'del matin',
     afternoon: 'de l’aprèp-miègjorn',
     evening: 'del ser',
-    night: 'de la nuèch'
+    night: 'de la nuèch',
+  },
+}
+
+const ordinalNumber: LocalizeFn<number, undefined> = (dirtyNumber, options) => {
+  const number = Number(dirtyNumber)
+  const unit = options?.unit
+  let ordinal
+
+  switch (number) {
+    case 1:
+      ordinal = 'èr'
+      break
+    case 2:
+      ordinal = 'nd'
+      break
+    default:
+      ordinal = 'en'
   }
+
+  // feminine for year, week, hour, minute, second
+  if (
+    unit === 'year' ||
+    unit === 'week' ||
+    unit === 'hour' ||
+    unit === 'minute' ||
+    unit === 'second'
+  ) {
+    ordinal += 'a'
+  }
+
+  return number + ordinal
 }
 
-/**
- * @param {Number} number
- * @param {Object} [_period]
- */
-
-function ordinalNumber(number, period) {
-        var options = period || {}
-        var unit = String(options.unit)
-        var ordinal
-        switch (number) {
-          case 1:
-            ordinal = 'èr';
-            break;
-          case 2:
-            ordinal = 'nd';
-            break;
-          default:
-            ordinal = 'en';
-}
-        // feminine for year, week, hour, minute, second
-        if (unit === 'year' || unit === 'week' || unit === 'hour' || unit === 'minute' || unit === 'second') {
-            ordinal = ordinal + 'a';
-        }
-
-        return number + ordinal;
-    }
-
-var localize = {
-  ordinalNumber: ordinalNumber,
+const localize: Localize = {
+  ordinalNumber,
 
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
-      return Number(quarter) - 1
-    }
+    argumentCallback: (quarter) => (quarter - 1) as Quarter,
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize
