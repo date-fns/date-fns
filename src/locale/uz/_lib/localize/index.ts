@@ -1,23 +1,30 @@
+import type { Quarter } from '../../../../types'
+import type { Localize, LocalizeFn } from '../../../types'
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
-var eraValues = {
-  narrow: ['M.A', 'M.'],
-  abbreviated: ['M.A', 'M.'],
-  wide: ['Miloddan Avvalgi', 'Milodiy']
+const eraValues = {
+  narrow: ['M.A', 'M.'] as const,
+  abbreviated: ['M.A', 'M.'] as const,
+  wide: ['Miloddan Avvalgi', 'Milodiy'] as const,
 }
 
-var quarterValues = {
-  narrow: ['1', '2', '3', '4'],
-  abbreviated: ['CH.1', 'CH.2', 'CH.3', 'CH.4'],
-  wide: ['1-chi chorak', '2-chi chorak', '3-chi chorak', '4-chi chorak']
+const quarterValues = {
+  narrow: ['1', '2', '3', '4'] as const,
+  abbreviated: ['CH.1', 'CH.2', 'CH.3', 'CH.4'] as const,
+  wide: [
+    '1-chi chorak',
+    '2-chi chorak',
+    '3-chi chorak',
+    '4-chi chorak',
+  ] as const,
 }
 
 // Note: in English, the names of days of the week and months are capitalized.
 // If you are making a new locale based on this one, check if the same is true for the language you're working on.
 // Generally, formatted dates should look like they are in the middle of a sentence,
 // e.g. in Spanish language the weekdays and months should be in the lowercase.
-var monthValues = {
-  narrow: ['Y', 'F', 'M', 'A', 'M', 'I', 'I', 'A', 'S', 'O', 'N', 'D'],
+const monthValues = {
+  narrow: ['Y', 'F', 'M', 'A', 'M', 'I', 'I', 'A', 'S', 'O', 'N', 'D'] as const,
   abbreviated: [
     'Yan',
     'Fev',
@@ -30,8 +37,8 @@ var monthValues = {
     'Sen',
     'Okt',
     'Noy',
-    'Dek'
-  ],
+    'Dek',
+  ] as const,
   wide: [
     'Yanvar',
     'Fevral',
@@ -44,14 +51,14 @@ var monthValues = {
     'Sentabr',
     'Oktabr',
     'Noyabr',
-    'Dekabr'
-  ]
+    'Dekabr',
+  ] as const,
 }
 
 var dayValues = {
-  narrow: ['Y', 'D', 'S', 'CH', 'P', 'J', 'SH'],
-  short: ['Ya', 'Du', 'Se', 'Cho', 'Pa', 'Ju', 'Sha'],
-  abbreviated: ['Yak', 'Dush', 'Sesh', 'Chor', 'Pay', 'Jum', 'Shan'],
+  narrow: ['Y', 'D', 'S', 'CH', 'P', 'J', 'SH'] as const,
+  short: ['Ya', 'Du', 'Se', 'Cho', 'Pa', 'Ju', 'Sha'] as const,
+  abbreviated: ['Yak', 'Dush', 'Sesh', 'Chor', 'Pay', 'Jum', 'Shan'] as const,
   wide: [
     'Yakshanba',
     'Dushanba',
@@ -59,11 +66,11 @@ var dayValues = {
     'Chorshanba',
     'Payshanba',
     'Juma',
-    'Shanba'
-  ]
+    'Shanba',
+  ] as const,
 }
 
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'a',
     pm: 'p',
@@ -72,7 +79,7 @@ var dayPeriodValues = {
     morning: 'ertalab',
     afternoon: 'tushdan keyin',
     evening: 'kechqurun',
-    night: 'tun'
+    night: 'tun',
   },
   abbreviated: {
     am: 'AM',
@@ -82,7 +89,7 @@ var dayPeriodValues = {
     morning: 'ertalab',
     afternoon: 'tushdan keyin',
     evening: 'kechqurun',
-    night: 'tun'
+    night: 'tun',
   },
   wide: {
     am: 'a.m.',
@@ -92,10 +99,11 @@ var dayPeriodValues = {
     morning: 'ertalab',
     afternoon: 'tushdan keyin',
     evening: 'kechqurun',
-    night: 'tun'
-  }
+    night: 'tun',
+  },
 }
-var formattingDayPeriodValues = {
+
+const formattingDayPeriodValues = {
   narrow: {
     am: 'a',
     pm: 'p',
@@ -104,7 +112,7 @@ var formattingDayPeriodValues = {
     morning: 'ertalab',
     afternoon: 'tushdan keyin',
     evening: 'kechqurun',
-    night: 'tun'
+    night: 'tun',
   },
   abbreviated: {
     am: 'AM',
@@ -114,7 +122,7 @@ var formattingDayPeriodValues = {
     morning: 'ertalab',
     afternoon: 'tushdan keyin',
     evening: 'kechqurun',
-    night: 'tun'
+    night: 'tun',
   },
   wide: {
     am: 'a.m.',
@@ -124,58 +132,47 @@ var formattingDayPeriodValues = {
     morning: 'ertalab',
     afternoon: 'tushdan keyin',
     evening: 'kechqurun',
-    night: 'tun'
-  }
+    night: 'tun',
+  },
 }
 
-function ordinalNumber(dirtyNumber, _dirtyOptions) {
-  var number = Number(dirtyNumber)
-
-  // If ordinal numbers depend on context, for example,
-  // if they are different for different grammatical genders,
-  // use `options.unit`:
-  //
-  //   var options = dirtyOptions || {}
-  //   var unit = String(options.unit)
-  //
-  // where `unit` can be 'year', 'quarter', 'month', 'week', 'date', 'dayOfYear',
-  // 'day', 'hour', 'minute', 'second'
-
-  return number
+const ordinalNumber: LocalizeFn<number, undefined> = (
+  dirtyNumber,
+  _options
+) => {
+  return String(dirtyNumber)
 }
 
-var localize = {
-  ordinalNumber: ordinalNumber,
+const localize: Localize = {
+  ordinalNumber,
 
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
-      return Number(quarter) - 1
-    }
+    argumentCallback: (quarter) => (quarter - 1) as Quarter,
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize
