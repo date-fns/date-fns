@@ -1,7 +1,3 @@
-import toInteger from '../_lib/toInteger/index'
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name setMilliseconds
  * @category Millisecond Helpers
@@ -9,10 +5,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @description
  * Set the milliseconds to the given date.
- *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param date - the date to be changed
  * @param milliseconds - the milliseconds of the new date
@@ -24,13 +16,11 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> Mon Sep 01 2014 11:30:40.300
  */
 export default function setMilliseconds(
-  dirtyDate: Date | number,
-  dirtyMilliseconds: number
+  date: Date | number,
+  milleseconds: number
 ): Date {
-  requiredArgs(2, arguments)
-
-  const date = toDate(dirtyDate)
-  const milliseconds = toInteger(dirtyMilliseconds)
-  date.setMilliseconds(milliseconds)
-  return date
+  const result = new Date(date)
+  const millisecondsTransformed = Math.trunc(milleseconds)
+  result.setMilliseconds(millisecondsTransformed)
+  return result
 }
