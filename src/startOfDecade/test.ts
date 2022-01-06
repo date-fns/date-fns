@@ -21,14 +21,4 @@ describe('startOfDecade', () => {
     startOfDecade(date)
     assert.deepStrictEqual(date, new Date(1978, 10 /* Nov */, 14))
   })
-
-  it('returns `Invalid Date` if the given date is invalid', () => {
-    const result = startOfDecade(new Date(NaN))
-    assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(startOfDecade.bind(null), TypeError)
-  })
 })
