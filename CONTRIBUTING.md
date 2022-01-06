@@ -83,7 +83,7 @@ Please follow the main contributing rules, to maintain date-fns' top quality:
 
 4. Run `yarn install` to install the dev dependencies
 
-5. Run `yarn prepare` to create the pre-commit hook that runs `Prettier` automatically
+5. Run `yarn prepare` to create the pre-commit hook that formats staged files with `Prettier` automatically
 
 ## Testing
 
