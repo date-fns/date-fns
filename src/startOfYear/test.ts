@@ -32,14 +32,4 @@ describe('startOfYear', () => {
     const result = startOfYear(initialDate)
     assert.deepStrictEqual(result, expectedResult)
   })
-
-  it('returns `Invalid Date` if the given date is invalid', () => {
-    const result = startOfYear(new Date(NaN))
-    assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(startOfYear.bind(null), TypeError)
-  })
 })
