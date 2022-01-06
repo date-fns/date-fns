@@ -14,9 +14,9 @@
 
 - [Testing](#testing)
 
-  - [Unit tests](#unit-tests)
-  - [REPL](#repl)
-  - [Test build](#test-build)
+- [Unit tests](#unit-tests)
+- [REPL](#repl)
+- [Test build](#test-build)
 
 - [Code Style Guide](#code-style-guide)
 
