@@ -2,7 +2,7 @@ import type { FormatLong } from '../../../types'
 import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index'
 
 const dateFormats = {
-  full: "EEEE, d 'de' MMMM y",
+  full: "EEEE d 'de' MMMM y",
   long: "d 'de' MMMM y",
   medium: 'd MMM y',
   short: 'dd/MM/y',
