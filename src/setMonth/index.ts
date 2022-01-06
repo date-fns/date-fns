@@ -1,7 +1,4 @@
-import toInteger from '../_lib/toInteger/index'
-import toDate from '../toDate/index'
 import getDaysInMonth from '../getDaysInMonth/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name setMonth
@@ -10,10 +7,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @description
  * Set the month to the given date.
- *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param date - the date to be changed
  * @param month - the month of the new date
@@ -24,23 +17,18 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = setMonth(new Date(2014, 8, 1), 1)
  * //=> Sat Feb 01 2014 00:00:00
  */
-export default function setMonth(
-  dirtyDate: Date | number,
-  dirtyMonth: number
-): Date {
-  requiredArgs(2, arguments)
-
-  const date = toDate(dirtyDate)
-  const month = toInteger(dirtyMonth)
-  const year = date.getFullYear()
-  const day = date.getDate()
+export default function setMonth(date: Date | number, month: number): Date {
+  const result = new Date(date)
+  const resultMonth = Math.trunc(month)
+  const year = result.getFullYear()
+  const day = result.getDate()
 
   const dateWithDesiredMonth = new Date(0)
-  dateWithDesiredMonth.setFullYear(year, month, 15)
+  dateWithDesiredMonth.setFullYear(year, resultMonth, 15)
   dateWithDesiredMonth.setHours(0, 0, 0, 0)
   const daysInMonth = getDaysInMonth(dateWithDesiredMonth)
   // Set the last day of the new month
   // if the original date was the last day of the longer month
-  date.setMonth(month, Math.min(day, daysInMonth))
-  return date
+  result.setMonth(resultMonth, Math.min(day, daysInMonth))
+  return result
 }
