@@ -16,8 +16,8 @@ const parseEraPatterns = {
 }
 
 const matchQuarterPatterns = {
-  narrow: /^[1234]/i,
-  abbreviated: /^T[1234]/i,
+  narrow: /^T[1234]/i,
+  abbreviated: /^[1234](èr|nd|en)? trim\.?/i,
   wide: /^[1234](èr|nd|en)? trimèstre/i,
 }
 const parseQuarterPatterns = {

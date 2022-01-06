@@ -9,8 +9,8 @@ const eraValues = {
 }
 
 const quarterValues = {
-  narrow: ['1', '2', '3', '4'] as const,
-  abbreviated: ['T1', 'T2', 'T3', 'T4'] as const,
+  narrow: ['T1', 'T2', 'T3', 'T4'] as const,
+  abbreviated: ['1èr trim.', '2nd trim.', '3en trim.', '4en trim.'] as const,
   wide: [
     '1èr trimèstre',
     '2nd trimèstre',
