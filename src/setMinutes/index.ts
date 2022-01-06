@@ -1,7 +1,3 @@
-import toInteger from '../_lib/toInteger/index'
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name setMinutes
  * @category Minute Helpers
@@ -9,10 +5,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @description
  * Set the minutes to the given date.
- *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param date - the date to be changed
  * @param minutes - the minutes of the new date
@@ -23,14 +15,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = setMinutes(new Date(2014, 8, 1, 11, 30, 40), 45)
  * //=> Mon Sep 01 2014 11:45:40
  */
-export default function setMinutes(
-  dirtyDate: Date | number,
-  dirtyMinutes: number
-): Date {
-  requiredArgs(2, arguments)
-
-  const date = toDate(dirtyDate)
-  const minutes = toInteger(dirtyMinutes)
-  date.setMinutes(minutes)
-  return date
+export default function setMinutes(date: Date | number, minutes: number): Date {
+  const result = new Date(date)
+  const transformedMinutes = Math.trunc(minutes)
+  result.setMinutes(transformedMinutes)
+  return result
 }
