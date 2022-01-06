@@ -1,6 +1,3 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name startOfYear
  * @category Year Helpers
@@ -18,12 +15,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = startOfYear(new Date(2014, 8, 2, 11, 55, 00))
  * //=> Wed Jan 01 2014 00:00:00
  */
-export default function startOfYear(dirtyDate: Date | number): Date {
-  requiredArgs(1, arguments)
-
-  const cleanDate = toDate(dirtyDate)
-  const date = new Date(0)
-  date.setFullYear(cleanDate.getFullYear(), 0, 1)
-  date.setHours(0, 0, 0, 0)
-  return date
+export default function startOfYear(date: Date | number): Date {
+  const transformedDate = new Date(date)
+  const result = new Date(0)
+  result.setFullYear(transformedDate.getFullYear(), 0, 1)
+  result.setHours(0, 0, 0, 0)
+  return result
 }
