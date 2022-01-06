@@ -1,43 +1,42 @@
-// @flow
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import setQuarter from '.'
 
-describe('setQuarter', function() {
-  it('sets the quarter of the year', function() {
+describe('setQuarter', () => {
+  it('sets the quarter of the year', () => {
     const result = setQuarter(new Date(2014, 6 /* Jul */, 2), 1)
-    assert.deepEqual(result, new Date(2014, 0 /* Jan */, 2))
+    assert.deepStrictEqual(result, new Date(2014, 0 /* Jan */, 2))
   })
 
-  it('sets the last day of the month if the original date was the last day of a longer month', function() {
+  it('sets the last day of the month if the original date was the last day of a longer month', () => {
     const result = setQuarter(new Date(2014, 10 /* Nov */, 30), 1)
-    assert.deepEqual(result, new Date(2014, 1 /* Feb */, 28))
+    assert.deepStrictEqual(result, new Date(2014, 1 /* Feb */, 28))
   })
 
-  it('accepts a timestamp', function() {
+  it('accepts a timestamp', () => {
     const result = setQuarter(new Date(2014, 6 /* Jul */, 1).getTime(), 4)
-    assert.deepEqual(result, new Date(2014, 9 /* Oct */, 1))
+    assert.deepStrictEqual(result, new Date(2014, 9 /* Oct */, 1))
   })
 
-  it('converts a fractional number to an integer', function() {
+  it('converts a fractional number to an integer', () => {
     const result = setQuarter(new Date(2014, 6 /* Jul */, 2), 1.951)
-    assert.deepEqual(result, new Date(2014, 0 /* Jan */, 2))
+    assert.deepStrictEqual(result, new Date(2014, 0 /* Jan */, 2))
   })
 
-  it('implicitly converts number arguments', function() {
+  it('implicitly converts number arguments', () => {
     // @ts-expect-error
     const result = setQuarter(new Date(2014, 6 /* Jul */, 2), '1')
-    assert.deepEqual(result, new Date(2014, 0 /* Jan */, 2))
+    assert.deepStrictEqual(result, new Date(2014, 0 /* Jan */, 2))
   })
 
-  it('does not mutate the original date', function() {
+  it('does not mutate the original date', () => {
     const date = new Date(2014, 6 /* Jul */, 1)
     setQuarter(date, 2)
-    assert.deepEqual(date, new Date(2014, 6 /* Jul */, 1))
+    assert.deepStrictEqual(date, new Date(2014, 6 /* Jul */, 1))
   })
 
-  it('handles dates before 100 AD', function() {
+  it('handles dates before 100 AD', () => {
     const initialDate = new Date(0)
     initialDate.setFullYear(0, 10 /* Nov */, 30)
     initialDate.setHours(0, 0, 0, 0)
@@ -45,21 +44,16 @@ describe('setQuarter', function() {
     expectedResult.setFullYear(0, 1 /* Feb */, 29)
     expectedResult.setHours(0, 0, 0, 0)
     const result = setQuarter(initialDate, 1)
-    assert.deepEqual(result, expectedResult)
+    assert.deepStrictEqual(result, expectedResult)
   })
 
-  it('returns `Invalid Date` if the given date is invalid', function() {
+  it('returns `Invalid Date` if the given date is invalid', () => {
     const result = setQuarter(new Date(NaN), 1)
     assert(result instanceof Date && isNaN(result.getTime()))
   })
 
-  it('returns `Invalid Date` if the given amount is NaN', function() {
+  it('returns `Invalid Date` if the given amount is NaN', () => {
     const result = setQuarter(new Date(2014, 6 /* Jul */, 2), NaN)
     assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', function() {
-    assert.throws(setQuarter.bind(null), TypeError)
-    assert.throws(setQuarter.bind(null, 1), TypeError)
   })
 })

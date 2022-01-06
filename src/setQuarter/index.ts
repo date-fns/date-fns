@@ -1,7 +1,4 @@
-import toInteger from '../_lib/toInteger/index'
-import toDate from '../toDate/index'
 import setMonth from '../setMonth/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name setQuarter
@@ -10,10 +7,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @description
  * Set the year quarter to the given date.
- *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param date - the date to be changed
  * @param quarter - the quarter of the new date
@@ -24,15 +17,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = setQuarter(new Date(2014, 6, 2), 2)
  * //=> Wed Apr 02 2014 00:00:00
  */
-export default function setQuarter(
-  dirtyDate: Date | number,
-  dirtyQuarter: number
-): Date {
-  requiredArgs(2, arguments)
-
-  const date = toDate(dirtyDate)
-  const quarter = toInteger(dirtyQuarter)
-  const oldQuarter = Math.floor(date.getMonth() / 3) + 1
-  const diff = quarter - oldQuarter
-  return setMonth(date, date.getMonth() + diff * 3)
+export default function setQuarter(date: Date | number, quarter: number): Date {
+  const resultDate = new Date(date)
+  const resultQuarter = Math.trunc(quarter)
+  const oldQuarter = Math.floor(resultDate.getMonth() / 3) + 1
+  const diff = resultQuarter - oldQuarter
+  return setMonth(resultDate, resultDate.getMonth() + diff * 3)
 }
