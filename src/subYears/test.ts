@@ -6,7 +6,6 @@ import subYears from '.'
 describe('subYears', () => {
   it('subtracts the given number of years', () => {
     const result = subYears(new Date(2014, 8 /* Sep */, 1), 5)
-    console.log(111, result)
     assert.deepStrictEqual(result, new Date(2009, 8 /* Sep */, 1))
   })
 
