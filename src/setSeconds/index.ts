@@ -1,7 +1,3 @@
-import toInteger from '../_lib/toInteger/index'
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name setSeconds
  * @category Second Helpers
@@ -9,10 +5,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @description
  * Set the seconds to the given date.
- *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param date - the date to be changed
  * @param seconds - the seconds of the new date
@@ -23,14 +15,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = setSeconds(new Date(2014, 8, 1, 11, 30, 40), 45)
  * //=> Mon Sep 01 2014 11:30:45
  */
-export default function setSeconds(
-  dirtyDate: Date | number,
-  dirtySeconds: number
-): Date {
-  requiredArgs(2, arguments)
-
-  const date = toDate(dirtyDate)
-  const seconds = toInteger(dirtySeconds)
-  date.setSeconds(seconds)
-  return date
+export default function setSeconds(date: Date | number, seconds: number): Date {
+  const result = new Date(date)
+  const secondsTransformed = Math.trunc(seconds)
+  result.setSeconds(secondsTransformed)
+  return result
 }
