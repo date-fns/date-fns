@@ -1,6 +1,3 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name startOfHour
  * @category Hour Helpers
@@ -10,10 +7,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * Return the start of an hour for the given date.
  * The result will be in the local timezone.
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
  * @param date - the original date
  * @returns the start of an hour
  *
@@ -22,10 +15,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = startOfHour(new Date(2014, 8, 2, 11, 55))
  * //=> Tue Sep 02 2014 11:00:00
  */
-export default function startOfHour(dirtyDate: Date | number): Date {
-  requiredArgs(1, arguments)
-
-  const date = toDate(dirtyDate)
-  date.setMinutes(0, 0, 0)
-  return date
+export default function startOfHour(date: Date | number): Date {
+  const result = new Date(date)
+  result.setMinutes(0, 0, 0)
+  return result
 }
