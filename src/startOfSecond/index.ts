@@ -1,6 +1,3 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name startOfSecond
  * @category Second Helpers
@@ -18,10 +15,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = startOfSecond(new Date(2014, 11, 1, 22, 15, 45, 400))
  * //=> Mon Dec 01 2014 22:15:45.000
  */
-export default function startOfSecond(dirtyDate: Date | number): Date {
-  requiredArgs(1, arguments)
-
-  const date = toDate(dirtyDate)
-  date.setMilliseconds(0)
-  return date
+export default function startOfSecond(date: Date | number): Date {
+  const result = new Date(date)
+  result.setMilliseconds(0)
+  return result
 }
