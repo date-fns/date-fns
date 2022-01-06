@@ -1,24 +1,23 @@
-// @flow
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import sinon from 'sinon'
 import startOfToday from '.'
 
-describe('startOfToday', function() {
+describe('startOfToday', () => {
   let clock
-  beforeEach(function() {
+  beforeEach(() => {
     clock = sinon.useFakeTimers(
       new Date(2014, 8 /* Sep */, 25, 14, 30, 45, 500).getTime()
     )
   })
 
-  afterEach(function() {
+  afterEach(() => {
     clock.restore()
   })
 
-  it('returns the current date with the time setted to 00:00:00', function() {
+  it('returns the current date with the time setted to 00:00:00', () => {
     var result = startOfToday()
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 25))
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 25))
   })
 })
