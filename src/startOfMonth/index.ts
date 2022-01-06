@@ -1,6 +1,3 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name startOfMonth
  * @category Month Helpers
@@ -18,11 +15,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = startOfMonth(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Mon Sep 01 2014 00:00:00
  */
-export default function startOfMonth(dirtyDate: Date | number): Date {
-  requiredArgs(1, arguments)
-
-  const date = toDate(dirtyDate)
-  date.setDate(1)
-  date.setHours(0, 0, 0, 0)
-  return date
+export default function startOfMonth(date: Date | number): Date {
+  const result = new Date(date)
+  result.setDate(1)
+  result.setHours(0, 0, 0, 0)
+  return result
 }
