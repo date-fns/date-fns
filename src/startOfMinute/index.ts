@@ -1,6 +1,3 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name startOfMinute
  * @category Minute Helpers
@@ -10,10 +7,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * Return the start of a minute for the given date.
  * The result will be in the local timezone.
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
  * @param date - the original date
  * @returns the start of a minute
  *
@@ -22,10 +15,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = startOfMinute(new Date(2014, 11, 1, 22, 15, 45, 400))
  * //=> Mon Dec 01 2014 22:15:00
  */
-export default function startOfMinute(dirtyDate: Date | number): Date {
-  requiredArgs(1, arguments)
-
-  const date = toDate(dirtyDate)
-  date.setSeconds(0, 0)
-  return date
+export default function startOfMinute(date: Date | number): Date {
+  const result = new Date(date)
+  result.setSeconds(0, 0)
+  return result
 }
