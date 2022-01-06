@@ -14,10 +14,9 @@
 
 - [Testing](#testing)
 
-  - [Unit tests](#unit-tests)  
+  - [Unit tests](#unit-tests)
   - [REPL](#repl)
   - [Test build](#test-build)
-
 
 - [Code Style Guide](#code-style-guide)
 
@@ -28,8 +27,7 @@
   - [JSDoc](#jsdoc)
 
 ## How to Help?
-
-Help is always welcome. There are areas where you can help:
+        Help is always welcome. There are areas where you can help:
 
 - The core functionality (performance improvements, bug fixes,
   new features, etc.).
@@ -82,7 +80,9 @@ Please follow the main contributing rules, to maintain date-fns' top quality:
 
 3. Fork the project, and clone your fork of the repo
 
-4. Run `yarn` to install the dev dependencies
+4. Run `yarn install` to install the dev dependencies
+
+5. Run `yarn prepare` to create the pre-commit hook that runs `Prettier` automatically
 
 ## Testing
 
@@ -117,6 +117,7 @@ yarn babel-node -x .ts,.js
 ```
 
 and then require invididual functions:
+
 ```sh
 > const toDate = require('./src/toDate')
 undefined
@@ -126,6 +127,7 @@ undefined
 ```
 
 or all functions (slower):
+
 ```sh
 > const fns = require('./src')
 undefined
@@ -162,8 +164,8 @@ yarn lint
 ### JSDoc
 
 - [JSDoc](https://jsdoc.app/) is used for the code documentation. Along with the
-standard JSDoc tags, date-fns uses `@category` tag that allows
-to group functions.
+  standard JSDoc tags, date-fns uses `@category` tag that allows
+  to group functions.
 
 - [jsdoc-to-markdown](https://github.com/jsdoc2md/jsdoc-to-markdown/) is used to parse
-JSDoc annotations.
+  JSDoc annotations.

@@ -24,15 +24,11 @@
     "lint": "eslint .",
     "lint-types": "eslint --config=.ts-eslintrc.js typings.d.ts",
     "locale-snapshots": "env TZ=utc babel-node --extensions .ts,.js ./scripts/build/localeSnapshots/index.js",
-    "stats": "cloc . --exclude-dir=node_modules,tmp,.git"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+    "stats": "cloc . --exclude-dir=node_modules,tmp,.git",
+    "prepare": "husky install"
   },
   "lint-staged": {
-    "*.{js,ts,json}": [
+    "*.{js,ts,json,md}": [
       "prettier --write",
       "git add"
     ]
@@ -71,7 +67,7 @@
     "glob-promise": "^2.0.0",
     "globby": "^11.0.3",
     "gzip-size-cli": "^1.0.0",
-    "husky": "^1.0.1",
+    "husky": "^7.0.4",
     "istanbul-instrumenter-loader": "^3.0.1",
     "jest": "^27.0.4",
     "js-beautify": "^1.5.10",
@@ -88,7 +84,7 @@
     "karma-sauce-launcher": "^1.2.0",
     "karma-sourcemap-loader": "^0.3.5",
     "karma-webpack": "^4.0.2",
-    "lint-staged": "^7.3.0",
+    "lint-staged": "^12.1.7",
     "lodash": "^4.17.15",
     "lodash.clonedeep": "^4.5.0",
     "mocha": "^3.5.3",
@@ -96,7 +92,7 @@
     "mz": "^2.7.0",
     "node-fetch": "^1.7.3",
     "p-limit": "^3.1.0",
-    "prettier": "2",
+    "prettier": "^2.5.1",
     "simple-git": "^2.35.2",
     "sinon": "^7.4.1",
     "size-limit": "^0.21.0",
