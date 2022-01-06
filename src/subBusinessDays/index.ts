@@ -1,6 +1,4 @@
 import addBusinessDays from '../addBusinessDays/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name subBusinessDays
@@ -20,11 +18,9 @@ import toInteger from '../_lib/toInteger/index'
  * //=> Mon Aug 18 2014 00:00:00 (skipped weekend days)
  */
 export default function subBusinessDays(
-  dirtyDate: Date | number,
-  dirtyAmount: number
+  date: Date | number,
+  amount: number
 ): Date {
-  requiredArgs(2, arguments)
-
-  const amount = toInteger(dirtyAmount)
-  return addBusinessDays(dirtyDate, -amount)
+  // const amount = toInteger(dirtyAmount)
+  return addBusinessDays(date, -Math.trunc(amount))
 }
