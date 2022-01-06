@@ -27,7 +27,8 @@
   - [JSDoc](#jsdoc)
 
 ## How to Help?
-        Help is always welcome. There are areas where you can help:
+
+Help is always welcome. There are areas where you can help:
 
 - The core functionality (performance improvements, bug fixes,
   new features, etc.).
