@@ -1,6 +1,3 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name startOfMonth
  * @category Month Helpers
@@ -10,10 +7,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * Return the start of a month for the given date.
  * The result will be in the local timezone.
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
  * @param date - the original date
  * @returns the start of a month
  *
@@ -22,11 +15,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = startOfMonth(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Mon Sep 01 2014 00:00:00
  */
-export default function startOfMonth(dirtyDate: Date | number): Date {
-  requiredArgs(1, arguments)
-
-  const date = toDate(dirtyDate)
-  date.setDate(1)
-  date.setHours(0, 0, 0, 0)
-  return date
+export default function startOfMonth(date: Date | number): Date {
+  const result = new Date(date)
+  result.setDate(1)
+  result.setHours(0, 0, 0, 0)
+  return result
 }
