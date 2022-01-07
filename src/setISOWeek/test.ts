@@ -26,7 +26,7 @@ describe('setISOWeek', () => {
   })
 
   it('does not mutate the original date', () => {
-    var date = new Date(2014, 6 /* Jul */, 2)
+    const date = new Date(2014, 6 /* Jul */, 2)
     setISOWeek(date, 52)
     assert.deepStrictEqual(date, new Date(2014, 6 /* Jul */, 2))
   })

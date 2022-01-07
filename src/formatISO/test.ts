@@ -92,8 +92,8 @@ describe('formatISO', () => {
   describe('implicitly converts options', () => {
     it('`format`', () => {
       // eslint-disable-next-line no-new-wrappers
-      var format = new String('basic')
-      var date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
+      const format = new String('basic')
+      const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
       const tzOffsetExtended = generateOffset(date)
 
       const result = formatISO(
@@ -106,8 +106,8 @@ describe('formatISO', () => {
 
     it('`representation`', () => {
       // eslint-disable-next-line no-new-wrappers
-      var representation = new String('time')
-      var date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
+      const representation = new String('time')
+      const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
       const tzOffsetExtended = generateOffset(date)
 
       const result = formatISO(
@@ -120,7 +120,7 @@ describe('formatISO', () => {
   })
 
   it("throws `RangeError` if `options.format` is not 'extended' or 'basic'", () => {
-    var block = () =>
+    const block = () =>
       formatISO(new Date(2019, 2 /* Mar */, 3), {
         // @ts-expect-error
         format: 'something else',
@@ -129,7 +129,7 @@ describe('formatISO', () => {
   })
 
   it("throws `RangeError` if `options.representation` is not 'date', 'time' or 'complete'", () => {
-    var block = () =>
+    const block = () =>
       formatISO(new Date(2019, 2 /* Mar */, 3), {
         // @ts-expect-error
         representation: 'something else',

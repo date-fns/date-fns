@@ -31,7 +31,10 @@ describe('formatRFC3339', () => {
     const date = new Date(2019, 2 /* Mar */, 3, 19, 0, 52, 123)
     assert(formatRFC3339(date) === `2019-03-03T19:00:52${generateOffset(date)}`)
 
-    var getTimezoneOffsetStub = sinon.stub(Date.prototype, 'getTimezoneOffset')
+    const getTimezoneOffsetStub = sinon.stub(
+      Date.prototype,
+      'getTimezoneOffset'
+    )
 
     getTimezoneOffsetStub.returns(0)
     assert(formatRFC3339(date) === '2019-03-03T19:00:52Z')

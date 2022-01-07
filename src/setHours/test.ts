@@ -26,7 +26,7 @@ describe('setHours', () => {
   })
 
   it('does not mutate the original date', () => {
-    var date = new Date(2014, 8 /* Sep */, 1, 11)
+    const date = new Date(2014, 8 /* Sep */, 1, 11)
     setHours(date, 12)
     assert.deepStrictEqual(date, new Date(2014, 8 /* Sep */, 1, 11))
   })

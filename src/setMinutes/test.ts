@@ -29,7 +29,7 @@ describe('setMinutes', () => {
   })
 
   it('does not mutate the original date', () => {
-    var date = new Date(2014, 8 /* Sep */, 1, 11, 30)
+    const date = new Date(2014, 8 /* Sep */, 1, 11, 30)
     setMinutes(date, 15)
     assert.deepStrictEqual(date, new Date(2014, 8 /* Sep */, 1, 11, 30))
   })

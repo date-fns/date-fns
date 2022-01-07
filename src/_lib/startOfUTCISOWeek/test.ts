@@ -5,19 +5,19 @@ import startOfUTCISOWeek from '.'
 
 describe('startOfUTCISOWeek', () => {
   it('returns the date with the time set to 00:00:00 and the date set to the first day of an ISO week', () => {
-    var date = new Date(Date.UTC(2014, 8 /* Sep */, 2, 11, 55, 0))
-    var result = startOfUTCISOWeek(date)
+    const date = new Date(Date.UTC(2014, 8 /* Sep */, 2, 11, 55, 0))
+    const result = startOfUTCISOWeek(date)
     assert.deepStrictEqual(result, new Date(Date.UTC(2014, 8 /* Sep */, 1)))
   })
 
   it('accepts a timestamp', () => {
-    var date = new Date(Date.UTC(2014, 1 /* Feb */, 11, 11, 55, 0)).getTime()
-    var result = startOfUTCISOWeek(date)
+    const date = new Date(Date.UTC(2014, 1 /* Feb */, 11, 11, 55, 0)).getTime()
+    const result = startOfUTCISOWeek(date)
     assert.deepStrictEqual(result, new Date(Date.UTC(2014, 1 /* Feb */, 10)))
   })
 
   it('does not mutate the original date', () => {
-    var date = new Date(Date.UTC(2014, 8 /* Sep */, 2, 11, 55, 0))
+    const date = new Date(Date.UTC(2014, 8 /* Sep */, 2, 11, 55, 0))
     startOfUTCISOWeek(date)
     assert.deepStrictEqual(
       date,
@@ -26,7 +26,7 @@ describe('startOfUTCISOWeek', () => {
   })
 
   it('returns `Invalid Date` if the given date is invalid', () => {
-    var result = startOfUTCISOWeek(new Date(NaN))
+    const result = startOfUTCISOWeek(new Date(NaN))
     assert(result instanceof Date && isNaN(result.getTime()))
   })
 

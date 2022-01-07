@@ -26,7 +26,7 @@ describe('setYear', () => {
   })
 
   it('does not mutate the original date', () => {
-    var date = new Date(2014, 8 /* Sep */, 1)
+    const date = new Date(2014, 8 /* Sep */, 1)
     setYear(date, 2011)
     assert.deepStrictEqual(date, new Date(2014, 8 /* Sep */, 1))
   })

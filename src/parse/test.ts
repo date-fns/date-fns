@@ -4,10 +4,10 @@ import assert from 'assert'
 import parse from '.'
 
 describe('parse', () => {
-  var referenceDate = new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 900)
+  const referenceDate = new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 900)
 
   it('escapes characters between the single quote characters', () => {
-    var result = parse(
+    const result = parse(
       '2018 hello world July 2nd',
       "yyyy 'hello world' MMMM do",
       referenceDate
@@ -16,12 +16,12 @@ describe('parse', () => {
   })
 
   it('two single quote characters are transformed into a "real" single quote', () => {
-    var result = parse("'5 o'clock'", "''h 'o''clock'''", referenceDate)
+    const result = parse("'5 o'clock'", "''h 'o''clock'''", referenceDate)
     assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 5))
   })
 
   it('accepts new line charactor', () => {
-    var result = parse(
+    const result = parse(
       '2014-04-04\n05:00:00',
       "yyyy-MM-dd'\n'HH:mm:ss",
       referenceDate
@@ -31,27 +31,27 @@ describe('parse', () => {
 
   describe('era', () => {
     it('abbreviated', () => {
-      var result = parse('10000 BC', 'yyyyy G', referenceDate)
+      const result = parse('10000 BC', 'yyyyy G', referenceDate)
       assert.deepStrictEqual(result, new Date(-9999, 0 /* Jan */, 1))
     })
 
     it('wide', () => {
-      var result = parse('2018 Anno Domini', 'yyyy GGGG', referenceDate)
+      const result = parse('2018 Anno Domini', 'yyyy GGGG', referenceDate)
       assert.deepStrictEqual(result, new Date(2018, 0 /* Jan */, 1))
     })
 
     it('narrow', () => {
-      var result = parse('44 B', 'y GGGGG', referenceDate)
+      const result = parse('44 B', 'y GGGGG', referenceDate)
       assert.deepStrictEqual(result, new Date(-43, 0 /* Jan */, 1))
     })
 
     it('with week-numbering year', () => {
-      var result = parse('44 B', 'Y GGGGG', referenceDate)
+      const result = parse('44 B', 'Y GGGGG', referenceDate)
       assert.deepStrictEqual(result, new Date(-44, 11 /* Dec */, 30))
     })
 
     it('parses stand-alone BC', () => {
-      var result = parse('BC', 'G', referenceDate)
+      const result = parse('BC', 'G', referenceDate)
       const expectedResult = new Date(0)
       expectedResult.setFullYear(0, 0 /* Jan */, 1)
       expectedResult.setHours(0, 0, 0, 0)
@@ -59,7 +59,7 @@ describe('parse', () => {
     })
 
     it('parses stand-alone AD', () => {
-      var result = parse('AD', 'G', referenceDate)
+      const result = parse('AD', 'G', referenceDate)
       const expectedResult = new Date(0)
       expectedResult.setFullYear(1, 0 /* Jan */, 1)
       expectedResult.setHours(0, 0, 0, 0)
@@ -91,43 +91,43 @@ describe('parse', () => {
 
   describe('calendar year', () => {
     it('numeric', () => {
-      var result = parse('2017', 'y', referenceDate)
+      const result = parse('2017', 'y', referenceDate)
       assert.deepStrictEqual(result, new Date(2017, 0 /* Jan */, 1))
     })
 
     it('ordinal', () => {
-      var result = parse('2017th', 'yo', referenceDate)
+      const result = parse('2017th', 'yo', referenceDate)
       assert.deepStrictEqual(result, new Date(2017, 0 /* Jan */, 1))
     })
 
     describe('two-digit numeric year', () => {
       it('works as expected', () => {
-        var result = parse('02', 'yy', referenceDate)
+        const result = parse('02', 'yy', referenceDate)
         assert.deepStrictEqual(result, new Date(2002, 0 /* Jan */, 1))
       })
 
       it('gets the 100 year range from `referenceDate`', () => {
-        var result = parse('02', 'yy', new Date(1860, 6 /* Jul */, 2))
+        const result = parse('02', 'yy', new Date(1860, 6 /* Jul */, 2))
         assert.deepStrictEqual(result, new Date(1902, 0 /* Jan */, 1))
       })
     })
 
     it('three-digit zero-padding', () => {
-      var result = parse('123', 'yyy', referenceDate)
+      const result = parse('123', 'yyy', referenceDate)
       assert.deepStrictEqual(result, new Date(123, 0 /* Jan */, 1))
     })
 
     it('four-digit zero-padding', () => {
-      var result = parse('0044', 'yyyy', referenceDate)
-      var expectedResult = new Date(0)
+      const result = parse('0044', 'yyyy', referenceDate)
+      const expectedResult = new Date(0)
       expectedResult.setFullYear(44, 0 /* Jan */, 1)
       expectedResult.setHours(0, 0, 0, 0)
       assert.deepStrictEqual(result, expectedResult)
     })
 
     it('specified amount of digits', () => {
-      var result = parse('000001', 'yyyyyy', referenceDate)
-      var expectedResult = new Date(0)
+      const result = parse('000001', 'yyyyyy', referenceDate)
+      const expectedResult = new Date(0)
       expectedResult.setFullYear(1, 0 /* Jan */, 1)
       expectedResult.setHours(0, 0, 0, 0)
       assert.deepStrictEqual(result, expectedResult)
@@ -164,25 +164,25 @@ describe('parse', () => {
 
   describe('local week-numbering year', () => {
     it('numeric', () => {
-      var result = parse('2002', 'Y', referenceDate)
+      const result = parse('2002', 'Y', referenceDate)
       assert.deepStrictEqual(result, new Date(2001, 11 /* Dec */, 30))
     })
 
     it('ordinal', () => {
-      var result = parse('12345th', 'Yo', referenceDate)
+      const result = parse('12345th', 'Yo', referenceDate)
       assert.deepStrictEqual(result, new Date(12344, 11 /* Dec */, 31))
     })
 
     describe('two-digit numeric year', () => {
       it('works as expected', () => {
-        var result = parse('02', 'YY', referenceDate, {
+        const result = parse('02', 'YY', referenceDate, {
           useAdditionalWeekYearTokens: true,
         })
         assert.deepStrictEqual(result, new Date(2001, 11 /* Dec */, 30))
       })
 
       it('gets the 100 year range from `referenceDate`', () => {
-        var result = parse('02', 'YY', new Date(1860, 6 /* Jul */, 2), {
+        const result = parse('02', 'YY', new Date(1860, 6 /* Jul */, 2), {
           useAdditionalWeekYearTokens: true,
         })
         assert.deepStrictEqual(result, new Date(1901, 11 /* Dec */, 29))
@@ -190,27 +190,27 @@ describe('parse', () => {
     })
 
     it('three-digit zero-padding', () => {
-      var result = parse('123', 'YYY', referenceDate)
+      const result = parse('123', 'YYY', referenceDate)
       assert.deepStrictEqual(result, new Date(122, 11 /* Dec */, 27))
     })
 
     it('four-digit zero-padding', () => {
-      var result = parse('2018', 'YYYY', referenceDate, {
+      const result = parse('2018', 'YYYY', referenceDate, {
         useAdditionalWeekYearTokens: true,
       })
       assert.deepStrictEqual(result, new Date(2017, 11 /* Dec */, 31))
     })
 
     it('specified amount of digits', () => {
-      var result = parse('000001', 'YYYYYY', referenceDate)
-      var expectedResult = new Date(0)
+      const result = parse('000001', 'YYYYYY', referenceDate)
+      const expectedResult = new Date(0)
       expectedResult.setFullYear(0, 11 /* Dec */, 31)
       expectedResult.setHours(0, 0, 0, 0)
       assert.deepStrictEqual(result, expectedResult)
     })
 
     it('allows to specify `weekStartsOn` and `firstWeekContainsDate` in options', () => {
-      var result = parse('2018', 'Y', referenceDate, {
+      const result = parse('2018', 'Y', referenceDate, {
         weekStartsOn: 1 /* Mon */,
         firstWeekContainsDate: 4,
       })
@@ -254,28 +254,28 @@ describe('parse', () => {
 
   describe('ISO week-numbering year', () => {
     it('numeric', () => {
-      var result = parse('-1234', 'R', referenceDate)
+      const result = parse('-1234', 'R', referenceDate)
       assert.deepStrictEqual(result, new Date(-1234, 0 /* Jan */, 3))
     })
 
     it('two-digit zero-padding', () => {
-      var result = parse('-02', 'RR', referenceDate)
+      const result = parse('-02', 'RR', referenceDate)
       assert.deepStrictEqual(result, new Date(-3, 11 /* Dec */, 29))
     })
 
     it('three-digit zero-padding', () => {
-      var result = parse('123', 'RRR', referenceDate)
+      const result = parse('123', 'RRR', referenceDate)
       assert.deepStrictEqual(result, new Date(123, 0 /* Jan */, 4))
     })
 
     it('four-digit zero-padding', () => {
-      var result = parse('2018', 'RRRR', referenceDate)
+      const result = parse('2018', 'RRRR', referenceDate)
       assert.deepStrictEqual(result, new Date(2018, 0 /* Jan */, 1))
     })
 
     it('specified amount of digits', () => {
-      var result = parse('000001', 'RRRRRR', referenceDate)
-      var expectedResult = new Date(0)
+      const result = parse('000001', 'RRRRRR', referenceDate)
+      const expectedResult = new Date(0)
       expectedResult.setFullYear(1, 0 /* Jan */, 1)
       expectedResult.setHours(0, 0, 0, 0)
       assert.deepStrictEqual(result, expectedResult)
@@ -320,28 +320,28 @@ describe('parse', () => {
 
   describe('extended year', () => {
     it('numeric', () => {
-      var result = parse('-1234', 'u', referenceDate)
+      const result = parse('-1234', 'u', referenceDate)
       assert.deepStrictEqual(result, new Date(-1234, 0 /* Jan */, 1))
     })
 
     it('two-digit zero-padding', () => {
-      var result = parse('-02', 'uu', referenceDate)
+      const result = parse('-02', 'uu', referenceDate)
       assert.deepStrictEqual(result, new Date(-2, 0 /* Jan */, 1))
     })
 
     it('three-digit zero-padding', () => {
-      var result = parse('123', 'uuu', referenceDate)
+      const result = parse('123', 'uuu', referenceDate)
       assert.deepStrictEqual(result, new Date(123, 0 /* Jan */, 1))
     })
 
     it('four-digit zero-padding', () => {
-      var result = parse('2018', 'uuuu', referenceDate)
+      const result = parse('2018', 'uuuu', referenceDate)
       assert.deepStrictEqual(result, new Date(2018, 0 /* Jan */, 1))
     })
 
     it('specified amount of digits', () => {
-      var result = parse('000001', 'uuuuuu', referenceDate)
-      var expectedResult = new Date(0)
+      const result = parse('000001', 'uuuuuu', referenceDate)
+      const expectedResult = new Date(0)
       expectedResult.setFullYear(1, 0 /* Jan */, 1)
       expectedResult.setHours(0, 0, 0, 0)
       assert.deepStrictEqual(result, expectedResult)
@@ -379,54 +379,54 @@ describe('parse', () => {
 
   describe('quarter with following year', () => {
     it('first quarter', () => {
-      var result = parse('Q1/2020', 'QQQ/yyyy', referenceDate)
+      const result = parse('Q1/2020', 'QQQ/yyyy', referenceDate)
       assert.deepStrictEqual(result, new Date(2020, 0 /* Jan */, 1))
     })
 
     it('second quarter', () => {
-      var result = parse('Q2/2020', 'QQQ/yyyy', referenceDate)
+      const result = parse('Q2/2020', 'QQQ/yyyy', referenceDate)
       assert.deepStrictEqual(result, new Date(2020, 3 /* Apr */, 1))
     })
 
     it('third quarter', () => {
-      var result = parse('Q3/2020', 'QQQ/yyyy', referenceDate)
+      const result = parse('Q3/2020', 'QQQ/yyyy', referenceDate)
       assert.deepStrictEqual(result, new Date(2020, 6 /* Jul */, 1))
     })
 
     it('fourth quarter', () => {
-      var result = parse('Q4/2020', 'QQQ/yyyy', referenceDate)
+      const result = parse('Q4/2020', 'QQQ/yyyy', referenceDate)
       assert.deepStrictEqual(result, new Date(2020, 9 /* Oct */, 1))
     })
   })
 
   describe('quarter (formatting)', () => {
     it('numeric', () => {
-      var result = parse('1', 'Q', referenceDate)
+      const result = parse('1', 'Q', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 0 /* Jan */, 1))
     })
 
     it('ordinal', () => {
-      var result = parse('1st', 'Qo', referenceDate)
+      const result = parse('1st', 'Qo', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 0 /* Jan */, 1))
     })
 
     it('zero-padding', () => {
-      var result = parse('02', 'QQ', referenceDate)
+      const result = parse('02', 'QQ', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 1))
     })
 
     it('abbreviated', () => {
-      var result = parse('Q3', 'QQQ', referenceDate)
+      const result = parse('Q3', 'QQQ', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 6 /* Jul */, 1))
     })
 
     it('wide', () => {
-      var result = parse('4st quarter', 'QQQQ', referenceDate)
+      const result = parse('4st quarter', 'QQQQ', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 9 /* Oct */, 1))
     })
 
     it('narrow', () => {
-      var result = parse('1', 'QQQQQ', referenceDate)
+      const result = parse('1', 'QQQQQ', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 0 /* Jan */, 1))
     })
 
@@ -468,32 +468,32 @@ describe('parse', () => {
 
   describe('quarter (stand-alone)', () => {
     it('numeric', () => {
-      var result = parse('1', 'q', referenceDate)
+      const result = parse('1', 'q', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 0 /* Jan */, 1))
     })
 
     it('ordinal', () => {
-      var result = parse('1th', 'qo', referenceDate)
+      const result = parse('1th', 'qo', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 0 /* Jan */, 1))
     })
 
     it('zero-padding', () => {
-      var result = parse('02', 'qq', referenceDate)
+      const result = parse('02', 'qq', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 1))
     })
 
     it('abbreviated', () => {
-      var result = parse('Q3', 'qqq', referenceDate)
+      const result = parse('Q3', 'qqq', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 6 /* Jul */, 1))
     })
 
     it('wide', () => {
-      var result = parse('4th quarter', 'qqqq', referenceDate)
+      const result = parse('4th quarter', 'qqqq', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 9 /* Oct */, 1))
     })
 
     it('narrow', () => {
-      var result = parse('1', 'qqqqq', referenceDate)
+      const result = parse('1', 'qqqqq', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 0 /* Jan */, 1))
     })
 
@@ -535,32 +535,32 @@ describe('parse', () => {
 
   describe('month (formatting)', () => {
     it('numeric', () => {
-      var result = parse('6', 'M', referenceDate)
+      const result = parse('6', 'M', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 5 /* Jun */, 1))
     })
 
     it('ordinal', () => {
-      var result = parse('6th', 'Mo', referenceDate)
+      const result = parse('6th', 'Mo', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 5 /* Jun */, 1))
     })
 
     it('zero-padding', () => {
-      var result = parse('01', 'MM', referenceDate)
+      const result = parse('01', 'MM', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 0 /* Jan */, 1))
     })
 
     it('abbreviated', () => {
-      var result = parse('Nov', 'MMM', referenceDate)
+      const result = parse('Nov', 'MMM', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 10 /* Nov */, 1))
     })
 
     it('wide', () => {
-      var result = parse('February', 'MMMM', referenceDate)
+      const result = parse('February', 'MMMM', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 1 /* Feb */, 1))
     })
 
     it('narrow', () => {
-      var result = parse('J', 'MMMMM', referenceDate)
+      const result = parse('J', 'MMMMM', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 0 /* Jan */, 1))
     })
 
@@ -601,32 +601,32 @@ describe('parse', () => {
 
   describe('month (stand-alone)', () => {
     it('numeric', () => {
-      var result = parse('6', 'L', referenceDate)
+      const result = parse('6', 'L', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 5 /* Jun */, 1))
     })
 
     it('ordinal', () => {
-      var result = parse('6th', 'Lo', referenceDate)
+      const result = parse('6th', 'Lo', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 5 /* Jun */, 1))
     })
 
     it('zero-padding', () => {
-      var result = parse('01', 'LL', referenceDate)
+      const result = parse('01', 'LL', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 0 /* Jan */, 1))
     })
 
     it('abbreviated', () => {
-      var result = parse('Nov', 'LLL', referenceDate)
+      const result = parse('Nov', 'LLL', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 10 /* Nov */, 1))
     })
 
     it('wide', () => {
-      var result = parse('February', 'LLLL', referenceDate)
+      const result = parse('February', 'LLLL', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 1 /* Feb */, 1))
     })
 
     it('narrow', () => {
-      var result = parse('J', 'LLLLL', referenceDate)
+      const result = parse('J', 'LLLLL', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 0 /* Jan */, 1))
     })
 
@@ -667,22 +667,22 @@ describe('parse', () => {
 
   describe('local week of year', () => {
     it('numeric', () => {
-      var result = parse('49', 'w', referenceDate)
+      const result = parse('49', 'w', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 10 /* Nov */, 30))
     })
 
     it('ordinal', () => {
-      var result = parse('49th', 'wo', referenceDate)
+      const result = parse('49th', 'wo', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 10 /* Nov */, 30))
     })
 
     it('zero-padding', () => {
-      var result = parse('01', 'ww', referenceDate)
+      const result = parse('01', 'ww', referenceDate)
       assert.deepStrictEqual(result, new Date(1985, 11 /* Dec */, 29))
     })
 
     it('allows to specify `weekStartsOn` and `firstWeekContainsDate` in options', () => {
-      var result = parse('49', 'w', referenceDate, {
+      const result = parse('49', 'w', referenceDate, {
         weekStartsOn: 1 /* Mon */,
         firstWeekContainsDate: 4,
       })
@@ -726,17 +726,17 @@ describe('parse', () => {
 
   describe('ISO week of year', () => {
     it('numeric', () => {
-      var result = parse('49', 'I', referenceDate)
+      const result = parse('49', 'I', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 11 /* Dec */, 1))
     })
 
     it('ordinal', () => {
-      var result = parse('49th', 'Io', referenceDate)
+      const result = parse('49th', 'Io', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 11 /* Dec */, 1))
     })
 
     it('zero-padding', () => {
-      var result = parse('01', 'II', referenceDate)
+      const result = parse('01', 'II', referenceDate)
       assert.deepStrictEqual(result, new Date(1985, 11 /* Dec */, 30))
     })
 
@@ -778,17 +778,17 @@ describe('parse', () => {
 
   describe('day of month', () => {
     it('numeric', () => {
-      var result = parse('28', 'd', referenceDate)
+      const result = parse('28', 'd', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 28))
     })
 
     it('ordinal', () => {
-      var result = parse('28th', 'do', referenceDate)
+      const result = parse('28th', 'do', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 28))
     })
 
     it('zero-padding', () => {
-      var result = parse('01', 'dd', referenceDate)
+      const result = parse('01', 'dd', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 1))
     })
 
@@ -828,31 +828,31 @@ describe('parse', () => {
 
   describe('day of year', () => {
     it('numeric', () => {
-      var result = parse('200', 'D', referenceDate, {
+      const result = parse('200', 'D', referenceDate, {
         useAdditionalDayOfYearTokens: true,
       })
       assert.deepStrictEqual(result, new Date(1986, 6 /* Jul */, 19))
     })
 
     it('ordinal', () => {
-      var result = parse('200th', 'Do', referenceDate)
+      const result = parse('200th', 'Do', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 6 /* Jul */, 19))
     })
 
     it('two-digit zero-padding', () => {
-      var result = parse('01', 'DD', referenceDate, {
+      const result = parse('01', 'DD', referenceDate, {
         useAdditionalDayOfYearTokens: true,
       })
       assert.deepStrictEqual(result, new Date(1986, 0 /* Jan */, 1))
     })
 
     it('three-digit zero-padding', () => {
-      var result = parse('001', 'DDD', referenceDate)
+      const result = parse('001', 'DDD', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 0 /* Jan */, 1))
     })
 
     it('specified amount of digits', () => {
-      var result = parse('000200', 'DDDDDD', referenceDate)
+      const result = parse('000200', 'DDDDDD', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 6 /* Jul */, 19))
     })
 
@@ -894,27 +894,27 @@ describe('parse', () => {
 
   describe('day of week (formatting)', () => {
     it('abbreviated', () => {
-      var result = parse('Mon', 'E', referenceDate)
+      const result = parse('Mon', 'E', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 2 /* Mar */, 31))
     })
 
     it('wide', () => {
-      var result = parse('Tuesday', 'EEEE', referenceDate)
+      const result = parse('Tuesday', 'EEEE', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 1))
     })
 
     it('narrow', () => {
-      var result = parse('W', 'EEEEE', referenceDate)
+      const result = parse('W', 'EEEEE', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 2))
     })
 
     it('short', () => {
-      var result = parse('Th', 'EEEEEE', referenceDate)
+      const result = parse('Th', 'EEEEEE', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 3))
     })
 
     it('allows to specify which day is the first day of the week', () => {
-      var result = parse('Thursday', 'EEEE', referenceDate, {
+      const result = parse('Thursday', 'EEEE', referenceDate, {
         weekStartsOn: /* Fri */ 5,
       })
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 10))
@@ -950,37 +950,37 @@ describe('parse', () => {
 
   describe('ISO day of week (formatting)', () => {
     it('numeric', () => {
-      var result = parse('1', 'i', referenceDate)
+      const result = parse('1', 'i', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 2 /* Mar */, 31))
     })
 
     it('ordinal', () => {
-      var result = parse('1st', 'io', referenceDate)
+      const result = parse('1st', 'io', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 2 /* Mar */, 31))
     })
 
     it('zero-padding', () => {
-      var result = parse('02', 'ii', referenceDate)
+      const result = parse('02', 'ii', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 1))
     })
 
     it('abbreviated', () => {
-      var result = parse('Wed', 'iii', referenceDate)
+      const result = parse('Wed', 'iii', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 2))
     })
 
     it('wide', () => {
-      var result = parse('Thursday', 'iiii', referenceDate)
+      const result = parse('Thursday', 'iiii', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 3))
     })
 
     it('narrow', () => {
-      var result = parse('S', 'iiiii', referenceDate)
+      const result = parse('S', 'iiiii', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 6))
     })
 
     it('short', () => {
-      var result = parse('Fr', 'iiiiii', referenceDate)
+      const result = parse('Fr', 'iiiiii', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4))
     })
 
@@ -1023,42 +1023,42 @@ describe('parse', () => {
 
   describe('local day of week (formatting)', () => {
     it('numeric', () => {
-      var result = parse('2', 'e', referenceDate)
+      const result = parse('2', 'e', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 2 /* Mar */, 31))
     })
 
     it('ordinal', () => {
-      var result = parse('2nd', 'eo', referenceDate)
+      const result = parse('2nd', 'eo', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 2 /* Mar */, 31))
     })
 
     it('zero-padding', () => {
-      var result = parse('03', 'ee', referenceDate)
+      const result = parse('03', 'ee', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 1))
     })
 
     it('abbreviated', () => {
-      var result = parse('Wed', 'eee', referenceDate)
+      const result = parse('Wed', 'eee', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 2))
     })
 
     it('wide', () => {
-      var result = parse('Thursday', 'eeee', referenceDate)
+      const result = parse('Thursday', 'eeee', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 3))
     })
 
     it('narrow', () => {
-      var result = parse('S', 'eeeee', referenceDate)
+      const result = parse('S', 'eeeee', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 2 /* Mar */, 30))
     })
 
     it('short', () => {
-      var result = parse('Fr', 'eeeeee', referenceDate)
+      const result = parse('Fr', 'eeeeee', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4))
     })
 
     it('allows to specify which day is the first day of the week', () => {
-      var result = parse('7th', 'eo', referenceDate, {
+      const result = parse('7th', 'eo', referenceDate, {
         weekStartsOn: /* Fri */ 5,
       })
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 10))
@@ -1103,42 +1103,42 @@ describe('parse', () => {
 
   describe('local day of week (stand-alone)', () => {
     it('numeric', () => {
-      var result = parse('2', 'c', referenceDate)
+      const result = parse('2', 'c', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 2 /* Mar */, 31))
     })
 
     it('ordinal', () => {
-      var result = parse('2nd', 'co', referenceDate)
+      const result = parse('2nd', 'co', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 2 /* Mar */, 31))
     })
 
     it('zero-padding', () => {
-      var result = parse('03', 'cc', referenceDate)
+      const result = parse('03', 'cc', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 1))
     })
 
     it('abbreviated', () => {
-      var result = parse('Wed', 'ccc', referenceDate)
+      const result = parse('Wed', 'ccc', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 2))
     })
 
     it('wide', () => {
-      var result = parse('Thursday', 'cccc', referenceDate)
+      const result = parse('Thursday', 'cccc', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 3))
     })
 
     it('narrow', () => {
-      var result = parse('S', 'ccccc', referenceDate)
+      const result = parse('S', 'ccccc', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 2 /* Mar */, 30))
     })
 
     it('short', () => {
-      var result = parse('Fr', 'cccccc', referenceDate)
+      const result = parse('Fr', 'cccccc', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4))
     })
 
     it('allows to specify which day is the first day of the week', () => {
-      var result = parse('7th', 'co', referenceDate, {
+      const result = parse('7th', 'co', referenceDate, {
         weekStartsOn: /* Fri */ 5,
       })
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 10))
@@ -1183,27 +1183,27 @@ describe('parse', () => {
 
   describe('AM, PM', () => {
     it('abbreviated', () => {
-      var result = parse('5 AM', 'h a', referenceDate)
+      const result = parse('5 AM', 'h a', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 5))
     })
 
     it('12 AM', () => {
-      var result = parse('12 AM', 'h aa', referenceDate)
+      const result = parse('12 AM', 'h aa', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 0))
     })
 
     it('12 PM', () => {
-      var result = parse('12 PM', 'h aaa', referenceDate)
+      const result = parse('12 PM', 'h aaa', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 12))
     })
 
     it('wide', () => {
-      var result = parse('5 p.m.', 'h aaaa', referenceDate)
+      const result = parse('5 p.m.', 'h aaaa', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 17))
     })
 
     it('narrow', () => {
-      var result = parse('11 a', 'h aaaaa', referenceDate)
+      const result = parse('11 a', 'h aaaaa', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 11))
     })
 
@@ -1234,17 +1234,17 @@ describe('parse', () => {
 
   describe('AM, PM, noon, midnight', () => {
     it('abbreviated', () => {
-      var result = parse('noon', 'b', referenceDate)
+      const result = parse('noon', 'b', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 12))
     })
 
     it('wide', () => {
-      var result = parse('midnight', 'bbbb', referenceDate)
+      const result = parse('midnight', 'bbbb', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 0))
     })
 
     it('narrow', () => {
-      var result = parse('mi', 'bbbbb', referenceDate)
+      const result = parse('mi', 'bbbbb', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 0))
     })
 
@@ -1275,17 +1275,17 @@ describe('parse', () => {
 
   describe('flexible day period', () => {
     it('abbreviated', () => {
-      var result = parse('2 at night', 'h B', referenceDate)
+      const result = parse('2 at night', 'h B', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 2))
     })
 
     it('wide', () => {
-      var result = parse('12 in the afternoon', 'h BBBB', referenceDate)
+      const result = parse('12 in the afternoon', 'h BBBB', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 12))
     })
 
     it('narrow', () => {
-      var result = parse('5 in the evening', 'h BBBBB', referenceDate)
+      const result = parse('5 in the evening', 'h BBBBB', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 17))
     })
 
@@ -1314,17 +1314,17 @@ describe('parse', () => {
 
   describe('hour [1-12]', () => {
     it('numeric', () => {
-      var result = parse('1', 'h', referenceDate)
+      const result = parse('1', 'h', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 1))
     })
 
     it('ordinal', () => {
-      var result = parse('1st', 'ho', referenceDate)
+      const result = parse('1st', 'ho', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 1))
     })
 
     it('zero-padding', () => {
-      var result = parse('01', 'hh', referenceDate)
+      const result = parse('01', 'hh', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 1))
     })
 
@@ -1353,17 +1353,17 @@ describe('parse', () => {
 
   describe('hour [0-23]', () => {
     it('numeric', () => {
-      var result = parse('12', 'H', referenceDate)
+      const result = parse('12', 'H', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 12))
     })
 
     it('ordinal', () => {
-      var result = parse('12th', 'Ho', referenceDate)
+      const result = parse('12th', 'Ho', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 12))
     })
 
     it('zero-padding', () => {
-      var result = parse('00', 'HH', referenceDate)
+      const result = parse('00', 'HH', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 0))
     })
 
@@ -1394,17 +1394,17 @@ describe('parse', () => {
 
   describe('hour [0-11]', () => {
     it('numeric', () => {
-      var result = parse('1', 'K', referenceDate)
+      const result = parse('1', 'K', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 1))
     })
 
     it('ordinal', () => {
-      var result = parse('1st', 'Ko', referenceDate)
+      const result = parse('1st', 'Ko', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 1))
     })
 
     it('zero-padding', () => {
-      var result = parse('1', 'KK', referenceDate)
+      const result = parse('1', 'KK', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 1))
     })
 
@@ -1433,17 +1433,17 @@ describe('parse', () => {
 
   describe('hour [1-24]', () => {
     it('numeric', () => {
-      var result = parse('12', 'k', referenceDate)
+      const result = parse('12', 'k', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 12))
     })
 
     it('ordinal', () => {
-      var result = parse('12th', 'ko', referenceDate)
+      const result = parse('12th', 'ko', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 12))
     })
 
     it('zero-padding', () => {
-      var result = parse('24', 'kk', referenceDate)
+      const result = parse('24', 'kk', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 0))
     })
 
@@ -1474,17 +1474,17 @@ describe('parse', () => {
 
   describe('minute', () => {
     it('numeric', () => {
-      var result = parse('25', 'm', referenceDate)
+      const result = parse('25', 'm', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 25))
     })
 
     it('ordinal', () => {
-      var result = parse('25th', 'mo', referenceDate)
+      const result = parse('25th', 'mo', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 25))
     })
 
     it('zero-padding', () => {
-      var result = parse('05', 'mm', referenceDate)
+      const result = parse('05', 'mm', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 5))
     })
 
@@ -1510,17 +1510,17 @@ describe('parse', () => {
 
   describe('second', () => {
     it('numeric', () => {
-      var result = parse('25', 's', referenceDate)
+      const result = parse('25', 's', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 32, 25))
     })
 
     it('ordinal', () => {
-      var result = parse('25th', 'so', referenceDate)
+      const result = parse('25th', 'so', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 32, 25))
     })
 
     it('zero-padding', () => {
-      var result = parse('05', 'ss', referenceDate)
+      const result = parse('05', 'ss', referenceDate)
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 32, 5))
     })
 
@@ -1546,7 +1546,7 @@ describe('parse', () => {
 
   describe('fraction of second', () => {
     it('1/10 of second', () => {
-      var result = parse('1', 'S', referenceDate)
+      const result = parse('1', 'S', referenceDate)
       assert.deepStrictEqual(
         result,
         new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 100)
@@ -1554,7 +1554,7 @@ describe('parse', () => {
     })
 
     it('1/100 of second', () => {
-      var result = parse('12', 'SS', referenceDate)
+      const result = parse('12', 'SS', referenceDate)
       assert.deepStrictEqual(
         result,
         new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 120)
@@ -1562,7 +1562,7 @@ describe('parse', () => {
     })
 
     it('millisecond', () => {
-      var result = parse('123', 'SSS', referenceDate)
+      const result = parse('123', 'SSS', referenceDate)
       assert.deepStrictEqual(
         result,
         new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 123)
@@ -1570,7 +1570,7 @@ describe('parse', () => {
     })
 
     it('specified amount of digits', () => {
-      var result = parse('567890', 'SSSSSS', referenceDate)
+      const result = parse('567890', 'SSSSSS', referenceDate)
       assert.deepStrictEqual(
         result,
         new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 567)
@@ -1600,7 +1600,7 @@ describe('parse', () => {
   describe('timezone (ISO-8601 w/ Z)', () => {
     describe('X', () => {
       it('hours and minutes', () => {
-        var result = parse(
+        const result = parse(
           '2016-11-25T16:38:38.123-0530',
           "yyyy-MM-dd'T'HH:mm:ss.SSSX",
           referenceDate
@@ -1612,7 +1612,7 @@ describe('parse', () => {
       })
 
       it('GMT', () => {
-        var result = parse(
+        const result = parse(
           '2016-11-25T16:38:38.123Z',
           "yyyy-MM-dd'T'HH:mm:ss.SSSX",
           referenceDate
@@ -1621,7 +1621,7 @@ describe('parse', () => {
       })
 
       it('hours', () => {
-        var result = parse(
+        const result = parse(
           '2016-11-25T16:38:38.123+05',
           "yyyy-MM-dd'T'HH:mm:ss.SSSX",
           referenceDate
@@ -1635,7 +1635,7 @@ describe('parse', () => {
 
     describe('XX', () => {
       it('hours and minutes', () => {
-        var result = parse(
+        const result = parse(
           '2016-11-25T16:38:38.123-0530',
           "yyyy-MM-dd'T'HH:mm:ss.SSSXX",
           referenceDate
@@ -1647,7 +1647,7 @@ describe('parse', () => {
       })
 
       it('GMT', () => {
-        var result = parse(
+        const result = parse(
           '2016-11-25T16:38:38.123Z',
           "yyyy-MM-dd'T'HH:mm:ss.SSSXX",
           referenceDate
@@ -1658,7 +1658,7 @@ describe('parse', () => {
 
     describe('XXX', () => {
       it('hours and minutes', () => {
-        var result = parse(
+        const result = parse(
           '2016-11-25T16:38:38.123-05:30',
           "yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
           referenceDate
@@ -1670,7 +1670,7 @@ describe('parse', () => {
       })
 
       it('GMT', () => {
-        var result = parse(
+        const result = parse(
           '2016-11-25T16:38:38.123Z',
           "yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
           referenceDate
@@ -1681,7 +1681,7 @@ describe('parse', () => {
 
     describe('XXXX', () => {
       it('hours and minutes', () => {
-        var result = parse(
+        const result = parse(
           '2016-11-25T16:38:38.123-0530',
           "yyyy-MM-dd'T'HH:mm:ss.SSSXXXX",
           referenceDate
@@ -1693,7 +1693,7 @@ describe('parse', () => {
       })
 
       it('GMT', () => {
-        var result = parse(
+        const result = parse(
           '2016-11-25T16:38:38.123Z',
           "yyyy-MM-dd'T'HH:mm:ss.SSSXXXX",
           referenceDate
@@ -1702,7 +1702,7 @@ describe('parse', () => {
       })
 
       it('hours, minutes and seconds', () => {
-        var result = parse(
+        const result = parse(
           '2016-11-25T16:38:38.123+053045',
           "yyyy-MM-dd'T'HH:mm:ss.SSSXXXX",
           referenceDate
@@ -1716,7 +1716,7 @@ describe('parse', () => {
 
     describe('XXXXX', () => {
       it('hours and minutes', () => {
-        var result = parse(
+        const result = parse(
           '2016-11-25T16:38:38.123-05:30',
           "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX",
           referenceDate
@@ -1728,7 +1728,7 @@ describe('parse', () => {
       })
 
       it('GMT', () => {
-        var result = parse(
+        const result = parse(
           '2016-11-25T16:38:38.123Z',
           "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX",
           referenceDate
@@ -1737,7 +1737,7 @@ describe('parse', () => {
       })
 
       it('hours, minutes and seconds', () => {
-        var result = parse(
+        const result = parse(
           '2016-11-25T16:38:38.123+05:30:45',
           "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX",
           referenceDate
@@ -1774,7 +1774,7 @@ describe('parse', () => {
   describe('timezone (ISO-8601 w/o Z)', () => {
     describe('x', () => {
       it('hours and minutes', () => {
-        var result = parse(
+        const result = parse(
           '2016-11-25T16:38:38.123-0530',
           "yyyy-MM-dd'T'HH:mm:ss.SSSx",
           referenceDate
@@ -1786,7 +1786,7 @@ describe('parse', () => {
       })
 
       it('GMT', () => {
-        var result = parse(
+        const result = parse(
           '2016-11-25T16:38:38.123+0000',
           "yyyy-MM-dd'T'HH:mm:ss.SSSx",
           referenceDate
@@ -1795,7 +1795,7 @@ describe('parse', () => {
       })
 
       it('hours', () => {
-        var result = parse(
+        const result = parse(
           '2016-11-25T16:38:38.123+05',
           "yyyy-MM-dd'T'HH:mm:ss.SSSx",
           referenceDate
@@ -1809,7 +1809,7 @@ describe('parse', () => {
 
     describe('xx', () => {
       it('hours and minutes', () => {
-        var result = parse(
+        const result = parse(
           '2016-11-25T16:38:38.123-0530',
           "yyyy-MM-dd'T'HH:mm:ss.SSSxx",
           referenceDate
@@ -1821,7 +1821,7 @@ describe('parse', () => {
       })
 
       it('GMT', () => {
-        var result = parse(
+        const result = parse(
           '2016-11-25T16:38:38.123+0000',
           "yyyy-MM-dd'T'HH:mm:ss.SSSxx",
           referenceDate
@@ -1832,7 +1832,7 @@ describe('parse', () => {
 
     describe('xxx', () => {
       it('hours and minutes', () => {
-        var result = parse(
+        const result = parse(
           '2016-11-25T16:38:38.123-05:30',
           "yyyy-MM-dd'T'HH:mm:ss.SSSxxx",
           referenceDate
@@ -1844,7 +1844,7 @@ describe('parse', () => {
       })
 
       it('GMT', () => {
-        var result = parse(
+        const result = parse(
           '2016-11-25T16:38:38.123+00:00',
           "yyyy-MM-dd'T'HH:mm:ss.SSSxxx",
           referenceDate
@@ -1855,7 +1855,7 @@ describe('parse', () => {
 
     describe('xxxx', () => {
       it('hours and minutes', () => {
-        var result = parse(
+        const result = parse(
           '2016-11-25T16:38:38.123-0530',
           "yyyy-MM-dd'T'HH:mm:ss.SSSxxxx",
           referenceDate
@@ -1867,7 +1867,7 @@ describe('parse', () => {
       })
 
       it('GMT', () => {
-        var result = parse(
+        const result = parse(
           '2016-11-25T16:38:38.123+0000',
           "yyyy-MM-dd'T'HH:mm:ss.SSSxxxx",
           referenceDate
@@ -1876,7 +1876,7 @@ describe('parse', () => {
       })
 
       it('hours, minutes and seconds', () => {
-        var result = parse(
+        const result = parse(
           '2016-11-25T16:38:38.123+053045',
           "yyyy-MM-dd'T'HH:mm:ss.SSSxxxx",
           referenceDate
@@ -1890,7 +1890,7 @@ describe('parse', () => {
 
     describe('xxxxx', () => {
       it('hours and minutes', () => {
-        var result = parse(
+        const result = parse(
           '2016-11-25T16:38:38.123-05:30',
           "yyyy-MM-dd'T'HH:mm:ss.SSSxxxxx",
           referenceDate
@@ -1902,7 +1902,7 @@ describe('parse', () => {
       })
 
       it('GMT', () => {
-        var result = parse(
+        const result = parse(
           '2016-11-25T16:38:38.123+00:00',
           "yyyy-MM-dd'T'HH:mm:ss.SSSxxxxx",
           referenceDate
@@ -1911,7 +1911,7 @@ describe('parse', () => {
       })
 
       it('hours, minutes and seconds', () => {
-        var result = parse(
+        const result = parse(
           '2016-11-25T16:38:38.123+05:30:45',
           "yyyy-MM-dd'T'HH:mm:ss.SSSxxxxx",
           referenceDate
@@ -1947,12 +1947,12 @@ describe('parse', () => {
 
   describe('seconds timestamp', () => {
     it('numeric', () => {
-      var result = parse('512969520', 't', referenceDate)
+      const result = parse('512969520', 't', referenceDate)
       assert.deepStrictEqual(result, new Date(512969520000))
     })
 
     it('specified amount of digits', () => {
-      var result = parse(
+      const result = parse(
         '00000000000512969520',
         'tttttttttttttttttttt',
         referenceDate
@@ -1974,12 +1974,12 @@ describe('parse', () => {
 
   describe('milliseconds timestamp', () => {
     it('numeric', () => {
-      var result = parse('512969520900', 'T', referenceDate)
+      const result = parse('512969520900', 'T', referenceDate)
       assert.deepStrictEqual(result, new Date(512969520900))
     })
 
     it('specified amount of digits', () => {
-      var result = parse(
+      const result = parse(
         '00000000512969520900',
         'TTTTTTTTTTTTTTTTTTTT',
         referenceDate
@@ -2001,7 +2001,11 @@ describe('parse', () => {
 
   describe('common formats', () => {
     it('ISO-8601', () => {
-      var result = parse('20161105T040404', "yyyyMMdd'T'HHmmss", referenceDate)
+      const result = parse(
+        '20161105T040404',
+        "yyyyMMdd'T'HHmmss",
+        referenceDate
+      )
       assert.deepStrictEqual(
         result,
         new Date(2016, 10 /* Nov */, 5, 4, 4, 4, 0)
@@ -2009,7 +2013,7 @@ describe('parse', () => {
     })
 
     it('ISO week-numbering date', () => {
-      var result = parse(
+      const result = parse(
         '2016W474T153005',
         "RRRR'W'IIi'T'HHmmss",
         referenceDate
@@ -2021,7 +2025,7 @@ describe('parse', () => {
     })
 
     it('ISO day of year date', () => {
-      var result = parse('2010123T235959', "yyyyDDD'T'HHmmss", referenceDate)
+      const result = parse('2010123T235959', "yyyyDDD'T'HHmmss", referenceDate)
       assert.deepStrictEqual(
         result,
         new Date(2010, 4 /* May */, 3, 23, 59, 59, 0)
@@ -2029,21 +2033,21 @@ describe('parse', () => {
     })
 
     it('Date.prototype.toString()', () => {
-      var dateString = 'Wed Jul 02 2014 05:30:15 GMT+0600'
-      var formatString = "EEE MMM dd yyyy HH:mm:ss 'GMT'xx"
-      var result = parse(dateString, formatString, referenceDate)
+      const dateString = 'Wed Jul 02 2014 05:30:15 GMT+0600'
+      const formatString = "EEE MMM dd yyyy HH:mm:ss 'GMT'xx"
+      const result = parse(dateString, formatString, referenceDate)
       assert.deepStrictEqual(result, new Date(dateString))
     })
 
     it('Date.prototype.toISOString()', () => {
-      var dateString = '2014-07-02T05:30:15.123+06:00'
-      var formatString = "yyyy-MM-dd'T'HH:mm:ss.SSSxxx"
-      var result = parse(dateString, formatString, referenceDate)
+      const dateString = '2014-07-02T05:30:15.123+06:00'
+      const formatString = "yyyy-MM-dd'T'HH:mm:ss.SSSxxx"
+      const result = parse(dateString, formatString, referenceDate)
       assert.deepStrictEqual(result, new Date(dateString))
     })
 
     it('middle-endian', () => {
-      var result = parse(
+      const result = parse(
         '5 a.m. 07/02/2016',
         'h aaaa MM/dd/yyyy',
         referenceDate
@@ -2052,16 +2056,16 @@ describe('parse', () => {
     })
 
     it('little-endian', () => {
-      var result = parse('02.07.1995', 'dd.MM.yyyy', referenceDate)
+      const result = parse('02.07.1995', 'dd.MM.yyyy', referenceDate)
       assert.deepStrictEqual(result, new Date(1995, 6 /* Jul */, 2, 0, 0, 0, 0))
     })
   })
 
   describe('priority', () => {
     it("units of lower priority don't overwrite values of higher priority", () => {
-      var dateString = '+06:00 123 15 30 05 02 07 2014'
-      var formatString = 'xxx SSS ss mm HH dd MM yyyy'
-      var result = parse(dateString, formatString, referenceDate)
+      const dateString = '+06:00 123 15 30 05 02 07 2014'
+      const formatString = 'xxx SSS ss mm HH dd MM yyyy'
+      const result = parse(dateString, formatString, referenceDate)
       assert.deepStrictEqual(result, new Date('2014-07-02T05:30:15.123+06:00'))
     })
   })
@@ -2069,8 +2073,8 @@ describe('parse', () => {
   describe('implicit conversion of arguments', () => {
     it('`dateString`', () => {
       // eslint-disable-next-line no-new-wrappers
-      var dateString = new String('20161105T040404')
-      var result = parse(
+      const dateString = new String('20161105T040404')
+      const result = parse(
         // @ts-expect-error
         dateString,
         "yyyyMMdd'T'HHmmss",
@@ -2084,8 +2088,8 @@ describe('parse', () => {
 
     it('`formatString`', () => {
       // eslint-disable-next-line no-new-wrappers
-      var formatString = new String("yyyyMMdd'T'HHmmss")
-      var result = parse(
+      const formatString = new String("yyyyMMdd'T'HHmmss")
+      const result = parse(
         '20161105T040404',
         // @ts-expect-error
         formatString,
@@ -2098,7 +2102,7 @@ describe('parse', () => {
     })
 
     it('`options.weekStartsOn`', () => {
-      var result = parse('2018', 'Y', referenceDate, {
+      const result = parse('2018', 'Y', referenceDate, {
         // @ts-expect-error
         weekStartsOn: '1' /* Mon */,
         firstWeekContainsDate: 4,
@@ -2107,7 +2111,7 @@ describe('parse', () => {
     })
 
     it('`options.firstWeekContainsDate`', () => {
-      var result = parse('2018', 'Y', referenceDate, {
+      const result = parse('2018', 'Y', referenceDate, {
         weekStartsOn: 1 /* Mon */,
         // @ts-expect-error
         firstWeekContainsDate: '4',
@@ -2119,24 +2123,24 @@ describe('parse', () => {
   describe('with `options.strictValidation` = true', () => {
     describe('calendar year', () => {
       it('returns `Invalid Date` for year zero', () => {
-        var result = parse('0', 'y', referenceDate)
+        const result = parse('0', 'y', referenceDate)
         assert(result instanceof Date && isNaN(result.getTime()))
       })
 
       it('works correctly for two-digit year zero', () => {
-        var result = parse('00', 'yy', referenceDate)
+        const result = parse('00', 'yy', referenceDate)
         assert.deepStrictEqual(result, new Date(2000, 0 /* Jan */, 1))
       })
     })
 
     describe('local week-numbering year', () => {
       it('returns `Invalid Date` for year zero', () => {
-        var result = parse('0', 'Y', referenceDate)
+        const result = parse('0', 'Y', referenceDate)
         assert(result instanceof Date && isNaN(result.getTime()))
       })
 
       it('works correctly for two-digit year zero', () => {
-        var result = parse('00', 'YY', referenceDate, {
+        const result = parse('00', 'YY', referenceDate, {
           useAdditionalWeekYearTokens: true,
         })
         assert.deepStrictEqual(result, new Date(1999, 11 /* Dec */, 26))
@@ -2145,80 +2149,80 @@ describe('parse', () => {
 
     describe('quarter (formatting)', () => {
       it('returns `Invalid Date` for invalid quarter', () => {
-        var result = parse('0', 'Q', referenceDate)
+        const result = parse('0', 'Q', referenceDate)
         assert(result instanceof Date && isNaN(result.getTime()))
       })
     })
 
     describe('quarter (stand-alone)', () => {
       it('returns `Invalid Date` for invalid quarter', () => {
-        var result = parse('5', 'q', referenceDate)
+        const result = parse('5', 'q', referenceDate)
         assert(result instanceof Date && isNaN(result.getTime()))
       })
     })
 
     describe('month (formatting)', () => {
       it('returns `Invalid Date` for invalid month', () => {
-        var result = parse('00', 'MM', referenceDate)
+        const result = parse('00', 'MM', referenceDate)
         assert(result instanceof Date && isNaN(result.getTime()))
       })
     })
 
     describe('month (stand-alone)', () => {
       it('returns `Invalid Date` for invalid month', () => {
-        var result = parse('13', 'LL', referenceDate)
+        const result = parse('13', 'LL', referenceDate)
         assert(result instanceof Date && isNaN(result.getTime()))
       })
     })
 
     describe('local week of year', () => {
       it('returns `Invalid Date` for invalid week', () => {
-        var result = parse('0', 'w', referenceDate)
+        const result = parse('0', 'w', referenceDate)
         assert(result instanceof Date && isNaN(result.getTime()))
       })
     })
 
     describe('ISO week of year', () => {
       it('returns `Invalid Date` for invalid week', () => {
-        var result = parse('54', 'II', referenceDate)
+        const result = parse('54', 'II', referenceDate)
         assert(result instanceof Date && isNaN(result.getTime()))
       })
     })
 
     describe('day of month', () => {
       it('returns `Invalid Date` for invalid day of the month', () => {
-        var result = parse('30', 'd', new Date(2012, 1 /* Feb */, 1))
+        const result = parse('30', 'd', new Date(2012, 1 /* Feb */, 1))
         assert(result instanceof Date && isNaN(result.getTime()))
       })
 
       it('returns `Invalid Date` for 29th of February of non-leap year', () => {
-        var result = parse('29', 'd', new Date(2014, 1 /* Feb */, 1))
+        const result = parse('29', 'd', new Date(2014, 1 /* Feb */, 1))
         assert(result instanceof Date && isNaN(result.getTime()))
       })
 
       it('parses 29th of February of leap year', () => {
-        var result = parse('29', 'd', new Date(2012, 1 /* Feb */, 1))
+        const result = parse('29', 'd', new Date(2012, 1 /* Feb */, 1))
         assert.deepStrictEqual(result, new Date(2012, 1 /* Feb */, 29))
       })
     })
 
     describe('day of year', () => {
       it('returns `Invalid Date` for invalid day of the year', () => {
-        var result = parse('0', 'D', referenceDate, {
+        const result = parse('0', 'D', referenceDate, {
           useAdditionalDayOfYearTokens: true,
         })
         assert(result instanceof Date && isNaN(result.getTime()))
       })
 
       it('returns `Invalid Date` for 366th day of non-leap year', () => {
-        var result = parse('366', 'D', new Date(2014, 1 /* Feb */, 1), {
+        const result = parse('366', 'D', new Date(2014, 1 /* Feb */, 1), {
           useAdditionalDayOfYearTokens: true,
         })
         assert(result instanceof Date && isNaN(result.getTime()))
       })
 
       it('parses 366th day of leap year', () => {
-        var result = parse('366', 'D', new Date(2012, 1 /* Feb */, 1), {
+        const result = parse('366', 'D', new Date(2012, 1 /* Feb */, 1), {
           useAdditionalDayOfYearTokens: true,
         })
         assert.deepStrictEqual(result, new Date(2012, 11 /* Dec */, 31))
@@ -2227,88 +2231,88 @@ describe('parse', () => {
 
     describe('ISO day of week (formatting)', () => {
       it('returns `Invalid Date` for day zero', () => {
-        var result = parse('0', 'i', referenceDate)
+        const result = parse('0', 'i', referenceDate)
         assert(result instanceof Date && isNaN(result.getTime()))
       })
 
       it('returns `Invalid Date` for eight day of week', () => {
-        var result = parse('8', 'i', referenceDate)
+        const result = parse('8', 'i', referenceDate)
         assert(result instanceof Date && isNaN(result.getTime()))
       })
     })
 
     describe('local day of week (formatting)', () => {
       it('returns `Invalid Date` for day zero', () => {
-        var result = parse('0', 'e', referenceDate)
+        const result = parse('0', 'e', referenceDate)
         assert(result instanceof Date && isNaN(result.getTime()))
       })
 
       it('returns `Invalid Date` for eight day of week', () => {
-        var result = parse('8', 'e', referenceDate)
+        const result = parse('8', 'e', referenceDate)
         assert(result instanceof Date && isNaN(result.getTime()))
       })
     })
 
     describe('local day of week (stand-alone)', () => {
       it('returns `Invalid Date` for day zero', () => {
-        var result = parse('0', 'c', referenceDate)
+        const result = parse('0', 'c', referenceDate)
         assert(result instanceof Date && isNaN(result.getTime()))
       })
 
       it('returns `Invalid Date` for eight day of week', () => {
-        var result = parse('8', 'c', referenceDate)
+        const result = parse('8', 'c', referenceDate)
         assert(result instanceof Date && isNaN(result.getTime()))
       })
     })
 
     describe('hour [1-12]', () => {
       it('returns `Invalid Date` for hour zero', () => {
-        var result = parse('00', 'hh', referenceDate)
+        const result = parse('00', 'hh', referenceDate)
         assert(result instanceof Date && isNaN(result.getTime()))
       })
 
       it('returns `Invalid Date` for invalid hour', () => {
-        var result = parse('13', 'hh', referenceDate)
+        const result = parse('13', 'hh', referenceDate)
         assert(result instanceof Date && isNaN(result.getTime()))
       })
     })
 
     describe('hour [0-23]', () => {
       it('returns `Invalid Date` for invalid hour', () => {
-        var result = parse('24', 'HH', referenceDate)
+        const result = parse('24', 'HH', referenceDate)
         assert(result instanceof Date && isNaN(result.getTime()))
       })
     })
 
     describe('hour [0-11]', () => {
       it('returns `Invalid Date` for invalid hour', () => {
-        var result = parse('12', 'KK', referenceDate)
+        const result = parse('12', 'KK', referenceDate)
         assert(result instanceof Date && isNaN(result.getTime()))
       })
     })
 
     describe('hour [1-24]', () => {
       it('returns `Invalid Date` for hour zero', () => {
-        var result = parse('00', 'kk', referenceDate)
+        const result = parse('00', 'kk', referenceDate)
         assert(result instanceof Date && isNaN(result.getTime()))
       })
 
       it('returns `Invalid Date` for invalid hour', () => {
-        var result = parse('25', 'kk', referenceDate)
+        const result = parse('25', 'kk', referenceDate)
         assert(result instanceof Date && isNaN(result.getTime()))
       })
     })
 
     describe('minute', () => {
       it('returns `Invalid Date` for invalid minute', () => {
-        var result = parse('60', 'mm', referenceDate)
+        const result = parse('60', 'mm', referenceDate)
         assert(result instanceof Date && isNaN(result.getTime()))
       })
     })
 
     describe('second', () => {
       it('returns `Invalid Date` for invalid second', () => {
-        var result = parse('60', 'ss', referenceDate)
+        const result = parse('60', 'ss', referenceDate)
         assert(result instanceof Date && isNaN(result.getTime()))
       })
     })
@@ -2316,7 +2320,7 @@ describe('parse', () => {
 
   describe('custom locale', () => {
     it('allows to pass a custom locale', () => {
-      var customLocale = {
+      const customLocale = {
         match: {
           era: () => {
             return {
@@ -2326,7 +2330,7 @@ describe('parse', () => {
           },
         },
       }
-      var result = parse('2018 foobar', "y G 'it works!'", referenceDate, {
+      const result = parse('2018 foobar', "y G 'it works!'", referenceDate, {
         // @ts-expect-error
         locale: customLocale,
       })
@@ -2334,7 +2338,7 @@ describe('parse', () => {
     })
 
     it('throws `RangeError` if `options.locale` does not contain `match` property', () => {
-      var block = () =>
+      const block = () =>
         parse('2016-11-25 04 AM', 'yyyy-MM-dd hh a', referenceDate, {
           locale: {},
         })
@@ -2343,68 +2347,68 @@ describe('parse', () => {
   })
 
   it('accepts a timestamp as `referenceDate`', () => {
-    var dateString = '6 p.m.'
-    var formatString = 'h aaaa'
-    var result = parse(dateString, formatString, referenceDate.getTime())
+    const dateString = '6 p.m.'
+    const formatString = 'h aaaa'
+    const result = parse(dateString, formatString, referenceDate.getTime())
     assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 18))
   })
 
   it('does not mutate `referenceDate`', () => {
-    var referenceDateClone1 = new Date(referenceDate.getTime())
-    var referenceDateClone2 = new Date(referenceDate.getTime())
-    var dateString = '6 p.m.'
-    var formatString = 'h aaaa'
+    const referenceDateClone1 = new Date(referenceDate.getTime())
+    const referenceDateClone2 = new Date(referenceDate.getTime())
+    const dateString = '6 p.m.'
+    const formatString = 'h aaaa'
     parse(dateString, formatString, referenceDateClone1)
     assert.deepStrictEqual(referenceDateClone1, referenceDateClone2)
   })
 
   describe('failure', () => {
     it('returns `referenceDate` if `dateString` and `formatString` are empty strings', () => {
-      var dateString = ''
-      var formatString = ''
-      var result = parse(dateString, formatString, referenceDate)
+      const dateString = ''
+      const formatString = ''
+      const result = parse(dateString, formatString, referenceDate)
       assert.deepStrictEqual(result, referenceDate)
     })
 
     it('returns `referenceDate` if no tokens in `formatString` are provided', () => {
-      var dateString = 'not a token'
-      var formatString = "'not a token'"
-      var result = parse(dateString, formatString, referenceDate)
+      const dateString = 'not a token'
+      const formatString = "'not a token'"
+      const result = parse(dateString, formatString, referenceDate)
       assert.deepStrictEqual(result, referenceDate)
     })
 
     it("returns `Invalid Date`  if `formatString` doesn't match `dateString`", () => {
-      var dateString = '2017-01-01'
-      var formatString = 'yyyy/MM/dd'
-      var result = parse(dateString, formatString, referenceDate)
+      const dateString = '2017-01-01'
+      const formatString = 'yyyy/MM/dd'
+      const result = parse(dateString, formatString, referenceDate)
       assert(result instanceof Date && isNaN(result.getTime()))
     })
 
     it('returns `Invalid Date`  if `formatString` tokens failed to parse a value', () => {
-      var dateString = '2017-01-01'
-      var formatString = 'MMMM do yyyy'
-      var result = parse(dateString, formatString, referenceDate)
+      const dateString = '2017-01-01'
+      const formatString = 'MMMM do yyyy'
+      const result = parse(dateString, formatString, referenceDate)
       assert(result instanceof Date && isNaN(result.getTime()))
     })
 
     it('returns `Invalid Date` if `formatString` is empty string but `dateString` is not', () => {
-      var dateString = '2017-01-01'
-      var formatString = ''
-      var result = parse(dateString, formatString, referenceDate)
+      const dateString = '2017-01-01'
+      const formatString = ''
+      const result = parse(dateString, formatString, referenceDate)
       assert(result instanceof Date && isNaN(result.getTime()))
     })
 
     it('returns `Invalid Date` if `referenceDate` is `Invalid Date`', () => {
-      var dateString = '2014-07-02T05:30:15.123+06:00'
-      var formatString = "yyyy-MM-dd'T'HH:mm:ss.SSSxxx"
-      var result = parse(dateString, formatString, new Date(NaN))
+      const dateString = '2014-07-02T05:30:15.123+06:00'
+      const formatString = "yyyy-MM-dd'T'HH:mm:ss.SSSxxx"
+      const result = parse(dateString, formatString, new Date(NaN))
       assert(result instanceof Date && isNaN(result.getTime()))
     })
 
     it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', () => {
-      var dateString = '2014-07-02T05:30:15.123+06:00'
-      var formatString = "yyyy-MM-dd'T'HH:mm:ss.SSSxxx"
-      var block = () =>
+      const dateString = '2014-07-02T05:30:15.123+06:00'
+      const formatString = "yyyy-MM-dd'T'HH:mm:ss.SSSxxx"
+      const block = () =>
         parse(dateString, formatString, referenceDate, {
           // @ts-expect-error
           weekStartsOn: NaN,
@@ -2413,9 +2417,9 @@ describe('parse', () => {
     })
 
     it('throws `RangeError` if `options.firstWeekContainsDate` is not convertable to 1, 2, ..., 7 or undefined', () => {
-      var dateString = '2014-07-02T05:30:15.123+06:00'
-      var formatString = "yyyy-MM-dd'T'HH:mm:ss.SSSxxx"
-      var block = () =>
+      const dateString = '2014-07-02T05:30:15.123+06:00'
+      const formatString = "yyyy-MM-dd'T'HH:mm:ss.SSSxxx"
+      const block = () =>
         parse(dateString, formatString, referenceDate, {
           // @ts-expect-error
           firstWeekContainsDate: NaN,
@@ -2434,12 +2438,12 @@ describe('parse', () => {
 
   describe('edge cases', () => {
     it('returns Invalid Date if the string contains some remaining input after parsing', () => {
-      var result = parse('2016-11-05T040404', 'yyyy-MM-dd', referenceDate)
+      const result = parse('2016-11-05T040404', 'yyyy-MM-dd', referenceDate)
       assert(result instanceof Date && isNaN(result.getTime()))
     })
 
     it('parses normally if the remaining input is just whitespace', () => {
-      var result = parse('2016-11-05   \n', 'yyyy-MM-dd', referenceDate)
+      const result = parse('2016-11-05   \n', 'yyyy-MM-dd', referenceDate)
       assert.deepStrictEqual(result, new Date(2016, 10 /* Nov */, 5))
     })
 
@@ -2519,53 +2523,53 @@ describe('parse', () => {
 
   describe('long format', () => {
     it('short date', () => {
-      var expected = new Date(1995, 4 /* May */, 26)
-      var dateString = '05/26/1995'
-      var formatString = 'P'
-      var result = parse(dateString, formatString, referenceDate)
+      const expected = new Date(1995, 4 /* May */, 26)
+      const dateString = '05/26/1995'
+      const formatString = 'P'
+      const result = parse(dateString, formatString, referenceDate)
       assert.deepStrictEqual(result, expected)
     })
 
     it('medium date', () => {
-      var expected = new Date(1995, 4 /* May */, 26)
-      var dateString = 'May 26, 1995'
-      var formatString = 'PP'
-      var result = parse(dateString, formatString, referenceDate)
+      const expected = new Date(1995, 4 /* May */, 26)
+      const dateString = 'May 26, 1995'
+      const formatString = 'PP'
+      const result = parse(dateString, formatString, referenceDate)
       assert.deepStrictEqual(result, expected)
     })
 
     it('long date', () => {
-      var expected = new Date(1995, 4 /* May */, 26)
-      var dateString = 'May 26th, 1995'
-      var formatString = 'PPP'
-      var result = parse(dateString, formatString, referenceDate)
+      const expected = new Date(1995, 4 /* May */, 26)
+      const dateString = 'May 26th, 1995'
+      const formatString = 'PPP'
+      const result = parse(dateString, formatString, referenceDate)
       assert.deepStrictEqual(result, expected)
     })
 
     it('full date', () => {
-      var expected = new Date(1995, 4 /* May */, 26)
-      var dateString = 'Friday, May 26th, 1995'
-      var formatString = 'PPPP'
-      var result = parse(dateString, formatString, referenceDate)
+      const expected = new Date(1995, 4 /* May */, 26)
+      const dateString = 'Friday, May 26th, 1995'
+      const formatString = 'PPPP'
+      const result = parse(dateString, formatString, referenceDate)
       assert.deepStrictEqual(result, expected)
     })
 
     it('short time', () => {
-      var expected = new Date(
+      const expected = new Date(
         referenceDate.getFullYear(),
         referenceDate.getMonth(),
         referenceDate.getDate(),
         10,
         32
       )
-      var timeString = '10:32 AM'
-      var formatString = 'p'
-      var result = parse(timeString, formatString, referenceDate)
+      const timeString = '10:32 AM'
+      const formatString = 'p'
+      const result = parse(timeString, formatString, referenceDate)
       assert.deepStrictEqual(result, expected)
     })
 
     it('medium time', () => {
-      var expected = new Date(
+      const expected = new Date(
         referenceDate.getFullYear(),
         referenceDate.getMonth(),
         referenceDate.getDate(),
@@ -2573,73 +2577,73 @@ describe('parse', () => {
         32,
         55
       )
-      var timeString = '10:32:55 AM'
-      var formatString = 'pp'
-      var result = parse(timeString, formatString, referenceDate)
+      const timeString = '10:32:55 AM'
+      const formatString = 'pp'
+      const result = parse(timeString, formatString, referenceDate)
       assert.deepStrictEqual(result, expected)
     })
 
     it('short date + short time', () => {
-      var expected = new Date(1995, 4 /* May */, 26, 10, 32)
-      var dateTimeString = '05/26/1995, 10:32 AM'
-      var formatString = 'Pp'
-      var result = parse(dateTimeString, formatString, referenceDate)
+      const expected = new Date(1995, 4 /* May */, 26, 10, 32)
+      const dateTimeString = '05/26/1995, 10:32 AM'
+      const formatString = 'Pp'
+      const result = parse(dateTimeString, formatString, referenceDate)
       assert.deepStrictEqual(result, expected)
     })
 
     it('medium date + short time', () => {
-      var expected = new Date(1995, 4 /* May */, 26, 10, 32)
-      var dateTimeString = 'May 26, 1995, 10:32 AM'
-      var formatString = 'PPp'
-      var result = parse(dateTimeString, formatString, referenceDate)
+      const expected = new Date(1995, 4 /* May */, 26, 10, 32)
+      const dateTimeString = 'May 26, 1995, 10:32 AM'
+      const formatString = 'PPp'
+      const result = parse(dateTimeString, formatString, referenceDate)
       assert.deepStrictEqual(result, expected)
     })
 
     it('long date + short time', () => {
-      var expected = new Date(1995, 4 /* May */, 26, 10, 32)
-      var dateTimeString = 'May 26th, 1995 at 10:32 AM'
-      var formatString = 'PPPp'
-      var result = parse(dateTimeString, formatString, referenceDate)
+      const expected = new Date(1995, 4 /* May */, 26, 10, 32)
+      const dateTimeString = 'May 26th, 1995 at 10:32 AM'
+      const formatString = 'PPPp'
+      const result = parse(dateTimeString, formatString, referenceDate)
       assert.deepStrictEqual(result, expected)
     })
 
     it('full date + short time', () => {
-      var expected = new Date(1995, 4 /* May */, 26, 10, 32)
-      var dateTimeString = 'Friday, May 26th, 1995 at 10:32 AM'
-      var formatString = 'PPPPp'
-      var result = parse(dateTimeString, formatString, referenceDate)
+      const expected = new Date(1995, 4 /* May */, 26, 10, 32)
+      const dateTimeString = 'Friday, May 26th, 1995 at 10:32 AM'
+      const formatString = 'PPPPp'
+      const result = parse(dateTimeString, formatString, referenceDate)
       assert.deepStrictEqual(result, expected)
     })
 
     it('short date + short time', () => {
-      var expected = new Date(1995, 4 /* May */, 26, 10, 32, 55)
-      var dateTimeString = '05/26/1995, 10:32:55 AM'
-      var formatString = 'Ppp'
-      var result = parse(dateTimeString, formatString, referenceDate)
+      const expected = new Date(1995, 4 /* May */, 26, 10, 32, 55)
+      const dateTimeString = '05/26/1995, 10:32:55 AM'
+      const formatString = 'Ppp'
+      const result = parse(dateTimeString, formatString, referenceDate)
       assert.deepStrictEqual(result, expected)
     })
 
     it('medium date + short time', () => {
-      var expected = new Date(1995, 4 /* May */, 26, 10, 32, 55)
-      var dateTimeString = 'May 26, 1995, 10:32:55 AM'
-      var formatString = 'PPpp'
-      var result = parse(dateTimeString, formatString, referenceDate)
+      const expected = new Date(1995, 4 /* May */, 26, 10, 32, 55)
+      const dateTimeString = 'May 26, 1995, 10:32:55 AM'
+      const formatString = 'PPpp'
+      const result = parse(dateTimeString, formatString, referenceDate)
       assert.deepStrictEqual(result, expected)
     })
 
     it('long date + short time', () => {
-      var expected = new Date(1995, 4 /* May */, 26, 10, 32, 55)
-      var dateTimeString = 'May 26th, 1995 at 10:32:55 AM'
-      var formatString = 'PPPpp'
-      var result = parse(dateTimeString, formatString, referenceDate)
+      const expected = new Date(1995, 4 /* May */, 26, 10, 32, 55)
+      const dateTimeString = 'May 26th, 1995 at 10:32:55 AM'
+      const formatString = 'PPPpp'
+      const result = parse(dateTimeString, formatString, referenceDate)
       assert.deepStrictEqual(result, expected)
     })
 
     it('full date + short time', () => {
-      var expected = new Date(1995, 4 /* May */, 26, 10, 32, 55)
-      var dateTimeString = 'Friday, May 26th, 1995 at 10:32:55 AM'
-      var formatString = 'PPPPpp'
-      var result = parse(dateTimeString, formatString, referenceDate)
+      const expected = new Date(1995, 4 /* May */, 26, 10, 32, 55)
+      const dateTimeString = 'Friday, May 26th, 1995 at 10:32:55 AM'
+      const formatString = 'PPPPpp'
+      const result = parse(dateTimeString, formatString, referenceDate)
       assert.deepStrictEqual(result, expected)
     })
   })

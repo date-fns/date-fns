@@ -50,7 +50,7 @@ describe('setMilliseconds', () => {
   })
 
   it('does not mutate the original date', () => {
-    var date = new Date(2014, 8 /* Sep */, 1, 11, 30, 40, 500)
+    const date = new Date(2014, 8 /* Sep */, 1, 11, 30, 40, 500)
     setMilliseconds(date, 137)
     assert.deepStrictEqual(
       date,
