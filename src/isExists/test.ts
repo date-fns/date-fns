@@ -16,6 +16,7 @@ describe('isValid', () => {
   })
 
   it('throws TypeError exception if passed less than 3 arguments', () => {
+    // @ts-expect-error
     assert.throws(isExists.bind(null), TypeError)
   })
 })

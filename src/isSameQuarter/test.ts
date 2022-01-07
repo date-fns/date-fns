@@ -45,7 +45,9 @@ describe('isSameQuarter', () => {
   })
 
   it('throws TypeError exception if passed less than 2 arguments', () => {
+    // @ts-expect-error
     assert.throws(isSameQuarter.bind(null), TypeError)
+    // @ts-expect-error
     assert.throws(isSameQuarter.bind(null, 1), TypeError)
   })
 })

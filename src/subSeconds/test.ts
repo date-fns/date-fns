@@ -49,7 +49,9 @@ describe('subSeconds', () => {
   })
 
   it('throws TypeError exception if passed less than 2 arguments', () => {
+    // @ts-expect-error
     assert.throws(subSeconds.bind(null), TypeError)
+    // @ts-expect-error
     assert.throws(subSeconds.bind(null, 1), TypeError)
   })
 })

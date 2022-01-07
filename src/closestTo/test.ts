@@ -66,7 +66,7 @@ describe('closestTo', () => {
     const date = new Date(2014, 6 /* Jul */, 2)
     const result = closestTo(date, [
       new Date(2015, 7 /* Aug */, 31),
-      //@ts-expect-error
+      // @ts-expect-error
       undefined,
       new Date(2012, 6 /* Jul */, 2),
     ])
@@ -81,29 +81,29 @@ describe('closestTo', () => {
       '1': new Date(2012, 6 /* Jul */, 2),
       length: 2,
     }
-    //@ts-expect-error
+    // @ts-expect-error
     const result = closestTo(date, object)
     assert.deepStrictEqual(result, new Date(2015, 7 /* Aug */, 31))
   })
 
   it('returns undefined if second argument is undefined', () => {
     const date = new Date(2014, 6 /* Jul */, 2).getTime()
-    //@ts-expect-error
+    // @ts-expect-error
     const result = closestTo(date, undefined)
     assert.deepStrictEqual(result, undefined)
   })
 
   it('returns undefined if the given array is null', () => {
     const date = new Date(2014, 6 /* Jul */, 2).getTime()
-    //@ts-expect-error
+    // @ts-expect-error
     const result = closestTo(date, null)
     assert.deepStrictEqual(result, undefined)
   })
 
   it('throws TypeError exception if passed less than 2 arguments', () => {
-    //@ts-expect-error
+    // @ts-expect-error
     assert.throws(closestTo.bind(null), TypeError)
-    //@ts-expect-error
+    // @ts-expect-error
     assert.throws(closestTo.bind(null, 1), TypeError)
   })
 })

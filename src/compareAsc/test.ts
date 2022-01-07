@@ -72,9 +72,9 @@ describe('compareAsc', () => {
   })
 
   it('throws TypeError exception if passed less than 2 arguments', () => {
-    //@ts-expect-error
+    // @ts-expect-error
     assert.throws(compareAsc.bind(null), TypeError)
-    //@ts-expect-error
+    // @ts-expect-error
     assert.throws(compareAsc.bind(null, 1), TypeError)
   })
 })

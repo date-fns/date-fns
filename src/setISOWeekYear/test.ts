@@ -66,7 +66,9 @@ describe('setISOWeekYear', () => {
   })
 
   it('throws TypeError exception if passed less than 2 arguments', () => {
+    // @ts-expect-error
     assert.throws(setISOWeekYear.bind(null), TypeError)
+    // @ts-expect-error
     assert.throws(setISOWeekYear.bind(null, 1), TypeError)
   })
 })

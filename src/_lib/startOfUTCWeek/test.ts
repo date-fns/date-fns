@@ -101,7 +101,7 @@ describe('startOfUTCWeek', () => {
   })
 
   it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', () => {
-    //@ts-expect-error
+    // @ts-expect-error
     const block = startOfUTCWeek.bind(
       null,
       new Date(Date.UTC(2014, 8 /* Sep */, 2, 11, 55, 0)),
@@ -113,7 +113,7 @@ describe('startOfUTCWeek', () => {
   })
 
   it('throws TypeError exception if passed less than 1 argument', () => {
-    //@ts-expect-error
+    // @ts-expect-error
     assert.throws(startOfUTCWeek.bind(null), TypeError)
   })
 })

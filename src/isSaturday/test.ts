@@ -26,6 +26,7 @@ describe('isSaturday', () => {
   })
 
   it('throws TypeError exception if passed less than 1 argument', () => {
+    // @ts-expect-error
     assert.throws(isSaturday.bind(null), TypeError)
   })
 })

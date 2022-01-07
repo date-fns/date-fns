@@ -43,7 +43,9 @@ describe('setDate', () => {
   })
 
   it('throws TypeError exception if passed less than 2 arguments', () => {
+    // @ts-expect-error
     assert.throws(setDate.bind(null), TypeError)
+    // @ts-expect-error
     assert.throws(setDate.bind(null, 1), TypeError)
   })
 })

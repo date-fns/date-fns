@@ -45,7 +45,9 @@ describe('isSameISOWeek', () => {
   })
 
   it('throws TypeError exception if passed less than 2 arguments', () => {
+    // @ts-expect-error
     assert.throws(isSameISOWeek.bind(null), TypeError)
+    // @ts-expect-error
     assert.throws(isSameISOWeek.bind(null, 1), TypeError)
   })
 })

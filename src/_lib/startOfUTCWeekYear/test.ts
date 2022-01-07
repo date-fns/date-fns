@@ -92,7 +92,7 @@ describe('startOfUTCWeekYear', () => {
   })
 
   it('throws TypeError exception if passed less than 1 argument', () => {
-    //@ts-expect-error
+    // @ts-expect-error
     assert.throws(startOfUTCWeekYear.bind(null), TypeError)
   })
 })

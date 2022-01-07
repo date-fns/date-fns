@@ -45,7 +45,9 @@ describe('isEqual', () => {
   })
 
   it('throws TypeError exception if passed less than 2 arguments', () => {
+    // @ts-expect-error
     assert.throws(isEqual.bind(null), TypeError)
+    // @ts-expect-error
     assert.throws(isEqual.bind(null, 1), TypeError)
   })
 })

@@ -98,7 +98,9 @@ describe('differenceInCalendarISOWeeks', () => {
   })
 
   it('throws TypeError exception if passed less than 2 arguments', () => {
+    // @ts-expect-error
     assert.throws(differenceInCalendarISOWeeks.bind(null), TypeError)
+    // @ts-expect-error
     assert.throws(differenceInCalendarISOWeeks.bind(null, 1), TypeError)
   })
 })

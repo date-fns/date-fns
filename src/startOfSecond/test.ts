@@ -25,11 +25,12 @@ describe('startOfSecond', () => {
 
   it('returns `Invalid Date` if the given date is invalid', () => {
     const result = startOfSecond(new Date(NaN))
-    //@ts-expect-error
+    // @ts-expect-error
     assert(result instanceof Date && isNaN(result))
   })
 
   it('throws TypeError exception if passed less than 1 argument', () => {
+    // @ts-expect-error
     assert.throws(startOfSecond.bind(null), TypeError)
   })
 })

@@ -14,7 +14,7 @@ describe('eachWeekendOfYear', () => {
   })
 
   it('throws TypeError exception when no argument is passed in', () => {
-    //@ts-expect-error
+    // @ts-expect-error
     assert.throws(eachWeekendOfYear.bind(null), TypeError)
   })
 

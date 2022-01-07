@@ -41,7 +41,7 @@ describe('addMilliseconds', () => {
   it('implicitly converts number arguments', () => {
     const result = addMilliseconds(
       new Date(2014, 6 /* Jul */, 10, 12, 45, 30, 5),
-      //@ts-expect-error
+      // @ts-expect-error
       '750'
     )
     assert.deepStrictEqual(
@@ -58,7 +58,7 @@ describe('addMilliseconds', () => {
 
   it('returns `Invalid Date` if the given date is invalid', () => {
     const result = addMilliseconds(new Date(NaN), 750)
-    //@ts-expect-error
+    // @ts-expect-error
     assert(result instanceof Date && isNaN(result))
   })
 
@@ -67,14 +67,14 @@ describe('addMilliseconds', () => {
       new Date(2014, 6 /* Jul */, 10, 12, 45, 30, 0),
       NaN
     )
-    //@ts-expect-error
+    // @ts-expect-error
     assert(result instanceof Date && isNaN(result))
   })
 
   it('throws TypeError exception if passed less than 2 arguments', () => {
-    //@ts-expect-error
+    // @ts-expect-error
     assert.throws(addMilliseconds.bind(null), TypeError)
-    //@ts-expect-error
+    // @ts-expect-error
     assert.throws(addMilliseconds.bind(null, 1), TypeError)
   })
 })
