@@ -48,7 +48,7 @@ describe('closestTo', () => {
       new Date(2012, 6 /* Jul */, 2),
     ])
 
-    assert(result instanceof Date && isNaN(result!.getTime()))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('returns `Invalid Date` if any date in the given array is `Invalid Date`', () => {
@@ -59,7 +59,7 @@ describe('closestTo', () => {
       new Date(2012, 6 /* Jul */, 2),
     ])
 
-    assert(result instanceof Date && isNaN(result!.getTime()))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('returns `Invalid Date` if any value in the given array is undefined', () => {
@@ -71,7 +71,7 @@ describe('closestTo', () => {
       new Date(2012, 6 /* Jul */, 2),
     ])
 
-    assert(result instanceof Date && isNaN(Number(result)))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('converts Array-like objects into Array', () => {
