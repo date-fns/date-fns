@@ -1,4 +1,4 @@
-var testsContext = require.context('./src/', true, /\/test\.js$/)
+var testsContext = require.context('./src/', true, /\/test\.(t|j)s$/)
 testsContext
   .keys()
   .filter(function (test) {
