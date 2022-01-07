@@ -19,15 +19,6 @@ describe('setHours', () => {
     assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1, 4, 30))
   })
 
-  it('implicitly converts number arguments', () => {
-    const result = setHours(
-      new Date(2014, 8 /* Sep */, 1, 11, 30),
-      // @ts-expect-error
-      '4'
-    )
-    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1, 4, 30))
-  })
-
   it('does not mutate the original date', () => {
     const date = new Date(2014, 8 /* Sep */, 1, 11)
     setHours(date, 12)
@@ -42,12 +33,5 @@ describe('setHours', () => {
   it('returns `Invalid Date` if the given amount is NaN', () => {
     const result = setHours(new Date(2014, 8 /* Sep */, 1, 11, 30), NaN)
     assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(setHours.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(setHours.bind(null, 1), TypeError)
   })
 })

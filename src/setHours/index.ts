@@ -1,7 +1,3 @@
-import toInteger from '../_lib/toInteger/index'
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name setHours
  * @category Hour Helpers
@@ -19,14 +15,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = setHours(new Date(2014, 8, 1, 11, 30), 4)
  * //=> Mon Sep 01 2014 04:30:00
  */
-export default function setHours(
-  dirtyDate: Date | number,
-  dirtyHours: number
-): Date {
-  requiredArgs(2, arguments)
-
-  const date = toDate(dirtyDate)
-  const hours = toInteger(dirtyHours)
-  date.setHours(hours)
-  return date
+export default function setHours(date: Date | number, hours: number): Date {
+  const result = new Date(date)
+  const hoursTransformed = Math.trunc(hours)
+  result.setHours(hoursTransformed)
+  return result
 }
