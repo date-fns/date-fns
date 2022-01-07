@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
+import { Locale } from '../locale/types'
 import getWeek from '.'
 
 describe('getWeek', () => {
@@ -29,11 +30,10 @@ describe('getWeek', () => {
 
   it('allows to specify `weekStartsOn` and `firstWeekContainsDate` in locale', () => {
     const date = new Date(2005, 0 /* Jan */, 2)
-    // @ts-expect-error
     const result = getWeek(date, {
       locale: {
         options: { weekStartsOn: 1, firstWeekContainsDate: 4 },
-      },
+      } as Locale,
     })
     assert(result === 53)
   })
@@ -43,10 +43,9 @@ describe('getWeek', () => {
     const result = getWeek(date, {
       weekStartsOn: 1,
       firstWeekContainsDate: 4,
-      // $ExpectedMistake
       locale: {
         options: { weekStartsOn: 0, firstWeekContainsDate: 1 },
-      },
+      } as Locale,
     })
     assert(result === 53)
   })

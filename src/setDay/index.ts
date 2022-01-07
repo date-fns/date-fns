@@ -2,7 +2,7 @@ import addDays from '../addDays/index'
 import toDate from '../toDate/index'
 import toInteger from '../_lib/toInteger/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import { LocalOptions, WeekStartOptions } from '../types'
+import { LocaleOptions, WeekStartOptions } from '../types'
 
 /**
  * @name setDay
@@ -38,7 +38,7 @@ import { LocalOptions, WeekStartOptions } from '../types'
 export default function setDay(
   dirtyDate: Date | number,
   dirtyDay: number,
-  dirtyOptions?: WeekStartOptions & LocalOptions
+  dirtyOptions?: WeekStartOptions & LocaleOptions
 ): Date {
   requiredArgs(2, arguments)
 

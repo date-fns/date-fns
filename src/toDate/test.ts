@@ -121,7 +121,7 @@ describe('toDate', () => {
 })
 
 function mockConsoleWarn() {
-  let originalWarn
+  let originalWarn: any
 
   beforeEach(() => {
     originalWarn = console.warn // eslint-disable-line no-console
@@ -130,8 +130,6 @@ function mockConsoleWarn() {
   })
 
   afterEach(() => {
-    // $ExpectedMistake
-    // @ts-expect-error
     console.warn = originalWarn // eslint-disable-line no-console
   })
 }

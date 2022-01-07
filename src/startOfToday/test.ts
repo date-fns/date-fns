@@ -6,7 +6,7 @@ import sinon from 'sinon'
 import startOfToday from '.'
 
 describe('startOfToday', () => {
-  let clock
+  let clock: sinon.SinonFakeTimers
   beforeEach(() => {
     clock = sinon.useFakeTimers(
       new Date(2014, 8 /* Sep */, 25, 14, 30, 45, 500).getTime()

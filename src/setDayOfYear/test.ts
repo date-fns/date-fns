@@ -35,12 +35,12 @@ describe('setDayOfYear', () => {
 
   it('returns `Invalid Date` if the given date is invalid', () => {
     const result = setDayOfYear(new Date(NaN), 2)
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('returns `Invalid Date` if the given amount is NaN', () => {
     const result = setDayOfYear(new Date(2014, 6 /* Jul */, 2), NaN)
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('throws TypeError exception if passed less than 2 arguments', () => {
