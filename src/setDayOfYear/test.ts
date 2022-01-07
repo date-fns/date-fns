@@ -19,15 +19,6 @@ describe('setDayOfYear', () => {
     assert.deepStrictEqual(result, new Date(2014, 0 /* Jan */, 2))
   })
 
-  it('implicitly converts number arguments', () => {
-    const result = setDayOfYear(
-      new Date(2014, 6 /* Jul */, 2),
-      // @ts-expect-error
-      '2'
-    )
-    assert.deepStrictEqual(result, new Date(2014, 0 /* Jan */, 2))
-  })
-
   it('does not mutate the original date', () => {
     const date = new Date(2014, 6 /* Jul */, 2)
     setDayOfYear(date, 365)
@@ -42,12 +33,5 @@ describe('setDayOfYear', () => {
   it('returns `Invalid Date` if the given amount is NaN', () => {
     const result = setDayOfYear(new Date(2014, 6 /* Jul */, 2), NaN)
     assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(setDayOfYear.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(setDayOfYear.bind(null, 1), TypeError)
   })
 })
