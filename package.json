@@ -27,15 +27,9 @@
     "benchmark": "env TEST_BENCHMARK=true yarn test --single-run",
     "stats": "cloc . --exclude-dir=node_modules,tmp,.git"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
-    "*.{js,ts,json}": [
-      "prettier --write",
-      "git add"
+    "*.{js,ts,md,json,yml,yaml}": [
+      "prettier --write"
     ]
   },
   "dependencies": {},
@@ -75,7 +69,7 @@
     "glob-promise": "^2.0.0",
     "globby": "^11.0.3",
     "gzip-size-cli": "^1.0.0",
-    "husky": "^1.0.1",
+    "husky": "^7.0.0",
     "istanbul-instrumenter-loader": "^3.0.1",
     "jest": "^27.0.4",
     "js-beautify": "^1.5.10",
@@ -95,7 +89,7 @@
     "karma-sauce-launcher": "^1.2.0",
     "karma-sourcemap-loader": "^0.3.5",
     "karma-webpack": "^4.0.2",
-    "lint-staged": "^7.3.0",
+    "lint-staged": "^10.5.4",
     "lodash": "^4.17.15",
     "lodash.clonedeep": "^4.5.0",
     "mocha": "^3.5.3",
