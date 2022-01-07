@@ -448,13 +448,16 @@ describe('formatDistanceStrict', () => {
     describe('does not contain `formatDistance` property', () => {
       it('throws `RangeError`', () => {
         const customLocale = {}
-        // @ts-expect-error
-        const block = formatDistanceStrict.bind(
-          null,
-          new Date(1986, 3, 4, 10, 32, 0),
-          new Date(1986, 3, 4, 10, 37, 0),
-          { unit: 'minute', locale: customLocale }
-        )
+        const block = () =>
+          formatDistanceStrict(
+            new Date(1986, 3, 4, 10, 32, 0),
+            new Date(1986, 3, 4, 10, 37, 0),
+            {
+              unit: 'minute',
+              // @ts-expect-error
+              locale: customLocale,
+            }
+          )
         assert.throws(block, RangeError)
       })
     })

@@ -120,18 +120,20 @@ describe('formatISO', () => {
   })
 
   it("throws `RangeError` if `options.format` is not 'extended' or 'basic'", () => {
-    // @ts-expect-error
-    var block = formatISO.bind(null, new Date(2019, 2 /* Mar */, 3), {
-      format: 'something else',
-    })
+    var block = () =>
+      formatISO(new Date(2019, 2 /* Mar */, 3), {
+        // @ts-expect-error
+        format: 'something else',
+      })
     assert.throws(block, RangeError)
   })
 
   it("throws `RangeError` if `options.representation` is not 'date', 'time' or 'complete'", () => {
-    // @ts-expect-error
-    var block = formatISO.bind(null, new Date(2019, 2 /* Mar */, 3), {
-      representation: 'something else',
-    })
+    var block = () =>
+      formatISO(new Date(2019, 2 /* Mar */, 3), {
+        // @ts-expect-error
+        representation: 'something else',
+      })
     assert.throws(block, RangeError)
   })
 

@@ -4,7 +4,6 @@
 import assert from 'assert'
 import setUTCDay from '.'
 import { Locale } from '../../locale/types'
-import { Day } from '../../types'
 
 describe('setUTCDay', () => {
   it('sets the day of the week', () => {
@@ -127,9 +126,11 @@ describe('setUTCDay', () => {
   })
 
   it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', () => {
-    const block = setUTCDay.bind(null, new Date(2014, 8 /* Sep */, 1), 0, {
-      weekStartsOn: NaN as Day,
-    })
+    const block = () =>
+      setUTCDay(new Date(2014, 8 /* Sep */, 1), 0, {
+        // @ts-expect-error
+        weekStartsOn: NaN,
+      })
     assert.throws(block, RangeError)
   })
 

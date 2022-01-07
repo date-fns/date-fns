@@ -74,10 +74,11 @@ describe('formatRFC3339', () => {
   })
 
   it('throws `RangeError` if `options.fractionDigits` is not convertable to 0, 1, 2, 3 or undefined', () => {
-    // @ts-expect-error
-    const block = formatRFC3339.bind(null, new Date(2019, 2 /* Mar */, 3), {
-      fractionDigits: NaN,
-    })
+    const block = () =>
+      formatRFC3339(new Date(2019, 2 /* Mar */, 3), {
+        // @ts-expect-error
+        fractionDigits: NaN,
+      })
     assert.throws(block, RangeError)
   })
 

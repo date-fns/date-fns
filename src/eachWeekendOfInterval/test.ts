@@ -32,7 +32,6 @@ describe('eachWeekendOfInterval', () => {
   })
 
   it('throws `RangeError` invalid interval start date is used', () => {
-    // $ExpectedMistake
     const block = eachWeekendOfInterval.bind(null, {
       start: new Date(NaN),
       end: new Date(2019, 11 /* Dec */, 31),
@@ -41,7 +40,6 @@ describe('eachWeekendOfInterval', () => {
   })
 
   it('throws `RangeError` invalid interval end date is used', () => {
-    // $ExpectedMistake
     const block = eachWeekendOfInterval.bind(null, {
       start: new Date(2019, 0 /* Jan */, 1),
       end: new Date(NaN),
@@ -55,14 +53,10 @@ describe('eachWeekendOfInterval', () => {
   })
 
   it('throws `RangeError` if start of an interval is after its end', () => {
-    const block = eachWeekendOfInterval.bind(
-      null,
-      // $ExpectedMistake
-      {
-        start: new Date(2018, 8 /* Sept */, 25),
-        end: new Date(2018, 8 /* Sept */, 6),
-      }
-    )
+    const block = eachWeekendOfInterval.bind(null, {
+      start: new Date(2018, 8 /* Sept */, 25),
+      end: new Date(2018, 8 /* Sept */, 6),
+    })
     assert.throws(block, RangeError)
   })
 })

@@ -85,11 +85,11 @@ describe('eachHourOfInterval', () => {
   })
 
   it('throws an exception if the interval is undefined', () => {
-    const block = eachHourOfInterval.bind(
-      null,
-      // $ExpectedMistake
-      undefined
-    )
+    const block = () =>
+      eachHourOfInterval(
+        // @ts-expect-error
+        undefined
+      )
     assert.throws(block, RangeError)
   })
 
@@ -123,7 +123,11 @@ describe('eachHourOfInterval', () => {
     it('throws TypeError error if `options.step` is NaN', () => {
       // $ExpectedMistake
       assert.throws(
-        () => eachHourOfInterval(interval, { step: 'w' }),
+        () =>
+          eachHourOfInterval(interval, {
+            // @ts-expect-error
+            step: 'w',
+          }),
         stepError
       )
       assert.throws(

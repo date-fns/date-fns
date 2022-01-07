@@ -135,10 +135,11 @@ describe('setDay', () => {
   })
 
   it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', () => {
-    // $ExpectedMistake
-    const block = setDay.bind(null, new Date(2014, 8 /* Sep */, 1), 0, {
-      weekStartsOn: NaN,
-    })
+    const block = () =>
+      setDay(new Date(2014, 8 /* Sep */, 1), 0, {
+        // @ts-expect-error
+        weekStartsOn: NaN,
+      })
     assert.throws(block, RangeError)
   })
 

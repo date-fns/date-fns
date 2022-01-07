@@ -147,13 +147,15 @@ describe('differenceInCalendarWeeks', () => {
   })
 
   it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', () => {
-    // @ts-expect-error
-    const block = differenceInCalendarWeeks.bind(
-      null,
-      new Date(2014, 6 /* Jul */, 8, 18, 0),
-      new Date(2014, 5 /* Jun */, 29, 6, 0),
-      { weekStartsOn: NaN }
-    )
+    const block = () =>
+      differenceInCalendarWeeks(
+        new Date(2014, 6 /* Jul */, 8, 18, 0),
+        new Date(2014, 5 /* Jun */, 29, 6, 0),
+        {
+          // @ts-expect-error
+          weekStartsOn: NaN,
+        }
+      )
     assert.throws(block, RangeError)
   })
 

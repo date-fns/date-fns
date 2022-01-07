@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
+import { FormatDistanceFn } from 'src/locale/types'
 import formatDistance from '.'
 
 describe('formatDistance', () => {
@@ -236,11 +237,11 @@ describe('formatDistance', () => {
 
   describe('custom locale', () => {
     it('can be passed to the function', () => {
-      function localizeDistance(token, count, options) {
+      const localizeDistance: FormatDistanceFn = (token, count, options) => {
         assert(token === 'lessThanXSeconds')
         assert(count === 5)
-        assert(options.addSuffix === true)
-        assert(options.comparison > 0)
+        assert(options!.addSuffix === true)
+        assert(options!.comparison! > 0)
         return 'It works!'
       }
 
@@ -251,7 +252,12 @@ describe('formatDistance', () => {
       const result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 3),
         new Date(1986, 3, 4, 10, 32, 0),
-        { includeSeconds: true, addSuffix: true, locale: customLocale }
+        {
+          includeSeconds: true,
+          addSuffix: true,
+          // @ts-expect-error
+          locale: customLocale,
+        }
       )
 
       assert(result === 'It works!')
@@ -260,12 +266,16 @@ describe('formatDistance', () => {
     describe('does not contain `formatDistance` property', () => {
       it('throws `RangeError`', () => {
         const customLocale = {}
-        const block = formatDistance.bind(
-          null,
-          new Date(1986, 3, 4, 10, 32, 0),
-          new Date(1986, 3, 4, 10, 32, 3),
-          { includeSeconds: true, locale: customLocale }
-        )
+        const block = () =>
+          formatDistance(
+            new Date(1986, 3, 4, 10, 32, 0),
+            new Date(1986, 3, 4, 10, 32, 3),
+            {
+              includeSeconds: true,
+              // @ts-expect-error
+              locale: customLocale,
+            }
+          )
         assert.throws(block, RangeError)
       })
     })

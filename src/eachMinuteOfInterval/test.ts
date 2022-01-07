@@ -95,7 +95,11 @@ describe('eachMinuteOfInterval', () => {
     it('throws TypeError error if `options.step` is NaN', () => {
       // $ExpectedMistake
       assert.throws(
-        () => eachMinuteOfInterval(interval, { step: 'w' }),
+        () =>
+          eachMinuteOfInterval(interval, {
+            // @ts-expect-error
+            step: 'w',
+          }),
         stepError
       )
       assert.throws(

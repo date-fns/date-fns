@@ -94,11 +94,11 @@ describe('eachQuarterOfInterval', () => {
   })
 
   it('throws an exception if the interval is undefined', () => {
-    const block = eachQuarterOfInterval.bind(
-      null,
-      // $ExpectedMistake
-      undefined
-    )
+    const block = () =>
+      eachQuarterOfInterval(
+        // @ts-expect-error
+        undefined
+      )
     assert.throws(block, RangeError)
   })
 

@@ -101,14 +101,11 @@ describe('startOfUTCWeek', () => {
   })
 
   it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', () => {
-    // @ts-expect-error
-    const block = startOfUTCWeek.bind(
-      null,
-      new Date(Date.UTC(2014, 8 /* Sep */, 2, 11, 55, 0)),
-      {
+    const block = () =>
+      startOfUTCWeek(new Date(Date.UTC(2014, 8 /* Sep */, 2, 11, 55, 0)), {
+        // @ts-expect-error
         weekStartsOn: NaN,
-      }
-    )
+      })
     assert.throws(block, RangeError)
   })
 

@@ -62,12 +62,13 @@ describe('isWithinInterval', () => {
   })
 
   it('throws an exception if the interval is undefined', () => {
-    // @ts-expect-error
-    const block = isWithinInterval.bind(
-      null,
-      new Date(2014, 9 /* Oct */, 31),
-      undefined
-    )
+    const block = () =>
+      isWithinInterval(
+        null,
+        new Date(2014, 9 /* Oct */, 31),
+        // @ts-expect-error
+        undefined
+      )
     assert.throws(block, TypeError)
   })
 

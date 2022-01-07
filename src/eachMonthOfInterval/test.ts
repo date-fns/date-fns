@@ -106,11 +106,11 @@ describe('eachMonthOfInterval', () => {
   })
 
   it('throws an exception if the interval is undefined', () => {
-    const block = eachMonthOfInterval.bind(
-      null,
-      // $ExpectedMistake
-      undefined
-    )
+    const block = () =>
+      eachMonthOfInterval(
+        // @ts-expect-error
+        undefined
+      )
     assert.throws(block, RangeError)
   })
 

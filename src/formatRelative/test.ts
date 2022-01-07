@@ -131,10 +131,11 @@ describe('formatRelative', () => {
           return ''
         },
       }
-      // @ts-expect-error
-      const block = formatRelative.bind(null, new Date(2017, 0, 1), baseDate, {
-        locale: customLocale,
-      })
+      const block = () =>
+        formatRelative(new Date(2017, 0, 1), baseDate, {
+          // @ts-expect-error
+          locale: customLocale,
+        })
       assert.throws(block, RangeError)
     })
 
@@ -145,10 +146,11 @@ describe('formatRelative', () => {
           return ''
         },
       }
-      // @ts-expect-error
-      const block = formatRelative.bind(null, new Date(2017, 0, 1), baseDate, {
-        locale: customLocale,
-      })
+      const block = () =>
+        formatRelative(new Date(2017, 0, 1), baseDate, {
+          // @ts-expect-error
+          locale: customLocale,
+        })
       assert.throws(block, RangeError)
     })
 
@@ -157,10 +159,11 @@ describe('formatRelative', () => {
         localize: {},
         formatLong: {},
       }
-      // @ts-expect-error
-      const block = formatRelative.bind(null, new Date(2017, 0, 1), baseDate, {
-        locale: customLocale,
-      })
+      const block = () =>
+        formatRelative(new Date(2017, 0, 1), baseDate, {
+          // @ts-expect-error
+          locale: customLocale,
+        })
       assert.throws(block, RangeError)
     })
   })

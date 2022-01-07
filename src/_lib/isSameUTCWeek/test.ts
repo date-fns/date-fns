@@ -2,7 +2,6 @@
 
 import assert from 'assert'
 import type { Locale } from 'src/locale/types'
-import type { Day } from 'src/types'
 import isSameUTCWeek from '.'
 
 describe('isSameUTCWeek', () => {
@@ -100,12 +99,15 @@ describe('isSameUTCWeek', () => {
   })
 
   it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', () => {
-    const block = isSameUTCWeek.bind(
-      null,
-      new Date(Date.UTC(2014, 7 /* Aug */, 31)),
-      new Date(Date.UTC(2014, 8 /* Sep */, 4)),
-      { weekStartsOn: NaN as Day }
-    )
+    const block = () =>
+      isSameUTCWeek(
+        new Date(Date.UTC(2014, 7 /* Aug */, 31)),
+        new Date(Date.UTC(2014, 8 /* Sep */, 4)),
+        {
+          // @ts-expect-error
+          weekStartsOn: NaN,
+        }
+      )
     assert.throws(block, RangeError)
   })
 

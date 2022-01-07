@@ -51,18 +51,20 @@ describe('getWeek', () => {
   })
 
   it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', () => {
-    // @ts-expect-error
-    const block = getWeek.bind(null, new Date(2007, 11 /* Dec */, 31), {
-      weekStartsOn: NaN,
-    })
+    const block = () =>
+      getWeek(new Date(2007, 11 /* Dec */, 31), {
+        // @ts-expect-error
+        weekStartsOn: NaN,
+      })
     assert.throws(block, RangeError)
   })
 
   it('throws `RangeError` if `options.firstWeekContainsDate` is not convertable to 1, 2, ..., 7 or undefined', () => {
-    // @ts-expect-error
-    const block = getWeek.bind(null, new Date(2007, 11 /* Dec */, 31), {
-      firstWeekContainsDate: NaN,
-    })
+    const block = () =>
+      getWeek(new Date(2007, 11 /* Dec */, 31), {
+        // @ts-expect-error
+        firstWeekContainsDate: NaN,
+      })
     assert.throws(block, RangeError)
   })
 

@@ -17,7 +17,6 @@ describe('isMatch', () => {
   it('accepts a date & format with locale', () => {
     assert(
       isMatch('28-a de februaro', "do 'de' MMMM", {
-        // @ts-expect-error
         locale: eo,
       })
     )

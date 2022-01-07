@@ -93,12 +93,15 @@ describe('isSameWeek', () => {
   })
 
   it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', () => {
-    const block = isSameWeek.bind(
-      null,
-      new Date(2014, 7 /* Aug */, 31),
-      new Date(2014, 8 /* Sep */, 4),
-      { weekStartsOn: NaN }
-    )
+    const block = () =>
+      isSameWeek(
+        new Date(2014, 7 /* Aug */, 31),
+        new Date(2014, 8 /* Sep */, 4),
+        {
+          // @ts-expect-error
+          weekStartsOn: NaN,
+        }
+      )
     assert.throws(block, RangeError)
   })
 

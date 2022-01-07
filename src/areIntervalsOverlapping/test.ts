@@ -161,21 +161,25 @@ describe('areIntervalsOverlapping', () => {
   })
 
   it('throws an exception if the initial interval is undefined', () => {
-    // @ts-expect-error
-    const block = areIntervalsOverlapping.bind(null, undefined, {
-      start: new Date(2016, 10, 5),
-      end: new Date(2016, 10, 15),
-    })
+    const block = () =>
+      areIntervalsOverlapping(
+        // @ts-expect-error
+        undefined,
+        {
+          start: new Date(2016, 10, 5),
+          end: new Date(2016, 10, 15),
+        }
+      )
     assert.throws(block, RangeError)
   })
 
   it('throws an exception if the compared interval is undefined', () => {
-    // @ts-expect-error
-    const block = areIntervalsOverlapping.bind(
-      null,
-      { start: new Date(2016, 10, 3), end: new Date(2016, 10, 7) },
-      undefined
-    )
+    const block = () =>
+      areIntervalsOverlapping(
+        { start: new Date(2016, 10, 3), end: new Date(2016, 10, 7) },
+        // @ts-expect-error
+        undefined
+      )
     assert.throws(block, RangeError)
   })
 

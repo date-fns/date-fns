@@ -444,8 +444,11 @@ describe('parseISO', () => {
     })
 
     it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined`', () => {
-      // @ts-expect-error
-      const block = parseISO.bind(null, '+12340702', { additionalDigits: 3 })
+      const block = () =>
+        parseISO('+12340702', {
+          // @ts-expect-error
+          additionalDigits: 3,
+        })
       assert.throws(block, RangeError)
     })
   })

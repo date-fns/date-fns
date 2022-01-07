@@ -118,24 +118,26 @@ describe('eachWeekOfInterval', () => {
   })
 
   it('throws an exception if the interval is undefined', () => {
-    const block = eachWeekOfInterval.bind(
-      null,
-      // $ExpectedMistake
-      undefined
-    )
+    const block = () =>
+      eachWeekOfInterval(
+        // @ts-expect-error
+        undefined
+      )
     assert.throws(block, RangeError)
   })
 
   it('throws `RangeError` if `options.weekStartsOn` is not convertible to 0, 1, ..., 6 or undefined', () => {
-    const block = eachWeekOfInterval.bind(
-      null,
-      {
-        start: new Date(2014, 9 /* Oct */, 6, 6, 35),
-        end: new Date(2014, 10 /* Nov */, 25, 22, 15),
-      },
-      // $ExpectedMistake
-      { weekStartsOn: NaN }
-    )
+    const block = () =>
+      eachWeekOfInterval(
+        {
+          start: new Date(2014, 9 /* Oct */, 6, 6, 35),
+          end: new Date(2014, 10 /* Nov */, 25, 22, 15),
+        },
+        {
+          // @ts-expect-error
+          weekStartsOn: NaN,
+        }
+      )
     assert.throws(block, RangeError)
   })
 
