@@ -38,9 +38,9 @@ describe('addBusinessDays', () => {
 
   it('can handle a large number of business days', () => {
     // @ts-ignore
-    if (typeof this.timeout === 'function') {
+    if (typeof global.timeout === 'function') {
       // @ts-ignore
-      this.timeout(500 /* 500 ms test timeout */)
+      global.timeout(500 /* 500 ms test timeout */)
     }
 
     const result = addBusinessDays(new Date(2014, 0 /* Jan */, 1), 3387885)
