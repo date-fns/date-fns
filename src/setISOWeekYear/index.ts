@@ -1,8 +1,5 @@
-import toInteger from '../_lib/toInteger/index'
-import toDate from '../toDate/index'
-import startOfISOWeekYear from '../startOfISOWeekYear/index'
 import differenceInCalendarDays from '../differenceInCalendarDays/index'
-import requiredArgs from '../_lib/requiredArgs/index'
+import startOfISOWeekYear from '../startOfISOWeekYear/index'
 
 /**
  * @name setISOWeekYear
@@ -15,8 +12,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
+ * "ISO week year" is short for [ISO week-numbering year](https://en.wikipedia.org/wiki/ISO_week_date).
+ *
  * @param date - the date to be changed
- * @param isoWeekYear - the ISO week-numbering year of the new date
+ * @param year - the ISO week-numbering year of the new date
  * @returns the new date with the ISO week-numbering year set
  *
  * @example
@@ -25,18 +24,16 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> Mon Jan 01 2007 00:00:00
  */
 export default function setISOWeekYear(
-  dirtyDate: Date | number,
-  dirtyISOWeekYear: number
+  date: Date | number,
+  year: number
 ): Date {
-  requiredArgs(2, arguments)
-
-  let date = toDate(dirtyDate)
-  const isoWeekYear = toInteger(dirtyISOWeekYear)
-  const diff = differenceInCalendarDays(date, startOfISOWeekYear(date))
+  let result = new Date(date)
+  const isoWeekYear = Math.trunc(year)
+  const diff = differenceInCalendarDays(result, startOfISOWeekYear(result))
   const fourthOfJanuary = new Date(0)
   fourthOfJanuary.setFullYear(isoWeekYear, 0, 4)
   fourthOfJanuary.setHours(0, 0, 0, 0)
-  date = startOfISOWeekYear(fourthOfJanuary)
-  date.setDate(date.getDate() + diff)
-  return date
+  result = startOfISOWeekYear(fourthOfJanuary)
+  result.setDate(result.getDate() + diff)
+  return result
 }

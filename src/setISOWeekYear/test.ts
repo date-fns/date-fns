@@ -22,15 +22,6 @@ describe('setISOWeekYear', () => {
     assert.deepStrictEqual(result, new Date(2007, 0 /* Jan */, 1))
   })
 
-  it('implicitly converts number arguments', () => {
-    const result = setISOWeekYear(
-      new Date(2008, 11 /* Dec */, 29),
-      // @ts-expect-error
-      '2007'
-    )
-    assert.deepStrictEqual(result, new Date(2007, 0 /* Jan */, 1))
-  })
-
   it('does not mutate the original date', () => {
     const date = new Date(2008, 11 /* Dec */, 29)
     setISOWeekYear(date, 2000)
@@ -65,12 +56,5 @@ describe('setISOWeekYear', () => {
   it('returns `Invalid Date` if the given amount is NaN', () => {
     const result = setISOWeekYear(new Date(2008, 11 /* Dec */, 29), NaN)
     assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(setISOWeekYear.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(setISOWeekYear.bind(null, 1), TypeError)
   })
 })
