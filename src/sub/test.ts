@@ -17,7 +17,7 @@ describe('sub', () => {
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 10, 19, 50))
   })
 
-  it('supports an undefined value in the duration object', function () {
+  it('supports an undefined value in the duration object', () => {
     const result = sub(new Date(2017, 5 /* June */, 15, 15, 29, 20), {
       years: undefined,
       months: 9,
@@ -30,7 +30,7 @@ describe('sub', () => {
     assert.deepEqual(result, new Date(2016, 8 /* Sep */, 1, 10, 19, 50))
   })
 
-  it('returns same date object when passed empty duration values', function () {
+  it('returns same date object when passed empty duration values', () => {
     const result = sub(new Date(2014, 8 /* Sep */, 1, 10).getTime(), {
       years: undefined,
       months: undefined,

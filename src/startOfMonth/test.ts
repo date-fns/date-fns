@@ -4,32 +4,32 @@
 import assert from 'assert'
 import startOfMonth from '.'
 
-describe('startOfMonth', function () {
-  it('returns the date with the time set to 00:00:00 and the date set to the first day of a month', function () {
+describe('startOfMonth', () => {
+  it('returns the date with the time set to 00:00:00 and the date set to the first day of a month', () => {
     const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     const result = startOfMonth(date)
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1))
   })
 
-  it('accepts a timestamp', function () {
+  it('accepts a timestamp', () => {
     const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0).getTime()
     const result = startOfMonth(date)
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1))
   })
 
-  it('does not mutate the original date', function () {
+  it('does not mutate the original date', () => {
     const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     startOfMonth(date)
     assert.deepEqual(date, new Date(2014, 8 /* Sep */, 2, 11, 55, 0))
   })
 
-  it('returns `Invalid Date` if the given date is invalid', function () {
+  it('returns `Invalid Date` if the given date is invalid', () => {
     const result = startOfMonth(new Date(NaN))
     //@ts-expect-error
     assert(result instanceof Date && isNaN(result))
   })
 
-  it('throws TypeError exception if passed less than 1 argument', function () {
+  it('throws TypeError exception if passed less than 1 argument', () => {
     assert.throws(startOfMonth.bind(null), TypeError)
   })
 })

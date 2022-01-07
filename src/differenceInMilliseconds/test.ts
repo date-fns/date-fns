@@ -3,8 +3,8 @@
 import assert from 'assert'
 import differenceInMilliseconds from '.'
 
-describe('differenceInMilliseconds', function () {
-  it('returns the number of milliseconds between the given dates', function () {
+describe('differenceInMilliseconds', () => {
+  it('returns the number of milliseconds between the given dates', () => {
     const result = differenceInMilliseconds(
       new Date(2014, 6 /* Jul */, 2, 12, 30, 20, 700),
       new Date(2014, 6 /* Jul */, 2, 12, 30, 20, 600)
@@ -12,7 +12,7 @@ describe('differenceInMilliseconds', function () {
     assert(result === 100)
   })
 
-  it('returns a negative number if the time value of the first date is smaller', function () {
+  it('returns a negative number if the time value of the first date is smaller', () => {
     const result = differenceInMilliseconds(
       new Date(2014, 6 /* Jul */, 2, 12, 30, 20, 600),
       new Date(2014, 6 /* Jul */, 2, 12, 30, 20, 700)
@@ -20,7 +20,7 @@ describe('differenceInMilliseconds', function () {
     assert(result === -100)
   })
 
-  it('accepts timestamps', function () {
+  it('accepts timestamps', () => {
     const result = differenceInMilliseconds(
       new Date(2014, 8 /* Sep */, 5, 18, 30, 45, 500).getTime(),
       new Date(2014, 8 /* Sep */, 5, 18, 30, 45, 500).getTime()
@@ -41,7 +41,7 @@ describe('differenceInMilliseconds', function () {
     assert(resultIsNegative === false)
   })
 
-  it('returns NaN if the first date is `Invalid Date`', function () {
+  it('returns NaN if the first date is `Invalid Date`', () => {
     const result = differenceInMilliseconds(
       new Date(NaN),
       new Date(2017, 0 /* Jan */, 1)
@@ -49,7 +49,7 @@ describe('differenceInMilliseconds', function () {
     assert(isNaN(result))
   })
 
-  it('returns NaN if the second date is `Invalid Date`', function () {
+  it('returns NaN if the second date is `Invalid Date`', () => {
     const result = differenceInMilliseconds(
       new Date(2017, 0 /* Jan */, 1),
       new Date(NaN)
@@ -57,12 +57,12 @@ describe('differenceInMilliseconds', function () {
     assert(isNaN(result))
   })
 
-  it('returns NaN if the both dates are `Invalid Date`', function () {
+  it('returns NaN if the both dates are `Invalid Date`', () => {
     const result = differenceInMilliseconds(new Date(NaN), new Date(NaN))
     assert(isNaN(result))
   })
 
-  it('throws TypeError exception if passed less than 2 arguments', function () {
+  it('throws TypeError exception if passed less than 2 arguments', () => {
     // @ts-expect-error
     assert.throws(differenceInMilliseconds.bind(null), TypeError)
     // @ts-expect-error

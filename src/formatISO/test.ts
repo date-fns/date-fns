@@ -89,8 +89,8 @@ describe('formatISO', () => {
     )
   })
 
-  describe('implicitly converts options', function () {
-    it('`format`', function () {
+  describe('implicitly converts options', () => {
+    it('`format`', () => {
       // eslint-disable-next-line no-new-wrappers
       var format = new String('basic')
       var date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
@@ -104,7 +104,7 @@ describe('formatISO', () => {
       assert(result === `20191004T123013${tzOffsetExtended}`)
     })
 
-    it('`representation`', function () {
+    it('`representation`', () => {
       // eslint-disable-next-line no-new-wrappers
       var representation = new String('time')
       var date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
@@ -119,7 +119,7 @@ describe('formatISO', () => {
     })
   })
 
-  it("throws `RangeError` if `options.format` is not 'extended' or 'basic'", function () {
+  it("throws `RangeError` if `options.format` is not 'extended' or 'basic'", () => {
     // @ts-expect-error
     var block = formatISO.bind(null, new Date(2019, 2 /* Mar */, 3), {
       format: 'something else',
@@ -127,7 +127,7 @@ describe('formatISO', () => {
     assert.throws(block, RangeError)
   })
 
-  it("throws `RangeError` if `options.representation` is not 'date', 'time' or 'complete'", function () {
+  it("throws `RangeError` if `options.representation` is not 'date', 'time' or 'complete'", () => {
     // @ts-expect-error
     var block = formatISO.bind(null, new Date(2019, 2 /* Mar */, 3), {
       representation: 'something else',
@@ -139,7 +139,7 @@ describe('formatISO', () => {
     assert.throws(formatISO.bind(null, new Date(NaN)), RangeError)
   })
 
-  it('throws TypeError exception if passed less than 1 argument', function () {
+  it('throws TypeError exception if passed less than 1 argument', () => {
     // @ts-expect-error
     assert.throws(formatISO.bind(null), TypeError)
   })

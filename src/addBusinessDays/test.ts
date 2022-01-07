@@ -36,7 +36,7 @@ describe('addBusinessDays', () => {
     )
   })
 
-  it('can handle a large number of business days', function () {
+  it('can handle a large number of business days', () => {
     // @ts-ignore
     if (typeof this.timeout === 'function') {
       // @ts-ignore

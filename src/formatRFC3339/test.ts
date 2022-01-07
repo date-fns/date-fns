@@ -42,13 +42,13 @@ describe('formatRFC3339', () => {
     getTimezoneOffsetStub.restore()
   })
 
-  it('accepts a timestamp', function () {
+  it('accepts a timestamp', () => {
     const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
     const time = date.getTime()
     assert(formatRFC3339(time) === `2019-10-04T12:30:13${generateOffset(date)}`)
   })
 
-  it('allows to specify digits of second fractions', function () {
+  it('allows to specify digits of second fractions', () => {
     const date = new Date(2019, 11 /* Dec */, 11, 1, 0, 0, 789)
     assert(
       formatRFC3339(date, { fractionDigits: 3 }) ===
@@ -56,7 +56,7 @@ describe('formatRFC3339', () => {
     )
   })
 
-  it('works when ms < 100', function () {
+  it('works when ms < 100', () => {
     const date = new Date(2019, 11 /* Dec */, 11, 1, 0, 0, 12)
     assert(
       formatRFC3339(date, { fractionDigits: 2 }) ===
@@ -64,7 +64,7 @@ describe('formatRFC3339', () => {
     )
   })
 
-  it('implicitly converts options', function () {
+  it('implicitly converts options', () => {
     const date = new Date(2019, 2 /* Mar */, 3, 19, 0, 52, 123)
     const result = formatRFC3339(date, {
       // @ts-expect-error
@@ -73,7 +73,7 @@ describe('formatRFC3339', () => {
     assert.equal(result, `2019-03-03T19:00:52.12${generateOffset(date)}`)
   })
 
-  it('throws `RangeError` if `options.fractionDigits` is not convertable to 0, 1, 2, 3 or undefined', function () {
+  it('throws `RangeError` if `options.fractionDigits` is not convertable to 0, 1, 2, 3 or undefined', () => {
     // @ts-expect-error
     const block = formatRFC3339.bind(null, new Date(2019, 2 /* Mar */, 3), {
       fractionDigits: NaN,
@@ -85,7 +85,7 @@ describe('formatRFC3339', () => {
     assert.throws(formatRFC3339.bind(null, new Date(NaN)), RangeError)
   })
 
-  it('throws TypeError exception if passed less than 1 argument', function () {
+  it('throws TypeError exception if passed less than 1 argument', () => {
     // @ts-expect-error
     assert.throws(formatRFC3339.bind(null), TypeError)
   })

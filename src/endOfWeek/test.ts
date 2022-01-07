@@ -4,8 +4,8 @@
 import assert from 'assert'
 import endOfWeek from '.'
 
-describe('endOfWeek', function () {
-  it('returns the date with the time set to 23:59:59:999 and the date set to the last day of a week', function () {
+describe('endOfWeek', () => {
+  it('returns the date with the time set to 23:59:59:999 and the date set to the last day of a week', () => {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     var result = endOfWeek(date)
     assert.deepStrictEqual(
@@ -14,7 +14,7 @@ describe('endOfWeek', function () {
     )
   })
 
-  it('allows to specify which day is the first day of the week', function () {
+  it('allows to specify which day is the first day of the week', () => {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     var result = endOfWeek(date, { weekStartsOn: 1 })
     assert.deepStrictEqual(
@@ -23,7 +23,7 @@ describe('endOfWeek', function () {
     )
   })
 
-  it('allows to specify which day is the first day of the week in locale', function () {
+  it('allows to specify which day is the first day of the week in locale', () => {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     var result = endOfWeek(date, {
       // @ts-expect-error
@@ -37,7 +37,7 @@ describe('endOfWeek', function () {
     )
   })
 
-  it('`options.weekStartsOn` overwrites the first day of the week specified in locale', function () {
+  it('`options.weekStartsOn` overwrites the first day of the week specified in locale', () => {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     var result = endOfWeek(date, {
       weekStartsOn: 1,
@@ -52,7 +52,7 @@ describe('endOfWeek', function () {
     )
   })
 
-  it('implicitly converts options', function () {
+  it('implicitly converts options', () => {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     // @ts-expect-error
     var result = endOfWeek(date, { weekStartsOn: '1' })
@@ -62,7 +62,7 @@ describe('endOfWeek', function () {
     )
   })
 
-  it('accepts a timestamp', function () {
+  it('accepts a timestamp', () => {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0).getTime()
     var result = endOfWeek(date)
     assert.deepStrictEqual(
@@ -71,15 +71,15 @@ describe('endOfWeek', function () {
     )
   })
 
-  it('does not mutate the original date', function () {
+  it('does not mutate the original date', () => {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     endOfWeek(date)
     assert.deepStrictEqual(date, new Date(2014, 8 /* Sep */, 2, 11, 55, 0))
   })
 
-  describe('edge cases', function () {
-    describe('when the given day is before the start of a week', function () {
-      it('it returns the end of a week', function () {
+  describe('edge cases', () => {
+    describe('when the given day is before the start of a week', () => {
+      it('it returns the end of a week', () => {
         var date = new Date(2014, 9 /* Oct */, 6)
         var result = endOfWeek(date, { weekStartsOn: 3 })
         assert.deepStrictEqual(
@@ -89,8 +89,8 @@ describe('endOfWeek', function () {
       })
     })
 
-    describe('when the given day is the start of a week', function () {
-      it('it returns the end of a week', function () {
+    describe('when the given day is the start of a week', () => {
+      it('it returns the end of a week', () => {
         var date = new Date(2014, 9 /* Oct */, 8)
         var result = endOfWeek(date, { weekStartsOn: 3 })
         assert.deepStrictEqual(
@@ -100,8 +100,8 @@ describe('endOfWeek', function () {
       })
     })
 
-    describe('when the given day is after the start of a week', function () {
-      it('it returns the end of a week', function () {
+    describe('when the given day is after the start of a week', () => {
+      it('it returns the end of a week', () => {
         var date = new Date(2014, 9 /* Oct */, 10)
         var result = endOfWeek(date, { weekStartsOn: 3 })
         assert.deepStrictEqual(
@@ -111,7 +111,7 @@ describe('endOfWeek', function () {
       })
     })
 
-    it('handles the week at the end of a year', function () {
+    it('handles the week at the end of a year', () => {
       var date = new Date(2014, 11 /* Dec */, 29)
       var result = endOfWeek(date, { weekStartsOn: 5 })
       assert.deepStrictEqual(
@@ -121,12 +121,12 @@ describe('endOfWeek', function () {
     })
   })
 
-  it('returns `Invalid Date` if the given date is invalid', function () {
+  it('returns `Invalid Date` if the given date is invalid', () => {
     var result = endOfWeek(new Date(NaN))
     assert(result instanceof Date && isNaN(result.getTime()))
   })
 
-  it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', function () {
+  it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', () => {
     // @ts-expect-error
     var block = endOfWeek.bind(
       null,
@@ -137,7 +137,7 @@ describe('endOfWeek', function () {
     assert.throws(block, RangeError)
   })
 
-  it('throws TypeError exception if passed less than 1 argument', function () {
+  it('throws TypeError exception if passed less than 1 argument', () => {
     // @ts-expect-error
     assert.throws(endOfWeek.bind(null), TypeError)
   })

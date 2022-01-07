@@ -3,8 +3,8 @@
 import assert from 'assert'
 import previousMonday from '.'
 
-describe('previousMonday', function () {
-  it('returns the previous Monday given various dates after the same', function () {
+describe('previousMonday', () => {
+  it('returns the previous Monday given various dates after the same', () => {
     assert.deepStrictEqual(
       previousMonday(new Date(2021, 5 /* Jun */, 5)),
       new Date(2021, 4 /* May */, 31)
@@ -36,7 +36,7 @@ describe('previousMonday', function () {
     )
   })
 
-  it('returns `Invalid Date` if the given date is invalid', function () {
+  it('returns `Invalid Date` if the given date is invalid', () => {
     assert(previousMonday(new Date(NaN)) instanceof Date)
   })
 })

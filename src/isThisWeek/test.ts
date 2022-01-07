@@ -35,7 +35,7 @@ describe('isThisWeek', () => {
     assert(isThisWeek(date) === true)
   })
 
-  it('throws TypeError exception if passed less than 1 argument', function() {
+  it('throws TypeError exception if passed less than 1 argument', () => {
     // @ts-expect-error
     assert.throws(isThisWeek.bind(null), TypeError)
   })

@@ -32,7 +32,7 @@ describe('isThisMinute', () => {
     assert(isThisMinute(date) === true)
   })
 
-  it('throws TypeError exception if passed less than 1 argument', function() {
+  it('throws TypeError exception if passed less than 1 argument', () => {
     // @ts-expect-error
     assert.throws(isThisMinute.bind(null), TypeError)
   })

@@ -3,10 +3,10 @@
 import assert from 'assert'
 import formatDistance from '.'
 
-describe('formatDistance', function () {
-  describe('seconds', function () {
-    describe('when the includeSeconds option is true', function () {
-      it('less than 5 seconds', function () {
+describe('formatDistance', () => {
+  describe('seconds', () => {
+    describe('when the includeSeconds option is true', () => {
+      it('less than 5 seconds', () => {
         const result = formatDistance(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 3, 4, 10, 32, 3),
@@ -15,7 +15,7 @@ describe('formatDistance', function () {
         assert(result === 'less than 5 seconds')
       })
 
-      it('less than 10 seconds', function () {
+      it('less than 10 seconds', () => {
         const result = formatDistance(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 3, 4, 10, 32, 7),
@@ -24,7 +24,7 @@ describe('formatDistance', function () {
         assert(result === 'less than 10 seconds')
       })
 
-      it('less than 20 seconds', function () {
+      it('less than 20 seconds', () => {
         const result = formatDistance(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 3, 4, 10, 32, 15),
@@ -33,7 +33,7 @@ describe('formatDistance', function () {
         assert(result === 'less than 20 seconds')
       })
 
-      it('half a minute', function () {
+      it('half a minute', () => {
         const result = formatDistance(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 3, 4, 10, 32, 25),
@@ -42,7 +42,7 @@ describe('formatDistance', function () {
         assert(result === 'half a minute')
       })
 
-      it('less than a minute', function () {
+      it('less than a minute', () => {
         const result = formatDistance(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 3, 4, 10, 32, 45),
@@ -51,7 +51,7 @@ describe('formatDistance', function () {
         assert(result === 'less than a minute')
       })
 
-      it('1 minute', function () {
+      it('1 minute', () => {
         const result = formatDistance(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 3, 4, 10, 33, 0),
@@ -62,8 +62,8 @@ describe('formatDistance', function () {
     })
   })
 
-  describe('minutes', function () {
-    it('less than a minute', function () {
+  describe('minutes', () => {
+    it('less than a minute', () => {
       const result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 32, 20)
@@ -71,7 +71,7 @@ describe('formatDistance', function () {
       assert(result === 'less than a minute')
     })
 
-    it('1 minute', function () {
+    it('1 minute', () => {
       const result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 32, 50)
@@ -79,7 +79,7 @@ describe('formatDistance', function () {
       assert(result === '1 minute')
     })
 
-    it('n minutes', function () {
+    it('n minutes', () => {
       const result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 34, 50)
@@ -88,8 +88,8 @@ describe('formatDistance', function () {
     })
   })
 
-  describe('hours', function () {
-    it('about 1 hour', function () {
+  describe('hours', () => {
+    it('about 1 hour', () => {
       const result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 11, 32, 0)
@@ -97,7 +97,7 @@ describe('formatDistance', function () {
       assert(result === 'about 1 hour')
     })
 
-    it('about n hours', function () {
+    it('about n hours', () => {
       const result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 13, 32, 0)
@@ -106,8 +106,8 @@ describe('formatDistance', function () {
     })
   })
 
-  describe('days', function () {
-    it('1 day', function () {
+  describe('days', () => {
+    it('1 day', () => {
       const result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 5, 10, 32, 0)
@@ -115,7 +115,7 @@ describe('formatDistance', function () {
       assert(result === '1 day')
     })
 
-    it('n days', function () {
+    it('n days', () => {
       const result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 7, 10, 32, 0)
@@ -124,8 +124,8 @@ describe('formatDistance', function () {
     })
   })
 
-  describe('months', function () {
-    it('about 1 month', function () {
+  describe('months', () => {
+    it('about 1 month', () => {
       const result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 4, 4, 10, 32, 0)
@@ -133,7 +133,7 @@ describe('formatDistance', function () {
       assert(result === 'about 1 month')
     })
 
-    it('n months', function () {
+    it('n months', () => {
       const result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 6, 4, 10, 32, 0)
@@ -142,8 +142,8 @@ describe('formatDistance', function () {
     })
   })
 
-  describe('years', function () {
-    it('about 1 year', function () {
+  describe('years', () => {
+    it('about 1 year', () => {
       const result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1987, 3, 4, 10, 32, 0)
@@ -151,7 +151,7 @@ describe('formatDistance', function () {
       assert(result === 'about 1 year')
     })
 
-    it('over 1 year', function () {
+    it('over 1 year', () => {
       const result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1987, 9, 4, 10, 32, 0)
@@ -159,7 +159,7 @@ describe('formatDistance', function () {
       assert(result === 'over 1 year')
     })
 
-    it('almost n years', function () {
+    it('almost n years', () => {
       const result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1989, 2, 4, 10, 32, 0)
@@ -167,7 +167,7 @@ describe('formatDistance', function () {
       assert(result === 'almost 3 years')
     })
 
-    it('about n years', function () {
+    it('about n years', () => {
       const result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1989, 3, 4, 10, 32, 0)
@@ -175,7 +175,7 @@ describe('formatDistance', function () {
       assert(result === 'about 3 years')
     })
 
-    it('over n years', function () {
+    it('over n years', () => {
       const result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1989, 9, 4, 10, 32, 0)
@@ -184,7 +184,7 @@ describe('formatDistance', function () {
     })
   })
 
-  it('accepts timestamps', function () {
+  it('accepts timestamps', () => {
     const result = formatDistance(
       new Date(1986, 3, 4, 10, 32, 0).getTime(),
       new Date(1986, 3, 4, 11, 32, 0).getTime()
@@ -192,8 +192,8 @@ describe('formatDistance', function () {
     assert(result === 'about 1 hour')
   })
 
-  describe('when the addSuffix option is true', function () {
-    it('adds a past suffix', function () {
+  describe('when the addSuffix option is true', () => {
+    it('adds a past suffix', () => {
       const result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 32, 25),
@@ -202,7 +202,7 @@ describe('formatDistance', function () {
       assert(result === 'half a minute ago')
     })
 
-    it('adds a future suffix', function () {
+    it('adds a future suffix', () => {
       const result = formatDistance(
         new Date(1986, 3, 4, 11, 32, 0),
         new Date(1986, 3, 4, 10, 32, 0),
@@ -212,8 +212,8 @@ describe('formatDistance', function () {
     })
   })
 
-  describe('implicit conversion of options', function () {
-    it('`options.includeSeconds`', function () {
+  describe('implicit conversion of options', () => {
+    it('`options.includeSeconds`', () => {
       const result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 32, 7),
@@ -223,7 +223,7 @@ describe('formatDistance', function () {
       assert(result === 'less than 10 seconds')
     })
 
-    it('`options.addSuffix`', function () {
+    it('`options.addSuffix`', () => {
       const result = formatDistance(
         new Date(1986, 3, 4, 11, 32, 0),
         new Date(1986, 3, 4, 10, 32, 0),
@@ -234,8 +234,8 @@ describe('formatDistance', function () {
     })
   })
 
-  describe('custom locale', function () {
-    it('can be passed to the function', function () {
+  describe('custom locale', () => {
+    it('can be passed to the function', () => {
       function localizeDistance(token, count, options) {
         assert(token === 'lessThanXSeconds')
         assert(count === 5)
@@ -257,8 +257,8 @@ describe('formatDistance', function () {
       assert(result === 'It works!')
     })
 
-    describe('does not contain `formatDistance` property', function () {
-      it('throws `RangeError`', function () {
+    describe('does not contain `formatDistance` property', () => {
+      it('throws `RangeError`', () => {
         const customLocale = {}
         const block = formatDistance.bind(
           null,
@@ -271,28 +271,28 @@ describe('formatDistance', function () {
     })
   })
 
-  it('throws RangeError if the first date is `Invalid Date`', function () {
+  it('throws RangeError if the first date is `Invalid Date`', () => {
     assert.throws(
       formatDistance.bind(null, new Date(NaN), new Date(1986, 3, 7, 10, 32, 0)),
       RangeError
     )
   })
 
-  it('throws RangeError if the second date is `Invalid Date`', function () {
+  it('throws RangeError if the second date is `Invalid Date`', () => {
     assert.throws(
       formatDistance.bind(null, new Date(1986, 3, 4, 10, 32, 0), new Date(NaN)),
       RangeError
     )
   })
 
-  it('throws RangeError if the both dates are `Invalid Date`', function () {
+  it('throws RangeError if the both dates are `Invalid Date`', () => {
     assert.throws(
       formatDistance.bind(null, new Date(NaN), new Date(NaN)),
       RangeError
     )
   })
 
-  it('throws TypeError exception if passed less than 2 arguments', function () {
+  it('throws TypeError exception if passed less than 2 arguments', () => {
     assert.throws(formatDistance.bind(null), TypeError)
     assert.throws(formatDistance.bind(null, 1), TypeError)
   })

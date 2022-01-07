@@ -4,12 +4,12 @@
 import assert from 'assert'
 import max from '.'
 
-describe('max', function () {
+describe('max', () => {
   function isInvalidDate(dirtyDate: Date | number): boolean {
     return dirtyDate instanceof Date && isNaN(Number(dirtyDate))
   }
 
-  it('returns the latest date', function () {
+  it('returns the latest date', () => {
     const result = max([
       new Date(1989, 6 /* Jul */, 10),
       new Date(1987, 1 /* Feb */, 11),
@@ -17,7 +17,7 @@ describe('max', function () {
     assert.deepEqual(result, new Date(1989, 6 /* Jul */, 10))
   })
 
-  it('accepts array with more than 2 entries', function () {
+  it('accepts array with more than 2 entries', () => {
     const result = max([
       new Date(1987, 1 /* Feb */, 11),
       new Date(1989, 6 /* Jul */, 10),
@@ -27,7 +27,7 @@ describe('max', function () {
     assert.deepEqual(result, new Date(1995, 6 /* Jul */, 2))
   })
 
-  it('accepts timestamps', function () {
+  it('accepts timestamps', () => {
     const result = max([
       new Date(1989, 6 /* Jul */, 10).getTime(),
       new Date(1987, 1 /* Feb */, 11).getTime(),
@@ -35,7 +35,7 @@ describe('max', function () {
     assert.deepEqual(result, new Date(1989, 6 /* Jul */, 10))
   })
 
-  it('returns `Invalid Date` if any given date is invalid', function () {
+  it('returns `Invalid Date` if any given date is invalid', () => {
     const result = max([
       new Date(1989, 6 /* Jul */, 10),
       new Date(NaN),
@@ -44,7 +44,7 @@ describe('max', function () {
     assert(isInvalidDate(result))
   })
 
-  it('returns `Invalid Date` if any given value is undefined', function () {
+  it('returns `Invalid Date` if any given value is undefined', () => {
     const result = max([
       new Date(1989, 6 /* Jul */, 10),
       // @ts-expect-error
@@ -54,12 +54,12 @@ describe('max', function () {
     assert(isInvalidDate(result))
   })
 
-  it('returns `Invalid Date` for empty array', function () {
+  it('returns `Invalid Date` for empty array', () => {
     const result = max([])
     assert(isInvalidDate(result))
   })
 
-  it('converts Array-like objects into Array', function () {
+  it('converts Array-like objects into Array', () => {
     // @ts-expect-error
     const result = max({
       '0': new Date(1989, 6 /* Jul */, 10),
@@ -69,7 +69,7 @@ describe('max', function () {
     assert.deepEqual(result, new Date(1989, 6 /* Jul */, 10))
   })
 
-  it('converts iterable objects into Array', function () {
+  it('converts iterable objects into Array', () => {
     const result = max(
       // @ts-expect-error
       new Set([
@@ -80,13 +80,13 @@ describe('max', function () {
     assert.deepEqual(result, new Date(1989, 6 /* Jul */, 10))
   })
 
-  it('returns `Invalid Date` if given a non-iterable value', function () {
+  it('returns `Invalid Date` if given a non-iterable value', () => {
     // @ts-expect-error
     const result = max(undefined)
     assert(isInvalidDate(result))
   })
 
-  it('throws TypeError exception if passed less than 1 argument', function () {
+  it('throws TypeError exception if passed less than 1 argument', () => {
     assert.throws(max.bind(null), TypeError)
   })
 })
