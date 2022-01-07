@@ -146,8 +146,13 @@ describe('lightFormat', () => {
 
     const date = new Date(2014, 3, 4)
 
-    // @ts-expect-error
-    assert(lightFormat(date, formatString) === '2014-04-04')
+    assert(
+      lightFormat(
+        date,
+        // @ts-expect-error
+        formatString
+      ) === '2014-04-04'
+    )
   })
 
   it('throws RangeError exception if the format string contains an unescaped latin alphabet character', () => {

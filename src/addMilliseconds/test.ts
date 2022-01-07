@@ -57,8 +57,7 @@ describe('addMilliseconds', () => {
 
   it('returns `Invalid Date` if the given date is invalid', () => {
     const result = addMilliseconds(new Date(NaN), 750)
-    // @ts-expect-error
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('returns `Invalid Date` if the given amount is NaN', () => {
@@ -66,8 +65,7 @@ describe('addMilliseconds', () => {
       new Date(2014, 6 /* Jul */, 10, 12, 45, 30, 0),
       NaN
     )
-    // @ts-expect-error
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('throws TypeError exception if passed less than 2 arguments', () => {

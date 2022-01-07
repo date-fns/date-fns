@@ -96,11 +96,10 @@ describe('formatISO', () => {
       const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
       const tzOffsetExtended = generateOffset(date)
 
-      const result = formatISO(
-        date,
+      const result = formatISO(date, {
         // @ts-expect-error
-        { format: format }
-      )
+        format: format,
+      })
       assert(result === `20191004T123013${tzOffsetExtended}`)
     })
 
@@ -110,11 +109,10 @@ describe('formatISO', () => {
       const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
       const tzOffsetExtended = generateOffset(date)
 
-      const result = formatISO(
-        date,
+      const result = formatISO(date, {
         // @ts-expect-error
-        { representation: representation }
-      )
+        representation: representation,
+      })
       assert(result === `12:30:13${tzOffsetExtended}`)
     })
   })

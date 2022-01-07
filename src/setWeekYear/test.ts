@@ -20,8 +20,11 @@ describe('setWeekYear', () => {
   })
 
   it('implicitly converts number arguments', () => {
-    // @ts-expect-error
-    const result = setWeekYear(new Date(2008, 11 /* Dec */, 29), '2007')
+    const result = setWeekYear(
+      new Date(2008, 11 /* Dec */, 29),
+      // @ts-expect-error
+      '2007'
+    )
     assert.deepStrictEqual(result, new Date(2007, 0 /* Jan */, 1))
   })
 

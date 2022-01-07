@@ -48,7 +48,7 @@ describe('closestTo', () => {
       new Date(2012, 6 /* Jul */, 2),
     ])
 
-    assert(result instanceof Date && isNaN(Number(result)))
+    assert(result instanceof Date && isNaN(result!.getTime()))
   })
 
   it('returns `Invalid Date` if any date in the given array is `Invalid Date`', () => {
@@ -59,7 +59,7 @@ describe('closestTo', () => {
       new Date(2012, 6 /* Jul */, 2),
     ])
 
-    assert(result instanceof Date && isNaN(Number(result)))
+    assert(result instanceof Date && isNaN(result!.getTime()))
   })
 
   it('returns `Invalid Date` if any value in the given array is undefined', () => {
@@ -81,22 +81,31 @@ describe('closestTo', () => {
       '1': new Date(2012, 6 /* Jul */, 2),
       length: 2,
     }
-    // @ts-expect-error
-    const result = closestTo(date, object)
+    const result = closestTo(
+      date,
+      // @ts-expect-error
+      object
+    )
     assert.deepStrictEqual(result, new Date(2015, 7 /* Aug */, 31))
   })
 
   it('returns undefined if second argument is undefined', () => {
     const date = new Date(2014, 6 /* Jul */, 2).getTime()
-    // @ts-expect-error
-    const result = closestTo(date, undefined)
+    const result = closestTo(
+      date,
+      // @ts-expect-error
+      undefined
+    )
     assert.deepStrictEqual(result, undefined)
   })
 
   it('returns undefined if the given array is null', () => {
     const date = new Date(2014, 6 /* Jul */, 2).getTime()
-    // @ts-expect-error
-    const result = closestTo(date, null)
+    const result = closestTo(
+      date,
+      // @ts-expect-error
+      null
+    )
     assert.deepStrictEqual(result, undefined)
   })
 

@@ -49,8 +49,10 @@ describe('formatISO9075', () => {
       const format = new String('basic')
       const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
 
-      // @ts-expect-error
-      const result = formatISO9075(date, { format: format })
+      const result = formatISO9075(date, {
+        // @ts-expect-error
+        format: format,
+      })
       assert(result === '20191004 123013')
     })
 
@@ -59,8 +61,10 @@ describe('formatISO9075', () => {
       const representation = new String('time')
       const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
 
-      // @ts-expect-error
-      const result = formatISO9075(date, { representation: representation })
+      const result = formatISO9075(date, {
+        // @ts-expect-error
+        representation: representation,
+      })
       assert(result === '12:30:13')
     })
   })

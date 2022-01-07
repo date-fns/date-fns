@@ -20,8 +20,11 @@ describe('setDayOfYear', () => {
   })
 
   it('implicitly converts number arguments', () => {
-    // @ts-expect-error
-    const result = setDayOfYear(new Date(2014, 6 /* Jul */, 2), '2')
+    const result = setDayOfYear(
+      new Date(2014, 6 /* Jul */, 2),
+      // @ts-expect-error
+      '2'
+    )
     assert.deepStrictEqual(result, new Date(2014, 0 /* Jan */, 2))
   })
 

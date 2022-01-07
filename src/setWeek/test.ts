@@ -20,8 +20,11 @@ describe('setWeek', () => {
   })
 
   it('implicitly converts number arguments', () => {
-    // @ts-expect-error
-    const result = setWeek(new Date(2004, 7 /* Aug */, 7), '53')
+    const result = setWeek(
+      new Date(2004, 7 /* Aug */, 7),
+      // @ts-expect-error
+      '53'
+    )
     assert.deepStrictEqual(result, new Date(2005, 0 /* Jan */, 1))
   })
 
@@ -77,18 +80,20 @@ describe('setWeek', () => {
   })
 
   it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', () => {
-    // @ts-expect-error
-    const block = setWeek.bind(null, new Date(2004, 7 /* Aug */, 7), 53, {
-      weekStartsOn: NaN,
-    })
+    const block = () =>
+      setWeek(new Date(2004, 7 /* Aug */, 7), 53, {
+        // @ts-expect-error
+        weekStartsOn: NaN,
+      })
     assert.throws(block, RangeError)
   })
 
   it('throws `RangeError` if `options.firstWeekContainsDate` is not convertable to 1, 2, ..., 7 or undefined', () => {
-    // @ts-expect-error
-    const block = setWeek.bind(null, new Date(2004, 7 /* Aug */, 7), 53, {
-      firstWeekContainsDate: NaN,
-    })
+    const block = () =>
+      setWeek(new Date(2004, 7 /* Aug */, 7), 53, {
+        // @ts-expect-error
+        firstWeekContainsDate: NaN,
+      })
     assert.throws(block, RangeError)
   })
 

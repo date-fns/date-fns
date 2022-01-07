@@ -20,8 +20,11 @@ describe('addQuarters', () => {
   })
 
   it('implicitly converts number arguments', () => {
-    // @ts-expect-error
-    const result = addQuarters(new Date(2014, 8 /* Sep */, 1), '1')
+    const result = addQuarters(
+      new Date(2014, 8 /* Sep */, 1),
+      // @ts-expect-error
+      '1'
+    )
     assert.deepStrictEqual(result, new Date(2014, 11 /* Dec */, 1))
   })
 
@@ -50,14 +53,12 @@ describe('addQuarters', () => {
 
   it('returns `Invalid Date` if the given date is invalid', () => {
     const result = addQuarters(new Date(NaN), 1)
-    // @ts-expect-error
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('returns `Invalid Date` if the given amount is NaN', () => {
     const result = addQuarters(new Date(2014, 8 /* Sep */, 1), NaN)
-    // @ts-expect-error
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('throws TypeError exception if passed less than 2 arguments', () => {

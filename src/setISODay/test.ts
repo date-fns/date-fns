@@ -49,8 +49,11 @@ describe('setISODay', () => {
   })
 
   it('implicitly converts number arguments', () => {
-    // @ts-expect-error
-    const result = setISODay(new Date(2014, 8 /* Sep */, 1), '3')
+    const result = setISODay(
+      new Date(2014, 8 /* Sep */, 1),
+      // @ts-expect-error
+      '3'
+    )
     assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 3))
   })
 

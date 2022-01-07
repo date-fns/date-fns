@@ -387,8 +387,10 @@ describe('formatDistanceStrict', () => {
       const result = formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 32, 0),
-        // @ts-expect-error
-        { unit: unit }
+        {
+          // @ts-expect-error
+          unit: unit,
+        }
       )
       assert(result === '0 years')
     })
@@ -397,8 +399,10 @@ describe('formatDistanceStrict', () => {
       const result = formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 32, 25),
-        // @ts-expect-error
-        { addSuffix: 1 }
+        {
+          // @ts-expect-error
+          addSuffix: 1,
+        }
       )
       assert(result === '25 seconds ago')
     })
@@ -410,8 +414,10 @@ describe('formatDistanceStrict', () => {
       const result = formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 33, 1),
-        // @ts-expect-error
-        { roundingMethod: roundingMethod }
+        {
+          // @ts-expect-error
+          roundingMethod: roundingMethod,
+        }
       )
       assert(result === '2 minutes')
     })
@@ -438,8 +444,11 @@ describe('formatDistanceStrict', () => {
       const result = formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 32, 25),
-        // @ts-expect-error
-        { addSuffix: true, locale: customLocale }
+        {
+          addSuffix: true,
+          // @ts-expect-error
+          locale: customLocale,
+        }
       )
 
       assert(result === 'It works!')
@@ -507,8 +516,10 @@ describe('formatDistanceStrict', () => {
       formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 33, 29),
-        // @ts-expect-error
-        { roundingMethod: 'foobar' }
+        {
+          // @ts-expect-error
+          roundingMethod: 'foobar',
+        }
       )
     assert.throws(block, RangeError)
   })
@@ -518,8 +529,10 @@ describe('formatDistanceStrict', () => {
       formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 33, 29),
-        // @ts-expect-error
-        { unit: 'foobar' }
+        {
+          // @ts-expect-error
+          unit: 'foobar',
+        }
       )
     assert.throws(block, RangeError)
   })

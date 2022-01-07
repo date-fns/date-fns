@@ -36,8 +36,11 @@ describe('subBusinessDays', () => {
   })
 
   it('implicitly converts number arguments', () => {
-    // @ts-expect-error
-    const result = subBusinessDays(new Date(2014, 8 /* Sep */, 1), '10')
+    const result = subBusinessDays(
+      new Date(2014, 8 /* Sep */, 1),
+      // @ts-expect-error
+      '10'
+    )
     assert.deepStrictEqual(result, new Date(2014, 7 /* Aug */, 18))
   })
 

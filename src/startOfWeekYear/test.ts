@@ -35,8 +35,7 @@ describe('startOfWeekYear', () => {
 
   it('returns `Invalid Date` if the given date is invalid', () => {
     const result = startOfWeekYear(new Date(NaN))
-    // @ts-expect-error
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('allows to specify `weekStartsOn` and `firstWeekContainsDate` in locale', () => {

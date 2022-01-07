@@ -20,8 +20,11 @@ describe('subDays', () => {
   })
 
   it('implicitly converts number arguments', () => {
-    // @ts-expect-error
-    const result = subDays(new Date(2014, 8 /* Sep */, 1), '10')
+    const result = subDays(
+      new Date(2014, 8 /* Sep */, 1),
+      // @ts-expect-error
+      '10'
+    )
     assert.deepStrictEqual(result, new Date(2014, 7 /* Aug */, 22))
   })
 
@@ -33,14 +36,12 @@ describe('subDays', () => {
 
   it('returns `Invalid Date` if the given date is invalid', () => {
     const result = subDays(new Date(NaN), 10)
-    // @ts-expect-error
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('returns `Invalid Date` if the given amount is NaN', () => {
     const result = subDays(new Date(2014, 8 /* Sep */, 1), NaN)
-    // @ts-expect-error
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('throws TypeError exception if passed less than 2 arguments', () => {

@@ -25,8 +25,11 @@ describe('setQuarter', () => {
   })
 
   it('implicitly converts number arguments', () => {
-    // @ts-expect-error
-    const result = setQuarter(new Date(2014, 6 /* Jul */, 2), '1')
+    const result = setQuarter(
+      new Date(2014, 6 /* Jul */, 2),
+      // @ts-expect-error
+      '1'
+    )
     assert.deepStrictEqual(result, new Date(2014, 0 /* Jan */, 2))
   })
 

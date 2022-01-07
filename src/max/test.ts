@@ -4,8 +4,8 @@ import assert from 'assert'
 import max from '.'
 
 describe('max', () => {
-  function isInvalidDate(dirtyDate: Date | number): boolean {
-    return dirtyDate instanceof Date && isNaN(Number(dirtyDate))
+  const isInvalidDate = (date: any): boolean => {
+    return date instanceof Date && isNaN(date.getTime())
   }
 
   it('returns the latest date', () => {
@@ -59,12 +59,14 @@ describe('max', () => {
   })
 
   it('converts Array-like objects into Array', () => {
-    // @ts-expect-error
-    const result = max({
-      '0': new Date(1989, 6 /* Jul */, 10),
-      '1': new Date(1987, 1 /* Feb */, 11),
-      length: 2,
-    })
+    const result = max(
+      // @ts-expect-error
+      {
+        '0': new Date(1989, 6 /* Jul */, 10),
+        '1': new Date(1987, 1 /* Feb */, 11),
+        length: 2,
+      }
+    )
     assert.deepStrictEqual(result, new Date(1989, 6 /* Jul */, 10))
   })
 
@@ -80,8 +82,10 @@ describe('max', () => {
   })
 
   it('returns `Invalid Date` if given a non-iterable value', () => {
-    // @ts-expect-error
-    const result = max(undefined)
+    const result = max(
+      // @ts-expect-error
+      undefined
+    )
     assert(isInvalidDate(result))
   })
 

@@ -37,8 +37,7 @@ describe('isDate', () => {
         iframe.id = 'iframe'
         iframe.addEventListener('load', () => {
           execScript('window.date = new Date()') // eslint-disable-line no-implied-eval
-          // @ts-expect-error
-          assert(isDate(iframe.contentWindow.date))
+          assert(isDate((iframe.contentWindow as any).date))
           done()
         })
         if (!document.body) throw new Error('document.body is not defined')

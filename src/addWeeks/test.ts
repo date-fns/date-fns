@@ -20,8 +20,11 @@ describe('addWeeks', () => {
   })
 
   it('implicitly converts number arguments', () => {
-    // @ts-expect-error
-    const result = addWeeks(new Date(2014, 8 /* Sep */, 1), '4')
+    const result = addWeeks(
+      new Date(2014, 8 /* Sep */, 1),
+      // @ts-expect-error
+      '4'
+    )
     assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 29))
   })
 
@@ -33,14 +36,12 @@ describe('addWeeks', () => {
 
   it('returns `Invalid Date` if the given date is invalid', () => {
     const result = addWeeks(new Date(NaN), 4)
-    // @ts-expect-error
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('returns `Invalid Date` if the given amount is NaN', () => {
     const result = addWeeks(new Date(2014, 8 /* Sep */, 1), NaN)
-    // @ts-expect-error
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('throws TypeError exception if passed less than 2 arguments', () => {

@@ -67,10 +67,11 @@ describe('getWeekOfMonth', () => {
 
   it('throws RangeError exception if `weekStartsOn` is out of bound', () => {
     assert.throws(
-      // @ts-expect-error
-      getWeekOfMonth.bind(null, new Date(2019, 4 /* May */, 5), {
-        weekStartsOn: 7,
-      }),
+      () =>
+        getWeekOfMonth(new Date(2019, 4 /* May */, 5), {
+          // @ts-expect-error
+          weekStartsOn: 7,
+        }),
       RangeError
     )
   })
@@ -86,14 +87,14 @@ describe('getWeekOfMonth', () => {
   })
 
   it('throws RangeError exception weekStartsOn is NaN', () => {
-    try {
-      getWeekOfMonth(new Date(2017, 10 /* Nov */, 1), {
-        // @ts-expect-error
-        weekStartsOn: NaN,
-      })
-    } catch (e) {
-      assert(e instanceof RangeError)
-    }
+    assert.throws(
+      () =>
+        getWeekOfMonth(new Date(2017, 10 /* Nov */, 1), {
+          // @ts-expect-error
+          weekStartsOn: NaN,
+        }),
+      RangeError
+    )
   })
 
   it('returns the week of the month of the given date, when the given date is sunday', () => {

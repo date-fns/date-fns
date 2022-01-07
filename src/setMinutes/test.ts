@@ -23,8 +23,11 @@ describe('setMinutes', () => {
   })
 
   it('implicitly converts number arguments', () => {
-    // @ts-expect-error
-    const result = setMinutes(new Date(2014, 8 /* Sep */, 1, 11, 30, 40), '45')
+    const result = setMinutes(
+      new Date(2014, 8 /* Sep */, 1, 11, 30, 40),
+      // @ts-expect-error
+      '45'
+    )
     assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1, 11, 45, 40))
   })
 

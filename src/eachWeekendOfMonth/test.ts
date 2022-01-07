@@ -23,8 +23,18 @@ describe('eachWeekendOfMonth', () => {
     assert.throws(eachWeekendOfMonth.bind(null), TypeError)
   })
 
-  it('throws RangeError when the expected year is an invalid date', () => {
-    // @ts-expect-error
-    assert.throws(eachWeekendOfMonth.bind(1, NaN), RangeError)
+  it('throws RangeError when the expected year is NaN', () => {
+    assert.throws(
+      eachWeekendOfMonth.bind(
+        null,
+        // @ts-expect-error
+        NaN
+      ),
+      RangeError
+    )
+  })
+
+  it('throws RangeError when the expected year is an Invalid Date', () => {
+    assert.throws(eachWeekendOfMonth.bind(null, new Date(NaN)), RangeError)
   })
 })

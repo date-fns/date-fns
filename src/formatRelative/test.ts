@@ -118,8 +118,10 @@ describe('formatRelative', () => {
       const result = formatRelative(
         new Date(1986, 2 /* Mar */, 28, 16, 50),
         baseDate,
-        // @ts-expect-error
-        { locale: customLocale }
+        {
+          // @ts-expect-error
+          locale: customLocale,
+        }
       )
       assert(result === 'It works perfectly!')
     })

@@ -23,8 +23,11 @@ describe('addMinutes', () => {
   })
 
   it('implicitly converts number arguments', () => {
-    // @ts-expect-error
-    const result = addMinutes(new Date(2014, 6 /* Jul */, 10, 12, 5), '30')
+    const result = addMinutes(
+      new Date(2014, 6 /* Jul */, 10, 12, 5),
+      // @ts-expect-error
+      '30'
+    )
     assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 35))
   })
 
@@ -36,14 +39,12 @@ describe('addMinutes', () => {
 
   it('returns `Invalid Date` if the given date is invalid', () => {
     const result = addMinutes(new Date(NaN), 30)
-    // @ts-expect-error
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('returns `Invalid Date` if the given amount is NaN', () => {
     const result = addMinutes(new Date(2014, 6 /* Jul */, 10, 12, 0), NaN)
-    // @ts-expect-error
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('throws TypeError exception if passed less than 2 arguments', () => {

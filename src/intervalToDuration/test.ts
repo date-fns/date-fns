@@ -51,25 +51,21 @@ describe('intervalToDuration', () => {
 
   describe('throws RangeError', () => {
     it('throws error if start date is invalid', () => {
-      try {
+      const block = () => {
         const invalidStart = new Date(NaN)
         const end = new Date(2020, 2, 1, 12, 0, 0)
         intervalToDuration({ start: invalidStart, end })
-      } catch (e: any) {
-        assert(e instanceof RangeError)
-        assert(e['message'] === 'Start Date is invalid')
       }
+      assert.throws(block, RangeError, 'Start Date is invalid')
     })
 
     it('throws error if end date is invalid', () => {
-      try {
+      const block = () => {
         const start = new Date(2020, 2, 1, 12, 0, 0)
         const invalidEnd = new Date(NaN)
         intervalToDuration({ start, end: invalidEnd })
-      } catch (e: any) {
-        assert(e instanceof RangeError)
-        assert(e['message'] === 'End Date is invalid')
       }
+      assert.throws(block, RangeError, 'End Date is invalid')
     })
   })
 

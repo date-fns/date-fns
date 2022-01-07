@@ -61,11 +61,10 @@ describe('sub', () => {
   })
 
   it('implicitly converts number arguments', () => {
-    const result = sub(
-      new Date(2014, 8 /* Sep */, 1, 14),
+    const result = sub(new Date(2014, 8 /* Sep */, 1, 14), {
       // @ts-expect-error
-      { hours: '4.2' }
-    )
+      hours: '4.2',
+    })
     assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1, 10))
   })
 
@@ -97,7 +96,7 @@ describe('sub', () => {
     assert(result instanceof Date && isNaN(result.getTime()))
   })
 
-  it('throws RangeError exception if passed Number as duration', () => {
+  it('returns `Invalid Date` if the given duration is not even an object', () => {
     const result = sub(
       new Date(2014, 8, 1),
       // @ts-expect-error

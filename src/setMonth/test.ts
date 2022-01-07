@@ -25,8 +25,11 @@ describe('setMonth', () => {
   })
 
   it('implicitly converts number arguments', () => {
-    // @ts-expect-error
-    const result = setMonth(new Date(2014, 8 /* Sep */, 1), '1')
+    const result = setMonth(
+      new Date(2014, 8 /* Sep */, 1),
+      // @ts-expect-error
+      '1'
+    )
     assert.deepStrictEqual(result, new Date(2014, 1 /* Feb */, 1))
   })
 

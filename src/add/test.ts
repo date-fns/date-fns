@@ -62,8 +62,10 @@ describe('add', () => {
   })
 
   it('implicitly converts number arguments', () => {
-    // @ts-expect-error
-    const result = add(new Date(2014, 8 /* Sep */, 1, 10), { hours: '4.2' })
+    const result = add(new Date(2014, 8 /* Sep */, 1, 10), {
+      // @ts-expect-error
+      hours: '4.2',
+    })
     assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1, 14))
   })
 
@@ -109,9 +111,12 @@ describe('add', () => {
     assert(result instanceof Date && isNaN(result.getTime()))
   })
 
-  it('throws RangeError exception if passed Number as duration', () => {
-    // @ts-expect-error
-    const result = add(new Date(2014, 8, 1), 'wut')
+  it('returns `Invalid Date` if the given duration is not even an object', () => {
+    const result = add(
+      new Date(2014, 8, 1),
+      // @ts-expect-error
+      'wut'
+    )
     assert(result instanceof Date && isNaN(result.getTime()))
   })
 

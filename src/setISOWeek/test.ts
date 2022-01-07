@@ -20,8 +20,11 @@ describe('setISOWeek', () => {
   })
 
   it('implicitly converts number arguments', () => {
-    // @ts-expect-error
-    const result = setISOWeek(new Date(2004, 7 /* Aug */, 7), '53')
+    const result = setISOWeek(
+      new Date(2004, 7 /* Aug */, 7),
+      // @ts-expect-error
+      '53'
+    )
     assert.deepStrictEqual(result, new Date(2005, 0 /* Jan */, 1))
   })
 

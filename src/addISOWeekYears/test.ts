@@ -20,8 +20,11 @@ describe('addISOWeekYears', () => {
   })
 
   it('implicitly converts number arguments', () => {
-    // @ts-expect-error
-    const result = addISOWeekYears(new Date(2010, 6 /* Jul */, 2), '5')
+    const result = addISOWeekYears(
+      new Date(2010, 6 /* Jul */, 2),
+      // @ts-expect-error
+      '5'
+    )
     assert.deepStrictEqual(result, new Date(2015, 5 /* Jun */, 26))
   })
 
@@ -44,14 +47,12 @@ describe('addISOWeekYears', () => {
 
   it('returns `Invalid Date` if the given date is invalid', () => {
     const result = addISOWeekYears(new Date(NaN), 5)
-    // @ts-expect-error
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('returns `Invalid Date` if the given amount is NaN', () => {
     const result = addISOWeekYears(new Date(2010, 6 /* Jul */, 2), NaN)
-    // @ts-expect-error
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('throws TypeError exception if passed less than 2 arguments', () => {

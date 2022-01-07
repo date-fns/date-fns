@@ -53,8 +53,10 @@ describe('endOfWeek', () => {
 
   it('implicitly converts options', () => {
     const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
-    // @ts-expect-error
-    const result = endOfWeek(date, { weekStartsOn: '1' })
+    const result = endOfWeek(date, {
+      // @ts-expect-error
+      weekStartsOn: '1',
+    })
     assert.deepStrictEqual(
       result,
       new Date(2014, 8 /* Sep */, 7, 23, 59, 59, 999)

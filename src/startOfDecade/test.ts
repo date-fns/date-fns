@@ -24,8 +24,7 @@ describe('startOfDecade', () => {
 
   it('returns `Invalid Date` if the given date is invalid', () => {
     const result = startOfDecade(new Date(NaN))
-    // @ts-expect-error
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('throws TypeError exception if passed less than 1 argument', () => {

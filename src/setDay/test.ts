@@ -112,8 +112,11 @@ describe('setDay', () => {
   })
 
   it('implicitly converts number arguments', () => {
-    // @ts-expect-error
-    const result = setDay(new Date(2014, 8 /* Sep */, 1), '5')
+    const result = setDay(
+      new Date(2014, 8 /* Sep */, 1),
+      // @ts-expect-error
+      '5'
+    )
     assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 5))
   })
 
