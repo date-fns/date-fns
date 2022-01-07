@@ -1,7 +1,6 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import { Locale } from '../../locale/types'
 import startOfUTCWeek from '.'
 
 describe('startOfUTCWeek', () => {
@@ -20,9 +19,10 @@ describe('startOfUTCWeek', () => {
   it('allows to specify which day is the first day of the week in locale', () => {
     const date = new Date(Date.UTC(2014, 8 /* Sep */, 2, 11, 55, 0))
     const result = startOfUTCWeek(date, {
+      // @ts-expect-error
       locale: {
         options: { weekStartsOn: 1 },
-      } as Locale,
+      },
     })
     assert.deepStrictEqual(result, new Date(Date.UTC(2014, 8 /* Sep */, 1)))
   })
@@ -31,9 +31,10 @@ describe('startOfUTCWeek', () => {
     const date = new Date(Date.UTC(2014, 8 /* Sep */, 2, 11, 55, 0))
     const result = startOfUTCWeek(date, {
       weekStartsOn: 1,
+      // @ts-expect-error
       locale: {
         options: { weekStartsOn: 0 },
-      } as Locale,
+      },
     })
     assert.deepStrictEqual(result, new Date(Date.UTC(2014, 8 /* Sep */, 1)))
   })

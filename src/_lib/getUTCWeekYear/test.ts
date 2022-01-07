@@ -1,7 +1,6 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import { Locale } from '../../locale/types'
 import getUTCWeekYear from '.'
 
 describe('getUTCWeekYear', () => {
@@ -31,9 +30,10 @@ describe('getUTCWeekYear', () => {
   it('allows to specify `weekStartsOn` and `firstWeekContainsDate` in locale', () => {
     const date = new Date(Date.UTC(2004, 11 /* Dec */, 26))
     const result = getUTCWeekYear(date, {
+      // @ts-expect-error
       locale: {
         options: { weekStartsOn: 1, firstWeekContainsDate: 4 },
-      } as Locale,
+      },
     })
     assert(result === 2004)
   })
@@ -43,9 +43,10 @@ describe('getUTCWeekYear', () => {
     const result = getUTCWeekYear(date, {
       weekStartsOn: 1,
       firstWeekContainsDate: 4,
+      // @ts-expect-error
       locale: {
         options: { weekStartsOn: 0, firstWeekContainsDate: 1 },
-      } as Locale,
+      },
     })
     assert(result === 2004)
   })

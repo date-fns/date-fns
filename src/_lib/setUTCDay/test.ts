@@ -2,7 +2,6 @@
 
 import assert from 'assert'
 import setUTCDay from '.'
-import { Locale } from '../../locale/types'
 
 describe('setUTCDay', () => {
   it('sets the day of the week', () => {
@@ -19,9 +18,10 @@ describe('setUTCDay', () => {
 
   it('allows to specify which day is the first day of the week in locale', () => {
     const result = setUTCDay(new Date(Date.UTC(2014, 8 /* Sep */, 1)), 0, {
+      // @ts-expect-error
       locale: {
         options: { weekStartsOn: 1 },
-      } as Locale,
+      },
     })
     assert.deepStrictEqual(result, new Date(Date.UTC(2014, 8 /* Sep */, 7)))
   })
@@ -29,9 +29,10 @@ describe('setUTCDay', () => {
   it('`options.weekStartsOn` overwrites the first day of the week specified in locale', () => {
     const result = setUTCDay(new Date(Date.UTC(2014, 8 /* Sep */, 1)), 0, {
       weekStartsOn: 1,
+      // @ts-expect-error
       locale: {
         options: { weekStartsOn: 0 },
-      } as Locale,
+      },
     })
     assert.deepStrictEqual(result, new Date(Date.UTC(2014, 8 /* Sep */, 7)))
   })

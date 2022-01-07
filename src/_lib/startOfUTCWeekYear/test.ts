@@ -1,7 +1,6 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import { Locale } from 'src/locale/types'
 import startOfUTCWeekYear from '.'
 
 describe('startOfUTCWeekYear', () => {
@@ -46,9 +45,10 @@ describe('startOfUTCWeekYear', () => {
   it('allows to specify `weekStartsOn` and `firstWeekContainsDate` in locale', () => {
     const date = new Date(Date.UTC(2005, 6 /* Jul */, 2))
     const result = startOfUTCWeekYear(date, {
+      // @ts-expect-error
       locale: {
         options: { weekStartsOn: 1, firstWeekContainsDate: 4 },
-      } as Locale,
+      },
     })
     assert.deepStrictEqual(
       result,
@@ -61,9 +61,10 @@ describe('startOfUTCWeekYear', () => {
     const result = startOfUTCWeekYear(date, {
       weekStartsOn: 1,
       firstWeekContainsDate: 4,
+      // @ts-expect-error
       locale: {
         options: { weekStartsOn: 0, firstWeekContainsDate: 1 },
-      } as Locale,
+      },
     })
     assert.deepStrictEqual(
       result,

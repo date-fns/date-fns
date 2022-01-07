@@ -1,7 +1,6 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import type { Locale } from 'src/locale/types'
 import isSameUTCWeek from '.'
 
 describe('isSameUTCWeek', () => {
@@ -35,9 +34,10 @@ describe('isSameUTCWeek', () => {
       new Date(Date.UTC(2014, 7 /* Aug */, 31)),
       new Date(Date.UTC(2014, 8 /* Sep */, 4)),
       {
+        // @ts-expect-error
         locale: {
           options: { weekStartsOn: 1 },
-        } as Locale,
+        },
       }
     )
     assert(result === false)
@@ -49,9 +49,10 @@ describe('isSameUTCWeek', () => {
       new Date(Date.UTC(2014, 8 /* Sep */, 4)),
       {
         weekStartsOn: 1,
+        // @ts-expect-error
         locale: {
           options: { weekStartsOn: 0 },
-        } as Locale,
+        },
       }
     )
     assert(result === false)
