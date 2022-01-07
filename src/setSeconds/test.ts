@@ -9,7 +9,10 @@ describe('setSeconds', () => {
       new Date(2014, 8 /* Sep */, 1, 11, 30, 40, 500),
       45
     )
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 11, 30, 45, 500))
+    assert.deepStrictEqual(
+      result,
+      new Date(2014, 8 /* Sep */, 1, 11, 30, 45, 500)
+    )
   })
 
   it('accepts a timestamp', () => {
@@ -17,7 +20,7 @@ describe('setSeconds', () => {
       new Date(2014, 8 /* Sep */, 1, 11, 30, 15).getTime(),
       45
     )
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 11, 30, 45))
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1, 11, 30, 45))
   })
 
   it('converts a fractional number to an integer', () => {
@@ -25,7 +28,10 @@ describe('setSeconds', () => {
       new Date(2014, 8 /* Sep */, 1, 11, 30, 40, 500),
       45.54
     )
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 11, 30, 45, 500))
+    assert.deepStrictEqual(
+      result,
+      new Date(2014, 8 /* Sep */, 1, 11, 30, 45, 500)
+    )
   })
 
   it('implicitly converts number arguments', () => {
@@ -34,13 +40,16 @@ describe('setSeconds', () => {
       // @ts-expect-error
       '45'
     )
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 11, 30, 45, 500))
+    assert.deepStrictEqual(
+      result,
+      new Date(2014, 8 /* Sep */, 1, 11, 30, 45, 500)
+    )
   })
 
   it('does not mutate the original date', () => {
     const date = new Date(2014, 8 /* Sep */, 1, 11, 30, 40)
     setSeconds(date, 15)
-    assert.deepEqual(date, new Date(2014, 8 /* Sep */, 1, 11, 30, 40))
+    assert.deepStrictEqual(date, new Date(2014, 8 /* Sep */, 1, 11, 30, 40))
   })
 
   it('returns `Invalid Date` if the given date is invalid', () => {

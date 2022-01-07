@@ -6,29 +6,29 @@ import setISOWeek from '.'
 describe('setISOWeek', () => {
   it('sets the ISO week', () => {
     const result = setISOWeek(new Date(2004, 7 /* Aug */, 7), 53)
-    assert.deepEqual(result, new Date(2005, 0 /* Jan */, 1))
+    assert.deepStrictEqual(result, new Date(2005, 0 /* Jan */, 1))
   })
 
   it('accepts a timestamp', () => {
     const result = setISOWeek(new Date(2009, 11 /* Dec */, 2).getTime(), 1)
-    assert.deepEqual(result, new Date(2008, 11 /* Dec */, 31))
+    assert.deepStrictEqual(result, new Date(2008, 11 /* Dec */, 31))
   })
 
   it('converts a fractional number to an integer', () => {
     const result = setISOWeek(new Date(2004, 7 /* Aug */, 7), 53.53)
-    assert.deepEqual(result, new Date(2005, 0 /* Jan */, 1))
+    assert.deepStrictEqual(result, new Date(2005, 0 /* Jan */, 1))
   })
 
   it('implicitly converts number arguments', () => {
     // @ts-expect-error
     const result = setISOWeek(new Date(2004, 7 /* Aug */, 7), '53')
-    assert.deepEqual(result, new Date(2005, 0 /* Jan */, 1))
+    assert.deepStrictEqual(result, new Date(2005, 0 /* Jan */, 1))
   })
 
   it('does not mutate the original date', () => {
     var date = new Date(2014, 6 /* Jul */, 2)
     setISOWeek(date, 52)
-    assert.deepEqual(date, new Date(2014, 6 /* Jul */, 2))
+    assert.deepStrictEqual(date, new Date(2014, 6 /* Jul */, 2))
   })
 
   it('handles dates before 100 AD', () => {
@@ -39,7 +39,7 @@ describe('setISOWeek', () => {
     expectedResult.setFullYear(4, 11 /* Dec */, 26)
     expectedResult.setHours(0, 0, 0, 0)
     const result = setISOWeek(initialDate, 52)
-    assert.deepEqual(result, expectedResult)
+    assert.deepStrictEqual(result, expectedResult)
   })
 
   it('returns `Invalid Date` if the given date is invalid', () => {

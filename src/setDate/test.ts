@@ -6,29 +6,29 @@ import setDate from '.'
 describe('setDate', () => {
   it('sets the day of the month', () => {
     const result = setDate(new Date(2014, 8 /* Sep */, 1), 30)
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 30))
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 30))
   })
 
   it('accepts a timestamp', () => {
     const result = setDate(new Date(2014, 8 /* Sep */, 1).getTime(), 25)
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 25))
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 25))
   })
 
   it('converts a fractional number to an integer', () => {
     const result = setDate(new Date(2014, 8 /* Sep */, 1), 30.3)
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 30))
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 30))
   })
 
   it('implicitly converts number arguments', () => {
     // @ts-expect-error
     const result = setDate(new Date(2014, 8 /* Sep */, 1), '30')
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 30))
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 30))
   })
 
   it('does not mutate the original date', () => {
     const date = new Date(2014, 8 /* Sep */, 1)
     setDate(date, 20)
-    assert.deepEqual(date, new Date(2014, 8 /* Sep */, 1))
+    assert.deepStrictEqual(date, new Date(2014, 8 /* Sep */, 1))
   })
 
   it('returns `Invalid Date` if the given date is invalid', () => {

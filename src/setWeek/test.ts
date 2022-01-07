@@ -6,29 +6,29 @@ import setWeek from '.'
 describe('setWeek', () => {
   it('sets the local week', () => {
     const result = setWeek(new Date(2005, 0 /* Jan */, 2), 1)
-    assert.deepEqual(result, new Date(2004, 11 /* Dec */, 26))
+    assert.deepStrictEqual(result, new Date(2004, 11 /* Dec */, 26))
   })
 
   it('accepts a timestamp', () => {
     const result = setWeek(new Date(2009, 11 /* Dec */, 2).getTime(), 1)
-    assert.deepEqual(result, new Date(2008, 11 /* Dec */, 31))
+    assert.deepStrictEqual(result, new Date(2008, 11 /* Dec */, 31))
   })
 
   it('converts a fractional number to an integer', () => {
     const result = setWeek(new Date(2005, 0 /* Jan */, 2), 1.9)
-    assert.deepEqual(result, new Date(2004, 11 /* Dec */, 26))
+    assert.deepStrictEqual(result, new Date(2004, 11 /* Dec */, 26))
   })
 
   it('implicitly converts number arguments', () => {
     // @ts-expect-error
     const result = setWeek(new Date(2004, 7 /* Aug */, 7), '53')
-    assert.deepEqual(result, new Date(2005, 0 /* Jan */, 1))
+    assert.deepStrictEqual(result, new Date(2005, 0 /* Jan */, 1))
   })
 
   it('does not mutate the original date', () => {
     const date = new Date(2014, 6 /* Jul */, 2)
     setWeek(date, 52)
-    assert.deepEqual(date, new Date(2014, 6 /* Jul */, 2))
+    assert.deepStrictEqual(date, new Date(2014, 6 /* Jul */, 2))
   })
 
   it('handles dates before 100 AD', () => {
@@ -39,7 +39,7 @@ describe('setWeek', () => {
     expectedResult.setFullYear(4, 11 /* Dec */, 19)
     expectedResult.setHours(0, 0, 0, 0)
     const result = setWeek(initialDate, 52)
-    assert.deepEqual(result, expectedResult)
+    assert.deepStrictEqual(result, expectedResult)
   })
 
   it('returns `Invalid Date` if the given date is invalid', () => {
@@ -60,7 +60,7 @@ describe('setWeek', () => {
         options: { weekStartsOn: 1, firstWeekContainsDate: 4 },
       },
     })
-    assert.deepEqual(result, new Date(2004, 0 /* Jan */, 4))
+    assert.deepStrictEqual(result, new Date(2004, 0 /* Jan */, 4))
   })
 
   it('`options.weekStartsOn` overwrites the first day of the week specified in locale', () => {
@@ -73,7 +73,7 @@ describe('setWeek', () => {
         options: { weekStartsOn: 0, firstWeekContainsDate: 1 },
       },
     })
-    assert.deepEqual(result, new Date(2004, 0 /* Jan */, 4))
+    assert.deepStrictEqual(result, new Date(2004, 0 /* Jan */, 4))
   })
 
   it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', () => {

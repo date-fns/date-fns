@@ -6,7 +6,7 @@ import setMinutes from '.'
 describe('setMinutes', () => {
   it('sets the minutes', () => {
     const result = setMinutes(new Date(2014, 8 /* Sep */, 1, 11, 30, 40), 45)
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 11, 45, 40))
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1, 11, 45, 40))
   })
 
   it('accepts a timestamp', () => {
@@ -14,24 +14,24 @@ describe('setMinutes', () => {
       new Date(2014, 8 /* Sep */, 1, 11, 30).getTime(),
       5
     )
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 11, 5))
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1, 11, 5))
   })
 
   it('converts a fractional number to an integer', () => {
     const result = setMinutes(new Date(2014, 8 /* Sep */, 1, 11, 30, 40), 45.54)
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 11, 45, 40))
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1, 11, 45, 40))
   })
 
   it('implicitly converts number arguments', () => {
     // @ts-expect-error
     const result = setMinutes(new Date(2014, 8 /* Sep */, 1, 11, 30, 40), '45')
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 11, 45, 40))
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1, 11, 45, 40))
   })
 
   it('does not mutate the original date', () => {
     var date = new Date(2014, 8 /* Sep */, 1, 11, 30)
     setMinutes(date, 15)
-    assert.deepEqual(date, new Date(2014, 8 /* Sep */, 1, 11, 30))
+    assert.deepStrictEqual(date, new Date(2014, 8 /* Sep */, 1, 11, 30))
   })
 
   it('returns `Invalid Date` if the given date is invalid', () => {

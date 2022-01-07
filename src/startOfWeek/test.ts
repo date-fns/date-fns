@@ -7,13 +7,13 @@ describe('startOfWeek', () => {
   it('returns the date with the time set to 00:00:00 and the date set to the first day of a week', () => {
     const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     const result = startOfWeek(date)
-    assert.deepEqual(result, new Date(2014, 7 /* Aug */, 31))
+    assert.deepStrictEqual(result, new Date(2014, 7 /* Aug */, 31))
   })
 
   it('allows to specify which day is the first day of the week', () => {
     const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     const result = startOfWeek(date, { weekStartsOn: 1 })
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1))
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1))
   })
 
   it('allows to specify which day is the first day of the week in locale', () => {
@@ -24,7 +24,7 @@ describe('startOfWeek', () => {
         options: { weekStartsOn: 1 },
       },
     })
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1))
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1))
   })
 
   it('`options.weekStartsOn` overwrites the first day of the week specified in locale', () => {
@@ -36,26 +36,26 @@ describe('startOfWeek', () => {
         options: { weekStartsOn: 0 },
       },
     })
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1))
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1))
   })
 
   it('implicitly converts options', () => {
     const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     // @ts-expect-error
     const result = startOfWeek(date, { weekStartsOn: '1' })
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1))
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1))
   })
 
   it('accepts a timestamp', () => {
     const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0).getTime()
     const result = startOfWeek(date)
-    assert.deepEqual(result, new Date(2014, 7 /* Aug */, 31))
+    assert.deepStrictEqual(result, new Date(2014, 7 /* Aug */, 31))
   })
 
   it('does not mutate the original date', () => {
     const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     startOfWeek(date)
-    assert.deepEqual(date, new Date(2014, 8 /* Sep */, 2, 11, 55, 0))
+    assert.deepStrictEqual(date, new Date(2014, 8 /* Sep */, 2, 11, 55, 0))
   })
 
   describe('edge cases', () => {
@@ -63,7 +63,7 @@ describe('startOfWeek', () => {
       it('it returns the start of a week', () => {
         const date = new Date(2014, 9 /* Oct */, 6)
         const result = startOfWeek(date, { weekStartsOn: 3 })
-        assert.deepEqual(result, new Date(2014, 9 /* Oct */, 1))
+        assert.deepStrictEqual(result, new Date(2014, 9 /* Oct */, 1))
       })
     })
 
@@ -71,7 +71,7 @@ describe('startOfWeek', () => {
       it('it returns the start of a week', () => {
         const date = new Date(2014, 9 /* Oct */, 8)
         const result = startOfWeek(date, { weekStartsOn: 3 })
-        assert.deepEqual(result, new Date(2014, 9 /* Oct */, 8))
+        assert.deepStrictEqual(result, new Date(2014, 9 /* Oct */, 8))
       })
     })
 
@@ -79,14 +79,14 @@ describe('startOfWeek', () => {
       it('it returns the start of a week', () => {
         const date = new Date(2014, 9 /* Oct */, 10)
         const result = startOfWeek(date, { weekStartsOn: 3 })
-        assert.deepEqual(result, new Date(2014, 9 /* Oct */, 8))
+        assert.deepStrictEqual(result, new Date(2014, 9 /* Oct */, 8))
       })
     })
 
     it('handles the week at the start of a year', () => {
       const date = new Date(2014, 0 /* Jan */, 1)
       const result = startOfWeek(date)
-      assert.deepEqual(result, new Date(2013, 11 /* Dec */, 29))
+      assert.deepStrictEqual(result, new Date(2013, 11 /* Dec */, 29))
     })
   })
 

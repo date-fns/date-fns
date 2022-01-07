@@ -6,29 +6,29 @@ import subISOWeekYears from '.'
 describe('subISOWeekYears', () => {
   it('subtracts the given number of ISO week-numbering years', () => {
     const result = subISOWeekYears(new Date(2014, 8 /* Sep */, 1), 5)
-    assert.deepEqual(result, new Date(2009, 7 /* Aug */, 31))
+    assert.deepStrictEqual(result, new Date(2009, 7 /* Aug */, 31))
   })
 
   it('accepts a timestamp', () => {
     const result = subISOWeekYears(new Date(2014, 8 /* Sep */, 1).getTime(), 12)
-    assert.deepEqual(result, new Date(2002, 8 /* Sep */, 2))
+    assert.deepStrictEqual(result, new Date(2002, 8 /* Sep */, 2))
   })
 
   it('converts a fractional number to an integer', () => {
     const result = subISOWeekYears(new Date(2014, 8 /* Sep */, 1), 5.555)
-    assert.deepEqual(result, new Date(2009, 7 /* Aug */, 31))
+    assert.deepStrictEqual(result, new Date(2009, 7 /* Aug */, 31))
   })
 
   it('implicitly converts number arguments', () => {
     // @ts-expect-error
     const result = subISOWeekYears(new Date(2014, 8 /* Sep */, 1), '5')
-    assert.deepEqual(result, new Date(2009, 7 /* Aug */, 31))
+    assert.deepStrictEqual(result, new Date(2009, 7 /* Aug */, 31))
   })
 
   it('does not mutate the original date', () => {
     const date = new Date(2014, 8 /* Sep */, 1)
     subISOWeekYears(date, 12)
-    assert.deepEqual(date, new Date(2014, 8 /* Sep */, 1))
+    assert.deepStrictEqual(date, new Date(2014, 8 /* Sep */, 1))
   })
 
   it('handles dates before 100 AD', () => {
@@ -39,7 +39,7 @@ describe('subISOWeekYears', () => {
     expectedResult.setFullYear(10, 6 /* Jul */, 2)
     expectedResult.setHours(0, 0, 0, 0)
     const result = subISOWeekYears(initialDate, 5)
-    assert.deepEqual(result, expectedResult)
+    assert.deepStrictEqual(result, expectedResult)
   })
 
   it('returns `Invalid Date` if the given date is invalid', () => {

@@ -6,35 +6,35 @@ import subQuarters from '.'
 describe('subQuarters', () => {
   it('subtracts the given number of quarters', () => {
     const result = subQuarters(new Date(2014, 8 /* Sep */, 1), 3)
-    assert.deepEqual(result, new Date(2013, 11 /* Dec */, 1))
+    assert.deepStrictEqual(result, new Date(2013, 11 /* Dec */, 1))
   })
 
   it('accepts a timestamp', () => {
     const result = subQuarters(new Date(2014, 8 /* Sep */, 1).getTime(), 4)
-    assert.deepEqual(result, new Date(2013, 8 /* Sep */, 1))
+    assert.deepStrictEqual(result, new Date(2013, 8 /* Sep */, 1))
   })
 
   it('converts a fractional number to an integer', () => {
     const result = subQuarters(new Date(2014, 8 /* Sep */, 1), 3.33)
-    assert.deepEqual(result, new Date(2013, 11 /* Dec */, 1))
+    assert.deepStrictEqual(result, new Date(2013, 11 /* Dec */, 1))
   })
 
   it('implicitly converts number arguments', () => {
     // @ts-expect-error
     const result = subQuarters(new Date(2014, 8 /* Sep */, 1), '3')
-    assert.deepEqual(result, new Date(2013, 11 /* Dec */, 1))
+    assert.deepStrictEqual(result, new Date(2013, 11 /* Dec */, 1))
   })
 
   it('does not mutate the original date', () => {
     const date = new Date(2014, 8 /* Sep */, 1)
     subQuarters(date, 3)
-    assert.deepEqual(date, new Date(2014, 8 /* Sep */, 1))
+    assert.deepStrictEqual(date, new Date(2014, 8 /* Sep */, 1))
   })
 
   it('works well if the desired month has fewer days and the provided date is in the last day of a month', () => {
     const date = new Date(2014, 11 /* Dec */, 31)
     const result = subQuarters(date, 1)
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 30))
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 30))
   })
 
   it('handles dates before 100 AD', () => {
@@ -45,7 +45,7 @@ describe('subQuarters', () => {
     expectedResult.setFullYear(0, 1 /* Feb */, 29)
     expectedResult.setHours(0, 0, 0, 0)
     const result = subQuarters(initialDate, 3)
-    assert.deepEqual(result, expectedResult)
+    assert.deepStrictEqual(result, expectedResult)
   })
 
   it('returns `Invalid Date` if the given date is invalid', () => {

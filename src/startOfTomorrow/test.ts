@@ -11,7 +11,7 @@ describe('startOfTomorrow', () => {
     )
 
     const result = startOfTomorrow()
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 26))
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 26))
 
     clock.restore()
   })
@@ -26,7 +26,7 @@ describe('startOfTomorrow', () => {
     expectedResult.setFullYear(14, 8 /* Sep */, 26)
     expectedResult.setHours(0, 0, 0, 0)
     const result = startOfTomorrow()
-    assert.deepEqual(result, expectedResult)
+    assert.deepStrictEqual(result, expectedResult)
 
     clock.restore()
   })

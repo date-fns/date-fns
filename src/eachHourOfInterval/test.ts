@@ -9,7 +9,7 @@ describe('eachHourOfInterval', () => {
       start: new Date(2014, 9 /* Oct */, 6, 12),
       end: new Date(2014, 9 /* Oct */, 6, 15),
     })
-    assert.deepEqual(result, [
+    assert.deepStrictEqual(result, [
       new Date(2014, 9 /* Oct */, 6, 12),
       new Date(2014, 9 /* Oct */, 6, 13),
       new Date(2014, 9 /* Oct */, 6, 14),
@@ -22,7 +22,7 @@ describe('eachHourOfInterval', () => {
       start: new Date(2014, 9 /* Oct */, 6, 12).getTime(),
       end: new Date(2014, 9 /* Oct */, 6, 15).getTime(),
     })
-    assert.deepEqual(result, [
+    assert.deepStrictEqual(result, [
       new Date(2014, 9 /* Oct */, 6, 12),
       new Date(2014, 9 /* Oct */, 6, 13),
       new Date(2014, 9 /* Oct */, 6, 14),
@@ -35,7 +35,7 @@ describe('eachHourOfInterval', () => {
       start: new Date(2014, 9 /* Oct */, 6, 12, 59, 59, 999),
       end: new Date(2014, 9 /* Oct */, 6, 15, 59, 59, 999),
     })
-    assert.deepEqual(result, [
+    assert.deepStrictEqual(result, [
       new Date(2014, 9 /* Oct */, 6, 12),
       new Date(2014, 9 /* Oct */, 6, 13),
       new Date(2014, 9 /* Oct */, 6, 14),
@@ -48,7 +48,7 @@ describe('eachHourOfInterval', () => {
       start: new Date(2014, 9 /* Oct */, 6, 12, 35),
       end: new Date(2014, 9 /* Oct */, 6, 12, 47),
     })
-    assert.deepEqual(result, [new Date(2014, 9 /* Oct */, 6, 12)])
+    assert.deepStrictEqual(result, [new Date(2014, 9 /* Oct */, 6, 12)])
   })
 
   it('returns one hour if the both arguments are the same', () => {
@@ -56,7 +56,7 @@ describe('eachHourOfInterval', () => {
       start: new Date(2014, 9 /* Oct */, 6, 12, 35),
       end: new Date(2014, 9 /* Oct */, 6, 12, 35),
     })
-    assert.deepEqual(result, [new Date(2014, 9 /* Oct */, 6, 12)])
+    assert.deepStrictEqual(result, [new Date(2014, 9 /* Oct */, 6, 12)])
   })
 
   it('throws an exception if the start date is after the end date', () => {
@@ -107,7 +107,7 @@ describe('eachHourOfInterval', () => {
 
     it('returns an array with starts of hours from the hour of the start date to the hour of the end date with the given step', () => {
       const result = eachHourOfInterval(interval, { step: 3 })
-      assert.deepEqual(result, [
+      assert.deepStrictEqual(result, [
         new Date(2014, 9 /* Oct */, 6, 12),
         new Date(2014, 9 /* Oct */, 6, 15),
         new Date(2014, 9 /* Oct */, 6, 18),

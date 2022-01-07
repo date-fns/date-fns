@@ -9,7 +9,7 @@ describe('eachWeekendOfInterval', () => {
       start: new Date(2018, 8 /* Sept */, 17),
       end: new Date(2018, 8 /* Sept */, 30),
     })
-    assert.deepEqual(result, [
+    assert.deepStrictEqual(result, [
       new Date(2018, 8 /* Sept */, 22),
       new Date(2018, 8 /* Sept */, 23),
       new Date(2018, 8 /* Sept */, 29),
@@ -22,7 +22,7 @@ describe('eachWeekendOfInterval', () => {
       start: new Date(2018, 8 /* Sept */, 22),
       end: new Date(2018, 8 /* Sept */, 30),
     })
-    assert.deepEqual(result, [
+    assert.deepStrictEqual(result, [
       new Date(2018, 8 /* Sept */, 22),
       new Date(2018, 8 /* Sept */, 23),
       new Date(2018, 8 /* Sept */, 29),

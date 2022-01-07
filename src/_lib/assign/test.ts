@@ -7,14 +7,14 @@ describe('assign', () => {
   it('assigns properties of the second argument to the first argument', () => {
     var object = {}
     assign(object, { a: 1, b: 2, c: 3 })
-    assert.deepEqual(object, { a: 1, b: 2, c: 3 })
+    assert.deepStrictEqual(object, { a: 1, b: 2, c: 3 })
   })
 
   it('the object passed as 2nd argument remains unchanged when the result is mutated', () => {
     var object = { a: 1, b: 2, c: 3 }
     var result = assign({}, object)
     result.c = 4
-    assert.deepEqual(object, { a: 1, b: 2, c: 3 })
+    assert.deepStrictEqual(object, { a: 1, b: 2, c: 3 })
   })
 
   it('returns the first argument when the second argument is `undefined`', () => {

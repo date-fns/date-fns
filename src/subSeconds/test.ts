@@ -6,7 +6,7 @@ import subSeconds from '.'
 describe('subSeconds', () => {
   it('subtracts the given number of seconds', () => {
     const result = subSeconds(new Date(2014, 6 /* Jul */, 10, 12, 45, 0), 30)
-    assert.deepEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 44, 30))
+    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 44, 30))
   })
 
   it('accepts a timestamp', () => {
@@ -14,24 +14,24 @@ describe('subSeconds', () => {
       new Date(2014, 6 /* Jul */, 10, 12, 45, 0).getTime(),
       20
     )
-    assert.deepEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 44, 40))
+    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 44, 40))
   })
 
   it('converts a fractional number to an integer', () => {
     const result = subSeconds(new Date(2014, 6 /* Jul */, 10, 12, 45, 0), 30.5)
-    assert.deepEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 44, 30))
+    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 44, 30))
   })
 
   it('implicitly converts number arguments', () => {
     // @ts-expect-error
     const result = subSeconds(new Date(2014, 6 /* Jul */, 10, 12, 45, 0), '30')
-    assert.deepEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 44, 30))
+    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 44, 30))
   })
 
   it('does not mutate the original date', () => {
     const date = new Date(2014, 6 /* Jul */, 10, 12, 45, 0)
     subSeconds(date, 15)
-    assert.deepEqual(date, new Date(2014, 6 /* Jul */, 10, 12, 45, 0))
+    assert.deepStrictEqual(date, new Date(2014, 6 /* Jul */, 10, 12, 45, 0))
   })
 
   it('returns `Invalid Date` if the given date is invalid', () => {

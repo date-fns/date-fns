@@ -18,6 +18,9 @@ describe('endOfToday', () => {
 
   it('returns the current date with the time settled to 23:59:59.999', () => {
     const result = endOfToday()
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 25, 23, 59, 59, 999))
+    assert.deepStrictEqual(
+      result,
+      new Date(2014, 8 /* Sep */, 25, 23, 59, 59, 999)
+    )
   })
 })

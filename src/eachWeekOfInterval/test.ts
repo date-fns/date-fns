@@ -9,7 +9,7 @@ describe('eachWeekOfInterval', () => {
       start: new Date(2014, 9 /* Oct */, 6),
       end: new Date(2014, 10 /* Nov */, 23),
     })
-    assert.deepEqual(result, [
+    assert.deepStrictEqual(result, [
       new Date(2014, 9 /* Oct */, 5),
       new Date(2014, 9 /* Oct */, 12),
       new Date(2014, 9 /* Oct */, 19),
@@ -26,7 +26,7 @@ describe('eachWeekOfInterval', () => {
       start: new Date(2014, 9 /* Oct */, 6).getTime(),
       end: new Date(2014, 10 /* Nov */, 23).getTime(),
     })
-    assert.deepEqual(result, [
+    assert.deepStrictEqual(result, [
       new Date(2014, 9 /* Oct */, 5),
       new Date(2014, 9 /* Oct */, 12),
       new Date(2014, 9 /* Oct */, 19),
@@ -43,7 +43,7 @@ describe('eachWeekOfInterval', () => {
       start: new Date(2014, 9 /* Oct */, 6, 6, 35),
       end: new Date(2014, 10 /* Nov */, 25, 22, 16),
     })
-    assert.deepEqual(result, [
+    assert.deepStrictEqual(result, [
       new Date(2014, 9 /* Oct */, 5),
       new Date(2014, 9 /* Oct */, 12),
       new Date(2014, 9 /* Oct */, 19),
@@ -63,7 +63,7 @@ describe('eachWeekOfInterval', () => {
       },
       { weekStartsOn: 2 }
     )
-    assert.deepEqual(result, [
+    assert.deepStrictEqual(result, [
       new Date(2014, 8 /* Sep */, 30),
       new Date(2014, 9 /* Oct */, 7),
       new Date(2014, 9 /* Oct */, 14),
@@ -81,7 +81,7 @@ describe('eachWeekOfInterval', () => {
       start: new Date(2014, 9 /* Oct */, 6, 14),
       end: new Date(2014, 9 /* Oct */, 8, 15),
     })
-    assert.deepEqual(result, [new Date(2014, 9 /* Oct */, 5)])
+    assert.deepStrictEqual(result, [new Date(2014, 9 /* Oct */, 5)])
   })
 
   it('returns one day if the both arguments are the same', () => {
@@ -89,7 +89,7 @@ describe('eachWeekOfInterval', () => {
       start: new Date(2014, 9 /* Oct */, 6, 14),
       end: new Date(2014, 9 /* Oct */, 6, 14),
     })
-    assert.deepEqual(result, [new Date(2014, 9 /* Oct */, 5)])
+    assert.deepStrictEqual(result, [new Date(2014, 9 /* Oct */, 5)])
   })
 
   it('throws an exception if the start date is after the end date', () => {

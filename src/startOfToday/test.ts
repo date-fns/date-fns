@@ -18,6 +18,6 @@ describe('startOfToday', () => {
 
   it('returns the current date with the time setted to 00:00:00', () => {
     const result = startOfToday()
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 25))
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 25))
   })
 })

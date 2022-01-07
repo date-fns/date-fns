@@ -9,7 +9,7 @@ describe('eachQuarterOfInterval', () => {
       start: new Date(2014, 2 /* Mar */, 6),
       end: new Date(2014, 7 /* Aug */, 12),
     })
-    assert.deepEqual(result, [
+    assert.deepStrictEqual(result, [
       new Date(2014, 0 /* Jan */, 1),
       new Date(2014, 3 /* Apr */, 1),
       new Date(2014, 6 /* Jul */, 1),
@@ -21,7 +21,7 @@ describe('eachQuarterOfInterval', () => {
       start: new Date(2014, 2 /* Mar */, 6).getTime(),
       end: new Date(2014, 7 /* Aug */, 12).getTime(),
     })
-    assert.deepEqual(result, [
+    assert.deepStrictEqual(result, [
       new Date(2014, 0 /* Jan */, 1),
       new Date(2014, 3 /* Apr */, 1),
       new Date(2014, 6 /* Jul */, 1),
@@ -33,7 +33,7 @@ describe('eachQuarterOfInterval', () => {
       start: new Date(2014, 2 /* Mar */, 6, 6, 35),
       end: new Date(2014, 7 /* Aug */, 12, 22, 15),
     })
-    assert.deepEqual(result, [
+    assert.deepStrictEqual(result, [
       new Date(2014, 0 /* Jan */, 1),
       new Date(2014, 3 /* Apr */, 1),
       new Date(2014, 6 /* Jul */, 1),
@@ -45,7 +45,7 @@ describe('eachQuarterOfInterval', () => {
       start: new Date(2014, 2 /* Mar */),
       end: new Date(2014, 7 /* Oct */),
     })
-    assert.deepEqual(result, [
+    assert.deepStrictEqual(result, [
       new Date(2014, 0 /* Jan */, 1),
       new Date(2014, 3 /* Apr */, 1),
       new Date(2014, 6 /* Jul */, 1),
@@ -57,7 +57,7 @@ describe('eachQuarterOfInterval', () => {
       start: new Date(2014, 0 /* Jan */, 6, 14),
       end: new Date(2014, 2 /* Feb */, 9, 15),
     })
-    assert.deepEqual(result, [new Date(2014, 0 /* Jan */, 1)])
+    assert.deepStrictEqual(result, [new Date(2014, 0 /* Jan */, 1)])
   })
 
   it('returns one quarter if the both arguments are the same', () => {
@@ -65,7 +65,7 @@ describe('eachQuarterOfInterval', () => {
       start: new Date(2014, 9 /* Oct */, 6, 14),
       end: new Date(2014, 9 /* Oct */, 6, 14),
     })
-    assert.deepEqual(result, [new Date(2014, 9 /* Oct */, 1)])
+    assert.deepStrictEqual(result, [new Date(2014, 9 /* Oct */, 1)])
   })
 
   it('throws an exception if the start date is after the end date', () => {

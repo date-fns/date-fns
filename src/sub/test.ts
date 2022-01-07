@@ -14,7 +14,7 @@ describe('sub', () => {
       minutes: 9,
       seconds: 30,
     })
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 10, 19, 50))
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1, 10, 19, 50))
   })
 
   it('supports an undefined value in the duration object', () => {
@@ -27,7 +27,7 @@ describe('sub', () => {
       minutes: 9,
       seconds: 30,
     })
-    assert.deepEqual(result, new Date(2016, 8 /* Sep */, 1, 10, 19, 50))
+    assert.deepStrictEqual(result, new Date(2016, 8 /* Sep */, 1, 10, 19, 50))
   })
 
   it('returns same date object when passed empty duration values', () => {
@@ -45,19 +45,19 @@ describe('sub', () => {
 
   it('returns same date object when passed empty duration', () => {
     const result = sub(new Date(2014, 8 /* Sep */, 1, 10).getTime(), {})
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 10))
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1, 10))
   })
 
   it('accepts a timestamp', () => {
     const result = sub(new Date(2014, 8 /* Sep */, 1, 14).getTime(), {
       hours: 4,
     })
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 10))
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1, 10))
   })
 
   it('converts a fractional number to an integer', () => {
     const result = sub(new Date(2014, 8 /* Sep */, 1, 14), { hours: 4.2 })
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 10))
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1, 10))
   })
 
   it('implicitly converts number arguments', () => {
@@ -66,19 +66,19 @@ describe('sub', () => {
       // @ts-expect-error
       { hours: '4.2' }
     )
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 10))
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1, 10))
   })
 
   it('does not mutate the original date', () => {
     const date = new Date(2014, 8 /* Sep */, 1, 10)
     sub(date, { hours: 4 })
-    assert.deepEqual(date, new Date(2014, 8 /* Sep */, 1, 10))
+    assert.deepStrictEqual(date, new Date(2014, 8 /* Sep */, 1, 10))
   })
 
   it('works well if the desired month has fewer days and the provided date is in the last day of a month', () => {
     const date = new Date(2014, 11 /* Dec */, 31)
     const result = sub(date, { months: 3 })
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 30))
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 30))
   })
 
   it('handles dates before 100 AD', () => {
@@ -89,7 +89,7 @@ describe('sub', () => {
     expectedResult.setFullYear(1, 1 /* Feb */, 28)
     expectedResult.setHours(0, 0, 0, 0)
     const result = sub(initialDate, { months: 1 })
-    assert.deepEqual(result, expectedResult)
+    assert.deepStrictEqual(result, expectedResult)
   })
 
   it('returns `Invalid Date` if the given date is invalid', () => {

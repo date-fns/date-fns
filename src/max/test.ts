@@ -13,7 +13,7 @@ describe('max', () => {
       new Date(1989, 6 /* Jul */, 10),
       new Date(1987, 1 /* Feb */, 11),
     ])
-    assert.deepEqual(result, new Date(1989, 6 /* Jul */, 10))
+    assert.deepStrictEqual(result, new Date(1989, 6 /* Jul */, 10))
   })
 
   it('accepts array with more than 2 entries', () => {
@@ -23,7 +23,7 @@ describe('max', () => {
       new Date(1995, 6 /* Jul */, 2),
       new Date(1990, 0 /* Jan */, 1),
     ])
-    assert.deepEqual(result, new Date(1995, 6 /* Jul */, 2))
+    assert.deepStrictEqual(result, new Date(1995, 6 /* Jul */, 2))
   })
 
   it('accepts timestamps', () => {
@@ -31,7 +31,7 @@ describe('max', () => {
       new Date(1989, 6 /* Jul */, 10).getTime(),
       new Date(1987, 1 /* Feb */, 11).getTime(),
     ])
-    assert.deepEqual(result, new Date(1989, 6 /* Jul */, 10))
+    assert.deepStrictEqual(result, new Date(1989, 6 /* Jul */, 10))
   })
 
   it('returns `Invalid Date` if any given date is invalid', () => {
@@ -65,7 +65,7 @@ describe('max', () => {
       '1': new Date(1987, 1 /* Feb */, 11),
       length: 2,
     })
-    assert.deepEqual(result, new Date(1989, 6 /* Jul */, 10))
+    assert.deepStrictEqual(result, new Date(1989, 6 /* Jul */, 10))
   })
 
   it('converts iterable objects into Array', () => {
@@ -76,7 +76,7 @@ describe('max', () => {
         new Date(1987, 1 /* Feb */, 11),
       ])
     )
-    assert.deepEqual(result, new Date(1989, 6 /* Jul */, 10))
+    assert.deepStrictEqual(result, new Date(1989, 6 /* Jul */, 10))
   })
 
   it('returns `Invalid Date` if given a non-iterable value', () => {
