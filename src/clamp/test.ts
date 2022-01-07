@@ -1,3 +1,5 @@
+/* eslint-env mocha */
+
 import assert from 'assert'
 import clamp from '.'
 

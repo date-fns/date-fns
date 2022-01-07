@@ -1,14 +1,15 @@
 import compareAsc from '../compareAsc/index'
-import differenceInYears from '../differenceInYears/index'
-import differenceInMonths from '../differenceInMonths/index'
 import differenceInDays from '../differenceInDays/index'
 import differenceInHours from '../differenceInHours/index'
 import differenceInMinutes from '../differenceInMinutes/index'
+import differenceInMonths from '../differenceInMonths/index'
 import differenceInSeconds from '../differenceInSeconds/index'
+import differenceInYears from '../differenceInYears/index'
 import isValid from '../isValid/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-import toDate from '../toDate/index'
 import sub from '../sub/index'
+import toDate from '../toDate/index'
+import { Duration, Interval } from '../types'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name intervalToDuration

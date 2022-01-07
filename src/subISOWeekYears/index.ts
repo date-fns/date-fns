@@ -1,6 +1,6 @@
-import toInteger from '../_lib/toInteger/index'
 import addISOWeekYears from '../addISOWeekYears/index'
 import requiredArgs from '../_lib/requiredArgs/index'
+import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name subISOWeekYears
@@ -31,7 +31,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = subISOWeekYears(new Date(2014, 8, 1), 5)
  * //=> Mon Aug 31 2009 00:00:00
  */
-export default function subISOWeekYears(dirtyDate: Date | number, dirtyAmount: number) {
+export default function subISOWeekYears(
+  dirtyDate: Date | number,
+  dirtyAmount: number
+): Date {
   requiredArgs(2, arguments)
 
   const amount = toInteger(dirtyAmount)

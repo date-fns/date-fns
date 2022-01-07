@@ -1,6 +1,7 @@
 import addQuarters from '../addQuarters/index'
 import startOfQuarter from '../startOfQuarter/index'
 import toDate from '../toDate/index'
+import { Interval } from '../types'
 import requiredArgs from '../_lib/requiredArgs/index'
 
 /**

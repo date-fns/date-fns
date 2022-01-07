@@ -1,4 +1,5 @@
 import toDate from '../toDate/index'
+import { Interval } from '../types'
 import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
@@ -31,7 +32,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //   Fri Aug 01 2014 00:00:00
  * // ]
  */
-export default function eachMonthOfInterval(dirtyInterval: Interval) {
+export default function eachMonthOfInterval(dirtyInterval: Interval): Date[] {
   requiredArgs(1, arguments)
 
   const interval = dirtyInterval || {}

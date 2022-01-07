@@ -1,6 +1,7 @@
 import eachDayOfInterval from '../eachDayOfInterval/index'
 import isSunday from '../isSunday/index'
 import isWeekend from '../isWeekend/index'
+import { Interval } from '../types'
 import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
