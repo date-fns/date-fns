@@ -21,6 +21,5 @@ export default function subBusinessDays(
   date: Date | number,
   amount: number
 ): Date {
-  // const amount = toInteger(dirtyAmount)
   return addBusinessDays(date, -Math.trunc(amount))
 }
