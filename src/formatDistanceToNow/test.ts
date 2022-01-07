@@ -2,10 +2,11 @@
 
 import assert from 'assert'
 import sinon from 'sinon'
+import { FormatDistanceFn } from '../locale/types'
 import formatDistanceToNow from '.'
 
 describe('formatDistanceToNow', () => {
-  let clock
+  let clock: sinon.SinonFakeTimers
   beforeEach(() => {
     clock = sinon.useFakeTimers(new Date(1986, 3, 4, 10, 32, 0).getTime())
   })
@@ -167,6 +168,7 @@ describe('formatDistanceToNow', () => {
   describe('implicit conversion of options', () => {
     it('`options.includeSeconds`', () => {
       const result = formatDistanceToNow(new Date(1986, 3, 4, 10, 31, 52), {
+        // @ts-expect-error
         includeSeconds: 1,
       })
       assert(result === 'less than 10 seconds')
@@ -174,6 +176,7 @@ describe('formatDistanceToNow', () => {
 
     it('`options.addSuffix`', () => {
       const result = formatDistanceToNow(new Date(1986, 3, 4, 11, 32, 0), {
+        // @ts-expect-error
         addSuffix: 1,
       })
       assert(result === 'in about 1 hour')
@@ -182,11 +185,11 @@ describe('formatDistanceToNow', () => {
 
   describe('custom locale', () => {
     it('can be passed to the function', () => {
-      function localizeDistance(token, count, options) {
+      const localizeDistance: FormatDistanceFn = (token, count, options) => {
         assert(token === 'aboutXHours')
         assert(count === 1)
-        assert(options.addSuffix === true)
-        assert(options.comparison > 0)
+        assert(options!.addSuffix === true)
+        assert(options!.comparison! > 0)
         return 'It works!'
       }
 
@@ -220,6 +223,7 @@ describe('formatDistanceToNow', () => {
   })
 
   it('throws TypeError exception if passed less than 1 argument', () => {
+    // @ts-expect-error
     assert.throws(formatDistanceToNow.bind(null), TypeError)
   })
 })

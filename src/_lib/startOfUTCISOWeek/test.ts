@@ -3,31 +3,31 @@
 import assert from 'assert'
 import startOfUTCISOWeek from '.'
 
-describe('startOfUTCISOWeek', function () {
-  it('returns the date with the time set to 00:00:00 and the date set to the first day of an ISO week', function () {
+describe('startOfUTCISOWeek', () => {
+  it('returns the date with the time set to 00:00:00 and the date set to the first day of an ISO week', () => {
     var date = new Date(Date.UTC(2014, 8 /* Sep */, 2, 11, 55, 0))
     var result = startOfUTCISOWeek(date)
     assert.deepEqual(result, new Date(Date.UTC(2014, 8 /* Sep */, 1)))
   })
 
-  it('accepts a timestamp', function () {
+  it('accepts a timestamp', () => {
     var date = new Date(Date.UTC(2014, 1 /* Feb */, 11, 11, 55, 0)).getTime()
     var result = startOfUTCISOWeek(date)
     assert.deepEqual(result, new Date(Date.UTC(2014, 1 /* Feb */, 10)))
   })
 
-  it('does not mutate the original date', function () {
+  it('does not mutate the original date', () => {
     var date = new Date(Date.UTC(2014, 8 /* Sep */, 2, 11, 55, 0))
     startOfUTCISOWeek(date)
     assert.deepEqual(date, new Date(Date.UTC(2014, 8 /* Sep */, 2, 11, 55, 0)))
   })
 
-  it('returns `Invalid Date` if the given date is invalid', function () {
+  it('returns `Invalid Date` if the given date is invalid', () => {
     var result = startOfUTCISOWeek(new Date(NaN))
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
-  it('throws TypeError exception if passed less than 1 argument', function () {
+  it('throws TypeError exception if passed less than 1 argument', () => {
     assert.throws(startOfUTCISOWeek.bind(null), TypeError)
   })
 })

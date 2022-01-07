@@ -3,18 +3,18 @@
 import assert from 'assert'
 import getUTCWeek from '.'
 
-describe('getUTCWeek', function () {
-  it('returns the local week of year of the given date', function () {
+describe('getUTCWeek', () => {
+  it('returns the local week of year of the given date', () => {
     var result = getUTCWeek(new Date(Date.UTC(2005, 0 /* Jan */, 2)))
     assert(result === 2)
   })
 
-  it('accepts a timestamp', function () {
+  it('accepts a timestamp', () => {
     var result = getUTCWeek(Date.UTC(2008, 11 /* Dec */, 29))
     assert(result === 1)
   })
 
-  it('handles dates before 100 AD', function () {
+  it('handles dates before 100 AD', () => {
     var initialDate = new Date(0)
     initialDate.setUTCFullYear(7, 11 /* Dec */, 30)
     initialDate.setUTCHours(0, 0, 0, 0)
@@ -22,12 +22,12 @@ describe('getUTCWeek', function () {
     assert(result === 1)
   })
 
-  it('returns NaN if the given date is invalid', function () {
+  it('returns NaN if the given date is invalid', () => {
     var result = getUTCWeek(new Date(NaN))
     assert(isNaN(result))
   })
 
-  it('allows to specify `weekStartsOn` and `firstWeekContainsDate` in locale', function () {
+  it('allows to specify `weekStartsOn` and `firstWeekContainsDate` in locale', () => {
     var date = new Date(Date.UTC(2005, 0 /* Jan */, 2))
     var result = getUTCWeek(date, {
       locale: {
@@ -37,7 +37,7 @@ describe('getUTCWeek', function () {
     assert(result === 53)
   })
 
-  it('`options.weekStartsOn` overwrites the first day of the week specified in locale', function () {
+  it('`options.weekStartsOn` overwrites the first day of the week specified in locale', () => {
     var date = new Date(Date.UTC(2005, 0 /* Jan */, 2))
     var result = getUTCWeek(date, {
       weekStartsOn: 1,
@@ -49,21 +49,21 @@ describe('getUTCWeek', function () {
     assert(result === 53)
   })
 
-  it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', function () {
+  it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', () => {
     var block = getUTCWeek.bind(null, new Date(2007, 11 /* Dec */, 31), {
       weekStartsOn: NaN,
     })
     assert.throws(block, RangeError)
   })
 
-  it('throws `RangeError` if `options.firstWeekContainsDate` is not convertable to 1, 2, ..., 7 or undefined', function () {
+  it('throws `RangeError` if `options.firstWeekContainsDate` is not convertable to 1, 2, ..., 7 or undefined', () => {
     var block = getUTCWeek.bind(null, new Date(2007, 11 /* Dec */, 31), {
       firstWeekContainsDate: NaN,
     })
     assert.throws(block, RangeError)
   })
 
-  it('throws TypeError exception if passed less than 1 argument', function () {
+  it('throws TypeError exception if passed less than 1 argument', () => {
     assert.throws(getUTCWeek.bind(null), TypeError)
   })
 })
