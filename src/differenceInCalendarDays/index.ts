@@ -7,19 +7,19 @@ const MILLISECONDS_IN_DAY = 86400000
 /**
  * @name differenceInCalendarDays
  * @category Day Helpers
- * @summary Get the number of calendar days between the given dates.
+ * @summary Get the number of calendar days to one date from another.
  *
  * @description
- * Get the number of calendar days between the given dates. This means that the times are removed
+ * Get the number of calendar days to one date from another. This means that the times are removed
  * from the dates and then the difference in days is calculated.
  *
  * ### v2.0.0 breaking changes:
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} dateLeft - the later date
- * @param {Date|Number} dateRight - the earlier date
- * @returns {Number} the number of calendar days
+ * @param {Date|Number} dateTo - the target date
+ * @param {Date|Number} dateFrom - the start date
+ * @returns {Number} the number of calendar days from dateFrom to dateTo
  * @throws {TypeError} 2 arguments required
  *
  * @example

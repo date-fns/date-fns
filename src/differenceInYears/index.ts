@@ -6,18 +6,18 @@ import requiredArgs from '../_lib/requiredArgs/index'
 /**
  * @name differenceInYears
  * @category Year Helpers
- * @summary Get the number of full years between the given dates.
+ * @summary Get the number of full years to one date from another.
  *
  * @description
- * Get the number of full years between the given dates.
+ * Get the number of full years to one date from another.
  *
  * ### v2.0.0 breaking changes:
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} dateLeft - the later date
- * @param {Date|Number} dateRight - the earlier date
- * @returns {Number} the number of full years
+ * @param {Date|Number} dateTo - the target date
+ * @param {Date|Number} dateFrom - the start date
+ * @returns {Number} the number of full years from dateFrom to dateTo
  * @throws {TypeError} 2 arguments required
  *
  * @example

@@ -7,10 +7,10 @@ const MILLISECONDS_IN_WEEK = 604800000
 /**
  * @name differenceInCalendarISOWeeks
  * @category ISO Week Helpers
- * @summary Get the number of calendar ISO weeks between the given dates.
+ * @summary Get the number of calendar ISO weeks to one date from another.
  *
  * @description
- * Get the number of calendar ISO weeks between the given dates.
+ * Get the number of calendar ISO weeks to one date from another.
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
@@ -18,9 +18,9 @@ const MILLISECONDS_IN_WEEK = 604800000
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} dateLeft - the later date
- * @param {Date|Number} dateRight - the earlier date
- * @returns {Number} the number of calendar ISO weeks
+ * @param {Date|Number} dateTo - the target date
+ * @param {Date|Number} dateFrom - the start date
+ * @returns {Number} the number of calendar ISO weeks from dateFrom to dateTo
  * @throws {TypeError} 2 arguments required
  *
  * @example

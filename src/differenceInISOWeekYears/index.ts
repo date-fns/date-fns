@@ -7,10 +7,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
 /**
  * @name differenceInISOWeekYears
  * @category ISO Week-Numbering Year Helpers
- * @summary Get the number of full ISO week-numbering years between the given dates.
+ * @summary Get the number of full ISO week-numbering years to one date from another.
  *
  * @description
- * Get the number of full ISO week-numbering years between the given dates.
+ * Get the number of full ISO week-numbering years to one date from another.
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
@@ -23,9 +23,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *   This change makes the name consistent with
  *   locale-dependent week-numbering year helpers, e.g., `addWeekYears`.
  *
- * @param {Date|Number} dateLeft - the later date
- * @param {Date|Number} dateRight - the earlier date
- * @returns {Number} the number of full ISO week-numbering years
+ * @param {Date|Number} dateTo - the target date
+ * @param {Date|Number} dateFrom - the start date
+ * @returns {Number} the number of full ISO week-numbering years from dateFrom to dateTo
  * @throws {TypeError} 2 arguments required
  *
  * @example

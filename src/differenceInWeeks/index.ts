@@ -6,10 +6,10 @@ import { getRoundingMethod } from '../_lib/roundingMethods/index'
 /**
  * @name differenceInWeeks
  * @category Week Helpers
- * @summary Get the number of full weeks between the given dates.
+ * @summary Get the number of full weeks to one date from another.
  *
  * @description
- * Get the number of full weeks between two dates. Fractional weeks are
+ * Get the number of full weeks to one date from another. Fractional weeks are
  * truncated towards zero by default.
  *
  * One "full week" is the distance between a local time in one day to the same
@@ -24,11 +24,11 @@ import { getRoundingMethod } from '../_lib/roundingMethods/index'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} dateLeft - the later date
- * @param {Date|Number} dateRight - the earlier date
+ * @param {Date|Number} dateTo - the target date
+ * @param {Date|Number} dateFrom - the start date
  * @param {Object} [options] - an object with options.
  * @param {String} [options.roundingMethod='trunc'] - a rounding method (`ceil`, `floor`, `round` or `trunc`)
- * @returns {Number} the number of full weeks
+ * @returns {Number} the number of full weeks from dateFrom to dateTo
  * @throws {TypeError} 2 arguments required
  *
  * @example
