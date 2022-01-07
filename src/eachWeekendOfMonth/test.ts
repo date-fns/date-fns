@@ -1,4 +1,3 @@
-// @flow
 /* eslint-env mocha */
 
 import assert from 'assert'
@@ -15,7 +14,7 @@ describe('eachWeekendOfMonth', () => {
       new Date(2022, 1, 19),
       new Date(2022, 1, 20),
       new Date(2022, 1, 26),
-      new Date(2022, 1, 27)
+      new Date(2022, 1, 27),
     ])
   })
 

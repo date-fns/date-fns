@@ -1,4 +1,3 @@
-// @flow
 /* eslint-env mocha */
 
 import { SinonFakeTimers } from 'sinon'
