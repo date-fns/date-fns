@@ -1,6 +1,6 @@
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import differenceInCalendarDays from '.'
 import { getDstTransitions } from '../../test/dst/tzOffsetTransitions'
 

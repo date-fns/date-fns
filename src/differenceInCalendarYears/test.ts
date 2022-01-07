@@ -1,7 +1,7 @@
 // @flow
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import differenceInCalendarYears from '.'
 
 describe('differenceInCalendarYears', function () {

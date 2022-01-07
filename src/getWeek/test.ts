@@ -1,6 +1,6 @@
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import getWeek from '.'
 
 describe('getWeek', function () {
@@ -32,8 +32,8 @@ describe('getWeek', function () {
     // @ts-expect-error
     const result = getWeek(date, {
       locale: {
-        options: { weekStartsOn: 1, firstWeekContainsDate: 4 }
-      }
+        options: { weekStartsOn: 1, firstWeekContainsDate: 4 },
+      },
     })
     assert(result === 53)
   })
@@ -45,8 +45,8 @@ describe('getWeek', function () {
       firstWeekContainsDate: 4,
       // $ExpectedMistake
       locale: {
-        options: { weekStartsOn: 0, firstWeekContainsDate: 1 }
-      }
+        options: { weekStartsOn: 0, firstWeekContainsDate: 1 },
+      },
     })
     assert(result === 53)
   })
@@ -54,7 +54,7 @@ describe('getWeek', function () {
   it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', function () {
     // @ts-expect-error
     const block = getWeek.bind(null, new Date(2007, 11 /* Dec */, 31), {
-      weekStartsOn: NaN
+      weekStartsOn: NaN,
     })
     assert.throws(block, RangeError)
   })
@@ -62,7 +62,7 @@ describe('getWeek', function () {
   it('throws `RangeError` if `options.firstWeekContainsDate` is not convertable to 1, 2, ..., 7 or undefined', function () {
     // @ts-expect-error
     const block = getWeek.bind(null, new Date(2007, 11 /* Dec */, 31), {
-      firstWeekContainsDate: NaN
+      firstWeekContainsDate: NaN,
     })
     assert.throws(block, RangeError)
   })

@@ -10,10 +10,6 @@ const plugins = [
   '@babel/plugin-transform-shorthand-properties',
 ]
 
-if (process.env.NODE_ENV === 'test') {
-  presets.push('babel-preset-power-assert')
-}
-
 if (process.env.BABEL_ENV !== 'esm') {
   plugins.push('@babel/plugin-transform-modules-commonjs')
   plugins.push('babel-plugin-add-module-exports')

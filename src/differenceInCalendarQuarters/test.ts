@@ -1,6 +1,6 @@
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import differenceInCalendarQuarters from '.'
 
 describe('differenceInCalendarQuarters', function () {

@@ -1,7 +1,7 @@
 // @flow
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import lastDayOfWeek from '.'
 
 describe('lastDayOfWeek', function () {
