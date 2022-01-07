@@ -39,7 +39,6 @@ describe('isDate', () => {
           execScript('window.date = new Date()') // eslint-disable-line no-implied-eval
           // @ts-expect-error
           assert(isDate(iframe.contentWindow.date))
-          // $ExpectedMistake sadly, but Flow doesn't know about Mocha's done
           done()
         })
         if (!document.body) throw new Error('document.body is not defined')

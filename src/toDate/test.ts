@@ -26,7 +26,6 @@ describe('toDate', () => {
     mockConsoleWarn()
 
     it('returns Invalid Date if argument is a string', () => {
-      // $ExpectedMistake
       // @ts-expect-error
       const result = toDate('1987-02-11')
       assert(result instanceof Date)
@@ -35,9 +34,7 @@ describe('toDate', () => {
     })
 
     it('prints deprecation warning if the argument is a string', () => {
-      // $ExpectedMistake
       console.warn = sinon.spy() // eslint-disable-line no-console
-      // $ExpectedMistake
       // @ts-expect-error
       toDate('1987-02-11')
       assert(
@@ -64,7 +61,6 @@ describe('toDate', () => {
     })
 
     it('returns Invalid Date if argument is null', () => {
-      // $ExpectedMistake
       // @ts-expect-error
       const result = toDate(null)
       assert(result instanceof Date)
@@ -73,7 +69,6 @@ describe('toDate', () => {
     })
 
     it('returns Invalid Date if argument is undefined', () => {
-      // $ExpectedMistake
       // @ts-expect-error
       const result = toDate(undefined)
       assert(result instanceof Date)
@@ -82,7 +77,6 @@ describe('toDate', () => {
     })
 
     it('returns Invalid Date if argument is false', () => {
-      // $ExpectedMistake
       // @ts-expect-error
       const result = toDate(false)
       assert(result instanceof Date)
@@ -91,7 +85,6 @@ describe('toDate', () => {
     })
 
     it('returns Invalid Date if argument is true', () => {
-      // $ExpectedMistake
       // @ts-expect-error
       const result = toDate(true)
       assert(result instanceof Date)
@@ -106,7 +99,6 @@ describe('toDate', () => {
       const timestamp = new Number(
         new Date(2016, 0, 1, 23, 30, 45, 123).getTime()
       )
-      // $ExpectedMistake
       // @ts-expect-error
       const result = toDate(timestamp)
       assert.deepEqual(result, new Date(2016, 0, 1, 23, 30, 45, 123))
@@ -124,7 +116,6 @@ function mockConsoleWarn() {
 
   beforeEach(() => {
     originalWarn = console.warn // eslint-disable-line no-console
-    // $ExpectedMistake
     console.warn = () => {} // eslint-disable-line no-console
   })
 

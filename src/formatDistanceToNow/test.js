@@ -166,20 +166,16 @@ describe('formatDistanceToNow', () => {
 
   describe('implicit conversion of options', () => {
     it('`options.includeSeconds`', () => {
-      const result = formatDistanceToNow(
-        new Date(1986, 3, 4, 10, 31, 52),
-        // $ExpectedMistake
-        { includeSeconds: 1 }
-      )
+      const result = formatDistanceToNow(new Date(1986, 3, 4, 10, 31, 52), {
+        includeSeconds: 1,
+      })
       assert(result === 'less than 10 seconds')
     })
 
     it('`options.addSuffix`', () => {
-      const result = formatDistanceToNow(
-        new Date(1986, 3, 4, 11, 32, 0),
-        // $ExpectedMistake
-        { addSuffix: 1 }
-      )
+      const result = formatDistanceToNow(new Date(1986, 3, 4, 11, 32, 0), {
+        addSuffix: 1,
+      })
       assert(result === 'in about 1 hour')
     })
   })
@@ -200,7 +196,6 @@ describe('formatDistanceToNow', () => {
 
       const result = formatDistanceToNow(new Date(1986, 3, 4, 11, 32, 0), {
         addSuffix: true,
-        // $ExpectedMistake
         locale: customLocale,
       })
 
@@ -212,7 +207,6 @@ describe('formatDistanceToNow', () => {
         const customLocale = {}
         const block = formatDistanceToNow.bind(
           null,
-          // $ExpectedMistake
           new Date(1986, 3, 4, 10, 32, 0),
           { includeSeconds: true, locale: customLocale }
         )

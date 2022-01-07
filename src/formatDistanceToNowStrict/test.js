@@ -314,20 +314,16 @@ describe('formatDistanceToNowStrict', function () {
       // eslint-disable-next-line no-new-wrappers
       var unit = new String('year')
 
-      var result = formatDistanceToNowStrict(
-        new Date(1986, 3, 4, 10, 32, 0),
-        // $ExpectedMistake
-        { unit: unit }
-      )
+      var result = formatDistanceToNowStrict(new Date(1986, 3, 4, 10, 32, 0), {
+        unit: unit,
+      })
       assert(result === '0 years')
     })
 
     it('`options.addSuffix`', function () {
-      var result = formatDistanceToNowStrict(
-        new Date(1986, 3, 4, 10, 31, 35),
-        // $ExpectedMistake
-        { addSuffix: 1 }
-      )
+      var result = formatDistanceToNowStrict(new Date(1986, 3, 4, 10, 31, 35), {
+        addSuffix: 1,
+      })
       assert(result === '25 seconds ago')
     })
 
@@ -335,11 +331,9 @@ describe('formatDistanceToNowStrict', function () {
       // eslint-disable-next-line no-new-wrappers
       var roundingMethod = new String('ceil')
 
-      var result = formatDistanceToNowStrict(
-        new Date(1986, 3, 4, 10, 33, 1),
-        // $ExpectedMistake
-        { roundingMethod: roundingMethod }
-      )
+      var result = formatDistanceToNowStrict(new Date(1986, 3, 4, 10, 33, 1), {
+        roundingMethod: roundingMethod,
+      })
       assert(result === '2 minutes')
     })
   })
@@ -358,11 +352,10 @@ describe('formatDistanceToNowStrict', function () {
         formatDistance: localizeDistance,
       }
 
-      var result = formatDistanceToNowStrict(
-        new Date(1986, 3, 4, 10, 31, 45),
-        // $ExpectedMistake
-        { addSuffix: true, locale: customLocale }
-      )
+      var result = formatDistanceToNowStrict(new Date(1986, 3, 4, 10, 31, 45), {
+        addSuffix: true,
+        locale: customLocale,
+      })
 
       assert(result === 'It works!')
     })
@@ -372,7 +365,6 @@ describe('formatDistanceToNowStrict', function () {
         var customLocale = {}
         var block = formatDistanceToNowStrict.bind(
           null,
-          // $ExpectedMistake
           new Date(1986, 3, 4, 10, 37, 0),
           { unit: 'minute', locale: customLocale }
         )
@@ -399,7 +391,6 @@ describe('formatDistanceToNowStrict', function () {
     var block = formatDistanceToNowStrict.bind(
       null,
       new Date(1986, 3, 4, 10, 33, 29),
-      // $ExpectedMistake
       { roundingMethod: 'foobar' }
     )
     assert.throws(block, RangeError)
@@ -409,7 +400,6 @@ describe('formatDistanceToNowStrict', function () {
     var block = formatDistanceToNowStrict.bind(
       null,
       new Date(1986, 3, 4, 10, 33, 29),
-      // $ExpectedMistake
       { unit: 'foobar' }
     )
     assert.throws(block, RangeError)

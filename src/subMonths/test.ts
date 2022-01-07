@@ -20,7 +20,6 @@ describe('subMonths', () => {
   })
 
   it('implicitly converts number arguments', () => {
-    // $ExpectedMistake
     // @ts-expect-error
     const result = subMonths(new Date(2015, 1 /* Feb */, 1), '5')
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1))

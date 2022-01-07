@@ -5,7 +5,6 @@ import requiredArgs from '.'
 
 describe('requiredArgs', function () {
   function wrapperFn(required) {
-    // $ExpectedMistake
     return function () {
       requiredArgs(required, arguments)
     }

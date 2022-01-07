@@ -173,7 +173,6 @@ describe('getOverlappingDaysInIntervals', () => {
   it('throws an exception if the initial interval is undefined', () => {
     const block = getOverlappingDaysInIntervals.bind(
       null,
-      // $ExpectedMistake
       // @ts-expect-error
       undefined,
       { start: new Date(2016, 10, 5), end: new Date(2016, 10, 15) }
@@ -185,7 +184,6 @@ describe('getOverlappingDaysInIntervals', () => {
     const block = getOverlappingDaysInIntervals.bind(
       null,
       { start: new Date(2016, 10, 3), end: new Date(2016, 10, 7) },
-      // $ExpectedMistake
       // @ts-expect-error
       undefined
     )
@@ -233,7 +231,6 @@ describe('getOverlappingDaysInIntervals', () => {
   it('throws TypeError exception if passed less than 2 arguments', () => {
     // @ts-expect-error
     assert.throws(getOverlappingDaysInIntervals.bind(null), TypeError)
-    // $ExpectedMistake
     // @ts-expect-error
     assert.throws(getOverlappingDaysInIntervals.bind(null, 1), TypeError)
   })

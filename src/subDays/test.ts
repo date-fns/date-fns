@@ -20,7 +20,6 @@ describe('subDays', () => {
   })
 
   it('implicitly converts number arguments', () => {
-    // $ExpectedMistake
     // @ts-expect-error
     const result = subDays(new Date(2014, 8 /* Sep */, 1), '10')
     assert.deepEqual(result, new Date(2014, 7 /* Aug */, 22))

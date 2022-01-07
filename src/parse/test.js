@@ -2097,7 +2097,6 @@ describe('parse', function () {
     it('`dateString`', function () {
       // eslint-disable-next-line no-new-wrappers
       var dateString = new String('20161105T040404')
-      // $ExpectedMistake
       var result = parse(dateString, "yyyyMMdd'T'HHmmss", referenceDate)
       assert.deepEqual(result, new Date(2016, 10 /* Nov */, 5, 4, 4, 4, 0))
     })
@@ -2105,13 +2104,11 @@ describe('parse', function () {
     it('`formatString`', function () {
       // eslint-disable-next-line no-new-wrappers
       var formatString = new String("yyyyMMdd'T'HHmmss")
-      // $ExpectedMistake
       var result = parse('20161105T040404', formatString, referenceDate)
       assert.deepEqual(result, new Date(2016, 10 /* Nov */, 5, 4, 4, 4, 0))
     })
 
     it('`options.weekStartsOn`', function () {
-      // $ExpectedMistake
       var result = parse('2018', 'Y', referenceDate, {
         weekStartsOn: '1' /* Mon */,
         firstWeekContainsDate: 4,
@@ -2120,7 +2117,6 @@ describe('parse', function () {
     })
 
     it('`options.firstWeekContainsDate`', function () {
-      // $ExpectedMistake
       var result = parse('2018', 'Y', referenceDate, {
         weekStartsOn: 1 /* Mon */,
         firstWeekContainsDate: '4',
@@ -2339,7 +2335,6 @@ describe('parse', function () {
           },
         },
       }
-      // $ExpectedMistake
       var result = parse('2018 foobar', "y G 'it works!'", referenceDate, {
         locale: customLocale,
       })
@@ -2352,7 +2347,6 @@ describe('parse', function () {
         '2016-11-25 04 AM',
         'yyyy-MM-dd hh a',
         referenceDate,
-        // $ExpectedMistake
         { locale: {} }
       )
       assert.throws(block, RangeError)
@@ -2421,7 +2415,6 @@ describe('parse', function () {
     it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', function () {
       var dateString = '2014-07-02T05:30:15.123+06:00'
       var formatString = "yyyy-MM-dd'T'HH:mm:ss.SSSxxx"
-      // $ExpectedMistake
       var block = parse.bind(null, dateString, formatString, referenceDate, {
         weekStartsOn: NaN,
       })
@@ -2431,7 +2424,6 @@ describe('parse', function () {
     it('throws `RangeError` if `options.firstWeekContainsDate` is not convertable to 1, 2, ..., 7 or undefined', function () {
       var dateString = '2014-07-02T05:30:15.123+06:00'
       var formatString = "yyyy-MM-dd'T'HH:mm:ss.SSSxxx"
-      // $ExpectedMistake
       var block = parse.bind(null, dateString, formatString, referenceDate, {
         firstWeekContainsDate: NaN,
       })
@@ -2441,9 +2433,7 @@ describe('parse', function () {
 
   it('throws TypeError exception if passed less than 3 arguments', function () {
     assert.throws(parse.bind(null), TypeError)
-    // $ExpectedMistake
     assert.throws(parse.bind(null, 1), TypeError)
-    // $ExpectedMistake
     assert.throws(parse.bind(null, 1, 2), TypeError)
   })
 
