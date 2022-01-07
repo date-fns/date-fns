@@ -1,8 +1,9 @@
 name: Coverage report
 
-'on':
+on:
   push:
-    branches: [master]
+    branches:
+      - master
 
 jobs:
   tests:
