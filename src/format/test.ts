@@ -63,7 +63,7 @@ describe('format', () => {
 
     it('should return a correct ordinal number', () => {
       const result = []
-      for (const i = 1; i <= 31; i++) {
+      for (let i = 1; i <= 31; i++) {
         result.push(format(new Date(2015, 0, i), 'do'))
       }
       const expected = [
@@ -263,7 +263,7 @@ describe('format', () => {
 
     it('returns a correct quarter for each month', () => {
       const result = []
-      for (const i = 0; i <= 11; i++) {
+      for (let i = 0; i <= 11; i++) {
         result.push(format(new Date(1986, i, 1), 'Q'))
       }
       const expected = [
@@ -362,7 +362,7 @@ describe('format', () => {
 
       it('returns a correct day of an ISO week', () => {
         const result = []
-        for (const i = 1; i <= 7; i++) {
+        for (let i = 1; i <= 7; i++) {
           result.push(format(new Date(1986, 8 /* Sep */, i), 'i'))
         }
         const expected = ['1', '2', '3', '4', '5', '6', '7']
@@ -378,7 +378,7 @@ describe('format', () => {
 
       it('by default, 1 is Sunday, 2 is Monday, ...', () => {
         const result = []
-        for (const i = 7; i <= 13; i++) {
+        for (let i = 7; i <= 13; i++) {
           result.push(format(new Date(1986, 8 /* Sep */, i), 'e'))
         }
         const expected = ['1', '2', '3', '4', '5', '6', '7']
@@ -387,7 +387,7 @@ describe('format', () => {
 
       it('allows to specify which day is the first day of the week', () => {
         const result = []
-        for (const i = 1; i <= 7; i++) {
+        for (let i = 1; i <= 7; i++) {
           result.push(
             format(new Date(1986, 8 /* Sep */, i), 'e', { weekStartsOn: 1 })
           )
@@ -405,7 +405,7 @@ describe('format', () => {
 
       it('by default, 1 is Sunday, 2 is Monday, ...', () => {
         const result = []
-        for (const i = 7; i <= 13; i++) {
+        for (let i = 7; i <= 13; i++) {
           result.push(format(new Date(1986, 8 /* Sep */, i), 'c'))
         }
         const expected = ['1', '2', '3', '4', '5', '6', '7']
@@ -414,7 +414,7 @@ describe('format', () => {
 
       it('allows to specify which day is the first day of the week', () => {
         const result = []
-        for (const i = 1; i <= 7; i++) {
+        for (let i = 1; i <= 7; i++) {
           result.push(
             format(new Date(1986, 8 /* Sep */, i), 'c', { weekStartsOn: 1 })
           )
