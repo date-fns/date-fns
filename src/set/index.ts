@@ -2,7 +2,7 @@ import toDate from '../toDate/index'
 import setMonth from '../setMonth/index'
 import toInteger from '../_lib/toInteger/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import { DateValues } from '../types';
+import { DateValues } from '../types'
 
 /**
  * @name set
@@ -34,16 +34,19 @@ import { DateValues } from '../types';
  *
  * @example
  * // Transform 1 September 2014 into 20 October 2015 in a single line:
- * var result = set(new Date(2014, 8, 20), { year: 2015, month: 9, date: 20 })
+ * const result = set(new Date(2014, 8, 20), { year: 2015, month: 9, date: 20 })
  * //=> Tue Oct 20 2015 00:00:00
  *
  * @example
  * // Set 12 PM to 1 September 2014 01:23:45 to 1 September 2014 12:00:00:
- * var result = set(new Date(2014, 8, 1, 1, 23, 45), { hours: 12 })
+ * const result = set(new Date(2014, 8, 1, 1, 23, 45), { hours: 12 })
  * //=> Mon Sep 01 2014 12:23:45
  */
 
-export default function set(dirtyDate: Date | number, values: DateValues): Date {
+export default function set(
+  dirtyDate: Date | number,
+  values: DateValues
+): Date {
   requiredArgs(2, arguments)
 
   if (typeof values !== 'object' || values === null) {

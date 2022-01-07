@@ -19,7 +19,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // Is 21 September 2014 Sunday?
- * var result = isSunday(new Date(2014, 8, 21))
+ * const result = isSunday(new Date(2014, 8, 21))
  * //=> true
  */
 export default function isSunday(dirtyDate: Date | number): boolean {

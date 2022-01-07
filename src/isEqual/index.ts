@@ -20,13 +20,16 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // Are 2 July 2014 06:30:45.000 and 2 July 2014 06:30:45.500 equal?
- * var result = isEqual(
+ * const result = isEqual(
  *   new Date(2014, 6, 2, 6, 30, 45, 0),
  *   new Date(2014, 6, 2, 6, 30, 45, 500)
  * )
  * //=> false
  */
-export default function isEqual(dirtyLeftDate: Date | number, dirtyRightDate: Date | number): boolean {
+export default function isEqual(
+  dirtyLeftDate: Date | number,
+  dirtyRightDate: Date | number
+): boolean {
   requiredArgs(2, arguments)
 
   const dateLeft = toDate(dirtyLeftDate)

@@ -22,7 +22,7 @@ import { Interval, StepOptions } from '../types'
  *
  * @example
  * // Each hour between 6 October 2014, 12:00 and 6 October 2014, 15:00
- * var result = eachHourOfInterval({
+ * const result = eachHourOfInterval({
  *   start: new Date(2014, 9, 6, 12),
  *   end: new Date(2014, 9, 6, 15)
  * })

@@ -288,13 +288,13 @@ import {
  *
  * @example
  * // Match 11 February 2014 from middle-endian format:
- * var result = isMatch('02/11/2014', 'MM/dd/yyyy')
+ * const result = isMatch('02/11/2014', 'MM/dd/yyyy')
  * //=> true
  *
  * @example
  * // Match 28th of February in Esperanto locale in the context of 2010 year:
  * import eo from 'date-fns/locale/eo'
- * var result = isMatch('28-a de februaro', "do 'de' MMMM", {
+ * const result = isMatch('28-a de februaro', "do 'de' MMMM", {
  *   locale: eo
  * })
  * //=> true

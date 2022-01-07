@@ -29,7 +29,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // The last day of an ISO week-numbering year for 2 July 2005:
- * var result = lastDayOfISOWeekYear(new Date(2005, 6, 2))
+ * const result = lastDayOfISOWeekYear(new Date(2005, 6, 2))
  * //=> Sun Jan 01 2006 00:00:00
  */
 export default function lastDayOfISOWeekYear(dirtyDate: Date | number): Date {

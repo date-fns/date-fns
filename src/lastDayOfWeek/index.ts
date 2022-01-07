@@ -26,12 +26,12 @@ import { LocaleOptions, WeekStartOptions } from '../types'
  *
  * @example
  * // The last day of a week for 2 September 2014 11:55:00:
- * var result = lastDayOfWeek(new Date(2014, 8, 2, 11, 55, 0))
+ * const result = lastDayOfWeek(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Sat Sep 06 2014 00:00:00
  *
  * @example
  * // If the week starts on Monday, the last day of the week for 2 September 2014 11:55:00:
- * var result = lastDayOfWeek(new Date(2014, 8, 2, 11, 55, 0), { weekStartsOn: 1 })
+ * const result = lastDayOfWeek(new Date(2014, 8, 2, 11, 55, 0), { weekStartsOn: 1 })
  * //=> Sun Sep 07 2014 00:00:00
  */
 export default function lastDayOfWeek(

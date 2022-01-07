@@ -32,7 +32,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // Which of these dates is the latest?
- * var result = max([
+ * const result = max([
  *   new Date(1989, 6, 10),
  *   new Date(1987, 1, 11),
  *   new Date(1995, 6, 2),

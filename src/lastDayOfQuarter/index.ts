@@ -23,7 +23,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // The last day of a quarter for 2 September 2014 11:55:00:
- * var result = lastDayOfQuarter(new Date(2014, 8, 2, 11, 55, 0))
+ * const result = lastDayOfQuarter(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Tue Sep 30 2014 00:00:00
  */
 export default function lastDayOfQuarter(dirtyDate: Date | number): Date {

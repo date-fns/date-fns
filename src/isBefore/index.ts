@@ -20,10 +20,13 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // Is 10 July 1989 before 11 February 1987?
- * var result = isBefore(new Date(1989, 6, 10), new Date(1987, 1, 11))
+ * const result = isBefore(new Date(1989, 6, 10), new Date(1987, 1, 11))
  * //=> false
  */
-export default function isBefore(dirtyDate: Date | number, dirtyDateToCompare: Date | number): boolean {
+export default function isBefore(
+  dirtyDate: Date | number,
+  dirtyDateToCompare: Date | number
+): boolean {
   requiredArgs(2, arguments)
 
   const date = toDate(dirtyDate)

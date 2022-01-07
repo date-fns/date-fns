@@ -21,7 +21,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // How many calendar quarters are between 31 December 2013 and 2 July 2014?
- * var result = differenceInCalendarQuarters(
+ * const result = differenceInCalendarQuarters(
  *   new Date(2014, 6, 2),
  *   new Date(2013, 11, 31)
  * )

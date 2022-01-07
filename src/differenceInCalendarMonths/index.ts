@@ -20,7 +20,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // How many calendar months are between 31 January 2014 and 1 September 2014?
- * var result = differenceInCalendarMonths(
+ * const result = differenceInCalendarMonths(
  *   new Date(2014, 8, 1),
  *   new Date(2014, 0, 31)
  * )

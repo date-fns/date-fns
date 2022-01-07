@@ -21,10 +21,13 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // Set the 30th day of the month to 1 September 2014:
- * var result = setDate(new Date(2014, 8, 1), 30)
+ * const result = setDate(new Date(2014, 8, 1), 30)
  * //=> Tue Sep 30 2014 00:00:00
  */
-export default function setDate(dirtyDate: Date | number, dirtyDayOfMonth: number): Date {
+export default function setDate(
+  dirtyDate: Date | number,
+  dirtyDayOfMonth: number
+): Date {
   requiredArgs(2, arguments)
 
   const date = toDate(dirtyDate)

@@ -19,7 +19,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // Is 1 September 2012 in the leap year?
- * var result = isLeapYear(new Date(2012, 8, 1))
+ * const result = isLeapYear(new Date(2012, 8, 1))
  * //=> true
  */
 export default function isLeapYear(dirtyDate: Date | number): boolean {

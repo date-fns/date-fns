@@ -27,10 +27,13 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // Are 29 December 2003 and 2 January 2005 in the same ISO week-numbering year?
- * var result = isSameISOWeekYear(new Date(2003, 11, 29), new Date(2005, 0, 2))
+ * const result = isSameISOWeekYear(new Date(2003, 11, 29), new Date(2005, 0, 2))
  * //=> true
  */
-export default function isSameISOWeekYear(dirtyDateLeft: Date | number, dirtyDateRight: Date | number): boolean {
+export default function isSameISOWeekYear(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+): boolean {
   requiredArgs(2, arguments)
 
   const dateLeftStartOfYear = startOfISOWeekYear(dirtyDateLeft)

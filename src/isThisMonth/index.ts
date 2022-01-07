@@ -23,7 +23,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // If today is 25 September 2014, is 15 September 2014 in this month?
- * var result = isThisMonth(new Date(2014, 8, 15))
+ * const result = isThisMonth(new Date(2014, 8, 15))
  * //=> true
  */
 
