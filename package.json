@@ -69,7 +69,6 @@
     "eslint": "^7.27.0",
     "eslint-config-prettier": "^4.3.0",
     "firebase": "^3.7.1",
-    "flow-bin": "0.84.0",
     "glob-promise": "^2.0.0",
     "globby": "^11.0.3",
     "gzip-size-cli": "^1.0.0",
