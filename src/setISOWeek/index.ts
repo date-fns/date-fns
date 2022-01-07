@@ -1,7 +1,4 @@
-import toInteger from '../_lib/toInteger/index'
-import toDate from '../toDate/index'
 import getISOWeek from '../getISOWeek/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name setISOWeek
@@ -13,10 +10,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
  * @param date - the date to be changed
  * @param isoWeek - the ISO week of the new date
  * @returns the new date with the ISO week set
@@ -26,15 +19,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = setISOWeek(new Date(2004, 7, 7), 53)
  * //=> Sat Jan 01 2005 00:00:00
  */
-export default function setISOWeek(
-  dirtyDate: Date | number,
-  dirtyISOWeek: number
-): Date {
-  requiredArgs(2, arguments)
-
-  const date = toDate(dirtyDate)
-  const isoWeek = toInteger(dirtyISOWeek)
-  const diff = getISOWeek(date) - isoWeek
-  date.setDate(date.getDate() - diff * 7)
-  return date
+export default function setISOWeek(date: Date | number, week: number): Date {
+  const result = new Date(date)
+  const weekTransformed = Math.trunc(week)
+  const diff = getISOWeek(result) - weekTransformed
+  result.setDate(result.getDate() - diff * 7)
+  return result
 }
