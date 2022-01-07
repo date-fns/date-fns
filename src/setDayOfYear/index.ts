@@ -1,7 +1,3 @@
-import toInteger from '../_lib/toInteger/index'
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name setDayOfYear
  * @category Day Helpers
@@ -20,14 +16,12 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> Thu Jan 02 2014 00:00:00
  */
 export default function setDayOfYear(
-  dirtyDate: Date | number,
-  dirtyDayOfYear: number
+  date: Date | number,
+  dayOfYear: number
 ): Date {
-  requiredArgs(2, arguments)
-
-  const date = toDate(dirtyDate)
-  const dayOfYear = toInteger(dirtyDayOfYear)
-  date.setMonth(0)
-  date.setDate(dayOfYear)
-  return date
+  const result = new Date(date)
+  const dayOfYearTransformed = Math.trunc(dayOfYear)
+  result.setMonth(0)
+  result.setDate(dayOfYearTransformed)
+  return result
 }
