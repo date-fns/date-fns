@@ -137,6 +137,16 @@ describe('parse', function () {
       assert.deepEqual(result, expectedResult)
     })
 
+    it('returns `Invalid Date` if date has one digit', function() {
+      var result = parse('1', 'yy', referenceDate)
+      assert(result instanceof Date && isNaN(result.getTime()))
+    })
+
+    it('returns `Invalid Date` if date has two digits', function() {
+      var result = parse('20', 'yyyy', referenceDate)
+      assert(result instanceof Date && isNaN(result.getTime()))
+    })
+
     describe('validation', () => {
       ;[
         ['y', '2019'],
