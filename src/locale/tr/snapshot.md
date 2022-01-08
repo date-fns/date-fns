@@ -302,3 +302,29 @@ If now is January 1st, 2000, 00:00.
 | 1999-12-31T00:00:00.000Z | dün saat 00:00                   |
 | 1999-12-27T00:00:00.000Z | geçen hafta Pazartesi saat 00:00 |
 | 1999-12-21T00:00:00.000Z | 21.12.1999                       |
+
+## `formatDuration`
+
+| Duration      | Result   |
+| ------------- | -------- |
+| {"years":0}   | 0 yıl    |
+| {"years":1}   | 1 yıl    |
+| {"years":2}   | 2 yıl    |
+| {"months":0}  | 0 ay     |
+| {"months":1}  | 1 ay     |
+| {"months":2}  | 2 ay     |
+| {"weeks":0}   | 0 hafta  |
+| {"weeks":1}   | 1 hafta  |
+| {"weeks":2}   | 2 hafta  |
+| {"days":0}    | 0 gün    |
+| {"days":1}    | 1 gün    |
+| {"days":2}    | 2 gün    |
+| {"hours":0}   | 0 saat   |
+| {"hours":1}   | 1 saat   |
+| {"hours":2}   | 2 saat   |
+| {"minutes":0} | 0 dakika |
+| {"minutes":1} | 1 dakika |
+| {"minutes":2} | 2 dakika |
+| {"seconds":0} | 0 saniye |
+| {"seconds":1} | 1 saniye |
+| {"seconds":2} | 2 saniye |

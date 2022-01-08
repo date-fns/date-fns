@@ -19348,6 +19348,9 @@ declare module 'date-fns/locale' {
   const frCH: Locale
   namespace frCH {}
 
+  const fy: Locale
+  namespace fy {}
+
   const gd: Locale
   namespace gd {}
 
@@ -19491,6 +19494,9 @@ declare module 'date-fns/locale' {
 
   const uz: Locale
   namespace uz {}
+
+  const uzCyrl: Locale
+  namespace uzCyrl {}
 
   const vi: Locale
   namespace vi {}
@@ -19688,6 +19694,11 @@ declare module 'date-fns/locale/fr-CA' {
 declare module 'date-fns/locale/fr-CH' {
   import { frCH } from 'date-fns/locale'
   export default frCH
+}
+
+declare module 'date-fns/locale/fy' {
+  import { fy } from 'date-fns/locale'
+  export default fy
 }
 
 declare module 'date-fns/locale/gd' {
@@ -19930,6 +19941,11 @@ declare module 'date-fns/locale/uz' {
   export default uz
 }
 
+declare module 'date-fns/locale/uz-Cyrl' {
+  import { uzCyrl } from 'date-fns/locale'
+  export default uzCyrl
+}
+
 declare module 'date-fns/locale/vi' {
   import { vi } from 'date-fns/locale'
   export default vi
@@ -20133,6 +20149,11 @@ declare module 'date-fns/locale/fr-CA/index' {
 declare module 'date-fns/locale/fr-CH/index' {
   import { frCH } from 'date-fns/locale'
   export default frCH
+}
+
+declare module 'date-fns/locale/fy/index' {
+  import { fy } from 'date-fns/locale'
+  export default fy
 }
 
 declare module 'date-fns/locale/gd/index' {
@@ -20375,6 +20396,11 @@ declare module 'date-fns/locale/uz/index' {
   export default uz
 }
 
+declare module 'date-fns/locale/uz-Cyrl/index' {
+  import { uzCyrl } from 'date-fns/locale'
+  export default uzCyrl
+}
+
 declare module 'date-fns/locale/vi/index' {
   import { vi } from 'date-fns/locale'
   export default vi
@@ -20578,6 +20604,11 @@ declare module 'date-fns/locale/fr-CA/index.js' {
 declare module 'date-fns/locale/fr-CH/index.js' {
   import { frCH } from 'date-fns/locale'
   export default frCH
+}
+
+declare module 'date-fns/locale/fy/index.js' {
+  import { fy } from 'date-fns/locale'
+  export default fy
 }
 
 declare module 'date-fns/locale/gd/index.js' {
@@ -20820,6 +20851,11 @@ declare module 'date-fns/locale/uz/index.js' {
   export default uz
 }
 
+declare module 'date-fns/locale/uz-Cyrl/index.js' {
+  import { uzCyrl } from 'date-fns/locale'
+  export default uzCyrl
+}
+
 declare module 'date-fns/locale/vi/index.js' {
   import { vi } from 'date-fns/locale'
   export default vi
@@ -20953,6 +20989,9 @@ declare module 'date-fns/esm/locale' {
 
   const frCH: Locale
   namespace frCH {}
+
+  const fy: Locale
+  namespace fy {}
 
   const gd: Locale
   namespace gd {}
@@ -21097,6 +21136,9 @@ declare module 'date-fns/esm/locale' {
 
   const uz: Locale
   namespace uz {}
+
+  const uzCyrl: Locale
+  namespace uzCyrl {}
 
   const vi: Locale
   namespace vi {}
@@ -21294,6 +21336,11 @@ declare module 'date-fns/esm/locale/fr-CA' {
 declare module 'date-fns/esm/locale/fr-CH' {
   import { frCH } from 'date-fns/esm/locale'
   export default frCH
+}
+
+declare module 'date-fns/esm/locale/fy' {
+  import { fy } from 'date-fns/esm/locale'
+  export default fy
 }
 
 declare module 'date-fns/esm/locale/gd' {
@@ -21536,6 +21583,11 @@ declare module 'date-fns/esm/locale/uz' {
   export default uz
 }
 
+declare module 'date-fns/esm/locale/uz-Cyrl' {
+  import { uzCyrl } from 'date-fns/esm/locale'
+  export default uzCyrl
+}
+
 declare module 'date-fns/esm/locale/vi' {
   import { vi } from 'date-fns/esm/locale'
   export default vi
@@ -21739,6 +21791,11 @@ declare module 'date-fns/esm/locale/fr-CA/index' {
 declare module 'date-fns/esm/locale/fr-CH/index' {
   import { frCH } from 'date-fns/esm/locale'
   export default frCH
+}
+
+declare module 'date-fns/esm/locale/fy/index' {
+  import { fy } from 'date-fns/esm/locale'
+  export default fy
 }
 
 declare module 'date-fns/esm/locale/gd/index' {
@@ -21981,6 +22038,11 @@ declare module 'date-fns/esm/locale/uz/index' {
   export default uz
 }
 
+declare module 'date-fns/esm/locale/uz-Cyrl/index' {
+  import { uzCyrl } from 'date-fns/esm/locale'
+  export default uzCyrl
+}
+
 declare module 'date-fns/esm/locale/vi/index' {
   import { vi } from 'date-fns/esm/locale'
   export default vi
@@ -22184,6 +22246,11 @@ declare module 'date-fns/esm/locale/fr-CA/index.js' {
 declare module 'date-fns/esm/locale/fr-CH/index.js' {
   import { frCH } from 'date-fns/esm/locale'
   export default frCH
+}
+
+declare module 'date-fns/esm/locale/fy/index.js' {
+  import { fy } from 'date-fns/esm/locale'
+  export default fy
 }
 
 declare module 'date-fns/esm/locale/gd/index.js' {
@@ -22424,6 +22491,11 @@ declare module 'date-fns/esm/locale/uk/index.js' {
 declare module 'date-fns/esm/locale/uz/index.js' {
   import { uz } from 'date-fns/esm/locale'
   export default uz
+}
+
+declare module 'date-fns/esm/locale/uz-Cyrl/index.js' {
+  import { uzCyrl } from 'date-fns/esm/locale'
+  export default uzCyrl
 }
 
 declare module 'date-fns/esm/locale/vi/index.js' {

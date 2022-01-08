@@ -1,5 +1,13 @@
 /* eslint-disable no-unused-vars */
-import type { Era, FirstWeekContainsDate, Month, Quarter, Day } from '../types'
+
+import type {
+  Day,
+  Era,
+  FirstWeekContainsDate,
+  Month,
+  Quarter,
+  Unit,
+} from '../types'
 import type {
   BuildLocalizeFnArgCallback,
   LocalizeUnitValues,
@@ -43,13 +51,31 @@ export type FormatDistanceLocale<Value> = {
   [token in FormatDistanceToken]: Value
 }
 
+export interface FormatDistanceFnOptions {
+  addSuffix?: boolean
+  comparison?: -1 | 0 | 1
+}
+
+export type FormatDistanceTokenFn = (
+  count: number,
+  options?: FormatDistanceOptions
+) => string
+
+export interface FormatDistanceOptions {
+  addSuffix?: boolean
+  comparison?: -1 | 0 | 1
+}
+
 export type FormatDistanceFn = (
   token: FormatDistanceToken,
   count: number,
-  options?: {
-    addSuffix?: boolean
-    comparison?: -1 | 0 | 1
-  }
+  options?: FormatDistanceOptions
+) => string
+
+export type FormatRelativeTokenFn = (
+  date: Date | number,
+  baseDate: Date | number,
+  options?: { weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6 }
 ) => string
 
 export type FormatRelativeToken =
@@ -60,14 +86,16 @@ export type FormatRelativeToken =
   | 'nextWeek'
   | 'other'
 
+export interface FormatRelativeFnOptions {
+  weekStartsOn?: Day
+}
+
 export type FormatRelativeFn = (
   token: FormatRelativeToken,
-  date: Date | number,
-  baseDate: Date | number,
-  options?: { weekStartsOn?: Day }
+  date: Date,
+  baseDate: Date,
+  options?: FormatRelativeFnOptions
 ) => string
-
-export type QuarterIndex = 0 | 1 | 2 | 3
 
 // TODO: You're real champion if you're actually get back to it. Proud of you!
 // Try to get rid of this and (especially) ArgCallback types because the only
@@ -80,13 +108,17 @@ export type LocalizeUnitIndex<
 
 export type LocalizeFn<
   Result extends LocaleUnit | number,
-  ArgCallback extends BuildLocalizeFnArgCallback<Result> | undefined
+  ArgCallback extends BuildLocalizeFnArgCallback<Result> | undefined = undefined
 > = (
-  value: ArgCallback extends undefined ? Result : LocalizeUnitIndex<Result>,
+  value: ArgCallback extends undefined
+    ? Result
+    : Result extends Quarter
+    ? Quarter
+    : LocalizeUnitIndex<Result>,
   options?: {
     width?: LocalePatternWidth
     context?: 'formatting' | 'standalone'
-    unit?: LocaleOrdinalUnit
+    unit?: Unit
   }
 ) => string
 
@@ -225,7 +257,9 @@ export type LocaleOptionUnit =
   | 'minute'
   | 'second'
 
-export type FormatLongWidth = 'full' | 'long' | 'medium' | 'short'
+export type FormatLongWidth = 'full' | 'long' | 'medium' | 'short' | 'any'
+
+export type DateTimeFormat = { [format in FormatLongWidth]: string }
 
 export type LocaleUnit = Era | Quarter | Month | Day | LocaleDayPeriod
 

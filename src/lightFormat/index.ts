@@ -62,7 +62,7 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * |                                 | ss      | 00, 01, ..., 59                   |
  * | Fraction of second              | S       | 0, 1, ..., 9                      |
  * |                                 | SS      | 00, 01, ..., 99                   |
- * |                                 | SSS     | 000, 0001, ..., 999               |
+ * |                                 | SSS     | 000, 001, ..., 999                |
  * |                                 | SSSS    | ...                               |
  *
  * @param {Date|Number} date - the original date

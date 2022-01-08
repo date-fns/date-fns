@@ -302,3 +302,29 @@ If now is January 1st, 2000, 00:00.
 | 1999-12-31T00:00:00.000Z | yè nan lè 00:00              |
 | 1999-12-27T00:00:00.000Z | lendi pase nan lè 00:00      |
 | 1999-12-21T00:00:00.000Z | 21/12/1999                   |
+
+## `formatDuration`
+
+| Duration      | Result   |
+| ------------- | -------- |
+| {"years":0}   | 0 an     |
+| {"years":1}   | 1 an     |
+| {"years":2}   | 2 an     |
+| {"months":0}  | 0 mwa    |
+| {"months":1}  | 1 mwa    |
+| {"months":2}  | 2 mwa    |
+| {"weeks":0}   | 0 semèn  |
+| {"weeks":1}   | 1 semèn  |
+| {"weeks":2}   | 2 semèn  |
+| {"days":0}    | 0 jou    |
+| {"days":1}    | 1 jou    |
+| {"days":2}    | 2 jou    |
+| {"hours":0}   | 0 lè     |
+| {"hours":1}   | 1 lè     |
+| {"hours":2}   | 2 lè     |
+| {"minutes":0} | 0 minit  |
+| {"minutes":1} | 1 minit  |
+| {"minutes":2} | 2 minit  |
+| {"seconds":0} | 0 segond |
+| {"seconds":1} | 1 segond |
+| {"seconds":2} | 2 segond |

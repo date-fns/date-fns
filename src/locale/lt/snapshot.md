@@ -302,3 +302,29 @@ If now is January 1st, 2000, 00:00.
 | 1999-12-31T00:00:00.000Z | Vakar 00:00               |
 | 1999-12-27T00:00:00.000Z | Praėjusį pirmadienį 00:00 |
 | 1999-12-21T00:00:00.000Z | 1999-12-21                |
+
+## `formatDuration`
+
+| Duration      | Result          |
+| ------------- | --------------- |
+| {"years":0}   | 0 metų          |
+| {"years":1}   | metai           |
+| {"years":2}   | 2 metai         |
+| {"months":0}  | 0 mėnesių       |
+| {"months":1}  | mėnuo           |
+| {"months":2}  | 2 mėnesiai      |
+| {"weeks":0}   | 0 savaičių      |
+| {"weeks":1}   | savaitė         |
+| {"weeks":2}   | 2 savaitės      |
+| {"days":0}    | 0 dienų         |
+| {"days":1}    | diena           |
+| {"days":2}    | 2 dienos        |
+| {"hours":0}   | 0 valandų       |
+| {"hours":1}   | valanda         |
+| {"hours":2}   | 2 valandos      |
+| {"minutes":0} | 0 minučių       |
+| {"minutes":1} | minutė          |
+| {"minutes":2} | 2 minutės       |
+| {"seconds":0} | 0 sekundžių     |
+| {"seconds":1} | kelios sekundės |
+| {"seconds":2} | 2 sekundė       |

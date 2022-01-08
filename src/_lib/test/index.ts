@@ -1,1 +1,1 @@
-export function assertType<T>(_: T) {}
+export function assertType<T>(_: T): void {}

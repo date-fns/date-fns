@@ -1,4 +1,4 @@
-import { Quarter } from '../../../../types'
+import type { Quarter } from '../../../../types'
 import type { Match } from '../../../types'
 import buildMatchFn from '../../../_lib/buildMatchFn/index'
 import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
@@ -92,9 +92,7 @@ const match: Match = {
   ordinalNumber: buildMatchPatternFn({
     matchPattern: matchOrdinalNumberPattern,
     parsePattern: parseOrdinalNumberPattern,
-    valueCallback: function (value) {
-      return parseInt(value, 10)
-    },
+    valueCallback: (value) => parseInt(value, 10),
   }),
 
   era: buildMatchFn({

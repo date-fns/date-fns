@@ -4,10 +4,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
 /**
  * @name isSameMonth
  * @category Month Helpers
- * @summary Are the given dates in the same month?
+ * @summary Are the given dates in the same month (and year)?
  *
  * @description
- * Are the given dates in the same month?
+ * Are the given dates in the same month (and year)?
  *
  * ### v2.0.0 breaking changes:
  *
@@ -15,7 +15,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Date|Number} dateLeft - the first date to check
  * @param {Date|Number} dateRight - the second date to check
- * @returns {Boolean} the dates are in the same month
+ * @returns {Boolean} the dates are in the same month (and year)
  * @throws {TypeError} 2 arguments required
  *
  * @example

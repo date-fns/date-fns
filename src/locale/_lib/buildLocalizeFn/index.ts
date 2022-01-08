@@ -5,7 +5,6 @@ import {
   LocaleUnit,
   LocalizeFn,
   LocalizeUnitIndex,
-  QuarterIndex,
 } from '../../types'
 
 type LocalizeEraValues = readonly [string, string]
@@ -44,7 +43,7 @@ export type LocalizeUnitValuesIndex<
   : Values extends LocalizeEraValues
   ? Era
   : Values extends LocalizeQuarterValues
-  ? QuarterIndex
+  ? Quarter
   : Values extends LocalizeDayValues
   ? Day
   : Values extends LocalizeMonthValues

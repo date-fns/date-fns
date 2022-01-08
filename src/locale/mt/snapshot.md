@@ -302,3 +302,29 @@ If now is January 1st, 2000, 00:00.
 | 1999-12-31T00:00:00.000Z | Il-bieraħ fil-00:00          |
 | 1999-12-27T00:00:00.000Z | It-Tnejn li għadda fil-00:00 |
 | 1999-12-21T00:00:00.000Z | 21/12/1999                   |
+
+## `formatDuration`
+
+| Duration      | Result    |
+| ------------- | --------- |
+| {"years":0}   | 0 snin    |
+| {"years":1}   | sena      |
+| {"years":2}   | sentejn   |
+| {"months":0}  | 0 xhur    |
+| {"months":1}  | xahar     |
+| {"months":2}  | 2 xhur    |
+| {"weeks":0}   | 0 ġimgħat |
+| {"weeks":1}   | ġimgħa    |
+| {"weeks":2}   | 2 ġimgħat |
+| {"days":0}    | 0 ġranet  |
+| {"days":1}    | ġurnata   |
+| {"days":2}    | 2 ġranet  |
+| {"hours":0}   | 0 siegħat |
+| {"hours":1}   | siegħa    |
+| {"hours":2}   | 2 siegħat |
+| {"minutes":0} | 0 minuti  |
+| {"minutes":1} | minuta    |
+| {"minutes":2} | 2 minuti  |
+| {"seconds":0} | 0 sekondi |
+| {"seconds":1} | sekonda   |
+| {"seconds":2} | 2 sekondi |

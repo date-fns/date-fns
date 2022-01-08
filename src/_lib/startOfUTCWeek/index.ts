@@ -1,5 +1,5 @@
-import { LocaleOptions, WeekStartOptions } from '../../types'
 import toDate from '../../toDate/index'
+import { LocaleOptions, WeekStartOptions } from '../../types'
 import requiredArgs from '../requiredArgs/index'
 import toInteger from '../toInteger/index'
 
@@ -8,7 +8,7 @@ import toInteger from '../toInteger/index'
 export default function startOfUTCWeek(
   dirtyDate: Date | number,
   dirtyOptions?: LocaleOptions & WeekStartOptions
-) {
+): Date {
   requiredArgs(1, arguments)
 
   const options = dirtyOptions || {}

@@ -21,7 +21,7 @@
  * const result = startOfYesterday()
  * //=> Sun Oct 5 2014 00:00:00
  */
-export default function startOfYesterday() {
+export default function startOfYesterday(): Date {
   const now = new Date()
   const year = now.getFullYear()
   const month = now.getMonth()

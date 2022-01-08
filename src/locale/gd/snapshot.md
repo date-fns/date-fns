@@ -302,3 +302,29 @@ If now is January 1st, 2000, 00:00.
 | 1999-12-31T00:00:00.000Z | an-dè aig 12:00 M.                |
 | 1999-12-27T00:00:00.000Z | mu dheireadh Diluain aig 12:00 M. |
 | 1999-12-21T00:00:00.000Z | 12/21/1999                        |
+
+## `formatDuration`
+
+| Duration      | Result             |
+| ------------- | ------------------ |
+| {"years":0}   | 0 bliadhna         |
+| {"years":1}   | 1 bhliadhna        |
+| {"years":2}   | 2 bliadhna         |
+| {"months":0}  | 0 mìosan           |
+| {"months":1}  | 1 mìos             |
+| {"months":2}  | 2 mìosan           |
+| {"weeks":0}   | 0 seachdainean     |
+| {"weeks":1}   | 1 seachdain        |
+| {"weeks":2}   | 2 seachdainean     |
+| {"days":0}    | 0 là               |
+| {"days":1}    | 1 là               |
+| {"days":2}    | 2 là               |
+| {"hours":0}   | 0 uairean de thìde |
+| {"hours":1}   | 1 uair de thìde    |
+| {"hours":2}   | 2 uair de thìde    |
+| {"minutes":0} | 0 mionaidean       |
+| {"minutes":1} | 1 mionaid          |
+| {"minutes":2} | 2 mhionaid         |
+| {"seconds":0} | 0 diogan           |
+| {"seconds":1} | 1 diog             |
+| {"seconds":2} | 2 dhiog            |

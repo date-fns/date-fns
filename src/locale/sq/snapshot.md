@@ -302,3 +302,29 @@ If now is January 1st, 2000, 00:00.
 | 1999-12-31T00:00:00.000Z | dje në 12:00 PD              |
 | 1999-12-27T00:00:00.000Z | të Hënë e shkuar në 12:00 PD |
 | 1999-12-21T00:00:00.000Z | 12/21/1999                   |
+
+## `formatDuration`
+
+| Duration      | Result    |
+| ------------- | --------- |
+| {"years":0}   | 0 vite    |
+| {"years":1}   | 1 vit     |
+| {"years":2}   | 2 vite    |
+| {"months":0}  | 0 muaj    |
+| {"months":1}  | 1 muaj    |
+| {"months":2}  | 2 muaj    |
+| {"weeks":0}   | 0 javë    |
+| {"weeks":1}   | 1 javë    |
+| {"weeks":2}   | 2 javë    |
+| {"days":0}    | 0 ditë    |
+| {"days":1}    | 1 ditë    |
+| {"days":2}    | 2 ditë    |
+| {"hours":0}   | 0 orë     |
+| {"hours":1}   | 1 orë     |
+| {"hours":2}   | 2 orë     |
+| {"minutes":0} | 0 minuta  |
+| {"minutes":1} | 1 minutë  |
+| {"minutes":2} | 2 minuta  |
+| {"seconds":0} | 0 sekonda |
+| {"seconds":1} | 1 sekondë |
+| {"seconds":2} | 2 sekonda |

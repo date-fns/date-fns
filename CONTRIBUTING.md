@@ -14,6 +14,11 @@
 
 - [Testing](#testing)
 
+  - [Unit tests](#unit-tests)  
+  - [REPL](#repl)
+  - [Test build](#test-build)
+
+
 - [Code Style Guide](#code-style-guide)
 
   - [Lint the Code](#lint-the-code)
@@ -29,8 +34,8 @@ Help is always welcome. There are areas where you can help:
 - The core functionality (performance improvements, bug fixes,
   new features, etc.).
 
-- Documentation ([markdown documents](https://github.com/date-fns/date-fns/search?l=markdown),
-  inline JSDoc comments).
+- Documentation ([markdown documents](https://github.com/date-fns/date-fns/tree/master/docs),
+  [JSDoc annotations in source code](https://github.com/date-fns/date-fns/blob/master/src/toDate/index.ts)).
 
 - Test suite & development environment improvements.
 
@@ -38,7 +43,7 @@ Help is always welcome. There are areas where you can help:
 
 If you see a gap, but don't have time, experience, or you just need help
 with the library, don't hesitate to [start a discussion](https://github.com/date-fns/date-fns/discussions/new) or
-[shoot an issue](https://github.com/date-fns/date-fns/issues/new).
+[open a new issue](https://github.com/date-fns/date-fns/issues/new).
 
 The date-fns functionality is comprehensive and covers most of the use cases,
 however it doesn't have an extended time zone support. Please leave a comment
@@ -61,8 +66,6 @@ Please follow the main contributing rules, to maintain date-fns' top quality:
 
   - [Lint the code](#lint-the-code).
 
-  - [Use EditorConfig](#use-editorconfig).
-
 - Write tests.
 
 - [Write documentation](#documentation).
@@ -73,31 +76,48 @@ Please follow the main contributing rules, to maintain date-fns' top quality:
 
 ## Getting Started
 
-1. Install [Node.js](https://nodejs.org/en/download) and [Yarn](https://yarnpkg.com/en/docs/install).
+1. Install [Node.js 14 or greater (LTS recommended)](https://nodejs.org/en/download/)
 
-2. Fork the project and clone the fork repo.
+2. Install or upgrade to the latest [Yarn classic (v1)](https://classic.yarnpkg.com/en/docs/install) by running `npm install -g yarn@latest`
 
-3. Run `yarn` to install the application dependencies.
+3. Fork the project, and clone your fork of the repo
+
+4. Run `yarn` to install the dev dependencies
 
 ## Testing
 
-Run all tests:
+### Unit tests
+
+Karma + Mocha (Chrome):
 
 ```sh
+# all tests in watch mode
 yarn test
-```
 
-Run tests once:
-
-```sh
+# all tests once
 yarn test --single-run
 ```
 
-To test a function in REPL, use `babel-node` located in `./node_modules/.bin` (mind the `-x` flag to support also TypeScript files):
+Jest (Node.js):
 
 ```sh
-./node_modules/.bin/babel-node -x ".js",".ts"
+# all tests in watch mode
+yarn jest --watch
 
+# all tests once
+yarn jest
+```
+
+### REPL
+
+To test functions in a REPL, use `babel-node` located in `./node_modules/.bin` (mind the `-x` flag to also support TypeScript files):
+
+```sh
+yarn babel-node -x .ts,.js
+```
+
+and then require invididual functions:
+```sh
 > const toDate = require('./src/toDate')
 undefined
 > toDate(1392098430000).toString()
@@ -105,10 +125,22 @@ undefined
 >
 ```
 
-Build date-fns to test in in your project:
+or all functions (slower):
+```sh
+> const fns = require('./src')
+undefined
+> fns.toDate(1392098430000).toString()
+'Tue Feb 11 2014 01:00:30 GMT-0500 (Eastern Standard Time)'
+>
+```
+
+### Test build
+
+Build date-fns from source to test in your project. The ouput is equivalent to what gets published on npm with each release.
 
 ```sh
-env PACKAGE_OUTPUT_PATH="$(pwd)/../PATH-TO-YOUR-MODULE/node_modules/date-fns" ./scripts/build/package.sh
+# replace {YOUR-PROJECT-PATH} with an absolute or relative path to your project root
+env PACKAGE_OUTPUT_PATH="{YOUR-PROJECT-PATH}/node_modules/date-fns" ./scripts/build/package.sh
 ```
 
 ## Code Style Guide
@@ -129,9 +161,9 @@ yarn lint
 
 ### JSDoc
 
-[JSDoc](http://usejsdoc.org) is used for the code documentation. Along with the
+- [JSDoc](https://jsdoc.app/) is used for the code documentation. Along with the
 standard JSDoc tags, date-fns uses `@category` tag that allows
 to group functions.
 
-[jsdoc-parse](https://github.com/jsdoc2md/jsdoc-parse) is used to parse
+- [jsdoc-to-markdown](https://github.com/jsdoc2md/jsdoc-to-markdown/) is used to parse
 JSDoc annotations.

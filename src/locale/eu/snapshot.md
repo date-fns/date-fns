@@ -302,3 +302,29 @@ If now is January 1st, 2000, 00:00.
 | 1999-12-31T00:00:00.000Z | atzo, 00:00                |
 | 1999-12-27T00:00:00.000Z | joan den astelehena, 00:00 |
 | 1999-12-21T00:00:00.000Z | 99/12/21                   |
+
+## `formatDuration`
+
+| Duration      | Result     |
+| ------------- | ---------- |
+| {"years":0}   | 0 urte     |
+| {"years":1}   | 1 urte     |
+| {"years":2}   | 2 urte     |
+| {"months":0}  | 0 hilabete |
+| {"months":1}  | 1 hilabete |
+| {"months":2}  | 2 hilabete |
+| {"weeks":0}   | 0 astean   |
+| {"weeks":1}   | 1 aste     |
+| {"weeks":2}   | 2 astean   |
+| {"days":0}    | 0 egun     |
+| {"days":1}    | 1 egun     |
+| {"days":2}    | 2 egun     |
+| {"hours":0}   | 0 ordu     |
+| {"hours":1}   | 1 ordu     |
+| {"hours":2}   | 2 ordu     |
+| {"minutes":0} | 0 minutu   |
+| {"minutes":1} | 1 minutu   |
+| {"minutes":2} | 2 minutu   |
+| {"seconds":0} | 0 segundo  |
+| {"seconds":1} | 1 segundo  |
+| {"seconds":2} | 2 segundo  |

@@ -8,6 +8,22 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## v2.28.0 - 2021-12-28
+
+Kudos to @tan75, @fturmel, @arcanar7, @jeffjose, @helmut-lang, @zrev2220, @jooola, @minitesh, @cowboy-bebug, @mesqueeb, @JuanM04, @zhirzh, @damon02 and @leshakoss for working on the release.
+
+### Added
+
+- [Added West Frisian (`fy`) locale.](https://github.com/date-fns/date-fns/pull/2183)
+
+- [Added Uzbek Cyrillic locale (`uz-Cyrl`).](https://github.com/date-fns/date-fns/pull/2811)
+
+### Fixed
+
+- [add the missing accent mark for Saturday in Spanish locale (`es`) for `format`.](https://github.com/date-fns/date-fns/pull/2869)
+
+- [allowed `K` token to be used with `a` or `b` in `parse`.](https://github.com/date-fns/date-fns/pull/2814)
+
 ## v2.27.0 - 2021-11-30
 
 Kudos to @tan75, @hg-pyun, @07akioni, @razvanmitre, @Haqverdi, @pgcalixto, @janziemba, @fturmel, @JuanM04, @zhirzh, @seanghay, @bulutfatih, @nodeadtree, @cHaLkdusT, @a-korzun, @fishmandev, @wingclover, @Zacharias3690, @kossnocorp and @leshakoss for working on the release.
