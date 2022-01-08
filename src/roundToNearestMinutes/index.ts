@@ -1,6 +1,3 @@
-import toDate from '../toDate/index'
-import toInteger from '../_lib/toInteger/index'
-
 /**
  * @name roundToNearestMinutes
  * @category Minute Helpers
@@ -27,32 +24,24 @@ import toInteger from '../_lib/toInteger/index'
  * //=> Thu Jul 10 2014 12:15:00
  */
 export default function roundToNearestMinutes(
-  dirtyDate: Date | number,
+  date: Date | number,
   options?: { nearestTo: number }
 ): Date {
-  if (arguments.length < 1) {
-    throw new TypeError('1 argument required, but only none provided present')
-  }
-
   const nearestTo =
-    options && 'nearestTo' in options ? toInteger(options.nearestTo) : 1
+    options && 'nearestTo' in options ? Math.trunc(options.nearestTo) : 1
 
-  if (nearestTo < 1 || nearestTo > 30) {
-    throw new RangeError('`options.nearestTo` must be between 1 and 30')
-  }
-
-  const date = toDate(dirtyDate)
-  const seconds = date.getSeconds() // relevant if nearestTo is 1, which is the default case
-  const minutes = date.getMinutes() + seconds / 60
+  const dateTransformed = new Date(date)
+  const seconds = dateTransformed.getSeconds() // relevant if nearestTo is 1, which is the default case
+  const minutes = dateTransformed.getMinutes() + seconds / 60
   const roundedMinutes = Math.floor(minutes / nearestTo) * nearestTo
   const remainderMinutes = minutes % nearestTo
   const addedMinutes = Math.round(remainderMinutes / nearestTo) * nearestTo
 
   return new Date(
-    date.getFullYear(),
-    date.getMonth(),
-    date.getDate(),
-    date.getHours(),
+    dateTransformed.getFullYear(),
+    dateTransformed.getMonth(),
+    dateTransformed.getDate(),
+    dateTransformed.getHours(),
     roundedMinutes + addedMinutes
   )
 }
