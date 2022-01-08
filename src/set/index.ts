@@ -1,7 +1,4 @@
-import toDate from '../toDate/index'
 import setMonth from '../setMonth/index'
-import toInteger from '../_lib/toInteger/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 import type { DateValues } from '../types'
 
 /**
@@ -35,50 +32,45 @@ import type { DateValues } from '../types'
  * //=> Mon Sep 01 2014 12:23:45
  */
 
-export default function set(
-  dirtyDate: Date | number,
-  values: DateValues
-): Date {
-  requiredArgs(2, arguments)
-
+export default function set(date: Date | number, values: DateValues): Date {
   if (typeof values !== 'object' || values === null) {
     throw new RangeError('values parameter must be an object')
   }
 
-  let date = toDate(dirtyDate)
+  let dateTransformed = new Date(date)
 
   // Check if date is Invalid Date because Date.prototype.setFullYear ignores the value of Invalid Date
-  if (isNaN(date.getTime())) {
+  if (isNaN(dateTransformed.getTime())) {
     return new Date(NaN)
   }
 
   if (values.year != null) {
-    date.setFullYear(values.year)
+    dateTransformed.setFullYear(values.year)
   }
 
   if (values.month != null) {
-    date = setMonth(date, values.month)
+    dateTransformed = setMonth(dateTransformed, values.month)
   }
 
   if (values.date != null) {
-    date.setDate(toInteger(values.date))
+    dateTransformed.setDate(Math.trunc(values.date))
   }
 
   if (values.hours != null) {
-    date.setHours(toInteger(values.hours))
+    dateTransformed.setHours(Math.trunc(values.hours))
   }
 
   if (values.minutes != null) {
-    date.setMinutes(toInteger(values.minutes))
+    dateTransformed.setMinutes(Math.trunc(values.minutes))
   }
 
   if (values.seconds != null) {
-    date.setSeconds(toInteger(values.seconds))
+    dateTransformed.setSeconds(Math.trunc(values.seconds))
   }
 
   if (values.milliseconds != null) {
-    date.setMilliseconds(toInteger(values.milliseconds))
+    dateTransformed.setMilliseconds(Math.trunc(values.milliseconds))
   }
 
-  return date
+  return dateTransformed
 }
