@@ -1,4 +1,3 @@
-import requiredArgs from '../_lib/requiredArgs/index'
 import type { Duration } from '../types'
 
 // Leap year occures every 4 years, except for years that are divisable by 100 and not divisable by 400.
@@ -42,8 +41,6 @@ export default function milliseconds({
   minutes,
   seconds,
 }: Duration): number {
-  requiredArgs(1, arguments)
-
   let totalDays = 0
 
   if (years) totalDays += years * daysInYear

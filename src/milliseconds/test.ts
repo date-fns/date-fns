@@ -56,9 +56,4 @@ describe('milliseconds', () => {
     const result = milliseconds({})
     assert(result === 0)
   })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(milliseconds.bind(null), TypeError)
-  })
 })
