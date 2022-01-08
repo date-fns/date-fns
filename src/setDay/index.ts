@@ -1,7 +1,6 @@
 import addDays from '../addDays/index'
 import type { LocaleOptions, WeekStartOptions } from '../types'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
-import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name setDay
@@ -33,7 +32,7 @@ export default function setDay(
   options?: WeekStartOptions & LocaleOptions
 ): Date {
   const defaultOptions = getDefaultOptions()
-  const weekStartsOn = toInteger(
+  const weekStartsOn = Math.trunc(
     options?.weekStartsOn ??
       options?.locale?.options?.weekStartsOn ??
       defaultOptions.weekStartsOn ??
