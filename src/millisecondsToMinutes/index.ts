@@ -1,4 +1,3 @@
-import requiredArgs from '../_lib/requiredArgs/index'
 import { millisecondsInMinute } from '../constants/index'
 
 /**
@@ -24,7 +23,6 @@ import { millisecondsInMinute } from '../constants/index'
  * //=> 1
  */
 export default function millisecondsToMinutes(milliseconds: number): number {
-  requiredArgs(1, arguments)
   const minutes = milliseconds / millisecondsInMinute
   return Math.floor(minutes)
 }
