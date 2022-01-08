@@ -14,19 +14,19 @@ if (parseInt(process.version.match(/^v(\d+)\./)[1]) < 10)
   throw new Error('The test must be run on Node.js version >= 10')
 
 // Old date
-assert.equal(
+assert.strictEqual(
   formatRFC3339(new Date(1986, 3, 4, 10, 33, 1)),
   '1986-04-04T10:33:01+12:45'
 )
 
 // Standard time (Chatham have +13:45)
-assert.equal(
+assert.strictEqual(
   formatRFC3339(new Date(2020, 8, 27, 20, 59, 1)),
   '2020-09-27T20:59:01+13:45'
 )
 
 // Summer time (Chatham have +12:45)
-assert.equal(
+assert.strictEqual(
   formatRFC3339(new Date(2020, 3, 5, 5, 0, 54)),
   '2020-04-05T05:00:54+12:45'
 )

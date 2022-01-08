@@ -23,7 +23,7 @@ describe('lightFormat', () => {
 
   it('accepts new line charactor', () => {
     const date = new Date(2014, 3, 4, 5)
-    assert.equal(
+    assert.strictEqual(
       lightFormat(date, "yyyy-MM-dd'\n'HH:mm:ss"),
       '2014-04-04\n05:00:00'
     )

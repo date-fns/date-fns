@@ -52,7 +52,10 @@ describe('format', () => {
 
   it('accepts new line charactor', () => {
     const date = new Date(2014, 3, 4, 5)
-    assert.equal(format(date, "yyyy-MM-dd'\n'HH:mm:ss"), '2014-04-04\n05:00:00')
+    assert.strictEqual(
+      format(date, "yyyy-MM-dd'\n'HH:mm:ss"),
+      '2014-04-04\n05:00:00'
+    )
   })
 
   describe('ordinal numbers', () => {

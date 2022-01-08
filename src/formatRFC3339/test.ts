@@ -73,7 +73,7 @@ describe('formatRFC3339', () => {
       // @ts-expect-error
       fractionDigits: '2',
     })
-    assert.equal(result, `2019-03-03T19:00:52.12${generateOffset(date)}`)
+    assert.strictEqual(result, `2019-03-03T19:00:52.12${generateOffset(date)}`)
   })
 
   it('throws `RangeError` if `options.fractionDigits` is not convertable to 0, 1, 2, 3 or undefined', () => {
