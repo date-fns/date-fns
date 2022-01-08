@@ -53,21 +53,4 @@ describe('roundToNearestMinutes', () => {
     const result = roundToNearestMinutes(new Date(NaN))
     assert(result instanceof Date && isNaN(result.getTime()))
   })
-
-  it('throws `TypeError` exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(roundToNearestMinutes.bind(null), TypeError)
-  })
-
-  it('throws `RangeError` if nearestTo is not between 1 and 30', () => {
-    const date = new Date(2014, 6 /* Jul */, 10, 12, 10, 30)
-    assert.throws(
-      roundToNearestMinutes.bind(null, date, { nearestTo: 31 }),
-      RangeError
-    )
-    assert.throws(
-      roundToNearestMinutes.bind(null, date, { nearestTo: 0 }),
-      RangeError
-    )
-  })
 })
