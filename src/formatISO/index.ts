@@ -1,7 +1,5 @@
-import toDate from '../toDate/index'
 import type { FormatOptions, RepresentationOptions } from '../types'
 import addLeadingZeros from '../_lib/addLeadingZeros/index'
-import requiredArgs from '../_lib/requiredArgs'
 
 /**
  * @name formatISO
@@ -42,9 +40,7 @@ export default function formatISO(
   date: Date | number,
   options?: FormatOptions & RepresentationOptions
 ): string {
-  requiredArgs(1, arguments)
-
-  const originalDate = toDate(date)
+  const originalDate = new Date(date)
 
   if (isNaN(originalDate.getTime())) {
     throw new RangeError('Invalid time value')

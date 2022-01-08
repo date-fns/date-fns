@@ -1,6 +1,4 @@
-import toInteger from '../_lib/toInteger/index'
 import addMonths from '../addMonths/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name subMonths
@@ -19,12 +17,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = subMonths(new Date(2015, 1, 1), 5)
  * //=> Mon Sep 01 2014 00:00:00
  */
-export default function subMonths(
-  dirtyDate: Date | number,
-  dirtyAmount: number
-): Date {
-  requiredArgs(2, arguments)
-
-  const amount = toInteger(dirtyAmount)
-  return addMonths(dirtyDate, -amount)
+export default function subMonths(date: Date | number, amount: number): Date {
+  const amountTransformed = Math.trunc(amount)
+  return addMonths(date, -amountTransformed)
 }

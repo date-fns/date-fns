@@ -25,7 +25,6 @@ describe('endOfWeek', () => {
   it('allows to specify which day is the first day of the week in locale', () => {
     const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     const result = endOfWeek(date, {
-      // @ts-expect-error
       locale: {
         options: { weekStartsOn: 1 },
       },
@@ -40,22 +39,9 @@ describe('endOfWeek', () => {
     const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     const result = endOfWeek(date, {
       weekStartsOn: 1,
-      // @ts-expect-error
       locale: {
         options: { weekStartsOn: 0 },
       },
-    })
-    assert.deepStrictEqual(
-      result,
-      new Date(2014, 8 /* Sep */, 7, 23, 59, 59, 999)
-    )
-  })
-
-  it('implicitly converts options', () => {
-    const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
-    const result = endOfWeek(date, {
-      // @ts-expect-error
-      weekStartsOn: '1',
     })
     assert.deepStrictEqual(
       result,
@@ -134,10 +120,5 @@ describe('endOfWeek', () => {
         weekStartsOn: NaN,
       })
     assert.throws(block, RangeError)
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(endOfWeek.bind(null), TypeError)
   })
 })

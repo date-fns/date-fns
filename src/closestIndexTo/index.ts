@@ -1,6 +1,3 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name closestIndexTo
  * @category Common Helpers
@@ -25,35 +22,33 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> 1
  */
 export default function closestIndexTo(
-  dirtyDateToCompare: Date | number,
-  dirtyDatesArray: Array<Date | number>
+  dateToCompare: Date | number,
+  datesArray: Array<Date | number>
 ): number | undefined {
-  requiredArgs(2, arguments)
+  const dateToComp = new Date(dateToCompare)
 
-  const dateToCompare = toDate(dirtyDateToCompare)
+  if (isNaN(Number(dateToComp))) return NaN
 
-  if (isNaN(Number(dateToCompare))) return NaN
+  const timeToCompare = dateToComp.getTime()
 
-  const timeToCompare = dateToCompare.getTime()
-
-  let datesArray: Array<Date | number>
+  let datesArr: Array<Date | number>
   // `dirtyDatesArray` is undefined or null
-  if (dirtyDatesArray == null) {
-    datesArray = []
+  if (datesArray == null) {
+    datesArr = []
 
     // `dirtyDatesArray` is Array, Set or Map, or object with custom `forEach` method
-  } else if (typeof dirtyDatesArray.forEach === 'function') {
-    datesArray = dirtyDatesArray
+  } else if (typeof datesArray.forEach === 'function') {
+    datesArr = datesArray
 
     // If `dirtyDatesArray` is Array-like Object, convert to Array. Otherwise, make it empty Array
   } else {
-    datesArray = Array.prototype.slice.call(dirtyDatesArray)
+    datesArr = Array.prototype.slice.call(datesArray)
   }
 
   let result: number | undefined
   let minDistance: number
-  datesArray.forEach(function (dirtyDate, index) {
-    const currentDate = toDate(dirtyDate)
+  datesArr.forEach(function (dirtyDate, index) {
+    const currentDate = new Date(dirtyDate)
 
     if (isNaN(Number(currentDate))) {
       result = NaN

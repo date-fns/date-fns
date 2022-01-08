@@ -24,9 +24,4 @@ describe('isFirstDayOfMonth', () => {
     const result = isFirstDayOfMonth(new Date(NaN))
     assert(result === false)
   })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(isFirstDayOfMonth.bind(null), TypeError)
-  })
 })

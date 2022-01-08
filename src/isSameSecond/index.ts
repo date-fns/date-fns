@@ -1,5 +1,4 @@
 import startOfSecond from '../startOfSecond/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isSameSecond
@@ -38,13 +37,11 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> false
  */
 export default function isSameSecond(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+  dateLeft: Date | number,
+  dateRight: Date | number
 ): boolean {
-  requiredArgs(2, arguments)
-
-  const dateLeftStartOfSecond = startOfSecond(dirtyDateLeft)
-  const dateRightStartOfSecond = startOfSecond(dirtyDateRight)
+  const dateLeftStartOfSecond = startOfSecond(dateLeft)
+  const dateRightStartOfSecond = startOfSecond(dateRight)
 
   return dateLeftStartOfSecond.getTime() === dateRightStartOfSecond.getTime()
 }

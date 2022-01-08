@@ -1,5 +1,5 @@
-import toDate from '../toDate/index'
 import isValid from '../isValid/index'
+import toDate from '../toDate/index'
 import addLeadingZeros from '../_lib/addLeadingZeros/index'
 import toInteger from '../_lib/toInteger/index'
 import { FormatRFC3339Options } from 'src/types'
@@ -37,12 +37,6 @@ export default function formatRFC3339(
   dirtyDate: Date | number,
   options?: FormatRFC3339Options
 ): string {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      `1 arguments required, but only ${arguments.length} present`
-    )
-  }
-
   const originalDate = toDate(dirtyDate)
 
   if (!isValid(originalDate)) {

@@ -69,11 +69,4 @@ describe('compareAsc', () => {
     const result = compareAsc(new Date(NaN), new Date(NaN))
     assert(isNaN(result))
   })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(compareAsc.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(compareAsc.bind(null, 1), TypeError)
-  })
 })

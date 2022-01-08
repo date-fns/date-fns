@@ -20,10 +20,10 @@ rm -rf "$dir"
 mkdir -p "$dir"
 
 # Traspile CommonJS versions of files
-env BABEL_ENV='commonjs' babel src --source-root src --out-dir "$dir" --extensions .ts,.js --ignore test.js,snapshot.md --copy-files --quiet
+env BABEL_ENV='commonjs' babel src --source-root src --out-dir "$dir" --extensions .ts,.js --ignore test.js --copy-files --quiet
 
 # Traspile ESM versions of files
-env BABEL_ENV='esm' babel src --source-root src --out-dir "$dir/esm" --extensions .ts,.js --ignore test.js,snapshot.md,package.json --copy-files --quiet
+env BABEL_ENV='esm' babel src --source-root src --out-dir "$dir/esm" --extensions .ts,.js --ignore test.js,package.json --copy-files --quiet
 
 # Copy basic files
 for pattern in CHANGELOG.md \
@@ -31,7 +31,6 @@ for pattern in CHANGELOG.md \
   docs \
   LICENSE.md \
   README.md \
-  typings.d.ts
 do
   cp -r "$pattern" "$dir"
 done
@@ -41,7 +40,7 @@ done
 
 # Clean up dev code
 find "$dir" -type f -name "test.js" -delete
-find "$dir" -type f -name "snapshot.md" -delete
+
 
 # Clean up package.json pointing to the modules
 find "$dir/esm" -type f -name "package.json" -delete

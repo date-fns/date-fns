@@ -1,6 +1,5 @@
 import getISOWeekYear from '../getISOWeekYear/index'
 import startOfISOWeek from '../startOfISOWeek/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name lastDayOfISOWeekYear
@@ -22,14 +21,12 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = lastDayOfISOWeekYear(new Date(2005, 6, 2))
  * //=> Sun Jan 01 2006 00:00:00
  */
-export default function lastDayOfISOWeekYear(dirtyDate: Date | number): Date {
-  requiredArgs(1, arguments)
-
-  const year = getISOWeekYear(dirtyDate)
+export default function lastDayOfISOWeekYear(date: Date | number): Date {
+  const year = getISOWeekYear(date)
   const fourthOfJanuary = new Date(0)
   fourthOfJanuary.setFullYear(year + 1, 0, 4)
   fourthOfJanuary.setHours(0, 0, 0, 0)
-  const date = startOfISOWeek(fourthOfJanuary)
-  date.setDate(date.getDate() - 1)
-  return date
+  const result = startOfISOWeek(fourthOfJanuary)
+  result.setDate(result.getDate() - 1)
+  return result
 }

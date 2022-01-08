@@ -28,9 +28,4 @@ describe('isThisMonth', () => {
     const date = new Date(2014, 8 /* Sep */, 30).getTime()
     assert(isThisMonth(date) === true)
   })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(isThisMonth.bind(null), TypeError)
-  })
 })

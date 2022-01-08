@@ -1,4 +1,3 @@
-import requiredArgs from '../_lib/requiredArgs/index'
 import { millisecondsInHour } from '../constants/index'
 
 /**
@@ -19,6 +18,5 @@ import { millisecondsInHour } from '../constants/index'
  * //=> 7200000
  */
 export default function hoursToMilliseconds(hours: number): number {
-  requiredArgs(1, arguments)
   return Math.floor(hours * millisecondsInHour)
 }

@@ -1,6 +1,3 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name isSameMonth
  * @category Month Helpers
@@ -24,15 +21,13 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> false
  */
 export default function isSameMonth(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+  dateLeft: Date | number,
+  dateRight: Date | number
 ): boolean {
-  requiredArgs(2, arguments)
-
-  const dateLeft = toDate(dirtyDateLeft)
-  const dateRight = toDate(dirtyDateRight)
+  const dateLeftTransformed = new Date(dateLeft)
+  const dateRightTransformed = new Date(dateRight)
   return (
-    dateLeft.getFullYear() === dateRight.getFullYear() &&
-    dateLeft.getMonth() === dateRight.getMonth()
+    dateLeftTransformed.getFullYear() === dateRightTransformed.getFullYear() &&
+    dateLeftTransformed.getMonth() === dateRightTransformed.getMonth()
   )
 }

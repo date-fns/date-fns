@@ -140,29 +140,7 @@ describe('lightFormat', () => {
     )
   })
 
-  it('implicitly converts `formatString`', () => {
-    // eslint-disable-next-line no-new-wrappers
-    const formatString = new String('yyyy-MM-dd')
-
-    const date = new Date(2014, 3, 4)
-
-    assert(
-      lightFormat(
-        date,
-        // @ts-expect-error
-        formatString
-      ) === '2014-04-04'
-    )
-  })
-
   it('throws RangeError exception if the format string contains an unescaped latin alphabet character', () => {
     assert.throws(lightFormat.bind(null, date, 'yyyy-MM-dd-nnnn'), RangeError)
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(lightFormat.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(lightFormat.bind(null, 1), TypeError)
   })
 })

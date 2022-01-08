@@ -1,8 +1,6 @@
-import toDate from '../toDate/index'
-import differenceInCalendarISOWeekYears from '../differenceInCalendarISOWeekYears/index'
 import compareAsc from '../compareAsc/index'
+import differenceInCalendarISOWeekYears from '../differenceInCalendarISOWeekYears/index'
 import subISOWeekYears from '../subISOWeekYears/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name differenceInISOWeekYears
@@ -27,25 +25,23 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> 1
  */
 export default function differenceInISOWeekYears(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+  dateLeft: Date | number,
+  dateRight: Date | number
 ): number {
-  requiredArgs(2, arguments)
+  let dateLeftTransformed = new Date(dateLeft)
+  const dateRightTransformed = new Date(dateRight)
 
-  let dateLeft = toDate(dirtyDateLeft)
-  const dateRight = toDate(dirtyDateRight)
-
-  const sign = compareAsc(dateLeft, dateRight)
+  const sign = compareAsc(dateLeftTransformed, dateRightTransformed)
   const difference = Math.abs(
-    differenceInCalendarISOWeekYears(dateLeft, dateRight)
+    differenceInCalendarISOWeekYears(dateLeftTransformed, dateRightTransformed)
   )
-  dateLeft = subISOWeekYears(dateLeft, sign * difference)
+  dateLeftTransformed = subISOWeekYears(dateLeftTransformed, sign * difference)
 
   // Math.abs(diff in full ISO years - diff in calendar ISO years) === 1
   // if last calendar ISO year is not full
   // If so, result must be decreased by 1 in absolute value
   const isLastISOWeekYearNotFull = Number(
-    compareAsc(dateLeft, dateRight) === -sign
+    compareAsc(dateLeftTransformed, dateRightTransformed) === -sign
   )
   const result = sign * (difference - isLastISOWeekYearNotFull)
   // Prevent negative zero

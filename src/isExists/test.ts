@@ -13,9 +13,4 @@ describe('isValid', () => {
     const result = isExists(2018, 1 /* Feb */, 31)
     assert(result === false)
   })
-
-  it('throws TypeError exception if passed less than 3 arguments', () => {
-    // @ts-expect-error
-    assert.throws(isExists.bind(null), TypeError)
-  })
 })

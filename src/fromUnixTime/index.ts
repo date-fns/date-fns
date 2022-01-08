@@ -1,7 +1,3 @@
-import toDate from '../toDate/index'
-import toInteger from '../_lib/toInteger/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name fromUnixTime
  * @category Timestamp Helpers
@@ -18,10 +14,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = fromUnixTime(1330515905)
  * //=> Wed Feb 29 2012 11:45:05
  */
-export default function fromUnixTime(dirtyUnixTime: number): Date {
-  requiredArgs(1, arguments)
+export default function fromUnixTime(unixTime: number): Date {
+  const unixTimeTransformed = Math.trunc(unixTime)
 
-  const unixTime = toInteger(dirtyUnixTime)
-
-  return toDate(unixTime * 1000)
+  return new Date(unixTimeTransformed * 1000)
 }

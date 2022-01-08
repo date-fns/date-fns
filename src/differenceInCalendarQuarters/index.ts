@@ -1,6 +1,4 @@
 import getQuarter from '../getQuarter/index'
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name differenceInCalendarQuarters
@@ -23,16 +21,16 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> 3
  */
 export default function differenceInCalendarQuarters(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+  dateLeft: Date | number,
+  dateRight: Date | number
 ): number {
-  requiredArgs(2, arguments)
+  const dateLeftTransformed = new Date(dateLeft)
+  const dateRightTransformed = new Date(dateRight)
 
-  const dateLeft = toDate(dirtyDateLeft)
-  const dateRight = toDate(dirtyDateRight)
-
-  const yearDiff = dateLeft.getFullYear() - dateRight.getFullYear()
-  const quarterDiff = getQuarter(dateLeft) - getQuarter(dateRight)
+  const yearDiff =
+    dateLeftTransformed.getFullYear() - dateRightTransformed.getFullYear()
+  const quarterDiff =
+    getQuarter(dateLeftTransformed) - getQuarter(dateRightTransformed)
 
   return yearDiff * 4 + quarterDiff
 }

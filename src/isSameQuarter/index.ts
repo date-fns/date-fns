@@ -1,5 +1,4 @@
 import startOfQuarter from '../startOfQuarter/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isSameQuarter
@@ -24,13 +23,11 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> false
  */
 export default function isSameQuarter(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+  dateLeft: Date | number,
+  dateRight: Date | number
 ): boolean {
-  requiredArgs(2, arguments)
-
-  const dateLeftStartOfQuarter = startOfQuarter(dirtyDateLeft)
-  const dateRightStartOfQuarter = startOfQuarter(dirtyDateRight)
+  const dateLeftStartOfQuarter = startOfQuarter(dateLeft)
+  const dateRightStartOfQuarter = startOfQuarter(dateRight)
 
   return dateLeftStartOfQuarter.getTime() === dateRightStartOfQuarter.getTime()
 }

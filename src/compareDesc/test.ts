@@ -69,11 +69,4 @@ describe('compareDesc', () => {
     const result = compareDesc(new Date(1989, 6 /* Jul */, 10), new Date(NaN))
     assert(isNaN(result))
   })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(compareDesc.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(compareDesc.bind(null, 1), TypeError)
-  })
 })

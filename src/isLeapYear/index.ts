@@ -1,6 +1,3 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name isLeapYear
  * @category Year Helpers
@@ -17,10 +14,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = isLeapYear(new Date(2012, 8, 1))
  * //=> true
  */
-export default function isLeapYear(dirtyDate: Date | number): boolean {
-  requiredArgs(1, arguments)
-
-  const date = toDate(dirtyDate)
-  const year = date.getFullYear()
+export default function isLeapYear(date: Date | number): boolean {
+  const dateTransformed = new Date(date)
+  const year = dateTransformed.getFullYear()
   return year % 400 === 0 || (year % 4 === 0 && year % 100 !== 0)
 }

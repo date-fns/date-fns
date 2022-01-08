@@ -1,5 +1,4 @@
 import type { Duration } from '../types'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name formatISODuration
@@ -28,8 +27,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> 'P39Y2M20DT0H0M0S'
  */
 export default function formatISODuration(duration: Duration): string {
-  requiredArgs(1, arguments)
-
   if (typeof duration !== 'object')
     throw new Error('Duration must be an object')
 

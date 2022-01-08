@@ -1,6 +1,5 @@
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
 import startOfISOWeek from '../startOfISOWeek/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 const MILLISECONDS_IN_WEEK = 604800000
 
@@ -27,13 +26,11 @@ const MILLISECONDS_IN_WEEK = 604800000
  * //=> 3
  */
 export default function differenceInCalendarISOWeeks(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+  dateLeft: Date | number,
+  dateRight: Date | number
 ): number {
-  requiredArgs(2, arguments)
-
-  const startOfISOWeekLeft = startOfISOWeek(dirtyDateLeft)
-  const startOfISOWeekRight = startOfISOWeek(dirtyDateRight)
+  const startOfISOWeekLeft = startOfISOWeek(dateLeft)
+  const startOfISOWeekRight = startOfISOWeek(dateRight)
 
   const timestampLeft =
     startOfISOWeekLeft.getTime() -

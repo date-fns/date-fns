@@ -1,6 +1,5 @@
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
 import startOfDay from '../startOfDay/index'
-import requiredArgs from '../_lib/requiredArgs/index'
+import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
 
 const MILLISECONDS_IN_DAY = 86400000
 
@@ -34,13 +33,11 @@ const MILLISECONDS_IN_DAY = 86400000
  * //=> 1
  */
 export default function differenceInCalendarDays(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+  dateLeft: Date | number,
+  dateRight: Date | number
 ): number {
-  requiredArgs(2, arguments)
-
-  const startOfDayLeft = startOfDay(dirtyDateLeft)
-  const startOfDayRight = startOfDay(dirtyDateRight)
+  const startOfDayLeft = startOfDay(dateLeft)
+  const startOfDayRight = startOfDay(dateRight)
 
   const timestampLeft =
     startOfDayLeft.getTime() - getTimezoneOffsetInMilliseconds(startOfDayLeft)

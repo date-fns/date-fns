@@ -1,6 +1,5 @@
 import differenceInMilliseconds from '../differenceInMilliseconds/index'
 import type { RoundingOptions } from '../types'
-import requiredArgs from '../_lib/requiredArgs/index'
 import { getRoundingMethod } from '../_lib/roundingMethods/index'
 
 /**
@@ -30,8 +29,6 @@ export default function differenceInSeconds(
   dateRight: Date | number,
   options?: RoundingOptions
 ): number {
-  requiredArgs(2, arguments)
-
   const diff = differenceInMilliseconds(dateLeft, dateRight) / 1000
   return getRoundingMethod(options?.roundingMethod)(diff)
 }

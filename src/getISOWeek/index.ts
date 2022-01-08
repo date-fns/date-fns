@@ -1,7 +1,5 @@
-import toDate from '../toDate/index'
 import startOfISOWeek from '../startOfISOWeek/index'
 import startOfISOWeekYear from '../startOfISOWeekYear/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 const MILLISECONDS_IN_WEEK = 604800000
 
@@ -23,12 +21,11 @@ const MILLISECONDS_IN_WEEK = 604800000
  * const result = getISOWeek(new Date(2005, 0, 2))
  * //=> 53
  */
-export default function getISOWeek(dirtyDate: Date | number): number {
-  requiredArgs(1, arguments)
-
-  const date = toDate(dirtyDate)
+export default function getISOWeek(date: Date | number): number {
+  const dateTransformed = new Date(date)
   const diff =
-    startOfISOWeek(date).getTime() - startOfISOWeekYear(date).getTime()
+    startOfISOWeek(dateTransformed).getTime() -
+    startOfISOWeekYear(dateTransformed).getTime()
 
   // Round the number of days to the nearest integer
   // because the number of milliseconds in a week is not constant

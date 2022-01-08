@@ -1,6 +1,4 @@
-import toDate from '../toDate/index'
 import type { Interval } from '../types'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name eachMonthOfInterval
@@ -31,12 +29,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //   Fri Aug 01 2014 00:00:00
  * // ]
  */
-export default function eachMonthOfInterval(dirtyInterval: Interval): Date[] {
-  requiredArgs(1, arguments)
-
-  const interval = dirtyInterval || {}
-  const startDate = toDate(interval.start)
-  const endDate = toDate(interval.end)
+export default function eachMonthOfInterval(interval: Interval): Date[] {
+  const int = interval || {}
+  const startDate = new Date(int.start)
+  const endDate = new Date(int.end)
 
   const endTime = endDate.getTime()
   const dates = []
@@ -51,7 +47,7 @@ export default function eachMonthOfInterval(dirtyInterval: Interval): Date[] {
   currentDate.setDate(1)
 
   while (currentDate.getTime() <= endTime) {
-    dates.push(toDate(currentDate))
+    dates.push(new Date(currentDate))
     currentDate.setMonth(currentDate.getMonth() + 1)
   }
 

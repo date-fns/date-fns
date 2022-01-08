@@ -1,5 +1,3 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 import type { Interval } from '../types'
 
 const MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000
@@ -36,17 +34,15 @@ const MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000
  */
 
 export default function getOverlappingDaysInIntervals(
-  dirtyIntervalLeft: Interval,
-  dirtyIntervalRight: Interval
+  intervalLeft: Interval,
+  intervalRight: Interval
 ): number {
-  requiredArgs(2, arguments)
-
-  const intervalLeft = dirtyIntervalLeft || {}
-  const intervalRight = dirtyIntervalRight || {}
-  const leftStartTime = toDate(intervalLeft.start).getTime()
-  const leftEndTime = toDate(intervalLeft.end).getTime()
-  const rightStartTime = toDate(intervalRight.start).getTime()
-  const rightEndTime = toDate(intervalRight.end).getTime()
+  const intLeft = intervalLeft || {}
+  const intRight = intervalRight || {}
+  const leftStartTime = new Date(intLeft.start).getTime()
+  const leftEndTime = new Date(intLeft.end).getTime()
+  const rightStartTime = new Date(intRight.start).getTime()
+  const rightEndTime = new Date(intRight.end).getTime()
 
   // Throw an exception if start date is after end date or if any date is `Invalid Date`
   if (!(leftStartTime <= leftEndTime && rightStartTime <= rightEndTime)) {

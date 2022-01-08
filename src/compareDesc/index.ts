@@ -1,6 +1,3 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name compareDesc
  * @category Common Helpers
@@ -33,15 +30,13 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * // ]
  */
 export default function compareDesc(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+  dateLeft: Date | number,
+  dateRight: Date | number
 ): number {
-  requiredArgs(2, arguments)
+  const dateLeftTransformed = new Date(dateLeft)
+  const dateRightTransformed = new Date(dateRight)
 
-  const dateLeft = toDate(dirtyDateLeft)
-  const dateRight = toDate(dirtyDateRight)
-
-  const diff = dateLeft.getTime() - dateRight.getTime()
+  const diff = dateLeftTransformed.getTime() - dateRightTransformed.getTime()
 
   if (diff > 0) {
     return -1

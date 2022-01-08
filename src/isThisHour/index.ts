@@ -1,5 +1,4 @@
 import isSameHour from '../isSameHour/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isThisHour
@@ -22,8 +21,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = isThisHour(new Date(2014, 8, 25, 18))
  * //=> true
  */
-export default function isThisHour(dirtyDate: Date | number): boolean {
-  requiredArgs(1, arguments)
-
-  return isSameHour(Date.now(), dirtyDate)
+export default function isThisHour(date: Date | number): boolean {
+  return isSameHour(Date.now(), date)
 }

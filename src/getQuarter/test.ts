@@ -18,9 +18,4 @@ describe('getQuarter', () => {
     const result = getQuarter(new Date(NaN))
     assert(isNaN(result))
   })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(getQuarter.bind(null), TypeError)
-  })
 })

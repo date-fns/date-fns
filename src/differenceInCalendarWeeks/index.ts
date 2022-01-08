@@ -1,6 +1,5 @@
 import startOfWeek from '../startOfWeek/index'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 import type { LocaleOptions, WeekStartOptions } from '../types'
 
 const MILLISECONDS_IN_WEEK = 604800000
@@ -38,14 +37,12 @@ const MILLISECONDS_IN_WEEK = 604800000
  * //=> 2
  */
 export default function differenceInCalendarWeeks(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number,
+  dateLeft: Date | number,
+  dateRight: Date | number,
   options?: LocaleOptions & WeekStartOptions
 ): number {
-  requiredArgs(2, arguments)
-
-  const startOfWeekLeft = startOfWeek(dirtyDateLeft, options)
-  const startOfWeekRight = startOfWeek(dirtyDateRight, options)
+  const startOfWeekLeft = startOfWeek(dateLeft, options)
+  const startOfWeekRight = startOfWeek(dateRight, options)
 
   const timestampLeft =
     startOfWeekLeft.getTime() - getTimezoneOffsetInMilliseconds(startOfWeekLeft)

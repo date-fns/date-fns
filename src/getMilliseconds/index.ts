@@ -1,6 +1,3 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name getMilliseconds
  * @category Millisecond Helpers
@@ -17,10 +14,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = getMilliseconds(new Date(2012, 1, 29, 11, 45, 5, 123))
  * //=> 123
  */
-export default function getMilliseconds(dirtyDate: Date | number): number {
-  requiredArgs(1, arguments)
-
-  const date = toDate(dirtyDate)
-  const milliseconds = date.getMilliseconds()
+export default function getMilliseconds(date: Date | number): number {
+  const dateTransformed = new Date(date)
+  const milliseconds = dateTransformed.getMilliseconds()
   return milliseconds
 }

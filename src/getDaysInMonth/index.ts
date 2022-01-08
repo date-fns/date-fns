@@ -1,6 +1,3 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name getDaysInMonth
  * @category Month Helpers
@@ -17,12 +14,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = getDaysInMonth(new Date(2000, 1))
  * //=> 29
  */
-export default function getDaysInMonth(dirtyDate: Date | number): number {
-  requiredArgs(1, arguments)
-
-  const date = toDate(dirtyDate)
-  const year = date.getFullYear()
-  const monthIndex = date.getMonth()
+export default function getDaysInMonth(date: Date | number): number {
+  const dateTransformed = new Date(date)
+  const year = dateTransformed.getFullYear()
+  const monthIndex = dateTransformed.getMonth()
   const lastDayOfMonth = new Date(0)
   lastDayOfMonth.setFullYear(year, monthIndex + 1, 0)
   lastDayOfMonth.setHours(0, 0, 0, 0)

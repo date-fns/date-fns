@@ -1,6 +1,3 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name getISODay
  * @category Weekday Helpers
@@ -20,11 +17,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = getISODay(new Date(2012, 1, 26))
  * //=> 7
  */
-export default function getISODay(dirtyDate: Date | number): number {
-  requiredArgs(1, arguments)
-
-  const date = toDate(dirtyDate)
-  let day = date.getDay()
+export default function getISODay(date: Date | number): number {
+  const dateTransformed = new Date(date)
+  let day = dateTransformed.getDay()
 
   if (day === 0) {
     day = 7

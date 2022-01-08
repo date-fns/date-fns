@@ -1,4 +1,3 @@
-import requiredArgs from '../_lib/requiredArgs/index'
 import getDay from '../getDay/index'
 import subDays from '../subDays/index'
 import type { Day } from '../types'
@@ -14,7 +13,6 @@ import type { Day } from '../types'
  * @param {Date | number} date - the date to check
  * @param day - day of the week
  * @returns - the date is the previous day of week
- * @throws {TypeError} - 2 arguments required
  *
  * @example
  * // When is the previous Monday before Mar, 20, 2020?
@@ -27,8 +25,6 @@ import type { Day } from '../types'
  * //=> Tue Mar 17 2020 00:00:00
  */
 export default function previousDay(date: Date | number, day: Day): Date {
-  requiredArgs(2, arguments)
-
   let delta = getDay(date) - day
   if (delta <= 0) delta += 7
 

@@ -1,7 +1,6 @@
 import max from '../max/index'
 import min from '../min/index'
 import type { Interval } from '../types'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name clamp
@@ -32,6 +31,5 @@ export default function clamp(
   date: Date | number,
   { start, end }: Interval
 ): Date {
-  requiredArgs(2, arguments)
   return min([max([date, start]), end])
 }

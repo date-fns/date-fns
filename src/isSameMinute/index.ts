@@ -1,5 +1,4 @@
 import startOfMinute from '../startOfMinute/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isSameMinute
@@ -30,13 +29,11 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> false
  */
 export default function isSameMinute(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+  dateLeft: Date | number,
+  dateRight: Date | number
 ): boolean {
-  requiredArgs(2, arguments)
-
-  const dateLeftStartOfMinute = startOfMinute(dirtyDateLeft)
-  const dateRightStartOfMinute = startOfMinute(dirtyDateRight)
+  const dateLeftStartOfMinute = startOfMinute(dateLeft)
+  const dateRightStartOfMinute = startOfMinute(dateRight)
 
   return dateLeftStartOfMinute.getTime() === dateRightStartOfMinute.getTime()
 }

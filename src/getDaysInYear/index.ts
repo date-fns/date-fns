@@ -1,6 +1,4 @@
-import toDate from '../toDate/index'
 import isLeapYear from '../isLeapYear/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name getDaysInYear
@@ -18,14 +16,12 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = getDaysInYear(new Date(2012, 0, 1))
  * //=> 366
  */
-export default function getDaysInYear(dirtyDate: Date | number): number {
-  requiredArgs(1, arguments)
+export default function getDaysInYear(date: Date | number): number {
+  const dateTransformed = new Date(date)
 
-  const date = toDate(dirtyDate)
-
-  if (String(new Date(date)) === 'Invalid Date') {
+  if (String(new Date(dateTransformed)) === 'Invalid Date') {
     return NaN
   }
 
-  return isLeapYear(date) ? 366 : 365
+  return isLeapYear(dateTransformed) ? 366 : 365
 }

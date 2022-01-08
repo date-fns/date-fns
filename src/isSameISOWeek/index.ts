@@ -1,5 +1,4 @@
 import isSameWeek from '../isSameWeek/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isSameISOWeek
@@ -26,10 +25,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> false
  */
 export default function isSameISOWeek(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+  dateLeft: Date | number,
+  dateRight: Date | number
 ): boolean {
-  requiredArgs(2, arguments)
-
-  return isSameWeek(dirtyDateLeft, dirtyDateRight, { weekStartsOn: 1 })
+  return isSameWeek(dateLeft, dateRight, { weekStartsOn: 1 })
 }

@@ -1,5 +1,4 @@
 import startOfISOWeekYear from '../startOfISOWeekYear/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isSameISOWeekYear
@@ -21,13 +20,11 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> true
  */
 export default function isSameISOWeekYear(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+  dateLeft: Date | number,
+  dateRight: Date | number
 ): boolean {
-  requiredArgs(2, arguments)
-
-  const dateLeftStartOfYear = startOfISOWeekYear(dirtyDateLeft)
-  const dateRightStartOfYear = startOfISOWeekYear(dirtyDateRight)
+  const dateLeftStartOfYear = startOfISOWeekYear(dateLeft)
+  const dateRightStartOfYear = startOfISOWeekYear(dateRight)
 
   return dateLeftStartOfYear.getTime() === dateRightStartOfYear.getTime()
 }

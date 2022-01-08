@@ -1,7 +1,5 @@
 import addMinutes from '../addMinutes/index'
-import toDate from '../toDate/index'
 import startOfMinute from '../startOfMinute/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 import type { Interval, StepOptions } from '../types'
 
 /**
@@ -37,10 +35,8 @@ export default function eachMinuteOfInterval(
   interval: Interval,
   options?: StepOptions
 ): Date[] {
-  requiredArgs(1, arguments)
-
-  const startDate = startOfMinute(toDate(interval.start))
-  const endDate = toDate(interval.end)
+  const startDate = startOfMinute(new Date(interval.start))
+  const endDate = new Date(interval.end)
 
   const startTime = startDate.getTime()
   const endTime = endDate.getTime()
@@ -60,7 +56,7 @@ export default function eachMinuteOfInterval(
     )
 
   while (currentDate.getTime() <= endTime) {
-    dates.push(toDate(currentDate))
+    dates.push(new Date(currentDate))
     currentDate = addMinutes(currentDate, step)
   }
 

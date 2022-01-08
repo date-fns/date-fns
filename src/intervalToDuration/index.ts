@@ -5,9 +5,7 @@ import differenceInMinutes from '../differenceInMinutes/index'
 import differenceInMonths from '../differenceInMonths/index'
 import differenceInSeconds from '../differenceInSeconds/index'
 import differenceInYears from '../differenceInYears/index'
-import toDate from '../toDate/index'
 import type { Duration, Interval } from '../types'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name intervalToDuration
@@ -20,7 +18,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @param interval - the interval to convert to duration
  *
  * @returns The duration Object
- * @throws {TypeError} Requires 2 arguments
  * @throws {RangeError} `start` must not be Invalid Date
  * @throws {RangeError} `end` must not be Invalid Date
  * @throws {RangeError} The start of an interval cannot be after its end
@@ -34,10 +31,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * // => { years: 39, months: 2, days: 20, hours: 7, minutes: 5, seconds: 0 }
  */
 export default function intervalToDuration(interval: Interval): Duration {
-  requiredArgs(1, arguments)
-
-  const start = toDate(interval.start)
-  const end = toDate(interval.end)
+  const start = new Date(interval.start)
+  const end = new Date(interval.end)
 
   if (isNaN(start.getTime())) throw new RangeError('Start Date is invalid')
   if (isNaN(end.getTime())) throw new RangeError('End Date is invalid')

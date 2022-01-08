@@ -1,6 +1,3 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name endOfMinute
  * @category Minute Helpers
@@ -18,10 +15,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = endOfMinute(new Date(2014, 11, 1, 22, 15, 45, 400))
  * //=> Mon Dec 01 2014 22:15:59.999
  */
-export default function endOfMinute(dirtyDate: Date | number): Date {
-  requiredArgs(1, arguments)
-
-  const date = toDate(dirtyDate)
-  date.setSeconds(59, 999)
-  return date
+export default function endOfMinute(date: Date | number): Date {
+  const result = new Date(date)
+  result.setSeconds(59, 999)
+  return result
 }

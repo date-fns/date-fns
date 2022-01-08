@@ -1,5 +1,4 @@
 import isSameSecond from '../isSameSecond/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isThisSecond
@@ -22,8 +21,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = isThisSecond(new Date(2014, 8, 25, 18, 30, 15))
  * //=> true
  */
-export default function isThisSecond(dirtyDate: Date | number): boolean {
-  requiredArgs(1, arguments)
-
-  return isSameSecond(Date.now(), dirtyDate)
+export default function isThisSecond(date: Date | number): boolean {
+  return isSameSecond(Date.now(), date)
 }

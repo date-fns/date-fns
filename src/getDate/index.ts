@@ -1,6 +1,3 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name getDate
  * @category Day Helpers
@@ -17,10 +14,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = getDate(new Date(2012, 1, 29))
  * //=> 29
  */
-export default function getDate(dirtyDate: Date | number): number {
-  requiredArgs(1, arguments)
-
-  const date = toDate(dirtyDate)
-  const dayOfMonth = date.getDate()
+export default function getDate(date: Date | number): number {
+  const dateTransfermed = new Date(date)
+  const dayOfMonth = dateTransfermed.getDate()
   return dayOfMonth
 }

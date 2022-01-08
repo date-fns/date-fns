@@ -1,6 +1,4 @@
 import addMinutes from '../addMinutes/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name subMinutes
@@ -19,12 +17,7 @@ import toInteger from '../_lib/toInteger/index'
  * const result = subMinutes(new Date(2014, 6, 10, 12, 0), 30)
  * //=> Thu Jul 10 2014 11:30:00
  */
-export default function subMinutes(
-  dirtyDate: Date | number,
-  dirtyAmount: number
-): Date {
-  requiredArgs(2, arguments)
-
-  const amount = toInteger(dirtyAmount)
-  return addMinutes(dirtyDate, -amount)
+export default function subMinutes(date: Date | number, amount: number): Date {
+  const amountTransformed = Math.trunc(amount)
+  return addMinutes(date, -amountTransformed)
 }

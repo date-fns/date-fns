@@ -1,6 +1,4 @@
-import toDate from '../toDate/index'
 import type { Interval } from '../types'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name eachYearOfInterval
@@ -28,12 +26,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //   Sun Jan 01 2017 00:00:00
  * // ]
  */
-export default function eachYearOfInterval(dirtyInterval: Interval): Date[] {
-  requiredArgs(1, arguments)
-
-  const interval = dirtyInterval || {}
-  const startDate = toDate(interval.start)
-  const endDate = toDate(interval.end)
+export default function eachYearOfInterval(interval: Interval): Date[] {
+  const int = interval || {}
+  const startDate = new Date(int.start)
+  const endDate = new Date(int.end)
 
   const endTime = endDate.getTime()
 
@@ -49,7 +45,7 @@ export default function eachYearOfInterval(dirtyInterval: Interval): Date[] {
   currentDate.setMonth(0, 1)
 
   while (currentDate.getTime() <= endTime) {
-    dates.push(toDate(currentDate))
+    dates.push(new Date(currentDate))
     currentDate.setFullYear(currentDate.getFullYear() + 1)
   }
 

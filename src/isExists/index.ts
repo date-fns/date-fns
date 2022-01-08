@@ -26,12 +26,6 @@ export default function isExists(
   month: number,
   day: number
 ): boolean {
-  if (arguments.length < 3) {
-    throw new TypeError(
-      '3 argument required, but only ' + arguments.length + ' present'
-    )
-  }
-
   const date = new Date(year, month, day)
   return (
     date.getFullYear() === year &&

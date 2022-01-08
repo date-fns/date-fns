@@ -1,6 +1,4 @@
 import addMilliseconds from '../addMilliseconds/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name subMilliseconds
@@ -20,11 +18,9 @@ import toInteger from '../_lib/toInteger/index'
  * //=> Thu Jul 10 2014 12:45:29.250
  */
 export default function subMilliseconds(
-  dirtyDate: Date | number,
-  dirtyAmount: number
+  date: Date | number,
+  amount: number
 ): Date {
-  requiredArgs(2, arguments)
-
-  const amount = toInteger(dirtyAmount)
-  return addMilliseconds(dirtyDate, -amount)
+  const amountTransformed = Math.trunc(amount)
+  return addMilliseconds(date, -amountTransformed)
 }

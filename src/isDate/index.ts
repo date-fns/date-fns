@@ -1,5 +1,3 @@
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name isDate
  * @category Common Helpers
@@ -32,8 +30,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> false
  */
 export default function isDate(value: unknown): value is Date {
-  requiredArgs(1, arguments)
-
   return (
     value instanceof Date ||
     (typeof value === 'object' &&
