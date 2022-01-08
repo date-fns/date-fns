@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import { FormatDistanceFn } from 'src/locale/types'
+import type { FormatDistanceFn } from '../locale/types'
 import formatDistance from '.'
 
 describe('formatDistance', () => {

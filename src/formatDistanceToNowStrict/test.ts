@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import sinon from 'sinon'
-import { FormatDistanceFn } from '../locale/types'
+import type { FormatDistanceFn } from '../locale/types'
 import formatDistanceToNowStrict from '.'
 
 describe('formatDistanceToNowStrict', () => {
