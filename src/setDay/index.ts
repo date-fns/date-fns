@@ -12,10 +12,6 @@ import type { LocaleOptions, WeekStartOptions } from '../types'
  * @description
  * Set the day of the week to the given date.
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
  * @param {Date|Number} date - the date to be changed
  * @param {Number} day - the day of the week of the new date
  * @param {Object} [options] - an object with options.

@@ -10,10 +10,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Set the seconds to the given date.
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
  * @param {Date|Number} date - the date to be changed
  * @param {Number} seconds - the seconds of the new date
  * @returns {Date} the new date with the seconds set
@@ -24,7 +20,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = setSeconds(new Date(2014, 8, 1, 11, 30, 40), 45)
  * //=> Mon Sep 01 2014 11:30:45
  */
-export default function setSeconds(dirtyDate: Date | number, dirtySeconds: number): Date {
+export default function setSeconds(
+  dirtyDate: Date | number,
+  dirtySeconds: number
+): Date {
   requiredArgs(2, arguments)
 
   const date = toDate(dirtyDate)

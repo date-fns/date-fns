@@ -9,10 +9,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Return the end of a decade for the given date.
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
  * @param {Date|Number} date - the original date
  * @returns {Date} the end of a decade
  * @param {Object} [options] - an object with options.
