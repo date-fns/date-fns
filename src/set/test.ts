@@ -116,19 +116,6 @@ describe('set', () => {
       assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */))
     })
 
-    it('ignores null values', () => {
-      const result = set(new Date(2014, 8 /* Sep */), {
-        // @ts-expect-error
-        year: null,
-      })
-      assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */))
-    })
-
-    it('throws TypeError exception if passed less than 2 arguments', () => {
-      // @ts-expect-error
-      assert.throws(set.bind(null), TypeError)
-    })
-
     it('returns Invalid Date if any value in values is NaN', () => {
       const result = set(new Date(2014, 8 /* Sep */), { year: NaN })
       assert(isNaN(result.getTime()))
@@ -137,30 +124,6 @@ describe('set', () => {
     it('returns Invalid Date the initial date was Invalid Date as well', () => {
       const result = set(new Date(NaN), { year: 2019 })
       assert(isNaN(result.getTime()))
-    })
-
-    it('throws RangeError exception if `values` is not an object', () => {
-      assert.throws(
-        () =>
-          set(
-            new Date(),
-            // @ts-expect-error
-            true
-          ),
-        RangeError
-      )
-    })
-
-    it('throws RangeError exception if `values` is null', () => {
-      assert.throws(
-        () =>
-          set(
-            new Date(),
-            // @ts-expect-error
-            null
-          ),
-        RangeError
-      )
     })
   })
 })
