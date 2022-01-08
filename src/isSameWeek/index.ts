@@ -10,10 +10,6 @@ import type { WeekStartOptions, LocaleOptions } from '../types'
  * @description
  * Are the given dates in the same week (and month and year)?
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
  * @param {Date|Number} dateLeft - the first date to check
  * @param {Date|Number} dateRight - the second date to check
  * @param {Object} [options] - an object with options.

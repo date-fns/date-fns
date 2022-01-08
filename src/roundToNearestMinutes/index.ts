@@ -10,10 +10,6 @@ import toInteger from '../_lib/toInteger/index'
  * Rounds the given date to the nearest minute (or number of minutes).
  * Rounds up when the given date is exactly between the nearest round minutes.
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
  * @param {Date|Number} date - the date to round
  * @param {Object} [options] - an object with options.
  * @param {Number} [options.nearestTo=1] - nearest number of minutes to round to. E.g. `15` to round to quarter hours.

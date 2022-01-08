@@ -13,10 +13,6 @@ import toInteger from '../_lib/toInteger/index'
  * @description
  * Get the week of the month of the given date.
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
  * @param {Date|Number} date - the given date
  * @param {Object} [options] - an object with options.
  * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}

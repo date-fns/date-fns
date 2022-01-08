@@ -12,10 +12,6 @@ import type { LocaleOptions, WeekStartOptions } from '../types'
  * Return the last day of a week for the given date.
  * The result will be in the local timezone.
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
  * @param {Date|Number} date - the original date
  * @param {Object} [options] - an object with options.
  * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}

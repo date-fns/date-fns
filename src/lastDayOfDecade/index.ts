@@ -9,10 +9,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Return the last day of a decade for the given date.
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
  * @param {Date|Number} date - the original date
  * @returns {Date} the last day of a decade
  * @throws {TypeError} 1 argument required

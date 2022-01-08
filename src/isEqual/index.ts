@@ -9,10 +9,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Are the given dates equal?
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
  * @param {Date|Number} dateLeft - the first date to compare
  * @param {Date|Number} dateRight - the second date to compare
  * @returns {Boolean} the dates are equal

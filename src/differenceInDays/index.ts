@@ -43,10 +43,6 @@ function compareLocalAsc(dateLeft: Date, dateRight: Date): number {
  * `Math.floor(differenceInHours(dateLeft, dateRight)/24)|0`.
  *
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
  * @param {Date|Number} dateLeft - the later date
  * @param {Date|Number} dateRight - the earlier date
  * @returns {Number} the number of full days according to the local timezone
