@@ -1,7 +1,7 @@
 import startOfWeek from '../startOfWeek/index'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import { LocaleOptions, WeekStartOptions } from '../types'
+import type { LocaleOptions, WeekStartOptions } from '../types'
 
 const MILLISECONDS_IN_WEEK = 604800000
 

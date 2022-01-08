@@ -1,5 +1,5 @@
 import toDate from '../../toDate/index'
-import { LocaleOptions, WeekStartOptions } from '../../types'
+import type { LocaleOptions, WeekStartOptions } from '../../types'
 import requiredArgs from '../requiredArgs/index'
 import toInteger from '../toInteger/index'
 

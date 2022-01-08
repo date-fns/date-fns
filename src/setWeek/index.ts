@@ -1,6 +1,6 @@
 import getWeek from '../getWeek/index'
 import toDate from '../toDate/index'
-import {
+import type {
   FirstWeekContainsDateOptions,
   LocaleOptions,
   WeekStartOptions,

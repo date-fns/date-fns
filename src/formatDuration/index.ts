@@ -1,5 +1,5 @@
 import defaultLocale from '../locale/en-US/index'
-import { Locale } from '../locale/types'
+import type { Locale } from '../locale/types'
 import type { Duration } from '../types'
 
 const defaultFormat: (keyof Duration)[] = [

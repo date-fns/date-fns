@@ -2,8 +2,7 @@ import addMinutes from '../addMinutes/index'
 import toDate from '../toDate/index'
 import startOfMinute from '../startOfMinute/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-
-import { Interval, StepOptions } from '../types'
+import type { Interval, StepOptions } from '../types'
 
 /**
  * @name eachMinuteOfInterval

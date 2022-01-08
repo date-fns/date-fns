@@ -1,12 +1,13 @@
-import type { LocaleDayPeriod } from 'src/locale/types'
-import { Localize } from 'src/locale/types'
-import type { Era, Month, Quarter } from 'src/types'
-import {
+import type { Localize, LocaleDayPeriod } from '../../../locale/types'
+import type {
+  Era,
+  Month,
+  Quarter,
   FirstWeekContainsDateOptions,
   LocaleOptions,
   WeekStartOptions,
-} from 'src/types'
-import { Day } from '../../../types'
+  Day,
+} from '../../../types'
 import getUTCDayOfYear from '../../../_lib/getUTCDayOfYear/index'
 import getUTCISOWeek from '../../../_lib/getUTCISOWeek/index'
 import getUTCISOWeekYear from '../../../_lib/getUTCISOWeekYear/index'

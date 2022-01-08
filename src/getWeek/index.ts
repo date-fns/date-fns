@@ -2,7 +2,11 @@ import startOfWeek from '../startOfWeek/index'
 import startOfWeekYear from '../startOfWeekYear/index'
 import toDate from '../toDate/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import { LocaleOptions, WeekStartOptions, FirstWeekContainsDateOptions } from '../types'
+import type {
+  LocaleOptions,
+  WeekStartOptions,
+  FirstWeekContainsDateOptions,
+} from '../types'
 
 const MILLISECONDS_IN_WEEK = 604800000
 
@@ -49,7 +53,10 @@ const MILLISECONDS_IN_WEEK = 604800000
  * //=> 53
  */
 
-export default function getWeek(dirtyDate: Date | number, options?: LocaleOptions & WeekStartOptions & FirstWeekContainsDateOptions): number {
+export default function getWeek(
+  dirtyDate: Date | number,
+  options?: LocaleOptions & WeekStartOptions & FirstWeekContainsDateOptions
+): number {
   requiredArgs(1, arguments)
 
   const date = toDate(dirtyDate)

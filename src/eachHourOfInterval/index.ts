@@ -1,7 +1,7 @@
 import addHours from '../addHours/index'
 import toDate from '../toDate/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import { Interval, StepOptions } from '../types'
+import type { Interval, StepOptions } from '../types'
 
 /**
  * @name eachHourOfInterval

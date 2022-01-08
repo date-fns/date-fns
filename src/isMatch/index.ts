@@ -1,7 +1,7 @@
 import parse from '../parse/index'
 import isValid from '../isValid/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import {
+import type {
   LocaleOptions,
   WeekStartOptions,
   FirstWeekContainsDateOptions,

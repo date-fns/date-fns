@@ -1,4 +1,4 @@
-import { Locale } from './locale/types'
+import type { Locale } from './locale/types'
 
 export interface Duration {
   years?: number

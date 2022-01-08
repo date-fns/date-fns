@@ -1,6 +1,6 @@
 import max from '../max/index'
 import min from '../min/index'
-import { Interval } from '../types'
+import type { Interval } from '../types'
 import requiredArgs from '../_lib/requiredArgs/index'
 
 /**

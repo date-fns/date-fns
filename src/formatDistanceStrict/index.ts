@@ -4,7 +4,7 @@ import toDate from '../toDate/index'
 import cloneObject from '../_lib/cloneObject/index'
 import defaultLocale from '../locale/en-US/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import { LocaleOptions, Unit } from '../types';
+import type { LocaleOptions, Unit } from '../types'
 
 const MILLISECONDS_IN_MINUTE = 1000 * 60
 const MINUTES_IN_DAY = 60 * 24
@@ -166,9 +166,9 @@ export default function formatDistanceStrict(
   dirtyDate: Date | number,
   dirtyBaseDate: Date | number,
   options: LocaleOptions & {
-    addSuffix?: boolean,
-    unit?: Unit,
-    roundingMethod?: 'floor' | 'ceil' | 'round',
+    addSuffix?: boolean
+    unit?: Unit
+    roundingMethod?: 'floor' | 'ceil' | 'round'
   } = {}
 ): string {
   requiredArgs(2, arguments)

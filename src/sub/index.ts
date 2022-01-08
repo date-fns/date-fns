@@ -1,6 +1,6 @@
 import subDays from '../subDays/index'
 import subMonths from '../subMonths/index'
-import { Duration } from '../types'
+import type { Duration } from '../types'
 import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
 
@@ -43,10 +43,7 @@ import toInteger from '../_lib/toInteger/index'
  * })
  * //=> Mon Sep 1 2014 10:19:50
  */
-export default function sub(
-  date: Date | number,
-  duration: Duration
-): Date {
+export default function sub(date: Date | number, duration: Duration): Date {
   requiredArgs(2, arguments)
 
   if (!duration || typeof duration !== 'object') return new Date(NaN)

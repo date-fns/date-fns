@@ -1,4 +1,4 @@
-import { Duration } from '../types'
+import type { Duration } from '../types'
 import requiredArgs from '../_lib/requiredArgs/index'
 
 /**

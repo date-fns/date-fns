@@ -1,6 +1,6 @@
 import toDate from '../toDate/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import { Interval } from '../types'
+import type { Interval } from '../types'
 
 const MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000
 

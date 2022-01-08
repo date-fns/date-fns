@@ -8,7 +8,7 @@ import differenceInYears from '../differenceInYears/index'
 import isValid from '../isValid/index'
 import sub from '../sub/index'
 import toDate from '../toDate/index'
-import { Duration, Interval } from '../types'
+import type { Duration, Interval } from '../types'
 import requiredArgs from '../_lib/requiredArgs/index'
 
 /**

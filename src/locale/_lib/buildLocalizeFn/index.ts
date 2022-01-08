@@ -1,5 +1,5 @@
-import { Era, Quarter, Month, Day } from '../../../types'
-import {
+import type { Era, Quarter, Month, Day } from '../../../types'
+import type {
   LocaleDayPeriod,
   LocalePatternWidth,
   LocaleUnit,

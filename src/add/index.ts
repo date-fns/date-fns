@@ -3,7 +3,7 @@ import addMonths from '../addMonths/index'
 import toDate from '../toDate/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
-import { Duration } from '../types'
+import type { Duration } from '../types'
 
 /**
  * @name add

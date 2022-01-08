@@ -2,7 +2,7 @@ import getWeekYear from '../getWeekYear/index'
 import startOfWeek from '../startOfWeek/index'
 import toInteger from '../_lib/toInteger/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import {
+import type {
   LocaleOptions,
   FirstWeekContainsDateOptions,
   WeekStartOptions,

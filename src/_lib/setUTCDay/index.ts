@@ -1,4 +1,4 @@
-import { LocaleOptions, WeekStartOptions } from '../../types'
+import type { LocaleOptions, WeekStartOptions } from '../../types'
 import toDate from '../../toDate/index'
 import requiredArgs from '../requiredArgs/index'
 import toInteger from '../toInteger/index'
