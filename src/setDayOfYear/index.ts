@@ -21,7 +21,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // Set the 2nd day of the year to 2 July 2014:
- * var result = setDayOfYear(new Date(2014, 6, 2), 2)
+ * const result = setDayOfYear(new Date(2014, 6, 2), 2)
  * //=> Thu Jan 02 2014 00:00:00
  */
 export default function setDayOfYear(

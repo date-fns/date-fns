@@ -20,7 +20,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // Are 2 September 2014 and 25 September 2014 in the same year?
- * var result = isSameYear(new Date(2014, 8, 2), new Date(2014, 8, 25))
+ * const result = isSameYear(new Date(2014, 8, 2), new Date(2014, 8, 25))
  * //=> true
  */
 export default function isSameYear(

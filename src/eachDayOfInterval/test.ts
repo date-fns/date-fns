@@ -93,8 +93,11 @@ describe('eachDayOfInterval', () => {
   })
 
   it('throws an exception if the interval is undefined', () => {
-    // @ts-expect-error
-    const block = eachDayOfInterval.bind(null, undefined)
+    const block = () =>
+      eachDayOfInterval(
+        // @ts-expect-error
+        undefined
+      )
     assert.throws(block, RangeError)
   })
 
@@ -126,8 +129,14 @@ describe('eachDayOfInterval', () => {
     })
 
     it('throws TypeError error if `options.step` is NaN', () => {
-      //@ts-expect-error
-      assert.throws(() => eachDayOfInterval(interval, { step: 'w' }), stepError)
+      assert.throws(
+        () =>
+          eachDayOfInterval(interval, {
+            // @ts-expect-error
+            step: 'w',
+          }),
+        stepError
+      )
       assert.throws(() => eachDayOfInterval(interval, { step: NaN }), stepError)
     })
   })

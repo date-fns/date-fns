@@ -39,14 +39,14 @@ import toInteger from '../_lib/toInteger/index'
  *
  * @example
  * // Set the 1st week to 2 January 2005 with default options:
- * var result = setWeek(new Date(2005, 0, 2), 1)
+ * const result = setWeek(new Date(2005, 0, 2), 1)
  * //=> Sun Dec 26 2004 00:00:00
  *
  * @example
  * // Set the 1st week to 2 January 2005,
  * // if Monday is the first day of the week,
  * // and the first week of the year always contains 4 January:
- * var result = setWeek(new Date(2005, 0, 2), 1, {
+ * const result = setWeek(new Date(2005, 0, 2), 1, {
  *   weekStartsOn: 1,
  *   firstWeekContainsDate: 4
  * })

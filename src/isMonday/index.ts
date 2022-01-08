@@ -19,7 +19,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // Is 22 September 2014 Monday?
- * var result = isMonday(new Date(2014, 8, 22))
+ * const result = isMonday(new Date(2014, 8, 22))
  * //=> true
  */
 export default function isMonday(date: Date | number): boolean {

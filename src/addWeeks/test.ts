@@ -1,50 +1,50 @@
-// @flow
 /* eslint-env mocha */
 
 import assert from 'assert'
 import addWeeks from '.'
 
-describe('addWeeks', function() {
-  it('adds the given number of weeks', function() {
+describe('addWeeks', () => {
+  it('adds the given number of weeks', () => {
     const result = addWeeks(new Date(2014, 8 /* Sep */, 1), 4)
     assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 29))
   })
 
-  it('accepts a timestamp', function() {
+  it('accepts a timestamp', () => {
     const result = addWeeks(new Date(2014, 8 /* Sep */, 1).getTime(), 1)
     assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 8))
   })
 
-  it('converts a fractional number to an integer', function() {
+  it('converts a fractional number to an integer', () => {
     const result = addWeeks(new Date(2014, 8 /* Sep */, 1), 4.95)
     assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 29))
   })
 
-  it('implicitly converts number arguments', function() {
-    // @ts-expect-error
-    const result = addWeeks(new Date(2014, 8 /* Sep */, 1), '4')
+  it('implicitly converts number arguments', () => {
+    const result = addWeeks(
+      new Date(2014, 8 /* Sep */, 1),
+      // @ts-expect-error
+      '4'
+    )
     assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 29))
   })
 
-  it('does not mutate the original date', function() {
+  it('does not mutate the original date', () => {
     const date = new Date(2014, 8 /* Sep */, 1)
     addWeeks(date, 2)
     assert.deepStrictEqual(date, new Date(2014, 8 /* Sep */, 1))
   })
 
-  it('returns `Invalid Date` if the given date is invalid', function() {
+  it('returns `Invalid Date` if the given date is invalid', () => {
     const result = addWeeks(new Date(NaN), 4)
-    // @ts-expect-error
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
-  it('returns `Invalid Date` if the given amount is NaN', function() {
+  it('returns `Invalid Date` if the given amount is NaN', () => {
     const result = addWeeks(new Date(2014, 8 /* Sep */, 1), NaN)
-    // @ts-expect-error
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
-  it('throws TypeError exception if passed less than 2 arguments', function() {
+  it('throws TypeError exception if passed less than 2 arguments', () => {
     // @ts-expect-error
     assert.throws(addWeeks.bind(null), TypeError)
     // @ts-expect-error

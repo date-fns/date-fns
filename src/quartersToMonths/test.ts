@@ -3,12 +3,12 @@
 import assert from 'assert'
 import quartersToMonths from '.'
 
-describe('quartersToMonths', function () {
-  it('converts quarters to months', function () {
+describe('quartersToMonths', () => {
+  it('converts quarters to months', () => {
     assert(quartersToMonths(1) === 3)
     assert(quartersToMonths(2) === 6)
   })
-  
+
   it('uses floor rounding', () => {
     assert(quartersToMonths(1.5) === 4)
     assert(quartersToMonths(0.3) === 0)

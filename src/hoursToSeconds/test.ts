@@ -3,8 +3,8 @@
 import assert from 'assert'
 import hoursToSeconds from '.'
 
-describe('hoursToSeconds', function () {
-  it('converts hours to seconds', function () {
+describe('hoursToSeconds', () => {
+  it('converts hours to seconds', () => {
     assert(hoursToSeconds(1) === 3600)
     assert(hoursToSeconds(2) === 7200)
   })

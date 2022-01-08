@@ -1,4 +1,3 @@
-// @flow
 /* eslint-env mocha */
 
 import assert from 'assert'
@@ -78,7 +77,7 @@ describe('setUTCISODay', () => {
   })
 
   it('throws TypeError exception if passed less than 1 argument', () => {
-    //@ts-expect-error
+    // @ts-expect-error
     assert.throws(setUTCISODay.bind(null, 1), TypeError)
   })
 })

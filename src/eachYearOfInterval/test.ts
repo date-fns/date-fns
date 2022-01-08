@@ -92,14 +92,14 @@ describe('eachYearOfInterval', () => {
   it('throws an exception if the interval is undefined', () => {
     const block = eachYearOfInterval.bind(
       null,
-      //@ts-expect-error
+      // @ts-expect-error
       undefined
     )
     assert.throws(block, RangeError)
   })
 
   it('throws TypeError exception if passed less than 1 argument', () => {
-    //@ts-expect-error
+    // @ts-expect-error
     assert.throws(eachYearOfInterval.bind(null), TypeError)
   })
 })

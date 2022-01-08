@@ -1,10 +1,10 @@
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import differenceInCalendarISOWeeks from '.'
 
-describe('differenceInCalendarISOWeeks', function () {
-  it('returns the number of calendar ISO weeks between the given dates', function () {
+describe('differenceInCalendarISOWeeks', () => {
+  it('returns the number of calendar ISO weeks between the given dates', () => {
     const result = differenceInCalendarISOWeeks(
       new Date(2014, 6 /* Jul */, 8, 18, 0),
       new Date(2014, 5 /* Jun */, 29, 6, 0)
@@ -12,7 +12,7 @@ describe('differenceInCalendarISOWeeks', function () {
     assert(result === 2)
   })
 
-  it('returns a negative number if the time value of the first date is smaller', function () {
+  it('returns a negative number if the time value of the first date is smaller', () => {
     const result = differenceInCalendarISOWeeks(
       new Date(2014, 5 /* Jun */, 29, 6, 0),
       new Date(2014, 6 /* Jul */, 8, 18, 0)
@@ -20,7 +20,7 @@ describe('differenceInCalendarISOWeeks', function () {
     assert(result === -2)
   })
 
-  it('accepts timestamps', function () {
+  it('accepts timestamps', () => {
     const result = differenceInCalendarISOWeeks(
       new Date(2014, 6 /* Jul */, 12).getTime(),
       new Date(2014, 6 /* Jul */, 2).getTime()
@@ -28,8 +28,8 @@ describe('differenceInCalendarISOWeeks', function () {
     assert(result === 1)
   })
 
-  describe('edge cases', function () {
-    it('the difference is less than an ISO week, but the given dates are in different calendar ISO weeks', function () {
+  describe('edge cases', () => {
+    it('the difference is less than an ISO week, but the given dates are in different calendar ISO weeks', () => {
       const result = differenceInCalendarISOWeeks(
         new Date(2014, 6 /* Jul */, 7),
         new Date(2014, 6 /* Jul */, 6)
@@ -37,7 +37,7 @@ describe('differenceInCalendarISOWeeks', function () {
       assert(result === 1)
     })
 
-    it('the same for the swapped dates', function () {
+    it('the same for the swapped dates', () => {
       const result = differenceInCalendarISOWeeks(
         new Date(2014, 6 /* Jul */, 6),
         new Date(2014, 6 /* Jul */, 7)
@@ -45,7 +45,7 @@ describe('differenceInCalendarISOWeeks', function () {
       assert(result === -1)
     })
 
-    it('the days of weeks of the given dates are the same', function () {
+    it('the days of weeks of the given dates are the same', () => {
       const result = differenceInCalendarISOWeeks(
         new Date(2014, 6 /* Jul */, 9),
         new Date(2014, 6 /* Jul */, 2)
@@ -53,7 +53,7 @@ describe('differenceInCalendarISOWeeks', function () {
       assert(result === 1)
     })
 
-    it('the given dates are the same', function () {
+    it('the given dates are the same', () => {
       const result = differenceInCalendarISOWeeks(
         new Date(2014, 8 /* Sep */, 5, 0, 0),
         new Date(2014, 8 /* Sep */, 5, 0, 0)
@@ -76,7 +76,7 @@ describe('differenceInCalendarISOWeeks', function () {
     })
   })
 
-  it('returns NaN if the first date is `Invalid Date`', function () {
+  it('returns NaN if the first date is `Invalid Date`', () => {
     const result = differenceInCalendarISOWeeks(
       new Date(NaN),
       new Date(2017, 0 /* Jan */, 1)
@@ -84,7 +84,7 @@ describe('differenceInCalendarISOWeeks', function () {
     assert(isNaN(result))
   })
 
-  it('returns NaN if the second date is `Invalid Date`', function () {
+  it('returns NaN if the second date is `Invalid Date`', () => {
     const result = differenceInCalendarISOWeeks(
       new Date(2017, 0 /* Jan */, 1),
       new Date(NaN)
@@ -92,13 +92,15 @@ describe('differenceInCalendarISOWeeks', function () {
     assert(isNaN(result))
   })
 
-  it('returns NaN if the both dates are `Invalid Date`', function () {
+  it('returns NaN if the both dates are `Invalid Date`', () => {
     const result = differenceInCalendarISOWeeks(new Date(NaN), new Date(NaN))
     assert(isNaN(result))
   })
 
-  it('throws TypeError exception if passed less than 2 arguments', function () {
+  it('throws TypeError exception if passed less than 2 arguments', () => {
+    // @ts-expect-error
     assert.throws(differenceInCalendarISOWeeks.bind(null), TypeError)
+    // @ts-expect-error
     assert.throws(differenceInCalendarISOWeeks.bind(null, 1), TypeError)
   })
 })

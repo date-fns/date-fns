@@ -23,20 +23,19 @@ import toInteger from '../_lib/toInteger/index'
  *
  * @example
  * // Round 10 July 2014 12:12:34 to nearest minute:
- * var result = roundToNearestMinutes(new Date(2014, 6, 10, 12, 12, 34))
+ * const result = roundToNearestMinutes(new Date(2014, 6, 10, 12, 12, 34))
  * //=> Thu Jul 10 2014 12:13:00
  *
  * @example
  * // Round 10 July 2014 12:07:30 to nearest quarter hour:
- * var result = roundToNearestMinutes(new Date(2014, 6, 10, 12, 12, 34), { nearestTo: 15 })
+ * const result = roundToNearestMinutes(new Date(2014, 6, 10, 12, 12, 34), { nearestTo: 15 })
  * // rounds up because given date is exactly between 12:00:00 and 12:15:00
  * //=> Thu Jul 10 2014 12:15:00
  */
 export default function roundToNearestMinutes(
-    dirtyDate: Date | number,
-    options?: { nearestTo: number }
-    ): Date
-{
+  dirtyDate: Date | number,
+  options?: { nearestTo: number }
+): Date {
   if (arguments.length < 1) {
     throw new TypeError('1 argument required, but only none provided present')
   }

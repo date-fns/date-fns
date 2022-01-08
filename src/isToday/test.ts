@@ -1,31 +1,30 @@
-// @flow
 /* eslint-env mocha */
 
 import assert from 'assert'
 import sinon from 'sinon'
 import isToday from '.'
 
-describe('isToday', function() {
+describe('isToday', () => {
   let clock: sinon.SinonFakeTimers
-  beforeEach(function() {
+  beforeEach(() => {
     clock = sinon.useFakeTimers(new Date(2014, 8 /* Sep */, 25).getTime())
   })
 
-  afterEach(function() {
+  afterEach(() => {
     clock.restore()
   })
 
-  it('returns true if the given date is today', function() {
+  it('returns true if the given date is today', () => {
     const result = isToday(new Date(2014, 8 /* Sep */, 25))
     assert(result === true)
   })
 
-  it('returns false if the given date is not today', function() {
+  it('returns false if the given date is not today', () => {
     const result = isToday(new Date(2014, 8 /* Sep */, 26))
     assert(result === false)
   })
 
-  it('accepts a timestamp', function() {
+  it('accepts a timestamp', () => {
     const result = isToday(new Date(2014, 8 /* Sep */, 25).getTime())
     assert(result === true)
   })

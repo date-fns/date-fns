@@ -20,21 +20,24 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // Are 4 September 2014 06:30:00 and 4 September 2014 06:30:15 in the same minute?
- * var result = isSameMinute(
+ * const result = isSameMinute(
  *   new Date(2014, 8, 4, 6, 30),
  *   new Date(2014, 8, 4, 6, 30, 15)
  * )
  * //=> true
- * 
+ *
  * @example
  * // Are 4 September 2014 06:30:00 and 5 September 2014 06:30:00 in the same minute?
- * var result = isSameMinute(
+ * const result = isSameMinute(
  *   new Date(2014, 8, 4, 6, 30),
  *   new Date(2014, 8, 5, 6, 30)
  * )
  * //=> false
  */
-export default function isSameMinute(dirtyDateLeft: Date | number, dirtyDateRight: Date | number): boolean {
+export default function isSameMinute(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+): boolean {
   requiredArgs(2, arguments)
 
   const dateLeftStartOfMinute = startOfMinute(dirtyDateLeft)

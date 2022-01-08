@@ -1,48 +1,48 @@
-// @flow
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import lastDayOfMonth from '.'
 
-describe('lastDayOfMonth', function() {
-  it('returns the date with the time set to 00:00:00 and the date set to the last day of a month', function() {
+describe('lastDayOfMonth', () => {
+  it('returns the date with the time set to 00:00:00 and the date set to the last day of a month', () => {
     const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     const result = lastDayOfMonth(date)
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 30))
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 30))
   })
 
-  it('accepts a timestamp', function() {
+  it('accepts a timestamp', () => {
     const date = new Date(2014, 7 /* Aug */, 2, 11, 55, 0).getTime()
     const result = lastDayOfMonth(date)
-    assert.deepEqual(result, new Date(2014, 7 /* Aug */, 31))
+    assert.deepStrictEqual(result, new Date(2014, 7 /* Aug */, 31))
   })
 
-  it('does not mutate the original date', function() {
+  it('does not mutate the original date', () => {
     const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     lastDayOfMonth(date)
-    assert.deepEqual(date, new Date(2014, 8 /* Sep */, 2, 11, 55, 0))
+    assert.deepStrictEqual(date, new Date(2014, 8 /* Sep */, 2, 11, 55, 0))
   })
 
-  describe('edge cases', function() {
-    it('works for the February of a leap year', function() {
+  describe('edge cases', () => {
+    it('works for the February of a leap year', () => {
       const date = new Date(2012, 1 /* Feb */, 11, 11, 55, 0)
       const result = lastDayOfMonth(date)
-      assert.deepEqual(result, new Date(2012, 1 /* Feb */, 29))
+      assert.deepStrictEqual(result, new Date(2012, 1 /* Feb */, 29))
     })
 
-    it('works for the February of a non-leap year', function() {
+    it('works for the February of a non-leap year', () => {
       const date = new Date(2014, 1 /* Feb */, 11, 11, 55, 0)
       const result = lastDayOfMonth(date)
-      assert.deepEqual(result, new Date(2014, 1 /* Feb */, 28))
+      assert.deepStrictEqual(result, new Date(2014, 1 /* Feb */, 28))
     })
   })
 
-  it('returns `Invalid Date` if the given date is invalid', function() {
+  it('returns `Invalid Date` if the given date is invalid', () => {
     const result = lastDayOfMonth(new Date(NaN))
     assert(result instanceof Date && isNaN(result.getTime()))
   })
 
-  it('throws TypeError exception if passed less than 1 argument', function() {
+  it('throws TypeError exception if passed less than 1 argument', () => {
+    // @ts-expect-error
     assert.throws(lastDayOfMonth.bind(null), TypeError)
   })
 })

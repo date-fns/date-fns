@@ -1,4 +1,3 @@
-// @flow
 /* eslint-env mocha */
 
 import assert from 'assert'
@@ -36,11 +35,11 @@ describe('addBusinessDays', () => {
     )
   })
 
-  it('can handle a large number of business days', function () {
+  it('can handle a large number of business days', () => {
     // @ts-ignore
-    if (typeof this.timeout === 'function') {
+    if (typeof global.timeout === 'function') {
       // @ts-ignore
-      this.timeout(500 /* 500 ms test timeout */)
+      global.timeout(500 /* 500 ms test timeout */)
     }
 
     const result = addBusinessDays(new Date(2014, 0 /* Jan */, 1), 3387885)
@@ -58,8 +57,11 @@ describe('addBusinessDays', () => {
   })
 
   it('implicitly converts number arguments', () => {
-    // @ts-expect-error
-    const result = addBusinessDays(new Date(2014, 8 /* Sep */, 1), '10')
+    const result = addBusinessDays(
+      new Date(2014, 8 /* Sep */, 1),
+      // @ts-expect-error
+      '10'
+    )
     assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 15))
   })
 

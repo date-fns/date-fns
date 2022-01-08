@@ -23,11 +23,11 @@ describe('formatISO9075', () => {
     const date = new Date(2019, 11 /* Dec */, 11, 1, 0, 0, 789)
     assert(
       formatISO9075(date, { representation: 'date', format: 'extended' }) ===
-      '2019-12-11'
+        '2019-12-11'
     )
     assert(
       formatISO9075(date, { representation: 'date', format: 'basic' }) ===
-      '20191211'
+        '20191211'
     )
   })
 
@@ -35,49 +35,55 @@ describe('formatISO9075', () => {
     const date = new Date(2019, 2 /* Mar */, 3, 19, 0, 52, 123)
     assert(
       formatISO9075(date, { representation: 'time', format: 'extended' }) ===
-      '19:00:52'
+        '19:00:52'
     )
     assert(
       formatISO9075(date, { representation: 'time', format: 'basic' }) ===
-      '190052'
+        '190052'
     )
   })
 
-  describe('implicitly converts options', function () {
-    it('`format`', function () {
+  describe('implicitly converts options', () => {
+    it('`format`', () => {
       // eslint-disable-next-line no-new-wrappers
       const format = new String('basic')
       const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
 
-      // @ts-expect-error
-      const result = formatISO9075(date, { format: format })
+      const result = formatISO9075(date, {
+        // @ts-expect-error
+        format: format,
+      })
       assert(result === '20191004 123013')
     })
 
-    it('`representation`', function () {
+    it('`representation`', () => {
       // eslint-disable-next-line no-new-wrappers
       const representation = new String('time')
       const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
 
-      // @ts-expect-error
-      const result = formatISO9075(date, { representation: representation })
+      const result = formatISO9075(date, {
+        // @ts-expect-error
+        representation: representation,
+      })
       assert(result === '12:30:13')
     })
   })
 
-  it("throws `RangeError` if `options.format` is not 'extended' or 'basic'", function () {
-    // @ts-expect-error
-    const block = formatISO9075.bind(null, new Date(2019, 2 /* Mar */, 3), {
-      format: 'something else'
-    })
+  it("throws `RangeError` if `options.format` is not 'extended' or 'basic'", () => {
+    const block = () =>
+      formatISO9075(new Date(2019, 2 /* Mar */, 3), {
+        // @ts-expect-error
+        format: 'something else',
+      })
     assert.throws(block, RangeError)
   })
 
-  it("throws `RangeError` if `options.representation` is not 'date', 'time' or 'complete'", function () {
-    // @ts-expect-error
-    const block = formatISO9075.bind(null, new Date(2019, 2 /* Mar */, 3), {
-      representation: 'something else'
-    })
+  it("throws `RangeError` if `options.representation` is not 'date', 'time' or 'complete'", () => {
+    const block = () =>
+      formatISO9075(new Date(2019, 2 /* Mar */, 3), {
+        // @ts-expect-error
+        representation: 'something else',
+      })
     assert.throws(block, RangeError)
   })
 
@@ -85,7 +91,7 @@ describe('formatISO9075', () => {
     assert.throws(formatISO9075.bind(null, new Date(NaN)), RangeError)
   })
 
-  it('throws TypeError exception if passed less than 1 argument', function () {
+  it('throws TypeError exception if passed less than 1 argument', () => {
     // @ts-expect-error
     assert.throws(formatISO9075.bind(null), TypeError)
   })

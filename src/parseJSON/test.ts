@@ -1,11 +1,10 @@
-// @flow
 /* eslint-env mocha */
 
 import assert from 'assert'
 import parseJSON from '.'
 import format from '../format/index'
 
-describe('parseJSON', function () {
+describe('parseJSON', () => {
   it('parses a formatted new Date() back to UTC - issue 2149', () => {
     const date = new Date()
     const jsonFormat = format(date, "yyyy-MM-dd'T'HH:mm:ss.SSSxxx")

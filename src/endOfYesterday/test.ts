@@ -1,4 +1,3 @@
-// @flow
 /* eslint-env mocha */
 
 import assert from 'assert'
@@ -12,7 +11,10 @@ describe('endOfYesterday', () => {
     )
 
     const result = endOfYesterday()
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 24, 23, 59, 59, 999))
+    assert.deepStrictEqual(
+      result,
+      new Date(2014, 8 /* Sep */, 24, 23, 59, 59, 999)
+    )
 
     clock.restore()
   })
@@ -27,7 +29,7 @@ describe('endOfYesterday', () => {
     expectedResult.setFullYear(14, 8 /* Sep */, 24)
     expectedResult.setHours(23, 59, 59, 999)
     const result = endOfYesterday()
-    assert.deepEqual(result, expectedResult)
+    assert.deepStrictEqual(result, expectedResult)
 
     clock.restore()
   })

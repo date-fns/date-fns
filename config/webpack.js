@@ -1,5 +1,4 @@
 const path = require('path')
-const webpack = require('webpack')
 
 const isProduction = process.env.NODE_ENV === 'production'
 
@@ -9,11 +8,11 @@ const config = {
   entry: getEntryConfig(),
   output: getOutputConfig(),
   resolve: {
-    extensions: ['.ts', '.js']
+    extensions: ['.ts', '.js'],
   },
   module: {
     rules: [
-      { test: /\.(js|ts)$/, exclude: /node_modules/, use: 'babel-loader' }
+      { test: /\.(js|ts)$/, exclude: /node_modules/, use: 'babel-loader' },
     ].concat(
       process.env.COVERAGE_REPORT
         ? [
@@ -21,16 +20,15 @@ const config = {
               test: /\.(js|ts)$/,
               use: {
                 loader: 'istanbul-instrumenter-loader',
-                options: { esModules: true }
+                options: { esModules: true },
               },
               enforce: 'post',
-              exclude: /node_modules|test.js|src\/locale$/
-            }
+              exclude: /node_modules|test.js|src\/locale$/,
+            },
           ]
         : []
-    )
+    ),
   },
-  plugins: getPlugins()
 }
 
 module.exports = config
@@ -38,13 +36,13 @@ module.exports = config
 function getEntryConfig() {
   if (process.env.BUILD_TESTS) {
     return {
-      tests: './testWithoutLocales.js'
+      tests: './testWithoutLocales.js',
     }
   } else if (process.env.NODE_ENV === 'test') {
     return undefined
   } else {
     return {
-      date_fns: './tmp/umd/index.js'
+      date_fns: './tmp/umd/index.js',
     }
   }
 }
@@ -53,7 +51,7 @@ function getOutputConfig() {
   if (process.env.BUILD_TESTS) {
     return {
       path: path.join(process.cwd(), 'tmp'),
-      filename: '[name].js'
+      filename: '[name].js',
     }
   } else if (process.env.NODE_ENV === 'test') {
     return undefined
@@ -62,18 +60,7 @@ function getOutputConfig() {
       path: path.join(process.cwd(), 'dist'),
       filename: '[name].js',
       library: 'dateFns',
-      libraryTarget: 'umd'
+      libraryTarget: 'umd',
     }
   }
-}
-
-function getPlugins() {
-  return process.env.NODE_ENV === 'test'
-    ? [
-        new webpack.ContextReplacementPlugin(
-          /power-assert-formatter[\\/]lib/,
-          new RegExp('^\\./.*\\.js$')
-        )
-      ]
-    : undefined
 }

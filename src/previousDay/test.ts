@@ -3,8 +3,8 @@
 import assert from 'assert'
 import previousDay from '.'
 
-describe('previousDay', function () {
-  it('returns the previous Monday given various dates after the same', function () {
+describe('previousDay', () => {
+  it('returns the previous Monday given various dates after the same', () => {
     assert.deepStrictEqual(
       previousDay(new Date(2021, 5 /* Jun */, 18), 1),
       new Date(2021, 5 /* Jun */, 14)
@@ -36,42 +36,42 @@ describe('previousDay', function () {
     )
   })
 
-  it('returns the previous Tuesday given the Saturday after it', function () {
+  it('returns the previous Tuesday given the Saturday after it', () => {
     assert.deepStrictEqual(
       previousDay(new Date(2021, 5 /* Jun */, 26), 2),
       new Date(2021, 5 /* Jun */, 22)
     )
   })
 
-  it('returns the previous Wednesday given the Saturday after it', function () {
+  it('returns the previous Wednesday given the Saturday after it', () => {
     assert.deepStrictEqual(
       previousDay(new Date(2021, 5 /* Jun */, 26), 3),
       new Date(2021, 5 /* Jun */, 23)
     )
   })
 
-  it('returns the previous Thursday given the Saturday after it', function () {
+  it('returns the previous Thursday given the Saturday after it', () => {
     assert.deepStrictEqual(
       previousDay(new Date(2021, 5 /* Jun */, 26), 4),
       new Date(2021, 5 /* Jun */, 24)
     )
   })
 
-  it('returns the previous Friday given the Saturday after it', function () {
+  it('returns the previous Friday given the Saturday after it', () => {
     assert.deepStrictEqual(
       previousDay(new Date(2021, 5 /* Jun */, 26), 5),
       new Date(2021, 5 /* Jun */, 25)
     )
   })
 
-  it('returns the previous Saturday given the Saturday after it', function () {
+  it('returns the previous Saturday given the Saturday after it', () => {
     assert.deepStrictEqual(
       previousDay(new Date(2021, 5 /* Jun */, 26), 6),
       new Date(2021, 5 /* Jun */, 19)
     )
   })
 
-  it('returns the previous Sunday given the day is Sunday', function () {
+  it('returns the previous Sunday given the day is Sunday', () => {
     assert.deepStrictEqual(
       previousDay(new Date(2021, 5 /* Jun */, 27), 0),
       new Date(2021, 5 /* Jun */, 20)

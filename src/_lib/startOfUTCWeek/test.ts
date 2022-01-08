@@ -1,8 +1,6 @@
-// @flow
 /* eslint-env mocha */
 
 import assert from 'assert'
-import { Locale } from '../../locale/types'
 import startOfUTCWeek from '.'
 
 describe('startOfUTCWeek', () => {
@@ -21,9 +19,10 @@ describe('startOfUTCWeek', () => {
   it('allows to specify which day is the first day of the week in locale', () => {
     const date = new Date(Date.UTC(2014, 8 /* Sep */, 2, 11, 55, 0))
     const result = startOfUTCWeek(date, {
+      // @ts-expect-error
       locale: {
         options: { weekStartsOn: 1 },
-      } as Locale,
+      },
     })
     assert.deepStrictEqual(result, new Date(Date.UTC(2014, 8 /* Sep */, 1)))
   })
@@ -32,9 +31,10 @@ describe('startOfUTCWeek', () => {
     const date = new Date(Date.UTC(2014, 8 /* Sep */, 2, 11, 55, 0))
     const result = startOfUTCWeek(date, {
       weekStartsOn: 1,
+      // @ts-expect-error
       locale: {
         options: { weekStartsOn: 0 },
-      } as Locale,
+      },
     })
     assert.deepStrictEqual(result, new Date(Date.UTC(2014, 8 /* Sep */, 1)))
   })
@@ -101,19 +101,16 @@ describe('startOfUTCWeek', () => {
   })
 
   it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', () => {
-    //@ts-expect-error
-    const block = startOfUTCWeek.bind(
-      null,
-      new Date(Date.UTC(2014, 8 /* Sep */, 2, 11, 55, 0)),
-      {
+    const block = () =>
+      startOfUTCWeek(new Date(Date.UTC(2014, 8 /* Sep */, 2, 11, 55, 0)), {
+        // @ts-expect-error
         weekStartsOn: NaN,
-      }
-    )
+      })
     assert.throws(block, RangeError)
   })
 
   it('throws TypeError exception if passed less than 1 argument', () => {
-    //@ts-expect-error
+    // @ts-expect-error
     assert.throws(startOfUTCWeek.bind(null), TypeError)
   })
 })

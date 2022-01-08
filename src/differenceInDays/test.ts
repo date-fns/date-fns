@@ -1,11 +1,11 @@
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import differenceInDays from '.'
 import { getDstTransitions } from '../../test/dst/tzOffsetTransitions'
 
-describe('differenceInDays', function () {
-  it('returns the number of full days between the given dates', function () {
+describe('differenceInDays', () => {
+  it('returns the number of full days between the given dates', () => {
     const result = differenceInDays(
       new Date(2012, 6 /* Jul */, 2, 18, 0),
       new Date(2011, 6 /* Jul */, 2, 6, 0)
@@ -13,7 +13,7 @@ describe('differenceInDays', function () {
     assert(result === 366)
   })
 
-  it('returns a negative number if the time value of the first date is smaller', function () {
+  it('returns a negative number if the time value of the first date is smaller', () => {
     const result = differenceInDays(
       new Date(2011, 6 /* Jul */, 2, 6, 0),
       new Date(2012, 6 /* Jul */, 2, 18, 0)
@@ -21,7 +21,7 @@ describe('differenceInDays', function () {
     assert(result === -366)
   })
 
-  it('accepts timestamps', function () {
+  it('accepts timestamps', () => {
     const result = differenceInDays(
       new Date(2014, 8 /* Sep */, 5, 18, 0).getTime(),
       new Date(2014, 8 /* Sep */, 4, 6, 0).getTime()
@@ -29,8 +29,8 @@ describe('differenceInDays', function () {
     assert(result === 1)
   })
 
-  describe('edge cases', function () {
-    it('the difference is less than a day, but the given dates are in different calendar days', function () {
+  describe('edge cases', () => {
+    it('the difference is less than a day, but the given dates are in different calendar days', () => {
       const result = differenceInDays(
         new Date(2014, 8 /* Sep */, 5, 0, 0),
         new Date(2014, 8 /* Sep */, 4, 23, 59)
@@ -38,7 +38,7 @@ describe('differenceInDays', function () {
       assert(result === 0)
     })
 
-    it('the same for the swapped dates', function () {
+    it('the same for the swapped dates', () => {
       const result = differenceInDays(
         new Date(2014, 8 /* Sep */, 4, 23, 59),
         new Date(2014, 8 /* Sep */, 5, 0, 0)
@@ -46,7 +46,7 @@ describe('differenceInDays', function () {
       assert(result === 0)
     })
 
-    it('the time values of the given dates are the same', function () {
+    it('the time values of the given dates are the same', () => {
       const result = differenceInDays(
         new Date(2014, 8 /* Sep */, 6, 0, 0),
         new Date(2014, 8 /* Sep */, 5, 0, 0)
@@ -54,7 +54,7 @@ describe('differenceInDays', function () {
       assert(result === 1)
     })
 
-    it('the given dates are the same', function () {
+    it('the given dates are the same', () => {
       const result = differenceInDays(
         new Date(2014, 8 /* Sep */, 5, 0, 0),
         new Date(2014, 8 /* Sep */, 5, 0, 0)
@@ -68,7 +68,7 @@ describe('differenceInDays', function () {
       Intl.DateTimeFormat().resolvedOptions().timeZone || process.env.tz
     dstOnly(
       `works across DST start & end in local timezone: ${tz || '(unknown)'}`,
-      function () {
+      () => {
         const { start, end } = dstTransitions
         const HOUR = 1000 * 60 * 60
         const MINUTE = 1000 * 60
@@ -186,7 +186,7 @@ describe('differenceInDays', function () {
     })
   })
 
-  it('returns NaN if the first date is `Invalid Date`', function () {
+  it('returns NaN if the first date is `Invalid Date`', () => {
     const result = differenceInDays(
       new Date(NaN),
       new Date(2017, 0 /* Jan */, 1)
@@ -194,7 +194,7 @@ describe('differenceInDays', function () {
     assert(isNaN(result))
   })
 
-  it('returns NaN if the second date is `Invalid Date`', function () {
+  it('returns NaN if the second date is `Invalid Date`', () => {
     const result = differenceInDays(
       new Date(2017, 0 /* Jan */, 1),
       new Date(NaN)
@@ -202,13 +202,15 @@ describe('differenceInDays', function () {
     assert(isNaN(result))
   })
 
-  it('returns NaN if the both dates are `Invalid Date`', function () {
+  it('returns NaN if the both dates are `Invalid Date`', () => {
     const result = differenceInDays(new Date(NaN), new Date(NaN))
     assert(isNaN(result))
   })
 
-  it('throws TypeError exception if passed less than 2 arguments', function () {
+  it('throws TypeError exception if passed less than 2 arguments', () => {
+    // @ts-expect-error
     assert.throws(differenceInDays.bind(null), TypeError)
+    // @ts-expect-error
     assert.throws(differenceInDays.bind(null, 1), TypeError)
   })
 })

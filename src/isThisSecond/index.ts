@@ -24,7 +24,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @example
  * // If now is 25 September 2014 18:30:15.500,
  * // is 25 September 2014 18:30:15.000 in this second?
- * var result = isThisSecond(new Date(2014, 8, 25, 18, 30, 15))
+ * const result = isThisSecond(new Date(2014, 8, 25, 18, 30, 15))
  * //=> true
  */
 export default function isThisSecond(dirtyDate: Date | number): boolean {

@@ -1,12 +1,11 @@
-// @flow
 /* eslint-env mocha */
 
 import assert from 'assert'
-import sinon, { SinonFakeTimers } from 'sinon'
+import sinon from 'sinon'
 import endOfToday from '.'
 
 describe('endOfToday', () => {
-  let clock: SinonFakeTimers
+  let clock: sinon.SinonFakeTimers
   beforeEach(() => {
     clock = sinon.useFakeTimers(
       new Date(2014, 8 /* Sep */, 25, 14, 30, 45, 500).getTime()
@@ -19,6 +18,9 @@ describe('endOfToday', () => {
 
   it('returns the current date with the time settled to 23:59:59.999', () => {
     const result = endOfToday()
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 25, 23, 59, 59, 999))
+    assert.deepStrictEqual(
+      result,
+      new Date(2014, 8 /* Sep */, 25, 23, 59, 59, 999)
+    )
   })
 })

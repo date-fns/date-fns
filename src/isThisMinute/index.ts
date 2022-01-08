@@ -24,7 +24,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @example
  * // If now is 25 September 2014 18:30:15.500,
  * // is 25 September 2014 18:30:00 in this minute?
- * var result = isThisMinute(new Date(2014, 8, 25, 18, 30))
+ * const result = isThisMinute(new Date(2014, 8, 25, 18, 30))
  * //=> true
  */
 

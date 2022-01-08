@@ -3,8 +3,8 @@
 import assert from 'assert'
 import yearsToQuarters from '.'
 
-describe('yearsToQuarters', function () {
-  it('converts years to quarters', function () {
+describe('yearsToQuarters', () => {
+  it('converts years to quarters', () => {
     assert(yearsToQuarters(1) === 4)
     assert(yearsToQuarters(2) === 8)
   })

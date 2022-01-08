@@ -19,7 +19,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // Is 26 September 2014 Friday?
- * var result = isFriday(new Date(2014, 8, 26))
+ * const result = isFriday(new Date(2014, 8, 26))
  * //=> true
  */
 export default function isFriday(dirtyDate: Date | number): boolean {

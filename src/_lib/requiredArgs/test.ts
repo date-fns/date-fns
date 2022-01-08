@@ -1,28 +1,26 @@
-// @flow
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import requiredArgs from '.'
 
-describe('requiredArgs', function () {
-  function wrapperFn(required) {
-    // $ExpectedMistake
-    return function () {
+describe('requiredArgs', () => {
+  function wrapperFn(required: number) {
+    return function (..._args: any[]) {
       requiredArgs(required, arguments)
     }
   }
   const twoArgsRequired = wrapperFn(2)
 
-  describe('with correct number of passed arguments', function () {
-    it('does not throw an error', function () {
+  describe('with correct number of passed arguments', () => {
+    it('does not throw an error', () => {
       assert.doesNotThrow(() => twoArgsRequired(1, 2))
     })
   })
 
-  describe('with wrong number of arguments', function () {
-    it('throws correct error message', function () {
+  describe('with wrong number of arguments', () => {
+    it('throws correct error message', () => {
       assert.throws(
-        function () {
+        () => {
           twoArgsRequired(1)
         },
         function (err) {

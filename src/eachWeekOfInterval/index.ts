@@ -28,7 +28,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // Each week within interval 6 October 2014 - 23 November 2014:
- * var result = eachWeekOfInterval({
+ * const result = eachWeekOfInterval({
  *   start: new Date(2014, 9, 6),
  *   end: new Date(2014, 10, 23)
  * })

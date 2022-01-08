@@ -1,4 +1,3 @@
-// @flow
 /* eslint-env mocha */
 /* global HTMLIFrameElement */
 
@@ -38,9 +37,7 @@ describe('isDate', () => {
         iframe.id = 'iframe'
         iframe.addEventListener('load', () => {
           execScript('window.date = new Date()') // eslint-disable-line no-implied-eval
-          // @ts-expect-error
-          assert(isDate(iframe.contentWindow.date))
-          // $ExpectedMistake sadly, but Flow doesn't know about Mocha's done
+          assert(isDate((iframe.contentWindow as any).date))
           done()
         })
         if (!document.body) throw new Error('document.body is not defined')

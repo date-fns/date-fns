@@ -1,4 +1,3 @@
-// @flow
 /* eslint-env mocha */
 
 import assert from 'assert'
@@ -22,7 +21,7 @@ describe('lightFormat', () => {
     assert(lightFormat(date, "''h 'o''clock'''") === "'5 o'clock'")
   })
 
-  it('accepts new line charactor', function () {
+  it('accepts new line charactor', () => {
     const date = new Date(2014, 3, 4, 5)
     assert.equal(
       lightFormat(date, "yyyy-MM-dd'\n'HH:mm:ss"),
@@ -125,7 +124,7 @@ describe('lightFormat', () => {
     })
   })
 
-  it('fractional seconds', function () {
+  it('fractional seconds', () => {
     const result = lightFormat(date, 'S SS SSS SSSS')
     assert(result === '1 12 123 1230')
   })
@@ -147,11 +146,16 @@ describe('lightFormat', () => {
 
     const date = new Date(2014, 3, 4)
 
-    // @ts-expect-error
-    assert(lightFormat(date, formatString) === '2014-04-04')
+    assert(
+      lightFormat(
+        date,
+        // @ts-expect-error
+        formatString
+      ) === '2014-04-04'
+    )
   })
 
-  it('throws RangeError exception if the format string contains an unescaped latin alphabet character', function () {
+  it('throws RangeError exception if the format string contains an unescaped latin alphabet character', () => {
     assert.throws(lightFormat.bind(null, date, 'yyyy-MM-dd-nnnn'), RangeError)
   })
 

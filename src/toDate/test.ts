@@ -1,7 +1,6 @@
-// @flow
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import sinon from 'sinon'
 import toDate from '.'
 
@@ -11,7 +10,7 @@ describe('toDate', () => {
       const date = new Date(2016, 0, 1)
       const dateClone = toDate(date)
       dateClone.setFullYear(2015)
-      assert.deepEqual(date, new Date(2016, 0, 1))
+      assert.deepStrictEqual(date, new Date(2016, 0, 1))
     })
   })
 
@@ -19,7 +18,7 @@ describe('toDate', () => {
     it('creates a date from the timestamp', () => {
       const timestamp = new Date(2016, 0, 1, 23, 30, 45, 123).getTime()
       const result = toDate(timestamp)
-      assert.deepEqual(result, new Date(2016, 0, 1, 23, 30, 45, 123))
+      assert.deepStrictEqual(result, new Date(2016, 0, 1, 23, 30, 45, 123))
     })
   })
 
@@ -27,20 +26,20 @@ describe('toDate', () => {
     mockConsoleWarn()
 
     it('returns Invalid Date if argument is a string', () => {
-      // $ExpectedMistake
-      // @ts-expect-error
-      const result = toDate('1987-02-11')
+      const result = toDate(
+        // @ts-expect-error
+        '1987-02-11'
+      )
       assert(result instanceof Date)
-      // @ts-expect-error
-      assert(isNaN(result))
+      assert(isNaN(result.getTime()))
     })
 
     it('prints deprecation warning if the argument is a string', () => {
-      // $ExpectedMistake
       console.warn = sinon.spy() // eslint-disable-line no-console
-      // $ExpectedMistake
-      // @ts-expect-error
-      toDate('1987-02-11')
+      toDate(
+        // @ts-expect-error
+        '1987-02-11'
+      )
       assert(
         // eslint-disable-next-line no-console
         // @ts-expect-error
@@ -53,51 +52,49 @@ describe('toDate', () => {
     it('returns Invalid Date if argument is NaN', () => {
       const result = toDate(NaN)
       assert(result instanceof Date)
-      // @ts-expect-error
-      assert(isNaN(result))
+      assert(isNaN(result.getTime()))
     })
 
     it('returns Invalid Date if argument is Invalid Date', () => {
       const result = toDate(new Date(NaN))
       assert(result instanceof Date)
-      // @ts-expect-error
-      assert(isNaN(result))
+      assert(isNaN(result.getTime()))
     })
 
     it('returns Invalid Date if argument is null', () => {
-      // $ExpectedMistake
-      // @ts-expect-error
-      const result = toDate(null)
+      const result = toDate(
+        // @ts-expect-error
+        null
+      )
       assert(result instanceof Date)
-      // @ts-expect-error
-      assert(isNaN(result))
+      assert(isNaN(result.getTime()))
     })
 
     it('returns Invalid Date if argument is undefined', () => {
-      // $ExpectedMistake
-      // @ts-expect-error
-      const result = toDate(undefined)
+      const result = toDate(
+        // @ts-expect-error
+        undefined
+      )
       assert(result instanceof Date)
-      // @ts-expect-error
-      assert(isNaN(result))
+      assert(isNaN(result.getTime()))
     })
 
     it('returns Invalid Date if argument is false', () => {
-      // $ExpectedMistake
-      // @ts-expect-error
-      const result = toDate(false)
+      const result = toDate(
+        // @ts-expect-error
+        false
+      )
       assert(result instanceof Date)
-      // @ts-expect-error
-      assert(isNaN(result))
+      assert(isNaN(result.getTime()))
     })
 
     it('returns Invalid Date if argument is true', () => {
-      // $ExpectedMistake
-      // @ts-expect-error
-      const result = toDate(true)
+      const result = toDate(
+        // @ts-expect-error
+        true
+      )
       assert(result instanceof Date)
-      // @ts-expect-error
-      assert(isNaN(result))
+      assert(isNaN(result.getTime()))
     })
   })
 
@@ -107,30 +104,29 @@ describe('toDate', () => {
       const timestamp = new Number(
         new Date(2016, 0, 1, 23, 30, 45, 123).getTime()
       )
-      // $ExpectedMistake
-      // @ts-expect-error
-      const result = toDate(timestamp)
-      assert.deepEqual(result, new Date(2016, 0, 1, 23, 30, 45, 123))
+      const result = toDate(
+        // @ts-expect-error
+        timestamp
+      )
+      assert.deepStrictEqual(result, new Date(2016, 0, 1, 23, 30, 45, 123))
     })
   })
 
   it('throws TypeError exception if passed less than 1 argument', () => {
+    // @ts-expect-error
     assert.throws(toDate.bind(null), TypeError)
   })
 })
 
 function mockConsoleWarn() {
-  let originalWarn
+  let originalWarn: any
 
   beforeEach(() => {
     originalWarn = console.warn // eslint-disable-line no-console
-    // $ExpectedMistake
     console.warn = () => {} // eslint-disable-line no-console
   })
 
   afterEach(() => {
-    // $ExpectedMistake
-    // @ts-expect-error
     console.warn = originalWarn // eslint-disable-line no-console
   })
 }

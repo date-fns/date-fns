@@ -1,45 +1,46 @@
-// @flow
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import subMonths from '.'
 
-describe('subMonths', function() {
-  it('subtracts the given number of months', function() {
+describe('subMonths', () => {
+  it('subtracts the given number of months', () => {
     const result = subMonths(new Date(2015, 1 /* Feb */, 1), 5)
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1))
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1))
   })
 
-  it('accepts a timestamp', function() {
+  it('accepts a timestamp', () => {
     const result = subMonths(new Date(2015, 8 /* Sep */, 1).getTime(), 12)
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1))
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1))
   })
 
-  it('converts a fractional number to an integer', function() {
+  it('converts a fractional number to an integer', () => {
     const result = subMonths(new Date(2015, 1 /* Feb */, 1), 5.999)
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1))
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1))
   })
 
-  it('implicitly converts number arguments', function() {
-    // $ExpectedMistake
-    // @ts-expect-error
-    const result = subMonths(new Date(2015, 1 /* Feb */, 1), '5')
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1))
+  it('implicitly converts number arguments', () => {
+    const result = subMonths(
+      new Date(2015, 1 /* Feb */, 1),
+      // @ts-expect-error
+      '5'
+    )
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1))
   })
 
-  it('does not mutate the original date', function() {
+  it('does not mutate the original date', () => {
     const date = new Date(2014, 8 /* Sep */, 1)
     subMonths(date, 12)
-    assert.deepEqual(date, new Date(2014, 8 /* Sep */, 1))
+    assert.deepStrictEqual(date, new Date(2014, 8 /* Sep */, 1))
   })
 
-  it('works well if the desired month has fewer days and the provided date is in the last day of a month', function() {
+  it('works well if the desired month has fewer days and the provided date is in the last day of a month', () => {
     const date = new Date(2014, 11 /* Dec */, 31)
     const result = subMonths(date, 3)
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 30))
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 30))
   })
 
-  it('handles dates before 100 AD', function() {
+  it('handles dates before 100 AD', () => {
     const initialDate = new Date(0)
     initialDate.setFullYear(1, 2 /* Mar */, 31)
     initialDate.setHours(0, 0, 0, 0)
@@ -47,23 +48,23 @@ describe('subMonths', function() {
     expectedResult.setFullYear(1, 1 /* Feb */, 28)
     expectedResult.setHours(0, 0, 0, 0)
     const result = subMonths(initialDate, 1)
-    assert.deepEqual(result, expectedResult)
+    assert.deepStrictEqual(result, expectedResult)
   })
 
-  it('returns `Invalid Date` if the given date is invalid', function() {
+  it('returns `Invalid Date` if the given date is invalid', () => {
     const result = subMonths(new Date(NaN), 5)
-    // @ts-expect-error
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
-  it('returns `Invalid Date` if the given amount is NaN', function() {
+  it('returns `Invalid Date` if the given amount is NaN', () => {
     const result = subMonths(new Date(2015, 1 /* Feb */, 1), NaN)
-    // @ts-expect-error
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
-  it('throws TypeError exception if passed less than 2 arguments', function() {
+  it('throws TypeError exception if passed less than 2 arguments', () => {
+    // @ts-expect-error
     assert.throws(subMonths.bind(null), TypeError)
+    // @ts-expect-error
     assert.throws(subMonths.bind(null, 1), TypeError)
   })
 })

@@ -1,36 +1,35 @@
-// @flow
 /* eslint-env mocha */
 
 import assert from 'assert'
 import sinon from 'sinon'
 import isThisQuarter from '.'
 
-describe('isThisQuarter', function() {
+describe('isThisQuarter', () => {
   let clock: sinon.SinonFakeTimers
-  beforeEach(function() {
+  beforeEach(() => {
     clock = sinon.useFakeTimers(new Date(2014, 8 /* Sep */, 25).getTime())
   })
 
-  afterEach(function() {
+  afterEach(() => {
     clock.restore()
   })
 
-  it('returns true if the given date and the current date have the same quarter (and year)', function() {
+  it('returns true if the given date and the current date have the same quarter (and year)', () => {
     const date = new Date(2014, 6 /* Jul */, 2)
     assert(isThisQuarter(date) === true)
   })
 
-  it('returns false if the given date and the current date have different quarters', function() {
+  it('returns false if the given date and the current date have different quarters', () => {
     const date = new Date(2014, 1 /* Feb */, 11)
     assert(isThisQuarter(date) === false)
   })
 
-  it('accepts a timestamp', function() {
+  it('accepts a timestamp', () => {
     const date = new Date(2014, 6 /* Jul */, 2).getTime()
     assert(isThisQuarter(date) === true)
   })
 
-  it('throws TypeError exception if passed less than 1 argument', function() {
+  it('throws TypeError exception if passed less than 1 argument', () => {
     // @ts-expect-error
     assert.throws(isThisQuarter.bind(null), TypeError)
   })

@@ -1,38 +1,40 @@
-// @flow
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import setISOWeek from '.'
 
-describe('setISOWeek', function() {
-  it('sets the ISO week', function() {
+describe('setISOWeek', () => {
+  it('sets the ISO week', () => {
     const result = setISOWeek(new Date(2004, 7 /* Aug */, 7), 53)
-    assert.deepEqual(result, new Date(2005, 0 /* Jan */, 1))
+    assert.deepStrictEqual(result, new Date(2005, 0 /* Jan */, 1))
   })
 
-  it('accepts a timestamp', function() {
+  it('accepts a timestamp', () => {
     const result = setISOWeek(new Date(2009, 11 /* Dec */, 2).getTime(), 1)
-    assert.deepEqual(result, new Date(2008, 11 /* Dec */, 31))
+    assert.deepStrictEqual(result, new Date(2008, 11 /* Dec */, 31))
   })
 
-  it('converts a fractional number to an integer', function() {
+  it('converts a fractional number to an integer', () => {
     const result = setISOWeek(new Date(2004, 7 /* Aug */, 7), 53.53)
-    assert.deepEqual(result, new Date(2005, 0 /* Jan */, 1))
+    assert.deepStrictEqual(result, new Date(2005, 0 /* Jan */, 1))
   })
 
-  it('implicitly converts number arguments', function() {
-    // @ts-expect-error
-    const result = setISOWeek(new Date(2004, 7 /* Aug */, 7), '53')
-    assert.deepEqual(result, new Date(2005, 0 /* Jan */, 1))
+  it('implicitly converts number arguments', () => {
+    const result = setISOWeek(
+      new Date(2004, 7 /* Aug */, 7),
+      // @ts-expect-error
+      '53'
+    )
+    assert.deepStrictEqual(result, new Date(2005, 0 /* Jan */, 1))
   })
 
-  it('does not mutate the original date', function() {
-    var date = new Date(2014, 6 /* Jul */, 2)
+  it('does not mutate the original date', () => {
+    const date = new Date(2014, 6 /* Jul */, 2)
     setISOWeek(date, 52)
-    assert.deepEqual(date, new Date(2014, 6 /* Jul */, 2))
+    assert.deepStrictEqual(date, new Date(2014, 6 /* Jul */, 2))
   })
 
-  it('handles dates before 100 AD', function() {
+  it('handles dates before 100 AD', () => {
     const initialDate = new Date(0)
     initialDate.setFullYear(4, 0 /* Jan */, 4)
     initialDate.setHours(0, 0, 0, 0)
@@ -40,21 +42,23 @@ describe('setISOWeek', function() {
     expectedResult.setFullYear(4, 11 /* Dec */, 26)
     expectedResult.setHours(0, 0, 0, 0)
     const result = setISOWeek(initialDate, 52)
-    assert.deepEqual(result, expectedResult)
+    assert.deepStrictEqual(result, expectedResult)
   })
 
-  it('returns `Invalid Date` if the given date is invalid', function() {
+  it('returns `Invalid Date` if the given date is invalid', () => {
     const result = setISOWeek(new Date(NaN), 53)
     assert(result instanceof Date && isNaN(result.getTime()))
   })
 
-  it('returns `Invalid Date` if the given amount is NaN', function() {
+  it('returns `Invalid Date` if the given amount is NaN', () => {
     const result = setISOWeek(new Date(2004, 7 /* Aug */, 7), NaN)
     assert(result instanceof Date && isNaN(result.getTime()))
   })
 
-  it('throws TypeError exception if passed less than 2 arguments', function() {
+  it('throws TypeError exception if passed less than 2 arguments', () => {
+    // @ts-expect-error
     assert.throws(setISOWeek.bind(null), TypeError)
+    // @ts-expect-error
     assert.throws(setISOWeek.bind(null, 1), TypeError)
   })
 })

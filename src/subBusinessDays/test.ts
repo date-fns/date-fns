@@ -14,16 +14,16 @@ describe('subBusinessDays', () => {
     assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1))
   })
 
-  // it('can handle a large number of business days', () => {
-  //   // @ts-ignore
-  //   if (typeof this.timeout === 'function') {
-  //     // @ts-ignore
-  //     this.timeout(500 /* 500 ms test timeout */)
-  //   }
+  it('can handle a large number of business days', () => {
+    // @ts-ignore
+    if (typeof global.timeout === 'function') {
+      // @ts-ignore
+      global.timeout(500 /* 500 ms test timeout */)
+    }
 
-  //   const result = subBusinessDays(new Date(15000, 0 /* Jan */, 1), 3387885)
-  //   assert.deepStrictEqual(result, new Date(2014, 0 /* Jan */, 1))
-  // })
+    const result = subBusinessDays(new Date(15000, 0 /* Jan */, 1), 3387885)
+    assert.deepStrictEqual(result, new Date(2014, 0 /* Jan */, 1))
+  })
 
   it('accepts a timestamp', () => {
     const result = subBusinessDays(new Date(2014, 8 /* Sep */, 1).getTime(), 10)
@@ -36,8 +36,11 @@ describe('subBusinessDays', () => {
   })
 
   it('implicitly converts number arguments', () => {
-    // @ts-expect-error
-    const result = subBusinessDays(new Date(2014, 8 /* Sep */, 1), '10')
+    const result = subBusinessDays(
+      new Date(2014, 8 /* Sep */, 1),
+      // @ts-expect-error
+      '10'
+    )
     assert.deepStrictEqual(result, new Date(2014, 7 /* Aug */, 18))
   })
 

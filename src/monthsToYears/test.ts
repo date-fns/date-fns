@@ -3,8 +3,8 @@
 import assert from 'assert'
 import monthsToYears from '.'
 
-describe('monthsToYears', function () {
-  it('converts months to years', function () {
+describe('monthsToYears', () => {
+  it('converts months to years', () => {
     assert(monthsToYears(12) === 1)
     assert(monthsToYears(24) === 2)
   })
