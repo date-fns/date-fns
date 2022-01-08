@@ -18,7 +18,6 @@ describe('setDay', () => {
 
   it('allows to specify which day is the first day of the week in locale', () => {
     const result = setDay(new Date(2014, 8 /* Sep */, 1), 0, {
-      // @ts-expect-error
       locale: {
         options: { weekStartsOn: 1 },
       },
@@ -29,7 +28,6 @@ describe('setDay', () => {
   it('`options.weekStartsOn` overwrites the first day of the week specified in locale', () => {
     const result = setDay(new Date(2014, 8 /* Sep */, 1), 0, {
       weekStartsOn: 1,
-      // @ts-expect-error
       locale: {
         options: { weekStartsOn: 0 },
       },
@@ -40,14 +38,6 @@ describe('setDay', () => {
   it('converts a fractional number to an integer', () => {
     const result = setDay(new Date(2014, 8 /* Sep */, 1), 0.5)
     assert.deepStrictEqual(result, new Date(2014, 7 /* Aug */, 31))
-  })
-
-  it('implicitly converts options', () => {
-    const result = setDay(new Date(2014, 8 /* Sep */, 1), 0, {
-      // @ts-expect-error
-      weekStartsOn: '1',
-    })
-    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 7))
   })
 
   it('specifies Monday as the first day of the week', () => {
@@ -111,15 +101,6 @@ describe('setDay', () => {
     assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 3))
   })
 
-  it('implicitly converts number arguments', () => {
-    const result = setDay(
-      new Date(2014, 8 /* Sep */, 1),
-      // @ts-expect-error
-      '5'
-    )
-    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 5))
-  })
-
   it('does not mutate the original date', () => {
     const date = new Date(2014, 8 /* Sep */, 1)
     setDay(date, 3)
@@ -143,12 +124,5 @@ describe('setDay', () => {
         weekStartsOn: NaN,
       })
     assert.throws(block, RangeError)
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(setDay.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(setDay.bind(null, 1), TypeError)
   })
 })

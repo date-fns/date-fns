@@ -1,9 +1,7 @@
 import addDays from '../addDays/index'
-import toDate from '../toDate/index'
-import toInteger from '../_lib/toInteger/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 import type { LocaleOptions, WeekStartOptions } from '../types'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
+import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name setDay
@@ -30,12 +28,10 @@ import { getDefaultOptions } from '../_lib/defaultOptions/index'
  * //=> Sun Sep 07 2014 00:00:00
  */
 export default function setDay(
-  dirtyDate: Date | number,
-  dirtyDay: number,
+  date: Date | number,
+  day: number,
   options?: WeekStartOptions & LocaleOptions
 ): Date {
-  requiredArgs(2, arguments)
-
   const defaultOptions = getDefaultOptions()
   const weekStartsOn = toInteger(
     options?.weekStartsOn ??
@@ -50,17 +46,17 @@ export default function setDay(
     throw new RangeError('weekStartsOn must be between 0 and 6 inclusively')
   }
 
-  const date = toDate(dirtyDate)
-  const day = toInteger(dirtyDay)
-  const currentDay = date.getDay()
+  const dateTransformed = new Date(date)
+  const dayTransformed = Math.trunc(day)
+  const currentDay = dateTransformed.getDay()
 
-  const remainder = day % 7
+  const remainder = dayTransformed % 7
   const dayIndex = (remainder + 7) % 7
 
   const delta = 7 - weekStartsOn
   const diff =
-    day < 0 || day > 6
-      ? day - ((currentDay + delta) % 7)
+    dayTransformed < 0 || dayTransformed > 6
+      ? dayTransformed - ((currentDay + delta) % 7)
       : ((dayIndex + delta) % 7) - ((currentDay + delta) % 7)
-  return addDays(date, diff)
+  return addDays(dateTransformed, diff)
 }
