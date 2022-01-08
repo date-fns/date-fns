@@ -1,6 +1,5 @@
 import addDays from '../addDays/index'
 import type { LocaleOptions, WeekStartOptions } from '../types'
-import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name setDay
@@ -36,11 +35,11 @@ export default function setDay(
   const localeWeekStartsOn =
     locale && locale.options && locale.options.weekStartsOn
   const defaultWeekStartsOn =
-    localeWeekStartsOn == null ? 0 : toInteger(localeWeekStartsOn)
+    localeWeekStartsOn == null ? 0 : Math.trunc(localeWeekStartsOn)
   const weekStartsOn =
     opts.weekStartsOn == null
       ? defaultWeekStartsOn
-      : toInteger(opts.weekStartsOn)
+      : Math.trunc(opts.weekStartsOn)
 
   // Test if weekStartsOn is between 0 and 6 _and_ is not NaN
   if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {
