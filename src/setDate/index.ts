@@ -1,7 +1,3 @@
-import toInteger from '../_lib/toInteger/index'
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name setDate
  * @category Day Helpers
@@ -9,10 +5,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @description
  * Set the day of the month to the given date.
- *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param date - the date to be changed
  * @param dayOfMonth - the day of the month of the new date
@@ -23,14 +15,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = setDate(new Date(2014, 8, 1), 30)
  * //=> Tue Sep 30 2014 00:00:00
  */
-export default function setDate(
-  dirtyDate: Date | number,
-  dirtyDayOfMonth: number
-): Date {
-  requiredArgs(2, arguments)
-
-  const date = toDate(dirtyDate)
-  const dayOfMonth = toInteger(dirtyDayOfMonth)
-  date.setDate(dayOfMonth)
-  return date
+export default function setDate(date: Date | number, dayOfMonth: number): Date {
+  const result = new Date(date)
+  const dayOfMonthTransformed = Math.trunc(dayOfMonth)
+  result.setDate(dayOfMonthTransformed)
+  return result
 }
