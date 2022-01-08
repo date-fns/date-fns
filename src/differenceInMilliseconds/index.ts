@@ -1,6 +1,3 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name differenceInMilliseconds
  * @category Millisecond Helpers
@@ -26,7 +23,5 @@ export default function differenceInMilliseconds(
   dateLeft: Date | number,
   dateRight: Date | number
 ): number {
-  requiredArgs(2, arguments)
-
-  return toDate(dateLeft).getTime() - toDate(dateRight).getTime()
+  return new Date(dateLeft).getTime() - new Date(dateRight).getTime()
 }

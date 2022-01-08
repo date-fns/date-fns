@@ -1,5 +1,4 @@
 import isSameQuarter from '../isSameQuarter/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isThisQuarter
@@ -21,8 +20,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = isThisQuarter(new Date(2014, 6, 2))
  * //=> true
  */
-export default function isThisQuarter(dirtyDate: Date | number): boolean {
-  requiredArgs(1, arguments)
-
-  return isSameQuarter(Date.now(), dirtyDate)
+export default function isThisQuarter(date: Date | number): boolean {
+  return isSameQuarter(Date.now(), date)
 }

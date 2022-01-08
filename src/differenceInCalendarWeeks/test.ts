@@ -26,7 +26,6 @@ describe('differenceInCalendarWeeks', () => {
       new Date(2014, 6 /* Jul */, 8, 18, 0),
       new Date(2014, 5 /* Jun */, 29, 6, 0),
       {
-        // @ts-expect-error
         locale: {
           options: { weekStartsOn: 1 },
         },
@@ -41,7 +40,6 @@ describe('differenceInCalendarWeeks', () => {
       new Date(2014, 5 /* Jun */, 29, 6, 0),
       {
         weekStartsOn: 1,
-        // @ts-expect-error
         locale: {
           options: { weekStartsOn: 0 },
         },
@@ -158,12 +156,5 @@ describe('differenceInCalendarWeeks', () => {
         }
       )
     assert.throws(block, RangeError)
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(differenceInCalendarWeeks.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(differenceInCalendarWeeks.bind(null, 1), TypeError)
   })
 })

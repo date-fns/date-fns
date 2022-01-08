@@ -1,6 +1,5 @@
 import startOfISOWeekYear from '../startOfISOWeekYear/index'
 import addWeeks from '../addWeeks/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 const MILLISECONDS_IN_WEEK = 604800000
 
@@ -22,10 +21,8 @@ const MILLISECONDS_IN_WEEK = 604800000
  * const result = getISOWeeksInYear(new Date(2015, 1, 11))
  * //=> 53
  */
-export default function getISOWeeksInYear(dirtyDate: Date | number): number {
-  requiredArgs(1, arguments)
-
-  const thisYear = startOfISOWeekYear(dirtyDate)
+export default function getISOWeeksInYear(date: Date | number): number {
+  const thisYear = startOfISOWeekYear(date)
   const nextYear = startOfISOWeekYear(addWeeks(thisYear, 60))
   const diff = nextYear.valueOf() - thisYear.valueOf()
   // Round the number of weeks to the nearest integer

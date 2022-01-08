@@ -1,6 +1,3 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name getSeconds
  * @category Second Helpers
@@ -17,10 +14,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = getSeconds(new Date(2012, 1, 29, 11, 45, 5, 123))
  * //=> 5
  */
-export default function getSeconds(dirtyDate: Date | number): number {
-  requiredArgs(1, arguments)
-
-  const date = toDate(dirtyDate)
-  const seconds = date.getSeconds()
+export default function getSeconds(date: Date | number): number {
+  const dateTransformed = new Date(date)
+  const seconds = dateTransformed.getSeconds()
   return seconds
 }

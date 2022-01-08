@@ -70,9 +70,4 @@ describe('isDate', () => {
     assert(!isDate(null))
     assert(!isDate(0))
   })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(isDate.bind(null), TypeError)
-  })
 })

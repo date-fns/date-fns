@@ -1,6 +1,4 @@
 import addHours from '../addHours/index'
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 import type { Interval, StepOptions } from '../types'
 
 /**
@@ -32,14 +30,12 @@ import type { Interval, StepOptions } from '../types'
  * // ]
  */
 export default function eachHourOfInterval(
-  dirtyInterval: Interval,
+  interval: Interval,
   options?: StepOptions
 ): Date[] {
-  requiredArgs(1, arguments)
-
-  const interval = dirtyInterval || {}
-  const startDate = toDate(interval.start)
-  const endDate = toDate(interval.end)
+  const int = interval || {}
+  const startDate = new Date(int.start)
+  const endDate = new Date(int.end)
 
   const startTime = startDate.getTime()
   const endTime = endDate.getTime()
@@ -59,7 +55,7 @@ export default function eachHourOfInterval(
     throw new RangeError('`options.step` must be a number greater than 1')
 
   while (currentDate.getTime() <= endTime) {
-    dates.push(toDate(currentDate))
+    dates.push(new Date(currentDate))
     currentDate = addHours(currentDate, step)
   }
 

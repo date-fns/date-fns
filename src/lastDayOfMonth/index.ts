@@ -1,6 +1,3 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name lastDayOfMonth
  * @category Month Helpers
@@ -18,12 +15,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = lastDayOfMonth(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Tue Sep 30 2014 00:00:00
  */
-export default function lastDayOfMonth(dirtyDate: Date | number): Date {
-  requiredArgs(1, arguments)
-
-  const date = toDate(dirtyDate)
-  const month = date.getMonth()
-  date.setFullYear(date.getFullYear(), month + 1, 0)
-  date.setHours(0, 0, 0, 0)
-  return date
+export default function lastDayOfMonth(date: Date | number): Date {
+  const result = new Date(date)
+  const month = result.getMonth()
+  result.setFullYear(result.getFullYear(), month + 1, 0)
+  result.setHours(0, 0, 0, 0)
+  return result
 }

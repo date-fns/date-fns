@@ -1,4 +1,3 @@
-import requiredArgs from '../_lib/requiredArgs/index'
 import previousDay from '../previousDay/index'
 
 /**
@@ -18,6 +17,5 @@ import previousDay from '../previousDay/index'
  * //=> Tue June 15 2021 00:00:00
  */
 export default function previousTuesday(date: Date | number): Date {
-  requiredArgs(1, arguments)
   return previousDay(date, 2)
 }

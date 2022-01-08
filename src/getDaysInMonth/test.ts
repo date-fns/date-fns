@@ -32,9 +32,4 @@ describe('getDaysInMonth', () => {
     const result = getDaysInMonth(new Date(NaN))
     assert(isNaN(result))
   })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(getDaysInMonth.bind(null), TypeError)
-  })
 })

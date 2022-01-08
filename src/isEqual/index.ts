@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isEqual
@@ -22,12 +21,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> false
  */
 export default function isEqual(
-  dirtyLeftDate: Date | number,
-  dirtyRightDate: Date | number
+  dateLeft: Date | number,
+  dateRight: Date | number
 ): boolean {
-  requiredArgs(2, arguments)
-
-  const dateLeft = toDate(dirtyLeftDate)
-  const dateRight = toDate(dirtyRightDate)
-  return dateLeft.getTime() === dateRight.getTime()
+  const dateLeftTransformed = new Date(dateLeft)
+  const dateRightTransformed = toDate(dateRight)
+  return dateLeftTransformed.getTime() === dateRightTransformed.getTime()
 }

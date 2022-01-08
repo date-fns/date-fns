@@ -1,6 +1,3 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name getDecade
  * @category Decade Helpers
@@ -17,11 +14,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = getDecade(new Date(1942, 10, 27))
  * //=> 1940
  */
-export default function getDecade(dirtyDate: Date | number): number {
-  requiredArgs(1, arguments)
-
-  const date = toDate(dirtyDate)
-  const year = date.getFullYear()
+export default function getDecade(date: Date | number): number {
+  const dateTransformed = new Date(date)
+  const year = dateTransformed.getFullYear()
   const decade = Math.floor(year / 10) * 10
   return decade
 }

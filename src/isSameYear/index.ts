@@ -1,6 +1,3 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name isSameYear
  * @category Year Helpers
@@ -19,12 +16,12 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> true
  */
 export default function isSameYear(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+  dateLeft: Date | number,
+  dateRight: Date | number
 ): boolean {
-  requiredArgs(2, arguments)
-
-  const dateLeft = toDate(dirtyDateLeft)
-  const dateRight = toDate(dirtyDateRight)
-  return dateLeft.getFullYear() === dateRight.getFullYear()
+  const dateLeftTransformed = new Date(dateLeft)
+  const dateRightTransformed = new Date(dateRight)
+  return (
+    dateLeftTransformed.getFullYear() === dateRightTransformed.getFullYear()
+  )
 }

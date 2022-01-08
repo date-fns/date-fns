@@ -33,9 +33,4 @@ describe('isThisWeek', () => {
     const date = new Date(2014, 8 /* Sep */, 21).getTime()
     assert(isThisWeek(date) === true)
   })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(isThisWeek.bind(null), TypeError)
-  })
 })

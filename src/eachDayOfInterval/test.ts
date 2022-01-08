@@ -101,11 +101,6 @@ describe('eachDayOfInterval', () => {
     assert.throws(block, RangeError)
   })
 
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(eachDayOfInterval.bind(null), TypeError)
-  })
-
   describe('options.step', () => {
     const interval = {
       start: new Date(2014, 9 /* Oct */, 6),

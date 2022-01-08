@@ -1,5 +1,4 @@
 import startOfHour from '../startOfHour/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isSameHour
@@ -24,13 +23,11 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> false
  */
 export default function isSameHour(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+  dateLeft: Date | number,
+  dateRight: Date | number
 ): boolean {
-  requiredArgs(2, arguments)
-
-  const dateLeftStartOfHour = startOfHour(dirtyDateLeft)
-  const dateRightStartOfHour = startOfHour(dirtyDateRight)
+  const dateLeftStartOfHour = startOfHour(dateLeft)
+  const dateRightStartOfHour = startOfHour(dateRight)
 
   return dateLeftStartOfHour.getTime() === dateRightStartOfHour.getTime()
 }

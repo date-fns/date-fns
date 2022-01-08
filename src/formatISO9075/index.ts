@@ -1,4 +1,3 @@
-import toDate from '../toDate/index'
 import isValid from '../isValid/index'
 import addLeadingZeros from '../_lib/addLeadingZeros/index'
 import { FormatOptions, RepresentationOptions } from '../types'
@@ -39,16 +38,10 @@ import { FormatOptions, RepresentationOptions } from '../types'
  * //=> '19:00:52'
  */
 export default function formatISO9075(
-  dirtyDate: Date | number,
+  date: Date | number,
   options?: FormatOptions & RepresentationOptions
 ): string {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      `1 argument required, but only ${arguments.length} present`
-    )
-  }
-
-  const originalDate = toDate(dirtyDate)
+  const originalDate = new Date(date)
 
   if (!isValid(originalDate)) {
     throw new RangeError('Invalid time value')

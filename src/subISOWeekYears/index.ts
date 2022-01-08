@@ -1,6 +1,4 @@
 import addISOWeekYears from '../addISOWeekYears/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name subISOWeekYears
@@ -22,11 +20,9 @@ import toInteger from '../_lib/toInteger/index'
  * //=> Mon Aug 31 2009 00:00:00
  */
 export default function subISOWeekYears(
-  dirtyDate: Date | number,
-  dirtyAmount: number
+  date: Date | number,
+  amount: number
 ): Date {
-  requiredArgs(2, arguments)
-
-  const amount = toInteger(dirtyAmount)
-  return addISOWeekYears(dirtyDate, -amount)
+  const amountTransformed = Math.trunc(amount)
+  return addISOWeekYears(date, -amountTransformed)
 }

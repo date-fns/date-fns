@@ -35,11 +35,4 @@ describe('clamp', () => {
     const result = clamp(date, { start, end })
     assert.deepStrictEqual(result, new Date(2001, 1, 1))
   })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(clamp.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(clamp.bind(null, 1), TypeError)
-  })
 })

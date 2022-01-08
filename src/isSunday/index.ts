@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isSunday
@@ -17,8 +16,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = isSunday(new Date(2014, 8, 21))
  * //=> true
  */
-export default function isSunday(dirtyDate: Date | number): boolean {
-  requiredArgs(1, arguments)
-
-  return toDate(dirtyDate).getDay() === 0
+export default function isSunday(date: Date | number): boolean {
+  return toDate(date).getDay() === 0
 }

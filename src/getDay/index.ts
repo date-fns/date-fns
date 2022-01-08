@@ -1,6 +1,3 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name getDay
  * @category Weekday Helpers
@@ -18,9 +15,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> 3
  */
 export default function getDay(dirtyDate: Date | number): number {
-  requiredArgs(1, arguments)
-
-  const date = toDate(dirtyDate)
-  const day = date.getDay()
+  const dateTransformed = new Date(dirtyDate)
+  const day = dateTransformed.getDay()
   return day
 }

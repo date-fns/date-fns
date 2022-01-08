@@ -1,7 +1,5 @@
-import toInteger from '../_lib/toInteger/index'
 import getISOWeekYear from '../getISOWeekYear/index'
 import setISOWeekYear from '../setISOWeekYear/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name addISOWeekYears
@@ -23,11 +21,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> Fri Jun 26 2015 00:00:00
  */
 export default function addISOWeekYears(
-  dirtyDate: Date | number,
-  dirtyAmount: number
+  date: Date | number,
+  amount: number
 ): Date {
-  requiredArgs(2, arguments)
-
-  const amount = toInteger(dirtyAmount)
-  return setISOWeekYear(dirtyDate, getISOWeekYear(dirtyDate) + amount)
+  const amountTransformed = Math.trunc(amount)
+  return setISOWeekYear(date, getISOWeekYear(date) + amountTransformed)
 }

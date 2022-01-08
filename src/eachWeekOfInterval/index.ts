@@ -2,7 +2,6 @@ import addWeeks from '../addWeeks/index'
 import startOfWeek from '../startOfWeek/index'
 import toDate from '../toDate/index'
 import type { Interval, LocaleOptions, WeekStartOptions } from '../types'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name eachWeekOfInterval
@@ -37,14 +36,12 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * // ]
  */
 export default function eachWeekOfInterval(
-  dirtyInterval: Interval,
+  interval: Interval,
   options?: LocaleOptions & WeekStartOptions
 ): Date[] {
-  requiredArgs(1, arguments)
-
-  const interval = dirtyInterval || {}
-  const startDate = toDate(interval.start)
-  const endDate = toDate(interval.end)
+  const int = interval || {}
+  const startDate = toDate(int.start)
+  const endDate = toDate(int.end)
 
   let endTime = endDate.getTime()
 

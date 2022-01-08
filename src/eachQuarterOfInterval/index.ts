@@ -1,8 +1,6 @@
 import addQuarters from '../addQuarters/index'
 import startOfQuarter from '../startOfQuarter/index'
-import toDate from '../toDate/index'
 import type { Interval } from '../types'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name eachQuarterOfInterval
@@ -29,12 +27,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //   Tue Jul 01 2014 00:00:00,
  * // ]
  */
-export default function eachQuarterOfInterval(dirtyInterval: Interval): Date[] {
-  requiredArgs(1, arguments)
-
-  const interval = dirtyInterval || {}
-  const startDate = toDate(interval.start)
-  const endDate = toDate(interval.end)
+export default function eachQuarterOfInterval(interval: Interval): Date[] {
+  const int = interval || {}
+  const startDate = new Date(int.start)
+  const endDate = new Date(int.end)
 
   let endTime = endDate.getTime()
 
@@ -53,7 +49,7 @@ export default function eachQuarterOfInterval(dirtyInterval: Interval): Date[] {
   let currentQuarter = startDateQuarter
 
   while (currentQuarter.getTime() <= endTime) {
-    quarters.push(toDate(currentQuarter))
+    quarters.push(new Date(currentQuarter))
     currentQuarter = addQuarters(currentQuarter, 1)
   }
 

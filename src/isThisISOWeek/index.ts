@@ -1,5 +1,4 @@
 import isSameISOWeek from '../isSameISOWeek/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isThisISOWeek
@@ -24,8 +23,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> true
  */
 
-export default function isThisISOWeek(dirtyDate: Date | number): boolean {
-  requiredArgs(1, arguments)
-
-  return isSameISOWeek(dirtyDate, Date.now())
+export default function isThisISOWeek(date: Date | number): boolean {
+  return isSameISOWeek(date, Date.now())
 }

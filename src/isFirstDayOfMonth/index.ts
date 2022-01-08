@@ -1,6 +1,3 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name isFirstDayOfMonth
  * @category Month Helpers
@@ -17,8 +14,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = isFirstDayOfMonth(new Date(2014, 8, 1))
  * //=> true
  */
-export default function isFirstDayOfMonth(dirtyDate: Date | number): boolean {
-  requiredArgs(1, arguments)
-
-  return toDate(dirtyDate).getDate() === 1
+export default function isFirstDayOfMonth(date: Date | number): boolean {
+  return new Date(date).getDate() === 1
 }

@@ -1,5 +1,4 @@
 import isSameMonth from '../isSameMonth/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isThisMonth
@@ -22,8 +21,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> true
  */
 
-export default function isThisMonth(dirtyDate: Date | number): boolean {
-  requiredArgs(1, arguments)
-
-  return isSameMonth(Date.now(), dirtyDate)
+export default function isThisMonth(date: Date | number): boolean {
+  return isSameMonth(Date.now(), date)
 }

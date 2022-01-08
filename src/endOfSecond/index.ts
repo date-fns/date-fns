@@ -1,6 +1,3 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name endOfSecond
  * @category Second Helpers
@@ -19,9 +16,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> Mon Dec 01 2014 22:15:45.999
  */
 export default function endOfSecond(dirtyDate: Date | number): Date {
-  requiredArgs(1, arguments)
-
-  const date = toDate(dirtyDate)
+  const date = new Date(dirtyDate)
   date.setMilliseconds(999)
   return date
 }

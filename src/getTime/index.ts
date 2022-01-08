@@ -1,6 +1,3 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name getTime
  * @category Timestamp Helpers
@@ -17,10 +14,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = getTime(new Date(2012, 1, 29, 11, 45, 5, 123))
  * //=> 1330515905123
  */
-export default function getTime(dirtyDate: Date | number): number {
-  requiredArgs(1, arguments)
-
-  const date = toDate(dirtyDate)
-  const timestamp = date.getTime()
+export default function getTime(date: Date | number): number {
+  const dateTransformed = new Date(date)
+  const timestamp = dateTransformed.getTime()
   return timestamp
 }

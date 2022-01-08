@@ -1,6 +1,5 @@
 import differenceInMonths from '../differenceInMonths/index'
 import type { RoundingOptions } from '../types'
-import requiredArgs from '../_lib/requiredArgs/index'
 import { getRoundingMethod } from '../_lib/roundingMethods/index'
 
 /**
@@ -26,8 +25,6 @@ export default function differenceInQuarters(
   dateRight: Date | number,
   options?: RoundingOptions
 ): number {
-  requiredArgs(2, arguments)
-
   const diff = differenceInMonths(dateLeft, dateRight) / 3
   return getRoundingMethod(options?.roundingMethod)(diff)
 }

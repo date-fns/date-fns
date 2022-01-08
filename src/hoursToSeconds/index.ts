@@ -1,4 +1,3 @@
-import requiredArgs from '../_lib/requiredArgs/index'
 import { secondsInHour } from '../constants/index'
 
 /**
@@ -19,6 +18,5 @@ import { secondsInHour } from '../constants/index'
  * //=> 7200
  */
 export default function hoursToSeconds(hours: number): number {
-  requiredArgs(1, arguments)
   return Math.floor(hours * secondsInHour)
 }

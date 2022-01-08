@@ -1,6 +1,3 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name endOfHour
  * @category Hour Helpers
@@ -18,10 +15,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = endOfHour(new Date(2014, 8, 2, 11, 55))
  * //=> Tue Sep 02 2014 11:59:59.999
  */
-export default function endOfHour(dirtyDate: Date | number): Date {
-  requiredArgs(1, arguments)
-
-  const date = toDate(dirtyDate)
-  date.setMinutes(59, 59, 999)
-  return date
+export default function endOfHour(date: Date | number): Date {
+  const result = new Date(date)
+  result.setMinutes(59, 59, 999)
+  return result
 }

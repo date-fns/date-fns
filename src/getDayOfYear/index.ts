@@ -1,7 +1,5 @@
-import toDate from '../toDate/index'
-import startOfYear from '../startOfYear/index'
 import differenceInCalendarDays from '../differenceInCalendarDays/index'
-import requiredArgs from '../_lib/requiredArgs/index'
+import startOfYear from '../startOfYear/index'
 
 /**
  * @name getDayOfYear
@@ -19,11 +17,12 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = getDayOfYear(new Date(2014, 6, 2))
  * //=> 183
  */
-export default function getDayOfYear(dirtyDate: Date | number): number {
-  requiredArgs(1, arguments)
-
-  const date = toDate(dirtyDate)
-  const diff = differenceInCalendarDays(date, startOfYear(date))
+export default function getDayOfYear(date: Date | number): number {
+  const dateTransformed = new Date(date)
+  const diff = differenceInCalendarDays(
+    dateTransformed,
+    startOfYear(dateTransformed)
+  )
   const dayOfYear = diff + 1
   return dayOfYear
 }

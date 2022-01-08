@@ -1,6 +1,3 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name differenceInCalendarYears
  * @category Year Helpers
@@ -22,13 +19,11 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> 2
  */
 export default function differenceInCalendarYears(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+  dateLeft: Date | number,
+  dateRight: Date | number
 ): number {
-  requiredArgs(2, arguments)
+  const dateLeftTransformed = new Date(dateLeft)
+  const dateRightTransformed = new Date(dateRight)
 
-  const dateLeft = toDate(dirtyDateLeft)
-  const dateRight = toDate(dirtyDateRight)
-
-  return dateLeft.getFullYear() - dateRight.getFullYear()
+  return dateLeftTransformed.getFullYear() - dateRightTransformed.getFullYear()
 }

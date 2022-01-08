@@ -1,5 +1,4 @@
 import getISOWeekYear from '../getISOWeekYear/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name differenceInCalendarISOWeekYears
@@ -24,10 +23,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> 2
  */
 export default function differenceInCalendarISOWeekYears(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+  dateLeft: Date | number,
+  dateRight: Date | number
 ): number {
-  requiredArgs(2, arguments)
-
-  return getISOWeekYear(dirtyDateLeft) - getISOWeekYear(dirtyDateRight)
+  return getISOWeekYear(dateLeft) - getISOWeekYear(dateRight)
 }

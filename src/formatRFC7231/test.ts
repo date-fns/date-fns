@@ -17,9 +17,4 @@ describe('formatRFC7231', () => {
   it('throws RangeError if the time value is invalid', () => {
     assert.throws(formatRFC7231.bind(null, new Date(NaN)), RangeError)
   })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(formatRFC7231.bind(null), TypeError)
-  })
 })

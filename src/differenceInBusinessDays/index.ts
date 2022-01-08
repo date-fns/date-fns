@@ -3,9 +3,6 @@ import differenceInCalendarDays from '../differenceInCalendarDays/index'
 import isSameDay from '../isSameDay/index'
 import isValid from '../isValid/index'
 import isWeekend from '../isWeekend/index'
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name differenceInBusinessDays
@@ -56,29 +53,31 @@ import toInteger from '../_lib/toInteger/index'
  * //=> 0
  */
 export default function differenceInBusinessDays(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+  dateLeft: Date | number,
+  dateRight: Date | number
 ): number {
-  requiredArgs(2, arguments)
+  const dateLeftTransformed = new Date(dateLeft)
+  let dateRightTransformed = new Date(dateRight)
 
-  const dateLeft = toDate(dirtyDateLeft)
-  let dateRight = toDate(dirtyDateRight)
+  if (!isValid(dateLeftTransformed) || !isValid(dateRightTransformed))
+    return NaN
 
-  if (!isValid(dateLeft) || !isValid(dateRight)) return NaN
-
-  const calendarDifference = differenceInCalendarDays(dateLeft, dateRight)
+  const calendarDifference = differenceInCalendarDays(
+    dateLeftTransformed,
+    dateRightTransformed
+  )
   const sign = calendarDifference < 0 ? -1 : 1
 
-  const weeks = toInteger(calendarDifference / 7)
+  const weeks = Math.trunc(calendarDifference / 7)
 
   let result = weeks * 5
-  dateRight = addDays(dateRight, weeks * 7)
+  dateRightTransformed = addDays(dateRightTransformed, weeks * 7)
 
   // the loop below will run at most 6 times to account for the remaining days that don't makeup a full week
-  while (!isSameDay(dateLeft, dateRight)) {
+  while (!isSameDay(dateLeftTransformed, dateRightTransformed)) {
     // sign is used to account for both negative and positive differences
-    result += isWeekend(dateRight) ? 0 : sign
-    dateRight = addDays(dateRight, sign)
+    result += isWeekend(dateRightTransformed) ? 0 : sign
+    dateRightTransformed = addDays(dateRightTransformed, sign)
   }
 
   return result === 0 ? 0 : result

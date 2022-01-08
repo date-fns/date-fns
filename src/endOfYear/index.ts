@@ -1,6 +1,3 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name endOfYear
  * @category Year Helpers
@@ -19,10 +16,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> Wed Dec 31 2014 23:59:59.999
  */
 export default function endOfYear(dirtyDate: Date | number): Date {
-  requiredArgs(1, arguments)
-
-  const date = toDate(dirtyDate)
-  const year = date.getFullYear()
+  var date = new Date(dirtyDate)
+  var year = date.getFullYear()
   date.setFullYear(year + 1, 0, 0)
   date.setHours(23, 59, 59, 999)
   return date

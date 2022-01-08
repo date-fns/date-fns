@@ -1,6 +1,3 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name getHours
  * @category Hour Helpers
@@ -17,10 +14,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = getHours(new Date(2012, 1, 29, 11, 45))
  * //=> 11
  */
-export default function getHours(dirtyDate: Date | number): number {
-  requiredArgs(1, arguments)
-
-  const date = toDate(dirtyDate)
-  const hours = date.getHours()
+export default function getHours(date: Date | number): number {
+  const dateTransformed = new Date(date)
+  const hours = dateTransformed.getHours()
   return hours
 }

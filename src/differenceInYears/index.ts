@@ -1,7 +1,5 @@
-import toDate from '../toDate/index'
-import differenceInCalendarYears from '../differenceInCalendarYears/index'
 import compareAsc from '../compareAsc/index'
-import requiredArgs from '../_lib/requiredArgs/index'
+import differenceInCalendarYears from '../differenceInCalendarYears/index'
 
 /**
  * @name differenceInYears
@@ -21,25 +19,26 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> 1
  */
 export default function differenceInYears(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+  dateLeft: Date | number,
+  dateRight: Date | number
 ): number {
-  requiredArgs(2, arguments)
+  const dateLeftTransformed = new Date(dateLeft)
+  const dateRightTransformed = new Date(dateRight)
 
-  const dateLeft = toDate(dirtyDateLeft)
-  const dateRight = toDate(dirtyDateRight)
-
-  const sign = compareAsc(dateLeft, dateRight)
-  const difference = Math.abs(differenceInCalendarYears(dateLeft, dateRight))
+  const sign = compareAsc(dateLeftTransformed, dateRightTransformed)
+  const difference = Math.abs(
+    differenceInCalendarYears(dateLeftTransformed, dateRightTransformed)
+  )
 
   // Set both dates to a valid leap year for accurate comparison when dealing
   // with leap days
-  dateLeft.setFullYear(1584)
-  dateRight.setFullYear(1584)
+  dateLeftTransformed.setFullYear(1584)
+  dateRightTransformed.setFullYear(1584)
 
   // Math.abs(diff in full years - diff in calendar years) === 1 if last calendar year is not full
   // If so, result must be decreased by 1 in absolute value
-  const isLastYearNotFull = compareAsc(dateLeft, dateRight) === -sign
+  const isLastYearNotFull =
+    compareAsc(dateLeftTransformed, dateRightTransformed) === -sign
   const result = sign * (difference - Number(isLastYearNotFull))
   // Prevent negative zero
   return result === 0 ? 0 : result

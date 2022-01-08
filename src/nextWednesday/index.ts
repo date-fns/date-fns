@@ -1,5 +1,4 @@
 import nextDay from '../nextDay/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name nextWednesday
@@ -18,6 +17,5 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> Wed Mar 25 2020 00:00:00
  */
 export default function nextWednesday(date: Date | number): Date {
-  requiredArgs(1, arguments)
   return nextDay(date, 3)
 }

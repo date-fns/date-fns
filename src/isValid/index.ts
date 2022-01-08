@@ -1,6 +1,4 @@
 import isDate from '../isDate/index'
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isValid
@@ -32,12 +30,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = isValid(new Date(''))
  * //=> false
  */
-export default function isValid(dirtyDate: unknown): boolean {
-  requiredArgs(1, arguments)
-
-  if (!isDate(dirtyDate) && typeof dirtyDate !== 'number') {
+export default function isValid(date: unknown): boolean {
+  if (!isDate(date) && typeof date !== 'number') {
     return false
   }
-  const date = toDate(dirtyDate)
-  return !isNaN(Number(date))
+  const dateTransformed = new Date(date)
+  return !isNaN(Number(dateTransformed))
 }

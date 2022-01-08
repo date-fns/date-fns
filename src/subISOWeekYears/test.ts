@@ -19,15 +19,6 @@ describe('subISOWeekYears', () => {
     assert.deepStrictEqual(result, new Date(2009, 7 /* Aug */, 31))
   })
 
-  it('implicitly converts number arguments', () => {
-    const result = subISOWeekYears(
-      new Date(2014, 8 /* Sep */, 1),
-      // @ts-expect-error
-      '5'
-    )
-    assert.deepStrictEqual(result, new Date(2009, 7 /* Aug */, 31))
-  })
-
   it('does not mutate the original date', () => {
     const date = new Date(2014, 8 /* Sep */, 1)
     subISOWeekYears(date, 12)
@@ -53,12 +44,5 @@ describe('subISOWeekYears', () => {
   it('returns `Invalid Date` if the given amount is NaN', () => {
     const result = subISOWeekYears(new Date(2014, 8 /* Sep */, 1), NaN)
     assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(subISOWeekYears.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(subISOWeekYears.bind(null, 1), TypeError)
   })
 })

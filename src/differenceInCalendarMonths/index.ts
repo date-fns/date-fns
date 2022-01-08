@@ -1,6 +1,3 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name differenceInCalendarMonths
  * @category Month Helpers
@@ -22,16 +19,16 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> 8
  */
 export default function differenceInCalendarMonths(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+  dateLeft: Date | number,
+  dateRight: Date | number
 ): number {
-  requiredArgs(2, arguments)
+  const dateLeftTransformed = new Date(dateLeft)
+  const dateRightTransformed = new Date(dateRight)
 
-  const dateLeft = toDate(dirtyDateLeft)
-  const dateRight = toDate(dirtyDateRight)
-
-  const yearDiff = dateLeft.getFullYear() - dateRight.getFullYear()
-  const monthDiff = dateLeft.getMonth() - dateRight.getMonth()
+  const yearDiff =
+    dateLeftTransformed.getFullYear() - dateRightTransformed.getFullYear()
+  const monthDiff =
+    dateLeftTransformed.getMonth() - dateRightTransformed.getMonth()
 
   return yearDiff * 12 + monthDiff
 }

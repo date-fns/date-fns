@@ -1,5 +1,4 @@
 import isSameMinute from '../isSameMinute/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isThisMinute
@@ -23,8 +22,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> true
  */
 
-export default function isThisMinute(dirtyDate: Date | number): boolean {
-  requiredArgs(1, arguments)
-
-  return isSameMinute(Date.now(), dirtyDate)
+export default function isThisMinute(date: Date | number): boolean {
+  return isSameMinute(Date.now(), date)
 }

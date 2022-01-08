@@ -1,6 +1,4 @@
 import addDays from '../addDays/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name subDays
@@ -19,12 +17,7 @@ import toInteger from '../_lib/toInteger/index'
  * const result = subDays(new Date(2014, 8, 1), 10)
  * //=> Fri Aug 22 2014 00:00:00
  */
-export default function subDays(
-  dirtyDate: Date | number,
-  dirtyAmount: number
-): Date {
-  requiredArgs(2, arguments)
-
-  const amount = toInteger(dirtyAmount)
-  return addDays(dirtyDate, -amount)
+export default function subDays(date: Date | number, amount: number): Date {
+  const amountTransformed = Math.trunc(amount)
+  return addDays(date, -amountTransformed)
 }

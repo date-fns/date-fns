@@ -1,6 +1,3 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name getMinutes
  * @category Minute Helpers
@@ -17,10 +14,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = getMinutes(new Date(2012, 1, 29, 11, 45, 5))
  * //=> 45
  */
-export default function getMinutes(dirtyDate: Date | number): number {
-  requiredArgs(1, arguments)
-
-  const date = toDate(dirtyDate)
-  const minutes = date.getMinutes()
+export default function getMinutes(date: Date | number): number {
+  const dateTransformed = new Date(date)
+  const minutes = dateTransformed.getMinutes()
   return minutes
 }

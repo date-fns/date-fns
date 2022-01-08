@@ -1,6 +1,4 @@
 import addHours from '../addHours/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name subHours
@@ -19,12 +17,7 @@ import toInteger from '../_lib/toInteger/index'
  * const result = subHours(new Date(2014, 6, 11, 1, 0), 2)
  * //=> Thu Jul 10 2014 23:00:00
  */
-export default function subHours(
-  dirtyDate: Date | number,
-  dirtyAmount: number
-): Date {
-  requiredArgs(2, arguments)
-
-  const amount = toInteger(dirtyAmount)
-  return addHours(dirtyDate, -amount)
+export default function subHours(date: Date | number, amount: number): Date {
+  const amountTransformed = Math.trunc(amount)
+  return addHours(date, -amountTransformed)
 }

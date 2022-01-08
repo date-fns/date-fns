@@ -1,6 +1,4 @@
-import toDate from '../toDate/index'
 import startOfISOWeek from '../startOfISOWeek/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name getISOWeekYear
@@ -21,11 +19,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = getISOWeekYear(new Date(2005, 0, 2))
  * //=> 2004
  */
-export default function getISOWeekYear(dirtyDate: Date | number): number {
-  requiredArgs(1, arguments)
-
-  const date = toDate(dirtyDate)
-  const year = date.getFullYear()
+export default function getISOWeekYear(date: Date | number): number {
+  const dateTransformed = new Date(date)
+  const year = dateTransformed.getFullYear()
 
   const fourthOfJanuaryOfNextYear = new Date(0)
   fourthOfJanuaryOfNextYear.setFullYear(year + 1, 0, 4)
@@ -37,9 +33,9 @@ export default function getISOWeekYear(dirtyDate: Date | number): number {
   fourthOfJanuaryOfThisYear.setHours(0, 0, 0, 0)
   const startOfThisYear = startOfISOWeek(fourthOfJanuaryOfThisYear)
 
-  if (date.getTime() >= startOfNextYear.getTime()) {
+  if (dateTransformed.getTime() >= startOfNextYear.getTime()) {
     return year + 1
-  } else if (date.getTime() >= startOfThisYear.getTime()) {
+  } else if (dateTransformed.getTime() >= startOfThisYear.getTime()) {
     return year
   } else {
     return year - 1

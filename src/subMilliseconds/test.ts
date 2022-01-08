@@ -37,18 +37,6 @@ describe('subMilliseconds', () => {
     )
   })
 
-  it('implicitly converts number arguments', () => {
-    const result = subMilliseconds(
-      new Date(2014, 6 /* Jul */, 10, 12, 45, 30, 0),
-      // @ts-expect-error
-      '750'
-    )
-    assert.deepStrictEqual(
-      result,
-      new Date(2014, 6 /* Jul */, 10, 12, 45, 29, 250)
-    )
-  })
-
   it('does not mutate the original date', () => {
     const date = new Date(2014, 6 /* Jul */, 10, 12, 45, 30, 0)
     subMilliseconds(date, 250)
@@ -66,12 +54,5 @@ describe('subMilliseconds', () => {
       NaN
     )
     assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(subMilliseconds.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(subMilliseconds.bind(null, 1), TypeError)
   })
 })

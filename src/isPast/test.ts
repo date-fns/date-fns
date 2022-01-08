@@ -33,9 +33,4 @@ describe('isPast', () => {
     const result = isPast(new Date(2014, 6 /* Jul */, 2).getTime())
     assert(result === true)
   })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(isPast.bind(null), TypeError)
-  })
 })

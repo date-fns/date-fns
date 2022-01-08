@@ -2,7 +2,6 @@ import eachDayOfInterval from '../eachDayOfInterval/index'
 import isSunday from '../isSunday/index'
 import isWeekend from '../isWeekend/index'
 import type { Interval } from '../types'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name eachWeekendOfInterval
@@ -31,8 +30,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * // ]
  */
 export default function eachWeekendOfInterval(interval: Interval): Date[] {
-  requiredArgs(1, arguments)
-
   const dateInterval = eachDayOfInterval(interval)
   const weekends = []
   let index = 0

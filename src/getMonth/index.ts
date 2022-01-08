@@ -1,6 +1,3 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name getMonth
  * @category Month Helpers
@@ -17,10 +14,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = getMonth(new Date(2012, 1, 29))
  * //=> 1
  */
-export default function getMonth(dirtyDate: Date | number): number {
-  requiredArgs(1, arguments)
-
-  const date = toDate(dirtyDate)
-  const month = date.getMonth()
+export default function getMonth(date: Date | number): number {
+  const dateTransformed = new Date(date)
+  const month = dateTransformed.getMonth()
   return month
 }

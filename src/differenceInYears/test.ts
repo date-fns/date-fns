@@ -138,11 +138,4 @@ describe('differenceInYears', () => {
     const result = differenceInYears(new Date(NaN), new Date(NaN))
     assert(isNaN(result))
   })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(differenceInYears.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(differenceInYears.bind(null, 1), TypeError)
-  })
 })
