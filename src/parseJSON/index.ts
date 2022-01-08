@@ -1,6 +1,3 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name parseJSON
  * @category Common Helpers
@@ -35,8 +32,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @returns the parsed date in the local time zone
  */
 export default function parseJSON(argument: string): Date {
-  requiredArgs(1, arguments)
-
   if (typeof argument === 'string') {
     const parts = argument.match(
       /(\d{4})-(\d{2})-(\d{2})[T ](\d{2}):(\d{2}):(\d{2})(?:\.(\d{0,7}))?(?:Z|(.)(\d{2}):?(\d{2})?)?/
@@ -57,5 +52,5 @@ export default function parseJSON(argument: string): Date {
     }
     return new Date(NaN)
   }
-  return toDate(argument)
+  return new Date(argument)
 }
