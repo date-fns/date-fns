@@ -1,4 +1,3 @@
-import requiredArgs from '../_lib/requiredArgs/index'
 import { millisecondsInMinute } from '../constants/index'
 
 /**
@@ -19,6 +18,5 @@ import { millisecondsInMinute } from '../constants/index'
  * //=> 120000
  */
 export default function minutesToMilliseconds(minutes: number): number {
-  requiredArgs(1, arguments)
   return Math.floor(minutes * millisecondsInMinute)
 }
