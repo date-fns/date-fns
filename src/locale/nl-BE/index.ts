@@ -8,8 +8,8 @@ import match from './_lib/match/index'
 /**
  * @type {Locale}
  * @category Locales
- * @summary Dutch locale.
- * @language Dutch
+ * @summary Dutch (Belgium) locale.
+ * @language Dutch (Belgium)
  * @iso-639-2 nld
  * @author Jorik Tangelder [@jtangelder]{@link https://github.com/jtangelder}
  * @author Ruben Stolk [@rubenstolk]{@link https://github.com/rubenstolk}

@@ -1,6 +1,6 @@
-const path = require('path')
+import path from 'path'
 
-module.exports = {
+export default {
   groups: [
     'General',
     'Types',
@@ -63,6 +63,14 @@ module.exports = {
       title: 'I18n',
       description: 'Internationalization',
       path: path.join(__dirname, 'i18n.md'),
+    },
+    {
+      type: 'markdown',
+      urlId: 'i18n-Locales',
+      category: 'General',
+      title: 'I18n Locales',
+      description: 'Available locales',
+      path: path.join(__dirname, 'i18nLocales.md'),
     },
     {
       type: 'markdown',
