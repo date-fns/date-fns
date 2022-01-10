@@ -762,7 +762,10 @@ describe('format', () => {
           },
         },
       }
-      const result = format(date, 'PPPP', { locale: customLocale })
+      const result = format(date, 'PPPP', {
+        // @ts-expect-error
+        locale: customLocale,
+      })
       assert(result === 'It works!')
     })
 
@@ -770,9 +773,11 @@ describe('format', () => {
       const customLocale = {
         formatLong: {},
       }
-      const block = format.bind(null, date, 'yyyy-MM-dd', {
-        locale: customLocale,
-      })
+      const block = () =>
+        format(date, 'yyyy-MM-dd', {
+          // @ts-expect-error
+          locale: customLocale,
+        })
       assert.throws(block, RangeError)
     })
 
@@ -780,17 +785,19 @@ describe('format', () => {
       const customLocale = {
         localize: {},
       }
-      const block = format.bind(null, date, 'yyyy-MM-dd', {
-        locale: customLocale,
-      })
+      const block = () =>
+        format(date, 'yyyy-MM-dd', {
+          // @ts-expect-error
+          locale: customLocale,
+        })
       assert.throws(block, RangeError)
     })
   })
 
   it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', () => {
     const block = () =>
-      // @ts-expect-error
       format(new Date(2007, 11 /* Dec */, 31), 'yyyy', {
+        // @ts-expect-error
         weekStartsOn: NaN,
       })
     assert.throws(block, RangeError)
@@ -799,6 +806,7 @@ describe('format', () => {
   it('throws `RangeError` if `options.firstWeekContainsDate` is not convertable to 1, 2, ..., 7 or undefined', () => {
     const block = () =>
       format(new Date(2007, 11 /* Dec */, 31), 'yyyy', {
+        // @ts-expect-error
         firstWeekContainsDate: NaN,
       })
     assert.throws(block, RangeError)
@@ -811,6 +819,7 @@ describe('format', () => {
   it('throws TypeError exception if passed less than 2 arguments', () => {
     // @ts-expect-error
     assert.throws(format.bind(null), TypeError)
+    // @ts-expect-error
     assert.throws(format.bind(null, 1), TypeError)
   })
 

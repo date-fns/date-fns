@@ -89,6 +89,7 @@ export type FormatRelativeToken =
 
 export interface FormatRelativeFnOptions {
   weekStartsOn?: Day
+  locale?: Locale
 }
 
 export type FormatRelativeFn = (
