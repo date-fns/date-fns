@@ -111,7 +111,7 @@ const formatDistance: FormatDistanceFn = (token, count, options) => {
   } else if (count === 1) {
     result = tokenValue.one
   } else {
-    if (options?.onlyNumeric) {
+    if (options && (options as any).onlyNumeric) {
       result = tokenValue.other.replace('{{count}}', String(count))
     } else {
       result = tokenValue.other.replace(

@@ -437,13 +437,13 @@ export default function format(
           !options.useAdditionalWeekYearTokens &&
           isProtectedWeekYearToken(substring)
         ) {
-          throwProtectedError(substring, dirtyFormatStr, dirtyDate)
+          throwProtectedError(substring, dirtyFormatStr, String(dirtyDate))
         }
         if (
           !options.useAdditionalDayOfYearTokens &&
           isProtectedDayOfYearToken(substring)
         ) {
-          throwProtectedError(substring, dirtyFormatStr, dirtyDate)
+          throwProtectedError(substring, dirtyFormatStr, String(dirtyDate))
         }
         return formatter(utcDate, substring, locale.localize, formatterOptions)
       }

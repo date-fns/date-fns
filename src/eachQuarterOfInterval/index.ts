@@ -37,7 +37,7 @@ export default function eachQuarterOfInterval(dirtyInterval: Interval): Date[] {
   const startDate = toDate(interval.start)
   const endDate = toDate(interval.end)
 
-  var endTime = endDate.getTime()
+  let endTime = endDate.getTime()
 
   // Throw an exception if start date is after end date or if any date is `Invalid Date`
   if (!(startDate.getTime() <= endTime)) {
@@ -51,7 +51,7 @@ export default function eachQuarterOfInterval(dirtyInterval: Interval): Date[] {
 
   const quarters = []
 
-  var currentQuarter = startDateQuarter
+  let currentQuarter = startDateQuarter
 
   while (currentQuarter.getTime() <= endTime) {
     quarters.push(toDate(currentQuarter))

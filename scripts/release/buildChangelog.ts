@@ -268,22 +268,22 @@ interface Author {
   email: string
 }
 
-var closesRegExp = /(?:closes|fixes) #(\d+)/
+const closesRegExp = /(?:closes|fixes) #(\d+)/
 
-var issuesRegExp = /\s?\(((?:#\d+(?:,\s?)?)+)\)/g
+const issuesRegExp = /\s?\(((?:#\d+(?:,\s?)?)+)\)/g
 
-var thanksOptions = [
+const thanksOptions = [
   (authors: string) => `Kudos to ${authors} for working on the release.`,
   (authors: string) => `Thanks to ${authors} for working on the release.`,
   (authors: string) => `This release is brought to you by ${authors}.`,
   (authors: string) => `On this release worked ${authors}.`,
 ]
 
-var fixedSentenceRegExp = /^(breaking:\s?)?(fixed\s.+)/i
-var fixedOneLinerRegExp = /^fixed:\s(.+)/i
+const fixedSentenceRegExp = /^(breaking:\s?)?(fixed\s.+)/i
+const fixedOneLinerRegExp = /^fixed:\s(.+)/i
 
-var changedSentenceRegExp = /^(breaking:\s?)?(changed\s.+)/i
-var changedOneLinerRegExp = /^changed:\s(.+)/i
+const changedSentenceRegExp = /^(breaking:\s?)?(changed\s.+)/i
+const changedOneLinerRegExp = /^changed:\s(.+)/i
 
-var addedSentenceRegExp = /^(breaking:\s?)?(added\s.+)/i
-var addedOneLinerRegExp = /^added:\s(.+)/i
+const addedSentenceRegExp = /^(breaking:\s?)?(added\s.+)/i
+const addedOneLinerRegExp = /^added:\s(.+)/i

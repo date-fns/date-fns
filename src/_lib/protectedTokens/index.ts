@@ -1,15 +1,19 @@
-var protectedDayOfYearTokens = ['D', 'DD']
-var protectedWeekYearTokens = ['YY', 'YYYY']
+const protectedDayOfYearTokens = ['D', 'DD']
+const protectedWeekYearTokens = ['YY', 'YYYY']
 
-export function isProtectedDayOfYearToken(token) {
+export function isProtectedDayOfYearToken(token: string): boolean {
   return protectedDayOfYearTokens.indexOf(token) !== -1
 }
 
-export function isProtectedWeekYearToken(token) {
+export function isProtectedWeekYearToken(token: string): boolean {
   return protectedWeekYearTokens.indexOf(token) !== -1
 }
 
-export function throwProtectedError(token, format, input) {
+export function throwProtectedError(
+  token: string,
+  format: string,
+  input: string
+): void {
   if (token === 'YYYY') {
     throw new RangeError(
       `Use \`yyyy\` instead of \`YYYY\` (in \`${format}\`) for formatting years to the input \`${input}\`; see: https://git.io/fxCyr`

@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
+import type { FormatDistanceFn } from '../locale/types'
 import formatDistanceStrict from '.'
 
 describe('formatDistanceStrict', () => {
@@ -425,20 +426,16 @@ describe('formatDistanceStrict', () => {
 
   describe('custom locale', () => {
     it('can be passed to the function', () => {
-      function localizeDistance(
-        token: string,
-        count: number,
-        options: { addSuffix: boolean; comparison: number }
-      ) {
+      const formatDistance: FormatDistanceFn = (token, count, options) => {
         assert(token === 'xSeconds')
         assert(count === 25)
-        assert(options.addSuffix === true)
-        assert(options.comparison < 0)
+        assert(options!.addSuffix === true)
+        assert(options!.comparison! < 0)
         return 'It works!'
       }
 
       const customLocale = {
-        formatDistance: localizeDistance,
+        formatDistance,
       }
 
       const result = formatDistanceStrict(
