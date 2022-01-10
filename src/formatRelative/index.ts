@@ -6,6 +6,7 @@ import toDate from '../toDate/index'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 import type { LocaleOptions, WeekStartOptions } from '../types'
+import type { FormatRelativeToken } from '../locale/types'
 
 /**
  * @name formatRelative
@@ -73,7 +74,7 @@ export default function formatRelative(
     throw new RangeError('Invalid time value')
   }
 
-  let token
+  let token: FormatRelativeToken
   if (diff < -6) {
     token = 'other'
   } else if (diff < -1) {

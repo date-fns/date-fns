@@ -16,6 +16,8 @@ import type {
   FirstWeekContainsDateOptions,
   LocaleOptions,
   WeekStartOptions,
+  Day,
+  FirstWeekContainsDate,
 } from '../types'
 
 // This RegExp consists of three parts separated by `|`:
@@ -400,38 +402,24 @@ export default function format(
   const utcDate = subMilliseconds(originalDate, timezoneOffset)
 
   const formatterOptions = {
-    firstWeekContainsDate: firstWeekContainsDate,
-    weekStartsOn: weekStartsOn,
+    firstWeekContainsDate: firstWeekContainsDate as FirstWeekContainsDate,
+    weekStartsOn: weekStartsOn as Day,
     locale: locale,
     _originalDate: originalDate,
   }
 
-  let result
-
-  const longFormattingTokens = formatStr.match(longFormattingTokensRegExp)
-
-  if (!longFormattingTokens) {
-    throw new TypeError('Invalid format string')
-  }
-
-  result = longFormattingTokens
+  const result = formatStr
+    .match(longFormattingTokensRegExp)!
     .map(function (substring) {
       const firstCharacter = substring[0]
       if (firstCharacter === 'p' || firstCharacter === 'P') {
         const longFormatter = longFormatters[firstCharacter]
-        return longFormatter(substring, locale.formatLong, formatterOptions)
+        return longFormatter(substring, locale.formatLong)
       }
       return substring
     })
     .join('')
-
-  const formattingTokens = result.match(formattingTokensRegExp)
-
-  if (!formattingTokens) {
-    throw new TypeError('Invalid format string')
-  }
-
-  result = formattingTokens
+    .match(formattingTokensRegExp)!
     .map(function (substring) {
       // Replace two single quote characters with one single quote character
       if (substring === "''") {
@@ -475,7 +463,7 @@ export default function format(
   return result
 }
 
-function cleanEscapedString(input: string) {
+function cleanEscapedString(input: string): string {
   const matched = input.match(escapedStringRegExp)
 
   if (!matched) {

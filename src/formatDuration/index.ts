@@ -1,5 +1,5 @@
 import defaultLocale from '../locale/en-US/index'
-import type { Locale } from '../locale/types'
+import type { FormatDistanceToken, Locale } from '../locale/types'
 import type { Duration } from '../types'
 
 const defaultFormat: (keyof Duration)[] = [
@@ -96,15 +96,21 @@ export default function formatDuration(
   const zero = options?.zero || false
   const delimiter = options?.delimiter || ' '
 
+  if (!locale.formatDistance) {
+    return ''
+  }
+
   const result = format
     .reduce((acc, unit) => {
-      const token = `x${unit.replace(/(^.)/, (m) => m.toUpperCase())}`
-      const addChunk =
-        typeof duration[unit] === 'number' && (zero || duration[unit])
-      return addChunk && locale.formatDistance
-        ? acc.concat(locale.formatDistance(token, duration[unit]))
-        : acc
-    }, [])
+      const token = `x${unit.replace(/(^.)/, (m) =>
+        m.toUpperCase()
+      )}` as FormatDistanceToken
+      const value = duration[unit]
+      if (typeof value === 'number' && (zero || duration[unit])) {
+        return acc.concat(locale.formatDistance(token, value))
+      }
+      return acc
+    }, [] as string[])
     .join(delimiter)
 
   return result

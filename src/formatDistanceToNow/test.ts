@@ -199,6 +199,7 @@ describe('formatDistanceToNow', () => {
 
       const result = formatDistanceToNow(new Date(1986, 3, 4, 11, 32, 0), {
         addSuffix: true,
+        // @ts-expect-error
         locale: customLocale,
       })
 
@@ -211,6 +212,7 @@ describe('formatDistanceToNow', () => {
         const block = () =>
           formatDistanceToNow(new Date(1986, 3, 4, 10, 32, 0), {
             includeSeconds: true,
+            // @ts-expect-error
             locale: customLocale,
           })
         assert.throws(block, RangeError)

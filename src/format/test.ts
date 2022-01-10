@@ -806,6 +806,7 @@ describe('format', () => {
   it('throws `RangeError` if `options.firstWeekContainsDate` is not convertable to 1, 2, ..., 7 or undefined', () => {
     const block = () =>
       format(new Date(2007, 11 /* Dec */, 31), 'yyyy', {
+        // @ts-expect-error
         firstWeekContainsDate: NaN,
       })
     assert.throws(block, RangeError)

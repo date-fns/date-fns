@@ -148,7 +148,7 @@ export default function formatDistance(
       } else if (seconds < 20) {
         return locale.formatDistance('lessThanXSeconds', 20, localizeOptions)
       } else if (seconds < 40) {
-        return locale.formatDistance('halfAMinute', null, localizeOptions)
+        return locale.formatDistance('halfAMinute', 0, localizeOptions)
       } else if (seconds < 60) {
         return locale.formatDistance('lessThanXMinutes', 1, localizeOptions)
       } else {
