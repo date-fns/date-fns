@@ -4,6 +4,7 @@ import differenceInSeconds from '../differenceInSeconds/index'
 import defaultLocale from '../locale/en-US/index'
 import toDate from '../toDate/index'
 import cloneObject from '../_lib/cloneObject/index'
+import assign from '../_lib/assign'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 import type { LocaleOptions } from '../types'
@@ -116,9 +117,10 @@ export default function formatDistance(
     throw new RangeError('Invalid time value')
   }
 
-  const localizeOptions = cloneObject(options)
-  localizeOptions.addSuffix = Boolean(options.addSuffix)
-  localizeOptions.comparison = comparison
+  const localizeOptions = assign(cloneObject(options), {
+    addSuffix: Boolean(options.addSuffix),
+    comparison: comparison as -1 | 0 | 1,
+  })
 
   let dateLeft
   let dateRight

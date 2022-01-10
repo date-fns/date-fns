@@ -64,7 +64,6 @@ export type FormatDistanceTokenFn = (
 export interface FormatDistanceOptions {
   addSuffix?: boolean
   comparison?: -1 | 0 | 1
-  onlyNumeric?: boolean // only for `nn` and `sv` locales so far
 }
 
 export type FormatDistanceFn = (
