@@ -1,4 +1,4 @@
-import { LocaleOptions, Unit } from '../types'
+import type { LocaleOptions, Unit } from '../types'
 import formatDistanceStrict from '../formatDistanceStrict/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 
