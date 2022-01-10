@@ -37,7 +37,7 @@ function buildLocalizeTokenFn(scheme: {
 }): FormatDistanceTokenFn {
   return (count, options): string => {
     if (options && options.addSuffix) {
-      if (options.comparison && options > 0) {
+      if (options.comparison && options.comparison > 0) {
         if (scheme.future) {
           return declension(scheme.future, count)
         } else {
