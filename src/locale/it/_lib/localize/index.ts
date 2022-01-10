@@ -137,7 +137,7 @@ const ordinalNumber: LocalizeFn<number, undefined> = (
   _options
 ) => {
   const number = Number(dirtyNumber)
-  return number + 'º'
+  return String(number)
 }
 
 const localize: Localize = {
