@@ -208,11 +208,11 @@ describe('formatDistanceToNow', () => {
     describe('does not contain `distanceInWords` property', () => {
       it('throws `RangeError`', function () {
         const customLocale = {}
-        const block = formatDistanceToNow.bind(
-          null,
-          new Date(1986, 3, 4, 10, 32, 0),
-          { includeSeconds: true, locale: customLocale }
-        )
+        const block = () =>
+          formatDistanceToNow(new Date(1986, 3, 4, 10, 32, 0), {
+            includeSeconds: true,
+            locale: customLocale,
+          })
         assert.throws(block, RangeError)
       })
     })
