@@ -36,7 +36,7 @@ module.exports = config
 function getEntryConfig() {
   if (process.env.BUILD_TESTS) {
     return {
-      tests: './testWithoutLocales.js',
+      tests: './test.js',
     }
   } else if (process.env.NODE_ENV === 'test') {
     return undefined

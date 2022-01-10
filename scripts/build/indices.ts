@@ -7,7 +7,7 @@
  * It's a part of the build process.
  */
 
-import { readFile, writeFile } from 'fs/promises'
+import { writeFile } from 'fs/promises'
 import listFns from '../_lib/listFns'
 import listFPFns from '../_lib/listFPFns'
 import listLocales from '../_lib/listLocales'
@@ -19,13 +19,7 @@ interface File {
 }
 
 ;(async () => {
-  const outdatedLocales: string[] = JSON.parse(
-    (await readFile('./outdatedLocales.json')).toString()
-  )
-
-  const locales = (await listLocales()).filter(
-    ({ code }) => !outdatedLocales.includes(code)
-  )
+  const locales = await listLocales()
 
   const fns = await listFns()
   const fpFns = listFPFns()

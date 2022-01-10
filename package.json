@@ -97,7 +97,6 @@
     "node-fetch": "^1.7.3",
     "p-limit": "^3.1.0",
     "prettier": "2",
-    "rimraf": "^2.7.1",
     "simple-git": "^2.35.2",
     "sinon": "^7.4.1",
     "size-limit": "^0.21.0",
