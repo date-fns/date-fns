@@ -4,7 +4,7 @@ import type {
   FormatDistanceOptions,
 } from '../../../types'
 
-type Plural = {
+type DeclensionScheme = {
   one?: string
   singularNominative: string
   singularGenitive: string
@@ -12,9 +12,9 @@ type Plural = {
 }
 
 type Tense = {
-  regular: Plural
-  past?: Plural
-  future?: Plural
+  regular: DeclensionScheme
+  past?: DeclensionScheme
+  future?: DeclensionScheme
 }
 
 type FormatDistanceTokenValue = (
@@ -24,7 +24,7 @@ type FormatDistanceTokenValue = (
   options?: FormatDistanceOptions
 ) => string
 
-function declension(scheme: Plural, count: number): string {
+function declension(scheme: DeclensionScheme, count: number): string {
   // scheme for count=1 exists
   if (scheme.one !== undefined && count === 1) {
     return scheme.one

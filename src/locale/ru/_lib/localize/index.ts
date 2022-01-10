@@ -45,6 +45,7 @@ const monthValues = {
     'декабрь',
   ] as const,
 }
+
 const formattingMonthValues = {
   narrow: ['Я', 'Ф', 'М', 'А', 'М', 'И', 'И', 'А', 'С', 'О', 'Н', 'Д'] as const,
   abbreviated: [
