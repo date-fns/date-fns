@@ -1,12 +1,13 @@
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
-import type { LocalizeFn } from '../../../types'
 import type { Quarter } from '../../../../types'
+import type { Localize, LocalizeFn } from '../../../types'
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
 const eraValues = {
   narrow: ['e.ə', 'b.e'] as const,
   abbreviated: ['e.ə', 'b.e'] as const,
   wide: ['eramızdan əvvəl', 'bizim era'] as const,
 }
+
 const quarterValues = {
   narrow: ['1', '2', '3', '4'] as const,
   abbreviated: ['K1', 'K2', 'K3', 'K4'] as const,
@@ -43,6 +44,7 @@ const monthValues = {
     'Dekabr',
   ] as const,
 }
+
 const dayValues = {
   narrow: ['B.', 'B.e', 'Ç.a', 'Ç.', 'C.a', 'C.', 'Ş.'] as const,
   short: ['B.', 'B.e', 'Ç.a', 'Ç.', 'C.a', 'C.', 'Ş.'] as const,
@@ -57,6 +59,7 @@ const dayValues = {
     'Şənbə',
   ] as const,
 }
+
 const dayPeriodValues = {
   narrow: {
     am: 'am',
@@ -89,6 +92,7 @@ const dayPeriodValues = {
     night: 'gecə',
   },
 }
+
 const formattingDayPeriodValues = {
   narrow: {
     am: 'a',
@@ -170,25 +174,30 @@ const ordinalNumber: LocalizeFn<number> = (dirtyNumber, _dirtyOptions) => {
   return number + suffix
 }
 
-const localize = {
-  ordinalNumber: ordinalNumber,
+const localize: Localize = {
+  ordinalNumber,
+
   era: buildLocalizeFn({
     values: eraValues,
     defaultWidth: 'wide',
   }),
+
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: (quarter) => (Number(quarter) - 1) as Quarter,
+    argumentCallback: (quarter) => (quarter - 1) as Quarter,
   }),
+
   month: buildLocalizeFn({
     values: monthValues,
     defaultWidth: 'wide',
   }),
+
   day: buildLocalizeFn({
     values: dayValues,
     defaultWidth: 'wide',
   }),
+
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',

@@ -1,6 +1,6 @@
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
-import type { LocalizeFn } from '../../../types'
 import { Quarter, Unit } from '../../../../types'
+import type { Localize, LocalizeFn } from '../../../types'
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
 const eraValues = {
   narrow: ['пр.н.е.', 'н.е.'] as const,
@@ -83,19 +83,19 @@ const dayPeriodValues = {
   },
 }
 
-function isFeminine(unit: Unit): boolean {
+function isFeminine(unit: Unit | undefined): boolean {
   return (
     unit === 'year' || unit === 'week' || unit === 'minute' || unit === 'second'
   )
 }
 
-function isNeuter(unit: Unit): boolean {
+function isNeuter(unit: Unit | undefined): boolean {
   return unit === 'quarter'
 }
 
 function numberWithSuffix(
   number: number,
-  unit: Unit,
+  unit: Unit | undefined,
   masculine: string,
   feminine: string,
   neuter: string
@@ -108,9 +108,9 @@ function numberWithSuffix(
   return number + '-' + suffix
 }
 
-const ordinalNumber: LocalizeFn<number> = (dirtyNumber, options = {}) => {
-  const unit = String(options.unit) as Unit
+const ordinalNumber: LocalizeFn<number, undefined> = (dirtyNumber, options) => {
   const number = Number(dirtyNumber)
+  const unit = options?.unit
 
   if (number === 0) {
     return numberWithSuffix(0, unit, 'ев', 'ева', 'ево')
@@ -136,8 +136,8 @@ const ordinalNumber: LocalizeFn<number> = (dirtyNumber, options = {}) => {
   return numberWithSuffix(number, unit, 'ти', 'та', 'то')
 }
 
-const localize = {
-  ordinalNumber: ordinalNumber,
+const localize: Localize = {
+  ordinalNumber,
 
   era: buildLocalizeFn({
     values: eraValues,
@@ -147,7 +147,7 @@ const localize = {
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: (quarter) => (Number(quarter) - 1) as Quarter,
+    argumentCallback: (quarter) => (quarter - 1) as Quarter,
   }),
 
   month: buildLocalizeFn({
