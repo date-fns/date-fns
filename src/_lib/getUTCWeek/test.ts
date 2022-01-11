@@ -30,6 +30,7 @@ describe('getUTCWeek', () => {
   it('allows to specify `weekStartsOn` and `firstWeekContainsDate` in locale', () => {
     const date = new Date(Date.UTC(2005, 0 /* Jan */, 2))
     const result = getUTCWeek(date, {
+      // @ts-expect-error
       locale: {
         options: { weekStartsOn: 1, firstWeekContainsDate: 4 },
       },
@@ -42,6 +43,7 @@ describe('getUTCWeek', () => {
     const result = getUTCWeek(date, {
       weekStartsOn: 1,
       firstWeekContainsDate: 4,
+      // @ts-expect-error
       locale: {
         options: { weekStartsOn: 0, firstWeekContainsDate: 1 },
       },
@@ -50,20 +52,25 @@ describe('getUTCWeek', () => {
   })
 
   it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', () => {
-    const block = getUTCWeek.bind(null, new Date(2007, 11 /* Dec */, 31), {
-      weekStartsOn: NaN,
-    })
+    const block = () =>
+      getUTCWeek(new Date(2007, 11 /* Dec */, 31), {
+        // @ts-expect-error
+        weekStartsOn: NaN,
+      })
     assert.throws(block, RangeError)
   })
 
   it('throws `RangeError` if `options.firstWeekContainsDate` is not convertable to 1, 2, ..., 7 or undefined', () => {
-    const block = getUTCWeek.bind(null, new Date(2007, 11 /* Dec */, 31), {
-      firstWeekContainsDate: NaN,
-    })
+    const block = () =>
+      getUTCWeek(new Date(2007, 11 /* Dec */, 31), {
+        // @ts-expect-error
+        firstWeekContainsDate: NaN,
+      })
     assert.throws(block, RangeError)
   })
 
   it('throws TypeError exception if passed less than 1 argument', () => {
+    // @ts-expect-error
     assert.throws(getUTCWeek.bind(null), TypeError)
   })
 })

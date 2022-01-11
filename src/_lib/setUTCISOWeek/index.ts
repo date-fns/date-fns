@@ -3,12 +3,15 @@ import toDate from '../../toDate/index'
 import getUTCISOWeek from '../getUTCISOWeek/index'
 import requiredArgs from '../requiredArgs/index'
 
-export default function setUTCISOWeek(dirtyDate, dirtyISOWeek) {
+export default function setUTCISOWeek(
+  dirtyDate: Date | number,
+  dirtyISOWeek: number
+): Date {
   requiredArgs(2, arguments)
 
-  var date = toDate(dirtyDate)
-  var isoWeek = toInteger(dirtyISOWeek)
-  var diff = getUTCISOWeek(date) - isoWeek
+  const date = toDate(dirtyDate)
+  const isoWeek = toInteger(dirtyISOWeek)
+  const diff = getUTCISOWeek(date) - isoWeek
   date.setUTCDate(date.getUTCDate() - diff * 7)
   return date
 }

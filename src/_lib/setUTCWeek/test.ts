@@ -20,7 +20,11 @@ describe('setUTCWeek', () => {
   })
 
   it('implicitly converts number arguments', () => {
-    const result = setUTCWeek(new Date(Date.UTC(2004, 7 /* Aug */, 7)), '53')
+    const result = setUTCWeek(
+      new Date(Date.UTC(2004, 7 /* Aug */, 7)),
+      // @ts-expect-error
+      '53'
+    )
     assert.deepStrictEqual(result, new Date(Date.UTC(2005, 0 /* Jan */, 1)))
   })
 
@@ -54,6 +58,7 @@ describe('setUTCWeek', () => {
   it('allows to specify `weekStartsOn` and `firstWeekContainsDate` in locale', () => {
     const date = new Date(Date.UTC(2005, 0 /* Jan */, 2))
     const result = setUTCWeek(date, 1, {
+      // @ts-expect-error
       locale: {
         options: { weekStartsOn: 1, firstWeekContainsDate: 4 },
       },
@@ -66,6 +71,7 @@ describe('setUTCWeek', () => {
     const result = setUTCWeek(date, 1, {
       weekStartsOn: 1,
       firstWeekContainsDate: 4,
+      // @ts-expect-error
       locale: {
         options: { weekStartsOn: 0, firstWeekContainsDate: 1 },
       },
@@ -74,21 +80,27 @@ describe('setUTCWeek', () => {
   })
 
   it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', () => {
-    const block = setUTCWeek.bind(null, new Date(2004, 7 /* Aug */, 7), 53, {
-      weekStartsOn: NaN,
-    })
+    const block = () =>
+      setUTCWeek(new Date(2004, 7 /* Aug */, 7), 53, {
+        // @ts-expect-error
+        weekStartsOn: NaN,
+      })
     assert.throws(block, RangeError)
   })
 
   it('throws `RangeError` if `options.firstWeekContainsDate` is not convertable to 1, 2, ..., 7 or undefined', () => {
-    const block = setUTCWeek.bind(null, new Date(2004, 7 /* Aug */, 7), 53, {
-      firstWeekContainsDate: NaN,
-    })
+    const block = () =>
+      setUTCWeek(new Date(2004, 7 /* Aug */, 7), 53, {
+        // @ts-expect-error
+        firstWeekContainsDate: NaN,
+      })
     assert.throws(block, RangeError)
   })
 
   it('throws TypeError exception if passed less than 2 arguments', () => {
+    // @ts-expect-error
     assert.throws(setUTCWeek.bind(null), TypeError)
+    // @ts-expect-error
     assert.throws(setUTCWeek.bind(null, 1), TypeError)
   })
 })

@@ -26,7 +26,11 @@ describe('setUTCISOWeek', () => {
   })
 
   it('implicitly converts number arguments', () => {
-    const result = setUTCISOWeek(new Date(Date.UTC(2004, 7 /* Aug */, 7)), '53')
+    const result = setUTCISOWeek(
+      new Date(Date.UTC(2004, 7 /* Aug */, 7)),
+      // @ts-expect-error
+      '53'
+    )
     assert.deepStrictEqual(result, new Date(Date.UTC(2005, 0 /* Jan */, 1)))
   })
 
@@ -58,6 +62,7 @@ describe('setUTCISOWeek', () => {
   })
 
   it('throws TypeError exception if passed less than 1 argument', () => {
+    // @ts-expect-error
     assert.throws(setUTCISOWeek.bind(null, 1), TypeError)
   })
 })

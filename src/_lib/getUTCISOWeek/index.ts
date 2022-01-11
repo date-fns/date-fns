@@ -1,17 +1,16 @@
 import toDate from '../../toDate/index'
-import startOfUTCWeek from '../startOfUTCWeek/index'
-import startOfUTCWeekYear from '../startOfUTCWeekYear/index'
+import startOfUTCISOWeek from '../startOfUTCISOWeek/index'
+import startOfUTCISOWeekYear from '../startOfUTCISOWeekYear/index'
 import requiredArgs from '../requiredArgs/index'
 
-var MILLISECONDS_IN_WEEK = 604800000
+const MILLISECONDS_IN_WEEK = 604800000
 
-export default function getUTCWeek(dirtyDate, options) {
+export default function getUTCISOWeek(dirtyDate: Date | number) {
   requiredArgs(1, arguments)
 
-  var date = toDate(dirtyDate)
-  var diff =
-    startOfUTCWeek(date, options).getTime() -
-    startOfUTCWeekYear(date, options).getTime()
+  const date = toDate(dirtyDate)
+  const diff =
+    startOfUTCISOWeek(date).getTime() - startOfUTCISOWeekYear(date).getTime()
 
   // Round the number of days to the nearest integer
   // because the number of milliseconds in a week is not constant
