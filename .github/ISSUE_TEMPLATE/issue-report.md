@@ -25,4 +25,4 @@ fn()
 - date-fns version: <!-- Fill in the date-fns version you use -->
 - Browser/Node.js version: <!-- Fill in the envrionment version (i.e. Chrome 94.0.4606.61) -->
 - Your timezone: <!-- Fill in your timezone name (i.e. Asia/Singapore) -->
-- Your current time: <!-- Fill in the time when did you tested the probmlem (i.e. 16:20) -->
+- Your current time: <!-- Fill in the time when did you tested the problem (i.e. 16:20) -->
