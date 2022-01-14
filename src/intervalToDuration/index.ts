@@ -21,7 +21,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Interval} interval - the interval to convert to duration
  *
- * @returns {Duration} The duration Object
+ * @returns {Omit<Required<Duration>, "week">} The duration Object
  * @throws {TypeError} Requires 2 arguments
  * @throws {RangeError} `start` must not be Invalid Date
  * @throws {RangeError} `end` must not be Invalid Date
@@ -35,7 +35,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * // => { years: 39, months: 2, days: 20, hours: 7, minutes: 5, seconds: 0 }
  */
 
-export default function intervalToDuration({ start, end }: Interval): Duration {
+export default function intervalToDuration({ start, end }: Interval): Omit<Required<Duration>, "week"> {
   requiredArgs(1, arguments)
 
   const dateLeft = toDate(start)
