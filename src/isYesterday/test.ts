@@ -1,13 +1,11 @@
-// @flow
 /* eslint-env mocha */
 
-import { SinonFakeTimers } from 'sinon'
 import assert from 'assert'
 import sinon from 'sinon'
 import isYesterday from '.'
 
 describe('isYesterday', () => {
-  let clock: SinonFakeTimers
+  let clock: sinon.SinonFakeTimers
   beforeEach(() => {
     clock = sinon.useFakeTimers(new Date(2014, 8 /* Aug */, 25).getTime())
   })

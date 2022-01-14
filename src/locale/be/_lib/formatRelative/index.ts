@@ -1,6 +1,7 @@
+import { toDate } from '../../../../index'
+import type { Day } from '../../../../types'
 import isSameUTCWeek from '../../../../_lib/isSameUTCWeek/index'
 import { FormatRelativeFn, FormatRelativeTokenFn } from '../../../types'
-import { toDate } from '../../../../index'
 
 const accusativeWeekdays = [
   'нядзелю',

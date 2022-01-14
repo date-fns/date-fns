@@ -1,6 +1,6 @@
 import startOfWeek from '../startOfWeek/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import { WeekStartOptions, LocaleOptions } from '../types'
+import type { WeekStartOptions, LocaleOptions } from '../types'
 
 /**
  * @name isSameWeek
@@ -9,10 +9,6 @@ import { WeekStartOptions, LocaleOptions } from '../types'
  *
  * @description
  * Are the given dates in the same week (and month and year)?
- *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param {Date|Number} dateLeft - the first date to check
  * @param {Date|Number} dateRight - the second date to check
@@ -25,20 +21,20 @@ import { WeekStartOptions, LocaleOptions } from '../types'
  *
  * @example
  * // Are 31 August 2014 and 4 September 2014 in the same week?
- * var result = isSameWeek(new Date(2014, 7, 31), new Date(2014, 8, 4))
+ * const result = isSameWeek(new Date(2014, 7, 31), new Date(2014, 8, 4))
  * //=> true
  *
  * @example
  * // If week starts with Monday,
  * // are 31 August 2014 and 4 September 2014 in the same week?
- * var result = isSameWeek(new Date(2014, 7, 31), new Date(2014, 8, 4), {
+ * const result = isSameWeek(new Date(2014, 7, 31), new Date(2014, 8, 4), {
  *   weekStartsOn: 1
  * })
  * //=> false
- * 
+ *
  * @example
  * // Are 1 January 2014 and 1 January 2015 in the same week?
- * var result = isSameWeek(new Date(2014, 0, 1), new Date(2015, 0, 1))
+ * const result = isSameWeek(new Date(2014, 0, 1), new Date(2015, 0, 1))
  * //=> false
  */
 export default function isSameWeek(

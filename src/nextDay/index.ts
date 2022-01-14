@@ -1,6 +1,6 @@
 import addDays from '../addDays'
 import getDay from '../getDay'
-import { Day } from '../types'
+import type { Day } from '../types'
 import requiredArgs from '../_lib/requiredArgs/index'
 
 /**

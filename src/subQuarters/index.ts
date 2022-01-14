@@ -10,10 +10,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Subtract the specified number of year quarters from the given date.
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
  * @param {Date|Number} date - the date to be changed
  * @param {Number} amount - the amount of quarters to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  * @returns {Date} the new date with the quarters subtracted
@@ -24,7 +20,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = subQuarters(new Date(2014, 8, 1), 3)
  * //=> Sun Dec 01 2013 00:00:00
  */
-export default function subQuarters(dirtyDate: Date | number, dirtyAmount: number): Date {
+export default function subQuarters(
+  dirtyDate: Date | number,
+  dirtyAmount: number
+): Date {
   requiredArgs(2, arguments)
 
   const amount = toInteger(dirtyAmount)

@@ -5,7 +5,8 @@ import subMilliseconds from '../subMilliseconds/index'
 import toDate from '../toDate/index'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import { LocaleOptions, WeekStartOptions } from '../types'
+import type { LocaleOptions, WeekStartOptions } from '../types'
+import type { FormatRelativeToken } from '../locale/types'
 
 /**
  * @name formatRelative
@@ -23,10 +24,6 @@ import { LocaleOptions, WeekStartOptions } from '../types'
  * | Next day                  | tomorrow at 04:30 AM      |
  * | Next 6 days               | Sunday at 04:30 AM        |
  * | Other                     | 12/31/2017                |
- *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param {Date|Number} date - the date to format
  * @param {Date|Number} baseDate - the date to compare with
@@ -77,7 +74,7 @@ export default function formatRelative(
     throw new RangeError('Invalid time value')
   }
 
-  let token
+  let token: FormatRelativeToken
   if (diff < -6) {
     token = 'other'
   } else if (diff < -1) {

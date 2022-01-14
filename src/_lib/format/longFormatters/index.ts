@@ -1,4 +1,4 @@
-import { FormatLong } from '../../../locale/types'
+import type { FormatLong } from '../../../locale/types'
 
 function dateLongFormatter(pattern: string, formatLong: FormatLong) {
   switch (pattern) {

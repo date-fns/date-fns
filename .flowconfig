@@ -1,4 +1,0 @@
-[ignore]
-.*examples*
-[options]
-suppress_comment= \\(.\\|\n\\)*\\$ExpectedMistake

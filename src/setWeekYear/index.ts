@@ -3,7 +3,7 @@ import startOfWeekYear from '../startOfWeekYear/index'
 import toDate from '../toDate/index'
 import toInteger from '../_lib/toInteger/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import {
+import type {
   LocaleOptions,
   WeekStartOptions,
   FirstWeekContainsDateOptions,
@@ -24,10 +24,6 @@ import {
  *
  * Week numbering: https://en.wikipedia.org/wiki/Week#Week_numbering
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
  * @param {Date|Number} date - the date to be changed
  * @param {Number} weekYear - the local week-numbering year of the new date
  * @param {Object} [options] - an object with options.
@@ -41,14 +37,14 @@ import {
  *
  * @example
  * // Set the local week-numbering year 2004 to 2 January 2010 with default options:
- * var result = setWeekYear(new Date(2010, 0, 2), 2004)
+ * const result = setWeekYear(new Date(2010, 0, 2), 2004)
  * //=> Sat Jan 03 2004 00:00:00
  *
  * @example
  * // Set the local week-numbering year 2004 to 2 January 2010,
  * // if Monday is the first day of week
  * // and 4 January is always in the first week of the year:
- * var result = setWeekYear(new Date(2010, 0, 2), 2004, {
+ * const result = setWeekYear(new Date(2010, 0, 2), 2004, {
  *   weekStartsOn: 1,
  *   firstWeekContainsDate: 4
  * })

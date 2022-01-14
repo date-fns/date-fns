@@ -1,6 +1,13 @@
-import type { FormatDistanceFn } from '../../../types'
+import type { FormatDistanceFn, FormatDistanceLocale } from '../../../types'
 
-const formatDistanceLocale = {
+type FormatDistanceTokenValue =
+  | string
+  | {
+      one: string
+      other: string
+    }
+
+const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   lessThanXSeconds: {
     one: 'по-малко от секунда',
     other: 'по-малко от {{count}} секунди',
@@ -79,19 +86,19 @@ const formatDistanceLocale = {
   },
 }
 
-const formatDistance: FormatDistanceFn = (token, count, options = {}) => {
-  const usageGroup = formatDistanceLocale[token]
-
+const formatDistance: FormatDistanceFn = (token, count, options) => {
   let result
-  if (typeof usageGroup === 'string') {
-    result = usageGroup
+
+  const tokenValue = formatDistanceLocale[token]
+  if (typeof tokenValue === 'string') {
+    result = tokenValue
   } else if (count === 1) {
-    result = usageGroup.one
+    result = tokenValue.one
   } else {
-    result = usageGroup.other.replace('{{count}}', String(count))
+    result = tokenValue.other.replace('{{count}}', String(count))
   }
 
-  if (options.addSuffix) {
+  if (options?.addSuffix) {
     if (options.comparison && options.comparison > 0) {
       return 'след ' + result
     } else {

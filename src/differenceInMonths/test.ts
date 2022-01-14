@@ -3,8 +3,8 @@
 import assert from 'assert'
 import differenceInMonths from '.'
 
-describe('differenceInMonths', function () {
-  it('returns the number of full months between the given dates', function () {
+describe('differenceInMonths', () => {
+  it('returns the number of full months between the given dates', () => {
     const result = differenceInMonths(
       new Date(2012, 6 /* Jul */, 2, 18, 0),
       new Date(2011, 6 /* Jul */, 2, 6, 0)
@@ -12,7 +12,7 @@ describe('differenceInMonths', function () {
     assert(result === 12)
   })
 
-  it('returns a negative number if the time value of the first date is smaller', function () {
+  it('returns a negative number if the time value of the first date is smaller', () => {
     const result = differenceInMonths(
       new Date(2011, 6 /* Jul */, 2, 6, 0),
       new Date(2012, 6 /* Jul */, 2, 18, 0)
@@ -20,7 +20,7 @@ describe('differenceInMonths', function () {
     assert(result === -12)
   })
 
-  it('accepts timestamps', function () {
+  it('accepts timestamps', () => {
     const result = differenceInMonths(
       new Date(2014, 7 /* Aug */, 2).getTime(),
       new Date(2010, 6 /* Jul */, 2).getTime()
@@ -28,8 +28,8 @@ describe('differenceInMonths', function () {
     assert(result === 49)
   })
 
-  describe('edge cases', function () {
-    it('it returns diff of 1 month between Feb 28 2021 and Jan 30 2021', function () {
+  describe('edge cases', () => {
+    it('it returns diff of 1 month between Feb 28 2021 and Jan 30 2021', () => {
       const result = differenceInMonths(
         new Date(2021, 1 /* Feb */, 28),
         new Date(2021, 0 /* Jan */, 30)
@@ -37,7 +37,7 @@ describe('differenceInMonths', function () {
       assert(result === 1)
     })
 
-    it('it returns diff of 1 month between Feb 28 2021 and Jan 31 2021', function () {
+    it('it returns diff of 1 month between Feb 28 2021 and Jan 31 2021', () => {
       const result = differenceInMonths(
         new Date(2021, 1 /* Feb */, 28),
         new Date(2021, 0 /* Jan */, 31)
@@ -45,7 +45,7 @@ describe('differenceInMonths', function () {
       assert(result === 1)
     })
 
-    it('it returns diff of 1 month between Nov, 30 2021 and Oct, 31 2021', function () {
+    it('it returns diff of 1 month between Nov, 30 2021 and Oct, 31 2021', () => {
       const result = differenceInMonths(
         new Date(2021, 10 /* Nov */, 30),
         new Date(2021, 9 /* Oct */, 31)
@@ -53,7 +53,7 @@ describe('differenceInMonths', function () {
       assert(result === 1)
     })
 
-    it('it returns diff of 1 month between Oct, 31 2021 and Sep, 30 2021', function () {
+    it('it returns diff of 1 month between Oct, 31 2021 and Sep, 30 2021', () => {
       const result = differenceInMonths(
         new Date(2021, 9 /* Oct */, 31),
         new Date(2021, 8 /* Sep */, 30)
@@ -61,7 +61,7 @@ describe('differenceInMonths', function () {
       assert(result === 1)
     })
 
-    it('it returns diff of 6 month between Oct, 31 2021 and Apr, 30 2021', function () {
+    it('it returns diff of 6 month between Oct, 31 2021 and Apr, 30 2021', () => {
       const result = differenceInMonths(
         new Date(2021, 9 /* Oct */, 31),
         new Date(2021, 3 /* Apr */, 30)
@@ -69,7 +69,7 @@ describe('differenceInMonths', function () {
       assert(result === 6)
     })
 
-    it('it returns diff of -1 month between Sep, 30 2021 and Oct, 31 2021', function () {
+    it('it returns diff of -1 month between Sep, 30 2021 and Oct, 31 2021', () => {
       const result = differenceInMonths(
         new Date(2021, 8 /* Sep */, 30),
         new Date(2021, 9 /* Oct */, 31)
@@ -77,7 +77,7 @@ describe('differenceInMonths', function () {
       assert(result === -1)
     })
 
-    it('the difference is less than a month, but the given dates are in different calendar months', function () {
+    it('the difference is less than a month, but the given dates are in different calendar months', () => {
       const result = differenceInMonths(
         new Date(2014, 7 /* Aug */, 1),
         new Date(2014, 6 /* Jul */, 31)
@@ -85,7 +85,7 @@ describe('differenceInMonths', function () {
       assert(result === 0)
     })
 
-    it('the same for the swapped dates', function () {
+    it('the same for the swapped dates', () => {
       const result = differenceInMonths(
         new Date(2014, 6 /* Jul */, 31),
         new Date(2014, 7 /* Aug */, 1)
@@ -93,7 +93,7 @@ describe('differenceInMonths', function () {
       assert(result === 0)
     })
 
-    it('the days of months of the given dates are the same', function () {
+    it('the days of months of the given dates are the same', () => {
       const result = differenceInMonths(
         new Date(2014, 8 /* Sep */, 6),
         new Date(2014, 7 /* Aug */, 6)
@@ -101,7 +101,7 @@ describe('differenceInMonths', function () {
       assert(result === 1)
     })
 
-    it('the given dates are the same', function () {
+    it('the given dates are the same', () => {
       const result = differenceInMonths(
         new Date(2014, 8 /* Sep */, 5, 0, 0),
         new Date(2014, 8 /* Sep */, 5, 0, 0)
@@ -124,7 +124,7 @@ describe('differenceInMonths', function () {
     })
   })
 
-  it('returns NaN if the first date is `Invalid Date`', function () {
+  it('returns NaN if the first date is `Invalid Date`', () => {
     const result = differenceInMonths(
       new Date(NaN),
       new Date(2017, 0 /* Jan */, 1)
@@ -132,7 +132,7 @@ describe('differenceInMonths', function () {
     assert(isNaN(result))
   })
 
-  it('returns NaN if the second date is `Invalid Date`', function () {
+  it('returns NaN if the second date is `Invalid Date`', () => {
     const result = differenceInMonths(
       new Date(2017, 0 /* Jan */, 1),
       new Date(NaN)
@@ -140,20 +140,20 @@ describe('differenceInMonths', function () {
     assert(isNaN(result))
   })
 
-  it('returns NaN if the both dates are `Invalid Date`', function () {
+  it('returns NaN if the both dates are `Invalid Date`', () => {
     const result = differenceInMonths(new Date(NaN), new Date(NaN))
     assert(isNaN(result))
   })
 
-  it('throws TypeError exception if passed less than 2 arguments', function () {
+  it('throws TypeError exception if passed less than 2 arguments', () => {
     // @ts-expect-error
     assert.throws(differenceInMonths.bind(null), TypeError)
     // @ts-expect-error
     assert.throws(differenceInMonths.bind(null, 1), TypeError)
   })
 
-  describe('edge cases', function () {
-    it('returns the number of full months between the given dates - end of Feb', function () {
+  describe('edge cases', () => {
+    it('returns the number of full months between the given dates - end of Feb', () => {
       assert(
         differenceInMonths(
           new Date(2012, 1 /* Feb */, 29, 9, 0, 0),

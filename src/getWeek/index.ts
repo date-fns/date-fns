@@ -2,7 +2,11 @@ import startOfWeek from '../startOfWeek/index'
 import startOfWeekYear from '../startOfWeekYear/index'
 import toDate from '../toDate/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import { LocaleOptions, WeekStartOptions, FirstWeekContainsDateOptions } from '../types'
+import type {
+  LocaleOptions,
+  WeekStartOptions,
+  FirstWeekContainsDateOptions,
+} from '../types'
 
 const MILLISECONDS_IN_WEEK = 604800000
 
@@ -19,10 +23,6 @@ const MILLISECONDS_IN_WEEK = 604800000
  * the first week of the week-numbering year)
  *
  * Week numbering: https://en.wikipedia.org/wiki/Week#Week_numbering
- *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param {Date|Number} date - the given date
  * @param {Object} [options] - an object with options.
@@ -49,7 +49,10 @@ const MILLISECONDS_IN_WEEK = 604800000
  * //=> 53
  */
 
-export default function getWeek(dirtyDate: Date | number, options?: LocaleOptions & WeekStartOptions & FirstWeekContainsDateOptions): number {
+export default function getWeek(
+  dirtyDate: Date | number,
+  options?: LocaleOptions & WeekStartOptions & FirstWeekContainsDateOptions
+): number {
   requiredArgs(1, arguments)
 
   const date = toDate(dirtyDate)

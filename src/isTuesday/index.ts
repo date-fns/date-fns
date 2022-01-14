@@ -9,17 +9,13 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Is the given date Tuesday?
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
  * @param {Date|Number} date - the date to check
  * @returns {Boolean} the date is Tuesday
  * @throws {TypeError} 1 argument required
  *
  * @example
  * // Is 23 September 2014 Tuesday?
- * var result = isTuesday(new Date(2014, 8, 23))
+ * const result = isTuesday(new Date(2014, 8, 23))
  * //=> true
  */
 export default function isTuesday(dirtyDate: Date | number): boolean {

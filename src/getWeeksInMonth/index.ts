@@ -2,7 +2,7 @@ import differenceInCalendarWeeks from '../differenceInCalendarWeeks/index'
 import lastDayOfMonth from '../lastDayOfMonth/index'
 import startOfMonth from '../startOfMonth/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import { LocaleOptions, WeekStartOptions } from '../types'
+import type { LocaleOptions, WeekStartOptions } from '../types'
 
 /**
  * @name getWeeksInMonth
@@ -11,10 +11,6 @@ import { LocaleOptions, WeekStartOptions } from '../types'
  *
  * @description
  * Get the number of calendar weeks the month in the given date spans.
- *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param {Date|Number} date - the given date
  * @param {Object} [options] - an object with options.

@@ -1,7 +1,7 @@
 import toDate from '../toDate/index'
 import toInteger from '../_lib/toInteger/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import { LocaleOptions, WeekStartOptions } from '../types'
+import type { LocaleOptions, WeekStartOptions } from '../types'
 
 /**
  * @name endOfWeek
@@ -11,10 +11,6 @@ import { LocaleOptions, WeekStartOptions } from '../types'
  * @description
  * Return the end of a week for the given date.
  * The result will be in the local timezone.
- *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param {Date|Number} date - the original date
  * @param {Object} [options] - an object with options.

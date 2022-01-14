@@ -1,3 +1,4 @@
+import type { FormatLong } from '../../../types'
 import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index'
 
 const dateFormats = {
@@ -13,13 +14,15 @@ const timeFormats = {
   medium: 'H:mm:ss',
   short: 'H:mm',
 }
+
 const dateTimeFormats = {
   full: "{{date}} {{time}} - 'də'",
   long: "{{date}} {{time}} - 'də'",
   medium: '{{date}}, {{time}}',
   short: '{{date}}, {{time}}',
 }
-const formatLong = {
+
+const formatLong: FormatLong = {
   date: buildFormatLongFn({
     formats: dateFormats,
     defaultWidth: 'full',

@@ -1,12 +1,11 @@
-// @flow
 /* eslint-env mocha */
 
 import assert from 'assert'
 import min from '.'
 
 describe('min', () => {
-  const isInvalidDate = (dirtyDate: Date): boolean => {
-    return dirtyDate instanceof Date && isNaN(dirtyDate.getDate())
+  const isInvalidDate = (date: any): boolean => {
+    return date instanceof Date && isNaN(date.getTime())
   }
 
   it('returns the earliest date', () => {
@@ -60,12 +59,14 @@ describe('min', () => {
   })
 
   it('converts Array-like objects into Array', () => {
-    // @ts-expect-error
-    const result = min({
-      '0': new Date(1989, 6 /* Jul */, 10),
-      '1': new Date(1987, 1 /* Feb */, 11),
-      length: 2,
-    })
+    const result = min(
+      // @ts-expect-error
+      {
+        '0': new Date(1989, 6 /* Jul */, 10),
+        '1': new Date(1987, 1 /* Feb */, 11),
+        length: 2,
+      }
+    )
     assert.deepStrictEqual(result, new Date(1987, 1 /* Feb */, 11))
   })
 
@@ -81,8 +82,10 @@ describe('min', () => {
   })
 
   it('returns `Invalid Date` if given a non-iterable value', () => {
-    // @ts-expect-error
-    const result = min(undefined)
+    const result = min(
+      // @ts-expect-error
+      undefined
+    )
     assert(isInvalidDate(result))
   })
 

@@ -1,6 +1,6 @@
-import toInteger from '../_lib/toInteger/index'
 import addHours from '../addHours/index'
 import requiredArgs from '../_lib/requiredArgs/index'
+import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name subHours
@@ -9,10 +9,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @description
  * Subtract the specified number of hours from the given date.
- *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param {Date|Number} date - the date to be changed
  * @param {Number} amount - the amount of hours to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
@@ -24,7 +20,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = subHours(new Date(2014, 6, 11, 1, 0), 2)
  * //=> Thu Jul 10 2014 23:00:00
  */
-export default function subHours(dirtyDate: Date | number, dirtyAmount: number) {
+export default function subHours(
+  dirtyDate: Date | number,
+  dirtyAmount: number
+): Date {
   requiredArgs(2, arguments)
 
   const amount = toInteger(dirtyAmount)

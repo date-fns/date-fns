@@ -1,52 +1,60 @@
-// @flow
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import endOfMonth from '.'
 
-describe('endOfMonth', function() {
-  it('returns the date with the time set to 23:59:59.999 and the date set to the last day of a month', function() {
+describe('endOfMonth', () => {
+  it('returns the date with the time set to 23:59:59.999 and the date set to the last day of a month', () => {
     const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     const result = endOfMonth(date)
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 30, 23, 59, 59, 999))
+    assert.deepStrictEqual(
+      result,
+      new Date(2014, 8 /* Sep */, 30, 23, 59, 59, 999)
+    )
   })
 
-  it('accepts a timestamp', function() {
+  it('accepts a timestamp', () => {
     const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0).getTime()
     const result = endOfMonth(date)
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 30, 23, 59, 59, 999))
+    assert.deepStrictEqual(
+      result,
+      new Date(2014, 8 /* Sep */, 30, 23, 59, 59, 999)
+    )
   })
 
-  it('does not mutate the original date', function() {
+  it('does not mutate the original date', () => {
     const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     endOfMonth(date)
-    assert.deepEqual(date, new Date(2014, 8 /* Sep */, 2, 11, 55, 0))
+    assert.deepStrictEqual(date, new Date(2014, 8 /* Sep */, 2, 11, 55, 0))
   })
 
-  describe('edge cases', function() {
-    it('works for last month in year', function() {
+  describe('edge cases', () => {
+    it('works for last month in year', () => {
       const date = new Date(2014, 11 /* Dec */, 1, 0, 0, 0)
       const result = endOfMonth(date)
-      assert.deepEqual(
+      assert.deepStrictEqual(
         result,
         new Date(2014, 11 /* Dec */, 31, 23, 59, 59, 999)
       )
     })
 
-    it('works for last day of month', function() {
+    it('works for last day of month', () => {
       const date = new Date(2014, 9 /* Oct */, 31)
       const result = endOfMonth(date)
-      assert.deepEqual(result, new Date(2014, 9 /* Oct */, 31, 23, 59, 59, 999))
+      assert.deepStrictEqual(
+        result,
+        new Date(2014, 9 /* Oct */, 31, 23, 59, 59, 999)
+      )
     })
   })
 
-  it('returns `Invalid Date` if the given date is invalid', function() {
+  it('returns `Invalid Date` if the given date is invalid', () => {
     const result = endOfMonth(new Date(NaN))
-    //@ts-expect-error
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
-  it('throws TypeError exception if passed less than 1 argument', function() {
+  it('throws TypeError exception if passed less than 1 argument', () => {
+    // @ts-expect-error
     assert.throws(endOfMonth.bind(null), TypeError)
   })
 })

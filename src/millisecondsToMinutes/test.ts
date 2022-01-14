@@ -4,7 +4,7 @@ import assert from 'assert'
 import millisecondsToMinutes from '.'
 
 describe('millisecondsToMinutes', () => {
-  it('converts milliseconds to minutes', function () {
+  it('converts milliseconds to minutes', () => {
     assert(millisecondsToMinutes(60000) === 1)
     assert(millisecondsToMinutes(120000) === 2)
   })

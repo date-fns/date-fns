@@ -1,14 +1,12 @@
-import { LocaleOptions, WeekStartOptions } from '../../types'
 import toDate from '../../toDate/index'
+import type { LocaleOptions, WeekStartOptions } from '../../types'
 import requiredArgs from '../requiredArgs/index'
 import toInteger from '../toInteger/index'
 
-// This function will be a part of public API when UTC function will be implemented.
-// See issue: https://github.com/date-fns/date-fns/issues/376
 export default function startOfUTCWeek(
   dirtyDate: Date | number,
   dirtyOptions?: LocaleOptions & WeekStartOptions
-) {
+): Date {
   requiredArgs(1, arguments)
 
   const options = dirtyOptions || {}

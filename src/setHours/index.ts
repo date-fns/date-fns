@@ -10,10 +10,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Set the hours to the given date.
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
  * @param {Date|Number} date - the date to be changed
  * @param {Number} hours - the hours of the new date
  * @returns {Date} the new date with the hours set
@@ -21,10 +17,13 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // Set 4 hours to 1 September 2014 11:30:00:
- * var result = setHours(new Date(2014, 8, 1, 11, 30), 4)
+ * const result = setHours(new Date(2014, 8, 1, 11, 30), 4)
  * //=> Mon Sep 01 2014 04:30:00
  */
-export default function setHours(dirtyDate: Date | number, dirtyHours: number): Date {
+export default function setHours(
+  dirtyDate: Date | number,
+  dirtyHours: number
+): Date {
   requiredArgs(2, arguments)
 
   const date = toDate(dirtyDate)

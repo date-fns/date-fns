@@ -1,9 +1,6 @@
-// @flow
 /* eslint-env mocha */
 
 import assert from 'assert'
-import { Locale } from 'src/locale/types'
-import { WeekStartOptions } from '../../types'
 import startOfUTCWeekYear from '.'
 
 describe('startOfUTCWeekYear', () => {
@@ -48,9 +45,10 @@ describe('startOfUTCWeekYear', () => {
   it('allows to specify `weekStartsOn` and `firstWeekContainsDate` in locale', () => {
     const date = new Date(Date.UTC(2005, 6 /* Jul */, 2))
     const result = startOfUTCWeekYear(date, {
+      // @ts-expect-error
       locale: {
         options: { weekStartsOn: 1, firstWeekContainsDate: 4 },
-      } as Locale,
+      },
     })
     assert.deepStrictEqual(
       result,
@@ -63,9 +61,10 @@ describe('startOfUTCWeekYear', () => {
     const result = startOfUTCWeekYear(date, {
       weekStartsOn: 1,
       firstWeekContainsDate: 4,
+      // @ts-expect-error
       locale: {
         options: { weekStartsOn: 0, firstWeekContainsDate: 1 },
-      } as Locale,
+      },
     })
     assert.deepStrictEqual(
       result,
@@ -74,25 +73,25 @@ describe('startOfUTCWeekYear', () => {
   })
 
   it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', () => {
-    const block = startOfUTCWeekYear.bind(
-      null,
-      new Date(2007, 11 /* Dec */, 31),
-      { weekStartsOn: NaN } as WeekStartOptions
-    )
+    const block = () =>
+      startOfUTCWeekYear(new Date(2007, 11 /* Dec */, 31), {
+        // @ts-expect-error
+        weekStartsOn: NaN,
+      })
     assert.throws(block, RangeError)
   })
 
   it('throws `RangeError` if `options.firstWeekContainsDate` is not convertable to 1, 2, ..., 7 or undefined', () => {
-    const block = startOfUTCWeekYear.bind(
-      null,
-      new Date(2007, 11 /* Dec */, 31),
-      { firstWeekContainsDate: NaN } as WeekStartOptions
-    )
+    const block = () =>
+      startOfUTCWeekYear(new Date(2007, 11 /* Dec */, 31), {
+        // @ts-expect-error
+        firstWeekContainsDate: NaN,
+      })
     assert.throws(block, RangeError)
   })
 
   it('throws TypeError exception if passed less than 1 argument', () => {
-    //@ts-expect-error
+    // @ts-expect-error
     assert.throws(startOfUTCWeekYear.bind(null), TypeError)
   })
 })

@@ -1,6 +1,7 @@
-import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
-import buildMatchFn from '../../../_lib/buildMatchFn/index'
 import type { Quarter } from '../../../../types'
+import type { Match } from '../../../types'
+import buildMatchFn from '../../../_lib/buildMatchFn/index'
+import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
 
 const matchOrdinalNumberPattern = /^(\d+)(ste|de)?/i
 const parseOrdinalNumberPattern = /\d+/i
@@ -86,11 +87,11 @@ const parseDayPeriodPatterns = {
   },
 }
 
-const match = {
+const match: Match = {
   ordinalNumber: buildMatchPatternFn({
     matchPattern: matchOrdinalNumberPattern,
     parsePattern: parseOrdinalNumberPattern,
-    valueCallback: (value: string) => parseInt(value, 10),
+    valueCallback: (value) => parseInt(value, 10),
   }),
 
   era: buildMatchFn({
@@ -105,7 +106,7 @@ const match = {
     defaultMatchWidth: 'wide',
     parsePatterns: parseQuarterPatterns,
     defaultParseWidth: 'any',
-    valueCallback: (index) => (Number(index) + 1) as Quarter,
+    valueCallback: (index) => (index + 1) as Quarter,
   }),
 
   month: buildMatchFn({

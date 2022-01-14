@@ -1,4 +1,3 @@
-// @flow
 /* eslint-env mocha */
 
 import assert from 'assert'
@@ -48,7 +47,7 @@ describe('milliseconds', () => {
       days: 5,
       hours: 2,
       minutes: 5,
-      seconds: 10
+      seconds: 10,
     })
     assert(result === 72652252000)
   })
@@ -58,7 +57,7 @@ describe('milliseconds', () => {
     assert(result === 0)
   })
 
-  it('throws TypeError exception if passed less than 1 argument', function() {
+  it('throws TypeError exception if passed less than 1 argument', () => {
     // @ts-expect-error
     assert.throws(milliseconds.bind(null), TypeError)
   })

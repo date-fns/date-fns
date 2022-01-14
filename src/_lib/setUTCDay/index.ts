@@ -1,10 +1,8 @@
-import { LocaleOptions, WeekStartOptions } from '../../types'
+import type { LocaleOptions, WeekStartOptions } from '../../types'
 import toDate from '../../toDate/index'
 import requiredArgs from '../requiredArgs/index'
 import toInteger from '../toInteger/index'
 
-// This function will be a part of public API when UTC function will be implemented.
-// See issue: https://github.com/date-fns/date-fns/issues/376
 export default function setUTCDay(
   dirtyDate: Date | number,
   dirtyDay: Date | number,

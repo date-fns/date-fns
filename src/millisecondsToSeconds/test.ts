@@ -3,9 +3,8 @@
 import assert from 'assert'
 import millisecondsToSeconds from '.'
 
-describe('millisecondsToSeconds', function () {
-
-  it('converts milliseconds to seconds', function () {
+describe('millisecondsToSeconds', () => {
+  it('converts milliseconds to seconds', () => {
     assert(millisecondsToSeconds(1000) === 1)
     assert(millisecondsToSeconds(2000) === 2)
   })

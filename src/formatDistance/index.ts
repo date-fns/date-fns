@@ -4,9 +4,10 @@ import differenceInSeconds from '../differenceInSeconds/index'
 import defaultLocale from '../locale/en-US/index'
 import toDate from '../toDate/index'
 import cloneObject from '../_lib/cloneObject/index'
+import assign from '../_lib/assign'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import { LocaleOptions } from '../types';
+import type { LocaleOptions } from '../types'
 
 const MINUTES_IN_DAY = 1440
 const MINUTES_IN_ALMOST_TWO_DAYS = 2520
@@ -49,34 +50,6 @@ const MINUTES_IN_TWO_MONTHS = 86400
  * | 20 secs ... 40 secs    | half a minute        |
  * | 40 secs ... 60 secs    | less than a minute   |
  * | 60 secs ... 90 secs    | 1 minute             |
- *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
- * - The function was renamed from `distanceInWords ` to `formatDistance`
- *   to make its name consistent with `format` and `formatRelative`.
- *
- * - The order of arguments is swapped to make the function
- *   consistent with `differenceIn...` functions.
- *
- *   ```javascript
- *   // Before v2.0.0
- *
- *   distanceInWords(
- *     new Date(1986, 3, 4, 10, 32, 0),
- *     new Date(1986, 3, 4, 11, 32, 0),
- *     { addSuffix: true }
- *   ) //=> 'in about 1 hour'
- *
- *   // v2.0.0 onward
- *
- *   formatDistance(
- *     new Date(1986, 3, 4, 11, 32, 0),
- *     new Date(1986, 3, 4, 10, 32, 0),
- *     { addSuffix: true }
- *   ) //=> 'in about 1 hour'
- *   ```
  *
  * @param {Date|Number} date - the date
  * @param {Date|Number} baseDate - the date to compare with
@@ -122,8 +95,14 @@ const MINUTES_IN_TWO_MONTHS = 86400
  * //=> 'pli ol 1 jaro'
  */
 
-
-export default function formatDistance(dirtyDate: Date | number, dirtyBaseDate: Date | number, options: LocaleOptions & { includeSeconds?: boolean, addSuffix?: boolean } = {}): string {
+export default function formatDistance(
+  dirtyDate: Date | number,
+  dirtyBaseDate: Date | number,
+  options: LocaleOptions & {
+    includeSeconds?: boolean
+    addSuffix?: boolean
+  } = {}
+): string {
   requiredArgs(2, arguments)
 
   const locale = options.locale || defaultLocale
@@ -138,9 +117,10 @@ export default function formatDistance(dirtyDate: Date | number, dirtyBaseDate: 
     throw new RangeError('Invalid time value')
   }
 
-  const localizeOptions = cloneObject(options)
-  localizeOptions.addSuffix = Boolean(options.addSuffix)
-  localizeOptions.comparison = comparison
+  const localizeOptions = assign(cloneObject(options), {
+    addSuffix: Boolean(options.addSuffix),
+    comparison: comparison as -1 | 0 | 1,
+  })
 
   let dateLeft
   let dateRight
@@ -170,7 +150,7 @@ export default function formatDistance(dirtyDate: Date | number, dirtyBaseDate: 
       } else if (seconds < 20) {
         return locale.formatDistance('lessThanXSeconds', 20, localizeOptions)
       } else if (seconds < 40) {
-        return locale.formatDistance('halfAMinute', null, localizeOptions)
+        return locale.formatDistance('halfAMinute', 0, localizeOptions)
       } else if (seconds < 60) {
         return locale.formatDistance('lessThanXMinutes', 1, localizeOptions)
       } else {

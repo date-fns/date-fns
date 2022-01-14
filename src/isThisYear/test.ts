@@ -1,4 +1,3 @@
-// @flow
 /* eslint-env mocha */
 
 import assert from 'assert'
@@ -30,7 +29,7 @@ describe('isThisYear', () => {
     assert(isThisYear(date) === true)
   })
 
-  it('throws TypeError exception if passed less than 1 argument', function() {
+  it('throws TypeError exception if passed less than 1 argument', () => {
     // @ts-expect-error
     assert.throws(isThisYear.bind(null), TypeError)
   })

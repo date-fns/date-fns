@@ -2,7 +2,11 @@ import getWeekYear from '../getWeekYear/index'
 import startOfWeek from '../startOfWeek/index'
 import toInteger from '../_lib/toInteger/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import { LocaleOptions, FirstWeekContainsDateOptions } from '../types'
+import type {
+  LocaleOptions,
+  FirstWeekContainsDateOptions,
+  WeekStartOptions,
+} from '../types'
 
 /**
  * @name startOfWeekYear
@@ -17,10 +21,6 @@ import { LocaleOptions, FirstWeekContainsDateOptions } from '../types'
  * the first week of the week-numbering year)
  *
  * Week numbering: https://en.wikipedia.org/wiki/Week#Week_numbering
- *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param {Date|Number} date - the original date
  * @param {Object} [options] - an object with options.
@@ -49,7 +49,7 @@ import { LocaleOptions, FirstWeekContainsDateOptions } from '../types'
  */
 export default function startOfWeekYear(
   dirtyDate: Date | number,
-  dirtyOptions?: LocaleOptions & FirstWeekContainsDateOptions
+  dirtyOptions?: LocaleOptions & FirstWeekContainsDateOptions & WeekStartOptions
 ): Date {
   requiredArgs(1, arguments)
 

@@ -1,11 +1,10 @@
-// @flow
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import differenceInCalendarWeeks from '.'
 
-describe('differenceInCalendarWeeks', function () {
-  it('returns the number of calendar weeks between the given dates', function () {
+describe('differenceInCalendarWeeks', () => {
+  it('returns the number of calendar weeks between the given dates', () => {
     const result = differenceInCalendarWeeks(
       new Date(2014, 6 /* Jul */, 8, 18, 0),
       new Date(2014, 5 /* Jun */, 29, 6, 0)
@@ -13,7 +12,7 @@ describe('differenceInCalendarWeeks', function () {
     assert(result === 1)
   })
 
-  it('allows to specify which day is the first day of the week', function () {
+  it('allows to specify which day is the first day of the week', () => {
     const result = differenceInCalendarWeeks(
       new Date(2014, 6 /* Jul */, 8, 18, 0),
       new Date(2014, 5 /* Jun */, 29, 6, 0),
@@ -22,7 +21,7 @@ describe('differenceInCalendarWeeks', function () {
     assert(result === 2)
   })
 
-  it('allows to specify which day is the first day of the week in locale', function () {
+  it('allows to specify which day is the first day of the week in locale', () => {
     const result = differenceInCalendarWeeks(
       new Date(2014, 6 /* Jul */, 8, 18, 0),
       new Date(2014, 5 /* Jun */, 29, 6, 0),
@@ -36,7 +35,7 @@ describe('differenceInCalendarWeeks', function () {
     assert(result === 2)
   })
 
-  it('`options.weekStartsOn` overwrites the first day of the week specified in locale', function () {
+  it('`options.weekStartsOn` overwrites the first day of the week specified in locale', () => {
     const result = differenceInCalendarWeeks(
       new Date(2014, 6 /* Jul */, 8, 18, 0),
       new Date(2014, 5 /* Jun */, 29, 6, 0),
@@ -51,17 +50,19 @@ describe('differenceInCalendarWeeks', function () {
     assert(result === 2)
   })
 
-  it('returns a positive number if the time value of the second date is smaller', function () {
+  it('returns a positive number if the time value of the second date is smaller', () => {
     const result = differenceInCalendarWeeks(
       new Date(2014, 6 /* Jul */, 8, 18, 0),
       new Date(2014, 5 /* Jun */, 29, 6, 0),
-      // @ts-expect-error
-      { weekStartsOn: '1' }
+      {
+        // @ts-expect-error
+        weekStartsOn: '1',
+      }
     )
     assert(result === 2)
   })
 
-  it('returns a negative number if the time value of the first date is smaller', function () {
+  it('returns a negative number if the time value of the first date is smaller', () => {
     const result = differenceInCalendarWeeks(
       new Date(2014, 5 /* Jun */, 29, 6, 0),
       new Date(2014, 6 /* Jul */, 8, 18, 0)
@@ -69,7 +70,7 @@ describe('differenceInCalendarWeeks', function () {
     assert(result === -1)
   })
 
-  it('accepts timestamps', function () {
+  it('accepts timestamps', () => {
     const result = differenceInCalendarWeeks(
       new Date(2014, 6 /* Jul */, 12).getTime(),
       new Date(2014, 6 /* Jul */, 2).getTime()
@@ -77,8 +78,8 @@ describe('differenceInCalendarWeeks', function () {
     assert(result === 1)
   })
 
-  describe('edge cases', function () {
-    it('the difference is less than a week, but the given dates are in different calendar weeks', function () {
+  describe('edge cases', () => {
+    it('the difference is less than a week, but the given dates are in different calendar weeks', () => {
       const result = differenceInCalendarWeeks(
         new Date(2014, 6 /* Jul */, 6),
         new Date(2014, 6 /* Jul */, 5)
@@ -86,7 +87,7 @@ describe('differenceInCalendarWeeks', function () {
       assert(result === 1)
     })
 
-    it('the same for the swapped dates', function () {
+    it('the same for the swapped dates', () => {
       const result = differenceInCalendarWeeks(
         new Date(2014, 6 /* Jul */, 5),
         new Date(2014, 6 /* Jul */, 6)
@@ -94,7 +95,7 @@ describe('differenceInCalendarWeeks', function () {
       assert(result === -1)
     })
 
-    it('the days of weeks of the given dates are the same', function () {
+    it('the days of weeks of the given dates are the same', () => {
       const result = differenceInCalendarWeeks(
         new Date(2014, 6 /* Jul */, 9),
         new Date(2014, 6 /* Jul */, 2)
@@ -102,7 +103,7 @@ describe('differenceInCalendarWeeks', function () {
       assert(result === 1)
     })
 
-    it('the given dates are the same', function () {
+    it('the given dates are the same', () => {
       const result = differenceInCalendarWeeks(
         new Date(2014, 8 /* Sep */, 5, 0, 0),
         new Date(2014, 8 /* Sep */, 5, 0, 0)
@@ -125,7 +126,7 @@ describe('differenceInCalendarWeeks', function () {
     })
   })
 
-  it('returns NaN if the first date is `Invalid Date`', function () {
+  it('returns NaN if the first date is `Invalid Date`', () => {
     const result = differenceInCalendarWeeks(
       new Date(NaN),
       new Date(2017, 0 /* Jan */, 1)
@@ -133,7 +134,7 @@ describe('differenceInCalendarWeeks', function () {
     assert(isNaN(result))
   })
 
-  it('returns NaN if the second date is `Invalid Date`', function () {
+  it('returns NaN if the second date is `Invalid Date`', () => {
     const result = differenceInCalendarWeeks(
       new Date(2017, 0 /* Jan */, 1),
       new Date(NaN)
@@ -141,24 +142,28 @@ describe('differenceInCalendarWeeks', function () {
     assert(isNaN(result))
   })
 
-  it('returns NaN if the both dates are `Invalid Date`', function () {
+  it('returns NaN if the both dates are `Invalid Date`', () => {
     const result = differenceInCalendarWeeks(new Date(NaN), new Date(NaN))
     assert(isNaN(result))
   })
 
-  it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', function () {
-    // @ts-expect-error
-    const block = differenceInCalendarWeeks.bind(
-      null,
-      new Date(2014, 6 /* Jul */, 8, 18, 0),
-      new Date(2014, 5 /* Jun */, 29, 6, 0),
-      { weekStartsOn: NaN }
-    )
+  it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', () => {
+    const block = () =>
+      differenceInCalendarWeeks(
+        new Date(2014, 6 /* Jul */, 8, 18, 0),
+        new Date(2014, 5 /* Jun */, 29, 6, 0),
+        {
+          // @ts-expect-error
+          weekStartsOn: NaN,
+        }
+      )
     assert.throws(block, RangeError)
   })
 
-  it('throws TypeError exception if passed less than 2 arguments', function () {
+  it('throws TypeError exception if passed less than 2 arguments', () => {
+    // @ts-expect-error
     assert.throws(differenceInCalendarWeeks.bind(null), TypeError)
+    // @ts-expect-error
     assert.throws(differenceInCalendarWeeks.bind(null, 1), TypeError)
   })
 })
