@@ -191,51 +191,51 @@ If now is January 1st, 2000, 00:00.
 
 | Date                     | Result           | `includeSeconds: true` | `addSuffix: true`      |
 | ------------------------ | ---------------- | ---------------------- | ---------------------- |
-| 2006-01-01T00:00:00.000Z | təxminən 6 il    | təxminən 6 il          | təxminən 6 il əvvəl    |
-| 2005-01-01T00:00:00.000Z | təxminən 5 il    | təxminən 5 il          | təxminən 5 il əvvəl    |
-| 2004-01-01T00:00:00.000Z | təxminən 4 il    | təxminən 4 il          | təxminən 4 il əvvəl    |
-| 2003-01-01T00:00:00.000Z | təxminən 3 il    | təxminən 3 il          | təxminən 3 il əvvəl    |
-| 2002-01-01T00:00:00.000Z | təxminən 2 il    | təxminən 2 il          | təxminən 2 il əvvəl    |
-| 2001-06-01T00:00:00.000Z | 1 ildən çox      | 1 ildən çox            | 1 ildən çox əvvəl      |
-| 2001-02-01T00:00:00.000Z | təxminən 1 il    | təxminən 1 il          | təxminən 1 il əvvəl    |
-| 2001-01-01T00:00:00.000Z | təxminən 1 il    | təxminən 1 il          | təxminən 1 il əvvəl    |
-| 2000-06-01T00:00:00.000Z | 5 ay             | 5 ay                   | 5 ay əvvəl             |
-| 2000-03-01T00:00:00.000Z | 2 ay             | 2 ay                   | 2 ay əvvəl             |
-| 2000-02-01T00:00:00.000Z | təxminən 1 ay    | təxminən 1 ay          | təxminən 1 ay əvvəl    |
-| 2000-01-15T00:00:00.000Z | 14 gün           | 14 gün                 | 14 gün əvvəl           |
-| 2000-01-02T00:00:00.000Z | 1 gün            | 1 gün                  | 1 gün əvvəl            |
-| 2000-01-01T06:00:00.000Z | təxminən 6 saat  | təxminən 6 saat        | təxminən 6 saat əvvəl  |
-| 2000-01-01T01:00:00.000Z | təxminən 1 saat  | təxminən 1 saat        | təxminən 1 saat əvvəl  |
-| 2000-01-01T00:45:00.000Z | təxminən 1 saat  | təxminən 1 saat        | təxminən 1 saat əvvəl  |
-| 2000-01-01T00:30:00.000Z | 30 dəqiqə        | 30 dəqiqə              | 30 dəqiqə əvvəl        |
-| 2000-01-01T00:15:00.000Z | 15 dəqiqə        | 15 dəqiqə              | 15 dəqiqə əvvəl        |
-| 2000-01-01T00:01:00.000Z | bir dəqiqə       | bir dəqiqə             | bir dəqiqə əvvəl       |
-| 2000-01-01T00:00:25.000Z | bir dəqiqədən az | yarım dəqiqə           | bir dəqiqədən az əvvəl |
-| 2000-01-01T00:00:15.000Z | bir dəqiqədən az | 20 bir saniyədən az    | bir dəqiqədən az əvvəl |
-| 2000-01-01T00:00:05.000Z | bir dəqiqədən az | 10 bir saniyədən az    | bir dəqiqədən az əvvəl |
-| 2000-01-01T00:00:00.000Z | bir dəqiqədən az | 5 bir saniyədən az     | bir dəqiqədən az sonra |
-| 1999-12-31T23:59:55.000Z | bir dəqiqədən az | 10 bir saniyədən az    | bir dəqiqədən az sonra |
-| 1999-12-31T23:59:45.000Z | bir dəqiqədən az | 20 bir saniyədən az    | bir dəqiqədən az sonra |
-| 1999-12-31T23:59:35.000Z | bir dəqiqədən az | yarım dəqiqə           | bir dəqiqədən az sonra |
-| 1999-12-31T23:59:00.000Z | bir dəqiqə       | bir dəqiqə             | bir dəqiqə sonra       |
-| 1999-12-31T23:45:00.000Z | 15 dəqiqə        | 15 dəqiqə              | 15 dəqiqə sonra        |
-| 1999-12-31T23:30:00.000Z | 30 dəqiqə        | 30 dəqiqə              | 30 dəqiqə sonra        |
-| 1999-12-31T23:15:00.000Z | təxminən 1 saat  | təxminən 1 saat        | təxminən 1 saat sonra  |
-| 1999-12-31T23:00:00.000Z | təxminən 1 saat  | təxminən 1 saat        | təxminən 1 saat sonra  |
-| 1999-12-31T18:00:00.000Z | təxminən 6 saat  | təxminən 6 saat        | təxminən 6 saat sonra  |
-| 1999-12-30T00:00:00.000Z | 2 gün            | 2 gün                  | 2 gün sonra            |
-| 1999-12-15T00:00:00.000Z | 17 gün           | 17 gün                 | 17 gün sonra           |
-| 1999-12-01T00:00:00.000Z | təxminən 1 ay    | təxminən 1 ay          | təxminən 1 ay sonra    |
-| 1999-11-01T00:00:00.000Z | 2 ay             | 2 ay                   | 2 ay sonra             |
-| 1999-06-01T00:00:00.000Z | 7 ay             | 7 ay                   | 7 ay sonra             |
-| 1999-01-01T00:00:00.000Z | təxminən 1 il    | təxminən 1 il          | təxminən 1 il sonra    |
-| 1998-12-01T00:00:00.000Z | təxminən 1 il    | təxminən 1 il          | təxminən 1 il sonra    |
-| 1998-06-01T00:00:00.000Z | 1 ildən çox      | 1 ildən çox            | 1 ildən çox sonra      |
-| 1998-01-01T00:00:00.000Z | təxminən 2 il    | təxminən 2 il          | təxminən 2 il sonra    |
-| 1997-01-01T00:00:00.000Z | təxminən 3 il    | təxminən 3 il          | təxminən 3 il sonra    |
-| 1996-01-01T00:00:00.000Z | təxminən 4 il    | təxminən 4 il          | təxminən 4 il sonra    |
-| 1995-01-01T00:00:00.000Z | təxminən 5 il    | təxminən 5 il          | təxminən 5 il sonra    |
-| 1994-01-01T00:00:00.000Z | təxminən 6 il    | təxminən 6 il          | təxminən 6 il sonra    |
+| 2006-01-01T00:00:00.000Z | təxminən 6 il    | təxminən 6 il          | təxminən 6 il sonra    |
+| 2005-01-01T00:00:00.000Z | təxminən 5 il    | təxminən 5 il          | təxminən 5 il sonra    |
+| 2004-01-01T00:00:00.000Z | təxminən 4 il    | təxminən 4 il          | təxminən 4 il sonra    |
+| 2003-01-01T00:00:00.000Z | təxminən 3 il    | təxminən 3 il          | təxminən 3 il sonra    |
+| 2002-01-01T00:00:00.000Z | təxminən 2 il    | təxminən 2 il          | təxminən 2 il sonra    |
+| 2001-06-01T00:00:00.000Z | 1 ildən çox      | 1 ildən çox            | 1 ildən çox sonra      |
+| 2001-02-01T00:00:00.000Z | təxminən 1 il    | təxminən 1 il          | təxminən 1 il sonra    |
+| 2001-01-01T00:00:00.000Z | təxminən 1 il    | təxminən 1 il          | təxminən 1 il sonra    |
+| 2000-06-01T00:00:00.000Z | 5 ay             | 5 ay                   | 5 ay sonra             |
+| 2000-03-01T00:00:00.000Z | 2 ay             | 2 ay                   | 2 ay sonra             |
+| 2000-02-01T00:00:00.000Z | təxminən 1 ay    | təxminən 1 ay          | təxminən 1 ay sonra    |
+| 2000-01-15T00:00:00.000Z | 14 gün           | 14 gün                 | 14 gün sonra           |
+| 2000-01-02T00:00:00.000Z | 1 gün            | 1 gün                  | 1 gün sonra            |
+| 2000-01-01T06:00:00.000Z | təxminən 6 saat  | təxminən 6 saat        | təxminən 6 saat sonra  |
+| 2000-01-01T01:00:00.000Z | təxminən 1 saat  | təxminən 1 saat        | təxminən 1 saat sonra  |
+| 2000-01-01T00:45:00.000Z | təxminən 1 saat  | təxminən 1 saat        | təxminən 1 saat sonra  |
+| 2000-01-01T00:30:00.000Z | 30 dəqiqə        | 30 dəqiqə              | 30 dəqiqə sonra        |
+| 2000-01-01T00:15:00.000Z | 15 dəqiqə        | 15 dəqiqə              | 15 dəqiqə sonra        |
+| 2000-01-01T00:01:00.000Z | bir dəqiqə       | bir dəqiqə             | bir dəqiqə sonra       |
+| 2000-01-01T00:00:25.000Z | bir dəqiqədən az | yarım dəqiqə           | bir dəqiqədən az sonra |
+| 2000-01-01T00:00:15.000Z | bir dəqiqədən az | 20 bir saniyədən az    | bir dəqiqədən az sonra |
+| 2000-01-01T00:00:05.000Z | bir dəqiqədən az | 10 bir saniyədən az    | bir dəqiqədən az sonra |
+| 2000-01-01T00:00:00.000Z | bir dəqiqədən az | 5 bir saniyədən az     | bir dəqiqədən az əvvəl |
+| 1999-12-31T23:59:55.000Z | bir dəqiqədən az | 10 bir saniyədən az    | bir dəqiqədən az əvvəl |
+| 1999-12-31T23:59:45.000Z | bir dəqiqədən az | 20 bir saniyədən az    | bir dəqiqədən az əvvəl |
+| 1999-12-31T23:59:35.000Z | bir dəqiqədən az | yarım dəqiqə           | bir dəqiqədən az əvvəl |
+| 1999-12-31T23:59:00.000Z | bir dəqiqə       | bir dəqiqə             | bir dəqiqə əvvəl       |
+| 1999-12-31T23:45:00.000Z | 15 dəqiqə        | 15 dəqiqə              | 15 dəqiqə əvvəl        |
+| 1999-12-31T23:30:00.000Z | 30 dəqiqə        | 30 dəqiqə              | 30 dəqiqə əvvəl        |
+| 1999-12-31T23:15:00.000Z | təxminən 1 saat  | təxminən 1 saat        | təxminən 1 saat əvvəl  |
+| 1999-12-31T23:00:00.000Z | təxminən 1 saat  | təxminən 1 saat        | təxminən 1 saat əvvəl  |
+| 1999-12-31T18:00:00.000Z | təxminən 6 saat  | təxminən 6 saat        | təxminən 6 saat əvvəl  |
+| 1999-12-30T00:00:00.000Z | 2 gün            | 2 gün                  | 2 gün əvvəl            |
+| 1999-12-15T00:00:00.000Z | 17 gün           | 17 gün                 | 17 gün əvvəl           |
+| 1999-12-01T00:00:00.000Z | təxminən 1 ay    | təxminən 1 ay          | təxminən 1 ay əvvəl    |
+| 1999-11-01T00:00:00.000Z | 2 ay             | 2 ay                   | 2 ay əvvəl             |
+| 1999-06-01T00:00:00.000Z | 7 ay             | 7 ay                   | 7 ay əvvəl             |
+| 1999-01-01T00:00:00.000Z | təxminən 1 il    | təxminən 1 il          | təxminən 1 il əvvəl    |
+| 1998-12-01T00:00:00.000Z | təxminən 1 il    | təxminən 1 il          | təxminən 1 il əvvəl    |
+| 1998-06-01T00:00:00.000Z | 1 ildən çox      | 1 ildən çox            | 1 ildən çox əvvəl      |
+| 1998-01-01T00:00:00.000Z | təxminən 2 il    | təxminən 2 il          | təxminən 2 il əvvəl    |
+| 1997-01-01T00:00:00.000Z | təxminən 3 il    | təxminən 3 il          | təxminən 3 il əvvəl    |
+| 1996-01-01T00:00:00.000Z | təxminən 4 il    | təxminən 4 il          | təxminən 4 il əvvəl    |
+| 1995-01-01T00:00:00.000Z | təxminən 5 il    | təxminən 5 il          | təxminən 5 il əvvəl    |
+| 1994-01-01T00:00:00.000Z | təxminən 6 il    | təxminən 6 il          | təxminən 6 il əvvəl    |
 
 ## `formatDistanceStrict`
 
@@ -243,51 +243,51 @@ If now is January 1st, 2000, 00:00.
 
 | Date                     | Result     | `addSuffix: true` | With forced unit (i.e. `hour`) |
 | ------------------------ | ---------- | ----------------- | ------------------------------ |
-| 2006-01-01T00:00:00.000Z | 6 il       | 6 il əvvəl        | 52608 saat                     |
-| 2005-01-01T00:00:00.000Z | 5 il       | 5 il əvvəl        | 43848 saat                     |
-| 2004-01-01T00:00:00.000Z | 4 il       | 4 il əvvəl        | 35064 saat                     |
-| 2003-01-01T00:00:00.000Z | 3 il       | 3 il əvvəl        | 26304 saat                     |
-| 2002-01-01T00:00:00.000Z | 2 il       | 2 il əvvəl        | 17544 saat                     |
-| 2001-06-01T00:00:00.000Z | 1 il       | 1 il əvvəl        | 12408 saat                     |
-| 2001-02-01T00:00:00.000Z | 1 il       | 1 il əvvəl        | 9528 saat                      |
-| 2001-01-01T00:00:00.000Z | 1 il       | 1 il əvvəl        | 8784 saat                      |
-| 2000-06-01T00:00:00.000Z | 5 ay       | 5 ay əvvəl        | 3648 saat                      |
-| 2000-03-01T00:00:00.000Z | 2 ay       | 2 ay əvvəl        | 1440 saat                      |
-| 2000-02-01T00:00:00.000Z | 1 ay       | 1 ay əvvəl        | 744 saat                       |
-| 2000-01-15T00:00:00.000Z | 14 gün     | 14 gün əvvəl      | 336 saat                       |
-| 2000-01-02T00:00:00.000Z | 1 gün      | 1 gün əvvəl       | 24 saat                        |
-| 2000-01-01T06:00:00.000Z | 6 saat     | 6 saat əvvəl      | 6 saat                         |
-| 2000-01-01T01:00:00.000Z | 1 saat     | 1 saat əvvəl      | 1 saat                         |
-| 2000-01-01T00:45:00.000Z | 45 dəqiqə  | 45 dəqiqə əvvəl   | 1 saat                         |
-| 2000-01-01T00:30:00.000Z | 30 dəqiqə  | 30 dəqiqə əvvəl   | 1 saat                         |
-| 2000-01-01T00:15:00.000Z | 15 dəqiqə  | 15 dəqiqə əvvəl   | 0 saat                         |
-| 2000-01-01T00:01:00.000Z | bir dəqiqə | bir dəqiqə əvvəl  | 0 saat                         |
-| 2000-01-01T00:00:25.000Z | 25 saniyə  | 25 saniyə əvvəl   | 0 saat                         |
-| 2000-01-01T00:00:15.000Z | 15 saniyə  | 15 saniyə əvvəl   | 0 saat                         |
-| 2000-01-01T00:00:05.000Z | 5 saniyə   | 5 saniyə əvvəl    | 0 saat                         |
-| 2000-01-01T00:00:00.000Z | 0 saniyə   | 0 saniyə sonra    | 0 saat                         |
-| 1999-12-31T23:59:55.000Z | 5 saniyə   | 5 saniyə sonra    | 0 saat                         |
-| 1999-12-31T23:59:45.000Z | 15 saniyə  | 15 saniyə sonra   | 0 saat                         |
-| 1999-12-31T23:59:35.000Z | 25 saniyə  | 25 saniyə sonra   | 0 saat                         |
-| 1999-12-31T23:59:00.000Z | bir dəqiqə | bir dəqiqə sonra  | 0 saat                         |
-| 1999-12-31T23:45:00.000Z | 15 dəqiqə  | 15 dəqiqə sonra   | 0 saat                         |
-| 1999-12-31T23:30:00.000Z | 30 dəqiqə  | 30 dəqiqə sonra   | 1 saat                         |
-| 1999-12-31T23:15:00.000Z | 45 dəqiqə  | 45 dəqiqə sonra   | 1 saat                         |
-| 1999-12-31T23:00:00.000Z | 1 saat     | 1 saat sonra      | 1 saat                         |
-| 1999-12-31T18:00:00.000Z | 6 saat     | 6 saat sonra      | 6 saat                         |
-| 1999-12-30T00:00:00.000Z | 2 gün      | 2 gün sonra       | 48 saat                        |
-| 1999-12-15T00:00:00.000Z | 17 gün     | 17 gün sonra      | 408 saat                       |
-| 1999-12-01T00:00:00.000Z | 1 ay       | 1 ay sonra        | 744 saat                       |
-| 1999-11-01T00:00:00.000Z | 2 ay       | 2 ay sonra        | 1464 saat                      |
-| 1999-06-01T00:00:00.000Z | 7 ay       | 7 ay sonra        | 5136 saat                      |
-| 1999-01-01T00:00:00.000Z | 1 il       | 1 il sonra        | 8760 saat                      |
-| 1998-12-01T00:00:00.000Z | 1 il       | 1 il sonra        | 9504 saat                      |
-| 1998-06-01T00:00:00.000Z | 2 il       | 2 il sonra        | 13896 saat                     |
-| 1998-01-01T00:00:00.000Z | 2 il       | 2 il sonra        | 17520 saat                     |
-| 1997-01-01T00:00:00.000Z | 3 il       | 3 il sonra        | 26280 saat                     |
-| 1996-01-01T00:00:00.000Z | 4 il       | 4 il sonra        | 35064 saat                     |
-| 1995-01-01T00:00:00.000Z | 5 il       | 5 il sonra        | 43824 saat                     |
-| 1994-01-01T00:00:00.000Z | 6 il       | 6 il sonra        | 52584 saat                     |
+| 2006-01-01T00:00:00.000Z | 6 il       | 6 il sonra        | 52608 saat                     |
+| 2005-01-01T00:00:00.000Z | 5 il       | 5 il sonra        | 43848 saat                     |
+| 2004-01-01T00:00:00.000Z | 4 il       | 4 il sonra        | 35064 saat                     |
+| 2003-01-01T00:00:00.000Z | 3 il       | 3 il sonra        | 26304 saat                     |
+| 2002-01-01T00:00:00.000Z | 2 il       | 2 il sonra        | 17544 saat                     |
+| 2001-06-01T00:00:00.000Z | 1 il       | 1 il sonra        | 12408 saat                     |
+| 2001-02-01T00:00:00.000Z | 1 il       | 1 il sonra        | 9528 saat                      |
+| 2001-01-01T00:00:00.000Z | 1 il       | 1 il sonra        | 8784 saat                      |
+| 2000-06-01T00:00:00.000Z | 5 ay       | 5 ay sonra        | 3648 saat                      |
+| 2000-03-01T00:00:00.000Z | 2 ay       | 2 ay sonra        | 1440 saat                      |
+| 2000-02-01T00:00:00.000Z | 1 ay       | 1 ay sonra        | 744 saat                       |
+| 2000-01-15T00:00:00.000Z | 14 gün     | 14 gün sonra      | 336 saat                       |
+| 2000-01-02T00:00:00.000Z | 1 gün      | 1 gün sonra       | 24 saat                        |
+| 2000-01-01T06:00:00.000Z | 6 saat     | 6 saat sonra      | 6 saat                         |
+| 2000-01-01T01:00:00.000Z | 1 saat     | 1 saat sonra      | 1 saat                         |
+| 2000-01-01T00:45:00.000Z | 45 dəqiqə  | 45 dəqiqə sonra   | 1 saat                         |
+| 2000-01-01T00:30:00.000Z | 30 dəqiqə  | 30 dəqiqə sonra   | 1 saat                         |
+| 2000-01-01T00:15:00.000Z | 15 dəqiqə  | 15 dəqiqə sonra   | 0 saat                         |
+| 2000-01-01T00:01:00.000Z | bir dəqiqə | bir dəqiqə sonra  | 0 saat                         |
+| 2000-01-01T00:00:25.000Z | 25 saniyə  | 25 saniyə sonra   | 0 saat                         |
+| 2000-01-01T00:00:15.000Z | 15 saniyə  | 15 saniyə sonra   | 0 saat                         |
+| 2000-01-01T00:00:05.000Z | 5 saniyə   | 5 saniyə sonra    | 0 saat                         |
+| 2000-01-01T00:00:00.000Z | 0 saniyə   | 0 saniyə əvvəl    | 0 saat                         |
+| 1999-12-31T23:59:55.000Z | 5 saniyə   | 5 saniyə əvvəl    | 0 saat                         |
+| 1999-12-31T23:59:45.000Z | 15 saniyə  | 15 saniyə əvvəl   | 0 saat                         |
+| 1999-12-31T23:59:35.000Z | 25 saniyə  | 25 saniyə əvvəl   | 0 saat                         |
+| 1999-12-31T23:59:00.000Z | bir dəqiqə | bir dəqiqə əvvəl  | 0 saat                         |
+| 1999-12-31T23:45:00.000Z | 15 dəqiqə  | 15 dəqiqə əvvəl   | 0 saat                         |
+| 1999-12-31T23:30:00.000Z | 30 dəqiqə  | 30 dəqiqə əvvəl   | 1 saat                         |
+| 1999-12-31T23:15:00.000Z | 45 dəqiqə  | 45 dəqiqə əvvəl   | 1 saat                         |
+| 1999-12-31T23:00:00.000Z | 1 saat     | 1 saat əvvəl      | 1 saat                         |
+| 1999-12-31T18:00:00.000Z | 6 saat     | 6 saat əvvəl      | 6 saat                         |
+| 1999-12-30T00:00:00.000Z | 2 gün      | 2 gün əvvəl       | 48 saat                        |
+| 1999-12-15T00:00:00.000Z | 17 gün     | 17 gün əvvəl      | 408 saat                       |
+| 1999-12-01T00:00:00.000Z | 1 ay       | 1 ay əvvəl        | 744 saat                       |
+| 1999-11-01T00:00:00.000Z | 2 ay       | 2 ay əvvəl        | 1464 saat                      |
+| 1999-06-01T00:00:00.000Z | 7 ay       | 7 ay əvvəl        | 5136 saat                      |
+| 1999-01-01T00:00:00.000Z | 1 il       | 1 il əvvəl        | 8760 saat                      |
+| 1998-12-01T00:00:00.000Z | 1 il       | 1 il əvvəl        | 9504 saat                      |
+| 1998-06-01T00:00:00.000Z | 2 il       | 2 il əvvəl        | 13896 saat                     |
+| 1998-01-01T00:00:00.000Z | 2 il       | 2 il əvvəl        | 17520 saat                     |
+| 1997-01-01T00:00:00.000Z | 3 il       | 3 il əvvəl        | 26280 saat                     |
+| 1996-01-01T00:00:00.000Z | 4 il       | 4 il əvvəl        | 35064 saat                     |
+| 1995-01-01T00:00:00.000Z | 5 il       | 5 il əvvəl        | 43824 saat                     |
+| 1994-01-01T00:00:00.000Z | 6 il       | 6 il əvvəl        | 52584 saat                     |
 
 ## `formatRelative`
 
