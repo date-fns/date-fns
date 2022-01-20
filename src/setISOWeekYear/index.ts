@@ -15,15 +15,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
- * - The function was renamed from `setISOYear` to `setISOWeekYear`.
- *   "ISO week year" is short for [ISO week-numbering year](https://en.wikipedia.org/wiki/ISO_week_date).
- *   This change makes the name consistent with
- *   locale-dependent week-numbering year helpers, e.g., `setWeekYear`.
- *
  * @param {Date|Number} date - the date to be changed
  * @param {Number} isoWeekYear - the ISO week-numbering year of the new date
  * @returns {Date} the new date with the ISO week-numbering year set
@@ -34,7 +25,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = setISOWeekYear(new Date(2008, 11, 29), 2007)
  * //=> Mon Jan 01 2007 00:00:00
  */
-export default function setISOWeekYear(dirtyDate: Date | number, dirtyISOWeekYear: number): Date {
+export default function setISOWeekYear(
+  dirtyDate: Date | number,
+  dirtyISOWeekYear: number
+): Date {
   requiredArgs(2, arguments)
 
   let date = toDate(dirtyDate)

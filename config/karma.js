@@ -1,9 +1,7 @@
-process.env.PHANTOMJS_BIN = 'node_modules/.bin/phantomjs'
 process.env.NODE_ENV = 'test'
 
 const webpackConfig = require('./webpack')
 const countReporter = require('./_lib/countReporter')
-const benchmarkJSONReporter = require('./_lib/benchmarkJSONReporter')
 
 const sauceLabsLaunchers = {
   // TODO: See if Safari became more reliable
@@ -143,16 +141,12 @@ function config(config) {
     ).concat([
       'karma-mocha',
       'karma-mocha-reporter',
-      'karma-phantomjs-launcher',
       'karma-chrome-launcher',
       // TODO: Make it work
       // 'karma-sauce-launcher',
       'karma-sourcemap-loader',
       'karma-webpack',
-      'karma-benchmark',
-      'karma-benchmark-reporter',
       { 'reporter:count': ['type', countReporter] },
-      { 'reporter:benchmark-json': ['type', benchmarkJSONReporter] },
     ]),
 
     customLaunchers: process.env.TEST_CROSS_BROWSER
@@ -166,18 +160,12 @@ function config(config) {
 }
 
 function getFrameworksConfig() {
-  if (process.env.TEST_BENCHMARK) {
-    return ['benchmark']
-  } else {
-    return ['mocha']
-  }
+  return ['mocha']
 }
 
 function getFilesConfig() {
   if (process.env.USE_STATIC_TESTS) {
     return ['../tmp/tests.js']
-  } else if (process.env.TEST_BENCHMARK) {
-    return ['../node_modules/moment/moment.js', '../benchmark.js']
   } else {
     return ['../test.js']
   }
@@ -186,8 +174,6 @@ function getFilesConfig() {
 function getPreprocessorsConfig() {
   if (process.env.USE_STATIC_TESTS) {
     return { '../tmp/tests.js': ['sourcemap'] }
-  } else if (process.env.TEST_BENCHMARK) {
-    return { '../benchmark.js': ['webpack', 'sourcemap'] }
   } else {
     return { '../test.js': ['webpack', 'sourcemap'] }
   }
@@ -196,8 +182,6 @@ function getPreprocessorsConfig() {
 function getBrowsersConfig() {
   if (process.env.TEST_CROSS_BROWSER) {
     return Object.keys(sauceLabsLaunchers)
-  } else if (process.env.TEST_BENCHMARK) {
-    return ['PhantomJS']
   } else if (process.env.CI) {
     return Object.keys(ciLaunchers)
   } else {
@@ -208,8 +192,6 @@ function getBrowsersConfig() {
 function getReportersConfig() {
   if (process.env.TEST_CROSS_BROWSER) {
     return ['dots', 'saucelabs', 'count']
-  } else if (process.env.TEST_BENCHMARK) {
-    return ['benchmark', 'benchmark-json']
   } else if (process.env.COVERAGE_REPORT) {
     return ['coverage-istanbul']
   } else {

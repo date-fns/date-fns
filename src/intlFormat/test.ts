@@ -1,7 +1,6 @@
-// @flow
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import intlFormat from '.'
 
 // Before Node version 13.0.0, only the locale data for en-US is available by default.
@@ -18,25 +17,15 @@ const hasFullICU = () => {
 const fullICUOnly = hasFullICU() ? it : it.skip
 
 const getOperationSystemLocale = () => {
-  if (typeof process !== 'undefined') {
-    const ENV = process.env
-    const language = ENV.LC_ALL || ENV.LC_MESSAGES || ENV.LANG || ENV.LANGUAGE
-    return language?.split('.')[0].replace('_', '-')
-  } else {
-    return (
-      // @ts-expect-error
-      window.navigator.userLanguage ||
-      window.navigator.language ||
-      (window.navigator.languages || [])[0]
-    )
-  }
+  // https://stackoverflow.com/questions/46072248/node-js-how-to-detect-user-language/46072415
+  return Intl.DateTimeFormat().resolvedOptions().locale
 }
 
 describe('intlFormat', () => {
-  describe('formats date', function () {
+  describe('formats date', () => {
     fullICUOnly(
       "should work without format's options and locale's options",
-      function () {
+      () => {
         const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
         const result = intlFormat(date)
         const localeResult = intlFormat(date, {
@@ -47,9 +36,9 @@ describe('intlFormat', () => {
       }
     )
 
-    fullICUOnly("should work with only format's options", function () {
+    fullICUOnly("should work with only format's options", () => {
       const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
-      const formatOptions = {
+      const formatOptions: Intl.DateTimeFormatOptions = {
         year: 'numeric',
         month: 'numeric',
         day: 'numeric',
@@ -68,7 +57,7 @@ describe('intlFormat', () => {
       assert(result === localeResult)
     })
 
-    fullICUOnly("should work with only locale's options", function () {
+    fullICUOnly("should work with only locale's options", () => {
       const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
       // Korean uses year-month-day order
       const localeOptions = {
@@ -82,9 +71,9 @@ describe('intlFormat', () => {
 
     fullICUOnly(
       "should work with format's options and locale's options",
-      function () {
+      () => {
         const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
-        const formatOptions = {
+        const formatOptions: Intl.DateTimeFormatOptions = {
           weekday: 'long',
           year: 'numeric',
           month: 'long',
@@ -102,10 +91,11 @@ describe('intlFormat', () => {
   })
 
   it('throws RangeError if the date value is invalid', () => {
-    assert.throws(intlFormat.bind(null, new Date(NaN)), RangeError)
+    assert.throws(() => intlFormat(new Date(NaN)), RangeError)
   })
 
   it('throws TypeError exception if passed less than 1 argument', () => {
+    // @ts-expect-error
     assert.throws(intlFormat.bind(null), TypeError)
   })
 })

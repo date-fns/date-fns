@@ -21,7 +21,7 @@ const prereleaseRegExp = /(test|alpha|beta|rc)/
 const features = {
   docs: true,
   i18n: true,
-  benchmarks: true,
+  benchmarks: false,
   camelCase: true,
   fp: true,
   esm: true,
@@ -52,7 +52,7 @@ function generateLocale(tag, locale) {
   }
 }
 
-function generateVersionData() {
+async function generateVersionData() {
   const tag = `v${version}`
 
   const commit = childProcess
@@ -88,7 +88,7 @@ function generateVersionData() {
     })
   )
 
-  const locales = listLocales().map(generateLocale.bind(null, tag))
+  const locales = (await listLocales()).map(generateLocale.bind(null, tag))
 
   return {
     tag,
@@ -103,9 +103,8 @@ function generateVersionData() {
   }
 }
 
-const data = generateVersionData()
-
-publishVersion(data)
+generateVersionData()
+  .then((data) => publishVersion(data))
   .then(() => {
     console.log('Done!')
     process.exit(0)

@@ -8,7 +8,9 @@
  * It's a part of the build process.
  */
 
-const fsp = require('fs-promise')
+const os = require('os')
+const pLimit = require('p-limit')
+const fs = require('fs/promises')
 const path = require('path')
 const cloneDeep = require('lodash.clonedeep')
 const jsDocParser = require('jsdoc-to-markdown')
@@ -29,15 +31,24 @@ generateDocsFromSource()
  */
 async function generateDocsFromSource() {
   const fns = await listFns()
-  const docsResult = await asyncMap(fns, (fn) =>
-    jsDocParser
-      .getTemplateData({
-        files: fn.fullPath,
-        'no-cache': true,
-        configure: path.resolve(process.cwd(), 'jsdoc2md.json'),
-      })
-      .then((result) => result[0])
-  )
+
+  const limit = pLimit(os.cpus().length)
+
+  const configFile = path.resolve(process.cwd(), 'jsdoc2md.json')
+
+  const jobs = fns.map((fn) => {
+    return limit(() =>
+      jsDocParser
+        .getTemplateData({
+          files: fn.fullPath,
+          'no-cache': true,
+          configure: configFile,
+        })
+        .then((result) => result[0])
+    )
+  })
+
+  const docsResult = await Promise.all(jobs)
 
   return docsResult
     .map((doc) => {
@@ -118,7 +129,7 @@ function reportErrors(err) {
  * Writes docs file.
  */
 function writeDocsFile(docsFileObj) {
-  return fsp.writeFile(docsPath, JSON.stringify(docsFileObj))
+  return fs.writeFile(docsPath, JSON.stringify(docsFileObj))
 }
 
 /**
@@ -149,7 +160,7 @@ function buildGroupsTemplate(groups) {
 function getListOfStaticDocs() {
   return Promise.all(
     docsConfig.staticDocs.map((staticDoc) => {
-      return fsp
+      return fs
         .readFile(staticDoc.path)
         .then((docContent) => docContent.toString())
         .then((content) => Object.assign({ content }, staticDoc))
@@ -366,8 +377,4 @@ function generateSyntaxString(name, args, isFPFn) {
       .join(', ')
     return `${name}(${argsString})`
   }
-}
-
-function asyncMap(array, fn) {
-  return Promise.all(array.map((item) => fn(item)))
 }

@@ -302,3 +302,29 @@ If now is January 1st, 2000, 00:00.
 | 1999-12-31T00:00:00.000Z | hieraŭ je 00:00        |
 | 1999-12-27T00:00:00.000Z | pasinta lundo je 00:00 |
 | 1999-12-21T00:00:00.000Z | 1999-12-21             |
+
+## `formatDuration`
+
+| Duration      | Result     |
+| ------------- | ---------- |
+| {"years":0}   | 0 jaroj    |
+| {"years":1}   | 1 jaro     |
+| {"years":2}   | 2 jaroj    |
+| {"months":0}  | 0 monatoj  |
+| {"months":1}  | 1 monato   |
+| {"months":2}  | 2 monatoj  |
+| {"weeks":0}   | 0 semajnoj |
+| {"weeks":1}   | 1 semajno  |
+| {"weeks":2}   | 2 semajnoj |
+| {"days":0}    | 0 tagoj    |
+| {"days":1}    | 1 tago     |
+| {"days":2}    | 2 tagoj    |
+| {"hours":0}   | 0 horoj    |
+| {"hours":1}   | 1 horo     |
+| {"hours":2}   | 2 horoj    |
+| {"minutes":0} | 0 minutoj  |
+| {"minutes":1} | 1 minuto   |
+| {"minutes":2} | 2 minutoj  |
+| {"seconds":0} | 0 sekundoj |
+| {"seconds":1} | 1 sekundo  |
+| {"seconds":2} | 2 sekundoj |

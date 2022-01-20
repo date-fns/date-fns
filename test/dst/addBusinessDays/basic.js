@@ -11,7 +11,7 @@ if (parseInt(process.version.match(/^v(\d+)\./)[1]) < 10)
 
 console.log(addBusinessDays(new Date(2014, 8 /* Sep */, 1), 10).toString())
 
-assert.deepEqual(
+assert.deepStrictEqual(
   // new Date(2014, 8, 7) is the DST day
   addBusinessDays(new Date(2014, 8 /* Sep */, 1), 10).toString(),
   'Mon Sep 15 2014 00:00:00 GMT-0300 (Chile Summer Time)'

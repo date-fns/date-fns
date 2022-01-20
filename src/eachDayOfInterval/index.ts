@@ -1,4 +1,5 @@
 import toDate from '../toDate/index'
+import type { Interval } from '../types'
 import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
@@ -9,37 +10,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Return the array of dates within the specified time interval.
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
- * - The function was renamed from `eachDay` to `eachDayOfInterval`.
- *   This change was made to mirror the use of the word "interval" in standard ISO 8601:2004 terminology:
- *
- *   ```
- *   2.1.3
- *   time interval
- *   part of the time axis limited by two instants
- *   ```
- *
- *   Also, this function now accepts an object with `start` and `end` properties
- *   instead of two arguments as an interval.
- *   This function now throws `RangeError` if the start of the interval is after its end
- *   or if any date in the interval is `Invalid Date`.
- *
- *   ```javascript
- *   // Before v2.0.0
- *
- *   eachDay(new Date(2014, 0, 10), new Date(2014, 0, 20))
- *
- *   // v2.0.0 onward
- *
- *   eachDayOfInterval(
- *     { start: new Date(2014, 0, 10), end: new Date(2014, 0, 20) }
- *   )
- *   ```
- *
- * @param {Interval} interval - the interval. See [Interval]{@link docs/types/Interval}
+ * @param {Interval} interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
  * @param {Object} [options] - an object with options.
  * @param {Number} [options.step=1] - the step to increment by. The value should be more than 1.
  * @returns {Date[]} the array with starts of days from the day of the interval start to the day of the interval end
@@ -62,7 +33,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //   Fri Oct 10 2014 00:00:00
  * // ]
  */
-export default function eachDayOfInterval(dirtyInterval: Interval, options?: {step?: number}): Date[] {
+export default function eachDayOfInterval(
+  dirtyInterval: Interval,
+  options?: { step?: number }
+): Date[] {
   requiredArgs(1, arguments)
 
   const interval = dirtyInterval || {}

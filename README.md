@@ -11,16 +11,16 @@
 </p>
 
 <div align="center">
-  
-[📖&nbsp; Documentation](https://date-fns.org/docs/)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[🧑‍💻&nbsp; JavaScript Jobs](https://jobs.date-fns.org/)
-  
+
+[📖&nbsp; Documentation](https://date-fns.org/docs/Getting-Started/)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[🧑‍💻&nbsp; JavaScript Jobs](https://jobs.date-fns.org/)
+
 </div>
 
 <hr>
 
 # It's like [Lodash](https://lodash.com) for dates
 
-- It has [**180+ functions** for all occasions](https://date-fns.org/docs/).
+- It has [**200+ functions** for all occasions](https://date-fns.org/docs/Getting-Started/).
 - **Modular**: Pick what you need. Works with webpack, Browserify, or Rollup and also supports tree-shaking.
 - **Native dates**: Uses existing native type. It doesn't extend core objects for safety's sake.
 - **Immutable & Pure**: Built using pure functions and always returns a new date instance.

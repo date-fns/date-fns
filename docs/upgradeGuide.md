@@ -2,7 +2,7 @@
 
 ## Common changes
 
-This page covers a few of the most common problems people face when updating from v1 to v2. For a more detailed list of changes, look at the [change log for version 2.0.0](https://date-fns.org/docs/Change-Log#2.0.0-2019-08-20).
+This page covers a few of the most common problems people face when updating from v1 to v2. For a more detailed list of changes, look at the [change log for version 2.0.0](https://date-fns.org/docs/Change-Log).
 
 ### Camel case naming schema
 

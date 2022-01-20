@@ -1,7 +1,7 @@
 import addHours from '../addHours/index'
 import toDate from '../toDate/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import { Interval, StepOptions } from '../types'
+import type { Interval, StepOptions } from '../types'
 
 /**
  * @name eachHourOfInterval
@@ -11,7 +11,7 @@ import { Interval, StepOptions } from '../types'
  * @description
  * Return the array of hours within the specified time interval.
  *
- * @param {Interval} interval - the interval. See [Interval]{@link docs/types/Interval}
+ * @param {Interval} interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
  * @param {Object} [options] - an object with options.
  * @param {Number} [options.step=1] - the step to increment by. The value should be more than 1.
  * @returns {Date[]} the array with starts of hours from the hour of the interval start to the hour of the interval end
@@ -22,7 +22,7 @@ import { Interval, StepOptions } from '../types'
  *
  * @example
  * // Each hour between 6 October 2014, 12:00 and 6 October 2014, 15:00
- * var result = eachHourOfInterval({
+ * const result = eachHourOfInterval({
  *   start: new Date(2014, 9, 6, 12),
  *   end: new Date(2014, 9, 6, 15)
  * })

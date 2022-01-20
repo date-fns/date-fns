@@ -302,3 +302,29 @@ If now is January 1st, 2000, 00:00.
 | 1999-12-31T00:00:00.000Z | kecha 12:00 da            |
 | 1999-12-27T00:00:00.000Z | oldingi Dushanba 12:00 da |
 | 1999-12-21T00:00:00.000Z | 21/12/1999                |
+
+## `formatDuration`
+
+| Duration      | Result   |
+| ------------- | -------- |
+| {"years":0}   | 0 yil    |
+| {"years":1}   | 1 yil    |
+| {"years":2}   | 2 yil    |
+| {"months":0}  | 0 oy     |
+| {"months":1}  | 1 oy     |
+| {"months":2}  | 2 oy     |
+| {"weeks":0}   | 0 hafta  |
+| {"weeks":1}   | 1 hafta  |
+| {"weeks":2}   | 2 hafta  |
+| {"days":0}    | 0 kun    |
+| {"days":1}    | 1 kun    |
+| {"days":2}    | 2 kun    |
+| {"hours":0}   | 0 soat   |
+| {"hours":1}   | 1 soat   |
+| {"hours":2}   | 2 soat   |
+| {"minutes":0} | 0 minut  |
+| {"minutes":1} | 1 minut  |
+| {"minutes":2} | 2 minut  |
+| {"seconds":0} | 0 sekund |
+| {"seconds":1} | 1 sekund |
+| {"seconds":2} | 2 sekund |

@@ -101,10 +101,12 @@ declare module.exports: {
     Interval,
     boolean
   >,
-  closestIndexTo: CurriedFn2<(Date | number)[], Date | number, number>,
-  closestTo: CurriedFn2<(Date | number)[], Date | number, Date>,
+  clamp: CurriedFn2<Interval, Date | number, Date>,
+  closestIndexTo: CurriedFn2<(Date | number)[], Date | number, ?number>,
+  closestTo: CurriedFn2<(Date | number)[], Date | number, ?Date>,
   compareAsc: CurriedFn2<Date | number, Date | number, number>,
   compareDesc: CurriedFn2<Date | number, Date | number, number>,
+  daysToWeeks: CurriedFn1<number, number>,
   differenceInBusinessDays: CurriedFn2<Date | number, Date | number, number>,
   differenceInCalendarDays: CurriedFn2<Date | number, Date | number, number>,
   differenceInCalendarISOWeeks: CurriedFn2<
@@ -136,13 +138,53 @@ declare module.exports: {
   differenceInCalendarYears: CurriedFn2<Date | number, Date | number, number>,
   differenceInDays: CurriedFn2<Date | number, Date | number, number>,
   differenceInHours: CurriedFn2<Date | number, Date | number, number>,
+  differenceInHoursWithOptions: CurriedFn3<
+    {
+      roundingMethod?: string,
+    },
+    Date | number,
+    Date | number,
+    number
+  >,
   differenceInISOWeekYears: CurriedFn2<Date | number, Date | number, number>,
   differenceInMilliseconds: CurriedFn2<Date | number, Date | number, number>,
   differenceInMinutes: CurriedFn2<Date | number, Date | number, number>,
+  differenceInMinutesWithOptions: CurriedFn3<
+    {
+      roundingMethod?: string,
+    },
+    Date | number,
+    Date | number,
+    number
+  >,
   differenceInMonths: CurriedFn2<Date | number, Date | number, number>,
   differenceInQuarters: CurriedFn2<Date | number, Date | number, number>,
+  differenceInQuartersWithOptions: CurriedFn3<
+    {
+      roundingMethod?: string,
+    },
+    Date | number,
+    Date | number,
+    number
+  >,
   differenceInSeconds: CurriedFn2<Date | number, Date | number, number>,
+  differenceInSecondsWithOptions: CurriedFn3<
+    {
+      roundingMethod?: string,
+    },
+    Date | number,
+    Date | number,
+    number
+  >,
   differenceInWeeks: CurriedFn2<Date | number, Date | number, number>,
+  differenceInWeeksWithOptions: CurriedFn3<
+    {
+      roundingMethod?: string,
+    },
+    Date | number,
+    Date | number,
+    number
+  >,
   differenceInYears: CurriedFn2<Date | number, Date | number, number>,
   eachDayOfInterval: CurriedFn1<Interval, Date[]>,
   eachDayOfIntervalWithOptions: CurriedFn2<
@@ -154,6 +196,14 @@ declare module.exports: {
   >,
   eachHourOfInterval: CurriedFn1<Interval, Date[]>,
   eachHourOfIntervalWithOptions: CurriedFn2<
+    {
+      step?: number,
+    },
+    Interval,
+    Date[]
+  >,
+  eachMinuteOfInterval: CurriedFn1<Interval, Date[]>,
+  eachMinuteOfIntervalWithOptions: CurriedFn2<
     {
       step?: number,
     },
@@ -345,6 +395,9 @@ declare module.exports: {
     number
   >,
   getYear: CurriedFn1<Date | number, number>,
+  hoursToMilliseconds: CurriedFn1<number, number>,
+  hoursToMinutes: CurriedFn1<number, number>,
+  hoursToSeconds: CurriedFn1<number, number>,
   intervalToDuration: CurriedFn1<Interval, Duration>,
   intlFormat: CurriedFn3<
     {
@@ -443,7 +496,15 @@ declare module.exports: {
   lightFormat: CurriedFn2<string, Date | number, string>,
   max: CurriedFn1<(Date | number)[], Date>,
   milliseconds: CurriedFn1<Duration, number>,
+  millisecondsToHours: CurriedFn1<number, number>,
+  millisecondsToMinutes: CurriedFn1<number, number>,
+  millisecondsToSeconds: CurriedFn1<number, number>,
   min: CurriedFn1<(Date | number)[], Date>,
+  minutesToHours: CurriedFn1<number, number>,
+  minutesToMilliseconds: CurriedFn1<number, number>,
+  minutesToSeconds: CurriedFn1<number, number>,
+  monthsToQuarters: CurriedFn1<number, number>,
+  monthsToYears: CurriedFn1<number, number>,
   nextDay: CurriedFn2<Day, Date | number, Date>,
   nextFriday: CurriedFn1<Date | number, Date>,
   nextMonday: CurriedFn1<Date | number, Date>,
@@ -476,6 +537,16 @@ declare module.exports: {
     string,
     Date
   >,
+  previousDay: CurriedFn2<number, Date | number, Date>,
+  previousFriday: CurriedFn1<Date | number, Date>,
+  previousMonday: CurriedFn1<Date | number, Date>,
+  previousSaturday: CurriedFn1<Date | number, Date>,
+  previousSunday: CurriedFn1<Date | number, Date>,
+  previousThursday: CurriedFn1<Date | number, Date>,
+  previousTuesday: CurriedFn1<Date | number, Date>,
+  previousWednesday: CurriedFn1<Date | number, Date>,
+  quartersToMonths: CurriedFn1<number, number>,
+  quartersToYears: CurriedFn1<number, number>,
   roundToNearestMinutes: CurriedFn1<Date | number, Date>,
   roundToNearestMinutesWithOptions: CurriedFn2<
     {
@@ -484,6 +555,9 @@ declare module.exports: {
     Date | number,
     Date
   >,
+  secondsToHours: CurriedFn1<number, number>,
+  secondsToMilliseconds: CurriedFn1<number, number>,
+  secondsToMinutes: CurriedFn1<number, number>,
   set: CurriedFn2<
     {
       milliseconds?: number,
@@ -583,6 +657,19 @@ declare module.exports: {
   subWeeks: CurriedFn2<number, Date | number, Date>,
   subYears: CurriedFn2<number, Date | number, Date>,
   toDate: CurriedFn1<Date | number, Date>,
+  weeksToDays: CurriedFn1<number, number>,
+  yearsToMonths: CurriedFn1<number, number>,
+  yearsToQuarters: CurriedFn1<number, number>,
+  daysInWeek: number,
   maxTime: number,
+  millisecondsInMinute: number,
+  millisecondsInHour: number,
+  millisecondsInSecond: number,
   minTime: number,
+  minutesInHour: number,
+  monthsInQuarter: number,
+  monthsInYear: number,
+  quartersInYear: number,
+  secondsInHour: number,
+  secondsInMinute: number,
 }

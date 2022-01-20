@@ -7,7 +7,7 @@ if (process.env.TZ !== 'Asia/Kolkata')
 if (parseInt(process.version.match(/^v(\d+)\./)[1]) < 10)
   throw new Error('The test must be run on Node.js version >= 10')
 
-assert.equal(
+assert.strictEqual(
   formatISO(new Date(1986, 3, 4, 10, 33, 1)),
   '1986-04-04T10:33:01+05:30'
 )

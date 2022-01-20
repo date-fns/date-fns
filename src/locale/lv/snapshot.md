@@ -302,3 +302,29 @@ If now is January 1st, 2000, 00:00.
 | 1999-12-31T00:00:00.000Z | Vakar plkst. 00:00              |
 | 1999-12-27T00:00:00.000Z | pirmdienā plkst. 00:00          |
 | 1999-12-21T00:00:00.000Z | 21.12.1999.                     |
+
+## `formatDuration`
+
+| Duration      | Result     |
+| ------------- | ---------- |
+| {"years":0}   | 0 gadi     |
+| {"years":1}   | 1 gads     |
+| {"years":2}   | 2 gadi     |
+| {"months":0}  | 0 mēneši   |
+| {"months":1}  | 1 mēnesis  |
+| {"months":2}  | 2 mēneši   |
+| {"weeks":0}   | 0 nedēļu   |
+| {"weeks":1}   | 1 nedēļa   |
+| {"weeks":2}   | 2 nedēļu   |
+| {"days":0}    | 0 dienas   |
+| {"days":1}    | 1 diena    |
+| {"days":2}    | 2 dienas   |
+| {"hours":0}   | 0 stundas  |
+| {"hours":1}   | 1 stunda   |
+| {"hours":2}   | 2 stundas  |
+| {"minutes":0} | 0 minūtes  |
+| {"minutes":1} | 1 minūte   |
+| {"minutes":2} | 2 minūtes  |
+| {"seconds":0} | 0 sekundes |
+| {"seconds":1} | 1 sekunde  |
+| {"seconds":2} | 2 sekundes |

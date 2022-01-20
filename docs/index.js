@@ -5,6 +5,7 @@ module.exports = {
     'General',
     'Types',
     'Common Helpers',
+    'Conversion Helpers',
     'Interval Helpers',
     'Timestamp Helpers',
     'Millisecond Helpers',

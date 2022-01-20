@@ -12,20 +12,12 @@ const gh = new Octokit({ auth: process.env.GITHUB_TOKEN })
 })()
 
 function renderChangelog(changelog: ChangelogVersion) {
-  const items = changelog.added
-    .concat(changelog.changed)
-    .concat(changelog.fixed)
-  const authors = uniq(
-    items.map(({ author }) => author),
-    (author) => author.login
-  )
-
   let markdown = `## ${renderVersion(changelog.version)} - ${format(
     Date.now(),
     'yyyy-MM-dd'
   )}
 
-${sample(thanksOptions)!(renderAuthors(authors))}`
+${sample(thanksOptions)!(renderAuthors(changelog.authors))}`
 
   if (changelog.fixed.length)
     markdown += `
@@ -70,7 +62,10 @@ async function buildChangelog(): Promise<ChangelogVersion> {
     )
   )
 
-  const items = commits.all.reduce<ChangelogItem[]>((acc, commit) => {
+  const items: ChangelogItem[] = []
+  const authors: Author[] = []
+
+  commits.all.forEach((commit) => {
     const author: Author = {
       login: authorsMap[commit.hash],
       email: commit.author_email,
@@ -90,9 +85,11 @@ async function buildChangelog(): Promise<ChangelogVersion> {
     })
     if (!issues?.length) issues = undefined
 
-    const items = extractItems(commit.body.trim(), { author, pr, issues })
-    return acc.concat(items)
-  }, [])
+    const commitItems = extractItems(commit.body.trim(), { author, pr, issues })
+
+    if (!authors.find((a) => a.login === author.login)) authors.push(author)
+    items.push(...commitItems)
+  })
 
   const changed = items.filter((i) => i.type === 'changed')
   const fixed = items.filter((i) => i.type === 'fixed')
@@ -116,7 +113,7 @@ async function buildChangelog(): Promise<ChangelogVersion> {
     }
   }
 
-  return { version, changed, fixed, added }
+  return { version, changed, fixed, added, authors }
 }
 
 function parseVersion(tag: string): Version {
@@ -224,7 +221,7 @@ function renderAuthors(authors: Author[]) {
 }
 
 function renderAuthor(author: Author) {
-  return `[${author.name}](http://github.com/${author.login})`
+  return `@${author.login}`
 }
 
 function renderItem(item: ChangelogItem) {
@@ -262,6 +259,7 @@ interface ChangelogVersion {
   changed: ChangelogItem[]
   fixed: ChangelogItem[]
   added: ChangelogItem[]
+  authors: Author[]
 }
 
 interface Author {
@@ -270,22 +268,22 @@ interface Author {
   email: string
 }
 
-var closesRegExp = /(?:closes|fixes) #(\d+)/
+const closesRegExp = /(?:closes|fixes) #(\d+)/
 
-var issuesRegExp = /\s?\(((?:#\d+(?:,\s?)?)+)\)/g
+const issuesRegExp = /\s?\(((?:#\d+(?:,\s?)?)+)\)/g
 
-var thanksOptions = [
+const thanksOptions = [
   (authors: string) => `Kudos to ${authors} for working on the release.`,
   (authors: string) => `Thanks to ${authors} for working on the release.`,
   (authors: string) => `This release is brought to you by ${authors}.`,
   (authors: string) => `On this release worked ${authors}.`,
 ]
 
-var fixedSentenceRegExp = /^(breaking:\s?)?(fixed\s.+)/i
-var fixedOneLinerRegExp = /^fixed:\s(.+)/i
+const fixedSentenceRegExp = /^(breaking:\s?)?(fixed\s.+)/i
+const fixedOneLinerRegExp = /^fixed:\s(.+)/i
 
-var changedSentenceRegExp = /^(breaking:\s?)?(changed\s.+)/i
-var changedOneLinerRegExp = /^changed:\s(.+)/i
+const changedSentenceRegExp = /^(breaking:\s?)?(changed\s.+)/i
+const changedOneLinerRegExp = /^changed:\s(.+)/i
 
-var addedSentenceRegExp = /^(breaking:\s?)?(added\s.+)/i
-var addedOneLinerRegExp = /^added:\s(.+)/i
+const addedSentenceRegExp = /^(breaking:\s?)?(added\s.+)/i
+const addedOneLinerRegExp = /^added:\s(.+)/i

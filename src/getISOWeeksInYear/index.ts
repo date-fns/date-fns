@@ -14,10 +14,6 @@ const MILLISECONDS_IN_WEEK = 604800000
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
  * @param {Date|Number} date - the given date
  * @returns {Number} the number of ISO weeks in a year
  * @throws {TypeError} 1 argument required

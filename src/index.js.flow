@@ -82,19 +82,23 @@ declare module.exports: {
     }
   ) => boolean,
 
+  clamp: (date: Date | number, interval: Interval) => Date,
+
   closestIndexTo: (
     dateToCompare: Date | number,
     datesArray: (Date | number)[]
-  ) => number,
+  ) => ?number,
 
   closestTo: (
     dateToCompare: Date | number,
     datesArray: (Date | number)[]
-  ) => Date,
+  ) => ?Date,
 
   compareAsc: (dateLeft: Date | number, dateRight: Date | number) => number,
 
   compareDesc: (dateLeft: Date | number, dateRight: Date | number) => number,
+
+  daysToWeeks: (days: number) => number,
 
   differenceInBusinessDays: (
     dateLeft: Date | number,
@@ -147,7 +151,10 @@ declare module.exports: {
 
   differenceInHours: (
     dateLeft: Date | number,
-    dateRight: Date | number
+    dateRight: Date | number,
+    options?: {
+      roundingMethod?: string,
+    }
   ) => number,
 
   differenceInISOWeekYears: (
@@ -162,7 +169,10 @@ declare module.exports: {
 
   differenceInMinutes: (
     dateLeft: Date | number,
-    dateRight: Date | number
+    dateRight: Date | number,
+    options?: {
+      roundingMethod?: string,
+    }
   ) => number,
 
   differenceInMonths: (
@@ -172,17 +182,26 @@ declare module.exports: {
 
   differenceInQuarters: (
     dateLeft: Date | number,
-    dateRight: Date | number
+    dateRight: Date | number,
+    options?: {
+      roundingMethod?: string,
+    }
   ) => number,
 
   differenceInSeconds: (
     dateLeft: Date | number,
-    dateRight: Date | number
+    dateRight: Date | number,
+    options?: {
+      roundingMethod?: string,
+    }
   ) => number,
 
   differenceInWeeks: (
     dateLeft: Date | number,
-    dateRight: Date | number
+    dateRight: Date | number,
+    options?: {
+      roundingMethod?: string,
+    }
   ) => number,
 
   differenceInYears: (
@@ -198,6 +217,13 @@ declare module.exports: {
   ) => Date[],
 
   eachHourOfInterval: (
+    interval: Interval,
+    options?: {
+      step?: number,
+    }
+  ) => Date[],
+
+  eachMinuteOfInterval: (
     interval: Interval,
     options?: {
       step?: number,
@@ -440,6 +466,12 @@ declare module.exports: {
 
   getYear: (date: Date | number) => number,
 
+  hoursToMilliseconds: (hours: number) => number,
+
+  hoursToMinutes: (hours: number) => number,
+
+  hoursToSeconds: (hours: number) => number,
+
   intervalToDuration: (interval: Interval) => Duration,
 
   intlFormat: (
@@ -605,7 +637,23 @@ declare module.exports: {
 
   milliseconds: (duration: Duration) => number,
 
+  millisecondsToHours: (milliseconds: number) => number,
+
+  millisecondsToMinutes: (milliseconds: number) => number,
+
+  millisecondsToSeconds: (milliseconds: number) => number,
+
   min: (datesArray: (Date | number)[]) => Date,
+
+  minutesToHours: (minutes: number) => number,
+
+  minutesToMilliseconds: (minutes: number) => number,
+
+  minutesToSeconds: (minutes: number) => number,
+
+  monthsToQuarters: (months: number) => number,
+
+  monthsToYears: (months: number) => number,
 
   nextDay: (date: Date | number, day: Day) => Date,
 
@@ -647,12 +695,38 @@ declare module.exports: {
 
   parseJSON: (argument: string | number | Date) => Date,
 
+  previousDay: (date: Date | number, day: number) => Date,
+
+  previousFriday: (date: Date | number) => Date,
+
+  previousMonday: (date: Date | number) => Date,
+
+  previousSaturday: (date: Date | number) => Date,
+
+  previousSunday: (date: Date | number) => Date,
+
+  previousThursday: (date: Date | number) => Date,
+
+  previousTuesday: (date: Date | number) => Date,
+
+  previousWednesday: (date: Date | number) => Date,
+
+  quartersToMonths: (quarters: number) => number,
+
+  quartersToYears: (quarters: number) => number,
+
   roundToNearestMinutes: (
     date: Date | number,
     options?: {
       nearestTo?: number,
     }
   ) => Date,
+
+  secondsToHours: (seconds: number) => number,
+
+  secondsToMilliseconds: (seconds: number) => number,
+
+  secondsToMinutes: (seconds: number) => number,
 
   set: (
     date: Date | number,
@@ -789,7 +863,33 @@ declare module.exports: {
 
   toDate: (argument: Date | number) => Date,
 
+  weeksToDays: (weeks: number) => number,
+
+  yearsToMonths: (years: number) => number,
+
+  yearsToQuarters: (years: number) => number,
+
+  daysInWeek: number,
+
   maxTime: number,
 
+  millisecondsInMinute: number,
+
+  millisecondsInHour: number,
+
+  millisecondsInSecond: number,
+
   minTime: number,
+
+  minutesInHour: number,
+
+  monthsInQuarter: number,
+
+  monthsInYear: number,
+
+  quartersInYear: number,
+
+  secondsInHour: number,
+
+  secondsInMinute: number,
 }

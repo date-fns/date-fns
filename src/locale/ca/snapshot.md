@@ -302,3 +302,29 @@ If now is January 1st, 2000, 00:00.
 | 1999-12-31T00:00:00.000Z | ahir a les 00:00              |
 | 1999-12-27T00:00:00.000Z | el dilluns passat a les 00:00 |
 | 1999-12-21T00:00:00.000Z | 21/12/1999                    |
+
+## `formatDuration`
+
+| Duration      | Result     |
+| ------------- | ---------- |
+| {"years":0}   | 0 anys     |
+| {"years":1}   | 1 any      |
+| {"years":2}   | 2 anys     |
+| {"months":0}  | 0 mesos    |
+| {"months":1}  | 1 mes      |
+| {"months":2}  | 2 mesos    |
+| {"weeks":0}   | 0 setmanes |
+| {"weeks":1}   | 1 setmana  |
+| {"weeks":2}   | 2 setmanes |
+| {"days":0}    | 0 dies     |
+| {"days":1}    | 1 dia      |
+| {"days":2}    | 2 dies     |
+| {"hours":0}   | 0 hores    |
+| {"hours":1}   | 1 hora     |
+| {"hours":2}   | 2 hores    |
+| {"minutes":0} | 0 minuts   |
+| {"minutes":1} | 1 minut    |
+| {"minutes":2} | 2 minuts   |
+| {"seconds":0} | 0 segons   |
+| {"seconds":1} | 1 segon    |
+| {"seconds":2} | 2 segons   |

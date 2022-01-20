@@ -1,4 +1,5 @@
 import toDate from '../toDate/index'
+import type { Interval } from '../types'
 import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
@@ -9,7 +10,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Return the array of months within the specified time interval.
  *
- * @param {Interval} interval - the interval. See [Interval]{@link docs/types/Interval}
+ * @param {Interval} interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
  * @returns {Date[]} the array with starts of months from the month of the interval start to the month of the interval end
  * @throws {TypeError} 1 argument required
  * @throws {RangeError} The start of an interval cannot be after its end
@@ -17,7 +18,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // Each month between 6 February 2014 and 10 August 2014:
- * var result = eachMonthOfInterval({
+ * const result = eachMonthOfInterval({
  *   start: new Date(2014, 1, 6),
  *   end: new Date(2014, 7, 10)
  * })
@@ -31,7 +32,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //   Fri Aug 01 2014 00:00:00
  * // ]
  */
-export default function eachMonthOfInterval(dirtyInterval: Interval) {
+export default function eachMonthOfInterval(dirtyInterval: Interval): Date[] {
   requiredArgs(1, arguments)
 
   const interval = dirtyInterval || {}

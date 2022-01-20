@@ -15,17 +15,17 @@ const jsDocs = require(path.resolve(process.cwd(), 'tmp/docs.json'))
 const { generateTypeScriptTypings } = require('./_lib/typings/typeScript')
 const { generateFlowTypings } = require('./_lib/typings/flow')
 
-const locales = listLocales()
+listLocales().then((locales) => {
+  const fns = Object.keys(jsDocs)
+    .map((category) => jsDocs[category])
+    .reduce((previousValue, newValue) => [...previousValue, ...newValue], [])
+    .filter((doc) => doc.kind === 'function')
+    .sort((a, b) => a.title.localeCompare(b.title, 'en-US'))
 
-const fns = Object.keys(jsDocs)
-  .map(category => jsDocs[category])
-  .reduce((previousValue, newValue) => [...previousValue, ...newValue], [])
-  .filter(doc => doc.kind === 'function')
-  .sort((a, b) => a.title.localeCompare(b.title, 'en-US'))
+  const constants = getConstants()
 
-const constants = getConstants()
+  const aliases = jsDocs['Types']
 
-const aliases = jsDocs['Types']
-
-generateTypeScriptTypings(fns, aliases, locales, constants)
-generateFlowTypings(fns, aliases, locales, constants)
+  generateTypeScriptTypings(fns, aliases, locales, constants)
+  generateFlowTypings(fns, aliases, locales, constants)
+})
