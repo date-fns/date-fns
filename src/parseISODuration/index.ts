@@ -1,9 +1,10 @@
+import type { Duration } from '../types'
 import requiredArgs from '../_lib/requiredArgs/index'
 
-var nr = '\\d+(?:[\\.,]\\d+)?'
-var dateRegex = '(' + nr + 'Y)?(' + nr + 'M)?(' + nr + 'D)?'
-var timeRegex = 'T(' + nr + 'H)?(' + nr + 'M)?(' + nr + 'S)?'
-var durationRegex = new RegExp('P' + dateRegex + '(?:' + timeRegex + ')?')
+const nr = '\\d+(?:[\\.,]\\d+)?'
+const dateRegex = '(' + nr + 'Y)?(' + nr + 'M)?(' + nr + 'D)?'
+const timeRegex = 'T(' + nr + 'H)?(' + nr + 'M)?(' + nr + 'S)?'
+const durationRegex = new RegExp('P' + dateRegex + '(?:' + timeRegex + ')?')
 
 /**
  * @name parseISODuration
@@ -25,10 +26,10 @@ var durationRegex = new RegExp('P' + dateRegex + '(?:' + timeRegex + ')?')
  *
  * @example
  * // Convert string 'P1DT5M30S' to duration:
- * var result = parseISODuration('P1DT5M30S')
+ * const result = parseISODuration('P1DT5M30S')
  * //=> { days: 1, minutes: 5, seconds: 30 }
  */
-export default function parseISODuration(argument) {
+export default function parseISODuration(argument: string): Duration {
   requiredArgs(1, arguments)
 
   if (
@@ -40,7 +41,7 @@ export default function parseISODuration(argument) {
     return {}
   }
 
-  var match = argument.match(durationRegex)
+  const match = argument.match(durationRegex)
   if (!match) {
     return {}
   }
@@ -57,7 +58,7 @@ export default function parseISODuration(argument) {
     return {}
   }
 
-  var duration = {}
+  const duration: Duration = {}
   if (match[1]) duration.years = parseFloat(match[1])
   if (match[2]) duration.months = parseFloat(match[2])
   if (match[3]) duration.days = parseFloat(match[3])
