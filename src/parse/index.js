@@ -1,4 +1,4 @@
-import defaultLocale from '../locale/en-US/index'
+import { getLocale } from '../setLocale/index'
 import subMilliseconds from '../subMilliseconds/index'
 import toDate from '../toDate/index'
 import assign from '../_lib/assign/index'
@@ -9,9 +9,9 @@ import {
   isProtectedWeekYearToken,
   throwProtectedError,
 } from '../_lib/protectedTokens/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
 import parsers from './_lib/parsers/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 var TIMEZONE_UNIT_PRIORITY = 10
 
@@ -328,15 +328,25 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  *
  * @example
  * // Parse 11 February 2014 from middle-endian format:
- * var result = parse('02/11/2014', 'MM/dd/yyyy', new Date())
+ * parse('02/11/2014', 'MM/dd/yyyy', new Date())
  * //=> Tue Feb 11 2014 00:00:00
  *
  * @example
- * // Parse 28th of February in Esperanto locale in the context of 2010 year:
  * import eo from 'date-fns/locale/eo'
- * var result = parse('28-a de februaro', "do 'de' MMMM", new Date(2010, 0, 1), {
+ *
+ * // Parse 28th of February in Esperanto locale in the context of 2010 year:
+ * parse('28-a de februaro', "do 'de' MMMM", new Date(2010, 0, 1), {
  *   locale: eo
  * })
+ * //=> Sun Feb 28 2010 00:00:00
+ *
+ * @example
+ * import { setLocale } from 'date-fns'
+ * import eo from 'date-fns/locale/eo'
+ *
+ * // Set and use the global locale
+ * setLocale(eo)
+ * parse('28-a de februaro', "do 'de' MMMM")
  * //=> Sun Feb 28 2010 00:00:00
  */
 export default function parse(
@@ -351,7 +361,7 @@ export default function parse(
   var formatString = String(dirtyFormatString)
   var options = dirtyOptions || {}
 
-  var locale = options.locale || defaultLocale
+  var locale = options.locale || getLocale()
 
   if (!locale.match) {
     throw new RangeError('locale must contain match property')

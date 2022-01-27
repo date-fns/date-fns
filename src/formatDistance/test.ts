@@ -1,8 +1,11 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import type { FormatDistanceFn } from '../locale/types'
 import formatDistance from '.'
+import enUS from '../locale/en-US'
+import ru from '../locale/ru'
+import type { FormatDistanceFn } from '../locale/types'
+import setLocale from '../setLocale'
 
 describe('formatDistance', () => {
   describe('seconds', () => {
@@ -236,6 +239,20 @@ describe('formatDistance', () => {
         }
       )
       assert(result === 'in about 1 hour')
+    })
+  })
+
+  describe('global locale', () => {
+    afterEach(() => {
+      setLocale(enUS)
+    })
+
+    it('uses the global locale', () => {
+      const dateA = new Date(1986, 3, 4, 11, 32, 0)
+      const dateB = new Date(1986, 3, 4, 10, 32, 0)
+      assert(formatDistance(dateA, dateB) === 'about 1 hour')
+      setLocale(ru)
+      assert(formatDistance(dateA, dateB) === 'около 1 часа')
     })
   })
 

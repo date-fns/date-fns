@@ -1,6 +1,6 @@
-import defaultLocale from '../locale/en-US/index'
 import type { FormatDistanceToken, Locale } from '../locale/types'
 import type { Duration } from '../types'
+import { getLocale } from '../setLocale/index'
 
 const defaultFormat: (keyof Duration)[] = [
   'years',
@@ -47,12 +47,12 @@ interface Options {
  *   minutes: 9,
  *   seconds: 30
  * })
- * //=> '2 years 9 months 1 week 7 days 5 hours 9 minutes 30 seconds'
+ * //=> "2 years 9 months 1 week 7 days 5 hours 9 minutes 30 seconds"
  *
  * @example
  * // Format partial duration
  * formatDuration({ months: 9, days: 2 })
- * //=> '9 months 2 days'
+ * //=> "9 months 2 days"
  *
  * @example
  * // Customize the format
@@ -67,19 +67,28 @@ interface Options {
  *     seconds: 30
  *   },
  *   { format: ['months', 'weeks'] }
- * ) === '9 months 1 week'
+ * ) === "9 months 1 week"
  *
  * @example
  * // Customize the zeros presence
  * formatDuration({ years: 0, months: 9 })
- * //=> '9 months'
+ * //=> "9 months"
  * formatDuration({ years: 0, months: 9 }, { zero: true })
- * //=> '0 years 9 months'
+ * //=> "0 years 9 months"
  *
  * @example
  * // Customize the delimiter
  * formatDuration({ years: 2, months: 9, weeks: 3 }, { delimiter: ', ' })
- * //=> '2 years, 9 months, 3 weeks'
+ * //=> "2 years, 9 months, 3 weeks"
+ *
+ * @example
+ * import { setLocale } from 'date-fns'
+ * import eo from 'date-fns/locale/eo'
+ *
+ * // Set and use the global locale
+ * setLocale(eo)
+ * formatDuration({ months: 9, days: 2 })
+ * //=> "9 monatoj 2 tagoj"
  */
 export default function formatDuration(
   duration: Duration,
@@ -92,7 +101,7 @@ export default function formatDuration(
   }
 
   const format = options?.format || defaultFormat
-  const locale = options?.locale || defaultLocale
+  const locale = options?.locale || getLocale()
   const zero = options?.zero || false
   const delimiter = options?.delimiter || ' '
 

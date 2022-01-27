@@ -2,6 +2,9 @@
 
 import assert from 'assert'
 import formatDuration from '.'
+import enUS from '../locale/en-US'
+import ru from '../locale/ru'
+import setLocale from '../setLocale'
 
 describe('formatDuration', () => {
   it('formats full duration', () => {
@@ -75,6 +78,19 @@ describe('formatDuration', () => {
       formatDuration({ months: 9, days: 2 }, { delimiter: ', ' }) ===
         '9 months, 2 days'
     )
+  })
+
+  describe('global locale', () => {
+    afterEach(() => {
+      setLocale(enUS)
+    })
+
+    it('uses the global locale', () => {
+      const duration = { months: 9, days: 2 }
+      assert(formatDuration(duration) === '9 months 2 days')
+      setLocale(ru)
+      assert(formatDuration(duration) === '9 месяцев 2 дня')
+    })
   })
 
   it('throws TypeError exception if passed less than 1 argument', () => {

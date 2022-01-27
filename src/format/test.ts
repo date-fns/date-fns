@@ -3,6 +3,9 @@
 import assert from 'assert'
 import sinon from 'sinon'
 import format from '.'
+import enUS from '../locale/en-US'
+import ru from '../locale/ru'
+import setLocale from '../setLocale'
 
 describe('format', () => {
   const date = new Date(1986, 3 /* Apr */, 4, 10, 32, 55, 123)
@@ -746,6 +749,19 @@ describe('format', () => {
         formatString
       ) === '2014-04-04'
     )
+  })
+
+  describe('global locale', () => {
+    afterEach(() => {
+      setLocale(enUS)
+    })
+
+    it('uses the global locale', () => {
+      const date = new Date(2014, 6, 2)
+      assert(format(date, 'PPpp') === 'Jul 2, 2014, 12:00:00 AM')
+      setLocale(ru)
+      assert(format(date, 'PPpp') === '2 июл. 2014 г., 0:00:00')
+    })
   })
 
   describe('custom locale', () => {

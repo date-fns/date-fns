@@ -3,6 +3,9 @@
 import assert from 'assert'
 import type { FormatDistanceFn } from '../locale/types'
 import formatDistanceStrict from '.'
+import enUS from '../locale/en-US'
+import ru from '../locale/ru'
+import setLocale from '../setLocale'
 
 describe('formatDistanceStrict', () => {
   describe('seconds', () => {
@@ -421,6 +424,20 @@ describe('formatDistanceStrict', () => {
         }
       )
       assert(result === '2 minutes')
+    })
+  })
+
+  describe('global locale', () => {
+    afterEach(() => {
+      setLocale(enUS)
+    })
+
+    it('uses the global locale', () => {
+      const dateA = new Date(1986, 3, 4, 10, 32, 0)
+      const dateB = new Date(1986, 3, 4, 10, 33, 1)
+      assert(formatDistanceStrict(dateA, dateB) === '1 minute')
+      setLocale(ru)
+      assert(formatDistanceStrict(dateA, dateB) === '1 минута')
     })
   })
 

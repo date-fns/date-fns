@@ -1,12 +1,12 @@
 import differenceInCalendarDays from '../differenceInCalendarDays/index'
 import format from '../format/index'
-import defaultLocale from '../locale/en-US/index'
 import subMilliseconds from '../subMilliseconds/index'
 import toDate from '../toDate/index'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 import type { LocaleOptions, WeekStartOptions } from '../types'
 import type { FormatRelativeToken } from '../locale/types'
+import { getLocale } from '../setLocale/index'
 
 /**
  * @name formatRelative
@@ -41,8 +41,17 @@ import type { FormatRelativeToken } from '../locale/types'
  *
  * @example
  * // Represent the date of 6 days ago in words relative to the given base date. In this example, today is Wednesday
- * const result = formatRelative(addDays(new Date(), -6), new Date())
+ * formatRelative(addDays(new Date(), -6), new Date())
  * //=> "last Thursday at 12:45 AM"
+ *
+ * @example
+ * import { setLocale } from 'date-fns'
+ * import eo from 'date-fns/locale/eo'
+ *
+ * // Set and use the global locale
+ * setLocale(eo)
+ * formatRelative(addDays(new Date(), -6), new Date())
+ * //=> "pasinta vendredo je 12:45"
  */
 export default function formatRelative(
   dirtyDate: Date | number,
@@ -54,7 +63,7 @@ export default function formatRelative(
   const date = toDate(dirtyDate)
   const baseDate = toDate(dirtyBaseDate)
 
-  const { locale = defaultLocale, weekStartsOn = 0 } = dirtyOptions || {}
+  const { locale = getLocale(), weekStartsOn = 0 } = dirtyOptions || {}
 
   if (!locale.localize) {
     throw new RangeError('locale must contain localize property')

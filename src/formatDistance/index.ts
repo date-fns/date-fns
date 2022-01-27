@@ -1,13 +1,13 @@
 import compareAsc from '../compareAsc/index'
 import differenceInMonths from '../differenceInMonths/index'
 import differenceInSeconds from '../differenceInSeconds/index'
-import defaultLocale from '../locale/en-US/index'
+import { getLocale } from '../setLocale/index'
 import toDate from '../toDate/index'
-import cloneObject from '../_lib/cloneObject/index'
+import type { LocaleOptions } from '../types'
 import assign from '../_lib/assign'
+import cloneObject from '../_lib/cloneObject/index'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import type { LocaleOptions } from '../types'
 
 const MINUTES_IN_DAY = 1440
 const MINUTES_IN_ALMOST_TWO_DAYS = 2520
@@ -65,34 +65,44 @@ const MINUTES_IN_TWO_MONTHS = 86400
  *
  * @example
  * // What is the distance between 2 July 2014 and 1 January 2015?
- * const result = formatDistance(new Date(2014, 6, 2), new Date(2015, 0, 1))
- * //=> '6 months'
+ * formatDistance(new Date(2014, 6, 2), new Date(2015, 0, 1))
+ * //=> "6 months"
  *
  * @example
  * // What is the distance between 1 January 2015 00:00:15
  * // and 1 January 2015 00:00:00, including seconds?
- * const result = formatDistance(
+ * formatDistance(
  *   new Date(2015, 0, 1, 0, 0, 15),
  *   new Date(2015, 0, 1, 0, 0, 0),
  *   { includeSeconds: true }
  * )
- * //=> 'less than 20 seconds'
+ * //=> "less than 20 seconds"
  *
  * @example
  * // What is the distance from 1 January 2016
  * // to 1 January 2015, with a suffix?
- * const result = formatDistance(new Date(2015, 0, 1), new Date(2016, 0, 1), {
+ * formatDistance(new Date(2015, 0, 1), new Date(2016, 0, 1), {
  *   addSuffix: true
  * })
- * //=> 'about 1 year ago'
+ * //=> "about 1 year ago"
  *
  * @example
+ * import eo from 'date-fns/locale/eo'
+ *
  * // What is the distance between 1 August 2016 and 1 January 2015 in Esperanto?
- * import { eoLocale } from 'date-fns/locale/eo'
- * const result = formatDistance(new Date(2016, 7, 1), new Date(2015, 0, 1), {
+ * formatDistance(new Date(2016, 7, 1), new Date(2015, 0, 1), {
  *   locale: eoLocale
  * })
- * //=> 'pli ol 1 jaro'
+ * //=> "pli ol 1 jaro"
+ *
+ * @example
+ * import { setLocale } from 'date-fns'
+ * import eo from 'date-fns/locale/eo'
+ *
+ * // Set and use the global locale
+ * setLocale(eo)
+ * formatDistance(new Date(2016, 7, 1), new Date(2015, 0, 1))
+ * //=> "pli ol 1 jaro"
  */
 
 export default function formatDistance(
@@ -105,7 +115,7 @@ export default function formatDistance(
 ): string {
   requiredArgs(2, arguments)
 
-  const locale = options.locale || defaultLocale
+  const locale = options.locale || getLocale()
 
   if (!locale.formatDistance) {
     throw new RangeError('locale must contain formatDistance property')

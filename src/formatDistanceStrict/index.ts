@@ -3,9 +3,9 @@ import compareAsc from '../compareAsc/index'
 import toDate from '../toDate/index'
 import cloneObject from '../_lib/cloneObject/index'
 import assign from '../_lib/assign/index'
-import defaultLocale from '../locale/en-US/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 import type { LocaleOptions, Unit } from '../types'
+import { getLocale } from '../setLocale/index'
 
 const MILLISECONDS_IN_MINUTE = 1000 * 60
 const MINUTES_IN_DAY = 60 * 24
@@ -48,50 +48,60 @@ const MINUTES_IN_YEAR = MINUTES_IN_DAY * 365
  *
  * @example
  * // What is the distance between 2 July 2014 and 1 January 2015?
- * const result = formatDistanceStrict(new Date(2014, 6, 2), new Date(2015, 0, 2))
- * //=> '6 months'
+ * formatDistanceStrict(new Date(2014, 6, 2), new Date(2015, 0, 2))
+ * //=> "6 months"
  *
  * @example
  * // What is the distance between 1 January 2015 00:00:15
  * // and 1 January 2015 00:00:00?
- * const result = formatDistanceStrict(
+ * formatDistanceStrict(
  *   new Date(2015, 0, 1, 0, 0, 15),
  *   new Date(2015, 0, 1, 0, 0, 0)
  * )
- * //=> '15 seconds'
+ * //=> "15 seconds"
  *
  * @example
  * // What is the distance from 1 January 2016
  * // to 1 January 2015, with a suffix?
- * const result = formatDistanceStrict(new Date(2015, 0, 1), new Date(2016, 0, 1), {
+ * formatDistanceStrict(new Date(2015, 0, 1), new Date(2016, 0, 1), {
  *   addSuffix: true
  * })
- * //=> '1 year ago'
+ * //=> "1 year ago"
  *
  * @example
  * // What is the distance from 1 January 2016
  * // to 1 January 2015, in minutes?
- * const result = formatDistanceStrict(new Date(2016, 0, 1), new Date(2015, 0, 1), {
+ * formatDistanceStrict(new Date(2016, 0, 1), new Date(2015, 0, 1), {
  *   unit: 'minute'
  * })
- * //=> '525600 minutes'
+ * //=> "525600 minutes"
  *
  * @example
  * // What is the distance from 1 January 2015
  * // to 28 January 2015, in months, rounded up?
- * const result = formatDistanceStrict(new Date(2015, 0, 28), new Date(2015, 0, 1), {
+ * formatDistanceStrict(new Date(2015, 0, 28), new Date(2015, 0, 1), {
  *   unit: 'month',
  *   roundingMethod: 'ceil'
  * })
- * //=> '1 month'
+ * //=> "1 month"
  *
  * @example
+ * import eo from 'date-fns/locale/eo'
+ *
  * // What is the distance between 1 August 2016 and 1 January 2015 in Esperanto?
- * import { eoLocale } from 'date-fns/locale/eo'
- * const result = formatDistanceStrict(new Date(2016, 7, 1), new Date(2015, 0, 1), {
- *   locale: eoLocale
+ * formatDistanceStrict(new Date(2016, 7, 1), new Date(2015, 0, 1), {
+ *   locale: eo
  * })
- * //=> '1 jaro'
+ * //=> "1 jaro"
+ *
+ * @example
+ * import { setLocale } from 'date-fns'
+ * import eo from 'date-fns/locale/eo'
+ *
+ * // Set and use the global locale
+ * setLocale(eo)
+ * formatDistanceStrict(new Date(2016, 7, 1), new Date(2015, 0, 1))
+ * //=> "1 jaro"
  */
 
 export default function formatDistanceStrict(
@@ -105,7 +115,7 @@ export default function formatDistanceStrict(
 ): string {
   requiredArgs(2, arguments)
 
-  const locale = options.locale || defaultLocale
+  const locale = options.locale || getLocale()
 
   if (!locale.formatDistance) {
     throw new RangeError('locale must contain localize.formatDistance property')

@@ -2,6 +2,9 @@
 
 import assert from 'assert'
 import formatRelative from '.'
+import enUS from '../locale/en-US'
+import ru from '../locale/ru'
+import setLocale from '../setLocale'
 
 describe('formatRelative', () => {
   const baseDate = new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 900)
@@ -95,6 +98,19 @@ describe('formatRelative', () => {
       date.setFullYear(7, 11 /* Dec */, 31)
       date.setHours(0, 0, 0, 0)
       assert(formatRelative(date, baseDate) === '12/31/0007')
+    })
+  })
+
+  describe('global locale', () => {
+    afterEach(() => {
+      setLocale(enUS)
+    })
+
+    it('uses the global locale', () => {
+      const date = new Date(1986, 3 /* Apr */, 1)
+      assert(formatRelative(date, baseDate) === 'last Tuesday at 12:00 AM')
+      setLocale(ru)
+      assert(formatRelative(date, baseDate) === 'во вторник в 0:00')
     })
   })
 

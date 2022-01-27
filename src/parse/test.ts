@@ -2,6 +2,9 @@
 
 import assert from 'assert'
 import parse from '.'
+import enUS from '../locale/en-US'
+import ru from '../locale/ru'
+import setLocale from '../setLocale'
 
 describe('parse', () => {
   const referenceDate = new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 900)
@@ -2315,6 +2318,24 @@ describe('parse', () => {
         const result = parse('60', 'ss', referenceDate)
         assert(result instanceof Date && isNaN(result.getTime()))
       })
+    })
+  })
+
+  describe('global locale', () => {
+    afterEach(() => {
+      setLocale(enUS)
+    })
+
+    it('uses the global locale', () => {
+      assert.deepStrictEqual(
+        parse('11 February 1987', 'dd MMMM yyyy', new Date()),
+        new Date(1987, 1, 11)
+      )
+      setLocale(ru)
+      assert.deepStrictEqual(
+        parse('11 Февраля 1987', 'dd MMMM yyyy', new Date()),
+        new Date(1987, 1, 11)
+      )
     })
   })
 

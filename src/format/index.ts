@@ -1,7 +1,14 @@
 import isValid from '../isValid/index'
-import defaultLocale from '../locale/en-US/index'
+import { getLocale } from '../setLocale/index'
 import subMilliseconds from '../subMilliseconds/index'
 import toDate from '../toDate/index'
+import type {
+  Day,
+  FirstWeekContainsDate,
+  FirstWeekContainsDateOptions,
+  LocaleOptions,
+  WeekStartOptions,
+} from '../types'
 import formatters from '../_lib/format/formatters/index'
 import longFormatters from '../_lib/format/longFormatters/index'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
@@ -10,15 +17,8 @@ import {
   isProtectedWeekYearToken,
   throwProtectedError,
 } from '../_lib/protectedTokens/index'
-import toInteger from '../_lib/toInteger/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import type {
-  FirstWeekContainsDateOptions,
-  LocaleOptions,
-  WeekStartOptions,
-  Day,
-  FirstWeekContainsDate,
-} from '../types'
+import toInteger from '../_lib/toInteger/index'
 
 // This RegExp consists of three parts separated by `|`:
 // - [yYQqMLwIdDecihHKkms]o matches any available ordinal number token
@@ -316,21 +316,31 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/
  *
  * @example
  * // Represent 11 February 2014 in middle-endian format:
- * const result = format(new Date(2014, 1, 11), 'MM/dd/yyyy')
- * //=> '02/11/2014'
+ * format(new Date(2014, 1, 11), 'MM/dd/yyyy')
+ * //=> "02/11/2014"
  *
  * @example
+ * import eo from 'date-fns/locale/eo'
+ *
  * // Represent 2 July 2014 in Esperanto:
- * import { eoLocale } from 'date-fns/locale/eo'
- * const result = format(new Date(2014, 6, 2), "do 'de' MMMM yyyy", {
- *   locale: eoLocale
+ * format(new Date(2014, 6, 2), "do 'de' MMMM yyyy", {
+ *   locale: eo
  * })
- * //=> '2-a de julio 2014'
+ * //=> "2-a de julio 2014"
  *
  * @example
  * // Escape string by single quote characters:
- * const result = format(new Date(2014, 6, 2, 15), "h 'o''clock'")
+ * format(new Date(2014, 6, 2, 15), "h 'o''clock'")
  * //=> "3 o'clock"
+ *
+ * @example
+ * import { setLocale } from 'date-fns'
+ * import eo from 'date-fns/locale/eo'
+ *
+ * // Set and use the global locale
+ * setLocale(eo)
+ * format(new Date(2014, 6, 2), "do 'de' MMMM yyyy")
+ * //=> "2-a de julio 2014"
  */
 
 export default function format(
@@ -348,7 +358,7 @@ export default function format(
   const formatStr = String(dirtyFormatStr)
   const options = dirtyOptions || {}
 
-  const locale = options.locale || defaultLocale
+  const locale = options.locale || getLocale()
 
   const localeFirstWeekContainsDate =
     locale.options && locale.options.firstWeekContainsDate
