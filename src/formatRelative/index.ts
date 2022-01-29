@@ -5,9 +5,8 @@ import subMilliseconds from '../subMilliseconds/index'
 import toDate from '../toDate/index'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import type { WeekStartOptions } from '../types'
+import type { PartialLocaleOptions, WeekStartOptions } from '../types'
 import type { FormatRelativeToken } from '../locale/types'
-import { PartialLocaleOptions } from '../types';
 
 /**
  * @name formatRelative
