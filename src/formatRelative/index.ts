@@ -5,8 +5,9 @@ import subMilliseconds from '../subMilliseconds/index'
 import toDate from '../toDate/index'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import type { LocaleOptions, WeekStartOptions } from '../types'
+import type { WeekStartOptions } from '../types'
 import type { FormatRelativeToken } from '../locale/types'
+import { PartialLocaleOptions } from '../types';
 
 /**
  * @name formatRelative
@@ -47,26 +48,15 @@ import type { FormatRelativeToken } from '../locale/types'
 export default function formatRelative(
   dirtyDate: Date | number,
   dirtyBaseDate: Date | number,
-  dirtyOptions?: LocaleOptions & WeekStartOptions
+  dirtyOptions?: PartialLocaleOptions & WeekStartOptions
 ): string {
   requiredArgs(2, arguments)
 
   const date = toDate(dirtyDate)
   const baseDate = toDate(dirtyBaseDate)
 
-  const { locale = defaultLocale, weekStartsOn = 0 } = dirtyOptions || {}
-
-  if (!locale.localize) {
-    throw new RangeError('locale must contain localize property')
-  }
-
-  if (!locale.formatLong) {
-    throw new RangeError('locale must contain formatLong property')
-  }
-
-  if (!locale.formatRelative) {
-    throw new RangeError('locale must contain formatRelative property')
-  }
+  const weekStartsOn = dirtyOptions?.weekStartsOn || defaultLocale.options?.weekStartsOn || 0;
+  const locale = { ...defaultLocale, ...(dirtyOptions?.locale || {}) }
 
   const diff = differenceInCalendarDays(date, baseDate)
 

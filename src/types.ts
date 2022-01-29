@@ -31,6 +31,10 @@ export interface LocaleOptions {
   locale?: Locale
 }
 
+export interface PartialLocaleOptions {
+  locale?: Partial<Locale>
+}
+
 export interface FormatOptions {
   format?: 'extended' | 'basic'
 }
