@@ -28,16 +28,13 @@ import type { FormatRelativeToken } from '../locale/types'
  * @param {Date|Number} date - the date to format
  * @param {Date|Number} baseDate - the date to compare with
  * @param {Object} [options] - an object with options.
- * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
+ * @param {Partial<Locale>} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
  * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
  * @returns {String} the date in words
  * @throws {TypeError} 2 arguments required
  * @throws {RangeError} `date` must not be Invalid Date
  * @throws {RangeError} `baseDate` must not be Invalid Date
  * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
- * @throws {RangeError} `options.locale` must contain `localize` property
- * @throws {RangeError} `options.locale` must contain `formatLong` property
- * @throws {RangeError} `options.locale` must contain `formatRelative` property
  *
  * @example
  * // Represent the date of 6 days ago in words relative to the given base date. In this example, today is Wednesday
