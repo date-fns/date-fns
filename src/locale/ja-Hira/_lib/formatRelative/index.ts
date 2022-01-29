@@ -9,13 +9,6 @@ const formatRelativeLocale = {
   other: 'P',
 }
 
-const formatRelative: FormatRelativeFn = (
-  token,
-  _date,
-  _baseDate,
-  _options
-) => {
-  return formatRelativeLocale[token]
-}
+const formatRelative: FormatRelativeFn = (token) => formatRelativeLocale[token]
 
 export default formatRelative
