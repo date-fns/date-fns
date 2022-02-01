@@ -389,12 +389,24 @@ describe('differenceInBusinessDays', () => {
       assert.strictEqual(result, 1)
     })
 
-    it('the given dates are the same, and the function does not return -0', () => {
+    it('the given dates are the same', () => {
       const result = differenceInBusinessDays(
         new Date(2014, 8 /* Sep */, 5),
         new Date(2014, 8 /* Sep */, 5)
       )
       assert.strictEqual(result, 0)
+    })
+
+    it('does not return -0 when the given dates are the same', () => {
+      const isNegativeZero = (x: number) => x === 0 && 1 / x < 0
+
+      const result = differenceInBusinessDays(
+        new Date(2014, 8 /* Sep */, 5),
+        new Date(2014, 8 /* Sep */, 5)
+      )
+
+      const resultIsNegative = isNegativeZero(result)
+      assert.strictEqual(resultIsNegative, false)
     })
 
     it('returns NaN if the first date is `Invalid Date`', () => {
