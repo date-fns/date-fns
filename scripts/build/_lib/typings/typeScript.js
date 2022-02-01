@@ -192,7 +192,7 @@ function getTypeScriptLocaleIndexModuleDefinition(submodule, locales) {
   }
 }
 
-function getTypeScripttConstantsModuleDefinition(constants, fnSuffix) {
+function getTypeScriptConstantsModuleDefinition(constants, fnSuffix) {
   const moduleName = `date-fns/constants${fnSuffix}`
 
   const definition = formatBlock`
@@ -291,9 +291,9 @@ function generateTypeScriptTypings(fns, aliases, locales, constants) {
 
   const moduleDefinitions = [
     getTypeScriptDateFnsModuleDefinition('', nonFPFns, constantsDefinitions),
-    getTypeScripttConstantsModuleDefinition(constants, ''),
-    getTypeScripttConstantsModuleDefinition(constants, '/index'),
-    getTypeScripttConstantsModuleDefinition(constants, '/index.js'),
+    getTypeScriptConstantsModuleDefinition(constants, ''),
+    getTypeScriptConstantsModuleDefinition(constants, '/index'),
+    getTypeScriptConstantsModuleDefinition(constants, '/index.js'),
   ]
     .concat(nonFPFns.map(getTypeScriptFnModuleDefinition.bind(null, '', '')))
     .concat(
