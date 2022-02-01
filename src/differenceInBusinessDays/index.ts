@@ -7,80 +7,110 @@ import toDate from '../toDate/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
 
+export type DifferenceInBusinessDaysOptions = {
+  includeEndDate?: boolean
+  includeStartDate?: boolean
+}
+
 /**
  * @name differenceInBusinessDays
  * @category Day Helpers
  * @summary Get the number of business days between the given dates.
  *
  * @description
- * Get the number of business day periods between the given dates.
- * Business days being days that arent in the weekend.
+ * Get the number of business days (Monday - Friday) between the given dates.
  * Like `differenceInCalendarDays`, the function removes the times from
  * the dates before calculating the difference.
+ * By default, the start date is included but the end date is not.
  *
- * @param {Date|Number} dateLeft - the later date
- * @param {Date|Number} dateRight - the earlier date
- * @returns {Number} the number of business days
+ * @param {Date|Number} endDate - the end date, usually later (excluded by default)
+ * @param {Date|Number} startDate - the start date, usually earlier (included by default)
+ * @param {Object} [options] - an object with options.
+ * @param {Boolean} [options.includeEndDate=false] - should the end date be included in the calculation?
+ * @param {Boolean} [options.includeStartDate=true] - should the start date be included in the calculation?
+ * @returns {Number} the number of business days, or `NaN` if one or both given dates are not valid
  * @throws {TypeError} 2 arguments required
  *
  * @example
- * // How many business days are between
- * // 10 January 2014 and 20 July 2014?
- * const result = differenceInBusinessDays(
- *   new Date(2014, 6, 20),
- *   new Date(2014, 0, 10)
+ * // What is the difference in business days between a Sunday and the following Wednesday?
+ * // - Sunday is skipped (start date and weekend)
+ * // - Monday and Tuesday are counted
+ * // - Wednesday is not counted (end date)
+ * differenceInBusinessDays(
+ *   new Date(2022, 0, 19), // Wed
+ *   new Date(2022, 0, 16), // Sun
  * )
- * //=> 136
+ * //=> 2
  *
- * // How many business days are between
- * // 1 November 2021 and 30 November 2021?
- * const result = differenceInBusinessDays(
- *   new Date(2021, 10, 1),
- *   new Date(2021, 10, 30)
+ * @example
+ * // What is the difference in business days between a Wednesday and the previous Friday?
+ * // - Wednesday is counted (start date)
+ * // - Tuesday and Monday are counted
+ * // - Sunday and Saturday are skipped
+ * // - Friday is not counted (end date)
+ * differenceInBusinessDays(
+ *   new Date(2022, 0, 14), // Fri
+ *   new Date(2022, 0, 19), // Wed
  * )
- * //=> 21
+ * //=> -3
  *
- * // How many business days are between
- * // 1 November 2021 and 1 December 2021?
- * const result = differenceInBusinessDays(
- *   new Date(2021, 10, 1),
- *   new Date(2021, 11, 1)
- * )
- * //=> 22
- *
- * // How many business days are between
- * // 1 November 2021 and 1 November 2021 ?
- * const result = differenceInBusinessDays(
- *   new Date(2021, 10, 1),
- *   new Date(2021, 10, 1)
+ * @example
+ * // What is the difference in business days between a business day (Monday - Friday) and itself?
+ * differenceInBusinessDays(
+ *   new Date(2022, 0, 19), // Wed
+ *   new Date(2022, 0, 19), // Wed
  * )
  * //=> 0
+ *
+ * @example
+ * // What is the difference in business days between a Friday and the following Wednesday
+ * // if we change the options to exclude the start date and include the end date?
+ * // - Friday is not counted (start date)
+ * // - Saturday and Sunday are skipped
+ * // - Monday and Tuesday are counted
+ * // - Wednesday is also counted (end date)
+ * differenceInBusinessDays(
+ *   new Date(2022, 0, 19), // Wed
+ *   new Date(2022, 0, 14), // Fri
+ *   { includeStartDate: false, includeEndDate: true },
+ * )
+ * //=> 3
  */
 export default function differenceInBusinessDays(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+  endDate: Date | number,
+  startDate: Date | number,
+  options?: DifferenceInBusinessDaysOptions
 ): number {
   requiredArgs(2, arguments)
 
-  const dateLeft = toDate(dirtyDateLeft)
-  let dateRight = toDate(dirtyDateRight)
+  const end = toDate(endDate)
+  const start = toDate(startDate)
 
-  if (!isValid(dateLeft) || !isValid(dateRight)) return NaN
+  if (!isValid(end) || !isValid(start)) return NaN
 
-  const calendarDifference = differenceInCalendarDays(dateLeft, dateRight)
+  const { includeStartDate = true, includeEndDate = false } = options || {}
+
+  if (isSameDay(end, start)) {
+    return includeStartDate && includeEndDate && !isWeekend(end) ? 1 : 0
+  }
+
+  const calendarDifference = differenceInCalendarDays(end, start)
   const sign = calendarDifference < 0 ? -1 : 1
 
   const weeks = toInteger(calendarDifference / 7)
 
   let result = weeks * 5
-  dateRight = addDays(dateRight, weeks * 7)
+  let startCursor = addDays(start, weeks * 7)
 
   // the loop below will run at most 6 times to account for the remaining days that don't makeup a full week
-  while (!isSameDay(dateLeft, dateRight)) {
+  while (!isSameDay(end, startCursor)) {
     // sign is used to account for both negative and positive differences
-    result += isWeekend(dateRight) ? 0 : sign
-    dateRight = addDays(dateRight, sign)
+    result += isWeekend(startCursor) ? 0 : sign
+    startCursor = addDays(startCursor, sign)
   }
 
-  return result === 0 ? 0 : result
+  if (!includeStartDate && !isWeekend(start)) result -= sign
+  if (includeEndDate && !isWeekend(end)) result += sign
+
+  return result
 }
