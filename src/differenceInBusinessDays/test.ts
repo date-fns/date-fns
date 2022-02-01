@@ -402,7 +402,7 @@ describe('differenceInBusinessDays', () => {
         new Date(NaN),
         new Date(2017, 0 /* Jan */, 1)
       )
-      assert.strictEqual(result, NaN)
+      assert(isNaN(result))
     })
 
     it('returns NaN if the second date is `Invalid Date`', () => {
@@ -410,12 +410,12 @@ describe('differenceInBusinessDays', () => {
         new Date(2017, 0 /* Jan */, 1),
         new Date(NaN)
       )
-      assert.strictEqual(result, NaN)
+      assert(isNaN(result))
     })
 
     it('returns NaN if the both dates are `Invalid Date`', () => {
       const result = differenceInBusinessDays(new Date(NaN), new Date(NaN))
-      assert.strictEqual(result, NaN)
+      assert(isNaN(result))
     })
 
     it('throws TypeError exception if passed less than 2 arguments', () => {
