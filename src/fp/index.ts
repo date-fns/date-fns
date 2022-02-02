@@ -1,4 +1,4 @@
-// This file is generated automatically by `scripts/build/indices.js`. Please, don't change it.
+// This file is generated automatically by `scripts/build/indices.ts`. Please, don't change it.
 
 export { default as add } from './add/index'
 export { default as addBusinessDays } from './addBusinessDays/index'
@@ -60,7 +60,6 @@ export { default as eachWeekendOfYear } from './eachWeekendOfYear/index'
 export { default as eachYearOfInterval } from './eachYearOfInterval/index'
 export { default as endOfDay } from './endOfDay/index'
 export { default as endOfDecade } from './endOfDecade/index'
-export { default as endOfDecadeWithOptions } from './endOfDecadeWithOptions/index'
 export { default as endOfHour } from './endOfHour/index'
 export { default as endOfISOWeek } from './endOfISOWeek/index'
 export { default as endOfISOWeekYear } from './endOfISOWeekYear/index'
@@ -159,7 +158,6 @@ export { default as lastDayOfISOWeek } from './lastDayOfISOWeek/index'
 export { default as lastDayOfISOWeekYear } from './lastDayOfISOWeekYear/index'
 export { default as lastDayOfMonth } from './lastDayOfMonth/index'
 export { default as lastDayOfQuarter } from './lastDayOfQuarter/index'
-export { default as lastDayOfQuarterWithOptions } from './lastDayOfQuarterWithOptions/index'
 export { default as lastDayOfWeek } from './lastDayOfWeek/index'
 export { default as lastDayOfWeekWithOptions } from './lastDayOfWeekWithOptions/index'
 export { default as lastDayOfYear } from './lastDayOfYear/index'
