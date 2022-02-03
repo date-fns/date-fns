@@ -14,10 +14,9 @@
 
 - [Testing](#testing)
 
-  - [Unit tests](#unit-tests)  
+  - [Unit tests](#unit-tests)
   - [REPL](#repl)
   - [Test build](#test-build)
-
 
 - [Code Style Guide](#code-style-guide)
 
@@ -117,6 +116,7 @@ yarn babel-node -x .ts,.js
 ```
 
 and then require invididual functions:
+
 ```sh
 > const toDate = require('./src/toDate')
 undefined
@@ -126,6 +126,7 @@ undefined
 ```
 
 or all functions (slower):
+
 ```sh
 > const fns = require('./src')
 undefined
@@ -147,23 +148,27 @@ env PACKAGE_OUTPUT_PATH="{YOUR-PROJECT-PATH}/node_modules/date-fns" ./scripts/bu
 
 ### Lint the Code
 
-The project follows [Prettier] code style and uses [ESLint] as the linter.
+The project follows [Prettier](https://prettier.io/) code style, and uses [ESLint](https://eslint.org/) and [TypeScript](https://www.typescriptlang.org/)'s `tsc` as the linters.
 To lint the code, run:
 
 ```bash
+# eslint, only errors
 yarn lint
-```
 
-[prettier]: https://prettier.io/
-[eslint]: https://eslint.org/
+# eslint, errors and warnings
+yarn lint-loud
+
+# tsc compiler linter errors
+yarn lint-tsc
+```
 
 ## Documentation
 
 ### JSDoc
 
 - [JSDoc](https://jsdoc.app/) is used for the code documentation. Along with the
-standard JSDoc tags, date-fns uses `@category` tag that allows
-to group functions.
+  standard JSDoc tags, date-fns uses `@category` tag that allows
+  to group functions.
 
 - [jsdoc-to-markdown](https://github.com/jsdoc2md/jsdoc-to-markdown/) is used to parse
-JSDoc annotations.
+  JSDoc annotations.
