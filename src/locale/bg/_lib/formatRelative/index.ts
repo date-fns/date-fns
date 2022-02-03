@@ -1,5 +1,5 @@
 import toDate from '../../../../toDate/index'
-import { Day } from '../../../../types'
+import type { Day } from '../../../../types'
 import isSameUTCWeek from '../../../../_lib/isSameUTCWeek/index'
 import type { FormatRelativeFn, FormatRelativeTokenFn } from '../../../types'
 

@@ -1,4 +1,4 @@
-import { Quarter } from '../../../../types'
+import type { Quarter } from '../../../../types'
 import type { Match } from '../../../types'
 import buildMatchFn from '../../../_lib/buildMatchFn/index'
 import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
@@ -72,7 +72,8 @@ const parseDayPatterns = {
 }
 
 const matchDayPeriodPatterns = {
-  narrow: /^(a|m\.|p|mezzanotte|mezzogiorno|(di|del) (mattina|pomeriggio|sera|notte))/i,
+  narrow:
+    /^(a|m\.|p|mezzanotte|mezzogiorno|(di|del) (mattina|pomeriggio|sera|notte))/i,
   any: /^([ap]\.?\s?m\.?|mezzanotte|mezzogiorno|(di|del) (mattina|pomeriggio|sera|notte))/i,
 }
 const parseDayPeriodPatterns = {

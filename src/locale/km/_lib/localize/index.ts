@@ -1,8 +1,7 @@
-import type { Localize, LocalizeFn } from '../../../types'
 import type { Quarter } from '../../../../types'
-import buildLocalizeFn, {
-  BuildLocalizeFnArgCallback,
-} from '../../../_lib/buildLocalizeFn/index'
+import type { Localize, LocalizeFn } from '../../../types'
+import type { BuildLocalizeFnArgCallback } from '../../../_lib/buildLocalizeFn/index'
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
 const eraValues = {
   narrow: ['ម.គស', 'គស'] as const,
