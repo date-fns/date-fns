@@ -41,8 +41,8 @@ describe('toDate', () => {
         '1987-02-11'
       )
       assert(
-        // eslint-disable-next-line no-console
         // @ts-expect-error
+        // eslint-disable-next-line no-console
         console.warn.calledWith(
           "Starting with v2.0.0-beta.1 date-fns doesn't accept strings as date arguments. Please use `parseISO` to parse strings. See: https://git.io/fjule"
         )

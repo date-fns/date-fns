@@ -2431,6 +2431,7 @@ describe('parse', () => {
   it('throws TypeError exception if passed less than 3 arguments', () => {
     // @ts-expect-error
     assert.throws(parse.bind(null), TypeError)
+    // @ts-expect-error
     assert.throws(parse.bind(null, 1), TypeError)
     // @ts-expect-error
     assert.throws(parse.bind(null, 1, 2), TypeError)
