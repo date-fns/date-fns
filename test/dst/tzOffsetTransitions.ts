@@ -1,6 +1,13 @@
-type PartialInterval = {
-  start: Date | undefined
-  end: Date | undefined
+interface PartialInterval {
+  start?: Date
+  end?: Date
+}
+
+interface Transition {
+  date: Date
+  type: string
+  before: number
+  after: number
 }
 
 /**
@@ -19,13 +26,9 @@ type PartialInterval = {
  *   this year.
  */
 export function getDstTransitions(year: number): PartialInterval {
-  const result: PartialInterval = {
-    start: undefined,
-    end: undefined
-  }
+  const result: PartialInterval = {}
   const transitions = getTzOffsetTransitions(year)
-  for (let i = 0; i < transitions.length; i++) {
-    const t = transitions[i]
+  for (const t of transitions) {
     const month = t.date.getMonth()
     if (month > 0 && month < 11) {
       if (t.type === 'forward') result.start = t.date
@@ -88,7 +91,7 @@ function previousTickTimezoneOffset(date: Date): number {
  *   Examples and caveats are the same as `before`.
 
  */
-export function getTzOffsetTransitions(year: number) {
+export function getTzOffsetTransitions(year: number): Transition[] {
   // start at the end of the previous day
   let date = firstTickInLocalDay(new Date(year, 0, 1))
   if (!isValidDate(date)) {
@@ -105,7 +108,7 @@ export function getTzOffsetTransitions(year: number) {
           date: date,
           type: tzOffset < baseTzOffset ? 'forward' : 'back',
           before: -baseTzOffset,
-          after: -tzOffset
+          after: -tzOffset,
         })
         baseTzOffset = tzOffset
       } else {
@@ -128,7 +131,7 @@ export function getTzOffsetTransitions(year: number) {
               date: transitionDate,
               type: tzOffset < baseTzOffset ? 'forward' : 'back',
               before: -baseTzOffset,
-              after: -tzOffset
+              after: -tzOffset,
             })
             baseTzOffset = tzOffset
             break // assuming only 1 transition per day

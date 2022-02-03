@@ -13,6 +13,8 @@ const roundingMap: RoundingFnsMap = {
 
 const defaultRoundingMethod: RoundingMethod = 'trunc'
 
-export function getRoundingMethod(method: RoundingMethod | undefined) {
+export function getRoundingMethod(
+  method: RoundingMethod | undefined
+): RoundingFn {
   return method ? roundingMap[method] : roundingMap[defaultRoundingMethod]
 }

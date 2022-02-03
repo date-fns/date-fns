@@ -27,7 +27,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * // ]
  * ]
  */
-export default function eachWeekendOfYear(dirtyDate: Date | number) {
+export default function eachWeekendOfYear(dirtyDate: Date | number): Date[] {
   requiredArgs(1, arguments)
 
   const startDate = startOfYear(dirtyDate)
