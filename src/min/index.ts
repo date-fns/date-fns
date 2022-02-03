@@ -41,7 +41,7 @@ export default function min(dirtyDatesArray: Array<Date | number>): Date {
   let result: Date | undefined
 
   datesArray.forEach(function (dirtyDate: Date | number) {
-    let currentDate = toDate(dirtyDate)
+    const currentDate = toDate(dirtyDate)
 
     if (
       result === undefined ||
