@@ -14,6 +14,27 @@ describe('subBusinessDays', () => {
     assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1))
   })
 
+  it('can include Saturday in businessDays', function () {
+    const result = subBusinessDays(new Date(2022, 0 /* Jan */, 17), 8, {
+      businessDays: [1, 2, 3, 4, 5, 6],
+    })
+    assert.deepStrictEqual(result, new Date(2022, 0 /* Jan */, 7))
+  })
+
+  it('can include Sunday in businessDays', function () {
+    const result = subBusinessDays(new Date(2022, 0 /* Jan */, 17), 8, {
+      businessDays: [0, 1, 2, 3, 4, 5],
+    })
+    assert.deepStrictEqual(result, new Date(2022, 0 /* Jan */, 7))
+  })
+
+  it('can include Saturday and Sunday in businessDays', function () {
+    const result = subBusinessDays(new Date(2022, 0 /* Jan */, 17), 10, {
+      businessDays: [0, 1, 2, 3, 4, 5, 6],
+    })
+    assert.deepStrictEqual(result, new Date(2022, 0 /* Jan */, 7))
+  })
+
   // it('can handle a large number of business days', () => {
   //   // @ts-ignore
   //   if (typeof this.timeout === 'function') {
@@ -44,7 +65,7 @@ describe('subBusinessDays', () => {
   it('does not mutate the original date', () => {
     const date = new Date(2014, 8 /* Sep */, 1)
     subBusinessDays(date, 11)
-    assert.deepStrictEqual(date, new Date(2014, 8 /* Sep */, 1))
+    assert.deepStrictEqual(date, new Date(2014, 8 /* Szep */, 1))
   })
 
   it('returns `Invalid Date` if the given date is invalid', () => {

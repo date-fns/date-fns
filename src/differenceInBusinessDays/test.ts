@@ -65,6 +65,39 @@ describe('differenceInBusinessDays', function () {
     assert(result === 135)
   })
 
+  it('can include Saturday in businessDays', function () {
+    const result = differenceInBusinessDays(
+      new Date(2022, 0 /* Jan */, 17),
+      new Date(2022, 0 /* Jan */, 7),
+      {
+        businessDays: [1, 2, 3, 4, 5, 6],
+      }
+    )
+    assert(result === 8)
+  })
+
+  it('can include Sunday in businessDays', function () {
+    const result = differenceInBusinessDays(
+      new Date(2022, 0 /* Jan */, 17),
+      new Date(2022, 0 /* Jan */, 7),
+      {
+        businessDays: [0, 1, 2, 3, 4, 5],
+      }
+    )
+    assert(result === 8)
+  })
+
+  it('can include Saturday and Sunday in businessDays', function () {
+    const result = differenceInBusinessDays(
+      new Date(2022, 0 /* Jan */, 17),
+      new Date(2022, 0 /* Jan */, 7),
+      {
+        businessDays: [0, 1, 2, 3, 4, 5, 6],
+      }
+    )
+    assert(result === 10)
+  })
+
   describe('edge cases', function () {
     it('the difference is less than a day, but the given dates are in different calendar days', function () {
       const result = differenceInBusinessDays(

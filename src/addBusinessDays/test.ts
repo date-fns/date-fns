@@ -36,6 +36,27 @@ describe('addBusinessDays', function () {
     )
   })
 
+  it('can include Saturday in businessDays', function () {
+    const result = addBusinessDays(new Date(2022, 0 /* Jan */, 7), 8, {
+      businessDays: [1, 2, 3, 4, 5, 6],
+    })
+    assert.deepStrictEqual(result, new Date(2022, 0 /* Jan */, 17))
+  })
+
+  it('can include Sunday in businessDays', function () {
+    const result = addBusinessDays(new Date(2022, 0 /* Jan */, 7), 8, {
+      businessDays: [0, 1, 2, 3, 4, 5],
+    })
+    assert.deepStrictEqual(result, new Date(2022, 0 /* Jan */, 17))
+  })
+
+  it('can include Saturday and Sunday in businessDays', function () {
+    const result = addBusinessDays(new Date(2022, 0 /* Jan */, 7), 10, {
+      businessDays: [0, 1, 2, 3, 4, 5, 6],
+    })
+    assert.deepStrictEqual(result, new Date(2022, 0 /* Jan */, 17))
+  })
+
   it('can handle a large number of business days', function () {
     // @ts-ignore
     if (typeof this.timeout === 'function') {
@@ -85,6 +106,7 @@ describe('addBusinessDays', function () {
     // @ts-expect-error
     assert.throws(addBusinessDays.bind(null, 1), TypeError)
   })
+
   it('starting from a weekend day should land on a weekday when reducing a divisible by 5', function () {
     const substractResult = addBusinessDays(new Date(2019, 7, 18), -5)
     assert.deepStrictEqual(substractResult, new Date(2019, 7, 12))
