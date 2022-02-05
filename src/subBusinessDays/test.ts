@@ -66,4 +66,21 @@ describe('subBusinessDays', () => {
     const result = subBusinessDays(new Date(2014, 8 /* Sep */, 1), NaN)
     assert(result instanceof Date && isNaN(result.getTime()))
   })
+
+  it('throws TypeError exception if passed less than 2 arguments', () => {
+    // @ts-expect-error
+    assert.throws(subBusinessDays.bind(null), TypeError)
+    assert.throws(
+      // @ts-expect-error
+      subBusinessDays.bind(null, new Date(2014, 8 /* Sep */, 1)),
+      TypeError
+    )
+  })
+
+  it('still works if you add extra businessDays numbers greater than 6', function () {
+    const result = subBusinessDays(new Date(2022, 0 /* Jan */, 17), 10, {
+      businessDays: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    })
+    assert.deepStrictEqual(result, new Date(2022, 0 /* Jan */, 7))
+  })
 })

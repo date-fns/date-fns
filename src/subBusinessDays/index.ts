@@ -19,7 +19,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // Substract 10 business days from 1 September 2014:
- * var result = subBusinessDays(new Date(2014, 8, 1), 10)
+ * const result = subBusinessDays(new Date(2014, 8, 1), 10)
  * //=> Mon Aug 18 2014 00:00:00 (skipped weekend days)
  */
 export default function subBusinessDays(
@@ -36,6 +36,6 @@ export default function subBusinessDays(
   const businessDays =
     options.businessDays == null
       ? [1, 2, 3, 4, 5]
-      : options.businessDays.map(toInteger)
+      : options.businessDays.filter((number) => number < 7).map(toInteger)
   return addBusinessDays(dirtyDate, -amount, { businessDays })
 }

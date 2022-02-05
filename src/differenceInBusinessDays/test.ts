@@ -65,37 +65,241 @@ describe('differenceInBusinessDays', () => {
     assert(result === 135)
   })
 
-  it('can include Saturday in businessDays', function () {
-    const result = differenceInBusinessDays(
-      new Date(2022, 0 /* Jan */, 17),
-      new Date(2022, 0 /* Jan */, 7),
-      {
-        businessDays: [1, 2, 3, 4, 5, 6],
-      }
-    )
-    assert(result === 8)
+  describe('businessDays option', function () {
+    it('can include Saturday in businessDays', function () {
+      const result = differenceInBusinessDays(
+        new Date(2022, 0 /* Jan */, 17),
+        new Date(2022, 0 /* Jan */, 7),
+        {
+          businessDays: [1, 2, 3, 4, 5, 6],
+        }
+      )
+      assert(result === 8)
+    })
+
+    it('can include Saturday in businessDays given first date falls on a non-businessDay', function () {
+      const result = differenceInBusinessDays(
+        new Date(2022, 0 /* Jan */, 16),
+        new Date(2022, 0 /* Jan */, 7),
+        {
+          businessDays: [1, 2, 3, 4, 5, 6],
+        }
+      )
+      assert(result === 8)
+    })
+
+    it('can include Saturday in businessDays given second date falls on a non-businessDay', function () {
+      const result = differenceInBusinessDays(
+        new Date(2022, 0 /* Jan */, 17),
+        new Date(2022, 0 /* Jan */, 9),
+        {
+          businessDays: [1, 2, 3, 4, 5, 6],
+        }
+      )
+      assert(result === 6)
+    })
+
+    it('can include Sunday in businessDays', function () {
+      const result = differenceInBusinessDays(
+        new Date(2022, 0 /* Jan */, 17),
+        new Date(2022, 0 /* Jan */, 7),
+        {
+          businessDays: [0, 1, 2, 3, 4, 5],
+        }
+      )
+      assert(result === 8)
+    })
+
+    it('can include Saturday and Sunday in businessDays', function () {
+      const result = differenceInBusinessDays(
+        new Date(2022, 0 /* Jan */, 17),
+        new Date(2022, 0 /* Jan */, 7),
+        {
+          businessDays: [0, 1, 2, 3, 4, 5, 6],
+        }
+      )
+      assert(result === 10)
+    })
+
+    it('still works if you add extra businessDays numbers greater than 6', function () {
+      const result = differenceInBusinessDays(
+        new Date(2022, 0 /* Jan */, 17),
+        new Date(2022, 0 /* Jan */, 7),
+        {
+          businessDays: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        }
+      )
+      assert(result === 10)
+    })
   })
 
-  it('can include Sunday in businessDays', function () {
-    const result = differenceInBusinessDays(
-      new Date(2022, 0 /* Jan */, 17),
-      new Date(2022, 0 /* Jan */, 7),
-      {
-        businessDays: [0, 1, 2, 3, 4, 5],
-      }
-    )
-    assert(result === 8)
-  })
+  describe('exceptions option', function () {
+    it('can add true exceptions to include days as businessDays', function () {
+      // with businessDays as Mon-Fri
+      const result = differenceInBusinessDays(
+        new Date(2022, 0 /* Jan */, 17),
+        new Date(2022, 0 /* Jan */, 7),
+        {
+          // Adding a Saturday and Sunday as business days
+          exceptions: { '01/08/22': true, '01/09/22': true },
+        }
+      )
 
-  it('can include Saturday and Sunday in businessDays', function () {
-    const result = differenceInBusinessDays(
-      new Date(2022, 0 /* Jan */, 17),
-      new Date(2022, 0 /* Jan */, 7),
-      {
-        businessDays: [0, 1, 2, 3, 4, 5, 6],
-      }
-    )
-    assert(result === 10)
+      assert(result === 8)
+    })
+
+    it('can add false exceptions to remove days as businessDays', function () {
+      // with businessDays as Mon-Fri
+      const result = differenceInBusinessDays(
+        new Date(2022, 0 /* Jan */, 17),
+        new Date(2022, 0 /* Jan */, 7),
+        {
+          // Removing a Tues and Wed as business days
+          exceptions: { '01/11/22': false, '01/12/22': false },
+        }
+      )
+
+      assert(result === 4)
+    })
+
+    it('can handle true and false exceptions', function () {
+      // with businessDays as Mon-Fri
+      const result = differenceInBusinessDays(
+        new Date(2022, 0 /* Jan */, 17),
+        new Date(2022, 0 /* Jan */, 7),
+        {
+          // Adds a Sat and Sun, removes a Tues and Wed as business days
+          exceptions: {
+            '01/08/22': true,
+            '01/09/22': true,
+            '01/11/22': false,
+            '01/12/22': false,
+          },
+        }
+      )
+
+      assert(result === 6)
+    })
+
+    it('should only add true exceptions that are not already businessDays', function () {
+      // with businessDays as Mon-Fri
+      const result = differenceInBusinessDays(
+        new Date(2022, 0 /* Jan */, 17),
+        new Date(2022, 0 /* Jan */, 7),
+        {
+          // Adding a Sat and Sun as business days, but not Mon and Tues which are already business days
+          exceptions: {
+            '01/08/22': true,
+            '01/09/22': true,
+            '01/10/22': true,
+            '01/11/22': true,
+          },
+        }
+      )
+
+      assert(result === 8)
+    })
+
+    it('should only remove false exceptions that are businessDays', function () {
+      // with businessDays as Mon-Fri
+      const result = differenceInBusinessDays(
+        new Date(2022, 0 /* Jan */, 17),
+        new Date(2022, 0 /* Jan */, 7),
+        {
+          // Removing a Tues and Wed as business days, but not Sat and Sun which are not business days
+          exceptions: {
+            '01/11/22': false,
+            '01/12/22': false,
+            '01/15/22': false,
+            '01/16/22': false,
+          },
+        }
+      )
+
+      assert(result === 4)
+    })
+
+    it('can handle exceptions that fall on both of the argument dates', function () {
+      // with businessDays as Mon-Fri
+      const result = differenceInBusinessDays(
+        // Sunday
+        new Date(2022, 0 /* Jan */, 16),
+        // Saturday
+        new Date(2022, 0 /* Jan */, 8),
+        {
+          // Adds a Sat and Sun as business days, but not Mon and Tue which are already business days
+          exceptions: {
+            '01/08/22': true,
+            '01/09/22': true,
+            '01/16/22': true,
+          },
+        }
+      )
+
+      // TODO: check what the expected result should be
+      assert(result === 7)
+    })
+
+    it('can handle an exception that falls on the first date', function () {
+      // with businessDays as Mon-Fri
+      const result = differenceInBusinessDays(
+        // Sunday
+        new Date(2022, 0 /* Jan */, 16),
+        // Saturday
+        new Date(2022, 0 /* Jan */, 8),
+        {
+          exceptions: {
+            // Saturday
+            '01/08/22': true,
+            // Sunday
+            '01/09/22': true,
+          },
+        }
+      )
+
+      // TODO: check what the expected result should be
+      assert(result === 6)
+    })
+
+    it('can handle an exception that falls on the second date', function () {
+      // with businessDays as Mon-Fri
+      const result = differenceInBusinessDays(
+        // Sunday
+        new Date(2022, 0 /* Jan */, 16),
+        // Saturday
+        new Date(2022, 0 /* Jan */, 8),
+        {
+          exceptions: {
+            // Saturday
+            '01/09/22': true,
+            // Sunday
+            '01/16/22': true,
+          },
+        }
+      )
+
+      // TODO: check what the expected result should be
+      assert(result === 6)
+    })
+
+    it('should not add exceptions that are not within the date range', function () {
+      // with businessDays as Mon-Fri
+      const result = differenceInBusinessDays(
+        new Date(2022, 0 /* Jan */, 17),
+        new Date(2022, 0 /* Jan */, 7),
+        {
+          // the first and last date are not within the date range, so they should not be added
+          exceptions: {
+            '01/01/22': true,
+            '01/08/22': true,
+            '01/09/22': true,
+            '01/22/22': true,
+          },
+        }
+      )
+
+      assert(result === 8)
+    })
   })
 
   describe('edge cases', function () {
