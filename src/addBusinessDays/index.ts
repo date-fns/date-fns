@@ -14,6 +14,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @param {Number} amount - the amount of business days to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  * @param {Object} [options] - an object with options.
  * @param {Number[]} [options.businessDays=[1, 2, 3, 4, 5]] - the business days. default is Monday to Friday.
+ * @param {Record<string, boolean>} [options.exceptions={}] - exceptions to the business days. Map of date string to boolean.
  * @returns {Date} the new date with the business days added
  * @throws {TypeError} 2 arguments required
  *
@@ -27,6 +28,7 @@ export default function addBusinessDays(
   dirtyAmount: number,
   dirtyOptions?: {
     businessDays?: number[]
+    exceptions?: Record<string, boolean>
   }
 ): Date {
   requiredArgs(2, arguments)
@@ -34,7 +36,7 @@ export default function addBusinessDays(
   const businessDays =
     options.businessDays == null
       ? [1, 2, 3, 4, 5]
-      : options.businessDays.map(toInteger)
+      : options.businessDays.filter((number) => number < 7).map(toInteger)
 
   const date = toDate(dirtyDate)
   const amount = toInteger(dirtyAmount)

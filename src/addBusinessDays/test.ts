@@ -57,6 +57,22 @@ describe('addBusinessDays', function () {
     assert.deepStrictEqual(result, new Date(2022, 0 /* Jan */, 17))
   })
 
+  it('can add exceptions to include days as businessDays that otherwise would not be included', function () {
+    const result = addBusinessDays(new Date(2022, 0 /* Jan */, 7), 10, {
+      exceptions: { '01/08/22': true, '01/09/22': true },
+    })
+
+    assert.deepStrictEqual(result, new Date(2022, 0 /* Jan */, 19))
+  })
+
+  it('can add exceptions and does not include dates not within range', function () {
+    const result = addBusinessDays(new Date(2022, 0 /* Jan */, 7), 10, {
+      exceptions: { '01/01/22': true, '01/09/22': true, '01/30/22': true },
+    })
+
+    assert.deepStrictEqual(result, new Date(2022, 0 /* Jan */, 20))
+  })
+
   it('can handle a large number of business days', function () {
     // @ts-ignore
     if (typeof this.timeout === 'function') {
@@ -139,5 +155,12 @@ describe('addBusinessDays', function () {
       }),
       new Date(2020, 0 /* Jan */, 15) // Thursday
     )
+  })
+
+  it('still works if you add extra businessDays numbers greater than 6', function () {
+    const result = addBusinessDays(new Date(2022, 0 /* Jan */, 7), 10, {
+      businessDays: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    })
+    assert.deepStrictEqual(result, new Date(2022, 0 /* Jan */, 17))
   })
 })

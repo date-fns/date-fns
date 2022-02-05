@@ -87,4 +87,11 @@ describe('subBusinessDays', () => {
       TypeError
     )
   })
+
+  it('still works if you add extra businessDays numbers greater than 6', function () {
+    const result = subBusinessDays(new Date(2022, 0 /* Jan */, 17), 10, {
+      businessDays: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    })
+    assert.deepStrictEqual(result, new Date(2022, 0 /* Jan */, 7))
+  })
 })
