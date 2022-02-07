@@ -1,12 +1,10 @@
-import compareAsc from '../compareAsc/index'
+import add from '../add/index'
 import differenceInDays from '../differenceInDays/index'
 import differenceInHours from '../differenceInHours/index'
 import differenceInMinutes from '../differenceInMinutes/index'
 import differenceInMonths from '../differenceInMonths/index'
 import differenceInSeconds from '../differenceInSeconds/index'
 import differenceInYears from '../differenceInYears/index'
-import isValid from '../isValid/index'
-import sub from '../sub/index'
 import toDate from '../toDate/index'
 import type { Duration, Interval } from '../types'
 import requiredArgs from '../_lib/requiredArgs/index'
@@ -25,6 +23,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @throws {TypeError} Requires 2 arguments
  * @throws {RangeError} `start` must not be Invalid Date
  * @throws {RangeError} `end` must not be Invalid Date
+ * @throws {RangeError} The start of an interval cannot be after its end
  *
  * @example
  * // Get the duration between January 15, 1929 and April 4, 1968.
@@ -34,49 +33,36 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * })
  * // => { years: 39, months: 2, days: 20, hours: 7, minutes: 5, seconds: 0 }
  */
-
-export default function intervalToDuration({ start, end }: Interval): Duration {
+export default function intervalToDuration(interval: Interval): Duration {
   requiredArgs(1, arguments)
 
-  const dateLeft = toDate(start)
-  const dateRight = toDate(end)
+  const start = toDate(interval.start)
+  const end = toDate(interval.end)
 
-  if (!isValid(dateLeft)) {
-    throw new RangeError('Start Date is invalid')
-  }
-  if (!isValid(dateRight)) {
-    throw new RangeError('End Date is invalid')
-  }
-
-  const duration = {
-    years: 0,
-    months: 0,
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
+  if (isNaN(start.getTime())) throw new RangeError('Start Date is invalid')
+  if (isNaN(end.getTime())) throw new RangeError('End Date is invalid')
+  if (start > end) {
+    throw new RangeError('The start of an interval cannot be after its end')
   }
 
-  const sign = compareAsc(dateLeft, dateRight)
+  const duration: Duration = {
+    years: differenceInYears(end, start),
+  }
 
-  duration.years = Math.abs(differenceInYears(dateLeft, dateRight))
+  const remainingMonths = add(start, { years: duration.years })
+  duration.months = differenceInMonths(end, remainingMonths)
 
-  const remainingMonths = sub(dateLeft, { years: sign * duration.years })
-  duration.months = Math.abs(differenceInMonths(remainingMonths, dateRight))
+  const remainingDays = add(remainingMonths, { months: duration.months })
+  duration.days = differenceInDays(end, remainingDays)
 
-  const remainingDays = sub(remainingMonths, { months: sign * duration.months })
-  duration.days = Math.abs(differenceInDays(remainingDays, dateRight))
+  const remainingHours = add(remainingDays, { days: duration.days })
+  duration.hours = differenceInHours(end, remainingHours)
 
-  const remainingHours = sub(remainingDays, { days: sign * duration.days })
-  duration.hours = Math.abs(differenceInHours(remainingHours, dateRight))
+  const remainingMinutes = add(remainingHours, { hours: duration.hours })
+  duration.minutes = differenceInMinutes(end, remainingMinutes)
 
-  const remainingMinutes = sub(remainingHours, { hours: sign * duration.hours })
-  duration.minutes = Math.abs(differenceInMinutes(remainingMinutes, dateRight))
-
-  const remainingSeconds = sub(remainingMinutes, {
-    minutes: sign * duration.minutes,
-  })
-  duration.seconds = Math.abs(differenceInSeconds(remainingSeconds, dateRight))
+  const remainingSeconds = add(remainingMinutes, { minutes: duration.minutes })
+  duration.seconds = differenceInSeconds(end, remainingSeconds)
 
   return duration
 }
