@@ -89,7 +89,7 @@ export default function differenceInBusinessDays(
   let result = weeks * businessDays.length
   let newDateRight = addDays(dateRight, weeks * 7)
 
-  // the loop below will run at most 6 times to account for the remaining days that don't makeup a full week
+  // the loop below will run at most 6 times to account for the remaining days that don't make up a full week
   while (!isSameDay(dateLeft, newDateRight)) {
     // sign is used to account for both negative and positive differences
     result += isHoliday(newDateRight) ? 0 : sign
@@ -99,23 +99,22 @@ export default function differenceInBusinessDays(
   // handle exceptions
   let exceptionCount = 0
   if (options.exceptions) {
-    Object.keys(options.exceptions).forEach((e) => {
+    const exceptionDates = Object.keys(options.exceptions)
+    exceptionDates.forEach((e) => {
       const date = new Date(e)
       if (!isValid(date)) return
       // if date is within the left and right dates
       if (isBefore(date, dateLeft) && isAfter(date, dateRight)) {
         if (
           // if exception is true and date is not a business day
-          // @ts-ignore
-          options.exceptions[e] === true &&
+          options.exceptions![e] === true &&
           !businessDays.includes(date.getDay())
         ) {
           // add a day
           exceptionCount++
         } else if (
           // if exception is false and date is a business day
-          // @ts-ignore
-          options.exceptions[e] === false &&
+          options.exceptions![e] === false &&
           businessDays.includes(date.getDay())
         ) {
           // subtract a day
@@ -123,6 +122,23 @@ export default function differenceInBusinessDays(
         }
       }
     })
+    // handle exceptions for dateLeft and dateRight
+    // if both are true, add one; if both are false, add two; do nothing in all other cases
+    const leftAndRightExceptions = exceptionDates.filter((e) => {
+      const date = new Date(e)
+      return isSameDay(date, dateLeft) || isSameDay(date, dateRight)
+    })
+    if (leftAndRightExceptions.length === 2) {
+      if (
+        leftAndRightExceptions.every((e) => options.exceptions![e] === true)
+      ) {
+        exceptionCount++
+      } else if (
+        leftAndRightExceptions.every((e) => options.exceptions![e] === false)
+      ) {
+        exceptionCount--
+      }
+    }
   }
 
   return result + exceptionCount
