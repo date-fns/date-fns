@@ -236,7 +236,6 @@ describe('differenceInBusinessDays', () => {
         }
       )
 
-      // TODO: check what the expected result should be
       assert(result === 7)
     })
 
@@ -257,7 +256,6 @@ describe('differenceInBusinessDays', () => {
         }
       )
 
-      // TODO: check what the expected result should be
       assert(result === 6)
     })
 
@@ -278,7 +276,6 @@ describe('differenceInBusinessDays', () => {
         }
       )
 
-      // TODO: check what the expected result should be
       assert(result === 6)
     })
 
