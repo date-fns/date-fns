@@ -1,6 +1,9 @@
 import toDate from '../toDate/index'
 import toInteger from '../_lib/toInteger/index'
 import requiredArgs from '../_lib/requiredArgs/index'
+import isSameDay from '../isSameDay/index'
+import isAfter from '../isAfter/index'
+import isBefore from '../isBefore/index'
 
 /**
  * @name addBusinessDays
@@ -33,6 +36,7 @@ export default function addBusinessDays(
 ): Date {
   requiredArgs(2, arguments)
   const options = dirtyOptions || {}
+  const exceptions = options.exceptions || {}
   const businessDays =
     options.businessDays == null
       ? [1, 2, 3, 4, 5]
@@ -40,7 +44,18 @@ export default function addBusinessDays(
 
   const date = toDate(dirtyDate)
   const amount = toInteger(dirtyAmount)
-  const isHoliday = (date: Date) => !businessDays.includes(date.getDay())
+  const isExcepted = (date: Date): boolean | null => {
+    if (options.exceptions) {
+      const exception =
+        Object.keys(options.exceptions).find((e) =>
+          isSameDay(new Date(e), date)
+        ) ?? ''
+      return options.exceptions[exception]
+    }
+    return null
+  }
+  const isHoliday = (date: Date) =>
+    isExcepted(date) === false || !businessDays.includes(date.getDay())
   const startedOnHoliday = isHoliday(date)
 
   if (isNaN(amount)) return new Date(NaN)
@@ -63,7 +78,7 @@ export default function addBusinessDays(
     if (!isHoliday(date)) restDays -= 1
   }
 
-  // If the date is a holiday and we reduce a dividable of
+  // If the date is a holiday and we reduce a divisible of
   // certain days (say 5 when holidays are Saturday and Sunday) from it, we land on a holiday date.
   // To counter this, we add days accordingly to land on the next business day
   const reduceIfHoliday = (date: Date) => {
@@ -78,6 +93,28 @@ export default function addBusinessDays(
 
   // Restore hours to avoid DST lag
   date.setHours(hours)
+
+  const reduceIfException = (date: Date, exceptionString: string) => {
+    switch (exceptions[exceptionString]) {
+      case true:
+        date.setDate(date.getDate() - 1)
+        break
+      case false:
+        date.setDate(date.getDate() + 1)
+        break
+      default:
+        break
+    }
+    return date
+  }
+  const filterExceptions = (exceptionString: string) => {
+    const exceptionDate = new Date(exceptionString)
+    return isBefore(exceptionDate, date) && isAfter(exceptionDate, dirtyDate)
+  }
+
+  Object.keys(exceptions)
+    .filter(filterExceptions)
+    .reduce(reduceIfException, date)
 
   return date
 }
