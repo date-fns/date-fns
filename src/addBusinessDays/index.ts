@@ -8,6 +8,8 @@ import toDate from '../toDate'
 import isSameDay from '../isSameDay/index'
 import isAfter from '../isAfter/index'
 import isBefore from '../isBefore/index'
+import isSaturday from '../isSaturday/index'
+import isSunday from '../isSunday/index'
 
 /**
  * @name addBusinessDays
@@ -49,6 +51,7 @@ export default function addBusinessDays(
 
   const date = toDate(dirtyDate)
   const amount = toInteger(dirtyAmount)
+  const startedOnNonWorkingDay = !businessDays.includes(date.getDay())
   const isExcepted = (date: Date): boolean | null => {
     if (options.exceptions) {
       const exception =
@@ -59,9 +62,8 @@ export default function addBusinessDays(
     }
     return null
   }
-  const isHoliday = (date: Date) =>
+  const isNonWorkingDay = (date: Date) =>
     isExcepted(date) === false || !businessDays.includes(date.getDay())
-  const startedOnHoliday = isHoliday(date)
 
   if (isNaN(amount)) return constructFrom(dirtyDate, NaN)
 
@@ -76,50 +78,79 @@ export default function addBusinessDays(
 
   // Get remaining days not part of a full week
   let restDays = Math.abs(amount % businessDays.length)
-
   // Loops over remaining days
   while (restDays > 0) {
     date.setDate(date.getDate() + sign)
-    if (!isHoliday(date)) restDays -= 1
+    if (!isNonWorkingDay(date)) restDays -= 1
   }
 
-  // If the date is a holiday and we reduce a divisible of
-  // certain days (say 5 when holidays are Saturday and Sunday) from it, we land on a holiday date.
-  // To counter this, we add days accordingly to land on the next business day
-  const reduceIfHoliday = (date: Date) => {
-    if (startedOnHoliday && isHoliday(date) && amount !== 0) {
-      // If we're reducing days, we want to add days until we land on a business day
-      // If we're adding days we want to reduce days until we land on a business day
-      date.setDate(date.getDate() + (sign < 0 ? 1 : -1))
-      reduceIfHoliday(date)
+  if (startedOnNonWorkingDay && isNonWorkingDay(date) && amount !== 0) {
+    // If we're reducing days, we want to add days until we land on a weekday
+    // If we're adding days we want to reduce days until we land on a weekday
+    if (isSaturday(date)) date.setDate(date.getDate() + (sign < 0 ? 2 : -1))
+    if (isSunday(date)) date.setDate(date.getDate() + (sign < 0 ? 1 : -2))
+  }
+
+  const filterExceptions = (exceptionString: string) => {
+    const exceptionDate = new Date(exceptionString)
+    const [earlierDate, laterDate] =
+      sign === 1 ? [dirtyDate, date] : [date, dirtyDate]
+    if (
+      (isBefore(exceptionDate, laterDate) &&
+        isAfter(exceptionDate, earlierDate)) ||
+      isSameDay(exceptionDate, laterDate) ||
+      isSameDay(exceptionDate, earlierDate)
+    ) {
+      if (
+        exceptions[exceptionString] === true &&
+        !businessDays.includes(exceptionDate.getDay())
+      ) {
+        return true
+      } else if (
+        exceptions[exceptionString] === false &&
+        businessDays.includes(exceptionDate.getDay())
+      ) {
+        return true
+      }
+    }
+    return false
+  }
+
+  const validExceptions = Object.keys(exceptions).filter(filterExceptions)
+  let dayChangesDueToExceptions = validExceptions.reduce(
+    (businessDaysDelta, exceptionString) => {
+      switch (exceptions[exceptionString]) {
+        case true:
+          return businessDaysDelta - sign
+        case false:
+          return businessDaysDelta + sign
+        default:
+          return businessDaysDelta
+      }
+    },
+    0
+  )
+  while (dayChangesDueToExceptions !== 0) {
+    const deltaSign = dayChangesDueToExceptions < 0 ? -1 : 1
+    if (businessDays.includes(date.getDay())) {
+      dayChangesDueToExceptions = dayChangesDueToExceptions - deltaSign
+    }
+    date.setDate(date.getDate() + deltaSign)
+  }
+
+  // If we land on a non-working date, we add days accordingly to land on the next business day
+  const reduceIfNonWorkingDay = (date: Date) => {
+    if (isNonWorkingDay(date) && amount !== 0) {
+      // If we're adding days, add a day until we reach a business day
+      // If we're subtracting days, subtract a day until we reach a business day
+      date.setDate(date.getDate() + sign)
+      reduceIfNonWorkingDay(date)
     }
   }
-  reduceIfHoliday(date)
+  reduceIfNonWorkingDay(date)
 
   // Restore hours to avoid DST lag
   date.setHours(hours)
-
-  const reduceIfException = (date: Date, exceptionString: string) => {
-    switch (exceptions[exceptionString]) {
-      case true:
-        date.setDate(date.getDate() - 1)
-        break
-      case false:
-        date.setDate(date.getDate() + 1)
-        break
-      default:
-        break
-    }
-    return date
-  }
-  const filterExceptions = (exceptionString: string) => {
-    const exceptionDate = new Date(exceptionString)
-    return isBefore(exceptionDate, date) && isAfter(exceptionDate, dirtyDate)
-  }
-
-  Object.keys(exceptions)
-    .filter(filterExceptions)
-    .reduce(reduceIfException, date)
 
   return date
 }

@@ -67,12 +67,41 @@ describe('addBusinessDays', function () {
     assert.deepStrictEqual(result, new Date(2022, 0 /* Jan */, 19))
   })
 
+  it('can take in a list of disabling exceptions', () => {
+    // Given we have business days of Monday through Friday
+    // and exceptions saying we won't work the next two Mondays (10th and 17th)
+
+    // When we try and add 10 business days from Thursday, the 6th
+    const result = addBusinessDays(new Date(2022, 0, 7), 10, {
+      exceptions: {
+        '01/17/2022': false,
+        '01/10/2022': false,
+      },
+    })
+
+    // Then we expect to receive a result of monday the 24th
+    assert.deepStrictEqual(result, new Date(2022, 0, 25))
+  })
+
   it('can add exceptions and does not include dates not within range', function () {
     const result = addBusinessDays(new Date(2022, 0 /* Jan */, 7), 10, {
       exceptions: { '01/01/22': true, '01/09/22': true, '01/30/22': true },
     })
 
     assert.deepStrictEqual(result, new Date(2022, 0 /* Jan */, 20))
+  })
+
+  it('can ignore noop exceptions', function () {
+    // Given we have business days of Monday to Friday
+    // and an exception saying "I'm working on Monday"
+
+    // When we try and add 10 business days
+    const result = addBusinessDays(new Date(2022, 0 /* Jan */, 7), 10, {
+      exceptions: { '01/10/22': true },
+    })
+
+    // Then we expect to ignore the no-op exception
+    assert.deepStrictEqual(result, new Date(2022, 0 /* Jan */, 21))
   })
 
   it('can handle a large number of business days', function () {
@@ -135,10 +164,10 @@ describe('addBusinessDays', function () {
   })
 
   it('starting from a weekend day should land on a weekday when reducing a divisible by 5', function () {
-    const substractResult = addBusinessDays(new Date(2019, 7, 18), -5)
+    const substractResult = addBusinessDays(new Date(2019, 7, 17), -5)
     assert.deepStrictEqual(substractResult, new Date(2019, 7, 12))
 
-    const addResult = addBusinessDays(new Date(2019, 7, 18), 5)
+    const addResult = addBusinessDays(new Date(2019, 7, 17), 5)
     assert.deepStrictEqual(addResult, new Date(2019, 7, 23))
   })
 
