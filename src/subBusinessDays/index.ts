@@ -27,6 +27,7 @@ export default function subBusinessDays(
   dirtyAmount: number,
   dirtyOptions?: {
     businessDays?: number[]
+    exceptions?: Record<string, boolean>
   }
 ) {
   requiredArgs(2, arguments)
@@ -37,5 +38,6 @@ export default function subBusinessDays(
     options.businessDays == null
       ? [1, 2, 3, 4, 5]
       : options.businessDays.filter((number) => number < 7).map(toInteger)
-  return addBusinessDays(dirtyDate, -amount, { businessDays })
+  const exceptions = options.exceptions ?? {}
+  return addBusinessDays(dirtyDate, -amount, { businessDays, exceptions })
 }
