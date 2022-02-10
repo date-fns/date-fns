@@ -41,6 +41,14 @@ describe('formatDistanceStrict', () => {
       )
       assert(result === '3 minutes')
     })
+
+    it("doesn't return 60 minutes - issue 2957", () => {
+      const result = formatDistanceStrict(
+        new Date(2020, 1, 1, 1, 0, 30),
+        new Date(2020, 1, 1, 2, 0, 0)
+      )
+      assert(result === '1 hour')
+    })
   })
 
   describe('hours', () => {

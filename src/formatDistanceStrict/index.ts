@@ -174,6 +174,12 @@ export default function formatDistanceStrict<DateType extends Date>(
     // 1 up to 60 mins
   } else if (unit === 'minute') {
     const roundedMinutes = roundingMethod(minutes)
+
+    if (roundedMinutes === 60) {
+      const hours = roundingMethod(roundedMinutes / 60)
+      return locale.formatDistance('xHours', hours, localizeOptions)
+    }
+
     return locale.formatDistance('xMinutes', roundedMinutes, localizeOptions)
 
     // 1 up to 24 hours
