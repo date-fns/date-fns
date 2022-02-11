@@ -180,7 +180,7 @@ describe('addBusinessDays', function () {
     )
   })
 
-  it('if custom businessDays are Monday and Wednesday, it returns the Thursday when 2 days is added on the Sunday', function () {
+  it('if custom businessDays are Monday and Wednesday, it returns the Wednesday when 2 days is added on the Sunday', function () {
     assert.deepStrictEqual(
       addBusinessDays(new Date(2020, 0 /* Jan */, 12), 2 /* Sunday */, {
         businessDays: [1, 3],

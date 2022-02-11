@@ -8,8 +8,6 @@ import toDate from '../toDate'
 import isSameDay from '../isSameDay/index'
 import isAfter from '../isAfter/index'
 import isBefore from '../isBefore/index'
-import isSaturday from '../isSaturday/index'
-import isSunday from '../isSunday/index'
 
 /**
  * @name addBusinessDays
@@ -51,7 +49,6 @@ export default function addBusinessDays(
 
   const date = toDate(dirtyDate)
   const amount = toInteger(dirtyAmount)
-  const startedOnNonWorkingDay = !businessDays.includes(date.getDay())
   const isExcepted = (date: Date): boolean | null => {
     if (options.exceptions) {
       const exception =
@@ -82,13 +79,6 @@ export default function addBusinessDays(
   while (restDays > 0) {
     date.setDate(date.getDate() + sign)
     if (!isNonWorkingDay(date)) restDays -= 1
-  }
-
-  if (startedOnNonWorkingDay && isNonWorkingDay(date) && amount !== 0) {
-    // If we're reducing days, we want to add days until we land on a weekday
-    // If we're adding days we want to reduce days until we land on a weekday
-    if (isSaturday(date)) date.setDate(date.getDate() + (sign < 0 ? 2 : -1))
-    if (isSunday(date)) date.setDate(date.getDate() + (sign < 0 ? 1 : -2))
   }
 
   const filterExceptions = (exceptionString: string) => {
@@ -143,7 +133,7 @@ export default function addBusinessDays(
     if (isNonWorkingDay(date) && amount !== 0) {
       // If we're adding days, add a day until we reach a business day
       // If we're subtracting days, subtract a day until we reach a business day
-      date.setDate(date.getDate() + sign)
+      date.setDate(date.getDate() - sign)
       reduceIfNonWorkingDay(date)
     }
   }
