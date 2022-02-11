@@ -38,6 +38,6 @@ export default function subBusinessDays(
     options.businessDays == null
       ? [1, 2, 3, 4, 5]
       : options.businessDays.filter((number) => number < 7).map(toInteger)
-  const exceptions = options.exceptions ?? {}
+  const exceptions = options.exceptions || {}
   return addBusinessDays(dirtyDate, -amount, { businessDays, exceptions })
 }
