@@ -76,24 +76,24 @@ export default function addBusinessDays(
     if (!isNonWorkingDay(date)) restDays -= 1
   }
 
+  // Filter exceptions to make sure they're enabling/disabling valid days
   const filterExceptions = (exceptionString: string) => {
     const exceptionDate = new Date(exceptionString)
     const [earlierDate, laterDate] =
       sign === 1 ? [dirtyDate, date] : [date, dirtyDate]
+    // Valid exceptions must be between the start date and calculated date,
+    // or equal to the start date or calculated date
     if (
       (isBefore(exceptionDate, laterDate) &&
         isAfter(exceptionDate, earlierDate)) ||
       isSameDay(exceptionDate, laterDate) ||
       isSameDay(exceptionDate, earlierDate)
     ) {
+      // Valid `true` exceptions enable a non-business day
+      // Valid `false` exceptions disable a business day
       if (
-        exceptions[exceptionString] === true &&
+        exceptions[exceptionString] ===
         !businessDays.includes(exceptionDate.getDay())
-      ) {
-        return true
-      } else if (
-        exceptions[exceptionString] === false &&
-        businessDays.includes(exceptionDate.getDay())
       ) {
         return true
       }
@@ -101,6 +101,7 @@ export default function addBusinessDays(
     return false
   }
 
+  // Count the overall delta of working days due to exceptions
   const validExceptions = Object.keys(exceptions).filter(filterExceptions)
   let dayChangesDueToExceptions = validExceptions.reduce(
     (businessDaysDelta, exceptionString) => {
@@ -115,6 +116,7 @@ export default function addBusinessDays(
     },
     0
   )
+  // Add or subtract days until we have applied all our exceptions
   while (dayChangesDueToExceptions !== 0) {
     const deltaSign = dayChangesDueToExceptions < 0 ? -1 : 1
     if (businessDays.includes(date.getDay())) {
@@ -126,8 +128,8 @@ export default function addBusinessDays(
   // If we land on a non-working date, we add days accordingly to land on the next business day
   const reduceIfNonWorkingDay = (date: Date) => {
     if (isNonWorkingDay(date) && amount !== 0) {
-      // If we're adding days, add a day until we reach a business day
-      // If we're subtracting days, subtract a day until we reach a business day
+      // If we're adding days, subtract a day until we reach a business day
+      // If we're subtracting days, add day until we reach a business day
       date.setDate(date.getDate() - sign)
       reduceIfNonWorkingDay(date)
     }
