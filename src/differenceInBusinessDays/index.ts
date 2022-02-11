@@ -1,5 +1,7 @@
 import addDays from '../addDays/index'
 import differenceInCalendarDays from '../differenceInCalendarDays/index'
+import isAfter from '../isAfter/index'
+import isBefore from '../isBefore/index'
 import isSameDay from '../isSameDay/index'
 import isValid from '../isValid/index'
 import toDate from '../toDate/index'
@@ -71,10 +73,10 @@ export default function differenceInBusinessDays(
   const businessDays =
     options.businessDays == null
       ? [1, 2, 3, 4, 5]
-      : options.businessDays.map(toInteger)
+      : options.businessDays.filter((number) => number < 7).map(toInteger)
 
   const dateLeft = toDate(dirtyDateLeft)
-  let dateRight = toDate(dirtyDateRight)
+  const dateRight = toDate(dirtyDateRight)
   const isHoliday = (date: Date) => !businessDays.includes(date.getDay())
 
   if (!isValid(dateLeft) || !isValid(dateRight)) return NaN
@@ -85,14 +87,59 @@ export default function differenceInBusinessDays(
   const weeks = toInteger(calendarDifference / 7)
 
   let result = weeks * businessDays.length
-  dateRight = addDays(dateRight, weeks * 7)
+  let newDateRight = addDays(dateRight, weeks * 7)
 
-  // the loop below will run at most 6 times to account for the remaining days that don't makeup a full week
-  while (!isSameDay(dateLeft, dateRight)) {
+  // the loop below will run at most 6 times to account for the remaining days that don't make up a full week
+  while (!isSameDay(dateLeft, newDateRight)) {
     // sign is used to account for both negative and positive differences
-    result += isHoliday(dateRight) ? 0 : sign
-    dateRight = addDays(dateRight, sign)
+    result += isHoliday(newDateRight) ? 0 : sign
+    newDateRight = addDays(newDateRight, sign)
   }
 
-  return result === 0 ? 0 : result
+  // handle exceptions
+  let exceptionCount = 0
+  if (options.exceptions) {
+    const exceptionDates = Object.keys(options.exceptions)
+    exceptionDates.forEach((e) => {
+      const date = new Date(e)
+      if (!isValid(date)) return
+      // if date is within the left and right dates
+      if (isBefore(date, dateLeft) && isAfter(date, dateRight)) {
+        if (
+          // if exception is true and date is not a business day
+          options.exceptions![e] === true &&
+          !businessDays.includes(date.getDay())
+        ) {
+          // add a day
+          exceptionCount++
+        } else if (
+          // if exception is false and date is a business day
+          options.exceptions![e] === false &&
+          businessDays.includes(date.getDay())
+        ) {
+          // subtract a day
+          exceptionCount--
+        }
+      }
+    })
+    // handle exceptions for dateLeft and dateRight
+    // if both are true, add one; if both are false, add two; do nothing in all other cases
+    const leftAndRightExceptions = exceptionDates.filter((e) => {
+      const date = new Date(e)
+      return isSameDay(date, dateLeft) || isSameDay(date, dateRight)
+    })
+    if (leftAndRightExceptions.length === 2) {
+      if (
+        leftAndRightExceptions.every((e) => options.exceptions![e] === true)
+      ) {
+        exceptionCount++
+      } else if (
+        leftAndRightExceptions.every((e) => options.exceptions![e] === false)
+      ) {
+        exceptionCount--
+      }
+    }
+  }
+
+  return result + exceptionCount
 }
