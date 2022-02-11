@@ -54,7 +54,7 @@ export default function addBusinessDays(
       const exception =
         Object.keys(options.exceptions).find((e) =>
           isSameDay(new Date(e), date)
-        ) ?? ''
+        ) || ''
       return options.exceptions[exception]
     }
     return null
