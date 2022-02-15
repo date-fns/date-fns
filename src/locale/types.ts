@@ -202,6 +202,14 @@ export type MatchFn<Result, ExtraOptions = Record<string, unknown>> = (
   str: string,
   options?: {
     width?: LocalePatternWidth
+    /**
+     * @deprecated Map the value manually instead.
+     * @example
+     * const matchResult = locale.match.ordinalNumber('1st')
+     * if (matchResult) {
+     *   matchResult.value = valueCallback(matchResult.value)
+     * }
+     */
     valueCallback?: MatchValueCallback<string, Result>
   } & ExtraOptions
 ) => { value: Result; rest: string } | null
