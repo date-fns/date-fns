@@ -6,6 +6,7 @@ const plugins = [
   '@babel/plugin-transform-parameters',
   '@babel/plugin-transform-destructuring',
   '@babel/plugin-proposal-optional-chaining',
+  '@babel/plugin-proposal-class-properties',
   '@babel/plugin-proposal-object-rest-spread',
   '@babel/plugin-transform-shorthand-properties',
 ]
