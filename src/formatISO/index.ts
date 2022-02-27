@@ -24,23 +24,23 @@ export interface FormatISOOptions
  *
  * @example
  * // Represent 18 September 2019 in ISO 8601 format (local time zone is UTC):
- * const result = formatISO(new Date(2019, 8, 18, 19, 0, 52))
- * //=> '2019-09-18T19:00:52Z'
+ * const result = formatISO(new Date(2019, 8, 18, 19, 0, 52, 123))
+ * //=> '2019-09-18T19:00:52.123Z'
  *
  * @example
  * // Represent 18 September 2019 in ISO 8601, short format (local time zone is UTC):
- * const result = formatISO(new Date(2019, 8, 18, 19, 0, 52), { format: 'basic' })
- * //=> '20190918T190052'
+ * const result = formatISO(new Date(2019, 8, 18, 19, 0, 52, 123), { format: 'basic' })
+ * //=> '20190918T190052.123'
  *
  * @example
  * // Represent 18 September 2019 in ISO 8601 format, date only:
- * const result = formatISO(new Date(2019, 8, 18, 19, 0, 52), { representation: 'date' })
+ * const result = formatISO(new Date(2019, 8, 18, 19, 0, 52, 123), { representation: 'date' })
  * //=> '2019-09-18'
  *
  * @example
  * // Represent 18 September 2019 in ISO 8601 format, time only (local time zone is UTC):
- * const result = formatISO(new Date(2019, 8, 18, 19, 0, 52), { representation: 'time' })
- * //=> '19:00:52Z'
+ * const result = formatISO(new Date(2019, 8, 18, 19, 0, 52, 123), { representation: 'time' })
+ * //=> '19:00:52.123Z'
  */
 export default function formatISO<DateType extends Date>(
   date: DateType | number,
@@ -91,6 +91,7 @@ export default function formatISO<DateType extends Date>(
     const hour = addLeadingZeros(originalDate.getHours(), 2)
     const minute = addLeadingZeros(originalDate.getMinutes(), 2)
     const second = addLeadingZeros(originalDate.getSeconds(), 2)
+    const milliseconds = addLeadingZeros(originalDate.getMilliseconds(), 3)
 
     // If there's also date, separate it with time with 'T'
     const separator = result === '' ? '' : 'T'
@@ -99,7 +100,7 @@ export default function formatISO<DateType extends Date>(
     const time = [hour, minute, second].join(timeDelimiter)
 
     // HHmmss or HH:mm:ss.
-    result = `${result}${separator}${time}${tzOffset}`
+    result = `${result}${separator}${time}.${milliseconds}${tzOffset}`
   }
 
   return result
