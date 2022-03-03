@@ -104,6 +104,45 @@ describe('addBusinessDays', function () {
       // Then we expect to ignore the no-op exception
       assert.deepStrictEqual(result, new Date(2022, 0 /* Jan */, 21))
     })
+
+    it('can override business days with exceptions', function () {
+      // Given business days of Monday - Saturday
+      // And exceptions over two weekends
+
+      // When we add 12 business days
+      const result = addBusinessDays(new Date(2022, 1 /* Feb */, 9), 12, {
+        businessDays: [1, 2, 3, 4, 5, 6],
+        exceptions: {
+          '02/12/22': false,
+          '02/13/22': false,
+          '02/19/22': false,
+          '02/20/22': false,
+        },
+      })
+
+      // Then we expect to have the working Saturdays ignored
+      assert.deepStrictEqual(result, new Date(2022, 1, 25))
+    })
+
+    it('can override business days with exceptions over weekends', function () {
+      // Given business days of Monday - Saturday
+      // And exceptions over two weekends
+
+      // When we add 13 business days
+      const result = addBusinessDays(new Date(2022, 1 /* Feb */, 9), 13, {
+        businessDays: [1, 2, 3, 4, 5, 6],
+        exceptions: {
+          '02/12/22': false,
+          '02/13/22': false,
+          '02/19/22': false,
+          '02/20/22': false,
+          '02/26/22': false,
+        },
+      })
+
+      // Then we expect to have the working Saturdays ignored
+      assert.deepStrictEqual(result, new Date(2022, 1, 28))
+    })
   })
 
   it('can handle a large number of business days', function () {
