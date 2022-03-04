@@ -37,17 +37,28 @@ export interface FormatRFC3339Options {
  * const result = formatRFC3339(new Date(2019, 8, 18, 19, 0, 52, 234), { fractionDigits: 3 })
  * //=> '2019-09-18T19:00:52.234Z'
  */
-export default function formatRFC3339<DateType extends Date>(
-  dirtyDate: DateType | number,
-  options?: FormatRFC3339Options
+export default function formatRFC3339(
+  dirtyDate: Date | number,
+  dirtyOptions?: FormatRFC3339Options
 ): string {
+  if (arguments.length < 1) {
+    throw new TypeError(
+      `1 arguments required, but only ${arguments.length} present`
+    )
+  }
+
   const originalDate = toDate(dirtyDate)
 
   if (!isValid(originalDate)) {
     throw new RangeError('Invalid time value')
   }
 
-  const fractionDigits = options?.fractionDigits ?? 0
+  const { fractionDigits = 0 } = dirtyOptions || {}
+
+  // Test if fractionDigits is between 0 and 3 _and_ is not NaN
+  if (!(fractionDigits >= 0 && fractionDigits <= 3)) {
+    throw new RangeError('fractionDigits must be between 0 and 3 inclusively')
+  }
 
   const day = addLeadingZeros(originalDate.getDate(), 2)
   const month = addLeadingZeros(originalDate.getMonth() + 1, 2)
