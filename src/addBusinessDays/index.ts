@@ -129,15 +129,11 @@ export default function addBusinessDays(
 
   // If we land on a non-working date, we add days accordingly to land on the next business day
   const reduceIfNonWorkingDay = (date: Date) => {
-    if (startedOnNonWorkingDay && isNonWorkingDay(date) && amount !== 0) {
-      // If we're adding days, subtract a day until we reach a business day
-      // If we're subtracting days, add day until we reach a business day
-      date.setDate(date.getDate() - sign)
-      reduceIfNonWorkingDay(date)
-    } else if (isNonWorkingDay(date) && amount !== 0) {
+    if (isNonWorkingDay(date) && amount !== 0) {
+      const newSign = startedOnNonWorkingDay ? -sign : sign
       // If we're adding days, add a day until we reach a business day
       // If we're subtracting days, subtract a day until we reach a business day
-      date.setDate(date.getDate() + sign)
+      date.setDate(date.getDate() + newSign)
       reduceIfNonWorkingDay(date)
     }
   }

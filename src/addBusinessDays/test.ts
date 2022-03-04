@@ -135,7 +135,7 @@ describe('addBusinessDays', function () {
       })
 
       // Then we expect to have the working Saturdays ignored
-      assert.deepStrictEqual(result, new Date(2022, 1, 21))
+      assert.deepStrictEqual(result, new Date(2022, 1 /* Feb */, 21))
     })
 
     it('can handle a large amount of enabled Saturday exceptions', function () {
@@ -150,10 +150,12 @@ describe('addBusinessDays', function () {
       }
 
       // When we try and add 36 business days
-      const result = addBusinessDays(new Date(2022, 0, 3), 36, { exceptions })
+      const result = addBusinessDays(new Date(2022, 0 /* Jan */, 3), 36, {
+        exceptions,
+      })
 
       // Then we expect to account for all exceptions
-      assert.deepStrictEqual(result, new Date(2022, 1, 14))
+      assert.deepStrictEqual(result, new Date(2022, 1 /* Feb */, 14))
     })
 
     it('can handle a large amount of disabled Saturday exceptions', function () {
@@ -169,13 +171,13 @@ describe('addBusinessDays', function () {
       const businessDays = [1, 2, 3, 4, 5, 6]
 
       // When we try and add 30 business days
-      const result = addBusinessDays(new Date(2022, 0, 3), 30, {
+      const result = addBusinessDays(new Date(2022, 0 /* Jan */, 3), 30, {
         exceptions,
         businessDays,
       })
 
       // Then we expect to account for all exceptions
-      assert.deepStrictEqual(result, new Date(2022, 1, 14))
+      assert.deepStrictEqual(result, new Date(2022, 1 /* Feb */, 14))
     })
 
     it('can handle a large amount of disabled Sunday exceptions', function () {
@@ -191,13 +193,13 @@ describe('addBusinessDays', function () {
       const businessDays = [0, 1, 2, 3, 4, 5]
 
       // When we try and add 30 business days
-      const result = addBusinessDays(new Date(2022, 0, 3), 30, {
+      const result = addBusinessDays(new Date(2022, 0 /* Jan */, 3), 30, {
         exceptions,
         businessDays,
       })
 
       // Then we expect to account for all exceptions
-      assert.deepStrictEqual(result, new Date(2022, 1, 14))
+      assert.deepStrictEqual(result, new Date(2022, 1 /* Feb */, 14))
     })
 
     it('can handle a large amount of enabled Sunday exceptions', function () {
@@ -213,13 +215,13 @@ describe('addBusinessDays', function () {
       const businessDays = [1, 2, 3, 4, 5]
 
       // When we try and add 36 business days
-      const result = addBusinessDays(new Date(2022, 0, 3), 36, {
+      const result = addBusinessDays(new Date(2022, 0 /* Jan */, 3), 36, {
         exceptions,
         businessDays,
       })
 
       // Then we expect to account for all exceptions
-      assert.deepStrictEqual(result, new Date(2022, 1, 14))
+      assert.deepStrictEqual(result, new Date(2022, 1 /* Feb */, 14))
     })
 
     it('can handle a large amount of disabled exceptions', function () {
@@ -235,13 +237,13 @@ describe('addBusinessDays', function () {
       const businessDays = [1, 2, 3, 4, 5]
 
       // When we try and add 30 business days
-      const result = addBusinessDays(new Date(2022, 0, 3), 30, {
+      const result = addBusinessDays(new Date(2022, 0 /* Jan */, 3), 30, {
         exceptions,
         businessDays,
       })
 
       // Then we expect to account for all exceptions
-      assert.deepStrictEqual(result, new Date(2022, 1, 14))
+      assert.deepStrictEqual(result, new Date(2022, 1 /* Feb */, 14))
     })
   })
 
