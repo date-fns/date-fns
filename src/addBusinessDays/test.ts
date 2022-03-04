@@ -138,7 +138,7 @@ describe('addBusinessDays', function () {
       assert.deepStrictEqual(result, new Date(2022, 1, 21))
     })
 
-    it('can handle a large amount of exceptions', function () {
+    it('can handle a large amount of enabled Saturday exceptions', function () {
       // Given business days of M-F and a large number of working saturdays
       const exceptions = {
         '01/08/22': true,
@@ -189,6 +189,50 @@ describe('addBusinessDays', function () {
         '02/13/22': false,
       }
       const businessDays = [0, 1, 2, 3, 4, 5]
+
+      // When we try and add 30 business days
+      const result = addBusinessDays(new Date(2022, 0, 3), 30, {
+        exceptions,
+        businessDays,
+      })
+
+      // Then we expect to account for all exceptions
+      assert.deepStrictEqual(result, new Date(2022, 1, 14))
+    })
+
+    it('can handle a large amount of enabled Sunday exceptions', function () {
+      // Given business days of Monday - Friday and a large number of working Sundays
+      const exceptions = {
+        '01/09/22': true,
+        '01/16/22': true,
+        '01/23/22': true,
+        '01/30/22': true,
+        '02/06/22': true,
+        '02/13/22': true,
+      }
+      const businessDays = [1, 2, 3, 4, 5]
+
+      // When we try and add 36 business days
+      const result = addBusinessDays(new Date(2022, 0, 3), 36, {
+        exceptions,
+        businessDays,
+      })
+
+      // Then we expect to account for all exceptions
+      assert.deepStrictEqual(result, new Date(2022, 1, 14))
+    })
+
+    it('can handle a large amount of disabled exceptions', function () {
+      // Given business days of Sunday - Saturday and a large number of non-working weekends
+      const exceptions = {
+        '01/08/22': false,
+        '01/16/22': false,
+        '01/22/22': false,
+        '01/30/22': false,
+        '02/05/22': false,
+        '02/13/22': false,
+      }
+      const businessDays = [1, 2, 3, 4, 5]
 
       // When we try and add 30 business days
       const result = addBusinessDays(new Date(2022, 0, 3), 30, {
