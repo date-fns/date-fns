@@ -44,12 +44,16 @@ export default function addBusinessDays(
 
   const date = toDate(dirtyDate)
   const amount = toInteger(dirtyAmount)
+  let accountedForExceptions = 0
   const isExcepted = (date: Date): boolean | null => {
     if (options.exceptions) {
       const exception =
         Object.keys(options.exceptions).find((e) =>
           isSameDay(new Date(e), date)
         ) || ''
+      if (options.exceptions[exception] !== undefined) {
+        accountedForExceptions += 1
+      }
       return options.exceptions[exception]
     }
     return null
@@ -103,8 +107,8 @@ export default function addBusinessDays(
 
   // Count the overall delta of working days due to exceptions
   const validExceptions = Object.keys(exceptions).filter(filterExceptions)
-  let dayChangesDueToExceptions = validExceptions.reduce(
-    (businessDaysDelta, exceptionString) => {
+  let dayChangesDueToExceptions =
+    validExceptions.reduce((businessDaysDelta, exceptionString) => {
       switch (exceptions[exceptionString]) {
         case true:
           return businessDaysDelta - sign
@@ -113,9 +117,7 @@ export default function addBusinessDays(
         default:
           return businessDaysDelta
       }
-    },
-    0
-  )
+    }, 0) - accountedForExceptions
   // Add or subtract days until we have applied all our exceptions
   while (dayChangesDueToExceptions !== 0) {
     const deltaSign = dayChangesDueToExceptions < 0 ? -1 : 1

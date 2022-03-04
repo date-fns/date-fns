@@ -108,16 +108,17 @@ describe('addBusinessDays', function () {
       // And exceptions over one weekend
 
       // When we add 8 business days
-      const result = addBusinessDays(new Date(2022, 1 /* Feb */, 9), 7, {
+      const result = addBusinessDays(new Date(2022, 1 /* Feb */, 9), 9, {
         businessDays: [1, 2, 3, 4, 5, 6],
         exceptions: {
           '02/12/22': false,
           '02/13/22': false,
+          '02/19/22': false,
         },
       })
 
       // Then we expect to have the working Saturdays ignored
-      assert.deepStrictEqual(result, new Date(2022, 1, 18))
+      assert.deepStrictEqual(result, new Date(2022, 1, 22))
     })
 
     it('can override business days with exceptions over weekends', function () {
