@@ -234,10 +234,10 @@ describe('addBusinessDays', function () {
         '02/05/22': false,
         '02/13/22': false,
       }
-      const businessDays = [1, 2, 3, 4, 5]
+      const businessDays = [0, 1, 2, 3, 4, 5, 6]
 
-      // When we try and add 30 business days
-      const result = addBusinessDays(new Date(2022, 0 /* Jan */, 3), 30, {
+      // When we try and add 36 business days
+      const result = addBusinessDays(new Date(2022, 0 /* Jan */, 3), 36, {
         exceptions,
         businessDays,
       })
