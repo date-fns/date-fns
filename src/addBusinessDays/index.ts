@@ -66,7 +66,7 @@ export default function addBusinessDays(
   if (date.toString() === 'Invalid Date') {
     return date
   }
-
+  const startedOnNonWorkingDay = isNonWorkingDay(date)
   const hours = date.getHours()
   const sign = amount < 0 ? -1 : 1
   const fullWeeks = toInteger(amount / businessDays.length)
@@ -129,10 +129,15 @@ export default function addBusinessDays(
 
   // If we land on a non-working date, we add days accordingly to land on the next business day
   const reduceIfNonWorkingDay = (date: Date) => {
-    if (isNonWorkingDay(date) && amount !== 0) {
+    if (startedOnNonWorkingDay && isNonWorkingDay(date) && amount !== 0) {
       // If we're adding days, subtract a day until we reach a business day
       // If we're subtracting days, add day until we reach a business day
       date.setDate(date.getDate() - sign)
+      reduceIfNonWorkingDay(date)
+    } else if (isNonWorkingDay(date) && amount !== 0) {
+      // If we're adding days, add a day until we reach a business day
+      // If we're subtracting days, subtract a day until we reach a business day
+      date.setDate(date.getDate() + sign)
       reduceIfNonWorkingDay(date)
     }
   }
