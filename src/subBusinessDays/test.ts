@@ -4,7 +4,7 @@ import assert from 'assert'
 import subBusinessDays from './index'
 
 describe('subBusinessDays', () => {
-  it('substract the given number of business days', () => {
+  it('subtracts the given number of business days', () => {
     const result = subBusinessDays(new Date(2014, 8 /* Sep */, 1), 10)
     assert.deepStrictEqual(result, new Date(2014, 7 /* Aug */, 18))
   })
