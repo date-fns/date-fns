@@ -297,6 +297,30 @@ describe('differenceInBusinessDays', () => {
 
       assert(result === 8)
     })
+
+    it('should ignore business days with exceptions overriding them', function () {
+      // Given working days of Monday - Saturday
+      // And exceptions covering the weekends
+
+      // When we calculate the difference in business days between a working day and an excepted working day
+      const result = differenceInBusinessDays(
+        new Date(2022, 1, 26),
+        new Date(2022, 1, 9),
+        {
+          businessDays: [1, 2, 3, 4, 5, 6],
+          exceptions: {
+            '02/12/22': false,
+            '02/13/22': false,
+            '02/19/22': false,
+            '02/20/22': false,
+            '02/26/22': false,
+          },
+        }
+      )
+
+      // Then we expect the count to ignore all excepted days
+      assert(result === 12)
+    })
   })
 
   describe('edge cases', function () {
