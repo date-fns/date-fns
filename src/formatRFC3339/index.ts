@@ -1,6 +1,7 @@
 import isValid from '../isValid/index'
 import toDate from '../toDate/index'
 import addLeadingZeros from '../_lib/addLeadingZeros/index'
+import fractionalDigits from '../_lib/fractionalDigits'
 
 /**
  * The {@link formatRFC3339} function options.
@@ -68,14 +69,7 @@ export default function formatRFC3339(
   const minute = addLeadingZeros(originalDate.getMinutes(), 2)
   const second = addLeadingZeros(originalDate.getSeconds(), 2)
 
-  let fractionalSecond = ''
-  if (fractionDigits > 0) {
-    const milliseconds = originalDate.getMilliseconds()
-    const fractionalSeconds = Math.floor(
-      milliseconds * Math.pow(10, fractionDigits - 3)
-    )
-    fractionalSecond = '.' + addLeadingZeros(fractionalSeconds, fractionDigits)
-  }
+  const fractionalSecond = fractionalDigits(fractionDigits, originalDate)
 
   let offset = ''
   const tzOffset = originalDate.getTimezoneOffset()

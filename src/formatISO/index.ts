@@ -1,13 +1,7 @@
 import toDate from '../toDate/index'
 import type { FormatOptions, RepresentationOptions } from '../types'
 import addLeadingZeros from '../_lib/addLeadingZeros/index'
-
-/**
- * The {@link formatISO} function options.
- */
-export interface FormatISOOptions
-  extends FormatOptions,
-    RepresentationOptions {}
+import fractionalDigits from '../_lib/fractionalDigits'
 
 export interface FormatISOoptions extends FormatOptions, RepresentationOptions {
   fractionDigits?: 0 | 1 | 2 | 3 | 4 | 5 | 6
@@ -128,16 +122,7 @@ export default function formatISO(
     const minute = addLeadingZeros(originalDate.getMinutes(), 2)
     const second = addLeadingZeros(originalDate.getSeconds(), 2)
 
-    let fractionalSecond = ''
-    if (fractionDigits > 0) {
-      const milliseconds = originalDate.getMilliseconds()
-      const fractionalSeconds = Math.floor(
-        milliseconds * Math.pow(10, fractionDigits - 3)
-      )
-      fractionalSecond =
-        '.' + addLeadingZeros(fractionalSeconds, fractionDigits)
-    }
-
+    const fractionalSecond = fractionalDigits(fractionDigits, originalDate)
     // If there's also date, separate it with time with 'T'
     const separator = result === '' ? '' : 'T'
 
