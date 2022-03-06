@@ -51,7 +51,7 @@ export interface FormatISOoptions extends FormatOptions, RepresentationOptions {
  * @example
  * // Represent 18 September 2019 in ISO 8601 format, with 4 number of seconds after the decimal point
  * const result = formatISO(new Date(2019, 8, 18, 19, 0, 52, 123), { fractionDigits: 3 })
- * //=> '2019-09-18T19:00:52.1230Z'
+ * //=> '2019-09-18T19:00:52.123Z'
  */
 export default function formatISO(
   date: Date | number,
