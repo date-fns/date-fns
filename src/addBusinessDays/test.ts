@@ -163,6 +163,45 @@ describe('addBusinessDays', function () {
       assert.deepStrictEqual(result, new Date(2022, 1 /* Feb */, 22))
     })
 
+    it('can correctly add days when ending on a false exception', function () {
+      // Given business days of Monday - Friday
+      // And an exception on a Friday
+
+      // When we add 5 business days and end on the exception
+      const result = addBusinessDays(new Date(2022, 1 /* Feb */, 4), 5, {
+        exceptions: { '02/11/22': false },
+      })
+
+      // Then we expect to have the disabled Friday ignored
+      assert.deepStrictEqual(result, new Date(2022, 1 /* Feb */, 14))
+    })
+
+    it('can correctly add days when starting on a false exception', function () {
+      // Given business days of Monday - Friday
+      // And an exception on a Friday
+
+      // When we start on the exception and add 6 business days
+      const result = addBusinessDays(new Date(2022, 1 /* Feb */, 4), 6, {
+        exceptions: { '02/04/22': false },
+      })
+
+      // Then we expect to have the disabled Friday ignored
+      assert.deepStrictEqual(result, new Date(2022, 1 /* Feb */, 14))
+    })
+
+    it('can correctly add days when starting and ending on a false exception', function () {
+      // Given business days of Monday - Friday
+      // And 2 exceptions on Fridays
+
+      // When we start on an exception, add 5 business days, and end on an exception
+      const result = addBusinessDays(new Date(2022, 1 /* Feb */, 4), 5, {
+        exceptions: { '02/04/22': false, '02/11/22': false },
+      })
+
+      // Then we expect to have the disabled days ignored
+      assert.deepStrictEqual(result, new Date(2022, 1 /* Feb */, 14))
+    })
+
     it('can exclude business days with false exceptions over weekends', function () {
       // Given business days of Monday - Saturday
       // And exceptions over two weekends
@@ -409,7 +448,7 @@ describe('addBusinessDays', function () {
     )
   })
 
-  it('if custom businessDays are Monday and Wednesday, it returns the Wednesday when 2 days is added on the Sunday', function () {
+  it('if custom businessDays are Monday and Wednesday, it returns the Wednesday when 2 days are added on the Sunday', function () {
     assert.deepStrictEqual(
       addBusinessDays(new Date(2020, 0 /* Jan */, 12), 2 /* Sunday */, {
         businessDays: [1, 3],
