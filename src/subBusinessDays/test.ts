@@ -97,23 +97,23 @@ describe('subBusinessDays', () => {
 
   describe('exceptions', () => {
     it('can take in a list of enabling exceptions', () => {
-      const result = subBusinessDays(new Date(2022, 0, 17), 10, {
+      const result = subBusinessDays(new Date(2022, 0 /* Jan */, 17), 10, {
         exceptions: {
           '01/16/2022': true,
           '01/09/2022': true,
         },
       })
-      assert.deepStrictEqual(result, new Date(2022, 0, 5))
+      assert.deepStrictEqual(result, new Date(2022, 0 /* Jan */, 5))
     })
 
     it('can take in a list of disabling exceptions', () => {
-      const result = subBusinessDays(new Date(2022, 0, 24), 10, {
+      const result = subBusinessDays(new Date(2022, 0 /* Jan */, 24), 10, {
         exceptions: {
           '01/17/2022': false,
           '01/10/2022': false,
         },
       })
-      assert.deepStrictEqual(result, new Date(2022, 0, 6))
+      assert.deepStrictEqual(result, new Date(2022, 0 /* Jan */, 6))
     })
   })
 })
