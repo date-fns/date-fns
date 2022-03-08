@@ -80,12 +80,14 @@ export default function addBusinessDays(
     return initialDate
   }
 
-  const startedOnNonWorkingDay = !isWorkingDay(initialDate)
+  // We need to call this to add the initial date to the accountedForExceptions
+  isExcepted(initialDate)
+  const startedOnNonBusinessDay = !businessDays.includes(initialDate.getDay())
   const hours = initialDate.getHours()
   const sign = amount < 0 ? -1 : 1
   const fullWeeks = toInteger(amount / businessDays.length)
 
-  let newDate = initialDate
+  let newDate = new Date(initialDate)
   newDate.setDate(newDate.getDate() + fullWeeks * 7)
 
   // Get remaining days not part of a full week
@@ -152,7 +154,7 @@ export default function addBusinessDays(
   // If we land on a non-working date, we add days accordingly to land on the next business day
   const reduceIfNonWorkingDay = (date: Date) => {
     if (!isWorkingDay(date) && amount !== 0) {
-      const newSign = startedOnNonWorkingDay ? -sign : sign
+      const newSign = startedOnNonBusinessDay ? -sign : sign
       // If we're adding days, add a day until we reach a business day
       // If we're subtracting days, subtract a day until we reach a business day
       date.setDate(date.getDate() + newSign)
