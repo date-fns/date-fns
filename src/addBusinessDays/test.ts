@@ -178,17 +178,16 @@ describe('addBusinessDays', function () {
       assert.deepStrictEqual(result, new Date(2022, 1 /* Feb */, 14))
     })
 
-    // this test fails, but is due in part to starting on a non-working day, which we won't allow
-    it.skip('can correctly add days when starting on non-working day and ending on a Friday false exception', function () {
-      // Given business days of Monday - Friday
+    it('can correctly add days when adding a week that includes false exceptions', function () {
+      // Given business days of Monday - Friday and an excluded day
 
-      // When we start on a non-working Saturday, add business days, and end on an exception
+      // When we start on a non-working Saturday and add 5 business days
       const result = addBusinessDays(new Date(2022, 1 /* Feb */, 5), 5, {
-        exceptions: { '02/11/22': false },
+        exceptions: { '02/09/22': false, '02/10/22': false },
       })
 
-      // Then we expect to have the disabled day excluded
-      assert.deepStrictEqual(result, new Date(2022, 1 /* Feb */, 14))
+      // Then we expect to end on the Tuesday of the following week
+      assert.deepStrictEqual(result, new Date(2022, 1 /* Feb */, 15))
     })
 
     it('can correctly add days when starting on a false exception', function () {
@@ -208,7 +207,7 @@ describe('addBusinessDays', function () {
       // Given business days of Monday - Friday
       // And an exception on a Friday
 
-      // When we add 5 business days and end on the exception
+      // When we add 6 business days and end on the exception
       const result = addBusinessDays(new Date(2022, 1 /* Feb */, 4), 6, {
         exceptions: { '02/12/22': true },
       })

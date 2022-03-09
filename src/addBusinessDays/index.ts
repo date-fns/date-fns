@@ -80,18 +80,25 @@ export default function addBusinessDays(
     return initialDate
   }
 
-  // We need to call this to add the initial date to the accountedForExceptions
+  // We need to call this to add the initial date to the accountedForExceptions if it's an exception
+  // Ideally we shouldn't need to do this
   isExcepted(initialDate)
   const startedOnNonBusinessDay = !businessDays.includes(initialDate.getDay())
   const hours = initialDate.getHours()
   const sign = amount < 0 ? -1 : 1
-  const fullWeeks = toInteger(amount / businessDays.length)
 
   let newDate = new Date(initialDate)
-  newDate.setDate(newDate.getDate() + fullWeeks * 7)
-
+  let fullWeeks = toInteger(amount / businessDays.length)
   // Get remaining days not part of a full week
   let restDays = Math.abs(amount % businessDays.length)
+
+  // Fixes edge case bug to account for false exceptions in the first week
+  if (options.exceptions && restDays === 0 && fullWeeks === 1) {
+    restDays = businessDays.length
+    fullWeeks = 0
+  }
+
+  newDate.setDate(newDate.getDate() + fullWeeks * 7)
 
   // Loops over remaining days
   while (restDays > 0) {
