@@ -44,30 +44,6 @@ export default function addBusinessDays(
 
   const initialDate = toDate(dirtyDate)
   const amount = toInteger(dirtyAmount)
-  let accountedForExceptions = 0
-
-  const isExcepted = (date: Date): boolean | null => {
-    if (options.exceptions) {
-      const exception =
-        Object.keys(exceptions).find((e) => isSameDay(new Date(e), date)) || ''
-      if (exceptions[exception] === true) {
-        accountedForExceptions -= 1
-      } else if (exceptions[exception] === false) {
-        accountedForExceptions += 1
-      }
-      return exceptions[exception]
-    }
-    return null
-  }
-
-  const isWorkingDay = (date: Date) => {
-    const hasException = isExcepted(date)
-    if (hasException === false) return false
-    if (hasException === true || businessDays.includes(date.getDay())) {
-      return true
-    }
-    return false
-  }
 
   if (isNaN(amount)) return new Date(NaN)
 
@@ -75,91 +51,39 @@ export default function addBusinessDays(
     return initialDate
   }
 
-  // We need to call this to add the initial date to the accountedForExceptions if it's an exception
-  // Ideally we shouldn't need to do this
-  isExcepted(initialDate)
-  const startedOnNonBusinessDay = !businessDays.includes(initialDate.getDay())
-  const hours = initialDate.getHours()
-  const sign = amount < 0 ? -1 : 1
-
-  let newDate = new Date(initialDate)
-  let fullWeeks = toInteger(amount / businessDays.length)
-  // Get remaining days not part of a full week
-  let restDays = Math.abs(amount % businessDays.length)
-
-  // Fixes edge case bug to account for false exceptions in the first week
-  if (options.exceptions && restDays === 0 && fullWeeks === 1) {
-    restDays = businessDays.length
-    fullWeeks = 0
+  // returns true or false if the date has an exception, else null
+  const findException = (date: Date): boolean | null => {
+    if (options.exceptions) {
+      const exceptionDate =
+        Object.keys(exceptions).find((e) => isSameDay(new Date(e), date)) || ''
+      return exceptions[exceptionDate]
+    }
+    return null
   }
 
-  newDate.setDate(newDate.getDate() + fullWeeks * 7)
-
-  // Loops over remaining days
-  while (restDays > 0) {
-    newDate.setDate(newDate.getDate() + sign)
-    if (isWorkingDay(newDate)) restDays -= 1
-  }
-
-  // Filter exceptions to make sure they're enabling/disabling valid days
-  const filterExceptions = (exceptionString: string) => {
-    const exceptionDate = new Date(exceptionString)
-    const [earlierDate, laterDate] =
-      sign === 1 ? [dirtyDate, newDate] : [newDate, dirtyDate]
-    // Valid exceptions must be between the start date and calculated date,
-    // or equal to the start date or calculated date
-    if (
-      (isBefore(exceptionDate, laterDate) &&
-        isAfter(exceptionDate, earlierDate)) ||
-      isSameDay(exceptionDate, laterDate) ||
-      isSameDay(exceptionDate, earlierDate)
-    ) {
-      // Valid `true` exceptions enable a non-business day
-      // Valid `false` exceptions disable a business day
-      if (
-        exceptions[exceptionString] ===
-        !businessDays.includes(exceptionDate.getDay())
-      ) {
-        return true
-      }
+  const isWorkingDay = (date: Date) => {
+    const isDateIncluded = findException(date)
+    if (isDateIncluded === false) return false
+    if (isDateIncluded === true || businessDays.includes(date.getDay())) {
+      return true
     }
     return false
   }
 
-  // Count the overall delta of working days due to exceptions
-  const validExceptions = Object.keys(exceptions).filter(filterExceptions)
+  let newDate = new Date(initialDate)
+  const sign = amount < 0 ? -1 : 1
 
-  let dayChangesDueToExceptions =
-    validExceptions.reduce((businessDaysDelta, exceptionString) => {
-      switch (exceptions[exceptionString]) {
-        case true:
-          return businessDaysDelta - sign
-        case false:
-          return businessDaysDelta + sign
-        default:
-          return businessDaysDelta
-      }
-    }, 0) - accountedForExceptions
-
-  // Add or subtract days until we have applied all our exceptions
-  while (dayChangesDueToExceptions !== 0) {
-    const deltaSign = dayChangesDueToExceptions < 0 ? -1 : 1
-    if (isWorkingDay(newDate) || isExcepted(newDate) === false) {
-      dayChangesDueToExceptions = dayChangesDueToExceptions - deltaSign
-      // don't add to newDate if the last day is a false exception
-      if (dayChangesDueToExceptions === 0 && isExcepted(newDate) === false)
-        break
-    }
-    newDate.setDate(newDate.getDate() + deltaSign)
+  // start on initial day and continue until we have gone through all the days
+  let dayCounter = Math.abs(amount)
+  while (dayCounter > 0) {
+    newDate.setDate(newDate.getDate() + sign)
+    if (isWorkingDay(newDate)) dayCounter -= 1
   }
 
-  // If we land on a non-working date, we add days accordingly to land on the next business day
+  // If we land on a non-working date, we add/subtract days accordingly to land on the next business day
   const reduceIfNonWorkingDay = (date: Date) => {
     if (!isWorkingDay(date) && amount !== 0) {
-      const newSign = startedOnNonBusinessDay ? -sign : sign
-      // If we're adding days, add a day until we reach a business day
-      // If we're subtracting days, subtract a day until we reach a business day
-      date.setDate(date.getDate() + newSign)
+      date.setDate(date.getDate() + sign)
       reduceIfNonWorkingDay(date)
     }
   }
@@ -167,7 +91,7 @@ export default function addBusinessDays(
   reduceIfNonWorkingDay(newDate)
 
   // Restore hours to avoid DST lag
-  newDate.setHours(hours)
+  newDate.setHours(initialDate.getHours())
 
   return newDate
 }
