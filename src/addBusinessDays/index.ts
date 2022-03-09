@@ -2,8 +2,6 @@ import toDate from '../toDate/index'
 import toInteger from '../_lib/toInteger/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 import isSameDay from '../isSameDay/index'
-import isAfter from '../isAfter/index'
-import isBefore from '../isBefore/index'
 
 /**
  * @name addBusinessDays
@@ -20,6 +18,7 @@ import isBefore from '../isBefore/index'
  * @param {Record<string, boolean>} [options.exceptions={}] - exceptions to the business days. Map of date string to boolean.
  * @returns {Date} the new date with the business days added
  * @throws {TypeError} 2 arguments required
+ * @throws {RangeError} businessDays cannot include numbers greater than 6
  *
  * @example
  * // Add 10 business days to 1 September 2014:
@@ -37,10 +36,12 @@ export default function addBusinessDays(
   requiredArgs(2, arguments)
   const options = dirtyOptions || {}
   const exceptions = options.exceptions || {}
-  const businessDays =
-    options.businessDays == null
-      ? [1, 2, 3, 4, 5]
-      : options.businessDays.filter((number) => number < 7).map(toInteger)
+  const businessDays = options.businessDays ?? [1, 2, 3, 4, 5]
+
+  // Throw an exception if businessDays includes a number greater than 6
+  if (businessDays?.filter((number) => number > 6).length > 0) {
+    throw new RangeError('business days must be between 0 and 6')
+  }
 
   const initialDate = toDate(dirtyDate)
   const amount = toInteger(dirtyAmount)
