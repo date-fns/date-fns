@@ -5,7 +5,8 @@ import isWeekend from '../isWeekend/index'
 import toInteger from '../_lib/toInteger/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 import toDate from '../toDate'
-import isSameDay from '../isSameDay/index'
+import format from '../format/index'
+import isMatch from '../isMatch/index'
 
 /**
  * @name addBusinessDays
@@ -19,7 +20,7 @@ import isSameDay from '../isSameDay/index'
  * @param {Number} amount - the amount of business days to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  * @param {Object} [options] - an object with options.
  * @param {Number[]} [options.businessDays=[1, 2, 3, 4, 5]] - the business days. default is Monday to Friday.
- * @param {Record<string, boolean>} [options.exceptions={}] - exceptions to the business days. Map of date string to boolean.
+ * @param {Record<string, boolean>} [options.exceptions={}] - exceptions to the business days. Map of date string (with format "MM/DD/YY") to boolean.
  * @returns {Date} the new date with the business days added
  * @throws {TypeError} 2 arguments required
  * @throws {RangeError} businessDays cannot include numbers greater than 6
@@ -43,7 +44,7 @@ export default function addBusinessDays(
   const exceptions = options.exceptions || {}
   const businessDays = options.businessDays ?? [1, 2, 3, 4, 5]
 
-  // Throw an exception if businessDays includes a number greater than 6
+  // Throw a RangeError if businessDays includes a number greater than 6
   if (businessDays?.filter((number) => number > 6).length > 0) {
     throw new RangeError('business days must be between 0 and 6')
   }
@@ -57,20 +58,22 @@ export default function addBusinessDays(
     return initialDate
   }
 
-  // returns true or false if the date has an exception, else null
-  const findException = (date: Date): boolean | null => {
-    if (options.exceptions) {
-      const exceptionDate =
-        Object.keys(exceptions).find((e) => isSameDay(new Date(e), date)) || ''
-      return exceptions[exceptionDate]
-    }
-    return null
+  // returns a boolean if the date has an exception
+  // true means the date is a working day
+  // false means the date is not a working day
+  const findException = (date: Date): boolean | undefined => {
+    return exceptions[format(date, 'MM/dd/yy')]
   }
 
+  // returns true if the date is a business day (doesn't account for exceptions)
+  const isBusinessDay = (date: Date): boolean =>
+    businessDays.includes(date.getDay())
+
+  // returns true if the date is a working day (accounts for exceptions)
   const isWorkingDay = (date: Date) => {
-    const isDateIncluded = findException(date)
+    const isDateIncluded = options.exceptions ? findException(date) : undefined
     if (isDateIncluded === false) return false
-    if (isDateIncluded === true || businessDays.includes(date.getDay())) {
+    if (isDateIncluded === true || isBusinessDay(date)) {
       return true
     }
     return false
