@@ -15,6 +15,11 @@ describe('addBusinessDays', function () {
     assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1))
   })
 
+  it('handles 0 amount', function () {
+    const result = addBusinessDays(new Date(2014, 8 /* Sep */, 1), 0)
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1))
+  })
+
   it('returns the Monday when 1 day is added on the Friday', () => {
     assert.deepStrictEqual(
       addBusinessDays(new Date(2020, 0 /* Jan */, 10), 1), // Friday
@@ -36,215 +41,208 @@ describe('addBusinessDays', function () {
     )
   })
 
-  it('can include Saturday in businessDays', function () {
-    const result = addBusinessDays(new Date(2022, 0 /* Jan */, 7), 8, {
-      businessDays: [1, 2, 3, 4, 5, 6],
-    })
-    assert.deepStrictEqual(result, new Date(2022, 0 /* Jan */, 17))
-  })
+  describe('can add Saturdays and/or Sundays to working days with the businessDays option', () => {
+    it.each`
+      daysToAdd | businessDays             | newDate
+      ${8}      | ${[1, 2, 3, 4, 5, 6]}    | ${new Date(2022, 0 /* Jan */, 17)}
+      ${8}      | ${[0, 1, 2, 3, 4, 5]}    | ${new Date(2022, 0 /* Jan */, 17)}
+      ${10}     | ${[0, 1, 2, 3, 4, 5, 6]} | ${new Date(2022, 0 /* Jan */, 17)}
+    `(
+      'given an initial date of Jan 7 and adding $daysToAdd days, with businessDay = $businessDays, should return $newDate',
+      ({ daysToAdd, businessDays, newDate }) => {
+        const initialDate = new Date(2022, 0 /* Jan */, 7)
+        const result = addBusinessDays(initialDate, daysToAdd, { businessDays })
 
-  it('can include Sunday in businessDays', function () {
-    const result = addBusinessDays(new Date(2022, 0 /* Jan */, 7), 8, {
-      businessDays: [0, 1, 2, 3, 4, 5],
-    })
-    assert.deepStrictEqual(result, new Date(2022, 0 /* Jan */, 17))
-  })
-
-  it('can include Saturday and Sunday in businessDays', function () {
-    const result = addBusinessDays(new Date(2022, 0 /* Jan */, 7), 10, {
-      businessDays: [0, 1, 2, 3, 4, 5, 6],
-    })
-    assert.deepStrictEqual(result, new Date(2022, 0 /* Jan */, 17))
+        assert.deepStrictEqual(result, newDate)
+      }
+    )
   })
 
   describe('exceptions', () => {
-    it('can add exceptions to include days as businessDays that otherwise would not be included', function () {
-      const result = addBusinessDays(new Date(2022, 0 /* Jan */, 7), 10, {
-        exceptions: { '01/08/22': true, '01/09/22': true },
-      })
-
-      assert.deepStrictEqual(result, new Date(2022, 0 /* Jan */, 19))
-    })
-
-    it('can take in a list of disabling exceptions', () => {
-      // Given we have business days of Monday through Friday
-      // and exceptions saying we won't work the next two Mondays (10th and 17th)
-
-      // When we try and add 10 business days from Thursday, the 6th
-      const result = addBusinessDays(new Date(2022, 0, 7), 10, {
-        exceptions: {
-          '01/17/2022': false,
-          '01/10/2022': false,
+    it.each([
+      [
+        // given an initial date
+        new Date(2022, 0 /* Jan */, 7),
+        10, // days to add
+        [1, 2, 3, 4, 5], // business days (M-F)
+        // true exceptions on a Sat and Sun
+        { '01/08/22': true, '01/09/22': true },
+        // expected result
+        new Date(2022, 0 /* Jan */, 19),
+      ],
+      [
+        new Date(2022, 0 /* Jan */, 7),
+        9,
+        [1, 2, 3, 4, 5], // M-F
+        // false exceptions on Mondays
+        { '01/10/22': false, '01/17/22': false },
+        new Date(2022, 0 /* Jan */, 24),
+      ],
+      [
+        new Date(2022, 0 /* Jan */, 7),
+        12,
+        [1, 2, 3, 4, 5, 6], // M-Sat
+        // false exceptions on Saturdays
+        { '01/08/22': false, '01/15/22': false },
+        new Date(2022, 0 /* Jan */, 24),
+      ],
+      [
+        new Date(2022, 0 /* Jan */, 7),
+        13,
+        [1, 2, 3, 4, 5, 6], // M-Sat
+        // with a mix of false and true exceptions
+        {
+          '01/08/22': false, // Sat
+          '01/09/22': true, // Sun
+          '01/10/22': true, // Mon (should be ignored since it's already a working day)
+          '01/15/22': true, // Sat (should be ignored since it's already a working day)
+          '01/16/22': false, // Sun (should be ignored since it's already a non-working day)
+          '01/17/22': false, // Mon
         },
-      })
-
-      // Then we expect to receive a result of monday the 24th
-      assert.deepStrictEqual(result, new Date(2022, 0, 25))
-    })
-
-    it('can add exceptions and does not include dates not within range', function () {
-      const result = addBusinessDays(new Date(2022, 0 /* Jan */, 7), 10, {
-        exceptions: { '01/01/22': true, '01/09/22': true, '01/30/22': true },
-      })
-
-      assert.deepStrictEqual(result, new Date(2022, 0 /* Jan */, 20))
-    })
-
-    it('can ignore noop exceptions', function () {
-      // Given we have business days of Monday to Friday
-      // and an exception saying "I'm working on Monday"
-
-      // When we try and add 10 business days
-      const result = addBusinessDays(new Date(2022, 0 /* Jan */, 7), 10, {
-        exceptions: { '01/10/22': true },
-      })
-
-      // Then we expect to ignore the no-op exception
-      assert.deepStrictEqual(result, new Date(2022, 0 /* Jan */, 21))
-    })
-
-    it('can override business days with exceptions', function () {
-      // Given business days of Monday - Saturday
-      // And exceptions over one weekend
-
-      // When we add 8 business days
-      const result = addBusinessDays(new Date(2022, 1 /* Feb */, 9), 9, {
-        businessDays: [1, 2, 3, 4, 5, 6],
-        exceptions: {
+        new Date(2022, 0 /* Jan */, 24),
+      ],
+      [
+        new Date(2022, 0 /* Jan */, 7),
+        10,
+        [1, 2, 3, 4, 5], // M-F
+        // with 2 exceptions that are not within the range
+        { '01/01/22': true, '01/09/22': true, '01/30/22': true },
+        new Date(2022, 0 /* Jan */, 20),
+      ],
+      [
+        new Date(2022, 0 /* Jan */, 5),
+        4,
+        [1, 2, 3, 4, 5], // M-F
+        { '01/08/22': true }, // Include a Sat
+        // ends on non-working Sun, should move to the following Monday
+        new Date(2022, 0 /* Jan */, 10),
+      ],
+      [
+        new Date(2022, 0 /* Jan */, 5),
+        5,
+        [1, 2, 3, 4, 5, 6], // M-Sat
+        { '01/09/22': true }, // Include a Sun
+        // ends on non-working Sun, should move to the following Monday
+        new Date(2022, 0 /* Jan */, 10),
+      ],
+      [
+        // ends on true exception
+        new Date(2022, 0 /* Jan */, 5),
+        4,
+        [1, 2, 3, 4, 5, 6], // M-Sat
+        { '01/09/22': true }, // Include a Sun
+        new Date(2022, 0 /* Jan */, 9),
+      ],
+      [
+        // ends on false exception
+        new Date(2022, 0 /* Jan */, 7),
+        5,
+        [1, 2, 3, 4, 5], // M-F
+        { '01/14/22': false }, // Fri
+        // ends on false exception, should move to the following Monday
+        new Date(2022, 0 /* Jan */, 17),
+      ],
+      [
+        // starts on non-working Sat, ends on false exception
+        new Date(2022, 0 /* Jan */, 8),
+        5,
+        [1, 2, 3, 4, 5], // M-F
+        { '01/14/22': false }, // Fri
+        // ends on false exception, should move to the following Monday
+        new Date(2022, 0 /* Jan */, 17),
+      ],
+      [
+        // starts on false exception
+        new Date(2022, 0 /* Jan */, 7),
+        5,
+        [1, 2, 3, 4, 5], // M-F
+        { '01/07/22': false }, // Fri
+        new Date(2022, 0 /* Jan */, 14),
+      ],
+      [
+        // starts on true exception
+        new Date(2022, 0 /* Jan */, 8),
+        5,
+        [1, 2, 3, 4, 5], // M-F
+        { '01/08/22': true }, // Sat
+        new Date(2022, 0 /* Jan */, 14),
+      ],
+      [
+        // starts and ends on false exceptions
+        new Date(2022, 0 /* Jan */, 8),
+        6,
+        [1, 2, 3, 4, 5, 6], // M-Sat
+        { '01/08/22': false, '01/15/22': false }, // Sat
+        // ends on false exception, should move to the following Monday
+        new Date(2022, 0 /* Jan */, 17),
+      ],
+      [
+        // starts and ends on true exception
+        new Date(2022, 0 /* Jan */, 8),
+        6,
+        [1, 2, 3, 4, 5], // M-F
+        { '01/08/22': true, '01/15/22': true }, // Sat
+        new Date(2022, 0 /* Jan */, 15),
+      ],
+      [
+        new Date(2022, 0 /* Jan */, 3),
+        36,
+        [1, 2, 3, 4, 5], // M-F
+        // with a large number of incl Saturdays
+        {
+          '01/08/22': true,
+          '01/15/22': true,
+          '01/22/22': true,
+          '01/29/22': true,
+          '02/05/22': true,
+          '02/12/22': true,
+          '02/19/22': true, // out of range, not incl
+        },
+        new Date(2022, 1 /* Jan */, 14),
+      ],
+      [
+        // with Sunday incl in business days and Sat incl in exceptions
+        new Date(2022, 0 /* Jan */, 3),
+        40,
+        [0, 1, 2, 3, 4, 5], // Sun-F
+        {
+          '01/08/22': true,
+          '01/15/22': true,
+          '01/22/22': true,
+          '01/29/22': true,
+          '02/05/22': true,
+          '02/12/22': true,
+          '02/19/22': true, // out of range, not incl
+        },
+        new Date(2022, 1 /* Jan */, 12),
+      ],
+      [
+        new Date(2022, 0 /* Jan */, 3),
+        36,
+        [1, 2, 3, 4, 5, 6], // M-Sat
+        // with a large number of excl Saturdays
+        {
+          '01/08/22': false,
+          '01/15/22': false,
+          '01/22/22': false,
+          '01/29/22': false,
+          '02/05/22': false,
           '02/12/22': false,
-          '02/13/22': false,
-          '02/19/22': false,
+          '02/19/22': false, // out of range, not incl
         },
-      })
+        new Date(2022, 1 /* Jan */, 22),
+      ],
+    ])(
+      'given %p and %i as arguments, business days: %p, exceptions: %o, returns %p',
+      (initialDate, daysToAdd, businessDays, exceptions, newDate) => {
+        const result = addBusinessDays(initialDate, daysToAdd, {
+          businessDays,
+          exceptions,
+        })
 
-      // Then we expect to have the working Saturdays ignored
-      assert.deepStrictEqual(result, new Date(2022, 1, 22))
-    })
-
-    it('can override business days with exceptions over weekends', function () {
-      // Given business days of Monday - Saturday
-      // And exceptions over two weekends
-
-      // When we add 8 business days
-      const result = addBusinessDays(new Date(2022, 1 /* Feb */, 9), 8, {
-        businessDays: [1, 2, 3, 4, 5, 6],
-        exceptions: {
-          '02/12/22': false,
-          '02/19/22': false,
-        },
-      })
-
-      // Then we expect to have the working Saturdays ignored
-      assert.deepStrictEqual(result, new Date(2022, 1 /* Feb */, 21))
-    })
-
-    it('can handle a large amount of enabled Saturday exceptions', function () {
-      // Given business days of M-F and a large number of working saturdays
-      const exceptions = {
-        '01/08/22': true,
-        '01/15/22': true,
-        '01/22/22': true,
-        '01/29/22': true,
-        '02/05/22': true,
-        '02/12/22': true,
+        assert.deepStrictEqual(result, newDate)
       }
-
-      // When we try and add 36 business days
-      const result = addBusinessDays(new Date(2022, 0 /* Jan */, 3), 36, {
-        exceptions,
-      })
-
-      // Then we expect to account for all exceptions
-      assert.deepStrictEqual(result, new Date(2022, 1 /* Feb */, 14))
-    })
-
-    it('can handle a large amount of disabled Saturday exceptions', function () {
-      // Given business days of M-Sat and a large number of non-working saturdays
-      const exceptions = {
-        '01/08/22': false,
-        '01/15/22': false,
-        '01/22/22': false,
-        '01/29/22': false,
-        '02/05/22': false,
-        '02/12/22': false,
-      }
-      const businessDays = [1, 2, 3, 4, 5, 6]
-
-      // When we try and add 30 business days
-      const result = addBusinessDays(new Date(2022, 0 /* Jan */, 3), 30, {
-        exceptions,
-        businessDays,
-      })
-
-      // Then we expect to account for all exceptions
-      assert.deepStrictEqual(result, new Date(2022, 1 /* Feb */, 14))
-    })
-
-    it('can handle a large amount of disabled Sunday exceptions', function () {
-      // Given business days of Sunday - Friday and a large number of non-working Sundays
-      const exceptions = {
-        '01/09/22': false,
-        '01/16/22': false,
-        '01/23/22': false,
-        '01/30/22': false,
-        '02/06/22': false,
-        '02/13/22': false,
-      }
-      const businessDays = [0, 1, 2, 3, 4, 5]
-
-      // When we try and add 30 business days
-      const result = addBusinessDays(new Date(2022, 0 /* Jan */, 3), 30, {
-        exceptions,
-        businessDays,
-      })
-
-      // Then we expect to account for all exceptions
-      assert.deepStrictEqual(result, new Date(2022, 1 /* Feb */, 14))
-    })
-
-    it('can handle a large amount of enabled Sunday exceptions', function () {
-      // Given business days of Monday - Friday and a large number of working Sundays
-      const exceptions = {
-        '01/09/22': true,
-        '01/16/22': true,
-        '01/23/22': true,
-        '01/30/22': true,
-        '02/06/22': true,
-        '02/13/22': true,
-      }
-      const businessDays = [1, 2, 3, 4, 5]
-
-      // When we try and add 36 business days
-      const result = addBusinessDays(new Date(2022, 0 /* Jan */, 3), 36, {
-        exceptions,
-        businessDays,
-      })
-
-      // Then we expect to account for all exceptions
-      assert.deepStrictEqual(result, new Date(2022, 1 /* Feb */, 14))
-    })
-
-    it('can handle a large amount of disabled exceptions', function () {
-      // Given business days of Sunday - Saturday and a large number of non-working weekends
-      const exceptions = {
-        '01/08/22': false,
-        '01/16/22': false,
-        '01/22/22': false,
-        '01/30/22': false,
-        '02/05/22': false,
-        '02/13/22': false,
-      }
-      const businessDays = [0, 1, 2, 3, 4, 5, 6]
-
-      // When we try and add 36 business days
-      const result = addBusinessDays(new Date(2022, 0 /* Jan */, 3), 36, {
-        exceptions,
-        businessDays,
-      })
-
-      // Then we expect to account for all exceptions
-      assert.deepStrictEqual(result, new Date(2022, 1 /* Feb */, 14))
-    })
+    )
   })
 
   it('can handle a large number of business days', function () {
@@ -322,7 +320,7 @@ describe('addBusinessDays', function () {
     )
   })
 
-  it('if custom businessDays are Monday and Wednesday, it returns the Wednesday when 2 days is added on the Sunday', function () {
+  it('if custom businessDays are Monday and Wednesday, it returns the Wednesday when 2 days are added on the Sunday', function () {
     assert.deepStrictEqual(
       addBusinessDays(new Date(2020, 0 /* Jan */, 12), 2 /* Sunday */, {
         businessDays: [1, 3],
@@ -331,10 +329,19 @@ describe('addBusinessDays', function () {
     )
   })
 
-  it('still works if you add extra businessDays numbers greater than 6', function () {
-    const result = addBusinessDays(new Date(2022, 0 /* Jan */, 7), 10, {
-      businessDays: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+  it('throws RangeError if businessDays contains numbers greater than 6', function () {
+    const block = addBusinessDays.bind(null, new Date(2022, 0, 7), 10, {
+      businessDays: [3, 4, 5, 6, 7],
     })
-    assert.deepStrictEqual(result, new Date(2022, 0 /* Jan */, 17))
+
+    assert.throws(block, RangeError)
+  })
+
+  it('can handle passing in the same number multiple times', function () {
+    const result = addBusinessDays(new Date(2022, 0 /* Jan */, 3), 20, {
+      businessDays: [1, 2, 3, 4, 5, 5, 5],
+    })
+
+    assert.deepStrictEqual(result, new Date(2022, 0 /* Jan */, 31))
   })
 })
