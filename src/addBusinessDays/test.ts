@@ -350,4 +350,12 @@ describe('addBusinessDays', function () {
 
     assert.throws(block, RangeError)
   })
+
+  it('can handle passing in the same number multiple times', function () {
+    const result = addBusinessDays(new Date(2022, 0 /* Jan */, 3), 20, {
+      businessDays: [1, 2, 3, 4, 5, 5, 5],
+    })
+
+    assert.deepStrictEqual(result, new Date(2022, 0 /* Jan */, 31))
+  })
 })

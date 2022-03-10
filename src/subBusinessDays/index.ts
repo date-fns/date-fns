@@ -17,6 +17,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @param {Record<string, boolean>} [options.exceptions={}] - exceptions to the business days. Map of date string to boolean.
  * @returns {Date} the new date with the business days subtracted
  * @throws {TypeError} 2 arguments required
+ * @throws {RangeError} businessDays cannot include numbers greater than 6
  *
  * @example
  * // Substract 10 business days from 1 September 2014:
@@ -35,10 +36,13 @@ export default function subBusinessDays(
 
   const amount = toInteger(dirtyAmount)
   const options = dirtyOptions || {}
-  const businessDays =
-    options.businessDays == null
-      ? [1, 2, 3, 4, 5]
-      : options.businessDays.filter((number) => number < 7).map(toInteger)
+  const businessDays = options.businessDays ?? [1, 2, 3, 4, 5]
   const exceptions = options.exceptions || {}
+
+  // Throw an exception if businessDays includes a number greater than 6
+  if (businessDays?.filter((number) => number > 6).length > 0) {
+    throw new RangeError('business days must be between 0 and 6')
+  }
+
   return addBusinessDays(dirtyDate, -amount, { businessDays, exceptions })
 }
