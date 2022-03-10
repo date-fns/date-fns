@@ -35,16 +35,16 @@ describe('subBusinessDays', () => {
     assert.deepStrictEqual(result, new Date(2022, 0 /* Jan */, 7))
   })
 
-  // it('can handle a large number of business days', () => {
-  //   // @ts-ignore
-  //   if (typeof this.timeout === 'function') {
-  //     // @ts-ignore
-  //     this.timeout(500 /* 500 ms test timeout */)
-  //   }
+  it('can handle a large number of business days', function () {
+    // @ts-ignore
+    if (typeof this.timeout === 'function') {
+      // @ts-ignore
+      this.timeout(500 /* 500 ms test timeout */)
+    }
 
-  //   const result = subBusinessDays(new Date(15000, 0 /* Jan */, 1), 3387885)
-  //   assert.deepStrictEqual(result, new Date(2014, 0 /* Jan */, 1))
-  // })
+    const result = subBusinessDays(new Date(15000, 0 /* Jan */, 1), 3387885)
+    assert.deepStrictEqual(result, new Date(2014, 0 /* Jan */, 1))
+  })
 
   it('accepts a timestamp', () => {
     const result = subBusinessDays(new Date(2014, 8 /* Sep */, 1).getTime(), 10)
@@ -88,11 +88,20 @@ describe('subBusinessDays', () => {
     )
   })
 
-  it('still works if you add extra businessDays numbers greater than 6', () => {
-    const result = subBusinessDays(new Date(2022, 0 /* Jan */, 17), 10, {
-      businessDays: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+  it('throws RangeError if businessDays contains numbers greater than 6', function () {
+    const block = subBusinessDays.bind(null, new Date(2022, 0, 14), 10, {
+      businessDays: [3, 4, 5, 6, 7],
     })
-    assert.deepStrictEqual(result, new Date(2022, 0 /* Jan */, 7))
+
+    assert.throws(block, RangeError)
+  })
+
+  it('can handle passing in the same number multiple times', function () {
+    const result = subBusinessDays(new Date(2022, 0 /* Jan */, 31), 20, {
+      businessDays: [1, 2, 3, 4, 5, 5, 5],
+    })
+
+    assert.deepStrictEqual(result, new Date(2022, 0 /* Jan */, 3))
   })
 
   describe('exceptions', () => {

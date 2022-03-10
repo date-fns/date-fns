@@ -121,15 +121,17 @@ describe('differenceInBusinessDays', function () {
       assert(result === 10)
     })
 
-    it('still works if you add extra businessDays numbers greater than 6', function () {
-      const result = differenceInBusinessDays(
-        new Date(2022, 0 /* Jan */, 17),
-        new Date(2022, 0 /* Jan */, 7),
+    it('throws RangeError if businessDays contains numbers greater than 6', function () {
+      const block = differenceInBusinessDays.bind(
+        null,
+        new Date(2022, 0, 7),
+        new Date(2022, 0, 14),
         {
-          businessDays: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+          businessDays: [3, 4, 5, 6, 7],
         }
       )
-      assert(result === 10)
+
+      assert.throws(block, RangeError)
     })
   })
 
@@ -227,9 +229,29 @@ describe('differenceInBusinessDays', function () {
         // Saturday
         new Date(2022, 0 /* Jan */, 8),
         {
-          // Adds a Sat and Sun as business days, but not Mon and Tue which are already business days
+          // Adds business days
           exceptions: {
             '01/08/22': true,
+            '01/09/22': true,
+            '01/16/22': true,
+          },
+        }
+      )
+
+      assert(result === 7)
+    })
+
+    it('can handle true exceptions that fall on both of the argument dates, with a Sat business day', function () {
+      const result = differenceInBusinessDays(
+        // Sunday
+        new Date(2022, 0 /* Jan */, 16),
+        // Sunday
+        new Date(2022, 0 /* Jan */, 9),
+        {
+          // with businessDays as Mon-Sat
+          businessDays: [1, 2, 3, 4, 5, 6],
+          // Adds two Sundays as business days
+          exceptions: {
             '01/09/22': true,
             '01/16/22': true,
           },
@@ -296,6 +318,28 @@ describe('differenceInBusinessDays', function () {
       )
 
       assert(result === 8)
+    })
+
+    it('can handle a large amount of enabled Saturday exceptions', function () {
+      // with businessDays as Mon-Fri
+      const result = differenceInBusinessDays(
+        new Date(2022, 1 /* Feb */, 14),
+        new Date(2022, 0 /* Jan */, 3),
+        {
+          // the first and last date are not within the date range, so they should not be added
+          exceptions: {
+            '01/08/22': true,
+            '01/15/22': true,
+            '01/22/22': true,
+            '01/29/22': true,
+            '02/05/22': true,
+            '02/12/22': true,
+            '02/19/22': true, // extra exception that should not be included
+          },
+        }
+      )
+
+      assert(result === 36)
     })
   })
 
