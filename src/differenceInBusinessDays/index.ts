@@ -23,7 +23,7 @@ import toInteger from '../_lib/toInteger/index'
  * @param {Date|Number} dateRight - the earlier date
  * @param {Object} [options] - an object with options.
  * @param {Number[]} [options.businessDays=[1, 2, 3, 4, 5]] - the business days. default is Monday to Friday.
- * @param {Record<string, boolean>} [options.exceptions={}] - exceptions to the business days. Map of date string to boolean.
+ * @param {Record<string, boolean>} [options.exceptions={}] - exceptions to the business days. Map of date string (with format "MM/DD/YY") to boolean.
  * @returns {Number} the number of business days
  * @throws {TypeError} 2 arguments required
  * @throws {RangeError} businessDays cannot include numbers greater than 6
@@ -73,7 +73,7 @@ export default function differenceInBusinessDays(
   const options = dirtyOptions || {}
   const businessDays = options.businessDays ?? [1, 2, 3, 4, 5]
 
-  // Throw an exception if businessDays includes a number greater than 6
+  // Throw a RangeError if businessDays includes a number greater than 6
   if (businessDays?.filter((number) => number > 6).length > 0) {
     throw new RangeError('business days must be between 0 and 6')
   }

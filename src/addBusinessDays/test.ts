@@ -59,21 +59,6 @@ describe('addBusinessDays', function () {
   })
 
   describe('exceptions', () => {
-    it.each`
-      initialDate                       | daysToAdd | businessDays       | exceptions                                | newDate
-      ${new Date(2022, 0 /* Jan */, 7)} | ${10}     | ${[1, 2, 3, 4, 5]} | ${{ '01/08/22': true, '01/09/22': true }} | ${new Date(2022, 0 /* Jan */, 19)}
-    `(
-      'starting on $initialDate and adding $daysToAdd days, with $businessDays and $exceptions, should end on $newDate',
-      ({ initialDate, daysToAdd, businessDays, exceptions, newDate }) => {
-        const result = addBusinessDays(initialDate, daysToAdd, {
-          businessDays,
-          exceptions,
-        })
-
-        assert.deepStrictEqual(result, newDate)
-      }
-    )
-
     it.each([
       [
         // given an initial date
