@@ -16,7 +16,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @example
  * // The last day of a millenium for 21 December 2012 21:12:00:
  * const result = lastDayOfMillenium(new Date(2012, 11, 21, 21, 12, 00))
- * //=> Wed Dec 31 2019 00:00:00
+ * //=> Dec 31 2999 00:00:00
  */
 export default function lastDayOfMillenium(dirtyDate: Date | number): Date {
   requiredArgs(1, arguments)

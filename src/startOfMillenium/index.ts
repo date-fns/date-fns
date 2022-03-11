@@ -16,7 +16,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @example
  * // The start of a millenium for 21 October 2015 00:00:00:
  * const result = startOfMillenium(new Date(2015, 9, 21, 00, 00, 00))
- * //=> Jan 01 2010 00:00:00
+ * //=> Jan 01 2000 00:00:00
  */
 export default function startOfMillenium(dirtyDate: Date | number): Date {
   requiredArgs(1, arguments)
