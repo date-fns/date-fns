@@ -30,21 +30,21 @@ describe('nextBusinessDay function', () => {
       const initial = new Date(2021, 6, 2) // Friday
       const expected = new Date(2021, 6, 5) // Monday
       // Will start counting from June 4th, 2021
-      assert.deepStrictEqual(nextBusinessDay(initial, 2), expected)
+      assert.deepStrictEqual(nextBusinessDay(initial, { startFromDay: 2}), expected)
     })
   })
 
   it("doesn't accept negative numbers for the startFrom param", () => {
     const initial = new Date(2021, 6, 2) // Friday
     const errorMessage = /startFrom can't be a negative number$/
-    assert.throws(() => nextBusinessDay(initial, -1), errorMessage)
+    assert.throws(() => nextBusinessDay(initial, {startFromDay: -1}), errorMessage)
   })
 
   it('skips the dates specified on the excludeDates array', () => {
     const brazilianIndependenceDay = new Date(2021, 8, 7) // Tuesday
     const holidays = [brazilianIndependenceDay]
     assert.deepStrictEqual(
-      nextBusinessDay(new Date(2021, 8, 6), 1, holidays),
+      nextBusinessDay(new Date(2021, 8, 6), {startFromDay: 1, excludeDates: holidays}),
       new Date(2021, 8, 8)
     )
   })

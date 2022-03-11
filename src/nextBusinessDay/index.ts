@@ -7,11 +7,12 @@ import { addDays, isEqual, isWeekend, startOfDay, toDate } from '..'
  *
  * @description Returns the next business day (Mon - Fri)
  *
- * @param {Date|Number} date - the initial date
- * @param {Number} [startFromDay=0] - the day that it starts counting from with 0 as a default value.
+ * @param {Date|Number} date - The initial date
+ * @param {Object} options - The options object
+ * @param {Number} [options.startFromDay=0] - The day that it starts counting from with 0 as a default value.
  * To start counting from the next date set this to 1.
  *
- * @param {[Date]} excludeDates - an array of dates to exclude e.g. holidays.
+ * @param {[Date]} options.excludeDates - An array of dates to exclude e.g. holidays.
  * @returns {Date} the next business day
  * @throws {TypeError} startFrom can't be a negative number
  *
@@ -26,12 +27,18 @@ import { addDays, isEqual, isWeekend, startOfDay, toDate } from '..'
  * //=> Wed Sep 8 2021 00:00:00
  */
 
+interface Options {
+  startFromDay?: number;
+  excludeDates?: Array<Date | number>;
+}
+
 export default function nextBusinessDay(
   dirtyDate: Date | number,
-  startFromDay = 0,
-  excludeDates: Array<Date | number> = []
+  options: Options = {},
 ): Date {
   const date = startOfDay(toDate(dirtyDate))
+
+  const { startFromDay = 0, excludeDates = [] } = options;
 
   if (startFromDay < 0)
     throw new TypeError("startFrom can't be a negative number")
@@ -48,5 +55,5 @@ export default function nextBusinessDay(
 
   if (!isWeekend(initialDate) && !isOnTheExcludeDatesList()) return initialDate
 
-  return nextBusinessDay(addDays(initialDate, 1), 0, excludeDates)
+  return nextBusinessDay(addDays(initialDate, 1), { startFromDay: 0, excludeDates })
 }
