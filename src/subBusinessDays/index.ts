@@ -36,7 +36,7 @@ export default function subBusinessDays(
 
   const amount = toInteger(dirtyAmount)
   const options = dirtyOptions || {}
-  const businessDays = options.businessDays ?? [1, 2, 3, 4, 5]
+  const businessDays = options.businessDays || [1, 2, 3, 4, 5]
   const exceptions = options.exceptions || {}
 
   // Throw a RangeError if businessDays includes a number greater than 6
