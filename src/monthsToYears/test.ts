@@ -18,4 +18,13 @@ describe('monthsToYears', () => {
     assert(monthsToYears(12.5) === 1)
     assert(monthsToYears(0) === 0)
   })
+
+  it('use Decimals', () => {
+    assert(monthsToYears(36, { decimals: true }) === 3)
+    assert(monthsToYears(40, { decimals: true }) === 3.33)
+  })
+
+  it('use Decimals and digits', () => {
+    assert(monthsToYears(40, { decimals: true, digits: 4 }) === 3.3333)
+  })
 })
