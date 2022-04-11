@@ -14,10 +14,10 @@ import type { Interval, StepOptions } from '../types'
  *
  * @param {Interval} interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
  * @param {Object} [options] - an object with options.
- * @param {Number} [options.step=1] - the step to increment by. The starts of minutes from the hour of the interval start to the hour of the interval end
- * @throws {TypeError} 1 argument requie value should be more than 1.
- * @returns {Date[]} the array withred
- * @throws {RangeError} `options.step` must be a number equal or greater than 1
+ * @param {Number} [options.step=1] - the step to increment by. The step must be equal to or greater than 1
+ * @throws {TypeError} 1 argument required
+ * @returns {Date[]} the array with starts of minutes from the minute of the interval start to the minute of the interval end
+ * @throws {RangeError} `options.step` must be a number equal to or greater than 1
  * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *
@@ -57,7 +57,7 @@ export default function eachMinuteOfInterval(
   const step = options && 'step' in options ? Number(options.step) : 1
   if (step < 1 || isNaN(step))
     throw new RangeError(
-      '`options.step` must be a number equal or greater than 1'
+      '`options.step` must be a number equal to or greater than 1'
     )
 
   while (currentDate.getTime() <= endTime) {
