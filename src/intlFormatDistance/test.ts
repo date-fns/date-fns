@@ -528,8 +528,8 @@ describe('intlFormatDistance', () => {
     describe('edge cases', () => {
       it('falls back to { numeric: always }', () => {
         const result = intlFormatDistance(
-          new Date(1985, 4, 5, 10, 30, 0),
-          new Date(1985, 4, 4, 10, 30, 0),
+          new Date(1985, 2, 5, 10, 30, 0),
+          new Date(1985, 2, 4, 10, 30, 0),
           { style: 'long', numeric: 'auto' }
         )
         assert(result === 'tomorrow')
