@@ -175,7 +175,10 @@ export default function intlFormatDistance(
     } else if (Math.abs(diffInSeconds) < secondsInHour) {
       value = differenceInMinutes(dateLeft, dateRight)
       unit = 'minute'
-    } else if (Math.abs(diffInSeconds) < secondsInDay) {
+    } else if (
+      Math.abs(diffInSeconds) < secondsInDay &&
+      Math.abs(differenceInCalendarDays(dateLeft, dateRight)) < 1
+    ) {
       value = differenceInHours(dateLeft, dateRight)
       unit = 'hour'
     } else if (
