@@ -178,7 +178,11 @@ export default function intlFormatDistance(
     } else if (Math.abs(diffInSeconds) < secondsInDay) {
       value = differenceInHours(dateLeft, dateRight)
       unit = 'hour'
-    } else if (Math.abs(diffInSeconds) < secondsInWeek) {
+    } else if (
+      Math.abs(diffInSeconds) < secondsInWeek &&
+      (value = differenceInCalendarDays(dateLeft, dateRight)) &&
+      Math.abs(value) < 7
+    ) {
       value = differenceInCalendarDays(dateLeft, dateRight)
       unit = 'day'
     } else if (Math.abs(diffInSeconds) < secondsInMonth) {

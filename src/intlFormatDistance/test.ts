@@ -180,16 +180,16 @@ describe('intlFormatDistance', () => {
     describe('works with single week', () => {
       it('works with future', () => {
         const result = intlFormatDistance(
-          new Date(1986, 2, 10, 22),
-          new Date(1986, 2, 3, 22)
+          new Date(1986, 3, 10, 22),
+          new Date(1986, 3, 3, 22)
         )
         assert(result === 'next week')
       })
 
       it('works with past', () => {
         const result = intlFormatDistance(
-          new Date(1986, 2, 3, 22),
-          new Date(1986, 2, 10, 22)
+          new Date(1986, 3, 3, 22),
+          new Date(1986, 3, 10, 22)
         )
         assert(result === 'last week')
       })
@@ -454,8 +454,8 @@ describe('intlFormatDistance', () => {
       describe('works with weeks', () => {
         it('works with past', () => {
           const result = intlFormatDistance(
-            new Date(1986, 2, 3, 22),
-            new Date(1986, 2, 10, 22),
+            new Date(1986, 3, 3, 22),
+            new Date(1986, 3, 10, 22),
             { numeric: 'always' }
           )
           assert(result === '1 week ago')
@@ -463,8 +463,8 @@ describe('intlFormatDistance', () => {
 
         it('works with future', () => {
           const result = intlFormatDistance(
-            new Date(1986, 2, 10, 22),
-            new Date(1986, 2, 3, 22),
+            new Date(1986, 3, 10, 22),
+            new Date(1986, 3, 3, 22),
             { numeric: 'always' }
           )
           assert(result === 'in 1 week')
@@ -473,8 +473,8 @@ describe('intlFormatDistance', () => {
 
       it('works with days', () => {
         const result = intlFormatDistance(
-          new Date(1986, 2, 5, 10, 30, 0),
-          new Date(1986, 2, 4, 10, 30, 0),
+          new Date(1986, 3, 5, 10, 30, 0),
+          new Date(1986, 3, 4, 10, 30, 0),
           { numeric: 'always' }
         )
         assert(result === 'in 1 day')
@@ -482,8 +482,8 @@ describe('intlFormatDistance', () => {
 
       it('works with the same dates', () => {
         const result = intlFormatDistance(
-          new Date(1986, 2, 5, 10, 30, 0),
-          new Date(1986, 2, 5, 10, 30, 0),
+          new Date(1986, 3, 5, 10, 30, 0),
+          new Date(1986, 3, 5, 10, 30, 0),
           { numeric: 'auto' }
         )
         assert(result === 'now')
@@ -528,8 +528,8 @@ describe('intlFormatDistance', () => {
     describe('edge cases', () => {
       it('falls back to { numeric: always }', () => {
         const result = intlFormatDistance(
-          new Date(1985, 2, 5, 10, 30, 0),
-          new Date(1985, 2, 4, 10, 30, 0),
+          new Date(1985, 4, 5, 10, 30, 0),
+          new Date(1985, 4, 4, 10, 30, 0),
           { style: 'long', numeric: 'auto' }
         )
         assert(result === 'tomorrow')
