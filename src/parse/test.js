@@ -2466,7 +2466,7 @@ describe('parse', function () {
     })
   })
 
-  describe.skip('useAdditionalWeekYearTokens and useAdditionalDayOfYearTokens options', () => {
+  describe('useAdditionalWeekYearTokens and useAdditionalDayOfYearTokens options', () => {
     it('throws an error if D token is used', () => {
       const block = parse.bind(null, '2016 5', 'yyyy D', referenceDate)
       assert.throws(block, RangeError)
