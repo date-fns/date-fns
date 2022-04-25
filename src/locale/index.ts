@@ -1,4 +1,4 @@
-// This file is generated automatically by `scripts/build/indices.js`. Please, don't change it.
+// This file is generated automatically by `scripts/build/indices.ts`. Please, don't change it.
 
 export { default as af } from './af/index'
 export { default as ar } from './ar/index'
@@ -49,6 +49,7 @@ export { default as hy } from './hy/index'
 export { default as id } from './id/index'
 export { default as is } from './is/index'
 export { default as it } from './it/index'
+export { default as itCH } from './it-CH/index'
 export { default as ja } from './ja/index'
 export { default as jaHira } from './ja-Hira/index'
 export { default as ka } from './ka/index'
@@ -67,6 +68,7 @@ export { default as nb } from './nb/index'
 export { default as nl } from './nl/index'
 export { default as nlBE } from './nl-BE/index'
 export { default as nn } from './nn/index'
+export { default as oc } from './oc/index'
 export { default as pl } from './pl/index'
 export { default as pt } from './pt/index'
 export { default as ptBR } from './pt-BR/index'
