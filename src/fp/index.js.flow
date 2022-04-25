@@ -338,6 +338,7 @@ declare module.exports: {
   >,
   fromUnixTime: CurriedFn1<number, Date>,
   getDate: CurriedFn1<Date | number, number>,
+  getDatetimeLocal: CurriedFn1<Date | number, number>,
   getDay: CurriedFn1<Date | number, 0 | 1 | 2 | 3 | 4 | 5 | 6>,
   getDayOfYear: CurriedFn1<Date | number, number>,
   getDaysInMonth: CurriedFn1<Date | number, number>,

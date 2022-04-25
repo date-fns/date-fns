@@ -512,6 +512,9 @@ declare module 'date-fns' {
   function getDate(date: Date | number): number
   namespace getDate {}
 
+  function getDatetimeLocal(date: Date | number): number
+  namespace getDatetimeLocal {}
+
   function getDay(date: Date | number): 0 | 1 | 2 | 3 | 4 | 5 | 6
   namespace getDay {}
 
@@ -1568,6 +1571,11 @@ declare module 'date-fns/fromUnixTime' {
 declare module 'date-fns/getDate' {
   import { getDate } from 'date-fns'
   export default getDate
+}
+
+declare module 'date-fns/getDatetimeLocal' {
+  import { getDatetimeLocal } from 'date-fns'
+  export default getDatetimeLocal
 }
 
 declare module 'date-fns/getDay' {
@@ -2750,6 +2758,11 @@ declare module 'date-fns/getDate/index' {
   export default getDate
 }
 
+declare module 'date-fns/getDatetimeLocal/index' {
+  import { getDatetimeLocal } from 'date-fns'
+  export default getDatetimeLocal
+}
+
 declare module 'date-fns/getDay/index' {
   import { getDay } from 'date-fns'
   export default getDay
@@ -3928,6 +3941,11 @@ declare module 'date-fns/fromUnixTime/index.js' {
 declare module 'date-fns/getDate/index.js' {
   import { getDate } from 'date-fns'
   export default getDate
+}
+
+declare module 'date-fns/getDatetimeLocal/index.js' {
+  import { getDatetimeLocal } from 'date-fns'
+  export default getDatetimeLocal
 }
 
 declare module 'date-fns/getDay/index.js' {
@@ -5214,6 +5232,9 @@ declare module 'date-fns/fp' {
   const getDate: CurriedFn1<Date | number, number>
   namespace getDate {}
 
+  const getDatetimeLocal: CurriedFn1<Date | number, number>
+  namespace getDatetimeLocal {}
+
   const getDay: CurriedFn1<Date | number, 0 | 1 | 2 | 3 | 4 | 5 | 6>
   namespace getDay {}
 
@@ -6335,6 +6356,11 @@ declare module 'date-fns/fp/fromUnixTime' {
 declare module 'date-fns/fp/getDate' {
   import { getDate } from 'date-fns/fp'
   export default getDate
+}
+
+declare module 'date-fns/fp/getDatetimeLocal' {
+  import { getDatetimeLocal } from 'date-fns/fp'
+  export default getDatetimeLocal
 }
 
 declare module 'date-fns/fp/getDay' {
@@ -7597,6 +7623,11 @@ declare module 'date-fns/fp/getDate/index' {
   export default getDate
 }
 
+declare module 'date-fns/fp/getDatetimeLocal/index' {
+  import { getDatetimeLocal } from 'date-fns/fp'
+  export default getDatetimeLocal
+}
+
 declare module 'date-fns/fp/getDay/index' {
   import { getDay } from 'date-fns/fp'
   export default getDay
@@ -8857,6 +8888,11 @@ declare module 'date-fns/fp/getDate/index.js' {
   export default getDate
 }
 
+declare module 'date-fns/fp/getDatetimeLocal/index.js' {
+  import { getDatetimeLocal } from 'date-fns/fp'
+  export default getDatetimeLocal
+}
+
 declare module 'date-fns/fp/getDay/index.js' {
   import { getDay } from 'date-fns/fp'
   export default getDay
@@ -10084,6 +10120,9 @@ declare module 'date-fns/esm' {
   function getDate(date: Date | number): number
   namespace getDate {}
 
+  function getDatetimeLocal(date: Date | number): number
+  namespace getDatetimeLocal {}
+
   function getDay(date: Date | number): 0 | 1 | 2 | 3 | 4 | 5 | 6
   namespace getDay {}
 
@@ -11140,6 +11179,11 @@ declare module 'date-fns/esm/fromUnixTime' {
 declare module 'date-fns/esm/getDate' {
   import { getDate } from 'date-fns/esm'
   export default getDate
+}
+
+declare module 'date-fns/esm/getDatetimeLocal' {
+  import { getDatetimeLocal } from 'date-fns/esm'
+  export default getDatetimeLocal
 }
 
 declare module 'date-fns/esm/getDay' {
@@ -12322,6 +12366,11 @@ declare module 'date-fns/esm/getDate/index' {
   export default getDate
 }
 
+declare module 'date-fns/esm/getDatetimeLocal/index' {
+  import { getDatetimeLocal } from 'date-fns/esm'
+  export default getDatetimeLocal
+}
+
 declare module 'date-fns/esm/getDay/index' {
   import { getDay } from 'date-fns/esm'
   export default getDay
@@ -13500,6 +13549,11 @@ declare module 'date-fns/esm/fromUnixTime/index.js' {
 declare module 'date-fns/esm/getDate/index.js' {
   import { getDate } from 'date-fns/esm'
   export default getDate
+}
+
+declare module 'date-fns/esm/getDatetimeLocal/index.js' {
+  import { getDatetimeLocal } from 'date-fns/esm'
+  export default getDatetimeLocal
 }
 
 declare module 'date-fns/esm/getDay/index.js' {
@@ -14786,6 +14840,9 @@ declare module 'date-fns/esm/fp' {
   const getDate: CurriedFn1<Date | number, number>
   namespace getDate {}
 
+  const getDatetimeLocal: CurriedFn1<Date | number, number>
+  namespace getDatetimeLocal {}
+
   const getDay: CurriedFn1<Date | number, 0 | 1 | 2 | 3 | 4 | 5 | 6>
   namespace getDay {}
 
@@ -15907,6 +15964,11 @@ declare module 'date-fns/esm/fp/fromUnixTime' {
 declare module 'date-fns/esm/fp/getDate' {
   import { getDate } from 'date-fns/esm/fp'
   export default getDate
+}
+
+declare module 'date-fns/esm/fp/getDatetimeLocal' {
+  import { getDatetimeLocal } from 'date-fns/esm/fp'
+  export default getDatetimeLocal
 }
 
 declare module 'date-fns/esm/fp/getDay' {
@@ -17169,6 +17231,11 @@ declare module 'date-fns/esm/fp/getDate/index' {
   export default getDate
 }
 
+declare module 'date-fns/esm/fp/getDatetimeLocal/index' {
+  import { getDatetimeLocal } from 'date-fns/esm/fp'
+  export default getDatetimeLocal
+}
+
 declare module 'date-fns/esm/fp/getDay/index' {
   import { getDay } from 'date-fns/esm/fp'
   export default getDay
@@ -18427,6 +18494,11 @@ declare module 'date-fns/esm/fp/fromUnixTime/index.js' {
 declare module 'date-fns/esm/fp/getDate/index.js' {
   import { getDate } from 'date-fns/esm/fp'
   export default getDate
+}
+
+declare module 'date-fns/esm/fp/getDatetimeLocal/index.js' {
+  import { getDatetimeLocal } from 'date-fns/esm/fp'
+  export default getDatetimeLocal
 }
 
 declare module 'date-fns/esm/fp/getDay/index.js' {
@@ -22888,6 +22960,8 @@ interface dateFns {
   fromUnixTime(unixTime: number): Date
 
   getDate(date: Date | number): number
+
+  getDatetimeLocal(date: Date | number): number
 
   getDay(date: Date | number): 0 | 1 | 2 | 3 | 4 | 5 | 6
 

@@ -91,6 +91,7 @@ export { default as formatRelativeWithOptions } from './formatRelativeWithOption
 export { default as formatWithOptions } from './formatWithOptions/index'
 export { default as fromUnixTime } from './fromUnixTime/index'
 export { default as getDate } from './getDate/index'
+export { default as getDatetimeLocal } from './getDatetimeLocal/index'
 export { default as getDay } from './getDay/index'
 export { default as getDayOfYear } from './getDayOfYear/index'
 export { default as getDaysInMonth } from './getDaysInMonth/index'
