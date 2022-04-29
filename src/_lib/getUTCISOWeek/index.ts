@@ -1,11 +1,11 @@
 import toDate from '../../toDate/index'
+import requiredArgs from '../requiredArgs/index'
 import startOfUTCISOWeek from '../startOfUTCISOWeek/index'
 import startOfUTCISOWeekYear from '../startOfUTCISOWeekYear/index'
-import requiredArgs from '../requiredArgs/index'
 
 const MILLISECONDS_IN_WEEK = 604800000
 
-export default function getUTCISOWeek(dirtyDate: Date | number) {
+export default function getUTCISOWeek(dirtyDate: Date | number): number {
   requiredArgs(1, arguments)
 
   const date = toDate(dirtyDate)

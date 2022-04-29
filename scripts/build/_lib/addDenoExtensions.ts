@@ -1,11 +1,12 @@
-import { resolve, dirname } from 'path'
 import fs from 'fs'
 import globby from 'globby'
-import ts, {
+import { dirname, resolve } from 'path'
+import type {
   ExportDeclaration,
   ImportDeclaration,
   StringLiteral,
 } from 'typescript'
+import ts from 'typescript'
 
 const { readFile, writeFile, stat } = fs.promises
 
@@ -54,7 +55,9 @@ globby('deno')
               try {
                 await stat(fullPath + '.ts')
                 isTs = true
-              } catch (_) {}
+              } catch (_) {
+                //
+              }
               resolvedExtensions[fullPath] = isTs ? '.ts' : '.js'
             })
           )

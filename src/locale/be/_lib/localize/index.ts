@@ -1,6 +1,5 @@
 import type { Quarter } from '../../../../types'
-import type { Localize } from '../../../types'
-import { LocalizeFn } from '../../../types'
+import type { Localize, LocalizeFn } from '../../../types'
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
 const eraValues = {

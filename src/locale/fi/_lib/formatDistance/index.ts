@@ -135,7 +135,7 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
 
 const formatDistance: FormatDistanceFn = (token, count, options) => {
   const tokenValue = formatDistanceLocale[token]
-  let result =
+  const result =
     count === 1
       ? tokenValue.one
       : tokenValue.other.replace('{{count}}', String(count))

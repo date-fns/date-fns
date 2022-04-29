@@ -1,9 +1,8 @@
 /* eslint-env mocha */
-/* global HTMLIFrameElement */
 
 import assert from 'assert'
-import { assertType } from '../_lib/test'
 import isDate from '.'
+import { assertType } from '../_lib/test'
 
 describe('isDate', () => {
   it('returns true if the given value is a date object', () => {

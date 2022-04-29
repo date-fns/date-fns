@@ -1,8 +1,8 @@
 import type {
   BuildMatchFnArgs,
   LocaleDayPeriod,
-  LocaleUnit,
   LocalePatternWidth,
+  LocaleUnit,
   MatchFn,
 } from '../../types'
 
@@ -30,11 +30,11 @@ export default function buildMatchFn<
       (width && args.parsePatterns[width]) ||
       args.parsePatterns[args.defaultParseWidth]
 
-    const key = (Array.isArray(parsePatterns)
-      ? findIndex(parsePatterns, (pattern) => pattern.test(matchedString))
-      : findKey(parsePatterns, (pattern: any) =>
-          pattern.test(matchedString)
-        )) as Result extends LocaleDayPeriod ? string : number
+    const key = (
+      Array.isArray(parsePatterns)
+        ? findIndex(parsePatterns, (pattern) => pattern.test(matchedString))
+        : findKey(parsePatterns, (pattern: any) => pattern.test(matchedString))
+    ) as Result extends LocaleDayPeriod ? string : number
 
     let value: Result
 
@@ -52,6 +52,7 @@ function findKey<Value, Obj extends { [key in string | number]: Value }>(
   predicate: (value: Value) => boolean
 ): keyof Obj | undefined {
   for (const key in object) {
+    // eslint-disable-next-line no-prototype-builtins
     if (object.hasOwnProperty(key) && predicate(object[key])) {
       return key
     }

@@ -1,8 +1,7 @@
 import type { Era, Quarter } from '../../../../types'
 import type { Localize, LocalizeFn } from '../../../types'
-import buildLocalizeFn, {
-  LocalizePeriodValuesMap,
-} from '../../../_lib/buildLocalizeFn/index'
+import type { LocalizePeriodValuesMap } from '../../../_lib/buildLocalizeFn/index'
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
 type hiLocaleNumberType =
   | '\u0967'
@@ -232,7 +231,7 @@ export function localeToNumber(locale: string): number {
   return Number(enNumber)
 }
 
-export function numberToLocale(enNumber: number) {
+export function numberToLocale(enNumber: number): string {
   return enNumber.toString().replace(/\d/g, function (match) {
     return numberValues.locale[match as enLocaleNumberType]
   })

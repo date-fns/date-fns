@@ -1,4 +1,4 @@
-import { Quarter } from '../../../../types'
+import type { Quarter } from '../../../../types'
 import type { Match } from '../../../types'
 import buildMatchFn from '../../../_lib/buildMatchFn/index'
 import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
@@ -26,7 +26,8 @@ const parseQuarterPatterns = {
 
 const matchMonthPatterns = {
   narrow: /^[jfmásónd]/i,
-  abbreviated: /^(jan\.|feb\.|mars\.|apríl\.|maí|júní|júlí|águst|sep\.|oct\.|nov\.|dec\.)/i,
+  abbreviated:
+    /^(jan\.|feb\.|mars\.|apríl\.|maí|júní|júlí|águst|sep\.|oct\.|nov\.|dec\.)/i,
   wide: /^(januar|febrúar|mars|apríl|maí|júní|júlí|águst|september|október|nóvember|desember)/i,
 }
 

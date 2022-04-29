@@ -1,4 +1,4 @@
-import { FormatLong } from '../../../types'
+import type { FormatLong } from '../../../types'
 import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index'
 
 const dateFormats = {
