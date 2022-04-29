@@ -178,7 +178,7 @@ export default function intlFormatDistance(
     } else if (
       Math.abs(diffInSeconds) < secondsInDay &&
       (value = differenceInHours(dateLeft, dateRight)) &&
-      Math.abs(value) < 24
+      Math.abs(differenceInCalendarDays(dateLeft, dateRight)) < 1
     ) {
       unit = 'hour'
     } else if (
