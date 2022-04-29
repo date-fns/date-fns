@@ -2509,7 +2509,6 @@ describe('parse', () => {
         parse('2016 1', 'YYYY w', referenceDate)
       } catch (e) {
         assert(e instanceof RangeError)
-        console.log(e.message)
         assert(e.message.startsWith('Use `yyyy` instead of `YYYY`'))
       }
     })
