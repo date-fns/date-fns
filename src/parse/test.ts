@@ -2457,12 +2457,12 @@ describe('parse', () => {
 
   describe('useAdditionalWeekYearTokens and useAdditionalDayOfYearTokens options', () => {
     it('throws an error if D token is used', () => {
-      const block = () => parse('2016 5', 'yyyy D', referenceDate)
-      assert.throws(block, RangeError)
-      assert.throws(
-        block,
-        /Use `d` instead of `D` \(in `yyyy D`\) for formatting days of the month to the input `2016 5`; see: https:\/\/git.io\/fxCyr/
-      )
+      try {
+        parse('2016 5', 'yyyy D', referenceDate)
+      } catch (e) {
+        assert(e instanceof RangeError)
+        assert(e.message.startsWith('Use `d` instead of `D`'))
+      }
     })
 
     it('allows D token if useAdditionalDayOfYearTokens is set to true', () => {
@@ -2473,12 +2473,12 @@ describe('parse', () => {
     })
 
     it('throws an error if DD token is used', () => {
-      const block = () => parse('2016 05', 'yyyy DD', referenceDate)
-      assert.throws(block, RangeError)
-      assert.throws(
-        block,
-        /Use `dd` instead of `DD` \(in `yyyy DD`\) for formatting days of the month to the input `2016 05`; see: https:\/\/git.io\/fxCyr/
-      )
+      try {
+        parse('2016 05', 'yyyy DD', referenceDate)
+      } catch (e) {
+        assert(e instanceof RangeError)
+        assert(e.message.startsWith('Use `dd` instead of `DD`'))
+      }
     })
 
     it('allows DD token if useAdditionalDayOfYearTokens is set to true', () => {
@@ -2489,12 +2489,12 @@ describe('parse', () => {
     })
 
     it('throws an error if YY token is used', () => {
-      const block = () => parse('16 1', 'YY w', referenceDate)
-      assert.throws(block, RangeError)
-      assert.throws(
-        block,
-        /Use `yy` instead of `YY` \(in `YY w`\) for formatting years to the input `16 1`; see: https:\/\/git.io\/fxCyr/
-      )
+      try {
+        parse('16 1', 'YY w', referenceDate)
+      } catch (e) {
+        assert(e instanceof RangeError)
+        assert(e.message.startsWith('Use `yy` instead of `YY`'))
+      }
     })
 
     it('allows YY token if useAdditionalWeekYearTokens is set to true', () => {
@@ -2505,12 +2505,12 @@ describe('parse', () => {
     })
 
     it('throws an error if YYYY token is used', () => {
-      const block = () => parse('2016 1', 'YYYY w', referenceDate)
-      assert.throws(block, RangeError)
-      assert.throws(
-        block,
-        /Use `yyyy` instead of `YYYY` \(in `YYYY w`\) for formatting years to the input `2016 1`; see: https:\/\/git.io\/fxCyr/
-      )
+      try {
+        parse('2016 1', 'YYYY w', referenceDate)
+      } catch (e) {
+        assert(e instanceof RangeError)
+        assert(e.message.startsWith('Use `yyyy` instead of `YYYY`'))
+      }
     })
 
     it('allows YYYY token if useAdditionalWeekYearTokens is set to true', () => {
