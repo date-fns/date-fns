@@ -180,7 +180,6 @@ export default function intlFormatDistance(
       (value = differenceInHours(dateLeft, dateRight)) &&
       Math.abs(value) < 24
     ) {
-      // value = differenceInHours(dateLeft, dateRight)
       unit = 'hour'
     } else if (
       Math.abs(diffInSeconds) < secondsInWeek &&
