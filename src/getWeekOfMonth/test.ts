@@ -2,6 +2,10 @@
 
 import assert from 'assert'
 import getWeekOfMonth from '.'
+import { resetDefaultLocale } from '../_lib/test'
+import enUS from '../locale/en-US'
+import eo from '../locale/eo'
+import setDefaultLocale from '../setDefaultLocale'
 
 describe('getWeekOfMonth', () => {
   it('returns the week of the month of the given date', () => {
@@ -58,6 +62,24 @@ describe('getWeekOfMonth', () => {
       },
     })
     assert(result === 3)
+  })
+
+  describe('setDefaultLocale', () => {
+    afterEach(resetDefaultLocale)
+
+    it('uses `weekStartsOn` from locale set with `setDefaultLocale`', () => {
+      setDefaultLocale(eo)
+      const result = getWeekOfMonth(new Date(2022, 7 /* Aug */, 7))
+      assert.strictEqual(result, 1)
+    })
+
+    it('manually set locale overrides the locale set with `setDefaultLocale`', () => {
+      setDefaultLocale(eo)
+      const result = getWeekOfMonth(new Date(2017, 7 /* Aug */, 7), {
+        locale: enUS,
+      })
+      assert.strictEqual(result, 2)
+    })
   })
 
   it('accepts a timestamp', () => {

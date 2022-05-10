@@ -11,7 +11,7 @@ export abstract class Parser<TValue> {
     dateString: string,
     token: string,
     match: Match,
-    options?: ParserOptions
+    options: ParserOptions
   ): { setter: ValueSetter<TValue>; rest: string } | null {
     const result = this.parse(dateString, token, match, options)
     if (!result) {
@@ -34,13 +34,13 @@ export abstract class Parser<TValue> {
     dateString: string,
     token: string,
     match: Match,
-    options?: ParserOptions
+    options: ParserOptions
   ): ParseResult<TValue>
 
   protected validate(
     _utcDate: Date,
     _value: TValue,
-    _options?: ParserOptions
+    _options: ParserOptions
   ): boolean {
     return true
   }
@@ -49,6 +49,6 @@ export abstract class Parser<TValue> {
     date: Date,
     flags: ParseFlags,
     value: TValue,
-    options?: ParserOptions
+    options: ParserOptions
   ): Date | [Date, ParseFlags]
 }

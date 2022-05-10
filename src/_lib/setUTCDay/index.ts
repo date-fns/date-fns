@@ -2,24 +2,21 @@ import type { LocaleOptions, WeekStartOptions } from '../../types'
 import toDate from '../../toDate/index'
 import requiredArgs from '../requiredArgs/index'
 import toInteger from '../toInteger/index'
+import { _defaultLocale } from '../defaultLocale/index'
 
 export default function setUTCDay(
   dirtyDate: Date | number,
   dirtyDay: Date | number,
-  dirtyOptions?: LocaleOptions & WeekStartOptions
+  options?: LocaleOptions & WeekStartOptions
 ): Date {
   requiredArgs(2, arguments)
 
-  const options = dirtyOptions || {}
-  const locale = options.locale
-  const localeWeekStartsOn =
-    locale && locale.options && locale.options.weekStartsOn
-  const defaultWeekStartsOn =
-    localeWeekStartsOn == null ? 0 : toInteger(localeWeekStartsOn)
-  const weekStartsOn =
-    options.weekStartsOn == null
-      ? defaultWeekStartsOn
-      : toInteger(options.weekStartsOn)
+  const weekStartsOn = toInteger(
+    options?.weekStartsOn ??
+      options?.locale?.options?.weekStartsOn ??
+      _defaultLocale?.options?.weekStartsOn ??
+      0
+  )
 
   // Test if weekStartsOn is between 0 and 6 _and_ is not NaN
   if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {

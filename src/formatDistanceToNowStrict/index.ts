@@ -1,4 +1,4 @@
-import type { LocaleOptions, Unit } from '../types'
+import type { FormatDistanceStrictOptions, LocaleOptions } from '../types'
 import formatDistanceStrict from '../formatDistanceStrict/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 
@@ -78,11 +78,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  */
 export default function formatDistanceToNowStrict(
   dirtyDate: Date | number,
-  options: LocaleOptions & {
-    addSuffix?: boolean
-    unit?: Unit
-    roundingMethod?: 'floor' | 'ceil' | 'round'
-  } = {}
+  options?: LocaleOptions & FormatDistanceStrictOptions
 ): string {
   requiredArgs(1, arguments)
 

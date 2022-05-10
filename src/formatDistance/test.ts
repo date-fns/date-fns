@@ -3,6 +3,10 @@
 import assert from 'assert'
 import type { FormatDistanceFn } from '../locale/types'
 import formatDistance from '.'
+import { resetDefaultLocale } from '../_lib/test'
+import enUS from '../locale/en-US'
+import eo from '../locale/eo'
+import setDefaultLocale from '../setDefaultLocale'
 
 describe('formatDistance', () => {
   describe('seconds', () => {
@@ -311,5 +315,28 @@ describe('formatDistance', () => {
     assert.throws(formatDistance.bind(null), TypeError)
     // @ts-expect-error
     assert.throws(formatDistance.bind(null, 1), TypeError)
+  })
+
+  describe('setDefaultLocale', () => {
+    afterEach(resetDefaultLocale)
+
+    it('uses `locale` set with `setDefaultLocale`', () => {
+      setDefaultLocale(eo)
+      const result = formatDistance(
+        new Date(1986, 3, 4, 10, 32, 0),
+        new Date(1986, 3, 4, 10, 32, 50)
+      )
+      assert.strictEqual(result, '1 minuto')
+    })
+
+    it('manually set locale overrides the locale set with `setDefaultLocale`', () => {
+      setDefaultLocale(eo)
+      const result = formatDistance(
+        new Date(1986, 3, 4, 10, 32, 0),
+        new Date(1986, 3, 4, 10, 32, 50),
+        { locale: enUS }
+      )
+      assert.strictEqual(result, '1 minute')
+    })
   })
 })

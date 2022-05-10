@@ -2,6 +2,10 @@
 
 import assert from 'assert'
 import startOfUTCWeek from '.'
+import { resetDefaultLocale } from '../test'
+import enUS from '../../locale/en-US'
+import eo from '../../locale/eo'
+import setDefaultLocale from '../../setDefaultLocale'
 
 describe('startOfUTCWeek', () => {
   it('returns the date with the time set to 00:00:00 and the date set to the first day of a week', () => {
@@ -37,6 +41,24 @@ describe('startOfUTCWeek', () => {
       },
     })
     assert.deepStrictEqual(result, new Date(Date.UTC(2014, 8 /* Sep */, 1)))
+  })
+
+  describe('setDefaultLocale', () => {
+    afterEach(resetDefaultLocale)
+
+    it('uses `weekStartsOn` from locale set with `setDefaultLocale`', () => {
+      setDefaultLocale(eo)
+      const date = new Date(Date.UTC(2014, 8 /* Sep */, 2, 11, 55, 0))
+      const result = startOfUTCWeek(date, { weekStartsOn: 1 })
+      assert.deepStrictEqual(result, new Date(Date.UTC(2014, 8 /* Sep */, 1)))
+    })
+
+    it('manually set locale overrides the locale set with `setDefaultLocale`', () => {
+      setDefaultLocale(eo)
+      const date = new Date(Date.UTC(2014, 8 /* Sep */, 2, 11, 55, 0))
+      const result = startOfUTCWeek(date, { locale: enUS })
+      assert.deepStrictEqual(result, new Date(Date.UTC(2014, 7 /* Aug */, 31)))
+    })
   })
 
   it('implicitly converts options', () => {

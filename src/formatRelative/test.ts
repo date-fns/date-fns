@@ -2,6 +2,10 @@
 
 import assert from 'assert'
 import formatRelative from '.'
+import { resetDefaultLocale } from '../_lib/test'
+import enUS from '../locale/en-US'
+import eo from '../locale/eo'
+import setDefaultLocale from '../setDefaultLocale'
 
 describe('formatRelative', () => {
   const baseDate = new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 900)
@@ -175,5 +179,28 @@ describe('formatRelative', () => {
     assert.throws(formatRelative.bind(null), TypeError)
     // @ts-expect-error
     assert.throws(formatRelative.bind(null, 1), TypeError)
+  })
+
+  describe('setDefaultLocale', () => {
+    afterEach(resetDefaultLocale)
+
+    it('uses `locale` set with `setDefaultLocale`', () => {
+      setDefaultLocale(eo)
+      const result = formatRelative(
+        new Date(1986, 3 /* Apr */, 4, 16, 50),
+        baseDate
+      )
+      assert.strictEqual(result, 'hodiaŭ je 16:50')
+    })
+
+    it('manually set locale overrides the locale set with `setDefaultLocale`', () => {
+      setDefaultLocale(eo)
+      const result = formatRelative(
+        new Date(1986, 3 /* Apr */, 4, 16, 50),
+        baseDate,
+        { locale: enUS }
+      )
+      assert.strictEqual(result, 'today at 4:50 PM')
+    })
   })
 })

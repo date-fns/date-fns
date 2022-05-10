@@ -7,6 +7,7 @@ import type {
   LocaleOptions,
   FirstWeekContainsDateOptions,
 } from '../types'
+import { _defaultLocale } from '../_lib/defaultLocale/index'
 
 /**
  * @name getWeekYear
@@ -56,16 +57,12 @@ export default function getWeekYear(
   const date = toDate(dirtyDate)
   const year = date.getFullYear()
 
-  const localeFirstWeekContainsDate =
-    options?.locale?.options?.firstWeekContainsDate
-  const defaultFirstWeekContainsDate =
-    localeFirstWeekContainsDate == null
-      ? 1
-      : toInteger(localeFirstWeekContainsDate)
-  const firstWeekContainsDate =
-    options?.firstWeekContainsDate == null
-      ? defaultFirstWeekContainsDate
-      : toInteger(options.firstWeekContainsDate)
+  const firstWeekContainsDate = toInteger(
+    options?.firstWeekContainsDate ??
+      options?.locale?.options?.firstWeekContainsDate ??
+      _defaultLocale?.options?.firstWeekContainsDate ??
+      1
+  )
 
   // Test if weekStartsOn is between 1 and 7 _and_ is not NaN
   if (!(firstWeekContainsDate >= 1 && firstWeekContainsDate <= 7)) {

@@ -140,14 +140,9 @@ const formattingDayPeriodValues = {
   },
 }
 
-const ordinalNumber: LocalizeFn<number, undefined> = (
-  dirtyNumber,
-  dirtyOptions
-) => {
+const ordinalNumber: LocalizeFn<number, undefined> = (dirtyNumber, options) => {
   const number = Number(dirtyNumber)
-
-  const options = dirtyOptions || {}
-  const unit = String(options.unit)
+  const unit = String(options?.unit)
 
   switch (unit) {
     case 'minute':

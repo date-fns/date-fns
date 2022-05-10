@@ -2,6 +2,10 @@
 
 import assert from 'assert'
 import getWeekYear from '.'
+import { resetDefaultLocale } from '../_lib/test'
+import enUS from '../locale/en-US'
+import eo from '../locale/eo'
+import setDefaultLocale from '../setDefaultLocale'
 
 describe('getWeekYear', () => {
   it('returns the local week-numbering year of the given date', () => {
@@ -49,6 +53,24 @@ describe('getWeekYear', () => {
       },
     })
     assert(result === 2004)
+  })
+
+  describe('setDefaultLocale', () => {
+    afterEach(resetDefaultLocale)
+
+    it('uses `weekStartsOn` and `firstWeekContainsDate` from locale set with `setDefaultLocale`', () => {
+      setDefaultLocale(eo)
+      const date = new Date(2004, 11 /* Dec */, 26)
+      const result = getWeekYear(date)
+      assert.strictEqual(result, 2004)
+    })
+
+    it('manually set locale overrides the locale set with `setDefaultLocale`', () => {
+      setDefaultLocale(eo)
+      const date = new Date(2004, 11 /* Dec */, 26)
+      const result = getWeekYear(date, { locale: enUS })
+      assert.strictEqual(result, 2005)
+    })
   })
 
   it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', () => {

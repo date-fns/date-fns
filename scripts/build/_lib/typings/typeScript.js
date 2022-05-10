@@ -139,7 +139,9 @@ function getTypeScriptFnDefinition(fn) {
   const { title, args, content } = fn
 
   const params = getParams(args, { leftBorder: '(', rightBorder: ')' })
-  const returns = getType(content.returns[0].type.names)
+  const returns = getType(
+    content.returns && content.returns[0] && content.returns[0].type.names
+  )
 
   return formatBlock`
     function ${title} ${params}: ${returns}
@@ -150,7 +152,10 @@ function getTypeScriptFnDefinition(fn) {
 function getTypeScriptFPFnDefinition(fn) {
   const { title, args, content } = fn
 
-  const type = getFPFnType(args, content.returns[0].type.names)
+  const type = getFPFnType(
+    args,
+    content.returns && content.returns[0] && content.returns[0].type.names
+  )
 
   return formatBlock`
     const ${title}: ${type}
@@ -227,7 +232,9 @@ function getTypeScriptLocaleModuleDefinition(
 function getTypeScriptInterfaceDefinition(fn) {
   const { title, args, content } = fn
   const params = getParams(args, { leftBorder: '(', rightBorder: ')' })
-  const returns = getType(content.returns[0].type.names)
+  const returns = getType(
+    content.returns && content.returns[0] && content.returns[0].type.names
+  )
 
   return `${title}${params}: ${returns}`
 }

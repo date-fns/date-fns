@@ -42,7 +42,6 @@ import type { DateValues } from '../types'
  * const result = set(new Date(2014, 8, 1, 1, 23, 45), { hours: 12 })
  * //=> Mon Sep 01 2014 12:23:45
  */
-
 export default function set(
   dirtyDate: Date | number,
   values: DateValues

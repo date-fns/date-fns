@@ -2,6 +2,10 @@
 
 import assert from 'assert'
 import setUTCDay from '.'
+import { resetDefaultLocale } from '../test'
+import enUS from '../../locale/en-US'
+import eo from '../../locale/eo'
+import setDefaultLocale from '../../setDefaultLocale'
 
 describe('setUTCDay', () => {
   it('sets the day of the week', () => {
@@ -35,6 +39,24 @@ describe('setUTCDay', () => {
       },
     })
     assert.deepStrictEqual(result, new Date(Date.UTC(2014, 8 /* Sep */, 7)))
+  })
+
+  describe('setDefaultLocale', () => {
+    afterEach(resetDefaultLocale)
+
+    it('uses `weekStartsOn` from locale set with `setDefaultLocale`', () => {
+      setDefaultLocale(eo)
+      const result = setUTCDay(new Date(Date.UTC(2014, 8 /* Sep */, 1)), 0)
+      assert.deepStrictEqual(result, new Date(Date.UTC(2014, 8 /* Sep */, 7)))
+    })
+
+    it('manually set locale overrides the locale set with `setDefaultLocale`', () => {
+      setDefaultLocale(eo)
+      const result = setUTCDay(new Date(Date.UTC(2014, 8 /* Sep */, 1)), 0, {
+        locale: enUS,
+      })
+      assert.deepStrictEqual(result, new Date(Date.UTC(2014, 7 /* Aug */, 31)))
+    })
   })
 
   describe('the day index is more than 6', () => {

@@ -2,6 +2,10 @@
 
 import assert from 'assert'
 import startOfUTCWeekYear from '.'
+import { resetDefaultLocale } from '../test'
+import enUS from '../../locale/en-US'
+import eo from '../../locale/eo'
+import setDefaultLocale from '../../setDefaultLocale'
 
 describe('startOfUTCWeekYear', () => {
   it('returns the date with the time set to 00:00:00 and the date set to the first day of a week year', () => {
@@ -70,6 +74,24 @@ describe('startOfUTCWeekYear', () => {
       result,
       new Date(Date.UTC(2005, 0 /* Jan */, 3, 0, 0, 0, 0))
     )
+  })
+
+  describe('setDefaultLocale', () => {
+    afterEach(resetDefaultLocale)
+
+    it('uses `weekStartsOn` and `firstWeekContainsDate` from locale set with `setDefaultLocale`', () => {
+      setDefaultLocale(eo)
+      const date = new Date(Date.UTC(2005, 6 /* Jul */, 2))
+      const result = startOfUTCWeekYear(date)
+      assert.deepStrictEqual(result, new Date(Date.UTC(2005, 0 /* Jan */, 3)))
+    })
+
+    it('manually set locale overrides the locale set with `setDefaultLocale`', () => {
+      setDefaultLocale(eo)
+      const date = new Date(Date.UTC(2005, 6 /* Jul */, 2))
+      const result = startOfUTCWeekYear(date, { locale: enUS })
+      assert.deepStrictEqual(result, new Date(Date.UTC(2004, 11 /* Dec */, 26)))
+    })
   })
 
   it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', () => {

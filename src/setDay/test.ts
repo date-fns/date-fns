@@ -2,6 +2,10 @@
 
 import assert from 'assert'
 import setDay from '.'
+import { resetDefaultLocale } from '../_lib/test'
+import enUS from '../locale/en-US'
+import eo from '../locale/eo'
+import setDefaultLocale from '../setDefaultLocale'
 
 describe('setDay', () => {
   it('sets the day of the week', () => {
@@ -35,6 +39,22 @@ describe('setDay', () => {
       },
     })
     assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 7))
+  })
+
+  describe('setDefaultLocale', () => {
+    afterEach(resetDefaultLocale)
+
+    it('uses `weekStartsOn` and `firstWeekContainsDate` from locale set with `setDefaultLocale`', () => {
+      setDefaultLocale(eo)
+      const result = setDay(new Date(2014, 8 /* Sep */, 1), 0)
+      assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 7))
+    })
+
+    it('manually set locale overrides the locale set with `setDefaultLocale`', () => {
+      setDefaultLocale(eo)
+      const result = setDay(new Date(2014, 8 /* Sep */, 1), 0, { locale: enUS })
+      assert.deepStrictEqual(result, new Date(2014, 7 /* Aug */, 31))
+    })
   })
 
   it('converts a fractional number to an integer', () => {

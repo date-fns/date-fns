@@ -37,14 +37,11 @@ import toInteger from '../_lib/toInteger/index'
  */
 export default function parseISO(
   argument: string,
-  dirtyOptions?: AdditionalDigitsOptions
+  options?: AdditionalDigitsOptions
 ): Date {
   requiredArgs(1, arguments)
 
-  const options = dirtyOptions || {}
-
-  const additionalDigits =
-    options.additionalDigits == null ? 2 : toInteger(options.additionalDigits)
+  const additionalDigits = toInteger(options?.additionalDigits ?? 2)
   if (
     additionalDigits !== 2 &&
     additionalDigits !== 1 &&

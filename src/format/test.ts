@@ -3,6 +3,10 @@
 import assert from 'assert'
 import sinon from 'sinon'
 import format from '.'
+import { resetDefaultLocale } from '../_lib/test'
+import enUS from '../locale/en-US'
+import eo from '../locale/eo'
+import setDefaultLocale from '../setDefaultLocale'
 
 describe('format', () => {
   const date = new Date(1986, 3 /* Apr */, 4, 10, 32, 55, 123)
@@ -886,6 +890,24 @@ describe('format', () => {
         useAdditionalWeekYearTokens: true,
       })
       assert.deepStrictEqual(result, '1986-04-04')
+    })
+  })
+
+  describe('setDefaultLocale', () => {
+    afterEach(resetDefaultLocale)
+
+    it('uses `locale` set with `setDefaultLocale`', () => {
+      setDefaultLocale(eo)
+      const date = new Date(1986, 3 /* Apr */, 6)
+      const result = format(date, 'w wo ww')
+      assert.strictEqual(result, '14 14-a 14')
+    })
+
+    it('manually set locale overrides the locale set with `setDefaultLocale`', () => {
+      setDefaultLocale(eo)
+      const date = new Date(1986, 3 /* Apr */, 6)
+      const result = format(date, 'w wo ww', { locale: enUS })
+      assert.strictEqual(result, '15 15th 15')
     })
   })
 })

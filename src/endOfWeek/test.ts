@@ -2,6 +2,10 @@
 
 import assert from 'assert'
 import endOfWeek from '.'
+import { resetDefaultLocale } from '../_lib/test'
+import enUS from '../locale/en-US'
+import eo from '../locale/eo'
+import setDefaultLocale from '../setDefaultLocale'
 
 describe('endOfWeek', () => {
   it('returns the date with the time set to 23:59:59:999 and the date set to the last day of a week', () => {
@@ -49,6 +53,30 @@ describe('endOfWeek', () => {
       result,
       new Date(2014, 8 /* Sep */, 7, 23, 59, 59, 999)
     )
+  })
+
+  describe('setDefaultLocale', () => {
+    afterEach(resetDefaultLocale)
+
+    it('uses `weekStartsOn` from locale set with `setDefaultLocale`', () => {
+      setDefaultLocale(eo)
+      const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
+      const result = endOfWeek(date, { weekStartsOn: 1 })
+      assert.deepStrictEqual(
+        result,
+        new Date(2014, 8 /* Sep */, 7, 23, 59, 59, 999)
+      )
+    })
+
+    it('manually set locale overrides the locale set with `setDefaultLocale`', () => {
+      setDefaultLocale(eo)
+      const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
+      const result = endOfWeek(date, { locale: enUS })
+      assert.deepStrictEqual(
+        result,
+        new Date(2014, 8 /* Sep */, 6, 23, 59, 59, 999)
+      )
+    })
   })
 
   it('implicitly converts options', () => {

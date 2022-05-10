@@ -2,6 +2,10 @@
 
 import assert from 'assert'
 import formatDuration from '.'
+import { resetDefaultLocale } from '../_lib/test'
+import enUS from '../locale/en-US'
+import eo from '../locale/eo'
+import setDefaultLocale from '../setDefaultLocale'
 
 describe('formatDuration', () => {
   it('formats full duration', () => {
@@ -80,5 +84,22 @@ describe('formatDuration', () => {
   it('throws TypeError exception if passed less than 1 argument', () => {
     // @ts-expect-error
     assert.throws(formatDuration.bind(null), TypeError)
+  })
+
+  describe('setDefaultLocale', () => {
+    afterEach(resetDefaultLocale)
+
+    it('uses `locale` set with `setDefaultLocale`', () => {
+      setDefaultLocale(eo)
+      assert.strictEqual(formatDuration({ weeks: 1 }), '1 semajno')
+    })
+
+    it('manually set locale overrides the locale set with `setDefaultLocale`', () => {
+      setDefaultLocale(eo)
+      assert.strictEqual(
+        formatDuration({ weeks: 1 }, { locale: enUS }),
+        '1 week'
+      )
+    })
   })
 })

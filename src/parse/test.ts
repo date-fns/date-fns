@@ -2,6 +2,10 @@
 
 import assert from 'assert'
 import parse from '.'
+import { resetDefaultLocale } from '../_lib/test'
+import enUS from '../locale/en-US'
+import eo from '../locale/eo'
+import setDefaultLocale from '../setDefaultLocale'
 
 describe('parse', () => {
   const referenceDate = new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 900)
@@ -2647,6 +2651,24 @@ describe('parse', () => {
       const formatString = 'PPPPpp'
       const result = parse(dateTimeString, formatString, referenceDate)
       assert.deepStrictEqual(result, expected)
+    })
+  })
+
+  describe('setDefaultLocale', () => {
+    afterEach(resetDefaultLocale)
+
+    it('uses `locale` set with `setDefaultLocale`', () => {
+      setDefaultLocale(eo)
+      const result = parse('49a', 'wo', referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 11 /* Dec */, 1))
+    })
+
+    it('manually set locale overrides the locale set with `setDefaultLocale`', () => {
+      setDefaultLocale(eo)
+      const result = parse('49', 'w', referenceDate, {
+        locale: enUS,
+      })
+      assert.deepStrictEqual(result, new Date(1986, 10 /* Nov */, 30))
     })
   })
 })

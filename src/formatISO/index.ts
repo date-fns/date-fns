@@ -53,10 +53,8 @@ export default function formatISO(
     throw new RangeError('Invalid time value')
   }
 
-  const format = !options?.format ? 'extended' : String(options.format)
-  const representation = !options?.representation
-    ? 'complete'
-    : String(options.representation)
+  const format = String(options?.format ?? 'extended')
+  const representation = String(options?.representation ?? 'complete')
 
   if (format !== 'extended' && format !== 'basic') {
     throw new RangeError("format must be 'extended' or 'basic'")

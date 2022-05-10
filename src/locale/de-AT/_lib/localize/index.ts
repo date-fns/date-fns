@@ -151,12 +151,8 @@ const formattingDayPeriodValues = {
   },
 }
 
-const ordinalNumber: LocalizeFn<number, undefined> = (
-  dirtyNumber,
-  _dirtyOptions
-) => {
+const ordinalNumber: LocalizeFn<number, undefined> = (dirtyNumber) => {
   const number = Number(dirtyNumber)
-
   return number + '.'
 }
 

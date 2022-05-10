@@ -7,28 +7,23 @@ import type {
 import requiredArgs from '../requiredArgs/index'
 import startOfUTCWeek from '../startOfUTCWeek/index'
 import toInteger from '../toInteger/index'
+import { _defaultLocale } from '../defaultLocale/index'
 
 export default function getUTCWeekYear(
   dirtyDate: Date | number,
-  dirtyOptions?: LocaleOptions & FirstWeekContainsDateOptions & WeekStartOptions
+  options?: LocaleOptions & FirstWeekContainsDateOptions & WeekStartOptions
 ): number {
   requiredArgs(1, arguments)
 
   const date = toDate(dirtyDate)
   const year = date.getUTCFullYear()
 
-  const options = dirtyOptions || {}
-  const locale = options.locale
-  const localeFirstWeekContainsDate =
-    locale && locale.options && locale.options.firstWeekContainsDate
-  const defaultFirstWeekContainsDate =
-    localeFirstWeekContainsDate == null
-      ? 1
-      : toInteger(localeFirstWeekContainsDate)
-  const firstWeekContainsDate =
-    options.firstWeekContainsDate == null
-      ? defaultFirstWeekContainsDate
-      : toInteger(options.firstWeekContainsDate)
+  const firstWeekContainsDate = toInteger(
+    options?.firstWeekContainsDate ??
+      options?.locale?.options?.firstWeekContainsDate ??
+      _defaultLocale?.options?.firstWeekContainsDate ??
+      1
+  )
 
   // Test if weekStartsOn is between 1 and 7 _and_ is not NaN
   if (!(firstWeekContainsDate >= 1 && firstWeekContainsDate <= 7)) {
@@ -40,12 +35,12 @@ export default function getUTCWeekYear(
   const firstWeekOfNextYear = new Date(0)
   firstWeekOfNextYear.setUTCFullYear(year + 1, 0, firstWeekContainsDate)
   firstWeekOfNextYear.setUTCHours(0, 0, 0, 0)
-  const startOfNextYear = startOfUTCWeek(firstWeekOfNextYear, dirtyOptions)
+  const startOfNextYear = startOfUTCWeek(firstWeekOfNextYear, options)
 
   const firstWeekOfThisYear = new Date(0)
   firstWeekOfThisYear.setUTCFullYear(year, 0, firstWeekContainsDate)
   firstWeekOfThisYear.setUTCHours(0, 0, 0, 0)
-  const startOfThisYear = startOfUTCWeek(firstWeekOfThisYear, dirtyOptions)
+  const startOfThisYear = startOfUTCWeek(firstWeekOfThisYear, options)
 
   if (date.getTime() >= startOfNextYear.getTime()) {
     return year + 1
