@@ -1,5 +1,5 @@
 import toDate from '../toDate/index'
-import type { Interval } from '../types'
+import type { Interval, StepOptions } from '../types'
 import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
@@ -35,7 +35,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  */
 export default function eachDayOfInterval(
   dirtyInterval: Interval,
-  options?: { step?: number }
+  options?: StepOptions
 ): Date[] {
   requiredArgs(1, arguments)
 

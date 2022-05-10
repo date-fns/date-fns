@@ -43,12 +43,12 @@ const MILLISECONDS_IN_WEEK = 604800000
 export default function differenceInCalendarWeeks(
   dirtyDateLeft: Date | number,
   dirtyDateRight: Date | number,
-  dirtyOptions?: LocaleOptions & WeekStartOptions
+  options?: LocaleOptions & WeekStartOptions
 ): number {
   requiredArgs(2, arguments)
 
-  const startOfWeekLeft = startOfWeek(dirtyDateLeft, dirtyOptions)
-  const startOfWeekRight = startOfWeek(dirtyDateRight, dirtyOptions)
+  const startOfWeekLeft = startOfWeek(dirtyDateLeft, options)
+  const startOfWeekRight = startOfWeek(dirtyDateRight, options)
 
   const timestampLeft =
     startOfWeekLeft.getTime() - getTimezoneOffsetInMilliseconds(startOfWeekLeft)

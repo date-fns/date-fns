@@ -1,6 +1,7 @@
-import defaultLocale from '../locale/en-US/index'
-import type { FormatDistanceToken, Locale } from '../locale/types'
-import type { Duration } from '../types'
+import { getDefaultOptions } from '../_lib/defaults/defaultOptions'
+import defaultLocale from '../_lib/defaults/defaultLocale'
+import type { FormatDistanceToken } from '../locale/types'
+import type { Duration, FormatDurationOptions, LocaleOptions } from '../types'
 
 const defaultFormat: (keyof Duration)[] = [
   'years',
@@ -11,13 +12,6 @@ const defaultFormat: (keyof Duration)[] = [
   'minutes',
   'seconds',
 ]
-
-interface Options {
-  format?: (keyof Duration)[]
-  zero?: boolean
-  delimiter?: string
-  locale?: Locale
-}
 
 /**
  * @name formatDuration
@@ -83,7 +77,7 @@ interface Options {
  */
 export default function formatDuration(
   duration: Duration,
-  options: Options = {}
+  options?: LocaleOptions & FormatDurationOptions
 ): string {
   if (arguments.length < 1) {
     throw new TypeError(
@@ -91,10 +85,11 @@ export default function formatDuration(
     )
   }
 
-  const format = options?.format || defaultFormat
-  const locale = options?.locale || defaultLocale
-  const zero = options?.zero || false
-  const delimiter = options?.delimiter || ' '
+  const defaultOptions = getDefaultOptions()
+  const format = options?.format ?? defaultFormat
+  const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale
+  const zero = options?.zero ?? false
+  const delimiter = options?.delimiter ?? ' '
 
   if (!locale.formatDistance) {
     return ''

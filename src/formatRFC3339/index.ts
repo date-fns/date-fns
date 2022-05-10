@@ -2,10 +2,7 @@ import toDate from '../toDate/index'
 import isValid from '../isValid/index'
 import addLeadingZeros from '../_lib/addLeadingZeros/index'
 import toInteger from '../_lib/toInteger/index'
-
-export interface FormatRFC3339Options {
-  fractionDigits: 0 | 1 | 2 | 3
-}
+import { FormatRFC3339Options } from 'src/types'
 
 /**
  * @name formatRFC3339
@@ -38,7 +35,10 @@ export interface FormatRFC3339Options {
  * const result = formatRFC3339(new Date(2019, 8, 18, 19, 0, 52, 234), { fractionDigits: 3 })
  * //=> '2019-09-18T19:00:52.234Z'
  */
-export default function formatRFC3339(dirtyDate: Date | number, dirtyOptions?: FormatRFC3339Options): string {
+export default function formatRFC3339(
+  dirtyDate: Date | number,
+  options?: FormatRFC3339Options
+): string {
   if (arguments.length < 1) {
     throw new TypeError(
       `1 arguments required, but only ${arguments.length} present`
@@ -51,9 +51,7 @@ export default function formatRFC3339(dirtyDate: Date | number, dirtyOptions?: F
     throw new RangeError('Invalid time value')
   }
 
-  const {
-    fractionDigits = 0,
-  } = dirtyOptions || {}
+  const fractionDigits = options?.fractionDigits ?? 0
 
   // Test if fractionDigits is between 0 and 3 _and_ is not NaN
   if (!(fractionDigits >= 0 && fractionDigits <= 3)) {

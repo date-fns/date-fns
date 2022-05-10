@@ -1,7 +1,7 @@
 import type {
   FormatDistanceFn,
   FormatDistanceLocale,
-  FormatDistanceOptions,
+  FormatDistanceFnOptions,
 } from '../../../types'
 
 type Tense = {
@@ -208,7 +208,7 @@ const formatDistanceLocale: FormatDistanceLocaleNoWeeks = {
 
 function getResultByTense(
   parentToken: Tense,
-  options?: FormatDistanceOptions
+  options?: FormatDistanceFnOptions
 ): string {
   if (options?.addSuffix) {
     if (options.comparison && options.comparison > 0) {

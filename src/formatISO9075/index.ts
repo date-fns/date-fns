@@ -1,11 +1,7 @@
 import toDate from '../toDate/index'
 import isValid from '../isValid/index'
 import addLeadingZeros from '../_lib/addLeadingZeros/index'
-
-export interface FormatISO9075Options {
-  format?: 'extended' | 'basic'
-  representation?: 'complete' | 'date' | 'time'
-}
+import { FormatISO9075Options } from 'src/types'
 
 /**
  * @name formatISO9075
@@ -47,7 +43,7 @@ export interface FormatISO9075Options {
  */
 export default function formatISO9075(
   dirtyDate: Date | number,
-  dirtyOptions?: FormatISO9075Options
+  options?: FormatISO9075Options
 ): string {
   if (arguments.length < 1) {
     throw new TypeError(
@@ -61,10 +57,11 @@ export default function formatISO9075(
     throw new RangeError('Invalid time value')
   }
 
-  const options = dirtyOptions || {}
-  const format = options.format == null ? 'extended' : String(options.format)
+  const format = options?.format == null ? 'extended' : String(options.format)
   const representation =
-    options.representation == null ? 'complete' : String(options.representation)
+    options?.representation == null
+      ? 'complete'
+      : String(options.representation)
 
   if (format !== 'extended' && format !== 'basic') {
     throw new RangeError("format must be 'extended' or 'basic'")
