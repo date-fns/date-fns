@@ -342,21 +342,41 @@ describe('differenceInBusinessDays', () => {
       assert(result === 36)
     })
 
-    it.each`
-      date1                     | date2                   | exceptions                                  | expectedDifference
-      ${new Date(2018, 0, 1)}   | ${new Date(2018, 0, 8)} | ${{ '01/06/18': false, '01/07/18': false }} | ${-5}
-      ${new Date(2018, 0, 1)}   | ${new Date(2018, 0, 1)} | ${{ '01/01/18': false }}                    | ${0}
-      ${new Date(2017, 11, 25)} | ${new Date(2018, 0, 1)} | ${{ '12/30/17': false, '12/31/17': false }} | ${-5}
-    `(
-      'can handle exceptions when calculating a negative difference with false exceptions',
-      function ({ date1, date2, exceptions, expectedDifference }) {
-        const result = differenceInBusinessDays(date1, date2, {
+    it('can handle false exceptions when calculating a 0 day difference', function () {
+      const result = differenceInBusinessDays(
+        new Date(2018, 0, 1),
+        new Date(2018, 0, 1),
+        {
           businessDays: [0, 1, 2, 3, 4, 5, 6],
-          exceptions,
-        })
-        assert(result === expectedDifference)
-      }
-    )
+          exceptions: { '01/01/18': false },
+        }
+      )
+      assert(result === 0)
+    })
+
+    it('can handle false exceptions when calculating a negative difference', function () {
+      const result = differenceInBusinessDays(
+        new Date(2018, 0, 1),
+        new Date(2018, 0, 8),
+        {
+          businessDays: [0, 1, 2, 3, 4, 5, 6],
+          exceptions: { '01/06/18': false, '01/07/18': false },
+        }
+      )
+      assert(result === -5)
+    })
+
+    it('can handle false exceptions when calculating a negative difference across years', function () {
+      const result = differenceInBusinessDays(
+        new Date(2017, 11, 25),
+        new Date(2018, 0, 1),
+        {
+          businessDays: [0, 1, 2, 3, 4, 5, 6],
+          exceptions: { '12/30/17': false, '12/31/17': false },
+        }
+      )
+      assert(result === -5)
+    })
   })
 
   describe('edge cases', function () {
