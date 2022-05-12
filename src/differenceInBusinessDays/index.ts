@@ -81,16 +81,17 @@ export default function differenceInBusinessDays(
   const dateLeft = toDate(dirtyDateLeft)
   const dateRight = toDate(dirtyDateRight)
   const isHoliday = (date: Date) => !businessDays.includes(date.getDay())
-  const isInDateBounds = (date: Date) => {
-    return sign > 0
-      ? isBefore(date, dateLeft) && isAfter(date, dateRight)
-      : isAfter(date, dateLeft) && isBefore(date, dateRight)
-  }
 
   if (!isValid(dateLeft) || !isValid(dateRight)) return NaN
 
   const calendarDifference = differenceInCalendarDays(dateLeft, dateRight)
   const sign = calendarDifference < 0 ? -1 : 1
+
+  const isInDateBounds = (date: Date) => {
+    return sign > 0
+      ? isBefore(date, dateLeft) && isAfter(date, dateRight)
+      : isAfter(date, dateLeft) && isBefore(date, dateRight)
+  }
 
   const weeks = toInteger(calendarDifference / 7)
 
