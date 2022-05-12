@@ -42,20 +42,29 @@ describe('addBusinessDays', function () {
   })
 
   describe('can add Saturdays and/or Sundays to working days with the businessDays option', () => {
-    it.each`
-      daysToAdd | businessDays             | newDate
-      ${8}      | ${[1, 2, 3, 4, 5, 6]}    | ${new Date(2022, 0 /* Jan */, 17)}
-      ${8}      | ${[0, 1, 2, 3, 4, 5]}    | ${new Date(2022, 0 /* Jan */, 17)}
-      ${10}     | ${[0, 1, 2, 3, 4, 5, 6]} | ${new Date(2022, 0 /* Jan */, 17)}
-    `(
-      'given an initial date of Jan 7 and adding $daysToAdd days, with businessDay = $businessDays, should return $newDate',
-      ({ daysToAdd, businessDays, newDate }) => {
-        const initialDate = new Date(2022, 0 /* Jan */, 7)
-        const result = addBusinessDays(initialDate, daysToAdd, { businessDays })
+    it('given an initial date of Jan 7 and adding 8 days, with businessDay = [1, 2, 3, 4, 5, 6], should return Jan 17, 2022', () => {
+      const result = addBusinessDays(new Date(2022, 0 /* Jan */, 7), 8, {
+        businessDays: [1, 2, 3, 4, 5, 6],
+      })
 
-        assert.deepStrictEqual(result, newDate)
-      }
-    )
+      assert.deepStrictEqual(result, new Date(2022, 0 /* Jan */, 17))
+    })
+
+    it('given an initial date of Jan 7 and adding 8 days, with businessDay = [0, 1, 2, 3, 4, 5], should return Jan 17, 2022', () => {
+      const result = addBusinessDays(new Date(2022, 0 /* Jan */, 7), 8, {
+        businessDays: [0, 1, 2, 3, 4, 5],
+      })
+
+      assert.deepStrictEqual(result, new Date(2022, 0 /* Jan */, 17))
+    })
+
+    it('given an initial date of Jan 7 and adding 10 days, with businessDay = [0, 1, 2, 3, 4, 5, 6], should return Jan 17, 2022', () => {
+      const result = addBusinessDays(new Date(2022, 0 /* Jan */, 7), 10, {
+        businessDays: [0, 1, 2, 3, 4, 5, 6],
+      })
+
+      assert.deepStrictEqual(result, new Date(2022, 0 /* Jan */, 17))
+    })
   })
 
   describe('exceptions', () => {

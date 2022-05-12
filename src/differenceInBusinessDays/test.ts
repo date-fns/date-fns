@@ -344,8 +344,8 @@ describe('differenceInBusinessDays', function () {
 
     it('can handle false exceptions when calculating a 0 day difference', function () {
       const result = differenceInBusinessDays(
-        new Date(2018, 0, 1),
-        new Date(2018, 0, 1),
+        new Date(2018, 0 /* Jan */, 1),
+        new Date(2018, 0 /* Jan */, 1),
         {
           businessDays: [0, 1, 2, 3, 4, 5, 6],
           exceptions: { '01/01/18': false },
@@ -356,8 +356,8 @@ describe('differenceInBusinessDays', function () {
 
     it('can handle false exceptions when calculating a negative difference', function () {
       const result = differenceInBusinessDays(
-        new Date(2018, 0, 1),
-        new Date(2018, 0, 8),
+        new Date(2018, 0 /* Jan */, 1),
+        new Date(2018, 0 /* Jan */, 8),
         {
           businessDays: [0, 1, 2, 3, 4, 5, 6],
           exceptions: { '01/06/18': false, '01/07/18': false },
@@ -368,8 +368,8 @@ describe('differenceInBusinessDays', function () {
 
     it('can handle false exceptions when calculating a negative difference across years', function () {
       const result = differenceInBusinessDays(
-        new Date(2017, 11, 25),
-        new Date(2018, 0, 1),
+        new Date(2017, 11 /* Nov */, 25),
+        new Date(2018, 0 /* Jan */, 1),
         {
           businessDays: [0, 1, 2, 3, 4, 5, 6],
           exceptions: { '12/30/17': false, '12/31/17': false },
