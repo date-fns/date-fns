@@ -87,6 +87,12 @@ export default function differenceInBusinessDays(
   const calendarDifference = differenceInCalendarDays(dateLeft, dateRight)
   const sign = calendarDifference < 0 ? -1 : 1
 
+  const isInDateBounds = (date: Date) => {
+    return sign > 0
+      ? isBefore(date, dateLeft) && isAfter(date, dateRight)
+      : isAfter(date, dateLeft) && isBefore(date, dateRight)
+  }
+
   const weeks = toInteger(calendarDifference / 7)
 
   let result = weeks * businessDays.length
@@ -107,21 +113,21 @@ export default function differenceInBusinessDays(
       const date = new Date(e)
       if (!isValid(date)) return
       // if date is within the left and right dates
-      if (isBefore(date, dateLeft) && isAfter(date, dateRight)) {
+      if (isInDateBounds(date)) {
         if (
           // if exception is true and date is not a business day
           options.exceptions![e] === true &&
           !businessDays.includes(date.getDay())
         ) {
           // add a day
-          exceptionCount++
+          exceptionCount += sign
         } else if (
           // if exception is false and date is a business day
           options.exceptions![e] === false &&
           businessDays.includes(date.getDay())
         ) {
           // subtract a day
-          exceptionCount--
+          exceptionCount -= sign
         }
       }
     })
