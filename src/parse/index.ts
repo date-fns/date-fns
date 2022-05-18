@@ -10,10 +10,17 @@ import {
   throwProtectedError,
 } from '../_lib/protectedTokens/index'
 import toInteger from '../_lib/toInteger/index'
-import parsers from './_lib/parsers/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-
-var TIMEZONE_UNIT_PRIORITY = 10
+import type { ParserOptions, ParseFlags } from './_lib/types'
+import { Setter, DateToSystemTimezoneSetter } from './_lib/Setter'
+import { parsers } from './_lib/parsers'
+import type {
+  FirstWeekContainsDate,
+  FirstWeekContainsDateOptions,
+  LocaleOptions,
+  WeekStartOptions,
+  Day,
+} from '../types'
 
 // This RegExp consists of three parts separated by `|`:
 // - [yYQqMLwIdDecihHKkms]o matches any available ordinal number token
@@ -26,17 +33,24 @@ var TIMEZONE_UNIT_PRIORITY = 10
 //   If there is no matching single quote
 //   then the sequence will continue until the end of the string.
 // - . matches any single character unmatched by previous parts of the RegExps
-var formattingTokensRegExp = /[yYQqMLwIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)|./g
+const formattingTokensRegExp = /[yYQqMLwIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)|./g
 
 // This RegExp catches symbols escaped by quotes, and also
 // sequences of symbols P, p, and the combinations like `PPPPPPPppppp`
-var longFormattingTokensRegExp = /P+p+|P+|p+|''|'(''|[^'])+('|$)|./g
+const longFormattingTokensRegExp = /P+p+|P+|p+|''|'(''|[^'])+('|$)|./g
 
-var escapedStringRegExp = /^'([^]*?)'?$/
-var doubleQuoteRegExp = /''/g
+const escapedStringRegExp = /^'([^]*?)'?$/
+const doubleQuoteRegExp = /''/g
 
-var notWhitespaceRegExp = /\S/
-var unescapedLatinCharacterRegExp = /[a-zA-Z]/
+const notWhitespaceRegExp = /\S/
+const unescapedLatinCharacterRegExp = /[a-zA-Z]/
+
+type ParseOptions = LocaleOptions &
+  FirstWeekContainsDateOptions &
+  WeekStartOptions & {
+    useAdditionalWeekYearTokens?: boolean
+    useAdditionalDayOfYearTokens?: boolean
+  }
 
 /**
  * @name parse
@@ -340,30 +354,30 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * //=> Sun Feb 28 2010 00:00:00
  */
 export default function parse(
-  dirtyDateString,
-  dirtyFormatString,
-  dirtyReferenceDate,
-  dirtyOptions
-) {
+  dirtyDateString: string,
+  dirtyFormatString: string,
+  dirtyReferenceDate: Date | number,
+  dirtyOptions?: ParseOptions
+): Date {
   requiredArgs(3, arguments)
 
-  var dateString = String(dirtyDateString)
-  var formatString = String(dirtyFormatString)
-  var options = dirtyOptions || {}
+  let dateString = String(dirtyDateString)
+  const formatString = String(dirtyFormatString)
+  const options = dirtyOptions || {}
 
-  var locale = options.locale || defaultLocale
+  const locale = options.locale || defaultLocale
 
   if (!locale.match) {
     throw new RangeError('locale must contain match property')
   }
 
-  var localeFirstWeekContainsDate =
+  const localeFirstWeekContainsDate =
     locale.options && locale.options.firstWeekContainsDate
-  var defaultFirstWeekContainsDate =
+  const defaultFirstWeekContainsDate =
     localeFirstWeekContainsDate == null
       ? 1
       : toInteger(localeFirstWeekContainsDate)
-  var firstWeekContainsDate =
+  const firstWeekContainsDate =
     options.firstWeekContainsDate == null
       ? defaultFirstWeekContainsDate
       : toInteger(options.firstWeekContainsDate)
@@ -375,10 +389,10 @@ export default function parse(
     )
   }
 
-  var localeWeekStartsOn = locale.options && locale.options.weekStartsOn
-  var defaultWeekStartsOn =
+  const localeWeekStartsOn = locale.options && locale.options.weekStartsOn
+  const defaultWeekStartsOn =
     localeWeekStartsOn == null ? 0 : toInteger(localeWeekStartsOn)
-  var weekStartsOn =
+  const weekStartsOn =
     options.weekStartsOn == null
       ? defaultWeekStartsOn
       : toInteger(options.weekStartsOn)
@@ -396,42 +410,31 @@ export default function parse(
     }
   }
 
-  var subFnOptions = {
-    firstWeekContainsDate: firstWeekContainsDate,
-    weekStartsOn: weekStartsOn,
+  const subFnOptions: ParserOptions = {
+    firstWeekContainsDate: firstWeekContainsDate as FirstWeekContainsDate,
+    weekStartsOn: weekStartsOn as Day,
     locale: locale,
   }
 
   // If timezone isn't specified, it will be set to the system timezone
-  var setters = [
-    {
-      priority: TIMEZONE_UNIT_PRIORITY,
-      subPriority: -1,
-      set: dateToSystemTimezone,
-      index: 0,
-    },
-  ]
+  const setters: Setter[] = [new DateToSystemTimezoneSetter()]
 
-  var i
-
-  var tokens = formatString
-    .match(longFormattingTokensRegExp)
-    .map(function (substring) {
-      var firstCharacter = substring[0]
-      if (firstCharacter === 'p' || firstCharacter === 'P') {
-        var longFormatter = longFormatters[firstCharacter]
-        return longFormatter(substring, locale.formatLong, subFnOptions)
+  const tokens = formatString
+    .match(longFormattingTokensRegExp)!
+    .map((substring) => {
+      const firstCharacter = substring[0]
+      if (firstCharacter in longFormatters) {
+        const longFormatter = longFormatters[firstCharacter]
+        return longFormatter(substring, locale.formatLong)
       }
       return substring
     })
     .join('')
-    .match(formattingTokensRegExp)
+    .match(formattingTokensRegExp)!
 
   const usedTokens = []
 
-  for (i = 0; i < tokens.length; i++) {
-    var token = tokens[i]
-
+  for (let token of tokens) {
     if (
       !options.useAdditionalWeekYearTokens &&
       isProtectedWeekYearToken(token)
@@ -445,28 +448,22 @@ export default function parse(
       throwProtectedError(token, formatString, dirtyDateString)
     }
 
-    var firstCharacter = token[0]
-    var parser = parsers[firstCharacter]
+    const firstCharacter = token[0]
+    const parser = parsers[firstCharacter]
     if (parser) {
       const { incompatibleTokens } = parser
       if (Array.isArray(incompatibleTokens)) {
-        let incompatibleToken
-        for (let i = 0; i < usedTokens.length; i++) {
-          const usedToken = usedTokens[i].token
-          if (
-            incompatibleTokens.indexOf(usedToken) !== -1 ||
-            usedToken === firstCharacter
-          ) {
-            incompatibleToken = usedTokens[i]
-            break
-          }
-        }
+        const incompatibleToken = usedTokens.find(
+          (usedToken) =>
+            incompatibleTokens.includes(usedToken.token) ||
+            usedToken.token === firstCharacter
+        )
         if (incompatibleToken) {
           throw new RangeError(
             `The format string mustn't contain \`${incompatibleToken.fullToken}\` and \`${token}\` at the same time`
           )
         }
-      } else if (parser.incompatibleTokens === '*' && usedTokens.length) {
+      } else if (parser.incompatibleTokens === '*' && usedTokens.length > 0) {
         throw new RangeError(
           `The format string mustn't contain \`${token}\` and any other token at the same time`
         )
@@ -474,7 +471,7 @@ export default function parse(
 
       usedTokens.push({ token: firstCharacter, fullToken: token })
 
-      var parseResult = parser.parse(
+      const parseResult = parser.run(
         dateString,
         token,
         locale.match,
@@ -485,14 +482,7 @@ export default function parse(
         return new Date(NaN)
       }
 
-      setters.push({
-        priority: parser.priority,
-        subPriority: parser.subPriority || 0,
-        set: parser.set,
-        validate: parser.validate,
-        value: parseResult.value,
-        index: setters.length,
-      })
+      setters.push(parseResult.setter)
 
       dateString = parseResult.rest
     } else {
@@ -525,54 +515,35 @@ export default function parse(
     return new Date(NaN)
   }
 
-  var uniquePrioritySetters = setters
-    .map(function (setter) {
-      return setter.priority
-    })
-    .sort(function (a, b) {
-      return b - a
-    })
-    .filter(function (priority, index, array) {
-      return array.indexOf(priority) === index
-    })
-    .map(function (priority) {
-      return setters
-        .filter(function (setter) {
-          return setter.priority === priority
-        })
-        .sort(function (a, b) {
-          return b.subPriority - a.subPriority
-        })
-    })
-    .map(function (setterArray) {
-      return setterArray[0]
-    })
+  const uniquePrioritySetters = setters
+    .map((setter) => setter.priority)
+    .sort((a, b) => b - a)
+    .filter((priority, index, array) => array.indexOf(priority) === index)
+    .map((priority) =>
+      setters
+        .filter((setter) => setter.priority === priority)
+        .sort((a, b) => b.subPriority - a.subPriority)
+    )
+    .map((setterArray) => setterArray[0])
 
-  var date = toDate(dirtyReferenceDate)
+  const date = toDate(dirtyReferenceDate)
 
-  if (isNaN(date)) {
+  if (isNaN(date.getTime())) {
     return new Date(NaN)
   }
 
   // Convert the date in system timezone to the same date in UTC+00:00 timezone.
-  // This ensures that when UTC functions will be implemented, locales will be compatible with them.
-  // See an issue about UTC functions: https://github.com/date-fns/date-fns/issues/37
-  var utcDate = subMilliseconds(date, getTimezoneOffsetInMilliseconds(date))
+  let utcDate = subMilliseconds(date, getTimezoneOffsetInMilliseconds(date))
 
-  var flags = {}
-  for (i = 0; i < uniquePrioritySetters.length; i++) {
-    var setter = uniquePrioritySetters[i]
-
-    if (
-      setter.validate &&
-      !setter.validate(utcDate, setter.value, subFnOptions)
-    ) {
+  const flags: ParseFlags = {}
+  for (const setter of uniquePrioritySetters) {
+    if (!setter.validate(utcDate, subFnOptions)) {
       return new Date(NaN)
     }
 
-    var result = setter.set(utcDate, flags, setter.value, subFnOptions)
+    const result = setter.set(utcDate, flags, subFnOptions)
     // Result is tuple (date, flags)
-    if (result[0]) {
+    if (Array.isArray(result)) {
       utcDate = result[0]
       assign(flags, result[1])
       // Result is date
@@ -584,26 +555,6 @@ export default function parse(
   return utcDate
 }
 
-function dateToSystemTimezone(date, flags) {
-  if (flags.timestampIsSet) {
-    return date
-  }
-
-  var convertedDate = new Date(0)
-  convertedDate.setFullYear(
-    date.getUTCFullYear(),
-    date.getUTCMonth(),
-    date.getUTCDate()
-  )
-  convertedDate.setHours(
-    date.getUTCHours(),
-    date.getUTCMinutes(),
-    date.getUTCSeconds(),
-    date.getUTCMilliseconds()
-  )
-  return convertedDate
-}
-
-function cleanEscapedString(input) {
-  return input.match(escapedStringRegExp)[1].replace(doubleQuoteRegExp, "'")
+function cleanEscapedString(input: string) {
+  return input.match(escapedStringRegExp)![1].replace(doubleQuoteRegExp, "'")
 }

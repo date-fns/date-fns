@@ -198,18 +198,31 @@ export type BuildMatchFn<
   args: BuildMatchFnArgs<Result, DefaultMatchWidth, DefaultParseWidth>
 ) => MatchFn<Result>
 
-export type MatchFn<Result> = (
+export type MatchFn<Result, ExtraOptions = Record<string, unknown>> = (
   str: string,
   options?: {
     width?: LocalePatternWidth
-    valueCallback?: MatchValueCallback<string | Result, Result>
-  }
+    /**
+     * @deprecated Map the value manually instead.
+     * @example
+     * const matchResult = locale.match.ordinalNumber('1st')
+     * if (matchResult) {
+     *   matchResult.value = valueCallback(matchResult.value)
+     * }
+     */
+    valueCallback?: MatchValueCallback<string, Result>
+  } & ExtraOptions
 ) => { value: Result; rest: string } | null
 
 export type MatchValueCallback<Arg, Result> = (value: Arg) => Result
 
 export interface Match {
-  ordinalNumber: MatchFn<number>
+  ordinalNumber: MatchFn<
+    number,
+    {
+      unit: LocaleOrdinalUnit
+    }
+  >
   era: MatchFn<Era>
   quarter: MatchFn<Quarter>
   month: MatchFn<Month>

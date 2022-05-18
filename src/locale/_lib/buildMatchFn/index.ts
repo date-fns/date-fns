@@ -39,7 +39,7 @@ export default function buildMatchFn<
     let value: Result
 
     value = (args.valueCallback ? args.valueCallback(key) : key) as Result
-    value = options.valueCallback ? options.valueCallback(value) : value
+    value = options.valueCallback ? options.valueCallback(value as any) : value
 
     const rest = string.slice(matchedString.length)
 

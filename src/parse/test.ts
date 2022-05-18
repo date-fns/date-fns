@@ -2340,6 +2340,7 @@ describe('parse', () => {
     it('throws `RangeError` if `options.locale` does not contain `match` property', () => {
       const block = () =>
         parse('2016-11-25 04 AM', 'yyyy-MM-dd hh a', referenceDate, {
+          // @ts-expect-error
           locale: {},
         })
       assert.throws(block, RangeError)
@@ -2431,6 +2432,7 @@ describe('parse', () => {
   it('throws TypeError exception if passed less than 3 arguments', () => {
     // @ts-expect-error
     assert.throws(parse.bind(null), TypeError)
+    // @ts-expect-error
     assert.throws(parse.bind(null, 1), TypeError)
     // @ts-expect-error
     assert.throws(parse.bind(null, 1, 2), TypeError)
