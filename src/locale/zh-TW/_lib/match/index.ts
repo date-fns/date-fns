@@ -9,16 +9,16 @@ const parseOrdinalNumberPattern = /\d+/i
 const matchEraPatterns = {
   narrow: /^(前)/i,
   abbreviated: /^(前)/i,
-  wide: /^(公元前|公元)/i,
+  wide: /^(西元前|西元)/i,
 }
 const parseEraPatterns = {
-  any: [/^(前)/i, /^(公元)/i] as const,
+  any: [/^(前)/i, /^(西元)/i] as const,
 }
 
 const matchQuarterPatterns = {
   narrow: /^[1234]/i,
-  abbreviated: /^第[一二三四]刻/i,
-  wide: /^第[一二三四]刻鐘/i,
+  abbreviated: /^第[一二三四]季/i,
+  wide: /^第[一二三四]季度/i,
 }
 const parseQuarterPatterns = {
   any: [/(1|一)/i, /(2|二)/i, /(3|三)/i, /(4|四)/i] as const,
