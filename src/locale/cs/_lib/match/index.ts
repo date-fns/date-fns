@@ -7,7 +7,7 @@ const matchOrdinalNumberPattern = /^(\d+)\.?/i
 const parseOrdinalNumberPattern = /\d+/i
 
 const matchEraPatterns = {
-  narrow: /^(p[řr]ed Kr\.|pred n\. l\.|po Kr\.|n\. l\.)/i,
+  narrow: /^(p[řr]\. Kr\.|p[řr]\. n\. l\.|po Kr\.|n\. l\.)/i,
   abbreviated: /^(pe[řr]ed Kr\.|pe[řr]ed n\. l\.|po Kr\.|n\. l\.)/i,
   wide: /^(p[řr]ed Kristem|pred na[šs][íi]m letopo[čc]tem|po Kristu|na[šs]eho letopo[čc]tu)/i,
 }
@@ -70,11 +70,11 @@ const matchDayPatterns = {
 
 const parseDayPatterns = {
   narrow: [/^n/i, /^p/i, /^[úu]/i, /^s/i, /^[čc]/i, /^p/i, /^s/i] as const,
-  any: [/^ne/i, /^po/i, /^ut/i, /^st/i, /^[čc]t/i, /^p/i, /^so/i] as const,
+  any: [/^ne/i, /^po/i, /^[úu]t/i, /^st/i, /^[čc]t/i, /^p[áa]/i, /^so/i] as const,
 }
 
 const matchDayPeriodPatterns = {
-  any: /^dopoledne|dop\.?|odpoledne|odp\.?|půlnoc|poledne|r[áa]no|odpoledne|ve[čc]er|(v )?noci/i,
+  any: /^dopoledne|dop\.?|odpoledne|odp\.?|p[ůu]lnoc|poledne|r[áa]no|odpoledne|ve[čc]er|(v )?noci/i,
 }
 const parseDayPeriodPatterns = {
   any: {
