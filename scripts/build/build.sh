@@ -7,6 +7,6 @@
 set -ex
 
 ./scripts/build/docs.js
-./scripts/build/fp.ts
-./scripts/build/typings.js
-./scripts/build/indices.ts
+# ./scripts/build/fp.ts
+# ./scripts/build/typings.js
+# ./scripts/build/indices.ts

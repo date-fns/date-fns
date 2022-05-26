@@ -16,6 +16,7 @@ export class StandAloneLocalDayParser extends Parser<number> {
   ): ParseResult<number> {
     const valueCallback = (value: number) => {
       const wholeWeekDays = Math.floor((value - 1) / 7) * 7
+
       return ((value + options.weekStartsOn + 6) % 7) + wholeWeekDays
     }
 

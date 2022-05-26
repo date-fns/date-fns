@@ -19,7 +19,10 @@ const docsConfig = require('../../docs/index.js')
 
 const docsPath = path.resolve(process.cwd(), 'tmp/docs.json')
 
-generateDocsFromSource()
+const tsDocParser = require('@microsoft/tsdoc')
+
+tsDocParser
+  .generateDocsFromSource()
   .then(generatedDocsObj)
   .then(injectStaticDocsToDocsObj)
   .then(injectSharedDocsToDocsObj)
