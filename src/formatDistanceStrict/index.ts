@@ -186,7 +186,7 @@ export default function formatDistanceStrict<DateType extends Date>(
       ? locale.formatDistance('xDays', 1, localizeOptions)
       : locale.formatDistance('xHours', hours, localizeOptions)
 
-    // 1 up to 29 days
+    // 1 up to 30 days
   } else if (unit === 'day') {
     const days = roundingMethod(dstNormalizedMinutes / minutesInDay)
     return locale.formatDistance('xDays', days, localizeOptions)
