@@ -15,12 +15,20 @@ describe('formatDistanceStrict', () => {
         assert(result === '0 seconds')
       })
 
-      it('5 seconds', () => {
+      it('n seconds', () => {
         const result = formatDistanceStrict(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 3, 4, 10, 32, 5)
         )
         assert(result === '5 seconds')
+      })
+
+      it("doesn't return 60 seconds - issue 2957", () => {
+        const result = formatDistanceStrict(
+          new Date(1986, 3, 4, 10, 31, 30),
+          new Date(1986, 3, 4, 10, 32, 30)
+        )
+        assert(result === '1 minute')
       })
     })
   })
@@ -43,11 +51,23 @@ describe('formatDistanceStrict', () => {
     })
 
     it("doesn't return 60 minutes - issue 2957", () => {
-      const result = formatDistanceStrict(
-        new Date(2020, 1, 1, 1, 0, 30),
-        new Date(2020, 1, 1, 2, 0, 0)
+      assert(
+        formatDistanceStrict(
+          new Date(2020, 1, 1, 1, 0, 30),
+          new Date(2020, 1, 1, 2, 0, 0)
+        ) === '1 hour'
       )
-      assert(result === '1 hour')
+
+      // Allow to force a 'minute' unit if specified in options
+      assert(
+        formatDistanceStrict(
+          new Date(2020, 1, 1, 1, 0, 1),
+          new Date(2020, 1, 1, 2, 0, 0),
+          {
+            unit: 'minute',
+          }
+        ) === '60 minutes'
+      )
     })
   })
 
@@ -67,6 +87,25 @@ describe('formatDistanceStrict', () => {
       )
       assert(result === '3 hours')
     })
+
+    it("doesn't return 24 hours - issue 2957", () => {
+      assert(
+        formatDistanceStrict(
+          new Date(1986, 3, 4, 0, 0, 0),
+          new Date(1986, 3, 4, 23, 40, 0)
+        ) === '1 day'
+      )
+
+      assert(
+        formatDistanceStrict(
+          new Date(1986, 3, 4, 0, 0, 0),
+          new Date(1986, 3, 4, 23, 40, 0),
+          {
+            unit: 'hour',
+          }
+        ) === '24 hours'
+      )
+    })
   })
 
   describe('days', () => {
@@ -84,6 +123,21 @@ describe('formatDistanceStrict', () => {
         new Date(1986, 3, 7, 10, 32, 0)
       )
       assert(result === '3 days')
+    })
+
+    it('returns 1 month for more than 29 days', () => {
+      assert(
+        formatDistanceStrict(
+          new Date(1986, 8, 0, 10, 32, 0),
+          new Date(1986, 8, 29, 10, 32, 0)
+        ) === '29 days'
+      )
+      assert(
+        formatDistanceStrict(
+          new Date(1986, 8, 0, 10, 32, 0),
+          new Date(1986, 8, 30, 10, 32, 0)
+        ) === '1 month'
+      )
     })
   })
 
