@@ -9,6 +9,7 @@ import assign from '../_lib/assign/index'
  * @name getDefaultOptions
  * @category Common Helpers
  * @summary Get default locale, weekStartsOn and firstWeekContainsDate.
+ * @pure false
  *
  * @description
  * Returns an object containing the values that are used

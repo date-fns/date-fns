@@ -10,6 +10,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @name setDefaultOptions
  * @category Common Helpers
  * @summary Set default locale, weekStartsOn or firstWeekContainsDate.
+ * @pure false
  *
  * @description
  * Sets the defaults for
