@@ -15,7 +15,12 @@
     "baseUrl": ".",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "allowJs": true
+    "allowJs": true,
+    "skipLibCheck": true
   },
-  "exclude": ["node_modules", "dist", "tmp"]
+  "exclude": ["node_modules", "dist", "tmp"],
+  "typedocOptions": {
+    "entryPoints": ["src/index.ts"],
+    "out": "docs"
+  }
 }
