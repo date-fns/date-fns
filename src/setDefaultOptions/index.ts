@@ -61,7 +61,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * // Remove the option by setting it to `undefined`:
  * setDefaultOptions({ weekStartsOn: 1 })
  * setDefaultOptions({ weekStartsOn: undefined })
- * const result = startOfWeek(new Date(2014, 8, 2), { weekStartsOn: 0 })
+ * const result = startOfWeek(new Date(2014, 8, 2))
  * //=> Sun Aug 31 2014 00:00:00
  */
 export default function setDefaultOptions(newOptions: AllOptions): void {
