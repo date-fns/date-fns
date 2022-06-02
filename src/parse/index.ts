@@ -1,4 +1,4 @@
-import defaultLocale from '../_lib/defaults/defaultLocale'
+import defaultLocale from '../_lib/defaultLocale/index'
 import subMilliseconds from '../subMilliseconds/index'
 import toDate from '../toDate/index'
 import assign from '../_lib/assign/index'
@@ -20,7 +20,7 @@ import type {
   WeekStartOptions,
   ParseAdditionalTokensOptions,
 } from '../types'
-import { getDefaultOptions } from '../_lib/defaults/defaultOptions'
+import { _defaultOptions } from '../_lib/defaultOptions/index'
 
 // This RegExp consists of three parts separated by `|`:
 // - [yYQqMLwIdDecihHKkms]o matches any available ordinal number token
@@ -359,8 +359,7 @@ export default function parse(
 
   let dateString = String(dirtyDateString)
   const formatString = String(dirtyFormatString)
-  const defaultOptions = getDefaultOptions()
-  const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale
+  const locale = options?.locale ?? _defaultOptions.locale ?? defaultLocale
 
   if (!locale.match) {
     throw new RangeError('locale must contain match property')
@@ -369,7 +368,9 @@ export default function parse(
   const firstWeekContainsDate = toInteger(
     options?.firstWeekContainsDate ??
       options?.locale?.options?.firstWeekContainsDate ??
-      defaultOptions.firstWeekContainsDate
+      _defaultOptions.firstWeekContainsDate ??
+      _defaultOptions.locale?.options?.firstWeekContainsDate ??
+      1
   )
 
   // Test if weekStartsOn is between 1 and 7 _and_ is not NaN
@@ -382,7 +383,9 @@ export default function parse(
   const weekStartsOn = toInteger(
     options?.weekStartsOn ??
       options?.locale?.options?.weekStartsOn ??
-      defaultOptions.weekStartsOn
+      _defaultOptions.weekStartsOn ??
+      _defaultOptions.locale?.options?.weekStartsOn ??
+      0
   )
 
   // Test if weekStartsOn is between 0 and 6 _and_ is not NaN
@@ -422,17 +425,18 @@ export default function parse(
 
   const usedTokens = []
 
+  const useAdditionalWeekYearTokens =
+    options?.useAdditionalWeekYearTokens ??
+    _defaultOptions.useAdditionalWeekYearTokens
+  const useAdditionalDayOfYearTokens =
+    options?.useAdditionalDayOfYearTokens ??
+    _defaultOptions.useAdditionalDayOfYearTokens
+
   for (let token of tokens) {
-    if (
-      !options?.useAdditionalWeekYearTokens &&
-      isProtectedWeekYearToken(token)
-    ) {
+    if (!useAdditionalWeekYearTokens && isProtectedWeekYearToken(token)) {
       throwProtectedError(token, formatString, dirtyDateString)
     }
-    if (
-      !options?.useAdditionalDayOfYearTokens &&
-      isProtectedDayOfYearToken(token)
-    ) {
+    if (!useAdditionalDayOfYearTokens && isProtectedDayOfYearToken(token)) {
       throwProtectedError(token, formatString, dirtyDateString)
     }
 

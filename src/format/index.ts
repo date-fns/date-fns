@@ -18,8 +18,8 @@ import type {
   Day,
   FirstWeekContainsDate,
 } from '../types'
-import { getDefaultOptions } from '../_lib/defaults/defaultOptions'
-import defaultLocale from '../_lib/defaults/defaultLocale'
+import { _defaultOptions } from '../_lib/defaultOptions/index'
+import defaultLocale from '../_lib/defaultLocale/index'
 
 // This RegExp consists of three parts separated by `|`:
 // - [yYQqMLwIdDecihHKkms]o matches any available ordinal number token
@@ -347,13 +347,14 @@ export default function format(
   requiredArgs(2, arguments)
 
   const formatStr = String(dirtyFormatStr)
-  const defaultOptions = getDefaultOptions()
-  const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale
+  const locale = options?.locale ?? _defaultOptions.locale ?? defaultLocale
 
   const firstWeekContainsDate = toInteger(
     options?.firstWeekContainsDate ??
       options?.locale?.options?.firstWeekContainsDate ??
-      defaultOptions.firstWeekContainsDate
+      _defaultOptions.firstWeekContainsDate ??
+      _defaultOptions.locale?.options?.firstWeekContainsDate ??
+      1
   )
 
   // Test if weekStartsOn is between 1 and 7 _and_ is not NaN
@@ -366,7 +367,9 @@ export default function format(
   const weekStartsOn = toInteger(
     options?.weekStartsOn ??
       options?.locale?.options?.weekStartsOn ??
-      defaultOptions.weekStartsOn
+      _defaultOptions.weekStartsOn ??
+      _defaultOptions.locale?.options?.weekStartsOn ??
+      0
   )
 
   // Test if weekStartsOn is between 0 and 6 _and_ is not NaN
@@ -424,16 +427,23 @@ export default function format(
         return cleanEscapedString(substring)
       }
 
+      const useAdditionalWeekYearTokens =
+        options?.useAdditionalWeekYearTokens ??
+        _defaultOptions.useAdditionalWeekYearTokens
+      const useAdditionalDayOfYearTokens =
+        options?.useAdditionalDayOfYearTokens ??
+        _defaultOptions.useAdditionalDayOfYearTokens
+
       const formatter = formatters[firstCharacter]
       if (formatter) {
         if (
-          !options?.useAdditionalWeekYearTokens &&
+          !useAdditionalWeekYearTokens &&
           isProtectedWeekYearToken(substring)
         ) {
           throwProtectedError(substring, dirtyFormatStr, String(dirtyDate))
         }
         if (
-          !options?.useAdditionalDayOfYearTokens &&
+          !useAdditionalDayOfYearTokens &&
           isProtectedDayOfYearToken(substring)
         ) {
           throwProtectedError(substring, dirtyFormatStr, String(dirtyDate))

@@ -3,10 +3,10 @@
 import assert from 'assert'
 import setDefaultOptions from '.'
 import {
-  DefaultOptions,
-  getDefaultOptions as getInternalDefaultOptions,
+  AllOptions,
+  _defaultOptions,
   setDefaultOptions as setInternalDefaultOptions,
-} from '../_lib/defaults/defaultOptions'
+} from '../_lib/defaultOptions/index'
 import enUS from '../locale/en-US'
 import eo from '../locale/eo'
 import differenceInCalendarWeeks from '../differenceInCalendarWeeks'
@@ -41,8 +41,7 @@ describe('setDefaultOptions', () => {
 
   it('changes the internal `defaultOptions` object', () => {
     setDefaultOptions({ weekStartsOn: 1, firstWeekContainsDate: 4, locale: eo })
-    const internalDefaultOptions = getInternalDefaultOptions()
-    assert.deepStrictEqual(internalDefaultOptions, {
+    assert.deepStrictEqual(_defaultOptions, {
       weekStartsOn: 1,
       firstWeekContainsDate: 4,
       locale: eo,
@@ -51,15 +50,14 @@ describe('setDefaultOptions', () => {
 
   it('allows partial set', () => {
     setDefaultOptions({ weekStartsOn: 1 })
-    const internalDefaultOptions = getInternalDefaultOptions()
-    assert.deepStrictEqual(internalDefaultOptions, {
+    assert.deepStrictEqual(_defaultOptions, {
       weekStartsOn: 1,
       firstWeekContainsDate: 1,
     })
   })
 
   it('does not mutate the argument', () => {
-    const argument: Partial<DefaultOptions> = { weekStartsOn: 1 }
+    const argument: AllOptions = { weekStartsOn: 1 }
     setDefaultOptions(argument)
     assert.deepStrictEqual(argument, { weekStartsOn: 1 })
   })

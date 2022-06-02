@@ -2,6 +2,7 @@ import addHours from '../addHours/index'
 import toDate from '../toDate/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 import type { Interval, StepOptions } from '../types'
+import { _defaultOptions } from '../_lib/defaultOptions/index'
 
 /**
  * @name eachHourOfInterval
@@ -56,7 +57,7 @@ export default function eachHourOfInterval(
   let currentDate = startDate
   currentDate.setMinutes(0, 0, 0)
 
-  const step = options && 'step' in options ? Number(options.step) : 1
+  const step = Number(options?.step ?? _defaultOptions.step ?? 1)
   if (step < 1 || isNaN(step))
     throw new RangeError('`options.step` must be a number greater than 1')
 

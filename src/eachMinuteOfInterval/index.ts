@@ -3,6 +3,7 @@ import toDate from '../toDate/index'
 import startOfMinute from '../startOfMinute/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 import type { Interval, StepOptions } from '../types'
+import { _defaultOptions } from '../_lib/defaultOptions/index'
 
 /**
  * @name eachMinuteOfInterval
@@ -54,7 +55,7 @@ export default function eachMinuteOfInterval(
 
   let currentDate = startDate
 
-  const step = options && 'step' in options ? Number(options.step) : 1
+  const step = Number(options?.step ?? _defaultOptions.step ?? 1)
   if (step < 1 || isNaN(step))
     throw new RangeError(
       '`options.step` must be a number equal to or greater than 1'

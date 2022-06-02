@@ -2,6 +2,7 @@ import { millisecondsInHour, millisecondsInMinute } from '../constants/index'
 import type { AdditionalDigitsOptions } from '../types'
 import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
+import { _defaultOptions } from '../_lib/defaultOptions/index'
 
 /**
  * @name parseISO
@@ -41,8 +42,9 @@ export default function parseISO(
 ): Date {
   requiredArgs(1, arguments)
 
-  const additionalDigits =
-    options?.additionalDigits == null ? 2 : toInteger(options.additionalDigits)
+  const additionalDigits = toInteger(
+    options?.additionalDigits ?? _defaultOptions.additionalDigits ?? 2
+  )
   if (
     additionalDigits !== 2 &&
     additionalDigits !== 1 &&

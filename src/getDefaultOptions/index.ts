@@ -1,34 +1,28 @@
-import {
-  getDefaultOptions as getInternalDefaultOptions,
-  DefaultOptions,
-} from '../_lib/defaults/defaultOptions'
-import defaultLocale from '../_lib/defaults/defaultLocale'
+import { _defaultOptions, AllOptions } from '../_lib/defaultOptions/index'
 import assign from '../_lib/assign/index'
 
 /**
  * @name getDefaultOptions
  * @category Common Helpers
- * @summary Get default locale, weekStartsOn and firstWeekContainsDate.
+ * @summary Get default options.
  * @pure false
  *
  * @description
- * Returns an object containing the values that are used
- * as default `options.locale`, `options.weekStartsOn` and `optionsfirstWeekContainsDate`
- * in functions that use those options.
+ * Returns an object that contains defaults for `options` argument for all functions.
  *
- * You can change those values with [setDefaultOptions]{@link https://date-fns.org/docs/setDefaultOptions}.
+ * You can change this with [setDefaultOptions]{@link https://date-fns.org/docs/setDefaultOptions}.
  *
  * @returns {Object} default options
  *
  * @example
  * const result = getDefaultOptions()
- * //=> { weekStartsOn: 0, firstWeekContainsDate: 1, locale: enUS }
+ * //=> {}
  *
  * @example
  * setDefaultOptions({ weekStarsOn: 1, firstWeekContainsDate: 4 })
  * const result = getDefaultOptions()
- * //=> { weekStartsOn: 1, firstWeekContainsDate: 4, locale: enUS }
+ * //=> { weekStarsOn: 1, firstWeekContainsDate: 4 }
  */
-export default function getDefaultOptions(): Required<DefaultOptions> {
-  return assign({ locale: defaultLocale }, getInternalDefaultOptions())
+export default function getDefaultOptions(): AllOptions {
+  return assign({}, _defaultOptions)
 }

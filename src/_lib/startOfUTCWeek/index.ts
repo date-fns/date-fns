@@ -2,7 +2,7 @@ import toDate from '../../toDate/index'
 import type { LocaleOptions, WeekStartOptions } from '../../types'
 import requiredArgs from '../requiredArgs/index'
 import toInteger from '../toInteger/index'
-import { getDefaultOptions } from '../defaults/defaultOptions'
+import { _defaultOptions } from '../defaultOptions/index'
 
 export default function startOfUTCWeek(
   dirtyDate: Date | number,
@@ -10,11 +10,12 @@ export default function startOfUTCWeek(
 ): Date {
   requiredArgs(1, arguments)
 
-  const defaultOptions = getDefaultOptions()
   const weekStartsOn = toInteger(
     options?.weekStartsOn ??
       options?.locale?.options?.weekStartsOn ??
-      defaultOptions.weekStartsOn
+      _defaultOptions.weekStartsOn ??
+      _defaultOptions.locale?.options?.weekStartsOn ??
+      0
   )
 
   // Test if weekStartsOn is between 0 and 6 _and_ is not NaN

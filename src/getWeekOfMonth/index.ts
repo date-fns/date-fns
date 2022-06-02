@@ -1,4 +1,4 @@
-import { getDefaultOptions } from '../_lib/defaults/defaultOptions'
+import { _defaultOptions } from '../_lib/defaultOptions/index'
 import getDate from '../getDate/index'
 import getDay from '../getDay/index'
 import startOfMonth from '../startOfMonth/index'
@@ -33,11 +33,12 @@ export default function getWeekOfMonth(
 ): number {
   requiredArgs(1, arguments)
 
-  const defaultOptions = getDefaultOptions()
   const weekStartsOn = toInteger(
     options?.weekStartsOn ??
       options?.locale?.options?.weekStartsOn ??
-      defaultOptions.weekStartsOn
+      _defaultOptions.weekStartsOn ??
+      _defaultOptions.locale?.options?.weekStartsOn ??
+      0
   )
 
   if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {

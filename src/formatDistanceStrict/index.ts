@@ -1,10 +1,10 @@
-import { getDefaultOptions } from '../_lib/defaults/defaultOptions'
+import { _defaultOptions } from '../_lib/defaultOptions/index'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
 import compareAsc from '../compareAsc/index'
 import toDate from '../toDate/index'
 import cloneObject from '../_lib/cloneObject/index'
 import assign from '../_lib/assign/index'
-import defaultLocale from '../_lib/defaults/defaultLocale'
+import defaultLocale from '../_lib/defaultLocale/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 import type { FormatDistanceStrictOptions, LocaleOptions } from '../types'
 
@@ -102,8 +102,7 @@ export default function formatDistanceStrict(
 ): string {
   requiredArgs(2, arguments)
 
-  const defaultOptions = getDefaultOptions()
-  const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale
+  const locale = options?.locale ?? _defaultOptions.locale ?? defaultLocale
 
   if (!locale.formatDistance) {
     throw new RangeError('locale must contain localize.formatDistance property')
@@ -116,7 +115,7 @@ export default function formatDistanceStrict(
   }
 
   const localizeOptions = assign(cloneObject(options), {
-    addSuffix: Boolean(options?.addSuffix),
+    addSuffix: Boolean(options?.addSuffix ?? _defaultOptions.addSuffix),
     comparison: comparison as -1 | 0 | 1,
   })
 
@@ -130,8 +129,9 @@ export default function formatDistanceStrict(
     dateRight = toDate(dirtyBaseDate)
   }
 
-  const roundingMethod =
-    options?.roundingMethod == null ? 'round' : String(options.roundingMethod)
+  const roundingMethod = String(
+    options?.roundingMethod ?? _defaultOptions.roundingMethod ?? 'round'
+  )
   let roundingMethodFn
 
   if (roundingMethod === 'floor') {
@@ -156,8 +156,9 @@ export default function formatDistanceStrict(
   const dstNormalizedMinutes =
     (milliseconds - timezoneOffset) / MILLISECONDS_IN_MINUTE
 
+  const defaultUnit = options?.unit ?? _defaultOptions.unit
   let unit
-  if (options?.unit == null) {
+  if (!defaultUnit) {
     if (minutes < 1) {
       unit = 'second'
     } else if (minutes < 60) {
@@ -172,7 +173,7 @@ export default function formatDistanceStrict(
       unit = 'year'
     }
   } else {
-    unit = String(options.unit)
+    unit = String(defaultUnit)
   }
 
   // 0 up to 60 seconds
@@ -198,7 +199,7 @@ export default function formatDistanceStrict(
     // 1 up to 12 months
   } else if (unit === 'month') {
     const months = roundingMethodFn(dstNormalizedMinutes / MINUTES_IN_MONTH)
-    return months === 12 && options?.unit !== 'month'
+    return months === 12 && defaultUnit !== 'month'
       ? locale.formatDistance('xYears', 1, localizeOptions)
       : locale.formatDistance('xMonths', months, localizeOptions)
 

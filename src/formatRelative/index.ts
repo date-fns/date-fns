@@ -1,7 +1,7 @@
-import { getDefaultOptions } from '../_lib/defaults/defaultOptions'
+import { _defaultOptions } from '../_lib/defaultOptions/index'
 import differenceInCalendarDays from '../differenceInCalendarDays/index'
 import format from '../format/index'
-import defaultLocale from '../_lib/defaults/defaultLocale'
+import defaultLocale from '../_lib/defaultLocale/index'
 import subMilliseconds from '../subMilliseconds/index'
 import toDate from '../toDate/index'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
@@ -56,12 +56,13 @@ export default function formatRelative(
   const date = toDate(dirtyDate)
   const baseDate = toDate(dirtyBaseDate)
 
-  const defaultOptions = getDefaultOptions()
-  const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale
+  const locale = options?.locale ?? _defaultOptions.locale ?? defaultLocale
   const weekStartsOn = toInteger(
     options?.weekStartsOn ??
       options?.locale?.options?.weekStartsOn ??
-      defaultOptions.weekStartsOn
+      _defaultOptions.weekStartsOn ??
+      _defaultOptions.locale?.options?.weekStartsOn ??
+      0
   )
 
   if (!locale.localize) {
