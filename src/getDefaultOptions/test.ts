@@ -8,7 +8,6 @@ import {
   _defaultOptions,
   setDefaultOptions as setInternalDefaultOptions,
 } from '../_lib/defaultOptions/index'
-import enUS from '../locale/en-US'
 import eo from '../locale/eo'
 
 describe('getDefaultOptions', () => {
@@ -16,16 +15,13 @@ describe('getDefaultOptions', () => {
     setInternalDefaultOptions({})
   })
 
-  it('returns the default `weekStartsOn`, `firstWeekContainsDate` and `locale`', () => {
+  it('returns an empty object', () => {
     const result = getDefaultOptions()
-    assert.deepStrictEqual(result, {
-      weekStartsOn: 0,
-      firstWeekContainsDate: 1,
-      locale: enUS,
-    })
+    assert.deepStrictEqual(result, {})
   })
 
   it('returns a clone of the original object', () => {
+    setInternalDefaultOptions({ weekStartsOn: 1 })
     const result = getDefaultOptions()
     assert(_defaultOptions !== result)
   })

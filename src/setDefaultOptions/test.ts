@@ -48,11 +48,22 @@ describe('setDefaultOptions', () => {
     })
   })
 
-  it('allows partial set', () => {
+  it('merges with previous `defaultOptions` calls', () => {
     setDefaultOptions({ weekStartsOn: 1 })
+    setDefaultOptions({ firstWeekContainsDate: 4 })
+    setDefaultOptions({ locale: eo })
     assert.deepStrictEqual(_defaultOptions, {
       weekStartsOn: 1,
-      firstWeekContainsDate: 1,
+      firstWeekContainsDate: 4,
+      locale: eo,
+    })
+  })
+
+  it('setting an option to `undefined` deletes it', () => {
+    setDefaultOptions({ weekStartsOn: 1, firstWeekContainsDate: 4 })
+    setDefaultOptions({ weekStartsOn: undefined })
+    assert.deepStrictEqual(_defaultOptions, {
+      firstWeekContainsDate: 4,
     })
   })
 
