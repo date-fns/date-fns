@@ -57,7 +57,7 @@ const dayValues = {
   abbreviated: ['أحد', 'اثنـ', 'ثلا', 'أربـ', 'خميـ', 'جمعة', 'سبت'] as const,
   wide: [
     'الأحد',
-    'الاثنين',
+    'الإثنين',
     'الثلاثاء',
     'الأربعاء',
     'الخميس',
@@ -74,7 +74,7 @@ const dayPeriodValues = {
     noon: 'ظ',
     morning: 'صباحاً',
     afternoon: 'بعد الظهر',
-    evening: 'مساءاً',
+    evening: 'مساءً',
     night: 'ليلاً',
   },
   abbreviated: {
@@ -84,7 +84,7 @@ const dayPeriodValues = {
     noon: 'ظهر',
     morning: 'صباحاً',
     afternoon: 'بعد الظهر',
-    evening: 'مساءاً',
+    evening: 'مساءً',
     night: 'ليلاً',
   },
   wide: {
@@ -94,7 +94,7 @@ const dayPeriodValues = {
     noon: 'ظهر',
     morning: 'صباحاً',
     afternoon: 'بعد الظهر',
-    evening: 'مساءاً',
+    evening: 'مساءً',
     night: 'ليلاً',
   },
 }
