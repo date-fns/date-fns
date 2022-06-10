@@ -49,8 +49,4 @@ export type Duration = {
 
 export type Day = 0 | 1 | 2 | 3 | 4 | 5 | 6
 
-declare module.exports: (newOptions: {
-  locale?: Locale,
-  weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
-  firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7,
-}) => void
+declare module.exports: (locale?: Locale) => void

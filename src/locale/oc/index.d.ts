@@ -1,4 +1,4 @@
 // This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
 
-import { getDefaultLocale } from 'date-fns'
-export default getDefaultLocale
+import { oc } from 'date-fns/locale'
+export default oc

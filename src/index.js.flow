@@ -401,6 +401,8 @@ declare module.exports: {
 
   getDecade: (date: Date | number) => number,
 
+  getDefaultLocale: () => Locale,
+
   getHours: (date: Date | number) => number,
 
   getISODay: (date: Date | number) => number,
@@ -751,6 +753,8 @@ declare module.exports: {
   ) => Date,
 
   setDayOfYear: (date: Date | number, dayOfYear: number) => Date,
+
+  setDefaultLocale: (locale?: Locale) => void,
 
   setHours: (date: Date | number, hours: number) => Date,
 
