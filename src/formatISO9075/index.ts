@@ -1,7 +1,7 @@
 import toDate from '../toDate/index'
 import isValid from '../isValid/index'
 import addLeadingZeros from '../_lib/addLeadingZeros/index'
-import { FormatISO9075Options } from 'src/types'
+import { FormatOptions, RepresentationOptions } from '../types'
 import { _defaultOptions } from '../_lib/defaultOptions/index'
 
 /**
@@ -44,7 +44,7 @@ import { _defaultOptions } from '../_lib/defaultOptions/index'
  */
 export default function formatISO9075(
   dirtyDate: Date | number,
-  options?: FormatISO9075Options
+  options?: FormatOptions & RepresentationOptions
 ): string {
   if (arguments.length < 1) {
     throw new TypeError(

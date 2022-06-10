@@ -9,11 +9,10 @@ import {
   setDefaultOptions as setInternalDefaultOptions,
 } from '../_lib/defaultOptions/index'
 import eo from '../locale/eo'
+import { resetDefaultOptions } from '../_lib/test'
 
 describe('getDefaultOptions', () => {
-  afterEach(() => {
-    setInternalDefaultOptions({})
-  })
+  afterEach(resetDefaultOptions)
 
   it('returns an empty object', () => {
     const result = getDefaultOptions()

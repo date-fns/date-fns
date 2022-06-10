@@ -88,16 +88,11 @@ export type Unit =
   | 'quarter'
   | 'year'
 
-export interface FormatISO9075Options {
-  format?: 'extended' | 'basic'
-  representation?: 'complete' | 'date' | 'time'
-}
-
 export interface FormatRFC3339Options {
   fractionDigits?: 0 | 1 | 2 | 3
 }
 
-export interface ParseAdditionalTokensOptions {
+export interface AdditionalTokensOptions {
   useAdditionalWeekYearTokens?: boolean
   useAdditionalDayOfYearTokens?: boolean
 }

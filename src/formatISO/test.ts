@@ -6,7 +6,7 @@ import formatISO from '.'
 import addLeadingZeros from '../_lib/addLeadingZeros'
 
 // This makes sure we create the consistent offsets across timezones, no matter where these tests are ran.
-function generateOffset(originalDate: Date) {
+export function generateOffset(originalDate: Date) {
   // Add the timezone.
   let offset = ''
   const tzOffset = originalDate.getTimezoneOffset()

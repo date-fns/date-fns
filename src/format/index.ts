@@ -17,6 +17,7 @@ import type {
   WeekStartOptions,
   Day,
   FirstWeekContainsDate,
+  AdditionalTokensOptions,
 } from '../types'
 import { _defaultOptions } from '../_lib/defaultOptions/index'
 import defaultLocale from '../_lib/defaultLocale/index'
@@ -339,10 +340,8 @@ export default function format(
   dirtyFormatStr: string,
   options?: LocaleOptions &
     WeekStartOptions &
-    FirstWeekContainsDateOptions & {
-      useAdditionalWeekYearTokens?: boolean
-      useAdditionalDayOfYearTokens?: boolean
-    }
+    FirstWeekContainsDateOptions &
+    AdditionalTokensOptions
 ): string {
   requiredArgs(2, arguments)
 

@@ -18,7 +18,7 @@ import type {
   FirstWeekContainsDateOptions,
   LocaleOptions,
   WeekStartOptions,
-  ParseAdditionalTokensOptions,
+  AdditionalTokensOptions,
 } from '../types'
 import { _defaultOptions } from '../_lib/defaultOptions/index'
 
@@ -353,7 +353,7 @@ export default function parse(
   options?: LocaleOptions &
     FirstWeekContainsDateOptions &
     WeekStartOptions &
-    ParseAdditionalTokensOptions
+    AdditionalTokensOptions
 ): Date {
   requiredArgs(3, arguments)
 

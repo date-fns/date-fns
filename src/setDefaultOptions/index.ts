@@ -36,7 +36,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *   and [`formatISO9075`]{@link https://date-fns.org/docs/formatISO9075}
  * @param {0|1|2|3} [newOptions.fractionDigits] - used by [`formatRFC3339`]{@link https://date-fns.org/docs/formatRFC3339}
  * @param {0|1|2} [newOptions.additionalDigits] - used by [`toDate`]{@link https://date-fns.org/docs/toDate}
- * @param {Number} [newOptions.nearestTo] - used by [`toNearestMinute`]{@link https://date-fns.org/docs/toNearestMinute}
+ * @param {Number} [newOptions.nearestTo] - used by [`roundToNearestMinutes`]{@link https://date-fns.org/docs/roundToNearestMinutes}
  * @throws {TypeError} 1 argument required
  *
  * @example

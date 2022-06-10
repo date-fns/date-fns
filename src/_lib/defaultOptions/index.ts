@@ -5,10 +5,10 @@ import type {
   StepOptions,
   RoundingOptions,
   RepresentationOptions,
-  FormatISO9075Options,
+  FormatOptions,
   FormatRFC3339Options,
   AdditionalDigitsOptions,
-  ParseAdditionalTokensOptions,
+  AdditionalTokensOptions,
   FormatDistanceOptions,
   FormatDistanceStrictOptions,
   FormatDurationOptions,
@@ -22,13 +22,13 @@ export type AllOptions = LocaleOptions &
   StepOptions &
   RoundingOptions &
   RepresentationOptions &
-  FormatISO9075Options &
-  FormatRFC3339Options &
+  Omit<FormatDurationOptions, 'format'> & {
+    format?: FormatOptions['format'] | FormatDurationOptions['format']
+  } & FormatRFC3339Options &
   AdditionalDigitsOptions &
-  ParseAdditionalTokensOptions &
+  AdditionalTokensOptions &
   FormatDistanceOptions &
   FormatDistanceStrictOptions &
-  FormatDurationOptions &
   RoundToNearestMinutesOptions &
   AreIntervalsOverlappingOptions
 
