@@ -105,7 +105,6 @@ export interface IntlFormatDistanceOptions {
  *
  * @example
  * // The options represent the unit and the locale which will be used for the result representation and calculation.
- * // What is the distance in Spanish in minutes between the dates when the fist date is after the second?
  * intlFormatDistance(
  *   new Date(1986, 3, 4, 11, 30, 0),
  *   new Date(1986, 3, 4, 10, 30, 0),
