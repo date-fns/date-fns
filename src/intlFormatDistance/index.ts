@@ -94,7 +94,7 @@ export interface IntlFormatDistanceOptions {
  * //=> '1 hour ago'
  *
  * @example
- * // The option represents the unit which will be used for the result calculation.
+ * // Use the unit option to force the function to output the result in quarters. Without setting it, the example would return "next year"
  * intlFormatDistance(
  *   new Date(1987, 6, 4, 10, 30, 0),
  *   new Date(1986, 3, 4, 10, 30, 0),
@@ -103,8 +103,7 @@ export interface IntlFormatDistanceOptions {
  * //=> 'in 5 quarters'
  *
  * @example
- * // The option represents the locale which will be used for the result representation and calculation.
- * // What is the distance in Spanish between the dates when the fist date is after the second?
+ * // Use the locale option to get the result in Spanish. Without setting it, the example would return "in 1 hour".
  * intlFormatDistance(
  *   new Date(1986, 3, 4, 11, 30, 0),
  *   new Date(1986, 3, 4, 10, 30, 0),
@@ -122,8 +121,7 @@ export interface IntlFormatDistanceOptions {
  * //=> 'in 1 day'
  *
  * @example
- * // The option represents the style format which will be used for the result representation.
- * // What is the distance in short format between the dates when the fist date is after the second?
+ * // Use the style option to force the function to use short values. Without setting it, the example would return "in 2 years".
  * intlFormatDistance(
  *   new Date(1988, 3, 4, 11, 30, 0),
  *   new Date(1986, 3, 4, 11, 30, 0),

@@ -324,15 +324,6 @@ describe('intlFormatDistance', () => {
           assert(result === 'in 30 seconds')
         })
 
-        // it.only('works with future', () => {
-        //   const result = intlFormatDistance(
-        //     new Date(1987, 6, 4, 10, 30, 0),
-        //     new Date(1986, 3, 4, 10, 30, 0),
-        //     { unit: 'quarter' }
-        //   )
-        //   assert(result === 'in 5 quarters')
-        // })
-
         it('works with past', () => {
           const result = intlFormatDistance(
             new Date(1987, 3, 4, 10, 30, 0),
