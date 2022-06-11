@@ -1,4 +1,4 @@
-import { IntlOptionsUnit } from 'src/types'
+import type { IntlOptionsUnit } from '../types'
 import {
   secondsInDay,
   secondsInHour,
