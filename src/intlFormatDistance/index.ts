@@ -7,7 +7,7 @@ import {
   secondsInQuarter,
   secondsInWeek,
   secondsInYear,
-} from '../constants'
+} from '../constants/index'
 import differenceInCalendarDays from '../differenceInCalendarDays/index'
 import differenceInCalendarMonths from '../differenceInCalendarMonths/index'
 import differenceInCalendarQuarters from '../differenceInCalendarQuarters/index'
