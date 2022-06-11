@@ -115,7 +115,6 @@ export interface IntlFormatDistanceOptions {
  *
  * @example
  * // Use the numeric option to force the function to use numeric values. Without setting it, the example would return "tomorrow". 
- * // What is the distance in numeric format between the dates when the fist date is after the second?
  * intlFormatDistance(
  *   new Date(1986, 3, 5, 11, 30, 0),
  *   new Date(1986, 3, 4, 11, 30, 0),
