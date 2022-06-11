@@ -19,7 +19,7 @@ import differenceInSeconds from '../differenceInSeconds/index'
 import toDate from '../toDate/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 
-interface Options {
+export interface IntlFormatDistanceOptions {
   unit?: IntlOptionsUnit
   locale?: Intl.UnicodeBCP47LocaleIdentifier
   localeMatcher?: Intl.RelativeTimeFormatLocaleMatcher
