@@ -32,9 +32,13 @@ export interface IntlFormatDistanceOptions {
  * @category Common Helpers
  * @summary Formats distance between two dates in a human-readable format
  * @description
- * The function calculates the difference between two dates and either picks the most appropriate unit
- * depending on the distance (the less the distance the smaller the unit) or allows the user to specify a unit.
- * If the unit is specified, it will be applied accordingly. Otherwise - see the table below:
+ * The function calculates the difference between two dates and formats it as a human-readable string.
+ *
+ * The function will pick the most appropriate unit depending on the distance between dates. For example, if the distance is a few hours, it might return `x hours`. If the distance is a few months, it might return `x months`.
+ *
+ * You can also specify a unit to force using it regardless of the distance to get a result like `123456 hours`.
+ *
+ * See the table below for the unit picking logic:
  *
  * |    Distance between dates   |         Result         |
  * |-----------------------------|------------------------|
