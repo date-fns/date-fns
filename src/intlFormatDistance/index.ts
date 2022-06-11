@@ -95,7 +95,6 @@ export interface IntlFormatDistanceOptions {
  *
  * @example
  * // The option represents the unit which will be used for the result calculation.
- * // What is the distance in quarters between the dates when the fist date is after the second?
  * intlFormatDistance(
  *   new Date(1987, 3, 4, 10, 30, 0),
  *   new Date(1986, 3, 4, 10, 30, 0),
