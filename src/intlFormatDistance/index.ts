@@ -40,45 +40,22 @@ export interface IntlFormatDistanceOptions {
  *
  * See the table below for the unit picking logic:
  *
- * |    Distance between dates   |         Result         |
- * |-----------------------------|------------------------|
- * |  0 seconds                  | now                    |
- * |  1 second                   | in 1 second            |
- * |  1 second ago               | 1 second ago           |
- * |  2-59 seconds               | in X seconds           |
- * |  60 seconds                 | in 1 minute            |
- * |  60 seconds ago             | 1 minute ago           |
- * |  1 minute                   | in 1 minute            |
- * |  1 minute ago               | 1 minute ago           |
- * |  2-59 minutes               | in X minutes           |
- * |  from 2 to 59 minutes ago   | X minutes ago          |
- * |  60 minutes                 | in 1 hour              |
- * |  60 minutes ago             | 1 hour ago             |
- * |  1 hour                     | in 1 hour              |
- * |  1 hour ago                 | 1 hour ago             |
- * |  2-23 hours                 | in X hours             |
- * |  from 2 to 23 hours ago     | X hours ago            |
- * |  24 hours                   | in 1 day               |
- * |  1 day                      | tomorrow               |
- * |  1 day ago                  | yesterday              |
- * |  2-6 days                   | in X days              |
- * |  from 2 to 6 days ago       | X days ago             |
- * |  7 days                     | next week              |
- * |  7 days ago                 | last week              |
- * |  X weeks                    | in X weeks             |
- * |  X weeks ago                | X weeks ago            |
- * |  1 month                    | next month             |
- * |  1 month ago                | last month             |
- * |  X months                   | in X months            |
- * |  X months ago               | X months ago           |
- * |  1 quarter                  | next quarter           |
- * |  1 quarter                  | last quarter           |
- * |  X quarters                 | in X quarters          |
- * |  X quarters ago             | X quarters ago         |
- * |  1 year                     | next year              |
- * |  1 year ago                 | last year              |
- * |  X years                    | in X years             |
- * |  X years ago                | X years ago            |
+ * | Distance between dates | Result (past)  | Result (future) |
+ * | ---------------------- | -------------- | --------------- |
+ * | 0 seconds              | now            | now             |
+ * | 1-59 seconds           | X seconds ago  | in X seconds    |
+ * | 1-59 minutes           | X minutes ago  | in X minutes    |
+ * | 1-23 hours             | X hours ago    | in X hours      |
+ * | 1 day                  | yesterday      | tomorrow        |
+ * | 2-6 days               | X days ago     | in X days       |
+ * | 7 days                 | last week      | next week       |
+ * | 8 days-1 month         | X weeks ago    | in X weeks      |
+ * | 1 month                | last month     | next month      |
+ * | 2-3 months             | X months ago   | in X months     |
+ * | 1 quarter              | last quarter   | next quarter    |
+ * | 2-3 quarters           | X quarters ago | in X quarters   |
+ * | 1 year                 | last year      | next year       |
+ * | 2+ years               | X years ago    | in X years      |
  *
  *
  * @param {Date|Number} date - the date
