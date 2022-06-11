@@ -96,23 +96,24 @@ export interface IntlFormatDistanceOptions {
  * @example
  * // The option represents the unit which will be used for the result calculation.
  * intlFormatDistance(
- *   new Date(1987, 3, 4, 10, 30, 0),
+ *   new Date(1987, 6, 4, 10, 30, 0),
  *   new Date(1986, 3, 4, 10, 30, 0),
  *   { unit: 'quarter' }
  * )
- * //=> 'in 4 quarters'
+ * //=> 'in 5 quarters'
  *
  * @example
- * // The options represent the unit and the locale which will be used for the result representation and calculation.
+ * // The option represents the locale which will be used for the result representation and calculation.
+ * // What is the distance in Spanish between the dates when the fist date is after the second?
  * intlFormatDistance(
  *   new Date(1986, 3, 4, 11, 30, 0),
  *   new Date(1986, 3, 4, 10, 30, 0),
- *   { unit: 'minute', locale: 'es' }
+ *   { locale: 'es' }
  * )
- * //=> 'dentro de 60 minutos'
+ * //=> 'dentro de 1 hora'
  *
  * @example
- * // Use the numeric option to force the function to use numeric values. Without setting it, the example would return "tomorrow". 
+ * // Use the numeric option to force the function to use numeric values. Without setting it, the example would return "tomorrow".
  * intlFormatDistance(
  *   new Date(1986, 3, 5, 11, 30, 0),
  *   new Date(1986, 3, 4, 11, 30, 0),
@@ -134,7 +135,7 @@ export interface IntlFormatDistanceOptions {
 export default function intlFormatDistance(
   date: Date | number,
   baseDate: Date | number,
-  options?: Options
+  options?: IntlFormatDistanceOptions
 ): string {
   requiredArgs(2, arguments)
 

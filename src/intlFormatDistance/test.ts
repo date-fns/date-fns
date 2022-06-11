@@ -157,6 +157,14 @@ describe('intlFormatDistance', () => {
         )
         assert(result === 'yesterday')
       })
+
+      it('works with past', () => {
+        const result = intlFormatDistance(
+          new Date(1986, 3, 5, 22),
+          new Date(1986, 3, 6, 22, 5)
+        )
+        assert(result === 'yesterday')
+      })
     })
 
     describe('works with multiple days', () => {
@@ -315,6 +323,15 @@ describe('intlFormatDistance', () => {
           )
           assert(result === 'in 30 seconds')
         })
+
+        // it.only('works with future', () => {
+        //   const result = intlFormatDistance(
+        //     new Date(1987, 6, 4, 10, 30, 0),
+        //     new Date(1986, 3, 4, 10, 30, 0),
+        //     { unit: 'quarter' }
+        //   )
+        //   assert(result === 'in 5 quarters')
+        // })
 
         it('works with past', () => {
           const result = intlFormatDistance(
