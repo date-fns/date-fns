@@ -60,10 +60,26 @@ describe('intlFormatDistance', () => {
         assert(result === 'in 1 minute')
       })
 
+      it('works with future with over a minute', () => {
+        const result = intlFormatDistance(
+          new Date(1986, 3, 5, 10, 30),
+          new Date(1986, 3, 5, 10, 28, 10)
+        )
+        assert(result === 'in 1 minute')
+      })
+
       it('works with past', () => {
         const result = intlFormatDistance(
           new Date(1986, 3, 5, 10, 29, 59),
           new Date(1986, 3, 5, 10, 30, 59)
+        )
+        assert(result === '1 minute ago')
+      })
+
+      it('works with past with over a minute', () => {
+        const result = intlFormatDistance(
+          new Date(1986, 3, 5, 10, 28, 10),
+          new Date(1986, 3, 5, 10, 30)
         )
         assert(result === '1 minute ago')
       })
@@ -90,16 +106,16 @@ describe('intlFormatDistance', () => {
     describe('works with 60 seconds', () => {
       it('works with future', () => {
         const result = intlFormatDistance(
-          new Date(1986, 3, 5, 10, 59),
-          new Date(1986, 3, 5, 9, 59)
+          new Date(1986, 3, 4, 11, 30, 0),
+          new Date(1986, 3, 4, 10, 30, 0)
         )
         assert(result === 'in 1 hour')
       })
 
       it('works with past', () => {
         const result = intlFormatDistance(
-          new Date(1986, 3, 5, 9, 59),
-          new Date(1986, 3, 5, 10, 59)
+          new Date(1986, 3, 4, 10, 30, 0),
+          new Date(1986, 3, 4, 11, 30, 0)
         )
         assert(result === '1 hour ago')
       })
@@ -114,10 +130,26 @@ describe('intlFormatDistance', () => {
         assert(result === 'in 1 hour')
       })
 
+      it('works with future', () => {
+        const result = intlFormatDistance(
+          new Date(1986, 3, 5, 10, 30),
+          new Date(1986, 3, 5, 9)
+        )
+        assert(result === 'in 1 hour')
+      })
+
       it('works with past', () => {
         const result = intlFormatDistance(
           new Date(1986, 3, 5, 9),
           new Date(1986, 3, 5, 10)
+        )
+        assert(result === '1 hour ago')
+      })
+
+      it('works with past with over an hour', () => {
+        const result = intlFormatDistance(
+          new Date(1986, 3, 5, 9),
+          new Date(1986, 3, 5, 10, 30)
         )
         assert(result === '1 hour ago')
       })
@@ -132,7 +164,23 @@ describe('intlFormatDistance', () => {
         assert(result === 'in 2 hours')
       })
 
+      it('works with future with extra minutes', () => {
+        const result = intlFormatDistance(
+          new Date(1986, 3, 5, 10, 30),
+          new Date(1986, 3, 5, 8)
+        )
+        assert(result === 'in 2 hours')
+      })
+
       it('works with past', () => {
+        const result = intlFormatDistance(
+          new Date(1986, 3, 5, 8),
+          new Date(1986, 3, 5, 10)
+        )
+        assert(result === '2 hours ago')
+      })
+
+      it('works with past with extra minutes', () => {
         const result = intlFormatDistance(
           new Date(1986, 3, 5, 8),
           new Date(1986, 3, 5, 10)
@@ -158,7 +206,7 @@ describe('intlFormatDistance', () => {
         assert(result === 'yesterday')
       })
 
-      it('works with past', () => {
+      it('works with past with an extra hour', () => {
         const result = intlFormatDistance(
           new Date(1986, 3, 5, 22),
           new Date(1986, 3, 6, 22, 5)
@@ -194,10 +242,26 @@ describe('intlFormatDistance', () => {
         assert(result === 'next week')
       })
 
+      it('works with future with more than a week', () => {
+        const result = intlFormatDistance(
+          new Date(1986, 3, 11, 22),
+          new Date(1986, 3, 3, 22)
+        )
+        assert(result === 'next week')
+      })
+
       it('works with past', () => {
         const result = intlFormatDistance(
           new Date(1986, 3, 3, 22),
           new Date(1986, 3, 10, 22)
+        )
+        assert(result === 'last week')
+      })
+
+      it('works with past with more than a week', () => {
+        const result = intlFormatDistance(
+          new Date(1986, 3, 3, 22),
+          new Date(1986, 3, 11, 22)
         )
         assert(result === 'last week')
       })
@@ -212,10 +276,26 @@ describe('intlFormatDistance', () => {
         assert(result === 'in 2 weeks')
       })
 
+      it('works with future with more than 2 weeks', () => {
+        const result = intlFormatDistance(
+          new Date(1986, 3, 17),
+          new Date(1986, 3, 1)
+        )
+        assert(result === 'in 2 weeks')
+      })
+
       it('works with past', () => {
         const result = intlFormatDistance(
           new Date(1986, 3, 1),
           new Date(1986, 3, 15)
+        )
+        assert(result === '2 weeks ago')
+      })
+
+      it('works with past with more than 2 weeks', () => {
+        const result = intlFormatDistance(
+          new Date(1986, 3, 1),
+          new Date(1986, 3, 17)
         )
         assert(result === '2 weeks ago')
       })
@@ -230,10 +310,26 @@ describe('intlFormatDistance', () => {
         assert(result === 'next month')
       })
 
+      it('works with future with more than a month', () => {
+        const result = intlFormatDistance(
+          new Date(1986, 4, 22),
+          new Date(1986, 3, 1)
+        )
+        assert(result === 'next month')
+      })
+
       it('works with past', () => {
         const result = intlFormatDistance(
           new Date(1986, 3, 1),
           new Date(1986, 4, 2)
+        )
+        assert(result === 'last month')
+      })
+
+      it('works with past with more than a month', () => {
+        const result = intlFormatDistance(
+          new Date(1986, 3, 1),
+          new Date(1986, 4, 22)
         )
         assert(result === 'last month')
       })
@@ -248,10 +344,26 @@ describe('intlFormatDistance', () => {
         assert(result === 'next quarter')
       })
 
+      it('works with future with more than a quarter', () => {
+        const result = intlFormatDistance(
+          new Date(1986, 5, 22),
+          new Date(1986, 1, 1)
+        )
+        assert(result === 'next quarter')
+      })
+
       it('works with past', () => {
         const result = intlFormatDistance(
           new Date(1986, 1, 1),
           new Date(1986, 5, 2)
+        )
+        assert(result === 'last quarter')
+      })
+
+      it('works with past with more than a quarter', () => {
+        const result = intlFormatDistance(
+          new Date(1986, 1, 1),
+          new Date(1986, 5, 22)
         )
         assert(result === 'last quarter')
       })
@@ -266,10 +378,26 @@ describe('intlFormatDistance', () => {
         assert(result === 'in 2 quarters')
       })
 
+      it('works with future with more that X quarters', () => {
+        const result = intlFormatDistance(
+          new Date(1986, 6, 22),
+          new Date(1986, 1, 1)
+        )
+        assert(result === 'in 2 quarters')
+      })
+
       it('works with past', () => {
         const result = intlFormatDistance(
           new Date(1986, 1, 1),
           new Date(1986, 6, 2)
+        )
+        assert(result === '2 quarters ago')
+      })
+
+      it('works with past with more that X quarters', () => {
+        const result = intlFormatDistance(
+          new Date(1986, 1, 1),
+          new Date(1986, 6, 22)
         )
         assert(result === '2 quarters ago')
       })
@@ -284,10 +412,26 @@ describe('intlFormatDistance', () => {
         assert(result === 'next year')
       })
 
+      it('works with future with more that a year', () => {
+        const result = intlFormatDistance(
+          new Date(1987, 10, 2),
+          new Date(1986, 1, 1)
+        )
+        assert(result === 'next year')
+      })
+
       it('works with past', () => {
         const result = intlFormatDistance(
           new Date(1986, 1, 1),
           new Date(1987, 1, 2)
+        )
+        assert(result === 'last year')
+      })
+
+      it('works with past with more than a year', () => {
+        const result = intlFormatDistance(
+          new Date(1986, 1, 1),
+          new Date(1987, 10, 2)
         )
         assert(result === 'last year')
       })
@@ -302,6 +446,14 @@ describe('intlFormatDistance', () => {
         assert(result === 'in 2 years')
       })
 
+      it('works with future with x years', () => {
+        const result = intlFormatDistance(
+          new Date(2088, 1, 1),
+          new Date(1986, 1, 1)
+        )
+        assert(result === 'in 102 years')
+      })
+
       it('works with past', () => {
         const result = intlFormatDistance(
           new Date(1986, 1, 1),
@@ -309,28 +461,45 @@ describe('intlFormatDistance', () => {
         )
         assert(result === '2 years ago')
       })
+
+      it('works with past with x years', () => {
+        const result = intlFormatDistance(
+          new Date(1988, 1, 1),
+          new Date(2086, 1, 1)
+        )
+        assert(result === '98 years ago')
+      })
     })
   })
 
   describe('with options', () => {
     describe('unit option', () => {
       describe('seconds', () => {
-        it('works with future', () => {
+        it('works with future with seconds', () => {
           const result = intlFormatDistance(
-            new Date(1987, 3, 4, 10, 30, 30),
+            new Date(1987, 3, 4, 10, 31, 30),
             new Date(1987, 3, 4, 10, 30, 0),
             { unit: 'second' }
           )
-          assert(result === 'in 30 seconds')
+          assert(result === 'in 90 seconds')
         })
 
-        it('works with past', () => {
+        it('works with past with seconds', () => {
           const result = intlFormatDistance(
             new Date(1987, 3, 4, 10, 30, 0),
-            new Date(1987, 3, 4, 10, 30, 30),
+            new Date(1987, 3, 4, 10, 31, 30),
             { unit: 'second' }
           )
-          assert(result === '30 seconds ago')
+          assert(result === '90 seconds ago')
+        })
+
+        it('works with future with quarters', () => {
+          const result = intlFormatDistance(
+            new Date(1987, 6, 4, 10, 30, 0),
+            new Date(1986, 3, 4, 10, 30, 0),
+            { unit: 'quarter' }
+          )
+          assert(result === 'in 5 quarters')
         })
       })
 
@@ -398,21 +567,21 @@ describe('intlFormatDistance', () => {
       describe('multiple days', () => {
         it('works with the future', () => {
           const result = intlFormatDistance(
-            new Date(1987, 3, 4, 10, 30, 0),
+            new Date(1987, 3, 5, 10, 30, 0),
             new Date(1986, 3, 4, 10, 30, 0),
             { unit: 'day' }
           )
-          assert(result === 'in 365 days')
+          assert(result === 'in 366 days')
         })
 
         it('works with the past', () => {
           const result = intlFormatDistance(
             new Date(1986, 3, 4, 10, 30, 0),
-            new Date(1987, 3, 4, 10, 30, 0),
+            new Date(1987, 3, 5, 10, 30, 0),
 
             { unit: 'day' }
           )
-          assert(result === '365 days ago')
+          assert(result === '366 days ago')
         })
       })
 
@@ -439,21 +608,21 @@ describe('intlFormatDistance', () => {
       describe('multiple weeks', () => {
         it('works with the future', () => {
           const result = intlFormatDistance(
-            new Date(1987, 3, 4, 10, 30, 0),
+            new Date(1987, 3, 6, 10, 30, 0),
             new Date(1986, 3, 4, 10, 30, 0),
             { unit: 'week' }
           )
-          assert(result === 'in 52 weeks')
+          assert(result === 'in 53 weeks')
         })
 
         it('works with the past', () => {
           const result = intlFormatDistance(
             new Date(1986, 3, 4, 10, 30, 0),
-            new Date(1987, 3, 4, 10, 30, 0),
+            new Date(1987, 3, 6, 10, 30, 0),
 
             { unit: 'week' }
           )
-          assert(result === '52 weeks ago')
+          assert(result === '53 weeks ago')
         })
       })
     })
