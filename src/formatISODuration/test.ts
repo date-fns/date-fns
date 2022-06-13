@@ -68,10 +68,40 @@ describe('formatISODuration', () => {
 
     assert(result === 'P1Y0M0DT0H0M0S')
   })
-
   it('returns P0Y0M0DT0H0M0S when given an empty object', () => {
     const result = formatISODuration({})
 
     assert(result === 'P0Y0M0DT0H0M0S')
+  })
+})
+
+describe('formatISODuration with the removeZeros flag active', () => {
+  it('Returns correct duration for arbitrary dates', () => {
+    const start = new Date(1929, 0, 15, 12, 0, 0)
+    const end = new Date(1968, 3, 4, 19, 5, 0)
+    const result = formatISODuration(intervalToDuration({ start, end }), true)
+
+    assert(result === 'P39Y2M20DT7H5M')
+  })
+  it('Removes values with zero', () => {
+    const start = new Date(2020, 2, 5, 12, 0, 0)
+    const end = new Date(2021, 2, 1, 12, 0, 0)
+    const result = formatISODuration(intervalToDuration({ start, end }), true)
+
+    assert(result === 'P11M24DT')
+  })
+  it('Handles ambiguity when only minutes are present', () => {
+    const start = new Date(2020, 2, 5, 12, 0, 0)
+    const end = new Date(2020, 2, 5, 12, 15, 0)
+    const result = formatISODuration(intervalToDuration({ start, end }), true)
+
+    assert(result === 'PT15M')
+  })
+  it('Handles ambiguity when only months are present', () => {
+    const start = new Date(2020, 2, 5, 12, 0, 0)
+    const end = new Date(2020, 4, 5, 12, 0, 0)
+    const result = formatISODuration(intervalToDuration({ start, end }), true)
+
+    assert(result === 'P2M')
   })
 })
