@@ -57,7 +57,6 @@ export interface IntlFormatDistanceOptions {
  * | 1 year                 | last year      | next year       |
  * | 2+ years               | X years ago    | in X years      |
  *
- *
  * @param {Date|Number} date - the date
  * @param {Date|Number} baseDate - the date to compare with.
  * @param {Object} [options] - an object with options.
