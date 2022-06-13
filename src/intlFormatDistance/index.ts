@@ -128,7 +128,6 @@ export interface IntlFormatDistanceOptions {
  * )
  * //=> 'in 2 yr'
  */
-
 export default function intlFormatDistance(
   date: Date | number,
   baseDate: Date | number,
