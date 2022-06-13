@@ -87,3 +87,13 @@ export type Unit =
   | 'month'
   | 'quarter'
   | 'year'
+
+export type IntlOptionsUnit =
+  | 'year'
+  | 'quarter'
+  | 'month'
+  | 'week'
+  | 'day'
+  | 'hour'
+  | 'minute'
+  | 'second'
