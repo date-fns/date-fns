@@ -46,9 +46,9 @@ export interface DifferenceInCalendarWeeksOptions
  * )
  * //=> 2
  */
-export default function differenceInCalendarWeeks(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number,
+export default function differenceInCalendarWeeks<DateType extends Date>(
+  dirtyDateLeft: DateType | number,
+  dirtyDateRight: DateType | number,
   options?: DifferenceInCalendarWeeksOptions
 ): number {
   requiredArgs(2, arguments)

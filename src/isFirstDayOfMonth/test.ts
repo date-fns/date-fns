@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import isFirstDayOfMonth from '.'
+import isFirstDayOfMonth from './index'
 
 describe('isFirstDayOfMonth', () => {
   it('returns true if the given date is in the last day of month', () => {

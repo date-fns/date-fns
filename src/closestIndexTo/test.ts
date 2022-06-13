@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import closestIndexTo from '.'
+import closestIndexTo from './index'
 
 describe('closestIndexTo', () => {
   it('returns the date index from the given array closest to the given date', () => {

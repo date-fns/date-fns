@@ -56,8 +56,8 @@ export interface GetWeekOptions
  * //=> 53
  */
 
-export default function getWeek(
-  dirtyDate: Date | number,
+export default function getWeek<DateType extends Date>(
+  dirtyDate: DateType | number,
   options?: GetWeekOptions
 ): number {
   requiredArgs(1, arguments)

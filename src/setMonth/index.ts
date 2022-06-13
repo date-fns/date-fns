@@ -1,3 +1,4 @@
+import constructFrom from '../constructFrom/index'
 import getDaysInMonth from '../getDaysInMonth/index'
 import toDate from '../toDate/index'
 import requiredArgs from '../_lib/requiredArgs/index'
@@ -21,10 +22,10 @@ import toInteger from '../_lib/toInteger/index'
  * const result = setMonth(new Date(2014, 8, 1), 1)
  * //=> Sat Feb 01 2014 00:00:00
  */
-export default function setMonth(
-  dirtyDate: Date | number,
+export default function setMonth<DateType extends Date>(
+  dirtyDate: DateType | number,
   dirtyMonth: number
-): Date {
+): DateType {
   requiredArgs(2, arguments)
 
   const date = toDate(dirtyDate)
@@ -32,7 +33,7 @@ export default function setMonth(
   const year = date.getFullYear()
   const day = date.getDate()
 
-  const dateWithDesiredMonth = new Date(0)
+  const dateWithDesiredMonth = constructFrom(dirtyDate, 0)
   dateWithDesiredMonth.setFullYear(year, month, 15)
   dateWithDesiredMonth.setHours(0, 0, 0, 0)
   const daysInMonth = getDaysInMonth(dateWithDesiredMonth)

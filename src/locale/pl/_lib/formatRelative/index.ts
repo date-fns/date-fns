@@ -1,5 +1,5 @@
+import isSameWeek from '../../../../isSameWeek/index'
 import type { Day } from '../../../../types'
-import isSameUTCWeek from '../../../../_lib/isSameUTCWeek/index'
 import type {
   FormatRelativeFn,
   FormatRelativeFnOptions,
@@ -43,7 +43,7 @@ function dayAndTimeWithAdjective(
   options?: FormatRelativeFnOptions
 ): string {
   let adjectives
-  if (isSameUTCWeek(date, baseDate, options)) {
+  if (isSameWeek(date, baseDate, options)) {
     adjectives = adjectivesThisWeek
   } else if (token === 'lastWeek') {
     adjectives = adjectivesLastWeek

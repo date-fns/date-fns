@@ -56,11 +56,11 @@ export interface SetWeekOptions
  * })
  * //=> Sun Jan 4 2004 00:00:00
  */
-export default function setWeek(
-  dirtyDate: Date | number,
+export default function setWeek<DateType extends Date>(
+  dirtyDate: DateType | number,
   dirtyWeek: number,
   options?: SetWeekOptions
-): Date {
+): DateType {
   requiredArgs(2, arguments)
 
   const date = toDate(dirtyDate)

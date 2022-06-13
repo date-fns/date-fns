@@ -24,9 +24,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = isSameQuarter(new Date(2014, 0, 1), new Date(2015, 0, 1))
  * //=> false
  */
-export default function isSameQuarter(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+export default function isSameQuarter<DateType extends Date>(
+  dirtyDateLeft: DateType | number,
+  dirtyDateRight: DateType | number
 ): boolean {
   requiredArgs(2, arguments)
 

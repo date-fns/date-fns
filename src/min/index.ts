@@ -23,7 +23,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * ])
  * //=> Wed Feb 11 1987 00:00:00
  */
-export default function min(dirtyDatesArray: Array<Date | number>): Date {
+export default function min<DateType extends Date>(
+  dirtyDatesArray: Array<DateType | number>
+): DateType | Date {
   requiredArgs(1, arguments)
 
   let datesArray: Array<Date | number>

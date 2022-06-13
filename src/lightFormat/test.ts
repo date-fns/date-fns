@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import lightFormat from '.'
+import lightFormat from './index'
 
 describe('lightFormat', () => {
   const date = new Date(1986, 3 /* Apr */, 4, 10, 32, 55, 123)

@@ -38,10 +38,10 @@ export interface EachHourOfIntervalOptions extends StepOptions {}
  * //   Mon Oct 06 2014 15:00:00
  * // ]
  */
-export default function eachHourOfInterval(
-  dirtyInterval: Interval,
+export default function eachHourOfInterval<DateType extends Date>(
+  dirtyInterval: Interval<DateType>,
   options?: EachHourOfIntervalOptions
-): Date[] {
+): DateType[] {
   requiredArgs(1, arguments)
 
   const interval = dirtyInterval || {}

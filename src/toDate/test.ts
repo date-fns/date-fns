@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import sinon from 'sinon'
-import toDate from '.'
+import toDate from './index'
 
 describe('toDate', () => {
   describe('date argument', () => {

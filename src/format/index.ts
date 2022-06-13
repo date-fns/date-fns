@@ -1,6 +1,7 @@
+import { UTCDateMini } from '@date-fns/utc/date/mini'
 import isValid from '../isValid/index'
-import subMilliseconds from '../subMilliseconds/index'
 import toDate from '../toDate/index'
+import transpose from '../transpose/index'
 import type {
   AdditionalTokensOptions,
   Day,
@@ -13,7 +14,6 @@ import defaultLocale from '../_lib/defaultLocale/index'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
 import formatters from '../_lib/format/formatters/index'
 import longFormatters from '../_lib/format/longFormatters/index'
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
 import {
   isProtectedDayOfYearToken,
   isProtectedWeekYearToken,
@@ -344,8 +344,8 @@ export interface FormatOptions
  * //=> "3 o'clock"
  */
 
-export default function format(
-  dirtyDate: Date | number,
+export default function format<DateType extends Date>(
+  dirtyDate: DateType | number,
   dirtyFormatStr: string,
   options?: FormatOptions
 ): string {
@@ -398,11 +398,8 @@ export default function format(
     throw new RangeError('Invalid time value')
   }
 
-  // Convert the date in system timezone to the same date in UTC+00:00 timezone.
-  // This ensures that when UTC functions will be implemented, locales will be compatible with them.
-  // See an issue about UTC functions: https://github.com/date-fns/date-fns/issues/376
-  const timezoneOffset = getTimezoneOffsetInMilliseconds(originalDate)
-  const utcDate = subMilliseconds(originalDate, timezoneOffset)
+  // Transpose the date in system timezone to the same date in UTC.
+  const utcDate = transpose(originalDate, UTCDateMini)
 
   const formatterOptions = {
     firstWeekContainsDate: firstWeekContainsDate as FirstWeekContainsDate,

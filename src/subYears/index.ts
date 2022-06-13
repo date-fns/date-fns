@@ -20,10 +20,10 @@ import toInteger from '../_lib/toInteger/index'
  * const result = subYears(new Date(2014, 8, 1), 5)
  * //=> Tue Sep 01 2009 00:00:00
  */
-export default function subYears(
-  dirtyDate: Date | number,
+export default function subYears<DateType extends Date>(
+  dirtyDate: DateType | number,
   dirtyAmount: number
-): Date {
+): DateType {
   requiredArgs(2, arguments)
 
   const amount = toInteger(dirtyAmount)

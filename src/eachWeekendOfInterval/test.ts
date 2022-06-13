@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import eachWeekendOfInterval from '.'
+import eachWeekendOfInterval from './index'
 
 describe('eachWeekendOfInterval', () => {
   it('returns all weekends within the interval', () => {

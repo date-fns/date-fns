@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import isSameDay from '.'
+import isSameDay from './index'
 
 describe('isSameDay', () => {
   it('returns true if the given dates have the same day', () => {

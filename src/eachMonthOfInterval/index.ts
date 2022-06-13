@@ -32,7 +32,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //   Fri Aug 01 2014 00:00:00
  * // ]
  */
-export default function eachMonthOfInterval(dirtyInterval: Interval): Date[] {
+export default function eachMonthOfInterval<DateType extends Date>(
+  dirtyInterval: Interval<DateType>
+): DateType[] {
   requiredArgs(1, arguments)
 
   const interval = dirtyInterval || {}

@@ -1,12 +1,11 @@
-import resolve from 'rollup-plugin-node-resolve'
-import commonjs from 'rollup-plugin-commonjs'
+import resolve from '@rollup/plugin-node-resolve'
+import commonjs from '@rollup/plugin-commonjs'
 
 export default {
-  entry: 'fp.js',
-  dest: 'dist/fp.js',
-  format: 'cjs',
-  plugins: [
-    resolve({jsnext: true, main: true}),
-    commonjs()
-  ]
+  input: 'fp.js',
+  output: {
+    file: 'dist/fp.js',
+    format: 'cjs',
+  },
+  plugins: [resolve({ jsnext: true, main: true }), commonjs()],
 }

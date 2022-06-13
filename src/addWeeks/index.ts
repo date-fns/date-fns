@@ -20,10 +20,10 @@ import toInteger from '../_lib/toInteger/index'
  * const result = addWeeks(new Date(2014, 8, 1), 4)
  * //=> Mon Sep 29 2014 00:00:00
  */
-export default function addWeeks(
-  dirtyDate: Date | number,
+export default function addWeeks<DateType extends Date>(
+  dirtyDate: DateType | number,
   dirtyAmount: number
-): Date {
+): DateType {
   requiredArgs(2, arguments)
 
   const amount = toInteger(dirtyAmount)

@@ -21,10 +21,10 @@ import toInteger from '../_lib/toInteger/index'
  * const result = addHours(new Date(2014, 6, 10, 23, 0), 2)
  * //=> Fri Jul 11 2014 01:00:00
  */
-export default function addHours(
-  dirtyDate: Date | number,
+export default function addHours<DateType extends Date>(
+  dirtyDate: DateType | number,
   dirtyAmount: number
-): Date {
+): DateType {
   requiredArgs(2, arguments)
 
   const amount = toInteger(dirtyAmount)

@@ -1,3 +1,4 @@
+import constructFrom from '../constructFrom/index'
 import getWeekYear from '../getWeekYear/index'
 import startOfWeek from '../startOfWeek/index'
 import type {
@@ -56,10 +57,10 @@ export interface StartOfWeekYearOptions
  * })
  * //=> Mon Jan 03 2005 00:00:00
  */
-export default function startOfWeekYear(
-  dirtyDate: Date | number,
+export default function startOfWeekYear<DateType extends Date>(
+  dirtyDate: DateType | number,
   options?: StartOfWeekYearOptions
-): Date {
+): DateType {
   requiredArgs(1, arguments)
 
   const defaultOptions = getDefaultOptions()
@@ -72,7 +73,7 @@ export default function startOfWeekYear(
   )
 
   const year = getWeekYear(dirtyDate, options)
-  const firstWeek = new Date(0)
+  const firstWeek = constructFrom(dirtyDate, 0)
   firstWeek.setFullYear(year, 0, firstWeekContainsDate)
   firstWeek.setHours(0, 0, 0, 0)
   const date = startOfWeek(firstWeek, options)

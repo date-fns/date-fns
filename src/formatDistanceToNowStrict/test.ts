@@ -3,7 +3,7 @@
 import assert from 'assert'
 import sinon from 'sinon'
 import type { FormatDistanceFn } from '../locale/types'
-import formatDistanceToNowStrict from '.'
+import formatDistanceToNowStrict from './index'
 
 describe('formatDistanceToNowStrict', () => {
   let clock: sinon.SinonFakeTimers

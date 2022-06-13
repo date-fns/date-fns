@@ -20,10 +20,10 @@ import toInteger from '../_lib/toInteger/index'
  * const result = setDate(new Date(2014, 8, 1), 30)
  * //=> Tue Sep 30 2014 00:00:00
  */
-export default function setDate(
-  dirtyDate: Date | number,
+export default function setDate<DateType extends Date>(
+  dirtyDate: DateType | number,
   dirtyDayOfMonth: number
-): Date {
+): DateType {
   requiredArgs(2, arguments)
 
   const date = toDate(dirtyDate)

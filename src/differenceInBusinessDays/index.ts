@@ -56,9 +56,9 @@ import toInteger from '../_lib/toInteger/index'
  * )
  * //=> 0
  */
-export default function differenceInBusinessDays(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+export default function differenceInBusinessDays<DateType extends Date>(
+  dirtyDateLeft: DateType | number,
+  dirtyDateRight: DateType | number
 ): number {
   requiredArgs(2, arguments)
 

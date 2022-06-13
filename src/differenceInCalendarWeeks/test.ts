@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import differenceInCalendarWeeks from '.'
+import differenceInCalendarWeeks from './index'
 
 describe('differenceInCalendarWeeks', () => {
   it('returns the number of calendar weeks between the given dates', () => {

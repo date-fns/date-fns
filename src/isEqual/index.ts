@@ -22,9 +22,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * )
  * //=> false
  */
-export default function isEqual(
-  dirtyLeftDate: Date | number,
-  dirtyRightDate: Date | number
+export default function isEqual<DateType extends Date>(
+  dirtyLeftDate: DateType | number,
+  dirtyRightDate: DateType | number
 ): boolean {
   requiredArgs(2, arguments)
 

@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import getUnixTime from '.'
+import getUnixTime from './index'
 
 describe('getUnixTime', () => {
   it('returns the timestamp of the given date', () => {

@@ -20,10 +20,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = subMonths(new Date(2015, 1, 1), 5)
  * //=> Mon Sep 01 2014 00:00:00
  */
-export default function subMonths(
-  dirtyDate: Date | number,
+export default function subMonths<DateType extends Date>(
+  dirtyDate: DateType | number,
   dirtyAmount: number
-): Date {
+): DateType {
   requiredArgs(2, arguments)
 
   const amount = toInteger(dirtyAmount)

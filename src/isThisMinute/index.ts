@@ -24,7 +24,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> true
  */
 
-export default function isThisMinute(dirtyDate: Date | number): boolean {
+export default function isThisMinute<DateType extends Date>(
+  dirtyDate: DateType | number
+): boolean {
   requiredArgs(1, arguments)
 
   return isSameMinute(Date.now(), dirtyDate)

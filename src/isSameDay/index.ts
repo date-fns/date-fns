@@ -29,9 +29,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = isSameDay(new Date(2014, 8, 4), new Date(2015, 8, 4))
  * //=> false
  */
-export default function isSameDay(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+export default function isSameDay<DateType extends Date>(
+  dirtyDateLeft: DateType | number,
+  dirtyDateRight: DateType | number
 ): boolean {
   requiredArgs(2, arguments)
 

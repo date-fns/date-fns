@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import addYears from '.'
+import addYears from './index'
 
 describe('addYears', () => {
   it('adds the given number of years', () => {

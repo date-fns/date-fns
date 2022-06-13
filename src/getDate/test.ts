@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import getDate from '.'
+import getDate from './index'
 
 describe('getDate', () => {
   it('returns the day of the month of the given date', () => {

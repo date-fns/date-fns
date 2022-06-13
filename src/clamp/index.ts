@@ -29,10 +29,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @returns {Date} the date bounded by the start and the end of the interval
  * @throws {TypeError} 2 arguments required
  */
-export default function clamp(
-  date: Date | number,
+export default function clamp<DateType extends Date>(
+  date: DateType | number,
   { start, end }: Interval
-): Date {
+): DateType | Date {
   requiredArgs(2, arguments)
   return min([max([date, start]), end])
 }

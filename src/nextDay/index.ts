@@ -26,7 +26,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = nextDay(new Date(2020, 2, 21), 2)
  * //=> Tue Mar 24 2020 00:00:00
  */
-export default function nextDay(date: Date | number, day: Day): Date {
+export default function nextDay<DateType extends Date>(
+  date: DateType | number,
+  day: Day
+): DateType {
   requiredArgs(2, arguments)
 
   let delta = day - getDay(date)

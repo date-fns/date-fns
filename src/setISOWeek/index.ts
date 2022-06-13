@@ -23,10 +23,10 @@ import toInteger from '../_lib/toInteger/index'
  * const result = setISOWeek(new Date(2004, 7, 7), 53)
  * //=> Sat Jan 01 2005 00:00:00
  */
-export default function setISOWeek(
-  dirtyDate: Date | number,
+export default function setISOWeek<DateType extends Date>(
+  dirtyDate: DateType | number,
   dirtyISOWeek: number
-): Date {
+): DateType {
   requiredArgs(2, arguments)
 
   const date = toDate(dirtyDate)

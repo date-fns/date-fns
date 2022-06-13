@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import addQuarters from '.'
+import addQuarters from './index'
 
 describe('addQuarters', () => {
   it('adds the given number of quarters', () => {

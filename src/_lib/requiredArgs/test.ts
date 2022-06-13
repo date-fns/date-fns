@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import requiredArgs from '.'
+import requiredArgs from './index'
 
 describe('requiredArgs', () => {
   function wrapperFn(required: number) {

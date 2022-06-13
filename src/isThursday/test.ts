@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import isThursday from '.'
+import isThursday from './index'
 
 describe('isThursday', () => {
   it('returns true if the given date is Thursday', () => {

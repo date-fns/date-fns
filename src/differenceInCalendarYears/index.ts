@@ -22,9 +22,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * )
  * //=> 2
  */
-export default function differenceInCalendarYears(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+export default function differenceInCalendarYears<DateType extends Date>(
+  dirtyDateLeft: DateType | number,
+  dirtyDateRight: DateType | number
 ): number {
   requiredArgs(2, arguments)
 

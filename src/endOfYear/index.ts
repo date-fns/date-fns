@@ -19,7 +19,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = endOfYear(new Date(2014, 8, 2, 11, 55, 00))
  * //=> Wed Dec 31 2014 23:59:59.999
  */
-export default function endOfYear(dirtyDate: Date | number): Date {
+export default function endOfYear<DateType extends Date>(
+  dirtyDate: DateType | number
+): DateType {
   requiredArgs(1, arguments)
 
   const date = toDate(dirtyDate)

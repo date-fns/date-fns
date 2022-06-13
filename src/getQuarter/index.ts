@@ -18,7 +18,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = getQuarter(new Date(2014, 6, 2))
  * //=> 3
  */
-export default function getQuarter(dirtyDate: Date | number): number {
+export default function getQuarter<DateType extends Date>(
+  dirtyDate: DateType | number
+): number {
   requiredArgs(1, arguments)
 
   const date = toDate(dirtyDate)

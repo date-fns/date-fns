@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import isSameQuarter from '.'
+import isSameQuarter from './index'
 
 describe('isSameQuarter', () => {
   it('returns true if the given dates have the same quarter (and year)', () => {

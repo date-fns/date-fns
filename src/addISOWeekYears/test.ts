@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import addISOWeekYears from '.'
+import addISOWeekYears from './index'
 
 describe('addISOWeekYears', () => {
   it('adds the given number of ISO week-numbering years', () => {

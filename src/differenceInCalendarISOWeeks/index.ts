@@ -26,9 +26,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * )
  * //=> 3
  */
-export default function differenceInCalendarISOWeeks(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+export default function differenceInCalendarISOWeeks<DateType extends Date>(
+  dirtyDateLeft: DateType | number,
+  dirtyDateRight: DateType | number
 ): number {
   requiredArgs(2, arguments)
 

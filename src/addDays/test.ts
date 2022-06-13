@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import addDays from '.'
+import addDays from './index'
 import { getDstTransitions } from '../../test/dst/tzOffsetTransitions'
 
 describe('addDays', () => {

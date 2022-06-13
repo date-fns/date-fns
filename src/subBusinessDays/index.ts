@@ -20,10 +20,10 @@ import toInteger from '../_lib/toInteger/index'
  * const result = subBusinessDays(new Date(2014, 8, 1), 10)
  * //=> Mon Aug 18 2014 00:00:00 (skipped weekend days)
  */
-export default function subBusinessDays(
-  dirtyDate: Date | number,
+export default function subBusinessDays<DateType extends Date>(
+  dirtyDate: DateType | number,
   dirtyAmount: number
-): Date {
+): DateType {
   requiredArgs(2, arguments)
 
   const amount = toInteger(dirtyAmount)

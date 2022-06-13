@@ -20,10 +20,10 @@ import toInteger from '../_lib/toInteger/index'
  * const result = addSeconds(new Date(2014, 6, 10, 12, 45, 0), 30)
  * //=> Thu Jul 10 2014 12:45:30
  */
-export default function addSeconds(
-  dirtyDate: Date | number,
+export default function addSeconds<DateType extends Date>(
+  dirtyDate: DateType | number,
   dirtyAmount: number
-): Date {
+): DateType {
   requiredArgs(2, arguments)
 
   const amount = toInteger(dirtyAmount)

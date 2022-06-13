@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import setQuarter from '.'
+import setQuarter from './index'
 
 describe('setQuarter', () => {
   it('sets the quarter of the year', () => {

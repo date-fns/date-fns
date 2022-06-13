@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import fromUnixTime from '.'
+import fromUnixTime from './index'
 
 describe('fromUnixTime', () => {
   it('returns the date derived from the given UNIX timestamp', () => {

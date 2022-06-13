@@ -41,9 +41,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * // For date equal to interval end:
  * isWithinInterval(date, { start: date, end }) // => true
  */
-export default function isWithinInterval(
-  dirtyDate: Date | number,
-  interval: Interval
+export default function isWithinInterval<DateType extends Date>(
+  dirtyDate: DateType | number,
+  interval: Interval<DateType>
 ): boolean {
   requiredArgs(2, arguments)
 

@@ -1,8 +1,8 @@
 import type { Match } from '../../../locale/types'
-import type { ParseResult, ParseFlags } from '../types'
-import { Parser } from '../Parser'
 import { numericPatterns } from '../constants'
-import { parseNumericPattern, parseNDigits } from '../utils'
+import { Parser } from '../Parser'
+import type { ParseFlags, ParseResult } from '../types'
+import { parseNDigits, parseNumericPattern } from '../utils'
 
 export class MinuteParser extends Parser<number> {
   priority = 60
@@ -18,12 +18,16 @@ export class MinuteParser extends Parser<number> {
     }
   }
 
-  validate(_date: Date, value: number): boolean {
+  validate<DateType extends Date>(_date: DateType, value: number): boolean {
     return value >= 0 && value <= 59
   }
 
-  set(date: Date, _flags: ParseFlags, value: number): Date {
-    date.setUTCMinutes(value, 0, 0)
+  set<DateType extends Date>(
+    date: DateType,
+    _flags: ParseFlags,
+    value: number
+  ): DateType {
+    date.setMinutes(value, 0, 0)
     return date
   }
 

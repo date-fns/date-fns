@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import getDaysInMonth from '.'
+import getDaysInMonth from './index'
 
 describe('getDaysInMonth', () => {
   it('returns the number of days in the month of the given date', () => {

@@ -2,6 +2,23 @@ import isValid from '../isValid/index'
 import toDate from '../toDate/index'
 import addLeadingZeros from '../_lib/addLeadingZeros/index'
 
+const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+
+const months = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec',
+]
+
 /**
  * @name formatRFC7231
  * @category Common Helpers
@@ -21,7 +38,9 @@ import addLeadingZeros from '../_lib/addLeadingZeros/index'
  * const result = formatRFC7231(new Date(2019, 8, 18, 19, 0, 52))
  * //=> 'Wed, 18 Sep 2019 19:00:52 GMT'
  */
-export default function formatRFC7231(dirtyDate: Date | number): string {
+export default function formatRFC7231<DateType extends Date>(
+  dirtyDate: DateType | number
+): string {
   if (arguments.length < 1) {
     throw new TypeError(
       `1 arguments required, but only ${arguments.length} present`
@@ -29,21 +48,6 @@ export default function formatRFC7231(dirtyDate: Date | number): string {
   }
 
   const originalDate = toDate(dirtyDate)
-  const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-  const months = [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec',
-  ]
 
   if (!isValid(originalDate)) {
     throw new RangeError('Invalid time value')

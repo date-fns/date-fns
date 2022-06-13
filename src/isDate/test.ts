@@ -3,7 +3,7 @@
 
 import assert from 'assert'
 import { assertType } from '../_lib/test'
-import isDate from '.'
+import isDate from './index'
 
 describe('isDate', () => {
   it('returns true if the given value is a date object', () => {

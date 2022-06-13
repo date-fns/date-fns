@@ -19,7 +19,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = getDaysInYear(new Date(2012, 0, 1))
  * //=> 366
  */
-export default function getDaysInYear(dirtyDate: Date | number): number {
+export default function getDaysInYear<DateType extends Date>(
+  dirtyDate: DateType | number
+): number {
   requiredArgs(1, arguments)
 
   const date = toDate(dirtyDate)

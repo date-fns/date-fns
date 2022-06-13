@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import getDaysInYear from '.'
+import getDaysInYear from './index'
 
 describe('getDaysInYear', () => {
   it('returns the number of days in the year of the given date', () => {

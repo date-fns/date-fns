@@ -23,7 +23,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> true
  */
 
-export default function isThisMonth(dirtyDate: Date | number): boolean {
+export default function isThisMonth<DateType extends Date>(
+  dirtyDate: DateType | number
+): boolean {
   requiredArgs(1, arguments)
 
   return isSameMonth(Date.now(), dirtyDate)

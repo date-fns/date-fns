@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import subQuarters from '.'
+import subQuarters from './index'
 
 describe('subQuarters', () => {
   it('subtracts the given number of quarters', () => {

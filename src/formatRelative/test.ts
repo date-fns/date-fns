@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import formatRelative from '.'
+import formatRelative from './index'
 
 describe('formatRelative', () => {
   const baseDate = new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 900)

@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import differenceInCalendarQuarters from '.'
+import differenceInCalendarQuarters from './index'
 
 describe('differenceInCalendarQuarters', () => {
   it('returns the number of calendar quarters between the given dates', () => {

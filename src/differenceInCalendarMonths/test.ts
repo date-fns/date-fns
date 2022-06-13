@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import differenceInCalendarMonths from '.'
+import differenceInCalendarMonths from './index'
 
 describe('differenceInCalendarMonths', () => {
   it('returns the number of calendar months between the given dates', () => {

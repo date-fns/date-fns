@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import milliseconds from '.'
+import milliseconds from './index'
 
 describe('milliseconds', () => {
   it('converts years to milliseconds', () => {

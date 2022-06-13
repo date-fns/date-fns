@@ -21,7 +21,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = endOfDecade(new Date(1984, 4, 12, 00, 00, 00))
  * //=> Dec 31 1989 23:59:59.999
  */
-export default function endOfDecade(dirtyDate: Date | number): Date {
+export default function endOfDecade<DateType extends Date>(
+  dirtyDate: DateType | number
+): DateType {
   requiredArgs(1, arguments)
 
   const date = toDate(dirtyDate)

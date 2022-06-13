@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import isSameISOWeekYear from '.'
+import isSameISOWeekYear from './index'
 
 describe('isSameISOWeekYear', () => {
   it('returns true if the given dates have the same ISO week-numbering year', () => {

@@ -1,5 +1,4 @@
 import distanceInWords, { FormatDistanceOptions } from '../formatDistance/index'
-
 import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
@@ -93,8 +92,8 @@ export interface FormatDistanceToNowOptions extends FormatDistanceOptions {}
  * )
  * //=> 'pli ol 1 jaro'
  */
-export default function formatDistanceToNow(
-  dirtyDate: Date | number,
+export default function formatDistanceToNow<DateType extends Date>(
+  dirtyDate: DateType | number,
   options?: FormatDistanceToNowOptions
 ): string {
   requiredArgs(1, arguments)

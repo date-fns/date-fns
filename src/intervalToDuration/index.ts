@@ -33,7 +33,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * })
  * // => { years: 39, months: 2, days: 20, hours: 7, minutes: 5, seconds: 0 }
  */
-export default function intervalToDuration(interval: Interval): Duration {
+export default function interval<DateType extends Date>(
+  interval: Interval<DateType>
+): Duration {
   requiredArgs(1, arguments)
 
   const start = toDate(interval.start)

@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import subYears from '.'
+import subYears from './index'
 
 describe('subYears', () => {
   it('subtracts the given number of years', () => {

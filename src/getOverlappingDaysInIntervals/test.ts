@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import getOverlappingDaysInIntervals from '.'
+import getOverlappingDaysInIntervals from './index'
 
 describe('getOverlappingDaysInIntervals', () => {
   const initialIntervalStart = new Date(2016, 10, 10, 13, 0, 0)

@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import hoursToMilliseconds from '.'
+import hoursToMilliseconds from './index'
 
 describe('hoursToMilliseconds', () => {
   it('converts hours to milliseconds', () => {

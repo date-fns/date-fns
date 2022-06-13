@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import isLeapYear from '.'
+import isLeapYear from './index'
 
 describe('isLeapYear', () => {
   it('returns true if the given date is in the leap year', () => {

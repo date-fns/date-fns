@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 
-import eachMinuteOfInterval from '.'
+import eachMinuteOfInterval from './index'
 
 describe('eachMinuteOfInterval', () => {
   it('should return an array of Date objects containing a Date for each minute between the interval', () => {

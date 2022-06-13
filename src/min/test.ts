@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import min from '.'
+import min from './index'
 
 describe('min', () => {
   const isInvalidDate = (date: any): boolean => {

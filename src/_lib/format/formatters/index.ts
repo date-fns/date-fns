@@ -1,18 +1,18 @@
-import type { Localize, LocaleDayPeriod } from '../../../locale/types'
+import getDayOfYear from '../../../getDayOfYear/index'
+import getISOWeek from '../../../getISOWeek/index'
+import getISOWeekYear from '../../../getISOWeekYear/index'
+import getWeek from '../../../getWeek/index'
+import getWeekYear from '../../../getWeekYear/index'
+import type { LocaleDayPeriod, Localize } from '../../../locale/types'
 import type {
+  Day,
   Era,
-  Month,
-  Quarter,
   FirstWeekContainsDateOptions,
   LocaleOptions,
+  Month,
+  Quarter,
   WeekStartOptions,
-  Day,
 } from '../../../types'
-import getUTCDayOfYear from '../../../_lib/getUTCDayOfYear/index'
-import getUTCISOWeek from '../../../_lib/getUTCISOWeek/index'
-import getUTCISOWeekYear from '../../../_lib/getUTCISOWeekYear/index'
-import getUTCWeek from '../../../_lib/getUTCWeek/index'
-import getUTCWeekYear from '../../../_lib/getUTCWeekYear/index'
 import addLeadingZeros from '../../addLeadingZeros/index'
 import lightFormatters from '../lightFormatters/index'
 
@@ -87,7 +87,7 @@ type Formatter = (
 const formatters: { [token: string]: Formatter } = {
   // Era
   G: function (date, token, localize) {
-    const era: Era = date.getUTCFullYear() > 0 ? 1 : 0
+    const era: Era = date.getFullYear() > 0 ? 1 : 0
     switch (token) {
       // AD, BC
       case 'G':
@@ -108,7 +108,7 @@ const formatters: { [token: string]: Formatter } = {
   y: function (date, token, localize) {
     // Ordinal number
     if (token === 'yo') {
-      const signedYear = date.getUTCFullYear()
+      const signedYear = date.getFullYear()
       // Returns 1 for 1 BC (which is year 0 in JavaScript)
       const year = signedYear > 0 ? signedYear : 1 - signedYear
       return localize.ordinalNumber(year, { unit: 'year' })
@@ -119,7 +119,7 @@ const formatters: { [token: string]: Formatter } = {
 
   // Local week-numbering year
   Y: function (date, token, localize, options) {
-    const signedWeekYear = getUTCWeekYear(date, options)
+    const signedWeekYear = getWeekYear(date, options)
     // Returns 1 for 1 BC (which is year 0 in JavaScript)
     const weekYear = signedWeekYear > 0 ? signedWeekYear : 1 - signedWeekYear
 
@@ -140,7 +140,7 @@ const formatters: { [token: string]: Formatter } = {
 
   // ISO week-numbering year
   R: function (date, token) {
-    const isoWeekYear = getUTCISOWeekYear(date)
+    const isoWeekYear = getISOWeekYear(date)
 
     // Padding
     return addLeadingZeros(isoWeekYear, token.length)
@@ -156,13 +156,13 @@ const formatters: { [token: string]: Formatter } = {
   // Also `yy` always returns the last two digits of a year,
   // while `uu` pads single digit years to 2 characters and returns other years unchanged.
   u: function (date, token) {
-    const year = date.getUTCFullYear()
+    const year = date.getFullYear()
     return addLeadingZeros(year, token.length)
   },
 
   // Quarter
   Q: function (date, token, localize) {
-    const quarter = Math.ceil((date.getUTCMonth() + 1) / 3) as Quarter
+    const quarter = Math.ceil((date.getMonth() + 1) / 3) as Quarter
     switch (token) {
       // 1, 2, 3, 4
       case 'Q':
@@ -197,7 +197,7 @@ const formatters: { [token: string]: Formatter } = {
 
   // Stand-alone quarter
   q: function (date, token, localize) {
-    const quarter = Math.ceil((date.getUTCMonth() + 1) / 3) as Quarter
+    const quarter = Math.ceil((date.getMonth() + 1) / 3) as Quarter
     switch (token) {
       // 1, 2, 3, 4
       case 'q':
@@ -232,7 +232,7 @@ const formatters: { [token: string]: Formatter } = {
 
   // Month
   M: function (date, token, localize) {
-    const month = date.getUTCMonth() as Month
+    const month = date.getMonth() as Month
     switch (token) {
       case 'M':
       case 'MM':
@@ -258,7 +258,7 @@ const formatters: { [token: string]: Formatter } = {
 
   // Stand-alone month
   L: function (date, token, localize) {
-    const month = date.getUTCMonth() as Month
+    const month = date.getMonth() as Month
     switch (token) {
       // 1, 2, ..., 12
       case 'L':
@@ -287,7 +287,7 @@ const formatters: { [token: string]: Formatter } = {
 
   // Local week of year
   w: function (date, token, localize, options) {
-    const week = getUTCWeek(date, options)
+    const week = getWeek(date, options)
 
     if (token === 'wo') {
       return localize.ordinalNumber(week, { unit: 'week' })
@@ -298,7 +298,7 @@ const formatters: { [token: string]: Formatter } = {
 
   // ISO week of year
   I: function (date, token, localize) {
-    const isoWeek = getUTCISOWeek(date)
+    const isoWeek = getISOWeek(date)
 
     if (token === 'Io') {
       return localize.ordinalNumber(isoWeek, { unit: 'week' })
@@ -310,7 +310,7 @@ const formatters: { [token: string]: Formatter } = {
   // Day of the month
   d: function (date, token, localize) {
     if (token === 'do') {
-      return localize.ordinalNumber(date.getUTCDate(), { unit: 'date' })
+      return localize.ordinalNumber(date.getDate(), { unit: 'date' })
     }
 
     return lightFormatters.d(date, token)
@@ -318,7 +318,7 @@ const formatters: { [token: string]: Formatter } = {
 
   // Day of year
   D: function (date, token, localize) {
-    const dayOfYear = getUTCDayOfYear(date)
+    const dayOfYear = getDayOfYear(date)
 
     if (token === 'Do') {
       return localize.ordinalNumber(dayOfYear, { unit: 'dayOfYear' })
@@ -329,7 +329,7 @@ const formatters: { [token: string]: Formatter } = {
 
   // Day of week
   E: function (date, token, localize) {
-    const dayOfWeek = date.getUTCDay() as Day
+    const dayOfWeek = date.getDay() as Day
     switch (token) {
       // Tue
       case 'E':
@@ -360,7 +360,7 @@ const formatters: { [token: string]: Formatter } = {
 
   // Local day of week
   e: function (date, token, localize, options) {
-    const dayOfWeek = date.getUTCDay() as Day
+    const dayOfWeek = date.getDay() as Day
     const localDayOfWeek = (dayOfWeek - options.weekStartsOn + 8) % 7 || 7
     switch (token) {
       // Numerical value (Nth day of week with current locale or weekStartsOn)
@@ -398,7 +398,7 @@ const formatters: { [token: string]: Formatter } = {
 
   // Stand-alone local day of week
   c: function (date, token, localize, options) {
-    const dayOfWeek = date.getUTCDay() as Day
+    const dayOfWeek = date.getDay() as Day
     const localDayOfWeek = (dayOfWeek - options.weekStartsOn + 8) % 7 || 7
     switch (token) {
       // Numerical value (same as in `e`)
@@ -436,7 +436,7 @@ const formatters: { [token: string]: Formatter } = {
 
   // ISO day of week
   i: function (date, token, localize) {
-    const dayOfWeek = date.getUTCDay() as Day
+    const dayOfWeek = date.getDay() as Day
     const isoDayOfWeek = dayOfWeek === 0 ? 7 : dayOfWeek
     switch (token) {
       // 2
@@ -475,7 +475,7 @@ const formatters: { [token: string]: Formatter } = {
 
   // AM or PM
   a: function (date, token, localize) {
-    const hours = date.getUTCHours()
+    const hours = date.getHours()
     const dayPeriodEnumValue = hours / 12 >= 1 ? 'pm' : 'am'
 
     switch (token) {
@@ -508,7 +508,7 @@ const formatters: { [token: string]: Formatter } = {
 
   // AM, PM, midnight, noon
   b: function (date, token, localize) {
-    const hours = date.getUTCHours()
+    const hours = date.getHours()
     let dayPeriodEnumValue: LocaleDayPeriod
     if (hours === 12) {
       dayPeriodEnumValue = dayPeriodEnum.noon
@@ -548,7 +548,7 @@ const formatters: { [token: string]: Formatter } = {
 
   // in the morning, in the afternoon, in the evening, at night
   B: function (date, token, localize) {
-    const hours = date.getUTCHours()
+    const hours = date.getHours()
     let dayPeriodEnumValue: LocaleDayPeriod
     if (hours >= 17) {
       dayPeriodEnumValue = dayPeriodEnum.evening
@@ -585,7 +585,7 @@ const formatters: { [token: string]: Formatter } = {
   // Hour [1-12]
   h: function (date, token, localize) {
     if (token === 'ho') {
-      let hours = date.getUTCHours() % 12
+      let hours = date.getHours() % 12
       if (hours === 0) hours = 12
       return localize.ordinalNumber(hours, { unit: 'hour' })
     }
@@ -596,7 +596,7 @@ const formatters: { [token: string]: Formatter } = {
   // Hour [0-23]
   H: function (date, token, localize) {
     if (token === 'Ho') {
-      return localize.ordinalNumber(date.getUTCHours(), { unit: 'hour' })
+      return localize.ordinalNumber(date.getHours(), { unit: 'hour' })
     }
 
     return lightFormatters.H(date, token)
@@ -604,7 +604,7 @@ const formatters: { [token: string]: Formatter } = {
 
   // Hour [0-11]
   K: function (date, token, localize) {
-    const hours = date.getUTCHours() % 12
+    const hours = date.getHours() % 12
 
     if (token === 'Ko') {
       return localize.ordinalNumber(hours, { unit: 'hour' })
@@ -615,7 +615,7 @@ const formatters: { [token: string]: Formatter } = {
 
   // Hour [1-24]
   k: function (date, token, localize) {
-    let hours = date.getUTCHours()
+    let hours = date.getHours()
     if (hours === 0) hours = 24
 
     if (token === 'ko') {
@@ -628,7 +628,7 @@ const formatters: { [token: string]: Formatter } = {
   // Minute
   m: function (date, token, localize) {
     if (token === 'mo') {
-      return localize.ordinalNumber(date.getUTCMinutes(), { unit: 'minute' })
+      return localize.ordinalNumber(date.getMinutes(), { unit: 'minute' })
     }
 
     return lightFormatters.m(date, token)
@@ -637,7 +637,7 @@ const formatters: { [token: string]: Formatter } = {
   // Second
   s: function (date, token, localize) {
     if (token === 'so') {
-      return localize.ordinalNumber(date.getUTCSeconds(), { unit: 'second' })
+      return localize.ordinalNumber(date.getSeconds(), { unit: 'second' })
     }
 
     return lightFormatters.s(date, token)

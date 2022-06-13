@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import subMonths from '.'
+import subMonths from './index'
 
 describe('subMonths', () => {
   it('subtracts the given number of months', () => {

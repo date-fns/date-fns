@@ -37,11 +37,11 @@ export interface SetDayOptions extends LocaleOptions, WeekStartOptions {}
  * const result = setDay(new Date(2014, 8, 1), 0, { weekStartsOn: 1 })
  * //=> Sun Sep 07 2014 00:00:00
  */
-export default function setDay(
-  dirtyDate: Date | number,
+export default function setDay<DateType extends Date>(
+  dirtyDate: DateType | number,
   dirtyDay: number,
   options?: SetDayOptions
-): Date {
+): DateType {
   requiredArgs(2, arguments)
 
   const defaultOptions = getDefaultOptions()

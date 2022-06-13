@@ -28,9 +28,9 @@ export interface DifferenceInQuartersOptions extends RoundingOptions {}
  * const result = differenceInQuarters(new Date(2014, 6, 2), new Date(2013, 11, 31))
  * //=> 2
  */
-export default function differenceInQuarters(
-  dateLeft: Date | number,
-  dateRight: Date | number,
+export default function differenceInQuarters<DateType extends Date>(
+  dateLeft: DateType | number,
+  dateRight: DateType | number,
   options?: DifferenceInQuartersOptions
 ): number {
   requiredArgs(2, arguments)

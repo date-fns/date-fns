@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import isBefore from '.'
+import isBefore from './index'
 
 describe('isBefore', () => {
   it('returns true if the first date is before the second one', () => {

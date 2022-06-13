@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import formatDuration from '.'
+import formatDuration from './index'
 
 describe('formatDuration', () => {
   it('formats full duration', () => {

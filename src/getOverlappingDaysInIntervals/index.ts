@@ -35,9 +35,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> 0
  */
 
-export default function getOverlappingDaysInIntervals(
-  dirtyIntervalLeft: Interval,
-  dirtyIntervalRight: Interval
+export default function getOverlappingDaysInIntervals<DateType extends Date>(
+  dirtyIntervalLeft: Interval<DateType>,
+  dirtyIntervalRight: Interval<DateType>
 ): number {
   requiredArgs(2, arguments)
 

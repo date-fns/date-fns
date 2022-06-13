@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import compareDesc from '.'
+import compareDesc from './index'
 
 describe('compareDesc', () => {
   it('returns 0 if the given dates are equal', () => {

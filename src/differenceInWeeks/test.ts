@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import differenceInWeeks from '.'
+import differenceInWeeks from './index'
 
 describe('differenceInWeeks', () => {
   it('returns the number of full weeks between the given dates', () => {

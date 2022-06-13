@@ -22,7 +22,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = getISOWeeksInYear(new Date(2015, 1, 11))
  * //=> 53
  */
-export default function getISOWeeksInYear(dirtyDate: Date | number): number {
+export default function getISOWeeksInYear<DateType extends Date>(
+  dirtyDate: DateType | number
+): number {
   requiredArgs(1, arguments)
 
   const thisYear = startOfISOWeekYear(dirtyDate)

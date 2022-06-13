@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import add from '.'
+import add from './index'
 import { getDstTransitions } from '../../test/dst/tzOffsetTransitions'
 
 describe('add', () => {

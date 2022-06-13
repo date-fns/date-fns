@@ -25,9 +25,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = closestIndexTo(dateToCompare, datesArray)
  * //=> 1
  */
-export default function closestIndexTo(
-  dirtyDateToCompare: Date | number,
-  dirtyDatesArray: Array<Date | number>
+export default function closestIndexTo<DateType extends Date>(
+  dirtyDateToCompare: DateType | number,
+  dirtyDatesArray: Array<DateType | number>
 ): number | undefined {
   requiredArgs(2, arguments)
 

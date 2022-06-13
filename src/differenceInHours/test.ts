@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import differenceInHours from '.'
+import differenceInHours from './index'
 
 describe('differenceInHours', () => {
   it('returns the number of hours between the given dates with `trunc` as a default rounding method', () => {

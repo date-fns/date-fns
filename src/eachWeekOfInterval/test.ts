@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import eachWeekOfInterval from '.'
+import eachWeekOfInterval from './index'
 
 describe('eachWeekOfInterval', () => {
   it('returns an array with starts of weeks from the week of the start date to the week of the end date', () => {

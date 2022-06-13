@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import eachDayOfInterval from '.'
+import eachDayOfInterval from './index'
 
 describe('eachDayOfInterval', () => {
   it('returns an array with starts of days from the day of the start date to the day of the end date', () => {

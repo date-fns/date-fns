@@ -26,9 +26,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = isSameISOWeek(new Date(2014, 8, 1), new Date(2015, 8, 1))
  * //=> false
  */
-export default function isSameISOWeek(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+export default function isSameISOWeek<DateType extends Date>(
+  dirtyDateLeft: DateType | number,
+  dirtyDateRight: DateType | number
 ): boolean {
   requiredArgs(2, arguments)
 

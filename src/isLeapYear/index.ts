@@ -18,7 +18,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = isLeapYear(new Date(2012, 8, 1))
  * //=> true
  */
-export default function isLeapYear(dirtyDate: Date | number): boolean {
+export default function isLeapYear<DateType extends Date>(
+  dirtyDate: DateType | number
+): boolean {
   requiredArgs(1, arguments)
 
   const date = toDate(dirtyDate)

@@ -19,7 +19,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = lastDayOfYear(new Date(2014, 8, 2, 11, 55, 00))
  * //=> Wed Dec 31 2014 00:00:00
  */
-export default function lastDayOfYear(dirtyDate: Date | number): Date {
+export default function lastDayOfYear<DateType extends Date>(
+  dirtyDate: DateType | number
+): DateType {
   requiredArgs(1, arguments)
 
   const date = toDate(dirtyDate)

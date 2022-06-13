@@ -22,7 +22,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = isThisQuarter(new Date(2014, 6, 2))
  * //=> true
  */
-export default function isThisQuarter(dirtyDate: Date | number): boolean {
+export default function isThisQuarter<DateType extends Date>(
+  dirtyDate: DateType | number
+): boolean {
   requiredArgs(1, arguments)
 
   return isSameQuarter(Date.now(), dirtyDate)

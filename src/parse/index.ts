@@ -1,5 +1,9 @@
-import subMilliseconds from '../subMilliseconds/index'
+import { UTCDateMini } from '@date-fns/utc/date/mini'
+import constructFrom from '../constructFrom/index'
+import getDefaultOptions from '../getDefaultOptions/index'
+import defaultLocale from '../locale/en-US/index'
 import toDate from '../toDate/index'
+import transpose from '../transpose/index'
 import type {
   AdditionalTokensOptions,
   FirstWeekContainsDateOptions,
@@ -7,10 +11,7 @@ import type {
   WeekStartOptions,
 } from '../types'
 import assign from '../_lib/assign/index'
-import defaultLocale from '../_lib/defaultLocale/index'
-import { getDefaultOptions } from '../_lib/defaultOptions/index'
 import longFormatters from '../_lib/format/longFormatters/index'
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
 import {
   isProtectedDayOfYearToken,
   isProtectedWeekYearToken,
@@ -355,12 +356,12 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * })
  * //=> Sun Feb 28 2010 00:00:00
  */
-export default function parse(
+export default function parse<DateType extends Date>(
   dirtyDateString: string,
   dirtyFormatString: string,
-  dirtyReferenceDate: Date | number,
+  dirtyReferenceDate: DateType | number,
   options?: ParseOptions
-): Date {
+): DateType {
   requiredArgs(3, arguments)
 
   let dateString = String(dirtyDateString)
@@ -405,7 +406,7 @@ export default function parse(
     if (dateString === '') {
       return toDate(dirtyReferenceDate)
     } else {
-      return new Date(NaN)
+      return constructFrom(dirtyReferenceDate, NaN)
     }
   }
 
@@ -431,7 +432,7 @@ export default function parse(
     .join('')
     .match(formattingTokensRegExp)!
 
-  const usedTokens: { token: string; fullToken: string }[] = []
+  const usedTokens: Array<{ token: string; fullToken: string }> = []
 
   for (let token of tokens) {
     if (
@@ -478,7 +479,7 @@ export default function parse(
       )
 
       if (!parseResult) {
-        return new Date(NaN)
+        return constructFrom(dirtyReferenceDate, NaN)
       }
 
       setters.push(parseResult.setter)
@@ -504,14 +505,14 @@ export default function parse(
       if (dateString.indexOf(token) === 0) {
         dateString = dateString.slice(token.length)
       } else {
-        return new Date(NaN)
+        return constructFrom(dirtyReferenceDate, NaN)
       }
     }
   }
 
   // Check if the remaining input contains something other than whitespace
   if (dateString.length > 0 && notWhitespaceRegExp.test(dateString)) {
-    return new Date(NaN)
+    return constructFrom(dirtyReferenceDate, NaN)
   }
 
   const uniquePrioritySetters = setters
@@ -528,16 +529,16 @@ export default function parse(
   const date = toDate(dirtyReferenceDate)
 
   if (isNaN(date.getTime())) {
-    return new Date(NaN)
+    return constructFrom(dirtyReferenceDate, NaN)
   }
 
-  // Convert the date in system timezone to the same date in UTC+00:00 timezone.
-  let utcDate = subMilliseconds(date, getTimezoneOffsetInMilliseconds(date))
+  // Transpose the date in system timezone to the same date in UTC.
+  let utcDate = transpose(date, UTCDateMini)
 
   const flags: ParseFlags = {}
   for (const setter of uniquePrioritySetters) {
     if (!setter.validate(utcDate, subFnOptions)) {
-      return new Date(NaN)
+      return constructFrom(dirtyReferenceDate, NaN)
     }
 
     const result = setter.set(utcDate, flags, subFnOptions)
@@ -551,7 +552,7 @@ export default function parse(
     }
   }
 
-  return utcDate
+  return constructFrom(dirtyReferenceDate, utcDate)
 }
 
 function cleanEscapedString(input: string) {

@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import getDecade from '.'
+import getDecade from './index'
 
 describe('getDecade', () => {
   it('returns the decade for a the given date', () => {

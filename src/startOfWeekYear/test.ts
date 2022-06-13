@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import startOfWeekYear from '.'
+import startOfWeekYear from './index'
 
 describe('startOfWeekYear', () => {
   it('returns the date with the time set to 00:00:00 and the date set to the first day of a week year', () => {

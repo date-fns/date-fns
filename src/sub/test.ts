@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import sub from '.'
+import sub from './index'
 
 describe('sub', () => {
   it('subtracts the duration from the given date', () => {

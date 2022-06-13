@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import startOfDay from '.'
+import startOfDay from './index'
 
 describe('startOfDay', () => {
   it('returns the date with the time set to 00:00:00', () => {

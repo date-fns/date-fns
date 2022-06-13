@@ -18,7 +18,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = getDecade(new Date(1942, 10, 27))
  * //=> 1940
  */
-export default function getDecade(dirtyDate: Date | number): number {
+export default function getDecade<DateType extends Date>(
+  dirtyDate: DateType | number
+): number {
   requiredArgs(1, arguments)
 
   const date = toDate(dirtyDate)

@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import getISODay from '.'
+import getISODay from './index'
 
 describe('getISODay', () => {
   it('returns the day of the ISO week of the given date', () => {

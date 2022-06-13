@@ -1,8 +1,8 @@
+import { UTCDateMini } from '@date-fns/utc/date/mini'
 import isValid from '../isValid/index'
-import subMilliseconds from '../subMilliseconds/index'
 import toDate from '../toDate/index'
+import transpose from '../transpose/index'
 import formatters from '../_lib/format/lightFormatters/index'
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 
 // This RegExp consists of three parts separated by `|`:
@@ -78,8 +78,8 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/
 
 type Token = keyof typeof formatters
 
-export default function lightFormat(
-  dirtyDate: Date | number,
+export default function lightFormat<DateType extends Date>(
+  dirtyDate: DateType | number,
   formatStr: string
 ): string {
   requiredArgs(2, arguments)
@@ -90,11 +90,8 @@ export default function lightFormat(
     throw new RangeError('Invalid time value')
   }
 
-  // Convert the date in system timezone to the same date in UTC+00:00 timezone.
-  // This ensures that when UTC functions will be implemented, locales will be compatible with them.
-  // See an issue about UTC functions: https://github.com/date-fns/date-fns/issues/376
-  const timezoneOffset = getTimezoneOffsetInMilliseconds(originalDate)
-  const utcDate = subMilliseconds(originalDate, timezoneOffset)
+  // Transpose the date in system timezone to the same date in UTC.
+  const utcDate = transpose(originalDate, UTCDateMini)
 
   const tokens = formatStr.match(formattingTokensRegExp)
 

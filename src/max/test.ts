@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import max from '.'
+import max from './index'
 
 describe('max', () => {
   const isInvalidDate = (date: any): boolean => {

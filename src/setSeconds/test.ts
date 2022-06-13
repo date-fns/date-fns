@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import setSeconds from '.'
+import setSeconds from './index'
 
 describe('setSeconds', () => {
   it('sets the seconds', () => {

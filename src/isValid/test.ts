@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import isValid from '.'
+import isValid from './index'
 
 describe('isValid', () => {
   it('returns true if the given date is valid', () => {

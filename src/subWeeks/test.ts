@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import subWeeks from '.'
+import subWeeks from './index'
 
 describe('subWeeks', () => {
   it('subtracts the given number of weeks', () => {

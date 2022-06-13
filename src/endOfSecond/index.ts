@@ -19,7 +19,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = endOfSecond(new Date(2014, 11, 1, 22, 15, 45, 400))
  * //=> Mon Dec 01 2014 22:15:45.999
  */
-export default function endOfSecond(dirtyDate: Date | number): Date {
+export default function endOfSecond<DateType extends Date>(
+  dirtyDate: DateType | number
+): DateType {
   requiredArgs(1, arguments)
 
   const date = toDate(dirtyDate)
