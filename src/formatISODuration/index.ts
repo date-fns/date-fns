@@ -57,15 +57,6 @@ export default function formatISODuration(
   } = duration
 
   if (removeZeros === true) {
-    const chunks = [
-      { suffix: 'Y', value: years },
-      { suffix: 'M', value: months },
-      { suffix: 'DT', value: days },
-      { suffix: 'H', value: hours },
-      { suffix: 'M', value: minutes },
-      { suffix: 'S', value: seconds },
-    ]
-
     if (
       years === 0 &&
       months === 0 &&
@@ -77,6 +68,15 @@ export default function formatISODuration(
       // Remove ambiguity between months/minutes when only minutes are present
       return `PT${minutes}M`
     } else {
+      const chunks: { suffix: string; value: number }[] = [
+        { suffix: 'Y', value: years },
+        { suffix: 'M', value: months },
+        { suffix: 'DT', value: days },
+        { suffix: 'H', value: hours },
+        { suffix: 'M', value: minutes },
+        { suffix: 'S', value: seconds },
+      ]
+
       return (
         'P' +
         chunks
