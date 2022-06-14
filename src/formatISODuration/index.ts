@@ -57,34 +57,30 @@ export default function formatISODuration(
   } = duration
 
   if (removeZeros === true) {
-    if (
-      years === 0 &&
-      months === 0 &&
-      days === 0 &&
-      hours === 0 &&
-      seconds === 0 &&
-      minutes !== 0
-    ) {
-      // Remove ambiguity between months/minutes when only minutes are present
-      return `PT${minutes}M`
-    } else {
-      const chunks: { suffix: string; value: number }[] = [
-        { suffix: 'Y', value: years },
-        { suffix: 'M', value: months },
-        { suffix: 'DT', value: days },
-        { suffix: 'H', value: hours },
-        { suffix: 'M', value: minutes },
-        { suffix: 'S', value: seconds },
-      ]
+    type Chunk = { suffix: string; value: number }
 
-      return (
-        'P' +
-        chunks
-          .filter(({ value }) => value > 0)
-          .map(({ suffix, value }) => `${value}${suffix}`)
-          .join('')
-      )
-    }
+    const formatPart = (chunks: Chunk[]): string =>
+      chunks
+        .filter(({ value }) => value > 0)
+        .map(({ suffix, value }) => `${value}${suffix}`)
+        .join('')
+
+    const dateChunks: Chunk[] = [
+      { suffix: 'Y', value: years },
+      { suffix: 'M', value: months },
+      { suffix: 'D', value: days },
+    ]
+
+    const timeChunks: Chunk[] = [
+      { suffix: 'H', value: hours },
+      { suffix: 'M', value: minutes },
+      { suffix: 'S', value: seconds },
+    ]
+
+    const datePart = formatPart(dateChunks)
+    const timePart = formatPart(timeChunks)
+
+    return `P${datePart}${timePart.length > 0 ? `T${timePart}` : ''}`
   } else {
     return `P${years}Y${months}M${days}DT${hours}H${minutes}M${seconds}S`
   }

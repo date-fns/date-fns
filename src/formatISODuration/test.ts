@@ -84,11 +84,11 @@ describe('formatISODuration with the removeZeros flag active', () => {
     assert(result === 'P39Y2M20DT7H5M')
   })
   it('Removes values with zero', () => {
-    const start = new Date(2020, 2, 5, 12, 0, 0)
-    const end = new Date(2021, 2, 1, 12, 0, 0)
+    const start = new Date(2020, 2, 1, 12, 0, 0)
+    const end = new Date(2021, 2, 5, 12, 0, 11)
     const result = formatISODuration(intervalToDuration({ start, end }), true)
 
-    assert(result === 'P11M24DT')
+    assert(result === 'P1Y4DT11S')
   })
   it('Handles ambiguity when only minutes are present', () => {
     const start = new Date(2020, 2, 5, 12, 0, 0)
@@ -103,5 +103,12 @@ describe('formatISODuration with the removeZeros flag active', () => {
     const result = formatISODuration(intervalToDuration({ start, end }), true)
 
     assert(result === 'P2M')
+  })
+  it('Get rid of the T if time is not present', () => {
+    const start = new Date(2020, 2, 5, 12, 0, 0)
+    const end = new Date(2021, 2, 11, 12, 0, 0)
+    const result = formatISODuration(intervalToDuration({ start, end }), true)
+
+    assert(result === 'P1Y6D')
   })
 })
