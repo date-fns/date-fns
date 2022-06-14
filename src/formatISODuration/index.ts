@@ -36,7 +36,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *   days: 0,
  *   hours: 7
  * });
- * //=> 'P39Y7H'
+ * //=> 'P39YT7H'
  */
 export default function formatISODuration(
   duration: Duration,
