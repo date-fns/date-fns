@@ -1,4 +1,3 @@
-import toDate from '../toDate/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
@@ -18,10 +17,14 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = getTime(new Date(2012, 1, 29, 11, 45, 5, 123))
  * //=> 1330515905123
  */
-export default function getTime(dirtyDate: Date | number): number {
+export default function getTime(date: Date | number): number {
   requiredArgs(1, arguments)
 
-  const date = toDate(dirtyDate)
-  const timestamp = date.getTime()
-  return timestamp
+  if (date instanceof Date) {
+    return date.getTime()
+  } else if (typeof date === 'number') {
+    return date
+  }
+
+  return NaN
 }

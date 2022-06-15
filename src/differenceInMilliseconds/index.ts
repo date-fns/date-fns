@@ -1,4 +1,5 @@
 import toDate from '../toDate/index'
+import getTime from '../getTime/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
@@ -28,6 +29,13 @@ export default function differenceInMilliseconds(
   dateRight: Date | number
 ): number {
   requiredArgs(2, arguments)
+
+  const timestampLeft = getTime(dateLeft)
+  const timestampRight = getTime(dateRight)
+
+  if (!Number.isNaN(timestampLeft) && !Number.isNaN(timestampRight)) {
+    return timestampLeft - timestampRight
+  }
 
   return toDate(dateLeft).getTime() - toDate(dateRight).getTime()
 }
