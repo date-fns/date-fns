@@ -8,7 +8,7 @@ import match from './_lib/match/index'
 /**
  * @type {Locale}
  * @category Locales
- * @summary Arabic locale (Sauid Arabic).
+ * @summary Arabic locale (Saudi Arabic).
  * @language Arabic
  * @iso-639-2 ara
  * @author Dhaifallah Alwadani [@dalwadani]{@link https://github.com/dalwadani}

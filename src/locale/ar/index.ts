@@ -1,14 +1,14 @@
+import type { Locale } from '../types'
 import formatDistance from './_lib/formatDistance/index'
 import formatLong from './_lib/formatLong/index'
 import formatRelative from './_lib/formatRelative/index'
 import localize from './_lib/localize/index'
 import match from './_lib/match/index'
-import type { Locale } from '../types'
 
 /**
  * @type {Locale}
  * @category Locales
- * @summary Arabic locale (Modern Standard Arabic - Al-fussha).
+ * @summary Arabic locale (Modern Standard Arabic - Al-fusha).
  * @language Modern Standard Arabic
  * @iso-639-2 ara
  * @author Abdallah Hassan [@AbdallahAHO]{@link https://github.com/AbdallahAHO}

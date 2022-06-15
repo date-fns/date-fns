@@ -8,7 +8,7 @@ import match from './_lib/match/index'
 /**
  * @type {Locale}
  * @category Locales
- * @summary Chinese Traditional locale.
+ * @summary Chinese Traditional locale (Taiwan).
  * @language Chinese Traditional
  * @iso-639-2 zho
  * @author tonypai [@tpai]{@link https://github.com/tpai}

@@ -8,7 +8,7 @@ import match from './_lib/match/index'
 /**
  * @type {Locale}
  * @category Locales
- * @summary Chinese Simplified locale.
+ * @summary Chinese Simplified locale (Mainland China).
  * @language Chinese Simplified
  * @iso-639-2 zho
  * @author Changyu Geng [@KingMario]{@link https://github.com/KingMario}

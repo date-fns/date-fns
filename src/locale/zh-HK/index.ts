@@ -8,7 +8,7 @@ import match from './_lib/match/index'
 /**
  * @type {Locale}
  * @category Locales
- * @summary Chinese Traditional locale.
+ * @summary Chinese Traditional locale (Hong Kong).
  * @language Chinese Traditional
  * @iso-639-2 zho
  * @author Gary Ip [@gaplo]{@link https://github.com/gaplo}

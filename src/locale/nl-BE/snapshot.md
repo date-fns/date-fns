@@ -1,4 +1,4 @@
-# Dutch (nl-BE) locale
+# Dutch (Belgium) (nl-BE) locale
 
 ## `format` and `parse`
 
