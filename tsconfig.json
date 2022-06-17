@@ -21,6 +21,6 @@
   "exclude": ["node_modules", "dist", "tmp"],
   "typedocOptions": {
     "entryPoints": ["src/index.ts"],
-    "out": "docs"
+    "out": "new_docs"
   }
 }
