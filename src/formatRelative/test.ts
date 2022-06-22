@@ -123,50 +123,18 @@ describe('formatRelative', () => {
           locale: customLocale,
         }
       )
-      assert(result === 'It works perfectly!')
+      assert.strictEqual(result, 'It works perfectly!')
     })
 
-    it("throws `RangeError` if `options.locale` doesn't have `localize` property", () => {
+    it("works as usual even if `options.locale` only has `formatRelative` property", () => {
       const customLocale = {
-        formatLong: {},
-        formatRelative: () => {
-          return ''
-        },
+        formatRelative: () => 'MM/dd/yyyy',
       }
-      const block = () =>
-        formatRelative(new Date(2017, 0, 1), baseDate, {
-          // @ts-expect-error
-          locale: customLocale,
-        })
-      assert.throws(block, RangeError)
-    })
+      const result = formatRelative(new Date(2017, 0, 1), baseDate, {
+        locale: customLocale,
+      })
 
-    it("throws `RangeError` if `options.locale` doesn't have `formatLong` property", () => {
-      const customLocale = {
-        localize: {},
-        formatRelative: () => {
-          return ''
-        },
-      }
-      const block = () =>
-        formatRelative(new Date(2017, 0, 1), baseDate, {
-          // @ts-expect-error
-          locale: customLocale,
-        })
-      assert.throws(block, RangeError)
-    })
-
-    it("throws `RangeError` if `options.locale` doesn't have `formatRelative` property", () => {
-      const customLocale = {
-        localize: {},
-        formatLong: {},
-      }
-      const block = () =>
-        formatRelative(new Date(2017, 0, 1), baseDate, {
-          // @ts-expect-error
-          locale: customLocale,
-        })
-      assert.throws(block, RangeError)
+      assert.strictEqual(result, '01/01/2017')
     })
   })
 
