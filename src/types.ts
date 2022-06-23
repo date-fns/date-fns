@@ -121,3 +121,13 @@ export interface RoundToNearestMinutesOptions {
 export interface AreIntervalsOverlappingOptions {
   inclusive?: boolean
 }
+
+export type IntlOptionsUnit =
+  | 'year'
+  | 'quarter'
+  | 'month'
+  | 'week'
+  | 'day'
+  | 'hour'
+  | 'minute'
+  | 'second'
