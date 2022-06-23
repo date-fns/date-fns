@@ -14,6 +14,7 @@ function prebuild {
 
 if [ "$TEST_SUITE" == "main" ]
 then
+  yarn tsc --noEmit
   yarn lint
   yarn lint-types
   yarn locale-snapshots test
