@@ -3,7 +3,7 @@
 import assert from 'assert'
 import sinon from 'sinon'
 import formatRFC3339 from '.'
-import { generateOffset } from '../formatISO/test'
+import { generateOffset } from '../_lib/test'
 
 describe('formatRFC3339', () => {
   it('formats RFC-3339 date string', () => {
