@@ -1,13 +1,14 @@
+import { getDefaultOptions } from '../_lib/defaultOptions/index'
 import compareAsc from '../compareAsc/index'
 import differenceInMonths from '../differenceInMonths/index'
 import differenceInSeconds from '../differenceInSeconds/index'
-import defaultLocale from '../locale/en-US/index'
+import defaultLocale from '../_lib/defaultLocale/index'
 import toDate from '../toDate/index'
 import cloneObject from '../_lib/cloneObject/index'
 import assign from '../_lib/assign'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import type { LocaleOptions } from '../types'
+import type { FormatDistanceOptions, LocaleOptions } from '../types'
 
 const MINUTES_IN_DAY = 1440
 const MINUTES_IN_ALMOST_TWO_DAYS = 2520
@@ -98,14 +99,12 @@ const MINUTES_IN_TWO_MONTHS = 86400
 export default function formatDistance(
   dirtyDate: Date | number,
   dirtyBaseDate: Date | number,
-  options: LocaleOptions & {
-    includeSeconds?: boolean
-    addSuffix?: boolean
-  } = {}
+  options?: LocaleOptions & FormatDistanceOptions
 ): string {
   requiredArgs(2, arguments)
 
-  const locale = options.locale || defaultLocale
+  const defaultOptions = getDefaultOptions()
+  const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale
 
   if (!locale.formatDistance) {
     throw new RangeError('locale must contain formatDistance property')
@@ -118,7 +117,7 @@ export default function formatDistance(
   }
 
   const localizeOptions = assign(cloneObject(options), {
-    addSuffix: Boolean(options.addSuffix),
+    addSuffix: Boolean(options?.addSuffix),
     comparison: comparison as -1 | 0 | 1,
   })
 
@@ -142,7 +141,7 @@ export default function formatDistance(
 
   // 0 up to 2 mins
   if (minutes < 2) {
-    if (options.includeSeconds) {
+    if (options?.includeSeconds) {
       if (seconds < 5) {
         return locale.formatDistance('lessThanXSeconds', 5, localizeOptions)
       } else if (seconds < 10) {

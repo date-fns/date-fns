@@ -8,6 +8,7 @@ import type {
   WeekStartOptions,
   FirstWeekContainsDateOptions,
 } from '../types'
+import { getDefaultOptions } from '../_lib/defaultOptions/index'
 
 /**
  * @name setWeekYear
@@ -53,21 +54,18 @@ import type {
 export default function setWeekYear(
   dirtyDate: Date | number,
   dirtyWeekYear: number,
-  options: LocaleOptions & WeekStartOptions & FirstWeekContainsDateOptions = {}
+  options?: LocaleOptions & WeekStartOptions & FirstWeekContainsDateOptions
 ): Date {
   requiredArgs(2, arguments)
 
-  const locale = options.locale
-  const localeFirstWeekContainsDate =
-    locale && locale.options && locale.options.firstWeekContainsDate
-  const defaultFirstWeekContainsDate =
-    localeFirstWeekContainsDate == null
-      ? 1
-      : toInteger(localeFirstWeekContainsDate)
-  const firstWeekContainsDate =
-    options.firstWeekContainsDate == null
-      ? defaultFirstWeekContainsDate
-      : toInteger(options.firstWeekContainsDate)
+  const defaultOptions = getDefaultOptions()
+  const firstWeekContainsDate = toInteger(
+    options?.firstWeekContainsDate ??
+      options?.locale?.options?.firstWeekContainsDate ??
+      defaultOptions.firstWeekContainsDate ??
+      defaultOptions.locale?.options?.firstWeekContainsDate ??
+      1
+  )
 
   let date = toDate(dirtyDate)
   const weekYear = toInteger(dirtyWeekYear)

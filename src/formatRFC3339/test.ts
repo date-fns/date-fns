@@ -3,28 +3,7 @@
 import assert from 'assert'
 import sinon from 'sinon'
 import formatRFC3339 from '.'
-import toInteger from '../_lib/toInteger/index'
-import addLeadingZeros from '../_lib/addLeadingZeros/index'
-
-// This makes sure we create the consistent offsets across timezones, no matter where these tests are ran.
-function generateOffset(date: Date): string {
-  let offset = ''
-  const tzOffset = date.getTimezoneOffset()
-
-  if (tzOffset !== 0) {
-    const absoluteOffset = Math.abs(tzOffset)
-    const hourOffset = addLeadingZeros(toInteger(absoluteOffset / 60), 2)
-    const minuteOffset = addLeadingZeros(absoluteOffset % 60, 2)
-    // If less than 0, the sign is +, because it is ahead of time.
-    const sign = tzOffset < 0 ? '+' : '-'
-
-    offset = `${sign}${hourOffset}:${minuteOffset}`
-  } else {
-    offset = 'Z'
-  }
-
-  return offset
-}
+import { generateOffset } from '../_lib/test'
 
 describe('formatRFC3339', () => {
   it('formats RFC-3339 date string', () => {

@@ -3,6 +3,7 @@ import toDate from '../toDate/index'
 import toInteger from '../_lib/toInteger/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 import type { LocaleOptions, WeekStartOptions } from '../types'
+import { getDefaultOptions } from '../_lib/defaultOptions/index'
 
 /**
  * @name setDay
@@ -34,20 +35,18 @@ import type { LocaleOptions, WeekStartOptions } from '../types'
 export default function setDay(
   dirtyDate: Date | number,
   dirtyDay: number,
-  dirtyOptions?: WeekStartOptions & LocaleOptions
+  options?: WeekStartOptions & LocaleOptions
 ): Date {
   requiredArgs(2, arguments)
 
-  const options = dirtyOptions || {}
-  const locale = options.locale
-  const localeWeekStartsOn =
-    locale && locale.options && locale.options.weekStartsOn
-  const defaultWeekStartsOn =
-    localeWeekStartsOn == null ? 0 : toInteger(localeWeekStartsOn)
-  const weekStartsOn =
-    options.weekStartsOn == null
-      ? defaultWeekStartsOn
-      : toInteger(options.weekStartsOn)
+  const defaultOptions = getDefaultOptions()
+  const weekStartsOn = toInteger(
+    options?.weekStartsOn ??
+      options?.locale?.options?.weekStartsOn ??
+      defaultOptions.weekStartsOn ??
+      defaultOptions.locale?.options?.weekStartsOn ??
+      0
+  )
 
   // Test if weekStartsOn is between 0 and 6 _and_ is not NaN
   if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {

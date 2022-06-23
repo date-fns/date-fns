@@ -1,5 +1,5 @@
 import toDate from '../toDate/index'
-import type { Interval } from '../types'
+import type { Interval, StepOptions } from '../types'
 import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
@@ -35,7 +35,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  */
 export default function eachDayOfInterval(
   dirtyInterval: Interval,
-  options?: { step?: number }
+  options?: StepOptions
 ): Date[] {
   requiredArgs(1, arguments)
 
@@ -55,7 +55,7 @@ export default function eachDayOfInterval(
   const currentDate = startDate
   currentDate.setHours(0, 0, 0, 0)
 
-  const step = options && 'step' in options ? Number(options.step) : 1
+  const step = Number(options?.step ?? 1)
   if (step < 1 || isNaN(step))
     throw new RangeError('`options.step` must be a number greater than 1')
 

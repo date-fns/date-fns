@@ -9,8 +9,8 @@ export interface ParseFlags {
   era?: number
 }
 
-export type ParserOptions = LocaleOptions &
-  FirstWeekContainsDateOptions &
-  WeekStartOptions
+export type ParserOptions = Required<
+  LocaleOptions & FirstWeekContainsDateOptions & WeekStartOptions
+>
 
 export type ParseResult<TValue> = { value: TValue; rest: string } | null

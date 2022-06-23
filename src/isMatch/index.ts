@@ -5,6 +5,7 @@ import type {
   LocaleOptions,
   WeekStartOptions,
   FirstWeekContainsDateOptions,
+  AdditionalTokensOptions,
 } from '../types'
 
 /**
@@ -302,7 +303,10 @@ import type {
 export default function isMatch(
   dateString: string,
   formatString: string,
-  options?: LocaleOptions & WeekStartOptions & FirstWeekContainsDateOptions
+  options?: LocaleOptions &
+    WeekStartOptions &
+    FirstWeekContainsDateOptions &
+    AdditionalTokensOptions
 ): boolean {
   requiredArgs(2, arguments)
   return isValid(parse(dateString, formatString, new Date(), options))

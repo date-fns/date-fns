@@ -1,5 +1,4 @@
 import isValid from '../isValid/index'
-import defaultLocale from '../locale/en-US/index'
 import subMilliseconds from '../subMilliseconds/index'
 import toDate from '../toDate/index'
 import formatters from '../_lib/format/formatters/index'
@@ -18,7 +17,10 @@ import type {
   WeekStartOptions,
   Day,
   FirstWeekContainsDate,
+  AdditionalTokensOptions,
 } from '../types'
+import { getDefaultOptions } from '../_lib/defaultOptions/index'
+import defaultLocale from '../_lib/defaultLocale/index'
 
 // This RegExp consists of three parts separated by `|`:
 // - [yYQqMLwIdDecihHKkms]o matches any available ordinal number token
@@ -336,30 +338,25 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/
 export default function format(
   dirtyDate: Date | number,
   dirtyFormatStr: string,
-  dirtyOptions?: LocaleOptions &
+  options?: LocaleOptions &
     WeekStartOptions &
-    FirstWeekContainsDateOptions & {
-      useAdditionalWeekYearTokens?: boolean
-      useAdditionalDayOfYearTokens?: boolean
-    }
+    FirstWeekContainsDateOptions &
+    AdditionalTokensOptions
 ): string {
   requiredArgs(2, arguments)
 
   const formatStr = String(dirtyFormatStr)
-  const options = dirtyOptions || {}
 
-  const locale = options.locale || defaultLocale
+  const defaultOptions = getDefaultOptions()
+  const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale
 
-  const localeFirstWeekContainsDate =
-    locale.options && locale.options.firstWeekContainsDate
-  const defaultFirstWeekContainsDate =
-    localeFirstWeekContainsDate == null
-      ? 1
-      : toInteger(localeFirstWeekContainsDate)
-  const firstWeekContainsDate =
-    options.firstWeekContainsDate == null
-      ? defaultFirstWeekContainsDate
-      : toInteger(options.firstWeekContainsDate)
+  const firstWeekContainsDate = toInteger(
+    options?.firstWeekContainsDate ??
+      options?.locale?.options?.firstWeekContainsDate ??
+      defaultOptions.firstWeekContainsDate ??
+      defaultOptions.locale?.options?.firstWeekContainsDate ??
+      1
+  )
 
   // Test if weekStartsOn is between 1 and 7 _and_ is not NaN
   if (!(firstWeekContainsDate >= 1 && firstWeekContainsDate <= 7)) {
@@ -368,13 +365,13 @@ export default function format(
     )
   }
 
-  const localeWeekStartsOn = locale.options && locale.options.weekStartsOn
-  const defaultWeekStartsOn =
-    localeWeekStartsOn == null ? 0 : toInteger(localeWeekStartsOn)
-  const weekStartsOn =
-    options.weekStartsOn == null
-      ? defaultWeekStartsOn
-      : toInteger(options.weekStartsOn)
+  const weekStartsOn = toInteger(
+    options?.weekStartsOn ??
+      options?.locale?.options?.weekStartsOn ??
+      defaultOptions.weekStartsOn ??
+      defaultOptions.locale?.options?.weekStartsOn ??
+      0
+  )
 
   // Test if weekStartsOn is between 0 and 6 _and_ is not NaN
   if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {
@@ -434,13 +431,13 @@ export default function format(
       const formatter = formatters[firstCharacter]
       if (formatter) {
         if (
-          !options.useAdditionalWeekYearTokens &&
+          !options?.useAdditionalWeekYearTokens &&
           isProtectedWeekYearToken(substring)
         ) {
           throwProtectedError(substring, dirtyFormatStr, String(dirtyDate))
         }
         if (
-          !options.useAdditionalDayOfYearTokens &&
+          !options?.useAdditionalDayOfYearTokens &&
           isProtectedDayOfYearToken(substring)
         ) {
           throwProtectedError(substring, dirtyFormatStr, String(dirtyDate))

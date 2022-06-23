@@ -1,4 +1,4 @@
-import defaultLocale from '../locale/en-US/index'
+import defaultLocale from '../_lib/defaultLocale/index'
 import subMilliseconds from '../subMilliseconds/index'
 import toDate from '../toDate/index'
 import assign from '../_lib/assign/index'
@@ -15,12 +15,12 @@ import type { ParserOptions, ParseFlags } from './_lib/types'
 import { Setter, DateToSystemTimezoneSetter } from './_lib/Setter'
 import { parsers } from './_lib/parsers'
 import type {
-  FirstWeekContainsDate,
   FirstWeekContainsDateOptions,
   LocaleOptions,
   WeekStartOptions,
-  Day,
+  AdditionalTokensOptions,
 } from '../types'
+import { getDefaultOptions } from '../_lib/defaultOptions/index'
 
 // This RegExp consists of three parts separated by `|`:
 // - [yYQqMLwIdDecihHKkms]o matches any available ordinal number token
@@ -44,13 +44,6 @@ const doubleQuoteRegExp = /''/g
 
 const notWhitespaceRegExp = /\S/
 const unescapedLatinCharacterRegExp = /[a-zA-Z]/
-
-type ParseOptions = LocaleOptions &
-  FirstWeekContainsDateOptions &
-  WeekStartOptions & {
-    useAdditionalWeekYearTokens?: boolean
-    useAdditionalDayOfYearTokens?: boolean
-  }
 
 /**
  * @name parse
@@ -357,30 +350,30 @@ export default function parse(
   dirtyDateString: string,
   dirtyFormatString: string,
   dirtyReferenceDate: Date | number,
-  dirtyOptions?: ParseOptions
+  options?: LocaleOptions &
+    FirstWeekContainsDateOptions &
+    WeekStartOptions &
+    AdditionalTokensOptions
 ): Date {
   requiredArgs(3, arguments)
 
   let dateString = String(dirtyDateString)
   const formatString = String(dirtyFormatString)
-  const options = dirtyOptions || {}
 
-  const locale = options.locale || defaultLocale
+  const defaultOptions = getDefaultOptions()
+  const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale
 
   if (!locale.match) {
     throw new RangeError('locale must contain match property')
   }
 
-  const localeFirstWeekContainsDate =
-    locale.options && locale.options.firstWeekContainsDate
-  const defaultFirstWeekContainsDate =
-    localeFirstWeekContainsDate == null
-      ? 1
-      : toInteger(localeFirstWeekContainsDate)
-  const firstWeekContainsDate =
-    options.firstWeekContainsDate == null
-      ? defaultFirstWeekContainsDate
-      : toInteger(options.firstWeekContainsDate)
+  const firstWeekContainsDate = toInteger(
+    options?.firstWeekContainsDate ??
+      options?.locale?.options?.firstWeekContainsDate ??
+      defaultOptions.firstWeekContainsDate ??
+      defaultOptions.locale?.options?.firstWeekContainsDate ??
+      1
+  )
 
   // Test if weekStartsOn is between 1 and 7 _and_ is not NaN
   if (!(firstWeekContainsDate >= 1 && firstWeekContainsDate <= 7)) {
@@ -389,13 +382,13 @@ export default function parse(
     )
   }
 
-  const localeWeekStartsOn = locale.options && locale.options.weekStartsOn
-  const defaultWeekStartsOn =
-    localeWeekStartsOn == null ? 0 : toInteger(localeWeekStartsOn)
-  const weekStartsOn =
-    options.weekStartsOn == null
-      ? defaultWeekStartsOn
-      : toInteger(options.weekStartsOn)
+  const weekStartsOn = toInteger(
+    options?.weekStartsOn ??
+      options?.locale?.options?.weekStartsOn ??
+      defaultOptions.weekStartsOn ??
+      defaultOptions.locale?.options?.weekStartsOn ??
+      0
+  )
 
   // Test if weekStartsOn is between 0 and 6 _and_ is not NaN
   if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {
@@ -411,9 +404,9 @@ export default function parse(
   }
 
   const subFnOptions: ParserOptions = {
-    firstWeekContainsDate: firstWeekContainsDate as FirstWeekContainsDate,
-    weekStartsOn: weekStartsOn as Day,
-    locale: locale,
+    firstWeekContainsDate,
+    weekStartsOn,
+    locale,
   }
 
   // If timezone isn't specified, it will be set to the system timezone
@@ -436,13 +429,13 @@ export default function parse(
 
   for (let token of tokens) {
     if (
-      !options.useAdditionalWeekYearTokens &&
+      !options?.useAdditionalWeekYearTokens &&
       isProtectedWeekYearToken(token)
     ) {
       throwProtectedError(token, formatString, dirtyDateString)
     }
     if (
-      !options.useAdditionalDayOfYearTokens &&
+      !options?.useAdditionalDayOfYearTokens &&
       isProtectedDayOfYearToken(token)
     ) {
       throwProtectedError(token, formatString, dirtyDateString)
