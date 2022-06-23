@@ -54,7 +54,7 @@ const monthValues = {
 const dayValues = {
   narrow: ['S', 'M', 'Þ', 'M', 'F', 'F', 'L'] as const,
   short: ['Su', 'Má', 'Þr', 'Mi', 'Fi', 'Fö', 'La'] as const,
-  abbreviated: ['sun.', 'mán.', 'þri.', 'mið.', 'fim.', 'fös.', 'lau'] as const,
+  abbreviated: ['sun.', 'mán.', 'þri.', 'mið.', 'fim.', 'fös.', 'lau.'] as const,
   wide: [
     'sunnudagur',
     'mánudagur',
