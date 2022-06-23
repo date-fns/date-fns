@@ -22,7 +22,7 @@ describe('getDefaultOptions', () => {
   it('returns a clone of the original object', () => {
     setInternalDefaultOptions({ weekStartsOn: 1 })
     const result = getDefaultOptions()
-    assert.strictEqual(getInternalDefaultOptions(), result)
+    assert.deepStrictEqual(getInternalDefaultOptions(), result)
   })
 
   it('mutating the result does not affect functions that use options', () => {
