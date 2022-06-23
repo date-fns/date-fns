@@ -1205,6 +1205,51 @@ declare module 'date-fns' {
   const secondsInMinute: number
 }
 
+declare module 'date-fns/constants' {
+  export const daysInWeek: number
+  export const maxTime: number
+  export const millisecondsInMinute: number
+  export const millisecondsInHour: number
+  export const millisecondsInSecond: number
+  export const minTime: number
+  export const minutesInHour: number
+  export const monthsInQuarter: number
+  export const monthsInYear: number
+  export const quartersInYear: number
+  export const secondsInHour: number
+  export const secondsInMinute: number
+}
+
+declare module 'date-fns/constants/index' {
+  export const daysInWeek: number
+  export const maxTime: number
+  export const millisecondsInMinute: number
+  export const millisecondsInHour: number
+  export const millisecondsInSecond: number
+  export const minTime: number
+  export const minutesInHour: number
+  export const monthsInQuarter: number
+  export const monthsInYear: number
+  export const quartersInYear: number
+  export const secondsInHour: number
+  export const secondsInMinute: number
+}
+
+declare module 'date-fns/constants/index.js' {
+  export const daysInWeek: number
+  export const maxTime: number
+  export const millisecondsInMinute: number
+  export const millisecondsInHour: number
+  export const millisecondsInSecond: number
+  export const minTime: number
+  export const minutesInHour: number
+  export const monthsInQuarter: number
+  export const monthsInYear: number
+  export const quartersInYear: number
+  export const secondsInHour: number
+  export const secondsInMinute: number
+}
+
 declare module 'date-fns/add' {
   import { add } from 'date-fns'
   export default add

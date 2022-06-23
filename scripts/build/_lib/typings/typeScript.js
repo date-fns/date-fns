@@ -197,6 +197,23 @@ function getTypeScriptLocaleIndexModuleDefinition(submodule, locales) {
   }
 }
 
+function getTypeScriptConstantsModuleDefinition(constants, fnSuffix) {
+  const moduleName = `date-fns/constants${fnSuffix}`
+
+  const definition = formatBlock`
+    declare module '${moduleName}' {
+      ${constants
+        .map((c) => `export const ${c.name}: ${c.type.names.join(' | ')}`)
+        .join('\n')}
+    }
+  `
+
+  return {
+    name: moduleName,
+    definition,
+  }
+}
+
 function getTypeScriptLocaleDefinition(locale) {
   const { name } = locale
 
@@ -263,6 +280,15 @@ function generateTypescriptLocaleTyping(locale) {
   writeFile(`src/locale/${locale.code}/index.d.ts`, typingFile)
 }
 
+function generateTypescriptConstantsTyping(constants) {
+  const typingFile = formatTypeScriptFile`
+    ${constants
+      .map((c) => `export const ${c.name}: ${c.type.names.join(' | ')}`)
+      .join('\n')}
+  `
+  writeFile(`src/constants/index.d.ts`, typingFile)
+}
+
 function generateTypeScriptTypings(fns, aliases, locales, constants) {
   const nonFPFns = fns.filter((fn) => !fn.isFPFn)
   const fpFns = fns.filter((fn) => fn.isFPFn)
@@ -272,6 +298,9 @@ function generateTypeScriptTypings(fns, aliases, locales, constants) {
 
   const moduleDefinitions = [
     getTypeScriptDateFnsModuleDefinition('', nonFPFns, constantsDefinitions),
+    getTypeScriptConstantsModuleDefinition(constants, ''),
+    getTypeScriptConstantsModuleDefinition(constants, '/index'),
+    getTypeScriptConstantsModuleDefinition(constants, '/index.js'),
   ]
     .concat(nonFPFns.map(getTypeScriptFnModuleDefinition.bind(null, '', '')))
     .concat(
@@ -453,6 +482,8 @@ function generateTypeScriptTypings(fns, aliases, locales, constants) {
   locales.forEach((locale) => {
     generateTypescriptLocaleTyping(locale)
   })
+
+  generateTypescriptConstantsTyping(constants)
 }
 
 function writeFile(relativePath, content) {
