@@ -1,4 +1,4 @@
-import { _defaultOptions } from '../_lib/defaultOptions/index'
+import { getDefaultOptions } from '../_lib/defaultOptions/index'
 import defaultLocale from '../_lib/defaultLocale/index'
 import type { FormatDistanceToken } from '../locale/types'
 import type { Duration, FormatDurationOptions, LocaleOptions } from '../types'
@@ -85,10 +85,11 @@ export default function formatDuration(
     )
   }
 
-  const format = options?.format ?? _defaultOptions.format ?? defaultFormat
-  const locale = options?.locale ?? _defaultOptions.locale ?? defaultLocale
-  const zero = options?.zero ?? _defaultOptions.zero ?? false
-  const delimiter = options?.delimiter ?? _defaultOptions.delimiter ?? ' '
+  const defaultOptions = getDefaultOptions()
+  const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale
+  const format = options?.format ?? defaultFormat
+  const zero = options?.zero ?? false
+  const delimiter = options?.delimiter ?? ' '
 
   if (!locale.formatDistance) {
     return ''

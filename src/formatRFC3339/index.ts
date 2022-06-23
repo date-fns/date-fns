@@ -3,7 +3,6 @@ import isValid from '../isValid/index'
 import addLeadingZeros from '../_lib/addLeadingZeros/index'
 import toInteger from '../_lib/toInteger/index'
 import { FormatRFC3339Options } from 'src/types'
-import { _defaultOptions } from '../_lib/defaultOptions/index'
 
 /**
  * @name formatRFC3339
@@ -52,9 +51,7 @@ export default function formatRFC3339(
     throw new RangeError('Invalid time value')
   }
 
-  const fractionDigits = Number(
-    options?.fractionDigits ?? _defaultOptions.fractionDigits ?? 0
-  )
+  const fractionDigits = Number(options?.fractionDigits ?? 0)
 
   // Test if fractionDigits is between 0 and 3 _and_ is not NaN
   if (!(fractionDigits >= 0 && fractionDigits <= 3)) {

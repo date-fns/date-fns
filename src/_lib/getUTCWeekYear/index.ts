@@ -7,7 +7,7 @@ import type {
 import requiredArgs from '../requiredArgs/index'
 import startOfUTCWeek from '../startOfUTCWeek/index'
 import toInteger from '../toInteger/index'
-import { _defaultOptions } from '../defaultOptions/index'
+import { getDefaultOptions } from '../defaultOptions/index'
 
 export default function getUTCWeekYear(
   dirtyDate: Date | number,
@@ -18,11 +18,12 @@ export default function getUTCWeekYear(
   const date = toDate(dirtyDate)
   const year = date.getUTCFullYear()
 
+  const defaultOptions = getDefaultOptions()
   const firstWeekContainsDate = toInteger(
     options?.firstWeekContainsDate ??
       options?.locale?.options?.firstWeekContainsDate ??
-      _defaultOptions.firstWeekContainsDate ??
-      _defaultOptions.locale?.options?.firstWeekContainsDate ??
+      defaultOptions.firstWeekContainsDate ??
+      defaultOptions.locale?.options?.firstWeekContainsDate ??
       1
   )
 

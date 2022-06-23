@@ -2,7 +2,7 @@ import toDate from '../toDate/index'
 import toInteger from '../_lib/toInteger/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 import type { LocaleOptions, WeekStartOptions } from '../types'
-import { _defaultOptions } from '../_lib/defaultOptions/index'
+import { getDefaultOptions } from '../_lib/defaultOptions/index'
 
 /**
  * @name lastDayOfWeek
@@ -37,11 +37,12 @@ export default function lastDayOfWeek(
 ): Date {
   requiredArgs(1, arguments)
 
+  const defaultOptions = getDefaultOptions()
   const weekStartsOn = toInteger(
     options?.weekStartsOn ??
       options?.locale?.options?.weekStartsOn ??
-      _defaultOptions.weekStartsOn ??
-      _defaultOptions.locale?.options?.weekStartsOn ??
+      defaultOptions.weekStartsOn ??
+      defaultOptions.locale?.options?.weekStartsOn ??
       0
   )
 

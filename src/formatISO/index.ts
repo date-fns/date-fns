@@ -2,7 +2,6 @@ import toDate from '../toDate/index'
 import type { FormatOptions, RepresentationOptions } from '../types'
 import addLeadingZeros from '../_lib/addLeadingZeros/index'
 import requiredArgs from '../_lib/requiredArgs'
-import { _defaultOptions } from '../_lib/defaultOptions/index'
 
 /**
  * @name formatISO
@@ -54,10 +53,8 @@ export default function formatISO(
     throw new RangeError('Invalid time value')
   }
 
-  const format = String(options?.format ?? _defaultOptions.format ?? 'extended')
-  const representation = String(
-    options?.representation ?? _defaultOptions.representation ?? 'complete'
-  )
+  const format = String(options?.format ?? 'extended')
+  const representation = String(options?.representation ?? 'complete')
 
   if (format !== 'extended' && format !== 'basic') {
     throw new RangeError("format must be 'extended' or 'basic'")

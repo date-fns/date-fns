@@ -2,38 +2,18 @@ import type {
   FirstWeekContainsDateOptions,
   LocaleOptions,
   WeekStartOptions,
-  StepOptions,
-  RoundingOptions,
-  RepresentationOptions,
-  FormatOptions,
-  FormatRFC3339Options,
-  AdditionalDigitsOptions,
-  AdditionalTokensOptions,
-  FormatDistanceOptions,
-  FormatDistanceStrictOptions,
-  FormatDurationOptions,
-  RoundToNearestMinutesOptions,
-  AreIntervalsOverlappingOptions,
 } from '../../types'
 
-export type AllOptions = LocaleOptions &
+export type DefaultOptions = LocaleOptions &
   WeekStartOptions &
-  FirstWeekContainsDateOptions &
-  StepOptions &
-  RoundingOptions &
-  RepresentationOptions &
-  Omit<FormatDurationOptions, 'format'> & {
-    format?: FormatOptions['format'] | FormatDurationOptions['format']
-  } & FormatRFC3339Options &
-  AdditionalDigitsOptions &
-  AdditionalTokensOptions &
-  FormatDistanceOptions &
-  FormatDistanceStrictOptions &
-  RoundToNearestMinutesOptions &
-  AreIntervalsOverlappingOptions
+  FirstWeekContainsDateOptions
 
-export let _defaultOptions: AllOptions = {}
+let defaultOptions: DefaultOptions = {}
 
-export function setDefaultOptions(newOptions: AllOptions): void {
-  _defaultOptions = newOptions
+export function getDefaultOptions(): DefaultOptions {
+  return defaultOptions
+}
+
+export function setDefaultOptions(newOptions: DefaultOptions): void {
+  defaultOptions = newOptions
 }

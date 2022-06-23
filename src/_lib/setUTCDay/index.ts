@@ -2,7 +2,7 @@ import type { LocaleOptions, WeekStartOptions } from '../../types'
 import toDate from '../../toDate/index'
 import requiredArgs from '../requiredArgs/index'
 import toInteger from '../toInteger/index'
-import { _defaultOptions } from '../defaultOptions/index'
+import { getDefaultOptions } from '../defaultOptions/index'
 
 export default function setUTCDay(
   dirtyDate: Date | number,
@@ -11,11 +11,12 @@ export default function setUTCDay(
 ): Date {
   requiredArgs(2, arguments)
 
+  const defaultOptions = getDefaultOptions()
   const weekStartsOn = toInteger(
     options?.weekStartsOn ??
       options?.locale?.options?.weekStartsOn ??
-      _defaultOptions.weekStartsOn ??
-      _defaultOptions.locale?.options?.weekStartsOn ??
+      defaultOptions.weekStartsOn ??
+      defaultOptions.locale?.options?.weekStartsOn ??
       0
   )
 

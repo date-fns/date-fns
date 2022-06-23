@@ -5,7 +5,7 @@ import getDefaultOptions from '.'
 import setDefaultOptions from '../setDefaultOptions'
 import startOfWeek from '../startOfWeek'
 import {
-  _defaultOptions,
+  getDefaultOptions as getInternalDefaultOptions,
   setDefaultOptions as setInternalDefaultOptions,
 } from '../_lib/defaultOptions/index'
 import eo from '../locale/eo'
@@ -22,7 +22,7 @@ describe('getDefaultOptions', () => {
   it('returns a clone of the original object', () => {
     setInternalDefaultOptions({ weekStartsOn: 1 })
     const result = getDefaultOptions()
-    assert(_defaultOptions !== result)
+    assert.strictEqual(getInternalDefaultOptions(), result)
   })
 
   it('mutating the result does not affect functions that use options', () => {
@@ -32,6 +32,7 @@ describe('getDefaultOptions', () => {
     assert.deepStrictEqual(result, new Date(2014, 7 /* Aug */, 31))
 
     // Mutating the original object does affect `startOfWeek`
+    const _defaultOptions = getInternalDefaultOptions()
     _defaultOptions.weekStartsOn = 1
     const result2 = startOfWeek(new Date(2014, 8 /* Sep */, 2, 11, 55, 0))
     assert.deepStrictEqual(result2, new Date(2014, 8 /* Sep */, 1))

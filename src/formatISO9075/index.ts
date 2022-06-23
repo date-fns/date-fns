@@ -2,7 +2,6 @@ import toDate from '../toDate/index'
 import isValid from '../isValid/index'
 import addLeadingZeros from '../_lib/addLeadingZeros/index'
 import { FormatOptions, RepresentationOptions } from '../types'
-import { _defaultOptions } from '../_lib/defaultOptions/index'
 
 /**
  * @name formatISO9075
@@ -58,10 +57,8 @@ export default function formatISO9075(
     throw new RangeError('Invalid time value')
   }
 
-  const format = String(options?.format ?? _defaultOptions.format ?? 'extended')
-  const representation = String(
-    options?.representation ?? _defaultOptions.representation ?? 'complete'
-  )
+  const format = String(options?.format ?? 'extended')
+  const representation = String(options?.representation ?? 'complete')
 
   if (format !== 'extended' && format !== 'basic') {
     throw new RangeError("format must be 'extended' or 'basic'")

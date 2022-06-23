@@ -1,7 +1,6 @@
 import toDate from '../toDate/index'
 import type { AreIntervalsOverlappingOptions, Interval } from '../types'
 import requiredArgs from '../_lib/requiredArgs/index'
-import { _defaultOptions } from '../_lib/defaultOptions/index'
 
 /**
  * @name areIntervalsOverlapping
@@ -75,7 +74,7 @@ export default function areIntervalsOverlapping(
     throw new RangeError('Invalid interval')
   }
 
-  if (options?.inclusive ?? _defaultOptions.inclusive) {
+  if (options?.inclusive) {
     return leftStartTime <= rightEndTime && rightStartTime <= leftEndTime
   }
 

@@ -20,7 +20,7 @@ import type {
   WeekStartOptions,
   AdditionalTokensOptions,
 } from '../types'
-import { _defaultOptions } from '../_lib/defaultOptions/index'
+import { getDefaultOptions } from '../_lib/defaultOptions/index'
 
 // This RegExp consists of three parts separated by `|`:
 // - [yYQqMLwIdDecihHKkms]o matches any available ordinal number token
@@ -359,7 +359,9 @@ export default function parse(
 
   let dateString = String(dirtyDateString)
   const formatString = String(dirtyFormatString)
-  const locale = options?.locale ?? _defaultOptions.locale ?? defaultLocale
+
+  const defaultOptions = getDefaultOptions()
+  const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale
 
   if (!locale.match) {
     throw new RangeError('locale must contain match property')
@@ -368,8 +370,8 @@ export default function parse(
   const firstWeekContainsDate = toInteger(
     options?.firstWeekContainsDate ??
       options?.locale?.options?.firstWeekContainsDate ??
-      _defaultOptions.firstWeekContainsDate ??
-      _defaultOptions.locale?.options?.firstWeekContainsDate ??
+      defaultOptions.firstWeekContainsDate ??
+      defaultOptions.locale?.options?.firstWeekContainsDate ??
       1
   )
 
@@ -383,8 +385,8 @@ export default function parse(
   const weekStartsOn = toInteger(
     options?.weekStartsOn ??
       options?.locale?.options?.weekStartsOn ??
-      _defaultOptions.weekStartsOn ??
-      _defaultOptions.locale?.options?.weekStartsOn ??
+      defaultOptions.weekStartsOn ??
+      defaultOptions.locale?.options?.weekStartsOn ??
       0
   )
 
@@ -425,18 +427,17 @@ export default function parse(
 
   const usedTokens = []
 
-  const useAdditionalWeekYearTokens =
-    options?.useAdditionalWeekYearTokens ??
-    _defaultOptions.useAdditionalWeekYearTokens
-  const useAdditionalDayOfYearTokens =
-    options?.useAdditionalDayOfYearTokens ??
-    _defaultOptions.useAdditionalDayOfYearTokens
-
   for (let token of tokens) {
-    if (!useAdditionalWeekYearTokens && isProtectedWeekYearToken(token)) {
+    if (
+      !options?.useAdditionalWeekYearTokens &&
+      isProtectedWeekYearToken(token)
+    ) {
       throwProtectedError(token, formatString, dirtyDateString)
     }
-    if (!useAdditionalDayOfYearTokens && isProtectedDayOfYearToken(token)) {
+    if (
+      !options?.useAdditionalDayOfYearTokens &&
+      isProtectedDayOfYearToken(token)
+    ) {
       throwProtectedError(token, formatString, dirtyDateString)
     }
 

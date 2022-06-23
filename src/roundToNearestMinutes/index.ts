@@ -1,7 +1,6 @@
 import type { RoundToNearestMinutesOptions } from 'src/types'
 import toDate from '../toDate/index'
 import toInteger from '../_lib/toInteger/index'
-import { _defaultOptions } from '../_lib/defaultOptions/index'
 
 /**
  * @name roundToNearestMinutes
@@ -38,9 +37,7 @@ export default function roundToNearestMinutes(
     throw new TypeError('1 argument required, but only none provided present')
   }
 
-  const nearestTo = toInteger(
-    options?.nearestTo ?? _defaultOptions.nearestTo ?? 1
-  )
+  const nearestTo = toInteger(options?.nearestTo ?? 1)
 
   if (nearestTo < 1 || nearestTo > 30) {
     throw new RangeError('`options.nearestTo` must be between 1 and 30')

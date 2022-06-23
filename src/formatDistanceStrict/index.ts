@@ -1,4 +1,4 @@
-import { _defaultOptions } from '../_lib/defaultOptions/index'
+import { getDefaultOptions } from '../_lib/defaultOptions/index'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
 import compareAsc from '../compareAsc/index'
 import toDate from '../toDate/index'
@@ -102,7 +102,8 @@ export default function formatDistanceStrict(
 ): string {
   requiredArgs(2, arguments)
 
-  const locale = options?.locale ?? _defaultOptions.locale ?? defaultLocale
+  const defaultOptions = getDefaultOptions()
+  const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale
 
   if (!locale.formatDistance) {
     throw new RangeError('locale must contain localize.formatDistance property')
@@ -115,7 +116,7 @@ export default function formatDistanceStrict(
   }
 
   const localizeOptions = assign(cloneObject(options), {
-    addSuffix: Boolean(options?.addSuffix ?? _defaultOptions.addSuffix),
+    addSuffix: Boolean(options?.addSuffix),
     comparison: comparison as -1 | 0 | 1,
   })
 
@@ -129,9 +130,7 @@ export default function formatDistanceStrict(
     dateRight = toDate(dirtyBaseDate)
   }
 
-  const roundingMethod = String(
-    options?.roundingMethod ?? _defaultOptions.roundingMethod ?? 'round'
-  )
+  const roundingMethod = String(options?.roundingMethod ?? 'round')
   let roundingMethodFn
 
   if (roundingMethod === 'floor') {
@@ -156,7 +155,7 @@ export default function formatDistanceStrict(
   const dstNormalizedMinutes =
     (milliseconds - timezoneOffset) / MILLISECONDS_IN_MINUTE
 
-  const defaultUnit = options?.unit ?? _defaultOptions.unit
+  const defaultUnit = options?.unit
   let unit
   if (!defaultUnit) {
     if (minutes < 1) {

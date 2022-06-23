@@ -1,4 +1,4 @@
-import { _defaultOptions } from '../_lib/defaultOptions/index'
+import { getDefaultOptions } from '../_lib/defaultOptions/index'
 import compareAsc from '../compareAsc/index'
 import differenceInMonths from '../differenceInMonths/index'
 import differenceInSeconds from '../differenceInSeconds/index'
@@ -103,7 +103,8 @@ export default function formatDistance(
 ): string {
   requiredArgs(2, arguments)
 
-  const locale = options?.locale ?? _defaultOptions.locale ?? defaultLocale
+  const defaultOptions = getDefaultOptions()
+  const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale
 
   if (!locale.formatDistance) {
     throw new RangeError('locale must contain formatDistance property')
@@ -116,7 +117,7 @@ export default function formatDistance(
   }
 
   const localizeOptions = assign(cloneObject(options), {
-    addSuffix: Boolean(options?.addSuffix ?? _defaultOptions.addSuffix),
+    addSuffix: Boolean(options?.addSuffix),
     comparison: comparison as -1 | 0 | 1,
   })
 
@@ -140,7 +141,7 @@ export default function formatDistance(
 
   // 0 up to 2 mins
   if (minutes < 2) {
-    if (options?.includeSeconds ?? _defaultOptions.includeSeconds) {
+    if (options?.includeSeconds) {
       if (seconds < 5) {
         return locale.formatDistance('lessThanXSeconds', 5, localizeOptions)
       } else if (seconds < 10) {

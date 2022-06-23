@@ -1,4 +1,4 @@
-import { _defaultOptions } from '../_lib/defaultOptions/index'
+import { getDefaultOptions } from '../_lib/defaultOptions/index'
 import differenceInCalendarDays from '../differenceInCalendarDays/index'
 import format from '../format/index'
 import defaultLocale from '../_lib/defaultLocale/index'
@@ -56,12 +56,13 @@ export default function formatRelative(
   const date = toDate(dirtyDate)
   const baseDate = toDate(dirtyBaseDate)
 
-  const locale = options?.locale ?? _defaultOptions.locale ?? defaultLocale
+  const defaultOptions = getDefaultOptions()
+  const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale
   const weekStartsOn = toInteger(
     options?.weekStartsOn ??
       options?.locale?.options?.weekStartsOn ??
-      _defaultOptions.weekStartsOn ??
-      _defaultOptions.locale?.options?.weekStartsOn ??
+      defaultOptions.weekStartsOn ??
+      defaultOptions.locale?.options?.weekStartsOn ??
       0
   )
 
