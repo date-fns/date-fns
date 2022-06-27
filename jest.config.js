@@ -1,4 +1,4 @@
 module.exports = {
   verbose: false,
-  testPathIgnorePatterns: ['<rootDir>/test.js'],
+  testPathIgnorePatterns: ['<rootDir>/test.js', '<rootDir>/test/deno'],
 }

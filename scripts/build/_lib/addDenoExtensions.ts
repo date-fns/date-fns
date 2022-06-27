@@ -1,25 +1,20 @@
-import { resolve, dirname } from 'path'
-import fs from 'fs'
+import { existsSync } from 'fs'
+import { readFile, stat, writeFile } from 'fs/promises'
 import globby from 'globby'
+import { dirname, resolve } from 'path'
 import ts, {
   ExportDeclaration,
   ImportDeclaration,
   StringLiteral,
 } from 'typescript'
 
-const { readFile, writeFile, stat } = fs.promises
-
-const pattern = /\.(ts|js)$/
-const ignore = [/\.d\.ts$/]
+// *.ts and *.js, but NOT *.d.ts files
+const pattern = /(?<!\.d)\.(ts|js)$/
 
 const resolvedExtensions: Record<string, string> = {}
 
 globby('deno')
-  .then((files) =>
-    files.filter(
-      (file) => pattern.test(file) && !ignore.find((p) => p.test(file))
-    )
-  )
+  .then((files) => files.filter((file) => pattern.test(file)))
   .then((files) =>
     Promise.all(
       files.map((file) =>
@@ -48,14 +43,33 @@ globby('deno')
 
           await Promise.all(
             imports.map(async (importPath) => {
-              if (resolvedExtensions[importPath]) return
               const fullPath = resolveFullPath(file, importPath)
-              let isTs = false
-              try {
-                await stat(fullPath + '.ts')
-                isTs = true
-              } catch (_) {}
-              resolvedExtensions[fullPath] = isTs ? '.ts' : '.js'
+
+              if (resolvedExtensions[fullPath]) return
+
+              // identify directory imports that should resolve to their index file in Deno
+              let isDirectory = false
+              if (existsSync(fullPath)) {
+                const st = await stat(fullPath)
+                isDirectory = st.isDirectory()
+              }
+
+              const suffixes = isDirectory
+                ? ['/index.ts', '/index.js']
+                : ['.ts', '.js']
+
+              for (const suffix of suffixes) {
+                if (existsSync(fullPath + suffix)) {
+                  resolvedExtensions[fullPath] = suffix
+                  break
+                }
+              }
+
+              if (!resolvedExtensions[fullPath]) {
+                console.error("Can't locate import path:", fullPath)
+                console.error('In file:', file)
+                process.exit(1)
+              }
             })
           )
 
@@ -63,8 +77,10 @@ globby('deno')
             file,
             imports.reduce((acc, importPath) => {
               const fullPath = resolveFullPath(file, importPath)
+
+              // only replace when path is surrounded by single or double quotes
               return acc.replace(
-                new RegExp(importPath, 'g'),
+                new RegExp('(?<=\'|")' + importPath + '(?=\'|")', 'g'),
                 importPath + resolvedExtensions[fullPath]
               )
             }, content)
