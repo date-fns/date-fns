@@ -31,7 +31,17 @@ async function writePackages() {
       writePackage(module.fullPath, initialPackages[module.fullPath])
     )
   )
+  await writeEsmPackage()
   console.log('package.json files are generated')
+}
+
+function writeEsmPackage() {
+  const packagePath = path.resolve(rootPath, './esm/package.json')
+
+  return writeFile(
+    packagePath,
+    JSON.stringify({ sideEffects: false, type: 'module' }, null, 2)
+  )
 }
 
 function writePackage(fullPath, initialPackage) {
