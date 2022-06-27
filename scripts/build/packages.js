@@ -51,13 +51,15 @@ function writePackage(fullPath, initialPackage) {
     rootPath,
     `${dirPath.replace('./src/', './')}/package.json`
   )
+  const isEsm = packagePath.includes('/esm/')
 
   return writeFile(
     packagePath,
     JSON.stringify(
       Object.assign(
-        { sideEffects: false, type: 'module' },
+        { sideEffects: false },
         initialPackage || {},
+        isEsm ? { type: 'module' } : {},
         { typings: typingsRelativePath }
       ),
       null,
