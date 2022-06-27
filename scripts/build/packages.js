@@ -45,9 +45,11 @@ function writePackage(fullPath, initialPackage) {
   return writeFile(
     packagePath,
     JSON.stringify(
-      Object.assign({ sideEffects: false }, initialPackage || {}, {
-        typings: typingsRelativePath,
-      }),
+      Object.assign(
+        { sideEffects: false, type: 'module' },
+        initialPackage || {},
+        { typings: typingsRelativePath }
+      ),
       null,
       2
     )
