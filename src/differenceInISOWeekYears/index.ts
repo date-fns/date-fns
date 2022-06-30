@@ -1,7 +1,7 @@
-import toDate from '../toDate/index'
-import differenceInCalendarISOWeekYears from '../differenceInCalendarISOWeekYears/index'
 import compareAsc from '../compareAsc/index'
+import differenceInCalendarISOWeekYears from '../differenceInCalendarISOWeekYears/index'
 import subISOWeekYears from '../subISOWeekYears/index'
+import toDate from '../toDate/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 
 /**

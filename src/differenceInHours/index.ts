@@ -5,6 +5,11 @@ import requiredArgs from '../_lib/requiredArgs/index'
 import { getRoundingMethod } from '../_lib/roundingMethods/index'
 
 /**
+ * The {@link DifferenceInHoursOptions} function options.
+ */
+export interface DifferenceInHoursOptions extends RoundingOptions {}
+
+/**
  * @name differenceInHours
  * @category Hour Helpers
  * @summary Get the number of hours between the given dates.
@@ -30,7 +35,7 @@ import { getRoundingMethod } from '../_lib/roundingMethods/index'
 export default function differenceInHours(
   dateLeft: Date | number,
   dateRight: Date | number,
-  options?: RoundingOptions
+  options?: DifferenceInHoursOptions
 ): number {
   requiredArgs(2, arguments)
 
