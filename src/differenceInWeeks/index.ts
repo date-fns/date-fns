@@ -4,6 +4,11 @@ import requiredArgs from '../_lib/requiredArgs/index'
 import { getRoundingMethod } from '../_lib/roundingMethods/index'
 
 /**
+ * The {@link differenceInWeeks} function options.
+ */
+export interface DifferenceInWeeksOptions extends RoundingOptions {}
+
+/**
  * @name differenceInWeeks
  * @category Week Helpers
  * @summary Get the number of full weeks between the given dates.
@@ -47,7 +52,7 @@ import { getRoundingMethod } from '../_lib/roundingMethods/index'
 export default function differenceInWeeks(
   dateLeft: Date | number,
   dateRight: Date | number,
-  options?: RoundingOptions
+  options?: DifferenceInWeeksOptions
 ): number {
   requiredArgs(2, arguments)
 

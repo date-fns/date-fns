@@ -3,6 +3,11 @@ import type { Interval, StepOptions } from '../types'
 import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
+ * The {@link eachDayOfInterval} function options.
+ */
+export interface EachDayOfIntervalOptions extends StepOptions {}
+
+/**
  * @name eachDayOfInterval
  * @category Interval Helpers
  * @summary Return the array of dates within the specified time interval.
@@ -35,7 +40,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  */
 export default function eachDayOfInterval(
   dirtyInterval: Interval,
-  options?: StepOptions
+  options?: EachDayOfIntervalOptions
 ): Date[] {
   requiredArgs(1, arguments)
 

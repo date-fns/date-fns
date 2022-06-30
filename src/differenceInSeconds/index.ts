@@ -4,6 +4,11 @@ import requiredArgs from '../_lib/requiredArgs/index'
 import { getRoundingMethod } from '../_lib/roundingMethods/index'
 
 /**
+ * The {@link differenceInSeconds} function options.
+ */
+export interface DifferenceInSecondsOptions extends RoundingOptions {}
+
+/**
  * @name differenceInSeconds
  * @category Second Helpers
  * @summary Get the number of seconds between the given dates.
@@ -30,7 +35,7 @@ import { getRoundingMethod } from '../_lib/roundingMethods/index'
 export default function differenceInSeconds(
   dateLeft: Date | number,
   dateRight: Date | number,
-  options?: RoundingOptions
+  options?: DifferenceInSecondsOptions
 ): number {
   requiredArgs(2, arguments)
 
