@@ -1,17 +1,25 @@
+import compareAsc from '../compareAsc/index'
+import {
+  millisecondsInMinute,
+  minutesInDay,
+  minutesInMonth,
+  minutesInYear,
+} from '../constants/index'
+import toDate from '../toDate/index'
+import type { FormatDistanceStrictOptions, LocaleOptions } from '../types'
+import assign from '../_lib/assign/index'
+import cloneObject from '../_lib/cloneObject/index'
+import defaultLocale from '../_lib/defaultLocale/index'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
-import compareAsc from '../compareAsc/index'
-import toDate from '../toDate/index'
-import cloneObject from '../_lib/cloneObject/index'
-import assign from '../_lib/assign/index'
-import defaultLocale from '../_lib/defaultLocale/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import type { FormatDistanceStrictOptions, LocaleOptions } from '../types'
 
-const MILLISECONDS_IN_MINUTE = 1000 * 60
-const MINUTES_IN_DAY = 60 * 24
-const MINUTES_IN_MONTH = MINUTES_IN_DAY * 30
-const MINUTES_IN_YEAR = MINUTES_IN_DAY * 365
+/**
+ * The {@link formatDistanceStrict} function options.
+ */
+export interface FormatDistanceStrictFunctionOptions
+  extends LocaleOptions,
+    FormatDistanceStrictOptions {}
 
 /**
  * @name formatDistanceStrict
@@ -98,7 +106,7 @@ const MINUTES_IN_YEAR = MINUTES_IN_DAY * 365
 export default function formatDistanceStrict(
   dirtyDate: Date | number,
   dirtyBaseDate: Date | number,
-  options?: LocaleOptions & FormatDistanceStrictOptions
+  options?: FormatDistanceStrictFunctionOptions
 ): string {
   requiredArgs(2, arguments)
 
@@ -144,7 +152,7 @@ export default function formatDistanceStrict(
   }
 
   const milliseconds = dateRight.getTime() - dateLeft.getTime()
-  const minutes = milliseconds / MILLISECONDS_IN_MINUTE
+  const minutes = milliseconds / millisecondsInMinute
 
   const timezoneOffset =
     getTimezoneOffsetInMilliseconds(dateRight) -
@@ -153,7 +161,7 @@ export default function formatDistanceStrict(
   // Use DST-normalized difference in minutes for years, months and days;
   // use regular difference in minutes for hours, minutes and seconds.
   const dstNormalizedMinutes =
-    (milliseconds - timezoneOffset) / MILLISECONDS_IN_MINUTE
+    (milliseconds - timezoneOffset) / millisecondsInMinute
 
   const defaultUnit = options?.unit
   let unit
@@ -162,11 +170,11 @@ export default function formatDistanceStrict(
       unit = 'second'
     } else if (minutes < 60) {
       unit = 'minute'
-    } else if (minutes < MINUTES_IN_DAY) {
+    } else if (minutes < minutesInDay) {
       unit = 'hour'
-    } else if (dstNormalizedMinutes < MINUTES_IN_MONTH) {
+    } else if (dstNormalizedMinutes < minutesInMonth) {
       unit = 'day'
-    } else if (dstNormalizedMinutes < MINUTES_IN_YEAR) {
+    } else if (dstNormalizedMinutes < minutesInYear) {
       unit = 'month'
     } else {
       unit = 'year'
@@ -192,19 +200,19 @@ export default function formatDistanceStrict(
 
     // 1 up to 30 days
   } else if (unit === 'day') {
-    const days = roundingMethodFn(dstNormalizedMinutes / MINUTES_IN_DAY)
+    const days = roundingMethodFn(dstNormalizedMinutes / minutesInDay)
     return locale.formatDistance('xDays', days, localizeOptions)
 
     // 1 up to 12 months
   } else if (unit === 'month') {
-    const months = roundingMethodFn(dstNormalizedMinutes / MINUTES_IN_MONTH)
+    const months = roundingMethodFn(dstNormalizedMinutes / minutesInMonth)
     return months === 12 && defaultUnit !== 'month'
       ? locale.formatDistance('xYears', 1, localizeOptions)
       : locale.formatDistance('xMonths', months, localizeOptions)
 
     // 1 year up to max Date
   } else if (unit === 'year') {
-    const years = roundingMethodFn(dstNormalizedMinutes / MINUTES_IN_YEAR)
+    const years = roundingMethodFn(dstNormalizedMinutes / minutesInYear)
     return locale.formatDistance('xYears', years, localizeOptions)
   }
 

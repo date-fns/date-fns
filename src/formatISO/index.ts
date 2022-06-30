@@ -4,6 +4,13 @@ import addLeadingZeros from '../_lib/addLeadingZeros/index'
 import requiredArgs from '../_lib/requiredArgs'
 
 /**
+ * The {@link formatISO} function options.
+ */
+export interface FormatISOOptions
+  extends FormatOptions,
+    RepresentationOptions {}
+
+/**
  * @name formatISO
  * @category Common Helpers
  * @summary Format the date according to the ISO 8601 standard (https://support.sas.com/documentation/cdl/en/lrdict/64316/HTML/default/viewer.htm#a003169814.htm).
@@ -43,7 +50,7 @@ import requiredArgs from '../_lib/requiredArgs'
  */
 export default function formatISO(
   date: Date | number,
-  options?: FormatOptions & RepresentationOptions
+  options?: FormatISOOptions
 ): string {
   requiredArgs(1, arguments)
 

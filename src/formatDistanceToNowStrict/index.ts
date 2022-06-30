@@ -1,6 +1,13 @@
-import type { FormatDistanceStrictOptions, LocaleOptions } from '../types'
 import formatDistanceStrict from '../formatDistanceStrict/index'
+import type { FormatDistanceStrictOptions, LocaleOptions } from '../types'
 import requiredArgs from '../_lib/requiredArgs/index'
+
+/**
+ * The {@link formatDistanceToNowStrict} function options.
+ */
+export interface FormatDistanceToNowStrictOptions
+  extends LocaleOptions,
+    FormatDistanceStrictOptions {}
 
 /**
  * @name formatDistanceToNowStrict
@@ -78,7 +85,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  */
 export default function formatDistanceToNowStrict(
   dirtyDate: Date | number,
-  options?: LocaleOptions & FormatDistanceStrictOptions
+  options?: FormatDistanceToNowStrictOptions
 ): string {
   requiredArgs(1, arguments)
 

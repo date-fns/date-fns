@@ -91,6 +91,16 @@ export const millisecondsInSecond = 1000
 export const minTime = -maxTime
 
 /**
+ * Minutes in 1 year.
+ *
+ * @name minutesInYear
+ * @constant
+ * @type {number}
+ * @default
+ */
+export const minutesInYear = 525600
+
+/**
  * Minutes in 2 months.
  *
  * @name minutesInTwoMonth
