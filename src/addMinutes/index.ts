@@ -1,8 +1,7 @@
-import toInteger from '../_lib/toInteger/index'
 import addMilliseconds from '../addMilliseconds/index'
+import { millisecondsInMinute } from '../constants'
 import requiredArgs from '../_lib/requiredArgs/index'
-
-const MILLISECONDS_IN_MINUTE = 60000
+import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name addMinutes
@@ -29,5 +28,5 @@ export default function addMinutes(
   requiredArgs(2, arguments)
 
   const amount = toInteger(dirtyAmount)
-  return addMilliseconds(dirtyDate, amount * MILLISECONDS_IN_MINUTE)
+  return addMilliseconds(dirtyDate, amount * millisecondsInMinute)
 }

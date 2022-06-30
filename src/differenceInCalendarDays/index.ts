@@ -1,8 +1,7 @@
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
 import startOfDay from '../startOfDay/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-
-const MILLISECONDS_IN_DAY = 86400000
+import { millisecondsInDay } from '../constants'
 
 /**
  * @name differenceInCalendarDays
@@ -51,5 +50,5 @@ export default function differenceInCalendarDays(
   // Round the number of days to the nearest integer
   // because the number of milliseconds in a day is not constant
   // (e.g. it's different in the day of the daylight saving time clock shift)
-  return Math.round((timestampLeft - timestampRight) / MILLISECONDS_IN_DAY)
+  return Math.round((timestampLeft - timestampRight) / millisecondsInDay)
 }

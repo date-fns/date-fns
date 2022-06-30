@@ -1,9 +1,9 @@
+import isSaturday from '../isSaturday/index'
+import isSunday from '../isSunday/index'
 import isWeekend from '../isWeekend/index'
 import toDate from '../toDate/index'
-import toInteger from '../_lib/toInteger/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import isSunday from '../isSunday/index'
-import isSaturday from '../isSaturday/index'
+import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name addBusinessDays

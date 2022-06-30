@@ -1,7 +1,7 @@
-import toInteger from '../_lib/toInteger/index'
 import getISOWeekYear from '../getISOWeekYear/index'
 import setISOWeekYear from '../setISOWeekYear/index'
 import requiredArgs from '../_lib/requiredArgs/index'
+import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name addISOWeekYears
