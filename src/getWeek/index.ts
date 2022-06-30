@@ -1,14 +1,21 @@
+import { millisecondsInWeek } from '../constants/index'
 import startOfWeek from '../startOfWeek/index'
 import startOfWeekYear from '../startOfWeekYear/index'
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 import type {
+  FirstWeekContainsDateOptions,
   LocaleOptions,
   WeekStartOptions,
-  FirstWeekContainsDateOptions,
 } from '../types'
+import requiredArgs from '../_lib/requiredArgs/index'
 
-const MILLISECONDS_IN_WEEK = 604800000
+/**
+ * The {@link getWeek} function options.
+ */
+export interface GetWeekOptions
+  extends LocaleOptions,
+    WeekStartOptions,
+    FirstWeekContainsDateOptions {}
 
 /**
  * @name getWeek
@@ -51,7 +58,7 @@ const MILLISECONDS_IN_WEEK = 604800000
 
 export default function getWeek(
   dirtyDate: Date | number,
-  options?: LocaleOptions & WeekStartOptions & FirstWeekContainsDateOptions
+  options?: GetWeekOptions
 ): number {
   requiredArgs(1, arguments)
 
@@ -63,5 +70,5 @@ export default function getWeek(
   // Round the number of days to the nearest integer
   // because the number of milliseconds in a week is not constant
   // (e.g. it's different in the week of the daylight saving time clock shift)
-  return Math.round(diff / MILLISECONDS_IN_WEEK) + 1
+  return Math.round(diff / millisecondsInWeek) + 1
 }

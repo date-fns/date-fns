@@ -1,5 +1,5 @@
-import toDate from '../toDate/index'
 import isLeapYear from '../isLeapYear/index'
+import toDate from '../toDate/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 
 /**

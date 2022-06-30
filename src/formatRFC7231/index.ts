@@ -1,16 +1,8 @@
-import toDate from '../toDate/index'
 import isValid from '../isValid/index'
+import toDate from '../toDate/index'
 import addLeadingZeros from '../_lib/addLeadingZeros/index'
 
-const days = [
-  'Sun',
-  'Mon',
-  'Tue',
-  'Wed',
-  'Thu',
-  'Fri',
-  'Sat',
-]
+const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
 const months = [
   'Jan',

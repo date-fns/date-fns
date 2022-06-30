@@ -1,8 +1,8 @@
-import {
-  getDefaultOptions as getInternalDefaultOptions,
-  DefaultOptions,
-} from '../_lib/defaultOptions/index'
 import assign from '../_lib/assign/index'
+import {
+  DefaultOptions,
+  getDefaultOptions as getInternalDefaultOptions,
+} from '../_lib/defaultOptions/index'
 
 /**
  * @name getDefaultOptions

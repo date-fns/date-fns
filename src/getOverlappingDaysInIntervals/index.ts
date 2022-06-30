@@ -1,8 +1,7 @@
+import { millisecondsInDay } from '../constants/index'
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 import type { Interval } from '../types'
-
-const MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name getOverlappingDaysInIntervals
@@ -68,5 +67,5 @@ export default function getOverlappingDaysInIntervals(
 
   const differenceInMs = overlapEndDate - overlapStartDate
 
-  return Math.ceil(differenceInMs / MILLISECONDS_IN_DAY)
+  return Math.ceil(differenceInMs / millisecondsInDay)
 }

@@ -1,6 +1,6 @@
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 import type { Interval } from '../types'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isWithinInterval

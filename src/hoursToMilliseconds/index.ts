@@ -1,5 +1,5 @@
-import requiredArgs from '../_lib/requiredArgs/index'
 import { millisecondsInHour } from '../constants/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name hoursToMilliseconds

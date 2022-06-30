@@ -1,6 +1,6 @@
 import isSameWeek from '../isSameWeek/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 import type { LocaleOptions, WeekStartOptions } from '../types'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isThisWeek
