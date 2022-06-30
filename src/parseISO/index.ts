@@ -4,6 +4,11 @@ import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
 
 /**
+ * The {@link parseISO} function options.
+ */
+export interface ParseISOOptions extends AdditionalDigitsOptions {}
+
+/**
  * @name parseISO
  * @category Common Helpers
  * @summary Parse ISO string
@@ -37,7 +42,7 @@ import toInteger from '../_lib/toInteger/index'
  */
 export default function parseISO(
   argument: string,
-  options?: AdditionalDigitsOptions
+  options?: ParseISOOptions
 ): Date {
   requiredArgs(1, arguments)
 

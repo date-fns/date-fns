@@ -3,6 +3,12 @@ import toDate from '../toDate/index'
 import toInteger from '../_lib/toInteger/index'
 
 /**
+ * The {@link roundToNearestMinutes} function options.
+ */
+export interface RoundToNearestMinutesFunctionOptions
+  extends RoundToNearestMinutesOptions {}
+
+/**
  * @name roundToNearestMinutes
  * @category Minute Helpers
  * @summary Rounds the given date to the nearest minute
@@ -31,7 +37,7 @@ import toInteger from '../_lib/toInteger/index'
  */
 export default function roundToNearestMinutes(
   dirtyDate: Date | number,
-  options?: RoundToNearestMinutesOptions
+  options?: RoundToNearestMinutesFunctionOptions
 ): Date {
   if (arguments.length < 1) {
     throw new TypeError('1 argument required, but only none provided present')

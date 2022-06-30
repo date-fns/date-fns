@@ -1,5 +1,5 @@
-import requiredArgs from '../_lib/requiredArgs/index'
 import previousDay from '../previousDay/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name previousThursday

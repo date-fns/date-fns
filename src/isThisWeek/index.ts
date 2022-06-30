@@ -3,6 +3,11 @@ import type { LocaleOptions, WeekStartOptions } from '../types'
 import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
+ * The {@link isThisWeek} function options.
+ */
+export interface IsThisWeekOptions extends WeekStartOptions, LocaleOptions {}
+
+/**
  * @name isThisWeek
  * @category Week Helpers
  * @summary Is the given date in the same week as the current date?
@@ -36,7 +41,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
 
 export default function isThisWeek(
   dirtyDate: Date | number,
-  options?: LocaleOptions & WeekStartOptions
+  options?: IsThisWeekOptions
 ): boolean {
   requiredArgs(1, arguments)
 
