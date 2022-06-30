@@ -31,6 +31,16 @@ export const daysInYear: number = 365.2425
 export const maxTime = Math.pow(10, 8) * 24 * 60 * 60 * 1000
 
 /**
+ * Milliseconds in 1 Week.
+ *
+ * @name millisecondsInWeek
+ * @constant
+ * @type {number}
+ * @default
+ */
+export const millisecondsInWeek = 604800000
+
+/**
  * Milliseconds in 1 day.
  *
  * @name millisecondsInDay
