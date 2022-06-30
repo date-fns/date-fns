@@ -91,6 +91,46 @@ export const millisecondsInSecond = 1000
 export const minTime = -maxTime
 
 /**
+ * Minutes in 2 months.
+ *
+ * @name minutesInTwoMonth
+ * @constant
+ * @type {number}
+ * @default
+ */
+export const minutesInTwoMonth = 86400
+
+/**
+ * Minutes in 1 month.
+ *
+ * @name minutesInMonth
+ * @constant
+ * @type {number}
+ * @default
+ */
+export const minutesInMonth = 43200
+
+/**
+ * Minutes in almost 2 days.
+ *
+ * @name minutesInAlmostTwoDays
+ * @constant
+ * @type {number}
+ * @default
+ */
+export const minutesInAlmostTwoDays = 2520
+
+/**
+ * Minutes in 1 day.
+ *
+ * @name minutesInDay
+ * @constant
+ * @type {number}
+ * @default
+ */
+export const minutesInDay = 1440
+
+/**
  * Minutes in 1 hour
  *
  * @name minutesInHour

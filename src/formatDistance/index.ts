@@ -1,19 +1,27 @@
-import { getDefaultOptions } from '../_lib/defaultOptions/index'
 import compareAsc from '../compareAsc/index'
+import {
+  minutesInAlmostTwoDays,
+  minutesInDay,
+  minutesInMonth,
+  minutesInTwoMonth,
+} from '../constants/index'
 import differenceInMonths from '../differenceInMonths/index'
 import differenceInSeconds from '../differenceInSeconds/index'
-import defaultLocale from '../_lib/defaultLocale/index'
 import toDate from '../toDate/index'
-import cloneObject from '../_lib/cloneObject/index'
+import type { FormatDistanceOptions, LocaleOptions } from '../types'
 import assign from '../_lib/assign'
+import cloneObject from '../_lib/cloneObject/index'
+import defaultLocale from '../_lib/defaultLocale/index'
+import { getDefaultOptions } from '../_lib/defaultOptions/index'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import type { FormatDistanceOptions, LocaleOptions } from '../types'
 
-const MINUTES_IN_DAY = 1440
-const MINUTES_IN_ALMOST_TWO_DAYS = 2520
-const MINUTES_IN_MONTH = 43200
-const MINUTES_IN_TWO_MONTHS = 86400
+/**
+ * The {@link formatDistance} function options.
+ */
+export interface FormatDistanceFunctionOptions
+  extends LocaleOptions,
+    FormatDistanceOptions {}
 
 /**
  * @name formatDistance
@@ -99,7 +107,7 @@ const MINUTES_IN_TWO_MONTHS = 86400
 export default function formatDistance(
   dirtyDate: Date | number,
   dirtyBaseDate: Date | number,
-  options?: LocaleOptions & FormatDistanceOptions
+  options?: FormatDistanceFunctionOptions
 ): string {
   requiredArgs(2, arguments)
 
@@ -172,22 +180,22 @@ export default function formatDistance(
     return locale.formatDistance('aboutXHours', 1, localizeOptions)
 
     // 1.5 hrs up to 24 hrs
-  } else if (minutes < MINUTES_IN_DAY) {
+  } else if (minutes < minutesInDay) {
     const hours = Math.round(minutes / 60)
     return locale.formatDistance('aboutXHours', hours, localizeOptions)
 
     // 1 day up to 1.75 days
-  } else if (minutes < MINUTES_IN_ALMOST_TWO_DAYS) {
+  } else if (minutes < minutesInAlmostTwoDays) {
     return locale.formatDistance('xDays', 1, localizeOptions)
 
     // 1.75 days up to 30 days
-  } else if (minutes < MINUTES_IN_MONTH) {
-    const days = Math.round(minutes / MINUTES_IN_DAY)
+  } else if (minutes < minutesInMonth) {
+    const days = Math.round(minutes / minutesInDay)
     return locale.formatDistance('xDays', days, localizeOptions)
 
     // 1 month up to 2 months
-  } else if (minutes < MINUTES_IN_TWO_MONTHS) {
-    months = Math.round(minutes / MINUTES_IN_MONTH)
+  } else if (minutes < minutesInTwoMonth) {
+    months = Math.round(minutes / minutesInMonth)
     return locale.formatDistance('aboutXMonths', months, localizeOptions)
   }
 
@@ -195,7 +203,7 @@ export default function formatDistance(
 
   // 2 months up to 12 months
   if (months < 12) {
-    const nearestMonth = Math.round(minutes / MINUTES_IN_MONTH)
+    const nearestMonth = Math.round(minutes / minutesInMonth)
     return locale.formatDistance('xMonths', nearestMonth, localizeOptions)
 
     // 1 year up to max Date
