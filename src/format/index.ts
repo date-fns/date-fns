@@ -1,6 +1,16 @@
 import isValid from '../isValid/index'
 import subMilliseconds from '../subMilliseconds/index'
 import toDate from '../toDate/index'
+import type {
+  AdditionalTokensOptions,
+  Day,
+  FirstWeekContainsDate,
+  FirstWeekContainsDateOptions,
+  LocaleOptions,
+  WeekStartOptions,
+} from '../types'
+import defaultLocale from '../_lib/defaultLocale/index'
+import { getDefaultOptions } from '../_lib/defaultOptions/index'
 import formatters from '../_lib/format/formatters/index'
 import longFormatters from '../_lib/format/longFormatters/index'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
@@ -9,18 +19,8 @@ import {
   isProtectedWeekYearToken,
   throwProtectedError,
 } from '../_lib/protectedTokens/index'
-import toInteger from '../_lib/toInteger/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import type {
-  FirstWeekContainsDateOptions,
-  LocaleOptions,
-  WeekStartOptions,
-  Day,
-  FirstWeekContainsDate,
-  AdditionalTokensOptions,
-} from '../types'
-import { getDefaultOptions } from '../_lib/defaultOptions/index'
-import defaultLocale from '../_lib/defaultLocale/index'
+import toInteger from '../_lib/toInteger/index'
 
 // This RegExp consists of three parts separated by `|`:
 // - [yYQqMLwIdDecihHKkms]o matches any available ordinal number token
@@ -335,13 +335,19 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * //=> "3 o'clock"
  */
 
+/**
+ * The {@link format} function options.
+ */
+export interface FormatOptions
+  extends LocaleOptions,
+    WeekStartOptions,
+    FirstWeekContainsDateOptions,
+    AdditionalTokensOptions {}
+
 export default function format(
   dirtyDate: Date | number,
   dirtyFormatStr: string,
-  options?: LocaleOptions &
-    WeekStartOptions &
-    FirstWeekContainsDateOptions &
-    AdditionalTokensOptions
+  options?: FormatOptions
 ): string {
   requiredArgs(2, arguments)
 
