@@ -3,6 +3,12 @@ import type { AreIntervalsOverlappingOptions, Interval } from '../types'
 import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
+ * The {@link areIntervalsOverlapping} function options.
+ */
+export interface AreIntervalsOverlappingFunctionOptions
+  extends AreIntervalsOverlappingOptions {}
+
+/**
  * @name areIntervalsOverlapping
  * @category Interval Helpers
  * @summary Is the given time interval overlapping with another time interval?
@@ -60,7 +66,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function areIntervalsOverlapping(
   intervalLeft: Interval,
   intervalRight: Interval,
-  options?: AreIntervalsOverlappingOptions
+  options?: AreIntervalsOverlappingFunctionOptions
 ): boolean {
   requiredArgs(2, arguments)
 

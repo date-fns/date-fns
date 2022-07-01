@@ -44,6 +44,15 @@ const doubleQuoteRegExp = /''/g
 const unescapedLatinCharacterRegExp = /[a-zA-Z]/
 
 /**
+ * The {@link format} function options.
+ */
+export interface FormatOptions
+  extends LocaleOptions,
+    WeekStartOptions,
+    FirstWeekContainsDateOptions,
+    AdditionalTokensOptions {}
+
+/**
  * @name format
  * @category Common Helpers
  * @summary Format the date.
@@ -334,15 +343,6 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * const result = format(new Date(2014, 6, 2, 15), "h 'o''clock'")
  * //=> "3 o'clock"
  */
-
-/**
- * The {@link format} function options.
- */
-export interface FormatOptions
-  extends LocaleOptions,
-    WeekStartOptions,
-    FirstWeekContainsDateOptions,
-    AdditionalTokensOptions {}
 
 export default function format(
   dirtyDate: Date | number,

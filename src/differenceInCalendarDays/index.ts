@@ -1,7 +1,7 @@
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
-import startOfDay from '../startOfDay/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 import { millisecondsInDay } from '../constants'
+import startOfDay from '../startOfDay/index'
+import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name differenceInCalendarDays

@@ -5,6 +5,13 @@ import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMillisec
 import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
+ * The {@link differenceInCalendarWeeks} function options.
+ */
+export interface DifferenceInCalendarWeeksOptions
+  extends LocaleOptions,
+    WeekStartOptions {}
+
+/**
  * @name differenceInCalendarWeeks
  * @category Week Helpers
  * @summary Get the number of calendar weeks between the given dates.
@@ -42,7 +49,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function differenceInCalendarWeeks(
   dirtyDateLeft: Date | number,
   dirtyDateRight: Date | number,
-  options?: LocaleOptions & WeekStartOptions
+  options?: DifferenceInCalendarWeeksOptions
 ): number {
   requiredArgs(2, arguments)
 

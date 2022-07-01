@@ -249,3 +249,36 @@ export const secondsInMonth = secondsInYear / 12
  * @default
  */
 export const secondsInQuarter = secondsInMonth * 3
+
+/**
+ * Days
+ *
+ * @name days
+ * @constant
+ * @type {string[]}
+ * @default
+ */
+export const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+
+/**
+ * Months
+ *
+ * @name months
+ * @constant
+ * @type {string[]}
+ * @default
+ */
+export const months = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec',
+]
