@@ -1,14 +1,22 @@
 import differenceInCalendarDays from '../differenceInCalendarDays/index'
 import startOfWeekYear from '../startOfWeekYear/index'
 import toDate from '../toDate/index'
-import toInteger from '../_lib/toInteger/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 import type {
+  FirstWeekContainsDateOptions,
   LocaleOptions,
   WeekStartOptions,
-  FirstWeekContainsDateOptions,
 } from '../types'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
+import requiredArgs from '../_lib/requiredArgs/index'
+import toInteger from '../_lib/toInteger/index'
+
+/**
+ * The {@link setWeekYear} function options.
+ */
+export interface SetWeekYearOptions
+  extends LocaleOptions,
+    WeekStartOptions,
+    FirstWeekContainsDateOptions {}
 
 /**
  * @name setWeekYear
@@ -54,7 +62,7 @@ import { getDefaultOptions } from '../_lib/defaultOptions/index'
 export default function setWeekYear(
   dirtyDate: Date | number,
   dirtyWeekYear: number,
-  options?: LocaleOptions & WeekStartOptions & FirstWeekContainsDateOptions
+  options?: SetWeekYearOptions
 ): Date {
   requiredArgs(2, arguments)
 
