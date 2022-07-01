@@ -1,7 +1,7 @@
-import toInteger from '../_lib/toInteger/index'
-import toDate from '../toDate/index'
 import setMonth from '../setMonth/index'
+import toDate from '../toDate/index'
 import requiredArgs from '../_lib/requiredArgs/index'
+import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name setQuarter

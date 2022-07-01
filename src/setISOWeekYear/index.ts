@@ -1,8 +1,8 @@
-import toInteger from '../_lib/toInteger/index'
-import toDate from '../toDate/index'
-import startOfISOWeekYear from '../startOfISOWeekYear/index'
 import differenceInCalendarDays from '../differenceInCalendarDays/index'
+import startOfISOWeekYear from '../startOfISOWeekYear/index'
+import toDate from '../toDate/index'
 import requiredArgs from '../_lib/requiredArgs/index'
+import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name setISOWeekYear

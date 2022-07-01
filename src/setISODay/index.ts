@@ -1,8 +1,8 @@
-import toInteger from '../_lib/toInteger/index'
-import toDate from '../toDate/index'
 import addDays from '../addDays/index'
 import getISODay from '../getISODay/index'
+import toDate from '../toDate/index'
 import requiredArgs from '../_lib/requiredArgs/index'
+import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name setISODay
