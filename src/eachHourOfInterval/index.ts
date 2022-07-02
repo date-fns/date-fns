@@ -6,7 +6,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
 /**
  * The {@link eachHourOfInterval} function options.
  */
-export interface EachDayOfIntervalOptions extends StepOptions {}
+export interface EachHourOfIntervalOptions extends StepOptions {}
 
 /**
  * @name eachHourOfInterval
@@ -40,7 +40,7 @@ export interface EachDayOfIntervalOptions extends StepOptions {}
  */
 export default function eachHourOfInterval(
   dirtyInterval: Interval,
-  options?: EachDayOfIntervalOptions
+  options?: EachHourOfIntervalOptions
 ): Date[] {
   requiredArgs(1, arguments)
 

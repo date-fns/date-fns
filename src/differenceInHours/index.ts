@@ -5,7 +5,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
 import { getRoundingMethod } from '../_lib/roundingMethods/index'
 
 /**
- * The {@link DifferenceInHoursOptions} function options.
+ * The {@link differenceInHours} function options.
  */
 export interface DifferenceInHoursOptions extends RoundingOptions {}
 
