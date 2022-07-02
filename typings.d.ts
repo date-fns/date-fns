@@ -886,7 +886,13 @@ declare module 'date-fns' {
   function monthsToQuarters(months: number): number
   namespace monthsToQuarters {}
 
-  function monthsToYears(months: number): number
+  function monthsToYears(
+    months: number,
+    options?: {
+      decimals?: boolean
+      digits?: number
+    }
+  ): number
   namespace monthsToYears {}
 
   function nextDay(date: Date | number, day: Day): Date
@@ -5631,7 +5637,11 @@ declare module 'date-fns/fp' {
   const monthsToQuarters: CurriedFn1<number, number>
   namespace monthsToQuarters {}
 
-  const monthsToYears: CurriedFn1<number, number>
+  const monthsToYears: CurriedFn2<
+    number,
+    { decimals?: boolean; digits?: number },
+    number
+  >
   namespace monthsToYears {}
 
   const nextDay: CurriedFn2<Day, Date | number, Date>
@@ -10543,7 +10553,13 @@ declare module 'date-fns/esm' {
   function monthsToQuarters(months: number): number
   namespace monthsToQuarters {}
 
-  function monthsToYears(months: number): number
+  function monthsToYears(
+    months: number,
+    options?: {
+      decimals?: boolean
+      digits?: number
+    }
+  ): number
   namespace monthsToYears {}
 
   function nextDay(date: Date | number, day: Day): Date
@@ -15243,7 +15259,11 @@ declare module 'date-fns/esm/fp' {
   const monthsToQuarters: CurriedFn1<number, number>
   namespace monthsToQuarters {}
 
-  const monthsToYears: CurriedFn1<number, number>
+  const monthsToYears: CurriedFn2<
+    number,
+    { decimals?: boolean; digits?: number },
+    number
+  >
   namespace monthsToYears {}
 
   const nextDay: CurriedFn2<Day, Date | number, Date>
@@ -23275,7 +23295,13 @@ interface dateFns {
 
   monthsToQuarters(months: number): number
 
-  monthsToYears(months: number): number
+  monthsToYears(
+    months: number,
+    options?: {
+      decimals?: boolean
+      digits?: number
+    }
+  ): number
 
   nextDay(date: Date | number, day: Day): Date
 
