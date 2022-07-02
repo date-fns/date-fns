@@ -31,7 +31,7 @@ export const daysInYear: number = 365.2425
 export const maxTime = Math.pow(10, 8) * 24 * 60 * 60 * 1000
 
 /**
- * Milliseconds in 1 Week.
+ * Milliseconds in 1 week.
  *
  * @name millisecondsInWeek
  * @constant
@@ -101,16 +101,6 @@ export const minTime = -maxTime
 export const minutesInYear = 525600
 
 /**
- * Minutes in 2 months.
- *
- * @name minutesInTwoMonth
- * @constant
- * @type {number}
- * @default
- */
-export const minutesInTwoMonth = 86400
-
-/**
  * Minutes in 1 month.
  *
  * @name minutesInMonth
@@ -141,7 +131,7 @@ export const minutesInAlmostTwoDays = 2520
 export const minutesInDay = 1440
 
 /**
- * Minutes in 1 hour
+ * Minutes in 1 hour.
  *
  * @name minutesInHour
  * @constant
@@ -151,7 +141,7 @@ export const minutesInDay = 1440
 export const minutesInHour = 60
 
 /**
- * Months in 1 quarter
+ * Months in 1 quarter.
  *
  * @name monthsInQuarter
  * @constant
@@ -161,7 +151,7 @@ export const minutesInHour = 60
 export const monthsInQuarter = 3
 
 /**
- * Months in 1 year
+ * Months in 1 year.
  *
  * @name monthsInYear
  * @constant
@@ -181,7 +171,7 @@ export const monthsInYear = 12
 export const quartersInYear = 4
 
 /**
- * Seconds in 1 hour
+ * Seconds in 1 hour.
  *
  * @name secondsInHour
  * @constant
@@ -191,7 +181,7 @@ export const quartersInYear = 4
 export const secondsInHour = 3600
 
 /**
- * Seconds in 1 minute
+ * Seconds in 1 minute.
  *
  * @name secondsInMinute
  * @constant
@@ -201,7 +191,7 @@ export const secondsInHour = 3600
 export const secondsInMinute = 60
 
 /**
- * Seconds in 1 day
+ * Seconds in 1 day.
  *
  * @name secondsInDay
  * @constant
@@ -211,7 +201,7 @@ export const secondsInMinute = 60
 export const secondsInDay = secondsInHour * 24
 
 /**
- * Seconds in 1 week
+ * Seconds in 1 week.
  *
  * @name secondsInWeek
  * @constant
@@ -221,7 +211,7 @@ export const secondsInDay = secondsInHour * 24
 export const secondsInWeek = secondsInDay * 7
 
 /**
- * Seconds in 1 year
+ * Seconds in 1 year.
  *
  * @name secondsInYear
  * @constant
@@ -241,7 +231,7 @@ export const secondsInYear = secondsInDay * daysInYear
 export const secondsInMonth = secondsInYear / 12
 
 /**
- * Seconds in 1 quarter
+ * Seconds in 1 quarter.
  *
  * @name secondsInQuarter
  * @constant

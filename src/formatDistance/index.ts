@@ -3,7 +3,6 @@ import {
   minutesInAlmostTwoDays,
   minutesInDay,
   minutesInMonth,
-  minutesInTwoMonth,
 } from '../constants/index'
 import differenceInMonths from '../differenceInMonths/index'
 import differenceInSeconds from '../differenceInSeconds/index'
@@ -113,6 +112,7 @@ export default function formatDistance(
 
   const defaultOptions = getDefaultOptions()
   const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale
+  const minutesInTwoMonth = minutesInMonth * 2
 
   if (!locale.formatDistance) {
     throw new RangeError('locale must contain formatDistance property')
