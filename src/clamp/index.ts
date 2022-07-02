@@ -1,5 +1,4 @@
-import max from '../max/index'
-import min from '../min/index'
+import toDate from '../toDate/index'
 import type { Interval } from '../types'
 import requiredArgs from '../_lib/requiredArgs/index'
 
@@ -28,11 +27,29 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @param {Interval} interval - the interval to bound to
  * @returns {Date} the date bounded by the start and the end of the interval
  * @throws {TypeError} 2 arguments required
+ * @throws {RangeError} `date` must not be Invalid Date
+ * @throws {RangeError} `start` must not be Invalid Date
+ * @throws {RangeError} `end` must not be Invalid Date
+ * @throws {RangeError} The start of an interval cannot be after its end
  */
 export default function clamp(
-  date: Date | number,
-  { start, end }: Interval
+  dirtyDate: Date | number,
+  interval: Interval
 ): Date {
   requiredArgs(2, arguments)
-  return min([max([date, start]), end])
+
+  const date = toDate(dirtyDate)
+  const start = toDate(interval.start)
+  const end = toDate(interval.end)
+
+  if (isNaN(date.getTime())) throw new RangeError('Date is invalid')
+  if (isNaN(start.getTime())) throw new RangeError('Start Date is invalid')
+  if (isNaN(end.getTime())) throw new RangeError('End Date is invalid')
+  if (start > end) {
+    throw new RangeError('The start of an interval cannot be after its end')
+  }
+
+  if (date <= start) return start
+  if (date >= end) return end
+  return date
 }

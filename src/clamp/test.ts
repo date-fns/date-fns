@@ -36,6 +36,31 @@ describe('clamp', () => {
     assert.deepStrictEqual(result, new Date(2001, 1, 1))
   })
 
+  it('throws RangeError exception if the date is invalid', () => {
+    const interval = { start: new Date(2001, 1, 1), end: new Date(2003, 1, 1) }
+    assert.throws(clamp.bind(null, new Date(NaN), interval), RangeError)
+  })
+
+  it('throws RangeError exception if the interval start date is invalid', () => {
+    const interval = { start: new Date(NaN), end: new Date(2003, 1, 1) }
+    assert.throws(clamp.bind(null, new Date(), interval), RangeError)
+  })
+
+  it('throws RangeError exception if the interval end date is invalid', () => {
+    const interval = { start: new Date(2001, 1, 1), end: new Date(NaN) }
+    assert.throws(clamp.bind(null, new Date(), interval), RangeError)
+  })
+
+  it('throws RangeError exception if both interval dates are invalid', () => {
+    const interval = { start: new Date(NaN), end: new Date(NaN) }
+    assert.throws(clamp.bind(null, new Date(), interval), RangeError)
+  })
+
+  it('throws RangeError exception if interval start date is greater than its end date', () => {
+    const interval = { start: new Date(2003, 1, 1), end: new Date(2000, 1, 1) }
+    assert.throws(clamp.bind(null, new Date(), interval), RangeError)
+  })
+
   it('throws TypeError exception if passed less than 2 arguments', () => {
     // @ts-expect-error
     assert.throws(clamp.bind(null), TypeError)
