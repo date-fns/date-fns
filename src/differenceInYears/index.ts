@@ -1,5 +1,5 @@
 import toDate from '../toDate/index'
-import differenceInCalendarYears from '../differenceInCalendarYears/index'
+import differenceInMonths from '../differenceInMonths/index'
 import compareAsc from '../compareAsc/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 
@@ -31,17 +31,18 @@ export default function differenceInYears(
   const dateRight = toDate(dirtyDateRight)
 
   const sign = compareAsc(dateLeft, dateRight)
-  const difference = Math.abs(differenceInCalendarYears(dateLeft, dateRight))
+  if (sign === 0) {
+    return 0
+  }
 
-  // Set both dates to a valid leap year for accurate comparison when dealing
-  // with leap days
-  dateLeft.setFullYear(1584)
-  dateRight.setFullYear(1584)
+  const diffMonths =
+    sign === -1
+      ? differenceInMonths(dateRight, dateLeft)
+      : differenceInMonths(dateLeft, dateRight)
 
-  // Math.abs(diff in full years - diff in calendar years) === 1 if last calendar year is not full
-  // If so, result must be decreased by 1 in absolute value
-  const isLastYearNotFull = compareAsc(dateLeft, dateRight) === -sign
-  const result = sign * (difference - Number(isLastYearNotFull))
-  // Prevent negative zero
-  return result === 0 ? 0 : result
+  if (diffMonths < 12) {
+    return 0
+  }
+
+  return sign * Math.floor(diffMonths / 12)
 }

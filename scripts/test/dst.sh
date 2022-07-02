@@ -9,6 +9,7 @@ set -ex
 export PATH="$(yarn bin):$PATH"
 export NODE_ENV=test
 
+env TZ=US/Pacific ts-node ./test/dst/differenceInYears/basic.js
 env TZ=America/Sao_Paulo babel-node --extensions .ts,.js ./test/dst/parseISO/basic.js
 env TZ=Australia/Sydney babel-node --extensions .ts,.js ./test/dst/parseISO/sydney.js
 env TZ=Pacific/Apia babel-node --extensions .ts,.js ./test/dst/parseISO/samoa.js
