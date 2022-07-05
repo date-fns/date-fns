@@ -1,11 +1,7 @@
 import toDate from '../toDate/index'
 import isValid from '../isValid/index'
 import addLeadingZeros from '../_lib/addLeadingZeros/index'
-
-export interface FormatISO9075Options {
-  format?: 'extended' | 'basic'
-  representation?: 'complete' | 'date' | 'time'
-}
+import { FormatOptions, RepresentationOptions } from '../types'
 
 /**
  * @name formatISO9075
@@ -23,7 +19,7 @@ export interface FormatISO9075Options {
  * @throws {TypeError} 1 argument required
  * @throws {RangeError} `date` must not be Invalid Date
  * @throws {RangeError} `options.format` must be 'extended' or 'basic'
- * @throws {RangeError} `options.represenation` must be 'date', 'time' or 'complete'
+ * @throws {RangeError} `options.representation` must be 'date', 'time' or 'complete'
  *
  * @example
  * // Represent 18 September 2019 in ISO 9075 format:
@@ -47,7 +43,7 @@ export interface FormatISO9075Options {
  */
 export default function formatISO9075(
   dirtyDate: Date | number,
-  dirtyOptions?: FormatISO9075Options
+  options?: FormatOptions & RepresentationOptions
 ): string {
   if (arguments.length < 1) {
     throw new TypeError(
@@ -61,10 +57,8 @@ export default function formatISO9075(
     throw new RangeError('Invalid time value')
   }
 
-  const options = dirtyOptions || {}
-  const format = options.format == null ? 'extended' : String(options.format)
-  const representation =
-    options.representation == null ? 'complete' : String(options.representation)
+  const format = String(options?.format ?? 'extended')
+  const representation = String(options?.representation ?? 'complete')
 
   if (format !== 'extended' && format !== 'basic') {
     throw new RangeError("format must be 'extended' or 'basic'")

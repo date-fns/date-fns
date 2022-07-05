@@ -40,13 +40,17 @@ function getType(
   types,
   { props = [], forceArray = false, flowType = false } = {}
 ) {
+  if (!types) {
+    return 'void'
+  }
+
   let optional = false
   if (flowType && types.some((type) => type === 'undefined')) {
     optional = true
     types = types.filter((type) => type !== 'undefined')
   }
 
-  const typeStrings = types.map((type) => {
+  const typeStrings = (types || []).map((type) => {
     if (type === '*') {
       return 'any'
     }
@@ -86,6 +90,9 @@ function getType(
 }
 
 function getFPFnType(params, returns, { flowType = false } = {}) {
+  if (params.length === 0) {
+    return `() => ${getType(returns, { flowType })}`
+  }
   const fpParamTypes = params.map((param) =>
     getType(param.type.names, { props: param.props, flowType })
   )

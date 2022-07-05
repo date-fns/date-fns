@@ -21,7 +21,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
 
 export interface IntlFormatDistanceOptions {
   unit?: IntlOptionsUnit
-  locale?: Intl.UnicodeBCP47LocaleIdentifier
+  locale?: Intl.BCP47LanguageTag
   localeMatcher?: Intl.RelativeTimeFormatLocaleMatcher
   numeric?: Intl.RelativeTimeFormatNumeric
   style?: Intl.RelativeTimeFormatStyle

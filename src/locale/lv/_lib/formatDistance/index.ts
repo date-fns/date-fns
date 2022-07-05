@@ -1,7 +1,7 @@
 import type {
   FormatDistanceFn,
   FormatDistanceLocale,
-  FormatDistanceOptions,
+  FormatDistanceFnOptions,
 } from '../../../types'
 
 type Schema = {
@@ -13,11 +13,11 @@ type FormatDistanceTokenValue = (
   // eslint-disable-next-line no-unused-vars
   count: number,
   // eslint-disable-next-line no-unused-vars
-  options?: FormatDistanceOptions
+  options?: FormatDistanceFnOptions
 ) => string
 
 function buildLocalizeTokenFn(schema: Schema) {
-  return (count: number, options?: FormatDistanceOptions): string => {
+  return (count: number, options?: FormatDistanceFnOptions): string => {
     if (count === 1) {
       if (options?.addSuffix) {
         return schema.one[0].replace('{{time}}', schema.one[2])

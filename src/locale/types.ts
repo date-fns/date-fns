@@ -58,10 +58,10 @@ export interface FormatDistanceFnOptions {
 
 export type FormatDistanceTokenFn = (
   count: number,
-  options?: FormatDistanceOptions
+  options?: FormatDistanceFnOptions
 ) => string
 
-export interface FormatDistanceOptions {
+export interface FormatDistanceFnOptions {
   addSuffix?: boolean
   comparison?: -1 | 0 | 1
 }
@@ -69,7 +69,7 @@ export interface FormatDistanceOptions {
 export type FormatDistanceFn = (
   token: FormatDistanceToken,
   count: number,
-  options?: FormatDistanceOptions
+  options?: FormatDistanceFnOptions
 ) => string
 
 export type FormatRelativeTokenFn = (

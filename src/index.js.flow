@@ -401,6 +401,8 @@ declare module.exports: {
 
   getDecade: (date: Date | number) => number,
 
+  getDefaultOptions: () => Object,
+
   getHours: (date: Date | number) => number,
 
   getISODay: (date: Date | number) => number,
@@ -751,6 +753,12 @@ declare module.exports: {
   ) => Date,
 
   setDayOfYear: (date: Date | number, dayOfYear: number) => Date,
+
+  setDefaultOptions: (newOptions: {
+    locale?: Locale,
+    weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
+    firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7,
+  }) => void,
 
   setHours: (date: Date | number, hours: number) => Date,
 

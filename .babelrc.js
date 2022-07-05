@@ -9,6 +9,7 @@ const plugins = [
   '@babel/plugin-proposal-class-properties',
   '@babel/plugin-proposal-object-rest-spread',
   '@babel/plugin-transform-shorthand-properties',
+  '@babel/plugin-proposal-nullish-coalescing-operator',
 ]
 
 if (process.env.BABEL_ENV !== 'esm') {

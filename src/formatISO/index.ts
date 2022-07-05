@@ -19,7 +19,7 @@ import requiredArgs from '../_lib/requiredArgs'
  * @throws {TypeError} 1 argument required
  * @throws {RangeError} `date` must not be Invalid Date
  * @throws {RangeError} `options.format` must be 'extended' or 'basic'
- * @throws {RangeError} `options.represenation` must be 'date', 'time' or 'complete'
+ * @throws {RangeError} `options.representation` must be 'date', 'time' or 'complete'
  *
  * @example
  * // Represent 18 September 2019 in ISO 8601 format (local time zone is UTC):
@@ -53,10 +53,8 @@ export default function formatISO(
     throw new RangeError('Invalid time value')
   }
 
-  const format = !options?.format ? 'extended' : String(options.format)
-  const representation = !options?.representation
-    ? 'complete'
-    : String(options.representation)
+  const format = String(options?.format ?? 'extended')
+  const representation = String(options?.representation ?? 'complete')
 
   if (format !== 'extended' && format !== 'basic') {
     throw new RangeError("format must be 'extended' or 'basic'")

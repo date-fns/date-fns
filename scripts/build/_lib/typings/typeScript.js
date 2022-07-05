@@ -139,7 +139,9 @@ function getTypeScriptFnDefinition(fn) {
   const { title, args, content } = fn
 
   const params = getParams(args, { leftBorder: '(', rightBorder: ')' })
-  const returns = getType(content.returns[0].type.names)
+  const returns = getType(
+    content.returns && content.returns[0] && content.returns[0].type.names
+  )
 
   return formatBlock`
     function ${title} ${params}: ${returns}
@@ -150,7 +152,10 @@ function getTypeScriptFnDefinition(fn) {
 function getTypeScriptFPFnDefinition(fn) {
   const { title, args, content } = fn
 
-  const type = getFPFnType(args, content.returns[0].type.names)
+  const type = getFPFnType(
+    args,
+    content.returns && content.returns[0] && content.returns[0].type.names
+  )
 
   return formatBlock`
     const ${title}: ${type}
@@ -183,6 +188,23 @@ function getTypeScriptLocaleIndexModuleDefinition(submodule, locales) {
   const definition = formatBlock`
     declare module '${moduleName}' {
       ${addSeparator(localesDefinitions, '\n')}
+    }
+  `
+
+  return {
+    name: moduleName,
+    definition,
+  }
+}
+
+function getTypeScriptConstantsModuleDefinition(constants, fnSuffix) {
+  const moduleName = `date-fns/constants${fnSuffix}`
+
+  const definition = formatBlock`
+    declare module '${moduleName}' {
+      ${constants
+        .map((c) => `export const ${c.name}: ${c.type.names.join(' | ')}`)
+        .join('\n')}
     }
   `
 
@@ -227,7 +249,9 @@ function getTypeScriptLocaleModuleDefinition(
 function getTypeScriptInterfaceDefinition(fn) {
   const { title, args, content } = fn
   const params = getParams(args, { leftBorder: '(', rightBorder: ')' })
-  const returns = getType(content.returns[0].type.names)
+  const returns = getType(
+    content.returns && content.returns[0] && content.returns[0].type.names
+  )
 
   return `${title}${params}: ${returns}`
 }
@@ -256,6 +280,15 @@ function generateTypescriptLocaleTyping(locale) {
   writeFile(`src/locale/${locale.code}/index.d.ts`, typingFile)
 }
 
+function generateTypescriptConstantsTyping(constants) {
+  const typingFile = formatTypeScriptFile`
+    ${constants
+      .map((c) => `export const ${c.name}: ${c.type.names.join(' | ')}`)
+      .join('\n')}
+  `
+  writeFile(`src/constants/index.d.ts`, typingFile)
+}
+
 function generateTypeScriptTypings(fns, aliases, locales, constants) {
   const nonFPFns = fns.filter((fn) => !fn.isFPFn)
   const fpFns = fns.filter((fn) => fn.isFPFn)
@@ -265,6 +298,9 @@ function generateTypeScriptTypings(fns, aliases, locales, constants) {
 
   const moduleDefinitions = [
     getTypeScriptDateFnsModuleDefinition('', nonFPFns, constantsDefinitions),
+    getTypeScriptConstantsModuleDefinition(constants, ''),
+    getTypeScriptConstantsModuleDefinition(constants, '/index'),
+    getTypeScriptConstantsModuleDefinition(constants, '/index.js'),
   ]
     .concat(nonFPFns.map(getTypeScriptFnModuleDefinition.bind(null, '', '')))
     .concat(
@@ -446,6 +482,8 @@ function generateTypeScriptTypings(fns, aliases, locales, constants) {
   locales.forEach((locale) => {
     generateTypescriptLocaleTyping(locale)
   })
+
+  generateTypescriptConstantsTyping(constants)
 }
 
 function writeFile(relativePath, content) {

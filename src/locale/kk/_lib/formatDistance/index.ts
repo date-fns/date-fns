@@ -1,7 +1,7 @@
 import type {
   FormatDistanceFn,
   FormatDistanceLocale,
-  FormatDistanceOptions,
+  FormatDistanceFnOptions,
 } from '../../../types'
 
 type Plural = {
@@ -25,7 +25,7 @@ type FormatDistanceTokenValue =
     }
 
   // eslint-disable-next-line no-unused-vars
-  | ((options?: FormatDistanceOptions) => string)
+  | ((options?: FormatDistanceFnOptions) => string)
 
 const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   lessThanXSeconds: {
@@ -61,7 +61,7 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
     },
   },
 
-  halfAMinute: (options?: FormatDistanceOptions) => {
+  halfAMinute: (options?: FormatDistanceFnOptions) => {
     if (options?.addSuffix) {
       if (options.comparison && options.comparison > 0) {
         return 'жарты минут ішінде'

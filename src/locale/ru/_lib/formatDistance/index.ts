@@ -1,7 +1,7 @@
 import type {
   FormatDistanceFn,
   FormatDistanceLocale,
-  FormatDistanceOptions,
+  FormatDistanceFnOptions,
 } from '../../../types'
 
 type DeclensionScheme = {
@@ -21,7 +21,7 @@ type FormatDistanceTokenValue = (
   // eslint-disable-next-line no-unused-vars
   count: number,
   // eslint-disable-next-line no-unused-vars
-  options?: FormatDistanceOptions
+  options?: FormatDistanceFnOptions
 ) => string
 
 function declension(scheme: DeclensionScheme, count: number): string {
@@ -48,7 +48,7 @@ function declension(scheme: DeclensionScheme, count: number): string {
 }
 
 function buildLocalizeTokenFn(scheme: Tense) {
-  return (count: number, options?: FormatDistanceOptions): string => {
+  return (count: number, options?: FormatDistanceFnOptions): string => {
     if (options?.addSuffix) {
       if (options.comparison && options.comparison > 0) {
         if (scheme.future) {
