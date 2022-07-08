@@ -1,0 +1,17 @@
+{
+  "name": "date-fns-example-typescript",
+  "version": "0.1.0",
+  "description": "Example of date-fns usage with TypeScript",
+  "main": "example.ts",
+  "author": "Sasha Koss <koss@nocorp.me>",
+  "license": "MIT",
+  "scripts": {
+    "build": "yarn build-date-fns",
+    "build-date-fns": "env PACKAGE_OUTPUT_PATH=\"$(pwd)/node_modules/date-fns\" ../../scripts/build/package.sh",
+    "test": "yarn test-example && yarn test-fp && yarn test-misc && yarn test-constants",
+    "test-example": "test $(env TZ=UTC node ./example.mjs) = true",
+    "test-fp": "test $(env TZ=UTC node ./fp.mjs) = true",
+    "test-misc": "test $(env TZ=UTC node ./misc.mjs) = true",
+    "test-constants": "test $(node ./constants.mjs) = true"
+  }
+}
