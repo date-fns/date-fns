@@ -13,7 +13,7 @@ export abstract class Setter {
   public abstract set(
     utcDate: Date,
     flags: ParseFlags,
-    options?: ParserOptions
+    options: ParserOptions
   ): Date | [Date, ParseFlags]
 }
 
@@ -23,13 +23,13 @@ export class ValueSetter<TValue> extends Setter {
     private validateValue: (
       utcDate: Date,
       value: TValue,
-      options?: ParserOptions
+      options: ParserOptions
     ) => boolean,
     private setValue: (
       utcDate: Date,
       flags: ParseFlags,
       value: TValue,
-      options?: ParserOptions
+      options: ParserOptions
     ) => Date | [Date, ParseFlags],
     public priority: number,
     subPriority?: number
@@ -40,14 +40,14 @@ export class ValueSetter<TValue> extends Setter {
     }
   }
 
-  validate(utcDate: Date, options?: ParserOptions): boolean {
+  validate(utcDate: Date, options: ParserOptions): boolean {
     return this.validateValue(utcDate, this.value, options)
   }
 
   set(
     utcDate: Date,
     flags: ParseFlags,
-    options?: ParserOptions
+    options: ParserOptions
   ): Date | [Date, ParseFlags] {
     return this.setValue(utcDate, flags, this.value, options)
   }

@@ -190,13 +190,10 @@ function dateOrdinalNumber(number: number, localeNumber: string): string {
   }
 }
 
-const ordinalNumber: LocalizeFn<number, undefined> = (
-  dirtyNumber,
-  dirtyOptions
-) => {
+const ordinalNumber: LocalizeFn<number, undefined> = (dirtyNumber, options) => {
   const number = Number(dirtyNumber)
   const localeNumber = numberToLocale(number)
-  const unit = dirtyOptions?.unit
+  const unit = options?.unit
 
   if (unit === 'date') {
     return dateOrdinalNumber(number, localeNumber)

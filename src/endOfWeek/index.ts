@@ -1,3 +1,4 @@
+import { getDefaultOptions } from '../_lib/defaultOptions/index'
 import toDate from '../toDate/index'
 import toInteger from '../_lib/toInteger/index'
 import requiredArgs from '../_lib/requiredArgs/index'
@@ -32,21 +33,18 @@ import type { LocaleOptions, WeekStartOptions } from '../types'
  */
 export default function endOfWeek(
   dirtyDate: Date | number,
-  dirtyOptions?: LocaleOptions & WeekStartOptions
+  options?: LocaleOptions & WeekStartOptions
 ): Date {
   requiredArgs(1, arguments)
 
-  const options = dirtyOptions || {}
-
-  const locale = options.locale
-  const localeWeekStartsOn =
-    locale && locale.options && locale.options.weekStartsOn
-  const defaultWeekStartsOn =
-    localeWeekStartsOn == null ? 0 : toInteger(localeWeekStartsOn)
-  const weekStartsOn =
-    options.weekStartsOn == null
-      ? defaultWeekStartsOn
-      : toInteger(options.weekStartsOn)
+  const defaultOptions = getDefaultOptions()
+  const weekStartsOn = toInteger(
+    options?.weekStartsOn ??
+      options?.locale?.options?.weekStartsOn ??
+      defaultOptions.weekStartsOn ??
+      defaultOptions.locale?.options?.weekStartsOn ??
+      0
+  )
 
   // Test if weekStartsOn is between 0 and 6 _and_ is not NaN
   if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {

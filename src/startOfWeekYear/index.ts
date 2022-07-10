@@ -7,6 +7,7 @@ import type {
   FirstWeekContainsDateOptions,
   WeekStartOptions,
 } from '../types'
+import { getDefaultOptions } from '../_lib/defaultOptions/index'
 
 /**
  * @name startOfWeekYear
@@ -49,27 +50,23 @@ import type {
  */
 export default function startOfWeekYear(
   dirtyDate: Date | number,
-  dirtyOptions?: LocaleOptions & FirstWeekContainsDateOptions & WeekStartOptions
+  options?: LocaleOptions & FirstWeekContainsDateOptions & WeekStartOptions
 ): Date {
   requiredArgs(1, arguments)
 
-  const options = dirtyOptions || {}
-  const locale = options.locale
-  const localeFirstWeekContainsDate =
-    locale && locale.options && locale.options.firstWeekContainsDate
-  const defaultFirstWeekContainsDate =
-    localeFirstWeekContainsDate == null
-      ? 1
-      : toInteger(localeFirstWeekContainsDate)
-  const firstWeekContainsDate =
-    options.firstWeekContainsDate == null
-      ? defaultFirstWeekContainsDate
-      : toInteger(options.firstWeekContainsDate)
+  const defaultOptions = getDefaultOptions()
+  const firstWeekContainsDate = toInteger(
+    options?.firstWeekContainsDate ??
+      options?.locale?.options?.firstWeekContainsDate ??
+      defaultOptions.firstWeekContainsDate ??
+      defaultOptions.locale?.options?.firstWeekContainsDate ??
+      1
+  )
 
-  const year = getWeekYear(dirtyDate, dirtyOptions)
+  const year = getWeekYear(dirtyDate, options)
   const firstWeek = new Date(0)
   firstWeek.setFullYear(year, 0, firstWeekContainsDate)
   firstWeek.setHours(0, 0, 0, 0)
-  const date = startOfWeek(firstWeek, dirtyOptions)
+  const date = startOfWeek(firstWeek, options)
   return date
 }

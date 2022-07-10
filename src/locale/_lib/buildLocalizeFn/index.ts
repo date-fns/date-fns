@@ -90,22 +90,20 @@ export default function buildLocalizeFn<
 >(
   args: BuildLocalizeFnArgs<Result, ArgCallback>
 ): LocalizeFn<Result, ArgCallback> {
-  return (dirtyIndex, dirtyOptions) => {
-    const options = dirtyOptions || {}
-
-    const context = options.context ? String(options.context) : 'standalone'
+  return (dirtyIndex, options) => {
+    const context = options?.context ? String(options.context) : 'standalone'
 
     let valuesArray: LocalizeUnitValues<Result>
     if (context === 'formatting' && args.formattingValues) {
       const defaultWidth = args.defaultFormattingWidth || args.defaultWidth
-      const width = (options.width
+      const width = (options?.width
         ? String(options.width)
         : defaultWidth) as LocalePatternWidth
       valuesArray = (args.formattingValues[width] ||
         args.formattingValues[defaultWidth]) as LocalizeUnitValues<Result>
     } else {
       const defaultWidth = args.defaultWidth
-      const width = (options.width
+      const width = (options?.width
         ? String(options.width)
         : args.defaultWidth) as LocalePatternWidth
       valuesArray = (args.values[width] ||

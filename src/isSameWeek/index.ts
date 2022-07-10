@@ -40,12 +40,12 @@ import type { WeekStartOptions, LocaleOptions } from '../types'
 export default function isSameWeek(
   dirtyDateLeft: Date | number,
   dirtyDateRight: Date | number,
-  dirtyOptions?: LocaleOptions & WeekStartOptions
+  options?: LocaleOptions & WeekStartOptions
 ): boolean {
   requiredArgs(2, arguments)
 
-  const dateLeftStartOfWeek = startOfWeek(dirtyDateLeft, dirtyOptions)
-  const dateRightStartOfWeek = startOfWeek(dirtyDateRight, dirtyOptions)
+  const dateLeftStartOfWeek = startOfWeek(dirtyDateLeft, options)
+  const dateRightStartOfWeek = startOfWeek(dirtyDateRight, options)
 
   return dateLeftStartOfWeek.getTime() === dateRightStartOfWeek.getTime()
 }

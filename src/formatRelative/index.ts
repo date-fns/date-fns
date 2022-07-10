@@ -1,12 +1,14 @@
+import { getDefaultOptions } from '../_lib/defaultOptions/index'
 import differenceInCalendarDays from '../differenceInCalendarDays/index'
 import format from '../format/index'
-import defaultLocale from '../locale/en-US/index'
+import defaultLocale from '../_lib/defaultLocale/index'
 import subMilliseconds from '../subMilliseconds/index'
 import toDate from '../toDate/index'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 import type { LocaleOptions, WeekStartOptions } from '../types'
 import type { FormatRelativeToken } from '../locale/types'
+import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name formatRelative
@@ -47,14 +49,22 @@ import type { FormatRelativeToken } from '../locale/types'
 export default function formatRelative(
   dirtyDate: Date | number,
   dirtyBaseDate: Date | number,
-  dirtyOptions?: LocaleOptions & WeekStartOptions
+  options?: LocaleOptions & WeekStartOptions
 ): string {
   requiredArgs(2, arguments)
 
   const date = toDate(dirtyDate)
   const baseDate = toDate(dirtyBaseDate)
 
-  const { locale = defaultLocale, weekStartsOn = 0 } = dirtyOptions || {}
+  const defaultOptions = getDefaultOptions()
+  const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale
+  const weekStartsOn = toInteger(
+    options?.weekStartsOn ??
+      options?.locale?.options?.weekStartsOn ??
+      defaultOptions.weekStartsOn ??
+      defaultOptions.locale?.options?.weekStartsOn ??
+      0
+  )
 
   if (!locale.localize) {
     throw new RangeError('locale must contain localize property')

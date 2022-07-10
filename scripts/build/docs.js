@@ -220,10 +220,10 @@ function generateFPFnDoc(dirtyDoc) {
 
   const isFPFn = true
   const { urlId, title } = doc
-  const exceptions = doc.content.exceptions.filter(
+  const exceptions = (doc.content.exceptions || []).filter(
     (exception) => !exception.description.includes('options.')
   )
-  const params = doc.content.params
+  const params = (doc.content.params || [])
     .filter((param) => !param.name.startsWith('options'))
     .reverse()
   const args = paramsToTree(params)
@@ -255,7 +255,7 @@ function generateFPFnWithOptionsDoc(dirtyDoc) {
 
   const isFPFn = true
   const { urlId, title } = doc
-  const params = doc.content.params
+  const params = (doc.content.params || [])
     .map((param) => {
       if (!param.name.includes('.')) {
         param.optional = false
@@ -294,7 +294,7 @@ function generateFPFnWithOptionsDoc(dirtyDoc) {
 }
 
 function withOptions(args) {
-  return args && args[0].name === 'options'
+  return args && args[0] && args[0].name === 'options'
 }
 
 function generateUsageTabs(isFPFn) {

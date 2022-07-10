@@ -167,7 +167,7 @@ const getSuffix = (number: number): string => {
   return ''
 }
 
-const ordinalNumber: LocalizeFn<number> = (dirtyNumber, _dirtyOptions) => {
+const ordinalNumber: LocalizeFn<number> = (dirtyNumber, _options) => {
   const number = Number(dirtyNumber)
   const suffix = getSuffix(number)
 
