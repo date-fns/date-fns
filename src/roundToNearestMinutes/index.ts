@@ -15,7 +15,7 @@ import toInteger from '../_lib/toInteger/index'
  * @param {Date|Number} date - the date to round
  * @param {Object} [options] - an object with options.
  * @param {Number} [options.nearestTo=1] - nearest number of minutes to round to. E.g. `15` to round to quarter hours.
- * @param {boolean} [options.mode] - decide whether to round up (ceil) or down (floor). Defaults value is `floor`.
+ * @param {String} [options.roundingMethod='trunc'] - a rounding method (`ceil`, `floor`, `round` or `trunc`)
  * @returns {Date} the new date rounded to the closest minute
  * @throws {TypeError} 1 argument required
  * @throws {RangeError} `options.nearestTo` must be between 1 and 30
@@ -48,7 +48,7 @@ export default function roundToNearestMinutes(
   const date = toDate(dirtyDate)
   const seconds = date.getSeconds() // relevant if nearestTo is 1, which is the default case
   const minutes = date.getMinutes() + seconds / 60
-  const roundingMethod = getRoundingMethod(options?.roundingMethod ?? 'floor')
+  const roundingMethod = getRoundingMethod(options?.roundingMethod)
   const roundedMinutes = roundingMethod(minutes / nearestTo) * nearestTo
   const remainderMinutes = minutes % nearestTo
   const addedMinutes = Math.round(remainderMinutes / nearestTo) * nearestTo
