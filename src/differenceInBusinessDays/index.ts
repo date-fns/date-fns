@@ -33,12 +33,12 @@ import toInteger from '../_lib/toInteger/index'
  * //=> 136
  *
  * // How many business days are between
- * // 1 November 2021 and 30 November 2021?
+ * // 30 November 2021 and 1 November 2021?
  * const result = differenceInBusinessDays(
- *   new Date(2021, 10, 1),
- *   new Date(2021, 10, 30)
+ *   new Date(2021, 10, 30),
+ *   new Date(2021, 10, 1)
  * )
- * //=> -21
+ * //=> 21
  *
  * // How many business days are between
  * // 1 November 2021 and 1 December 2021?
