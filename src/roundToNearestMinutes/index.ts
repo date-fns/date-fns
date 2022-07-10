@@ -1,3 +1,5 @@
+import { RoundingMethod } from 'src/types'
+import { getRoundingMethod } from '../_lib/roundingMethods'
 import toDate from '../toDate/index'
 import toInteger from '../_lib/toInteger/index'
 
@@ -31,7 +33,7 @@ import toInteger from '../_lib/toInteger/index'
  */
 export default function roundToNearestMinutes(
   dirtyDate: Date | number,
-  options?: { nearestTo?: number; mode?: 'floor' | 'ceil' }
+  options?: { nearestTo?: number; roundingMethod?: RoundingMethod }
 ): Date {
   if (arguments.length < 1) {
     throw new TypeError('1 argument required, but only none provided present')
@@ -47,8 +49,8 @@ export default function roundToNearestMinutes(
   const date = toDate(dirtyDate)
   const seconds = date.getSeconds() // relevant if nearestTo is 1, which is the default case
   const minutes = date.getMinutes() + seconds / 60
-  const roundMode = options?.mode === 'ceil' ? Math.ceil : Math.floor
-  const roundedMinutes = roundMode(minutes / nearestTo) * nearestTo
+  const roundingMethod = getRoundingMethod(options?.roundingMethod ?? 'floor')
+  const roundedMinutes = roundingMethod(minutes / nearestTo) * nearestTo
   const remainderMinutes = minutes % nearestTo
   const addedMinutes = Math.round(remainderMinutes / nearestTo) * nearestTo
 
