@@ -1,4 +1,3 @@
-import { FormatRFC3339Options } from 'src/types'
 import isValid from '../isValid/index'
 import toDate from '../toDate/index'
 import addLeadingZeros from '../_lib/addLeadingZeros/index'
@@ -7,7 +6,9 @@ import toInteger from '../_lib/toInteger/index'
 /**
  * The {@link formatRFC3339} function options.
  */
-export interface FormatRFC3339FunctionOptions extends FormatRFC3339Options {}
+export interface FormatRFC3339Options {
+  fractionDigits?: 0 | 1 | 2 | 3
+}
 
 /**
  * @name formatRFC3339
@@ -42,7 +43,7 @@ export interface FormatRFC3339FunctionOptions extends FormatRFC3339Options {}
  */
 export default function formatRFC3339(
   dirtyDate: Date | number,
-  options?: FormatRFC3339FunctionOptions
+  options?: FormatRFC3339Options
 ): string {
   if (arguments.length < 1) {
     throw new TypeError(

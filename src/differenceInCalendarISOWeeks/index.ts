@@ -1,4 +1,4 @@
-import { millisecondsInWeek } from '../constants'
+import { millisecondsInWeek } from '../constants/index'
 import startOfISOWeek from '../startOfISOWeek/index'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
 import requiredArgs from '../_lib/requiredArgs/index'

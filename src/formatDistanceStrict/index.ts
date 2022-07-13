@@ -6,7 +6,7 @@ import {
   minutesInYear,
 } from '../constants/index'
 import toDate from '../toDate/index'
-import type { FormatDistanceStrictOptions, LocaleOptions } from '../types'
+import type { LocaleOptions, Unit } from '../types'
 import assign from '../_lib/assign/index'
 import cloneObject from '../_lib/cloneObject/index'
 import defaultLocale from '../_lib/defaultLocale/index'
@@ -17,9 +17,11 @@ import requiredArgs from '../_lib/requiredArgs/index'
 /**
  * The {@link formatDistanceStrict} function options.
  */
-export interface FormatDistanceStrictFunctionOptions
-  extends LocaleOptions,
-    FormatDistanceStrictOptions {}
+export interface FormatDistanceStrictOptions extends LocaleOptions {
+  addSuffix?: boolean
+  unit?: Unit
+  roundingMethod?: 'floor' | 'ceil' | 'round'
+}
 
 /**
  * @name formatDistanceStrict
@@ -106,7 +108,7 @@ export interface FormatDistanceStrictFunctionOptions
 export default function formatDistanceStrict(
   dirtyDate: Date | number,
   dirtyBaseDate: Date | number,
-  options?: FormatDistanceStrictFunctionOptions
+  options?: FormatDistanceStrictOptions
 ): string {
   requiredArgs(2, arguments)
 

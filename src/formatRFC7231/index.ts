@@ -1,4 +1,3 @@
-import { days, months } from '../constants/index'
 import isValid from '../isValid/index'
 import toDate from '../toDate/index'
 import addLeadingZeros from '../_lib/addLeadingZeros/index'
@@ -30,6 +29,21 @@ export default function formatRFC7231(dirtyDate: Date | number): string {
   }
 
   const originalDate = toDate(dirtyDate)
+  const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+  const months = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ]
 
   if (!isValid(originalDate)) {
     throw new RangeError('Invalid time value')

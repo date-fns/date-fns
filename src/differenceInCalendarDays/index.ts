@@ -1,4 +1,4 @@
-import { millisecondsInDay } from '../constants'
+import { millisecondsInDay } from '../constants/index'
 import startOfDay from '../startOfDay/index'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
 import requiredArgs from '../_lib/requiredArgs/index'

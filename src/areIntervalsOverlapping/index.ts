@@ -1,12 +1,13 @@
 import toDate from '../toDate/index'
-import type { AreIntervalsOverlappingOptions, Interval } from '../types'
+import type { Interval } from '../types'
 import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * The {@link areIntervalsOverlapping} function options.
  */
-export interface AreIntervalsOverlappingFunctionOptions
-  extends AreIntervalsOverlappingOptions {}
+export interface AreIntervalsOverlappingOptions {
+  inclusive?: boolean
+}
 
 /**
  * @name areIntervalsOverlapping
@@ -66,7 +67,7 @@ export interface AreIntervalsOverlappingFunctionOptions
 export default function areIntervalsOverlapping(
   intervalLeft: Interval,
   intervalRight: Interval,
-  options?: AreIntervalsOverlappingFunctionOptions
+  options?: AreIntervalsOverlappingOptions
 ): boolean {
   requiredArgs(2, arguments)
 

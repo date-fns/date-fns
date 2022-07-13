@@ -1,13 +1,14 @@
-import formatDistanceStrict from '../formatDistanceStrict/index'
-import type { FormatDistanceStrictOptions, LocaleOptions } from '../types'
+import formatDistanceStrict, {
+  FormatDistanceStrictOptions,
+} from '../formatDistanceStrict/index'
+
 import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * The {@link formatDistanceToNowStrict} function options.
  */
 export interface FormatDistanceToNowStrictOptions
-  extends LocaleOptions,
-    FormatDistanceStrictOptions {}
+  extends FormatDistanceStrictOptions {}
 
 /**
  * @name formatDistanceToNowStrict

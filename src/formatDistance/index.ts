@@ -3,7 +3,7 @@ import { minutesInDay, minutesInMonth } from '../constants/index'
 import differenceInMonths from '../differenceInMonths/index'
 import differenceInSeconds from '../differenceInSeconds/index'
 import toDate from '../toDate/index'
-import type { FormatDistanceOptions, LocaleOptions } from '../types'
+import type { LocaleOptions } from '../types'
 import assign from '../_lib/assign'
 import cloneObject from '../_lib/cloneObject/index'
 import defaultLocale from '../_lib/defaultLocale/index'
@@ -14,9 +14,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
 /**
  * The {@link formatDistance} function options.
  */
-export interface FormatDistanceFunctionOptions
-  extends LocaleOptions,
-    FormatDistanceOptions {}
+export interface FormatDistanceOptions extends LocaleOptions {
+  includeSeconds?: boolean
+  addSuffix?: boolean
+}
 
 /**
  * @name formatDistance
@@ -102,13 +103,12 @@ export interface FormatDistanceFunctionOptions
 export default function formatDistance(
   dirtyDate: Date | number,
   dirtyBaseDate: Date | number,
-  options?: FormatDistanceFunctionOptions
+  options?: FormatDistanceOptions
 ): string {
   requiredArgs(2, arguments)
 
   const defaultOptions = getDefaultOptions()
   const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale
-  const minutesInTwoMonth = minutesInMonth * 2
   const minutesInAlmostTwoDays = 2520
 
   if (!locale.formatDistance) {
@@ -191,7 +191,7 @@ export default function formatDistance(
     return locale.formatDistance('xDays', days, localizeOptions)
 
     // 1 month up to 2 months
-  } else if (minutes < minutesInTwoMonth) {
+  } else if (minutes < minutesInMonth * 2) {
     months = Math.round(minutes / minutesInMonth)
     return locale.formatDistance('aboutXMonths', months, localizeOptions)
   }

@@ -1,13 +1,11 @@
-import distanceInWords from '../formatDistance/index'
-import type { FormatDistanceOptions, LocaleOptions } from '../types'
+import distanceInWords, { FormatDistanceOptions } from '../formatDistance/index'
+
 import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * The {@link formatDistanceToNow} function options.
  */
-export interface FormatDistanceToNowOptions
-  extends LocaleOptions,
-    FormatDistanceOptions {}
+export interface FormatDistanceToNowOptions extends FormatDistanceOptions {}
 
 /**
  * @name formatDistanceToNow

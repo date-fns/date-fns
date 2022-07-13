@@ -88,24 +88,9 @@ export type Unit =
   | 'quarter'
   | 'year'
 
-export interface FormatRFC3339Options {
-  fractionDigits?: 0 | 1 | 2 | 3
-}
-
 export interface AdditionalTokensOptions {
   useAdditionalWeekYearTokens?: boolean
   useAdditionalDayOfYearTokens?: boolean
-}
-
-export interface FormatDistanceOptions {
-  includeSeconds?: boolean
-  addSuffix?: boolean
-}
-
-export interface FormatDistanceStrictOptions {
-  addSuffix?: boolean
-  unit?: Unit
-  roundingMethod?: 'floor' | 'ceil' | 'round'
 }
 
 export interface FormatDurationOptions {
