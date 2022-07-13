@@ -111,16 +111,6 @@ export const minutesInYear = 525600
 export const minutesInMonth = 43200
 
 /**
- * Minutes in almost 2 days.
- *
- * @name minutesInAlmostTwoDays
- * @constant
- * @type {number}
- * @default
- */
-export const minutesInAlmostTwoDays = 2520
-
-/**
  * Minutes in 1 day.
  *
  * @name minutesInDay

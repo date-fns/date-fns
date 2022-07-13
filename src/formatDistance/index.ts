@@ -1,9 +1,5 @@
 import compareAsc from '../compareAsc/index'
-import {
-  minutesInAlmostTwoDays,
-  minutesInDay,
-  minutesInMonth,
-} from '../constants/index'
+import { minutesInDay, minutesInMonth } from '../constants/index'
 import differenceInMonths from '../differenceInMonths/index'
 import differenceInSeconds from '../differenceInSeconds/index'
 import toDate from '../toDate/index'
@@ -113,6 +109,7 @@ export default function formatDistance(
   const defaultOptions = getDefaultOptions()
   const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale
   const minutesInTwoMonth = minutesInMonth * 2
+  const minutesInAlmostTwoDays = 2520
 
   if (!locale.formatDistance) {
     throw new RangeError('locale must contain formatDistance property')
