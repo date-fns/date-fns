@@ -1,5 +1,5 @@
 import addMilliseconds from '../addMilliseconds/index'
-import { millisecondsInMinute } from '../constants'
+import { millisecondsInMinute } from '../constants/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
 
