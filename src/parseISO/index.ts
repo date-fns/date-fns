@@ -1,12 +1,13 @@
 import { millisecondsInHour, millisecondsInMinute } from '../constants/index'
-import type { AdditionalDigitsOptions } from '../types'
 import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
 
 /**
  * The {@link parseISO} function options.
  */
-export interface ParseISOOptions extends AdditionalDigitsOptions {}
+export interface ParseISOOptions {
+  additionalDigits?: 0 | 1 | 2
+}
 
 /**
  * @name parseISO

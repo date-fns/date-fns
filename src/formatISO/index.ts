@@ -1,7 +1,7 @@
 import toDate from '../toDate/index'
 import type { FormatOptions, RepresentationOptions } from '../types'
 import addLeadingZeros from '../_lib/addLeadingZeros/index'
-import requiredArgs from '../_lib/requiredArgs'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * The {@link formatISO} function options.

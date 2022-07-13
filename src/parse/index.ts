@@ -18,7 +18,7 @@ import {
 } from '../_lib/protectedTokens/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
-import { parsers } from './_lib/parsers'
+import { parsers } from './_lib/parsers/index'
 import { DateToSystemTimezoneSetter, Setter } from './_lib/Setter'
 import type { ParseFlags, ParserOptions } from './_lib/types'
 

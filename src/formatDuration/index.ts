@@ -1,14 +1,16 @@
 import type { FormatDistanceToken } from '../locale/types'
-import type { Duration, FormatDurationOptions, LocaleOptions } from '../types'
+import type { Duration, LocaleOptions } from '../types'
 import defaultLocale from '../_lib/defaultLocale/index'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
 
 /**
  * The {@link formatDuration} function options.
  */
-export interface FormatDurationFunctionOptions
-  extends LocaleOptions,
-    FormatDurationOptions {}
+export interface FormatDurationOptions extends LocaleOptions {
+  format?: (keyof Duration)[]
+  zero?: boolean
+  delimiter?: string
+}
 
 const defaultFormat: (keyof Duration)[] = [
   'years',
@@ -84,7 +86,7 @@ const defaultFormat: (keyof Duration)[] = [
  */
 export default function formatDuration(
   duration: Duration,
-  options?: FormatDurationFunctionOptions
+  options?: FormatDurationOptions
 ): string {
   if (arguments.length < 1) {
     throw new TypeError(

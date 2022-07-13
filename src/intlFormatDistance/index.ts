@@ -16,8 +16,17 @@ import differenceInHours from '../differenceInHours/index'
 import differenceInMinutes from '../differenceInMinutes/index'
 import differenceInSeconds from '../differenceInSeconds/index'
 import toDate from '../toDate/index'
-import type { IntlOptionsUnit } from '../types'
 import requiredArgs from '../_lib/requiredArgs/index'
+
+export type IntlOptionsUnit =
+  | 'year'
+  | 'quarter'
+  | 'month'
+  | 'week'
+  | 'day'
+  | 'hour'
+  | 'minute'
+  | 'second'
 
 /**
  * The {@link intlFormatDistance} function options.

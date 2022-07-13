@@ -39,10 +39,6 @@ export interface RepresentationOptions {
   representation?: 'complete' | 'date' | 'time'
 }
 
-export interface AdditionalDigitsOptions {
-  additionalDigits?: 0 | 1 | 2
-}
-
 export type Era = 0 | 1
 
 export type Quarter = 1 | 2 | 3 | 4
@@ -60,22 +56,6 @@ export type Month = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11
  */
 export type FirstWeekContainsDate = 1 | 4
 
-export interface DateValues {
-  year?: number
-  month?: number
-  date?: number
-  hours?: number
-  minutes?: number
-  seconds?: number
-  milliseconds?: number
-}
-
-export type RoundingMethod = 'ceil' | 'floor' | 'round' | 'trunc'
-
-export interface RoundingOptions {
-  roundingMethod?: RoundingMethod
-}
-
 export type Unit =
   | 'second'
   | 'minute'
@@ -92,27 +72,3 @@ export interface AdditionalTokensOptions {
   useAdditionalWeekYearTokens?: boolean
   useAdditionalDayOfYearTokens?: boolean
 }
-
-export interface FormatDurationOptions {
-  format?: (keyof Duration)[]
-  zero?: boolean
-  delimiter?: string
-}
-
-export interface RoundToNearestMinutesOptions {
-  nearestTo?: number
-}
-
-export interface AreIntervalsOverlappingOptions {
-  inclusive?: boolean
-}
-
-export type IntlOptionsUnit =
-  | 'year'
-  | 'quarter'
-  | 'month'
-  | 'week'
-  | 'day'
-  | 'hour'
-  | 'minute'
-  | 'second'
