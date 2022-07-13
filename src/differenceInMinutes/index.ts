@@ -1,8 +1,10 @@
 import { millisecondsInMinute } from '../constants/index'
 import differenceInMilliseconds from '../differenceInMilliseconds/index'
-import type { RoundingOptions } from '../types'
 import requiredArgs from '../_lib/requiredArgs/index'
-import { getRoundingMethod } from '../_lib/roundingMethods/index'
+import {
+  getRoundingMethod,
+  RoundingOptions,
+} from '../_lib/roundingMethods/index'
 
 /**
  * The {@link differenceInMinutes} function options.
