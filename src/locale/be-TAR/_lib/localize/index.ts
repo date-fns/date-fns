@@ -29,7 +29,7 @@ const monthValues = {
     'вер.',
     'кастр.',
     'ліст.',
-    'снеж.',
+    'сьнеж.',
   ] as const,
   wide: [
     'студзень',
@@ -43,7 +43,7 @@ const monthValues = {
     'верасень',
     'кастрычнік',
     'лістапад',
-    'снежань',
+    'сьнежань',
   ] as const,
 }
 const formattingMonthValues = {
@@ -60,7 +60,7 @@ const formattingMonthValues = {
     'вер.',
     'кастр.',
     'ліст.',
-    'снеж.',
+    'сьнеж.',
   ] as const,
   wide: [
     'студзеня',
@@ -74,7 +74,7 @@ const formattingMonthValues = {
     'верасня',
     'кастрычніка',
     'лістапада',
-    'снежня',
+    'сьнежня',
   ] as const,
 }
 
