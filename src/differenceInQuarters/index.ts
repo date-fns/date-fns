@@ -1,9 +1,7 @@
+import { RoundingOptions } from 'src/types'
 import differenceInMonths from '../differenceInMonths/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import {
-  getRoundingMethod,
-  RoundingOptions,
-} from '../_lib/roundingMethods/index'
+import { getRoundingMethod } from '../_lib/roundingMethods/index'
 
 /**
  * The {@link differenceInQuarters} function options.
