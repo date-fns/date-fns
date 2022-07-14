@@ -1,8 +1,4 @@
-export type RoundingMethod = 'ceil' | 'floor' | 'round' | 'trunc'
-
-export interface RoundingOptions {
-  roundingMethod?: RoundingMethod
-}
+import { RoundingMethod } from 'src/types'
 
 type RoundingFn = typeof Math.round
 

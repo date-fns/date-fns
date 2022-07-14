@@ -1,17 +1,8 @@
+import { DateValues } from 'src/types'
 import setMonth from '../setMonth/index'
 import toDate from '../toDate/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
-
-export interface DateValues {
-  year?: number
-  month?: number
-  date?: number
-  hours?: number
-  minutes?: number
-  seconds?: number
-  milliseconds?: number
-}
 
 /**
  * @name set
