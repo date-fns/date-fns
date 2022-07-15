@@ -1,5 +1,5 @@
-import { RoundingOptions } from 'src/types'
 import differenceInDays from '../differenceInDays/index'
+import { RoundingOptions } from '../types'
 import requiredArgs from '../_lib/requiredArgs/index'
 import { getRoundingMethod } from '../_lib/roundingMethods/index'
 

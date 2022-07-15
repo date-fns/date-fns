@@ -1,6 +1,6 @@
-import { RoundingOptions } from 'src/types'
 import { millisecondsInHour } from '../constants/index'
 import differenceInMilliseconds from '../differenceInMilliseconds/index'
+import { RoundingOptions } from '../types'
 import requiredArgs from '../_lib/requiredArgs/index'
 import { getRoundingMethod } from '../_lib/roundingMethods/index'
 

@@ -1,4 +1,3 @@
-import { IntlOptionsUnit } from 'src/types'
 import {
   secondsInDay,
   secondsInHour,
@@ -17,6 +16,7 @@ import differenceInHours from '../differenceInHours/index'
 import differenceInMinutes from '../differenceInMinutes/index'
 import differenceInSeconds from '../differenceInSeconds/index'
 import toDate from '../toDate/index'
+import type { IntlOptionsUnit } from '../types'
 import requiredArgs from '../_lib/requiredArgs/index'
 
 /**

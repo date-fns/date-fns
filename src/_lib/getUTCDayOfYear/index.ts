@@ -1,7 +1,6 @@
+import { millisecondsInDay } from '../../constants/index'
 import toDate from '../../toDate/index'
 import requiredArgs from '../requiredArgs/index'
-
-const MILLISECONDS_IN_DAY = 86400000
 
 export default function getUTCDayOfYear(dirtyDate: Date | number): number {
   requiredArgs(1, arguments)
@@ -12,5 +11,5 @@ export default function getUTCDayOfYear(dirtyDate: Date | number): number {
   date.setUTCHours(0, 0, 0, 0)
   const startOfYearTimestamp = date.getTime()
   const difference = timestamp - startOfYearTimestamp
-  return Math.floor(difference / MILLISECONDS_IN_DAY) + 1
+  return Math.floor(difference / millisecondsInDay) + 1
 }

@@ -1,6 +1,6 @@
-import { DateValues } from 'src/types'
 import setMonth from '../setMonth/index'
 import toDate from '../toDate/index'
+import { DateValues } from '../types'
 import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
 

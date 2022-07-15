@@ -1,13 +1,18 @@
-import type { LocaleOptions, WeekStartOptions } from '../../types'
 import toDate from '../../toDate/index'
+import type { LocaleOptions, WeekStartOptions } from '../../types'
+import { getDefaultOptions } from '../defaultOptions/index'
 import requiredArgs from '../requiredArgs/index'
 import toInteger from '../toInteger/index'
-import { getDefaultOptions } from '../defaultOptions/index'
+
+/**
+ * The {@link setUTCDay} function options.
+ */
+export interface SetUTCDayOptions extends LocaleOptions, WeekStartOptions {}
 
 export default function setUTCDay(
   dirtyDate: Date | number,
   dirtyDay: Date | number,
-  options?: LocaleOptions & WeekStartOptions
+  options?: SetUTCDayOptions
 ): Date {
   requiredArgs(2, arguments)
 

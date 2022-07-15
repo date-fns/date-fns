@@ -1,12 +1,19 @@
 import toDate from '../../toDate/index'
 import type { LocaleOptions, WeekStartOptions } from '../../types'
+import { getDefaultOptions } from '../defaultOptions/index'
 import requiredArgs from '../requiredArgs/index'
 import toInteger from '../toInteger/index'
-import { getDefaultOptions } from '../defaultOptions/index'
+
+/**
+ * The {@link startOfUTCWeek} function options.
+ */
+export interface StartOfUTCWeekOptions
+  extends LocaleOptions,
+    WeekStartOptions {}
 
 export default function startOfUTCWeek(
   dirtyDate: Date | number,
-  options?: LocaleOptions & WeekStartOptions
+  options?: StartOfUTCWeekOptions
 ): Date {
   requiredArgs(1, arguments)
 

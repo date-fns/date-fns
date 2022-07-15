@@ -3,15 +3,23 @@ import type {
   LocaleOptions,
   WeekStartOptions,
 } from '../../types'
+import { getDefaultOptions } from '../defaultOptions/index'
 import getUTCWeekYear from '../getUTCWeekYear/index'
 import requiredArgs from '../requiredArgs/index'
 import startOfUTCWeek from '../startOfUTCWeek/index'
 import toInteger from '../toInteger/index'
-import { getDefaultOptions } from '../defaultOptions/index'
+
+/**
+ * The {@link startOfUTCWeekYear} function options.
+ */
+export interface StartOfUTCWeekYearOptions
+  extends LocaleOptions,
+    FirstWeekContainsDateOptions,
+    WeekStartOptions {}
 
 export default function startOfUTCWeekYear(
   dirtyDate: Date | number,
-  options?: LocaleOptions & FirstWeekContainsDateOptions & WeekStartOptions
+  options?: StartOfUTCWeekYearOptions
 ): Date {
   requiredArgs(1, arguments)
 

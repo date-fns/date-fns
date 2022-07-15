@@ -1,14 +1,13 @@
+import { millisecondsInWeek } from '../../constants/index'
 import toDate from '../../toDate/index'
-import startOfUTCWeek from '../startOfUTCWeek/index'
-import startOfUTCWeekYear from '../startOfUTCWeekYear/index'
-import requiredArgs from '../requiredArgs/index'
 import type {
+  FirstWeekContainsDateOptions,
   LocaleOptions,
   WeekStartOptions,
-  FirstWeekContainsDateOptions,
 } from '../../types'
-
-const MILLISECONDS_IN_WEEK = 604800000
+import requiredArgs from '../requiredArgs/index'
+import startOfUTCWeek from '../startOfUTCWeek/index'
+import startOfUTCWeekYear from '../startOfUTCWeekYear/index'
 
 export default function getUTCWeek(
   dirtyDate: Date | number,
@@ -24,5 +23,5 @@ export default function getUTCWeek(
   // Round the number of days to the nearest integer
   // because the number of milliseconds in a week is not constant
   // (e.g. it's different in the week of the daylight saving time clock shift)
-  return Math.round(diff / MILLISECONDS_IN_WEEK) + 1
+  return Math.round(diff / millisecondsInWeek) + 1
 }
