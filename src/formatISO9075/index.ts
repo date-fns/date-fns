@@ -1,6 +1,6 @@
 import isValid from '../isValid/index'
 import toDate from '../toDate/index'
-import { FormatOptions, RepresentationOptions } from '../types'
+import type { FormatOptions, RepresentationOptions } from '../types'
 import addLeadingZeros from '../_lib/addLeadingZeros/index'
 
 /**
