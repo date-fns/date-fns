@@ -1,5 +1,5 @@
 import differenceInMonths from '../differenceInMonths/index'
-import { RoundingOptions } from '../types'
+import type { RoundingOptions } from '../types'
 import requiredArgs from '../_lib/requiredArgs/index'
 import { getRoundingMethod } from '../_lib/roundingMethods/index'
 
