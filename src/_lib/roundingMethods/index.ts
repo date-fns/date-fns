@@ -1,4 +1,4 @@
-import { RoundingMethod } from 'src/types'
+import type { RoundingMethod } from '../../types'
 
 type RoundingFn = typeof Math.round
 
