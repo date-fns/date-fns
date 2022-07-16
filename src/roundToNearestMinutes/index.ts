@@ -1,5 +1,5 @@
-import { RoundingMethod } from 'src/types'
 import toDate from '../toDate/index'
+import type { RoundingMethod } from '../types'
 import { getRoundingMethod } from '../_lib/roundingMethods'
 import toInteger from '../_lib/toInteger/index'
 
