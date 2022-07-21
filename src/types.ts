@@ -116,6 +116,7 @@ export interface FormatDurationOptions {
 
 export interface RoundToNearestMinutesOptions {
   nearestTo?: number
+  roundingMethod?: RoundingMethod
 }
 
 export interface AreIntervalsOverlappingOptions {
