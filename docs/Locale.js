@@ -1,11 +1,35 @@
 /**
  * @category Types
- * @summary A locale object.
+ * @summary A locale object. Default locale is `en-US`.
  *
  * @description
- * A locale object.
+ * A locale object. Default locale is `en-US`.
  *
- * If you don't specify a locale in options, default locale is `en-US`.
+ * If you're using any of these date-fns, consider specifying a locale in options:
+ *
+ *   - `differenceInCalendarWeeks`
+ *   - `eachWeekOfInterval`
+ *   - `endOfWeek`
+ *   - `format`
+ *   - `formatDistance`
+ *   - `formatDistanceStrict`
+ *   - `formatRelative`
+ *   - `getWeek`
+ *   - `getWeekOfMonth`
+ *   - `getWeeksInMonth`
+ *   - `getWeekYear`
+ *   - `isMatch`
+ *   - `isSameWeek`
+ *   - `isThisWeek`
+ *   - `lastDayOfWeek`
+ *   - `parse`
+ *   - `setDay`
+ *   - `setWeek`
+ *   - `setWeekYear`
+ *   - `startOfWeek`
+ *   - `startOfWeekYear`
+ *
+ * Read the Properties section below for more details.
  *
  * @typedef {Object} Locale
  *
