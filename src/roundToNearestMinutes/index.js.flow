@@ -53,5 +53,6 @@ declare module.exports: (
   date: Date | number,
   options?: {
     nearestTo?: number,
+    roundingMethod?: string,
   }
 ) => Date

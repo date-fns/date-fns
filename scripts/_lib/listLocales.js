@@ -20,7 +20,12 @@ async function listLocales() {
         const isTs = await exists(path.join(localesPath, locale, 'index.ts'))
 
         return {
-          name: locale.replace(/-/g, ''),
+          name: locale
+            .split('-')
+            .map((word, index) =>
+              index === 0 ? word : word[0].toUpperCase() + word.slice(1)
+            )
+            .join(''),
           code: locale,
           path: `./${locale}`,
           fullPath: `./src/locale/${locale}/index.${isTs ? 'ts' : 'js'}`,
