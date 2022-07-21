@@ -14,7 +14,7 @@ import match from './_lib/match/index'
  * @author Ryhor Nopears [@nopears]{@link https://github.com/nopears}
  */
 const locale: Locale = {
-  code: 'be-TAR',
+  code: 'be-tarask',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

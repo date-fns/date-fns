@@ -1,4 +1,4 @@
-# Belarusian Classic (be-TAR) locale
+# Belarusian Classic (be-tarask) locale
 
 ## `format` and `parse`
 
