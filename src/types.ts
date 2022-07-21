@@ -114,10 +114,6 @@ export interface FormatDurationOptions {
   delimiter?: string
 }
 
-export interface RoundToNearestMinutesOptions {
-  nearestTo?: number
-}
-
 export interface AreIntervalsOverlappingOptions {
   inclusive?: boolean
 }
