@@ -7,9 +7,9 @@ const matchOrdinalNumberPattern = /^(\d+)\.?/i
 const parseOrdinalNumberPattern = /\d+/i
 
 const matchEraPatterns = {
-  narrow: /^(p[řr]\. Kr\.|p[řr]\. n\. l\.|po Kr\.|n\. l\.)/i,
-  abbreviated: /^(pe[řr]ed Kr\.|pe[řr]ed n\. l\.|po Kr\.|n\. l\.)/i,
-  wide: /^(p[řr]ed Kristem|pred na[šs][íi]m letopo[čc]tem|po Kristu|na[šs]eho letopo[čc]tu)/i,
+  narrow: /^(p[řr](\.|ed) Kr\.|p[řr](\.|ed) n\. l\.|po Kr\.|n\. l\.)/i,
+  abbreviated: /^(p[řr](\.|ed) Kr\.|p[řr](\.|ed) n\. l\.|po Kr\.|n\. l\.)/i,
+  wide: /^(p[řr](\.|ed) Kristem|p[řr](\.|ed) na[šs][íi]m letopo[čc]tem|po Kristu|na[šs]eho letopo[čc]tu)/i,
 }
 
 const parseEraPatterns = {
@@ -64,17 +64,25 @@ const parseMonthPatterns = {
 const matchDayPatterns = {
   narrow: /^[npuúsčps]/i,
   short: /^(ne|po|[úu]t|st|[čc]t|p[áa]|so)/i,
-  abbreviated: /^(ne|po|[úu]t|st|[čc]t|p[áa]|so)/i,
+  abbreviated: /^(ned|pon|[úu]te|st[rř]|[čc]tv|p[áa]t|sob)/i,
   wide: /^(ned[ěe]le|pond[ěe]l[íi]|[úu]ter[ýy]|st[řr]eda|[čc]tvrtek|p[áa]tek|sobota)/i,
 }
 
 const parseDayPatterns = {
   narrow: [/^n/i, /^p/i, /^[úu]/i, /^s/i, /^[čc]/i, /^p/i, /^s/i] as const,
-  any: [/^ne/i, /^po/i, /^[úu]t/i, /^st/i, /^[čc]t/i, /^p[áa]/i, /^so/i] as const,
+  any: [
+    /^ne/i,
+    /^po/i,
+    /^[úu]t/i,
+    /^st/i,
+    /^[čc]t/i,
+    /^p[áa]/i,
+    /^so/i,
+  ] as const,
 }
 
 const matchDayPeriodPatterns = {
-  any: /^dopoledne|dop\.?|odpoledne|odp\.?|p[ůu]lnoc|poledne|r[áa]no|odpoledne|ve[čc]er|(v )?noci/i,
+  any: /^dopoledne|dop\.?|odpoledne|odp\.?|p[ůu]lnoc|poledne|r[áa]no|odpoledne|ve[čc]er|(v )?noci?/i,
 }
 const parseDayPeriodPatterns = {
   any: {
