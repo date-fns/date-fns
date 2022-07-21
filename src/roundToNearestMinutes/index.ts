@@ -1,12 +1,7 @@
+import type { RoundToNearestMinutesOptions } from '../types'
 import toDate from '../toDate/index'
-import type { RoundingMethod } from '../types'
 import { getRoundingMethod } from '../_lib/roundingMethods'
 import toInteger from '../_lib/toInteger/index'
-
-export interface RoundToNearestMinutesOptions {
-  nearestTo?: number
-  roundingMethod?: RoundingMethod
-}
 
 /**
  * @name roundToNearestMinutes
