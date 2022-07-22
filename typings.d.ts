@@ -1196,8 +1196,6 @@ declare module 'date-fns' {
 
   const daysInWeek: number
 
-  const daysInWeek: number
-
   const maxTime: number
 
   const millisecondsInMinute: number
@@ -1233,7 +1231,6 @@ declare module 'date-fns' {
 
 declare module 'date-fns/constants' {
   export const daysInWeek: number
-  export const daysInWeek: number
   export const maxTime: number
   export const millisecondsInMinute: number
   export const millisecondsInHour: number
@@ -1254,7 +1251,6 @@ declare module 'date-fns/constants' {
 
 declare module 'date-fns/constants/index' {
   export const daysInWeek: number
-  export const daysInWeek: number
   export const maxTime: number
   export const millisecondsInMinute: number
   export const millisecondsInHour: number
@@ -1274,7 +1270,6 @@ declare module 'date-fns/constants/index' {
 }
 
 declare module 'date-fns/constants/index.js' {
-  export const daysInWeek: number
   export const daysInWeek: number
   export const maxTime: number
   export const millisecondsInMinute: number
@@ -6018,8 +6013,6 @@ declare module 'date-fns/fp' {
 
   const yearsToQuarters: CurriedFn1<number, number>
   namespace yearsToQuarters {}
-
-  const daysInWeek: number
 
   const daysInWeek: number
 
@@ -10972,8 +10965,6 @@ declare module 'date-fns/esm' {
 
   const daysInWeek: number
 
-  const daysInWeek: number
-
   const maxTime: number
 
   const millisecondsInMinute: number
@@ -15731,8 +15722,6 @@ declare module 'date-fns/esm/fp' {
 
   const yearsToQuarters: CurriedFn1<number, number>
   namespace yearsToQuarters {}
-
-  const daysInWeek: number
 
   const daysInWeek: number
 
@@ -23763,8 +23752,6 @@ interface dateFns {
   yearsToMonths(years: number): number
 
   yearsToQuarters(years: number): number
-
-  daysInWeek: number
 
   daysInWeek: number
 
