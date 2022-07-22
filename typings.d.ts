@@ -1196,8 +1196,6 @@ declare module 'date-fns' {
 
   const daysInWeek: number
 
-  const daysInWeek: number
-
   const maxTime: number
 
   const millisecondsInMinute: number
