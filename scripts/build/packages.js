@@ -8,7 +8,7 @@
  * It's a part of the build process.
  */
 
-const { writeFile } = require('mz/fs')
+const { writeFile } = require('fs/promises')
 const path = require('path')
 const listFns = require('../_lib/listFns')
 const listFPFns = require('../_lib/listFPFns')

@@ -7,15 +7,16 @@
  * It's a part of the build process.
  */
 
-import { readFile, readFileSync, writeFile } from 'mz/fs'
+import { readFileSync } from 'fs'
+import { readFile, writeFile } from 'fs/promises'
 import path from 'path'
 import listLocales from '../../_lib/listLocales'
 import prettier from '../_lib/prettier'
 import renderFormatDistance from './renderFormatDistance'
 import renderFormatDistanceStrict from './renderFormatDistanceStrict'
+import renderFormatDuration from './renderFormatDuration'
 import renderFormatParse from './renderFormatParse'
 import renderFormatRelative from './renderFormatRelative'
-import renderFormatDuration from './renderFormatDuration'
 
 const mode = process.argv[2] || 'generate'
 
