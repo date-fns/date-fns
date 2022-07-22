@@ -1,7 +1,7 @@
 // This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
 
 export const daysInWeek: number
-export const daysInWeek: number
+export const daysInYear: number
 export const maxTime: number
 export const millisecondsInMinute: number
 export const millisecondsInHour: number
