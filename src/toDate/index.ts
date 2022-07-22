@@ -33,20 +33,23 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function toDate(argument: Date | number): Date {
   requiredArgs(1, arguments)
 
-  const argStr = Object.prototype.toString.call(argument)
-
   // Clone the date
   if (
     argument instanceof Date ||
-    (typeof argument === 'object' && argStr === '[object Date]')
+    (typeof argument === 'object' &&
+      Object.prototype.toString.call(argument) === '[object Date]')
   ) {
     // Prevent the date to lose the milliseconds when passed to new Date() in IE10
     return new Date(argument.getTime())
-  } else if (typeof argument === 'number' || argStr === '[object Number]') {
+  } else if (
+    typeof argument === 'number' ||
+    Object.prototype.toString.call(argument) === '[object Number]'
+  ) {
     return new Date(argument)
   } else {
     if (
-      (typeof argument === 'string' || argStr === '[object String]') &&
+      (typeof argument === 'string' ||
+        Object.prototype.toString.call(argument) === '[object String]') &&
       typeof console !== 'undefined'
     ) {
       // eslint-disable-next-line no-console
