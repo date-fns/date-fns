@@ -8,6 +8,14 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## v2.29.1 - 2022-07-22
+
+Thanks to @fturmel for working on the release.
+
+### Fixed
+
+- [Fixed TypeScript and flow types for daysInYear constant.](https://github.com/date-fns/date-fns/pull/3125)
+
 ## v2.29.0 - 2022-07-22
 
 On this release worked @tan75, @kossnocorp, @nopears, @Balastrong, @cpapazoglou, @dovca, @aliasgar55, @tomchentw, @JuanM04, @alexandresaura, @fturmel, @aezell, @andersravn, @TiagoPortfolio, @SukkaW, @Zebreus, @aviskarkc10, @maic66, @a-korzun, @Mejans, @davidspiess, @alexgul1, @matroskin062, @undecaf, @mprovenc, @jooola and @leshakoss.
