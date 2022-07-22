@@ -890,7 +890,7 @@ declare module.exports: {
 
   daysInWeek: number,
 
-  daysInWeek: number,
+  daysInYear: number,
 
   maxTime: number,
 

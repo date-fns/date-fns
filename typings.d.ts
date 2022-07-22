@@ -1196,7 +1196,7 @@ declare module 'date-fns' {
 
   const daysInWeek: number
 
-  const daysInWeek: number
+  const daysInYear: number
 
   const maxTime: number
 
@@ -1233,7 +1233,7 @@ declare module 'date-fns' {
 
 declare module 'date-fns/constants' {
   export const daysInWeek: number
-  export const daysInWeek: number
+  export const daysInYear: number
   export const maxTime: number
   export const millisecondsInMinute: number
   export const millisecondsInHour: number
@@ -1254,7 +1254,7 @@ declare module 'date-fns/constants' {
 
 declare module 'date-fns/constants/index' {
   export const daysInWeek: number
-  export const daysInWeek: number
+  export const daysInYear: number
   export const maxTime: number
   export const millisecondsInMinute: number
   export const millisecondsInHour: number
@@ -1275,7 +1275,7 @@ declare module 'date-fns/constants/index' {
 
 declare module 'date-fns/constants/index.js' {
   export const daysInWeek: number
-  export const daysInWeek: number
+  export const daysInYear: number
   export const maxTime: number
   export const millisecondsInMinute: number
   export const millisecondsInHour: number
@@ -6021,7 +6021,7 @@ declare module 'date-fns/fp' {
 
   const daysInWeek: number
 
-  const daysInWeek: number
+  const daysInYear: number
 
   const maxTime: number
 
@@ -10972,7 +10972,7 @@ declare module 'date-fns/esm' {
 
   const daysInWeek: number
 
-  const daysInWeek: number
+  const daysInYear: number
 
   const maxTime: number
 
@@ -15734,7 +15734,7 @@ declare module 'date-fns/esm/fp' {
 
   const daysInWeek: number
 
-  const daysInWeek: number
+  const daysInYear: number
 
   const maxTime: number
 
@@ -23766,7 +23766,7 @@ interface dateFns {
 
   daysInWeek: number
 
-  daysInWeek: number
+  daysInYear: number
 
   maxTime: number
 
