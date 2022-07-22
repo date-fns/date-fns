@@ -28,7 +28,7 @@ Dependency free IANA time zone support is implemented via the
 [Intl API](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl) to keep
 actual time zone data out of code bundles. Modern browsers all support the
 [necessary features](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat#Browser_compatibility),
-and for those that don't a [polyfill](https://github.com/yahoo/date-time-format-timezone) can be used.
+and for those that don't, a [polyfill](https://github.com/yahoo/date-time-format-timezone) can be used.
 
 Functions are provided for converting to and from a Date instance which will have the internal UTC time
 adjusted so it prints to the correct time value in the associated time zone, regardless of the current

@@ -46,7 +46,7 @@ On this release worked @tan75, @kossnocorp, @nopears, @Balastrong, @cpapazoglou,
 
 - [Added `intlFormatDistance` function`.](https://github.com/date-fns/date-fns/pull/2173)
 
-- [Added `setDefaultOptions` and `getDefaultOptions` functions that allow you to set default default locale, `weekStartsOn` and `firstWeekContainsDate`.](https://github.com/date-fns/date-fns/pull/3069)
+- [Added `setDefaultOptions` and `getDefaultOptions` functions that allow you to set default locale, `weekStartsOn` and `firstWeekContainsDate`.](https://github.com/date-fns/date-fns/pull/3069)
 
 - [Added `roundingMethod` option to `roundToNearestMinutes`.](https://github.com/date-fns/date-fns/pull/3091)
 
@@ -1552,7 +1552,7 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 
 ### Fixed
 
-- Added generation of TypeScript locale sub-modules, allowing import of locales in TypeScript.
+- Added generation of TypeScript locale submodules, allowing import of locales in TypeScript.
 
 ## [1.27.0] - 2017-01-19
 

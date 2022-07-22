@@ -148,7 +148,7 @@ const dayValues = {
 const dayPeriodValues = {
   // narrow date period is extremely rare in Vietnamese
   // I used abbreviated form for noon, morning and afternoon
-  // which are regconizable by Vietnamese, others cannot be any shorter
+  // which are recognizable by Vietnamese, others cannot be any shorter
   narrow: {
     am: 'am',
     pm: 'pm',

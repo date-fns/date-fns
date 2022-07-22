@@ -90,7 +90,7 @@ describe('differenceInSeconds', () => {
       assert(result === 0)
     })
 
-    it('the same for the swapped dates but a different result as a resulf of the default rounding method `trunc`', () => {
+    it('the same for the swapped dates but a different result as a result of the default rounding method `trunc`', () => {
       const result = differenceInSeconds(
         new Date(2014, 8 /* Sep */, 5, 12, 30, 11, 999),
         new Date(2014, 8 /* Sep */, 5, 12, 30, 12)

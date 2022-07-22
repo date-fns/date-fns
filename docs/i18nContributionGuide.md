@@ -67,7 +67,7 @@ All locales contain a number of properties:
 
 ### Choosing a directory name for a locale
 
-Use the four letter code for the directory name (e.g. `en-GB`),
+Use the four-letter code for the directory name (e.g. `en-GB`),
 
 Use the two/three letter code:
 
@@ -783,7 +783,7 @@ These functions mirror those in `localize`.
 For `matchPatterns` the patterns should match the whole meaningful word for the parsed value
 (which will be cut from the string in the process of parsing).
 `parsePatterns` contains patterns to detect one of the values from the result of `matchPatterns`
-Note that the patterns for `parsePatterns` don't necessary contain the whole word:
+Note that the patterns for `parsePatterns` don't necessarily contain the whole word:
 
 ```javascript
 // In `en-US` locale:

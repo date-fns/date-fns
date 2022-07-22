@@ -34,7 +34,7 @@ Help is always welcome. There are areas where you can help:
 - The core functionality (performance improvements, bug fixes,
   new features, etc.).
 
-- Documentation ([markdown documents](https://github.com/date-fns/date-fns/tree/master/docs),
+- Documentation ([Markdown documents](https://github.com/date-fns/date-fns/tree/master/docs),
   [JSDoc annotations in source code](https://github.com/date-fns/date-fns/blob/master/src/toDate/index.ts)).
 
 - Test suite & development environment improvements.
@@ -116,7 +116,7 @@ To test functions in a REPL, use `babel-node` located in `./node_modules/.bin` (
 yarn babel-node -x .ts,.js
 ```
 
-and then require invididual functions:
+and then require individual functions:
 ```sh
 > const toDate = require('./src/toDate')
 undefined
@@ -136,7 +136,7 @@ undefined
 
 ### Test build
 
-Build date-fns from source to test in your project. The ouput is equivalent to what gets published on npm with each release.
+Build date-fns from source to test in your project. The output is equivalent to what gets published on npm with each release.
 
 ```sh
 # replace {YOUR-PROJECT-PATH} with an absolute or relative path to your project root

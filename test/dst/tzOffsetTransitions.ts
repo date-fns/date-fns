@@ -74,17 +74,17 @@ function previousTickTimezoneOffset(date: Date): number {
  * when a country changes its time zone
  * @param year
  * @returns array of objects, each  with the following 
- * propeerties:
+ * properties:
  * - `date` - a `Date` representing the first instant
  *   when the new timezone offset is effective.
- * - `type` - either `forward` for skippnig time like
+ * - `type` - either `forward` for skipping time like
  *   the Spring transition to DST.
- * - `before` - the timezone offset before the tranition.
+ * - `before` - the timezone offset before the transition.
  *   For example, the UTC-0400 offset will return -240.
  *   To match how times are displayed in ISO 8601 format,
  *   the sign of this value is reversed from the return
  *   value of `Date.getTimezoneOffset`.
- * - `after` - the timezone offset after the tranition.
+ * - `after` - the timezone offset after the transition.
  *   Examples and caveats are the same as `before`.
 
  */

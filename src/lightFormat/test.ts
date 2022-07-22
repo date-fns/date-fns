@@ -21,7 +21,7 @@ describe('lightFormat', () => {
     assert(lightFormat(date, "''h 'o''clock'''") === "'5 o'clock'")
   })
 
-  it('accepts new line charactor', () => {
+  it('accepts new line character', () => {
     const date = new Date(2014, 3, 4, 5)
     assert.strictEqual(
       lightFormat(date, "yyyy-MM-dd'\n'HH:mm:ss"),

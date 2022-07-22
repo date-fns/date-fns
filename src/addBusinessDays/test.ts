@@ -21,7 +21,7 @@ describe('addBusinessDays', () => {
     )
   })
 
-  it('returns the Monday when 1 day is added on the Satuday', () => {
+  it('returns the Monday when 1 day is added on the Saturday', () => {
     assert.deepStrictEqual(
       addBusinessDays(new Date(2020, 0 /* Jan */, 11), 1), // Saturday
       new Date(2020, 0 /* Jan */, 13) // Monday
