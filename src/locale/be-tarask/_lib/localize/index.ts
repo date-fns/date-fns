@@ -81,7 +81,7 @@ const formattingMonthValues = {
 const dayValues = {
   narrow: ['Н', 'П', 'А', 'С', 'Ч', 'П', 'С'] as const,
   short: ['нд', 'пн', 'аў', 'ср', 'чц', 'пт', 'сб'] as const,
-  abbreviated: ['нядз', 'пан', 'аўт', 'сер', 'чац', 'пят', 'суб'] as const,
+  abbreviated: ['нядз', 'пан', 'аўт', 'сер', 'чаць', 'пят', 'суб'] as const,
   wide: [
     'нядзеля',
     'панядзелак',
