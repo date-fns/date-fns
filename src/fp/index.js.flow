@@ -674,7 +674,7 @@ declare module.exports: {
   yearsToMonths: CurriedFn1<number, number>,
   yearsToQuarters: CurriedFn1<number, number>,
   daysInWeek: number,
-  daysInWeek: number,
+  daysInYear: number,
   maxTime: number,
   millisecondsInMinute: number,
   millisecondsInHour: number,
