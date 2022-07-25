@@ -1,9 +1,8 @@
-import toDate from '../toDate/index'
+import { millisecondsInWeek } from '../constants/index'
 import startOfISOWeek from '../startOfISOWeek/index'
 import startOfISOWeekYear from '../startOfISOWeekYear/index'
+import toDate from '../toDate/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-
-const MILLISECONDS_IN_WEEK = 604800000
 
 /**
  * @name getISOWeek
@@ -34,5 +33,5 @@ export default function getISOWeek(dirtyDate: Date | number): number {
   // Round the number of days to the nearest integer
   // because the number of milliseconds in a week is not constant
   // (e.g. it's different in the week of the daylight saving time clock shift)
-  return Math.round(diff / MILLISECONDS_IN_WEEK) + 1
+  return Math.round(diff / millisecondsInWeek) + 1
 }

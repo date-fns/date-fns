@@ -10,6 +10,8 @@ export interface Duration {
   seconds?: number
 }
 
+export type DurationUnit = keyof Duration
+
 export interface Interval {
   start: Date | number
   end: Date | number
@@ -37,10 +39,6 @@ export interface FormatOptions {
 
 export interface RepresentationOptions {
   representation?: 'complete' | 'date' | 'time'
-}
-
-export interface AdditionalDigitsOptions {
-  additionalDigits?: 0 | 1 | 2
 }
 
 export type Era = 0 | 1
@@ -88,39 +86,9 @@ export type Unit =
   | 'quarter'
   | 'year'
 
-export interface FormatRFC3339Options {
-  fractionDigits?: 0 | 1 | 2 | 3
-}
-
 export interface AdditionalTokensOptions {
   useAdditionalWeekYearTokens?: boolean
   useAdditionalDayOfYearTokens?: boolean
-}
-
-export interface FormatDistanceOptions {
-  includeSeconds?: boolean
-  addSuffix?: boolean
-}
-
-export interface FormatDistanceStrictOptions {
-  addSuffix?: boolean
-  unit?: Unit
-  roundingMethod?: 'floor' | 'ceil' | 'round'
-}
-
-export interface FormatDurationOptions {
-  format?: (keyof Duration)[]
-  zero?: boolean
-  delimiter?: string
-}
-
-export interface RoundToNearestMinutesOptions {
-  nearestTo?: number
-  roundingMethod?: RoundingMethod
-}
-
-export interface AreIntervalsOverlappingOptions {
-  inclusive?: boolean
 }
 
 export type IntlOptionsUnit =

@@ -1,9 +1,18 @@
-import { getDefaultOptions } from '../_lib/defaultOptions/index'
-import defaultLocale from '../_lib/defaultLocale/index'
 import type { FormatDistanceToken } from '../locale/types'
-import type { Duration, FormatDurationOptions, LocaleOptions } from '../types'
+import type { Duration, DurationUnit, LocaleOptions } from '../types'
+import defaultLocale from '../_lib/defaultLocale/index'
+import { getDefaultOptions } from '../_lib/defaultOptions/index'
 
-const defaultFormat: (keyof Duration)[] = [
+/**
+ * The {@link formatDuration} function options.
+ */
+export interface FormatDurationOptions extends LocaleOptions {
+  format?: DurationUnit[]
+  zero?: boolean
+  delimiter?: string
+}
+
+const defaultFormat: DurationUnit[] = [
   'years',
   'months',
   'weeks',
@@ -77,7 +86,7 @@ const defaultFormat: (keyof Duration)[] = [
  */
 export default function formatDuration(
   duration: Duration,
-  options?: LocaleOptions & FormatDurationOptions
+  options?: FormatDurationOptions
 ): string {
   if (arguments.length < 1) {
     throw new TypeError(

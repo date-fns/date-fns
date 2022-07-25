@@ -1,8 +1,8 @@
-import toDate from '../toDate/index'
 import setMonth from '../setMonth/index'
-import toInteger from '../_lib/toInteger/index'
-import requiredArgs from '../_lib/requiredArgs/index'
+import toDate from '../toDate/index'
 import type { DateValues } from '../types'
+import requiredArgs from '../_lib/requiredArgs/index'
+import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name set

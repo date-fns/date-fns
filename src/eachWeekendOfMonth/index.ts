@@ -1,6 +1,6 @@
 import eachWeekendOfInterval from '../eachWeekendOfInterval/index'
-import startOfMonth from '../startOfMonth/index'
 import endOfMonth from '../endOfMonth/index'
+import startOfMonth from '../startOfMonth/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 
 /**

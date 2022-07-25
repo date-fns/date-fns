@@ -1,8 +1,8 @@
-import toDate from '../toDate/index'
-import differenceInCalendarMonths from '../differenceInCalendarMonths/index'
 import compareAsc from '../compareAsc/index'
-import requiredArgs from '../_lib/requiredArgs/index'
+import differenceInCalendarMonths from '../differenceInCalendarMonths/index'
 import isLastDayOfMonth from '../isLastDayOfMonth/index'
+import toDate from '../toDate/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name differenceInMonths

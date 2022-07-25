@@ -1,6 +1,6 @@
-import toInteger from '../_lib/toInteger/index'
 import addMilliseconds from '../addMilliseconds/index'
 import requiredArgs from '../_lib/requiredArgs/index'
+import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name addSeconds

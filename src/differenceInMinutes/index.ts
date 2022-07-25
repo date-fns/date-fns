@@ -5,6 +5,11 @@ import requiredArgs from '../_lib/requiredArgs/index'
 import { getRoundingMethod } from '../_lib/roundingMethods/index'
 
 /**
+ * The {@link differenceInMinutes} function options.
+ */
+export interface DifferenceInMinutesOptions extends RoundingOptions {}
+
+/**
  * @name differenceInMinutes
  * @category Minute Helpers
  * @summary Get the number of minutes between the given dates.
@@ -38,7 +43,7 @@ import { getRoundingMethod } from '../_lib/roundingMethods/index'
 export default function differenceInMinutes(
   dateLeft: Date | number,
   dateRight: Date | number,
-  options?: RoundingOptions
+  options?: DifferenceInMinutesOptions
 ): number {
   requiredArgs(2, arguments)
 

@@ -5,6 +5,13 @@ import type { Interval, LocaleOptions, WeekStartOptions } from '../types'
 import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
+ * The {@link eachWeekOfInterval} function options.
+ */
+export interface EachWeekOfIntervalOptions
+  extends WeekStartOptions,
+    LocaleOptions {}
+
+/**
  * @name eachWeekOfInterval
  * @category Interval Helpers
  * @summary Return the array of weeks within the specified time interval.
@@ -41,7 +48,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  */
 export default function eachWeekOfInterval(
   dirtyInterval: Interval,
-  options?: LocaleOptions & WeekStartOptions
+  options?: EachWeekOfIntervalOptions
 ): Date[] {
   requiredArgs(1, arguments)
 

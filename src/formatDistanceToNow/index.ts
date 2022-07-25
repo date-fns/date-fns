@@ -1,6 +1,11 @@
-import distanceInWords from '../formatDistance/index'
+import distanceInWords, { FormatDistanceOptions } from '../formatDistance/index'
+
 import requiredArgs from '../_lib/requiredArgs/index'
-import type { FormatDistanceOptions, LocaleOptions } from '../types'
+
+/**
+ * The {@link formatDistanceToNow} function options.
+ */
+export interface FormatDistanceToNowOptions extends FormatDistanceOptions {}
 
 /**
  * @name formatDistanceToNow
@@ -90,7 +95,7 @@ import type { FormatDistanceOptions, LocaleOptions } from '../types'
  */
 export default function formatDistanceToNow(
   dirtyDate: Date | number,
-  options?: LocaleOptions & FormatDistanceOptions
+  options?: FormatDistanceToNowOptions
 ): string {
   requiredArgs(1, arguments)
 

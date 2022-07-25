@@ -1,7 +1,7 @@
-import requiredArgs from '../_lib/requiredArgs/index'
 import getDay from '../getDay/index'
 import subDays from '../subDays/index'
 import type { Day } from '../types'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name previousDay

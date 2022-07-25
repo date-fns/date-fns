@@ -1,5 +1,5 @@
-import toDate from '../toDate/index'
 import differenceInCalendarDays from '../differenceInCalendarDays/index'
+import toDate from '../toDate/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 
 // Like `compareAsc` but uses local time not UTC, which is needed

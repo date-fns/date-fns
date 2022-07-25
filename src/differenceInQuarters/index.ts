@@ -4,6 +4,11 @@ import requiredArgs from '../_lib/requiredArgs/index'
 import { getRoundingMethod } from '../_lib/roundingMethods/index'
 
 /**
+ * The {@link differenceInQuarters} function options.
+ */
+export interface DifferenceInQuartersOptions extends RoundingOptions {}
+
+/**
  * @name differenceInQuarters
  * @category Quarter Helpers
  * @summary Get the number of quarters between the given dates.
@@ -26,7 +31,7 @@ import { getRoundingMethod } from '../_lib/roundingMethods/index'
 export default function differenceInQuarters(
   dateLeft: Date | number,
   dateRight: Date | number,
-  options?: RoundingOptions
+  options?: DifferenceInQuartersOptions
 ): number {
   requiredArgs(2, arguments)
 

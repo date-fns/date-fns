@@ -1,7 +1,14 @@
 import toDate from '../toDate/index'
 import type { FormatOptions, RepresentationOptions } from '../types'
 import addLeadingZeros from '../_lib/addLeadingZeros/index'
-import requiredArgs from '../_lib/requiredArgs'
+import requiredArgs from '../_lib/requiredArgs/index'
+
+/**
+ * The {@link formatISO} function options.
+ */
+export interface FormatISOOptions
+  extends FormatOptions,
+    RepresentationOptions {}
 
 /**
  * @name formatISO
@@ -43,7 +50,7 @@ import requiredArgs from '../_lib/requiredArgs'
  */
 export default function formatISO(
   date: Date | number,
-  options?: FormatOptions & RepresentationOptions
+  options?: FormatISOOptions
 ): string {
   requiredArgs(1, arguments)
 

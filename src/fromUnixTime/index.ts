@@ -1,6 +1,6 @@
 import toDate from '../toDate/index'
-import toInteger from '../_lib/toInteger/index'
 import requiredArgs from '../_lib/requiredArgs/index'
+import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name fromUnixTime

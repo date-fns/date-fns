@@ -1,8 +1,13 @@
 import toDate from '../toDate/index'
-import toInteger from '../_lib/toInteger/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 import type { LocaleOptions, WeekStartOptions } from '../types'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
+import requiredArgs from '../_lib/requiredArgs/index'
+import toInteger from '../_lib/toInteger/index'
+
+/**
+ * The {@link lastDayOfWeek} function options.
+ */
+export interface LastDayOfWeekOptions extends LocaleOptions, WeekStartOptions {}
 
 /**
  * @name lastDayOfWeek
@@ -33,7 +38,7 @@ import { getDefaultOptions } from '../_lib/defaultOptions/index'
  */
 export default function lastDayOfWeek(
   dirtyDate: Date | number,
-  options?: LocaleOptions & WeekStartOptions
+  options?: LastDayOfWeekOptions
 ): Date {
   requiredArgs(1, arguments)
 

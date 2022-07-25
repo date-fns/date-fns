@@ -1,6 +1,6 @@
-import toDate from '../toDate/index'
-import startOfYear from '../startOfYear/index'
 import differenceInCalendarDays from '../differenceInCalendarDays/index'
+import startOfYear from '../startOfYear/index'
+import toDate from '../toDate/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 
 /**

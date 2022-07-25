@@ -9,6 +9,14 @@ import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
 
 /**
+ * The {@link setWeek} function options.
+ */
+export interface SetWeekOptions
+  extends LocaleOptions,
+    WeekStartOptions,
+    FirstWeekContainsDateOptions {}
+
+/**
  * @name setWeek
  * @category Week Helpers
  * @summary Set the local week to the given date.
@@ -51,7 +59,7 @@ import toInteger from '../_lib/toInteger/index'
 export default function setWeek(
   dirtyDate: Date | number,
   dirtyWeek: number,
-  options?: LocaleOptions & WeekStartOptions & FirstWeekContainsDateOptions
+  options?: SetWeekOptions
 ): Date {
   requiredArgs(2, arguments)
 

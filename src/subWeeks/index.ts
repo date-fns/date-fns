@@ -1,6 +1,6 @@
-import toInteger from '../_lib/toInteger/index'
 import addWeeks from '../addWeeks/index'
 import requiredArgs from '../_lib/requiredArgs/index'
+import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name subWeeks

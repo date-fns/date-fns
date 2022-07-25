@@ -1,6 +1,6 @@
-import toDate from '../toDate/index'
 import endOfDay from '../endOfDay/index'
 import endOfMonth from '../endOfMonth/index'
+import toDate from '../toDate/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 
 /**

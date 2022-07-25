@@ -1,9 +1,15 @@
+import { millisecondsInWeek } from '../constants/index'
 import startOfWeek from '../startOfWeek/index'
+import type { LocaleOptions, WeekStartOptions } from '../types'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import type { LocaleOptions, WeekStartOptions } from '../types'
 
-const MILLISECONDS_IN_WEEK = 604800000
+/**
+ * The {@link differenceInCalendarWeeks} function options.
+ */
+export interface DifferenceInCalendarWeeksOptions
+  extends LocaleOptions,
+    WeekStartOptions {}
 
 /**
  * @name differenceInCalendarWeeks
@@ -43,7 +49,7 @@ const MILLISECONDS_IN_WEEK = 604800000
 export default function differenceInCalendarWeeks(
   dirtyDateLeft: Date | number,
   dirtyDateRight: Date | number,
-  options?: LocaleOptions & WeekStartOptions
+  options?: DifferenceInCalendarWeeksOptions
 ): number {
   requiredArgs(2, arguments)
 
@@ -59,5 +65,5 @@ export default function differenceInCalendarWeeks(
   // Round the number of days to the nearest integer
   // because the number of milliseconds in a week is not constant
   // (e.g. it's different in the week of the daylight saving time clock shift)
-  return Math.round((timestampLeft - timestampRight) / MILLISECONDS_IN_WEEK)
+  return Math.round((timestampLeft - timestampRight) / millisecondsInWeek)
 }

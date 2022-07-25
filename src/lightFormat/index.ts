@@ -1,8 +1,8 @@
+import isValid from '../isValid/index'
+import subMilliseconds from '../subMilliseconds/index'
 import toDate from '../toDate/index'
 import formatters from '../_lib/format/lightFormatters/index'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
-import isValid from '../isValid/index'
-import subMilliseconds from '../subMilliseconds/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 
 // This RegExp consists of three parts separated by `|`:

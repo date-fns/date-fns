@@ -1,8 +1,13 @@
 import addMinutes from '../addMinutes/index'
-import toDate from '../toDate/index'
 import startOfMinute from '../startOfMinute/index'
-import requiredArgs from '../_lib/requiredArgs/index'
+import toDate from '../toDate/index'
 import type { Interval, StepOptions } from '../types'
+import requiredArgs from '../_lib/requiredArgs/index'
+
+/**
+ * The {@link eachMinuteOfInterval} function options.
+ */
+export interface EachMinuteOfIntervalOptions extends StepOptions {}
 
 /**
  * @name eachMinuteOfInterval
@@ -36,7 +41,7 @@ import type { Interval, StepOptions } from '../types'
  */
 export default function eachMinuteOfInterval(
   interval: Interval,
-  options?: StepOptions
+  options?: EachMinuteOfIntervalOptions
 ): Date[] {
   requiredArgs(1, arguments)
 

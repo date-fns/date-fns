@@ -1,12 +1,21 @@
-import parse from '../parse/index'
 import isValid from '../isValid/index'
-import requiredArgs from '../_lib/requiredArgs/index'
+import parse from '../parse/index'
 import type {
+  AdditionalTokensOptions,
+  FirstWeekContainsDateOptions,
   LocaleOptions,
   WeekStartOptions,
-  FirstWeekContainsDateOptions,
-  AdditionalTokensOptions,
 } from '../types'
+import requiredArgs from '../_lib/requiredArgs/index'
+
+/**
+ * The {@link isMatch} function options.
+ */
+export interface IsMatchOptions
+  extends LocaleOptions,
+    WeekStartOptions,
+    FirstWeekContainsDateOptions,
+    AdditionalTokensOptions {}
 
 /**
  * @name isMatch
@@ -303,10 +312,7 @@ import type {
 export default function isMatch(
   dateString: string,
   formatString: string,
-  options?: LocaleOptions &
-    WeekStartOptions &
-    FirstWeekContainsDateOptions &
-    AdditionalTokensOptions
+  options?: IsMatchOptions
 ): boolean {
   requiredArgs(2, arguments)
   return isValid(parse(dateString, formatString, new Date(), options))

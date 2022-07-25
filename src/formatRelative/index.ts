@@ -1,14 +1,21 @@
-import { getDefaultOptions } from '../_lib/defaultOptions/index'
 import differenceInCalendarDays from '../differenceInCalendarDays/index'
 import format from '../format/index'
-import defaultLocale from '../_lib/defaultLocale/index'
+import type { FormatRelativeToken } from '../locale/types'
 import subMilliseconds from '../subMilliseconds/index'
 import toDate from '../toDate/index'
+import type { LocaleOptions, WeekStartOptions } from '../types'
+import defaultLocale from '../_lib/defaultLocale/index'
+import { getDefaultOptions } from '../_lib/defaultOptions/index'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import type { LocaleOptions, WeekStartOptions } from '../types'
-import type { FormatRelativeToken } from '../locale/types'
 import toInteger from '../_lib/toInteger/index'
+
+/**
+ * The {@link formatRelative} function options.
+ */
+export interface FormatRelativeOptions
+  extends LocaleOptions,
+    WeekStartOptions {}
 
 /**
  * @name formatRelative
@@ -49,7 +56,7 @@ import toInteger from '../_lib/toInteger/index'
 export default function formatRelative(
   dirtyDate: Date | number,
   dirtyBaseDate: Date | number,
-  options?: LocaleOptions & WeekStartOptions
+  options?: FormatRelativeOptions
 ): string {
   requiredArgs(2, arguments)
 

@@ -1,13 +1,21 @@
 import getWeekYear from '../getWeekYear/index'
 import startOfWeek from '../startOfWeek/index'
-import toInteger from '../_lib/toInteger/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 import type {
-  LocaleOptions,
   FirstWeekContainsDateOptions,
+  LocaleOptions,
   WeekStartOptions,
 } from '../types'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
+import requiredArgs from '../_lib/requiredArgs/index'
+import toInteger from '../_lib/toInteger/index'
+
+/**
+ * The {@link startOfWeekYear} function options.
+ */
+export interface StartOfWeekYearOptions
+  extends LocaleOptions,
+    FirstWeekContainsDateOptions,
+    WeekStartOptions {}
 
 /**
  * @name startOfWeekYear
@@ -50,7 +58,7 @@ import { getDefaultOptions } from '../_lib/defaultOptions/index'
  */
 export default function startOfWeekYear(
   dirtyDate: Date | number,
-  options?: LocaleOptions & FirstWeekContainsDateOptions & WeekStartOptions
+  options?: StartOfWeekYearOptions
 ): Date {
   requiredArgs(1, arguments)
 

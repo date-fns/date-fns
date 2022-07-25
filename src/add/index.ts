@@ -1,9 +1,9 @@
 import addDays from '../addDays/index'
 import addMonths from '../addMonths/index'
 import toDate from '../toDate/index'
+import type { Duration } from '../types'
 import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
-import type { Duration } from '../types'
 
 /**
  * @name add

@@ -1,7 +1,12 @@
 import addHours from '../addHours/index'
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 import type { Interval, StepOptions } from '../types'
+import requiredArgs from '../_lib/requiredArgs/index'
+
+/**
+ * The {@link eachHourOfInterval} function options.
+ */
+export interface EachHourOfIntervalOptions extends StepOptions {}
 
 /**
  * @name eachHourOfInterval
@@ -35,7 +40,7 @@ import type { Interval, StepOptions } from '../types'
  */
 export default function eachHourOfInterval(
   dirtyInterval: Interval,
-  options?: StepOptions
+  options?: EachHourOfIntervalOptions
 ): Date[] {
   requiredArgs(1, arguments)
 

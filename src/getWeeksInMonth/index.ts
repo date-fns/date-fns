@@ -1,8 +1,15 @@
 import differenceInCalendarWeeks from '../differenceInCalendarWeeks/index'
 import lastDayOfMonth from '../lastDayOfMonth/index'
 import startOfMonth from '../startOfMonth/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 import type { LocaleOptions, WeekStartOptions } from '../types'
+import requiredArgs from '../_lib/requiredArgs/index'
+
+/**
+ * The {@link getWeeksInMonth} function options.
+ */
+export interface GetWeeksInMonthOptions
+  extends LocaleOptions,
+    WeekStartOptions {}
 
 /**
  * @name getWeeksInMonth
@@ -33,7 +40,7 @@ import type { LocaleOptions, WeekStartOptions } from '../types'
  */
 export default function getWeeksInMonth(
   date: Date | number,
-  options?: LocaleOptions & WeekStartOptions
+  options?: GetWeeksInMonthOptions
 ): number {
   requiredArgs(1, arguments)
 

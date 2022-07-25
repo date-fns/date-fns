@@ -1,7 +1,14 @@
-import defaultLocale from '../_lib/defaultLocale/index'
 import subMilliseconds from '../subMilliseconds/index'
 import toDate from '../toDate/index'
+import type {
+  AdditionalTokensOptions,
+  FirstWeekContainsDateOptions,
+  LocaleOptions,
+  WeekStartOptions,
+} from '../types'
 import assign from '../_lib/assign/index'
+import defaultLocale from '../_lib/defaultLocale/index'
+import { getDefaultOptions } from '../_lib/defaultOptions/index'
 import longFormatters from '../_lib/format/longFormatters/index'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
 import {
@@ -9,18 +16,20 @@ import {
   isProtectedWeekYearToken,
   throwProtectedError,
 } from '../_lib/protectedTokens/index'
-import toInteger from '../_lib/toInteger/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import type { ParserOptions, ParseFlags } from './_lib/types'
-import { Setter, DateToSystemTimezoneSetter } from './_lib/Setter'
-import { parsers } from './_lib/parsers'
-import type {
-  FirstWeekContainsDateOptions,
-  LocaleOptions,
-  WeekStartOptions,
-  AdditionalTokensOptions,
-} from '../types'
-import { getDefaultOptions } from '../_lib/defaultOptions/index'
+import toInteger from '../_lib/toInteger/index'
+import { parsers } from './_lib/parsers/index'
+import { DateToSystemTimezoneSetter, Setter } from './_lib/Setter'
+import type { ParseFlags, ParserOptions } from './_lib/types'
+
+/**
+ * The {@link parse} function options.
+ */
+export interface ParseOptions
+  extends LocaleOptions,
+    FirstWeekContainsDateOptions,
+    WeekStartOptions,
+    AdditionalTokensOptions {}
 
 // This RegExp consists of three parts separated by `|`:
 // - [yYQqMLwIdDecihHKkms]o matches any available ordinal number token
@@ -350,10 +359,7 @@ export default function parse(
   dirtyDateString: string,
   dirtyFormatString: string,
   dirtyReferenceDate: Date | number,
-  options?: LocaleOptions &
-    FirstWeekContainsDateOptions &
-    WeekStartOptions &
-    AdditionalTokensOptions
+  options?: ParseOptions
 ): Date {
   requiredArgs(3, arguments)
 
@@ -425,7 +431,7 @@ export default function parse(
     .join('')
     .match(formattingTokensRegExp)!
 
-  const usedTokens = []
+  const usedTokens: { token: string; fullToken: string }[] = []
 
   for (let token of tokens) {
     if (

@@ -1,8 +1,14 @@
-import toDate from '../toDate/index'
 import isValid from '../isValid/index'
+import toDate from '../toDate/index'
 import addLeadingZeros from '../_lib/addLeadingZeros/index'
 import toInteger from '../_lib/toInteger/index'
-import { FormatRFC3339Options } from 'src/types'
+
+/**
+ * The {@link formatRFC3339} function options.
+ */
+export interface FormatRFC3339Options {
+  fractionDigits?: 0 | 1 | 2 | 3
+}
 
 /**
  * @name formatRFC3339
