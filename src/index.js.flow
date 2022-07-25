@@ -498,6 +498,18 @@ declare module.exports: {
     }
   ) => string,
 
+  intlFormatDistance: (
+    date: Date | number,
+    baseDate: Date | number,
+    options?: {
+      unit?: string,
+      locale?: string | string[],
+      localeMatcher?: string,
+      numeric?: string,
+      style?: string,
+    }
+  ) => string,
+
   isAfter: (date: Date | number, dateToCompare: Date | number) => boolean,
 
   isBefore: (date: Date | number, dateToCompare: Date | number) => boolean,
@@ -719,6 +731,7 @@ declare module.exports: {
     date: Date | number,
     options?: {
       nearestTo?: number,
+      roundingMethod?: string,
     }
   ) => Date,
 
@@ -877,6 +890,8 @@ declare module.exports: {
 
   daysInWeek: number,
 
+  daysInYear: number,
+
   maxTime: number,
 
   millisecondsInMinute: number,
@@ -898,4 +913,14 @@ declare module.exports: {
   secondsInHour: number,
 
   secondsInMinute: number,
+
+  secondsInDay: number,
+
+  secondsInWeek: number,
+
+  secondsInYear: number,
+
+  secondsInMonth: number,
+
+  secondsInQuarter: number,
 }

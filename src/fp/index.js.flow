@@ -421,6 +421,19 @@ declare module.exports: {
     Date | number,
     string
   >,
+  intlFormatDistance: CurriedFn2<Date | number, Date | number, string>,
+  intlFormatDistanceWithOptions: CurriedFn3<
+    {
+      style?: string,
+      numeric?: string,
+      localeMatcher?: string,
+      locale?: string | string[],
+      unit?: string,
+    },
+    Date | number,
+    Date | number,
+    string
+  >,
   isAfter: CurriedFn2<Date | number, Date | number, boolean>,
   isBefore: CurriedFn2<Date | number, Date | number, boolean>,
   isDate: CurriedFn1<any, boolean>,
@@ -549,6 +562,7 @@ declare module.exports: {
   roundToNearestMinutes: CurriedFn1<Date | number, Date>,
   roundToNearestMinutesWithOptions: CurriedFn2<
     {
+      roundingMethod?: string,
       nearestTo?: number,
     },
     Date | number,
@@ -660,6 +674,7 @@ declare module.exports: {
   yearsToMonths: CurriedFn1<number, number>,
   yearsToQuarters: CurriedFn1<number, number>,
   daysInWeek: number,
+  daysInYear: number,
   maxTime: number,
   millisecondsInMinute: number,
   millisecondsInHour: number,
@@ -671,4 +686,9 @@ declare module.exports: {
   quartersInYear: number,
   secondsInHour: number,
   secondsInMinute: number,
+  secondsInDay: number,
+  secondsInWeek: number,
+  secondsInYear: number,
+  secondsInMonth: number,
+  secondsInQuarter: number,
 }

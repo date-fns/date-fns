@@ -23,6 +23,13 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @throws {TypeError} 1 argument required
  *
  * @example
+ * // Set global locale:
+ * import { es } from 'date-fns/locale'
+ * setDefaultOptions({ locale: es })
+ * const result = format(new Date(2014, 8, 2), 'PPPP')
+ * //=> 'martes, 2 de septiembre de 2014'
+ *
+ * @example
  * // Start of the week for 2 September 2014:
  * const result = startOfWeek(new Date(2014, 8, 2))
  * //=> Sun Aug 31 2014 00:00:00
