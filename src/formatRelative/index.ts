@@ -1,12 +1,12 @@
+import { UTCDateMini } from '@date-fns/utc/date/mini'
 import differenceInCalendarDays from '../differenceInCalendarDays/index'
 import format from '../format/index'
 import type { FormatRelativeToken } from '../locale/types'
-import subMilliseconds from '../subMilliseconds/index'
 import toDate from '../toDate/index'
+import transpose from '../transpose/index'
 import type { LocaleOptions, WeekStartOptions } from '../types'
 import defaultLocale from '../_lib/defaultLocale/index'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
 
@@ -53,9 +53,9 @@ export interface FormatRelativeOptions
  * const result = formatRelative(addDays(new Date(), -6), new Date())
  * //=> "last Thursday at 12:45 AM"
  */
-export default function formatRelative(
-  dirtyDate: Date | number,
-  dirtyBaseDate: Date | number,
+export default function formatRelative<DateType extends Date>(
+  dirtyDate: DateType | number,
+  dirtyBaseDate: DateType | number,
   options?: FormatRelativeOptions
 ): string {
   requiredArgs(2, arguments)
@@ -108,11 +108,9 @@ export default function formatRelative(
     token = 'other'
   }
 
-  const utcDate = subMilliseconds(date, getTimezoneOffsetInMilliseconds(date))
-  const utcBaseDate = subMilliseconds(
-    baseDate,
-    getTimezoneOffsetInMilliseconds(baseDate)
-  )
+  const utcDate = transpose(date, UTCDateMini)
+  const utcBaseDate = transpose(date, UTCDateMini)
+
   const formatStr = locale.formatRelative(token, utcDate, utcBaseDate, {
     locale,
     weekStartsOn,

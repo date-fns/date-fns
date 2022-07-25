@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import getWeekYear from '.'
+import getWeekYear from './index'
 
 describe('getWeekYear', () => {
   it('returns the local week-numbering year of the given date', () => {

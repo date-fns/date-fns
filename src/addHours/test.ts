@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import addHours from '.'
+import addHours from './index'
 
 describe('addHours', () => {
   it('adds the given numbers of hours', () => {

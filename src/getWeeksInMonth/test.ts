@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import getWeeksInMonth from '.'
+import getWeeksInMonth from './index'
 
 describe('getWeeksInMonth', () => {
   it('returns the number of calendar weeks the month in the given date spans', () => {

@@ -1,8 +1,8 @@
 import type { Match } from '../../../locale/types'
-import type { ParseResult, ParseFlags } from '../types'
-import { Parser } from '../Parser'
 import { numericPatterns } from '../constants'
-import { parseNumericPattern, parseNDigits, isLeapYearIndex } from '../utils'
+import { Parser } from '../Parser'
+import type { ParseFlags, ParseResult } from '../types'
+import { isLeapYearIndex, parseNDigits, parseNumericPattern } from '../utils'
 
 export class DayOfYearParser extends Parser<number> {
   priority = 90
@@ -21,7 +21,7 @@ export class DayOfYearParser extends Parser<number> {
     }
   }
 
-  validate(date: Date, value: number): boolean {
+  validate<DateType extends Date>(date: DateType, value: number): boolean {
     const year = date.getUTCFullYear()
     const isLeapYear = isLeapYearIndex(year)
     if (isLeapYear) {
@@ -31,9 +31,13 @@ export class DayOfYearParser extends Parser<number> {
     }
   }
 
-  set(date: Date, _flags: ParseFlags, value: number): Date {
-    date.setUTCMonth(0, value)
-    date.setUTCHours(0, 0, 0, 0)
+  set<DateType extends Date>(
+    date: DateType,
+    _flags: ParseFlags,
+    value: number
+  ): DateType {
+    date.setMonth(0, value)
+    date.setHours(0, 0, 0, 0)
     return date
   }
 

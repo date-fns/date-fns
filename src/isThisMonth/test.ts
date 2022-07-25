@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import sinon from 'sinon'
-import isThisMonth from '.'
+import isThisMonth from './index'
 
 describe('isThisMonth', () => {
   let clock: sinon.SinonFakeTimers

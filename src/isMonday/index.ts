@@ -18,7 +18,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = isMonday(new Date(2014, 8, 22))
  * //=> true
  */
-export default function isMonday(date: Date | number): boolean {
+export default function isMonday<DateType extends Date>(
+  date: DateType | number
+): boolean {
   requiredArgs(1, arguments)
 
   return toDate(date).getDay() === 1

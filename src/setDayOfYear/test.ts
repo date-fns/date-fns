@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import setDayOfYear from '.'
+import setDayOfYear from './index'
 
 describe('setDayOfYear', () => {
   it('sets the day of the year', () => {

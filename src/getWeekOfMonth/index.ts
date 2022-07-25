@@ -34,8 +34,8 @@ export interface GetWeekOfMonthOptions
  * const result = getWeekOfMonth(new Date(2017, 10, 9))
  * //=> 2
  */
-export default function getWeekOfMonth(
-  date: Date | number,
+export default function getWeekOfMonth<DateType extends Date>(
+  date: DateType | number,
   options?: GetWeekOfMonthOptions
 ): number {
   requiredArgs(1, arguments)

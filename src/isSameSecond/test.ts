@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import isSameSecond from '.'
+import isSameSecond from './index'
 
 describe('isSameSecond', () => {
   it('returns true if the given dates have the same second', () => {

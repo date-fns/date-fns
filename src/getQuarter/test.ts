@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import getQuarter from '.'
+import getQuarter from './index'
 
 describe('getQuarter', () => {
   it('returns the quarter of the given date', () => {

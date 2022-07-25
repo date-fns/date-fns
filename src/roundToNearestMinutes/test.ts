@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import roundToNearestMinutes from '.'
+import roundToNearestMinutes from './index'
 
 describe('roundToNearestMinutes', () => {
   it('rounds given date to the nearest minute by default', () => {

@@ -1,8 +1,8 @@
-import { isLeapYearIndex, parseNDigits, parseNumericPattern } from '../utils'
 import type { Match } from '../../../locale/types'
-import { Parser } from '../Parser'
 import { numericPatterns } from '../constants'
-import type { ParseResult, ParseFlags } from '../types'
+import { Parser } from '../Parser'
+import type { ParseFlags, ParseResult } from '../types'
+import { isLeapYearIndex, parseNDigits, parseNumericPattern } from '../utils'
 
 const DAYS_IN_MONTH = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 const DAYS_IN_MONTH_LEAP_YEAR = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
@@ -23,7 +23,7 @@ export class DateParser extends Parser<number> {
     }
   }
 
-  validate(date: Date, value: number): boolean {
+  validate<DateType extends Date>(date: DateType, value: number): boolean {
     const year = date.getUTCFullYear()
     const isLeapYear = isLeapYearIndex(year)
     const month = date.getUTCMonth()
@@ -34,9 +34,13 @@ export class DateParser extends Parser<number> {
     }
   }
 
-  set(date: Date, _flags: ParseFlags, value: number): Date {
-    date.setUTCDate(value)
-    date.setUTCHours(0, 0, 0, 0)
+  set<DateType extends Date>(
+    date: DateType,
+    _flags: ParseFlags,
+    value: number
+  ): DateType {
+    date.setDate(value)
+    date.setHours(0, 0, 0, 0)
     return date
   }
 

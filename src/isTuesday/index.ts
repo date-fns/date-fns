@@ -18,7 +18,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = isTuesday(new Date(2014, 8, 23))
  * //=> true
  */
-export default function isTuesday(dirtyDate: Date | number): boolean {
+export default function isTuesday<DateType extends Date>(
+  dirtyDate: DateType | number
+): boolean {
   requiredArgs(1, arguments)
 
   return toDate(dirtyDate).getDay() === 2

@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import addSeconds from '.'
+import addSeconds from './index'
 
 describe('addSeconds', () => {
   it('adds the given number of seconds', () => {

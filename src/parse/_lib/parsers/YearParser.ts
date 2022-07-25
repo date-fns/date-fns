@@ -1,6 +1,6 @@
 import type { Match } from '../../../locale/types'
-import type { ParseResult, ParseFlags } from '../types'
 import { Parser } from '../Parser'
+import type { ParseFlags, ParseResult } from '../types'
 import { mapValue, normalizeTwoDigitYear, parseNDigits } from '../utils'
 
 export interface YearParserValue {
@@ -45,27 +45,34 @@ export class YearParser extends Parser<YearParserValue> {
     }
   }
 
-  validate(_date: Date, value: YearParserValue): boolean {
+  validate<DateType extends Date>(
+    _date: DateType,
+    value: YearParserValue
+  ): boolean {
     return value.isTwoDigitYear || value.year > 0
   }
 
-  set(date: Date, flags: ParseFlags, value: YearParserValue): Date {
-    const currentYear = date.getUTCFullYear()
+  set<DateType extends Date>(
+    date: DateType,
+    flags: ParseFlags,
+    value: YearParserValue
+  ): DateType {
+    const currentYear = date.getFullYear()
 
     if (value.isTwoDigitYear) {
       const normalizedTwoDigitYear = normalizeTwoDigitYear(
         value.year,
         currentYear
       )
-      date.setUTCFullYear(normalizedTwoDigitYear, 0, 1)
-      date.setUTCHours(0, 0, 0, 0)
+      date.setFullYear(normalizedTwoDigitYear, 0, 1)
+      date.setHours(0, 0, 0, 0)
       return date
     }
 
     const year =
       !('era' in flags) || flags.era === 1 ? value.year : 1 - value.year
-    date.setUTCFullYear(year, 0, 1)
-    date.setUTCHours(0, 0, 0, 0)
+    date.setFullYear(year, 0, 1)
+    date.setHours(0, 0, 0, 0)
     return date
   }
 }

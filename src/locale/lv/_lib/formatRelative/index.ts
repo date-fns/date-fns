@@ -1,4 +1,4 @@
-import isSameUTCWeek from '../../../../_lib/isSameUTCWeek/index'
+import isSameWeek from '../../../../isSameWeek/index'
 import type { FormatRelativeFn, FormatRelativeFnOptions } from '../../../types'
 
 const weekdays = [
@@ -12,12 +12,12 @@ const weekdays = [
 ]
 
 const formatRelativeLocale = {
-  lastWeek: (
-    date: Date,
-    baseDate: Date,
+  lastWeek: <DateType extends Date>(
+    date: DateType,
+    baseDate: DateType,
     options?: FormatRelativeFnOptions
   ): string => {
-    if (isSameUTCWeek(date, baseDate, options)) {
+    if (isSameWeek(date, baseDate, options)) {
       return "eeee 'plkst.' p"
     }
 
@@ -27,12 +27,12 @@ const formatRelativeLocale = {
   yesterday: "'Vakar plkst.' p",
   today: "'Šodien plkst.' p",
   tomorrow: "'Rīt plkst.' p",
-  nextWeek: (
-    date: Date,
-    baseDate: Date,
+  nextWeek: <DateType extends Date>(
+    date: DateType,
+    baseDate: DateType,
     options?: FormatRelativeFnOptions
   ): string => {
-    if (isSameUTCWeek(date, baseDate, options)) {
+    if (isSameWeek(date, baseDate, options)) {
       return "eeee 'plkst.' p"
     }
 

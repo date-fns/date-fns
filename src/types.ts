@@ -1,5 +1,21 @@
 import type { Locale } from './locale/types'
 
+export interface GenericDateConstructor<DateType> {
+  new (): DateType
+
+  new (value: Date | number | string): DateType
+
+  new (
+    year: number,
+    month: number,
+    date?: number,
+    hours?: number,
+    minutes?: number,
+    seconds?: number,
+    ms?: number
+  ): DateType
+}
+
 export interface Duration {
   years?: number
   months?: number
@@ -12,9 +28,9 @@ export interface Duration {
 
 export type DurationUnit = keyof Duration
 
-export interface Interval {
-  start: Date | number
-  end: Date | number
+export interface Interval<DateType extends Date = Date> {
+  start: DateType | number
+  end: DateType | number
 }
 
 export interface StepOptions {

@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import isSameMonth from '.'
+import isSameMonth from './index'
 
 describe('isSameMonth', () => {
   it('returns true if the given dates have the same month (and year)', () => {

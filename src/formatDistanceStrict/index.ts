@@ -105,9 +105,9 @@ export interface FormatDistanceStrictOptions extends LocaleOptions {
  * //=> '1 jaro'
  */
 
-export default function formatDistanceStrict(
-  dirtyDate: Date | number,
-  dirtyBaseDate: Date | number,
+export default function formatDistanceStrict<DateType extends Date>(
+  dirtyDate: DateType | number,
+  dirtyBaseDate: DateType | number,
   options?: FormatDistanceStrictOptions
 ): string {
   requiredArgs(2, arguments)

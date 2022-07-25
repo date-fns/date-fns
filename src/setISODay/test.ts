@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import setISODay from '.'
+import setISODay from './index'
 
 describe('setISODay', () => {
   it('sets the day of the ISO week', () => {

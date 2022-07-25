@@ -1,4 +1,5 @@
 import toDate from '../toDate/index'
+import constructFrom from '../constructFrom/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
 
@@ -20,13 +21,13 @@ import toInteger from '../_lib/toInteger/index'
  * const result = addMilliseconds(new Date(2014, 6, 10, 12, 45, 30, 0), 750)
  * //=> Thu Jul 10 2014 12:45:30.750
  */
-export default function addMilliseconds(
-  dirtyDate: Date | number,
+export default function addMilliseconds<DateType extends Date>(
+  dirtyDate: DateType | number,
   dirtyAmount: number
-): Date {
+): DateType {
   requiredArgs(2, arguments)
 
   const timestamp = toDate(dirtyDate).getTime()
   const amount = toInteger(dirtyAmount)
-  return new Date(timestamp + amount)
+  return constructFrom(dirtyDate, timestamp + amount)
 }

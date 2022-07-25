@@ -1,3 +1,4 @@
+import constructFrom from '../constructFrom/index'
 import differenceInCalendarDays from '../differenceInCalendarDays/index'
 import startOfWeekYear from '../startOfWeekYear/index'
 import toDate from '../toDate/index'
@@ -59,11 +60,11 @@ export interface SetWeekYearOptions
  * })
  * //=> Sat Jan 01 2005 00:00:00
  */
-export default function setWeekYear(
-  dirtyDate: Date | number,
+export default function setWeekYear<DateType extends Date>(
+  dirtyDate: DateType | number,
   dirtyWeekYear: number,
   options?: SetWeekYearOptions
-): Date {
+): DateType {
   requiredArgs(2, arguments)
 
   const defaultOptions = getDefaultOptions()
@@ -78,7 +79,7 @@ export default function setWeekYear(
   let date = toDate(dirtyDate)
   const weekYear = toInteger(dirtyWeekYear)
   const diff = differenceInCalendarDays(date, startOfWeekYear(date, options))
-  const firstWeek = new Date(0)
+  const firstWeek = constructFrom(dirtyDate, 0)
   firstWeek.setFullYear(weekYear, 0, firstWeekContainsDate)
   firstWeek.setHours(0, 0, 0, 0)
   date = startOfWeekYear(firstWeek, options)

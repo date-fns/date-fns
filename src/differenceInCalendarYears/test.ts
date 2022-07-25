@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import differenceInCalendarYears from '.'
+import differenceInCalendarYears from './index'
 
 describe('differenceInCalendarYears', () => {
   it('returns the number of calendar years between the given dates', () => {

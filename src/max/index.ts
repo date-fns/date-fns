@@ -23,7 +23,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * ])
  * //=> Sun Jul 02 1995 00:00:00
  */
-export default function max(dirtyDatesArray: Array<Date | number>): Date {
+export default function max<DateType extends Date>(
+  dirtyDatesArray: Array<DateType | number>
+): DateType | Date {
   requiredArgs(1, arguments)
 
   let datesArray: Array<Date | number>

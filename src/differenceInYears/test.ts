@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import differenceInYears from '.'
+import differenceInYears from './index'
 
 describe('differenceInYears', () => {
   it('returns the number of full years between the given dates', () => {

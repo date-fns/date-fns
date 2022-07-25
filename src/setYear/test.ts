@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import setYear from '.'
+import setYear from './index'
 
 describe('setYear', () => {
   it('sets the year', () => {

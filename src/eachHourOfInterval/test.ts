@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import eachHourOfInterval from '.'
+import eachHourOfInterval from './index'
 
 describe('eachHourOfInterval', () => {
   it('returns an array with starts of hours from the hour of the start date to the hour of the end date', () => {

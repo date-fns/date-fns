@@ -22,9 +22,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = differenceInMonths(new Date(2014, 8, 1), new Date(2014, 0, 31))
  * //=> 7
  */
-export default function differenceInMonths(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+export default function differenceInMonths<DateType extends Date>(
+  dirtyDateLeft: DateType | number,
+  dirtyDateRight: DateType | number
 ): number {
   requiredArgs(2, arguments)
 

@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import differenceInCalendarDays from '.'
+import differenceInCalendarDays from './index'
 import { getDstTransitions } from '../../test/dst/tzOffsetTransitions'
 
 describe('differenceInCalendarDays', () => {

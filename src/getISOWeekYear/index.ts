@@ -1,3 +1,4 @@
+import constructFrom from '../constructFrom/index'
 import startOfISOWeek from '../startOfISOWeek/index'
 import toDate from '../toDate/index'
 import requiredArgs from '../_lib/requiredArgs/index'
@@ -22,18 +23,20 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = getISOWeekYear(new Date(2005, 0, 2))
  * //=> 2004
  */
-export default function getISOWeekYear(dirtyDate: Date | number): number {
+export default function getISOWeekYear<DateType extends Date>(
+  dirtyDate: DateType | number
+): number {
   requiredArgs(1, arguments)
 
   const date = toDate(dirtyDate)
   const year = date.getFullYear()
 
-  const fourthOfJanuaryOfNextYear = new Date(0)
+  const fourthOfJanuaryOfNextYear = constructFrom(dirtyDate, 0)
   fourthOfJanuaryOfNextYear.setFullYear(year + 1, 0, 4)
   fourthOfJanuaryOfNextYear.setHours(0, 0, 0, 0)
   const startOfNextYear = startOfISOWeek(fourthOfJanuaryOfNextYear)
 
-  const fourthOfJanuaryOfThisYear = new Date(0)
+  const fourthOfJanuaryOfThisYear = constructFrom(dirtyDate, 0)
   fourthOfJanuaryOfThisYear.setFullYear(year, 0, 4)
   fourthOfJanuaryOfThisYear.setHours(0, 0, 0, 0)
   const startOfThisYear = startOfISOWeek(fourthOfJanuaryOfThisYear)

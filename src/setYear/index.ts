@@ -1,3 +1,4 @@
+import constructFrom from '../constructFrom/index'
 import toDate from '../toDate/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
@@ -20,10 +21,10 @@ import toInteger from '../_lib/toInteger/index'
  * const result = setYear(new Date(2014, 8, 1), 2013)
  * //=> Sun Sep 01 2013 00:00:00
  */
-export default function setYear(
-  dirtyDate: Date | number,
+export default function setYear<DateType extends Date>(
+  dirtyDate: DateType | number,
   dirtyYear: number
-): Date {
+): DateType {
   requiredArgs(2, arguments)
 
   const date = toDate(dirtyDate)
@@ -31,7 +32,7 @@ export default function setYear(
 
   // Check if date is Invalid Date because Date.prototype.setFullYear ignores the value of Invalid Date
   if (isNaN(date.getTime())) {
-    return new Date(NaN)
+    return constructFrom(dirtyDate, NaN)
   }
 
   date.setFullYear(year)

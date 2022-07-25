@@ -21,9 +21,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = isSameISOWeekYear(new Date(2003, 11, 29), new Date(2005, 0, 2))
  * //=> true
  */
-export default function isSameISOWeekYear(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+export default function isSameISOWeekYear<DateType extends Date>(
+  dirtyDateLeft: DateType | number,
+  dirtyDateRight: DateType | number
 ): boolean {
   requiredArgs(2, arguments)
 

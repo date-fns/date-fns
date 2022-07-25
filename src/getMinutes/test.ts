@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import getMinutes from '.'
+import getMinutes from './index'
 
 describe('getMinutes', () => {
   it('returns the minutes of the given date', () => {

@@ -22,7 +22,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = isFuture(new Date(2014, 11, 31))
  * //=> true
  */
-export default function isFuture(dirtyDate: Date | number): boolean {
+export default function isFuture<DateType extends Date>(
+  dirtyDate: DateType | number
+): boolean {
   requiredArgs(1, arguments)
 
   return toDate(dirtyDate).getTime() > Date.now()

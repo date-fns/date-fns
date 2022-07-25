@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import subMilliseconds from '.'
+import subMilliseconds from './index'
 
 describe('subMilliseconds', () => {
   it('subtracts the given number of milliseconds', () => {

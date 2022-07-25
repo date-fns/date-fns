@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import addBusinessDays from '.'
+import addBusinessDays from './index'
 
 describe('addBusinessDays', () => {
   it('adds the given number of business days', () => {

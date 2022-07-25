@@ -1,4 +1,5 @@
 import toDate from '../toDate/index'
+import constructFrom from '../constructFrom/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
 
@@ -20,17 +21,15 @@ import toInteger from '../_lib/toInteger/index'
  * const result = addDays(new Date(2014, 8, 1), 10)
  * //=> Thu Sep 11 2014 00:00:00
  */
-export default function addDays(
-  dirtyDate: Date | number,
+export default function addDays<DateType extends Date>(
+  dirtyDate: DateType | number,
   dirtyAmount: number
-): Date {
+): DateType {
   requiredArgs(2, arguments)
 
   const date = toDate(dirtyDate)
   const amount = toInteger(dirtyAmount)
-  if (isNaN(amount)) {
-    return new Date(NaN)
-  }
+  if (isNaN(amount)) return constructFrom(dirtyDate, NaN)
   if (!amount) {
     // If 0 days, no-op to avoid changing times in the hour before end of DST
     return date

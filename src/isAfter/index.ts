@@ -19,9 +19,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = isAfter(new Date(1989, 6, 10), new Date(1987, 1, 11))
  * //=> true
  */
-export default function isAfter(
-  dirtyDate: Date | number,
-  dirtyDateToCompare: Date | number
+export default function isAfter<DateType extends Date>(
+  dirtyDate: DateType | number,
+  dirtyDateToCompare: DateType | number
 ): boolean {
   requiredArgs(2, arguments)
 

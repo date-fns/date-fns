@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import subISOWeekYears from '.'
+import subISOWeekYears from './index'
 
 describe('subISOWeekYears', () => {
   it('subtracts the given number of ISO week-numbering years', () => {

@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import setMonth from '.'
+import setMonth from './index'
 
 describe('setMonth', () => {
   it('sets the month', () => {

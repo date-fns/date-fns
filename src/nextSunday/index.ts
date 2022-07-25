@@ -18,7 +18,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = nextSunday(new Date(2020, 2, 22))
  * //=> Sun Mar 29 2020 00:00:00
  */
-export default function nextSunday(date: Date | number): Date {
+export default function nextSunday<DateType extends Date>(
+  date: DateType | number
+): DateType {
   requiredArgs(1, arguments)
   return nextDay(date, 0)
 }

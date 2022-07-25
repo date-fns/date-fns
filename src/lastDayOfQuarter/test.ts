@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import lastDayOfQuarter from '.'
+import lastDayOfQuarter from './index'
 
 describe('lastDayOfQuarter', () => {
   it('returns the date with the time set to 00:00:00 and the date set to the last day of a quarter', () => {

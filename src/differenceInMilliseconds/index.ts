@@ -23,9 +23,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * )
  * //=> 1100
  */
-export default function differenceInMilliseconds(
-  dateLeft: Date | number,
-  dateRight: Date | number
+export default function differenceInMilliseconds<DateType extends Date>(
+  dateLeft: DateType | number,
+  dateRight: DateType | number
 ): number {
   requiredArgs(2, arguments)
 

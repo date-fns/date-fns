@@ -49,9 +49,9 @@ export interface DifferenceInWeeksOptions extends RoundingOptions {}
  * )
  * //=> 8
  */
-export default function differenceInWeeks(
-  dateLeft: Date | number,
-  dateRight: Date | number,
+export default function differenceInWeeks<DateType extends Date>(
+  dateLeft: DateType | number,
+  dateRight: DateType | number,
   options?: DifferenceInWeeksOptions
 ): number {
   requiredArgs(2, arguments)

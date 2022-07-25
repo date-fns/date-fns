@@ -4,17 +4,22 @@ type Locale = Intl.ResolvedDateTimeFormatOptions['locale']
 type FormatOptions = Intl.DateTimeFormatOptions
 type LocaleOptions = { locale: Locale | Locale[] }
 
-export default function intlFormat(date: Date): string
-export default function intlFormat(
-  date: Date,
+export default function intlFormat<DateType extends Date>(
+  date: DateType
+): string
+
+export default function intlFormat<DateType extends Date>(
+  date: DateType,
   localeOptions: LocaleOptions
 ): string
-export default function intlFormat(
-  date: Date,
+
+export default function intlFormat<DateType extends Date>(
+  date: DateType,
   formatOptions: FormatOptions
 ): string
-export default function intlFormat(
-  date: Date,
+
+export default function intlFormat<DateType extends Date>(
+  date: DateType,
   formatOptions: FormatOptions,
   localeOptions: LocaleOptions
 ): string
@@ -89,8 +94,8 @@ export default function intlFormat(
  * const result = intlFormat(new Date(2019, 9, 4, 12, 30, 13, 456))
  * //=> 10/4/2019
  */
-export default function intlFormat(
-  date: Date,
+export default function intlFormat<DateType extends Date>(
+  date: DateType,
   formatOrLocale?: FormatOptions | LocaleOptions,
   localeOptions?: LocaleOptions
 ): string {

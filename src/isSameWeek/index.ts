@@ -42,9 +42,9 @@ export interface IsSameWeekOptions extends WeekStartOptions, LocaleOptions {}
  * const result = isSameWeek(new Date(2014, 0, 1), new Date(2015, 0, 1))
  * //=> false
  */
-export default function isSameWeek(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number,
+export default function isSameWeek<DateType extends Date>(
+  dirtyDateLeft: DateType | number,
+  dirtyDateRight: DateType | number,
   options?: IsSameWeekOptions
 ): boolean {
   requiredArgs(2, arguments)

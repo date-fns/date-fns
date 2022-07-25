@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import nextThursday from '.'
+import nextThursday from './index'
 
 describe('nextThursday', () => {
   it('returns the following Thursday given various dates before the same', () => {

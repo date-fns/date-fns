@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import setHours from '.'
+import setHours from './index'
 
 describe('setHours', () => {
   it('sets the amount of hours', () => {

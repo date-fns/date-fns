@@ -18,7 +18,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = getMonth(new Date(2012, 1, 29))
  * //=> 1
  */
-export default function getMonth(dirtyDate: Date | number): number {
+export default function getMonth<DateType extends Date>(
+  dirtyDate: DateType | number
+): number {
   requiredArgs(1, arguments)
 
   const date = toDate(dirtyDate)

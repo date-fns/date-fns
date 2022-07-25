@@ -1,3 +1,4 @@
+import constructFrom from '../constructFrom/index'
 import toDate from '../toDate/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 
@@ -23,19 +24,20 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * ])
  * //=> Tue Jan 01 2030 00:00:00
  */
-export default function closestTo(
-  dirtyDateToCompare: Date | number,
-  dirtyDatesArray: Array<Date | number>
-): Date | undefined {
+export default function closestTo<DateType extends Date>(
+  dirtyDateToCompare: DateType | number,
+  dirtyDatesArray: Array<DateType | number>
+): DateType | undefined {
   requiredArgs(2, arguments)
 
   const dateToCompare = toDate(dirtyDateToCompare)
 
-  if (isNaN(Number(dateToCompare))) return new Date(NaN)
+  if (isNaN(Number(dateToCompare)))
+    return constructFrom(dirtyDateToCompare, NaN)
 
   const timeToCompare = dateToCompare.getTime()
 
-  let datesArray: Array<Date | number>
+  let datesArray: Array<DateType | number>
   // `dirtyDatesArray` is undefined or null
   if (dirtyDatesArray == null) {
     datesArray = []
@@ -49,13 +51,13 @@ export default function closestTo(
     datesArray = Array.prototype.slice.call(dirtyDatesArray)
   }
 
-  let result: Date | undefined
+  let result: DateType | undefined
   let minDistance: number
-  datesArray.forEach(function (dirtyDate) {
+  datesArray.forEach((dirtyDate) => {
     const currentDate = toDate(dirtyDate)
 
     if (isNaN(Number(currentDate))) {
-      result = new Date(NaN)
+      result = constructFrom(dirtyDateToCompare, NaN)
       minDistance = NaN
       return
     }

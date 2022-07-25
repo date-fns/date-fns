@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import type { FormatDistanceFn } from '../locale/types'
-import formatDistanceStrict from '.'
+import formatDistanceStrict from './index'
 
 describe('formatDistanceStrict', () => {
   describe('seconds', () => {

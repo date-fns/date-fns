@@ -48,8 +48,8 @@ export interface FormatISOOptions
  * const result = formatISO(new Date(2019, 8, 18, 19, 0, 52), { representation: 'time' })
  * //=> '19:00:52Z'
  */
-export default function formatISO(
-  date: Date | number,
+export default function formatISO<DateType extends Date>(
+  date: DateType | number,
   options?: FormatISOOptions
 ): string {
   requiredArgs(1, arguments)

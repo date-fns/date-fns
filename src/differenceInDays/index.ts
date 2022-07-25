@@ -6,7 +6,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
 // for accurate equality comparisons of UTC timestamps that end up
 // having the same representation in local time, e.g. one hour before
 // DST ends vs. the instant that DST ends.
-function compareLocalAsc(dateLeft: Date, dateRight: Date): number {
+function compareLocalAsc<DateType extends Date>(
+  dateLeft: DateType,
+  dateRight: DateType
+): number {
   const diff =
     dateLeft.getFullYear() - dateRight.getFullYear() ||
     dateLeft.getMonth() - dateRight.getMonth() ||
@@ -75,9 +78,9 @@ function compareLocalAsc(dateLeft: Date, dateRight: Date): number {
  * )
 //=> 92
  */
-export default function differenceInDays(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+export default function differenceInDays<DateType extends Date>(
+  dirtyDateLeft: DateType | number,
+  dirtyDateRight: DateType | number
 ): number {
   requiredArgs(2, arguments)
 

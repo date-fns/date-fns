@@ -1,3 +1,4 @@
+import constructFrom from '../constructFrom/index'
 import differenceInCalendarDays from '../differenceInCalendarDays/index'
 import startOfISOWeekYear from '../startOfISOWeekYear/index'
 import toDate from '../toDate/index'
@@ -25,16 +26,16 @@ import toInteger from '../_lib/toInteger/index'
  * const result = setISOWeekYear(new Date(2008, 11, 29), 2007)
  * //=> Mon Jan 01 2007 00:00:00
  */
-export default function setISOWeekYear(
-  dirtyDate: Date | number,
+export default function setISOWeekYear<DateType extends Date>(
+  dirtyDate: DateType | number,
   dirtyISOWeekYear: number
-): Date {
+): DateType {
   requiredArgs(2, arguments)
 
   let date = toDate(dirtyDate)
   const isoWeekYear = toInteger(dirtyISOWeekYear)
   const diff = differenceInCalendarDays(date, startOfISOWeekYear(date))
-  const fourthOfJanuary = new Date(0)
+  const fourthOfJanuary = constructFrom(dirtyDate, 0)
   fourthOfJanuary.setFullYear(isoWeekYear, 0, 4)
   fourthOfJanuary.setHours(0, 0, 0, 0)
   date = startOfISOWeekYear(fourthOfJanuary)

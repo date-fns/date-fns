@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import formatRFC7231 from '.'
+import formatRFC7231 from './index'
 
 describe('formatRFC7231', () => {
   it('formats RFC-7231 date string', () => {

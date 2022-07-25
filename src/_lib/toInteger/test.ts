@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import toInteger from '.'
+import toInteger from './index'
 
 describe('toInteger', () => {
   it('truncates positive numbers', () => {

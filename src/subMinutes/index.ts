@@ -20,10 +20,10 @@ import toInteger from '../_lib/toInteger/index'
  * const result = subMinutes(new Date(2014, 6, 10, 12, 0), 30)
  * //=> Thu Jul 10 2014 11:30:00
  */
-export default function subMinutes(
-  dirtyDate: Date | number,
+export default function subMinutes<DateType extends Date>(
+  dirtyDate: DateType | number,
   dirtyAmount: number
-): Date {
+): DateType {
   requiredArgs(2, arguments)
 
   const amount = toInteger(dirtyAmount)

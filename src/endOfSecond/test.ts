@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import endOfSecond from '.'
+import endOfSecond from './index'
 
 describe('endOfSecond', () => {
   it('returns the date with the time set to the last millisecond before a second ends', () => {

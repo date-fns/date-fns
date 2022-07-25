@@ -25,7 +25,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> true
  */
 
-export default function isThisISOWeek(dirtyDate: Date | number): boolean {
+export default function isThisISOWeek<DateType extends Date>(
+  dirtyDate: DateType | number
+): boolean {
   requiredArgs(1, arguments)
 
   return isSameISOWeek(dirtyDate, Date.now())

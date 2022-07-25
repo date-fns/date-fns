@@ -31,7 +31,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //   Sun Sep 30 2018 00:00:00
  * // ]
  */
-export default function eachWeekendOfInterval(interval: Interval): Date[] {
+export default function eachWeekendOfInterval<DateType extends Date>(
+  interval: Interval<DateType>
+): DateType[] {
   requiredArgs(1, arguments)
 
   const dateInterval = eachDayOfInterval(interval)

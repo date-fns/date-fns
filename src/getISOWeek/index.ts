@@ -23,7 +23,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = getISOWeek(new Date(2005, 0, 2))
  * //=> 53
  */
-export default function getISOWeek(dirtyDate: Date | number): number {
+export default function getISOWeek<DateType extends Date>(
+  dirtyDate: DateType | number
+): number {
   requiredArgs(1, arguments)
 
   const date = toDate(dirtyDate)

@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import yearsToMonths from '.'
+import yearsToMonths from './index'
 
 describe('yearsToMonths', () => {
   it('converts years to months', () => {

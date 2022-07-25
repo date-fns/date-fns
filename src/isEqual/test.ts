@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import isEqual from '.'
+import isEqual from './index'
 
 describe('isEqual', () => {
   it('returns true if the given dates are equal', () => {

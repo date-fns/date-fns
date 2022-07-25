@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import differenceInMilliseconds from '.'
+import differenceInMilliseconds from './index'
 
 describe('differenceInMilliseconds', () => {
   it('returns the number of milliseconds between the given dates', () => {

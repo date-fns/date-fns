@@ -38,10 +38,10 @@ export interface EachDayOfIntervalOptions extends StepOptions {}
  * //   Fri Oct 10 2014 00:00:00
  * // ]
  */
-export default function eachDayOfInterval(
-  dirtyInterval: Interval,
+export default function eachDayOfInterval<DateType extends Date>(
+  dirtyInterval: Interval<DateType>,
   options?: EachDayOfIntervalOptions
-): Date[] {
+): DateType[] {
   requiredArgs(1, arguments)
 
   const interval = dirtyInterval || {}

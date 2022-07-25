@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import endOfHour from '.'
+import endOfHour from './index'
 
 describe('endOfHour', () => {
   it('returns the date with the time set to the last millisecond before an hour ends', () => {

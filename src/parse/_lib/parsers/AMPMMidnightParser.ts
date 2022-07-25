@@ -1,6 +1,6 @@
 import type { LocaleDayPeriod, Match } from '../../../locale/types'
-import type { ParseResult, ParseFlags } from '../types'
 import { Parser } from '../Parser'
+import type { ParseFlags, ParseResult } from '../types'
 import { dayPeriodEnumToHours } from '../utils'
 
 export class AMPMMidnightParser extends Parser<LocaleDayPeriod> {
@@ -49,8 +49,12 @@ export class AMPMMidnightParser extends Parser<LocaleDayPeriod> {
     }
   }
 
-  set(date: Date, _flags: ParseFlags, value: LocaleDayPeriod): Date {
-    date.setUTCHours(dayPeriodEnumToHours(value), 0, 0, 0)
+  set<DateType extends Date>(
+    date: DateType,
+    _flags: ParseFlags,
+    value: LocaleDayPeriod
+  ): DateType {
+    date.setHours(dayPeriodEnumToHours(value), 0, 0, 0)
     return date
   }
 

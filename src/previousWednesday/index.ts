@@ -18,7 +18,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = previousWednesday(new Date(2021, 5, 18))
  * //=> Wed June 16 2021 00:00:00
  */
-export default function previousWednesday(date: Date | number): Date {
+export default function previousWednesday<DateType extends Date>(
+  date: DateType | number
+): DateType {
   requiredArgs(1, arguments)
   return previousDay(date, 3)
 }

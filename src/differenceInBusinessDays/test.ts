@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import differenceInBusinessDays from '.'
+import differenceInBusinessDays from './index'
 
 describe('differenceInBusinessDays', () => {
   it('returns the number of business days between the given dates, excluding weekends', () => {

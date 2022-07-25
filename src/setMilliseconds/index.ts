@@ -20,10 +20,10 @@ import toInteger from '../_lib/toInteger/index'
  * const result = setMilliseconds(new Date(2014, 8, 1, 11, 30, 40, 500), 300)
  * //=> Mon Sep 01 2014 11:30:40.300
  */
-export default function setMilliseconds(
-  dirtyDate: Date | number,
+export default function setMilliseconds<DateType extends Date>(
+  dirtyDate: DateType | number,
   dirtyMilliseconds: number
-): Date {
+): DateType {
   requiredArgs(2, arguments)
 
   const date = toDate(dirtyDate)

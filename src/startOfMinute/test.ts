@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import startOfMinute from '.'
+import startOfMinute from './index'
 
 describe('startOfMinute', () => {
   it('returns the date with the time set to the first millisecond of a minute', () => {

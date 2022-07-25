@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import areIntervalsOverlapping from '.'
+import areIntervalsOverlapping from './index'
 
 describe('areIntervalsOverlapping', () => {
   const initialIntervalStart = new Date(2016, 10, 10, 13, 0, 0)

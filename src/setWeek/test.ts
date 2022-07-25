@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import setWeek from '.'
+import setWeek from './index'
 
 describe('setWeek', () => {
   it('sets the local week', () => {

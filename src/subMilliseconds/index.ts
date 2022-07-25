@@ -20,10 +20,10 @@ import toInteger from '../_lib/toInteger/index'
  * const result = subMilliseconds(new Date(2014, 6, 10, 12, 45, 30, 0), 750)
  * //=> Thu Jul 10 2014 12:45:29.250
  */
-export default function subMilliseconds(
-  dirtyDate: Date | number,
+export default function subMilliseconds<DateType extends Date>(
+  dirtyDate: DateType | number,
   dirtyAmount: number
-): Date {
+): DateType {
   requiredArgs(2, arguments)
 
   const amount = toInteger(dirtyAmount)

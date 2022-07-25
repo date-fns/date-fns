@@ -18,7 +18,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = getDate(new Date(2012, 1, 29))
  * //=> 29
  */
-export default function getDate(dirtyDate: Date | number): number {
+export default function getDate<DateType extends Date>(
+  dirtyDate: DateType | number
+): number {
   requiredArgs(1, arguments)
 
   const date = toDate(dirtyDate)

@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import intervalToDuration from '.'
+import intervalToDuration from './index'
 import addMonths from '../addMonths/index'
 
 describe('intervalToDuration', () => {

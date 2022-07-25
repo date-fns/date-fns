@@ -19,9 +19,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = isBefore(new Date(1989, 6, 10), new Date(1987, 1, 11))
  * //=> false
  */
-export default function isBefore(
-  dirtyDate: Date | number,
-  dirtyDateToCompare: Date | number
+export default function isBefore<DateType extends Date>(
+  dirtyDate: DateType | number,
+  dirtyDateToCompare: DateType | number
 ): boolean {
   requiredArgs(2, arguments)
 

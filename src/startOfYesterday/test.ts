@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import sinon from 'sinon'
-import startOfYesterday from '.'
+import startOfYesterday from './index'
 
 describe('startOfYesterday', () => {
   it('returns the start of yesterday', () => {

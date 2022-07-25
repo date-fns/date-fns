@@ -19,9 +19,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = isSameYear(new Date(2014, 8, 2), new Date(2014, 8, 25))
  * //=> true
  */
-export default function isSameYear(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+export default function isSameYear<DateType extends Date>(
+  dirtyDateLeft: DateType | number,
+  dirtyDateRight: DateType | number
 ): boolean {
   requiredArgs(2, arguments)
 

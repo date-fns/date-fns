@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import clamp from '.'
+import clamp from './index'
 
 describe('clamp', () => {
   it('accepts timestamps', () => {

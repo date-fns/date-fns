@@ -20,7 +20,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = isLastDayOfMonth(new Date(2014, 1, 28))
  * //=> true
  */
-export default function isLastDayOfMonth(dirtyDate: Date | number): boolean {
+export default function isLastDayOfMonth<DateType extends Date>(
+  dirtyDate: DateType | number
+): boolean {
   requiredArgs(1, arguments)
 
   const date = toDate(dirtyDate)

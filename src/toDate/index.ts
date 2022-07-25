@@ -30,7 +30,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = toDate(1392098430000)
  * //=> Tue Feb 11 2014 11:30:30
  */
-export default function toDate(argument: Date | number): Date {
+export default function toDate<DateType extends Date = Date>(
+  argument: DateType | number
+): DateType {
   requiredArgs(1, arguments)
 
   const argStr = Object.prototype.toString.call(argument)
@@ -41,9 +43,13 @@ export default function toDate(argument: Date | number): Date {
     (typeof argument === 'object' && argStr === '[object Date]')
   ) {
     // Prevent the date to lose the milliseconds when passed to new Date() in IE10
-    return new Date(argument.getTime())
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore: TODO find a way to make TypeScript happy about this code
+    return new argument.constructor(argument.getTime())
+    // return new Date(argument.getTime())
   } else if (typeof argument === 'number' || argStr === '[object Number]') {
-    return new Date(argument)
+    // TODO: Can we get rid of as?
+    return new Date(argument) as DateType
   } else {
     if (
       (typeof argument === 'string' || argStr === '[object String]') &&
@@ -56,6 +62,7 @@ export default function toDate(argument: Date | number): Date {
       // eslint-disable-next-line no-console
       console.warn(new Error().stack)
     }
-    return new Date(NaN)
+    // TODO: Can we get rid of as?
+    return new Date(NaN) as DateType
   }
 }

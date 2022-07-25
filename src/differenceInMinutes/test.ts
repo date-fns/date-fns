@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import differenceInMinutes from '.'
+import differenceInMinutes from './index'
 
 describe('differenceInMinutes', () => {
   it('returns the number of minutes between the given dates', () => {

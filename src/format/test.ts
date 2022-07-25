@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import sinon from 'sinon'
-import format from '.'
+import format from './index'
 
 describe('format', () => {
   const date = new Date(1986, 3 /* Apr */, 4, 10, 32, 55, 123)

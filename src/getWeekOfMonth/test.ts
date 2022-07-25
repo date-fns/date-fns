@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import getWeekOfMonth from '.'
+import getWeekOfMonth from './index'
 
 describe('getWeekOfMonth', () => {
   it('returns the week of the month of the given date', () => {

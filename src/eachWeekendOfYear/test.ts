@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import eachWeekendOfYear from '.'
+import eachWeekendOfYear from './index'
 import isWeekend from '../isWeekend'
 
 describe('eachWeekendOfYear', () => {

@@ -18,7 +18,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = getYear(new Date(2014, 6, 2))
  * //=> 2014
  */
-export default function getYear(dirtyDate: Date | number): number {
+export default function getYear<DateType extends Date>(
+  dirtyDate: DateType | number
+): number {
   requiredArgs(1, arguments)
 
   return toDate(dirtyDate).getFullYear()

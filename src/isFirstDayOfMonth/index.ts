@@ -18,7 +18,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = isFirstDayOfMonth(new Date(2014, 8, 1))
  * //=> true
  */
-export default function isFirstDayOfMonth(dirtyDate: Date | number): boolean {
+export default function isFirstDayOfMonth<DateType extends Date>(
+  dirtyDate: DateType | number
+): boolean {
   requiredArgs(1, arguments)
 
   return toDate(dirtyDate).getDate() === 1

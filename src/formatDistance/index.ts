@@ -100,9 +100,9 @@ export interface FormatDistanceOptions extends LocaleOptions {
  * //=> 'pli ol 1 jaro'
  */
 
-export default function formatDistance(
-  dirtyDate: Date | number,
-  dirtyBaseDate: Date | number,
+export default function formatDistance<DateType extends Date>(
+  dirtyDate: DateType | number,
+  dirtyBaseDate: DateType | number,
   options?: FormatDistanceOptions
 ): string {
   requiredArgs(2, arguments)

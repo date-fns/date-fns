@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import eachMonthOfInterval from '.'
+import eachMonthOfInterval from './index'
 
 describe('eachMonthOfInterval', () => {
   it('returns an array with starts of months from the month of the start date to the month of the end date', () => {

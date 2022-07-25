@@ -18,7 +18,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = isWeekend(new Date(2014, 9, 5))
  * //=> true
  */
-export default function isWeekend(dirtyDate: Date | number): boolean {
+export default function isWeekend<DateType extends Date>(
+  dirtyDate: DateType | number
+): boolean {
   requiredArgs(1, arguments)
 
   const date = toDate(dirtyDate)

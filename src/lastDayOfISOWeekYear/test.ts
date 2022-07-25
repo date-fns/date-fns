@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import lastDayOfISOWeekYear from '.'
+import lastDayOfISOWeekYear from './index'
 
 describe('lastDayOfISOWeekYear', () => {
   it('returns the date with the time set to 00:00:00 and the date set to the last day of an ISO year', () => {

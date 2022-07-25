@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import getMilliseconds from '.'
+import getMilliseconds from './index'
 
 describe('getMilliseconds', () => {
   it('returns the milliseconds of the given date', () => {

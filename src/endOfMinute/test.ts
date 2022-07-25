@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import endOfMinute from '.'
+import endOfMinute from './index'
 
 describe('endOfMinute', () => {
   it('returns the date with the time set to the last millisecond before a minute ends', () => {

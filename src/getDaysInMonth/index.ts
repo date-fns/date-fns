@@ -1,4 +1,5 @@
 import toDate from '../toDate/index'
+import constructFrom from '../constructFrom/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
@@ -18,13 +19,15 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = getDaysInMonth(new Date(2000, 1))
  * //=> 29
  */
-export default function getDaysInMonth(dirtyDate: Date | number): number {
+export default function getDaysInMonth<DateType extends Date>(
+  dirtyDate: DateType | number
+): number {
   requiredArgs(1, arguments)
 
   const date = toDate(dirtyDate)
   const year = date.getFullYear()
   const monthIndex = date.getMonth()
-  const lastDayOfMonth = new Date(0)
+  const lastDayOfMonth = constructFrom(dirtyDate, 0)
   lastDayOfMonth.setFullYear(year, monthIndex + 1, 0)
   lastDayOfMonth.setHours(0, 0, 0, 0)
   return lastDayOfMonth.getDate()

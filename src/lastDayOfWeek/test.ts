@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import lastDayOfWeek from '.'
+import lastDayOfWeek from './index'
 
 describe('lastDayOfWeek', () => {
   it('returns the date with the time set to 00:00:00 and the date set to the last day of a week', () => {

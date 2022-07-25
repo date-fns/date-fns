@@ -39,8 +39,8 @@ export interface IsThisWeekOptions extends WeekStartOptions, LocaleOptions {}
  * //=> false
  */
 
-export default function isThisWeek(
-  dirtyDate: Date | number,
+export default function is<DateType extends Date>(
+  dirtyDate: DateType | number,
   options?: IsThisWeekOptions
 ): boolean {
   requiredArgs(1, arguments)

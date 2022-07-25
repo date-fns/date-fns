@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import eachQuarterOfInterval from '.'
+import eachQuarterOfInterval from './index'
 
 describe('eachQuarterOfInterval', () => {
   it('returns an array with starts of quarters from the quarter of the start date to the quarter of the end date', () => {

@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import setDate from '.'
+import setDate from './index'
 
 describe('setDate', () => {
   it('sets the day of the month', () => {

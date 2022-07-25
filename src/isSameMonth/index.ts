@@ -24,9 +24,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = isSameMonth(new Date(2014, 8, 2), new Date(2015, 8, 25))
  * //=> false
  */
-export default function isSameMonth(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+export default function isSameMonth<DateType extends Date>(
+  dirtyDateLeft: DateType | number,
+  dirtyDateRight: DateType | number
 ): boolean {
   requiredArgs(2, arguments)
 

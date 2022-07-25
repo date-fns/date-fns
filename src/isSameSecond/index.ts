@@ -38,9 +38,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * )
  * //=> false
  */
-export default function isSameSecond(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+export default function isSameSecond<DateType extends Date>(
+  dirtyDateLeft: DateType | number,
+  dirtyDateRight: DateType | number
 ): boolean {
   requiredArgs(2, arguments)
 

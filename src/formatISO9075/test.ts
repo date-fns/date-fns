@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import formatISO9075 from '.'
+import formatISO9075 from './index'
 
 describe('formatISO9075', () => {
   it('formats ISO-9075 extended date format', () => {
