@@ -1,16 +1,7 @@
-<<<<<<< HEAD
+import { getRoundingMethod } from "../_lib/getRoundingMethod/index.js";
 import { constructFrom } from "../constructFrom/index.js";
 import { toDate } from "../toDate/index.js";
 import type { NearestMinutesOptions, RoundingOptions } from "../types.js";
-import { getRoundingMethod } from "../_lib/roundingMethods/index.js";
-=======
-import constructFrom from '../constructFrom/index'
-import toDate from '../toDate/index'
-import type { RoundingOptions } from '../types'
-import getRoundingMethod from '../_lib/getRoundingMethod/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-import toInteger from '../_lib/toInteger/index'
->>>>>>> `roundToNearestMinutes` fixes and improvements
 
 /**
  * The {@link roundToNearestMinutes} function options.
@@ -63,17 +54,19 @@ export function roundToNearestMinutes<DateType extends Date>(
 
   if (nearestTo < 1 || nearestTo > 30) return constructFrom(date, NaN);
 
-  const _date = toDate(date)
-  const seconds = _date.getSeconds() // relevant if nearestTo is 1, which is the default case
-  const minutes = _date.getMinutes() + seconds / 60
+  const _date = toDate(date);
+  const fractionalSeconds = _date.getSeconds() / 60;
+  const fractionalMilliseconds = _date.getMilliseconds() / 1000 / 60;
+  const minutes =
+    _date.getMinutes() + fractionalSeconds + fractionalMilliseconds;
 
   // Unlike the `differenceIn*` functions, the default rounding behavior is `round` and not 'trunc'
-  const method = options?.roundingMethod ?? 'round'
-  const roundingMethod = getRoundingMethod(method)
+  const method = options?.roundingMethod ?? "round";
+  const roundingMethod = getRoundingMethod(method);
 
-  const roundedMinutes = roundingMethod(minutes / nearestTo) * nearestTo
+  const roundedMinutes = roundingMethod(minutes / nearestTo) * nearestTo;
 
-  const result = constructFrom(date, _date)
-  result.setMinutes(roundedMinutes, 0, 0)
-  return result
+  const result = constructFrom(date, _date);
+  result.setMinutes(roundedMinutes, 0, 0);
+  return result;
 }
