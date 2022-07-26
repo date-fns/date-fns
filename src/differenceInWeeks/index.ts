@@ -1,6 +1,6 @@
+import { getRoundingMethod } from "../_lib/getRoundingMethod/index.js";
 import { differenceInDays } from "../differenceInDays/index.js";
 import type { RoundingOptions } from "../types.js";
-import { getRoundingMethod } from "../_lib/roundingMethods/index.js";
 
 /**
  * The {@link differenceInWeeks} function options.
