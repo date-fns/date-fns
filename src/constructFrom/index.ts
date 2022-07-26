@@ -10,9 +10,9 @@ import type { GenericDateConstructor } from '../types'
  * date and the given value. It helps to build generic functions that accept
  * date extensions.
  *
- * @param date {Date|number} - the reference date to take constructor from
- * @param value {Date|number} - the value to create the date
- * @returns date initialized using the given date and value
+ * @param {Date|number} date - the reference date to take constructor from
+ * @param {Date|number} value - the value to create the date
+ * @returns {Date} date initialized using the given date and value
  *
  * @example
  * import { constructFrom } from 'date-fns'

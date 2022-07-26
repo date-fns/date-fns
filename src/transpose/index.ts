@@ -1,5 +1,5 @@
-import type { GenericDateConstructor } from '../types'
 import constructFrom from '../constructFrom/index'
+import type { GenericDateConstructor } from '../types'
 
 /**
  * @name transpose
@@ -11,9 +11,9 @@ import constructFrom from '../constructFrom/index'
  * to transpose the date in the system time zone to say `UTCDate` or any other
  * date extension.
  *
- * @param fromDate {Date|number} - the date to use values from
- * @param constructor {Date|DateConstructor} - the date constructor to use
- * @returns date transposed to the given constructor
+ * @param {Date|number} fromDate - the date to use values from
+ * @param {Date|DateConstructor} constructor - the date constructor to use
+ * @returns {Date} date transposed to the given constructor
  *
  * @example
  * // Create July 10, 2022 00:00 in locale time zone
