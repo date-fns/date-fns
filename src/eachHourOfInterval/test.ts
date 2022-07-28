@@ -109,12 +109,12 @@ describe('eachHourOfInterval', () => {
       ])
     })
 
-    it('throws TypeError error if `options.step` is less than 1', () => {
+    it('throws RangeError error if `options.step` is less than 1', () => {
       assert.throws(() => eachHourOfInterval(interval, { step: 0 }), stepError)
       assert.throws(() => eachHourOfInterval(interval, { step: -3 }), stepError)
     })
 
-    it('throws TypeError error if `options.step` is NaN', () => {
+    it('throws RangeError error if `options.step` is NaN', () => {
       assert.throws(
         () =>
           eachHourOfInterval(interval, {
