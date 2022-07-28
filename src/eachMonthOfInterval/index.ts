@@ -31,9 +31,8 @@ import type { Interval } from '../types'
  * // ]
  */
 export default function eachMonthOfInterval<DateType extends Date>(
-  dirtyInterval: Interval<DateType>
+  interval: Interval<DateType>
 ): DateType[] {
-  const interval = dirtyInterval || {}
   const startDate = toDate(interval.start)
   const endDate = toDate(interval.end)
 
