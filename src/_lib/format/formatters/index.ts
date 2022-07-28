@@ -757,7 +757,7 @@ const formatters: { [token: string]: Formatter } = {
   },
 }
 
-function formatTimezoneShort(offset: number, dirtyDelimiter?: string): string {
+function formatTimezoneShort(offset: number, delimiter: string = ''): string {
   const sign = offset > 0 ? '-' : '+'
   const absOffset = Math.abs(offset)
   const hours = Math.floor(absOffset / 60)
@@ -765,23 +765,21 @@ function formatTimezoneShort(offset: number, dirtyDelimiter?: string): string {
   if (minutes === 0) {
     return sign + String(hours)
   }
-  const delimiter = dirtyDelimiter || ''
   return sign + String(hours) + delimiter + addLeadingZeros(minutes, 2)
 }
 
 function formatTimezoneWithOptionalMinutes(
   offset: number,
-  dirtyDelimiter?: string
+  delimiter?: string
 ): string {
   if (offset % 60 === 0) {
     const sign = offset > 0 ? '-' : '+'
     return sign + addLeadingZeros(Math.abs(offset) / 60, 2)
   }
-  return formatTimezone(offset, dirtyDelimiter)
+  return formatTimezone(offset, delimiter)
 }
 
-function formatTimezone(offset: number, dirtyDelimiter?: string): string {
-  const delimiter = dirtyDelimiter || ''
+function formatTimezone(offset: number, delimiter: string = ''): string {
   const sign = offset > 0 ? '-' : '+'
   const absOffset = Math.abs(offset)
   const hours = addLeadingZeros(Math.floor(absOffset / 60), 2)
