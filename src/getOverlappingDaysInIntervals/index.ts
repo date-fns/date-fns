@@ -34,11 +34,9 @@ import type { Interval } from '../types'
  */
 
 export default function getOverlappingDaysInIntervals<DateType extends Date>(
-  dirtyIntervalLeft: Interval<DateType>,
-  dirtyIntervalRight: Interval<DateType>
+  intervalLeft: Interval<DateType>,
+  intervalRight: Interval<DateType>
 ): number {
-  const intervalLeft = dirtyIntervalLeft || {}
-  const intervalRight = dirtyIntervalRight || {}
   const leftStartTime = toDate(intervalLeft.start).getTime()
   const leftEndTime = toDate(intervalLeft.end).getTime()
   const rightStartTime = toDate(intervalRight.start).getTime()

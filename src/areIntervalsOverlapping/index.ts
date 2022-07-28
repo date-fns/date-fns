@@ -66,10 +66,10 @@ export default function areIntervalsOverlapping(
   intervalRight: Interval,
   options?: AreIntervalsOverlappingOptions
 ): boolean {
-  const leftStartTime = toDate(intervalLeft?.start).getTime()
-  const leftEndTime = toDate(intervalLeft?.end).getTime()
-  const rightStartTime = toDate(intervalRight?.start).getTime()
-  const rightEndTime = toDate(intervalRight?.end).getTime()
+  const leftStartTime = toDate(intervalLeft.start).getTime()
+  const leftEndTime = toDate(intervalLeft.end).getTime()
+  const rightStartTime = toDate(intervalRight.start).getTime()
+  const rightEndTime = toDate(intervalRight.end).getTime()
 
   // Throw an exception if start date is after end date or if any date is `Invalid Date`
   if (!(leftStartTime <= leftEndTime && rightStartTime <= rightEndTime)) {

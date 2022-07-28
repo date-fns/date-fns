@@ -83,15 +83,6 @@ describe('eachHourOfInterval', () => {
     assert.throws(block, RangeError)
   })
 
-  it('throws an exception if the interval is undefined', () => {
-    const block = () =>
-      eachHourOfInterval(
-        // @ts-expect-error
-        undefined
-      )
-    assert.throws(block, RangeError)
-  })
-
   describe('options.step', () => {
     const interval = {
       start: new Date(2014, 9 /* Oct */, 6, 12),

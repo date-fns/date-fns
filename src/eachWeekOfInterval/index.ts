@@ -42,10 +42,9 @@ export interface EachWeekOfIntervalOptions
  * // ]
  */
 export default function eachWeekOfInterval<DateType extends Date>(
-  dirtyInterval: Interval<DateType>,
+  interval: Interval<DateType>,
   options?: EachWeekOfIntervalOptions
 ): DateType[] {
-  const interval = dirtyInterval || {}
   const startDate = toDate(interval.start)
   const endDate = toDate(interval.end)
 

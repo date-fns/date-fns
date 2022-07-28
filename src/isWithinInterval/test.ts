@@ -60,16 +60,6 @@ describe('isWithinInterval', () => {
     assert.throws(block, RangeError)
   })
 
-  it('throws an exception if the interval is undefined', () => {
-    const block = () =>
-      isWithinInterval(
-        new Date(2014, 9 /* Oct */, 31),
-        // @ts-expect-error
-        undefined
-      )
-    assert.throws(block, TypeError)
-  })
-
   it('returns false if the given date is `Invalid Date`', () => {
     const result = isWithinInterval(new Date(NaN), {
       start: new Date(2014, 8 /* Sep */, 1),
