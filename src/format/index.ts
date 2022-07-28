@@ -1,7 +1,5 @@
-import { UTCDateMini } from '@date-fns/utc/date/mini'
 import isValid from '../isValid/index'
 import toDate from '../toDate/index'
-import transpose from '../transpose/index'
 import type {
   AdditionalTokensOptions,
   Day,
@@ -368,9 +366,6 @@ export default function format<DateType extends Date>(
     throw new RangeError('Invalid time value')
   }
 
-  // Transpose the date in system timezone to the same date in UTC.
-  const utcDate = transpose(originalDate, UTCDateMini)
-
   const formatterOptions = {
     firstWeekContainsDate: firstWeekContainsDate as FirstWeekContainsDate,
     weekStartsOn: weekStartsOn as Day,
@@ -415,7 +410,12 @@ export default function format<DateType extends Date>(
         ) {
           throwProtectedError(substring, formatStr, String(dirtyDate))
         }
-        return formatter(utcDate, substring, locale.localize, formatterOptions)
+        return formatter(
+          originalDate,
+          substring,
+          locale.localize,
+          formatterOptions
+        )
       }
 
       if (firstCharacter.match(unescapedLatinCharacterRegExp)) {

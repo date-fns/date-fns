@@ -17,7 +17,7 @@ const formatRelativeLocale = {
   today: "'dnes v' p",
   tomorrow: "'zítra v' p",
   nextWeek: (date: Date) => {
-    const day = date.getUTCDay() as Day
+    const day = date.getDay() as Day
     return "'v " + accusativeWeekdays[day] + " o' p"
   },
   other: 'P',

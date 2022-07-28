@@ -1,4 +1,5 @@
 import constructFrom from '../../../constructFrom/index'
+import getTimezoneOffsetInMilliseconds from '../../../_lib/getTimezoneOffsetInMilliseconds/index'
 import { timezonePatterns } from '../constants'
 import { Parser } from '../Parser'
 import type { ParseFlags, ParseResult } from '../types'
@@ -39,7 +40,10 @@ export class ISOTimezoneWithZParser extends Parser<number> {
     value: number
   ): DateType {
     if (flags.timestampIsSet) return date
-    return constructFrom(date, date.getTime() - value)
+    return constructFrom(
+      date,
+      date.getTime() - getTimezoneOffsetInMilliseconds(date) - value
+    )
   }
 
   incompatibleTokens = ['t', 'T', 'x']

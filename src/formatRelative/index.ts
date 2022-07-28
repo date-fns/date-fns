@@ -1,9 +1,7 @@
-import { UTCDateMini } from '@date-fns/utc/date/mini'
 import differenceInCalendarDays from '../differenceInCalendarDays/index'
 import format from '../format/index'
 import type { FormatRelativeToken } from '../locale/types'
 import toDate from '../toDate/index'
-import transpose from '../transpose/index'
 import type { LocaleOptions, WeekStartOptions } from '../types'
 import defaultLocale from '../_lib/defaultLocale/index'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
@@ -99,10 +97,7 @@ export default function formatRelative<DateType extends Date>(
     token = 'other'
   }
 
-  const utcDate = transpose(date, UTCDateMini)
-  const utcBaseDate = transpose(date, UTCDateMini)
-
-  const formatStr = locale.formatRelative(token, utcDate, utcBaseDate, {
+  const formatStr = locale.formatRelative(token, date, baseDate, {
     locale,
     weekStartsOn,
   })

@@ -37,9 +37,7 @@
       "git add"
     ]
   },
-  "dependencies": {
-    "@date-fns/utc": "1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/cli": "^7.13.10",
     "@babel/core": "^7.13.10",

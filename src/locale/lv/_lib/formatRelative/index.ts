@@ -21,7 +21,7 @@ const formatRelativeLocale = {
       return "eeee 'plkst.' p"
     }
 
-    const weekday = weekdays[date.getUTCDay()]
+    const weekday = weekdays[date.getDay()]
     return "'Pagājušā " + weekday + " plkst.' p"
   },
   yesterday: "'Vakar plkst.' p",
@@ -36,7 +36,7 @@ const formatRelativeLocale = {
       return "eeee 'plkst.' p"
     }
 
-    const weekday = weekdays[date.getUTCDay()]
+    const weekday = weekdays[date.getDay()]
     return "'Nākamajā " + weekday + " plkst.' p"
   },
   other: 'P',

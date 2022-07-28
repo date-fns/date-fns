@@ -12,7 +12,7 @@ const accusativeWeekdays = [
 
 function week(isFuture: Boolean) {
   return (date: Date) => {
-    const weekday = accusativeWeekdays[date.getUTCDay()]
+    const weekday = accusativeWeekdays[date.getDay()]
     const prefix = isFuture ? '' : "'múlt' "
     return `${prefix}'${weekday}' p'-kor'`
   }

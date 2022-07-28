@@ -53,7 +53,7 @@ function dayAndTimeWithAdjective(
     throw new Error(`Cannot determine adjectives for token ${token}`)
   }
 
-  const day = date.getUTCDay() as Day
+  const day = date.getDay() as Day
   const grammaticalGender = dayGrammaticalGender[day] as keyof Adjective
 
   const adjective = adjectives[grammaticalGender]

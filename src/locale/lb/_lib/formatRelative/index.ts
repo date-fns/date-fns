@@ -2,7 +2,7 @@ import type { FormatRelativeFn } from '../../../types'
 
 const formatRelativeLocale = {
   lastWeek: (date: Date) => {
-    const day = date.getUTCDay()
+    const day = date.getDay()
     let result = "'läschte"
     if (day === 2 || day === 4) {
       // Eifeler Regel: Add an n before the consonant d; Here "Dënschdeg" "and Donneschde".

@@ -1,7 +1,5 @@
-import { UTCDateMini } from '@date-fns/utc/date/mini'
 import isValid from '../isValid/index'
 import toDate from '../toDate/index'
-import transpose from '../transpose/index'
 import formatters from '../_lib/format/lightFormatters/index'
 
 // This RegExp consists of three parts separated by `|`:
@@ -86,9 +84,6 @@ export default function lightFormat<DateType extends Date>(
     throw new RangeError('Invalid time value')
   }
 
-  // Transpose the date in system timezone to the same date in UTC.
-  const utcDate = transpose(originalDate, UTCDateMini)
-
   const tokens = formatStr.match(formattingTokensRegExp)
 
   // The only case when formattingTokensRegExp doesn't match the string is when it's empty
@@ -108,7 +103,7 @@ export default function lightFormat<DateType extends Date>(
 
       const formatter = formatters[firstCharacter as Token]
       if (formatter) {
-        return formatter(utcDate, substring)
+        return formatter(originalDate, substring)
       }
 
       if (firstCharacter.match(unescapedLatinCharacterRegExp)) {

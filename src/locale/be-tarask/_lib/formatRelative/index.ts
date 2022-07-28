@@ -57,7 +57,7 @@ const lastWeekFormat: FormatRelativeTokenFn = (
   options
 ) => {
   const date = toDate(dirtyDate)
-  const day = date.getUTCDay() as Day
+  const day = date.getDay() as Day
   if (isSameWeek(date, baseDate, options)) {
     return thisWeek(day)
   } else {
@@ -71,7 +71,7 @@ const nextWeekFormat: FormatRelativeTokenFn = (
   options
 ) => {
   const date = toDate(dirtyDate)
-  const day = date.getUTCDay() as Day
+  const day = date.getDay() as Day
   if (isSameWeek(date, baseDate, options)) {
     return thisWeek(day)
   } else {
