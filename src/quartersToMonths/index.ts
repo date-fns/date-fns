@@ -1,5 +1,4 @@
 import { monthsInQuarter } from '../constants/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name quartersToMonths
@@ -12,7 +11,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @param {number} quarters - number of quarters to be converted
  *
  * @returns {number} the number of quarters converted in months
- * @throws {TypeError} 1 argument required
  *
  * @example
  * // Convert 2 quarters to months
@@ -20,6 +18,5 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> 6
  */
 export default function quartersToMonths(quarters: number): number {
-  requiredArgs(1, arguments)
   return Math.floor(quarters * monthsInQuarter)
 }

@@ -2,7 +2,6 @@ import { millisecondsInWeek } from '../constants/index'
 import startOfISOWeek from '../startOfISOWeek/index'
 import startOfISOWeekYear from '../startOfISOWeekYear/index'
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name getISOWeek
@@ -16,7 +15,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Date|Number} date - the given date
  * @returns {Number} the ISO week
- * @throws {TypeError} 1 argument required
  *
  * @example
  * // Which week of the ISO-week numbering year is 2 January 2005?
@@ -26,8 +24,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function getISOWeek<DateType extends Date>(
   dirtyDate: DateType | number
 ): number {
-  requiredArgs(1, arguments)
-
   const date = toDate(dirtyDate)
   const diff =
     startOfISOWeek(date).getTime() - startOfISOWeekYear(date).getTime()

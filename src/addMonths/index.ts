@@ -1,6 +1,5 @@
 import toDate from '../toDate/index'
 import constructFrom from '../constructFrom/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
 
 /**
@@ -14,7 +13,6 @@ import toInteger from '../_lib/toInteger/index'
  * @param {Date|Number} date - the date to be changed
  * @param {Number} amount - the amount of months to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  * @returns {Date} the new date with the months added
- * @throws {TypeError} 2 arguments required
  *
  * @example
  * // Add 5 months to 1 September 2014:
@@ -25,8 +23,6 @@ export default function addMonths<DateType extends Date>(
   dirtyDate: DateType | number,
   dirtyAmount: number
 ): DateType {
-  requiredArgs(2, arguments)
-
   const date = toDate(dirtyDate)
   const amount = toInteger(dirtyAmount)
   if (isNaN(amount)) return constructFrom(dirtyDate, NaN)

@@ -18,9 +18,4 @@ describe('fromUnixTime', () => {
     const result = fromUnixTime(1330515499.75)
     assert(result.getTime() === 1330515499000)
   })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(fromUnixTime.bind(null), TypeError)
-  })
 })

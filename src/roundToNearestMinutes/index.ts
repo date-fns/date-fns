@@ -25,7 +25,6 @@ export interface RoundToNearestMinutesOptions extends RoundingOptions {
  * @param {Number} [options.nearestTo=1] - nearest number of minutes to round to. E.g. `15` to round to quarter hours.
  * @param {String} [options.roundingMethod='trunc'] - a rounding method (`ceil`, `floor`, `round` or `trunc`)
  * @returns {Date} the new date rounded to the closest minute
- * @throws {TypeError} 1 argument required
  * @throws {RangeError} `options.nearestTo` must be between 1 and 30
  *
  * @example
@@ -43,10 +42,6 @@ export default function roundToNearestMinutes<DateType extends Date>(
   dirtyDate: DateType | number,
   options?: RoundToNearestMinutesOptions
 ): DateType {
-  if (arguments.length < 1) {
-    throw new TypeError('1 argument required, but only none provided present')
-  }
-
   const nearestTo = toInteger(options?.nearestTo ?? 1)
 
   if (nearestTo < 1 || nearestTo > 30) {

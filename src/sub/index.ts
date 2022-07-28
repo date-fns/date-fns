@@ -2,7 +2,6 @@ import subDays from '../subDays/index'
 import subMonths from '../subMonths/index'
 import type { Duration } from '../types'
 import constructFrom from '../constructFrom/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
 
 /**
@@ -29,7 +28,6 @@ import toInteger from '../_lib/toInteger/index'
  * All values default to 0
  *
  * @returns {Date} the new date with the seconds subtracted
- * @throws {TypeError} 2 arguments required
  *
  * @example
  * // Subtract the following duration from 15 June 2017 15:29:20
@@ -48,8 +46,6 @@ export default function sub<DateType extends Date>(
   date: DateType | number,
   duration: Duration
 ): DateType {
-  requiredArgs(2, arguments)
-
   if (!duration || typeof duration !== 'object') return constructFrom(date, NaN)
 
   const years = duration.years ? toInteger(duration.years) : 0

@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name getMinutes
@@ -11,7 +10,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Date|Number} date - the given date
  * @returns {Number} the minutes
- * @throws {TypeError} 1 argument required
  *
  * @example
  * // Get the minutes of 29 February 2012 11:45:05:
@@ -21,8 +19,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function getMinutes<DateType extends Date>(
   dirtyDate: DateType | number
 ): number {
-  requiredArgs(1, arguments)
-
   const date = toDate(dirtyDate)
   const minutes = date.getMinutes()
   return minutes

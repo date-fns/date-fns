@@ -145,13 +145,6 @@ describe('differenceInMonths', () => {
     assert(isNaN(result))
   })
 
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(differenceInMonths.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(differenceInMonths.bind(null, 1), TypeError)
-  })
-
   describe('edge cases', () => {
     it('returns the number of full months between the given dates - end of Feb', () => {
       assert(

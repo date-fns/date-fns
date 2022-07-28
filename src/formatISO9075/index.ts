@@ -23,7 +23,6 @@ export interface FormatISO9075Options
  * @param {'extended'|'basic'} [options.format='extended'] - if 'basic', hide delimiters between date and time values.
  * @param {'complete'|'date'|'time'} [options.representation='complete'] - format date, time, or both.
  * @returns {String} the formatted date string
- * @throws {TypeError} 1 argument required
  * @throws {RangeError} `date` must not be Invalid Date
  * @throws {RangeError} `options.format` must be 'extended' or 'basic'
  * @throws {RangeError} `options.representation` must be 'date', 'time' or 'complete'
@@ -52,12 +51,6 @@ export default function formatISO9075<DateType extends Date>(
   dirtyDate: DateType | number,
   options?: FormatISO9075Options
 ): string {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      `1 argument required, but only ${arguments.length} present`
-    )
-  }
-
   const originalDate = toDate(dirtyDate)
 
   if (!isValid(originalDate)) {

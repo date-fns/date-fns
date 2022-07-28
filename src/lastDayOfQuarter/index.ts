@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name lastDayOfQuarter
@@ -14,7 +13,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @param {Object} [options] - an object with options.
  * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
  * @returns {Date} the last day of a quarter
- * @throws {TypeError} 1 argument required
  * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
@@ -25,8 +23,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function lastDayOfQuarter<DateType extends Date>(
   dirtyDate: DateType | number
 ): DateType {
-  requiredArgs(1, arguments)
-
   const date = toDate(dirtyDate)
   const currentMonth = date.getMonth()
   const month = currentMonth - (currentMonth % 3) + 3

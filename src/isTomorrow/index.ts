@@ -1,6 +1,5 @@
 import addDays from '../addDays/index'
 import isSameDay from '../isSameDay/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isTomorrow
@@ -16,7 +15,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Date|Number} date - the date to check
  * @returns {Boolean} the date is tomorrow
- * @throws {TypeError} 1 argument required
  *
  * @example
  * // If today is 6 October 2014, is 7 October 14:00:00 tomorrow?
@@ -26,7 +24,5 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function isTomorrow<DateType extends Date>(
   dirtyDate: DateType | number
 ): boolean {
-  requiredArgs(1, arguments)
-
   return isSameDay(dirtyDate, addDays(Date.now(), 1))
 }

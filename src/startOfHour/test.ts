@@ -26,9 +26,4 @@ describe('startOfHour', () => {
     const result = startOfHour(new Date(NaN))
     assert(result instanceof Date && isNaN(result.getTime()))
   })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(startOfHour.bind(null), TypeError)
-  })
 })

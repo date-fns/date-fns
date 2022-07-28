@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name getDay
@@ -11,7 +10,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Date|Number} date - the given date
  * @returns {0|1|2|3|4|5|6} the day of week, 0 represents Sunday
- * @throws {TypeError} 1 argument required
  *
  * @example
  * // Which day of the week is 29 February 2012?
@@ -21,8 +19,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function getDay<DateType extends Date>(
   dirtyDate: DateType | number
 ): number {
-  requiredArgs(1, arguments)
-
   const date = toDate(dirtyDate)
   const day = date.getDay()
   return day

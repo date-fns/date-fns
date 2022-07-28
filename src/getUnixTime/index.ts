@@ -1,5 +1,4 @@
 import getTime from '../getTime/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name getUnixTime
@@ -11,7 +10,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Date|Number} date - the given date
  * @returns {Number} the timestamp
- * @throws {TypeError} 1 argument required
  *
  * @example
  * // Get the timestamp of 29 February 2012 11:45:05 CET:
@@ -21,7 +19,5 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function getUnixTime<DateType extends Date>(
   dirtyDate: DateType | number
 ): number {
-  requiredArgs(1, arguments)
-
   return Math.floor(getTime(dirtyDate) / 1000)
 }

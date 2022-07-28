@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name max
@@ -11,7 +10,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Date[]|Number[]} datesArray - the dates to compare
  * @returns {Date} the latest of the dates
- * @throws {TypeError} 1 argument required
  *
  * @example
  * // Which of these dates is the latest?
@@ -26,8 +24,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function max<DateType extends Date>(
   dirtyDatesArray: Array<DateType | number>
 ): DateType | Date {
-  requiredArgs(1, arguments)
-
   let datesArray: Array<Date | number>
   // `dirtyDatesArray` is Array, Set or Map, or object with custom `forEach` method
   if (dirtyDatesArray && typeof dirtyDatesArray.forEach === 'function') {

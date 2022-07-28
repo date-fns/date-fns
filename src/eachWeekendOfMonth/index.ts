@@ -1,7 +1,6 @@
 import eachWeekendOfInterval from '../eachWeekendOfInterval/index'
 import endOfMonth from '../endOfMonth/index'
 import startOfMonth from '../startOfMonth/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name eachWeekendOfMonth
@@ -13,7 +12,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Date|Number} date - the given month
  * @returns {Date[]} an array containing all the Saturdays and Sundays
- * @throws {TypeError} 1 argument required
  * @throws {RangeError} The passed date is invalid
  *
  * @example
@@ -33,8 +31,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function eachWeekendOfMonth<DateType extends Date>(
   dirtyDate: DateType
 ): DateType[] {
-  requiredArgs(1, arguments)
-
   const startDate = startOfMonth(dirtyDate)
   if (isNaN(startDate.getTime()))
     throw new RangeError('The passed date is invalid')

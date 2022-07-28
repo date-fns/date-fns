@@ -1,5 +1,4 @@
 import lastDayOfWeek from '../lastDayOfWeek/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name lastDayOfISOWeek
@@ -14,7 +13,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Date|Number} date - the original date
  * @returns {Date} the last day of an ISO week
- * @throws {TypeError} 1 argument required
  *
  * @example
  * // The last day of an ISO week for 2 September 2014 11:55:00:
@@ -24,7 +22,5 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function lastDayOfISOWeek<DateType extends Date>(
   dirtyDate: DateType | number
 ): DateType {
-  requiredArgs(1, arguments)
-
   return lastDayOfWeek(dirtyDate, { weekStartsOn: 1 })
 }

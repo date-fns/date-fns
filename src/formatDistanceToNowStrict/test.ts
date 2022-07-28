@@ -444,9 +444,4 @@ describe('formatDistanceToNowStrict', () => {
       })
     assert.throws(block, RangeError)
   })
-
-  it('throws TypeError exception if passed less than 1 arguments', () => {
-    // @ts-expect-error
-    assert.throws(formatDistanceToNowStrict.bind(null), TypeError)
-  })
 })

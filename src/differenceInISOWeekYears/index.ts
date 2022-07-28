@@ -2,7 +2,6 @@ import compareAsc from '../compareAsc/index'
 import differenceInCalendarISOWeekYears from '../differenceInCalendarISOWeekYears/index'
 import subISOWeekYears from '../subISOWeekYears/index'
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name differenceInISOWeekYears
@@ -17,7 +16,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @param {Date|Number} dateLeft - the later date
  * @param {Date|Number} dateRight - the earlier date
  * @returns {Number} the number of full ISO week-numbering years
- * @throws {TypeError} 2 arguments required
  *
  * @example
  * // How many full ISO week-numbering years are between 1 January 2010 and 1 January 2012?
@@ -31,8 +29,6 @@ export default function differenceInISOWeekYears<DateType extends Date>(
   dirtyDateLeft: DateType | number,
   dirtyDateRight: DateType | number
 ): number {
-  requiredArgs(2, arguments)
-
   let dateLeft = toDate(dirtyDateLeft)
   const dateRight = toDate(dirtyDateRight)
 

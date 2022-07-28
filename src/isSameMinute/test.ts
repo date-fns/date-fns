@@ -42,11 +42,4 @@ describe('isSameMinute', () => {
     const result = isSameMinute(new Date(NaN), new Date(NaN))
     assert(result === false)
   })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(isSameMinute.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(isSameMinute.bind(null, 1), TypeError)
-  })
 })

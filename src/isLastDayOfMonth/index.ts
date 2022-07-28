@@ -1,7 +1,6 @@
 import endOfDay from '../endOfDay/index'
 import endOfMonth from '../endOfMonth/index'
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isLastDayOfMonth
@@ -13,7 +12,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Date|Number} date - the date to check
  * @returns {Boolean} the date is the last day of a month
- * @throws {TypeError} 1 argument required
  *
  * @example
  * // Is 28 February 2014 the last day of a month?
@@ -23,8 +21,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function isLastDayOfMonth<DateType extends Date>(
   dirtyDate: DateType | number
 ): boolean {
-  requiredArgs(1, arguments)
-
   const date = toDate(dirtyDate)
   return endOfDay(date).getTime() === endOfMonth(date).getTime()
 }

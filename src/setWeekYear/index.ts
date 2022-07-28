@@ -8,7 +8,6 @@ import type {
   WeekStartOptions,
 } from '../types'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
 
 /**
@@ -41,7 +40,6 @@ export interface SetWeekYearOptions
  * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
  * @param {1|2|3|4|5|6|7} [options.firstWeekContainsDate=1] - the day of January, which is always in the first week of the year
  * @returns {Date} the new date with the local week-numbering year set
- * @throws {TypeError} 2 arguments required
  * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
  * @throws {RangeError} `options.firstWeekContainsDate` must be between 1 and 7
  *
@@ -65,8 +63,6 @@ export default function setWeekYear<DateType extends Date>(
   dirtyWeekYear: number,
   options?: SetWeekYearOptions
 ): DateType {
-  requiredArgs(2, arguments)
-
   const defaultOptions = getDefaultOptions()
   const firstWeekContainsDate = toInteger(
     options?.firstWeekContainsDate ??

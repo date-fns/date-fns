@@ -1,5 +1,4 @@
 import { daysInWeek } from '../constants/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name weeksToDays
@@ -12,7 +11,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @param {number} weeks - number of weeks to be converted
  *
  * @returns {number} the number of weeks converted in days
- * @throws {TypeError} 1 argument required
  *
  * @example
  * // Convert 2 weeks into days
@@ -20,6 +18,5 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> 14
  */
 export default function weeksToDays(weeks: number): number {
-  requiredArgs(1, arguments)
   return Math.floor(weeks * daysInWeek)
 }

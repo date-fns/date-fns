@@ -1,5 +1,4 @@
 import { secondsInHour } from '../constants/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name hoursToSeconds
@@ -12,7 +11,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @param {number} hours - number of hours to be converted
  *
  * @returns {number} the number of hours converted in seconds
- * @throws {TypeError} 1 argument required
  *
  * @example
  * // Convert 2 hours to seconds:
@@ -20,6 +18,5 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> 7200
  */
 export default function hoursToSeconds(hours: number): number {
-  requiredArgs(1, arguments)
   return Math.floor(hours * secondsInHour)
 }

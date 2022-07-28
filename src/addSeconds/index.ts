@@ -1,5 +1,4 @@
 import addMilliseconds from '../addMilliseconds/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
 
 /**
@@ -13,7 +12,6 @@ import toInteger from '../_lib/toInteger/index'
  * @param {Date|Number} date - the date to be changed
  * @param {Number} amount - the amount of seconds to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  * @returns {Date} the new date with the seconds added
- * @throws {TypeError} 2 arguments required
  *
  * @example
  * // Add 30 seconds to 10 July 2014 12:45:00:
@@ -24,8 +22,6 @@ export default function addSeconds<DateType extends Date>(
   dirtyDate: DateType | number,
   dirtyAmount: number
 ): DateType {
-  requiredArgs(2, arguments)
-
   const amount = toInteger(dirtyAmount)
   return addMilliseconds(dirtyDate, amount * 1000)
 }

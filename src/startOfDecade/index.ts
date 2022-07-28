@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name startOfDecade
@@ -11,7 +10,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Date|Number} date - the original date
  * @returns {Date} the start of a decade
- * @throws {TypeError} 1 argument required
  *
  * @example
  * // The start of a decade for 21 October 2015 00:00:00:
@@ -21,8 +19,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function startOfDecade<DateType extends Date>(
   dirtyDate: DateType | number
 ): DateType {
-  requiredArgs(1, arguments)
-
   const date = toDate(dirtyDate)
   const year = date.getFullYear()
   const decade = Math.floor(year / 10) * 10

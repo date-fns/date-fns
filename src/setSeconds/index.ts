@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
 
 /**
@@ -13,7 +12,6 @@ import toInteger from '../_lib/toInteger/index'
  * @param {Date|Number} date - the date to be changed
  * @param {Number} seconds - the seconds of the new date
  * @returns {Date} the new date with the seconds set
- * @throws {TypeError} 2 arguments required
  *
  * @example
  * // Set 45 seconds to 1 September 2014 11:30:40:
@@ -24,8 +22,6 @@ export default function setSeconds<DateType extends Date>(
   dirtyDate: DateType | number,
   dirtySeconds: number
 ): DateType {
-  requiredArgs(2, arguments)
-
   const date = toDate(dirtyDate)
   const seconds = toInteger(dirtySeconds)
   date.setSeconds(seconds)

@@ -533,11 +533,4 @@ describe('formatDistanceStrict', () => {
       )
     assert.throws(block, RangeError)
   })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(formatDistanceStrict.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(formatDistanceStrict.bind(null, 1), TypeError)
-  })
 })

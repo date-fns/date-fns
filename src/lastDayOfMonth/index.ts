@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name lastDayOfMonth
@@ -12,7 +11,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Date|Number} date - the original date
  * @returns {Date} the last day of a month
- * @throws {TypeError} 1 argument required
  *
  * @example
  * // The last day of a month for 2 September 2014 11:55:00:
@@ -22,8 +20,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function lastDayOfMonth<DateType extends Date>(
   dirtyDate: DateType | number
 ): DateType {
-  requiredArgs(1, arguments)
-
   const date = toDate(dirtyDate)
   const month = date.getMonth()
   date.setFullYear(date.getFullYear(), month + 1, 0)

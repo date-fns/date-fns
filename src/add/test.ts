@@ -119,11 +119,4 @@ describe('add', () => {
     )
     assert(result instanceof Date && isNaN(result.getTime()))
   })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(add.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(add.bind(null, 1), TypeError)
-  })
 })

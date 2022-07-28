@@ -1,6 +1,5 @@
 import getISOWeek from '../getISOWeek/index'
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
 
 /**
@@ -16,7 +15,6 @@ import toInteger from '../_lib/toInteger/index'
  * @param {Date|Number} date - the date to be changed
  * @param {Number} isoWeek - the ISO week of the new date
  * @returns {Date} the new date with the ISO week set
- * @throws {TypeError} 2 arguments required
  *
  * @example
  * // Set the 53rd ISO week to 7 August 2004:
@@ -27,8 +25,6 @@ export default function setISOWeek<DateType extends Date>(
   dirtyDate: DateType | number,
   dirtyISOWeek: number
 ): DateType {
-  requiredArgs(2, arguments)
-
   const date = toDate(dirtyDate)
   const isoWeek = toInteger(dirtyISOWeek)
   const diff = getISOWeek(date) - isoWeek

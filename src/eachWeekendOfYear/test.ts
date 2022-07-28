@@ -13,11 +13,6 @@ describe('eachWeekendOfYear', () => {
     assert.deepStrictEqual(result[103], new Date(2020, 11, 27))
   })
 
-  it('throws TypeError exception when no argument is passed in', () => {
-    // @ts-expect-error
-    assert.throws(eachWeekendOfYear.bind(null), TypeError)
-  })
-
   it('throws RangeError exception when date is invalid', () => {
     assert.throws(eachWeekendOfYear.bind(null, new Date(NaN)), RangeError)
   })

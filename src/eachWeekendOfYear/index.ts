@@ -1,7 +1,6 @@
 import eachWeekendOfInterval from '../eachWeekendOfInterval/index'
 import endOfYear from '../endOfYear/index'
 import startOfYear from '../startOfYear/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name eachWeekendOfYear
@@ -13,7 +12,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Date|Number} date - the given year
  * @returns {Date[]} an array containing all the Saturdays and Sundays
- * @throws {TypeError} 1 argument required
  * @throws {RangeError} The passed date is invalid
  *
  * @example
@@ -30,8 +28,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function eachWeekendOfYear<DateType extends Date>(
   dirtyDate: DateType | number
 ): DateType[] {
-  requiredArgs(1, arguments)
-
   const startDate = startOfYear(dirtyDate)
   const endDate = endOfYear(dirtyDate)
   return eachWeekendOfInterval({ start: startDate, end: endDate })

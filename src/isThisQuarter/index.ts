@@ -1,5 +1,4 @@
 import isSameQuarter from '../isSameQuarter/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isThisQuarter
@@ -15,7 +14,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Date|Number} date - the date to check
  * @returns {Boolean} the date is in this quarter
- * @throws {TypeError} 1 argument required
  *
  * @example
  * // If today is 25 September 2014, is 2 July 2014 in this quarter?
@@ -25,7 +23,5 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function isThisQuarter<DateType extends Date>(
   dirtyDate: DateType | number
 ): boolean {
-  requiredArgs(1, arguments)
-
   return isSameQuarter(Date.now(), dirtyDate)
 }

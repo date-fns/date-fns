@@ -1,7 +1,6 @@
 import addWeeks from '../addWeeks/index'
 import { millisecondsInWeek } from '../constants/index'
 import startOfISOWeekYear from '../startOfISOWeekYear/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name getISOWeeksInYear
@@ -15,7 +14,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Date|Number} date - the given date
  * @returns {Number} the number of ISO weeks in a year
- * @throws {TypeError} 1 argument required
  *
  * @example
  * // How many weeks are in ISO week-numbering year 2015?
@@ -25,8 +23,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function getISOWeeksInYear<DateType extends Date>(
   dirtyDate: DateType | number
 ): number {
-  requiredArgs(1, arguments)
-
   const thisYear = startOfISOWeekYear(dirtyDate)
   const nextYear = startOfISOWeekYear(addWeeks(thisYear, 60))
   const diff = nextYear.valueOf() - thisYear.valueOf()

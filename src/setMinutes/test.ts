@@ -46,11 +46,4 @@ describe('setMinutes', () => {
     const result = setMinutes(new Date(2014, 8 /* Sep */, 1, 11, 30, 40), NaN)
     assert(result instanceof Date && isNaN(result.getTime()))
   })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(setMinutes.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(setMinutes.bind(null, 1), TypeError)
-  })
 })

@@ -1,5 +1,3 @@
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name isDate
  * @category Common Helpers
@@ -10,7 +8,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {*} value - the value to check
  * @returns {boolean} true if the given value is a date
- * @throws {TypeError} 1 arguments required
  *
  * @example
  * // For a valid date:
@@ -33,8 +30,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> false
  */
 export default function isDate(value: unknown): value is Date {
-  requiredArgs(1, arguments)
-
   return (
     value instanceof Date ||
     (typeof value === 'object' &&

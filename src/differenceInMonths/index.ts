@@ -2,7 +2,6 @@ import compareAsc from '../compareAsc/index'
 import differenceInCalendarMonths from '../differenceInCalendarMonths/index'
 import isLastDayOfMonth from '../isLastDayOfMonth/index'
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name differenceInMonths
@@ -15,7 +14,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @param {Date|Number} dateLeft - the later date
  * @param {Date|Number} dateRight - the earlier date
  * @returns {Number} the number of full months
- * @throws {TypeError} 2 arguments required
  *
  * @example
  * // How many full months are between 31 January 2014 and 1 September 2014?
@@ -26,8 +24,6 @@ export default function differenceInMonths<DateType extends Date>(
   dirtyDateLeft: DateType | number,
   dirtyDateRight: DateType | number
 ): number {
-  requiredArgs(2, arguments)
-
   const dateLeft = toDate(dirtyDateLeft)
   const dateRight = toDate(dirtyDateRight)
 

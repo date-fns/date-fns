@@ -1,5 +1,4 @@
 import { secondsInMinute } from '../constants/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name secondsToMinutes
@@ -12,7 +11,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @param {number} seconds - number of seconds to be converted
  *
  * @returns {number} the number of seconds converted in minutes
- * @throws {TypeError} 1 argument required
  *
  * @example
  * // Convert 120 seconds into minutes
@@ -25,7 +23,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> 1
  */
 export default function secondsToMinutes(seconds: number): number {
-  requiredArgs(1, arguments)
   const minutes = seconds / secondsInMinute
   return Math.floor(minutes)
 }

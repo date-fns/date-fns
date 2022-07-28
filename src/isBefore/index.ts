@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isBefore
@@ -12,7 +11,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @param {Date|Number} date - the date that should be before the other one to return true
  * @param {Date|Number} dateToCompare - the date to compare with
  * @returns {Boolean} the first date is before the second date
- * @throws {TypeError} 2 arguments required
  *
  * @example
  * // Is 10 July 1989 before 11 February 1987?
@@ -23,8 +21,6 @@ export default function isBefore<DateType extends Date>(
   dirtyDate: DateType | number,
   dirtyDateToCompare: DateType | number
 ): boolean {
-  requiredArgs(2, arguments)
-
   const date = toDate(dirtyDate)
   const dateToCompare = toDate(dirtyDateToCompare)
   return date.getTime() < dateToCompare.getTime()

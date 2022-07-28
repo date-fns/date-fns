@@ -1,7 +1,6 @@
 import { millisecondsInDay } from '../constants/index'
 import toDate from '../toDate/index'
 import type { Interval } from '../types'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name getOverlappingDaysInIntervals
@@ -14,7 +13,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @param {Interval} intervalLeft - the first interval to compare. See [Interval]{@link docs/Interval}
  * @param {Interval} intervalRight - the second interval to compare. See [Interval]{@link docs/Interval}
  * @returns {Number} the number of days that overlap in two time intervals
- * @throws {TypeError} 2 arguments required
  * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *
@@ -39,8 +37,6 @@ export default function getOverlappingDaysInIntervals<DateType extends Date>(
   dirtyIntervalLeft: Interval<DateType>,
   dirtyIntervalRight: Interval<DateType>
 ): number {
-  requiredArgs(2, arguments)
-
   const intervalLeft = dirtyIntervalLeft || {}
   const intervalRight = dirtyIntervalRight || {}
   const leftStartTime = toDate(intervalLeft.start).getTime()

@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isFuture
@@ -15,7 +14,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Date|Number} date - the date to check
  * @returns {Boolean} the date is in the future
- * @throws {TypeError} 1 argument required
  *
  * @example
  * // If today is 6 October 2014, is 31 December 2014 in the future?
@@ -25,7 +23,5 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function isFuture<DateType extends Date>(
   dirtyDate: DateType | number
 ): boolean {
-  requiredArgs(1, arguments)
-
   return toDate(dirtyDate).getTime() > Date.now()
 }

@@ -1,5 +1,4 @@
 import isSameMinute from '../isSameMinute/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isThisMinute
@@ -15,7 +14,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Date|Number} date - the date to check
  * @returns {Boolean} the date is in this minute
- * @throws {TypeError} 1 argument required
  *
  * @example
  * // If now is 25 September 2014 18:30:15.500,
@@ -27,7 +25,5 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function isThisMinute<DateType extends Date>(
   dirtyDate: DateType | number
 ): boolean {
-  requiredArgs(1, arguments)
-
   return isSameMinute(Date.now(), dirtyDate)
 }

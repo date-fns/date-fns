@@ -42,11 +42,4 @@ describe('isSameYear', () => {
     const result = isSameYear(new Date(NaN), new Date(NaN))
     assert(result === false)
   })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(isSameYear.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(isSameYear.bind(null, 1), TypeError)
-  })
 })

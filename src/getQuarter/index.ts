@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name getQuarter
@@ -11,7 +10,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Date|Number} date - the given date
  * @returns {Number} the quarter
- * @throws {TypeError} 1 argument required
  *
  * @example
  * // Which quarter is 2 July 2014?
@@ -21,8 +19,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function getQuarter<DateType extends Date>(
   dirtyDate: DateType | number
 ): number {
-  requiredArgs(1, arguments)
-
   const date = toDate(dirtyDate)
   const quarter = Math.floor(date.getMonth() / 3) + 1
   return quarter

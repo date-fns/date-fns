@@ -23,9 +23,4 @@ describe('isFriday', () => {
     const result = isFriday(new Date(NaN))
     assert(result === false)
   })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(isFriday.bind(null), TypeError)
-  })
 })

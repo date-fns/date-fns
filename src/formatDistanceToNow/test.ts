@@ -223,9 +223,4 @@ describe('formatDistanceToNow', () => {
   it('throws RangeError if the passed date is `Invalid Date`', function () {
     assert.throws(formatDistanceToNow.bind(null, new Date(NaN)), RangeError)
   })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(formatDistanceToNow.bind(null), TypeError)
-  })
 })

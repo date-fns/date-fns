@@ -3,7 +3,6 @@ import addMonths from '../addMonths/index'
 import constructFrom from '../constructFrom/index'
 import toDate from '../toDate/index'
 import type { Duration } from '../types'
-import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
 
 /**
@@ -30,7 +29,6 @@ import toInteger from '../_lib/toInteger/index'
  * All values default to 0
  *
  * @returns {Date} the new date with the seconds added
- * @throws {TypeError} 2 arguments required
  *
  * @example
  * // Add the following duration to 1 September 2014, 10:19:50
@@ -49,8 +47,6 @@ export default function add<DateType extends Date>(
   dirtyDate: DateType | number,
   duration: Duration
 ): DateType {
-  requiredArgs(2, arguments)
-
   if (!duration || typeof duration !== 'object')
     return constructFrom(dirtyDate, NaN)
 

@@ -28,9 +28,4 @@ describe('isSameISOWeek', () => {
     const date = new Date(2014, 8 /* Sep */, 29).getTime()
     assert(isThisISOWeek(date) === false)
   })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(isThisISOWeek.bind(null), TypeError)
-  })
 })

@@ -1,6 +1,5 @@
 import toDate from '../toDate/index'
 import constructFrom from '../constructFrom/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name startOfYear
@@ -13,7 +12,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Date|Number} date - the original date
  * @returns {Date} the start of a year
- * @throws {TypeError} 1 argument required
  *
  * @example
  * // The start of a year for 2 September 2014 11:55:00:
@@ -23,8 +21,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function startOfYear<DateType extends Date>(
   dirtyDate: DateType | number
 ): DateType {
-  requiredArgs(1, arguments)
-
   const cleanDate = toDate(dirtyDate)
   const date = constructFrom(dirtyDate, 0)
   date.setFullYear(cleanDate.getFullYear(), 0, 1)

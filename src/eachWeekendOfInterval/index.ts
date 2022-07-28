@@ -2,7 +2,6 @@ import eachDayOfInterval from '../eachDayOfInterval/index'
 import isSunday from '../isSunday/index'
 import isWeekend from '../isWeekend/index'
 import type { Interval } from '../types'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name eachWeekendOfInterval
@@ -14,7 +13,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Interval} interval - the given interval. See [Interval]{@link https://date-fns.org/docs/Interval}
  * @returns {Date[]} an array containing all the Saturdays and Sundays
- * @throws {TypeError} 1 argument required
  * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *
@@ -34,8 +32,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function eachWeekendOfInterval<DateType extends Date>(
   interval: Interval<DateType>
 ): DateType[] {
-  requiredArgs(1, arguments)
-
   const dateInterval = eachDayOfInterval(interval)
   const weekends = []
   let index = 0

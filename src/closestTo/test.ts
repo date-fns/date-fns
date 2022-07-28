@@ -108,11 +108,4 @@ describe('closestTo', () => {
     )
     assert.deepStrictEqual(result, undefined)
   })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(closestTo.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(closestTo.bind(null, 1), TypeError)
-  })
 })

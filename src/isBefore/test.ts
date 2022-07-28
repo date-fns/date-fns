@@ -50,11 +50,4 @@ describe('isBefore', () => {
     const result = isBefore(new Date(NaN), new Date(NaN))
     assert(result === false)
   })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(isBefore.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(isBefore.bind(null, 1), TypeError)
-  })
 })

@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name getSeconds
@@ -11,7 +10,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Date|Number} date - the given date
  * @returns {Number} the seconds
- * @throws {TypeError} 1 argument required
  *
  * @example
  * // Get the seconds of 29 February 2012 11:45:05.123:
@@ -21,8 +19,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function getSeconds<DateType extends Date>(
   dirtyDate: DateType | number
 ): number {
-  requiredArgs(1, arguments)
-
   const date = toDate(dirtyDate)
   const seconds = date.getSeconds()
   return seconds

@@ -1,7 +1,6 @@
 import compareAsc from '../compareAsc/index'
 import differenceInCalendarYears from '../differenceInCalendarYears/index'
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name differenceInYears
@@ -14,7 +13,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @param {Date|Number} dateLeft - the later date
  * @param {Date|Number} dateRight - the earlier date
  * @returns {Number} the number of full years
- * @throws {TypeError} 2 arguments required
  *
  * @example
  * // How many full years are between 31 December 2013 and 11 February 2015?
@@ -25,8 +23,6 @@ export default function differenceInYears<DateType extends Date>(
   dirtyDateLeft: DateType | number,
   dirtyDateRight: DateType | number
 ): number {
-  requiredArgs(2, arguments)
-
   const dateLeft = toDate(dirtyDateLeft)
   const dateRight = toDate(dirtyDateRight)
 

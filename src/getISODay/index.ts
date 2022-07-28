@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name getISODay
@@ -14,7 +13,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Date|Number} date - the given date
  * @returns {Number} the day of ISO week
- * @throws {TypeError} 1 argument required
  *
  * @example
  * // Which day of the ISO week is 26 February 2012?
@@ -24,8 +22,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function getISODay<DateType extends Date>(
   dirtyDate: DateType | number
 ): number {
-  requiredArgs(1, arguments)
-
   const date = toDate(dirtyDate)
   let day = date.getDay()
 

@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name parseJSON
@@ -33,11 +32,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {String|Number|Date} argument A fully formed ISO8601 date string to convert
  * @returns {Date} the parsed date in the local time zone
- * @throws {TypeError} 1 argument required
  */
 export default function parseJSON(argument: string): Date {
-  requiredArgs(1, arguments)
-
   if (typeof argument === 'string') {
     const parts = argument.match(
       /(\d{4})-(\d{2})-(\d{2})[T ](\d{2}):(\d{2}):(\d{2})(?:\.(\d{0,7}))?(?:Z|(.)(\d{2}):?(\d{2})?)?/

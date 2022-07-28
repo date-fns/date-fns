@@ -1,5 +1,4 @@
 import nextDay from '../nextDay/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name nextWednesday
@@ -11,7 +10,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Date | number} date - the date to start counting from
  * @returns {Date} the next Wednesday
- * @throws {TypeError} 1 argument required
  *
  * @example
  * // When is the next Wednesday after Mar, 22, 2020?
@@ -21,6 +19,5 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function nextWednesday<DateType extends Date>(
   date: DateType | number
 ): DateType {
-  requiredArgs(1, arguments)
   return nextDay(date, 3)
 }

@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name closestIndexTo
@@ -12,7 +11,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @param {Date | Number} dateToCompare - the date to compare with
  * @param {Array<Date> | Array<number>} datesArray - the array to search
  * @returns {Number | undefined} an index of the date closest to the given date or undefined if no valid value is given
- * @throws {TypeError} 2 arguments required
  *
  * @example
  * // Which date is closer to 6 September 2015?
@@ -29,8 +27,6 @@ export default function closestIndexTo<DateType extends Date>(
   dirtyDateToCompare: DateType | number,
   dirtyDatesArray: Array<DateType | number>
 ): number | undefined {
-  requiredArgs(2, arguments)
-
   const dateToCompare = toDate(dirtyDateToCompare)
 
   if (isNaN(Number(dateToCompare))) return NaN

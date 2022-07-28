@@ -2429,15 +2429,6 @@ describe('parse', () => {
     })
   })
 
-  it('throws TypeError exception if passed less than 3 arguments', () => {
-    // @ts-expect-error
-    assert.throws(parse.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(parse.bind(null, 1), TypeError)
-    // @ts-expect-error
-    assert.throws(parse.bind(null, 1, 2), TypeError)
-  })
-
   describe('edge cases', () => {
     it('returns Invalid Date if the string contains some remaining input after parsing', () => {
       const result = parse('2016-11-05T040404', 'yyyy-MM-dd', referenceDate)

@@ -7,7 +7,6 @@ import transpose from '../transpose/index'
 import type { LocaleOptions, WeekStartOptions } from '../types'
 import defaultLocale from '../_lib/defaultLocale/index'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
 
 /**
@@ -40,7 +39,6 @@ export interface FormatRelativeOptions
  * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
  * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
  * @returns {String} the date in words
- * @throws {TypeError} 2 arguments required
  * @throws {RangeError} `date` must not be Invalid Date
  * @throws {RangeError} `baseDate` must not be Invalid Date
  * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
@@ -58,8 +56,6 @@ export default function formatRelative<DateType extends Date>(
   dirtyBaseDate: DateType | number,
   options?: FormatRelativeOptions
 ): string {
-  requiredArgs(2, arguments)
-
   const date = toDate(dirtyDate)
   const baseDate = toDate(dirtyBaseDate)
 

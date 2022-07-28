@@ -1,5 +1,3 @@
-import requiredArgs from '../_lib/requiredArgs/index'
-
 type Locale = Intl.ResolvedDateTimeFormatOptions['locale']
 type FormatOptions = Intl.DateTimeFormatOptions
 type LocaleOptions = { locale: Locale | Locale[] }
@@ -54,7 +52,6 @@ export default function intlFormat<DateType extends Date>(
  * @param {Object} [localeOptions] - an object with locale.
  * @param {String|String[]} [localeOptions.locale] - the locale code
  * @returns {String} the formatted date string.
- * @throws {TypeError} 1 argument required.
  * @throws {RangeError} `date` must not be Invalid Date
  *
  * @example
@@ -99,8 +96,6 @@ export default function intlFormat<DateType extends Date>(
   formatOrLocale?: FormatOptions | LocaleOptions,
   localeOptions?: LocaleOptions
 ): string {
-  requiredArgs(1, arguments)
-
   let formatOptions: FormatOptions | undefined
 
   if (isFormatOptions(formatOrLocale)) {

@@ -2,7 +2,6 @@ import addQuarters from '../addQuarters/index'
 import startOfQuarter from '../startOfQuarter/index'
 import toDate from '../toDate/index'
 import type { Interval } from '../types'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name eachQuarterOfInterval
@@ -14,7 +13,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Interval} interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
  * @returns {Date[]} the array with starts of quarters from the quarter of the interval start to the quarter of the interval end
- * @throws {TypeError} 1 argument required
  * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *
@@ -33,8 +31,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function eachQuarterOfInterval<DateType extends Date>(
   dirtyInterval: Interval<DateType>
 ): DateType[] {
-  requiredArgs(1, arguments)
-
   const interval = dirtyInterval || {}
   const startDate = toDate(interval.start)
   const endDate = toDate(interval.end)

@@ -1,5 +1,4 @@
 import isSameYear from '../isSameYear/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isThisYear
@@ -15,7 +14,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Date|Number} date - the date to check
  * @returns {Boolean} the date is in this year
- * @throws {TypeError} 1 argument required
  *
  * @example
  * // If today is 25 September 2014, is 2 July 2014 in this year?
@@ -25,7 +23,5 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function isThisYear<DateType extends Date>(
   dirtyDate: DateType | number
 ): boolean {
-  requiredArgs(1, arguments)
-
   return isSameYear(dirtyDate, Date.now())
 }

@@ -61,11 +61,4 @@ describe('differenceInMilliseconds', () => {
     const result = differenceInMilliseconds(new Date(NaN), new Date(NaN))
     assert(isNaN(result))
   })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(differenceInMilliseconds.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(differenceInMilliseconds.bind(null, 1), TypeError)
-  })
 })

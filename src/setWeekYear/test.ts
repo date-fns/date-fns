@@ -105,11 +105,4 @@ describe('setWeekYear', () => {
       })
     assert.throws(block, RangeError)
   })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(setWeekYear.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(setWeekYear.bind(null, 1), TypeError)
-  })
 })

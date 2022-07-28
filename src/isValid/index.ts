@@ -1,6 +1,5 @@
 import isDate from '../isDate/index'
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isValid
@@ -16,7 +15,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {*} date - the date to check
  * @returns {Boolean} the date is valid
- * @throws {TypeError} 1 argument required
  *
  * @example
  * // For the valid date:
@@ -34,8 +32,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> false
  */
 export default function isValid(dirtyDate: unknown): boolean {
-  requiredArgs(1, arguments)
-
   if (!isDate(dirtyDate) && typeof dirtyDate !== 'number') {
     return false
   }

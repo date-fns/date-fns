@@ -2,7 +2,6 @@ import addMinutes from '../addMinutes/index'
 import startOfMinute from '../startOfMinute/index'
 import toDate from '../toDate/index'
 import type { Interval, StepOptions } from '../types'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * The {@link eachMinuteOfInterval} function options.
@@ -20,7 +19,6 @@ export interface EachMinuteOfIntervalOptions extends StepOptions {}
  * @param {Interval} interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
  * @param {Object} [options] - an object with options.
  * @param {Number} [options.step=1] - the step to increment by. The step must be equal to or greater than 1
- * @throws {TypeError} 1 argument required
  * @returns {Date[]} the array with starts of minutes from the minute of the interval start to the minute of the interval end
  * @throws {RangeError} `options.step` must be a number equal to or greater than 1
  * @throws {RangeError} The start of an interval cannot be after its end
@@ -43,8 +41,6 @@ export default function eachMinuteOfInterval<DateType extends Date>(
   interval: Interval<DateType>,
   options?: EachMinuteOfIntervalOptions
 ): DateType[] {
-  requiredArgs(1, arguments)
-
   const startDate = startOfMinute(toDate(interval.start))
   const endDate = toDate(interval.end)
 

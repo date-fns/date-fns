@@ -1,7 +1,6 @@
 import getISOWeekYear from '../getISOWeekYear/index'
 import startOfISOWeek from '../startOfISOWeek/index'
 import constructFrom from '../constructFrom/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name endOfISOWeekYear
@@ -17,7 +16,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Date|Number} date - the original date
  * @returns {Date} the end of an ISO week-numbering year
- * @throws {TypeError} 1 argument required
  *
  * @example
  * // The end of an ISO week-numbering year for 2 July 2005:
@@ -27,8 +25,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function endOfISOWeekYear<DateType extends Date>(
   dirtyDate: DateType | number
 ): DateType {
-  requiredArgs(1, arguments)
-
   const year = getISOWeekYear(dirtyDate)
   const fourthOfJanuaryOfNextYear = constructFrom(dirtyDate, 0)
   fourthOfJanuaryOfNextYear.setFullYear(year + 1, 0, 4)

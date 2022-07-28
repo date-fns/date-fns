@@ -3,7 +3,6 @@ import isSaturday from '../isSaturday/index'
 import isSunday from '../isSunday/index'
 import isWeekend from '../isWeekend/index'
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
 
 /**
@@ -17,7 +16,6 @@ import toInteger from '../_lib/toInteger/index'
  * @param {Date|Number} date - the date to be changed
  * @param {Number} amount - the amount of business days to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  * @returns {Date} the new date with the business days added
- * @throws {TypeError} 2 arguments required
  *
  * @example
  * // Add 10 business days to 1 September 2014:
@@ -28,8 +26,6 @@ export default function addBusinessDays<DateType extends Date>(
   dirtyDate: DateType | number,
   dirtyAmount: number
 ): DateType {
-  requiredArgs(2, arguments)
-
   const date = toDate(dirtyDate)
   const startedOnWeekend = isWeekend(date)
   const amount = toInteger(dirtyAmount)

@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isFirstDayOfMonth
@@ -11,7 +10,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Date|Number} date - the date to check
  * @returns {Boolean} the date is the first day of a month
- * @throws {TypeError} 1 argument required
  *
  * @example
  * // Is 1 September 2014 the first day of a month?
@@ -21,7 +19,5 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function isFirstDayOfMonth<DateType extends Date>(
   dirtyDate: DateType | number
 ): boolean {
-  requiredArgs(1, arguments)
-
   return toDate(dirtyDate).getDate() === 1
 }

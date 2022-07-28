@@ -1,5 +1,4 @@
 import addDays from '../addDays/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
 
 /**
@@ -13,7 +12,6 @@ import toInteger from '../_lib/toInteger/index'
  * @param {Date|Number} date - the date to be changed
  * @param {Number} amount - the amount of weeks to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  * @returns {Date} the new date with the weeks added
- * @throws {TypeError} 2 arguments required
  *
  * @example
  * // Add 4 weeks to 1 September 2014:
@@ -24,8 +22,6 @@ export default function addWeeks<DateType extends Date>(
   dirtyDate: DateType | number,
   dirtyAmount: number
 ): DateType {
-  requiredArgs(2, arguments)
-
   const amount = toInteger(dirtyAmount)
   const days = amount * 7
   return addDays(dirtyDate, days)

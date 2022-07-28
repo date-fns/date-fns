@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isSaturday
@@ -11,7 +10,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Date|Number} date - the date to check
  * @returns {Boolean} the date is Saturday
- * @throws {TypeError} 1 argument required
  *
  * @example
  * // Is 27 September 2014 Saturday?
@@ -21,7 +19,5 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function isSaturday<DateType extends Date>(
   dirtyDate: DateType | number
 ): boolean {
-  requiredArgs(1, arguments)
-
   return toDate(dirtyDate).getDay() === 6
 }

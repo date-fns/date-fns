@@ -18,11 +18,6 @@ describe('eachWeekendOfMonth', () => {
     ])
   })
 
-  it('throws TypeError exception when passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(eachWeekendOfMonth.bind(null), TypeError)
-  })
-
   it('throws RangeError when the expected year is NaN', () => {
     assert.throws(
       eachWeekendOfMonth.bind(

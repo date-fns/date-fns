@@ -1,7 +1,6 @@
 import differenceInCalendarDays from '../differenceInCalendarDays/index'
 import startOfYear from '../startOfYear/index'
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name getDayOfYear
@@ -13,7 +12,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Date|Number} date - the given date
  * @returns {Number} the day of year
- * @throws {TypeError} 1 argument required
  *
  * @example
  * // Which day of the year is 2 July 2014?
@@ -23,8 +21,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function getDayOfYear<DateType extends Date>(
   dirtyDate: DateType | number
 ): number {
-  requiredArgs(1, arguments)
-
   const date = toDate(dirtyDate)
   const diff = differenceInCalendarDays(date, startOfYear(date))
   const dayOfYear = diff + 1

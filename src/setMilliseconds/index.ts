@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
 
 /**
@@ -13,7 +12,6 @@ import toInteger from '../_lib/toInteger/index'
  * @param {Date|Number} date - the date to be changed
  * @param {Number} milliseconds - the milliseconds of the new date
  * @returns {Date} the new date with the milliseconds set
- * @throws {TypeError} 2 arguments required
  *
  * @example
  * // Set 300 milliseconds to 1 September 2014 11:30:40.500:
@@ -24,8 +22,6 @@ export default function setMilliseconds<DateType extends Date>(
   dirtyDate: DateType | number,
   dirtyMilliseconds: number
 ): DateType {
-  requiredArgs(2, arguments)
-
   const date = toDate(dirtyDate)
   const milliseconds = toInteger(dirtyMilliseconds)
   date.setMilliseconds(milliseconds)

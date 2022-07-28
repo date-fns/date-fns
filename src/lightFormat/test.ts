@@ -158,11 +158,4 @@ describe('lightFormat', () => {
   it('throws RangeError exception if the format string contains an unescaped latin alphabet character', () => {
     assert.throws(lightFormat.bind(null, date, 'yyyy-MM-dd-nnnn'), RangeError)
   })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(lightFormat.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(lightFormat.bind(null, 1), TypeError)
-  })
 })
