@@ -8,9 +8,9 @@ import { millisecondsInHour } from '../constants/index'
  * @description
  * Convert a number of milliseconds to a full number of hours.
  *
- * @param {number} milliseconds - number of milliseconds to be converted
+ * @param milliseconds - number of milliseconds to be converted
  *
- * @returns {number} the number of milliseconds converted in hours
+ * @returns the number of milliseconds converted in hours
  *
  * @example
  * // Convert 7200000 milliseconds to hours:

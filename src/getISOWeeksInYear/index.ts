@@ -12,8 +12,8 @@ import startOfISOWeekYear from '../startOfISOWeekYear/index'
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @param {Date|Number} date - the given date
- * @returns {Number} the number of ISO weeks in a year
+ * @param date - the given date
+ * @returns the number of ISO weeks in a year
  *
  * @example
  * // How many weeks are in ISO week-numbering year 2015?

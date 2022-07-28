@@ -17,7 +17,7 @@ import {
  *
  * You can change these with [setDefaultOptions]{@link https://date-fns.org/docs/setDefaultOptions}.
  *
- * @returns {Object} default options
+ * @returns default options
  *
  * @example
  * const result = getDefaultOptions()

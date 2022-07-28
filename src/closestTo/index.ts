@@ -9,9 +9,9 @@ import toDate from '../toDate/index'
  * @description
  * Return a date from the array closest to the given date.
  *
- * @param {Date | Number} dateToCompare - the date to compare with
- * @param {Array<Date> | Array<number>} datesArray - the array to search
- * @returns {Date | undefined} the date from the array closest to the given date or undefined if no valid value is given
+ * @param dateToCompare - the date to compare with
+ * @param datesArray - the array to search
+ * @returns the date from the array closest to the given date or undefined if no valid value is given
  *
  * @example
  * // Which date is closer to 6 September 2015: 1 January 2000 or 1 January 2030?

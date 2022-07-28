@@ -13,8 +13,8 @@ import toDate from '../toDate/index'
  *
  * Time value of Date: http://es5.github.io/#x15.9.1.1
  *
- * @param {*} date - the date to check
- * @returns {Boolean} the date is valid
+ * @param date - the date to check
+ * @returns the date is valid
  *
  * @example
  * // For the valid date:

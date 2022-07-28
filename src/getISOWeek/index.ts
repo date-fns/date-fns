@@ -13,8 +13,8 @@ import toDate from '../toDate/index'
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @param {Date|Number} date - the given date
- * @returns {Number} the ISO week
+ * @param date - the given date
+ * @returns the ISO week
  *
  * @example
  * // Which week of the ISO-week numbering year is 2 January 2005?

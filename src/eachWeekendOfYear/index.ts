@@ -10,8 +10,8 @@ import startOfYear from '../startOfYear/index'
  * @description
  * Get all the Saturdays and Sundays in the year.
  *
- * @param {Date|Number} date - the given year
- * @returns {Date[]} an array containing all the Saturdays and Sundays
+ * @param date - the given year
+ * @returns an array containing all the Saturdays and Sundays
  * @throws {RangeError} The passed date is invalid
  *
  * @example

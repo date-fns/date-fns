@@ -10,8 +10,8 @@ import constructFrom from '../constructFrom/index'
  * Return the start of a year for the given date.
  * The result will be in the local timezone.
  *
- * @param {Date|Number} date - the original date
- * @returns {Date} the start of a year
+ * @param date - the original date
+ * @returns the start of a year
  *
  * @example
  * // The start of a year for 2 September 2014 11:55:00:

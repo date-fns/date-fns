@@ -10,9 +10,9 @@ import type { Day } from '../types'
  * @description
  * When is the next day of the week? 0-6 the day of the week, 0 represents Sunday.
  *
- * @param {Date | number} date - the date to check
- * @param {Day} day - day of the week
- * @returns {Date} - the date is the next day of week
+ * @param date - the date to check
+ * @param day - day of the week
+ * @returns - the date is the next day of week
  *
  * @example
  * // When is the next Monday after Mar, 20, 2020?

@@ -8,9 +8,9 @@ import toDate from '../toDate/index'
  * @description
  * Is the first date after the second one?
  *
- * @param {Date|Number} date - the date that should be after the other one to return true
- * @param {Date|Number} dateToCompare - the date to compare with
- * @returns {Boolean} the first date is after the second date
+ * @param date - the date that should be after the other one to return true
+ * @param dateToCompare - the date to compare with
+ * @returns the first date is after the second date
  *
  * @example
  * // Is 10 July 1989 after 11 February 1987?

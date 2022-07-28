@@ -33,12 +33,10 @@ export interface FormatRelativeOptions
  * | Next 6 days               | Sunday at 04:30 AM        |
  * | Other                     | 12/31/2017                |
  *
- * @param {Date|Number} date - the date to format
- * @param {Date|Number} baseDate - the date to compare with
- * @param {Object} [options] - an object with options.
- * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
- * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
- * @returns {String} the date in words
+ * @param date - the date to format
+ * @param baseDate - the date to compare with
+ * @param options - an object with options.
+ * @returns the date in words
  * @throws {RangeError} `date` must not be Invalid Date
  * @throws {RangeError} `baseDate` must not be Invalid Date
  * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6

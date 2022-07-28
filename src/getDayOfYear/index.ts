@@ -10,8 +10,8 @@ import toDate from '../toDate/index'
  * @description
  * Get the day of the year of the given date.
  *
- * @param {Date|Number} date - the given date
- * @returns {Number} the day of year
+ * @param date - the given date
+ * @returns the day of year
  *
  * @example
  * // Which day of the year is 2 July 2014?

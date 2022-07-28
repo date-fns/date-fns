@@ -9,8 +9,8 @@ import toDate from '../toDate/index'
  * Return the start of a minute for the given date.
  * The result will be in the local timezone.
  *
- * @param {Date|Number} date - the original date
- * @returns {Date} the start of a minute
+ * @param date - the original date
+ * @returns the start of a minute
  *
  * @example
  * // The start of a minute for 1 December 2014 22:15:45.400:

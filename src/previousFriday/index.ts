@@ -8,8 +8,8 @@ import previousDay from '../previousDay/index'
  * @description
  * When is the previous Friday?
  *
- * @param {Date | number} date - the date to start counting from
- * @returns {Date} the previous Friday
+ * @param date - the date to start counting from
+ * @returns the previous Friday
  *
  * @example
  * // When is the previous Friday before Jun, 19, 2021?

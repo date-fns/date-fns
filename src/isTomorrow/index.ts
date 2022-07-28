@@ -13,8 +13,8 @@ import isSameDay from '../isSameDay/index'
  * > ⚠️ Please note that this function is not present in the FP submodule as
  * > it uses `Date.now()` internally hence impure and can't be safely curried.
  *
- * @param {Date|Number} date - the date to check
- * @returns {Boolean} the date is tomorrow
+ * @param date - the date to check
+ * @returns the date is tomorrow
  *
  * @example
  * // If today is 6 October 2014, is 7 October 14:00:00 tomorrow?

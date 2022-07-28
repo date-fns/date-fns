@@ -11,8 +11,8 @@ import type { Interval } from '../types'
  * @description
  * Return the array of quarters within the specified time interval.
  *
- * @param {Interval} interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
- * @returns {Date[]} the array with starts of quarters from the quarter of the interval start to the quarter of the interval end
+ * @param interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
+ * @returns the array with starts of quarters from the quarter of the interval start to the quarter of the interval end
  * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *

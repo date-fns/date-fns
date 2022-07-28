@@ -8,8 +8,8 @@ import toDate from '../toDate/index'
  * @description
  * Is the given date Friday?
  *
- * @param {Date|Number} date - the date to check
- * @returns {Boolean} the date is Friday
+ * @param date - the date to check
+ * @returns the date is Friday
  *
  * @example
  * // Is 26 September 2014 Friday?

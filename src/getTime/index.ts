@@ -8,8 +8,8 @@ import toDate from '../toDate/index'
  * @description
  * Get the milliseconds timestamp of the given date.
  *
- * @param {Date|Number} date - the given date
- * @returns {Number} the timestamp
+ * @param date - the given date
+ * @returns the timestamp
  *
  * @example
  * // Get the timestamp of 29 February 2012 11:45:05.123:

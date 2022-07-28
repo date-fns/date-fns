@@ -30,8 +30,8 @@ import toDate from '../toDate/index'
  *
  * Any other input type or invalid date strings will return an `Invalid Date`.
  *
- * @param {String|Number|Date} argument A fully formed ISO8601 date string to convert
- * @returns {Date} the parsed date in the local time zone
+ * @param argument A fully formed ISO8601 date string to convert
+ * @returns the parsed date in the local time zone
  */
 export default function parseJSON(argument: string): Date {
   if (typeof argument === 'string') {

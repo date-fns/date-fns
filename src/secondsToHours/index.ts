@@ -8,9 +8,9 @@ import { secondsInHour } from '../constants/index'
  * @description
  * Convert a number of seconds to a full number of hours.
  *
- * @param {number} seconds - number of seconds to be converted
+ * @param seconds - number of seconds to be converted
  *
- * @returns {number} the number of seconds converted in hours
+ * @returns the number of seconds converted in hours
  *
  * @example
  * // Convert 7200 seconds into hours

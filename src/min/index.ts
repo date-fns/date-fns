@@ -8,8 +8,8 @@ import toDate from '../toDate/index'
  * @description
  * Returns the earliest of the given dates.
  *
- * @param {Date[]|Number[]} datesArray - the dates to compare
- * @returns {Date} - the earliest of the dates
+ * @param datesArray - the dates to compare
+ * @returns - the earliest of the dates
  *
  * @example
  * // Which of these dates is the earliest?

@@ -12,8 +12,8 @@ import isSameSecond from '../isSameSecond/index'
  * > ⚠️ Please note that this function is not present in the FP submodule as
  * > it uses `Date.now()` internally hence impure and can't be safely curried.
  *
- * @param {Date|Number} date - the date to check
- * @returns {Boolean} the date is in this second
+ * @param date - the date to check
+ * @returns the date is in this second
  *
  * @example
  * // If now is 25 September 2014 18:30:15.500,

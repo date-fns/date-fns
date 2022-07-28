@@ -9,8 +9,8 @@ import constructFrom from '../constructFrom/index'
  * @description
  * Get the number of days in a month of the given date.
  *
- * @param {Date|Number} date - the given date
- * @returns {Number} the number of days in a month
+ * @param date - the given date
+ * @returns the number of days in a month
  *
  * @example
  * // How many days are in February 2000?

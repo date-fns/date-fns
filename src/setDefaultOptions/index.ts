@@ -15,10 +15,10 @@ import {
  * `options.locale`, `options.weekStartsOn` and `options.firstWeekContainsDate`
  * arguments for all functions.
  *
- * @param {Object} newOptions - an object with options.
- * @param {Locale} [newOptions.locale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
- * @param {0|1|2|3|4|5|6} [newOptions.weekStartsOn] - the index of the first day of the week (0 - Sunday)
- * @param {1|2|3|4|5|6|7} [newOptions.firstWeekContainsDate] - the day of January, which is always in the first week of the year
+ * @param newOptions - an object with options.
+ * @param newOptions.locale - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
+ * @param newOptions.weekStartsOn - the index of the first day of the week (0 - Sunday)
+ * @param newOptions.firstWeekContainsDate - the day of January, which is always in the first week of the year
  *
  * @example
  * // Set global locale:

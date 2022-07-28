@@ -16,9 +16,9 @@ import type { Duration, Interval } from '../types'
  * @description
  * Convert a interval object to a duration object.
  *
- * @param {Interval} interval - the interval to convert to duration
+ * @param interval - the interval to convert to duration
  *
- * @returns {Duration} The duration Object
+ * @returns The duration Object
  * @throws {RangeError} `start` must not be Invalid Date
  * @throws {RangeError} `end` must not be Invalid Date
  * @throws {RangeError} The start of an interval cannot be after its end

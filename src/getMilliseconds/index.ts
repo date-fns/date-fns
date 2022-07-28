@@ -8,8 +8,8 @@ import toDate from '../toDate/index'
  * @description
  * Get the milliseconds of the given date.
  *
- * @param {Date|Number} date - the given date
- * @returns {Number} the milliseconds
+ * @param date - the given date
+ * @returns the milliseconds
  *
  * @example
  * // Get the milliseconds of 29 February 2012 11:45:05.123:

@@ -8,9 +8,9 @@ import toDate from '../toDate/index'
  * @description
  * Are the given dates in the same year?
  *
- * @param {Date|Number} dateLeft - the first date to check
- * @param {Date|Number} dateRight - the second date to check
- * @returns {Boolean} the dates are in the same year
+ * @param dateLeft - the first date to check
+ * @param dateRight - the second date to check
+ * @returns the dates are in the same year
  *
  * @example
  * // Are 2 September 2014 and 25 September 2014 in the same year?

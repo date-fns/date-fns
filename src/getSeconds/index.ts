@@ -8,8 +8,8 @@ import toDate from '../toDate/index'
  * @description
  * Get the seconds of the given date.
  *
- * @param {Date|Number} date - the given date
- * @returns {Number} the seconds
+ * @param date - the given date
+ * @returns the seconds
  *
  * @example
  * // Get the seconds of 29 February 2012 11:45:05.123:

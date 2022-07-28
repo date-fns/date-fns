@@ -8,8 +8,8 @@ import toDate from '../toDate/index'
  * @description
  * Get the hours of the given date.
  *
- * @param {Date|Number} date - the given date
- * @returns {Number} the hours
+ * @param date - the given date
+ * @returns the hours
  *
  * @example
  * // Get the hours of 29 February 2012 11:45:00:

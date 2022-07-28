@@ -8,10 +8,8 @@ import toDate from '../toDate/index'
  * @description
  * Return the end of a decade for the given date.
  *
- * @param {Date|Number} date - the original date
- * @returns {Date} the end of a decade
- * @param {Object} [options] - an object with options.
- * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
+ * @param date - the original date
+ * @returns the end of a decade
  * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example

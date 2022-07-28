@@ -8,8 +8,8 @@ import toDate from '../toDate/index'
  * @description
  * Get the month of the given date.
  *
- * @param {Date|Number} date - the given date
- * @returns {Number} the month
+ * @param date - the given date
+ * @returns the month
  *
  * @example
  * // Which month is 29 February 2012?

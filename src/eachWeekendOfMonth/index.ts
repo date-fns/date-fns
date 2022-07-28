@@ -10,8 +10,8 @@ import startOfMonth from '../startOfMonth/index'
  * @description
  * Get all the Saturdays and Sundays in the given month.
  *
- * @param {Date|Number} date - the given month
- * @returns {Date[]} an array containing all the Saturdays and Sundays
+ * @param date - the given month
+ * @returns an array containing all the Saturdays and Sundays
  * @throws {RangeError} The passed date is invalid
  *
  * @example

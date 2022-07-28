@@ -8,9 +8,9 @@ import startOfQuarter from '../startOfQuarter/index'
  * @description
  * Are the given dates in the same quarter (and year)?
  *
- * @param {Date|Number} dateLeft - the first date to check
- * @param {Date|Number} dateRight - the second date to check
- * @returns {Boolean} the dates are in the same quarter (and year)
+ * @param dateLeft - the first date to check
+ * @param dateRight - the second date to check
+ * @returns the dates are in the same quarter (and year)
  *
  * @example
  * // Are 1 January 2014 and 8 March 2014 in the same quarter?

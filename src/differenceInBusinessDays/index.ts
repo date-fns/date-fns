@@ -17,9 +17,9 @@ import toInteger from '../_lib/toInteger/index'
  * Like `differenceInCalendarDays`, the function removes the times from
  * the dates before calculating the difference.
  *
- * @param {Date|Number} dateLeft - the later date
- * @param {Date|Number} dateRight - the earlier date
- * @returns {Number} the number of business days
+ * @param dateLeft - the later date
+ * @param dateRight - the earlier date
+ * @returns the number of business days
  *
  * @example
  * // How many business days are between

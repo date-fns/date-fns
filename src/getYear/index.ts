@@ -8,8 +8,8 @@ import toDate from '../toDate/index'
  * @description
  * Get the year of the given date.
  *
- * @param {Date|Number} date - the given date
- * @returns {Number} the year
+ * @param date - the given date
+ * @returns the year
  *
  * @example
  * // Which year is 2 July 2014?

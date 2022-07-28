@@ -6,8 +6,8 @@
  * @description
  * Returns true if the given value is an instance of Date. The function works for dates transferred across iframes.
  *
- * @param {*} value - the value to check
- * @returns {boolean} true if the given value is a date
+ * @param value - the value to check
+ * @returns true if the given value is a date
  *
  * @example
  * // For a valid date:
