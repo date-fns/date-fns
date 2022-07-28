@@ -55,11 +55,7 @@ export class LocalWeekYearParser extends Parser<YearParserValue> {
         value.year,
         currentYear
       )
-      date.setUTCFullYear(
-        normalizedTwoDigitYear,
-        0,
-        options.firstWeekContainsDate
-      )
+      date.setFullYear(normalizedTwoDigitYear, 0, options.firstWeekContainsDate)
       date.setHours(0, 0, 0, 0)
       return startOfWeek(date, options)
     }

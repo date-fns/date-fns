@@ -2,7 +2,7 @@ import type { FormatRelativeFn } from '../../../types'
 
 const formatRelativeLocale = {
   lastWeek: (date: Date) => {
-    switch (date.getUTCDay()) {
+    switch (date.getDay()) {
       case 6: //Σάββατο
         return "'το προηγούμενο' eeee 'στις' p"
       default:

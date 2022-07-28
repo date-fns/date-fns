@@ -24,9 +24,9 @@ export class DateParser extends Parser<number> {
   }
 
   validate<DateType extends Date>(date: DateType, value: number): boolean {
-    const year = date.getUTCFullYear()
+    const year = date.getFullYear()
     const isLeapYear = isLeapYearIndex(year)
-    const month = date.getUTCMonth()
+    const month = date.getMonth()
     if (isLeapYear) {
       return value >= 1 && value <= DAYS_IN_MONTH_LEAP_YEAR[month]
     } else {

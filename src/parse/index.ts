@@ -1,9 +1,7 @@
-import { UTCDateMini } from '@date-fns/utc/date/mini'
 import constructFrom from '../constructFrom/index'
 import getDefaultOptions from '../getDefaultOptions/index'
 import defaultLocale from '../locale/en-US/index'
 import toDate from '../toDate/index'
-import transpose from '../transpose/index'
 import type {
   AdditionalTokensOptions,
   FirstWeekContainsDateOptions,
@@ -497,33 +495,30 @@ export default function parse<DateType extends Date>(
     )
     .map((setterArray) => setterArray[0])
 
-  const date = toDate(dirtyReferenceDate)
+  let date = toDate(dirtyReferenceDate)
 
   if (isNaN(date.getTime())) {
     return constructFrom(dirtyReferenceDate, NaN)
   }
 
-  // Transpose the date in system timezone to the same date in UTC.
-  let utcDate = transpose(date, UTCDateMini)
-
   const flags: ParseFlags = {}
   for (const setter of uniquePrioritySetters) {
-    if (!setter.validate(utcDate, subFnOptions)) {
+    if (!setter.validate(date, subFnOptions)) {
       return constructFrom(dirtyReferenceDate, NaN)
     }
 
-    const result = setter.set(utcDate, flags, subFnOptions)
+    const result = setter.set(date, flags, subFnOptions)
     // Result is tuple (date, flags)
     if (Array.isArray(result)) {
-      utcDate = result[0]
+      date = result[0]
       assign(flags, result[1])
       // Result is date
     } else {
-      utcDate = result
+      date = result
     }
   }
 
-  return constructFrom(dirtyReferenceDate, utcDate)
+  return constructFrom(dirtyReferenceDate, date)
 }
 
 function cleanEscapedString(input: string) {
