@@ -1,7 +1,7 @@
 import constructFrom from '../constructFrom/index'
 import toDate from '../toDate/index'
 import type { RoundingOptions } from '../types'
-import { getRoundingMethod } from '../_lib/roundingMethods'
+import { getRoundingMethod } from '../_lib/roundingMethods/index'
 
 /**
  * The {@link roundToNearestMinutes} function options.
