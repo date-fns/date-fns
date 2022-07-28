@@ -2,7 +2,6 @@ import constructFrom from '../constructFrom/index'
 import setMonth from '../setMonth/index'
 import toDate from '../toDate/index'
 import type { DateValues } from '../types'
-import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
 
 /**
@@ -30,7 +29,6 @@ import toInteger from '../_lib/toInteger/index'
  * @param {Number} [values.seconds] - the number of seconds to be set
  * @param {Number} [values.milliseconds] - the number of milliseconds to be set
  * @returns {Date} the new date with options set
- * @throws {TypeError} 2 arguments required
  * @throws {RangeError} `values` must be an object
  *
  * @example
@@ -48,8 +46,6 @@ export default function set<DateType extends Date>(
   dirtyDate: DateType | number,
   values: DateValues
 ): DateType {
-  requiredArgs(2, arguments)
-
   if (typeof values !== 'object' || values === null) {
     throw new RangeError('values parameter must be an object')
   }

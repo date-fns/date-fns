@@ -81,13 +81,6 @@ describe('addBusinessDays', () => {
     assert(result instanceof Date && isNaN(result.getTime()))
   })
 
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(addBusinessDays.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(addBusinessDays.bind(null, 1), TypeError)
-  })
-
   it('starting from a weekend day should land on a weekday when reducing a divisible by 5', () => {
     const substractResult = addBusinessDays(new Date(2019, 7, 18), -5)
     assert.deepStrictEqual(substractResult, new Date(2019, 7, 12))

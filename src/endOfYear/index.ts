@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name endOfYear
@@ -12,7 +11,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Date|Number} date - the original date
  * @returns {Date} the end of a year
- * @throws {TypeError} 1 argument required
  *
  * @example
  * // The end of a year for 2 September 2014 11:55:00:
@@ -22,8 +20,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function endOfYear<DateType extends Date>(
   dirtyDate: DateType | number
 ): DateType {
-  requiredArgs(1, arguments)
-
   const date = toDate(dirtyDate)
   const year = date.getFullYear()
   date.setFullYear(year + 1, 0, 0)

@@ -7,7 +7,6 @@ import type {
   LocaleOptions,
   WeekStartOptions,
 } from '../types'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * The {@link getWeek} function options.
@@ -37,7 +36,6 @@ export interface GetWeekOptions
  * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
  * @param {1|2|3|4|5|6|7} [options.firstWeekContainsDate=1] - the day of January, which is always in the first week of the year
  * @returns {Number} the week
- * @throws {TypeError} 1 argument required
  * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
  * @throws {RangeError} `options.firstWeekContainsDate` must be between 1 and 7
  *
@@ -60,8 +58,6 @@ export default function getWeek<DateType extends Date>(
   dirtyDate: DateType | number,
   options?: GetWeekOptions
 ): number {
-  requiredArgs(1, arguments)
-
   const date = toDate(dirtyDate)
   const diff =
     startOfWeek(date, options).getTime() -

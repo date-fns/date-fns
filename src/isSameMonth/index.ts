@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isSameMonth
@@ -12,7 +11,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @param {Date|Number} dateLeft - the first date to check
  * @param {Date|Number} dateRight - the second date to check
  * @returns {Boolean} the dates are in the same month (and year)
- * @throws {TypeError} 2 arguments required
  *
  * @example
  * // Are 2 September 2014 and 25 September 2014 in the same month?
@@ -28,8 +26,6 @@ export default function isSameMonth<DateType extends Date>(
   dirtyDateLeft: DateType | number,
   dirtyDateRight: DateType | number
 ): boolean {
-  requiredArgs(2, arguments)
-
   const dateLeft = toDate(dirtyDateLeft)
   const dateRight = toDate(dirtyDateRight)
   return (

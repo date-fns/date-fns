@@ -1,6 +1,5 @@
 import constructFrom from '../constructFrom/index'
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name closestTo
@@ -13,7 +12,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @param {Date | Number} dateToCompare - the date to compare with
  * @param {Array<Date> | Array<number>} datesArray - the array to search
  * @returns {Date | undefined} the date from the array closest to the given date or undefined if no valid value is given
- * @throws {TypeError} 2 arguments required
  *
  * @example
  * // Which date is closer to 6 September 2015: 1 January 2000 or 1 January 2030?
@@ -28,8 +26,6 @@ export default function closestTo<DateType extends Date>(
   dirtyDateToCompare: DateType | number,
   dirtyDatesArray: Array<DateType | number>
 ): DateType | undefined {
-  requiredArgs(2, arguments)
-
   const dateToCompare = toDate(dirtyDateToCompare)
 
   if (isNaN(Number(dateToCompare)))

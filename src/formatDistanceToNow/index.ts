@@ -1,5 +1,4 @@
 import distanceInWords, { FormatDistanceOptions } from '../formatDistance/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * The {@link formatDistanceToNow} function options.
@@ -53,7 +52,6 @@ export interface FormatDistanceToNowOptions extends FormatDistanceOptions {}
  * @param {Boolean} [options.addSuffix=false] - result specifies if now is earlier or later than the passed date
  * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
  * @returns {String} the distance in words
- * @throws {TypeError} 1 argument required
  * @throws {RangeError} `date` must not be Invalid Date
  * @throws {RangeError} `options.locale` must contain `formatDistance` property
  *
@@ -96,7 +94,5 @@ export default function formatDistanceToNow<DateType extends Date>(
   dirtyDate: DateType | number,
   options?: FormatDistanceToNowOptions
 ): string {
-  requiredArgs(1, arguments)
-
   return distanceInWords(dirtyDate, Date.now(), options)
 }

@@ -1,7 +1,6 @@
 import constructFrom from '../constructFrom/index'
 import getDaysInMonth from '../getDaysInMonth/index'
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
 
 /**
@@ -15,7 +14,6 @@ import toInteger from '../_lib/toInteger/index'
  * @param {Date|Number} date - the date to be changed
  * @param {Number} month - the month of the new date
  * @returns {Date} the new date with the month set
- * @throws {TypeError} 2 arguments required
  *
  * @example
  * // Set February to 1 September 2014:
@@ -26,8 +24,6 @@ export default function setMonth<DateType extends Date>(
   dirtyDate: DateType | number,
   dirtyMonth: number
 ): DateType {
-  requiredArgs(2, arguments)
-
   const date = toDate(dirtyDate)
   const month = toInteger(dirtyMonth)
   const year = date.getFullYear()

@@ -1,6 +1,5 @@
 import getISOWeekYear from '../getISOWeekYear/index'
 import setISOWeekYear from '../setISOWeekYear/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
 
 /**
@@ -16,7 +15,6 @@ import toInteger from '../_lib/toInteger/index'
  * @param {Date|Number} date - the date to be changed
  * @param {Number} amount - the amount of ISO week-numbering years to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  * @returns {Date} the new date with the ISO week-numbering years added
- * @throws {TypeError} 2 arguments required
  *
  * @example
  * // Add 5 ISO week-numbering years to 2 July 2010:
@@ -27,8 +25,6 @@ export default function addISOWeekYears<DateType extends Date>(
   dirtyDate: DateType | number,
   dirtyAmount: number
 ): DateType {
-  requiredArgs(2, arguments)
-
   const amount = toInteger(dirtyAmount)
   return setISOWeekYear(dirtyDate, getISOWeekYear(dirtyDate) + amount)
 }

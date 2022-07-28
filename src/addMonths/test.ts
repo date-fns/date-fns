@@ -62,13 +62,6 @@ describe('addMonths', () => {
     assert(result instanceof Date && isNaN(result.getTime()))
   })
 
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(addMonths.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(addMonths.bind(null, 1), TypeError)
-  })
-
   const dstTransitions = getDstTransitions(2017)
   const dstOnly = dstTransitions.start && dstTransitions.end ? it : it.skip
   const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || process.env.tz

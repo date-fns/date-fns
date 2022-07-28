@@ -1,5 +1,3 @@
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name toDate
  * @category Common Helpers
@@ -18,7 +16,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Date|Number} argument - the value to convert
  * @returns {Date} the parsed date in the local time zone
- * @throws {TypeError} 1 argument required
  *
  * @example
  * // Clone the date:
@@ -33,8 +30,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function toDate<DateType extends Date = Date>(
   argument: DateType | number
 ): DateType {
-  requiredArgs(1, arguments)
-
   const argStr = Object.prototype.toString.call(argument)
 
   // Clone the date

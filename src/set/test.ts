@@ -124,11 +124,6 @@ describe('set', () => {
       assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */))
     })
 
-    it('throws TypeError exception if passed less than 2 arguments', () => {
-      // @ts-expect-error
-      assert.throws(set.bind(null), TypeError)
-    })
-
     it('returns Invalid Date if any value in values is NaN', () => {
       const result = set(new Date(2014, 8 /* Sep */), { year: NaN })
       assert(isNaN(result.getTime()))

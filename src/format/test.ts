@@ -816,13 +816,6 @@ describe('format', () => {
     assert.throws(format.bind(null, date, 'yyyy-MM-dd-nnnn'), RangeError)
   })
 
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(format.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(format.bind(null, 1), TypeError)
-  })
-
   describe('useAdditionalWeekYearTokens and useAdditionalDayOfYearTokens options', () => {
     it('throws an error if D token is used', () => {
       try {

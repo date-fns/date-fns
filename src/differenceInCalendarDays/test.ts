@@ -98,13 +98,6 @@ describe('differenceInCalendarDays', () => {
     assert(isNaN(result))
   })
 
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(differenceInCalendarDays.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(differenceInCalendarDays.bind(null, 1), TypeError)
-  })
-
   // These tests were copy-pasted almost unchanged from DST tests for
   // `differenceInDays`
   const dstTransitions = getDstTransitions(2017)

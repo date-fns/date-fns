@@ -1,7 +1,6 @@
 import { millisecondsInWeek } from '../constants/index'
 import startOfISOWeek from '../startOfISOWeek/index'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name differenceInCalendarISOWeeks
@@ -16,7 +15,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @param {Date|Number} dateLeft - the later date
  * @param {Date|Number} dateRight - the earlier date
  * @returns {Number} the number of calendar ISO weeks
- * @throws {TypeError} 2 arguments required
  *
  * @example
  * // How many calendar ISO weeks are between 6 July 2014 and 21 July 2014?
@@ -30,8 +28,6 @@ export default function differenceInCalendarISOWeeks<DateType extends Date>(
   dirtyDateLeft: DateType | number,
   dirtyDateRight: DateType | number
 ): number {
-  requiredArgs(2, arguments)
-
   const startOfISOWeekLeft = startOfISOWeek(dirtyDateLeft)
   const startOfISOWeekRight = startOfISOWeek(dirtyDateRight)
 

@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name startOfDay
@@ -12,7 +11,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Date|Number} date - the original date
  * @returns {Date} the start of a day
- * @throws {TypeError} 1 argument required
  *
  * @example
  * // The start of a day for 2 September 2014 11:55:00:
@@ -22,8 +20,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function startOfDay<DateType extends Date>(
   dirtyDate: DateType | number
 ): DateType {
-  requiredArgs(1, arguments)
-
   const date = toDate(dirtyDate)
   date.setHours(0, 0, 0, 0)
   return date

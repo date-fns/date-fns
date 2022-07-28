@@ -54,11 +54,4 @@ describe('setISOWeek', () => {
     const result = setISOWeek(new Date(2004, 7 /* Aug */, 7), NaN)
     assert(result instanceof Date && isNaN(result.getTime()))
   })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(setISOWeek.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(setISOWeek.bind(null, 1), TypeError)
-  })
 })

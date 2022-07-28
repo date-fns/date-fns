@@ -30,7 +30,6 @@ const months = [
  *
  * @param {Date|Number} date - the original date
  * @returns {String} the formatted date string
- * @throws {TypeError} 1 argument required
  * @throws {RangeError} `date` must not be Invalid Date
  *
  * @example
@@ -41,12 +40,6 @@ const months = [
 export default function formatRFC7231<DateType extends Date>(
   dirtyDate: DateType | number
 ): string {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      `1 arguments required, but only ${arguments.length} present`
-    )
-  }
-
   const originalDate = toDate(dirtyDate)
 
   if (!isValid(originalDate)) {

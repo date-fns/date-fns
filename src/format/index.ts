@@ -19,7 +19,6 @@ import {
   isProtectedWeekYearToken,
   throwProtectedError,
 } from '../_lib/protectedTokens/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
 
 // This RegExp consists of three parts separated by `|`:
@@ -313,7 +312,6 @@ export interface FormatOptions
  * @param {Boolean} [options.useAdditionalDayOfYearTokens=false] - if true, allows usage of the day of year tokens `D` and `DD`;
  *   see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
  * @returns {String} the formatted date string
- * @throws {TypeError} 2 arguments required
  * @throws {RangeError} `date` must not be Invalid Date
  * @throws {RangeError} `options.locale` must contain `localize` property
  * @throws {RangeError} `options.locale` must contain `formatLong` property
@@ -349,8 +347,6 @@ export default function format<DateType extends Date>(
   dirtyFormatStr: string,
   options?: FormatOptions
 ): string {
-  requiredArgs(2, arguments)
-
   const formatStr = String(dirtyFormatStr)
 
   const defaultOptions = getDefaultOptions()

@@ -9,7 +9,6 @@ import cloneObject from '../_lib/cloneObject/index'
 import defaultLocale from '../_lib/defaultLocale/index'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * The {@link formatDistance} function options.
@@ -63,7 +62,6 @@ export interface FormatDistanceOptions extends LocaleOptions {
  * @param {Boolean} [options.addSuffix=false] - result indicates if the second date is earlier or later than the first
  * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
  * @returns {String} the distance in words
- * @throws {TypeError} 2 arguments required
  * @throws {RangeError} `date` must not be Invalid Date
  * @throws {RangeError} `baseDate` must not be Invalid Date
  * @throws {RangeError} `options.locale` must contain `formatDistance` property
@@ -105,8 +103,6 @@ export default function formatDistance<DateType extends Date>(
   dirtyBaseDate: DateType | number,
   options?: FormatDistanceOptions
 ): string {
-  requiredArgs(2, arguments)
-
   const defaultOptions = getDefaultOptions()
   const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale
   const minutesInAlmostTwoDays = 2520

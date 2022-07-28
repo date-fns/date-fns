@@ -28,9 +28,4 @@ describe('isToday', () => {
     const result = isToday(new Date(2014, 8 /* Sep */, 25).getTime())
     assert(result === true)
   })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(isToday.bind(null), TypeError)
-  })
 })

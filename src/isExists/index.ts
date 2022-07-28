@@ -10,7 +10,6 @@
  * @param {Number} month of the date to check
  * @param {Number} day of the date to check
  * @returns {Boolean} the date exists
- * @throws {TypeError} 3 arguments required
  *
  * @example
  * // For the valid date:
@@ -27,12 +26,6 @@ export default function isExists(
   month: number,
   day: number
 ): boolean {
-  if (arguments.length < 3) {
-    throw new TypeError(
-      '3 argument required, but only ' + arguments.length + ' present'
-    )
-  }
-
   const date = new Date(year, month, day)
   return (
     date.getFullYear() === year &&

@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
 
 /**
@@ -13,7 +12,6 @@ import toInteger from '../_lib/toInteger/index'
  * @param {Date|Number} date - the date to be changed
  * @param {Number} dayOfYear - the day of the year of the new date
  * @returns {Date} the new date with the day of the year set
- * @throws {TypeError} 2 arguments required
  *
  * @example
  * // Set the 2nd day of the year to 2 July 2014:
@@ -24,8 +22,6 @@ export default function setDayOfYear<DateType extends Date>(
   dirtyDate: DateType | number,
   dirtyDayOfYear: number
 ): DateType {
-  requiredArgs(2, arguments)
-
   const date = toDate(dirtyDate)
   const dayOfYear = toInteger(dirtyDayOfYear)
   date.setMonth(0)

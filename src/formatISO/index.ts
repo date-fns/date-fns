@@ -1,7 +1,6 @@
 import toDate from '../toDate/index'
 import type { FormatOptions, RepresentationOptions } from '../types'
 import addLeadingZeros from '../_lib/addLeadingZeros/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * The {@link formatISO} function options.
@@ -23,7 +22,6 @@ export interface FormatISOOptions
  * @param {'extended'|'basic'} [options.format='extended'] - if 'basic', hide delimiters between date and time values.
  * @param {'complete'|'date'|'time'} [options.representation='complete'] - format date, time with local time zone, or both.
  * @returns {String} the formatted date string (in local time zone)
- * @throws {TypeError} 1 argument required
  * @throws {RangeError} `date` must not be Invalid Date
  * @throws {RangeError} `options.format` must be 'extended' or 'basic'
  * @throws {RangeError} `options.representation` must be 'date', 'time' or 'complete'
@@ -52,8 +50,6 @@ export default function formatISO<DateType extends Date>(
   date: DateType | number,
   options?: FormatISOOptions
 ): string {
-  requiredArgs(1, arguments)
-
   const originalDate = toDate(date)
 
   if (isNaN(originalDate.getTime())) {

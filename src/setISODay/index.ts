@@ -1,7 +1,6 @@
 import addDays from '../addDays/index'
 import getISODay from '../getISODay/index'
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
 
 /**
@@ -17,7 +16,6 @@ import toInteger from '../_lib/toInteger/index'
  * @param {Date|Number} date - the date to be changed
  * @param {Number} day - the day of the ISO week of the new date
  * @returns {Date} the new date with the day of the ISO week set
- * @throws {TypeError} 2 arguments required
  *
  * @example
  * // Set Sunday to 1 September 2014:
@@ -28,8 +26,6 @@ export default function setISODay<DateType extends Date>(
   dirtyDate: DateType | number,
   dirtyDay: number
 ): DateType {
-  requiredArgs(2, arguments)
-
   const date = toDate(dirtyDate)
   const day = toInteger(dirtyDay)
   const currentDay = getISODay(date)

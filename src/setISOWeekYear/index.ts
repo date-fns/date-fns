@@ -2,7 +2,6 @@ import constructFrom from '../constructFrom/index'
 import differenceInCalendarDays from '../differenceInCalendarDays/index'
 import startOfISOWeekYear from '../startOfISOWeekYear/index'
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
 
 /**
@@ -19,7 +18,6 @@ import toInteger from '../_lib/toInteger/index'
  * @param {Date|Number} date - the date to be changed
  * @param {Number} isoWeekYear - the ISO week-numbering year of the new date
  * @returns {Date} the new date with the ISO week-numbering year set
- * @throws {TypeError} 2 arguments required
  *
  * @example
  * // Set ISO week-numbering year 2007 to 29 December 2008:
@@ -30,8 +28,6 @@ export default function setISOWeekYear<DateType extends Date>(
   dirtyDate: DateType | number,
   dirtyISOWeekYear: number
 ): DateType {
-  requiredArgs(2, arguments)
-
   let date = toDate(dirtyDate)
   const isoWeekYear = toInteger(dirtyISOWeekYear)
   const diff = differenceInCalendarDays(date, startOfISOWeekYear(date))

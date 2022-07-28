@@ -17,7 +17,6 @@ import {
   isProtectedWeekYearToken,
   throwProtectedError,
 } from '../_lib/protectedTokens/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
 import { parsers } from './_lib/parsers/index'
 import { DateToSystemTimezoneSetter, Setter } from './_lib/Setter'
@@ -333,7 +332,6 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * @param {Boolean} [options.useAdditionalDayOfYearTokens=false] - if true, allows usage of the day of year tokens `D` and `DD`;
  *   see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
  * @returns {Date} the parsed date
- * @throws {TypeError} 3 arguments required
  * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
  * @throws {RangeError} `options.firstWeekContainsDate` must be between 1 and 7
  * @throws {RangeError} `options.locale` must contain `match` property
@@ -362,8 +360,6 @@ export default function parse<DateType extends Date>(
   dirtyReferenceDate: DateType | number,
   options?: ParseOptions
 ): DateType {
-  requiredArgs(3, arguments)
-
   let dateString = String(dirtyDateString)
   const formatString = String(dirtyFormatString)
 

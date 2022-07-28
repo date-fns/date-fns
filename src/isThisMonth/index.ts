@@ -1,5 +1,4 @@
 import isSameMonth from '../isSameMonth/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isThisMonth
@@ -15,7 +14,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Date|Number} date - the date to check
  * @returns {Boolean} the date is in this month
- * @throws {TypeError} 1 argument required
  *
  * @example
  * // If today is 25 September 2014, is 15 September 2014 in this month?
@@ -26,7 +24,5 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function isThisMonth<DateType extends Date>(
   dirtyDate: DateType | number
 ): boolean {
-  requiredArgs(1, arguments)
-
   return isSameMonth(Date.now(), dirtyDate)
 }

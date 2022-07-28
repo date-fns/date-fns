@@ -30,9 +30,4 @@ describe('isThisSecond', () => {
     const date = new Date(2014, 8 /* Sep */, 25, 18, 30, 15, 250).getTime()
     assert(isThisSecond(date) === true)
   })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(isThisSecond.bind(null), TypeError)
-  })
 })

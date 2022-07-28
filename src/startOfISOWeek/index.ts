@@ -1,5 +1,4 @@
 import startOfWeek from '../startOfWeek/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name startOfISOWeek
@@ -14,7 +13,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Date|Number} date - the original date
  * @returns {Date} the start of an ISO week
- * @throws {TypeError} 1 argument required
  *
  * @example
  * // The start of an ISO week for 2 September 2014 11:55:00:
@@ -24,7 +22,5 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function startOfISOWeek<DateType extends Date>(
   dirtyDate: DateType | number
 ): DateType {
-  requiredArgs(1, arguments)
-
   return startOfWeek(dirtyDate, { weekStartsOn: 1 })
 }

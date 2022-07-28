@@ -1,7 +1,6 @@
 import { millisecondsInMinute } from '../constants/index'
 import differenceInMilliseconds from '../differenceInMilliseconds/index'
 import type { RoundingOptions } from '../types'
-import requiredArgs from '../_lib/requiredArgs/index'
 import { getRoundingMethod } from '../_lib/roundingMethods/index'
 
 /**
@@ -22,7 +21,6 @@ export interface DifferenceInMinutesOptions extends RoundingOptions {}
  * @param {Object} [options] - an object with options.
  * @param {String} [options.roundingMethod='trunc'] - a rounding method (`ceil`, `floor`, `round` or `trunc`)
  * @returns {Number} the number of minutes
- * @throws {TypeError} 2 arguments required
  *
  * @example
  * // How many minutes are between 2 July 2014 12:07:59 and 2 July 2014 12:20:00?
@@ -45,8 +43,6 @@ export default function differenceInMinutes<DateType extends Date>(
   dateRight: DateType | number,
   options?: DifferenceInMinutesOptions
 ): number {
-  requiredArgs(2, arguments)
-
   const diff =
     differenceInMilliseconds(dateLeft, dateRight) / millisecondsInMinute
   return getRoundingMethod(options?.roundingMethod)(diff)

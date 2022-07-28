@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name endOfQuarter
@@ -12,7 +11,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Date|Number} date - the original date
  * @returns {Date} the end of a quarter
- * @throws {TypeError} 1 argument required
  *
  * @example
  * // The end of a quarter for 2 September 2014 11:55:00:
@@ -22,8 +20,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function endOfQuarter<DateType extends Date>(
   dirtyDate: DateType | number
 ): DateType {
-  requiredArgs(1, arguments)
-
   const date = toDate(dirtyDate)
   const currentMonth = date.getMonth()
   const month = currentMonth - (currentMonth % 3) + 3

@@ -22,7 +22,6 @@ export interface FormatRFC3339Options {
  * @param {Object} [options] - an object with options.
  * @param {0|1|2|3} [options.fractionDigits=0] - number of digits after the decimal point after seconds
  * @returns {String} the formatted date string
- * @throws {TypeError} 1 argument required
  * @throws {RangeError} `date` must not be Invalid Date
  * @throws {RangeError} `options.fractionDigits` must be between 0 and 3
  *
@@ -45,12 +44,6 @@ export default function formatRFC3339<DateType extends Date>(
   dirtyDate: DateType | number,
   options?: FormatRFC3339Options
 ): string {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      `1 arguments required, but only ${arguments.length} present`
-    )
-  }
-
   const originalDate = toDate(dirtyDate)
 
   if (!isValid(originalDate)) {

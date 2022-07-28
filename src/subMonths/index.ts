@@ -1,6 +1,5 @@
 import toInteger from '../_lib/toInteger/index'
 import addMonths from '../addMonths/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name subMonths
@@ -13,7 +12,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @param {Date|Number} date - the date to be changed
  * @param {Number} amount - the amount of months to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  * @returns {Date} the new date with the months subtracted
- * @throws {TypeError} 2 arguments required
  *
  * @example
  * // Subtract 5 months from 1 February 2015:
@@ -24,8 +22,6 @@ export default function subMonths<DateType extends Date>(
   dirtyDate: DateType | number,
   dirtyAmount: number
 ): DateType {
-  requiredArgs(2, arguments)
-
   const amount = toInteger(dirtyAmount)
   return addMonths(dirtyDate, -amount)
 }

@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name differenceInMilliseconds
@@ -12,7 +11,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @param {Date|Number} dateLeft - the later date
  * @param {Date|Number} dateRight - the earlier date
  * @returns {Number} the number of milliseconds
- * @throws {TypeError} 2 arguments required
  *
  * @example
  * // How many milliseconds are between
@@ -27,7 +25,5 @@ export default function differenceInMilliseconds<DateType extends Date>(
   dateLeft: DateType | number,
   dateRight: DateType | number
 ): number {
-  requiredArgs(2, arguments)
-
   return toDate(dateLeft).getTime() - toDate(dateRight).getTime()
 }

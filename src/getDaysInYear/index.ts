@@ -1,6 +1,5 @@
 import isLeapYear from '../isLeapYear/index'
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name getDaysInYear
@@ -12,7 +11,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Date|Number} date - the given date
  * @returns {Number} the number of days in a year
- * @throws {TypeError} 1 argument required
  *
  * @example
  * // How many days are in 2012?
@@ -22,8 +20,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function getDaysInYear<DateType extends Date>(
   dirtyDate: DateType | number
 ): number {
-  requiredArgs(1, arguments)
-
   const date = toDate(dirtyDate)
 
   if (String(new Date(date)) === 'Invalid Date') {

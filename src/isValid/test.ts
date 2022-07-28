@@ -23,9 +23,4 @@ describe('isValid', () => {
     const result = isValid(null)
     assert(result === false)
   })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(isValid.bind(null), TypeError)
-  })
 })

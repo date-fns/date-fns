@@ -1,6 +1,5 @@
 import toDate from '../toDate/index'
 import type { Interval } from '../types'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * The {@link areIntervalsOverlapping} function options.
@@ -22,7 +21,6 @@ export interface AreIntervalsOverlappingOptions {
  * @param {Object} [options] - the object with options
  * @param {Boolean} [options.inclusive=false] - whether the comparison is inclusive or not
  * @returns {Boolean} whether the time intervals are overlapping
- * @throws {TypeError} 2 arguments required
  * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *
@@ -69,8 +67,6 @@ export default function areIntervalsOverlapping(
   intervalRight: Interval,
   options?: AreIntervalsOverlappingOptions
 ): boolean {
-  requiredArgs(2, arguments)
-
   const leftStartTime = toDate(intervalLeft?.start).getTime()
   const leftEndTime = toDate(intervalLeft?.end).getTime()
   const rightStartTime = toDate(intervalRight?.start).getTime()

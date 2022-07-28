@@ -1,7 +1,6 @@
 import { millisecondsInDay } from '../constants/index'
 import startOfDay from '../startOfDay/index'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name differenceInCalendarDays
@@ -15,7 +14,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @param {Date|Number} dateLeft - the later date
  * @param {Date|Number} dateRight - the earlier date
  * @returns {Number} the number of calendar days
- * @throws {TypeError} 2 arguments required
  *
  * @example
  * // How many calendar days are between
@@ -37,8 +35,6 @@ export default function differenceInCalendarDays<DateType extends Date>(
   dirtyDateLeft: DateType | number,
   dirtyDateRight: DateType | number
 ): number {
-  requiredArgs(2, arguments)
-
   const startOfDayLeft = startOfDay(dirtyDateLeft)
   const startOfDayRight = startOfDay(dirtyDateRight)
 

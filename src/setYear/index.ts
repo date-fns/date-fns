@@ -1,6 +1,5 @@
 import constructFrom from '../constructFrom/index'
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
 
 /**
@@ -14,7 +13,6 @@ import toInteger from '../_lib/toInteger/index'
  * @param {Date|Number} date - the date to be changed
  * @param {Number} year - the year of the new date
  * @returns {Date} the new date with the year set
- * @throws {TypeError} 2 arguments required
  *
  * @example
  * // Set year 2013 to 1 September 2014:
@@ -25,8 +23,6 @@ export default function setYear<DateType extends Date>(
   dirtyDate: DateType | number,
   dirtyYear: number
 ): DateType {
-  requiredArgs(2, arguments)
-
   const date = toDate(dirtyDate)
   const year = toInteger(dirtyYear)
 

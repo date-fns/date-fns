@@ -1,5 +1,4 @@
 import { millisecondsInHour, millisecondsInMinute } from '../constants/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
 
 /**
@@ -27,7 +26,6 @@ export interface ParseISOOptions {
  * @param {Object} [options] - an object with options.
  * @param {0|1|2} [options.additionalDigits=2] - the additional number of digits in the extended year format
  * @returns {Date} the parsed date in the local time zone
- * @throws {TypeError} 1 argument required
  * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
@@ -45,8 +43,6 @@ export default function parseISO(
   argument: string,
   options?: ParseISOOptions
 ): Date {
-  requiredArgs(1, arguments)
-
   const additionalDigits = toInteger(options?.additionalDigits ?? 2)
   if (
     additionalDigits !== 2 &&

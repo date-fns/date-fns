@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isMonday
@@ -11,7 +10,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Date|Number} date - the date to check
  * @returns {Boolean} the date is Monday
- * @throws {TypeError} 1 argument required
  *
  * @example
  * // Is 22 September 2014 Monday?
@@ -21,7 +19,5 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function isMonday<DateType extends Date>(
   date: DateType | number
 ): boolean {
-  requiredArgs(1, arguments)
-
   return toDate(date).getDay() === 1
 }

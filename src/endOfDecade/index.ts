@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name endOfDecade
@@ -13,7 +12,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @returns {Date} the end of a decade
  * @param {Object} [options] - an object with options.
  * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
- * @throws {TypeError} 1 argument required
  * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
@@ -24,8 +22,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function endOfDecade<DateType extends Date>(
   dirtyDate: DateType | number
 ): DateType {
-  requiredArgs(1, arguments)
-
   const date = toDate(dirtyDate)
   const year = date.getFullYear()
   const decade = 9 + Math.floor(year / 10) * 10

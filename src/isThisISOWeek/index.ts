@@ -1,5 +1,4 @@
 import isSameISOWeek from '../isSameISOWeek/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isThisISOWeek
@@ -17,7 +16,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Date|Number} date - the date to check
  * @returns {Boolean} the date is in this ISO week
- * @throws {TypeError} 1 argument required
  *
  * @example
  * // If today is 25 September 2014, is 22 September 2014 in this ISO week?
@@ -28,7 +26,5 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function isThisISOWeek<DateType extends Date>(
   dirtyDate: DateType | number
 ): boolean {
-  requiredArgs(1, arguments)
-
   return isSameISOWeek(dirtyDate, Date.now())
 }

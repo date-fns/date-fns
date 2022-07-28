@@ -3,7 +3,6 @@ import isValid from '../isValid/index'
 import toDate from '../toDate/index'
 import transpose from '../transpose/index'
 import formatters from '../_lib/format/lightFormatters/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 // This RegExp consists of three parts separated by `|`:
 // - (\w)\1* matches any sequences of the same letter
@@ -68,7 +67,6 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * @param {Date|Number} date - the original date
  * @param {String} format - the string of tokens
  * @returns {String} the formatted date string
- * @throws {TypeError} 2 arguments required
  * @throws {RangeError} format string contains an unescaped latin alphabet character
  *
  * @example
@@ -82,8 +80,6 @@ export default function lightFormat<DateType extends Date>(
   dirtyDate: DateType | number,
   formatStr: string
 ): string {
-  requiredArgs(2, arguments)
-
   const originalDate = toDate(dirtyDate)
 
   if (!isValid(originalDate)) {

@@ -1,6 +1,5 @@
 import differenceInCalendarDays from '../differenceInCalendarDays/index'
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 // Like `compareAsc` but uses local time not UTC, which is needed
 // for accurate equality comparisons of UTC timestamps that end up
@@ -49,7 +48,6 @@ function compareLocalAsc<DateType extends Date>(
  * @param {Date|Number} dateLeft - the later date
  * @param {Date|Number} dateRight - the earlier date
  * @returns {Number} the number of full days according to the local timezone
- * @throws {TypeError} 2 arguments required
  *
  * @example
  * // How many full days are between
@@ -82,8 +80,6 @@ export default function differenceInDays<DateType extends Date>(
   dirtyDateLeft: DateType | number,
   dirtyDateRight: DateType | number
 ): number {
-  requiredArgs(2, arguments)
-
   const dateLeft = toDate(dirtyDateLeft)
   const dateRight = toDate(dirtyDateRight)
 

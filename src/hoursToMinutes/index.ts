@@ -1,5 +1,4 @@
 import { minutesInHour } from '../constants/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name hoursToMinutes
@@ -12,7 +11,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @param {number} hours - number of hours to be converted
  *
  * @returns {number} the number of hours converted in minutes
- * @throws {TypeError} 1 argument required
  *
  * @example
  * // Convert 2 hours to minutes:
@@ -20,6 +18,5 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> 120
  */
 export default function hoursToMinutes(hours: number): number {
-  requiredArgs(1, arguments)
   return Math.floor(hours * minutesInHour)
 }

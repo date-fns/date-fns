@@ -17,7 +17,6 @@ import differenceInMinutes from '../differenceInMinutes/index'
 import differenceInSeconds from '../differenceInSeconds/index'
 import toDate from '../toDate/index'
 import type { IntlOptionsUnit } from '../types'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * The {@link intlFormatDistance} function options.
@@ -71,7 +70,6 @@ export interface IntlFormatDistanceOptions {
  * @param {String} [options.style='long'] - the length of the result. The values are: 'long' (e.g. `1 month`), 'short' (e.g. 'in 1 mo.'), 'narrow' (e.g. 'in 1 mo.').
  * The narrow one could be similar to the short one for some locales.
  * @returns {String} the distance in words according to language-sensitive relative time formatting.
- * @throws {TypeError} 2 arguments required
  * @throws {RangeError} `date` must not be Invalid Date
  * @throws {RangeError} `baseDate` must not be Invalid Date
  * @throws {RangeError} `options.unit` must not be invalid Unit
@@ -136,8 +134,6 @@ export default function intlFormatDistance(
   baseDate: Date | number,
   options?: IntlFormatDistanceOptions
 ): string {
-  requiredArgs(2, arguments)
-
   let value: number = 0
   let unit: Intl.RelativeTimeFormatUnit
   const dateLeft = toDate(date)

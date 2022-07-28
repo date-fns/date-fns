@@ -12,7 +12,6 @@ import cloneObject from '../_lib/cloneObject/index'
 import defaultLocale from '../_lib/defaultLocale/index'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * The {@link formatDistanceStrict} function options.
@@ -50,7 +49,6 @@ export interface FormatDistanceStrictOptions extends LocaleOptions {
  * @param {'floor'|'ceil'|'round'} [options.roundingMethod='round'] - which way to round partial units
  * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
  * @returns {String} the distance in words
- * @throws {TypeError} 2 arguments required
  * @throws {RangeError} `date` must not be Invalid Date
  * @throws {RangeError} `baseDate` must not be Invalid Date
  * @throws {RangeError} `options.roundingMethod` must be 'floor', 'ceil' or 'round'
@@ -110,8 +108,6 @@ export default function formatDistanceStrict<DateType extends Date>(
   dirtyBaseDate: DateType | number,
   options?: FormatDistanceStrictOptions
 ): string {
-  requiredArgs(2, arguments)
-
   const defaultOptions = getDefaultOptions()
   const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale
 

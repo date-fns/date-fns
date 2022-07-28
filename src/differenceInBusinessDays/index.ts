@@ -4,7 +4,6 @@ import isSameDay from '../isSameDay/index'
 import isValid from '../isValid/index'
 import isWeekend from '../isWeekend/index'
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
 
 /**
@@ -21,7 +20,6 @@ import toInteger from '../_lib/toInteger/index'
  * @param {Date|Number} dateLeft - the later date
  * @param {Date|Number} dateRight - the earlier date
  * @returns {Number} the number of business days
- * @throws {TypeError} 2 arguments required
  *
  * @example
  * // How many business days are between
@@ -60,8 +58,6 @@ export default function differenceInBusinessDays<DateType extends Date>(
   dirtyDateLeft: DateType | number,
   dirtyDateRight: DateType | number
 ): number {
-  requiredArgs(2, arguments)
-
   const dateLeft = toDate(dirtyDateLeft)
   let dateRight = toDate(dirtyDateRight)
 

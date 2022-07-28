@@ -1,6 +1,5 @@
 import toDate from '../toDate/index'
 import type { Interval } from '../types'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isWithinInterval
@@ -13,7 +12,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @param {Date|Number} date - the date to check
  * @param {Interval} interval - the interval to check
  * @returns {Boolean} the date is within the interval
- * @throws {TypeError} 2 arguments required
  * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *
@@ -45,8 +43,6 @@ export default function isWithinInterval<DateType extends Date>(
   dirtyDate: DateType | number,
   interval: Interval<DateType>
 ): boolean {
-  requiredArgs(2, arguments)
-
   const time = toDate(dirtyDate).getTime()
   const startTime = toDate(interval.start).getTime()
   const endTime = toDate(interval.end).getTime()

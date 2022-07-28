@@ -1,6 +1,5 @@
 import getQuarter from '../getQuarter/index'
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name differenceInCalendarQuarters
@@ -13,7 +12,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @param {Date|Number} dateLeft - the later date
  * @param {Date|Number} dateRight - the earlier date
  * @returns {Number} the number of calendar quarters
- * @throws {TypeError} 2 arguments required
  *
  * @example
  * // How many calendar quarters are between 31 December 2013 and 2 July 2014?
@@ -27,8 +25,6 @@ export default function differenceInCalendarQuarters<DateType extends Date>(
   dirtyDateLeft: DateType | number,
   dirtyDateRight: DateType | number
 ): number {
-  requiredArgs(2, arguments)
-
   const dateLeft = toDate(dirtyDateLeft)
   const dateRight = toDate(dirtyDateRight)
 

@@ -88,9 +88,4 @@ describe('min', () => {
     )
     assert(isInvalidDate(result))
   })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(min.bind(null), TypeError)
-  })
 })

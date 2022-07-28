@@ -1,6 +1,5 @@
 import isSameDay from '../isSameDay/index'
 import subDays from '../subDays/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isYesterday
@@ -16,7 +15,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Date|Number} date - the date to check
  * @returns {Boolean} the date is yesterday
- * @throws {TypeError} 1 argument required
  *
  * @example
  * // If today is 6 October 2014, is 5 October 14:00:00 yesterday?
@@ -26,7 +24,5 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function isYesterday<DateType extends Date>(
   dirtyDate: DateType | number
 ): boolean {
-  requiredArgs(1, arguments)
-
   return isSameDay(dirtyDate, subDays(Date.now(), 1))
 }

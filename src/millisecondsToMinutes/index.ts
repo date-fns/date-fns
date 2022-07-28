@@ -1,5 +1,4 @@
 import { millisecondsInMinute } from '../constants/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name millisecondsToMinutes
@@ -12,7 +11,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @param {number} milliseconds - number of milliseconds to be converted.
  *
  * @returns {number} the number of milliseconds converted in minutes
- * @throws {TypeError} 1 argument required
  *
  * @example
  * // Convert 60000 milliseconds to minutes:
@@ -25,7 +23,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> 1
  */
 export default function millisecondsToMinutes(milliseconds: number): number {
-  requiredArgs(1, arguments)
   const minutes = milliseconds / millisecondsInMinute
   return Math.floor(minutes)
 }

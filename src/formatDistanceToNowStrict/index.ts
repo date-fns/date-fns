@@ -2,8 +2,6 @@ import formatDistanceStrict, {
   FormatDistanceStrictOptions,
 } from '../formatDistanceStrict/index'
 
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * The {@link formatDistanceToNowStrict} function options.
  */
@@ -37,7 +35,6 @@ export interface FormatDistanceToNowStrictOptions
  * @param {'floor'|'ceil'|'round'} [options.roundingMethod='round'] - which way to round partial units
  * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
  * @returns {String} the distance in words
- * @throws {TypeError} 1 argument required
  * @throws {RangeError} `date` must not be Invalid Date
  * @throws {RangeError} `options.locale` must contain `formatDistance` property
  *
@@ -88,7 +85,5 @@ export default function formatDistanceToNowStrict<DateType extends Date>(
   dirtyDate: DateType | number,
   options?: FormatDistanceToNowStrictOptions
 ): string {
-  requiredArgs(1, arguments)
-
   return formatDistanceStrict(dirtyDate, Date.now(), options)
 }

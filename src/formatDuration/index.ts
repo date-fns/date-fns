@@ -37,7 +37,6 @@ const defaultFormat: DurationUnit[] = [
  * @param {string} [options.delimiter=' '] - delimiter string
  * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
  * @returns {string} the formatted date string
- * @throws {TypeError} 1 argument required
  *
  * @example
  * // Format full duration
@@ -88,12 +87,6 @@ export default function formatDuration(
   duration: Duration,
   options?: FormatDurationOptions
 ): string {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      `1 argument required, but only ${arguments.length} present`
-    )
-  }
-
   const defaultOptions = getDefaultOptions()
   const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale
   const format = options?.format ?? defaultFormat

@@ -1,7 +1,6 @@
 import toDate from '../toDate/index'
 import type { LocaleOptions, WeekStartOptions } from '../types'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
 
 /**
@@ -23,7 +22,6 @@ export interface LastDayOfWeekOptions extends LocaleOptions, WeekStartOptions {}
  * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
  * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
  * @returns {Date} the last day of a week
- * @throws {TypeError} 1 argument required
  * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
  *
  * @example
@@ -40,8 +38,6 @@ export default function lastDayOfWeek<DateType extends Date>(
   dirtyDate: DateType | number,
   options?: LastDayOfWeekOptions
 ): DateType {
-  requiredArgs(1, arguments)
-
   const defaultOptions = getDefaultOptions()
   const weekStartsOn = toInteger(
     options?.weekStartsOn ??

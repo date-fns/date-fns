@@ -1,7 +1,6 @@
 import addHours from '../addHours/index'
 import toDate from '../toDate/index'
 import type { Interval, StepOptions } from '../types'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * The {@link eachHourOfInterval} function options.
@@ -20,7 +19,6 @@ export interface EachHourOfIntervalOptions extends StepOptions {}
  * @param {Object} [options] - an object with options.
  * @param {Number} [options.step=1] - the step to increment by. The value should be more than 1.
  * @returns {Date[]} the array with starts of hours from the hour of the interval start to the hour of the interval end
- * @throws {TypeError} 1 argument required
  * @throws {RangeError} `options.step` must be a number greater than 1
  * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
@@ -42,8 +40,6 @@ export default function eachHourOfInterval<DateType extends Date>(
   dirtyInterval: Interval<DateType>,
   options?: EachHourOfIntervalOptions
 ): DateType[] {
-  requiredArgs(1, arguments)
-
   const interval = dirtyInterval || {}
   const startDate = toDate(interval.start)
   const endDate = toDate(interval.end)

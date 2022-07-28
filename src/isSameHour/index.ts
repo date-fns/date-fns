@@ -1,5 +1,4 @@
 import startOfHour from '../startOfHour/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isSameHour
@@ -12,7 +11,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @param {Date|Number} dateLeft - the first date to check
  * @param {Date|Number} dateRight - the second date to check
  * @returns {Boolean} the dates are in the same hour (and same day)
- * @throws {TypeError} 2 arguments required
  *
  * @example
  * // Are 4 September 2014 06:00:00 and 4 September 06:30:00 in the same hour?
@@ -28,8 +26,6 @@ export default function isSameHour<DateType extends Date>(
   dirtyDateLeft: DateType | number,
   dirtyDateRight: DateType | number
 ): boolean {
-  requiredArgs(2, arguments)
-
   const dateLeftStartOfHour = startOfHour(dirtyDateLeft)
   const dateRightStartOfHour = startOfHour(dirtyDateRight)
 

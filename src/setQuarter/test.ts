@@ -59,11 +59,4 @@ describe('setQuarter', () => {
     const result = setQuarter(new Date(2014, 6 /* Jul */, 2), NaN)
     assert(result instanceof Date && isNaN(result.getTime()))
   })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(setQuarter.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(setQuarter.bind(null, 1), TypeError)
-  })
 })

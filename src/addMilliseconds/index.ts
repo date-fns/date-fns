@@ -1,6 +1,5 @@
 import toDate from '../toDate/index'
 import constructFrom from '../constructFrom/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
 
 /**
@@ -14,7 +13,6 @@ import toInteger from '../_lib/toInteger/index'
  * @param {Date|Number} date - the date to be changed
  * @param {Number} amount - the amount of milliseconds to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  * @returns {Date} the new date with the milliseconds added
- * @throws {TypeError} 2 arguments required
  *
  * @example
  * // Add 750 milliseconds to 10 July 2014 12:45:30.000:
@@ -25,8 +23,6 @@ export default function addMilliseconds<DateType extends Date>(
   dirtyDate: DateType | number,
   dirtyAmount: number
 ): DateType {
-  requiredArgs(2, arguments)
-
   const timestamp = toDate(dirtyDate).getTime()
   const amount = toInteger(dirtyAmount)
   return constructFrom(dirtyDate, timestamp + amount)

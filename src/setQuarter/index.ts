@@ -1,6 +1,5 @@
 import setMonth from '../setMonth/index'
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
 
 /**
@@ -14,7 +13,6 @@ import toInteger from '../_lib/toInteger/index'
  * @param {Date|Number} date - the date to be changed
  * @param {Number} quarter - the quarter of the new date
  * @returns {Date} the new date with the quarter set
- * @throws {TypeError} 2 arguments required
  *
  * @example
  * // Set the 2nd quarter to 2 July 2014:
@@ -25,8 +23,6 @@ export default function setQuarter<DateType extends Date>(
   dirtyDate: DateType | number,
   dirtyQuarter: number
 ): DateType {
-  requiredArgs(2, arguments)
-
   const date = toDate(dirtyDate)
   const quarter = toInteger(dirtyQuarter)
   const oldQuarter = Math.floor(date.getMonth() / 3) + 1

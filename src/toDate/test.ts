@@ -111,11 +111,6 @@ describe('toDate', () => {
       assert.deepStrictEqual(result, new Date(2016, 0, 1, 23, 30, 45, 123))
     })
   })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(toDate.bind(null), TypeError)
-  })
 })
 
 function mockConsoleWarn() {

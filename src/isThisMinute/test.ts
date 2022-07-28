@@ -30,9 +30,4 @@ describe('isThisMinute', () => {
     const date = new Date(2014, 8 /* Sep */, 25, 18, 30, 30).getTime()
     assert(isThisMinute(date) === true)
   })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(isThisMinute.bind(null), TypeError)
-  })
 })
