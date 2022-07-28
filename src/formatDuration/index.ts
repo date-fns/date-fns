@@ -30,13 +30,9 @@ const defaultFormat: DurationUnit[] = [
  * @description
  * Return human-readable duration string i.e. "9 months 2 days"
  *
- * @param {Duration} duration - the duration to format
- * @param {Object} [options] - an object with options.
- * @param {string[]} [options.format=['years', 'months', 'weeks', 'days', 'hours', 'minutes', 'seconds']] - the array of units to format
- * @param {boolean} [options.zero=false] - should zeros be included in the output?
- * @param {string} [options.delimiter=' '] - delimiter string
- * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
- * @returns {string} the formatted date string
+ * @param duration - the duration to format
+ * @param options - an object with options.
+ * @returns the formatted date string
  *
  * @example
  * // Format full duration

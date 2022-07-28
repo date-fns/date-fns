@@ -9,8 +9,8 @@ import toDate from '../toDate/index'
  * Return the end of a year quarter for the given date.
  * The result will be in the local timezone.
  *
- * @param {Date|Number} date - the original date
- * @returns {Date} the end of a quarter
+ * @param date - the original date
+ * @returns the end of a quarter
  *
  * @example
  * // The end of a quarter for 2 September 2014 11:55:00:

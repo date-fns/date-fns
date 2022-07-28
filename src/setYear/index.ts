@@ -10,9 +10,9 @@ import toInteger from '../_lib/toInteger/index'
  * @description
  * Set the year to the given date.
  *
- * @param {Date|Number} date - the date to be changed
- * @param {Number} year - the year of the new date
- * @returns {Date} the new date with the year set
+ * @param date - the date to be changed
+ * @param year - the year of the new date
+ * @returns the new date with the year set
  *
  * @example
  * // Set year 2013 to 1 September 2014:

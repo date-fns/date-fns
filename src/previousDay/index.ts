@@ -10,9 +10,9 @@ import type { Day } from '../types'
  * @description
  * When is the previous day of the week? 0-6 the day of the week, 0 represents Sunday.
  *
- * @param {Date | number} date - the date to check
- * @param {number} day - day of the week
- * @returns {Date} - the date is the previous day of week
+ * @param date - the date to check
+ * @param day - day of the week
+ * @returns - the date is the previous day of week
  *
  * @example
  * // When is the previous Monday before Mar, 20, 2020?

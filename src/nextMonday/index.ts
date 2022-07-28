@@ -8,8 +8,8 @@ import nextDay from '../nextDay/index'
  * @description
  * When is the next Monday?
  *
- * @param {Date | number} date - the date to start counting from
- * @returns {Date} the next Monday
+ * @param date - the date to start counting from
+ * @returns the next Monday
  *
  * @example
  * // When is the next Monday after Mar, 22, 2020?

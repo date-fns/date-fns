@@ -9,9 +9,9 @@ import toInteger from '../_lib/toInteger/index'
  * @description
  * Subtract the specified number of year quarters from the given date.
  *
- * @param {Date|Number} date - the date to be changed
- * @param {Number} amount - the amount of quarters to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
- * @returns {Date} the new date with the quarters subtracted
+ * @param date - the date to be changed
+ * @param amount - the amount of quarters to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @returns the new date with the quarters subtracted
  *
  * @example
  * // Subtract 3 quarters from 1 September 2014:

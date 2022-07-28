@@ -9,10 +9,9 @@ import toDate from '../toDate/index'
  * Return the last day of a year quarter for the given date.
  * The result will be in the local timezone.
  *
- * @param {Date|Number} date - the original date
- * @param {Object} [options] - an object with options.
- * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
- * @returns {Date} the last day of a quarter
+ * @param date - the original date
+ * @param [options] - an object with options.
+ * @returns the last day of a quarter
  * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example

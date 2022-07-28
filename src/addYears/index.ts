@@ -9,9 +9,9 @@ import toInteger from '../_lib/toInteger/index'
  * @description
  * Add the specified number of years to the given date.
  *
- * @param {Date|Number} date - the date to be changed
- * @param {Number} amount - the amount of years to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
- * @returns {Date} the new date with the years added
+ * @param date - the date to be changed
+ * @param amount - the amount of years to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @returns the new date with the years added
  *
  * @example
  * // Add 5 years to 1 September 2014:

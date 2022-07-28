@@ -23,9 +23,9 @@ import type { Interval } from '../types'
  * })
  * //=> Mon Mar 22 2021 00:00:00
  *
- * @param {Date | Number} date - the date to be bounded
- * @param {Interval} interval - the interval to bound to
- * @returns {Date} the date bounded by the start and the end of the interval
+ * @param date - the date to be bounded
+ * @param interval - the interval to bound to
+ * @returns the date bounded by the start and the end of the interval
  */
 export default function clamp<DateType extends Date>(
   date: DateType | number,

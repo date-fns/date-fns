@@ -10,8 +10,8 @@ import toDate from '../toDate/index'
  * @description
  * Is the given date the last day of a month?
  *
- * @param {Date|Number} date - the date to check
- * @returns {Boolean} the date is the last day of a month
+ * @param date - the date to check
+ * @returns the date is the last day of a month
  *
  * @example
  * // Is 28 February 2014 the last day of a month?

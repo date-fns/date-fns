@@ -10,9 +10,9 @@ import type { Interval } from '../types'
  * @description
  * Get the number of days that overlap in two time intervals
  *
- * @param {Interval} intervalLeft - the first interval to compare. See [Interval]{@link docs/Interval}
- * @param {Interval} intervalRight - the second interval to compare. See [Interval]{@link docs/Interval}
- * @returns {Number} the number of days that overlap in two time intervals
+ * @param intervalLeft - the first interval to compare. See [Interval]{@link docs/Interval}
+ * @param intervalRight - the second interval to compare. See [Interval]{@link docs/Interval}
+ * @returns the number of days that overlap in two time intervals
  * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *

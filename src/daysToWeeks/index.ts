@@ -8,9 +8,9 @@ import { daysInWeek } from '../constants/index'
  * @description
  * Convert a number of days to a full number of weeks.
  *
- * @param {number} days - number of days to be converted
+ * @param days - number of days to be converted
  *
- * @returns {number} the number of days converted in weeks
+ * @returns the number of days converted in weeks
  *
  * @example
  * // Convert 14 days to weeks:

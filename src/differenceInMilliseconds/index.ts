@@ -8,9 +8,9 @@ import toDate from '../toDate/index'
  * @description
  * Get the number of milliseconds between the given dates.
  *
- * @param {Date|Number} dateLeft - the later date
- * @param {Date|Number} dateRight - the earlier date
- * @returns {Number} the number of milliseconds
+ * @param dateLeft - the later date
+ * @param dateRight - the earlier date
+ * @returns the number of milliseconds
  *
  * @example
  * // How many milliseconds are between

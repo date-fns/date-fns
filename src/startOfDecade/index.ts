@@ -8,8 +8,8 @@ import toDate from '../toDate/index'
  * @description
  * Return the start of a decade for the given date.
  *
- * @param {Date|Number} date - the original date
- * @returns {Date} the start of a decade
+ * @param date - the original date
+ * @returns the start of a decade
  *
  * @example
  * // The start of a decade for 21 October 2015 00:00:00:

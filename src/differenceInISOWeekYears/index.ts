@@ -13,9 +13,9 @@ import toDate from '../toDate/index'
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @param {Date|Number} dateLeft - the later date
- * @param {Date|Number} dateRight - the earlier date
- * @returns {Number} the number of full ISO week-numbering years
+ * @param dateLeft - the later date
+ * @param dateRight - the earlier date
+ * @returns the number of full ISO week-numbering years
  *
  * @example
  * // How many full ISO week-numbering years are between 1 January 2010 and 1 January 2012?

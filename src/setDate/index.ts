@@ -9,9 +9,9 @@ import toInteger from '../_lib/toInteger/index'
  * @description
  * Set the day of the month to the given date.
  *
- * @param {Date|Number} date - the date to be changed
- * @param {Number} dayOfMonth - the day of the month of the new date
- * @returns {Date} the new date with the day of the month set
+ * @param date - the date to be changed
+ * @param dayOfMonth - the day of the month of the new date
+ * @returns the new date with the day of the month set
  *
  * @example
  * // Set the 30th day of the month to 1 September 2014:

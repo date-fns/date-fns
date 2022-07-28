@@ -9,9 +9,9 @@ import addMonths from '../addMonths/index'
  * @description
  * Subtract the specified number of months from the given date.
  *
- * @param {Date|Number} date - the date to be changed
- * @param {Number} amount - the amount of months to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
- * @returns {Date} the new date with the months subtracted
+ * @param date - the date to be changed
+ * @param amount - the amount of months to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @returns the new date with the months subtracted
  *
  * @example
  * // Subtract 5 months from 1 February 2015:

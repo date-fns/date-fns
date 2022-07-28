@@ -8,8 +8,8 @@ import toDate from '../toDate/index'
  * @description
  * Get the year quarter of the given date.
  *
- * @param {Date|Number} date - the given date
- * @returns {Number} the quarter
+ * @param date - the given date
+ * @returns the quarter
  *
  * @example
  * // Which quarter is 2 July 2014?

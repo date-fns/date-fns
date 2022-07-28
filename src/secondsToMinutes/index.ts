@@ -8,9 +8,9 @@ import { secondsInMinute } from '../constants/index'
  * @description
  * Convert a number of seconds to a full number of minutes.
  *
- * @param {number} seconds - number of seconds to be converted
+ * @param seconds - number of seconds to be converted
  *
- * @returns {number} the number of seconds converted in minutes
+ * @returns the number of seconds converted in minutes
  *
  * @example
  * // Convert 120 seconds into minutes

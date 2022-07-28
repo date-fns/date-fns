@@ -8,8 +8,8 @@ import toDate from '../toDate/index'
  * @description
  * Get the minutes of the given date.
  *
- * @param {Date|Number} date - the given date
- * @returns {Number} the minutes
+ * @param date - the given date
+ * @returns the minutes
  *
  * @example
  * // Get the minutes of 29 February 2012 11:45:05:

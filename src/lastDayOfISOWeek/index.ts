@@ -11,8 +11,8 @@ import lastDayOfWeek from '../lastDayOfWeek/index'
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @param {Date|Number} date - the original date
- * @returns {Date} the last day of an ISO week
+ * @param date - the original date
+ * @returns the last day of an ISO week
  *
  * @example
  * // The last day of an ISO week for 2 September 2014 11:55:00:

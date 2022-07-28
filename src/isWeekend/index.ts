@@ -8,8 +8,8 @@ import toDate from '../toDate/index'
  * @description
  * Does the given date fall on a weekend?
  *
- * @param {Date|Number} date - the date to check
- * @returns {Boolean} the date falls on a weekend
+ * @param date - the date to check
+ * @returns the date falls on a weekend
  *
  * @example
  * // Does 5 October 2014 fall on a weekend?

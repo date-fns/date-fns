@@ -12,7 +12,7 @@ import startOfDay from '../startOfDay/index'
  * > ⚠️ Please note that this function is not present in the FP submodule as
  * > it uses `Date.now()` internally hence impure and can't be safely curried.
  *
- * @returns {Date} the start of today
+ * @returns the start of today
  *
  * @example
  * // If today is 6 October 2014:

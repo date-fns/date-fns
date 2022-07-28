@@ -12,8 +12,8 @@ import isSameMonth from '../isSameMonth/index'
  * > ⚠️ Please note that this function is not present in the FP submodule as
  * > it uses `Date.now()` internally hence impure and can't be safely curried.
  *
- * @param {Date|Number} date - the date to check
- * @returns {Boolean} the date is in this month
+ * @param date - the date to check
+ * @returns the date is in this month
  *
  * @example
  * // If today is 25 September 2014, is 15 September 2014 in this month?

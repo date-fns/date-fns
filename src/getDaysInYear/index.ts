@@ -9,8 +9,8 @@ import toDate from '../toDate/index'
  * @description
  * Get the number of days in a year of the given date.
  *
- * @param {Date|Number} date - the given date
- * @returns {Number} the number of days in a year
+ * @param date - the given date
+ * @returns the number of days in a year
  *
  * @example
  * // How many days are in 2012?

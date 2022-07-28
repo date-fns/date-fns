@@ -9,9 +9,9 @@ import toInteger from '../_lib/toInteger/index'
  * @description
  * Set the minutes to the given date.
  *
- * @param {Date|Number} date - the date to be changed
- * @param {Number} minutes - the minutes of the new date
- * @returns {Date} the new date with the minutes set
+ * @param date - the date to be changed
+ * @param minutes - the minutes of the new date
+ * @returns the new date with the minutes set
  *
  * @example
  * // Set 45 minutes to 1 September 2014 11:30:40:

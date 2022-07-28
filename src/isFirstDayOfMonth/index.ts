@@ -8,8 +8,8 @@ import toDate from '../toDate/index'
  * @description
  * Is the given date the first day of a month?
  *
- * @param {Date|Number} date - the date to check
- * @returns {Boolean} the date is the first day of a month
+ * @param date - the date to check
+ * @returns the date is the first day of a month
  *
  * @example
  * // Is 1 September 2014 the first day of a month?

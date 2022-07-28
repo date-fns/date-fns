@@ -13,9 +13,9 @@ import toInteger from '../_lib/toInteger/index'
  * ISO week starts with Monday.
  * 7 is the index of Sunday, 1 is the index of Monday etc.
  *
- * @param {Date|Number} date - the date to be changed
- * @param {Number} day - the day of the ISO week of the new date
- * @returns {Date} the new date with the day of the ISO week set
+ * @param date - the date to be changed
+ * @param day - the day of the ISO week of the new date
+ * @returns the new date with the day of the ISO week set
  *
  * @example
  * // Set Sunday to 1 September 2014:

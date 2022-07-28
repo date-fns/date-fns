@@ -15,9 +15,9 @@ import toInteger from '../_lib/toInteger/index'
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @param {Date|Number} date - the date to be changed
- * @param {Number} isoWeekYear - the ISO week-numbering year of the new date
- * @returns {Date} the new date with the ISO week-numbering year set
+ * @param date - the date to be changed
+ * @param isoWeekYear - the ISO week-numbering year of the new date
+ * @returns the new date with the ISO week-numbering year set
  *
  * @example
  * // Set ISO week-numbering year 2007 to 29 December 2008:

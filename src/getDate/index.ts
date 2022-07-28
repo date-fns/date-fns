@@ -8,8 +8,8 @@ import toDate from '../toDate/index'
  * @description
  * Get the day of the month of the given date.
  *
- * @param {Date|Number} date - the given date
- * @returns {Number} the day of month
+ * @param date - the given date
+ * @returns the day of month
  *
  * @example
  * // Which day of the month is 29 February 2012?

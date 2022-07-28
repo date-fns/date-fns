@@ -8,9 +8,9 @@ import startOfMinute from '../startOfMinute/index'
  * @description
  * Are the given dates in the same minute (and hour and day)?
  *
- * @param {Date|Number} dateLeft - the first date to check
- * @param {Date|Number} dateRight - the second date to check
- * @returns {Boolean} the dates are in the same minute (and hour and day)
+ * @param dateLeft - the first date to check
+ * @param dateRight - the second date to check
+ * @returns the dates are in the same minute (and hour and day)
  *
  * @example
  * // Are 4 September 2014 06:30:00 and 4 September 2014 06:30:15 in the same minute?

@@ -17,11 +17,9 @@ export interface LastDayOfWeekOptions extends LocaleOptions, WeekStartOptions {}
  * Return the last day of a week for the given date.
  * The result will be in the local timezone.
  *
- * @param {Date|Number} date - the original date
- * @param {Object} [options] - an object with options.
- * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
- * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
- * @returns {Date} the last day of a week
+ * @param date - the original date
+ * @param options - an object with options.
+ * @returns the last day of a week
  * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
  *
  * @example

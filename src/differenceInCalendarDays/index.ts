@@ -11,9 +11,9 @@ import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMillisec
  * Get the number of calendar days between the given dates. This means that the times are removed
  * from the dates and then the difference in days is calculated.
  *
- * @param {Date|Number} dateLeft - the later date
- * @param {Date|Number} dateRight - the earlier date
- * @returns {Number} the number of calendar days
+ * @param dateLeft - the later date
+ * @param dateRight - the earlier date
+ * @returns the number of calendar days
  *
  * @example
  * // How many calendar days are between

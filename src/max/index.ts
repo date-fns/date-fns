@@ -8,8 +8,8 @@ import toDate from '../toDate/index'
  * @description
  * Return the latest of the given dates.
  *
- * @param {Date[]|Number[]} datesArray - the dates to compare
- * @returns {Date} the latest of the dates
+ * @param datesArray - the dates to compare
+ * @returns the latest of the dates
  *
  * @example
  * // Which of these dates is the latest?
