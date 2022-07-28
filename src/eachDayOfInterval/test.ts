@@ -118,12 +118,12 @@ describe('eachDayOfInterval', () => {
       ])
     })
 
-    it('throws TypeError error if `options.step` is less than 1', () => {
+    it('throws RangeError error if `options.step` is less than 1', () => {
       assert.throws(() => eachDayOfInterval(interval, { step: 0 }), stepError)
       assert.throws(() => eachDayOfInterval(interval, { step: -3 }), stepError)
     })
 
-    it('throws TypeError error if `options.step` is NaN', () => {
+    it('throws RangeError error if `options.step` is NaN', () => {
       assert.throws(
         () =>
           eachDayOfInterval(interval, {
