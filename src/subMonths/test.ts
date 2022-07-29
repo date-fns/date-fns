@@ -14,20 +14,6 @@ describe('subMonths', () => {
     assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1))
   })
 
-  it('converts a fractional number to an integer', () => {
-    const result = subMonths(new Date(2015, 1 /* Feb */, 1), 5.999)
-    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1))
-  })
-
-  it('implicitly converts number arguments', () => {
-    const result = subMonths(
-      new Date(2015, 1 /* Feb */, 1),
-      // @ts-expect-error
-      '5'
-    )
-    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1))
-  })
-
   it('does not mutate the original date', () => {
     const date = new Date(2014, 8 /* Sep */, 1)
     subMonths(date, 12)

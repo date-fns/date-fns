@@ -17,7 +17,6 @@ import {
   isProtectedWeekYearToken,
   throwProtectedError,
 } from '../_lib/protectedTokens/index'
-import toInteger from '../_lib/toInteger/index'
 import { parsers } from './_lib/parsers/index'
 import { DateToSystemTimezoneSetter, Setter } from './_lib/Setter'
 import type { ParseFlags, ParserOptions } from './_lib/types'
@@ -327,8 +326,6 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/
  *   see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
  *   see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
  * @returns the parsed date
- * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
- * @throws {RangeError} `options.firstWeekContainsDate` must be between 1 and 7
  * @throws {RangeError} `options.locale` must contain `match` property
  * @throws {RangeError} use `yyyy` instead of `YYYY` for formatting years using [format provided] to the input [input provided]; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
  * @throws {RangeError} use `yy` instead of `YY` for formatting years using [format provided] to the input [input provided]; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
@@ -362,33 +359,19 @@ export default function parse<DateType extends Date>(
     throw new RangeError('locale must contain match property')
   }
 
-  const firstWeekContainsDate = toInteger(
+  const firstWeekContainsDate =
     options?.firstWeekContainsDate ??
-      options?.locale?.options?.firstWeekContainsDate ??
-      defaultOptions.firstWeekContainsDate ??
-      defaultOptions.locale?.options?.firstWeekContainsDate ??
-      1
-  )
+    options?.locale?.options?.firstWeekContainsDate ??
+    defaultOptions.firstWeekContainsDate ??
+    defaultOptions.locale?.options?.firstWeekContainsDate ??
+    1
 
-  // Test if weekStartsOn is between 1 and 7 _and_ is not NaN
-  if (!(firstWeekContainsDate >= 1 && firstWeekContainsDate <= 7)) {
-    throw new RangeError(
-      'firstWeekContainsDate must be between 1 and 7 inclusively'
-    )
-  }
-
-  const weekStartsOn = toInteger(
+  const weekStartsOn =
     options?.weekStartsOn ??
-      options?.locale?.options?.weekStartsOn ??
-      defaultOptions.weekStartsOn ??
-      defaultOptions.locale?.options?.weekStartsOn ??
-      0
-  )
-
-  // Test if weekStartsOn is between 0 and 6 _and_ is not NaN
-  if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {
-    throw new RangeError('weekStartsOn must be between 0 and 6 inclusively')
-  }
+    options?.locale?.options?.weekStartsOn ??
+    defaultOptions.weekStartsOn ??
+    defaultOptions.locale?.options?.weekStartsOn ??
+    0
 
   if (formatString === '') {
     if (dateString === '') {

@@ -2070,26 +2070,6 @@ describe('parse', () => {
     })
   })
 
-  describe('implicit conversion of arguments', () => {
-    it('`options.weekStartsOn`', () => {
-      const result = parse('2018', 'Y', referenceDate, {
-        // @ts-expect-error
-        weekStartsOn: '1' /* Mon */,
-        firstWeekContainsDate: 4,
-      })
-      assert.deepStrictEqual(result, new Date(2018, 0 /* Jan */, 1))
-    })
-
-    it('`options.firstWeekContainsDate`', () => {
-      const result = parse('2018', 'Y', referenceDate, {
-        weekStartsOn: 1 /* Mon */,
-        // @ts-expect-error
-        firstWeekContainsDate: '4',
-      })
-      assert.deepStrictEqual(result, new Date(2018, 0 /* Jan */, 1))
-    })
-  })
-
   describe('with `options.strictValidation` = true', () => {
     describe('calendar year', () => {
       it('returns `Invalid Date` for year zero', () => {
@@ -2374,28 +2354,6 @@ describe('parse', () => {
       const formatString = "yyyy-MM-dd'T'HH:mm:ss.SSSxxx"
       const result = parse(dateString, formatString, new Date(NaN))
       assert(result instanceof Date && isNaN(result.getTime()))
-    })
-
-    it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', () => {
-      const dateString = '2014-07-02T05:30:15.123+06:00'
-      const formatString = "yyyy-MM-dd'T'HH:mm:ss.SSSxxx"
-      const block = () =>
-        parse(dateString, formatString, referenceDate, {
-          // @ts-expect-error
-          weekStartsOn: NaN,
-        })
-      assert.throws(block, RangeError)
-    })
-
-    it('throws `RangeError` if `options.firstWeekContainsDate` is not convertable to 1, 2, ..., 7 or undefined', () => {
-      const dateString = '2014-07-02T05:30:15.123+06:00'
-      const formatString = "yyyy-MM-dd'T'HH:mm:ss.SSSxxx"
-      const block = () =>
-        parse(dateString, formatString, referenceDate, {
-          // @ts-expect-error
-          firstWeekContainsDate: NaN,
-        })
-      assert.throws(block, RangeError)
     })
   })
 

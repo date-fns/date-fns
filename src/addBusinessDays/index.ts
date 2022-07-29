@@ -3,7 +3,6 @@ import isSaturday from '../isSaturday/index'
 import isSunday from '../isSunday/index'
 import isWeekend from '../isWeekend/index'
 import toDate from '../toDate/index'
-import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name addBusinessDays
@@ -24,17 +23,16 @@ import toInteger from '../_lib/toInteger/index'
  */
 export default function addBusinessDays<DateType extends Date>(
   dirtyDate: DateType | number,
-  dirtyAmount: number
+  amount: number
 ): DateType {
   const date = toDate(dirtyDate)
   const startedOnWeekend = isWeekend(date)
-  const amount = toInteger(dirtyAmount)
 
   if (isNaN(amount)) return constructFrom(dirtyDate, NaN)
 
   const hours = date.getHours()
   const sign = amount < 0 ? -1 : 1
-  const fullWeeks = toInteger(amount / 5)
+  const fullWeeks = Math.trunc(amount / 5)
 
   date.setDate(date.getDate() + fullWeeks * 7)
 

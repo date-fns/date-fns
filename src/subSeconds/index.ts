@@ -1,5 +1,4 @@
 import addSeconds from '../addSeconds/index'
-import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name subSeconds
@@ -20,8 +19,7 @@ import toInteger from '../_lib/toInteger/index'
  */
 export default function subSeconds<DateType extends Date>(
   dirtyDate: DateType | number,
-  dirtyAmount: number
+  amount: number
 ): DateType {
-  const amount = toInteger(dirtyAmount)
   return addSeconds(dirtyDate, -amount)
 }

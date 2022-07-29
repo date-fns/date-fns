@@ -43,20 +43,6 @@ describe('setISODay', () => {
     assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 3))
   })
 
-  it('converts a fractional number to an integer', () => {
-    const result = setISODay(new Date(2014, 8 /* Sep */, 1), 3.33)
-    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 3))
-  })
-
-  it('implicitly converts number arguments', () => {
-    const result = setISODay(
-      new Date(2014, 8 /* Sep */, 1),
-      // @ts-expect-error
-      '3'
-    )
-    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 3))
-  })
-
   it('does not mutate the original date', () => {
     const date = new Date(2014, 8 /* Sep */, 1)
     setISODay(date, 3)

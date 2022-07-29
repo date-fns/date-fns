@@ -15,20 +15,6 @@ describe('addDays', () => {
     assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 11))
   })
 
-  it('converts a fractional number to an integer', () => {
-    const result = addDays(new Date(2014, 8 /* Sep */, 1), 10.5)
-    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 11))
-  })
-
-  it('implicitly converts number arguments', () => {
-    const result = addDays(
-      new Date(2014, 8 /* Sep */, 1),
-      // @ts-expect-error
-      '10'
-    )
-    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 11))
-  })
-
   it('does not mutate the original date', () => {
     const date = new Date(2014, 8 /* Sep */, 1)
     addDays(date, 11)

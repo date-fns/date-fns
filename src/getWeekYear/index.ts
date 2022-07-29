@@ -7,7 +7,6 @@ import type {
   WeekStartOptions,
 } from '../types'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
-import toInteger from '../_lib/toInteger/index'
 
 /**
  * The {@link getWeekYear} function options.
@@ -34,8 +33,6 @@ export interface GetWeekYearOptions
  * @param date - the given date
  * @param options - an object with options.
  * @returns the local week-numbering year
- * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
- * @throws {RangeError} `options.firstWeekContainsDate` must be between 1 and 7
  *
  * @example
  * // Which week numbering year is 26 December 2004 with the default settings?
@@ -60,20 +57,12 @@ export default function getWeekYear<DateType extends Date>(
   const year = date.getFullYear()
 
   const defaultOptions = getDefaultOptions()
-  const firstWeekContainsDate = toInteger(
+  const firstWeekContainsDate =
     options?.firstWeekContainsDate ??
-      options?.locale?.options?.firstWeekContainsDate ??
-      defaultOptions.firstWeekContainsDate ??
-      defaultOptions.locale?.options?.firstWeekContainsDate ??
-      1
-  )
-
-  // Test if weekStartsOn is between 1 and 7 _and_ is not NaN
-  if (!(firstWeekContainsDate >= 1 && firstWeekContainsDate <= 7)) {
-    throw new RangeError(
-      'firstWeekContainsDate must be between 1 and 7 inclusively'
-    )
-  }
+    options?.locale?.options?.firstWeekContainsDate ??
+    defaultOptions.firstWeekContainsDate ??
+    defaultOptions.locale?.options?.firstWeekContainsDate ??
+    1
 
   const firstWeekOfNextYear = dateFrom(dirtyDate, 0)
   firstWeekOfNextYear.setFullYear(year + 1, 0, firstWeekContainsDate)

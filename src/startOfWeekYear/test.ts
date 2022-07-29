@@ -61,22 +61,4 @@ describe('startOfWeekYear', () => {
     })
     assert.deepStrictEqual(result, new Date(2005, 0 /* Jan */, 3, 0, 0, 0, 0))
   })
-
-  it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', () => {
-    const block = () =>
-      startOfWeekYear(new Date(2007, 11 /* Dec */, 31), {
-        // @ts-expect-error
-        weekStartsOn: NaN,
-      })
-    assert.throws(block, RangeError)
-  })
-
-  it('throws `RangeError` if `options.firstWeekContainsDate` is not convertable to 1, 2, ..., 7 or undefined', () => {
-    const block = () =>
-      startOfWeekYear(new Date(2007, 11 /* Dec */, 31), {
-        // @ts-expect-error
-        firstWeekContainsDate: NaN,
-      })
-    assert.throws(block, RangeError)
-  })
 })

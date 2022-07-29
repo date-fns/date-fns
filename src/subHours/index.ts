@@ -1,5 +1,4 @@
 import addHours from '../addHours/index'
-import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name subHours
@@ -20,8 +19,7 @@ import toInteger from '../_lib/toInteger/index'
  */
 export default function subHours<DateType extends Date>(
   dirtyDate: DateType | number,
-  dirtyAmount: number
+  amount: number
 ): DateType {
-  const amount = toInteger(dirtyAmount)
   return addHours(dirtyDate, -amount)
 }

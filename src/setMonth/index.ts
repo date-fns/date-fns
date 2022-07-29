@@ -1,7 +1,6 @@
 import constructFrom from '../constructFrom/index'
 import getDaysInMonth from '../getDaysInMonth/index'
 import toDate from '../toDate/index'
-import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name setMonth
@@ -22,10 +21,9 @@ import toInteger from '../_lib/toInteger/index'
  */
 export default function setMonth<DateType extends Date>(
   dirtyDate: DateType | number,
-  dirtyMonth: number
+  month: number
 ): DateType {
   const date = toDate(dirtyDate)
-  const month = toInteger(dirtyMonth)
   const year = date.getFullYear()
   const day = date.getDate()
 

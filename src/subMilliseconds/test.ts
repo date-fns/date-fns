@@ -26,29 +26,6 @@ describe('subMilliseconds', () => {
     )
   })
 
-  it('converts a fractional number to an integer', () => {
-    const result = subMilliseconds(
-      new Date(2014, 6 /* Jul */, 10, 12, 45, 30, 0),
-      750.75
-    )
-    assert.deepStrictEqual(
-      result,
-      new Date(2014, 6 /* Jul */, 10, 12, 45, 29, 250)
-    )
-  })
-
-  it('implicitly converts number arguments', () => {
-    const result = subMilliseconds(
-      new Date(2014, 6 /* Jul */, 10, 12, 45, 30, 0),
-      // @ts-expect-error
-      '750'
-    )
-    assert.deepStrictEqual(
-      result,
-      new Date(2014, 6 /* Jul */, 10, 12, 45, 29, 250)
-    )
-  })
-
   it('does not mutate the original date', () => {
     const date = new Date(2014, 6 /* Jul */, 10, 12, 45, 30, 0)
     subMilliseconds(date, 250)

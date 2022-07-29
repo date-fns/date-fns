@@ -54,13 +54,4 @@ describe('getWeeksInMonth', () => {
     const result = getWeeksInMonth(new Date(NaN))
     assert(isNaN(result))
   })
-
-  it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', () => {
-    const block = () =>
-      getWeeksInMonth(new Date(2014, 6 /* Jul */, 8, 18, 0), {
-        // @ts-expect-error
-        weekStartsOn: NaN,
-      })
-    assert.throws(block, RangeError)
-  })
 })

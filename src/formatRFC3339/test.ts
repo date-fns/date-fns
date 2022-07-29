@@ -46,24 +46,6 @@ describe('formatRFC3339', () => {
     )
   })
 
-  it('implicitly converts options', () => {
-    const date = new Date(2019, 2 /* Mar */, 3, 19, 0, 52, 123)
-    const result = formatRFC3339(date, {
-      // @ts-expect-error
-      fractionDigits: '2',
-    })
-    assert.strictEqual(result, `2019-03-03T19:00:52.12${generateOffset(date)}`)
-  })
-
-  it('throws `RangeError` if `options.fractionDigits` is not convertable to 0, 1, 2, 3 or undefined', () => {
-    const block = () =>
-      formatRFC3339(new Date(2019, 2 /* Mar */, 3), {
-        // @ts-expect-error
-        fractionDigits: NaN,
-      })
-    assert.throws(block, RangeError)
-  })
-
   it('throws RangeError if the time value is invalid', () => {
     assert.throws(formatRFC3339.bind(null, new Date(NaN)), RangeError)
   })

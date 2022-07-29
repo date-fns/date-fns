@@ -56,7 +56,7 @@ export default function eachHourOfInterval<DateType extends Date>(
   let currentDate = startDate
   currentDate.setMinutes(0, 0, 0)
 
-  const step = Number(options?.step ?? 1)
+  const step = options?.step ?? 1
   if (step < 1 || isNaN(step))
     throw new RangeError('`options.step` must be a number greater than 1')
 

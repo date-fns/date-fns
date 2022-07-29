@@ -97,20 +97,6 @@ describe('toDate', () => {
       assert(isNaN(result.getTime()))
     })
   })
-
-  describe('argument conversion', () => {
-    it('implicitly converts instance of Number into a number', () => {
-      // eslint-disable-next-line no-new-wrappers
-      const timestamp = new Number(
-        new Date(2016, 0, 1, 23, 30, 45, 123).getTime()
-      )
-      const result = toDate(
-        // @ts-expect-error
-        timestamp
-      )
-      assert.deepStrictEqual(result, new Date(2016, 0, 1, 23, 30, 45, 123))
-    })
-  })
 })
 
 function mockConsoleWarn() {

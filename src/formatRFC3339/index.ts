@@ -1,7 +1,6 @@
 import isValid from '../isValid/index'
 import toDate from '../toDate/index'
 import addLeadingZeros from '../_lib/addLeadingZeros/index'
-import toInteger from '../_lib/toInteger/index'
 
 /**
  * The {@link formatRFC3339} function options.
@@ -22,7 +21,6 @@ export interface FormatRFC3339Options {
  * @param options - an object with options.
  * @returns the formatted date string
  * @throws {RangeError} `date` must not be Invalid Date
- * @throws {RangeError} `options.fractionDigits` must be between 0 and 3
  *
  * @example
  * // Represent 18 September 2019 in RFC 3339 format:
@@ -49,12 +47,7 @@ export default function formatRFC3339<DateType extends Date>(
     throw new RangeError('Invalid time value')
   }
 
-  const fractionDigits = Number(options?.fractionDigits ?? 0)
-
-  // Test if fractionDigits is between 0 and 3 _and_ is not NaN
-  if (!(fractionDigits >= 0 && fractionDigits <= 3)) {
-    throw new RangeError('fractionDigits must be between 0 and 3 inclusively')
-  }
+  const fractionDigits = options?.fractionDigits ?? 0
 
   const day = addLeadingZeros(originalDate.getDate(), 2)
   const month = addLeadingZeros(originalDate.getMonth() + 1, 2)
@@ -78,7 +71,7 @@ export default function formatRFC3339<DateType extends Date>(
 
   if (tzOffset !== 0) {
     const absoluteOffset = Math.abs(tzOffset)
-    const hourOffset = addLeadingZeros(toInteger(absoluteOffset / 60), 2)
+    const hourOffset = addLeadingZeros(Math.trunc(absoluteOffset / 60), 2)
     const minuteOffset = addLeadingZeros(absoluteOffset % 60, 2)
     // If less than 0, the sign is +, because it is ahead of time.
     const sign = tzOffset < 0 ? '+' : '-'

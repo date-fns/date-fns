@@ -124,19 +124,4 @@ describe('eachWeekOfInterval', () => {
       )
     assert.throws(block, RangeError)
   })
-
-  it('throws `RangeError` if `options.weekStartsOn` is not convertible to 0, 1, ..., 6 or undefined', () => {
-    const block = () =>
-      eachWeekOfInterval(
-        {
-          start: new Date(2014, 9 /* Oct */, 6, 6, 35),
-          end: new Date(2014, 10 /* Nov */, 25, 22, 15),
-        },
-        {
-          // @ts-expect-error
-          weekStartsOn: NaN,
-        }
-      )
-    assert.throws(block, RangeError)
-  })
 })

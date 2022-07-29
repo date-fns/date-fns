@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name setSeconds
@@ -20,10 +19,9 @@ import toInteger from '../_lib/toInteger/index'
  */
 export default function setSeconds<DateType extends Date>(
   dirtyDate: DateType | number,
-  dirtySeconds: number
+  seconds: number
 ): DateType {
   const date = toDate(dirtyDate)
-  const seconds = toInteger(dirtySeconds)
   date.setSeconds(seconds)
   return date
 }

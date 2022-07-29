@@ -1,7 +1,6 @@
 import toDate from '../toDate/index'
 import type { LocaleOptions, WeekStartOptions } from '../types'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
-import toInteger from '../_lib/toInteger/index'
 
 /**
  * The {@link lastDayOfWeek} function options.
@@ -20,7 +19,6 @@ export interface LastDayOfWeekOptions extends LocaleOptions, WeekStartOptions {}
  * @param date - the original date
  * @param options - an object with options.
  * @returns the last day of a week
- * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
  *
  * @example
  * // The last day of a week for 2 September 2014 11:55:00:
@@ -37,18 +35,12 @@ export default function lastDayOfWeek<DateType extends Date>(
   options?: LastDayOfWeekOptions
 ): DateType {
   const defaultOptions = getDefaultOptions()
-  const weekStartsOn = toInteger(
+  const weekStartsOn =
     options?.weekStartsOn ??
-      options?.locale?.options?.weekStartsOn ??
-      defaultOptions.weekStartsOn ??
-      defaultOptions.locale?.options?.weekStartsOn ??
-      0
-  )
-
-  // Test if weekStartsOn is between 0 and 6 _and_ is not NaN
-  if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {
-    throw new RangeError('weekStartsOn must be between 0 and 6')
-  }
+    options?.locale?.options?.weekStartsOn ??
+    defaultOptions.weekStartsOn ??
+    defaultOptions.locale?.options?.weekStartsOn ??
+    0
 
   const date = toDate(dirtyDate)
   const day = date.getDay()

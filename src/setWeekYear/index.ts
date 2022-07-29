@@ -8,7 +8,6 @@ import type {
   WeekStartOptions,
 } from '../types'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
-import toInteger from '../_lib/toInteger/index'
 
 /**
  * The {@link setWeekYear} function options.
@@ -37,8 +36,6 @@ export interface SetWeekYearOptions
  * @param weekYear - the local week-numbering year of the new date
  * @param options - an object with options.
  * @returns the new date with the local week-numbering year set
- * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
- * @throws {RangeError} `options.firstWeekContainsDate` must be between 1 and 7
  *
  * @example
  * // Set the local week-numbering year 2004 to 2 January 2010 with default options:
@@ -57,20 +54,18 @@ export interface SetWeekYearOptions
  */
 export default function setWeekYear<DateType extends Date>(
   dirtyDate: DateType | number,
-  dirtyWeekYear: number,
+  weekYear: number,
   options?: SetWeekYearOptions
 ): DateType {
   const defaultOptions = getDefaultOptions()
-  const firstWeekContainsDate = toInteger(
+  const firstWeekContainsDate =
     options?.firstWeekContainsDate ??
-      options?.locale?.options?.firstWeekContainsDate ??
-      defaultOptions.firstWeekContainsDate ??
-      defaultOptions.locale?.options?.firstWeekContainsDate ??
-      1
-  )
+    options?.locale?.options?.firstWeekContainsDate ??
+    defaultOptions.firstWeekContainsDate ??
+    defaultOptions.locale?.options?.firstWeekContainsDate ??
+    1
 
   let date = toDate(dirtyDate)
-  const weekYear = toInteger(dirtyWeekYear)
   const diff = differenceInCalendarDays(date, startOfWeekYear(date, options))
   const firstWeek = constructFrom(dirtyDate, 0)
   firstWeek.setFullYear(weekYear, 0, firstWeekContainsDate)

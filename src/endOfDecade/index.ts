@@ -10,7 +10,6 @@ import toDate from '../toDate/index'
  *
  * @param date - the original date
  * @returns the end of a decade
- * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // The end of a decade for 12 May 1984 00:00:00:

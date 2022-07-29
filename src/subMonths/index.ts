@@ -1,4 +1,3 @@
-import toInteger from '../_lib/toInteger/index'
 import addMonths from '../addMonths/index'
 
 /**
@@ -20,8 +19,7 @@ import addMonths from '../addMonths/index'
  */
 export default function subMonths<DateType extends Date>(
   dirtyDate: DateType | number,
-  dirtyAmount: number
+  amount: number
 ): DateType {
-  const amount = toInteger(dirtyAmount)
   return addMonths(dirtyDate, -amount)
 }

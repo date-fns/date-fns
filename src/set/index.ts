@@ -2,7 +2,6 @@ import constructFrom from '../constructFrom/index'
 import setMonth from '../setMonth/index'
 import toDate from '../toDate/index'
 import type { DateValues } from '../types'
-import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name set
@@ -66,23 +65,23 @@ export default function set<DateType extends Date>(
   }
 
   if (values.date != null) {
-    date.setDate(toInteger(values.date))
+    date.setDate(values.date)
   }
 
   if (values.hours != null) {
-    date.setHours(toInteger(values.hours))
+    date.setHours(values.hours)
   }
 
   if (values.minutes != null) {
-    date.setMinutes(toInteger(values.minutes))
+    date.setMinutes(values.minutes)
   }
 
   if (values.seconds != null) {
-    date.setSeconds(toInteger(values.seconds))
+    date.setSeconds(values.seconds)
   }
 
   if (values.milliseconds != null) {
-    date.setMilliseconds(toInteger(values.milliseconds))
+    date.setMilliseconds(values.milliseconds)
   }
 
   return date

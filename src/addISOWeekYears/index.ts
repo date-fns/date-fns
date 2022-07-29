@@ -1,6 +1,5 @@
 import getISOWeekYear from '../getISOWeekYear/index'
 import setISOWeekYear from '../setISOWeekYear/index'
-import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name addISOWeekYears
@@ -23,8 +22,7 @@ import toInteger from '../_lib/toInteger/index'
  */
 export default function addISOWeekYears<DateType extends Date>(
   dirtyDate: DateType | number,
-  dirtyAmount: number
+  amount: number
 ): DateType {
-  const amount = toInteger(dirtyAmount)
   return setISOWeekYear(dirtyDate, getISOWeekYear(dirtyDate) + amount)
 }

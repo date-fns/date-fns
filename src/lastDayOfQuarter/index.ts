@@ -10,9 +10,7 @@ import toDate from '../toDate/index'
  * The result will be in the local timezone.
  *
  * @param date - the original date
- * @param [options] - an object with options.
  * @returns the last day of a quarter
- * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // The last day of a quarter for 2 September 2014 11:55:00:

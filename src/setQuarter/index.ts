@@ -1,6 +1,5 @@
 import setMonth from '../setMonth/index'
 import toDate from '../toDate/index'
-import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name setQuarter
@@ -21,10 +20,9 @@ import toInteger from '../_lib/toInteger/index'
  */
 export default function setQuarter<DateType extends Date>(
   dirtyDate: DateType | number,
-  dirtyQuarter: number
+  quarter: number
 ): DateType {
   const date = toDate(dirtyDate)
-  const quarter = toInteger(dirtyQuarter)
   const oldQuarter = Math.floor(date.getMonth() / 3) + 1
   const diff = quarter - oldQuarter
   return setMonth(date, date.getMonth() + diff * 3)

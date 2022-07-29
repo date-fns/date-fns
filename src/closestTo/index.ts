@@ -59,7 +59,7 @@ export default function closestTo<DateType extends Date>(
     }
 
     const distance = Math.abs(timeToCompare - currentDate.getTime())
-    if (result == null || distance < Number(minDistance)) {
+    if (result == null || distance < minDistance) {
       result = currentDate
       minDistance = distance
     }

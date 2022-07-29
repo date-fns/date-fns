@@ -55,8 +55,7 @@ describe('differenceInCalendarWeeks', () => {
       new Date(2014, 6 /* Jul */, 8, 18, 0),
       new Date(2014, 5 /* Jun */, 29, 6, 0),
       {
-        // @ts-expect-error
-        weekStartsOn: '1',
+        weekStartsOn: 1,
       }
     )
     assert(result === 2)
@@ -145,18 +144,5 @@ describe('differenceInCalendarWeeks', () => {
   it('returns NaN if the both dates are `Invalid Date`', () => {
     const result = differenceInCalendarWeeks(new Date(NaN), new Date(NaN))
     assert(isNaN(result))
-  })
-
-  it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', () => {
-    const block = () =>
-      differenceInCalendarWeeks(
-        new Date(2014, 6 /* Jul */, 8, 18, 0),
-        new Date(2014, 5 /* Jun */, 29, 6, 0),
-        {
-          // @ts-expect-error
-          weekStartsOn: NaN,
-        }
-      )
-    assert.throws(block, RangeError)
   })
 })

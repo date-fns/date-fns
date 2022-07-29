@@ -54,7 +54,7 @@ export default function eachMinuteOfInterval<DateType extends Date>(
 
   let currentDate = startDate
 
-  const step = Number(options?.step ?? 1)
+  const step = options?.step ?? 1
   if (step < 1 || isNaN(step))
     throw new RangeError(
       '`options.step` must be a number equal to or greater than 1'

@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name setDayOfYear
@@ -20,10 +19,9 @@ import toInteger from '../_lib/toInteger/index'
  */
 export default function setDayOfYear<DateType extends Date>(
   dirtyDate: DateType | number,
-  dirtyDayOfYear: number
+  dayOfYear: number
 ): DateType {
   const date = toDate(dirtyDate)
-  const dayOfYear = toInteger(dirtyDayOfYear)
   date.setMonth(0)
   date.setDate(dayOfYear)
   return date

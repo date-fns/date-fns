@@ -3,7 +3,6 @@ import addMonths from '../addMonths/index'
 import constructFrom from '../constructFrom/index'
 import toDate from '../toDate/index'
 import type { Duration } from '../types'
-import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name add
@@ -50,13 +49,15 @@ export default function add<DateType extends Date>(
   if (!duration || typeof duration !== 'object')
     return constructFrom(dirtyDate, NaN)
 
-  const years = duration.years ? toInteger(duration.years) : 0
-  const months = duration.months ? toInteger(duration.months) : 0
-  const weeks = duration.weeks ? toInteger(duration.weeks) : 0
-  const days = duration.days ? toInteger(duration.days) : 0
-  const hours = duration.hours ? toInteger(duration.hours) : 0
-  const minutes = duration.minutes ? toInteger(duration.minutes) : 0
-  const seconds = duration.seconds ? toInteger(duration.seconds) : 0
+  const {
+    years = 0,
+    months = 0,
+    weeks = 0,
+    days = 0,
+    hours = 0,
+    minutes = 0,
+    seconds = 0,
+  } = duration
 
   // Add years and months
   const date = toDate(dirtyDate)

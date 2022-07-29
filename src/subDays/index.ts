@@ -1,5 +1,4 @@
 import addDays from '../addDays/index'
-import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name subDays
@@ -20,8 +19,7 @@ import toInteger from '../_lib/toInteger/index'
  */
 export default function subDays<DateType extends Date>(
   dirtyDate: DateType | number,
-  dirtyAmount: number
+  amount: number
 ): DateType {
-  const amount = toInteger(dirtyAmount)
   return addDays(dirtyDate, -amount)
 }

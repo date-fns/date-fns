@@ -14,20 +14,6 @@ describe('subHours', () => {
     assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 23, 0))
   })
 
-  it('converts a fractional number to an integer', () => {
-    const result = subHours(new Date(2014, 6 /* Jul */, 11, 1, 0), 2.22)
-    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 23, 0))
-  })
-
-  it('implicitly converts number arguments', () => {
-    const result = subHours(
-      new Date(2014, 6 /* Jul */, 11, 1, 0),
-      // @ts-expect-error
-      '2'
-    )
-    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 23, 0))
-  })
-
   it('does not mutate the original date', () => {
     const date = new Date(2014, 6 /* Jul */, 10, 23, 0)
     subHours(date, 10)

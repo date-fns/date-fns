@@ -1,6 +1,5 @@
 import constructFrom from '../constructFrom/index'
 import toDate from '../toDate/index'
-import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name setYear
@@ -21,10 +20,9 @@ import toInteger from '../_lib/toInteger/index'
  */
 export default function setYear<DateType extends Date>(
   dirtyDate: DateType | number,
-  dirtyYear: number
+  year: number
 ): DateType {
   const date = toDate(dirtyDate)
-  const year = toInteger(dirtyYear)
 
   // Check if date is Invalid Date because Date.prototype.setFullYear ignores the value of Invalid Date
   if (isNaN(date.getTime())) {
