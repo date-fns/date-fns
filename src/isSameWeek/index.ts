@@ -38,8 +38,8 @@ export interface IsSameWeekOptions extends WeekStartOptions, LocaleOptions {}
  * //=> false
  */
 export default function isSameWeek<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number,
+  dirtyDateLeft: ReadonlyDate<DateType> | number,
+  dirtyDateRight: ReadonlyDate<DateType> | number,
   options?: IsSameWeekOptions
 ): boolean {
   const dateLeftStartOfWeek = startOfWeek(dirtyDateLeft, options)

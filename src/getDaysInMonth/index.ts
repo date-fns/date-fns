@@ -18,7 +18,7 @@ import constructFrom from '../constructFrom/index'
  * //=> 29
  */
 export default function getDaysInMonth<DateType extends Date>(
-  dirtyDate: DateType | number
+  dirtyDate: ReadonlyDate<DateType> | number
 ): number {
   const date = toDate(dirtyDate)
   const year = date.getFullYear()

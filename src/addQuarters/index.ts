@@ -1,4 +1,5 @@
 import addMonths from '../addMonths/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name addQuarters
@@ -18,7 +19,7 @@ import addMonths from '../addMonths/index'
  * //=> Mon Dec 01 2014 00:00:00
  */
 export default function addQuarters<DateType extends Date>(
-  dirtyDate: DateType | number,
+  dirtyDate: ReadonlyDate<DateType> | number,
   amount: number
 ): DateType {
   const months = amount * 3

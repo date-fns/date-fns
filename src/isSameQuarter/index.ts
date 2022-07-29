@@ -23,8 +23,8 @@ import startOfQuarter from '../startOfQuarter/index'
  * //=> false
  */
 export default function isSameQuarter<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+  dirtyDateLeft: ReadonlyDate<DateType> | number,
+  dirtyDateRight: ReadonlyDate<DateType> | number
 ): boolean {
   const dateLeftStartOfQuarter = startOfQuarter(dirtyDateLeft)
   const dateRightStartOfQuarter = startOfQuarter(dirtyDateRight)

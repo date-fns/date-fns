@@ -78,7 +78,7 @@ export interface FormatDistanceToNowStrictOptions
  * //=> '1 jaro'
  */
 export default function formatDistanceToNowStrict<DateType extends Date>(
-  dirtyDate: DateType | number,
+  dirtyDate: ReadonlyDate<DateType> | number,
   options?: FormatDistanceToNowStrictOptions
 ): string {
   return formatDistanceStrict(dirtyDate, Date.now(), options)

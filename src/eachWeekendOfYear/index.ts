@@ -26,7 +26,7 @@ import startOfYear from '../startOfYear/index'
  * ]
  */
 export default function eachWeekendOfYear<DateType extends Date>(
-  dirtyDate: DateType | number
+  dirtyDate: ReadonlyDate<DateType> | number
 ): DateType[] {
   const startDate = startOfYear(dirtyDate)
   const endDate = endOfYear(dirtyDate)

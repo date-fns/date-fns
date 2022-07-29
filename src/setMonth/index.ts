@@ -20,7 +20,7 @@ import toDate from '../toDate/index'
  * //=> Sat Feb 01 2014 00:00:00
  */
 export default function setMonth<DateType extends Date>(
-  dirtyDate: DateType | number,
+  dirtyDate: ReadonlyDate<DateType> | number,
   month: number
 ): DateType {
   const date = toDate(dirtyDate)

@@ -46,8 +46,8 @@ export interface FormatRelativeOptions
  * //=> "last Thursday at 12:45 AM"
  */
 export default function formatRelative<DateType extends Date>(
-  dirtyDate: DateType | number,
-  dirtyBaseDate: DateType | number,
+  dirtyDate: ReadonlyDate<DateType> | number,
+  dirtyBaseDate: ReadonlyDate<DateType> | number,
   options?: FormatRelativeOptions
 ): string {
   const date = toDate(dirtyDate)

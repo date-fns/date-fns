@@ -331,7 +331,7 @@ export interface FormatOptions
  */
 
 export default function format<DateType extends Date>(
-  dirtyDate: DateType | number,
+  dirtyDate: ReadonlyDate<DateType> | number,
   formatStr: string,
   options?: FormatOptions
 ): string {

@@ -1,3 +1,4 @@
+import type { ReadonlyDate } from '../types'
 import toDate from '../toDate/index'
 
 /**
@@ -22,11 +23,11 @@ import toDate from '../toDate/index'
  * //=> Wed Feb 11 1987 00:00:00
  */
 export default function min<DateType extends Date>(
-  datesArray: Array<DateType | number>
+  datesArray: Array<ReadonlyDate<DateType> | number>
 ): DateType | Date {
   let result: Date | undefined
 
-  datesArray.forEach(function (dirtyDate: Date | number) {
+  datesArray.forEach((dirtyDate: ReadonlyDate<DateType> | number) => {
     let currentDate = toDate(dirtyDate)
 
     if (

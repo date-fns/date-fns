@@ -1,5 +1,5 @@
 import toDate from '../toDate/index'
-import type { Interval } from '../types'
+import type { ReadonlyInterval } from '../types'
 
 /**
  * @name eachYearOfInterval
@@ -28,7 +28,7 @@ import type { Interval } from '../types'
  * // ]
  */
 export default function eachYearOfInterval<DateType extends Date>(
-  interval: Interval<DateType>
+  interval: ReadonlyInterval<DateType>
 ): DateType[] {
   const startDate = toDate(interval.start)
   const endDate = toDate(interval.end)

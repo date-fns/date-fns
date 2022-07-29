@@ -50,7 +50,7 @@ export interface GetWeekOptions
  */
 
 export default function getWeek<DateType extends Date>(
-  dirtyDate: DateType | number,
+  dirtyDate: ReadonlyDate<DateType> | number,
   options?: GetWeekOptions
 ): number {
   const date = toDate(dirtyDate)

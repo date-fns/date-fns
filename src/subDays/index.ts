@@ -18,7 +18,7 @@ import addDays from '../addDays/index'
  * //=> Fri Aug 22 2014 00:00:00
  */
 export default function subDays<DateType extends Date>(
-  dirtyDate: DateType | number,
+  dirtyDate: ReadonlyDate<DateType> | number,
   amount: number
 ): DateType {
   return addDays(dirtyDate, -amount)

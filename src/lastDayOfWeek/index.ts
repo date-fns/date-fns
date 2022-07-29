@@ -31,7 +31,7 @@ export interface LastDayOfWeekOptions extends LocaleOptions, WeekStartOptions {}
  * //=> Sun Sep 07 2014 00:00:00
  */
 export default function lastDayOfWeek<DateType extends Date>(
-  dirtyDate: DateType | number,
+  dirtyDate: ReadonlyDate<DateType> | number,
   options?: LastDayOfWeekOptions
 ): DateType {
   const defaultOptions = getDefaultOptions()

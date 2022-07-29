@@ -18,7 +18,7 @@ import toDate from '../toDate/index'
  * //=> Mon Dec 01 2014 22:15:45.000
  */
 export default function startOfSecond<DateType extends Date>(
-  dirtyDate: DateType | number
+  dirtyDate: ReadonlyDate<DateType> | number
 ): DateType {
   const date = toDate(dirtyDate)
   date.setMilliseconds(0)

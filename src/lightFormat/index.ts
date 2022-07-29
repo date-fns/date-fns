@@ -75,7 +75,7 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/
 type Token = keyof typeof formatters
 
 export default function lightFormat<DateType extends Date>(
-  dirtyDate: DateType | number,
+  dirtyDate: ReadonlyDate<DateType> | number,
   formatStr: string
 ): string {
   const originalDate = toDate(dirtyDate)

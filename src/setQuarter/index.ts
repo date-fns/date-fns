@@ -19,7 +19,7 @@ import toDate from '../toDate/index'
  * //=> Wed Apr 02 2014 00:00:00
  */
 export default function setQuarter<DateType extends Date>(
-  dirtyDate: DateType | number,
+  dirtyDate: ReadonlyDate<DateType> | number,
   quarter: number
 ): DateType {
   const date = toDate(dirtyDate)

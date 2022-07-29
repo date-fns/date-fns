@@ -53,7 +53,7 @@ export interface SetWeekYearOptions
  * //=> Sat Jan 01 2005 00:00:00
  */
 export default function setWeekYear<DateType extends Date>(
-  dirtyDate: DateType | number,
+  dirtyDate: ReadonlyDate<DateType> | number,
   weekYear: number,
   options?: SetWeekYearOptions
 ): DateType {

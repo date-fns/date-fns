@@ -18,7 +18,7 @@ import toDate from '../toDate/index'
  * //=> Tue Jul 01 2014 00:00:00
  */
 export default function startOfQuarter<DateType extends Date>(
-  dirtyDate: DateType | number
+  dirtyDate: ReadonlyDate<DateType> | number
 ): DateType {
   const date = toDate(dirtyDate)
   const currentMonth = date.getMonth()

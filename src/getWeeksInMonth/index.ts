@@ -34,7 +34,7 @@ export interface GetWeeksInMonthOptions
  * //=> 6
  */
 export default function getWeeksInMonth<DateType extends Date>(
-  date: DateType | number,
+  date: ReadonlyDate<DateType> | number,
   options?: GetWeeksInMonthOptions
 ): number {
   return (

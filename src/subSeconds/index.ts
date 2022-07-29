@@ -18,7 +18,7 @@ import addSeconds from '../addSeconds/index'
  * //=> Thu Jul 10 2014 12:44:30
  */
 export default function subSeconds<DateType extends Date>(
-  dirtyDate: DateType | number,
+  dirtyDate: ReadonlyDate<DateType> | number,
   amount: number
 ): DateType {
   return addSeconds(dirtyDate, -amount)

@@ -88,7 +88,7 @@ export interface FormatDistanceToNowOptions extends FormatDistanceOptions {}
  * //=> 'pli ol 1 jaro'
  */
 export default function formatDistanceToNow<DateType extends Date>(
-  dirtyDate: DateType | number,
+  dirtyDate: ReadonlyDate<DateType> | number,
   options?: FormatDistanceToNowOptions
 ): string {
   return distanceInWords(dirtyDate, Date.now(), options)

@@ -25,7 +25,7 @@ import type { Day } from '../types'
  * //=> Tue Mar 24 2020 00:00:00
  */
 export default function nextDay<DateType extends Date>(
-  date: DateType | number,
+  date: ReadonlyDate<DateType> | number,
   day: Day
 ): DateType {
   let delta = day - getDay(date)

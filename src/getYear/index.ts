@@ -17,7 +17,7 @@ import toDate from '../toDate/index'
  * //=> 2014
  */
 export default function getYear<DateType extends Date>(
-  dirtyDate: DateType | number
+  dirtyDate: ReadonlyDate<DateType> | number
 ): number {
   return toDate(dirtyDate).getFullYear()
 }

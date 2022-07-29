@@ -19,7 +19,7 @@ import constructFrom from '../constructFrom/index'
  * //=> Wed Jan 01 2014 00:00:00
  */
 export default function startOfYear<DateType extends Date>(
-  dirtyDate: DateType | number
+  dirtyDate: ReadonlyDate<DateType> | number
 ): DateType {
   const cleanDate = toDate(dirtyDate)
   const date = constructFrom(dirtyDate, 0)

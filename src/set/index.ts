@@ -41,7 +41,7 @@ import type { DateValues } from '../types'
  */
 
 export default function set<DateType extends Date>(
-  dirtyDate: DateType | number,
+  dirtyDate: ReadonlyDate<DateType> | number,
   values: DateValues
 ): DateType {
   let date = toDate(dirtyDate)

@@ -18,7 +18,7 @@ import toDate from '../toDate/index'
  * //=> Wed Dec 31 2014 23:59:59.999
  */
 export default function endOfYear<DateType extends Date>(
-  dirtyDate: DateType | number
+  dirtyDate: ReadonlyDate<DateType> | number
 ): DateType {
   const date = toDate(dirtyDate)
   const year = date.getFullYear()

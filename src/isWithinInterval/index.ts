@@ -1,5 +1,5 @@
 import toDate from '../toDate/index'
-import type { Interval } from '../types'
+import type { ReadonlyDate, ReadonlyInterval } from '../types'
 
 /**
  * @name isWithinInterval
@@ -40,8 +40,8 @@ import type { Interval } from '../types'
  * isWithinInterval(date, { start: date, end }) // => true
  */
 export default function isWithinInterval<DateType extends Date>(
-  dirtyDate: DateType | number,
-  interval: Interval<DateType>
+  dirtyDate: ReadonlyDate<DateType> | number,
+  interval: ReadonlyInterval<DateType>
 ): boolean {
   const time = toDate(dirtyDate).getTime()
   const startTime = toDate(interval.start).getTime()

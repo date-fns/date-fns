@@ -21,8 +21,8 @@ import toDate from '../toDate/index'
  * //=> false
  */
 export default function isEqual<DateType extends Date>(
-  dirtyLeftDate: DateType | number,
-  dirtyRightDate: DateType | number
+  dirtyLeftDate: ReadonlyDate<DateType> | number,
+  dirtyRightDate: ReadonlyDate<DateType> | number
 ): boolean {
   const dateLeft = toDate(dirtyLeftDate)
   const dateRight = toDate(dirtyRightDate)

@@ -23,8 +23,8 @@ import toDate from '../toDate/index'
  * //=> false
  */
 export default function isSameMonth<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+  dirtyDateLeft: ReadonlyDate<DateType> | number,
+  dirtyDateRight: ReadonlyDate<DateType> | number
 ): boolean {
   const dateLeft = toDate(dirtyDateLeft)
   const dateRight = toDate(dirtyDateRight)

@@ -17,7 +17,7 @@ import toDate from '../toDate/index'
  * //=> 45
  */
 export default function getMinutes<DateType extends Date>(
-  dirtyDate: DateType | number
+  dirtyDate: ReadonlyDate<DateType> | number
 ): number {
   const date = toDate(dirtyDate)
   const minutes = date.getMinutes()

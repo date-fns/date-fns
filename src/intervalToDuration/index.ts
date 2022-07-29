@@ -6,7 +6,7 @@ import differenceInMonths from '../differenceInMonths/index'
 import differenceInSeconds from '../differenceInSeconds/index'
 import differenceInYears from '../differenceInYears/index'
 import toDate from '../toDate/index'
-import type { Duration, Interval } from '../types'
+import type { Duration, ReadonlyInterval } from '../types'
 
 /**
  * @name intervalToDuration
@@ -32,7 +32,7 @@ import type { Duration, Interval } from '../types'
  * // => { years: 39, months: 2, days: 20, hours: 7, minutes: 5, seconds: 0 }
  */
 export default function interval<DateType extends Date>(
-  interval: Interval<DateType>
+  interval: ReadonlyInterval<DateType>
 ): Duration {
   const start = toDate(interval.start)
   const end = toDate(interval.end)

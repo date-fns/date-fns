@@ -21,7 +21,7 @@ import isSameDay from '../isSameDay/index'
  * //=> true
  */
 export default function isToday<DateType extends Date>(
-  dirtyDate: DateType | number
+  dirtyDate: ReadonlyDate<DateType> | number
 ): boolean {
   return isSameDay(dirtyDate, Date.now())
 }

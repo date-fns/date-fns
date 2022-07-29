@@ -18,7 +18,7 @@ import toDate from '../toDate/index'
  * //=> Tue Sep 30 2014 00:00:00
  */
 export default function lastDayOfMonth<DateType extends Date>(
-  dirtyDate: DateType | number
+  dirtyDate: ReadonlyDate<DateType> | number
 ): DateType {
   const date = toDate(dirtyDate)
   const month = date.getMonth()

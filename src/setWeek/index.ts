@@ -49,7 +49,7 @@ export interface SetWeekOptions
  * //=> Sun Jan 4 2004 00:00:00
  */
 export default function setWeek<DateType extends Date>(
-  dirtyDate: DateType | number,
+  dirtyDate: ReadonlyDate<DateType> | number,
   week: number,
   options?: SetWeekOptions
 ): DateType {

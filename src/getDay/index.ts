@@ -17,7 +17,7 @@ import toDate from '../toDate/index'
  * //=> 3
  */
 export default function getDay<DateType extends Date>(
-  dirtyDate: DateType | number
+  dirtyDate: ReadonlyDate<DateType> | number
 ): number {
   const date = toDate(dirtyDate)
   const day = date.getDay()

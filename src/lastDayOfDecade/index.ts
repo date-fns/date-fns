@@ -17,7 +17,7 @@ import toDate from '../toDate/index'
  * //=> Wed Dec 31 2019 00:00:00
  */
 export default function lastDayOfDecade<DateType extends Date>(
-  dirtyDate: DateType | number
+  dirtyDate: ReadonlyDate<DateType> | number
 ): DateType {
   const date = toDate(dirtyDate)
   const year = date.getFullYear()

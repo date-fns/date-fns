@@ -1,5 +1,5 @@
 import toDate from '../toDate/index'
-import type { Interval } from '../types'
+import type { ReadonlyInterval } from '../types'
 
 /**
  * The {@link areIntervalsOverlapping} function options.
@@ -62,8 +62,8 @@ export interface AreIntervalsOverlappingOptions {
  * //=> true
  */
 export default function areIntervalsOverlapping(
-  intervalLeft: Interval,
-  intervalRight: Interval,
+  intervalLeft: ReadonlyInterval,
+  intervalRight: ReadonlyInterval,
   options?: AreIntervalsOverlappingOptions
 ): boolean {
   const leftStartTime = toDate(intervalLeft.start).getTime()

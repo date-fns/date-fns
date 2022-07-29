@@ -19,7 +19,7 @@ import toDate from '../toDate/index'
  * //=> Sun Sep 01 2013 00:00:00
  */
 export default function setYear<DateType extends Date>(
-  dirtyDate: DateType | number,
+  dirtyDate: ReadonlyDate<DateType> | number,
   year: number
 ): DateType {
   const date = toDate(dirtyDate)

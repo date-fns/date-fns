@@ -18,7 +18,7 @@ import addYears from '../addYears/index'
  * //=> Tue Sep 01 2009 00:00:00
  */
 export default function subYears<DateType extends Date>(
-  dirtyDate: DateType | number,
+  dirtyDate: ReadonlyDate<DateType> | number,
   amount: number
 ): DateType {
   return addYears(dirtyDate, -amount)

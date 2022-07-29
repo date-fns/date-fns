@@ -17,7 +17,7 @@ import toDate from '../toDate/index'
  * //=> true
  */
 export default function isMonday<DateType extends Date>(
-  date: DateType | number
+  date: ReadonlyDate<DateType> | number
 ): boolean {
   return toDate(date).getDay() === 1
 }

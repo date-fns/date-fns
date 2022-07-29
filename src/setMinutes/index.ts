@@ -18,7 +18,7 @@ import toDate from '../toDate/index'
  * //=> Mon Sep 01 2014 11:45:40
  */
 export default function setMinutes<DateType extends Date>(
-  dirtyDate: DateType | number,
+  dirtyDate: ReadonlyDate<DateType> | number,
   minutes: number
 ): DateType {
   const date = toDate(dirtyDate)

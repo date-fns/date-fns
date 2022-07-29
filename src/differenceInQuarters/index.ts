@@ -26,8 +26,8 @@ export interface DifferenceInQuartersOptions extends RoundingOptions {}
  * //=> 2
  */
 export default function differenceInQuarters<DateType extends Date>(
-  dateLeft: DateType | number,
-  dateRight: DateType | number,
+  dateLeft: ReadonlyDate<DateType> | number,
+  dateRight: ReadonlyDate<DateType> | number,
   options?: DifferenceInQuartersOptions
 ): number {
   const diff = differenceInMonths(dateLeft, dateRight) / 3

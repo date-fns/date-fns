@@ -1,4 +1,5 @@
 import getISOWeekYear from '../getISOWeekYear/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name differenceInCalendarISOWeekYears
@@ -23,8 +24,8 @@ import getISOWeekYear from '../getISOWeekYear/index'
  * //=> 2
  */
 export default function differenceInCalendarISOWeekYears<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+  dirtyDateLeft: ReadonlyDate<DateType> | number,
+  dirtyDateRight: ReadonlyDate<DateType> | number
 ): number {
   return getISOWeekYear(dirtyDateLeft) - getISOWeekYear(dirtyDateRight)
 }

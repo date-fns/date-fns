@@ -18,7 +18,7 @@ import addMonths from '../addMonths/index'
  * //=> Mon Sep 01 2014 00:00:00
  */
 export default function subMonths<DateType extends Date>(
-  dirtyDate: DateType | number,
+  dirtyDate: ReadonlyDate<DateType> | number,
   amount: number
 ): DateType {
   return addMonths(dirtyDate, -amount)

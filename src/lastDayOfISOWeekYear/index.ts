@@ -23,7 +23,7 @@ import constructFrom from '../constructFrom/index'
  * //=> Sun Jan 01 2006 00:00:00
  */
 export default function lastDayOfISOWeekYear<DateType extends Date>(
-  dirtyDate: DateType | number
+  dirtyDate: ReadonlyDate<DateType> | number
 ): DateType {
   const year = getISOWeekYear(dirtyDate)
   const fourthOfJanuary = constructFrom(dirtyDate, 0)

@@ -1,6 +1,7 @@
 import { millisecondsInWeek } from '../constants/index'
 import startOfISOWeek from '../startOfISOWeek/index'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name differenceInCalendarISOWeeks
@@ -25,8 +26,8 @@ import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMillisec
  * //=> 3
  */
 export default function differenceInCalendarISOWeeks<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+  dirtyDateLeft: ReadonlyDate<DateType> | number,
+  dirtyDateRight: ReadonlyDate<DateType> | number
 ): number {
   const startOfISOWeekLeft = startOfISOWeek(dirtyDateLeft)
   const startOfISOWeekRight = startOfISOWeek(dirtyDateRight)

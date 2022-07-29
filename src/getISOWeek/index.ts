@@ -22,7 +22,7 @@ import toDate from '../toDate/index'
  * //=> 53
  */
 export default function getISOWeek<DateType extends Date>(
-  dirtyDate: DateType | number
+  dirtyDate: ReadonlyDate<DateType> | number
 ): number {
   const date = toDate(dirtyDate)
   const diff =

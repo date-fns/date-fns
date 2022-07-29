@@ -1,3 +1,4 @@
+import type { ReadonlyDate } from '../types'
 import toDate from '../toDate/index'
 
 /**
@@ -24,8 +25,8 @@ import toDate from '../toDate/index'
  * //=> 1
  */
 export default function closestIndexTo<DateType extends Date>(
-  dirtyDateToCompare: DateType | number,
-  datesArray: Array<DateType | number>
+  dirtyDateToCompare: ReadonlyDate<DateType> | number,
+  datesArray: Array<ReadonlyDate<DateType> | number>
 ): number | undefined {
   const dateToCompare = toDate(dirtyDateToCompare)
 

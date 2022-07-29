@@ -1,3 +1,5 @@
+import type { ReadonlyDate } from '../types'
+
 /**
  * @name toDate
  * @category Common Helpers
@@ -28,7 +30,7 @@
  * //=> Tue Feb 11 2014 11:30:30
  */
 export default function toDate<DateType extends Date = Date>(
-  argument: DateType | number
+  argument: ReadonlyDate<DateType> | number
 ): DateType {
   const argStr = Object.prototype.toString.call(argument)
 
@@ -44,7 +46,7 @@ export default function toDate<DateType extends Date = Date>(
     // return new Date(argument.getTime())
   } else if (typeof argument === 'number' || argStr === '[object Number]') {
     // TODO: Can we get rid of as?
-    return new Date(argument) as DateType
+    return new Date((argument as unknown) as Date) as DateType
   } else {
     // TODO: Can we get rid of as?
     return new Date(NaN) as DateType

@@ -22,8 +22,8 @@ import toDate from '../toDate/index'
  * //=> 1100
  */
 export default function differenceInMilliseconds<DateType extends Date>(
-  dateLeft: DateType | number,
-  dateRight: DateType | number
+  dateLeft: ReadonlyDate<DateType> | number,
+  dateRight: ReadonlyDate<DateType> | number
 ): number {
   return toDate(dateLeft).getTime() - toDate(dateRight).getTime()
 }

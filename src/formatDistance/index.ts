@@ -96,8 +96,8 @@ export interface FormatDistanceOptions extends LocaleOptions {
  */
 
 export default function formatDistance<DateType extends Date>(
-  dirtyDate: DateType | number,
-  dirtyBaseDate: DateType | number,
+  dirtyDate: ReadonlyDate<DateType> | number,
+  dirtyBaseDate: ReadonlyDate<DateType> | number,
   options?: FormatDistanceOptions
 ): string {
   const defaultOptions = getDefaultOptions()

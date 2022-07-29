@@ -22,7 +22,7 @@ import isSameSecond from '../isSameSecond/index'
  * //=> true
  */
 export default function isThisSecond<DateType extends Date>(
-  dirtyDate: DateType | number
+  dirtyDate: ReadonlyDate<DateType> | number
 ): boolean {
   return isSameSecond(Date.now(), dirtyDate)
 }

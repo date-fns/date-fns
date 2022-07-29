@@ -21,7 +21,7 @@ import toDate from '../toDate/index'
  * //=> Sat Jan 01 2005 00:00:00
  */
 export default function setISOWeek<DateType extends Date>(
-  dirtyDate: DateType | number,
+  dirtyDate: ReadonlyDate<DateType> | number,
   isoWeek: number
 ): DateType {
   const date = toDate(dirtyDate)

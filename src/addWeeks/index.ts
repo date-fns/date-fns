@@ -1,4 +1,5 @@
 import addDays from '../addDays/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name addWeeks
@@ -18,7 +19,7 @@ import addDays from '../addDays/index'
  * //=> Mon Sep 29 2014 00:00:00
  */
 export default function addWeeks<DateType extends Date>(
-  dirtyDate: DateType | number,
+  dirtyDate: ReadonlyDate<DateType> | number,
   amount: number
 ): DateType {
   const days = amount * 7

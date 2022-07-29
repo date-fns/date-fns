@@ -1,7 +1,11 @@
 import addWeeks from '../addWeeks/index'
 import startOfWeek from '../startOfWeek/index'
 import toDate from '../toDate/index'
-import type { Interval, LocaleOptions, WeekStartOptions } from '../types'
+import type {
+  ReadonlyInterval,
+  LocaleOptions,
+  WeekStartOptions,
+} from '../types'
 
 /**
  * The {@link eachWeekOfInterval} function options.
@@ -42,7 +46,7 @@ export interface EachWeekOfIntervalOptions
  * // ]
  */
 export default function eachWeekOfInterval<DateType extends Date>(
-  interval: Interval<DateType>,
+  interval: ReadonlyInterval<DateType>,
   options?: EachWeekOfIntervalOptions
 ): DateType[] {
   const startDate = toDate(interval.start)

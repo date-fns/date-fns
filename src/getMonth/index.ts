@@ -17,7 +17,7 @@ import toDate from '../toDate/index'
  * //=> 1
  */
 export default function getMonth<DateType extends Date>(
-  dirtyDate: DateType | number
+  dirtyDate: ReadonlyDate<DateType> | number
 ): number {
   const date = toDate(dirtyDate)
   const month = date.getMonth()

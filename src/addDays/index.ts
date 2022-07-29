@@ -1,5 +1,6 @@
 import toDate from '../toDate/index'
 import constructFrom from '../constructFrom/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name addDays
@@ -19,7 +20,7 @@ import constructFrom from '../constructFrom/index'
  * //=> Thu Sep 11 2014 00:00:00
  */
 export default function addDays<DateType extends Date>(
-  dirtyDate: DateType | number,
+  dirtyDate: ReadonlyDate<DateType> | number,
   amount: number
 ): DateType {
   const date = toDate(dirtyDate)

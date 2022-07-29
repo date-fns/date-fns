@@ -44,7 +44,7 @@ export interface FormatISO9075Options
  * //=> '19:00:52'
  */
 export default function formatISO9075<DateType extends Date>(
-  dirtyDate: DateType | number,
+  dirtyDate: ReadonlyDate<DateType> | number,
   options?: FormatISO9075Options
 ): string {
   const originalDate = toDate(dirtyDate)

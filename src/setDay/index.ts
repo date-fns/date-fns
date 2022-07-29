@@ -32,7 +32,7 @@ export interface SetDayOptions extends LocaleOptions, WeekStartOptions {}
  * //=> Sun Sep 07 2014 00:00:00
  */
 export default function setDay<DateType extends Date>(
-  dirtyDate: DateType | number,
+  dirtyDate: ReadonlyDate<DateType> | number,
   day: number,
   options?: SetDayOptions
 ): DateType {

@@ -38,7 +38,7 @@ const months = [
  * //=> 'Wed, 18 Sep 2019 19:00:52 GMT'
  */
 export default function formatRFC7231<DateType extends Date>(
-  dirtyDate: DateType | number
+  dirtyDate: ReadonlyDate<DateType> | number
 ): string {
   const originalDate = toDate(dirtyDate)
 

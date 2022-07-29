@@ -1,5 +1,26 @@
 import type { Locale } from './locale/types'
 
+export type ReadonlyDate<DateType extends Date> = Readonly<
+  Omit<
+    DateType,
+    | 'setTime'
+    | 'setMilliseconds'
+    | 'setUTCMilliseconds'
+    | 'setSeconds'
+    | 'setUTCSeconds'
+    | 'setMinutes'
+    | 'setUTCMinutes'
+    | 'setHours'
+    | 'setUTCHours'
+    | 'setDate'
+    | 'setUTCDate'
+    | 'setMonth'
+    | 'setUTCMonth'
+    | 'setFullYear'
+    | 'setUTCFullYear'
+  >
+>
+
 export interface GenericDateConstructor<DateType> {
   new (): DateType
 
@@ -31,6 +52,11 @@ export type DurationUnit = keyof Duration
 export interface Interval<DateType extends Date = Date> {
   start: DateType | number
   end: DateType | number
+}
+
+export interface ReadonlyInterval<DateType extends Date = Date> {
+  start: ReadonlyDate<DateType> | number
+  end: ReadonlyDate<DateType> | number
 }
 
 export interface StepOptions {

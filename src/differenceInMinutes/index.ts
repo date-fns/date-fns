@@ -38,8 +38,8 @@ export interface DifferenceInMinutesOptions extends RoundingOptions {}
  * //=> -1
  */
 export default function differenceInMinutes<DateType extends Date>(
-  dateLeft: DateType | number,
-  dateRight: DateType | number,
+  dateLeft: ReadonlyDate<DateType> | number,
+  dateRight: ReadonlyDate<DateType> | number,
   options?: DifferenceInMinutesOptions
 ): number {
   const diff =

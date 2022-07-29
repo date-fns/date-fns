@@ -17,7 +17,7 @@ import nextDay from '../nextDay/index'
  * //=> Tue Mar 24 2020 00:00:00
  */
 export default function nextTuesday<DateType extends Date>(
-  date: DateType | number
+  date: ReadonlyDate<DateType> | number
 ): DateType {
   return nextDay(date, 2)
 }

@@ -42,8 +42,8 @@ export interface DifferenceInCalendarWeeksOptions
  * //=> 2
  */
 export default function differenceInCalendarWeeks<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number,
+  dirtyDateLeft: ReadonlyDate<DateType> | number,
+  dirtyDateRight: ReadonlyDate<DateType> | number,
   options?: DifferenceInCalendarWeeksOptions
 ): number {
   const startOfWeekLeft = startOfWeek(dirtyDateLeft, options)
