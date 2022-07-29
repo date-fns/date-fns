@@ -332,47 +332,6 @@ describe('formatDistanceToNowStrict', () => {
     })
   })
 
-  describe('implicit conversion of options', () => {
-    it('`options.unit`', () => {
-      // eslint-disable-next-line no-new-wrappers
-      const unit = new String('year')
-
-      const result = formatDistanceToNowStrict(
-        new Date(1986, 3, 4, 10, 32, 0),
-        {
-          // @ts-expect-error
-          unit: unit,
-        }
-      )
-      assert(result === '0 years')
-    })
-
-    it('`options.addSuffix`', () => {
-      const result = formatDistanceToNowStrict(
-        new Date(1986, 3, 4, 10, 31, 35),
-        {
-          // @ts-expect-error
-          addSuffix: 1,
-        }
-      )
-      assert(result === '25 seconds ago')
-    })
-
-    it('`options.ceil`', () => {
-      // eslint-disable-next-line no-new-wrappers
-      const roundingMethod = new String('ceil')
-
-      const result = formatDistanceToNowStrict(
-        new Date(1986, 3, 4, 10, 33, 1),
-        {
-          // @ts-expect-error
-          roundingMethod: roundingMethod,
-        }
-      )
-      assert(result === '2 minutes')
-    })
-  })
-
   describe('custom locale', () => {
     it('can be passed to the function', () => {
       const localizeDistance: FormatDistanceFn = (token, count, options) => {
@@ -425,23 +384,5 @@ describe('formatDistanceToNowStrict', () => {
       formatDistanceToNowStrict.bind(null, new Date(NaN)),
       RangeError
     )
-  })
-
-  it("throws `RangeError` if `options.roundingMethod` is not 'floor', 'ceil', 'round' or undefined", () => {
-    const block = () =>
-      formatDistanceToNowStrict(new Date(1986, 3, 4, 10, 33, 29), {
-        // @ts-expect-error
-        roundingMethod: 'foobar',
-      })
-    assert.throws(block, RangeError)
-  })
-
-  it("throws `RangeError` if `options.unit` is not 's', 'm', 'h', 'd', 'M', 'Y' or undefined", () => {
-    const block = () =>
-      formatDistanceToNowStrict(new Date(1986, 3, 4, 10, 33, 29), {
-        // @ts-expect-error
-        unit: 'foobar',
-      })
-    assert.throws(block, RangeError)
   })
 })

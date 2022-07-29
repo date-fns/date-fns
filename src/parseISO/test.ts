@@ -355,26 +355,6 @@ describe('parseISO', () => {
   })
 
   describe('invalid argument', () => {
-    it('returns Invalid Date for date argument', () => {
-      const date = new Date(2016, 0, 1)
-      const result = parseISO(
-        // @ts-expect-error
-        date
-      )
-      assert(result instanceof Date)
-      assert(isNaN(result.getTime()))
-    })
-
-    it('returns Invalid Date for timestamp argument', () => {
-      const timestamp = new Date(2016, 0, 1, 23, 30, 45, 123).getTime()
-      const result = parseISO(
-        // @ts-expect-error
-        timestamp
-      )
-      assert(result instanceof Date)
-      assert(isNaN(result.getTime()))
-    })
-
     it('returns Invalid Date if argument is non-date string', () => {
       const result = parseISO('abc')
       assert(result instanceof Date)
@@ -386,72 +366,9 @@ describe('parseISO', () => {
       assert(result instanceof Date)
       assert(isNaN(result.getTime()))
     })
-
-    it('returns Invalid Date if argument is NaN', () => {
-      const result = parseISO(
-        // @ts-expect-error
-        NaN
-      )
-      assert(result instanceof Date)
-      assert(isNaN(result.getTime()))
-    })
-
-    it('returns Invalid Date if argument is Invalid Date', () => {
-      const result = parseISO(
-        // @ts-expect-error
-        new Date(NaN)
-      )
-      assert(result instanceof Date)
-      assert(isNaN(result.getTime()))
-    })
-
-    it('returns Invalid Date if argument is null', () => {
-      const result = parseISO(
-        // @ts-expect-error
-        null
-      )
-      assert(result instanceof Date)
-      assert(isNaN(result.getTime()))
-    })
-
-    it('returns Invalid Date if argument is undefined', () => {
-      const result = parseISO(
-        // @ts-expect-error
-        undefined
-      )
-      assert(result instanceof Date)
-      assert(isNaN(result.getTime()))
-    })
-
-    it('returns Invalid Date if argument is false', () => {
-      const result = parseISO(
-        // @ts-expect-error
-        false
-      )
-      assert(result instanceof Date)
-      assert(isNaN(result.getTime()))
-    })
-
-    it('returns Invalid Date if argument is true', () => {
-      const result = parseISO(
-        // @ts-expect-error
-        true
-      )
-      assert(result instanceof Date)
-      assert(isNaN(result.getTime()))
-    })
   })
 
   describe('argument conversion', () => {
-    it('implicitly converts instance of String into a string', () => {
-      const dateString = new String('2014-02-11')
-      const result = parseISO(
-        // @ts-expect-error
-        dateString
-      )
-      assert.deepStrictEqual(result, new Date(2014, 1, /* Feb */ 11))
-    })
-
     it('implicitly converts options', () => {
       const result = parseISO('+12340702', {
         // @ts-expect-error

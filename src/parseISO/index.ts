@@ -51,15 +51,6 @@ export default function parseISO(
     throw new RangeError('additionalDigits must be 0, 1 or 2')
   }
 
-  if (
-    !(
-      typeof argument === 'string' ||
-      Object.prototype.toString.call(argument) === '[object String]'
-    )
-  ) {
-    return new Date(NaN)
-  }
-
   const dateStrings = splitDateString(argument)
 
   let date

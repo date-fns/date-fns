@@ -350,14 +350,11 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * //=> Sun Feb 28 2010 00:00:00
  */
 export default function parse<DateType extends Date>(
-  dirtyDateString: string,
-  dirtyFormatString: string,
+  dateString: string,
+  formatString: string,
   dirtyReferenceDate: DateType | number,
   options?: ParseOptions
 ): DateType {
-  let dateString = String(dirtyDateString)
-  const formatString = String(dirtyFormatString)
-
   const defaultOptions = getDefaultOptions()
   const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale
 
@@ -430,13 +427,13 @@ export default function parse<DateType extends Date>(
       !options?.useAdditionalWeekYearTokens &&
       isProtectedWeekYearToken(token)
     ) {
-      throwProtectedError(token, formatString, dirtyDateString)
+      throwProtectedError(token, formatString, dateString)
     }
     if (
       !options?.useAdditionalDayOfYearTokens &&
       isProtectedDayOfYearToken(token)
     ) {
-      throwProtectedError(token, formatString, dirtyDateString)
+      throwProtectedError(token, formatString, dateString)
     }
 
     const firstCharacter = token[0]

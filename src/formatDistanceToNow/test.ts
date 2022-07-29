@@ -165,24 +165,6 @@ describe('formatDistanceToNow', () => {
     })
   })
 
-  describe('implicit conversion of options', () => {
-    it('`options.includeSeconds`', () => {
-      const result = formatDistanceToNow(new Date(1986, 3, 4, 10, 31, 52), {
-        // @ts-expect-error
-        includeSeconds: 1,
-      })
-      assert(result === 'less than 10 seconds')
-    })
-
-    it('`options.addSuffix`', () => {
-      const result = formatDistanceToNow(new Date(1986, 3, 4, 11, 32, 0), {
-        // @ts-expect-error
-        addSuffix: 1,
-      })
-      assert(result === 'in about 1 hour')
-    })
-  })
-
   describe('custom locale', () => {
     it('can be passed to the function', () => {
       const localizeDistance: FormatDistanceFn = (token, count, options) => {
