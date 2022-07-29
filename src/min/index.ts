@@ -22,20 +22,8 @@ import toDate from '../toDate/index'
  * //=> Wed Feb 11 1987 00:00:00
  */
 export default function min<DateType extends Date>(
-  dirtyDatesArray: Array<DateType | number>
+  datesArray: Array<DateType | number>
 ): DateType | Date {
-  let datesArray: Array<Date | number>
-  // `dirtyDatesArray` is Array, Set or Map, or object with custom `forEach` method
-  if (dirtyDatesArray && typeof dirtyDatesArray.forEach === 'function') {
-    datesArray = dirtyDatesArray
-    // If `dirtyDatesArray` is Array-like Object, convert to Array.
-  } else if (typeof dirtyDatesArray === 'object' && dirtyDatesArray !== null) {
-    datesArray = Array.prototype.slice.call(dirtyDatesArray)
-  } else {
-    // `dirtyDatesArray` is non-iterable, return Invalid Date
-    return new Date(NaN)
-  }
-
   let result: Date | undefined
 
   datesArray.forEach(function (dirtyDate: Date | number) {
