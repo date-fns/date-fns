@@ -22,8 +22,6 @@ export interface FormatISO9075Options
  * @param options - an object with options.
  * @returns the formatted date string
  * @throws {RangeError} `date` must not be Invalid Date
- * @throws {RangeError} `options.format` must be 'extended' or 'basic'
- * @throws {RangeError} `options.representation` must be 'date', 'time' or 'complete'
  *
  * @example
  * // Represent 18 September 2019 in ISO 9075 format:
@@ -55,20 +53,8 @@ export default function formatISO9075<DateType extends Date>(
     throw new RangeError('Invalid time value')
   }
 
-  const format = String(options?.format ?? 'extended')
-  const representation = String(options?.representation ?? 'complete')
-
-  if (format !== 'extended' && format !== 'basic') {
-    throw new RangeError("format must be 'extended' or 'basic'")
-  }
-
-  if (
-    representation !== 'date' &&
-    representation !== 'time' &&
-    representation !== 'complete'
-  ) {
-    throw new RangeError("representation must be 'date', 'time', or 'complete'")
-  }
+  const format = options?.format ?? 'extended'
+  const representation = options?.representation ?? 'complete'
 
   let result = ''
 

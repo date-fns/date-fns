@@ -115,7 +115,7 @@ export default function formatDistance<DateType extends Date>(
   }
 
   const localizeOptions = assign(cloneObject(options), {
-    addSuffix: Boolean(options?.addSuffix),
+    addSuffix: options?.addSuffix,
     comparison: comparison as -1 | 0 | 1,
   })
 

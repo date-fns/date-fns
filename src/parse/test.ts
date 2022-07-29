@@ -2071,36 +2071,6 @@ describe('parse', () => {
   })
 
   describe('implicit conversion of arguments', () => {
-    it('`dateString`', () => {
-      // eslint-disable-next-line no-new-wrappers
-      const dateString = new String('20161105T040404')
-      const result = parse(
-        // @ts-expect-error
-        dateString,
-        "yyyyMMdd'T'HHmmss",
-        referenceDate
-      )
-      assert.deepStrictEqual(
-        result,
-        new Date(2016, 10 /* Nov */, 5, 4, 4, 4, 0)
-      )
-    })
-
-    it('`formatString`', () => {
-      // eslint-disable-next-line no-new-wrappers
-      const formatString = new String("yyyyMMdd'T'HHmmss")
-      const result = parse(
-        '20161105T040404',
-        // @ts-expect-error
-        formatString,
-        referenceDate
-      )
-      assert.deepStrictEqual(
-        result,
-        new Date(2016, 10 /* Nov */, 5, 4, 4, 4, 0)
-      )
-    })
-
     it('`options.weekStartsOn`', () => {
       const result = parse('2018', 'Y', referenceDate, {
         // @ts-expect-error

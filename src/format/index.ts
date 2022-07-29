@@ -337,11 +337,9 @@ export interface FormatOptions
 
 export default function format<DateType extends Date>(
   dirtyDate: DateType | number,
-  dirtyFormatStr: string,
+  formatStr: string,
   options?: FormatOptions
 ): string {
-  const formatStr = String(dirtyFormatStr)
-
   const defaultOptions = getDefaultOptions()
   const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale
 
@@ -426,13 +424,13 @@ export default function format<DateType extends Date>(
           !options?.useAdditionalWeekYearTokens &&
           isProtectedWeekYearToken(substring)
         ) {
-          throwProtectedError(substring, dirtyFormatStr, String(dirtyDate))
+          throwProtectedError(substring, formatStr, String(dirtyDate))
         }
         if (
           !options?.useAdditionalDayOfYearTokens &&
           isProtectedDayOfYearToken(substring)
         ) {
-          throwProtectedError(substring, dirtyFormatStr, String(dirtyDate))
+          throwProtectedError(substring, formatStr, String(dirtyDate))
         }
         return formatter(utcDate, substring, locale.localize, formatterOptions)
       }

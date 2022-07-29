@@ -733,21 +733,6 @@ describe('format', () => {
     })
   })
 
-  it('implicitly converts `formatString`', () => {
-    // eslint-disable-next-line no-new-wrappers
-    const formatString = new String('yyyy-MM-dd')
-
-    const date = new Date(2014, 3, 4)
-
-    assert(
-      format(
-        date,
-        // @ts-expect-error
-        formatString
-      ) === '2014-04-04'
-    )
-  })
-
   describe('custom locale', () => {
     it('allows to pass a custom locale', () => {
       const customLocale = {

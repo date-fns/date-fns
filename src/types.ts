@@ -102,6 +102,14 @@ export type Unit =
   | 'quarter'
   | 'year'
 
+export type FormatDistanceStrictUnit =
+  | 'second'
+  | 'minute'
+  | 'hour'
+  | 'day'
+  | 'month'
+  | 'year'
+
 export interface AdditionalTokensOptions {
   useAdditionalWeekYearTokens?: boolean
   useAdditionalDayOfYearTokens?: boolean
