@@ -99,7 +99,7 @@ export default function formatDuration(
         m.toUpperCase()
       )}` as FormatDistanceToken
       const value = duration[unit]
-      if (typeof value === 'number' && (zero || duration[unit])) {
+      if (value !== undefined && (zero || duration[unit])) {
         return acc.concat(locale.formatDistance(token, value))
       }
       return acc

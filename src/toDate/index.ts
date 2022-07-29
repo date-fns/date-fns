@@ -46,17 +46,6 @@ export default function toDate<DateType extends Date = Date>(
     // TODO: Can we get rid of as?
     return new Date(argument) as DateType
   } else {
-    if (
-      (typeof argument === 'string' || argStr === '[object String]') &&
-      typeof console !== 'undefined'
-    ) {
-      // eslint-disable-next-line no-console
-      console.warn(
-        "Starting with v2.0.0-beta.1 date-fns doesn't accept strings as date arguments. Please use `parseISO` to parse strings. See: https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#string-arguments"
-      )
-      // eslint-disable-next-line no-console
-      console.warn(new Error().stack)
-    }
     // TODO: Can we get rid of as?
     return new Date(NaN) as DateType
   }
