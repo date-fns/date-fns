@@ -1,5 +1,4 @@
 import { millisecondsInHour, millisecondsInMinute } from '../constants/index'
-import toInteger from '../_lib/toInteger/index'
 
 /**
  * The {@link parseISO} function options.
@@ -25,7 +24,6 @@ export interface ParseISOOptions {
  * @param argument - the value to convert
  * @param options - an object with options.
  * @returns the parsed date in the local time zone
- * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // Convert string '2014-02-11T11:30:30' to date:
@@ -42,15 +40,7 @@ export default function parseISO(
   argument: string,
   options?: ParseISOOptions
 ): Date {
-  const additionalDigits = toInteger(options?.additionalDigits ?? 2)
-  if (
-    additionalDigits !== 2 &&
-    additionalDigits !== 1 &&
-    additionalDigits !== 0
-  ) {
-    throw new RangeError('additionalDigits must be 0, 1 or 2')
-  }
-
+  const additionalDigits = options?.additionalDigits ?? 2
   const dateStrings = splitDateString(argument)
 
   let date

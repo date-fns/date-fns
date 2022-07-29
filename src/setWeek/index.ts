@@ -5,7 +5,6 @@ import type {
   LocaleOptions,
   WeekStartOptions,
 } from '../types'
-import toInteger from '../_lib/toInteger/index'
 
 /**
  * The {@link setWeek} function options.
@@ -33,8 +32,6 @@ export interface SetWeekOptions
  * @param week - the week of the new date
  * @param options - an object with options.
  * @returns the new date with the local week set
- * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
- * @throws {RangeError} `options.firstWeekContainsDate` must be between 1 and 7
  *
  * @example
  * // Set the 1st week to 2 January 2005 with default options:
@@ -53,11 +50,10 @@ export interface SetWeekOptions
  */
 export default function setWeek<DateType extends Date>(
   dirtyDate: DateType | number,
-  dirtyWeek: number,
+  week: number,
   options?: SetWeekOptions
 ): DateType {
   const date = toDate(dirtyDate)
-  const week = toInteger(dirtyWeek)
   const diff = getWeek(date, options) - week
   date.setDate(date.getDate() - diff * 7)
   return date

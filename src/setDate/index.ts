@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name setDate
@@ -20,10 +19,9 @@ import toInteger from '../_lib/toInteger/index'
  */
 export default function setDate<DateType extends Date>(
   dirtyDate: DateType | number,
-  dirtyDayOfMonth: number
+  dayOfMonth: number
 ): DateType {
   const date = toDate(dirtyDate)
-  const dayOfMonth = toInteger(dirtyDayOfMonth)
   date.setDate(dayOfMonth)
   return date
 }

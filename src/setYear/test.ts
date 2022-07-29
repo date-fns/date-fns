@@ -14,20 +14,6 @@ describe('setYear', () => {
     assert.deepStrictEqual(result, new Date(2016, 8 /* Sep */, 1))
   })
 
-  it('converts a fractional number to an integer', () => {
-    const result = setYear(new Date(2014, 8 /* Sep */, 1), 2013.987654321)
-    assert.deepStrictEqual(result, new Date(2013, 8 /* Sep */, 1))
-  })
-
-  it('implicitly converts number arguments', () => {
-    const result = setYear(
-      new Date(2014, 8 /* Sep */, 1),
-      // @ts-expect-error
-      '2013'
-    )
-    assert.deepStrictEqual(result, new Date(2013, 8 /* Sep */, 1))
-  })
-
   it('does not mutate the original date', () => {
     const date = new Date(2014, 8 /* Sep */, 1)
     setYear(date, 2011)

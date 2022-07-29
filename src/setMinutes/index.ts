@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name setMinutes
@@ -20,10 +19,9 @@ import toInteger from '../_lib/toInteger/index'
  */
 export default function setMinutes<DateType extends Date>(
   dirtyDate: DateType | number,
-  dirtyMinutes: number
+  minutes: number
 ): DateType {
   const date = toDate(dirtyDate)
-  const minutes = toInteger(dirtyMinutes)
   date.setMinutes(minutes)
   return date
 }

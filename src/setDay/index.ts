@@ -2,7 +2,6 @@ import addDays from '../addDays/index'
 import toDate from '../toDate/index'
 import type { LocaleOptions, WeekStartOptions } from '../types'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
-import toInteger from '../_lib/toInteger/index'
 
 /**
  * The {@link setDay} function options.
@@ -21,7 +20,6 @@ export interface SetDayOptions extends LocaleOptions, WeekStartOptions {}
  * @param day - the day of the week of the new date
  * @param options - an object with options.
  * @returns the new date with the day of the week set
- * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
  *
  * @example
  * // Set week day to Sunday, with the default weekStartsOn of Sunday:
@@ -35,25 +33,18 @@ export interface SetDayOptions extends LocaleOptions, WeekStartOptions {}
  */
 export default function setDay<DateType extends Date>(
   dirtyDate: DateType | number,
-  dirtyDay: number,
+  day: number,
   options?: SetDayOptions
 ): DateType {
   const defaultOptions = getDefaultOptions()
-  const weekStartsOn = toInteger(
+  const weekStartsOn =
     options?.weekStartsOn ??
-      options?.locale?.options?.weekStartsOn ??
-      defaultOptions.weekStartsOn ??
-      defaultOptions.locale?.options?.weekStartsOn ??
-      0
-  )
-
-  // Test if weekStartsOn is between 0 and 6 _and_ is not NaN
-  if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {
-    throw new RangeError('weekStartsOn must be between 0 and 6 inclusively')
-  }
+    options?.locale?.options?.weekStartsOn ??
+    defaultOptions.weekStartsOn ??
+    defaultOptions.locale?.options?.weekStartsOn ??
+    0
 
   const date = toDate(dirtyDate)
-  const day = toInteger(dirtyDay)
   const currentDay = date.getDay()
 
   const remainder = day % 7

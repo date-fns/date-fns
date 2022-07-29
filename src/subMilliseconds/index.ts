@@ -1,5 +1,4 @@
 import addMilliseconds from '../addMilliseconds/index'
-import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name subMilliseconds
@@ -20,8 +19,7 @@ import toInteger from '../_lib/toInteger/index'
  */
 export default function subMilliseconds<DateType extends Date>(
   dirtyDate: DateType | number,
-  dirtyAmount: number
+  amount: number
 ): DateType {
-  const amount = toInteger(dirtyAmount)
   return addMilliseconds(dirtyDate, -amount)
 }

@@ -21,7 +21,6 @@ export interface GetWeeksInMonthOptions
  * @param date - the given date
  * @param options - an object with options.
  * @returns the number of calendar weeks
- * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
  *
  * @example
  * // How many calendar weeks does February 2015 span?

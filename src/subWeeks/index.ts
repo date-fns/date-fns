@@ -1,5 +1,4 @@
 import addWeeks from '../addWeeks/index'
-import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name subWeeks
@@ -20,8 +19,7 @@ import toInteger from '../_lib/toInteger/index'
  */
 export default function subWeeks<DateType extends Date>(
   dirtyDate: DateType | number,
-  dirtyAmount: number
+  amount: number
 ): DateType {
-  const amount = toInteger(dirtyAmount)
   return addWeeks(dirtyDate, -amount)
 }

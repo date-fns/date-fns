@@ -17,20 +17,6 @@ describe('setISOWeekYear', () => {
     assert.deepStrictEqual(result, new Date(2005, 0 /* Jan */, 1))
   })
 
-  it('converts a fractional number to an integer', () => {
-    const result = setISOWeekYear(new Date(2008, 11 /* Dec */, 29), 2007.7002)
-    assert.deepStrictEqual(result, new Date(2007, 0 /* Jan */, 1))
-  })
-
-  it('implicitly converts number arguments', () => {
-    const result = setISOWeekYear(
-      new Date(2008, 11 /* Dec */, 29),
-      // @ts-expect-error
-      '2007'
-    )
-    assert.deepStrictEqual(result, new Date(2007, 0 /* Jan */, 1))
-  })
-
   it('does not mutate the original date', () => {
     const date = new Date(2008, 11 /* Dec */, 29)
     setISOWeekYear(date, 2000)

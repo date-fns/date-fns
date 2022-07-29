@@ -21,7 +21,6 @@ export interface EachWeekOfIntervalOptions
  * @param interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
  * @param options - an object with options.
  * @returns the array with starts of weeks from the week of the interval start to the week of the interval end
- * @throws {RangeError} `options.weekStartsOn` must be 0, 1, ..., 6
  * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *

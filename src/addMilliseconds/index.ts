@@ -1,6 +1,5 @@
 import toDate from '../toDate/index'
 import constructFrom from '../constructFrom/index'
-import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name addMilliseconds
@@ -21,9 +20,8 @@ import toInteger from '../_lib/toInteger/index'
  */
 export default function addMilliseconds<DateType extends Date>(
   dirtyDate: DateType | number,
-  dirtyAmount: number
+  amount: number
 ): DateType {
   const timestamp = toDate(dirtyDate).getTime()
-  const amount = toInteger(dirtyAmount)
   return constructFrom(dirtyDate, timestamp + amount)
 }

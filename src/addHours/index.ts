@@ -1,6 +1,5 @@
 import addMilliseconds from '../addMilliseconds/index'
 import { millisecondsInHour } from '../constants/index'
-import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name addHours
@@ -21,8 +20,7 @@ import toInteger from '../_lib/toInteger/index'
  */
 export default function addHours<DateType extends Date>(
   dirtyDate: DateType | number,
-  dirtyAmount: number
+  amount: number
 ): DateType {
-  const amount = toInteger(dirtyAmount)
   return addMilliseconds(dirtyDate, amount * millisecondsInHour)
 }

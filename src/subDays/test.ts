@@ -14,20 +14,6 @@ describe('subDays', () => {
     assert.deepStrictEqual(result, new Date(2014, 7 /* Aug */, 22))
   })
 
-  it('converts a fractional number to an integer', () => {
-    const result = subDays(new Date(2014, 8 /* Sep */, 1), 10.85)
-    assert.deepStrictEqual(result, new Date(2014, 7 /* Aug */, 22))
-  })
-
-  it('implicitly converts number arguments', () => {
-    const result = subDays(
-      new Date(2014, 8 /* Sep */, 1),
-      // @ts-expect-error
-      '10'
-    )
-    assert.deepStrictEqual(result, new Date(2014, 7 /* Aug */, 22))
-  })
-
   it('does not mutate the original date', () => {
     const date = new Date(2014, 8 /* Sep */, 1)
     subDays(date, 11)

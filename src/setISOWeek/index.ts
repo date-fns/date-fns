@@ -1,6 +1,5 @@
 import getISOWeek from '../getISOWeek/index'
 import toDate from '../toDate/index'
-import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name setISOWeek
@@ -23,10 +22,9 @@ import toInteger from '../_lib/toInteger/index'
  */
 export default function setISOWeek<DateType extends Date>(
   dirtyDate: DateType | number,
-  dirtyISOWeek: number
+  isoWeek: number
 ): DateType {
   const date = toDate(dirtyDate)
-  const isoWeek = toInteger(dirtyISOWeek)
   const diff = getISOWeek(date) - isoWeek
   date.setDate(date.getDate() - diff * 7)
   return date

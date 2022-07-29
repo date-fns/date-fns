@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name setHours
@@ -20,10 +19,9 @@ import toInteger from '../_lib/toInteger/index'
  */
 export default function setHours<DateType extends Date>(
   dirtyDate: DateType | number,
-  dirtyHours: number
+  hours: number
 ): DateType {
   const date = toDate(dirtyDate)
-  const hours = toInteger(dirtyHours)
   date.setHours(hours)
   return date
 }

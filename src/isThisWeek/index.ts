@@ -21,7 +21,6 @@ export interface IsThisWeekOptions extends WeekStartOptions, LocaleOptions {}
  * @param date - the date to check
  * @param options - the object with options
  * @returns the date is in this week
- * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
  *
  * @example
  * // If today is 25 September 2014, is 21 September 2014 in this week?

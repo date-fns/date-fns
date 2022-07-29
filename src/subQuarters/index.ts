@@ -1,5 +1,4 @@
 import addQuarters from '../addQuarters/index'
-import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name subQuarters
@@ -20,8 +19,7 @@ import toInteger from '../_lib/toInteger/index'
  */
 export default function subQuarters<DateType extends Date>(
   dirtyDate: DateType | number,
-  dirtyAmount: number
+  amount: number
 ): DateType {
-  const amount = toInteger(dirtyAmount)
   return addQuarters(dirtyDate, -amount)
 }

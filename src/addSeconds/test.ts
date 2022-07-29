@@ -17,23 +17,6 @@ describe('addSeconds', () => {
     assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 45, 20))
   })
 
-  it('converts a fractional number to an integer', () => {
-    const result = addSeconds(
-      new Date(2014, 6 /* Jul */, 10, 12, 45, 0),
-      30.777
-    )
-    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 45, 30))
-  })
-
-  it('implicitly converts number arguments', () => {
-    const result = addSeconds(
-      new Date(2014, 6 /* Jul */, 10, 12, 45, 5),
-      // @ts-expect-error
-      '30'
-    )
-    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 45, 35))
-  })
-
   it('does not mutate the original date', () => {
     const date = new Date(2014, 6 /* Jul */, 10, 12, 45, 0)
     addSeconds(date, 15)

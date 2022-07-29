@@ -367,23 +367,4 @@ describe('parseISO', () => {
       assert(isNaN(result.getTime()))
     })
   })
-
-  describe('argument conversion', () => {
-    it('implicitly converts options', () => {
-      const result = parseISO('+12340702', {
-        // @ts-expect-error
-        additionalDigits: '0',
-      })
-      assert.deepStrictEqual(result, new Date(1234, 6 /* Jul */, 2))
-    })
-
-    it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined`', () => {
-      const block = () =>
-        parseISO('+12340702', {
-          // @ts-expect-error
-          additionalDigits: 3,
-        })
-      assert.throws(block, RangeError)
-    })
-  })
 })

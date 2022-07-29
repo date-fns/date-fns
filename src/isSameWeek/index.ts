@@ -18,7 +18,6 @@ export interface IsSameWeekOptions extends WeekStartOptions, LocaleOptions {}
  * @param dateRight - the second date to check
  * @param options - an object with options.
  * @returns the dates are in the same week (and month and year)
- * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
  *
  * @example
  * // Are 31 August 2014 and 4 September 2014 in the same week?

@@ -14,20 +14,6 @@ describe('setDayOfYear', () => {
     assert.deepStrictEqual(result, new Date(2014, 2 /* Mar */, 1))
   })
 
-  it('converts a fractional number to an integer', () => {
-    const result = setDayOfYear(new Date(2014, 6 /* Jul */, 2), 2.75)
-    assert.deepStrictEqual(result, new Date(2014, 0 /* Jan */, 2))
-  })
-
-  it('implicitly converts number arguments', () => {
-    const result = setDayOfYear(
-      new Date(2014, 6 /* Jul */, 2),
-      // @ts-expect-error
-      '2'
-    )
-    assert.deepStrictEqual(result, new Date(2014, 0 /* Jan */, 2))
-  })
-
   it('does not mutate the original date', () => {
     const date = new Date(2014, 6 /* Jul */, 2)
     setDayOfYear(date, 365)

@@ -14,20 +14,6 @@ describe('setWeekYear', () => {
     assert.deepStrictEqual(result, new Date(2007, 0 /* Jan */, 1))
   })
 
-  it('converts a fractional number to an integer', () => {
-    const result = setWeekYear(new Date(2010, 0 /* Jan */, 2), 2004.2004)
-    assert.deepStrictEqual(result, new Date(2004, 0 /* Jan */, 3))
-  })
-
-  it('implicitly converts number arguments', () => {
-    const result = setWeekYear(
-      new Date(2008, 11 /* Dec */, 29),
-      // @ts-expect-error
-      '2007'
-    )
-    assert.deepStrictEqual(result, new Date(2007, 0 /* Jan */, 1))
-  })
-
   it('does not mutate the original date', () => {
     const date = new Date(2008, 11 /* Dec */, 29)
     setWeekYear(date, 2000)
@@ -86,23 +72,5 @@ describe('setWeekYear', () => {
       },
     })
     assert.deepStrictEqual(result, new Date(2005, 0 /* Jan */, 1))
-  })
-
-  it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', () => {
-    const block = () =>
-      setWeekYear(new Date(2004, 7 /* Aug */, 7), 2018, {
-        // @ts-expect-error
-        weekStartsOn: NaN,
-      })
-    assert.throws(block, RangeError)
-  })
-
-  it('throws `RangeError` if `options.firstWeekContainsDate` is not convertable to 1, 2, ..., 7 or undefined', () => {
-    const block = () =>
-      setWeekYear(new Date(2004, 7 /* Aug */, 7), 2018, {
-        // @ts-expect-error
-        firstWeekContainsDate: NaN,
-      })
-    assert.throws(block, RangeError)
   })
 })

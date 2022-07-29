@@ -19,20 +19,6 @@ describe('setQuarter', () => {
     assert.deepStrictEqual(result, new Date(2014, 9 /* Oct */, 1))
   })
 
-  it('converts a fractional number to an integer', () => {
-    const result = setQuarter(new Date(2014, 6 /* Jul */, 2), 1.951)
-    assert.deepStrictEqual(result, new Date(2014, 0 /* Jan */, 2))
-  })
-
-  it('implicitly converts number arguments', () => {
-    const result = setQuarter(
-      new Date(2014, 6 /* Jul */, 2),
-      // @ts-expect-error
-      '1'
-    )
-    assert.deepStrictEqual(result, new Date(2014, 0 /* Jan */, 2))
-  })
-
   it('does not mutate the original date', () => {
     const date = new Date(2014, 6 /* Jul */, 1)
     setQuarter(date, 2)

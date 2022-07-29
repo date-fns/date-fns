@@ -7,7 +7,6 @@ import type {
   WeekStartOptions,
 } from '../types'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
-import toInteger from '../_lib/toInteger/index'
 
 /**
  * The {@link startOfWeekYear} function options.
@@ -34,8 +33,6 @@ export interface StartOfWeekYearOptions
  * @param date - the original date
  * @param options - an object with options.
  * @returns the start of a week-numbering year
- * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
- * @throws {RangeError} `options.firstWeekContainsDate` must be between 1 and 7
  *
  * @example
  * // The start of an a week-numbering year for 2 July 2005 with default settings:
@@ -57,13 +54,12 @@ export default function startOfWeekYear<DateType extends Date>(
   options?: StartOfWeekYearOptions
 ): DateType {
   const defaultOptions = getDefaultOptions()
-  const firstWeekContainsDate = toInteger(
+  const firstWeekContainsDate =
     options?.firstWeekContainsDate ??
-      options?.locale?.options?.firstWeekContainsDate ??
-      defaultOptions.firstWeekContainsDate ??
-      defaultOptions.locale?.options?.firstWeekContainsDate ??
-      1
-  )
+    options?.locale?.options?.firstWeekContainsDate ??
+    defaultOptions.firstWeekContainsDate ??
+    defaultOptions.locale?.options?.firstWeekContainsDate ??
+    1
 
   const year = getWeekYear(dirtyDate, options)
   const firstWeek = constructFrom(dirtyDate, 0)

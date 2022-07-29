@@ -1,7 +1,6 @@
 import addDays from '../addDays/index'
 import getISODay from '../getISODay/index'
 import toDate from '../toDate/index'
-import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name setISODay
@@ -24,10 +23,9 @@ import toInteger from '../_lib/toInteger/index'
  */
 export default function setISODay<DateType extends Date>(
   dirtyDate: DateType | number,
-  dirtyDay: number
+  day: number
 ): DateType {
   const date = toDate(dirtyDate)
-  const day = toInteger(dirtyDay)
   const currentDay = getISODay(date)
   const diff = day - currentDay
   return addDays(date, diff)

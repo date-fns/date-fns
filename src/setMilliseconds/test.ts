@@ -26,29 +26,6 @@ describe('setMilliseconds', () => {
     )
   })
 
-  it('converts a fractional number to an integer', () => {
-    const result = setMilliseconds(
-      new Date(2014, 8 /* Sep */, 1, 11, 30, 40, 500),
-      300.999
-    )
-    assert.deepStrictEqual(
-      result,
-      new Date(2014, 8 /* Sep */, 1, 11, 30, 40, 300)
-    )
-  })
-
-  it('implicitly converts number arguments', () => {
-    const result = setMilliseconds(
-      new Date(2014, 8 /* Sep */, 1, 11, 30, 40, 500),
-      // @ts-expect-error
-      '300'
-    )
-    assert.deepStrictEqual(
-      result,
-      new Date(2014, 8 /* Sep */, 1, 11, 30, 40, 300)
-    )
-  })
-
   it('does not mutate the original date', () => {
     const date = new Date(2014, 8 /* Sep */, 1, 11, 30, 40, 500)
     setMilliseconds(date, 137)

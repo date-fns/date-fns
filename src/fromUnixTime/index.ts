@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name fromUnixTime
@@ -17,8 +16,6 @@ import toInteger from '../_lib/toInteger/index'
  * const result = fromUnixTime(1330515905)
  * //=> Wed Feb 29 2012 11:45:05
  */
-export default function fromUnixTime(dirtyUnixTime: number): Date {
-  const unixTime = toInteger(dirtyUnixTime)
-
+export default function fromUnixTime(unixTime: number): Date {
   return toDate(unixTime * 1000)
 }

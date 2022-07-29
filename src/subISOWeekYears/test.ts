@@ -14,20 +14,6 @@ describe('subISOWeekYears', () => {
     assert.deepStrictEqual(result, new Date(2002, 8 /* Sep */, 2))
   })
 
-  it('converts a fractional number to an integer', () => {
-    const result = subISOWeekYears(new Date(2014, 8 /* Sep */, 1), 5.555)
-    assert.deepStrictEqual(result, new Date(2009, 7 /* Aug */, 31))
-  })
-
-  it('implicitly converts number arguments', () => {
-    const result = subISOWeekYears(
-      new Date(2014, 8 /* Sep */, 1),
-      // @ts-expect-error
-      '5'
-    )
-    assert.deepStrictEqual(result, new Date(2009, 7 /* Aug */, 31))
-  })
-
   it('does not mutate the original date', () => {
     const date = new Date(2014, 8 /* Sep */, 1)
     subISOWeekYears(date, 12)

@@ -2,7 +2,6 @@ import constructFrom from '../constructFrom/index'
 import toDate from '../toDate/index'
 import type { RoundingOptions } from '../types'
 import { getRoundingMethod } from '../_lib/roundingMethods'
-import toInteger from '../_lib/toInteger/index'
 
 /**
  * The {@link roundToNearestMinutes} function options.
@@ -40,7 +39,7 @@ export default function roundToNearestMinutes<DateType extends Date>(
   dirtyDate: DateType | number,
   options?: RoundToNearestMinutesOptions
 ): DateType {
-  const nearestTo = toInteger(options?.nearestTo ?? 1)
+  const nearestTo = options?.nearestTo ?? 1
 
   if (nearestTo < 1 || nearestTo > 30) {
     throw new RangeError('`options.nearestTo` must be between 1 and 30')

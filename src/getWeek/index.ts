@@ -33,8 +33,6 @@ export interface GetWeekOptions
  * @param date - the given date
  * @param options - an object with options.
  * @returns the week
- * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
- * @throws {RangeError} `options.firstWeekContainsDate` must be between 1 and 7
  *
  * @example
  * // Which week of the local week numbering year is 2 January 2005 with default options?
