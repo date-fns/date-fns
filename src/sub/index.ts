@@ -45,8 +45,6 @@ export default function sub<DateType extends Date>(
   date: DateType | number,
   duration: Duration
 ): DateType {
-  if (!duration || typeof duration !== 'object') return constructFrom(date, NaN)
-
   const {
     years = 0,
     months = 0,

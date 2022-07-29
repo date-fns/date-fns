@@ -11,7 +11,6 @@ import type { Duration } from '../types'
  * @param duration - the duration to format
  *
  * @returns The ISO 8601 duration string
- * @throws {Error} Argument must be an object
  *
  * @example
  * // Format the given duration as ISO 8601 string
@@ -26,9 +25,6 @@ import type { Duration } from '../types'
  * //=> 'P39Y2M20DT0H0M0S'
  */
 export default function formatISODuration(duration: Duration): string {
-  if (typeof duration !== 'object')
-    throw new Error('Duration must be an object')
-
   const {
     years = 0,
     months = 0,
