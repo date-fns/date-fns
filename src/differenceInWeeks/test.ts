@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import differenceInWeeks from '.'
+import differenceInWeeks from './index'
 
 describe('differenceInWeeks', () => {
   it('returns the number of full weeks between the given dates', () => {
@@ -147,12 +147,5 @@ describe('differenceInWeeks', () => {
   it('returns NaN if the both dates are `Invalid Date`', () => {
     const result = differenceInWeeks(new Date(NaN), new Date(NaN))
     assert(isNaN(result))
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(differenceInWeeks.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(differenceInWeeks.bind(null, 1), TypeError)
   })
 })

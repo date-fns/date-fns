@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import sinon from 'sinon'
-import endOfToday from '.'
+import endOfToday from './index'
 
 describe('endOfToday', () => {
   let clock: sinon.SinonFakeTimers

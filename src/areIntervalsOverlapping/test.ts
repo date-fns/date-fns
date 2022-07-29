@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import areIntervalsOverlapping from '.'
+import areIntervalsOverlapping from './index'
 
 describe('areIntervalsOverlapping', () => {
   const initialIntervalStart = new Date(2016, 10, 10, 13, 0, 0)
@@ -159,29 +159,6 @@ describe('areIntervalsOverlapping', () => {
     assert.throws(block, RangeError)
   })
 
-  it('throws an exception if the initial interval is undefined', () => {
-    const block = () =>
-      areIntervalsOverlapping(
-        // @ts-expect-error
-        undefined,
-        {
-          start: new Date(2016, 10, 5),
-          end: new Date(2016, 10, 15),
-        }
-      )
-    assert.throws(block, RangeError)
-  })
-
-  it('throws an exception if the compared interval is undefined', () => {
-    const block = () =>
-      areIntervalsOverlapping(
-        { start: new Date(2016, 10, 3), end: new Date(2016, 10, 7) },
-        // @ts-expect-error
-        undefined
-      )
-    assert.throws(block, RangeError)
-  })
-
   describe('when the inclusive option is true', () => {
     it("returns true for an interval with the same startDateTime as the initial time interval's endDateTime", () => {
       const oneDayOverlapIntervalStart = new Date(2016, 11, 3, 15, 0, 0)
@@ -244,12 +221,5 @@ describe('areIntervalsOverlapping', () => {
       )
       assert.throws(block, RangeError)
     })
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(areIntervalsOverlapping.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(areIntervalsOverlapping.bind(null, 1), TypeError)
   })
 })

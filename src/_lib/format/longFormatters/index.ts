@@ -1,6 +1,8 @@
 import type { FormatLong } from '../../../locale/types'
 
-function dateLongFormatter(pattern: string, formatLong: FormatLong) {
+type LongFormatter = (pattern: string, formatLong: FormatLong) => string
+
+const dateLongFormatter: LongFormatter = (pattern, formatLong) => {
   switch (pattern) {
     case 'P':
       return formatLong.date({ width: 'short' })
@@ -14,7 +16,7 @@ function dateLongFormatter(pattern: string, formatLong: FormatLong) {
   }
 }
 
-function timeLongFormatter(pattern: string, formatLong: FormatLong) {
+const timeLongFormatter: LongFormatter = (pattern, formatLong) => {
   switch (pattern) {
     case 'p':
       return formatLong.time({ width: 'short' })
@@ -28,7 +30,10 @@ function timeLongFormatter(pattern: string, formatLong: FormatLong) {
   }
 }
 
-function dateTimeLongFormatter(pattern: string, formatLong: FormatLong) {
+const dateTimeLongFormatter: LongFormatter = (
+  pattern: string,
+  formatLong: FormatLong
+) => {
   const matchResult = pattern.match(/(P+)(p+)?/) || []
   const datePattern = matchResult[1]
   const timePattern = matchResult[2]
@@ -60,7 +65,7 @@ function dateTimeLongFormatter(pattern: string, formatLong: FormatLong) {
     .replace('{{time}}', timeLongFormatter(timePattern, formatLong))
 }
 
-const longFormatters = {
+const longFormatters: Record<string, LongFormatter> = {
   p: timeLongFormatter,
   P: dateTimeLongFormatter,
 }

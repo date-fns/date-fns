@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import eachWeekendOfMonth from '.'
+import eachWeekendOfMonth from './index'
 
 describe('eachWeekendOfMonth', () => {
   it('returns all weekends of the given month', () => {
@@ -16,22 +16,6 @@ describe('eachWeekendOfMonth', () => {
       new Date(2022, 1, 26),
       new Date(2022, 1, 27),
     ])
-  })
-
-  it('throws TypeError exception when passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(eachWeekendOfMonth.bind(null), TypeError)
-  })
-
-  it('throws RangeError when the expected year is NaN', () => {
-    assert.throws(
-      eachWeekendOfMonth.bind(
-        null,
-        // @ts-expect-error
-        NaN
-      ),
-      RangeError
-    )
   })
 
   it('throws RangeError when the expected year is an Invalid Date', () => {

@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import getDayOfYear from '.'
+import getDayOfYear from './index'
 
 describe('getDayOfYear', () => {
   it('returns the day of the year of the given date', () => {
@@ -25,10 +25,5 @@ describe('getDayOfYear', () => {
   it('returns NaN if the given date is invalid', () => {
     const result = getDayOfYear(new Date(NaN))
     assert(isNaN(result))
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(getDayOfYear.bind(null), TypeError)
   })
 })

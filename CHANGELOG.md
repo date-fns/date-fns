@@ -8,6 +8,58 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## v2.29.1 - 2022-07-22
+
+Thanks to @fturmel for working on the release.
+
+### Fixed
+
+- [Fixed TypeScript and flow types for daysInYear constant.](https://github.com/date-fns/date-fns/pull/3125)
+
+## v2.29.0 - 2022-07-22
+
+On this release worked @tan75, @kossnocorp, @nopears, @Balastrong, @cpapazoglou, @dovca, @aliasgar55, @tomchentw, @JuanM04, @alexandresaura, @fturmel, @aezell, @andersravn, @TiagoPortfolio, @SukkaW, @Zebreus, @aviskarkc10, @maic66, @a-korzun, @Mejans, @davidspiess, @alexgul1, @matroskin062, @undecaf, @mprovenc, @jooola and @leshakoss.
+
+### Added
+
+- [Added `intlFormatDistance` function`.](https://github.com/date-fns/date-fns/pull/2173)
+
+- [Added `setDefaultOptions` and `getDefaultOptions` functions that allow you to set default default locale, `weekStartsOn` and `firstWeekContainsDate`.](https://github.com/date-fns/date-fns/pull/3069)
+
+- [Added `roundingMethod` option to `roundToNearestMinutes`.](https://github.com/date-fns/date-fns/pull/3091)
+
+- [Added Swiss Italian locale (`it-CH`).](https://github.com/date-fns/date-fns/pull/2886)
+
+- [Added Occitan (`oc`) locale.](https://github.com/date-fns/date-fns/pull/2106) ([#2061](https://github.com/date-fns/date-fns/issues/2061))
+
+- [Added Belarusian Classic (`be-tarask`) locale.](https://github.com/date-fns/date-fns/pull/3115)
+
+### Fixed
+
+- [Fixed Azerbaijani (`az`) locale for `formatDistance`.](https://github.com/date-fns/date-fns/pull/2924)
+
+- [Fixed Czech (`cs`) locale for `parse`.](https://github.com/date-fns/date-fns/pull/3059)
+
+- [Fixed TypeScript types for constants.](https://github.com/date-fns/date-fns/pull/2941)
+
+- [Fixed long formatters in the South African English locale (`en-ZA`).](https://github.com/date-fns/date-fns/pull/3014)
+
+- [Fixed a typo in the Icelandic locale (`is`) for `format`.](https://github.com/date-fns/date-fns/pull/2974)
+
+- [Fixed weekday format for `formatRelative` in the Portuguese locale (`pt`).](https://github.com/date-fns/date-fns/pull/2992)
+
+- [Fixed `intervalToDuration` being off by 1 day sometimes.](https://github.com/date-fns/date-fns/pull/2616)
+
+- [Fixed ordinal number formatting in Italian locale (`it`).](https://github.com/date-fns/date-fns/pull/1617)
+
+- [Fixed issue parsing months in Croatian (`hr`), Georgian (`ka`) and Serbian (`sr` and `sr-Latn`) locales.](https://github.com/date-fns/date-fns/pull/2898)
+
+### Changed
+
+- [Replaced `git.io` links with full URLs in error messages.](https://github.com/date-fns/date-fns/pull/3021)
+
+- [_Internal_: removed "v2.0.0 breaking changes" section from individual function docs](https://github.com/date-fns/date-fns/pull/2905)
+
 ## v2.28.0 - 2021-12-28
 
 Kudos to @tan75, @fturmel, @arcanar7, @jeffjose, @helmut-lang, @zrev2220, @jooola, @minitesh, @cowboy-bebug, @mesqueeb, @JuanM04, @zhirzh, @damon02 and @leshakoss for working on the release.

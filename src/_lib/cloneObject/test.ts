@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import cloneObject from '.'
+import cloneObject from './index'
 
 describe('cloneObject', () => {
   it('makes a copy of an object', () => {

@@ -1,5 +1,21 @@
 import type { Locale } from './locale/types'
 
+export interface GenericDateConstructor<DateType> {
+  new (): DateType
+
+  new (value: Date | number | string): DateType
+
+  new (
+    year: number,
+    month: number,
+    date?: number,
+    hours?: number,
+    minutes?: number,
+    seconds?: number,
+    ms?: number
+  ): DateType
+}
+
 export interface Duration {
   years?: number
   months?: number
@@ -10,9 +26,11 @@ export interface Duration {
   seconds?: number
 }
 
-export interface Interval {
-  start: Date | number
-  end: Date | number
+export type DurationUnit = keyof Duration
+
+export interface Interval<DateType extends Date = Date> {
+  start: DateType | number
+  end: DateType | number
 }
 
 export interface StepOptions {
@@ -37,10 +55,6 @@ export interface FormatOptions {
 
 export interface RepresentationOptions {
   representation?: 'complete' | 'date' | 'time'
-}
-
-export interface AdditionalDigitsOptions {
-  additionalDigits?: 0 | 1 | 2
 }
 
 export type Era = 0 | 1
@@ -87,3 +101,26 @@ export type Unit =
   | 'month'
   | 'quarter'
   | 'year'
+
+export type FormatDistanceStrictUnit =
+  | 'second'
+  | 'minute'
+  | 'hour'
+  | 'day'
+  | 'month'
+  | 'year'
+
+export interface AdditionalTokensOptions {
+  useAdditionalWeekYearTokens?: boolean
+  useAdditionalDayOfYearTokens?: boolean
+}
+
+export type IntlOptionsUnit =
+  | 'year'
+  | 'quarter'
+  | 'month'
+  | 'week'
+  | 'day'
+  | 'hour'
+  | 'minute'
+  | 'second'

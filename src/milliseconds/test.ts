@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import milliseconds from '.'
+import milliseconds from './index'
 
 describe('milliseconds', () => {
   it('converts years to milliseconds', () => {
@@ -55,10 +55,5 @@ describe('milliseconds', () => {
   it('returns 0 for an empty duration', () => {
     const result = milliseconds({})
     assert(result === 0)
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(milliseconds.bind(null), TypeError)
   })
 })

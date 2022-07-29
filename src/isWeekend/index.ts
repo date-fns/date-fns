@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isWeekend
@@ -9,18 +8,17 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Does the given date fall on a weekend?
  *
- * @param {Date|Number} date - the date to check
- * @returns {Boolean} the date falls on a weekend
- * @throws {TypeError} 1 argument required
+ * @param date - the date to check
+ * @returns the date falls on a weekend
  *
  * @example
  * // Does 5 October 2014 fall on a weekend?
  * const result = isWeekend(new Date(2014, 9, 5))
  * //=> true
  */
-export default function isWeekend(dirtyDate: Date | number): boolean {
-  requiredArgs(1, arguments)
-
+export default function isWeekend<DateType extends Date>(
+  dirtyDate: DateType | number
+): boolean {
   const date = toDate(dirtyDate)
   const day = date.getDay()
   return day === 0 || day === 6

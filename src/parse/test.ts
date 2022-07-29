@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import parse from '.'
+import parse from './index'
 
 describe('parse', () => {
   const referenceDate = new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 900)
@@ -2070,56 +2070,6 @@ describe('parse', () => {
     })
   })
 
-  describe('implicit conversion of arguments', () => {
-    it('`dateString`', () => {
-      // eslint-disable-next-line no-new-wrappers
-      const dateString = new String('20161105T040404')
-      const result = parse(
-        // @ts-expect-error
-        dateString,
-        "yyyyMMdd'T'HHmmss",
-        referenceDate
-      )
-      assert.deepStrictEqual(
-        result,
-        new Date(2016, 10 /* Nov */, 5, 4, 4, 4, 0)
-      )
-    })
-
-    it('`formatString`', () => {
-      // eslint-disable-next-line no-new-wrappers
-      const formatString = new String("yyyyMMdd'T'HHmmss")
-      const result = parse(
-        '20161105T040404',
-        // @ts-expect-error
-        formatString,
-        referenceDate
-      )
-      assert.deepStrictEqual(
-        result,
-        new Date(2016, 10 /* Nov */, 5, 4, 4, 4, 0)
-      )
-    })
-
-    it('`options.weekStartsOn`', () => {
-      const result = parse('2018', 'Y', referenceDate, {
-        // @ts-expect-error
-        weekStartsOn: '1' /* Mon */,
-        firstWeekContainsDate: 4,
-      })
-      assert.deepStrictEqual(result, new Date(2018, 0 /* Jan */, 1))
-    })
-
-    it('`options.firstWeekContainsDate`', () => {
-      const result = parse('2018', 'Y', referenceDate, {
-        weekStartsOn: 1 /* Mon */,
-        // @ts-expect-error
-        firstWeekContainsDate: '4',
-      })
-      assert.deepStrictEqual(result, new Date(2018, 0 /* Jan */, 1))
-    })
-  })
-
   describe('with `options.strictValidation` = true', () => {
     describe('calendar year', () => {
       it('returns `Invalid Date` for year zero', () => {
@@ -2340,6 +2290,7 @@ describe('parse', () => {
     it('throws `RangeError` if `options.locale` does not contain `match` property', () => {
       const block = () =>
         parse('2016-11-25 04 AM', 'yyyy-MM-dd hh a', referenceDate, {
+          // @ts-expect-error
           locale: {},
         })
       assert.throws(block, RangeError)
@@ -2404,36 +2355,6 @@ describe('parse', () => {
       const result = parse(dateString, formatString, new Date(NaN))
       assert(result instanceof Date && isNaN(result.getTime()))
     })
-
-    it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', () => {
-      const dateString = '2014-07-02T05:30:15.123+06:00'
-      const formatString = "yyyy-MM-dd'T'HH:mm:ss.SSSxxx"
-      const block = () =>
-        parse(dateString, formatString, referenceDate, {
-          // @ts-expect-error
-          weekStartsOn: NaN,
-        })
-      assert.throws(block, RangeError)
-    })
-
-    it('throws `RangeError` if `options.firstWeekContainsDate` is not convertable to 1, 2, ..., 7 or undefined', () => {
-      const dateString = '2014-07-02T05:30:15.123+06:00'
-      const formatString = "yyyy-MM-dd'T'HH:mm:ss.SSSxxx"
-      const block = () =>
-        parse(dateString, formatString, referenceDate, {
-          // @ts-expect-error
-          firstWeekContainsDate: NaN,
-        })
-      assert.throws(block, RangeError)
-    })
-  })
-
-  it('throws TypeError exception if passed less than 3 arguments', () => {
-    // @ts-expect-error
-    assert.throws(parse.bind(null), TypeError)
-    assert.throws(parse.bind(null, 1), TypeError)
-    // @ts-expect-error
-    assert.throws(parse.bind(null, 1, 2), TypeError)
   })
 
   describe('edge cases', () => {
@@ -2457,12 +2378,12 @@ describe('parse', () => {
 
   describe('useAdditionalWeekYearTokens and useAdditionalDayOfYearTokens options', () => {
     it('throws an error if D token is used', () => {
-      const block = () => parse('2016 5', 'yyyy D', referenceDate)
-      assert.throws(block, RangeError)
-      assert.throws(
-        block,
-        /Use `d` instead of `D` \(in `yyyy D`\) for formatting days of the month to the input `2016 5`; see: https:\/\/git.io\/fxCyr/
-      )
+      try {
+        parse('2016 5', 'yyyy D', referenceDate)
+      } catch (e) {
+        assert(e instanceof RangeError)
+        assert(e.message.startsWith('Use `d` instead of `D`'))
+      }
     })
 
     it('allows D token if useAdditionalDayOfYearTokens is set to true', () => {
@@ -2473,12 +2394,12 @@ describe('parse', () => {
     })
 
     it('throws an error if DD token is used', () => {
-      const block = () => parse('2016 05', 'yyyy DD', referenceDate)
-      assert.throws(block, RangeError)
-      assert.throws(
-        block,
-        /Use `dd` instead of `DD` \(in `yyyy DD`\) for formatting days of the month to the input `2016 05`; see: https:\/\/git.io\/fxCyr/
-      )
+      try {
+        parse('2016 05', 'yyyy DD', referenceDate)
+      } catch (e) {
+        assert(e instanceof RangeError)
+        assert(e.message.startsWith('Use `dd` instead of `DD`'))
+      }
     })
 
     it('allows DD token if useAdditionalDayOfYearTokens is set to true', () => {
@@ -2489,12 +2410,12 @@ describe('parse', () => {
     })
 
     it('throws an error if YY token is used', () => {
-      const block = () => parse('16 1', 'YY w', referenceDate)
-      assert.throws(block, RangeError)
-      assert.throws(
-        block,
-        /Use `yy` instead of `YY` \(in `YY w`\) for formatting years to the input `16 1`; see: https:\/\/git.io\/fxCyr/
-      )
+      try {
+        parse('16 1', 'YY w', referenceDate)
+      } catch (e) {
+        assert(e instanceof RangeError)
+        assert(e.message.startsWith('Use `yy` instead of `YY`'))
+      }
     })
 
     it('allows YY token if useAdditionalWeekYearTokens is set to true', () => {
@@ -2505,12 +2426,12 @@ describe('parse', () => {
     })
 
     it('throws an error if YYYY token is used', () => {
-      const block = () => parse('2016 1', 'YYYY w', referenceDate)
-      assert.throws(block, RangeError)
-      assert.throws(
-        block,
-        /Use `yyyy` instead of `YYYY` \(in `YYYY w`\) for formatting years to the input `2016 1`; see: https:\/\/git.io\/fxCyr/
-      )
+      try {
+        parse('2016 1', 'YYYY w', referenceDate)
+      } catch (e) {
+        assert(e instanceof RangeError)
+        assert(e.message.startsWith('Use `yyyy` instead of `YYYY`'))
+      }
     })
 
     it('allows YYYY token if useAdditionalWeekYearTokens is set to true', () => {

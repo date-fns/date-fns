@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 
-import eachMinuteOfInterval from '.'
+import eachMinuteOfInterval from './index'
 
 describe('eachMinuteOfInterval', () => {
   it('should return an array of Date objects containing a Date for each minute between the interval', () => {
@@ -80,7 +80,7 @@ describe('eachMinuteOfInterval', () => {
       ])
     })
 
-    it('throws TypeError error if `options.step` is less than 1', () => {
+    it('throws RangeError error if `options.step` is less than 1', () => {
       assert.throws(
         () => eachMinuteOfInterval(interval, { step: 0 }),
         stepError
@@ -91,12 +91,11 @@ describe('eachMinuteOfInterval', () => {
       )
     })
 
-    it('throws TypeError error if `options.step` is NaN', () => {
+    it('throws RangeError error if `options.step` is NaN', () => {
       assert.throws(
         () =>
           eachMinuteOfInterval(interval, {
-            // @ts-expect-error
-            step: 'w',
+            step: NaN,
           }),
         stepError
       )

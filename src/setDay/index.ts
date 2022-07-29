@@ -1,8 +1,12 @@
 import addDays from '../addDays/index'
 import toDate from '../toDate/index'
-import toInteger from '../_lib/toInteger/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 import type { LocaleOptions, WeekStartOptions } from '../types'
+import { getDefaultOptions } from '../_lib/defaultOptions/index'
+
+/**
+ * The {@link setDay} function options.
+ */
+export interface SetDayOptions extends LocaleOptions, WeekStartOptions {}
 
 /**
  * @name setDay
@@ -12,14 +16,10 @@ import type { LocaleOptions, WeekStartOptions } from '../types'
  * @description
  * Set the day of the week to the given date.
  *
- * @param {Date|Number} date - the date to be changed
- * @param {Number} day - the day of the week of the new date
- * @param {Object} [options] - an object with options.
- * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
- * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
- * @returns {Date} the new date with the day of the week set
- * @throws {TypeError} 2 arguments required
- * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
+ * @param date - the date to be changed
+ * @param day - the day of the week of the new date
+ * @param options - an object with options.
+ * @returns the new date with the day of the week set
  *
  * @example
  * // Set week day to Sunday, with the default weekStartsOn of Sunday:
@@ -31,31 +31,20 @@ import type { LocaleOptions, WeekStartOptions } from '../types'
  * const result = setDay(new Date(2014, 8, 1), 0, { weekStartsOn: 1 })
  * //=> Sun Sep 07 2014 00:00:00
  */
-export default function setDay(
-  dirtyDate: Date | number,
-  dirtyDay: number,
-  dirtyOptions?: WeekStartOptions & LocaleOptions
-): Date {
-  requiredArgs(2, arguments)
-
-  const options = dirtyOptions || {}
-  const locale = options.locale
-  const localeWeekStartsOn =
-    locale && locale.options && locale.options.weekStartsOn
-  const defaultWeekStartsOn =
-    localeWeekStartsOn == null ? 0 : toInteger(localeWeekStartsOn)
+export default function setDay<DateType extends Date>(
+  dirtyDate: DateType | number,
+  day: number,
+  options?: SetDayOptions
+): DateType {
+  const defaultOptions = getDefaultOptions()
   const weekStartsOn =
-    options.weekStartsOn == null
-      ? defaultWeekStartsOn
-      : toInteger(options.weekStartsOn)
-
-  // Test if weekStartsOn is between 0 and 6 _and_ is not NaN
-  if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {
-    throw new RangeError('weekStartsOn must be between 0 and 6 inclusively')
-  }
+    options?.weekStartsOn ??
+    options?.locale?.options?.weekStartsOn ??
+    defaultOptions.weekStartsOn ??
+    defaultOptions.locale?.options?.weekStartsOn ??
+    0
 
   const date = toDate(dirtyDate)
-  const day = toInteger(dirtyDay)
   const currentDay = date.getDay()
 
   const remainder = day % 7

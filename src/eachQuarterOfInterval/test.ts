@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import eachQuarterOfInterval from '.'
+import eachQuarterOfInterval from './index'
 
 describe('eachQuarterOfInterval', () => {
   it('returns an array with starts of quarters from the quarter of the start date to the quarter of the end date', () => {
@@ -90,19 +90,5 @@ describe('eachQuarterOfInterval', () => {
       end: new Date(NaN),
     })
     assert.throws(block, RangeError)
-  })
-
-  it('throws an exception if the interval is undefined', () => {
-    const block = () =>
-      eachQuarterOfInterval(
-        // @ts-expect-error
-        undefined
-      )
-    assert.throws(block, RangeError)
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(eachQuarterOfInterval.bind(null), TypeError)
   })
 })

@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import formatDuration from '.'
+import formatDuration from './index'
 
 describe('formatDuration', () => {
   it('formats full duration', () => {
@@ -75,10 +75,5 @@ describe('formatDuration', () => {
       formatDuration({ months: 9, days: 2 }, { delimiter: ', ' }) ===
         '9 months, 2 days'
     )
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(formatDuration.bind(null), TypeError)
   })
 })

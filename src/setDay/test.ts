@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import setDay from '.'
+import setDay from './index'
 
 describe('setDay', () => {
   it('sets the day of the week', () => {
@@ -33,19 +33,6 @@ describe('setDay', () => {
       locale: {
         options: { weekStartsOn: 0 },
       },
-    })
-    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 7))
-  })
-
-  it('converts a fractional number to an integer', () => {
-    const result = setDay(new Date(2014, 8 /* Sep */, 1), 0.5)
-    assert.deepStrictEqual(result, new Date(2014, 7 /* Aug */, 31))
-  })
-
-  it('implicitly converts options', () => {
-    const result = setDay(new Date(2014, 8 /* Sep */, 1), 0, {
-      // @ts-expect-error
-      weekStartsOn: '1',
     })
     assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 7))
   })
@@ -111,15 +98,6 @@ describe('setDay', () => {
     assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 3))
   })
 
-  it('implicitly converts number arguments', () => {
-    const result = setDay(
-      new Date(2014, 8 /* Sep */, 1),
-      // @ts-expect-error
-      '5'
-    )
-    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 5))
-  })
-
   it('does not mutate the original date', () => {
     const date = new Date(2014, 8 /* Sep */, 1)
     setDay(date, 3)
@@ -134,21 +112,5 @@ describe('setDay', () => {
   it('returns `Invalid Date` if the given amount is NaN', () => {
     const result = setDay(new Date(2014, 8 /* Sep */, 1), NaN)
     assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
-  it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', () => {
-    const block = () =>
-      setDay(new Date(2014, 8 /* Sep */, 1), 0, {
-        // @ts-expect-error
-        weekStartsOn: NaN,
-      })
-    assert.throws(block, RangeError)
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(setDay.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(setDay.bind(null, 1), TypeError)
   })
 })

@@ -1,5 +1,4 @@
 import isSameISOWeek from '../isSameISOWeek/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isThisISOWeek
@@ -15,9 +14,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * > ⚠️ Please note that this function is not present in the FP submodule as
  * > it uses `Date.now()` internally hence impure and can't be safely curried.
  *
- * @param {Date|Number} date - the date to check
- * @returns {Boolean} the date is in this ISO week
- * @throws {TypeError} 1 argument required
+ * @param date - the date to check
+ * @returns the date is in this ISO week
  *
  * @example
  * // If today is 25 September 2014, is 22 September 2014 in this ISO week?
@@ -25,8 +23,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> true
  */
 
-export default function isThisISOWeek(dirtyDate: Date | number): boolean {
-  requiredArgs(1, arguments)
-
+export default function isThisISOWeek<DateType extends Date>(
+  dirtyDate: DateType | number
+): boolean {
   return isSameISOWeek(dirtyDate, Date.now())
 }

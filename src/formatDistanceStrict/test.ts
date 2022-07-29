@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import type { FormatDistanceFn } from '../locale/types'
-import formatDistanceStrict from '.'
+import formatDistanceStrict from './index'
 
 describe('formatDistanceStrict', () => {
   describe('seconds', () => {
@@ -380,50 +380,6 @@ describe('formatDistanceStrict', () => {
     })
   })
 
-  describe('implicit conversion of options', () => {
-    it('`options.unit`', () => {
-      // eslint-disable-next-line no-new-wrappers
-      const unit = new String('year')
-
-      const result = formatDistanceStrict(
-        new Date(1986, 3, 4, 10, 32, 0),
-        new Date(1986, 3, 4, 10, 32, 0),
-        {
-          // @ts-expect-error
-          unit: unit,
-        }
-      )
-      assert(result === '0 years')
-    })
-
-    it('`options.addSuffix`', () => {
-      const result = formatDistanceStrict(
-        new Date(1986, 3, 4, 10, 32, 0),
-        new Date(1986, 3, 4, 10, 32, 25),
-        {
-          // @ts-expect-error
-          addSuffix: 1,
-        }
-      )
-      assert(result === '25 seconds ago')
-    })
-
-    it('`options.ceil`', () => {
-      // eslint-disable-next-line no-new-wrappers
-      const roundingMethod = new String('ceil')
-
-      const result = formatDistanceStrict(
-        new Date(1986, 3, 4, 10, 32, 0),
-        new Date(1986, 3, 4, 10, 33, 1),
-        {
-          // @ts-expect-error
-          roundingMethod: roundingMethod,
-        }
-      )
-      assert(result === '2 minutes')
-    })
-  })
-
   describe('custom locale', () => {
     it('can be passed to the function', () => {
       const formatDistance: FormatDistanceFn = (token, count, options) => {
@@ -506,38 +462,5 @@ describe('formatDistanceStrict', () => {
       formatDistanceStrict.bind(null, new Date(NaN), new Date(NaN)),
       RangeError
     )
-  })
-
-  it("throws `RangeError` if `options.roundingMethod` is not 'floor', 'ceil', 'round' or undefined", () => {
-    const block = () =>
-      formatDistanceStrict(
-        new Date(1986, 3, 4, 10, 32, 0),
-        new Date(1986, 3, 4, 10, 33, 29),
-        {
-          // @ts-expect-error
-          roundingMethod: 'foobar',
-        }
-      )
-    assert.throws(block, RangeError)
-  })
-
-  it("throws `RangeError` if `options.unit` is not 's', 'm', 'h', 'd', 'M', 'Y' or undefined", () => {
-    const block = () =>
-      formatDistanceStrict(
-        new Date(1986, 3, 4, 10, 32, 0),
-        new Date(1986, 3, 4, 10, 33, 29),
-        {
-          // @ts-expect-error
-          unit: 'foobar',
-        }
-      )
-    assert.throws(block, RangeError)
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(formatDistanceStrict.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(formatDistanceStrict.bind(null, 1), TypeError)
   })
 })

@@ -1,5 +1,4 @@
 import isSameSecond from '../isSameSecond/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isThisSecond
@@ -13,9 +12,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * > ⚠️ Please note that this function is not present in the FP submodule as
  * > it uses `Date.now()` internally hence impure and can't be safely curried.
  *
- * @param {Date|Number} date - the date to check
- * @returns {Boolean} the date is in this second
- * @throws {TypeError} 1 argument required
+ * @param date - the date to check
+ * @returns the date is in this second
  *
  * @example
  * // If now is 25 September 2014 18:30:15.500,
@@ -23,8 +21,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = isThisSecond(new Date(2014, 8, 25, 18, 30, 15))
  * //=> true
  */
-export default function isThisSecond(dirtyDate: Date | number): boolean {
-  requiredArgs(1, arguments)
-
+export default function isThisSecond<DateType extends Date>(
+  dirtyDate: DateType | number
+): boolean {
   return isSameSecond(Date.now(), dirtyDate)
 }

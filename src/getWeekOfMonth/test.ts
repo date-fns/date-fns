@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import getWeekOfMonth from '.'
+import getWeekOfMonth from './index'
 
 describe('getWeekOfMonth', () => {
   it('returns the week of the month of the given date', () => {
@@ -65,36 +65,9 @@ describe('getWeekOfMonth', () => {
     assert(result === 1)
   })
 
-  it('throws RangeError exception if `weekStartsOn` is out of bound', () => {
-    assert.throws(
-      () =>
-        getWeekOfMonth(new Date(2019, 4 /* May */, 5), {
-          // @ts-expect-error
-          weekStartsOn: 7,
-        }),
-      RangeError
-    )
-  })
-
   it('returns NaN if the given date is invalid', () => {
     const result = getWeekOfMonth(new Date(NaN))
     assert(isNaN(result))
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(getWeekOfMonth.bind(null), TypeError)
-  })
-
-  it('throws RangeError exception weekStartsOn is NaN', () => {
-    assert.throws(
-      () =>
-        getWeekOfMonth(new Date(2017, 10 /* Nov */, 1), {
-          // @ts-expect-error
-          weekStartsOn: NaN,
-        }),
-      RangeError
-    )
   })
 
   it('returns the week of the month of the given date, when the given date is sunday', () => {

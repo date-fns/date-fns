@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import isSameYear from '.'
+import isSameYear from './index'
 
 describe('isSameYear', () => {
   it('returns true if the given dates have the same year', () => {
@@ -41,12 +41,5 @@ describe('isSameYear', () => {
   it('returns false if the both dates are `Invalid Date`', () => {
     const result = isSameYear(new Date(NaN), new Date(NaN))
     assert(result === false)
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(isSameYear.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(isSameYear.bind(null, 1), TypeError)
   })
 })

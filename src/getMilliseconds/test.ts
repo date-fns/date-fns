@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import getMilliseconds from '.'
+import getMilliseconds from './index'
 
 describe('getMilliseconds', () => {
   it('returns the milliseconds of the given date', () => {
@@ -21,10 +21,5 @@ describe('getMilliseconds', () => {
   it('returns NaN if the given date is invalid', () => {
     const result = getMilliseconds(new Date(NaN))
     assert(isNaN(result))
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(getMilliseconds.bind(null), TypeError)
   })
 })

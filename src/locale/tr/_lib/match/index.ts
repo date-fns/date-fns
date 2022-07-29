@@ -1,5 +1,5 @@
-import type { Match } from '../../../types'
 import type { Quarter } from '../../../../types'
+import type { Match } from '../../../types'
 import buildMatchFn from '../../../_lib/buildMatchFn/index'
 import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
 
@@ -71,19 +71,19 @@ const matchDayPatterns = {
   narrow: /^[psçc]/i,
   short: /^(pz|pt|sa|ça|pe|cu|ct)/i,
   abbreviated: /^(paz|pzt|sal|çar|per|cum|cts)/i,
-  wide: /^(pazar|pazartesi|salı|çarşamba|perşembe|cuma|cumartesi)/i,
+  wide: /^(pazar(?!tesi)|pazartesi|salı|çarşamba|perşembe|cuma(?!rtesi)|cumartesi)/i,
 }
 const parseDayPatterns = {
   narrow: [/^p/i, /^p/i, /^s/i, /^ç/i, /^p/i, /^c/i, /^c/i] as const,
   any: [/^pz/i, /^pt/i, /^sa/i, /^ça/i, /^pe/i, /^cu/i, /^ct/i] as const,
   wide: [
-    /^pazar/i,
+    /^pazar(?!tesi)/i,
     /^pazartesi/i,
     /^salı/i,
     /^çarşamba/i,
     /^perşembe/i,
-    /^cuma/i,
-    /cumartesi/i,
+    /^cuma(?!rtesi)/i,
+    /^cumartesi/i,
   ] as const,
 }
 

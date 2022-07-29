@@ -1,11 +1,20 @@
-import parse from '../parse/index'
 import isValid from '../isValid/index'
-import requiredArgs from '../_lib/requiredArgs/index'
+import parse from '../parse/index'
 import type {
+  AdditionalTokensOptions,
+  FirstWeekContainsDateOptions,
   LocaleOptions,
   WeekStartOptions,
-  FirstWeekContainsDateOptions,
 } from '../types'
+
+/**
+ * The {@link isMatch} function options.
+ */
+export interface IsMatchOptions
+  extends LocaleOptions,
+    WeekStartOptions,
+    FirstWeekContainsDateOptions,
+    AdditionalTokensOptions {}
 
 /**
  * @name isMatch
@@ -17,7 +26,7 @@ import type {
  * will return false.
  *
  * > ⚠️ Please note that the `format` tokens differ from Moment.js and other libraries.
- * > See: https://git.io/fxCyr
+ * > See: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
  *
  * The characters in the format string wrapped between two single quotes characters (') are escaped.
  * Two single quotes in a row, whether inside or outside a quoted sequence, represent a 'real' single quote.
@@ -240,10 +249,10 @@ import type {
  *    - `p`: long localized time
  *
  * 6. `YY` and `YYYY` tokens represent week-numbering years but they are often confused with years.
- *    You should enable `options.useAdditionalWeekYearTokens` to use them. See: https://git.io/fxCyr
+ *    You should enable `options.useAdditionalWeekYearTokens` to use them. See: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
  *
  * 7. `D` and `DD` tokens represent days of the year but they are ofthen confused with days of the month.
- *    You should enable `options.useAdditionalDayOfYearTokens` to use them. See: https://git.io/fxCyr
+ *    You should enable `options.useAdditionalDayOfYearTokens` to use them. See: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
  *
  * 8. `P+` tokens do not have a defined priority since they are merely aliases to other tokens based
  *    on the given locale.
@@ -265,25 +274,17 @@ import type {
  *
  *
  *
- * @param {String} dateString - the date string to verify
- * @param {String} formatString - the string of tokens
- * @param {Object} [options] - an object with options.
- * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
- * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
- * @param {1|2|3|4|5|6|7} [options.firstWeekContainsDate=1] - the day of January, which is always in the first week of the year
- * @param {Boolean} [options.useAdditionalWeekYearTokens=false] - if true, allows usage of the week-numbering year tokens `YY` and `YYYY`;
- *   see: https://git.io/fxCyr
- * @param {Boolean} [options.useAdditionalDayOfYearTokens=false] - if true, allows usage of the day of year tokens `D` and `DD`;
- *   see: https://git.io/fxCyr
- * @returns {Boolean}
- * @throws {TypeError} 2 arguments required
- * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
- * @throws {RangeError} `options.firstWeekContainsDate` must be between 1 and 7
+ * @param dateString - the date string to verify
+ * @param formatString - the string of tokens
+ * @param options - an object with options.
+ *   see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
+ *   see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
+ * @returns is format string a match for date string?
  * @throws {RangeError} `options.locale` must contain `match` property
- * @throws {RangeError} use `yyyy` instead of `YYYY` for formatting years; see: https://git.io/fxCyr
- * @throws {RangeError} use `yy` instead of `YY` for formatting years; see: https://git.io/fxCyr
- * @throws {RangeError} use `d` instead of `D` for formatting days of the month; see: https://git.io/fxCyr
- * @throws {RangeError} use `dd` instead of `DD` for formatting days of the month; see: https://git.io/fxCyr
+ * @throws {RangeError} use `yyyy` instead of `YYYY` for formatting years; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
+ * @throws {RangeError} use `yy` instead of `YY` for formatting years; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
+ * @throws {RangeError} use `d` instead of `D` for formatting days of the month; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
+ * @throws {RangeError} use `dd` instead of `DD` for formatting days of the month; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
  * @throws {RangeError} format string contains an unescaped latin alphabet character
  *
  * @example
@@ -302,8 +303,7 @@ import type {
 export default function isMatch(
   dateString: string,
   formatString: string,
-  options?: LocaleOptions & WeekStartOptions & FirstWeekContainsDateOptions
+  options?: IsMatchOptions
 ): boolean {
-  requiredArgs(2, arguments)
   return isValid(parse(dateString, formatString, new Date(), options))
 }

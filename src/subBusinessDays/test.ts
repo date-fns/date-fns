@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import subBusinessDays from '.'
+import subBusinessDays from './index'
 
 describe('subBusinessDays', () => {
   it('substract the given number of business days', () => {
@@ -30,20 +30,6 @@ describe('subBusinessDays', () => {
     assert.deepStrictEqual(result, new Date(2014, 7 /* Aug */, 18))
   })
 
-  it('converts a fractional number to an integer', () => {
-    const result = subBusinessDays(new Date(2014, 8 /* Sep */, 1), 10.5)
-    assert.deepStrictEqual(result, new Date(2014, 7 /* Aug */, 18))
-  })
-
-  it('implicitly converts number arguments', () => {
-    const result = subBusinessDays(
-      new Date(2014, 8 /* Sep */, 1),
-      // @ts-expect-error
-      '10'
-    )
-    assert.deepStrictEqual(result, new Date(2014, 7 /* Aug */, 18))
-  })
-
   it('does not mutate the original date', () => {
     const date = new Date(2014, 8 /* Sep */, 1)
     subBusinessDays(date, 11)
@@ -58,15 +44,5 @@ describe('subBusinessDays', () => {
   it('returns `Invalid Date` if the given amount is NaN', () => {
     const result = subBusinessDays(new Date(2014, 8 /* Sep */, 1), NaN)
     assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(subBusinessDays.bind(null), TypeError)
-    assert.throws(
-      // @ts-expect-error
-      subBusinessDays.bind(null, new Date(2014, 8 /* Sep */, 1)),
-      TypeError
-    )
   })
 })

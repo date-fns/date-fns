@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import roundToNearestMinutes from '.'
+import roundToNearestMinutes from './index'
 
 describe('roundToNearestMinutes', () => {
   it('rounds given date to the nearest minute by default', () => {
@@ -49,14 +49,57 @@ describe('roundToNearestMinutes', () => {
     )
   })
 
+  it('rounds according to the passed mode - floor', () => {
+    const result = roundToNearestMinutes(
+      new Date(2014, 6 /* Jul */, 10, 12, 10, 30, 5),
+      { roundingMethod: 'floor' }
+    )
+    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 11, 0))
+  })
+
+  it('rounds according to the passed mode - floor - when nearestTo is provided', () => {
+    const result = roundToNearestMinutes(
+      new Date(2014, 6 /* Jul */, 10, 12, 10, 30, 5),
+      { nearestTo: 10, roundingMethod: 'floor' }
+    )
+    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 10, 0))
+  })
+
+  it('rounds according to the passed mode - ceil', () => {
+    const result = roundToNearestMinutes(
+      new Date(2014, 6 /* Jul */, 10, 12, 10, 30, 5),
+      { roundingMethod: 'ceil' }
+    )
+    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 12, 0))
+  })
+
+  it('rounds according to the passed mode - ceil - when nearestTo is provided', () => {
+    const result = roundToNearestMinutes(
+      new Date(2014, 6 /* Jul */, 10, 12, 10, 30, 5),
+      { nearestTo: 10, roundingMethod: 'ceil' }
+    )
+    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 20, 0))
+  })
+
+  it('rounds according to the passed mode - round - when nearestTo is provided', () => {
+    const result = roundToNearestMinutes(
+      new Date(2014, 6 /* Jul */, 10, 12, 10, 30, 5),
+      { nearestTo: 10, roundingMethod: 'round' }
+    )
+    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 10, 0))
+  })
+
+  it('rounds according to the passed mode - trunc - when nearestTo is provided', () => {
+    const result = roundToNearestMinutes(
+      new Date(2014, 6 /* Jul */, 10, 12, 10, 30, 5),
+      { nearestTo: 10, roundingMethod: 'trunc' }
+    )
+    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 10, 0))
+  })
+
   it('returns `Invalid Date` if the given date is invalid', () => {
     const result = roundToNearestMinutes(new Date(NaN))
     assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
-  it('throws `TypeError` exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(roundToNearestMinutes.bind(null), TypeError)
   })
 
   it('throws `RangeError` if nearestTo is not between 1 and 30', () => {

@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import setQuarter from '.'
+import setQuarter from './index'
 
 describe('setQuarter', () => {
   it('sets the quarter of the year', () => {
@@ -17,20 +17,6 @@ describe('setQuarter', () => {
   it('accepts a timestamp', () => {
     const result = setQuarter(new Date(2014, 6 /* Jul */, 1).getTime(), 4)
     assert.deepStrictEqual(result, new Date(2014, 9 /* Oct */, 1))
-  })
-
-  it('converts a fractional number to an integer', () => {
-    const result = setQuarter(new Date(2014, 6 /* Jul */, 2), 1.951)
-    assert.deepStrictEqual(result, new Date(2014, 0 /* Jan */, 2))
-  })
-
-  it('implicitly converts number arguments', () => {
-    const result = setQuarter(
-      new Date(2014, 6 /* Jul */, 2),
-      // @ts-expect-error
-      '1'
-    )
-    assert.deepStrictEqual(result, new Date(2014, 0 /* Jan */, 2))
   })
 
   it('does not mutate the original date', () => {
@@ -58,12 +44,5 @@ describe('setQuarter', () => {
   it('returns `Invalid Date` if the given amount is NaN', () => {
     const result = setQuarter(new Date(2014, 6 /* Jul */, 2), NaN)
     assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(setQuarter.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(setQuarter.bind(null, 1), TypeError)
   })
 })

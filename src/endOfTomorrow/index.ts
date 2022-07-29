@@ -10,7 +10,7 @@
  * > ⚠️ Please note that this function is not present in the FP submodule as
  * > it uses `new Date()` internally hence impure and can't be safely curried.
  *
- * @returns {Date} the end of tomorrow
+ * @returns the end of tomorrow
  *
  * @example
  * // If today is 6 October 2014:

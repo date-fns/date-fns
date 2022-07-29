@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import getTimezoneOffsetInMilliseconds from '.'
+import getTimezoneOffsetInMilliseconds from './index'
 
 describe('getTimezoneOffsetInMilliseconds', () => {
   it('works for a modern date', () => {

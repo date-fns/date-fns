@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import isWeekend from '.'
+import isWeekend from './index'
 
 describe('isWeekend', () => {
   it('returns true if the given date is in a weekend', () => {
@@ -22,10 +22,5 @@ describe('isWeekend', () => {
   it('returns false if the given date is `Invalid Date`', () => {
     const result = isWeekend(new Date(NaN))
     assert(result === false)
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(isWeekend.bind(null), TypeError)
   })
 })

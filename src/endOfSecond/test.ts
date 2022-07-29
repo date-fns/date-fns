@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import endOfSecond from '.'
+import endOfSecond from './index'
 
 describe('endOfSecond', () => {
   it('returns the date with the time set to the last millisecond before a second ends', () => {
@@ -24,10 +24,5 @@ describe('endOfSecond', () => {
   it('returns `Invalid Date` if the given date is invalid', () => {
     const result = endOfSecond(new Date(NaN))
     assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(endOfSecond.bind(null), TypeError)
   })
 })

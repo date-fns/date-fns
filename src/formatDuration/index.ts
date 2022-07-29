@@ -1,8 +1,18 @@
-import defaultLocale from '../locale/en-US/index'
-import type { FormatDistanceToken, Locale } from '../locale/types'
-import type { Duration } from '../types'
+import type { FormatDistanceToken } from '../locale/types'
+import type { Duration, DurationUnit, LocaleOptions } from '../types'
+import defaultLocale from '../_lib/defaultLocale/index'
+import { getDefaultOptions } from '../_lib/defaultOptions/index'
 
-const defaultFormat: (keyof Duration)[] = [
+/**
+ * The {@link formatDuration} function options.
+ */
+export interface FormatDurationOptions extends LocaleOptions {
+  format?: DurationUnit[]
+  zero?: boolean
+  delimiter?: string
+}
+
+const defaultFormat: DurationUnit[] = [
   'years',
   'months',
   'weeks',
@@ -12,13 +22,6 @@ const defaultFormat: (keyof Duration)[] = [
   'seconds',
 ]
 
-interface Options {
-  format?: (keyof Duration)[]
-  zero?: boolean
-  delimiter?: string
-  locale?: Locale
-}
-
 /**
  * @name formatDuration
  * @category Common Helpers
@@ -27,14 +30,9 @@ interface Options {
  * @description
  * Return human-readable duration string i.e. "9 months 2 days"
  *
- * @param {Duration} duration - the duration to format
- * @param {Object} [options] - an object with options.
- * @param {string[]} [options.format=['years', 'months', 'weeks', 'days', 'hours', 'minutes', 'seconds']] - the array of units to format
- * @param {boolean} [options.zero=false] - should zeros be included in the output?
- * @param {string} [options.delimiter=' '] - delimiter string
- * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
- * @returns {string} the formatted date string
- * @throws {TypeError} 1 argument required
+ * @param duration - the duration to format
+ * @param options - an object with options.
+ * @returns the formatted date string
  *
  * @example
  * // Format full duration
@@ -83,18 +81,13 @@ interface Options {
  */
 export default function formatDuration(
   duration: Duration,
-  options: Options = {}
+  options?: FormatDurationOptions
 ): string {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      `1 argument required, but only ${arguments.length} present`
-    )
-  }
-
-  const format = options?.format || defaultFormat
-  const locale = options?.locale || defaultLocale
-  const zero = options?.zero || false
-  const delimiter = options?.delimiter || ' '
+  const defaultOptions = getDefaultOptions()
+  const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale
+  const format = options?.format ?? defaultFormat
+  const zero = options?.zero ?? false
+  const delimiter = options?.delimiter ?? ' '
 
   if (!locale.formatDistance) {
     return ''
@@ -106,7 +99,7 @@ export default function formatDuration(
         m.toUpperCase()
       )}` as FormatDistanceToken
       const value = duration[unit]
-      if (typeof value === 'number' && (zero || duration[unit])) {
+      if (value !== undefined && (zero || duration[unit])) {
         return acc.concat(locale.formatDistance(token, value))
       }
       return acc
