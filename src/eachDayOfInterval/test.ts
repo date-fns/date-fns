@@ -118,8 +118,7 @@ describe('eachDayOfInterval', () => {
       assert.throws(
         () =>
           eachDayOfInterval(interval, {
-            // @ts-expect-error
-            step: 'w',
+            step: NaN,
           }),
         stepError
       )

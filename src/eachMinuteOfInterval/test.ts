@@ -95,8 +95,7 @@ describe('eachMinuteOfInterval', () => {
       assert.throws(
         () =>
           eachMinuteOfInterval(interval, {
-            // @ts-expect-error
-            step: 'w',
+            step: NaN,
           }),
         stepError
       )
