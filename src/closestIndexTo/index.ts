@@ -25,27 +25,13 @@ import toDate from '../toDate/index'
  */
 export default function closestIndexTo<DateType extends Date>(
   dirtyDateToCompare: DateType | number,
-  dirtyDatesArray: Array<DateType | number>
+  datesArray: Array<DateType | number>
 ): number | undefined {
   const dateToCompare = toDate(dirtyDateToCompare)
 
   if (isNaN(Number(dateToCompare))) return NaN
 
   const timeToCompare = dateToCompare.getTime()
-
-  let datesArray: Array<Date | number>
-  // `dirtyDatesArray` is undefined or null
-  if (dirtyDatesArray == null) {
-    datesArray = []
-
-    // `dirtyDatesArray` is Array, Set or Map, or object with custom `forEach` method
-  } else if (typeof dirtyDatesArray.forEach === 'function') {
-    datesArray = dirtyDatesArray
-
-    // If `dirtyDatesArray` is Array-like Object, convert to Array. Otherwise, make it empty Array
-  } else {
-    datesArray = Array.prototype.slice.call(dirtyDatesArray)
-  }
 
   let result: number | undefined
   let minDistance: number

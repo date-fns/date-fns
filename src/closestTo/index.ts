@@ -24,7 +24,7 @@ import toDate from '../toDate/index'
  */
 export default function closestTo<DateType extends Date>(
   dirtyDateToCompare: DateType | number,
-  dirtyDatesArray: Array<DateType | number>
+  datesArray: Array<DateType | number>
 ): DateType | undefined {
   const dateToCompare = toDate(dirtyDateToCompare)
 
@@ -32,20 +32,6 @@ export default function closestTo<DateType extends Date>(
     return constructFrom(dirtyDateToCompare, NaN)
 
   const timeToCompare = dateToCompare.getTime()
-
-  let datesArray: Array<DateType | number>
-  // `dirtyDatesArray` is undefined or null
-  if (dirtyDatesArray == null) {
-    datesArray = []
-
-    // `dirtyDatesArray` is Array, Set or Map, or object with custom `forEach` method
-  } else if (typeof dirtyDatesArray.forEach === 'function') {
-    datesArray = dirtyDatesArray
-
-    // If `dirtyDatesArray` is Array-like Object, convert to Array. Otherwise, make it empty Array
-  } else {
-    datesArray = Array.prototype.slice.call(dirtyDatesArray)
-  }
 
   let result: DateType | undefined
   let minDistance: number
