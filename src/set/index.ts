@@ -28,7 +28,6 @@ import type { DateValues } from '../types'
  * @param values.seconds - the number of seconds to be set
  * @param values.milliseconds - the number of milliseconds to be set
  * @returns the new date with options set
- * @throws {RangeError} `values` must be an object
  *
  * @example
  * // Transform 1 September 2014 into 20 October 2015 in a single line:
@@ -45,10 +44,6 @@ export default function set<DateType extends Date>(
   dirtyDate: DateType | number,
   values: DateValues
 ): DateType {
-  if (typeof values !== 'object' || values === null) {
-    throw new RangeError('values parameter must be an object')
-  }
-
   let date = toDate(dirtyDate)
 
   // Check if date is Invalid Date because Date.prototype.setFullYear ignores the value of Invalid Date

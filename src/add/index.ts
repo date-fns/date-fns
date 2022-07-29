@@ -46,9 +46,6 @@ export default function add<DateType extends Date>(
   dirtyDate: DateType | number,
   duration: Duration
 ): DateType {
-  if (!duration || typeof duration !== 'object')
-    return constructFrom(dirtyDate, NaN)
-
   const {
     years = 0,
     months = 0,

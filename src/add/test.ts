@@ -97,13 +97,4 @@ describe('add', () => {
     const result = add(new Date(NaN), { hours: 5 })
     assert(result instanceof Date && isNaN(result.getTime()))
   })
-
-  it('returns `Invalid Date` if the given duration is not even an object', () => {
-    const result = add(
-      new Date(2014, 8, 1),
-      // @ts-expect-error
-      'wut'
-    )
-    assert(result instanceof Date && isNaN(result.getTime()))
-  })
 })
