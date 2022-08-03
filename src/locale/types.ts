@@ -72,9 +72,9 @@ export type FormatDistanceFn = (
   options?: FormatDistanceFnOptions
 ) => string
 
-export type FormatRelativeTokenFn = (
-  date: Date | number,
-  baseDate: Date | number,
+export type FormatRelativeTokenFn = <DateType extends Date>(
+  date: DateType | number,
+  baseDate: DateType | number,
   options?: { weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6 }
 ) => string
 
@@ -91,10 +91,10 @@ export interface FormatRelativeFnOptions {
   locale?: Locale
 }
 
-export type FormatRelativeFn = (
+export type FormatRelativeFn = <DateType extends Date>(
   token: FormatRelativeToken,
-  date: Date,
-  baseDate: Date,
+  date: DateType,
+  baseDate: DateType,
   options?: FormatRelativeFnOptions
 ) => string
 

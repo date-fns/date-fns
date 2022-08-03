@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import differenceInQuarters from '.'
+import differenceInQuarters from './index'
 
 describe('differenceInQuarters', () => {
   it('returns the number of full quarters between the given dates  with `trunc` as a default rounding method', () => {
@@ -146,12 +146,5 @@ describe('differenceInQuarters', () => {
   it('returns NaN if the both dates are `Invalid Date`', () => {
     const result = differenceInQuarters(new Date(NaN), new Date(NaN))
     assert(isNaN(result))
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(differenceInQuarters.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(differenceInQuarters.bind(null, 1), TypeError)
   })
 })

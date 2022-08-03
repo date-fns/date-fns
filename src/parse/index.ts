@@ -1,26 +1,32 @@
-import defaultLocale from '../_lib/defaultLocale/index'
-import subMilliseconds from '../subMilliseconds/index'
+import constructFrom from '../constructFrom/index'
+import getDefaultOptions from '../getDefaultOptions/index'
+import defaultLocale from '../locale/en-US/index'
 import toDate from '../toDate/index'
+import type {
+  AdditionalTokensOptions,
+  FirstWeekContainsDateOptions,
+  LocaleOptions,
+  WeekStartOptions,
+} from '../types'
 import assign from '../_lib/assign/index'
 import longFormatters from '../_lib/format/longFormatters/index'
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
 import {
   isProtectedDayOfYearToken,
   isProtectedWeekYearToken,
   throwProtectedError,
 } from '../_lib/protectedTokens/index'
-import toInteger from '../_lib/toInteger/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-import type { ParserOptions, ParseFlags } from './_lib/types'
-import { Setter, DateToSystemTimezoneSetter } from './_lib/Setter'
-import { parsers } from './_lib/parsers'
-import type {
-  FirstWeekContainsDateOptions,
-  LocaleOptions,
-  WeekStartOptions,
-  AdditionalTokensOptions,
-} from '../types'
-import { getDefaultOptions } from '../_lib/defaultOptions/index'
+import { parsers } from './_lib/parsers/index'
+import { DateToSystemTimezoneSetter, Setter } from './_lib/Setter'
+import type { ParseFlags, ParserOptions } from './_lib/types'
+
+/**
+ * The {@link parse} function options.
+ */
+export interface ParseOptions
+  extends LocaleOptions,
+    FirstWeekContainsDateOptions,
+    WeekStartOptions,
+    AdditionalTokensOptions {}
 
 // This RegExp consists of three parts separated by `|`:
 // - [yYQqMLwIdDecihHKkms]o matches any available ordinal number token
@@ -311,21 +317,13 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * Invalid Date is a Date, whose time value is NaN.
  * Time value of Date: http://es5.github.io/#x15.9.1.1
  *
- * @param {String} dateString - the string to parse
- * @param {String} formatString - the string of tokens
- * @param {Date|Number} referenceDate - defines values missing from the parsed dateString
- * @param {Object} [options] - an object with options.
- * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
- * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
- * @param {1|2|3|4|5|6|7} [options.firstWeekContainsDate=1] - the day of January, which is always in the first week of the year
- * @param {Boolean} [options.useAdditionalWeekYearTokens=false] - if true, allows usage of the week-numbering year tokens `YY` and `YYYY`;
+ * @param dateString - the string to parse
+ * @param formatString - the string of tokens
+ * @param referenceDate - defines values missing from the parsed dateString
+ * @param options - an object with options.
  *   see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
- * @param {Boolean} [options.useAdditionalDayOfYearTokens=false] - if true, allows usage of the day of year tokens `D` and `DD`;
  *   see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
- * @returns {Date} the parsed date
- * @throws {TypeError} 3 arguments required
- * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
- * @throws {RangeError} `options.firstWeekContainsDate` must be between 1 and 7
+ * @returns the parsed date
  * @throws {RangeError} `options.locale` must contain `match` property
  * @throws {RangeError} use `yyyy` instead of `YYYY` for formatting years using [format provided] to the input [input provided]; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
  * @throws {RangeError} use `yy` instead of `YY` for formatting years using [format provided] to the input [input provided]; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
@@ -346,20 +344,12 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * })
  * //=> Sun Feb 28 2010 00:00:00
  */
-export default function parse(
-  dirtyDateString: string,
-  dirtyFormatString: string,
-  dirtyReferenceDate: Date | number,
-  options?: LocaleOptions &
-    FirstWeekContainsDateOptions &
-    WeekStartOptions &
-    AdditionalTokensOptions
-): Date {
-  requiredArgs(3, arguments)
-
-  let dateString = String(dirtyDateString)
-  const formatString = String(dirtyFormatString)
-
+export default function parse<DateType extends Date>(
+  dateString: string,
+  formatString: string,
+  dirtyReferenceDate: DateType | number,
+  options?: ParseOptions
+): DateType {
   const defaultOptions = getDefaultOptions()
   const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale
 
@@ -367,39 +357,25 @@ export default function parse(
     throw new RangeError('locale must contain match property')
   }
 
-  const firstWeekContainsDate = toInteger(
+  const firstWeekContainsDate =
     options?.firstWeekContainsDate ??
-      options?.locale?.options?.firstWeekContainsDate ??
-      defaultOptions.firstWeekContainsDate ??
-      defaultOptions.locale?.options?.firstWeekContainsDate ??
-      1
-  )
+    options?.locale?.options?.firstWeekContainsDate ??
+    defaultOptions.firstWeekContainsDate ??
+    defaultOptions.locale?.options?.firstWeekContainsDate ??
+    1
 
-  // Test if weekStartsOn is between 1 and 7 _and_ is not NaN
-  if (!(firstWeekContainsDate >= 1 && firstWeekContainsDate <= 7)) {
-    throw new RangeError(
-      'firstWeekContainsDate must be between 1 and 7 inclusively'
-    )
-  }
-
-  const weekStartsOn = toInteger(
+  const weekStartsOn =
     options?.weekStartsOn ??
-      options?.locale?.options?.weekStartsOn ??
-      defaultOptions.weekStartsOn ??
-      defaultOptions.locale?.options?.weekStartsOn ??
-      0
-  )
-
-  // Test if weekStartsOn is between 0 and 6 _and_ is not NaN
-  if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {
-    throw new RangeError('weekStartsOn must be between 0 and 6 inclusively')
-  }
+    options?.locale?.options?.weekStartsOn ??
+    defaultOptions.weekStartsOn ??
+    defaultOptions.locale?.options?.weekStartsOn ??
+    0
 
   if (formatString === '') {
     if (dateString === '') {
       return toDate(dirtyReferenceDate)
     } else {
-      return new Date(NaN)
+      return constructFrom(dirtyReferenceDate, NaN)
     }
   }
 
@@ -425,20 +401,20 @@ export default function parse(
     .join('')
     .match(formattingTokensRegExp)!
 
-  const usedTokens = []
+  const usedTokens: Array<{ token: string; fullToken: string }> = []
 
   for (let token of tokens) {
     if (
       !options?.useAdditionalWeekYearTokens &&
       isProtectedWeekYearToken(token)
     ) {
-      throwProtectedError(token, formatString, dirtyDateString)
+      throwProtectedError(token, formatString, dateString)
     }
     if (
       !options?.useAdditionalDayOfYearTokens &&
       isProtectedDayOfYearToken(token)
     ) {
-      throwProtectedError(token, formatString, dirtyDateString)
+      throwProtectedError(token, formatString, dateString)
     }
 
     const firstCharacter = token[0]
@@ -472,7 +448,7 @@ export default function parse(
       )
 
       if (!parseResult) {
-        return new Date(NaN)
+        return constructFrom(dirtyReferenceDate, NaN)
       }
 
       setters.push(parseResult.setter)
@@ -498,14 +474,14 @@ export default function parse(
       if (dateString.indexOf(token) === 0) {
         dateString = dateString.slice(token.length)
       } else {
-        return new Date(NaN)
+        return constructFrom(dirtyReferenceDate, NaN)
       }
     }
   }
 
   // Check if the remaining input contains something other than whitespace
   if (dateString.length > 0 && notWhitespaceRegExp.test(dateString)) {
-    return new Date(NaN)
+    return constructFrom(dirtyReferenceDate, NaN)
   }
 
   const uniquePrioritySetters = setters
@@ -519,33 +495,30 @@ export default function parse(
     )
     .map((setterArray) => setterArray[0])
 
-  const date = toDate(dirtyReferenceDate)
+  let date = toDate(dirtyReferenceDate)
 
   if (isNaN(date.getTime())) {
-    return new Date(NaN)
+    return constructFrom(dirtyReferenceDate, NaN)
   }
-
-  // Convert the date in system timezone to the same date in UTC+00:00 timezone.
-  let utcDate = subMilliseconds(date, getTimezoneOffsetInMilliseconds(date))
 
   const flags: ParseFlags = {}
   for (const setter of uniquePrioritySetters) {
-    if (!setter.validate(utcDate, subFnOptions)) {
-      return new Date(NaN)
+    if (!setter.validate(date, subFnOptions)) {
+      return constructFrom(dirtyReferenceDate, NaN)
     }
 
-    const result = setter.set(utcDate, flags, subFnOptions)
+    const result = setter.set(date, flags, subFnOptions)
     // Result is tuple (date, flags)
     if (Array.isArray(result)) {
-      utcDate = result[0]
+      date = result[0]
       assign(flags, result[1])
       // Result is date
     } else {
-      utcDate = result
+      date = result
     }
   }
 
-  return utcDate
+  return constructFrom(dirtyReferenceDate, date)
 }
 
 function cleanEscapedString(input: string) {

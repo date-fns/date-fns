@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import addHours from '.'
+import addHours from './index'
 
 describe('addHours', () => {
   it('adds the given numbers of hours', () => {
@@ -15,20 +15,6 @@ describe('addHours', () => {
       26
     )
     assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 12, 1, 0))
-  })
-
-  it('converts a fractional number to an integer', () => {
-    const result = addHours(new Date(2014, 6 /* Jul */, 10, 23, 0), 2.5)
-    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 11, 1, 0))
-  })
-
-  it('implicitly converts number arguments', () => {
-    const result = addHours(
-      new Date(2014, 6 /* Jul */, 10, 23, 0),
-      // @ts-expect-error
-      '2'
-    )
-    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 11, 1, 0))
   })
 
   it('does not mutate the original date', () => {
@@ -45,12 +31,5 @@ describe('addHours', () => {
   it('returns `Invalid Date` if the given amount is NaN', () => {
     const result = addHours(new Date(2014, 6 /* Jul */, 10, 23, 0), NaN)
     assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(addHours.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(addHours.bind(null, 1), TypeError)
   })
 })

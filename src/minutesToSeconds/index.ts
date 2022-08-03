@@ -1,4 +1,3 @@
-import requiredArgs from '../_lib/requiredArgs/index'
 import { secondsInMinute } from '../constants/index'
 
 /**
@@ -9,10 +8,9 @@ import { secondsInMinute } from '../constants/index'
  * @description
  * Convert a number of minutes to a full number of seconds.
  *
- * @param { number } minutes - number of minutes to be converted
+ * @param minutes - number of minutes to be converted
  *
- * @returns {number} the number of minutes converted in seconds
- * @throws {TypeError} 1 argument required
+ * @returns the number of minutes converted in seconds
  *
  * @example
  * // Convert 2 minutes to seconds
@@ -20,6 +18,5 @@ import { secondsInMinute } from '../constants/index'
  * //=> 120
  */
 export default function minutesToSeconds(minutes: number): number {
-  requiredArgs(1, arguments)
   return Math.floor(minutes * secondsInMinute)
 }

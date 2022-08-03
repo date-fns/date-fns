@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import isLeapYear from '.'
+import isLeapYear from './index'
 
 describe('isLeapYear', () => {
   it('returns true if the given date is in the leap year', () => {
@@ -33,10 +33,5 @@ describe('isLeapYear', () => {
   it('returns false if the given date is `Invalid Date`', () => {
     const result = isLeapYear(new Date(NaN))
     assert(result === false)
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(isLeapYear.bind(null), TypeError)
   })
 })

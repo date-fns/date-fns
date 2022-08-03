@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import sinon from 'sinon'
-import isThisQuarter from '.'
+import isThisQuarter from './index'
 
 describe('isThisQuarter', () => {
   let clock: sinon.SinonFakeTimers
@@ -27,10 +27,5 @@ describe('isThisQuarter', () => {
   it('accepts a timestamp', () => {
     const date = new Date(2014, 6 /* Jul */, 2).getTime()
     assert(isThisQuarter(date) === true)
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(isThisQuarter.bind(null), TypeError)
   })
 })

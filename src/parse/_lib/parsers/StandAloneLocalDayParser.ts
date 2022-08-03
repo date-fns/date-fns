@@ -1,8 +1,8 @@
 import type { Match } from '../../../locale/types'
-import type { ParseResult, ParseFlags, ParserOptions } from '../types'
+import setDay from '../../../setDay/index'
 import { Parser } from '../Parser'
+import type { ParseFlags, ParseResult, ParserOptions } from '../types'
 import { mapValue, parseNDigits } from '../utils'
-import setUTCDay from '../../../_lib/setUTCDay'
 
 // Stand-alone local day of week
 export class StandAloneLocalDayParser extends Parser<number> {
@@ -69,18 +69,18 @@ export class StandAloneLocalDayParser extends Parser<number> {
     }
   }
 
-  validate(_date: Date, value: number): boolean {
+  validate<DateType extends Date>(_date: DateType, value: number): boolean {
     return value >= 0 && value <= 6
   }
 
-  set(
-    date: Date,
+  set<DateType extends Date>(
+    date: DateType,
     _flags: ParseFlags,
     value: number,
     options: ParserOptions
-  ): Date {
-    date = setUTCDay(date, value, options)
-    date.setUTCHours(0, 0, 0, 0)
+  ): DateType {
+    date = setDay(date, value, options)
+    date.setHours(0, 0, 0, 0)
     return date
   }
 

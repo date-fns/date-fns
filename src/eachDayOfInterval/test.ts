@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import eachDayOfInterval from '.'
+import eachDayOfInterval from './index'
 
 describe('eachDayOfInterval', () => {
   it('returns an array with starts of days from the day of the start date to the day of the end date', () => {
@@ -92,20 +92,6 @@ describe('eachDayOfInterval', () => {
     assert.throws(block, RangeError)
   })
 
-  it('throws an exception if the interval is undefined', () => {
-    const block = () =>
-      eachDayOfInterval(
-        // @ts-expect-error
-        undefined
-      )
-    assert.throws(block, RangeError)
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(eachDayOfInterval.bind(null), TypeError)
-  })
-
   describe('options.step', () => {
     const interval = {
       start: new Date(2014, 9 /* Oct */, 6),
@@ -123,17 +109,16 @@ describe('eachDayOfInterval', () => {
       ])
     })
 
-    it('throws TypeError error if `options.step` is less than 1', () => {
+    it('throws RangeError error if `options.step` is less than 1', () => {
       assert.throws(() => eachDayOfInterval(interval, { step: 0 }), stepError)
       assert.throws(() => eachDayOfInterval(interval, { step: -3 }), stepError)
     })
 
-    it('throws TypeError error if `options.step` is NaN', () => {
+    it('throws RangeError error if `options.step` is NaN', () => {
       assert.throws(
         () =>
           eachDayOfInterval(interval, {
-            // @ts-expect-error
-            step: 'w',
+            step: NaN,
           }),
         stepError
       )

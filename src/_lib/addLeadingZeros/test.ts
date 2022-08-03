@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import addLeadingZeros from '.'
+import addLeadingZeros from './index'
 
 describe('addLeadingZeros', () => {
   it('adds leading zeros when number has fewer digits than target length', () => {

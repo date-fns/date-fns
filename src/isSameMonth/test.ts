@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import isSameMonth from '.'
+import isSameMonth from './index'
 
 describe('isSameMonth', () => {
   it('returns true if the given dates have the same month (and year)', () => {
@@ -41,12 +41,5 @@ describe('isSameMonth', () => {
   it('returns false if the both dates are `Invalid Date`', () => {
     const result = isSameMonth(new Date(NaN), new Date(NaN))
     assert(result === false)
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(isSameMonth.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(isSameMonth.bind(null, 1), TypeError)
   })
 })

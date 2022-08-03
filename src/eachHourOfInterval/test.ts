@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import eachHourOfInterval from '.'
+import eachHourOfInterval from './index'
 
 describe('eachHourOfInterval', () => {
   it('returns an array with starts of hours from the hour of the start date to the hour of the end date', () => {
@@ -83,20 +83,6 @@ describe('eachHourOfInterval', () => {
     assert.throws(block, RangeError)
   })
 
-  it('throws an exception if the interval is undefined', () => {
-    const block = () =>
-      eachHourOfInterval(
-        // @ts-expect-error
-        undefined
-      )
-    assert.throws(block, RangeError)
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(eachHourOfInterval.bind(null), TypeError)
-  })
-
   describe('options.step', () => {
     const interval = {
       start: new Date(2014, 9 /* Oct */, 6, 12),
@@ -114,17 +100,16 @@ describe('eachHourOfInterval', () => {
       ])
     })
 
-    it('throws TypeError error if `options.step` is less than 1', () => {
+    it('throws RangeError error if `options.step` is less than 1', () => {
       assert.throws(() => eachHourOfInterval(interval, { step: 0 }), stepError)
       assert.throws(() => eachHourOfInterval(interval, { step: -3 }), stepError)
     })
 
-    it('throws TypeError error if `options.step` is NaN', () => {
+    it('throws RangeError error if `options.step` is NaN', () => {
       assert.throws(
         () =>
           eachHourOfInterval(interval, {
-            // @ts-expect-error
-            step: 'w',
+            step: NaN,
           }),
         stepError
       )

@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import getUnixTime from '.'
+import getUnixTime from './index'
 
 describe('getUnixTime', () => {
   it('returns the timestamp of the given date', () => {
@@ -19,10 +19,5 @@ describe('getUnixTime', () => {
   it('returns NaN if the given date is invalid', () => {
     const result = getUnixTime(new Date(NaN))
     assert(isNaN(result))
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(getUnixTime.bind(null), TypeError)
   })
 })

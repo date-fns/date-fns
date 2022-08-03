@@ -1,5 +1,4 @@
 import type { Duration } from '../types'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name formatISODuration
@@ -9,11 +8,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Format a duration object according to the ISO 8601 duration standard (https://www.digi.com/resources/documentation/digidocs/90001437-13/reference/r_iso_8601_duration_format.htm)
  *
- * @param {Duration} duration - the duration to format
+ * @param duration - the duration to format
  *
- * @returns {String} The ISO 8601 duration string
- * @throws {TypeError} Requires 1 argument
- * @throws {Error} Argument must be an object
+ * @returns The ISO 8601 duration string
  *
  * @example
  * // Format the given duration as ISO 8601 string
@@ -28,11 +25,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> 'P39Y2M20DT0H0M0S'
  */
 export default function formatISODuration(duration: Duration): string {
-  requiredArgs(1, arguments)
-
-  if (typeof duration !== 'object')
-    throw new Error('Duration must be an object')
-
   const {
     years = 0,
     months = 0,

@@ -1,7 +1,6 @@
 import max from '../max/index'
 import min from '../min/index'
 import type { Interval } from '../types'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name clamp
@@ -24,15 +23,13 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * })
  * //=> Mon Mar 22 2021 00:00:00
  *
- * @param {Date | Number} date - the date to be bounded
- * @param {Interval} interval - the interval to bound to
- * @returns {Date} the date bounded by the start and the end of the interval
- * @throws {TypeError} 2 arguments required
+ * @param date - the date to be bounded
+ * @param interval - the interval to bound to
+ * @returns the date bounded by the start and the end of the interval
  */
-export default function clamp(
-  date: Date | number,
+export default function clamp<DateType extends Date>(
+  date: DateType | number,
   { start, end }: Interval
-): Date {
-  requiredArgs(2, arguments)
+): DateType | Date {
   return min([max([date, start]), end])
 }

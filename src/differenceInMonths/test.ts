@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import differenceInMonths from '.'
+import differenceInMonths from './index'
 
 describe('differenceInMonths', () => {
   it('returns the number of full months between the given dates', () => {
@@ -143,13 +143,6 @@ describe('differenceInMonths', () => {
   it('returns NaN if the both dates are `Invalid Date`', () => {
     const result = differenceInMonths(new Date(NaN), new Date(NaN))
     assert(isNaN(result))
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(differenceInMonths.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(differenceInMonths.bind(null, 1), TypeError)
   })
 
   describe('edge cases', () => {

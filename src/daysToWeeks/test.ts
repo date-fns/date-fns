@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import daysToWeeks from '.'
+import daysToWeeks from './index'
 
 describe('daysToWeeks', () => {
   it('converts days to weeks', () => {

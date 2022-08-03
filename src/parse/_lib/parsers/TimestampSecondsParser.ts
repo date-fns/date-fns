@@ -1,5 +1,6 @@
-import type { ParseResult, ParseFlags } from '../types'
+import constructFrom from '../../../constructFrom/index'
 import { Parser } from '../Parser'
+import type { ParseFlags, ParseResult } from '../types'
 import { parseAnyDigitsSigned } from '../utils'
 
 export class TimestampSecondsParser extends Parser<number> {
@@ -9,8 +10,12 @@ export class TimestampSecondsParser extends Parser<number> {
     return parseAnyDigitsSigned(dateString)
   }
 
-  set(_date: Date, _flags: ParseFlags, value: number): [Date, ParseFlags] {
-    return [new Date(value * 1000), { timestampIsSet: true }]
+  set<DateType extends Date>(
+    date: DateType,
+    _flags: ParseFlags,
+    value: number
+  ): [DateType, ParseFlags] {
+    return [constructFrom(date, value * 1000), { timestampIsSet: true }]
   }
 
   incompatibleTokens = '*' as const

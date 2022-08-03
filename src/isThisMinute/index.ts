@@ -1,5 +1,4 @@
 import isSameMinute from '../isSameMinute/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isThisMinute
@@ -13,9 +12,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * > ⚠️ Please note that this function is not present in the FP submodule as
  * > it uses `Date.now()` internally hence impure and can't be safely curried.
  *
- * @param {Date|Number} date - the date to check
- * @returns {Boolean} the date is in this minute
- * @throws {TypeError} 1 argument required
+ * @param date - the date to check
+ * @returns the date is in this minute
  *
  * @example
  * // If now is 25 September 2014 18:30:15.500,
@@ -24,8 +22,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> true
  */
 
-export default function isThisMinute(dirtyDate: Date | number): boolean {
-  requiredArgs(1, arguments)
-
+export default function isThisMinute<DateType extends Date>(
+  dirtyDate: DateType | number
+): boolean {
   return isSameMinute(Date.now(), dirtyDate)
 }

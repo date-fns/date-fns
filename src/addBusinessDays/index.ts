@@ -1,43 +1,38 @@
+import constructFrom from '../constructFrom/index'
+import isSaturday from '../isSaturday/index'
+import isSunday from '../isSunday/index'
 import isWeekend from '../isWeekend/index'
 import toDate from '../toDate/index'
-import toInteger from '../_lib/toInteger/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-import isSunday from '../isSunday/index'
-import isSaturday from '../isSaturday/index'
 
 /**
  * @name addBusinessDays
- * @category Day Helpers
+ * @category Date Extension Helpers
  * @summary Add the specified number of business days (mon - fri) to the given date.
  *
  * @description
  * Add the specified number of business days (mon - fri) to the given date, ignoring weekends.
  *
- * @param {Date|Number} date - the date to be changed
- * @param {Number} amount - the amount of business days to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
- * @returns {Date} the new date with the business days added
- * @throws {TypeError} 2 arguments required
+ * @param date - the date to be changed
+ * @param amount - the amount of business days to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @returns the new date with the business days added
  *
  * @example
  * // Add 10 business days to 1 September 2014:
  * const result = addBusinessDays(new Date(2014, 8, 1), 10)
  * //=> Mon Sep 15 2014 00:00:00 (skipped weekend days)
  */
-export default function addBusinessDays(
-  dirtyDate: Date | number,
-  dirtyAmount: number
-): Date {
-  requiredArgs(2, arguments)
-
+export default function addBusinessDays<DateType extends Date>(
+  dirtyDate: DateType | number,
+  amount: number
+): DateType {
   const date = toDate(dirtyDate)
   const startedOnWeekend = isWeekend(date)
-  const amount = toInteger(dirtyAmount)
 
-  if (isNaN(amount)) return new Date(NaN)
+  if (isNaN(amount)) return constructFrom(dirtyDate, NaN)
 
   const hours = date.getHours()
   const sign = amount < 0 ? -1 : 1
-  const fullWeeks = toInteger(amount / 5)
+  const fullWeeks = Math.trunc(amount / 5)
 
   date.setDate(date.getDate() + fullWeeks * 7)
 

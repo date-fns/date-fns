@@ -1,6 +1,10 @@
 import toDate from '../toDate/index'
 import type { Interval, StepOptions } from '../types'
-import requiredArgs from '../_lib/requiredArgs/index'
+
+/**
+ * The {@link eachDayOfInterval} function options.
+ */
+export interface EachDayOfIntervalOptions extends StepOptions {}
 
 /**
  * @name eachDayOfInterval
@@ -10,11 +14,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Return the array of dates within the specified time interval.
  *
- * @param {Interval} interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
- * @param {Object} [options] - an object with options.
- * @param {Number} [options.step=1] - the step to increment by. The value should be more than 1.
- * @returns {Date[]} the array with starts of days from the day of the interval start to the day of the interval end
- * @throws {TypeError} 1 argument required
+ * @param interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
+ * @param options - an object with options.
+ * @returns the array with starts of days from the day of the interval start to the day of the interval end
  * @throws {RangeError} `options.step` must be a number greater than 1
  * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
@@ -33,13 +35,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //   Fri Oct 10 2014 00:00:00
  * // ]
  */
-export default function eachDayOfInterval(
-  dirtyInterval: Interval,
-  options?: StepOptions
-): Date[] {
-  requiredArgs(1, arguments)
-
-  const interval = dirtyInterval || {}
+export default function eachDayOfInterval<DateType extends Date>(
+  interval: Interval<DateType>,
+  options?: EachDayOfIntervalOptions
+): DateType[] {
   const startDate = toDate(interval.start)
   const endDate = toDate(interval.end)
 
@@ -55,7 +54,7 @@ export default function eachDayOfInterval(
   const currentDate = startDate
   currentDate.setHours(0, 0, 0, 0)
 
-  const step = Number(options?.step ?? 1)
+  const step = options?.step ?? 1
   if (step < 1 || isNaN(step))
     throw new RangeError('`options.step` must be a number greater than 1')
 

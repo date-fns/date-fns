@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import roundToNearestMinutes from '.'
+import roundToNearestMinutes from './index'
 
 describe('roundToNearestMinutes', () => {
   it('rounds given date to the nearest minute by default', () => {
@@ -100,11 +100,6 @@ describe('roundToNearestMinutes', () => {
   it('returns `Invalid Date` if the given date is invalid', () => {
     const result = roundToNearestMinutes(new Date(NaN))
     assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
-  it('throws `TypeError` exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(roundToNearestMinutes.bind(null), TypeError)
   })
 
   it('throws `RangeError` if nearestTo is not between 1 and 30', () => {

@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import compareAsc from '.'
+import compareAsc from './index'
 
 describe('compareAsc', () => {
   it('returns 0 if the given dates are equal', () => {
@@ -68,12 +68,5 @@ describe('compareAsc', () => {
   it('returns NaN if the both dates are `Invalid Date`', () => {
     const result = compareAsc(new Date(NaN), new Date(NaN))
     assert(isNaN(result))
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(compareAsc.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(compareAsc.bind(null, 1), TypeError)
   })
 })

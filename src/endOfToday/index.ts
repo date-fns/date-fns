@@ -12,7 +12,7 @@ import endOfDay from '../endOfDay/index'
  * > ⚠️ Please note that this function is not present in the FP submodule as
  * > it uses `Date.now()` internally hence impure and can't be safely curried.
  *
- * @returns {Date} the end of today
+ * @returns the end of today
  *
  * @example
  * // If today is 6 October 2014:

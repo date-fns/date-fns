@@ -1,6 +1,6 @@
 import getISOWeekYear from '../getISOWeekYear/index'
 import startOfISOWeek from '../startOfISOWeek/index'
-import requiredArgs from '../_lib/requiredArgs/index'
+import constructFrom from '../constructFrom/index'
 
 /**
  * @name startOfISOWeekYear
@@ -14,20 +14,19 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @param {Date|Number} date - the original date
- * @returns {Date} the start of an ISO week-numbering year
- * @throws {TypeError} 1 argument required
+ * @param date - the original date
+ * @returns the start of an ISO week-numbering year
  *
  * @example
  * // The start of an ISO week-numbering year for 2 July 2005:
  * const result = startOfISOWeekYear(new Date(2005, 6, 2))
  * //=> Mon Jan 03 2005 00:00:00
  */
-export default function startOfISOWeekYear(dirtyDate: Date | number): Date {
-  requiredArgs(1, arguments)
-
+export default function startOfISOWeekYear<DateType extends Date>(
+  dirtyDate: DateType | number
+): DateType {
   const year = getISOWeekYear(dirtyDate)
-  const fourthOfJanuary = new Date(0)
+  const fourthOfJanuary = constructFrom(dirtyDate, 0)
   fourthOfJanuary.setFullYear(year, 0, 4)
   fourthOfJanuary.setHours(0, 0, 0, 0)
   const date = startOfISOWeek(fourthOfJanuary)

@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import startOfYear from '.'
+import startOfYear from './index'
 
 describe('startOfYear', () => {
   it('returns the date with the time set to 00:00:00 and the date set to the first day of a year', () => {
@@ -36,10 +36,5 @@ describe('startOfYear', () => {
   it('returns `Invalid Date` if the given date is invalid', () => {
     const result = startOfYear(new Date(NaN))
     assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(startOfYear.bind(null), TypeError)
   })
 })

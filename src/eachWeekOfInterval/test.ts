@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import eachWeekOfInterval from '.'
+import eachWeekOfInterval from './index'
 
 describe('eachWeekOfInterval', () => {
   it('returns an array with starts of weeks from the week of the start date to the week of the end date', () => {
@@ -114,34 +114,5 @@ describe('eachWeekOfInterval', () => {
       end: new Date(NaN),
     })
     assert.throws(block, RangeError)
-  })
-
-  it('throws an exception if the interval is undefined', () => {
-    const block = () =>
-      eachWeekOfInterval(
-        // @ts-expect-error
-        undefined
-      )
-    assert.throws(block, RangeError)
-  })
-
-  it('throws `RangeError` if `options.weekStartsOn` is not convertible to 0, 1, ..., 6 or undefined', () => {
-    const block = () =>
-      eachWeekOfInterval(
-        {
-          start: new Date(2014, 9 /* Oct */, 6, 6, 35),
-          end: new Date(2014, 10 /* Nov */, 25, 22, 15),
-        },
-        {
-          // @ts-expect-error
-          weekStartsOn: NaN,
-        }
-      )
-    assert.throws(block, RangeError)
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(eachWeekOfInterval.bind(null), TypeError)
   })
 })
