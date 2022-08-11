@@ -67,7 +67,7 @@
     "babel-plugin-add-module-exports": "^1.0.2",
     "cloc": "^2.2.0",
     "coveralls": "^3.0.6",
-    "eslint": "^7.27.0",
+    "eslint": "^8.21.0",
     "eslint-config-prettier": "^4.3.0",
     "firebase": "^3.7.1",
     "glob-promise": "^2.0.0",

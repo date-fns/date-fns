@@ -403,7 +403,9 @@ export default function parse<DateType extends Date>(
 
   const usedTokens: Array<{ token: string; fullToken: string }> = []
 
-  for (let token of tokens) {
+  for (let i = 0; i < tokens.length; i++) {
+    let token = tokens[i]
+
     if (
       !options?.useAdditionalWeekYearTokens &&
       isProtectedWeekYearToken(token)
@@ -502,7 +504,9 @@ export default function parse<DateType extends Date>(
   }
 
   const flags: ParseFlags = {}
-  for (const setter of uniquePrioritySetters) {
+  for (let i = 0; i < uniquePrioritySetters.length; i++) {
+    const setter = uniquePrioritySetters[i]
+
     if (!setter.validate(date, subFnOptions)) {
       return constructFrom(dirtyReferenceDate, NaN)
     }
