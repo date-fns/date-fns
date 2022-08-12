@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import endOfQuarter from '.'
+import endOfQuarter from './index'
 
 describe('endOfQuarter', () => {
   it('returns the date with the time set to 23:59:59.999 and the date set to the last day of a quarter', () => {
@@ -31,10 +31,5 @@ describe('endOfQuarter', () => {
   it('returns `Invalid Date` if the given date is invalid', () => {
     const result = endOfQuarter(new Date(NaN))
     assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(endOfQuarter.bind(null), TypeError)
   })
 })

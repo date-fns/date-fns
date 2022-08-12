@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import isSameQuarter from '.'
+import isSameQuarter from './index'
 
 describe('isSameQuarter', () => {
   it('returns true if the given dates have the same quarter (and year)', () => {
@@ -41,12 +41,5 @@ describe('isSameQuarter', () => {
   it('returns false if the both dates are `Invalid Date`', () => {
     const result = isSameQuarter(new Date(NaN), new Date(NaN))
     assert(result === false)
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(isSameQuarter.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(isSameQuarter.bind(null, 1), TypeError)
   })
 })

@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import intlFormat from '.'
+import intlFormat from './index'
 
 // Before Node version 13.0.0, only the locale data for en-US is available by default.
 const hasFullICU = () => {
@@ -92,10 +92,5 @@ describe('intlFormat', () => {
 
   it('throws RangeError if the date value is invalid', () => {
     assert.throws(() => intlFormat(new Date(NaN)), RangeError)
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(intlFormat.bind(null), TypeError)
   })
 })

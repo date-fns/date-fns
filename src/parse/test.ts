@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import parse from '.'
+import parse from './index'
 
 describe('parse', () => {
   const referenceDate = new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 900)
@@ -2070,56 +2070,6 @@ describe('parse', () => {
     })
   })
 
-  describe('implicit conversion of arguments', () => {
-    it('`dateString`', () => {
-      // eslint-disable-next-line no-new-wrappers
-      const dateString = new String('20161105T040404')
-      const result = parse(
-        // @ts-expect-error
-        dateString,
-        "yyyyMMdd'T'HHmmss",
-        referenceDate
-      )
-      assert.deepStrictEqual(
-        result,
-        new Date(2016, 10 /* Nov */, 5, 4, 4, 4, 0)
-      )
-    })
-
-    it('`formatString`', () => {
-      // eslint-disable-next-line no-new-wrappers
-      const formatString = new String("yyyyMMdd'T'HHmmss")
-      const result = parse(
-        '20161105T040404',
-        // @ts-expect-error
-        formatString,
-        referenceDate
-      )
-      assert.deepStrictEqual(
-        result,
-        new Date(2016, 10 /* Nov */, 5, 4, 4, 4, 0)
-      )
-    })
-
-    it('`options.weekStartsOn`', () => {
-      const result = parse('2018', 'Y', referenceDate, {
-        // @ts-expect-error
-        weekStartsOn: '1' /* Mon */,
-        firstWeekContainsDate: 4,
-      })
-      assert.deepStrictEqual(result, new Date(2018, 0 /* Jan */, 1))
-    })
-
-    it('`options.firstWeekContainsDate`', () => {
-      const result = parse('2018', 'Y', referenceDate, {
-        weekStartsOn: 1 /* Mon */,
-        // @ts-expect-error
-        firstWeekContainsDate: '4',
-      })
-      assert.deepStrictEqual(result, new Date(2018, 0 /* Jan */, 1))
-    })
-  })
-
   describe('with `options.strictValidation` = true', () => {
     describe('calendar year', () => {
       it('returns `Invalid Date` for year zero', () => {
@@ -2405,37 +2355,6 @@ describe('parse', () => {
       const result = parse(dateString, formatString, new Date(NaN))
       assert(result instanceof Date && isNaN(result.getTime()))
     })
-
-    it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', () => {
-      const dateString = '2014-07-02T05:30:15.123+06:00'
-      const formatString = "yyyy-MM-dd'T'HH:mm:ss.SSSxxx"
-      const block = () =>
-        parse(dateString, formatString, referenceDate, {
-          // @ts-expect-error
-          weekStartsOn: NaN,
-        })
-      assert.throws(block, RangeError)
-    })
-
-    it('throws `RangeError` if `options.firstWeekContainsDate` is not convertable to 1, 2, ..., 7 or undefined', () => {
-      const dateString = '2014-07-02T05:30:15.123+06:00'
-      const formatString = "yyyy-MM-dd'T'HH:mm:ss.SSSxxx"
-      const block = () =>
-        parse(dateString, formatString, referenceDate, {
-          // @ts-expect-error
-          firstWeekContainsDate: NaN,
-        })
-      assert.throws(block, RangeError)
-    })
-  })
-
-  it('throws TypeError exception if passed less than 3 arguments', () => {
-    // @ts-expect-error
-    assert.throws(parse.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(parse.bind(null, 1), TypeError)
-    // @ts-expect-error
-    assert.throws(parse.bind(null, 1, 2), TypeError)
   })
 
   describe('edge cases', () => {

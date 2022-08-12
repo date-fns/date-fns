@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import isEqual from '.'
+import isEqual from './index'
 
 describe('isEqual', () => {
   it('returns true if the given dates are equal', () => {
@@ -41,12 +41,5 @@ describe('isEqual', () => {
   it('returns false if the both dates are `Invalid Date`', () => {
     const result = isEqual(new Date(NaN), new Date(NaN))
     assert(result === false)
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(isEqual.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(isEqual.bind(null, 1), TypeError)
   })
 })

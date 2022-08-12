@@ -1,5 +1,4 @@
 import endOfWeek from '../endOfWeek/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name endOfISOWeek
@@ -12,17 +11,16 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @param {Date|Number} date - the original date
- * @returns {Date} the end of an ISO week
- * @throws {TypeError} 1 argument required
+ * @param date - the original date
+ * @returns the end of an ISO week
  *
  * @example
  * // The end of an ISO week for 2 September 2014 11:55:00:
  * const result = endOfISOWeek(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Sun Sep 07 2014 23:59:59.999
  */
-export default function endOfISOWeek(dirtyDate: Date | number): Date {
-  requiredArgs(1, arguments)
-
+export default function endOfISOWeek<DateType extends Date>(
+  dirtyDate: DateType | number
+): DateType {
   return endOfWeek(dirtyDate, { weekStartsOn: 1 })
 }

@@ -1,7 +1,11 @@
 import differenceInDays from '../differenceInDays/index'
 import type { RoundingOptions } from '../types'
-import requiredArgs from '../_lib/requiredArgs/index'
 import { getRoundingMethod } from '../_lib/roundingMethods/index'
+
+/**
+ * The {@link differenceInWeeks} function options.
+ */
+export interface DifferenceInWeeksOptions extends RoundingOptions {}
 
 /**
  * @name differenceInWeeks
@@ -20,12 +24,10 @@ import { getRoundingMethod } from '../_lib/roundingMethods/index'
  * `Math.floor(differenceInHours(dateLeft, dateRight)/(7*24))|0`.
  *
  *
- * @param {Date|Number} dateLeft - the later date
- * @param {Date|Number} dateRight - the earlier date
- * @param {Object} [options] - an object with options.
- * @param {String} [options.roundingMethod='trunc'] - a rounding method (`ceil`, `floor`, `round` or `trunc`)
- * @returns {Number} the number of full weeks
- * @throws {TypeError} 2 arguments required
+ * @param dateLeft - the later date
+ * @param dateRight - the earlier date
+ * @param options - an object with options.
+ * @returns the number of full weeks
  *
  * @example
  * // How many full weeks are between 5 July 2014 and 20 July 2014?
@@ -44,13 +46,11 @@ import { getRoundingMethod } from '../_lib/roundingMethods/index'
  * )
  * //=> 8
  */
-export default function differenceInWeeks(
-  dateLeft: Date | number,
-  dateRight: Date | number,
-  options?: RoundingOptions
+export default function differenceInWeeks<DateType extends Date>(
+  dateLeft: DateType | number,
+  dateRight: DateType | number,
+  options?: DifferenceInWeeksOptions
 ): number {
-  requiredArgs(2, arguments)
-
   const diff = differenceInDays(dateLeft, dateRight) / 7
   return getRoundingMethod(options?.roundingMethod)(diff)
 }

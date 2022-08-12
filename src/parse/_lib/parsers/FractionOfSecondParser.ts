@@ -1,5 +1,5 @@
-import type { ParseResult, ParseFlags } from '../types'
 import { Parser } from '../Parser'
+import type { ParseFlags, ParseResult } from '../types'
 import { mapValue, parseNDigits } from '../utils'
 
 export class FractionOfSecondParser extends Parser<number> {
@@ -11,8 +11,12 @@ export class FractionOfSecondParser extends Parser<number> {
     return mapValue(parseNDigits(token.length, dateString), valueCallback)
   }
 
-  set(date: Date, _flags: ParseFlags, value: number): Date {
-    date.setUTCMilliseconds(value)
+  set<DateType extends Date>(
+    date: DateType,
+    _flags: ParseFlags,
+    value: number
+  ): DateType {
+    date.setMilliseconds(value)
     return date
   }
 

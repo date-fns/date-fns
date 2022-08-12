@@ -1,8 +1,5 @@
-import toInteger from '../_lib/toInteger/index'
 import addMilliseconds from '../addMilliseconds/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
-const MILLISECONDS_IN_MINUTE = 60000
+import { millisecondsInMinute } from '../constants/index'
 
 /**
  * @name addMinutes
@@ -12,22 +9,18 @@ const MILLISECONDS_IN_MINUTE = 60000
  * @description
  * Add the specified number of minutes to the given date.
  *
- * @param {Date|Number} date - the date to be changed
- * @param {Number} amount - the amount of minutes to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
- * @returns {Date} the new date with the minutes added
- * @throws {TypeError} 2 arguments required
+ * @param date - the date to be changed
+ * @param amount - the amount of minutes to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @returns the new date with the minutes added
  *
  * @example
  * // Add 30 minutes to 10 July 2014 12:00:00:
  * const result = addMinutes(new Date(2014, 6, 10, 12, 0), 30)
  * //=> Thu Jul 10 2014 12:30:00
  */
-export default function addMinutes(
-  dirtyDate: Date | number,
-  dirtyAmount: number
-): Date {
-  requiredArgs(2, arguments)
-
-  const amount = toInteger(dirtyAmount)
-  return addMilliseconds(dirtyDate, amount * MILLISECONDS_IN_MINUTE)
+export default function addMinutes<DateType extends Date>(
+  dirtyDate: DateType | number,
+  amount: number
+): DateType {
+  return addMilliseconds(dirtyDate, amount * millisecondsInMinute)
 }

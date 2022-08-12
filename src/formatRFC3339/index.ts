@@ -1,8 +1,13 @@
-import toDate from '../toDate/index'
 import isValid from '../isValid/index'
+import toDate from '../toDate/index'
 import addLeadingZeros from '../_lib/addLeadingZeros/index'
-import toInteger from '../_lib/toInteger/index'
-import { FormatRFC3339Options } from 'src/types'
+
+/**
+ * The {@link formatRFC3339} function options.
+ */
+export interface FormatRFC3339Options {
+  fractionDigits?: 0 | 1 | 2 | 3
+}
 
 /**
  * @name formatRFC3339
@@ -12,13 +17,10 @@ import { FormatRFC3339Options } from 'src/types'
  * @description
  * Return the formatted date string in RFC 3339 format. Options may be passed to control the parts and notations of the date.
  *
- * @param {Date|Number} date - the original date
- * @param {Object} [options] - an object with options.
- * @param {0|1|2|3} [options.fractionDigits=0] - number of digits after the decimal point after seconds
- * @returns {String} the formatted date string
- * @throws {TypeError} 1 argument required
+ * @param date - the original date
+ * @param options - an object with options.
+ * @returns the formatted date string
  * @throws {RangeError} `date` must not be Invalid Date
- * @throws {RangeError} `options.fractionDigits` must be between 0 and 3
  *
  * @example
  * // Represent 18 September 2019 in RFC 3339 format:
@@ -35,28 +37,17 @@ import { FormatRFC3339Options } from 'src/types'
  * const result = formatRFC3339(new Date(2019, 8, 18, 19, 0, 52, 234), { fractionDigits: 3 })
  * //=> '2019-09-18T19:00:52.234Z'
  */
-export default function formatRFC3339(
-  dirtyDate: Date | number,
+export default function formatRFC3339<DateType extends Date>(
+  dirtyDate: DateType | number,
   options?: FormatRFC3339Options
 ): string {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      `1 arguments required, but only ${arguments.length} present`
-    )
-  }
-
   const originalDate = toDate(dirtyDate)
 
   if (!isValid(originalDate)) {
     throw new RangeError('Invalid time value')
   }
 
-  const fractionDigits = Number(options?.fractionDigits ?? 0)
-
-  // Test if fractionDigits is between 0 and 3 _and_ is not NaN
-  if (!(fractionDigits >= 0 && fractionDigits <= 3)) {
-    throw new RangeError('fractionDigits must be between 0 and 3 inclusively')
-  }
+  const fractionDigits = options?.fractionDigits ?? 0
 
   const day = addLeadingZeros(originalDate.getDate(), 2)
   const month = addLeadingZeros(originalDate.getMonth() + 1, 2)
@@ -80,7 +71,7 @@ export default function formatRFC3339(
 
   if (tzOffset !== 0) {
     const absoluteOffset = Math.abs(tzOffset)
-    const hourOffset = addLeadingZeros(toInteger(absoluteOffset / 60), 2)
+    const hourOffset = addLeadingZeros(Math.trunc(absoluteOffset / 60), 2)
     const minuteOffset = addLeadingZeros(absoluteOffset % 60, 2)
     // If less than 0, the sign is +, because it is ahead of time.
     const sign = tzOffset < 0 ? '+' : '-'

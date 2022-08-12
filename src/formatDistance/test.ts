@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import type { FormatDistanceFn } from '../locale/types'
-import formatDistance from '.'
+import formatDistance from './index'
 
 describe('formatDistance', () => {
   describe('seconds', () => {
@@ -213,32 +213,6 @@ describe('formatDistance', () => {
     })
   })
 
-  describe('implicit conversion of options', () => {
-    it('`options.includeSeconds`', () => {
-      const result = formatDistance(
-        new Date(1986, 3, 4, 10, 32, 0),
-        new Date(1986, 3, 4, 10, 32, 7),
-        {
-          // @ts-expect-error
-          includeSeconds: 1,
-        }
-      )
-      assert(result === 'less than 10 seconds')
-    })
-
-    it('`options.addSuffix`', () => {
-      const result = formatDistance(
-        new Date(1986, 3, 4, 11, 32, 0),
-        new Date(1986, 3, 4, 10, 32, 0),
-        {
-          // @ts-expect-error
-          addSuffix: 1,
-        }
-      )
-      assert(result === 'in about 1 hour')
-    })
-  })
-
   describe('custom locale', () => {
     it('can be passed to the function', () => {
       const localizeDistance: FormatDistanceFn = (token, count, options) => {
@@ -304,12 +278,5 @@ describe('formatDistance', () => {
       formatDistance.bind(null, new Date(NaN), new Date(NaN)),
       RangeError
     )
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(formatDistance.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(formatDistance.bind(null, 1), TypeError)
   })
 })

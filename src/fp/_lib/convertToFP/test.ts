@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import convertToFP from '.'
+import convertToFP from './index'
 
 describe('convertToFP', () => {
   function fn(a: unknown, b: unknown, c: unknown) {

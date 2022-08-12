@@ -1,6 +1,4 @@
 import addBusinessDays from '../addBusinessDays/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name subBusinessDays
@@ -10,22 +8,18 @@ import toInteger from '../_lib/toInteger/index'
  * @description
  * Substract the specified number of business days (mon - fri) to the given date, ignoring weekends.
  *
- * @param {Date|Number} date - the date to be changed
- * @param {Number} amount - the amount of business days to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
- * @returns {Date} the new date with the business days subtracted
- * @throws {TypeError} 2 arguments required
+ * @param date - the date to be changed
+ * @param amount - the amount of business days to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @returns the new date with the business days subtracted
  *
  * @example
  * // Substract 10 business days from 1 September 2014:
  * const result = subBusinessDays(new Date(2014, 8, 1), 10)
  * //=> Mon Aug 18 2014 00:00:00 (skipped weekend days)
  */
-export default function subBusinessDays(
-  dirtyDate: Date | number,
-  dirtyAmount: number
-): Date {
-  requiredArgs(2, arguments)
-
-  const amount = toInteger(dirtyAmount)
+export default function subBusinessDays<DateType extends Date>(
+  dirtyDate: DateType | number,
+  amount: number
+): DateType {
   return addBusinessDays(dirtyDate, -amount)
 }

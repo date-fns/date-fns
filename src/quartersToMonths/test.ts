@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import quartersToMonths from '.'
+import quartersToMonths from './index'
 
 describe('quartersToMonths', () => {
   it('converts quarters to months', () => {

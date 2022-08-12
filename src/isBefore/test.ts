@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import isBefore from '.'
+import isBefore from './index'
 
 describe('isBefore', () => {
   it('returns true if the first date is before the second one', () => {
@@ -49,12 +49,5 @@ describe('isBefore', () => {
   it('returns false if the both dates are `Invalid Date`', () => {
     const result = isBefore(new Date(NaN), new Date(NaN))
     assert(result === false)
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(isBefore.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(isBefore.bind(null, 1), TypeError)
   })
 })

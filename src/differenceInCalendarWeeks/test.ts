@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import differenceInCalendarWeeks from '.'
+import differenceInCalendarWeeks from './index'
 
 describe('differenceInCalendarWeeks', () => {
   it('returns the number of calendar weeks between the given dates', () => {
@@ -55,8 +55,7 @@ describe('differenceInCalendarWeeks', () => {
       new Date(2014, 6 /* Jul */, 8, 18, 0),
       new Date(2014, 5 /* Jun */, 29, 6, 0),
       {
-        // @ts-expect-error
-        weekStartsOn: '1',
+        weekStartsOn: 1,
       }
     )
     assert(result === 2)
@@ -145,25 +144,5 @@ describe('differenceInCalendarWeeks', () => {
   it('returns NaN if the both dates are `Invalid Date`', () => {
     const result = differenceInCalendarWeeks(new Date(NaN), new Date(NaN))
     assert(isNaN(result))
-  })
-
-  it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', () => {
-    const block = () =>
-      differenceInCalendarWeeks(
-        new Date(2014, 6 /* Jul */, 8, 18, 0),
-        new Date(2014, 5 /* Jun */, 29, 6, 0),
-        {
-          // @ts-expect-error
-          weekStartsOn: NaN,
-        }
-      )
-    assert.throws(block, RangeError)
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(differenceInCalendarWeeks.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(differenceInCalendarWeeks.bind(null, 1), TypeError)
   })
 })

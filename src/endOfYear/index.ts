@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name endOfYear
@@ -10,18 +9,17 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * Return the end of a year for the given date.
  * The result will be in the local timezone.
  *
- * @param {Date|Number} date - the original date
- * @returns {Date} the end of a year
- * @throws {TypeError} 1 argument required
+ * @param date - the original date
+ * @returns the end of a year
  *
  * @example
  * // The end of a year for 2 September 2014 11:55:00:
  * const result = endOfYear(new Date(2014, 8, 2, 11, 55, 00))
  * //=> Wed Dec 31 2014 23:59:59.999
  */
-export default function endOfYear(dirtyDate: Date | number): Date {
-  requiredArgs(1, arguments)
-
+export default function endOfYear<DateType extends Date>(
+  dirtyDate: DateType | number
+): DateType {
   const date = toDate(dirtyDate)
   const year = date.getFullYear()
   date.setFullYear(year + 1, 0, 0)

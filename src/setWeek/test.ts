@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import setWeek from '.'
+import setWeek from './index'
 
 describe('setWeek', () => {
   it('sets the local week', () => {
@@ -12,20 +12,6 @@ describe('setWeek', () => {
   it('accepts a timestamp', () => {
     const result = setWeek(new Date(2009, 11 /* Dec */, 2).getTime(), 1)
     assert.deepStrictEqual(result, new Date(2008, 11 /* Dec */, 31))
-  })
-
-  it('converts a fractional number to an integer', () => {
-    const result = setWeek(new Date(2005, 0 /* Jan */, 2), 1.9)
-    assert.deepStrictEqual(result, new Date(2004, 11 /* Dec */, 26))
-  })
-
-  it('implicitly converts number arguments', () => {
-    const result = setWeek(
-      new Date(2004, 7 /* Aug */, 7),
-      // @ts-expect-error
-      '53'
-    )
-    assert.deepStrictEqual(result, new Date(2005, 0 /* Jan */, 1))
   })
 
   it('does not mutate the original date', () => {
@@ -77,30 +63,5 @@ describe('setWeek', () => {
       },
     })
     assert.deepStrictEqual(result, new Date(2004, 0 /* Jan */, 4))
-  })
-
-  it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', () => {
-    const block = () =>
-      setWeek(new Date(2004, 7 /* Aug */, 7), 53, {
-        // @ts-expect-error
-        weekStartsOn: NaN,
-      })
-    assert.throws(block, RangeError)
-  })
-
-  it('throws `RangeError` if `options.firstWeekContainsDate` is not convertable to 1, 2, ..., 7 or undefined', () => {
-    const block = () =>
-      setWeek(new Date(2004, 7 /* Aug */, 7), 53, {
-        // @ts-expect-error
-        firstWeekContainsDate: NaN,
-      })
-    assert.throws(block, RangeError)
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(setWeek.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(setWeek.bind(null, 1), TypeError)
   })
 })

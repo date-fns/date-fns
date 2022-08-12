@@ -1,5 +1,4 @@
 import isSameWeek from '../isSameWeek/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isSameISOWeek
@@ -11,10 +10,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @param {Date|Number} dateLeft - the first date to check
- * @param {Date|Number} dateRight - the second date to check
- * @returns {Boolean} the dates are in the same ISO week (and year)
- * @throws {TypeError} 2 arguments required
+ * @param dateLeft - the first date to check
+ * @param dateRight - the second date to check
+ * @returns the dates are in the same ISO week (and year)
  *
  * @example
  * // Are 1 September 2014 and 7 September 2014 in the same ISO week?
@@ -26,11 +24,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = isSameISOWeek(new Date(2014, 8, 1), new Date(2015, 8, 1))
  * //=> false
  */
-export default function isSameISOWeek(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+export default function isSameISOWeek<DateType extends Date>(
+  dirtyDateLeft: DateType | number,
+  dirtyDateRight: DateType | number
 ): boolean {
-  requiredArgs(2, arguments)
-
   return isSameWeek(dirtyDateLeft, dirtyDateRight, { weekStartsOn: 1 })
 }

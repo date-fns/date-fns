@@ -1,8 +1,12 @@
 import { millisecondsInMinute } from '../constants/index'
 import differenceInMilliseconds from '../differenceInMilliseconds/index'
 import type { RoundingOptions } from '../types'
-import requiredArgs from '../_lib/requiredArgs/index'
 import { getRoundingMethod } from '../_lib/roundingMethods/index'
+
+/**
+ * The {@link differenceInMinutes} function options.
+ */
+export interface DifferenceInMinutesOptions extends RoundingOptions {}
 
 /**
  * @name differenceInMinutes
@@ -12,12 +16,10 @@ import { getRoundingMethod } from '../_lib/roundingMethods/index'
  * @description
  * Get the signed number of full (rounded towards 0) minutes between the given dates.
  *
- * @param {Date|Number} dateLeft - the later date
- * @param {Date|Number} dateRight - the earlier date
- * @param {Object} [options] - an object with options.
- * @param {String} [options.roundingMethod='trunc'] - a rounding method (`ceil`, `floor`, `round` or `trunc`)
- * @returns {Number} the number of minutes
- * @throws {TypeError} 2 arguments required
+ * @param dateLeft - the later date
+ * @param dateRight - the earlier date
+ * @param options - an object with options.
+ * @returns the number of minutes
  *
  * @example
  * // How many minutes are between 2 July 2014 12:07:59 and 2 July 2014 12:20:00?
@@ -35,13 +37,11 @@ import { getRoundingMethod } from '../_lib/roundingMethods/index'
  * )
  * //=> -1
  */
-export default function differenceInMinutes(
-  dateLeft: Date | number,
-  dateRight: Date | number,
-  options?: RoundingOptions
+export default function differenceInMinutes<DateType extends Date>(
+  dateLeft: DateType | number,
+  dateRight: DateType | number,
+  options?: DifferenceInMinutesOptions
 ): number {
-  requiredArgs(2, arguments)
-
   const diff =
     differenceInMilliseconds(dateLeft, dateRight) / millisecondsInMinute
   return getRoundingMethod(options?.roundingMethod)(diff)

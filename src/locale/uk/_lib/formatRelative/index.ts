@@ -1,6 +1,6 @@
+import isSameWeek from '../../../../isSameWeek/index'
 import { toDate } from '../../../../index'
 import type { Day } from '../../../../types'
-import isSameUTCWeek from '../../../../_lib/isSameUTCWeek/index'
 import type { FormatRelativeFn, FormatRelativeTokenFn } from '../../../types'
 
 const accusativeWeekdays = [
@@ -57,9 +57,9 @@ const lastWeekFormat: FormatRelativeTokenFn = (
   options
 ) => {
   const date = toDate(dirtyDate)
-  const day = date.getUTCDay() as Day
+  const day = date.getDay() as Day
 
-  if (isSameUTCWeek(date, baseDate, options)) {
+  if (isSameWeek(date, baseDate, options)) {
     return thisWeek(day)
   } else {
     return lastWeek(day)
@@ -72,8 +72,8 @@ const nextWeekFormat: FormatRelativeTokenFn = (
   options
 ) => {
   const date = toDate(dirtyDate)
-  const day = date.getUTCDay() as Day
-  if (isSameUTCWeek(date, baseDate, options)) {
+  const day = date.getDay() as Day
+  if (isSameWeek(date, baseDate, options)) {
     return thisWeek(day)
   } else {
     return nextWeek(day)

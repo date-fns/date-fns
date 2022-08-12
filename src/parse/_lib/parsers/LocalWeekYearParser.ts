@@ -1,9 +1,9 @@
+import getWeekYear from '../../../getWeekYear/index'
 import type { Match } from '../../../locale/types'
-import type { ParseResult, ParseFlags, ParserOptions } from '../types'
+import startOfWeek from '../../../startOfWeek/index'
 import { Parser } from '../Parser'
-import { parseNDigits, normalizeTwoDigitYear, mapValue } from '../utils'
-import getUTCWeekYear from '../../../_lib/getUTCWeekYear'
-import startOfUTCWeek from '../../../_lib/startOfUTCWeek'
+import type { ParseFlags, ParseResult, ParserOptions } from '../types'
+import { mapValue, normalizeTwoDigitYear, parseNDigits } from '../utils'
 import type { YearParserValue } from './YearParser'
 
 // Local week-numbering year
@@ -35,37 +35,36 @@ export class LocalWeekYearParser extends Parser<YearParserValue> {
     }
   }
 
-  validate(_date: Date, value: YearParserValue): boolean {
+  validate<DateType extends Date>(
+    _date: DateType,
+    value: YearParserValue
+  ): boolean {
     return value.isTwoDigitYear || value.year > 0
   }
 
-  set(
-    date: Date,
+  set<DateType extends Date>(
+    date: DateType,
     flags: ParseFlags,
     value: YearParserValue,
     options: ParserOptions
-  ): Date {
-    const currentYear = getUTCWeekYear(date, options)
+  ): DateType {
+    const currentYear = getWeekYear(date, options)
 
     if (value.isTwoDigitYear) {
       const normalizedTwoDigitYear = normalizeTwoDigitYear(
         value.year,
         currentYear
       )
-      date.setUTCFullYear(
-        normalizedTwoDigitYear,
-        0,
-        options.firstWeekContainsDate
-      )
-      date.setUTCHours(0, 0, 0, 0)
-      return startOfUTCWeek(date, options)
+      date.setFullYear(normalizedTwoDigitYear, 0, options.firstWeekContainsDate)
+      date.setHours(0, 0, 0, 0)
+      return startOfWeek(date, options)
     }
 
     const year =
       !('era' in flags) || flags.era === 1 ? value.year : 1 - value.year
-    date.setUTCFullYear(year, 0, options.firstWeekContainsDate)
-    date.setUTCHours(0, 0, 0, 0)
-    return startOfUTCWeek(date, options)
+    date.setFullYear(year, 0, options.firstWeekContainsDate)
+    date.setHours(0, 0, 0, 0)
+    return startOfWeek(date, options)
   }
 
   incompatibleTokens = [

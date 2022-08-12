@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import differenceInCalendarQuarters from '.'
+import differenceInCalendarQuarters from './index'
 
 describe('differenceInCalendarQuarters', () => {
   it('returns the number of calendar quarters between the given dates', () => {
@@ -95,12 +95,5 @@ describe('differenceInCalendarQuarters', () => {
   it('returns NaN if the both dates are `Invalid Date`', () => {
     const result = differenceInCalendarQuarters(new Date(NaN), new Date(NaN))
     assert(isNaN(result))
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(differenceInCalendarQuarters.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(differenceInCalendarQuarters.bind(null, 1), TypeError)
   })
 })

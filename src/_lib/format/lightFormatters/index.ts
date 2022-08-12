@@ -25,7 +25,7 @@ const formatters = {
     // | AD 1234  |  1234 | 34 |  1234 |  1234 | 01234 |
     // | AD 12345 | 12345 | 45 | 12345 | 12345 | 12345 |
 
-    const signedYear = date.getUTCFullYear()
+    const signedYear = date.getFullYear()
     // Returns 1 for 1 BC (which is year 0 in JavaScript)
     const year = signedYear > 0 ? signedYear : 1 - signedYear
     return addLeadingZeros(token === 'yy' ? year % 100 : year, token.length)
@@ -33,18 +33,18 @@ const formatters = {
 
   // Month
   M(date: Date, token: string): string {
-    const month = date.getUTCMonth()
+    const month = date.getMonth()
     return token === 'M' ? String(month + 1) : addLeadingZeros(month + 1, 2)
   },
 
   // Day of the month
   d(date: Date, token: string): string {
-    return addLeadingZeros(date.getUTCDate(), token.length)
+    return addLeadingZeros(date.getDate(), token.length)
   },
 
   // AM or PM
   a(date: Date, token: string): string {
-    const dayPeriodEnumValue = date.getUTCHours() / 12 >= 1 ? 'pm' : 'am'
+    const dayPeriodEnumValue = date.getHours() / 12 >= 1 ? 'pm' : 'am'
 
     switch (token) {
       case 'a':
@@ -62,28 +62,28 @@ const formatters = {
 
   // Hour [1-12]
   h(date: Date, token: string): string {
-    return addLeadingZeros(date.getUTCHours() % 12 || 12, token.length)
+    return addLeadingZeros(date.getHours() % 12 || 12, token.length)
   },
 
   // Hour [0-23]
   H(date: Date, token: string): string {
-    return addLeadingZeros(date.getUTCHours(), token.length)
+    return addLeadingZeros(date.getHours(), token.length)
   },
 
   // Minute
   m(date: Date, token: string): string {
-    return addLeadingZeros(date.getUTCMinutes(), token.length)
+    return addLeadingZeros(date.getMinutes(), token.length)
   },
 
   // Second
   s(date: Date, token: string): string {
-    return addLeadingZeros(date.getUTCSeconds(), token.length)
+    return addLeadingZeros(date.getSeconds(), token.length)
   },
 
   // Fraction of second
   S(date: Date, token: string): string {
     const numberOfDigits = token.length
-    const milliseconds = date.getUTCMilliseconds()
+    const milliseconds = date.getMilliseconds()
     const fractionalSeconds = Math.floor(
       milliseconds * Math.pow(10, numberOfDigits - 3)
     )

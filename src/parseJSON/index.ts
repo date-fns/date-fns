@@ -1,6 +1,3 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name parseJSON
  * @category Common Helpers
@@ -31,32 +28,26 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * Any other input type or invalid date strings will return an `Invalid Date`.
  *
- * @param {String|Number|Date} argument A fully formed ISO8601 date string to convert
- * @returns {Date} the parsed date in the local time zone
- * @throws {TypeError} 1 argument required
+ * @param argument A fully formed ISO8601 date string to convert
+ * @returns the parsed date in the local time zone
  */
-export default function parseJSON(argument: string): Date {
-  requiredArgs(1, arguments)
-
-  if (typeof argument === 'string') {
-    const parts = argument.match(
-      /(\d{4})-(\d{2})-(\d{2})[T ](\d{2}):(\d{2}):(\d{2})(?:\.(\d{0,7}))?(?:Z|(.)(\d{2}):?(\d{2})?)?/
-    )
-    if (parts) {
-      // Group 8 matches the sign
-      return new Date(
-        Date.UTC(
-          +parts[1],
-          +parts[2] - 1,
-          +parts[3],
-          +parts[4] - (+parts[9] || 0) * (parts[8] == '-' ? -1 : 1),
-          +parts[5] - (+parts[10] || 0) * (parts[8] == '-' ? -1 : 1),
-          +parts[6],
-          +((parts[7] || '0') + '00').substring(0, 3)
-        )
+export default function parseJSON(dateString: string): Date {
+  const parts = dateString.match(
+    /(\d{4})-(\d{2})-(\d{2})[T ](\d{2}):(\d{2}):(\d{2})(?:\.(\d{0,7}))?(?:Z|(.)(\d{2}):?(\d{2})?)?/
+  )
+  if (parts) {
+    // Group 8 matches the sign
+    return new Date(
+      Date.UTC(
+        +parts[1],
+        +parts[2] - 1,
+        +parts[3],
+        +parts[4] - (+parts[9] || 0) * (parts[8] == '-' ? -1 : 1),
+        +parts[5] - (+parts[10] || 0) * (parts[8] == '-' ? -1 : 1),
+        +parts[6],
+        +((parts[7] || '0') + '00').substring(0, 3)
       )
-    }
-    return new Date(NaN)
+    )
   }
-  return toDate(argument)
+  return new Date(NaN)
 }

@@ -1,5 +1,3 @@
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name isDate
  * @category Common Helpers
@@ -8,9 +6,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Returns true if the given value is an instance of Date. The function works for dates transferred across iframes.
  *
- * @param {*} value - the value to check
- * @returns {boolean} true if the given value is a date
- * @throws {TypeError} 1 arguments required
+ * @param value - the value to check
+ * @returns true if the given value is a date
  *
  * @example
  * // For a valid date:
@@ -33,8 +30,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> false
  */
 export default function isDate(value: unknown): value is Date {
-  requiredArgs(1, arguments)
-
   return (
     value instanceof Date ||
     (typeof value === 'object' &&

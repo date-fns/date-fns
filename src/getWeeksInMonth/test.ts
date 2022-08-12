@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import getWeeksInMonth from '.'
+import getWeeksInMonth from './index'
 
 describe('getWeeksInMonth', () => {
   it('returns the number of calendar weeks the month in the given date spans', () => {
@@ -53,19 +53,5 @@ describe('getWeeksInMonth', () => {
   it('returns NaN if the date is `Invalid Date`', () => {
     const result = getWeeksInMonth(new Date(NaN))
     assert(isNaN(result))
-  })
-
-  it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', () => {
-    const block = () =>
-      getWeeksInMonth(new Date(2014, 6 /* Jul */, 8, 18, 0), {
-        // @ts-expect-error
-        weekStartsOn: NaN,
-      })
-    assert.throws(block, RangeError)
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(getWeeksInMonth.bind(null), TypeError)
   })
 })

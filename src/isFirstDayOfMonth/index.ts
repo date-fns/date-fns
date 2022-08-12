@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isFirstDayOfMonth
@@ -9,17 +8,16 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Is the given date the first day of a month?
  *
- * @param {Date|Number} date - the date to check
- * @returns {Boolean} the date is the first day of a month
- * @throws {TypeError} 1 argument required
+ * @param date - the date to check
+ * @returns the date is the first day of a month
  *
  * @example
  * // Is 1 September 2014 the first day of a month?
  * const result = isFirstDayOfMonth(new Date(2014, 8, 1))
  * //=> true
  */
-export default function isFirstDayOfMonth(dirtyDate: Date | number): boolean {
-  requiredArgs(1, arguments)
-
+export default function isFirstDayOfMonth<DateType extends Date>(
+  dirtyDate: DateType | number
+): boolean {
   return toDate(dirtyDate).getDate() === 1
 }

@@ -4,8 +4,6 @@ import isSameDay from '../isSameDay/index'
 import isValid from '../isValid/index'
 import isWeekend from '../isWeekend/index'
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name differenceInBusinessDays
@@ -18,10 +16,9 @@ import toInteger from '../_lib/toInteger/index'
  * Like `differenceInCalendarDays`, the function removes the times from
  * the dates before calculating the difference.
  *
- * @param {Date|Number} dateLeft - the later date
- * @param {Date|Number} dateRight - the earlier date
- * @returns {Number} the number of business days
- * @throws {TypeError} 2 arguments required
+ * @param dateLeft - the later date
+ * @param dateRight - the earlier date
+ * @returns the number of business days
  *
  * @example
  * // How many business days are between
@@ -56,12 +53,10 @@ import toInteger from '../_lib/toInteger/index'
  * )
  * //=> 0
  */
-export default function differenceInBusinessDays(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+export default function differenceInBusinessDays<DateType extends Date>(
+  dirtyDateLeft: DateType | number,
+  dirtyDateRight: DateType | number
 ): number {
-  requiredArgs(2, arguments)
-
   const dateLeft = toDate(dirtyDateLeft)
   let dateRight = toDate(dirtyDateRight)
 
@@ -70,7 +65,7 @@ export default function differenceInBusinessDays(
   const calendarDifference = differenceInCalendarDays(dateLeft, dateRight)
   const sign = calendarDifference < 0 ? -1 : 1
 
-  const weeks = toInteger(calendarDifference / 7)
+  const weeks = Math.trunc(calendarDifference / 7)
 
   let result = weeks * 5
   dateRight = addDays(dateRight, weeks * 7)

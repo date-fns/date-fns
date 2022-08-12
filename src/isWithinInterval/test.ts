@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import isWithinInterval from '.'
+import isWithinInterval from './index'
 
 describe('isWithinInterval', () => {
   it('returns true if the given date in within the given interval', () => {
@@ -60,16 +60,6 @@ describe('isWithinInterval', () => {
     assert.throws(block, RangeError)
   })
 
-  it('throws an exception if the interval is undefined', () => {
-    const block = () =>
-      isWithinInterval(
-        new Date(2014, 9 /* Oct */, 31),
-        // @ts-expect-error
-        undefined
-      )
-    assert.throws(block, TypeError)
-  })
-
   it('returns false if the given date is `Invalid Date`', () => {
     const result = isWithinInterval(new Date(NaN), {
       start: new Date(2014, 8 /* Sep */, 1),
@@ -92,12 +82,5 @@ describe('isWithinInterval', () => {
       end: new Date(NaN),
     })
     assert.throws(block, RangeError)
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(isWithinInterval.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(isWithinInterval.bind(null, 1), TypeError)
   })
 })

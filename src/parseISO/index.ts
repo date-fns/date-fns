@@ -1,7 +1,11 @@
 import { millisecondsInHour, millisecondsInMinute } from '../constants/index'
-import type { AdditionalDigitsOptions } from '../types'
-import requiredArgs from '../_lib/requiredArgs/index'
-import toInteger from '../_lib/toInteger/index'
+
+/**
+ * The {@link parseISO} function options.
+ */
+export interface ParseISOOptions {
+  additionalDigits?: 0 | 1 | 2
+}
 
 /**
  * @name parseISO
@@ -17,12 +21,9 @@ import toInteger from '../_lib/toInteger/index'
  * If the argument isn't a string, the function cannot parse the string or
  * the values are invalid, it returns Invalid Date.
  *
- * @param {String} argument - the value to convert
- * @param {Object} [options] - an object with options.
- * @param {0|1|2} [options.additionalDigits=2] - the additional number of digits in the extended year format
- * @returns {Date} the parsed date in the local time zone
- * @throws {TypeError} 1 argument required
- * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
+ * @param argument - the value to convert
+ * @param options - an object with options.
+ * @returns the parsed date in the local time zone
  *
  * @example
  * // Convert string '2014-02-11T11:30:30' to date:
@@ -37,28 +38,9 @@ import toInteger from '../_lib/toInteger/index'
  */
 export default function parseISO(
   argument: string,
-  options?: AdditionalDigitsOptions
+  options?: ParseISOOptions
 ): Date {
-  requiredArgs(1, arguments)
-
-  const additionalDigits = toInteger(options?.additionalDigits ?? 2)
-  if (
-    additionalDigits !== 2 &&
-    additionalDigits !== 1 &&
-    additionalDigits !== 0
-  ) {
-    throw new RangeError('additionalDigits must be 0, 1 or 2')
-  }
-
-  if (
-    !(
-      typeof argument === 'string' ||
-      Object.prototype.toString.call(argument) === '[object String]'
-    )
-  ) {
-    return new Date(NaN)
-  }
-
+  const additionalDigits = options?.additionalDigits ?? 2
   const dateStrings = splitDateString(argument)
 
   let date

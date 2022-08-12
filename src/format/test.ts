@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import sinon from 'sinon'
-import format from '.'
+import format from './index'
 
 describe('format', () => {
   const date = new Date(1986, 3 /* Apr */, 4, 10, 32, 55, 123)
@@ -733,21 +733,6 @@ describe('format', () => {
     })
   })
 
-  it('implicitly converts `formatString`', () => {
-    // eslint-disable-next-line no-new-wrappers
-    const formatString = new String('yyyy-MM-dd')
-
-    const date = new Date(2014, 3, 4)
-
-    assert(
-      format(
-        date,
-        // @ts-expect-error
-        formatString
-      ) === '2014-04-04'
-    )
-  })
-
   describe('custom locale', () => {
     it('allows to pass a custom locale', () => {
       const customLocale = {
@@ -794,33 +779,8 @@ describe('format', () => {
     })
   })
 
-  it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', () => {
-    const block = () =>
-      format(new Date(2007, 11 /* Dec */, 31), 'yyyy', {
-        // @ts-expect-error
-        weekStartsOn: NaN,
-      })
-    assert.throws(block, RangeError)
-  })
-
-  it('throws `RangeError` if `options.firstWeekContainsDate` is not convertable to 1, 2, ..., 7 or undefined', () => {
-    const block = () =>
-      format(new Date(2007, 11 /* Dec */, 31), 'yyyy', {
-        // @ts-expect-error
-        firstWeekContainsDate: NaN,
-      })
-    assert.throws(block, RangeError)
-  })
-
   it('throws RangeError exception if the format string contains an unescaped latin alphabet character', () => {
     assert.throws(format.bind(null, date, 'yyyy-MM-dd-nnnn'), RangeError)
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(format.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(format.bind(null, 1), TypeError)
   })
 
   describe('useAdditionalWeekYearTokens and useAdditionalDayOfYearTokens options', () => {

@@ -3,7 +3,7 @@
 
 import assert from 'assert'
 import { assertType } from '../_lib/test'
-import isDate from '.'
+import isDate from './index'
 
 describe('isDate', () => {
   it('returns true if the given value is a date object', () => {
@@ -69,10 +69,5 @@ describe('isDate', () => {
     assert(!isDate({}))
     assert(!isDate(null))
     assert(!isDate(0))
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(isDate.bind(null), TypeError)
   })
 })
