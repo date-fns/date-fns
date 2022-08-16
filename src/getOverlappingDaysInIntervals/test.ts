@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import getOverlappingDaysInIntervals from '.'
+import getOverlappingDaysInIntervals from './index'
 
 describe('getOverlappingDaysInIntervals', () => {
   const initialIntervalStart = new Date(2016, 10, 10, 13, 0, 0)
@@ -170,26 +170,6 @@ describe('getOverlappingDaysInIntervals', () => {
     assert.throws(block, RangeError)
   })
 
-  it('throws an exception if the initial interval is undefined', () => {
-    const block = getOverlappingDaysInIntervals.bind(
-      null,
-      // @ts-expect-error
-      undefined,
-      { start: new Date(2016, 10, 5), end: new Date(2016, 10, 15) }
-    )
-    assert.throws(block, RangeError)
-  })
-
-  it('throws an exception if the compared interval is undefined', () => {
-    const block = getOverlappingDaysInIntervals.bind(
-      null,
-      { start: new Date(2016, 10, 3), end: new Date(2016, 10, 7) },
-      // @ts-expect-error
-      undefined
-    )
-    assert.throws(block, RangeError)
-  })
-
   describe('one of the dates is `Invalid Date`', () => {
     it('throws an exception if the start date of the initial time interval is `Invalid Date`', () => {
       const block = getOverlappingDaysInIntervals.bind(
@@ -226,12 +206,5 @@ describe('getOverlappingDaysInIntervals', () => {
       )
       assert.throws(block, RangeError)
     })
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(getOverlappingDaysInIntervals.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(getOverlappingDaysInIntervals.bind(null, 1), TypeError)
   })
 })

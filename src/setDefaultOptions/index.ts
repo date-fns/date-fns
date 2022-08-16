@@ -3,7 +3,6 @@ import {
   setDefaultOptions as setInternalDefaultOptions,
   DefaultOptions,
 } from '../_lib/defaultOptions/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name setDefaultOptions
@@ -16,11 +15,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * `options.locale`, `options.weekStartsOn` and `options.firstWeekContainsDate`
  * arguments for all functions.
  *
- * @param {Object} newOptions - an object with options.
- * @param {Locale} [newOptions.locale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
- * @param {0|1|2|3|4|5|6} [newOptions.weekStartsOn] - the index of the first day of the week (0 - Sunday)
- * @param {1|2|3|4|5|6|7} [newOptions.firstWeekContainsDate] - the day of January, which is always in the first week of the year
- * @throws {TypeError} 1 argument required
+ * @param newOptions - an object with options.
+ * @param newOptions.locale - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
+ * @param newOptions.weekStartsOn - the index of the first day of the week (0 - Sunday)
+ * @param newOptions.firstWeekContainsDate - the day of January, which is always in the first week of the year
  *
  * @example
  * // Set global locale:
@@ -55,8 +53,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> Sun Aug 31 2014 00:00:00
  */
 export default function setDefaultOptions(newOptions: DefaultOptions): void {
-  requiredArgs(1, arguments)
-
   const result: DefaultOptions = {}
   const defaultOptions = getDefaultOptions()
 

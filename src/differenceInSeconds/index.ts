@@ -1,7 +1,11 @@
 import differenceInMilliseconds from '../differenceInMilliseconds/index'
 import type { RoundingOptions } from '../types'
-import requiredArgs from '../_lib/requiredArgs/index'
 import { getRoundingMethod } from '../_lib/roundingMethods/index'
+
+/**
+ * The {@link differenceInSeconds} function options.
+ */
+export interface DifferenceInSecondsOptions extends RoundingOptions {}
 
 /**
  * @name differenceInSeconds
@@ -11,12 +15,10 @@ import { getRoundingMethod } from '../_lib/roundingMethods/index'
  * @description
  * Get the number of seconds between the given dates.
  *
- * @param {Date|Number} dateLeft - the later date
- * @param {Date|Number} dateRight - the earlier date
- * @param {Object} [options] - an object with options.
- * @param {String} [options.roundingMethod='trunc'] - a rounding method (`ceil`, `floor`, `round` or `trunc`)
- * @returns {Number} the number of seconds
- * @throws {TypeError} 2 arguments required
+ * @param dateLeft - the later date
+ * @param dateRight - the earlier date
+ * @param options - an object with options.
+ * @returns the number of seconds
  *
  * @example
  * // How many seconds are between
@@ -27,13 +29,11 @@ import { getRoundingMethod } from '../_lib/roundingMethods/index'
  * )
  * //=> 12
  */
-export default function differenceInSeconds(
-  dateLeft: Date | number,
-  dateRight: Date | number,
-  options?: RoundingOptions
+export default function differenceInSeconds<DateType extends Date>(
+  dateLeft: DateType | number,
+  dateRight: DateType | number,
+  options?: DifferenceInSecondsOptions
 ): number {
-  requiredArgs(2, arguments)
-
   const diff = differenceInMilliseconds(dateLeft, dateRight) / 1000
   return getRoundingMethod(options?.roundingMethod)(diff)
 }

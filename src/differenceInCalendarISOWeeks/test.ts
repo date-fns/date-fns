@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import differenceInCalendarISOWeeks from '.'
+import differenceInCalendarISOWeeks from './index'
 
 describe('differenceInCalendarISOWeeks', () => {
   it('returns the number of calendar ISO weeks between the given dates', () => {
@@ -95,12 +95,5 @@ describe('differenceInCalendarISOWeeks', () => {
   it('returns NaN if the both dates are `Invalid Date`', () => {
     const result = differenceInCalendarISOWeeks(new Date(NaN), new Date(NaN))
     assert(isNaN(result))
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(differenceInCalendarISOWeeks.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(differenceInCalendarISOWeeks.bind(null, 1), TypeError)
   })
 })

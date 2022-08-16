@@ -1,12 +1,20 @@
-import parse from '../parse/index'
 import isValid from '../isValid/index'
-import requiredArgs from '../_lib/requiredArgs/index'
+import parse from '../parse/index'
 import type {
+  AdditionalTokensOptions,
+  FirstWeekContainsDateOptions,
   LocaleOptions,
   WeekStartOptions,
-  FirstWeekContainsDateOptions,
-  AdditionalTokensOptions,
 } from '../types'
+
+/**
+ * The {@link isMatch} function options.
+ */
+export interface IsMatchOptions
+  extends LocaleOptions,
+    WeekStartOptions,
+    FirstWeekContainsDateOptions,
+    AdditionalTokensOptions {}
 
 /**
  * @name isMatch
@@ -266,20 +274,12 @@ import type {
  *
  *
  *
- * @param {String} dateString - the date string to verify
- * @param {String} formatString - the string of tokens
- * @param {Object} [options] - an object with options.
- * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
- * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
- * @param {1|2|3|4|5|6|7} [options.firstWeekContainsDate=1] - the day of January, which is always in the first week of the year
- * @param {Boolean} [options.useAdditionalWeekYearTokens=false] - if true, allows usage of the week-numbering year tokens `YY` and `YYYY`;
+ * @param dateString - the date string to verify
+ * @param formatString - the string of tokens
+ * @param options - an object with options.
  *   see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
- * @param {Boolean} [options.useAdditionalDayOfYearTokens=false] - if true, allows usage of the day of year tokens `D` and `DD`;
  *   see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
- * @returns {Boolean}
- * @throws {TypeError} 2 arguments required
- * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
- * @throws {RangeError} `options.firstWeekContainsDate` must be between 1 and 7
+ * @returns is format string a match for date string?
  * @throws {RangeError} `options.locale` must contain `match` property
  * @throws {RangeError} use `yyyy` instead of `YYYY` for formatting years; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
  * @throws {RangeError} use `yy` instead of `YY` for formatting years; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
@@ -303,11 +303,7 @@ import type {
 export default function isMatch(
   dateString: string,
   formatString: string,
-  options?: LocaleOptions &
-    WeekStartOptions &
-    FirstWeekContainsDateOptions &
-    AdditionalTokensOptions
+  options?: IsMatchOptions
 ): boolean {
-  requiredArgs(2, arguments)
   return isValid(parse(dateString, formatString, new Date(), options))
 }

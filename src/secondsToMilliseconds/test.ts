@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import secondsToMilliseconds from '.'
+import secondsToMilliseconds from './index'
 
 describe('secondsToMilliseconds', () => {
   it('converts seconds to milliseconds', () => {

@@ -1,7 +1,8 @@
-import type { ParseResult, ParseFlags } from '../types'
+import startOfISOWeek from '../../../startOfISOWeek/index'
+import constructFrom from '../../../constructFrom/index'
 import { Parser } from '../Parser'
+import type { ParseFlags, ParseResult } from '../types'
 import { parseNDigitsSigned } from '../utils'
-import startOfUTCISOWeek from '../../../_lib/startOfUTCISOWeek'
 
 // ISO week-numbering year
 export class ISOWeekYearParser extends Parser<number> {
@@ -15,11 +16,15 @@ export class ISOWeekYearParser extends Parser<number> {
     return parseNDigitsSigned(token.length, dateString)
   }
 
-  set(_date: Date, _flags: ParseFlags, value: number): Date {
-    const firstWeekOfYear = new Date(0)
-    firstWeekOfYear.setUTCFullYear(value, 0, 4)
-    firstWeekOfYear.setUTCHours(0, 0, 0, 0)
-    return startOfUTCISOWeek(firstWeekOfYear)
+  set<DateType extends Date>(
+    date: DateType,
+    _flags: ParseFlags,
+    value: number
+  ): DateType {
+    const firstWeekOfYear = constructFrom(date, 0)
+    firstWeekOfYear.setFullYear(value, 0, 4)
+    firstWeekOfYear.setHours(0, 0, 0, 0)
+    return startOfISOWeek(firstWeekOfYear)
   }
 
   incompatibleTokens = [

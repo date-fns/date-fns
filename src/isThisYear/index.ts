@@ -1,5 +1,4 @@
 import isSameYear from '../isSameYear/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isThisYear
@@ -13,17 +12,16 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * > ⚠️ Please note that this function is not present in the FP submodule as
  * > it uses `Date.now()` internally hence impure and can't be safely curried.
  *
- * @param {Date|Number} date - the date to check
- * @returns {Boolean} the date is in this year
- * @throws {TypeError} 1 argument required
+ * @param date - the date to check
+ * @returns the date is in this year
  *
  * @example
  * // If today is 25 September 2014, is 2 July 2014 in this year?
  * const result = isThisYear(new Date(2014, 6, 2))
  * //=> true
  */
-export default function isThisYear(dirtyDate: Date | number): boolean {
-  requiredArgs(1, arguments)
-
+export default function isThisYear<DateType extends Date>(
+  dirtyDate: DateType | number
+): boolean {
   return isSameYear(dirtyDate, Date.now())
 }

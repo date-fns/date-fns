@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import differenceInSeconds from '.'
+import differenceInSeconds from './index'
 
 describe('differenceInSeconds', () => {
   it('returns the number of seconds between the given dates with `trunc` as a default rounding method', () => {
@@ -148,12 +148,5 @@ describe('differenceInSeconds', () => {
   it('returns NaN if the both dates are `Invalid Date`', () => {
     const result = differenceInSeconds(new Date(NaN), new Date(NaN))
     assert(isNaN(result))
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(differenceInSeconds.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(differenceInSeconds.bind(null, 1), TypeError)
   })
 })

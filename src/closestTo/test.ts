@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import closestTo from '.'
+import closestTo from './index'
 
 describe('closestTo', () => {
   it('returns the date from the given array closest to the given date', () => {
@@ -60,59 +60,5 @@ describe('closestTo', () => {
     ])
 
     assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
-  it('returns `Invalid Date` if any value in the given array is undefined', () => {
-    const date = new Date(2014, 6 /* Jul */, 2)
-    const result = closestTo(date, [
-      new Date(2015, 7 /* Aug */, 31),
-      // @ts-expect-error
-      undefined,
-      new Date(2012, 6 /* Jul */, 2),
-    ])
-
-    assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
-  it('converts Array-like objects into Array', () => {
-    const date = new Date(2014, 6 /* Jul */, 2)
-    const object = {
-      '0': new Date(2015, 7 /* Aug */, 31),
-      '1': new Date(2012, 6 /* Jul */, 2),
-      length: 2,
-    }
-    const result = closestTo(
-      date,
-      // @ts-expect-error
-      object
-    )
-    assert.deepStrictEqual(result, new Date(2015, 7 /* Aug */, 31))
-  })
-
-  it('returns undefined if second argument is undefined', () => {
-    const date = new Date(2014, 6 /* Jul */, 2).getTime()
-    const result = closestTo(
-      date,
-      // @ts-expect-error
-      undefined
-    )
-    assert.deepStrictEqual(result, undefined)
-  })
-
-  it('returns undefined if the given array is null', () => {
-    const date = new Date(2014, 6 /* Jul */, 2).getTime()
-    const result = closestTo(
-      date,
-      // @ts-expect-error
-      null
-    )
-    assert.deepStrictEqual(result, undefined)
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(closestTo.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(closestTo.bind(null, 1), TypeError)
   })
 })

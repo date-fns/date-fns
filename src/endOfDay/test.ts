@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import endOfDay from '.'
+import endOfDay from './index'
 
 describe('endOfDay', () => {
   it('returns the date with the time set to 23:59:59.999', () => {
@@ -31,10 +31,5 @@ describe('endOfDay', () => {
   it('returns `Invalid Date` if the given date is invalid', () => {
     const result = endOfDay(new Date(NaN))
     assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(endOfDay.bind(null), TypeError)
   })
 })

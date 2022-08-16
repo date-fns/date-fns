@@ -1,4 +1,4 @@
-import isSameUTCWeek from '../../../../_lib/isSameUTCWeek/index'
+import isSameWeek from '../../../../isSameWeek/index'
 import type { FormatRelativeFn, FormatRelativeFnOptions } from '../../../types'
 
 const weekdays = [
@@ -34,9 +34,13 @@ function nextWeek(day: number): string {
 }
 
 const formatRelativeLocale = {
-  lastWeek: (date: Date, baseDate: Date, options?: FormatRelativeFnOptions) => {
-    const day = date.getUTCDay()
-    if (isSameUTCWeek(date, baseDate, options)) {
+  lastWeek: <DateType extends Date>(
+    date: DateType,
+    baseDate: DateType,
+    options?: FormatRelativeFnOptions
+  ) => {
+    const day = date.getDay()
+    if (isSameWeek(date, baseDate, options)) {
       return thisWeek(day)
     } else {
       return lastWeek(day)
@@ -45,9 +49,13 @@ const formatRelativeLocale = {
   yesterday: "'ieri alle' p",
   today: "'oggi alle' p",
   tomorrow: "'domani alle' p",
-  nextWeek: (date: Date, baseDate: Date, options?: FormatRelativeFnOptions) => {
-    const day = date.getUTCDay()
-    if (isSameUTCWeek(date, baseDate, options)) {
+  nextWeek: <DateType extends Date>(
+    date: DateType,
+    baseDate: DateType,
+    options?: FormatRelativeFnOptions
+  ) => {
+    const day = date.getDay()
+    if (isSameWeek(date, baseDate, options)) {
       return thisWeek(day)
     } else {
       return nextWeek(day)

@@ -1,6 +1,9 @@
-import distanceInWords from '../formatDistance/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-import type { FormatDistanceOptions, LocaleOptions } from '../types'
+import distanceInWords, { FormatDistanceOptions } from '../formatDistance/index'
+
+/**
+ * The {@link formatDistanceToNow} function options.
+ */
+export interface FormatDistanceToNowOptions extends FormatDistanceOptions {}
 
 /**
  * @name formatDistanceToNow
@@ -43,13 +46,9 @@ import type { FormatDistanceOptions, LocaleOptions } from '../types'
  * > ⚠️ Please note that this function is not present in the FP submodule as
  * > it uses `Date.now()` internally hence impure and can't be safely curried.
  *
- * @param {Date|Number} date - the given date
- * @param {Object} [options] - the object with options
- * @param {Boolean} [options.includeSeconds=false] - distances less than a minute are more detailed
- * @param {Boolean} [options.addSuffix=false] - result specifies if now is earlier or later than the passed date
- * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
- * @returns {String} the distance in words
- * @throws {TypeError} 1 argument required
+ * @param date - the given date
+ * @param options - the object with options
+ * @returns the distance in words
  * @throws {RangeError} `date` must not be Invalid Date
  * @throws {RangeError} `options.locale` must contain `formatDistance` property
  *
@@ -88,11 +87,9 @@ import type { FormatDistanceOptions, LocaleOptions } from '../types'
  * )
  * //=> 'pli ol 1 jaro'
  */
-export default function formatDistanceToNow(
-  dirtyDate: Date | number,
-  options?: LocaleOptions & FormatDistanceOptions
+export default function formatDistanceToNow<DateType extends Date>(
+  dirtyDate: DateType | number,
+  options?: FormatDistanceToNowOptions
 ): string {
-  requiredArgs(1, arguments)
-
   return distanceInWords(dirtyDate, Date.now(), options)
 }

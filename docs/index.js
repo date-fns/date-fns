@@ -21,6 +21,8 @@ module.exports = {
     'Year Helpers',
     'ISO Week-Numbering Year Helpers',
     'Decade Helpers',
+    // TODO: Uncomment when releasing v3 with constructFrom and transpose:
+    // 'Date Extension Helpers',
   ],
 
   staticDocs: [

@@ -1,5 +1,4 @@
 import isSameQuarter from '../isSameQuarter/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isThisQuarter
@@ -13,17 +12,16 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * > ⚠️ Please note that this function is not present in the FP submodule as
  * > it uses `Date.now()` internally hence impure and can't be safely curried.
  *
- * @param {Date|Number} date - the date to check
- * @returns {Boolean} the date is in this quarter
- * @throws {TypeError} 1 argument required
+ * @param date - the date to check
+ * @returns the date is in this quarter
  *
  * @example
  * // If today is 25 September 2014, is 2 July 2014 in this quarter?
  * const result = isThisQuarter(new Date(2014, 6, 2))
  * //=> true
  */
-export default function isThisQuarter(dirtyDate: Date | number): boolean {
-  requiredArgs(1, arguments)
-
+export default function isThisQuarter<DateType extends Date>(
+  dirtyDate: DateType | number
+): boolean {
   return isSameQuarter(Date.now(), dirtyDate)
 }

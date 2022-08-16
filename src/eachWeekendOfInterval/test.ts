@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import eachWeekendOfInterval from '.'
+import eachWeekendOfInterval from './index'
 
 describe('eachWeekendOfInterval', () => {
   it('returns all weekends within the interval', () => {
@@ -44,11 +44,6 @@ describe('eachWeekendOfInterval', () => {
       end: new Date(NaN),
     })
     assert.throws(block, RangeError)
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(eachWeekendOfInterval, TypeError)
   })
 
   it('throws `RangeError` if start of an interval is after its end', () => {

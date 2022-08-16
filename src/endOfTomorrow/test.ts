@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import sinon from 'sinon'
-import endOfTomorrow from '.'
+import endOfTomorrow from './index'
 
 describe('endOfTomorrow', () => {
   it('returns tomorrow with the time settled to 23:59:59.999', () => {

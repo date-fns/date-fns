@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import isSameWeek from '.'
+import isSameWeek from './index'
 
 describe('isSameWeek', () => {
   it('returns true if the given dates have the same week', () => {
@@ -58,18 +58,6 @@ describe('isSameWeek', () => {
     assert(result === false)
   })
 
-  it('implicitly converts options', () => {
-    const result = isSameWeek(
-      new Date(2014, 7 /* Aug */, 31),
-      new Date(2014, 8 /* Sep */, 4),
-      {
-        // @ts-expect-error
-        weekStartsOn: '1',
-      }
-    )
-    assert(result === false)
-  })
-
   it('accepts a timestamp', () => {
     const result = isSameWeek(
       new Date(2014, 7 /* Aug */, 31).getTime(),
@@ -91,25 +79,5 @@ describe('isSameWeek', () => {
   it('returns false if the both dates are `Invalid Date`', () => {
     const result = isSameWeek(new Date(NaN), new Date(NaN))
     assert(result === false)
-  })
-
-  it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', () => {
-    const block = () =>
-      isSameWeek(
-        new Date(2014, 7 /* Aug */, 31),
-        new Date(2014, 8 /* Sep */, 4),
-        {
-          // @ts-expect-error
-          weekStartsOn: NaN,
-        }
-      )
-    assert.throws(block, RangeError)
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(isSameWeek.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(isSameWeek.bind(null, 1), TypeError)
   })
 })

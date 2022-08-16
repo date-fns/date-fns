@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import secondsToHours from '.'
+import secondsToHours from './index'
 
 describe('secondsToHours', () => {
   it('converts seconds to hours', () => {

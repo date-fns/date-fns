@@ -1,5 +1,5 @@
+import isSameWeek from '../../../../isSameWeek/index'
 import type { Day } from '../../../../types'
-import isSameUTCWeek from '../../../../_lib/isSameUTCWeek/index'
 import type { FormatRelativeFn, FormatRelativeFnOptions } from '../../../types'
 
 const accusativeWeekdays = [
@@ -31,13 +31,13 @@ function nextWeek(day: Day) {
 }
 
 const formatRelativeLocale = {
-  lastWeek: (
-    date: Date,
-    baseDate: Date,
+  lastWeek: <DateType extends Date>(
+    date: DateType,
+    baseDate: DateType,
     options?: FormatRelativeFnOptions
   ): string => {
-    const day = date.getUTCDay() as Day
-    if (isSameUTCWeek(date, baseDate, options)) {
+    const day = date.getDay() as Day
+    if (isSameWeek(date, baseDate, options)) {
       return thisWeek(day)
     } else {
       return lastWeek(day)
@@ -46,13 +46,13 @@ const formatRelativeLocale = {
   yesterday: "'кеше сағат' p'-де'",
   today: "'бүгін сағат' p'-де'",
   tomorrow: "'ертең сағат' p'-де'",
-  nextWeek: (
-    date: Date,
-    baseDate: Date,
+  nextWeek: <DateType extends Date>(
+    date: DateType,
+    baseDate: DateType,
     options?: FormatRelativeFnOptions
   ): string => {
-    const day = date.getUTCDay() as Day
-    if (isSameUTCWeek(date, baseDate, options)) {
+    const day = date.getDay() as Day
+    if (isSameWeek(date, baseDate, options)) {
       return thisWeek(day)
     } else {
       return nextWeek(day)

@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import parseJSON from '.'
+import parseJSON from './index'
 import format from '../format/index'
 
 describe('parseJSON', () => {

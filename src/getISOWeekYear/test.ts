@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import getISOWeekYear from '.'
+import getISOWeekYear from './index'
 
 describe('getISOWeekYear', () => {
   it('returns the ISO week-numbering year of the given date', () => {
@@ -25,10 +25,5 @@ describe('getISOWeekYear', () => {
   it('returns NaN if the given date is invalid', () => {
     const result = getISOWeekYear(new Date(NaN))
     assert(isNaN(result))
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(getISOWeekYear.bind(null), TypeError)
   })
 })

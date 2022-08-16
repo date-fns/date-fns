@@ -1,5 +1,4 @@
 import startOfSecond from '../startOfSecond/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isSameSecond
@@ -9,10 +8,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Are the given dates in the same second (and hour and day)?
  *
- * @param {Date|Number} dateLeft - the first date to check
- * @param {Date|Number} dateRight - the second date to check
- * @returns {Boolean} the dates are in the same second (and hour and day)
- * @throws {TypeError} 2 arguments required
+ * @param dateLeft - the first date to check
+ * @param dateRight - the second date to check
+ * @returns the dates are in the same second (and hour and day)
  *
  * @example
  * // Are 4 September 2014 06:30:15.000 and 4 September 2014 06:30.15.500 in the same second?
@@ -38,12 +36,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * )
  * //=> false
  */
-export default function isSameSecond(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+export default function isSameSecond<DateType extends Date>(
+  dirtyDateLeft: DateType | number,
+  dirtyDateRight: DateType | number
 ): boolean {
-  requiredArgs(2, arguments)
-
   const dateLeftStartOfSecond = startOfSecond(dirtyDateLeft)
   const dateRightStartOfSecond = startOfSecond(dirtyDateRight)
 

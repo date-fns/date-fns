@@ -7,7 +7,6 @@ import differenceInSeconds from '../differenceInSeconds/index'
 import differenceInYears from '../differenceInYears/index'
 import toDate from '../toDate/index'
 import type { Duration, Interval } from '../types'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name intervalToDuration
@@ -17,10 +16,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Convert a interval object to a duration object.
  *
- * @param {Interval} interval - the interval to convert to duration
+ * @param interval - the interval to convert to duration
  *
- * @returns {Duration} The duration Object
- * @throws {TypeError} Requires 2 arguments
+ * @returns The duration Object
  * @throws {RangeError} `start` must not be Invalid Date
  * @throws {RangeError} `end` must not be Invalid Date
  * @throws {RangeError} The start of an interval cannot be after its end
@@ -33,9 +31,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * })
  * // => { years: 39, months: 2, days: 20, hours: 7, minutes: 5, seconds: 0 }
  */
-export default function intervalToDuration(interval: Interval): Duration {
-  requiredArgs(1, arguments)
-
+export default function interval<DateType extends Date>(
+  interval: Interval<DateType>
+): Duration {
   const start = toDate(interval.start)
   const end = toDate(interval.end)
 

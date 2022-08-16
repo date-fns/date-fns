@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import isSameISOWeek from '.'
+import isSameISOWeek from './index'
 
 describe('isSameISOWeek', () => {
   it('returns true if the given dates have the same ISO week', () => {
@@ -41,12 +41,5 @@ describe('isSameISOWeek', () => {
   it('returns false if the both dates are `Invalid Date`', () => {
     const result = isSameISOWeek(new Date(NaN), new Date(NaN))
     assert(result === false)
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(isSameISOWeek.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(isSameISOWeek.bind(null, 1), TypeError)
   })
 })

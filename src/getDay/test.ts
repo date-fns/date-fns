@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import getDay from '.'
+import getDay from './index'
 
 describe('getDay', () => {
   it('returns the day of the week of the given date', () => {
@@ -17,10 +17,5 @@ describe('getDay', () => {
   it('returns NaN if the given date is invalid', () => {
     const result = getDay(new Date(NaN))
     assert(isNaN(result))
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(getDay.bind(null), TypeError)
   })
 })

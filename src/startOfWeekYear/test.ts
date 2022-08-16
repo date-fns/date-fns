@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import startOfWeekYear from '.'
+import startOfWeekYear from './index'
 
 describe('startOfWeekYear', () => {
   it('returns the date with the time set to 00:00:00 and the date set to the first day of a week year', () => {
@@ -60,28 +60,5 @@ describe('startOfWeekYear', () => {
       },
     })
     assert.deepStrictEqual(result, new Date(2005, 0 /* Jan */, 3, 0, 0, 0, 0))
-  })
-
-  it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', () => {
-    const block = () =>
-      startOfWeekYear(new Date(2007, 11 /* Dec */, 31), {
-        // @ts-expect-error
-        weekStartsOn: NaN,
-      })
-    assert.throws(block, RangeError)
-  })
-
-  it('throws `RangeError` if `options.firstWeekContainsDate` is not convertable to 1, 2, ..., 7 or undefined', () => {
-    const block = () =>
-      startOfWeekYear(new Date(2007, 11 /* Dec */, 31), {
-        // @ts-expect-error
-        firstWeekContainsDate: NaN,
-      })
-    assert.throws(block, RangeError)
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(startOfWeekYear.bind(null), TypeError)
   })
 })

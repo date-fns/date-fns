@@ -3,7 +3,7 @@
 import assert from 'assert'
 import sinon from 'sinon'
 import type { FormatDistanceFn } from '../locale/types'
-import formatDistanceToNow from '.'
+import formatDistanceToNow from './index'
 
 describe('formatDistanceToNow', () => {
   let clock: sinon.SinonFakeTimers
@@ -165,24 +165,6 @@ describe('formatDistanceToNow', () => {
     })
   })
 
-  describe('implicit conversion of options', () => {
-    it('`options.includeSeconds`', () => {
-      const result = formatDistanceToNow(new Date(1986, 3, 4, 10, 31, 52), {
-        // @ts-expect-error
-        includeSeconds: 1,
-      })
-      assert(result === 'less than 10 seconds')
-    })
-
-    it('`options.addSuffix`', () => {
-      const result = formatDistanceToNow(new Date(1986, 3, 4, 11, 32, 0), {
-        // @ts-expect-error
-        addSuffix: 1,
-      })
-      assert(result === 'in about 1 hour')
-    })
-  })
-
   describe('custom locale', () => {
     it('can be passed to the function', () => {
       const localizeDistance: FormatDistanceFn = (token, count, options) => {
@@ -222,10 +204,5 @@ describe('formatDistanceToNow', () => {
 
   it('throws RangeError if the passed date is `Invalid Date`', function () {
     assert.throws(formatDistanceToNow.bind(null, new Date(NaN)), RangeError)
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(formatDistanceToNow.bind(null), TypeError)
   })
 })

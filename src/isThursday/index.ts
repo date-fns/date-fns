@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isThursday
@@ -9,17 +8,16 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Is the given date Thursday?
  *
- * @param {Date|Number} date - the date to check
- * @returns {Boolean} the date is Thursday
- * @throws {TypeError} 1 argument required
+ * @param date - the date to check
+ * @returns the date is Thursday
  *
  * @example
  * // Is 25 September 2014 Thursday?
  * const result = isThursday(new Date(2014, 8, 25))
  * //=> true
  */
-export default function isThursday(dirtyDate: Date | number): boolean {
-  requiredArgs(1, arguments)
-
+export default function isThursday<DateType extends Date>(
+  dirtyDate: DateType | number
+): boolean {
   return toDate(dirtyDate).getDay() === 4
 }

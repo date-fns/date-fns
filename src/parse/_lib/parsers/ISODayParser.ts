@@ -1,8 +1,8 @@
 import type { Match } from '../../../locale/types'
-import type { ParseResult, ParseFlags } from '../types'
+import setISODay from '../../../setISODay/index'
 import { Parser } from '../Parser'
+import type { ParseFlags, ParseResult } from '../types'
 import { mapValue, parseNDigits } from '../utils'
-import setUTCISODay from '../../../_lib/setUTCISODay'
 
 // ISO day of week
 export class ISODayParser extends Parser<number> {
@@ -88,13 +88,17 @@ export class ISODayParser extends Parser<number> {
     }
   }
 
-  validate(_date: Date, value: number): boolean {
+  validate<DateType extends Date>(_date: DateType, value: number): boolean {
     return value >= 1 && value <= 7
   }
 
-  set(date: Date, _flags: ParseFlags, value: number): Date {
-    date = setUTCISODay(date, value)
-    date.setUTCHours(0, 0, 0, 0)
+  set<DateType extends Date>(
+    date: DateType,
+    _flags: ParseFlags,
+    value: number
+  ): DateType {
+    date = setISODay(date, value)
+    date.setHours(0, 0, 0, 0)
     return date
   }
 

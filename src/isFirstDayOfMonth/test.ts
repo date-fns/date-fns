@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import isFirstDayOfMonth from '.'
+import isFirstDayOfMonth from './index'
 
 describe('isFirstDayOfMonth', () => {
   it('returns true if the given date is in the last day of month', () => {
@@ -23,10 +23,5 @@ describe('isFirstDayOfMonth', () => {
   it('returns false if the given date is `Invalid Date`', () => {
     const result = isFirstDayOfMonth(new Date(NaN))
     assert(result === false)
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(isFirstDayOfMonth.bind(null), TypeError)
   })
 })

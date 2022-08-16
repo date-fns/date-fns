@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name startOfDay
@@ -10,18 +9,17 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * Return the start of a day for the given date.
  * The result will be in the local timezone.
  *
- * @param {Date|Number} date - the original date
- * @returns {Date} the start of a day
- * @throws {TypeError} 1 argument required
+ * @param date - the original date
+ * @returns the start of a day
  *
  * @example
  * // The start of a day for 2 September 2014 11:55:00:
  * const result = startOfDay(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Tue Sep 02 2014 00:00:00
  */
-export default function startOfDay(dirtyDate: Date | number): Date {
-  requiredArgs(1, arguments)
-
+export default function startOfDay<DateType extends Date>(
+  dirtyDate: DateType | number
+): DateType {
   const date = toDate(dirtyDate)
   date.setHours(0, 0, 0, 0)
   return date
