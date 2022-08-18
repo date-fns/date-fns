@@ -22,7 +22,7 @@ This release is brought to you by @nopears, @vadimpopa and @leshakoss.
 
 ## v2.29.1 - 2022-08-18
 
-Thanks to @fturmel, @vadimpopa and @leshakoss for working on the release.
+Thanks to @fturmel for working on the release.
 
 ### Fixed
 
