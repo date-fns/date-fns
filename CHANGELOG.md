@@ -8,6 +8,18 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## v2.29.2 - 2022-08-18
+
+This release is brought to you by @nopears, @vadimpopa and @leshakoss.
+
+### Fixed
+
+- [Fixed `sv` locale abbreviated months matcher.](https://github.com/date-fns/date-fns/pull/3160)
+
+- [Fixed `uk` locale abbreviated months matcher.](https://github.com/date-fns/date-fns/pull/3139)
+
+- [Fixed a breaking change in `intervalToDuration` by removing a recently introduced RangeError.](https://github.com/date-fns/date-fns/pull/3153)
+
 ## v2.29.1 - 2022-08-18
 
 Thanks to @fturmel, @vadimpopa and @leshakoss for working on the release.
@@ -15,12 +27,6 @@ Thanks to @fturmel, @vadimpopa and @leshakoss for working on the release.
 ### Fixed
 
 - [Fixed TypeScript and flow types for daysInYear constant.](https://github.com/date-fns/date-fns/pull/3125)
-
-- [Fixed `sv` locale abbreviated months matcher.](https://github.com/date-fns/date-fns/pull/3160)
-
-- [Fixed `uk` locale abbreviated months matcher.](https://github.com/date-fns/date-fns/pull/3139)
-
-- [Fixed a breaking change in `intervalToDuration` by removing a recently introduced RangeError.](https://github.com/date-fns/date-fns/pull/3153)
 
 ## v2.29.0 - 2022-07-22
 
