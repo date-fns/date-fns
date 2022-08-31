@@ -17,8 +17,8 @@ const parseEraPatterns = {
 
 const matchQuarterPatterns = {
   narrow: /^[1234]/i,
-  abbreviated: /^第[一二三四]刻/i,
-  wide: /^第[一二三四]刻鐘/i,
+  abbreviated: /^第[一二三四]季/i,
+  wide: /^第[一二三四]季度/i,
 }
 const parseQuarterPatterns = {
   any: [/(1|一)/i, /(2|二)/i, /(3|三)/i, /(4|四)/i] as const,
