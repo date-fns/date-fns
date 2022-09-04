@@ -1,4 +1,10 @@
-const presets = ['@babel/preset-env', '@babel/preset-typescript']
+const presets = [
+  [
+    '@babel/preset-env',
+    { modules: process.env.BABEL_ENV === 'esm' ? false : 'auto' },
+  ],
+  '@babel/preset-typescript',
+]
 const plugins = ['@babel/plugin-proposal-class-properties']
 
 if (process.env.BABEL_ENV !== 'esm') {
