@@ -8,7 +8,6 @@ const presets = [
 const plugins = ['@babel/plugin-proposal-class-properties']
 
 if (process.env.BABEL_ENV !== 'esm') {
-  plugins.push('@babel/plugin-transform-modules-commonjs')
   plugins.push('babel-plugin-add-module-exports')
 }
 
