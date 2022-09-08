@@ -14,7 +14,7 @@ import toDate from '../toDate/index'
  *
  * @example
  * // Which month is 29 February 2012?
- * const result = getMonth(new Date("2012-02-29"))
+ * const result = getMonth(new Date('2012-02-29'))
  * //=> 1
  */
 export default function getMonth<DateType extends Date>(
