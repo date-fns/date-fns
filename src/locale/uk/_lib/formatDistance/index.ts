@@ -169,7 +169,7 @@ const formatDistanceLocale = {
   aboutXWeeks: buildLocalizeTokenFn({
     regular: {
       singularNominative: 'близько {{count}} тижня',
-      singularGenitive: 'близько {{count}} тижні',
+      singularGenitive: 'близько {{count}} тижнів',
       pluralGenitive: 'близько {{count}} тижнів',
     },
     future: {
@@ -190,7 +190,7 @@ const formatDistanceLocale = {
   aboutXMonths: buildLocalizeTokenFn({
     regular: {
       singularNominative: 'близько {{count}} місяця',
-      singularGenitive: 'близько {{count}} місяці',
+      singularGenitive: 'близько {{count}} місяців',
       pluralGenitive: 'близько {{count}} місяців',
     },
     future: {
