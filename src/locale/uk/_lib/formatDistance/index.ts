@@ -203,7 +203,7 @@ const formatDistanceLocale = {
   xMonths: buildLocalizeTokenFn({
     regular: {
       singularNominative: '{{count}} місяць',
-      singularGenitive: '{{count}} місяця',
+      singularGenitive: '{{count}} місяці',
       pluralGenitive: '{{count}} місяців',
     },
   }),
