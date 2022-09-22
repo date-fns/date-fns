@@ -8,7 +8,29 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
-## v2.29.1 - 2022-07-22
+## v2.29.3 - 2022-09-13
+
+This release is prepared by our own @leshakoss.
+
+### Fixed
+
+- [Fixed Ukrainian (`uk`) locale grammar for `formatDistance`.](https://github.com/date-fns/date-fns/pull/3175)
+
+- [Improved browser compatibility by transforming the code with `@babel/preset-env`.](https://github.com/date-fns/date-fns/pull/3167)
+
+## v2.29.2 - 2022-08-18
+
+This release is brought to you by @nopears, @vadimpopa and @leshakoss.
+
+### Fixed
+
+- [Fixed `sv` locale abbreviated months matcher.](https://github.com/date-fns/date-fns/pull/3160)
+
+- [Fixed `uk` locale abbreviated months matcher.](https://github.com/date-fns/date-fns/pull/3139)
+
+- [Fixed a breaking change in `intervalToDuration` by removing a recently introduced RangeError.](https://github.com/date-fns/date-fns/pull/3153)
+
+## v2.29.1 - 2022-08-18
 
 Thanks to @fturmel for working on the release.
 
