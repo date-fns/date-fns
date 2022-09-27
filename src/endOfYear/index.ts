@@ -13,7 +13,7 @@ import toDate from '../toDate/index'
  * @returns the end of a year
  *
  * @example
- * // The end of a year for 2 September 2014 11:55:00:
+ * // The end of a year for 2 August 2014 11:55:00:
  * const result = endOfYear(new Date(2014, 8, 2, 11, 55, 00))
  * //=> Wed Dec 31 2014 23:59:59.999
  */
