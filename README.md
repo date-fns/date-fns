@@ -1,3 +1,8 @@
+⚠️ **Warning**: the current `main` represents v3 pre-release version of the library. [See `v2` branch](https://github.com/date-fns/date-fns/tree/v2).
+If you're participating in hacktoberfest, please send your PRs to `main`.
+
+<hr>
+
 <p align="center">
   <a href="https://date-fns.org/">
     <img alt="date-fns" title="date-fns" src="https://raw.githubusercontent.com/date-fns/date-fns/master/docs/logotype.svg" width="300" />
