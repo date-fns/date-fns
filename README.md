@@ -1,4 +1,5 @@
 ⚠️ **Warning**: the current `main` represents v3 pre-release version of the library. [See `v2` branch](https://github.com/date-fns/date-fns/tree/v2).
+
 If you're participating in hacktoberfest, please send your PRs to `main`.
 
 <hr>
