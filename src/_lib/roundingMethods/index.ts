@@ -4,7 +4,7 @@ type RoundingFn = typeof Math.round
 
 type RoundingFnsMap = { [method in RoundingMethod]: RoundingFn }
 
-const roundingMap: RoundingFnsMap = {
+export const roundingMap: RoundingFnsMap = {
   ceil: Math.ceil,
   round: Math.round,
   floor: Math.floor,
