@@ -176,6 +176,11 @@ describe("parseISO", () => {
         );
       });
 
+      it("rounds float seconds down to nearest millisecond", () => {
+        const result = parseISO("2014-02-11T11:30:30.9999999");
+        expect(result).toEqual(new Date(2014, 1, 11, 11, 30, 30, 999));
+      });
+
       it("parses , as decimal mark", () => {
         const result = parseISO("2014-02-11T11,5");
         expect(result).toEqual(new Date(2014, 1 /* Feb */, 11, 11, 30));

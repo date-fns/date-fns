@@ -71,7 +71,8 @@ export function parseISO<
   let offset;
 
   if (dateStrings.time) {
-    time = parseTime(dateStrings.time);
+    // Round down time to nearest ms to handle sub-ms fractions properly
+    time = Math.floor(parseTime(dateStrings.time));
     if (isNaN(time)) return invalidDate();
   }
 
