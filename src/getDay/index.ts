@@ -8,7 +8,7 @@ import toDate from '../toDate/index'
  * @description
  * Get the day of the week of the given date.
  *
- * @param date - the given date
+ * @param dirtyDate - the given date
  * @returns the day of week, 0 represents Sunday
  *
  * @example
