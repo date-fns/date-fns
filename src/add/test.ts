@@ -97,4 +97,29 @@ describe('add', () => {
     const result = add(new Date(NaN), { hours: 5 })
     assert(result instanceof Date && isNaN(result.getTime()))
   })
+
+  it('returns `Invalid Date` if any of the given duration parameter is NaN', () => {
+    const date = new Date(2020, 5 /* Jun */, 11)
+
+    const yearsNaN = add(date, { years: NaN })
+    assert(yearsNaN instanceof Date && isNaN(yearsNaN.getTime()))
+
+    const monthsNaN = add(date, { months: NaN })
+    assert(monthsNaN instanceof Date && isNaN(monthsNaN.getTime()))
+
+    const weeksNaN = add(date, { weeks: NaN })
+    assert(weeksNaN instanceof Date && isNaN(weeksNaN.getTime()))
+
+    const daysNaN = add(date, { days: NaN })
+    assert(daysNaN instanceof Date && isNaN(daysNaN.getTime()))
+
+    const hoursNaN = add(date, { hours: NaN })
+    assert(hoursNaN instanceof Date && isNaN(hoursNaN.getTime()))
+
+    const minutesNaN = add(date, { minutes: NaN })
+    assert(minutesNaN instanceof Date && isNaN(minutesNaN.getTime()))
+
+    const secondsNaN = add(date, { seconds: NaN })
+    assert(secondsNaN instanceof Date && isNaN(secondsNaN.getTime()))
+  })
 })
