@@ -18,11 +18,11 @@ import toDate from '../toDate/index'
  * //=> Tue Sep 30 2014 23:59:59.999
  */
 export default function endOfMonth<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): DateType {
-  const date = toDate(dirtyDate)
-  const month = date.getMonth()
-  date.setFullYear(date.getFullYear(), month + 1, 0)
-  date.setHours(23, 59, 59, 999)
-  return date
+  const convertedDate = toDate(date)
+  const month = convertedDate.getMonth()
+  convertedDate.setFullYear(convertedDate.getFullYear(), month + 1, 0)
+  convertedDate.setHours(23, 59, 59, 999)
+  return convertedDate
 }

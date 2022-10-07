@@ -19,8 +19,8 @@ import { millisecondsInMinute } from '../constants/index'
  * //=> Thu Jul 10 2014 12:30:00
  */
 export default function addMinutes<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   amount: number
 ): DateType {
-  return addMilliseconds(dirtyDate, amount * millisecondsInMinute)
+  return addMilliseconds(date, amount * millisecondsInMinute)
 }

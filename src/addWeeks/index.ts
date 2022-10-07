@@ -18,9 +18,9 @@ import addDays from '../addDays/index'
  * //=> Mon Sep 29 2014 00:00:00
  */
 export default function addWeeks<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   amount: number
 ): DateType {
   const days = amount * 7
-  return addDays(dirtyDate, days)
+  return addDays(date, days)
 }

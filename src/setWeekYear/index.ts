@@ -53,7 +53,7 @@ export interface SetWeekYearOptions
  * //=> Sat Jan 01 2005 00:00:00
  */
 export default function setWeekYear<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   weekYear: number,
   options?: SetWeekYearOptions
 ): DateType {
@@ -65,12 +65,15 @@ export default function setWeekYear<DateType extends Date>(
     defaultOptions.locale?.options?.firstWeekContainsDate ??
     1
 
-  let date = toDate(dirtyDate)
-  const diff = differenceInCalendarDays(date, startOfWeekYear(date, options))
-  const firstWeek = constructFrom(dirtyDate, 0)
+  let convertedDate = toDate(date)
+  const diff = differenceInCalendarDays(
+    convertedDate,
+    startOfWeekYear(convertedDate, options)
+  )
+  const firstWeek = constructFrom(date, 0)
   firstWeek.setFullYear(weekYear, 0, firstWeekContainsDate)
   firstWeek.setHours(0, 0, 0, 0)
-  date = startOfWeekYear(firstWeek, options)
-  date.setDate(date.getDate() + diff)
-  return date
+  convertedDate = startOfWeekYear(firstWeek, options)
+  convertedDate.setDate(convertedDate.getDate() + diff)
+  return convertedDate
 }

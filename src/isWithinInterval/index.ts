@@ -40,10 +40,10 @@ import type { Interval } from '../types'
  * isWithinInterval(date, { start: date, end }) // => true
  */
 export default function isWithinInterval<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   interval: Interval<DateType>
 ): boolean {
-  const time = toDate(dirtyDate).getTime()
+  const time = toDate(date).getTime()
   const startTime = toDate(interval.start).getTime()
   const endTime = toDate(interval.end).getTime()
 

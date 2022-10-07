@@ -18,8 +18,8 @@ import addWeeks from '../addWeeks/index'
  * //=> Mon Aug 04 2014 00:00:00
  */
 export default function subWeeks<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   amount: number
 ): DateType {
-  return addWeeks(dirtyDate, -amount)
+  return addWeeks(date, -amount)
 }

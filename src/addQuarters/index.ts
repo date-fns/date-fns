@@ -18,9 +18,9 @@ import addMonths from '../addMonths/index'
  * //=> Mon Dec 01 2014 00:00:00
  */
 export default function addQuarters<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   amount: number
 ): DateType {
   const months = amount * 3
-  return addMonths(dirtyDate, months)
+  return addMonths(date, months)
 }

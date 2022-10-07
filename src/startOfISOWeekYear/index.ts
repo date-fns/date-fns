@@ -23,12 +23,11 @@ import constructFrom from '../constructFrom/index'
  * //=> Mon Jan 03 2005 00:00:00
  */
 export default function startOfISOWeekYear<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): DateType {
-  const year = getISOWeekYear(dirtyDate)
-  const fourthOfJanuary = constructFrom(dirtyDate, 0)
+  const year = getISOWeekYear(date)
+  const fourthOfJanuary = constructFrom(date, 0)
   fourthOfJanuary.setFullYear(year, 0, 4)
   fourthOfJanuary.setHours(0, 0, 0, 0)
-  const date = startOfISOWeek(fourthOfJanuary)
-  return date
+  return startOfISOWeek(fourthOfJanuary)
 }

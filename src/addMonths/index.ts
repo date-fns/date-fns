@@ -19,16 +19,16 @@ import constructFrom from '../constructFrom/index'
  * //=> Sun Feb 01 2015 00:00:00
  */
 export default function addMonths<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   amount: number
 ): DateType {
-  const date = toDate(dirtyDate)
-  if (isNaN(amount)) return constructFrom(dirtyDate, NaN)
+  const convertedDate = toDate(date)
+  if (isNaN(amount)) return constructFrom(date, NaN)
   if (!amount) {
     // If 0 months, no-op to avoid changing times in the hour before end of DST
-    return date
+    return convertedDate
   }
-  const dayOfMonth = date.getDate()
+  const dayOfMonth = convertedDate.getDate()
 
   // The JS Date object supports date math by accepting out-of-bounds values for
   // month, day, etc. For example, new Date(2020, 0, 0) returns 31 Dec 2019 and
@@ -38,8 +38,8 @@ export default function addMonths<DateType extends Date>(
   // we'll default to the end of the desired month by adding 1 to the desired
   // month and using a date of 0 to back up one day to the end of the desired
   // month.
-  const endOfDesiredMonth = constructFrom(dirtyDate, date.getTime())
-  endOfDesiredMonth.setMonth(date.getMonth() + amount + 1, 0)
+  const endOfDesiredMonth = constructFrom(date, convertedDate.getTime())
+  endOfDesiredMonth.setMonth(convertedDate.getMonth() + amount + 1, 0)
   const daysInMonth = endOfDesiredMonth.getDate()
   if (dayOfMonth >= daysInMonth) {
     // If we're already at the end of the month, then this is the correct date
@@ -53,11 +53,11 @@ export default function addMonths<DateType extends Date>(
     // the last day of the month and its local time was in the hour skipped or
     // repeated next to a DST transition.  So we use `date` instead which is
     // guaranteed to still have the original time.
-    date.setFullYear(
+    convertedDate.setFullYear(
       endOfDesiredMonth.getFullYear(),
       endOfDesiredMonth.getMonth(),
       dayOfMonth
     )
-    return date
+    return convertedDate
   }
 }

@@ -18,10 +18,10 @@ import toDate from '../toDate/index'
  * //=> Mon Sep 01 2014 00:00:00
  */
 export default function startOfMonth<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): DateType {
-  const date = toDate(dirtyDate)
-  date.setDate(1)
-  date.setHours(0, 0, 0, 0)
-  return date
+  const convertedDate = toDate(date)
+  convertedDate.setDate(1)
+  convertedDate.setHours(0, 0, 0, 0)
+  return convertedDate
 }

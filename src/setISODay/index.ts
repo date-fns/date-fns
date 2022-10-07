@@ -22,11 +22,11 @@ import toDate from '../toDate/index'
  * //=> Sun Sep 07 2014 00:00:00
  */
 export default function setISODay<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   day: number
 ): DateType {
-  const date = toDate(dirtyDate)
-  const currentDay = getISODay(date)
+  const convertedDate = toDate(date)
+  const currentDay = getISODay(convertedDate)
   const diff = day - currentDay
-  return addDays(date, diff)
+  return addDays(convertedDate, diff)
 }

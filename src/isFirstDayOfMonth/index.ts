@@ -17,7 +17,7 @@ import toDate from '../toDate/index'
  * //=> true
  */
 export default function isFirstDayOfMonth<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): boolean {
-  return toDate(dirtyDate).getDate() === 1
+  return toDate(date).getDate() === 1
 }

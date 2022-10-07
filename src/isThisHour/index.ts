@@ -22,7 +22,7 @@ import isSameHour from '../isSameHour/index'
  * //=> true
  */
 export default function isThisHour<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): boolean {
-  return isSameHour(Date.now(), dirtyDate)
+  return isSameHour(Date.now(), date)
 }

@@ -17,9 +17,9 @@ import toDate from '../toDate/index'
  * //=> 5
  */
 export default function getSeconds<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): number {
-  const date = toDate(dirtyDate)
-  const seconds = date.getSeconds()
+  const convertedDate = toDate(date)
+  const seconds = convertedDate.getSeconds()
   return seconds
 }

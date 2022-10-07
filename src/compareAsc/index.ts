@@ -32,13 +32,13 @@ import toDate from '../toDate/index'
  * // ]
  */
 export default function compareAsc<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+  dateLeft: DateType | number,
+  dateRight: DateType | number
 ): number {
-  const dateLeft = toDate(dirtyDateLeft)
-  const dateRight = toDate(dirtyDateRight)
+  const convertedDateLeft = toDate(dateLeft)
+  const convertedDateRight = toDate(dateRight)
 
-  const diff = dateLeft.getTime() - dateRight.getTime()
+  const diff = convertedDateLeft.getTime() - convertedDateRight.getTime()
 
   if (diff < 0) {
     return -1

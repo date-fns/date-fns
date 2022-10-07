@@ -50,7 +50,7 @@ export interface StartOfWeekYearOptions
  * //=> Mon Jan 03 2005 00:00:00
  */
 export default function startOfWeekYear<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   options?: StartOfWeekYearOptions
 ): DateType {
   const defaultOptions = getDefaultOptions()
@@ -61,10 +61,9 @@ export default function startOfWeekYear<DateType extends Date>(
     defaultOptions.locale?.options?.firstWeekContainsDate ??
     1
 
-  const year = getWeekYear(dirtyDate, options)
-  const firstWeek = constructFrom(dirtyDate, 0)
+  const year = getWeekYear(date, options)
+  const firstWeek = constructFrom(date, 0)
   firstWeek.setFullYear(year, 0, firstWeekContainsDate)
   firstWeek.setHours(0, 0, 0, 0)
-  const date = startOfWeek(firstWeek, options)
-  return date
+  return startOfWeek(firstWeek, options)
 }

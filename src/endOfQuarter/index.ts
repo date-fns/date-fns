@@ -18,12 +18,12 @@ import toDate from '../toDate/index'
  * //=> Tue Sep 30 2014 23:59:59.999
  */
 export default function endOfQuarter<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): DateType {
-  const date = toDate(dirtyDate)
-  const currentMonth = date.getMonth()
+  const convertedDate = toDate(date)
+  const currentMonth = convertedDate.getMonth()
   const month = currentMonth - (currentMonth % 3) + 3
-  date.setMonth(month, 0)
-  date.setHours(23, 59, 59, 999)
-  return date
+  convertedDate.setMonth(month, 0)
+  convertedDate.setHours(23, 59, 59, 999)
+  return convertedDate
 }

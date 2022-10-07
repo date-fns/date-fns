@@ -100,8 +100,8 @@ export interface FormatDistanceStrictOptions extends LocaleOptions {
  */
 
 export default function formatDistanceStrict<DateType extends Date>(
-  dirtyDate: DateType | number,
-  dirtyBaseDate: DateType | number,
+  date: DateType | number,
+  baseDate: DateType | number,
   options?: FormatDistanceStrictOptions
 ): string {
   const defaultOptions = getDefaultOptions()
@@ -111,7 +111,7 @@ export default function formatDistanceStrict<DateType extends Date>(
     throw new RangeError('locale must contain localize.formatDistance property')
   }
 
-  const comparison = compareAsc(dirtyDate, dirtyBaseDate)
+  const comparison = compareAsc(date, baseDate)
 
   if (isNaN(comparison)) {
     throw new RangeError('Invalid time value')
@@ -125,11 +125,11 @@ export default function formatDistanceStrict<DateType extends Date>(
   let dateLeft
   let dateRight
   if (comparison > 0) {
-    dateLeft = toDate(dirtyBaseDate)
-    dateRight = toDate(dirtyDate)
+    dateLeft = toDate(baseDate)
+    dateRight = toDate(date)
   } else {
-    dateLeft = toDate(dirtyDate)
-    dateRight = toDate(dirtyBaseDate)
+    dateLeft = toDate(date)
+    dateRight = toDate(baseDate)
   }
 
   const roundingMethod = getRoundingMethod(options?.roundingMethod ?? 'round')

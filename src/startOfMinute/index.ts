@@ -18,9 +18,9 @@ import toDate from '../toDate/index'
  * //=> Mon Dec 01 2014 22:15:00
  */
 export default function startOfMinute<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): DateType {
-  const date = toDate(dirtyDate)
-  date.setSeconds(0, 0)
-  return date
+  const convertedDate = toDate(date)
+  convertedDate.setSeconds(0, 0)
+  return convertedDate
 }

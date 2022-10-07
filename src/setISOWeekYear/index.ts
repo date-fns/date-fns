@@ -24,15 +24,18 @@ import toDate from '../toDate/index'
  * //=> Mon Jan 01 2007 00:00:00
  */
 export default function setISOWeekYear<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   isoWeekYear: number
 ): DateType {
-  let date = toDate(dirtyDate)
-  const diff = differenceInCalendarDays(date, startOfISOWeekYear(date))
-  const fourthOfJanuary = constructFrom(dirtyDate, 0)
+  let convertedDate = toDate(date)
+  const diff = differenceInCalendarDays(
+    convertedDate,
+    startOfISOWeekYear(convertedDate)
+  )
+  const fourthOfJanuary = constructFrom(date, 0)
   fourthOfJanuary.setFullYear(isoWeekYear, 0, 4)
   fourthOfJanuary.setHours(0, 0, 0, 0)
-  date = startOfISOWeekYear(fourthOfJanuary)
-  date.setDate(date.getDate() + diff)
-  return date
+  convertedDate = startOfISOWeekYear(fourthOfJanuary)
+  convertedDate.setDate(convertedDate.getDate() + diff)
+  return convertedDate
 }

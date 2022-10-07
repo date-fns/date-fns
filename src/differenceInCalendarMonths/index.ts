@@ -21,14 +21,15 @@ import toDate from '../toDate/index'
  * //=> 8
  */
 export default function differenceInCalendarMonths<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+  dateLeft: DateType | number,
+  dateRight: DateType | number
 ): number {
-  const dateLeft = toDate(dirtyDateLeft)
-  const dateRight = toDate(dirtyDateRight)
+  const convertedDateLeft = toDate(dateLeft)
+  const convertedDateRight = toDate(dateRight)
 
-  const yearDiff = dateLeft.getFullYear() - dateRight.getFullYear()
-  const monthDiff = dateLeft.getMonth() - dateRight.getMonth()
+  const yearDiff =
+    convertedDateLeft.getFullYear() - convertedDateRight.getFullYear()
+  const monthDiff = convertedDateLeft.getMonth() - convertedDateRight.getMonth()
 
   return yearDiff * 12 + monthDiff
 }

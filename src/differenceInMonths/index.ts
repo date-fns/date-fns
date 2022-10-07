@@ -21,37 +21,43 @@ import toDate from '../toDate/index'
  * //=> 7
  */
 export default function differenceInMonths<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+  dateLeft: DateType | number,
+  dateRight: DateType | number
 ): number {
-  const dateLeft = toDate(dirtyDateLeft)
-  const dateRight = toDate(dirtyDateRight)
+  const convertedDateLeft = toDate(dateLeft)
+  const convertedDateRight = toDate(dateRight)
 
-  const sign = compareAsc(dateLeft, dateRight)
-  const difference = Math.abs(differenceInCalendarMonths(dateLeft, dateRight))
+  const sign = compareAsc(convertedDateLeft, convertedDateRight)
+  const difference = Math.abs(
+    differenceInCalendarMonths(convertedDateLeft, convertedDateRight)
+  )
   let result
 
   // Check for the difference of less than month
   if (difference < 1) {
     result = 0
   } else {
-    if (dateLeft.getMonth() === 1 && dateLeft.getDate() > 27) {
+    if (
+      convertedDateLeft.getMonth() === 1 &&
+      convertedDateLeft.getDate() > 27
+    ) {
       // This will check if the date is end of Feb and assign a higher end of month date
       // to compare it with Jan
-      dateLeft.setDate(30)
+      convertedDateLeft.setDate(30)
     }
 
-    dateLeft.setMonth(dateLeft.getMonth() - sign * difference)
+    convertedDateLeft.setMonth(convertedDateLeft.getMonth() - sign * difference)
 
     // Math.abs(diff in full months - diff in calendar months) === 1 if last calendar month is not full
     // If so, result must be decreased by 1 in absolute value
-    let isLastMonthNotFull = compareAsc(dateLeft, dateRight) === -sign
+    let isLastMonthNotFull =
+      compareAsc(convertedDateLeft, convertedDateRight) === -sign
 
     // Check for cases of one full calendar month
     if (
-      isLastDayOfMonth(toDate(dirtyDateLeft)) &&
+      isLastDayOfMonth(toDate(dateLeft)) &&
       difference === 1 &&
-      compareAsc(dirtyDateLeft, dateRight) === 1
+      compareAsc(dateLeft, convertedDateRight) === 1
     ) {
       isLastMonthNotFull = false
     }

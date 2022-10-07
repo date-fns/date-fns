@@ -18,11 +18,11 @@ import toDate from '../toDate/index'
  * //=> Wed Dec 31 2014 23:59:59.999
  */
 export default function endOfYear<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): DateType {
-  const date = toDate(dirtyDate)
-  const year = date.getFullYear()
-  date.setFullYear(year + 1, 0, 0)
-  date.setHours(23, 59, 59, 999)
-  return date
+  const convertedDate = toDate(date)
+  const year = convertedDate.getFullYear()
+  convertedDate.setFullYear(year + 1, 0, 0)
+  convertedDate.setHours(23, 59, 59, 999)
+  return convertedDate
 }

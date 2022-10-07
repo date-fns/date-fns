@@ -17,9 +17,9 @@ import toDate from '../toDate/index'
  * //=> 29
  */
 export default function getDate<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): number {
-  const date = toDate(dirtyDate)
-  const dayOfMonth = date.getDate()
+  const convertedDate = toDate(date)
+  const dayOfMonth = convertedDate.getDate()
   return dayOfMonth
 }

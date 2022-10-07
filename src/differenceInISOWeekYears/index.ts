@@ -26,23 +26,23 @@ import toDate from '../toDate/index'
  * //=> 1
  */
 export default function differenceInISOWeekYears<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+  dateLeft: DateType | number,
+  dateRight: DateType | number
 ): number {
-  let dateLeft = toDate(dirtyDateLeft)
-  const dateRight = toDate(dirtyDateRight)
+  let convertedDateLeft = toDate(dateLeft)
+  const convertedDateRight = toDate(dateRight)
 
-  const sign = compareAsc(dateLeft, dateRight)
+  const sign = compareAsc(convertedDateLeft, convertedDateRight)
   const difference = Math.abs(
-    differenceInCalendarISOWeekYears(dateLeft, dateRight)
+    differenceInCalendarISOWeekYears(convertedDateLeft, convertedDateRight)
   )
-  dateLeft = subISOWeekYears(dateLeft, sign * difference)
+  convertedDateLeft = subISOWeekYears(convertedDateLeft, sign * difference)
 
   // Math.abs(diff in full ISO years - diff in calendar ISO years) === 1
   // if last calendar ISO year is not full
   // If so, result must be decreased by 1 in absolute value
   const isLastISOWeekYearNotFull = Number(
-    compareAsc(dateLeft, dateRight) === -sign
+    compareAsc(convertedDateLeft, convertedDateRight) === -sign
   )
   const result = sign * (difference - isLastISOWeekYearNotFull)
   // Prevent negative zero

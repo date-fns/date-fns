@@ -35,8 +35,8 @@ export interface IsThisWeekOptions extends WeekStartOptions, LocaleOptions {}
  */
 
 export default function is<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   options?: IsThisWeekOptions
 ): boolean {
-  return isSameWeek(dirtyDate, Date.now(), options)
+  return isSameWeek(date, Date.now(), options)
 }

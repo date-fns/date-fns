@@ -54,27 +54,30 @@ import toDate from '../toDate/index'
  * //=> 0
  */
 export default function differenceInBusinessDays<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+  dateLeft: DateType | number,
+  dateRight: DateType | number
 ): number {
-  const dateLeft = toDate(dirtyDateLeft)
-  let dateRight = toDate(dirtyDateRight)
+  const convertedDateLeft = toDate(dateLeft)
+  let convertedDateRight = toDate(dateRight)
 
-  if (!isValid(dateLeft) || !isValid(dateRight)) return NaN
+  if (!isValid(convertedDateLeft) || !isValid(convertedDateRight)) return NaN
 
-  const calendarDifference = differenceInCalendarDays(dateLeft, dateRight)
+  const calendarDifference = differenceInCalendarDays(
+    convertedDateLeft,
+    convertedDateRight
+  )
   const sign = calendarDifference < 0 ? -1 : 1
 
   const weeks = Math.trunc(calendarDifference / 7)
 
   let result = weeks * 5
-  dateRight = addDays(dateRight, weeks * 7)
+  convertedDateRight = addDays(convertedDateRight, weeks * 7)
 
   // the loop below will run at most 6 times to account for the remaining days that don't makeup a full week
-  while (!isSameDay(dateLeft, dateRight)) {
+  while (!isSameDay(convertedDateLeft, convertedDateRight)) {
     // sign is used to account for both negative and positive differences
-    result += isWeekend(dateRight) ? 0 : sign
-    dateRight = addDays(dateRight, sign)
+    result += isWeekend(convertedDateRight) ? 0 : sign
+    convertedDateRight = addDays(convertedDateRight, sign)
   }
 
   return result === 0 ? 0 : result

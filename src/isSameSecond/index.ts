@@ -37,11 +37,11 @@ import startOfSecond from '../startOfSecond/index'
  * //=> false
  */
 export default function isSameSecond<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+  dateLeft: DateType | number,
+  dateRight: DateType | number
 ): boolean {
-  const dateLeftStartOfSecond = startOfSecond(dirtyDateLeft)
-  const dateRightStartOfSecond = startOfSecond(dirtyDateRight)
+  const dateLeftStartOfSecond = startOfSecond(dateLeft)
+  const dateRightStartOfSecond = startOfSecond(dateRight)
 
   return dateLeftStartOfSecond.getTime() === dateRightStartOfSecond.getTime()
 }

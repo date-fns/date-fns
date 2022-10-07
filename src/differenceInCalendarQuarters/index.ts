@@ -22,14 +22,16 @@ import toDate from '../toDate/index'
  * //=> 3
  */
 export default function differenceInCalendarQuarters<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+  dateLeft: DateType | number,
+  dateRight: DateType | number
 ): number {
-  const dateLeft = toDate(dirtyDateLeft)
-  const dateRight = toDate(dirtyDateRight)
+  const convertedDateLeft = toDate(dateLeft)
+  const convertedDateRight = toDate(dateRight)
 
-  const yearDiff = dateLeft.getFullYear() - dateRight.getFullYear()
-  const quarterDiff = getQuarter(dateLeft) - getQuarter(dateRight)
+  const yearDiff =
+    convertedDateLeft.getFullYear() - convertedDateRight.getFullYear()
+  const quarterDiff =
+    getQuarter(convertedDateLeft) - getQuarter(convertedDateRight)
 
   return yearDiff * 4 + quarterDiff
 }

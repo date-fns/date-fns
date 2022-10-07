@@ -18,10 +18,10 @@ import toDate from '../toDate/index'
  * //=> Mon Sep 01 2014 11:30:40.300
  */
 export default function setMilliseconds<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   milliseconds: number
 ): DateType {
-  const date = toDate(dirtyDate)
-  date.setMilliseconds(milliseconds)
-  return date
+  const convertedDate = toDate(date)
+  convertedDate.setMilliseconds(milliseconds)
+  return convertedDate
 }

@@ -17,12 +17,12 @@ import toDate from '../toDate/index'
  * //=> Wed Dec 31 2019 00:00:00
  */
 export default function lastDayOfDecade<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): DateType {
-  const date = toDate(dirtyDate)
-  const year = date.getFullYear()
+  const convertedDate = toDate(date)
+  const year = convertedDate.getFullYear()
   const decade = 9 + Math.floor(year / 10) * 10
-  date.setFullYear(decade + 1, 0, 0)
-  date.setHours(0, 0, 0, 0)
-  return date
+  convertedDate.setFullYear(decade + 1, 0, 0)
+  convertedDate.setHours(0, 0, 0, 0)
+  return convertedDate
 }

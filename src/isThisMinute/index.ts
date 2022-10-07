@@ -23,7 +23,7 @@ import isSameMinute from '../isSameMinute/index'
  */
 
 export default function isThisMinute<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): boolean {
-  return isSameMinute(Date.now(), dirtyDate)
+  return isSameMinute(Date.now(), date)
 }

@@ -19,10 +19,13 @@ import toDate from '../toDate/index'
  * //=> 183
  */
 export default function getDayOfYear<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): number {
-  const date = toDate(dirtyDate)
-  const diff = differenceInCalendarDays(date, startOfYear(date))
+  const convertedDate = toDate(date)
+  const diff = differenceInCalendarDays(
+    convertedDate,
+    startOfYear(convertedDate)
+  )
   const dayOfYear = diff + 1
   return dayOfYear
 }

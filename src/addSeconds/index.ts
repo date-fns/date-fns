@@ -18,8 +18,8 @@ import addMilliseconds from '../addMilliseconds/index'
  * //=> Thu Jul 10 2014 12:45:30
  */
 export default function addSeconds<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   amount: number
 ): DateType {
-  return addMilliseconds(dirtyDate, amount * 1000)
+  return addMilliseconds(date, amount * 1000)
 }
