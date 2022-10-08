@@ -34,6 +34,7 @@ export default function isExists(
   }
 
   const date = new Date(year, month, day)
+  date.setFullYear(year)
   return (
     date.getFullYear() === year &&
     date.getMonth() === month &&
