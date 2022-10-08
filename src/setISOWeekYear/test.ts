@@ -28,6 +28,16 @@ describe('setISOWeekYear', () => {
     assert.deepStrictEqual(date, new Date(2008, 11 /* Dec */, 29))
   })
 
+  it('maintains the original time', () => {
+    const initialDate = new Date(2021, 0 /* Jan */, 1)
+    initialDate.setHours(1, 2, 3, 4)
+    const expectedResult = new Date(2020, 11 /* Dec */, 29)
+    initialDate.setFullYear(2020, 11 /* Dec */, 29)
+    expectedResult.setHours(1, 2, 3, 4)
+    const result = setISOWeekYear(initialDate, 2020)
+    assert.deepStrictEqual(result, expectedResult)
+  })
+
   it('sets ISO week-numbering years less than 100', () => {
     const initialDate = new Date(2008, 11 /* Dec */, 29)
     const expectedResult = new Date(0)
