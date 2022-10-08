@@ -28,6 +28,12 @@ export default function setISOWeekYear(
   year: number
 ): Date {
   let result = new Date(date)
+  const times: [number, number, number, number] = [
+    result.getHours(),
+    result.getMinutes(),
+    result.getSeconds(),
+    result.getMilliseconds(),
+  ]
   const isoWeekYear = Math.trunc(year)
   const diff = differenceInCalendarDays(result, startOfISOWeekYear(result))
   const fourthOfJanuary = new Date(0)
@@ -35,5 +41,6 @@ export default function setISOWeekYear(
   fourthOfJanuary.setHours(0, 0, 0, 0)
   result = startOfISOWeekYear(fourthOfJanuary)
   result.setDate(result.getDate() + diff)
+  result.setHours(...times)
   return result
 }
