@@ -19,7 +19,7 @@ import {
 } from '../_lib/protectedTokens/index'
 
 // This RegExp consists of three parts separated by `|`:
-// - [yYQqMLwIdDecihHKkms]o matches any available ordinal number token
+// - [yYQqMLwWIdDecihHKkms]o matches any available ordinal number token
 //   (one of the certain letters followed by `o`)
 // - (\w)\1* matches any sequences of the same letter
 // - '' matches two quote characters in a row
@@ -29,7 +29,7 @@ import {
 //   If there is no matching single quote
 //   then the sequence will continue until the end of the string.
 // - . matches any single character unmatched by previous parts of the RegExps
-const formattingTokensRegExp = /[yYQqMLwIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)|./g
+const formattingTokensRegExp = /[yYQqMLwWIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)|./g
 
 // This RegExp catches symbols escaped by quotes, and also
 // sequences of symbols P, p, and the combinations like `PPPPPPPppppp`
@@ -119,6 +119,9 @@ export interface FormatOptions
  * |                                 | LLL     | Jan, Feb, ..., Dec                |       |
  * |                                 | LLLL    | January, February, ..., December  | 2     |
  * |                                 | LLLLL   | J, F, ..., D                      |       |
+ * | Week of month                   | W       | 1, 2, ..., 5                      |       |
+ * |                                 | Wo      | 1st, 2nd, ..., 5th                | 7     |
+ * |                                 | WW      | 01, 02, ..., 5                    |       |
  * | Local week of year              | w       | 1, 2, ..., 53                     |       |
  * |                                 | wo      | 1st, 2nd, ..., 53th               | 7     |
  * |                                 | ww      | 01, 02, ..., 53                   |       |

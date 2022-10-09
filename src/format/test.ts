@@ -300,6 +300,22 @@ describe('format', () => {
   })
 
   describe('week', () => {
+    describe('local week of the month', () => {
+      it('works as expected', () => {
+        const date = new Date(1986, 3 /* Apr */, 6) // 2nd week of the month
+        const result = format(date, 'W Wo WW')
+        assert(result === '2 2nd 02')
+      })
+
+      it('allows to specify `weekStartsOn` in options', () => {
+        const date = new Date(1986, 3 /* Apr */, 6)
+        const result = format(date, 'W Wo WW', {
+          weekStartsOn: 1,
+        })
+        assert(result === '1 1st 01')
+      })
+    })
+
     describe('local week of year', () => {
       it('works as expected', () => {
         const date = new Date(1986, 3 /* Apr */, 6)

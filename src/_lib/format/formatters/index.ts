@@ -3,6 +3,7 @@ import getISOWeek from '../../../getISOWeek/index'
 import getISOWeekYear from '../../../getISOWeekYear/index'
 import getWeek from '../../../getWeek/index'
 import getWeekYear from '../../../getWeekYear/index'
+import getWeekOfMonth from '../../../getWeekOfMonth/index'
 import type { LocaleDayPeriod, Localize } from '../../../locale/types'
 import type {
   Day,
@@ -63,7 +64,7 @@ type Formatter = (
  * |  t! | Seconds timestamp              |  T! | Milliseconds timestamp         |
  * |  u  | Extended year                  |  U* | Cyclic year                    |
  * |  v* | Timezone (generic non-locat.)  |  V* | Timezone (location)            |
- * |  w  | Local week of year             |  W* | Week of month                  |
+ * |  w  | Local week of year             |  W  | Week of month                  |
  * |  x  | Timezone (ISO-8601 w/o Z)      |  X  | Timezone (ISO-8601)            |
  * |  y  | Year (abs)                     |  Y  | Local week-numbering year      |
  * |  z  | Timezone (specific non-locat.) |  Z* | Timezone (aliases)             |
@@ -283,6 +284,17 @@ const formatters: { [token: string]: Formatter } = {
       default:
         return localize.month(month, { width: 'wide', context: 'standalone' })
     }
+  },
+
+  // Week of month
+  W: function (date, token, localize, options) {
+    var isoWeek = getWeekOfMonth(date, options)
+
+    if (token === 'Wo') {
+      return localize.ordinalNumber(isoWeek, { unit: 'week' })
+    }
+
+    return addLeadingZeros(isoWeek, token.length)
   },
 
   // Local week of year
