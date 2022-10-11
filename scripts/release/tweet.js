@@ -23,7 +23,7 @@ const changelogUrl = `https://date-fns.org/docs/Change-Log#${tag.replace(
 )}-${formattedDate}`
 
 console.log('Posting release tweet...')
-
+console.log('Everything goes fine..')
 fetch(zapierHookURL, {
   method: 'POST',
   body: JSON.stringify({
