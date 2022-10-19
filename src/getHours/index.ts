@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name getHours
@@ -18,7 +17,7 @@ import type { ReadonlyDate } from '../types'
  * //=> 11
  */
 export default function getHours<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number
+  dirtyDate: DateType | number
 ): number {
   const date = toDate(dirtyDate)
   const hours = date.getHours()

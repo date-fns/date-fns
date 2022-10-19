@@ -1,7 +1,6 @@
 import compareAsc from '../compareAsc/index'
 import differenceInCalendarYears from '../differenceInCalendarYears/index'
 import toDate from '../toDate/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name differenceInYears
@@ -21,8 +20,8 @@ import type { ReadonlyDate } from '../types'
  * //=> 1
  */
 export default function differenceInYears<DateType extends Date>(
-  dirtyDateLeft: ReadonlyDate<DateType> | number,
-  dirtyDateRight: ReadonlyDate<DateType> | number
+  dirtyDateLeft: DateType | number,
+  dirtyDateRight: DateType | number
 ): number {
   const dateLeft = toDate(dirtyDateLeft)
   const dateRight = toDate(dirtyDateRight)

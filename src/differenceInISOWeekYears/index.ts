@@ -2,7 +2,6 @@ import compareAsc from '../compareAsc/index'
 import differenceInCalendarISOWeekYears from '../differenceInCalendarISOWeekYears/index'
 import subISOWeekYears from '../subISOWeekYears/index'
 import toDate from '../toDate/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name differenceInISOWeekYears
@@ -27,8 +26,8 @@ import type { ReadonlyDate } from '../types'
  * //=> 1
  */
 export default function differenceInISOWeekYears<DateType extends Date>(
-  dirtyDateLeft: ReadonlyDate<DateType> | number,
-  dirtyDateRight: ReadonlyDate<DateType> | number
+  dirtyDateLeft: DateType | number,
+  dirtyDateRight: DateType | number
 ): number {
   let dateLeft = toDate(dirtyDateLeft)
   const dateRight = toDate(dirtyDateRight)

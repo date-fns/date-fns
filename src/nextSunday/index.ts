@@ -1,5 +1,4 @@
 import nextDay from '../nextDay/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name nextSunday
@@ -18,7 +17,7 @@ import type { ReadonlyDate } from '../types'
  * //=> Sun Mar 29 2020 00:00:00
  */
 export default function nextSunday<DateType extends Date>(
-  date: ReadonlyDate<DateType> | number
+  date: DateType | number
 ): DateType {
   return nextDay(date, 0)
 }

@@ -3,7 +3,6 @@ import getDay from '../getDay/index'
 import startOfMonth from '../startOfMonth/index'
 import type { LocaleOptions, WeekStartOptions } from '../types'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * The {@link getWeekOfMonth} function options.
@@ -30,7 +29,7 @@ export interface GetWeekOfMonthOptions
  * //=> 2
  */
 export default function getWeekOfMonth<DateType extends Date>(
-  date: ReadonlyDate<DateType> | number,
+  date: DateType | number,
   options?: GetWeekOfMonthOptions
 ): number {
   const defaultOptions = getDefaultOptions()

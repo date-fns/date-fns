@@ -2,7 +2,6 @@ import { millisecondsInWeek } from '../constants/index'
 import startOfISOWeek from '../startOfISOWeek/index'
 import startOfISOWeekYear from '../startOfISOWeekYear/index'
 import toDate from '../toDate/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name getISOWeek
@@ -23,7 +22,7 @@ import type { ReadonlyDate } from '../types'
  * //=> 53
  */
 export default function getISOWeek<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number
+  dirtyDate: DateType | number
 ): number {
   const date = toDate(dirtyDate)
   const diff =

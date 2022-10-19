@@ -1,6 +1,5 @@
 import setMonth from '../setMonth/index'
 import toDate from '../toDate/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name setQuarter
@@ -20,7 +19,7 @@ import type { ReadonlyDate } from '../types'
  * //=> Wed Apr 02 2014 00:00:00
  */
 export default function setQuarter<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number,
+  dirtyDate: DateType | number,
   quarter: number
 ): DateType {
   const date = toDate(dirtyDate)

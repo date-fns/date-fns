@@ -1,7 +1,6 @@
 import differenceInDays from '../differenceInDays/index'
 import type { RoundingOptions } from '../types'
 import { getRoundingMethod } from '../_lib/roundingMethods/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * The {@link differenceInWeeks} function options.
@@ -48,8 +47,8 @@ export interface DifferenceInWeeksOptions extends RoundingOptions {}
  * //=> 8
  */
 export default function differenceInWeeks<DateType extends Date>(
-  dateLeft: ReadonlyDate<DateType> | number,
-  dateRight: ReadonlyDate<DateType> | number,
+  dateLeft: DateType | number,
+  dateRight: DateType | number,
   options?: DifferenceInWeeksOptions
 ): number {
   const diff = differenceInDays(dateLeft, dateRight) / 7

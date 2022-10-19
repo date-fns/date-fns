@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name isPast
@@ -22,7 +21,7 @@ import type { ReadonlyDate } from '../types'
  * //=> true
  */
 export default function isPast<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number
+  dirtyDate: DateType | number
 ): boolean {
   return toDate(dirtyDate).getTime() < Date.now()
 }

@@ -1,5 +1,4 @@
 import isSameQuarter from '../isSameQuarter/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name isThisQuarter
@@ -22,7 +21,7 @@ import type { ReadonlyDate } from '../types'
  * //=> true
  */
 export default function isThisQuarter<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number
+  dirtyDate: DateType | number
 ): boolean {
   return isSameQuarter(Date.now(), dirtyDate)
 }

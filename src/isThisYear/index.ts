@@ -1,5 +1,4 @@
 import isSameYear from '../isSameYear/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name isThisYear
@@ -22,7 +21,7 @@ import type { ReadonlyDate } from '../types'
  * //=> true
  */
 export default function isThisYear<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number
+  dirtyDate: DateType | number
 ): boolean {
   return isSameYear(dirtyDate, Date.now())
 }

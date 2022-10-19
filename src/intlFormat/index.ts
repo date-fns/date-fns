@@ -1,24 +1,23 @@
 type Locale = Intl.ResolvedDateTimeFormatOptions['locale']
 type FormatOptions = Intl.DateTimeFormatOptions
 type LocaleOptions = { locale: Locale | Locale[] }
-import type { ReadonlyDate } from '../types'
 
 export default function intlFormat<DateType extends Date>(
-  date: ReadonlyDate<DateType>
+  date: DateType
 ): string
 
 export default function intlFormat<DateType extends Date>(
-  date: ReadonlyDate<DateType>,
+  date: DateType,
   localeOptions: LocaleOptions
 ): string
 
 export default function intlFormat<DateType extends Date>(
-  date: ReadonlyDate<DateType>,
+  date: DateType,
   formatOptions: FormatOptions
 ): string
 
 export default function intlFormat<DateType extends Date>(
-  date: ReadonlyDate<DateType>,
+  date: DateType,
   formatOptions: FormatOptions,
   localeOptions: LocaleOptions
 ): string
@@ -93,7 +92,7 @@ export default function intlFormat<DateType extends Date>(
  * //=> 10/4/2019
  */
 export default function intlFormat<DateType extends Date>(
-  date: ReadonlyDate<DateType>,
+  date: DateType,
   formatOrLocale?: FormatOptions | LocaleOptions,
   localeOptions?: LocaleOptions
 ): string {

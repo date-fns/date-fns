@@ -1,6 +1,5 @@
 import toDate from '../toDate/index'
 import constructFrom from '../constructFrom/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name addMilliseconds
@@ -20,7 +19,7 @@ import type { ReadonlyDate } from '../types'
  * //=> Thu Jul 10 2014 12:45:30.750
  */
 export default function addMilliseconds<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number,
+  dirtyDate: DateType | number,
   amount: number
 ): DateType {
   const timestamp = toDate(dirtyDate).getTime()

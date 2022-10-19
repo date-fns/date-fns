@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name getMonth
@@ -18,7 +17,7 @@ import type { ReadonlyDate } from '../types'
  * //=> 1
  */
 export default function getMonth<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number
+  dirtyDate: DateType | number
 ): number {
   const date = toDate(dirtyDate)
   const month = date.getMonth()

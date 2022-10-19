@@ -1,5 +1,4 @@
 import isSameISOWeek from '../isSameISOWeek/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name isThisISOWeek
@@ -25,7 +24,7 @@ import type { ReadonlyDate } from '../types'
  */
 
 export default function isThisISOWeek<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number
+  dirtyDate: DateType | number
 ): boolean {
   return isSameISOWeek(dirtyDate, Date.now())
 }

@@ -2,7 +2,6 @@ import constructFrom from '../constructFrom/index'
 import differenceInCalendarDays from '../differenceInCalendarDays/index'
 import startOfISOWeekYear from '../startOfISOWeekYear/index'
 import toDate from '../toDate/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name setISOWeekYear
@@ -25,7 +24,7 @@ import type { ReadonlyDate } from '../types'
  * //=> Mon Jan 01 2007 00:00:00
  */
 export default function setISOWeekYear<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number,
+  dirtyDate: DateType | number,
   isoWeekYear: number
 ): DateType {
   let date = toDate(dirtyDate)

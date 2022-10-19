@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name differenceInCalendarMonths
@@ -22,8 +21,8 @@ import type { ReadonlyDate } from '../types'
  * //=> 8
  */
 export default function differenceInCalendarMonths<DateType extends Date>(
-  dirtyDateLeft: ReadonlyDate<DateType> | number,
-  dirtyDateRight: ReadonlyDate<DateType> | number
+  dirtyDateLeft: DateType | number,
+  dirtyDateRight: DateType | number
 ): number {
   const dateLeft = toDate(dirtyDateLeft)
   const dateRight = toDate(dirtyDateRight)

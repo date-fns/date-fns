@@ -1,7 +1,6 @@
 import isValid from '../isValid/index'
 import toDate from '../toDate/index'
 import addLeadingZeros from '../_lib/addLeadingZeros/index'
-import type { ReadonlyDate } from '../types'
 
 const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
@@ -39,7 +38,7 @@ const months = [
  * //=> 'Wed, 18 Sep 2019 19:00:52 GMT'
  */
 export default function formatRFC7231<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number
+  dirtyDate: DateType | number
 ): string {
   const originalDate = toDate(dirtyDate)
 

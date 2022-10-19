@@ -1,5 +1,4 @@
 import startOfDay from '../startOfDay/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name isSameDay
@@ -32,8 +31,8 @@ export default function isSameDay<
   DateTypeLeft extends Date,
   DateTypeRight extends Date
 >(
-  dirtyDateLeft: ReadonlyDate<DateTypeLeft> | number,
-  dirtyDateRight: ReadonlyDate<DateTypeRight> | number
+  dirtyDateLeft: DateTypeLeft | number,
+  dirtyDateRight: DateTypeRight | number
 ): boolean {
   const dateLeftStartOfDay = startOfDay(dirtyDateLeft)
   const dateRightStartOfDay = startOfDay(dirtyDateRight)

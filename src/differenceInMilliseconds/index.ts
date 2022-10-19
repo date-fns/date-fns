@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name differenceInMilliseconds
@@ -23,8 +22,8 @@ import type { ReadonlyDate } from '../types'
  * //=> 1100
  */
 export default function differenceInMilliseconds<DateType extends Date>(
-  dateLeft: ReadonlyDate<DateType> | number,
-  dateRight: ReadonlyDate<DateType> | number
+  dateLeft: DateType | number,
+  dateRight: DateType | number
 ): number {
   return toDate(dateLeft).getTime() - toDate(dateRight).getTime()
 }

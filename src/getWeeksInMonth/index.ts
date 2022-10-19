@@ -2,7 +2,6 @@ import differenceInCalendarWeeks from '../differenceInCalendarWeeks/index'
 import lastDayOfMonth from '../lastDayOfMonth/index'
 import startOfMonth from '../startOfMonth/index'
 import type { LocaleOptions, WeekStartOptions } from '../types'
-import type { ReadonlyDate } from '../types'
 
 /**
  * The {@link getWeeksInMonth} function options.
@@ -35,7 +34,7 @@ export interface GetWeeksInMonthOptions
  * //=> 6
  */
 export default function getWeeksInMonth<DateType extends Date>(
-  date: ReadonlyDate<DateType> | number,
+  date: DateType | number,
   options?: GetWeeksInMonthOptions
 ): number {
   return (

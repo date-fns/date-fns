@@ -1,5 +1,4 @@
 import addMinutes from '../addMinutes/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name subMinutes
@@ -19,7 +18,7 @@ import type { ReadonlyDate } from '../types'
  * //=> Thu Jul 10 2014 11:30:00
  */
 export default function subMinutes<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number,
+  dirtyDate: DateType | number,
   amount: number
 ): DateType {
   return addMinutes(dirtyDate, -amount)

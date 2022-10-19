@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name getSeconds
@@ -18,7 +17,7 @@ import type { ReadonlyDate } from '../types'
  * //=> 5
  */
 export default function getSeconds<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number
+  dirtyDate: DateType | number
 ): number {
   const date = toDate(dirtyDate)
   const seconds = date.getSeconds()

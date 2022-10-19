@@ -3,7 +3,6 @@ import isSaturday from '../isSaturday/index'
 import isSunday from '../isSunday/index'
 import isWeekend from '../isWeekend/index'
 import toDate from '../toDate/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name addBusinessDays
@@ -23,7 +22,7 @@ import type { ReadonlyDate } from '../types'
  * //=> Mon Sep 15 2014 00:00:00 (skipped weekend days)
  */
 export default function addBusinessDays<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number,
+  dirtyDate: DateType | number,
   amount: number
 ): DateType {
   const date = toDate(dirtyDate)

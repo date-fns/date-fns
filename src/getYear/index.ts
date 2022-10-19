@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name getYear
@@ -18,7 +17,7 @@ import type { ReadonlyDate } from '../types'
  * //=> 2014
  */
 export default function getYear<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number
+  dirtyDate: DateType | number
 ): number {
   return toDate(dirtyDate).getFullYear()
 }

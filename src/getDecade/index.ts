@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name getDecade
@@ -18,7 +17,7 @@ import type { ReadonlyDate } from '../types'
  * //=> 1940
  */
 export default function getDecade<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number
+  dirtyDate: DateType | number
 ): number {
   const date = toDate(dirtyDate)
   const year = date.getFullYear()

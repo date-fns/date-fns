@@ -1,5 +1,4 @@
 import isSameMinute from '../isSameMinute/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name isThisMinute
@@ -24,7 +23,7 @@ import type { ReadonlyDate } from '../types'
  */
 
 export default function isThisMinute<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number
+  dirtyDate: DateType | number
 ): boolean {
   return isSameMinute(Date.now(), dirtyDate)
 }

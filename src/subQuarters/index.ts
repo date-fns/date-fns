@@ -1,5 +1,4 @@
 import addQuarters from '../addQuarters/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name subQuarters
@@ -19,7 +18,7 @@ import type { ReadonlyDate } from '../types'
  * //=> Sun Dec 01 2013 00:00:00
  */
 export default function subQuarters<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number,
+  dirtyDate: DateType | number,
   amount: number
 ): DateType {
   return addQuarters(dirtyDate, -amount)

@@ -2,7 +2,6 @@ import isValid from '../isValid/index'
 import toDate from '../toDate/index'
 import type { FormatOptions, RepresentationOptions } from '../types'
 import addLeadingZeros from '../_lib/addLeadingZeros/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * The {@link formatISO9075} function options.
@@ -45,7 +44,7 @@ export interface FormatISO9075Options
  * //=> '19:00:52'
  */
 export default function formatISO9075<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number,
+  dirtyDate: DateType | number,
   options?: FormatISO9075Options
 ): string {
   const originalDate = toDate(dirtyDate)

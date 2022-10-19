@@ -1,7 +1,6 @@
 import addDays from '../addDays/index'
 import getISODay from '../getISODay/index'
 import toDate from '../toDate/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name setISODay
@@ -23,7 +22,7 @@ import type { ReadonlyDate } from '../types'
  * //=> Sun Sep 07 2014 00:00:00
  */
 export default function setISODay<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number,
+  dirtyDate: DateType | number,
   day: number
 ): DateType {
   const date = toDate(dirtyDate)

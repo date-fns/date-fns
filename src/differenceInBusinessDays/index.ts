@@ -4,7 +4,6 @@ import isSameDay from '../isSameDay/index'
 import isValid from '../isValid/index'
 import isWeekend from '../isWeekend/index'
 import toDate from '../toDate/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name differenceInBusinessDays
@@ -55,8 +54,8 @@ import type { ReadonlyDate } from '../types'
  * //=> 0
  */
 export default function differenceInBusinessDays<DateType extends Date>(
-  dirtyDateLeft: ReadonlyDate<DateType> | number,
-  dirtyDateRight: ReadonlyDate<DateType> | number
+  dirtyDateLeft: DateType | number,
+  dirtyDateRight: DateType | number
 ): number {
   const dateLeft = toDate(dirtyDateLeft)
   let dateRight = toDate(dirtyDateRight)

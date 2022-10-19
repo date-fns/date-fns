@@ -1,6 +1,5 @@
 import getQuarter from '../getQuarter/index'
 import toDate from '../toDate/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name differenceInCalendarQuarters
@@ -23,8 +22,8 @@ import type { ReadonlyDate } from '../types'
  * //=> 3
  */
 export default function differenceInCalendarQuarters<DateType extends Date>(
-  dirtyDateLeft: ReadonlyDate<DateType> | number,
-  dirtyDateRight: ReadonlyDate<DateType> | number
+  dirtyDateLeft: DateType | number,
+  dirtyDateRight: DateType | number
 ): number {
   const dateLeft = toDate(dirtyDateLeft)
   const dateRight = toDate(dirtyDateRight)

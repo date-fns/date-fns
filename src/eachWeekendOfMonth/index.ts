@@ -1,7 +1,6 @@
 import eachWeekendOfInterval from '../eachWeekendOfInterval/index'
 import endOfMonth from '../endOfMonth/index'
 import startOfMonth from '../startOfMonth/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name eachWeekendOfMonth
@@ -30,7 +29,7 @@ import type { ReadonlyDate } from '../types'
  * // ]
  */
 export default function eachWeekendOfMonth<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType>
+  dirtyDate: DateType
 ): DateType[] {
   const startDate = startOfMonth(dirtyDate)
   if (isNaN(startDate.getTime()))

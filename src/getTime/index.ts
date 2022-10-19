@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name getTime
@@ -18,7 +17,7 @@ import type { ReadonlyDate } from '../types'
  * //=> 1330515905123
  */
 export default function getTime<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number
+  dirtyDate: DateType | number
 ): number {
   const date = toDate(dirtyDate)
   const timestamp = date.getTime()

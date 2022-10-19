@@ -1,7 +1,6 @@
 import addDays from '../addDays'
 import getDay from '../getDay'
 import type { Day } from '../types'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name nextDay
@@ -26,7 +25,7 @@ import type { ReadonlyDate } from '../types'
  * //=> Tue Mar 24 2020 00:00:00
  */
 export default function nextDay<DateType extends Date>(
-  date: ReadonlyDate<DateType> | number,
+  date: DateType | number,
   day: Day
 ): DateType {
   let delta = day - getDay(date)

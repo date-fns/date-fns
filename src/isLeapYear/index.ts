@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name isLeapYear
@@ -18,7 +17,7 @@ import type { ReadonlyDate } from '../types'
  * //=> true
  */
 export default function isLeapYear<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number
+  dirtyDate: DateType | number
 ): boolean {
   const date = toDate(dirtyDate)
   const year = date.getFullYear()

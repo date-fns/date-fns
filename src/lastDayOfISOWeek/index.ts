@@ -1,5 +1,4 @@
 import lastDayOfWeek from '../lastDayOfWeek/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name lastDayOfISOWeek
@@ -21,7 +20,7 @@ import type { ReadonlyDate } from '../types'
  * //=> Sun Sep 07 2014 00:00:00
  */
 export default function lastDayOfISOWeek<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number
+  dirtyDate: DateType | number
 ): DateType {
   return lastDayOfWeek(dirtyDate, { weekStartsOn: 1 })
 }

@@ -1,7 +1,6 @@
 import addWeeks from '../addWeeks/index'
 import { millisecondsInWeek } from '../constants/index'
 import startOfISOWeekYear from '../startOfISOWeekYear/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name getISOWeeksInYear
@@ -22,7 +21,7 @@ import type { ReadonlyDate } from '../types'
  * //=> 53
  */
 export default function getISOWeeksInYear<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number
+  dirtyDate: DateType | number
 ): number {
   const thisYear = startOfISOWeekYear(dirtyDate)
   const nextYear = startOfISOWeekYear(addWeeks(thisYear, 60))

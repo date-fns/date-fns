@@ -1,5 +1,4 @@
 import isSameMonth from '../isSameMonth/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name isThisMonth
@@ -23,7 +22,7 @@ import type { ReadonlyDate } from '../types'
  */
 
 export default function isThisMonth<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number
+  dirtyDate: DateType | number
 ): boolean {
   return isSameMonth(Date.now(), dirtyDate)
 }

@@ -1,5 +1,4 @@
 import isSameSecond from '../isSameSecond/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name isThisSecond
@@ -23,7 +22,7 @@ import type { ReadonlyDate } from '../types'
  * //=> true
  */
 export default function isThisSecond<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number
+  dirtyDate: DateType | number
 ): boolean {
   return isSameSecond(Date.now(), dirtyDate)
 }

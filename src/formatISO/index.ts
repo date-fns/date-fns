@@ -1,7 +1,6 @@
 import toDate from '../toDate/index'
 import type { FormatOptions, RepresentationOptions } from '../types'
 import addLeadingZeros from '../_lib/addLeadingZeros/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * The {@link formatISO} function options.
@@ -44,7 +43,7 @@ export interface FormatISOOptions
  * //=> '19:00:52Z'
  */
 export default function formatISO<DateType extends Date>(
-  date: ReadonlyDate<DateType> | number,
+  date: DateType | number,
   options?: FormatISOOptions
 ): string {
   const originalDate = toDate(date)

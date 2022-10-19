@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name endOfHour
@@ -19,7 +18,7 @@ import type { ReadonlyDate } from '../types'
  * //=> Tue Sep 02 2014 11:59:59.999
  */
 export default function endOfHour<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number
+  dirtyDate: DateType | number
 ): DateType {
   const date = toDate(dirtyDate)
   date.setMinutes(59, 59, 999)

@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name isMonday
@@ -18,7 +17,7 @@ import type { ReadonlyDate } from '../types'
  * //=> true
  */
 export default function isMonday<DateType extends Date>(
-  date: ReadonlyDate<DateType> | number
+  date: DateType | number
 ): boolean {
   return toDate(date).getDay() === 1
 }

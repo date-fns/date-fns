@@ -1,6 +1,6 @@
 import max from '../max/index'
 import min from '../min/index'
-import type { ReadonlyDate, ReadonlyInterval } from '../types'
+import type { Interval } from '../types'
 
 /**
  * @name clamp
@@ -28,8 +28,8 @@ import type { ReadonlyDate, ReadonlyInterval } from '../types'
  * @returns the date bounded by the start and the end of the interval
  */
 export default function clamp<DateType extends Date>(
-  date: ReadonlyDate<DateType> | number,
-  { start, end }: ReadonlyInterval<DateType>
+  date: DateType | number,
+  { start, end }: Interval<DateType>
 ): DateType | Date {
   return min([(max([date, start]) as unknown) as DateType, end])
 }

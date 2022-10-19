@@ -1,5 +1,4 @@
 import previousDay from '../previousDay/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name previousThursday
@@ -18,7 +17,7 @@ import type { ReadonlyDate } from '../types'
  * //=> Thu June 17 2021 00:00:00
  */
 export default function previousThursday<DateType extends Date>(
-  date: ReadonlyDate<DateType> | number
+  date: DateType | number
 ): DateType {
   return previousDay(date, 4)
 }

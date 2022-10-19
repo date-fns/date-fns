@@ -2,7 +2,6 @@ import addDays from '../addDays/index'
 import toDate from '../toDate/index'
 import type { LocaleOptions, WeekStartOptions } from '../types'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * The {@link setDay} function options.
@@ -33,7 +32,7 @@ export interface SetDayOptions extends LocaleOptions, WeekStartOptions {}
  * //=> Sun Sep 07 2014 00:00:00
  */
 export default function setDay<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number,
+  dirtyDate: DateType | number,
   day: number,
   options?: SetDayOptions
 ): DateType {

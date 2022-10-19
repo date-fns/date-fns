@@ -1,6 +1,6 @@
 import subDays from '../subDays/index'
 import subMonths from '../subMonths/index'
-import type { Duration, ReadonlyDate } from '../types'
+import type { Duration } from '../types'
 import constructFrom from '../constructFrom/index'
 
 /**
@@ -42,7 +42,7 @@ import constructFrom from '../constructFrom/index'
  * //=> Mon Sep 1 2014 10:19:50
  */
 export default function sub<DateType extends Date>(
-  date: ReadonlyDate<DateType> | number,
+  date: DateType | number,
   duration: Duration
 ): DateType {
   const {

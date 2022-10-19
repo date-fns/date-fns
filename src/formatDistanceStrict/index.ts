@@ -13,7 +13,6 @@ import defaultLocale from '../_lib/defaultLocale/index'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
 import { getRoundingMethod } from '../_lib/roundingMethods/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * The {@link formatDistanceStrict} function options.
@@ -101,8 +100,8 @@ export interface FormatDistanceStrictOptions extends LocaleOptions {
  */
 
 export default function formatDistanceStrict<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number,
-  dirtyBaseDate: ReadonlyDate<DateType> | number,
+  dirtyDate: DateType | number,
+  dirtyBaseDate: DateType | number,
   options?: FormatDistanceStrictOptions
 ): string {
   const defaultOptions = getDefaultOptions()

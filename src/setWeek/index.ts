@@ -5,7 +5,6 @@ import type {
   LocaleOptions,
   WeekStartOptions,
 } from '../types'
-import type { ReadonlyDate } from '../types'
 
 /**
  * The {@link setWeek} function options.
@@ -50,7 +49,7 @@ export interface SetWeekOptions
  * //=> Sun Jan 4 2004 00:00:00
  */
 export default function setWeek<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number,
+  dirtyDate: DateType | number,
   week: number,
   options?: SetWeekOptions
 ): DateType {

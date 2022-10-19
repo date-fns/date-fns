@@ -1,5 +1,4 @@
 import isSameWeek from '../isSameWeek/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name isSameISOWeek
@@ -26,8 +25,8 @@ import type { ReadonlyDate } from '../types'
  * //=> false
  */
 export default function isSameISOWeek<DateType extends Date>(
-  dirtyDateLeft: ReadonlyDate<DateType> | number,
-  dirtyDateRight: ReadonlyDate<DateType> | number
+  dirtyDateLeft: DateType | number,
+  dirtyDateRight: DateType | number
 ): boolean {
   return isSameWeek(dirtyDateLeft, dirtyDateRight, { weekStartsOn: 1 })
 }

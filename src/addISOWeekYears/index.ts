@@ -1,6 +1,5 @@
 import getISOWeekYear from '../getISOWeekYear/index'
 import setISOWeekYear from '../setISOWeekYear/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name addISOWeekYears
@@ -22,7 +21,7 @@ import type { ReadonlyDate } from '../types'
  * //=> Fri Jn 26 2015 00:00:00
  */
 export default function addISOWeekYears<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number,
+  dirtyDate: DateType | number,
   amount: number
 ): DateType {
   return setISOWeekYear(dirtyDate, getISOWeekYear(dirtyDate) + amount)

@@ -2,7 +2,6 @@ import { millisecondsInWeek } from '../constants/index'
 import startOfWeek from '../startOfWeek/index'
 import type { LocaleOptions, WeekStartOptions } from '../types'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * The {@link differenceInCalendarWeeks} function options.
@@ -43,8 +42,8 @@ export interface DifferenceInCalendarWeeksOptions
  * //=> 2
  */
 export default function differenceInCalendarWeeks<DateType extends Date>(
-  dirtyDateLeft: ReadonlyDate<DateType> | number,
-  dirtyDateRight: ReadonlyDate<DateType> | number,
+  dirtyDateLeft: DateType | number,
+  dirtyDateRight: DateType | number,
   options?: DifferenceInCalendarWeeksOptions
 ): number {
   const startOfWeekLeft = startOfWeek(dirtyDateLeft, options)

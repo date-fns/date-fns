@@ -1,5 +1,4 @@
 import addWeeks from '../addWeeks/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name subWeeks
@@ -19,7 +18,7 @@ import type { ReadonlyDate } from '../types'
  * //=> Mon Aug 04 2014 00:00:00
  */
 export default function subWeeks<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number,
+  dirtyDate: DateType | number,
   amount: number
 ): DateType {
   return addWeeks(dirtyDate, -amount)

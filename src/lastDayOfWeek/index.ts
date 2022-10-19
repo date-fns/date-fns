@@ -1,7 +1,6 @@
 import toDate from '../toDate/index'
 import type { LocaleOptions, WeekStartOptions } from '../types'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * The {@link lastDayOfWeek} function options.
@@ -32,7 +31,7 @@ export interface LastDayOfWeekOptions extends LocaleOptions, WeekStartOptions {}
  * //=> Sun Sep 07 2014 00:00:00
  */
 export default function lastDayOfWeek<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number,
+  dirtyDate: DateType | number,
   options?: LastDayOfWeekOptions
 ): DateType {
   const defaultOptions = getDefaultOptions()

@@ -1,6 +1,5 @@
 import differenceInCalendarDays from '../differenceInCalendarDays/index'
 import toDate from '../toDate/index'
-import type { ReadonlyDate } from '../types'
 
 // Like `compareAsc` but uses local time not UTC, which is needed
 // for accurate equality comparisons of UTC timestamps that end up
@@ -78,8 +77,8 @@ function compareLocalAsc<DateType extends Date>(
 //=> 92
  */
 export default function differenceInDays<DateType extends Date>(
-  dirtyDateLeft: ReadonlyDate<DateType> | number,
-  dirtyDateRight: ReadonlyDate<DateType> | number
+  dirtyDateLeft: DateType | number,
+  dirtyDateRight: DateType | number
 ): number {
   const dateLeft = toDate(dirtyDateLeft)
   const dateRight = toDate(dirtyDateRight)

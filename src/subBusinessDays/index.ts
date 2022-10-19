@@ -1,5 +1,4 @@
 import addBusinessDays from '../addBusinessDays/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name subBusinessDays
@@ -19,7 +18,7 @@ import type { ReadonlyDate } from '../types'
  * //=> Mon Aug 18 2014 00:00:00 (skipped weekend days)
  */
 export default function subBusinessDays<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number,
+  dirtyDate: DateType | number,
   amount: number
 ): DateType {
   return addBusinessDays(dirtyDate, -amount)

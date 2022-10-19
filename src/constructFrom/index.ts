@@ -1,4 +1,4 @@
-import type { GenericDateConstructor, ReadonlyDate } from '../types'
+import type { GenericDateConstructor } from '../types'
 
 /**
  * @name constructFrom
@@ -26,7 +26,7 @@ import type { GenericDateConstructor, ReadonlyDate } from '../types'
  * }
  */
 export default function constructFrom<DateType extends Date>(
-  date: ReadonlyDate<DateType> | number,
+  date: DateType | number,
   value: Date | number
 ): DateType {
   if (date instanceof Date) {

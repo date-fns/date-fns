@@ -1,5 +1,5 @@
 import toDate from '../toDate/index'
-import type { LocaleOptions, ReadonlyDate, WeekStartOptions } from '../types'
+import type { LocaleOptions, WeekStartOptions } from '../types'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
 
 /**
@@ -31,7 +31,7 @@ export interface StartOfWeekOptions extends LocaleOptions, WeekStartOptions {}
  * //=> Mon Sep 01 2014 00:00:00
  */
 export default function startOfWeek<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number,
+  dirtyDate: DateType | number,
   options?: StartOfWeekOptions
 ): DateType {
   const defaultOptions = getDefaultOptions()

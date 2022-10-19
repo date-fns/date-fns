@@ -7,7 +7,6 @@ import type {
   WeekStartOptions,
 } from '../types'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * The {@link startOfWeekYear} function options.
@@ -51,7 +50,7 @@ export interface StartOfWeekYearOptions
  * //=> Mon Jan 03 2005 00:00:00
  */
 export default function startOfWeekYear<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number,
+  dirtyDate: DateType | number,
   options?: StartOfWeekYearOptions
 ): DateType {
   const defaultOptions = getDefaultOptions()

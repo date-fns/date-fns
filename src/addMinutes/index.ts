@@ -1,6 +1,5 @@
 import addMilliseconds from '../addMilliseconds/index'
 import { millisecondsInMinute } from '../constants/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name addMinutes
@@ -20,7 +19,7 @@ import type { ReadonlyDate } from '../types'
  * //=> Thu Jul 10 2014 12:30:00
  */
 export default function addMinutes<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number,
+  dirtyDate: DateType | number,
   amount: number
 ): DateType {
   return addMilliseconds(dirtyDate, amount * millisecondsInMinute)

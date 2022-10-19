@@ -7,7 +7,6 @@ import type {
   LocaleOptions,
   WeekStartOptions,
 } from '../types'
-import type { ReadonlyDate } from '../types'
 
 /**
  * The {@link getWeek} function options.
@@ -51,7 +50,7 @@ export interface GetWeekOptions
  */
 
 export default function getWeek<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number,
+  dirtyDate: DateType | number,
   options?: GetWeekOptions
 ): number {
   const date = toDate(dirtyDate)

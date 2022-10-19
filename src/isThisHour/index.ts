@@ -1,5 +1,4 @@
 import isSameHour from '../isSameHour/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name isThisHour
@@ -23,7 +22,7 @@ import type { ReadonlyDate } from '../types'
  * //=> true
  */
 export default function isThisHour<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number
+  dirtyDate: DateType | number
 ): boolean {
   return isSameHour(Date.now(), dirtyDate)
 }

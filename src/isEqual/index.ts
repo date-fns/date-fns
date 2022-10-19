@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name isEqual
@@ -22,8 +21,8 @@ import type { ReadonlyDate } from '../types'
  * //=> false
  */
 export default function isEqual<DateType extends Date>(
-  dirtyLeftDate: ReadonlyDate<DateType> | number,
-  dirtyRightDate: ReadonlyDate<DateType> | number
+  dirtyLeftDate: DateType | number,
+  dirtyRightDate: DateType | number
 ): boolean {
   const dateLeft = toDate(dirtyLeftDate)
   const dateRight = toDate(dirtyRightDate)

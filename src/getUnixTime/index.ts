@@ -1,5 +1,4 @@
 import getTime from '../getTime/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name getUnixTime
@@ -18,7 +17,7 @@ import type { ReadonlyDate } from '../types'
  * //=> 1330512305
  */
 export default function getUnixTime<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number
+  dirtyDate: DateType | number
 ): number {
   return Math.floor(getTime(dirtyDate) / 1000)
 }

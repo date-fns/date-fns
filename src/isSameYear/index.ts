@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name isSameYear
@@ -19,8 +18,8 @@ import type { ReadonlyDate } from '../types'
  * //=> true
  */
 export default function isSameYear<DateType extends Date>(
-  dirtyDateLeft: ReadonlyDate<DateType> | number,
-  dirtyDateRight: ReadonlyDate<DateType> | number
+  dirtyDateLeft: DateType | number,
+  dirtyDateRight: DateType | number
 ): boolean {
   const dateLeft = toDate(dirtyDateLeft)
   const dateRight = toDate(dirtyDateRight)

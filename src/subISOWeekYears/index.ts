@@ -1,5 +1,4 @@
 import addISOWeekYears from '../addISOWeekYears/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name subISOWeekYears
@@ -21,7 +20,7 @@ import type { ReadonlyDate } from '../types'
  * //=> Mon Aug 31 2009 00:00:00
  */
 export default function subISOWeekYears<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number,
+  dirtyDate: DateType | number,
   amount: number
 ): DateType {
   return addISOWeekYears(dirtyDate, -amount)

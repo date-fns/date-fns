@@ -1,4 +1,3 @@
-import type { ReadonlyDate } from '../types'
 import getISOWeekYear from '../getISOWeekYear/index'
 import startOfISOWeek from '../startOfISOWeek/index'
 import constructFrom from '../constructFrom/index'
@@ -24,7 +23,7 @@ import constructFrom from '../constructFrom/index'
  * //=> Mon Jan 03 2005 00:00:00
  */
 export default function startOfISOWeekYear<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number
+  dirtyDate: DateType | number
 ): DateType {
   const year = getISOWeekYear(dirtyDate)
   const fourthOfJanuary = constructFrom(dirtyDate, 0)

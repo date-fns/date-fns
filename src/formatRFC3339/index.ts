@@ -1,7 +1,6 @@
 import isValid from '../isValid/index'
 import toDate from '../toDate/index'
 import addLeadingZeros from '../_lib/addLeadingZeros/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * The {@link formatRFC3339} function options.
@@ -39,7 +38,7 @@ export interface FormatRFC3339Options {
  * //=> '2019-09-18T19:00:52.234Z'
  */
 export default function formatRFC3339<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number,
+  dirtyDate: DateType | number,
   options?: FormatRFC3339Options
 ): string {
   const originalDate = toDate(dirtyDate)

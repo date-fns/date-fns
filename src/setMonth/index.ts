@@ -1,7 +1,6 @@
 import constructFrom from '../constructFrom/index'
 import getDaysInMonth from '../getDaysInMonth/index'
 import toDate from '../toDate/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name setMonth
@@ -21,7 +20,7 @@ import type { ReadonlyDate } from '../types'
  * //=> Sat Feb 01 2014 00:00:00
  */
 export default function setMonth<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number,
+  dirtyDate: DateType | number,
   month: number
 ): DateType {
   const date = toDate(dirtyDate)

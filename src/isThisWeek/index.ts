@@ -1,6 +1,5 @@
 import isSameWeek from '../isSameWeek/index'
 import type { LocaleOptions, WeekStartOptions } from '../types'
-import type { ReadonlyDate } from '../types'
 
 /**
  * The {@link isThisWeek} function options.
@@ -36,7 +35,7 @@ export interface IsThisWeekOptions extends WeekStartOptions, LocaleOptions {}
  */
 
 export default function is<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number,
+  dirtyDate: DateType | number,
   options?: IsThisWeekOptions
 ): boolean {
   return isSameWeek(dirtyDate, Date.now(), options)

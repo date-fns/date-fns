@@ -1,6 +1,5 @@
 import isLeapYear from '../isLeapYear/index'
 import toDate from '../toDate/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name getDaysInYear
@@ -19,7 +18,7 @@ import type { ReadonlyDate } from '../types'
  * //=> 366
  */
 export default function getDaysInYear<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number
+  dirtyDate: DateType | number
 ): number {
   const date = toDate(dirtyDate)
 

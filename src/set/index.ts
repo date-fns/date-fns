@@ -2,7 +2,6 @@ import constructFrom from '../constructFrom/index'
 import setMonth from '../setMonth/index'
 import toDate from '../toDate/index'
 import type { DateValues } from '../types'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name set
@@ -42,7 +41,7 @@ import type { ReadonlyDate } from '../types'
  */
 
 export default function set<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number,
+  dirtyDate: DateType | number,
   values: DateValues
 ): DateType {
   let date = toDate(dirtyDate)

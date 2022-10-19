@@ -1,7 +1,6 @@
 import differenceInCalendarDays from '../differenceInCalendarDays/index'
 import startOfYear from '../startOfYear/index'
 import toDate from '../toDate/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name getDayOfYear
@@ -20,7 +19,7 @@ import type { ReadonlyDate } from '../types'
  * //=> 183
  */
 export default function getDayOfYear<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number
+  dirtyDate: DateType | number
 ): number {
   const date = toDate(dirtyDate)
   const diff = differenceInCalendarDays(date, startOfYear(date))

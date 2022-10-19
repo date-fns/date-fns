@@ -1,6 +1,5 @@
 import addDays from '../addDays/index'
 import isSameDay from '../isSameDay/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name isTomorrow
@@ -23,7 +22,7 @@ import type { ReadonlyDate } from '../types'
  * //=> true
  */
 export default function isTomorrow<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number
+  dirtyDate: DateType | number
 ): boolean {
   return isSameDay(dirtyDate, addDays(Date.now(), 1))
 }

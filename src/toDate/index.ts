@@ -1,5 +1,3 @@
-import type { ReadonlyDate } from '../types'
-
 /**
  * @name toDate
  * @category Common Helpers
@@ -30,7 +28,7 @@ import type { ReadonlyDate } from '../types'
  * //=> Tue Feb 11 2014 11:30:30
  */
 export default function toDate<DateType extends Date = Date>(
-  argument: ReadonlyDate<DateType> | number
+  argument: DateType | number
 ): DateType {
   const argStr = Object.prototype.toString.call(argument)
 

@@ -5,7 +5,6 @@ import toDate from '../toDate/index'
 import type { LocaleOptions, WeekStartOptions } from '../types'
 import defaultLocale from '../_lib/defaultLocale/index'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * The {@link formatRelative} function options.
@@ -47,8 +46,8 @@ export interface FormatRelativeOptions
  * //=> "last Thursday at 12:45 AM"
  */
 export default function formatRelative<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number,
-  dirtyBaseDate: ReadonlyDate<DateType> | number,
+  dirtyDate: DateType | number,
+  dirtyBaseDate: DateType | number,
   options?: FormatRelativeOptions
 ): string {
   const date = toDate(dirtyDate)

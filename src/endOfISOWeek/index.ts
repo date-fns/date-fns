@@ -1,5 +1,4 @@
 import endOfWeek from '../endOfWeek/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name endOfISOWeek
@@ -21,7 +20,7 @@ import type { ReadonlyDate } from '../types'
  * //=> Sun Sep 07 2014 23:59:59.999
  */
 export default function endOfISOWeek<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number
+  dirtyDate: DateType | number
 ): DateType {
   return endOfWeek(dirtyDate, { weekStartsOn: 1 })
 }

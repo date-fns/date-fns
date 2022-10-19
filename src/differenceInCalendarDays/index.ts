@@ -1,7 +1,6 @@
 import { millisecondsInDay } from '../constants/index'
 import startOfDay from '../startOfDay/index'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name differenceInCalendarDays
@@ -33,8 +32,8 @@ import type { ReadonlyDate } from '../types'
  * //=> 1
  */
 export default function differenceInCalendarDays<DateType extends Date>(
-  dirtyDateLeft: ReadonlyDate<DateType> | number,
-  dirtyDateRight: ReadonlyDate<DateType> | number
+  dirtyDateLeft: DateType | number,
+  dirtyDateRight: DateType | number
 ): number {
   const startOfDayLeft = startOfDay(dirtyDateLeft)
   const startOfDayRight = startOfDay(dirtyDateRight)

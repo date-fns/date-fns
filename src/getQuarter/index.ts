@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name getQuarter
@@ -18,7 +17,7 @@ import type { ReadonlyDate } from '../types'
  * //=> 3
  */
 export default function getQuarter<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number
+  dirtyDate: DateType | number
 ): number {
   const date = toDate(dirtyDate)
   const quarter = Math.floor(date.getMonth() / 3) + 1

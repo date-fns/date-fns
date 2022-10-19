@@ -18,7 +18,6 @@ import {
 import { parsers } from './_lib/parsers/index'
 import { DateToSystemTimezoneSetter, Setter } from './_lib/Setter'
 import type { ParseFlags, ParserOptions } from './_lib/types'
-import type { ReadonlyDate } from '../types'
 
 /**
  * The {@link parse} function options.
@@ -348,7 +347,7 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/
 export default function parse<DateType extends Date>(
   dateString: string,
   formatString: string,
-  dirtyReferenceDate: ReadonlyDate<DateType> | number,
+  dirtyReferenceDate: DateType | number,
   options?: ParseOptions
 ): DateType {
   const defaultOptions = getDefaultOptions()

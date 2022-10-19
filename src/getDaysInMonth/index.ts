@@ -1,6 +1,5 @@
 import toDate from '../toDate/index'
 import constructFrom from '../constructFrom/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name getDaysInMonth
@@ -19,7 +18,7 @@ import type { ReadonlyDate } from '../types'
  * //=> 29
  */
 export default function getDaysInMonth<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number
+  dirtyDate: DateType | number
 ): number {
   const date = toDate(dirtyDate)
   const year = date.getFullYear()

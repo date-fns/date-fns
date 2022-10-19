@@ -1,5 +1,4 @@
 import startOfISOWeekYear from '../startOfISOWeekYear/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name isSameISOWeekYear
@@ -21,8 +20,8 @@ import type { ReadonlyDate } from '../types'
  * //=> true
  */
 export default function isSameISOWeekYear<DateType extends Date>(
-  dirtyDateLeft: ReadonlyDate<DateType> | number,
-  dirtyDateRight: ReadonlyDate<DateType> | number
+  dirtyDateLeft: DateType | number,
+  dirtyDateRight: DateType | number
 ): boolean {
   const dateLeftStartOfYear = startOfISOWeekYear(dirtyDateLeft)
   const dateRightStartOfYear = startOfISOWeekYear(dirtyDateRight)

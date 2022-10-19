@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name isBefore
@@ -19,8 +18,8 @@ import type { ReadonlyDate } from '../types'
  * //=> false
  */
 export default function isBefore<DateType extends Date>(
-  dirtyDate: ReadonlyDate<DateType> | number,
-  dirtyDateToCompare: ReadonlyDate<DateType> | number
+  dirtyDate: DateType | number,
+  dirtyDateToCompare: DateType | number
 ): boolean {
   const date = toDate(dirtyDate)
   const dateToCompare = toDate(dirtyDateToCompare)

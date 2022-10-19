@@ -1,6 +1,5 @@
 import startOfWeek from '../startOfWeek/index'
 import type { LocaleOptions, WeekStartOptions } from '../types'
-import type { ReadonlyDate } from '../types'
 
 /**
  * The {@link isSameWeek} function options.
@@ -39,8 +38,8 @@ export interface IsSameWeekOptions extends WeekStartOptions, LocaleOptions {}
  * //=> false
  */
 export default function isSameWeek<DateType extends Date>(
-  dirtyDateLeft: ReadonlyDate<DateType> | number,
-  dirtyDateRight: ReadonlyDate<DateType> | number,
+  dirtyDateLeft: DateType | number,
+  dirtyDateRight: DateType | number,
   options?: IsSameWeekOptions
 ): boolean {
   const dateLeftStartOfWeek = startOfWeek(dirtyDateLeft, options)

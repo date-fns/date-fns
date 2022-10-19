@@ -1,5 +1,4 @@
 import startOfSecond from '../startOfSecond/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name isSameSecond
@@ -38,8 +37,8 @@ import type { ReadonlyDate } from '../types'
  * //=> false
  */
 export default function isSameSecond<DateType extends Date>(
-  dirtyDateLeft: ReadonlyDate<DateType> | number,
-  dirtyDateRight: ReadonlyDate<DateType> | number
+  dirtyDateLeft: DateType | number,
+  dirtyDateRight: DateType | number
 ): boolean {
   const dateLeftStartOfSecond = startOfSecond(dirtyDateLeft)
   const dateRightStartOfSecond = startOfSecond(dirtyDateRight)

@@ -1,5 +1,4 @@
 import startOfMinute from '../startOfMinute/index'
-import type { ReadonlyDate } from '../types'
 
 /**
  * @name isSameMinute
@@ -30,8 +29,8 @@ import type { ReadonlyDate } from '../types'
  * //=> false
  */
 export default function isSameMinute<DateType extends Date>(
-  dirtyDateLeft: ReadonlyDate<DateType> | number,
-  dirtyDateRight: ReadonlyDate<DateType> | number
+  dirtyDateLeft: DateType | number,
+  dirtyDateRight: DateType | number
 ): boolean {
   const dateLeftStartOfMinute = startOfMinute(dirtyDateLeft)
   const dateRightStartOfMinute = startOfMinute(dirtyDateRight)
