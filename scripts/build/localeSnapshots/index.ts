@@ -8,7 +8,7 @@
  */
 
 import { readFile, readFileSync, writeFile } from 'mz/fs'
-import path from 'path'
+import * as path from 'path'
 import listLocales from '../../_lib/listLocales'
 import prettier from '../_lib/prettier'
 import renderFormatDistance from './renderFormatDistance'
@@ -17,9 +17,9 @@ import renderFormatParse from './renderFormatParse'
 import renderFormatRelative from './renderFormatRelative'
 import renderFormatDuration from './renderFormatDuration'
 
-const mode = process.argv[2] || 'generate'
+const mode = process.argv[2] ?? 'generate'
 
-if (process.env.TZ.toLowerCase() !== 'utc')
+if ((process.env.TZ ?? '').toLowerCase() !== 'utc')
   throw new Error('The locale snapshots generation must be run with TZ=utc')
 
 listLocales()
