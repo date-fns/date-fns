@@ -413,7 +413,7 @@ If now is January 1st, 2000, 00:00.
 | 2000-01-01T00:00:25.000Z | mažiau nei minutė | pusė minutės            | po mažiau nei minutės   |
 | 2000-01-01T00:00:15.000Z | mažiau nei minutė | mažiau nei 20 sekundžių | po mažiau nei minutės   |
 | 2000-01-01T00:00:05.000Z | mažiau nei minutė | mažiau nei 10 sekundžių | po mažiau nei minutės   |
-| 2000-01-01T00:00:00.000Z | mažiau nei minutė | mažiau nei 5 sekundė    | prieš mažiau nei minutę |
+| 2000-01-01T00:00:00.000Z | mažiau nei minutė | mažiau nei 5 sekundės   | prieš mažiau nei minutę |
 | 1999-12-31T23:59:55.000Z | mažiau nei minutė | mažiau nei 10 sekundžių | prieš mažiau nei minutę |
 | 1999-12-31T23:59:45.000Z | mažiau nei minutė | mažiau nei 20 sekundžių | prieš mažiau nei minutę |
 | 1999-12-31T23:59:35.000Z | mažiau nei minutė | pusė minutės            | prieš mažiau nei minutę |
@@ -462,13 +462,13 @@ If now is January 1st, 2000, 00:00.
 | 2000-01-01T00:30:00.000Z | 30 minučių   | po 30 minučių      | valanda                        |
 | 2000-01-01T00:15:00.000Z | 15 minučių   | po 15 minučių      | 0 valandų                      |
 | 2000-01-01T00:01:00.000Z | minutė       | po minutės         | 0 valandų                      |
-| 2000-01-01T00:00:25.000Z | 25 sekundė   | po 25 sekundžių    | 0 valandų                      |
+| 2000-01-01T00:00:25.000Z | 25 sekundės  | po 25 sekundžių    | 0 valandų                      |
 | 2000-01-01T00:00:15.000Z | 15 sekundžių | po 15 sekundžių    | 0 valandų                      |
-| 2000-01-01T00:00:05.000Z | 5 sekundė    | po 5 sekundžių     | 0 valandų                      |
+| 2000-01-01T00:00:05.000Z | 5 sekundės   | po 5 sekundžių     | 0 valandų                      |
 | 2000-01-01T00:00:00.000Z | 0 sekundžių  | prieš 0 sekundžių  | 0 valandų                      |
-| 1999-12-31T23:59:55.000Z | 5 sekundė    | prieš 5 sekundes   | 0 valandų                      |
+| 1999-12-31T23:59:55.000Z | 5 sekundės   | prieš 5 sekundes   | 0 valandų                      |
 | 1999-12-31T23:59:45.000Z | 15 sekundžių | prieš 15 sekundžių | 0 valandų                      |
-| 1999-12-31T23:59:35.000Z | 25 sekundė   | prieš 25 sekundes  | 0 valandų                      |
+| 1999-12-31T23:59:35.000Z | 25 sekundės  | prieš 25 sekundes  | 0 valandų                      |
 | 1999-12-31T23:59:00.000Z | minutė       | prieš minutę       | 0 valandų                      |
 | 1999-12-31T23:45:00.000Z | 15 minučių   | prieš 15 minučių   | 0 valandų                      |
 | 1999-12-31T23:30:00.000Z | 30 minučių   | prieš 30 minučių   | valanda                        |
@@ -527,4 +527,4 @@ If now is January 1st, 2000, 00:00.
 | {"minutes":2} | 2 minutės       |
 | {"seconds":0} | 0 sekundžių     |
 | {"seconds":1} | kelios sekundės |
-| {"seconds":2} | 2 sekundė       |
+| {"seconds":2} | 2 sekundės      |

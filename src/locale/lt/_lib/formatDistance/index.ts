@@ -21,7 +21,7 @@ type FormatDistanceTokenValue =
     }
 
 const translations = {
-  xseconds_other: 'sekundė_sekundžių_sekundes',
+  xseconds_other: 'sekundė_sekundžių_sekundes_sekundės',
   xminutes_one: 'minutė_minutės_minutę',
   xminutes_other: 'minutės_minučių_minutes',
   xhours_one: 'valanda_valandos_valandą',
@@ -57,18 +57,29 @@ const translate: Translater = (number, addSuffix, key, isFuture) => {
   if (number === 1) {
     return result + translateSingular(number, addSuffix, key, isFuture)
   } else if (!addSuffix) {
-    return result + (special(number) ? forms(key)[1] : forms(key)[0])
+    return (
+      result +
+      (special_tens(number)
+        ? forms(key)[1]
+        : special_seconds(number, key)
+        ? forms(key)[3]
+        : forms(key)[0])
+    )
   } else {
     if (isFuture) {
       return result + forms(key)[1]
     } else {
-      return result + (special(number) ? forms(key)[1] : forms(key)[2])
+      return result + (special_tens(number) ? forms(key)[1] : forms(key)[2])
     }
   }
 }
 
-function special(number: number): boolean {
+function special_tens(number: number): boolean {
   return number % 10 === 0 || (number > 10 && number < 20)
+}
+
+function special_seconds(number: number, key: string): boolean {
+  return key === 'xseconds_other' && number % 10 !== 1
 }
 
 function forms(key: TranslationKey): string[] {
