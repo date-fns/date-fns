@@ -19,7 +19,7 @@ import renderFormatDuration from './renderFormatDuration'
 
 const mode = process.argv[2] || 'generate'
 
-if (process.env.TZ.toLowerCase() !== 'utc')
+if ((process.env.TZ ?? '').toLowerCase() !== 'utc')
   throw new Error('The locale snapshots generation must be run with TZ=utc')
 
 listLocales()
