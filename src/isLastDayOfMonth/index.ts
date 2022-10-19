@@ -1,6 +1,7 @@
 import endOfDay from '../endOfDay/index'
 import endOfMonth from '../endOfMonth/index'
 import toDate from '../toDate/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name isLastDayOfMonth

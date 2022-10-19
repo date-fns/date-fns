@@ -1,6 +1,7 @@
 import differenceInDays from '../differenceInDays/index'
 import type { RoundingOptions } from '../types'
 import { getRoundingMethod } from '../_lib/roundingMethods/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * The {@link differenceInWeeks} function options.

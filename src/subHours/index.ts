@@ -1,4 +1,5 @@
 import addHours from '../addHours/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name subHours

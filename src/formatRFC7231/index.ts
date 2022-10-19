@@ -1,6 +1,7 @@
 import isValid from '../isValid/index'
 import toDate from '../toDate/index'
 import addLeadingZeros from '../_lib/addLeadingZeros/index'
+import type { ReadonlyDate } from '../types'
 
 const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 

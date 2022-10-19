@@ -1,4 +1,5 @@
 import startOfSecond from '../startOfSecond/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name isSameSecond

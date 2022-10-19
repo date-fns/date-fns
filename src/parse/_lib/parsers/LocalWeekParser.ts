@@ -31,7 +31,7 @@ export class LocalWeekParser extends Parser<number> {
     value: number,
     options: ParserOptions
   ): DateType {
-    return startOfWeek(setWeek(date, value, options), options)
+    return startOfWeek(setWeek<DateType>(date, value, options), options)
   }
 
   incompatibleTokens = [

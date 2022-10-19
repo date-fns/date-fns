@@ -30,7 +30,7 @@ export class ISOWeekParser extends Parser<number> {
     _flags: ParseFlags,
     value: number
   ): DateType {
-    return startOfISOWeek(setISOWeek(date, value))
+    return startOfISOWeek(setISOWeek<DateType>(date, value))
   }
 
   incompatibleTokens = [

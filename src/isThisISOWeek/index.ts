@@ -1,4 +1,5 @@
 import isSameISOWeek from '../isSameISOWeek/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name isThisISOWeek

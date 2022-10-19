@@ -1,4 +1,5 @@
 import addMonths from '../addMonths/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name subMonths

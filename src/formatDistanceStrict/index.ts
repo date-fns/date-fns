@@ -13,6 +13,7 @@ import defaultLocale from '../_lib/defaultLocale/index'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
 import { getRoundingMethod } from '../_lib/roundingMethods/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * The {@link formatDistanceStrict} function options.

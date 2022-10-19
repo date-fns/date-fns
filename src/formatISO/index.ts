@@ -1,6 +1,7 @@
 import toDate from '../toDate/index'
 import type { FormatOptions, RepresentationOptions } from '../types'
 import addLeadingZeros from '../_lib/addLeadingZeros/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * The {@link formatISO} function options.

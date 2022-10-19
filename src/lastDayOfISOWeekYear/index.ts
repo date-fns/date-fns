@@ -1,6 +1,7 @@
 import getISOWeekYear from '../getISOWeekYear/index'
 import startOfISOWeek from '../startOfISOWeek/index'
 import constructFrom from '../constructFrom/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name lastDayOfISOWeekYear
@@ -29,7 +30,7 @@ export default function lastDayOfISOWeekYear<DateType extends Date>(
   const fourthOfJanuary = constructFrom(dirtyDate, 0)
   fourthOfJanuary.setFullYear(year + 1, 0, 4)
   fourthOfJanuary.setHours(0, 0, 0, 0)
-  const date = startOfISOWeek(fourthOfJanuary)
+  const date = startOfISOWeek<DateType>(fourthOfJanuary)
   date.setDate(date.getDate() - 1)
   return date
 }

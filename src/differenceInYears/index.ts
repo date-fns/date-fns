@@ -1,6 +1,7 @@
 import compareAsc from '../compareAsc/index'
 import differenceInCalendarYears from '../differenceInCalendarYears/index'
 import toDate from '../toDate/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name differenceInYears

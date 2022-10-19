@@ -9,6 +9,7 @@ import cloneObject from '../_lib/cloneObject/index'
 import defaultLocale from '../_lib/defaultLocale/index'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * The {@link formatDistance} function options.

@@ -1,6 +1,7 @@
 import addDays from '../addDays/index'
 import getISODay from '../getISODay/index'
 import toDate from '../toDate/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name setISODay

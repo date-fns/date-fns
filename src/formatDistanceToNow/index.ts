@@ -1,4 +1,5 @@
 import distanceInWords, { FormatDistanceOptions } from '../formatDistance/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * The {@link formatDistanceToNow} function options.

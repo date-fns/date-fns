@@ -1,5 +1,6 @@
 import differenceInCalendarDays from '../differenceInCalendarDays/index'
 import toDate from '../toDate/index'
+import type { ReadonlyDate } from '../types'
 
 // Like `compareAsc` but uses local time not UTC, which is needed
 // for accurate equality comparisons of UTC timestamps that end up

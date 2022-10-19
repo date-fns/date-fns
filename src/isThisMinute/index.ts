@@ -1,4 +1,5 @@
 import isSameMinute from '../isSameMinute/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name isThisMinute

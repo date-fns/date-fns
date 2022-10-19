@@ -8,6 +8,7 @@ import type {
   WeekStartOptions,
 } from '../types'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * The {@link setWeekYear} function options.

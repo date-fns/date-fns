@@ -1,4 +1,5 @@
 import isSameSecond from '../isSameSecond/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name isThisSecond

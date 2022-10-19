@@ -1,6 +1,7 @@
 import toDate from '../toDate/index'
 import type { LocaleOptions, WeekStartOptions } from '../types'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * The {@link lastDayOfWeek} function options.

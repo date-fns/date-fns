@@ -1,4 +1,5 @@
 import addMinutes from '../addMinutes/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name subMinutes

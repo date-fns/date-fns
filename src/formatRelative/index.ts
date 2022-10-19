@@ -5,6 +5,7 @@ import toDate from '../toDate/index'
 import type { LocaleOptions, WeekStartOptions } from '../types'
 import defaultLocale from '../_lib/defaultLocale/index'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * The {@link formatRelative} function options.

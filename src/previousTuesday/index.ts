@@ -1,4 +1,5 @@
 import previousDay from '../previousDay/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name previousTuesday

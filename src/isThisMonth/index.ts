@@ -1,4 +1,5 @@
 import isSameMonth from '../isSameMonth/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name isThisMonth

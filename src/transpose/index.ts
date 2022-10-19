@@ -31,7 +31,7 @@ export default function transpose<
   fromDate: DateInputType,
   constructor: DateOutputType | GenericDateConstructor<DateOutputType>
 ): DateOutputType {
-  const date =
+  const date: DateOutputType =
     constructor instanceof Date
       ? constructFrom(constructor, 0)
       : new constructor(0)

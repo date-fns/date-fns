@@ -1,6 +1,7 @@
 import formatDistanceStrict, {
   FormatDistanceStrictOptions,
 } from '../formatDistanceStrict/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * The {@link formatDistanceToNowStrict} function options.

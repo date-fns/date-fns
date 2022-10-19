@@ -1,4 +1,5 @@
 import endOfWeek from '../endOfWeek/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name endOfISOWeek

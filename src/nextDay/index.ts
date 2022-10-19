@@ -1,6 +1,7 @@
 import addDays from '../addDays'
 import getDay from '../getDay'
 import type { Day } from '../types'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name nextDay

@@ -1,6 +1,7 @@
 import constructFrom from '../constructFrom/index'
 import getDaysInMonth from '../getDaysInMonth/index'
 import toDate from '../toDate/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name setMonth

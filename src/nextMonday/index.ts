@@ -1,4 +1,5 @@
 import nextDay from '../nextDay/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name nextMonday

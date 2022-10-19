@@ -1,5 +1,6 @@
 import setMonth from '../setMonth/index'
 import toDate from '../toDate/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name setQuarter

@@ -1,5 +1,6 @@
 import startOfWeek from '../startOfWeek/index'
 import type { LocaleOptions, WeekStartOptions } from '../types'
+import type { ReadonlyDate } from '../types'
 
 /**
  * The {@link isSameWeek} function options.

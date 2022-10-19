@@ -1,4 +1,5 @@
 import addQuarters from '../addQuarters/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name subQuarters

@@ -18,6 +18,7 @@ import {
 import { parsers } from './_lib/parsers/index'
 import { DateToSystemTimezoneSetter, Setter } from './_lib/Setter'
 import type { ParseFlags, ParserOptions } from './_lib/types'
+import type { ReadonlyDate } from '../types'
 
 /**
  * The {@link parse} function options.

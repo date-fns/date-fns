@@ -21,7 +21,7 @@ export class ISOWeekYearParser extends Parser<number> {
     _flags: ParseFlags,
     value: number
   ): DateType {
-    const firstWeekOfYear = constructFrom(date, 0)
+    const firstWeekOfYear: DateType = constructFrom(date, 0)
     firstWeekOfYear.setFullYear(value, 0, 4)
     firstWeekOfYear.setHours(0, 0, 0, 0)
     return startOfISOWeek(firstWeekOfYear)

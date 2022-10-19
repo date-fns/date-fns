@@ -1,4 +1,5 @@
 import lastDayOfWeek from '../lastDayOfWeek/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name lastDayOfISOWeek

@@ -1,4 +1,5 @@
 import isSameYear from '../isSameYear/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name isThisYear

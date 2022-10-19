@@ -5,6 +5,7 @@ import type {
   LocaleOptions,
   WeekStartOptions,
 } from '../types'
+import type { ReadonlyDate } from '../types'
 
 /**
  * The {@link setWeek} function options.

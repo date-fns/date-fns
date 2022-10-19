@@ -17,6 +17,7 @@ import differenceInMinutes from '../differenceInMinutes/index'
 import differenceInSeconds from '../differenceInSeconds/index'
 import toDate from '../toDate/index'
 import type { IntlOptionsUnit } from '../types'
+import type { ReadonlyDate } from '../types'
 
 /**
  * The {@link intlFormatDistance} function options.
@@ -124,9 +125,12 @@ export interface IntlFormatDistanceOptions {
  * )
  * //=> 'in 2 yr'
  */
-export default function intlFormatDistance(
-  date: Date | number,
-  baseDate: Date | number,
+export default function intlFormatDistance<
+  DateType extends Date,
+  BaseDateType extends Date
+>(
+  date: ReadonlyDate<DateType> | number,
+  baseDate: ReadonlyDate<BaseDateType> | number,
   options?: IntlFormatDistanceOptions
 ): string {
   let value: number = 0

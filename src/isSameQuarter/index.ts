@@ -1,4 +1,5 @@
 import startOfQuarter from '../startOfQuarter/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name isSameQuarter

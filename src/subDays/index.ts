@@ -1,4 +1,5 @@
 import addDays from '../addDays/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name subDays

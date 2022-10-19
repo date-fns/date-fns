@@ -1,5 +1,6 @@
 import isSameDay from '../isSameDay/index'
 import subDays from '../subDays/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name isYesterday

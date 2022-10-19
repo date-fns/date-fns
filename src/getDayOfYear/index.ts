@@ -1,6 +1,7 @@
 import differenceInCalendarDays from '../differenceInCalendarDays/index'
 import startOfYear from '../startOfYear/index'
 import toDate from '../toDate/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name getDayOfYear

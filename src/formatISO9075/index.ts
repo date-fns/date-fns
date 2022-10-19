@@ -2,6 +2,7 @@ import isValid from '../isValid/index'
 import toDate from '../toDate/index'
 import type { FormatOptions, RepresentationOptions } from '../types'
 import addLeadingZeros from '../_lib/addLeadingZeros/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * The {@link formatISO9075} function options.

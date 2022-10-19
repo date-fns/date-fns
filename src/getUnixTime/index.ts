@@ -1,4 +1,5 @@
 import getTime from '../getTime/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name getUnixTime

@@ -1,4 +1,5 @@
 import addISOWeekYears from '../addISOWeekYears/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name subISOWeekYears

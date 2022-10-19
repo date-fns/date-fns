@@ -1,4 +1,5 @@
 import startOfISOWeekYear from '../startOfISOWeekYear/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name isSameISOWeekYear

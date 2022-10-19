@@ -1,4 +1,5 @@
 import addYears from '../addYears/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name subYears

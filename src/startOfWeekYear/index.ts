@@ -7,6 +7,7 @@ import type {
   WeekStartOptions,
 } from '../types'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * The {@link startOfWeekYear} function options.
@@ -65,6 +66,6 @@ export default function startOfWeekYear<DateType extends Date>(
   const firstWeek = constructFrom(dirtyDate, 0)
   firstWeek.setFullYear(year, 0, firstWeekContainsDate)
   firstWeek.setHours(0, 0, 0, 0)
-  const date = startOfWeek(firstWeek, options)
+  const date = startOfWeek<DateType>(firstWeek, options)
   return date
 }

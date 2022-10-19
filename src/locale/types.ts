@@ -73,8 +73,8 @@ export type FormatDistanceFn = (
 ) => string
 
 export type FormatRelativeTokenFn = <DateType extends Date>(
-  date: ReadonlyDate<DateType> | number,
-  baseDate: ReadonlyDate<DateType> | number,
+  date: DateType | number,
+  baseDate: DateType | number,
   options?: { weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6 }
 ) => string
 

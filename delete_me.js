@@ -13,6 +13,9 @@ const effect = async () => {
         foundReadonlyDate = true
         break
       }
+      if (line.includes('/*')) {
+        break
+      }
     }
 
     if (!foundReadonlyDate) {
@@ -20,9 +23,8 @@ const effect = async () => {
       let yo = false
       for (const line of lines) {
         if (line === '' && !yo) {
-          newLines.push("import type { ReadonlyInterval } from '../types'")
+          newLines.push("import type { ReadonlyDate } from '../types'")
           yo = true
-          newLines.push('')
         }
         newLines.push(line)
       }

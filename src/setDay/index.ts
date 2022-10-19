@@ -2,6 +2,7 @@ import addDays from '../addDays/index'
 import toDate from '../toDate/index'
 import type { LocaleOptions, WeekStartOptions } from '../types'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * The {@link setDay} function options.

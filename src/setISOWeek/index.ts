@@ -1,5 +1,6 @@
 import getISOWeek from '../getISOWeek/index'
 import toDate from '../toDate/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name setISOWeek

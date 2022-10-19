@@ -1,4 +1,5 @@
 import addMilliseconds from '../addMilliseconds/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name subMilliseconds

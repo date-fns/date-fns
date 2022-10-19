@@ -2,6 +2,7 @@ import compareAsc from '../compareAsc/index'
 import differenceInCalendarMonths from '../differenceInCalendarMonths/index'
 import isLastDayOfMonth from '../isLastDayOfMonth/index'
 import toDate from '../toDate/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name differenceInMonths

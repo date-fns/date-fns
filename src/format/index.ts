@@ -17,6 +17,7 @@ import {
   isProtectedWeekYearToken,
   throwProtectedError,
 } from '../_lib/protectedTokens/index'
+import type { ReadonlyDate } from '../types'
 
 // This RegExp consists of three parts separated by `|`:
 // - [yYQqMLwIdDecihHKkms]o matches any available ordinal number token

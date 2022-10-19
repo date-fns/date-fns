@@ -1,6 +1,7 @@
 import getDay from '../getDay/index'
 import subDays from '../subDays/index'
 import type { Day } from '../types'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name previousDay

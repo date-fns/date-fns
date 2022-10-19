@@ -1,5 +1,6 @@
 import addDays from '../addDays/index'
 import isSameDay from '../isSameDay/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name isTomorrow

@@ -1,4 +1,5 @@
 import startOfHour from '../startOfHour/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name isSameHour

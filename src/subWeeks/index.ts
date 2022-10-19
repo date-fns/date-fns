@@ -1,4 +1,5 @@
 import addWeeks from '../addWeeks/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name subWeeks

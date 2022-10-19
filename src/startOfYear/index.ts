@@ -1,5 +1,6 @@
 import toDate from '../toDate/index'
 import constructFrom from '../constructFrom/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name startOfYear

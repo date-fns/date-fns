@@ -1,6 +1,7 @@
 import eachWeekendOfInterval from '../eachWeekendOfInterval/index'
 import endOfYear from '../endOfYear/index'
 import startOfYear from '../startOfYear/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name eachWeekendOfYear

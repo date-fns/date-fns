@@ -2,6 +2,7 @@ import { millisecondsInWeek } from '../constants/index'
 import startOfWeek from '../startOfWeek/index'
 import type { LocaleOptions, WeekStartOptions } from '../types'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * The {@link differenceInCalendarWeeks} function options.

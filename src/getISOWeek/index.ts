@@ -2,6 +2,7 @@ import { millisecondsInWeek } from '../constants/index'
 import startOfISOWeek from '../startOfISOWeek/index'
 import startOfISOWeekYear from '../startOfISOWeekYear/index'
 import toDate from '../toDate/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name getISOWeek

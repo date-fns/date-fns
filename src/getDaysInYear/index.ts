@@ -1,5 +1,6 @@
 import isLeapYear from '../isLeapYear/index'
 import toDate from '../toDate/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name getDaysInYear

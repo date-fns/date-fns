@@ -2,6 +2,7 @@ import compareAsc from '../compareAsc/index'
 import differenceInCalendarISOWeekYears from '../differenceInCalendarISOWeekYears/index'
 import subISOWeekYears from '../subISOWeekYears/index'
 import toDate from '../toDate/index'
+import type { ReadonlyDate } from '../types'
 
 /**
  * @name differenceInISOWeekYears
