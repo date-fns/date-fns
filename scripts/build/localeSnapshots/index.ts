@@ -8,7 +8,7 @@
  */
 
 import { readFile, readFileSync, writeFile } from 'mz/fs'
-import path from 'path'
+import * as path from 'path'
 import listLocales from '../../_lib/listLocales'
 import prettier from '../_lib/prettier'
 import renderFormatDistance from './renderFormatDistance'
