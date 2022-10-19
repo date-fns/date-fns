@@ -1,7 +1,7 @@
 import addQuarters from '../addQuarters/index'
 import startOfQuarter from '../startOfQuarter/index'
 import toDate from '../toDate/index'
-import type { ReadonlyInterval } from '../types'
+import type { Interval } from '../types'
 
 /**
  * @name eachQuarterOfInterval
@@ -29,7 +29,7 @@ import type { ReadonlyInterval } from '../types'
  * // ]
  */
 export default function eachQuarterOfInterval<DateType extends Date>(
-  interval: ReadonlyInterval<DateType>
+  interval: Interval<DateType>
 ): DateType[] {
   const startDate = toDate(interval.start)
   const endDate = toDate(interval.end)

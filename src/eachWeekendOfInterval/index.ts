@@ -1,7 +1,7 @@
 import eachDayOfInterval from '../eachDayOfInterval/index'
 import isSunday from '../isSunday/index'
 import isWeekend from '../isWeekend/index'
-import type { ReadonlyInterval } from '../types'
+import type { Interval } from '../types'
 
 /**
  * @name eachWeekendOfInterval
@@ -30,7 +30,7 @@ import type { ReadonlyInterval } from '../types'
  * // ]
  */
 export default function eachWeekendOfInterval<DateType extends Date>(
-  interval: ReadonlyInterval<DateType>
+  interval: Interval<DateType>
 ): DateType[] {
   const dateInterval = eachDayOfInterval(interval)
   const weekends = []

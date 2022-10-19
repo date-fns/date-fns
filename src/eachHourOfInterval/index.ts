@@ -1,6 +1,6 @@
 import addHours from '../addHours/index'
 import toDate from '../toDate/index'
-import type { ReadonlyInterval, StepOptions } from '../types'
+import type { Interval, StepOptions } from '../types'
 
 /**
  * The {@link eachHourOfInterval} function options.
@@ -36,7 +36,7 @@ export interface EachHourOfIntervalOptions extends StepOptions {}
  * // ]
  */
 export default function eachHourOfInterval<DateType extends Date>(
-  interval: ReadonlyInterval<DateType>,
+  interval: Interval<DateType>,
   options?: EachHourOfIntervalOptions
 ): DateType[] {
   const startDate = toDate(interval.start)

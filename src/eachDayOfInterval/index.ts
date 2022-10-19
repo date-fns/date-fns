@@ -1,5 +1,5 @@
 import toDate from '../toDate/index'
-import type { ReadonlyInterval, StepOptions } from '../types'
+import type { Interval, StepOptions } from '../types'
 
 /**
  * The {@link eachDayOfInterval} function options.
@@ -36,7 +36,7 @@ export interface EachDayOfIntervalOptions extends StepOptions {}
  * // ]
  */
 export default function eachDayOfInterval<DateType extends Date>(
-  interval: ReadonlyInterval<DateType>,
+  interval: Interval<DateType>,
   options?: EachDayOfIntervalOptions
 ): DateType[] {
   const startDate = toDate(interval.start)

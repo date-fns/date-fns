@@ -1,7 +1,7 @@
 import addMinutes from '../addMinutes/index'
 import startOfMinute from '../startOfMinute/index'
 import toDate from '../toDate/index'
-import type { ReadonlyInterval, StepOptions } from '../types'
+import type { Interval, StepOptions } from '../types'
 
 /**
  * The {@link eachMinuteOfInterval} function options.
@@ -37,7 +37,7 @@ export interface EachMinuteOfIntervalOptions extends StepOptions {}
  * // ]
  */
 export default function eachMinuteOfInterval<DateType extends Date>(
-  interval: ReadonlyInterval<DateType>,
+  interval: Interval<DateType>,
   options?: EachMinuteOfIntervalOptions
 ): DateType[] {
   const startDate = startOfMinute(toDate(interval.start))
