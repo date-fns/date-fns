@@ -16,6 +16,7 @@ import renderFormatDistanceStrict from './renderFormatDistanceStrict'
 import renderFormatParse from './renderFormatParse'
 import renderFormatRelative from './renderFormatRelative'
 import renderFormatDuration from './renderFormatDuration'
+import LineDiff from 'line-diff'
 
 const mode = process.argv[2] || 'generate'
 
@@ -55,10 +56,21 @@ ${renderFormatDuration(locale)}
 
         if (mode === 'test') {
           return readFile(snapshotPath, 'utf8').then((snapshotFileContent) => {
-            if (snapshotFileContent !== formattedSnapshot)
+            if (snapshotFileContent !== formattedSnapshot) {
+              const diff = new LineDiff(
+                snapshotFileContent,
+                formattedSnapshot
+              ).changes
+                .filter((c) => c.modified)
+                .map((c) =>
+                  [`Line ${c.lineno}:`, `-${c._[0]}`, `+${c._[1]}`].join('\n')
+                )
+                .join('\n')
               throw new Error(
-                `The snapshot on the disk doesn't match the generated snapshot: ${snapshotPath}. Please run yarn locale-snapshots and commit the results.`
+                `The snapshot on the disk doesn't match the generated snapshot: ${snapshotPath}. Please run yarn locale-snapshots and commit the results.\n` +
+                  `${diff}`
               )
+            }
           })
         } else {
           return writeFile(snapshotPath, formattedSnapshot)
