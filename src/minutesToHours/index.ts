@@ -13,7 +13,7 @@ import { minutesInHour } from '../constants/index'
  * @returns the number of minutes converted in hours
  *
  * @example
- * // Convert 140 minutes to hours:
+ * // Convert 120 minutes to hours:
  * const result = minutesToHours(120)
  * //=> 2
  *
