@@ -1,17 +1,7 @@
-import toDate from '../toDate/index'
-import constructFrom from '../constructFrom/index'
-import { Duration, DurationUnit } from '../types'
-import {
-  addSeconds,
-  addYears,
-  addMonths,
-  addDays,
-  addHours,
-  addMinutes,
-  addWeeks,
-} from '../index'
+import { Duration } from '../types'
 
-const defaultFormat: DurationUnit[] = [
+type DurationUnit = keyof Duration
+const durationUnits: DurationUnit[] = [
   'years',
   'months',
   'weeks',
@@ -21,49 +11,51 @@ const defaultFormat: DurationUnit[] = [
   'seconds',
 ]
 
-const addFnMapper = {
-  years: addYears,
-  months: addMonths,
-  weeks: addWeeks,
-  days: addDays,
-  hours: addHours,
-  minutes: addMinutes,
-  seconds: addSeconds,
-}
-
 /**
  * @name addDuration
- * @category Date Helpers
- * @summary Add the specified duration.
+ * @category Duration Helpers
+ * @summary Add the specified duration to another duration.
  *
  * @description
- * Add the specified duration to the given date.
+ * Add the specified duration to the given duration object.
  *
- * @param date - the date to be changed
- * @param duration - the amount to be added in duration object. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
- * @returns - the new date with the duration added
+ * @param duration1 - the date to be changed
+ * @param duration2 - the duration to be added in duration object.
+ * @returns - the new duration with the duration added
  *
  * @example
- * // Add 10 days to 1 September 2014:
- * const result = addDays(new Date(2014, 8, 1), { days: 10 })
- * //=> Thu Sep 11 2014 00:00:00
+ * // Add { years: 2, months: 2, weeks: 3, days: 2} to {years: 1, months: 2, hours: 3}:
+ * const result = addDuration({years: 1, months: 2, hours: 3}, { years: 2, months: 2, weeks: 3, days: 2})
+ * //=> {years: 3, months: 4, weeks: 3, days: 2, hours: 3}
  */
-export default function addDuration<DateType extends Date>(
-  dirtyDate: DateType | number,
-  duration: Duration
-): DateType {
-  const date = toDate(dirtyDate)
-  if (!duration) return constructFrom(dirtyDate, NaN)
+export default function addDuration(
+  duration1: Duration,
+  duration2: Duration
+): Duration {
+  if (!duration1 || !duration2) {
+    return duration1 || duration2
+  }
 
-  const result = defaultFormat.reduce((acc, unit) => {
-    let amount = duration[unit]
-    if (amount !== undefined && isNaN(amount))
-      return constructFrom(dirtyDate, NaN)
-    if (amount !== undefined && amount) {
-      const addFn = addFnMapper[unit]
-      if (addFn) return toDate(addFn(acc, amount))
+  const result = durationUnits.reduce((acc, unit) => {
+    const value1 = duration1[unit]
+    const value2 = duration2[unit]
+
+    if (
+      (value1 !== undefined && isNaN(value1)) ||
+      (value2 !== undefined && isNaN(value2))
+    ) {
+      throw new TypeError(
+        `${unit} should not be ${value1}, it should be a number`
+      )
     }
+
+    if (value1 || value2)
+      return {
+        ...acc,
+        [unit]: (value1 || 0) + (value2 || 0),
+      }
+
     return acc
-  }, date)
+  }, {} as Duration)
   return result
 }
