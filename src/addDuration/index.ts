@@ -62,25 +62,6 @@ export default function addDuration<DateType extends Date>(
     if (amount !== undefined && amount) {
       const addFn = addFnMapper[unit]
       if (addFn) return toDate(addFn(acc, amount))
-
-      // switch (unit) {
-      //   case 'years':
-      //     return toDate(addYears(acc, amount))
-      //   case 'months':
-      //     return toDate(addMonths(acc, amount))
-      //   case 'weeks':
-      //     return toDate(addWeeks(acc, amount))
-      //   case 'days':
-      //     return toDate(addDays(acc, amount))
-      //   case 'hours':
-      //     return toDate(addHours(acc, amount))
-      //   case 'minutes':
-      //     return toDate(addMinutes(acc, amount))
-      //   case 'seconds':
-      //     return toDate(addSeconds(acc, amount))
-      //   default:
-      //     return acc
-      // }
     }
     return acc
   }, date)
