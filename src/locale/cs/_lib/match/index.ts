@@ -26,7 +26,7 @@ const parseQuarterPatterns = {
 }
 
 const matchMonthPatterns = {
-  narrow: /^[lúubdkčcszřrlp]/i,
+  narrow: /^[lúubdkčcszřrp]/i,
   abbreviated: /^(led|[úu]no|b[řr]e|dub|kv[ěe]|[čc]vn|[čc]vc|srp|z[áa][řr]|[řr][íi]j|lis|pro)/i,
   wide: /^(leden|ledna|[úu]nora?|b[řr]ezen|b[řr]ezna|duben|dubna|kv[ěe]ten|kv[ěe]tna|[čc]erven(ec|ce)?|[čc]ervna|srpen|srpna|z[áa][řr][íi]|[řr][íi]jen|[řr][íi]jna|listopad(a|u)?|prosinec|prosince)/i,
 }
@@ -62,7 +62,7 @@ const parseMonthPatterns = {
 }
 
 const matchDayPatterns = {
-  narrow: /^[npuúsčps]/i,
+  narrow: /^[npuúsčs]/i,
   short: /^(ne|po|[úu]t|st|[čc]t|p[áa]|so)/i,
   abbreviated: /^(ned|pon|[úu]te|st[rř]|[čc]tv|p[áa]t|sob)/i,
   wide: /^(ned[ěe]le|pond[ěe]l[íi]|[úu]ter[ýy]|st[řr]eda|[čc]tvrtek|p[áa]tek|sobota)/i,
