@@ -50,42 +50,6 @@ describe('intervalToDuration', () => {
     })
   })
 
-  it('returns the expected duration between dates if last month is not full', () => {
-    const duration = intervalToDuration({
-      start: new Date(2020, 0, 31),
-      end: new Date(2020, 1, 28),
-    })
-
-    const expectedDuration = {
-      years: 0,
-      months: 0,
-      days: 28,
-      hours: 0,
-      minutes: 0,
-      seconds: 0,
-    }
-
-    assert.deepStrictEqual(duration, expectedDuration)
-  })
-
-  it('returns the expected duration when dates include February with a leap day', () => {
-    const duration = intervalToDuration({
-      start: new Date(2020, 1, 29),
-      end: new Date(2021, 3, 1),
-    })
-
-    const expectedDuration = {
-      years: 1,
-      months: 1,
-      days: 4, // TODO: Correct value should be 3
-      hours: 0,
-      minutes: 0,
-      seconds: 0,
-    }
-
-    assert.deepStrictEqual(duration, expectedDuration)
-  })
-
   it("throws a RangeError if interval's start date is greater than its end date", () => {
     const interval = {
       start: new Date(2020, 3, 1),
@@ -222,6 +186,42 @@ describe('intervalToDuration', () => {
         years: 0,
         months: 2,
         days: 2,
+        hours: 0,
+        minutes: 0,
+        seconds: 0,
+      }
+
+      assert.deepStrictEqual(duration, expectedDuration)
+    })
+
+    it('returns the expected duration between dates if last month is not full', () => {
+      const duration = intervalToDuration({
+        start: new Date(2020, 0, 31),
+        end: new Date(2020, 1, 28),
+      })
+
+      const expectedDuration = {
+        years: 0,
+        months: 0,
+        days: 28,
+        hours: 0,
+        minutes: 0,
+        seconds: 0,
+      }
+
+      assert.deepStrictEqual(duration, expectedDuration)
+    })
+
+    it('returns the expected duration when dates include February with a leap day', () => {
+      const duration = intervalToDuration({
+        start: new Date(2020, 1, 29),
+        end: new Date(2021, 3, 1),
+      })
+
+      const expectedDuration = {
+        years: 1,
+        months: 1,
+        days: 4, // TODO: Correct value should be 3
         hours: 0,
         minutes: 0,
         seconds: 0,
