@@ -238,74 +238,71 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
     one: {
       regular: 'přibližně rok',
       past: 'přibližně před rokem',
-      future: 'přibližně za rok',
+      future: 'přibližně za rok'
     },
     few: {
       regular: 'přibližně {{count}} roky',
       past: 'přibližně před {{count}} roky',
-      future: 'přibližně za {{count}} roky',
+      future: 'přibližně za {{count}} roky'
     },
     many: {
-      regular: 'přibližně {{count}} roků',
-      past: 'přibližně před {{count}} roky',
-      future: 'přibližně za {{count}} roků',
-    },
+      regular: 'přibližně {{count}} let',
+      past: 'přibližně před {{count}} lety',
+      future: 'přibližně za {{count}} let'
+    }
   },
-
   xYears: {
     one: {
       regular: 'rok',
       past: 'před rokem',
-      future: 'za rok',
+      future: 'za rok'
     },
     few: {
       regular: '{{count}} roky',
       past: 'před {{count}} roky',
-      future: 'za {{count}} roky',
+      future: 'za {{count}} roky'
     },
     many: {
-      regular: '{{count}} roků',
-      past: 'před {{count}} roky',
-      future: 'za {{count}} roků',
-    },
+      regular: '{{count}} let',
+      past: 'před {{count}} lety',
+      future: 'za {{count}} let'
+    }
   },
-
   overXYears: {
     one: {
       regular: 'více než rok',
       past: 'před více než rokem',
-      future: 'za více než rok',
+      future: 'za více než rok'
     },
     few: {
       regular: 'více než {{count}} roky',
       past: 'před více než {{count}} roky',
-      future: 'za více než {{count}} roky',
+      future: 'za více než {{count}} roky'
     },
     many: {
-      regular: 'více než {{count}} roků',
-      past: 'před více než {{count}} roky',
-      future: 'za více než {{count}} roků',
-    },
+      regular: 'více než {{count}} let',
+      past: 'před více než {{count}} lety',
+      future: 'za více než {{count}} let'
+    }
   },
-
   almostXYears: {
     one: {
       regular: 'skoro rok',
       past: 'skoro před rokem',
-      future: 'skoro za rok',
+      future: 'skoro za rok'
     },
     few: {
       regular: 'skoro {{count}} roky',
       past: 'skoro před {{count}} roky',
-      future: 'skoro za {{count}} roky',
+      future: 'skoro za {{count}} roky'
     },
     many: {
-      regular: 'skoro {{count}} roků',
-      past: 'skoro před {{count}} roky',
-      future: 'skoro za {{count}} roků',
-    },
-  },
-}
+      regular: 'skoro {{count}} let',
+      past: 'skoro před {{count}} lety',
+      future: 'skoro za {{count}} let'
+    }
+  }
+};
 
 const formatDistance: FormatDistanceFn = (token, count, options) => {
   let pluralResult
