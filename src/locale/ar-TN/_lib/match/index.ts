@@ -81,19 +81,19 @@ const parseDayPatterns = {
 }
 
 const matchDayPeriodPatterns = {
-  narrow: /^(ص|ع|ن ل|ل|(في|مع) (صباح|قايلة|عشية|ليل))/,
-  any: /^([صع]|نص الليل|قايلة|(في|مع) (صباح|قايلة|عشية|ليل))/,
+  narrow: /^(ص|م|منتصف الليل|الظهر|بعد الظهر|في الصباح|في المساء|في الليل)/,
+  any: /^(ص|م|منتصف الليل|الظهر|بعد الظهر|في الصباح|في المساء|في الليل)/,
 }
 const parseDayPeriodPatterns = {
   any: {
     am: /^ص/,
-    pm: /^ع/,
-    midnight: /نص الليل/,
-    noon: /قايلة/,
-    afternoon: /بعد القايلة/,
-    morning: /صباح/,
-    evening: /عشية/,
-    night: /ليل/,
+    pm: /^م/,
+    midnight: /منتصف الليل/,
+    noon: /الظهر/,
+    afternoon: /بعد الظهر/,
+    morning: /في الصباح/,
+    evening: /في المساء/,
+    night: /في الليل/,
   },
 }
 
