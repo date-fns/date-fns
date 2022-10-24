@@ -221,7 +221,7 @@ describe('intervalToDuration', () => {
       const expectedDuration = {
         years: 1,
         months: 1,
-        days: 4, // TODO: Correct value should be 3
+        days: 3,
         hours: 0,
         minutes: 0,
         seconds: 0,

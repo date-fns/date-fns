@@ -50,7 +50,27 @@ export default function interval<DateType extends Date>(
   const remainingMonths = add(start, { years: duration.years })
   duration.months = differenceInMonths(end, remainingMonths)
 
-  const remainingDays = add(remainingMonths, { months: duration.months })
+  /* Edge case: If the start is Feb 29 (leap year) and we add years, then the resulting date may be Feb 28.
+   * This means the intervalToDuration calculations will be off by one day if the remaining year is not also a
+   * leap year.
+   * We detect if the start was on Feb 29 (leap year) and calculate if we should add on an extra day to the
+   * "remainingDays" date.
+   */
+  const startIsLeapYear =
+    new Date(start.getFullYear(), 2 /* March */, 0).getDate() === 29
+  const startDate = start.getDate()
+  const isLastDayInFebruary =
+    start.getMonth() === 1 &&
+    (startIsLeapYear ? startDate === 29 : startDate === 28)
+  const isLeapYearEnd =
+    new Date(remainingMonths.getFullYear(), 2, 0).getDate() === 29
+  const shouldAddExtraDay =
+    isLastDayInFebruary && startIsLeapYear && !isLeapYearEnd
+
+  const remainingDays = add(remainingMonths, {
+    months: duration.months,
+    days: shouldAddExtraDay ? 1 : 0,
+  })
   duration.days = differenceInDays(end, remainingDays)
 
   const remainingHours = add(remainingDays, { days: duration.days })
