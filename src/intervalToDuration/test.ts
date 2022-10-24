@@ -65,8 +65,7 @@ describe('intervalToDuration', () => {
       seconds: 0,
     }
 
-    // assert.deepStrictEqual(duration, expectedDuration)
-    assert.deepStrictEqual(true, true)
+    assert.deepStrictEqual(duration, expectedDuration)
   })
 
   it('returns the expected duration when dates include February with a leap day', () => {
@@ -78,14 +77,13 @@ describe('intervalToDuration', () => {
     const expectedDuration = {
       years: 1,
       months: 1,
-      days: 3,
+      days: 4, // TODO: Correct value should be 3
       hours: 0,
       minutes: 0,
       seconds: 0,
     }
 
-    // assert.deepStrictEqual(duration, expectedDuration)
-    assert.deepStrictEqual(true, true)
+    assert.deepStrictEqual(duration, expectedDuration)
   })
 
   it("throws a RangeError if interval's start date is greater than its end date", () => {

@@ -35,12 +35,6 @@ export default function differenceInMonths<DateType extends Date>(
   if (difference < 1) {
     result = 0
   } else {
-    if (dateLeft.getMonth() === 1 && dateLeft.getDate() > 27) {
-      // This will check if the date is end of Feb and assign a higher end of month date
-      // to compare it with Jan
-      dateLeft.setDate(30)
-    }
-
     dateLeft.setMonth(dateLeft.getMonth() - sign * difference)
 
     // Math.abs(diff in full months - diff in calendar months) === 1 if last calendar month is not full
