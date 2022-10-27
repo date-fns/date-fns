@@ -6,7 +6,7 @@ import type { Duration } from '../types'
  * @summary Format a duration object according as ISO 8601 duration string
  *
  * @description
- * Format a duration object according to the ISO 8601 duration standard (https://en.wikipedia.org/wiki/ISO_8601)
+ * Format a duration object according to the ISO 8601 duration standard (https://en.wikipedia.org/wiki/ISO_8601#Durations).
  *
  * @param duration - the duration to format
  *
