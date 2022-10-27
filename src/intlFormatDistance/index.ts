@@ -15,7 +15,6 @@ import differenceInCalendarYears from '../differenceInCalendarYears/index'
 import differenceInHours from '../differenceInHours/index'
 import differenceInMinutes from '../differenceInMinutes/index'
 import differenceInSeconds from '../differenceInSeconds/index'
-import toDate from '../toDate/index'
 import type { IntlOptionsUnit } from '../types'
 
 /**
@@ -129,72 +128,59 @@ export default function intlFormatDistance<DateType extends Date>(
   baseDate: DateType | number,
   options?: IntlFormatDistanceOptions
 ): string {
-  let value: number = 0
-  let unit: Intl.RelativeTimeFormatUnit
-  const dateLeft = toDate(date)
-  const dateRight = toDate(baseDate)
+  let unit = options?.unit
 
-  if (!options?.unit) {
-    // Get the unit based on diffInSeconds calculations if no unit is specified
-    const diffInSeconds = differenceInSeconds(dateLeft, dateRight) // The smallest unit
+  // detect the most appropriate unit to use if not specified
+  if (!unit) {
+    const absDiffInSeconds = Math.abs(differenceInSeconds(date, baseDate))
 
-    if (Math.abs(diffInSeconds) < secondsInMinute) {
-      value = differenceInSeconds(dateLeft, dateRight)
+    if (absDiffInSeconds < secondsInMinute) {
       unit = 'second'
-    } else if (Math.abs(diffInSeconds) < secondsInHour) {
-      value = differenceInMinutes(dateLeft, dateRight)
+    } else if (absDiffInSeconds < secondsInHour) {
       unit = 'minute'
     } else if (
-      Math.abs(diffInSeconds) < secondsInDay &&
-      Math.abs(differenceInCalendarDays(dateLeft, dateRight)) < 1
+      absDiffInSeconds < secondsInDay &&
+      Math.abs(differenceInCalendarDays(date, baseDate)) < 1
     ) {
-      value = differenceInHours(dateLeft, dateRight)
       unit = 'hour'
     } else if (
-      Math.abs(diffInSeconds) < secondsInWeek &&
-      (value = differenceInCalendarDays(dateLeft, dateRight)) &&
-      Math.abs(value) < 7
+      absDiffInSeconds < secondsInWeek &&
+      Math.abs(differenceInCalendarDays(date, baseDate)) < 7
     ) {
       unit = 'day'
-    } else if (Math.abs(diffInSeconds) < secondsInMonth) {
-      value = differenceInCalendarWeeks(dateLeft, dateRight)
+    } else if (absDiffInSeconds < secondsInMonth) {
       unit = 'week'
-    } else if (Math.abs(diffInSeconds) < secondsInQuarter) {
-      value = differenceInCalendarMonths(dateLeft, dateRight)
+    } else if (absDiffInSeconds < secondsInQuarter) {
       unit = 'month'
-    } else if (Math.abs(diffInSeconds) < secondsInYear) {
-      if (differenceInCalendarQuarters(dateLeft, dateRight) < 4) {
+    } else if (absDiffInSeconds < secondsInYear) {
+      if (Math.abs(differenceInCalendarQuarters(date, baseDate)) < 4) {
         // To filter out cases that are less than a year but match 4 quarters
-        value = differenceInCalendarQuarters(dateLeft, dateRight)
         unit = 'quarter'
       } else {
-        value = differenceInCalendarYears(dateLeft, dateRight)
         unit = 'year'
       }
     } else {
-      value = differenceInCalendarYears(dateLeft, dateRight)
       unit = 'year'
     }
-  } else {
-    // Get the value if unit is specified
-    unit = options?.unit
-    if (unit === 'second') {
-      value = differenceInSeconds(dateLeft, dateRight)
-    } else if (unit === 'minute') {
-      value = differenceInMinutes(dateLeft, dateRight)
-    } else if (unit === 'hour') {
-      value = differenceInHours(dateLeft, dateRight)
-    } else if (unit === 'day') {
-      value = differenceInCalendarDays(dateLeft, dateRight)
-    } else if (unit === 'week') {
-      value = differenceInCalendarWeeks(dateLeft, dateRight)
-    } else if (unit === 'month') {
-      value = differenceInCalendarMonths(dateLeft, dateRight)
-    } else if (unit === 'quarter') {
-      value = differenceInCalendarQuarters(dateLeft, dateRight)
-    } else if (unit === 'year') {
-      value = differenceInCalendarYears(dateLeft, dateRight)
-    }
+  }
+
+  let value = 0
+  if (unit === 'second') {
+    value = differenceInSeconds(date, baseDate)
+  } else if (unit === 'minute') {
+    value = differenceInMinutes(date, baseDate)
+  } else if (unit === 'hour') {
+    value = differenceInHours(date, baseDate)
+  } else if (unit === 'day') {
+    value = differenceInCalendarDays(date, baseDate)
+  } else if (unit === 'week') {
+    value = differenceInCalendarWeeks(date, baseDate)
+  } else if (unit === 'month') {
+    value = differenceInCalendarMonths(date, baseDate)
+  } else if (unit === 'quarter') {
+    value = differenceInCalendarQuarters(date, baseDate)
+  } else if (unit === 'year') {
+    value = differenceInCalendarYears(date, baseDate)
   }
 
   const rtf = new Intl.RelativeTimeFormat(options?.locale, {
