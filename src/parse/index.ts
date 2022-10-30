@@ -1,6 +1,5 @@
 import constructFrom from '../constructFrom/index'
 import getDefaultOptions from '../getDefaultOptions/index'
-import defaultLocale from '../locale/en-US/index'
 import toDate from '../toDate/index'
 import type {
   AdditionalTokensOptions,
@@ -9,6 +8,7 @@ import type {
   WeekStartOptions,
 } from '../types'
 import assign from '../_lib/assign/index'
+import defaultLocale from '../_lib/defaultLocale'
 import longFormatters from '../_lib/format/longFormatters/index'
 import {
   isProtectedDayOfYearToken,
