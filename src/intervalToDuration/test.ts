@@ -1,8 +1,8 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import intervalToDuration from './index'
 import addMonths from '../addMonths/index'
+import intervalToDuration from './index'
 
 describe('intervalToDuration', () => {
   it('returns correct duration for arbitrary dates', () => {
@@ -298,6 +298,25 @@ describe('intervalToDuration', () => {
 
         assert.deepStrictEqual(duration, expectedDuration)
       })
+    })
+
+    it("does't return negative values if any end unit is smaller than start - issue 3263", () => {
+      // previous implementation would return 1 month and -10 hours for this scenario
+
+      const duration = intervalToDuration({
+        start: new Date(2022, 9, 31, 16),
+        end: new Date(2022, 10, 30, 6),
+      })
+      const expectedDuration = {
+        years: 0,
+        months: 0,
+        days: 29,
+        hours: 14,
+        minutes: 0,
+        seconds: 0,
+      }
+
+      assert.deepStrictEqual(duration, expectedDuration)
     })
   })
 })
