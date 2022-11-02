@@ -49,11 +49,17 @@ export default function roundToNearestMinutes<DateType extends Date>(
   const seconds = date.getSeconds() // relevant if nearestTo is 1, which is the default case
   const minutes = date.getMinutes() + seconds / 60
   const roundingMethod = getRoundingMethod(options?.roundingMethod)
-  const roundedMinutes = roundingMethod(minutes / nearestTo) * nearestTo
-  const remainderMinutes = minutes % nearestTo
-  const addedMinutes = Math.round(remainderMinutes / nearestTo) * nearestTo
 
+  const roundedMinutes = roundingMethod(minutes / nearestTo) * nearestTo
   const result = constructFrom(date, date)
-  result.setMinutes(roundedMinutes + addedMinutes, 0, 0)
+
+  if (options?.roundingMethod === 'floor') {
+    result.setMinutes(roundedMinutes, 0, 0)
+  } else {
+    const remainderMinutes = minutes % nearestTo
+    const addedMinutes = Math.round(remainderMinutes / nearestTo) * nearestTo
+    result.setMinutes(roundedMinutes + addedMinutes, 0, 0)
+  }
+
   return result
 }
