@@ -52,14 +52,7 @@ export default function roundToNearestMinutes<DateType extends Date>(
 
   const roundedMinutes = roundingMethod(minutes / nearestTo) * nearestTo
   const result = constructFrom(date, date)
-
-  if (options?.roundingMethod === 'floor') {
-    result.setMinutes(roundedMinutes, 0, 0)
-  } else {
-    const remainderMinutes = minutes % nearestTo
-    const addedMinutes = Math.round(remainderMinutes / nearestTo) * nearestTo
-    result.setMinutes(roundedMinutes + addedMinutes, 0, 0)
-  }
+  result.setMinutes(roundedMinutes, 0, 0)
 
   return result
 }
