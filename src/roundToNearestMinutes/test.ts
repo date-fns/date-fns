@@ -59,10 +59,10 @@ describe('roundToNearestMinutes', () => {
 
   it('rounds according to the passed mode - floor - when nearestTo is provided', () => {
     const result = roundToNearestMinutes(
-      new Date(2014, 6 /* Jul */, 10, 12, 10, 30, 5),
+      new Date(2014, 6 /* Jul */, 10, 12, 29, 0, 0),
       { nearestTo: 10, roundingMethod: 'floor' }
     )
-    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 10, 0))
+    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 20, 0))
   })
 
   it('rounds according to the passed mode - ceil', () => {
