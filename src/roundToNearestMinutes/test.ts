@@ -21,14 +21,15 @@ describe('roundToNearestMinutes', () => {
   it('rounds to the closest x minutes if nearestTo is provided', () => {
     const result = roundToNearestMinutes(
       new Date(2014, 6 /* Jul */, 10, 12, 10, 30),
-      { nearestTo: 4 }
+      { nearestTo: 4, roundingMethod: 'round' }
     )
     assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 12, 0))
   })
 
   it('rounds up >=30 seconds for nearestTo=1', () => {
     const result = roundToNearestMinutes(
-      new Date(2014, 6 /* Jul */, 10, 12, 13, 30)
+      new Date(2014, 6 /* Jul */, 10, 12, 13, 30),
+      { roundingMethod: 'round' }
     )
     assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 14, 0))
   })
@@ -70,7 +71,7 @@ describe('roundToNearestMinutes', () => {
       new Date(2014, 6 /* Jul */, 10, 12, 10, 30, 5),
       { roundingMethod: 'ceil' }
     )
-    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 12, 0))
+    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 11, 0))
   })
 
   it('rounds according to the passed mode - ceil - when nearestTo is provided', () => {
