@@ -4,9 +4,9 @@ import type { FormatLong } from '../../../types'
 // DIN 5008: https://de.wikipedia.org/wiki/Datumsformat#DIN_5008
 const dateFormats = {
   full: 'EEEE, do MMMM y', // Montag, 7. Januar 2018
-  long: 'do MMMM y', // 7. Januar 2018
-  medium: 'do MMM y', // 7. Jan. 2018
-  short: 'dd.MM.y', // 07.01.2018
+  long: 'do MMMM yyyy', // 7. Januar 2018
+  medium: 'do MMM yyyy', // 7. Jan. 2018
+  short: 'dd.MM.yyyy', // 07.01.2018
 }
 
 const timeFormats = {
