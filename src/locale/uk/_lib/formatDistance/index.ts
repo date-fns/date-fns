@@ -161,7 +161,7 @@ const formatDistanceLocale = {
   xDays: buildLocalizeTokenFn({
     regular: {
       singularNominative: '{{count}} день',
-      singularGenitive: '{{count}} дня',
+      singularGenitive: '{{count}} днi',
       pluralGenitive: '{{count}} днів',
     },
   }),
@@ -175,15 +175,15 @@ const formatDistanceLocale = {
     future: {
       singularNominative: 'приблизно за {{count}} тиждень',
       singularGenitive: 'приблизно за {{count}} тижні',
-      pluralGenitive: 'приблизно за {{count}} тижні',
+      pluralGenitive: 'приблизно за {{count}} тижнів',
     },
   }),
 
   xWeeks: buildLocalizeTokenFn({
     regular: {
       singularNominative: '{{count}} тиждень',
-      singularGenitive: '{{count}} тижня',
-      pluralGenitive: '{{count}} тижні',
+      singularGenitive: '{{count}} тижні',
+      pluralGenitive: '{{count}} тижнів',
     },
   }),
 
@@ -195,7 +195,7 @@ const formatDistanceLocale = {
     },
     future: {
       singularNominative: 'приблизно за {{count}} місяць',
-      singularGenitive: 'приблизно за {{count}} місяця',
+      singularGenitive: 'приблизно за {{count}} місяці',
       pluralGenitive: 'приблизно за {{count}} місяців',
     },
   }),
@@ -203,7 +203,7 @@ const formatDistanceLocale = {
   xMonths: buildLocalizeTokenFn({
     regular: {
       singularNominative: '{{count}} місяць',
-      singularGenitive: '{{count}} місяця',
+      singularGenitive: '{{count}} місяці',
       pluralGenitive: '{{count}} місяців',
     },
   }),
