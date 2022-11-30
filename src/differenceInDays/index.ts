@@ -78,7 +78,7 @@ function compareLocalAsc<DateType extends Date>(
  * )
 //=> 92
  * // How many full days are between
- * // 2 July 2011 23:00:00 and 2 July 2012 00:00:00?
+ * // 2 July 2012 23:00:00 and 2 July 2011 00:00:00?
  * const result = differenceInDays(
  *   new Date(2011, 6, 2, 0, 0),
  *   new Date(2012, 6, 2, 23, 0)
