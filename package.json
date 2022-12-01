@@ -38,9 +38,8 @@
     ]
   },
   "browserslist": [
-    "last 1 version",
-    "> 1%",
-    "IE 11"
+    "last 2 versions and not dead",
+    "not IE > 0"
   ],
   "dependencies": {},
   "devDependencies": {
