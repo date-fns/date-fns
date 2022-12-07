@@ -5,7 +5,10 @@ const presets = [
   ],
   '@babel/preset-typescript',
 ]
-const plugins = ['@babel/plugin-proposal-class-properties']
+const plugins = [
+  '@babel/plugin-proposal-class-properties',
+  '@babel/plugin-proposal-nullish-coalescing-operator',
+]
 
 if (process.env.BABEL_ENV !== 'esm') {
   plugins.push('babel-plugin-add-module-exports')
