@@ -15,8 +15,8 @@ assert.deepStrictEqual(
     end: new Date(2020, 2, 28),
   }).map((d) => d.toString()),
   [
-    'Thu Mar 26 2020 00:00:00 GMT+0200 (Eastern European Standard Time)',
-    'Fri Mar 27 2020 01:00:00 GMT+0300 (Eastern European Summer Time)',
-    'Sat Mar 28 2020 00:00:00 GMT+0300 (Eastern European Summer Time)',
+    'Thu Mar 26 2020 00:00:00 GMT+0200 (GMT+03:00)',
+    'Fri Mar 27 2020 01:00:00 GMT+0300 (GMT+04:00)',
+    'Sat Mar 28 2020 00:00:00 GMT+0300 (GMT+04:00)',
   ]
 )
