@@ -11,8 +11,8 @@ import constructFrom from '../constructFrom/index'
  * to transpose the date in the system time zone to say `UTCDate` or any other
  * date extension.
  *
- * @param fromDate {Date|number} - the date to use values from
- * @param constructor {Date|DateConstructor} - the date constructor to use
+ * @param fromDate - the date to use values from
+ * @param constructor - the date constructor to use
  * @returns date transposed to the given constructor
  *
  * @example

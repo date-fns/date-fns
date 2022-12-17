@@ -1,0 +1,6 @@
+{
+  "name": "date-fns",
+  "entryPoints": ["./src/index.ts"],
+  "json": "./tmp/docs.json",
+  "plugin": ["typedoc-plugin-missing-exports"]
+}
