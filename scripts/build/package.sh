@@ -13,7 +13,7 @@ cd "$root" || exit 1
 
 PATH="$(npm bin):$PATH"
 # XXX: $PACKAGE_OUTPUT_PATH must be an absolute path!
-dir=${PACKAGE_OUTPUT_PATH:-"$root/tmp/package"}
+dir=${PACKAGE_OUTPUT_PATH:-"$root/lib"}
 
 # Clean up output dir
 rm -rf "$dir"
@@ -25,13 +25,15 @@ env BABEL_ENV='commonjs' babel src --source-root src --out-dir "$dir" --extensio
 # Traspile ESM versions of files
 env BABEL_ENV='esm' babel src --source-root src --out-dir "$dir/esm" --extensions .ts,.js --ignore test.js,snapshot.md,package.json --copy-files --quiet
 
+# Generate TypeScript
+npx tsc --project tsconfig.lib.json
+
 # Copy basic files
 for pattern in CHANGELOG.md \
   package.json \
   docs \
   LICENSE.md \
-  README.md \
-  typings.d.ts
+  README.md
 do
   cp -r "$pattern" "$dir"
 done

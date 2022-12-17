@@ -9,3 +9,4 @@ docs.json
 .vscode
 coverage
 /secrets
+/lib
