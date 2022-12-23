@@ -97,6 +97,17 @@ describe('roundToNearestMinutes', () => {
     assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 10, 0))
   })
 
+  it('rounds according to the passed mode - function - when nearestTo is provided', () => {
+    const result = roundToNearestMinutes(
+      new Date(2014, 6 /* Jul */, 10, 12, 7, 10, 5),
+      {
+        nearestTo: 15,
+        roundingMethod: (value: number) => Math.round(value + 0.05),
+      }
+    )
+    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 15, 0))
+  })
+
   it('returns `Invalid Date` if the given date is invalid', () => {
     const result = roundToNearestMinutes(new Date(NaN))
     assert(result instanceof Date && isNaN(result.getTime()))

@@ -56,6 +56,15 @@ describe('differenceInWeeks', () => {
     assert(result === 2)
   })
 
+  it('returns 1.6 with a rounding function which rounds with a scale of 1', () => {
+    const result = differenceInWeeks(
+      new Date(2021, 6 /* Jul */, 22, 7, 35, 29, 976),
+      new Date(2021, 6 /* Jul */, 11, 6, 1, 28, 173),
+      { roundingMethod: (value: number) => Math.round(value * 10) / 10 }
+    )
+    assert(result === 1.6)
+  })
+
   it('returns a negative number if the time value of the first date is smaller', () => {
     const result = differenceInWeeks(
       new Date(2014, 5 /* Jun */, 29, 6, 0),

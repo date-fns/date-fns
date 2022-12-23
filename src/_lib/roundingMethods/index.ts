@@ -1,6 +1,4 @@
-import type { RoundingMethod } from '../../types'
-
-type RoundingFn = typeof Math.round
+import type { RoundingFn, RoundingMethod } from '../../types'
 
 type RoundingFnsMap = { [method in RoundingMethod]: RoundingFn }
 
@@ -13,6 +11,11 @@ const roundingMap: RoundingFnsMap = {
 
 const defaultRoundingMethod: RoundingMethod = 'trunc'
 
-export function getRoundingMethod(method: RoundingMethod | undefined) {
-  return method ? roundingMap[method] : roundingMap[defaultRoundingMethod]
+export function getRoundingMethod(
+  method: RoundingMethod | RoundingFn | undefined
+) {
+  if (!method) {
+    return roundingMap[defaultRoundingMethod]
+  }
+  return typeof method === 'function' ? method : roundingMap[method]
 }

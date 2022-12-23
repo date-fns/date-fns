@@ -332,6 +332,13 @@ describe('formatDistanceToNowStrict', () => {
     })
   })
 
+  it('returns "1.6 minutes" with a rounding function which rounds with a scale of 1', () => {
+    const result = formatDistanceToNowStrict(new Date(1986, 3, 4, 10, 33, 35), {
+      roundingMethod: (value: number) => Math.round(value * 10) / 10,
+    })
+    assert(result === '1.6 minutes')
+  })
+
   describe('custom locale', () => {
     it('can be passed to the function', () => {
       const localizeDistance: FormatDistanceFn = (token, count, options) => {

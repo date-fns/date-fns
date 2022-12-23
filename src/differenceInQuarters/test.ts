@@ -55,6 +55,15 @@ describe('differenceInQuarters', () => {
     assert(result === 5)
   })
 
+  it('returns 1.7 with a rounding function which rounds with a scale of 1', () => {
+    const result = differenceInQuarters(
+      new Date(2021, 11 /* Jul */, 5, 6, 1, 28, 173),
+      new Date(2021, 6 /* Jul */, 5, 6, 1, 28, 173),
+      { roundingMethod: (value: number) => Math.round(value * 10) / 10 }
+    )
+    assert(result === 1.7)
+  })
+
   it('returns a negative number if the time value of the first date is smaller', () => {
     const result = differenceInQuarters(
       new Date(2011, 6 /* Jul */, 2, 6, 0),

@@ -6,7 +6,11 @@ import {
   minutesInYear,
 } from '../constants/index'
 import toDate from '../toDate/index'
-import type { LocaleOptions, FormatDistanceStrictUnit } from '../types'
+import type {
+  LocaleOptions,
+  FormatDistanceStrictUnit,
+  RoundingFn,
+} from '../types'
 import assign from '../_lib/assign/index'
 import cloneObject from '../_lib/cloneObject/index'
 import defaultLocale from '../_lib/defaultLocale/index'
@@ -20,7 +24,7 @@ import { getRoundingMethod } from '../_lib/roundingMethods/index'
 export interface FormatDistanceStrictOptions extends LocaleOptions {
   addSuffix?: boolean
   unit?: FormatDistanceStrictUnit
-  roundingMethod?: 'floor' | 'ceil' | 'round'
+  roundingMethod?: 'floor' | 'ceil' | 'round' | RoundingFn
 }
 
 /**
