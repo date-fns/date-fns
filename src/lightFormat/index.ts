@@ -18,6 +18,11 @@ const doubleQuoteRegExp = /''/g
 const unescapedLatinCharacterRegExp = /[a-zA-Z]/
 
 /**
+ * @private
+ */
+type Token = keyof typeof formatters
+
+/**
  * @name lightFormat
  * @category Common Helpers
  * @summary Format the date.
@@ -71,9 +76,6 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * const result = lightFormat(new Date(2014, 1, 11), 'yyyy-MM-dd')
  * //=> '2014-02-11'
  */
-
-type Token = keyof typeof formatters
-
 export default function lightFormat<DateType extends Date>(
   dirtyDate: DateType | number,
   formatStr: string
