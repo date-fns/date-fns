@@ -14,18 +14,33 @@ import type {
   LocalizeUnitValuesIndex,
 } from './_lib/buildLocalizeFn'
 
+/**
+ * The locale object.
+ */
 export interface Locale {
+  /** The locale code (ISO 639-1 + optional country code). */
   code: string
+  /** The function to format distance. */
   formatDistance: FormatDistanceFn
+  /** The function to relative time. */
   formatRelative: FormatRelativeFn
+  /** The object with functions used to localize various values. */
   localize: Localize
+  /** The object with functions that return localized formats. */
   formatLong: FormatLong
+  /** The object with functions used to match and parse various localized values. */
   match: Match
+  /** An object with locale options. */
   options?: LocaleOptions
 }
 
+/**
+ * The locale options.
+ */
 export interface LocaleOptions {
+  /** The index of the first day of the week (0 - Sunday). */
   weekStartsOn?: Day
+  /** The day of January, which is always in the first week of the year. */
   firstWeekContainsDate?: FirstWeekContainsDate
 }
 
@@ -66,6 +81,10 @@ export interface FormatDistanceFnOptions {
   comparison?: -1 | 0 | 1
 }
 
+/**
+ * The function that takes a token passed by `formatDistance` or
+ * `formatDistanceStrict` and payload, and returns localized distance in words.
+ */
 export type FormatDistanceFn = (
   token: FormatDistanceToken,
   count: number,
@@ -91,6 +110,10 @@ export interface FormatRelativeFnOptions {
   locale?: Locale
 }
 
+/**
+ * The function that takes a token passed by `formatRelative` and two dates and
+ * returns the localized relative date format.
+ */
 export type FormatRelativeFn = <DateType extends Date>(
   token: FormatRelativeToken,
   date: DateType,
@@ -123,15 +146,28 @@ export type LocalizeFn<
   }
 ) => string
 
+/**
+ * The object with functions used to localize various values.
+ */
 export interface Localize {
+  /** The function that localizes an ordinal number. */
   ordinalNumber: LocalizeFn<
     number,
     BuildLocalizeFnArgCallback<number> | undefined
   >
+  /** The function that takes 0 or 1 and returns localized era */
   era: LocalizeFn<Era, undefined>
+  /** The function that localizes a quarter. */
   quarter: LocalizeFn<Quarter, BuildLocalizeFnArgCallback<Quarter>>
+  /** The function that localizes a month. */
   month: LocalizeFn<Month, undefined>
+  /** The function that localizes a day of the week. */
   day: LocalizeFn<Day, undefined>
+  /**
+   * The function that takes one of the strings 'am', 'pm', 'midnight', 'noon',
+   * 'morning', 'afternoon', 'evening' or 'night' and returns localized time
+   * of the day.
+   */
   dayPeriod: LocalizeFn<LocaleDayPeriod, undefined>
 }
 
@@ -216,17 +252,21 @@ export type MatchFn<Result, ExtraOptions = Record<string, unknown>> = (
 
 export type MatchValueCallback<Arg, Result> = (value: Arg) => Result
 
+/**
+ * The object with functions used to match and parse various localized values.
+ */
 export interface Match {
-  ordinalNumber: MatchFn<
-    number,
-    {
-      unit: LocaleOrdinalUnit
-    }
-  >
+  /** The function that parses a localized ordinal number. */
+  ordinalNumber: MatchFn<number, { unit: LocaleOrdinalUnit }>
+  /** The function that parses a localized era. */
   era: MatchFn<Era>
+  /** The function that parses a localized quarter. */
   quarter: MatchFn<Quarter>
+  /** The function that parses a localized month. */
   month: MatchFn<Month>
+  /** The function that parses a localized day of the week. */
   day: MatchFn<Day>
+  /** The function that parses a localized time of the day. */
   dayPeriod: MatchFn<LocaleDayPeriod>
 }
 
@@ -277,9 +317,15 @@ export type DateTimeFormat = { [format in FormatLongWidth]: string }
 
 export type LocaleUnit = Era | Quarter | Month | Day | LocaleDayPeriod
 
+/**
+ * The object with functions that return localized formats.
+ */
 export interface FormatLong {
+  /** The function that returns a localized long date format. */
   date: FormatLongFn
+  /** The function that returns a localized long time format. */
   time: FormatLongFn
+  /** The function that returns a localized format of date and time combined. */
   dateTime: FormatLongFn
 }
 

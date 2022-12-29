@@ -16,6 +16,9 @@ export interface GenericDateConstructor<DateType> {
   ): DateType
 }
 
+/**
+ * The duration object.
+ */
 export interface Duration {
   years?: number
   months?: number
@@ -28,8 +31,13 @@ export interface Duration {
 
 export type DurationUnit = keyof Duration
 
+/**
+ * An object that combines two dates to represent the time interval.
+ */
 export interface Interval<DateType extends Date = Date> {
+  /** The start of the interval. */
   start: DateType | number
+  /** The end of the interval. */
   end: DateType | number
 }
 
@@ -61,6 +69,13 @@ export type Era = 0 | 1
 
 export type Quarter = 1 | 2 | 3 | 4
 
+/**
+ * The day of the week type alias (`0 | 1 | 2 | 3 | 4 | 5 | 6`). Unlike the date
+ * (the number of days since the beginning of the month), which begins with 1
+ * and is dynamic (can go up to 28, 30, or 31), the day starts with 0 and static
+ * (always ends at 6). Look at it as an index in an array where Sunday is
+ * the first element and Saturday is the last.
+ */
 export type Day = 0 | 1 | 2 | 3 | 4 | 5 | 6
 
 export type Month = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11

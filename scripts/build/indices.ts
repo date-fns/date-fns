@@ -24,9 +24,12 @@ interface File {
   const fns = await listFns()
   const fpFns = listFPFns()
 
-  writeFile('src/index.ts', generateIndex(fns, false, true))
-  writeFile('src/fp/index.ts', generateIndex(fpFns, true, true))
-  writeFile('src/locale/index.ts', generateIndex(locales, false, false))
+  await Promise.all([
+    writeFile('src/index.ts', generateIndex(fns, false, true)),
+    writeFile('src/fp/index.ts', generateIndex(fpFns, true, true)),
+    writeFile('src/locale/index.ts', generateIndex(locales, false, false)),
+    writeFile('typedoc.json', generateTypeDoc(fns)),
+  ])
 })()
 
 function generateIndex(
@@ -45,4 +48,20 @@ function generateIndex(
 
 ${lines.join('\n')}
 `
+}
+
+function generateTypeDoc(fns: Awaited<ReturnType<typeof listFns>>) {
+  return (
+    "// This file is generated automatically by `scripts/build/indices.ts`. Please, don't change it.\n" +
+    JSON.stringify(
+      {
+        name: 'date-fns',
+        entryPoints: fns.map((fn) => fn.fullPath),
+        json: './tmp/docs.json',
+        plugin: ['typedoc-plugin-missing-exports'],
+      },
+      null,
+      2
+    )
+  )
 }
