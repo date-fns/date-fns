@@ -1,6 +1,5 @@
 // This file is generated automatically by `scripts/build/indices.ts`. Please, don't change it.
 
-export * from './types'
 export { default as af } from './af/index'
 export { default as ar } from './ar/index'
 export { default as arDZ } from './ar-DZ/index'

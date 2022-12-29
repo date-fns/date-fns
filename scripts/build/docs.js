@@ -58,7 +58,7 @@ async function generateDocsFromSource() {
       return {
         type: 'jsdoc',
         kind: 'function',
-        urlId: doc.name,
+        slug: doc.name,
         category: doc.category,
         title: doc.name,
         description: doc.summary,
@@ -184,7 +184,7 @@ function generateSharedDocs() {
     .map((doc) => ({
       type: 'jsdoc',
       kind: 'typedef',
-      urlId: doc.name,
+      slug: doc.name,
       category: doc.category,
       title: doc.name,
       description: doc.summary,
@@ -232,7 +232,7 @@ function generateFPFnDoc(dirtyDoc) {
     isFPFn,
     args,
     generatedFrom: title,
-    urlId: `fp/${urlId}`,
+    slug: `fp/${urlId}`,
     relatedDocs: Object.assign(
       { default: urlId, fp: `fp/${urlId}` },
       withOptions(args) ? { fpWithOptions: `fp/${urlId}WithOptions` } : {}
@@ -272,7 +272,7 @@ function generateFPFnWithOptionsDoc(dirtyDoc) {
     args,
     generatedFrom: title,
     title: `${title}WithOptions`,
-    urlId: `fp/${urlId}WithOptions`,
+    slug: `fp/${urlId}WithOptions`,
     relatedDocs: {
       default: urlId,
       fp: `fp/${urlId}`,

@@ -2,7 +2,7 @@ import type { GenericDateConstructor } from '../types'
 
 /**
  * @name constructFrom
- * @category Date Extension Helpers
+ * @category Generic Helpers
  * @summary Constructs a date using the reference date and the value
  *
  * @description
