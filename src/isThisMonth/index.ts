@@ -4,7 +4,6 @@ import isSameMonth from '../isSameMonth/index'
  * @name isThisMonth
  * @category Month Helpers
  * @summary Is the given date in the same month as the current date?
- * @pure false
  *
  * @description
  * Is the given date in the same month as the current date?
