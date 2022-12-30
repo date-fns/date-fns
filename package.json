@@ -74,7 +74,6 @@
     "husky": "^1.0.1",
     "istanbul-instrumenter-loader": "^3.0.1",
     "jest": "^27.0.4",
-    "js-beautify": "^1.5.10",
     "js-fns": "^2.5.1",
     "jsdoc-babel": "^0.5.0",
     "jsdoc-to-markdown": "7",

@@ -20,9 +20,15 @@ else
   IS_PRE_RELEASE=false
 fi
 
-PACKAGE_PATH="$(pwd)/../../tmp/package"
+# Write version & commit package.json
 ./scripts/release/writeVersion.js
+git add package.json
+git commit -m "Prepare $VERSION"
+git tag -a "$VERSION" -m "$VERSION"
+git push
 
+# Build the package
+PACKAGE_PATH="$(pwd)/../../tmp/package"
 env PACKAGE_OUTPUT_PATH="$PACKAGE_PATH" ./scripts/build/package.sh
 
 # Right now, we do releases manually, but when we move to GitHub Actions we'll need this line:
@@ -36,8 +42,10 @@ else
 fi
 cd - || exit
 
-./scripts/build/docs.js
-./scripts/release/updateFirebase.js
+# Build & deploy docs JSON
+./scripts/build/docs.sh
+yarn date-fns-docs docs/config.ts
+
 # TODO: Reanimate it
 # if [ "$IS_PRE_RELEASE" = false ]
 # then
