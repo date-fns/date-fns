@@ -8,7 +8,6 @@ import {
  * @name setDefaultOptions
  * @category Common Helpers
  * @summary Set default options including locale.
- * @pure false
  *
  * @description
  * Sets the defaults for

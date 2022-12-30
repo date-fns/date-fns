@@ -8,7 +8,6 @@ import {
  * @name getDefaultOptions
  * @category Common Helpers
  * @summary Get default options.
- * @pure false
  *
  * @description
  * Returns an object that contains defaults for

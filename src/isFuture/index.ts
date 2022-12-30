@@ -4,7 +4,6 @@ import toDate from '../toDate/index'
  * @name isFuture
  * @category Common Helpers
  * @summary Is the given date in the future?
- * @pure false
  *
  * @description
  * Is the given date in the future?

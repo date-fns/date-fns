@@ -12,7 +12,6 @@ export interface FormatDistanceToNowStrictOptions
  * @name formatDistanceToNowStrict
  * @category Common Helpers
  * @summary Return the distance between the given date and now in words.
- * @pure false
  *
  * @description
  * Return the distance between the given dates in words, using strict units.

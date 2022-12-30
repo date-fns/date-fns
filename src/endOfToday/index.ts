@@ -4,7 +4,6 @@ import endOfDay from '../endOfDay/index'
  * @name endOfToday
  * @category Day Helpers
  * @summary Return the end of today.
- * @pure false
  *
  * @description
  * Return the end of today.

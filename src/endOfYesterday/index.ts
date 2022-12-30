@@ -2,7 +2,6 @@
  * @name endOfYesterday
  * @category Day Helpers
  * @summary Return the end of yesterday.
- * @pure false
  *
  * @description
  * Return the end of yesterday.
