@@ -1,4 +1,4 @@
-#!/usr/bin/env yarn ts-node
+#!/usr/bin/env yarn tsx
 
 /**
  * @file
@@ -7,53 +7,60 @@
  * It's a part of the build process.
  */
 
-import { existsSync } from 'fs'
-import { mkdir, readFile, unlink, writeFile } from 'fs/promises'
+import { readFnsFromJSON } from '@date-fns/docs'
+import { mkdir, stat, writeFile } from 'fs/promises'
 
-interface DocFn {
-  kind: string
-  isFPFn: boolean
+async function main() {
+  const fns = await readFnsFromJSON('tmp/docs.json')
 
-  title: string
-  generatedFrom: string
-  args: {
-    length: number
-  }
+  await Promise.all(
+    fns.map(async ({ ref, fn }) => {
+      const hasOptions = !!fn.signatures.find((singature: any) =>
+        singature.parameters?.find((p: any) => p.name === 'options')
+      )
+      const fnArity = fn.signatures.reduce<number>(
+        (acc: number, signature: any) =>
+          Math.max(acc, signature.parameters?.length || 0),
+        0
+      )
+
+      async function writeFn(
+        arity: number,
+        sourceName: string,
+        name = sourceName
+      ) {
+        const source = getFPFn(sourceName, arity)
+        const dir = `./src/fp/${name}`
+
+        if (!(await exists(dir))) await mkdir(dir)
+        return writeFile(`${dir}/index.ts`, source)
+      }
+
+      return Promise.all([
+        writeFn(hasOptions ? fnArity - 1 : fnArity, ref.name),
+        hasOptions && writeFn(fnArity, ref.name, ref.name + 'WithOptions'),
+      ])
+    })
+  )
 }
 
-;(async () => {
-  const jsDocs = JSON.parse((await readFile('./tmp/docs.json')).toString())
+async function exists(filePath: string) {
+  try {
+    await stat(filePath)
+  } catch (err) {
+    return false
+  }
+  return true
+}
 
-  const fpFns: DocFn[] = Object.keys(jsDocs)
-    .map((category) => jsDocs[category])
-    .reduce((previousValue, newValue) => [...previousValue, ...newValue], [])
-    .filter((doc: DocFn) => doc.kind === 'function' && doc.isFPFn)
+main()
 
-  fpFns.forEach(buildFPFn)
-})()
-
-function getFPFn(initialFnName: string, arity: number): string {
+function getFPFn(sourceName: string, arity: number): string {
   return `// This file is generated automatically by \`scripts/build/fp.ts\`. Please, don't change it.
 
-import fn from '../../${initialFnName}/index'
+import fn from '../../${sourceName}/index'
 import convertToFP from '../_lib/convertToFP/index'
 
 export default convertToFP(fn, ${arity})
 `
-}
-
-async function buildFPFn({
-  title,
-  generatedFrom,
-  args: { length },
-}: DocFn): Promise<void> {
-  const source = getFPFn(generatedFrom, length)
-  const dir = `./src/fp/${title}`
-
-  if (!existsSync(dir)) await mkdir(dir)
-  writeFile(`${dir}/index.ts`, source)
-
-  // remove legacy index.js (if any)
-  const jsPath = `${dir}/index.js`
-  if (existsSync(jsPath)) unlink(jsPath)
 }
