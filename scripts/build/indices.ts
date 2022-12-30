@@ -1,4 +1,4 @@
-#!/usr/bin/env yarn ts-node
+#!/usr/bin/env yarn tsx
 
 /**
  * @file

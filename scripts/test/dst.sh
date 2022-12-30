@@ -14,5 +14,5 @@ env TZ=Australia/Sydney babel-node --extensions .ts,.js ./test/dst/parseISO/sydn
 env TZ=Pacific/Apia babel-node --extensions .ts,.js ./test/dst/parseISO/samoa.js
 env TZ=Asia/Damascus babel-node --extensions .ts,.js ./test/dst/eachDayOfInterval/basic.js
 env TZ=America/Santiago babel-node --extensions .ts,.js ./test/dst/addBusinessDays/basic.js
-env TZ=Australia/Melbourne ts-node ./test/dst/formatDistanceStrict/melbourne.ts
-env TZ=Africa/Cairo ts-node ./test/dst/formatDistanceStrict/cairo.ts
+env TZ=Australia/Melbourne tsx ./test/dst/formatDistanceStrict/melbourne.ts
+env TZ=Africa/Cairo tsx ./test/dst/formatDistanceStrict/cairo.ts
