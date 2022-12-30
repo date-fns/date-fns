@@ -1,6 +1,5 @@
-import type { DateFnsDocs } from '@date-fns/docs'
-
-export const config: DateFnsDocs.Config = {
+/** @type {import('@date-fns/docs').DateFnsDocs.Config} */
+module.exports.config = {
   package: '..',
 
   json: '../tmp/docs.json',
