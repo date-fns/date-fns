@@ -86,13 +86,16 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   },
 }
 
+// See: http://docs.translatehouse.org/projects/localization-guide/en/latest/l10n/pluralforms.html?id=l10n/pluralforms
+const isPlural = (n: number): boolean => n % 10 !== 1 || n % 100 === 11
+
 const formatDistance: FormatDistanceFn = (token, count, options) => {
   let result
 
   const tokenValue = formatDistanceLocale[token]
   if (typeof tokenValue === 'string') {
     result = tokenValue
-  } else if (count === 1) {
+  } else if (!isPlural(count)) {
     result = tokenValue.one
   } else {
     result = tokenValue.other.replace('{{count}}', count.toString())
