@@ -20,7 +20,20 @@ const quarterValues = {
 }
 
 const monthValues = {
-  narrow: ['j', 'f', 'm', 'a', 'm', 'j', 'j', 'á', 's', 'o', 'n', 'd'] as const,
+  narrow: [
+    'ja',
+    'f',
+    'mr',
+    'a',
+    'mí',
+    'jn',
+    'jl',
+    'á',
+    's',
+    'o',
+    'n',
+    'd',
+  ] as const,
   abbreviated: [
     'jan',
     'feb',
@@ -52,7 +65,7 @@ const monthValues = {
 }
 
 const dayValues = {
-  narrow: ['s', 'm', 'þ', 'm', 'f', 'f', 'l'] as const,
+  narrow: ['s', 'má', 'þ', 'mi', 'fi', 'fö', 'l'] as const,
   short: ['su', 'má', 'þr', 'mi', 'fi', 'fö', 'la'] as const,
   abbreviated: ['sun', 'mán', 'þri', 'mið', 'fim', 'fös', 'lau'] as const,
   wide: [
