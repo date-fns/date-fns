@@ -26,7 +26,7 @@ const parseQuarterPatterns = {
 
 const matchMonthPatterns = {
   narrow: /^[jfmasond]/i,
-  abbreviated: /^(jan|feb|mar[s]?|apr|maj|jun[i]?|jul[i]?|aug|sep|okt|nov|dec)\.?/i,
+  abbreviated: /^(jan|feb|mars?|apr|maj|juni?|juli?|aug|sep|okt|nov|dec)\.?/i,
   wide: /^(januari|februari|mars|april|maj|juni|juli|augusti|september|oktober|november|december)/i,
 }
 const parseMonthPatterns = {
