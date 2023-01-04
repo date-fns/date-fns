@@ -3,7 +3,7 @@ import type { Localize, LocalizeFn } from '../../../types'
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
 const eraValues = {
-  narrow: ['f.Kr.', 'e.Kr.'] as const,
+  narrow: ['fK', 'eK'] as const,
   abbreviated: ['f.Kr.', 'e.Kr.'] as const,
   wide: ['fyrir Krist', 'eftir Krist'] as const,
 }
@@ -20,20 +20,20 @@ const quarterValues = {
 }
 
 const monthValues = {
-  narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'Á', 'S', 'Ó', 'N', 'D'] as const,
+  narrow: ['j', 'f', 'm', 'a', 'm', 'j', 'j', 'á', 's', 'o', 'n', 'd'] as const,
   abbreviated: [
-    'jan.',
-    'feb.',
-    'mars',
-    'apríl',
+    'jan',
+    'feb',
+    'mar',
+    'apr',
     'maí',
-    'júní',
-    'júlí',
-    'ágúst',
-    'sept.',
-    'okt.',
-    'nóv.',
-    'des.',
+    'jún',
+    'júl',
+    'ágú',
+    'sep',
+    'okt',
+    'nóv',
+    'des',
   ] as const,
   wide: [
     'janúar',
@@ -52,17 +52,9 @@ const monthValues = {
 }
 
 const dayValues = {
-  narrow: ['S', 'M', 'Þ', 'M', 'F', 'F', 'L'] as const,
-  short: ['Su', 'Má', 'Þr', 'Mi', 'Fi', 'Fö', 'La'] as const,
-  abbreviated: [
-    'sun.',
-    'mán.',
-    'þri.',
-    'mið.',
-    'fim.',
-    'fös.',
-    'lau.',
-  ] as const,
+  narrow: ['s', 'm', 'þ', 'm', 'f', 'f', 'l'] as const,
+  short: ['su', 'má', 'þr', 'mi', 'fi', 'fö', 'la'] as const,
+  abbreviated: ['sun', 'mán', 'þri', 'mið', 'fim', 'fös', 'lau'] as const,
   wide: [
     'sunnudagur',
     'mánudagur',
@@ -76,8 +68,9 @@ const dayValues = {
 
 const dayPeriodValues = {
   narrow: {
-    am: 'f',
-    pm: 'e',
+    am: 'fh',
+    pm: 'eh',
+    // NOTE: These are not very "narrow"
     midnight: 'miðnætti',
     noon: 'hádegi',
     morning: 'morgunn',
