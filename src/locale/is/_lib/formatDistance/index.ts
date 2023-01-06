@@ -1,93 +1,91 @@
 import type { FormatDistanceFn, FormatDistanceLocale } from '../../../types'
 
-type FormatDistanceTokenValue =
-  | string
-  | {
-      one: string
-      other: string
-    }
+type PluralForms = 'singular' | 'plural'
+
+// See: http://docs.translatehouse.org/projects/localization-guide/en/latest/l10n/pluralforms.html?id=l10n/pluralforms
+const pluralForm = (n: number): PluralForms =>
+  n % 10 !== 1 || n % 100 === 11 ? 'plural' : 'singular'
+
+type FormatDistanceTokenValue = string | Record<PluralForms, string>
 
 const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   lessThanXSeconds: {
-    one: 'minna en 1 sekúnda',
-    other: 'minna en {{count}} sekúndur',
+    singular: 'minna en {{count}} sekúnda',
+    plural: 'minna en {{count}} sekúndur',
   },
 
   xSeconds: {
-    one: '1 sekúnda',
-    other: '{{count}} sekúndur',
+    singular: '{{count}} sekúnda',
+    plural: '{{count}} sekúndur',
   },
 
   halfAMinute: 'hálf mínúta',
 
   lessThanXMinutes: {
-    one: 'minna en 1 mínúta',
-    other: 'minna en {{count}} mínútur',
+    singular: 'minna en {{count}} mínúta',
+    plural: 'minna en {{count}} mínútur',
   },
 
   xMinutes: {
-    one: '1 mínúta',
-    other: '{{count}} mínútur',
+    singular: '{{count}} mínúta',
+    plural: '{{count}} mínútur',
   },
 
   aboutXHours: {
-    one: 'u.þ.b. 1 klukkustund',
-    other: 'u.þ.b. {{count}} klukkustundir',
+    singular: 'u.þ.b. {{count}} klukkustund',
+    plural: 'u.þ.b. {{count}} klukkustundir',
   },
 
   xHours: {
-    one: '1 klukkustund',
-    other: '{{count}} klukkustundir',
+    singular: '{{count}} klukkustund',
+    plural: '{{count}} klukkustundir',
   },
 
   xDays: {
-    one: '1 dagur',
-    other: '{{count}} dagar',
+    singular: '{{count}} dagur',
+    plural: '{{count}} dagar',
   },
 
   aboutXWeeks: {
-    one: 'um viku',
-    other: 'um {{count}} vikur',
+    singular: 'u.þ.b. {{count}} vika',
+    plural: 'u.þ.b. {{count}} vikur',
   },
 
   xWeeks: {
-    one: '1 viku',
-    other: '{{count}} vikur',
+    singular: '{{count}} vika',
+    plural: '{{count}} vikur',
   },
 
   aboutXMonths: {
-    one: 'u.þ.b. 1 mánuður',
-    other: 'u.þ.b. {{count}} mánuðir',
+    singular: 'u.þ.b. {{count}} mánuður',
+    plural: 'u.þ.b. {{count}} mánuðir',
   },
 
   xMonths: {
-    one: '1 mánuður',
-    other: '{{count}} mánuðir',
+    singular: '{{count}} mánuður',
+    plural: '{{count}} mánuðir',
   },
 
   aboutXYears: {
-    one: 'u.þ.b. 1 ár',
-    other: 'u.þ.b. {{count}} ár',
+    singular: 'u.þ.b. {{count}} ár',
+    plural: 'u.þ.b. {{count}} ár',
   },
 
   xYears: {
-    one: '1 ár',
-    other: '{{count}} ár',
+    singular: '{{count}} ár',
+    plural: '{{count}} ár',
   },
 
   overXYears: {
-    one: 'meira en 1 ár',
-    other: 'meira en {{count}} ár',
+    singular: 'meira en {{count}} ár',
+    plural: 'meira en {{count}} ár',
   },
 
   almostXYears: {
-    one: 'næstum 1 ár',
-    other: 'næstum {{count}} ár',
+    singular: 'næstum {{count}} ár',
+    plural: 'næstum {{count}} ár',
   },
 }
-
-// See: http://docs.translatehouse.org/projects/localization-guide/en/latest/l10n/pluralforms.html?id=l10n/pluralforms
-const isPlural = (n: number): boolean => n % 10 !== 1 || n % 100 === 11
 
 const formatDistance: FormatDistanceFn = (token, count, options) => {
   let result
@@ -95,10 +93,11 @@ const formatDistance: FormatDistanceFn = (token, count, options) => {
   const tokenValue = formatDistanceLocale[token]
   if (typeof tokenValue === 'string') {
     result = tokenValue
-  } else if (!isPlural(count)) {
-    result = tokenValue.one
   } else {
-    result = tokenValue.other.replace('{{count}}', count.toString())
+    result = tokenValue[pluralForm(count)].replace(
+      '{{count}}',
+      count.toString()
+    )
   }
 
   if (options?.addSuffix) {
