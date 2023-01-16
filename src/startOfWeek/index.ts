@@ -1,11 +1,11 @@
 import toDate from '../toDate/index'
-import type { LocaleOptions, WeekStartOptions } from '../types'
+import type { LocaleOptions, WeekOptions } from '../types'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
 
 /**
  * The {@link startOfWeek} function options.
  */
-export interface StartOfWeekOptions extends LocaleOptions, WeekStartOptions {}
+export interface StartOfWeekOptions extends LocaleOptions, WeekOptions {}
 
 /**
  * @name startOfWeek

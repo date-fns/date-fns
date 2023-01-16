@@ -4,7 +4,7 @@ module.exports.config = {
 
   json: '../tmp/docs.json',
 
-  groups: [
+  categories: [
     'General',
     'Types',
     'Common Helpers',

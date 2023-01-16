@@ -1,14 +1,12 @@
 import addWeeks from '../addWeeks/index'
 import startOfWeek from '../startOfWeek/index'
 import toDate from '../toDate/index'
-import type { Interval, LocaleOptions, WeekStartOptions } from '../types'
+import type { Interval, LocaleOptions, WeekOptions } from '../types'
 
 /**
  * The {@link eachWeekOfInterval} function options.
  */
-export interface EachWeekOfIntervalOptions
-  extends WeekStartOptions,
-    LocaleOptions {}
+export interface EachWeekOfIntervalOptions extends WeekOptions, LocaleOptions {}
 
 /**
  * @name eachWeekOfInterval
@@ -18,7 +16,9 @@ export interface EachWeekOfIntervalOptions
  * @description
  * Return the array of weeks within the specified time interval.
  *
- * @param interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
+ * @typeParam DateType - the `Date` type, the function operates on. Allows to use `UTCDate`.
+ *
+ * @param interval - the interval.
  * @param options - an object with options.
  * @returns the array with starts of weeks from the week of the interval start to the week of the interval end
  * @throws {RangeError} The start of an interval cannot be after its end
@@ -41,7 +41,10 @@ export interface EachWeekOfIntervalOptions
  * //   Sun Nov 23 2014 00:00:00
  * // ]
  */
-export default function eachWeekOfInterval<DateType extends Date>(
+export default function eachWeekOfInterval<
+  DateType extends Date,
+  _SomethingElse = string
+>(
   interval: Interval<DateType>,
   options?: EachWeekOfIntervalOptions
 ): DateType[] {

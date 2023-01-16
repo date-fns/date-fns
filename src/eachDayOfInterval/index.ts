@@ -14,7 +14,7 @@ export interface EachDayOfIntervalOptions extends StepOptions {}
  * @description
  * Return the array of dates within the specified time interval.
  *
- * @param interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
+ * @param interval - the interval.
  * @param options - an object with options.
  * @returns the array with starts of days from the day of the interval start to the day of the interval end
  * @throws {RangeError} `options.step` must be a number greater than 1

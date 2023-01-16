@@ -4,7 +4,7 @@ import type {
   AdditionalTokensOptions,
   FirstWeekContainsDateOptions,
   LocaleOptions,
-  WeekStartOptions,
+  WeekOptions,
 } from '../types'
 
 /**
@@ -12,7 +12,7 @@ import type {
  */
 export interface IsMatchOptions
   extends LocaleOptions,
-    WeekStartOptions,
+    WeekOptions,
     FirstWeekContainsDateOptions,
     AdditionalTokensOptions {}
 

@@ -9,7 +9,7 @@ import type { Interval } from '../types'
  * @description
  * Return the array of months within the specified time interval.
  *
- * @param interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
+ * @param interval - the interval.
  * @returns the array with starts of months from the month of the interval start to the month of the interval end
  * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`

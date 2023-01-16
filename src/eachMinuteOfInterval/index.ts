@@ -16,7 +16,7 @@ export interface EachMinuteOfIntervalOptions extends StepOptions {}
  * @description
  * Returns the array of minutes within the specified time interval.
  *
- * @param interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
+ * @param interval - the interval.
  * @param options - an object with options.
  * @returns the array with starts of minutes from the minute of the interval start to the minute of the interval end
  * @throws {RangeError} `options.step` must be a number equal to or greater than 1

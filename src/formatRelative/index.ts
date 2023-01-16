@@ -2,16 +2,14 @@ import differenceInCalendarDays from '../differenceInCalendarDays/index'
 import format from '../format/index'
 import type { FormatRelativeToken } from '../locale/types'
 import toDate from '../toDate/index'
-import type { LocaleOptions, WeekStartOptions } from '../types'
+import type { LocaleOptions, WeekOptions } from '../types'
 import defaultLocale from '../_lib/defaultLocale/index'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
 
 /**
  * The {@link formatRelative} function options.
  */
-export interface FormatRelativeOptions
-  extends LocaleOptions,
-    WeekStartOptions {}
+export interface FormatRelativeOptions extends LocaleOptions, WeekOptions {}
 
 /**
  * @name formatRelative

@@ -1,15 +1,13 @@
 import getDate from '../getDate/index'
 import getDay from '../getDay/index'
 import startOfMonth from '../startOfMonth/index'
-import type { LocaleOptions, WeekStartOptions } from '../types'
+import type { LocaleOptions, WeekOptions } from '../types'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
 
 /**
  * The {@link getWeekOfMonth} function options.
  */
-export interface GetWeekOfMonthOptions
-  extends LocaleOptions,
-    WeekStartOptions {}
+export interface GetWeekOfMonthOptions extends LocaleOptions, WeekOptions {}
 
 /**
  * @name getWeekOfMonth

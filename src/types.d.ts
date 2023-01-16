@@ -45,7 +45,11 @@ export interface StepOptions {
   step?: number
 }
 
-export interface WeekStartOptions {
+/**
+ * The week function options.
+ */
+export interface WeekOptions {
+  /** Which day the week starts on. */
   weekStartsOn?: Day
 }
 
@@ -53,7 +57,11 @@ export interface FirstWeekContainsDateOptions {
   firstWeekContainsDate?: FirstWeekContainsDate
 }
 
+/**
+ * The locale function options.
+ */
 export interface LocaleOptions {
+  /** The locale to use in the function. */
   locale?: Locale
 }
 
