@@ -1,11 +1,11 @@
 import type {
   FirstWeekContainsDateOptions,
   LocaleOptions,
-  WeekStartOptions,
+  WeekOptions,
 } from '../../types'
 
 export type DefaultOptions = LocaleOptions &
-  WeekStartOptions &
+  WeekOptions &
   FirstWeekContainsDateOptions
 
 let defaultOptions: DefaultOptions = {}

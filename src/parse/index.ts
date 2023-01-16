@@ -6,7 +6,7 @@ import type {
   AdditionalTokensOptions,
   FirstWeekContainsDateOptions,
   LocaleOptions,
-  WeekStartOptions,
+  WeekOptions,
 } from '../types'
 import assign from '../_lib/assign/index'
 import longFormatters from '../_lib/format/longFormatters/index'
@@ -25,7 +25,7 @@ import type { ParseFlags, ParserOptions } from './_lib/types'
 export interface ParseOptions
   extends LocaleOptions,
     FirstWeekContainsDateOptions,
-    WeekStartOptions,
+    WeekOptions,
     AdditionalTokensOptions {}
 
 // This RegExp consists of three parts separated by `|`:

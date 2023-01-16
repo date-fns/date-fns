@@ -1,7 +1,7 @@
 import type {
   LocaleOptions,
   FirstWeekContainsDateOptions,
-  WeekStartOptions,
+  WeekOptions,
 } from '../../types'
 
 export interface ParseFlags {
@@ -10,7 +10,7 @@ export interface ParseFlags {
 }
 
 export type ParserOptions = Required<
-  LocaleOptions & FirstWeekContainsDateOptions & WeekStartOptions
+  LocaleOptions & FirstWeekContainsDateOptions & WeekOptions
 >
 
 export type ParseResult<TValue> = { value: TValue; rest: string } | null

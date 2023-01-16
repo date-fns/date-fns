@@ -34,6 +34,8 @@ export default function intlFormat<DateType extends Date>(
  *
  * > ⚠️ Please note that before Node version 13.0.0, only the locale data for en-US is available by default.
  *
+ * @typeParam DateType - the `Date` type, the function operates on. Allows to use `UTCDate`.
+ *
  * @param argument - the original date.
  * @param formatOptions - an object with options.
  * @param formatOptions.localeMatcher - locale selection algorithm.

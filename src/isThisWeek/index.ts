@@ -1,10 +1,10 @@
 import isSameWeek from '../isSameWeek/index'
-import type { LocaleOptions, WeekStartOptions } from '../types'
+import type { LocaleOptions, WeekOptions } from '../types'
 
 /**
  * The {@link isThisWeek} function options.
  */
-export interface IsThisWeekOptions extends WeekStartOptions, LocaleOptions {}
+export interface IsThisWeekOptions extends WeekOptions, LocaleOptions {}
 
 /**
  * @name isThisWeek

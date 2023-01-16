@@ -15,7 +15,7 @@ export interface EachHourOfIntervalOptions extends StepOptions {}
  * @description
  * Return the array of hours within the specified time interval.
  *
- * @param interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
+ * @param interval - the interval.
  * @param options - an object with options.
  * @returns the array with starts of hours from the hour of the interval start to the hour of the interval end
  * @throws {RangeError} `options.step` must be a number greater than 1

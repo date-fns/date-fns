@@ -16,8 +16,8 @@ export interface AreIntervalsOverlappingOptions {
  * @description
  * Is the given time interval overlapping with another time interval? Adjacent intervals do not count as overlapping.
  *
- * @param intervalLeft - the first interval to compare. See [Interval]{@link https://date-fns.org/docs/Interval}
- * @param intervalRight - the second interval to compare. See [Interval]{@link https://date-fns.org/docs/Interval}
+ * @param intervalLeft - the first interval to compare.
+ * @param intervalRight - the second interval to compare.
  * @param options - the object with options
  * @returns whether the time intervals are overlapping
  * @throws {RangeError} The start of an interval cannot be after its end

@@ -4,7 +4,7 @@ import startOfWeek from '../startOfWeek/index'
 import type {
   FirstWeekContainsDateOptions,
   LocaleOptions,
-  WeekStartOptions,
+  WeekOptions,
 } from '../types'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
 
@@ -14,7 +14,7 @@ import { getDefaultOptions } from '../_lib/defaultOptions/index'
 export interface StartOfWeekYearOptions
   extends LocaleOptions,
     FirstWeekContainsDateOptions,
-    WeekStartOptions {}
+    WeekOptions {}
 
 /**
  * @name startOfWeekYear

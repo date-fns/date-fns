@@ -6,12 +6,6 @@
 
 set -e
 
-if [ -z "${APP_ENV+x}" ];
-then
-  echo 'APP_ENV is unset; please set to staging or production'
-  exit 1
-fi
-
 # A pre-release is a version with a label i.e. v2.0.0-alpha.1
 if [[ "$VERSION" =~ ^v[0-9]+\.[0-9]+\.[0-9]+-.+$ ]]
 then
@@ -43,8 +37,7 @@ fi
 cd - || exit
 
 # Build & deploy docs JSON
-./scripts/build/docs.sh
-yarn date-fns-docs docs/config.ts
+env APP_ENV=production ./scripts/release/docs.sh
 
 # TODO: Reanimate it
 # if [ "$IS_PRE_RELEASE" = false ]

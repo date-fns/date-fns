@@ -15,7 +15,8 @@ import type {
 } from './_lib/buildLocalizeFn'
 
 /**
- * The locale object.
+ * The locale object with all functions and data needed to parse and format
+ * dates.
  */
 export interface Locale {
   /** The locale code (ISO 639-1 + optional country code). */
@@ -35,7 +36,7 @@ export interface Locale {
 }
 
 /**
- * The locale options.
+ * The locale function options.
  */
 export interface LocaleOptions {
   /** The index of the first day of the week (0 - Sunday). */

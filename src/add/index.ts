@@ -12,6 +12,8 @@ import type { Duration } from '../types'
  * @description
  * Add the specified years, months, weeks, days, hours, minutes and seconds to the given date.
  *
+ * @typeParam DateType - the `Date` type, the function operates on. Allows to use `UTCDate`.
+ *
  * @param date - the date to be changed
  * @param duration - the object with years, months, weeks, days, hours, minutes and seconds to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  *
