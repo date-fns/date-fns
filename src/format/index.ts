@@ -352,15 +352,15 @@ export function format<DateType extends Date>(
 
 export function prepareFormat<DateType extends Date>(
   _formatStr: string,
-  _options: PrepareFormatOptions<DateType> | undefined
+  _options: PrepareFormatOptions<DateType>
 ): string;
 export function prepareFormat<DateType extends Date>(
   _formatStr: string,
-  _options?: PrepareFormatOptions<DateType>
+  _options?: FormatOptions
 ): (_date: DateType | number) => string;
 export function prepareFormat<DateType extends Date>(
   formatStr: string,
-  options?: PrepareFormatOptions<DateType>
+  options?: PrepareFormatOptions<DateType> | FormatOptions
 ): ((_date: DateType | number) => string) | string {
   const defaultOptions = getDefaultOptions();
   const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale;
@@ -379,7 +379,8 @@ export function prepareFormat<DateType extends Date>(
     defaultOptions.locale?.options?.weekStartsOn ??
     0;
 
-  const originalDate = options?._date;
+  // We don't care for the undefined case, even later
+  const originalDate = (options as PrepareFormatOptions<DateType>)?._date;
 
   const formatterOptions = {
     firstWeekContainsDate: firstWeekContainsDate as FirstWeekContainsDate,
@@ -451,8 +452,8 @@ export function prepareFormat<DateType extends Date>(
         throw new RangeError(
           "Format string contains an unescaped latin alphabet character `" +
             firstCharacter +
-            "`"
-        );
+            '`'
+        )
       }
 
       return substring;
