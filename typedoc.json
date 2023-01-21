@@ -244,6 +244,5 @@
     "./src/yearsToMonths/index.ts",
     "./src/yearsToQuarters/index.ts"
   ],
-  "json": "./tmp/docs.json",
-  "plugin": ["typedoc-plugin-missing-exports"]
+  "json": "./tmp/docs.json"
 }
