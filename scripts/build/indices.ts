@@ -58,6 +58,7 @@ function generateTypeDoc(fns: Awaited<ReturnType<typeof listFns>>) {
         name: 'date-fns',
         entryPoints: fns.map((fn) => fn.fullPath),
         json: './tmp/docs.json',
+        plugin: ['typedoc-plugin-missing-exports'],
       },
       null,
       2
