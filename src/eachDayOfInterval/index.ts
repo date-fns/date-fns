@@ -14,6 +14,7 @@ export interface EachDayOfIntervalOptions extends StepOptions {}
  * @description
  * Return the array of dates within the specified time interval.
  *
+ * @typeParam DateType - The type of the date to return
  * @param interval - the interval.
  * @param options - an object with options.
  * @returns the array with starts of days from the day of the interval start to the day of the interval end
