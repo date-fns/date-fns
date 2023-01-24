@@ -7,18 +7,26 @@
  * It's a part of the build process.
  */
 
-import { readFnsFromJSON } from '@date-fns/docs'
+import { readRefsFromJSON } from '@date-fns/docs'
 import { mkdir, stat, writeFile } from 'fs/promises'
+import path from 'path'
+import docsConfig from '../../docs/config'
 
 async function main() {
-  const fns = await readFnsFromJSON('tmp/docs.json')
+  const fns = await readRefsFromJSON(
+    docsConfig.config,
+    path.resolve('../../docs/')
+  )
 
   await Promise.all(
-    fns.map(async ({ ref, fn }) => {
-      const hasOptions = !!fn.signatures.find((singature: any) =>
+    fns.map(async (ref) => {
+      if (ref.kind !== 'function') return
+
+      const name = ref.ref.name
+      const hasOptions = !!ref.fn.signatures.find((singature: any) =>
         singature.parameters?.find((p: any) => p.name === 'options')
       )
-      const fnArity = fn.signatures.reduce<number>(
+      const fnArity = ref.fn.signatures.reduce<number>(
         (acc: number, signature: any) =>
           Math.max(acc, signature.parameters?.length || 0),
         0
@@ -37,8 +45,8 @@ async function main() {
       }
 
       return Promise.all([
-        writeFn(hasOptions ? fnArity - 1 : fnArity, ref.name),
-        hasOptions && writeFn(fnArity, ref.name, ref.name + 'WithOptions'),
+        writeFn(hasOptions ? fnArity - 1 : fnArity, name),
+        hasOptions && writeFn(fnArity, name, name + 'WithOptions'),
       ])
     })
   )

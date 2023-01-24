@@ -1602,10 +1602,10 @@
     json-bond "^0.1.0"
     typesaurus "^7.1.0"
 
-"@date-fns/docs@0.15.0":
-  version "0.15.0"
-  resolved "https://registry.yarnpkg.com/@date-fns/docs/-/docs-0.15.0.tgz#d3d68935c8d0fc134a4ea77d5ab82cad6cfc232a"
-  integrity sha512-GcY87rlLJy5KicsnP0Kd7ti4WDGUvfqSRIpRpbIn9QXLV8zNZjK9emQ9AkcQkfuRLn3mLXiNgcETrZoWIRS/Mw==
+"@date-fns/docs@0.21.1":
+  version "0.21.1"
+  resolved "https://registry.yarnpkg.com/@date-fns/docs/-/docs-0.21.1.tgz#e4dc7277c1fb6957bdcbcffbbb2d560018394cda"
+  integrity sha512-pRejd20/ptuMoY9pLXGPh8wy8MBn9zHhNb40bfWcOq++vPt5t/VIT7/upD2qIiAWjdpEyAvFbKQBqjg9zEbyLA==
   dependencies:
     firebase-admin "^11.4.1"
     js-fns "^2.5.2"

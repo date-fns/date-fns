@@ -16,7 +16,7 @@ export interface EachWeekOfIntervalOptions extends WeekOptions, LocaleOptions {}
  * @description
  * Return the array of weeks within the specified time interval.
  *
- * @typeParam DateType - the `Date` type, the function operates on. Allows to use `UTCDate`.
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
  * @param interval - the interval.
  * @param options - an object with options.
@@ -41,10 +41,7 @@ export interface EachWeekOfIntervalOptions extends WeekOptions, LocaleOptions {}
  * //   Sun Nov 23 2014 00:00:00
  * // ]
  */
-export default function eachWeekOfInterval<
-  DateType extends Date,
-  _SomethingElse = string
->(
+export default function eachWeekOfInterval<DateType extends Date>(
   interval: Interval<DateType>,
   options?: EachWeekOfIntervalOptions
 ): DateType[] {

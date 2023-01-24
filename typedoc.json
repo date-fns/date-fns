@@ -242,7 +242,8 @@
     "./src/transpose/index.ts",
     "./src/weeksToDays/index.ts",
     "./src/yearsToMonths/index.ts",
-    "./src/yearsToQuarters/index.ts"
+    "./src/yearsToQuarters/index.ts",
+    "./src/constants/index.ts"
   ],
   "json": "./tmp/docs.json",
   "plugin": ["typedoc-plugin-missing-exports"]
