@@ -51,7 +51,7 @@
     "@babel/preset-env": "^7.18.10",
     "@babel/preset-typescript": "^7.18.6",
     "@date-fns/date-fns-scripts": "0.0.6",
-    "@date-fns/docs": "0.15.0",
+    "@date-fns/docs": "0.21.1",
     "@js-fns/docs": "^0.1.2",
     "@octokit/core": "^3.2.5",
     "@types/jest": "^26.0.23",

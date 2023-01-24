@@ -6,7 +6,7 @@ module.exports.config = {
 
   categories: [
     'General',
-    'Types',
+    'Misc',
     'Common Helpers',
     'Conversion Helpers',
     'Interval Helpers',
@@ -51,14 +51,6 @@ module.exports.config = {
       title: 'Contributing',
       summary: 'Contribution manual',
       path: '../CONTRIBUTING.md',
-    },
-    {
-      type: 'markdown',
-      slug: 'Constants',
-      category: 'General',
-      title: 'Constants',
-      summary: 'Useful constants',
-      path: 'constants.md',
     },
     {
       type: 'markdown',
@@ -133,4 +125,11 @@ module.exports.config = {
       path: '../LICENSE.md',
     },
   ],
+
+  kindsMap: {
+    'src/constants/index.ts': {
+      kind: 'constants',
+      category: 'Misc',
+    },
+  },
 }
