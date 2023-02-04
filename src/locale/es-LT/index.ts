@@ -8,7 +8,7 @@ import type { Locale } from '../types'
 /**
  * @type {Locale}
  * @category Locales
- * @summary Spanish latin locale.
+ * @summary Spanish locale.
  * @language Spanish
  * @iso-639-2 spa
  * @author Juan Angosto [@juanangosto]{@link https://github.com/juanangosto}
@@ -19,7 +19,7 @@ import type { Locale } from '../types'
  * @author Shammaël Bien-Aisé [@kalifuckers]{@link https://github.com/KaliFuckers}
  */
 const locale: Locale = {
-  code: 'es - LT',
+  code: 'es-LT',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

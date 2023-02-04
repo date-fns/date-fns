@@ -31,7 +31,7 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   },
 
   aboutXHours: {
-    one: '1 hora',
+    one: ' 1 hora',
     other: '{{count}} horas',
   },
 
@@ -46,7 +46,7 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   },
 
   aboutXWeeks: {
-    one: '1 semana',
+    one: ' 1 semana',
     other: '{{count}} semanas',
   },
 
@@ -56,7 +56,7 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   },
 
   aboutXMonths: {
-    one: '1 mes',
+    one: ' 1 mes',
     other: '{{count}} meses',
   },
 
@@ -66,7 +66,7 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   },
 
   aboutXYears: {
-    one: 'hace 1 año',
+    one: ' 1 año',
     other: '{{count}} años',
   },
 
