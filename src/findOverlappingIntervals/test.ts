@@ -2,9 +2,9 @@
 
 import assert from 'assert'
 import type { Interval } from '../types'
-import findAllCommonIntervals from './index'
+import findOverlappingIntervals from './index'
 
-describe('findAllCommonIntervals', () => {
+describe('findOverlappingIntervals', () => {
   describe('when no time intervals overlap', () => {
     it('returns empty array for non overlapping intervals in different days', () => {
       const firstInterval: Interval = {
@@ -21,7 +21,7 @@ describe('findAllCommonIntervals', () => {
       }
       const intervals = [firstInterval, secondInterval, thirdInterval]
 
-      const result = findAllCommonIntervals(intervals)
+      const result = findOverlappingIntervals(intervals)
       assert(result.length === 0)
     })
 
@@ -40,7 +40,7 @@ describe('findAllCommonIntervals', () => {
       }
       const intervals = [firstInterval, secondInterval, thirdInterval]
 
-      const result = findAllCommonIntervals(intervals)
+      const result = findOverlappingIntervals(intervals)
       assert(result.length === 0)
     })
 
@@ -59,7 +59,7 @@ describe('findAllCommonIntervals', () => {
       }
       const intervals = [firstInterval, secondInterval, thirdInterval]
 
-      const result = findAllCommonIntervals(intervals)
+      const result = findOverlappingIntervals(intervals)
       assert(result.length === 0)
     })
   })
@@ -76,7 +76,7 @@ describe('findAllCommonIntervals', () => {
       }
       const intervals = [firstInterval, secondInterval]
 
-      const result = findAllCommonIntervals(intervals)
+      const result = findOverlappingIntervals(intervals)
       assert(result.length === 1)
       assert(
         result[0].start.valueOf() === secondInterval.start.valueOf() &&
@@ -95,7 +95,7 @@ describe('findAllCommonIntervals', () => {
       }
       const intervals = [firstInterval, secondInterval]
 
-      const result = findAllCommonIntervals(intervals)
+      const result = findOverlappingIntervals(intervals)
       assert(result.length === 1)
       assert(
         result[0].start.valueOf() === secondInterval.start.valueOf() &&
@@ -129,7 +129,7 @@ describe('findAllCommonIntervals', () => {
         },
       ]
 
-      const result = findAllCommonIntervals(intervals)
+      const result = findOverlappingIntervals(intervals)
       assert(result.length === 2)
       expectedResult.forEach((res, index) => {
         assert(
@@ -161,7 +161,7 @@ describe('findAllCommonIntervals', () => {
         },
       ]
 
-      const result = findAllCommonIntervals(intervals)
+      const result = findOverlappingIntervals(intervals)
       assert(result.length === 1)
       expectedResult.forEach((res, index) => {
         assert(
@@ -214,7 +214,7 @@ describe('findAllCommonIntervals', () => {
         },
       ]
 
-      const result = findAllCommonIntervals(intervals)
+      const result = findOverlappingIntervals(intervals)
       assert(result.length === 3)
       expectedResult.forEach((res, index) => {
         assert(
@@ -236,7 +236,7 @@ describe('findAllCommonIntervals', () => {
     }
     const intervals = [firstInterval, secondInterval]
 
-    const result = findAllCommonIntervals(intervals)
+    const result = findOverlappingIntervals(intervals)
     assert(result.length === 1)
     assert(
       result[0].start.valueOf() === secondInterval.start.valueOf() &&
@@ -245,7 +245,7 @@ describe('findAllCommonIntervals', () => {
   })
 
   it('throws an exception if the start date of any time interval is after the end date', () => {
-    const block = findAllCommonIntervals.bind(null, [
+    const block = findOverlappingIntervals.bind(null, [
       { start: new Date(2023, 1, 19), end: new Date(2023, 1, 20) },
       { start: new Date(2023, 1, 20), end: new Date(2023, 1, 19) },
     ])
@@ -253,7 +253,7 @@ describe('findAllCommonIntervals', () => {
   })
 
   it('throws an exception if the start date of any time interval is `Invalid Date`', () => {
-    const block = findAllCommonIntervals.bind(null, [
+    const block = findOverlappingIntervals.bind(null, [
       { start: new Date(NaN), end: new Date(2023, 1, 20) },
       { start: new Date(2023, 1, 20), end: new Date(2023, 1, 19) },
     ])
@@ -261,7 +261,7 @@ describe('findAllCommonIntervals', () => {
   })
 
   it('throws an exception if the end date of any time interval is `Invalid Date`', () => {
-    const block = findAllCommonIntervals.bind(null, [
+    const block = findOverlappingIntervals.bind(null, [
       { start: new Date(2023, 1, 19), end: new Date(2023, 1, 20) },
       { start: new Date(2023, 1, 20), end: new Date(NaN) },
     ])

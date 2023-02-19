@@ -5,7 +5,7 @@ import isAfter from '../isAfter/index'
 import type { Interval } from '../types'
 
 /**
- * @name findAllCommonIntervals
+ * @name findOverlappingIntervals
  * @category Interval Helpers
  * @summary Return an array containing all the common intervals from the given intervals list.
  *
@@ -20,7 +20,7 @@ import type { Interval } from '../types'
  *
  * @example
  * // For two overlapping time intervals
- * findAllCommonIntervals([
+ * findOverlappingIntervals([
  *   { start: new Date(2023, 1, 19, 10), end: new Date(2023, 1, 19, 18) },
  *   { start: new Date(2023, 1, 19, 16), end: new Date(2023, 1, 19, 20) }
  * ])
@@ -28,7 +28,7 @@ import type { Interval } from '../types'
  *
  * @example
  * // For three overlapping time intervals
- * findAllCommonIntervals([
+ * findOverlappingIntervals([
  *   { start: new Date(2023, 1, 19, 10), end: new Date(2023, 1, 19, 14) },
  *   { start: new Date(2023, 1, 19, 12), end: new Date(2023, 1, 19, 18) },
  *   { start: new Date(2023, 1, 19, 16), end: new Date(2023, 1, 19, 20) }
@@ -38,7 +38,7 @@ import type { Interval } from '../types'
  * //     { start: new Date(2023, 1, 19, 16), end: new Date(2023, 1, 19, 18) }
  * //   ]
  *
- * findAllCommonIntervals([
+ * findOverlappingIntervals([
  *   { start: new Date(2023, 1, 19, 10), end: new Date(2023, 1, 19, 20) },
  *   { start: new Date(2023, 1, 19, 12), end: new Date(2023, 1, 19, 18) },
  *   { start: new Date(2023, 1, 19, 14), end: new Date(2023, 1, 19, 16) }
@@ -47,7 +47,7 @@ import type { Interval } from '../types'
  *
  * @example
  * // For two overlapping time intervals and one non overlapping
- * findAllCommonIntervals([
+ * findOverlappingIntervals([
  *   { start: new Date(2023, 1, 19, 10), end: new Date(2023, 1, 19, 14) },
  *   { start: new Date(2023, 1, 19, 12), end: new Date(2023, 1, 19, 16) },
  *   { start: new Date(2023, 1, 19, 20), end: new Date(2023, 1, 19, 22) }
@@ -56,14 +56,14 @@ import type { Interval } from '../types'
  *
  * @example
  * // For non overlapping time intervals
- * findAllCommonIntervals([
+ * findOverlappingIntervals([
  *   { start: new Date(2023, 1, 19, 10), end: new Date(2023, 1, 19, 12) },
  *   { start: new Date(2023, 1, 19, 12), end: new Date(2023, 1, 19, 14) },
  *   { start: new Date(2023, 1, 19, 14), end: new Date(2023, 1, 19, 16) }
  * ])
  * //=>[]
  */
-const findAllCommonIntervals = (intervals: Interval[]): Interval[] => {
+const findOverlappingIntervals = (intervals: Interval[]): Interval[] => {
   if (intervals.length < 2) {
     return []
   }
@@ -126,4 +126,4 @@ const findAllCommonIntervals = (intervals: Interval[]): Interval[] => {
   return result
 }
 
-export default findAllCommonIntervals
+export default findOverlappingIntervals
