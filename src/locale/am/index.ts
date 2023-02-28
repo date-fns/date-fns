@@ -14,7 +14,7 @@ import type { Locale } from '../types'
  * @author Lourens de Villiers [@lourensdev]{@link https://github.com/lourensdev}
  */
 const locale: Locale = {
-  code: 'et',
+  code: 'am',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
