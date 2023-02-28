@@ -63,8 +63,8 @@ const parseMonthPatterns = {
 const matchDayPatterns = {
   narrow: /^[እሰሰረሐሐቅ]/i,
   short: /^(እ|ሰ|ሰ|ረ|ሐ|ሐ|ቅ)/i,
-  abbreviated: /^(እሑድ|ሰኞ|ማክሰ|ረቡዕ|ሐሙስ|ዓርብ|ቅዳሜ)/i,
-  wide: /^(እሑድ|ሰኞ|ማክሰኞ|ረቡዕ|ሐሙስ|ዓርብ|ቅዳሜ)/i,
+  abbreviated: /^(እሁድ|ሰኞ|ማክሰ|ረቡዕ|ሐሙስ|ዓርብ|ቅዳሜ)/i,
+  wide: /^(እሁድ|ሰኞ|ማክሰኞ|ረቡዕ|ሐሙስ|ዓርብ|ቅዳሜ)/i,
 }
 const parseDayPatterns = {
   narrow: [/^እ/i, /^ሰ/i, /^ሰ/i, /^ረ/i, /^ሐ/i, /^ሐ/i, /^ቅ/i] as const,
