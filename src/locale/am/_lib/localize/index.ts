@@ -49,8 +49,8 @@ const monthValues = {
 const dayValues = {
   narrow: ['እ', 'ሰ', 'ሰ', 'ረ', 'ሐ', 'ሐ', 'ቅ'] as const,
   short: ['እ', 'ሰ', 'ሰ', 'ረ', 'ሐ', 'ሐ', 'ቅ'] as const,
-  abbreviated: ['እሁድ', 'ሰኞ', 'ምክሰኞ', 'ዕሮብ', 'ሐሙስ', 'አርብ', 'ቅዳሜ'] as const,
-  wide: ['እሁድ', 'ሰኞ', 'ምክ', 'ዕሮ', 'ሐሙ', 'አር', 'ቅዳ'] as const,
+  abbreviated: ['እሁድ', 'ሰኞ', 'ምክ', 'ዕሮ', 'ሐሙ', 'አር', 'ቅዳ'] as const,
+  wide: ['እሁድ', 'ሰኞ', 'ምክሰኞ', 'ዕሮብ', 'ሐሙስ', 'አርብ', 'ቅዳሜ'] as const,
 }
 
 const dayPeriodValues = {
