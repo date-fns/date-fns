@@ -5,7 +5,7 @@ const formatRelativeLocale = {
   yesterday: "'eile kell' p",
   today: "'täna kell' p",
   tomorrow: "'homme kell' p",
-  nextWeek: "'järgmine' eeee 'kell' p",
+  nextWeek: "eeee 'kell' p",
   other: 'P',
 }
 
