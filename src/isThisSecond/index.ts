@@ -4,6 +4,7 @@ import isSameSecond from '../isSameSecond/index'
  * @name isThisSecond
  * @category Second Helpers
  * @summary Is the given date in the same second as the current date?
+ * @pure false
  *
  * @description
  * Is the given date in the same second as the current date?

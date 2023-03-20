@@ -2,6 +2,7 @@
  * @name startOfYesterday
  * @category Day Helpers
  * @summary Return the start of yesterday.
+ * @pure false
  *
  * @description
  * Return the start of yesterday.

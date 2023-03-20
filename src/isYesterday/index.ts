@@ -5,6 +5,7 @@ import subDays from '../subDays/index'
  * @name isYesterday
  * @category Day Helpers
  * @summary Is the given date yesterday?
+ * @pure false
  *
  * @description
  * Is the given date yesterday?

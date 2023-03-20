@@ -4,6 +4,7 @@ import isSameMinute from '../isSameMinute/index'
  * @name isThisMinute
  * @category Minute Helpers
  * @summary Is the given date in the same minute as the current date?
+ * @pure false
  *
  * @description
  * Is the given date in the same minute as the current date?

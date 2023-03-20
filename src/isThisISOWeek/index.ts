@@ -4,6 +4,7 @@ import isSameISOWeek from '../isSameISOWeek/index'
  * @name isThisISOWeek
  * @category ISO Week Helpers
  * @summary Is the given date in the same ISO week as the current date?
+ * @pure false
  *
  * @description
  * Is the given date in the same ISO week as the current date?

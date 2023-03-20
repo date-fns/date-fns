@@ -2,6 +2,7 @@
  * @name endOfTomorrow
  * @category Day Helpers
  * @summary Return the end of tomorrow.
+ * @pure false
  *
  * @description
  * Return the end of tomorrow.
