@@ -4,6 +4,7 @@ import toDate from '../toDate/index'
  * @name isPast
  * @category Common Helpers
  * @summary Is the given date in the past?
+ * @pure false
  *
  * @description
  * Is the given date in the past?

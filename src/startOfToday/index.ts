@@ -4,6 +4,7 @@ import startOfDay from '../startOfDay/index'
  * @name startOfToday
  * @category Day Helpers
  * @summary Return the start of today.
+ * @pure false
  *
  * @description
  * Return the start of today.

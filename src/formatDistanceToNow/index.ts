@@ -9,6 +9,7 @@ export interface FormatDistanceToNowOptions extends FormatDistanceOptions {}
  * @name formatDistanceToNow
  * @category Common Helpers
  * @summary Return the distance between the given date and now in words.
+ * @pure false
  *
  * @description
  * Return the distance between the given date and now in words.

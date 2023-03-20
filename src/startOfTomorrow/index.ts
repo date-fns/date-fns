@@ -2,6 +2,7 @@
  * @name startOfTomorrow
  * @category Day Helpers
  * @summary Return the start of tomorrow.
+ * @pure false
  *
  * @description
  * Return the start of tomorrow.

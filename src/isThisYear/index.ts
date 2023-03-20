@@ -4,6 +4,7 @@ import isSameYear from '../isSameYear/index'
  * @name isThisYear
  * @category Year Helpers
  * @summary Is the given date in the same year as the current date?
+ * @pure false
  *
  * @description
  * Is the given date in the same year as the current date?

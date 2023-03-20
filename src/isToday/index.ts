@@ -4,6 +4,7 @@ import isSameDay from '../isSameDay/index'
  * @name isToday
  * @category Day Helpers
  * @summary Is the given date today?
+ * @pure false
  *
  * @description
  * Is the given date today?
