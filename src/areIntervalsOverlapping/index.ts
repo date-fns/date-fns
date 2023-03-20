@@ -20,8 +20,8 @@ export interface AreIntervalsOverlappingOptions {
  * @param intervalRight - the second interval to compare.
  * @param options - the object with options
  * @returns whether the time intervals are overlapping
- * @throws {RangeError} The start of an interval cannot be after its end
- * @throws {RangeError} Date in interval cannot be `Invalid Date`
+ * @throws RangeError - The start of an interval cannot be after its end
+ * @throws RangeError - Date in interval cannot be `Invalid Date`
  *
  * @example
  * // For overlapping time intervals:
