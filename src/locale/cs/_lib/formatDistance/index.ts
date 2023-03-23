@@ -39,7 +39,7 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
 
   xSeconds: {
     one: {
-      regular: 'sekunda',
+      regular: '1 sekunda',
       past: 'před sekundou',
       future: 'za sekundu',
     },
@@ -84,7 +84,7 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
 
   xMinutes: {
     one: {
-      regular: 'minuta',
+      regular: '1 minuta',
       past: 'před minutou',
       future: 'za minutu',
     },
@@ -120,7 +120,7 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
 
   xHours: {
     one: {
-      regular: 'hodina',
+      regular: '1 hodina',
       past: 'před hodinou',
       future: 'za hodinu',
     },
@@ -138,7 +138,7 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
 
   xDays: {
     one: {
-      regular: 'den',
+      regular: '1 den',
       past: 'před dnem',
       future: 'za den',
     },
@@ -176,7 +176,7 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
 
   xWeeks: {
     one: {
-      regular: 'týden',
+      regular: '1 týden',
       past: 'před týdnem',
       future: 'za týden',
     },
@@ -216,7 +216,7 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
 
   xMonths: {
     one: {
-      regular: 'měsíc',
+      regular: '1 měsíc',
       past: 'před měsícem',
       future: 'za měsíc',
     },
@@ -254,7 +254,7 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
 
   xYears: {
     one: {
-      regular: 'rok',
+      regular: '1 rok',
       past: 'před rokem',
       future: 'za rok',
     },
