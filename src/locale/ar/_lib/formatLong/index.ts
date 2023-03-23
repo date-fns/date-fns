@@ -9,10 +9,10 @@ const dateFormats = {
 }
 
 const timeFormats = {
-  full: 'HH:mm:ss',
-  long: 'HH:mm:ss',
-  medium: 'HH:mm:ss',
-  short: 'HH:mm',
+  full: 'hh:mm:ss a',
+  long: 'hh:mm:ss a',
+  medium: 'hh:mm:ss a',
+  short: 'hh:mm a',
 }
 
 const dateTimeFormats = {
