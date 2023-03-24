@@ -9,8 +9,8 @@ const dateFormats = {
 }
 
 const timeFormats = {
-  full: 'hh:mm:ss a',
-  long: 'hh:mm:ss a',
+  full: 'hh:mm:ss a zzzz',
+  long: 'hh:mm:ss a z',
   medium: 'hh:mm:ss a',
   short: 'hh:mm a',
 }
