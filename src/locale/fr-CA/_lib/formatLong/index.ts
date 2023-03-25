@@ -5,14 +5,14 @@ const dateFormats = {
   full: 'EEEE d MMMM y',
   long: 'd MMMM y',
   medium: 'd MMM y',
-  short: 'yy-MM-dd',
+  short: 'y-MM-dd',
 }
 
 const timeFormats = {
-  full: 'HH:mm:ss zzzz',
-  long: 'HH:mm:ss z',
-  medium: 'HH:mm:ss',
-  short: 'HH:mm',
+  full: "HH 'h' mm 'min' ss 's' zzzz",
+  long: "HH 'h' mm 'min' ss 's' z",
+  medium: "HH 'h' mm 'min' ss 's'",
+  short: "HH 'h' mm",
 }
 
 const dateTimeFormats = {
