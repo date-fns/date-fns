@@ -30,11 +30,11 @@ import isDate from '../isDate/index'
  * const result = isValid(new Date(''))
  * //=> false
  */
-export default function isValid(dirtyDate: unknown): boolean {
-  if (typeof dirtyDate === 'number') {
-    return !isNaN(dirtyDate)
-  } else if (isDate(dirtyDate)) {
-    return !isNaN(dirtyDate.getTime())
+export default function isValid(date: unknown): boolean {
+  if (typeof date === 'number') {
+    return !isNaN(date)
+  } else if (isDate(date)) {
+    return !isNaN(date.getTime())
   }
   return false
 }
