@@ -52,10 +52,6 @@ function firstTickInLocalDay(date: Date): Date {
   return prev
 }
 
-function fiveMinutesLater(date: Date): Date {
-  return new Date(date.getTime() + 5 * MINUTE)
-}
-
 function oneDayLater(date: Date): Date {
   const d = new Date(date)
   d.setDate(d.getDate() + 1)
@@ -113,16 +109,24 @@ export function getTzOffsetTransitions(year: number) {
         // yesterday. Back up one day and find the minute where it happened.
         let transitionDate = new Date(date.getTime())
         transitionDate.setDate(transitionDate.getDate() - 1)
-
-        // Iterate through each 5 mins of the day until we find a transition.
-        // TODO: this could be optimized to search hours then minutes or by or
-        // by using a binary search.
+        // Iterate through each 5 mins of the day until we find a transition using binary search.
         const dayNumber = transitionDate.getDate()
-        while (
-          isValidDate(transitionDate) &&
-          transitionDate.getDate() === dayNumber
-        ) {
+        let start = transitionDate.getTime()
+        let end = new Date(
+          transitionDate.getFullYear(),
+          transitionDate.getMonth(),
+          dayNumber,
+          23,
+          59,
+          59,
+          999
+        ).getTime()
+
+        while (start <= end) {
+          let mid = Math.floor((start + end) / 2)
+          transitionDate.setTime(mid)
           tzOffset = transitionDate.getTimezoneOffset()
+
           if (baseTzOffset !== tzOffset) {
             transitions.push({
               date: transitionDate,
@@ -133,7 +137,12 @@ export function getTzOffsetTransitions(year: number) {
             baseTzOffset = tzOffset
             break // assuming only 1 transition per day
           }
-          transitionDate = fiveMinutesLater(transitionDate)
+
+          if (tzOffset < baseTzOffset) {
+            start = mid + 5 * MINUTE
+          } else {
+            end = mid - 5 * MINUTE
+          }
         }
       }
     }
