@@ -12,7 +12,6 @@ const transformRuntimeOptions = {
     /^\^/,
     ''
   ),
-  regenerator: false,
 }
 
 if (process.env.BABEL_ENV !== 'esm') {
