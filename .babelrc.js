@@ -7,8 +7,21 @@ const presets = [
 ]
 const plugins = ['@babel/plugin-proposal-class-properties']
 
+const transformRuntimeOptions = {
+  version: require('./package.json').dependencies['@babel/runtime'].replace(
+    /^\^/,
+    ''
+  ),
+}
+
 if (process.env.BABEL_ENV !== 'esm') {
   plugins.push('babel-plugin-add-module-exports')
+  plugins.push(['@babel/plugin-transform-runtime', transformRuntimeOptions])
+} else {
+  plugins.push([
+    '@babel/plugin-transform-runtime',
+    { ...transformRuntimeOptions, useESModules: true },
+  ])
 }
 
 if (process.env.BABEL_ENV === 'esm' || process.env.BABEL_ENV === 'commonjs') {
