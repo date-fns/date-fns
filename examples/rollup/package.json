@@ -6,20 +6,20 @@
   "author": "Sasha Koss <koss@nocorp.me>",
   "license": "MIT",
   "dependencies": {
+    "@rollup/plugin-commonjs": "^24.1.0",
+    "@rollup/plugin-node-resolve": "^15.0.2",
     "babili": "^0.0.9",
     "gzip-size-cli": "^1.0.0",
     "pretty-bytes-cli": "^2.0.0",
-    "rollup": "^0.41.1",
-    "rollup-plugin-commonjs": "^7.0.0",
-    "rollup-plugin-node-resolve": "^2.0.0"
+    "rollup": "^3.21.1"
   },
   "scripts": {
     "build": "yarn run build-date-fns && yarn run build-rollup && yarn run build-babili",
     "build-date-fns": "env PACKAGE_OUTPUT_PATH=\"$(pwd)/node_modules/date-fns\" ../../scripts/build/package.sh",
     "build-rollup": "yarn run build-rollup-example && yarn run build-rollup-fp && yarn run build-rollup-misc",
-    "build-rollup-example": "rollup -c rollup.config.example.js",
-    "build-rollup-fp": "rollup -c rollup.config.fp.js",
-    "build-rollup-misc": "rollup -c rollup.config.misc.js",
+    "build-rollup-example": "rollup -c rollup.config.example.mjs",
+    "build-rollup-fp": "rollup -c rollup.config.fp.mjs",
+    "build-rollup-misc": "rollup -c rollup.config.misc.mjs",
     "build-babili": "yarn run build-babili-example && yarn run build-babili-fp && yarn run build-babili-misc && yarn run stats-size",
     "build-babili-example": "babili dist/example.js --out-file dist/example.min.js --minified --no-comments",
     "build-babili-fp": "babili dist/fp.js --out-file dist/fp.min.js --minified --no-comments",
