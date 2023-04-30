@@ -33,7 +33,8 @@ import { getDefaultOptions } from '../_lib/defaultOptions/index'
 //   If there is no matching single quote
 //   then the sequence will continue until the end of the string.
 // - . matches any single character unmatched by previous parts of the RegExps
-const formattingTokensRegExp = /[yYQqMLwIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)|./g
+const formattingTokensRegExp =
+  /[yYQqMLwIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)|./g
 
 // This RegExp catches symbols escaped by quotes, and also
 // sequences of symbols P, p, and the combinations like `PPPPPPPppppp`
@@ -425,7 +426,7 @@ export default function parse(
     .join('')
     .match(formattingTokensRegExp)!
 
-  const usedTokens = []
+  const usedTokens: UsedToken[] = []
 
   for (let token of tokens) {
     if (
@@ -550,4 +551,9 @@ export default function parse(
 
 function cleanEscapedString(input: string) {
   return input.match(escapedStringRegExp)![1].replace(doubleQuoteRegExp, "'")
+}
+
+interface UsedToken {
+  token: string
+  fullToken: string
 }
