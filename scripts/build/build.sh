@@ -8,5 +8,5 @@ set -ex
 
 ./scripts/build/docs.js
 ./scripts/build/fp.ts
-./scripts/build/typings.js
-./scripts/build/indices.ts
+yarn ts-node ./scripts/build/typings.js
+yarn ts-node ./scripts/build/indices.ts
