@@ -8,6 +8,14 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## v2.30.0 - 2023-04-30
+
+Kudos to @kossnocorp and @Andarist for working on the release.
+
+### Changes
+
+- Fixed increased build size after enabling compatibility with older browsers in the previous release. This was done by adding @babel/runtime as a dependency. [See more details](https://github.com/date-fns/date-fns/issues/3208#issuecomment-1528592465).
+
 ## v2.29.3 - 2022-09-13
 
 This release is prepared by our own @leshakoss.
