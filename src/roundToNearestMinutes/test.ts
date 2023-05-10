@@ -102,14 +102,26 @@ describe('roundToNearestMinutes', () => {
     assert(result instanceof Date && isNaN(result.getTime()))
   })
 
-  it('throws `RangeError` if nearestTo is not between 1 and 30', () => {
+  it('throws `RangeError` if nearestTo is not a positive factor of 60', () => {
     const date = new Date(2014, 6 /* Jul */, 10, 12, 10, 30)
     assert.throws(
-      roundToNearestMinutes.bind(null, date, { nearestTo: 31 }),
+      roundToNearestMinutes.bind(null, date, { nearestTo: -1 }),
       RangeError
     )
     assert.throws(
       roundToNearestMinutes.bind(null, date, { nearestTo: 0 }),
+      RangeError
+    )
+    assert.throws(
+      roundToNearestMinutes.bind(null, date, { nearestTo: 120 }),
+      RangeError
+    )
+    assert.throws(
+      roundToNearestMinutes.bind(null, date, { nearestTo: 61 }),
+      RangeError
+    )
+    assert.throws(
+      roundToNearestMinutes.bind(null, date, { nearestTo: 7 }),
       RangeError
     )
   })
