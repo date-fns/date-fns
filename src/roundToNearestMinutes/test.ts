@@ -81,6 +81,14 @@ describe('roundToNearestMinutes', () => {
     assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 20, 0))
   })
 
+  it('wraps round the hour', () => {
+    const result = roundToNearestMinutes(
+      new Date(2014, 6 /* Jul */, 10, 11, 0, 1),
+      { nearestTo: 60, roundingMethod: 'ceil' }
+    )
+    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12))
+  })
+
   it('rounds according to the passed mode - round - when nearestTo is provided', () => {
     const result = roundToNearestMinutes(
       new Date(2014, 6 /* Jul */, 10, 12, 10, 30, 5),
