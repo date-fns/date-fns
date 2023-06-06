@@ -9,7 +9,7 @@ import toDate from '../toDate/index'
  * Return the end of a month for the given date.
  * The result will be in the local timezone.
  *
- * @param date - the original date
+ * @param dirtyDate - the original date
  * @returns the end of a month
  *
  * @example
