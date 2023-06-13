@@ -47,12 +47,12 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
 
   aboutXWeeks: {
     one: 'ungefär en vecka',
-    other: 'ungefär {{count}} vecka',
+    other: 'ungefär {{count}} veckor',
   },
 
   xWeeks: {
     one: 'en vecka',
-    other: '{{count}} vecka',
+    other: '{{count}} veckor',
   },
 
   aboutXMonths: {
