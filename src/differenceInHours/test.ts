@@ -72,6 +72,15 @@ describe('differenceInHours', () => {
     assert(result === 1)
   })
 
+  it('returns 1.6 with a rounding function which rounds with a scale of 1', () => {
+    const result = differenceInHours(
+      new Date(2021, 6 /* Jul */, 22, 7, 35, 29, 976),
+      new Date(2021, 6 /* Jul */, 22, 6, 1, 28, 173),
+      { roundingMethod: (value: number) => Math.round(value * 10) / 10 }
+    )
+    assert(result === 1.6)
+  })
+
   it('accepts timestamps', () => {
     const result = differenceInHours(
       new Date(2014, 8 /* Sep */, 5, 18, 0).getTime(),

@@ -86,8 +86,10 @@ export interface DateValues {
 
 export type RoundingMethod = 'ceil' | 'floor' | 'round' | 'trunc'
 
+export type RoundingFn = typeof Math.round
+
 export interface RoundingOptions {
-  roundingMethod?: RoundingMethod
+  roundingMethod?: RoundingMethod | RoundingFn
 }
 
 export type Unit =

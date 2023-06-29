@@ -56,6 +56,15 @@ describe('differenceInMinutes', () => {
     assert(result === 15)
   })
 
+  it('returns 1.6 with a rounding function which rounds with a scale of 1', () => {
+    const result = differenceInMinutes(
+      new Date(2021, 6 /* Jul */, 2, 12, 2, 59, 676),
+      new Date(2021, 6 /* Jul */, 2, 12, 1, 22, 173),
+      { roundingMethod: (value: number) => Math.round(value * 10) / 10 }
+    )
+    assert(result === 1.6)
+  })
+
   it('returns a negative number if the time value of the first date is smaller', () => {
     const result = differenceInMinutes(
       new Date(2014, 6 /* Jul */, 2, 12, 6),
