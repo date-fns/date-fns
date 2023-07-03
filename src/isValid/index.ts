@@ -14,7 +14,7 @@ import toDate from '../toDate/index'
  * Time value of Date: http://es5.github.io/#x15.9.1.1
  *
  * @param date - the date to check
- * @returns the date is valid
+ * @returns the date is a valid date or a number convertable into a date
  *
  * @example
  * // For the valid date:
@@ -31,7 +31,9 @@ import toDate from '../toDate/index'
  * const result = isValid(new Date(''))
  * //=> false
  */
-export default function isValid(dirtyDate: unknown): boolean {
+export default function isValid(
+  dirtyDate: unknown
+): dirtyDate is number | Date {
   if (!isDate(dirtyDate) && typeof dirtyDate !== 'number') {
     return false
   }
