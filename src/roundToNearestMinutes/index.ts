@@ -46,7 +46,8 @@ export default function roundToNearestMinutes<DateType extends Date>(
   }
 
   const date = toDate(dirtyDate)
-  const seconds = date.getSeconds() // relevant if nearestTo is 1, which is the default case
+  const milliseconds = date.getMilliseconds()
+  const seconds = date.getSeconds() + milliseconds / 1000
   const minutes = date.getMinutes() + seconds / 60
   const roundingMethod = getRoundingMethod(options?.roundingMethod)
   const roundedMinutes = roundingMethod(minutes / nearestTo) * nearestTo
