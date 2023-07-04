@@ -1,29 +1,14 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import roundToNearestMinutes from './index'
+import roundToNearestMinutes, { RoundToNearestMinutesOptions } from './index'
 
 describe('roundToNearestMinutes', () => {
-  it('rounds given date to the nearest minute by default', () => {
-    const result = roundToNearestMinutes(
-      new Date(2014, 6 /* Jul */, 10, 12, 16, 16)
-    )
-    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 16, 0))
-  })
-
   it('accepts a timestamp', () => {
     const result = roundToNearestMinutes(
       new Date(2014, 6 /* Jul */, 10, 12, 13, 16).getTime()
     )
     assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 13, 0))
-  })
-
-  it('rounds to the closest x minutes if nearestTo is provided', () => {
-    const result = roundToNearestMinutes(
-      new Date(2014, 6 /* Jul */, 10, 12, 10, 30),
-      { nearestTo: 4 }
-    )
-    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 12, 0))
   })
 
   it('rounds up >=30 seconds for nearestTo=1', () => {
@@ -51,47 +36,55 @@ describe('roundToNearestMinutes', () => {
 
   it('rounds according to the passed mode - floor', () => {
     const result = roundToNearestMinutes(
-      new Date(2014, 6 /* Jul */, 10, 12, 10, 30, 5),
+      new Date(2014, 6 /* Jul */, 10, 12, 10, 59, 999),
       { roundingMethod: 'floor' }
     )
-    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 11, 0))
+    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 10))
   })
 
   it('rounds according to the passed mode - floor - when nearestTo is provided', () => {
     const result = roundToNearestMinutes(
-      new Date(2014, 6 /* Jul */, 10, 12, 10, 30, 5),
+      new Date(2014, 6 /* Jul */, 10, 12, 19, 59, 999),
       { nearestTo: 10, roundingMethod: 'floor' }
     )
-    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 10, 0))
+    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 10))
   })
 
   it('rounds according to the passed mode - ceil', () => {
     const result = roundToNearestMinutes(
-      new Date(2014, 6 /* Jul */, 10, 12, 10, 30, 5),
+      new Date(2014, 6 /* Jul */, 10, 12, 10, 0, 1),
       { roundingMethod: 'ceil' }
     )
-    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 12, 0))
+    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 11))
   })
 
   it('rounds according to the passed mode - ceil - when nearestTo is provided', () => {
     const result = roundToNearestMinutes(
-      new Date(2014, 6 /* Jul */, 10, 12, 10, 30, 5),
+      new Date(2014, 6 /* Jul */, 10, 12, 10, 0, 1),
       { nearestTo: 10, roundingMethod: 'ceil' }
     )
-    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 20, 0))
+    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 20))
   })
 
-  it('rounds according to the passed mode - round - when nearestTo is provided', () => {
+  it('rounds down according to the passed mode - round - when nearestTo is provided', () => {
     const result = roundToNearestMinutes(
-      new Date(2014, 6 /* Jul */, 10, 12, 10, 30, 5),
+      new Date(2014, 6 /* Jul */, 10, 12, 14, 59, 999),
       { nearestTo: 10, roundingMethod: 'round' }
     )
-    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 10, 0))
+    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 10))
+  })
+
+  it('rounds up according to the passed mode - round - when nearestTo is provided', () => {
+    const result = roundToNearestMinutes(
+      new Date(2014, 6 /* Jul */, 10, 12, 15),
+      { nearestTo: 10, roundingMethod: 'round' }
+    )
+    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 20))
   })
 
   it('rounds according to the passed mode - trunc - when nearestTo is provided', () => {
     const result = roundToNearestMinutes(
-      new Date(2014, 6 /* Jul */, 10, 12, 10, 30, 5),
+      new Date(2014, 6 /* Jul */, 10, 12, 19, 59, 999),
       { nearestTo: 10, roundingMethod: 'trunc' }
     )
     assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 10, 0))
