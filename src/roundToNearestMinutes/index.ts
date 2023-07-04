@@ -49,7 +49,7 @@ export default function roundToNearestMinutes<DateType extends Date>(
   const milliseconds = date.getMilliseconds()
   const seconds = date.getSeconds() + milliseconds / 1000
   const minutes = date.getMinutes() + seconds / 60
-  const roundingMethod = getRoundingMethod(options?.roundingMethod)
+  const roundingMethod = getRoundingMethod(options?.roundingMethod || 'round')
   const roundedMinutes = roundingMethod(minutes / nearestTo) * nearestTo
 
   const result = constructFrom(date, date)
