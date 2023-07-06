@@ -16,13 +16,13 @@ export interface RoundToNearestMinutesOptions extends RoundingOptions {
  * @summary Rounds the given date to the nearest minute
  *
  * @description
- * Rounds the given date to the nearest minute (or number of minutes).
- * Rounds up when the given date is exactly between the nearest round minutes.
+ * Rounds the given date to the nearest minute (or whole multiple of minutes past the hour).
+ * Rounds up when the given date is exactly between the nearest whole multiple of minutes past the hour.
  *
  * @param date - the date to round
  * @param options - an object with options.
- * @returns the new date rounded to the closest minute
- * @throws {RangeError} `options.nearestTo` must be between 1 and 30
+ * @returns the new date rounded to the closest minute or whole multiple of minutes past the hour
+ * @throws {RangeError} `options.nearestTo` must be a factor of 60
  *
  * @example
  * // Round 10 July 2014 12:12:34 to nearest minute:
@@ -41,8 +41,8 @@ export default function roundToNearestMinutes<DateType extends Date>(
 ): DateType {
   const nearestTo = options?.nearestTo ?? 1
 
-  if (nearestTo < 1 || nearestTo > 30) {
-    throw new RangeError('`options.nearestTo` must be between 1 and 30')
+  if (nearestTo < 1 || 60 % nearestTo !== 0) {
+    throw new RangeError('`options.nearestTo` must be a positive factor of 60')
   }
 
   const date = toDate(dirtyDate)
