@@ -9,9 +9,6 @@ import endOfDay from '../endOfDay/index'
  * @description
  * Return the end of today.
  *
- * > ⚠️ Please note that this function is not present in the FP submodule as
- * > it uses `Date.now()` internally hence impure and can't be safely curried.
- *
  * @returns the end of today
  *
  * @example

@@ -9,9 +9,6 @@ import isSameQuarter from '../isSameQuarter/index'
  * @description
  * Is the given date in the same quarter as the current date?
  *
- * > ⚠️ Please note that this function is not present in the FP submodule as
- * > it uses `Date.now()` internally hence impure and can't be safely curried.
- *
  * @param date - the date to check
  * @returns the date is in this quarter
  *

@@ -43,9 +43,6 @@ export interface FormatDistanceToNowOptions extends FormatDistanceOptions {}
  * | 40 secs ... 60 secs | less than a minute   |
  * | 60 secs ... 90 secs | 1 minute             |
  *
- * > ⚠️ Please note that this function is not present in the FP submodule as
- * > it uses `Date.now()` internally hence impure and can't be safely curried.
- *
  * @param date - the given date
  * @param options - the object with options
  * @returns the distance in words

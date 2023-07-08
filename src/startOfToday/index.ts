@@ -9,9 +9,6 @@ import startOfDay from '../startOfDay/index'
  * @description
  * Return the start of today.
  *
- * > ⚠️ Please note that this function is not present in the FP submodule as
- * > it uses `Date.now()` internally hence impure and can't be safely curried.
- *
  * @returns the start of today
  *
  * @example
