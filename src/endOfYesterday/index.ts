@@ -7,9 +7,6 @@
  * @description
  * Return the end of yesterday.
  *
- * > ⚠️ Please note that this function is not present in the FP submodule as
- * > it uses `new Date()` internally hence impure and can't be safely curried.
- *
  * @returns the end of yesterday
  *
  * @example

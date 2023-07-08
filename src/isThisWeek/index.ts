@@ -15,9 +15,6 @@ export interface IsThisWeekOptions extends WeekOptions, LocaleOptions {}
  * @description
  * Is the given date in the same week as the current date?
  *
- * > ⚠️ Please note that this function is not present in the FP submodule as
- * > it uses `Date.now()` internally hence impure and can't be safely curried.
- *
  * @param date - the date to check
  * @param options - the object with options
  * @returns the date is in this week

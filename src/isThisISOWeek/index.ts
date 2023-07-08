@@ -11,9 +11,6 @@ import isSameISOWeek from '../isSameISOWeek/index'
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * > ⚠️ Please note that this function is not present in the FP submodule as
- * > it uses `Date.now()` internally hence impure and can't be safely curried.
- *
  * @param date - the date to check
  * @returns the date is in this ISO week
  *

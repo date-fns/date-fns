@@ -9,9 +9,6 @@ import isSameDay from '../isSameDay/index'
  * @description
  * Is the given date today?
  *
- * > ⚠️ Please note that this function is not present in the FP submodule as
- * > it uses `Date.now()` internally hence impure and can't be safely curried.
- *
  * @param date - the date to check
  * @returns the date is today
  *
