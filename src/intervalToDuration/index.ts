@@ -31,7 +31,7 @@ import type { Duration, Interval } from '../types'
  * })
  * // => { years: 39, months: 2, days: 20, hours: 7, minutes: 5, seconds: 0 }
  */
-export default function interval<DateType extends Date>(
+export default function intervalToDuration<DateType extends Date>(
   interval: Interval<DateType>
 ): Duration {
   const start = toDate(interval.start)
@@ -43,24 +43,66 @@ export default function interval<DateType extends Date>(
     throw new RangeError('The start of an interval cannot be after its end')
   }
 
-  const duration: Duration = {
-    years: differenceInYears(end, start),
+  let backtrack = makeDuration()
+
+  // eslint-disable-next-line no-constant-condition
+  while (true) {
+    const duration: Duration = {
+      years: differenceInYears(end, start) - backtrack.years,
+    }
+
+    const remainingMonths = add(start, { years: duration.years })
+    duration.months =
+      differenceInMonths(end, remainingMonths) - backtrack.months
+    if (duration.months < 0) {
+      backtrack = makeDuration({ years: 1 })
+      continue
+    }
+
+    const remainingDays = add(remainingMonths, { months: duration.months })
+    duration.days = differenceInDays(end, remainingDays) - backtrack.days
+    if (duration.days < 0) {
+      backtrack = makeDuration({ months: 1 })
+      continue
+    }
+
+    const remainingHours = add(remainingDays, { days: duration.days })
+    duration.hours = differenceInHours(end, remainingHours) - backtrack.hours
+    if (duration.hours < 0) {
+      backtrack = makeDuration({ days: 1 })
+      continue
+    }
+
+    const remainingMinutes = add(remainingHours, { hours: duration.hours })
+    duration.minutes =
+      differenceInMinutes(end, remainingMinutes) - backtrack.minutes
+    if (duration.minutes < 0) {
+      backtrack = makeDuration({ hours: 1 })
+      continue
+    }
+
+    const remainingSeconds = add(remainingMinutes, {
+      minutes: duration.minutes,
+    })
+    duration.seconds =
+      differenceInSeconds(end, remainingSeconds) - backtrack.seconds
+    if (duration.seconds < 0) {
+      backtrack = makeDuration({ minutes: 1 })
+      continue
+    }
+
+    return duration
   }
+}
 
-  const remainingMonths = add(start, { years: duration.years })
-  duration.months = differenceInMonths(end, remainingMonths)
-
-  const remainingDays = add(remainingMonths, { months: duration.months })
-  duration.days = differenceInDays(end, remainingDays)
-
-  const remainingHours = add(remainingDays, { days: duration.days })
-  duration.hours = differenceInHours(end, remainingHours)
-
-  const remainingMinutes = add(remainingHours, { hours: duration.hours })
-  duration.minutes = differenceInMinutes(end, remainingMinutes)
-
-  const remainingSeconds = add(remainingMinutes, { minutes: duration.minutes })
-  duration.seconds = differenceInSeconds(end, remainingSeconds)
-
-  return duration
+function makeDuration(d: Duration = {}): Required<Duration> {
+  return {
+    years: d.years ?? 0,
+    months: d.months ?? 0,
+    weeks: d.weeks ?? 0,
+    days: d.days ?? 0,
+    hours: d.hours ?? 0,
+    minutes: d.minutes ?? 0,
+    seconds: d.seconds ?? 0,
+  }
 }
