@@ -47,7 +47,9 @@ function compareLocalAsc<DateType extends Date>(
  *
  * @param dateLeft - the later date
  * @param dateRight - the earlier date
- * @returns the number of full days according to the local timezone
+ * @returns the number of full days according to the local timezone. Positive number
+ * of full days if dateLeft comes after dateRight. Negative number of full days if 
+ * dateLeft comes before dateRight.
  *
  * @example
  * // How many full days are between
@@ -75,6 +77,13 @@ function compareLocalAsc<DateType extends Date>(
  *   new Date(2020, 2, 1)
  * )
 //=> 92
+ * // How many full days are between
+ * // 2 July 2012 23:00:00 and 2 July 2011 00:00:00?
+ * const result = differenceInDays(
+ *   new Date(2011, 6, 2, 0, 0),
+ *   new Date(2012, 6, 2, 23, 0)
+ * )
+ * //=> -366
  */
 export default function differenceInDays<DateType extends Date>(
   dirtyDateLeft: DateType | number,
