@@ -47,17 +47,17 @@ const monthValues = {
 } as const
 
 const dayValues = {
-  narrow: ['d', 'l', 'm', 'm', 'j', 'v', 's'],
-  short: ['do', 'lu', 'ma', 'mi', 'ju', 'vi', 'sá'],
-  abbreviated: ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb'],
+  narrow: ['l', 'm', 'm', 'j', 'v', 's', 'd'],
+  short: ['lu', 'ma', 'mi', 'ju', 'vi', 'sá', 'do'],
+  abbreviated: ['lun', 'mar', 'mié', 'jue', 'vie', 'sáb', 'dom'],
   wide: [
-    'domingo',
     'lunes',
     'martes',
     'miércoles',
     'jueves',
     'viernes',
     'sábado',
+    'domingo',
   ],
 } as const
 
