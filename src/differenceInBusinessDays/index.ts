@@ -3,6 +3,7 @@ import differenceInCalendarDays from '../differenceInCalendarDays/index'
 import isSameDay from '../isSameDay/index'
 import isValid from '../isValid/index'
 import isWeekend from '../isWeekend/index'
+import isWithinInterval from '../isWithinInterval'
 import toDate from '../toDate/index'
 
 /**
@@ -18,6 +19,7 @@ import toDate from '../toDate/index'
  *
  * @param dateLeft - the later date
  * @param dateRight - the earlier date
+ * @param holidays - an array of dates to treat as additional non-business days
  * @returns the number of business days
  *
  * @example
@@ -52,17 +54,41 @@ import toDate from '../toDate/index'
  *   new Date(2021, 10, 1)
  * )
  * //=> 0
+ *
+ * // How many business days are between
+ * // 10 January 2014 and 20 July 2014? (accounting for holidays)
+ * const result = differenceInBusinessDays(
+ *   new Date(2014, 6, 20),
+ *   new Date(2014, 0, 10),
+ *   [
+ *      new Date(2014, 3, 18),
+ *      new Date(2014, 3, 21),
+ *      new Date(2014, 4, 5),
+ *      new Date(2014, 4, 26),
+ *   ]
+ * )
+ * //=> 132
  */
 export default function differenceInBusinessDays<DateType extends Date>(
   dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+  dirtyDateRight: DateType | number,
+  dirtyHolidays: Array<DateType | number> = []
 ): number {
   const dateLeft = toDate(dirtyDateLeft)
   let dateRight = toDate(dirtyDateRight)
 
   if (!isValid(dateLeft) || !isValid(dateRight)) return NaN
 
+  const holidays = dirtyHolidays
+    .map((holiday) => toDate(holiday))
+    .filter(
+      (holiday) =>
+        isWithinInterval(holiday, { start: dateRight, end: dateLeft }) &&
+        !isWeekend(holiday)
+    )
+
   const calendarDifference = differenceInCalendarDays(dateLeft, dateRight)
+
   const sign = calendarDifference < 0 ? -1 : 1
 
   const weeks = Math.trunc(calendarDifference / 7)
@@ -76,6 +102,8 @@ export default function differenceInBusinessDays<DateType extends Date>(
     result += isWeekend(dateRight) ? 0 : sign
     dateRight = addDays(dateRight, sign)
   }
+
+  result = result - holidays.length
 
   return result === 0 ? 0 : result
 }
