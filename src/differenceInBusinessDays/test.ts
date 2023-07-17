@@ -65,6 +65,51 @@ describe('differenceInBusinessDays', () => {
     assert(result === 135)
   })
 
+  describe('with holidays', () => {
+    it('returns the number of business days between the given dates, excluding weekends and holidays', () => {
+      const holidays = [
+        new Date(2023, 7 /* Aug */, 28),
+        new Date(2023, 11 /* Dec */, 25),
+        new Date(2023, 11 /* Dec */, 26),
+      ]
+      const result = differenceInBusinessDays(
+        new Date(2024, 0 /* Jan */, 10),
+        new Date(2023, 6 /* Jul */, 18),
+        holidays
+      )
+      assert(result === 123)
+    })
+
+    it('ignores holidays the are not in the range', () => {
+      const holidays = [
+        new Date(2023, 7 /* Aug */, 28),
+        new Date(2023, 11 /* Dec */, 25),
+        new Date(2023, 11 /* Dec */, 26),
+      ]
+      const result = differenceInBusinessDays(
+        new Date(2024, 0 /* Jan */, 10),
+        new Date(2023, 9 /* Oct */, 18),
+        holidays
+      )
+      assert(result === 58)
+    })
+
+    it('ignores holidays that are at the weekend', () => {
+      const holidays = [
+        new Date(2023, 7 /* Aug */, 28),
+        new Date(2023, 11 /* Dec */, 24),
+        new Date(2023, 11 /* Dec */, 25),
+        new Date(2023, 11 /* Dec */, 26),
+      ]
+      const result = differenceInBusinessDays(
+        new Date(2024, 0 /* Jan */, 10),
+        new Date(2023, 9 /* Oct */, 18),
+        holidays
+      )
+      assert(result === 58)
+    })
+  })
+
   describe('edge cases', () => {
     it('the difference is less than a day, but the given dates are in different calendar days', () => {
       const result = differenceInBusinessDays(
