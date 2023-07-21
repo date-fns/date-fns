@@ -9,7 +9,7 @@ import startOfDay from '../startOfDay/index'
  * @description
  * Return the start of today.
  *
- * @returns the start of today
+ * @returns The start of today
  *
  * @example
  * // If today is 6 October 2014:

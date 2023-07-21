@@ -13,8 +13,11 @@ import toDate from '../toDate/index'
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @param date - the given date
- * @returns the ISO week
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The given date
+ *
+ * @returns The ISO week
  *
  * @example
  * // Which week of the ISO-week numbering year is 2 January 2005?
@@ -22,11 +25,11 @@ import toDate from '../toDate/index'
  * //=> 53
  */
 export default function getISOWeek<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): number {
-  const date = toDate(dirtyDate)
+  const _date = toDate(date)
   const diff =
-    startOfISOWeek(date).getTime() - startOfISOWeekYear(date).getTime()
+    startOfISOWeek(_date).getTime() - startOfISOWeekYear(_date).getTime()
 
   // Round the number of days to the nearest integer
   // because the number of milliseconds in a week is not constant

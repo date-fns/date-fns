@@ -10,8 +10,11 @@ import isSameDay from '../isSameDay/index'
  * @description
  * Is the given date tomorrow?
  *
- * @param date - the date to check
- * @returns the date is tomorrow
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date to check
+ *
+ * @returns The date is tomorrow
  *
  * @example
  * // If today is 6 October 2014, is 7 October 14:00:00 tomorrow?
@@ -19,7 +22,7 @@ import isSameDay from '../isSameDay/index'
  * //=> true
  */
 export default function isTomorrow<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): boolean {
-  return isSameDay(dirtyDate, addDays(Date.now(), 1))
+  return isSameDay(date, addDays(Date.now(), 1))
 }

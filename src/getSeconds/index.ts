@@ -8,8 +8,11 @@ import toDate from '../toDate/index'
  * @description
  * Get the seconds of the given date.
  *
- * @param date - the given date
- * @returns the seconds
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The given date
+ *
+ * @returns The seconds
  *
  * @example
  * // Get the seconds of 29 February 2012 11:45:05.123:
@@ -17,9 +20,9 @@ import toDate from '../toDate/index'
  * //=> 5
  */
 export default function getSeconds<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): number {
-  const date = toDate(dirtyDate)
-  const seconds = date.getSeconds()
+  const _date = toDate(date)
+  const seconds = _date.getSeconds()
   return seconds
 }

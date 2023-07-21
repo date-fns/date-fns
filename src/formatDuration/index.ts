@@ -7,8 +7,11 @@ import { getDefaultOptions } from '../_lib/defaultOptions/index'
  * The {@link formatDuration} function options.
  */
 export interface FormatDurationOptions extends LocaleOptions {
+  /** The array of units to format */
   format?: DurationUnit[]
+  /** Should be zeros be included in the output? */
   zero?: boolean
+  /** The delimiter string to use */
   delimiter?: string
 }
 
@@ -30,9 +33,12 @@ const defaultFormat: DurationUnit[] = [
  * @description
  * Return human-readable duration string i.e. "9 months 2 days"
  *
- * @param duration - the duration to format
- * @param options - an object with options.
- * @returns the formatted date string
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param duration - The duration to format
+ * @param options - An object with options.
+ *
+ * @returns The formatted date string
  *
  * @example
  * // Format full duration

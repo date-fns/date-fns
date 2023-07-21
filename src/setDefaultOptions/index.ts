@@ -15,10 +15,7 @@ import {
  * `options.locale`, `options.weekStartsOn` and `options.firstWeekContainsDate`
  * arguments for all functions.
  *
- * @param newOptions - an object with options.
- * @param newOptions.locale - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
- * @param newOptions.weekStartsOn - the index of the first day of the week (0 - Sunday)
- * @param newOptions.firstWeekContainsDate - the day of January, which is always in the first week of the year
+ * @param options - An object with options
  *
  * @example
  * // Set global locale:
@@ -52,7 +49,7 @@ import {
  * const result = startOfWeek(new Date(2014, 8, 2))
  * //=> Sun Aug 31 2014 00:00:00
  */
-export default function setDefaultOptions(newOptions: DefaultOptions): void {
+export default function setDefaultOptions(options: DefaultOptions): void {
   const result: DefaultOptions = {}
   const defaultOptions = getDefaultOptions()
 
@@ -63,13 +60,12 @@ export default function setDefaultOptions(newOptions: DefaultOptions): void {
     }
   }
 
-  for (const property in newOptions) {
-    if (Object.prototype.hasOwnProperty.call(newOptions, property)) {
-      if (newOptions[property as keyof DefaultOptions] === undefined) {
+  for (const property in options) {
+    if (Object.prototype.hasOwnProperty.call(options, property)) {
+      if (options[property as keyof DefaultOptions] === undefined) {
         delete (result as any)[property]
       } else {
-        ;(result as any)[property] =
-          newOptions[property as keyof DefaultOptions]
+        ;(result as any)[property] = options[property as keyof DefaultOptions]
       }
     }
   }

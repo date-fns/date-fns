@@ -13,9 +13,12 @@ import toDate from '../toDate/index'
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @param dateLeft - the later date
- * @param dateRight - the earlier date
- * @returns the number of full ISO week-numbering years
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param dateLeft - The later date
+ * @param dateRight - The earlier date
+ *
+ * @returns The number of full ISO week-numbering years
  *
  * @example
  * // How many full ISO week-numbering years are between 1 January 2010 and 1 January 2012?
@@ -26,23 +29,23 @@ import toDate from '../toDate/index'
  * //=> 1
  */
 export default function differenceInISOWeekYears<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+  dateLeft: DateType | number,
+  dateRight: DateType | number
 ): number {
-  let dateLeft = toDate(dirtyDateLeft)
-  const dateRight = toDate(dirtyDateRight)
+  let _dateLeft = toDate(dateLeft)
+  const _dateRight = toDate(dateRight)
 
-  const sign = compareAsc(dateLeft, dateRight)
+  const sign = compareAsc(_dateLeft, _dateRight)
   const difference = Math.abs(
-    differenceInCalendarISOWeekYears(dateLeft, dateRight)
+    differenceInCalendarISOWeekYears(_dateLeft, _dateRight)
   )
-  dateLeft = subISOWeekYears(dateLeft, sign * difference)
+  _dateLeft = subISOWeekYears(_dateLeft, sign * difference)
 
   // Math.abs(diff in full ISO years - diff in calendar ISO years) === 1
   // if last calendar ISO year is not full
   // If so, result must be decreased by 1 in absolute value
   const isLastISOWeekYearNotFull = Number(
-    compareAsc(dateLeft, dateRight) === -sign
+    compareAsc(_dateLeft, _dateRight) === -sign
   )
   const result = sign * (difference - isLastISOWeekYearNotFull)
   // Prevent negative zero

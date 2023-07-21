@@ -28,10 +28,14 @@ export interface FormatRelativeOptions extends LocaleOptions, WeekOptions {}
  * | Next 6 days               | Sunday at 04:30 AM        |
  * | Other                     | 12/31/2017                |
  *
- * @param date - the date to format
- * @param baseDate - the date to compare with
- * @param options - an object with options.
- * @returns the date in words
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date to format
+ * @param baseDate - The date to compare with
+ * @param options - An object with options
+ *
+ * @returns The date in words
+ *
  * @throws {RangeError} `date` must not be Invalid Date
  * @throws {RangeError} `baseDate` must not be Invalid Date
  * @throws {RangeError} `options.locale` must contain `localize` property
@@ -44,12 +48,12 @@ export interface FormatRelativeOptions extends LocaleOptions, WeekOptions {}
  * //=> "last Thursday at 12:45 AM"
  */
 export default function formatRelative<DateType extends Date>(
-  dirtyDate: DateType | number,
-  dirtyBaseDate: DateType | number,
+  date: DateType | number,
+  baseDate: DateType | number,
   options?: FormatRelativeOptions
 ): string {
-  const date = toDate(dirtyDate)
-  const baseDate = toDate(dirtyBaseDate)
+  const _date = toDate(date)
+  const _baseDate = toDate(baseDate)
 
   const defaultOptions = getDefaultOptions()
   const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale
@@ -72,7 +76,7 @@ export default function formatRelative<DateType extends Date>(
     throw new RangeError('locale must contain formatRelative property')
   }
 
-  const diff = differenceInCalendarDays(date, baseDate)
+  const diff = differenceInCalendarDays(_date, _baseDate)
 
   if (isNaN(diff)) {
     throw new RangeError('Invalid time value')
@@ -95,9 +99,9 @@ export default function formatRelative<DateType extends Date>(
     token = 'other'
   }
 
-  const formatStr = locale.formatRelative(token, date, baseDate, {
+  const formatStr = locale.formatRelative(token, _date, _baseDate, {
     locale,
     weekStartsOn,
   })
-  return format(date, formatStr, { locale, weekStartsOn })
+  return format(_date, formatStr, { locale, weekStartsOn })
 }

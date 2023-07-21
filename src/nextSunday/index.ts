@@ -8,8 +8,11 @@ import nextDay from '../nextDay/index'
  * @description
  * When is the next Sunday?
  *
- * @param date - the date to start counting from
- * @returns the next Sunday
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date to start counting from
+ *
+ * @returns The next Sunday
  *
  * @example
  * // When is the next Sunday after Mar, 22, 2020?

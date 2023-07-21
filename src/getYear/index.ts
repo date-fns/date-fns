@@ -8,8 +8,11 @@ import toDate from '../toDate/index'
  * @description
  * Get the year of the given date.
  *
- * @param date - the given date
- * @returns the year
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The given date
+ *
+ * @returns The year
  *
  * @example
  * // Which year is 2 July 2014?
@@ -17,7 +20,7 @@ import toDate from '../toDate/index'
  * //=> 2014
  */
 export default function getYear<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): number {
-  return toDate(dirtyDate).getFullYear()
+  return toDate(date).getFullYear()
 }

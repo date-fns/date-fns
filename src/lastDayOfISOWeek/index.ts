@@ -11,8 +11,11 @@ import lastDayOfWeek from '../lastDayOfWeek/index'
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @param date - the original date
- * @returns the last day of an ISO week
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The original date
+ *
+ * @returns The last day of an ISO week
  *
  * @example
  * // The last day of an ISO week for 2 September 2014 11:55:00:
@@ -20,7 +23,7 @@ import lastDayOfWeek from '../lastDayOfWeek/index'
  * //=> Sun Sep 07 2014 00:00:00
  */
 export default function lastDayOfISOWeek<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): DateType {
-  return lastDayOfWeek(dirtyDate, { weekStartsOn: 1 })
+  return lastDayOfWeek(date, { weekStartsOn: 1 })
 }

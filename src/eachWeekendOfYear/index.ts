@@ -10,8 +10,12 @@ import startOfYear from '../startOfYear/index'
  * @description
  * Get all the Saturdays and Sundays in the year.
  *
- * @param date - the given year
- * @returns an array containing all the Saturdays and Sundays
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The given year
+ *
+ * @returns An array containing all the Saturdays and Sundays
+ *
  * @throws {RangeError} The passed date is invalid
  *
  * @example
@@ -26,9 +30,9 @@ import startOfYear from '../startOfYear/index'
  * ]
  */
 export default function eachWeekendOfYear<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): DateType[] {
-  const startDate = startOfYear(dirtyDate)
-  const endDate = endOfYear(dirtyDate)
+  const startDate = startOfYear(date)
+  const endDate = endOfYear(date)
   return eachWeekendOfInterval({ start: startDate, end: endDate })
 }

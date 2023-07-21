@@ -9,8 +9,11 @@ import isSameMinute from '../isSameMinute/index'
  * @description
  * Is the given date in the same minute as the current date?
  *
- * @param date - the date to check
- * @returns the date is in this minute
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date to check
+ *
+ * @returns The date is in this minute
  *
  * @example
  * // If now is 25 September 2014 18:30:15.500,
@@ -20,7 +23,7 @@ import isSameMinute from '../isSameMinute/index'
  */
 
 export default function isThisMinute<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): boolean {
-  return isSameMinute(Date.now(), dirtyDate)
+  return isSameMinute(Date.now(), date)
 }

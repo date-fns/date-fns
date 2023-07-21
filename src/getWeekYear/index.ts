@@ -30,9 +30,12 @@ export interface GetWeekYearOptions
  *
  * Week numbering: https://en.wikipedia.org/wiki/Week#Week_numbering
  *
- * @param date - the given date
- * @param options - an object with options.
- * @returns the local week-numbering year
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The given date
+ * @param options - An object with options.
+ *
+ * @returns The local week-numbering year
  *
  * @example
  * // Which week numbering year is 26 December 2004 with the default settings?
@@ -50,11 +53,11 @@ export interface GetWeekYearOptions
  * //=> 2004
  */
 export default function getWeekYear<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   options?: GetWeekYearOptions
 ): number {
-  const date = toDate(dirtyDate)
-  const year = date.getFullYear()
+  const _date = toDate(date)
+  const year = _date.getFullYear()
 
   const defaultOptions = getDefaultOptions()
   const firstWeekContainsDate =
@@ -64,19 +67,19 @@ export default function getWeekYear<DateType extends Date>(
     defaultOptions.locale?.options?.firstWeekContainsDate ??
     1
 
-  const firstWeekOfNextYear = dateFrom(dirtyDate, 0)
+  const firstWeekOfNextYear = dateFrom(date, 0)
   firstWeekOfNextYear.setFullYear(year + 1, 0, firstWeekContainsDate)
   firstWeekOfNextYear.setHours(0, 0, 0, 0)
   const startOfNextYear = startOfWeek(firstWeekOfNextYear, options)
 
-  const firstWeekOfThisYear = dateFrom(dirtyDate, 0)
+  const firstWeekOfThisYear = dateFrom(date, 0)
   firstWeekOfThisYear.setFullYear(year, 0, firstWeekContainsDate)
   firstWeekOfThisYear.setHours(0, 0, 0, 0)
   const startOfThisYear = startOfWeek(firstWeekOfThisYear, options)
 
-  if (date.getTime() >= startOfNextYear.getTime()) {
+  if (_date.getTime() >= startOfNextYear.getTime()) {
     return year + 1
-  } else if (date.getTime() >= startOfThisYear.getTime()) {
+  } else if (_date.getTime() >= startOfThisYear.getTime()) {
     return year
   } else {
     return year - 1

@@ -8,9 +8,9 @@ import { monthsInYear } from '../constants/index'
  * @description
  * Convert a number of months to a full number of years.
  *
- * @param months - number of months to be converted
+ * @param months - The number of months to be converted
  *
- * @returns the number of months converted in years
+ * @returns The number of months converted in years
  *
  * @example
  * // Convert 36 months to years:

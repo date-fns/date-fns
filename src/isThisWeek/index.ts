@@ -15,9 +15,12 @@ export interface IsThisWeekOptions extends WeekOptions, LocaleOptions {}
  * @description
  * Is the given date in the same week as the current date?
  *
- * @param date - the date to check
- * @param options - the object with options
- * @returns the date is in this week
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date to check
+ * @param options - The object with options
+ *
+ * @returns The date is in this week
  *
  * @example
  * // If today is 25 September 2014, is 21 September 2014 in this week?
@@ -30,10 +33,9 @@ export interface IsThisWeekOptions extends WeekOptions, LocaleOptions {}
  * const result = isThisWeek(new Date(2014, 8, 21), { weekStartsOn: 1 })
  * //=> false
  */
-
-export default function is<DateType extends Date>(
-  dirtyDate: DateType | number,
+export default function isThisWeek<DateType extends Date>(
+  date: DateType | number,
   options?: IsThisWeekOptions
 ): boolean {
-  return isSameWeek(dirtyDate, Date.now(), options)
+  return isSameWeek(date, Date.now(), options)
 }

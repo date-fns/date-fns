@@ -8,9 +8,12 @@ import startOfSecond from '../startOfSecond/index'
  * @description
  * Are the given dates in the same second (and hour and day)?
  *
- * @param dateLeft - the first date to check
- * @param dateRight - the second date to check
- * @returns the dates are in the same second (and hour and day)
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param dateLeft - The first date to check
+ * @param dateRight - The second date to check
+ *
+ * @returns The dates are in the same second (and hour and day)
  *
  * @example
  * // Are 4 September 2014 06:30:15.000 and 4 September 2014 06:30.15.500 in the same second?
@@ -37,11 +40,11 @@ import startOfSecond from '../startOfSecond/index'
  * //=> false
  */
 export default function isSameSecond<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+  dateLeft: DateType | number,
+  dateRight: DateType | number
 ): boolean {
-  const dateLeftStartOfSecond = startOfSecond(dirtyDateLeft)
-  const dateRightStartOfSecond = startOfSecond(dirtyDateRight)
+  const dateLeftStartOfSecond = startOfSecond(dateLeft)
+  const dateRightStartOfSecond = startOfSecond(dateRight)
 
-  return dateLeftStartOfSecond.getTime() === dateRightStartOfSecond.getTime()
+  return +dateLeftStartOfSecond === +dateRightStartOfSecond
 }

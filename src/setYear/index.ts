@@ -9,9 +9,12 @@ import toDate from '../toDate/index'
  * @description
  * Set the year to the given date.
  *
- * @param date - the date to be changed
- * @param year - the year of the new date
- * @returns the new date with the year set
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date to be changed
+ * @param year - The year of the new date
+ *
+ * @returns The new date with the year set
  *
  * @example
  * // Set year 2013 to 1 September 2014:
@@ -19,16 +22,16 @@ import toDate from '../toDate/index'
  * //=> Sun Sep 01 2013 00:00:00
  */
 export default function setYear<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   year: number
 ): DateType {
-  const date = toDate(dirtyDate)
+  const _date = toDate(date)
 
   // Check if date is Invalid Date because Date.prototype.setFullYear ignores the value of Invalid Date
-  if (isNaN(date.getTime())) {
-    return constructFrom(dirtyDate, NaN)
+  if (isNaN(+_date)) {
+    return constructFrom(date, NaN)
   }
 
-  date.setFullYear(year)
-  return date
+  _date.setFullYear(year)
+  return _date
 }

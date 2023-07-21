@@ -28,9 +28,13 @@ export interface FormatDistanceToNowStrictOptions
  * | 1 ... 11 months        | [1..11] months      |
  * | 1 ... N years          | [1..N]  years       |
  *
- * @param date - the given date
- * @param options - an object with options.
- * @returns the distance in words
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ **
+ * @param date - The given date
+ * @param options - An object with options.
+ *
+ * @returns The distance in words
+ *
  * @throws {RangeError} `date` must not be Invalid Date
  * @throws {RangeError} `options.locale` must contain `formatDistance` property
  *
@@ -78,8 +82,8 @@ export interface FormatDistanceToNowStrictOptions
  * //=> '1 jaro'
  */
 export default function formatDistanceToNowStrict<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   options?: FormatDistanceToNowStrictOptions
 ): string {
-  return formatDistanceStrict(dirtyDate, Date.now(), options)
+  return formatDistanceStrict(date, Date.now(), options)
 }

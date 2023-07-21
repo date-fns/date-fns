@@ -9,8 +9,11 @@ import toDate from '../toDate/index'
  * Return the start of a minute for the given date.
  * The result will be in the local timezone.
  *
- * @param date - the original date
- * @returns the start of a minute
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The original date
+ *
+ * @returns The start of a minute
  *
  * @example
  * // The start of a minute for 1 December 2014 22:15:45.400:
@@ -18,9 +21,9 @@ import toDate from '../toDate/index'
  * //=> Mon Dec 01 2014 22:15:00
  */
 export default function startOfMinute<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): DateType {
-  const date = toDate(dirtyDate)
-  date.setSeconds(0, 0)
-  return date
+  const _date = toDate(date)
+  _date.setSeconds(0, 0)
+  return _date
 }

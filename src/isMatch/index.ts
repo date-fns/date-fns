@@ -272,14 +272,16 @@ export interface IsMatchOptions
  *
  * If `formatString` matches with `dateString` but does not provides tokens, `referenceDate` will be returned.
  *
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
- *
- * @param dateString - the date string to verify
- * @param formatString - the string of tokens
- * @param options - an object with options.
+ * @param dateStr - The date string to verify
+ * @param format - The string of tokens
+ * @param options - An object with options.
  *   see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
  *   see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
- * @returns is format string a match for date string?
+ *
+ * @returns Is format string a match for date string?
+ *
  * @throws {RangeError} `options.locale` must contain `match` property
  * @throws {RangeError} use `yyyy` instead of `YYYY` for formatting years; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
  * @throws {RangeError} use `yy` instead of `YY` for formatting years; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
@@ -301,9 +303,9 @@ export interface IsMatchOptions
  * //=> true
  */
 export default function isMatch(
-  dateString: string,
-  formatString: string,
+  dateStr: string,
+  formatStr: string,
   options?: IsMatchOptions
 ): boolean {
-  return isValid(parse(dateString, formatString, new Date(), options))
+  return isValid(parse(dateStr, formatStr, new Date(), options))
 }
