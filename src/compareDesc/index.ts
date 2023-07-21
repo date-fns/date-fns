@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name compareDesc
@@ -10,14 +9,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * Compare the two dates and return -1 if the first date is after the second,
  * 1 if the first date is before the second or 0 if dates are equal.
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
- * @param {Date|Number} dateLeft - the first date to compare
- * @param {Date|Number} dateRight - the second date to compare
- * @returns {Number} the result of the comparison
- * @throws {TypeError} 2 arguments required
+ * @param dateLeft - the first date to compare
+ * @param dateRight - the second date to compare
+ * @returns the result of the comparison
  *
  * @example
  * // Compare 11 February 1987 and 10 July 1989 reverse chronologically:
@@ -37,12 +31,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //   Wed Feb 11 1987 00:00:00
  * // ]
  */
-export default function compareDesc(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+export default function compareDesc<DateType extends Date>(
+  dirtyDateLeft: DateType | number,
+  dirtyDateRight: DateType | number
 ): number {
-  requiredArgs(2, arguments)
-
   const dateLeft = toDate(dirtyDateLeft)
   const dateRight = toDate(dirtyDateRight)
 

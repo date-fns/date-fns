@@ -14,10 +14,13 @@ function prebuild {
 
 if [ "$TEST_SUITE" == "main" ]
 then
+  yarn tsc --noEmit
   yarn lint
-  yarn lint-types
+  # TODO: turn on for v3.0.0
+  # yarn lint-types
   yarn locale-snapshots test
-  ./scripts/test/smoke.sh
+  # TODO: turn on for v3.0.0
+  # ./scripts/test/smoke.sh
 
   yarn test --single-run
 

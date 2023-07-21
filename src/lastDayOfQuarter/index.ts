@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name lastDayOfQuarter
@@ -10,25 +9,17 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * Return the last day of a year quarter for the given date.
  * The result will be in the local timezone.
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
- * @param {Date|Number} date - the original date
- * @param {Object} [options] - an object with options.
- * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
- * @returns {Date} the last day of a quarter
- * @throws {TypeError} 1 argument required
- * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
+ * @param date - the original date
+ * @returns the last day of a quarter
  *
  * @example
  * // The last day of a quarter for 2 September 2014 11:55:00:
- * var result = lastDayOfQuarter(new Date(2014, 8, 2, 11, 55, 0))
+ * const result = lastDayOfQuarter(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Tue Sep 30 2014 00:00:00
  */
-export default function lastDayOfQuarter(dirtyDate: Date | number): Date {
-  requiredArgs(1, arguments)
-
+export default function lastDayOfQuarter<DateType extends Date>(
+  dirtyDate: DateType | number
+): DateType {
   const date = toDate(dirtyDate)
   const currentMonth = date.getMonth()
   const month = currentMonth - (currentMonth % 3) + 3

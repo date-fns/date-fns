@@ -1,8 +1,12 @@
 import { millisecondsInHour } from '../constants/index'
 import differenceInMilliseconds from '../differenceInMilliseconds/index'
 import type { RoundingOptions } from '../types'
-import requiredArgs from '../_lib/requiredArgs/index'
 import { getRoundingMethod } from '../_lib/roundingMethods/index'
+
+/**
+ * The {@link differenceInHours} function options.
+ */
+export interface DifferenceInHoursOptions extends RoundingOptions {}
 
 /**
  * @name differenceInHours
@@ -12,16 +16,10 @@ import { getRoundingMethod } from '../_lib/roundingMethods/index'
  * @description
  * Get the number of hours between the given dates.
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
- * @param {Date|Number} dateLeft - the later date
- * @param {Date|Number} dateRight - the earlier date
- * @param {Object} [options] - an object with options.
- * @param {String} [options.roundingMethod='trunc'] - a rounding method (`ceil`, `floor`, `round` or `trunc`)
- * @returns {Number} the number of hours
- * @throws {TypeError} 2 arguments required
+ * @param dateLeft - the later date
+ * @param dateRight - the earlier date
+ * @param options - an object with options.
+ * @returns the number of hours
  *
  * @example
  * // How many hours are between 2 July 2014 06:50:00 and 2 July 2014 19:00:00?
@@ -31,13 +29,11 @@ import { getRoundingMethod } from '../_lib/roundingMethods/index'
  * )
  * //=> 12
  */
-export default function differenceInHours(
-  dateLeft: Date | number,
-  dateRight: Date | number,
-  options?: RoundingOptions
+export default function differenceInHours<DateType extends Date>(
+  dateLeft: DateType | number,
+  dateRight: DateType | number,
+  options?: DifferenceInHoursOptions
 ): number {
-  requiredArgs(2, arguments)
-
   const diff =
     differenceInMilliseconds(dateLeft, dateRight) / millisecondsInHour
   return getRoundingMethod(options?.roundingMethod)(diff)

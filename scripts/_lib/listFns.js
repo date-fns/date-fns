@@ -7,19 +7,8 @@ const readDir = promisify(fs.readdir)
 
 module.exports = listFns
 
-const ignoredFiles = [
-  'locale',
-  'esm',
-  'fp',
-  'constants',
-  'index.js',
-  'index.ts',
-  'test.js',
-  'test.ts',
-  'index.js.flow',
-  'package.json',
-  'types.ts',
-]
+const ignorePattern = /^_|\./ // can't start with `_` or have a `.` in it
+const ignoredDirs = ['locale', 'esm', 'fp', 'constants']
 
 async function listFns() {
   const srcPath = path.join(process.cwd(), 'src')
@@ -27,9 +16,12 @@ async function listFns() {
 
   return Promise.all(
     files
-      .filter((file) => /^[^._]/.test(file) && !ignoredFiles.includes(file))
+      .filter(
+        (file) => !ignorePattern.test(file) && !ignoredDirs.includes(file)
+      )
       .map(async (file) => {
         const isTs = await exists(path.join(srcPath, file, 'index.ts'))
+
         return {
           name: file,
           path: `./${file}`,

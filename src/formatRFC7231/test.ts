@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import formatRFC7231 from '.'
+import formatRFC7231 from './index'
 
 describe('formatRFC7231', () => {
   it('formats RFC-7231 date string', () => {
@@ -16,10 +16,5 @@ describe('formatRFC7231', () => {
 
   it('throws RangeError if the time value is invalid', () => {
     assert.throws(formatRFC7231.bind(null, new Date(NaN)), RangeError)
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', function () {
-    // @ts-expect-error
-    assert.throws(formatRFC7231.bind(null), TypeError)
   })
 })

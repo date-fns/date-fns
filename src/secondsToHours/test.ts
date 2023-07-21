@@ -1,10 +1,10 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import secondsToHours from '.'
+import secondsToHours from './index'
 
-describe('secondsToHours', function () {
-  it('converts seconds to hours', function () {
+describe('secondsToHours', () => {
+  it('converts seconds to hours', () => {
     assert(secondsToHours(3600) === 1)
     assert(secondsToHours(7200) === 2)
   })

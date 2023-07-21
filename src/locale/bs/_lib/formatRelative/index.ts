@@ -2,7 +2,7 @@ import type { FormatRelativeFn } from '../../../types'
 
 const formatRelativeLocale = {
   lastWeek: (date: Date) => {
-    switch (date.getUTCDay()) {
+    switch (date.getDay()) {
       case 0:
         return "'prošle nedjelje u' p"
       case 3:
@@ -17,7 +17,7 @@ const formatRelativeLocale = {
   today: "'danas u' p",
   tomorrow: "'sutra u' p",
   nextWeek: (date: Date) => {
-    switch (date.getUTCDay()) {
+    switch (date.getDay()) {
       case 0:
         return "'sljedeće nedjelje u' p"
       case 3:

@@ -1,8 +1,6 @@
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
+import { millisecondsInDay } from '../constants/index'
 import startOfDay from '../startOfDay/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
-const MILLISECONDS_IN_DAY = 86400000
+import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
 
 /**
  * @name differenceInCalendarDays
@@ -13,14 +11,9 @@ const MILLISECONDS_IN_DAY = 86400000
  * Get the number of calendar days between the given dates. This means that the times are removed
  * from the dates and then the difference in days is calculated.
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
- * @param {Date|Number} dateLeft - the later date
- * @param {Date|Number} dateRight - the earlier date
- * @returns {Number} the number of calendar days
- * @throws {TypeError} 2 arguments required
+ * @param dateLeft - the later date
+ * @param dateRight - the earlier date
+ * @returns the number of calendar days
  *
  * @example
  * // How many calendar days are between
@@ -38,12 +31,10 @@ const MILLISECONDS_IN_DAY = 86400000
  * )
  * //=> 1
  */
-export default function differenceInCalendarDays(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+export default function differenceInCalendarDays<DateType extends Date>(
+  dirtyDateLeft: DateType | number,
+  dirtyDateRight: DateType | number
 ): number {
-  requiredArgs(2, arguments)
-
   const startOfDayLeft = startOfDay(dirtyDateLeft)
   const startOfDayRight = startOfDay(dirtyDateRight)
 
@@ -55,5 +46,5 @@ export default function differenceInCalendarDays(
   // Round the number of days to the nearest integer
   // because the number of milliseconds in a day is not constant
   // (e.g. it's different in the day of the daylight saving time clock shift)
-  return Math.round((timestampLeft - timestampRight) / MILLISECONDS_IN_DAY)
+  return Math.round((timestampLeft - timestampRight) / millisecondsInDay)
 }

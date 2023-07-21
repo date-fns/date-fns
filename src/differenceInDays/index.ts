@@ -1,12 +1,14 @@
-import toDate from '../toDate/index'
 import differenceInCalendarDays from '../differenceInCalendarDays/index'
-import requiredArgs from '../_lib/requiredArgs/index'
+import toDate from '../toDate/index'
 
 // Like `compareAsc` but uses local time not UTC, which is needed
 // for accurate equality comparisons of UTC timestamps that end up
 // having the same representation in local time, e.g. one hour before
 // DST ends vs. the instant that DST ends.
-function compareLocalAsc(dateLeft: Date, dateRight: Date): number {
+function compareLocalAsc<DateType extends Date>(
+  dateLeft: DateType,
+  dateRight: DateType
+): number {
   const diff =
     dateLeft.getFullYear() - dateRight.getFullYear() ||
     dateLeft.getMonth() - dateRight.getMonth() ||
@@ -43,14 +45,9 @@ function compareLocalAsc(dateLeft: Date, dateRight: Date): number {
  * `Math.floor(differenceInHours(dateLeft, dateRight)/24)|0`.
  *
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
- * @param {Date|Number} dateLeft - the later date
- * @param {Date|Number} dateRight - the earlier date
- * @returns {Number} the number of full days according to the local timezone
- * @throws {TypeError} 2 arguments required
+ * @param dateLeft - the later date
+ * @param dateRight - the earlier date
+ * @returns the number of full days according to the local timezone
  *
  * @example
  * // How many full days are between
@@ -79,12 +76,10 @@ function compareLocalAsc(dateLeft: Date, dateRight: Date): number {
  * )
 //=> 92
  */
-export default function differenceInDays(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+export default function differenceInDays<DateType extends Date>(
+  dirtyDateLeft: DateType | number,
+  dirtyDateRight: DateType | number
 ): number {
-  requiredArgs(2, arguments)
-
   const dateLeft = toDate(dirtyDateLeft)
   const dateRight = toDate(dirtyDateRight)
 

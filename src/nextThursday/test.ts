@@ -1,8 +1,7 @@
-// @flow
 /* eslint-env mocha */
 
-import assert from 'power-assert'
-import nextThursday from '.'
+import assert from 'assert'
+import nextThursday from './index'
 
 describe('nextThursday', () => {
   it('returns the following Thursday given various dates before the same', () => {

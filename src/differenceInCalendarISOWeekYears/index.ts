@@ -1,5 +1,4 @@
 import getISOWeekYear from '../getISOWeekYear/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name differenceInCalendarISOWeekYears
@@ -11,19 +10,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
- * - The function was renamed from `differenceInCalendarISOYears` to `differenceInCalendarISOWeekYears`.
- *   "ISO week year" is short for [ISO week-numbering year](https://en.wikipedia.org/wiki/ISO_week_date).
- *   This change makes the name consistent with
- *   locale-dependent week-numbering year helpers, e.g., `addWeekYears`.
- *
- * @param {Date|Number} dateLeft - the later date
- * @param {Date|Number} dateRight - the earlier date
- * @returns {Number} the number of calendar ISO week-numbering years
- * @throws {TypeError} 2 arguments required
+ * @param dateLeft - the later date
+ * @param dateRight - the earlier date
+ * @returns the number of calendar ISO week-numbering years
  *
  * @example
  * // How many calendar ISO week-numbering years are 1 January 2010 and 1 January 2012?
@@ -33,11 +22,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * )
  * //=> 2
  */
-export default function differenceInCalendarISOWeekYears(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+export default function differenceInCalendarISOWeekYears<DateType extends Date>(
+  dirtyDateLeft: DateType | number,
+  dirtyDateRight: DateType | number
 ): number {
-  requiredArgs(2, arguments)
-
   return getISOWeekYear(dirtyDateLeft) - getISOWeekYear(dirtyDateRight)
 }

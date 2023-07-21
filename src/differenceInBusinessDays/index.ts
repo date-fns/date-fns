@@ -5,8 +5,6 @@ import isBefore from '../isBefore/index'
 import isSameDay from '../isSameDay/index'
 import isValid from '../isValid/index'
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name differenceInBusinessDays
@@ -19,6 +17,7 @@ import toInteger from '../_lib/toInteger/index'
  * Like `differenceInCalendarDays`, the function removes the times from
  * the dates before calculating the difference.
  *
+
  * @param {Date|Number} dateLeft - the later date
  * @param {Date|Number} dateRight - the earlier date
  * @param {Object} [options] - an object with options.
@@ -38,10 +37,10 @@ import toInteger from '../_lib/toInteger/index'
  * //=> 136
  *
  * // How many business days are between
- * // 1 November 2021 and 30 November 2021?
+ * // 30 November 2021 and 1 November 2021?
  * const result = differenceInBusinessDays(
- *   new Date(2021, 10, 1),
- *   new Date(2021, 10, 30)
+ *   new Date(2021, 10, 30),
+ *   new Date(2021, 10, 1)
  * )
  * //=> 21
  *
@@ -51,7 +50,7 @@ import toInteger from '../_lib/toInteger/index'
  *   new Date(2021, 10, 1),
  *   new Date(2021, 11, 1)
  * )
- * //=> 22
+ * //=> -22
  *
  * // How many business days are between
  * // 1 November 2021 and 1 November 2021 ?
@@ -69,7 +68,6 @@ export default function differenceInBusinessDays(
     exceptions?: Record<string, boolean>
   }
 ): number {
-  requiredArgs(2, arguments)
   const options = dirtyOptions || {}
   const businessDays = options.businessDays || [1, 2, 3, 4, 5]
 
@@ -93,7 +91,7 @@ export default function differenceInBusinessDays(
       : isAfter(date, dateLeft) && isBefore(date, dateRight)
   }
 
-  const weeks = toInteger(calendarDifference / 7)
+  const weeks = Math.trunc(calendarDifference / 7)
 
   let result = weeks * businessDays.length
   let newDateRight = addDays(dateRight, weeks * 7)

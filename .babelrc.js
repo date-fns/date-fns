@@ -1,22 +1,27 @@
-const presets = ['@babel/preset-typescript']
-const plugins = [
-  '@babel/plugin-transform-block-scoping',
-  '@babel/plugin-transform-template-literals',
-  '@babel/plugin-transform-arrow-functions',
-  '@babel/plugin-transform-parameters',
-  '@babel/plugin-transform-destructuring',
-  '@babel/plugin-proposal-optional-chaining',
-  '@babel/plugin-proposal-object-rest-spread',
-  '@babel/plugin-transform-shorthand-properties',
+const presets = [
+  [
+    '@babel/preset-env',
+    { modules: process.env.BABEL_ENV === 'esm' ? false : 'auto' },
+  ],
+  '@babel/preset-typescript',
 ]
+const plugins = ['@babel/plugin-proposal-class-properties']
 
-if (process.env.NODE_ENV === 'test') {
-  presets.push('babel-preset-power-assert')
+const transformRuntimeOptions = {
+  version: require('./package.json').dependencies['@babel/runtime'].replace(
+    /^\^/,
+    ''
+  ),
 }
 
 if (process.env.BABEL_ENV !== 'esm') {
-  plugins.push('@babel/plugin-transform-modules-commonjs')
   plugins.push('babel-plugin-add-module-exports')
+  plugins.push(['@babel/plugin-transform-runtime', transformRuntimeOptions])
+} else {
+  plugins.push([
+    '@babel/plugin-transform-runtime',
+    { ...transformRuntimeOptions, useESModules: true },
+  ])
 }
 
 if (process.env.BABEL_ENV === 'esm' || process.env.BABEL_ENV === 'commonjs') {

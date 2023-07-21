@@ -1,5 +1,3 @@
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name toDate
  * @category Common Helpers
@@ -16,9 +14,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * **Note**: *all* Date arguments passed to any *date-fns* function is processed by `toDate`.
  *
- * @param {Date|Number} argument - the value to convert
- * @returns {Date} the parsed date in the local time zone
- * @throws {TypeError} 1 argument required
+ * @param argument - the value to convert
+ * @returns the parsed date in the local time zone
  *
  * @example
  * // Clone the date:
@@ -30,9 +27,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = toDate(1392098430000)
  * //=> Tue Feb 11 2014 11:30:30
  */
-export default function toDate(argument: Date | number): Date {
-  requiredArgs(1, arguments)
-
+export default function toDate<DateType extends Date = Date>(
+  argument: DateType | number
+): DateType {
   const argStr = Object.prototype.toString.call(argument)
 
   // Clone the date
@@ -41,21 +38,15 @@ export default function toDate(argument: Date | number): Date {
     (typeof argument === 'object' && argStr === '[object Date]')
   ) {
     // Prevent the date to lose the milliseconds when passed to new Date() in IE10
-    return new Date(argument.getTime())
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore: TODO find a way to make TypeScript happy about this code
+    return new argument.constructor(argument.getTime())
+    // return new Date(argument.getTime())
   } else if (typeof argument === 'number' || argStr === '[object Number]') {
-    return new Date(argument)
+    // TODO: Can we get rid of as?
+    return new Date(argument) as DateType
   } else {
-    if (
-      (typeof argument === 'string' || argStr === '[object String]') &&
-      typeof console !== 'undefined'
-    ) {
-      // eslint-disable-next-line no-console
-      console.warn(
-        "Starting with v2.0.0-beta.1 date-fns doesn't accept strings as date arguments. Please use `parseISO` to parse strings. See: https://git.io/fjule"
-      )
-      // eslint-disable-next-line no-console
-      console.warn(new Error().stack)
-    }
-    return new Date(NaN)
+    // TODO: Can we get rid of as?
+    return new Date(NaN) as DateType
   }
 }

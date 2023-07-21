@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import eachYearOfInterval from '.'
+import eachYearOfInterval from './index'
 
 describe('eachYearOfInterval', () => {
   it('returns an array with starts of days from the day of the start date to the day of the end date', () => {
@@ -87,19 +87,5 @@ describe('eachYearOfInterval', () => {
       end: new Date(NaN),
     })
     assert.throws(block, RangeError)
-  })
-
-  it('throws an exception if the interval is undefined', () => {
-    const block = eachYearOfInterval.bind(
-      null,
-      //@ts-expect-error
-      undefined
-    )
-    assert.throws(block, RangeError)
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    //@ts-expect-error
-    assert.throws(eachYearOfInterval.bind(null), TypeError)
   })
 })

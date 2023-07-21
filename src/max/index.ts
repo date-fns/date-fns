@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name max
@@ -9,30 +8,12 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Return the latest of the given dates.
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
- * - `max` function now accepts an array of dates rather than spread arguments.
- *
- *   ```javascript
- *   // Before v2.0.0
- *   var date1 = new Date(1989, 6, 10)
- *   var date2 = new Date(1987, 1, 11)
- *   var maxDate = max(date1, date2)
- *
- *   // v2.0.0 onward:
- *   var dates = [new Date(1989, 6, 10), new Date(1987, 1, 11)]
- *   var maxDate = max(dates)
- *   ```
- *
- * @param {Date[]|Number[]} datesArray - the dates to compare
- * @returns {Date} the latest of the dates
- * @throws {TypeError} 1 argument required
+ * @param datesArray - the dates to compare
+ * @returns the latest of the dates
  *
  * @example
  * // Which of these dates is the latest?
- * var result = max([
+ * const result = max([
  *   new Date(1989, 6, 10),
  *   new Date(1987, 1, 11),
  *   new Date(1995, 6, 2),
@@ -40,22 +21,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * ])
  * //=> Sun Jul 02 1995 00:00:00
  */
-export default function max(dirtyDatesArray: Array<Date | number>): Date {
-  requiredArgs(1, arguments)
-
-  let datesArray: Array<Date | number>
-  // `dirtyDatesArray` is Array, Set or Map, or object with custom `forEach` method
-  if (dirtyDatesArray && typeof dirtyDatesArray.forEach === 'function') {
-    datesArray = dirtyDatesArray
-
-    // If `dirtyDatesArray` is Array-like Object, convert to Array.
-  } else if (typeof dirtyDatesArray === 'object' && dirtyDatesArray !== null) {
-    datesArray = Array.prototype.slice.call(dirtyDatesArray)
-  } else {
-    // `dirtyDatesArray` is non-iterable, return Invalid Date
-    return new Date(NaN)
-  }
-
+export default function max<DateType extends Date>(
+  datesArray: Array<DateType | number>
+): DateType | Date {
   let result: Date | undefined
   datesArray.forEach(function (dirtyDate) {
     const currentDate = toDate(dirtyDate)

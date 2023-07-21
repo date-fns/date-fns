@@ -1,9 +1,8 @@
-// @flow
 /* eslint-env mocha */
 
 import assert from 'assert'
 import sinon from 'sinon'
-import isThisSecond from '.'
+import isThisSecond from './index'
 
 describe('isThisSecond', () => {
   let clock: sinon.SinonFakeTimers
@@ -30,10 +29,5 @@ describe('isThisSecond', () => {
   it('accepts a timestamp', () => {
     const date = new Date(2014, 8 /* Sep */, 25, 18, 30, 15, 250).getTime()
     assert(isThisSecond(date) === true)
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', function() {
-    // @ts-expect-error
-    assert.throws(isThisSecond.bind(null), TypeError)
   })
 })

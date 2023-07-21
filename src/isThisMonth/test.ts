@@ -1,9 +1,8 @@
-// @flow
 /* eslint-env mocha */
 
 import assert from 'assert'
 import sinon from 'sinon'
-import isThisMonth from '.'
+import isThisMonth from './index'
 
 describe('isThisMonth', () => {
   let clock: sinon.SinonFakeTimers
@@ -28,10 +27,5 @@ describe('isThisMonth', () => {
   it('accepts a timestamp', () => {
     const date = new Date(2014, 8 /* Sep */, 30).getTime()
     assert(isThisMonth(date) === true)
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', function() {
-    // @ts-expect-error
-    assert.throws(isThisMonth.bind(null), TypeError)
   })
 })

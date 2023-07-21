@@ -1,20 +1,23 @@
-import requiredArgs from '../_lib/requiredArgs/index'
-
 type Locale = Intl.ResolvedDateTimeFormatOptions['locale']
 type FormatOptions = Intl.DateTimeFormatOptions
 type LocaleOptions = { locale: Locale | Locale[] }
 
-export default function intlFormat(date: Date): string
-export default function intlFormat(
-  date: Date,
+export default function intlFormat<DateType extends Date>(
+  date: DateType
+): string
+
+export default function intlFormat<DateType extends Date>(
+  date: DateType,
   localeOptions: LocaleOptions
 ): string
-export default function intlFormat(
-  date: Date,
+
+export default function intlFormat<DateType extends Date>(
+  date: DateType,
   formatOptions: FormatOptions
 ): string
-export default function intlFormat(
-  date: Date,
+
+export default function intlFormat<DateType extends Date>(
+  date: DateType,
   formatOptions: FormatOptions,
   localeOptions: LocaleOptions
 ): string
@@ -31,25 +34,24 @@ export default function intlFormat(
  *
  * > ⚠️ Please note that before Node version 13.0.0, only the locale data for en-US is available by default.
  *
- * @param {Date|Number} argument - the original date.
- * @param {Object} [formatOptions] - an object with options.
- * @param {'lookup'|'best fit'} [formatOptions.localeMatcher='best fit'] - locale selection algorithm.
- * @param {'narrow'|'short'|'long'} [formatOptions.weekday] - representation the days of the week.
- * @param {'narrow'|'short'|'long'} [formatOptions.era] - representation of eras.
- * @param {'numeric'|'2-digit'} [formatOptions.year] - representation of years.
- * @param {'numeric'|'2-digit'|'narrow'|'short'|'long'} [formatOptions.month='numeric'] - representation of month.
- * @param {'numeric'|'2-digit'} [formatOptions.day='numeric'] - representation of day.
- * @param {'numeric'|'2-digit'} [formatOptions.hour='numeric'] - representation of hours.
- * @param {'numeric'|'2-digit'} [formatOptions.minute] - representation of minutes.
- * @param {'numeric'|'2-digit'} [formatOptions.second] - representation of seconds.
- * @param {'short'|'long'} [formatOptions.timeZoneName] - representation of names of time zones.
- * @param {'basic'|'best fit'} [formatOptions.formatMatcher='best fit'] - format selection algorithm.
- * @param {Boolean} [formatOptions.hour12] - determines whether to use 12-hour time format.
- * @param {String} [formatOptions.timeZone] - the time zone to use.
- * @param {Object} [localeOptions] - an object with locale.
- * @param {String|String[]} [localeOptions.locale] - the locale code
- * @returns {String} the formatted date string.
- * @throws {TypeError} 1 argument required.
+ * @param argument - the original date.
+ * @param formatOptions - an object with options.
+ * @param formatOptions.localeMatcher - locale selection algorithm.
+ * @param formatOptions.weekday - representation the days of the week.
+ * @param formatOptions.era - representation of eras.
+ * @param formatOptions.year - representation of years.
+ * @param formatOptions.month - representation of month.
+ * @param formatOptions.day - representation of day.
+ * @param formatOptions.hour - representation of hours.
+ * @param formatOptions.minute - representation of minutes.
+ * @param formatOptions.second - representation of seconds.
+ * @param formatOptions.timeZoneName - representation of names of time zones.
+ * @param formatOptions.formatMatcher - format selection algorithm.
+ * @param formatOptions.hour12 - determines whether to use 12-hour time format.
+ * @param formatOptions.timeZone - the time zone to use.
+ * @param localeOptions - an object with locale.
+ * @param localeOptions.locale - the locale code
+ * @returns the formatted date string.
  * @throws {RangeError} `date` must not be Invalid Date
  *
  * @example
@@ -89,13 +91,11 @@ export default function intlFormat(
  * const result = intlFormat(new Date(2019, 9, 4, 12, 30, 13, 456))
  * //=> 10/4/2019
  */
-export default function intlFormat(
-  date: Date,
+export default function intlFormat<DateType extends Date>(
+  date: DateType,
   formatOrLocale?: FormatOptions | LocaleOptions,
   localeOptions?: LocaleOptions
 ): string {
-  requiredArgs(1, arguments)
-
   let formatOptions: FormatOptions | undefined
 
   if (isFormatOptions(formatOrLocale)) {

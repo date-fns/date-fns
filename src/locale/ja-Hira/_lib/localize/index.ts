@@ -1,4 +1,5 @@
-import type { Localize, LocalizeFn, QuarterIndex } from '../../../types'
+import type { Quarter } from '../../../../types'
+import type { Localize, LocalizeFn } from '../../../types'
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
 const eraValues = {
@@ -143,24 +144,9 @@ const formattingDayPeriodValues = {
   },
 }
 
-const ordinalNumber: LocalizeFn<number, undefined> = (
-  dirtyNumber,
-  dirtyOptions
-) => {
+const ordinalNumber: LocalizeFn<number, undefined> = (dirtyNumber, options) => {
   const number = Number(dirtyNumber)
-
-  // If ordinal numbers depend on context, for example,
-  // if they are different for different grammatical genders,
-  // use `options.unit`:
-  //
-  //   const options = dirtyOptions || {}
-  //   const unit = String(options.unit)
-  //
-  // where `unit` can be 'year', 'quarter', 'month', 'week', 'date', 'dayOfYear',
-  // 'day', 'hour', 'minute', 'second'
-
-  const options = dirtyOptions || {}
-  const unit = String(options.unit)
+  const unit = String(options?.unit)
 
   switch (unit) {
     case 'year':
@@ -195,7 +181,7 @@ const localize: Localize = {
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: (quarter) => (Number(quarter) - 1) as QuarterIndex,
+    argumentCallback: (quarter) => (Number(quarter) - 1) as Quarter,
   }),
 
   month: buildLocalizeFn({

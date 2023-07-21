@@ -21,7 +21,7 @@ const prereleaseRegExp = /(test|alpha|beta|rc)/
 const features = {
   docs: true,
   i18n: true,
-  benchmarks: true,
+  benchmarks: false,
   camelCase: true,
   fp: true,
   esm: true,

@@ -1,10 +1,9 @@
-// @flow
 /* eslint-env mocha */
 /* global HTMLIFrameElement */
 
 import assert from 'assert'
 import { assertType } from '../_lib/test'
-import isDate from '.'
+import isDate from './index'
 
 describe('isDate', () => {
   it('returns true if the given value is a date object', () => {
@@ -38,9 +37,7 @@ describe('isDate', () => {
         iframe.id = 'iframe'
         iframe.addEventListener('load', () => {
           execScript('window.date = new Date()') // eslint-disable-line no-implied-eval
-          // @ts-expect-error
-          assert(isDate(iframe.contentWindow.date))
-          // $ExpectedMistake sadly, but Flow doesn't know about Mocha's done
+          assert(isDate((iframe.contentWindow as any).date))
           done()
         })
         if (!document.body) throw new Error('document.body is not defined')
@@ -72,10 +69,5 @@ describe('isDate', () => {
     assert(!isDate({}))
     assert(!isDate(null))
     assert(!isDate(0))
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(isDate.bind(null), TypeError)
   })
 })

@@ -1,5 +1,4 @@
 import startOfWeek from '../startOfWeek/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name startOfISOWeek
@@ -12,21 +11,16 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
- * @param {Date|Number} date - the original date
- * @returns {Date} the start of an ISO week
- * @throws {TypeError} 1 argument required
+ * @param date - the original date
+ * @returns the start of an ISO week
  *
  * @example
  * // The start of an ISO week for 2 September 2014 11:55:00:
- * var result = startOfISOWeek(new Date(2014, 8, 2, 11, 55, 0))
+ * const result = startOfISOWeek(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Mon Sep 01 2014 00:00:00
  */
-export default function startOfISOWeek(dirtyDate: Date | number): Date {
-  requiredArgs(1, arguments)
-
+export default function startOfISOWeek<DateType extends Date>(
+  dirtyDate: DateType | number
+): DateType {
   return startOfWeek(dirtyDate, { weekStartsOn: 1 })
 }

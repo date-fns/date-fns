@@ -1,8 +1,7 @@
-// @flow
 /* eslint-env mocha */
 
 import assert from 'assert'
-import addBusinessDays from '.'
+import addBusinessDays from './index'
 
 describe('addBusinessDays', function () {
   it('adds the given number of business days', function () {
@@ -255,9 +254,9 @@ describe('addBusinessDays', function () {
 
   it('can handle a large number of business days', function () {
     // @ts-ignore
-    if (typeof this.timeout === 'function') {
+    if (typeof global.timeout === 'function') {
       // @ts-ignore
-      this.timeout(500 /* 500 ms test timeout */)
+      global.timeout(500 /* 500 ms test timeout */)
     }
 
     const result = addBusinessDays(new Date(2014, 0 /* Jan */, 1), 3387885)
@@ -294,13 +293,6 @@ describe('addBusinessDays', function () {
   it('returns `Invalid Date` if the given amount is NaN', function () {
     const result = addBusinessDays(new Date(2014, 8 /* Sep */, 1), NaN)
     assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', function () {
-    // @ts-expect-error
-    assert.throws(addBusinessDays.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(addBusinessDays.bind(null, 1), TypeError)
   })
 
   it('starting from a Sunday should land on a weekday when reducing a divisible by 5', function () {

@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import differenceInMinutes from '.'
+import differenceInMinutes from './index'
 
 describe('differenceInMinutes', () => {
   it('returns the number of minutes between the given dates', () => {
@@ -139,13 +139,5 @@ describe('differenceInMinutes', () => {
   it('returns NaN if the both dates are `Invalid Date`', () => {
     const result = differenceInMinutes(new Date(NaN), new Date(NaN))
     assert(isNaN(result))
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(differenceInMinutes.bind(null), TypeError)
-
-    // @ts-expect-error
-    assert.throws(differenceInMinutes.bind(null, 1), TypeError)
   })
 })

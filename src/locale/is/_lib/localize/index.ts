@@ -1,4 +1,5 @@
-import type { Localize, LocalizeFn, QuarterIndex } from '../../../types'
+import type { Quarter } from '../../../../types'
+import type { Localize, LocalizeFn } from '../../../types'
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
 const eraValues = {
@@ -53,7 +54,15 @@ const monthValues = {
 const dayValues = {
   narrow: ['S', 'M', 'Þ', 'M', 'F', 'F', 'L'] as const,
   short: ['Su', 'Má', 'Þr', 'Mi', 'Fi', 'Fö', 'La'] as const,
-  abbreviated: ['sun.', 'mán.', 'þri.', 'mið.', 'fim.', 'fös.', 'lau'] as const,
+  abbreviated: [
+    'sun.',
+    'mán.',
+    'þri.',
+    'mið.',
+    'fim.',
+    'fös.',
+    'lau.',
+  ] as const,
   wide: [
     'sunnudagur',
     'mánudagur',
@@ -151,7 +160,7 @@ const localize: Localize = {
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: (quarter) => (quarter - 1) as QuarterIndex,
+    argumentCallback: (quarter) => (quarter - 1) as Quarter,
   }),
 
   month: buildLocalizeFn({

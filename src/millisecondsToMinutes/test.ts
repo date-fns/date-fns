@@ -1,10 +1,10 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import millisecondsToMinutes from '.'
+import millisecondsToMinutes from './index'
 
 describe('millisecondsToMinutes', () => {
-  it('converts milliseconds to minutes', function () {
+  it('converts milliseconds to minutes', () => {
     assert(millisecondsToMinutes(60000) === 1)
     assert(millisecondsToMinutes(120000) === 2)
   })

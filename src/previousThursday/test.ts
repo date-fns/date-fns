@@ -1,10 +1,10 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import previousThursday from '.'
+import previousThursday from './index'
 
-describe('previousThursday', function () {
-  it('returns the previous Thursday given various dates after the same', function () {
+describe('previousThursday', () => {
+  it('returns the previous Thursday given various dates after the same', () => {
     assert.deepStrictEqual(
       previousThursday(new Date(2021, 5 /* Jun */, 5)),
       new Date(2021, 5 /* Jun */, 3)
@@ -36,7 +36,7 @@ describe('previousThursday', function () {
     )
   })
 
-  it('returns `Invalid Date` if the given date is invalid', function () {
+  it('returns `Invalid Date` if the given date is invalid', () => {
     assert(previousThursday(new Date(NaN)) instanceof Date)
   })
 })

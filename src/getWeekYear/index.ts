@@ -1,12 +1,20 @@
+import dateFrom from '../constructFrom/index'
 import startOfWeek from '../startOfWeek/index'
 import toDate from '../toDate/index'
-import toInteger from '../_lib/toInteger/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-import {
-  WeekStartOptions,
-  LocaleOptions,
+import type {
   FirstWeekContainsDateOptions,
+  LocaleOptions,
+  WeekStartOptions,
 } from '../types'
+import { getDefaultOptions } from '../_lib/defaultOptions/index'
+
+/**
+ * The {@link getWeekYear} function options.
+ */
+export interface GetWeekYearOptions
+  extends LocaleOptions,
+    WeekStartOptions,
+    FirstWeekContainsDateOptions {}
 
 /**
  * @name getWeekYear
@@ -22,19 +30,9 @@ import {
  *
  * Week numbering: https://en.wikipedia.org/wiki/Week#Week_numbering
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
- * @param {Date|Number} date - the given date
- * @param {Object} [options] - an object with options.
- * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
- * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
- * @param {1|2|3|4|5|6|7} [options.firstWeekContainsDate=1] - the day of January, which is always in the first week of the year
- * @returns {Number} the local week-numbering year
- * @throws {TypeError} 1 argument required
- * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
- * @throws {RangeError} `options.firstWeekContainsDate` must be between 1 and 7
+ * @param date - the given date
+ * @param options - an object with options.
+ * @returns the local week-numbering year
  *
  * @example
  * // Which week numbering year is 26 December 2004 with the default settings?
@@ -51,39 +49,27 @@ import {
  * const result = getWeekYear(new Date(2004, 11, 26), { firstWeekContainsDate: 4 })
  * //=> 2004
  */
-export default function getWeekYear(
-  dirtyDate: Date | number,
-  options?: LocaleOptions & WeekStartOptions & FirstWeekContainsDateOptions
+export default function getWeekYear<DateType extends Date>(
+  dirtyDate: DateType | number,
+  options?: GetWeekYearOptions
 ): number {
-  requiredArgs(1, arguments)
-
   const date = toDate(dirtyDate)
   const year = date.getFullYear()
 
-  const localeFirstWeekContainsDate =
-    options?.locale?.options?.firstWeekContainsDate
-  const defaultFirstWeekContainsDate =
-    localeFirstWeekContainsDate == null
-      ? 1
-      : toInteger(localeFirstWeekContainsDate)
+  const defaultOptions = getDefaultOptions()
   const firstWeekContainsDate =
-    options?.firstWeekContainsDate == null
-      ? defaultFirstWeekContainsDate
-      : toInteger(options.firstWeekContainsDate)
+    options?.firstWeekContainsDate ??
+    options?.locale?.options?.firstWeekContainsDate ??
+    defaultOptions.firstWeekContainsDate ??
+    defaultOptions.locale?.options?.firstWeekContainsDate ??
+    1
 
-  // Test if weekStartsOn is between 1 and 7 _and_ is not NaN
-  if (!(firstWeekContainsDate >= 1 && firstWeekContainsDate <= 7)) {
-    throw new RangeError(
-      'firstWeekContainsDate must be between 1 and 7 inclusively'
-    )
-  }
-
-  const firstWeekOfNextYear = new Date(0)
+  const firstWeekOfNextYear = dateFrom(dirtyDate, 0)
   firstWeekOfNextYear.setFullYear(year + 1, 0, firstWeekContainsDate)
   firstWeekOfNextYear.setHours(0, 0, 0, 0)
   const startOfNextYear = startOfWeek(firstWeekOfNextYear, options)
 
-  const firstWeekOfThisYear = new Date(0)
+  const firstWeekOfThisYear = dateFrom(dirtyDate, 0)
   firstWeekOfThisYear.setFullYear(year, 0, firstWeekContainsDate)
   firstWeekOfThisYear.setHours(0, 0, 0, 0)
   const startOfThisYear = startOfWeek(firstWeekOfThisYear, options)

@@ -1,7 +1,11 @@
 import addHours from '../addHours/index'
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-import { Interval, StepOptions } from '../types'
+import type { Interval, StepOptions } from '../types'
+
+/**
+ * The {@link eachHourOfInterval} function options.
+ */
+export interface EachHourOfIntervalOptions extends StepOptions {}
 
 /**
  * @name eachHourOfInterval
@@ -11,18 +15,16 @@ import { Interval, StepOptions } from '../types'
  * @description
  * Return the array of hours within the specified time interval.
  *
- * @param {Interval} interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
- * @param {Object} [options] - an object with options.
- * @param {Number} [options.step=1] - the step to increment by. The value should be more than 1.
- * @returns {Date[]} the array with starts of hours from the hour of the interval start to the hour of the interval end
- * @throws {TypeError} 1 argument required
+ * @param interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
+ * @param options - an object with options.
+ * @returns the array with starts of hours from the hour of the interval start to the hour of the interval end
  * @throws {RangeError} `options.step` must be a number greater than 1
  * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *
  * @example
  * // Each hour between 6 October 2014, 12:00 and 6 October 2014, 15:00
- * var result = eachHourOfInterval({
+ * const result = eachHourOfInterval({
  *   start: new Date(2014, 9, 6, 12),
  *   end: new Date(2014, 9, 6, 15)
  * })
@@ -33,13 +35,10 @@ import { Interval, StepOptions } from '../types'
  * //   Mon Oct 06 2014 15:00:00
  * // ]
  */
-export default function eachHourOfInterval(
-  dirtyInterval: Interval,
-  options?: StepOptions
-): Date[] {
-  requiredArgs(1, arguments)
-
-  const interval = dirtyInterval || {}
+export default function eachHourOfInterval<DateType extends Date>(
+  interval: Interval<DateType>,
+  options?: EachHourOfIntervalOptions
+): DateType[] {
   const startDate = toDate(interval.start)
   const endDate = toDate(interval.end)
 
@@ -56,7 +55,7 @@ export default function eachHourOfInterval(
   let currentDate = startDate
   currentDate.setMinutes(0, 0, 0)
 
-  const step = options && 'step' in options ? Number(options.step) : 1
+  const step = options?.step ?? 1
   if (step < 1 || isNaN(step))
     throw new RangeError('`options.step` must be a number greater than 1')
 

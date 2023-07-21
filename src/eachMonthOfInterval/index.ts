@@ -1,5 +1,5 @@
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
+import type { Interval } from '../types'
 
 /**
  * @name eachMonthOfInterval
@@ -9,15 +9,14 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Return the array of months within the specified time interval.
  *
- * @param {Interval} interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
- * @returns {Date[]} the array with starts of months from the month of the interval start to the month of the interval end
- * @throws {TypeError} 1 argument required
+ * @param interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
+ * @returns the array with starts of months from the month of the interval start to the month of the interval end
  * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *
  * @example
  * // Each month between 6 February 2014 and 10 August 2014:
- * var result = eachMonthOfInterval({
+ * const result = eachMonthOfInterval({
  *   start: new Date(2014, 1, 6),
  *   end: new Date(2014, 7, 10)
  * })
@@ -31,10 +30,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //   Fri Aug 01 2014 00:00:00
  * // ]
  */
-export default function eachMonthOfInterval(dirtyInterval: Interval) {
-  requiredArgs(1, arguments)
-
-  const interval = dirtyInterval || {}
+export default function eachMonthOfInterval<DateType extends Date>(
+  interval: Interval<DateType>
+): DateType[] {
   const startDate = toDate(interval.start)
   const endDate = toDate(interval.end)
 

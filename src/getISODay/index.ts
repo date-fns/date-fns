@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name getISODay
@@ -12,22 +11,17 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
- * @param {Date|Number} date - the given date
- * @returns {Number} the day of ISO week
- * @throws {TypeError} 1 argument required
+ * @param date - the given date
+ * @returns the day of ISO week
  *
  * @example
  * // Which day of the ISO week is 26 February 2012?
  * const result = getISODay(new Date(2012, 1, 26))
  * //=> 7
  */
-export default function getISODay(dirtyDate: Date | number): number {
-  requiredArgs(1, arguments)
-
+export default function getISODay<DateType extends Date>(
+  dirtyDate: DateType | number
+): number {
   const date = toDate(dirtyDate)
   let day = date.getDay()
 

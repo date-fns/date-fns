@@ -1,5 +1,4 @@
 import nextDay from '../nextDay/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name nextTuesday
@@ -9,16 +8,16 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * When is the next Tuesday?
  *
- * @param {Date | number} date - the date to start counting from
- * @returns {Date} the next Tuesday
- * @throws {TypeError} 1 argument required
+ * @param date - the date to start counting from
+ * @returns the next Tuesday
  *
  * @example
  * // When is the next Tuesday after Mar, 22, 2020?
  * const result = nextTuesday(new Date(2020, 2, 22))
  * //=> Tue Mar 24 2020 00:00:00
  */
-export default function nextTuesday(date: Date | number): Date {
-  requiredArgs(1, arguments)
+export default function nextTuesday<DateType extends Date>(
+  date: DateType | number
+): DateType {
   return nextDay(date, 2)
 }

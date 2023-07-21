@@ -1,16 +1,8 @@
-import toDate from '../toDate/index'
 import isValid from '../isValid/index'
+import toDate from '../toDate/index'
 import addLeadingZeros from '../_lib/addLeadingZeros/index'
 
-const days = [
-  'Sun',
-  'Mon',
-  'Tue',
-  'Wed',
-  'Thu',
-  'Fri',
-  'Sat',
-]
+const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
 const months = [
   'Jan',
@@ -36,9 +28,8 @@ const months = [
  * Return the formatted date string in RFC 7231 format.
  * The result will always be in UTC timezone.
  *
- * @param {Date|Number} date - the original date
- * @returns {String} the formatted date string
- * @throws {TypeError} 1 argument required
+ * @param date - the original date
+ * @returns the formatted date string
  * @throws {RangeError} `date` must not be Invalid Date
  *
  * @example
@@ -46,13 +37,9 @@ const months = [
  * const result = formatRFC7231(new Date(2019, 8, 18, 19, 0, 52))
  * //=> 'Wed, 18 Sep 2019 19:00:52 GMT'
  */
-export default function formatRFC7231(dirtyDate: Date | number): string {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      `1 arguments required, but only ${arguments.length} present`
-    )
-  }
-
+export default function formatRFC7231<DateType extends Date>(
+  dirtyDate: DateType | number
+): string {
   const originalDate = toDate(dirtyDate)
 
   if (!isValid(originalDate)) {

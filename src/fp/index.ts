@@ -1,4 +1,4 @@
-// This file is generated automatically by `scripts/build/indices.js`. Please, don't change it.
+// This file is generated automatically by `scripts/build/indices.ts`. Please, don't change it.
 
 export { default as add } from './add/index'
 export { default as addBusinessDays } from './addBusinessDays/index'
@@ -123,6 +123,8 @@ export { default as hoursToMinutes } from './hoursToMinutes/index'
 export { default as hoursToSeconds } from './hoursToSeconds/index'
 export { default as intervalToDuration } from './intervalToDuration/index'
 export { default as intlFormat } from './intlFormat/index'
+export { default as intlFormatDistance } from './intlFormatDistance/index'
+export { default as intlFormatDistanceWithOptions } from './intlFormatDistanceWithOptions/index'
 export { default as isAfter } from './isAfter/index'
 export { default as isBefore } from './isBefore/index'
 export { default as isDate } from './isDate/index'

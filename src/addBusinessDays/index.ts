@@ -1,12 +1,10 @@
-import toDate from '../toDate/index'
-import toInteger from '../_lib/toInteger/index'
-import requiredArgs from '../_lib/requiredArgs/index'
+import toDate from '../toDate'
 import format from '../format/index'
-import isMatch from '../isMatch/index'
+
 
 /**
  * @name addBusinessDays
- * @category Day Helpers
+ * @category Date Extension Helpers
  * @summary Add the specified number of business days (mon - fri) to the given date.
  *
  * @description
@@ -26,6 +24,7 @@ import isMatch from '../isMatch/index'
  * const result = addBusinessDays(new Date(2014, 8, 1), 10)
  * //=> Mon Sep 15 2014 00:00:00 (skipped weekend days)
  */
+
 export default function addBusinessDays(
   dirtyDate: Date | number,
   dirtyAmount: number,
@@ -34,7 +33,6 @@ export default function addBusinessDays(
     exceptions?: Record<string, boolean>
   }
 ): Date {
-  requiredArgs(2, arguments)
   const options = dirtyOptions || {}
   const exceptions = options.exceptions || {}
   const businessDays = options.businessDays || [1, 2, 3, 4, 5]
@@ -45,7 +43,9 @@ export default function addBusinessDays(
   }
 
   const initialDate = toDate(dirtyDate)
-  const amount = toInteger(dirtyAmount)
+
+  const amount =
+    dirtyAmount > 0 ? Math.floor(dirtyAmount) : Math.ceil(dirtyAmount)
 
   if (isNaN(amount)) return new Date(NaN)
 

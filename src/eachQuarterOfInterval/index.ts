@@ -1,7 +1,7 @@
 import addQuarters from '../addQuarters/index'
 import startOfQuarter from '../startOfQuarter/index'
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
+import type { Interval } from '../types'
 
 /**
  * @name eachQuarterOfInterval
@@ -11,15 +11,14 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Return the array of quarters within the specified time interval.
  *
- * @param {Interval} interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
- * @returns {Date[]} the array with starts of quarters from the quarter of the interval start to the quarter of the interval end
- * @throws {TypeError} 1 argument required
+ * @param interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
+ * @returns the array with starts of quarters from the quarter of the interval start to the quarter of the interval end
  * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *
  * @example
  * // Each quarter within interval 6 February 2014 - 10 August 2014:
- * var result = eachQuarterOfInterval({
+ * const result = eachQuarterOfInterval({
  *   start: new Date(2014, 1, 6),
  *   end: new Date(2014, 7, 10)
  * })
@@ -29,14 +28,13 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //   Tue Jul 01 2014 00:00:00,
  * // ]
  */
-export default function eachQuarterOfInterval(dirtyInterval: Interval): Date[] {
-  requiredArgs(1, arguments)
-
-  const interval = dirtyInterval || {}
+export default function eachQuarterOfInterval<DateType extends Date>(
+  interval: Interval<DateType>
+): DateType[] {
   const startDate = toDate(interval.start)
   const endDate = toDate(interval.end)
 
-  var endTime = endDate.getTime()
+  let endTime = endDate.getTime()
 
   // Throw an exception if start date is after end date or if any date is `Invalid Date`
   if (!(startDate.getTime() <= endTime)) {
@@ -50,7 +48,7 @@ export default function eachQuarterOfInterval(dirtyInterval: Interval): Date[] {
 
   const quarters = []
 
-  var currentQuarter = startDateQuarter
+  let currentQuarter = startDateQuarter
 
   while (currentQuarter.getTime() <= endTime) {
     quarters.push(toDate(currentQuarter))

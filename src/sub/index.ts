@@ -1,8 +1,7 @@
 import subDays from '../subDays/index'
 import subMonths from '../subMonths/index'
-import { Duration } from '../types'
-import requiredArgs from '../_lib/requiredArgs/index'
-import toInteger from '../_lib/toInteger/index'
+import type { Duration } from '../types'
+import constructFrom from '../constructFrom/index'
 
 /**
  * @name sub
@@ -12,8 +11,8 @@ import toInteger from '../_lib/toInteger/index'
  * @description
  * Subtract the specified years, months, weeks, days, hours, minutes and seconds from the given date.
  *
- * @param {Date|Number} date - the date to be changed
- * @param {Duration} duration - the object with years, months, weeks, days, hours, minutes and seconds to be subtracted
+ * @param date - the date to be changed
+ * @param duration - the object with years, months, weeks, days, hours, minutes and seconds to be subtracted
  *
  * | Key     | Description                        |
  * |---------|------------------------------------|
@@ -27,8 +26,7 @@ import toInteger from '../_lib/toInteger/index'
  *
  * All values default to 0
  *
- * @returns {Date} the new date with the seconds subtracted
- * @throws {TypeError} 2 arguments required
+ * @returns the new date with the seconds subtracted
  *
  * @example
  * // Subtract the following duration from 15 June 2017 15:29:20
@@ -43,21 +41,19 @@ import toInteger from '../_lib/toInteger/index'
  * })
  * //=> Mon Sep 1 2014 10:19:50
  */
-export default function sub(
-  date: Date | number,
+export default function sub<DateType extends Date>(
+  date: DateType | number,
   duration: Duration
-): Date {
-  requiredArgs(2, arguments)
-
-  if (!duration || typeof duration !== 'object') return new Date(NaN)
-
-  const years = duration.years ? toInteger(duration.years) : 0
-  const months = duration.months ? toInteger(duration.months) : 0
-  const weeks = duration.weeks ? toInteger(duration.weeks) : 0
-  const days = duration.days ? toInteger(duration.days) : 0
-  const hours = duration.hours ? toInteger(duration.hours) : 0
-  const minutes = duration.minutes ? toInteger(duration.minutes) : 0
-  const seconds = duration.seconds ? toInteger(duration.seconds) : 0
+): DateType {
+  const {
+    years = 0,
+    months = 0,
+    weeks = 0,
+    days = 0,
+    hours = 0,
+    minutes = 0,
+    seconds = 0,
+  } = duration
 
   // Subtract years and months
   const dateWithoutMonths = subMonths(date, months + years * 12)
@@ -69,7 +65,7 @@ export default function sub(
   const minutestoSub = minutes + hours * 60
   const secondstoSub = seconds + minutestoSub * 60
   const mstoSub = secondstoSub * 1000
-  const finalDate = new Date(dateWithoutDays.getTime() - mstoSub)
+  const finalDate = constructFrom(date, dateWithoutDays.getTime() - mstoSub)
 
   return finalDate
 }

@@ -1,8 +1,14 @@
-import { WeekStartOptions } from '../types'
 import addWeeks from '../addWeeks/index'
 import startOfWeek from '../startOfWeek/index'
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
+import type { Interval, LocaleOptions, WeekStartOptions } from '../types'
+
+/**
+ * The {@link eachWeekOfInterval} function options.
+ */
+export interface EachWeekOfIntervalOptions
+  extends WeekStartOptions,
+    LocaleOptions {}
 
 /**
  * @name eachWeekOfInterval
@@ -12,23 +18,15 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Return the array of weeks within the specified time interval.
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
- * @param {Interval} interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
- * @param {Object} [options] - an object with options.
- * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
- * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
- * @returns {Date[]} the array with starts of weeks from the week of the interval start to the week of the interval end
- * @throws {TypeError} 1 argument required
- * @throws {RangeError} `options.weekStartsOn` must be 0, 1, ..., 6
+ * @param interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
+ * @param options - an object with options.
+ * @returns the array with starts of weeks from the week of the interval start to the week of the interval end
  * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *
  * @example
  * // Each week within interval 6 October 2014 - 23 November 2014:
- * var result = eachWeekOfInterval({
+ * const result = eachWeekOfInterval({
  *   start: new Date(2014, 9, 6),
  *   end: new Date(2014, 10, 23)
  * })
@@ -43,17 +41,14 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //   Sun Nov 23 2014 00:00:00
  * // ]
  */
-export default function eachWeekOfInterval(
-  dirtyInterval: Interval,
-  options?: WeekStartOptions
-): Date[] {
-  requiredArgs(1, arguments)
-
-  const interval = dirtyInterval || {}
+export default function eachWeekOfInterval<DateType extends Date>(
+  interval: Interval<DateType>,
+  options?: EachWeekOfIntervalOptions
+): DateType[] {
   const startDate = toDate(interval.start)
   const endDate = toDate(interval.end)
 
-  var endTime = endDate.getTime()
+  let endTime = endDate.getTime()
 
   // Throw an exception if start date is after end date or if any date is `Invalid Date`
   if (!(startDate.getTime() <= endTime)) {

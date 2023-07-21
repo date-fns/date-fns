@@ -1,9 +1,8 @@
-// @flow
 /* eslint-env mocha */
 
 import assert from 'assert'
 import sinon from 'sinon'
-import isThisWeek from '.'
+import isThisWeek from './index'
 
 describe('isThisWeek', () => {
   let clock: sinon.SinonFakeTimers
@@ -33,10 +32,5 @@ describe('isThisWeek', () => {
   it('accepts a timestamp', () => {
     const date = new Date(2014, 8 /* Sep */, 21).getTime()
     assert(isThisWeek(date) === true)
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', function() {
-    // @ts-expect-error
-    assert.throws(isThisWeek.bind(null), TypeError)
   })
 })

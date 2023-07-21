@@ -1,6 +1,6 @@
 import getISOWeekYear from '../getISOWeekYear/index'
 import startOfISOWeek from '../startOfISOWeek/index'
-import requiredArgs from '../_lib/requiredArgs/index'
+import constructFrom from '../constructFrom/index'
 
 /**
  * @name lastDayOfISOWeekYear
@@ -14,29 +14,19 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
- * - The function was renamed from `lastDayOfISOYear` to `lastDayOfISOWeekYear`.
- *   "ISO week year" is short for [ISO week-numbering year](https://en.wikipedia.org/wiki/ISO_week_date).
- *   This change makes the name consistent with
- *   locale-dependent week-numbering year helpers, e.g., `getWeekYear`.
- *
- * @param {Date|Number} date - the original date
- * @returns {Date} the end of an ISO week-numbering year
- * @throws {TypeError} 1 argument required
+ * @param date - the original date
+ * @returns the end of an ISO week-numbering year
  *
  * @example
  * // The last day of an ISO week-numbering year for 2 July 2005:
- * var result = lastDayOfISOWeekYear(new Date(2005, 6, 2))
+ * const result = lastDayOfISOWeekYear(new Date(2005, 6, 2))
  * //=> Sun Jan 01 2006 00:00:00
  */
-export default function lastDayOfISOWeekYear(dirtyDate: Date | number): Date {
-  requiredArgs(1, arguments)
-
+export default function lastDayOfISOWeekYear<DateType extends Date>(
+  dirtyDate: DateType | number
+): DateType {
   const year = getISOWeekYear(dirtyDate)
-  const fourthOfJanuary = new Date(0)
+  const fourthOfJanuary = constructFrom(dirtyDate, 0)
   fourthOfJanuary.setFullYear(year + 1, 0, 4)
   fourthOfJanuary.setHours(0, 0, 0, 0)
   const date = startOfISOWeek(fourthOfJanuary)

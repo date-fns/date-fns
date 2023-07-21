@@ -1,10 +1,10 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import monthsToYears from '.'
+import monthsToYears from './index'
 
-describe('monthsToYears', function () {
-  it('converts months to years', function () {
+describe('monthsToYears', () => {
+  it('converts months to years', () => {
     assert(monthsToYears(12) === 1)
     assert(monthsToYears(24) === 2)
   })

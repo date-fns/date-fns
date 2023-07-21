@@ -58,10 +58,10 @@ export interface FormatDistanceFnOptions {
 
 export type FormatDistanceTokenFn = (
   count: number,
-  options?: FormatDistanceOptions
+  options?: FormatDistanceFnOptions
 ) => string
 
-export interface FormatDistanceOptions {
+export interface FormatDistanceFnOptions {
   addSuffix?: boolean
   comparison?: -1 | 0 | 1
 }
@@ -69,12 +69,12 @@ export interface FormatDistanceOptions {
 export type FormatDistanceFn = (
   token: FormatDistanceToken,
   count: number,
-  options?: FormatDistanceOptions
+  options?: FormatDistanceFnOptions
 ) => string
 
-export type FormatRelativeTokenFn = (
-  date: Date | number,
-  baseDate: Date | number,
+export type FormatRelativeTokenFn = <DateType extends Date>(
+  date: DateType | number,
+  baseDate: DateType | number,
   options?: { weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6 }
 ) => string
 
@@ -88,12 +88,13 @@ export type FormatRelativeToken =
 
 export interface FormatRelativeFnOptions {
   weekStartsOn?: Day
+  locale?: Locale
 }
 
-export type FormatRelativeFn = (
+export type FormatRelativeFn = <DateType extends Date>(
   token: FormatRelativeToken,
-  date: Date,
-  baseDate: Date,
+  date: DateType,
+  baseDate: DateType,
   options?: FormatRelativeFnOptions
 ) => string
 
@@ -197,18 +198,31 @@ export type BuildMatchFn<
   args: BuildMatchFnArgs<Result, DefaultMatchWidth, DefaultParseWidth>
 ) => MatchFn<Result>
 
-export type MatchFn<Result> = (
+export type MatchFn<Result, ExtraOptions = Record<string, unknown>> = (
   str: string,
   options?: {
     width?: LocalePatternWidth
-    valueCallback?: MatchValueCallback<string | Result, Result>
-  }
+    /**
+     * @deprecated Map the value manually instead.
+     * @example
+     * const matchResult = locale.match.ordinalNumber('1st')
+     * if (matchResult) {
+     *   matchResult.value = valueCallback(matchResult.value)
+     * }
+     */
+    valueCallback?: MatchValueCallback<string, Result>
+  } & ExtraOptions
 ) => { value: Result; rest: string } | null
 
 export type MatchValueCallback<Arg, Result> = (value: Arg) => Result
 
 export interface Match {
-  ordinalNumber: MatchFn<number>
+  ordinalNumber: MatchFn<
+    number,
+    {
+      unit: LocaleOrdinalUnit
+    }
+  >
   era: MatchFn<Era>
   quarter: MatchFn<Quarter>
   month: MatchFn<Month>

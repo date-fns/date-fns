@@ -1,12 +1,11 @@
-// @flow
 /* eslint-env mocha */
 
 import assert from 'assert'
 import sinon from 'sinon'
-import isThisISOWeek from '.'
+import isThisISOWeek from './index'
 
 describe('isSameISOWeek', () => {
-  let clock
+  let clock: sinon.SinonFakeTimers
   beforeEach(() => {
     clock = sinon.useFakeTimers(new Date(2014, 8 /* Sep */, 25).getTime())
   })
@@ -28,9 +27,5 @@ describe('isSameISOWeek', () => {
   it('accepts a timestamp', () => {
     const date = new Date(2014, 8 /* Sep */, 29).getTime()
     assert(isThisISOWeek(date) === false)
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', function() {
-    assert.throws(isThisISOWeek.bind(null), TypeError)
   })
 })

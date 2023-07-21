@@ -1,9 +1,12 @@
 import addMinutes from '../addMinutes/index'
-import toDate from '../toDate/index'
 import startOfMinute from '../startOfMinute/index'
-import requiredArgs from '../_lib/requiredArgs/index'
+import toDate from '../toDate/index'
+import type { Interval, StepOptions } from '../types'
 
-import { Interval, StepOptions } from '../types'
+/**
+ * The {@link eachMinuteOfInterval} function options.
+ */
+export interface EachMinuteOfIntervalOptions extends StepOptions {}
 
 /**
  * @name eachMinuteOfInterval
@@ -13,12 +16,10 @@ import { Interval, StepOptions } from '../types'
  * @description
  * Returns the array of minutes within the specified time interval.
  *
- * @param {Interval} interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
- * @param {Object} [options] - an object with options.
- * @param {Number} [options.step=1] - the step to increment by. The starts of minutes from the hour of the interval start to the hour of the interval end
- * @throws {TypeError} 1 argument requie value should be more than 1.
- * @returns {Date[]} the array withred
- * @throws {RangeError} `options.step` must be a number equal or greater than 1
+ * @param interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
+ * @param options - an object with options.
+ * @returns the array with starts of minutes from the minute of the interval start to the minute of the interval end
+ * @throws {RangeError} `options.step` must be a number equal to or greater than 1
  * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *
@@ -35,12 +36,10 @@ import { Interval, StepOptions } from '../types'
  * //   Wed Oct 14 2014 13:03:00
  * // ]
  */
-export default function eachMinuteOfInterval(
-  interval: Interval,
-  options?: StepOptions
-): Date[] {
-  requiredArgs(1, arguments)
-
+export default function eachMinuteOfInterval<DateType extends Date>(
+  interval: Interval<DateType>,
+  options?: EachMinuteOfIntervalOptions
+): DateType[] {
   const startDate = startOfMinute(toDate(interval.start))
   const endDate = toDate(interval.end)
 
@@ -55,10 +54,10 @@ export default function eachMinuteOfInterval(
 
   let currentDate = startDate
 
-  const step = options && 'step' in options ? Number(options.step) : 1
+  const step = options?.step ?? 1
   if (step < 1 || isNaN(step))
     throw new RangeError(
-      '`options.step` must be a number equal or greater than 1'
+      '`options.step` must be a number equal to or greater than 1'
     )
 
   while (currentDate.getTime() <= endTime) {

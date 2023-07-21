@@ -1,10 +1,10 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import quartersToYears from '.'
+import quartersToYears from './index'
 
-describe('quartersToYears', function () {
-  it('converts quarters to years', function () {
+describe('quartersToYears', () => {
+  it('converts quarters to years', () => {
     assert(quartersToYears(4) === 1)
     assert(quartersToYears(8) === 2)
   })

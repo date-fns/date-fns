@@ -1,17 +1,18 @@
-import type { LocaleDayPeriod } from 'src/locale/types'
-import { Localize } from 'src/locale/types'
-import type { Era, Month, Quarter } from 'src/types'
-import {
+import getDayOfYear from '../../../getDayOfYear/index'
+import getISOWeek from '../../../getISOWeek/index'
+import getISOWeekYear from '../../../getISOWeekYear/index'
+import getWeek from '../../../getWeek/index'
+import getWeekYear from '../../../getWeekYear/index'
+import type { LocaleDayPeriod, Localize } from '../../../locale/types'
+import type {
+  Day,
+  Era,
   FirstWeekContainsDateOptions,
   LocaleOptions,
+  Month,
+  Quarter,
   WeekStartOptions,
-} from 'src/types'
-import { Day } from '../../../types'
-import getUTCDayOfYear from '../../../_lib/getUTCDayOfYear/index'
-import getUTCISOWeek from '../../../_lib/getUTCISOWeek/index'
-import getUTCISOWeekYear from '../../../_lib/getUTCISOWeekYear/index'
-import getUTCWeek from '../../../_lib/getUTCWeek/index'
-import getUTCWeekYear from '../../../_lib/getUTCWeekYear/index'
+} from '../../../types'
 import addLeadingZeros from '../../addLeadingZeros/index'
 import lightFormatters from '../lightFormatters/index'
 
@@ -25,6 +26,17 @@ const dayPeriodEnum = {
   evening: 'evening',
   night: 'night',
 } as const
+
+type Formatter = (
+  date: Date,
+  token: string,
+  localize: Localize,
+  options: Required<
+    LocaleOptions & WeekStartOptions & FirstWeekContainsDateOptions
+  > & {
+    _originalDate: Date
+  }
+) => string
 
 /*
  * |     | Unit                           |     | Unit                           |
@@ -72,10 +84,10 @@ const dayPeriodEnum = {
  * - `p` is long localized time format
  */
 
-const formatters = {
+const formatters: { [token: string]: Formatter } = {
   // Era
-  G: function (date: Date, token: string, localize: Localize) {
-    const era: Era = date.getUTCFullYear() > 0 ? 1 : 0
+  G: function (date, token, localize) {
+    const era: Era = date.getFullYear() > 0 ? 1 : 0
     switch (token) {
       // AD, BC
       case 'G':
@@ -93,10 +105,10 @@ const formatters = {
   },
 
   // Year
-  y: function (date: Date, token: string, localize: Localize) {
+  y: function (date, token, localize) {
     // Ordinal number
     if (token === 'yo') {
-      const signedYear = date.getUTCFullYear()
+      const signedYear = date.getFullYear()
       // Returns 1 for 1 BC (which is year 0 in JavaScript)
       const year = signedYear > 0 ? signedYear : 1 - signedYear
       return localize.ordinalNumber(year, { unit: 'year' })
@@ -106,13 +118,8 @@ const formatters = {
   },
 
   // Local week-numbering year
-  Y: function (
-    date: Date,
-    token: string,
-    localize: Localize,
-    options: LocaleOptions & FirstWeekContainsDateOptions
-  ) {
-    const signedWeekYear = getUTCWeekYear(date, options)
+  Y: function (date, token, localize, options) {
+    const signedWeekYear = getWeekYear(date, options)
     // Returns 1 for 1 BC (which is year 0 in JavaScript)
     const weekYear = signedWeekYear > 0 ? signedWeekYear : 1 - signedWeekYear
 
@@ -132,8 +139,8 @@ const formatters = {
   },
 
   // ISO week-numbering year
-  R: function (date: Date, token: string) {
-    const isoWeekYear = getUTCISOWeekYear(date)
+  R: function (date, token) {
+    const isoWeekYear = getISOWeekYear(date)
 
     // Padding
     return addLeadingZeros(isoWeekYear, token.length)
@@ -148,14 +155,14 @@ const formatters = {
   // | BC 2 |   2 |  -1 |
   // Also `yy` always returns the last two digits of a year,
   // while `uu` pads single digit years to 2 characters and returns other years unchanged.
-  u: function (date: Date, token: string) {
-    const year = date.getUTCFullYear()
+  u: function (date, token) {
+    const year = date.getFullYear()
     return addLeadingZeros(year, token.length)
   },
 
   // Quarter
-  Q: function (date: Date, token: string, localize: Localize) {
-    const quarter = Math.ceil((date.getUTCMonth() + 1) / 3) as Quarter
+  Q: function (date, token, localize) {
+    const quarter = Math.ceil((date.getMonth() + 1) / 3) as Quarter
     switch (token) {
       // 1, 2, 3, 4
       case 'Q':
@@ -189,8 +196,8 @@ const formatters = {
   },
 
   // Stand-alone quarter
-  q: function (date: Date, token: string, localize: Localize) {
-    const quarter = Math.ceil((date.getUTCMonth() + 1) / 3) as Quarter
+  q: function (date, token, localize) {
+    const quarter = Math.ceil((date.getMonth() + 1) / 3) as Quarter
     switch (token) {
       // 1, 2, 3, 4
       case 'q':
@@ -224,8 +231,8 @@ const formatters = {
   },
 
   // Month
-  M: function (date: Date, token: string, localize: Localize) {
-    const month = date.getUTCMonth() as Month
+  M: function (date, token, localize) {
+    const month = date.getMonth() as Month
     switch (token) {
       case 'M':
       case 'MM':
@@ -250,8 +257,8 @@ const formatters = {
   },
 
   // Stand-alone month
-  L: function (date: Date, token: string, localize: Localize) {
-    const month = date.getUTCMonth() as Month
+  L: function (date, token, localize) {
+    const month = date.getMonth() as Month
     switch (token) {
       // 1, 2, ..., 12
       case 'L':
@@ -279,13 +286,8 @@ const formatters = {
   },
 
   // Local week of year
-  w: function (
-    date: Date,
-    token: string,
-    localize: Localize,
-    options: LocaleOptions & WeekStartOptions
-  ) {
-    const week = getUTCWeek(date, options)
+  w: function (date, token, localize, options) {
+    const week = getWeek(date, options)
 
     if (token === 'wo') {
       return localize.ordinalNumber(week, { unit: 'week' })
@@ -295,8 +297,8 @@ const formatters = {
   },
 
   // ISO week of year
-  I: function (date: Date, token: string, localize: Localize) {
-    const isoWeek = getUTCISOWeek(date)
+  I: function (date, token, localize) {
+    const isoWeek = getISOWeek(date)
 
     if (token === 'Io') {
       return localize.ordinalNumber(isoWeek, { unit: 'week' })
@@ -306,17 +308,17 @@ const formatters = {
   },
 
   // Day of the month
-  d: function (date: Date, token: string, localize: Localize) {
+  d: function (date, token, localize) {
     if (token === 'do') {
-      return localize.ordinalNumber(date.getUTCDate(), { unit: 'date' })
+      return localize.ordinalNumber(date.getDate(), { unit: 'date' })
     }
 
     return lightFormatters.d(date, token)
   },
 
   // Day of year
-  D: function (date: Date, token: string, localize: Localize) {
-    const dayOfYear = getUTCDayOfYear(date)
+  D: function (date, token, localize) {
+    const dayOfYear = getDayOfYear(date)
 
     if (token === 'Do') {
       return localize.ordinalNumber(dayOfYear, { unit: 'dayOfYear' })
@@ -326,8 +328,8 @@ const formatters = {
   },
 
   // Day of week
-  E: function (date: Date, token: string, localize: Localize) {
-    const dayOfWeek = date.getUTCDay() as Day
+  E: function (date, token, localize) {
+    const dayOfWeek = date.getDay() as Day
     switch (token) {
       // Tue
       case 'E':
@@ -357,13 +359,8 @@ const formatters = {
   },
 
   // Local day of week
-  e: function (
-    date: Date,
-    token: string,
-    localize: Localize,
-    options: Required<WeekStartOptions>
-  ) {
-    const dayOfWeek = date.getUTCDay() as Day
+  e: function (date, token, localize, options) {
+    const dayOfWeek = date.getDay() as Day
     const localDayOfWeek = (dayOfWeek - options.weekStartsOn + 8) % 7 || 7
     switch (token) {
       // Numerical value (Nth day of week with current locale or weekStartsOn)
@@ -400,13 +397,8 @@ const formatters = {
   },
 
   // Stand-alone local day of week
-  c: function (
-    date: Date,
-    token: string,
-    localize: Localize,
-    options: Required<WeekStartOptions>
-  ) {
-    const dayOfWeek = date.getUTCDay() as Day
+  c: function (date, token, localize, options) {
+    const dayOfWeek = date.getDay() as Day
     const localDayOfWeek = (dayOfWeek - options.weekStartsOn + 8) % 7 || 7
     switch (token) {
       // Numerical value (same as in `e`)
@@ -443,8 +435,8 @@ const formatters = {
   },
 
   // ISO day of week
-  i: function (date: Date, token: string, localize: Localize) {
-    const dayOfWeek = date.getUTCDay() as Day
+  i: function (date, token, localize) {
+    const dayOfWeek = date.getDay() as Day
     const isoDayOfWeek = dayOfWeek === 0 ? 7 : dayOfWeek
     switch (token) {
       // 2
@@ -482,8 +474,8 @@ const formatters = {
   },
 
   // AM or PM
-  a: function (date: Date, token: string, localize: Localize) {
-    const hours = date.getUTCHours()
+  a: function (date, token, localize) {
+    const hours = date.getHours()
     const dayPeriodEnumValue = hours / 12 >= 1 ? 'pm' : 'am'
 
     switch (token) {
@@ -515,8 +507,8 @@ const formatters = {
   },
 
   // AM, PM, midnight, noon
-  b: function (date: Date, token: string, localize: Localize) {
-    const hours = date.getUTCHours()
+  b: function (date, token, localize) {
+    const hours = date.getHours()
     let dayPeriodEnumValue: LocaleDayPeriod
     if (hours === 12) {
       dayPeriodEnumValue = dayPeriodEnum.noon
@@ -555,8 +547,8 @@ const formatters = {
   },
 
   // in the morning, in the afternoon, in the evening, at night
-  B: function (date: Date, token: string, localize: Localize) {
-    const hours = date.getUTCHours()
+  B: function (date, token, localize) {
+    const hours = date.getHours()
     let dayPeriodEnumValue: LocaleDayPeriod
     if (hours >= 17) {
       dayPeriodEnumValue = dayPeriodEnum.evening
@@ -591,9 +583,9 @@ const formatters = {
   },
 
   // Hour [1-12]
-  h: function (date: Date, token: string, localize: Localize) {
+  h: function (date, token, localize) {
     if (token === 'ho') {
-      let hours = date.getUTCHours() % 12
+      let hours = date.getHours() % 12
       if (hours === 0) hours = 12
       return localize.ordinalNumber(hours, { unit: 'hour' })
     }
@@ -602,17 +594,17 @@ const formatters = {
   },
 
   // Hour [0-23]
-  H: function (date: Date, token: string, localize: Localize) {
+  H: function (date, token, localize) {
     if (token === 'Ho') {
-      return localize.ordinalNumber(date.getUTCHours(), { unit: 'hour' })
+      return localize.ordinalNumber(date.getHours(), { unit: 'hour' })
     }
 
     return lightFormatters.H(date, token)
   },
 
   // Hour [0-11]
-  K: function (date: Date, token: string, localize: Localize) {
-    const hours = date.getUTCHours() % 12
+  K: function (date, token, localize) {
+    const hours = date.getHours() % 12
 
     if (token === 'Ko') {
       return localize.ordinalNumber(hours, { unit: 'hour' })
@@ -622,8 +614,8 @@ const formatters = {
   },
 
   // Hour [1-24]
-  k: function (date: Date, token: string, localize: Localize) {
-    let hours = date.getUTCHours()
+  k: function (date, token, localize) {
+    let hours = date.getHours()
     if (hours === 0) hours = 24
 
     if (token === 'ko') {
@@ -634,35 +626,30 @@ const formatters = {
   },
 
   // Minute
-  m: function (date: Date, token: string, localize: Localize) {
+  m: function (date, token, localize) {
     if (token === 'mo') {
-      return localize.ordinalNumber(date.getUTCMinutes(), { unit: 'minute' })
+      return localize.ordinalNumber(date.getMinutes(), { unit: 'minute' })
     }
 
     return lightFormatters.m(date, token)
   },
 
   // Second
-  s: function (date: Date, token: string, localize: Localize) {
+  s: function (date, token, localize) {
     if (token === 'so') {
-      return localize.ordinalNumber(date.getUTCSeconds(), { unit: 'second' })
+      return localize.ordinalNumber(date.getSeconds(), { unit: 'second' })
     }
 
     return lightFormatters.s(date, token)
   },
 
   // Fraction of second
-  S: function (date: Date, token: string) {
+  S: function (date, token) {
     return lightFormatters.S(date, token)
   },
 
   // Timezone (ISO-8601. If offset is 0, output is always `'Z'`)
-  X: function (
-    date: Date,
-    token: string,
-    _localize: Localize,
-    options: OriginalDateOptions
-  ) {
+  X: function (date, token, _localize, options) {
     const originalDate = options._originalDate || date
     const timezoneOffset = originalDate.getTimezoneOffset()
 
@@ -693,12 +680,7 @@ const formatters = {
   },
 
   // Timezone (ISO-8601. If offset is 0, output is `'+00:00'` or equivalent)
-  x: function (
-    date: Date,
-    token: string,
-    _localize: Localize,
-    options: OriginalDateOptions
-  ) {
+  x: function (date, token, _localize, options) {
     const originalDate = options._originalDate || date
     const timezoneOffset = originalDate.getTimezoneOffset()
 
@@ -725,12 +707,7 @@ const formatters = {
   },
 
   // Timezone (GMT)
-  O: function (
-    date: Date,
-    token: string,
-    _localize: Localize,
-    options: OriginalDateOptions
-  ) {
+  O: function (date, token, _localize, options) {
     const originalDate = options._originalDate || date
     const timezoneOffset = originalDate.getTimezoneOffset()
 
@@ -748,12 +725,7 @@ const formatters = {
   },
 
   // Timezone (specific non-location)
-  z: function (
-    date: Date,
-    token: string,
-    _localize: Localize,
-    options: OriginalDateOptions
-  ) {
+  z: function (date, token, _localize, options) {
     const originalDate = options._originalDate || date
     const timezoneOffset = originalDate.getTimezoneOffset()
 
@@ -771,31 +743,21 @@ const formatters = {
   },
 
   // Seconds timestamp
-  t: function (
-    date: Date,
-    token: string,
-    _localize: Localize,
-    options: OriginalDateOptions
-  ) {
+  t: function (date, token, _localize, options) {
     const originalDate = options._originalDate || date
     const timestamp = Math.floor(originalDate.getTime() / 1000)
     return addLeadingZeros(timestamp, token.length)
   },
 
   // Milliseconds timestamp
-  T: function (
-    date: Date,
-    token: string,
-    _localize: Localize,
-    options: OriginalDateOptions
-  ) {
+  T: function (date, token, _localize, options) {
     const originalDate = options._originalDate || date
     const timestamp = originalDate.getTime()
     return addLeadingZeros(timestamp, token.length)
   },
 }
 
-function formatTimezoneShort(offset: number, dirtyDelimiter?: string) {
+function formatTimezoneShort(offset: number, delimiter: string = ''): string {
   const sign = offset > 0 ? '-' : '+'
   const absOffset = Math.abs(offset)
   const hours = Math.floor(absOffset / 60)
@@ -803,23 +765,21 @@ function formatTimezoneShort(offset: number, dirtyDelimiter?: string) {
   if (minutes === 0) {
     return sign + String(hours)
   }
-  const delimiter = dirtyDelimiter || ''
   return sign + String(hours) + delimiter + addLeadingZeros(minutes, 2)
 }
 
 function formatTimezoneWithOptionalMinutes(
   offset: number,
-  dirtyDelimiter?: string
-) {
+  delimiter?: string
+): string {
   if (offset % 60 === 0) {
     const sign = offset > 0 ? '-' : '+'
     return sign + addLeadingZeros(Math.abs(offset) / 60, 2)
   }
-  return formatTimezone(offset, dirtyDelimiter)
+  return formatTimezone(offset, delimiter)
 }
 
-function formatTimezone(offset: number, dirtyDelimiter?: string) {
-  const delimiter = dirtyDelimiter || ''
+function formatTimezone(offset: number, delimiter: string = ''): string {
   const sign = offset > 0 ? '-' : '+'
   const absOffset = Math.abs(offset)
   const hours = addLeadingZeros(Math.floor(absOffset / 60), 2)
@@ -828,7 +788,3 @@ function formatTimezone(offset: number, dirtyDelimiter?: string) {
 }
 
 export default formatters
-
-interface OriginalDateOptions {
-  _originalDate: Date
-}

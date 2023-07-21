@@ -1,9 +1,6 @@
+import isValid from '../isValid/index'
 import toDate from '../toDate/index'
 import formatters from '../_lib/format/lightFormatters/index'
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
-import isValid from '../isValid/index'
-import subMilliseconds from '../subMilliseconds/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 // This RegExp consists of three parts separated by `|`:
 // - (\w)\1* matches any sequences of the same letter
@@ -30,7 +27,7 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * `lightFormat` doesn't use locales and outputs date using the most popular tokens.
  *
  * > ⚠️ Please note that the `lightFormat` tokens differ from Moment.js and other libraries.
- * > See: https://git.io/fxCyr
+ * > See: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
  *
  * The characters wrapped between two single quotes characters (') are escaped.
  * Two single quotes in a row, whether inside or outside a quoted sequence, represent a 'real' single quote.
@@ -65,10 +62,9 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * |                                 | SSS     | 000, 001, ..., 999                |
  * |                                 | SSSS    | ...                               |
  *
- * @param {Date|Number} date - the original date
- * @param {String} format - the string of tokens
- * @returns {String} the formatted date string
- * @throws {TypeError} 2 arguments required
+ * @param date - the original date
+ * @param format - the string of tokens
+ * @returns the formatted date string
  * @throws {RangeError} format string contains an unescaped latin alphabet character
  *
  * @example
@@ -78,23 +74,15 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/
 
 type Token = keyof typeof formatters
 
-export default function lightFormat(
-  dirtyDate: Date | number,
+export default function lightFormat<DateType extends Date>(
+  dirtyDate: DateType | number,
   formatStr: string
 ): string {
-  requiredArgs(2, arguments)
-
   const originalDate = toDate(dirtyDate)
 
   if (!isValid(originalDate)) {
     throw new RangeError('Invalid time value')
   }
-
-  // Convert the date in system timezone to the same date in UTC+00:00 timezone.
-  // This ensures that when UTC functions will be implemented, locales will be compatible with them.
-  // See an issue about UTC functions: https://github.com/date-fns/date-fns/issues/376
-  const timezoneOffset = getTimezoneOffsetInMilliseconds(originalDate)
-  const utcDate = subMilliseconds(originalDate, timezoneOffset)
 
   const tokens = formatStr.match(formattingTokensRegExp)
 
@@ -115,7 +103,7 @@ export default function lightFormat(
 
       const formatter = formatters[firstCharacter as Token]
       if (formatter) {
-        return formatter(utcDate, substring)
+        return formatter(originalDate, substring)
       }
 
       if (firstCharacter.match(unescapedLatinCharacterRegExp)) {

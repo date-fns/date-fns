@@ -1,5 +1,4 @@
 import startOfDay from '../startOfDay/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isSameDay
@@ -9,33 +8,29 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Are the given dates in the same day (and year and month)?
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
- * @param {Date|Number} dateLeft - the first date to check
- * @param {Date|Number} dateRight - the second date to check
- * @returns {Boolean} the dates are in the same day (and year and month)
- * @throws {TypeError} 2 arguments required
+ * @param dateLeft - the first date to check
+ * @param dateRight - the second date to check
+ * @returns the dates are in the same day (and year and month)
  *
  * @example
  * // Are 4 September 06:00:00 and 4 September 18:00:00 in the same day?
- * var result = isSameDay(new Date(2014, 8, 4, 6, 0), new Date(2014, 8, 4, 18, 0))
+ * const result = isSameDay(new Date(2014, 8, 4, 6, 0), new Date(2014, 8, 4, 18, 0))
  * //=> true
- * 
+ *
  * @example
  * // Are 4 September and 4 October in the same day?
- * var result = isSameDay(new Date(2014, 8, 4), new Date(2014, 9, 4))
+ * const result = isSameDay(new Date(2014, 8, 4), new Date(2014, 9, 4))
  * //=> false
- * 
+ *
  * @example
  * // Are 4 September, 2014 and 4 September, 2015 in the same day?
- * var result = isSameDay(new Date(2014, 8, 4), new Date(2015, 8, 4))
+ * const result = isSameDay(new Date(2014, 8, 4), new Date(2015, 8, 4))
  * //=> false
  */
-export default function isSameDay(dirtyDateLeft: Date | number, dirtyDateRight: Date | number): boolean {
-  requiredArgs(2, arguments)
-
+export default function isSameDay<DateType extends Date>(
+  dirtyDateLeft: DateType | number,
+  dirtyDateRight: DateType | number
+): boolean {
   const dateLeftStartOfDay = startOfDay(dirtyDateLeft)
   const dateRightStartOfDay = startOfDay(dirtyDateRight)
 

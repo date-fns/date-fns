@@ -1,11 +1,17 @@
 import differenceInCalendarDays from '../differenceInCalendarDays/index'
 import format from '../format/index'
-import defaultLocale from '../locale/en-US/index'
-import subMilliseconds from '../subMilliseconds/index'
+import type { FormatRelativeToken } from '../locale/types'
 import toDate from '../toDate/index'
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-import { LocaleOptions, WeekStartOptions } from '../types'
+import type { LocaleOptions, WeekStartOptions } from '../types'
+import defaultLocale from '../_lib/defaultLocale/index'
+import { getDefaultOptions } from '../_lib/defaultOptions/index'
+
+/**
+ * The {@link formatRelative} function options.
+ */
+export interface FormatRelativeOptions
+  extends LocaleOptions,
+    WeekStartOptions {}
 
 /**
  * @name formatRelative
@@ -24,20 +30,12 @@ import { LocaleOptions, WeekStartOptions } from '../types'
  * | Next 6 days               | Sunday at 04:30 AM        |
  * | Other                     | 12/31/2017                |
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
- * @param {Date|Number} date - the date to format
- * @param {Date|Number} baseDate - the date to compare with
- * @param {Object} [options] - an object with options.
- * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
- * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
- * @returns {String} the date in words
- * @throws {TypeError} 2 arguments required
+ * @param date - the date to format
+ * @param baseDate - the date to compare with
+ * @param options - an object with options.
+ * @returns the date in words
  * @throws {RangeError} `date` must not be Invalid Date
  * @throws {RangeError} `baseDate` must not be Invalid Date
- * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
  * @throws {RangeError} `options.locale` must contain `localize` property
  * @throws {RangeError} `options.locale` must contain `formatLong` property
  * @throws {RangeError} `options.locale` must contain `formatRelative` property
@@ -47,17 +45,22 @@ import { LocaleOptions, WeekStartOptions } from '../types'
  * const result = formatRelative(addDays(new Date(), -6), new Date())
  * //=> "last Thursday at 12:45 AM"
  */
-export default function formatRelative(
-  dirtyDate: Date | number,
-  dirtyBaseDate: Date | number,
-  dirtyOptions?: LocaleOptions & WeekStartOptions
+export default function formatRelative<DateType extends Date>(
+  dirtyDate: DateType | number,
+  dirtyBaseDate: DateType | number,
+  options?: FormatRelativeOptions
 ): string {
-  requiredArgs(2, arguments)
-
   const date = toDate(dirtyDate)
   const baseDate = toDate(dirtyBaseDate)
 
-  const { locale = defaultLocale, weekStartsOn = 0 } = dirtyOptions || {}
+  const defaultOptions = getDefaultOptions()
+  const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale
+  const weekStartsOn =
+    options?.weekStartsOn ??
+    options?.locale?.options?.weekStartsOn ??
+    defaultOptions.weekStartsOn ??
+    defaultOptions.locale?.options?.weekStartsOn ??
+    0
 
   if (!locale.localize) {
     throw new RangeError('locale must contain localize property')
@@ -77,7 +80,7 @@ export default function formatRelative(
     throw new RangeError('Invalid time value')
   }
 
-  let token
+  let token: FormatRelativeToken
   if (diff < -6) {
     token = 'other'
   } else if (diff < -1) {
@@ -94,12 +97,7 @@ export default function formatRelative(
     token = 'other'
   }
 
-  const utcDate = subMilliseconds(date, getTimezoneOffsetInMilliseconds(date))
-  const utcBaseDate = subMilliseconds(
-    baseDate,
-    getTimezoneOffsetInMilliseconds(baseDate)
-  )
-  const formatStr = locale.formatRelative(token, utcDate, utcBaseDate, {
+  const formatStr = locale.formatRelative(token, date, baseDate, {
     locale,
     weekStartsOn,
   })

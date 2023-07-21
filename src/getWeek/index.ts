@@ -1,10 +1,20 @@
+import { millisecondsInWeek } from '../constants/index'
 import startOfWeek from '../startOfWeek/index'
 import startOfWeekYear from '../startOfWeekYear/index'
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-import { LocaleOptions, WeekStartOptions, FirstWeekContainsDateOptions } from '../types'
+import type {
+  FirstWeekContainsDateOptions,
+  LocaleOptions,
+  WeekStartOptions,
+} from '../types'
 
-const MILLISECONDS_IN_WEEK = 604800000
+/**
+ * The {@link getWeek} function options.
+ */
+export interface GetWeekOptions
+  extends LocaleOptions,
+    WeekStartOptions,
+    FirstWeekContainsDateOptions {}
 
 /**
  * @name getWeek
@@ -20,19 +30,9 @@ const MILLISECONDS_IN_WEEK = 604800000
  *
  * Week numbering: https://en.wikipedia.org/wiki/Week#Week_numbering
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
- * @param {Date|Number} date - the given date
- * @param {Object} [options] - an object with options.
- * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
- * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
- * @param {1|2|3|4|5|6|7} [options.firstWeekContainsDate=1] - the day of January, which is always in the first week of the year
- * @returns {Number} the week
- * @throws {TypeError} 1 argument required
- * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
- * @throws {RangeError} `options.firstWeekContainsDate` must be between 1 and 7
+ * @param date - the given date
+ * @param options - an object with options.
+ * @returns the week
  *
  * @example
  * // Which week of the local week numbering year is 2 January 2005 with default options?
@@ -49,9 +49,10 @@ const MILLISECONDS_IN_WEEK = 604800000
  * //=> 53
  */
 
-export default function getWeek(dirtyDate: Date | number, options?: LocaleOptions & WeekStartOptions & FirstWeekContainsDateOptions): number {
-  requiredArgs(1, arguments)
-
+export default function getWeek<DateType extends Date>(
+  dirtyDate: DateType | number,
+  options?: GetWeekOptions
+): number {
   const date = toDate(dirtyDate)
   const diff =
     startOfWeek(date, options).getTime() -
@@ -60,5 +61,5 @@ export default function getWeek(dirtyDate: Date | number, options?: LocaleOption
   // Round the number of days to the nearest integer
   // because the number of milliseconds in a week is not constant
   // (e.g. it's different in the week of the daylight saving time clock shift)
-  return Math.round(diff / MILLISECONDS_IN_WEEK) + 1
+  return Math.round(diff / millisecondsInWeek) + 1
 }

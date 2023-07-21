@@ -1,6 +1,6 @@
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
-import type { LocalizeFn } from '../../../types'
 import type { Quarter } from '../../../../types'
+import type { Localize, LocalizeFn } from '../../../types'
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
 const eraValues = {
   narrow: ['ق', 'ب'] as const,
@@ -135,8 +135,8 @@ const ordinalNumber: LocalizeFn<number> = (dirtyNumber) => {
   return String(dirtyNumber)
 }
 
-const localize = {
-  ordinalNumber: ordinalNumber,
+const localize: Localize = {
+  ordinalNumber,
 
   era: buildLocalizeFn({
     values: eraValues,
@@ -146,7 +146,7 @@ const localize = {
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: (quarter) => (Number(quarter) - 1) as Quarter,
+    argumentCallback: (quarter) => (quarter - 1) as Quarter,
   }),
 
   month: buildLocalizeFn({

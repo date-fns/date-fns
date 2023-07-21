@@ -1,10 +1,10 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import weeksToDays from '.'
+import weeksToDays from './index'
 
-describe('weeksToDays', function () {
-  it('converts weeks to days', function () {
+describe('weeksToDays', () => {
+  it('converts weeks to days', () => {
     assert(weeksToDays(1) === 7)
     assert(weeksToDays(2) === 14)
   })

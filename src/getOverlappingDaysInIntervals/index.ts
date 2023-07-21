@@ -1,8 +1,6 @@
+import { millisecondsInDay } from '../constants/index'
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-import { Interval } from '../types'
-
-const MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000
+import type { Interval } from '../types'
 
 /**
  * @name getOverlappingDaysInIntervals
@@ -12,44 +10,9 @@ const MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000
  * @description
  * Get the number of days that overlap in two time intervals
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
- * - The function was renamed from `getOverlappingDaysInRanges` to `getOverlappingDaysInIntervals`.
- *   This change was made to mirror the use of the word "interval" in standard ISO 8601:2004 terminology:
- *
- *   ```
- *   2.1.3
- *   time interval
- *   part of the time axis limited by two instants
- *   ```
- *
- *   Also, this function now accepts an object with `start` and `end` properties
- *   instead of two arguments as an interval.
- *   This function now throws `RangeError` if the start of the interval is after its end
- *   or if any date in the interval is `Invalid Date`.
- *
- *   ```javascript
- *   // Before v2.0.0
- *
- *   getOverlappingDaysInRanges(
- *     new Date(2014, 0, 10), new Date(2014, 0, 20),
- *     new Date(2014, 0, 17), new Date(2014, 0, 21)
- *   )
- *
- *   // v2.0.0 onward
- *
- *   getOverlappingDaysInIntervals(
- *     { start: new Date(2014, 0, 10), end: new Date(2014, 0, 20) },
- *     { start: new Date(2014, 0, 17), end: new Date(2014, 0, 21) }
- *   )
- *   ```
- *
- * @param {Interval} intervalLeft - the first interval to compare. See [Interval]{@link docs/Interval}
- * @param {Interval} intervalRight - the second interval to compare. See [Interval]{@link docs/Interval}
- * @returns {Number} the number of days that overlap in two time intervals
- * @throws {TypeError} 2 arguments required
+ * @param intervalLeft - the first interval to compare. See [Interval]{@link docs/Interval}
+ * @param intervalRight - the second interval to compare. See [Interval]{@link docs/Interval}
+ * @returns the number of days that overlap in two time intervals
  * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *
@@ -70,14 +33,10 @@ const MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000
  * //=> 0
  */
 
-export default function getOverlappingDaysInIntervals(
-  dirtyIntervalLeft: Interval,
-  dirtyIntervalRight: Interval
+export default function getOverlappingDaysInIntervals<DateType extends Date>(
+  intervalLeft: Interval<DateType>,
+  intervalRight: Interval<DateType>
 ): number {
-  requiredArgs(2, arguments)
-
-  const intervalLeft = dirtyIntervalLeft || {}
-  const intervalRight = dirtyIntervalRight || {}
   const leftStartTime = toDate(intervalLeft.start).getTime()
   const leftEndTime = toDate(intervalLeft.end).getTime()
   const rightStartTime = toDate(intervalRight.start).getTime()
@@ -102,5 +61,5 @@ export default function getOverlappingDaysInIntervals(
 
   const differenceInMs = overlapEndDate - overlapStartDate
 
-  return Math.ceil(differenceInMs / MILLISECONDS_IN_DAY)
+  return Math.ceil(differenceInMs / millisecondsInDay)
 }
