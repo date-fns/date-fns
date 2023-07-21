@@ -1,3 +1,4 @@
+import toInteger from '../_lib/toInteger/index'
 import addBusinessDays from '../addBusinessDays/index'
 
 /**

@@ -1,6 +1,7 @@
 import toDate from '../toDate'
 import format from '../format/index'
 
+
 /**
  * @name addBusinessDays
  * @category Date Extension Helpers
@@ -42,6 +43,7 @@ export default function addBusinessDays(
   }
 
   const initialDate = toDate(dirtyDate)
+
   const amount =
     dirtyAmount > 0 ? Math.floor(dirtyAmount) : Math.ceil(dirtyAmount)
 
