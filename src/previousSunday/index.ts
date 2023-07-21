@@ -1,4 +1,3 @@
-import requiredArgs from '../_lib/requiredArgs/index'
 import previousDay from '../previousDay/index'
 
 /**
@@ -9,16 +8,16 @@ import previousDay from '../previousDay/index'
  * @description
  * When is the previous Sunday?
  *
- * @param {Date | number} date - the date to start counting from
- * @returns {Date} the previous Sunday
- * @throws {TypeError} 1 argument required
+ * @param date - the date to start counting from
+ * @returns the previous Sunday
  *
  * @example
  * // When is the previous Sunday before Jun, 21, 2021?
  * const result = previousSunday(new Date(2021, 5, 21))
  * //=> Sun June 20 2021 00:00:00
  */
-export default function previousSunday(date: Date | number): Date {
-  requiredArgs(1, arguments)
+export default function previousSunday<DateType extends Date>(
+  date: DateType | number
+): DateType {
   return previousDay(date, 0)
 }

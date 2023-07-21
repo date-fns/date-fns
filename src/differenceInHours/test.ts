@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import differenceInHours from '.'
+import differenceInHours from './index'
 
 describe('differenceInHours', () => {
   it('returns the number of hours between the given dates with `trunc` as a default rounding method', () => {
@@ -147,12 +147,5 @@ describe('differenceInHours', () => {
   it('returns NaN if the both dates are `Invalid Date`', () => {
     const result = differenceInHours(new Date(NaN), new Date(NaN))
     assert(isNaN(result))
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(differenceInHours.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(differenceInHours.bind(null, 1), TypeError)
   })
 })

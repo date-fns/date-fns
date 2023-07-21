@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import setISOWeek from '.'
+import setISOWeek from './index'
 
 describe('setISOWeek', () => {
   it('sets the ISO week', () => {
@@ -12,20 +12,6 @@ describe('setISOWeek', () => {
   it('accepts a timestamp', () => {
     const result = setISOWeek(new Date(2009, 11 /* Dec */, 2).getTime(), 1)
     assert.deepStrictEqual(result, new Date(2008, 11 /* Dec */, 31))
-  })
-
-  it('converts a fractional number to an integer', () => {
-    const result = setISOWeek(new Date(2004, 7 /* Aug */, 7), 53.53)
-    assert.deepStrictEqual(result, new Date(2005, 0 /* Jan */, 1))
-  })
-
-  it('implicitly converts number arguments', () => {
-    const result = setISOWeek(
-      new Date(2004, 7 /* Aug */, 7),
-      // @ts-expect-error
-      '53'
-    )
-    assert.deepStrictEqual(result, new Date(2005, 0 /* Jan */, 1))
   })
 
   it('does not mutate the original date', () => {
@@ -53,12 +39,5 @@ describe('setISOWeek', () => {
   it('returns `Invalid Date` if the given amount is NaN', () => {
     const result = setISOWeek(new Date(2004, 7 /* Aug */, 7), NaN)
     assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(setISOWeek.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(setISOWeek.bind(null, 1), TypeError)
   })
 })

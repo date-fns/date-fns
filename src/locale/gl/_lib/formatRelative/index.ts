@@ -19,7 +19,7 @@ const formatRelativeLocalePlural = {
 }
 
 const formatRelative: FormatRelativeFn = (token, date, _baseDate, _options) => {
-  if (date.getUTCHours() !== 1) {
+  if (date.getHours() !== 1) {
     return formatRelativeLocalePlural[token]
   }
   return formatRelativeLocale[token]

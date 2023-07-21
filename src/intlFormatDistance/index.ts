@@ -1,4 +1,3 @@
-import type { IntlOptionsUnit } from '../types'
 import {
   secondsInDay,
   secondsInHour,
@@ -17,8 +16,11 @@ import differenceInHours from '../differenceInHours/index'
 import differenceInMinutes from '../differenceInMinutes/index'
 import differenceInSeconds from '../differenceInSeconds/index'
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
+import type { IntlOptionsUnit } from '../types'
 
+/**
+ * The {@link intlFormatDistance} function options.
+ */
 export interface IntlFormatDistanceOptions {
   unit?: IntlOptionsUnit
   locale?: Intl.BCP47LanguageTag
@@ -57,18 +59,12 @@ export interface IntlFormatDistanceOptions {
  * | 1 year                 | last year      | next year       |
  * | 2+ years               | X years ago    | in X years      |
  *
- * @param {Date|Number} date - the date
- * @param {Date|Number} baseDate - the date to compare with.
- * @param {Object} [options] - an object with options.
- * @param {String} [options.unit] - formats the distance with the given unit ('year', 'quarter', 'month', 'week', 'day', 'hour', 'minute', 'second').
- * @param {String|String[]} [options.locale] - the locale to use.
- * @param {String} [options.localeMatcher='best fit'] - the locale matching algorithm to use. Other value: 'lookup'.
+ * @param date - the date
+ * @param baseDate - the date to compare with.
+ * @param options - an object with options.
  * See MDN for details [Locale identification and negotiation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locale_identification_and_negotiation)
- * @param {String} [options.numeric='auto'] - the output message format. The values are 'auto' (e.g. `yesterday`), 'always'(e.g. `1 day ago`).
- * @param {String} [options.style='long'] - the length of the result. The values are: 'long' (e.g. `1 month`), 'short' (e.g. 'in 1 mo.'), 'narrow' (e.g. 'in 1 mo.').
  * The narrow one could be similar to the short one for some locales.
- * @returns {String} the distance in words according to language-sensitive relative time formatting.
- * @throws {TypeError} 2 arguments required
+ * @returns the distance in words according to language-sensitive relative time formatting.
  * @throws {RangeError} `date` must not be Invalid Date
  * @throws {RangeError} `baseDate` must not be Invalid Date
  * @throws {RangeError} `options.unit` must not be invalid Unit
@@ -128,13 +124,11 @@ export interface IntlFormatDistanceOptions {
  * )
  * //=> 'in 2 yr'
  */
-export default function intlFormatDistance(
-  date: Date | number,
-  baseDate: Date | number,
+export default function intlFormatDistance<DateType extends Date>(
+  date: DateType | number,
+  baseDate: DateType | number,
   options?: IntlFormatDistanceOptions
 ): string {
-  requiredArgs(2, arguments)
-
   let value: number = 0
   let unit: Intl.RelativeTimeFormatUnit
   const dateLeft = toDate(date)

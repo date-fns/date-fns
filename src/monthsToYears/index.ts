@@ -1,4 +1,3 @@
-import requiredArgs from '../_lib/requiredArgs/index'
 import { monthsInYear } from '../constants/index'
 
 /**
@@ -9,10 +8,9 @@ import { monthsInYear } from '../constants/index'
  * @description
  * Convert a number of months to a full number of years.
  *
- * @param {number} months - number of months to be converted
+ * @param months - number of months to be converted
  *
- * @returns {number} the number of months converted in years
- * @throws {TypeError} 1 argument required
+ * @returns the number of months converted in years
  *
  * @example
  * // Convert 36 months to years:
@@ -24,7 +22,6 @@ import { monthsInYear } from '../constants/index'
  * //=> 3
  */
 export default function monthsToYears(months: number): number {
-  requiredArgs(1, arguments)
   const years = months / monthsInYear
   return Math.floor(years)
 }

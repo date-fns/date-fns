@@ -2,7 +2,7 @@ import type { FormatRelativeFn } from '../../../types'
 
 const formatRelativeLocale = {
   lastWeek: (date: Date): string => {
-    const weekday = date.getUTCDay()
+    const weekday = date.getDay()
     const last = weekday === 0 || weekday === 6 ? 'último' : 'última'
     return "'" + last + "' eeee 'às' p"
   },

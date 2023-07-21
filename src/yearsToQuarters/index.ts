@@ -1,4 +1,3 @@
-import requiredArgs from '../_lib/requiredArgs/index'
 import { quartersInYear } from '../constants/index'
 
 /**
@@ -9,10 +8,9 @@ import { quartersInYear } from '../constants/index'
  * @description
  * Convert a number of years to a full number of quarters.
  *
- * @param {number} years - number of years to be converted
+ * @param years - number of years to be converted
  *
- * @returns {number} the number of years converted in quarters
- * @throws {TypeError} 1 argument required
+ * @returns the number of years converted in quarters
  *
  * @example
  * // Convert 2 years to quarters
@@ -20,6 +18,5 @@ import { quartersInYear } from '../constants/index'
  * //=> 8
  */
 export default function yearsToQuarters(years: number): number {
-  requiredArgs(1, arguments)
   return Math.floor(years * quartersInYear)
 }

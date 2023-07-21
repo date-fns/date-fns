@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import startOfMinute from '.'
+import startOfMinute from './index'
 
 describe('startOfMinute', () => {
   it('returns the date with the time set to the first millisecond of a minute', () => {
@@ -28,10 +28,5 @@ describe('startOfMinute', () => {
   it('returns `Invalid Date` if the given date is invalid', () => {
     const result = startOfMinute(new Date(NaN))
     assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(startOfMinute.bind(null), TypeError)
   })
 })

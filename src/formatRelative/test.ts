@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import formatRelative from '.'
+import formatRelative from './index'
 
 describe('formatRelative', () => {
   const baseDate = new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 900)
@@ -168,12 +168,5 @@ describe('formatRelative', () => {
         })
       assert.throws(block, RangeError)
     })
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(formatRelative.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(formatRelative.bind(null, 1), TypeError)
   })
 })

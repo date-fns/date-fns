@@ -559,13 +559,21 @@
     "@babel/helper-plugin-utils" "^7.20.2"
     "@babel/plugin-syntax-private-property-in-object" "^7.14.5"
 
-"@babel/plugin-proposal-unicode-property-regex@^7.18.6", "@babel/plugin-proposal-unicode-property-regex@^7.4.4":
+"@babel/plugin-proposal-unicode-property-regex@^7.18.6":
   version "7.18.6"
   resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-unicode-property-regex/-/plugin-proposal-unicode-property-regex-7.18.6.tgz#af613d2cd5e643643b65cded64207b15c85cb78e"
   integrity sha512-2BShG/d5yoZyXZfVePH91urL5wTG6ASZU9M4o03lKK8u8UW1y08OMttBSOADTcJrnPMpvDXRG3G8fyLh4ovs8w==
   dependencies:
     "@babel/helper-create-regexp-features-plugin" "^7.18.6"
     "@babel/helper-plugin-utils" "^7.18.6"
+
+"@babel/plugin-proposal-unicode-property-regex@^7.4.4":
+  version "7.10.4"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-unicode-property-regex/-/plugin-proposal-unicode-property-regex-7.10.4.tgz#4483cda53041ce3413b7fe2f00022665ddfaa75d"
+  integrity sha512-H+3fOgPnEXFL9zGYtKQe4IDOPKYlZdF1kqFDQRRb8PK4B8af1vAGK04tF5iQAAsui+mHNBQSAtd2/ndEDe9wuA==
+  dependencies:
+    "@babel/helper-create-regexp-features-plugin" "^7.10.4"
+    "@babel/helper-plugin-utils" "^7.10.4"
 
 "@babel/plugin-syntax-async-generators@^7.8.4":
   version "7.8.4"
@@ -644,7 +652,7 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.10.4"
 
-"@babel/plugin-syntax-nullish-coalescing-operator@^7.8.3":
+"@babel/plugin-syntax-nullish-coalescing-operator@^7.8.0", "@babel/plugin-syntax-nullish-coalescing-operator@^7.8.3":
   version "7.8.3"
   resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-nullish-coalescing-operator/-/plugin-syntax-nullish-coalescing-operator-7.8.3.tgz#167ed70368886081f74b5c36c65a88c03b66d1a9"
   integrity sha512-aSff4zPII1u2QD7y+F8oDsz19ew4IGEJg9SVW+bqwpwtfFleiQDMdzA/R+UlWDzfnHFCxxleFT0PMIrR36XLNQ==
@@ -760,13 +768,21 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.20.2"
 
-"@babel/plugin-transform-dotall-regex@^7.18.6", "@babel/plugin-transform-dotall-regex@^7.4.4":
+"@babel/plugin-transform-dotall-regex@^7.18.6":
   version "7.18.6"
   resolved "https://registry.yarnpkg.com/@babel/plugin-transform-dotall-regex/-/plugin-transform-dotall-regex-7.18.6.tgz#b286b3e7aae6c7b861e45bed0a2fafd6b1a4fef8"
   integrity sha512-6S3jpun1eEbAxq7TdjLotAsl4WpQI9DxfkycRcKrjhQYzU87qpXdknpBg/e+TdcMehqGnLFi7tnFUBR02Vq6wg==
   dependencies:
     "@babel/helper-create-regexp-features-plugin" "^7.18.6"
     "@babel/helper-plugin-utils" "^7.18.6"
+
+"@babel/plugin-transform-dotall-regex@^7.4.4":
+  version "7.10.4"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-dotall-regex/-/plugin-transform-dotall-regex-7.10.4.tgz#469c2062105c1eb6a040eaf4fac4b488078395ee"
+  integrity sha512-ZEAVvUTCMlMFAbASYSVQoxIbHm2OkG2MseW6bV2JjIygOjdVv8tuxrCTzj1+Rynh7ODb8GivUy7dzEXzEhuPaA==
+  dependencies:
+    "@babel/helper-create-regexp-features-plugin" "^7.10.4"
+    "@babel/helper-plugin-utils" "^7.10.4"
 
 "@babel/plugin-transform-duplicate-keys@^7.18.9":
   version "7.18.9"
@@ -2835,6 +2851,11 @@ acorn@^8.2.4, acorn@^8.4.1, acorn@^8.5.0, acorn@^8.7.1:
   version "8.8.2"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.8.2.tgz#1b2f25db02af965399b9776b0c2c391276d37c4a"
   integrity sha512-xjIYgE8HBrkpd/sJqOGNspf8uHG+NOHGOw6a/Urj8taM2EXfdNAH2oFcPeIFfsv3+kz/mJrS5VuMqbNLjCa2vw==
+
+acorn@^8.4.1:
+  version "8.7.1"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.7.1.tgz#0197122c843d1bf6d0a5e83220a788f278f63c30"
+  integrity sha512-Xx54uLJQZ19lKygFXOWsscKUbsBZW0CPykPhVQdhIeIwrbPmJzqeASDInc8nKBnp/JT6igTs82qPXz069H8I/A==
 
 adm-zip@~0.4.3:
   version "0.4.16"
@@ -5223,6 +5244,11 @@ eslint-visitor-keys@^2.0.0:
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-2.1.0.tgz#f65328259305927392c938ed44eb0a5c9b2bd303"
   integrity sha512-0rSmRBzXgDzIsD6mGdJgevzgezI534Cer5L/vyMX0kHzT/jiB43jRhd9YUlMGYLQy2zprNmoT8qasCGtY+QaKw==
 
+eslint-visitor-keys@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-3.3.0.tgz#f6480fa6b1f30efe2d1968aa8ac745b862469826"
+  integrity sha512-mQ+suqKJVyeuwGYHAdjMFqjCyfl8+Ldnxuyp3ldiMBFKkvytrXUZWaiPCEav8qDHKty44bD+qV1IP4T+w+xXRA==
+
 eslint@^7.27.0:
   version "7.32.0"
   resolved "https://registry.yarnpkg.com/eslint/-/eslint-7.32.0.tgz#c6d328a14be3fb08c8d1d21e12c02fdb7a2a812d"
@@ -6563,6 +6589,11 @@ ignore@^5.1.8, ignore@^5.2.0:
   version "5.2.4"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.2.4.tgz#a291c0c6178ff1b960befe47fcdec301674a6324"
   integrity sha512-MAb38BcSbH0eHNBxn7ql2NH/kX33OkB3lZ1BNdh7ENeRChHTYsTvWrMubiIAMNS2llXEEgZ1MUOBtXChP3kaFQ==
+
+ignore@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.2.0.tgz#6d3bac8fa7fe0d45d9f9be7bac2fc279577e345a"
+  integrity sha512-CmxgYGiEPCLhfLnpPp1MoRmifwEIOgjcHXxOBjv7mY96c+eWScsOP9c112ZyLdWHi0FxHjI+4uVhKYp/gcdRmQ==
 
 import-fresh@^2.0.0:
   version "2.0.0"
@@ -10044,6 +10075,18 @@ regenerate-unicode-properties@^10.1.0:
   dependencies:
     regenerate "^1.4.2"
 
+regenerate-unicode-properties@^8.2.0:
+  version "8.2.0"
+  resolved "https://registry.yarnpkg.com/regenerate-unicode-properties/-/regenerate-unicode-properties-8.2.0.tgz#e5de7111d655e7ba60c057dbe9ff37c87e65cdec"
+  integrity sha512-F9DjY1vKLo/tPePDycuH3dn9H1OTPIkVD9Kz4LODu+F2C75mgjAJ7x/gwy6ZcSNRAAkhNlJSOHRe8k3p+K9WhA==
+  dependencies:
+    regenerate "^1.4.0"
+
+regenerate@^1.4.0:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/regenerate/-/regenerate-1.4.1.tgz#cad92ad8e6b591773485fbe05a485caf4f457e6f"
+  integrity sha512-j2+C8+NtXQgEKWk49MMP5P/u2GhnahTtVkRIHr5R5lVRlbKvmQ+oS+A5aLKWp2ma5VkT8sh6v+v4hbH0YHR66A==
+
 regenerate@^1.4.2:
   version "1.4.2"
   resolved "https://registry.yarnpkg.com/regenerate/-/regenerate-1.4.2.tgz#b9346d8827e8f5a32f7ba29637d398b69014848a"
@@ -11681,10 +11724,23 @@ underscore@~1.13.2:
   resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.13.6.tgz#04786a1f589dc6c09f761fc5f45b89e935136441"
   integrity sha512-+A5Sja4HP1M08MaXya7p5LvjuM7K6q/2EaC0+iovj/wOcMsTzMvDFbasi/oSapiwOlt252IqsKqPjCl7huKS0A==
 
+unicode-canonical-property-names-ecmascript@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/unicode-canonical-property-names-ecmascript/-/unicode-canonical-property-names-ecmascript-1.0.4.tgz#2619800c4c825800efdd8343af7dd9933cbe2818"
+  integrity sha512-jDrNnXWHd4oHiTZnx/ZG7gtUTVp+gCcTTKr8L0HjlwphROEW3+Him+IpvC+xcJEFegapiMZyZe02CyuOnRmbnQ==
+
 unicode-canonical-property-names-ecmascript@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/unicode-canonical-property-names-ecmascript/-/unicode-canonical-property-names-ecmascript-2.0.0.tgz#301acdc525631670d39f6146e0e77ff6bbdebddc"
   integrity sha512-yY5PpDlfVIU5+y/BSCxAJRBIS1Zc2dDG3Ujq+sR0U+JjUevW2JhocOF+soROYDSaAezOzOKuyyixhD6mBknSmQ==
+
+unicode-match-property-ecmascript@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/unicode-match-property-ecmascript/-/unicode-match-property-ecmascript-1.0.4.tgz#8ed2a32569961bce9227d09cd3ffbb8fed5f020c"
+  integrity sha512-L4Qoh15vTfntsn4P1zqnHulG0LdXgjSO035fEpdtp6YxXhMT51Q6vgM5lYdG/5X3MjS+k/Y9Xw4SFCY9IkR0rg==
+  dependencies:
+    unicode-canonical-property-names-ecmascript "^1.0.4"
+    unicode-property-aliases-ecmascript "^1.0.4"
 
 unicode-match-property-ecmascript@^2.0.0:
   version "2.0.0"
@@ -11698,6 +11754,11 @@ unicode-match-property-value-ecmascript@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/unicode-match-property-value-ecmascript/-/unicode-match-property-value-ecmascript-2.1.0.tgz#cb5fffdcd16a05124f5a4b0bf7c3770208acbbe0"
   integrity sha512-qxkjQt6qjg/mYscYMC0XKRn3Rh0wFPlfxB0xkt9CfyTvpX1Ra0+rAmdX2QyAobptSEvuy4RtpPRui6XkV+8wjA==
+
+unicode-property-aliases-ecmascript@^1.0.4:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/unicode-property-aliases-ecmascript/-/unicode-property-aliases-ecmascript-1.1.0.tgz#dd57a99f6207bedff4628abefb94c50db941c8f4"
+  integrity sha512-PqSoPh/pWetQ2phoj5RLiaqIk4kCNwoV3CI+LfGmWLKI3rE3kl1h59XpX2BjgDrmbxD9ARtQobPGU1SguCYuQg==
 
 unicode-property-aliases-ecmascript@^2.0.0:
   version "2.1.0"

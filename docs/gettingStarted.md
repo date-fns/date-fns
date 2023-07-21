@@ -42,8 +42,6 @@ Here is the list of them, in order of nesting:
 
 - FP — functional programming-friendly variations of the functions. See [FP Guide](https://date-fns.org/docs/FP-Guide);
 
-- UTC (in development) — variations of the functions which calculate dates in UTC±00:00 timezone.
-
 The later submodules are also included inside the former if you want to use multiple features from the list.
 
 To use submodule features, [install the npm package](#npm) and then import a function from a submodule:
@@ -54,12 +52,6 @@ import addDays from 'date-fns/addDays'
 
 // FP variation:
 import addDays from 'date-fns/fp/addDays'
-
-// UTC variation:
-import addDays from 'date-fns/utc/addDays'
-
-// Both FP and UTC:
-import addDays from 'date-fns/fp/utc/addDays'
 
 // With tree-shaking enabled:
 import { addDays, format } from 'date-fns/fp'

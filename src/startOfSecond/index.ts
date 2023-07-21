@@ -1,5 +1,4 @@
 import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name startOfSecond
@@ -10,18 +9,17 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * Return the start of a second for the given date.
  * The result will be in the local timezone.
  *
- * @param {Date|Number} date - the original date
- * @returns {Date} the start of a second
- * @throws {TypeError} 1 argument required
+ * @param date - the original date
+ * @returns the start of a second
  *
  * @example
  * // The start of a second for 1 December 2014 22:15:45.400:
  * const result = startOfSecond(new Date(2014, 11, 1, 22, 15, 45, 400))
  * //=> Mon Dec 01 2014 22:15:45.000
  */
-export default function startOfSecond(dirtyDate: Date | number): Date {
-  requiredArgs(1, arguments)
-
+export default function startOfSecond<DateType extends Date>(
+  dirtyDate: DateType | number
+): DateType {
   const date = toDate(dirtyDate)
   date.setMilliseconds(0)
   return date

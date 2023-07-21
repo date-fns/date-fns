@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import eachWeekendOfYear from '.'
+import eachWeekendOfYear from './index'
 import isWeekend from '../isWeekend'
 
 describe('eachWeekendOfYear', () => {
@@ -11,11 +11,6 @@ describe('eachWeekendOfYear', () => {
     assert(result.every(isWeekend))
     assert.deepStrictEqual(result[0], new Date(2020, 0, 4))
     assert.deepStrictEqual(result[103], new Date(2020, 11, 27))
-  })
-
-  it('throws TypeError exception when no argument is passed in', () => {
-    // @ts-expect-error
-    assert.throws(eachWeekendOfYear.bind(null), TypeError)
   })
 
   it('throws RangeError exception when date is invalid', () => {

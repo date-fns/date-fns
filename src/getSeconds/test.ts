@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import getSeconds from '.'
+import getSeconds from './index'
 
 describe('getSeconds', () => {
   it('returns the seconds of the given date', () => {
@@ -19,10 +19,5 @@ describe('getSeconds', () => {
   it('returns NaN if the given date is invalid', () => {
     const result = getSeconds(new Date(NaN))
     assert(isNaN(result))
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(getSeconds.bind(null), TypeError)
   })
 })

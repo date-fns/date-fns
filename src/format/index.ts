@@ -1,26 +1,22 @@
 import isValid from '../isValid/index'
-import subMilliseconds from '../subMilliseconds/index'
 import toDate from '../toDate/index'
+import type {
+  AdditionalTokensOptions,
+  Day,
+  FirstWeekContainsDate,
+  FirstWeekContainsDateOptions,
+  LocaleOptions,
+  WeekStartOptions,
+} from '../types'
+import defaultLocale from '../_lib/defaultLocale/index'
+import { getDefaultOptions } from '../_lib/defaultOptions/index'
 import formatters from '../_lib/format/formatters/index'
 import longFormatters from '../_lib/format/longFormatters/index'
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
 import {
   isProtectedDayOfYearToken,
   isProtectedWeekYearToken,
   throwProtectedError,
 } from '../_lib/protectedTokens/index'
-import toInteger from '../_lib/toInteger/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-import type {
-  FirstWeekContainsDateOptions,
-  LocaleOptions,
-  WeekStartOptions,
-  Day,
-  FirstWeekContainsDate,
-  AdditionalTokensOptions,
-} from '../types'
-import { getDefaultOptions } from '../_lib/defaultOptions/index'
-import defaultLocale from '../_lib/defaultLocale/index'
 
 // This RegExp consists of three parts separated by `|`:
 // - [yYQqMLwIdDecihHKkms]o matches any available ordinal number token
@@ -42,6 +38,15 @@ const longFormattingTokensRegExp = /P+p+|P+|p+|''|'(''|[^'])+('|$)|./g
 const escapedStringRegExp = /^'([^]*?)'?$/
 const doubleQuoteRegExp = /''/g
 const unescapedLatinCharacterRegExp = /[a-zA-Z]/
+
+/**
+ * The {@link format} function options.
+ */
+export interface FormatOptions
+  extends LocaleOptions,
+    WeekStartOptions,
+    FirstWeekContainsDateOptions,
+    AdditionalTokensOptions {}
 
 /**
  * @name format
@@ -293,23 +298,13 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * 9. `D` and `DD` tokens represent days of the year but they are often confused with days of the month.
  *    You should enable `options.useAdditionalDayOfYearTokens` to use them. See: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
  *
- * @param {Date|Number} date - the original date
- * @param {String} format - the string of tokens
- * @param {Object} [options] - an object with options.
- * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
- * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
- * @param {Number} [options.firstWeekContainsDate=1] - the day of January, which is
- * @param {Boolean} [options.useAdditionalWeekYearTokens=false] - if true, allows usage of the week-numbering year tokens `YY` and `YYYY`;
- *   see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
- * @param {Boolean} [options.useAdditionalDayOfYearTokens=false] - if true, allows usage of the day of year tokens `D` and `DD`;
- *   see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
- * @returns {String} the formatted date string
- * @throws {TypeError} 2 arguments required
+ * @param date - the original date
+ * @param format - the string of tokens
+ * @param options - an object with options.
+ * @returns the formatted date string
  * @throws {RangeError} `date` must not be Invalid Date
  * @throws {RangeError} `options.locale` must contain `localize` property
  * @throws {RangeError} `options.locale` must contain `formatLong` property
- * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
- * @throws {RangeError} `options.firstWeekContainsDate` must be between 1 and 7
  * @throws {RangeError} use `yyyy` instead of `YYYY` for formatting years using [format provided] to the input [input provided]; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
  * @throws {RangeError} use `yy` instead of `YY` for formatting years using [format provided] to the input [input provided]; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
  * @throws {RangeError} use `d` instead of `D` for formatting days of the month using [format provided] to the input [input provided]; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
@@ -335,48 +330,27 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * //=> "3 o'clock"
  */
 
-export default function format(
-  dirtyDate: Date | number,
-  dirtyFormatStr: string,
-  options?: LocaleOptions &
-    WeekStartOptions &
-    FirstWeekContainsDateOptions &
-    AdditionalTokensOptions
+export default function format<DateType extends Date>(
+  dirtyDate: DateType | number,
+  formatStr: string,
+  options?: FormatOptions
 ): string {
-  requiredArgs(2, arguments)
-
-  const formatStr = String(dirtyFormatStr)
-
   const defaultOptions = getDefaultOptions()
   const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale
 
-  const firstWeekContainsDate = toInteger(
+  const firstWeekContainsDate =
     options?.firstWeekContainsDate ??
-      options?.locale?.options?.firstWeekContainsDate ??
-      defaultOptions.firstWeekContainsDate ??
-      defaultOptions.locale?.options?.firstWeekContainsDate ??
-      1
-  )
+    options?.locale?.options?.firstWeekContainsDate ??
+    defaultOptions.firstWeekContainsDate ??
+    defaultOptions.locale?.options?.firstWeekContainsDate ??
+    1
 
-  // Test if weekStartsOn is between 1 and 7 _and_ is not NaN
-  if (!(firstWeekContainsDate >= 1 && firstWeekContainsDate <= 7)) {
-    throw new RangeError(
-      'firstWeekContainsDate must be between 1 and 7 inclusively'
-    )
-  }
-
-  const weekStartsOn = toInteger(
+  const weekStartsOn =
     options?.weekStartsOn ??
-      options?.locale?.options?.weekStartsOn ??
-      defaultOptions.weekStartsOn ??
-      defaultOptions.locale?.options?.weekStartsOn ??
-      0
-  )
-
-  // Test if weekStartsOn is between 0 and 6 _and_ is not NaN
-  if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {
-    throw new RangeError('weekStartsOn must be between 0 and 6 inclusively')
-  }
+    options?.locale?.options?.weekStartsOn ??
+    defaultOptions.weekStartsOn ??
+    defaultOptions.locale?.options?.weekStartsOn ??
+    0
 
   if (!locale.localize) {
     throw new RangeError('locale must contain localize property')
@@ -391,12 +365,6 @@ export default function format(
   if (!isValid(originalDate)) {
     throw new RangeError('Invalid time value')
   }
-
-  // Convert the date in system timezone to the same date in UTC+00:00 timezone.
-  // This ensures that when UTC functions will be implemented, locales will be compatible with them.
-  // See an issue about UTC functions: https://github.com/date-fns/date-fns/issues/376
-  const timezoneOffset = getTimezoneOffsetInMilliseconds(originalDate)
-  const utcDate = subMilliseconds(originalDate, timezoneOffset)
 
   const formatterOptions = {
     firstWeekContainsDate: firstWeekContainsDate as FirstWeekContainsDate,
@@ -434,15 +402,20 @@ export default function format(
           !options?.useAdditionalWeekYearTokens &&
           isProtectedWeekYearToken(substring)
         ) {
-          throwProtectedError(substring, dirtyFormatStr, String(dirtyDate))
+          throwProtectedError(substring, formatStr, String(dirtyDate))
         }
         if (
           !options?.useAdditionalDayOfYearTokens &&
           isProtectedDayOfYearToken(substring)
         ) {
-          throwProtectedError(substring, dirtyFormatStr, String(dirtyDate))
+          throwProtectedError(substring, formatStr, String(dirtyDate))
         }
-        return formatter(utcDate, substring, locale.localize, formatterOptions)
+        return formatter(
+          originalDate,
+          substring,
+          locale.localize,
+          formatterOptions
+        )
       }
 
       if (firstCharacter.match(unescapedLatinCharacterRegExp)) {

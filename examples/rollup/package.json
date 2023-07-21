@@ -14,7 +14,7 @@
     "rollup": "^3.21.1"
   },
   "scripts": {
-    "build": "yarn run build-date-fns && yarn run build-rollup && yarn run build-babili",
+    "build": "yarn run build-date-fns && yarn run build-rollup && yarn run build-babel-minify",
     "build-date-fns": "env PACKAGE_OUTPUT_PATH=\"$(pwd)/node_modules/date-fns\" ../../scripts/build/package.sh",
     "build-rollup": "yarn run build-rollup-example && yarn run build-rollup-fp && yarn run build-rollup-misc",
     "build-rollup-example": "rollup -c rollup.config.example.mjs",

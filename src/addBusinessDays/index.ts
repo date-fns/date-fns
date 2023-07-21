@@ -1,13 +1,16 @@
+import constructFrom from '../constructFrom/index'
+import isSaturday from '../isSaturday/index'
+import isSunday from '../isSunday/index'
 import isWeekend from '../isWeekend/index'
-import toDate from '../toDate/index'
 import toInteger from '../_lib/toInteger/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import isSunday from '../isSunday/index'
-import isSaturday from '../isSaturday/index'
+import toDate from '../toDate'
+import format from '../format/index'
+import isMatch from '../isMatch/index'
 
 /**
  * @name addBusinessDays
- * @category Day Helpers
+ * @category Date Extension Helpers
  * @summary Add the specified number of business days (mon - fri) to the given date.
  *
  * @description
@@ -15,53 +18,89 @@ import isSaturday from '../isSaturday/index'
  *
  * @param {Date|Number} date - the date to be changed
  * @param {Number} amount - the amount of business days to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @param {Object} [options] - an object with options.
+ * @param {Number[]} [options.businessDays=[1, 2, 3, 4, 5]] - the business days. default is Monday to Friday.
+ * @param {Record<string, boolean>} [options.exceptions={}] - exceptions to the business days. Map of date string (with format "MM/DD/YY") to boolean.
  * @returns {Date} the new date with the business days added
  * @throws {TypeError} 2 arguments required
+ * @throws {RangeError} businessDays cannot include numbers greater than 6
  *
  * @example
  * // Add 10 business days to 1 September 2014:
  * const result = addBusinessDays(new Date(2014, 8, 1), 10)
  * //=> Mon Sep 15 2014 00:00:00 (skipped weekend days)
  */
+
 export default function addBusinessDays(
   dirtyDate: Date | number,
-  dirtyAmount: number
+  dirtyAmount: number,
+  dirtyOptions?: {
+    businessDays?: number[]
+    exceptions?: Record<string, boolean>
+  }
 ): Date {
   requiredArgs(2, arguments)
+  const options = dirtyOptions || {}
+  const exceptions = options.exceptions || {}
+  const businessDays = options.businessDays || [1, 2, 3, 4, 5]
 
-  const date = toDate(dirtyDate)
-  const startedOnWeekend = isWeekend(date)
+  // Throw a RangeError if businessDays includes a number greater than 6
+  if (businessDays?.filter((number) => number > 6).length > 0) {
+    throw new RangeError('business days must be between 0 and 6')
+  }
+
+  const initialDate = toDate(dirtyDate)
   const amount = toInteger(dirtyAmount)
 
   if (isNaN(amount)) return new Date(NaN)
 
-  const hours = date.getHours()
+  if (initialDate.toString() === 'Invalid Date') {
+    return initialDate
+  }
+
+  // returns a boolean if the date has an exception
+  // true means the date is a working day
+  // false means the date is not a working day
+  const findException = (date: Date): boolean | undefined => {
+    return exceptions[format(date, 'MM/dd/yy')]
+  }
+
+  // returns true if the date is a business day (doesn't account for exceptions)
+  const isBusinessDay = (date: Date): boolean =>
+    businessDays.includes(date.getDay())
+
+  // returns true if the date is a working day (accounts for exceptions)
+  const isWorkingDay = (date: Date) => {
+    const isDateIncluded = options.exceptions ? findException(date) : undefined
+    if (isDateIncluded === false) return false
+    if (isDateIncluded === true || isBusinessDay(date)) {
+      return true
+    }
+    return false
+  }
+
+  let newDate = new Date(initialDate)
   const sign = amount < 0 ? -1 : 1
-  const fullWeeks = toInteger(amount / 5)
 
-  date.setDate(date.getDate() + fullWeeks * 7)
-
-  // Get remaining days not part of a full week
-  let restDays = Math.abs(amount % 5)
-
-  // Loops over remaining days
-  while (restDays > 0) {
-    date.setDate(date.getDate() + sign)
-    if (!isWeekend(date)) restDays -= 1
+  // start on initial day and continue until we have gone through all the days
+  let dayCounter = Math.abs(amount)
+  while (dayCounter > 0) {
+    newDate.setDate(newDate.getDate() + sign)
+    if (isWorkingDay(newDate)) dayCounter -= 1
   }
 
-  // If the date is a weekend day and we reduce a dividable of
-  // 5 from it, we land on a weekend date.
-  // To counter this, we add days accordingly to land on the next business day
-  if (startedOnWeekend && isWeekend(date) && amount !== 0) {
-    // If we're reducing days, we want to add days until we land on a weekday
-    // If we're adding days we want to reduce days until we land on a weekday
-    if (isSaturday(date)) date.setDate(date.getDate() + (sign < 0 ? 2 : -1))
-    if (isSunday(date)) date.setDate(date.getDate() + (sign < 0 ? 1 : -2))
+  // If we land on a non-working date, we add/subtract days accordingly to land on the next business day
+  const reduceIfNonWorkingDay = (date: Date) => {
+    if (!isWorkingDay(date) && amount !== 0) {
+      date.setDate(date.getDate() + sign)
+      reduceIfNonWorkingDay(date)
+    }
   }
+
+  reduceIfNonWorkingDay(newDate)
 
   // Restore hours to avoid DST lag
-  date.setHours(hours)
+  newDate.setHours(initialDate.getHours())
 
-  return date
+  return newDate
 }

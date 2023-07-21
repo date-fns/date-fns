@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import sinon from 'sinon'
-import isFuture from '.'
+import isFuture from './index'
 
 describe('isFuture', () => {
   let clock: sinon.SinonFakeTimers
@@ -32,10 +32,5 @@ describe('isFuture', () => {
   it('accepts a timestamp', () => {
     const result = isFuture(new Date(2014, 9 /* Oct */, 31).getTime())
     assert(result === true)
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(isFuture.bind(null), TypeError)
   })
 })

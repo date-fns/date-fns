@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import endOfISOWeek from '.'
+import endOfISOWeek from './index'
 
 describe('endOfISOWeek', () => {
   it('returns the date with the time set to 23:59:59:999 and the date set to the last day of an ISO week', () => {
@@ -31,10 +31,5 @@ describe('endOfISOWeek', () => {
   it('returns `Invalid Date` if the given date is invalid', () => {
     const result = endOfISOWeek(new Date(NaN))
     assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(endOfISOWeek.bind(null), TypeError)
   })
 })

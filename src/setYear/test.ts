@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import setYear from '.'
+import setYear from './index'
 
 describe('setYear', () => {
   it('sets the year', () => {
@@ -12,20 +12,6 @@ describe('setYear', () => {
   it('accepts a timestamp', () => {
     const result = setYear(new Date(2014, 8 /* Sep */, 1).getTime(), 2016)
     assert.deepStrictEqual(result, new Date(2016, 8 /* Sep */, 1))
-  })
-
-  it('converts a fractional number to an integer', () => {
-    const result = setYear(new Date(2014, 8 /* Sep */, 1), 2013.987654321)
-    assert.deepStrictEqual(result, new Date(2013, 8 /* Sep */, 1))
-  })
-
-  it('implicitly converts number arguments', () => {
-    const result = setYear(
-      new Date(2014, 8 /* Sep */, 1),
-      // @ts-expect-error
-      '2013'
-    )
-    assert.deepStrictEqual(result, new Date(2013, 8 /* Sep */, 1))
   })
 
   it('does not mutate the original date', () => {
@@ -42,12 +28,5 @@ describe('setYear', () => {
   it('returns `Invalid Date` if the given amount is NaN', () => {
     const result = setYear(new Date(2014, 8 /* Sep */, 1), NaN)
     assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(setYear.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(setYear.bind(null, 1), TypeError)
   })
 })

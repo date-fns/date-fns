@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import isSameDay from '.'
+import isSameDay from './index'
 
 describe('isSameDay', () => {
   it('returns true if the given dates have the same day', () => {
@@ -41,12 +41,5 @@ describe('isSameDay', () => {
   it('returns false if the both dates are `Invalid Date`', () => {
     const result = isSameDay(new Date(NaN), new Date(NaN))
     assert(result === false)
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(isSameDay.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(isSameDay.bind(null, 1), TypeError)
   })
 })

@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import assign from '.'
+import assign from './index'
 
 describe('assign', () => {
   it('assigns properties of the second argument to the first argument', () => {

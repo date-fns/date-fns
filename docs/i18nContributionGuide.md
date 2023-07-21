@@ -591,18 +591,12 @@ export default function formatRelative (token, date, baseDate, options) {
 ```
 
 You can use `date` and `baseDate` supplied to the function for the difficult situations
-(e.g. grammatical genders and cases of the days of the week)
-Both `date` and `baseDate` are converted to UTC timezone, which means
-that you should use UTC methods to take the date values (i.e. `date.getUTCDay()` instead of `date.getDay()`).
-You can use UTC functions from `src/_lib` in date-fns root directory if they are available.
-Don't forget to pass `options` object to them!
+(e.g. grammatical genders and cases of the days of the week).
 Example is below. Note the different grammatical case for weekdays (accusative instead of nominative)
 and declension of word "прошлый" which depends on the grammatical gender of the weekday:
 
 ```javascript
 // In `ru` locale
-import isSameUTCWeek from '../../../../_lib/isSameUTCWeek/index.js'
-
 var accusativeWeekdays = ['воскресенье', 'понедельник', 'вторник', 'среду', 'четверг', 'пятницу', 'субботу']
 
 function lastWeek (day) {
@@ -632,7 +626,7 @@ function nextWeek (day) {
 
 var formatRelativeLocale = {
   lastWeek: function (date, baseDate, options) {
-    var day = date.getUTCDay()
+    var day = date.getDay()
     if (isSameUTCWeek(date, baseDate, options)) {
       return thisWeek(day)
     } else {
@@ -643,7 +637,7 @@ var formatRelativeLocale = {
   today: "'сегодня в' p",
   tomorrow: "'завтра в' p",
   nextWeek: function (date, baseDate, options) {
-    var day = date.getUTCDay()
+    var day = date.getDay()
     if (isSameUTCWeek(date, baseDate, options)) {
       return thisWeek(day)
     } else {

@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import intervalToDuration from '.'
+import intervalToDuration from './index'
 import addMonths from '../addMonths/index'
 
 describe('intervalToDuration', () => {
@@ -50,19 +50,13 @@ describe('intervalToDuration', () => {
     })
   })
 
-  it("returns positive numbers even if interval's start date is after its end date", () => {
-    const start = new Date(1929, 0, 15, 12, 0, 0)
-    const end = new Date(1968, 3, 4, 19, 5, 0)
-    const result = intervalToDuration({ start: end, end: start })
+  it("throws a RangeError if interval's start date is greater than its end date", () => {
+    const interval = {
+      start: new Date(2020, 3, 1),
+      end: new Date(2020, 2, 1),
+    }
 
-    assert.deepStrictEqual(result, {
-      years: 39,
-      months: 2,
-      days: 20,
-      hours: 7,
-      minutes: 5,
-      seconds: 0,
-    })
+    assert.throws(intervalToDuration.bind(null, interval), RangeError)
   })
 
   it("throws a RangeError if interval's start date invalid", () => {

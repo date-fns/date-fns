@@ -1,8 +1,8 @@
-import {
-  getDefaultOptions as getInternalDefaultOptions,
-  DefaultOptions,
-} from '../_lib/defaultOptions/index'
 import assign from '../_lib/assign/index'
+import {
+  DefaultOptions,
+  getDefaultOptions as getInternalDefaultOptions,
+} from '../_lib/defaultOptions/index'
 
 /**
  * @name getDefaultOptions
@@ -17,7 +17,7 @@ import assign from '../_lib/assign/index'
  *
  * You can change these with [setDefaultOptions]{@link https://date-fns.org/docs/setDefaultOptions}.
  *
- * @returns {Object} default options
+ * @returns default options
  *
  * @example
  * const result = getDefaultOptions()

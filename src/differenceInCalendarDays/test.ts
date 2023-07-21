@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import differenceInCalendarDays from '.'
+import differenceInCalendarDays from './index'
 import { getDstTransitions } from '../../test/dst/tzOffsetTransitions'
 
 describe('differenceInCalendarDays', () => {
@@ -96,13 +96,6 @@ describe('differenceInCalendarDays', () => {
   it('returns NaN if the both dates are `Invalid Date`', () => {
     const result = differenceInCalendarDays(new Date(NaN), new Date(NaN))
     assert(isNaN(result))
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(differenceInCalendarDays.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(differenceInCalendarDays.bind(null, 1), TypeError)
   })
 
   // These tests were copy-pasted almost unchanged from DST tests for

@@ -1,19 +1,22 @@
-import { getDefaultOptions } from '../_lib/defaultOptions/index'
 import compareAsc from '../compareAsc/index'
+import { minutesInDay, minutesInMonth } from '../constants/index'
 import differenceInMonths from '../differenceInMonths/index'
 import differenceInSeconds from '../differenceInSeconds/index'
-import defaultLocale from '../_lib/defaultLocale/index'
 import toDate from '../toDate/index'
+import type { LocaleOptions } from '../types'
+import assign from '../_lib/assign/index'
 import cloneObject from '../_lib/cloneObject/index'
-import assign from '../_lib/assign'
+import defaultLocale from '../_lib/defaultLocale/index'
+import { getDefaultOptions } from '../_lib/defaultOptions/index'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-import type { FormatDistanceOptions, LocaleOptions } from '../types'
 
-const MINUTES_IN_DAY = 1440
-const MINUTES_IN_ALMOST_TWO_DAYS = 2520
-const MINUTES_IN_MONTH = 43200
-const MINUTES_IN_TWO_MONTHS = 86400
+/**
+ * The {@link formatDistance} function options.
+ */
+export interface FormatDistanceOptions extends LocaleOptions {
+  includeSeconds?: boolean
+  addSuffix?: boolean
+}
 
 /**
  * @name formatDistance
@@ -52,14 +55,10 @@ const MINUTES_IN_TWO_MONTHS = 86400
  * | 40 secs ... 60 secs    | less than a minute   |
  * | 60 secs ... 90 secs    | 1 minute             |
  *
- * @param {Date|Number} date - the date
- * @param {Date|Number} baseDate - the date to compare with
- * @param {Object} [options] - an object with options.
- * @param {Boolean} [options.includeSeconds=false] - distances less than a minute are more detailed
- * @param {Boolean} [options.addSuffix=false] - result indicates if the second date is earlier or later than the first
- * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
- * @returns {String} the distance in words
- * @throws {TypeError} 2 arguments required
+ * @param date - the date
+ * @param baseDate - the date to compare with
+ * @param options - an object with options.
+ * @returns the distance in words
  * @throws {RangeError} `date` must not be Invalid Date
  * @throws {RangeError} `baseDate` must not be Invalid Date
  * @throws {RangeError} `options.locale` must contain `formatDistance` property
@@ -96,15 +95,14 @@ const MINUTES_IN_TWO_MONTHS = 86400
  * //=> 'pli ol 1 jaro'
  */
 
-export default function formatDistance(
-  dirtyDate: Date | number,
-  dirtyBaseDate: Date | number,
-  options?: LocaleOptions & FormatDistanceOptions
+export default function formatDistance<DateType extends Date>(
+  dirtyDate: DateType | number,
+  dirtyBaseDate: DateType | number,
+  options?: FormatDistanceOptions
 ): string {
-  requiredArgs(2, arguments)
-
   const defaultOptions = getDefaultOptions()
   const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale
+  const minutesInAlmostTwoDays = 2520
 
   if (!locale.formatDistance) {
     throw new RangeError('locale must contain formatDistance property')
@@ -117,7 +115,7 @@ export default function formatDistance(
   }
 
   const localizeOptions = assign(cloneObject(options), {
-    addSuffix: Boolean(options?.addSuffix),
+    addSuffix: options?.addSuffix,
     comparison: comparison as -1 | 0 | 1,
   })
 
@@ -172,22 +170,22 @@ export default function formatDistance(
     return locale.formatDistance('aboutXHours', 1, localizeOptions)
 
     // 1.5 hrs up to 24 hrs
-  } else if (minutes < MINUTES_IN_DAY) {
+  } else if (minutes < minutesInDay) {
     const hours = Math.round(minutes / 60)
     return locale.formatDistance('aboutXHours', hours, localizeOptions)
 
     // 1 day up to 1.75 days
-  } else if (minutes < MINUTES_IN_ALMOST_TWO_DAYS) {
+  } else if (minutes < minutesInAlmostTwoDays) {
     return locale.formatDistance('xDays', 1, localizeOptions)
 
     // 1.75 days up to 30 days
-  } else if (minutes < MINUTES_IN_MONTH) {
-    const days = Math.round(minutes / MINUTES_IN_DAY)
+  } else if (minutes < minutesInMonth) {
+    const days = Math.round(minutes / minutesInDay)
     return locale.formatDistance('xDays', days, localizeOptions)
 
     // 1 month up to 2 months
-  } else if (minutes < MINUTES_IN_TWO_MONTHS) {
-    months = Math.round(minutes / MINUTES_IN_MONTH)
+  } else if (minutes < minutesInMonth * 2) {
+    months = Math.round(minutes / minutesInMonth)
     return locale.formatDistance('aboutXMonths', months, localizeOptions)
   }
 
@@ -195,7 +193,7 @@ export default function formatDistance(
 
   // 2 months up to 12 months
   if (months < 12) {
-    const nearestMonth = Math.round(minutes / MINUTES_IN_MONTH)
+    const nearestMonth = Math.round(minutes / minutesInMonth)
     return locale.formatDistance('xMonths', nearestMonth, localizeOptions)
 
     // 1 year up to max Date

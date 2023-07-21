@@ -5,8 +5,14 @@ import type {
   LocaleOptions,
   WeekStartOptions,
 } from '../types'
-import requiredArgs from '../_lib/requiredArgs/index'
-import toInteger from '../_lib/toInteger/index'
+
+/**
+ * The {@link setWeek} function options.
+ */
+export interface SetWeekOptions
+  extends LocaleOptions,
+    WeekStartOptions,
+    FirstWeekContainsDateOptions {}
 
 /**
  * @name setWeek
@@ -22,16 +28,10 @@ import toInteger from '../_lib/toInteger/index'
  *
  * Week numbering: https://en.wikipedia.org/wiki/Week#Week_numbering
  *
- * @param {Date|Number} date - the date to be changed
- * @param {Number} week - the week of the new date
- * @param {Object} [options] - an object with options.
- * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
- * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
- * @param {1|2|3|4|5|6|7} [options.firstWeekContainsDate=1] - the day of January, which is always in the first week of the year
- * @returns {Date} the new date with the local week set
- * @throws {TypeError} 2 arguments required
- * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
- * @throws {RangeError} `options.firstWeekContainsDate` must be between 1 and 7
+ * @param date - the date to be changed
+ * @param week - the week of the new date
+ * @param options - an object with options.
+ * @returns the new date with the local week set
  *
  * @example
  * // Set the 1st week to 2 January 2005 with default options:
@@ -48,15 +48,12 @@ import toInteger from '../_lib/toInteger/index'
  * })
  * //=> Sun Jan 4 2004 00:00:00
  */
-export default function setWeek(
-  dirtyDate: Date | number,
-  dirtyWeek: number,
-  options?: LocaleOptions & WeekStartOptions & FirstWeekContainsDateOptions
-): Date {
-  requiredArgs(2, arguments)
-
+export default function setWeek<DateType extends Date>(
+  dirtyDate: DateType | number,
+  week: number,
+  options?: SetWeekOptions
+): DateType {
   const date = toDate(dirtyDate)
-  const week = toInteger(dirtyWeek)
   const diff = getWeek(date, options) - week
   date.setDate(date.getDate() - diff * 7)
   return date

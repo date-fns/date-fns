@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import endOfWeek from '.'
+import endOfWeek from './index'
 
 describe('endOfWeek', () => {
   it('returns the date with the time set to 23:59:59:999 and the date set to the last day of a week', () => {
@@ -44,18 +44,6 @@ describe('endOfWeek', () => {
       locale: {
         options: { weekStartsOn: 0 },
       },
-    })
-    assert.deepStrictEqual(
-      result,
-      new Date(2014, 8 /* Sep */, 7, 23, 59, 59, 999)
-    )
-  })
-
-  it('implicitly converts options', () => {
-    const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
-    const result = endOfWeek(date, {
-      // @ts-expect-error
-      weekStartsOn: '1',
     })
     assert.deepStrictEqual(
       result,
@@ -125,19 +113,5 @@ describe('endOfWeek', () => {
   it('returns `Invalid Date` if the given date is invalid', () => {
     const result = endOfWeek(new Date(NaN))
     assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
-  it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', () => {
-    const block = () =>
-      endOfWeek(new Date(2014, 8 /* Sep */, 2, 11, 55, 0), {
-        // @ts-expect-error
-        weekStartsOn: NaN,
-      })
-    assert.throws(block, RangeError)
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(endOfWeek.bind(null), TypeError)
   })
 })
