@@ -11,9 +11,12 @@ import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMillisec
  * Get the number of calendar days between the given dates. This means that the times are removed
  * from the dates and then the difference in days is calculated.
  *
- * @param dateLeft - the later date
- * @param dateRight - the earlier date
- * @returns the number of calendar days
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param dateLeft - The later date
+ * @param dateRight - The earlier date
+ *
+ * @returns The number of calendar days
  *
  * @example
  * // How many calendar days are between
@@ -32,11 +35,11 @@ import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMillisec
  * //=> 1
  */
 export default function differenceInCalendarDays<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+  dateLeft: DateType | number,
+  dateRight: DateType | number
 ): number {
-  const startOfDayLeft = startOfDay(dirtyDateLeft)
-  const startOfDayRight = startOfDay(dirtyDateRight)
+  const startOfDayLeft = startOfDay(dateLeft)
+  const startOfDayRight = startOfDay(dateRight)
 
   const timestampLeft =
     startOfDayLeft.getTime() - getTimezoneOffsetInMilliseconds(startOfDayLeft)

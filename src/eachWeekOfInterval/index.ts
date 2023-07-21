@@ -18,9 +18,11 @@ export interface EachWeekOfIntervalOptions extends WeekOptions, LocaleOptions {}
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
- * @param interval - the interval.
- * @param options - an object with options.
- * @returns the array with starts of weeks from the week of the interval start to the week of the interval end
+ * @param interval - The interval.
+ * @param options - An object with options.
+ *
+ * @returns The array with starts of weeks from the week of the interval start to the week of the interval end
+ *
  * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *

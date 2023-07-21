@@ -16,9 +16,12 @@ export interface LastDayOfWeekOptions extends LocaleOptions, WeekOptions {}
  * Return the last day of a week for the given date.
  * The result will be in the local timezone.
  *
- * @param date - the original date
- * @param options - an object with options.
- * @returns the last day of a week
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The original date
+ * @param options - An object with options
+ *
+ * @returns The last day of a week
  *
  * @example
  * // The last day of a week for 2 September 2014 11:55:00:
@@ -31,7 +34,7 @@ export interface LastDayOfWeekOptions extends LocaleOptions, WeekOptions {}
  * //=> Sun Sep 07 2014 00:00:00
  */
 export default function lastDayOfWeek<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   options?: LastDayOfWeekOptions
 ): DateType {
   const defaultOptions = getDefaultOptions()
@@ -42,11 +45,11 @@ export default function lastDayOfWeek<DateType extends Date>(
     defaultOptions.locale?.options?.weekStartsOn ??
     0
 
-  const date = toDate(dirtyDate)
-  const day = date.getDay()
+  const _date = toDate(date)
+  const day = _date.getDay()
   const diff = (day < weekStartsOn ? -7 : 0) + 6 - (day - weekStartsOn)
 
-  date.setHours(0, 0, 0, 0)
-  date.setDate(date.getDate() + diff)
-  return date
+  _date.setHours(0, 0, 0, 0)
+  _date.setDate(_date.getDate() + diff)
+  return _date
 }

@@ -298,10 +298,14 @@ export interface FormatOptions
  * 9. `D` and `DD` tokens represent days of the year but they are often confused with days of the month.
  *    You should enable `options.useAdditionalDayOfYearTokens` to use them. See: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
  *
- * @param date - the original date
- * @param format - the string of tokens
- * @param options - an object with options.
- * @returns the formatted date string
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The original date
+ * @param format - The string of tokens
+ * @param options - An object with options
+ *
+ * @returns The formatted date string
+ *
  * @throws {RangeError} `date` must not be Invalid Date
  * @throws {RangeError} `options.locale` must contain `localize` property
  * @throws {RangeError} `options.locale` must contain `formatLong` property
@@ -329,9 +333,8 @@ export interface FormatOptions
  * const result = format(new Date(2014, 6, 2, 15), "h 'o''clock'")
  * //=> "3 o'clock"
  */
-
 export default function format<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   formatStr: string,
   options?: FormatOptions
 ): string {
@@ -360,7 +363,7 @@ export default function format<DateType extends Date>(
     throw new RangeError('locale must contain formatLong property')
   }
 
-  const originalDate = toDate(dirtyDate)
+  const originalDate = toDate(date)
 
   if (!isValid(originalDate)) {
     throw new RangeError('Invalid time value')
@@ -402,13 +405,13 @@ export default function format<DateType extends Date>(
           !options?.useAdditionalWeekYearTokens &&
           isProtectedWeekYearToken(substring)
         ) {
-          throwProtectedError(substring, formatStr, String(dirtyDate))
+          throwProtectedError(substring, formatStr, String(date))
         }
         if (
           !options?.useAdditionalDayOfYearTokens &&
           isProtectedDayOfYearToken(substring)
         ) {
-          throwProtectedError(substring, formatStr, String(dirtyDate))
+          throwProtectedError(substring, formatStr, String(date))
         }
         return formatter(
           originalDate,

@@ -14,10 +14,13 @@ export interface EachDayOfIntervalOptions extends StepOptions {}
  * @description
  * Return the array of dates within the specified time interval.
  *
- * @typeParam DateType - The type of the date to return
- * @param interval - the interval.
- * @param options - an object with options.
- * @returns the array with starts of days from the day of the interval start to the day of the interval end
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param interval - The interval.
+ * @param options - An object with options.
+ *
+ * @returns The array with starts of days from the day of the interval start to the day of the interval end
+ *
  * @throws {RangeError} `options.step` must be a number greater than 1
  * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`

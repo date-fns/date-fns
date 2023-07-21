@@ -26,7 +26,6 @@ export const daysInWeek = 7
 /**
  * @constant
  * @name daysInYear
- *
  * @summary Days in 1 year.
  *
  * @description

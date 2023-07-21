@@ -17,9 +17,12 @@ export interface GetWeekOfMonthOptions extends LocaleOptions, WeekOptions {}
  * @description
  * Get the week of the month of the given date.
  *
- * @param date - the given date
- * @param options - an object with options.
- * @returns the week of month
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The given date
+ * @param options - An object with options.
+ *
+ * @returns The week of month
  *
  * @example
  * // Which week of the month is 9 November 2017?

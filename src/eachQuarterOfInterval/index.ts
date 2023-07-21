@@ -11,8 +11,12 @@ import type { Interval } from '../types'
  * @description
  * Return the array of quarters within the specified time interval.
  *
- * @param interval - the interval.
- * @returns the array with starts of quarters from the quarter of the interval start to the quarter of the interval end
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param interval - The interval
+ *
+ * @returns The array with starts of quarters from the quarter of the interval start to the quarter of the interval end
+ *
  * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *

@@ -10,8 +10,11 @@ import subDays from '../subDays/index'
  * @description
  * Is the given date yesterday?
  *
- * @param date - the date to check
- * @returns the date is yesterday
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date to check
+ *
+ * @returns The date is yesterday
  *
  * @example
  * // If today is 6 October 2014, is 5 October 14:00:00 yesterday?
@@ -19,7 +22,7 @@ import subDays from '../subDays/index'
  * //=> true
  */
 export default function isYesterday<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): boolean {
-  return isSameDay(dirtyDate, subDays(Date.now(), 1))
+  return isSameDay(date, subDays(Date.now(), 1))
 }

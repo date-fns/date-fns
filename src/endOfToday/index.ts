@@ -9,7 +9,9 @@ import endOfDay from '../endOfDay/index'
  * @description
  * Return the end of today.
  *
- * @returns the end of today
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @returns The end of today
  *
  * @example
  * // If today is 6 October 2014:

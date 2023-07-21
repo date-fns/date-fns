@@ -14,10 +14,13 @@ export interface IsSameWeekOptions extends WeekOptions, LocaleOptions {}
  * @description
  * Are the given dates in the same week (and month and year)?
  *
- * @param dateLeft - the first date to check
- * @param dateRight - the second date to check
- * @param options - an object with options.
- * @returns the dates are in the same week (and month and year)
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param dateLeft - The first date to check
+ * @param dateRight - The second date to check
+ * @param options - An object with options
+ *
+ * @returns The dates are in the same week (and month and year)
  *
  * @example
  * // Are 31 August 2014 and 4 September 2014 in the same week?
@@ -38,12 +41,12 @@ export interface IsSameWeekOptions extends WeekOptions, LocaleOptions {}
  * //=> false
  */
 export default function isSameWeek<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number,
+  dateLeft: DateType | number,
+  dateRight: DateType | number,
   options?: IsSameWeekOptions
 ): boolean {
-  const dateLeftStartOfWeek = startOfWeek(dirtyDateLeft, options)
-  const dateRightStartOfWeek = startOfWeek(dirtyDateRight, options)
+  const dateLeftStartOfWeek = startOfWeek(dateLeft, options)
+  const dateRightStartOfWeek = startOfWeek(dateRight, options)
 
-  return dateLeftStartOfWeek.getTime() === dateRightStartOfWeek.getTime()
+  return +dateLeftStartOfWeek === +dateRightStartOfWeek
 }

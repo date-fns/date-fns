@@ -12,8 +12,11 @@ import startOfISOWeekYear from '../startOfISOWeekYear/index'
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @param date - the given date
- * @returns the number of ISO weeks in a year
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The given date
+ *
+ * @returns The number of ISO weeks in a year
  *
  * @example
  * // How many weeks are in ISO week-numbering year 2015?
@@ -21,9 +24,9 @@ import startOfISOWeekYear from '../startOfISOWeekYear/index'
  * //=> 53
  */
 export default function getISOWeeksInYear<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): number {
-  const thisYear = startOfISOWeekYear(dirtyDate)
+  const thisYear = startOfISOWeekYear(date)
   const nextYear = startOfISOWeekYear(addWeeks(thisYear, 60))
   const diff = nextYear.valueOf() - thisYear.valueOf()
   // Round the number of weeks to the nearest integer

@@ -9,8 +9,11 @@ import toDate from '../toDate/index'
  * @description
  * Is the given date in the future?
  *
- * @param date - the date to check
- * @returns the date is in the future
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date to check
+ *
+ * @returns The date is in the future
  *
  * @example
  * // If today is 6 October 2014, is 31 December 2014 in the future?
@@ -18,7 +21,7 @@ import toDate from '../toDate/index'
  * //=> true
  */
 export default function isFuture<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): boolean {
-  return toDate(dirtyDate).getTime() > Date.now()
+  return +toDate(date) > Date.now()
 }

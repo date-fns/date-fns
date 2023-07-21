@@ -16,9 +16,12 @@ import type { Duration, Interval } from '../types'
  * @description
  * Convert a interval object to a duration object.
  *
- * @param interval - the interval to convert to duration
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
- * @returns The duration Object
+ * @param interval - The interval to convert to duration
+ *
+ * @returns The duration object
+ *
  * @throws {RangeError} `start` must not be Invalid Date
  * @throws {RangeError} `end` must not be Invalid Date
  * @throws {RangeError} The start of an interval cannot be after its end

@@ -8,9 +8,12 @@ import toDate from '../toDate/index'
  * @description
  * Is the first date after the second one?
  *
- * @param date - the date that should be after the other one to return true
- * @param dateToCompare - the date to compare with
- * @returns the first date is after the second date
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date that should be after the other one to return true
+ * @param dateToCompare - The date to compare with
+ *
+ * @returns The first date is after the second date
  *
  * @example
  * // Is 10 July 1989 after 11 February 1987?
@@ -18,10 +21,10 @@ import toDate from '../toDate/index'
  * //=> true
  */
 export default function isAfter<DateType extends Date>(
-  dirtyDate: DateType | number,
-  dirtyDateToCompare: DateType | number
+  date: DateType | number,
+  dateToCompare: DateType | number
 ): boolean {
-  const date = toDate(dirtyDate)
-  const dateToCompare = toDate(dirtyDateToCompare)
-  return date.getTime() > dateToCompare.getTime()
+  const _date = toDate(date)
+  const _dateToCompare = toDate(dateToCompare)
+  return _date.getTime() > _dateToCompare.getTime()
 }

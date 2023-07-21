@@ -8,8 +8,11 @@ import previousDay from '../previousDay/index'
  * @description
  * When is the previous Monday?
  *
- * @param date - the date to start counting from
- * @returns the previous Monday
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date to start counting from
+ *
+ * @returns The previous Monday
  *
  * @example
  * // When is the previous Monday before Jun, 18, 2021?

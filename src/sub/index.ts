@@ -11,8 +11,10 @@ import constructFrom from '../constructFrom/index'
  * @description
  * Subtract the specified years, months, weeks, days, hours, minutes and seconds from the given date.
  *
- * @param date - the date to be changed
- * @param duration - the object with years, months, weeks, days, hours, minutes and seconds to be subtracted
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date to be changed
+ * @param duration - The object with years, months, weeks, days, hours, minutes and seconds to be subtracted
  *
  * | Key     | Description                        |
  * |---------|------------------------------------|
@@ -26,7 +28,7 @@ import constructFrom from '../constructFrom/index'
  *
  * All values default to 0
  *
- * @returns the new date with the seconds subtracted
+ * @returns The new date with the seconds subtracted
  *
  * @example
  * // Subtract the following duration from 15 June 2017 15:29:20

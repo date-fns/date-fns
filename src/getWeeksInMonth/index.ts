@@ -16,9 +16,12 @@ export interface GetWeeksInMonthOptions extends LocaleOptions, WeekOptions {}
  * @description
  * Get the number of calendar weeks the month in the given date spans.
  *
- * @param date - the given date
- * @param options - an object with options.
- * @returns the number of calendar weeks
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The given date
+ * @param options - An object with options.
+ *
+ * @returns The number of calendar weeks
  *
  * @example
  * // How many calendar weeks does February 2015 span?

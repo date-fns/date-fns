@@ -8,8 +8,11 @@ import toDate from '../toDate/index'
  * @description
  * Get the day of the week of the given date.
  *
- * @param date - the given date
- * @returns the day of week, 0 represents Sunday
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The given date
+ *
+ * @returns The day of week, 0 represents Sunday
  *
  * @example
  * // Which day of the week is 29 February 2012?
@@ -17,9 +20,9 @@ import toDate from '../toDate/index'
  * //=> 3
  */
 export default function getDay<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): number {
-  const date = toDate(dirtyDate)
-  const day = date.getDay()
+  const _date = toDate(date)
+  const day = _date.getDay()
   return day
 }

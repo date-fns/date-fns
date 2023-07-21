@@ -10,9 +10,12 @@ import getISOWeekYear from '../getISOWeekYear/index'
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @param dateLeft - the later date
- * @param dateRight - the earlier date
- * @returns the number of calendar ISO week-numbering years
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param dateLeft - The later date
+ * @param dateRight - The earlier date
+ *
+ * @returns The number of calendar ISO week-numbering years
  *
  * @example
  * // How many calendar ISO week-numbering years are 1 January 2010 and 1 January 2012?
@@ -23,8 +26,8 @@ import getISOWeekYear from '../getISOWeekYear/index'
  * //=> 2
  */
 export default function differenceInCalendarISOWeekYears<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+  dateLeft: DateType | number,
+  dateRight: DateType | number
 ): number {
-  return getISOWeekYear(dirtyDateLeft) - getISOWeekYear(dirtyDateRight)
+  return getISOWeekYear(dateLeft) - getISOWeekYear(dateRight)
 }

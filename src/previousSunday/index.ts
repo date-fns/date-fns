@@ -8,8 +8,11 @@ import previousDay from '../previousDay/index'
  * @description
  * When is the previous Sunday?
  *
- * @param date - the date to start counting from
- * @returns the previous Sunday
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date to start counting from
+ *
+ * @returns The previous Sunday
  *
  * @example
  * // When is the previous Sunday before Jun, 21, 2021?

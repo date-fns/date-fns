@@ -28,10 +28,13 @@ export interface SetWeekOptions
  *
  * Week numbering: https://en.wikipedia.org/wiki/Week#Week_numbering
  *
- * @param date - the date to be changed
- * @param week - the week of the new date
- * @param options - an object with options.
- * @returns the new date with the local week set
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date to be changed
+ * @param week - The week of the new date
+ * @param options - An object with options
+ *
+ * @returns The new date with the local week set
  *
  * @example
  * // Set the 1st week to 2 January 2005 with default options:
@@ -49,12 +52,12 @@ export interface SetWeekOptions
  * //=> Sun Jan 4 2004 00:00:00
  */
 export default function setWeek<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   week: number,
   options?: SetWeekOptions
 ): DateType {
-  const date = toDate(dirtyDate)
-  const diff = getWeek(date, options) - week
-  date.setDate(date.getDate() - diff * 7)
-  return date
+  const _date = toDate(date)
+  const diff = getWeek(_date, options) - week
+  _date.setDate(_date.getDate() - diff * 7)
+  return _date
 }

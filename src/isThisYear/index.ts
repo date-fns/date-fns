@@ -9,8 +9,11 @@ import isSameYear from '../isSameYear/index'
  * @description
  * Is the given date in the same year as the current date?
  *
- * @param date - the date to check
- * @returns the date is in this year
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date to check
+ *
+ * @returns The date is in this year
  *
  * @example
  * // If today is 25 September 2014, is 2 July 2014 in this year?
@@ -18,7 +21,7 @@ import isSameYear from '../isSameYear/index'
  * //=> true
  */
 export default function isThisYear<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): boolean {
-  return isSameYear(dirtyDate, Date.now())
+  return isSameYear(date, Date.now())
 }

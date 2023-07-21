@@ -8,8 +8,11 @@ import toDate from '../toDate/index'
  * @description
  * Get the day of the month of the given date.
  *
- * @param date - the given date
- * @returns the day of month
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The given date
+ *
+ * @returns The day of month
  *
  * @example
  * // Which day of the month is 29 February 2012?
@@ -17,9 +20,9 @@ import toDate from '../toDate/index'
  * //=> 29
  */
 export default function getDate<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): number {
-  const date = toDate(dirtyDate)
-  const dayOfMonth = date.getDate()
+  const _date = toDate(date)
+  const dayOfMonth = _date.getDate()
   return dayOfMonth
 }

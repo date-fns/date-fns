@@ -9,9 +9,12 @@ import { millisecondsInMinute } from '../constants/index'
  * @description
  * Add the specified number of minutes to the given date.
  *
- * @param date - the date to be changed
- * @param amount - the amount of minutes to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
- * @returns the new date with the minutes added
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date to be changed
+ * @param amount - The amount of minutes to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ *
+ * @returns The new date with the minutes added
  *
  * @example
  * // Add 30 minutes to 10 July 2014 12:00:00:
@@ -19,8 +22,8 @@ import { millisecondsInMinute } from '../constants/index'
  * //=> Thu Jul 10 2014 12:30:00
  */
 export default function addMinutes<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   amount: number
 ): DateType {
-  return addMilliseconds(dirtyDate, amount * millisecondsInMinute)
+  return addMilliseconds(date, amount * millisecondsInMinute)
 }

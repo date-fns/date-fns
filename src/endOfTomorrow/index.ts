@@ -7,7 +7,9 @@
  * @description
  * Return the end of tomorrow.
  *
- * @returns the end of tomorrow
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @returns The end of tomorrow
  *
  * @example
  * // If today is 6 October 2014:

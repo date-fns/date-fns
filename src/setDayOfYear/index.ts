@@ -8,9 +8,12 @@ import toDate from '../toDate/index'
  * @description
  * Set the day of the year to the given date.
  *
- * @param date - the date to be changed
- * @param dayOfYear - the day of the year of the new date
- * @returns the new date with the day of the year set
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date to be changed
+ * @param dayOfYear - The day of the year of the new date
+ *
+ * @returns The new date with the day of the year set
  *
  * @example
  * // Set the 2nd day of the year to 2 July 2014:
@@ -18,11 +21,11 @@ import toDate from '../toDate/index'
  * //=> Thu Jan 02 2014 00:00:00
  */
 export default function setDayOfYear<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   dayOfYear: number
 ): DateType {
-  const date = toDate(dirtyDate)
-  date.setMonth(0)
-  date.setDate(dayOfYear)
-  return date
+  const _date = toDate(date)
+  _date.setMonth(0)
+  _date.setDate(dayOfYear)
+  return _date
 }

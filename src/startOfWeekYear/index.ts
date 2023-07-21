@@ -30,9 +30,12 @@ export interface StartOfWeekYearOptions
  *
  * Week numbering: https://en.wikipedia.org/wiki/Week#Week_numbering
  *
- * @param date - the original date
- * @param options - an object with options.
- * @returns the start of a week-numbering year
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The original date
+ * @param options - An object with options
+ *
+ * @returns The start of a week-numbering year
  *
  * @example
  * // The start of an a week-numbering year for 2 July 2005 with default settings:
@@ -50,7 +53,7 @@ export interface StartOfWeekYearOptions
  * //=> Mon Jan 03 2005 00:00:00
  */
 export default function startOfWeekYear<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   options?: StartOfWeekYearOptions
 ): DateType {
   const defaultOptions = getDefaultOptions()
@@ -61,10 +64,10 @@ export default function startOfWeekYear<DateType extends Date>(
     defaultOptions.locale?.options?.firstWeekContainsDate ??
     1
 
-  const year = getWeekYear(dirtyDate, options)
-  const firstWeek = constructFrom(dirtyDate, 0)
+  const year = getWeekYear(date, options)
+  const firstWeek = constructFrom(date, 0)
   firstWeek.setFullYear(year, 0, firstWeekContainsDate)
   firstWeek.setHours(0, 0, 0, 0)
-  const date = startOfWeek(firstWeek, options)
-  return date
+  const _date = startOfWeek(firstWeek, options)
+  return _date
 }

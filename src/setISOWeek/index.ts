@@ -11,9 +11,12 @@ import toDate from '../toDate/index'
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @param date - the date to be changed
- * @param isoWeek - the ISO week of the new date
- * @returns the new date with the ISO week set
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date to be changed
+ * @param week - The ISO week of the new date
+ *
+ * @returns The new date with the ISO week set
  *
  * @example
  * // Set the 53rd ISO week to 7 August 2004:
@@ -21,11 +24,11 @@ import toDate from '../toDate/index'
  * //=> Sat Jan 01 2005 00:00:00
  */
 export default function setISOWeek<DateType extends Date>(
-  dirtyDate: DateType | number,
-  isoWeek: number
+  date: DateType | number,
+  week: number
 ): DateType {
-  const date = toDate(dirtyDate)
-  const diff = getISOWeek(date) - isoWeek
-  date.setDate(date.getDate() - diff * 7)
-  return date
+  const _date = toDate(date)
+  const diff = getISOWeek(_date) - week
+  _date.setDate(_date.getDate() - diff * 7)
+  return _date
 }
