@@ -1,12 +1,5 @@
-import constructFrom from '../constructFrom/index'
-import isSaturday from '../isSaturday/index'
-import isSunday from '../isSunday/index'
-import isWeekend from '../isWeekend/index'
-import toInteger from '../_lib/toInteger/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 import toDate from '../toDate'
 import format from '../format/index'
-import isMatch from '../isMatch/index'
 
 /**
  * @name addBusinessDays
@@ -39,7 +32,6 @@ export default function addBusinessDays(
     exceptions?: Record<string, boolean>
   }
 ): Date {
-  requiredArgs(2, arguments)
   const options = dirtyOptions || {}
   const exceptions = options.exceptions || {}
   const businessDays = options.businessDays || [1, 2, 3, 4, 5]
@@ -50,7 +42,8 @@ export default function addBusinessDays(
   }
 
   const initialDate = toDate(dirtyDate)
-  const amount = toInteger(dirtyAmount)
+  const amount =
+    dirtyAmount > 0 ? Math.floor(dirtyAmount) : Math.ceil(dirtyAmount)
 
   if (isNaN(amount)) return new Date(NaN)
 

@@ -5,8 +5,6 @@ import isBefore from '../isBefore/index'
 import isSameDay from '../isSameDay/index'
 import isValid from '../isValid/index'
 import toDate from '../toDate/index'
-import toInteger from '../_lib/toInteger/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name differenceInBusinessDays
@@ -70,7 +68,6 @@ export default function differenceInBusinessDays(
     exceptions?: Record<string, boolean>
   }
 ): number {
-  requiredArgs(2, arguments)
   const options = dirtyOptions || {}
   const businessDays = options.businessDays || [1, 2, 3, 4, 5]
 
@@ -94,7 +91,7 @@ export default function differenceInBusinessDays(
       : isAfter(date, dateLeft) && isBefore(date, dateRight)
   }
 
-  const weeks = toInteger(calendarDifference / 7)
+  const weeks = Math.trunc(calendarDifference / 7)
 
   let result = weeks * businessDays.length
   let newDateRight = addDays(dateRight, weeks * 7)
