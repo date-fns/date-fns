@@ -1,11 +1,11 @@
 import toDate from '../toDate/index'
-import type { LocaleOptions, WeekOptions } from '../types'
+import type { LocalizedOptions, WeekOptions } from '../types'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
 
 /**
  * The {@link lastDayOfWeek} function options.
  */
-export interface LastDayOfWeekOptions extends LocaleOptions, WeekOptions {}
+export interface LastDayOfWeekOptions extends LocalizedOptions, WeekOptions {}
 
 /**
  * @name lastDayOfWeek

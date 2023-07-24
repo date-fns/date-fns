@@ -8,7 +8,7 @@ import type {
   Day,
   Era,
   FirstWeekContainsDateOptions,
-  LocaleOptions,
+  LocalizedOptions,
   Month,
   Quarter,
   WeekOptions,
@@ -32,7 +32,7 @@ type Formatter = (
   token: string,
   localize: Localize,
   options: Required<
-    LocaleOptions & WeekOptions & FirstWeekContainsDateOptions
+    LocalizedOptions & WeekOptions & FirstWeekContainsDateOptions
   > & {
     _originalDate: Date
   }

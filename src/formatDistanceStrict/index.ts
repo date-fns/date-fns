@@ -6,11 +6,7 @@ import {
   minutesInYear,
 } from '../constants/index'
 import toDate from '../toDate/index'
-import type {
-  LocaleOptions,
-  FormatDistanceStrictUnit,
-  RoundingOptions,
-} from '../types'
+import type { LocalizedOptions, RoundingOptions } from '../types'
 import assign from '../_lib/assign/index'
 import cloneObject from '../_lib/cloneObject/index'
 import defaultLocale from '../_lib/defaultLocale/index'
@@ -22,13 +18,24 @@ import { getRoundingMethod } from '../_lib/roundingMethods/index'
  * The {@link formatDistanceStrict} function options.
  */
 export interface FormatDistanceStrictOptions
-  extends LocaleOptions,
+  extends LocalizedOptions,
     RoundingOptions {
   /** Add "X ago"/"in X" in the locale language */
   addSuffix?: boolean
   /** If specified, will force the unit */
   unit?: FormatDistanceStrictUnit
 }
+
+/**
+ * The unit used to format the distance in {@link formatDistanceStrict}.
+ */
+export type FormatDistanceStrictUnit =
+  | 'second'
+  | 'minute'
+  | 'hour'
+  | 'day'
+  | 'month'
+  | 'year'
 
 /**
  * @name formatDistanceStrict

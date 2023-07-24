@@ -1,14 +1,12 @@
 import isValid from '../isValid/index'
 import toDate from '../toDate/index'
-import type { FormatOptions, RepresentationOptions } from '../types'
+import type { ISOFormatOptions } from '../types'
 import addLeadingZeros from '../_lib/addLeadingZeros/index'
 
 /**
  * The {@link formatISO9075} function options.
  */
-export interface FormatISO9075Options
-  extends FormatOptions,
-    RepresentationOptions {}
+export interface FormatISO9075Options extends ISOFormatOptions {}
 
 /**
  * @name formatISO9075

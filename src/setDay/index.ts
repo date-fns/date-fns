@@ -1,12 +1,12 @@
 import addDays from '../addDays/index'
 import toDate from '../toDate/index'
-import type { LocaleOptions, WeekOptions } from '../types'
+import type { LocalizedOptions, WeekOptions } from '../types'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
 
 /**
  * The {@link setDay} function options.
  */
-export interface SetDayOptions extends LocaleOptions, WeekOptions {}
+export interface SetDayOptions extends LocalizedOptions, WeekOptions {}
 
 /**
  * @name setDay

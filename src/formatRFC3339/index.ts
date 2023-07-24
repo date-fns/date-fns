@@ -29,17 +29,14 @@ export interface FormatRFC3339Options {
  *
  * @example
  * // Represent 18 September 2019 in RFC 3339 format:
- * const result = formatRFC3339(new Date(2019, 8, 18, 19, 0, 52))
+ * formatRFC3339(new Date(2019, 8, 18, 19, 0, 52))
  * //=> '2019-09-18T19:00:52Z'
  *
  * @example
- * // Represent 18 September 2019 in RFC 3339 format, 2 digits of second fraction:
- * const result = formatRFC3339(new Date(2019, 8, 18, 19, 0, 52, 234), { fractionDigits: 2 })
- * //=> '2019-09-18T19:00:52.23Z'
- *
- * @example
  * // Represent 18 September 2019 in RFC 3339 format, 3 digits of second fraction
- * const result = formatRFC3339(new Date(2019, 8, 18, 19, 0, 52, 234), { fractionDigits: 3 })
+ * formatRFC3339(new Date(2019, 8, 18, 19, 0, 52, 234), {
+ *   fractionDigits: 3
+ * })
  * //=> '2019-09-18T19:00:52.234Z'
  */
 export default function formatRFC3339<DateType extends Date>(

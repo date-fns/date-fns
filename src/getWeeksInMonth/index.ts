@@ -1,12 +1,12 @@
 import differenceInCalendarWeeks from '../differenceInCalendarWeeks/index'
 import lastDayOfMonth from '../lastDayOfMonth/index'
 import startOfMonth from '../startOfMonth/index'
-import type { LocaleOptions, WeekOptions } from '../types'
+import type { LocalizedOptions, WeekOptions } from '../types'
 
 /**
  * The {@link getWeeksInMonth} function options.
  */
-export interface GetWeeksInMonthOptions extends LocaleOptions, WeekOptions {}
+export interface GetWeeksInMonthOptions extends LocalizedOptions, WeekOptions {}
 
 /**
  * @name getWeeksInMonth

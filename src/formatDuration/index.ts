@@ -1,12 +1,12 @@
 import type { FormatDistanceToken } from '../locale/types'
-import type { Duration, DurationUnit, LocaleOptions } from '../types'
+import type { Duration, DurationUnit, LocalizedOptions } from '../types'
 import defaultLocale from '../_lib/defaultLocale/index'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
 
 /**
  * The {@link formatDuration} function options.
  */
-export interface FormatDurationOptions extends LocaleOptions {
+export interface FormatDurationOptions extends LocalizedOptions {
   /** The array of units to format */
   format?: DurationUnit[]
   /** Should be zeros be included in the output? */

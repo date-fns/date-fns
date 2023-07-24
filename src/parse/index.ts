@@ -5,7 +5,7 @@ import toDate from '../toDate/index'
 import type {
   AdditionalTokensOptions,
   FirstWeekContainsDateOptions,
-  LocaleOptions,
+  LocalizedOptions,
   WeekOptions,
 } from '../types'
 import assign from '../_lib/assign/index'
@@ -23,7 +23,7 @@ import type { ParseFlags, ParserOptions } from './_lib/types'
  * The {@link parse} function options.
  */
 export interface ParseOptions
-  extends LocaleOptions,
+  extends LocalizedOptions,
     FirstWeekContainsDateOptions,
     WeekOptions,
     AdditionalTokensOptions {}

@@ -1,10 +1,10 @@
 import type {
   FirstWeekContainsDateOptions,
-  LocaleOptions,
+  LocalizedOptions,
   WeekOptions,
 } from '../../types'
 
-export type DefaultOptions = LocaleOptions &
+export type DefaultOptions = LocalizedOptions &
   WeekOptions &
   FirstWeekContainsDateOptions
 

@@ -1,117 +1,59 @@
-import type { Era, Quarter, Month, Day } from '../../../types'
+/* eslint-disable no-unused-vars */
+
 import type {
-  LocaleDayPeriod,
-  LocalePatternWidth,
-  LocaleUnit,
+  LocaleWidth,
   LocalizeFn,
+  LocalizePeriodValuesMap,
   LocalizeUnitIndex,
+  LocalizeUnitValuesIndex,
+  LocalizeValues,
+  LocaleUnitValue,
 } from '../../types'
 
-type LocalizeEraValues = readonly [string, string]
-
-type LocalizeQuarterValues = readonly [string, string, string, string]
-
-type LocalizeDayValues = readonly [
-  string,
-  string,
-  string,
-  string,
-  string,
-  string,
-  string
-]
-
-type LocalizeMonthValues = readonly [
-  string,
-  string,
-  string,
-  string,
-  string,
-  string,
-  string,
-  string,
-  string,
-  string,
-  string,
-  string
-]
-
-export type LocalizeUnitValuesIndex<
-  Values extends LocalizeUnitValues<any>
-> = Values extends Record<LocaleDayPeriod, string>
-  ? string
-  : Values extends LocalizeEraValues
-  ? Era
-  : Values extends LocalizeQuarterValues
-  ? Quarter
-  : Values extends LocalizeDayValues
-  ? Day
-  : Values extends LocalizeMonthValues
-  ? Month
-  : never
-
-export type LocalizeUnitValues<
-  Unit extends LocaleUnit
-> = Unit extends LocaleDayPeriod
-  ? Record<LocaleDayPeriod, string>
-  : Unit extends Era
-  ? LocalizeEraValues
-  : Unit extends Quarter
-  ? LocalizeQuarterValues
-  : Unit extends Day
-  ? LocalizeDayValues
-  : Unit extends Month
-  ? LocalizeMonthValues
-  : never
-
-export type LocalizePeriodValuesMap<Unit extends LocaleUnit> = {
-  [pattern in LocalePatternWidth]?: LocalizeUnitValues<Unit>
-}
-
-export type BuildLocalizeFnArgCallback<Result extends LocaleUnit | number> = (
-  value: Result
-) => LocalizeUnitIndex<Result>
+export type BuildLocalizeFnArgCallback<
+  Value extends LocaleUnitValue | number
+> = (value: Value) => LocalizeUnitIndex<Value>
 
 export type BuildLocalizeFnArgs<
-  Result extends LocaleUnit,
-  ArgCallback extends BuildLocalizeFnArgCallback<Result> | undefined
+  Value extends LocaleUnitValue,
+  ArgCallback extends BuildLocalizeFnArgCallback<Value> | undefined
 > = {
-  values: LocalizePeriodValuesMap<Result>
-  defaultWidth: LocalePatternWidth
-  formattingValues?: LocalizePeriodValuesMap<Result>
-  defaultFormattingWidth?: LocalePatternWidth
+  values: LocalizePeriodValuesMap<Value>
+  defaultWidth: LocaleWidth
+  formattingValues?: LocalizePeriodValuesMap<Value>
+  defaultFormattingWidth?: LocaleWidth
 } & (ArgCallback extends undefined
   ? { argumentCallback?: undefined }
-  : { argumentCallback: BuildLocalizeFnArgCallback<Result> })
+  : { argumentCallback: BuildLocalizeFnArgCallback<Value> })
 
 export default function buildLocalizeFn<
-  Result extends LocaleUnit,
-  ArgCallback extends BuildLocalizeFnArgCallback<Result> | undefined
+  Value extends LocaleUnitValue,
+  ArgCallback extends BuildLocalizeFnArgCallback<Value> | undefined
 >(
-  args: BuildLocalizeFnArgs<Result, ArgCallback>
-): LocalizeFn<Result, ArgCallback> {
+  args: BuildLocalizeFnArgs<Value, ArgCallback>
+): LocalizeFn<Value, ArgCallback> {
   return (dirtyIndex, options) => {
     const context = options?.context ? String(options.context) : 'standalone'
 
-    let valuesArray: LocalizeUnitValues<Result>
+    let valuesArray: LocalizeValues<Value>
     if (context === 'formatting' && args.formattingValues) {
       const defaultWidth = args.defaultFormattingWidth || args.defaultWidth
       const width = (options?.width
         ? String(options.width)
-        : defaultWidth) as LocalePatternWidth
+        : defaultWidth) as LocaleWidth
       valuesArray = (args.formattingValues[width] ||
-        args.formattingValues[defaultWidth]) as LocalizeUnitValues<Result>
+        args.formattingValues[defaultWidth]) as LocalizeValues<Value>
     } else {
       const defaultWidth = args.defaultWidth
       const width = (options?.width
         ? String(options.width)
-        : args.defaultWidth) as LocalePatternWidth
+        : args.defaultWidth) as LocaleWidth
       valuesArray = (args.values[width] ||
-        args.values[defaultWidth]) as LocalizeUnitValues<Result>
+        args.values[defaultWidth]) as LocalizeValues<Value>
     }
     const index = (args.argumentCallback
-      ? args.argumentCallback(dirtyIndex as Result)
-      : ((dirtyIndex as LocalizeUnitIndex<Result>) as unknown)) as LocalizeUnitValuesIndex<
+      ? args.argumentCallback(dirtyIndex as Value)
+      : ((dirtyIndex as LocalizeUnitIndex<Value>) as unknown)) as LocalizeUnitValuesIndex<
       typeof valuesArray
     >
     // @ts-ignore: For some reason TypeScript just don't want to match it, no matter how hard we try. I challenge you to try to remove it!

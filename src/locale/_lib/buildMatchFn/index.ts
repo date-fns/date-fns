@@ -1,18 +1,18 @@
 import type {
   BuildMatchFnArgs,
   LocaleDayPeriod,
-  LocaleUnit,
-  LocalePatternWidth,
+  LocaleUnitValue,
+  LocaleWidth,
   MatchFn,
 } from '../../types'
 
 export default function buildMatchFn<
-  Result extends LocaleUnit,
-  DefaultMatchWidth extends LocalePatternWidth,
-  DefaultParseWidth extends LocalePatternWidth
+  Value extends LocaleUnitValue,
+  DefaultMatchWidth extends LocaleWidth,
+  DefaultParseWidth extends LocaleWidth
 >(
-  args: BuildMatchFnArgs<Result, DefaultMatchWidth, DefaultParseWidth>
-): MatchFn<Result> {
+  args: BuildMatchFnArgs<Value, DefaultMatchWidth, DefaultParseWidth>
+): MatchFn<Value> {
   return (string, options = {}) => {
     const width = options.width
 
@@ -34,11 +34,11 @@ export default function buildMatchFn<
       ? findIndex(parsePatterns, (pattern) => pattern.test(matchedString))
       : findKey(parsePatterns, (pattern: any) =>
           pattern.test(matchedString)
-        )) as Result extends LocaleDayPeriod ? string : number
+        )) as Value extends LocaleDayPeriod ? string : number
 
-    let value: Result
+    let value: Value
 
-    value = (args.valueCallback ? args.valueCallback(key) : key) as Result
+    value = (args.valueCallback ? args.valueCallback(key) : key) as Value
     value = options.valueCallback ? options.valueCallback(value as any) : value
 
     const rest = string.slice(matchedString.length)
