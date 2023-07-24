@@ -401,7 +401,7 @@ export default function parse<DateType extends Date>(
     .join('')
     .match(formattingTokensRegExp)!
 
-  const usedTokens: Array<{ token: string; fullToken: string }> = []
+  const usedTokens: UsedToken[] = []
 
   for (let token of tokens) {
     if (
@@ -523,4 +523,9 @@ export default function parse<DateType extends Date>(
 
 function cleanEscapedString(input: string) {
   return input.match(escapedStringRegExp)![1].replace(doubleQuoteRegExp, "'")
+}
+
+interface UsedToken {
+  token: string
+  fullToken: string
 }
