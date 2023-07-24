@@ -282,7 +282,7 @@ export type MatchValueCallback<Arg, Result> = (value: Arg) => Result
 export interface MatchFnResult<Result> {
   /** The matched value parsed as the corresponding unit type */
   value: Result
-  /** The remaining of the string after parsing */
+  /** The remaining string after parsing */
   rest: string
 }
 
