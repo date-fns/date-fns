@@ -86,50 +86,6 @@ export interface Interval<DateType extends Date = Date> {
 }
 
 /**
- * The step function options. Used to build function options.
- */
-export interface StepOptions {
-  /** The step to use when iterating */
-  step?: number
-}
-
-/**
- * The week function options. Used to build function options.
- */
-export interface WeekOptions {
-  /** Which day the week starts on. */
-  weekStartsOn?: Day
-}
-
-/**
- * The first week contains date options. Used to build function options.
- */
-export interface FirstWeekContainsDateOptions {
-  /** See {@link FirstWeekContainsDate} for more details. */
-  firstWeekContainsDate?: FirstWeekContainsDate
-}
-
-/**
- * The localized function options. Used to build function options.
- */
-export interface LocalizedOptions {
-  /** The locale to use in the function. */
-  locale?: Locale
-}
-
-/**
- * The ISO format function options. Used to build function options.
- */
-export interface ISOFormatOptions {
-  /** The format to use: basic with minimal number of separators or extended
-   * with separators added to enhance human readability */
-  format?: 'extended' | 'basic'
-  /** The date representation - what component to format: date, time\
-   * or both (complete) */
-  representation?: 'complete' | 'date' | 'time'
-}
-
-/**
  * The era:
  * - 0 - Anno Domini (AD)
  * - 1 - Before Christ (BC)
@@ -190,6 +146,66 @@ export interface DateValues {
  * The number rounding method.
  */
 export type RoundingMethod = 'ceil' | 'floor' | 'round' | 'trunc'
+
+/**
+ * The ISO string format.
+ *
+ * - basic: Minimal number of separators
+ * - extended: With separators added to enhance human readability
+ */
+export type ISOStringFormat = 'extended' | 'basic'
+
+/**
+ * The ISO date representation. Represents which component the string includes,
+ * date, time or both.
+ */
+export type ISOStringRepresentation = 'complete' | 'date' | 'time'
+
+/// Function options types
+
+/**
+ * The step function options. Used to build function options.
+ */
+export interface StepOptions {
+  /** The step to use when iterating */
+  step?: number
+}
+
+/**
+ * The week function options. Used to build function options.
+ */
+export interface WeekOptions {
+  /** Which day the week starts on. */
+  weekStartsOn?: Day
+}
+
+/**
+ * The first week contains date options. Used to build function options.
+ */
+export interface FirstWeekContainsDateOptions {
+  /** See {@link FirstWeekContainsDate} for more details. */
+  firstWeekContainsDate?: FirstWeekContainsDate
+}
+
+/**
+ * The localized function options. Used to build function options.
+ */
+export interface LocalizedOptions {
+  /** The locale to use in the function. */
+  locale?: Locale
+}
+
+/**
+ * The ISO format function options. Used to build function options.
+ */
+export interface ISOFormatOptions {
+  /** The format to use: basic with minimal number of separators or extended
+   * with separators added to enhance human readability */
+  format?: ISOStringFormat
+  /** The date representation - what component to format: date, time\
+   * or both (complete) */
+  representation?: ISOStringRepresentation
+}
 
 /**
  * The rounding options. Used to build function options.

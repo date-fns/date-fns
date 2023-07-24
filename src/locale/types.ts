@@ -209,7 +209,7 @@ export type LocalizeFn<Value extends LocaleUnitValue | number> = (
  */
 export interface LocalizeFnOptions {
   /** The width to use formatting the value, defines how short or long
-   * the formatted string might be.  */
+   * the formatted string might be. */
   width?: LocaleWidth
   /** The context where the formatted value is used - standalone: the result
    * should make grammatical sense as is and formatting: the result is a part
@@ -217,97 +217,6 @@ export interface LocalizeFnOptions {
   context?: 'formatting' | 'standalone'
   /** The unit to format */
   unit?: LocaleUnit
-}
-
-/**
- * The localize function argument callback which allows to convert raw value to
- * the actual type.
- *
- * @param value - The value to convert
- *
- * @returns The converted value
- */
-export type LocalizeFnArgCallback<Value extends LocaleUnitValue | number> = (
-  value: Value
-) => LocalizeUnitIndex<Value>
-
-/**
- * The formatting unit value, represents the raw value that can be formatted.
- */
-export type LocaleUnitValue = Era | Quarter | Month | Day | LocaleDayPeriod
-
-/**
- * The index type of the locale unit value. It types conversion of units of
- * values that don't start at 0 (i.e. quarters).
- */
-export type LocalizeUnitIndex<
-  Value extends LocaleUnitValue | number
-> = Value extends LocaleUnitValue ? keyof LocalizeValues<Value> : number
-
-/**
- * Converts the unit value to the tuple of values.
- */
-export type LocalizeValues<
-  Value extends LocaleUnitValue
-> = Value extends LocaleDayPeriod
-  ? Record<LocaleDayPeriod, string>
-  : Value extends Era
-  ? LocalizeEraValues
-  : Value extends Quarter
-  ? LocalizeQuarterValues
-  : Value extends Day
-  ? LocalizeDayValues
-  : Value extends Month
-  ? LocalizeMonthValues
-  : never
-
-/**
- * The tuple of localized era values. The first element represents BC,
- * the second element represents AD.
- */
-export type LocalizeEraValues = readonly [string, string]
-
-/**
- * The tuple of localized quarter values. The first element represents Q1.
- */
-export type LocalizeQuarterValues = readonly [string, string, string, string]
-
-/**
- * The tuple of localized day values. The first element represents Sunday.
- */
-export type LocalizeDayValues = readonly [
-  string,
-  string,
-  string,
-  string,
-  string,
-  string,
-  string
-]
-
-/**
- * The tuple of localized month values. The first element represents January.
- */
-export type LocalizeMonthValues = readonly [
-  string,
-  string,
-  string,
-  string,
-  string,
-  string,
-  string,
-  string,
-  string,
-  string,
-  string,
-  string
-]
-
-/**
- * The map of localized values for each width.
- */
-export type LocalizePeriodValuesMap<Value extends LocaleUnitValue> = {
-  [Pattern in LocaleWidth]?: LocalizeValues<Value>
 }
 
 /// Match types
@@ -330,86 +239,52 @@ export interface Match {
   dayPeriod: MatchFn<LocaleDayPeriod>
 }
 
+/**
+ * The match function. Part of {@link Match}. Implements matcher for particular
+ * unit type.
+ *
+ * @param str - The string to match
+ * @param options - The object with options
+ *
+ * @returns The match result or null if match failed
+ */
 export type MatchFn<Result, ExtraOptions = Record<string, unknown>> = (
   str: string,
-  options?: {
-    width?: LocaleWidth
-    /**
-     * @deprecated Map the value manually instead.
-     * @example
-     * const matchResult = locale.match.ordinalNumber('1st')
-     * if (matchResult) {
-     *   matchResult.value = valueCallback(matchResult.value)
-     * }
-     */
-    valueCallback?: MatchValueCallback<string, Result>
-  } & ExtraOptions
-) => { value: Result; rest: string } | null
+  options?: MatchFnOptions<Result> & ExtraOptions
+) => MatchFnResult<Result> | null
 
-export interface BuildMatchFnArgs<
-  Result extends LocaleUnitValue,
-  DefaultMatchWidth extends LocaleWidth,
-  DefaultParseWidth extends LocaleWidth
-> {
-  matchPatterns: MatchPatterns<DefaultMatchWidth>
-  defaultMatchWidth: DefaultMatchWidth
-  parsePatterns: ParsePatterns<Result, DefaultParseWidth>
-  defaultParseWidth: DefaultParseWidth
-  valueCallback?: MatchValueCallback<
-    Result extends LocaleDayPeriod ? string : number,
-    Result
-  >
+/**
+ * The {@link MatchFn} function options.
+ */
+export interface MatchFnOptions<Result> {
+  /** The width to use matching the value, defines how short or long
+   * the matched string might be. */
+  width?: LocaleWidth
+  /**
+   * @deprecated Map the value manually instead.
+   * @example
+   * const matchResult = locale.match.ordinalNumber('1st')
+   * if (matchResult) {
+   *   matchResult.value = valueCallback(matchResult.value)
+   * }
+   */
+  valueCallback?: MatchValueCallback<string, Result>
 }
 
-export type MatchPatterns<DefaultWidth extends LocaleWidth> = {
-  [pattern in LocaleWidth]?: RegExp
-} &
-  { [key in DefaultWidth]: RegExp }
-
-export type ParsePatterns<
-  Value extends LocaleUnitValue,
-  DefaultWidth extends LocaleWidth
-> = {
-  [pattern in LocaleWidth]?: ParsePattern<Value>
-} &
-  { [key in DefaultWidth]: ParsePattern<Value> }
-
-export type ParsePattern<
-  Value extends LocaleUnitValue
-> = Value extends LocaleDayPeriod
-  ? Record<LocaleDayPeriod, RegExp>
-  : Value extends Quarter
-  ? readonly [RegExp, RegExp, RegExp, RegExp]
-  : Value extends Era
-  ? readonly [RegExp, RegExp]
-  : Value extends Day
-  ? readonly [RegExp, RegExp, RegExp, RegExp, RegExp, RegExp, RegExp]
-  : Value extends Month
-  ? readonly [
-      RegExp,
-      RegExp,
-      RegExp,
-      RegExp,
-      RegExp,
-      RegExp,
-      RegExp,
-      RegExp,
-      RegExp,
-      RegExp,
-      RegExp,
-      RegExp
-    ]
-  : never
-
-export type BuildMatchFn<
-  Value extends LocaleUnitValue,
-  DefaultMatchWidth extends LocaleWidth,
-  DefaultParseWidth extends LocaleWidth
-> = (
-  args: BuildMatchFnArgs<Value, DefaultMatchWidth, DefaultParseWidth>
-) => MatchFn<Value>
-
+/**
+ * The function that allows to map the matched value to the actual type.
+ */
 export type MatchValueCallback<Arg, Result> = (value: Arg) => Result
+
+/**
+ * The {@link MatchFn} function result.
+ */
+export interface MatchFnResult<Result> {
+  /** The matched value parsed as the corresponding unit type */
+  value: Result
+  /** The remaining of the string after parsing */
+  rest: string
+}
 
 /// Format long types
 
@@ -451,6 +326,11 @@ export interface FormatLongFnOptions {
 export type FormatLongWidth = 'full' | 'long' | 'medium' | 'short' | 'any'
 
 /// Common types
+
+/**
+ * The formatting unit value, represents the raw value that can be formatted.
+ */
+export type LocaleUnitValue = Era | Quarter | Month | Day | LocaleDayPeriod
 
 /**
  * The format width. Defines how short or long the formatted string might be.
