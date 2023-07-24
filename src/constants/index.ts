@@ -23,14 +23,14 @@ export const daysInWeek = 7
 export const daysInYear: number = 365.2425
 
 /**
- * Maximum allowed time.
+ * Hours in one day.
  *
- * @name maxTime
+ * @name hoursInDay
  * @constant
  * @type {number}
  * @default
  */
-export const maxTime = Math.pow(10, 8) * 24 * 60 * 60 * 1000
+export const hoursInDay = 24
 
 /**
  * Milliseconds in 1 week.
@@ -81,16 +81,6 @@ export const millisecondsInHour = 3600000
  * @default
  */
 export const millisecondsInSecond = 1000
-
-/**
- * Minimum allowed time.
- *
- * @name minTime
- * @constant
- * @type {number}
- * @default
- */
-export const minTime = -maxTime
 
 /**
  * Minutes in 1 year.
@@ -190,7 +180,7 @@ export const secondsInMinute = 60
  * @type {number}
  * @default
  */
-export const secondsInDay = secondsInHour * 24
+export const secondsInDay = secondsInHour * hoursInDay
 
 /**
  * Seconds in 1 week.
@@ -200,7 +190,7 @@ export const secondsInDay = secondsInHour * 24
  * @type {number}
  * @default
  */
-export const secondsInWeek = secondsInDay * 7
+export const secondsInWeek = secondsInDay * daysInWeek
 
 /**
  * Seconds in 1 year.
@@ -220,7 +210,7 @@ export const secondsInYear = secondsInDay * daysInYear
  * @type {number}
  * @default
  */
-export const secondsInMonth = secondsInYear / 12
+export const secondsInMonth = secondsInYear / monthsInYear
 
 /**
  * Seconds in 1 quarter.
@@ -230,4 +220,29 @@ export const secondsInMonth = secondsInYear / 12
  * @type {number}
  * @default
  */
-export const secondsInQuarter = secondsInMonth * 3
+export const secondsInQuarter = secondsInMonth * monthsInQuarter
+
+/**
+ * Maximum allowed time.
+ *
+ * @name maxTime
+ * @constant
+ * @type {number}
+ * @default
+ */
+export const maxTime =
+  Math.pow(10, 8) *
+  hoursInDay *
+  minutesInHour *
+  secondsInMinute *
+  millisecondsInSecond
+
+/**
+ * Minimum allowed time.
+ *
+ * @name minTime
+ * @constant
+ * @type {number}
+ * @default
+ */
+export const minTime = -maxTime
