@@ -219,10 +219,7 @@ const formattingDayPeriodValues = {
   },
 }
 
-const ordinalNumber: LocalizeFn<number, undefined> = (
-  dirtyNumber,
-  _options
-) => {
+const ordinalNumber: LocalizeFn<number> = (dirtyNumber, _options) => {
   const number = Number(dirtyNumber)
   return numberToLocale(number)
 }
@@ -251,7 +248,7 @@ const localize: Localize = {
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: (quarter) => (quarter - 1) as Quarter,
+    argumentCallback: (quarter) => quarter - 1,
   }),
 
   month: buildLocalizeFn({
