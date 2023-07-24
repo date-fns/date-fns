@@ -1,11 +1,14 @@
 name: Coverage report
 
-'on':
+on:
   push:
-    branches: [master]
+    branches:
+      - master
 
 jobs:
   tests:
+    if: github.repository_owner == 'date-fns'
+
     runs-on: ubuntu-latest
 
     strategy:

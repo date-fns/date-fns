@@ -1,6 +1,12 @@
 name: Timezones 2/2
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - '**'
 
 jobs:
   tests:
