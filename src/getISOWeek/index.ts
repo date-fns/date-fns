@@ -22,11 +22,12 @@ import toDate from '../toDate/index'
  * //=> 53
  */
 export default function getISOWeek<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): number {
-  const date = toDate(dirtyDate)
+  const convertedDate = toDate(date)
   const diff =
-    startOfISOWeek(date).getTime() - startOfISOWeekYear(date).getTime()
+    startOfISOWeek(convertedDate).getTime() -
+    startOfISOWeekYear(convertedDate).getTime()
 
   // Round the number of days to the nearest integer
   // because the number of milliseconds in a week is not constant

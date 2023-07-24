@@ -18,10 +18,10 @@ import toDate from '../toDate/index'
  * //=> true
  */
 export default function isSameYear<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+  dateLeft: DateType | number,
+  dateRight: DateType | number
 ): boolean {
-  const dateLeft = toDate(dirtyDateLeft)
-  const dateRight = toDate(dirtyDateRight)
-  return dateLeft.getFullYear() === dateRight.getFullYear()
+  const convertedDateLeft = toDate(dateLeft)
+  const convertedDateRight = toDate(dateRight)
+  return convertedDateLeft.getFullYear() === convertedDateRight.getFullYear()
 }

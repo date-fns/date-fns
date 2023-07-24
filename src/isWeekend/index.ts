@@ -17,9 +17,9 @@ import toDate from '../toDate/index'
  * //=> true
  */
 export default function isWeekend<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): boolean {
-  const date = toDate(dirtyDate)
-  const day = date.getDay()
+  const convertedDate = toDate(date)
+  const day = convertedDate.getDay()
   return day === 0 || day === 6
 }

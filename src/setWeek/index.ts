@@ -49,12 +49,12 @@ export interface SetWeekOptions
  * //=> Sun Jan 4 2004 00:00:00
  */
 export default function setWeek<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   week: number,
   options?: SetWeekOptions
 ): DateType {
-  const date = toDate(dirtyDate)
-  const diff = getWeek(date, options) - week
-  date.setDate(date.getDate() - diff * 7)
-  return date
+  const convertedDatee = toDate(date)
+  const diff = getWeek(convertedDatee, options) - week
+  convertedDatee.setDate(convertedDatee.getDate() - diff * 7)
+  return convertedDatee
 }

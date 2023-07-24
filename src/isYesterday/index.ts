@@ -22,7 +22,7 @@ import subDays from '../subDays/index'
  * //=> true
  */
 export default function isYesterday<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): boolean {
-  return isSameDay(dirtyDate, subDays(Date.now(), 1))
+  return isSameDay(date, subDays(Date.now(), 1))
 }

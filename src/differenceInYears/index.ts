@@ -20,23 +20,26 @@ import toDate from '../toDate/index'
  * //=> 1
  */
 export default function differenceInYears<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+  dateLeft: DateType | number,
+  dateRight: DateType | number
 ): number {
-  const dateLeft = toDate(dirtyDateLeft)
-  const dateRight = toDate(dirtyDateRight)
+  const convertedDateLeft = toDate(dateLeft)
+  const convertedDateRight = toDate(dateRight)
 
-  const sign = compareAsc(dateLeft, dateRight)
-  const difference = Math.abs(differenceInCalendarYears(dateLeft, dateRight))
+  const sign = compareAsc(convertedDateLeft, convertedDateRight)
+  const difference = Math.abs(
+    differenceInCalendarYears(convertedDateLeft, convertedDateRight)
+  )
 
   // Set both dates to a valid leap year for accurate comparison when dealing
   // with leap days
-  dateLeft.setFullYear(1584)
-  dateRight.setFullYear(1584)
+  convertedDateLeft.setFullYear(1584)
+  convertedDateRight.setFullYear(1584)
 
   // Math.abs(diff in full years - diff in calendar years) === 1 if last calendar year is not full
   // If so, result must be decreased by 1 in absolute value
-  const isLastYearNotFull = compareAsc(dateLeft, dateRight) === -sign
+  const isLastYearNotFull =
+    compareAsc(convertedDateLeft, convertedDateRight) === -sign
   const result = sign * (difference - Number(isLastYearNotFull))
   // Prevent negative zero
   return result === 0 ? 0 : result

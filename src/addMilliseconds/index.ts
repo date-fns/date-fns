@@ -19,9 +19,9 @@ import constructFrom from '../constructFrom/index'
  * //=> Thu Jul 10 2014 12:45:30.750
  */
 export default function addMilliseconds<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   amount: number
 ): DateType {
-  const timestamp = toDate(dirtyDate).getTime()
-  return constructFrom(dirtyDate, timestamp + amount)
+  const timestamp = toDate(date).getTime()
+  return constructFrom(date, timestamp + amount)
 }

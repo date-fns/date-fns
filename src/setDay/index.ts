@@ -32,7 +32,7 @@ export interface SetDayOptions extends LocaleOptions, WeekStartOptions {}
  * //=> Sun Sep 07 2014 00:00:00
  */
 export default function setDay<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   day: number,
   options?: SetDayOptions
 ): DateType {
@@ -44,8 +44,8 @@ export default function setDay<DateType extends Date>(
     defaultOptions.locale?.options?.weekStartsOn ??
     0
 
-  const date = toDate(dirtyDate)
-  const currentDay = date.getDay()
+  const convertedDate = toDate(date)
+  const currentDay = convertedDate.getDay()
 
   const remainder = day % 7
   const dayIndex = (remainder + 7) % 7
@@ -55,5 +55,5 @@ export default function setDay<DateType extends Date>(
     day < 0 || day > 6
       ? day - ((currentDay + delta) % 7)
       : ((dayIndex + delta) % 7) - ((currentDay + delta) % 7)
-  return addDays(date, diff)
+  return addDays(convertedDate, diff)
 }

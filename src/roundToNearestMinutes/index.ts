@@ -36,7 +36,7 @@ export interface RoundToNearestMinutesOptions extends RoundingOptions {
  * //=> Thu Jul 10 2014 12:15:00
  */
 export default function roundToNearestMinutes<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   options?: RoundToNearestMinutesOptions
 ): DateType {
   const nearestTo = options?.nearestTo ?? 1
@@ -45,15 +45,15 @@ export default function roundToNearestMinutes<DateType extends Date>(
     throw new RangeError('`options.nearestTo` must be between 1 and 30')
   }
 
-  const date = toDate(dirtyDate)
-  const seconds = date.getSeconds() // relevant if nearestTo is 1, which is the default case
-  const minutes = date.getMinutes() + seconds / 60
+  const convertedDate = toDate(date)
+  const seconds = convertedDate.getSeconds() // relevant if nearestTo is 1, which is the default case
+  const minutes = convertedDate.getMinutes() + seconds / 60
   const roundingMethod = getRoundingMethod(options?.roundingMethod)
   const roundedMinutes = roundingMethod(minutes / nearestTo) * nearestTo
   const remainderMinutes = minutes % nearestTo
   const addedMinutes = Math.round(remainderMinutes / nearestTo) * nearestTo
 
-  const result = constructFrom(date, date)
+  const result = constructFrom(convertedDate, convertedDate)
   result.setMinutes(roundedMinutes + addedMinutes, 0, 0)
   return result
 }

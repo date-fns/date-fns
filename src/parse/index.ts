@@ -347,7 +347,7 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/
 export default function parse<DateType extends Date>(
   dateString: string,
   formatString: string,
-  dirtyReferenceDate: DateType | number,
+  referenceDate: DateType | number,
   options?: ParseOptions
 ): DateType {
   const defaultOptions = getDefaultOptions()
@@ -373,9 +373,9 @@ export default function parse<DateType extends Date>(
 
   if (formatString === '') {
     if (dateString === '') {
-      return toDate(dirtyReferenceDate)
+      return toDate(referenceDate)
     } else {
-      return constructFrom(dirtyReferenceDate, NaN)
+      return constructFrom(referenceDate, NaN)
     }
   }
 
@@ -448,7 +448,7 @@ export default function parse<DateType extends Date>(
       )
 
       if (!parseResult) {
-        return constructFrom(dirtyReferenceDate, NaN)
+        return constructFrom(referenceDate, NaN)
       }
 
       setters.push(parseResult.setter)
@@ -474,14 +474,14 @@ export default function parse<DateType extends Date>(
       if (dateString.indexOf(token) === 0) {
         dateString = dateString.slice(token.length)
       } else {
-        return constructFrom(dirtyReferenceDate, NaN)
+        return constructFrom(referenceDate, NaN)
       }
     }
   }
 
   // Check if the remaining input contains something other than whitespace
   if (dateString.length > 0 && notWhitespaceRegExp.test(dateString)) {
-    return constructFrom(dirtyReferenceDate, NaN)
+    return constructFrom(referenceDate, NaN)
   }
 
   const uniquePrioritySetters = setters
@@ -495,16 +495,16 @@ export default function parse<DateType extends Date>(
     )
     .map((setterArray) => setterArray[0])
 
-  let date = toDate(dirtyReferenceDate)
+  let date = toDate(referenceDate)
 
   if (isNaN(date.getTime())) {
-    return constructFrom(dirtyReferenceDate, NaN)
+    return constructFrom(referenceDate, NaN)
   }
 
   const flags: ParseFlags = {}
   for (const setter of uniquePrioritySetters) {
     if (!setter.validate(date, subFnOptions)) {
-      return constructFrom(dirtyReferenceDate, NaN)
+      return constructFrom(referenceDate, NaN)
     }
 
     const result = setter.set(date, flags, subFnOptions)
@@ -518,7 +518,7 @@ export default function parse<DateType extends Date>(
     }
   }
 
-  return constructFrom(dirtyReferenceDate, date)
+  return constructFrom(referenceDate, date)
 }
 
 function cleanEscapedString(input: string) {

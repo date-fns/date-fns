@@ -31,7 +31,7 @@ export interface LastDayOfWeekOptions extends LocaleOptions, WeekStartOptions {}
  * //=> Sun Sep 07 2014 00:00:00
  */
 export default function lastDayOfWeek<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   options?: LastDayOfWeekOptions
 ): DateType {
   const defaultOptions = getDefaultOptions()
@@ -42,11 +42,11 @@ export default function lastDayOfWeek<DateType extends Date>(
     defaultOptions.locale?.options?.weekStartsOn ??
     0
 
-  const date = toDate(dirtyDate)
-  const day = date.getDay()
+  const convertedDate = toDate(date)
+  const day = convertedDate.getDay()
   const diff = (day < weekStartsOn ? -7 : 0) + 6 - (day - weekStartsOn)
 
-  date.setHours(0, 0, 0, 0)
-  date.setDate(date.getDate() + diff)
-  return date
+  convertedDate.setHours(0, 0, 0, 0)
+  convertedDate.setDate(convertedDate.getDate() + diff)
+  return convertedDate
 }

@@ -96,8 +96,8 @@ export interface FormatDistanceOptions extends LocaleOptions {
  */
 
 export default function formatDistance<DateType extends Date>(
-  dirtyDate: DateType | number,
-  dirtyBaseDate: DateType | number,
+  date: DateType | number,
+  baseDate: DateType | number,
   options?: FormatDistanceOptions
 ): string {
   const defaultOptions = getDefaultOptions()
@@ -108,7 +108,7 @@ export default function formatDistance<DateType extends Date>(
     throw new RangeError('locale must contain formatDistance property')
   }
 
-  const comparison = compareAsc(dirtyDate, dirtyBaseDate)
+  const comparison = compareAsc(date, baseDate)
 
   if (isNaN(comparison)) {
     throw new RangeError('Invalid time value')
@@ -122,11 +122,11 @@ export default function formatDistance<DateType extends Date>(
   let dateLeft
   let dateRight
   if (comparison > 0) {
-    dateLeft = toDate(dirtyBaseDate)
-    dateRight = toDate(dirtyDate)
+    dateLeft = toDate(baseDate)
+    dateRight = toDate(date)
   } else {
-    dateLeft = toDate(dirtyDate)
-    dateRight = toDate(dirtyBaseDate)
+    dateLeft = toDate(date)
+    dateRight = toDate(baseDate)
   }
 
   const seconds = differenceInSeconds(dateRight, dateLeft)

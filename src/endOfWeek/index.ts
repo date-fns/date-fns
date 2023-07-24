@@ -31,7 +31,7 @@ export interface EndOfWeekOptions extends WeekStartOptions, LocaleOptions {}
  * //=> Sun Sep 07 2014 23:59:59.999
  */
 export default function endOfWeek<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   options?: EndOfWeekOptions
 ): DateType {
   const defaultOptions = getDefaultOptions()
@@ -42,11 +42,11 @@ export default function endOfWeek<DateType extends Date>(
     defaultOptions.locale?.options?.weekStartsOn ??
     0
 
-  const date = toDate(dirtyDate)
-  const day = date.getDay()
+  const convertedDate = toDate(date)
+  const day = convertedDate.getDay()
   const diff = (day < weekStartsOn ? -7 : 0) + 6 - (day - weekStartsOn)
 
-  date.setDate(date.getDate() + diff)
-  date.setHours(23, 59, 59, 999)
-  return date
+  convertedDate.setDate(convertedDate.getDate() + diff)
+  convertedDate.setHours(23, 59, 59, 999)
+  return convertedDate
 }

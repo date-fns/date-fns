@@ -18,8 +18,8 @@ import addMinutes from '../addMinutes/index'
  * //=> Thu Jul 10 2014 11:30:00
  */
 export default function subMinutes<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   amount: number
 ): DateType {
-  return addMinutes(dirtyDate, -amount)
+  return addMinutes(date, -amount)
 }

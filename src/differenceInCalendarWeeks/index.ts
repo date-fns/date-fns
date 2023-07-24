@@ -42,12 +42,12 @@ export interface DifferenceInCalendarWeeksOptions
  * //=> 2
  */
 export default function differenceInCalendarWeeks<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number,
+  dateLeft: DateType | number,
+  dateRight: DateType | number,
   options?: DifferenceInCalendarWeeksOptions
 ): number {
-  const startOfWeekLeft = startOfWeek(dirtyDateLeft, options)
-  const startOfWeekRight = startOfWeek(dirtyDateRight, options)
+  const startOfWeekLeft = startOfWeek(dateLeft, options)
+  const startOfWeekRight = startOfWeek(dateRight, options)
 
   const timestampLeft =
     startOfWeekLeft.getTime() - getTimezoneOffsetInMilliseconds(startOfWeekLeft)

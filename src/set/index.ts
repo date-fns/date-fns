@@ -41,43 +41,43 @@ import type { DateValues } from '../types'
  */
 
 export default function set<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   values: DateValues
 ): DateType {
-  let date = toDate(dirtyDate)
+  let convertedDate = toDate(date)
 
   // Check if date is Invalid Date because Date.prototype.setFullYear ignores the value of Invalid Date
-  if (isNaN(date.getTime())) {
-    return constructFrom(dirtyDate, NaN)
+  if (isNaN(convertedDate.getTime())) {
+    return constructFrom(date, NaN)
   }
 
   if (values.year != null) {
-    date.setFullYear(values.year)
+    convertedDate.setFullYear(values.year)
   }
 
   if (values.month != null) {
-    date = setMonth(date, values.month)
+    convertedDate = setMonth(convertedDate, values.month)
   }
 
   if (values.date != null) {
-    date.setDate(values.date)
+    convertedDate.setDate(values.date)
   }
 
   if (values.hours != null) {
-    date.setHours(values.hours)
+    convertedDate.setHours(values.hours)
   }
 
   if (values.minutes != null) {
-    date.setMinutes(values.minutes)
+    convertedDate.setMinutes(values.minutes)
   }
 
   if (values.seconds != null) {
-    date.setSeconds(values.seconds)
+    convertedDate.setSeconds(values.seconds)
   }
 
   if (values.milliseconds != null) {
-    date.setMilliseconds(values.milliseconds)
+    convertedDate.setMilliseconds(values.milliseconds)
   }
 
-  return date
+  return convertedDate
 }

@@ -17,9 +17,9 @@ import toDate from '../toDate/index'
  * //=> 3
  */
 export default function getQuarter<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): number {
-  const date = toDate(dirtyDate)
-  const quarter = Math.floor(date.getMonth() / 3) + 1
+  const convertedDate = toDate(date)
+  const quarter = Math.floor(convertedDate.getMonth() / 3) + 1
   return quarter
 }

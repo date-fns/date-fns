@@ -50,13 +50,13 @@ export interface GetWeekOptions
  */
 
 export default function getWeek<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   options?: GetWeekOptions
 ): number {
-  const date = toDate(dirtyDate)
+  const convertedDate = toDate(date)
   const diff =
-    startOfWeek(date, options).getTime() -
-    startOfWeekYear(date, options).getTime()
+    startOfWeek(convertedDate, options).getTime() -
+    startOfWeekYear(convertedDate, options).getTime()
 
   // Round the number of days to the nearest integer
   // because the number of milliseconds in a week is not constant

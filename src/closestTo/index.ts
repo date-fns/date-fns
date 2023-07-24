@@ -23,15 +23,15 @@ import toDate from '../toDate/index'
  * //=> Tue Jan 01 2030 00:00:00
  */
 export default function closestTo<DateType extends Date>(
-  dirtyDateToCompare: DateType | number,
+  dateToCompare: DateType | number,
   datesArray: Array<DateType | number>
 ): DateType | undefined {
-  const dateToCompare = toDate(dirtyDateToCompare)
+  const convertedDateToCompare = toDate(dateToCompare)
 
-  if (isNaN(Number(dateToCompare)))
-    return constructFrom(dirtyDateToCompare, NaN)
+  if (isNaN(Number(convertedDateToCompare)))
+    return constructFrom(dateToCompare, NaN)
 
-  const timeToCompare = dateToCompare.getTime()
+  const timeToCompare = convertedDateToCompare.getTime()
 
   let result: DateType | undefined
   let minDistance: number
@@ -39,7 +39,7 @@ export default function closestTo<DateType extends Date>(
     const currentDate = toDate(dirtyDate)
 
     if (isNaN(Number(currentDate))) {
-      result = constructFrom(dirtyDateToCompare, NaN)
+      result = constructFrom(dateToCompare, NaN)
       minDistance = NaN
       return
     }

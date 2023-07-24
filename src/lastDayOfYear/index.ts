@@ -18,11 +18,11 @@ import toDate from '../toDate/index'
  * //=> Wed Dec 31 2014 00:00:00
  */
 export default function lastDayOfYear<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): DateType {
-  const date = toDate(dirtyDate)
-  const year = date.getFullYear()
-  date.setFullYear(year + 1, 0, 0)
-  date.setHours(0, 0, 0, 0)
-  return date
+  const convertedDate = toDate(date)
+  const year = convertedDate.getFullYear()
+  convertedDate.setFullYear(year + 1, 0, 0)
+  convertedDate.setHours(0, 0, 0, 0)
+  return convertedDate
 }

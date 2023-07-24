@@ -44,10 +44,10 @@ export interface FormatISO9075Options
  * //=> '19:00:52'
  */
 export default function formatISO9075<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   options?: FormatISO9075Options
 ): string {
-  const originalDate = toDate(dirtyDate)
+  const originalDate = toDate(date)
 
   if (!isValid(originalDate)) {
     throw new RangeError('Invalid time value')

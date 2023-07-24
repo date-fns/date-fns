@@ -20,10 +20,10 @@ import toDate from '../toDate/index'
  * //=> 7
  */
 export default function getISODay<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): number {
-  const date = toDate(dirtyDate)
-  let day = date.getDay()
+  const convertedDate = toDate(date)
+  let day = convertedDate.getDay()
 
   if (day === 0) {
     day = 7

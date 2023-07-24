@@ -31,10 +31,10 @@ import toDate from '../toDate/index'
  * const result = isValid(new Date(''))
  * //=> false
  */
-export default function isValid(dirtyDate: unknown): boolean {
-  if (!isDate(dirtyDate) && typeof dirtyDate !== 'number') {
+export default function isValid(date: unknown): boolean {
+  if (!isDate(date) && typeof date !== 'number') {
     return false
   }
-  const date = toDate(dirtyDate)
-  return !isNaN(Number(date))
+  const convertedDate = toDate(date)
+  return !isNaN(Number(convertedDate))
 }

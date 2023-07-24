@@ -19,15 +19,15 @@ import constructFrom from '../constructFrom/index'
  * //=> Thu Sep 11 2014 00:00:00
  */
 export default function addDays<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   amount: number
 ): DateType {
-  const date = toDate(dirtyDate)
-  if (isNaN(amount)) return constructFrom(dirtyDate, NaN)
+  const convertedDate = toDate(date)
+  if (isNaN(amount)) return constructFrom(date, NaN)
   if (!amount) {
     // If 0 days, no-op to avoid changing times in the hour before end of DST
-    return date
+    return convertedDate
   }
-  date.setDate(date.getDate() + amount)
-  return date
+  convertedDate.setDate(convertedDate.getDate() + amount)
+  return convertedDate
 }

@@ -18,13 +18,13 @@ import toDate from '../toDate/index'
  * //=> 366
  */
 export default function getDaysInYear<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): number {
-  const date = toDate(dirtyDate)
+  const convertedDate = toDate(date)
 
-  if (String(new Date(date)) === 'Invalid Date') {
+  if (String(new Date(convertedDate)) === 'Invalid Date') {
     return NaN
   }
 
-  return isLeapYear(date) ? 366 : 365
+  return isLeapYear(convertedDate) ? 366 : 365
 }

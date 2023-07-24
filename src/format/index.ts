@@ -331,8 +331,8 @@ export interface FormatOptions
  */
 
 export default function format<DateType extends Date>(
-  dirtyDate: DateType | number,
-  formatStr: string,
+  date: DateType | number,
+  format: string,
   options?: FormatOptions
 ): string {
   const defaultOptions = getDefaultOptions()
@@ -360,7 +360,7 @@ export default function format<DateType extends Date>(
     throw new RangeError('locale must contain formatLong property')
   }
 
-  const originalDate = toDate(dirtyDate)
+  const originalDate = toDate(date)
 
   if (!isValid(originalDate)) {
     throw new RangeError('Invalid time value')
@@ -373,7 +373,7 @@ export default function format<DateType extends Date>(
     _originalDate: originalDate,
   }
 
-  const result = formatStr
+  const result = format
     .match(longFormattingTokensRegExp)!
     .map(function (substring) {
       const firstCharacter = substring[0]
@@ -402,13 +402,13 @@ export default function format<DateType extends Date>(
           !options?.useAdditionalWeekYearTokens &&
           isProtectedWeekYearToken(substring)
         ) {
-          throwProtectedError(substring, formatStr, String(dirtyDate))
+          throwProtectedError(substring, format, String(date))
         }
         if (
           !options?.useAdditionalDayOfYearTokens &&
           isProtectedDayOfYearToken(substring)
         ) {
-          throwProtectedError(substring, formatStr, String(dirtyDate))
+          throwProtectedError(substring, format, String(date))
         }
         return formatter(
           originalDate,

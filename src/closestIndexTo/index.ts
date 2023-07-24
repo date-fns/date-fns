@@ -24,14 +24,14 @@ import toDate from '../toDate/index'
  * //=> 1
  */
 export default function closestIndexTo<DateType extends Date>(
-  dirtyDateToCompare: DateType | number,
+  dateToCompare: DateType | number,
   datesArray: Array<DateType | number>
 ): number | undefined {
-  const dateToCompare = toDate(dirtyDateToCompare)
+  const convertedDateToCompare = toDate(dateToCompare)
 
-  if (isNaN(Number(dateToCompare))) return NaN
+  if (isNaN(Number(convertedDateToCompare))) return NaN
 
-  const timeToCompare = dateToCompare.getTime()
+  const timeToCompare = convertedDateToCompare.getTime()
 
   let result: number | undefined
   let minDistance: number

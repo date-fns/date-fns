@@ -43,7 +43,7 @@ import type { Duration } from '../types'
  * //=> Thu Jun 15 2017 15:29:20
  */
 export default function add<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   duration: Duration
 ): DateType {
   const {
@@ -57,9 +57,11 @@ export default function add<DateType extends Date>(
   } = duration
 
   // Add years and months
-  const date = toDate(dirtyDate)
+  const convertedDate = toDate(date)
   const dateWithMonths =
-    months || years ? addMonths(date, months + years * 12) : date
+    months || years
+      ? addMonths(convertedDate, months + years * 12)
+      : convertedDate
 
   // Add weeks and days
   const dateWithDays =
@@ -69,7 +71,7 @@ export default function add<DateType extends Date>(
   const minutesToAdd = minutes + hours * 60
   const secondsToAdd = seconds + minutesToAdd * 60
   const msToAdd = secondsToAdd * 1000
-  const finalDate = constructFrom(dirtyDate, dateWithDays.getTime() + msToAdd)
+  const finalDate = constructFrom(date, dateWithDays.getTime() + msToAdd)
 
   return finalDate
 }

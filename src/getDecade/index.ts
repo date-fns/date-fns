@@ -17,10 +17,10 @@ import toDate from '../toDate/index'
  * //=> 1940
  */
 export default function getDecade<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): number {
-  const date = toDate(dirtyDate)
-  const year = date.getFullYear()
+  const convertedDate = toDate(date)
+  const year = convertedDate.getFullYear()
   const decade = Math.floor(year / 10) * 10
   return decade
 }

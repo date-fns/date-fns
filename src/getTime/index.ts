@@ -17,9 +17,9 @@ import toDate from '../toDate/index'
  * //=> 1330515905123
  */
 export default function getTime<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): number {
-  const date = toDate(dirtyDate)
-  const timestamp = date.getTime()
+  const convertedDate = toDate(date)
+  const timestamp = convertedDate.getTime()
   return timestamp
 }

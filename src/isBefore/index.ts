@@ -18,10 +18,10 @@ import toDate from '../toDate/index'
  * //=> false
  */
 export default function isBefore<DateType extends Date>(
-  dirtyDate: DateType | number,
-  dirtyDateToCompare: DateType | number
+  date: DateType | number,
+  dateToCompare: DateType | number
 ): boolean {
-  const date = toDate(dirtyDate)
-  const dateToCompare = toDate(dirtyDateToCompare)
-  return date.getTime() < dateToCompare.getTime()
+  const convertedDate = toDate(date)
+  const convertedDateToCompare = toDate(dateToCompare)
+  return convertedDate.getTime() < convertedDateToCompare.getTime()
 }

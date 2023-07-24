@@ -17,9 +17,9 @@ import toDate from '../toDate/index'
  * //=> true
  */
 export default function isLeapYear<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): boolean {
-  const date = toDate(dirtyDate)
-  const year = date.getFullYear()
+  const convertedDate = toDate(date)
+  const year = convertedDate.getFullYear()
   return year % 400 === 0 || (year % 4 === 0 && year % 100 !== 0)
 }

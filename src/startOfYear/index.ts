@@ -19,11 +19,11 @@ import constructFrom from '../constructFrom/index'
  * //=> Wed Jan 01 2014 00:00:00
  */
 export default function startOfYear<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): DateType {
-  const cleanDate = toDate(dirtyDate)
-  const date = constructFrom(dirtyDate, 0)
-  date.setFullYear(cleanDate.getFullYear(), 0, 1)
-  date.setHours(0, 0, 0, 0)
-  return date
+  const cleanDate = toDate(date)
+  const convertedDate = constructFrom(date, 0)
+  convertedDate.setFullYear(cleanDate.getFullYear(), 0, 1)
+  convertedDate.setHours(0, 0, 0, 0)
+  return convertedDate
 }

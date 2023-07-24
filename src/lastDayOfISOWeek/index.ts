@@ -20,7 +20,7 @@ import lastDayOfWeek from '../lastDayOfWeek/index'
  * //=> Sun Sep 07 2014 00:00:00
  */
 export default function lastDayOfISOWeek<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): DateType {
-  return lastDayOfWeek(dirtyDate, { weekStartsOn: 1 })
+  return lastDayOfWeek(date, { weekStartsOn: 1 })
 }

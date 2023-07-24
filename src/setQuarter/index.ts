@@ -19,11 +19,11 @@ import toDate from '../toDate/index'
  * //=> Wed Apr 02 2014 00:00:00
  */
 export default function setQuarter<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   quarter: number
 ): DateType {
-  const date = toDate(dirtyDate)
-  const oldQuarter = Math.floor(date.getMonth() / 3) + 1
+  const convertedDate = toDate(date)
+  const oldQuarter = Math.floor(convertedDate.getMonth() / 3) + 1
   const diff = quarter - oldQuarter
-  return setMonth(date, date.getMonth() + diff * 3)
+  return setMonth(convertedDate, convertedDate.getMonth() + diff * 3)
 }

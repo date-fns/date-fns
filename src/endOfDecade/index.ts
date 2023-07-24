@@ -17,12 +17,12 @@ import toDate from '../toDate/index'
  * //=> Dec 31 1989 23:59:59.999
  */
 export default function endOfDecade<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): DateType {
-  const date = toDate(dirtyDate)
-  const year = date.getFullYear()
+  const convertedDate = toDate(date)
+  const year = convertedDate.getFullYear()
   const decade = 9 + Math.floor(year / 10) * 10
-  date.setFullYear(decade, 11, 31)
-  date.setHours(23, 59, 59, 999)
-  return date
+  convertedDate.setFullYear(decade, 11, 31)
+  convertedDate.setHours(23, 59, 59, 999)
+  return convertedDate
 }

@@ -20,7 +20,7 @@ import startOfWeek from '../startOfWeek/index'
  * //=> Mon Sep 01 2014 00:00:00
  */
 export default function startOfISOWeek<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): DateType {
-  return startOfWeek(dirtyDate, { weekStartsOn: 1 })
+  return startOfWeek(date, { weekStartsOn: 1 })
 }

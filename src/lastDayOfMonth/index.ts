@@ -18,11 +18,11 @@ import toDate from '../toDate/index'
  * //=> Tue Sep 30 2014 00:00:00
  */
 export default function lastDayOfMonth<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): DateType {
-  const date = toDate(dirtyDate)
-  const month = date.getMonth()
-  date.setFullYear(date.getFullYear(), month + 1, 0)
-  date.setHours(0, 0, 0, 0)
-  return date
+  const convertedDate = toDate(date)
+  const month = convertedDate.getMonth()
+  convertedDate.setFullYear(convertedDate.getFullYear(), month + 1, 0)
+  convertedDate.setHours(0, 0, 0, 0)
+  return convertedDate
 }

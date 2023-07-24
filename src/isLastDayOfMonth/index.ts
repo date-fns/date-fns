@@ -19,8 +19,10 @@ import toDate from '../toDate/index'
  * //=> true
  */
 export default function isLastDayOfMonth<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): boolean {
-  const date = toDate(dirtyDate)
-  return endOfDay(date).getTime() === endOfMonth(date).getTime()
+  const convertedDate = toDate(date)
+  return (
+    endOfDay(convertedDate).getTime() === endOfMonth(convertedDate).getTime()
+  )
 }

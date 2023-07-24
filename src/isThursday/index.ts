@@ -17,7 +17,7 @@ import toDate from '../toDate/index'
  * //=> true
  */
 export default function isThursday<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): boolean {
-  return toDate(dirtyDate).getDay() === 4
+  return toDate(date).getDay() === 4
 }

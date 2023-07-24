@@ -17,9 +17,9 @@ import toDate from '../toDate/index'
  * //=> 11
  */
 export default function getHours<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): number {
-  const date = toDate(dirtyDate)
-  const hours = date.getHours()
+  const convertedDate = toDate(date)
+  const hours = convertedDate.getHours()
   return hours
 }

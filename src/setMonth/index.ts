@@ -20,19 +20,19 @@ import toDate from '../toDate/index'
  * //=> Sat Feb 01 2014 00:00:00
  */
 export default function setMonth<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   month: number
 ): DateType {
-  const date = toDate(dirtyDate)
-  const year = date.getFullYear()
-  const day = date.getDate()
+  const convertedDate = toDate(date)
+  const year = convertedDate.getFullYear()
+  const day = convertedDate.getDate()
 
-  const dateWithDesiredMonth = constructFrom(dirtyDate, 0)
+  const dateWithDesiredMonth = constructFrom(date, 0)
   dateWithDesiredMonth.setFullYear(year, month, 15)
   dateWithDesiredMonth.setHours(0, 0, 0, 0)
   const daysInMonth = getDaysInMonth(dateWithDesiredMonth)
   // Set the last day of the new month
   // if the original date was the last day of the longer month
-  date.setMonth(month, Math.min(day, daysInMonth))
-  return date
+  convertedDate.setMonth(month, Math.min(day, daysInMonth))
+  return convertedDate
 }

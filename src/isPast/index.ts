@@ -21,7 +21,7 @@ import toDate from '../toDate/index'
  * //=> true
  */
 export default function isPast<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): boolean {
-  return toDate(dirtyDate).getTime() < Date.now()
+  return toDate(date).getTime() < Date.now()
 }

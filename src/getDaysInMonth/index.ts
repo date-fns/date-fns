@@ -18,12 +18,12 @@ import constructFrom from '../constructFrom/index'
  * //=> 29
  */
 export default function getDaysInMonth<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): number {
-  const date = toDate(dirtyDate)
-  const year = date.getFullYear()
-  const monthIndex = date.getMonth()
-  const lastDayOfMonth = constructFrom(dirtyDate, 0)
+  const convertedDate = toDate(date)
+  const year = convertedDate.getFullYear()
+  const monthIndex = convertedDate.getMonth()
+  const lastDayOfMonth = constructFrom(date, 0)
   lastDayOfMonth.setFullYear(year, monthIndex + 1, 0)
   lastDayOfMonth.setHours(0, 0, 0, 0)
   return lastDayOfMonth.getDate()

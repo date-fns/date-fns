@@ -38,9 +38,9 @@ const months = [
  * //=> 'Wed, 18 Sep 2019 19:00:52 GMT'
  */
 export default function formatRFC7231<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): string {
-  const originalDate = toDate(dirtyDate)
+  const originalDate = toDate(date)
 
   if (!isValid(originalDate)) {
     throw new RangeError('Invalid time value')

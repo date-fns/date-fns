@@ -17,9 +17,9 @@ import toDate from '../toDate/index'
  * //=> 123
  */
 export default function getMilliseconds<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): number {
-  const date = toDate(dirtyDate)
-  const milliseconds = date.getMilliseconds()
+  const convertedDate = toDate(date)
+  const milliseconds = convertedDate.getMilliseconds()
   return milliseconds
 }

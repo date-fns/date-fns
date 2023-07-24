@@ -28,11 +28,11 @@ import startOfDay from '../startOfDay/index'
  * //=> false
  */
 export default function isSameDay<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+  dateLeft: DateType | number,
+  dateRight: DateType | number
 ): boolean {
-  const dateLeftStartOfDay = startOfDay(dirtyDateLeft)
-  const dateRightStartOfDay = startOfDay(dirtyDateRight)
+  const dateLeftStartOfDay = startOfDay(dateLeft)
+  const dateRightStartOfDay = startOfDay(dateRight)
 
   return dateLeftStartOfDay.getTime() === dateRightStartOfDay.getTime()
 }

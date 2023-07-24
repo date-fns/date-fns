@@ -21,9 +21,9 @@ import startOfISOWeekYear from '../startOfISOWeekYear/index'
  * //=> 53
  */
 export default function getISOWeeksInYear<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): number {
-  const thisYear = startOfISOWeekYear(dirtyDate)
+  const thisYear = startOfISOWeekYear(date)
   const nextYear = startOfISOWeekYear(addWeeks(thisYear, 60))
   const diff = nextYear.valueOf() - thisYear.valueOf()
   // Round the number of weeks to the nearest integer

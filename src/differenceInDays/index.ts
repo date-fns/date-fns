@@ -77,21 +77,23 @@ function compareLocalAsc<DateType extends Date>(
 //=> 92
  */
 export default function differenceInDays<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+  dateLeft: DateType | number,
+  dateRight: DateType | number
 ): number {
-  const dateLeft = toDate(dirtyDateLeft)
-  const dateRight = toDate(dirtyDateRight)
+  const convertedDateLeft = toDate(dateLeft)
+  const convertedDateRight = toDate(dateRight)
 
-  const sign = compareLocalAsc(dateLeft, dateRight)
-  const difference = Math.abs(differenceInCalendarDays(dateLeft, dateRight))
+  const sign = compareLocalAsc(convertedDateLeft, convertedDateRight)
+  const difference = Math.abs(
+    differenceInCalendarDays(convertedDateLeft, convertedDateRight)
+  )
 
-  dateLeft.setDate(dateLeft.getDate() - sign * difference)
+  convertedDateLeft.setDate(convertedDateLeft.getDate() - sign * difference)
 
   // Math.abs(diff in full days - diff in calendar days) === 1 if last calendar day is not full
   // If so, result must be decreased by 1 in absolute value
   const isLastDayNotFull = Number(
-    compareLocalAsc(dateLeft, dateRight) === -sign
+    compareLocalAsc(convertedDateLeft, convertedDateRight) === -sign
   )
   const result = sign * (difference - isLastDayNotFull)
   // Prevent negative zero

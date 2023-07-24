@@ -18,10 +18,10 @@ import toDate from '../toDate/index'
  * //=> Tue Sep 30 2014 00:00:00
  */
 export default function setDate<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   dayOfMonth: number
 ): DateType {
-  const date = toDate(dirtyDate)
-  date.setDate(dayOfMonth)
-  return date
+  const convertedDate = toDate(date)
+  convertedDate.setDate(dayOfMonth)
+  return convertedDate
 }

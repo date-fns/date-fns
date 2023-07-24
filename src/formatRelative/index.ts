@@ -46,12 +46,12 @@ export interface FormatRelativeOptions
  * //=> "last Thursday at 12:45 AM"
  */
 export default function formatRelative<DateType extends Date>(
-  dirtyDate: DateType | number,
-  dirtyBaseDate: DateType | number,
+  date: DateType | number,
+  baseDate: DateType | number,
   options?: FormatRelativeOptions
 ): string {
-  const date = toDate(dirtyDate)
-  const baseDate = toDate(dirtyBaseDate)
+  const convertedDate = toDate(date)
+  const convertedBaseDate = toDate(baseDate)
 
   const defaultOptions = getDefaultOptions()
   const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale
@@ -74,7 +74,7 @@ export default function formatRelative<DateType extends Date>(
     throw new RangeError('locale must contain formatRelative property')
   }
 
-  const diff = differenceInCalendarDays(date, baseDate)
+  const diff = differenceInCalendarDays(convertedDate, convertedBaseDate)
 
   if (isNaN(diff)) {
     throw new RangeError('Invalid time value')
@@ -97,9 +97,14 @@ export default function formatRelative<DateType extends Date>(
     token = 'other'
   }
 
-  const formatStr = locale.formatRelative(token, date, baseDate, {
-    locale,
-    weekStartsOn,
-  })
-  return format(date, formatStr, { locale, weekStartsOn })
+  const formatStr = locale.formatRelative(
+    token,
+    convertedDate,
+    convertedBaseDate,
+    {
+      locale,
+      weekStartsOn,
+    }
+  )
+  return format(convertedDate, formatStr, { locale, weekStartsOn })
 }

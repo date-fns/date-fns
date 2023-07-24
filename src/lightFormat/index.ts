@@ -75,10 +75,10 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/
 type Token = keyof typeof formatters
 
 export default function lightFormat<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   formatStr: string
 ): string {
-  const originalDate = toDate(dirtyDate)
+  const originalDate = toDate(date)
 
   if (!isValid(originalDate)) {
     throw new RangeError('Invalid time value')

@@ -19,16 +19,16 @@ import toDate from '../toDate/index'
  * //=> Sun Sep 01 2013 00:00:00
  */
 export default function setYear<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   year: number
 ): DateType {
-  const date = toDate(dirtyDate)
+  const convertedDate = toDate(date)
 
   // Check if date is Invalid Date because Date.prototype.setFullYear ignores the value of Invalid Date
-  if (isNaN(date.getTime())) {
-    return constructFrom(dirtyDate, NaN)
+  if (isNaN(convertedDate.getTime())) {
+    return constructFrom(date, NaN)
   }
 
-  date.setFullYear(year)
-  return date
+  convertedDate.setFullYear(year)
+  return convertedDate
 }
