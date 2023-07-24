@@ -1,4 +1,3 @@
-import type { Quarter } from '../../../../types'
 import type { LocaleUnit, Localize, LocalizeFn } from '../../../types'
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
@@ -108,7 +107,7 @@ function numberWithSuffix(
   return number + '-' + suffix
 }
 
-const ordinalNumber: LocalizeFn<number, undefined> = (dirtyNumber, options) => {
+const ordinalNumber: LocalizeFn<number> = (dirtyNumber, options) => {
   const number = Number(dirtyNumber)
   const unit = options?.unit
 
@@ -147,7 +146,7 @@ const localize: Localize = {
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: (quarter) => (quarter - 1) as Quarter,
+    argumentCallback: (quarter) => quarter - 1,
   }),
 
   month: buildLocalizeFn({

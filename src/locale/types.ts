@@ -9,7 +9,6 @@ import type {
   Quarter,
   WeekOptions,
 } from '../types'
-import type { BuildLocalizeFnArgCallback } from './_lib/buildLocalizeFn'
 
 /**
  * The locale object with all functions and data needed to parse and format
@@ -179,20 +178,17 @@ export type FormatRelativeToken =
  */
 export interface Localize {
   /** The function that localizes an ordinal number */
-  ordinalNumber: LocalizeFn<
-    number,
-    BuildLocalizeFnArgCallback<number> | undefined
-  >
+  ordinalNumber: LocalizeFn<number>
   /** The function that localized the era */
-  era: LocalizeFn<Era, undefined>
+  era: LocalizeFn<Era>
   /** The function that localizes the quarter */
-  quarter: LocalizeFn<Quarter, BuildLocalizeFnArgCallback<Quarter>>
+  quarter: LocalizeFn<Quarter>
   /** The function that localizes the month */
-  month: LocalizeFn<Month, undefined>
+  month: LocalizeFn<Month>
   /** The function that localizes the day of the week */
-  day: LocalizeFn<Day, undefined>
+  day: LocalizeFn<Day>
   /** The function that localizes the day period */
-  dayPeriod: LocalizeFn<LocaleDayPeriod, undefined>
+  dayPeriod: LocalizeFn<LocaleDayPeriod>
 }
 
 /**
@@ -203,15 +199,8 @@ export interface Localize {
  *
  * @returns The localized string
  */
-export type LocalizeFn<
-  Value extends LocaleUnitValue | number,
-  ArgCallback extends BuildLocalizeFnArgCallback<Value> | undefined = undefined
-> = (
-  value: ArgCallback extends undefined
-    ? Value
-    : Value extends Quarter
-    ? Quarter
-    : LocalizeUnitIndex<Value>,
+export type LocalizeFn<Value extends LocaleUnitValue | number> = (
+  value: Value,
   options?: LocalizeFnOptions
 ) => string
 
@@ -231,33 +220,33 @@ export interface LocalizeFnOptions {
 }
 
 /**
+ * The localize function argument callback which allows to convert raw value to
+ * the actual type.
+ *
+ * @param value - The value to convert
+ *
+ * @returns The converted value
+ */
+export type LocalizeFnArgCallback<Value extends LocaleUnitValue | number> = (
+  value: Value
+) => LocalizeUnitIndex<Value>
+
+/**
  * The formatting unit value, represents the raw value that can be formatted.
  */
 export type LocaleUnitValue = Era | Quarter | Month | Day | LocaleDayPeriod
 
-// TODO: You're real champion if you're actually get back to it. Proud of you!
-// Try to get rid of this and (especially) ArgCallback types because the only
-// case when it's helpful is when using quarter. Maybe.
+/**
+ * The index type of the locale unit value. It types conversion of units of
+ * values that don't start at 0 (i.e. quarters).
+ */
 export type LocalizeUnitIndex<
   Value extends LocaleUnitValue | number
-> = Value extends LocaleUnitValue
-  ? LocalizeUnitValuesIndex<LocalizeValues<Value>>
-  : number
+> = Value extends LocaleUnitValue ? keyof LocalizeValues<Value> : number
 
-export type LocalizeUnitValuesIndex<
-  Values extends LocalizeValues<any>
-> = Values extends Record<LocaleDayPeriod, string>
-  ? string
-  : Values extends LocalizeEraValues
-  ? Era
-  : Values extends LocalizeQuarterValues
-  ? Quarter
-  : Values extends LocalizeDayValues
-  ? Day
-  : Values extends LocalizeMonthValues
-  ? Month
-  : never
-
+/**
+ * Converts the unit value to the tuple of values.
+ */
 export type LocalizeValues<
   Value extends LocaleUnitValue
 > = Value extends LocaleDayPeriod
@@ -272,10 +261,20 @@ export type LocalizeValues<
   ? LocalizeMonthValues
   : never
 
+/**
+ * The tuple of localized era values. The first element represents BC,
+ * the second element represents AD.
+ */
 export type LocalizeEraValues = readonly [string, string]
 
+/**
+ * The tuple of localized quarter values. The first element represents Q1.
+ */
 export type LocalizeQuarterValues = readonly [string, string, string, string]
 
+/**
+ * The tuple of localized day values. The first element represents Sunday.
+ */
 export type LocalizeDayValues = readonly [
   string,
   string,
@@ -286,6 +285,9 @@ export type LocalizeDayValues = readonly [
   string
 ]
 
+/**
+ * The tuple of localized month values. The first element represents January.
+ */
 export type LocalizeMonthValues = readonly [
   string,
   string,
@@ -301,6 +303,9 @@ export type LocalizeMonthValues = readonly [
   string
 ]
 
+/**
+ * The map of localized values for each width.
+ */
 export type LocalizePeriodValuesMap<Value extends LocaleUnitValue> = {
   [Pattern in LocaleWidth]?: LocalizeValues<Value>
 }

@@ -1,4 +1,3 @@
-import type { Quarter } from '../../../../types'
 import type { Localize, LocalizeFn } from '../../../types'
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
@@ -151,7 +150,7 @@ const formattingDayPeriodValues = {
   },
 }
 
-const ordinalNumber: LocalizeFn<number, undefined> = (dirtyNumber) => {
+const ordinalNumber: LocalizeFn<number> = (dirtyNumber) => {
   const number = Number(dirtyNumber)
   return number + '.'
 }
@@ -167,7 +166,7 @@ const localize: Localize = {
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: (quarter) => (quarter - 1) as Quarter,
+    argumentCallback: (quarter) => quarter - 1,
   }),
 
   month: buildLocalizeFn({

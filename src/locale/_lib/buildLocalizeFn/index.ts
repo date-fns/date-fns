@@ -1,22 +1,18 @@
 /* eslint-disable no-unused-vars */
 
 import type {
+  LocaleUnitValue,
   LocaleWidth,
   LocalizeFn,
+  LocalizeFnArgCallback,
   LocalizePeriodValuesMap,
   LocalizeUnitIndex,
-  LocalizeUnitValuesIndex,
   LocalizeValues,
-  LocaleUnitValue,
 } from '../../types'
-
-export type BuildLocalizeFnArgCallback<
-  Value extends LocaleUnitValue | number
-> = (value: Value) => LocalizeUnitIndex<Value>
 
 export type BuildLocalizeFnArgs<
   Value extends LocaleUnitValue,
-  ArgCallback extends BuildLocalizeFnArgCallback<Value> | undefined
+  ArgCallback extends LocalizeFnArgCallback<Value> | undefined
 > = {
   values: LocalizePeriodValuesMap<Value>
   defaultWidth: LocaleWidth
@@ -24,15 +20,13 @@ export type BuildLocalizeFnArgs<
   defaultFormattingWidth?: LocaleWidth
 } & (ArgCallback extends undefined
   ? { argumentCallback?: undefined }
-  : { argumentCallback: BuildLocalizeFnArgCallback<Value> })
+  : { argumentCallback: LocalizeFnArgCallback<Value> })
 
 export default function buildLocalizeFn<
   Value extends LocaleUnitValue,
-  ArgCallback extends BuildLocalizeFnArgCallback<Value> | undefined
->(
-  args: BuildLocalizeFnArgs<Value, ArgCallback>
-): LocalizeFn<Value, ArgCallback> {
-  return (dirtyIndex, options) => {
+  ArgCallback extends LocalizeFnArgCallback<Value> | undefined
+>(args: BuildLocalizeFnArgs<Value, ArgCallback>): LocalizeFn<Value> {
+  return (value, options) => {
     const context = options?.context ? String(options.context) : 'standalone'
 
     let valuesArray: LocalizeValues<Value>
@@ -52,10 +46,8 @@ export default function buildLocalizeFn<
         args.values[defaultWidth]) as LocalizeValues<Value>
     }
     const index = (args.argumentCallback
-      ? args.argumentCallback(dirtyIndex as Value)
-      : ((dirtyIndex as LocalizeUnitIndex<Value>) as unknown)) as LocalizeUnitValuesIndex<
-      typeof valuesArray
-    >
+      ? args.argumentCallback(value as Value)
+      : value) as LocalizeUnitIndex<Value>
     // @ts-ignore: For some reason TypeScript just don't want to match it, no matter how hard we try. I challenge you to try to remove it!
     return valuesArray[index]
   }
