@@ -5,7 +5,7 @@ import type {
   Day,
   FirstWeekContainsDate,
   FirstWeekContainsDateOptions,
-  LocaleOptions,
+  LocalizedOptions,
   WeekOptions,
 } from '../types'
 import defaultLocale from '../_lib/defaultLocale/index'
@@ -43,7 +43,7 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * The {@link format} function options.
  */
 export interface FormatOptions
-  extends LocaleOptions,
+  extends LocalizedOptions,
     WeekOptions,
     FirstWeekContainsDateOptions,
     AdditionalTokensOptions {}

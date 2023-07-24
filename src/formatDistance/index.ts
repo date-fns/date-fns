@@ -3,7 +3,7 @@ import { minutesInDay, minutesInMonth } from '../constants/index'
 import differenceInMonths from '../differenceInMonths/index'
 import differenceInSeconds from '../differenceInSeconds/index'
 import toDate from '../toDate/index'
-import type { LocaleOptions } from '../types'
+import type { LocalizedOptions } from '../types'
 import assign from '../_lib/assign/index'
 import cloneObject from '../_lib/cloneObject/index'
 import defaultLocale from '../_lib/defaultLocale/index'
@@ -13,7 +13,7 @@ import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMillisec
 /**
  * The {@link formatDistance} function options.
  */
-export interface FormatDistanceOptions extends LocaleOptions {
+export interface FormatDistanceOptions extends LocalizedOptions {
   /** Distances less than a minute are more detailed */
   includeSeconds?: boolean
   /** Add "X ago"/"in X" in the locale language */

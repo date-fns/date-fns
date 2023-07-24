@@ -1,13 +1,11 @@
 import toDate from '../toDate/index'
-import type { FormatOptions, RepresentationOptions } from '../types'
+import type { ISOFormatOptions } from '../types'
 import addLeadingZeros from '../_lib/addLeadingZeros/index'
 
 /**
  * The {@link formatISO} function options.
  */
-export interface FormatISOOptions
-  extends FormatOptions,
-    RepresentationOptions {}
+export interface FormatISOOptions extends ISOFormatOptions {}
 
 /**
  * @name formatISO

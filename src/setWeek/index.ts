@@ -2,7 +2,7 @@ import getWeek from '../getWeek/index'
 import toDate from '../toDate/index'
 import type {
   FirstWeekContainsDateOptions,
-  LocaleOptions,
+  LocalizedOptions,
   WeekOptions,
 } from '../types'
 
@@ -10,7 +10,7 @@ import type {
  * The {@link setWeek} function options.
  */
 export interface SetWeekOptions
-  extends LocaleOptions,
+  extends LocalizedOptions,
     WeekOptions,
     FirstWeekContainsDateOptions {}
 

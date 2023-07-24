@@ -3,7 +3,7 @@ import parse from '../parse/index'
 import type {
   AdditionalTokensOptions,
   FirstWeekContainsDateOptions,
-  LocaleOptions,
+  LocalizedOptions,
   WeekOptions,
 } from '../types'
 
@@ -11,7 +11,7 @@ import type {
  * The {@link isMatch} function options.
  */
 export interface IsMatchOptions
-  extends LocaleOptions,
+  extends LocalizedOptions,
     WeekOptions,
     FirstWeekContainsDateOptions,
     AdditionalTokensOptions {}

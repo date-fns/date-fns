@@ -1,5 +1,5 @@
-import type { Quarter, Unit } from '../../../../types'
-import type { Localize, LocalizeFn } from '../../../types'
+import type { Quarter } from '../../../../types'
+import type { LocaleUnit, Localize, LocalizeFn } from '../../../types'
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
 const eraValues = {
@@ -83,19 +83,19 @@ const dayPeriodValues = {
   },
 }
 
-function isFeminine(unit: Unit | undefined): boolean {
+function isFeminine(unit: LocaleUnit | undefined): boolean {
   return (
     unit === 'year' || unit === 'week' || unit === 'minute' || unit === 'second'
   )
 }
 
-function isNeuter(unit: Unit | undefined): boolean {
+function isNeuter(unit: LocaleUnit | undefined): boolean {
   return unit === 'quarter'
 }
 
 function numberWithSuffix(
   number: number,
-  unit: Unit | undefined,
+  unit: LocaleUnit | undefined,
   masculine: string,
   feminine: string,
   neuter: string

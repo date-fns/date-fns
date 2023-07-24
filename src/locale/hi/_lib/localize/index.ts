@@ -1,8 +1,10 @@
 import type { Era, Quarter } from '../../../../types'
-import type { Localize, LocalizeFn } from '../../../types'
-import buildLocalizeFn, {
+import type {
+  Localize,
+  LocalizeFn,
   LocalizePeriodValuesMap,
-} from '../../../_lib/buildLocalizeFn/index'
+} from '../../../types'
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
 type hiLocaleNumberType =
   | '\u0967'

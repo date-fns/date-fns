@@ -1,12 +1,14 @@
 import addWeeks from '../addWeeks/index'
 import startOfWeek from '../startOfWeek/index'
 import toDate from '../toDate/index'
-import type { Interval, LocaleOptions, WeekOptions } from '../types'
+import type { Interval, LocalizedOptions, WeekOptions } from '../types'
 
 /**
  * The {@link eachWeekOfInterval} function options.
  */
-export interface EachWeekOfIntervalOptions extends WeekOptions, LocaleOptions {}
+export interface EachWeekOfIntervalOptions
+  extends WeekOptions,
+    LocalizedOptions {}
 
 /**
  * @name eachWeekOfInterval

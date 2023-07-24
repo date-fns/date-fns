@@ -16,14 +16,13 @@ import differenceInHours from '../differenceInHours/index'
 import differenceInMinutes from '../differenceInMinutes/index'
 import differenceInSeconds from '../differenceInSeconds/index'
 import toDate from '../toDate/index'
-import type { IntlOptionsUnit } from '../types'
 
 /**
  * The {@link intlFormatDistance} function options.
  */
 export interface IntlFormatDistanceOptions {
-  /** Formats the distance with the given unit ('year', 'quarter', 'month', 'week', 'day', 'hour', 'minute', 'second') */
-  unit?: IntlOptionsUnit
+  /** Force the distance unit */
+  unit?: IntlFormatDistanceUnit
   /** The locale(s) to use (see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument) */
   locale?: Intl.BCP47LanguageTag | Intl.BCP47LanguageTag[]
   /** The locale matching algorithm to use. Other value: 'lookup'. See MDN for details [Locale identification and negotiation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locale_identification_and_negotiation) */
@@ -33,6 +32,19 @@ export interface IntlFormatDistanceOptions {
   /** The length of the result. The values are: 'long' (e.g. `1 month`), 'short' (e.g. 'in 1 mo.'), 'narrow' (e.g. 'in 1 mo.'). The narrow one could be similar to the short one for some locales. */
   style?: Intl.RelativeTimeFormatStyle
 }
+
+/**
+ * The unit used to format the distance in {@link intlFormatDistance}.
+ */
+export type IntlFormatDistanceUnit =
+  | 'year'
+  | 'quarter'
+  | 'month'
+  | 'week'
+  | 'day'
+  | 'hour'
+  | 'minute'
+  | 'second'
 
 /**
  * @name intlFormatDistance
