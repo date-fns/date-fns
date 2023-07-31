@@ -28,7 +28,7 @@ export default function addMonths<DateType extends Date>(
     // If 0 months, no-op to avoid changing times in the hour before end of DST
     return date
   }
-  const dayOfMonth = date.getDate()
+  const dayOfMonth = date.getUTCDate()
 
   // The JS Date object supports date math by accepting out-of-bounds values for
   // month, day, etc. For example, new Date(2020, 0, 0) returns 31 Dec 2019 and
@@ -39,8 +39,8 @@ export default function addMonths<DateType extends Date>(
   // month and using a date of 0 to back up one day to the end of the desired
   // month.
   const endOfDesiredMonth = constructFrom(dirtyDate, date.getTime())
-  endOfDesiredMonth.setMonth(date.getMonth() + amount + 1, 0)
-  const daysInMonth = endOfDesiredMonth.getDate()
+  endOfDesiredMonth.setUTCMonth(date.getUTCMonth() + amount + 1, 0)
+  const daysInMonth = endOfDesiredMonth.getUTCDate()
   if (dayOfMonth >= daysInMonth) {
     // If we're already at the end of the month, then this is the correct date
     // and we're done.
@@ -53,9 +53,9 @@ export default function addMonths<DateType extends Date>(
     // the last day of the month and its local time was in the hour skipped or
     // repeated next to a DST transition.  So we use `date` instead which is
     // guaranteed to still have the original time.
-    date.setFullYear(
-      endOfDesiredMonth.getFullYear(),
-      endOfDesiredMonth.getMonth(),
+    date.setUTCFullYear(
+      endOfDesiredMonth.getUTCFullYear(),
+      endOfDesiredMonth.getUTCMonth(),
       dayOfMonth
     )
     return date
