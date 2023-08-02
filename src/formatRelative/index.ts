@@ -42,7 +42,7 @@ export interface FormatRelativeOptions
  *
  * @example
  * // Represent the date of 6 days ago in words relative to the given base date. In this example, today is Wednesday
- * const result = formatRelative(addDays(new Date(), -6), new Date())
+ * const result = formatRelative(subDays(new Date(), 6), new Date())
  * //=> "last Thursday at 12:45 AM"
  */
 export default function formatRelative<DateType extends Date>(
