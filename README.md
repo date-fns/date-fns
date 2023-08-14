@@ -57,9 +57,14 @@ The library is available as an [npm package](https://www.npmjs.com/package/date-
 To install the package run:
 
 ```bash
+# with npm
 npm install date-fns --save
-# or with yarn
+# with yarn
 yarn add date-fns
+# with pnpm
+pnpm add date-fns
+# with Bun
+bun add date-fns
 ```
 
 ## Docs
