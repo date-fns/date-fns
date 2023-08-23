@@ -1,8 +1,7 @@
-var dateFns = require('date-fns')
-var format = dateFns.format
-var eo = require('date-fns/locale/eo')
+import { format } from 'date-fns'
+import { eo } from 'date-fns/locale'
 
-var result = format(
+const result = format(
   new Date(2017, 0, 25, 21, 28, 15),
   'eeee, dd MMMM HH:mm:ss',
   { locale: eo }

@@ -1,22 +1,24 @@
 {
-  "name": "date-fns-example-typescript",
+  "name": "date-fns-example-webpack4",
   "version": "0.1.0",
-  "description": "Example of date-fns usage with TypeScript",
-  "type": "module",
+  "description": "Example of date-fns usage with webpack 4.x",
+  "main": "example.js",
   "author": "Sasha Koss <koss@nocorp.me>",
   "license": "MIT",
   "dependencies": {
-    "typescript": "^5.1.6"
+    "gzip-size-cli": "^2.1.0",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
   },
   "scripts": {
-    "build": "yarn build-date-fns && yarn tsc && yarn build-tsc",
+    "build": "yarn build-date-fns && yarn build-webpack",
     "build-date-fns": "rm -rf node_modules/date-fns && cp -r ../../lib node_modules/date-fns || env PACKAGE_OUTPUT_PATH=\"$(pwd)/node_modules/date-fns\" ../../scripts/build/package.sh",
-    "build-tsc": "tsc --outDir dist",
-    "build-esbuild": "esbuild constants.ts example.ts fp.ts misc.ts --outdir=dist",
+    "build-webpack": "webpack",
+    "stats-size": "echo \"Minimal size: $(gzip-size dist/minimal.min.js)\nFormat size: $(gzip-size dist/example.min.js)\nFP size: $(gzip-size dist/fp.min.js)\nMisc size: $(gzip-size dist/misc.min.js)\"",
     "test": "yarn test-example && yarn test-fp && yarn test-misc && yarn test-constants",
     "test-example": "test $(env TZ=UTC node ./dist/example.js) = true",
     "test-fp": "test $(env TZ=UTC node ./dist/fp.js) = true",
     "test-misc": "test $(env TZ=UTC node ./dist/misc.js) = true",
-    "test-constants": "test $(node ./dist/constants.js) = true"
+    "test-constants": "test $(env TZ=UTC node ./dist/constants.js) = true"
   }
 }
