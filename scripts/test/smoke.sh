@@ -9,6 +9,8 @@ dir="$(pwd)/examples"
 ok_message="\n\033[0;32m✓ OK!\033[0m\n"
 error_message="\n\033[0;31m✗ Something went wrong!\033[0m\n"
 
+scripts/build/package.sh
+
 cd "$dir" || exit 1
 
 for example in `ls`
