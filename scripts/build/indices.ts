@@ -8,9 +8,9 @@
  */
 
 import { writeFile, readFile } from 'fs/promises'
-import listFns from '../_lib/listFns'
-import listFPFns from '../_lib/listFPFns'
-import listLocales from '../_lib/listLocales'
+import { listFns } from '../_lib/listFns'
+import { listFPFns } from '../_lib/listFPFns'
+import { listLocales } from '../_lib/listLocales'
 
 interface File {
   name: string
@@ -20,9 +20,8 @@ interface File {
 
 ;(async () => {
   const locales = await listLocales()
-
   const fns = await listFns()
-  const fpFns = listFPFns()
+  const fpFns = await listFPFns()
 
   await Promise.all([
     generatePackageJSON(fns, fpFns, locales).then((json) =>

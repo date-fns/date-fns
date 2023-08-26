@@ -9,25 +9,27 @@
 
 import { readFile, readFileSync, writeFile } from 'mz/fs'
 import path from 'path'
-import listLocales from '../../_lib/listLocales'
-import prettier from '../_lib/prettier'
+import { Locale } from '../../../src/locale/types'
+import { listLocales } from '../../_lib/listLocales'
+import { formatCode } from '../_lib/prettier'
 import renderFormatDistance from './renderFormatDistance'
 import renderFormatDistanceStrict from './renderFormatDistanceStrict'
+import renderFormatDuration from './renderFormatDuration'
 import renderFormatParse from './renderFormatParse'
 import renderFormatRelative from './renderFormatRelative'
-import renderFormatDuration from './renderFormatDuration'
 
 const mode = process.argv[2] || 'generate'
 
-if (process.env.TZ.toLowerCase() !== 'utc')
+if (process.env.TZ?.toLowerCase() !== 'utc')
   throw new Error('The locale snapshots generation must be run with TZ=utc')
 
 listLocales()
   .then((locales) =>
     Promise.all(
-      locales.map((localeObj) => {
+      locales.map(async (localeObj) => {
         const { code, fullPath } = localeObj
-        const locale = require(`../../../src/locale/${code}`)
+        const locale: Locale = (await import(`../../../src/locale/${code}`))
+          .default
         const source = readFileSync(
           path.join(process.cwd(), fullPath)
         ).toString()
@@ -51,7 +53,7 @@ ${renderFormatDuration(locale)}
           path.resolve(process.cwd(), path.dirname(fullPath)),
           'snapshot.md'
         )
-        const formattedSnapshot = prettier(snapshot, 'markdown')
+        const formattedSnapshot = formatCode(snapshot, 'markdown')
 
         if (mode === 'test') {
           return readFile(snapshotPath, 'utf8').then((snapshotFileContent) => {
@@ -66,7 +68,6 @@ ${renderFormatDuration(locale)}
       })
     )
   )
-
   .catch((err) => {
     console.error(err.stack)
     process.exit(1)

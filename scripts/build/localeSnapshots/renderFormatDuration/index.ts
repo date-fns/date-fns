@@ -1,4 +1,5 @@
 import formatDuration from '../../../../src/formatDuration'
+import { Locale } from '../../../../src/types'
 
 const durations = [
   'years',
@@ -10,7 +11,7 @@ const durations = [
   'seconds',
 ].flatMap((unit) => [{ [unit]: 0 }, { [unit]: 1 }, { [unit]: 2 }])
 
-export default function renderFormatDurationStrict(locale) {
+export default function renderFormatDurationStrict(locale: Locale) {
   return `## \`formatDuration\`
 
 | Duration | Result |

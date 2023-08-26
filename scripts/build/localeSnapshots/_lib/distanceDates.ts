@@ -45,7 +45,7 @@ export const dates = [
   new Date(1997, 0, 1),
   new Date(1996, 0, 1),
   new Date(1995, 0, 1),
-  new Date(1994, 0, 1)
+  new Date(1994, 0, 1),
 ]
 
 export const relativeDates = [
@@ -55,5 +55,5 @@ export const relativeDates = [
   baseDate,
   new Date(1999, 11, 31),
   new Date(1999, 11, 27),
-  new Date(1999, 11, 21)
+  new Date(1999, 11, 21),
 ]
