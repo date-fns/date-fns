@@ -12,13 +12,10 @@ source ~/.nvm/nvm.sh
 
 # We test all LTSs (including in the maintenance mode) plus the latest version
 # See the releases chart: https://nodejs.org/en/about/releases/
-#
-# Note that because we use Intl, the lowest version is v13, hence we drop v12
-# even though it's still supported.
-for version in 14 16
+for version in 16 18 20
 do
   echo "Running tests using Node.js $version"
   nvm install $version
   npm rebuild
-  jest || exit 1
+  yarn  || exit 1
 done

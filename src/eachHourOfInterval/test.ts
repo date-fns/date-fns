@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
+import { describe, it } from 'vitest'
 import eachHourOfInterval from './index'
 
 describe('eachHourOfInterval', () => {
@@ -89,7 +90,8 @@ describe('eachHourOfInterval', () => {
       end: new Date(2014, 9 /* Oct */, 6, 18),
     }
 
-    const stepError = /^RangeError: `options.step` must be a number greater than 1$/
+    const stepError =
+      /^RangeError: `options.step` must be a number greater than 1$/
 
     it('returns an array with starts of hours from the hour of the start date to the hour of the end date with the given step', () => {
       const result = eachHourOfInterval(interval, { step: 3 })

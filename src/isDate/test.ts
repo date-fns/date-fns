@@ -2,6 +2,8 @@
 /* global HTMLIFrameElement */
 
 import assert from 'assert'
+import { afterEach, describe, it } from 'vitest'
+import { e } from 'vitest/dist/reporters-2ff87305.js'
 import { assertType } from '../_lib/test'
 import isDate from './index'
 
@@ -25,24 +27,27 @@ describe('isDate', () => {
   })
 
   describe('with date passed from another iframe', () => {
-    // Emulate web browser
-    if (!process.env.JEST_WORKER_ID) {
+    // If in the browser, run the test in an iframe
+    if (typeof window !== 'undefined') {
       afterEach(() => {
         const iframe = document.getElementById('iframe')
         iframe && iframe.remove()
       })
 
-      it('returns true for a date passed from another iframe', (done) => {
-        const iframe = document.createElement('iframe')
-        iframe.id = 'iframe'
-        iframe.addEventListener('load', () => {
-          execScript('window.date = new Date()') // eslint-disable-line no-implied-eval
-          assert(isDate((iframe.contentWindow as any).date))
-          done()
-        })
-        if (!document.body) throw new Error('document.body is not defined')
-        document.body.appendChild(iframe)
-      })
+      it('returns true for a date passed from another iframe', () =>
+        new Promise((resolve) => {
+          const iframe = document.createElement('iframe')
+          iframe.id = 'iframe'
+          iframe.addEventListener('load', () => {
+            execScript('window.date = new Date()') // eslint-disable-line no-implied-eval
+            assert(isDate((iframe.contentWindow as any).date))
+            resolve(void 0)
+          })
+          if (!document.body) throw new Error('document.body is not defined')
+          document.body.appendChild(iframe)
+        }))
+    } else {
+      it.skip('returns true for a date passed from another iframe')
     }
 
     function execScript(scriptText: string) {
