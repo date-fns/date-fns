@@ -1,4 +1,4 @@
-#!/usr/bin/env babel-node
+#!/usr/bin/env yarn tsx
 
 /**
  * @file
@@ -7,7 +7,7 @@
  * It's a part of the build process.
  */
 
-import { readFile, readFileSync, writeFile } from 'mz/fs'
+import { readFile, writeFile } from 'fs/promises'
 import path from 'path'
 import { Locale } from '../../../src/locale/types'
 import { listLocales } from '../../_lib/listLocales'
@@ -30,10 +30,10 @@ listLocales()
         const { code, fullPath } = localeObj
         const locale: Locale = (await import(`../../../src/locale/${code}`))
           .default
-        const source = readFileSync(
+        const source = await readFile(
           path.join(process.cwd(), fullPath)
         ).toString()
-        const languageName = source.match(/\* @language (.*)/)[1]
+        const languageName = source.match(/\* @language (.*)/)?.[1]
 
         const snapshot = `# ${languageName} (${code}) locale
 
