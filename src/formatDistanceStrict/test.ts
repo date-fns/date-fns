@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
+import { describe, it } from 'vitest'
 import type { FormatDistanceFn } from '../locale/types'
 import formatDistanceStrict from './index'
 

@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
+import { describe, it } from 'vitest'
 import nextWednesday from './index'
 
 describe('nextWednesday', () => {

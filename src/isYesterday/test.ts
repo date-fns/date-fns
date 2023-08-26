@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
+import { afterEach, beforeEach, describe, it } from 'vitest'
 import sinon from 'sinon'
 import isYesterday from './index'
 

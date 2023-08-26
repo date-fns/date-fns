@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
+import { describe, it } from 'vitest'
 import intlFormat from './index'
 
 // Before Node version 13.0.0, only the locale data for en-US is available by default.

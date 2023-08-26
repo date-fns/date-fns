@@ -6,7 +6,6 @@
 
 set -ex
 
-export PATH="$(yarn bin):$PATH"
-
-env COVERAGE_REPORT=true yarn test --single-run
-cat ./coverage/lcov.info | coveralls
+env yarn vitest run --coverage
+# TODO?!
+# cat ./coverage/lcov.info | yarn coveralls

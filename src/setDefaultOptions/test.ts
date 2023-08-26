@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
+import { afterEach, describe, it } from 'vitest'
 import setDefaultOptions from '.'
 import {
   DefaultOptions,
