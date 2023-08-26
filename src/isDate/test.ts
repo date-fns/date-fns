@@ -3,7 +3,6 @@
 
 import assert from 'assert'
 import { afterEach, describe, it } from 'vitest'
-import { e } from 'vitest/dist/reporters-2ff87305.js'
 import { assertType } from '../_lib/test'
 import isDate from './index'
 
