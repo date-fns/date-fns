@@ -2,6 +2,8 @@
 
 import type { Locale } from './locale/types'
 
+export * from './locale/types'
+
 /**
  * The generic date constructor. Replicates the Date constructor. Used to build
  * generic functions.
