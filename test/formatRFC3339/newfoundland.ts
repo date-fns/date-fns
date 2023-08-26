@@ -10,7 +10,7 @@ if (process.env.TZ !== 'America/St_Johns')
     'The test must be run with TZ=America/St_Johns (UTC-02:30 or UTC-03:30)'
   )
 
-if (parseInt(process.version.match(/^v(\d+)\./)[1]) < 10)
+if (parseInt(process.version.match(/^v(\d+)\./)?.[1] || '0') < 10)
   throw new Error('The test must be run on Node.js version >= 10')
 
 // Old date

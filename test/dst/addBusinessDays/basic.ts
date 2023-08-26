@@ -6,7 +6,7 @@ import addBusinessDays from '../../../src/addBusinessDays'
 if (process.env.TZ !== 'America/Santiago')
   throw new Error('The test must be run with TZ=America/Santiago')
 
-if (parseInt(process.version.match(/^v(\d+)\./)[1]) < 10)
+if (parseInt(process.version.match(/^v(\d+)\./)?.[1] || '0') < 10)
   throw new Error('The test must be run on Node.js version >= 10')
 
 console.log(addBusinessDays(new Date(2014, 8 /* Sep */, 1), 10).toString())

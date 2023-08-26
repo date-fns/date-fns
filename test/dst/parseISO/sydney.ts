@@ -6,7 +6,7 @@ import assert from 'assert'
 if (process.env.TZ !== 'Australia/Sydney')
   throw new Error('The test must be run with TZ=Australia/Sydney')
 
-if (parseInt(process.version.match(/^v(\d+)\./)[1]) < 10)
+if (parseInt(process.version.match(/^v(\d+)\./)?.[1] || '0') < 10)
   throw new Error('The test must be run on Node.js version >= 10')
 
 // Test DST start edge
