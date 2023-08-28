@@ -1,4 +1,4 @@
-# undefined (th) locale
+# Thai (th) locale
 
 ## `format` and `parse`
 

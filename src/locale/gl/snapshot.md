@@ -1,4 +1,4 @@
-# undefined (gl) locale
+# Galician (gl) locale
 
 ## `format` and `parse`
 

@@ -1,4 +1,4 @@
-# undefined (he) locale
+# Hebrew (he) locale
 
 ## `format` and `parse`
 

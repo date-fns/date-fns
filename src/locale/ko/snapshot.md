@@ -1,4 +1,4 @@
-# undefined (ko) locale
+# Korean (ko) locale
 
 ## `format` and `parse`
 

@@ -1,4 +1,4 @@
-# undefined (hi) locale
+# Hindi (hi) locale
 
 ## `format` and `parse`
 

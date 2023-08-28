@@ -1,4 +1,4 @@
-# undefined (nl) locale
+# Dutch (nl) locale
 
 ## `format` and `parse`
 

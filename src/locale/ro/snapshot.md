@@ -1,4 +1,4 @@
-# undefined (ro) locale
+# Romanian (ro) locale
 
 ## `format` and `parse`
 

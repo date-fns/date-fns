@@ -1,4 +1,4 @@
-# undefined (fa-IR) locale
+# Persian (fa-IR) locale
 
 ## `format` and `parse`
 

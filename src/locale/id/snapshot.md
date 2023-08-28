@@ -1,4 +1,4 @@
-# undefined (id) locale
+# Indonesian (id) locale
 
 ## `format` and `parse`
 

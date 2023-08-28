@@ -1,4 +1,4 @@
-# undefined (vi) locale
+# Vietnamese (vi) locale
 
 ## `format` and `parse`
 

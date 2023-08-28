@@ -1,4 +1,4 @@
-# undefined (cy) locale
+# Welsh (cy) locale
 
 ## `format` and `parse`
 

@@ -1,4 +1,4 @@
-# undefined (ja-Hira) locale
+# Japanese (Hiragana) (ja-Hira) locale
 
 ## `format` and `parse`
 

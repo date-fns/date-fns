@@ -1,4 +1,4 @@
-# undefined (ht) locale
+# Haitian Creole (ht) locale
 
 ## `format` and `parse`
 

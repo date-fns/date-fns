@@ -1,4 +1,4 @@
-# undefined (sr-Latn) locale
+# Serbian (sr-Latn) locale
 
 ## `format` and `parse`
 

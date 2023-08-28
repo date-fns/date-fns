@@ -1,4 +1,4 @@
-# undefined (tr) locale
+# Turkish (tr) locale
 
 ## `format` and `parse`
 

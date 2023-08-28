@@ -1,4 +1,4 @@
-# undefined (de-AT) locale
+# German (de-AT) locale
 
 ## `format` and `parse`
 

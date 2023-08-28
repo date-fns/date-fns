@@ -1,4 +1,4 @@
-# undefined (sq) locale
+# Shqip (sq) locale
 
 ## `format` and `parse`
 

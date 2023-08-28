@@ -1,4 +1,4 @@
-# undefined (it) locale
+# Italian (it) locale
 
 ## `format` and `parse`
 

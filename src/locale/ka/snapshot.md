@@ -1,4 +1,4 @@
-# undefined (ka) locale
+# Georgian (ka) locale
 
 ## `format` and `parse`
 

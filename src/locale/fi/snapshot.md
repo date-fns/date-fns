@@ -1,4 +1,4 @@
-# undefined (fi) locale
+# Finnish (fi) locale
 
 ## `format` and `parse`
 

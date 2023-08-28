@@ -1,4 +1,4 @@
-# undefined (af) locale
+# Afrikaans (af) locale
 
 ## `format` and `parse`
 

@@ -1,4 +1,4 @@
-# undefined (zh-HK) locale
+# Chinese Traditional (zh-HK) locale
 
 ## `format` and `parse`
 

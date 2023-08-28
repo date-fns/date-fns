@@ -1,4 +1,4 @@
-# undefined (ar-TN) locale
+# Arabic (ar-TN) locale
 
 ## `format` and `parse`
 

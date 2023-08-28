@@ -1,4 +1,4 @@
-# undefined (hu) locale
+# Hungarian (hu) locale
 
 ## `format` and `parse`
 

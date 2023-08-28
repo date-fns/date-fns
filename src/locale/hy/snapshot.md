@@ -1,4 +1,4 @@
-# undefined (hy) locale
+# Armenian (hy) locale
 
 ## `format` and `parse`
 

@@ -1,4 +1,4 @@
-# undefined (ru) locale
+# Russian (ru) locale
 
 ## `format` and `parse`
 

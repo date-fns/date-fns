@@ -1,4 +1,4 @@
-# undefined (hr) locale
+# Croatian (hr) locale
 
 ## `format` and `parse`
 

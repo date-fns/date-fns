@@ -1,4 +1,4 @@
-# undefined (nn) locale
+# Norwegian Nynorsk (nn) locale
 
 ## `format` and `parse`
 

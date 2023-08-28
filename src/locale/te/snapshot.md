@@ -1,4 +1,4 @@
-# undefined (te) locale
+# Telugu (te) locale
 
 ## `format` and `parse`
 

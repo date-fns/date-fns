@@ -1,4 +1,4 @@
-# undefined (ms) locale
+# Malay (ms) locale
 
 ## `format` and `parse`
 

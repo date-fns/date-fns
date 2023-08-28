@@ -1,4 +1,4 @@
-# undefined (bs) locale
+# Bosnian (bs) locale
 
 ## `format` and `parse`
 

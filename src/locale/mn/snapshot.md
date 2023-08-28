@@ -1,4 +1,4 @@
-# undefined (mn) locale
+# Mongolian (mn) locale
 
 ## `format` and `parse`
 

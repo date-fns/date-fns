@@ -1,4 +1,4 @@
-# undefined (pl) locale
+# Polish (pl) locale
 
 ## `format` and `parse`
 

@@ -1,4 +1,4 @@
-# undefined (bg) locale
+# Bulgarian (bg) locale
 
 ## `format` and `parse`
 

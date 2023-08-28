@@ -1,4 +1,4 @@
-# undefined (ta) locale
+# Tamil (ta) locale
 
 ## `format` and `parse`
 

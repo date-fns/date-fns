@@ -1,4 +1,4 @@
-# undefined (eo) locale
+# Esperanto (eo) locale
 
 ## `format` and `parse`
 
