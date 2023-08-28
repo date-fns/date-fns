@@ -1,4 +1,4 @@
-# Slovak (sk) locale
+# undefined (sk) locale
 
 ## `format` and `parse`
 

@@ -1,4 +1,4 @@
-# Latvian (lv) locale
+# undefined (lv) locale
 
 ## `format` and `parse`
 

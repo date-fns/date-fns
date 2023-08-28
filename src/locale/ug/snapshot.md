@@ -1,4 +1,4 @@
-# Uighur (ug) locale
+# undefined (ug) locale
 
 ## `format` and `parse`
 

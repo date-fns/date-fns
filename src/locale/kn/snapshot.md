@@ -1,4 +1,4 @@
-# Kannada (kn) locale
+# undefined (kn) locale
 
 ## `format` and `parse`
 

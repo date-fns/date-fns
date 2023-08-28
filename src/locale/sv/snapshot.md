@@ -1,4 +1,4 @@
-# Swedish (sv) locale
+# undefined (sv) locale
 
 ## `format` and `parse`
 

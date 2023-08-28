@@ -1,4 +1,4 @@
-# Czech (cs) locale
+# undefined (cs) locale
 
 ## `format` and `parse`
 

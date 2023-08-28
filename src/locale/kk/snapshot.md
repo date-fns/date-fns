@@ -1,4 +1,4 @@
-# Kazakh (kk) locale
+# undefined (kk) locale
 
 ## `format` and `parse`
 

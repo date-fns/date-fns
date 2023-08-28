@@ -1,4 +1,4 @@
-# Occitan (oc) locale
+# undefined (oc) locale
 
 ## `format` and `parse`
 

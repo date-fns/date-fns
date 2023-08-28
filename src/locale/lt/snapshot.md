@@ -1,4 +1,4 @@
-# Lithuanian (lt) locale
+# undefined (lt) locale
 
 ## `format` and `parse`
 

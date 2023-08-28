@@ -1,4 +1,4 @@
-# Ukrainian (uk) locale
+# undefined (uk) locale
 
 ## `format` and `parse`
 

@@ -1,4 +1,4 @@
-# Icelandic (is) locale
+# undefined (is) locale
 
 ## `format` and `parse`
 

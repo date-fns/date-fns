@@ -1,4 +1,4 @@
-# Azerbaijani (az) locale
+# undefined (az) locale
 
 ## `format` and `parse`
 

@@ -1,4 +1,4 @@
-# Algerian Arabic (ar-DZ) locale
+# undefined (ar-DZ) locale
 
 ## `format` and `parse`
 

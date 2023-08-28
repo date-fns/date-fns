@@ -1,4 +1,4 @@
-# English (en-NZ) locale
+# undefined (en-NZ) locale
 
 ## `format` and `parse`
 

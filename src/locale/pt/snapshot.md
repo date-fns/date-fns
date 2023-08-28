@@ -1,4 +1,4 @@
-# Portuguese (pt) locale
+# undefined (pt) locale
 
 ## `format` and `parse`
 

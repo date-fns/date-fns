@@ -1,4 +1,4 @@
-# Norwegian Bokmål (nb) locale
+# undefined (nb) locale
 
 ## `format` and `parse`
 

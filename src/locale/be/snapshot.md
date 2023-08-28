@@ -1,4 +1,4 @@
-# Belarusian (be) locale
+# undefined (be) locale
 
 ## `format` and `parse`
 

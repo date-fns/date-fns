@@ -1,4 +1,4 @@
-# Luxembourgish (lb) locale
+# undefined (lb) locale
 
 ## `format` and `parse`
 

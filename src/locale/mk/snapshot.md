@@ -1,4 +1,4 @@
-# Macedonian (mk) locale
+# undefined (mk) locale
 
 ## `format` and `parse`
 

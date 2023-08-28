@@ -1,4 +1,4 @@
-# Gujarati (gu) locale
+# undefined (gu) locale
 
 ## `format` and `parse`
 

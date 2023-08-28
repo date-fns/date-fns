@@ -1,4 +1,4 @@
-# Slovenian (sl) locale
+# undefined (sl) locale
 
 ## `format` and `parse`
 

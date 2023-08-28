@@ -1,4 +1,4 @@
-# Maltese (mt) locale
+# undefined (mt) locale
 
 ## `format` and `parse`
 

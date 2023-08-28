@@ -1,4 +1,4 @@
-# English (en-CA) locale
+# undefined (en-CA) locale
 
 ## `format` and `parse`
 

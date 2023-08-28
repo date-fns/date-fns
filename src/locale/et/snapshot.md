@@ -1,4 +1,4 @@
-# Estonian (et) locale
+# undefined (et) locale
 
 ## `format` and `parse`
 

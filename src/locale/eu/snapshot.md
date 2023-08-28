@@ -1,4 +1,4 @@
-# Basque (eu) locale
+# undefined (eu) locale
 
 ## `format` and `parse`
 

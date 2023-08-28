@@ -1,4 +1,4 @@
-# Scottish Gaelic (gd) locale
+# undefined (gd) locale
 
 ## `format` and `parse`
 

@@ -1,4 +1,4 @@
-# Bengali (bn) locale
+# undefined (bn) locale
 
 ## `format` and `parse`
 

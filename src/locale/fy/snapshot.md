@@ -1,4 +1,4 @@
-# West Frisian (fy) locale
+# undefined (fy) locale
 
 ## `format` and `parse`
 

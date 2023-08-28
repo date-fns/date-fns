@@ -1,4 +1,4 @@
-# Chinese Traditional (zh-TW) locale
+# undefined (zh-TW) locale
 
 ## `format` and `parse`
 

@@ -1,4 +1,4 @@
-# French (fr) locale
+# undefined (fr) locale
 
 ## `format` and `parse`
 

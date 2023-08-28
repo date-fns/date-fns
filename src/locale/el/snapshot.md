@@ -1,4 +1,4 @@
-# Greek (el) locale
+# undefined (el) locale
 
 ## `format` and `parse`
 

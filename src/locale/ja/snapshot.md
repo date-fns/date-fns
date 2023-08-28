@@ -1,4 +1,4 @@
-# Japanese (ja) locale
+# undefined (ja) locale
 
 ## `format` and `parse`
 

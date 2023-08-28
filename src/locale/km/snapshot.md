@@ -1,4 +1,4 @@
-# Khmer (km) locale
+# undefined (km) locale
 
 ## `format` and `parse`
 

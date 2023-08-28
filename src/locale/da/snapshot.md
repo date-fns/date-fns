@@ -1,4 +1,4 @@
-# Danish (da) locale
+# undefined (da) locale
 
 ## `format` and `parse`
 
