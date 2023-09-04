@@ -6,7 +6,7 @@ import toDate from '../toDate/index'
  * @summary Get the month of the given date.
  *
  * @description
- * Get the month of the given date.
+ * Get the month of the given date. getMonth is indexed from 0 (January) to 11 (December).
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
