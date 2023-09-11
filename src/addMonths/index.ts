@@ -20,6 +20,10 @@ import constructFrom from '../constructFrom/index'
  * // Add 5 months to 1 September 2014:
  * const result = addMonths(new Date(2014, 8, 1), 5)
  * //=> Sun Feb 01 2015 00:00:00
+ *
+ * // Add one month to 30 January 2023:
+ * const result = addMonths(new Date(2023, 0, 30), 1)
+ * //=> Tue Feb 28 2023 00:00:00
  */
 export default function addMonths<DateType extends Date>(
   date: DateType | number,
