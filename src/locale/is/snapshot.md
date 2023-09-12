@@ -391,51 +391,51 @@ If now is January 1st, 2000, 00:00.
 
 | Date                     | Result                 | `includeSeconds: true` | `addSuffix: true`            |
 | ------------------------ | ---------------------- | ---------------------- | ---------------------------- |
-| 2006-01-01T00:00:00.000Z | u.þ.b. 6 ár            | u.þ.b. 6 ár            | í u.þ.b. 6 ár                |
-| 2005-01-01T00:00:00.000Z | u.þ.b. 5 ár            | u.þ.b. 5 ár            | í u.þ.b. 5 ár                |
-| 2004-01-01T00:00:00.000Z | u.þ.b. 4 ár            | u.þ.b. 4 ár            | í u.þ.b. 4 ár                |
-| 2003-01-01T00:00:00.000Z | u.þ.b. 3 ár            | u.þ.b. 3 ár            | í u.þ.b. 3 ár                |
-| 2002-01-01T00:00:00.000Z | u.þ.b. 2 ár            | u.þ.b. 2 ár            | í u.þ.b. 2 ár                |
-| 2001-06-01T00:00:00.000Z | meira en 1 ár          | meira en 1 ár          | í meira en 1 ár              |
-| 2001-02-01T00:00:00.000Z | u.þ.b. 1 ár            | u.þ.b. 1 ár            | í u.þ.b. 1 ár                |
-| 2001-01-01T00:00:00.000Z | u.þ.b. 1 ár            | u.þ.b. 1 ár            | í u.þ.b. 1 ár                |
-| 2000-06-01T00:00:00.000Z | 5 mánuðir              | 5 mánuðir              | í 5 mánuðir                  |
-| 2000-03-01T00:00:00.000Z | 2 mánuðir              | 2 mánuðir              | í 2 mánuðir                  |
-| 2000-02-01T00:00:00.000Z | u.þ.b. 1 mánuður       | u.þ.b. 1 mánuður       | í u.þ.b. 1 mánuður           |
-| 2000-01-15T00:00:00.000Z | 14 dagar               | 14 dagar               | í 14 dagar                   |
-| 2000-01-02T00:00:00.000Z | 1 dagur                | 1 dagur                | í 1 dagur                    |
-| 2000-01-01T06:00:00.000Z | u.þ.b. 6 klukkustundir | u.þ.b. 6 klukkustundir | í u.þ.b. 6 klukkustundir     |
-| 2000-01-01T01:00:00.000Z | u.þ.b. 1 klukkustund   | u.þ.b. 1 klukkustund   | í u.þ.b. 1 klukkustund       |
-| 2000-01-01T00:45:00.000Z | u.þ.b. 1 klukkustund   | u.þ.b. 1 klukkustund   | í u.þ.b. 1 klukkustund       |
-| 2000-01-01T00:30:00.000Z | 30 mínútur             | 30 mínútur             | í 30 mínútur                 |
-| 2000-01-01T00:15:00.000Z | 15 mínútur             | 15 mínútur             | í 15 mínútur                 |
-| 2000-01-01T00:01:00.000Z | 1 mínúta               | 1 mínúta               | í 1 mínúta                   |
-| 2000-01-01T00:00:25.000Z | minna en 1 mínúta      | hálf mínúta            | í minna en 1 mínúta          |
-| 2000-01-01T00:00:15.000Z | minna en 1 mínúta      | minna en 20 sekúndur   | í minna en 1 mínúta          |
-| 2000-01-01T00:00:05.000Z | minna en 1 mínúta      | minna en 10 sekúndur   | í minna en 1 mínúta          |
-| 2000-01-01T00:00:00.000Z | minna en 1 mínúta      | minna en 5 sekúndur    | minna en 1 mínúta síðan      |
-| 1999-12-31T23:59:55.000Z | minna en 1 mínúta      | minna en 10 sekúndur   | minna en 1 mínúta síðan      |
-| 1999-12-31T23:59:45.000Z | minna en 1 mínúta      | minna en 20 sekúndur   | minna en 1 mínúta síðan      |
-| 1999-12-31T23:59:35.000Z | minna en 1 mínúta      | hálf mínúta            | minna en 1 mínúta síðan      |
-| 1999-12-31T23:59:00.000Z | 1 mínúta               | 1 mínúta               | 1 mínúta síðan               |
-| 1999-12-31T23:45:00.000Z | 15 mínútur             | 15 mínútur             | 15 mínútur síðan             |
-| 1999-12-31T23:30:00.000Z | 30 mínútur             | 30 mínútur             | 30 mínútur síðan             |
-| 1999-12-31T23:15:00.000Z | u.þ.b. 1 klukkustund   | u.þ.b. 1 klukkustund   | u.þ.b. 1 klukkustund síðan   |
-| 1999-12-31T23:00:00.000Z | u.þ.b. 1 klukkustund   | u.þ.b. 1 klukkustund   | u.þ.b. 1 klukkustund síðan   |
-| 1999-12-31T18:00:00.000Z | u.þ.b. 6 klukkustundir | u.þ.b. 6 klukkustundir | u.þ.b. 6 klukkustundir síðan |
-| 1999-12-30T00:00:00.000Z | 2 dagar                | 2 dagar                | 2 dagar síðan                |
-| 1999-12-15T00:00:00.000Z | 17 dagar               | 17 dagar               | 17 dagar síðan               |
-| 1999-12-01T00:00:00.000Z | u.þ.b. 1 mánuður       | u.þ.b. 1 mánuður       | u.þ.b. 1 mánuður síðan       |
-| 1999-11-01T00:00:00.000Z | 2 mánuðir              | 2 mánuðir              | 2 mánuðir síðan              |
-| 1999-06-01T00:00:00.000Z | 7 mánuðir              | 7 mánuðir              | 7 mánuðir síðan              |
-| 1999-01-01T00:00:00.000Z | u.þ.b. 1 ár            | u.þ.b. 1 ár            | u.þ.b. 1 ár síðan            |
-| 1998-12-01T00:00:00.000Z | u.þ.b. 1 ár            | u.þ.b. 1 ár            | u.þ.b. 1 ár síðan            |
-| 1998-06-01T00:00:00.000Z | meira en 1 ár          | meira en 1 ár          | meira en 1 ár síðan          |
-| 1998-01-01T00:00:00.000Z | u.þ.b. 2 ár            | u.þ.b. 2 ár            | u.þ.b. 2 ár síðan            |
-| 1997-01-01T00:00:00.000Z | u.þ.b. 3 ár            | u.þ.b. 3 ár            | u.þ.b. 3 ár síðan            |
-| 1996-01-01T00:00:00.000Z | u.þ.b. 4 ár            | u.þ.b. 4 ár            | u.þ.b. 4 ár síðan            |
-| 1995-01-01T00:00:00.000Z | u.þ.b. 5 ár            | u.þ.b. 5 ár            | u.þ.b. 5 ár síðan            |
-| 1994-01-01T00:00:00.000Z | u.þ.b. 6 ár            | u.þ.b. 6 ár            | u.þ.b. 6 ár síðan            |
+| 2006-01-01T00:00:00.000Z | u.þ.b. 6 ár            | u.þ.b. 6 ár            | eftir u.þ.b. 6 ár            |
+| 2005-01-01T00:00:00.000Z | u.þ.b. 5 ár            | u.þ.b. 5 ár            | eftir u.þ.b. 5 ár            |
+| 2004-01-01T00:00:00.000Z | u.þ.b. 4 ár            | u.þ.b. 4 ár            | eftir u.þ.b. 4 ár            |
+| 2003-01-01T00:00:00.000Z | u.þ.b. 3 ár            | u.þ.b. 3 ár            | eftir u.þ.b. 3 ár            |
+| 2002-01-01T00:00:00.000Z | u.þ.b. 2 ár            | u.þ.b. 2 ár            | eftir u.þ.b. 2 ár            |
+| 2001-06-01T00:00:00.000Z | meira en 1 ár          | meira en 1 ár          | eftir meira en 1 ár          |
+| 2001-02-01T00:00:00.000Z | u.þ.b. 1 ár            | u.þ.b. 1 ár            | eftir u.þ.b. 1 ár            |
+| 2001-01-01T00:00:00.000Z | u.þ.b. 1 ár            | u.þ.b. 1 ár            | eftir u.þ.b. 1 ár            |
+| 2000-06-01T00:00:00.000Z | 5 mánuðir              | 5 mánuðir              | eftir 5 mánuði               |
+| 2000-03-01T00:00:00.000Z | 2 mánuðir              | 2 mánuðir              | eftir 2 mánuði               |
+| 2000-02-01T00:00:00.000Z | u.þ.b. 1 mánuður       | u.þ.b. 1 mánuður       | eftir u.þ.b. 1 mánuð         |
+| 2000-01-15T00:00:00.000Z | 14 dagar               | 14 dagar               | eftir 14 daga                |
+| 2000-01-02T00:00:00.000Z | 1 dagur                | 1 dagur                | eftir 1 dag                  |
+| 2000-01-01T06:00:00.000Z | u.þ.b. 6 klukkustundir | u.þ.b. 6 klukkustundir | eftir u.þ.b. 6 klukkustundir |
+| 2000-01-01T01:00:00.000Z | u.þ.b. 1 klukkustund   | u.þ.b. 1 klukkustund   | eftir u.þ.b. 1 klukkustund   |
+| 2000-01-01T00:45:00.000Z | u.þ.b. 1 klukkustund   | u.þ.b. 1 klukkustund   | eftir u.þ.b. 1 klukkustund   |
+| 2000-01-01T00:30:00.000Z | 30 mínútur             | 30 mínútur             | eftir 30 mínútur             |
+| 2000-01-01T00:15:00.000Z | 15 mínútur             | 15 mínútur             | eftir 15 mínútur             |
+| 2000-01-01T00:01:00.000Z | 1 mínúta               | 1 mínúta               | eftir 1 mínútu               |
+| 2000-01-01T00:00:25.000Z | minna en 1 mínúta      | hálf mínúta            | eftir minna en 1 mínútu      |
+| 2000-01-01T00:00:15.000Z | minna en 1 mínúta      | minna en 20 sekúndur   | eftir minna en 1 mínútu      |
+| 2000-01-01T00:00:05.000Z | minna en 1 mínúta      | minna en 10 sekúndur   | eftir minna en 1 mínútu      |
+| 2000-01-01T00:00:00.000Z | minna en 1 mínúta      | minna en 5 sekúndur    | fyrir minna en 1 mínútu      |
+| 1999-12-31T23:59:55.000Z | minna en 1 mínúta      | minna en 10 sekúndur   | fyrir minna en 1 mínútu      |
+| 1999-12-31T23:59:45.000Z | minna en 1 mínúta      | minna en 20 sekúndur   | fyrir minna en 1 mínútu      |
+| 1999-12-31T23:59:35.000Z | minna en 1 mínúta      | hálf mínúta            | fyrir minna en 1 mínútu      |
+| 1999-12-31T23:59:00.000Z | 1 mínúta               | 1 mínúta               | fyrir 1 mínútu               |
+| 1999-12-31T23:45:00.000Z | 15 mínútur             | 15 mínútur             | fyrir 15 mínútum             |
+| 1999-12-31T23:30:00.000Z | 30 mínútur             | 30 mínútur             | fyrir 30 mínútum             |
+| 1999-12-31T23:15:00.000Z | u.þ.b. 1 klukkustund   | u.þ.b. 1 klukkustund   | fyrir u.þ.b. 1 klukkustund   |
+| 1999-12-31T23:00:00.000Z | u.þ.b. 1 klukkustund   | u.þ.b. 1 klukkustund   | fyrir u.þ.b. 1 klukkustund   |
+| 1999-12-31T18:00:00.000Z | u.þ.b. 6 klukkustundir | u.þ.b. 6 klukkustundir | fyrir u.þ.b. 6 klukkustundum |
+| 1999-12-30T00:00:00.000Z | 2 dagar                | 2 dagar                | fyrir 2 dögum                |
+| 1999-12-15T00:00:00.000Z | 17 dagar               | 17 dagar               | fyrir 17 dögum               |
+| 1999-12-01T00:00:00.000Z | u.þ.b. 1 mánuður       | u.þ.b. 1 mánuður       | fyrir u.þ.b. 1 mánuði        |
+| 1999-11-01T00:00:00.000Z | 2 mánuðir              | 2 mánuðir              | fyrir 2 mánuðum              |
+| 1999-06-01T00:00:00.000Z | 7 mánuðir              | 7 mánuðir              | fyrir 7 mánuðum              |
+| 1999-01-01T00:00:00.000Z | u.þ.b. 1 ár            | u.þ.b. 1 ár            | fyrir u.þ.b. 1 ári           |
+| 1998-12-01T00:00:00.000Z | u.þ.b. 1 ár            | u.þ.b. 1 ár            | fyrir u.þ.b. 1 ári           |
+| 1998-06-01T00:00:00.000Z | meira en 1 ár          | meira en 1 ár          | fyrir meira en 1 ári         |
+| 1998-01-01T00:00:00.000Z | u.þ.b. 2 ár            | u.þ.b. 2 ár            | fyrir u.þ.b. 2 árum          |
+| 1997-01-01T00:00:00.000Z | u.þ.b. 3 ár            | u.þ.b. 3 ár            | fyrir u.þ.b. 3 árum          |
+| 1996-01-01T00:00:00.000Z | u.þ.b. 4 ár            | u.þ.b. 4 ár            | fyrir u.þ.b. 4 árum          |
+| 1995-01-01T00:00:00.000Z | u.þ.b. 5 ár            | u.þ.b. 5 ár            | fyrir u.þ.b. 5 árum          |
+| 1994-01-01T00:00:00.000Z | u.þ.b. 6 ár            | u.þ.b. 6 ár            | fyrir u.þ.b. 6 árum          |
 
 ## `formatDistanceStrict`
 
@@ -443,51 +443,51 @@ If now is January 1st, 2000, 00:00.
 
 | Date                     | Result          | `addSuffix: true`     | With forced unit (i.e. `hour`) |
 | ------------------------ | --------------- | --------------------- | ------------------------------ |
-| 2006-01-01T00:00:00.000Z | 6 ár            | í 6 ár                | 52608 klukkustundir            |
-| 2005-01-01T00:00:00.000Z | 5 ár            | í 5 ár                | 43848 klukkustundir            |
-| 2004-01-01T00:00:00.000Z | 4 ár            | í 4 ár                | 35064 klukkustundir            |
-| 2003-01-01T00:00:00.000Z | 3 ár            | í 3 ár                | 26304 klukkustundir            |
-| 2002-01-01T00:00:00.000Z | 2 ár            | í 2 ár                | 17544 klukkustundir            |
-| 2001-06-01T00:00:00.000Z | 1 ár            | í 1 ár                | 12408 klukkustundir            |
-| 2001-02-01T00:00:00.000Z | 1 ár            | í 1 ár                | 9528 klukkustundir             |
-| 2001-01-01T00:00:00.000Z | 1 ár            | í 1 ár                | 8784 klukkustundir             |
-| 2000-06-01T00:00:00.000Z | 5 mánuðir       | í 5 mánuðir           | 3648 klukkustundir             |
-| 2000-03-01T00:00:00.000Z | 2 mánuðir       | í 2 mánuðir           | 1440 klukkustundir             |
-| 2000-02-01T00:00:00.000Z | 1 mánuður       | í 1 mánuður           | 744 klukkustundir              |
-| 2000-01-15T00:00:00.000Z | 14 dagar        | í 14 dagar            | 336 klukkustundir              |
-| 2000-01-02T00:00:00.000Z | 1 dagur         | í 1 dagur             | 24 klukkustundir               |
-| 2000-01-01T06:00:00.000Z | 6 klukkustundir | í 6 klukkustundir     | 6 klukkustundir                |
-| 2000-01-01T01:00:00.000Z | 1 klukkustund   | í 1 klukkustund       | 1 klukkustund                  |
-| 2000-01-01T00:45:00.000Z | 45 mínútur      | í 45 mínútur          | 1 klukkustund                  |
-| 2000-01-01T00:30:00.000Z | 30 mínútur      | í 30 mínútur          | 1 klukkustund                  |
-| 2000-01-01T00:15:00.000Z | 15 mínútur      | í 15 mínútur          | 0 klukkustundir                |
-| 2000-01-01T00:01:00.000Z | 1 mínúta        | í 1 mínúta            | 0 klukkustundir                |
-| 2000-01-01T00:00:25.000Z | 25 sekúndur     | í 25 sekúndur         | 0 klukkustundir                |
-| 2000-01-01T00:00:15.000Z | 15 sekúndur     | í 15 sekúndur         | 0 klukkustundir                |
-| 2000-01-01T00:00:05.000Z | 5 sekúndur      | í 5 sekúndur          | 0 klukkustundir                |
-| 2000-01-01T00:00:00.000Z | 0 sekúndur      | 0 sekúndur síðan      | 0 klukkustundir                |
-| 1999-12-31T23:59:55.000Z | 5 sekúndur      | 5 sekúndur síðan      | 0 klukkustundir                |
-| 1999-12-31T23:59:45.000Z | 15 sekúndur     | 15 sekúndur síðan     | 0 klukkustundir                |
-| 1999-12-31T23:59:35.000Z | 25 sekúndur     | 25 sekúndur síðan     | 0 klukkustundir                |
-| 1999-12-31T23:59:00.000Z | 1 mínúta        | 1 mínúta síðan        | 0 klukkustundir                |
-| 1999-12-31T23:45:00.000Z | 15 mínútur      | 15 mínútur síðan      | 0 klukkustundir                |
-| 1999-12-31T23:30:00.000Z | 30 mínútur      | 30 mínútur síðan      | 1 klukkustund                  |
-| 1999-12-31T23:15:00.000Z | 45 mínútur      | 45 mínútur síðan      | 1 klukkustund                  |
-| 1999-12-31T23:00:00.000Z | 1 klukkustund   | 1 klukkustund síðan   | 1 klukkustund                  |
-| 1999-12-31T18:00:00.000Z | 6 klukkustundir | 6 klukkustundir síðan | 6 klukkustundir                |
-| 1999-12-30T00:00:00.000Z | 2 dagar         | 2 dagar síðan         | 48 klukkustundir               |
-| 1999-12-15T00:00:00.000Z | 17 dagar        | 17 dagar síðan        | 408 klukkustundir              |
-| 1999-12-01T00:00:00.000Z | 1 mánuður       | 1 mánuður síðan       | 744 klukkustundir              |
-| 1999-11-01T00:00:00.000Z | 2 mánuðir       | 2 mánuðir síðan       | 1464 klukkustundir             |
-| 1999-06-01T00:00:00.000Z | 7 mánuðir       | 7 mánuðir síðan       | 5136 klukkustundir             |
-| 1999-01-01T00:00:00.000Z | 1 ár            | 1 ár síðan            | 8760 klukkustundir             |
-| 1998-12-01T00:00:00.000Z | 1 ár            | 1 ár síðan            | 9504 klukkustundir             |
-| 1998-06-01T00:00:00.000Z | 2 ár            | 2 ár síðan            | 13896 klukkustundir            |
-| 1998-01-01T00:00:00.000Z | 2 ár            | 2 ár síðan            | 17520 klukkustundir            |
-| 1997-01-01T00:00:00.000Z | 3 ár            | 3 ár síðan            | 26280 klukkustundir            |
-| 1996-01-01T00:00:00.000Z | 4 ár            | 4 ár síðan            | 35064 klukkustundir            |
-| 1995-01-01T00:00:00.000Z | 5 ár            | 5 ár síðan            | 43824 klukkustundir            |
-| 1994-01-01T00:00:00.000Z | 6 ár            | 6 ár síðan            | 52584 klukkustundir            |
+| 2006-01-01T00:00:00.000Z | 6 ár            | eftir 6 ár            | 52608 klukkustundir            |
+| 2005-01-01T00:00:00.000Z | 5 ár            | eftir 5 ár            | 43848 klukkustundir            |
+| 2004-01-01T00:00:00.000Z | 4 ár            | eftir 4 ár            | 35064 klukkustundir            |
+| 2003-01-01T00:00:00.000Z | 3 ár            | eftir 3 ár            | 26304 klukkustundir            |
+| 2002-01-01T00:00:00.000Z | 2 ár            | eftir 2 ár            | 17544 klukkustundir            |
+| 2001-06-01T00:00:00.000Z | 1 ár            | eftir 1 ár            | 12408 klukkustundir            |
+| 2001-02-01T00:00:00.000Z | 1 ár            | eftir 1 ár            | 9528 klukkustundir             |
+| 2001-01-01T00:00:00.000Z | 1 ár            | eftir 1 ár            | 8784 klukkustundir             |
+| 2000-06-01T00:00:00.000Z | 5 mánuðir       | eftir 5 mánuði        | 3648 klukkustundir             |
+| 2000-03-01T00:00:00.000Z | 2 mánuðir       | eftir 2 mánuði        | 1440 klukkustundir             |
+| 2000-02-01T00:00:00.000Z | 1 mánuður       | eftir 1 mánuð         | 744 klukkustundir              |
+| 2000-01-15T00:00:00.000Z | 14 dagar        | eftir 14 daga         | 336 klukkustundir              |
+| 2000-01-02T00:00:00.000Z | 1 dagur         | eftir 1 dag           | 24 klukkustundir               |
+| 2000-01-01T06:00:00.000Z | 6 klukkustundir | eftir 6 klukkustundir | 6 klukkustundir                |
+| 2000-01-01T01:00:00.000Z | 1 klukkustund   | eftir 1 klukkustund   | 1 klukkustund                  |
+| 2000-01-01T00:45:00.000Z | 45 mínútur      | eftir 45 mínútur      | 1 klukkustund                  |
+| 2000-01-01T00:30:00.000Z | 30 mínútur      | eftir 30 mínútur      | 1 klukkustund                  |
+| 2000-01-01T00:15:00.000Z | 15 mínútur      | eftir 15 mínútur      | 0 klukkustundir                |
+| 2000-01-01T00:01:00.000Z | 1 mínúta        | eftir 1 mínútu        | 0 klukkustundir                |
+| 2000-01-01T00:00:25.000Z | 25 sekúndur     | eftir 25 sekúndur     | 0 klukkustundir                |
+| 2000-01-01T00:00:15.000Z | 15 sekúndur     | eftir 15 sekúndur     | 0 klukkustundir                |
+| 2000-01-01T00:00:05.000Z | 5 sekúndur      | eftir 5 sekúndur      | 0 klukkustundir                |
+| 2000-01-01T00:00:00.000Z | 0 sekúndur      | fyrir 0 sekúndum      | 0 klukkustundir                |
+| 1999-12-31T23:59:55.000Z | 5 sekúndur      | fyrir 5 sekúndum      | 0 klukkustundir                |
+| 1999-12-31T23:59:45.000Z | 15 sekúndur     | fyrir 15 sekúndum     | 0 klukkustundir                |
+| 1999-12-31T23:59:35.000Z | 25 sekúndur     | fyrir 25 sekúndum     | 0 klukkustundir                |
+| 1999-12-31T23:59:00.000Z | 1 mínúta        | fyrir 1 mínútu        | 0 klukkustundir                |
+| 1999-12-31T23:45:00.000Z | 15 mínútur      | fyrir 15 mínútum      | 0 klukkustundir                |
+| 1999-12-31T23:30:00.000Z | 30 mínútur      | fyrir 30 mínútum      | 1 klukkustund                  |
+| 1999-12-31T23:15:00.000Z | 45 mínútur      | fyrir 45 mínútum      | 1 klukkustund                  |
+| 1999-12-31T23:00:00.000Z | 1 klukkustund   | fyrir 1 klukkustund   | 1 klukkustund                  |
+| 1999-12-31T18:00:00.000Z | 6 klukkustundir | fyrir 6 klukkustundum | 6 klukkustundir                |
+| 1999-12-30T00:00:00.000Z | 2 dagar         | fyrir 2 dögum         | 48 klukkustundir               |
+| 1999-12-15T00:00:00.000Z | 17 dagar        | fyrir 17 dögum        | 408 klukkustundir              |
+| 1999-12-01T00:00:00.000Z | 1 mánuður       | fyrir 1 mánuði        | 744 klukkustundir              |
+| 1999-11-01T00:00:00.000Z | 2 mánuðir       | fyrir 2 mánuðum       | 1464 klukkustundir             |
+| 1999-06-01T00:00:00.000Z | 7 mánuðir       | fyrir 7 mánuðum       | 5136 klukkustundir             |
+| 1999-01-01T00:00:00.000Z | 1 ár            | fyrir 1 ári           | 8760 klukkustundir             |
+| 1998-12-01T00:00:00.000Z | 1 ár            | fyrir 1 ári           | 9504 klukkustundir             |
+| 1998-06-01T00:00:00.000Z | 2 ár            | fyrir 2 árum          | 13896 klukkustundir            |
+| 1998-01-01T00:00:00.000Z | 2 ár            | fyrir 2 árum          | 17520 klukkustundir            |
+| 1997-01-01T00:00:00.000Z | 3 ár            | fyrir 3 árum          | 26280 klukkustundir            |
+| 1996-01-01T00:00:00.000Z | 4 ár            | fyrir 4 árum          | 35064 klukkustundir            |
+| 1995-01-01T00:00:00.000Z | 5 ár            | fyrir 5 árum          | 43824 klukkustundir            |
+| 1994-01-01T00:00:00.000Z | 6 ár            | fyrir 6 árum          | 52584 klukkustundir            |
 
 ## `formatRelative`
 

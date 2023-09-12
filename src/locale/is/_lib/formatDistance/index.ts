@@ -1,114 +1,241 @@
 import type { FormatDistanceFn, FormatDistanceLocale } from '../../../types'
 
-type PluralForms = 'singular' | 'plural'
+type PluralForms = 's' | 'p' // signular | plural
+type Declension = 'nom' | 'acc' | 'dat' // nafnfall | þolfall | þágufall
 
 // See: http://docs.translatehouse.org/projects/localization-guide/en/latest/l10n/pluralforms.html?id=l10n/pluralforms
 const pluralForm = (n: number): PluralForms =>
-  n % 10 !== 1 || n % 100 === 11 ? 'plural' : 'singular'
+  n % 10 !== 1 || n % 100 === 11 ? 'p' : 's'
 
-type FormatDistanceTokenValue = string | Record<PluralForms, string>
+type TokenValue = string | Record<PluralForms, string>
+type DeclinedTokenValue = { nom: TokenValue } & Partial<
+  Record<Declension, TokenValue>
+>
 
-const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
+const formatDistanceLocale: FormatDistanceLocale<
+  TokenValue | DeclinedTokenValue
+> = {
   lessThanXSeconds: {
-    singular: 'minna en {{count}} sekúnda',
-    plural: 'minna en {{count}} sekúndur',
+    nom: {
+      s: 'minna en {{count}} sekúnda',
+      p: 'minna en {{count}} sekúndur',
+    },
+    acc: {
+      s: 'minna en {{count}} sekúndu',
+      p: 'minna en {{count}} sekúndur',
+    },
+    dat: {
+      s: 'minna en {{count}} sekúndu',
+      p: 'minna en {{count}} sekúndum',
+    },
   },
 
   xSeconds: {
-    singular: '{{count}} sekúnda',
-    plural: '{{count}} sekúndur',
+    nom: {
+      s: '{{count}} sekúnda',
+      p: '{{count}} sekúndur',
+    },
+    acc: {
+      s: '{{count}} sekúndu',
+      p: '{{count}} sekúndur',
+    },
+    dat: {
+      s: '{{count}} sekúndu',
+      p: '{{count}} sekúndum',
+    },
   },
 
-  halfAMinute: 'hálf mínúta',
+  halfAMinute: {
+    nom: 'hálf mínúta',
+    acc: 'hálfa mínútu',
+    dat: 'hálfri mínútu',
+  },
 
   lessThanXMinutes: {
-    singular: 'minna en {{count}} mínúta',
-    plural: 'minna en {{count}} mínútur',
+    nom: {
+      s: 'minna en {{count}} mínúta',
+      p: 'minna en {{count}} mínútur',
+    },
+    acc: {
+      s: 'minna en {{count}} mínútu',
+      p: 'minna en {{count}} mínútur',
+    },
+    dat: {
+      s: 'minna en {{count}} mínútu',
+      p: 'minna en {{count}} mínútum',
+    },
   },
 
   xMinutes: {
-    singular: '{{count}} mínúta',
-    plural: '{{count}} mínútur',
+    nom: {
+      s: '{{count}} mínúta',
+      p: '{{count}} mínútur',
+    },
+    acc: {
+      s: '{{count}} mínútu',
+      p: '{{count}} mínútur',
+    },
+    dat: {
+      s: '{{count}} mínútu',
+      p: '{{count}} mínútum',
+    },
   },
 
   aboutXHours: {
-    singular: 'u.þ.b. {{count}} klukkustund',
-    plural: 'u.þ.b. {{count}} klukkustundir',
+    nom: {
+      s: 'u.þ.b. {{count}} klukkustund',
+      p: 'u.þ.b. {{count}} klukkustundir',
+    },
+    // acc: (same as nom)
+    dat: {
+      s: 'u.þ.b. {{count}} klukkustund',
+      p: 'u.þ.b. {{count}} klukkustundum',
+    },
   },
 
   xHours: {
-    singular: '{{count}} klukkustund',
-    plural: '{{count}} klukkustundir',
+    nom: {
+      s: '{{count}} klukkustund',
+      p: '{{count}} klukkustundir',
+    },
+    // acc: (same as nom)
+    dat: {
+      s: '{{count}} klukkustund',
+      p: '{{count}} klukkustundum',
+    },
   },
 
   xDays: {
-    singular: '{{count}} dagur',
-    plural: '{{count}} dagar',
+    nom: {
+      s: '{{count}} dagur',
+      p: '{{count}} dagar',
+    },
+    acc: {
+      s: '{{count}} dag',
+      p: '{{count}} daga',
+    },
+    dat: {
+      s: '{{count}} degi',
+      p: '{{count}} dögum',
+    },
   },
 
   aboutXWeeks: {
-    singular: 'u.þ.b. {{count}} vika',
-    plural: 'u.þ.b. {{count}} vikur',
+    nom: {
+      s: 'u.þ.b. {{count}} vika',
+      p: 'u.þ.b. {{count}} vikur',
+    },
+    acc: {
+      s: 'u.þ.b. {{count}} viku',
+      p: 'u.þ.b. {{count}} vikur',
+    },
+    dat: {
+      s: 'u.þ.b. {{count}} viku',
+      p: 'u.þ.b. {{count}} vikum',
+    },
   },
 
   xWeeks: {
-    singular: '{{count}} vika',
-    plural: '{{count}} vikur',
+    nom: {
+      s: '{{count}} vika',
+      p: '{{count}} vikur',
+    },
+    acc: {
+      s: '{{count}} viku',
+      p: '{{count}} vikur',
+    },
+    dat: {
+      s: '{{count}} viku',
+      p: '{{count}} vikum',
+    },
   },
 
   aboutXMonths: {
-    singular: 'u.þ.b. {{count}} mánuður',
-    plural: 'u.þ.b. {{count}} mánuðir',
+    nom: {
+      s: 'u.þ.b. {{count}} mánuður',
+      p: 'u.þ.b. {{count}} mánuðir',
+    },
+    acc: {
+      s: 'u.þ.b. {{count}} mánuð',
+      p: 'u.þ.b. {{count}} mánuði',
+    },
+    dat: {
+      s: 'u.þ.b. {{count}} mánuði',
+      p: 'u.þ.b. {{count}} mánuðum',
+    },
   },
 
   xMonths: {
-    singular: '{{count}} mánuður',
-    plural: '{{count}} mánuðir',
+    nom: {
+      s: '{{count}} mánuður',
+      p: '{{count}} mánuðir',
+    },
+    acc: {
+      s: '{{count}} mánuð',
+      p: '{{count}} mánuði',
+    },
+    dat: {
+      s: '{{count}} mánuði',
+      p: '{{count}} mánuðum',
+    },
   },
 
   aboutXYears: {
-    singular: 'u.þ.b. {{count}} ár',
-    plural: 'u.þ.b. {{count}} ár',
+    nom: 'u.þ.b. {{count}} ár',
+    // acc: (same as nom)
+    dat: {
+      s: 'u.þ.b. {{count}} ári',
+      p: 'u.þ.b. {{count}} árum',
+    },
   },
-
   xYears: {
-    singular: '{{count}} ár',
-    plural: '{{count}} ár',
+    nom: '{{count}} ár',
+    // acc: (same as nom)
+    dat: {
+      s: '{{count}} ári',
+      p: '{{count}} árum',
+    },
   },
-
   overXYears: {
-    singular: 'meira en {{count}} ár',
-    plural: 'meira en {{count}} ár',
+    nom: 'meira en {{count}} ár',
+    // acc: (same as nom)
+    dat: {
+      s: 'meira en {{count}} ári',
+      p: 'meira en {{count}} árum',
+    },
   },
-
   almostXYears: {
-    singular: 'næstum {{count}} ár',
-    plural: 'næstum {{count}} ár',
+    nom: 'næstum {{count}} ár',
+    // acc: (same as nom)
+    dat: {
+      s: 'næstum {{count}} ári',
+      p: 'næstum {{count}} árum',
+    },
   },
 }
 
-const formatDistance: FormatDistanceFn = (token, count, options) => {
-  let result
+const present = { decl: 'nom', prefix: '' } as const
+const future = { decl: 'acc', prefix: 'eftir ' } as const
+const past = { decl: 'dat', prefix: 'fyrir ' } as const
 
-  const tokenValue = formatDistanceLocale[token]
-  if (typeof tokenValue === 'string') {
-    result = tokenValue
-  } else {
-    result = tokenValue[pluralForm(count)].replace(
-      '{{count}}',
-      count.toString()
-    )
-  }
+const formatDistance: FormatDistanceFn = (token, count, options = {}) => {
+  const { decl, prefix } = !options.addSuffix
+    ? present
+    : (options.comparison as number) > 0
+    ? future
+    : past
 
-  if (options?.addSuffix) {
-    if (options.comparison && options.comparison > 0) {
-      return 'í ' + result
-    } else {
-      return result + ' síðan'
-    }
-  }
+  const tokenData = formatDistanceLocale[token]
 
-  return result
+  const tokenValue =
+    typeof tokenData === 'string' || !('nom' in tokenData)
+      ? tokenData
+      : tokenData[decl] || tokenData.nom
+
+  let text =
+    typeof tokenValue === 'string' ? tokenValue : tokenValue[pluralForm(count)]
+
+  return prefix + text.replace('{{count}}', count.toString())
 }
 
 export default formatDistance
