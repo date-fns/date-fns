@@ -126,20 +126,23 @@ const present = { decl: 'nom', prefix: '' } as const
 const future = { decl: 'acc', prefix: 'eftir ' } as const
 const past = { decl: 'dat', prefix: 'fyrir ' } as const
 
-const formatDistance: FormatDistanceFn = (token, count, options = {}) => {
-  const { decl, prefix } = !options.addSuffix
-    ? present
-    : (options.comparison as number) > 0
-    ? future
-    : past
+const formatDistance: FormatDistanceFn = (token, count, options) => {
+  const mode =
+    !options || !options.addSuffix
+      ? present
+      : (options.comparison as number) > 0
+      ? future
+      : past
 
   const tokenData = formatDistanceLocale[token]
-  const tokenValue = tokenData[decl]
+  const tokenValue = tokenData[mode.decl]
 
   const text =
     typeof tokenValue === 'string' ? tokenValue : tokenValue[pluralForm(count)]
 
-  return prefix + (tokenData.stem + text).replace('{{count}}', count.toString())
+  return (
+    mode.prefix + (tokenData.stem + text).replace('{{count}}', count.toString())
+  )
 }
 
 export default formatDistance
