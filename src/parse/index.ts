@@ -8,7 +8,6 @@ import type {
   LocalizedOptions,
   WeekOptions,
 } from '../types'
-import assign from '../_lib/assign/index'
 import longFormatters from '../_lib/format/longFormatters/index'
 import {
   isProtectedDayOfYearToken,
@@ -39,7 +38,8 @@ export interface ParseOptions
 //   If there is no matching single quote
 //   then the sequence will continue until the end of the string.
 // - . matches any single character unmatched by previous parts of the RegExps
-const formattingTokensRegExp = /[yYQqMLwIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)|./g
+const formattingTokensRegExp =
+  /[yYQqMLwIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)|./g
 
 // This RegExp catches symbols escaped by quotes, and also
 // sequences of symbols P, p, and the combinations like `PPPPPPPppppp`
@@ -510,7 +510,7 @@ export default function parse<DateType extends Date>(
     // Result is tuple (date, flags)
     if (Array.isArray(result)) {
       date = result[0]
-      assign(flags, result[1])
+      Object.assign(flags, result[1])
       // Result is date
     } else {
       date = result

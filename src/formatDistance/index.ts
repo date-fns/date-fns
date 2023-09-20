@@ -4,8 +4,6 @@ import differenceInMonths from '../differenceInMonths/index'
 import differenceInSeconds from '../differenceInSeconds/index'
 import toDate from '../toDate/index'
 import type { LocalizedOptions } from '../types'
-import assign from '../_lib/assign/index'
-import cloneObject from '../_lib/cloneObject/index'
 import defaultLocale from '../_lib/defaultLocale/index'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
@@ -120,7 +118,7 @@ export default function formatDistance<DateType extends Date>(
     throw new RangeError('Invalid time value')
   }
 
-  const localizeOptions = assign(cloneObject(options), {
+  const localizeOptions = Object.assign({}, options, {
     addSuffix: options?.addSuffix,
     comparison: comparison as -1 | 0 | 1,
   })
