@@ -41,7 +41,8 @@ async function generatePackageJSON(
 ) {
   const packageJSON = JSON.parse(await readFile('package.json', 'utf-8'))
   packageJSON.exports = Object.fromEntries(
-    mapExports(['.', './constants', './locale', './fp'], '.')
+    [['.', { require: './index.js', import: './index.mjs' }]]
+      .concat(mapExports(['./constants', './locale', './fp'], '.'))
       .concat(mapExports(mapFiles(fns)))
       .concat(mapExports(mapFiles(fpFns), './fp'))
       .concat(mapExports(mapFiles(locales), './locale'))
@@ -56,7 +57,7 @@ function mapFiles(files: File[]) {
 function mapExports(paths: string[], prefix = '.') {
   return paths.map((path) => {
     const pth = `${prefix}${path.slice(1)}`
-    return [pth, { require: `${pth}/index.js`, import: `${pth}/index.mjs` }]
+    return [pth, { require: `${pth}.js`, import: `${pth}.mjs` }]
   })
 }
 

@@ -22,2368 +22,2368 @@
       "import": "./index.mjs"
     },
     "./constants": {
-      "require": "./constants/index.js",
-      "import": "./constants/index.mjs"
+      "require": "./constants.js",
+      "import": "./constants.mjs"
     },
     "./locale": {
-      "require": "./locale/index.js",
-      "import": "./locale/index.mjs"
+      "require": "./locale.js",
+      "import": "./locale.mjs"
     },
     "./fp": {
-      "require": "./fp/index.js",
-      "import": "./fp/index.mjs"
+      "require": "./fp.js",
+      "import": "./fp.mjs"
     },
     "./add": {
-      "require": "./add/index.js",
-      "import": "./add/index.mjs"
+      "require": "./add.js",
+      "import": "./add.mjs"
     },
     "./addBusinessDays": {
-      "require": "./addBusinessDays/index.js",
-      "import": "./addBusinessDays/index.mjs"
+      "require": "./addBusinessDays.js",
+      "import": "./addBusinessDays.mjs"
     },
     "./addDays": {
-      "require": "./addDays/index.js",
-      "import": "./addDays/index.mjs"
+      "require": "./addDays.js",
+      "import": "./addDays.mjs"
     },
     "./addHours": {
-      "require": "./addHours/index.js",
-      "import": "./addHours/index.mjs"
+      "require": "./addHours.js",
+      "import": "./addHours.mjs"
     },
     "./addISOWeekYears": {
-      "require": "./addISOWeekYears/index.js",
-      "import": "./addISOWeekYears/index.mjs"
+      "require": "./addISOWeekYears.js",
+      "import": "./addISOWeekYears.mjs"
     },
     "./addMilliseconds": {
-      "require": "./addMilliseconds/index.js",
-      "import": "./addMilliseconds/index.mjs"
+      "require": "./addMilliseconds.js",
+      "import": "./addMilliseconds.mjs"
     },
     "./addMinutes": {
-      "require": "./addMinutes/index.js",
-      "import": "./addMinutes/index.mjs"
+      "require": "./addMinutes.js",
+      "import": "./addMinutes.mjs"
     },
     "./addMonths": {
-      "require": "./addMonths/index.js",
-      "import": "./addMonths/index.mjs"
+      "require": "./addMonths.js",
+      "import": "./addMonths.mjs"
     },
     "./addQuarters": {
-      "require": "./addQuarters/index.js",
-      "import": "./addQuarters/index.mjs"
+      "require": "./addQuarters.js",
+      "import": "./addQuarters.mjs"
     },
     "./addSeconds": {
-      "require": "./addSeconds/index.js",
-      "import": "./addSeconds/index.mjs"
+      "require": "./addSeconds.js",
+      "import": "./addSeconds.mjs"
     },
     "./addWeeks": {
-      "require": "./addWeeks/index.js",
-      "import": "./addWeeks/index.mjs"
+      "require": "./addWeeks.js",
+      "import": "./addWeeks.mjs"
     },
     "./addYears": {
-      "require": "./addYears/index.js",
-      "import": "./addYears/index.mjs"
+      "require": "./addYears.js",
+      "import": "./addYears.mjs"
     },
     "./areIntervalsOverlapping": {
-      "require": "./areIntervalsOverlapping/index.js",
-      "import": "./areIntervalsOverlapping/index.mjs"
+      "require": "./areIntervalsOverlapping.js",
+      "import": "./areIntervalsOverlapping.mjs"
     },
     "./clamp": {
-      "require": "./clamp/index.js",
-      "import": "./clamp/index.mjs"
+      "require": "./clamp.js",
+      "import": "./clamp.mjs"
     },
     "./closestIndexTo": {
-      "require": "./closestIndexTo/index.js",
-      "import": "./closestIndexTo/index.mjs"
+      "require": "./closestIndexTo.js",
+      "import": "./closestIndexTo.mjs"
     },
     "./closestTo": {
-      "require": "./closestTo/index.js",
-      "import": "./closestTo/index.mjs"
+      "require": "./closestTo.js",
+      "import": "./closestTo.mjs"
     },
     "./compareAsc": {
-      "require": "./compareAsc/index.js",
-      "import": "./compareAsc/index.mjs"
+      "require": "./compareAsc.js",
+      "import": "./compareAsc.mjs"
     },
     "./compareDesc": {
-      "require": "./compareDesc/index.js",
-      "import": "./compareDesc/index.mjs"
+      "require": "./compareDesc.js",
+      "import": "./compareDesc.mjs"
     },
     "./constructFrom": {
-      "require": "./constructFrom/index.js",
-      "import": "./constructFrom/index.mjs"
+      "require": "./constructFrom.js",
+      "import": "./constructFrom.mjs"
     },
     "./daysToWeeks": {
-      "require": "./daysToWeeks/index.js",
-      "import": "./daysToWeeks/index.mjs"
+      "require": "./daysToWeeks.js",
+      "import": "./daysToWeeks.mjs"
     },
     "./differenceInBusinessDays": {
-      "require": "./differenceInBusinessDays/index.js",
-      "import": "./differenceInBusinessDays/index.mjs"
+      "require": "./differenceInBusinessDays.js",
+      "import": "./differenceInBusinessDays.mjs"
     },
     "./differenceInCalendarDays": {
-      "require": "./differenceInCalendarDays/index.js",
-      "import": "./differenceInCalendarDays/index.mjs"
+      "require": "./differenceInCalendarDays.js",
+      "import": "./differenceInCalendarDays.mjs"
     },
     "./differenceInCalendarISOWeekYears": {
-      "require": "./differenceInCalendarISOWeekYears/index.js",
-      "import": "./differenceInCalendarISOWeekYears/index.mjs"
+      "require": "./differenceInCalendarISOWeekYears.js",
+      "import": "./differenceInCalendarISOWeekYears.mjs"
     },
     "./differenceInCalendarISOWeeks": {
-      "require": "./differenceInCalendarISOWeeks/index.js",
-      "import": "./differenceInCalendarISOWeeks/index.mjs"
+      "require": "./differenceInCalendarISOWeeks.js",
+      "import": "./differenceInCalendarISOWeeks.mjs"
     },
     "./differenceInCalendarMonths": {
-      "require": "./differenceInCalendarMonths/index.js",
-      "import": "./differenceInCalendarMonths/index.mjs"
+      "require": "./differenceInCalendarMonths.js",
+      "import": "./differenceInCalendarMonths.mjs"
     },
     "./differenceInCalendarQuarters": {
-      "require": "./differenceInCalendarQuarters/index.js",
-      "import": "./differenceInCalendarQuarters/index.mjs"
+      "require": "./differenceInCalendarQuarters.js",
+      "import": "./differenceInCalendarQuarters.mjs"
     },
     "./differenceInCalendarWeeks": {
-      "require": "./differenceInCalendarWeeks/index.js",
-      "import": "./differenceInCalendarWeeks/index.mjs"
+      "require": "./differenceInCalendarWeeks.js",
+      "import": "./differenceInCalendarWeeks.mjs"
     },
     "./differenceInCalendarYears": {
-      "require": "./differenceInCalendarYears/index.js",
-      "import": "./differenceInCalendarYears/index.mjs"
+      "require": "./differenceInCalendarYears.js",
+      "import": "./differenceInCalendarYears.mjs"
     },
     "./differenceInDays": {
-      "require": "./differenceInDays/index.js",
-      "import": "./differenceInDays/index.mjs"
+      "require": "./differenceInDays.js",
+      "import": "./differenceInDays.mjs"
     },
     "./differenceInHours": {
-      "require": "./differenceInHours/index.js",
-      "import": "./differenceInHours/index.mjs"
+      "require": "./differenceInHours.js",
+      "import": "./differenceInHours.mjs"
     },
     "./differenceInISOWeekYears": {
-      "require": "./differenceInISOWeekYears/index.js",
-      "import": "./differenceInISOWeekYears/index.mjs"
+      "require": "./differenceInISOWeekYears.js",
+      "import": "./differenceInISOWeekYears.mjs"
     },
     "./differenceInMilliseconds": {
-      "require": "./differenceInMilliseconds/index.js",
-      "import": "./differenceInMilliseconds/index.mjs"
+      "require": "./differenceInMilliseconds.js",
+      "import": "./differenceInMilliseconds.mjs"
     },
     "./differenceInMinutes": {
-      "require": "./differenceInMinutes/index.js",
-      "import": "./differenceInMinutes/index.mjs"
+      "require": "./differenceInMinutes.js",
+      "import": "./differenceInMinutes.mjs"
     },
     "./differenceInMonths": {
-      "require": "./differenceInMonths/index.js",
-      "import": "./differenceInMonths/index.mjs"
+      "require": "./differenceInMonths.js",
+      "import": "./differenceInMonths.mjs"
     },
     "./differenceInQuarters": {
-      "require": "./differenceInQuarters/index.js",
-      "import": "./differenceInQuarters/index.mjs"
+      "require": "./differenceInQuarters.js",
+      "import": "./differenceInQuarters.mjs"
     },
     "./differenceInSeconds": {
-      "require": "./differenceInSeconds/index.js",
-      "import": "./differenceInSeconds/index.mjs"
+      "require": "./differenceInSeconds.js",
+      "import": "./differenceInSeconds.mjs"
     },
     "./differenceInWeeks": {
-      "require": "./differenceInWeeks/index.js",
-      "import": "./differenceInWeeks/index.mjs"
+      "require": "./differenceInWeeks.js",
+      "import": "./differenceInWeeks.mjs"
     },
     "./differenceInYears": {
-      "require": "./differenceInYears/index.js",
-      "import": "./differenceInYears/index.mjs"
+      "require": "./differenceInYears.js",
+      "import": "./differenceInYears.mjs"
     },
     "./eachDayOfInterval": {
-      "require": "./eachDayOfInterval/index.js",
-      "import": "./eachDayOfInterval/index.mjs"
+      "require": "./eachDayOfInterval.js",
+      "import": "./eachDayOfInterval.mjs"
     },
     "./eachHourOfInterval": {
-      "require": "./eachHourOfInterval/index.js",
-      "import": "./eachHourOfInterval/index.mjs"
+      "require": "./eachHourOfInterval.js",
+      "import": "./eachHourOfInterval.mjs"
     },
     "./eachMinuteOfInterval": {
-      "require": "./eachMinuteOfInterval/index.js",
-      "import": "./eachMinuteOfInterval/index.mjs"
+      "require": "./eachMinuteOfInterval.js",
+      "import": "./eachMinuteOfInterval.mjs"
     },
     "./eachMonthOfInterval": {
-      "require": "./eachMonthOfInterval/index.js",
-      "import": "./eachMonthOfInterval/index.mjs"
+      "require": "./eachMonthOfInterval.js",
+      "import": "./eachMonthOfInterval.mjs"
     },
     "./eachQuarterOfInterval": {
-      "require": "./eachQuarterOfInterval/index.js",
-      "import": "./eachQuarterOfInterval/index.mjs"
+      "require": "./eachQuarterOfInterval.js",
+      "import": "./eachQuarterOfInterval.mjs"
     },
     "./eachWeekOfInterval": {
-      "require": "./eachWeekOfInterval/index.js",
-      "import": "./eachWeekOfInterval/index.mjs"
+      "require": "./eachWeekOfInterval.js",
+      "import": "./eachWeekOfInterval.mjs"
     },
     "./eachWeekendOfInterval": {
-      "require": "./eachWeekendOfInterval/index.js",
-      "import": "./eachWeekendOfInterval/index.mjs"
+      "require": "./eachWeekendOfInterval.js",
+      "import": "./eachWeekendOfInterval.mjs"
     },
     "./eachWeekendOfMonth": {
-      "require": "./eachWeekendOfMonth/index.js",
-      "import": "./eachWeekendOfMonth/index.mjs"
+      "require": "./eachWeekendOfMonth.js",
+      "import": "./eachWeekendOfMonth.mjs"
     },
     "./eachWeekendOfYear": {
-      "require": "./eachWeekendOfYear/index.js",
-      "import": "./eachWeekendOfYear/index.mjs"
+      "require": "./eachWeekendOfYear.js",
+      "import": "./eachWeekendOfYear.mjs"
     },
     "./eachYearOfInterval": {
-      "require": "./eachYearOfInterval/index.js",
-      "import": "./eachYearOfInterval/index.mjs"
+      "require": "./eachYearOfInterval.js",
+      "import": "./eachYearOfInterval.mjs"
     },
     "./endOfDay": {
-      "require": "./endOfDay/index.js",
-      "import": "./endOfDay/index.mjs"
+      "require": "./endOfDay.js",
+      "import": "./endOfDay.mjs"
     },
     "./endOfDecade": {
-      "require": "./endOfDecade/index.js",
-      "import": "./endOfDecade/index.mjs"
+      "require": "./endOfDecade.js",
+      "import": "./endOfDecade.mjs"
     },
     "./endOfHour": {
-      "require": "./endOfHour/index.js",
-      "import": "./endOfHour/index.mjs"
+      "require": "./endOfHour.js",
+      "import": "./endOfHour.mjs"
     },
     "./endOfISOWeek": {
-      "require": "./endOfISOWeek/index.js",
-      "import": "./endOfISOWeek/index.mjs"
+      "require": "./endOfISOWeek.js",
+      "import": "./endOfISOWeek.mjs"
     },
     "./endOfISOWeekYear": {
-      "require": "./endOfISOWeekYear/index.js",
-      "import": "./endOfISOWeekYear/index.mjs"
+      "require": "./endOfISOWeekYear.js",
+      "import": "./endOfISOWeekYear.mjs"
     },
     "./endOfMinute": {
-      "require": "./endOfMinute/index.js",
-      "import": "./endOfMinute/index.mjs"
+      "require": "./endOfMinute.js",
+      "import": "./endOfMinute.mjs"
     },
     "./endOfMonth": {
-      "require": "./endOfMonth/index.js",
-      "import": "./endOfMonth/index.mjs"
+      "require": "./endOfMonth.js",
+      "import": "./endOfMonth.mjs"
     },
     "./endOfQuarter": {
-      "require": "./endOfQuarter/index.js",
-      "import": "./endOfQuarter/index.mjs"
+      "require": "./endOfQuarter.js",
+      "import": "./endOfQuarter.mjs"
     },
     "./endOfSecond": {
-      "require": "./endOfSecond/index.js",
-      "import": "./endOfSecond/index.mjs"
+      "require": "./endOfSecond.js",
+      "import": "./endOfSecond.mjs"
     },
     "./endOfToday": {
-      "require": "./endOfToday/index.js",
-      "import": "./endOfToday/index.mjs"
+      "require": "./endOfToday.js",
+      "import": "./endOfToday.mjs"
     },
     "./endOfTomorrow": {
-      "require": "./endOfTomorrow/index.js",
-      "import": "./endOfTomorrow/index.mjs"
+      "require": "./endOfTomorrow.js",
+      "import": "./endOfTomorrow.mjs"
     },
     "./endOfWeek": {
-      "require": "./endOfWeek/index.js",
-      "import": "./endOfWeek/index.mjs"
+      "require": "./endOfWeek.js",
+      "import": "./endOfWeek.mjs"
     },
     "./endOfYear": {
-      "require": "./endOfYear/index.js",
-      "import": "./endOfYear/index.mjs"
+      "require": "./endOfYear.js",
+      "import": "./endOfYear.mjs"
     },
     "./endOfYesterday": {
-      "require": "./endOfYesterday/index.js",
-      "import": "./endOfYesterday/index.mjs"
+      "require": "./endOfYesterday.js",
+      "import": "./endOfYesterday.mjs"
     },
     "./format": {
-      "require": "./format/index.js",
-      "import": "./format/index.mjs"
+      "require": "./format.js",
+      "import": "./format.mjs"
     },
     "./formatDistance": {
-      "require": "./formatDistance/index.js",
-      "import": "./formatDistance/index.mjs"
+      "require": "./formatDistance.js",
+      "import": "./formatDistance.mjs"
     },
     "./formatDistanceStrict": {
-      "require": "./formatDistanceStrict/index.js",
-      "import": "./formatDistanceStrict/index.mjs"
+      "require": "./formatDistanceStrict.js",
+      "import": "./formatDistanceStrict.mjs"
     },
     "./formatDistanceToNow": {
-      "require": "./formatDistanceToNow/index.js",
-      "import": "./formatDistanceToNow/index.mjs"
+      "require": "./formatDistanceToNow.js",
+      "import": "./formatDistanceToNow.mjs"
     },
     "./formatDistanceToNowStrict": {
-      "require": "./formatDistanceToNowStrict/index.js",
-      "import": "./formatDistanceToNowStrict/index.mjs"
+      "require": "./formatDistanceToNowStrict.js",
+      "import": "./formatDistanceToNowStrict.mjs"
     },
     "./formatDuration": {
-      "require": "./formatDuration/index.js",
-      "import": "./formatDuration/index.mjs"
+      "require": "./formatDuration.js",
+      "import": "./formatDuration.mjs"
     },
     "./formatISO": {
-      "require": "./formatISO/index.js",
-      "import": "./formatISO/index.mjs"
+      "require": "./formatISO.js",
+      "import": "./formatISO.mjs"
     },
     "./formatISO9075": {
-      "require": "./formatISO9075/index.js",
-      "import": "./formatISO9075/index.mjs"
+      "require": "./formatISO9075.js",
+      "import": "./formatISO9075.mjs"
     },
     "./formatISODuration": {
-      "require": "./formatISODuration/index.js",
-      "import": "./formatISODuration/index.mjs"
+      "require": "./formatISODuration.js",
+      "import": "./formatISODuration.mjs"
     },
     "./formatRFC3339": {
-      "require": "./formatRFC3339/index.js",
-      "import": "./formatRFC3339/index.mjs"
+      "require": "./formatRFC3339.js",
+      "import": "./formatRFC3339.mjs"
     },
     "./formatRFC7231": {
-      "require": "./formatRFC7231/index.js",
-      "import": "./formatRFC7231/index.mjs"
+      "require": "./formatRFC7231.js",
+      "import": "./formatRFC7231.mjs"
     },
     "./formatRelative": {
-      "require": "./formatRelative/index.js",
-      "import": "./formatRelative/index.mjs"
+      "require": "./formatRelative.js",
+      "import": "./formatRelative.mjs"
     },
     "./fromUnixTime": {
-      "require": "./fromUnixTime/index.js",
-      "import": "./fromUnixTime/index.mjs"
+      "require": "./fromUnixTime.js",
+      "import": "./fromUnixTime.mjs"
     },
     "./getDate": {
-      "require": "./getDate/index.js",
-      "import": "./getDate/index.mjs"
+      "require": "./getDate.js",
+      "import": "./getDate.mjs"
     },
     "./getDay": {
-      "require": "./getDay/index.js",
-      "import": "./getDay/index.mjs"
+      "require": "./getDay.js",
+      "import": "./getDay.mjs"
     },
     "./getDayOfYear": {
-      "require": "./getDayOfYear/index.js",
-      "import": "./getDayOfYear/index.mjs"
+      "require": "./getDayOfYear.js",
+      "import": "./getDayOfYear.mjs"
     },
     "./getDaysInMonth": {
-      "require": "./getDaysInMonth/index.js",
-      "import": "./getDaysInMonth/index.mjs"
+      "require": "./getDaysInMonth.js",
+      "import": "./getDaysInMonth.mjs"
     },
     "./getDaysInYear": {
-      "require": "./getDaysInYear/index.js",
-      "import": "./getDaysInYear/index.mjs"
+      "require": "./getDaysInYear.js",
+      "import": "./getDaysInYear.mjs"
     },
     "./getDecade": {
-      "require": "./getDecade/index.js",
-      "import": "./getDecade/index.mjs"
+      "require": "./getDecade.js",
+      "import": "./getDecade.mjs"
     },
     "./getDefaultOptions": {
-      "require": "./getDefaultOptions/index.js",
-      "import": "./getDefaultOptions/index.mjs"
+      "require": "./getDefaultOptions.js",
+      "import": "./getDefaultOptions.mjs"
     },
     "./getHours": {
-      "require": "./getHours/index.js",
-      "import": "./getHours/index.mjs"
+      "require": "./getHours.js",
+      "import": "./getHours.mjs"
     },
     "./getISODay": {
-      "require": "./getISODay/index.js",
-      "import": "./getISODay/index.mjs"
+      "require": "./getISODay.js",
+      "import": "./getISODay.mjs"
     },
     "./getISOWeek": {
-      "require": "./getISOWeek/index.js",
-      "import": "./getISOWeek/index.mjs"
+      "require": "./getISOWeek.js",
+      "import": "./getISOWeek.mjs"
     },
     "./getISOWeekYear": {
-      "require": "./getISOWeekYear/index.js",
-      "import": "./getISOWeekYear/index.mjs"
+      "require": "./getISOWeekYear.js",
+      "import": "./getISOWeekYear.mjs"
     },
     "./getISOWeeksInYear": {
-      "require": "./getISOWeeksInYear/index.js",
-      "import": "./getISOWeeksInYear/index.mjs"
+      "require": "./getISOWeeksInYear.js",
+      "import": "./getISOWeeksInYear.mjs"
     },
     "./getMilliseconds": {
-      "require": "./getMilliseconds/index.js",
-      "import": "./getMilliseconds/index.mjs"
+      "require": "./getMilliseconds.js",
+      "import": "./getMilliseconds.mjs"
     },
     "./getMinutes": {
-      "require": "./getMinutes/index.js",
-      "import": "./getMinutes/index.mjs"
+      "require": "./getMinutes.js",
+      "import": "./getMinutes.mjs"
     },
     "./getMonth": {
-      "require": "./getMonth/index.js",
-      "import": "./getMonth/index.mjs"
+      "require": "./getMonth.js",
+      "import": "./getMonth.mjs"
     },
     "./getOverlappingDaysInIntervals": {
-      "require": "./getOverlappingDaysInIntervals/index.js",
-      "import": "./getOverlappingDaysInIntervals/index.mjs"
+      "require": "./getOverlappingDaysInIntervals.js",
+      "import": "./getOverlappingDaysInIntervals.mjs"
     },
     "./getQuarter": {
-      "require": "./getQuarter/index.js",
-      "import": "./getQuarter/index.mjs"
+      "require": "./getQuarter.js",
+      "import": "./getQuarter.mjs"
     },
     "./getSeconds": {
-      "require": "./getSeconds/index.js",
-      "import": "./getSeconds/index.mjs"
+      "require": "./getSeconds.js",
+      "import": "./getSeconds.mjs"
     },
     "./getTime": {
-      "require": "./getTime/index.js",
-      "import": "./getTime/index.mjs"
+      "require": "./getTime.js",
+      "import": "./getTime.mjs"
     },
     "./getUnixTime": {
-      "require": "./getUnixTime/index.js",
-      "import": "./getUnixTime/index.mjs"
+      "require": "./getUnixTime.js",
+      "import": "./getUnixTime.mjs"
     },
     "./getWeek": {
-      "require": "./getWeek/index.js",
-      "import": "./getWeek/index.mjs"
+      "require": "./getWeek.js",
+      "import": "./getWeek.mjs"
     },
     "./getWeekOfMonth": {
-      "require": "./getWeekOfMonth/index.js",
-      "import": "./getWeekOfMonth/index.mjs"
+      "require": "./getWeekOfMonth.js",
+      "import": "./getWeekOfMonth.mjs"
     },
     "./getWeekYear": {
-      "require": "./getWeekYear/index.js",
-      "import": "./getWeekYear/index.mjs"
+      "require": "./getWeekYear.js",
+      "import": "./getWeekYear.mjs"
     },
     "./getWeeksInMonth": {
-      "require": "./getWeeksInMonth/index.js",
-      "import": "./getWeeksInMonth/index.mjs"
+      "require": "./getWeeksInMonth.js",
+      "import": "./getWeeksInMonth.mjs"
     },
     "./getYear": {
-      "require": "./getYear/index.js",
-      "import": "./getYear/index.mjs"
+      "require": "./getYear.js",
+      "import": "./getYear.mjs"
     },
     "./hoursToMilliseconds": {
-      "require": "./hoursToMilliseconds/index.js",
-      "import": "./hoursToMilliseconds/index.mjs"
+      "require": "./hoursToMilliseconds.js",
+      "import": "./hoursToMilliseconds.mjs"
     },
     "./hoursToMinutes": {
-      "require": "./hoursToMinutes/index.js",
-      "import": "./hoursToMinutes/index.mjs"
+      "require": "./hoursToMinutes.js",
+      "import": "./hoursToMinutes.mjs"
     },
     "./hoursToSeconds": {
-      "require": "./hoursToSeconds/index.js",
-      "import": "./hoursToSeconds/index.mjs"
+      "require": "./hoursToSeconds.js",
+      "import": "./hoursToSeconds.mjs"
     },
     "./intervalToDuration": {
-      "require": "./intervalToDuration/index.js",
-      "import": "./intervalToDuration/index.mjs"
+      "require": "./intervalToDuration.js",
+      "import": "./intervalToDuration.mjs"
     },
     "./intlFormat": {
-      "require": "./intlFormat/index.js",
-      "import": "./intlFormat/index.mjs"
+      "require": "./intlFormat.js",
+      "import": "./intlFormat.mjs"
     },
     "./intlFormatDistance": {
-      "require": "./intlFormatDistance/index.js",
-      "import": "./intlFormatDistance/index.mjs"
+      "require": "./intlFormatDistance.js",
+      "import": "./intlFormatDistance.mjs"
     },
     "./isAfter": {
-      "require": "./isAfter/index.js",
-      "import": "./isAfter/index.mjs"
+      "require": "./isAfter.js",
+      "import": "./isAfter.mjs"
     },
     "./isBefore": {
-      "require": "./isBefore/index.js",
-      "import": "./isBefore/index.mjs"
+      "require": "./isBefore.js",
+      "import": "./isBefore.mjs"
     },
     "./isDate": {
-      "require": "./isDate/index.js",
-      "import": "./isDate/index.mjs"
+      "require": "./isDate.js",
+      "import": "./isDate.mjs"
     },
     "./isEqual": {
-      "require": "./isEqual/index.js",
-      "import": "./isEqual/index.mjs"
+      "require": "./isEqual.js",
+      "import": "./isEqual.mjs"
     },
     "./isExists": {
-      "require": "./isExists/index.js",
-      "import": "./isExists/index.mjs"
+      "require": "./isExists.js",
+      "import": "./isExists.mjs"
     },
     "./isFirstDayOfMonth": {
-      "require": "./isFirstDayOfMonth/index.js",
-      "import": "./isFirstDayOfMonth/index.mjs"
+      "require": "./isFirstDayOfMonth.js",
+      "import": "./isFirstDayOfMonth.mjs"
     },
     "./isFriday": {
-      "require": "./isFriday/index.js",
-      "import": "./isFriday/index.mjs"
+      "require": "./isFriday.js",
+      "import": "./isFriday.mjs"
     },
     "./isFuture": {
-      "require": "./isFuture/index.js",
-      "import": "./isFuture/index.mjs"
+      "require": "./isFuture.js",
+      "import": "./isFuture.mjs"
     },
     "./isLastDayOfMonth": {
-      "require": "./isLastDayOfMonth/index.js",
-      "import": "./isLastDayOfMonth/index.mjs"
+      "require": "./isLastDayOfMonth.js",
+      "import": "./isLastDayOfMonth.mjs"
     },
     "./isLeapYear": {
-      "require": "./isLeapYear/index.js",
-      "import": "./isLeapYear/index.mjs"
+      "require": "./isLeapYear.js",
+      "import": "./isLeapYear.mjs"
     },
     "./isMatch": {
-      "require": "./isMatch/index.js",
-      "import": "./isMatch/index.mjs"
+      "require": "./isMatch.js",
+      "import": "./isMatch.mjs"
     },
     "./isMonday": {
-      "require": "./isMonday/index.js",
-      "import": "./isMonday/index.mjs"
+      "require": "./isMonday.js",
+      "import": "./isMonday.mjs"
     },
     "./isPast": {
-      "require": "./isPast/index.js",
-      "import": "./isPast/index.mjs"
+      "require": "./isPast.js",
+      "import": "./isPast.mjs"
     },
     "./isSameDay": {
-      "require": "./isSameDay/index.js",
-      "import": "./isSameDay/index.mjs"
+      "require": "./isSameDay.js",
+      "import": "./isSameDay.mjs"
     },
     "./isSameHour": {
-      "require": "./isSameHour/index.js",
-      "import": "./isSameHour/index.mjs"
+      "require": "./isSameHour.js",
+      "import": "./isSameHour.mjs"
     },
     "./isSameISOWeek": {
-      "require": "./isSameISOWeek/index.js",
-      "import": "./isSameISOWeek/index.mjs"
+      "require": "./isSameISOWeek.js",
+      "import": "./isSameISOWeek.mjs"
     },
     "./isSameISOWeekYear": {
-      "require": "./isSameISOWeekYear/index.js",
-      "import": "./isSameISOWeekYear/index.mjs"
+      "require": "./isSameISOWeekYear.js",
+      "import": "./isSameISOWeekYear.mjs"
     },
     "./isSameMinute": {
-      "require": "./isSameMinute/index.js",
-      "import": "./isSameMinute/index.mjs"
+      "require": "./isSameMinute.js",
+      "import": "./isSameMinute.mjs"
     },
     "./isSameMonth": {
-      "require": "./isSameMonth/index.js",
-      "import": "./isSameMonth/index.mjs"
+      "require": "./isSameMonth.js",
+      "import": "./isSameMonth.mjs"
     },
     "./isSameQuarter": {
-      "require": "./isSameQuarter/index.js",
-      "import": "./isSameQuarter/index.mjs"
+      "require": "./isSameQuarter.js",
+      "import": "./isSameQuarter.mjs"
     },
     "./isSameSecond": {
-      "require": "./isSameSecond/index.js",
-      "import": "./isSameSecond/index.mjs"
+      "require": "./isSameSecond.js",
+      "import": "./isSameSecond.mjs"
     },
     "./isSameWeek": {
-      "require": "./isSameWeek/index.js",
-      "import": "./isSameWeek/index.mjs"
+      "require": "./isSameWeek.js",
+      "import": "./isSameWeek.mjs"
     },
     "./isSameYear": {
-      "require": "./isSameYear/index.js",
-      "import": "./isSameYear/index.mjs"
+      "require": "./isSameYear.js",
+      "import": "./isSameYear.mjs"
     },
     "./isSaturday": {
-      "require": "./isSaturday/index.js",
-      "import": "./isSaturday/index.mjs"
+      "require": "./isSaturday.js",
+      "import": "./isSaturday.mjs"
     },
     "./isSunday": {
-      "require": "./isSunday/index.js",
-      "import": "./isSunday/index.mjs"
+      "require": "./isSunday.js",
+      "import": "./isSunday.mjs"
     },
     "./isThisHour": {
-      "require": "./isThisHour/index.js",
-      "import": "./isThisHour/index.mjs"
+      "require": "./isThisHour.js",
+      "import": "./isThisHour.mjs"
     },
     "./isThisISOWeek": {
-      "require": "./isThisISOWeek/index.js",
-      "import": "./isThisISOWeek/index.mjs"
+      "require": "./isThisISOWeek.js",
+      "import": "./isThisISOWeek.mjs"
     },
     "./isThisMinute": {
-      "require": "./isThisMinute/index.js",
-      "import": "./isThisMinute/index.mjs"
+      "require": "./isThisMinute.js",
+      "import": "./isThisMinute.mjs"
     },
     "./isThisMonth": {
-      "require": "./isThisMonth/index.js",
-      "import": "./isThisMonth/index.mjs"
+      "require": "./isThisMonth.js",
+      "import": "./isThisMonth.mjs"
     },
     "./isThisQuarter": {
-      "require": "./isThisQuarter/index.js",
-      "import": "./isThisQuarter/index.mjs"
+      "require": "./isThisQuarter.js",
+      "import": "./isThisQuarter.mjs"
     },
     "./isThisSecond": {
-      "require": "./isThisSecond/index.js",
-      "import": "./isThisSecond/index.mjs"
+      "require": "./isThisSecond.js",
+      "import": "./isThisSecond.mjs"
     },
     "./isThisWeek": {
-      "require": "./isThisWeek/index.js",
-      "import": "./isThisWeek/index.mjs"
+      "require": "./isThisWeek.js",
+      "import": "./isThisWeek.mjs"
     },
     "./isThisYear": {
-      "require": "./isThisYear/index.js",
-      "import": "./isThisYear/index.mjs"
+      "require": "./isThisYear.js",
+      "import": "./isThisYear.mjs"
     },
     "./isThursday": {
-      "require": "./isThursday/index.js",
-      "import": "./isThursday/index.mjs"
+      "require": "./isThursday.js",
+      "import": "./isThursday.mjs"
     },
     "./isToday": {
-      "require": "./isToday/index.js",
-      "import": "./isToday/index.mjs"
+      "require": "./isToday.js",
+      "import": "./isToday.mjs"
     },
     "./isTomorrow": {
-      "require": "./isTomorrow/index.js",
-      "import": "./isTomorrow/index.mjs"
+      "require": "./isTomorrow.js",
+      "import": "./isTomorrow.mjs"
     },
     "./isTuesday": {
-      "require": "./isTuesday/index.js",
-      "import": "./isTuesday/index.mjs"
+      "require": "./isTuesday.js",
+      "import": "./isTuesday.mjs"
     },
     "./isValid": {
-      "require": "./isValid/index.js",
-      "import": "./isValid/index.mjs"
+      "require": "./isValid.js",
+      "import": "./isValid.mjs"
     },
     "./isWednesday": {
-      "require": "./isWednesday/index.js",
-      "import": "./isWednesday/index.mjs"
+      "require": "./isWednesday.js",
+      "import": "./isWednesday.mjs"
     },
     "./isWeekend": {
-      "require": "./isWeekend/index.js",
-      "import": "./isWeekend/index.mjs"
+      "require": "./isWeekend.js",
+      "import": "./isWeekend.mjs"
     },
     "./isWithinInterval": {
-      "require": "./isWithinInterval/index.js",
-      "import": "./isWithinInterval/index.mjs"
+      "require": "./isWithinInterval.js",
+      "import": "./isWithinInterval.mjs"
     },
     "./isYesterday": {
-      "require": "./isYesterday/index.js",
-      "import": "./isYesterday/index.mjs"
+      "require": "./isYesterday.js",
+      "import": "./isYesterday.mjs"
     },
     "./lastDayOfDecade": {
-      "require": "./lastDayOfDecade/index.js",
-      "import": "./lastDayOfDecade/index.mjs"
+      "require": "./lastDayOfDecade.js",
+      "import": "./lastDayOfDecade.mjs"
     },
     "./lastDayOfISOWeek": {
-      "require": "./lastDayOfISOWeek/index.js",
-      "import": "./lastDayOfISOWeek/index.mjs"
+      "require": "./lastDayOfISOWeek.js",
+      "import": "./lastDayOfISOWeek.mjs"
     },
     "./lastDayOfISOWeekYear": {
-      "require": "./lastDayOfISOWeekYear/index.js",
-      "import": "./lastDayOfISOWeekYear/index.mjs"
+      "require": "./lastDayOfISOWeekYear.js",
+      "import": "./lastDayOfISOWeekYear.mjs"
     },
     "./lastDayOfMonth": {
-      "require": "./lastDayOfMonth/index.js",
-      "import": "./lastDayOfMonth/index.mjs"
+      "require": "./lastDayOfMonth.js",
+      "import": "./lastDayOfMonth.mjs"
     },
     "./lastDayOfQuarter": {
-      "require": "./lastDayOfQuarter/index.js",
-      "import": "./lastDayOfQuarter/index.mjs"
+      "require": "./lastDayOfQuarter.js",
+      "import": "./lastDayOfQuarter.mjs"
     },
     "./lastDayOfWeek": {
-      "require": "./lastDayOfWeek/index.js",
-      "import": "./lastDayOfWeek/index.mjs"
+      "require": "./lastDayOfWeek.js",
+      "import": "./lastDayOfWeek.mjs"
     },
     "./lastDayOfYear": {
-      "require": "./lastDayOfYear/index.js",
-      "import": "./lastDayOfYear/index.mjs"
+      "require": "./lastDayOfYear.js",
+      "import": "./lastDayOfYear.mjs"
     },
     "./lightFormat": {
-      "require": "./lightFormat/index.js",
-      "import": "./lightFormat/index.mjs"
+      "require": "./lightFormat.js",
+      "import": "./lightFormat.mjs"
     },
     "./max": {
-      "require": "./max/index.js",
-      "import": "./max/index.mjs"
+      "require": "./max.js",
+      "import": "./max.mjs"
     },
     "./milliseconds": {
-      "require": "./milliseconds/index.js",
-      "import": "./milliseconds/index.mjs"
+      "require": "./milliseconds.js",
+      "import": "./milliseconds.mjs"
     },
     "./millisecondsToHours": {
-      "require": "./millisecondsToHours/index.js",
-      "import": "./millisecondsToHours/index.mjs"
+      "require": "./millisecondsToHours.js",
+      "import": "./millisecondsToHours.mjs"
     },
     "./millisecondsToMinutes": {
-      "require": "./millisecondsToMinutes/index.js",
-      "import": "./millisecondsToMinutes/index.mjs"
+      "require": "./millisecondsToMinutes.js",
+      "import": "./millisecondsToMinutes.mjs"
     },
     "./millisecondsToSeconds": {
-      "require": "./millisecondsToSeconds/index.js",
-      "import": "./millisecondsToSeconds/index.mjs"
+      "require": "./millisecondsToSeconds.js",
+      "import": "./millisecondsToSeconds.mjs"
     },
     "./min": {
-      "require": "./min/index.js",
-      "import": "./min/index.mjs"
+      "require": "./min.js",
+      "import": "./min.mjs"
     },
     "./minutesToHours": {
-      "require": "./minutesToHours/index.js",
-      "import": "./minutesToHours/index.mjs"
+      "require": "./minutesToHours.js",
+      "import": "./minutesToHours.mjs"
     },
     "./minutesToMilliseconds": {
-      "require": "./minutesToMilliseconds/index.js",
-      "import": "./minutesToMilliseconds/index.mjs"
+      "require": "./minutesToMilliseconds.js",
+      "import": "./minutesToMilliseconds.mjs"
     },
     "./minutesToSeconds": {
-      "require": "./minutesToSeconds/index.js",
-      "import": "./minutesToSeconds/index.mjs"
+      "require": "./minutesToSeconds.js",
+      "import": "./minutesToSeconds.mjs"
     },
     "./monthsToQuarters": {
-      "require": "./monthsToQuarters/index.js",
-      "import": "./monthsToQuarters/index.mjs"
+      "require": "./monthsToQuarters.js",
+      "import": "./monthsToQuarters.mjs"
     },
     "./monthsToYears": {
-      "require": "./monthsToYears/index.js",
-      "import": "./monthsToYears/index.mjs"
+      "require": "./monthsToYears.js",
+      "import": "./monthsToYears.mjs"
     },
     "./nextDay": {
-      "require": "./nextDay/index.js",
-      "import": "./nextDay/index.mjs"
+      "require": "./nextDay.js",
+      "import": "./nextDay.mjs"
     },
     "./nextFriday": {
-      "require": "./nextFriday/index.js",
-      "import": "./nextFriday/index.mjs"
+      "require": "./nextFriday.js",
+      "import": "./nextFriday.mjs"
     },
     "./nextMonday": {
-      "require": "./nextMonday/index.js",
-      "import": "./nextMonday/index.mjs"
+      "require": "./nextMonday.js",
+      "import": "./nextMonday.mjs"
     },
     "./nextSaturday": {
-      "require": "./nextSaturday/index.js",
-      "import": "./nextSaturday/index.mjs"
+      "require": "./nextSaturday.js",
+      "import": "./nextSaturday.mjs"
     },
     "./nextSunday": {
-      "require": "./nextSunday/index.js",
-      "import": "./nextSunday/index.mjs"
+      "require": "./nextSunday.js",
+      "import": "./nextSunday.mjs"
     },
     "./nextThursday": {
-      "require": "./nextThursday/index.js",
-      "import": "./nextThursday/index.mjs"
+      "require": "./nextThursday.js",
+      "import": "./nextThursday.mjs"
     },
     "./nextTuesday": {
-      "require": "./nextTuesday/index.js",
-      "import": "./nextTuesday/index.mjs"
+      "require": "./nextTuesday.js",
+      "import": "./nextTuesday.mjs"
     },
     "./nextWednesday": {
-      "require": "./nextWednesday/index.js",
-      "import": "./nextWednesday/index.mjs"
+      "require": "./nextWednesday.js",
+      "import": "./nextWednesday.mjs"
     },
     "./parse": {
-      "require": "./parse/index.js",
-      "import": "./parse/index.mjs"
+      "require": "./parse.js",
+      "import": "./parse.mjs"
     },
     "./parseISO": {
-      "require": "./parseISO/index.js",
-      "import": "./parseISO/index.mjs"
+      "require": "./parseISO.js",
+      "import": "./parseISO.mjs"
     },
     "./parseJSON": {
-      "require": "./parseJSON/index.js",
-      "import": "./parseJSON/index.mjs"
+      "require": "./parseJSON.js",
+      "import": "./parseJSON.mjs"
     },
     "./previousDay": {
-      "require": "./previousDay/index.js",
-      "import": "./previousDay/index.mjs"
+      "require": "./previousDay.js",
+      "import": "./previousDay.mjs"
     },
     "./previousFriday": {
-      "require": "./previousFriday/index.js",
-      "import": "./previousFriday/index.mjs"
+      "require": "./previousFriday.js",
+      "import": "./previousFriday.mjs"
     },
     "./previousMonday": {
-      "require": "./previousMonday/index.js",
-      "import": "./previousMonday/index.mjs"
+      "require": "./previousMonday.js",
+      "import": "./previousMonday.mjs"
     },
     "./previousSaturday": {
-      "require": "./previousSaturday/index.js",
-      "import": "./previousSaturday/index.mjs"
+      "require": "./previousSaturday.js",
+      "import": "./previousSaturday.mjs"
     },
     "./previousSunday": {
-      "require": "./previousSunday/index.js",
-      "import": "./previousSunday/index.mjs"
+      "require": "./previousSunday.js",
+      "import": "./previousSunday.mjs"
     },
     "./previousThursday": {
-      "require": "./previousThursday/index.js",
-      "import": "./previousThursday/index.mjs"
+      "require": "./previousThursday.js",
+      "import": "./previousThursday.mjs"
     },
     "./previousTuesday": {
-      "require": "./previousTuesday/index.js",
-      "import": "./previousTuesday/index.mjs"
+      "require": "./previousTuesday.js",
+      "import": "./previousTuesday.mjs"
     },
     "./previousWednesday": {
-      "require": "./previousWednesday/index.js",
-      "import": "./previousWednesday/index.mjs"
+      "require": "./previousWednesday.js",
+      "import": "./previousWednesday.mjs"
     },
     "./quartersToMonths": {
-      "require": "./quartersToMonths/index.js",
-      "import": "./quartersToMonths/index.mjs"
+      "require": "./quartersToMonths.js",
+      "import": "./quartersToMonths.mjs"
     },
     "./quartersToYears": {
-      "require": "./quartersToYears/index.js",
-      "import": "./quartersToYears/index.mjs"
+      "require": "./quartersToYears.js",
+      "import": "./quartersToYears.mjs"
     },
     "./roundToNearestMinutes": {
-      "require": "./roundToNearestMinutes/index.js",
-      "import": "./roundToNearestMinutes/index.mjs"
+      "require": "./roundToNearestMinutes.js",
+      "import": "./roundToNearestMinutes.mjs"
     },
     "./secondsToHours": {
-      "require": "./secondsToHours/index.js",
-      "import": "./secondsToHours/index.mjs"
+      "require": "./secondsToHours.js",
+      "import": "./secondsToHours.mjs"
     },
     "./secondsToMilliseconds": {
-      "require": "./secondsToMilliseconds/index.js",
-      "import": "./secondsToMilliseconds/index.mjs"
+      "require": "./secondsToMilliseconds.js",
+      "import": "./secondsToMilliseconds.mjs"
     },
     "./secondsToMinutes": {
-      "require": "./secondsToMinutes/index.js",
-      "import": "./secondsToMinutes/index.mjs"
+      "require": "./secondsToMinutes.js",
+      "import": "./secondsToMinutes.mjs"
     },
     "./set": {
-      "require": "./set/index.js",
-      "import": "./set/index.mjs"
+      "require": "./set.js",
+      "import": "./set.mjs"
     },
     "./setDate": {
-      "require": "./setDate/index.js",
-      "import": "./setDate/index.mjs"
+      "require": "./setDate.js",
+      "import": "./setDate.mjs"
     },
     "./setDay": {
-      "require": "./setDay/index.js",
-      "import": "./setDay/index.mjs"
+      "require": "./setDay.js",
+      "import": "./setDay.mjs"
     },
     "./setDayOfYear": {
-      "require": "./setDayOfYear/index.js",
-      "import": "./setDayOfYear/index.mjs"
+      "require": "./setDayOfYear.js",
+      "import": "./setDayOfYear.mjs"
     },
     "./setDefaultOptions": {
-      "require": "./setDefaultOptions/index.js",
-      "import": "./setDefaultOptions/index.mjs"
+      "require": "./setDefaultOptions.js",
+      "import": "./setDefaultOptions.mjs"
     },
     "./setHours": {
-      "require": "./setHours/index.js",
-      "import": "./setHours/index.mjs"
+      "require": "./setHours.js",
+      "import": "./setHours.mjs"
     },
     "./setISODay": {
-      "require": "./setISODay/index.js",
-      "import": "./setISODay/index.mjs"
+      "require": "./setISODay.js",
+      "import": "./setISODay.mjs"
     },
     "./setISOWeek": {
-      "require": "./setISOWeek/index.js",
-      "import": "./setISOWeek/index.mjs"
+      "require": "./setISOWeek.js",
+      "import": "./setISOWeek.mjs"
     },
     "./setISOWeekYear": {
-      "require": "./setISOWeekYear/index.js",
-      "import": "./setISOWeekYear/index.mjs"
+      "require": "./setISOWeekYear.js",
+      "import": "./setISOWeekYear.mjs"
     },
     "./setMilliseconds": {
-      "require": "./setMilliseconds/index.js",
-      "import": "./setMilliseconds/index.mjs"
+      "require": "./setMilliseconds.js",
+      "import": "./setMilliseconds.mjs"
     },
     "./setMinutes": {
-      "require": "./setMinutes/index.js",
-      "import": "./setMinutes/index.mjs"
+      "require": "./setMinutes.js",
+      "import": "./setMinutes.mjs"
     },
     "./setMonth": {
-      "require": "./setMonth/index.js",
-      "import": "./setMonth/index.mjs"
+      "require": "./setMonth.js",
+      "import": "./setMonth.mjs"
     },
     "./setQuarter": {
-      "require": "./setQuarter/index.js",
-      "import": "./setQuarter/index.mjs"
+      "require": "./setQuarter.js",
+      "import": "./setQuarter.mjs"
     },
     "./setSeconds": {
-      "require": "./setSeconds/index.js",
-      "import": "./setSeconds/index.mjs"
+      "require": "./setSeconds.js",
+      "import": "./setSeconds.mjs"
     },
     "./setWeek": {
-      "require": "./setWeek/index.js",
-      "import": "./setWeek/index.mjs"
+      "require": "./setWeek.js",
+      "import": "./setWeek.mjs"
     },
     "./setWeekYear": {
-      "require": "./setWeekYear/index.js",
-      "import": "./setWeekYear/index.mjs"
+      "require": "./setWeekYear.js",
+      "import": "./setWeekYear.mjs"
     },
     "./setYear": {
-      "require": "./setYear/index.js",
-      "import": "./setYear/index.mjs"
+      "require": "./setYear.js",
+      "import": "./setYear.mjs"
     },
     "./startOfDay": {
-      "require": "./startOfDay/index.js",
-      "import": "./startOfDay/index.mjs"
+      "require": "./startOfDay.js",
+      "import": "./startOfDay.mjs"
     },
     "./startOfDecade": {
-      "require": "./startOfDecade/index.js",
-      "import": "./startOfDecade/index.mjs"
+      "require": "./startOfDecade.js",
+      "import": "./startOfDecade.mjs"
     },
     "./startOfHour": {
-      "require": "./startOfHour/index.js",
-      "import": "./startOfHour/index.mjs"
+      "require": "./startOfHour.js",
+      "import": "./startOfHour.mjs"
     },
     "./startOfISOWeek": {
-      "require": "./startOfISOWeek/index.js",
-      "import": "./startOfISOWeek/index.mjs"
+      "require": "./startOfISOWeek.js",
+      "import": "./startOfISOWeek.mjs"
     },
     "./startOfISOWeekYear": {
-      "require": "./startOfISOWeekYear/index.js",
-      "import": "./startOfISOWeekYear/index.mjs"
+      "require": "./startOfISOWeekYear.js",
+      "import": "./startOfISOWeekYear.mjs"
     },
     "./startOfMinute": {
-      "require": "./startOfMinute/index.js",
-      "import": "./startOfMinute/index.mjs"
+      "require": "./startOfMinute.js",
+      "import": "./startOfMinute.mjs"
     },
     "./startOfMonth": {
-      "require": "./startOfMonth/index.js",
-      "import": "./startOfMonth/index.mjs"
+      "require": "./startOfMonth.js",
+      "import": "./startOfMonth.mjs"
     },
     "./startOfQuarter": {
-      "require": "./startOfQuarter/index.js",
-      "import": "./startOfQuarter/index.mjs"
+      "require": "./startOfQuarter.js",
+      "import": "./startOfQuarter.mjs"
     },
     "./startOfSecond": {
-      "require": "./startOfSecond/index.js",
-      "import": "./startOfSecond/index.mjs"
+      "require": "./startOfSecond.js",
+      "import": "./startOfSecond.mjs"
     },
     "./startOfToday": {
-      "require": "./startOfToday/index.js",
-      "import": "./startOfToday/index.mjs"
+      "require": "./startOfToday.js",
+      "import": "./startOfToday.mjs"
     },
     "./startOfTomorrow": {
-      "require": "./startOfTomorrow/index.js",
-      "import": "./startOfTomorrow/index.mjs"
+      "require": "./startOfTomorrow.js",
+      "import": "./startOfTomorrow.mjs"
     },
     "./startOfWeek": {
-      "require": "./startOfWeek/index.js",
-      "import": "./startOfWeek/index.mjs"
+      "require": "./startOfWeek.js",
+      "import": "./startOfWeek.mjs"
     },
     "./startOfWeekYear": {
-      "require": "./startOfWeekYear/index.js",
-      "import": "./startOfWeekYear/index.mjs"
+      "require": "./startOfWeekYear.js",
+      "import": "./startOfWeekYear.mjs"
     },
     "./startOfYear": {
-      "require": "./startOfYear/index.js",
-      "import": "./startOfYear/index.mjs"
+      "require": "./startOfYear.js",
+      "import": "./startOfYear.mjs"
     },
     "./startOfYesterday": {
-      "require": "./startOfYesterday/index.js",
-      "import": "./startOfYesterday/index.mjs"
+      "require": "./startOfYesterday.js",
+      "import": "./startOfYesterday.mjs"
     },
     "./sub": {
-      "require": "./sub/index.js",
-      "import": "./sub/index.mjs"
+      "require": "./sub.js",
+      "import": "./sub.mjs"
     },
     "./subBusinessDays": {
-      "require": "./subBusinessDays/index.js",
-      "import": "./subBusinessDays/index.mjs"
+      "require": "./subBusinessDays.js",
+      "import": "./subBusinessDays.mjs"
     },
     "./subDays": {
-      "require": "./subDays/index.js",
-      "import": "./subDays/index.mjs"
+      "require": "./subDays.js",
+      "import": "./subDays.mjs"
     },
     "./subHours": {
-      "require": "./subHours/index.js",
-      "import": "./subHours/index.mjs"
+      "require": "./subHours.js",
+      "import": "./subHours.mjs"
     },
     "./subISOWeekYears": {
-      "require": "./subISOWeekYears/index.js",
-      "import": "./subISOWeekYears/index.mjs"
+      "require": "./subISOWeekYears.js",
+      "import": "./subISOWeekYears.mjs"
     },
     "./subMilliseconds": {
-      "require": "./subMilliseconds/index.js",
-      "import": "./subMilliseconds/index.mjs"
+      "require": "./subMilliseconds.js",
+      "import": "./subMilliseconds.mjs"
     },
     "./subMinutes": {
-      "require": "./subMinutes/index.js",
-      "import": "./subMinutes/index.mjs"
+      "require": "./subMinutes.js",
+      "import": "./subMinutes.mjs"
     },
     "./subMonths": {
-      "require": "./subMonths/index.js",
-      "import": "./subMonths/index.mjs"
+      "require": "./subMonths.js",
+      "import": "./subMonths.mjs"
     },
     "./subQuarters": {
-      "require": "./subQuarters/index.js",
-      "import": "./subQuarters/index.mjs"
+      "require": "./subQuarters.js",
+      "import": "./subQuarters.mjs"
     },
     "./subSeconds": {
-      "require": "./subSeconds/index.js",
-      "import": "./subSeconds/index.mjs"
+      "require": "./subSeconds.js",
+      "import": "./subSeconds.mjs"
     },
     "./subWeeks": {
-      "require": "./subWeeks/index.js",
-      "import": "./subWeeks/index.mjs"
+      "require": "./subWeeks.js",
+      "import": "./subWeeks.mjs"
     },
     "./subYears": {
-      "require": "./subYears/index.js",
-      "import": "./subYears/index.mjs"
+      "require": "./subYears.js",
+      "import": "./subYears.mjs"
     },
     "./toDate": {
-      "require": "./toDate/index.js",
-      "import": "./toDate/index.mjs"
+      "require": "./toDate.js",
+      "import": "./toDate.mjs"
     },
     "./transpose": {
-      "require": "./transpose/index.js",
-      "import": "./transpose/index.mjs"
+      "require": "./transpose.js",
+      "import": "./transpose.mjs"
     },
     "./weeksToDays": {
-      "require": "./weeksToDays/index.js",
-      "import": "./weeksToDays/index.mjs"
+      "require": "./weeksToDays.js",
+      "import": "./weeksToDays.mjs"
     },
     "./yearsToMonths": {
-      "require": "./yearsToMonths/index.js",
-      "import": "./yearsToMonths/index.mjs"
+      "require": "./yearsToMonths.js",
+      "import": "./yearsToMonths.mjs"
     },
     "./yearsToQuarters": {
-      "require": "./yearsToQuarters/index.js",
-      "import": "./yearsToQuarters/index.mjs"
+      "require": "./yearsToQuarters.js",
+      "import": "./yearsToQuarters.mjs"
     },
     "./fp/add": {
-      "require": "./fp/add/index.js",
-      "import": "./fp/add/index.mjs"
+      "require": "./fp/add.js",
+      "import": "./fp/add.mjs"
     },
     "./fp/addBusinessDays": {
-      "require": "./fp/addBusinessDays/index.js",
-      "import": "./fp/addBusinessDays/index.mjs"
+      "require": "./fp/addBusinessDays.js",
+      "import": "./fp/addBusinessDays.mjs"
     },
     "./fp/addDays": {
-      "require": "./fp/addDays/index.js",
-      "import": "./fp/addDays/index.mjs"
+      "require": "./fp/addDays.js",
+      "import": "./fp/addDays.mjs"
     },
     "./fp/addHours": {
-      "require": "./fp/addHours/index.js",
-      "import": "./fp/addHours/index.mjs"
+      "require": "./fp/addHours.js",
+      "import": "./fp/addHours.mjs"
     },
     "./fp/addISOWeekYears": {
-      "require": "./fp/addISOWeekYears/index.js",
-      "import": "./fp/addISOWeekYears/index.mjs"
+      "require": "./fp/addISOWeekYears.js",
+      "import": "./fp/addISOWeekYears.mjs"
     },
     "./fp/addMilliseconds": {
-      "require": "./fp/addMilliseconds/index.js",
-      "import": "./fp/addMilliseconds/index.mjs"
+      "require": "./fp/addMilliseconds.js",
+      "import": "./fp/addMilliseconds.mjs"
     },
     "./fp/addMinutes": {
-      "require": "./fp/addMinutes/index.js",
-      "import": "./fp/addMinutes/index.mjs"
+      "require": "./fp/addMinutes.js",
+      "import": "./fp/addMinutes.mjs"
     },
     "./fp/addMonths": {
-      "require": "./fp/addMonths/index.js",
-      "import": "./fp/addMonths/index.mjs"
+      "require": "./fp/addMonths.js",
+      "import": "./fp/addMonths.mjs"
     },
     "./fp/addQuarters": {
-      "require": "./fp/addQuarters/index.js",
-      "import": "./fp/addQuarters/index.mjs"
+      "require": "./fp/addQuarters.js",
+      "import": "./fp/addQuarters.mjs"
     },
     "./fp/addSeconds": {
-      "require": "./fp/addSeconds/index.js",
-      "import": "./fp/addSeconds/index.mjs"
+      "require": "./fp/addSeconds.js",
+      "import": "./fp/addSeconds.mjs"
     },
     "./fp/addWeeks": {
-      "require": "./fp/addWeeks/index.js",
-      "import": "./fp/addWeeks/index.mjs"
+      "require": "./fp/addWeeks.js",
+      "import": "./fp/addWeeks.mjs"
     },
     "./fp/addYears": {
-      "require": "./fp/addYears/index.js",
-      "import": "./fp/addYears/index.mjs"
+      "require": "./fp/addYears.js",
+      "import": "./fp/addYears.mjs"
     },
     "./fp/areIntervalsOverlapping": {
-      "require": "./fp/areIntervalsOverlapping/index.js",
-      "import": "./fp/areIntervalsOverlapping/index.mjs"
+      "require": "./fp/areIntervalsOverlapping.js",
+      "import": "./fp/areIntervalsOverlapping.mjs"
     },
     "./fp/areIntervalsOverlappingWithOptions": {
-      "require": "./fp/areIntervalsOverlappingWithOptions/index.js",
-      "import": "./fp/areIntervalsOverlappingWithOptions/index.mjs"
+      "require": "./fp/areIntervalsOverlappingWithOptions.js",
+      "import": "./fp/areIntervalsOverlappingWithOptions.mjs"
     },
     "./fp/clamp": {
-      "require": "./fp/clamp/index.js",
-      "import": "./fp/clamp/index.mjs"
+      "require": "./fp/clamp.js",
+      "import": "./fp/clamp.mjs"
     },
     "./fp/closestIndexTo": {
-      "require": "./fp/closestIndexTo/index.js",
-      "import": "./fp/closestIndexTo/index.mjs"
+      "require": "./fp/closestIndexTo.js",
+      "import": "./fp/closestIndexTo.mjs"
     },
     "./fp/closestTo": {
-      "require": "./fp/closestTo/index.js",
-      "import": "./fp/closestTo/index.mjs"
+      "require": "./fp/closestTo.js",
+      "import": "./fp/closestTo.mjs"
     },
     "./fp/compareAsc": {
-      "require": "./fp/compareAsc/index.js",
-      "import": "./fp/compareAsc/index.mjs"
+      "require": "./fp/compareAsc.js",
+      "import": "./fp/compareAsc.mjs"
     },
     "./fp/compareDesc": {
-      "require": "./fp/compareDesc/index.js",
-      "import": "./fp/compareDesc/index.mjs"
+      "require": "./fp/compareDesc.js",
+      "import": "./fp/compareDesc.mjs"
     },
     "./fp/daysToWeeks": {
-      "require": "./fp/daysToWeeks/index.js",
-      "import": "./fp/daysToWeeks/index.mjs"
+      "require": "./fp/daysToWeeks.js",
+      "import": "./fp/daysToWeeks.mjs"
     },
     "./fp/differenceInBusinessDays": {
-      "require": "./fp/differenceInBusinessDays/index.js",
-      "import": "./fp/differenceInBusinessDays/index.mjs"
+      "require": "./fp/differenceInBusinessDays.js",
+      "import": "./fp/differenceInBusinessDays.mjs"
     },
     "./fp/differenceInCalendarDays": {
-      "require": "./fp/differenceInCalendarDays/index.js",
-      "import": "./fp/differenceInCalendarDays/index.mjs"
+      "require": "./fp/differenceInCalendarDays.js",
+      "import": "./fp/differenceInCalendarDays.mjs"
     },
     "./fp/differenceInCalendarISOWeekYears": {
-      "require": "./fp/differenceInCalendarISOWeekYears/index.js",
-      "import": "./fp/differenceInCalendarISOWeekYears/index.mjs"
+      "require": "./fp/differenceInCalendarISOWeekYears.js",
+      "import": "./fp/differenceInCalendarISOWeekYears.mjs"
     },
     "./fp/differenceInCalendarISOWeeks": {
-      "require": "./fp/differenceInCalendarISOWeeks/index.js",
-      "import": "./fp/differenceInCalendarISOWeeks/index.mjs"
+      "require": "./fp/differenceInCalendarISOWeeks.js",
+      "import": "./fp/differenceInCalendarISOWeeks.mjs"
     },
     "./fp/differenceInCalendarMonths": {
-      "require": "./fp/differenceInCalendarMonths/index.js",
-      "import": "./fp/differenceInCalendarMonths/index.mjs"
+      "require": "./fp/differenceInCalendarMonths.js",
+      "import": "./fp/differenceInCalendarMonths.mjs"
     },
     "./fp/differenceInCalendarQuarters": {
-      "require": "./fp/differenceInCalendarQuarters/index.js",
-      "import": "./fp/differenceInCalendarQuarters/index.mjs"
+      "require": "./fp/differenceInCalendarQuarters.js",
+      "import": "./fp/differenceInCalendarQuarters.mjs"
     },
     "./fp/differenceInCalendarWeeks": {
-      "require": "./fp/differenceInCalendarWeeks/index.js",
-      "import": "./fp/differenceInCalendarWeeks/index.mjs"
+      "require": "./fp/differenceInCalendarWeeks.js",
+      "import": "./fp/differenceInCalendarWeeks.mjs"
     },
     "./fp/differenceInCalendarWeeksWithOptions": {
-      "require": "./fp/differenceInCalendarWeeksWithOptions/index.js",
-      "import": "./fp/differenceInCalendarWeeksWithOptions/index.mjs"
+      "require": "./fp/differenceInCalendarWeeksWithOptions.js",
+      "import": "./fp/differenceInCalendarWeeksWithOptions.mjs"
     },
     "./fp/differenceInCalendarYears": {
-      "require": "./fp/differenceInCalendarYears/index.js",
-      "import": "./fp/differenceInCalendarYears/index.mjs"
+      "require": "./fp/differenceInCalendarYears.js",
+      "import": "./fp/differenceInCalendarYears.mjs"
     },
     "./fp/differenceInDays": {
-      "require": "./fp/differenceInDays/index.js",
-      "import": "./fp/differenceInDays/index.mjs"
+      "require": "./fp/differenceInDays.js",
+      "import": "./fp/differenceInDays.mjs"
     },
     "./fp/differenceInHours": {
-      "require": "./fp/differenceInHours/index.js",
-      "import": "./fp/differenceInHours/index.mjs"
+      "require": "./fp/differenceInHours.js",
+      "import": "./fp/differenceInHours.mjs"
     },
     "./fp/differenceInHoursWithOptions": {
-      "require": "./fp/differenceInHoursWithOptions/index.js",
-      "import": "./fp/differenceInHoursWithOptions/index.mjs"
+      "require": "./fp/differenceInHoursWithOptions.js",
+      "import": "./fp/differenceInHoursWithOptions.mjs"
     },
     "./fp/differenceInISOWeekYears": {
-      "require": "./fp/differenceInISOWeekYears/index.js",
-      "import": "./fp/differenceInISOWeekYears/index.mjs"
+      "require": "./fp/differenceInISOWeekYears.js",
+      "import": "./fp/differenceInISOWeekYears.mjs"
     },
     "./fp/differenceInMilliseconds": {
-      "require": "./fp/differenceInMilliseconds/index.js",
-      "import": "./fp/differenceInMilliseconds/index.mjs"
+      "require": "./fp/differenceInMilliseconds.js",
+      "import": "./fp/differenceInMilliseconds.mjs"
     },
     "./fp/differenceInMinutes": {
-      "require": "./fp/differenceInMinutes/index.js",
-      "import": "./fp/differenceInMinutes/index.mjs"
+      "require": "./fp/differenceInMinutes.js",
+      "import": "./fp/differenceInMinutes.mjs"
     },
     "./fp/differenceInMinutesWithOptions": {
-      "require": "./fp/differenceInMinutesWithOptions/index.js",
-      "import": "./fp/differenceInMinutesWithOptions/index.mjs"
+      "require": "./fp/differenceInMinutesWithOptions.js",
+      "import": "./fp/differenceInMinutesWithOptions.mjs"
     },
     "./fp/differenceInMonths": {
-      "require": "./fp/differenceInMonths/index.js",
-      "import": "./fp/differenceInMonths/index.mjs"
+      "require": "./fp/differenceInMonths.js",
+      "import": "./fp/differenceInMonths.mjs"
     },
     "./fp/differenceInQuarters": {
-      "require": "./fp/differenceInQuarters/index.js",
-      "import": "./fp/differenceInQuarters/index.mjs"
+      "require": "./fp/differenceInQuarters.js",
+      "import": "./fp/differenceInQuarters.mjs"
     },
     "./fp/differenceInQuartersWithOptions": {
-      "require": "./fp/differenceInQuartersWithOptions/index.js",
-      "import": "./fp/differenceInQuartersWithOptions/index.mjs"
+      "require": "./fp/differenceInQuartersWithOptions.js",
+      "import": "./fp/differenceInQuartersWithOptions.mjs"
     },
     "./fp/differenceInSeconds": {
-      "require": "./fp/differenceInSeconds/index.js",
-      "import": "./fp/differenceInSeconds/index.mjs"
+      "require": "./fp/differenceInSeconds.js",
+      "import": "./fp/differenceInSeconds.mjs"
     },
     "./fp/differenceInSecondsWithOptions": {
-      "require": "./fp/differenceInSecondsWithOptions/index.js",
-      "import": "./fp/differenceInSecondsWithOptions/index.mjs"
+      "require": "./fp/differenceInSecondsWithOptions.js",
+      "import": "./fp/differenceInSecondsWithOptions.mjs"
     },
     "./fp/differenceInWeeks": {
-      "require": "./fp/differenceInWeeks/index.js",
-      "import": "./fp/differenceInWeeks/index.mjs"
+      "require": "./fp/differenceInWeeks.js",
+      "import": "./fp/differenceInWeeks.mjs"
     },
     "./fp/differenceInWeeksWithOptions": {
-      "require": "./fp/differenceInWeeksWithOptions/index.js",
-      "import": "./fp/differenceInWeeksWithOptions/index.mjs"
+      "require": "./fp/differenceInWeeksWithOptions.js",
+      "import": "./fp/differenceInWeeksWithOptions.mjs"
     },
     "./fp/differenceInYears": {
-      "require": "./fp/differenceInYears/index.js",
-      "import": "./fp/differenceInYears/index.mjs"
+      "require": "./fp/differenceInYears.js",
+      "import": "./fp/differenceInYears.mjs"
     },
     "./fp/eachDayOfInterval": {
-      "require": "./fp/eachDayOfInterval/index.js",
-      "import": "./fp/eachDayOfInterval/index.mjs"
+      "require": "./fp/eachDayOfInterval.js",
+      "import": "./fp/eachDayOfInterval.mjs"
     },
     "./fp/eachDayOfIntervalWithOptions": {
-      "require": "./fp/eachDayOfIntervalWithOptions/index.js",
-      "import": "./fp/eachDayOfIntervalWithOptions/index.mjs"
+      "require": "./fp/eachDayOfIntervalWithOptions.js",
+      "import": "./fp/eachDayOfIntervalWithOptions.mjs"
     },
     "./fp/eachHourOfInterval": {
-      "require": "./fp/eachHourOfInterval/index.js",
-      "import": "./fp/eachHourOfInterval/index.mjs"
+      "require": "./fp/eachHourOfInterval.js",
+      "import": "./fp/eachHourOfInterval.mjs"
     },
     "./fp/eachHourOfIntervalWithOptions": {
-      "require": "./fp/eachHourOfIntervalWithOptions/index.js",
-      "import": "./fp/eachHourOfIntervalWithOptions/index.mjs"
+      "require": "./fp/eachHourOfIntervalWithOptions.js",
+      "import": "./fp/eachHourOfIntervalWithOptions.mjs"
     },
     "./fp/eachMinuteOfInterval": {
-      "require": "./fp/eachMinuteOfInterval/index.js",
-      "import": "./fp/eachMinuteOfInterval/index.mjs"
+      "require": "./fp/eachMinuteOfInterval.js",
+      "import": "./fp/eachMinuteOfInterval.mjs"
     },
     "./fp/eachMinuteOfIntervalWithOptions": {
-      "require": "./fp/eachMinuteOfIntervalWithOptions/index.js",
-      "import": "./fp/eachMinuteOfIntervalWithOptions/index.mjs"
+      "require": "./fp/eachMinuteOfIntervalWithOptions.js",
+      "import": "./fp/eachMinuteOfIntervalWithOptions.mjs"
     },
     "./fp/eachMonthOfInterval": {
-      "require": "./fp/eachMonthOfInterval/index.js",
-      "import": "./fp/eachMonthOfInterval/index.mjs"
+      "require": "./fp/eachMonthOfInterval.js",
+      "import": "./fp/eachMonthOfInterval.mjs"
     },
     "./fp/eachQuarterOfInterval": {
-      "require": "./fp/eachQuarterOfInterval/index.js",
-      "import": "./fp/eachQuarterOfInterval/index.mjs"
+      "require": "./fp/eachQuarterOfInterval.js",
+      "import": "./fp/eachQuarterOfInterval.mjs"
     },
     "./fp/eachWeekOfInterval": {
-      "require": "./fp/eachWeekOfInterval/index.js",
-      "import": "./fp/eachWeekOfInterval/index.mjs"
+      "require": "./fp/eachWeekOfInterval.js",
+      "import": "./fp/eachWeekOfInterval.mjs"
     },
     "./fp/eachWeekOfIntervalWithOptions": {
-      "require": "./fp/eachWeekOfIntervalWithOptions/index.js",
-      "import": "./fp/eachWeekOfIntervalWithOptions/index.mjs"
+      "require": "./fp/eachWeekOfIntervalWithOptions.js",
+      "import": "./fp/eachWeekOfIntervalWithOptions.mjs"
     },
     "./fp/eachWeekendOfInterval": {
-      "require": "./fp/eachWeekendOfInterval/index.js",
-      "import": "./fp/eachWeekendOfInterval/index.mjs"
+      "require": "./fp/eachWeekendOfInterval.js",
+      "import": "./fp/eachWeekendOfInterval.mjs"
     },
     "./fp/eachWeekendOfMonth": {
-      "require": "./fp/eachWeekendOfMonth/index.js",
-      "import": "./fp/eachWeekendOfMonth/index.mjs"
+      "require": "./fp/eachWeekendOfMonth.js",
+      "import": "./fp/eachWeekendOfMonth.mjs"
     },
     "./fp/eachWeekendOfYear": {
-      "require": "./fp/eachWeekendOfYear/index.js",
-      "import": "./fp/eachWeekendOfYear/index.mjs"
+      "require": "./fp/eachWeekendOfYear.js",
+      "import": "./fp/eachWeekendOfYear.mjs"
     },
     "./fp/eachYearOfInterval": {
-      "require": "./fp/eachYearOfInterval/index.js",
-      "import": "./fp/eachYearOfInterval/index.mjs"
+      "require": "./fp/eachYearOfInterval.js",
+      "import": "./fp/eachYearOfInterval.mjs"
     },
     "./fp/endOfDay": {
-      "require": "./fp/endOfDay/index.js",
-      "import": "./fp/endOfDay/index.mjs"
+      "require": "./fp/endOfDay.js",
+      "import": "./fp/endOfDay.mjs"
     },
     "./fp/endOfDecade": {
-      "require": "./fp/endOfDecade/index.js",
-      "import": "./fp/endOfDecade/index.mjs"
+      "require": "./fp/endOfDecade.js",
+      "import": "./fp/endOfDecade.mjs"
     },
     "./fp/endOfDecadeWithOptions": {
-      "require": "./fp/endOfDecadeWithOptions/index.js",
-      "import": "./fp/endOfDecadeWithOptions/index.mjs"
+      "require": "./fp/endOfDecadeWithOptions.js",
+      "import": "./fp/endOfDecadeWithOptions.mjs"
     },
     "./fp/endOfHour": {
-      "require": "./fp/endOfHour/index.js",
-      "import": "./fp/endOfHour/index.mjs"
+      "require": "./fp/endOfHour.js",
+      "import": "./fp/endOfHour.mjs"
     },
     "./fp/endOfISOWeek": {
-      "require": "./fp/endOfISOWeek/index.js",
-      "import": "./fp/endOfISOWeek/index.mjs"
+      "require": "./fp/endOfISOWeek.js",
+      "import": "./fp/endOfISOWeek.mjs"
     },
     "./fp/endOfISOWeekYear": {
-      "require": "./fp/endOfISOWeekYear/index.js",
-      "import": "./fp/endOfISOWeekYear/index.mjs"
+      "require": "./fp/endOfISOWeekYear.js",
+      "import": "./fp/endOfISOWeekYear.mjs"
     },
     "./fp/endOfMinute": {
-      "require": "./fp/endOfMinute/index.js",
-      "import": "./fp/endOfMinute/index.mjs"
+      "require": "./fp/endOfMinute.js",
+      "import": "./fp/endOfMinute.mjs"
     },
     "./fp/endOfMonth": {
-      "require": "./fp/endOfMonth/index.js",
-      "import": "./fp/endOfMonth/index.mjs"
+      "require": "./fp/endOfMonth.js",
+      "import": "./fp/endOfMonth.mjs"
     },
     "./fp/endOfQuarter": {
-      "require": "./fp/endOfQuarter/index.js",
-      "import": "./fp/endOfQuarter/index.mjs"
+      "require": "./fp/endOfQuarter.js",
+      "import": "./fp/endOfQuarter.mjs"
     },
     "./fp/endOfSecond": {
-      "require": "./fp/endOfSecond/index.js",
-      "import": "./fp/endOfSecond/index.mjs"
+      "require": "./fp/endOfSecond.js",
+      "import": "./fp/endOfSecond.mjs"
     },
     "./fp/endOfWeek": {
-      "require": "./fp/endOfWeek/index.js",
-      "import": "./fp/endOfWeek/index.mjs"
+      "require": "./fp/endOfWeek.js",
+      "import": "./fp/endOfWeek.mjs"
     },
     "./fp/endOfWeekWithOptions": {
-      "require": "./fp/endOfWeekWithOptions/index.js",
-      "import": "./fp/endOfWeekWithOptions/index.mjs"
+      "require": "./fp/endOfWeekWithOptions.js",
+      "import": "./fp/endOfWeekWithOptions.mjs"
     },
     "./fp/endOfYear": {
-      "require": "./fp/endOfYear/index.js",
-      "import": "./fp/endOfYear/index.mjs"
+      "require": "./fp/endOfYear.js",
+      "import": "./fp/endOfYear.mjs"
     },
     "./fp/format": {
-      "require": "./fp/format/index.js",
-      "import": "./fp/format/index.mjs"
+      "require": "./fp/format.js",
+      "import": "./fp/format.mjs"
     },
     "./fp/formatDistance": {
-      "require": "./fp/formatDistance/index.js",
-      "import": "./fp/formatDistance/index.mjs"
+      "require": "./fp/formatDistance.js",
+      "import": "./fp/formatDistance.mjs"
     },
     "./fp/formatDistanceStrict": {
-      "require": "./fp/formatDistanceStrict/index.js",
-      "import": "./fp/formatDistanceStrict/index.mjs"
+      "require": "./fp/formatDistanceStrict.js",
+      "import": "./fp/formatDistanceStrict.mjs"
     },
     "./fp/formatDistanceStrictWithOptions": {
-      "require": "./fp/formatDistanceStrictWithOptions/index.js",
-      "import": "./fp/formatDistanceStrictWithOptions/index.mjs"
+      "require": "./fp/formatDistanceStrictWithOptions.js",
+      "import": "./fp/formatDistanceStrictWithOptions.mjs"
     },
     "./fp/formatDistanceWithOptions": {
-      "require": "./fp/formatDistanceWithOptions/index.js",
-      "import": "./fp/formatDistanceWithOptions/index.mjs"
+      "require": "./fp/formatDistanceWithOptions.js",
+      "import": "./fp/formatDistanceWithOptions.mjs"
     },
     "./fp/formatDuration": {
-      "require": "./fp/formatDuration/index.js",
-      "import": "./fp/formatDuration/index.mjs"
+      "require": "./fp/formatDuration.js",
+      "import": "./fp/formatDuration.mjs"
     },
     "./fp/formatDurationWithOptions": {
-      "require": "./fp/formatDurationWithOptions/index.js",
-      "import": "./fp/formatDurationWithOptions/index.mjs"
+      "require": "./fp/formatDurationWithOptions.js",
+      "import": "./fp/formatDurationWithOptions.mjs"
     },
     "./fp/formatISO": {
-      "require": "./fp/formatISO/index.js",
-      "import": "./fp/formatISO/index.mjs"
+      "require": "./fp/formatISO.js",
+      "import": "./fp/formatISO.mjs"
     },
     "./fp/formatISO9075": {
-      "require": "./fp/formatISO9075/index.js",
-      "import": "./fp/formatISO9075/index.mjs"
+      "require": "./fp/formatISO9075.js",
+      "import": "./fp/formatISO9075.mjs"
     },
     "./fp/formatISO9075WithOptions": {
-      "require": "./fp/formatISO9075WithOptions/index.js",
-      "import": "./fp/formatISO9075WithOptions/index.mjs"
+      "require": "./fp/formatISO9075WithOptions.js",
+      "import": "./fp/formatISO9075WithOptions.mjs"
     },
     "./fp/formatISODuration": {
-      "require": "./fp/formatISODuration/index.js",
-      "import": "./fp/formatISODuration/index.mjs"
+      "require": "./fp/formatISODuration.js",
+      "import": "./fp/formatISODuration.mjs"
     },
     "./fp/formatISOWithOptions": {
-      "require": "./fp/formatISOWithOptions/index.js",
-      "import": "./fp/formatISOWithOptions/index.mjs"
+      "require": "./fp/formatISOWithOptions.js",
+      "import": "./fp/formatISOWithOptions.mjs"
     },
     "./fp/formatRFC3339": {
-      "require": "./fp/formatRFC3339/index.js",
-      "import": "./fp/formatRFC3339/index.mjs"
+      "require": "./fp/formatRFC3339.js",
+      "import": "./fp/formatRFC3339.mjs"
     },
     "./fp/formatRFC3339WithOptions": {
-      "require": "./fp/formatRFC3339WithOptions/index.js",
-      "import": "./fp/formatRFC3339WithOptions/index.mjs"
+      "require": "./fp/formatRFC3339WithOptions.js",
+      "import": "./fp/formatRFC3339WithOptions.mjs"
     },
     "./fp/formatRFC7231": {
-      "require": "./fp/formatRFC7231/index.js",
-      "import": "./fp/formatRFC7231/index.mjs"
+      "require": "./fp/formatRFC7231.js",
+      "import": "./fp/formatRFC7231.mjs"
     },
     "./fp/formatRelative": {
-      "require": "./fp/formatRelative/index.js",
-      "import": "./fp/formatRelative/index.mjs"
+      "require": "./fp/formatRelative.js",
+      "import": "./fp/formatRelative.mjs"
     },
     "./fp/formatRelativeWithOptions": {
-      "require": "./fp/formatRelativeWithOptions/index.js",
-      "import": "./fp/formatRelativeWithOptions/index.mjs"
+      "require": "./fp/formatRelativeWithOptions.js",
+      "import": "./fp/formatRelativeWithOptions.mjs"
     },
     "./fp/formatWithOptions": {
-      "require": "./fp/formatWithOptions/index.js",
-      "import": "./fp/formatWithOptions/index.mjs"
+      "require": "./fp/formatWithOptions.js",
+      "import": "./fp/formatWithOptions.mjs"
     },
     "./fp/fromUnixTime": {
-      "require": "./fp/fromUnixTime/index.js",
-      "import": "./fp/fromUnixTime/index.mjs"
+      "require": "./fp/fromUnixTime.js",
+      "import": "./fp/fromUnixTime.mjs"
     },
     "./fp/getDate": {
-      "require": "./fp/getDate/index.js",
-      "import": "./fp/getDate/index.mjs"
+      "require": "./fp/getDate.js",
+      "import": "./fp/getDate.mjs"
     },
     "./fp/getDay": {
-      "require": "./fp/getDay/index.js",
-      "import": "./fp/getDay/index.mjs"
+      "require": "./fp/getDay.js",
+      "import": "./fp/getDay.mjs"
     },
     "./fp/getDayOfYear": {
-      "require": "./fp/getDayOfYear/index.js",
-      "import": "./fp/getDayOfYear/index.mjs"
+      "require": "./fp/getDayOfYear.js",
+      "import": "./fp/getDayOfYear.mjs"
     },
     "./fp/getDaysInMonth": {
-      "require": "./fp/getDaysInMonth/index.js",
-      "import": "./fp/getDaysInMonth/index.mjs"
+      "require": "./fp/getDaysInMonth.js",
+      "import": "./fp/getDaysInMonth.mjs"
     },
     "./fp/getDaysInYear": {
-      "require": "./fp/getDaysInYear/index.js",
-      "import": "./fp/getDaysInYear/index.mjs"
+      "require": "./fp/getDaysInYear.js",
+      "import": "./fp/getDaysInYear.mjs"
     },
     "./fp/getDecade": {
-      "require": "./fp/getDecade/index.js",
-      "import": "./fp/getDecade/index.mjs"
+      "require": "./fp/getDecade.js",
+      "import": "./fp/getDecade.mjs"
     },
     "./fp/getHours": {
-      "require": "./fp/getHours/index.js",
-      "import": "./fp/getHours/index.mjs"
+      "require": "./fp/getHours.js",
+      "import": "./fp/getHours.mjs"
     },
     "./fp/getISODay": {
-      "require": "./fp/getISODay/index.js",
-      "import": "./fp/getISODay/index.mjs"
+      "require": "./fp/getISODay.js",
+      "import": "./fp/getISODay.mjs"
     },
     "./fp/getISOWeek": {
-      "require": "./fp/getISOWeek/index.js",
-      "import": "./fp/getISOWeek/index.mjs"
+      "require": "./fp/getISOWeek.js",
+      "import": "./fp/getISOWeek.mjs"
     },
     "./fp/getISOWeekYear": {
-      "require": "./fp/getISOWeekYear/index.js",
-      "import": "./fp/getISOWeekYear/index.mjs"
+      "require": "./fp/getISOWeekYear.js",
+      "import": "./fp/getISOWeekYear.mjs"
     },
     "./fp/getISOWeeksInYear": {
-      "require": "./fp/getISOWeeksInYear/index.js",
-      "import": "./fp/getISOWeeksInYear/index.mjs"
+      "require": "./fp/getISOWeeksInYear.js",
+      "import": "./fp/getISOWeeksInYear.mjs"
     },
     "./fp/getMilliseconds": {
-      "require": "./fp/getMilliseconds/index.js",
-      "import": "./fp/getMilliseconds/index.mjs"
+      "require": "./fp/getMilliseconds.js",
+      "import": "./fp/getMilliseconds.mjs"
     },
     "./fp/getMinutes": {
-      "require": "./fp/getMinutes/index.js",
-      "import": "./fp/getMinutes/index.mjs"
+      "require": "./fp/getMinutes.js",
+      "import": "./fp/getMinutes.mjs"
     },
     "./fp/getMonth": {
-      "require": "./fp/getMonth/index.js",
-      "import": "./fp/getMonth/index.mjs"
+      "require": "./fp/getMonth.js",
+      "import": "./fp/getMonth.mjs"
     },
     "./fp/getOverlappingDaysInIntervals": {
-      "require": "./fp/getOverlappingDaysInIntervals/index.js",
-      "import": "./fp/getOverlappingDaysInIntervals/index.mjs"
+      "require": "./fp/getOverlappingDaysInIntervals.js",
+      "import": "./fp/getOverlappingDaysInIntervals.mjs"
     },
     "./fp/getQuarter": {
-      "require": "./fp/getQuarter/index.js",
-      "import": "./fp/getQuarter/index.mjs"
+      "require": "./fp/getQuarter.js",
+      "import": "./fp/getQuarter.mjs"
     },
     "./fp/getSeconds": {
-      "require": "./fp/getSeconds/index.js",
-      "import": "./fp/getSeconds/index.mjs"
+      "require": "./fp/getSeconds.js",
+      "import": "./fp/getSeconds.mjs"
     },
     "./fp/getTime": {
-      "require": "./fp/getTime/index.js",
-      "import": "./fp/getTime/index.mjs"
+      "require": "./fp/getTime.js",
+      "import": "./fp/getTime.mjs"
     },
     "./fp/getUnixTime": {
-      "require": "./fp/getUnixTime/index.js",
-      "import": "./fp/getUnixTime/index.mjs"
+      "require": "./fp/getUnixTime.js",
+      "import": "./fp/getUnixTime.mjs"
     },
     "./fp/getWeek": {
-      "require": "./fp/getWeek/index.js",
-      "import": "./fp/getWeek/index.mjs"
+      "require": "./fp/getWeek.js",
+      "import": "./fp/getWeek.mjs"
     },
     "./fp/getWeekOfMonth": {
-      "require": "./fp/getWeekOfMonth/index.js",
-      "import": "./fp/getWeekOfMonth/index.mjs"
+      "require": "./fp/getWeekOfMonth.js",
+      "import": "./fp/getWeekOfMonth.mjs"
     },
     "./fp/getWeekOfMonthWithOptions": {
-      "require": "./fp/getWeekOfMonthWithOptions/index.js",
-      "import": "./fp/getWeekOfMonthWithOptions/index.mjs"
+      "require": "./fp/getWeekOfMonthWithOptions.js",
+      "import": "./fp/getWeekOfMonthWithOptions.mjs"
     },
     "./fp/getWeekWithOptions": {
-      "require": "./fp/getWeekWithOptions/index.js",
-      "import": "./fp/getWeekWithOptions/index.mjs"
+      "require": "./fp/getWeekWithOptions.js",
+      "import": "./fp/getWeekWithOptions.mjs"
     },
     "./fp/getWeekYear": {
-      "require": "./fp/getWeekYear/index.js",
-      "import": "./fp/getWeekYear/index.mjs"
+      "require": "./fp/getWeekYear.js",
+      "import": "./fp/getWeekYear.mjs"
     },
     "./fp/getWeekYearWithOptions": {
-      "require": "./fp/getWeekYearWithOptions/index.js",
-      "import": "./fp/getWeekYearWithOptions/index.mjs"
+      "require": "./fp/getWeekYearWithOptions.js",
+      "import": "./fp/getWeekYearWithOptions.mjs"
     },
     "./fp/getWeeksInMonth": {
-      "require": "./fp/getWeeksInMonth/index.js",
-      "import": "./fp/getWeeksInMonth/index.mjs"
+      "require": "./fp/getWeeksInMonth.js",
+      "import": "./fp/getWeeksInMonth.mjs"
     },
     "./fp/getWeeksInMonthWithOptions": {
-      "require": "./fp/getWeeksInMonthWithOptions/index.js",
-      "import": "./fp/getWeeksInMonthWithOptions/index.mjs"
+      "require": "./fp/getWeeksInMonthWithOptions.js",
+      "import": "./fp/getWeeksInMonthWithOptions.mjs"
     },
     "./fp/getYear": {
-      "require": "./fp/getYear/index.js",
-      "import": "./fp/getYear/index.mjs"
+      "require": "./fp/getYear.js",
+      "import": "./fp/getYear.mjs"
     },
     "./fp/hoursToMilliseconds": {
-      "require": "./fp/hoursToMilliseconds/index.js",
-      "import": "./fp/hoursToMilliseconds/index.mjs"
+      "require": "./fp/hoursToMilliseconds.js",
+      "import": "./fp/hoursToMilliseconds.mjs"
     },
     "./fp/hoursToMinutes": {
-      "require": "./fp/hoursToMinutes/index.js",
-      "import": "./fp/hoursToMinutes/index.mjs"
+      "require": "./fp/hoursToMinutes.js",
+      "import": "./fp/hoursToMinutes.mjs"
     },
     "./fp/hoursToSeconds": {
-      "require": "./fp/hoursToSeconds/index.js",
-      "import": "./fp/hoursToSeconds/index.mjs"
+      "require": "./fp/hoursToSeconds.js",
+      "import": "./fp/hoursToSeconds.mjs"
     },
     "./fp/intervalToDuration": {
-      "require": "./fp/intervalToDuration/index.js",
-      "import": "./fp/intervalToDuration/index.mjs"
+      "require": "./fp/intervalToDuration.js",
+      "import": "./fp/intervalToDuration.mjs"
     },
     "./fp/intlFormat": {
-      "require": "./fp/intlFormat/index.js",
-      "import": "./fp/intlFormat/index.mjs"
+      "require": "./fp/intlFormat.js",
+      "import": "./fp/intlFormat.mjs"
     },
     "./fp/intlFormatDistance": {
-      "require": "./fp/intlFormatDistance/index.js",
-      "import": "./fp/intlFormatDistance/index.mjs"
+      "require": "./fp/intlFormatDistance.js",
+      "import": "./fp/intlFormatDistance.mjs"
     },
     "./fp/intlFormatDistanceWithOptions": {
-      "require": "./fp/intlFormatDistanceWithOptions/index.js",
-      "import": "./fp/intlFormatDistanceWithOptions/index.mjs"
+      "require": "./fp/intlFormatDistanceWithOptions.js",
+      "import": "./fp/intlFormatDistanceWithOptions.mjs"
     },
     "./fp/isAfter": {
-      "require": "./fp/isAfter/index.js",
-      "import": "./fp/isAfter/index.mjs"
+      "require": "./fp/isAfter.js",
+      "import": "./fp/isAfter.mjs"
     },
     "./fp/isBefore": {
-      "require": "./fp/isBefore/index.js",
-      "import": "./fp/isBefore/index.mjs"
+      "require": "./fp/isBefore.js",
+      "import": "./fp/isBefore.mjs"
     },
     "./fp/isDate": {
-      "require": "./fp/isDate/index.js",
-      "import": "./fp/isDate/index.mjs"
+      "require": "./fp/isDate.js",
+      "import": "./fp/isDate.mjs"
     },
     "./fp/isEqual": {
-      "require": "./fp/isEqual/index.js",
-      "import": "./fp/isEqual/index.mjs"
+      "require": "./fp/isEqual.js",
+      "import": "./fp/isEqual.mjs"
     },
     "./fp/isExists": {
-      "require": "./fp/isExists/index.js",
-      "import": "./fp/isExists/index.mjs"
+      "require": "./fp/isExists.js",
+      "import": "./fp/isExists.mjs"
     },
     "./fp/isFirstDayOfMonth": {
-      "require": "./fp/isFirstDayOfMonth/index.js",
-      "import": "./fp/isFirstDayOfMonth/index.mjs"
+      "require": "./fp/isFirstDayOfMonth.js",
+      "import": "./fp/isFirstDayOfMonth.mjs"
     },
     "./fp/isFriday": {
-      "require": "./fp/isFriday/index.js",
-      "import": "./fp/isFriday/index.mjs"
+      "require": "./fp/isFriday.js",
+      "import": "./fp/isFriday.mjs"
     },
     "./fp/isLastDayOfMonth": {
-      "require": "./fp/isLastDayOfMonth/index.js",
-      "import": "./fp/isLastDayOfMonth/index.mjs"
+      "require": "./fp/isLastDayOfMonth.js",
+      "import": "./fp/isLastDayOfMonth.mjs"
     },
     "./fp/isLeapYear": {
-      "require": "./fp/isLeapYear/index.js",
-      "import": "./fp/isLeapYear/index.mjs"
+      "require": "./fp/isLeapYear.js",
+      "import": "./fp/isLeapYear.mjs"
     },
     "./fp/isMatch": {
-      "require": "./fp/isMatch/index.js",
-      "import": "./fp/isMatch/index.mjs"
+      "require": "./fp/isMatch.js",
+      "import": "./fp/isMatch.mjs"
     },
     "./fp/isMatchWithOptions": {
-      "require": "./fp/isMatchWithOptions/index.js",
-      "import": "./fp/isMatchWithOptions/index.mjs"
+      "require": "./fp/isMatchWithOptions.js",
+      "import": "./fp/isMatchWithOptions.mjs"
     },
     "./fp/isMonday": {
-      "require": "./fp/isMonday/index.js",
-      "import": "./fp/isMonday/index.mjs"
+      "require": "./fp/isMonday.js",
+      "import": "./fp/isMonday.mjs"
     },
     "./fp/isSameDay": {
-      "require": "./fp/isSameDay/index.js",
-      "import": "./fp/isSameDay/index.mjs"
+      "require": "./fp/isSameDay.js",
+      "import": "./fp/isSameDay.mjs"
     },
     "./fp/isSameHour": {
-      "require": "./fp/isSameHour/index.js",
-      "import": "./fp/isSameHour/index.mjs"
+      "require": "./fp/isSameHour.js",
+      "import": "./fp/isSameHour.mjs"
     },
     "./fp/isSameISOWeek": {
-      "require": "./fp/isSameISOWeek/index.js",
-      "import": "./fp/isSameISOWeek/index.mjs"
+      "require": "./fp/isSameISOWeek.js",
+      "import": "./fp/isSameISOWeek.mjs"
     },
     "./fp/isSameISOWeekYear": {
-      "require": "./fp/isSameISOWeekYear/index.js",
-      "import": "./fp/isSameISOWeekYear/index.mjs"
+      "require": "./fp/isSameISOWeekYear.js",
+      "import": "./fp/isSameISOWeekYear.mjs"
     },
     "./fp/isSameMinute": {
-      "require": "./fp/isSameMinute/index.js",
-      "import": "./fp/isSameMinute/index.mjs"
+      "require": "./fp/isSameMinute.js",
+      "import": "./fp/isSameMinute.mjs"
     },
     "./fp/isSameMonth": {
-      "require": "./fp/isSameMonth/index.js",
-      "import": "./fp/isSameMonth/index.mjs"
+      "require": "./fp/isSameMonth.js",
+      "import": "./fp/isSameMonth.mjs"
     },
     "./fp/isSameQuarter": {
-      "require": "./fp/isSameQuarter/index.js",
-      "import": "./fp/isSameQuarter/index.mjs"
+      "require": "./fp/isSameQuarter.js",
+      "import": "./fp/isSameQuarter.mjs"
     },
     "./fp/isSameSecond": {
-      "require": "./fp/isSameSecond/index.js",
-      "import": "./fp/isSameSecond/index.mjs"
+      "require": "./fp/isSameSecond.js",
+      "import": "./fp/isSameSecond.mjs"
     },
     "./fp/isSameWeek": {
-      "require": "./fp/isSameWeek/index.js",
-      "import": "./fp/isSameWeek/index.mjs"
+      "require": "./fp/isSameWeek.js",
+      "import": "./fp/isSameWeek.mjs"
     },
     "./fp/isSameWeekWithOptions": {
-      "require": "./fp/isSameWeekWithOptions/index.js",
-      "import": "./fp/isSameWeekWithOptions/index.mjs"
+      "require": "./fp/isSameWeekWithOptions.js",
+      "import": "./fp/isSameWeekWithOptions.mjs"
     },
     "./fp/isSameYear": {
-      "require": "./fp/isSameYear/index.js",
-      "import": "./fp/isSameYear/index.mjs"
+      "require": "./fp/isSameYear.js",
+      "import": "./fp/isSameYear.mjs"
     },
     "./fp/isSaturday": {
-      "require": "./fp/isSaturday/index.js",
-      "import": "./fp/isSaturday/index.mjs"
+      "require": "./fp/isSaturday.js",
+      "import": "./fp/isSaturday.mjs"
     },
     "./fp/isSunday": {
-      "require": "./fp/isSunday/index.js",
-      "import": "./fp/isSunday/index.mjs"
+      "require": "./fp/isSunday.js",
+      "import": "./fp/isSunday.mjs"
     },
     "./fp/isThursday": {
-      "require": "./fp/isThursday/index.js",
-      "import": "./fp/isThursday/index.mjs"
+      "require": "./fp/isThursday.js",
+      "import": "./fp/isThursday.mjs"
     },
     "./fp/isTuesday": {
-      "require": "./fp/isTuesday/index.js",
-      "import": "./fp/isTuesday/index.mjs"
+      "require": "./fp/isTuesday.js",
+      "import": "./fp/isTuesday.mjs"
     },
     "./fp/isValid": {
-      "require": "./fp/isValid/index.js",
-      "import": "./fp/isValid/index.mjs"
+      "require": "./fp/isValid.js",
+      "import": "./fp/isValid.mjs"
     },
     "./fp/isWednesday": {
-      "require": "./fp/isWednesday/index.js",
-      "import": "./fp/isWednesday/index.mjs"
+      "require": "./fp/isWednesday.js",
+      "import": "./fp/isWednesday.mjs"
     },
     "./fp/isWeekend": {
-      "require": "./fp/isWeekend/index.js",
-      "import": "./fp/isWeekend/index.mjs"
+      "require": "./fp/isWeekend.js",
+      "import": "./fp/isWeekend.mjs"
     },
     "./fp/isWithinInterval": {
-      "require": "./fp/isWithinInterval/index.js",
-      "import": "./fp/isWithinInterval/index.mjs"
+      "require": "./fp/isWithinInterval.js",
+      "import": "./fp/isWithinInterval.mjs"
     },
     "./fp/lastDayOfDecade": {
-      "require": "./fp/lastDayOfDecade/index.js",
-      "import": "./fp/lastDayOfDecade/index.mjs"
+      "require": "./fp/lastDayOfDecade.js",
+      "import": "./fp/lastDayOfDecade.mjs"
     },
     "./fp/lastDayOfISOWeek": {
-      "require": "./fp/lastDayOfISOWeek/index.js",
-      "import": "./fp/lastDayOfISOWeek/index.mjs"
+      "require": "./fp/lastDayOfISOWeek.js",
+      "import": "./fp/lastDayOfISOWeek.mjs"
     },
     "./fp/lastDayOfISOWeekYear": {
-      "require": "./fp/lastDayOfISOWeekYear/index.js",
-      "import": "./fp/lastDayOfISOWeekYear/index.mjs"
+      "require": "./fp/lastDayOfISOWeekYear.js",
+      "import": "./fp/lastDayOfISOWeekYear.mjs"
     },
     "./fp/lastDayOfMonth": {
-      "require": "./fp/lastDayOfMonth/index.js",
-      "import": "./fp/lastDayOfMonth/index.mjs"
+      "require": "./fp/lastDayOfMonth.js",
+      "import": "./fp/lastDayOfMonth.mjs"
     },
     "./fp/lastDayOfQuarter": {
-      "require": "./fp/lastDayOfQuarter/index.js",
-      "import": "./fp/lastDayOfQuarter/index.mjs"
+      "require": "./fp/lastDayOfQuarter.js",
+      "import": "./fp/lastDayOfQuarter.mjs"
     },
     "./fp/lastDayOfQuarterWithOptions": {
-      "require": "./fp/lastDayOfQuarterWithOptions/index.js",
-      "import": "./fp/lastDayOfQuarterWithOptions/index.mjs"
+      "require": "./fp/lastDayOfQuarterWithOptions.js",
+      "import": "./fp/lastDayOfQuarterWithOptions.mjs"
     },
     "./fp/lastDayOfWeek": {
-      "require": "./fp/lastDayOfWeek/index.js",
-      "import": "./fp/lastDayOfWeek/index.mjs"
+      "require": "./fp/lastDayOfWeek.js",
+      "import": "./fp/lastDayOfWeek.mjs"
     },
     "./fp/lastDayOfWeekWithOptions": {
-      "require": "./fp/lastDayOfWeekWithOptions/index.js",
-      "import": "./fp/lastDayOfWeekWithOptions/index.mjs"
+      "require": "./fp/lastDayOfWeekWithOptions.js",
+      "import": "./fp/lastDayOfWeekWithOptions.mjs"
     },
     "./fp/lastDayOfYear": {
-      "require": "./fp/lastDayOfYear/index.js",
-      "import": "./fp/lastDayOfYear/index.mjs"
+      "require": "./fp/lastDayOfYear.js",
+      "import": "./fp/lastDayOfYear.mjs"
     },
     "./fp/lightFormat": {
-      "require": "./fp/lightFormat/index.js",
-      "import": "./fp/lightFormat/index.mjs"
+      "require": "./fp/lightFormat.js",
+      "import": "./fp/lightFormat.mjs"
     },
     "./fp/max": {
-      "require": "./fp/max/index.js",
-      "import": "./fp/max/index.mjs"
+      "require": "./fp/max.js",
+      "import": "./fp/max.mjs"
     },
     "./fp/milliseconds": {
-      "require": "./fp/milliseconds/index.js",
-      "import": "./fp/milliseconds/index.mjs"
+      "require": "./fp/milliseconds.js",
+      "import": "./fp/milliseconds.mjs"
     },
     "./fp/millisecondsToHours": {
-      "require": "./fp/millisecondsToHours/index.js",
-      "import": "./fp/millisecondsToHours/index.mjs"
+      "require": "./fp/millisecondsToHours.js",
+      "import": "./fp/millisecondsToHours.mjs"
     },
     "./fp/millisecondsToMinutes": {
-      "require": "./fp/millisecondsToMinutes/index.js",
-      "import": "./fp/millisecondsToMinutes/index.mjs"
+      "require": "./fp/millisecondsToMinutes.js",
+      "import": "./fp/millisecondsToMinutes.mjs"
     },
     "./fp/millisecondsToSeconds": {
-      "require": "./fp/millisecondsToSeconds/index.js",
-      "import": "./fp/millisecondsToSeconds/index.mjs"
+      "require": "./fp/millisecondsToSeconds.js",
+      "import": "./fp/millisecondsToSeconds.mjs"
     },
     "./fp/min": {
-      "require": "./fp/min/index.js",
-      "import": "./fp/min/index.mjs"
+      "require": "./fp/min.js",
+      "import": "./fp/min.mjs"
     },
     "./fp/minutesToHours": {
-      "require": "./fp/minutesToHours/index.js",
-      "import": "./fp/minutesToHours/index.mjs"
+      "require": "./fp/minutesToHours.js",
+      "import": "./fp/minutesToHours.mjs"
     },
     "./fp/minutesToMilliseconds": {
-      "require": "./fp/minutesToMilliseconds/index.js",
-      "import": "./fp/minutesToMilliseconds/index.mjs"
+      "require": "./fp/minutesToMilliseconds.js",
+      "import": "./fp/minutesToMilliseconds.mjs"
     },
     "./fp/minutesToSeconds": {
-      "require": "./fp/minutesToSeconds/index.js",
-      "import": "./fp/minutesToSeconds/index.mjs"
+      "require": "./fp/minutesToSeconds.js",
+      "import": "./fp/minutesToSeconds.mjs"
     },
     "./fp/monthsToQuarters": {
-      "require": "./fp/monthsToQuarters/index.js",
-      "import": "./fp/monthsToQuarters/index.mjs"
+      "require": "./fp/monthsToQuarters.js",
+      "import": "./fp/monthsToQuarters.mjs"
     },
     "./fp/monthsToYears": {
-      "require": "./fp/monthsToYears/index.js",
-      "import": "./fp/monthsToYears/index.mjs"
+      "require": "./fp/monthsToYears.js",
+      "import": "./fp/monthsToYears.mjs"
     },
     "./fp/nextDay": {
-      "require": "./fp/nextDay/index.js",
-      "import": "./fp/nextDay/index.mjs"
+      "require": "./fp/nextDay.js",
+      "import": "./fp/nextDay.mjs"
     },
     "./fp/nextFriday": {
-      "require": "./fp/nextFriday/index.js",
-      "import": "./fp/nextFriday/index.mjs"
+      "require": "./fp/nextFriday.js",
+      "import": "./fp/nextFriday.mjs"
     },
     "./fp/nextMonday": {
-      "require": "./fp/nextMonday/index.js",
-      "import": "./fp/nextMonday/index.mjs"
+      "require": "./fp/nextMonday.js",
+      "import": "./fp/nextMonday.mjs"
     },
     "./fp/nextSaturday": {
-      "require": "./fp/nextSaturday/index.js",
-      "import": "./fp/nextSaturday/index.mjs"
+      "require": "./fp/nextSaturday.js",
+      "import": "./fp/nextSaturday.mjs"
     },
     "./fp/nextSunday": {
-      "require": "./fp/nextSunday/index.js",
-      "import": "./fp/nextSunday/index.mjs"
+      "require": "./fp/nextSunday.js",
+      "import": "./fp/nextSunday.mjs"
     },
     "./fp/nextThursday": {
-      "require": "./fp/nextThursday/index.js",
-      "import": "./fp/nextThursday/index.mjs"
+      "require": "./fp/nextThursday.js",
+      "import": "./fp/nextThursday.mjs"
     },
     "./fp/nextTuesday": {
-      "require": "./fp/nextTuesday/index.js",
-      "import": "./fp/nextTuesday/index.mjs"
+      "require": "./fp/nextTuesday.js",
+      "import": "./fp/nextTuesday.mjs"
     },
     "./fp/nextWednesday": {
-      "require": "./fp/nextWednesday/index.js",
-      "import": "./fp/nextWednesday/index.mjs"
+      "require": "./fp/nextWednesday.js",
+      "import": "./fp/nextWednesday.mjs"
     },
     "./fp/parse": {
-      "require": "./fp/parse/index.js",
-      "import": "./fp/parse/index.mjs"
+      "require": "./fp/parse.js",
+      "import": "./fp/parse.mjs"
     },
     "./fp/parseISO": {
-      "require": "./fp/parseISO/index.js",
-      "import": "./fp/parseISO/index.mjs"
+      "require": "./fp/parseISO.js",
+      "import": "./fp/parseISO.mjs"
     },
     "./fp/parseISOWithOptions": {
-      "require": "./fp/parseISOWithOptions/index.js",
-      "import": "./fp/parseISOWithOptions/index.mjs"
+      "require": "./fp/parseISOWithOptions.js",
+      "import": "./fp/parseISOWithOptions.mjs"
     },
     "./fp/parseJSON": {
-      "require": "./fp/parseJSON/index.js",
-      "import": "./fp/parseJSON/index.mjs"
+      "require": "./fp/parseJSON.js",
+      "import": "./fp/parseJSON.mjs"
     },
     "./fp/parseWithOptions": {
-      "require": "./fp/parseWithOptions/index.js",
-      "import": "./fp/parseWithOptions/index.mjs"
+      "require": "./fp/parseWithOptions.js",
+      "import": "./fp/parseWithOptions.mjs"
     },
     "./fp/previousDay": {
-      "require": "./fp/previousDay/index.js",
-      "import": "./fp/previousDay/index.mjs"
+      "require": "./fp/previousDay.js",
+      "import": "./fp/previousDay.mjs"
     },
     "./fp/previousFriday": {
-      "require": "./fp/previousFriday/index.js",
-      "import": "./fp/previousFriday/index.mjs"
+      "require": "./fp/previousFriday.js",
+      "import": "./fp/previousFriday.mjs"
     },
     "./fp/previousMonday": {
-      "require": "./fp/previousMonday/index.js",
-      "import": "./fp/previousMonday/index.mjs"
+      "require": "./fp/previousMonday.js",
+      "import": "./fp/previousMonday.mjs"
     },
     "./fp/previousSaturday": {
-      "require": "./fp/previousSaturday/index.js",
-      "import": "./fp/previousSaturday/index.mjs"
+      "require": "./fp/previousSaturday.js",
+      "import": "./fp/previousSaturday.mjs"
     },
     "./fp/previousSunday": {
-      "require": "./fp/previousSunday/index.js",
-      "import": "./fp/previousSunday/index.mjs"
+      "require": "./fp/previousSunday.js",
+      "import": "./fp/previousSunday.mjs"
     },
     "./fp/previousThursday": {
-      "require": "./fp/previousThursday/index.js",
-      "import": "./fp/previousThursday/index.mjs"
+      "require": "./fp/previousThursday.js",
+      "import": "./fp/previousThursday.mjs"
     },
     "./fp/previousTuesday": {
-      "require": "./fp/previousTuesday/index.js",
-      "import": "./fp/previousTuesday/index.mjs"
+      "require": "./fp/previousTuesday.js",
+      "import": "./fp/previousTuesday.mjs"
     },
     "./fp/previousWednesday": {
-      "require": "./fp/previousWednesday/index.js",
-      "import": "./fp/previousWednesday/index.mjs"
+      "require": "./fp/previousWednesday.js",
+      "import": "./fp/previousWednesday.mjs"
     },
     "./fp/quartersToMonths": {
-      "require": "./fp/quartersToMonths/index.js",
-      "import": "./fp/quartersToMonths/index.mjs"
+      "require": "./fp/quartersToMonths.js",
+      "import": "./fp/quartersToMonths.mjs"
     },
     "./fp/quartersToYears": {
-      "require": "./fp/quartersToYears/index.js",
-      "import": "./fp/quartersToYears/index.mjs"
+      "require": "./fp/quartersToYears.js",
+      "import": "./fp/quartersToYears.mjs"
     },
     "./fp/roundToNearestMinutes": {
-      "require": "./fp/roundToNearestMinutes/index.js",
-      "import": "./fp/roundToNearestMinutes/index.mjs"
+      "require": "./fp/roundToNearestMinutes.js",
+      "import": "./fp/roundToNearestMinutes.mjs"
     },
     "./fp/roundToNearestMinutesWithOptions": {
-      "require": "./fp/roundToNearestMinutesWithOptions/index.js",
-      "import": "./fp/roundToNearestMinutesWithOptions/index.mjs"
+      "require": "./fp/roundToNearestMinutesWithOptions.js",
+      "import": "./fp/roundToNearestMinutesWithOptions.mjs"
     },
     "./fp/secondsToHours": {
-      "require": "./fp/secondsToHours/index.js",
-      "import": "./fp/secondsToHours/index.mjs"
+      "require": "./fp/secondsToHours.js",
+      "import": "./fp/secondsToHours.mjs"
     },
     "./fp/secondsToMilliseconds": {
-      "require": "./fp/secondsToMilliseconds/index.js",
-      "import": "./fp/secondsToMilliseconds/index.mjs"
+      "require": "./fp/secondsToMilliseconds.js",
+      "import": "./fp/secondsToMilliseconds.mjs"
     },
     "./fp/secondsToMinutes": {
-      "require": "./fp/secondsToMinutes/index.js",
-      "import": "./fp/secondsToMinutes/index.mjs"
+      "require": "./fp/secondsToMinutes.js",
+      "import": "./fp/secondsToMinutes.mjs"
     },
     "./fp/set": {
-      "require": "./fp/set/index.js",
-      "import": "./fp/set/index.mjs"
+      "require": "./fp/set.js",
+      "import": "./fp/set.mjs"
     },
     "./fp/setDate": {
-      "require": "./fp/setDate/index.js",
-      "import": "./fp/setDate/index.mjs"
+      "require": "./fp/setDate.js",
+      "import": "./fp/setDate.mjs"
     },
     "./fp/setDay": {
-      "require": "./fp/setDay/index.js",
-      "import": "./fp/setDay/index.mjs"
+      "require": "./fp/setDay.js",
+      "import": "./fp/setDay.mjs"
     },
     "./fp/setDayOfYear": {
-      "require": "./fp/setDayOfYear/index.js",
-      "import": "./fp/setDayOfYear/index.mjs"
+      "require": "./fp/setDayOfYear.js",
+      "import": "./fp/setDayOfYear.mjs"
     },
     "./fp/setDayWithOptions": {
-      "require": "./fp/setDayWithOptions/index.js",
-      "import": "./fp/setDayWithOptions/index.mjs"
+      "require": "./fp/setDayWithOptions.js",
+      "import": "./fp/setDayWithOptions.mjs"
     },
     "./fp/setHours": {
-      "require": "./fp/setHours/index.js",
-      "import": "./fp/setHours/index.mjs"
+      "require": "./fp/setHours.js",
+      "import": "./fp/setHours.mjs"
     },
     "./fp/setISODay": {
-      "require": "./fp/setISODay/index.js",
-      "import": "./fp/setISODay/index.mjs"
+      "require": "./fp/setISODay.js",
+      "import": "./fp/setISODay.mjs"
     },
     "./fp/setISOWeek": {
-      "require": "./fp/setISOWeek/index.js",
-      "import": "./fp/setISOWeek/index.mjs"
+      "require": "./fp/setISOWeek.js",
+      "import": "./fp/setISOWeek.mjs"
     },
     "./fp/setISOWeekYear": {
-      "require": "./fp/setISOWeekYear/index.js",
-      "import": "./fp/setISOWeekYear/index.mjs"
+      "require": "./fp/setISOWeekYear.js",
+      "import": "./fp/setISOWeekYear.mjs"
     },
     "./fp/setMilliseconds": {
-      "require": "./fp/setMilliseconds/index.js",
-      "import": "./fp/setMilliseconds/index.mjs"
+      "require": "./fp/setMilliseconds.js",
+      "import": "./fp/setMilliseconds.mjs"
     },
     "./fp/setMinutes": {
-      "require": "./fp/setMinutes/index.js",
-      "import": "./fp/setMinutes/index.mjs"
+      "require": "./fp/setMinutes.js",
+      "import": "./fp/setMinutes.mjs"
     },
     "./fp/setMonth": {
-      "require": "./fp/setMonth/index.js",
-      "import": "./fp/setMonth/index.mjs"
+      "require": "./fp/setMonth.js",
+      "import": "./fp/setMonth.mjs"
     },
     "./fp/setQuarter": {
-      "require": "./fp/setQuarter/index.js",
-      "import": "./fp/setQuarter/index.mjs"
+      "require": "./fp/setQuarter.js",
+      "import": "./fp/setQuarter.mjs"
     },
     "./fp/setSeconds": {
-      "require": "./fp/setSeconds/index.js",
-      "import": "./fp/setSeconds/index.mjs"
+      "require": "./fp/setSeconds.js",
+      "import": "./fp/setSeconds.mjs"
     },
     "./fp/setWeek": {
-      "require": "./fp/setWeek/index.js",
-      "import": "./fp/setWeek/index.mjs"
+      "require": "./fp/setWeek.js",
+      "import": "./fp/setWeek.mjs"
     },
     "./fp/setWeekWithOptions": {
-      "require": "./fp/setWeekWithOptions/index.js",
-      "import": "./fp/setWeekWithOptions/index.mjs"
+      "require": "./fp/setWeekWithOptions.js",
+      "import": "./fp/setWeekWithOptions.mjs"
     },
     "./fp/setWeekYear": {
-      "require": "./fp/setWeekYear/index.js",
-      "import": "./fp/setWeekYear/index.mjs"
+      "require": "./fp/setWeekYear.js",
+      "import": "./fp/setWeekYear.mjs"
     },
     "./fp/setWeekYearWithOptions": {
-      "require": "./fp/setWeekYearWithOptions/index.js",
-      "import": "./fp/setWeekYearWithOptions/index.mjs"
+      "require": "./fp/setWeekYearWithOptions.js",
+      "import": "./fp/setWeekYearWithOptions.mjs"
     },
     "./fp/setYear": {
-      "require": "./fp/setYear/index.js",
-      "import": "./fp/setYear/index.mjs"
+      "require": "./fp/setYear.js",
+      "import": "./fp/setYear.mjs"
     },
     "./fp/startOfDay": {
-      "require": "./fp/startOfDay/index.js",
-      "import": "./fp/startOfDay/index.mjs"
+      "require": "./fp/startOfDay.js",
+      "import": "./fp/startOfDay.mjs"
     },
     "./fp/startOfDecade": {
-      "require": "./fp/startOfDecade/index.js",
-      "import": "./fp/startOfDecade/index.mjs"
+      "require": "./fp/startOfDecade.js",
+      "import": "./fp/startOfDecade.mjs"
     },
     "./fp/startOfHour": {
-      "require": "./fp/startOfHour/index.js",
-      "import": "./fp/startOfHour/index.mjs"
+      "require": "./fp/startOfHour.js",
+      "import": "./fp/startOfHour.mjs"
     },
     "./fp/startOfISOWeek": {
-      "require": "./fp/startOfISOWeek/index.js",
-      "import": "./fp/startOfISOWeek/index.mjs"
+      "require": "./fp/startOfISOWeek.js",
+      "import": "./fp/startOfISOWeek.mjs"
     },
     "./fp/startOfISOWeekYear": {
-      "require": "./fp/startOfISOWeekYear/index.js",
-      "import": "./fp/startOfISOWeekYear/index.mjs"
+      "require": "./fp/startOfISOWeekYear.js",
+      "import": "./fp/startOfISOWeekYear.mjs"
     },
     "./fp/startOfMinute": {
-      "require": "./fp/startOfMinute/index.js",
-      "import": "./fp/startOfMinute/index.mjs"
+      "require": "./fp/startOfMinute.js",
+      "import": "./fp/startOfMinute.mjs"
     },
     "./fp/startOfMonth": {
-      "require": "./fp/startOfMonth/index.js",
-      "import": "./fp/startOfMonth/index.mjs"
+      "require": "./fp/startOfMonth.js",
+      "import": "./fp/startOfMonth.mjs"
     },
     "./fp/startOfQuarter": {
-      "require": "./fp/startOfQuarter/index.js",
-      "import": "./fp/startOfQuarter/index.mjs"
+      "require": "./fp/startOfQuarter.js",
+      "import": "./fp/startOfQuarter.mjs"
     },
     "./fp/startOfSecond": {
-      "require": "./fp/startOfSecond/index.js",
-      "import": "./fp/startOfSecond/index.mjs"
+      "require": "./fp/startOfSecond.js",
+      "import": "./fp/startOfSecond.mjs"
     },
     "./fp/startOfWeek": {
-      "require": "./fp/startOfWeek/index.js",
-      "import": "./fp/startOfWeek/index.mjs"
+      "require": "./fp/startOfWeek.js",
+      "import": "./fp/startOfWeek.mjs"
     },
     "./fp/startOfWeekWithOptions": {
-      "require": "./fp/startOfWeekWithOptions/index.js",
-      "import": "./fp/startOfWeekWithOptions/index.mjs"
+      "require": "./fp/startOfWeekWithOptions.js",
+      "import": "./fp/startOfWeekWithOptions.mjs"
     },
     "./fp/startOfWeekYear": {
-      "require": "./fp/startOfWeekYear/index.js",
-      "import": "./fp/startOfWeekYear/index.mjs"
+      "require": "./fp/startOfWeekYear.js",
+      "import": "./fp/startOfWeekYear.mjs"
     },
     "./fp/startOfWeekYearWithOptions": {
-      "require": "./fp/startOfWeekYearWithOptions/index.js",
-      "import": "./fp/startOfWeekYearWithOptions/index.mjs"
+      "require": "./fp/startOfWeekYearWithOptions.js",
+      "import": "./fp/startOfWeekYearWithOptions.mjs"
     },
     "./fp/startOfYear": {
-      "require": "./fp/startOfYear/index.js",
-      "import": "./fp/startOfYear/index.mjs"
+      "require": "./fp/startOfYear.js",
+      "import": "./fp/startOfYear.mjs"
     },
     "./fp/sub": {
-      "require": "./fp/sub/index.js",
-      "import": "./fp/sub/index.mjs"
+      "require": "./fp/sub.js",
+      "import": "./fp/sub.mjs"
     },
     "./fp/subBusinessDays": {
-      "require": "./fp/subBusinessDays/index.js",
-      "import": "./fp/subBusinessDays/index.mjs"
+      "require": "./fp/subBusinessDays.js",
+      "import": "./fp/subBusinessDays.mjs"
     },
     "./fp/subDays": {
-      "require": "./fp/subDays/index.js",
-      "import": "./fp/subDays/index.mjs"
+      "require": "./fp/subDays.js",
+      "import": "./fp/subDays.mjs"
     },
     "./fp/subHours": {
-      "require": "./fp/subHours/index.js",
-      "import": "./fp/subHours/index.mjs"
+      "require": "./fp/subHours.js",
+      "import": "./fp/subHours.mjs"
     },
     "./fp/subISOWeekYears": {
-      "require": "./fp/subISOWeekYears/index.js",
-      "import": "./fp/subISOWeekYears/index.mjs"
+      "require": "./fp/subISOWeekYears.js",
+      "import": "./fp/subISOWeekYears.mjs"
     },
     "./fp/subMilliseconds": {
-      "require": "./fp/subMilliseconds/index.js",
-      "import": "./fp/subMilliseconds/index.mjs"
+      "require": "./fp/subMilliseconds.js",
+      "import": "./fp/subMilliseconds.mjs"
     },
     "./fp/subMinutes": {
-      "require": "./fp/subMinutes/index.js",
-      "import": "./fp/subMinutes/index.mjs"
+      "require": "./fp/subMinutes.js",
+      "import": "./fp/subMinutes.mjs"
     },
     "./fp/subMonths": {
-      "require": "./fp/subMonths/index.js",
-      "import": "./fp/subMonths/index.mjs"
+      "require": "./fp/subMonths.js",
+      "import": "./fp/subMonths.mjs"
     },
     "./fp/subQuarters": {
-      "require": "./fp/subQuarters/index.js",
-      "import": "./fp/subQuarters/index.mjs"
+      "require": "./fp/subQuarters.js",
+      "import": "./fp/subQuarters.mjs"
     },
     "./fp/subSeconds": {
-      "require": "./fp/subSeconds/index.js",
-      "import": "./fp/subSeconds/index.mjs"
+      "require": "./fp/subSeconds.js",
+      "import": "./fp/subSeconds.mjs"
     },
     "./fp/subWeeks": {
-      "require": "./fp/subWeeks/index.js",
-      "import": "./fp/subWeeks/index.mjs"
+      "require": "./fp/subWeeks.js",
+      "import": "./fp/subWeeks.mjs"
     },
     "./fp/subYears": {
-      "require": "./fp/subYears/index.js",
-      "import": "./fp/subYears/index.mjs"
+      "require": "./fp/subYears.js",
+      "import": "./fp/subYears.mjs"
     },
     "./fp/toDate": {
-      "require": "./fp/toDate/index.js",
-      "import": "./fp/toDate/index.mjs"
+      "require": "./fp/toDate.js",
+      "import": "./fp/toDate.mjs"
     },
     "./fp/weeksToDays": {
-      "require": "./fp/weeksToDays/index.js",
-      "import": "./fp/weeksToDays/index.mjs"
+      "require": "./fp/weeksToDays.js",
+      "import": "./fp/weeksToDays.mjs"
     },
     "./fp/yearsToMonths": {
-      "require": "./fp/yearsToMonths/index.js",
-      "import": "./fp/yearsToMonths/index.mjs"
+      "require": "./fp/yearsToMonths.js",
+      "import": "./fp/yearsToMonths.mjs"
     },
     "./fp/yearsToQuarters": {
-      "require": "./fp/yearsToQuarters/index.js",
-      "import": "./fp/yearsToQuarters/index.mjs"
+      "require": "./fp/yearsToQuarters.js",
+      "import": "./fp/yearsToQuarters.mjs"
     },
     "./locale/af": {
-      "require": "./locale/af/index.js",
-      "import": "./locale/af/index.mjs"
+      "require": "./locale/af.js",
+      "import": "./locale/af.mjs"
     },
     "./locale/ar": {
-      "require": "./locale/ar/index.js",
-      "import": "./locale/ar/index.mjs"
+      "require": "./locale/ar.js",
+      "import": "./locale/ar.mjs"
     },
     "./locale/ar-DZ": {
-      "require": "./locale/ar-DZ/index.js",
-      "import": "./locale/ar-DZ/index.mjs"
+      "require": "./locale/ar-DZ.js",
+      "import": "./locale/ar-DZ.mjs"
     },
     "./locale/ar-EG": {
-      "require": "./locale/ar-EG/index.js",
-      "import": "./locale/ar-EG/index.mjs"
+      "require": "./locale/ar-EG.js",
+      "import": "./locale/ar-EG.mjs"
     },
     "./locale/ar-MA": {
-      "require": "./locale/ar-MA/index.js",
-      "import": "./locale/ar-MA/index.mjs"
+      "require": "./locale/ar-MA.js",
+      "import": "./locale/ar-MA.mjs"
     },
     "./locale/ar-SA": {
-      "require": "./locale/ar-SA/index.js",
-      "import": "./locale/ar-SA/index.mjs"
+      "require": "./locale/ar-SA.js",
+      "import": "./locale/ar-SA.mjs"
     },
     "./locale/ar-TN": {
-      "require": "./locale/ar-TN/index.js",
-      "import": "./locale/ar-TN/index.mjs"
+      "require": "./locale/ar-TN.js",
+      "import": "./locale/ar-TN.mjs"
     },
     "./locale/az": {
-      "require": "./locale/az/index.js",
-      "import": "./locale/az/index.mjs"
+      "require": "./locale/az.js",
+      "import": "./locale/az.mjs"
     },
     "./locale/be": {
-      "require": "./locale/be/index.js",
-      "import": "./locale/be/index.mjs"
+      "require": "./locale/be.js",
+      "import": "./locale/be.mjs"
     },
     "./locale/be-tarask": {
-      "require": "./locale/be-tarask/index.js",
-      "import": "./locale/be-tarask/index.mjs"
+      "require": "./locale/be-tarask.js",
+      "import": "./locale/be-tarask.mjs"
     },
     "./locale/bg": {
-      "require": "./locale/bg/index.js",
-      "import": "./locale/bg/index.mjs"
+      "require": "./locale/bg.js",
+      "import": "./locale/bg.mjs"
     },
     "./locale/bn": {
-      "require": "./locale/bn/index.js",
-      "import": "./locale/bn/index.mjs"
+      "require": "./locale/bn.js",
+      "import": "./locale/bn.mjs"
     },
     "./locale/bs": {
-      "require": "./locale/bs/index.js",
-      "import": "./locale/bs/index.mjs"
+      "require": "./locale/bs.js",
+      "import": "./locale/bs.mjs"
     },
     "./locale/ca": {
-      "require": "./locale/ca/index.js",
-      "import": "./locale/ca/index.mjs"
+      "require": "./locale/ca.js",
+      "import": "./locale/ca.mjs"
     },
     "./locale/cs": {
-      "require": "./locale/cs/index.js",
-      "import": "./locale/cs/index.mjs"
+      "require": "./locale/cs.js",
+      "import": "./locale/cs.mjs"
     },
     "./locale/cy": {
-      "require": "./locale/cy/index.js",
-      "import": "./locale/cy/index.mjs"
+      "require": "./locale/cy.js",
+      "import": "./locale/cy.mjs"
     },
     "./locale/da": {
-      "require": "./locale/da/index.js",
-      "import": "./locale/da/index.mjs"
+      "require": "./locale/da.js",
+      "import": "./locale/da.mjs"
     },
     "./locale/de": {
-      "require": "./locale/de/index.js",
-      "import": "./locale/de/index.mjs"
+      "require": "./locale/de.js",
+      "import": "./locale/de.mjs"
     },
     "./locale/de-AT": {
-      "require": "./locale/de-AT/index.js",
-      "import": "./locale/de-AT/index.mjs"
+      "require": "./locale/de-AT.js",
+      "import": "./locale/de-AT.mjs"
     },
     "./locale/el": {
-      "require": "./locale/el/index.js",
-      "import": "./locale/el/index.mjs"
+      "require": "./locale/el.js",
+      "import": "./locale/el.mjs"
     },
     "./locale/en-AU": {
-      "require": "./locale/en-AU/index.js",
-      "import": "./locale/en-AU/index.mjs"
+      "require": "./locale/en-AU.js",
+      "import": "./locale/en-AU.mjs"
     },
     "./locale/en-CA": {
-      "require": "./locale/en-CA/index.js",
-      "import": "./locale/en-CA/index.mjs"
+      "require": "./locale/en-CA.js",
+      "import": "./locale/en-CA.mjs"
     },
     "./locale/en-GB": {
-      "require": "./locale/en-GB/index.js",
-      "import": "./locale/en-GB/index.mjs"
+      "require": "./locale/en-GB.js",
+      "import": "./locale/en-GB.mjs"
     },
     "./locale/en-IE": {
-      "require": "./locale/en-IE/index.js",
-      "import": "./locale/en-IE/index.mjs"
+      "require": "./locale/en-IE.js",
+      "import": "./locale/en-IE.mjs"
     },
     "./locale/en-IN": {
-      "require": "./locale/en-IN/index.js",
-      "import": "./locale/en-IN/index.mjs"
+      "require": "./locale/en-IN.js",
+      "import": "./locale/en-IN.mjs"
     },
     "./locale/en-NZ": {
-      "require": "./locale/en-NZ/index.js",
-      "import": "./locale/en-NZ/index.mjs"
+      "require": "./locale/en-NZ.js",
+      "import": "./locale/en-NZ.mjs"
     },
     "./locale/en-US": {
-      "require": "./locale/en-US/index.js",
-      "import": "./locale/en-US/index.mjs"
+      "require": "./locale/en-US.js",
+      "import": "./locale/en-US.mjs"
     },
     "./locale/en-ZA": {
-      "require": "./locale/en-ZA/index.js",
-      "import": "./locale/en-ZA/index.mjs"
+      "require": "./locale/en-ZA.js",
+      "import": "./locale/en-ZA.mjs"
     },
     "./locale/eo": {
-      "require": "./locale/eo/index.js",
-      "import": "./locale/eo/index.mjs"
+      "require": "./locale/eo.js",
+      "import": "./locale/eo.mjs"
     },
     "./locale/es": {
-      "require": "./locale/es/index.js",
-      "import": "./locale/es/index.mjs"
+      "require": "./locale/es.js",
+      "import": "./locale/es.mjs"
     },
     "./locale/et": {
-      "require": "./locale/et/index.js",
-      "import": "./locale/et/index.mjs"
+      "require": "./locale/et.js",
+      "import": "./locale/et.mjs"
     },
     "./locale/eu": {
-      "require": "./locale/eu/index.js",
-      "import": "./locale/eu/index.mjs"
+      "require": "./locale/eu.js",
+      "import": "./locale/eu.mjs"
     },
     "./locale/fa-IR": {
-      "require": "./locale/fa-IR/index.js",
-      "import": "./locale/fa-IR/index.mjs"
+      "require": "./locale/fa-IR.js",
+      "import": "./locale/fa-IR.mjs"
     },
     "./locale/fi": {
-      "require": "./locale/fi/index.js",
-      "import": "./locale/fi/index.mjs"
+      "require": "./locale/fi.js",
+      "import": "./locale/fi.mjs"
     },
     "./locale/fr": {
-      "require": "./locale/fr/index.js",
-      "import": "./locale/fr/index.mjs"
+      "require": "./locale/fr.js",
+      "import": "./locale/fr.mjs"
     },
     "./locale/fr-CA": {
-      "require": "./locale/fr-CA/index.js",
-      "import": "./locale/fr-CA/index.mjs"
+      "require": "./locale/fr-CA.js",
+      "import": "./locale/fr-CA.mjs"
     },
     "./locale/fr-CH": {
-      "require": "./locale/fr-CH/index.js",
-      "import": "./locale/fr-CH/index.mjs"
+      "require": "./locale/fr-CH.js",
+      "import": "./locale/fr-CH.mjs"
     },
     "./locale/fy": {
-      "require": "./locale/fy/index.js",
-      "import": "./locale/fy/index.mjs"
+      "require": "./locale/fy.js",
+      "import": "./locale/fy.mjs"
     },
     "./locale/gd": {
-      "require": "./locale/gd/index.js",
-      "import": "./locale/gd/index.mjs"
+      "require": "./locale/gd.js",
+      "import": "./locale/gd.mjs"
     },
     "./locale/gl": {
-      "require": "./locale/gl/index.js",
-      "import": "./locale/gl/index.mjs"
+      "require": "./locale/gl.js",
+      "import": "./locale/gl.mjs"
     },
     "./locale/gu": {
-      "require": "./locale/gu/index.js",
-      "import": "./locale/gu/index.mjs"
+      "require": "./locale/gu.js",
+      "import": "./locale/gu.mjs"
     },
     "./locale/he": {
-      "require": "./locale/he/index.js",
-      "import": "./locale/he/index.mjs"
+      "require": "./locale/he.js",
+      "import": "./locale/he.mjs"
     },
     "./locale/hi": {
-      "require": "./locale/hi/index.js",
-      "import": "./locale/hi/index.mjs"
+      "require": "./locale/hi.js",
+      "import": "./locale/hi.mjs"
     },
     "./locale/hr": {
-      "require": "./locale/hr/index.js",
-      "import": "./locale/hr/index.mjs"
+      "require": "./locale/hr.js",
+      "import": "./locale/hr.mjs"
     },
     "./locale/ht": {
-      "require": "./locale/ht/index.js",
-      "import": "./locale/ht/index.mjs"
+      "require": "./locale/ht.js",
+      "import": "./locale/ht.mjs"
     },
     "./locale/hu": {
-      "require": "./locale/hu/index.js",
-      "import": "./locale/hu/index.mjs"
+      "require": "./locale/hu.js",
+      "import": "./locale/hu.mjs"
     },
     "./locale/hy": {
-      "require": "./locale/hy/index.js",
-      "import": "./locale/hy/index.mjs"
+      "require": "./locale/hy.js",
+      "import": "./locale/hy.mjs"
     },
     "./locale/id": {
-      "require": "./locale/id/index.js",
-      "import": "./locale/id/index.mjs"
+      "require": "./locale/id.js",
+      "import": "./locale/id.mjs"
     },
     "./locale/is": {
-      "require": "./locale/is/index.js",
-      "import": "./locale/is/index.mjs"
+      "require": "./locale/is.js",
+      "import": "./locale/is.mjs"
     },
     "./locale/it": {
-      "require": "./locale/it/index.js",
-      "import": "./locale/it/index.mjs"
+      "require": "./locale/it.js",
+      "import": "./locale/it.mjs"
     },
     "./locale/it-CH": {
-      "require": "./locale/it-CH/index.js",
-      "import": "./locale/it-CH/index.mjs"
+      "require": "./locale/it-CH.js",
+      "import": "./locale/it-CH.mjs"
     },
     "./locale/ja": {
-      "require": "./locale/ja/index.js",
-      "import": "./locale/ja/index.mjs"
+      "require": "./locale/ja.js",
+      "import": "./locale/ja.mjs"
     },
     "./locale/ja-Hira": {
-      "require": "./locale/ja-Hira/index.js",
-      "import": "./locale/ja-Hira/index.mjs"
+      "require": "./locale/ja-Hira.js",
+      "import": "./locale/ja-Hira.mjs"
     },
     "./locale/ka": {
-      "require": "./locale/ka/index.js",
-      "import": "./locale/ka/index.mjs"
+      "require": "./locale/ka.js",
+      "import": "./locale/ka.mjs"
     },
     "./locale/kk": {
-      "require": "./locale/kk/index.js",
-      "import": "./locale/kk/index.mjs"
+      "require": "./locale/kk.js",
+      "import": "./locale/kk.mjs"
     },
     "./locale/km": {
-      "require": "./locale/km/index.js",
-      "import": "./locale/km/index.mjs"
+      "require": "./locale/km.js",
+      "import": "./locale/km.mjs"
     },
     "./locale/kn": {
-      "require": "./locale/kn/index.js",
-      "import": "./locale/kn/index.mjs"
+      "require": "./locale/kn.js",
+      "import": "./locale/kn.mjs"
     },
     "./locale/ko": {
-      "require": "./locale/ko/index.js",
-      "import": "./locale/ko/index.mjs"
+      "require": "./locale/ko.js",
+      "import": "./locale/ko.mjs"
     },
     "./locale/lb": {
-      "require": "./locale/lb/index.js",
-      "import": "./locale/lb/index.mjs"
+      "require": "./locale/lb.js",
+      "import": "./locale/lb.mjs"
     },
     "./locale/lt": {
-      "require": "./locale/lt/index.js",
-      "import": "./locale/lt/index.mjs"
+      "require": "./locale/lt.js",
+      "import": "./locale/lt.mjs"
     },
     "./locale/lv": {
-      "require": "./locale/lv/index.js",
-      "import": "./locale/lv/index.mjs"
+      "require": "./locale/lv.js",
+      "import": "./locale/lv.mjs"
     },
     "./locale/mk": {
-      "require": "./locale/mk/index.js",
-      "import": "./locale/mk/index.mjs"
+      "require": "./locale/mk.js",
+      "import": "./locale/mk.mjs"
     },
     "./locale/mn": {
-      "require": "./locale/mn/index.js",
-      "import": "./locale/mn/index.mjs"
+      "require": "./locale/mn.js",
+      "import": "./locale/mn.mjs"
     },
     "./locale/ms": {
-      "require": "./locale/ms/index.js",
-      "import": "./locale/ms/index.mjs"
+      "require": "./locale/ms.js",
+      "import": "./locale/ms.mjs"
     },
     "./locale/mt": {
-      "require": "./locale/mt/index.js",
-      "import": "./locale/mt/index.mjs"
+      "require": "./locale/mt.js",
+      "import": "./locale/mt.mjs"
     },
     "./locale/nb": {
-      "require": "./locale/nb/index.js",
-      "import": "./locale/nb/index.mjs"
+      "require": "./locale/nb.js",
+      "import": "./locale/nb.mjs"
     },
     "./locale/nl": {
-      "require": "./locale/nl/index.js",
-      "import": "./locale/nl/index.mjs"
+      "require": "./locale/nl.js",
+      "import": "./locale/nl.mjs"
     },
     "./locale/nl-BE": {
-      "require": "./locale/nl-BE/index.js",
-      "import": "./locale/nl-BE/index.mjs"
+      "require": "./locale/nl-BE.js",
+      "import": "./locale/nl-BE.mjs"
     },
     "./locale/nn": {
-      "require": "./locale/nn/index.js",
-      "import": "./locale/nn/index.mjs"
+      "require": "./locale/nn.js",
+      "import": "./locale/nn.mjs"
     },
     "./locale/oc": {
-      "require": "./locale/oc/index.js",
-      "import": "./locale/oc/index.mjs"
+      "require": "./locale/oc.js",
+      "import": "./locale/oc.mjs"
     },
     "./locale/pl": {
-      "require": "./locale/pl/index.js",
-      "import": "./locale/pl/index.mjs"
+      "require": "./locale/pl.js",
+      "import": "./locale/pl.mjs"
     },
     "./locale/pt": {
-      "require": "./locale/pt/index.js",
-      "import": "./locale/pt/index.mjs"
+      "require": "./locale/pt.js",
+      "import": "./locale/pt.mjs"
     },
     "./locale/pt-BR": {
-      "require": "./locale/pt-BR/index.js",
-      "import": "./locale/pt-BR/index.mjs"
+      "require": "./locale/pt-BR.js",
+      "import": "./locale/pt-BR.mjs"
     },
     "./locale/ro": {
-      "require": "./locale/ro/index.js",
-      "import": "./locale/ro/index.mjs"
+      "require": "./locale/ro.js",
+      "import": "./locale/ro.mjs"
     },
     "./locale/ru": {
-      "require": "./locale/ru/index.js",
-      "import": "./locale/ru/index.mjs"
+      "require": "./locale/ru.js",
+      "import": "./locale/ru.mjs"
     },
     "./locale/sk": {
-      "require": "./locale/sk/index.js",
-      "import": "./locale/sk/index.mjs"
+      "require": "./locale/sk.js",
+      "import": "./locale/sk.mjs"
     },
     "./locale/sl": {
-      "require": "./locale/sl/index.js",
-      "import": "./locale/sl/index.mjs"
+      "require": "./locale/sl.js",
+      "import": "./locale/sl.mjs"
     },
     "./locale/sq": {
-      "require": "./locale/sq/index.js",
-      "import": "./locale/sq/index.mjs"
+      "require": "./locale/sq.js",
+      "import": "./locale/sq.mjs"
     },
     "./locale/sr": {
-      "require": "./locale/sr/index.js",
-      "import": "./locale/sr/index.mjs"
+      "require": "./locale/sr.js",
+      "import": "./locale/sr.mjs"
     },
     "./locale/sr-Latn": {
-      "require": "./locale/sr-Latn/index.js",
-      "import": "./locale/sr-Latn/index.mjs"
+      "require": "./locale/sr-Latn.js",
+      "import": "./locale/sr-Latn.mjs"
     },
     "./locale/sv": {
-      "require": "./locale/sv/index.js",
-      "import": "./locale/sv/index.mjs"
+      "require": "./locale/sv.js",
+      "import": "./locale/sv.mjs"
     },
     "./locale/ta": {
-      "require": "./locale/ta/index.js",
-      "import": "./locale/ta/index.mjs"
+      "require": "./locale/ta.js",
+      "import": "./locale/ta.mjs"
     },
     "./locale/te": {
-      "require": "./locale/te/index.js",
-      "import": "./locale/te/index.mjs"
+      "require": "./locale/te.js",
+      "import": "./locale/te.mjs"
     },
     "./locale/th": {
-      "require": "./locale/th/index.js",
-      "import": "./locale/th/index.mjs"
+      "require": "./locale/th.js",
+      "import": "./locale/th.mjs"
     },
     "./locale/tr": {
-      "require": "./locale/tr/index.js",
-      "import": "./locale/tr/index.mjs"
+      "require": "./locale/tr.js",
+      "import": "./locale/tr.mjs"
     },
     "./locale/ug": {
-      "require": "./locale/ug/index.js",
-      "import": "./locale/ug/index.mjs"
+      "require": "./locale/ug.js",
+      "import": "./locale/ug.mjs"
     },
     "./locale/uk": {
-      "require": "./locale/uk/index.js",
-      "import": "./locale/uk/index.mjs"
+      "require": "./locale/uk.js",
+      "import": "./locale/uk.mjs"
     },
     "./locale/uz": {
-      "require": "./locale/uz/index.js",
-      "import": "./locale/uz/index.mjs"
+      "require": "./locale/uz.js",
+      "import": "./locale/uz.mjs"
     },
     "./locale/uz-Cyrl": {
-      "require": "./locale/uz-Cyrl/index.js",
-      "import": "./locale/uz-Cyrl/index.mjs"
+      "require": "./locale/uz-Cyrl.js",
+      "import": "./locale/uz-Cyrl.mjs"
     },
     "./locale/vi": {
-      "require": "./locale/vi/index.js",
-      "import": "./locale/vi/index.mjs"
+      "require": "./locale/vi.js",
+      "import": "./locale/vi.mjs"
     },
     "./locale/zh-CN": {
-      "require": "./locale/zh-CN/index.js",
-      "import": "./locale/zh-CN/index.mjs"
+      "require": "./locale/zh-CN.js",
+      "import": "./locale/zh-CN.mjs"
     },
     "./locale/zh-HK": {
-      "require": "./locale/zh-HK/index.js",
-      "import": "./locale/zh-HK/index.mjs"
+      "require": "./locale/zh-HK.js",
+      "import": "./locale/zh-HK.mjs"
     },
     "./locale/zh-TW": {
-      "require": "./locale/zh-TW/index.js",
-      "import": "./locale/zh-TW/index.mjs"
+      "require": "./locale/zh-TW.js",
+      "import": "./locale/zh-TW.mjs"
     }
   },
   "scripts": {
