@@ -5,7 +5,9 @@ import { getDefaultOptions } from '../_lib/defaultOptions/index'
 /**
  * The {@link lastDayOfWeek} function options.
  */
-export interface LastDayOfWeekOptions extends LocalizedOptions, WeekOptions {}
+export interface LastDayOfWeekOptions
+  extends LocalizedOptions<'options'>,
+    WeekOptions {}
 
 /**
  * @name lastDayOfWeek

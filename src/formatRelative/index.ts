@@ -9,7 +9,11 @@ import { getDefaultOptions } from '../_lib/defaultOptions/index'
 /**
  * The {@link formatRelative} function options.
  */
-export interface FormatRelativeOptions extends LocalizedOptions, WeekOptions {}
+export interface FormatRelativeOptions
+  extends LocalizedOptions<
+      'options' | 'localize' | 'formatLong' | 'formatRelative'
+    >,
+    WeekOptions {}
 
 /**
  * @name formatRelative
@@ -63,18 +67,6 @@ export default function formatRelative<DateType extends Date>(
     defaultOptions.weekStartsOn ??
     defaultOptions.locale?.options?.weekStartsOn ??
     0
-
-  if (!locale.localize) {
-    throw new RangeError('locale must contain localize property')
-  }
-
-  if (!locale.formatLong) {
-    throw new RangeError('locale must contain formatLong property')
-  }
-
-  if (!locale.formatRelative) {
-    throw new RangeError('locale must contain formatRelative property')
-  }
 
   const diff = differenceInCalendarDays(_date, _baseDate)
 

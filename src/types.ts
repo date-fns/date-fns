@@ -192,9 +192,9 @@ export interface FirstWeekContainsDateOptions {
 /**
  * The localized function options. Used to build function options.
  */
-export interface LocalizedOptions {
+export interface LocalizedOptions<LocaleFields extends keyof Locale> {
   /** The locale to use in the function. */
-  locale?: Locale
+  locale?: Pick<Locale, LocaleFields>
 }
 
 /**

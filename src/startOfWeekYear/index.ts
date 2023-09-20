@@ -12,7 +12,7 @@ import { getDefaultOptions } from '../_lib/defaultOptions/index'
  * The {@link startOfWeekYear} function options.
  */
 export interface StartOfWeekYearOptions
-  extends LocalizedOptions,
+  extends LocalizedOptions<'options'>,
     FirstWeekContainsDateOptions,
     WeekOptions {}
 

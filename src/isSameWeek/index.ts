@@ -4,7 +4,9 @@ import type { LocalizedOptions, WeekOptions } from '../types'
 /**
  * The {@link isSameWeek} function options.
  */
-export interface IsSameWeekOptions extends WeekOptions, LocalizedOptions {}
+export interface IsSameWeekOptions
+  extends WeekOptions,
+    LocalizedOptions<'options'> {}
 
 /**
  * @name isSameWeek

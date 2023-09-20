@@ -7,7 +7,9 @@ import { getDefaultOptions } from '../_lib/defaultOptions/index'
 /**
  * The {@link getWeekOfMonth} function options.
  */
-export interface GetWeekOfMonthOptions extends LocalizedOptions, WeekOptions {}
+export interface GetWeekOfMonthOptions
+  extends LocalizedOptions<'options'>,
+    WeekOptions {}
 
 /**
  * @name getWeekOfMonth

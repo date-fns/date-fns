@@ -4,7 +4,9 @@ import type { LocalizedOptions, WeekOptions } from '../types'
 /**
  * The {@link isThisWeek} function options.
  */
-export interface IsThisWeekOptions extends WeekOptions, LocalizedOptions {}
+export interface IsThisWeekOptions
+  extends WeekOptions,
+    LocalizedOptions<'options'> {}
 
 /**
  * @name isThisWeek

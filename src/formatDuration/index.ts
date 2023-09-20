@@ -6,7 +6,8 @@ import { getDefaultOptions } from '../_lib/defaultOptions/index'
 /**
  * The {@link formatDuration} function options.
  */
-export interface FormatDurationOptions extends LocalizedOptions {
+export interface FormatDurationOptions
+  extends LocalizedOptions<'formatDistance'> {
   /** The array of units to format */
   format?: DurationUnit[]
   /** Should be zeros be included in the output? */

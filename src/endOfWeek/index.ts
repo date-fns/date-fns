@@ -5,7 +5,9 @@ import { getDefaultOptions } from '../_lib/defaultOptions/index'
 /**
  * The {@link endOfWeek} function options.
  */
-export interface EndOfWeekOptions extends WeekOptions, LocalizedOptions {}
+export interface EndOfWeekOptions
+  extends WeekOptions,
+    LocalizedOptions<'options'> {}
 
 /**
  * @name endOfWeek

@@ -22,7 +22,7 @@ import type { ParseFlags, ParserOptions } from './_lib/types'
  * The {@link parse} function options.
  */
 export interface ParseOptions
-  extends LocalizedOptions,
+  extends LocalizedOptions<'options' | 'match' | 'formatLong'>,
     FirstWeekContainsDateOptions,
     WeekOptions,
     AdditionalTokensOptions {}
@@ -356,10 +356,6 @@ export default function parse<DateType extends Date>(
 ): DateType {
   const defaultOptions = getDefaultOptions()
   const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale
-
-  if (!locale.match) {
-    throw new RangeError('locale must contain match property')
-  }
 
   const firstWeekContainsDate =
     options?.firstWeekContainsDate ??

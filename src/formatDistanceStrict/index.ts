@@ -16,7 +16,7 @@ import { getRoundingMethod } from '../_lib/roundingMethods/index'
  * The {@link formatDistanceStrict} function options.
  */
 export interface FormatDistanceStrictOptions
-  extends LocalizedOptions,
+  extends LocalizedOptions<'formatDistance'>,
     RoundingOptions {
   /** Add "X ago"/"in X" in the locale language */
   addSuffix?: boolean
@@ -122,10 +122,6 @@ export default function formatDistanceStrict<DateType extends Date>(
 ): string {
   const defaultOptions = getDefaultOptions()
   const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale
-
-  if (!locale.formatDistance) {
-    throw new RangeError('locale must contain localize.formatDistance property')
-  }
 
   const comparison = compareAsc(date, baseDate)
 

@@ -32,7 +32,7 @@ type Formatter = (
   token: string,
   localize: Localize,
   options: Required<
-    LocalizedOptions & WeekOptions & FirstWeekContainsDateOptions
+    LocalizedOptions<'options'> & WeekOptions & FirstWeekContainsDateOptions
   > & {
     _originalDate: Date
   }

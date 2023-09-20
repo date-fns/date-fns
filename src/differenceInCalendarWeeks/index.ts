@@ -7,7 +7,7 @@ import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMillisec
  * The {@link differenceInCalendarWeeks} function options.
  */
 export interface DifferenceInCalendarWeeksOptions
-  extends LocalizedOptions,
+  extends LocalizedOptions<'options'>,
     WeekOptions {}
 
 /**

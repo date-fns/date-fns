@@ -138,7 +138,7 @@ export type FormatRelativeFn = <DateType extends Date>(
  */
 export interface FormatRelativeFnOptions
   extends WeekOptions,
-    LocalizedOptions {}
+    LocalizedOptions<'options' | 'formatRelative'> {}
 
 /**
  * The locale function used inside the {@link FormatRelativeFn} function

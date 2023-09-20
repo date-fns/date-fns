@@ -8,7 +8,7 @@ import type { Interval, LocalizedOptions, WeekOptions } from '../types'
  */
 export interface EachWeekOfIntervalOptions
   extends WeekOptions,
-    LocalizedOptions {}
+    LocalizedOptions<'options'> {}
 
 /**
  * @name eachWeekOfInterval

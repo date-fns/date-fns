@@ -11,7 +11,8 @@ import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMillisec
 /**
  * The {@link formatDistance} function options.
  */
-export interface FormatDistanceOptions extends LocalizedOptions {
+export interface FormatDistanceOptions
+  extends LocalizedOptions<'formatDistance'> {
   /** Distances less than a minute are more detailed */
   includeSeconds?: boolean
   /** Add "X ago"/"in X" in the locale language */
@@ -107,10 +108,6 @@ export default function formatDistance<DateType extends Date>(
   const defaultOptions = getDefaultOptions()
   const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale
   const minutesInAlmostTwoDays = 2520
-
-  if (!locale.formatDistance) {
-    throw new RangeError('locale must contain formatDistance property')
-  }
 
   const comparison = compareAsc(date, baseDate)
 
