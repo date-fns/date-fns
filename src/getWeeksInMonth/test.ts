@@ -19,7 +19,6 @@ describe('getWeeksInMonth', () => {
 
   it('allows to specify which day is the first day of the week in locale', () => {
     const result = getWeeksInMonth(new Date(2015, 1 /* Feb */, 8, 18, 0), {
-      // @ts-expect-error
       locale: {
         options: { weekStartsOn: 1 },
       },
@@ -30,7 +29,6 @@ describe('getWeeksInMonth', () => {
   it('`options.weekStartsOn` overwrites the first day of the week specified in locale', () => {
     const result = getWeeksInMonth(new Date(2015, 1 /* Feb */, 8, 18, 0), {
       weekStartsOn: 1,
-      // @ts-expect-error
       locale: {
         options: { weekStartsOn: 0 },
       },

@@ -755,11 +755,11 @@ describe('intlFormatDistance', () => {
 
       it('checks unit', () => {
         assert.throws(
-          // @ts-ignore: the value doesnt match one of the Unit values from '../types.ts'
           intlFormatDistance.bind(
             null,
             new Date(1986, 3, 4, 10, 30, 0),
             new Date(1986, 3, 4, 10, 30, 0),
+            // @ts-ignore: the value doesnt match one of the Unit values from '../types.ts'
             { unit: 'wrongValue' }
           ),
           RangeError
@@ -780,11 +780,11 @@ describe('intlFormatDistance', () => {
 
       it('checks localeMatcher', () => {
         assert.throws(
-          // @ts-expect-error
           intlFormatDistance.bind(
             null,
             new Date(1986, 3, 4, 10, 30, 0),
             new Date(1986, 3, 4, 10, 30, 0),
+            // @ts-expect-error
             { localeMatcher: 'wrongValue' }
           ),
           RangeError
@@ -793,11 +793,11 @@ describe('intlFormatDistance', () => {
 
       it('checks numeric', () => {
         assert.throws(
-          // @ts-expect-error
           intlFormatDistance.bind(
             null,
             new Date(1986, 3, 4, 10, 30, 0),
             new Date(1986, 3, 4, 10, 30, 0),
+            // @ts-expect-error
             { numeric: 'wrongValue' }
           ),
           RangeError
@@ -806,11 +806,11 @@ describe('intlFormatDistance', () => {
 
       it('checks style', () => {
         assert.throws(
-          // @ts-expect-error
           intlFormatDistance.bind(
             null,
             new Date(1986, 3, 4, 10, 30, 0),
             new Date(1986, 3, 4, 10, 30, 0),
+            // @ts-expect-error
             { style: 'wrongValue' }
           ),
           RangeError

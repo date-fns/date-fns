@@ -54,7 +54,6 @@ describe('setWeekYear', () => {
   it('allows to specify `weekStartsOn` and `firstWeekContainsDate` in locale', () => {
     const date = new Date(2010, 0 /* Jan */, 2)
     const result = setWeekYear(date, 2004, {
-      // @ts-expect-error
       locale: {
         options: { weekStartsOn: 1, firstWeekContainsDate: 4 },
       },
@@ -67,7 +66,6 @@ describe('setWeekYear', () => {
     const result = setWeekYear(date, 2004, {
       weekStartsOn: 1,
       firstWeekContainsDate: 4,
-      // @ts-expect-error
       locale: {
         options: { weekStartsOn: 0, firstWeekContainsDate: 1 },
       },

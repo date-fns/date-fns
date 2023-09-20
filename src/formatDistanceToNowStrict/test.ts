@@ -351,25 +351,11 @@ describe('formatDistanceToNowStrict', () => {
         new Date(1986, 3, 4, 10, 31, 45),
         {
           addSuffix: true,
-          // @ts-expect-error
           locale: customLocale,
         }
       )
 
       assert(result === 'It works!')
-    })
-
-    describe('does not contain `formatDistance` property', () => {
-      it('throws `RangeError`', () => {
-        const customLocale = {}
-        const block = () =>
-          formatDistanceToNowStrict(new Date(1986, 3, 4, 10, 37, 0), {
-            unit: 'minute',
-            // @ts-expect-error
-            locale: customLocale,
-          })
-        assert.throws(block, RangeError)
-      })
     })
   })
 

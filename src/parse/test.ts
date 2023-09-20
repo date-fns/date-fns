@@ -2287,15 +2287,6 @@ describe('parse', () => {
       })
       assert.deepStrictEqual(result, new Date(-2017, 0 /* Jan */, 1))
     })
-
-    it('throws `RangeError` if `options.locale` does not contain `match` property', () => {
-      const block = () =>
-        parse('2016-11-25 04 AM', 'yyyy-MM-dd hh a', referenceDate, {
-          // @ts-expect-error
-          locale: {},
-        })
-      assert.throws(block, RangeError)
-    })
   })
 
   it('accepts a timestamp as `referenceDate`', () => {

@@ -31,7 +31,6 @@ describe('getWeek', () => {
   it('allows to specify `weekStartsOn` and `firstWeekContainsDate` in locale', () => {
     const date = new Date(2005, 0 /* Jan */, 2)
     const result = getWeek(date, {
-      // @ts-expect-error
       locale: {
         options: { weekStartsOn: 1, firstWeekContainsDate: 4 },
       },
@@ -44,7 +43,6 @@ describe('getWeek', () => {
     const result = getWeek(date, {
       weekStartsOn: 1,
       firstWeekContainsDate: 4,
-      // @ts-expect-error
       locale: {
         options: { weekStartsOn: 0, firstWeekContainsDate: 1 },
       },

@@ -2459,7 +2459,7 @@
     "tsx": "^3.12.1",
     "typedoc": "^0.23.23",
     "typedoc-plugin-missing-exports": "^1.0.0",
-    "typescript": "^4.7.4",
+    "typescript": "^5.2.2",
     "vitest": "^0.34.3",
     "world-countries": "^1.8.1"
   },

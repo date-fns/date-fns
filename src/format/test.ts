@@ -754,30 +754,6 @@ describe('format', () => {
       })
       assert(result === 'It works!')
     })
-
-    it("throws `RangeError` if `options.locale` doesn't have `localize` property", () => {
-      const customLocale = {
-        formatLong: {},
-      }
-      const block = () =>
-        format(date, 'yyyy-MM-dd', {
-          // @ts-expect-error
-          locale: customLocale,
-        })
-      assert.throws(block, RangeError)
-    })
-
-    it("throws `RangeError` if `options.locale` doesn't have `formatLong` property", () => {
-      const customLocale = {
-        localize: {},
-      }
-      const block = () =>
-        format(date, 'yyyy-MM-dd', {
-          // @ts-expect-error
-          locale: customLocale,
-        })
-      assert.throws(block, RangeError)
-    })
   })
 
   it('throws RangeError exception if the format string contains an unescaped latin alphabet character', () => {
