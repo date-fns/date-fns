@@ -65,13 +65,13 @@ const parseMonthPatterns = {
 }
 
 const matchDayPatterns = {
-  narrow: /^[dlmjvs]/i,
+  narrow: /^[dlmxjvs]/i,
   short: /^(do|lu|ma|mi|ju|vi|s[áa])/i,
   abbreviated: /^(dom|lun|mar|mi[ée]|jue|vie|s[áa]b)/i,
   wide: /^(domingo|lunes|martes|mi[ée]rcoles|jueves|viernes|s[áa]bado)/i,
 }
 const parseDayPatterns = {
-  narrow: [/^d/i, /^l/i, /^m/i, /^m/i, /^j/i, /^v/i, /^s/i] as const,
+  narrow: [/^d/i, /^l/i, /^m/i, /^x/i, /^j/i, /^v/i, /^s/i] as const,
   any: [/^do/i, /^lu/i, /^ma/i, /^mi/i, /^ju/i, /^vi/i, /^sa/i] as const,
 }
 
