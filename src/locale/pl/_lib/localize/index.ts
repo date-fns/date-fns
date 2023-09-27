@@ -78,31 +78,31 @@ const monthFormattingValues = {
 }
 
 const dayValues = {
-  narrow: ['N', 'P', 'W', 'Ś', 'C', 'P', 'S'] as const,
-  short: ['nie', 'pon', 'wto', 'śro', 'czw', 'pią', 'sob'] as const,
-  abbreviated: ['niedz.', 'pon.', 'wt.', 'śr.', 'czw.', 'pt.', 'sob.'] as const,
+  narrow: [ 'P', 'W', 'Ś', 'C', 'P', 'S', 'N'] as const,
+  short: [ 'pon', 'wto', 'śro', 'czw', 'pią', 'sob', 'nie'] as const,
+  abbreviated: [ 'pon.', 'wt.', 'śr.', 'czw.', 'pt.', 'sob.', 'niedz.'] as const,
   wide: [
-    'niedziela',
     'poniedziałek',
     'wtorek',
     'środa',
     'czwartek',
     'piątek',
     'sobota',
+    'niedziela',
   ] as const,
 }
 const dayFormattingValues = {
-  narrow: ['n', 'p', 'w', 'ś', 'c', 'p', 's'] as const,
-  short: ['nie', 'pon', 'wto', 'śro', 'czw', 'pią', 'sob'] as const,
-  abbreviated: ['niedz.', 'pon.', 'wt.', 'śr.', 'czw.', 'pt.', 'sob.'] as const,
+  narrow: ['p', 'w', 'ś', 'c', 'p', 's', 'n'] as const,
+  short: ['pon', 'wto', 'śro', 'czw', 'pią', 'sob', 'nie'] as const,
+  abbreviated: [ 'pon.', 'wt.', 'śr.', 'czw.', 'pt.', 'sob.','niedz.',] as const,
   wide: [
-    'niedziela',
     'poniedziałek',
     'wtorek',
     'środa',
     'czwartek',
     'piątek',
     'sobota',
+    'niedziela',
   ] as const,
 }
 
