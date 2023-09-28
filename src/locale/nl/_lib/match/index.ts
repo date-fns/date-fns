@@ -63,7 +63,7 @@ const parseMonthPatterns = {
 const matchDayPatterns = {
   narrow: /^[zmdwv]/i,
   short: /^(zo|ma|di|wo|do|vr|za)/i,
-  abbreviated: /^(zon|maa|din|woe|don|vri|zat)/i,
+  abbreviated: /^(zon|maa|din|woe|don|vrij|zat)/i,
   wide: /^(zondag|maandag|dinsdag|woensdag|donderdag|vrijdag|zaterdag)/i,
 }
 const parseDayPatterns = {

@@ -49,7 +49,7 @@ const monthValues = {
 const dayValues = {
   narrow: ['Z', 'M', 'D', 'W', 'D', 'V', 'Z'] as const,
   short: ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'] as const,
-  abbreviated: ['zon', 'maa', 'din', 'woe', 'don', 'vri', 'zat'] as const,
+  abbreviated: ['zon', 'maa', 'din', 'woe', 'don', 'vrij', 'zat'] as const,
   wide: [
     'zondag',
     'maandag',
