@@ -11,9 +11,9 @@ function checkWeek(
   if (isSameWeek(date, baseDate, options)) {
     return baseFormat // in same week
   } else if (date.getTime() > baseDate.getTime()) {
-    return "'下个'" + baseFormat // in next week
+    return "'下个' p" // in next week
   }
-  return "'上个'" + baseFormat // in last week
+  return "'上个' p" // in last week
 }
 
 const formatRelativeLocale = {
