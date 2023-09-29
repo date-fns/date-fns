@@ -12,7 +12,7 @@ import toDate from '../toDate/index'
  *
  * @param date - The given date
  *
- * @returns The month
+ * @returns The month nubmber, which is indexed from 0 (January) to 11 (December)
  *
  * @example
  * // Which month is 29 February 2012?
