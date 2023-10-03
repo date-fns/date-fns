@@ -32,23 +32,29 @@ export interface DifferenceInWeeksOptions extends RoundingOptions {}
  * @returns The number of full weeks
  *
  * @example
- * // How many full weeks are between 5 July 2014 and 20 July 2014?
- * const result = differenceInWeeks(new Date(2014, 6, 20), new Date(2014, 6, 5))
+ * // How many full weeks are between
+ * // 11 June 2020 0:00 and 1 July 2020 0:00
+ *
+ * const result = differenceInWeeks(
+ *   new Date(2020, 6, 1),
+ *   new Date(2020, 5, 11)
+ * )
  * //=> 2
  *
  * @example
- * // How many full weeks are between
- * // 1 March 2020 0:00 and 6 June 2020 0:00 ?
- * // Note: because local time is used, the
- * // result will always be 8 weeks (54 days),
- * // even if DST starts and the period has
- * // only 54*24-1 hours.
+ * // Take note of the order of parameters,
+ * // Function can return a negative number
+ * // With parameters reversed, how many full weeks are between
+ * // 1 July 2020 0:00 and 11 June 2020 0:00
+ *
  * const result = differenceInWeeks(
- *   new Date(2020, 5, 1),
- *   new Date(2020, 2, 6)
+ *   new Date(2020, 5, 11),
+ *   new Date(2020, 6, 1)
  * )
- * //=> 8
+ * //=> -2
+ *
  */
+
 export default function differenceInWeeks<DateType extends Date>(
   dateLeft: DateType | number,
   dateRight: DateType | number,
