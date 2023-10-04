@@ -5948,6 +5948,10 @@
         "default": "./locale/sr-Latn.mjs"
       }
     },
+    "./locale/sr-ME": {
+      "require": "./locale/sr-ME.js",
+      "import": "./locale/sr-ME.mjs"
+    },
     "./locale/sv": {
       "require": {
         "types": "./locale/sv.d.ts",
