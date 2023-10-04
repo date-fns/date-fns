@@ -60,8 +60,14 @@ export default function differenceInMonths<DateType extends Date>(
     }
 
     result = sign * (difference - Number(isLastMonthNotFull))
+
+    // Check if start date is last day of Feb in leap year and end date is before last day of Feb
+    if (_dateLeft.getMonth() === 1 && _dateLeft.getDate() === 29 && _dateRight.getDate() < 29) {
+      result -= sign;
+    }
   }
 
   // Prevent negative zero
   return result === 0 ? 0 : result
 }
+
