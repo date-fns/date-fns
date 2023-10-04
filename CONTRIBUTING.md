@@ -97,16 +97,6 @@ yarn test
 yarn test --single-run
 ```
 
-Jest (Node.js):
-
-```sh
-# all tests in watch mode
-yarn jest --watch
-
-# all tests once
-yarn jest
-```
-
 ### REPL
 
 To test functions in a REPL, use `babel-node` located in `./node_modules/.bin` (mind the `-x` flag to also support TypeScript files):
