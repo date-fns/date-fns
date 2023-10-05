@@ -14,6 +14,11 @@ describe('isValid', () => {
     assert(result === false)
   })
 
+  it('dates before 0100-01-01 ', () => {
+    const result = isExists(99, 11 /* Dec */, 31)
+    assert(result === true)
+  })
+
   it('throws TypeError exception if passed less than 3 arguments', () => {
     // @ts-expect-error
     assert.throws(isExists.bind(null), TypeError)
