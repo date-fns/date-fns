@@ -67,6 +67,10 @@ yarn add date-fns
 [See date-fns.org](https://date-fns.org/) for more details, API,
 and other docs.
 
+## Usage Trend of Date & Time Manipulation Libraries
+
+[Usage Trend of Legacy Moment.js and Modern Date-Fns](https://npm-compare.com/moment,date-fns)
+
 <br />
 <!-- END OF README-JOB SECTION -->
 
