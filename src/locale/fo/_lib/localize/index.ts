@@ -9,7 +9,7 @@ const eraValues = {
 
 const quarterValues = {
   narrow: ['1', '2', '3', '4'] as const,
-  abbreviated: ['1. árfj.', '2. árfj.', '3. árfj.', '4. árfj.'] as const,
+  abbreviated: ['1. ársfj.', '2. ársfj.', '3. ársfj.', '4. ársfj.'] as const,
   wide: [
     '1. ársfjórðing',
     '2. ársfjórðing',
@@ -51,10 +51,9 @@ const monthValues = {
 }
 
 // Note that 'Days - abbreviated - Formatting' has periods at the end.
-// https://www.unicode.org/cldr/charts/32/summary/da.html#1760
-// This makes grammatical sense in danish, as most abbreviations have periods.
+
 const dayValues = {
-  narrow: ['S', 'M', 'T', 'O', 'T', 'F', 'L'] as const,
+  narrow: ['S', 'M', 'T', 'M', 'H', 'F', 'L'] as const,
   short: ['su', 'má', 'tý', 'mi', 'hó', 'fr', 'le'] as const,
   abbreviated: [
     'sun.',

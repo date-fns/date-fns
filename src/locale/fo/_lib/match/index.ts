@@ -7,9 +7,9 @@ const matchOrdinalNumberPattern = /^(\d+)(\.)?/i
 const parseOrdinalNumberPattern = /\d+/i
 
 const matchEraPatterns = {
-  narrow: /^(fKr|fvt|eKr|vt)/i,
-  abbreviated: /^(f\.Kr\.?|f\.v\.t\.?|e\.Kr\.?|v\.t\.)/i,
-  wide: /^(f.Kr.|før vesterlandsk tidsregning|e.Kr.|vesterlandsk tidsregning)/i,
+  narrow: /^(fKr|fot|eot|ot)/i,
+  abbreviated: /^(f\.Kr\.?|f\.o\.t\.?|e\.Kr\.?|o\.t\.)/i,
+  wide: /^(f.Kr.|fyri okkara tíðarrokning|e.Kr.|okkara tíðarrokning)/i,
 }
 const parseEraPatterns = {
   any: [/^f/i, /^(v|e)/i] as const,
@@ -17,7 +17,7 @@ const parseEraPatterns = {
 
 const matchQuarterPatterns = {
   narrow: /^[1234]/i,
-  abbreviated: /^[1234]. árfj\./i,
+  abbreviated: /^[1234]. ársfj\./i,
   wide: /^[1234]\.? ársfjóðring/i,
 }
 const parseQuarterPatterns = {
@@ -61,7 +61,7 @@ const parseMonthPatterns = {
 }
 
 const matchDayPatterns = {
-  narrow: /^[smtmtfl]/i,
+  narrow: /^[smtmhfl]/i,
   short: /^(sun.|mán.|týs.|mik.|hós.|frí.|ley.)/i,
   abbreviated: /^(sun|mán|týs|mik|hós|frí|ley)/i,
   wide: /^(sunnudag|mándag|týsdag|mikudag|hósdag|fríggjadag|leygardag)/i,

@@ -1,7 +1,7 @@
 import type { FormatRelativeFn } from '../../../types'
 
 const formatRelativeLocale = {
-  lastWeek: "'síðsta' eeee 'kl.' p",
+  lastWeek: "'seinasta' eeee 'kl.' p",
   yesterday: "'í gjár kl.' p",
   today: "'í dag kl.' p",
   tomorrow: "'í morgin kl.' p",
