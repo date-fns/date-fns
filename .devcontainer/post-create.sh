@@ -9,6 +9,7 @@ if [ -n "${REMOTE_CONTAINERS}" ]; then
 
 	# perform additional one-time setup just after
 	# the devcontainer is created
-	yarn install --cwd "${workspace_root}"
+	yarn install --cwd "${workspace_root}" # install node dependencies
+	npx playwright install                 # install playwright browsers
 
 fi
