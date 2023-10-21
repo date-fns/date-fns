@@ -1,0 +1,16 @@
+{
+  "name": "date-fns",
+  "dockerFile": "Dockerfile",
+  "build": {
+    "args": { "NODE_MAJOR_VERSION": "18" }
+  },
+  "postCreateCommand": [".devcontainer/post-create.sh"],
+  "portsAttributes": {
+    "63315": { "label": "Vitest Browser" }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode"]
+    }
+  }
+}
