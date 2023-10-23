@@ -31,6 +31,12 @@ export default function addDays<DateType extends Date>(
     // If 0 days, no-op to avoid changing times in the hour before end of DST
     return _date
   }
-  _date.setDate(_date.getDate() + amount)
+  const millisecondsInADay = 24 * 60 * 60 * 1000
+  // number of milliseconds in the amount of days
+  const daysInMilliseconds = amount * millisecondsInADay
+
+  const totalMilliseconds = _date.getTime() + daysInMilliseconds
+  _date.setTime(totalMilliseconds)
+
   return _date
 }
