@@ -10,9 +10,13 @@ import type { Interval } from '../types'
  * @description
  * Get the number of days that overlap in two time intervals
  *
- * @param intervalLeft - the first interval to compare. See [Interval]{@link docs/Interval}
- * @param intervalRight - the second interval to compare. See [Interval]{@link docs/Interval}
- * @returns the number of days that overlap in two time intervals
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param intervalLeft - The first interval to compare. See [Interval]{@link docs/Interval}
+ * @param intervalRight - The second interval to compare. See [Interval]{@link docs/Interval}
+ *
+ * @returns The number of days that overlap in two time intervals
+ *
  * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *

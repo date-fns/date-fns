@@ -9,11 +9,11 @@ import isSameDay from '../isSameDay/index'
  * @description
  * Is the given date today?
  *
- * > ⚠️ Please note that this function is not present in the FP submodule as
- * > it uses `Date.now()` internally hence impure and can't be safely curried.
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
- * @param date - the date to check
- * @returns the date is today
+ * @param date - The date to check
+ *
+ * @returns The date is today
  *
  * @example
  * // If today is 6 October 2014, is 6 October 14:00:00 today?
@@ -21,7 +21,7 @@ import isSameDay from '../isSameDay/index'
  * //=> true
  */
 export default function isToday<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): boolean {
-  return isSameDay(dirtyDate, Date.now())
+  return isSameDay(date, Date.now())
 }

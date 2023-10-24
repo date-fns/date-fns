@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
+import { describe, it } from 'vitest'
 import sinon from 'sinon'
 import format from './index'
 
@@ -752,30 +753,6 @@ describe('format', () => {
         locale: customLocale,
       })
       assert(result === 'It works!')
-    })
-
-    it("throws `RangeError` if `options.locale` doesn't have `localize` property", () => {
-      const customLocale = {
-        formatLong: {},
-      }
-      const block = () =>
-        format(date, 'yyyy-MM-dd', {
-          // @ts-expect-error
-          locale: customLocale,
-        })
-      assert.throws(block, RangeError)
-    })
-
-    it("throws `RangeError` if `options.locale` doesn't have `formatLong` property", () => {
-      const customLocale = {
-        localize: {},
-      }
-      const block = () =>
-        format(date, 'yyyy-MM-dd', {
-          // @ts-expect-error
-          locale: customLocale,
-        })
-      assert.throws(block, RangeError)
     })
   })
 

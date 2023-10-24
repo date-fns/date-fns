@@ -9,9 +9,9 @@ set -ex
 export PATH="$(yarn bin):$PATH"
 export NODE_ENV=test
 
-env TZ=Asia/Kolkata babel-node --extensions .ts,.js ./test/formatRFC3339/india.js
-env TZ=America/St_Johns babel-node --extensions .ts,.js ./test/formatRFC3339/newfoundland.js
-env TZ=Australia/Eucla babel-node --extensions .ts,.js ./test/formatRFC3339/australia.js
-env TZ=Pacific/Chatham babel-node --extensions .ts,.js ./test/formatRFC3339/newzealand.js
-env TZ=Europe/Warsaw babel-node --extensions .ts,.js ./test/formatRFC3339/poland.js
+env TZ=Asia/Kolkata yarn tsx ./test/formatRFC3339/india.ts
+env TZ=America/St_Johns yarn tsx ./test/formatRFC3339/newfoundland.ts
+env TZ=Australia/Eucla yarn tsx ./test/formatRFC3339/australia.ts
+env TZ=Pacific/Chatham yarn tsx ./test/formatRFC3339/newzealand.ts
+env TZ=Europe/Warsaw yarn tsx ./test/formatRFC3339/poland.ts
 

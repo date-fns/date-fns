@@ -7,10 +7,9 @@
  * @description
  * Return the end of yesterday.
  *
- * > ⚠️ Please note that this function is not present in the FP submodule as
- * > it uses `new Date()` internally hence impure and can't be safely curried.
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
- * @returns the end of yesterday
+ * @returns The end of yesterday
  *
  * @example
  * // If today is 6 October 2014:

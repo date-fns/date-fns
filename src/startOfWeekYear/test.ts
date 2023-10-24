@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
+import { describe, it } from 'vitest'
 import startOfWeekYear from './index'
 
 describe('startOfWeekYear', () => {
@@ -41,7 +42,6 @@ describe('startOfWeekYear', () => {
   it('allows to specify `weekStartsOn` and `firstWeekContainsDate` in locale', () => {
     const date = new Date(2005, 6 /* Jul */, 2)
     const result = startOfWeekYear(date, {
-      // @ts-expect-error
       locale: {
         options: { weekStartsOn: 1, firstWeekContainsDate: 4 },
       },
@@ -54,7 +54,6 @@ describe('startOfWeekYear', () => {
     const result = startOfWeekYear(date, {
       weekStartsOn: 1,
       firstWeekContainsDate: 4,
-      // @ts-expect-error
       locale: {
         options: { weekStartsOn: 0, firstWeekContainsDate: 1 },
       },

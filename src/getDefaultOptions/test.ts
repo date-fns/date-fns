@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
+import { describe, it, afterEach } from 'vitest'
 import getDefaultOptions from '.'
 import setDefaultOptions from '../setDefaultOptions'
 import startOfWeek from '../startOfWeek'

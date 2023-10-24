@@ -1,8 +1,5 @@
-import type { Era, Quarter } from '../../../../types'
 import type { Localize, LocalizeFn } from '../../../types'
-import buildLocalizeFn, {
-  LocalizePeriodValuesMap,
-} from '../../../_lib/buildLocalizeFn/index'
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
 type hiLocaleNumberType =
   | '\u0967'
@@ -71,17 +68,17 @@ const numberValues: hiLocaleNumberValuesType = {
 }
 
 // CLDR #1585 - #1592
-const eraValues: LocalizePeriodValuesMap<Era> = {
-  narrow: ['ईसा-पूर्व', 'ईस्वी'],
-  abbreviated: ['ईसा-पूर्व', 'ईस्वी'],
-  wide: ['ईसा-पूर्व', 'ईसवी सन'],
+const eraValues = {
+  narrow: ['ईसा-पूर्व', 'ईस्वी'] as const,
+  abbreviated: ['ईसा-पूर्व', 'ईस्वी'] as const,
+  wide: ['ईसा-पूर्व', 'ईसवी सन'] as const,
 }
 
 // CLDR #1593 - #1616
-const quarterValues: LocalizePeriodValuesMap<Quarter> = {
-  narrow: ['1', '2', '3', '4'],
-  abbreviated: ['ति1', 'ति2', 'ति3', 'ति4'],
-  wide: ['पहली तिमाही', 'दूसरी तिमाही', 'तीसरी तिमाही', 'चौथी तिमाही'],
+const quarterValues = {
+  narrow: ['1', '2', '3', '4'] as const,
+  abbreviated: ['ति1', 'ति2', 'ति3', 'ति4'] as const,
+  wide: ['पहली तिमाही', 'दूसरी तिमाही', 'तीसरी तिमाही', 'चौथी तिमाही'] as const,
 }
 
 // Note: in English, the names of days of the week and months are capitalized.
@@ -217,10 +214,7 @@ const formattingDayPeriodValues = {
   },
 }
 
-const ordinalNumber: LocalizeFn<number, undefined> = (
-  dirtyNumber,
-  _options
-) => {
+const ordinalNumber: LocalizeFn<number> = (dirtyNumber, _options) => {
   const number = Number(dirtyNumber)
   return numberToLocale(number)
 }
@@ -249,7 +243,7 @@ const localize: Localize = {
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: (quarter) => (quarter - 1) as Quarter,
+    argumentCallback: (quarter) => quarter - 1,
   }),
 
   month: buildLocalizeFn({

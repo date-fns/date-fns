@@ -18,6 +18,11 @@ const doubleQuoteRegExp = /''/g
 const unescapedLatinCharacterRegExp = /[a-zA-Z]/
 
 /**
+ * @private
+ */
+type Token = keyof typeof formatters
+
+/**
  * @name lightFormat
  * @category Common Helpers
  * @summary Format the date.
@@ -62,25 +67,26 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * |                                 | SSS     | 000, 001, ..., 999                |
  * |                                 | SSSS    | ...                               |
  *
- * @param date - the original date
- * @param format - the string of tokens
- * @returns the formatted date string
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The original date
+ * @param format - The string of tokens
+ *
+ * @returns The formatted date string
+ *
  * @throws {RangeError} format string contains an unescaped latin alphabet character
  *
  * @example
  * const result = lightFormat(new Date(2014, 1, 11), 'yyyy-MM-dd')
  * //=> '2014-02-11'
  */
-
-type Token = keyof typeof formatters
-
 export default function lightFormat<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   formatStr: string
 ): string {
-  const originalDate = toDate(dirtyDate)
+  const _date = toDate(date)
 
-  if (!isValid(originalDate)) {
+  if (!isValid(_date)) {
     throw new RangeError('Invalid time value')
   }
 
@@ -103,7 +109,7 @@ export default function lightFormat<DateType extends Date>(
 
       const formatter = formatters[firstCharacter as Token]
       if (formatter) {
-        return formatter(originalDate, substring)
+        return formatter(_date, substring)
       }
 
       if (firstCharacter.match(unescapedLatinCharacterRegExp)) {

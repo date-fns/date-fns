@@ -8,8 +8,11 @@ import toDate from '../toDate/index'
  * @description
  * Is the given date Friday?
  *
- * @param date - the date to check
- * @returns the date is Friday
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date to check
+ *
+ * @returns The date is Friday
  *
  * @example
  * // Is 26 September 2014 Friday?
@@ -17,7 +20,7 @@ import toDate from '../toDate/index'
  * //=> true
  */
 export default function isFriday<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): boolean {
-  return toDate(dirtyDate).getDay() === 5
+  return toDate(date).getDay() === 5
 }

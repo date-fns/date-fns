@@ -8,8 +8,11 @@ import toDate from '../toDate/index'
  * @description
  * Is the given date the first day of a month?
  *
- * @param date - the date to check
- * @returns the date is the first day of a month
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date to check
+
+ * @returns The date is the first day of a month
  *
  * @example
  * // Is 1 September 2014 the first day of a month?
@@ -17,7 +20,7 @@ import toDate from '../toDate/index'
  * //=> true
  */
 export default function isFirstDayOfMonth<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): boolean {
-  return toDate(dirtyDate).getDate() === 1
+  return toDate(date).getDate() === 1
 }

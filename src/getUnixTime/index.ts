@@ -8,8 +8,11 @@ import getTime from '../getTime/index'
  * @description
  * Get the seconds timestamp of the given date.
  *
- * @param date - the given date
- * @returns the timestamp
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The given date
+ *
+ * @returns The timestamp
  *
  * @example
  * // Get the timestamp of 29 February 2012 11:45:05 CET:
@@ -17,7 +20,7 @@ import getTime from '../getTime/index'
  * //=> 1330512305
  */
 export default function getUnixTime<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): number {
-  return Math.floor(getTime(dirtyDate) / 1000)
+  return Math.floor(getTime(date) / 1000)
 }

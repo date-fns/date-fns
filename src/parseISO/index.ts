@@ -4,6 +4,7 @@ import { millisecondsInHour, millisecondsInMinute } from '../constants/index'
  * The {@link parseISO} function options.
  */
 export interface ParseISOOptions {
+  /** The additional number of digits in the extended year format */
   additionalDigits?: 0 | 1 | 2
 }
 
@@ -21,9 +22,12 @@ export interface ParseISOOptions {
  * If the argument isn't a string, the function cannot parse the string or
  * the values are invalid, it returns Invalid Date.
  *
- * @param argument - the value to convert
- * @param options - an object with options.
- * @returns the parsed date in the local time zone
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param argument - The value to convert
+ * @param options - An object with options
+ *
+ * @returns The parsed date in the local time zone
  *
  * @example
  * // Convert string '2014-02-11T11:30:30' to date:
@@ -71,7 +75,7 @@ export default function parseISO(
     }
   } else {
     const dirtyDate = new Date(timestamp + time)
-    // js parsed string assuming it's in UTC timezone
+    // JS parsed string assuming it's in UTC timezone
     // but we need it to be parsed in our timezone
     // so we use utc values to build date in our timezone.
     // Year values from 0 to 99 map to the years 1900 to 1999

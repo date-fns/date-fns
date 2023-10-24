@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
+import { describe, it } from 'vitest'
 import setDay from './index'
 
 describe('setDay', () => {
@@ -18,7 +19,6 @@ describe('setDay', () => {
 
   it('allows to specify which day is the first day of the week in locale', () => {
     const result = setDay(new Date(2014, 8 /* Sep */, 1), 0, {
-      // @ts-expect-error
       locale: {
         options: { weekStartsOn: 1 },
       },
@@ -29,7 +29,6 @@ describe('setDay', () => {
   it('`options.weekStartsOn` overwrites the first day of the week specified in locale', () => {
     const result = setDay(new Date(2014, 8 /* Sep */, 1), 0, {
       weekStartsOn: 1,
-      // @ts-expect-error
       locale: {
         options: { weekStartsOn: 0 },
       },

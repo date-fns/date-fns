@@ -14,10 +14,9 @@
 
 - [Testing](#testing)
 
-  - [Unit tests](#unit-tests)  
+  - [Unit tests](#unit-tests)
   - [REPL](#repl)
   - [Test build](#test-build)
-
 
 - [Code Style Guide](#code-style-guide)
 
@@ -117,6 +116,7 @@ yarn babel-node -x .ts,.js
 ```
 
 and then require invididual functions:
+
 ```sh
 > const toDate = require('./src/toDate')
 undefined
@@ -126,6 +126,7 @@ undefined
 ```
 
 or all functions (slower):
+
 ```sh
 > const fns = require('./src')
 undefined
@@ -161,9 +162,6 @@ yarn lint
 
 ### JSDoc
 
-- [JSDoc](https://jsdoc.app/) is used for the code documentation. Along with the
-standard JSDoc tags, date-fns uses `@category` tag that allows
-to group functions.
+- [TSDoc](https://tsdoc.org/) is used for the code documentation.
 
-- [jsdoc-to-markdown](https://github.com/jsdoc2md/jsdoc-to-markdown/) is used to parse
-JSDoc annotations.
+- [TypeDoc](https://typedoc.org/) is used to parse the TSDoc annotations and populate the database.

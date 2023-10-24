@@ -5,8 +5,8 @@ import type {
   Day,
   FirstWeekContainsDate,
   FirstWeekContainsDateOptions,
-  LocaleOptions,
-  WeekStartOptions,
+  LocalizedOptions,
+  WeekOptions,
 } from '../types'
 import defaultLocale from '../_lib/defaultLocale/index'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
@@ -29,7 +29,8 @@ import {
 //   If there is no matching single quote
 //   then the sequence will continue until the end of the string.
 // - . matches any single character unmatched by previous parts of the RegExps
-const formattingTokensRegExp = /[yYQqMLwIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)|./g
+const formattingTokensRegExp =
+  /[yYQqMLwIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)|./g
 
 // This RegExp catches symbols escaped by quotes, and also
 // sequences of symbols P, p, and the combinations like `PPPPPPPppppp`
@@ -43,8 +44,8 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * The {@link format} function options.
  */
 export interface FormatOptions
-  extends LocaleOptions,
-    WeekStartOptions,
+  extends LocalizedOptions<'options' | 'localize' | 'formatLong'>,
+    WeekOptions,
     FirstWeekContainsDateOptions,
     AdditionalTokensOptions {}
 
@@ -298,10 +299,14 @@ export interface FormatOptions
  * 9. `D` and `DD` tokens represent days of the year but they are often confused with days of the month.
  *    You should enable `options.useAdditionalDayOfYearTokens` to use them. See: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
  *
- * @param date - the original date
- * @param format - the string of tokens
- * @param options - an object with options.
- * @returns the formatted date string
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The original date
+ * @param format - The string of tokens
+ * @param options - An object with options
+ *
+ * @returns The formatted date string
+ *
  * @throws {RangeError} `date` must not be Invalid Date
  * @throws {RangeError} `options.locale` must contain `localize` property
  * @throws {RangeError} `options.locale` must contain `formatLong` property
@@ -329,9 +334,8 @@ export interface FormatOptions
  * const result = format(new Date(2014, 6, 2, 15), "h 'o''clock'")
  * //=> "3 o'clock"
  */
-
 export default function format<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   formatStr: string,
   options?: FormatOptions
 ): string {
@@ -352,15 +356,7 @@ export default function format<DateType extends Date>(
     defaultOptions.locale?.options?.weekStartsOn ??
     0
 
-  if (!locale.localize) {
-    throw new RangeError('locale must contain localize property')
-  }
-
-  if (!locale.formatLong) {
-    throw new RangeError('locale must contain formatLong property')
-  }
-
-  const originalDate = toDate(dirtyDate)
+  const originalDate = toDate(date)
 
   if (!isValid(originalDate)) {
     throw new RangeError('Invalid time value')
@@ -402,13 +398,13 @@ export default function format<DateType extends Date>(
           !options?.useAdditionalWeekYearTokens &&
           isProtectedWeekYearToken(substring)
         ) {
-          throwProtectedError(substring, formatStr, String(dirtyDate))
+          throwProtectedError(substring, formatStr, String(date))
         }
         if (
           !options?.useAdditionalDayOfYearTokens &&
           isProtectedDayOfYearToken(substring)
         ) {
-          throwProtectedError(substring, formatStr, String(dirtyDate))
+          throwProtectedError(substring, formatStr, String(date))
         }
         return formatter(
           originalDate,

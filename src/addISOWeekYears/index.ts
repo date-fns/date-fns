@@ -11,9 +11,12 @@ import setISOWeekYear from '../setISOWeekYear/index'
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @param date - the date to be changed
- * @param amount - the amount of ISO week-numbering years to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
- * @returns the new date with the ISO week-numbering years added
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date to be changed
+ * @param amount - The amount of ISO week-numbering years to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ *
+ * @returns The new date with the ISO week-numbering years added
  *
  * @example
  * // Add 5 ISO week-numbering years to 2 July 2010:
@@ -21,8 +24,8 @@ import setISOWeekYear from '../setISOWeekYear/index'
  * //=> Fri Jn 26 2015 00:00:00
  */
 export default function addISOWeekYears<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   amount: number
 ): DateType {
-  return setISOWeekYear(dirtyDate, getISOWeekYear(dirtyDate) + amount)
+  return setISOWeekYear(date, getISOWeekYear(date) + amount)
 }

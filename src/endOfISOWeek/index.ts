@@ -11,8 +11,11 @@ import endOfWeek from '../endOfWeek/index'
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @param date - the original date
- * @returns the end of an ISO week
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The original date
+ *
+ * @returns The end of an ISO week
  *
  * @example
  * // The end of an ISO week for 2 September 2014 11:55:00:
@@ -20,7 +23,7 @@ import endOfWeek from '../endOfWeek/index'
  * //=> Sun Sep 07 2014 23:59:59.999
  */
 export default function endOfISOWeek<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): DateType {
-  return endOfWeek(dirtyDate, { weekStartsOn: 1 })
+  return endOfWeek(date, { weekStartsOn: 1 })
 }

@@ -1,8 +1,9 @@
 name: Coverage report
 
-'on':
-  push:
-    branches: [master]
+on: workflow_dispatch
+# on:
+#   push:
+#     branches: [master]
 
 jobs:
   tests:
@@ -10,7 +11,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x]
+        node-version: [16.x]
 
     env:
       COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
@@ -29,4 +30,4 @@ jobs:
       - name: Install dependencies
         run: yarn install
       - name: Run coverage report
-        run: ./scripts/test/coverageReport.sh
+        run: ./scripts/test/coverage.sh

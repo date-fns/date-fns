@@ -10,7 +10,6 @@
 
 const path = require('path')
 const fs = require('fs')
-const beautify = require('js-beautify')['js_beautify']
 
 // Extract version from VERSION
 let version
@@ -25,11 +24,8 @@ try {
 console.log(`Version: ${version}`)
 
 console.log('Writing to package.json...')
-// Write package.json with the version equal to the version encoded in the tag name
 const packagePath = path.join(process.cwd(), 'package.json')
 const packageContent = JSON.parse(fs.readFileSync(packagePath).toString())
 Object.assign(packageContent, { version })
-const newPackageContentStr = beautify(JSON.stringify(packageContent), {
-  indent_size: 2,
-})
+const newPackageContentStr = JSON.stringify(packageContent, null, 2)
 fs.writeFileSync(packagePath, `${newPackageContentStr}\n`)

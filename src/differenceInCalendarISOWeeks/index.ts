@@ -12,9 +12,12 @@ import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMillisec
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @param dateLeft - the later date
- * @param dateRight - the earlier date
- * @returns the number of calendar ISO weeks
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param dateLeft - The later date
+ * @param dateRight - The earlier date
+ *
+ * @returns The number of calendar ISO weeks
  *
  * @example
  * // How many calendar ISO weeks are between 6 July 2014 and 21 July 2014?
@@ -25,11 +28,11 @@ import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMillisec
  * //=> 3
  */
 export default function differenceInCalendarISOWeeks<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+  dateLeft: DateType | number,
+  dateRight: DateType | number
 ): number {
-  const startOfISOWeekLeft = startOfISOWeek(dirtyDateLeft)
-  const startOfISOWeekRight = startOfISOWeek(dirtyDateRight)
+  const startOfISOWeekLeft = startOfISOWeek(dateLeft)
+  const startOfISOWeekRight = startOfISOWeek(dateRight)
 
   const timestampLeft =
     startOfISOWeekLeft.getTime() -

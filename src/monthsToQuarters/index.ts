@@ -8,9 +8,9 @@ import { monthsInQuarter } from '../constants/index'
  * @description
  * Convert a number of months to a full number of quarters.
  *
- * @param months - number of months to be converted.
+ * @param months - The number of months to be converted.
  *
- * @returns the number of months converted in quarters
+ * @returns The number of months converted in quarters
  *
  * @example
  * // Convert 6 months to quarters:

@@ -8,8 +8,11 @@ import toDate from '../toDate/index'
  * @description
  * Get the milliseconds timestamp of the given date.
  *
- * @param date - the given date
- * @returns the timestamp
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The given date
+ *
+ * @returns The timestamp
  *
  * @example
  * // Get the timestamp of 29 February 2012 11:45:05.123:
@@ -17,9 +20,9 @@ import toDate from '../toDate/index'
  * //=> 1330515905123
  */
 export default function getTime<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): number {
-  const date = toDate(dirtyDate)
-  const timestamp = date.getTime()
+  const _date = toDate(date)
+  const timestamp = _date.getTime()
   return timestamp
 }

@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
+import { describe, it } from 'vitest'
 import subBusinessDays from './index'
 
 describe('subBusinessDays', () => {
@@ -15,12 +16,6 @@ describe('subBusinessDays', () => {
   })
 
   it('can handle a large number of business days', () => {
-    // @ts-ignore
-    if (typeof global.timeout === 'function') {
-      // @ts-ignore
-      global.timeout(500 /* 500 ms test timeout */)
-    }
-
     const result = subBusinessDays(new Date(15000, 0 /* Jan */, 1), 3387885)
     assert.deepStrictEqual(result, new Date(2014, 0 /* Jan */, 1))
   })

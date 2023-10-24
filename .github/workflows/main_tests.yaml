@@ -1,4 +1,4 @@
-name: Node.js tests
+name: Browser tests
 
 on: [push, pull_request]
 
@@ -8,15 +8,13 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x]
+        node-version: [16.x]
 
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-      - name: export CHROME_BIN
-        run: export CHROME_BIN=chromium-browser
       - name: export DISPLAY
         run: export DISPLAY=:99.0
       - name: Install yarn
@@ -28,4 +26,4 @@ jobs:
         with:
           run: ./scripts/test/ci.sh
         env:
-          TEST_SUITE: node
+          TEST_SUITE: browser

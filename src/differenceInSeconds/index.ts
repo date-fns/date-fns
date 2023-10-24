@@ -15,10 +15,13 @@ export interface DifferenceInSecondsOptions extends RoundingOptions {}
  * @description
  * Get the number of seconds between the given dates.
  *
- * @param dateLeft - the later date
- * @param dateRight - the earlier date
- * @param options - an object with options.
- * @returns the number of seconds
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param dateLeft - The later date
+ * @param dateRight - The earlier date
+ * @param options - An object with options.
+ *
+ * @returns The number of seconds
  *
  * @example
  * // How many seconds are between

@@ -6,9 +6,7 @@ import {
   minutesInYear,
 } from '../constants/index'
 import toDate from '../toDate/index'
-import type { LocaleOptions, FormatDistanceStrictUnit } from '../types'
-import assign from '../_lib/assign/index'
-import cloneObject from '../_lib/cloneObject/index'
+import type { LocalizedOptions, RoundingOptions } from '../types'
 import defaultLocale from '../_lib/defaultLocale/index'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
@@ -17,11 +15,25 @@ import { getRoundingMethod } from '../_lib/roundingMethods/index'
 /**
  * The {@link formatDistanceStrict} function options.
  */
-export interface FormatDistanceStrictOptions extends LocaleOptions {
+export interface FormatDistanceStrictOptions
+  extends LocalizedOptions<'formatDistance'>,
+    RoundingOptions {
+  /** Add "X ago"/"in X" in the locale language */
   addSuffix?: boolean
+  /** If specified, will force the unit */
   unit?: FormatDistanceStrictUnit
-  roundingMethod?: 'floor' | 'ceil' | 'round'
 }
+
+/**
+ * The unit used to format the distance in {@link formatDistanceStrict}.
+ */
+export type FormatDistanceStrictUnit =
+  | 'second'
+  | 'minute'
+  | 'hour'
+  | 'day'
+  | 'month'
+  | 'year'
 
 /**
  * @name formatDistanceStrict
@@ -42,10 +54,14 @@ export interface FormatDistanceStrictOptions extends LocaleOptions {
  * | 1 ... 11 months        | [1..11] months      |
  * | 1 ... N years          | [1..N]  years       |
  *
- * @param date - the date
- * @param baseDate - the date to compare with
- * @param options - an object with options.
- * @returns the distance in words
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date
+ * @param baseDate - The date to compare with
+ * @param options - An object with options
+ *
+ * @returns The distance in words
+ *
  * @throws {RangeError} `date` must not be Invalid Date
  * @throws {RangeError} `baseDate` must not be Invalid Date
  * @throws {RangeError} `options.unit` must be 'second', 'minute', 'hour', 'day', 'month' or 'year'
@@ -100,24 +116,20 @@ export interface FormatDistanceStrictOptions extends LocaleOptions {
  */
 
 export default function formatDistanceStrict<DateType extends Date>(
-  dirtyDate: DateType | number,
-  dirtyBaseDate: DateType | number,
+  date: DateType | number,
+  baseDate: DateType | number,
   options?: FormatDistanceStrictOptions
 ): string {
   const defaultOptions = getDefaultOptions()
   const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale
 
-  if (!locale.formatDistance) {
-    throw new RangeError('locale must contain localize.formatDistance property')
-  }
-
-  const comparison = compareAsc(dirtyDate, dirtyBaseDate)
+  const comparison = compareAsc(date, baseDate)
 
   if (isNaN(comparison)) {
     throw new RangeError('Invalid time value')
   }
 
-  const localizeOptions = assign(cloneObject(options), {
+  const localizeOptions = Object.assign({}, options, {
     addSuffix: options?.addSuffix,
     comparison: comparison as -1 | 0 | 1,
   })
@@ -125,11 +137,11 @@ export default function formatDistanceStrict<DateType extends Date>(
   let dateLeft
   let dateRight
   if (comparison > 0) {
-    dateLeft = toDate(dirtyBaseDate)
-    dateRight = toDate(dirtyDate)
+    dateLeft = toDate(baseDate)
+    dateRight = toDate(date)
   } else {
-    dateLeft = toDate(dirtyDate)
-    dateRight = toDate(dirtyBaseDate)
+    dateLeft = toDate(date)
+    dateRight = toDate(baseDate)
   }
 
   const roundingMethod = getRoundingMethod(options?.roundingMethod ?? 'round')

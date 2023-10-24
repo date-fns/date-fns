@@ -144,7 +144,7 @@ const formattingDayPeriodValues = {
   },
 }
 
-const ordinalNumber: LocalizeFn<number, undefined> = (dirtyNumber, options) => {
+const ordinalNumber: LocalizeFn<number> = (dirtyNumber, options) => {
   const number = Number(dirtyNumber)
   const unit = String(options?.unit)
 

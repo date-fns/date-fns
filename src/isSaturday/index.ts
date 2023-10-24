@@ -8,8 +8,11 @@ import toDate from '../toDate/index'
  * @description
  * Is the given date Saturday?
  *
- * @param date - the date to check
- * @returns the date is Saturday
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date to check
+ *
+ * @returns The date is Saturday
  *
  * @example
  * // Is 27 September 2014 Saturday?
@@ -17,7 +20,7 @@ import toDate from '../toDate/index'
  * //=> true
  */
 export default function isSaturday<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): boolean {
-  return toDate(dirtyDate).getDay() === 6
+  return toDate(date).getDay() === 6
 }

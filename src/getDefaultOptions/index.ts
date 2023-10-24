@@ -1,4 +1,3 @@
-import assign from '../_lib/assign/index'
 import {
   DefaultOptions,
   getDefaultOptions as getInternalDefaultOptions,
@@ -17,7 +16,7 @@ import {
  *
  * You can change these with [setDefaultOptions]{@link https://date-fns.org/docs/setDefaultOptions}.
  *
- * @returns default options
+ * @returns The default options
  *
  * @example
  * const result = getDefaultOptions()
@@ -29,5 +28,5 @@ import {
  * //=> { weekStarsOn: 1, firstWeekContainsDate: 4 }
  */
 export default function getDefaultOptions(): DefaultOptions {
-  return assign({}, getInternalDefaultOptions())
+  return Object.assign({}, getInternalDefaultOptions())
 }

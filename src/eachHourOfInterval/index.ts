@@ -15,9 +15,13 @@ export interface EachHourOfIntervalOptions extends StepOptions {}
  * @description
  * Return the array of hours within the specified time interval.
  *
- * @param interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
- * @param options - an object with options.
- * @returns the array with starts of hours from the hour of the interval start to the hour of the interval end
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param interval - The interval.
+ * @param options - An object with options.
+ *
+ * @returns The array with starts of hours from the hour of the interval start to the hour of the interval end
+ *
  * @throws {RangeError} `options.step` must be a number greater than 1
  * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`

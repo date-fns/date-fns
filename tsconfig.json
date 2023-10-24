@@ -1,9 +1,11 @@
 {
   "compilerOptions": {
     "target": "es6",
+    "outDir": "lib",
     "lib": ["dom", "es2020", "es2018.promise", "ESNext.Intl"],
     "strict": true,
-    "moduleResolution": "nodenext",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
@@ -17,5 +19,6 @@
     "allowJs": true,
     "skipLibCheck": true
   },
+  "include": ["src/**/*.ts"],
   "exclude": ["node_modules", "dist", "tmp", "examples"]
 }

@@ -12,9 +12,12 @@ import toDate from '../toDate/index'
  * ISO week starts with Monday.
  * 7 is the index of Sunday, 1 is the index of Monday etc.
  *
- * @param date - the date to be changed
- * @param day - the day of the ISO week of the new date
- * @returns the new date with the day of the ISO week set
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date to be changed
+ * @param day - The day of the ISO week of the new date
+ *
+ * @returns The new date with the day of the ISO week set
  *
  * @example
  * // Set Sunday to 1 September 2014:
@@ -22,11 +25,11 @@ import toDate from '../toDate/index'
  * //=> Sun Sep 07 2014 00:00:00
  */
 export default function setISODay<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   day: number
 ): DateType {
-  const date = toDate(dirtyDate)
-  const currentDay = getISODay(date)
+  const _date = toDate(date)
+  const currentDay = getISODay(_date)
   const diff = day - currentDay
-  return addDays(date, diff)
+  return addDays(_date, diff)
 }

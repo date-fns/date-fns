@@ -1,14 +1,14 @@
 import addWeeks from '../addWeeks/index'
 import startOfWeek from '../startOfWeek/index'
 import toDate from '../toDate/index'
-import type { Interval, LocaleOptions, WeekStartOptions } from '../types'
+import type { Interval, LocalizedOptions, WeekOptions } from '../types'
 
 /**
  * The {@link eachWeekOfInterval} function options.
  */
 export interface EachWeekOfIntervalOptions
-  extends WeekStartOptions,
-    LocaleOptions {}
+  extends WeekOptions,
+    LocalizedOptions<'options'> {}
 
 /**
  * @name eachWeekOfInterval
@@ -18,9 +18,13 @@ export interface EachWeekOfIntervalOptions
  * @description
  * Return the array of weeks within the specified time interval.
  *
- * @param interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
- * @param options - an object with options.
- * @returns the array with starts of weeks from the week of the interval start to the week of the interval end
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param interval - The interval.
+ * @param options - An object with options.
+ *
+ * @returns The array with starts of weeks from the week of the interval start to the week of the interval end
+ *
  * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *

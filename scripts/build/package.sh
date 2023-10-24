@@ -11,39 +11,32 @@ set -e
 root="$(pwd)/$(dirname "$0")/../.."
 cd "$root" || exit 1
 
-PATH="$(npm bin):$PATH"
+# PATH="$(npm bin):$PATH"
 # XXX: $PACKAGE_OUTPUT_PATH must be an absolute path!
-dir=${PACKAGE_OUTPUT_PATH:-"$root/tmp/package"}
+dir=${PACKAGE_OUTPUT_PATH:-"$root/lib"}
 
 # Clean up output dir
 rm -rf "$dir"
 mkdir -p "$dir"
 
-# Traspile CommonJS versions of files
-env BABEL_ENV='commonjs' babel src --source-root src --out-dir "$dir" --extensions .ts,.js --ignore test.js,snapshot.md --copy-files --quiet
+# Transpile CommonJS versions of files
+env BABEL_ENV=cjs yarn babel src --config-file ./babel.config.js --source-root src --out-dir "$dir" --ignore "**/test.ts","**/*.d.ts" --extensions .mjs,.ts --out-file-extension .js --quiet
 
-# Traspile ESM versions of files
-env BABEL_ENV='esm' babel src --source-root src --out-dir "$dir/esm" --extensions .ts,.js --ignore test.js,snapshot.md,package.json --copy-files --quiet
+# Transpile ESM versions of files
+env BABEL_ENV=esm yarn babel src --config-file ./babel.config.js --source-root src --out-dir "$dir" --ignore "**/test.ts","**/*.d.ts" --extensions .mjs,.ts --out-file-extension .mjs --quiet
+
+# Generate TypeScript
+yarn tsc --project tsconfig.lib.json --outDir "$dir"
+
+# Flatten the structure
+yarn tsx scripts/build/flatten.ts
 
 # Copy basic files
 for pattern in CHANGELOG.md \
   package.json \
   docs \
   LICENSE.md \
-  README.md \
-  typings.d.ts
+  README.md
 do
   cp -r "$pattern" "$dir"
 done
-
-# Remove clean up code when this issues is resolved:
-# https://github.com/babel/babel/issues/6226
-
-# Clean up dev code
-find "$dir" -type f -name "test.js" -delete
-find "$dir" -type f -name "snapshot.md" -delete
-
-# Clean up package.json pointing to the modules
-find "$dir/esm" -type f -name "package.json" -delete
-
-./scripts/build/packages.js

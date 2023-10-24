@@ -28,11 +28,12 @@
  *
  * Any other input type or invalid date strings will return an `Invalid Date`.
  *
- * @param argument A fully formed ISO8601 date string to convert
- * @returns the parsed date in the local time zone
+ * @param dateStr - A fully formed ISO8601 date string to convert
+ *
+ * @returns The parsed date in the local time zone
  */
-export default function parseJSON(dateString: string): Date {
-  const parts = dateString.match(
+export default function parseJSON(dateStr: string): Date {
+  const parts = dateStr.match(
     /(\d{4})-(\d{2})-(\d{2})[T ](\d{2}):(\d{2}):(\d{2})(?:\.(\d{0,7}))?(?:Z|(.)(\d{2}):?(\d{2})?)?/
   )
   if (parts) {

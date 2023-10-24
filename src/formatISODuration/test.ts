@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
+import { describe, it } from 'vitest'
 import formatISODuration from './index'
 import intervalToDuration from '../intervalToDuration'
 
