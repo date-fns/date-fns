@@ -2447,7 +2447,6 @@
     "lodash": "^4.17.15",
     "lodash.clonedeep": "^4.5.0",
     "mocha": "^3.5.3",
-    "moment": "^2.24.0",
     "node-fetch": "^1.7.3",
     "p-limit": "^3.1.0",
     "playwright": "^1.37.1",
