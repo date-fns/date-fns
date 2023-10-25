@@ -31,7 +31,8 @@ for pattern in CHANGELOG.md \
   docs \
   LICENSE.md \
   README.md \
-  typings.d.ts
+  typings.d.ts \
+  _typings
 do
   cp -r "$pattern" "$dir"
 done

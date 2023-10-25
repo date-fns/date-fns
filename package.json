@@ -22,7 +22,7 @@
   "scripts": {
     "test": "karma start config/karma.js",
     "lint": "eslint .",
-    "lint-types": "eslint --config=.ts-eslintrc.js typings.d.ts",
+    "lint-types": "eslint --config=.ts-eslintrc.js typings.d.ts typings",
     "locale-snapshots": "env TZ=utc babel-node --extensions .ts,.js ./scripts/build/localeSnapshots/index.js",
     "stats": "cloc . --exclude-dir=node_modules,tmp,.git"
   },

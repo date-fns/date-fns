@@ -427,7 +427,10 @@ function generateTypeScriptTypings(fns, aliases, locales, constants) {
     }
   `
 
-  const typingFile = formatTypeScriptFile`
+  mkdir('_typings')
+
+  const typeAliasesFilename = 'type-aliases.d.ts'
+  const typeAliasesFile = formatTypeScriptFile`
     // FP Interfaces
 
     ${addSeparator(getTypeScriptFPInterfaces(), '\n')}
@@ -439,34 +442,68 @@ function generateTypeScriptTypings(fns, aliases, locales, constants) {
     // Exported Type Aliases
 
     ${addSeparator(exportedAliasDefinitions, '\n')}
+  `
 
-    // Regular Functions
+  writeFile(`_typings/${typeAliasesFilename}`, typeAliasesFile)
 
-    ${addSeparator(moduleDefinitions, '\n')}
+  const sections = [
+    {
+      title: 'Regular Functions',
+      filename: '_typings/functions.d.ts',
+      content: moduleDefinitions,
+    },
+    {
+      title: 'FP Functions',
+      filename: '_typings/fp-functions.d.ts',
+      content: fpModuleDefinitions,
+    },
+    {
+      title: 'ECMAScript Module Functions',
+      filename: '_typings/esm-functions.d.ts',
+      content: esmModuleDefinitions,
+    },
+    {
+      title: 'ECMAScript Module FP Functions',
+      filename: '_typings/esm-fp-functions.d.ts',
+      content: esmFPModuleDefinitions,
+    },
+    {
+      title: 'Regular Locales',
+      filename: '_typings/locales.d.ts',
+      content: localeModuleDefinitions,
+    },
+    {
+      title: 'ECMAScript Module Locales',
+      filename: '_typings/esm-locales.d.ts',
+      content: esmLocaleModuleDefinitions,
+    },
+    {
+      title: 'dateFns Global Interface',
+      filename: '_typings/global-interface.d.ts',
+      content: [globalInterfaceDefinition],
+    },
+  ]
 
-    // FP Functions
+  for (const { title, filename, content } of sections) {
+    const sectionFile = formatTypeScriptFile`
+      /// <reference path="./${typeAliasesFilename}" />
 
-    ${addSeparator(fpModuleDefinitions, '\n')}
+      // ${title}
 
-    // ECMAScript Module Functions
+      ${addSeparator(content, '\n')}
+    `
 
-    ${addSeparator(esmModuleDefinitions, '\n')}
+    writeFile(filename, sectionFile)
+  }
 
-    // ECMAScript Module FP Functions
+  const sectionsReferences = sections.map(
+    ({ filename }) => `/// <reference path="./${filename}" />`
+  )
 
-    ${addSeparator(esmFPModuleDefinitions, '\n')}
+  const typingFile = formatTypeScriptFile`
+    /// <reference path="./_typings/${typeAliasesFilename}" />
 
-    // Regular Locales
-
-    ${addSeparator(localeModuleDefinitions, '\n')}
-
-    // ECMAScript Module Locales
-
-    ${addSeparator(esmLocaleModuleDefinitions, '\n')}
-
-    // dateFns Global Interface
-
-    ${globalInterfaceDefinition}
+    ${addSeparator(sectionsReferences, '\n')}
   `
 
   writeFile('typings.d.ts', typingFile)
@@ -484,6 +521,16 @@ function generateTypeScriptTypings(fns, aliases, locales, constants) {
   })
 
   generateTypescriptConstantsTyping(constants)
+}
+
+function mkdir(relativePath) {
+  try {
+    return fs.mkdirSync(path.resolve(process.cwd(), relativePath))
+  } catch (err) {
+    if (err.code !== 'EEXIST') {
+      throw err
+    }
+  }
 }
 
 function writeFile(relativePath, content) {
