@@ -3,7 +3,7 @@
 import assert from 'assert'
 import { describe, it } from 'vitest'
 import sinon from 'sinon'
-import format from './index'
+import formatDate from './index'
 
 describe('format', () => {
   const date = new Date(1986, 3 /* Apr */, 4, 10, 32, 55, 123)
@@ -38,37 +38,37 @@ describe('format', () => {
 
   it('accepts a timestamp', () => {
     const date = new Date(2014, 3, 4).getTime()
-    assert(format(date, 'yyyy-MM-dd') === '2014-04-04')
+    assert(formatDate(date, 'yyyy-MM-dd') === '2014-04-04')
   })
 
   it('escapes characters between the single quote characters', () => {
-    const result = format(date, "'yyyy-'MM-dd'THH:mm:ss.SSSX' yyyy-'MM-dd'")
+    const result = formatDate(date, "'yyyy-'MM-dd'THH:mm:ss.SSSX' yyyy-'MM-dd'")
     assert(result === 'yyyy-04-04THH:mm:ss.SSSX 1986-MM-dd')
   })
 
   it('two single quote characters are transformed into a "real" single quote', () => {
     const date = new Date(2014, 3, 4, 5)
-    assert(format(date, "''h 'o''clock'''") === "'5 o'clock'")
+    assert(formatDate(date, "''h 'o''clock'''") === "'5 o'clock'")
   })
 
   it('accepts new line charactor', () => {
     const date = new Date(2014, 3, 4, 5)
     assert.strictEqual(
-      format(date, "yyyy-MM-dd'\n'HH:mm:ss"),
+      formatDate(date, "yyyy-MM-dd'\n'HH:mm:ss"),
       '2014-04-04\n05:00:00'
     )
   })
 
   describe('ordinal numbers', () => {
     it('ordinal day of an ordinal month', () => {
-      const result = format(date, "do 'day of the' Mo 'month of' yyyy")
+      const result = formatDate(date, "do 'day of the' Mo 'month of' yyyy")
       assert(result === '4th day of the 4th month of 1986')
     })
 
     it('should return a correct ordinal number', () => {
       const result = []
       for (let i = 1; i <= 31; i++) {
-        result.push(format(new Date(2015, 0, i), 'do'))
+        result.push(formatDate(new Date(2015, 0, i), 'do'))
       }
       const expected = [
         '1st',
@@ -108,19 +108,19 @@ describe('format', () => {
   })
 
   it('era', () => {
-    const result = format(date, 'G GG GGG GGGG GGGGG')
+    const result = formatDate(date, 'G GG GGG GGGG GGGGG')
     assert(result === 'AD AD AD Anno Domini A')
 
     const bcDate = new Date()
     bcDate.setFullYear(-1, 0 /* Jan */, 1)
-    const bcResult = format(bcDate, 'G GG GGG GGGG GGGGG')
+    const bcResult = formatDate(bcDate, 'G GG GGG GGGG GGGGG')
     assert(bcResult === 'BC BC BC Before Christ B')
   })
 
   describe('year', () => {
     describe('regular year', () => {
       it('works as expected', () => {
-        const result = format(date, 'y yo yy yyy yyyy yyyyy')
+        const result = formatDate(date, 'y yo yy yyy yyyy yyyyy')
         assert(result === '1986 1986th 86 1986 1986 01986')
       })
 
@@ -128,7 +128,7 @@ describe('format', () => {
         const date = new Date(0)
         date.setFullYear(0, 0 /* Jan */, 1)
         date.setHours(0, 0, 0, 0)
-        const result = format(date, 'y')
+        const result = formatDate(date, 'y')
         assert(result === '1')
       })
 
@@ -136,7 +136,7 @@ describe('format', () => {
         const date = new Date(0)
         date.setFullYear(-1, 0 /* Jan */, 1)
         date.setHours(0, 0, 0, 0)
-        const result = format(date, 'y')
+        const result = formatDate(date, 'y')
         assert(result === '2')
       })
 
@@ -144,28 +144,28 @@ describe('format', () => {
         const date = new Date()
         date.setFullYear(-1, 0 /* Jan */, 1)
         date.setHours(0, 0, 0, 0)
-        const result = format(date, 'yo')
+        const result = formatDate(date, 'yo')
         assert(result === '2nd')
       })
     })
 
     describe('local week-numbering year', () => {
       it('works as expected', () => {
-        const result = format(date, 'Y Yo YY YYY YYYY YYYYY', {
+        const result = formatDate(date, 'Y Yo YY YYY YYYY YYYYY', {
           useAdditionalWeekYearTokens: true,
         })
         assert(result === '1986 1986th 86 1986 1986 01986')
       })
 
       it('the first week of the next year', () => {
-        const result = format(new Date(2013, 11 /* Dec */, 29), 'YYYY', {
+        const result = formatDate(new Date(2013, 11 /* Dec */, 29), 'YYYY', {
           useAdditionalWeekYearTokens: true,
         })
         assert(result === '2014')
       })
 
       it('allows to specify `weekStartsOn` and `firstWeekContainsDate` in options', () => {
-        const result = format(new Date(2013, 11 /* Dec */, 29), 'YYYY', {
+        const result = formatDate(new Date(2013, 11 /* Dec */, 29), 'YYYY', {
           weekStartsOn: 1,
           firstWeekContainsDate: 4,
           useAdditionalWeekYearTokens: true,
@@ -174,7 +174,7 @@ describe('format', () => {
       })
 
       it('the first week of year', () => {
-        const result = format(new Date(2016, 0 /* Jan */, 1), 'YYYY', {
+        const result = formatDate(new Date(2016, 0 /* Jan */, 1), 'YYYY', {
           useAdditionalWeekYearTokens: true,
         })
         assert(result === '2016')
@@ -184,7 +184,7 @@ describe('format', () => {
         const date = new Date(0)
         date.setFullYear(0, 6 /* Jul */, 2)
         date.setHours(0, 0, 0, 0)
-        const result = format(date, 'Y')
+        const result = formatDate(date, 'Y')
         assert(result === '1')
       })
 
@@ -192,24 +192,24 @@ describe('format', () => {
         const date = new Date(0)
         date.setFullYear(-1, 6 /* Jul */, 2)
         date.setHours(0, 0, 0, 0)
-        const result = format(date, 'Y')
+        const result = formatDate(date, 'Y')
         assert(result === '2')
       })
     })
 
     describe('ISO week-numbering year', () => {
       it('works as expected', () => {
-        const result = format(date, 'R RR RRR RRRR RRRRR')
+        const result = formatDate(date, 'R RR RRR RRRR RRRRR')
         assert(result === '1986 1986 1986 1986 01986')
       })
 
       it('the first week of the next year', () => {
-        const result = format(new Date(2013, 11 /* Dec */, 30), 'RRRR')
+        const result = formatDate(new Date(2013, 11 /* Dec */, 30), 'RRRR')
         assert(result === '2014')
       })
 
       it('the last week of the previous year', () => {
-        const result = format(new Date(2016, 0 /* Jan */, 1), 'RRRR')
+        const result = formatDate(new Date(2016, 0 /* Jan */, 1), 'RRRR')
         assert(result === '2015')
       })
 
@@ -217,7 +217,7 @@ describe('format', () => {
         const date = new Date(0)
         date.setFullYear(0, 6 /* Jul */, 2)
         date.setHours(0, 0, 0, 0)
-        const result = format(date, 'R')
+        const result = formatDate(date, 'R')
         assert(result === '0')
       })
 
@@ -225,14 +225,14 @@ describe('format', () => {
         const date = new Date(0)
         date.setFullYear(-1, 6 /* Jul */, 2)
         date.setHours(0, 0, 0, 0)
-        const result = format(date, 'R')
+        const result = formatDate(date, 'R')
         assert(result === '-1')
       })
     })
 
     describe('extended year', () => {
       it('works as expected', () => {
-        const result = format(date, 'u uu uuu uuuu uuuuu')
+        const result = formatDate(date, 'u uu uuu uuuu uuuuu')
         assert(result === '1986 1986 1986 1986 01986')
       })
 
@@ -240,7 +240,7 @@ describe('format', () => {
         const date = new Date(0)
         date.setFullYear(0, 0, 1)
         date.setHours(0, 0, 0, 0)
-        const result = format(date, 'u')
+        const result = formatDate(date, 'u')
         assert(result === '0')
       })
 
@@ -248,7 +248,7 @@ describe('format', () => {
         const date = new Date(0)
         date.setFullYear(-1, 0, 1)
         date.setHours(0, 0, 0, 0)
-        const result = format(date, 'u')
+        const result = formatDate(date, 'u')
         assert(result === '-1')
       })
     })
@@ -256,19 +256,19 @@ describe('format', () => {
 
   describe('quarter', () => {
     it('formatting quarter', () => {
-      const result = format(date, 'Q Qo QQ QQQ QQQQ QQQQQ')
+      const result = formatDate(date, 'Q Qo QQ QQQ QQQQ QQQQQ')
       assert(result === '2 2nd 02 Q2 2nd quarter 2')
     })
 
     it('stand-alone quarter', () => {
-      const result = format(date, 'q qo qq qqq qqqq qqqqq')
+      const result = formatDate(date, 'q qo qq qqq qqqq qqqqq')
       assert(result === '2 2nd 02 Q2 2nd quarter 2')
     })
 
     it('returns a correct quarter for each month', () => {
       const result = []
       for (let i = 0; i <= 11; i++) {
-        result.push(format(new Date(1986, i, 1), 'Q'))
+        result.push(formatDate(new Date(1986, i, 1), 'Q'))
       }
       const expected = [
         '1',
@@ -290,12 +290,12 @@ describe('format', () => {
 
   describe('month', () => {
     it('formatting month', () => {
-      const result = format(date, 'M Mo MM MMM MMMM MMMMM')
+      const result = formatDate(date, 'M Mo MM MMM MMMM MMMMM')
       assert(result === '4 4th 04 Apr April A')
     })
 
     it('stand-alone month', () => {
-      const result = format(date, 'L Lo LL LLL LLLL LLLLL')
+      const result = formatDate(date, 'L Lo LL LLL LLLL LLLLL')
       assert(result === '4 4th 04 Apr April A')
     })
   })
@@ -304,13 +304,13 @@ describe('format', () => {
     describe('local week of year', () => {
       it('works as expected', () => {
         const date = new Date(1986, 3 /* Apr */, 6)
-        const result = format(date, 'w wo ww')
+        const result = formatDate(date, 'w wo ww')
         assert(result === '15 15th 15')
       })
 
       it('allows to specify `weekStartsOn` and `firstWeekContainsDate` in options', () => {
         const date = new Date(1986, 3 /* Apr */, 6)
-        const result = format(date, 'w wo ww', {
+        const result = formatDate(date, 'w wo ww', {
           weekStartsOn: 1,
           firstWeekContainsDate: 4,
         })
@@ -320,27 +320,27 @@ describe('format', () => {
 
     it('ISO week of year', () => {
       const date = new Date(1986, 3 /* Apr */, 6)
-      const result = format(date, 'I Io II')
+      const result = formatDate(date, 'I Io II')
       assert(result === '14 14th 14')
     })
   })
 
   describe('day', () => {
     it('date', () => {
-      const result = format(date, 'd do dd')
+      const result = formatDate(date, 'd do dd')
       assert(result === '4 4th 04')
     })
 
     describe('day of year', () => {
       it('works as expected', () => {
-        const result = format(date, 'D Do DD DDD DDDDD', {
+        const result = formatDate(date, 'D Do DD DDD DDDDD', {
           useAdditionalDayOfYearTokens: true,
         })
         assert(result === '94 94th 94 094 00094')
       })
 
       it('returns a correct day number for the last day of a leap year', () => {
-        const result = format(
+        const result = formatDate(
           new Date(1992, 11 /* Dec */, 31, 23, 59, 59, 999),
           'D',
           { useAdditionalDayOfYearTokens: true }
@@ -353,21 +353,21 @@ describe('format', () => {
   describe('week day', () => {
     describe('day of week', () => {
       it('works as expected', () => {
-        const result = format(date, 'E EE EEE EEEE EEEEE EEEEEE')
+        const result = formatDate(date, 'E EE EEE EEEE EEEEE EEEEEE')
         assert(result === 'Fri Fri Fri Friday F Fr')
       })
     })
 
     describe('ISO day of week', () => {
       it('works as expected', () => {
-        const result = format(date, 'i io ii iii iiii iiiii iiiiii')
+        const result = formatDate(date, 'i io ii iii iiii iiiii iiiiii')
         assert(result === '5 5th 05 Fri Friday F Fr')
       })
 
       it('returns a correct day of an ISO week', () => {
         const result = []
         for (let i = 1; i <= 7; i++) {
-          result.push(format(new Date(1986, 8 /* Sep */, i), 'i'))
+          result.push(formatDate(new Date(1986, 8 /* Sep */, i), 'i'))
         }
         const expected = ['1', '2', '3', '4', '5', '6', '7']
         assert.deepStrictEqual(result, expected)
@@ -376,14 +376,14 @@ describe('format', () => {
 
     describe('formatting day of week', () => {
       it('works as expected', () => {
-        const result = format(date, 'e eo ee eee eeee eeeee eeeeee')
+        const result = formatDate(date, 'e eo ee eee eeee eeeee eeeeee')
         assert(result === '6 6th 06 Fri Friday F Fr')
       })
 
       it('by default, 1 is Sunday, 2 is Monday, ...', () => {
         const result = []
         for (let i = 7; i <= 13; i++) {
-          result.push(format(new Date(1986, 8 /* Sep */, i), 'e'))
+          result.push(formatDate(new Date(1986, 8 /* Sep */, i), 'e'))
         }
         const expected = ['1', '2', '3', '4', '5', '6', '7']
         assert.deepStrictEqual(result, expected)
@@ -393,7 +393,7 @@ describe('format', () => {
         const result = []
         for (let i = 1; i <= 7; i++) {
           result.push(
-            format(new Date(1986, 8 /* Sep */, i), 'e', { weekStartsOn: 1 })
+            formatDate(new Date(1986, 8 /* Sep */, i), 'e', { weekStartsOn: 1 })
           )
         }
         const expected = ['1', '2', '3', '4', '5', '6', '7']
@@ -403,14 +403,14 @@ describe('format', () => {
 
     describe('stand-alone day of week', () => {
       it('works as expected', () => {
-        const result = format(date, 'c co cc ccc cccc ccccc cccccc')
+        const result = formatDate(date, 'c co cc ccc cccc ccccc cccccc')
         assert(result === '6 6th 06 Fri Friday F Fr')
       })
 
       it('by default, 1 is Sunday, 2 is Monday, ...', () => {
         const result = []
         for (let i = 7; i <= 13; i++) {
-          result.push(format(new Date(1986, 8 /* Sep */, i), 'c'))
+          result.push(formatDate(new Date(1986, 8 /* Sep */, i), 'c'))
         }
         const expected = ['1', '2', '3', '4', '5', '6', '7']
         assert.deepStrictEqual(result, expected)
@@ -420,7 +420,7 @@ describe('format', () => {
         const result = []
         for (let i = 1; i <= 7; i++) {
           result.push(
-            format(new Date(1986, 8 /* Sep */, i), 'c', { weekStartsOn: 1 })
+            formatDate(new Date(1986, 8 /* Sep */, i), 'c', { weekStartsOn: 1 })
           )
         }
         const expected = ['1', '2', '3', '4', '5', '6', '7']
@@ -431,7 +431,7 @@ describe('format', () => {
 
   describe('day period and hour', () => {
     it('hour [1-12]', () => {
-      const result = format(
+      const result = formatDate(
         new Date(2018, 0 /* Jan */, 1, 0, 0, 0, 0),
         'h ho hh'
       )
@@ -439,7 +439,7 @@ describe('format', () => {
     })
 
     it('hour [0-23]', () => {
-      const result = format(
+      const result = formatDate(
         new Date(2018, 0 /* Jan */, 1, 0, 0, 0, 0),
         'H Ho HH'
       )
@@ -447,7 +447,7 @@ describe('format', () => {
     })
 
     it('hour [0-11]', () => {
-      const result = format(
+      const result = formatDate(
         new Date(2018, 0 /* Jan */, 1, 0, 0, 0, 0),
         'K Ko KK'
       )
@@ -455,7 +455,7 @@ describe('format', () => {
     })
 
     it('hour [1-24]', () => {
-      const result = format(
+      const result = formatDate(
         new Date(2018, 0 /* Jan */, 1, 0, 0, 0, 0),
         'k ko kk'
       )
@@ -464,7 +464,7 @@ describe('format', () => {
 
     describe('AM, PM', () => {
       it('works as expected', () => {
-        const result = format(
+        const result = formatDate(
           new Date(2018, 0 /* Jan */, 1, 0, 0, 0, 0),
           'a aa aaa aaaa aaaaa'
         )
@@ -473,24 +473,24 @@ describe('format', () => {
 
       it('12 PM', () => {
         const date = new Date(1986, 3 /* Apr */, 4, 12, 0, 0, 900)
-        assert(format(date, 'h H K k a') === '12 12 0 12 PM')
+        assert(formatDate(date, 'h H K k a') === '12 12 0 12 PM')
       })
 
       it('12 AM', () => {
         const date = new Date(1986, 3 /* Apr */, 6, 0, 0, 0, 900)
-        assert(format(date, 'h H K k a') === '12 0 0 24 AM')
+        assert(formatDate(date, 'h H K k a') === '12 0 0 24 AM')
       })
     })
 
     describe('AM, PM, noon, midnight', () => {
       it('works as expected', () => {
-        const result = format(
+        const result = formatDate(
           new Date(1986, 3 /* Apr */, 6, 2, 0, 0, 900),
           'b bb bbb bbbb bbbbb'
         )
         assert(result === 'AM AM am a.m. a')
 
-        const pmResult = format(
+        const pmResult = formatDate(
           new Date(1986, 3 /* Apr */, 6, 13, 0, 0, 900),
           'b bb bbb bbbb bbbbb'
         )
@@ -499,13 +499,15 @@ describe('format', () => {
 
       it('12 PM', () => {
         const date = new Date(1986, 3 /* Apr */, 4, 12, 0, 0, 900)
-        assert(format(date, 'b bb bbb bbbb bbbbb') === 'noon noon noon noon n')
+        assert(
+          formatDate(date, 'b bb bbb bbbb bbbbb') === 'noon noon noon noon n'
+        )
       })
 
       it('12 AM', () => {
         const date = new Date(1986, 3 /* Apr */, 6, 0, 0, 0, 900)
         assert(
-          format(date, 'b bb bbb bbbb bbbbb') ===
+          formatDate(date, 'b bb bbb bbbb bbbbb') ===
             'midnight midnight midnight midnight mi'
         )
       })
@@ -513,7 +515,7 @@ describe('format', () => {
 
     describe('flexible day periods', () => {
       it('works as expected', () => {
-        const result = format(date, 'B, BB, BBB, BBBB, BBBBB')
+        const result = formatDate(date, 'B, BB, BBB, BBBB, BBBBB')
         assert(
           result ===
             'in the morning, in the morning, in the morning, in the morning, in the morning'
@@ -522,46 +524,46 @@ describe('format', () => {
 
       it('12 PM', () => {
         const date = new Date(1986, 3 /* Apr */, 4, 12, 0, 0, 900)
-        assert(format(date, 'h B') === '12 in the afternoon')
+        assert(formatDate(date, 'h B') === '12 in the afternoon')
       })
 
       it('5 PM', () => {
         const date = new Date(1986, 3 /* Apr */, 6, 17, 0, 0, 900)
-        assert(format(date, 'h B') === '5 in the evening')
+        assert(formatDate(date, 'h B') === '5 in the evening')
       })
 
       it('12 AM', () => {
         const date = new Date(1986, 3 /* Apr */, 6, 0, 0, 0, 900)
-        assert(format(date, 'h B') === '12 at night')
+        assert(formatDate(date, 'h B') === '12 at night')
       })
 
       it('4 AM', () => {
         const date = new Date(1986, 3 /* Apr */, 6, 4, 0, 0, 900)
-        assert(format(date, 'h B') === '4 in the morning')
+        assert(formatDate(date, 'h B') === '4 in the morning')
       })
     })
   })
 
   it('minute', () => {
-    const result = format(date, 'm mo mm')
+    const result = formatDate(date, 'm mo mm')
     assert(result === '32 32nd 32')
   })
 
   describe('second', () => {
     it('second', () => {
-      const result = format(date, 's so ss')
+      const result = formatDate(date, 's so ss')
       assert(result === '55 55th 55')
     })
 
     it('fractional seconds', () => {
-      const result = format(date, 'S SS SSS SSSS')
+      const result = formatDate(date, 'S SS SSS SSSS')
       assert(result === '1 12 123 1230')
     })
   })
 
   describe('time zone', () => {
     it('ISO-8601 with Z', () => {
-      const result = format(date, 'X XX XXX XXXX XXXXX')
+      const result = formatDate(date, 'X XX XXX XXXX XXXXX')
       const expectedResult = [
         timezoneWithOptionalMinutesAndZShort,
         timezoneWithZShort,
@@ -576,22 +578,22 @@ describe('format', () => {
         'getTimezoneOffset'
       )
       getTimezoneOffsetStub.returns(0)
-      const resultZeroOffset = format(date, 'X XX XXX XXXX XXXXX')
+      const resultZeroOffset = formatDate(date, 'X XX XXX XXXX XXXXX')
       assert(resultZeroOffset === 'Z Z Z Z Z')
 
       getTimezoneOffsetStub.returns(480)
-      const resultNegativeOffset = format(date, 'X XX XXX XXXX XXXXX')
+      const resultNegativeOffset = formatDate(date, 'X XX XXX XXXX XXXXX')
       assert(resultNegativeOffset === '-08 -0800 -08:00 -0800 -08:00')
 
       getTimezoneOffsetStub.returns(450)
-      const resultNegative30Offset = format(date, 'X XX XXX XXXX XXXXX')
+      const resultNegative30Offset = formatDate(date, 'X XX XXX XXXX XXXXX')
       assert(resultNegative30Offset === '-0730 -0730 -07:30 -0730 -07:30')
 
       getTimezoneOffsetStub.restore()
     })
 
     it('ISO-8601 without Z', () => {
-      const result = format(date, 'x xx xxx xxxx xxxxx')
+      const result = formatDate(date, 'x xx xxx xxxx xxxxx')
       const expectedResult = [
         timezoneWithOptionalMinutesShort,
         timezoneShort,
@@ -603,7 +605,7 @@ describe('format', () => {
     })
 
     it('GMT', () => {
-      const result = format(date, 'O OO OOO OOOO')
+      const result = formatDate(date, 'O OO OOO OOOO')
       const expectedResult = [
         timezoneGMTShort,
         timezoneGMTShort,
@@ -617,18 +619,18 @@ describe('format', () => {
         'getTimezoneOffset'
       )
       getTimezoneOffsetStub.returns(480)
-      const resultNegativeOffset = format(date, 'O OO OOO OOOO')
+      const resultNegativeOffset = formatDate(date, 'O OO OOO OOOO')
       assert(resultNegativeOffset === 'GMT-8 GMT-8 GMT-8 GMT-08:00')
 
       getTimezoneOffsetStub.returns(450)
-      const resultNegative30Offset = format(date, 'O OO OOO OOOO')
+      const resultNegative30Offset = formatDate(date, 'O OO OOO OOOO')
       assert(resultNegative30Offset === 'GMT-7:30 GMT-7:30 GMT-7:30 GMT-07:30')
 
       getTimezoneOffsetStub.restore()
     })
 
     it('Specific non-location', () => {
-      const result = format(date, 'z zz zzz zzzz')
+      const result = formatDate(date, 'z zz zzz zzzz')
       const expectedResult = [
         timezoneGMTShort,
         timezoneGMTShort,
@@ -641,79 +643,79 @@ describe('format', () => {
 
   describe('timestamp', () => {
     it('seconds timestamp', () => {
-      const result = format(date, 't')
+      const result = formatDate(date, 't')
       assert(result === secondsTimestamp)
     })
 
     it('milliseconds timestamp', () => {
-      const result = format(date, 'T')
+      const result = formatDate(date, 'T')
       assert(result === timestamp)
     })
   })
 
   describe('long format', () => {
     it('short date', () => {
-      const result = format(date, 'P')
+      const result = formatDate(date, 'P')
       assert(result === '04/04/1986')
     })
 
     it('medium date', () => {
-      const result = format(date, 'PP')
+      const result = formatDate(date, 'PP')
       assert(result === 'Apr 4, 1986')
     })
 
     it('long date', () => {
-      const result = format(date, 'PPP')
+      const result = formatDate(date, 'PPP')
       assert(result === 'April 4th, 1986')
     })
 
     it('full date', () => {
-      const result = format(date, 'PPPP')
+      const result = formatDate(date, 'PPPP')
       assert(result === 'Friday, April 4th, 1986')
     })
 
     it('short time', () => {
-      const result = format(date, 'p')
+      const result = formatDate(date, 'p')
       assert(result === '10:32 AM')
     })
 
     it('medium time', () => {
-      const result = format(date, 'pp')
+      const result = formatDate(date, 'pp')
       assert(result === '10:32:55 AM')
     })
 
     it('long time', () => {
-      const result = format(date, 'ppp')
+      const result = formatDate(date, 'ppp')
       assert(result === '10:32:55 AM ' + timezoneGMTShort)
     })
 
     it('full time', () => {
-      const result = format(date, 'pppp')
+      const result = formatDate(date, 'pppp')
       assert(result === '10:32:55 AM ' + timezoneGMT)
     })
 
     it('short date + time', () => {
-      const result = format(date, 'Pp')
+      const result = formatDate(date, 'Pp')
       assert(result === '04/04/1986, 10:32 AM')
     })
 
     it('medium date + time', () => {
-      const result = format(date, 'PPpp')
+      const result = formatDate(date, 'PPpp')
       assert(result === 'Apr 4, 1986, 10:32:55 AM')
     })
 
     it('long date + time', () => {
-      const result = format(date, 'PPPppp')
+      const result = formatDate(date, 'PPPppp')
       assert(result === 'April 4th, 1986 at 10:32:55 AM ' + timezoneGMTShort)
     })
 
     it('full date + time', () => {
-      const result = format(date, 'PPPPpppp')
+      const result = formatDate(date, 'PPPPpppp')
       assert(result === 'Friday, April 4th, 1986 at 10:32:55 AM ' + timezoneGMT)
     })
 
     it('allows arbitrary combination of date and time', () => {
-      const result = format(date, 'Ppppp')
+      const result = formatDate(date, 'Ppppp')
       assert(result === '04/04/1986, 10:32:55 AM ' + timezoneGMT)
     })
   })
@@ -721,7 +723,7 @@ describe('format', () => {
   describe('edge cases', () => {
     it('throws RangeError if the time value is invalid', () => {
       assert.throws(
-        format.bind(null, new Date(NaN), 'MMMM d, yyyy'),
+        formatDate.bind(null, new Date(NaN), 'MMMM d, yyyy'),
         RangeError
       )
     })
@@ -730,7 +732,7 @@ describe('format', () => {
       const initialDate = new Date(0)
       initialDate.setFullYear(7, 11 /* Dec */, 31)
       initialDate.setHours(0, 0, 0, 0)
-      assert(format(initialDate, 'Y ww i') === '8 01 1')
+      assert(formatDate(initialDate, 'Y ww i') === '8 01 1')
     })
   })
 
@@ -748,7 +750,7 @@ describe('format', () => {
           },
         },
       }
-      const result = format(date, 'PPPP', {
+      const result = formatDate(date, 'PPPP', {
         // @ts-expect-error
         locale: customLocale,
       })
@@ -757,13 +759,13 @@ describe('format', () => {
   })
 
   it('throws RangeError exception if the format string contains an unescaped latin alphabet character', () => {
-    assert.throws(format.bind(null, date, 'yyyy-MM-dd-nnnn'), RangeError)
+    assert.throws(formatDate.bind(null, date, 'yyyy-MM-dd-nnnn'), RangeError)
   })
 
   describe('useAdditionalWeekYearTokens and useAdditionalDayOfYearTokens options', () => {
     it('throws an error if D token is used', () => {
       try {
-        format.bind(null, date, 'yyyy-MM-D')
+        formatDate.bind(null, date, 'yyyy-MM-D')
       } catch (e) {
         assert(e instanceof RangeError)
         assert(e.message.startsWith('Use `d` instead of `D`'))
@@ -771,7 +773,7 @@ describe('format', () => {
     })
 
     it('allows D token if useAdditionalDayOfYearTokens is set to true', () => {
-      const result = format(date, 'yyyy-MM-D', {
+      const result = formatDate(date, 'yyyy-MM-D', {
         useAdditionalDayOfYearTokens: true,
       })
       assert.deepStrictEqual(result, '1986-04-94')
@@ -779,7 +781,7 @@ describe('format', () => {
 
     it('throws an error if DD token is used', () => {
       try {
-        format.bind(null, date, 'yyyy-MM-DD')
+        formatDate.bind(null, date, 'yyyy-MM-DD')
       } catch (e) {
         assert(e instanceof RangeError)
         assert(e.message.startsWith('Use `dd` instead of `DD`'))
@@ -787,7 +789,7 @@ describe('format', () => {
     })
 
     it('allows DD token if useAdditionalDayOfYearTokens is set to true', () => {
-      const result = format(date, 'yyyy-MM-DD', {
+      const result = formatDate(date, 'yyyy-MM-DD', {
         useAdditionalDayOfYearTokens: true,
       })
       assert.deepStrictEqual(result, '1986-04-94')
@@ -795,7 +797,7 @@ describe('format', () => {
 
     it('throws an error if YY token is used', () => {
       try {
-        format.bind(null, date, 'YY-MM-dd')
+        formatDate.bind(null, date, 'YY-MM-dd')
       } catch (e) {
         assert(e instanceof RangeError)
         assert(e.message.startsWith('Use `yy` instead of `YY`'))
@@ -803,7 +805,7 @@ describe('format', () => {
     })
 
     it('allows YY token if useAdditionalWeekYearTokens is set to true', () => {
-      const result = format(date, 'YY-MM-dd', {
+      const result = formatDate(date, 'YY-MM-dd', {
         useAdditionalWeekYearTokens: true,
       })
       assert.deepStrictEqual(result, '86-04-04')
@@ -811,7 +813,7 @@ describe('format', () => {
 
     it('throws an error if YYYY token is used', () => {
       try {
-        format.bind(null, date, 'YYYY-MM-dd')
+        formatDate.bind(null, date, 'YYYY-MM-dd')
       } catch (e) {
         assert(e instanceof RangeError)
         assert(e.message.startsWith('Use `yyyy` instead of `YYYY`'))
@@ -819,7 +821,7 @@ describe('format', () => {
     })
 
     it('allows YYYY token if useAdditionalWeekYearTokens is set to true', () => {
-      const result = format(date, 'YYYY-MM-dd', {
+      const result = formatDate(date, 'YYYY-MM-dd', {
         useAdditionalWeekYearTokens: true,
       })
       assert.deepStrictEqual(result, '1986-04-04')

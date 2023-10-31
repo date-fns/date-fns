@@ -1,5 +1,5 @@
 import differenceInCalendarDays from '../differenceInCalendarDays/index'
-import format from '../format/index'
+import formatDate from '../formatDate/index'
 import type { FormatRelativeToken } from '../locale/types'
 import toDate from '../toDate/index'
 import type { LocalizedOptions, WeekOptions } from '../types'
@@ -95,5 +95,5 @@ export default function formatRelative<DateType extends Date>(
     locale,
     weekStartsOn,
   })
-  return format(_date, formatStr, { locale, weekStartsOn })
+  return formatDate(_date, formatStr, { locale, weekStartsOn })
 }
