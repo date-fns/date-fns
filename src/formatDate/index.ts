@@ -50,7 +50,7 @@ export interface FormatOptions
     AdditionalTokensOptions {}
 
 /**
- * @name format
+ * @name formatDate
  * @category Common Helpers
  * @summary Format the date.
  *
@@ -228,9 +228,9 @@ export interface FormatOptions
  *    "Formatting" units are declined according to the rules of the language
  *    in the context of a date. "Stand-alone" units are always nominative singular:
  *
- *    `format(new Date(2017, 10, 6), 'do LLLL', {locale: cs}) //=> '6. listopad'`
+ *    `formatDate(new Date(2017, 10, 6), 'do LLLL', {locale: cs}) //=> '6. listopad'`
  *
- *    `format(new Date(2017, 10, 6), 'do MMMM', {locale: cs}) //=> '6. listopadu'`
+ *    `formatDate(new Date(2017, 10, 6), 'do MMMM', {locale: cs}) //=> '6. listopadu'`
  *
  * 2. Any sequence of the identical letters is a pattern, unless it is escaped by
  *    the single quote characters (see below).
@@ -239,20 +239,20 @@ export interface FormatOptions
  *    the longest one (in case of ISO weekdays, `EEEE`). Default patterns for units
  *    are marked with "2" in the last column of the table.
  *
- *    `format(new Date(2017, 10, 6), 'MMM') //=> 'Nov'`
+ *    `formatDate(new Date(2017, 10, 6), 'MMM') //=> 'Nov'`
  *
- *    `format(new Date(2017, 10, 6), 'MMMM') //=> 'November'`
+ *    `formatDate(new Date(2017, 10, 6), 'MMMM') //=> 'November'`
  *
- *    `format(new Date(2017, 10, 6), 'MMMMM') //=> 'N'`
+ *    `formatDate(new Date(2017, 10, 6), 'MMMMM') //=> 'N'`
  *
- *    `format(new Date(2017, 10, 6), 'MMMMMM') //=> 'November'`
+ *    `formatDate(new Date(2017, 10, 6), 'MMMMMM') //=> 'November'`
  *
- *    `format(new Date(2017, 10, 6), 'MMMMMMM') //=> 'November'`
+ *    `formatDate(new Date(2017, 10, 6), 'MMMMMMM') //=> 'November'`
  *
  * 3. Some patterns could be unlimited length (such as `yyyyyyyy`).
  *    The output will be padded with zeros to match the length of the pattern.
  *
- *    `format(new Date(2017, 10, 6), 'yyyyyyyy') //=> '00002017'`
+ *    `formatDate(new Date(2017, 10, 6), 'yyyyyyyy') //=> '00002017'`
  *
  * 4. `QQQQQ` and `qqqqq` could be not strictly numerical in some locales.
  *    These tokens represent the shortest form of the quarter.
@@ -318,23 +318,23 @@ export interface FormatOptions
  *
  * @example
  * // Represent 11 February 2014 in middle-endian format:
- * const result = format(new Date(2014, 1, 11), 'MM/dd/yyyy')
+ * const result = formatDate(new Date(2014, 1, 11), 'MM/dd/yyyy')
  * //=> '02/11/2014'
  *
  * @example
  * // Represent 2 July 2014 in Esperanto:
  * import { eoLocale } from 'date-fns/locale/eo'
- * const result = format(new Date(2014, 6, 2), "do 'de' MMMM yyyy", {
+ * const result = formatDate(new Date(2014, 6, 2), "do 'de' MMMM yyyy", {
  *   locale: eoLocale
  * })
  * //=> '2-a de julio 2014'
  *
  * @example
  * // Escape string by single quote characters:
- * const result = format(new Date(2014, 6, 2, 15), "h 'o''clock'")
+ * const result = formatDate(new Date(2014, 6, 2, 15), "h 'o''clock'")
  * //=> "3 o'clock"
  */
-export default function format<DateType extends Date>(
+export default function formatDate<DateType extends Date>(
   date: DateType | number,
   formatStr: string,
   options?: FormatOptions

@@ -12,7 +12,7 @@ import eo from '../locale/eo'
 import differenceInCalendarWeeks from '../differenceInCalendarWeeks'
 import eachWeekOfInterval from '../eachWeekOfInterval'
 import endOfWeek from '../endOfWeek'
-import format from '../format'
+import formatDate from '../formatDate'
 import formatDistance from '../formatDistance'
 import formatDistanceStrict from '../formatDistanceStrict'
 import formatDuration from '../formatDuration'
@@ -73,20 +73,20 @@ describe('setDefaultOptions', () => {
     it('format', () => {
       // For reference: not setting any options
       assert.deepStrictEqual(
-        format(new Date(2014, 0, 1), 'PPPpp'),
+        formatDate(new Date(2014, 0, 1), 'PPPpp'),
         'January 1st, 2014 at 12:00:00 AM'
       )
 
       setDefaultOptions({ locale: eo })
 
       assert.deepStrictEqual(
-        format(new Date(2014, 0, 1), 'PPPpp'),
+        formatDate(new Date(2014, 0, 1), 'PPPpp'),
         '2014-januaro-01 00:00:00'
       )
 
       // Manually set `locale` take priority over `defaultOptions.locale`
       assert.deepStrictEqual(
-        format(new Date(2014, 0, 1), 'PPPpp', { locale: enUS }),
+        formatDate(new Date(2014, 0, 1), 'PPPpp', { locale: enUS }),
         'January 1st, 2014 at 12:00:00 AM'
       )
     })
@@ -479,20 +479,20 @@ describe('setDefaultOptions', () => {
     it('format', () => {
       // For reference: not setting any options
       assert.strictEqual(
-        format(new Date(1986, 3 /* Apr */, 6), 'w wo ww'),
+        formatDate(new Date(1986, 3 /* Apr */, 6), 'w wo ww'),
         '15 15th 15'
       )
 
       setDefaultOptions({ weekStartsOn: 1, firstWeekContainsDate: 4 })
 
       assert.strictEqual(
-        format(new Date(1986, 3 /* Apr */, 6), 'w wo ww'),
+        formatDate(new Date(1986, 3 /* Apr */, 6), 'w wo ww'),
         '14 14th 14'
       )
 
       // Manually set `firstWeekContainsDate` take priority over `defaultOptions.firstWeekContainsDate`
       assert.strictEqual(
-        format(new Date(1986, 3 /* Apr */, 6), 'w wo ww', {
+        formatDate(new Date(1986, 3 /* Apr */, 6), 'w wo ww', {
           weekStartsOn: 0,
           firstWeekContainsDate: 1,
         }),

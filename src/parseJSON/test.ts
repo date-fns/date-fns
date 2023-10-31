@@ -3,12 +3,12 @@
 import assert from 'assert'
 import { describe, it } from 'vitest'
 import parseJSON from './index'
-import format from '../format/index'
+import formatDate from '../formatDate/index'
 
 describe('parseJSON', () => {
   it('parses a formatted new Date() back to UTC - issue 2149', () => {
     const date = new Date()
-    const jsonFormat = format(date, "yyyy-MM-dd'T'HH:mm:ss.SSSxxx")
+    const jsonFormat = formatDate(date, "yyyy-MM-dd'T'HH:mm:ss.SSSxxx")
     const parsedDate = parseJSON(jsonFormat)
     assert.strictEqual(parsedDate.toISOString(), date.toISOString())
   })
