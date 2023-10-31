@@ -36,7 +36,7 @@ export interface RoundToNearestMinutesOptions extends RoundingOptions {
  *
  * @example
  * // Round 10 July 2014 12:07:30 to nearest quarter hour:
- * const result = roundToNearestMinutes(new Date(2014, 6, 10, 12, 12, 34), { nearestTo: 15 })
+ * const result = roundToNearestMinutes(new Date(2014, 6, 10, 12, 7, 30), { nearestTo: 15 })
  * // rounds up because given date is exactly between 12:00:00 and 12:15:00
  * //=> Thu Jul 10 2014 12:15:00
  */
