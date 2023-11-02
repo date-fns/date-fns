@@ -39,5 +39,3 @@ else
   printf "\n\033[0;31m" "UNKNOWN SUITE!" "\033[0m\n"
   exit 1
 fi
-
-./scripts/test/countTests.sh
