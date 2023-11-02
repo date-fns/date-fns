@@ -30,8 +30,8 @@ listLocales()
         const { code, fullPath } = localeObj
         const locale: Locale = (await import(`../../../src/locale/${code}`))
           .default
-        const source = await readFile(
-          path.join(process.cwd(), fullPath)
+        const source = (
+          await readFile(path.join(process.cwd(), fullPath))
         ).toString()
         const languageName = source.match(/\* @language (.*)/)?.[1]
 
