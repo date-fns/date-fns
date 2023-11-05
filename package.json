@@ -2387,21 +2387,16 @@
     }
   },
   "scripts": {
+    "prepare": "husky install",
     "test": "vitest run",
     "lint": "eslint .",
     "lint-types": "eslint --config=.ts-eslintrc.js typings.d.ts",
     "locale-snapshots": "env TZ=utc tsx ./scripts/build/localeSnapshots/index.ts",
     "stats": "cloc . --exclude-dir=node_modules,tmp,.git"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "*.{js,ts,json}": [
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ]
   },
   "browserslist": [
@@ -2438,12 +2433,12 @@
     "glob-promise": "^2.0.0",
     "globby": "^11.0.3",
     "gzip-size-cli": "^1.0.0",
-    "husky": "^1.0.1",
+    "husky": "^8.0.3",
     "istanbul-instrumenter-loader": "^3.0.1",
     "js-fns": "^2.5.1",
     "jsdoc-babel": "^0.5.0",
     "jsdoc-to-markdown": "7",
-    "lint-staged": "^7.3.0",
+    "lint-staged": "^15.0.2",
     "lodash": "^4.17.15",
     "lodash.clonedeep": "^4.5.0",
     "mocha": "^3.5.3",
