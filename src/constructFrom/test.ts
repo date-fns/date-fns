@@ -36,15 +36,13 @@ describe('constructFrom', () => {
     assert.strictEqual(result.constructor, referenceDate.constructor)
   })
 
-  it('should create a new custom Date instance using a number as the reference date', () => {
-    class CustomDate extends Date {}
-    const referenceDate = new CustomDate(1635158400000) // October 25, 2023
-    const value = new CustomDate('2023-10-26T12:00:00')
+  it('should create a new Date instance using numbers as both referenceDate and value', () => {
+    const referenceDate = 1635158400000 // October 25, 2023
+    const value = 1635244800000 // October 26, 2023
 
     const result = constructFrom(referenceDate, value)
 
-    assert.ok(result instanceof CustomDate)
-    assert.deepStrictEqual(result, value)
-    assert.strictEqual(result.constructor, CustomDate)
+    assert.ok(result instanceof Date)
+    assert.deepStrictEqual(result.getTime(), value)
   })
 })
