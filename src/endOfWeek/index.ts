@@ -1,11 +1,13 @@
 import toDate from '../toDate/index'
-import type { LocaleOptions, WeekStartOptions } from '../types'
+import type { LocalizedOptions, WeekOptions } from '../types'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
 
 /**
  * The {@link endOfWeek} function options.
  */
-export interface EndOfWeekOptions extends WeekStartOptions, LocaleOptions {}
+export interface EndOfWeekOptions
+  extends WeekOptions,
+    LocalizedOptions<'options'> {}
 
 /**
  * @name endOfWeek
@@ -16,9 +18,12 @@ export interface EndOfWeekOptions extends WeekStartOptions, LocaleOptions {}
  * Return the end of a week for the given date.
  * The result will be in the local timezone.
  *
- * @param date - the original date
- * @param options - an object with options.
- * @returns the end of a week
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The original date
+ * @param options - An object with options
+ *
+ * @returns The end of a week
  *
  * @example
  * // The end of a week for 2 September 2014 11:55:00:
@@ -31,7 +36,7 @@ export interface EndOfWeekOptions extends WeekStartOptions, LocaleOptions {}
  * //=> Sun Sep 07 2014 23:59:59.999
  */
 export default function endOfWeek<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   options?: EndOfWeekOptions
 ): DateType {
   const defaultOptions = getDefaultOptions()
@@ -42,11 +47,11 @@ export default function endOfWeek<DateType extends Date>(
     defaultOptions.locale?.options?.weekStartsOn ??
     0
 
-  const date = toDate(dirtyDate)
-  const day = date.getDay()
+  const _date = toDate(date)
+  const day = _date.getDay()
   const diff = (day < weekStartsOn ? -7 : 0) + 6 - (day - weekStartsOn)
 
-  date.setDate(date.getDate() + diff)
-  date.setHours(23, 59, 59, 999)
-  return date
+  _date.setDate(_date.getDate() + diff)
+  _date.setHours(23, 59, 59, 999)
+  return _date
 }

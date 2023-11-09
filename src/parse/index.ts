@@ -5,10 +5,9 @@ import toDate from '../toDate/index'
 import type {
   AdditionalTokensOptions,
   FirstWeekContainsDateOptions,
-  LocaleOptions,
-  WeekStartOptions,
+  LocalizedOptions,
+  WeekOptions,
 } from '../types'
-import assign from '../_lib/assign/index'
 import longFormatters from '../_lib/format/longFormatters/index'
 import {
   isProtectedDayOfYearToken,
@@ -23,9 +22,9 @@ import type { ParseFlags, ParserOptions } from './_lib/types'
  * The {@link parse} function options.
  */
 export interface ParseOptions
-  extends LocaleOptions,
+  extends LocalizedOptions<'options' | 'match' | 'formatLong'>,
     FirstWeekContainsDateOptions,
-    WeekStartOptions,
+    WeekOptions,
     AdditionalTokensOptions {}
 
 // This RegExp consists of three parts separated by `|`:
@@ -39,7 +38,8 @@ export interface ParseOptions
 //   If there is no matching single quote
 //   then the sequence will continue until the end of the string.
 // - . matches any single character unmatched by previous parts of the RegExps
-const formattingTokensRegExp = /[yYQqMLwIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)|./g
+const formattingTokensRegExp =
+  /[yYQqMLwIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)|./g
 
 // This RegExp catches symbols escaped by quotes, and also
 // sequences of symbols P, p, and the combinations like `PPPPPPPppppp`
@@ -317,13 +317,17 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * Invalid Date is a Date, whose time value is NaN.
  * Time value of Date: http://es5.github.io/#x15.9.1.1
  *
- * @param dateString - the string to parse
- * @param formatString - the string of tokens
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param dateStr - The string to parse
+ * @param formatStr - The string of tokens
  * @param referenceDate - defines values missing from the parsed dateString
- * @param options - an object with options.
+ * @param options - An object with options.
  *   see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
  *   see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
- * @returns the parsed date
+ *
+ * @returns The parsed date
+ *
  * @throws {RangeError} `options.locale` must contain `match` property
  * @throws {RangeError} use `yyyy` instead of `YYYY` for formatting years using [format provided] to the input [input provided]; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
  * @throws {RangeError} use `yy` instead of `YY` for formatting years using [format provided] to the input [input provided]; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
@@ -345,17 +349,13 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * //=> Sun Feb 28 2010 00:00:00
  */
 export default function parse<DateType extends Date>(
-  dateString: string,
-  formatString: string,
-  dirtyReferenceDate: DateType | number,
+  dateStr: string,
+  formatStr: string,
+  referenceDate: DateType | number,
   options?: ParseOptions
 ): DateType {
   const defaultOptions = getDefaultOptions()
   const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale
-
-  if (!locale.match) {
-    throw new RangeError('locale must contain match property')
-  }
 
   const firstWeekContainsDate =
     options?.firstWeekContainsDate ??
@@ -371,11 +371,11 @@ export default function parse<DateType extends Date>(
     defaultOptions.locale?.options?.weekStartsOn ??
     0
 
-  if (formatString === '') {
-    if (dateString === '') {
-      return toDate(dirtyReferenceDate)
+  if (formatStr === '') {
+    if (dateStr === '') {
+      return toDate(referenceDate)
     } else {
-      return constructFrom(dirtyReferenceDate, NaN)
+      return constructFrom(referenceDate, NaN)
     }
   }
 
@@ -388,7 +388,7 @@ export default function parse<DateType extends Date>(
   // If timezone isn't specified, it will be set to the system timezone
   const setters: Setter[] = [new DateToSystemTimezoneSetter()]
 
-  const tokens = formatString
+  const tokens = formatStr
     .match(longFormattingTokensRegExp)!
     .map((substring) => {
       const firstCharacter = substring[0]
@@ -408,13 +408,13 @@ export default function parse<DateType extends Date>(
       !options?.useAdditionalWeekYearTokens &&
       isProtectedWeekYearToken(token)
     ) {
-      throwProtectedError(token, formatString, dateString)
+      throwProtectedError(token, formatStr, dateStr)
     }
     if (
       !options?.useAdditionalDayOfYearTokens &&
       isProtectedDayOfYearToken(token)
     ) {
-      throwProtectedError(token, formatString, dateString)
+      throwProtectedError(token, formatStr, dateStr)
     }
 
     const firstCharacter = token[0]
@@ -440,20 +440,15 @@ export default function parse<DateType extends Date>(
 
       usedTokens.push({ token: firstCharacter, fullToken: token })
 
-      const parseResult = parser.run(
-        dateString,
-        token,
-        locale.match,
-        subFnOptions
-      )
+      const parseResult = parser.run(dateStr, token, locale.match, subFnOptions)
 
       if (!parseResult) {
-        return constructFrom(dirtyReferenceDate, NaN)
+        return constructFrom(referenceDate, NaN)
       }
 
       setters.push(parseResult.setter)
 
-      dateString = parseResult.rest
+      dateStr = parseResult.rest
     } else {
       if (firstCharacter.match(unescapedLatinCharacterRegExp)) {
         throw new RangeError(
@@ -471,17 +466,17 @@ export default function parse<DateType extends Date>(
       }
 
       // Cut token from string, or, if string doesn't match the token, return Invalid Date
-      if (dateString.indexOf(token) === 0) {
-        dateString = dateString.slice(token.length)
+      if (dateStr.indexOf(token) === 0) {
+        dateStr = dateStr.slice(token.length)
       } else {
-        return constructFrom(dirtyReferenceDate, NaN)
+        return constructFrom(referenceDate, NaN)
       }
     }
   }
 
   // Check if the remaining input contains something other than whitespace
-  if (dateString.length > 0 && notWhitespaceRegExp.test(dateString)) {
-    return constructFrom(dirtyReferenceDate, NaN)
+  if (dateStr.length > 0 && notWhitespaceRegExp.test(dateStr)) {
+    return constructFrom(referenceDate, NaN)
   }
 
   const uniquePrioritySetters = setters
@@ -495,30 +490,30 @@ export default function parse<DateType extends Date>(
     )
     .map((setterArray) => setterArray[0])
 
-  let date = toDate(dirtyReferenceDate)
+  let date = toDate(referenceDate)
 
   if (isNaN(date.getTime())) {
-    return constructFrom(dirtyReferenceDate, NaN)
+    return constructFrom(referenceDate, NaN)
   }
 
   const flags: ParseFlags = {}
   for (const setter of uniquePrioritySetters) {
     if (!setter.validate(date, subFnOptions)) {
-      return constructFrom(dirtyReferenceDate, NaN)
+      return constructFrom(referenceDate, NaN)
     }
 
     const result = setter.set(date, flags, subFnOptions)
     // Result is tuple (date, flags)
     if (Array.isArray(result)) {
       date = result[0]
-      assign(flags, result[1])
+      Object.assign(flags, result[1])
       // Result is date
     } else {
       date = result
     }
   }
 
-  return constructFrom(dirtyReferenceDate, date)
+  return constructFrom(referenceDate, date)
 }
 
 function cleanEscapedString(input: string) {

@@ -14,8 +14,11 @@ import constructFrom from '../constructFrom/index'
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @param date - the original date
- * @returns the end of an ISO week-numbering year
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The original date
+ *
+ * @returns The end of an ISO week-numbering year
  *
  * @example
  * // The last day of an ISO week-numbering year for 2 July 2005:
@@ -23,13 +26,13 @@ import constructFrom from '../constructFrom/index'
  * //=> Sun Jan 01 2006 00:00:00
  */
 export default function lastDayOfISOWeekYear<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): DateType {
-  const year = getISOWeekYear(dirtyDate)
-  const fourthOfJanuary = constructFrom(dirtyDate, 0)
+  const year = getISOWeekYear(date)
+  const fourthOfJanuary = constructFrom(date, 0)
   fourthOfJanuary.setFullYear(year + 1, 0, 4)
   fourthOfJanuary.setHours(0, 0, 0, 0)
-  const date = startOfISOWeek(fourthOfJanuary)
-  date.setDate(date.getDate() - 1)
-  return date
+  const _date = startOfISOWeek(fourthOfJanuary)
+  _date.setDate(_date.getDate() - 1)
+  return _date
 }

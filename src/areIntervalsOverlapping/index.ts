@@ -5,6 +5,7 @@ import type { Interval } from '../types'
  * The {@link areIntervalsOverlapping} function options.
  */
 export interface AreIntervalsOverlappingOptions {
+  /** Whether the comparison is inclusive or not */
   inclusive?: boolean
 }
 
@@ -16,12 +17,14 @@ export interface AreIntervalsOverlappingOptions {
  * @description
  * Is the given time interval overlapping with another time interval? Adjacent intervals do not count as overlapping.
  *
- * @param intervalLeft - the first interval to compare. See [Interval]{@link https://date-fns.org/docs/Interval}
- * @param intervalRight - the second interval to compare. See [Interval]{@link https://date-fns.org/docs/Interval}
- * @param options - the object with options
- * @returns whether the time intervals are overlapping
- * @throws {RangeError} The start of an interval cannot be after its end
- * @throws {RangeError} Date in interval cannot be `Invalid Date`
+ * @param intervalLeft - The first interval to compare.
+ * @param intervalRight - The second interval to compare.
+ * @param options - The object with options
+ *
+ * @returns Whether the time intervals are overlapping
+ *
+ * @throws RangeError - The start of an interval cannot be after its end
+ * @throws RangeError - Date in interval cannot be `Invalid Date`
  *
  * @example
  * // For overlapping time intervals:
@@ -66,10 +69,10 @@ export default function areIntervalsOverlapping(
   intervalRight: Interval,
   options?: AreIntervalsOverlappingOptions
 ): boolean {
-  const leftStartTime = toDate(intervalLeft.start).getTime()
-  const leftEndTime = toDate(intervalLeft.end).getTime()
-  const rightStartTime = toDate(intervalRight.start).getTime()
-  const rightEndTime = toDate(intervalRight.end).getTime()
+  const leftStartTime = +toDate(intervalLeft.start)
+  const leftEndTime = +toDate(intervalLeft.end)
+  const rightStartTime = +toDate(intervalRight.start)
+  const rightEndTime = +toDate(intervalRight.end)
 
   // Throw an exception if start date is after end date or if any date is `Invalid Date`
   if (!(leftStartTime <= leftEndTime && rightStartTime <= rightEndTime)) {

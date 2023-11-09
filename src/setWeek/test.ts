@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
+import { describe, it } from 'vitest'
 import setWeek from './index'
 
 describe('setWeek', () => {
@@ -44,7 +45,6 @@ describe('setWeek', () => {
   it('allows to specify `weekStartsOn` and `firstWeekContainsDate` in locale', () => {
     const date = new Date(2005, 0 /* Jan */, 2)
     const result = setWeek(date, 1, {
-      // @ts-expect-error
       locale: {
         options: { weekStartsOn: 1, firstWeekContainsDate: 4 },
       },
@@ -57,7 +57,6 @@ describe('setWeek', () => {
     const result = setWeek(date, 1, {
       weekStartsOn: 1,
       firstWeekContainsDate: 4,
-      // @ts-expect-error
       locale: {
         options: { weekStartsOn: 0, firstWeekContainsDate: 1 },
       },

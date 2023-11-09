@@ -9,8 +9,11 @@ import toDate from '../toDate/index'
  * Return the end of a year quarter for the given date.
  * The result will be in the local timezone.
  *
- * @param date - the original date
- * @returns the end of a quarter
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The original date
+ *
+ * @returns The end of a quarter
  *
  * @example
  * // The end of a quarter for 2 September 2014 11:55:00:
@@ -18,12 +21,12 @@ import toDate from '../toDate/index'
  * //=> Tue Sep 30 2014 23:59:59.999
  */
 export default function endOfQuarter<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): DateType {
-  const date = toDate(dirtyDate)
-  const currentMonth = date.getMonth()
+  const _date = toDate(date)
+  const currentMonth = _date.getMonth()
   const month = currentMonth - (currentMonth % 3) + 3
-  date.setMonth(month, 0)
-  date.setHours(23, 59, 59, 999)
-  return date
+  _date.setMonth(month, 0)
+  _date.setHours(23, 59, 59, 999)
+  return _date
 }

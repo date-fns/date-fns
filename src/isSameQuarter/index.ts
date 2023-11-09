@@ -8,9 +8,12 @@ import startOfQuarter from '../startOfQuarter/index'
  * @description
  * Are the given dates in the same quarter (and year)?
  *
- * @param dateLeft - the first date to check
- * @param dateRight - the second date to check
- * @returns the dates are in the same quarter (and year)
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param dateLeft - The first date to check
+ * @param dateRight - The second date to check
+
+ * @returns The dates are in the same quarter (and year)
  *
  * @example
  * // Are 1 January 2014 and 8 March 2014 in the same quarter?
@@ -23,11 +26,11 @@ import startOfQuarter from '../startOfQuarter/index'
  * //=> false
  */
 export default function isSameQuarter<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+  dateLeft: DateType | number,
+  dateRight: DateType | number
 ): boolean {
-  const dateLeftStartOfQuarter = startOfQuarter(dirtyDateLeft)
-  const dateRightStartOfQuarter = startOfQuarter(dirtyDateRight)
+  const dateLeftStartOfQuarter = startOfQuarter(dateLeft)
+  const dateRightStartOfQuarter = startOfQuarter(dateRight)
 
-  return dateLeftStartOfQuarter.getTime() === dateRightStartOfQuarter.getTime()
+  return +dateLeftStartOfQuarter === +dateRightStartOfQuarter
 }

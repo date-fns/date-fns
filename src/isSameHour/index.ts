@@ -8,9 +8,12 @@ import startOfHour from '../startOfHour/index'
  * @description
  * Are the given dates in the same hour (and same day)?
  *
- * @param dateLeft - the first date to check
- * @param dateRight - the second date to check
- * @returns the dates are in the same hour (and same day)
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param dateLeft - The first date to check
+ * @param dateRight - The second date to check
+ *
+ * @returns The dates are in the same hour (and same day)
  *
  * @example
  * // Are 4 September 2014 06:00:00 and 4 September 06:30:00 in the same hour?
@@ -23,11 +26,11 @@ import startOfHour from '../startOfHour/index'
  * //=> false
  */
 export default function isSameHour<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+  dateLeft: DateType | number,
+  dateRight: DateType | number
 ): boolean {
-  const dateLeftStartOfHour = startOfHour(dirtyDateLeft)
-  const dateRightStartOfHour = startOfHour(dirtyDateRight)
+  const dateLeftStartOfHour = startOfHour(dateLeft)
+  const dateRightStartOfHour = startOfHour(dateRight)
 
-  return dateLeftStartOfHour.getTime() === dateRightStartOfHour.getTime()
+  return +dateLeftStartOfHour === +dateRightStartOfHour
 }

@@ -16,10 +16,13 @@ export interface DifferenceInMinutesOptions extends RoundingOptions {}
  * @description
  * Get the signed number of full (rounded towards 0) minutes between the given dates.
  *
- * @param dateLeft - the later date
- * @param dateRight - the earlier date
- * @param options - an object with options.
- * @returns the number of minutes
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param dateLeft - The later date
+ * @param dateRight - The earlier date
+ * @param options - An object with options.
+ *
+ * @returns The number of minutes
  *
  * @example
  * // How many minutes are between 2 July 2014 12:07:59 and 2 July 2014 12:20:00?

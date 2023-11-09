@@ -11,11 +11,11 @@ import isSameISOWeek from '../isSameISOWeek/index'
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * > ⚠️ Please note that this function is not present in the FP submodule as
- * > it uses `Date.now()` internally hence impure and can't be safely curried.
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
- * @param date - the date to check
- * @returns the date is in this ISO week
+ * @param date - The date to check
+ *
+ * @returns The date is in this ISO week
  *
  * @example
  * // If today is 25 September 2014, is 22 September 2014 in this ISO week?
@@ -24,7 +24,7 @@ import isSameISOWeek from '../isSameISOWeek/index'
  */
 
 export default function isThisISOWeek<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): boolean {
-  return isSameISOWeek(dirtyDate, Date.now())
+  return isSameISOWeek(date, Date.now())
 }

@@ -3,9 +3,7 @@ import { minutesInDay, minutesInMonth } from '../constants/index'
 import differenceInMonths from '../differenceInMonths/index'
 import differenceInSeconds from '../differenceInSeconds/index'
 import toDate from '../toDate/index'
-import type { LocaleOptions } from '../types'
-import assign from '../_lib/assign/index'
-import cloneObject from '../_lib/cloneObject/index'
+import type { LocalizedOptions } from '../types'
 import defaultLocale from '../_lib/defaultLocale/index'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
@@ -13,8 +11,11 @@ import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMillisec
 /**
  * The {@link formatDistance} function options.
  */
-export interface FormatDistanceOptions extends LocaleOptions {
+export interface FormatDistanceOptions
+  extends LocalizedOptions<'formatDistance'> {
+  /** Distances less than a minute are more detailed */
   includeSeconds?: boolean
+  /** Add "X ago"/"in X" in the locale language */
   addSuffix?: boolean
 }
 
@@ -55,10 +56,14 @@ export interface FormatDistanceOptions extends LocaleOptions {
  * | 40 secs ... 60 secs    | less than a minute   |
  * | 60 secs ... 90 secs    | 1 minute             |
  *
- * @param date - the date
- * @param baseDate - the date to compare with
- * @param options - an object with options.
- * @returns the distance in words
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date
+ * @param baseDate - The date to compare with
+ * @param options - An object with options
+ *
+ * @returns The distance in words
+ *
  * @throws {RangeError} `date` must not be Invalid Date
  * @throws {RangeError} `baseDate` must not be Invalid Date
  * @throws {RangeError} `options.locale` must contain `formatDistance` property
@@ -96,25 +101,21 @@ export interface FormatDistanceOptions extends LocaleOptions {
  */
 
 export default function formatDistance<DateType extends Date>(
-  dirtyDate: DateType | number,
-  dirtyBaseDate: DateType | number,
+  date: DateType | number,
+  baseDate: DateType | number,
   options?: FormatDistanceOptions
 ): string {
   const defaultOptions = getDefaultOptions()
   const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale
   const minutesInAlmostTwoDays = 2520
 
-  if (!locale.formatDistance) {
-    throw new RangeError('locale must contain formatDistance property')
-  }
-
-  const comparison = compareAsc(dirtyDate, dirtyBaseDate)
+  const comparison = compareAsc(date, baseDate)
 
   if (isNaN(comparison)) {
     throw new RangeError('Invalid time value')
   }
 
-  const localizeOptions = assign(cloneObject(options), {
+  const localizeOptions = Object.assign({}, options, {
     addSuffix: options?.addSuffix,
     comparison: comparison as -1 | 0 | 1,
   })
@@ -122,11 +123,11 @@ export default function formatDistance<DateType extends Date>(
   let dateLeft
   let dateRight
   if (comparison > 0) {
-    dateLeft = toDate(dirtyBaseDate)
-    dateRight = toDate(dirtyDate)
+    dateLeft = toDate(baseDate)
+    dateRight = toDate(date)
   } else {
-    dateLeft = toDate(dirtyDate)
-    dateRight = toDate(dirtyBaseDate)
+    dateLeft = toDate(date)
+    dateRight = toDate(baseDate)
   }
 
   const seconds = differenceInSeconds(dateRight, dateLeft)

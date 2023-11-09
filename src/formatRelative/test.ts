@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
+import { describe, it } from 'vitest'
 import formatRelative from './index'
 
 describe('formatRelative', () => {
@@ -124,49 +125,6 @@ describe('formatRelative', () => {
         }
       )
       assert(result === 'It works perfectly!')
-    })
-
-    it("throws `RangeError` if `options.locale` doesn't have `localize` property", () => {
-      const customLocale = {
-        formatLong: {},
-        formatRelative: () => {
-          return ''
-        },
-      }
-      const block = () =>
-        formatRelative(new Date(2017, 0, 1), baseDate, {
-          // @ts-expect-error
-          locale: customLocale,
-        })
-      assert.throws(block, RangeError)
-    })
-
-    it("throws `RangeError` if `options.locale` doesn't have `formatLong` property", () => {
-      const customLocale = {
-        localize: {},
-        formatRelative: () => {
-          return ''
-        },
-      }
-      const block = () =>
-        formatRelative(new Date(2017, 0, 1), baseDate, {
-          // @ts-expect-error
-          locale: customLocale,
-        })
-      assert.throws(block, RangeError)
-    })
-
-    it("throws `RangeError` if `options.locale` doesn't have `formatRelative` property", () => {
-      const customLocale = {
-        localize: {},
-        formatLong: {},
-      }
-      const block = () =>
-        formatRelative(new Date(2017, 0, 1), baseDate, {
-          // @ts-expect-error
-          locale: customLocale,
-        })
-      assert.throws(block, RangeError)
     })
   })
 })

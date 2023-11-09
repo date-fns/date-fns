@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
+import { describe, it } from 'vitest'
 import isSameWeek from './index'
 
 describe('isSameWeek', () => {
@@ -34,7 +35,6 @@ describe('isSameWeek', () => {
       new Date(2014, 7 /* Aug */, 31),
       new Date(2014, 8 /* Sep */, 4),
       {
-        // @ts-expect-error
         locale: {
           options: { weekStartsOn: 1 },
         },
@@ -49,7 +49,6 @@ describe('isSameWeek', () => {
       new Date(2014, 8 /* Sep */, 4),
       {
         weekStartsOn: 1,
-        // @ts-expect-error
         locale: {
           options: { weekStartsOn: 0 },
         },

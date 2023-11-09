@@ -9,9 +9,12 @@ import constructFrom from '../constructFrom/index'
  * @description
  * Add the specified number of days to the given date.
  *
- * @param date - the date to be changed
- * @param amount - the amount of days to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
- * @returns - the new date with the days added
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date to be changed
+ * @param amount - The amount of days to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ *
+ * @returns The new date with the days added
  *
  * @example
  * // Add 10 days to 1 September 2014:
@@ -19,15 +22,15 @@ import constructFrom from '../constructFrom/index'
  * //=> Thu Sep 11 2014 00:00:00
  */
 export default function addDays<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   amount: number
 ): DateType {
-  const date = toDate(dirtyDate)
-  if (isNaN(amount)) return constructFrom(dirtyDate, NaN)
+  const _date = toDate(date)
+  if (isNaN(amount)) return constructFrom(date, NaN)
   if (!amount) {
     // If 0 days, no-op to avoid changing times in the hour before end of DST
-    return date
+    return _date
   }
-  date.setDate(date.getDate() + amount)
-  return date
+  _date.setDate(_date.getDate() + amount)
+  return _date
 }

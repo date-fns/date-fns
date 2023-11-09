@@ -9,8 +9,11 @@ import constructFrom from '../constructFrom/index'
  * @description
  * Get the number of days in a month of the given date.
  *
- * @param date - the given date
- * @returns the number of days in a month
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The given date
+ *
+ * @returns The number of days in a month
  *
  * @example
  * // How many days are in February 2000?
@@ -18,12 +21,12 @@ import constructFrom from '../constructFrom/index'
  * //=> 29
  */
 export default function getDaysInMonth<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): number {
-  const date = toDate(dirtyDate)
-  const year = date.getFullYear()
-  const monthIndex = date.getMonth()
-  const lastDayOfMonth = constructFrom(dirtyDate, 0)
+  const _date = toDate(date)
+  const year = _date.getFullYear()
+  const monthIndex = _date.getMonth()
+  const lastDayOfMonth = constructFrom(date, 0)
   lastDayOfMonth.setFullYear(year, monthIndex + 1, 0)
   lastDayOfMonth.setHours(0, 0, 0, 0)
   return lastDayOfMonth.getDate()

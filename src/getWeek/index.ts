@@ -4,16 +4,16 @@ import startOfWeekYear from '../startOfWeekYear/index'
 import toDate from '../toDate/index'
 import type {
   FirstWeekContainsDateOptions,
-  LocaleOptions,
-  WeekStartOptions,
+  LocalizedOptions,
+  WeekOptions,
 } from '../types'
 
 /**
  * The {@link getWeek} function options.
  */
 export interface GetWeekOptions
-  extends LocaleOptions,
-    WeekStartOptions,
+  extends LocalizedOptions<'options'>,
+    WeekOptions,
     FirstWeekContainsDateOptions {}
 
 /**
@@ -30,15 +30,19 @@ export interface GetWeekOptions
  *
  * Week numbering: https://en.wikipedia.org/wiki/Week#Week_numbering
  *
- * @param date - the given date
- * @param options - an object with options.
- * @returns the week
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The given date
+ * @param options - An object with options
+ *
+ * @returns The week
  *
  * @example
  * // Which week of the local week numbering year is 2 January 2005 with default options?
  * const result = getWeek(new Date(2005, 0, 2))
  * //=> 2
  *
+ * @example
  * // Which week of the local week numbering year is 2 January 2005,
  * // if Monday is the first day of the week,
  * // and the first week of the year always contains 4 January?
@@ -50,13 +54,13 @@ export interface GetWeekOptions
  */
 
 export default function getWeek<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   options?: GetWeekOptions
 ): number {
-  const date = toDate(dirtyDate)
+  const _date = toDate(date)
   const diff =
-    startOfWeek(date, options).getTime() -
-    startOfWeekYear(date, options).getTime()
+    startOfWeek(_date, options).getTime() -
+    startOfWeekYear(_date, options).getTime()
 
   // Round the number of days to the nearest integer
   // because the number of milliseconds in a week is not constant

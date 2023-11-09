@@ -8,8 +8,11 @@ import toDate from '../toDate/index'
  * @description
  * Get the month of the given date.
  *
- * @param date - the given date
- * @returns the month
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The given date
+ *
+ * @returns The month
  *
  * @example
  * // Which month is 29 February 2012?
@@ -17,9 +20,9 @@ import toDate from '../toDate/index'
  * //=> 1
  */
 export default function getMonth<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): number {
-  const date = toDate(dirtyDate)
-  const month = date.getMonth()
+  const _date = toDate(date)
+  const month = _date.getMonth()
   return month
 }

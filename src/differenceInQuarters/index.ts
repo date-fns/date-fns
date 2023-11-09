@@ -15,10 +15,13 @@ export interface DifferenceInQuartersOptions extends RoundingOptions {}
  * @description
  * Get the number of quarters between the given dates.
  *
- * @param dateLeft - the later date
- * @param dateRight - the earlier date
- * @param options - an object with options.
- * @returns the number of full quarters
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param dateLeft - The later date
+ * @param dateRight - The earlier date
+ * @param options - An object with options.
+ *
+ * @returns The number of full quarters
  *
  * @example
  * // How many full quarters are between 31 December 2013 and 2 July 2014?

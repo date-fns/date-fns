@@ -8,8 +8,9 @@ import toDate from '../toDate/index'
  * @description
  * Create a date from a Unix timestamp (in seconds). Decimal values will be discarded.
  *
- * @param unixTime - the given Unix timestamp (in seconds)
- * @returns the date
+ * @param unixTime - The given Unix timestamp (in seconds)
+ *
+ * @returns The date
  *
  * @example
  * // Create the date 29 February 2012 11:45:05:

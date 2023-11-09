@@ -10,8 +10,12 @@ import startOfMonth from '../startOfMonth/index'
  * @description
  * Get all the Saturdays and Sundays in the given month.
  *
- * @param date - the given month
- * @returns an array containing all the Saturdays and Sundays
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The given month
+ *
+ * @returns An array containing all the Saturdays and Sundays
+ *
  * @throws {RangeError} The passed date is invalid
  *
  * @example
@@ -29,12 +33,12 @@ import startOfMonth from '../startOfMonth/index'
  * // ]
  */
 export default function eachWeekendOfMonth<DateType extends Date>(
-  dirtyDate: DateType
+  date: DateType
 ): DateType[] {
-  const startDate = startOfMonth(dirtyDate)
+  const startDate = startOfMonth(date)
   if (isNaN(startDate.getTime()))
     throw new RangeError('The passed date is invalid')
 
-  const endDate = endOfMonth(dirtyDate)
+  const endDate = endOfMonth(date)
   return eachWeekendOfInterval({ start: startDate, end: endDate })
 }

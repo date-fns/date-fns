@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
+import { describe, it } from 'vitest'
 import parse from './index'
 
 describe('parse', () => {
@@ -2285,15 +2286,6 @@ describe('parse', () => {
         locale: customLocale,
       })
       assert.deepStrictEqual(result, new Date(-2017, 0 /* Jan */, 1))
-    })
-
-    it('throws `RangeError` if `options.locale` does not contain `match` property', () => {
-      const block = () =>
-        parse('2016-11-25 04 AM', 'yyyy-MM-dd hh a', referenceDate, {
-          // @ts-expect-error
-          locale: {},
-        })
-      assert.throws(block, RangeError)
     })
   })
 

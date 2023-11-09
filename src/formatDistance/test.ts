@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
+import { describe, it } from 'vitest'
 import type { FormatDistanceFn } from '../locale/types'
 import formatDistance from './index'
 
@@ -233,29 +234,11 @@ describe('formatDistance', () => {
         {
           includeSeconds: true,
           addSuffix: true,
-          // @ts-expect-error
           locale: customLocale,
         }
       )
 
       assert(result === 'It works!')
-    })
-
-    describe('does not contain `formatDistance` property', () => {
-      it('throws `RangeError`', () => {
-        const customLocale = {}
-        const block = () =>
-          formatDistance(
-            new Date(1986, 3, 4, 10, 32, 0),
-            new Date(1986, 3, 4, 10, 32, 3),
-            {
-              includeSeconds: true,
-              // @ts-expect-error
-              locale: customLocale,
-            }
-          )
-        assert.throws(block, RangeError)
-      })
     })
   })
 

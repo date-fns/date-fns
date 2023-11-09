@@ -8,10 +8,10 @@ import type {
   Day,
   Era,
   FirstWeekContainsDateOptions,
-  LocaleOptions,
+  LocalizedOptions,
   Month,
   Quarter,
-  WeekStartOptions,
+  WeekOptions,
 } from '../../../types'
 import addLeadingZeros from '../../addLeadingZeros/index'
 import lightFormatters from '../lightFormatters/index'
@@ -32,7 +32,7 @@ type Formatter = (
   token: string,
   localize: Localize,
   options: Required<
-    LocaleOptions & WeekStartOptions & FirstWeekContainsDateOptions
+    LocalizedOptions<'options'> & WeekOptions & FirstWeekContainsDateOptions
   > & {
     _originalDate: Date
   }

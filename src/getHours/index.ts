@@ -8,8 +8,11 @@ import toDate from '../toDate/index'
  * @description
  * Get the hours of the given date.
  *
- * @param date - the given date
- * @returns the hours
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The given date
+ *
+ * @returns The hours
  *
  * @example
  * // Get the hours of 29 February 2012 11:45:00:
@@ -17,9 +20,9 @@ import toDate from '../toDate/index'
  * //=> 11
  */
 export default function getHours<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): number {
-  const date = toDate(dirtyDate)
-  const hours = date.getHours()
+  const _date = toDate(date)
+  const hours = _date.getHours()
   return hours
 }

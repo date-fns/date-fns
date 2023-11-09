@@ -1,13 +1,11 @@
 import toDate from '../toDate/index'
-import type { FormatOptions, RepresentationOptions } from '../types'
+import type { ISOFormatOptions } from '../types'
 import addLeadingZeros from '../_lib/addLeadingZeros/index'
 
 /**
  * The {@link formatISO} function options.
  */
-export interface FormatISOOptions
-  extends FormatOptions,
-    RepresentationOptions {}
+export interface FormatISOOptions extends ISOFormatOptions {}
 
 /**
  * @name formatISO
@@ -17,9 +15,13 @@ export interface FormatISOOptions
  * @description
  * Return the formatted date string in ISO 8601 format. Options may be passed to control the parts and notations of the date.
  *
- * @param date - the original date
- * @param options - an object with options.
- * @returns the formatted date string (in local time zone)
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The original date
+ * @param options - An object with options.
+ *
+ * @returns The formatted date string (in loca.l time zone)
+ *
  * @throws {RangeError} `date` must not be Invalid Date
  *
  * @example
@@ -46,9 +48,9 @@ export default function formatISO<DateType extends Date>(
   date: DateType | number,
   options?: FormatISOOptions
 ): string {
-  const originalDate = toDate(date)
+  const _date = toDate(date)
 
-  if (isNaN(originalDate.getTime())) {
+  if (isNaN(_date.getTime())) {
     throw new RangeError('Invalid time value')
   }
 
@@ -63,9 +65,9 @@ export default function formatISO<DateType extends Date>(
 
   // Representation is either 'date' or 'complete'
   if (representation !== 'time') {
-    const day = addLeadingZeros(originalDate.getDate(), 2)
-    const month = addLeadingZeros(originalDate.getMonth() + 1, 2)
-    const year = addLeadingZeros(originalDate.getFullYear(), 4)
+    const day = addLeadingZeros(_date.getDate(), 2)
+    const month = addLeadingZeros(_date.getMonth() + 1, 2)
+    const year = addLeadingZeros(_date.getFullYear(), 4)
 
     // yyyyMMdd or yyyy-MM-dd.
     result = `${year}${dateDelimiter}${month}${dateDelimiter}${day}`
@@ -74,7 +76,7 @@ export default function formatISO<DateType extends Date>(
   // Representation is either 'time' or 'complete'
   if (representation !== 'date') {
     // Add the timezone.
-    const offset = originalDate.getTimezoneOffset()
+    const offset = _date.getTimezoneOffset()
 
     if (offset !== 0) {
       const absoluteOffset = Math.abs(offset)
@@ -88,9 +90,9 @@ export default function formatISO<DateType extends Date>(
       tzOffset = 'Z'
     }
 
-    const hour = addLeadingZeros(originalDate.getHours(), 2)
-    const minute = addLeadingZeros(originalDate.getMinutes(), 2)
-    const second = addLeadingZeros(originalDate.getSeconds(), 2)
+    const hour = addLeadingZeros(_date.getHours(), 2)
+    const minute = addLeadingZeros(_date.getMinutes(), 2)
+    const second = addLeadingZeros(_date.getSeconds(), 2)
 
     // If there's also date, separate it with time with 'T'
     const separator = result === '' ? '' : 'T'

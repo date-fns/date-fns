@@ -13,8 +13,11 @@ import toDate from '../toDate/index'
  *
  * Time value of Date: http://es5.github.io/#x15.9.1.1
  *
- * @param date - the date to check
- * @returns the date is valid
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date to check
+ *
+ * @returns The date is valid
  *
  * @example
  * // For the valid date:
@@ -31,10 +34,10 @@ import toDate from '../toDate/index'
  * const result = isValid(new Date(''))
  * //=> false
  */
-export default function isValid(dirtyDate: unknown): boolean {
-  if (!isDate(dirtyDate) && typeof dirtyDate !== 'number') {
+export default function isValid(date: unknown): boolean {
+  if (!isDate(date) && typeof date !== 'number') {
     return false
   }
-  const date = toDate(dirtyDate)
-  return !isNaN(Number(date))
+  const _date = toDate(date)
+  return !isNaN(Number(_date))
 }

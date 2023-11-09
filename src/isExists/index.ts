@@ -6,10 +6,11 @@
  * @description
  * Checks if the given arguments convert to an existing date.
  *
- * @param year of the date to check
- * @param month of the date to check
- * @param day of the date to check
- * @returns the date exists
+ * @param year - The year of the date to check
+ * @param month - The month of the date to check
+ * @param day - The day of the date to check
+ *
+ * @returns `true` if the date exists
  *
  * @example
  * // For the valid date:

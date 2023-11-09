@@ -10,9 +10,12 @@ import type { Day } from '../types'
  * @description
  * When is the next day of the week? 0-6 the day of the week, 0 represents Sunday.
  *
- * @param date - the date to check
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date to check
  * @param day - day of the week
- * @returns - the date is the next day of week
+ *
+ * @returns The date is the next day of week
  *
  * @example
  * // When is the next Monday after Mar, 20, 2020?

@@ -11,8 +11,12 @@ import type { Interval } from '../types'
  * @description
  * Get all the Saturdays and Sundays in the given date interval.
  *
- * @param interval - the given interval. See [Interval]{@link https://date-fns.org/docs/Interval}
- * @returns an array containing all the Saturdays and Sundays
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param interval - The given interval
+ *
+ * @returns An array containing all the Saturdays and Sundays
+ *
  * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *

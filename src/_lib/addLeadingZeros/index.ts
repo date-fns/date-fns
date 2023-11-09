@@ -3,9 +3,6 @@ export default function addLeadingZeros(
   targetLength: number
 ): string {
   const sign = number < 0 ? '-' : ''
-  let output = Math.abs(number).toString()
-  while (output.length < targetLength) {
-    output = '0' + output
-  }
+  const output = Math.abs(number).toString().padStart(targetLength, '0')
   return sign + output
 }

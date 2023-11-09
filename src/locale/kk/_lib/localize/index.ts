@@ -1,4 +1,3 @@
-import type { Quarter } from '../../../../types'
 import type { Localize, LocalizeFn } from '../../../types'
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
@@ -163,10 +162,7 @@ const suffixes = {
 
 type SuffixesKey = keyof typeof suffixes
 
-const ordinalNumber: LocalizeFn<number, undefined> = (
-  dirtyNumber,
-  _options
-) => {
+const ordinalNumber: LocalizeFn<number> = (dirtyNumber, _options) => {
   const number = Number(dirtyNumber) as SuffixesKey
   const mod10 = (number % 10) as SuffixesKey
   const b = number >= 100 ? 100 : null
@@ -186,7 +182,7 @@ const localize: Localize = {
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: (quarter) => (quarter - 1) as Quarter,
+    argumentCallback: (quarter) => quarter - 1,
   }),
 
   month: buildLocalizeFn({

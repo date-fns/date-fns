@@ -1,12 +1,14 @@
 import addDays from '../addDays/index'
 import toDate from '../toDate/index'
-import type { LocaleOptions, WeekStartOptions } from '../types'
+import type { LocalizedOptions, WeekOptions } from '../types'
 import { getDefaultOptions } from '../_lib/defaultOptions/index'
 
 /**
  * The {@link setDay} function options.
  */
-export interface SetDayOptions extends LocaleOptions, WeekStartOptions {}
+export interface SetDayOptions
+  extends LocalizedOptions<'options'>,
+    WeekOptions {}
 
 /**
  * @name setDay
@@ -16,10 +18,13 @@ export interface SetDayOptions extends LocaleOptions, WeekStartOptions {}
  * @description
  * Set the day of the week to the given date.
  *
- * @param date - the date to be changed
- * @param day - the day of the week of the new date
- * @param options - an object with options.
- * @returns the new date with the day of the week set
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date to be changed
+ * @param day - The day of the week of the new date
+ * @param options - An object with options.
+ *
+ * @returns The new date with the day of the week set
  *
  * @example
  * // Set week day to Sunday, with the default weekStartsOn of Sunday:
@@ -32,7 +37,7 @@ export interface SetDayOptions extends LocaleOptions, WeekStartOptions {}
  * //=> Sun Sep 07 2014 00:00:00
  */
 export default function setDay<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   day: number,
   options?: SetDayOptions
 ): DateType {
@@ -44,8 +49,8 @@ export default function setDay<DateType extends Date>(
     defaultOptions.locale?.options?.weekStartsOn ??
     0
 
-  const date = toDate(dirtyDate)
-  const currentDay = date.getDay()
+  const _date = toDate(date)
+  const currentDay = _date.getDay()
 
   const remainder = day % 7
   const dayIndex = (remainder + 7) % 7
@@ -55,5 +60,5 @@ export default function setDay<DateType extends Date>(
     day < 0 || day > 6
       ? day - ((currentDay + delta) % 7)
       : ((dayIndex + delta) % 7) - ((currentDay + delta) % 7)
-  return addDays(date, diff)
+  return addDays(_date, diff)
 }

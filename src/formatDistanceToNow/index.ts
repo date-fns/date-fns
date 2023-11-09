@@ -43,12 +43,13 @@ export interface FormatDistanceToNowOptions extends FormatDistanceOptions {}
  * | 40 secs ... 60 secs | less than a minute   |
  * | 60 secs ... 90 secs | 1 minute             |
  *
- * > ⚠️ Please note that this function is not present in the FP submodule as
- * > it uses `Date.now()` internally hence impure and can't be safely curried.
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
- * @param date - the given date
- * @param options - the object with options
- * @returns the distance in words
+ * @param date - The given date
+ * @param options - The object with options
+ *
+ * @returns The distance in words
+ *
  * @throws {RangeError} `date` must not be Invalid Date
  * @throws {RangeError} `options.locale` must contain `formatDistance` property
  *
@@ -88,8 +89,8 @@ export interface FormatDistanceToNowOptions extends FormatDistanceOptions {}
  * //=> 'pli ol 1 jaro'
  */
 export default function formatDistanceToNow<DateType extends Date>(
-  dirtyDate: DateType | number,
+  date: DateType | number,
   options?: FormatDistanceToNowOptions
 ): string {
-  return distanceInWords(dirtyDate, Date.now(), options)
+  return distanceInWords(date, Date.now(), options)
 }

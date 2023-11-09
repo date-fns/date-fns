@@ -8,9 +8,12 @@ import toDate from '../toDate/index'
  * @description
  * Return an index of the closest date from the array comparing to the given date.
  *
- * @param dateToCompare - the date to compare with
- * @param datesArray - the array to search
- * @returns an index of the date closest to the given date or undefined if no valid value is given
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param dateToCompare - The date to compare with
+ * @param dates - The array to search
+ *
+ * @returns An index of the date closest to the given date or undefined if no valid value is given
  *
  * @example
  * // Which date is closer to 6 September 2015?
@@ -24,18 +27,18 @@ import toDate from '../toDate/index'
  * //=> 1
  */
 export default function closestIndexTo<DateType extends Date>(
-  dirtyDateToCompare: DateType | number,
-  datesArray: Array<DateType | number>
+  dateToCompare: DateType | number,
+  dates: Array<DateType | number>
 ): number | undefined {
-  const dateToCompare = toDate(dirtyDateToCompare)
+  const date = toDate(dateToCompare)
 
-  if (isNaN(Number(dateToCompare))) return NaN
+  if (isNaN(Number(date))) return NaN
 
-  const timeToCompare = dateToCompare.getTime()
+  const timeToCompare = date.getTime()
 
   let result: number | undefined
   let minDistance: number
-  datesArray.forEach(function (dirtyDate, index) {
+  dates.forEach(function (dirtyDate, index) {
     const currentDate = toDate(dirtyDate)
 
     if (isNaN(Number(currentDate))) {

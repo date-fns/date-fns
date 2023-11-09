@@ -11,8 +11,11 @@ import toDate from '../toDate/index'
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @param date - the given date
- * @returns the day of ISO week
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The given date
+ *
+ * @returns The day of ISO week
  *
  * @example
  * // Which day of the ISO week is 26 February 2012?
@@ -20,10 +23,10 @@ import toDate from '../toDate/index'
  * //=> 7
  */
 export default function getISODay<DateType extends Date>(
-  dirtyDate: DateType | number
+  date: DateType | number
 ): number {
-  const date = toDate(dirtyDate)
-  let day = date.getDay()
+  const _date = toDate(date)
+  let day = _date.getDay()
 
   if (day === 0) {
     day = 7
