@@ -22,10 +22,6 @@ import type { Duration, Interval } from '../types'
  *
  * @returns The duration object
  *
- * @throws {RangeError} `start` must not be Invalid Date
- * @throws {RangeError} `end` must not be Invalid Date
- * @throws {RangeError} The start of an interval cannot be after its end
- *
  * @example
  * // Get the duration between January 15, 1929 and April 4, 1968.
  * intervalToDuration({
@@ -34,36 +30,41 @@ import type { Duration, Interval } from '../types'
  * })
  * // => { years: 39, months: 2, days: 20, hours: 7, minutes: 5, seconds: 0 }
  */
-export default function interval<DateType extends Date>(
+export default function intervalToDuration<DateType extends Date>(
   interval: Interval<DateType>
 ): Duration {
   const start = toDate(interval.start)
   const end = toDate(interval.end)
 
-  if (isNaN(start.getTime())) throw new RangeError('Start Date is invalid')
-  if (isNaN(end.getTime())) throw new RangeError('End Date is invalid')
-  if (start > end) {
-    throw new RangeError('The start of an interval cannot be after its end')
-  }
+  const duration: Duration = {}
 
-  const duration: Duration = {
-    years: differenceInYears(end, start),
-  }
+  const years = differenceInYears(end, start)
+  if (years) duration.years = years
 
   const remainingMonths = add(start, { years: duration.years })
-  duration.months = differenceInMonths(end, remainingMonths)
+
+  const months = differenceInMonths(end, remainingMonths)
+  if (months) duration.months = months
 
   const remainingDays = add(remainingMonths, { months: duration.months })
-  duration.days = differenceInDays(end, remainingDays)
+
+  const days = differenceInDays(end, remainingDays)
+  if (days) duration.days = days
 
   const remainingHours = add(remainingDays, { days: duration.days })
-  duration.hours = differenceInHours(end, remainingHours)
+
+  const hours = differenceInHours(end, remainingHours)
+  if (hours) duration.hours = hours
 
   const remainingMinutes = add(remainingHours, { hours: duration.hours })
-  duration.minutes = differenceInMinutes(end, remainingMinutes)
+
+  const minutes = differenceInMinutes(end, remainingMinutes)
+  if (minutes) duration.minutes = minutes
 
   const remainingSeconds = add(remainingMinutes, { minutes: duration.minutes })
-  duration.seconds = differenceInSeconds(end, remainingSeconds)
+
+  const seconds = differenceInSeconds(end, remainingSeconds)
+  if (seconds) duration.seconds = seconds
 
   return duration
 }

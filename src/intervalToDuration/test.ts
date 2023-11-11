@@ -17,7 +17,6 @@ describe('intervalToDuration', () => {
       days: 20,
       hours: 7,
       minutes: 5,
-      seconds: 0,
     })
   })
 
@@ -41,41 +40,37 @@ describe('intervalToDuration', () => {
     const end = new Date(2020, 2, 1, 12, 0, 0)
     const result = intervalToDuration({ start, end })
 
-    assert.deepStrictEqual(result, {
-      years: 0,
-      months: 0,
-      days: 0,
-      hours: 0,
-      minutes: 0,
-      seconds: 0,
-    })
+    assert.deepStrictEqual(result, {})
   })
 
-  it("throws a RangeError if interval's start date is greater than its end date", () => {
+  it("returns a negative duration if interval's start date is greater than its end date", () => {
     const interval = {
       start: new Date(2020, 3, 1),
       end: new Date(2020, 2, 1),
     }
+    const result = intervalToDuration(interval)
 
-    assert.throws(intervalToDuration.bind(null, interval), RangeError)
+    assert.deepStrictEqual(result, { months: -1 })
   })
 
-  it("throws a RangeError if interval's start date invalid", () => {
+  it("returns an empty object if interval's start date invalid", () => {
     const interval = {
       start: new Date(NaN),
       end: new Date(2020, 0, 1),
     }
+    const result = intervalToDuration(interval)
 
-    assert.throws(intervalToDuration.bind(null, interval), RangeError)
+    assert.deepStrictEqual(result, {})
   })
 
-  it("throws a RangeError if interval's end date invalid", () => {
+  it("returns an empty object  if interval's end date invalid", () => {
     const interval = {
       start: new Date(2020, 0, 1),
       end: new Date(NaN),
     }
+    const result = intervalToDuration(interval)
 
-    assert.throws(intervalToDuration.bind(null, interval), RangeError)
+    assert.deepStrictEqual(result, {})
   })
 
   describe('edge cases', () => {
@@ -86,12 +81,8 @@ describe('intervalToDuration', () => {
           end: new Date(2012, 1 /* Feb */, 29, 10, 0, 0),
         }),
         {
-          years: 0,
-          months: 0,
           days: 1,
           hours: 1,
-          minutes: 0,
-          seconds: 0,
         }
       )
 
@@ -101,12 +92,7 @@ describe('intervalToDuration', () => {
           end: new Date(2012, 1 /* Feb */, 29, 10, 0, 0),
         }),
         {
-          years: 0,
-          months: 0,
-          days: 0,
           hours: 1,
-          minutes: 0,
-          seconds: 0,
         }
       )
 
@@ -116,12 +102,7 @@ describe('intervalToDuration', () => {
           end: new Date(2012, 1 /* Feb */, 28, 10, 0, 0),
         }),
         {
-          years: 0,
-          months: 0,
-          days: 0,
           hours: 1,
-          minutes: 0,
-          seconds: 0,
         }
       )
 
@@ -132,10 +113,6 @@ describe('intervalToDuration', () => {
           end: new Date(2021, 1 /* Feb */, 28, 7, 38, 18),
         }),
         {
-          years: 0,
-          months: 0,
-          days: 0,
-          hours: 0,
           minutes: 15,
           seconds: 11,
         }
@@ -150,12 +127,7 @@ describe('intervalToDuration', () => {
 
       const duration = intervalToDuration({ start, end })
       const expectedDuration = {
-        years: 0,
         months: 1,
-        days: 0,
-        hours: 0,
-        minutes: 0,
-        seconds: 0,
       }
 
       assert.deepStrictEqual(duration, expectedDuration)
@@ -167,12 +139,7 @@ describe('intervalToDuration', () => {
         end: new Date(2020, 2, 29),
       })
       const expectedDuration = {
-        years: 0,
         months: 1,
-        days: 0,
-        hours: 0,
-        minutes: 0,
-        seconds: 0,
       }
 
       assert.deepStrictEqual(duration, expectedDuration)
@@ -184,12 +151,8 @@ describe('intervalToDuration', () => {
         end: new Date(2022, 3, 30),
       })
       const expectedDuration = {
-        years: 0,
         months: 2,
         days: 2,
-        hours: 0,
-        minutes: 0,
-        seconds: 0,
       }
 
       assert.deepStrictEqual(duration, expectedDuration)
@@ -202,12 +165,8 @@ describe('intervalToDuration', () => {
           end: new Date(2021, 7, 31),
         })
         const expectedDuration = {
-          years: 0,
           months: 6,
           days: 3,
-          hours: 0,
-          minutes: 0,
-          seconds: 0,
         }
 
         assert.deepStrictEqual(duration, expectedDuration)
@@ -219,12 +178,8 @@ describe('intervalToDuration', () => {
           end: new Date(2021, 7, 30),
         })
         const expectedDuration = {
-          years: 0,
           months: 6,
           days: 2,
-          hours: 0,
-          minutes: 0,
-          seconds: 0,
         }
 
         assert.deepStrictEqual(duration, expectedDuration)
@@ -236,12 +191,8 @@ describe('intervalToDuration', () => {
           end: new Date(2021, 7, 29),
         })
         const expectedDuration = {
-          years: 0,
           months: 6,
           days: 1,
-          hours: 0,
-          minutes: 0,
-          seconds: 0,
         }
 
         assert.deepStrictEqual(duration, expectedDuration)
@@ -253,12 +204,7 @@ describe('intervalToDuration', () => {
           end: new Date(2021, 7, 28),
         })
         const expectedDuration = {
-          years: 0,
           months: 6,
-          days: 0,
-          hours: 0,
-          minutes: 0,
-          seconds: 0,
         }
 
         assert.deepStrictEqual(duration, expectedDuration)
@@ -272,12 +218,8 @@ describe('intervalToDuration', () => {
           end: new Date(2021, 7, 27),
         })
         const expectedDuration = {
-          years: 0,
           months: 5,
           days: 30,
-          hours: 0,
-          minutes: 0,
-          seconds: 0,
         }
 
         assert.deepStrictEqual(duration, expectedDuration)
@@ -289,12 +231,8 @@ describe('intervalToDuration', () => {
           end: new Date(2021, 4, 31),
         })
         const expectedDuration = {
-          years: 0,
           months: 1,
           days: 1,
-          hours: 0,
-          minutes: 0,
-          seconds: 0,
         }
 
         assert.deepStrictEqual(duration, expectedDuration)
