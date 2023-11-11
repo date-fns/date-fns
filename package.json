@@ -2424,8 +2424,8 @@
     "@types/sinon": "^9.0.6",
     "@typescript-eslint/eslint-plugin": "^5.30.0",
     "@typescript-eslint/parser": "^5.30.0",
-    "@vitest/browser": "^0.34.3",
-    "@vitest/coverage-v8": "^0.34.3",
+    "@vitest/browser": "^0.34.6",
+    "@vitest/coverage-v8": "^0.34.6",
     "babel-eslint": "^10.0.2",
     "babel-loader": "8.0.6",
     "babel-plugin-add-import-extension": "^1.6.0",
@@ -2450,7 +2450,7 @@
     "moment": "^2.24.0",
     "node-fetch": "^1.7.3",
     "p-limit": "^3.1.0",
-    "playwright": "^1.37.1",
+    "playwright": "^1.39.0",
     "prettier": "2",
     "simple-git": "^2.35.2",
     "sinon": "^7.4.1",
@@ -2460,7 +2460,7 @@
     "typedoc": "^0.23.23",
     "typedoc-plugin-missing-exports": "^1.0.0",
     "typescript": "^5.2.2",
-    "vitest": "^0.34.3",
+    "vitest": "^0.34.6",
     "world-countries": "^1.8.1"
   },
   "resolutions": {
