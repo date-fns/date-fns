@@ -69,28 +69,44 @@ describe('eachDayOfInterval', () => {
     assert.deepStrictEqual(result, [new Date(2014, 9 /* Oct */, 6)])
   })
 
-  it('throws an exception if the start date is after the end date', () => {
-    const block = eachDayOfInterval.bind(null, {
+  it('returns reverse array if the start date is after the end date', () => {
+    const result = eachDayOfInterval({
       start: new Date(2014, 9 /* Oct */, 12),
       end: new Date(2014, 9 /* Oct */, 6),
     })
-    assert.throws(block, RangeError)
+    assert.deepStrictEqual(result, [
+      new Date(2014, 9 /* Oct */, 12),
+      new Date(2014, 9 /* Oct */, 11),
+      new Date(2014, 9 /* Oct */, 10),
+      new Date(2014, 9 /* Oct */, 9),
+      new Date(2014, 9 /* Oct */, 8),
+      new Date(2014, 9 /* Oct */, 7),
+      new Date(2014, 9 /* Oct */, 6),
+    ])
   })
 
-  it('throws an exception if the start date is `Invalid Date`', () => {
-    const block = eachDayOfInterval.bind(null, {
+  it('returns an empty array if the start date is `Invalid Date`', () => {
+    const result = eachDayOfInterval({
       start: new Date(NaN),
       end: new Date(2014, 9 /* Oct */, 6),
     })
-    assert.throws(block, RangeError)
+    assert.deepStrictEqual(result, [])
   })
 
-  it('throws an exception if the end date is `Invalid Date`', () => {
-    const block = eachDayOfInterval.bind(null, {
+  it('returns an empty array if the end date is `Invalid Date`', () => {
+    const result = eachDayOfInterval({
       start: new Date(2014, 9 /* Oct */, 12),
       end: new Date(NaN),
     })
-    assert.throws(block, RangeError)
+    assert.deepStrictEqual(result, [])
+  })
+
+  it('returns an empty array if both of the properties are `Invalid Date`', () => {
+    const result = eachDayOfInterval({
+      start: new Date(NaN),
+      end: new Date(NaN),
+    })
+    assert.deepStrictEqual(result, [])
   })
 
   describe('options.step', () => {
