@@ -21,8 +21,6 @@ export interface EachDayOfIntervalOptions extends StepOptions {}
  *
  * @returns The array with starts of days from the day of the interval start to the day of the interval end
  *
- * @throws {RangeError} `options.step` must be a number greater than 1
- *
  * @example
  * // Each day between 6 October 2014 and 10 October 2014:
  * const result = eachDayOfInterval({
@@ -44,14 +42,17 @@ export default function eachDayOfInterval<DateType extends Date>(
   const startDate = toDate(interval.start)
   const endDate = toDate(interval.end)
 
-  const reversed = +startDate > +endDate
+  let reversed = +startDate > +endDate
   const endTime = reversed ? +startDate : +endDate
   const currentDate = reversed ? endDate : startDate
   currentDate.setHours(0, 0, 0, 0)
 
-  const step = options?.step ?? 1
-  if (step < 1 || isNaN(step))
-    throw new RangeError('`options.step` must be a number greater than 1')
+  let step = options?.step ?? 1
+  if (!step) return []
+  if (step < 0) {
+    step = -step
+    reversed = !reversed
+  }
 
   const dates = []
 

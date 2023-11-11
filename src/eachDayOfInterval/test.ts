@@ -115,9 +115,6 @@ describe('eachDayOfInterval', () => {
       end: new Date(2014, 9 /* Oct */, 13),
     }
 
-    const stepError =
-      /^RangeError: `options.step` must be a number greater than 1$/
-
     it('returns an array with starts of days from the day of the start date to the day of the end date with the given step', () => {
       const result = eachDayOfInterval(interval, { step: 3 })
       assert.deepStrictEqual(result, [
@@ -127,20 +124,44 @@ describe('eachDayOfInterval', () => {
       ])
     })
 
-    it('throws RangeError error if `options.step` is less than 1', () => {
-      assert.throws(() => eachDayOfInterval(interval, { step: 0 }), stepError)
-      assert.throws(() => eachDayOfInterval(interval, { step: -3 }), stepError)
+    it('returns revered array if `options.step` is negative', () => {
+      const result = eachDayOfInterval(
+        {
+          start: new Date(2014, 9 /* Oct */, 10),
+          end: new Date(2014, 9 /* Oct */, 12),
+        },
+        { step: -1 }
+      )
+      assert.deepStrictEqual(result, [
+        new Date(2014, 9 /* Oct */, 12),
+        new Date(2014, 9 /* Oct */, 11),
+        new Date(2014, 9 /* Oct */, 10),
+      ])
     })
 
-    it('throws RangeError error if `options.step` is NaN', () => {
-      assert.throws(
-        () =>
-          eachDayOfInterval(interval, {
-            step: NaN,
-          }),
-        stepError
+    it('reverses array twice if `options.step` is negative and the interval is negative too', () => {
+      const result = eachDayOfInterval(
+        {
+          start: new Date(2014, 9 /* Oct */, 12),
+          end: new Date(2014, 9 /* Oct */, 10),
+        },
+        { step: -1 }
       )
-      assert.throws(() => eachDayOfInterval(interval, { step: NaN }), stepError)
+      assert.deepStrictEqual(result, [
+        new Date(2014, 9 /* Oct */, 10),
+        new Date(2014, 9 /* Oct */, 11),
+        new Date(2014, 9 /* Oct */, 12),
+      ])
+    })
+
+    it('returns empty array if `options.step` is less than 1', () => {
+      const result = eachDayOfInterval(interval, { step: 0 })
+      assert.deepStrictEqual(result, [])
+    })
+
+    it('returns empty array if `options.step` is NaN', () => {
+      const result = eachDayOfInterval(interval, { step: NaN })
+      assert.deepStrictEqual(result, [])
     })
   })
 })
