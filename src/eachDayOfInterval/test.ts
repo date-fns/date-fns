@@ -69,7 +69,7 @@ describe('eachDayOfInterval', () => {
     assert.deepStrictEqual(result, [new Date(2014, 9 /* Oct */, 6)])
   })
 
-  it('returns reverse array if the start date is after the end date', () => {
+  it('returns reversed array if the start date is after the end date', () => {
     const result = eachDayOfInterval({
       start: new Date(2014, 9 /* Oct */, 12),
       end: new Date(2014, 9 /* Oct */, 6),
@@ -124,7 +124,7 @@ describe('eachDayOfInterval', () => {
       ])
     })
 
-    it('returns revered array if `options.step` is negative', () => {
+    it('returns reversed array if `options.step` is negative', () => {
       const result = eachDayOfInterval(
         {
           start: new Date(2014, 9 /* Oct */, 10),
