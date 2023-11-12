@@ -1,5 +1,10 @@
 import toDate from '../toDate/index'
-import type { Interval } from '../types'
+import type { Interval, StepOptions } from '../types'
+
+/**
+ * The {@link eachMonthOfInterval} function options.
+ */
+export interface EachMonthOfIntervalOptions extends StepOptions {}
 
 /**
  * @name eachMonthOfInterval
@@ -35,27 +40,31 @@ import type { Interval } from '../types'
  * // ]
  */
 export default function eachMonthOfInterval<DateType extends Date>(
-  interval: Interval<DateType>
+  interval: Interval<DateType>,
+  options?: EachMonthOfIntervalOptions
 ): DateType[] {
   const startDate = toDate(interval.start)
   const endDate = toDate(interval.end)
 
-  const endTime = endDate.getTime()
-  const dates = []
-
-  // Throw an exception if start date is after end date or if any date is `Invalid Date`
-  if (!(startDate.getTime() <= endTime)) {
-    throw new RangeError('Invalid interval')
-  }
-
-  const currentDate = startDate
+  let reversed = +startDate > +endDate
+  const endTime = reversed ? +startDate : +endDate
+  const currentDate = reversed ? endDate : startDate
   currentDate.setHours(0, 0, 0, 0)
   currentDate.setDate(1)
 
-  while (currentDate.getTime() <= endTime) {
-    dates.push(toDate(currentDate))
-    currentDate.setMonth(currentDate.getMonth() + 1)
+  let step = options?.step ?? 1
+  if (!step) return []
+  if (step < 0) {
+    step = -step
+    reversed = !reversed
   }
 
-  return dates
+  const dates = []
+
+  while (+currentDate <= endTime) {
+    dates.push(toDate(currentDate))
+    currentDate.setMonth(currentDate.getMonth() + step)
+  }
+
+  return reversed ? dates.reverse() : dates
 }

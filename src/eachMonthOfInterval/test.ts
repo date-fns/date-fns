@@ -81,27 +81,86 @@ describe('eachMonthOfInterval', () => {
     assert.deepStrictEqual(result, [new Date(2014, 9 /* Oct */, 1)])
   })
 
-  it('throws an exception if the start date is after the end date', () => {
-    const block = eachMonthOfInterval.bind(null, {
-      start: new Date(2014, 9 /* Oct */, 12),
-      end: new Date(2014, 9 /* Oct */, 6),
+  it('returns reversed array if the start date is after the end date', () => {
+    const result = eachMonthOfInterval({
+      start: new Date(2014, 7 /* Aug */, 12),
+      end: new Date(2014, 2 /* Mar */, 6),
     })
-    assert.throws(block, RangeError)
+    assert.deepStrictEqual(result, [
+      new Date(2014, 7 /* Aug */, 1),
+      new Date(2014, 6 /* Jul */, 1),
+      new Date(2014, 5 /* Jun */, 1),
+      new Date(2014, 4 /* May */, 1),
+      new Date(2014, 3 /* Apr */, 1),
+      new Date(2014, 2 /* Mar */, 1),
+    ])
   })
 
-  it('throws an exception if the start date is `Invalid Date`', () => {
-    const block = eachMonthOfInterval.bind(null, {
+  it('returns an empty array if the start date is `Invalid Date`', () => {
+    const result = eachMonthOfInterval({
       start: new Date(NaN),
       end: new Date(2014, 9 /* Oct */, 6),
     })
-    assert.throws(block, RangeError)
+    assert.deepStrictEqual(result, [])
   })
 
-  it('throws an exception if the end date is `Invalid Date`', () => {
-    const block = eachMonthOfInterval.bind(null, {
+  it('returns an empty array if the end date is `Invalid Date`', () => {
+    const result = eachMonthOfInterval({
       start: new Date(2014, 9 /* Oct */, 12),
       end: new Date(NaN),
     })
-    assert.throws(block, RangeError)
+    assert.deepStrictEqual(result, [])
+  })
+
+  it('returns an empty array if both of the properties are `Invalid Date`', () => {
+    const result = eachMonthOfInterval({
+      start: new Date(NaN),
+      end: new Date(NaN),
+    })
+    assert.deepStrictEqual(result, [])
+  })
+
+  describe('options.step', () => {
+    const interval = {
+      start: new Date(2014, 2 /* Mar */, 6),
+      end: new Date(2014, 7 /* Aug */, 12),
+    }
+
+    it('returns an array with starts of days from the day of the start date to the day of the end date with the given step', () => {
+      const result = eachMonthOfInterval(interval, { step: 3 })
+      assert.deepStrictEqual(result, [
+        new Date(2014, 2 /* Mar */, 1),
+        new Date(2014, 5 /* Jun */, 1),
+      ])
+    })
+
+    it('returns reversed array if `options.step` is negative', () => {
+      const result = eachMonthOfInterval(interval, { step: -3 })
+      assert.deepStrictEqual(result, [
+        new Date(2014, 5 /* Jun */, 1),
+        new Date(2014, 2 /* Mar */, 1),
+      ])
+    })
+
+    it('reverses array twice if `options.step` is negative and the interval is negative too', () => {
+      const result = eachMonthOfInterval(
+        { start: interval.end, end: interval.start },
+        { step: -3 }
+      )
+      assert.deepStrictEqual(result, [
+        new Date(2014, 2 /* Mar */, 1),
+        new Date(2014, 5 /* Jun */, 1),
+      ])
+    })
+
+    it('returns empty array if `options.step` is less than 1', () => {
+      const result = eachMonthOfInterval(interval, { step: 0 })
+      assert.deepStrictEqual(result, [])
+    })
+
+    it('returns empty array if `options.step` is NaN', () => {
+      const result = eachMonthOfInterval(interval, { step: NaN })
+      assert.deepStrictEqual(result, [])
+    })
   })
 })
