@@ -20,9 +20,6 @@ export interface EachMonthOfIntervalOptions extends StepOptions {}
  *
  * @returns The array with starts of months from the month of the interval start to the month of the interval end
  *
- * @throws {RangeError} The start of an interval cannot be after its end
- * @throws {RangeError} Date in interval cannot be `Invalid Date`
- *
  * @example
  * // Each month between 6 February 2014 and 10 August 2014:
  * const result = eachMonthOfInterval({

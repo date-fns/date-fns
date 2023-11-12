@@ -22,9 +22,6 @@ export interface EachQuarterOfIntervalOptions extends StepOptions {}
  *
  * @returns The array with starts of quarters from the quarter of the interval start to the quarter of the interval end
  *
- * @throws {RangeError} The start of an interval cannot be after its end
- * @throws {RangeError} Date in interval cannot be `Invalid Date`
- *
  * @example
  * // Each quarter within interval 6 February 2014 - 10 August 2014:
  * const result = eachQuarterOfInterval({
