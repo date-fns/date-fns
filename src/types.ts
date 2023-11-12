@@ -228,3 +228,47 @@ export interface AdditionalTokensOptions {
    * See: https://date-fns.org/docs/Unicode-Tokens */
   useAdditionalDayOfYearTokens?: boolean
 }
+
+/**
+ * Nearest minute type. Goes from 1 to 30, where 1 is the nearest minute and 30
+ * is nearest half an hour.
+ */
+export type NearestMinutes =
+  | 1
+  | 2
+  | 3
+  | 4
+  | 5
+  | 6
+  | 7
+  | 8
+  | 9
+  | 10
+  | 11
+  | 12
+  | 13
+  | 14
+  | 15
+  | 16
+  | 17
+  | 18
+  | 19
+  | 20
+  | 21
+  | 22
+  | 23
+  | 24
+  | 25
+  | 26
+  | 27
+  | 28
+  | 29
+  | 30
+
+/**
+ * The nearest minutes function options. Used to build function options.
+ */
+export interface NearestMinutesOptions {
+  /** The nearest number of minutes to round to. E.g. `15` to round to quarter hours. */
+  nearestTo?: NearestMinutes
+}

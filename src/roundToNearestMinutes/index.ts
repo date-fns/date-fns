@@ -1,15 +1,14 @@
 import constructFrom from '../constructFrom/index'
 import toDate from '../toDate/index'
-import type { RoundingOptions } from '../types'
+import type { NearestMinutesOptions, RoundingOptions } from '../types'
 import { getRoundingMethod } from '../_lib/roundingMethods/index'
 
 /**
  * The {@link roundToNearestMinutes} function options.
  */
-export interface RoundToNearestMinutesOptions extends RoundingOptions {
-  /** The nearest number of minutes to round to. E.g. `15` to round to quarter hours. */
-  nearestTo?: number
-}
+export interface RoundToNearestMinutesOptions
+  extends NearestMinutesOptions,
+    RoundingOptions {}
 
 /**
  * @name roundToNearestMinutes
@@ -26,8 +25,6 @@ export interface RoundToNearestMinutesOptions extends RoundingOptions {
  * @param options - An object with options.
  *
  * @returns The new date rounded to the closest minute
- *
- * @throws {RangeError} `options.nearestTo` must be between 1 and 30
  *
  * @example
  * // Round 10 July 2014 12:12:34 to nearest minute:
@@ -46,9 +43,7 @@ export default function roundToNearestMinutes<DateType extends Date>(
 ): DateType {
   const nearestTo = options?.nearestTo ?? 1
 
-  if (nearestTo < 1 || nearestTo > 30) {
-    throw new RangeError('`options.nearestTo` must be between 1 and 30')
-  }
+  if (nearestTo < 1 || nearestTo > 30) return constructFrom(date, NaN)
 
   const _date = toDate(date)
   const seconds = _date.getSeconds() // relevant if nearestTo is 1, which is the default case
