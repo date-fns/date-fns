@@ -16,8 +16,6 @@ import startOfYear from '../startOfYear/index'
  *
  * @returns An array containing all the Saturdays and Sundays
  *
- * @throws {RangeError} The passed date is invalid
- *
  * @example
  * // Lists all Saturdays and Sundays in the year
  * const result = eachWeekendOfYear(new Date(2020, 1, 1))
@@ -32,7 +30,7 @@ import startOfYear from '../startOfYear/index'
 export default function eachWeekendOfYear<DateType extends Date>(
   date: DateType | number
 ): DateType[] {
-  const startDate = startOfYear(date)
-  const endDate = endOfYear(date)
-  return eachWeekendOfInterval({ start: startDate, end: endDate })
+  const start = startOfYear(date)
+  const end = endOfYear(date)
+  return eachWeekendOfInterval({ start, end })
 }

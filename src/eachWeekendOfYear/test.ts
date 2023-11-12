@@ -14,7 +14,8 @@ describe('eachWeekendOfYear', () => {
     assert.deepStrictEqual(result[103], new Date(2020, 11, 27))
   })
 
-  it('throws RangeError exception when date is invalid', () => {
-    assert.throws(eachWeekendOfYear.bind(null, new Date(NaN)), RangeError)
+  it('returns an empty asrray when the expected year is an Invalid Date', () => {
+    const result = eachWeekendOfYear(new Date(NaN))
+    assert.deepStrictEqual(result, [])
   })
 })
