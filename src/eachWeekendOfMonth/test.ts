@@ -19,7 +19,8 @@ describe('eachWeekendOfMonth', () => {
     ])
   })
 
-  it('throws RangeError when the expected year is an Invalid Date', () => {
-    assert.throws(eachWeekendOfMonth.bind(null, new Date(NaN)), RangeError)
+  it('returns an empty asrray when the expected year is an Invalid Date', () => {
+    const result = eachWeekendOfMonth(new Date(NaN))
+    assert.deepStrictEqual(result, [])
   })
 })

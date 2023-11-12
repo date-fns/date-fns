@@ -31,27 +31,40 @@ describe('eachWeekendOfInterval', () => {
     ])
   })
 
-  it('throws `RangeError` invalid interval start date is used', () => {
-    const block = eachWeekendOfInterval.bind(null, {
+  it('returns reversed array if the start date is after the end date', () => {
+    const result = eachWeekendOfInterval({
+      start: new Date(2018, 8 /* Sept */, 30),
+      end: new Date(2018, 8 /* Sept */, 17),
+    })
+    assert.deepStrictEqual(result, [
+      new Date(2018, 8 /* Sept */, 30),
+      new Date(2018, 8 /* Sept */, 29),
+      new Date(2018, 8 /* Sept */, 23),
+      new Date(2018, 8 /* Sept */, 22),
+    ])
+  })
+
+  it('returns an empty array if the start date is `Invalid Date`', () => {
+    const result = eachWeekendOfInterval({
       start: new Date(NaN),
       end: new Date(2019, 11 /* Dec */, 31),
     })
-    assert.throws(block, RangeError)
+    assert.deepStrictEqual(result, [])
   })
 
-  it('throws `RangeError` invalid interval end date is used', () => {
-    const block = eachWeekendOfInterval.bind(null, {
+  it('returns an empty array if the end date is `Invalid Date`', () => {
+    const result = eachWeekendOfInterval({
       start: new Date(2019, 0 /* Jan */, 1),
       end: new Date(NaN),
     })
-    assert.throws(block, RangeError)
+    assert.deepStrictEqual(result, [])
   })
 
-  it('throws `RangeError` if start of an interval is after its end', () => {
-    const block = eachWeekendOfInterval.bind(null, {
-      start: new Date(2018, 8 /* Sept */, 25),
-      end: new Date(2018, 8 /* Sept */, 6),
+  it('returns an empty array if both of the properties are `Invalid Date`', () => {
+    const result = eachWeekendOfInterval({
+      start: new Date(NaN),
+      end: new Date(NaN),
     })
-    assert.throws(block, RangeError)
+    assert.deepStrictEqual(result, [])
   })
 })

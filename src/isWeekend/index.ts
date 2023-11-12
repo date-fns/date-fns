@@ -22,7 +22,6 @@ import toDate from '../toDate/index'
 export default function isWeekend<DateType extends Date>(
   date: DateType | number
 ): boolean {
-  const _date = toDate(date)
-  const day = _date.getDay()
+  const day = toDate(date).getDay()
   return day === 0 || day === 6
 }

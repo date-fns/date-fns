@@ -1,5 +1,4 @@
 import eachDayOfInterval from '../eachDayOfInterval/index'
-import isSunday from '../isSunday/index'
 import isWeekend from '../isWeekend/index'
 import type { Interval } from '../types'
 
@@ -16,9 +15,6 @@ import type { Interval } from '../types'
  * @param interval - The given interval
  *
  * @returns An array containing all the Saturdays and Sundays
- *
- * @throws {RangeError} The start of an interval cannot be after its end
- * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *
  * @example
  * // Lists all Saturdays and Sundays in the given date interval
@@ -41,10 +37,7 @@ export default function eachWeekendOfInterval<DateType extends Date>(
   let index = 0
   while (index < dateInterval.length) {
     const date = dateInterval[index++]
-    if (isWeekend(date)) {
-      weekends.push(date)
-      if (isSunday(date)) index = index + 5
-    }
+    if (isWeekend(date)) weekends.push(date)
   }
   return weekends
 }

@@ -16,8 +16,6 @@ import startOfMonth from '../startOfMonth/index'
  *
  * @returns An array containing all the Saturdays and Sundays
  *
- * @throws {RangeError} The passed date is invalid
- *
  * @example
  * // Lists all Saturdays and Sundays in the given month
  * const result = eachWeekendOfMonth(new Date(2022, 1, 1))
@@ -35,10 +33,7 @@ import startOfMonth from '../startOfMonth/index'
 export default function eachWeekendOfMonth<DateType extends Date>(
   date: DateType
 ): DateType[] {
-  const startDate = startOfMonth(date)
-  if (isNaN(startDate.getTime()))
-    throw new RangeError('The passed date is invalid')
-
-  const endDate = endOfMonth(date)
-  return eachWeekendOfInterval({ start: startDate, end: endDate })
+  const start = startOfMonth(date)
+  const end = endOfMonth(date)
+  return eachWeekendOfInterval({ start, end })
 }
