@@ -153,59 +153,65 @@ describe('getOverlappingDaysInIntervals', () => {
     assert(numOverlappingDays === 4)
   })
 
-  it('throws an exception if the start date of the initial time interval is after the end date', () => {
-    const block = getOverlappingDaysInIntervals.bind(
-      null,
-      { start: new Date(2016, 10, 7), end: new Date(2016, 10, 3) },
-      { start: new Date(2016, 10, 5), end: new Date(2016, 10, 15) }
+  it('normalizes the left interval if its start date is after the end date', () => {
+    const initialIntervalStart = new Date(2016, 10, 10, 13, 0, 0)
+    const initialIntervalEnd = new Date(2016, 11, 3, 15, 0, 0)
+
+    const endOverlappingIntervalStart = new Date(2016, 10, 5)
+    const endOverlappingIntervalEnd = new Date(2016, 10, 14)
+
+    const numOverlappingDays = getOverlappingDaysInIntervals(
+      { start: initialIntervalEnd, end: initialIntervalStart },
+      { start: endOverlappingIntervalStart, end: endOverlappingIntervalEnd }
     )
-    assert.throws(block, RangeError)
+    assert(numOverlappingDays === 4)
   })
 
-  it('throws an exception if the start date of the compared time interval is after the end date', () => {
-    const block = getOverlappingDaysInIntervals.bind(
-      null,
-      { start: new Date(2016, 10, 3), end: new Date(2016, 10, 7) },
-      { start: new Date(2016, 10, 15), end: new Date(2016, 10, 5) }
+  it('normalizes the right interval if its start date is after the end date', () => {
+    const initialIntervalStart = new Date(2016, 10, 10, 13, 0, 0)
+    const initialIntervalEnd = new Date(2016, 11, 3, 15, 0, 0)
+
+    const endOverlappingIntervalStart = new Date(2016, 10, 5)
+    const endOverlappingIntervalEnd = new Date(2016, 10, 14)
+
+    const numOverlappingDays = getOverlappingDaysInIntervals(
+      { start: initialIntervalStart, end: initialIntervalEnd },
+      { start: endOverlappingIntervalEnd, end: endOverlappingIntervalStart }
     )
-    assert.throws(block, RangeError)
+    assert(numOverlappingDays === 4)
   })
 
   describe('one of the dates is `Invalid Date`', () => {
-    it('throws an exception if the start date of the initial time interval is `Invalid Date`', () => {
-      const block = getOverlappingDaysInIntervals.bind(
-        null,
+    it('returns 0 if the start date of the initial time interval is `Invalid Date`', () => {
+      const numOverlappingDays = getOverlappingDaysInIntervals(
         { start: new Date(NaN), end: new Date(2016, 10, 3) },
         { start: new Date(2016, 10, 5), end: new Date(2016, 10, 15) }
       )
-      assert.throws(block, RangeError)
+      assert(numOverlappingDays === 0)
     })
 
     it('throws an exception if the end date of the initial time interval is `Invalid Date`', () => {
-      const block = getOverlappingDaysInIntervals.bind(
-        null,
+      const numOverlappingDays = getOverlappingDaysInIntervals(
         { start: new Date(2016, 10, 3), end: new Date(NaN) },
         { start: new Date(2016, 10, 5), end: new Date(2016, 10, 15) }
       )
-      assert.throws(block, RangeError)
+      assert(numOverlappingDays === 0)
     })
 
-    it('throws an exception if the start date of the compared time interval is `Invalid Date`', () => {
-      const block = getOverlappingDaysInIntervals.bind(
-        null,
+    it('returns 0 if the start date of the compared time interval is `Invalid Date`', () => {
+      const numOverlappingDays = getOverlappingDaysInIntervals(
         { start: new Date(2016, 10, 3), end: new Date(2016, 10, 7) },
         { start: new Date(NaN), end: new Date(2016, 10, 5) }
       )
-      assert.throws(block, RangeError)
+      assert(numOverlappingDays === 0)
     })
 
-    it('throws an exception if the end date of the compared time interval is `Invalid Date`', () => {
-      const block = getOverlappingDaysInIntervals.bind(
-        null,
+    it('returns 0 if the end date of the compared time interval is `Invalid Date`', () => {
+      const numOverlappingDays = getOverlappingDaysInIntervals(
         { start: new Date(2016, 10, 3), end: new Date(2016, 10, 7) },
         { start: new Date(2016, 10, 5), end: new Date(NaN) }
       )
-      assert.throws(block, RangeError)
+      assert(numOverlappingDays === 0)
     })
   })
 })

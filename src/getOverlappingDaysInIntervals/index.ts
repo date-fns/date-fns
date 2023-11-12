@@ -12,13 +12,10 @@ import type { Interval } from '../types'
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
- * @param intervalLeft - The first interval to compare. See [Interval]{@link docs/Interval}
- * @param intervalRight - The second interval to compare. See [Interval]{@link docs/Interval}
+ * @param intervalLeft - The first interval to compare.
+ * @param intervalRight - The second interval to compare.
  *
  * @returns The number of days that overlap in two time intervals
- *
- * @throws {RangeError} The start of an interval cannot be after its end
- * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *
  * @example
  * // For overlapping time intervals adds 1 for each started overlapping day:
@@ -41,15 +38,14 @@ export default function getOverlappingDaysInIntervals<DateType extends Date>(
   intervalLeft: Interval<DateType>,
   intervalRight: Interval<DateType>
 ): number {
-  const leftStartTime = toDate(intervalLeft.start).getTime()
-  const leftEndTime = toDate(intervalLeft.end).getTime()
-  const rightStartTime = toDate(intervalRight.start).getTime()
-  const rightEndTime = toDate(intervalRight.end).getTime()
-
-  // Throw an exception if start date is after end date or if any date is `Invalid Date`
-  if (!(leftStartTime <= leftEndTime && rightStartTime <= rightEndTime)) {
-    throw new RangeError('Invalid interval')
-  }
+  const [leftStartTime, leftEndTime] = [
+    +toDate(intervalLeft.start),
+    +toDate(intervalLeft.end),
+  ].sort()
+  const [rightStartTime, rightEndTime] = [
+    +toDate(intervalRight.start),
+    +toDate(intervalRight.end),
+  ].sort()
 
   const isOverlapping =
     leftStartTime < rightEndTime && rightStartTime < leftEndTime
