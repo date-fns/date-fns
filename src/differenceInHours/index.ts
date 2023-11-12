@@ -33,8 +33,8 @@ export interface DifferenceInHoursOptions extends RoundingOptions {}
  * //=> 12
  */
 export default function differenceInHours<DateType extends Date>(
-  dateLeft: DateType | number,
-  dateRight: DateType | number,
+  dateLeft: DateType | number | string,
+  dateRight: DateType | number | string,
   options?: DifferenceInHoursOptions
 ): number {
   const diff =

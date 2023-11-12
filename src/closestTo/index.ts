@@ -26,8 +26,8 @@ import toDate from '../toDate/index'
  * //=> Tue Jan 01 2030 00:00:00
  */
 export default function closestTo<DateType extends Date>(
-  dateToCompare: DateType | number,
-  dates: Array<DateType | number>
+  dateToCompare: DateType | number | string,
+  dates: Array<DateType | number | string>
 ): DateType | undefined {
   const date = toDate(dateToCompare)
 

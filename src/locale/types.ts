@@ -149,8 +149,8 @@ export interface FormatRelativeFnOptions
  * @param options - The object with options
  */
 export type FormatRelativeTokenFn = <DateType extends Date>(
-  date: DateType | number,
-  baseDate: DateType | number,
+  date: DateType | number | string,
+  baseDate: DateType | number | string,
   options?: FormatRelativeTokenFnOptions
 ) => string
 

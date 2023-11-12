@@ -24,7 +24,7 @@ import setISOWeekYear from '../setISOWeekYear/index'
  * //=> Fri Jn 26 2015 00:00:00
  */
 export default function addISOWeekYears<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   amount: number
 ): DateType {
   return setISOWeekYear(date, getISOWeekYear(date) + amount)

@@ -28,7 +28,7 @@ import type { Day } from '../types'
  * //=> Tue Mar 17 2020 00:00:00
  */
 export default function previousDay<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   day: Day
 ): DateType {
   let delta = getDay(date) - day

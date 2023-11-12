@@ -43,8 +43,8 @@ export interface IsSameWeekOptions
  * //=> false
  */
 export default function isSameWeek<DateType extends Date>(
-  dateLeft: DateType | number,
-  dateRight: DateType | number,
+  dateLeft: DateType | number | string,
+  dateRight: DateType | number | string,
   options?: IsSameWeekOptions
 ): boolean {
   const dateLeftStartOfWeek = startOfWeek(dateLeft, options)

@@ -22,7 +22,7 @@ import isSameDay from '../isSameDay/index'
  * //=> true
  */
 export default function isTomorrow<DateType extends Date>(
-  date: DateType | number
+  date: DateType | number | string
 ): boolean {
   return isSameDay(date, addDays(Date.now(), 1))
 }

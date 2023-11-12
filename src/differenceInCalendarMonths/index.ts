@@ -24,8 +24,8 @@ import toDate from '../toDate/index'
  * //=> 8
  */
 export default function differenceInCalendarMonths<DateType extends Date>(
-  dateLeft: DateType | number,
-  dateRight: DateType | number
+  dateLeft: DateType | number | string,
+  dateRight: DateType | number | string
 ): number {
   const _dateLeft = toDate(dateLeft)
   const _dateRight = toDate(dateRight)

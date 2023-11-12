@@ -44,7 +44,7 @@ import constructFrom from '../constructFrom/index'
  * //=> Mon Sep 1 2014 10:19:50
  */
 export default function sub<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   duration: Duration
 ): DateType {
   const {

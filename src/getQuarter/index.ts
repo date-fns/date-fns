@@ -20,7 +20,7 @@ import toDate from '../toDate/index'
  * //=> 3
  */
 export default function getQuarter<DateType extends Date>(
-  date: DateType | number
+  date: DateType | number | string
 ): number {
   const _date = toDate(date)
   const quarter = Math.floor(_date.getMonth() / 3) + 1

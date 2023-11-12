@@ -21,7 +21,7 @@ import addSeconds from '../addSeconds/index'
  * //=> Thu Jul 10 2014 12:44:30
  */
 export default function subSeconds<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   amount: number
 ): DateType {
   return addSeconds(date, -amount)

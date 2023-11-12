@@ -23,8 +23,8 @@ import startOfISOWeekYear from '../startOfISOWeekYear/index'
  * //=> true
  */
 export default function isSameISOWeekYear<DateType extends Date>(
-  dateLeft: DateType | number,
-  dateRight: DateType | number
+  dateLeft: DateType | number | string,
+  dateRight: DateType | number | string
 ): boolean {
   const dateLeftStartOfYear = startOfISOWeekYear(dateLeft)
   const dateRightStartOfYear = startOfISOWeekYear(dateRight)

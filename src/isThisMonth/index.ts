@@ -22,7 +22,7 @@ import isSameMonth from '../isSameMonth/index'
  */
 
 export default function isThisMonth<DateType extends Date>(
-  date: DateType | number
+  date: DateType | number | string
 ): boolean {
   return isSameMonth(Date.now(), date)
 }

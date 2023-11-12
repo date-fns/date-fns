@@ -21,8 +21,8 @@ import toDate from '../toDate/index'
  * //=> true
  */
 export default function isAfter<DateType extends Date>(
-  date: DateType | number,
-  dateToCompare: DateType | number
+  date: DateType | number | string,
+  dateToCompare: DateType | number | string
 ): boolean {
   const _date = toDate(date)
   const _dateToCompare = toDate(dateToCompare)

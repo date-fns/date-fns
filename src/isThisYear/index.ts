@@ -21,7 +21,7 @@ import isSameYear from '../isSameYear/index'
  * //=> true
  */
 export default function isThisYear<DateType extends Date>(
-  date: DateType | number
+  date: DateType | number | string
 ): boolean {
   return isSameYear(date, Date.now())
 }

@@ -21,7 +21,7 @@ import toDate from '../toDate/index'
  * //=> 366
  */
 export default function getDaysInYear<DateType extends Date>(
-  date: DateType | number
+  date: DateType | number | string
 ): number {
   const _date = toDate(date)
 

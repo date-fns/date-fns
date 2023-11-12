@@ -36,7 +36,7 @@ export interface IsThisWeekOptions
  * //=> false
  */
 export default function isThisWeek<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   options?: IsThisWeekOptions
 ): boolean {
   return isSameWeek(date, Date.now(), options)

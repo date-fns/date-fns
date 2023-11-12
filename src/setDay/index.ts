@@ -37,7 +37,7 @@ export interface SetDayOptions
  * //=> Sun Sep 07 2014 00:00:00
  */
 export default function setDay<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   day: number,
   options?: SetDayOptions
 ): DateType {

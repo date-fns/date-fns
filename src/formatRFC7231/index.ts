@@ -42,7 +42,7 @@ const months = [
  * //=> 'Wed, 18 Sep 2019 19:00:52 GMT'
  */
 export default function formatRFC7231<DateType extends Date>(
-  date: DateType | number
+  date: DateType | number | string
 ): string {
   const _date = toDate(date)
 

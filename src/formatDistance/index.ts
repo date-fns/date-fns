@@ -101,8 +101,8 @@ export interface FormatDistanceOptions
  */
 
 export default function formatDistance<DateType extends Date>(
-  date: DateType | number,
-  baseDate: DateType | number,
+  date: DateType | number | string,
+  baseDate: DateType | number | string,
   options?: FormatDistanceOptions
 ): string {
   const defaultOptions = getDefaultOptions()

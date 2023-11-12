@@ -27,7 +27,7 @@ import toDate from '../toDate/index'
  * //=> Mon Jan 01 2007 00:00:00
  */
 export default function setISOWeekYear<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   weekYear: number
 ): DateType {
   let _date = toDate(date)

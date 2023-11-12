@@ -37,7 +37,7 @@ import type { DateValues } from '../types'
  */
 
 export default function set<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   values: DateValues
 ): DateType {
   let _date = toDate(date)

@@ -21,7 +21,7 @@ import addMonths from '../addMonths/index'
  * //=> Sun Sep 01 2019 00:00:00
  */
 export default function addYears<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   amount: number
 ): DateType {
   return addMonths(date, amount * 12)

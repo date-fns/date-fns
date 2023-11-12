@@ -20,7 +20,7 @@ import toDate from '../toDate/index'
  * //=> Jan 01 2010 00:00:00
  */
 export default function startOfDecade<DateType extends Date>(
-  date: DateType | number
+  date: DateType | number | string
 ): DateType {
   const _date = toDate(date)
   const year = _date.getFullYear()

@@ -21,7 +21,7 @@ import toDate from '../toDate/index'
  * //=> Mon Dec 01 2014 22:15:45.999
  */
 export default function endOfSecond<DateType extends Date>(
-  date: DateType | number
+  date: DateType | number | string
 ): DateType {
   const _date = toDate(date)
   _date.setMilliseconds(999)

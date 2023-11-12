@@ -21,7 +21,7 @@ import addDays from '../addDays/index'
  * //=> Fri Aug 22 2014 00:00:00
  */
 export default function subDays<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   amount: number
 ): DateType {
   return addDays(date, -amount)

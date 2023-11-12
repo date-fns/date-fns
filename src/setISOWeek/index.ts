@@ -24,7 +24,7 @@ import toDate from '../toDate/index'
  * //=> Sat Jan 01 2005 00:00:00
  */
 export default function setISOWeek<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   week: number
 ): DateType {
   const _date = toDate(date)

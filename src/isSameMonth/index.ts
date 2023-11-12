@@ -26,8 +26,8 @@ import toDate from '../toDate/index'
  * //=> false
  */
 export default function isSameMonth<DateType extends Date>(
-  dateLeft: DateType | number,
-  dateRight: DateType | number
+  dateLeft: DateType | number | string,
+  dateRight: DateType | number | string
 ): boolean {
   const _dateLeft = toDate(dateLeft)
   const _dateRight = toDate(dateRight)

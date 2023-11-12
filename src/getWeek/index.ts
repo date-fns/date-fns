@@ -54,7 +54,7 @@ export interface GetWeekOptions
  */
 
 export default function getWeek<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   options?: GetWeekOptions
 ): number {
   const _date = toDate(date)

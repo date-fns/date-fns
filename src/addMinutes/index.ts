@@ -22,7 +22,7 @@ import { millisecondsInMinute } from '../constants/index'
  * //=> Thu Jul 10 2014 12:30:00
  */
 export default function addMinutes<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   amount: number
 ): DateType {
   return addMilliseconds(date, amount * millisecondsInMinute)

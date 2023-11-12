@@ -21,7 +21,7 @@ import toDate from '../toDate/index'
  * //=> Tue Sep 30 2014 00:00:00
  */
 export default function lastDayOfMonth<DateType extends Date>(
-  date: DateType | number
+  date: DateType | number | string
 ): DateType {
   const _date = toDate(date)
   const month = _date.getMonth()

@@ -21,7 +21,7 @@ import toDate from '../toDate/index'
  * //=> true
  */
 export default function isFuture<DateType extends Date>(
-  date: DateType | number
+  date: DateType | number | string
 ): boolean {
   return +toDate(date) > Date.now()
 }

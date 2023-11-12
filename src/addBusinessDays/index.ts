@@ -25,7 +25,7 @@ import toDate from '../toDate/index'
  * //=> Mon Sep 15 2014 00:00:00 (skipped weekend days)
  */
 export default function addBusinessDays<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   amount: number
 ): DateType {
   const _date = toDate(date)

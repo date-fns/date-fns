@@ -21,7 +21,7 @@ import toDate from '../toDate/index'
  * //=> Mon Sep 01 2014 11:30:40.300
  */
 export default function setMilliseconds<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   milliseconds: number
 ): DateType {
   const _date = toDate(date)

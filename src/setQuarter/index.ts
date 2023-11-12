@@ -22,7 +22,7 @@ import toDate from '../toDate/index'
  * //=> Wed Apr 02 2014 00:00:00
  */
 export default function setQuarter<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   quarter: number
 ): DateType {
   const _date = toDate(date)

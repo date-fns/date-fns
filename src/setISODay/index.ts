@@ -25,7 +25,7 @@ import toDate from '../toDate/index'
  * //=> Sun Sep 07 2014 00:00:00
  */
 export default function setISODay<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   day: number
 ): DateType {
   const _date = toDate(date)

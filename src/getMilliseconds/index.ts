@@ -20,7 +20,7 @@ import toDate from '../toDate/index'
  * //=> 123
  */
 export default function getMilliseconds<DateType extends Date>(
-  date: DateType | number
+  date: DateType | number | string
 ): number {
   const _date = toDate(date)
   const milliseconds = _date.getMilliseconds()

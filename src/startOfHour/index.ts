@@ -21,7 +21,7 @@ import toDate from '../toDate/index'
  * //=> Tue Sep 02 2014 11:00:00
  */
 export default function startOfHour<DateType extends Date>(
-  date: DateType | number
+  date: DateType | number | string
 ): DateType {
   const _date = toDate(date)
   _date.setMinutes(0, 0, 0)

@@ -25,7 +25,7 @@ import toDate from '../toDate/index'
  * //=> 2004
  */
 export default function getISOWeekYear<DateType extends Date>(
-  date: DateType | number
+  date: DateType | number | string
 ): number {
   const _date = toDate(date)
   const year = _date.getFullYear()

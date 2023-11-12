@@ -23,7 +23,7 @@ import toDate from '../toDate/index'
  * //=> Sat Feb 01 2014 00:00:00
  */
 export default function setMonth<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   month: number
 ): DateType {
   const _date = toDate(date)

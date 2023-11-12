@@ -22,7 +22,7 @@ import constructFrom from '../constructFrom/index'
  * //=> Thu Jul 10 2014 12:45:30.750
  */
 export default function addMilliseconds<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   amount: number
 ): DateType {
   const timestamp = +toDate(date)

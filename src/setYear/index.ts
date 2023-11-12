@@ -22,7 +22,7 @@ import toDate from '../toDate/index'
  * //=> Sun Sep 01 2013 00:00:00
  */
 export default function setYear<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   year: number
 ): DateType {
   const _date = toDate(date)

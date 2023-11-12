@@ -21,7 +21,7 @@ import isSameQuarter from '../isSameQuarter/index'
  * //=> true
  */
 export default function isThisQuarter<DateType extends Date>(
-  date: DateType | number
+  date: DateType | number | string
 ): boolean {
   return isSameQuarter(Date.now(), date)
 }

@@ -50,8 +50,8 @@ export interface DifferenceInWeeksOptions extends RoundingOptions {}
  * //=> 8
  */
 export default function differenceInWeeks<DateType extends Date>(
-  dateLeft: DateType | number,
-  dateRight: DateType | number,
+  dateLeft: DateType | number | string,
+  dateRight: DateType | number | string,
   options?: DifferenceInWeeksOptions
 ): number {
   const diff = differenceInDays(dateLeft, dateRight) / 7

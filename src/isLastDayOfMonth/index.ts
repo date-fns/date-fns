@@ -22,7 +22,7 @@ import toDate from '../toDate/index'
  * //=> true
  */
 export default function isLastDayOfMonth<DateType extends Date>(
-  date: DateType | number
+  date: DateType | number | string
 ): boolean {
   const _date = toDate(date)
   return +endOfDay(_date) === +endOfMonth(_date)

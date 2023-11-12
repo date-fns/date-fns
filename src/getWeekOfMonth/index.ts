@@ -32,7 +32,7 @@ export interface GetWeekOfMonthOptions
  * //=> 2
  */
 export default function getWeekOfMonth<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   options?: GetWeekOfMonthOptions
 ): number {
   const defaultOptions = getDefaultOptions()

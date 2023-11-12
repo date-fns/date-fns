@@ -21,7 +21,7 @@ import constructFrom from '../constructFrom/index'
  * //=> 29
  */
 export default function getDaysInMonth<DateType extends Date>(
-  date: DateType | number
+  date: DateType | number | string
 ): number {
   const _date = toDate(date)
   const year = _date.getFullYear()

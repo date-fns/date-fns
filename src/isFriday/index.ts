@@ -20,7 +20,7 @@ import toDate from '../toDate/index'
  * //=> true
  */
 export default function isFriday<DateType extends Date>(
-  date: DateType | number
+  date: DateType | number | string
 ): boolean {
   return toDate(date).getDay() === 5
 }

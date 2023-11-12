@@ -21,7 +21,7 @@ import toDate from '../toDate/index'
  * //=> Mon Sep 01 2014 11:30:45
  */
 export default function setSeconds<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   seconds: number
 ): DateType {
   const _date = toDate(date)

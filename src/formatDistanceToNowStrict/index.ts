@@ -82,7 +82,7 @@ export interface FormatDistanceToNowStrictOptions
  * //=> '1 jaro'
  */
 export default function formatDistanceToNowStrict<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   options?: FormatDistanceToNowStrictOptions
 ): string {
   return formatDistanceStrict(date, Date.now(), options)

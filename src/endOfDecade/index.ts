@@ -20,7 +20,7 @@ import toDate from '../toDate/index'
  * //=> Dec 31 1989 23:59:59.999
  */
 export default function endOfDecade<DateType extends Date>(
-  date: DateType | number
+  date: DateType | number | string
 ): DateType {
   const _date = toDate(date)
   const year = _date.getFullYear()

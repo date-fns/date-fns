@@ -36,7 +36,7 @@ export interface LastDayOfWeekOptions
  * //=> Sun Sep 07 2014 00:00:00
  */
 export default function lastDayOfWeek<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   options?: LastDayOfWeekOptions
 ): DateType {
   const defaultOptions = getDefaultOptions()

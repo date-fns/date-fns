@@ -82,9 +82,9 @@ export type DurationUnit = keyof Duration
  */
 export interface Interval<DateType extends Date = Date> {
   /** The start of the interval. */
-  start: DateType | number
+  start: DateType | number | string
   /** The end of the interval. */
-  end: DateType | number
+  end: DateType | number | string
 }
 
 /**

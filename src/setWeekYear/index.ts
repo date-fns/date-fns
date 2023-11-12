@@ -56,7 +56,7 @@ export interface SetWeekYearOptions
  * //=> Sat Jan 01 2005 00:00:00
  */
 export default function setWeekYear<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   weekYear: number,
   options?: SetWeekYearOptions
 ): DateType {

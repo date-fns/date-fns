@@ -20,7 +20,7 @@ import toDate from '../toDate/index'
  * //=> true
  */
 export default function isLeapYear<DateType extends Date>(
-  date: DateType | number
+  date: DateType | number | string
 ): boolean {
   const _date = toDate(date)
   const year = _date.getFullYear()

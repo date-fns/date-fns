@@ -20,7 +20,7 @@ import toDate from '../toDate/index'
  * //=> 3
  */
 export default function getDay<DateType extends Date>(
-  date: DateType | number
+  date: DateType | number | string
 ): number {
   const _date = toDate(date)
   const day = _date.getDay()

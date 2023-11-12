@@ -40,7 +40,7 @@ export interface FormatRFC3339Options {
  * //=> '2019-09-18T19:00:52.234Z'
  */
 export default function formatRFC3339<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   options?: FormatRFC3339Options
 ): string {
   const _date = toDate(date)

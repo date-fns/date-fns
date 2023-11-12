@@ -38,14 +38,14 @@ import type { Duration } from '../types'
  *   months: 9,
  *   weeks: 1,
  *   days: 7,
- *   hours: 5,
+ *   hours: 5,\\-7
  *   minutes: 9,
  *   seconds: 30,
  * })
  * //=> Thu Jun 15 2017 15:29:20
  */
 export default function add<DateType extends Date = Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   duration: Duration
 ): DateType {
   const {

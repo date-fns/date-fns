@@ -41,8 +41,8 @@ export interface DifferenceInMinutesOptions extends RoundingOptions {}
  * //=> -1
  */
 export default function differenceInMinutes<DateType extends Date>(
-  dateLeft: DateType | number,
-  dateRight: DateType | number,
+  dateLeft: DateType | number | string,
+  dateRight: DateType | number | string,
   options?: DifferenceInMinutesOptions
 ): number {
   const diff =

@@ -25,7 +25,7 @@ import toDate from '../toDate/index'
  * //=> 53
  */
 export default function getISOWeek<DateType extends Date>(
-  date: DateType | number
+  date: DateType | number | string
 ): number {
   const _date = toDate(date)
   const diff =

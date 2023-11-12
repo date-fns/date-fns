@@ -21,7 +21,7 @@ import addMinutes from '../addMinutes/index'
  * //=> Thu Jul 10 2014 11:30:00
  */
 export default function subMinutes<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   amount: number
 ): DateType {
   return addMinutes(date, -amount)

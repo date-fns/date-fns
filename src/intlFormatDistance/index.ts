@@ -146,8 +146,8 @@ export type IntlFormatDistanceUnit =
  * //=> 'in 2 yr'
  */
 export default function intlFormatDistance<DateType extends Date>(
-  date: DateType | number,
-  baseDate: DateType | number,
+  date: DateType | number | string,
+  baseDate: DateType | number | string,
   options?: IntlFormatDistanceOptions
 ): string {
   let value: number = 0

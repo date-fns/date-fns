@@ -335,7 +335,7 @@ export interface FormatOptions
  * //=> "3 o'clock"
  */
 export default function format<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   formatStr: string,
   options?: FormatOptions
 ): string {

@@ -32,8 +32,8 @@ import startOfMinute from '../startOfMinute/index'
  * //=> false
  */
 export default function isSameMinute<DateType extends Date>(
-  dateLeft: DateType | number,
-  dateRight: DateType | number
+  dateLeft: DateType | number | string,
+  dateRight: DateType | number | string
 ): boolean {
   const dateLeftStartOfMinute = startOfMinute(dateLeft)
   const dateRightStartOfMinute = startOfMinute(dateRight)

@@ -24,7 +24,7 @@ import isSameISOWeek from '../isSameISOWeek/index'
  */
 
 export default function isThisISOWeek<DateType extends Date>(
-  date: DateType | number
+  date: DateType | number | string
 ): boolean {
   return isSameISOWeek(date, Date.now())
 }

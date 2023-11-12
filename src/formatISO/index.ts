@@ -45,7 +45,7 @@ export interface FormatISOOptions extends ISOFormatOptions {}
  * //=> '19:00:52Z'
  */
 export default function formatISO<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   options?: FormatISOOptions
 ): string {
   const _date = toDate(date)

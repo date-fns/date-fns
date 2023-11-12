@@ -21,7 +21,7 @@ import addHours from '../addHours/index'
  * //=> Thu Jul 10 2014 23:00:00
  */
 export default function subHours<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   amount: number
 ): DateType {
   return addHours(date, -amount)

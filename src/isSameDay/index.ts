@@ -31,8 +31,8 @@ import startOfDay from '../startOfDay/index'
  * //=> false
  */
 export default function isSameDay<DateType extends Date>(
-  dateLeft: DateType | number,
-  dateRight: DateType | number
+  dateLeft: DateType | number | string,
+  dateRight: DateType | number | string
 ): boolean {
   const dateLeftStartOfDay = startOfDay(dateLeft)
   const dateRightStartOfDay = startOfDay(dateRight)

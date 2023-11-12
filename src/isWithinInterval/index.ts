@@ -43,7 +43,7 @@ import type { Interval } from '../types'
  * // => true
  */
 export default function isWithinInterval<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   interval: Interval<DateType>
 ): boolean {
   const time = +toDate(date)

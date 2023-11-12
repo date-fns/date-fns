@@ -20,7 +20,7 @@ import toDate from '../toDate/index'
  * //=> 1330515905123
  */
 export default function getTime<DateType extends Date>(
-  date: DateType | number
+  date: DateType | number | string
 ): number {
   const _date = toDate(date)
   const timestamp = _date.getTime()

@@ -24,7 +24,7 @@ import startOfISOWeekYear from '../startOfISOWeekYear/index'
  * //=> 53
  */
 export default function getISOWeeksInYear<DateType extends Date>(
-  date: DateType | number
+  date: DateType | number | string
 ): number {
   const thisYear = startOfISOWeekYear(date)
   const nextYear = startOfISOWeekYear(addWeeks(thisYear, 60))

@@ -23,7 +23,7 @@ import toDate from '../toDate/index'
  * //=> 7
  */
 export default function getISODay<DateType extends Date>(
-  date: DateType | number
+  date: DateType | number | string
 ): number {
   const _date = toDate(date)
   let day = _date.getDay()

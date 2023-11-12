@@ -81,7 +81,7 @@ type Token = keyof typeof formatters
  * //=> '2014-02-11'
  */
 export default function lightFormat<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   formatStr: string
 ): string {
   const _date = toDate(date)

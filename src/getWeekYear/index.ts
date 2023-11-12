@@ -53,7 +53,7 @@ export interface GetWeekYearOptions
  * //=> 2004
  */
 export default function getWeekYear<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   options?: GetWeekYearOptions
 ): number {
   const _date = toDate(date)

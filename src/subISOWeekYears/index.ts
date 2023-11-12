@@ -23,7 +23,7 @@ import addISOWeekYears from '../addISOWeekYears/index'
  * //=> Mon Aug 31 2009 00:00:00
  */
 export default function subISOWeekYears<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   amount: number
 ): DateType {
   return addISOWeekYears(date, -amount)

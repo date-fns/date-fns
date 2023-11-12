@@ -22,7 +22,7 @@ import toDate from '../toDate/index'
  * //=> 183
  */
 export default function getDayOfYear<DateType extends Date>(
-  date: DateType | number
+  date: DateType | number | string
 ): number {
   const _date = toDate(date)
   const diff = differenceInCalendarDays(_date, startOfYear(_date))

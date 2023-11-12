@@ -21,7 +21,7 @@ import toDate from '../toDate/index'
  * //=> Thu Jan 02 2014 00:00:00
  */
 export default function setDayOfYear<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   dayOfYear: number
 ): DateType {
   const _date = toDate(date)

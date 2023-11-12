@@ -20,7 +20,7 @@ import toDate from '../toDate/index'
  * //=> 11
  */
 export default function getHours<DateType extends Date>(
-  date: DateType | number
+  date: DateType | number | string
 ): number {
   const _date = toDate(date)
   const hours = _date.getHours()

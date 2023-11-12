@@ -21,7 +21,7 @@ import addWeeks from '../addWeeks/index'
  * //=> Mon Aug 04 2014 00:00:00
  */
 export default function subWeeks<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   amount: number
 ): DateType {
   return addWeeks(date, -amount)

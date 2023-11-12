@@ -35,8 +35,8 @@ import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMillisec
  * //=> 1
  */
 export default function differenceInCalendarDays<DateType extends Date>(
-  dateLeft: DateType | number,
-  dateRight: DateType | number
+  dateLeft: DateType | number | string,
+  dateRight: DateType | number | string
 ): number {
   const startOfDayLeft = startOfDay(dateLeft)
   const startOfDayRight = startOfDay(dateRight)

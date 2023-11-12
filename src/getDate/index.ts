@@ -20,7 +20,7 @@ import toDate from '../toDate/index'
  * //=> 29
  */
 export default function getDate<DateType extends Date>(
-  date: DateType | number
+  date: DateType | number | string
 ): number {
   const _date = toDate(date)
   const dayOfMonth = _date.getDate()

@@ -23,7 +23,7 @@ import endOfWeek from '../endOfWeek/index'
  * //=> Sun Sep 07 2014 23:59:59.999
  */
 export default function endOfISOWeek<DateType extends Date>(
-  date: DateType | number
+  date: DateType | number | string
 ): DateType {
   return endOfWeek(date, { weekStartsOn: 1 })
 }

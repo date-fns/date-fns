@@ -27,8 +27,8 @@ import toDate from '../toDate/index'
  * //=> 1
  */
 export default function closestIndexTo<DateType extends Date>(
-  dateToCompare: DateType | number,
-  dates: Array<DateType | number>
+  dateToCompare: DateType | number | string,
+  dates: Array<DateType | number | string>
 ): number | undefined {
   const date = toDate(dateToCompare)
 

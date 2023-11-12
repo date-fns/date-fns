@@ -20,7 +20,7 @@ import toDate from '../toDate/index'
  * //=> 2014
  */
 export default function getYear<DateType extends Date>(
-  date: DateType | number
+  date: DateType | number | string
 ): number {
   return toDate(date).getFullYear()
 }

@@ -20,7 +20,7 @@ import nextDay from '../nextDay/index'
  * //=> Thur Mar 26 2020 00:00:00
  */
 export default function nextThursday<DateType extends Date>(
-  date: DateType | number
+  date: DateType | number | string
 ): DateType {
   return nextDay(date, 4)
 }

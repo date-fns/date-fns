@@ -20,7 +20,7 @@ import previousDay from '../previousDay/index'
  * //=> Thu June 17 2021 00:00:00
  */
 export default function previousThursday<DateType extends Date>(
-  date: DateType | number
+  date: DateType | number | string
 ): DateType {
   return previousDay(date, 4)
 }

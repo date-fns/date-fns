@@ -31,7 +31,7 @@ import type { Interval } from '../types'
  * //=> Mon Mar 22 2021 00:00:00
  */
 export default function clamp<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   interval: Interval
 ): DateType | Date {
   return min([max([date, interval.start]), interval.end])

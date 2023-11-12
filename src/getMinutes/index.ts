@@ -20,7 +20,7 @@ import toDate from '../toDate/index'
  * //=> 45
  */
 export default function getMinutes<DateType extends Date>(
-  date: DateType | number
+  date: DateType | number | string
 ): number {
   const _date = toDate(date)
   const minutes = _date.getMinutes()

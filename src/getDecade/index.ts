@@ -20,7 +20,7 @@ import toDate from '../toDate/index'
  * //=> 1940
  */
 export default function getDecade<DateType extends Date>(
-  date: DateType | number
+  date: DateType | number | string
 ): number {
   const _date = toDate(date)
   const year = _date.getFullYear()

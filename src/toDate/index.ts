@@ -1,3 +1,5 @@
+import { GenericDateConstructor } from '../types'
+
 /**
  * @name toDate
  * @category Common Helpers
@@ -31,7 +33,7 @@
  * //=> Tue Feb 11 2014 11:30:30
  */
 export default function toDate<DateType extends Date = Date>(
-  argument: DateType | number
+  argument: DateType | number | string
 ): DateType {
   const argStr = Object.prototype.toString.call(argument)
 
@@ -41,11 +43,15 @@ export default function toDate<DateType extends Date = Date>(
     (typeof argument === 'object' && argStr === '[object Date]')
   ) {
     // Prevent the date to lose the milliseconds when passed to new Date() in IE10
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore: TODO find a way to make TypeScript happy about this code
-    return new argument.constructor(argument.getTime())
-    // return new Date(argument.getTime())
-  } else if (typeof argument === 'number' || argStr === '[object Number]') {
+    return new (argument.constructor as GenericDateConstructor<DateType>)(
+      +argument
+    )
+  } else if (
+    typeof argument === 'number' ||
+    argStr === '[object Number]' ||
+    typeof argStr === 'string' ||
+    argStr === '[object String]'
+  ) {
     // TODO: Can we get rid of as?
     return new Date(argument) as DateType
   } else {

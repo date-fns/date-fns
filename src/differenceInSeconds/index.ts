@@ -33,8 +33,8 @@ export interface DifferenceInSecondsOptions extends RoundingOptions {}
  * //=> 12
  */
 export default function differenceInSeconds<DateType extends Date>(
-  dateLeft: DateType | number,
-  dateRight: DateType | number,
+  dateLeft: DateType | number | string,
+  dateRight: DateType | number | string,
   options?: DifferenceInSecondsOptions
 ): number {
   const diff = differenceInMilliseconds(dateLeft, dateRight) / 1000

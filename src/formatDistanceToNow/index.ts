@@ -89,7 +89,7 @@ export interface FormatDistanceToNowOptions extends FormatDistanceOptions {}
  * //=> 'pli ol 1 jaro'
  */
 export default function formatDistanceToNow<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   options?: FormatDistanceToNowOptions
 ): string {
   return distanceInWords(date, Date.now(), options)

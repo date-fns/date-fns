@@ -36,7 +36,7 @@ export interface EndOfWeekOptions
  * //=> Sun Sep 07 2014 23:59:59.999
  */
 export default function endOfWeek<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   options?: EndOfWeekOptions
 ): DateType {
   const defaultOptions = getDefaultOptions()

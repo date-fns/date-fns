@@ -53,7 +53,7 @@ export interface StartOfWeekYearOptions
  * //=> Mon Jan 03 2005 00:00:00
  */
 export default function startOfWeekYear<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   options?: StartOfWeekYearOptions
 ): DateType {
   const defaultOptions = getDefaultOptions()

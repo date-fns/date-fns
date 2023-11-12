@@ -21,7 +21,7 @@ import addBusinessDays from '../addBusinessDays/index'
  * //=> Mon Aug 18 2014 00:00:00 (skipped weekend days)
  */
 export default function subBusinessDays<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   amount: number
 ): DateType {
   return addBusinessDays(date, -amount)

@@ -21,7 +21,7 @@ import addYears from '../addYears/index'
  * //=> Tue Sep 01 2009 00:00:00
  */
 export default function subYears<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   amount: number
 ): DateType {
   return addYears(date, -amount)

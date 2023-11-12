@@ -26,8 +26,8 @@ import startOfHour from '../startOfHour/index'
  * //=> false
  */
 export default function isSameHour<DateType extends Date>(
-  dateLeft: DateType | number,
-  dateRight: DateType | number
+  dateLeft: DateType | number | string,
+  dateRight: DateType | number | string
 ): boolean {
   const dateLeftStartOfHour = startOfHour(dateLeft)
   const dateRightStartOfHour = startOfHour(dateRight)

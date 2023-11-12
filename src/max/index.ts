@@ -25,7 +25,7 @@ import toDate from '../toDate/index'
  * //=> Sun Jul 02 1995 00:00:00
  */
 export default function max<DateType extends Date>(
-  dates: Array<DateType | number>
+  dates: Array<DateType | number | string>
 ): DateType | Date {
   let result: Date | undefined
   dates.forEach(function (dirtyDate) {

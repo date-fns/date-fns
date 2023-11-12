@@ -52,8 +52,8 @@ export interface FormatRelativeOptions
  * //=> "last Thursday at 12:45 AM"
  */
 export default function formatRelative<DateType extends Date>(
-  date: DateType | number,
-  baseDate: DateType | number,
+  date: DateType | number | string,
+  baseDate: DateType | number | string,
   options?: FormatRelativeOptions
 ): string {
   const _date = toDate(date)

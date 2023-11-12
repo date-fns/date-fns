@@ -20,7 +20,7 @@ import toDate from '../toDate/index'
  * //=> 1
  */
 export default function getMonth<DateType extends Date>(
-  date: DateType | number
+  date: DateType | number | string
 ): number {
   const _date = toDate(date)
   const month = _date.getMonth()

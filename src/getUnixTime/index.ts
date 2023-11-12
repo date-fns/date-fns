@@ -20,7 +20,7 @@ import getTime from '../getTime/index'
  * //=> 1330512305
  */
 export default function getUnixTime<DateType extends Date>(
-  date: DateType | number
+  date: DateType | number | string
 ): number {
   return Math.floor(getTime(date) / 1000)
 }

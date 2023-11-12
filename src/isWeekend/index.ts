@@ -20,7 +20,7 @@ import toDate from '../toDate/index'
  * //=> true
  */
 export default function isWeekend<DateType extends Date>(
-  date: DateType | number
+  date: DateType | number | string
 ): boolean {
   const day = toDate(date).getDay()
   return day === 0 || day === 6

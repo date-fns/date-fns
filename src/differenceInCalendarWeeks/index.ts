@@ -45,8 +45,8 @@ export interface DifferenceInCalendarWeeksOptions
  * //=> 2
  */
 export default function differenceInCalendarWeeks<DateType extends Date>(
-  dateLeft: DateType | number,
-  dateRight: DateType | number,
+  dateLeft: DateType | number | string,
+  dateRight: DateType | number | string,
   options?: DifferenceInCalendarWeeksOptions
 ): number {
   const startOfWeekLeft = startOfWeek(dateLeft, options)

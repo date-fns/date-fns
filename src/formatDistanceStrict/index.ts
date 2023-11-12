@@ -116,8 +116,8 @@ export type FormatDistanceStrictUnit =
  */
 
 export default function formatDistanceStrict<DateType extends Date>(
-  date: DateType | number,
-  baseDate: DateType | number,
+  date: DateType | number | string,
+  baseDate: DateType | number | string,
   options?: FormatDistanceStrictOptions
 ): string {
   const defaultOptions = getDefaultOptions()

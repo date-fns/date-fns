@@ -21,7 +21,7 @@ import addMilliseconds from '../addMilliseconds/index'
  * //=> Thu Jul 10 2014 12:45:29.250
  */
 export default function subMilliseconds<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   amount: number
 ): DateType {
   return addMilliseconds(date, -amount)

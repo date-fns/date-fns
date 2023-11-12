@@ -351,7 +351,7 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/
 export default function parse<DateType extends Date>(
   dateStr: string,
   formatStr: string,
-  referenceDate: DateType | number,
+  referenceDate: DateType | number | string,
   options?: ParseOptions
 ): DateType {
   const defaultOptions = getDefaultOptions()

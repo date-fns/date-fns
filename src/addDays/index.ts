@@ -22,7 +22,7 @@ import constructFrom from '../constructFrom/index'
  * //=> Thu Sep 11 2014 00:00:00
  */
 export default function addDays<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   amount: number
 ): DateType {
   const _date = toDate(date)

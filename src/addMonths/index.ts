@@ -26,7 +26,7 @@ import constructFrom from '../constructFrom/index'
  * //=> Tue Feb 28 2023 00:00:00
  */
 export default function addMonths<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   amount: number
 ): DateType {
   const _date = toDate(date)

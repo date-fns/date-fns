@@ -21,7 +21,7 @@ import toDate from '../toDate/index'
  * //=> Mon Sep 01 2014 04:30:00
  */
 export default function setHours<DateType extends Date>(
-  date: DateType | number,
+  date: DateType | number | string,
   hours: number
 ): DateType {
   const _date = toDate(date)
