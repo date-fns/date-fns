@@ -11,7 +11,7 @@ import type { Locale } from '../types'
  * @summary Arabic locale (Egypt).
  * @language Arabic
  * @iso-639-2 ara
- * @author AbdAllah AbdElFattah [@AbdAllahAbdElFattah13]{@link https://github.com/AbdAllahAbdElFattah13}
+ * @author AbdAllah AbdElFattah [@AbdAllahAbdElFattah13](https://github.com/AbdAllahAbdElFattah13)
  */
 const locale: Locale = {
   code: 'ar-EG',

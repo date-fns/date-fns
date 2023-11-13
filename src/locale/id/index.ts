@@ -11,10 +11,10 @@ import match from './_lib/match/index'
  * @summary Indonesian locale.
  * @language Indonesian
  * @iso-639-2 ind
- * @author Rahmat Budiharso [@rbudiharso]{@link https://github.com/rbudiharso}
- * @author Benget Nata [@bentinata]{@link https://github.com/bentinata}
- * @author Budi Irawan [@deerawan]{@link https://github.com/deerawan}
- * @author Try Ajitiono [@imballinst]{@link https://github.com/imballinst}
+ * @author Rahmat Budiharso [@rbudiharso](https://github.com/rbudiharso)
+ * @author Benget Nata [@bentinata](https://github.com/bentinata)
+ * @author Budi Irawan [@deerawan](https://github.com/deerawan)
+ * @author Try Ajitiono [@imballinst](https://github.com/imballinst)
  */
 const locale: Locale = {
   code: 'id',

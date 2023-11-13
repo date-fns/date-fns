@@ -11,7 +11,7 @@ import match from './_lib/match/index'
  * @summary Western Frisian locale (Netherlands).
  * @language West Frisian
  * @iso-639-2 fry
- * @author Damon Asberg [@damon02]{@link https://github.com/damon02}
+ * @author Damon Asberg [@damon02](https://github.com/damon02)
  */
 const locale: Locale = {
   code: 'fy',

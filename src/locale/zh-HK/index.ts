@@ -11,7 +11,7 @@ import match from './_lib/match/index'
  * @summary Chinese Traditional locale.
  * @language Chinese Traditional
  * @iso-639-2 zho
- * @author Gary Ip [@gaplo]{@link https://github.com/gaplo}
+ * @author Gary Ip [@gaplo](https://github.com/gaplo)
  */
 const locale: Locale = {
   code: 'zh-HK',

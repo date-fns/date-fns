@@ -271,8 +271,8 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/
  *
  *    The same difference is true for local and ISO week-numbering years (`Y` and `R`),
  *    except local week-numbering years are dependent on `options.weekStartsOn`
- *    and `options.firstWeekContainsDate` (compare [setISOWeekYear]{@link https://date-fns.org/docs/setISOWeekYear}
- *    and [setWeekYear]{@link https://date-fns.org/docs/setWeekYear}).
+ *    and `options.firstWeekContainsDate` (compare [setISOWeekYear](https://date-fns.org/docs/setISOWeekYear)
+ *    and [setWeekYear](https://date-fns.org/docs/setWeekYear)).
  *
  * 5. These patterns are not in the Unicode Technical Standard #35:
  *    - `i`: ISO day of week

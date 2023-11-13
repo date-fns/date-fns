@@ -11,8 +11,8 @@ import type { Locale } from '../types'
  * @summary Arabic locale (Algerian Arabic).
  * @language Algerian Arabic
  * @iso-639-2 ara
- * @author Badreddine Boumaza [@badre429]{@link https://github.com/badre429}
- * @author Ahmed ElShahat [@elshahat]{@link https://github.com/elshahat}
+ * @author Badreddine Boumaza [@badre429](https://github.com/badre429)
+ * @author Ahmed ElShahat [@elshahat](https://github.com/elshahat)
  */
 const locale: Locale = {
   code: 'ar-DZ',

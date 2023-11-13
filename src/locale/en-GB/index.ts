@@ -11,7 +11,7 @@ import formatLong from './_lib/formatLong/index'
  * @summary English locale (United Kingdom).
  * @language English
  * @iso-639-2 eng
- * @author Alex [@glintik]{@link https://github.com/glintik}
+ * @author Alex [@glintik](https://github.com/glintik)
  */
 const locale: Locale = {
   code: 'en-GB',

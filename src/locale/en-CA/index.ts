@@ -11,8 +11,8 @@ import formatLong from './_lib/formatLong/index'
  * @summary English locale (Canada).
  * @language English
  * @iso-639-2 eng
- * @author Mark Owsiak [@markowsiak]{@link https://github.com/markowsiak}
- * @author Marco Imperatore [@mimperatore]{@link https://github.com/mimperatore}
+ * @author Mark Owsiak [@markowsiak](https://github.com/markowsiak)
+ * @author Marco Imperatore [@mimperatore](https://github.com/mimperatore)
  */
 const locale: Locale = {
   code: 'en-CA',

@@ -13,10 +13,10 @@ import formatRelative from './_lib/formatRelative/index'
  * @summary French locale (Switzerland).
  * @language French
  * @iso-639-2 fra
- * @author Jean Dupouy [@izeau]{@link https://github.com/izeau}
- * @author François B [@fbonzon]{@link https://github.com/fbonzon}
- * @author Van Vuong Ngo [@vanvuongngo]{@link https://github.com/vanvuongngo}
- * @author Alex Hoeing [@dcbn]{@link https://github.com/dcbn}
+ * @author Jean Dupouy [@izeau](https://github.com/izeau)
+ * @author François B [@fbonzon](https://github.com/fbonzon)
+ * @author Van Vuong Ngo [@vanvuongngo](https://github.com/vanvuongngo)
+ * @author Alex Hoeing [@dcbn](https://github.com/dcbn)
  */
 const locale: Locale = {
   code: 'fr-CH',

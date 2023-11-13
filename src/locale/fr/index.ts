@@ -11,8 +11,8 @@ import match from './_lib/match/index'
  * @summary French locale.
  * @language French
  * @iso-639-2 fra
- * @author Jean Dupouy [@izeau]{@link https://github.com/izeau}
- * @author François B [@fbonzon]{@link https://github.com/fbonzon}
+ * @author Jean Dupouy [@izeau](https://github.com/izeau)
+ * @author François B [@fbonzon](https://github.com/fbonzon)
  */
 const locale: Locale = {
   code: 'fr',

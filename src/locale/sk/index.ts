@@ -11,7 +11,7 @@ import match from './_lib/match/index'
  * @summary Slovak locale.
  * @language Slovak
  * @iso-639-2 slk
- * @author Marek Suscak [@mareksuscak]{@link https://github.com/mareksuscak}
+ * @author Marek Suscak [@mareksuscak](https://github.com/mareksuscak)
  */
 const locale: Locale = {
   code: 'sk',

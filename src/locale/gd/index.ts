@@ -11,7 +11,7 @@ import match from './_lib/match/index'
  * @summary Scottish Gaelic.
  * @language Scottish Gaelic
  * @iso-639-2 gla
- * @author Lee Driscoll [@leedriscoll]{@link https://github.com/leedriscoll}
+ * @author Lee Driscoll [@leedriscoll](https://github.com/leedriscoll)
  */
 const locale: Locale = {
   code: 'gd',

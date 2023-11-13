@@ -11,8 +11,8 @@ import type { Locale } from '../types'
  * @summary English locale (United States).
  * @language English
  * @iso-639-2 eng
- * @author Sasha Koss [@kossnocorp]{@link https://github.com/kossnocorp}
- * @author Lesha Koss [@leshakoss]{@link https://github.com/leshakoss}
+ * @author Sasha Koss [@kossnocorp](https://github.com/kossnocorp)
+ * @author Lesha Koss [@leshakoss](https://github.com/leshakoss)
  */
 const locale: Locale = {
   code: 'en-US',

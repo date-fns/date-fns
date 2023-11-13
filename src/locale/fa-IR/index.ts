@@ -11,7 +11,7 @@ import match from './_lib/match/index'
  * @summary Persian/Farsi locale (Iran).
  * @language Persian
  * @iso-639-2 ira
- * @author Morteza Ziyae [@mort3za]{@link https://github.com/mort3za}
+ * @author Morteza Ziyae [@mort3za](https://github.com/mort3za)
  */
 const locale: Locale = {
   code: 'fa-IR',

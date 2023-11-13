@@ -11,9 +11,9 @@ import match from './_lib/match/index'
  * @summary Italian locale.
  * @language Italian
  * @iso-639-2 ita
- * @author Alberto Restifo [@albertorestifo]{@link https://github.com/albertorestifo}
- * @author Giovanni Polimeni [@giofilo]{@link https://github.com/giofilo}
- * @author Vincenzo Carrese [@vin-car]{@link https://github.com/vin-car}
+ * @author Alberto Restifo [@albertorestifo](https://github.com/albertorestifo)
+ * @author Giovanni Polimeni [@giofilo](https://github.com/giofilo)
+ * @author Vincenzo Carrese [@vin-car](https://github.com/vin-car)
  */
 const locale: Locale = {
   code: 'it',

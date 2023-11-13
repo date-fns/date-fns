@@ -11,8 +11,8 @@ import match from './_lib/match/index'
  * @summary Catalan locale.
  * @language Catalan
  * @iso-639-2 cat
- * @author Guillermo Grau [@guigrpa]{@link https://github.com/guigrpa}
- * @author Alex Vizcaino [@avizcaino]{@link https://github.com/avizcaino}
+ * @author Guillermo Grau [@guigrpa](https://github.com/guigrpa)
+ * @author Alex Vizcaino [@avizcaino](https://github.com/avizcaino)
  */
 const locale: Locale = {
   code: 'ca',

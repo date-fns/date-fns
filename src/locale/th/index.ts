@@ -11,9 +11,9 @@ import match from './_lib/match/index'
  * @summary Thai locale.
  * @language Thai
  * @iso-639-2 tha
- * @author Athiwat Hirunworawongkun [@athivvat]{@link https://github.com/athivvat}
- * @author [@hawkup]{@link https://github.com/hawkup}
- * @author  Jirawat I. [@nodtem66]{@link https://github.com/nodtem66}
+ * @author Athiwat Hirunworawongkun [@athivvat](https://github.com/athivvat)
+ * @author [@hawkup](https://github.com/hawkup)
+ * @author  Jirawat I. [@nodtem66](https://github.com/nodtem66)
  */
 const locale: Locale = {
   code: 'th',

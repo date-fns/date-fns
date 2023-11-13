@@ -11,11 +11,11 @@ import type { Locale } from '../types'
  * @summary Spanish locale.
  * @language Spanish
  * @iso-639-2 spa
- * @author Juan Angosto [@juanangosto]{@link https://github.com/juanangosto}
- * @author Guillermo Grau [@guigrpa]{@link https://github.com/guigrpa}
- * @author Fernando Agüero [@fjaguero]{@link https://github.com/fjaguero}
- * @author Gastón Haro [@harogaston]{@link https://github.com/harogaston}
- * @author Yago Carballo [@YagoCarballo]{@link https://github.com/YagoCarballo}
+ * @author Juan Angosto [@juanangosto](https://github.com/juanangosto)
+ * @author Guillermo Grau [@guigrpa](https://github.com/guigrpa)
+ * @author Fernando Agüero [@fjaguero](https://github.com/fjaguero)
+ * @author Gastón Haro [@harogaston](https://github.com/harogaston)
+ * @author Yago Carballo [@YagoCarballo](https://github.com/YagoCarballo)
  */
 const locale: Locale = {
   code: 'es',

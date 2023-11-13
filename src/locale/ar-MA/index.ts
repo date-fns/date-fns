@@ -11,7 +11,7 @@ import type { Locale } from '../types'
  * @summary Arabic locale (Moroccan Arabic).
  * @language Moroccan Arabic
  * @iso-639-2 ara
- * @author Achraf Rrami [@rramiachraf]{@link https://github.com/rramiachraf}
+ * @author Achraf Rrami [@rramiachraf](https://github.com/rramiachraf)
  */
 const locale: Locale = {
   code: 'ar-MA',

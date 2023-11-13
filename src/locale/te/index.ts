@@ -11,7 +11,7 @@ import match from './_lib/match/index'
  * @summary Telugu locale
  * @language Telugu
  * @iso-639-2 tel
- * @author Kranthi Lakum [@kranthilakum]{@link https://github.com/kranthilakum}
+ * @author Kranthi Lakum [@kranthilakum](https://github.com/kranthilakum)
  */
 const locale: Locale = {
   code: 'te',

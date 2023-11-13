@@ -11,7 +11,7 @@ import match from './_lib/match/index'
  * @summary Bosnian locale.
  * @language Bosnian
  * @iso-639-2 bos
- * @author Branislav Lazić [@branislavlazic]{@link https://github.com/branislavlazic}
+ * @author Branislav Lazić [@branislavlazic](https://github.com/branislavlazic)
  */
 const locale: Locale = {
   code: 'bs',

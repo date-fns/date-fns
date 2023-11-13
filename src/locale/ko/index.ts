@@ -11,9 +11,9 @@ import match from './_lib/match/index'
  * @summary Korean locale.
  * @language Korean
  * @iso-639-2 kor
- * @author Hong Chulju [@angdev]{@link https://github.com/angdev}
- * @author Lee Seoyoen [@iamssen]{@link https://github.com/iamssen}
- * @author Taiki IKeda [@so99ynoodles]{@link https://github.com/so99ynoodles}
+ * @author Hong Chulju [@angdev](https://github.com/angdev)
+ * @author Lee Seoyoen [@iamssen](https://github.com/iamssen)
+ * @author Taiki IKeda [@so99ynoodles](https://github.com/so99ynoodles)
  */
 const locale: Locale = {
   code: 'ko',

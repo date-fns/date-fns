@@ -11,7 +11,7 @@ import type { Locale } from '../types'
  * @summary English locale (Australia).
  * @language English
  * @iso-639-2 eng
- * @author Julien Malige [@JulienMalige]{@link https://github.com/JulienMalige}
+ * @author Julien Malige [@JulienMalige](https://github.com/JulienMalige)
  */
 const locale: Locale = {
   code: 'en-AU',

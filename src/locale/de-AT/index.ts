@@ -12,7 +12,7 @@ import localize from './_lib/localize/index'
  * @summary German locale (Austria).
  * @language German
  * @iso-639-2 deu
- * @author Christoph Tobias Stenglein [@cstenglein]{@link https://github.com/cstenglein}
+ * @author Christoph Tobias Stenglein [@cstenglein](https://github.com/cstenglein)
  */
 const locale: Locale = {
   code: 'de-AT',

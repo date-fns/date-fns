@@ -11,7 +11,7 @@ import match from './_lib/match/index'
  * @summary Malay locale.
  * @language Malay
  * @iso-639-2 msa
- * @author Ruban Selvarajah [@Zyten]{@link https://github.com/Zyten}
+ * @author Ruban Selvarajah [@Zyten](https://github.com/Zyten)
  */
 const locale: Locale = {
   code: 'ms',

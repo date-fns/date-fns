@@ -11,9 +11,9 @@ import match from './_lib/match/index'
  * @summary Croatian locale.
  * @language Croatian
  * @iso-639-2 hrv
- * @author Matija Marohnić [@silvenon]{@link https://github.com/silvenon}
- * @author Manico [@manico]{@link https://github.com/manico}
- * @author Ivan Jeržabek [@jerzabek]{@link https://github.com/jerzabek}
+ * @author Matija Marohnić [@silvenon](https://github.com/silvenon)
+ * @author Manico [@manico](https://github.com/manico)
+ * @author Ivan Jeržabek [@jerzabek](https://github.com/jerzabek)
  */
 const locale: Locale = {
   code: 'hr',

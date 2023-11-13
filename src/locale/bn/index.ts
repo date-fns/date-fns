@@ -11,8 +11,8 @@ import match from './_lib/match/index'
  * @summary Bengali locale.
  * @language Bengali
  * @iso-639-2 ben
- * @author Touhidur Rahman [@touhidrahman]{@link https://github.com/touhidrahman}
- * @author Farhad Yasir [@nutboltu]{@link https://github.com/nutboltu}
+ * @author Touhidur Rahman [@touhidrahman](https://github.com/touhidrahman)
+ * @author Farhad Yasir [@nutboltu](https://github.com/nutboltu)
  */
 const locale: Locale = {
   code: 'bn',

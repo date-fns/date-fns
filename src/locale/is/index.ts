@@ -11,8 +11,8 @@ import match from './_lib/match/index'
  * @summary Icelandic locale.
  * @language Icelandic
  * @iso-639-2 isl
- * @author Derek Blank [@derekblank]{@link https://github.com/derekblank}
- * @author Arnór Ýmir [@lamayg]{@link https://github.com/lamayg}
+ * @author Derek Blank [@derekblank](https://github.com/derekblank)
+ * @author Arnór Ýmir [@lamayg](https://github.com/lamayg)
  */
 const locale: Locale = {
   code: 'is',

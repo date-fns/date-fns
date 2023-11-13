@@ -11,8 +11,8 @@ import match from './_lib/match/index'
  * @summary Bulgarian locale.
  * @language Bulgarian
  * @iso-639-2 bul
- * @author Nikolay Stoynov [@arvigeus]{@link https://github.com/arvigeus}
- * @author Tsvetan Ovedenski [@fintara]{@link https://github.com/fintara}
+ * @author Nikolay Stoynov [@arvigeus](https://github.com/arvigeus)
+ * @author Tsvetan Ovedenski [@fintara](https://github.com/fintara)
  */
 const locale: Locale = {
   code: 'bg',

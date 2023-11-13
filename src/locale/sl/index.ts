@@ -11,8 +11,8 @@ import match from './_lib/match/index'
  * @summary Slovenian locale.
  * @language Slovenian
  * @iso-639-2 slv
- * @author Adam Stradovnik [@Neoglyph]{@link https://github.com/Neoglyph}
- * @author Mato Žgajner [@mzgajner]{@link https://github.com/mzgajner}
+ * @author Adam Stradovnik [@Neoglyph](https://github.com/Neoglyph)
+ * @author Mato Žgajner [@mzgajner](https://github.com/mzgajner)
  */
 const locale: Locale = {
   code: 'sl',

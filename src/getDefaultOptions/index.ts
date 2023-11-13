@@ -14,7 +14,7 @@ import {
  * `options.locale`, `options.weekStartsOn` and `options.firstWeekContainsDate`
  * arguments for all functions.
  *
- * You can change these with [setDefaultOptions]{@link https://date-fns.org/docs/setDefaultOptions}.
+ * You can change these with [setDefaultOptions](https://date-fns.org/docs/setDefaultOptions).
  *
  * @returns The default options
  *

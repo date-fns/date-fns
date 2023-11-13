@@ -11,7 +11,7 @@ import match from './_lib/match/index'
  * @summary Welsh locale.
  * @language Welsh
  * @iso-639-2 cym
- * @author Elwyn Malethan [@elmomalmo]{@link https://github.com/elmomalmo}
+ * @author Elwyn Malethan [@elmomalmo](https://github.com/elmomalmo)
  */
 const locale: Locale = {
   code: 'cy',

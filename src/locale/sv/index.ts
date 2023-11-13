@@ -11,9 +11,9 @@ import match from './_lib/match/index'
  * @summary Swedish locale.
  * @language Swedish
  * @iso-639-2 swe
- * @author Johannes Ulén [@ejulen]{@link https://github.com/ejulen}
- * @author Alexander Nanberg [@alexandernanberg]{@link https://github.com/alexandernanberg}
- * @author Henrik Andersson [@limelights]{@link https://github.com/limelights}
+ * @author Johannes Ulén [@ejulen](https://github.com/ejulen)
+ * @author Alexander Nanberg [@alexandernanberg](https://github.com/alexandernanberg)
+ * @author Henrik Andersson [@limelights](https://github.com/limelights)
  */
 const locale: Locale = {
   code: 'sv',

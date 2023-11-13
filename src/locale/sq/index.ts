@@ -11,7 +11,7 @@ import match from './_lib/match/index'
  * @summary Albanian locale.
  * @language Shqip
  * @iso-639-2 sqi
- * @author Ardit Dine [@arditdine]{@link https://github.com/arditdine}
+ * @author Ardit Dine [@arditdine](https://github.com/arditdine)
  */
 const locale: Locale = {
   code: 'sq',

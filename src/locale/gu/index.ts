@@ -11,7 +11,7 @@ import match from './_lib/match/index'
  * @summary Gujarati locale (India).
  * @language Gujarati
  * @iso-639-2 guj
- * @author Manaday Mavani [@ManadayM]{@link https://github.com/manadaym}
+ * @author Manaday Mavani [@ManadayM](https://github.com/manadaym)
  */
 const locale: Locale = {
   code: 'gu',

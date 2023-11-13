@@ -11,9 +11,9 @@ import match from './_lib/match/index'
  * @summary Chinese Traditional locale.
  * @language Chinese Traditional
  * @iso-639-2 zho
- * @author tonypai [@tpai]{@link https://github.com/tpai}
- * @author Jack Hsu [@jackhsu978]{@link https://github.com/jackhsu978}
- * @author Terrence Lam [@skyuplam]{@link https://github.com/skyuplam}
+ * @author tonypai [@tpai](https://github.com/tpai)
+ * @author Jack Hsu [@jackhsu978](https://github.com/jackhsu978)
+ * @author Terrence Lam [@skyuplam](https://github.com/skyuplam)
  */
 const locale: Locale = {
   code: 'zh-TW',

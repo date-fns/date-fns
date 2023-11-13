@@ -21,7 +21,7 @@
  * - `2000-03-15 05:20:10`: With a space instead of a 'T' separator for APIs returning a SQL date without reformatting
  *
  * For convenience and ease of use these other input types are also supported
- * via [toDate]{@link https://date-fns.org/docs/toDate}:
+ * via [toDate](https://date-fns.org/docs/toDate):
  *
  * - A `Date` instance will be cloned
  * - A `number` will be treated as a timestamp

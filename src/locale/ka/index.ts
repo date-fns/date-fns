@@ -11,8 +11,8 @@ import match from './_lib/match/index'
  * @summary Georgian locale.
  * @language Georgian
  * @iso-639-2 geo
- * @author Lado Lomidze [@Landish]{@link https://github.com/Landish}
- * @author Nick Shvelidze [@shvelo]{@link https://github.com/shvelo}
+ * @author Lado Lomidze [@Landish](https://github.com/Landish)
+ * @author Nick Shvelidze [@shvelo](https://github.com/shvelo)
  */
 const locale: Locale = {
   code: 'ka',

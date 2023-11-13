@@ -11,8 +11,8 @@ import match from './_lib/match/index'
  * @summary Vietnamese locale (Vietnam).
  * @language Vietnamese
  * @iso-639-2 vie
- * @author Thanh Tran [@trongthanh]{@link https://github.com/trongthanh}
- * @author Leroy Hopson [@lihop]{@link https://github.com/lihop}
+ * @author Thanh Tran [@trongthanh](https://github.com/trongthanh)
+ * @author Leroy Hopson [@lihop](https://github.com/lihop)
  */
 const locale: Locale = {
   code: 'vi',

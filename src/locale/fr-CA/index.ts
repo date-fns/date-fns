@@ -13,9 +13,9 @@ import formatLong from './_lib/formatLong/index'
  * @summary French locale (Canada).
  * @language French
  * @iso-639-2 fra
- * @author Jean Dupouy [@izeau]{@link https://github.com/izeau}
- * @author François B [@fbonzon]{@link https://github.com/fbonzon}
- * @author Gabriele Petrioli [@gpetrioli]{@link https://github.com/gpetrioli}
+ * @author Jean Dupouy [@izeau](https://github.com/izeau)
+ * @author François B [@fbonzon](https://github.com/fbonzon)
+ * @author Gabriele Petrioli [@gpetrioli](https://github.com/gpetrioli)
  */
 const locale: Locale = {
   code: 'fr-CA',

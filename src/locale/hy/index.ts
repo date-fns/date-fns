@@ -11,7 +11,7 @@ import match from './_lib/match/index'
  * @summary Armenian locale
  * @language Armenian
  * @iso-639-2 arm
- * @author Alex Igityan [@alexigityan]{@link https://github.com/alexigityan}
+ * @author Alex Igityan [@alexigityan](https://github.com/alexigityan)
  */
 const locale: Locale = {
   code: 'hy',

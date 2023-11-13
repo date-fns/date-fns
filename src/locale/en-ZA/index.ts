@@ -11,7 +11,7 @@ import formatLong from './_lib/formatLong/index'
  * @summary English locale (South Africa).
  * @language English
  * @iso-639-2 eng
- * @author Shaila Kavrakova [@shaykav]{@link https://github.com/shaykav}
+ * @author Shaila Kavrakova [@shaykav](https://github.com/shaykav)
  */
 const locale: Locale = {
   code: 'en-ZA',

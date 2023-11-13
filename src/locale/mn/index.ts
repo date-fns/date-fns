@@ -11,7 +11,7 @@ import match from './_lib/match/index'
  * @summary Mongolian locale.
  * @language Mongolian
  * @iso-639-2 mon
- * @author Bilguun Ochirbat [@bilguun0203]{@link https://github.com/bilguun0203}
+ * @author Bilguun Ochirbat [@bilguun0203](https://github.com/bilguun0203)
  */
 const locale: Locale = {
   code: 'mn',

@@ -11,7 +11,7 @@ import match from './_lib/match/index'
  * @summary Japanese (Hiragana) locale.
  * @language Japanese (Hiragana)
  * @iso-639-2 jpn
- * @author Eri Hiramatsu [@Eritutteo]{@link https://github.com/Eritutteo}
+ * @author Eri Hiramatsu [@Eritutteo](https://github.com/Eritutteo)
  */
 const locale: Locale = {
   code: 'ja-Hira',

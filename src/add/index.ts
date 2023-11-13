@@ -44,7 +44,7 @@ import type { Duration } from '../types'
  * })
  * //=> Thu Jun 15 2017 15:29:20
  */
-export default function add<DateType extends Date = Date>(
+export default function add<DateType extends Date>(
   date: DateType | number | string,
   duration: Duration
 ): DateType {

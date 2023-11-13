@@ -11,7 +11,7 @@ import match from './_lib/match/index'
  * @summary Latvian locale (Latvia).
  * @language Latvian
  * @iso-639-2 lav
- * @author Rūdolfs Puķītis [@prudolfs]{@link https://github.com/prudolfs}
+ * @author Rūdolfs Puķītis [@prudolfs](https://github.com/prudolfs)
  */
 const locale: Locale = {
   code: 'lv',

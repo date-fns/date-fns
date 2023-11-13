@@ -8,7 +8,7 @@ import toDate from '../toDate/index'
  *
  * @description
  * Returns false if argument is Invalid Date and true otherwise.
- * Argument is converted to Date using `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
+ * Argument is converted to Date using `toDate`. See [toDate](https://date-fns.org/docs/toDate)
  * Invalid Date is a Date, whose time value is NaN.
  *
  * Time value of Date: http://es5.github.io/#x15.9.1.1

@@ -32,7 +32,7 @@ import { GenericDateConstructor } from '../types'
  * const result = toDate(1392098430000)
  * //=> Tue Feb 11 2014 11:30:30
  */
-export default function toDate<DateType extends Date = Date>(
+export default function toDate<DateType extends Date>(
   argument: DateType | number | string
 ): DateType {
   const argStr = Object.prototype.toString.call(argument)

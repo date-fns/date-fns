@@ -11,7 +11,7 @@ import match from './_lib/match/index'
  * @summary Estonian locale.
  * @language Estonian
  * @iso-639-2 est
- * @author Priit Hansen [@HansenPriit]{@link https://github.com/priithansen}
+ * @author Priit Hansen [@HansenPriit](https://github.com/priithansen)
  */
 const locale: Locale = {
   code: 'et',

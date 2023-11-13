@@ -11,7 +11,7 @@ import match from './_lib/match/index'
  * @summary Basque locale.
  * @language Basque
  * @iso-639-2 eus
- * @author Jacob Söderblom [@JacobSoderblom]{@link https://github.com/JacobSoderblom}
+ * @author Jacob Söderblom [@JacobSoderblom](https://github.com/JacobSoderblom)
  */
 const locale: Locale = {
   code: 'eu',

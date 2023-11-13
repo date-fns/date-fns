@@ -29,15 +29,10 @@ export default function min<DateType extends Date>(
 ): DateType | Date {
   let result: Date | undefined
 
-  dates.forEach(function (dirtyDate: Date | number) {
-    let currentDate = toDate(dirtyDate)
-
-    if (
-      result === undefined ||
-      result > currentDate ||
-      isNaN(currentDate.getDate())
-    ) {
-      result = currentDate
+  dates.forEach((dirtyDate) => {
+    const date = toDate(dirtyDate)
+    if (!result || result > date || isNaN(+date)) {
+      result = date
     }
   })
 

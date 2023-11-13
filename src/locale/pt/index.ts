@@ -11,8 +11,8 @@ import match from './_lib/match/index'
  * @summary Portuguese locale.
  * @language Portuguese
  * @iso-639-2 por
- * @author Dário Freire [@dfreire]{@link https://github.com/dfreire}
- * @author Adrián de la Rosa [@adrm]{@link https://github.com/adrm}
+ * @author Dário Freire [@dfreire](https://github.com/dfreire)
+ * @author Adrián de la Rosa [@adrm](https://github.com/adrm)
  */
 const locale: Locale = {
   code: 'pt',

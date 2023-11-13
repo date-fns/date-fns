@@ -11,7 +11,7 @@ import match from './_lib/match/index'
  * @summary Luxembourgish locale.
  * @language Luxembourgish
  * @iso-639-2 ltz
- * @author Daniel Waxweiler [@dwaxweiler]{@link https://github.com/dwaxweiler}
+ * @author Daniel Waxweiler [@dwaxweiler](https://github.com/dwaxweiler)
  */
 const locale: Locale = {
   code: 'lb',

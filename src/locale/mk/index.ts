@@ -11,8 +11,8 @@ import match from './_lib/match/index'
  * @summary Macedonian locale.
  * @language Macedonian
  * @iso-639-2 mkd
- * @author Petar Vlahu [@vlahupetar]{@link https://github.com/vlahupetar}
- * @author Altrim Beqiri [@altrim]{@link https://github.com/altrim}
+ * @author Petar Vlahu [@vlahupetar](https://github.com/vlahupetar)
+ * @author Altrim Beqiri [@altrim](https://github.com/altrim)
  */
 const locale: Locale = {
   code: 'mk',

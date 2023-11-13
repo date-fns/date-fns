@@ -11,9 +11,9 @@ import match from './_lib/match/index'
  * @summary Finnish locale.
  * @language Finnish
  * @iso-639-2 fin
- * @author Pyry-Samuli Lahti [@Pyppe]{@link https://github.com/Pyppe}
- * @author Edo Rivai [@mikolajgrzyb]{@link https://github.com/mikolajgrzyb}
- * @author Samu Juvonen [@sjuvonen]{@link https://github.com/sjuvonen}
+ * @author Pyry-Samuli Lahti [@Pyppe](https://github.com/Pyppe)
+ * @author Edo Rivai [@mikolajgrzyb](https://github.com/mikolajgrzyb)
+ * @author Samu Juvonen [@sjuvonen](https://github.com/sjuvonen)
  */
 const locale: Locale = {
   code: 'fi',

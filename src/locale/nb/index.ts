@@ -11,9 +11,9 @@ import match from './_lib/match/index'
  * @summary Norwegian Bokmål locale.
  * @language Norwegian Bokmål
  * @iso-639-2 nob
- * @author Hans-Kristian Koren [@Hanse]{@link https://github.com/Hanse}
- * @author Mikolaj Grzyb [@mikolajgrzyb]{@link https://github.com/mikolajgrzyb}
- * @author Dag Stuan [@dagstuan]{@link https://github.com/dagstuan}
+ * @author Hans-Kristian Koren [@Hanse](https://github.com/Hanse)
+ * @author Mikolaj Grzyb [@mikolajgrzyb](https://github.com/mikolajgrzyb)
+ * @author Dag Stuan [@dagstuan](https://github.com/dagstuan)
  */
 const locale: Locale = {
   code: 'nb',

@@ -11,7 +11,7 @@ import match from './_lib/match/index'
  * @summary Uighur locale
  * @language Uighur
  * @iso-639-2 uig
- * @author Abduwaly M. [@abduwaly]{@link https://github.com/abduwaly}
+ * @author Abduwaly M. [@abduwaly](https://github.com/abduwaly)
  */
 const locale: Locale = {
   code: 'ug',

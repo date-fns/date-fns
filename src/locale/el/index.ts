@@ -11,8 +11,8 @@ import match from './_lib/match/index'
  * @summary Greek locale.
  * @language Greek
  * @iso-639-2 ell
- * @author Fanis Katsimpas [@fanixk]{@link https://github.com/fanixk}
- * @author Theodoros Orfanidis [@teoulas]{@link https://github.com/teoulas}
+ * @author Fanis Katsimpas [@fanixk](https://github.com/fanixk)
+ * @author Theodoros Orfanidis [@teoulas](https://github.com/teoulas)
  */
 const locale: Locale = {
   code: 'el',

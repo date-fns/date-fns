@@ -11,7 +11,7 @@ import match from './_lib/match/index'
  * @summary Norwegian Nynorsk locale.
  * @language Norwegian Nynorsk
  * @iso-639-2 nno
- * @author Mats Byrkjeland [@draperunner]{@link https://github.com/draperunner}
+ * @author Mats Byrkjeland [@draperunner](https://github.com/draperunner)
  */
 const locale: Locale = {
   code: 'nn',

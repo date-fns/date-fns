@@ -11,7 +11,7 @@ import formatLong from './_lib/formatLong/index'
  * @summary English locale (India).
  * @language English
  * @iso-639-2 eng
- * @author Galeel Bhasha Satthar [@gbhasha]{@link https://github.com/gbhasha}
+ * @author Galeel Bhasha Satthar [@gbhasha](https://github.com/gbhasha)
  */
 const locale: Locale = {
   code: 'en-IN',

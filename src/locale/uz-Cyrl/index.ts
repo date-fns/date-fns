@@ -11,7 +11,7 @@ import match from './_lib/match/index'
  * @summary Uzbek Cyrillic locale.
  * @language Uzbek
  * @iso-639-2 uzb
- * @author Kamronbek Shodmonov [@kamronbek28]{@link https://github.com/kamronbek28}
+ * @author Kamronbek Shodmonov [@kamronbek28](https://github.com/kamronbek28)
  */
 const locale: Locale = {
   code: 'uz-Cyrl',

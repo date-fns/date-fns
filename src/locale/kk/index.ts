@@ -11,7 +11,7 @@ import match from './_lib/match/index'
  * @summary Kazakh locale.
  * @language Kazakh
  * @iso-639-2 kaz
- * @author Nikita Bayev [@drugoi]{@link https://github.com/drugoi}
+ * @author Nikita Bayev [@drugoi](https://github.com/drugoi)
  */
 const locale: Locale = {
   code: 'kk',

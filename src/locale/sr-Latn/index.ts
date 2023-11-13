@@ -11,7 +11,7 @@ import match from './_lib/match/index'
  * @summary Serbian latin locale.
  * @language Serbian
  * @iso-639-2 srp
- * @author Igor Radivojević [@rogyvoje]{@link https://github.com/rogyvoje}
+ * @author Igor Radivojević [@rogyvoje](https://github.com/rogyvoje)
  */
 const locale: Locale = {
   code: 'sr-Latn',

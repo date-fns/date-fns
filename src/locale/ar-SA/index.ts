@@ -11,7 +11,7 @@ import match from './_lib/match/index'
  * @summary Arabic locale (Sauid Arabic).
  * @language Arabic
  * @iso-639-2 ara
- * @author Dhaifallah Alwadani [@dalwadani]{@link https://github.com/dalwadani}
+ * @author Dhaifallah Alwadani [@dalwadani](https://github.com/dalwadani)
  */
 const locale: Locale = {
   code: 'ar-SA',

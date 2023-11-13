@@ -11,9 +11,9 @@ import match from './_lib/match/index'
  * @summary Hungarian locale.
  * @language Hungarian
  * @iso-639-2 hun
- * @author Pavlo Shpak [@pshpak]{@link https://github.com/pshpak}
- * @author Eduardo Pardo [@eduardopsll]{@link https://github.com/eduardopsll}
- * @author Zoltan Szepesi [@twodcube]{@link https://github.com/twodcube}
+ * @author Pavlo Shpak [@pshpak](https://github.com/pshpak)
+ * @author Eduardo Pardo [@eduardopsll](https://github.com/eduardopsll)
+ * @author Zoltan Szepesi [@twodcube](https://github.com/twodcube)
  */
 const locale: Locale = {
   code: 'hu',

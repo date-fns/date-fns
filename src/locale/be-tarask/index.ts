@@ -11,7 +11,7 @@ import match from './_lib/match/index'
  * @summary Belarusian Classic locale.
  * @language Belarusian Classic
  * @iso-639-2 bel
- * @author Ryhor Nopears [@nopears]{@link https://github.com/nopears}
+ * @author Ryhor Nopears [@nopears](https://github.com/nopears)
  */
 const locale: Locale = {
   code: 'be-tarask',

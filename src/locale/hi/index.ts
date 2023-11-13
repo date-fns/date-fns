@@ -11,7 +11,7 @@ import match from './_lib/match/index'
  * @summary Hindi locale (India).
  * @language Hindi
  * @iso-639-2 hin
- * @author Mukesh Mandiwal [@mukeshmandiwal]{@link https://github.com/mukeshmandiwal}
+ * @author Mukesh Mandiwal [@mukeshmandiwal](https://github.com/mukeshmandiwal)
  */
 const locale: Locale = {
   code: 'hi',

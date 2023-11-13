@@ -11,7 +11,7 @@ import match from './_lib/match/index'
  * @summary Hebrew locale.
  * @language Hebrew
  * @iso-639-2 heb
- * @author Nir Lahad [@nirlah]{@link https://github.com/nirlah}
+ * @author Nir Lahad [@nirlah](https://github.com/nirlah)
  */
 const locale: Locale = {
   code: 'he',

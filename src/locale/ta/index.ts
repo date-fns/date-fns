@@ -11,7 +11,7 @@ import match from './_lib/match/index'
  * @summary Tamil locale (India).
  * @language Tamil
  * @iso-639-2 tam
- * @author Sibiraj [@sibiraj-s]{@link https://github.com/sibiraj-s}
+ * @author Sibiraj [@sibiraj-s](https://github.com/sibiraj-s)
  */
 const locale: Locale = {
   code: 'ta',

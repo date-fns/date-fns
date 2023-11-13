@@ -11,8 +11,8 @@ import match from './_lib/match/index'
  * @summary Ukrainian locale.
  * @language Ukrainian
  * @iso-639-2 ukr
- * @author Andrii Korzh [@korzhyk]{@link https://github.com/korzhyk}
- * @author Andriy Shcherbyak [@shcherbyakdev]{@link https://github.com/shcherbyakdev}
+ * @author Andrii Korzh [@korzhyk](https://github.com/korzhyk)
+ * @author Andriy Shcherbyak [@shcherbyakdev](https://github.com/shcherbyakdev)
  */
 const locale: Locale = {
   code: 'uk',

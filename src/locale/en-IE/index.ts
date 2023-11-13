@@ -11,7 +11,7 @@ import formatLong from '../en-GB/_lib/formatLong/index'
  * @summary English locale (Ireland).
  * @language English
  * @iso-639-2 eng
- * @author Tetiana [@tan75]{@link https://github.com/tan75}
+ * @author Tetiana [@tan75](https://github.com/tan75)
  */
 const locale: Locale = {
   code: 'en-IE',

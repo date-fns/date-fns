@@ -11,7 +11,7 @@ import match from './_lib/match/index'
  * @summary Kannada locale (India).
  * @language Kannada
  * @iso-639-2 kan
- * @author Manjunatha Gouli [@developergouli]{@link https://github.com/developergouli}
+ * @author Manjunatha Gouli [@developergouli](https://github.com/developergouli)
  */
 const locale: Locale = {
   code: 'kn',

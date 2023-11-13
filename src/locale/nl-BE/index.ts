@@ -11,10 +11,10 @@ import match from './_lib/match/index'
  * @summary Dutch locale.
  * @language Dutch
  * @iso-639-2 nld
- * @author Jorik Tangelder [@jtangelder]{@link https://github.com/jtangelder}
- * @author Ruben Stolk [@rubenstolk]{@link https://github.com/rubenstolk}
- * @author Lode Vanhove [@bitcrumb]{@link https://github.com/bitcrumb}
- * @author Alex Hoeing [@dcbn]{@link https://github.com/dcbn}
+ * @author Jorik Tangelder [@jtangelder](https://github.com/jtangelder)
+ * @author Ruben Stolk [@rubenstolk](https://github.com/rubenstolk)
+ * @author Lode Vanhove [@bitcrumb](https://github.com/bitcrumb)
+ * @author Alex Hoeing [@dcbn](https://github.com/dcbn)
  */
 const locale: Locale = {
   code: 'nl-BE',

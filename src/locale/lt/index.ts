@@ -11,8 +11,8 @@ import match from './_lib/match/index'
  * @summary Lithuanian locale.
  * @language Lithuanian
  * @iso-639-2 lit
- * @author Pavlo Shpak [@pshpak]{@link https://github.com/pshpak}
- * @author Eduardo Pardo [@eduardopsll]{@link https://github.com/eduardopsll}
+ * @author Pavlo Shpak [@pshpak](https://github.com/pshpak)
+ * @author Eduardo Pardo [@eduardopsll](https://github.com/eduardopsll)
  */
 const locale: Locale = {
   code: 'lt',

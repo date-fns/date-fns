@@ -11,7 +11,7 @@ import type { Locale } from '../types'
  * @summary Arabic locale (Tunisian Arabic).
  * @language Arabic
  * @iso-639-2 ara
- * @author Koussay Haj Kacem [@essana3]{@link https://github.com/essana3}
+ * @author Koussay Haj Kacem [@essana3](https://github.com/essana3)
  */
 const locale: Locale = {
   code: 'ar-TN',

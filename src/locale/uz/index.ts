@@ -11,7 +11,7 @@ import match from './_lib/match/index'
  * @summary Uzbek locale.
  * @language Uzbek
  * @iso-639-2 uzb
- * @author Mukhammadali [@mukhammadali]{@link https://github.com/Mukhammadali}
+ * @author Mukhammadali [@mukhammadali](https://github.com/Mukhammadali)
  */
 const locale: Locale = {
   code: 'uz',

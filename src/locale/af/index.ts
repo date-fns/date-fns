@@ -11,7 +11,7 @@ import match from './_lib/match/index'
  * @summary Afrikaans locale.
  * @language Afrikaans
  * @iso-639-2 afr
- * @author Marnus Weststrate [@marnusw]{@link https://github.com/marnusw}
+ * @author Marnus Weststrate [@marnusw](https://github.com/marnusw)
  */
 const locale: Locale = {
   code: 'af',

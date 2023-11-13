@@ -11,7 +11,7 @@ import match from './_lib/match/index'
  * @summary Khmer locale (Cambodian).
  * @language Khmer
  * @iso-639-2 khm
- * @author Seanghay Yath [@seanghay]{@link https://github.com/seanghay}
+ * @author Seanghay Yath [@seanghay](https://github.com/seanghay)
  */
 const locale: Locale = {
   code: 'km',
