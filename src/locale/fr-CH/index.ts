@@ -8,7 +8,6 @@ import formatLong from './_lib/formatLong/index'
 import formatRelative from './_lib/formatRelative/index'
 
 /**
- * @type {Locale}
  * @category Locales
  * @summary French locale (Switzerland).
  * @language French

@@ -6,7 +6,6 @@ import localize from './_lib/localize/index'
 import match from './_lib/match/index'
 
 /**
- * @type {Locale}
  * @category Locales
  * @summary Welsh locale.
  * @language Welsh

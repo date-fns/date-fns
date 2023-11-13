@@ -6,7 +6,6 @@ import type { Locale } from '../types'
 import formatLong from '../en-GB/_lib/formatLong/index'
 
 /**
- * @type {Locale}
  * @category Locales
  * @summary English locale (Ireland).
  * @language English

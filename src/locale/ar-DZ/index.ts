@@ -6,7 +6,6 @@ import match from './_lib/match/index'
 import type { Locale } from '../types'
 
 /**
- * @type {Locale}
  * @category Locales
  * @summary Arabic locale (Algerian Arabic).
  * @language Algerian Arabic

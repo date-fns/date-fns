@@ -6,7 +6,6 @@ import match from '../it/_lib/match/index'
 import formatLong from './_lib/formatLong/index'
 
 /**
- * @type {Locale}
  * @category Locales
  * @summary Italian locale (Switzerland).
  * @language Italian

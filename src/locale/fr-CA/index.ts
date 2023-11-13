@@ -8,7 +8,6 @@ import type { Locale } from '../types'
 import formatLong from './_lib/formatLong/index'
 
 /**
- * @type {Locale}
  * @category Locales
  * @summary French locale (Canada).
  * @language French

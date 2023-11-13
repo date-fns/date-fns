@@ -7,7 +7,6 @@ import type { Locale } from '../types'
 import localize from './_lib/localize/index'
 
 /**
- * @type {Locale}
  * @category Locales
  * @summary German locale (Austria).
  * @language German

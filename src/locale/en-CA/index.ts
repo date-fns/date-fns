@@ -6,7 +6,6 @@ import formatDistance from './_lib/formatDistance/index'
 import formatLong from './_lib/formatLong/index'
 
 /**
- * @type {Locale}
  * @category Locales
  * @summary English locale (Canada).
  * @language English

@@ -6,7 +6,6 @@ import match from '../en-US/_lib/match/index'
 import type { Locale } from '../types'
 
 /**
- * @type {Locale}
  * @category Locales
  * @summary English locale (Australia).
  * @language English
