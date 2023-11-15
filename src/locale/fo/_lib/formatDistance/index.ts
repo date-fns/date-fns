@@ -21,7 +21,7 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   halfAMinute: 'ein hálvur minuttur',
 
   lessThanXMinutes: {
-    one: 'minni enn ein minutt',
+    one: 'minni enn ein minuttur',
     other: 'minni enn {{count}} minuttir',
   },
 
