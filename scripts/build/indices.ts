@@ -24,21 +24,37 @@ interface File {
   const fpFns = await listFPFns()
 
   await Promise.all([
-    generatePackageJSON(fns, fpFns, locales).then((json) =>
+    generatePackageJSON({ fns, fpFns, locales }).then((json) =>
       writeFile('package.json', json)
     ),
-    writeFile('src/index.ts', generateIndex(fns, false, true)),
-    writeFile('src/fp/index.ts', generateIndex(fpFns, true, true)),
-    writeFile('src/locale/index.ts', generateIndex(locales, false, false)),
+
+    writeFile(
+      'src/index.ts',
+      generateIndex({ files: fns, includeConstants: true })
+    ),
+
+    writeFile(
+      'src/fp/index.ts',
+      generateIndex({ files: fpFns, isFP: true, includeConstants: true })
+    ),
+
+    writeFile('src/locale/index.ts', generateIndex({ files: locales })),
+
     writeFile('typedoc.json', generateTypeDoc(fns)),
   ])
 })()
 
-async function generatePackageJSON(
-  fns: File[],
-  fpFns: File[],
+interface GeneratePackageJSONProps {
+  fns: File[]
+  fpFns: File[]
   locales: File[]
-) {
+}
+
+async function generatePackageJSON({
+  fns,
+  fpFns,
+  locales,
+}: GeneratePackageJSONProps) {
   const packageJSON = JSON.parse(await readFile('package.json', 'utf-8'))
   packageJSON.exports = Object.fromEntries(
     [['.', { require: './index.js', import: './index.mjs' }]]
@@ -61,17 +77,26 @@ function mapExports(paths: string[], prefix = '.') {
   })
 }
 
-function generateIndex(
-  files: File[],
-  isFP: boolean,
-  includeConstants: boolean
-): string {
+interface GenerateIndexProps {
+  files: File[]
+  isFP?: boolean
+  includeConstants?: boolean
+}
+
+function generateIndex({
+  files,
+  isFP,
+  includeConstants,
+}: GenerateIndexProps): string {
   const lines = files.map(
     (file) => `export { default as ${file.name} } from '${file.path}/index'`
   )
 
   if (includeConstants)
     lines.push(`export * from '${isFP ? '..' : '.'}/constants/index'`)
+
+  // Add types export
+  lines.push(`export * from '${isFP ? '..' : '.'}/types'`)
 
   return `// This file is generated automatically by \`scripts/build/indices.ts\`. Please, don't change it.
 
