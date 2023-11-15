@@ -7,6 +7,8 @@ export * from './locale/types'
 /**
  * The generic date constructor. Replicates the Date constructor. Used to build
  * generic functions.
+ *
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  */
 export interface GenericDateConstructor<DateType extends Date = Date> {
   /**
@@ -79,6 +81,8 @@ export type DurationUnit = keyof Duration
 
 /**
  * An object that combines two dates to represent the time interval.
+ *
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  */
 export interface Interval<DateType extends Date = Date> {
   /** The start of the interval. */
@@ -191,6 +195,8 @@ export interface FirstWeekContainsDateOptions {
 
 /**
  * The localized function options. Used to build function options.
+ *
+ * @paramType LocaleFields - The locale fields used in the relevant function. Defines the minimum set of locale fields that must be provided.
  */
 export interface LocalizedOptions<LocaleFields extends keyof Locale> {
   /** The locale to use in the function. */

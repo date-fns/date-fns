@@ -87,6 +87,8 @@ export type FormatDistanceTokenFn = (
  *     xSeconds: '{{count}} វិនាទី',
  *     // ...
  *   }
+ *
+ * @paramType Template - The property value type.
  */
 export type FormatDistanceLocale<Template> = {
   [Token in FormatDistanceToken]: Template
@@ -119,6 +121,8 @@ export type FormatDistanceToken =
 /**
  * The locale function that does the work for the `formatRelative` function.
  *
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
  * @param token - The token to localize
  * @param date - The date to format
  * @param baseDate - The date to compare with
@@ -143,6 +147,8 @@ export interface FormatRelativeFnOptions
 /**
  * The locale function used inside the {@link FormatRelativeFn} function
  * implementing formatting for a particular token.
+ *
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
  * @param date - The date to format
  * @param baseDate - The date to compare with
@@ -194,6 +200,8 @@ export interface Localize {
 /**
  * Individual localize function. Part of {@link Localize}.
  *
+ * @typeParam Value - The value type to localize.
+ *
  * @param value - The value to localize
  * @param options - The object with options
  *
@@ -243,6 +251,9 @@ export interface Match {
  * The match function. Part of {@link Match}. Implements matcher for particular
  * unit type.
  *
+ * @paramType Result - The matched value type.
+ * @paramType ExtraOptions - The the extra options type.
+ *
  * @param str - The string to match
  * @param options - The object with options
  *
@@ -255,6 +266,8 @@ export type MatchFn<Result, ExtraOptions = Record<string, unknown>> = (
 
 /**
  * The {@link MatchFn} function options.
+ *
+ * @typeParam Result - The matched value type.
  */
 export interface MatchFnOptions<Result> {
   /** The width to use matching the value, defines how short or long
@@ -273,11 +286,16 @@ export interface MatchFnOptions<Result> {
 
 /**
  * The function that allows to map the matched value to the actual type.
+ *
+ * @paramType Arg - The argument type.
+ * @paramType Result - The matched value type.
  */
 export type MatchValueCallback<Arg, Result> = (value: Arg) => Result
 
 /**
  * The {@link MatchFn} function result.
+ *
+ * @paramType Result - The matched value type.
  */
 export interface MatchFnResult<Result> {
   /** The matched value parsed as the corresponding unit type */
