@@ -289,6 +289,10 @@ export interface MatchFnOptions<Result> {
  *
  * @paramType Arg - The argument type.
  * @paramType Result - The matched value type.
+ *
+ * @param arg - The value to match
+ *
+ * @returns The matched value
  */
 export type MatchValueCallback<Arg, Result> = (value: Arg) => Result
 

@@ -92,9 +92,7 @@ export interface Interval<DateType extends Date = Date> {
 }
 
 /**
- * The era:
- * - 0 - Anno Domini (AD)
- * - 1 - Before Christ (BC)
+ * The era. Can be either 0 (AD - Anno Domini) or 1 (BC - Before Christ).
  */
 export type Era = 0 | 1
 

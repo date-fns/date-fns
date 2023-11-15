@@ -1,3 +1,6 @@
+/**
+ * The locale string (see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument).
+ */
 export type IntlFormatLocale = Intl.ResolvedDateTimeFormatOptions['locale']
 
 /**
