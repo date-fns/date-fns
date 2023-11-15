@@ -57,7 +57,7 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
 
   aboutXMonths: {
     one: 'umleið 1 mánaður',
-    other: 'umleið {{count}} mánaður',
+    other: 'umleið {{count}} mánaðir',
   },
 
   xMonths: {
