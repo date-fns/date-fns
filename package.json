@@ -33,6 +33,10 @@
       "require": "./fp.js",
       "import": "./fp.mjs"
     },
+    "./Interval": {
+      "require": "./Interval.js",
+      "import": "./Interval.mjs"
+    },
     "./add": {
       "require": "./add.js",
       "import": "./add.mjs"

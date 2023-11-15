@@ -2,6 +2,7 @@
 {
   "name": "date-fns",
   "entryPoints": [
+    "./src/Interval/index.ts",
     "./src/add/index.ts",
     "./src/addBusinessDays/index.ts",
     "./src/addDays/index.ts",
