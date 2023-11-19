@@ -92,6 +92,16 @@ export interface Interval<DateType extends Date = Date> {
 }
 
 /**
+ * A version of {@link Interval} that has both start and end resolved to Date.
+ */
+export interface NormalizedInterval<DateType extends Date = Date> {
+  /** The start of the interval. */
+  start: DateType
+  /** The end of the interval. */
+  end: DateType
+}
+
+/**
  * The era. Can be either 0 (AD - Anno Domini) or 1 (BC - Before Christ).
  */
 export type Era = 0 | 1
