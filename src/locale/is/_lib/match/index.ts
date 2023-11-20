@@ -3,78 +3,86 @@ import type { Match } from '../../../types'
 import buildMatchFn from '../../../_lib/buildMatchFn/index'
 import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
 
-const matchOrdinalNumberPattern = /^(\d+)(\.)?/i
-const parseOrdinalNumberPattern = /\d+(\.)?/i
+const matchOrdinalNumberPattern = /^\d+\.?/i
+const parseOrdinalNumberPattern = /\d+/i
 
 const matchEraPatterns = {
-  narrow: /^(f\.Kr\.|e\.Kr\.)/i,
-  abbreviated: /^(f\.Kr\.|e\.Kr\.)/i,
-  wide: /^(fyrir Krist|eftir Krist)/i,
+  any: /^(?:[fe]\.?\s?Kr?\.?|(?:fyrir|eftir) Krist)/i,
 }
 const parseEraPatterns = {
-  any: [/^(f\.Kr\.)/i, /^(e\.Kr\.)/i] as const,
+  any: [/^f/i, /^e/i] as const,
 }
 
 const matchQuarterPatterns = {
-  narrow: /^[1234]\.?/i,
-  abbreviated: /^q[1234]\.?/i,
-  wide: /^[1234]\.? fjórðungur/i,
+  any: /^(?:F[1234]|[1234](?:\.\s(?:árs)?fjórðung(?:ur|i|s)?|\.?\s?F\.?)?)/i,
 }
 const parseQuarterPatterns = {
-  any: [/1\.?/i, /2\.?/i, /3\.?/i, /4\.?/i] as const,
+  any: [/1/i, /2/i, /3/i, /4/i] as const,
 }
 
 const matchMonthPatterns = {
-  narrow: /^[jfmásónd]/i,
-  abbreviated: /^(jan\.|feb\.|mars\.|apríl\.|maí|júní|júlí|águst|sep\.|oct\.|nov\.|dec\.)/i,
-  wide: /^(januar|febrúar|mars|apríl|maí|júní|júlí|águst|september|október|nóvember|desember)/i,
+  any: new RegExp(
+    '^(?:' +
+      [
+        /ja(?:n(?:\.|úar)?)?/.source,
+        /f(?:eb(?:\.|rúar)?)?/.source,
+        /m(?:r|ar[.s]?)/.source,
+        /a(?:pr(?:\.|íl)?)?/.source,
+        /m(?:í|aí\.?)/.source,
+        /j(?:n|ún[.í]?)/.source,
+        /j(?:l|úl[.í]?)/.source,
+        /á(?:gú(?:\.|st)?)?/.source,
+        /s(?:ept?(?:\.|ember)?)?/.source,
+        /o(?:kt(?:\.|óber)?)?/.source,
+        /n(?:óv(?:\.|ember)?)?/.source,
+        /d(?:es(?:\.|ember)?)?/.source,
+      ].join('|') +
+      ')',
+    'i'
+  ),
 }
 
 const parseMonthPatterns = {
-  narrow: [
-    /^j/i,
-    /^f/i,
-    /^m/i,
-    /^a/i,
-    /^m/i,
-    /^j/i,
-    /^j/i,
-    /^á/i,
-    /^s/i,
-    /^ó/i,
-    /^n/i,
-    /^d/i,
-  ] as const,
   any: [
     /^ja/i,
     /^f/i,
-    /^mar/i,
-    /^ap/i,
-    /^maí/i,
-    /^jún/i,
-    /^júl/i,
-    /^áu/i,
+    /^ma?r/i,
+    /^a/i,
+    /^ma?í/i,
+    /^jú?n/i,
+    /^jú?l/i,
+    /^á/i,
     /^s/i,
-    /^ó/i,
+    /^o/i,
     /^n/i,
     /^d/i,
   ] as const,
 }
 
 const matchDayPatterns = {
-  narrow: /^[smtwf]/i,
-  short: /^(su|má|þr|mi|fi|fö|la)/i,
-  abbreviated: /^(sun|mán|þri|mið|fim|fös|lau)\.?/i,
-  wide: /^(sunnudagur|mánudagur|þriðjudagur|miðvikudagur|fimmtudagur|föstudagur|laugardagur)/i,
+  any: new RegExp(
+    '^(?:' +
+      [
+        /s(?:u(?:nnud(?:\.|agur)?|n?\.?)?)?/.source,
+        /má(?:n(?:ud(?:\.|agur)?|\.?)?|\.?)?/.source,
+        /þ(?:r(?:iðjud(?:\.|agur)?|i?\.?)?)?/.source,
+        /mi(?:ð(?:\.|v(?:d\.?|ikud(?:\.|agur)?)?)?|\.?)?/.source,
+        /fi(?:m(?:\.|mtud(?:\.|agur)?|\.?)?|\.?)?/.source,
+        /fö(?:s(?:\.|tud(?:\.|agur)?|\.?)?|\.?)?/.source,
+        /l(?:a(?:ugard(?:\.|agur)?|u?\.?)?)?/.source,
+      ].join('|') +
+      ')',
+    'i'
+  ),
 }
 const parseDayPatterns = {
-  narrow: [/^s/i, /^m/i, /^þ/i, /^m/i, /^f/i, /^f/i, /^l/i] as const,
-  any: [/^su/i, /^má/i, /^þr/i, /^mi/i, /^fi/i, /^fö/i, /^la/i] as const,
+  any: [/^s/i, /^má/i, /^þ/i, /^mi/i, /^fi/i, /^fö/i, /^l/i] as const,
 }
 
+// TODO: Merge the below "narrow" and "any" RegExps for more flexible/lenient parsing
 const matchDayPeriodPatterns = {
-  narrow: /^(f|e|síðdegis|(á|að|um) (morgni|kvöld|nótt|miðnætti))/i,
-  any: /^(fyrir hádegi|eftir hádegi|[ef]\.?h\.?|síðdegis|morgunn|(á|að|um) (morgni|kvöld|nótt|miðnætti))/i,
+  narrow: /^(?:fh?|eh?|síðdegis|(?:á|að|um) (?:morgni|kvöld|nótt|miðnætti))/i,
+  any: /^(?:fyrir hádegi|eftir hádegi|[ef]\.?h\.?|síðdegis|morgunn|(?:á|að|um) (?:morgni|kvöld|nótt|miðnætti))/i,
 }
 const parseDayPeriodPatterns = {
   any: {
@@ -82,10 +90,10 @@ const parseDayPeriodPatterns = {
     pm: /^e/i,
     midnight: /^mi/i,
     noon: /^há/i,
-    morning: /morgunn/i,
-    afternoon: /síðdegi/i,
-    evening: /kvöld/i,
-    night: /nótt/i,
+    morning: /mo/i,
+    afternoon: /sí/i,
+    evening: /kv/i,
+    night: /nó/i,
   },
 }
 
@@ -98,14 +106,14 @@ const match: Match = {
 
   era: buildMatchFn({
     matchPatterns: matchEraPatterns,
-    defaultMatchWidth: 'wide',
+    defaultMatchWidth: 'any',
     parsePatterns: parseEraPatterns,
     defaultParseWidth: 'any',
   }),
 
   quarter: buildMatchFn({
     matchPatterns: matchQuarterPatterns,
-    defaultMatchWidth: 'wide',
+    defaultMatchWidth: 'any',
     parsePatterns: parseQuarterPatterns,
     defaultParseWidth: 'any',
     valueCallback: (index) => (index + 1) as Quarter,
@@ -113,14 +121,14 @@ const match: Match = {
 
   month: buildMatchFn({
     matchPatterns: matchMonthPatterns,
-    defaultMatchWidth: 'wide',
+    defaultMatchWidth: 'any',
     parsePatterns: parseMonthPatterns,
     defaultParseWidth: 'any',
   }),
 
   day: buildMatchFn({
     matchPatterns: matchDayPatterns,
-    defaultMatchWidth: 'wide',
+    defaultMatchWidth: 'any',
     parsePatterns: parseDayPatterns,
     defaultParseWidth: 'any',
   }),

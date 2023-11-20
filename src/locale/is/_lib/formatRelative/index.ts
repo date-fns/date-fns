@@ -1,11 +1,11 @@
-import type { FormatRelativeFn } from '../../../types'
+import type { FormatRelativeFn, FormatRelativeToken } from '../../../types'
 
-const formatRelativeLocale = {
-  lastWeek: "'síðasta' dddd 'kl.' p",
+const formatRelativeLocale: Record<FormatRelativeToken, string> = {
+  lastWeek: "'síðasti' eeee 'kl.' p",
   yesterday: "'í gær kl.' p",
   today: "'í dag kl.' p",
   tomorrow: "'á morgun kl.' p",
-  nextWeek: "dddd 'kl.' p",
+  nextWeek: "eeee 'kl.' p",
   other: 'P',
 }
 
