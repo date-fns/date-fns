@@ -24,6 +24,12 @@ export default function startOfHour<DateType extends Date>(
   date: DateType | number | string
 ): DateType {
   const _date = toDate(date)
-  _date.setMinutes(0, 0, 0)
-  return _date
+
+  const minutes = _date.getMinutes()
+  const seconds = _date.getSeconds()
+  const milliseconds = _date.getMilliseconds()
+
+  return toDate<DateType>(
+    _date.getTime() - minutes * 60 * 1000 - seconds * 1000 - milliseconds
+  )
 }
