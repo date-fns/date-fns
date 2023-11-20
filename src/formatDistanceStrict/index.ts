@@ -186,12 +186,17 @@ export default function formatDistanceStrict<DateType extends Date>(
     // 1 up to 60 mins
   } else if (unit === 'minute') {
     const roundedMinutes = roundingMethod(minutes)
-    return locale.formatDistance('xMinutes', roundedMinutes, localizeOptions)
+
+    return roundedMinutes === 60 && options?.unit !== 'minute'
+      ? locale.formatDistance('xHours', 1, localizeOptions)
+      : locale.formatDistance('xMinutes', roundedMinutes, localizeOptions)
 
     // 1 up to 24 hours
   } else if (unit === 'hour') {
     const hours = roundingMethod(minutes / 60)
-    return locale.formatDistance('xHours', hours, localizeOptions)
+    return hours === 24 && options?.unit !== 'hour'
+      ? locale.formatDistance('xDays', 1, localizeOptions)
+      : locale.formatDistance('xHours', hours, localizeOptions)
 
     // 1 up to 30 days
   } else if (unit === 'day') {
