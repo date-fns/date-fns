@@ -48,7 +48,7 @@ const monthValues = {
 const dayValues = {
   narrow: ['Z', 'M', 'D', 'W', 'D', 'V', 'Z'] as const,
   short: ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'] as const,
-  abbreviated: ['zon', 'maa', 'din', 'woe', 'don', 'vri', 'zat'] as const,
+  abbreviated: ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'] as const,
   wide: [
     'zondag',
     'maandag',
@@ -62,8 +62,8 @@ const dayValues = {
 
 const dayPeriodValues = {
   narrow: {
-    am: 'AM',
-    pm: 'PM',
+    am: 'a.m.',
+    pm: 'p.m.',
     midnight: 'middernacht',
     noon: 'het middaguur',
     morning: "'s ochtends",
@@ -72,8 +72,8 @@ const dayPeriodValues = {
     night: "'s nachts",
   },
   abbreviated: {
-    am: 'AM',
-    pm: 'PM',
+    am: 'a.m.',
+    pm: 'p.m.',
     midnight: 'middernacht',
     noon: 'het middaguur',
     morning: "'s ochtends",
@@ -82,8 +82,8 @@ const dayPeriodValues = {
     night: "'s nachts",
   },
   wide: {
-    am: 'AM',
-    pm: 'PM',
+    am: 'a.m.',
+    pm: 'p.m.',
     midnight: 'middernacht',
     noon: 'het middaguur',
     morning: "'s ochtends",
