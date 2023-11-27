@@ -1,0 +1,189 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/pt/_lib/localize/index.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">132</td><td class="">132</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import type { Localize, LocalizeFn } from &#x27;../../../types&#x27;
+import buildLocalizeFn from &#x27;../../../_lib/buildLocalizeFn/index&#x27;
+
+const eraValues = {
+  narrow: [&#x27;aC&#x27;, &#x27;dC&#x27;] as const,
+  abbreviated: [&#x27;a.C.&#x27;, &#x27;d.C.&#x27;] as const,
+  wide: [&#x27;antes de Cristo&#x27;, &#x27;depois de Cristo&#x27;] as const,
+}
+
+const quarterValues = {
+  narrow: [&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;, &#x27;4&#x27;] as const,
+  abbreviated: [&#x27;T1&#x27;, &#x27;T2&#x27;, &#x27;T3&#x27;, &#x27;T4&#x27;] as const,
+  wide: [
+    &#x27;1º trimestre&#x27;,
+    &#x27;2º trimestre&#x27;,
+    &#x27;3º trimestre&#x27;,
+    &#x27;4º trimestre&#x27;,
+  ] as const,
+}
+
+const monthValues = {
+  narrow: [&#x27;j&#x27;, &#x27;f&#x27;, &#x27;m&#x27;, &#x27;a&#x27;, &#x27;m&#x27;, &#x27;j&#x27;, &#x27;j&#x27;, &#x27;a&#x27;, &#x27;s&#x27;, &#x27;o&#x27;, &#x27;n&#x27;, &#x27;d&#x27;] as const,
+  abbreviated: [
+    &#x27;jan&#x27;,
+    &#x27;fev&#x27;,
+    &#x27;mar&#x27;,
+    &#x27;abr&#x27;,
+    &#x27;mai&#x27;,
+    &#x27;jun&#x27;,
+    &#x27;jul&#x27;,
+    &#x27;ago&#x27;,
+    &#x27;set&#x27;,
+    &#x27;out&#x27;,
+    &#x27;nov&#x27;,
+    &#x27;dez&#x27;,
+  ] as const,
+  wide: [
+    &#x27;janeiro&#x27;,
+    &#x27;fevereiro&#x27;,
+    &#x27;março&#x27;,
+    &#x27;abril&#x27;,
+    &#x27;maio&#x27;,
+    &#x27;junho&#x27;,
+    &#x27;julho&#x27;,
+    &#x27;agosto&#x27;,
+    &#x27;setembro&#x27;,
+    &#x27;outubro&#x27;,
+    &#x27;novembro&#x27;,
+    &#x27;dezembro&#x27;,
+  ] as const,
+}
+
+const dayValues = {
+  narrow: [&#x27;d&#x27;, &#x27;s&#x27;, &#x27;t&#x27;, &#x27;q&#x27;, &#x27;q&#x27;, &#x27;s&#x27;, &#x27;s&#x27;] as const,
+  short: [&#x27;dom&#x27;, &#x27;seg&#x27;, &#x27;ter&#x27;, &#x27;qua&#x27;, &#x27;qui&#x27;, &#x27;sex&#x27;, &#x27;sáb&#x27;] as const,
+  abbreviated: [&#x27;dom&#x27;, &#x27;seg&#x27;, &#x27;ter&#x27;, &#x27;qua&#x27;, &#x27;qui&#x27;, &#x27;sex&#x27;, &#x27;sáb&#x27;] as const,
+  wide: [
+    &#x27;domingo&#x27;,
+    &#x27;segunda-feira&#x27;,
+    &#x27;terça-feira&#x27;,
+    &#x27;quarta-feira&#x27;,
+    &#x27;quinta-feira&#x27;,
+    &#x27;sexta-feira&#x27;,
+    &#x27;sábado&#x27;,
+  ] as const,
+}
+
+const dayPeriodValues = {
+  narrow: {
+    am: &#x27;AM&#x27;,
+    pm: &#x27;PM&#x27;,
+    midnight: &#x27;meia-noite&#x27;,
+    noon: &#x27;meio-dia&#x27;,
+    morning: &#x27;manhã&#x27;,
+    afternoon: &#x27;tarde&#x27;,
+    evening: &#x27;noite&#x27;,
+    night: &#x27;madrugada&#x27;,
+  },
+  abbreviated: {
+    am: &#x27;AM&#x27;,
+    pm: &#x27;PM&#x27;,
+    midnight: &#x27;meia-noite&#x27;,
+    noon: &#x27;meio-dia&#x27;,
+    morning: &#x27;manhã&#x27;,
+    afternoon: &#x27;tarde&#x27;,
+    evening: &#x27;noite&#x27;,
+    night: &#x27;madrugada&#x27;,
+  },
+  wide: {
+    am: &#x27;AM&#x27;,
+    pm: &#x27;PM&#x27;,
+    midnight: &#x27;meia-noite&#x27;,
+    noon: &#x27;meio-dia&#x27;,
+    morning: &#x27;manhã&#x27;,
+    afternoon: &#x27;tarde&#x27;,
+    evening: &#x27;noite&#x27;,
+    night: &#x27;madrugada&#x27;,
+  },
+}
+
+const formattingDayPeriodValues = {
+  narrow: {
+    am: &#x27;AM&#x27;,
+    pm: &#x27;PM&#x27;,
+    midnight: &#x27;meia-noite&#x27;,
+    noon: &#x27;meio-dia&#x27;,
+    morning: &#x27;da manhã&#x27;,
+    afternoon: &#x27;da tarde&#x27;,
+    evening: &#x27;da noite&#x27;,
+    night: &#x27;da madrugada&#x27;,
+  },
+  abbreviated: {
+    am: &#x27;AM&#x27;,
+    pm: &#x27;PM&#x27;,
+    midnight: &#x27;meia-noite&#x27;,
+    noon: &#x27;meio-dia&#x27;,
+    morning: &#x27;da manhã&#x27;,
+    afternoon: &#x27;da tarde&#x27;,
+    evening: &#x27;da noite&#x27;,
+    night: &#x27;da madrugada&#x27;,
+  },
+  wide: {
+    am: &#x27;AM&#x27;,
+    pm: &#x27;PM&#x27;,
+    midnight: &#x27;meia-noite&#x27;,
+    noon: &#x27;meio-dia&#x27;,
+    morning: &#x27;da manhã&#x27;,
+    afternoon: &#x27;da tarde&#x27;,
+    evening: &#x27;da noite&#x27;,
+    night: &#x27;da madrugada&#x27;,
+  },
+}
+
+const ordinalNumber: LocalizeFn&lt;number&gt; = (dirtyNumber, _options) =&gt; {
+  const number = Number(dirtyNumber)
+  return number + &#x27;º&#x27;
+}
+
+const localize: Localize = {
+  ordinalNumber,
+
+  era: buildLocalizeFn({
+    values: eraValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  quarter: buildLocalizeFn({
+    values: quarterValues,
+    defaultWidth: &#x27;wide&#x27;,
+    argumentCallback: (quarter) =&gt; quarter - 1,
+  }),
+
+  month: buildLocalizeFn({
+    values: monthValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  day: buildLocalizeFn({
+    values: dayValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues,
+    defaultWidth: &#x27;wide&#x27;,
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: &#x27;wide&#x27;,
+  }),
+}
+
+export default localize
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:21 GMT</p>
+    </body>
+  </html>
+  

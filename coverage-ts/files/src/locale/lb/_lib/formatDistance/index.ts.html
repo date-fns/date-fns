@@ -1,0 +1,264 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/lb/_lib/formatDistance/index.ts</td><td class="">97.96%</td><td class="">80%</td><td class="">196</td><td class="">192</td><td class="">4</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import type { FormatDistanceFn, FormatDistanceLocale } from &#x27;../../../types&#x27;
+
+type Plural = {
+  one: string
+  other: string
+}
+
+type FormatDistanceTokenValue = {
+  standalone: Plural | string
+  withPreposition: Plural | string
+}
+
+const formatDistanceLocale: FormatDistanceLocale&lt;FormatDistanceTokenValue&gt; = {
+  lessThanXSeconds: {
+    standalone: {
+      one: &#x27;manner wéi eng Sekonn&#x27;,
+      other: &#x27;manner wéi {{count}} Sekonnen&#x27;,
+    },
+    withPreposition: {
+      one: &#x27;manner wéi enger Sekonn&#x27;,
+      other: &#x27;manner wéi {{count}} Sekonnen&#x27;,
+    },
+  },
+
+  xSeconds: {
+    standalone: {
+      one: &#x27;eng Sekonn&#x27;,
+      other: &#x27;{{count}} Sekonnen&#x27;,
+    },
+    withPreposition: {
+      one: &#x27;enger Sekonn&#x27;,
+      other: &#x27;{{count}} Sekonnen&#x27;,
+    },
+  },
+
+  halfAMinute: {
+    standalone: &#x27;eng hallef Minutt&#x27;,
+    withPreposition: &#x27;enger hallwer Minutt&#x27;,
+  },
+
+  lessThanXMinutes: {
+    standalone: {
+      one: &#x27;manner wéi eng Minutt&#x27;,
+      other: &#x27;manner wéi {{count}} Minutten&#x27;,
+    },
+    withPreposition: {
+      one: &#x27;manner wéi enger Minutt&#x27;,
+      other: &#x27;manner wéi {{count}} Minutten&#x27;,
+    },
+  },
+
+  xMinutes: {
+    standalone: {
+      one: &#x27;eng Minutt&#x27;,
+      other: &#x27;{{count}} Minutten&#x27;,
+    },
+    withPreposition: {
+      one: &#x27;enger Minutt&#x27;,
+      other: &#x27;{{count}} Minutten&#x27;,
+    },
+  },
+
+  aboutXHours: {
+    standalone: {
+      one: &#x27;ongeféier eng Stonn&#x27;,
+      other: &#x27;ongeféier {{count}} Stonnen&#x27;,
+    },
+    withPreposition: {
+      one: &#x27;ongeféier enger Stonn&#x27;,
+      other: &#x27;ongeféier {{count}} Stonnen&#x27;,
+    },
+  },
+
+  xHours: {
+    standalone: {
+      one: &#x27;eng Stonn&#x27;,
+      other: &#x27;{{count}} Stonnen&#x27;,
+    },
+    withPreposition: {
+      one: &#x27;enger Stonn&#x27;,
+      other: &#x27;{{count}} Stonnen&#x27;,
+    },
+  },
+
+  xDays: {
+    standalone: {
+      one: &#x27;een Dag&#x27;,
+      other: &#x27;{{count}} Deeg&#x27;,
+    },
+    withPreposition: {
+      one: &#x27;engem Dag&#x27;,
+      other: &#x27;{{count}} Deeg&#x27;,
+    },
+  },
+
+  aboutXWeeks: {
+    standalone: {
+      one: &#x27;ongeféier eng Woch&#x27;,
+      other: &#x27;ongeféier {{count}} Wochen&#x27;,
+    },
+    withPreposition: {
+      one: &#x27;ongeféier enger Woche&#x27;,
+      other: &#x27;ongeféier {{count}} Wochen&#x27;,
+    },
+  },
+
+  xWeeks: {
+    standalone: {
+      one: &#x27;eng Woch&#x27;,
+      other: &#x27;{{count}} Wochen&#x27;,
+    },
+    withPreposition: {
+      one: &#x27;enger Woch&#x27;,
+      other: &#x27;{{count}} Wochen&#x27;,
+    },
+  },
+
+  aboutXMonths: {
+    standalone: {
+      one: &#x27;ongeféier ee Mount&#x27;,
+      other: &#x27;ongeféier {{count}} Méint&#x27;,
+    },
+    withPreposition: {
+      one: &#x27;ongeféier engem Mount&#x27;,
+      other: &#x27;ongeféier {{count}} Méint&#x27;,
+    },
+  },
+
+  xMonths: {
+    standalone: {
+      one: &#x27;ee Mount&#x27;,
+      other: &#x27;{{count}} Méint&#x27;,
+    },
+    withPreposition: {
+      one: &#x27;engem Mount&#x27;,
+      other: &#x27;{{count}} Méint&#x27;,
+    },
+  },
+
+  aboutXYears: {
+    standalone: {
+      one: &#x27;ongeféier ee Joer&#x27;,
+      other: &#x27;ongeféier {{count}} Joer&#x27;,
+    },
+    withPreposition: {
+      one: &#x27;ongeféier engem Joer&#x27;,
+      other: &#x27;ongeféier {{count}} Joer&#x27;,
+    },
+  },
+
+  xYears: {
+    standalone: {
+      one: &#x27;ee Joer&#x27;,
+      other: &#x27;{{count}} Joer&#x27;,
+    },
+    withPreposition: {
+      one: &#x27;engem Joer&#x27;,
+      other: &#x27;{{count}} Joer&#x27;,
+    },
+  },
+
+  overXYears: {
+    standalone: {
+      one: &#x27;méi wéi ee Joer&#x27;,
+      other: &#x27;méi wéi {{count}} Joer&#x27;,
+    },
+    withPreposition: {
+      one: &#x27;méi wéi engem Joer&#x27;,
+      other: &#x27;méi wéi {{count}} Joer&#x27;,
+    },
+  },
+
+  almostXYears: {
+    standalone: {
+      one: &#x27;bal ee Joer&#x27;,
+      other: &#x27;bal {{count}} Joer&#x27;,
+    },
+    withPreposition: {
+      one: &#x27;bal engem Joer&#x27;,
+      other: &#x27;bal {{count}} Joer&#x27;,
+    },
+  },
+}
+
+const EXCEPTION_CONSONANTS = [&#x27;d&#x27;, &#x27;h&#x27;, &#x27;n&#x27;, &#x27;t&#x27;, &#x27;z&#x27;]
+const VOWELS = [&#x27;a,&#x27;, &#x27;e&#x27;, &#x27;i&#x27;, &#x27;o&#x27;, &#x27;u&#x27;]
+const DIGITS_SPOKEN_N_NEEDED = [0, 1, 2, 3, 8, 9]
+const FIRST_TWO_DIGITS_SPOKEN_NO_N_NEEDED = [40, 50, 60, 70]
+
+// Eifeler Regel
+function isFinalNNeeded(nextWords: string): boolean {
+  const firstLetter = nextWords.charAt(0).toLowerCase()
+  if (
+    VOWELS.indexOf(firstLetter) != -1 ||
+    EXCEPTION_CONSONANTS.indexOf(firstLetter) != -1
+  ) {
+    return true
+  }
+
+  // Numbers would need to converted into words for checking.
+  // Therefore, I have listed the digits that require a preceeding n with a few exceptions.
+  const firstWord = nextWords.split(&#x27; &#x27;)[0]
+  const number = parseInt(firstWord)
+  if (
+    !isNaN(number) &amp;&amp;
+    DIGITS_SPOKEN_N_NEEDED.indexOf(number % 10) != -1 &amp;&amp;
+    FIRST_TWO_DIGITS_SPOKEN_NO_N_NEEDED.indexOf(
+      parseInt(firstWord.substring(0, 2))
+    ) == -1
+  ) {
+    return true
+  }
+
+  // Omit other checks as they are not expected here.
+  return false
+}
+
+const formatDistance: FormatDistanceFn = (token, count, options) =&gt; {
+  let result
+
+  const tokenValue = formatDistanceLocale[token]
+
+  const usageGroup = options?.addSuffix
+    ? tokenValue.withPreposition
+    : tokenValue.standalone
+
+  if (typeof usageGroup === &#x27;string&#x27;) {
+    result = usageGroup
+  } else if (count === 1) {
+    result = usageGroup.one
+  } else {
+    result = usageGroup.other.replace(&#x27;{{count}}&#x27;, String(count))
+  }
+
+  if (options?.addSuffix) {
+    if (options.comparison &amp;&amp; options.comparison &gt; 0) {
+      return &#x27;a&#x27; + (isFinalNNeeded(result) ? &#x27;n&#x27; : &#x27;&#x27;) + &#x27; &#x27; + result
+    } else {
+      return &#x27;viru&#x27; + (isFinalNNeeded(result) ? &#x27;n&#x27; : &#x27;&#x27;) + &#x27; &#x27; + result
+    }
+  }
+
+  return result
+}
+
+export default formatDistance
+</textarea><pre id="annotations" style="display:none">[{&quot;file&quot;:&quot;src/locale/lb/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:218,&quot;character&quot;:6,&quot;text&quot;:&quot;result&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/lb/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:227,&quot;character&quot;:4,&quot;text&quot;:&quot;result&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/lb/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:229,&quot;character&quot;:4,&quot;text&quot;:&quot;result&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/lb/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:231,&quot;character&quot;:4,&quot;text&quot;:&quot;result&quot;,&quot;kind&quot;:1}]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:20 GMT</p>
+    </body>
+  </html>
+  

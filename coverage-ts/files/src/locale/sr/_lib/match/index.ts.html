@@ -1,0 +1,152 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/sr/_lib/match/index.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">108</td><td class="">108</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import type { Quarter } from &#x27;../../../../types&#x27;
+import type { Match } from &#x27;../../../types&#x27;
+import buildMatchFn from &#x27;../../../_lib/buildMatchFn/index&#x27;
+import buildMatchPatternFn from &#x27;../../../_lib/buildMatchPatternFn/index&#x27;
+
+const matchOrdinalNumberPattern = /^(\d+)\./i
+const parseOrdinalNumberPattern = /\d+/i
+
+const matchEraPatterns = {
+  narrow: /^(пр\.н\.е\.|АД)/i,
+  abbreviated: /^(пр\.\s?Хр\.|по\.\s?Хр\.)/i,
+  wide: /^(Пре Христа|пре нове ере|После Христа|нова ера)/i,
+}
+const parseEraPatterns = {
+  any: [/^пр/i, /^(по|нова)/i] as const,
+}
+
+const matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^[1234]\.\s?кв\.?/i,
+  wide: /^[1234]\. квартал/i,
+}
+const parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i] as const,
+}
+
+const matchMonthPatterns = {
+  narrow: /^(10|11|12|[123456789])\./i,
+  abbreviated: /^(јан|феб|мар|апр|мај|јун|јул|авг|сеп|окт|нов|дец)/i,
+  wide: /^((јануар|јануара)|(фебруар|фебруара)|(март|марта)|(април|априла)|(мја|маја)|(јун|јуна)|(јул|јула)|(август|августа)|(септембар|септембра)|(октобар|октобра)|(новембар|новембра)|(децембар|децембра))/i,
+}
+const parseMonthPatterns = {
+  narrow: [
+    /^1/i,
+    /^2/i,
+    /^3/i,
+    /^4/i,
+    /^5/i,
+    /^6/i,
+    /^7/i,
+    /^8/i,
+    /^9/i,
+    /^10/i,
+    /^11/i,
+    /^12/i,
+  ] as const,
+  any: [
+    /^ја/i,
+    /^ф/i,
+    /^мар/i,
+    /^ап/i,
+    /^мај/i,
+    /^јун/i,
+    /^јул/i,
+    /^авг/i,
+    /^с/i,
+    /^о/i,
+    /^н/i,
+    /^д/i,
+  ] as const,
+}
+
+const matchDayPatterns = {
+  narrow: /^[пусчн]/i,
+  short: /^(нед|пон|уто|сре|чет|пет|суб)/i,
+  abbreviated: /^(нед|пон|уто|сре|чет|пет|суб)/i,
+  wide: /^(недеља|понедељак|уторак|среда|четвртак|петак|субота)/i,
+}
+const parseDayPatterns = {
+  narrow: [/^п/i, /^у/i, /^с/i, /^ч/i, /^п/i, /^с/i, /^н/i] as const,
+  any: [/^нед/i, /^пон/i, /^уто/i, /^сре/i, /^чет/i, /^пет/i, /^суб/i] as const,
+}
+
+const matchDayPeriodPatterns = {
+  any: /^(ам|пм|поноћ|(по)?подне|увече|ноћу|после подне|ујутру)/i,
+}
+const parseDayPeriodPatterns = {
+  any: {
+    am: /^a/i,
+    pm: /^p/i,
+    midnight: /^поно/i,
+    noon: /^под/i,
+    morning: /ујутру/i,
+    afternoon: /(после\s|по)+подне/i,
+    evening: /(увече)/i,
+    night: /(ноћу)/i,
+  },
+}
+
+const match: Match = {
+  ordinalNumber: buildMatchPatternFn({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: (value) =&gt; parseInt(value, 10),
+  }),
+
+  era: buildMatchFn({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: &#x27;wide&#x27;,
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: &#x27;any&#x27;,
+  }),
+
+  quarter: buildMatchFn({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: &#x27;wide&#x27;,
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: &#x27;any&#x27;,
+    valueCallback: (index) =&gt; (index + 1) as Quarter,
+  }),
+
+  month: buildMatchFn({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: &#x27;wide&#x27;,
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: &#x27;any&#x27;,
+  }),
+
+  day: buildMatchFn({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: &#x27;wide&#x27;,
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: &#x27;any&#x27;,
+  }),
+
+  dayPeriod: buildMatchFn({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: &#x27;any&#x27;,
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: &#x27;any&#x27;,
+  }),
+}
+
+export default match
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:21 GMT</p>
+    </body>
+  </html>
+  

@@ -24,6 +24,10 @@ describe('isDate', () => {
       assertType<unknown>(date)
     }
   })
+  /* TUKE new Test */
+  it('returns true if the given value is a UTC date object', () => {
+    assert(isDate(new Date(Date.UTC(NaN))))
+  })
 
   describe('with date passed from another iframe', () => {
     // If in the browser, run the test in an iframe

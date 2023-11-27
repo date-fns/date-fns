@@ -1,0 +1,123 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/differenceInDays/index.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">82</td><td class="">82</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import differenceInCalendarDays from &#x27;../differenceInCalendarDays/index&#x27;
+import toDate from &#x27;../toDate/index&#x27;
+
+/**
+ * @name differenceInDays
+ * @category Day Helpers
+ * @summary Get the number of full days between the given dates.
+ *
+ * @description
+ * Get the number of full day periods between two dates. Fractional days are
+ * truncated towards zero.
+ *
+ * One &quot;full day&quot; is the distance between a local time in one day to the same
+ * local time on the next or previous day. A full day can sometimes be less than
+ * or more than 24 hours if a daylight savings change happens between two dates.
+ *
+ * To ignore DST and only measure exact 24-hour periods, use this instead:
+ * `Math.floor(differenceInHours(dateLeft, dateRight)/24)|0`.
+ *
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param dateLeft - The later date
+ * @param dateRight - The earlier date
+ *
+ * @returns The number of full days according to the local timezone
+ *
+ * @example
+ * // How many full days are between
+ * // 2 July 2011 23:00:00 and 2 July 2012 00:00:00?
+ * const result = differenceInDays(
+ *   new Date(2012, 6, 2, 0, 0),
+ *   new Date(2011, 6, 2, 23, 0)
+ * )
+ * //=&gt; 365
+ *
+ * @example
+ * // How many full days are between
+ * // 2 July 2011 23:59:00 and 3 July 2011 00:01:00?
+ * const result = differenceInDays(
+ *   new Date(2011, 6, 3, 0, 1),
+ *   new Date(2011, 6, 2, 23, 59)
+ * )
+ * //=&gt; 0
+ *
+ * @example
+ * // How many full days are between
+ * // 1 March 2020 0:00 and 1 June 2020 0:00 ?
+ * // Note: because local time is used, the
+ * // result will always be 92 days, even in
+ * // time zones where DST starts and the
+ * // period has only 92*24-1 hours.
+ * const result = differenceInDays(
+ *   new Date(2020, 5, 1),
+ *   new Date(2020, 2, 1)
+ * )
+ * //=&gt; 92
+ */
+export default function differenceInDays&lt;DateType extends Date&gt;(
+  dateLeft: DateType | number,
+  dateRight: DateType | number
+): number {
+  const _dateLeft = toDate(dateLeft)
+  const _dateRight = toDate(dateRight)
+
+  const sign = compareLocalAsc(_dateLeft, _dateRight)
+  const difference = Math.abs(differenceInCalendarDays(_dateLeft, _dateRight))
+
+  _dateLeft.setDate(_dateLeft.getDate() - sign * difference)
+
+  // Math.abs(diff in full days - diff in calendar days) === 1 if last calendar day is not full
+  // If so, result must be decreased by 1 in absolute value
+  const isLastDayNotFull = Number(
+    compareLocalAsc(_dateLeft, _dateRight) === -sign
+  )
+  const result = sign * (difference - isLastDayNotFull)
+  // Prevent negative zero
+  return result === 0 ? 0 : result
+}
+
+// Like `compareAsc` but uses local time not UTC, which is needed
+// for accurate equality comparisons of UTC timestamps that end up
+// having the same representation in local time, e.g. one hour before
+// DST ends vs. the instant that DST ends.
+function compareLocalAsc&lt;DateType extends Date&gt;(
+  dateLeft: DateType,
+  dateRight: DateType
+): number {
+  const diff =
+    dateLeft.getFullYear() - dateRight.getFullYear() ||
+    dateLeft.getMonth() - dateRight.getMonth() ||
+    dateLeft.getDate() - dateRight.getDate() ||
+    dateLeft.getHours() - dateRight.getHours() ||
+    dateLeft.getMinutes() - dateRight.getMinutes() ||
+    dateLeft.getSeconds() - dateRight.getSeconds() ||
+    dateLeft.getMilliseconds() - dateRight.getMilliseconds()
+
+  if (diff &lt; 0) {
+    return -1
+  } else if (diff &gt; 0) {
+    return 1
+    // Return 0 if diff is 0; return NaN if diff is NaN
+  } else {
+    return diff
+  }
+}
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:16 GMT</p>
+    </body>
+  </html>
+  

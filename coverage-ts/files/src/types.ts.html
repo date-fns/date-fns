@@ -1,0 +1,248 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>types.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/types.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">77</td><td class="">77</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">/* eslint-disable no-unused-vars */
+
+import type { Locale } from &#x27;./locale/types&#x27;
+
+export * from &#x27;./locale/types&#x27;
+
+/**
+ * The generic date constructor. Replicates the Date constructor. Used to build
+ * generic functions.
+ */
+export interface GenericDateConstructor&lt;DateType extends Date = Date&gt; {
+  /**
+   * The date constructor. Creates date with the current date and time.
+   *
+   * @returns The date instance
+   */
+  new (): DateType
+
+  /**
+   * The date constructor. Creates date with the passed date, number of
+   * milliseconds or string to parse.
+   *
+   * @param value - The date, number of milliseconds or string to parse
+   *
+   * @returns The date instance
+   */
+  new (value: Date | number | string): DateType
+
+  /**
+   * The date constructor. Creates date with the passed date values (year,
+   * month, etc.) Note that the month is 0-indexed.
+   *
+   * @param year - The year
+   * @param month - The month. Note that the month is 0-indexed.
+   * @param date - The day of the month
+   * @param hours - The hours
+   * @param minutes - The minutes
+   * @param seconds - The seconds
+   * @param ms - The milliseconds
+   *
+   * @returns The date instance
+   */
+  new (
+    year: number,
+    month: number,
+    date?: number,
+    hours?: number,
+    minutes?: number,
+    seconds?: number,
+    ms?: number
+  ): DateType
+}
+
+/**
+ * The duration object. Contains the duration in the units specified by the
+ * object.
+ */
+export interface Duration {
+  /** The number of years in the duration */
+  years?: number
+  /** The number of months in the duration */
+  months?: number
+  /** The number of weeks in the duration */
+  weeks?: number
+  /** The number of days in the duration */
+  days?: number
+  /** The number of hours in the duration */
+  hours?: number
+  /** The number of minutes in the duration */
+  minutes?: number
+  /** The number of seconds in the duration */
+  seconds?: number
+}
+
+/**
+ * The duration unit type alias.
+ */
+export type DurationUnit = keyof Duration
+
+/**
+ * An object that combines two dates to represent the time interval.
+ */
+export interface Interval&lt;DateType extends Date = Date&gt; {
+  /** The start of the interval. */
+  start: DateType | number
+  /** The end of the interval. */
+  end: DateType | number
+}
+
+/**
+ * The era:
+ * - 0 - Anno Domini (AD)
+ * - 1 - Before Christ (BC)
+ */
+export type Era = 0 | 1
+
+/**
+ * The year quarter. Goes from 1 to 4.
+ */
+export type Quarter = 1 | 2 | 3 | 4
+
+/**
+ * The day of the week type alias. Unlike the date (the number of days since
+ * the beginning of the month), which begins with 1 and is dynamic (can go up to
+ * 28, 30, or 31), the day starts with 0 and static (always ends at 6). Look at
+ * it as an index in an array where Sunday is the first element and Saturday
+ * is the last.
+ */
+export type Day = 0 | 1 | 2 | 3 | 4 | 5 | 6
+
+/**
+ * The month type alias. Goes from 0 to 11, where 0 is January and 11 is
+ * December.
+ */
+export type Month = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11
+
+/**
+ * FirstWeekContainsDate is used to determine which week is the first week of
+ * the year, based on what day the January, 1 is in that week.
+ *
+ * The day in that week can only be 1 (Monday) or 4 (Thursday).
+ *
+ * Please see https://en.wikipedia.org/wiki/Week#Week_numbering for more information.
+ */
+export type FirstWeekContainsDate = 1 | 4
+
+/**
+ * The date values, used to set or get date object values.
+ */
+export interface DateValues {
+  /** The year */
+  year?: number
+  /** The month */
+  month?: number
+  /** The day of the month */
+  date?: number
+  /** The hours */
+  hours?: number
+  /** The minutes */
+  minutes?: number
+  /** The seconds */
+  seconds?: number
+  /** The milliseconds */
+  milliseconds?: number
+}
+
+/**
+ * The number rounding method.
+ */
+export type RoundingMethod = &#x27;ceil&#x27; | &#x27;floor&#x27; | &#x27;round&#x27; | &#x27;trunc&#x27;
+
+/**
+ * The ISO string format.
+ *
+ * - basic: Minimal number of separators
+ * - extended: With separators added to enhance human readability
+ */
+export type ISOStringFormat = &#x27;extended&#x27; | &#x27;basic&#x27;
+
+/**
+ * The ISO date representation. Represents which component the string includes,
+ * date, time or both.
+ */
+export type ISOStringRepresentation = &#x27;complete&#x27; | &#x27;date&#x27; | &#x27;time&#x27;
+
+/// Function options types
+
+/**
+ * The step function options. Used to build function options.
+ */
+export interface StepOptions {
+  /** The step to use when iterating */
+  step?: number
+}
+
+/**
+ * The week function options. Used to build function options.
+ */
+export interface WeekOptions {
+  /** Which day the week starts on. */
+  weekStartsOn?: Day
+}
+
+/**
+ * The first week contains date options. Used to build function options.
+ */
+export interface FirstWeekContainsDateOptions {
+  /** See {@link FirstWeekContainsDate} for more details. */
+  firstWeekContainsDate?: FirstWeekContainsDate
+}
+
+/**
+ * The localized function options. Used to build function options.
+ */
+export interface LocalizedOptions&lt;LocaleFields extends keyof Locale&gt; {
+  /** The locale to use in the function. */
+  locale?: Pick&lt;Locale, LocaleFields&gt;
+}
+
+/**
+ * The ISO format function options. Used to build function options.
+ */
+export interface ISOFormatOptions {
+  /** The format to use: basic with minimal number of separators or extended
+   * with separators added to enhance human readability */
+  format?: ISOStringFormat
+  /** The date representation - what component to format: date, time\
+   * or both (complete) */
+  representation?: ISOStringRepresentation
+}
+
+/**
+ * The rounding options. Used to build function options.
+ */
+export interface RoundingOptions {
+  /** The rounding method to use */
+  roundingMethod?: RoundingMethod
+}
+
+/**
+ * Additional tokens options. Used to build function options.
+ */
+export interface AdditionalTokensOptions {
+  /** If true, allows usage of the week-numbering year tokens `YY` and `YYYY`.
+   * See: https://date-fns.org/docs/Unicode-Tokens */
+  useAdditionalWeekYearTokens?: boolean
+  /** If true, allows usage of the day of year tokens `D` and `DD`.
+   * See: https://date-fns.org/docs/Unicode-Tokens */
+  useAdditionalDayOfYearTokens?: boolean
+}
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:15 GMT</p>
+    </body>
+  </html>
+  

@@ -1,0 +1,90 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>test.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="negative"><td class="">src/fp/_lib/convertToFP/test.ts</td><td class="">73.26%</td><td class="">80%</td><td class="">86</td><td class="">63</td><td class="">23</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">/* eslint-env mocha */
+
+import assert from &#x27;assert&#x27;
+import { describe, it } from &#x27;vitest&#x27;
+import convertToFP from &#x27;./index&#x27;
+
+describe(&#x27;convertToFP&#x27;, () =&gt; {
+  function fn(a: unknown, b: unknown, c: unknown) {
+    return &#x27;a b c&#x27;
+      .replace(&#x27;a&#x27;, String(a))
+      .replace(&#x27;b&#x27;, String(b))
+      .replace(&#x27;c&#x27;, String(c))
+  }
+
+  describe(&#x27;arity of converted function === arity of initial function&#x27;, () =&gt; {
+    it(&#x27;allows arguments to be curried (and reverses their order)&#x27;, () =&gt; {
+      const fpFn = convertToFP(fn, 3)
+      assert(fpFn(3)(2)(1) === &#x27;1 2 3&#x27;)
+    })
+
+    it(&#x27;allows to group arguments&#x27;, () =&gt; {
+      const fpFn = convertToFP(fn, 3)
+      assert(fpFn(3, 2)(1) === &#x27;1 2 3&#x27;)
+      assert(fpFn(3)(2, 1) === &#x27;1 2 3&#x27;)
+    })
+
+    it(&#x27;allows the function to be called with all arguments in the reversed order&#x27;, () =&gt; {
+      const fpFn = convertToFP(fn, 3)
+      assert(fpFn(3, 2, 1) === &#x27;1 2 3&#x27;)
+    })
+
+    it(&#x27;ignores calls without curried arguments&#x27;, () =&gt; {
+      const fpFn = convertToFP(fn, 3)
+      assert(fpFn()()(3, 2)()()(1) === &#x27;1 2 3&#x27;)
+    })
+
+    it(&#x27;ignores extra curried arguments in the last group&#x27;, () =&gt; {
+      const fpFn = convertToFP(fn, 3)
+      assert(fpFn(3, 2, 1, 0, -1, -2) === &#x27;1 2 3&#x27;)
+      assert(fpFn(3)(2)(1, 0, -1, -2) === &#x27;1 2 3&#x27;)
+    })
+  })
+
+  describe(&#x27;arity of converted function &lt; arity of initial function&#x27;, () =&gt; {
+    it(&#x27;calls the initial function with a short list of arguments&#x27;, () =&gt; {
+      const fpFn = convertToFP(fn, 2)
+      assert(fpFn(2)(1) === &#x27;1 2 undefined&#x27;)
+      assert(fpFn(2, 1) === &#x27;1 2 undefined&#x27;)
+    })
+
+    it(&#x27;ignores extra curried arguments in the last group&#x27;, () =&gt; {
+      const fpFn = convertToFP(fn, 2)
+      assert(fpFn(3)(2, 1) === &#x27;2 3 undefined&#x27;)
+      assert(fpFn(3, 2, 1) === &#x27;2 3 undefined&#x27;)
+    })
+  })
+
+  describe(&#x27;arity of converted function &gt; arity of initial function&#x27;, () =&gt; {
+    it(&#x27;works, but ignores the extra arguments&#x27;, () =&gt; {
+      const fpFn = convertToFP(fn, 4)
+      assert(fpFn(4)(3)(2)(1) === &#x27;1 2 3&#x27;)
+      assert(fpFn(4, 3, 2, 1) === &#x27;1 2 3&#x27;)
+    })
+  })
+
+  describe(&#x27;arity of converted function === 0&#x27;, () =&gt; {
+    it(&#x27;returns the constant instead of function&#x27;, () =&gt; {
+      const result = convertToFP(fn, 0)
+      assert(result === &#x27;undefined undefined undefined&#x27;)
+    })
+  })
+})
+</textarea><pre id="annotations" style="display:none">[{&quot;file&quot;:&quot;src/fp/_lib/convertToFP/test.ts&quot;,&quot;line&quot;:16,&quot;character&quot;:12,&quot;text&quot;:&quot;fpFn&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/fp/_lib/convertToFP/test.ts&quot;,&quot;line&quot;:17,&quot;character&quot;:13,&quot;text&quot;:&quot;fpFn&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/fp/_lib/convertToFP/test.ts&quot;,&quot;line&quot;:21,&quot;character&quot;:12,&quot;text&quot;:&quot;fpFn&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/fp/_lib/convertToFP/test.ts&quot;,&quot;line&quot;:22,&quot;character&quot;:13,&quot;text&quot;:&quot;fpFn&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/fp/_lib/convertToFP/test.ts&quot;,&quot;line&quot;:23,&quot;character&quot;:13,&quot;text&quot;:&quot;fpFn&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/fp/_lib/convertToFP/test.ts&quot;,&quot;line&quot;:27,&quot;character&quot;:12,&quot;text&quot;:&quot;fpFn&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/fp/_lib/convertToFP/test.ts&quot;,&quot;line&quot;:28,&quot;character&quot;:13,&quot;text&quot;:&quot;fpFn&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/fp/_lib/convertToFP/test.ts&quot;,&quot;line&quot;:32,&quot;character&quot;:12,&quot;text&quot;:&quot;fpFn&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/fp/_lib/convertToFP/test.ts&quot;,&quot;line&quot;:33,&quot;character&quot;:13,&quot;text&quot;:&quot;fpFn&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/fp/_lib/convertToFP/test.ts&quot;,&quot;line&quot;:37,&quot;character&quot;:12,&quot;text&quot;:&quot;fpFn&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/fp/_lib/convertToFP/test.ts&quot;,&quot;line&quot;:38,&quot;character&quot;:13,&quot;text&quot;:&quot;fpFn&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/fp/_lib/convertToFP/test.ts&quot;,&quot;line&quot;:39,&quot;character&quot;:13,&quot;text&quot;:&quot;fpFn&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/fp/_lib/convertToFP/test.ts&quot;,&quot;line&quot;:45,&quot;character&quot;:12,&quot;text&quot;:&quot;fpFn&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/fp/_lib/convertToFP/test.ts&quot;,&quot;line&quot;:46,&quot;character&quot;:13,&quot;text&quot;:&quot;fpFn&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/fp/_lib/convertToFP/test.ts&quot;,&quot;line&quot;:47,&quot;character&quot;:13,&quot;text&quot;:&quot;fpFn&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/fp/_lib/convertToFP/test.ts&quot;,&quot;line&quot;:51,&quot;character&quot;:12,&quot;text&quot;:&quot;fpFn&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/fp/_lib/convertToFP/test.ts&quot;,&quot;line&quot;:52,&quot;character&quot;:13,&quot;text&quot;:&quot;fpFn&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/fp/_lib/convertToFP/test.ts&quot;,&quot;line&quot;:53,&quot;character&quot;:13,&quot;text&quot;:&quot;fpFn&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/fp/_lib/convertToFP/test.ts&quot;,&quot;line&quot;:59,&quot;character&quot;:12,&quot;text&quot;:&quot;fpFn&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/fp/_lib/convertToFP/test.ts&quot;,&quot;line&quot;:60,&quot;character&quot;:13,&quot;text&quot;:&quot;fpFn&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/fp/_lib/convertToFP/test.ts&quot;,&quot;line&quot;:61,&quot;character&quot;:13,&quot;text&quot;:&quot;fpFn&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/fp/_lib/convertToFP/test.ts&quot;,&quot;line&quot;:67,&quot;character&quot;:12,&quot;text&quot;:&quot;result&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/fp/_lib/convertToFP/test.ts&quot;,&quot;line&quot;:68,&quot;character&quot;:13,&quot;text&quot;:&quot;result&quot;,&quot;kind&quot;:1}]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:23 GMT</p>
+    </body>
+  </html>
+  

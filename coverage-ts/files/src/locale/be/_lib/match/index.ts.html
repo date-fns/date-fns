@@ -1,0 +1,162 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/be/_lib/match/index.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">110</td><td class="">110</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import type { Quarter } from &#x27;../../../../types&#x27;
+import type { Match } from &#x27;../../../types&#x27;
+import buildMatchFn from &#x27;../../../_lib/buildMatchFn/index&#x27;
+import buildMatchPatternFn from &#x27;../../../_lib/buildMatchPatternFn/index&#x27;
+
+const matchOrdinalNumberPattern = /^(\d+)(-?(е|я|га|і|ы|ае|ая|яя|шы|гі|ці|ты|мы))?/i
+const parseOrdinalNumberPattern = /\d+/i
+
+const matchEraPatterns = {
+  narrow: /^((да )?н\.?\s?э\.?)/i,
+  abbreviated: /^((да )?н\.?\s?э\.?)/i,
+  wide: /^(да нашай эры|нашай эры|наша эра)/i,
+}
+const parseEraPatterns = {
+  any: [/^д/i, /^н/i] as const,
+}
+
+const matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^[1234](-?[ыі]?)? кв.?/i,
+  wide: /^[1234](-?[ыі]?)? квартал/i,
+}
+const parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i] as const,
+}
+
+const matchMonthPatterns = {
+  narrow: /^[слкмчжв]/i,
+  abbreviated: /^(студз|лют|сак|крас|ма[йя]|чэрв|ліп|жн|вер|кастр|ліст|снеж)\.?/i,
+  wide: /^(студзен[ья]|лют(ы|ага)|сакавіка?|красавіка?|ма[йя]|чэрвен[ья]|ліпен[ья]|жні(вень|ўня)|верас(ень|ня)|кастрычніка?|лістапада?|снеж(ань|ня))/i,
+}
+const parseMonthPatterns = {
+  narrow: [
+    /^с/i,
+    /^л/i,
+    /^с/i,
+    /^к/i,
+    /^м/i,
+    /^ч/i,
+    /^л/i,
+    /^ж/i,
+    /^в/i,
+    /^к/i,
+    /^л/i,
+    /^с/i,
+  ] as const,
+  any: [
+    /^ст/i,
+    /^лю/i,
+    /^са/i,
+    /^кр/i,
+    /^ма/i,
+    /^ч/i,
+    /^ліп/i,
+    /^ж/i,
+    /^в/i,
+    /^ка/i,
+    /^ліс/i,
+    /^сн/i,
+  ] as const,
+}
+
+const matchDayPatterns = {
+  narrow: /^[нпасч]/i,
+  short: /^(нд|ня|пн|па|аў|ат|ср|се|чц|ча|пт|пя|сб|су)\.?/i,
+  abbreviated: /^(нядз?|ндз|пнд|пан|аўт|срд|сер|чцв|чац|птн|пят|суб).?/i,
+  wide: /^(нядзел[яі]|панядзел(ак|ка)|аўтор(ак|ка)|серад[аы]|чацв(ер|ярга)|пятніц[аы]|субот[аы])/i,
+}
+const parseDayPatterns = {
+  narrow: [/^н/i, /^п/i, /^а/i, /^с/i, /^ч/i, /^п/i, /^с/i] as const,
+  any: [
+    /^н/i,
+    /^п[ан]/i,
+    /^а/i,
+    /^с[ер]/i,
+    /^ч/i,
+    /^п[ят]/i,
+    /^с[уб]/i,
+  ] as const,
+}
+
+const matchDayPeriodPatterns = {
+  narrow: /^([дп]п|поўн\.?|поўд\.?|ран\.?|дзень|дня|веч\.?|ночы?)/i,
+  abbreviated: /^([дп]п|поўн\.?|поўд\.?|ран\.?|дзень|дня|веч\.?|ночы?)/i,
+  wide: /^([дп]п|поўнач|поўдзень|раніц[аы]|дзень|дня|вечара?|ночы?)/i,
+}
+const parseDayPeriodPatterns = {
+  any: {
+    am: /^дп/i,
+    pm: /^пп/i,
+    midnight: /^поўн/i,
+    noon: /^поўд/i,
+    morning: /^р/i,
+    afternoon: /^д[зн]/i,
+    evening: /^в/i,
+    night: /^н/i,
+  },
+}
+
+const match: Match = {
+  ordinalNumber: buildMatchPatternFn({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: (value) =&gt; parseInt(value, 10),
+  }),
+
+  era: buildMatchFn({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: &#x27;wide&#x27;,
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: &#x27;any&#x27;,
+  }),
+
+  quarter: buildMatchFn({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: &#x27;wide&#x27;,
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: &#x27;any&#x27;,
+    valueCallback: (index) =&gt; (index + 1) as Quarter,
+  }),
+
+  month: buildMatchFn({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: &#x27;wide&#x27;,
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: &#x27;any&#x27;,
+  }),
+
+  day: buildMatchFn({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: &#x27;wide&#x27;,
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: &#x27;any&#x27;,
+  }),
+
+  dayPeriod: buildMatchFn({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: &#x27;wide&#x27;,
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: &#x27;any&#x27;,
+  }),
+}
+
+export default match
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:19 GMT</p>
+    </body>
+  </html>
+  

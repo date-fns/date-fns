@@ -1,0 +1,173 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/pl/_lib/match/index.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">122</td><td class="">122</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import type { Quarter } from &#x27;../../../../types&#x27;
+import type { Match } from &#x27;../../../types&#x27;
+import buildMatchFn from &#x27;../../../_lib/buildMatchFn/index&#x27;
+import buildMatchPatternFn from &#x27;../../../_lib/buildMatchPatternFn/index&#x27;
+
+const matchOrdinalNumberPattern = /^(\d+)?/i
+const parseOrdinalNumberPattern = /\d+/i
+
+const matchEraPatterns = {
+  narrow: /^(p\.?\s*n\.?\s*e\.?\s*|n\.?\s*e\.?\s*)/i,
+  abbreviated: /^(p\.?\s*n\.?\s*e\.?\s*|n\.?\s*e\.?\s*)/i,
+  wide: /^(przed\s*nasz(ą|a)\s*er(ą|a)|naszej\s*ery)/i,
+}
+const parseEraPatterns = {
+  any: [/^p/i, /^n/i] as const,
+}
+
+const matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^(I|II|III|IV)\s*kw\.?/i,
+  wide: /^(I|II|III|IV)\s*kwarta(ł|l)/i,
+}
+const parseQuarterPatterns = {
+  narrow: [/1/i, /2/i, /3/i, /4/i] as const,
+  any: [/^I kw/i, /^II kw/i, /^III kw/i, /^IV kw/i] as const,
+}
+
+const matchMonthPatterns = {
+  narrow: /^[slmkcwpg]/i,
+  abbreviated: /^(sty|lut|mar|kwi|maj|cze|lip|sie|wrz|pa(ź|z)|lis|gru)/i,
+  wide: /^(stycznia|stycze(ń|n)|lutego|luty|marca|marzec|kwietnia|kwiecie(ń|n)|maja|maj|czerwca|czerwiec|lipca|lipiec|sierpnia|sierpie(ń|n)|wrze(ś|s)nia|wrzesie(ń|n)|pa(ź|z)dziernika|pa(ź|z)dziernik|listopada|listopad|grudnia|grudzie(ń|n))/i,
+}
+const parseMonthPatterns = {
+  narrow: [
+    /^s/i,
+    /^l/i,
+    /^m/i,
+    /^k/i,
+    /^m/i,
+    /^c/i,
+    /^l/i,
+    /^s/i,
+    /^w/i,
+    /^p/i,
+    /^l/i,
+    /^g/i,
+  ] as const,
+  any: [
+    /^st/i,
+    /^lu/i,
+    /^mar/i,
+    /^k/i,
+    /^maj/i,
+    /^c/i,
+    /^lip/i,
+    /^si/i,
+    /^w/i,
+    /^p/i,
+    /^lis/i,
+    /^g/i,
+  ] as const,
+}
+
+const matchDayPatterns = {
+  narrow: /^[npwścs]/i,
+  short: /^(nie|pon|wto|(ś|s)ro|czw|pi(ą|a)|sob)/i,
+  abbreviated: /^(niedz|pon|wt|(ś|s)r|czw|pt|sob)\.?/i,
+  wide: /^(niedziela|poniedzia(ł|l)ek|wtorek|(ś|s)roda|czwartek|pi(ą|a)tek|sobota)/i,
+}
+const parseDayPatterns = {
+  narrow: [/^n/i, /^p/i, /^w/i, /^ś/i, /^c/i, /^p/i, /^s/i] as const,
+  abbreviated: [
+    /^n/i,
+    /^po/i,
+    /^w/i,
+    /^(ś|s)r/i,
+    /^c/i,
+    /^pt/i,
+    /^so/i,
+  ] as const,
+  any: [/^n/i, /^po/i, /^w/i, /^(ś|s)r/i, /^c/i, /^pi/i, /^so/i] as const,
+}
+
+const matchDayPeriodPatterns = {
+  narrow: /^(^a$|^p$|pó(ł|l)n\.?|o\s*pó(ł|l)n\.?|po(ł|l)\.?|w\s*po(ł|l)\.?|po\s*po(ł|l)\.?|rano|wiecz\.?|noc|w\s*nocy)/i,
+  any: /^(am|pm|pó(ł|l)noc|o\s*pó(ł|l)nocy|po(ł|l)udnie|w\s*po(ł|l)udnie|popo(ł|l)udnie|po\s*po(ł|l)udniu|rano|wieczór|wieczorem|noc|w\s*nocy)/i,
+}
+const parseDayPeriodPatterns = {
+  narrow: {
+    am: /^a$/i,
+    pm: /^p$/i,
+    midnight: /pó(ł|l)n/i,
+    noon: /po(ł|l)/i,
+    morning: /rano/i,
+    afternoon: /po\s*po(ł|l)/i,
+    evening: /wiecz/i,
+    night: /noc/i,
+  },
+  any: {
+    am: /^am/i,
+    pm: /^pm/i,
+    midnight: /pó(ł|l)n/i,
+    noon: /po(ł|l)/i,
+    morning: /rano/i,
+    afternoon: /po\s*po(ł|l)/i,
+    evening: /wiecz/i,
+    night: /noc/i,
+  },
+}
+
+const match: Match = {
+  ordinalNumber: buildMatchPatternFn({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: (value) =&gt; parseInt(value, 10),
+  }),
+
+  era: buildMatchFn({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: &#x27;wide&#x27;,
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: &#x27;any&#x27;,
+  }),
+
+  quarter: buildMatchFn({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: &#x27;wide&#x27;,
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: &#x27;any&#x27;,
+    valueCallback: (index) =&gt; (index + 1) as Quarter,
+  }),
+
+  month: buildMatchFn({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: &#x27;wide&#x27;,
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: &#x27;any&#x27;,
+  }),
+
+  day: buildMatchFn({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: &#x27;wide&#x27;,
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: &#x27;any&#x27;,
+  }),
+
+  dayPeriod: buildMatchFn({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: &#x27;any&#x27;,
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: &#x27;any&#x27;,
+  }),
+}
+
+export default match
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:20 GMT</p>
+    </body>
+  </html>
+  

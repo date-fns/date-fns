@@ -1,0 +1,148 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>test.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/formatRelative/test.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">121</td><td class="">121</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">/* eslint-env mocha */
+
+import assert from &#x27;assert&#x27;
+import { describe, it } from &#x27;vitest&#x27;
+import formatRelative from &#x27;./index&#x27;
+
+describe(&#x27;formatRelative&#x27;, () =&gt; {
+  const baseDate = new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 900)
+
+  it(&#x27;accepts a timestamp&#x27;, () =&gt; {
+    const date = new Date(2014, 3 /* Apr */, 4)
+    assert(formatRelative(date.getTime(), baseDate.getTime()) === &#x27;04/04/2014&#x27;)
+  })
+
+  it(&#x27;before the last week&#x27;, () =&gt; {
+    const result = formatRelative(
+      new Date(1986, 2 /* Mar */, 28, 16, 50),
+      baseDate
+    )
+    assert(result === &#x27;03/28/1986&#x27;)
+  })
+
+  it(&#x27;last week&#x27;, () =&gt; {
+    const result = formatRelative(new Date(1986, 3 /* Apr */, 1), baseDate)
+    assert(result === &#x27;last Tuesday at 12:00 AM&#x27;)
+  })
+
+  it(&#x27;yesterday&#x27;, () =&gt; {
+    const result = formatRelative(
+      new Date(1986, 3 /* Apr */, 3, 22, 22),
+      baseDate
+    )
+    assert(result === &#x27;yesterday at 10:22 PM&#x27;)
+  })
+
+  it(&#x27;today&#x27;, () =&gt; {
+    const result = formatRelative(
+      new Date(1986, 3 /* Apr */, 4, 16, 50),
+      baseDate
+    )
+    assert(result === &#x27;today at 4:50 PM&#x27;)
+  })
+
+  it(&#x27;tomorrow&#x27;, () =&gt; {
+    const result = formatRelative(
+      new Date(1986, 3 /* Apr */, 5, 7, 30),
+      baseDate
+    )
+    assert(result === &#x27;tomorrow at 7:30 AM&#x27;)
+  })
+
+  it(&#x27;next week&#x27;, () =&gt; {
+    const result = formatRelative(
+      new Date(1986, 3 /* Apr */, 6, 12, 0),
+      baseDate
+    )
+    assert(result === &#x27;Sunday at 12:00 PM&#x27;)
+  })
+
+  it(&#x27;after the next week&#x27;, () =&gt; {
+    const result = formatRelative(
+      new Date(1986, 3 /* Apr */, 11, 16, 50),
+      baseDate
+    )
+    assert(result === &#x27;04/11/1986&#x27;)
+  })
+
+  describe(&#x27;edge cases&#x27;, () =&gt; {
+    it(&quot;throws RangeError if the date isn&#x27;t valid&quot;, () =&gt; {
+      assert.throws(
+        formatRelative.bind(null, new Date(NaN), baseDate),
+        RangeError
+      )
+    })
+
+    it(&quot;throws RangeError if the base date isn&#x27;t valid&quot;, () =&gt; {
+      assert.throws(
+        formatRelative.bind(
+          null,
+          new Date(2017, 0 /* Jan */, 1),
+          new Date(NaN)
+        ),
+        RangeError
+      )
+    })
+
+    it(&quot;throws RangeError if both dates aren&#x27;t valid&quot;, () =&gt; {
+      assert.throws(
+        formatRelative.bind(null, new Date(NaN), new Date(NaN)),
+        RangeError
+      )
+    })
+
+    it(&#x27;handles dates before 100 AD&#x27;, () =&gt; {
+      const date = new Date(0)
+      date.setFullYear(7, 11 /* Dec */, 31)
+      date.setHours(0, 0, 0, 0)
+      assert(formatRelative(date, baseDate) === &#x27;12/31/0007&#x27;)
+    })
+  })
+
+  describe(&#x27;custom locale&#x27;, () =&gt; {
+    it(&#x27;allows to pass a custom locale&#x27;, () =&gt; {
+      const customLocale = {
+        localize: {
+          month: () =&gt; {
+            return &#x27;works&#x27;
+          },
+        },
+        formatLong: {
+          date: () =&gt; {
+            return &quot;&#x27;It&#x27; MMMM&quot;
+          },
+        },
+        formatRelative: () =&gt; {
+          return &quot;P &#x27;perfectly!&#x27;&quot;
+        },
+      }
+      const result = formatRelative(
+        new Date(1986, 2 /* Mar */, 28, 16, 50),
+        baseDate,
+        {
+          // @ts-expect-error
+          locale: customLocale,
+        }
+      )
+      assert(result === &#x27;It works perfectly!&#x27;)
+    })
+  })
+})
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:18 GMT</p>
+    </body>
+  </html>
+  

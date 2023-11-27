@@ -1,0 +1,269 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/lv/_lib/localize/index.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">164</td><td class="">164</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import type { Localize, LocalizeFn } from &#x27;../../../types&#x27;
+import buildLocalizeFn from &#x27;../../../_lib/buildLocalizeFn/index&#x27;
+
+const eraValues = {
+  narrow: [&#x27;p.m.ē&#x27;, &#x27;m.ē&#x27;] as const,
+  abbreviated: [&#x27;p. m. ē.&#x27;, &#x27;m. ē.&#x27;] as const,
+  wide: [&#x27;pirms mūsu ēras&#x27;, &#x27;mūsu ērā&#x27;] as const,
+}
+
+const quarterValues = {
+  narrow: [&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;, &#x27;4&#x27;] as const,
+  abbreviated: [&#x27;1. cet.&#x27;, &#x27;2. cet.&#x27;, &#x27;3. cet.&#x27;, &#x27;4. cet.&#x27;] as const,
+  wide: [
+    &#x27;pirmais ceturksnis&#x27;,
+    &#x27;otrais ceturksnis&#x27;,
+    &#x27;trešais ceturksnis&#x27;,
+    &#x27;ceturtais ceturksnis&#x27;,
+  ] as const,
+}
+
+const formattingQuarterValues = {
+  narrow: [&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;, &#x27;4&#x27;] as const,
+  abbreviated: [&#x27;1. cet.&#x27;, &#x27;2. cet.&#x27;, &#x27;3. cet.&#x27;, &#x27;4. cet.&#x27;] as const,
+  wide: [
+    &#x27;pirmajā ceturksnī&#x27;,
+    &#x27;otrajā ceturksnī&#x27;,
+    &#x27;trešajā ceturksnī&#x27;,
+    &#x27;ceturtajā ceturksnī&#x27;,
+  ] as const,
+}
+
+const monthValues = {
+  narrow: [&#x27;J&#x27;, &#x27;F&#x27;, &#x27;M&#x27;, &#x27;A&#x27;, &#x27;M&#x27;, &#x27;J&#x27;, &#x27;J&#x27;, &#x27;A&#x27;, &#x27;S&#x27;, &#x27;O&#x27;, &#x27;N&#x27;, &#x27;D&#x27;] as const,
+  abbreviated: [
+    &#x27;janv.&#x27;,
+    &#x27;febr.&#x27;,
+    &#x27;marts&#x27;,
+    &#x27;apr.&#x27;,
+    &#x27;maijs&#x27;,
+    &#x27;jūn.&#x27;,
+    &#x27;jūl.&#x27;,
+    &#x27;aug.&#x27;,
+    &#x27;sept.&#x27;,
+    &#x27;okt.&#x27;,
+    &#x27;nov.&#x27;,
+    &#x27;dec.&#x27;,
+  ] as const,
+  wide: [
+    &#x27;janvāris&#x27;,
+    &#x27;februāris&#x27;,
+    &#x27;marts&#x27;,
+    &#x27;aprīlis&#x27;,
+    &#x27;maijs&#x27;,
+    &#x27;jūnijs&#x27;,
+    &#x27;jūlijs&#x27;,
+    &#x27;augusts&#x27;,
+    &#x27;septembris&#x27;,
+    &#x27;oktobris&#x27;,
+    &#x27;novembris&#x27;,
+    &#x27;decembris&#x27;,
+  ] as const,
+}
+
+const formattingMonthValues = {
+  narrow: [&#x27;J&#x27;, &#x27;F&#x27;, &#x27;M&#x27;, &#x27;A&#x27;, &#x27;M&#x27;, &#x27;J&#x27;, &#x27;J&#x27;, &#x27;A&#x27;, &#x27;S&#x27;, &#x27;O&#x27;, &#x27;N&#x27;, &#x27;D&#x27;] as const,
+  abbreviated: [
+    &#x27;janv.&#x27;,
+    &#x27;febr.&#x27;,
+    &#x27;martā&#x27;,
+    &#x27;apr.&#x27;,
+    &#x27;maijs&#x27;,
+    &#x27;jūn.&#x27;,
+    &#x27;jūl.&#x27;,
+    &#x27;aug.&#x27;,
+    &#x27;sept.&#x27;,
+    &#x27;okt.&#x27;,
+    &#x27;nov.&#x27;,
+    &#x27;dec.&#x27;,
+  ] as const,
+  wide: [
+    &#x27;janvārī&#x27;,
+    &#x27;februārī&#x27;,
+    &#x27;martā&#x27;,
+    &#x27;aprīlī&#x27;,
+    &#x27;maijā&#x27;,
+    &#x27;jūnijā&#x27;,
+    &#x27;jūlijā&#x27;,
+    &#x27;augustā&#x27;,
+    &#x27;septembrī&#x27;,
+    &#x27;oktobrī&#x27;,
+    &#x27;novembrī&#x27;,
+    &#x27;decembrī&#x27;,
+  ] as const,
+}
+
+const dayValues = {
+  narrow: [&#x27;S&#x27;, &#x27;P&#x27;, &#x27;O&#x27;, &#x27;T&#x27;, &#x27;C&#x27;, &#x27;P&#x27;, &#x27;S&#x27;] as const,
+  short: [&#x27;Sv&#x27;, &#x27;P&#x27;, &#x27;O&#x27;, &#x27;T&#x27;, &#x27;C&#x27;, &#x27;Pk&#x27;, &#x27;S&#x27;] as const,
+  abbreviated: [
+    &#x27;svētd.&#x27;,
+    &#x27;pirmd.&#x27;,
+    &#x27;otrd.&#x27;,
+    &#x27;trešd.&#x27;,
+    &#x27;ceturtd.&#x27;,
+    &#x27;piektd.&#x27;,
+    &#x27;sestd.&#x27;,
+  ] as const,
+  wide: [
+    &#x27;svētdiena&#x27;,
+    &#x27;pirmdiena&#x27;,
+    &#x27;otrdiena&#x27;,
+    &#x27;trešdiena&#x27;,
+    &#x27;ceturtdiena&#x27;,
+    &#x27;piektdiena&#x27;,
+    &#x27;sestdiena&#x27;,
+  ] as const,
+}
+
+const formattingDayValues = {
+  narrow: [&#x27;S&#x27;, &#x27;P&#x27;, &#x27;O&#x27;, &#x27;T&#x27;, &#x27;C&#x27;, &#x27;P&#x27;, &#x27;S&#x27;] as const,
+  short: [&#x27;Sv&#x27;, &#x27;P&#x27;, &#x27;O&#x27;, &#x27;T&#x27;, &#x27;C&#x27;, &#x27;Pk&#x27;, &#x27;S&#x27;] as const,
+  abbreviated: [
+    &#x27;svētd.&#x27;,
+    &#x27;pirmd.&#x27;,
+    &#x27;otrd.&#x27;,
+    &#x27;trešd.&#x27;,
+    &#x27;ceturtd.&#x27;,
+    &#x27;piektd.&#x27;,
+    &#x27;sestd.&#x27;,
+  ] as const,
+  wide: [
+    &#x27;svētdienā&#x27;,
+    &#x27;pirmdienā&#x27;,
+    &#x27;otrdienā&#x27;,
+    &#x27;trešdienā&#x27;,
+    &#x27;ceturtdienā&#x27;,
+    &#x27;piektdienā&#x27;,
+    &#x27;sestdienā&#x27;,
+  ] as const,
+}
+
+const dayPeriodValues = {
+  narrow: {
+    am: &#x27;am&#x27;,
+    pm: &#x27;pm&#x27;,
+    midnight: &#x27;pusn.&#x27;,
+    noon: &#x27;pusd.&#x27;,
+    morning: &#x27;rīts&#x27;,
+    afternoon: &#x27;diena&#x27;,
+    evening: &#x27;vakars&#x27;,
+    night: &#x27;nakts&#x27;,
+  },
+  abbreviated: {
+    am: &#x27;am&#x27;,
+    pm: &#x27;pm&#x27;,
+    midnight: &#x27;pusn.&#x27;,
+    noon: &#x27;pusd.&#x27;,
+    morning: &#x27;rīts&#x27;,
+    afternoon: &#x27;pēcpusd.&#x27;,
+    evening: &#x27;vakars&#x27;,
+    night: &#x27;nakts&#x27;,
+  },
+  wide: {
+    am: &#x27;am&#x27;,
+    pm: &#x27;pm&#x27;,
+    midnight: &#x27;pusnakts&#x27;,
+    noon: &#x27;pusdienlaiks&#x27;,
+    morning: &#x27;rīts&#x27;,
+    afternoon: &#x27;pēcpusdiena&#x27;,
+    evening: &#x27;vakars&#x27;,
+    night: &#x27;nakts&#x27;,
+  },
+}
+
+const formattingDayPeriodValues = {
+  narrow: {
+    am: &#x27;am&#x27;,
+    pm: &#x27;pm&#x27;,
+    midnight: &#x27;pusn.&#x27;,
+    noon: &#x27;pusd.&#x27;,
+    morning: &#x27;rītā&#x27;,
+    afternoon: &#x27;dienā&#x27;,
+    evening: &#x27;vakarā&#x27;,
+    night: &#x27;naktī&#x27;,
+  },
+  abbreviated: {
+    am: &#x27;am&#x27;,
+    pm: &#x27;pm&#x27;,
+    midnight: &#x27;pusn.&#x27;,
+    noon: &#x27;pusd.&#x27;,
+    morning: &#x27;rītā&#x27;,
+    afternoon: &#x27;pēcpusd.&#x27;,
+    evening: &#x27;vakarā&#x27;,
+    night: &#x27;naktī&#x27;,
+  },
+  wide: {
+    am: &#x27;am&#x27;,
+    pm: &#x27;pm&#x27;,
+    midnight: &#x27;pusnaktī&#x27;,
+    noon: &#x27;pusdienlaikā&#x27;,
+    morning: &#x27;rītā&#x27;,
+    afternoon: &#x27;pēcpusdienā&#x27;,
+    evening: &#x27;vakarā&#x27;,
+    night: &#x27;naktī&#x27;,
+  },
+}
+
+const ordinalNumber: LocalizeFn&lt;number&gt; = (dirtyNumber, _options) =&gt; {
+  const number = Number(dirtyNumber)
+  return number + &#x27;.&#x27;
+}
+
+const localize: Localize = {
+  ordinalNumber,
+
+  era: buildLocalizeFn({
+    values: eraValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  quarter: buildLocalizeFn({
+    values: quarterValues,
+    defaultWidth: &#x27;wide&#x27;,
+    formattingValues: formattingQuarterValues,
+    defaultFormattingWidth: &#x27;wide&#x27;,
+    argumentCallback: (quarter) =&gt; quarter - 1,
+  }),
+
+  month: buildLocalizeFn({
+    values: monthValues,
+    defaultWidth: &#x27;wide&#x27;,
+    formattingValues: formattingMonthValues,
+    defaultFormattingWidth: &#x27;wide&#x27;,
+  }),
+
+  day: buildLocalizeFn({
+    values: dayValues,
+    defaultWidth: &#x27;wide&#x27;,
+    formattingValues: formattingDayValues,
+    defaultFormattingWidth: &#x27;wide&#x27;,
+  }),
+
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues,
+    defaultWidth: &#x27;wide&#x27;,
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: &#x27;wide&#x27;,
+  }),
+}
+
+export default localize
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:20 GMT</p>
+    </body>
+  </html>
+  

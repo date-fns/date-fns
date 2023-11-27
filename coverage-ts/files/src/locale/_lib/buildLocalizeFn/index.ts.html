@@ -1,0 +1,156 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/_lib/buildLocalizeFn/index.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">154</td><td class="">154</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">/* eslint-disable no-unused-vars */
+
+import { Day, Era, Month, Quarter } from &#x27;../../../types&#x27;
+import type {
+  LocaleDayPeriod,
+  LocaleUnitValue,
+  LocaleWidth,
+  LocalizeFn,
+} from &#x27;../../types&#x27;
+
+export type BuildLocalizeFnArgs&lt;
+  Value extends LocaleUnitValue,
+  ArgCallback extends LocalizeFnArgCallback&lt;Value&gt; | undefined
+&gt; = {
+  values: LocalizePeriodValuesMap&lt;Value&gt;
+  defaultWidth: LocaleWidth
+  formattingValues?: LocalizePeriodValuesMap&lt;Value&gt;
+  defaultFormattingWidth?: LocaleWidth
+} &amp; (ArgCallback extends undefined
+  ? { argumentCallback?: undefined }
+  : { argumentCallback: LocalizeFnArgCallback&lt;Value&gt; })
+
+/**
+ * The localize function argument callback which allows to convert raw value to
+ * the actual type.
+ *
+ * @param value - The value to convert
+ *
+ * @returns The converted value
+ */
+export type LocalizeFnArgCallback&lt;Value extends LocaleUnitValue | number&gt; = (
+  value: Value
+) =&gt; LocalizeUnitIndex&lt;Value&gt;
+
+/**
+ * The map of localized values for each width.
+ */
+export type LocalizePeriodValuesMap&lt;Value extends LocaleUnitValue&gt; = {
+  [Pattern in LocaleWidth]?: LocalizeValues&lt;Value&gt;
+}
+
+/**
+ * The index type of the locale unit value. It types conversion of units of
+ * values that don&#x27;t start at 0 (i.e. quarters).
+ */
+export type LocalizeUnitIndex&lt;
+  Value extends LocaleUnitValue | number
+&gt; = Value extends LocaleUnitValue ? keyof LocalizeValues&lt;Value&gt; : number
+
+/**
+ * Converts the unit value to the tuple of values.
+ */
+export type LocalizeValues&lt;
+  Value extends LocaleUnitValue
+&gt; = Value extends LocaleDayPeriod
+  ? Record&lt;LocaleDayPeriod, string&gt;
+  : Value extends Era
+  ? LocalizeEraValues
+  : Value extends Quarter
+  ? LocalizeQuarterValues
+  : Value extends Day
+  ? LocalizeDayValues
+  : Value extends Month
+  ? LocalizeMonthValues
+  : never
+
+/**
+ * The tuple of localized era values. The first element represents BC,
+ * the second element represents AD.
+ */
+export type LocalizeEraValues = readonly [string, string]
+
+/**
+ * The tuple of localized quarter values. The first element represents Q1.
+ */
+export type LocalizeQuarterValues = readonly [string, string, string, string]
+
+/**
+ * The tuple of localized day values. The first element represents Sunday.
+ */
+export type LocalizeDayValues = readonly [
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string
+]
+
+/**
+ * The tuple of localized month values. The first element represents January.
+ */
+export type LocalizeMonthValues = readonly [
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string
+]
+
+export default function buildLocalizeFn&lt;
+  Value extends LocaleUnitValue,
+  ArgCallback extends LocalizeFnArgCallback&lt;Value&gt; | undefined
+&gt;(args: BuildLocalizeFnArgs&lt;Value, ArgCallback&gt;): LocalizeFn&lt;Value&gt; {
+  return (value, options) =&gt; {
+    const context = options?.context ? String(options.context) : &#x27;standalone&#x27;
+
+    let valuesArray: LocalizeValues&lt;Value&gt;
+    if (context === &#x27;formatting&#x27; &amp;&amp; args.formattingValues) {
+      const defaultWidth = args.defaultFormattingWidth || args.defaultWidth
+      const width = (options?.width
+        ? String(options.width)
+        : defaultWidth) as LocaleWidth
+      valuesArray = (args.formattingValues[width] ||
+        args.formattingValues[defaultWidth]) as LocalizeValues&lt;Value&gt;
+    } else {
+      const defaultWidth = args.defaultWidth
+      const width = (options?.width
+        ? String(options.width)
+        : args.defaultWidth) as LocaleWidth
+      valuesArray = (args.values[width] ||
+        args.values[defaultWidth]) as LocalizeValues&lt;Value&gt;
+    }
+    const index = (args.argumentCallback
+      ? args.argumentCallback(value as Value)
+      : value) as LocalizeUnitIndex&lt;Value&gt;
+    // @ts-ignore: For some reason TypeScript just don&#x27;t want to match it, no matter how hard we try. I challenge you to try to remove it!
+    return valuesArray[index]
+  }
+}
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:17 GMT</p>
+    </body>
+  </html>
+  

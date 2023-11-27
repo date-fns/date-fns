@@ -1,0 +1,207 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/pl/_lib/formatDistance/index.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">164</td><td class="">164</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import type { FormatDistanceFn, FormatDistanceLocale } from &#x27;../../../types&#x27;
+
+type Tense = {
+  regular: string
+  past: string
+  future: string
+}
+
+type FormatDistanceTokenValue = {
+  one: string | Tense
+  twoFour: string
+  other: string
+}
+
+const formatDistanceLocale: FormatDistanceLocale&lt;FormatDistanceTokenValue&gt; = {
+  lessThanXSeconds: {
+    one: {
+      regular: &#x27;mniej niż sekunda&#x27;,
+      past: &#x27;mniej niż sekundę&#x27;,
+      future: &#x27;mniej niż sekundę&#x27;,
+    },
+    twoFour: &#x27;mniej niż {{count}} sekundy&#x27;,
+    other: &#x27;mniej niż {{count}} sekund&#x27;,
+  },
+
+  xSeconds: {
+    one: {
+      regular: &#x27;sekunda&#x27;,
+      past: &#x27;sekundę&#x27;,
+      future: &#x27;sekundę&#x27;,
+    },
+    twoFour: &#x27;{{count}} sekundy&#x27;,
+    other: &#x27;{{count}} sekund&#x27;,
+  },
+
+  halfAMinute: {
+    one: &#x27;pół minuty&#x27;,
+    twoFour: &#x27;pół minuty&#x27;,
+    other: &#x27;pół minuty&#x27;,
+  },
+
+  lessThanXMinutes: {
+    one: {
+      regular: &#x27;mniej niż minuta&#x27;,
+      past: &#x27;mniej niż minutę&#x27;,
+      future: &#x27;mniej niż minutę&#x27;,
+    },
+    twoFour: &#x27;mniej niż {{count}} minuty&#x27;,
+    other: &#x27;mniej niż {{count}} minut&#x27;,
+  },
+
+  xMinutes: {
+    one: {
+      regular: &#x27;minuta&#x27;,
+      past: &#x27;minutę&#x27;,
+      future: &#x27;minutę&#x27;,
+    },
+    twoFour: &#x27;{{count}} minuty&#x27;,
+    other: &#x27;{{count}} minut&#x27;,
+  },
+
+  aboutXHours: {
+    one: {
+      regular: &#x27;około godziny&#x27;,
+      past: &#x27;około godziny&#x27;,
+      future: &#x27;około godzinę&#x27;,
+    },
+    twoFour: &#x27;około {{count}} godziny&#x27;,
+    other: &#x27;około {{count}} godzin&#x27;,
+  },
+
+  xHours: {
+    one: {
+      regular: &#x27;godzina&#x27;,
+      past: &#x27;godzinę&#x27;,
+      future: &#x27;godzinę&#x27;,
+    },
+    twoFour: &#x27;{{count}} godziny&#x27;,
+    other: &#x27;{{count}} godzin&#x27;,
+  },
+
+  xDays: {
+    one: {
+      regular: &#x27;dzień&#x27;,
+      past: &#x27;dzień&#x27;,
+      future: &#x27;1 dzień&#x27;,
+    },
+    twoFour: &#x27;{{count}} dni&#x27;,
+    other: &#x27;{{count}} dni&#x27;,
+  },
+
+  aboutXWeeks: {
+    one: &#x27;około tygodnia&#x27;,
+    twoFour: &#x27;około {{count}} tygodni&#x27;,
+    other: &#x27;około {{count}} tygodni&#x27;,
+  },
+
+  xWeeks: {
+    one: &#x27;tydzień&#x27;,
+    twoFour: &#x27;{{count}} tygodnie&#x27;,
+    other: &#x27;{{count}} tygodni&#x27;,
+  },
+
+  aboutXMonths: {
+    one: &#x27;około miesiąc&#x27;,
+    twoFour: &#x27;około {{count}} miesiące&#x27;,
+    other: &#x27;około {{count}} miesięcy&#x27;,
+  },
+
+  xMonths: {
+    one: &#x27;miesiąc&#x27;,
+    twoFour: &#x27;{{count}} miesiące&#x27;,
+    other: &#x27;{{count}} miesięcy&#x27;,
+  },
+
+  aboutXYears: {
+    one: &#x27;około rok&#x27;,
+    twoFour: &#x27;około {{count}} lata&#x27;,
+    other: &#x27;około {{count}} lat&#x27;,
+  },
+
+  xYears: {
+    one: &#x27;rok&#x27;,
+    twoFour: &#x27;{{count}} lata&#x27;,
+    other: &#x27;{{count}} lat&#x27;,
+  },
+
+  overXYears: {
+    one: &#x27;ponad rok&#x27;,
+    twoFour: &#x27;ponad {{count}} lata&#x27;,
+    other: &#x27;ponad {{count}} lat&#x27;,
+  },
+
+  almostXYears: {
+    one: &#x27;prawie rok&#x27;,
+    twoFour: &#x27;prawie {{count}} lata&#x27;,
+    other: &#x27;prawie {{count}} lat&#x27;,
+  },
+}
+
+function declensionGroup(
+  scheme: FormatDistanceTokenValue,
+  count: number
+): string | Tense {
+  if (count === 1) {
+    return scheme.one
+  }
+
+  const rem100 = count % 100
+
+  // ends with 11-20
+  if (rem100 &lt;= 20 &amp;&amp; rem100 &gt; 10) {
+    return scheme.other
+  }
+
+  const rem10 = rem100 % 10
+
+  // ends with 2, 3, 4
+  if (rem10 &gt;= 2 &amp;&amp; rem10 &lt;= 4) {
+    return scheme.twoFour
+  }
+
+  return scheme.other
+}
+
+function declension(
+  scheme: FormatDistanceTokenValue,
+  count: number,
+  time: keyof Tense
+) {
+  const group = declensionGroup(scheme, count)
+  const finalText = typeof group === &#x27;string&#x27; ? group : group[time]
+  return finalText.replace(&#x27;{{count}}&#x27;, String(count))
+}
+
+const formatDistance: FormatDistanceFn = (token, count, options) =&gt; {
+  const scheme = formatDistanceLocale[token]
+  if (!options?.addSuffix) {
+    return declension(scheme, count, &#x27;regular&#x27;)
+  }
+
+  if (options.comparison &amp;&amp; options.comparison &gt; 0) {
+    return &#x27;za &#x27; + declension(scheme, count, &#x27;future&#x27;)
+  } else {
+    return declension(scheme, count, &#x27;past&#x27;) + &#x27; temu&#x27;
+  }
+}
+
+export default formatDistance
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:20 GMT</p>
+    </body>
+  </html>
+  

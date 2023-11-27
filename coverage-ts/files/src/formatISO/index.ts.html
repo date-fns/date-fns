@@ -1,0 +1,126 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/formatISO/index.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">100</td><td class="">100</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import toDate from &#x27;../toDate/index&#x27;
+import type { ISOFormatOptions } from &#x27;../types&#x27;
+import addLeadingZeros from &#x27;../_lib/addLeadingZeros/index&#x27;
+
+/**
+ * The {@link formatISO} function options.
+ */
+export interface FormatISOOptions extends ISOFormatOptions {}
+
+/**
+ * @name formatISO
+ * @category Common Helpers
+ * @summary Format the date according to the ISO 8601 standard (https://support.sas.com/documentation/cdl/en/lrdict/64316/HTML/default/viewer.htm#a003169814.htm).
+ *
+ * @description
+ * Return the formatted date string in ISO 8601 format. Options may be passed to control the parts and notations of the date.
+ *
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The original date
+ * @param options - An object with options.
+ *
+ * @returns The formatted date string (in loca.l time zone)
+ *
+ * @throws {RangeError} `date` must not be Invalid Date
+ *
+ * @example
+ * // Represent 18 September 2019 in ISO 8601 format (local time zone is UTC):
+ * const result = formatISO(new Date(2019, 8, 18, 19, 0, 52))
+ * //=&gt; &#x27;2019-09-18T19:00:52Z&#x27;
+ *
+ * @example
+ * // Represent 18 September 2019 in ISO 8601, short format (local time zone is UTC):
+ * const result = formatISO(new Date(2019, 8, 18, 19, 0, 52), { format: &#x27;basic&#x27; })
+ * //=&gt; &#x27;20190918T190052&#x27;
+ *
+ * @example
+ * // Represent 18 September 2019 in ISO 8601 format, date only:
+ * const result = formatISO(new Date(2019, 8, 18, 19, 0, 52), { representation: &#x27;date&#x27; })
+ * //=&gt; &#x27;2019-09-18&#x27;
+ *
+ * @example
+ * // Represent 18 September 2019 in ISO 8601 format, time only (local time zone is UTC):
+ * const result = formatISO(new Date(2019, 8, 18, 19, 0, 52), { representation: &#x27;time&#x27; })
+ * //=&gt; &#x27;19:00:52Z&#x27;
+ */
+export default function formatISO&lt;DateType extends Date&gt;(
+  date: DateType | number,
+  options?: FormatISOOptions
+): string {
+  const _date = toDate(date)
+
+  if (isNaN(_date.getTime())) {
+    throw new RangeError(&#x27;Invalid time value&#x27;)
+  }
+
+  const format = options?.format ?? &#x27;extended&#x27;
+  const representation = options?.representation ?? &#x27;complete&#x27;
+
+  let result = &#x27;&#x27;
+  let tzOffset = &#x27;&#x27;
+
+  const dateDelimiter = format === &#x27;extended&#x27; ? &#x27;-&#x27; : &#x27;&#x27;
+  const timeDelimiter = format === &#x27;extended&#x27; ? &#x27;:&#x27; : &#x27;&#x27;
+
+  // Representation is either &#x27;date&#x27; or &#x27;complete&#x27;
+  if (representation !== &#x27;time&#x27;) {
+    const day = addLeadingZeros(_date.getDate(), 2)
+    const month = addLeadingZeros(_date.getMonth() + 1, 2)
+    const year = addLeadingZeros(_date.getFullYear(), 4)
+
+    // yyyyMMdd or yyyy-MM-dd.
+    result = `${year}${dateDelimiter}${month}${dateDelimiter}${day}`
+  }
+
+  // Representation is either &#x27;time&#x27; or &#x27;complete&#x27;
+  if (representation !== &#x27;date&#x27;) {
+    // Add the timezone.
+    const offset = _date.getTimezoneOffset()
+
+    if (offset !== 0) {
+      const absoluteOffset = Math.abs(offset)
+      const hourOffset = addLeadingZeros(Math.floor(absoluteOffset / 60), 2)
+      const minuteOffset = addLeadingZeros(absoluteOffset % 60, 2)
+      // If less than 0, the sign is +, because it is ahead of time.
+      const sign = offset &lt; 0 ? &#x27;+&#x27; : &#x27;-&#x27;
+
+      tzOffset = `${sign}${hourOffset}:${minuteOffset}`
+    } else {
+      tzOffset = &#x27;Z&#x27;
+    }
+
+    const hour = addLeadingZeros(_date.getHours(), 2)
+    const minute = addLeadingZeros(_date.getMinutes(), 2)
+    const second = addLeadingZeros(_date.getSeconds(), 2)
+
+    // If there&#x27;s also date, separate it with time with &#x27;T&#x27;
+    const separator = result === &#x27;&#x27; ? &#x27;&#x27; : &#x27;T&#x27;
+
+    // Creates a time string consisting of hour, minute, and second, separated by delimiters, if defined.
+    const time = [hour, minute, second].join(timeDelimiter)
+
+    // HHmmss or HH:mm:ss.
+    result = `${result}${separator}${time}${tzOffset}`
+  }
+
+  return result
+}
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:17 GMT</p>
+    </body>
+  </html>
+  

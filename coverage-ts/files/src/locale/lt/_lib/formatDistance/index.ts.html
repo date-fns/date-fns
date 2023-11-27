@@ -1,0 +1,218 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/lt/_lib/formatDistance/index.ts</td><td class="">97.97%</td><td class="">80%</td><td class="">246</td><td class="">241</td><td class="">5</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import type { FormatDistanceFn, FormatDistanceLocale } from &#x27;../../../types&#x27;
+
+type TranslationKey = keyof typeof translations
+
+type Translater = (
+  // eslint-disable-next-line no-unused-vars
+  number: number,
+  // eslint-disable-next-line no-unused-vars
+  addSuffix: boolean,
+  // eslint-disable-next-line no-unused-vars
+  key: TranslationKey,
+  // eslint-disable-next-line no-unused-vars
+  isFuture: boolean
+) =&gt; string
+
+type FormatDistanceTokenValue =
+  | string
+  | {
+      one: Translater
+      other: Translater
+    }
+
+const translations = {
+  xseconds_other: &#x27;sekundė_sekundžių_sekundes&#x27;,
+  xminutes_one: &#x27;minutė_minutės_minutę&#x27;,
+  xminutes_other: &#x27;minutės_minučių_minutes&#x27;,
+  xhours_one: &#x27;valanda_valandos_valandą&#x27;,
+  xhours_other: &#x27;valandos_valandų_valandas&#x27;,
+  xdays_one: &#x27;diena_dienos_dieną&#x27;,
+  xdays_other: &#x27;dienos_dienų_dienas&#x27;,
+  xweeks_one: &#x27;savaitė_savaitės_savaitę&#x27;,
+  xweeks_other: &#x27;savaitės_savaičių_savaites&#x27;,
+  xmonths_one: &#x27;mėnuo_mėnesio_mėnesį&#x27;,
+  xmonths_other: &#x27;mėnesiai_mėnesių_mėnesius&#x27;,
+  xyears_one: &#x27;metai_metų_metus&#x27;,
+  xyears_other: &#x27;metai_metų_metus&#x27;,
+  about: &#x27;apie&#x27;,
+  over: &#x27;daugiau nei&#x27;,
+  almost: &#x27;beveik&#x27;,
+  lessthan: &#x27;mažiau nei&#x27;,
+}
+
+const translateSeconds: Translater = (_number, addSuffix, _key, isFuture) =&gt; {
+  if (!addSuffix) {
+    return &#x27;kelios sekundės&#x27;
+  } else {
+    return isFuture ? &#x27;kelių sekundžių&#x27; : &#x27;kelias sekundes&#x27;
+  }
+}
+
+const translateSingular: Translater = (_number, addSuffix, key, isFuture) =&gt; {
+  return !addSuffix ? forms(key)[0] : isFuture ? forms(key)[1] : forms(key)[2]
+}
+
+const translate: Translater = (number, addSuffix, key, isFuture) =&gt; {
+  const result = number + &#x27; &#x27;
+  if (number === 1) {
+    return result + translateSingular(number, addSuffix, key, isFuture)
+  } else if (!addSuffix) {
+    return result + (special(number) ? forms(key)[1] : forms(key)[0])
+  } else {
+    if (isFuture) {
+      return result + forms(key)[1]
+    } else {
+      return result + (special(number) ? forms(key)[1] : forms(key)[2])
+    }
+  }
+}
+
+function special(number: number): boolean {
+  return number % 10 === 0 || (number &gt; 10 &amp;&amp; number &lt; 20)
+}
+
+function forms(key: TranslationKey): string[] {
+  return translations[key].split(&#x27;_&#x27;)
+}
+
+const formatDistanceLocale: FormatDistanceLocale&lt;FormatDistanceTokenValue&gt; = {
+  lessThanXSeconds: {
+    one: translateSeconds,
+    other: translate,
+  },
+
+  xSeconds: {
+    one: translateSeconds,
+    other: translate,
+  },
+
+  halfAMinute: &#x27;pusė minutės&#x27;,
+
+  lessThanXMinutes: {
+    one: translateSingular,
+    other: translate,
+  },
+
+  xMinutes: {
+    one: translateSingular,
+    other: translate,
+  },
+
+  aboutXHours: {
+    one: translateSingular,
+    other: translate,
+  },
+
+  xHours: {
+    one: translateSingular,
+    other: translate,
+  },
+
+  xDays: {
+    one: translateSingular,
+    other: translate,
+  },
+
+  aboutXWeeks: {
+    one: translateSingular,
+    other: translate,
+  },
+
+  xWeeks: {
+    one: translateSingular,
+    other: translate,
+  },
+
+  aboutXMonths: {
+    one: translateSingular,
+    other: translate,
+  },
+
+  xMonths: {
+    one: translateSingular,
+    other: translate,
+  },
+
+  aboutXYears: {
+    one: translateSingular,
+    other: translate,
+  },
+
+  xYears: {
+    one: translateSingular,
+    other: translate,
+  },
+
+  overXYears: {
+    one: translateSingular,
+    other: translate,
+  },
+
+  almostXYears: {
+    one: translateSingular,
+    other: translate,
+  },
+}
+
+const formatDistance: FormatDistanceFn = (token, count, options) =&gt; {
+  const adverb = token.match(/about|over|almost|lessthan/i)
+  const unit = adverb ? token.replace(adverb[0], &#x27;&#x27;) : token
+
+  const isFuture = options?.comparison !== undefined &amp;&amp; options.comparison &gt; 0
+
+  let result
+
+  const tokenValue = formatDistanceLocale[token]
+  if (typeof tokenValue === &#x27;string&#x27;) {
+    result = tokenValue
+  } else if (count === 1) {
+    result = tokenValue.one(
+      count,
+      options?.addSuffix === true,
+      (unit.toLowerCase() + &#x27;_one&#x27;) as TranslationKey,
+      isFuture
+    )
+  } else {
+    result = tokenValue.other(
+      count,
+      options?.addSuffix === true,
+      (unit.toLowerCase() + &#x27;_other&#x27;) as TranslationKey,
+      isFuture
+    )
+  }
+
+  if (adverb) {
+    const key = adverb[0].toLowerCase() as TranslationKey
+    result = translations[key] + &#x27; &#x27; + result
+  }
+
+  if (options?.addSuffix) {
+    if (options.comparison &amp;&amp; options.comparison &gt; 0) {
+      return &#x27;po &#x27; + result
+    } else {
+      return &#x27;prieš &#x27; + result
+    }
+  }
+
+  return result
+}
+
+export default formatDistance
+</textarea><pre id="annotations" style="display:none">[{&quot;file&quot;:&quot;src/locale/lt/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:162,&quot;character&quot;:6,&quot;text&quot;:&quot;result&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/lt/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:166,&quot;character&quot;:4,&quot;text&quot;:&quot;result&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/lt/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:168,&quot;character&quot;:4,&quot;text&quot;:&quot;result&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/lt/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:175,&quot;character&quot;:4,&quot;text&quot;:&quot;result&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/lt/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:185,&quot;character&quot;:4,&quot;text&quot;:&quot;result&quot;,&quot;kind&quot;:1}]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:20 GMT</p>
+    </body>
+  </html>
+  

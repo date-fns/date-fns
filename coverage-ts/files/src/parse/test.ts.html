@@ -1,0 +1,2581 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>test.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/parse/test.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">2974</td><td class="">2974</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">/* eslint-env mocha */
+
+import assert from &#x27;assert&#x27;
+import { describe, it } from &#x27;vitest&#x27;
+import parse from &#x27;./index&#x27;
+
+describe(&#x27;parse&#x27;, () =&gt; {
+  const referenceDate = new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 900)
+
+  it(&#x27;escapes characters between the single quote characters&#x27;, () =&gt; {
+    const result = parse(
+      &#x27;2018 hello world July 2nd&#x27;,
+      &quot;yyyy &#x27;hello world&#x27; MMMM do&quot;,
+      referenceDate
+    )
+    assert.deepStrictEqual(result, new Date(2018, 6 /* Jul */, 2))
+  })
+
+  it(&#x27;two single quote characters are transformed into a &quot;real&quot; single quote&#x27;, () =&gt; {
+    const result = parse(&quot;&#x27;5 o&#x27;clock&#x27;&quot;, &quot;&#x27;&#x27;h &#x27;o&#x27;&#x27;clock&#x27;&#x27;&#x27;&quot;, referenceDate)
+    assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 5))
+  })
+
+  it(&#x27;accepts new line charactor&#x27;, () =&gt; {
+    const result = parse(
+      &#x27;2014-04-04\n05:00:00&#x27;,
+      &quot;yyyy-MM-dd&#x27;\n&#x27;HH:mm:ss&quot;,
+      referenceDate
+    )
+    assert.deepStrictEqual(result, new Date(2014, 3 /* Apr */, 4, 5))
+  })
+
+  describe(&#x27;era&#x27;, () =&gt; {
+    it(&#x27;abbreviated&#x27;, () =&gt; {
+      const result = parse(&#x27;10000 BC&#x27;, &#x27;yyyyy G&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(-9999, 0 /* Jan */, 1))
+    })
+
+    it(&#x27;wide&#x27;, () =&gt; {
+      const result = parse(&#x27;2018 Anno Domini&#x27;, &#x27;yyyy GGGG&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(2018, 0 /* Jan */, 1))
+    })
+
+    it(&#x27;narrow&#x27;, () =&gt; {
+      const result = parse(&#x27;44 B&#x27;, &#x27;y GGGGG&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(-43, 0 /* Jan */, 1))
+    })
+
+    it(&#x27;with week-numbering year&#x27;, () =&gt; {
+      const result = parse(&#x27;44 B&#x27;, &#x27;Y GGGGG&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(-44, 11 /* Dec */, 30))
+    })
+
+    it(&#x27;parses stand-alone BC&#x27;, () =&gt; {
+      const result = parse(&#x27;BC&#x27;, &#x27;G&#x27;, referenceDate)
+      const expectedResult = new Date(0)
+      expectedResult.setFullYear(0, 0 /* Jan */, 1)
+      expectedResult.setHours(0, 0, 0, 0)
+      assert.deepStrictEqual(result, expectedResult)
+    })
+
+    it(&#x27;parses stand-alone AD&#x27;, () =&gt; {
+      const result = parse(&#x27;AD&#x27;, &#x27;G&#x27;, referenceDate)
+      const expectedResult = new Date(0)
+      expectedResult.setFullYear(1, 0 /* Jan */, 1)
+      expectedResult.setHours(0, 0, 0, 0)
+      assert.deepStrictEqual(result, expectedResult)
+    })
+
+    describe(&#x27;validation&#x27;, () =&gt; {
+      ;[
+        [&#x27;G&#x27;, &#x27;BC&#x27;],
+        [&#x27;R&#x27;, &#x27;2019&#x27;],
+        [&#x27;u&#x27;, &#x27;2019&#x27;],
+        [&#x27;t&#x27;, &#x27;512969520&#x27;],
+        [&#x27;T&#x27;, &#x27;512969520900&#x27;],
+      ].forEach(([token, example]) =&gt; {
+        it(`throws an error when G is used after ${token}`, () =&gt; {
+          const block = () =&gt;
+            parse(`${example} 420`, `${token} G`, referenceDate)
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn&#x27;t contain \`${token}\` and \`G\` at the same time`
+            )
+          )
+        })
+      })
+    })
+  })
+
+  describe(&#x27;calendar year&#x27;, () =&gt; {
+    it(&#x27;numeric&#x27;, () =&gt; {
+      const result = parse(&#x27;2017&#x27;, &#x27;y&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(2017, 0 /* Jan */, 1))
+    })
+
+    it(&#x27;ordinal&#x27;, () =&gt; {
+      const result = parse(&#x27;2017th&#x27;, &#x27;yo&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(2017, 0 /* Jan */, 1))
+    })
+
+    describe(&#x27;two-digit numeric year&#x27;, () =&gt; {
+      it(&#x27;works as expected&#x27;, () =&gt; {
+        const result = parse(&#x27;02&#x27;, &#x27;yy&#x27;, referenceDate)
+        assert.deepStrictEqual(result, new Date(2002, 0 /* Jan */, 1))
+      })
+
+      it(&#x27;gets the 100 year range from `referenceDate`&#x27;, () =&gt; {
+        const result = parse(&#x27;02&#x27;, &#x27;yy&#x27;, new Date(1860, 6 /* Jul */, 2))
+        assert.deepStrictEqual(result, new Date(1902, 0 /* Jan */, 1))
+      })
+    })
+
+    it(&#x27;three-digit zero-padding&#x27;, () =&gt; {
+      const result = parse(&#x27;123&#x27;, &#x27;yyy&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(123, 0 /* Jan */, 1))
+    })
+
+    it(&#x27;four-digit zero-padding&#x27;, () =&gt; {
+      const result = parse(&#x27;0044&#x27;, &#x27;yyyy&#x27;, referenceDate)
+      const expectedResult = new Date(0)
+      expectedResult.setFullYear(44, 0 /* Jan */, 1)
+      expectedResult.setHours(0, 0, 0, 0)
+      assert.deepStrictEqual(result, expectedResult)
+    })
+
+    it(&#x27;specified amount of digits&#x27;, () =&gt; {
+      const result = parse(&#x27;000001&#x27;, &#x27;yyyyyy&#x27;, referenceDate)
+      const expectedResult = new Date(0)
+      expectedResult.setFullYear(1, 0 /* Jan */, 1)
+      expectedResult.setHours(0, 0, 0, 0)
+      assert.deepStrictEqual(result, expectedResult)
+    })
+
+    describe(&#x27;validation&#x27;, () =&gt; {
+      ;[
+        [&#x27;y&#x27;, &#x27;2019&#x27;],
+        [&#x27;Y&#x27;, &#x27;2019&#x27;],
+        [&#x27;R&#x27;, &#x27;2019&#x27;],
+        [&#x27;u&#x27;, &#x27;2019&#x27;],
+        [&#x27;w&#x27;, &#x27;1&#x27;],
+        [&#x27;I&#x27;, &#x27;1&#x27;],
+        [&#x27;i&#x27;, &#x27;1&#x27;],
+        [&#x27;e&#x27;, &#x27;1&#x27;],
+        [&#x27;c&#x27;, &#x27;1&#x27;],
+        [&#x27;t&#x27;, &#x27;512969520&#x27;],
+        [&#x27;T&#x27;, &#x27;512969520900&#x27;],
+      ].forEach(([token, example]) =&gt; {
+        it(`throws an error when y is used after ${token}`, () =&gt; {
+          const block = () =&gt;
+            parse(`${example} 2019`, `${token} y`, referenceDate)
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn&#x27;t contain \`${token}\` and \`y\` at the same time`
+            )
+          )
+        })
+      })
+    })
+  })
+
+  describe(&#x27;local week-numbering year&#x27;, () =&gt; {
+    it(&#x27;numeric&#x27;, () =&gt; {
+      const result = parse(&#x27;2002&#x27;, &#x27;Y&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(2001, 11 /* Dec */, 30))
+    })
+
+    it(&#x27;ordinal&#x27;, () =&gt; {
+      const result = parse(&#x27;12345th&#x27;, &#x27;Yo&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(12344, 11 /* Dec */, 31))
+    })
+
+    describe(&#x27;two-digit numeric year&#x27;, () =&gt; {
+      it(&#x27;works as expected&#x27;, () =&gt; {
+        const result = parse(&#x27;02&#x27;, &#x27;YY&#x27;, referenceDate, {
+          useAdditionalWeekYearTokens: true,
+        })
+        assert.deepStrictEqual(result, new Date(2001, 11 /* Dec */, 30))
+      })
+
+      it(&#x27;gets the 100 year range from `referenceDate`&#x27;, () =&gt; {
+        const result = parse(&#x27;02&#x27;, &#x27;YY&#x27;, new Date(1860, 6 /* Jul */, 2), {
+          useAdditionalWeekYearTokens: true,
+        })
+        assert.deepStrictEqual(result, new Date(1901, 11 /* Dec */, 29))
+      })
+    })
+
+    it(&#x27;three-digit zero-padding&#x27;, () =&gt; {
+      const result = parse(&#x27;123&#x27;, &#x27;YYY&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(122, 11 /* Dec */, 27))
+    })
+
+    it(&#x27;four-digit zero-padding&#x27;, () =&gt; {
+      const result = parse(&#x27;2018&#x27;, &#x27;YYYY&#x27;, referenceDate, {
+        useAdditionalWeekYearTokens: true,
+      })
+      assert.deepStrictEqual(result, new Date(2017, 11 /* Dec */, 31))
+    })
+
+    it(&#x27;specified amount of digits&#x27;, () =&gt; {
+      const result = parse(&#x27;000001&#x27;, &#x27;YYYYYY&#x27;, referenceDate)
+      const expectedResult = new Date(0)
+      expectedResult.setFullYear(0, 11 /* Dec */, 31)
+      expectedResult.setHours(0, 0, 0, 0)
+      assert.deepStrictEqual(result, expectedResult)
+    })
+
+    it(&#x27;allows to specify `weekStartsOn` and `firstWeekContainsDate` in options&#x27;, () =&gt; {
+      const result = parse(&#x27;2018&#x27;, &#x27;Y&#x27;, referenceDate, {
+        weekStartsOn: 1 /* Mon */,
+        firstWeekContainsDate: 4,
+      })
+      assert.deepStrictEqual(result, new Date(2018, 0 /* Jan */, 1))
+    })
+
+    describe(&#x27;validation&#x27;, () =&gt; {
+      const tokensToValidate: Array&lt;
+        [string, string, { useAdditionalDayOfYearTokens: boolean }?]
+      &gt; = [
+        [&#x27;y&#x27;, &#x27;2019&#x27;],
+        [&#x27;Y&#x27;, &#x27;2019&#x27;],
+        [&#x27;R&#x27;, &#x27;2019&#x27;],
+        [&#x27;u&#x27;, &#x27;2019&#x27;],
+        [&#x27;Q&#x27;, &#x27;1&#x27;],
+        [&#x27;q&#x27;, &#x27;1&#x27;],
+        [&#x27;M&#x27;, &#x27;1&#x27;],
+        [&#x27;L&#x27;, &#x27;1&#x27;],
+        [&#x27;I&#x27;, &#x27;1&#x27;],
+        [&#x27;d&#x27;, &#x27;1&#x27;],
+        [&#x27;D&#x27;, &#x27;1&#x27;, { useAdditionalDayOfYearTokens: true }],
+        [&#x27;i&#x27;, &#x27;1&#x27;],
+        [&#x27;t&#x27;, &#x27;512969520&#x27;],
+        [&#x27;T&#x27;, &#x27;512969520900&#x27;],
+      ]
+      tokensToValidate.forEach(([token, example, options]) =&gt; {
+        it(`throws an error when Y is used after ${token}`, () =&gt; {
+          const block = () =&gt;
+            parse(`${example} 2019`, `${token} Y`, referenceDate, options)
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn&#x27;t contain \`${token}\` and \`Y\` at the same time`
+            )
+          )
+        })
+      })
+    })
+  })
+
+  describe(&#x27;ISO week-numbering year&#x27;, () =&gt; {
+    it(&#x27;numeric&#x27;, () =&gt; {
+      const result = parse(&#x27;-1234&#x27;, &#x27;R&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(-1234, 0 /* Jan */, 3))
+    })
+
+    it(&#x27;two-digit zero-padding&#x27;, () =&gt; {
+      const result = parse(&#x27;-02&#x27;, &#x27;RR&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(-3, 11 /* Dec */, 29))
+    })
+
+    it(&#x27;three-digit zero-padding&#x27;, () =&gt; {
+      const result = parse(&#x27;123&#x27;, &#x27;RRR&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(123, 0 /* Jan */, 4))
+    })
+
+    it(&#x27;four-digit zero-padding&#x27;, () =&gt; {
+      const result = parse(&#x27;2018&#x27;, &#x27;RRRR&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(2018, 0 /* Jan */, 1))
+    })
+
+    it(&#x27;specified amount of digits&#x27;, () =&gt; {
+      const result = parse(&#x27;000001&#x27;, &#x27;RRRRRR&#x27;, referenceDate)
+      const expectedResult = new Date(0)
+      expectedResult.setFullYear(1, 0 /* Jan */, 1)
+      expectedResult.setHours(0, 0, 0, 0)
+      assert.deepStrictEqual(result, expectedResult)
+    })
+
+    describe(&#x27;validation&#x27;, () =&gt; {
+      const tokensToValidate: Array&lt;
+        [string, string, { useAdditionalDayOfYearTokens: boolean }?]
+      &gt; = [
+        [&#x27;G&#x27;, &#x27;AD&#x27;],
+        [&#x27;y&#x27;, &#x27;2019&#x27;],
+        [&#x27;Y&#x27;, &#x27;2019&#x27;],
+        [&#x27;R&#x27;, &#x27;2019&#x27;],
+        [&#x27;u&#x27;, &#x27;2019&#x27;],
+        [&#x27;Q&#x27;, &#x27;1&#x27;],
+        [&#x27;q&#x27;, &#x27;1&#x27;],
+        [&#x27;M&#x27;, &#x27;1&#x27;],
+        [&#x27;L&#x27;, &#x27;1&#x27;],
+        [&#x27;w&#x27;, &#x27;1&#x27;],
+        [&#x27;d&#x27;, &#x27;1&#x27;],
+        [&#x27;D&#x27;, &#x27;1&#x27;, { useAdditionalDayOfYearTokens: true }],
+        [&#x27;e&#x27;, &#x27;1&#x27;],
+        [&#x27;c&#x27;, &#x27;1&#x27;],
+        [&#x27;t&#x27;, &#x27;512969520&#x27;],
+        [&#x27;T&#x27;, &#x27;512969520900&#x27;],
+      ]
+      tokensToValidate.forEach(([token, example, options]) =&gt; {
+        it(`throws an error when R is used after ${token}`, () =&gt; {
+          const block = () =&gt;
+            parse(`${example} 2019`, `${token} R`, referenceDate, options)
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn&#x27;t contain \`${token}\` and \`R\` at the same time`
+            )
+          )
+        })
+      })
+    })
+  })
+
+  describe(&#x27;extended year&#x27;, () =&gt; {
+    it(&#x27;numeric&#x27;, () =&gt; {
+      const result = parse(&#x27;-1234&#x27;, &#x27;u&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(-1234, 0 /* Jan */, 1))
+    })
+
+    it(&#x27;two-digit zero-padding&#x27;, () =&gt; {
+      const result = parse(&#x27;-02&#x27;, &#x27;uu&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(-2, 0 /* Jan */, 1))
+    })
+
+    it(&#x27;three-digit zero-padding&#x27;, () =&gt; {
+      const result = parse(&#x27;123&#x27;, &#x27;uuu&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(123, 0 /* Jan */, 1))
+    })
+
+    it(&#x27;four-digit zero-padding&#x27;, () =&gt; {
+      const result = parse(&#x27;2018&#x27;, &#x27;uuuu&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(2018, 0 /* Jan */, 1))
+    })
+
+    it(&#x27;specified amount of digits&#x27;, () =&gt; {
+      const result = parse(&#x27;000001&#x27;, &#x27;uuuuuu&#x27;, referenceDate)
+      const expectedResult = new Date(0)
+      expectedResult.setFullYear(1, 0 /* Jan */, 1)
+      expectedResult.setHours(0, 0, 0, 0)
+      assert.deepStrictEqual(result, expectedResult)
+    })
+
+    describe(&#x27;validation&#x27;, () =&gt; {
+      ;[
+        [&#x27;G&#x27;, &#x27;AD&#x27;],
+        [&#x27;y&#x27;, &#x27;2019&#x27;],
+        [&#x27;Y&#x27;, &#x27;2019&#x27;],
+        [&#x27;R&#x27;, &#x27;2019&#x27;],
+        [&#x27;u&#x27;, &#x27;2019&#x27;],
+        [&#x27;w&#x27;, &#x27;1&#x27;],
+        [&#x27;I&#x27;, &#x27;1&#x27;],
+        [&#x27;i&#x27;, &#x27;1&#x27;],
+        [&#x27;e&#x27;, &#x27;1&#x27;],
+        [&#x27;c&#x27;, &#x27;1&#x27;],
+        [&#x27;t&#x27;, &#x27;512969520&#x27;],
+        [&#x27;T&#x27;, &#x27;512969520900&#x27;],
+      ].forEach(([token, example]) =&gt; {
+        it(`throws an error when u is used after ${token}`, () =&gt; {
+          const block = () =&gt;
+            parse(`${example} 2019`, `${token} u`, referenceDate)
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn&#x27;t contain \`${token}\` and \`u\` at the same time`
+            )
+          )
+        })
+      })
+    })
+  })
+
+  describe(&#x27;quarter with following year&#x27;, () =&gt; {
+    it(&#x27;first quarter&#x27;, () =&gt; {
+      const result = parse(&#x27;Q1/2020&#x27;, &#x27;QQQ/yyyy&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(2020, 0 /* Jan */, 1))
+    })
+
+    it(&#x27;second quarter&#x27;, () =&gt; {
+      const result = parse(&#x27;Q2/2020&#x27;, &#x27;QQQ/yyyy&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(2020, 3 /* Apr */, 1))
+    })
+
+    it(&#x27;third quarter&#x27;, () =&gt; {
+      const result = parse(&#x27;Q3/2020&#x27;, &#x27;QQQ/yyyy&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(2020, 6 /* Jul */, 1))
+    })
+
+    it(&#x27;fourth quarter&#x27;, () =&gt; {
+      const result = parse(&#x27;Q4/2020&#x27;, &#x27;QQQ/yyyy&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(2020, 9 /* Oct */, 1))
+    })
+  })
+
+  describe(&#x27;quarter (formatting)&#x27;, () =&gt; {
+    it(&#x27;numeric&#x27;, () =&gt; {
+      const result = parse(&#x27;1&#x27;, &#x27;Q&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 0 /* Jan */, 1))
+    })
+
+    it(&#x27;ordinal&#x27;, () =&gt; {
+      const result = parse(&#x27;1st&#x27;, &#x27;Qo&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 0 /* Jan */, 1))
+    })
+
+    it(&#x27;zero-padding&#x27;, () =&gt; {
+      const result = parse(&#x27;02&#x27;, &#x27;QQ&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 1))
+    })
+
+    it(&#x27;abbreviated&#x27;, () =&gt; {
+      const result = parse(&#x27;Q3&#x27;, &#x27;QQQ&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 6 /* Jul */, 1))
+    })
+
+    it(&#x27;wide&#x27;, () =&gt; {
+      const result = parse(&#x27;4st quarter&#x27;, &#x27;QQQQ&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 9 /* Oct */, 1))
+    })
+
+    it(&#x27;narrow&#x27;, () =&gt; {
+      const result = parse(&#x27;1&#x27;, &#x27;QQQQQ&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 0 /* Jan */, 1))
+    })
+
+    describe(&#x27;validation&#x27;, () =&gt; {
+      const tokensToValidate: Array&lt;
+        [string, string, { useAdditionalDayOfYearTokens: boolean }?]
+      &gt; = [
+        [&#x27;Y&#x27;, &#x27;2019&#x27;],
+        [&#x27;R&#x27;, &#x27;2019&#x27;],
+        [&#x27;Q&#x27;, &#x27;1&#x27;],
+        [&#x27;q&#x27;, &#x27;1&#x27;],
+        [&#x27;M&#x27;, &#x27;1&#x27;],
+        [&#x27;L&#x27;, &#x27;1&#x27;],
+        [&#x27;w&#x27;, &#x27;1&#x27;],
+        [&#x27;I&#x27;, &#x27;1&#x27;],
+        [&#x27;d&#x27;, &#x27;1&#x27;],
+        [&#x27;D&#x27;, &#x27;1&#x27;, { useAdditionalDayOfYearTokens: true }],
+        [&#x27;i&#x27;, &#x27;1&#x27;],
+        [&#x27;e&#x27;, &#x27;1&#x27;],
+        [&#x27;c&#x27;, &#x27;1&#x27;],
+        [&#x27;t&#x27;, &#x27;512969520&#x27;],
+        [&#x27;T&#x27;, &#x27;512969520900&#x27;],
+      ]
+      tokensToValidate.forEach(([token, example, options]) =&gt; {
+        it(`throws an error when Q is used after ${token}`, () =&gt; {
+          const block = () =&gt;
+            parse(`${example} 1`, `${token} Q`, referenceDate, options)
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn&#x27;t contain \`${token}\` and \`Q\` at the same time`
+            )
+          )
+        })
+      })
+    })
+  })
+
+  describe(&#x27;quarter (stand-alone)&#x27;, () =&gt; {
+    it(&#x27;numeric&#x27;, () =&gt; {
+      const result = parse(&#x27;1&#x27;, &#x27;q&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 0 /* Jan */, 1))
+    })
+
+    it(&#x27;ordinal&#x27;, () =&gt; {
+      const result = parse(&#x27;1th&#x27;, &#x27;qo&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 0 /* Jan */, 1))
+    })
+
+    it(&#x27;zero-padding&#x27;, () =&gt; {
+      const result = parse(&#x27;02&#x27;, &#x27;qq&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 1))
+    })
+
+    it(&#x27;abbreviated&#x27;, () =&gt; {
+      const result = parse(&#x27;Q3&#x27;, &#x27;qqq&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 6 /* Jul */, 1))
+    })
+
+    it(&#x27;wide&#x27;, () =&gt; {
+      const result = parse(&#x27;4th quarter&#x27;, &#x27;qqqq&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 9 /* Oct */, 1))
+    })
+
+    it(&#x27;narrow&#x27;, () =&gt; {
+      const result = parse(&#x27;1&#x27;, &#x27;qqqqq&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 0 /* Jan */, 1))
+    })
+
+    describe(&#x27;validation&#x27;, () =&gt; {
+      const tokensToValidate: Array&lt;
+        [string, string, { useAdditionalDayOfYearTokens: boolean }?]
+      &gt; = [
+        [&#x27;Y&#x27;, &#x27;2019&#x27;],
+        [&#x27;R&#x27;, &#x27;2019&#x27;],
+        [&#x27;Q&#x27;, &#x27;1&#x27;],
+        [&#x27;q&#x27;, &#x27;1&#x27;],
+        [&#x27;M&#x27;, &#x27;1&#x27;],
+        [&#x27;L&#x27;, &#x27;1&#x27;],
+        [&#x27;w&#x27;, &#x27;1&#x27;],
+        [&#x27;I&#x27;, &#x27;1&#x27;],
+        [&#x27;d&#x27;, &#x27;1&#x27;],
+        [&#x27;D&#x27;, &#x27;1&#x27;, { useAdditionalDayOfYearTokens: true }],
+        [&#x27;i&#x27;, &#x27;1&#x27;],
+        [&#x27;e&#x27;, &#x27;1&#x27;],
+        [&#x27;c&#x27;, &#x27;1&#x27;],
+        [&#x27;t&#x27;, &#x27;512969520&#x27;],
+        [&#x27;T&#x27;, &#x27;512969520900&#x27;],
+      ]
+      tokensToValidate.forEach(([token, example, options]) =&gt; {
+        it(`throws an error when q is used after ${token}`, () =&gt; {
+          const block = () =&gt;
+            parse(`${example} 1`, `${token} q`, referenceDate, options)
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn&#x27;t contain \`${token}\` and \`q\` at the same time`
+            )
+          )
+        })
+      })
+    })
+  })
+
+  describe(&#x27;month (formatting)&#x27;, () =&gt; {
+    it(&#x27;numeric&#x27;, () =&gt; {
+      const result = parse(&#x27;6&#x27;, &#x27;M&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 5 /* Jun */, 1))
+    })
+
+    it(&#x27;ordinal&#x27;, () =&gt; {
+      const result = parse(&#x27;6th&#x27;, &#x27;Mo&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 5 /* Jun */, 1))
+    })
+
+    it(&#x27;zero-padding&#x27;, () =&gt; {
+      const result = parse(&#x27;01&#x27;, &#x27;MM&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 0 /* Jan */, 1))
+    })
+
+    it(&#x27;abbreviated&#x27;, () =&gt; {
+      const result = parse(&#x27;Nov&#x27;, &#x27;MMM&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 10 /* Nov */, 1))
+    })
+
+    it(&#x27;wide&#x27;, () =&gt; {
+      const result = parse(&#x27;February&#x27;, &#x27;MMMM&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 1 /* Feb */, 1))
+    })
+
+    it(&#x27;narrow&#x27;, () =&gt; {
+      const result = parse(&#x27;J&#x27;, &#x27;MMMMM&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 0 /* Jan */, 1))
+    })
+
+    describe(&#x27;validation&#x27;, () =&gt; {
+      const tokensToValidate: Array&lt;
+        [string, string, { useAdditionalDayOfYearTokens: boolean }?]
+      &gt; = [
+        [&#x27;Y&#x27;, &#x27;2019&#x27;],
+        [&#x27;R&#x27;, &#x27;2019&#x27;],
+        [&#x27;Q&#x27;, &#x27;1&#x27;],
+        [&#x27;q&#x27;, &#x27;1&#x27;],
+        [&#x27;M&#x27;, &#x27;1&#x27;],
+        [&#x27;L&#x27;, &#x27;1&#x27;],
+        [&#x27;w&#x27;, &#x27;1&#x27;],
+        [&#x27;I&#x27;, &#x27;1&#x27;],
+        [&#x27;D&#x27;, &#x27;1&#x27;, { useAdditionalDayOfYearTokens: true }],
+        [&#x27;i&#x27;, &#x27;1&#x27;],
+        [&#x27;e&#x27;, &#x27;1&#x27;],
+        [&#x27;c&#x27;, &#x27;1&#x27;],
+        [&#x27;t&#x27;, &#x27;512969520&#x27;],
+        [&#x27;T&#x27;, &#x27;512969520900&#x27;],
+      ]
+      tokensToValidate.forEach(([token, example, options]) =&gt; {
+        it(`throws an error when M is used after ${token}`, () =&gt; {
+          const block = () =&gt;
+            parse(`${example} 1`, `${token} M`, referenceDate, options)
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn&#x27;t contain \`${token}\` and \`M\` at the same time`
+            )
+          )
+        })
+      })
+    })
+  })
+
+  describe(&#x27;month (stand-alone)&#x27;, () =&gt; {
+    it(&#x27;numeric&#x27;, () =&gt; {
+      const result = parse(&#x27;6&#x27;, &#x27;L&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 5 /* Jun */, 1))
+    })
+
+    it(&#x27;ordinal&#x27;, () =&gt; {
+      const result = parse(&#x27;6th&#x27;, &#x27;Lo&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 5 /* Jun */, 1))
+    })
+
+    it(&#x27;zero-padding&#x27;, () =&gt; {
+      const result = parse(&#x27;01&#x27;, &#x27;LL&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 0 /* Jan */, 1))
+    })
+
+    it(&#x27;abbreviated&#x27;, () =&gt; {
+      const result = parse(&#x27;Nov&#x27;, &#x27;LLL&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 10 /* Nov */, 1))
+    })
+
+    it(&#x27;wide&#x27;, () =&gt; {
+      const result = parse(&#x27;February&#x27;, &#x27;LLLL&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 1 /* Feb */, 1))
+    })
+
+    it(&#x27;narrow&#x27;, () =&gt; {
+      const result = parse(&#x27;J&#x27;, &#x27;LLLLL&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 0 /* Jan */, 1))
+    })
+
+    describe(&#x27;validation&#x27;, () =&gt; {
+      const tokensToValidate: Array&lt;
+        [string, string, { useAdditionalDayOfYearTokens: boolean }?]
+      &gt; = [
+        [&#x27;Y&#x27;, &#x27;2019&#x27;],
+        [&#x27;R&#x27;, &#x27;2019&#x27;],
+        [&#x27;Q&#x27;, &#x27;1&#x27;],
+        [&#x27;q&#x27;, &#x27;1&#x27;],
+        [&#x27;M&#x27;, &#x27;1&#x27;],
+        [&#x27;L&#x27;, &#x27;1&#x27;],
+        [&#x27;w&#x27;, &#x27;1&#x27;],
+        [&#x27;I&#x27;, &#x27;1&#x27;],
+        [&#x27;D&#x27;, &#x27;1&#x27;, { useAdditionalDayOfYearTokens: true }],
+        [&#x27;i&#x27;, &#x27;1&#x27;],
+        [&#x27;e&#x27;, &#x27;1&#x27;],
+        [&#x27;c&#x27;, &#x27;1&#x27;],
+        [&#x27;t&#x27;, &#x27;512969520&#x27;],
+        [&#x27;T&#x27;, &#x27;512969520900&#x27;],
+      ]
+      tokensToValidate.forEach(([token, example, options]) =&gt; {
+        it(`throws an error when L is used after ${token}`, () =&gt; {
+          const block = () =&gt;
+            parse(`${example} 1`, `${token} L`, referenceDate, options)
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn&#x27;t contain \`${token}\` and \`L\` at the same time`
+            )
+          )
+        })
+      })
+    })
+  })
+
+  describe(&#x27;local week of year&#x27;, () =&gt; {
+    it(&#x27;numeric&#x27;, () =&gt; {
+      const result = parse(&#x27;49&#x27;, &#x27;w&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 10 /* Nov */, 30))
+    })
+
+    it(&#x27;ordinal&#x27;, () =&gt; {
+      const result = parse(&#x27;49th&#x27;, &#x27;wo&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 10 /* Nov */, 30))
+    })
+
+    it(&#x27;zero-padding&#x27;, () =&gt; {
+      const result = parse(&#x27;01&#x27;, &#x27;ww&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1985, 11 /* Dec */, 29))
+    })
+
+    it(&#x27;allows to specify `weekStartsOn` and `firstWeekContainsDate` in options&#x27;, () =&gt; {
+      const result = parse(&#x27;49&#x27;, &#x27;w&#x27;, referenceDate, {
+        weekStartsOn: 1 /* Mon */,
+        firstWeekContainsDate: 4,
+      })
+      assert.deepStrictEqual(result, new Date(1986, 11 /* Dec */, 1))
+    })
+
+    describe(&#x27;validation&#x27;, () =&gt; {
+      const tokensToValidate: Array&lt;
+        [string, string, { useAdditionalDayOfYearTokens: boolean }?]
+      &gt; = [
+        [&#x27;y&#x27;, &#x27;2019&#x27;],
+        [&#x27;R&#x27;, &#x27;2019&#x27;],
+        [&#x27;u&#x27;, &#x27;2019&#x27;],
+        [&#x27;Q&#x27;, &#x27;1&#x27;],
+        [&#x27;q&#x27;, &#x27;1&#x27;],
+        [&#x27;M&#x27;, &#x27;1&#x27;],
+        [&#x27;L&#x27;, &#x27;1&#x27;],
+        [&#x27;w&#x27;, &#x27;1&#x27;],
+        [&#x27;I&#x27;, &#x27;1&#x27;],
+        [&#x27;d&#x27;, &#x27;1&#x27;],
+        [&#x27;D&#x27;, &#x27;1&#x27;, { useAdditionalDayOfYearTokens: true }],
+        [&#x27;i&#x27;, &#x27;1&#x27;],
+        [&#x27;t&#x27;, &#x27;512969520&#x27;],
+        [&#x27;T&#x27;, &#x27;512969520900&#x27;],
+      ]
+      tokensToValidate.forEach(([token, example, options]) =&gt; {
+        it(`throws an error when w is used after ${token}`, () =&gt; {
+          const block = () =&gt;
+            parse(`${example} 1`, `${token} w`, referenceDate, options)
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn&#x27;t contain \`${token}\` and \`w\` at the same time`
+            )
+          )
+        })
+      })
+    })
+  })
+
+  describe(&#x27;ISO week of year&#x27;, () =&gt; {
+    it(&#x27;numeric&#x27;, () =&gt; {
+      const result = parse(&#x27;49&#x27;, &#x27;I&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 11 /* Dec */, 1))
+    })
+
+    it(&#x27;ordinal&#x27;, () =&gt; {
+      const result = parse(&#x27;49th&#x27;, &#x27;Io&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 11 /* Dec */, 1))
+    })
+
+    it(&#x27;zero-padding&#x27;, () =&gt; {
+      const result = parse(&#x27;01&#x27;, &#x27;II&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1985, 11 /* Dec */, 30))
+    })
+
+    describe(&#x27;validation&#x27;, () =&gt; {
+      const tokensToValidate: Array&lt;
+        [string, string, { useAdditionalDayOfYearTokens: boolean }?]
+      &gt; = [
+        [&#x27;y&#x27;, &#x27;2019&#x27;],
+        [&#x27;Y&#x27;, &#x27;2019&#x27;],
+        [&#x27;u&#x27;, &#x27;2019&#x27;],
+        [&#x27;Q&#x27;, &#x27;1&#x27;],
+        [&#x27;q&#x27;, &#x27;1&#x27;],
+        [&#x27;M&#x27;, &#x27;1&#x27;],
+        [&#x27;L&#x27;, &#x27;1&#x27;],
+        [&#x27;w&#x27;, &#x27;1&#x27;],
+        [&#x27;I&#x27;, &#x27;1&#x27;],
+        [&#x27;d&#x27;, &#x27;1&#x27;],
+        [&#x27;D&#x27;, &#x27;1&#x27;, { useAdditionalDayOfYearTokens: true }],
+        [&#x27;e&#x27;, &#x27;1&#x27;],
+        [&#x27;c&#x27;, &#x27;1&#x27;],
+        [&#x27;t&#x27;, &#x27;512969520&#x27;],
+        [&#x27;T&#x27;, &#x27;512969520900&#x27;],
+      ]
+      tokensToValidate.forEach(([token, example, options]) =&gt; {
+        it(`throws an error when I is used after ${token}`, () =&gt; {
+          const block = () =&gt;
+            parse(`${example} 1`, `${token} I`, referenceDate, options)
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn&#x27;t contain \`${token}\` and \`I\` at the same time`
+            )
+          )
+        })
+      })
+    })
+  })
+
+  describe(&#x27;day of month&#x27;, () =&gt; {
+    it(&#x27;numeric&#x27;, () =&gt; {
+      const result = parse(&#x27;28&#x27;, &#x27;d&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 28))
+    })
+
+    it(&#x27;ordinal&#x27;, () =&gt; {
+      const result = parse(&#x27;28th&#x27;, &#x27;do&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 28))
+    })
+
+    it(&#x27;zero-padding&#x27;, () =&gt; {
+      const result = parse(&#x27;01&#x27;, &#x27;dd&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 1))
+    })
+
+    describe(&#x27;validation&#x27;, () =&gt; {
+      const tokensToValidate: Array&lt;
+        [string, string, { useAdditionalDayOfYearTokens: boolean }?]
+      &gt; = [
+        [&#x27;Y&#x27;, &#x27;2019&#x27;],
+        [&#x27;R&#x27;, &#x27;2019&#x27;],
+        [&#x27;Q&#x27;, &#x27;1&#x27;],
+        [&#x27;q&#x27;, &#x27;1&#x27;],
+        [&#x27;w&#x27;, &#x27;1&#x27;],
+        [&#x27;I&#x27;, &#x27;1&#x27;],
+        [&#x27;d&#x27;, &#x27;1&#x27;],
+        [&#x27;D&#x27;, &#x27;1&#x27;, { useAdditionalDayOfYearTokens: true }],
+        [&#x27;i&#x27;, &#x27;1&#x27;],
+        [&#x27;e&#x27;, &#x27;1&#x27;],
+        [&#x27;c&#x27;, &#x27;1&#x27;],
+        [&#x27;t&#x27;, &#x27;512969520&#x27;],
+        [&#x27;T&#x27;, &#x27;512969520900&#x27;],
+      ]
+      tokensToValidate.forEach(([token, example, options]) =&gt; {
+        it(`throws an error when d is used after ${token}`, () =&gt; {
+          const block = () =&gt;
+            parse(`${example} 1`, `${token} d`, referenceDate, options)
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn&#x27;t contain \`${token}\` and \`d\` at the same time`
+            )
+          )
+        })
+      })
+    })
+  })
+
+  describe(&#x27;day of year&#x27;, () =&gt; {
+    it(&#x27;numeric&#x27;, () =&gt; {
+      const result = parse(&#x27;200&#x27;, &#x27;D&#x27;, referenceDate, {
+        useAdditionalDayOfYearTokens: true,
+      })
+      assert.deepStrictEqual(result, new Date(1986, 6 /* Jul */, 19))
+    })
+
+    it(&#x27;ordinal&#x27;, () =&gt; {
+      const result = parse(&#x27;200th&#x27;, &#x27;Do&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 6 /* Jul */, 19))
+    })
+
+    it(&#x27;two-digit zero-padding&#x27;, () =&gt; {
+      const result = parse(&#x27;01&#x27;, &#x27;DD&#x27;, referenceDate, {
+        useAdditionalDayOfYearTokens: true,
+      })
+      assert.deepStrictEqual(result, new Date(1986, 0 /* Jan */, 1))
+    })
+
+    it(&#x27;three-digit zero-padding&#x27;, () =&gt; {
+      const result = parse(&#x27;001&#x27;, &#x27;DDD&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 0 /* Jan */, 1))
+    })
+
+    it(&#x27;specified amount of digits&#x27;, () =&gt; {
+      const result = parse(&#x27;000200&#x27;, &#x27;DDDDDD&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 6 /* Jul */, 19))
+    })
+
+    describe(&#x27;validation&#x27;, () =&gt; {
+      ;[
+        [&#x27;Y&#x27;, &#x27;2019&#x27;],
+        [&#x27;R&#x27;, &#x27;2019&#x27;],
+        [&#x27;Q&#x27;, &#x27;1&#x27;],
+        [&#x27;q&#x27;, &#x27;1&#x27;],
+        [&#x27;M&#x27;, &#x27;1&#x27;],
+        [&#x27;L&#x27;, &#x27;1&#x27;],
+        [&#x27;w&#x27;, &#x27;1&#x27;],
+        [&#x27;I&#x27;, &#x27;1&#x27;],
+        [&#x27;d&#x27;, &#x27;1&#x27;],
+        [&#x27;D&#x27;, &#x27;1&#x27;],
+        [&#x27;E&#x27;, &#x27;Mon&#x27;],
+        [&#x27;i&#x27;, &#x27;1&#x27;],
+        [&#x27;e&#x27;, &#x27;1&#x27;],
+        [&#x27;c&#x27;, &#x27;1&#x27;],
+        [&#x27;t&#x27;, &#x27;512969520&#x27;],
+        [&#x27;T&#x27;, &#x27;512969520900&#x27;],
+      ].forEach(([token, example, _options]) =&gt; {
+        it(`throws an error when D is used after ${token}`, () =&gt; {
+          const block = () =&gt;
+            parse(`${example} 1`, `${token} D`, referenceDate, {
+              useAdditionalDayOfYearTokens: true,
+            })
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn&#x27;t contain \`${token}\` and \`D\` at the same time`
+            )
+          )
+        })
+      })
+    })
+  })
+
+  describe(&#x27;day of week (formatting)&#x27;, () =&gt; {
+    it(&#x27;abbreviated&#x27;, () =&gt; {
+      const result = parse(&#x27;Mon&#x27;, &#x27;E&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 2 /* Mar */, 31))
+    })
+
+    it(&#x27;wide&#x27;, () =&gt; {
+      const result = parse(&#x27;Tuesday&#x27;, &#x27;EEEE&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 1))
+    })
+
+    it(&#x27;narrow&#x27;, () =&gt; {
+      const result = parse(&#x27;W&#x27;, &#x27;EEEEE&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 2))
+    })
+
+    it(&#x27;short&#x27;, () =&gt; {
+      const result = parse(&#x27;Th&#x27;, &#x27;EEEEEE&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 3))
+    })
+
+    it(&#x27;allows to specify which day is the first day of the week&#x27;, () =&gt; {
+      const result = parse(&#x27;Thursday&#x27;, &#x27;EEEE&#x27;, referenceDate, {
+        weekStartsOn: /* Fri */ 5,
+      })
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 10))
+    })
+
+    describe(&#x27;validation&#x27;, () =&gt; {
+      const tokensToValidate: Array&lt;
+        [string, string, { useAdditionalDayOfYearTokens: boolean }?]
+      &gt; = [
+        [&#x27;D&#x27;, &#x27;1&#x27;, { useAdditionalDayOfYearTokens: true }],
+        [&#x27;E&#x27;, &#x27;Mon&#x27;],
+        [&#x27;i&#x27;, &#x27;1&#x27;],
+        [&#x27;e&#x27;, &#x27;1&#x27;],
+        [&#x27;c&#x27;, &#x27;1&#x27;],
+        [&#x27;t&#x27;, &#x27;512969520&#x27;],
+        [&#x27;T&#x27;, &#x27;512969520900&#x27;],
+      ]
+      tokensToValidate.forEach(([token, example, options]) =&gt; {
+        it(`throws an error when E is used after ${token}`, () =&gt; {
+          const block = () =&gt;
+            parse(`${example} Mon`, `${token} E`, referenceDate, options)
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn&#x27;t contain \`${token}\` and \`E\` at the same time`
+            )
+          )
+        })
+      })
+    })
+  })
+
+  describe(&#x27;ISO day of week (formatting)&#x27;, () =&gt; {
+    it(&#x27;numeric&#x27;, () =&gt; {
+      const result = parse(&#x27;1&#x27;, &#x27;i&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 2 /* Mar */, 31))
+    })
+
+    it(&#x27;ordinal&#x27;, () =&gt; {
+      const result = parse(&#x27;1st&#x27;, &#x27;io&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 2 /* Mar */, 31))
+    })
+
+    it(&#x27;zero-padding&#x27;, () =&gt; {
+      const result = parse(&#x27;02&#x27;, &#x27;ii&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 1))
+    })
+
+    it(&#x27;abbreviated&#x27;, () =&gt; {
+      const result = parse(&#x27;Wed&#x27;, &#x27;iii&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 2))
+    })
+
+    it(&#x27;wide&#x27;, () =&gt; {
+      const result = parse(&#x27;Thursday&#x27;, &#x27;iiii&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 3))
+    })
+
+    it(&#x27;narrow&#x27;, () =&gt; {
+      const result = parse(&#x27;S&#x27;, &#x27;iiiii&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 6))
+    })
+
+    it(&#x27;short&#x27;, () =&gt; {
+      const result = parse(&#x27;Fr&#x27;, &#x27;iiiiii&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4))
+    })
+
+    describe(&#x27;validation&#x27;, () =&gt; {
+      const tokensToValidate: Array&lt;
+        [string, string, { useAdditionalDayOfYearTokens: boolean }?]
+      &gt; = [
+        [&#x27;y&#x27;, &#x27;2019&#x27;],
+        [&#x27;Y&#x27;, &#x27;2019&#x27;],
+        [&#x27;u&#x27;, &#x27;2019&#x27;],
+        [&#x27;Q&#x27;, &#x27;1&#x27;],
+        [&#x27;q&#x27;, &#x27;1&#x27;],
+        [&#x27;M&#x27;, &#x27;1&#x27;],
+        [&#x27;L&#x27;, &#x27;1&#x27;],
+        [&#x27;w&#x27;, &#x27;1&#x27;],
+        [&#x27;d&#x27;, &#x27;1&#x27;],
+        [&#x27;D&#x27;, &#x27;1&#x27;, { useAdditionalDayOfYearTokens: true }],
+        [&#x27;E&#x27;, &#x27;Mon&#x27;],
+        [&#x27;i&#x27;, &#x27;1&#x27;],
+        [&#x27;e&#x27;, &#x27;1&#x27;],
+        [&#x27;c&#x27;, &#x27;1&#x27;],
+        [&#x27;t&#x27;, &#x27;512969520&#x27;],
+        [&#x27;T&#x27;, &#x27;512969520900&#x27;],
+      ]
+      tokensToValidate.forEach(([token, example, options]) =&gt; {
+        it(`throws an error when i is used after ${token}`, () =&gt; {
+          const block = () =&gt;
+            parse(`${example} 1`, `${token} i`, referenceDate, options)
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn&#x27;t contain \`${token}\` and \`i\` at the same time`
+            )
+          )
+        })
+      })
+    })
+  })
+
+  describe(&#x27;local day of week (formatting)&#x27;, () =&gt; {
+    it(&#x27;numeric&#x27;, () =&gt; {
+      const result = parse(&#x27;2&#x27;, &#x27;e&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 2 /* Mar */, 31))
+    })
+
+    it(&#x27;ordinal&#x27;, () =&gt; {
+      const result = parse(&#x27;2nd&#x27;, &#x27;eo&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 2 /* Mar */, 31))
+    })
+
+    it(&#x27;zero-padding&#x27;, () =&gt; {
+      const result = parse(&#x27;03&#x27;, &#x27;ee&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 1))
+    })
+
+    it(&#x27;abbreviated&#x27;, () =&gt; {
+      const result = parse(&#x27;Wed&#x27;, &#x27;eee&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 2))
+    })
+
+    it(&#x27;wide&#x27;, () =&gt; {
+      const result = parse(&#x27;Thursday&#x27;, &#x27;eeee&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 3))
+    })
+
+    it(&#x27;narrow&#x27;, () =&gt; {
+      const result = parse(&#x27;S&#x27;, &#x27;eeeee&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 2 /* Mar */, 30))
+    })
+
+    it(&#x27;short&#x27;, () =&gt; {
+      const result = parse(&#x27;Fr&#x27;, &#x27;eeeeee&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4))
+    })
+
+    it(&#x27;allows to specify which day is the first day of the week&#x27;, () =&gt; {
+      const result = parse(&#x27;7th&#x27;, &#x27;eo&#x27;, referenceDate, {
+        weekStartsOn: /* Fri */ 5,
+      })
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 10))
+    })
+
+    describe(&#x27;validation&#x27;, () =&gt; {
+      const tokensToValidate: Array&lt;
+        [string, string, { useAdditionalDayOfYearTokens: boolean }?]
+      &gt; = [
+        [&#x27;y&#x27;, &#x27;2019&#x27;],
+        [&#x27;R&#x27;, &#x27;2019&#x27;],
+        [&#x27;u&#x27;, &#x27;2019&#x27;],
+        [&#x27;Q&#x27;, &#x27;1&#x27;],
+        [&#x27;q&#x27;, &#x27;1&#x27;],
+        [&#x27;M&#x27;, &#x27;1&#x27;],
+        [&#x27;L&#x27;, &#x27;1&#x27;],
+        [&#x27;I&#x27;, &#x27;1&#x27;],
+        [&#x27;d&#x27;, &#x27;1&#x27;],
+        [&#x27;D&#x27;, &#x27;1&#x27;, { useAdditionalDayOfYearTokens: true }],
+        [&#x27;E&#x27;, &#x27;Mon&#x27;],
+        [&#x27;i&#x27;, &#x27;1&#x27;],
+        [&#x27;e&#x27;, &#x27;1&#x27;],
+        [&#x27;c&#x27;, &#x27;1&#x27;],
+        [&#x27;t&#x27;, &#x27;512969520&#x27;],
+        [&#x27;T&#x27;, &#x27;512969520900&#x27;],
+      ]
+      tokensToValidate.forEach(([token, example, options]) =&gt; {
+        it(`throws an error when e is used after ${token}`, () =&gt; {
+          const block = () =&gt;
+            parse(`${example} 1`, `${token} e`, referenceDate, options)
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn&#x27;t contain \`${token}\` and \`e\` at the same time`
+            )
+          )
+        })
+      })
+    })
+  })
+
+  describe(&#x27;local day of week (stand-alone)&#x27;, () =&gt; {
+    it(&#x27;numeric&#x27;, () =&gt; {
+      const result = parse(&#x27;2&#x27;, &#x27;c&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 2 /* Mar */, 31))
+    })
+
+    it(&#x27;ordinal&#x27;, () =&gt; {
+      const result = parse(&#x27;2nd&#x27;, &#x27;co&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 2 /* Mar */, 31))
+    })
+
+    it(&#x27;zero-padding&#x27;, () =&gt; {
+      const result = parse(&#x27;03&#x27;, &#x27;cc&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 1))
+    })
+
+    it(&#x27;abbreviated&#x27;, () =&gt; {
+      const result = parse(&#x27;Wed&#x27;, &#x27;ccc&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 2))
+    })
+
+    it(&#x27;wide&#x27;, () =&gt; {
+      const result = parse(&#x27;Thursday&#x27;, &#x27;cccc&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 3))
+    })
+
+    it(&#x27;narrow&#x27;, () =&gt; {
+      const result = parse(&#x27;S&#x27;, &#x27;ccccc&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 2 /* Mar */, 30))
+    })
+
+    it(&#x27;short&#x27;, () =&gt; {
+      const result = parse(&#x27;Fr&#x27;, &#x27;cccccc&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4))
+    })
+
+    it(&#x27;allows to specify which day is the first day of the week&#x27;, () =&gt; {
+      const result = parse(&#x27;7th&#x27;, &#x27;co&#x27;, referenceDate, {
+        weekStartsOn: /* Fri */ 5,
+      })
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 10))
+    })
+
+    describe(&#x27;validation&#x27;, () =&gt; {
+      const tokensToValidate: Array&lt;
+        [string, string, { useAdditionalDayOfYearTokens: boolean }?]
+      &gt; = [
+        [&#x27;y&#x27;, &#x27;2019&#x27;],
+        [&#x27;R&#x27;, &#x27;2019&#x27;],
+        [&#x27;u&#x27;, &#x27;2019&#x27;],
+        [&#x27;Q&#x27;, &#x27;1&#x27;],
+        [&#x27;q&#x27;, &#x27;1&#x27;],
+        [&#x27;M&#x27;, &#x27;1&#x27;],
+        [&#x27;L&#x27;, &#x27;1&#x27;],
+        [&#x27;I&#x27;, &#x27;1&#x27;],
+        [&#x27;d&#x27;, &#x27;1&#x27;],
+        [&#x27;D&#x27;, &#x27;1&#x27;, { useAdditionalDayOfYearTokens: true }],
+        [&#x27;E&#x27;, &#x27;Mon&#x27;],
+        [&#x27;i&#x27;, &#x27;1&#x27;],
+        [&#x27;e&#x27;, &#x27;1&#x27;],
+        [&#x27;c&#x27;, &#x27;1&#x27;],
+        [&#x27;t&#x27;, &#x27;512969520&#x27;],
+        [&#x27;T&#x27;, &#x27;512969520900&#x27;],
+      ]
+      tokensToValidate.forEach(([token, example, options]) =&gt; {
+        it(`throws an error when c is used after ${token}`, () =&gt; {
+          const block = () =&gt;
+            parse(`${example} 1`, `${token} c`, referenceDate, options)
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn&#x27;t contain \`${token}\` and \`c\` at the same time`
+            )
+          )
+        })
+      })
+    })
+  })
+
+  describe(&#x27;AM, PM&#x27;, () =&gt; {
+    it(&#x27;abbreviated&#x27;, () =&gt; {
+      const result = parse(&#x27;5 AM&#x27;, &#x27;h a&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 5))
+    })
+
+    it(&#x27;12 AM&#x27;, () =&gt; {
+      const result = parse(&#x27;12 AM&#x27;, &#x27;h aa&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 0))
+    })
+
+    it(&#x27;12 PM&#x27;, () =&gt; {
+      const result = parse(&#x27;12 PM&#x27;, &#x27;h aaa&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 12))
+    })
+
+    it(&#x27;wide&#x27;, () =&gt; {
+      const result = parse(&#x27;5 p.m.&#x27;, &#x27;h aaaa&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 17))
+    })
+
+    it(&#x27;narrow&#x27;, () =&gt; {
+      const result = parse(&#x27;11 a&#x27;, &#x27;h aaaaa&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 11))
+    })
+
+    describe(&#x27;validation&#x27;, () =&gt; {
+      ;[
+        [&#x27;a&#x27;, &#x27;AM&#x27;],
+        [&#x27;b&#x27;, &#x27;AM&#x27;],
+        [&#x27;B&#x27;, &#x27;in the morning&#x27;],
+        [&#x27;H&#x27;, &#x27;1&#x27;],
+        [&#x27;k&#x27;, &#x27;1&#x27;],
+        [&#x27;t&#x27;, &#x27;512969520&#x27;],
+        [&#x27;T&#x27;, &#x27;512969520900&#x27;],
+      ].forEach(([token, example]) =&gt; {
+        it(`throws an error when a is used after ${token}`, () =&gt; {
+          const block = () =&gt;
+            parse(`${example} AM`, `${token} a`, referenceDate)
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn&#x27;t contain \`${token}\` and \`a\` at the same time`
+            )
+          )
+        })
+      })
+    })
+  })
+
+  describe(&#x27;AM, PM, noon, midnight&#x27;, () =&gt; {
+    it(&#x27;abbreviated&#x27;, () =&gt; {
+      const result = parse(&#x27;noon&#x27;, &#x27;b&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 12))
+    })
+
+    it(&#x27;wide&#x27;, () =&gt; {
+      const result = parse(&#x27;midnight&#x27;, &#x27;bbbb&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 0))
+    })
+
+    it(&#x27;narrow&#x27;, () =&gt; {
+      const result = parse(&#x27;mi&#x27;, &#x27;bbbbb&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 0))
+    })
+
+    describe(&#x27;validation&#x27;, () =&gt; {
+      ;[
+        [&#x27;a&#x27;, &#x27;AM&#x27;],
+        [&#x27;b&#x27;, &#x27;AM&#x27;],
+        [&#x27;B&#x27;, &#x27;in the morning&#x27;],
+        [&#x27;H&#x27;, &#x27;1&#x27;],
+        [&#x27;k&#x27;, &#x27;1&#x27;],
+        [&#x27;t&#x27;, &#x27;512969520&#x27;],
+        [&#x27;T&#x27;, &#x27;512969520900&#x27;],
+      ].forEach(([token, example]) =&gt; {
+        it(`throws an error when b is used after ${token}`, () =&gt; {
+          const block = () =&gt;
+            parse(`${example} AM`, `${token} b`, referenceDate)
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn&#x27;t contain \`${token}\` and \`b\` at the same time`
+            )
+          )
+        })
+      })
+    })
+  })
+
+  describe(&#x27;flexible day period&#x27;, () =&gt; {
+    it(&#x27;abbreviated&#x27;, () =&gt; {
+      const result = parse(&#x27;2 at night&#x27;, &#x27;h B&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 2))
+    })
+
+    it(&#x27;wide&#x27;, () =&gt; {
+      const result = parse(&#x27;12 in the afternoon&#x27;, &#x27;h BBBB&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 12))
+    })
+
+    it(&#x27;narrow&#x27;, () =&gt; {
+      const result = parse(&#x27;5 in the evening&#x27;, &#x27;h BBBBB&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 17))
+    })
+
+    describe(&#x27;validation&#x27;, () =&gt; {
+      ;[
+        [&#x27;a&#x27;, &#x27;AM&#x27;],
+        [&#x27;b&#x27;, &#x27;AM&#x27;],
+        [&#x27;B&#x27;, &#x27;in the morning&#x27;],
+        [&#x27;t&#x27;, &#x27;512969520&#x27;],
+        [&#x27;T&#x27;, &#x27;512969520900&#x27;],
+      ].forEach(([token, example]) =&gt; {
+        it(`throws an error when B is used after ${token}`, () =&gt; {
+          const block = () =&gt;
+            parse(`${example} in the morning`, `${token} B`, referenceDate)
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn&#x27;t contain \`${token}\` and \`B\` at the same time`
+            )
+          )
+        })
+      })
+    })
+  })
+
+  describe(&#x27;hour [1-12]&#x27;, () =&gt; {
+    it(&#x27;numeric&#x27;, () =&gt; {
+      const result = parse(&#x27;1&#x27;, &#x27;h&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 1))
+    })
+
+    it(&#x27;ordinal&#x27;, () =&gt; {
+      const result = parse(&#x27;1st&#x27;, &#x27;ho&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 1))
+    })
+
+    it(&#x27;zero-padding&#x27;, () =&gt; {
+      const result = parse(&#x27;01&#x27;, &#x27;hh&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 1))
+    })
+
+    describe(&#x27;validation&#x27;, () =&gt; {
+      ;[
+        [&#x27;h&#x27;, &#x27;1&#x27;],
+        [&#x27;H&#x27;, &#x27;1&#x27;],
+        [&#x27;K&#x27;, &#x27;1&#x27;],
+        [&#x27;k&#x27;, &#x27;1&#x27;],
+        [&#x27;t&#x27;, &#x27;512969520&#x27;],
+        [&#x27;T&#x27;, &#x27;512969520900&#x27;],
+      ].forEach(([token, example]) =&gt; {
+        it(`throws an error when h is used after ${token}`, () =&gt; {
+          const block = () =&gt; parse(`${example} 1`, `${token} h`, referenceDate)
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn&#x27;t contain \`${token}\` and \`h\` at the same time`
+            )
+          )
+        })
+      })
+    })
+  })
+
+  describe(&#x27;hour [0-23]&#x27;, () =&gt; {
+    it(&#x27;numeric&#x27;, () =&gt; {
+      const result = parse(&#x27;12&#x27;, &#x27;H&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 12))
+    })
+
+    it(&#x27;ordinal&#x27;, () =&gt; {
+      const result = parse(&#x27;12th&#x27;, &#x27;Ho&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 12))
+    })
+
+    it(&#x27;zero-padding&#x27;, () =&gt; {
+      const result = parse(&#x27;00&#x27;, &#x27;HH&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 0))
+    })
+
+    describe(&#x27;validation&#x27;, () =&gt; {
+      ;[
+        [&#x27;a&#x27;, &#x27;AM&#x27;],
+        [&#x27;b&#x27;, &#x27;AM&#x27;],
+        [&#x27;h&#x27;, &#x27;1&#x27;],
+        [&#x27;H&#x27;, &#x27;1&#x27;],
+        [&#x27;K&#x27;, &#x27;1&#x27;],
+        [&#x27;k&#x27;, &#x27;1&#x27;],
+        [&#x27;t&#x27;, &#x27;512969520&#x27;],
+        [&#x27;T&#x27;, &#x27;512969520900&#x27;],
+      ].forEach(([token, example]) =&gt; {
+        it(`throws an error when H is used after ${token}`, () =&gt; {
+          const block = () =&gt; parse(`${example} 1`, `${token} H`, referenceDate)
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn&#x27;t contain \`${token}\` and \`H\` at the same time`
+            )
+          )
+        })
+      })
+    })
+  })
+
+  describe(&#x27;hour [0-11]&#x27;, () =&gt; {
+    it(&#x27;numeric&#x27;, () =&gt; {
+      const result = parse(&#x27;1&#x27;, &#x27;K&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 1))
+    })
+
+    it(&#x27;ordinal&#x27;, () =&gt; {
+      const result = parse(&#x27;1st&#x27;, &#x27;Ko&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 1))
+    })
+
+    it(&#x27;zero-padding&#x27;, () =&gt; {
+      const result = parse(&#x27;1&#x27;, &#x27;KK&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 1))
+    })
+
+    describe(&#x27;validation&#x27;, () =&gt; {
+      ;[
+        [&#x27;h&#x27;, &#x27;1&#x27;],
+        [&#x27;H&#x27;, &#x27;1&#x27;],
+        [&#x27;K&#x27;, &#x27;1&#x27;],
+        [&#x27;k&#x27;, &#x27;1&#x27;],
+        [&#x27;t&#x27;, &#x27;512969520&#x27;],
+        [&#x27;T&#x27;, &#x27;512969520900&#x27;],
+      ].forEach(([token, example]) =&gt; {
+        it(`throws an error when K is used after ${token}`, () =&gt; {
+          const block = () =&gt; parse(`${example} 1`, `${token} K`, referenceDate)
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn&#x27;t contain \`${token}\` and \`K\` at the same time`
+            )
+          )
+        })
+      })
+    })
+  })
+
+  describe(&#x27;hour [1-24]&#x27;, () =&gt; {
+    it(&#x27;numeric&#x27;, () =&gt; {
+      const result = parse(&#x27;12&#x27;, &#x27;k&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 12))
+    })
+
+    it(&#x27;ordinal&#x27;, () =&gt; {
+      const result = parse(&#x27;12th&#x27;, &#x27;ko&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 12))
+    })
+
+    it(&#x27;zero-padding&#x27;, () =&gt; {
+      const result = parse(&#x27;24&#x27;, &#x27;kk&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 0))
+    })
+
+    describe(&#x27;validation&#x27;, () =&gt; {
+      ;[
+        [&#x27;a&#x27;, &#x27;AM&#x27;],
+        [&#x27;b&#x27;, &#x27;AM&#x27;],
+        [&#x27;h&#x27;, &#x27;1&#x27;],
+        [&#x27;H&#x27;, &#x27;1&#x27;],
+        [&#x27;K&#x27;, &#x27;1&#x27;],
+        [&#x27;k&#x27;, &#x27;1&#x27;],
+        [&#x27;t&#x27;, &#x27;512969520&#x27;],
+        [&#x27;T&#x27;, &#x27;512969520900&#x27;],
+      ].forEach(([token, example]) =&gt; {
+        it(`throws an error when k is used after ${token}`, () =&gt; {
+          const block = () =&gt; parse(`${example} 1`, `${token} k`, referenceDate)
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn&#x27;t contain \`${token}\` and \`k\` at the same time`
+            )
+          )
+        })
+      })
+    })
+  })
+
+  describe(&#x27;minute&#x27;, () =&gt; {
+    it(&#x27;numeric&#x27;, () =&gt; {
+      const result = parse(&#x27;25&#x27;, &#x27;m&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 25))
+    })
+
+    it(&#x27;ordinal&#x27;, () =&gt; {
+      const result = parse(&#x27;25th&#x27;, &#x27;mo&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 25))
+    })
+
+    it(&#x27;zero-padding&#x27;, () =&gt; {
+      const result = parse(&#x27;05&#x27;, &#x27;mm&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 5))
+    })
+
+    describe(&#x27;validation&#x27;, () =&gt; {
+      ;[
+        [&#x27;m&#x27;, &#x27;1&#x27;],
+        [&#x27;t&#x27;, &#x27;512969520&#x27;],
+        [&#x27;T&#x27;, &#x27;512969520900&#x27;],
+      ].forEach(([token, example]) =&gt; {
+        it(`throws an error when m is used after ${token}`, () =&gt; {
+          const block = () =&gt; parse(`${example} 1`, `${token} m`, referenceDate)
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn&#x27;t contain \`${token}\` and \`m\` at the same time`
+            )
+          )
+        })
+      })
+    })
+  })
+
+  describe(&#x27;second&#x27;, () =&gt; {
+    it(&#x27;numeric&#x27;, () =&gt; {
+      const result = parse(&#x27;25&#x27;, &#x27;s&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 32, 25))
+    })
+
+    it(&#x27;ordinal&#x27;, () =&gt; {
+      const result = parse(&#x27;25th&#x27;, &#x27;so&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 32, 25))
+    })
+
+    it(&#x27;zero-padding&#x27;, () =&gt; {
+      const result = parse(&#x27;05&#x27;, &#x27;ss&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 32, 5))
+    })
+
+    describe(&#x27;validation&#x27;, () =&gt; {
+      ;[
+        [&#x27;s&#x27;, &#x27;1&#x27;],
+        [&#x27;t&#x27;, &#x27;512969520&#x27;],
+        [&#x27;T&#x27;, &#x27;512969520900&#x27;],
+      ].forEach(([token, example]) =&gt; {
+        it(`throws an error when s is used after ${token}`, () =&gt; {
+          const block = () =&gt; parse(`${example} 1`, `${token} s`, referenceDate)
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn&#x27;t contain \`${token}\` and \`s\` at the same time`
+            )
+          )
+        })
+      })
+    })
+  })
+
+  describe(&#x27;fraction of second&#x27;, () =&gt; {
+    it(&#x27;1/10 of second&#x27;, () =&gt; {
+      const result = parse(&#x27;1&#x27;, &#x27;S&#x27;, referenceDate)
+      assert.deepStrictEqual(
+        result,
+        new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 100)
+      )
+    })
+
+    it(&#x27;1/100 of second&#x27;, () =&gt; {
+      const result = parse(&#x27;12&#x27;, &#x27;SS&#x27;, referenceDate)
+      assert.deepStrictEqual(
+        result,
+        new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 120)
+      )
+    })
+
+    it(&#x27;millisecond&#x27;, () =&gt; {
+      const result = parse(&#x27;123&#x27;, &#x27;SSS&#x27;, referenceDate)
+      assert.deepStrictEqual(
+        result,
+        new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 123)
+      )
+    })
+
+    it(&#x27;specified amount of digits&#x27;, () =&gt; {
+      const result = parse(&#x27;567890&#x27;, &#x27;SSSSSS&#x27;, referenceDate)
+      assert.deepStrictEqual(
+        result,
+        new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 567)
+      )
+    })
+
+    describe(&#x27;validation&#x27;, () =&gt; {
+      ;[
+        [&#x27;S&#x27;, &#x27;1&#x27;],
+        [&#x27;t&#x27;, &#x27;512969520&#x27;],
+        [&#x27;T&#x27;, &#x27;512969520900&#x27;],
+      ].forEach(([token, example]) =&gt; {
+        it(`throws an error when S is used after ${token}`, () =&gt; {
+          const block = () =&gt; parse(`${example} 1`, `${token} S`, referenceDate)
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn&#x27;t contain \`${token}\` and \`S\` at the same time`
+            )
+          )
+        })
+      })
+    })
+  })
+
+  describe(&#x27;timezone (ISO-8601 w/ Z)&#x27;, () =&gt; {
+    describe(&#x27;X&#x27;, () =&gt; {
+      it(&#x27;hours and minutes&#x27;, () =&gt; {
+        const result = parse(
+          &#x27;2016-11-25T16:38:38.123-0530&#x27;,
+          &quot;yyyy-MM-dd&#x27;T&#x27;HH:mm:ss.SSSX&quot;,
+          referenceDate
+        )
+        assert.deepStrictEqual(
+          result,
+          new Date(&#x27;2016-11-25T16:38:38.123-05:30&#x27;)
+        )
+      })
+
+      it(&#x27;GMT&#x27;, () =&gt; {
+        const result = parse(
+          &#x27;2016-11-25T16:38:38.123Z&#x27;,
+          &quot;yyyy-MM-dd&#x27;T&#x27;HH:mm:ss.SSSX&quot;,
+          referenceDate
+        )
+        assert.deepStrictEqual(result, new Date(&#x27;2016-11-25T16:38:38.123Z&#x27;))
+      })
+
+      it(&#x27;hours&#x27;, () =&gt; {
+        const result = parse(
+          &#x27;2016-11-25T16:38:38.123+05&#x27;,
+          &quot;yyyy-MM-dd&#x27;T&#x27;HH:mm:ss.SSSX&quot;,
+          referenceDate
+        )
+        assert.deepStrictEqual(
+          result,
+          new Date(&#x27;2016-11-25T16:38:38.123+05:00&#x27;)
+        )
+      })
+    })
+
+    describe(&#x27;XX&#x27;, () =&gt; {
+      it(&#x27;hours and minutes&#x27;, () =&gt; {
+        const result = parse(
+          &#x27;2016-11-25T16:38:38.123-0530&#x27;,
+          &quot;yyyy-MM-dd&#x27;T&#x27;HH:mm:ss.SSSXX&quot;,
+          referenceDate
+        )
+        assert.deepStrictEqual(
+          result,
+          new Date(&#x27;2016-11-25T16:38:38.123-05:30&#x27;)
+        )
+      })
+
+      it(&#x27;GMT&#x27;, () =&gt; {
+        const result = parse(
+          &#x27;2016-11-25T16:38:38.123Z&#x27;,
+          &quot;yyyy-MM-dd&#x27;T&#x27;HH:mm:ss.SSSXX&quot;,
+          referenceDate
+        )
+        assert.deepStrictEqual(result, new Date(&#x27;2016-11-25T16:38:38.123Z&#x27;))
+      })
+    })
+
+    describe(&#x27;XXX&#x27;, () =&gt; {
+      it(&#x27;hours and minutes&#x27;, () =&gt; {
+        const result = parse(
+          &#x27;2016-11-25T16:38:38.123-05:30&#x27;,
+          &quot;yyyy-MM-dd&#x27;T&#x27;HH:mm:ss.SSSXXX&quot;,
+          referenceDate
+        )
+        assert.deepStrictEqual(
+          result,
+          new Date(&#x27;2016-11-25T16:38:38.123-05:30&#x27;)
+        )
+      })
+
+      it(&#x27;GMT&#x27;, () =&gt; {
+        const result = parse(
+          &#x27;2016-11-25T16:38:38.123Z&#x27;,
+          &quot;yyyy-MM-dd&#x27;T&#x27;HH:mm:ss.SSSXXX&quot;,
+          referenceDate
+        )
+        assert.deepStrictEqual(result, new Date(&#x27;2016-11-25T16:38:38.123Z&#x27;))
+      })
+    })
+
+    describe(&#x27;XXXX&#x27;, () =&gt; {
+      it(&#x27;hours and minutes&#x27;, () =&gt; {
+        const result = parse(
+          &#x27;2016-11-25T16:38:38.123-0530&#x27;,
+          &quot;yyyy-MM-dd&#x27;T&#x27;HH:mm:ss.SSSXXXX&quot;,
+          referenceDate
+        )
+        assert.deepStrictEqual(
+          result,
+          new Date(&#x27;2016-11-25T16:38:38.123-05:30&#x27;)
+        )
+      })
+
+      it(&#x27;GMT&#x27;, () =&gt; {
+        const result = parse(
+          &#x27;2016-11-25T16:38:38.123Z&#x27;,
+          &quot;yyyy-MM-dd&#x27;T&#x27;HH:mm:ss.SSSXXXX&quot;,
+          referenceDate
+        )
+        assert.deepStrictEqual(result, new Date(&#x27;2016-11-25T16:38:38.123Z&#x27;))
+      })
+
+      it(&#x27;hours, minutes and seconds&#x27;, () =&gt; {
+        const result = parse(
+          &#x27;2016-11-25T16:38:38.123+053045&#x27;,
+          &quot;yyyy-MM-dd&#x27;T&#x27;HH:mm:ss.SSSXXXX&quot;,
+          referenceDate
+        )
+        assert.deepStrictEqual(
+          result,
+          new Date(&#x27;2016-11-25T16:37:53.123+05:30&#x27;)
+        )
+      })
+    })
+
+    describe(&#x27;XXXXX&#x27;, () =&gt; {
+      it(&#x27;hours and minutes&#x27;, () =&gt; {
+        const result = parse(
+          &#x27;2016-11-25T16:38:38.123-05:30&#x27;,
+          &quot;yyyy-MM-dd&#x27;T&#x27;HH:mm:ss.SSSXXXXX&quot;,
+          referenceDate
+        )
+        assert.deepStrictEqual(
+          result,
+          new Date(&#x27;2016-11-25T16:38:38.123-05:30&#x27;)
+        )
+      })
+
+      it(&#x27;GMT&#x27;, () =&gt; {
+        const result = parse(
+          &#x27;2016-11-25T16:38:38.123Z&#x27;,
+          &quot;yyyy-MM-dd&#x27;T&#x27;HH:mm:ss.SSSXXXXX&quot;,
+          referenceDate
+        )
+        assert.deepStrictEqual(result, new Date(&#x27;2016-11-25T16:38:38.123Z&#x27;))
+      })
+
+      it(&#x27;hours, minutes and seconds&#x27;, () =&gt; {
+        const result = parse(
+          &#x27;2016-11-25T16:38:38.123+05:30:45&#x27;,
+          &quot;yyyy-MM-dd&#x27;T&#x27;HH:mm:ss.SSSXXXXX&quot;,
+          referenceDate
+        )
+        assert.deepStrictEqual(
+          result,
+          new Date(&#x27;2016-11-25T16:37:53.123+05:30&#x27;)
+        )
+      })
+    })
+
+    describe(&#x27;validation&#x27;, () =&gt; {
+      ;[
+        [&#x27;X&#x27;, &#x27;-0530&#x27;],
+        [&#x27;x&#x27;, &#x27;-0530&#x27;],
+        [&#x27;t&#x27;, &#x27;512969520&#x27;],
+        [&#x27;T&#x27;, &#x27;512969520900&#x27;],
+      ].forEach(([token, example]) =&gt; {
+        it(`throws an error when X is used after ${token}`, () =&gt; {
+          const block = () =&gt;
+            parse(`${example} -0530`, `${token} X`, referenceDate)
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn&#x27;t contain \`${token}\` and \`X\` at the same time`
+            )
+          )
+        })
+      })
+    })
+  })
+
+  describe(&#x27;timezone (ISO-8601 w/o Z)&#x27;, () =&gt; {
+    describe(&#x27;x&#x27;, () =&gt; {
+      it(&#x27;hours and minutes&#x27;, () =&gt; {
+        const result = parse(
+          &#x27;2016-11-25T16:38:38.123-0530&#x27;,
+          &quot;yyyy-MM-dd&#x27;T&#x27;HH:mm:ss.SSSx&quot;,
+          referenceDate
+        )
+        assert.deepStrictEqual(
+          result,
+          new Date(&#x27;2016-11-25T16:38:38.123-05:30&#x27;)
+        )
+      })
+
+      it(&#x27;GMT&#x27;, () =&gt; {
+        const result = parse(
+          &#x27;2016-11-25T16:38:38.123+0000&#x27;,
+          &quot;yyyy-MM-dd&#x27;T&#x27;HH:mm:ss.SSSx&quot;,
+          referenceDate
+        )
+        assert.deepStrictEqual(result, new Date(&#x27;2016-11-25T16:38:38.123Z&#x27;))
+      })
+
+      it(&#x27;hours&#x27;, () =&gt; {
+        const result = parse(
+          &#x27;2016-11-25T16:38:38.123+05&#x27;,
+          &quot;yyyy-MM-dd&#x27;T&#x27;HH:mm:ss.SSSx&quot;,
+          referenceDate
+        )
+        assert.deepStrictEqual(
+          result,
+          new Date(&#x27;2016-11-25T16:38:38.123+05:00&#x27;)
+        )
+      })
+    })
+
+    describe(&#x27;xx&#x27;, () =&gt; {
+      it(&#x27;hours and minutes&#x27;, () =&gt; {
+        const result = parse(
+          &#x27;2016-11-25T16:38:38.123-0530&#x27;,
+          &quot;yyyy-MM-dd&#x27;T&#x27;HH:mm:ss.SSSxx&quot;,
+          referenceDate
+        )
+        assert.deepStrictEqual(
+          result,
+          new Date(&#x27;2016-11-25T16:38:38.123-05:30&#x27;)
+        )
+      })
+
+      it(&#x27;GMT&#x27;, () =&gt; {
+        const result = parse(
+          &#x27;2016-11-25T16:38:38.123+0000&#x27;,
+          &quot;yyyy-MM-dd&#x27;T&#x27;HH:mm:ss.SSSxx&quot;,
+          referenceDate
+        )
+        assert.deepStrictEqual(result, new Date(&#x27;2016-11-25T16:38:38.123Z&#x27;))
+      })
+    })
+
+    describe(&#x27;xxx&#x27;, () =&gt; {
+      it(&#x27;hours and minutes&#x27;, () =&gt; {
+        const result = parse(
+          &#x27;2016-11-25T16:38:38.123-05:30&#x27;,
+          &quot;yyyy-MM-dd&#x27;T&#x27;HH:mm:ss.SSSxxx&quot;,
+          referenceDate
+        )
+        assert.deepStrictEqual(
+          result,
+          new Date(&#x27;2016-11-25T16:38:38.123-05:30&#x27;)
+        )
+      })
+
+      it(&#x27;GMT&#x27;, () =&gt; {
+        const result = parse(
+          &#x27;2016-11-25T16:38:38.123+00:00&#x27;,
+          &quot;yyyy-MM-dd&#x27;T&#x27;HH:mm:ss.SSSxxx&quot;,
+          referenceDate
+        )
+        assert.deepStrictEqual(result, new Date(&#x27;2016-11-25T16:38:38.123Z&#x27;))
+      })
+    })
+
+    describe(&#x27;xxxx&#x27;, () =&gt; {
+      it(&#x27;hours and minutes&#x27;, () =&gt; {
+        const result = parse(
+          &#x27;2016-11-25T16:38:38.123-0530&#x27;,
+          &quot;yyyy-MM-dd&#x27;T&#x27;HH:mm:ss.SSSxxxx&quot;,
+          referenceDate
+        )
+        assert.deepStrictEqual(
+          result,
+          new Date(&#x27;2016-11-25T16:38:38.123-05:30&#x27;)
+        )
+      })
+
+      it(&#x27;GMT&#x27;, () =&gt; {
+        const result = parse(
+          &#x27;2016-11-25T16:38:38.123+0000&#x27;,
+          &quot;yyyy-MM-dd&#x27;T&#x27;HH:mm:ss.SSSxxxx&quot;,
+          referenceDate
+        )
+        assert.deepStrictEqual(result, new Date(&#x27;2016-11-25T16:38:38.123Z&#x27;))
+      })
+
+      it(&#x27;hours, minutes and seconds&#x27;, () =&gt; {
+        const result = parse(
+          &#x27;2016-11-25T16:38:38.123+053045&#x27;,
+          &quot;yyyy-MM-dd&#x27;T&#x27;HH:mm:ss.SSSxxxx&quot;,
+          referenceDate
+        )
+        assert.deepStrictEqual(
+          result,
+          new Date(&#x27;2016-11-25T16:37:53.123+05:30&#x27;)
+        )
+      })
+    })
+
+    describe(&#x27;xxxxx&#x27;, () =&gt; {
+      it(&#x27;hours and minutes&#x27;, () =&gt; {
+        const result = parse(
+          &#x27;2016-11-25T16:38:38.123-05:30&#x27;,
+          &quot;yyyy-MM-dd&#x27;T&#x27;HH:mm:ss.SSSxxxxx&quot;,
+          referenceDate
+        )
+        assert.deepStrictEqual(
+          result,
+          new Date(&#x27;2016-11-25T16:38:38.123-05:30&#x27;)
+        )
+      })
+
+      it(&#x27;GMT&#x27;, () =&gt; {
+        const result = parse(
+          &#x27;2016-11-25T16:38:38.123+00:00&#x27;,
+          &quot;yyyy-MM-dd&#x27;T&#x27;HH:mm:ss.SSSxxxxx&quot;,
+          referenceDate
+        )
+        assert.deepStrictEqual(result, new Date(&#x27;2016-11-25T16:38:38.123Z&#x27;))
+      })
+
+      it(&#x27;hours, minutes and seconds&#x27;, () =&gt; {
+        const result = parse(
+          &#x27;2016-11-25T16:38:38.123+05:30:45&#x27;,
+          &quot;yyyy-MM-dd&#x27;T&#x27;HH:mm:ss.SSSxxxxx&quot;,
+          referenceDate
+        )
+        assert.deepStrictEqual(
+          result,
+          new Date(&#x27;2016-11-25T16:37:53.123+05:30&#x27;)
+        )
+      })
+    })
+
+    describe(&#x27;validation&#x27;, () =&gt; {
+      ;[
+        [&#x27;X&#x27;, &#x27;-0530&#x27;],
+        [&#x27;x&#x27;, &#x27;-0530&#x27;],
+        [&#x27;t&#x27;, &#x27;512969520&#x27;],
+        [&#x27;T&#x27;, &#x27;512969520900&#x27;],
+      ].forEach(([token, example]) =&gt; {
+        it(`throws an error when x is used after ${token}`, () =&gt; {
+          const block = () =&gt;
+            parse(`${example} -0530`, `${token} x`, referenceDate)
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn&#x27;t contain \`${token}\` and \`x\` at the same time`
+            )
+          )
+        })
+      })
+    })
+  })
+
+  describe(&#x27;seconds timestamp&#x27;, () =&gt; {
+    it(&#x27;numeric&#x27;, () =&gt; {
+      const result = parse(&#x27;512969520&#x27;, &#x27;t&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(512969520000))
+    })
+
+    it(&#x27;specified amount of digits&#x27;, () =&gt; {
+      const result = parse(
+        &#x27;00000000000512969520&#x27;,
+        &#x27;tttttttttttttttttttt&#x27;,
+        referenceDate
+      )
+      assert.deepStrictEqual(result, new Date(512969520000))
+    })
+
+    it(`throws an error when it is used after any token`, () =&gt; {
+      const block = () =&gt; parse(`1 512969520`, `h t`, referenceDate)
+      assert.throws(block, RangeError)
+      assert.throws(
+        block,
+        new RegExp(
+          `The format string mustn&#x27;t contain \`t\` and any other token at the same time`
+        )
+      )
+    })
+  })
+
+  describe(&#x27;milliseconds timestamp&#x27;, () =&gt; {
+    it(&#x27;numeric&#x27;, () =&gt; {
+      const result = parse(&#x27;512969520900&#x27;, &#x27;T&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(512969520900))
+    })
+
+    it(&#x27;specified amount of digits&#x27;, () =&gt; {
+      const result = parse(
+        &#x27;00000000512969520900&#x27;,
+        &#x27;TTTTTTTTTTTTTTTTTTTT&#x27;,
+        referenceDate
+      )
+      assert.deepStrictEqual(result, new Date(512969520900))
+    })
+
+    it(`throws an error when it is used after any token`, () =&gt; {
+      const block = () =&gt; parse(`1 512969520900`, `h T`, referenceDate)
+      assert.throws(block, RangeError)
+      assert.throws(
+        block,
+        new RegExp(
+          `The format string mustn&#x27;t contain \`T\` and any other token at the same time`
+        )
+      )
+    })
+  })
+
+  describe(&#x27;common formats&#x27;, () =&gt; {
+    it(&#x27;ISO-8601&#x27;, () =&gt; {
+      const result = parse(
+        &#x27;20161105T040404&#x27;,
+        &quot;yyyyMMdd&#x27;T&#x27;HHmmss&quot;,
+        referenceDate
+      )
+      assert.deepStrictEqual(
+        result,
+        new Date(2016, 10 /* Nov */, 5, 4, 4, 4, 0)
+      )
+    })
+
+    it(&#x27;ISO week-numbering date&#x27;, () =&gt; {
+      const result = parse(
+        &#x27;2016W474T153005&#x27;,
+        &quot;RRRR&#x27;W&#x27;IIi&#x27;T&#x27;HHmmss&quot;,
+        referenceDate
+      )
+      assert.deepStrictEqual(
+        result,
+        new Date(2016, 10 /* Nov */, 24, 15, 30, 5, 0)
+      )
+    })
+
+    it(&#x27;ISO day of year date&#x27;, () =&gt; {
+      const result = parse(&#x27;2010123T235959&#x27;, &quot;yyyyDDD&#x27;T&#x27;HHmmss&quot;, referenceDate)
+      assert.deepStrictEqual(
+        result,
+        new Date(2010, 4 /* May */, 3, 23, 59, 59, 0)
+      )
+    })
+
+    it(&#x27;Date.prototype.toString()&#x27;, () =&gt; {
+      const dateString = &#x27;Wed Jul 02 2014 05:30:15 GMT+0600&#x27;
+      const formatString = &quot;EEE MMM dd yyyy HH:mm:ss &#x27;GMT&#x27;xx&quot;
+      const result = parse(dateString, formatString, referenceDate)
+      assert.deepStrictEqual(result, new Date(dateString))
+    })
+
+    it(&#x27;Date.prototype.toISOString()&#x27;, () =&gt; {
+      const dateString = &#x27;2014-07-02T05:30:15.123+06:00&#x27;
+      const formatString = &quot;yyyy-MM-dd&#x27;T&#x27;HH:mm:ss.SSSxxx&quot;
+      const result = parse(dateString, formatString, referenceDate)
+      assert.deepStrictEqual(result, new Date(dateString))
+    })
+
+    it(&#x27;middle-endian&#x27;, () =&gt; {
+      const result = parse(
+        &#x27;5 a.m. 07/02/2016&#x27;,
+        &#x27;h aaaa MM/dd/yyyy&#x27;,
+        referenceDate
+      )
+      assert.deepStrictEqual(result, new Date(2016, 6 /* Jul */, 2, 5, 0, 0, 0))
+    })
+
+    it(&#x27;little-endian&#x27;, () =&gt; {
+      const result = parse(&#x27;02.07.1995&#x27;, &#x27;dd.MM.yyyy&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(1995, 6 /* Jul */, 2, 0, 0, 0, 0))
+    })
+  })
+
+  describe(&#x27;priority&#x27;, () =&gt; {
+    it(&quot;units of lower priority don&#x27;t overwrite values of higher priority&quot;, () =&gt; {
+      const dateString = &#x27;+06:00 123 15 30 05 02 07 2014&#x27;
+      const formatString = &#x27;xxx SSS ss mm HH dd MM yyyy&#x27;
+      const result = parse(dateString, formatString, referenceDate)
+      assert.deepStrictEqual(result, new Date(&#x27;2014-07-02T05:30:15.123+06:00&#x27;))
+    })
+  })
+
+  describe(&#x27;with `options.strictValidation` = true&#x27;, () =&gt; {
+    describe(&#x27;calendar year&#x27;, () =&gt; {
+      it(&#x27;returns `Invalid Date` for year zero&#x27;, () =&gt; {
+        const result = parse(&#x27;0&#x27;, &#x27;y&#x27;, referenceDate)
+        assert(result instanceof Date &amp;&amp; isNaN(result.getTime()))
+      })
+
+      it(&#x27;works correctly for two-digit year zero&#x27;, () =&gt; {
+        const result = parse(&#x27;00&#x27;, &#x27;yy&#x27;, referenceDate)
+        assert.deepStrictEqual(result, new Date(2000, 0 /* Jan */, 1))
+      })
+    })
+
+    describe(&#x27;local week-numbering year&#x27;, () =&gt; {
+      it(&#x27;returns `Invalid Date` for year zero&#x27;, () =&gt; {
+        const result = parse(&#x27;0&#x27;, &#x27;Y&#x27;, referenceDate)
+        assert(result instanceof Date &amp;&amp; isNaN(result.getTime()))
+      })
+
+      it(&#x27;works correctly for two-digit year zero&#x27;, () =&gt; {
+        const result = parse(&#x27;00&#x27;, &#x27;YY&#x27;, referenceDate, {
+          useAdditionalWeekYearTokens: true,
+        })
+        assert.deepStrictEqual(result, new Date(1999, 11 /* Dec */, 26))
+      })
+    })
+
+    describe(&#x27;quarter (formatting)&#x27;, () =&gt; {
+      it(&#x27;returns `Invalid Date` for invalid quarter&#x27;, () =&gt; {
+        const result = parse(&#x27;0&#x27;, &#x27;Q&#x27;, referenceDate)
+        assert(result instanceof Date &amp;&amp; isNaN(result.getTime()))
+      })
+    })
+
+    describe(&#x27;quarter (stand-alone)&#x27;, () =&gt; {
+      it(&#x27;returns `Invalid Date` for invalid quarter&#x27;, () =&gt; {
+        const result = parse(&#x27;5&#x27;, &#x27;q&#x27;, referenceDate)
+        assert(result instanceof Date &amp;&amp; isNaN(result.getTime()))
+      })
+    })
+
+    describe(&#x27;month (formatting)&#x27;, () =&gt; {
+      it(&#x27;returns `Invalid Date` for invalid month&#x27;, () =&gt; {
+        const result = parse(&#x27;00&#x27;, &#x27;MM&#x27;, referenceDate)
+        assert(result instanceof Date &amp;&amp; isNaN(result.getTime()))
+      })
+    })
+
+    describe(&#x27;month (stand-alone)&#x27;, () =&gt; {
+      it(&#x27;returns `Invalid Date` for invalid month&#x27;, () =&gt; {
+        const result = parse(&#x27;13&#x27;, &#x27;LL&#x27;, referenceDate)
+        assert(result instanceof Date &amp;&amp; isNaN(result.getTime()))
+      })
+    })
+
+    describe(&#x27;local week of year&#x27;, () =&gt; {
+      it(&#x27;returns `Invalid Date` for invalid week&#x27;, () =&gt; {
+        const result = parse(&#x27;0&#x27;, &#x27;w&#x27;, referenceDate)
+        assert(result instanceof Date &amp;&amp; isNaN(result.getTime()))
+      })
+    })
+
+    describe(&#x27;ISO week of year&#x27;, () =&gt; {
+      it(&#x27;returns `Invalid Date` for invalid week&#x27;, () =&gt; {
+        const result = parse(&#x27;54&#x27;, &#x27;II&#x27;, referenceDate)
+        assert(result instanceof Date &amp;&amp; isNaN(result.getTime()))
+      })
+    })
+
+    describe(&#x27;day of month&#x27;, () =&gt; {
+      it(&#x27;returns `Invalid Date` for invalid day of the month&#x27;, () =&gt; {
+        const result = parse(&#x27;30&#x27;, &#x27;d&#x27;, new Date(2012, 1 /* Feb */, 1))
+        assert(result instanceof Date &amp;&amp; isNaN(result.getTime()))
+      })
+
+      it(&#x27;returns `Invalid Date` for 29th of February of non-leap year&#x27;, () =&gt; {
+        const result = parse(&#x27;29&#x27;, &#x27;d&#x27;, new Date(2014, 1 /* Feb */, 1))
+        assert(result instanceof Date &amp;&amp; isNaN(result.getTime()))
+      })
+
+      it(&#x27;parses 29th of February of leap year&#x27;, () =&gt; {
+        const result = parse(&#x27;29&#x27;, &#x27;d&#x27;, new Date(2012, 1 /* Feb */, 1))
+        assert.deepStrictEqual(result, new Date(2012, 1 /* Feb */, 29))
+      })
+    })
+
+    describe(&#x27;day of year&#x27;, () =&gt; {
+      it(&#x27;returns `Invalid Date` for invalid day of the year&#x27;, () =&gt; {
+        const result = parse(&#x27;0&#x27;, &#x27;D&#x27;, referenceDate, {
+          useAdditionalDayOfYearTokens: true,
+        })
+        assert(result instanceof Date &amp;&amp; isNaN(result.getTime()))
+      })
+
+      it(&#x27;returns `Invalid Date` for 366th day of non-leap year&#x27;, () =&gt; {
+        const result = parse(&#x27;366&#x27;, &#x27;D&#x27;, new Date(2014, 1 /* Feb */, 1), {
+          useAdditionalDayOfYearTokens: true,
+        })
+        assert(result instanceof Date &amp;&amp; isNaN(result.getTime()))
+      })
+
+      it(&#x27;parses 366th day of leap year&#x27;, () =&gt; {
+        const result = parse(&#x27;366&#x27;, &#x27;D&#x27;, new Date(2012, 1 /* Feb */, 1), {
+          useAdditionalDayOfYearTokens: true,
+        })
+        assert.deepStrictEqual(result, new Date(2012, 11 /* Dec */, 31))
+      })
+    })
+
+    describe(&#x27;ISO day of week (formatting)&#x27;, () =&gt; {
+      it(&#x27;returns `Invalid Date` for day zero&#x27;, () =&gt; {
+        const result = parse(&#x27;0&#x27;, &#x27;i&#x27;, referenceDate)
+        assert(result instanceof Date &amp;&amp; isNaN(result.getTime()))
+      })
+
+      it(&#x27;returns `Invalid Date` for eight day of week&#x27;, () =&gt; {
+        const result = parse(&#x27;8&#x27;, &#x27;i&#x27;, referenceDate)
+        assert(result instanceof Date &amp;&amp; isNaN(result.getTime()))
+      })
+    })
+
+    describe(&#x27;local day of week (formatting)&#x27;, () =&gt; {
+      it(&#x27;returns `Invalid Date` for day zero&#x27;, () =&gt; {
+        const result = parse(&#x27;0&#x27;, &#x27;e&#x27;, referenceDate)
+        assert(result instanceof Date &amp;&amp; isNaN(result.getTime()))
+      })
+
+      it(&#x27;returns `Invalid Date` for eight day of week&#x27;, () =&gt; {
+        const result = parse(&#x27;8&#x27;, &#x27;e&#x27;, referenceDate)
+        assert(result instanceof Date &amp;&amp; isNaN(result.getTime()))
+      })
+    })
+
+    describe(&#x27;local day of week (stand-alone)&#x27;, () =&gt; {
+      it(&#x27;returns `Invalid Date` for day zero&#x27;, () =&gt; {
+        const result = parse(&#x27;0&#x27;, &#x27;c&#x27;, referenceDate)
+        assert(result instanceof Date &amp;&amp; isNaN(result.getTime()))
+      })
+
+      it(&#x27;returns `Invalid Date` for eight day of week&#x27;, () =&gt; {
+        const result = parse(&#x27;8&#x27;, &#x27;c&#x27;, referenceDate)
+        assert(result instanceof Date &amp;&amp; isNaN(result.getTime()))
+      })
+    })
+
+    describe(&#x27;hour [1-12]&#x27;, () =&gt; {
+      it(&#x27;returns `Invalid Date` for hour zero&#x27;, () =&gt; {
+        const result = parse(&#x27;00&#x27;, &#x27;hh&#x27;, referenceDate)
+        assert(result instanceof Date &amp;&amp; isNaN(result.getTime()))
+      })
+
+      it(&#x27;returns `Invalid Date` for invalid hour&#x27;, () =&gt; {
+        const result = parse(&#x27;13&#x27;, &#x27;hh&#x27;, referenceDate)
+        assert(result instanceof Date &amp;&amp; isNaN(result.getTime()))
+      })
+    })
+
+    describe(&#x27;hour [0-23]&#x27;, () =&gt; {
+      it(&#x27;returns `Invalid Date` for invalid hour&#x27;, () =&gt; {
+        const result = parse(&#x27;24&#x27;, &#x27;HH&#x27;, referenceDate)
+        assert(result instanceof Date &amp;&amp; isNaN(result.getTime()))
+      })
+    })
+
+    describe(&#x27;hour [0-11]&#x27;, () =&gt; {
+      it(&#x27;returns `Invalid Date` for invalid hour&#x27;, () =&gt; {
+        const result = parse(&#x27;12&#x27;, &#x27;KK&#x27;, referenceDate)
+        assert(result instanceof Date &amp;&amp; isNaN(result.getTime()))
+      })
+    })
+
+    describe(&#x27;hour [1-24]&#x27;, () =&gt; {
+      it(&#x27;returns `Invalid Date` for hour zero&#x27;, () =&gt; {
+        const result = parse(&#x27;00&#x27;, &#x27;kk&#x27;, referenceDate)
+        assert(result instanceof Date &amp;&amp; isNaN(result.getTime()))
+      })
+
+      it(&#x27;returns `Invalid Date` for invalid hour&#x27;, () =&gt; {
+        const result = parse(&#x27;25&#x27;, &#x27;kk&#x27;, referenceDate)
+        assert(result instanceof Date &amp;&amp; isNaN(result.getTime()))
+      })
+    })
+
+    describe(&#x27;minute&#x27;, () =&gt; {
+      it(&#x27;returns `Invalid Date` for invalid minute&#x27;, () =&gt; {
+        const result = parse(&#x27;60&#x27;, &#x27;mm&#x27;, referenceDate)
+        assert(result instanceof Date &amp;&amp; isNaN(result.getTime()))
+      })
+    })
+
+    describe(&#x27;second&#x27;, () =&gt; {
+      it(&#x27;returns `Invalid Date` for invalid second&#x27;, () =&gt; {
+        const result = parse(&#x27;60&#x27;, &#x27;ss&#x27;, referenceDate)
+        assert(result instanceof Date &amp;&amp; isNaN(result.getTime()))
+      })
+    })
+  })
+
+  describe(&#x27;custom locale&#x27;, () =&gt; {
+    it(&#x27;allows to pass a custom locale&#x27;, () =&gt; {
+      const customLocale = {
+        match: {
+          era: () =&gt; {
+            return {
+              value: 0,
+              rest: &#x27; it works!&#x27;,
+            }
+          },
+        },
+      }
+      const result = parse(&#x27;2018 foobar&#x27;, &quot;y G &#x27;it works!&#x27;&quot;, referenceDate, {
+        // @ts-expect-error
+        locale: customLocale,
+      })
+      assert.deepStrictEqual(result, new Date(-2017, 0 /* Jan */, 1))
+    })
+  })
+
+  it(&#x27;accepts a timestamp as `referenceDate`&#x27;, () =&gt; {
+    const dateString = &#x27;6 p.m.&#x27;
+    const formatString = &#x27;h aaaa&#x27;
+    const result = parse(dateString, formatString, referenceDate.getTime())
+    assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 18))
+  })
+
+  it(&#x27;does not mutate `referenceDate`&#x27;, () =&gt; {
+    const referenceDateClone1 = new Date(referenceDate.getTime())
+    const referenceDateClone2 = new Date(referenceDate.getTime())
+    const dateString = &#x27;6 p.m.&#x27;
+    const formatString = &#x27;h aaaa&#x27;
+    parse(dateString, formatString, referenceDateClone1)
+    assert.deepStrictEqual(referenceDateClone1, referenceDateClone2)
+  })
+
+  describe(&#x27;failure&#x27;, () =&gt; {
+    it(&#x27;returns `referenceDate` if `dateString` and `formatString` are empty strings&#x27;, () =&gt; {
+      const dateString = &#x27;&#x27;
+      const formatString = &#x27;&#x27;
+      const result = parse(dateString, formatString, referenceDate)
+      assert.deepStrictEqual(result, referenceDate)
+    })
+
+    it(&#x27;returns `referenceDate` if no tokens in `formatString` are provided&#x27;, () =&gt; {
+      const dateString = &#x27;not a token&#x27;
+      const formatString = &quot;&#x27;not a token&#x27;&quot;
+      const result = parse(dateString, formatString, referenceDate)
+      assert.deepStrictEqual(result, referenceDate)
+    })
+
+    it(&quot;returns `Invalid Date`  if `formatString` doesn&#x27;t match `dateString`&quot;, () =&gt; {
+      const dateString = &#x27;2017-01-01&#x27;
+      const formatString = &#x27;yyyy/MM/dd&#x27;
+      const result = parse(dateString, formatString, referenceDate)
+      assert(result instanceof Date &amp;&amp; isNaN(result.getTime()))
+    })
+
+    it(&#x27;returns `Invalid Date`  if `formatString` tokens failed to parse a value&#x27;, () =&gt; {
+      const dateString = &#x27;2017-01-01&#x27;
+      const formatString = &#x27;MMMM do yyyy&#x27;
+      const result = parse(dateString, formatString, referenceDate)
+      assert(result instanceof Date &amp;&amp; isNaN(result.getTime()))
+    })
+
+    it(&#x27;returns `Invalid Date` if `formatString` is empty string but `dateString` is not&#x27;, () =&gt; {
+      const dateString = &#x27;2017-01-01&#x27;
+      const formatString = &#x27;&#x27;
+      const result = parse(dateString, formatString, referenceDate)
+      assert(result instanceof Date &amp;&amp; isNaN(result.getTime()))
+    })
+
+    it(&#x27;returns `Invalid Date` if `referenceDate` is `Invalid Date`&#x27;, () =&gt; {
+      const dateString = &#x27;2014-07-02T05:30:15.123+06:00&#x27;
+      const formatString = &quot;yyyy-MM-dd&#x27;T&#x27;HH:mm:ss.SSSxxx&quot;
+      const result = parse(dateString, formatString, new Date(NaN))
+      assert(result instanceof Date &amp;&amp; isNaN(result.getTime()))
+    })
+  })
+
+  describe(&#x27;edge cases&#x27;, () =&gt; {
+    it(&#x27;returns Invalid Date if the string contains some remaining input after parsing&#x27;, () =&gt; {
+      const result = parse(&#x27;2016-11-05T040404&#x27;, &#x27;yyyy-MM-dd&#x27;, referenceDate)
+      assert(result instanceof Date &amp;&amp; isNaN(result.getTime()))
+    })
+
+    it(&#x27;parses normally if the remaining input is just whitespace&#x27;, () =&gt; {
+      const result = parse(&#x27;2016-11-05   \n&#x27;, &#x27;yyyy-MM-dd&#x27;, referenceDate)
+      assert.deepStrictEqual(result, new Date(2016, 10 /* Nov */, 5))
+    })
+
+    it(&#x27;throws RangeError exception if the format string contains an unescaped latin alphabet character&#x27;, () =&gt; {
+      assert.throws(
+        () =&gt; parse(&#x27;2016-11-05-nnnn&#x27;, &#x27;yyyy-MM-dd-nnnn&#x27;, referenceDate),
+        RangeError
+      )
+    })
+  })
+
+  describe(&#x27;useAdditionalWeekYearTokens and useAdditionalDayOfYearTokens options&#x27;, () =&gt; {
+    it(&#x27;throws an error if D token is used&#x27;, () =&gt; {
+      try {
+        parse(&#x27;2016 5&#x27;, &#x27;yyyy D&#x27;, referenceDate)
+      } catch (e) {
+        assert(e instanceof RangeError)
+        assert(e.message.startsWith(&#x27;Use `d` instead of `D`&#x27;))
+      }
+    })
+
+    it(&#x27;allows D token if useAdditionalDayOfYearTokens is set to true&#x27;, () =&gt; {
+      const result = parse(&#x27;2016 5&#x27;, &#x27;yyyy D&#x27;, referenceDate, {
+        useAdditionalDayOfYearTokens: true,
+      })
+      assert.deepStrictEqual(result, new Date(2016, 0, 5))
+    })
+
+    it(&#x27;throws an error if DD token is used&#x27;, () =&gt; {
+      try {
+        parse(&#x27;2016 05&#x27;, &#x27;yyyy DD&#x27;, referenceDate)
+      } catch (e) {
+        assert(e instanceof RangeError)
+        assert(e.message.startsWith(&#x27;Use `dd` instead of `DD`&#x27;))
+      }
+    })
+
+    it(&#x27;allows DD token if useAdditionalDayOfYearTokens is set to true&#x27;, () =&gt; {
+      const result = parse(&#x27;2016 05&#x27;, &#x27;yyyy DD&#x27;, referenceDate, {
+        useAdditionalDayOfYearTokens: true,
+      })
+      assert.deepStrictEqual(result, new Date(2016, 0, 5))
+    })
+
+    it(&#x27;throws an error if YY token is used&#x27;, () =&gt; {
+      try {
+        parse(&#x27;16 1&#x27;, &#x27;YY w&#x27;, referenceDate)
+      } catch (e) {
+        assert(e instanceof RangeError)
+        assert(e.message.startsWith(&#x27;Use `yy` instead of `YY`&#x27;))
+      }
+    })
+
+    it(&#x27;allows YY token if useAdditionalWeekYearTokens is set to true&#x27;, () =&gt; {
+      const result = parse(&#x27;16 1&#x27;, &#x27;YY w&#x27;, referenceDate, {
+        useAdditionalWeekYearTokens: true,
+      })
+      assert.deepStrictEqual(result, new Date(2015, 11, 27))
+    })
+
+    it(&#x27;throws an error if YYYY token is used&#x27;, () =&gt; {
+      try {
+        parse(&#x27;2016 1&#x27;, &#x27;YYYY w&#x27;, referenceDate)
+      } catch (e) {
+        assert(e instanceof RangeError)
+        assert(e.message.startsWith(&#x27;Use `yyyy` instead of `YYYY`&#x27;))
+      }
+    })
+
+    it(&#x27;allows YYYY token if useAdditionalWeekYearTokens is set to true&#x27;, () =&gt; {
+      const result = parse(&#x27;2016 1&#x27;, &#x27;YYYY w&#x27;, referenceDate, {
+        useAdditionalWeekYearTokens: true,
+      })
+      assert.deepStrictEqual(result, new Date(2015, 11, 27))
+    })
+  })
+
+  describe(&#x27;long format&#x27;, () =&gt; {
+    it(&#x27;short date&#x27;, () =&gt; {
+      const expected = new Date(1995, 4 /* May */, 26)
+      const dateString = &#x27;05/26/1995&#x27;
+      const formatString = &#x27;P&#x27;
+      const result = parse(dateString, formatString, referenceDate)
+      assert.deepStrictEqual(result, expected)
+    })
+
+    it(&#x27;medium date&#x27;, () =&gt; {
+      const expected = new Date(1995, 4 /* May */, 26)
+      const dateString = &#x27;May 26, 1995&#x27;
+      const formatString = &#x27;PP&#x27;
+      const result = parse(dateString, formatString, referenceDate)
+      assert.deepStrictEqual(result, expected)
+    })
+
+    it(&#x27;long date&#x27;, () =&gt; {
+      const expected = new Date(1995, 4 /* May */, 26)
+      const dateString = &#x27;May 26th, 1995&#x27;
+      const formatString = &#x27;PPP&#x27;
+      const result = parse(dateString, formatString, referenceDate)
+      assert.deepStrictEqual(result, expected)
+    })
+
+    it(&#x27;full date&#x27;, () =&gt; {
+      const expected = new Date(1995, 4 /* May */, 26)
+      const dateString = &#x27;Friday, May 26th, 1995&#x27;
+      const formatString = &#x27;PPPP&#x27;
+      const result = parse(dateString, formatString, referenceDate)
+      assert.deepStrictEqual(result, expected)
+    })
+
+    it(&#x27;short time&#x27;, () =&gt; {
+      const expected = new Date(
+        referenceDate.getFullYear(),
+        referenceDate.getMonth(),
+        referenceDate.getDate(),
+        10,
+        32
+      )
+      const timeString = &#x27;10:32 AM&#x27;
+      const formatString = &#x27;p&#x27;
+      const result = parse(timeString, formatString, referenceDate)
+      assert.deepStrictEqual(result, expected)
+    })
+
+    it(&#x27;medium time&#x27;, () =&gt; {
+      const expected = new Date(
+        referenceDate.getFullYear(),
+        referenceDate.getMonth(),
+        referenceDate.getDate(),
+        10,
+        32,
+        55
+      )
+      const timeString = &#x27;10:32:55 AM&#x27;
+      const formatString = &#x27;pp&#x27;
+      const result = parse(timeString, formatString, referenceDate)
+      assert.deepStrictEqual(result, expected)
+    })
+
+    it(&#x27;short date + short time&#x27;, () =&gt; {
+      const expected = new Date(1995, 4 /* May */, 26, 10, 32)
+      const dateTimeString = &#x27;05/26/1995, 10:32 AM&#x27;
+      const formatString = &#x27;Pp&#x27;
+      const result = parse(dateTimeString, formatString, referenceDate)
+      assert.deepStrictEqual(result, expected)
+    })
+
+    it(&#x27;medium date + short time&#x27;, () =&gt; {
+      const expected = new Date(1995, 4 /* May */, 26, 10, 32)
+      const dateTimeString = &#x27;May 26, 1995, 10:32 AM&#x27;
+      const formatString = &#x27;PPp&#x27;
+      const result = parse(dateTimeString, formatString, referenceDate)
+      assert.deepStrictEqual(result, expected)
+    })
+
+    it(&#x27;long date + short time&#x27;, () =&gt; {
+      const expected = new Date(1995, 4 /* May */, 26, 10, 32)
+      const dateTimeString = &#x27;May 26th, 1995 at 10:32 AM&#x27;
+      const formatString = &#x27;PPPp&#x27;
+      const result = parse(dateTimeString, formatString, referenceDate)
+      assert.deepStrictEqual(result, expected)
+    })
+
+    it(&#x27;full date + short time&#x27;, () =&gt; {
+      const expected = new Date(1995, 4 /* May */, 26, 10, 32)
+      const dateTimeString = &#x27;Friday, May 26th, 1995 at 10:32 AM&#x27;
+      const formatString = &#x27;PPPPp&#x27;
+      const result = parse(dateTimeString, formatString, referenceDate)
+      assert.deepStrictEqual(result, expected)
+    })
+
+    it(&#x27;short date + short time&#x27;, () =&gt; {
+      const expected = new Date(1995, 4 /* May */, 26, 10, 32, 55)
+      const dateTimeString = &#x27;05/26/1995, 10:32:55 AM&#x27;
+      const formatString = &#x27;Ppp&#x27;
+      const result = parse(dateTimeString, formatString, referenceDate)
+      assert.deepStrictEqual(result, expected)
+    })
+
+    it(&#x27;medium date + short time&#x27;, () =&gt; {
+      const expected = new Date(1995, 4 /* May */, 26, 10, 32, 55)
+      const dateTimeString = &#x27;May 26, 1995, 10:32:55 AM&#x27;
+      const formatString = &#x27;PPpp&#x27;
+      const result = parse(dateTimeString, formatString, referenceDate)
+      assert.deepStrictEqual(result, expected)
+    })
+
+    it(&#x27;long date + short time&#x27;, () =&gt; {
+      const expected = new Date(1995, 4 /* May */, 26, 10, 32, 55)
+      const dateTimeString = &#x27;May 26th, 1995 at 10:32:55 AM&#x27;
+      const formatString = &#x27;PPPpp&#x27;
+      const result = parse(dateTimeString, formatString, referenceDate)
+      assert.deepStrictEqual(result, expected)
+    })
+
+    it(&#x27;full date + short time&#x27;, () =&gt; {
+      const expected = new Date(1995, 4 /* May */, 26, 10, 32, 55)
+      const dateTimeString = &#x27;Friday, May 26th, 1995 at 10:32:55 AM&#x27;
+      const formatString = &#x27;PPPPpp&#x27;
+      const result = parse(dateTimeString, formatString, referenceDate)
+      assert.deepStrictEqual(result, expected)
+    })
+  })
+})
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:22 GMT</p>
+    </body>
+  </html>
+  

@@ -1,0 +1,127 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/parse/_lib/parsers/index.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">97</td><td class="">97</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import { Parser } from &#x27;../Parser&#x27;
+import { EraParser } from &#x27;./EraParser&#x27;
+import { YearParser } from &#x27;./YearParser&#x27;
+import { LocalWeekYearParser } from &#x27;./LocalWeekYearParser&#x27;
+import { ISOWeekYearParser } from &#x27;./ISOWeekYearParser&#x27;
+import { ExtendedYearParser } from &#x27;./ExtendedYearParser&#x27;
+import { QuarterParser } from &#x27;./QuarterParser&#x27;
+import { StandAloneQuarterParser } from &#x27;./StandAloneQuarterParser&#x27;
+import { MonthParser } from &#x27;./MonthParser&#x27;
+import { StandAloneMonthParser } from &#x27;./StandAloneMonthParser&#x27;
+import { LocalWeekParser } from &#x27;./LocalWeekParser&#x27;
+import { ISOWeekParser } from &#x27;./ISOWeekParser&#x27;
+import { DateParser } from &#x27;./DateParser&#x27;
+import { DayOfYearParser } from &#x27;./DayOfYearParser&#x27;
+import { DayParser } from &#x27;./DayParser&#x27;
+import { LocalDayParser } from &#x27;./LocalDayParser&#x27;
+import { StandAloneLocalDayParser } from &#x27;./StandAloneLocalDayParser&#x27;
+import { ISODayParser } from &#x27;./ISODayParser&#x27;
+import { AMPMParser } from &#x27;./AMPMParser&#x27;
+import { AMPMMidnightParser } from &#x27;./AMPMMidnightParser&#x27;
+import { DayPeriodParser } from &#x27;./DayPeriodParser&#x27;
+import { Hour1to12Parser } from &#x27;./Hour1to12Parser&#x27;
+import { Hour0to23Parser } from &#x27;./Hour0to23Parser&#x27;
+import { Hour0To11Parser } from &#x27;./Hour0To11Parser&#x27;
+import { Hour1To24Parser } from &#x27;./Hour1To24Parser&#x27;
+import { MinuteParser } from &#x27;./MinuteParser&#x27;
+import { SecondParser } from &#x27;./SecondParser&#x27;
+import { FractionOfSecondParser } from &#x27;./FractionOfSecondParser&#x27;
+import { ISOTimezoneWithZParser } from &#x27;./ISOTimezoneWithZParser&#x27;
+import { ISOTimezoneParser } from &#x27;./ISOTimezoneParser&#x27;
+import { TimestampSecondsParser } from &#x27;./TimestampSecondsParser&#x27;
+import { TimestampMillisecondsParser } from &#x27;./TimestampMillisecondsParser&#x27;
+
+/*
+ * |     | Unit                           |     | Unit                           |
+ * |-----|--------------------------------|-----|--------------------------------|
+ * |  a  | AM, PM                         |  A* | Milliseconds in day            |
+ * |  b  | AM, PM, noon, midnight         |  B  | Flexible day period            |
+ * |  c  | Stand-alone local day of week  |  C* | Localized hour w/ day period   |
+ * |  d  | Day of month                   |  D  | Day of year                    |
+ * |  e  | Local day of week              |  E  | Day of week                    |
+ * |  f  |                                |  F* | Day of week in month           |
+ * |  g* | Modified Julian day            |  G  | Era                            |
+ * |  h  | Hour [1-12]                    |  H  | Hour [0-23]                    |
+ * |  i! | ISO day of week                |  I! | ISO week of year               |
+ * |  j* | Localized hour w/ day period   |  J* | Localized hour w/o day period  |
+ * |  k  | Hour [1-24]                    |  K  | Hour [0-11]                    |
+ * |  l* | (deprecated)                   |  L  | Stand-alone month              |
+ * |  m  | Minute                         |  M  | Month                          |
+ * |  n  |                                |  N  |                                |
+ * |  o! | Ordinal number modifier        |  O* | Timezone (GMT)                 |
+ * |  p  |                                |  P  |                                |
+ * |  q  | Stand-alone quarter            |  Q  | Quarter                        |
+ * |  r* | Related Gregorian year         |  R! | ISO week-numbering year        |
+ * |  s  | Second                         |  S  | Fraction of second             |
+ * |  t! | Seconds timestamp              |  T! | Milliseconds timestamp         |
+ * |  u  | Extended year                  |  U* | Cyclic year                    |
+ * |  v* | Timezone (generic non-locat.)  |  V* | Timezone (location)            |
+ * |  w  | Local week of year             |  W* | Week of month                  |
+ * |  x  | Timezone (ISO-8601 w/o Z)      |  X  | Timezone (ISO-8601)            |
+ * |  y  | Year (abs)                     |  Y  | Local week-numbering year      |
+ * |  z* | Timezone (specific non-locat.) |  Z* | Timezone (aliases)             |
+ *
+ * Letters marked by * are not implemented but reserved by Unicode standard.
+ *
+ * Letters marked by ! are non-standard, but implemented by date-fns:
+ * - `o` modifies the previous token to turn it into an ordinal (see `parse` docs)
+ * - `i` is ISO day of week. For `i` and `ii` is returns numeric ISO week days,
+ *   i.e. 7 for Sunday, 1 for Monday, etc.
+ * - `I` is ISO week of year, as opposed to `w` which is local week of year.
+ * - `R` is ISO week-numbering year, as opposed to `Y` which is local week-numbering year.
+ *   `R` is supposed to be used in conjunction with `I` and `i`
+ *   for universal ISO week-numbering date, whereas
+ *   `Y` is supposed to be used in conjunction with `w` and `e`
+ *   for week-numbering date specific to the locale.
+ */
+export const parsers: Record&lt;string, Parser&lt;any&gt;&gt; = {
+  G: new EraParser(),
+  y: new YearParser(),
+  Y: new LocalWeekYearParser(),
+  R: new ISOWeekYearParser(),
+  u: new ExtendedYearParser(),
+  Q: new QuarterParser(),
+  q: new StandAloneQuarterParser(),
+  M: new MonthParser(),
+  L: new StandAloneMonthParser(),
+  w: new LocalWeekParser(),
+  I: new ISOWeekParser(),
+  d: new DateParser(),
+  D: new DayOfYearParser(),
+  E: new DayParser(),
+  e: new LocalDayParser(),
+  c: new StandAloneLocalDayParser(),
+  i: new ISODayParser(),
+  a: new AMPMParser(),
+  b: new AMPMMidnightParser(),
+  B: new DayPeriodParser(),
+  h: new Hour1to12Parser(),
+  H: new Hour0to23Parser(),
+  K: new Hour0To11Parser(),
+  k: new Hour1To24Parser(),
+  m: new MinuteParser(),
+  s: new SecondParser(),
+  S: new FractionOfSecondParser(),
+  X: new ISOTimezoneWithZParser(),
+  x: new ISOTimezoneParser(),
+  t: new TimestampSecondsParser(),
+  T: new TimestampMillisecondsParser(),
+}
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:17 GMT</p>
+    </body>
+  </html>
+  

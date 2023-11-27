@@ -48,4 +48,14 @@ describe('max', () => {
     const result = max([])
     assert(isInvalidDate(result))
   })
+  /*TUKE new Test*/
+  it('accepts array with more than 2 entries with UTC date', () => {
+    const result = max([
+      new Date(2023, 1, 11),
+      new Date(2023, 1, 10),
+      new Date(2023, 1, 2),
+      new Date(2023, 1, 1),
+    ])
+    assert.deepStrictEqual(result, new Date(2023, 1, 11))
+  })
 })

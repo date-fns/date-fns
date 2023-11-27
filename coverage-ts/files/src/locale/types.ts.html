@@ -1,0 +1,385 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>types.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/types.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">172</td><td class="">172</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">/* eslint-disable no-unused-vars */
+
+import type {
+  Day,
+  Era,
+  FirstWeekContainsDateOptions,
+  LocalizedOptions,
+  Month,
+  Quarter,
+  WeekOptions,
+} from &#x27;../types&#x27;
+
+/**
+ * The locale object with all functions and data needed to parse and format
+ * dates. This is what each locale implements and exports.
+ */
+export interface Locale {
+  /** The locale code (ISO 639-1 + optional country code) */
+  code: string
+  /** The function to format distance */
+  formatDistance: FormatDistanceFn
+  /** The function to relative time */
+  formatRelative: FormatRelativeFn
+  /** The object with functions used to localize various values */
+  localize: Localize
+  /** The object with functions that return localized formats */
+  formatLong: FormatLong
+  /** The object with functions used to match and parse various localized values */
+  match: Match
+  /** An object with locale options */
+  options?: LocaleOptions
+}
+
+/**
+ * The locale options.
+ */
+export interface LocaleOptions
+  extends WeekOptions,
+    FirstWeekContainsDateOptions {}
+
+/// Format distance types
+
+/**
+ * The function that takes a token (i.e. halfAMinute) passed by `formatDistance`
+ * or `formatDistanceStrict` and payload, and returns localized distance.
+ *
+ * @param token - The token to localize
+ * @param count - The distance number
+ * @param options - The object with options
+ *
+ * @returns The localized distance in words
+ */
+export type FormatDistanceFn = (
+  token: FormatDistanceToken,
+  count: number,
+  options?: FormatDistanceFnOptions
+) =&gt; string
+
+/**
+ * The {@link FormatDistanceFn} function options.
+ */
+export interface FormatDistanceFnOptions {
+  /** Add &quot;X ago&quot;/&quot;in X&quot; in the locale language */
+  addSuffix?: boolean
+  /** The distance vector. -1 represents past and 1 future. Tells which suffix
+   * to use. */
+  comparison?: -1 | 0 | 1
+}
+
+/**
+ * The function used inside the {@link FormatDistanceFn} function, implementing
+ * formatting for a particular token.
+ */
+export type FormatDistanceTokenFn = (
+  /** The distance as number to format */
+  count: number,
+  /** The object with options */
+  options?: FormatDistanceFnOptions
+) =&gt; string
+
+/**
+ * The tokens map to string templates used in the format distance function.
+ * It looks like this:
+ *
+ *   const formatDistanceLocale: FormatDistanceLocale&lt;FormatDistanceTokenValue&gt; = {
+ *     lessThanXSeconds: &#x27;តិចជាង {{count}} វិនាទី&#x27;,
+ *     xSeconds: &#x27;{{count}} វិនាទី&#x27;,
+ *     // ...
+ *   }
+ */
+export type FormatDistanceLocale&lt;Template&gt; = {
+  [Token in FormatDistanceToken]: Template
+}
+
+/**
+ * The token used in the format distance function. Represents the distance unit
+ * with prespecified precision.
+ */
+export type FormatDistanceToken =
+  | &#x27;lessThanXSeconds&#x27;
+  | &#x27;xSeconds&#x27;
+  | &#x27;halfAMinute&#x27;
+  | &#x27;lessThanXMinutes&#x27;
+  | &#x27;xMinutes&#x27;
+  | &#x27;aboutXHours&#x27;
+  | &#x27;xHours&#x27;
+  | &#x27;xDays&#x27;
+  | &#x27;aboutXWeeks&#x27;
+  | &#x27;xWeeks&#x27;
+  | &#x27;aboutXMonths&#x27;
+  | &#x27;xMonths&#x27;
+  | &#x27;aboutXYears&#x27;
+  | &#x27;xYears&#x27;
+  | &#x27;overXYears&#x27;
+  | &#x27;almostXYears&#x27;
+
+/// Format relative types
+
+/**
+ * The locale function that does the work for the `formatRelative` function.
+ *
+ * @param token - The token to localize
+ * @param date - The date to format
+ * @param baseDate - The date to compare with
+ * @param options - The object with options
+ *
+ * @returns The localized relative date format
+ */
+export type FormatRelativeFn = &lt;DateType extends Date&gt;(
+  token: FormatRelativeToken,
+  date: DateType,
+  baseDate: DateType,
+  options?: FormatRelativeFnOptions
+) =&gt; string
+
+/**
+ * The {@link FormatRelativeFn} function options.
+ */
+export interface FormatRelativeFnOptions
+  extends WeekOptions,
+    LocalizedOptions&lt;&#x27;options&#x27; | &#x27;formatRelative&#x27;&gt; {}
+
+/**
+ * The locale function used inside the {@link FormatRelativeFn} function
+ * implementing formatting for a particular token.
+ *
+ * @param date - The date to format
+ * @param baseDate - The date to compare with
+ * @param options - The object with options
+ */
+export type FormatRelativeTokenFn = &lt;DateType extends Date&gt;(
+  date: DateType | number,
+  baseDate: DateType | number,
+  options?: FormatRelativeTokenFnOptions
+) =&gt; string
+
+/**
+ * The {@link FormatRelativeTokenFn} function options.
+ */
+export interface FormatRelativeTokenFnOptions extends WeekOptions {}
+
+/**
+ * The token used in format relative function. Represents the time unit.
+ */
+export type FormatRelativeToken =
+  | &#x27;lastWeek&#x27;
+  | &#x27;yesterday&#x27;
+  | &#x27;today&#x27;
+  | &#x27;tomorrow&#x27;
+  | &#x27;nextWeek&#x27;
+  | &#x27;other&#x27;
+
+/// Localize types
+
+/**
+ * The object with functions used to localize various values. Part of the public
+ * locale API.
+ */
+export interface Localize {
+  /** The function that localizes an ordinal number */
+  ordinalNumber: LocalizeFn&lt;number&gt;
+  /** The function that localized the era */
+  era: LocalizeFn&lt;Era&gt;
+  /** The function that localizes the quarter */
+  quarter: LocalizeFn&lt;Quarter&gt;
+  /** The function that localizes the month */
+  month: LocalizeFn&lt;Month&gt;
+  /** The function that localizes the day of the week */
+  day: LocalizeFn&lt;Day&gt;
+  /** The function that localizes the day period */
+  dayPeriod: LocalizeFn&lt;LocaleDayPeriod&gt;
+}
+
+/**
+ * Individual localize function. Part of {@link Localize}.
+ *
+ * @param value - The value to localize
+ * @param options - The object with options
+ *
+ * @returns The localized string
+ */
+export type LocalizeFn&lt;Value extends LocaleUnitValue | number&gt; = (
+  value: Value,
+  options?: LocalizeFnOptions
+) =&gt; string
+
+/**
+ * The {@link LocalizeFn} function options.
+ */
+export interface LocalizeFnOptions {
+  /** The width to use formatting the value, defines how short or long
+   * the formatted string might be. */
+  width?: LocaleWidth
+  /** The context where the formatted value is used - standalone: the result
+   * should make grammatical sense as is and formatting: the result is a part
+   * of the formatted string. See: https://date-fns.org/docs/I18n-Contribution-Guide */
+  context?: &#x27;formatting&#x27; | &#x27;standalone&#x27;
+  /** The unit to format */
+  unit?: LocaleUnit
+}
+
+/// Match types
+
+/**
+ * The object with functions used to match and parse various localized values.
+ */
+export interface Match {
+  /** The function that parses a localized ordinal number. */
+  ordinalNumber: MatchFn&lt;number, { unit: LocaleUnit }&gt;
+  /** The function that parses a localized era. */
+  era: MatchFn&lt;Era&gt;
+  /** The function that parses a localized quarter. */
+  quarter: MatchFn&lt;Quarter&gt;
+  /** The function that parses a localized month. */
+  month: MatchFn&lt;Month&gt;
+  /** The function that parses a localized day of the week. */
+  day: MatchFn&lt;Day&gt;
+  /** The function that parses a localized time of the day. */
+  dayPeriod: MatchFn&lt;LocaleDayPeriod&gt;
+}
+
+/**
+ * The match function. Part of {@link Match}. Implements matcher for particular
+ * unit type.
+ *
+ * @param str - The string to match
+ * @param options - The object with options
+ *
+ * @returns The match result or null if match failed
+ */
+export type MatchFn&lt;Result, ExtraOptions = Record&lt;string, unknown&gt;&gt; = (
+  str: string,
+  options?: MatchFnOptions&lt;Result&gt; &amp; ExtraOptions
+) =&gt; MatchFnResult&lt;Result&gt; | null
+
+/**
+ * The {@link MatchFn} function options.
+ */
+export interface MatchFnOptions&lt;Result&gt; {
+  /** The width to use matching the value, defines how short or long
+   * the matched string might be. */
+  width?: LocaleWidth
+  /**
+   * @deprecated Map the value manually instead.
+   * @example
+   * const matchResult = locale.match.ordinalNumber(&#x27;1st&#x27;)
+   * if (matchResult) {
+   *   matchResult.value = valueCallback(matchResult.value)
+   * }
+   */
+  valueCallback?: MatchValueCallback&lt;string, Result&gt;
+}
+
+/**
+ * The function that allows to map the matched value to the actual type.
+ */
+export type MatchValueCallback&lt;Arg, Result&gt; = (value: Arg) =&gt; Result
+
+/**
+ * The {@link MatchFn} function result.
+ */
+export interface MatchFnResult&lt;Result&gt; {
+  /** The matched value parsed as the corresponding unit type */
+  value: Result
+  /** The remaining string after parsing */
+  rest: string
+}
+
+/// Format long types
+
+/**
+ * The object with functions that return localized formats. Long stands for
+ * sequence of tokens (i.e. PPpp) that allows to define how format both date
+ * and time at once. Part of the public locale API.
+ */
+export interface FormatLong {
+  /** The function that returns a localized long date format */
+  date: FormatLongFn
+  /** The function that returns a localized long time format */
+  time: FormatLongFn
+  /** The function that returns a localized format of date and time combined */
+  dateTime: FormatLongFn
+}
+
+/**
+ * The format long function. Formats date, time or both.
+ *
+ * @param options - The object with options
+ *
+ * @returns The localized string
+ */
+export type FormatLongFn = (options: FormatLongFnOptions) =&gt; string
+
+/**
+ * The {@link FormatLongFn} function options.
+ */
+export interface FormatLongFnOptions {
+  /** Format width to set */
+  width?: FormatLongWidth
+}
+
+/**
+ * The format long width token, defines how short or long the formnatted value
+ * might be. The actual result length is defined by the locale.
+ */
+export type FormatLongWidth = &#x27;full&#x27; | &#x27;long&#x27; | &#x27;medium&#x27; | &#x27;short&#x27; | &#x27;any&#x27;
+
+/// Common types
+
+/**
+ * The formatting unit value, represents the raw value that can be formatted.
+ */
+export type LocaleUnitValue = Era | Quarter | Month | Day | LocaleDayPeriod
+
+/**
+ * The format width. Defines how short or long the formatted string might be.
+ * The actaul result length depends on the locale.
+ */
+export type LocaleWidth = &#x27;narrow&#x27; | &#x27;short&#x27; | &#x27;abbreviated&#x27; | &#x27;wide&#x27; | &#x27;any&#x27;
+
+/**
+ * Token representing particular period of the day.
+ */
+export type LocaleDayPeriod =
+  | &#x27;am&#x27;
+  | &#x27;pm&#x27;
+  | &#x27;midnight&#x27;
+  | &#x27;noon&#x27;
+  | &#x27;morning&#x27;
+  | &#x27;afternoon&#x27;
+  | &#x27;evening&#x27;
+  | &#x27;night&#x27;
+
+/**
+ * The units commonly used in the date formatting or parsing.
+ */
+export type LocaleUnit =
+  | &#x27;second&#x27;
+  | &#x27;minute&#x27;
+  | &#x27;hour&#x27;
+  | &#x27;day&#x27;
+  | &#x27;dayOfYear&#x27;
+  | &#x27;date&#x27;
+  | &#x27;week&#x27;
+  | &#x27;month&#x27;
+  | &#x27;quarter&#x27;
+  | &#x27;year&#x27;
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:15 GMT</p>
+    </body>
+  </html>
+  

@@ -1,0 +1,236 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/formatDistance/index.ts</td><td class="">95.31%</td><td class="">80%</td><td class="">192</td><td class="">183</td><td class="">9</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import compareAsc from &#x27;../compareAsc/index&#x27;
+import { minutesInDay, minutesInMonth } from &#x27;../constants/index&#x27;
+import differenceInMonths from &#x27;../differenceInMonths/index&#x27;
+import differenceInSeconds from &#x27;../differenceInSeconds/index&#x27;
+import toDate from &#x27;../toDate/index&#x27;
+import type { LocalizedOptions } from &#x27;../types&#x27;
+import defaultLocale from &#x27;../_lib/defaultLocale/index&#x27;
+import { getDefaultOptions } from &#x27;../_lib/defaultOptions/index&#x27;
+import getTimezoneOffsetInMilliseconds from &#x27;../_lib/getTimezoneOffsetInMilliseconds/index&#x27;
+
+/**
+ * The {@link formatDistance} function options.
+ */
+export interface FormatDistanceOptions
+  extends LocalizedOptions&lt;&#x27;formatDistance&#x27;&gt; {
+  /** Distances less than a minute are more detailed */
+  includeSeconds?: boolean
+  /** Add &quot;X ago&quot;/&quot;in X&quot; in the locale language */
+  addSuffix?: boolean
+}
+
+/**
+ * @name formatDistance
+ * @category Common Helpers
+ * @summary Return the distance between the given dates in words.
+ *
+ * @description
+ * Return the distance between the given dates in words.
+ *
+ * | Distance between dates                                            | Result              |
+ * |-------------------------------------------------------------------|---------------------|
+ * | 0 ... 30 secs                                                     | less than a minute  |
+ * | 30 secs ... 1 min 30 secs                                         | 1 minute            |
+ * | 1 min 30 secs ... 44 mins 30 secs                                 | [2..44] minutes     |
+ * | 44 mins ... 30 secs ... 89 mins 30 secs                           | about 1 hour        |
+ * | 89 mins 30 secs ... 23 hrs 59 mins 30 secs                        | about [2..24] hours |
+ * | 23 hrs 59 mins 30 secs ... 41 hrs 59 mins 30 secs                 | 1 day               |
+ * | 41 hrs 59 mins 30 secs ... 29 days 23 hrs 59 mins 30 secs         | [2..30] days        |
+ * | 29 days 23 hrs 59 mins 30 secs ... 44 days 23 hrs 59 mins 30 secs | about 1 month       |
+ * | 44 days 23 hrs 59 mins 30 secs ... 59 days 23 hrs 59 mins 30 secs | about 2 months      |
+ * | 59 days 23 hrs 59 mins 30 secs ... 1 yr                           | [2..12] months      |
+ * | 1 yr ... 1 yr 3 months                                            | about 1 year        |
+ * | 1 yr 3 months ... 1 yr 9 month s                                  | over 1 year         |
+ * | 1 yr 9 months ... 2 yrs                                           | almost 2 years      |
+ * | N yrs ... N yrs 3 months                                          | about N years       |
+ * | N yrs 3 months ... N yrs 9 months                                 | over N years        |
+ * | N yrs 9 months ... N+1 yrs                                        | almost N+1 years    |
+ *
+ * With `options.includeSeconds == true`:
+ * | Distance between dates | Result               |
+ * |------------------------|----------------------|
+ * | 0 secs ... 5 secs      | less than 5 seconds  |
+ * | 5 secs ... 10 secs     | less than 10 seconds |
+ * | 10 secs ... 20 secs    | less than 20 seconds |
+ * | 20 secs ... 40 secs    | half a minute        |
+ * | 40 secs ... 60 secs    | less than a minute   |
+ * | 60 secs ... 90 secs    | 1 minute             |
+ *
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date
+ * @param baseDate - The date to compare with
+ * @param options - An object with options
+ *
+ * @returns The distance in words
+ *
+ * @throws {RangeError} `date` must not be Invalid Date
+ * @throws {RangeError} `baseDate` must not be Invalid Date
+ * @throws {RangeError} `options.locale` must contain `formatDistance` property
+ *
+ * @example
+ * // What is the distance between 2 July 2014 and 1 January 2015?
+ * const result = formatDistance(new Date(2014, 6, 2), new Date(2015, 0, 1))
+ * //=&gt; &#x27;6 months&#x27;
+ *
+ * @example
+ * // What is the distance between 1 January 2015 00:00:15
+ * // and 1 January 2015 00:00:00, including seconds?
+ * const result = formatDistance(
+ *   new Date(2015, 0, 1, 0, 0, 15),
+ *   new Date(2015, 0, 1, 0, 0, 0),
+ *   { includeSeconds: true }
+ * )
+ * //=&gt; &#x27;less than 20 seconds&#x27;
+ *
+ * @example
+ * // What is the distance from 1 January 2016
+ * // to 1 January 2015, with a suffix?
+ * const result = formatDistance(new Date(2015, 0, 1), new Date(2016, 0, 1), {
+ *   addSuffix: true
+ * })
+ * //=&gt; &#x27;about 1 year ago&#x27;
+ *
+ * @example
+ * // What is the distance between 1 August 2016 and 1 January 2015 in Esperanto?
+ * import { eoLocale } from &#x27;date-fns/locale/eo&#x27;
+ * const result = formatDistance(new Date(2016, 7, 1), new Date(2015, 0, 1), {
+ *   locale: eoLocale
+ * })
+ * //=&gt; &#x27;pli ol 1 jaro&#x27;
+ */
+
+export default function formatDistance&lt;DateType extends Date&gt;(
+  date: DateType | number,
+  baseDate: DateType | number,
+  options?: FormatDistanceOptions
+): string {
+  const defaultOptions = getDefaultOptions()
+  const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale
+  const minutesInAlmostTwoDays = 2520
+
+  const comparison = compareAsc(date, baseDate)
+
+  if (isNaN(comparison)) {
+    throw new RangeError(&#x27;Invalid time value&#x27;)
+  }
+
+  const localizeOptions = Object.assign({}, options, {
+    addSuffix: options?.addSuffix,
+    comparison: comparison as -1 | 0 | 1,
+  })
+
+  let dateLeft
+  let dateRight
+  if (comparison &gt; 0) {
+    dateLeft = toDate(baseDate)
+    dateRight = toDate(date)
+  } else {
+    dateLeft = toDate(date)
+    dateRight = toDate(baseDate)
+  }
+
+  const seconds = differenceInSeconds(dateRight, dateLeft)
+  const offsetInSeconds =
+    (getTimezoneOffsetInMilliseconds(dateRight) -
+      getTimezoneOffsetInMilliseconds(dateLeft)) /
+    1000
+  const minutes = Math.round((seconds - offsetInSeconds) / 60)
+  let months
+
+  // 0 up to 2 mins
+  if (minutes &lt; 2) {
+    if (options?.includeSeconds) {
+      if (seconds &lt; 5) {
+        return locale.formatDistance(&#x27;lessThanXSeconds&#x27;, 5, localizeOptions)
+      } else if (seconds &lt; 10) {
+        return locale.formatDistance(&#x27;lessThanXSeconds&#x27;, 10, localizeOptions)
+      } else if (seconds &lt; 20) {
+        return locale.formatDistance(&#x27;lessThanXSeconds&#x27;, 20, localizeOptions)
+      } else if (seconds &lt; 40) {
+        return locale.formatDistance(&#x27;halfAMinute&#x27;, 0, localizeOptions)
+      } else if (seconds &lt; 60) {
+        return locale.formatDistance(&#x27;lessThanXMinutes&#x27;, 1, localizeOptions)
+      } else {
+        return locale.formatDistance(&#x27;xMinutes&#x27;, 1, localizeOptions)
+      }
+    } else {
+      if (minutes === 0) {
+        return locale.formatDistance(&#x27;lessThanXMinutes&#x27;, 1, localizeOptions)
+      } else {
+        return locale.formatDistance(&#x27;xMinutes&#x27;, minutes, localizeOptions)
+      }
+    }
+
+    // 2 mins up to 0.75 hrs
+  } else if (minutes &lt; 45) {
+    return locale.formatDistance(&#x27;xMinutes&#x27;, minutes, localizeOptions)
+
+    // 0.75 hrs up to 1.5 hrs
+  } else if (minutes &lt; 90) {
+    return locale.formatDistance(&#x27;aboutXHours&#x27;, 1, localizeOptions)
+
+    // 1.5 hrs up to 24 hrs
+  } else if (minutes &lt; minutesInDay) {
+    const hours = Math.round(minutes / 60)
+    return locale.formatDistance(&#x27;aboutXHours&#x27;, hours, localizeOptions)
+
+    // 1 day up to 1.75 days
+  } else if (minutes &lt; minutesInAlmostTwoDays) {
+    return locale.formatDistance(&#x27;xDays&#x27;, 1, localizeOptions)
+
+    // 1.75 days up to 30 days
+  } else if (minutes &lt; minutesInMonth) {
+    const days = Math.round(minutes / minutesInDay)
+    return locale.formatDistance(&#x27;xDays&#x27;, days, localizeOptions)
+
+    // 1 month up to 2 months
+  } else if (minutes &lt; minutesInMonth * 2) {
+    months = Math.round(minutes / minutesInMonth)
+    return locale.formatDistance(&#x27;aboutXMonths&#x27;, months, localizeOptions)
+  }
+
+  months = differenceInMonths(dateRight, dateLeft)
+
+  // 2 months up to 12 months
+  if (months &lt; 12) {
+    const nearestMonth = Math.round(minutes / minutesInMonth)
+    return locale.formatDistance(&#x27;xMonths&#x27;, nearestMonth, localizeOptions)
+
+    // 1 year up to max Date
+  } else {
+    const monthsSinceStartOfYear = months % 12
+    const years = Math.floor(months / 12)
+
+    // N years up to 1 years 3 months
+    if (monthsSinceStartOfYear &lt; 3) {
+      return locale.formatDistance(&#x27;aboutXYears&#x27;, years, localizeOptions)
+
+      // N years 3 months up to N years 9 months
+    } else if (monthsSinceStartOfYear &lt; 9) {
+      return locale.formatDistance(&#x27;overXYears&#x27;, years, localizeOptions)
+
+      // N years 9 months up to N year 12 months
+    } else {
+      return locale.formatDistance(&#x27;almostXYears&#x27;, years + 1, localizeOptions)
+    }
+  }
+}
+</textarea><pre id="annotations" style="display:none">[{&quot;file&quot;:&quot;src/formatDistance/index.ts&quot;,&quot;line&quot;:122,&quot;character&quot;:6,&quot;text&quot;:&quot;dateLeft&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/formatDistance/index.ts&quot;,&quot;line&quot;:123,&quot;character&quot;:6,&quot;text&quot;:&quot;dateRight&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/formatDistance/index.ts&quot;,&quot;line&quot;:125,&quot;character&quot;:4,&quot;text&quot;:&quot;dateLeft&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/formatDistance/index.ts&quot;,&quot;line&quot;:126,&quot;character&quot;:4,&quot;text&quot;:&quot;dateRight&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/formatDistance/index.ts&quot;,&quot;line&quot;:128,&quot;character&quot;:4,&quot;text&quot;:&quot;dateLeft&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/formatDistance/index.ts&quot;,&quot;line&quot;:129,&quot;character&quot;:4,&quot;text&quot;:&quot;dateRight&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/formatDistance/index.ts&quot;,&quot;line&quot;:138,&quot;character&quot;:6,&quot;text&quot;:&quot;months&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/formatDistance/index.ts&quot;,&quot;line&quot;:188,&quot;character&quot;:4,&quot;text&quot;:&quot;months&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/formatDistance/index.ts&quot;,&quot;line&quot;:192,&quot;character&quot;:2,&quot;text&quot;:&quot;months&quot;,&quot;kind&quot;:1}]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:17 GMT</p>
+    </body>
+  </html>
+  

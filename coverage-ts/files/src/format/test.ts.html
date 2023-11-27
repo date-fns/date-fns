@@ -1,0 +1,846 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>test.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/format/test.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">944</td><td class="">944</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">/* eslint-env mocha */
+
+import assert from &#x27;assert&#x27;
+import { describe, it } from &#x27;vitest&#x27;
+import sinon from &#x27;sinon&#x27;
+import format from &#x27;./index&#x27;
+
+describe(&#x27;format&#x27;, () =&gt; {
+  const date = new Date(1986, 3 /* Apr */, 4, 10, 32, 55, 123)
+
+  const offset = date.getTimezoneOffset()
+  const absoluteOffset = Math.abs(offset)
+  const hours = Math.floor(absoluteOffset / 60)
+  const hoursLeadingZero = hours &lt; 10 ? &#x27;0&#x27; : &#x27;&#x27;
+  const minutes = absoluteOffset % 60
+  const minutesLeadingZero = minutes &lt; 10 ? &#x27;0&#x27; : &#x27;&#x27;
+  const sign = offset &gt; 0 ? &#x27;-&#x27; : &#x27;+&#x27;
+
+  const timezone =
+    sign + hoursLeadingZero + hours + &#x27;:&#x27; + minutesLeadingZero + minutes
+  const timezoneShort = timezone.replace(&#x27;:&#x27;, &#x27;&#x27;)
+  const timezoneWithOptionalMinutesShort =
+    minutes === 0 ? sign + hoursLeadingZero + hours : timezoneShort
+
+  const timezoneWithZ = offset === 0 ? &#x27;Z&#x27; : timezone
+  const timezoneWithZShort = offset === 0 ? &#x27;Z&#x27; : timezoneShort
+  const timezoneWithOptionalMinutesAndZShort =
+    offset === 0 ? &#x27;Z&#x27; : timezoneWithOptionalMinutesShort
+
+  const timezoneGMTShort =
+    minutes === 0
+      ? &#x27;GMT&#x27; + sign + hours
+      : &#x27;GMT&#x27; + sign + hours + &#x27;:&#x27; + minutesLeadingZero + minutes
+  const timezoneGMT = &#x27;GMT&#x27; + timezone
+
+  const timestamp = date.getTime().toString()
+  const secondsTimestamp = Math.floor(date.getTime() / 1000).toString()
+
+  it(&#x27;accepts a timestamp&#x27;, () =&gt; {
+    const date = new Date(2014, 3, 4).getTime()
+    assert(format(date, &#x27;yyyy-MM-dd&#x27;) === &#x27;2014-04-04&#x27;)
+  })
+
+  it(&#x27;escapes characters between the single quote characters&#x27;, () =&gt; {
+    const result = format(date, &quot;&#x27;yyyy-&#x27;MM-dd&#x27;THH:mm:ss.SSSX&#x27; yyyy-&#x27;MM-dd&#x27;&quot;)
+    assert(result === &#x27;yyyy-04-04THH:mm:ss.SSSX 1986-MM-dd&#x27;)
+  })
+
+  it(&#x27;two single quote characters are transformed into a &quot;real&quot; single quote&#x27;, () =&gt; {
+    const date = new Date(2014, 3, 4, 5)
+    assert(format(date, &quot;&#x27;&#x27;h &#x27;o&#x27;&#x27;clock&#x27;&#x27;&#x27;&quot;) === &quot;&#x27;5 o&#x27;clock&#x27;&quot;)
+  })
+
+  it(&#x27;accepts new line charactor&#x27;, () =&gt; {
+    const date = new Date(2014, 3, 4, 5)
+    assert.strictEqual(
+      format(date, &quot;yyyy-MM-dd&#x27;\n&#x27;HH:mm:ss&quot;),
+      &#x27;2014-04-04\n05:00:00&#x27;
+    )
+  })
+
+  describe(&#x27;ordinal numbers&#x27;, () =&gt; {
+    it(&#x27;ordinal day of an ordinal month&#x27;, () =&gt; {
+      const result = format(date, &quot;do &#x27;day of the&#x27; Mo &#x27;month of&#x27; yyyy&quot;)
+      assert(result === &#x27;4th day of the 4th month of 1986&#x27;)
+    })
+
+    it(&#x27;should return a correct ordinal number&#x27;, () =&gt; {
+      const result = []
+      for (let i = 1; i &lt;= 31; i++) {
+        result.push(format(new Date(2015, 0, i), &#x27;do&#x27;))
+      }
+      const expected = [
+        &#x27;1st&#x27;,
+        &#x27;2nd&#x27;,
+        &#x27;3rd&#x27;,
+        &#x27;4th&#x27;,
+        &#x27;5th&#x27;,
+        &#x27;6th&#x27;,
+        &#x27;7th&#x27;,
+        &#x27;8th&#x27;,
+        &#x27;9th&#x27;,
+        &#x27;10th&#x27;,
+        &#x27;11th&#x27;,
+        &#x27;12th&#x27;,
+        &#x27;13th&#x27;,
+        &#x27;14th&#x27;,
+        &#x27;15th&#x27;,
+        &#x27;16th&#x27;,
+        &#x27;17th&#x27;,
+        &#x27;18th&#x27;,
+        &#x27;19th&#x27;,
+        &#x27;20th&#x27;,
+        &#x27;21st&#x27;,
+        &#x27;22nd&#x27;,
+        &#x27;23rd&#x27;,
+        &#x27;24th&#x27;,
+        &#x27;25th&#x27;,
+        &#x27;26th&#x27;,
+        &#x27;27th&#x27;,
+        &#x27;28th&#x27;,
+        &#x27;29th&#x27;,
+        &#x27;30th&#x27;,
+        &#x27;31st&#x27;,
+      ]
+      assert.deepStrictEqual(result, expected)
+    })
+  })
+
+  it(&#x27;era&#x27;, () =&gt; {
+    const result = format(date, &#x27;G GG GGG GGGG GGGGG&#x27;)
+    assert(result === &#x27;AD AD AD Anno Domini A&#x27;)
+
+    const bcDate = new Date()
+    bcDate.setFullYear(-1, 0 /* Jan */, 1)
+    const bcResult = format(bcDate, &#x27;G GG GGG GGGG GGGGG&#x27;)
+    assert(bcResult === &#x27;BC BC BC Before Christ B&#x27;)
+  })
+
+  describe(&#x27;year&#x27;, () =&gt; {
+    describe(&#x27;regular year&#x27;, () =&gt; {
+      it(&#x27;works as expected&#x27;, () =&gt; {
+        const result = format(date, &#x27;y yo yy yyy yyyy yyyyy&#x27;)
+        assert(result === &#x27;1986 1986th 86 1986 1986 01986&#x27;)
+      })
+
+      it(&#x27;1 BC formats as 1&#x27;, () =&gt; {
+        const date = new Date(0)
+        date.setFullYear(0, 0 /* Jan */, 1)
+        date.setHours(0, 0, 0, 0)
+        const result = format(date, &#x27;y&#x27;)
+        assert(result === &#x27;1&#x27;)
+      })
+
+      it(&#x27;2 BC formats as 2&#x27;, () =&gt; {
+        const date = new Date(0)
+        date.setFullYear(-1, 0 /* Jan */, 1)
+        date.setHours(0, 0, 0, 0)
+        const result = format(date, &#x27;y&#x27;)
+        assert(result === &#x27;2&#x27;)
+      })
+
+      it(&#x27;2 BC formats as 2nd&#x27;, () =&gt; {
+        const date = new Date()
+        date.setFullYear(-1, 0 /* Jan */, 1)
+        date.setHours(0, 0, 0, 0)
+        const result = format(date, &#x27;yo&#x27;)
+        assert(result === &#x27;2nd&#x27;)
+      })
+    })
+
+    describe(&#x27;local week-numbering year&#x27;, () =&gt; {
+      it(&#x27;works as expected&#x27;, () =&gt; {
+        const result = format(date, &#x27;Y Yo YY YYY YYYY YYYYY&#x27;, {
+          useAdditionalWeekYearTokens: true,
+        })
+        assert(result === &#x27;1986 1986th 86 1986 1986 01986&#x27;)
+      })
+
+      it(&#x27;the first week of the next year&#x27;, () =&gt; {
+        const result = format(new Date(2013, 11 /* Dec */, 29), &#x27;YYYY&#x27;, {
+          useAdditionalWeekYearTokens: true,
+        })
+        assert(result === &#x27;2014&#x27;)
+      })
+
+      it(&#x27;allows to specify `weekStartsOn` and `firstWeekContainsDate` in options&#x27;, () =&gt; {
+        const result = format(new Date(2013, 11 /* Dec */, 29), &#x27;YYYY&#x27;, {
+          weekStartsOn: 1,
+          firstWeekContainsDate: 4,
+          useAdditionalWeekYearTokens: true,
+        })
+        assert(result === &#x27;2013&#x27;)
+      })
+
+      it(&#x27;the first week of year&#x27;, () =&gt; {
+        const result = format(new Date(2016, 0 /* Jan */, 1), &#x27;YYYY&#x27;, {
+          useAdditionalWeekYearTokens: true,
+        })
+        assert(result === &#x27;2016&#x27;)
+      })
+
+      it(&#x27;1 BC formats as 1&#x27;, () =&gt; {
+        const date = new Date(0)
+        date.setFullYear(0, 6 /* Jul */, 2)
+        date.setHours(0, 0, 0, 0)
+        const result = format(date, &#x27;Y&#x27;)
+        assert(result === &#x27;1&#x27;)
+      })
+
+      it(&#x27;2 BC formats as 2&#x27;, () =&gt; {
+        const date = new Date(0)
+        date.setFullYear(-1, 6 /* Jul */, 2)
+        date.setHours(0, 0, 0, 0)
+        const result = format(date, &#x27;Y&#x27;)
+        assert(result === &#x27;2&#x27;)
+      })
+    })
+
+    describe(&#x27;ISO week-numbering year&#x27;, () =&gt; {
+      it(&#x27;works as expected&#x27;, () =&gt; {
+        const result = format(date, &#x27;R RR RRR RRRR RRRRR&#x27;)
+        assert(result === &#x27;1986 1986 1986 1986 01986&#x27;)
+      })
+
+      it(&#x27;the first week of the next year&#x27;, () =&gt; {
+        const result = format(new Date(2013, 11 /* Dec */, 30), &#x27;RRRR&#x27;)
+        assert(result === &#x27;2014&#x27;)
+      })
+
+      it(&#x27;the last week of the previous year&#x27;, () =&gt; {
+        const result = format(new Date(2016, 0 /* Jan */, 1), &#x27;RRRR&#x27;)
+        assert(result === &#x27;2015&#x27;)
+      })
+
+      it(&#x27;1 BC formats as 0&#x27;, () =&gt; {
+        const date = new Date(0)
+        date.setFullYear(0, 6 /* Jul */, 2)
+        date.setHours(0, 0, 0, 0)
+        const result = format(date, &#x27;R&#x27;)
+        assert(result === &#x27;0&#x27;)
+      })
+
+      it(&#x27;2 BC formats as -1&#x27;, () =&gt; {
+        const date = new Date(0)
+        date.setFullYear(-1, 6 /* Jul */, 2)
+        date.setHours(0, 0, 0, 0)
+        const result = format(date, &#x27;R&#x27;)
+        assert(result === &#x27;-1&#x27;)
+      })
+    })
+
+    describe(&#x27;extended year&#x27;, () =&gt; {
+      it(&#x27;works as expected&#x27;, () =&gt; {
+        const result = format(date, &#x27;u uu uuu uuuu uuuuu&#x27;)
+        assert(result === &#x27;1986 1986 1986 1986 01986&#x27;)
+      })
+
+      it(&#x27;1 BC formats as 0&#x27;, () =&gt; {
+        const date = new Date(0)
+        date.setFullYear(0, 0, 1)
+        date.setHours(0, 0, 0, 0)
+        const result = format(date, &#x27;u&#x27;)
+        assert(result === &#x27;0&#x27;)
+      })
+
+      it(&#x27;2 BC formats as -1&#x27;, () =&gt; {
+        const date = new Date(0)
+        date.setFullYear(-1, 0, 1)
+        date.setHours(0, 0, 0, 0)
+        const result = format(date, &#x27;u&#x27;)
+        assert(result === &#x27;-1&#x27;)
+      })
+    })
+  })
+
+  describe(&#x27;quarter&#x27;, () =&gt; {
+    it(&#x27;formatting quarter&#x27;, () =&gt; {
+      const result = format(date, &#x27;Q Qo QQ QQQ QQQQ QQQQQ&#x27;)
+      assert(result === &#x27;2 2nd 02 Q2 2nd quarter 2&#x27;)
+    })
+
+    it(&#x27;stand-alone quarter&#x27;, () =&gt; {
+      const result = format(date, &#x27;q qo qq qqq qqqq qqqqq&#x27;)
+      assert(result === &#x27;2 2nd 02 Q2 2nd quarter 2&#x27;)
+    })
+
+    it(&#x27;returns a correct quarter for each month&#x27;, () =&gt; {
+      const result = []
+      for (let i = 0; i &lt;= 11; i++) {
+        result.push(format(new Date(1986, i, 1), &#x27;Q&#x27;))
+      }
+      const expected = [
+        &#x27;1&#x27;,
+        &#x27;1&#x27;,
+        &#x27;1&#x27;,
+        &#x27;2&#x27;,
+        &#x27;2&#x27;,
+        &#x27;2&#x27;,
+        &#x27;3&#x27;,
+        &#x27;3&#x27;,
+        &#x27;3&#x27;,
+        &#x27;4&#x27;,
+        &#x27;4&#x27;,
+        &#x27;4&#x27;,
+      ]
+      assert.deepStrictEqual(result, expected)
+    })
+  })
+
+  describe(&#x27;month&#x27;, () =&gt; {
+    it(&#x27;formatting month&#x27;, () =&gt; {
+      const result = format(date, &#x27;M Mo MM MMM MMMM MMMMM&#x27;)
+      assert(result === &#x27;4 4th 04 Apr April A&#x27;)
+    })
+
+    it(&#x27;stand-alone month&#x27;, () =&gt; {
+      const result = format(date, &#x27;L Lo LL LLL LLLL LLLLL&#x27;)
+      assert(result === &#x27;4 4th 04 Apr April A&#x27;)
+    })
+  })
+
+  describe(&#x27;week&#x27;, () =&gt; {
+    describe(&#x27;local week of year&#x27;, () =&gt; {
+      it(&#x27;works as expected&#x27;, () =&gt; {
+        const date = new Date(1986, 3 /* Apr */, 6)
+        const result = format(date, &#x27;w wo ww&#x27;)
+        assert(result === &#x27;15 15th 15&#x27;)
+      })
+
+      it(&#x27;allows to specify `weekStartsOn` and `firstWeekContainsDate` in options&#x27;, () =&gt; {
+        const date = new Date(1986, 3 /* Apr */, 6)
+        const result = format(date, &#x27;w wo ww&#x27;, {
+          weekStartsOn: 1,
+          firstWeekContainsDate: 4,
+        })
+        assert(result === &#x27;14 14th 14&#x27;)
+      })
+    })
+
+    it(&#x27;ISO week of year&#x27;, () =&gt; {
+      const date = new Date(1986, 3 /* Apr */, 6)
+      const result = format(date, &#x27;I Io II&#x27;)
+      assert(result === &#x27;14 14th 14&#x27;)
+    })
+  })
+
+  describe(&#x27;day&#x27;, () =&gt; {
+    it(&#x27;date&#x27;, () =&gt; {
+      const result = format(date, &#x27;d do dd&#x27;)
+      assert(result === &#x27;4 4th 04&#x27;)
+    })
+
+    describe(&#x27;day of year&#x27;, () =&gt; {
+      it(&#x27;works as expected&#x27;, () =&gt; {
+        const result = format(date, &#x27;D Do DD DDD DDDDD&#x27;, {
+          useAdditionalDayOfYearTokens: true,
+        })
+        assert(result === &#x27;94 94th 94 094 00094&#x27;)
+      })
+
+      it(&#x27;returns a correct day number for the last day of a leap year&#x27;, () =&gt; {
+        const result = format(
+          new Date(1992, 11 /* Dec */, 31, 23, 59, 59, 999),
+          &#x27;D&#x27;,
+          { useAdditionalDayOfYearTokens: true }
+        )
+        assert(result === &#x27;366&#x27;)
+      })
+    })
+  })
+
+  describe(&#x27;week day&#x27;, () =&gt; {
+    describe(&#x27;day of week&#x27;, () =&gt; {
+      it(&#x27;works as expected&#x27;, () =&gt; {
+        const result = format(date, &#x27;E EE EEE EEEE EEEEE EEEEEE&#x27;)
+        assert(result === &#x27;Fri Fri Fri Friday F Fr&#x27;)
+      })
+    })
+
+    describe(&#x27;ISO day of week&#x27;, () =&gt; {
+      it(&#x27;works as expected&#x27;, () =&gt; {
+        const result = format(date, &#x27;i io ii iii iiii iiiii iiiiii&#x27;)
+        assert(result === &#x27;5 5th 05 Fri Friday F Fr&#x27;)
+      })
+
+      it(&#x27;returns a correct day of an ISO week&#x27;, () =&gt; {
+        const result = []
+        for (let i = 1; i &lt;= 7; i++) {
+          result.push(format(new Date(1986, 8 /* Sep */, i), &#x27;i&#x27;))
+        }
+        const expected = [&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;, &#x27;4&#x27;, &#x27;5&#x27;, &#x27;6&#x27;, &#x27;7&#x27;]
+        assert.deepStrictEqual(result, expected)
+      })
+    })
+
+    describe(&#x27;formatting day of week&#x27;, () =&gt; {
+      it(&#x27;works as expected&#x27;, () =&gt; {
+        const result = format(date, &#x27;e eo ee eee eeee eeeee eeeeee&#x27;)
+        assert(result === &#x27;6 6th 06 Fri Friday F Fr&#x27;)
+      })
+
+      it(&#x27;by default, 1 is Sunday, 2 is Monday, ...&#x27;, () =&gt; {
+        const result = []
+        for (let i = 7; i &lt;= 13; i++) {
+          result.push(format(new Date(1986, 8 /* Sep */, i), &#x27;e&#x27;))
+        }
+        const expected = [&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;, &#x27;4&#x27;, &#x27;5&#x27;, &#x27;6&#x27;, &#x27;7&#x27;]
+        assert.deepStrictEqual(result, expected)
+      })
+
+      it(&#x27;allows to specify which day is the first day of the week&#x27;, () =&gt; {
+        const result = []
+        for (let i = 1; i &lt;= 7; i++) {
+          result.push(
+            format(new Date(1986, 8 /* Sep */, i), &#x27;e&#x27;, { weekStartsOn: 1 })
+          )
+        }
+        const expected = [&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;, &#x27;4&#x27;, &#x27;5&#x27;, &#x27;6&#x27;, &#x27;7&#x27;]
+        assert.deepStrictEqual(result, expected)
+      })
+    })
+
+    describe(&#x27;stand-alone day of week&#x27;, () =&gt; {
+      it(&#x27;works as expected&#x27;, () =&gt; {
+        const result = format(date, &#x27;c co cc ccc cccc ccccc cccccc&#x27;)
+        assert(result === &#x27;6 6th 06 Fri Friday F Fr&#x27;)
+      })
+
+      it(&#x27;by default, 1 is Sunday, 2 is Monday, ...&#x27;, () =&gt; {
+        const result = []
+        for (let i = 7; i &lt;= 13; i++) {
+          result.push(format(new Date(1986, 8 /* Sep */, i), &#x27;c&#x27;))
+        }
+        const expected = [&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;, &#x27;4&#x27;, &#x27;5&#x27;, &#x27;6&#x27;, &#x27;7&#x27;]
+        assert.deepStrictEqual(result, expected)
+      })
+
+      it(&#x27;allows to specify which day is the first day of the week&#x27;, () =&gt; {
+        const result = []
+        for (let i = 1; i &lt;= 7; i++) {
+          result.push(
+            format(new Date(1986, 8 /* Sep */, i), &#x27;c&#x27;, { weekStartsOn: 1 })
+          )
+        }
+        const expected = [&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;, &#x27;4&#x27;, &#x27;5&#x27;, &#x27;6&#x27;, &#x27;7&#x27;]
+        assert.deepStrictEqual(result, expected)
+      })
+    })
+  })
+
+  describe(&#x27;day period and hour&#x27;, () =&gt; {
+    it(&#x27;hour [1-12]&#x27;, () =&gt; {
+      const result = format(
+        new Date(2018, 0 /* Jan */, 1, 0, 0, 0, 0),
+        &#x27;h ho hh&#x27;
+      )
+      assert(result === &#x27;12 12th 12&#x27;)
+    })
+
+    it(&#x27;hour [0-23]&#x27;, () =&gt; {
+      const result = format(
+        new Date(2018, 0 /* Jan */, 1, 0, 0, 0, 0),
+        &#x27;H Ho HH&#x27;
+      )
+      assert(result === &#x27;0 0th 00&#x27;)
+    })
+
+    it(&#x27;hour [0-11]&#x27;, () =&gt; {
+      const result = format(
+        new Date(2018, 0 /* Jan */, 1, 0, 0, 0, 0),
+        &#x27;K Ko KK&#x27;
+      )
+      assert(result === &#x27;0 0th 00&#x27;)
+    })
+
+    it(&#x27;hour [1-24]&#x27;, () =&gt; {
+      const result = format(
+        new Date(2018, 0 /* Jan */, 1, 0, 0, 0, 0),
+        &#x27;k ko kk&#x27;
+      )
+      assert(result === &#x27;24 24th 24&#x27;)
+    })
+
+    describe(&#x27;AM, PM&#x27;, () =&gt; {
+      it(&#x27;works as expected&#x27;, () =&gt; {
+        const result = format(
+          new Date(2018, 0 /* Jan */, 1, 0, 0, 0, 0),
+          &#x27;a aa aaa aaaa aaaaa&#x27;
+        )
+        assert(result === &#x27;AM AM am a.m. a&#x27;)
+      })
+
+      it(&#x27;12 PM&#x27;, () =&gt; {
+        const date = new Date(1986, 3 /* Apr */, 4, 12, 0, 0, 900)
+        assert(format(date, &#x27;h H K k a&#x27;) === &#x27;12 12 0 12 PM&#x27;)
+      })
+
+      it(&#x27;12 AM&#x27;, () =&gt; {
+        const date = new Date(1986, 3 /* Apr */, 6, 0, 0, 0, 900)
+        assert(format(date, &#x27;h H K k a&#x27;) === &#x27;12 0 0 24 AM&#x27;)
+      })
+    })
+
+    describe(&#x27;AM, PM, noon, midnight&#x27;, () =&gt; {
+      it(&#x27;works as expected&#x27;, () =&gt; {
+        const result = format(
+          new Date(1986, 3 /* Apr */, 6, 2, 0, 0, 900),
+          &#x27;b bb bbb bbbb bbbbb&#x27;
+        )
+        assert(result === &#x27;AM AM am a.m. a&#x27;)
+
+        const pmResult = format(
+          new Date(1986, 3 /* Apr */, 6, 13, 0, 0, 900),
+          &#x27;b bb bbb bbbb bbbbb&#x27;
+        )
+        assert(pmResult === &#x27;PM PM pm p.m. p&#x27;)
+      })
+
+      it(&#x27;12 PM&#x27;, () =&gt; {
+        const date = new Date(1986, 3 /* Apr */, 4, 12, 0, 0, 900)
+        assert(format(date, &#x27;b bb bbb bbbb bbbbb&#x27;) === &#x27;noon noon noon noon n&#x27;)
+      })
+
+      it(&#x27;12 AM&#x27;, () =&gt; {
+        const date = new Date(1986, 3 /* Apr */, 6, 0, 0, 0, 900)
+        assert(
+          format(date, &#x27;b bb bbb bbbb bbbbb&#x27;) ===
+            &#x27;midnight midnight midnight midnight mi&#x27;
+        )
+      })
+    })
+
+    describe(&#x27;flexible day periods&#x27;, () =&gt; {
+      it(&#x27;works as expected&#x27;, () =&gt; {
+        const result = format(date, &#x27;B, BB, BBB, BBBB, BBBBB&#x27;)
+        assert(
+          result ===
+            &#x27;in the morning, in the morning, in the morning, in the morning, in the morning&#x27;
+        )
+      })
+
+      it(&#x27;12 PM&#x27;, () =&gt; {
+        const date = new Date(1986, 3 /* Apr */, 4, 12, 0, 0, 900)
+        assert(format(date, &#x27;h B&#x27;) === &#x27;12 in the afternoon&#x27;)
+      })
+
+      it(&#x27;5 PM&#x27;, () =&gt; {
+        const date = new Date(1986, 3 /* Apr */, 6, 17, 0, 0, 900)
+        assert(format(date, &#x27;h B&#x27;) === &#x27;5 in the evening&#x27;)
+      })
+
+      it(&#x27;12 AM&#x27;, () =&gt; {
+        const date = new Date(1986, 3 /* Apr */, 6, 0, 0, 0, 900)
+        assert(format(date, &#x27;h B&#x27;) === &#x27;12 at night&#x27;)
+      })
+
+      it(&#x27;4 AM&#x27;, () =&gt; {
+        const date = new Date(1986, 3 /* Apr */, 6, 4, 0, 0, 900)
+        assert(format(date, &#x27;h B&#x27;) === &#x27;4 in the morning&#x27;)
+      })
+    })
+  })
+
+  it(&#x27;minute&#x27;, () =&gt; {
+    const result = format(date, &#x27;m mo mm&#x27;)
+    assert(result === &#x27;32 32nd 32&#x27;)
+  })
+
+  describe(&#x27;second&#x27;, () =&gt; {
+    it(&#x27;second&#x27;, () =&gt; {
+      const result = format(date, &#x27;s so ss&#x27;)
+      assert(result === &#x27;55 55th 55&#x27;)
+    })
+
+    it(&#x27;fractional seconds&#x27;, () =&gt; {
+      const result = format(date, &#x27;S SS SSS SSSS&#x27;)
+      assert(result === &#x27;1 12 123 1230&#x27;)
+    })
+  })
+
+  describe(&#x27;time zone&#x27;, () =&gt; {
+    it(&#x27;ISO-8601 with Z&#x27;, () =&gt; {
+      const result = format(date, &#x27;X XX XXX XXXX XXXXX&#x27;)
+      const expectedResult = [
+        timezoneWithOptionalMinutesAndZShort,
+        timezoneWithZShort,
+        timezoneWithZ,
+        timezoneWithZShort,
+        timezoneWithZ,
+      ].join(&#x27; &#x27;)
+      assert(result === expectedResult)
+
+      const getTimezoneOffsetStub = sinon.stub(
+        Date.prototype,
+        &#x27;getTimezoneOffset&#x27;
+      )
+      getTimezoneOffsetStub.returns(0)
+      const resultZeroOffset = format(date, &#x27;X XX XXX XXXX XXXXX&#x27;)
+      assert(resultZeroOffset === &#x27;Z Z Z Z Z&#x27;)
+
+      getTimezoneOffsetStub.returns(480)
+      const resultNegativeOffset = format(date, &#x27;X XX XXX XXXX XXXXX&#x27;)
+      assert(resultNegativeOffset === &#x27;-08 -0800 -08:00 -0800 -08:00&#x27;)
+
+      getTimezoneOffsetStub.returns(450)
+      const resultNegative30Offset = format(date, &#x27;X XX XXX XXXX XXXXX&#x27;)
+      assert(resultNegative30Offset === &#x27;-0730 -0730 -07:30 -0730 -07:30&#x27;)
+
+      getTimezoneOffsetStub.restore()
+    })
+
+    it(&#x27;ISO-8601 without Z&#x27;, () =&gt; {
+      const result = format(date, &#x27;x xx xxx xxxx xxxxx&#x27;)
+      const expectedResult = [
+        timezoneWithOptionalMinutesShort,
+        timezoneShort,
+        timezone,
+        timezoneShort,
+        timezone,
+      ].join(&#x27; &#x27;)
+      assert(result === expectedResult)
+    })
+
+    it(&#x27;GMT&#x27;, () =&gt; {
+      const result = format(date, &#x27;O OO OOO OOOO&#x27;)
+      const expectedResult = [
+        timezoneGMTShort,
+        timezoneGMTShort,
+        timezoneGMTShort,
+        timezoneGMT,
+      ].join(&#x27; &#x27;)
+      assert(result === expectedResult)
+
+      const getTimezoneOffsetStub = sinon.stub(
+        Date.prototype,
+        &#x27;getTimezoneOffset&#x27;
+      )
+      getTimezoneOffsetStub.returns(480)
+      const resultNegativeOffset = format(date, &#x27;O OO OOO OOOO&#x27;)
+      assert(resultNegativeOffset === &#x27;GMT-8 GMT-8 GMT-8 GMT-08:00&#x27;)
+
+      getTimezoneOffsetStub.returns(450)
+      const resultNegative30Offset = format(date, &#x27;O OO OOO OOOO&#x27;)
+      assert(resultNegative30Offset === &#x27;GMT-7:30 GMT-7:30 GMT-7:30 GMT-07:30&#x27;)
+
+      getTimezoneOffsetStub.restore()
+    })
+
+    it(&#x27;Specific non-location&#x27;, () =&gt; {
+      const result = format(date, &#x27;z zz zzz zzzz&#x27;)
+      const expectedResult = [
+        timezoneGMTShort,
+        timezoneGMTShort,
+        timezoneGMTShort,
+        timezoneGMT,
+      ].join(&#x27; &#x27;)
+      assert(result === expectedResult)
+    })
+  })
+
+  describe(&#x27;timestamp&#x27;, () =&gt; {
+    it(&#x27;seconds timestamp&#x27;, () =&gt; {
+      const result = format(date, &#x27;t&#x27;)
+      assert(result === secondsTimestamp)
+    })
+
+    it(&#x27;milliseconds timestamp&#x27;, () =&gt; {
+      const result = format(date, &#x27;T&#x27;)
+      assert(result === timestamp)
+    })
+  })
+
+  describe(&#x27;long format&#x27;, () =&gt; {
+    it(&#x27;short date&#x27;, () =&gt; {
+      const result = format(date, &#x27;P&#x27;)
+      assert(result === &#x27;04/04/1986&#x27;)
+    })
+
+    it(&#x27;medium date&#x27;, () =&gt; {
+      const result = format(date, &#x27;PP&#x27;)
+      assert(result === &#x27;Apr 4, 1986&#x27;)
+    })
+
+    it(&#x27;long date&#x27;, () =&gt; {
+      const result = format(date, &#x27;PPP&#x27;)
+      assert(result === &#x27;April 4th, 1986&#x27;)
+    })
+
+    it(&#x27;full date&#x27;, () =&gt; {
+      const result = format(date, &#x27;PPPP&#x27;)
+      assert(result === &#x27;Friday, April 4th, 1986&#x27;)
+    })
+
+    it(&#x27;short time&#x27;, () =&gt; {
+      const result = format(date, &#x27;p&#x27;)
+      assert(result === &#x27;10:32 AM&#x27;)
+    })
+
+    it(&#x27;medium time&#x27;, () =&gt; {
+      const result = format(date, &#x27;pp&#x27;)
+      assert(result === &#x27;10:32:55 AM&#x27;)
+    })
+
+    it(&#x27;long time&#x27;, () =&gt; {
+      const result = format(date, &#x27;ppp&#x27;)
+      assert(result === &#x27;10:32:55 AM &#x27; + timezoneGMTShort)
+    })
+
+    it(&#x27;full time&#x27;, () =&gt; {
+      const result = format(date, &#x27;pppp&#x27;)
+      assert(result === &#x27;10:32:55 AM &#x27; + timezoneGMT)
+    })
+
+    it(&#x27;short date + time&#x27;, () =&gt; {
+      const result = format(date, &#x27;Pp&#x27;)
+      assert(result === &#x27;04/04/1986, 10:32 AM&#x27;)
+    })
+
+    it(&#x27;medium date + time&#x27;, () =&gt; {
+      const result = format(date, &#x27;PPpp&#x27;)
+      assert(result === &#x27;Apr 4, 1986, 10:32:55 AM&#x27;)
+    })
+
+    it(&#x27;long date + time&#x27;, () =&gt; {
+      const result = format(date, &#x27;PPPppp&#x27;)
+      assert(result === &#x27;April 4th, 1986 at 10:32:55 AM &#x27; + timezoneGMTShort)
+    })
+
+    it(&#x27;full date + time&#x27;, () =&gt; {
+      const result = format(date, &#x27;PPPPpppp&#x27;)
+      assert(result === &#x27;Friday, April 4th, 1986 at 10:32:55 AM &#x27; + timezoneGMT)
+    })
+
+    it(&#x27;allows arbitrary combination of date and time&#x27;, () =&gt; {
+      const result = format(date, &#x27;Ppppp&#x27;)
+      assert(result === &#x27;04/04/1986, 10:32:55 AM &#x27; + timezoneGMT)
+    })
+  })
+
+  describe(&#x27;edge cases&#x27;, () =&gt; {
+    it(&#x27;throws RangeError if the time value is invalid&#x27;, () =&gt; {
+      assert.throws(
+        format.bind(null, new Date(NaN), &#x27;MMMM d, yyyy&#x27;),
+        RangeError
+      )
+    })
+
+    it(&#x27;handles dates before 100 AD&#x27;, () =&gt; {
+      const initialDate = new Date(0)
+      initialDate.setFullYear(7, 11 /* Dec */, 31)
+      initialDate.setHours(0, 0, 0, 0)
+      assert(format(initialDate, &#x27;Y ww i&#x27;) === &#x27;8 01 1&#x27;)
+    })
+  })
+
+  describe(&#x27;custom locale&#x27;, () =&gt; {
+    it(&#x27;allows to pass a custom locale&#x27;, () =&gt; {
+      const customLocale = {
+        localize: {
+          month: () =&gt; {
+            return &#x27;works&#x27;
+          },
+        },
+        formatLong: {
+          date: () =&gt; {
+            return &quot;&#x27;It&#x27; MMMM!&quot;
+          },
+        },
+      }
+      const result = format(date, &#x27;PPPP&#x27;, {
+        // @ts-expect-error
+        locale: customLocale,
+      })
+      assert(result === &#x27;It works!&#x27;)
+    })
+  })
+
+  it(&#x27;throws RangeError exception if the format string contains an unescaped latin alphabet character&#x27;, () =&gt; {
+    assert.throws(format.bind(null, date, &#x27;yyyy-MM-dd-nnnn&#x27;), RangeError)
+  })
+
+  describe(&#x27;useAdditionalWeekYearTokens and useAdditionalDayOfYearTokens options&#x27;, () =&gt; {
+    it(&#x27;throws an error if D token is used&#x27;, () =&gt; {
+      try {
+        format.bind(null, date, &#x27;yyyy-MM-D&#x27;)
+      } catch (e) {
+        assert(e instanceof RangeError)
+        assert(e.message.startsWith(&#x27;Use `d` instead of `D`&#x27;))
+      }
+    })
+
+    it(&#x27;allows D token if useAdditionalDayOfYearTokens is set to true&#x27;, () =&gt; {
+      const result = format(date, &#x27;yyyy-MM-D&#x27;, {
+        useAdditionalDayOfYearTokens: true,
+      })
+      assert.deepStrictEqual(result, &#x27;1986-04-94&#x27;)
+    })
+
+    it(&#x27;throws an error if DD token is used&#x27;, () =&gt; {
+      try {
+        format.bind(null, date, &#x27;yyyy-MM-DD&#x27;)
+      } catch (e) {
+        assert(e instanceof RangeError)
+        assert(e.message.startsWith(&#x27;Use `dd` instead of `DD`&#x27;))
+      }
+    })
+
+    it(&#x27;allows DD token if useAdditionalDayOfYearTokens is set to true&#x27;, () =&gt; {
+      const result = format(date, &#x27;yyyy-MM-DD&#x27;, {
+        useAdditionalDayOfYearTokens: true,
+      })
+      assert.deepStrictEqual(result, &#x27;1986-04-94&#x27;)
+    })
+
+    it(&#x27;throws an error if YY token is used&#x27;, () =&gt; {
+      try {
+        format.bind(null, date, &#x27;YY-MM-dd&#x27;)
+      } catch (e) {
+        assert(e instanceof RangeError)
+        assert(e.message.startsWith(&#x27;Use `yy` instead of `YY`&#x27;))
+      }
+    })
+
+    it(&#x27;allows YY token if useAdditionalWeekYearTokens is set to true&#x27;, () =&gt; {
+      const result = format(date, &#x27;YY-MM-dd&#x27;, {
+        useAdditionalWeekYearTokens: true,
+      })
+      assert.deepStrictEqual(result, &#x27;86-04-04&#x27;)
+    })
+
+    it(&#x27;throws an error if YYYY token is used&#x27;, () =&gt; {
+      try {
+        format.bind(null, date, &#x27;YYYY-MM-dd&#x27;)
+      } catch (e) {
+        assert(e instanceof RangeError)
+        assert(e.message.startsWith(&#x27;Use `yyyy` instead of `YYYY`&#x27;))
+      }
+    })
+
+    it(&#x27;allows YYYY token if useAdditionalWeekYearTokens is set to true&#x27;, () =&gt; {
+      const result = format(date, &#x27;YYYY-MM-dd&#x27;, {
+        useAdditionalWeekYearTokens: true,
+      })
+      assert.deepStrictEqual(result, &#x27;1986-04-04&#x27;)
+    })
+  })
+})
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:18 GMT</p>
+    </body>
+  </html>
+  

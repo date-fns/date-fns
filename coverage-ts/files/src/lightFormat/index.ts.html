@@ -1,0 +1,156 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/lightFormat/index.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">63</td><td class="">63</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import isValid from &#x27;../isValid/index&#x27;
+import toDate from &#x27;../toDate/index&#x27;
+import formatters from &#x27;../_lib/format/lightFormatters/index&#x27;
+
+// This RegExp consists of three parts separated by `|`:
+// - (\w)\1* matches any sequences of the same letter
+// - &#x27;&#x27; matches two quote characters in a row
+// - &#x27;(&#x27;&#x27;|[^&#x27;])+(&#x27;|$) matches anything surrounded by two quote characters (&#x27;),
+//   except a single quote symbol, which ends the sequence.
+//   Two quote characters do not end the sequence.
+//   If there is no matching single quote
+//   then the sequence will continue until the end of the string.
+// - . matches any single character unmatched by previous parts of the RegExps
+const formattingTokensRegExp = /(\w)\1*|&#x27;&#x27;|&#x27;(&#x27;&#x27;|[^&#x27;])+(&#x27;|$)|./g
+
+const escapedStringRegExp = /^&#x27;([^]*?)&#x27;?$/
+const doubleQuoteRegExp = /&#x27;&#x27;/g
+const unescapedLatinCharacterRegExp = /[a-zA-Z]/
+
+/**
+ * @private
+ */
+type Token = keyof typeof formatters
+
+/**
+ * @name lightFormat
+ * @category Common Helpers
+ * @summary Format the date.
+ *
+ * @description
+ * Return the formatted date string in the given format. Unlike `format`,
+ * `lightFormat` doesn&#x27;t use locales and outputs date using the most popular tokens.
+ *
+ * &gt; ⚠️ Please note that the `lightFormat` tokens differ from Moment.js and other libraries.
+ * &gt; See: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
+ *
+ * The characters wrapped between two single quotes characters (&#x27;) are escaped.
+ * Two single quotes in a row, whether inside or outside a quoted sequence, represent a &#x27;real&#x27; single quote.
+ *
+ * Format of the string is based on Unicode Technical Standard #35:
+ * https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table
+ *
+ * Accepted patterns:
+ * | Unit                            | Pattern | Result examples                   |
+ * |---------------------------------|---------|-----------------------------------|
+ * | AM, PM                          | a..aaa  | AM, PM                            |
+ * |                                 | aaaa    | a.m., p.m.                        |
+ * |                                 | aaaaa   | a, p                              |
+ * | Calendar year                   | y       | 44, 1, 1900, 2017                 |
+ * |                                 | yy      | 44, 01, 00, 17                    |
+ * |                                 | yyy     | 044, 001, 000, 017                |
+ * |                                 | yyyy    | 0044, 0001, 1900, 2017            |
+ * | Month (formatting)              | M       | 1, 2, ..., 12                     |
+ * |                                 | MM      | 01, 02, ..., 12                   |
+ * | Day of month                    | d       | 1, 2, ..., 31                     |
+ * |                                 | dd      | 01, 02, ..., 31                   |
+ * | Hour [1-12]                     | h       | 1, 2, ..., 11, 12                 |
+ * |                                 | hh      | 01, 02, ..., 11, 12               |
+ * | Hour [0-23]                     | H       | 0, 1, 2, ..., 23                  |
+ * |                                 | HH      | 00, 01, 02, ..., 23               |
+ * | Minute                          | m       | 0, 1, ..., 59                     |
+ * |                                 | mm      | 00, 01, ..., 59                   |
+ * | Second                          | s       | 0, 1, ..., 59                     |
+ * |                                 | ss      | 00, 01, ..., 59                   |
+ * | Fraction of second              | S       | 0, 1, ..., 9                      |
+ * |                                 | SS      | 00, 01, ..., 99                   |
+ * |                                 | SSS     | 000, 001, ..., 999                |
+ * |                                 | SSSS    | ...                               |
+ *
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The original date
+ * @param format - The string of tokens
+ *
+ * @returns The formatted date string
+ *
+ * @throws {RangeError} format string contains an unescaped latin alphabet character
+ *
+ * @example
+ * const result = lightFormat(new Date(2014, 1, 11), &#x27;yyyy-MM-dd&#x27;)
+ * //=&gt; &#x27;2014-02-11&#x27;
+ */
+export default function lightFormat&lt;DateType extends Date&gt;(
+  date: DateType | number,
+  formatStr: string
+): string {
+  const _date = toDate(date)
+
+  if (!isValid(_date)) {
+    throw new RangeError(&#x27;Invalid time value&#x27;)
+  }
+
+  const tokens = formatStr.match(formattingTokensRegExp)
+
+  // The only case when formattingTokensRegExp doesn&#x27;t match the string is when it&#x27;s empty
+  if (!tokens) return &#x27;&#x27;
+
+  const result = tokens
+    .map((substring) =&gt; {
+      // Replace two single quote characters with one single quote character
+      if (substring === &quot;&#x27;&#x27;&quot;) {
+        return &quot;&#x27;&quot;
+      }
+
+      const firstCharacter = substring[0]
+      if (firstCharacter === &quot;&#x27;&quot;) {
+        return cleanEscapedString(substring)
+      }
+
+      const formatter = formatters[firstCharacter as Token]
+      if (formatter) {
+        return formatter(_date, substring)
+      }
+
+      if (firstCharacter.match(unescapedLatinCharacterRegExp)) {
+        throw new RangeError(
+          &#x27;Format string contains an unescaped latin alphabet character `&#x27; +
+            firstCharacter +
+            &#x27;`&#x27;
+        )
+      }
+
+      return substring
+    })
+    .join(&#x27;&#x27;)
+
+  return result
+}
+
+function cleanEscapedString(input: string) {
+  const matches = input.match(escapedStringRegExp)
+
+  if (!matches) {
+    return input
+  }
+
+  return matches[1].replace(doubleQuoteRegExp, &quot;&#x27;&quot;)
+}
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:18 GMT</p>
+    </body>
+  </html>
+  

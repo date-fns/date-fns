@@ -1,0 +1,229 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/mn/_lib/localize/index.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">121</td><td class="">121</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import type { Localize, LocalizeFn } from &#x27;../../../types&#x27;
+import buildLocalizeFn from &#x27;../../../_lib/buildLocalizeFn/index&#x27;
+
+const eraValues = {
+  narrow: [&#x27;НТӨ&#x27;, &#x27;НТ&#x27;] as const,
+  abbreviated: [&#x27;НТӨ&#x27;, &#x27;НТ&#x27;] as const,
+  wide: [&#x27;нийтийн тооллын өмнөх&#x27;, &#x27;нийтийн тооллын&#x27;] as const,
+}
+
+const quarterValues = {
+  narrow: [&#x27;I&#x27;, &#x27;II&#x27;, &#x27;III&#x27;, &#x27;IV&#x27;] as const,
+  abbreviated: [&#x27;I улирал&#x27;, &#x27;II улирал&#x27;, &#x27;III улирал&#x27;, &#x27;IV улирал&#x27;] as const,
+  wide: [&#x27;1-р улирал&#x27;, &#x27;2-р улирал&#x27;, &#x27;3-р улирал&#x27;, &#x27;4-р улирал&#x27;] as const,
+}
+
+// Note: in English, the names of days of the week and months are capitalized.
+// If you are making a new locale based on this one, check if the same is true for the language you&#x27;re working on.
+// Generally, formatted dates should look like they are in the middle of a sentence,
+// e.g. in Spanish language the weekdays and months should be in the lowercase.
+const monthValues = {
+  narrow: [
+    &#x27;I&#x27;,
+    &#x27;II&#x27;,
+    &#x27;III&#x27;,
+    &#x27;IV&#x27;,
+    &#x27;V&#x27;,
+    &#x27;VI&#x27;,
+    &#x27;VII&#x27;,
+    &#x27;VIII&#x27;,
+    &#x27;IX&#x27;,
+    &#x27;X&#x27;,
+    &#x27;XI&#x27;,
+    &#x27;XII&#x27;,
+  ] as const,
+  abbreviated: [
+    &#x27;1-р сар&#x27;,
+    &#x27;2-р сар&#x27;,
+    &#x27;3-р сар&#x27;,
+    &#x27;4-р сар&#x27;,
+    &#x27;5-р сар&#x27;,
+    &#x27;6-р сар&#x27;,
+    &#x27;7-р сар&#x27;,
+    &#x27;8-р сар&#x27;,
+    &#x27;9-р сар&#x27;,
+    &#x27;10-р сар&#x27;,
+    &#x27;11-р сар&#x27;,
+    &#x27;12-р сар&#x27;,
+  ] as const,
+  wide: [
+    &#x27;Нэгдүгээр сар&#x27;,
+    &#x27;Хоёрдугаар сар&#x27;,
+    &#x27;Гуравдугаар сар&#x27;,
+    &#x27;Дөрөвдүгээр сар&#x27;,
+    &#x27;Тавдугаар сар&#x27;,
+    &#x27;Зургаадугаар сар&#x27;,
+    &#x27;Долоодугаар сар&#x27;,
+    &#x27;Наймдугаар сар&#x27;,
+    &#x27;Есдүгээр сар&#x27;,
+    &#x27;Аравдугаар сар&#x27;,
+    &#x27;Арваннэгдүгээр сар&#x27;,
+    &#x27;Арван хоёрдугаар сар&#x27;,
+  ] as const,
+}
+
+const formattingMonthValues = {
+  narrow: [
+    &#x27;I&#x27;,
+    &#x27;II&#x27;,
+    &#x27;III&#x27;,
+    &#x27;IV&#x27;,
+    &#x27;V&#x27;,
+    &#x27;VI&#x27;,
+    &#x27;VII&#x27;,
+    &#x27;VIII&#x27;,
+    &#x27;IX&#x27;,
+    &#x27;X&#x27;,
+    &#x27;XI&#x27;,
+    &#x27;XII&#x27;,
+  ] as const,
+  abbreviated: [
+    &#x27;1-р сар&#x27;,
+    &#x27;2-р сар&#x27;,
+    &#x27;3-р сар&#x27;,
+    &#x27;4-р сар&#x27;,
+    &#x27;5-р сар&#x27;,
+    &#x27;6-р сар&#x27;,
+    &#x27;7-р сар&#x27;,
+    &#x27;8-р сар&#x27;,
+    &#x27;9-р сар&#x27;,
+    &#x27;10-р сар&#x27;,
+    &#x27;11-р сар&#x27;,
+    &#x27;12-р сар&#x27;,
+  ] as const,
+  wide: [
+    &#x27;нэгдүгээр сар&#x27;,
+    &#x27;хоёрдугаар сар&#x27;,
+    &#x27;гуравдугаар сар&#x27;,
+    &#x27;дөрөвдүгээр сар&#x27;,
+    &#x27;тавдугаар сар&#x27;,
+    &#x27;зургаадугаар сар&#x27;,
+    &#x27;долоодугаар сар&#x27;,
+    &#x27;наймдугаар сар&#x27;,
+    &#x27;есдүгээр сар&#x27;,
+    &#x27;аравдугаар сар&#x27;,
+    &#x27;арваннэгдүгээр сар&#x27;,
+    &#x27;арван хоёрдугаар сар&#x27;,
+  ] as const,
+}
+
+const dayValues = {
+  narrow: [&#x27;Н&#x27;, &#x27;Д&#x27;, &#x27;М&#x27;, &#x27;Л&#x27;, &#x27;П&#x27;, &#x27;Б&#x27;, &#x27;Б&#x27;] as const,
+  short: [&#x27;Ня&#x27;, &#x27;Да&#x27;, &#x27;Мя&#x27;, &#x27;Лх&#x27;, &#x27;Пү&#x27;, &#x27;Ба&#x27;, &#x27;Бя&#x27;] as const,
+  abbreviated: [&#x27;Ням&#x27;, &#x27;Дав&#x27;, &#x27;Мяг&#x27;, &#x27;Лха&#x27;, &#x27;Пүр&#x27;, &#x27;Баа&#x27;, &#x27;Бям&#x27;] as const,
+  wide: [
+    &#x27;Ням&#x27;,
+    &#x27;Даваа&#x27;,
+    &#x27;Мягмар&#x27;,
+    &#x27;Лхагва&#x27;,
+    &#x27;Пүрэв&#x27;,
+    &#x27;Баасан&#x27;,
+    &#x27;Бямба&#x27;,
+  ] as const,
+}
+
+const formattingDayValues = {
+  narrow: [&#x27;Н&#x27;, &#x27;Д&#x27;, &#x27;М&#x27;, &#x27;Л&#x27;, &#x27;П&#x27;, &#x27;Б&#x27;, &#x27;Б&#x27;] as const,
+  short: [&#x27;Ня&#x27;, &#x27;Да&#x27;, &#x27;Мя&#x27;, &#x27;Лх&#x27;, &#x27;Пү&#x27;, &#x27;Ба&#x27;, &#x27;Бя&#x27;] as const,
+  abbreviated: [&#x27;Ням&#x27;, &#x27;Дав&#x27;, &#x27;Мяг&#x27;, &#x27;Лха&#x27;, &#x27;Пүр&#x27;, &#x27;Баа&#x27;, &#x27;Бям&#x27;] as const,
+  wide: [
+    &#x27;ням&#x27;,
+    &#x27;даваа&#x27;,
+    &#x27;мягмар&#x27;,
+    &#x27;лхагва&#x27;,
+    &#x27;пүрэв&#x27;,
+    &#x27;баасан&#x27;,
+    &#x27;бямба&#x27;,
+  ] as const,
+}
+
+const dayPeriodValues = {
+  narrow: {
+    am: &#x27;ү.ө.&#x27;,
+    pm: &#x27;ү.х.&#x27;,
+    midnight: &#x27;шөнө дунд&#x27;,
+    noon: &#x27;үд дунд&#x27;,
+    morning: &#x27;өглөө&#x27;,
+    afternoon: &#x27;өдөр&#x27;,
+    evening: &#x27;орой&#x27;,
+    night: &#x27;шөнө&#x27;,
+  },
+  abbreviated: {
+    am: &#x27;ү.ө.&#x27;,
+    pm: &#x27;ү.х.&#x27;,
+    midnight: &#x27;шөнө дунд&#x27;,
+    noon: &#x27;үд дунд&#x27;,
+    morning: &#x27;өглөө&#x27;,
+    afternoon: &#x27;өдөр&#x27;,
+    evening: &#x27;орой&#x27;,
+    night: &#x27;шөнө&#x27;,
+  },
+  wide: {
+    am: &#x27;ү.ө.&#x27;,
+    pm: &#x27;ү.х.&#x27;,
+    midnight: &#x27;шөнө дунд&#x27;,
+    noon: &#x27;үд дунд&#x27;,
+    morning: &#x27;өглөө&#x27;,
+    afternoon: &#x27;өдөр&#x27;,
+    evening: &#x27;орой&#x27;,
+    night: &#x27;шөнө&#x27;,
+  },
+}
+
+const ordinalNumber: LocalizeFn&lt;number&gt; = (dirtyNumber, _options) =&gt; {
+  return String(dirtyNumber)
+}
+
+const localize: Localize = {
+  ordinalNumber,
+
+  era: buildLocalizeFn({
+    values: eraValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  quarter: buildLocalizeFn({
+    values: quarterValues,
+    defaultWidth: &#x27;wide&#x27;,
+    argumentCallback: (quarter) =&gt; quarter - 1,
+  }),
+
+  month: buildLocalizeFn({
+    values: monthValues,
+    defaultWidth: &#x27;wide&#x27;,
+    formattingValues: formattingMonthValues,
+    defaultFormattingWidth: &#x27;wide&#x27;,
+  }),
+
+  day: buildLocalizeFn({
+    values: dayValues,
+    defaultWidth: &#x27;wide&#x27;,
+    formattingValues: formattingDayValues,
+    defaultFormattingWidth: &#x27;wide&#x27;,
+  }),
+
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+}
+
+export default localize
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:20 GMT</p>
+    </body>
+  </html>
+  

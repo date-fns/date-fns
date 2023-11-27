@@ -1,0 +1,135 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/formatDuration/index.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">69</td><td class="">69</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import type { FormatDistanceToken } from &#x27;../locale/types&#x27;
+import type { Duration, DurationUnit, LocalizedOptions } from &#x27;../types&#x27;
+import defaultLocale from &#x27;../_lib/defaultLocale/index&#x27;
+import { getDefaultOptions } from &#x27;../_lib/defaultOptions/index&#x27;
+
+/**
+ * The {@link formatDuration} function options.
+ */
+export interface FormatDurationOptions
+  extends LocalizedOptions&lt;&#x27;formatDistance&#x27;&gt; {
+  /** The array of units to format */
+  format?: DurationUnit[]
+  /** Should be zeros be included in the output? */
+  zero?: boolean
+  /** The delimiter string to use */
+  delimiter?: string
+}
+
+const defaultFormat: DurationUnit[] = [
+  &#x27;years&#x27;,
+  &#x27;months&#x27;,
+  &#x27;weeks&#x27;,
+  &#x27;days&#x27;,
+  &#x27;hours&#x27;,
+  &#x27;minutes&#x27;,
+  &#x27;seconds&#x27;,
+]
+
+/**
+ * @name formatDuration
+ * @category Common Helpers
+ * @summary Formats a duration in human-readable format
+ *
+ * @description
+ * Return human-readable duration string i.e. &quot;9 months 2 days&quot;
+ *
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param duration - The duration to format
+ * @param options - An object with options.
+ *
+ * @returns The formatted date string
+ *
+ * @example
+ * // Format full duration
+ * formatDuration({
+ *   years: 2,
+ *   months: 9,
+ *   weeks: 1,
+ *   days: 7,
+ *   hours: 5,
+ *   minutes: 9,
+ *   seconds: 30
+ * })
+ * //=&gt; &#x27;2 years 9 months 1 week 7 days 5 hours 9 minutes 30 seconds&#x27;
+ *
+ * @example
+ * // Format partial duration
+ * formatDuration({ months: 9, days: 2 })
+ * //=&gt; &#x27;9 months 2 days&#x27;
+ *
+ * @example
+ * // Customize the format
+ * formatDuration(
+ *   {
+ *     years: 2,
+ *     months: 9,
+ *     weeks: 1,
+ *     days: 7,
+ *     hours: 5,
+ *     minutes: 9,
+ *     seconds: 30
+ *   },
+ *   { format: [&#x27;months&#x27;, &#x27;weeks&#x27;] }
+ * ) === &#x27;9 months 1 week&#x27;
+ *
+ * @example
+ * // Customize the zeros presence
+ * formatDuration({ years: 0, months: 9 })
+ * //=&gt; &#x27;9 months&#x27;
+ * formatDuration({ years: 0, months: 9 }, { zero: true })
+ * //=&gt; &#x27;0 years 9 months&#x27;
+ *
+ * @example
+ * // Customize the delimiter
+ * formatDuration({ years: 2, months: 9, weeks: 3 }, { delimiter: &#x27;, &#x27; })
+ * //=&gt; &#x27;2 years, 9 months, 3 weeks&#x27;
+ */
+export default function formatDuration(
+  duration: Duration,
+  options?: FormatDurationOptions
+): string {
+  const defaultOptions = getDefaultOptions()
+  const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale
+  const format = options?.format ?? defaultFormat
+  const zero = options?.zero ?? false
+  const delimiter = options?.delimiter ?? &#x27; &#x27;
+
+  if (!locale.formatDistance) {
+    return &#x27;&#x27;
+  }
+
+  const result = format
+    .reduce((acc, unit) =&gt; {
+      const token = `x${unit.replace(/(^.)/, (m) =&gt;
+        m.toUpperCase()
+      )}` as FormatDistanceToken
+      const value = duration[unit]
+      if (value !== undefined &amp;&amp; (zero || duration[unit])) {
+        return acc.concat(locale.formatDistance(token, value))
+      }
+      return acc
+    }, [] as string[])
+    .join(delimiter)
+
+  return result
+}
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:17 GMT</p>
+    </body>
+  </html>
+  

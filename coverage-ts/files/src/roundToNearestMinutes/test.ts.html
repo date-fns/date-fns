@@ -1,0 +1,135 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>test.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/roundToNearestMinutes/test.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">142</td><td class="">142</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">/* eslint-env mocha */
+
+import assert from &#x27;assert&#x27;
+import { describe, it } from &#x27;vitest&#x27;
+import roundToNearestMinutes from &#x27;./index&#x27;
+
+describe(&#x27;roundToNearestMinutes&#x27;, () =&gt; {
+  it(&#x27;rounds given date to the nearest minute by default&#x27;, () =&gt; {
+    const result = roundToNearestMinutes(
+      new Date(2014, 6 /* Jul */, 10, 12, 16, 16)
+    )
+    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 16, 0))
+  })
+
+  it(&#x27;accepts a timestamp&#x27;, () =&gt; {
+    const result = roundToNearestMinutes(
+      new Date(2014, 6 /* Jul */, 10, 12, 13, 16).getTime()
+    )
+    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 13, 0))
+  })
+
+  it(&#x27;rounds to the closest x minutes if nearestTo is provided&#x27;, () =&gt; {
+    const result = roundToNearestMinutes(
+      new Date(2014, 6 /* Jul */, 10, 12, 10, 30),
+      { nearestTo: 4 }
+    )
+    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 12, 0))
+  })
+
+  it(&#x27;rounds up &gt;=30 seconds for nearestTo=1&#x27;, () =&gt; {
+    const result = roundToNearestMinutes(
+      new Date(2014, 6 /* Jul */, 10, 12, 13, 30)
+    )
+    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 14, 0))
+  })
+
+  it(&#x27;rounds down &lt;30 seconds for nearestTo=1&#x27;, () =&gt; {
+    const result = roundToNearestMinutes(
+      new Date(2014, 6 /* Jul */, 10, 12, 13, 29, 999)
+    )
+    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 13, 0))
+  })
+
+  it(&#x27;does not mutate the original date&#x27;, () =&gt; {
+    const date = new Date(2014, 6 /* Jul */, 10, 12, 10, 10, 99)
+    roundToNearestMinutes(date)
+    assert.deepStrictEqual(
+      date,
+      new Date(2014, 6 /* Jul */, 10, 12, 10, 10, 99)
+    )
+  })
+
+  it(&#x27;rounds according to the passed mode - floor&#x27;, () =&gt; {
+    const result = roundToNearestMinutes(
+      new Date(2014, 6 /* Jul */, 10, 12, 10, 30, 5),
+      { roundingMethod: &#x27;floor&#x27; }
+    )
+    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 11, 0))
+  })
+
+  it(&#x27;rounds according to the passed mode - floor - when nearestTo is provided&#x27;, () =&gt; {
+    const result = roundToNearestMinutes(
+      new Date(2014, 6 /* Jul */, 10, 12, 10, 30, 5),
+      { nearestTo: 10, roundingMethod: &#x27;floor&#x27; }
+    )
+    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 10, 0))
+  })
+
+  it(&#x27;rounds according to the passed mode - ceil&#x27;, () =&gt; {
+    const result = roundToNearestMinutes(
+      new Date(2014, 6 /* Jul */, 10, 12, 10, 30, 5),
+      { roundingMethod: &#x27;ceil&#x27; }
+    )
+    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 12, 0))
+  })
+
+  it(&#x27;rounds according to the passed mode - ceil - when nearestTo is provided&#x27;, () =&gt; {
+    const result = roundToNearestMinutes(
+      new Date(2014, 6 /* Jul */, 10, 12, 10, 30, 5),
+      { nearestTo: 10, roundingMethod: &#x27;ceil&#x27; }
+    )
+    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 20, 0))
+  })
+
+  it(&#x27;rounds according to the passed mode - round - when nearestTo is provided&#x27;, () =&gt; {
+    const result = roundToNearestMinutes(
+      new Date(2014, 6 /* Jul */, 10, 12, 10, 30, 5),
+      { nearestTo: 10, roundingMethod: &#x27;round&#x27; }
+    )
+    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 10, 0))
+  })
+
+  it(&#x27;rounds according to the passed mode - trunc - when nearestTo is provided&#x27;, () =&gt; {
+    const result = roundToNearestMinutes(
+      new Date(2014, 6 /* Jul */, 10, 12, 10, 30, 5),
+      { nearestTo: 10, roundingMethod: &#x27;trunc&#x27; }
+    )
+    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 10, 0))
+  })
+
+  it(&#x27;returns `Invalid Date` if the given date is invalid&#x27;, () =&gt; {
+    const result = roundToNearestMinutes(new Date(NaN))
+    assert(result instanceof Date &amp;&amp; isNaN(result.getTime()))
+  })
+
+  it(&#x27;throws `RangeError` if nearestTo is not between 1 and 30&#x27;, () =&gt; {
+    const date = new Date(2014, 6 /* Jul */, 10, 12, 10, 30)
+    assert.throws(
+      roundToNearestMinutes.bind(null, date, { nearestTo: 31 }),
+      RangeError
+    )
+    assert.throws(
+      roundToNearestMinutes.bind(null, date, { nearestTo: 0 }),
+      RangeError
+    )
+  })
+})
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:22 GMT</p>
+    </body>
+  </html>
+  

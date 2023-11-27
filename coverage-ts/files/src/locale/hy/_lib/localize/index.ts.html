@@ -1,0 +1,198 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/hy/_lib/localize/index.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">137</td><td class="">137</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import type { Localize, LocalizeFn } from &#x27;../../../types&#x27;
+import buildLocalizeFn from &#x27;../../../_lib/buildLocalizeFn/index&#x27;
+
+const eraValues = {
+  narrow: [&#x27;Ք&#x27;, &#x27;Մ&#x27;] as const,
+  abbreviated: [&#x27;ՔԱ&#x27;, &#x27;ՄԹ&#x27;] as const,
+  wide: [&#x27;Քրիստոսից առաջ&#x27;, &#x27;Մեր թվարկության&#x27;] as const,
+}
+
+const quarterValues = {
+  narrow: [&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;, &#x27;4&#x27;] as const,
+  abbreviated: [&#x27;Ք1&#x27;, &#x27;Ք2&#x27;, &#x27;Ք3&#x27;, &#x27;Ք4&#x27;] as const,
+  wide: [&#x27;1֊ին քառորդ&#x27;, &#x27;2֊րդ քառորդ&#x27;, &#x27;3֊րդ քառորդ&#x27;, &#x27;4֊րդ քառորդ&#x27;] as const,
+}
+
+const monthValues = {
+  narrow: [&#x27;Հ&#x27;, &#x27;Փ&#x27;, &#x27;Մ&#x27;, &#x27;Ա&#x27;, &#x27;Մ&#x27;, &#x27;Հ&#x27;, &#x27;Հ&#x27;, &#x27;Օ&#x27;, &#x27;Ս&#x27;, &#x27;Հ&#x27;, &#x27;Ն&#x27;, &#x27;Դ&#x27;] as const,
+  abbreviated: [
+    &#x27;հուն&#x27;,
+    &#x27;փետ&#x27;,
+    &#x27;մար&#x27;,
+    &#x27;ապր&#x27;,
+    &#x27;մայ&#x27;,
+    &#x27;հուն&#x27;,
+    &#x27;հուլ&#x27;,
+    &#x27;օգս&#x27;,
+    &#x27;սեպ&#x27;,
+    &#x27;հոկ&#x27;,
+    &#x27;նոյ&#x27;,
+    &#x27;դեկ&#x27;,
+  ] as const,
+  wide: [
+    &#x27;հունվար&#x27;,
+    &#x27;փետրվար&#x27;,
+    &#x27;մարտ&#x27;,
+    &#x27;ապրիլ&#x27;,
+    &#x27;մայիս&#x27;,
+    &#x27;հունիս&#x27;,
+    &#x27;հուլիս&#x27;,
+    &#x27;օգոստոս&#x27;,
+    &#x27;սեպտեմբեր&#x27;,
+    &#x27;հոկտեմբեր&#x27;,
+    &#x27;նոյեմբեր&#x27;,
+    &#x27;դեկտեմբեր&#x27;,
+  ] as const,
+}
+
+const dayValues = {
+  narrow: [&#x27;Կ&#x27;, &#x27;Ե&#x27;, &#x27;Ե&#x27;, &#x27;Չ&#x27;, &#x27;Հ&#x27;, &#x27;Ո&#x27;, &#x27;Շ&#x27;] as const,
+  short: [&#x27;կր&#x27;, &#x27;եր&#x27;, &#x27;եք&#x27;, &#x27;չք&#x27;, &#x27;հգ&#x27;, &#x27;ուր&#x27;, &#x27;շբ&#x27;] as const,
+  abbreviated: [&#x27;կիր&#x27;, &#x27;երկ&#x27;, &#x27;երք&#x27;, &#x27;չոր&#x27;, &#x27;հնգ&#x27;, &#x27;ուրբ&#x27;, &#x27;շաբ&#x27;] as const,
+  wide: [
+    &#x27;կիրակի&#x27;,
+    &#x27;երկուշաբթի&#x27;,
+    &#x27;երեքշաբթի&#x27;,
+    &#x27;չորեքշաբթի&#x27;,
+    &#x27;հինգշաբթի&#x27;,
+    &#x27;ուրբաթ&#x27;,
+    &#x27;շաբաթ&#x27;,
+  ] as const,
+}
+
+const dayPeriodValues = {
+  narrow: {
+    am: &#x27;a&#x27;,
+    pm: &#x27;p&#x27;,
+    midnight: &#x27;կեսգշ&#x27;,
+    noon: &#x27;կեսօր&#x27;,
+    morning: &#x27;առավոտ&#x27;,
+    afternoon: &#x27;ցերեկ&#x27;,
+    evening: &#x27;երեկո&#x27;,
+    night: &#x27;գիշեր&#x27;,
+  },
+  abbreviated: {
+    am: &#x27;AM&#x27;,
+    pm: &#x27;PM&#x27;,
+    midnight: &#x27;կեսգիշեր&#x27;,
+    noon: &#x27;կեսօր&#x27;,
+    morning: &#x27;առավոտ&#x27;,
+    afternoon: &#x27;ցերեկ&#x27;,
+    evening: &#x27;երեկո&#x27;,
+    night: &#x27;գիշեր&#x27;,
+  },
+  wide: {
+    am: &#x27;a.m.&#x27;,
+    pm: &#x27;p.m.&#x27;,
+    midnight: &#x27;կեսգիշեր&#x27;,
+    noon: &#x27;կեսօր&#x27;,
+    morning: &#x27;առավոտ&#x27;,
+    afternoon: &#x27;ցերեկ&#x27;,
+    evening: &#x27;երեկո&#x27;,
+    night: &#x27;գիշեր&#x27;,
+  },
+}
+
+const formattingDayPeriodValues = {
+  narrow: {
+    am: &#x27;a&#x27;,
+    pm: &#x27;p&#x27;,
+    midnight: &#x27;կեսգշ&#x27;,
+    noon: &#x27;կեսօր&#x27;,
+    morning: &#x27;առավոտը&#x27;,
+    afternoon: &#x27;ցերեկը&#x27;,
+    evening: &#x27;երեկոյան&#x27;,
+    night: &#x27;գիշերը&#x27;,
+  },
+  abbreviated: {
+    am: &#x27;AM&#x27;,
+    pm: &#x27;PM&#x27;,
+    midnight: &#x27;կեսգիշերին&#x27;,
+    noon: &#x27;կեսօրին&#x27;,
+    morning: &#x27;առավոտը&#x27;,
+    afternoon: &#x27;ցերեկը&#x27;,
+    evening: &#x27;երեկոյան&#x27;,
+    night: &#x27;գիշերը&#x27;,
+  },
+  wide: {
+    am: &#x27;a.m.&#x27;,
+    pm: &#x27;p.m.&#x27;,
+    midnight: &#x27;կեսգիշերին&#x27;,
+    noon: &#x27;կեսօրին&#x27;,
+    morning: &#x27;առավոտը&#x27;,
+    afternoon: &#x27;ցերեկը&#x27;,
+    evening: &#x27;երեկոյան&#x27;,
+    night: &#x27;գիշերը&#x27;,
+  },
+}
+
+const ordinalNumber: LocalizeFn&lt;number&gt; = (dirtyNumber, _options) =&gt; {
+  const number = Number(dirtyNumber)
+
+  // If ordinal numbers depend on context, for example,
+  // if they are different for different grammatical genders,
+  // use `options.unit`.
+  //
+  // `unit` can be &#x27;year&#x27;, &#x27;quarter&#x27;, &#x27;month&#x27;, &#x27;week&#x27;, &#x27;date&#x27;, &#x27;dayOfYear&#x27;,
+  // &#x27;day&#x27;, &#x27;hour&#x27;, &#x27;minute&#x27;, &#x27;second&#x27;.
+
+  const rem100 = number % 100
+  if (rem100 &lt; 10) {
+    if (rem100 % 10 === 1) {
+      return number + &#x27;֊ին&#x27;
+    }
+  }
+  return number + &#x27;֊րդ&#x27;
+}
+
+const localize: Localize = {
+  ordinalNumber,
+
+  era: buildLocalizeFn({
+    values: eraValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  quarter: buildLocalizeFn({
+    values: quarterValues,
+    defaultWidth: &#x27;wide&#x27;,
+    argumentCallback: (quarter) =&gt; quarter - 1,
+  }),
+
+  month: buildLocalizeFn({
+    values: monthValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  day: buildLocalizeFn({
+    values: dayValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues,
+    defaultWidth: &#x27;wide&#x27;,
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: &#x27;wide&#x27;,
+  }),
+}
+
+export default localize
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:20 GMT</p>
+    </body>
+  </html>
+  

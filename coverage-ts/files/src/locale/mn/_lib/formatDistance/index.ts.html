@@ -1,0 +1,168 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/mn/_lib/formatDistance/index.ts</td><td class="">95.33%</td><td class="">80%</td><td class="">107</td><td class="">102</td><td class="">5</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import type { FormatDistanceFn, FormatDistanceLocale } from &#x27;../../../types&#x27;
+
+type FormatDistanceTokenValue =
+  | string
+  | {
+      one: string
+      other: string
+    }
+
+const formatDistanceLocale: FormatDistanceLocale&lt;FormatDistanceTokenValue&gt; = {
+  lessThanXSeconds: {
+    one: &#x27;секунд хүрэхгүй&#x27;,
+    other: &#x27;{{count}} секунд хүрэхгүй&#x27;,
+  },
+
+  xSeconds: {
+    one: &#x27;1 секунд&#x27;,
+    other: &#x27;{{count}} секунд&#x27;,
+  },
+
+  halfAMinute: &#x27;хагас минут&#x27;,
+
+  lessThanXMinutes: {
+    one: &#x27;минут хүрэхгүй&#x27;,
+    other: &#x27;{{count}} минут хүрэхгүй&#x27;,
+  },
+
+  xMinutes: {
+    one: &#x27;1 минут&#x27;,
+    other: &#x27;{{count}} минут&#x27;,
+  },
+
+  aboutXHours: {
+    one: &#x27;ойролцоогоор 1 цаг&#x27;,
+    other: &#x27;ойролцоогоор {{count}} цаг&#x27;,
+  },
+
+  xHours: {
+    one: &#x27;1 цаг&#x27;,
+    other: &#x27;{{count}} цаг&#x27;,
+  },
+
+  xDays: {
+    one: &#x27;1 өдөр&#x27;,
+    other: &#x27;{{count}} өдөр&#x27;,
+  },
+
+  aboutXWeeks: {
+    one: &#x27;ойролцоогоор 1 долоо хоног&#x27;,
+    other: &#x27;ойролцоогоор {{count}} долоо хоног&#x27;,
+  },
+
+  xWeeks: {
+    one: &#x27;1 долоо хоног&#x27;,
+    other: &#x27;{{count}} долоо хоног&#x27;,
+  },
+
+  aboutXMonths: {
+    one: &#x27;ойролцоогоор 1 сар&#x27;,
+    other: &#x27;ойролцоогоор {{count}} сар&#x27;,
+  },
+
+  xMonths: {
+    one: &#x27;1 сар&#x27;,
+    other: &#x27;{{count}} сар&#x27;,
+  },
+
+  aboutXYears: {
+    one: &#x27;ойролцоогоор 1 жил&#x27;,
+    other: &#x27;ойролцоогоор {{count}} жил&#x27;,
+  },
+
+  xYears: {
+    one: &#x27;1 жил&#x27;,
+    other: &#x27;{{count}} жил&#x27;,
+  },
+
+  overXYears: {
+    one: &#x27;1 жил гаран&#x27;,
+    other: &#x27;{{count}} жил гаран&#x27;,
+  },
+
+  almostXYears: {
+    one: &#x27;бараг 1 жил&#x27;,
+    other: &#x27;бараг {{count}} жил&#x27;,
+  },
+}
+
+const formatDistance: FormatDistanceFn = (token, count, options) =&gt; {
+  let result
+
+  const tokenValue = formatDistanceLocale[token]
+  if (typeof tokenValue === &#x27;string&#x27;) {
+    result = tokenValue
+  } else if (count === 1) {
+    result = tokenValue.one
+  } else {
+    result = tokenValue.other.replace(&#x27;{{count}}&#x27;, String(count))
+  }
+
+  if (options?.addSuffix) {
+    /**
+     * Append genitive case
+     */
+    const words = result.split(&#x27; &#x27;)
+    const lastword = words.pop()
+    result = words.join(&#x27; &#x27;)
+    switch (lastword) {
+      case &#x27;секунд&#x27;:
+        result += &#x27; секундийн&#x27;
+        break
+      case &#x27;минут&#x27;:
+        result += &#x27; минутын&#x27;
+        break
+      case &#x27;цаг&#x27;:
+        result += &#x27; цагийн&#x27;
+        break
+      case &#x27;өдөр&#x27;:
+        result += &#x27; өдрийн&#x27;
+        break
+      case &#x27;сар&#x27;:
+        result += &#x27; сарын&#x27;
+        break
+      case &#x27;жил&#x27;:
+        result += &#x27; жилийн&#x27;
+        break
+      case &#x27;хоног&#x27;:
+        result += &#x27; хоногийн&#x27;
+        break
+      case &#x27;гаран&#x27;:
+        result += &#x27; гараны&#x27;
+        break
+      case &#x27;хүрэхгүй&#x27;:
+        result += &#x27; хүрэхгүй хугацааны&#x27;
+        break
+      default:
+        result += lastword + &#x27;-н&#x27;
+    }
+
+    if (options.comparison &amp;&amp; options.comparison &gt; 0) {
+      return result + &#x27; дараа&#x27;
+    } else {
+      return result + &#x27; өмнө&#x27;
+    }
+  }
+
+  return result
+}
+
+export default formatDistance
+</textarea><pre id="annotations" style="display:none">[{&quot;file&quot;:&quot;src/locale/mn/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:89,&quot;character&quot;:6,&quot;text&quot;:&quot;result&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/mn/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:93,&quot;character&quot;:4,&quot;text&quot;:&quot;result&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/mn/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:95,&quot;character&quot;:4,&quot;text&quot;:&quot;result&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/mn/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:97,&quot;character&quot;:4,&quot;text&quot;:&quot;result&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/mn/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:106,&quot;character&quot;:4,&quot;text&quot;:&quot;result&quot;,&quot;kind&quot;:1}]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:20 GMT</p>
+    </body>
+  </html>
+  

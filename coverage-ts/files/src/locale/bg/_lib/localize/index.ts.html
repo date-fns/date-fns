@@ -1,0 +1,186 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/bg/_lib/localize/index.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">140</td><td class="">140</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import type { LocaleUnit, Localize, LocalizeFn } from &#x27;../../../types&#x27;
+import buildLocalizeFn from &#x27;../../../_lib/buildLocalizeFn/index&#x27;
+
+const eraValues = {
+  narrow: [&#x27;пр.н.е.&#x27;, &#x27;н.е.&#x27;] as const,
+  abbreviated: [&#x27;преди н. е.&#x27;, &#x27;н. е.&#x27;] as const,
+  wide: [&#x27;преди новата ера&#x27;, &#x27;новата ера&#x27;] as const,
+}
+
+const quarterValues = {
+  narrow: [&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;, &#x27;4&#x27;] as const,
+  abbreviated: [
+    &#x27;1-во тримес.&#x27;,
+    &#x27;2-ро тримес.&#x27;,
+    &#x27;3-то тримес.&#x27;,
+    &#x27;4-то тримес.&#x27;,
+  ] as const,
+  wide: [
+    &#x27;1-во тримесечие&#x27;,
+    &#x27;2-ро тримесечие&#x27;,
+    &#x27;3-то тримесечие&#x27;,
+    &#x27;4-то тримесечие&#x27;,
+  ] as const,
+}
+
+const monthValues = {
+  abbreviated: [
+    &#x27;яну&#x27;,
+    &#x27;фев&#x27;,
+    &#x27;мар&#x27;,
+    &#x27;апр&#x27;,
+    &#x27;май&#x27;,
+    &#x27;юни&#x27;,
+    &#x27;юли&#x27;,
+    &#x27;авг&#x27;,
+    &#x27;сеп&#x27;,
+    &#x27;окт&#x27;,
+    &#x27;ное&#x27;,
+    &#x27;дек&#x27;,
+  ] as const,
+  wide: [
+    &#x27;януари&#x27;,
+    &#x27;февруари&#x27;,
+    &#x27;март&#x27;,
+    &#x27;април&#x27;,
+    &#x27;май&#x27;,
+    &#x27;юни&#x27;,
+    &#x27;юли&#x27;,
+    &#x27;август&#x27;,
+    &#x27;септември&#x27;,
+    &#x27;октомври&#x27;,
+    &#x27;ноември&#x27;,
+    &#x27;декември&#x27;,
+  ] as const,
+}
+
+const dayValues = {
+  narrow: [&#x27;Н&#x27;, &#x27;П&#x27;, &#x27;В&#x27;, &#x27;С&#x27;, &#x27;Ч&#x27;, &#x27;П&#x27;, &#x27;С&#x27;] as const,
+  short: [&#x27;нд&#x27;, &#x27;пн&#x27;, &#x27;вт&#x27;, &#x27;ср&#x27;, &#x27;чт&#x27;, &#x27;пт&#x27;, &#x27;сб&#x27;] as const,
+  abbreviated: [&#x27;нед&#x27;, &#x27;пон&#x27;, &#x27;вто&#x27;, &#x27;сря&#x27;, &#x27;чет&#x27;, &#x27;пет&#x27;, &#x27;съб&#x27;] as const,
+  wide: [
+    &#x27;неделя&#x27;,
+    &#x27;понеделник&#x27;,
+    &#x27;вторник&#x27;,
+    &#x27;сряда&#x27;,
+    &#x27;четвъртък&#x27;,
+    &#x27;петък&#x27;,
+    &#x27;събота&#x27;,
+  ] as const,
+}
+
+const dayPeriodValues = {
+  wide: {
+    am: &#x27;преди обяд&#x27;,
+    pm: &#x27;след обяд&#x27;,
+    midnight: &#x27;в полунощ&#x27;,
+    noon: &#x27;на обяд&#x27;,
+    morning: &#x27;сутринта&#x27;,
+    afternoon: &#x27;следобед&#x27;,
+    evening: &#x27;вечерта&#x27;,
+    night: &#x27;през нощта&#x27;,
+  },
+}
+
+function isFeminine(unit: LocaleUnit | undefined): boolean {
+  return (
+    unit === &#x27;year&#x27; || unit === &#x27;week&#x27; || unit === &#x27;minute&#x27; || unit === &#x27;second&#x27;
+  )
+}
+
+function isNeuter(unit: LocaleUnit | undefined): boolean {
+  return unit === &#x27;quarter&#x27;
+}
+
+function numberWithSuffix(
+  number: number,
+  unit: LocaleUnit | undefined,
+  masculine: string,
+  feminine: string,
+  neuter: string
+): string {
+  const suffix = isNeuter(unit)
+    ? neuter
+    : isFeminine(unit)
+    ? feminine
+    : masculine
+  return number + &#x27;-&#x27; + suffix
+}
+
+const ordinalNumber: LocalizeFn&lt;number&gt; = (dirtyNumber, options) =&gt; {
+  const number = Number(dirtyNumber)
+  const unit = options?.unit
+
+  if (number === 0) {
+    return numberWithSuffix(0, unit, &#x27;ев&#x27;, &#x27;ева&#x27;, &#x27;ево&#x27;)
+  } else if (number % 1000 === 0) {
+    return numberWithSuffix(number, unit, &#x27;ен&#x27;, &#x27;на&#x27;, &#x27;но&#x27;)
+  } else if (number % 100 === 0) {
+    return numberWithSuffix(number, unit, &#x27;тен&#x27;, &#x27;тна&#x27;, &#x27;тно&#x27;)
+  }
+
+  const rem100 = number % 100
+  if (rem100 &gt; 20 || rem100 &lt; 10) {
+    switch (rem100 % 10) {
+      case 1:
+        return numberWithSuffix(number, unit, &#x27;ви&#x27;, &#x27;ва&#x27;, &#x27;во&#x27;)
+      case 2:
+        return numberWithSuffix(number, unit, &#x27;ри&#x27;, &#x27;ра&#x27;, &#x27;ро&#x27;)
+      case 7:
+      case 8:
+        return numberWithSuffix(number, unit, &#x27;ми&#x27;, &#x27;ма&#x27;, &#x27;мо&#x27;)
+    }
+  }
+
+  return numberWithSuffix(number, unit, &#x27;ти&#x27;, &#x27;та&#x27;, &#x27;то&#x27;)
+}
+
+const localize: Localize = {
+  ordinalNumber,
+
+  era: buildLocalizeFn({
+    values: eraValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  quarter: buildLocalizeFn({
+    values: quarterValues,
+    defaultWidth: &#x27;wide&#x27;,
+    argumentCallback: (quarter) =&gt; quarter - 1,
+  }),
+
+  month: buildLocalizeFn({
+    values: monthValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  day: buildLocalizeFn({
+    values: dayValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+}
+
+export default localize
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:19 GMT</p>
+    </body>
+  </html>
+  

@@ -1,0 +1,164 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/intlFormat/index.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">72</td><td class="">72</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">export type IntlFormatLocale = Intl.ResolvedDateTimeFormatOptions[&#x27;locale&#x27;]
+
+/**
+ * The format options (see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#options)
+ */
+export type IntlFormatFormatOptions = Intl.DateTimeFormatOptions
+
+/**
+ * The locale options.
+ */
+export interface IntlFormatLocaleOptions {
+  /** The locale(s) to use (see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument) */
+  locale: IntlFormatLocale | IntlFormatLocale[]
+}
+
+/**
+ * @name intlFormat
+ * @category Common Helpers
+ * @summary Format the date with Intl.DateTimeFormat (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat).
+ *
+ * @description
+ * Return the formatted date string in the given format.
+ * The method uses [`Intl.DateTimeFormat`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat) inside.
+ * formatOptions are the same as [`Intl.DateTimeFormat` options](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat#using_options)
+ *
+ * &gt; ⚠️ Please note that before Node version 13.0.0, only the locale data for en-US is available by default.
+ *
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date to format
+ *
+ * @returns The formatted date string
+ *
+ * @throws {RangeError} `date` must not be Invalid Date
+ *
+ * @example
+ * // Represent 10 October 2019 in middle-endian format:
+ * const result = intlFormat(new Date(2019, 9, 4, 12, 30, 13, 456))
+ * //=&gt; 10/4/2019
+ */
+export default function intlFormat&lt;DateType extends Date&gt;(
+  date: DateType
+): string
+
+/**
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date to format
+ * @param localeOptions - An object with locale
+ *
+ * @returns The formatted date string
+ *
+ * @throws {RangeError} `date` must not be Invalid Date
+ *
+ * @example
+ * // Represent 10 October 2019 in Korean.
+ * // Convert the date with locale&#x27;s options.
+ * const result = intlFormat(new Date(2019, 9, 4, 12, 30, 13, 456), {
+ *   locale: &#x27;ko-KR&#x27;,
+ * })
+ * //=&gt; 2019. 10. 4.
+ */
+export default function intlFormat&lt;DateType extends Date&gt;(
+  date: DateType,
+  localeOptions: IntlFormatLocaleOptions
+): string
+
+/**
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date to format
+ * @param formatOptions - The format options
+ *
+ * @returns The formatted date string
+ *
+ * @throws {RangeError} `date` must not be Invalid Date
+ *
+ * @example
+ * // Represent 10 October 2019.
+ * // Convert the date with format&#x27;s options.
+ * const result = intlFormat.default(new Date(2019, 9, 4, 12, 30, 13, 456), {
+ *   year: &#x27;numeric&#x27;,
+ *   month: &#x27;numeric&#x27;,
+ *   day: &#x27;numeric&#x27;,
+ *   hour: &#x27;numeric&#x27;,
+ * })
+ * //=&gt; 10/4/2019, 12 PM
+ */
+export default function intlFormat&lt;DateType extends Date&gt;(
+  date: DateType,
+  formatOptions: IntlFormatFormatOptions
+): string
+
+/**
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date to format
+ * @param formatOptions - The format options
+ * @param localeOptions - An object with locale
+ *
+ * @returns The formatted date string
+ *
+ * @throws {RangeError} `date` must not be Invalid Date
+ *
+ * @example
+ * // Represent 10 October 2019 in German.
+ * // Convert the date with format&#x27;s options and locale&#x27;s options.
+ * const result = intlFormat(new Date(2019, 9, 4, 12, 30, 13, 456), {
+ *   weekday: &#x27;long&#x27;,
+ *   year: &#x27;numeric&#x27;,
+ *   month: &#x27;long&#x27;,
+ *   day: &#x27;numeric&#x27;,
+ * }, {
+ *   locale: &#x27;de-DE&#x27;,
+ * })
+ * //=&gt; Freitag, 4. Oktober 2019
+ */
+export default function intlFormat&lt;DateType extends Date&gt;(
+  date: DateType,
+  formatOptions: IntlFormatFormatOptions,
+  localeOptions: IntlFormatLocaleOptions
+): string
+
+export default function intlFormat&lt;DateType extends Date&gt;(
+  date: DateType,
+  formatOrLocale?: IntlFormatFormatOptions | IntlFormatLocaleOptions,
+  localeOptions?: IntlFormatLocaleOptions
+): string {
+  let formatOptions: IntlFormatFormatOptions | undefined
+
+  if (isFormatOptions(formatOrLocale)) {
+    formatOptions = formatOrLocale
+  } else {
+    localeOptions = formatOrLocale
+  }
+
+  return new Intl.DateTimeFormat(localeOptions?.locale, formatOptions).format(
+    date
+  )
+}
+
+function isFormatOptions(
+  opts: IntlFormatLocaleOptions | IntlFormatFormatOptions | undefined
+): opts is IntlFormatFormatOptions {
+  return opts !== undefined &amp;&amp; !(&#x27;locale&#x27; in opts)
+}
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:17 GMT</p>
+    </body>
+  </html>
+  

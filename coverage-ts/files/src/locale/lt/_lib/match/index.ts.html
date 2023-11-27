@@ -1,0 +1,166 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/lt/_lib/match/index.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">124</td><td class="">124</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import type { Quarter } from &#x27;../../../../types&#x27;
+import type { Match } from &#x27;../../../types&#x27;
+import buildMatchFn from &#x27;../../../_lib/buildMatchFn/index&#x27;
+import buildMatchPatternFn from &#x27;../../../_lib/buildMatchPatternFn/index&#x27;
+
+const matchOrdinalNumberPattern = /^(\d+)(-oji)?/i
+const parseOrdinalNumberPattern = /\d+/i
+
+const matchEraPatterns = {
+  narrow: /^p(r|o)\.?\s?(kr\.?|me)/i,
+  abbreviated: /^(pr\.\s?(kr\.|m\.\s?e\.)|po\s?kr\.|mūsų eroje)/i,
+  wide: /^(prieš Kristų|prieš mūsų erą|po Kristaus|mūsų eroje)/i,
+}
+const parseEraPatterns = {
+  wide: [/prieš/i, /(po|mūsų)/i] as const,
+  any: [/^pr/i, /^(po|m)/i] as const,
+}
+
+const matchQuarterPatterns = {
+  narrow: /^([1234])/i,
+  abbreviated: /^(I|II|III|IV)\s?ketv?\.?/i,
+  wide: /^(I|II|III|IV)\s?ketvirtis/i,
+}
+const parseQuarterPatterns = {
+  narrow: [/1/i, /2/i, /3/i, /4/i] as const,
+  any: [/I$/i, /II$/i, /III/i, /IV/i] as const,
+}
+
+const matchMonthPatterns = {
+  narrow: /^[svkbglr]/i,
+  abbreviated: /^(saus\.|vas\.|kov\.|bal\.|geg\.|birž\.|liep\.|rugp\.|rugs\.|spal\.|lapkr\.|gruod\.)/i,
+  wide: /^(sausi(s|o)|vasari(s|o)|kov(a|o)s|balandž?i(s|o)|gegužės?|birželi(s|o)|liep(a|os)|rugpjū(t|č)i(s|o)|rugsėj(is|o)|spali(s|o)|lapkri(t|č)i(s|o)|gruodž?i(s|o))/i,
+}
+const parseMonthPatterns = {
+  narrow: [
+    /^s/i,
+    /^v/i,
+    /^k/i,
+    /^b/i,
+    /^g/i,
+    /^b/i,
+    /^l/i,
+    /^r/i,
+    /^r/i,
+    /^s/i,
+    /^l/i,
+    /^g/i,
+  ] as const,
+  any: [
+    /^saus/i,
+    /^vas/i,
+    /^kov/i,
+    /^bal/i,
+    /^geg/i,
+    /^birž/i,
+    /^liep/i,
+    /^rugp/i,
+    /^rugs/i,
+    /^spal/i,
+    /^lapkr/i,
+    /^gruod/i,
+  ] as const,
+}
+
+const matchDayPatterns = {
+  narrow: /^[spatkš]/i,
+  short: /^(sk|pr|an|tr|kt|pn|št)/i,
+  abbreviated: /^(sk|pr|an|tr|kt|pn|št)/i,
+  wide: /^(sekmadien(is|į)|pirmadien(is|į)|antradien(is|į)|trečiadien(is|į)|ketvirtadien(is|į)|penktadien(is|į)|šeštadien(is|į))/i,
+}
+const parseDayPatterns = {
+  narrow: [/^s/i, /^p/i, /^a/i, /^t/i, /^k/i, /^p/i, /^š/i] as const,
+  wide: [/^se/i, /^pi/i, /^an/i, /^tr/i, /^ke/i, /^pe/i, /^še/i] as const,
+  any: [/^sk/i, /^pr/i, /^an/i, /^tr/i, /^kt/i, /^pn/i, /^št/i] as const,
+}
+
+const matchDayPeriodPatterns = {
+  narrow: /^(pr.\s?p.|pop.|vidurnaktis|(vidurdienis|perpiet)|rytas|(diena|popietė)|vakaras|naktis)/i,
+  any: /^(priešpiet|popiet$|vidurnaktis|(vidurdienis|perpiet)|rytas|(diena|popietė)|vakaras|naktis)/i,
+}
+const parseDayPeriodPatterns = {
+  narrow: {
+    am: /^pr/i,
+    pm: /^pop./i,
+    midnight: /^vidurnaktis/i,
+    noon: /^(vidurdienis|perp)/i,
+    morning: /rytas/i,
+    afternoon: /(die|popietė)/i,
+    evening: /vakaras/i,
+    night: /naktis/i,
+  },
+  any: {
+    am: /^pr/i,
+    pm: /^popiet$/i,
+    midnight: /^vidurnaktis/i,
+    noon: /^(vidurdienis|perp)/i,
+    morning: /rytas/i,
+    afternoon: /(die|popietė)/i,
+    evening: /vakaras/i,
+    night: /naktis/i,
+  },
+}
+
+const match: Match = {
+  ordinalNumber: buildMatchPatternFn({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: (value) =&gt; parseInt(value, 10),
+  }),
+
+  era: buildMatchFn({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: &#x27;wide&#x27;,
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: &#x27;any&#x27;,
+  }),
+
+  quarter: buildMatchFn({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: &#x27;wide&#x27;,
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: &#x27;any&#x27;,
+    valueCallback: (index) =&gt; (index + 1) as Quarter,
+  }),
+
+  month: buildMatchFn({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: &#x27;wide&#x27;,
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: &#x27;any&#x27;,
+  }),
+
+  day: buildMatchFn({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: &#x27;wide&#x27;,
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: &#x27;any&#x27;,
+  }),
+
+  dayPeriod: buildMatchFn({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: &#x27;any&#x27;,
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: &#x27;any&#x27;,
+  }),
+}
+
+export default match
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:20 GMT</p>
+    </body>
+  </html>
+  

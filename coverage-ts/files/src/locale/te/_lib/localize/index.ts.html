@@ -1,0 +1,210 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/te/_lib/localize/index.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">132</td><td class="">132</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import type { Localize, LocalizeFn } from &#x27;../../../types&#x27;
+import buildLocalizeFn from &#x27;../../../_lib/buildLocalizeFn/index&#x27;
+
+// Source: https://www.unicode.org/cldr/charts/32/summary/te.html
+// Source: https://dsal.uchicago.edu/dictionaries/brown/
+
+// CLDR #1605 - #1608
+const eraValues = {
+  narrow: [&#x27;క్రీ.పూ.&#x27;, &#x27;క్రీ.శ.&#x27;] as const,
+  abbreviated: [&#x27;క్రీ.పూ.&#x27;, &#x27;క్రీ.శ.&#x27;] as const,
+  wide: [&#x27;క్రీస్తు పూర్వం&#x27;, &#x27;క్రీస్తుశకం&#x27;] as const,
+}
+
+// CLDR #1613 - #1628
+const quarterValues = {
+  narrow: [&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;, &#x27;4&#x27;] as const,
+  abbreviated: [&#x27;త్రై1&#x27;, &#x27;త్రై2&#x27;, &#x27;త్రై3&#x27;, &#x27;త్రై4&#x27;] as const,
+  wide: [
+    &#x27;1వ త్రైమాసికం&#x27;,
+    &#x27;2వ త్రైమాసికం&#x27;,
+    &#x27;3వ త్రైమాసికం&#x27;,
+    &#x27;4వ త్రైమాసికం&#x27;,
+  ] as const,
+}
+
+// CLDR #1637 - #1708
+const monthValues = {
+  narrow: [
+    &#x27;జ&#x27;,
+    &#x27;ఫి&#x27;,
+    &#x27;మా&#x27;,
+    &#x27;ఏ&#x27;,
+    &#x27;మే&#x27;,
+    &#x27;జూ&#x27;,
+    &#x27;జు&#x27;,
+    &#x27;ఆ&#x27;,
+    &#x27;సె&#x27;,
+    &#x27;అ&#x27;,
+    &#x27;న&#x27;,
+    &#x27;డి&#x27;,
+  ] as const,
+  abbreviated: [
+    &#x27;జన&#x27;,
+    &#x27;ఫిబ్ర&#x27;,
+    &#x27;మార్చి&#x27;,
+    &#x27;ఏప్రి&#x27;,
+    &#x27;మే&#x27;,
+    &#x27;జూన్&#x27;,
+    &#x27;జులై&#x27;,
+    &#x27;ఆగ&#x27;,
+    &#x27;సెప్టెం&#x27;,
+    &#x27;అక్టో&#x27;,
+    &#x27;నవం&#x27;,
+    &#x27;డిసెం&#x27;,
+  ] as const,
+  wide: [
+    &#x27;జనవరి&#x27;,
+    &#x27;ఫిబ్రవరి&#x27;,
+    &#x27;మార్చి&#x27;,
+    &#x27;ఏప్రిల్&#x27;,
+    &#x27;మే&#x27;,
+    &#x27;జూన్&#x27;,
+    &#x27;జులై&#x27;,
+    &#x27;ఆగస్టు&#x27;,
+    &#x27;సెప్టెంబర్&#x27;,
+    &#x27;అక్టోబర్&#x27;,
+    &#x27;నవంబర్&#x27;,
+    &#x27;డిసెంబర్&#x27;,
+  ] as const,
+}
+
+// CLDR #1709 - #1764
+const dayValues = {
+  narrow: [&#x27;ఆ&#x27;, &#x27;సో&#x27;, &#x27;మ&#x27;, &#x27;బు&#x27;, &#x27;గు&#x27;, &#x27;శు&#x27;, &#x27;శ&#x27;] as const,
+  short: [&#x27;ఆది&#x27;, &#x27;సోమ&#x27;, &#x27;మంగళ&#x27;, &#x27;బుధ&#x27;, &#x27;గురు&#x27;, &#x27;శుక్ర&#x27;, &#x27;శని&#x27;] as const,
+  abbreviated: [&#x27;ఆది&#x27;, &#x27;సోమ&#x27;, &#x27;మంగళ&#x27;, &#x27;బుధ&#x27;, &#x27;గురు&#x27;, &#x27;శుక్ర&#x27;, &#x27;శని&#x27;] as const,
+  wide: [
+    &#x27;ఆదివారం&#x27;,
+    &#x27;సోమవారం&#x27;,
+    &#x27;మంగళవారం&#x27;,
+    &#x27;బుధవారం&#x27;,
+    &#x27;గురువారం&#x27;,
+    &#x27;శుక్రవారం&#x27;,
+    &#x27;శనివారం&#x27;,
+  ] as const,
+}
+
+// CLDR #1767 - #1806
+const dayPeriodValues = {
+  narrow: {
+    am: &#x27;పూర్వాహ్నం&#x27;,
+    pm: &#x27;అపరాహ్నం&#x27;,
+    midnight: &#x27;అర్ధరాత్రి&#x27;,
+    noon: &#x27;మిట్టమధ్యాహ్నం&#x27;,
+    morning: &#x27;ఉదయం&#x27;,
+    afternoon: &#x27;మధ్యాహ్నం&#x27;,
+    evening: &#x27;సాయంత్రం&#x27;,
+    night: &#x27;రాత్రి&#x27;,
+  },
+  abbreviated: {
+    am: &#x27;పూర్వాహ్నం&#x27;,
+    pm: &#x27;అపరాహ్నం&#x27;,
+    midnight: &#x27;అర్ధరాత్రి&#x27;,
+    noon: &#x27;మిట్టమధ్యాహ్నం&#x27;,
+    morning: &#x27;ఉదయం&#x27;,
+    afternoon: &#x27;మధ్యాహ్నం&#x27;,
+    evening: &#x27;సాయంత్రం&#x27;,
+    night: &#x27;రాత్రి&#x27;,
+  },
+  wide: {
+    am: &#x27;పూర్వాహ్నం&#x27;,
+    pm: &#x27;అపరాహ్నం&#x27;,
+    midnight: &#x27;అర్ధరాత్రి&#x27;,
+    noon: &#x27;మిట్టమధ్యాహ్నం&#x27;,
+    morning: &#x27;ఉదయం&#x27;,
+    afternoon: &#x27;మధ్యాహ్నం&#x27;,
+    evening: &#x27;సాయంత్రం&#x27;,
+    night: &#x27;రాత్రి&#x27;,
+  },
+}
+
+const formattingDayPeriodValues = {
+  narrow: {
+    am: &#x27;పూర్వాహ్నం&#x27;,
+    pm: &#x27;అపరాహ్నం&#x27;,
+    midnight: &#x27;అర్ధరాత్రి&#x27;,
+    noon: &#x27;మిట్టమధ్యాహ్నం&#x27;,
+    morning: &#x27;ఉదయం&#x27;,
+    afternoon: &#x27;మధ్యాహ్నం&#x27;,
+    evening: &#x27;సాయంత్రం&#x27;,
+    night: &#x27;రాత్రి&#x27;,
+  },
+  abbreviated: {
+    am: &#x27;పూర్వాహ్నం&#x27;,
+    pm: &#x27;అపరాహ్నం&#x27;,
+    midnight: &#x27;అర్ధరాత్రి&#x27;,
+    noon: &#x27;మిట్టమధ్యాహ్నం&#x27;,
+    morning: &#x27;ఉదయం&#x27;,
+    afternoon: &#x27;మధ్యాహ్నం&#x27;,
+    evening: &#x27;సాయంత్రం&#x27;,
+    night: &#x27;రాత్రి&#x27;,
+  },
+  wide: {
+    am: &#x27;పూర్వాహ్నం&#x27;,
+    pm: &#x27;అపరాహ్నం&#x27;,
+    midnight: &#x27;అర్ధరాత్రి&#x27;,
+    noon: &#x27;మిట్టమధ్యాహ్నం&#x27;,
+    morning: &#x27;ఉదయం&#x27;,
+    afternoon: &#x27;మధ్యాహ్నం&#x27;,
+    evening: &#x27;సాయంత్రం&#x27;,
+    night: &#x27;రాత్రి&#x27;,
+  },
+}
+
+const ordinalNumber: LocalizeFn&lt;number&gt; = (dirtyNumber, _options) =&gt; {
+  const number = Number(dirtyNumber)
+  return number + &#x27;వ&#x27;
+}
+
+const localize: Localize = {
+  ordinalNumber,
+
+  era: buildLocalizeFn({
+    values: eraValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  quarter: buildLocalizeFn({
+    values: quarterValues,
+    defaultWidth: &#x27;wide&#x27;,
+    argumentCallback: (quarter) =&gt; quarter - 1,
+  }),
+
+  month: buildLocalizeFn({
+    values: monthValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  day: buildLocalizeFn({
+    values: dayValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues,
+    defaultWidth: &#x27;wide&#x27;,
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: &#x27;wide&#x27;,
+  }),
+}
+
+export default localize
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:21 GMT</p>
+    </body>
+  </html>
+  

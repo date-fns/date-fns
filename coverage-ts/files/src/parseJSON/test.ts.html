@@ -1,0 +1,150 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>test.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/parseJSON/test.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">216</td><td class="">216</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">/* eslint-env mocha */
+
+import assert from &#x27;assert&#x27;
+import { describe, it } from &#x27;vitest&#x27;
+import parseJSON from &#x27;./index&#x27;
+import format from &#x27;../format/index&#x27;
+
+describe(&#x27;parseJSON&#x27;, () =&gt; {
+  it(&#x27;parses a formatted new Date() back to UTC - issue 2149&#x27;, () =&gt; {
+    const date = new Date()
+    const jsonFormat = format(date, &quot;yyyy-MM-dd&#x27;T&#x27;HH:mm:ss.SSSxxx&quot;)
+    const parsedDate = parseJSON(jsonFormat)
+    assert.strictEqual(parsedDate.toISOString(), date.toISOString())
+  })
+
+  it(&#x27;parses a formatted date with an hour of offset back to UTC - issue 2149&#x27;, () =&gt; {
+    const date = &#x27;2021-01-09T13:18:10.873+01:00&#x27;
+    const expectedDate = new Date(&#x27;2021-01-09T12:18:10.873Z&#x27;)
+    const parsedDate = parseJSON(date)
+    assert.strictEqual(parsedDate.toISOString(), expectedDate.toISOString())
+  })
+
+  it(&#x27;parses a formatted date with 2 hours of offset back to UTC - issue 2149&#x27;, () =&gt; {
+    const date = &#x27;2021-01-09T13:18:10.873+02:00&#x27;
+    const expectedDate = new Date(&#x27;2021-01-09T11:18:10.873Z&#x27;)
+    const parsedDate = parseJSON(date)
+    assert.strictEqual(parsedDate.toISOString(), expectedDate.toISOString())
+  })
+
+  it(&#x27;parses a formatted date with -2 hours of offset back to UTC - issue 2149&#x27;, () =&gt; {
+    const date = &#x27;2021-01-09T13:18:10.873-02:00&#x27;
+    const expectedDate = new Date(&#x27;2021-01-09T15:18:10.873Z&#x27;)
+    const parsedDate = parseJSON(date)
+    assert.strictEqual(parsedDate.toISOString(), expectedDate.toISOString())
+  })
+
+  it(&#x27;parses a formatted Indian Standart Time in Asia/Kolkata with +5:30 hours of offset back to UTC - issue 2149&#x27;, () =&gt; {
+    const date = &#x27;2021-02-15T02:56:04.678+05:30&#x27;
+    const expectedDate = new Date(&#x27;2021-02-14T21:26:04.678Z&#x27;)
+    const parsedDate = parseJSON(date)
+    assert.strictEqual(parsedDate.toISOString(), expectedDate.toISOString())
+  })
+
+  it(&#x27;parses a formatted time in Asia/Kathmandu with +5:45 hours of offset back to UTC - issue 2149&#x27;, () =&gt; {
+    const date = &#x27;2021-02-15T17:45:00.900+05:45&#x27;
+    const expectedDate = new Date(&#x27;2021-02-15T12:00:00.900Z&#x27;)
+    const parsedDate = parseJSON(date)
+    assert.strictEqual(parsedDate.toISOString(), expectedDate.toISOString())
+  })
+
+  it(&#x27;parses a fully formed ISO date with Z&#x27;, () =&gt; {
+    const date = &#x27;2000-03-15T05:20:10.123Z&#x27;
+    const parsedDate = parseJSON(date)
+    assert.strictEqual(parsedDate.toISOString(), date)
+  })
+
+  it(&#x27;parses a fully formed ISO date with Z without ms&#x27;, () =&gt; {
+    const date = &#x27;2000-03-15T05:20:10Z&#x27;
+    const expectedDate = &#x27;2000-03-15T05:20:10.000Z&#x27;
+    const parsedDate = parseJSON(date)
+    assert.strictEqual(parsedDate.toISOString(), expectedDate)
+  })
+
+  it(&#x27;parses a fully formed ISO date with zero offset&#x27;, () =&gt; {
+    const zeroOffset = &#x27;2000-03-15T05:20:10+00:00&#x27;
+    const expectedDate = &#x27;2000-03-15T05:20:10.000Z&#x27;
+    const parsedDate = parseJSON(zeroOffset)
+    assert.strictEqual(parsedDate.toISOString(), expectedDate)
+  })
+
+  it(&#x27;parses a fully formed ISO date with zero offset without colon&#x27;, () =&gt; {
+    const zeroOffset = &#x27;2000-03-15T05:20:10+0000&#x27;
+    const expectedDate = &#x27;2000-03-15T05:20:10.000Z&#x27;
+    const parsedDate = parseJSON(zeroOffset)
+    assert.strictEqual(parsedDate.toISOString(), expectedDate)
+  })
+
+  it(&#x27;parses a fully formed ISO date without Z&#x27;, () =&gt; {
+    const date = &#x27;2000-03-15T05:20:10.123&#x27;
+    const expectedDate = &#x27;2000-03-15T05:20:10.123Z&#x27;
+    const parsedDate = parseJSON(date)
+    assert.strictEqual(parsedDate.toISOString(), expectedDate)
+  })
+
+  it(&#x27;parses a fully formed ISO date without Z and with 6-digit millisecond part&#x27;, () =&gt; {
+    const date = &#x27;2000-03-15T05:20:10.123456&#x27;
+    const expectedDate = &#x27;2000-03-15T05:20:10.123Z&#x27;
+    const parsedDate = parseJSON(date)
+    assert.strictEqual(parsedDate.toISOString(), expectedDate)
+  })
+
+  it(&#x27;parses a fully formed ISO with 1-digit millisecond part&#x27;, () =&gt; {
+    const date = &#x27;2000-03-15T05:20:10.1Z&#x27;
+    const expectedDate = &#x27;2000-03-15T05:20:10.100Z&#x27;
+    const parsedDate = parseJSON(date)
+    assert.strictEqual(parsedDate.toISOString(), expectedDate)
+  })
+
+  it(&#x27;parses a fully formed ISO with 2-digit millisecond part&#x27;, () =&gt; {
+    const date = &#x27;2000-03-15T05:20:10.12Z&#x27;
+    const expectedDate = &#x27;2000-03-15T05:20:10.120Z&#x27;
+    const parsedDate = parseJSON(date)
+    assert.strictEqual(parsedDate.toISOString(), expectedDate)
+  })
+
+  it(&#x27;parses supported formats with a space time separator instead of a T&#x27;, () =&gt; {
+    const date = &#x27;2000-03-15 05:20:10.123Z&#x27;
+    const expectedDate = &#x27;2000-03-15T05:20:10.123Z&#x27;
+    const parsedDate = parseJSON(date)
+    assert.strictEqual(parsedDate.toISOString(), expectedDate)
+  })
+
+  it(&#x27;parses the SQL datetime format without milliseconds&#x27;, () =&gt; {
+    const date = &#x27;2000-03-15 05:20:10&#x27;
+    const expectedDate = &#x27;2000-03-15T05:20:10.000Z&#x27;
+    const parsedDate = parseJSON(date)
+    assert.strictEqual(parsedDate.toISOString(), expectedDate)
+  })
+
+  it(&#x27;parses the SQL datetime format with up to 7 millisecond digits&#x27;, () =&gt; {
+    const date = &#x27;2000-03-15 05:20:10.1234567&#x27;
+    const expectedDate = &#x27;2000-03-15T05:20:10.123Z&#x27;
+    const parsedDate = parseJSON(date)
+    assert.strictEqual(parsedDate.toISOString(), expectedDate)
+  })
+
+  it(&#x27;returns an invalid date for anything else&#x27;, () =&gt; {
+    assert.strictEqual(parseJSON(&#x27;&#x27;).toString(), &#x27;Invalid Date&#x27;)
+    assert.strictEqual(parseJSON(&#x27;invalid&#x27;).toString(), &#x27;Invalid Date&#x27;)
+    assert.strictEqual(parseJSON(&#x27;2020-10-10&#x27;).toString(), &#x27;Invalid Date&#x27;)
+  })
+})
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:22 GMT</p>
+    </body>
+  </html>
+  

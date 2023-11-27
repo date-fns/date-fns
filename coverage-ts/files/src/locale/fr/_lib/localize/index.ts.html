@@ -1,0 +1,175 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/fr/_lib/localize/index.ts</td><td class="">97.39%</td><td class="">80%</td><td class="">115</td><td class="">112</td><td class="">3</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import type { Localize, LocalizeFn } from &#x27;../../../types&#x27;
+import buildLocalizeFn from &#x27;../../../_lib/buildLocalizeFn/index&#x27;
+
+const eraValues = {
+  narrow: [&#x27;av. J.-C&#x27;, &#x27;ap. J.-C&#x27;] as const,
+  abbreviated: [&#x27;av. J.-C&#x27;, &#x27;ap. J.-C&#x27;] as const,
+  wide: [&#x27;avant Jésus-Christ&#x27;, &#x27;après Jésus-Christ&#x27;] as const,
+}
+
+const quarterValues = {
+  narrow: [&#x27;T1&#x27;, &#x27;T2&#x27;, &#x27;T3&#x27;, &#x27;T4&#x27;] as const,
+  abbreviated: [&#x27;1er trim.&#x27;, &#x27;2ème trim.&#x27;, &#x27;3ème trim.&#x27;, &#x27;4ème trim.&#x27;] as const,
+  wide: [
+    &#x27;1er trimestre&#x27;,
+    &#x27;2ème trimestre&#x27;,
+    &#x27;3ème trimestre&#x27;,
+    &#x27;4ème trimestre&#x27;,
+  ] as const,
+}
+
+const monthValues = {
+  narrow: [&#x27;J&#x27;, &#x27;F&#x27;, &#x27;M&#x27;, &#x27;A&#x27;, &#x27;M&#x27;, &#x27;J&#x27;, &#x27;J&#x27;, &#x27;A&#x27;, &#x27;S&#x27;, &#x27;O&#x27;, &#x27;N&#x27;, &#x27;D&#x27;] as const,
+  abbreviated: [
+    &#x27;janv.&#x27;,
+    &#x27;févr.&#x27;,
+    &#x27;mars&#x27;,
+    &#x27;avr.&#x27;,
+    &#x27;mai&#x27;,
+    &#x27;juin&#x27;,
+    &#x27;juil.&#x27;,
+    &#x27;août&#x27;,
+    &#x27;sept.&#x27;,
+    &#x27;oct.&#x27;,
+    &#x27;nov.&#x27;,
+    &#x27;déc.&#x27;,
+  ] as const,
+  wide: [
+    &#x27;janvier&#x27;,
+    &#x27;février&#x27;,
+    &#x27;mars&#x27;,
+    &#x27;avril&#x27;,
+    &#x27;mai&#x27;,
+    &#x27;juin&#x27;,
+    &#x27;juillet&#x27;,
+    &#x27;août&#x27;,
+    &#x27;septembre&#x27;,
+    &#x27;octobre&#x27;,
+    &#x27;novembre&#x27;,
+    &#x27;décembre&#x27;,
+  ] as const,
+}
+
+const dayValues = {
+  narrow: [&#x27;D&#x27;, &#x27;L&#x27;, &#x27;M&#x27;, &#x27;M&#x27;, &#x27;J&#x27;, &#x27;V&#x27;, &#x27;S&#x27;] as const,
+  short: [&#x27;di&#x27;, &#x27;lu&#x27;, &#x27;ma&#x27;, &#x27;me&#x27;, &#x27;je&#x27;, &#x27;ve&#x27;, &#x27;sa&#x27;] as const,
+  abbreviated: [
+    &#x27;dim.&#x27;,
+    &#x27;lun.&#x27;,
+    &#x27;mar.&#x27;,
+    &#x27;mer.&#x27;,
+    &#x27;jeu.&#x27;,
+    &#x27;ven.&#x27;,
+    &#x27;sam.&#x27;,
+  ] as const,
+  wide: [
+    &#x27;dimanche&#x27;,
+    &#x27;lundi&#x27;,
+    &#x27;mardi&#x27;,
+    &#x27;mercredi&#x27;,
+    &#x27;jeudi&#x27;,
+    &#x27;vendredi&#x27;,
+    &#x27;samedi&#x27;,
+  ] as const,
+}
+
+const dayPeriodValues = {
+  narrow: {
+    am: &#x27;AM&#x27;,
+    pm: &#x27;PM&#x27;,
+    midnight: &#x27;minuit&#x27;,
+    noon: &#x27;midi&#x27;,
+    morning: &#x27;mat.&#x27;,
+    afternoon: &#x27;ap.m.&#x27;,
+    evening: &#x27;soir&#x27;,
+    night: &#x27;mat.&#x27;,
+  },
+  abbreviated: {
+    am: &#x27;AM&#x27;,
+    pm: &#x27;PM&#x27;,
+    midnight: &#x27;minuit&#x27;,
+    noon: &#x27;midi&#x27;,
+    morning: &#x27;matin&#x27;,
+    afternoon: &#x27;après-midi&#x27;,
+    evening: &#x27;soir&#x27;,
+    night: &#x27;matin&#x27;,
+  },
+  wide: {
+    am: &#x27;AM&#x27;,
+    pm: &#x27;PM&#x27;,
+    midnight: &#x27;minuit&#x27;,
+    noon: &#x27;midi&#x27;,
+    morning: &#x27;du matin&#x27;,
+    afternoon: &#x27;de l’après-midi&#x27;,
+    evening: &#x27;du soir&#x27;,
+    night: &#x27;du matin&#x27;,
+  },
+}
+
+const ordinalNumber: LocalizeFn&lt;number&gt; = (dirtyNumber, options) =&gt; {
+  const number = Number(dirtyNumber)
+  const unit = options?.unit
+
+  if (number === 0) return &#x27;0&#x27;
+
+  const feminineUnits = [&#x27;year&#x27;, &#x27;week&#x27;, &#x27;hour&#x27;, &#x27;minute&#x27;, &#x27;second&#x27;]
+  let suffix
+
+  if (number === 1) {
+    suffix = unit &amp;&amp; feminineUnits.includes(unit) ? &#x27;ère&#x27; : &#x27;er&#x27;
+  } else {
+    suffix = &#x27;ème&#x27;
+  }
+
+  return number + suffix
+}
+
+const localize: Localize = {
+  ordinalNumber,
+
+  era: buildLocalizeFn({
+    values: eraValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  quarter: buildLocalizeFn({
+    values: quarterValues,
+    defaultWidth: &#x27;wide&#x27;,
+    argumentCallback: (quarter) =&gt; quarter - 1,
+  }),
+
+  month: buildLocalizeFn({
+    values: monthValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  day: buildLocalizeFn({
+    values: dayValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+}
+
+export default localize
+</textarea><pre id="annotations" style="display:none">[{&quot;file&quot;:&quot;src/locale/fr/_lib/localize/index.ts&quot;,&quot;line&quot;:115,&quot;character&quot;:6,&quot;text&quot;:&quot;suffix&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/fr/_lib/localize/index.ts&quot;,&quot;line&quot;:118,&quot;character&quot;:4,&quot;text&quot;:&quot;suffix&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/fr/_lib/localize/index.ts&quot;,&quot;line&quot;:120,&quot;character&quot;:4,&quot;text&quot;:&quot;suffix&quot;,&quot;kind&quot;:1}]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:20 GMT</p>
+    </body>
+  </html>
+  

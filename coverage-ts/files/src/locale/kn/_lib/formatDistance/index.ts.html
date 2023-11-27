@@ -1,0 +1,256 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/kn/_lib/formatDistance/index.ts</td><td class="">98.38%</td><td class="">80%</td><td class="">185</td><td class="">182</td><td class="">3</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import type {
+  FormatDistanceFn,
+  FormatDistanceLocale,
+  FormatDistanceFnOptions,
+} from &#x27;../../../types&#x27;
+
+type Tense = {
+  default: string
+  future: string
+  past: string
+}
+
+type FormatDistanceTokenValue = {
+  one?: Tense
+  other: Tense
+}
+
+// note: no implementation for weeks
+type FormatDistanceLocaleNoWeeks = Omit&lt;
+  FormatDistanceLocale&lt;FormatDistanceTokenValue&gt;,
+  &#x27;aboutXWeeks&#x27; | &#x27;xWeeks&#x27;
+&gt;
+
+const formatDistanceLocale: FormatDistanceLocaleNoWeeks = {
+  lessThanXSeconds: {
+    one: {
+      default: &#x27;1 ಸೆಕೆಂಡ್‌ಗಿಂತ ಕಡಿಮೆ&#x27;,
+      future: &#x27;1 ಸೆಕೆಂಡ್‌ಗಿಂತ ಕಡಿಮೆ&#x27;,
+      past: &#x27;1 ಸೆಕೆಂಡ್‌ಗಿಂತ ಕಡಿಮೆ&#x27;,
+    },
+    other: {
+      default: &#x27;{{count}} ಸೆಕೆಂಡ್‌ಗಿಂತ ಕಡಿಮೆ&#x27;,
+      future: &#x27;{{count}} ಸೆಕೆಂಡ್‌ಗಿಂತ ಕಡಿಮೆ&#x27;,
+      past: &#x27;{{count}} ಸೆಕೆಂಡ್‌ಗಿಂತ ಕಡಿಮೆ&#x27;,
+    },
+  },
+
+  xSeconds: {
+    one: {
+      default: &#x27;1 ಸೆಕೆಂಡ್&#x27;,
+      future: &#x27;1 ಸೆಕೆಂಡ್‌ನಲ್ಲಿ&#x27;,
+      past: &#x27;1 ಸೆಕೆಂಡ್ ಹಿಂದೆ&#x27;,
+    },
+    other: {
+      default: &#x27;{{count}} ಸೆಕೆಂಡುಗಳು&#x27;,
+      future: &#x27;{{count}} ಸೆಕೆಂಡ್‌ಗಳಲ್ಲಿ&#x27;,
+      past: &#x27;{{count}} ಸೆಕೆಂಡ್ ಹಿಂದೆ&#x27;,
+    },
+  },
+
+  halfAMinute: {
+    other: {
+      default: &#x27;ಅರ್ಧ ನಿಮಿಷ&#x27;,
+      future: &#x27;ಅರ್ಧ ನಿಮಿಷದಲ್ಲಿ&#x27;,
+      past: &#x27;ಅರ್ಧ ನಿಮಿಷದ ಹಿಂದೆ&#x27;,
+    },
+  },
+
+  lessThanXMinutes: {
+    one: {
+      default: &#x27;1 ನಿಮಿಷಕ್ಕಿಂತ ಕಡಿಮೆ&#x27;,
+      future: &#x27;1 ನಿಮಿಷಕ್ಕಿಂತ ಕಡಿಮೆ&#x27;,
+      past: &#x27;1 ನಿಮಿಷಕ್ಕಿಂತ ಕಡಿಮೆ&#x27;,
+    },
+    other: {
+      default: &#x27;{{count}} ನಿಮಿಷಕ್ಕಿಂತ ಕಡಿಮೆ&#x27;,
+      future: &#x27;{{count}} ನಿಮಿಷಕ್ಕಿಂತ ಕಡಿಮೆ&#x27;,
+      past: &#x27;{{count}} ನಿಮಿಷಕ್ಕಿಂತ ಕಡಿಮೆ&#x27;,
+    },
+  },
+
+  xMinutes: {
+    one: {
+      default: &#x27;1 ನಿಮಿಷ&#x27;,
+      future: &#x27;1 ನಿಮಿಷದಲ್ಲಿ&#x27;,
+      past: &#x27;1 ನಿಮಿಷದ ಹಿಂದೆ&#x27;,
+    },
+    other: {
+      default: &#x27;{{count}} ನಿಮಿಷಗಳು&#x27;,
+      future: &#x27;{{count}} ನಿಮಿಷಗಳಲ್ಲಿ&#x27;,
+      past: &#x27;{{count}} ನಿಮಿಷಗಳ ಹಿಂದೆ&#x27;,
+    },
+  },
+
+  aboutXHours: {
+    one: {
+      default: &#x27;ಸುಮಾರು 1 ಗಂಟೆ&#x27;,
+      future: &#x27;ಸುಮಾರು 1 ಗಂಟೆಯಲ್ಲಿ&#x27;,
+      past: &#x27;ಸುಮಾರು 1 ಗಂಟೆ ಹಿಂದೆ&#x27;,
+    },
+    other: {
+      default: &#x27;ಸುಮಾರು {{count}} ಗಂಟೆಗಳು&#x27;,
+      future: &#x27;ಸುಮಾರು {{count}} ಗಂಟೆಗಳಲ್ಲಿ&#x27;,
+      past: &#x27;ಸುಮಾರು {{count}} ಗಂಟೆಗಳ ಹಿಂದೆ&#x27;,
+    },
+  },
+
+  xHours: {
+    one: {
+      default: &#x27;1 ಗಂಟೆ&#x27;,
+      future: &#x27;1 ಗಂಟೆಯಲ್ಲಿ&#x27;,
+      past: &#x27;1 ಗಂಟೆ ಹಿಂದೆ&#x27;,
+    },
+    other: {
+      default: &#x27;{{count}} ಗಂಟೆಗಳು&#x27;,
+      future: &#x27;{{count}} ಗಂಟೆಗಳಲ್ಲಿ&#x27;,
+      past: &#x27;{{count}} ಗಂಟೆಗಳ ಹಿಂದೆ&#x27;,
+    },
+  },
+
+  xDays: {
+    one: {
+      default: &#x27;1 ದಿನ&#x27;,
+      future: &#x27;1 ದಿನದಲ್ಲಿ&#x27;,
+      past: &#x27;1 ದಿನದ ಹಿಂದೆ&#x27;,
+    },
+    other: {
+      default: &#x27;{{count}} ದಿನಗಳು&#x27;,
+      future: &#x27;{{count}} ದಿನಗಳಲ್ಲಿ&#x27;,
+      past: &#x27;{{count}} ದಿನಗಳ ಹಿಂದೆ&#x27;,
+    },
+  },
+
+  // TODO
+  // aboutXWeeks: {},
+
+  // TODO
+  // xWeeks: {},
+
+  aboutXMonths: {
+    one: {
+      default: &#x27;ಸುಮಾರು 1 ತಿಂಗಳು&#x27;,
+      future: &#x27;ಸುಮಾರು 1 ತಿಂಗಳಲ್ಲಿ&#x27;,
+      past: &#x27;ಸುಮಾರು 1 ತಿಂಗಳ ಹಿಂದೆ&#x27;,
+    },
+    other: {
+      default: &#x27;ಸುಮಾರು {{count}} ತಿಂಗಳು&#x27;,
+      future: &#x27;ಸುಮಾರು {{count}} ತಿಂಗಳುಗಳಲ್ಲಿ&#x27;,
+      past: &#x27;ಸುಮಾರು {{count}} ತಿಂಗಳುಗಳ ಹಿಂದೆ&#x27;,
+    },
+  },
+
+  xMonths: {
+    one: {
+      default: &#x27;1 ತಿಂಗಳು&#x27;,
+      future: &#x27;1 ತಿಂಗಳಲ್ಲಿ&#x27;,
+      past: &#x27;1 ತಿಂಗಳ ಹಿಂದೆ&#x27;,
+    },
+    other: {
+      default: &#x27;{{count}} ತಿಂಗಳು&#x27;,
+      future: &#x27;{{count}} ತಿಂಗಳುಗಳಲ್ಲಿ&#x27;,
+      past: &#x27;{{count}} ತಿಂಗಳುಗಳ ಹಿಂದೆ&#x27;,
+    },
+  },
+
+  aboutXYears: {
+    one: {
+      default: &#x27;ಸುಮಾರು 1 ವರ್ಷ&#x27;,
+      future: &#x27;ಸುಮಾರು 1 ವರ್ಷದಲ್ಲಿ&#x27;,
+      past: &#x27;ಸುಮಾರು 1 ವರ್ಷದ ಹಿಂದೆ&#x27;,
+    },
+    other: {
+      default: &#x27;ಸುಮಾರು {{count}} ವರ್ಷಗಳು&#x27;,
+      future: &#x27;ಸುಮಾರು {{count}} ವರ್ಷಗಳಲ್ಲಿ&#x27;,
+      past: &#x27;ಸುಮಾರು {{count}} ವರ್ಷಗಳ ಹಿಂದೆ&#x27;,
+    },
+  },
+
+  xYears: {
+    one: {
+      default: &#x27;1 ವರ್ಷ&#x27;,
+      future: &#x27;1 ವರ್ಷದಲ್ಲಿ&#x27;,
+      past: &#x27;1 ವರ್ಷದ ಹಿಂದೆ&#x27;,
+    },
+    other: {
+      default: &#x27;{{count}} ವರ್ಷಗಳು&#x27;,
+      future: &#x27;{{count}} ವರ್ಷಗಳಲ್ಲಿ&#x27;,
+      past: &#x27;{{count}} ವರ್ಷಗಳ ಹಿಂದೆ&#x27;,
+    },
+  },
+
+  overXYears: {
+    one: {
+      default: &#x27;1 ವರ್ಷದ ಮೇಲೆ&#x27;,
+      future: &#x27;1 ವರ್ಷದ ಮೇಲೆ&#x27;,
+      past: &#x27;1 ವರ್ಷದ ಮೇಲೆ&#x27;,
+    },
+    other: {
+      default: &#x27;{{count}} ವರ್ಷಗಳ ಮೇಲೆ&#x27;,
+      future: &#x27;{{count}} ವರ್ಷಗಳ ಮೇಲೆ&#x27;,
+      past: &#x27;{{count}} ವರ್ಷಗಳ ಮೇಲೆ&#x27;,
+    },
+  },
+
+  almostXYears: {
+    one: {
+      default: &#x27;ಬಹುತೇಕ 1 ವರ್ಷದಲ್ಲಿ&#x27;,
+      future: &#x27;ಬಹುತೇಕ 1 ವರ್ಷದಲ್ಲಿ&#x27;,
+      past: &#x27;ಬಹುತೇಕ 1 ವರ್ಷದಲ್ಲಿ&#x27;,
+    },
+    other: {
+      default: &#x27;ಬಹುತೇಕ {{count}} ವರ್ಷಗಳಲ್ಲಿ&#x27;,
+      future: &#x27;ಬಹುತೇಕ {{count}} ವರ್ಷಗಳಲ್ಲಿ&#x27;,
+      past: &#x27;ಬಹುತೇಕ {{count}} ವರ್ಷಗಳಲ್ಲಿ&#x27;,
+    },
+  },
+}
+
+function getResultByTense(
+  parentToken: Tense,
+  options?: FormatDistanceFnOptions
+): string {
+  if (options?.addSuffix) {
+    if (options.comparison &amp;&amp; options.comparison &gt; 0) {
+      return parentToken.future
+    } else {
+      return parentToken.past
+    }
+  }
+  return parentToken.default
+}
+
+const formatDistance: FormatDistanceFn = (token, count, options) =&gt; {
+  let result
+
+  const tokenValue =
+    formatDistanceLocale[token as keyof typeof formatDistanceLocale]
+
+  if (tokenValue.one &amp;&amp; count === 1) {
+    result = getResultByTense(tokenValue.one, options)
+  } else {
+    result = getResultByTense(tokenValue.other, options)
+  }
+
+  return result.replace(&#x27;{{count}}&#x27;, String(count))
+}
+
+export default formatDistance
+</textarea><pre id="annotations" style="display:none">[{&quot;file&quot;:&quot;src/locale/kn/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:223,&quot;character&quot;:6,&quot;text&quot;:&quot;result&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/kn/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:229,&quot;character&quot;:4,&quot;text&quot;:&quot;result&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/kn/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:231,&quot;character&quot;:4,&quot;text&quot;:&quot;result&quot;,&quot;kind&quot;:1}]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:20 GMT</p>
+    </body>
+  </html>
+  

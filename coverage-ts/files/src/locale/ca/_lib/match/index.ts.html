@@ -1,0 +1,195 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/ca/_lib/match/index.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">118</td><td class="">118</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import type { Quarter } from &#x27;../../../../types&#x27;
+import type { Match } from &#x27;../../../types&#x27;
+import buildMatchFn from &#x27;../../../_lib/buildMatchFn/index&#x27;
+import buildMatchPatternFn from &#x27;../../../_lib/buildMatchPatternFn/index&#x27;
+
+const matchOrdinalNumberPattern = /^(\d+)(è|r|n|r|t)?/i
+const parseOrdinalNumberPattern = /\d+/i
+
+const matchEraPatterns = {
+  narrow: /^(aC|dC)/i,
+  abbreviated: /^(a. de C.|d. de C.)/i,
+  wide: /^(abans de Crist|despr[eé]s de Crist)/i,
+}
+const parseEraPatterns = {
+  narrow: [/^aC/i, /^dC/i] as const,
+  abbreviated: [/^(a. de C.)/i, /^(d. de C.)/i] as const,
+  wide: [/^(abans de Crist)/i, /^(despr[eé]s de Crist)/i] as const,
+}
+
+const matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^T[1234]/i,
+  wide: /^[1234](è|r|n|r|t)? trimestre/i,
+}
+const parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i] as const,
+}
+
+const matchMonthPatterns = {
+  narrow: /^(GN|FB|MÇ|AB|MG|JN|JL|AG|ST|OC|NV|DS)/i,
+  abbreviated: /^(gen.|febr.|març|abr.|maig|juny|jul.|ag.|set.|oct.|nov.|des.)/i,
+  wide: /^(gener|febrer|març|abril|maig|juny|juliol|agost|setembre|octubre|novembre|desembre)/i,
+}
+const parseMonthPatterns = {
+  narrow: [
+    /^GN/i,
+    /^FB/i,
+    /^MÇ/i,
+    /^AB/i,
+    /^MG/i,
+    /^JN/i,
+    /^JL/i,
+    /^AG/i,
+    /^ST/i,
+    /^OC/i,
+    /^NV/i,
+    /^DS/i,
+  ] as const,
+  abbreviated: [
+    /^gen./i,
+    /^febr./i,
+    /^març/i,
+    /^abr./i,
+    /^maig/i,
+    /^juny/i,
+    /^jul./i,
+    /^ag./i,
+    /^set./i,
+    /^oct./i,
+    /^nov./i,
+    /^des./i,
+  ] as const,
+  wide: [
+    /^gener/i,
+    /^febrer/i,
+    /^març/i,
+    /^abril/i,
+    /^maig/i,
+    /^juny/i,
+    /^juliol/i,
+    /^agost/i,
+    /^setembre/i,
+    /^octubre/i,
+    /^novembre/i,
+    /^desembre/i,
+  ] as const,
+}
+
+const matchDayPatterns = {
+  narrow: /^(dg\.|dl\.|dt\.|dm\.|dj\.|dv\.|ds\.)/i,
+  short: /^(dg\.|dl\.|dt\.|dm\.|dj\.|dv\.|ds\.)/i,
+  abbreviated: /^(dg\.|dl\.|dt\.|dm\.|dj\.|dv\.|ds\.)/i,
+  wide: /^(diumenge|dilluns|dimarts|dimecres|dijous|divendres|dissabte)/i,
+}
+const parseDayPatterns = {
+  narrow: [
+    /^dg./i,
+    /^dl./i,
+    /^dt./i,
+    /^dm./i,
+    /^dj./i,
+    /^dv./i,
+    /^ds./i,
+  ] as const,
+  abbreviated: [
+    /^dg./i,
+    /^dl./i,
+    /^dt./i,
+    /^dm./i,
+    /^dj./i,
+    /^dv./i,
+    /^ds./i,
+  ] as const,
+  wide: [
+    /^diumenge/i,
+    /^dilluns/i,
+    /^dimarts/i,
+    /^dimecres/i,
+    /^dijous/i,
+    /^divendres/i,
+    /^disssabte/i,
+  ] as const,
+}
+
+const matchDayPeriodPatterns = {
+  narrow: /^(a|p|mn|md|(del|de la) (matí|tarda|vespre|nit))/i,
+  abbreviated: /^([ap]\.?\s?m\.?|mitjanit|migdia|(del|de la) (matí|tarda|vespre|nit))/i,
+  wide: /^(ante meridiem|post meridiem|mitjanit|migdia|(del|de la) (matí|tarda|vespre|nit))/i,
+}
+const parseDayPeriodPatterns = {
+  any: {
+    am: /^a/i,
+    pm: /^p/i,
+    midnight: /^mitjanit/i,
+    noon: /^migdia/i,
+    morning: /matí/i,
+    afternoon: /tarda/i,
+    evening: /vespre/i,
+    night: /nit/i,
+  },
+}
+
+const match: Match = {
+  ordinalNumber: buildMatchPatternFn({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: (value) =&gt; parseInt(value, 10),
+  }),
+
+  era: buildMatchFn({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: &#x27;wide&#x27;,
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: &#x27;wide&#x27;,
+  }),
+
+  quarter: buildMatchFn({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: &#x27;wide&#x27;,
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: &#x27;any&#x27;,
+    valueCallback: (index) =&gt; (index + 1) as Quarter,
+  }),
+
+  month: buildMatchFn({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: &#x27;wide&#x27;,
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: &#x27;wide&#x27;,
+  }),
+
+  day: buildMatchFn({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: &#x27;wide&#x27;,
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: &#x27;wide&#x27;,
+  }),
+
+  dayPeriod: buildMatchFn({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: &#x27;wide&#x27;,
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: &#x27;any&#x27;,
+  }),
+}
+
+export default match
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:19 GMT</p>
+    </body>
+  </html>
+  
