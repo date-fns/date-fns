@@ -84,8 +84,12 @@ export default function formatISO<DateType extends Date>(
       const minuteOffset = addLeadingZeros(absoluteOffset % 60, 2)
       // If less than 0, the sign is +, because it is ahead of time.
       const sign = offset < 0 ? '+' : '-'
-
-      tzOffset = `${sign}${hourOffset}:${minuteOffset}`
+      //check for the basic format option and representation option for formatting the time zone offset
+      if (options?.format === 'basic' && options?.representation !== 'time') {
+        tzOffset = `${sign}${hourOffset}${minuteOffset}`
+      } else {
+        tzOffset = `${sign}${hourOffset}:${minuteOffset}`
+      }
     } else {
       tzOffset = 'Z'
     }

@@ -10,6 +10,7 @@ describe('formatISO', () => {
   it('formats ISO-8601 extended format', () => {
     const date = new Date(2019, 2 /* Mar */, 3, 19, 0, 52, 123)
     const tzOffsetExtended = generateOffset(date)
+
     assert(formatISO(date) === `2019-03-03T19:00:52${tzOffsetExtended}`)
 
     const getTimezoneOffsetStub = sinon.stub(
@@ -36,7 +37,7 @@ describe('formatISO', () => {
 
   it('formats ISO-8601 basic format', () => {
     const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
-    const tzOffsetBasic = generateOffset(date)
+    const tzOffsetBasic = generateOffset(date).replace(/:/g, '')
     assert(
       formatISO(date, { format: 'basic' }) === `20191004T123013${tzOffsetBasic}`
     )
