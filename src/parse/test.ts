@@ -1290,6 +1290,16 @@ describe('parse', () => {
       assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 17))
     })
 
+    it('supports morning keyword', () => {
+      const result = parse('in the morning', 'B', referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 4))
+    })
+
+    it('supports evening keyword', () => {
+      const result = parse('in the evening', 'B', referenceDate)
+      assert.deepStrictEqual(result, new Date(1986, 3 /* Apr */, 4, 17))
+    })
+
     describe('validation', () => {
       ;[
         ['a', 'AM'],

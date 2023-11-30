@@ -34,5 +34,11 @@ describe('toDate', () => {
       assert(result instanceof Date)
       assert(isNaN(result.getTime()))
     })
+
+    it('returns Invalid Date if argument is not a number', () => {
+      const result = toDate(('abc' as unknown) as number)
+      assert(result instanceof Date)
+      assert(isNaN(result.getTime()))
+    })
   })
 })
