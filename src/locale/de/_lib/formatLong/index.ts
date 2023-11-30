@@ -19,8 +19,8 @@ const timeFormats = {
 const dateTimeFormats = {
   full: "{{date}} 'um' {{time}}",
   long: "{{date}} 'um' {{time}}",
-  medium: '{{date}} {{time}}',
-  short: '{{date}} {{time}}',
+  medium: '{{date}}, {{time}}',
+  short: '{{date}}, {{time}}',
 }
 
 const formatLong: FormatLong = {
