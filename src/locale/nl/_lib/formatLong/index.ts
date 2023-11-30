@@ -18,8 +18,8 @@ const timeFormats = {
 const dateTimeFormats = {
   full: "{{date}} 'om' {{time}}",
   long: "{{date}} 'om' {{time}}",
-  medium: '{{date}}, {{time}}',
-  short: '{{date}}, {{time}}',
+  medium: '{{date}} {{time}}',
+  short: '{{date}} {{time}}',
 }
 
 const formatLong: FormatLong = {
