@@ -77,7 +77,7 @@ const formatDistanceLocale = {
       pluralGenitive: 'менш за {{count}} секунд',
     },
     future: {
-      one: 'менш, чым праз секунду',
+      one: 'менш, чым празь секунду',
       singularNominative: 'менш, чым праз {{count}} секунду',
       singularGenitive: 'менш, чым праз {{count}} секунды',
       pluralGenitive: 'менш, чым праз {{count}} секунд',
@@ -220,7 +220,7 @@ const formatDistanceLocale = {
 
   aboutXYears: buildLocalizeTokenFn({
     regular: {
-      singularNominative: 'каля {{count}} года',
+      singularNominative: 'каля {{count}} году',
       singularGenitive: 'каля {{count}} гадоў',
       pluralGenitive: 'каля {{count}} гадоў',
     },

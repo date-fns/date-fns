@@ -70,7 +70,7 @@ const formattingMonthValues = {
     'чэрвеня',
     'ліпеня',
     'жніўня',
-    'верасня',
+    'верасьня',
     'кастрычніка',
     'лістапада',
     'сьнежня',
@@ -164,8 +164,8 @@ const ordinalNumber: LocalizeFn<number> = (dirtyNumber, options) => {
 
   /** Though it's an incorrect ordinal form of a date we use it here for consistency with other similar locales (ru, uk)
    *  For date-month combinations should be used `d` formatter.
-   *  Correct:   `d MMMM` (4 верасня)
-   *  Incorrect: `do MMMM` (4-га верасня)
+   *  Correct:   `d MMMM` (4 верасьня)
+   *  Incorrect: `do MMMM` (4-га верасьня)
    *
    *  But following the consistency leads to mistakes for literal uses of `do` formatter (ordinal day of month).
    *  So for phrase "5th day of month" (`do дзень месяца`)
