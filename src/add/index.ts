@@ -58,6 +58,9 @@ export default function add<DateType extends Date>(
     seconds = 0,
   } = duration
 
+  if (isNaN(years) || isNaN(months) || isNaN(weeks) || isNaN(days))
+    return constructFrom(dirtyDate, NaN)
+
   // Add years and months
   const _date = toDate(date)
   const dateWithMonths =
