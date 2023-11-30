@@ -83,4 +83,29 @@ describe('sub', () => {
     const result = sub(new Date(NaN), { hours: 5 })
     assert(result instanceof Date && isNaN(result.getTime()))
   })
+
+  it('returns `Invalid Date` if the given durations parameter is NaN', () => {
+    const date = new Date(2020, 5 /* Jun */, 11)
+
+    const yearsNaN = sub(date, { years: NaN })
+    assert(yearsNaN instanceof Date && isNaN(yearsNaN.getTime()))
+
+    const monthsNaN = sub(date, { months: NaN })
+    assert(monthsNaN instanceof Date && isNaN(monthsNaN.getTime()))
+
+    const weeksNaN = sub(date, { weeks: NaN })
+    assert(weeksNaN instanceof Date && isNaN(weeksNaN.getTime()))
+
+    const daysNaN = sub(date, { days: NaN })
+    assert(daysNaN instanceof Date && isNaN(daysNaN.getTime()))
+
+    const hoursNaN = sub(date, { hours: NaN })
+    assert(hoursNaN instanceof Date && isNaN(hoursNaN.getTime()))
+
+    const minutesNaN = sub(date, { minutes: NaN })
+    assert(minutesNaN instanceof Date && isNaN(minutesNaN.getTime()))
+
+    const secondsNaN = sub(date, { seconds: NaN })
+    assert(secondsNaN instanceof Date && isNaN(secondsNaN.getTime()))
+  })
 })
