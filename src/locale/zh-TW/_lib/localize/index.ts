@@ -2,15 +2,15 @@ import type { Localize, LocalizeFn } from '../../../types'
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
 const eraValues = {
-  narrow: ['前', '公元'] as const,
-  abbreviated: ['前', '公元'] as const,
-  wide: ['公元前', '公元'] as const,
+  narrow: ['前', '西元'] as const,
+  abbreviated: ['前', '西元'] as const,
+  wide: ['西元前', '西元'] as const,
 }
 
 const quarterValues = {
   narrow: ['1', '2', '3', '4'] as const,
-  abbreviated: ['第一刻', '第二刻', '第三刻', '第四刻'] as const,
-  wide: ['第一刻鐘', '第二刻鐘', '第三刻鐘', '第四刻鐘'] as const,
+  abbreviated: ['第一季', '第二季', '第三季', '第四季'] as const,
+  wide: ['第一季度', '第二季度', '第三季度', '第四季度'] as const,
 }
 
 const monthValues = {
