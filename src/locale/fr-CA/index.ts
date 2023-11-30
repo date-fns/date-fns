@@ -1,11 +1,12 @@
 // Same as fr
 import formatDistance from '../fr/_lib/formatDistance/index'
 import formatRelative from '../fr/_lib/formatRelative/index'
-import localize from '../fr/_lib/localize/index'
 import match from '../fr/_lib/match/index'
 import type { Locale } from '../types'
+
 // Unique for fr-CA
 import formatLong from './_lib/formatLong/index'
+import localize from './_lib/localize/index'
 
 /**
  * @category Locales
