@@ -313,6 +313,10 @@
       "require": "./formatISO.js",
       "import": "./formatISO.mjs"
     },
+    "./formatRange": {
+      "require": "./formatRange.js",
+      "import": "./formatRange.mjs"
+    },
     "./formatISO9075": {
       "require": "./formatISO9075.js",
       "import": "./formatISO9075.mjs"
