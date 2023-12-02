@@ -1016,7 +1016,7 @@ Your best guess is to copy `formatDistance` property from another locale and cha
 
 To test locales we use snapshots. See [`en-US` snapshot](https://github.com/date-fns/date-fns/blob/master/src/locale/en-US/snapshot.md) for an example.
 
-To generate snapshots, run `yarn locale-snapshots`. The snapshot for the locale
+To generate snapshots, run `npm run locale-snapshots`. The snapshot for the locale
 you're working on will appear in the root locale directory (e.g. `src/locales/ru/snapshot.md`).
 
 Once you are done with the locale, generate the snapshot and review the output values.

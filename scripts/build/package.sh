@@ -20,16 +20,16 @@ rm -rf "$dir"
 mkdir -p "$dir"
 
 # Transpile CommonJS versions of files
-env BABEL_ENV=cjs yarn babel src --config-file ./babel.config.js --source-root src --out-dir "$dir" --ignore "**/test.ts","**/*.d.ts" --extensions .mjs,.ts --out-file-extension .js --quiet
+env BABEL_ENV=cjs npx babel src --config-file ./babel.config.js --source-root src --out-dir "$dir" --ignore "**/test.ts","**/*.d.ts" --extensions .mjs,.ts --out-file-extension .js --quiet
 
 # Transpile ESM versions of files
-env BABEL_ENV=esm yarn babel src --config-file ./babel.config.js --source-root src --out-dir "$dir" --ignore "**/test.ts","**/*.d.ts" --extensions .mjs,.ts --out-file-extension .mjs --quiet
+env BABEL_ENV=esm npx babel src --config-file ./babel.config.js --source-root src --out-dir "$dir" --ignore "**/test.ts","**/*.d.ts" --extensions .mjs,.ts --out-file-extension .mjs --quiet
 
 # Generate TypeScript
-yarn tsc --project tsconfig.lib.json --outDir "$dir"
+npx tsc --project tsconfig.lib.json --outDir "$dir"
 
 # Flatten the structure
-yarn tsx scripts/build/flatten.ts
+npx tsx scripts/build/flatten.ts
 
 # Copy basic files
 for pattern in CHANGELOG.md \

@@ -7,9 +7,9 @@
   "license": "MIT",
   "module": "true",
   "scripts": {
-    "build": "rm -rf node_modules/date-fns && cp -r ../../lib node_modules/date-fns || yarn build-date-fns",
+    "build": "rm -rf node_modules/date-fns && cp -r ../../lib node_modules/date-fns || npm run build-date-fns",
     "build-date-fns": "env PACKAGE_OUTPUT_PATH=\"$(pwd)/node_modules/date-fns\" ../../scripts/build/package.sh",
-    "test": "yarn test-example && yarn test-fp && yarn test-misc && yarn test-constants",
+    "test": "npm run test-example && npm run test-fp && npm run test-misc && npm run test-constants",
     "test-example": "test $(env TZ=UTC node ./example.mjs) = true",
     "test-fp": "test $(env TZ=UTC node ./fp.mjs) = true",
     "test-misc": "test $(env TZ=UTC node ./misc.mjs) = true",

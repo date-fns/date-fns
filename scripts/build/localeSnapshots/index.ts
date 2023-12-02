@@ -1,4 +1,4 @@
-#!/usr/bin/env yarn tsx
+#!/usr/bin/env npx tsx
 
 /**
  * @file
@@ -59,7 +59,7 @@ ${renderFormatDuration(locale)}
           return readFile(snapshotPath, 'utf8').then((snapshotFileContent) => {
             if (snapshotFileContent !== formattedSnapshot)
               throw new Error(
-                `The snapshot on the disk doesn't match the generated snapshot: ${snapshotPath}. Please run yarn locale-snapshots and commit the results.`
+                `The snapshot on the disk doesn't match the generated snapshot: ${snapshotPath}. Please run npm run locale-snapshots and commit the results.`
               )
           })
         } else {
