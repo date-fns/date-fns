@@ -1,4 +1,4 @@
-import { toDate } from '..'
+import toDate from '../toDate/index'
 import type { Interval as IntervalInterface } from '../types'
 
 /**

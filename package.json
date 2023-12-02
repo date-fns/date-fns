@@ -2413,7 +2413,6 @@
     "> 1%",
     "IE 11"
   ],
-  "dependencies": {},
   "devDependencies": {
     "@babel/cli": "^7.22.10",
     "@babel/core": "^7.22.10",
@@ -2424,7 +2423,7 @@
     "@date-fns/docs": "0.25.0",
     "@js-fns/docs": "^0.1.2",
     "@octokit/core": "^3.2.5",
-    "@types/node": "^14.6.3",
+    "@types/node": "^20.10.2",
     "@types/sinon": "^9.0.6",
     "@typescript-eslint/eslint-plugin": "^5.30.0",
     "@typescript-eslint/parser": "^5.30.0",
@@ -2454,7 +2453,7 @@
     "moment": "^2.24.0",
     "node-fetch": "^1.7.3",
     "p-limit": "^3.1.0",
-    "playwright": "^1.39.0",
+    "playwright": "^1.40.1",
     "prettier": "2",
     "simple-git": "^2.35.2",
     "sinon": "^7.4.1",

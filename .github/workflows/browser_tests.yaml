@@ -12,7 +12,7 @@ jobs:
         with:
           node-version: 20
       - run: npm install
-      - run: npx playwright install
+      - run: npx playwright install chromium
       - uses: coactions/setup-xvfb@v1
         with:
           run: npx vitest run --browser
