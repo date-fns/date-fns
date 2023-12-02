@@ -1,10 +1,10 @@
-import getWeek from '../getWeek/index'
-import toDate from '../toDate/index'
+import getWeek from '../getWeek/index.js'
+import toDate from '../toDate/index.js'
 import type {
   FirstWeekContainsDateOptions,
   LocalizedOptions,
   WeekOptions,
-} from '../types'
+} from '../types.js'
 
 /**
  * The {@link setWeek} function options.

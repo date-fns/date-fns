@@ -1,4 +1,4 @@
-import addMinutes from '../addMinutes/index'
+import addMinutes from '../addMinutes/index.js'
 
 /**
  * @name subMinutes

@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import startOfDecade from './index'
+import startOfDecade from './index.js'
 
 describe('startOfDecade', () => {
   it('returns the date with the time set to 00:00:00 and the date set to the first day of a year', () => {

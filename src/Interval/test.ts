@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import Interval from './index'
+import Interval from './index.js'
 
 describe('Interval', () => {
   it('exposes start and end', () => {

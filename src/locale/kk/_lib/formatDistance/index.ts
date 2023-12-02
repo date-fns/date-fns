@@ -2,7 +2,7 @@ import type {
   FormatDistanceFn,
   FormatDistanceLocale,
   FormatDistanceFnOptions,
-} from '../../../types'
+} from '../../../types.js'
 
 type Plural = {
   one?: string

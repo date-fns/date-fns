@@ -1,12 +1,12 @@
-import compareAsc from '../compareAsc/index'
-import { minutesInDay, minutesInMonth } from '../constants/index'
-import differenceInMonths from '../differenceInMonths/index'
-import differenceInSeconds from '../differenceInSeconds/index'
-import toDate from '../toDate/index'
-import type { LocalizedOptions } from '../types'
-import defaultLocale from '../_lib/defaultLocale/index'
-import { getDefaultOptions } from '../_lib/defaultOptions/index'
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
+import compareAsc from '../compareAsc/index.js'
+import { minutesInDay, minutesInMonth } from '../constants/index.js'
+import differenceInMonths from '../differenceInMonths/index.js'
+import differenceInSeconds from '../differenceInSeconds/index.js'
+import toDate from '../toDate/index.js'
+import type { LocalizedOptions } from '../types.js'
+import defaultLocale from '../_lib/defaultLocale/index.js'
+import { getDefaultOptions } from '../_lib/defaultOptions/index.js'
+import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
 
 /**
  * The {@link formatDistance} function options.

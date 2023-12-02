@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import endOfDay from './index'
+import endOfDay from './index.js'
 
 describe('endOfDay', () => {
   it('returns the date with the time set to 23:59:59.999', () => {

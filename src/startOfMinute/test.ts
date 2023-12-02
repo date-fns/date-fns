@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import startOfMinute from './index'
+import startOfMinute from './index.js'
 
 describe('startOfMinute', () => {
   it('returns the date with the time set to the first millisecond of a minute', () => {

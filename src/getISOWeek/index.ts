@@ -1,7 +1,7 @@
-import { millisecondsInWeek } from '../constants/index'
-import startOfISOWeek from '../startOfISOWeek/index'
-import startOfISOWeekYear from '../startOfISOWeekYear/index'
-import toDate from '../toDate/index'
+import { millisecondsInWeek } from '../constants/index.js'
+import startOfISOWeek from '../startOfISOWeek/index.js'
+import startOfISOWeekYear from '../startOfISOWeekYear/index.js'
+import toDate from '../toDate/index.js'
 
 /**
  * @name getISOWeek

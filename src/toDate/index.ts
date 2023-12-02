@@ -1,4 +1,4 @@
-import { GenericDateConstructor } from '../types'
+import { GenericDateConstructor } from '../types.js'
 
 /**
  * @name toDate

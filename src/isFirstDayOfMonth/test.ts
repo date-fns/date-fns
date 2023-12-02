@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import isFirstDayOfMonth from './index'
+import isFirstDayOfMonth from './index.js'
 
 describe('isFirstDayOfMonth', () => {
   it('returns true if the given date is in the last day of month', () => {

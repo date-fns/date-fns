@@ -1,12 +1,12 @@
-import constructFrom from '../constructFrom/index'
-import getWeekYear from '../getWeekYear/index'
-import startOfWeek from '../startOfWeek/index'
+import constructFrom from '../constructFrom/index.js'
+import getWeekYear from '../getWeekYear/index.js'
+import startOfWeek from '../startOfWeek/index.js'
 import type {
   FirstWeekContainsDateOptions,
   LocalizedOptions,
   WeekOptions,
-} from '../types'
-import { getDefaultOptions } from '../_lib/defaultOptions/index'
+} from '../types.js'
+import { getDefaultOptions } from '../_lib/defaultOptions/index.js'
 
 /**
  * The {@link startOfWeekYear} function options.

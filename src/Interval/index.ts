@@ -1,5 +1,5 @@
-import toDate from '../toDate/index'
-import type { Interval as IntervalInterface } from '../types'
+import toDate from '../toDate/index.js'
+import type { Interval as IntervalInterface } from '../types.js'
 
 /**
  * The {@link Interval} constructor options.

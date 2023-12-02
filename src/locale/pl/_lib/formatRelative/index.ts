@@ -1,10 +1,10 @@
-import isSameWeek from '../../../../isSameWeek/index'
-import type { Day } from '../../../../types'
+import isSameWeek from '../../../../isSameWeek/index.js'
+import type { Day } from '../../../../types.js'
 import type {
   FormatRelativeFn,
   FormatRelativeFnOptions,
   FormatRelativeToken,
-} from '../../../types'
+} from '../../../types.js'
 
 type Adjective = {
   masculine: string

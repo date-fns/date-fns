@@ -1,5 +1,5 @@
-import getQuarter from '../getQuarter/index'
-import toDate from '../toDate/index'
+import getQuarter from '../getQuarter/index.js'
+import toDate from '../toDate/index.js'
 
 /**
  * @name differenceInCalendarQuarters

@@ -1,6 +1,6 @@
-import differenceInMonths from '../differenceInMonths/index'
-import type { RoundingOptions } from '../types'
-import { getRoundingMethod } from '../_lib/roundingMethods/index'
+import differenceInMonths from '../differenceInMonths/index.js'
+import type { RoundingOptions } from '../types.js'
+import { getRoundingMethod } from '../_lib/roundingMethods/index.js'
 
 /**
  * The {@link differenceInQuarters} function options.

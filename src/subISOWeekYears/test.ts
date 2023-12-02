@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import subISOWeekYears from './index'
+import subISOWeekYears from './index.js'
 
 describe('subISOWeekYears', () => {
   it('subtracts the given number of ISO week-numbering years', () => {

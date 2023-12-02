@@ -1,7 +1,7 @@
-import type { Quarter } from '../../../../types'
-import type { Match } from '../../../types'
-import buildMatchFn from '../../../_lib/buildMatchFn/index'
-import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
+import type { Quarter } from '../../../../types.js'
+import type { Match } from '../../../types.js'
+import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
+import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
 
 const matchOrdinalNumberPattern = /^(\d+)(\.)?/i
 const parseOrdinalNumberPattern = /\d+/i
@@ -72,7 +72,8 @@ const parseDayPatterns = {
 
 const matchDayPeriodPatterns = {
   narrow: /^(mo\.?|nomë\.?|Mëtternuecht|mëttes|moies|nomëttes|owes|nuets)/i,
-  abbreviated: /^(moi\.?|nomët\.?|Mëtternuecht|mëttes|moies|nomëttes|owes|nuets)/i,
+  abbreviated:
+    /^(moi\.?|nomët\.?|Mëtternuecht|mëttes|moies|nomëttes|owes|nuets)/i,
   wide: /^(moies|nomëttes|Mëtternuecht|mëttes|moies|nomëttes|owes|nuets)/i,
 }
 const parseDayPeriodPatterns = {

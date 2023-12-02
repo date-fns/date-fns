@@ -1,5 +1,5 @@
-import getISOWeek from '../getISOWeek/index'
-import toDate from '../toDate/index'
+import getISOWeek from '../getISOWeek/index.js'
+import toDate from '../toDate/index.js'
 
 /**
  * @name setISOWeek

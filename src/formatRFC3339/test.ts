@@ -4,7 +4,7 @@ import assert from 'assert'
 import { describe, it } from 'vitest'
 import sinon from 'sinon'
 import formatRFC3339 from '.'
-import { generateOffset } from '../_lib/test'
+import { generateOffset } from '../_lib/test/index.js'
 
 describe('formatRFC3339', () => {
   it('formats RFC-3339 date string', () => {

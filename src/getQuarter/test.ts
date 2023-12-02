@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import getQuarter from './index'
+import getQuarter from './index.js'
 
 describe('getQuarter', () => {
   it('returns the quarter of the given date', () => {

@@ -1,22 +1,22 @@
-import constructFrom from '../constructFrom/index'
-import getDefaultOptions from '../getDefaultOptions/index'
-import defaultLocale from '../locale/en-US/index'
-import toDate from '../toDate/index'
+import constructFrom from '../constructFrom/index.js'
+import getDefaultOptions from '../getDefaultOptions/index.js'
+import defaultLocale from '../locale/en-US/index.js'
+import toDate from '../toDate/index.js'
 import type {
   AdditionalTokensOptions,
   FirstWeekContainsDateOptions,
   LocalizedOptions,
   WeekOptions,
-} from '../types'
-import longFormatters from '../_lib/format/longFormatters/index'
+} from '../types.js'
+import longFormatters from '../_lib/format/longFormatters/index.js'
 import {
   isProtectedDayOfYearToken,
   isProtectedWeekYearToken,
   throwProtectedError,
-} from '../_lib/protectedTokens/index'
-import { parsers } from './_lib/parsers/index'
-import { DateToSystemTimezoneSetter, Setter } from './_lib/Setter'
-import type { ParseFlags, ParserOptions } from './_lib/types'
+} from '../_lib/protectedTokens/index.js'
+import { parsers } from './_lib/parsers/index.js'
+import { DateToSystemTimezoneSetter, Setter } from './_lib/Setter.js'
+import type { ParseFlags, ParserOptions } from './_lib/types.js'
 
 /**
  * The {@link parse} function options.

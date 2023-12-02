@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import getMonth from './index'
+import getMonth from './index.js'
 
 describe('getMonth', () => {
   it('returns the month of the given date', () => {

@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import eachDayOfInterval from './index'
+import eachDayOfInterval from './index.js'
 
 describe('eachDayOfInterval', () => {
   it('returns an array with starts of days from the day of the start date to the day of the end date', () => {

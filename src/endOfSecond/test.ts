@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import endOfSecond from './index'
+import endOfSecond from './index.js'
 
 describe('endOfSecond', () => {
   it('returns the date with the time set to the last millisecond before a second ends', () => {

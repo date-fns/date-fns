@@ -3,7 +3,7 @@
 import assert from 'assert'
 import { describe, it } from 'vitest'
 import sinon from 'sinon'
-import endOfYesterday from './index'
+import endOfYesterday from './index.js'
 
 describe('endOfYesterday', () => {
   it('returns yesterday with the time settled to 23:59:59.999', () => {

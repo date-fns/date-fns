@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import getMinutes from './index'
+import getMinutes from './index.js'
 
 describe('getMinutes', () => {
   it('returns the minutes of the given date', () => {

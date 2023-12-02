@@ -1,4 +1,4 @@
-import type { FormatDistanceFn, FormatDistanceLocale } from '../../../types'
+import type { FormatDistanceFn, FormatDistanceLocale } from '../../../types.js'
 
 type FormatDistanceTokenForm = { one: string; other: string }
 

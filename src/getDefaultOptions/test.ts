@@ -3,14 +3,14 @@
 import assert from 'assert'
 import { describe, it, afterEach } from 'vitest'
 import getDefaultOptions from '.'
-import setDefaultOptions from '../setDefaultOptions'
-import startOfWeek from '../startOfWeek'
+import setDefaultOptions from '../setDefaultOptions/index.js'
+import startOfWeek from '../startOfWeek/index.js'
 import {
   getDefaultOptions as getInternalDefaultOptions,
   setDefaultOptions as setInternalDefaultOptions,
-} from '../_lib/defaultOptions/index'
-import eo from '../locale/eo'
-import { resetDefaultOptions } from '../_lib/test'
+} from '../_lib/defaultOptions/index.js'
+import eo from '../locale/eo/index.js'
+import { resetDefaultOptions } from '../_lib/test/index.js'
 
 describe('getDefaultOptions', () => {
   afterEach(resetDefaultOptions)

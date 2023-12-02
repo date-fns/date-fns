@@ -1,8 +1,8 @@
-import type { Match } from '../../../locale/types'
-import { numericPatterns } from '../constants'
-import { Parser } from '../Parser'
-import type { ParseFlags, ParseResult } from '../types'
-import { isLeapYearIndex, parseNDigits, parseNumericPattern } from '../utils'
+import type { Match } from '../../../locale/types.js'
+import { numericPatterns } from '../constants.js'
+import { Parser } from '../Parser.js'
+import type { ParseFlags, ParseResult } from '../types.js'
+import { isLeapYearIndex, parseNDigits, parseNumericPattern } from '../utils.js'
 
 const DAYS_IN_MONTH = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 const DAYS_IN_MONTH_LEAP_YEAR = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]

@@ -1,8 +1,8 @@
-import type { Match } from '../../../locale/types'
-import setISODay from '../../../setISODay/index'
-import { Parser } from '../Parser'
-import type { ParseFlags, ParseResult } from '../types'
-import { mapValue, parseNDigits } from '../utils'
+import type { Match } from '../../../locale/types.js'
+import setISODay from '../../../setISODay/index.js'
+import { Parser } from '../Parser.js'
+import type { ParseFlags, ParseResult } from '../types.js'
+import { mapValue, parseNDigits } from '../utils.js'
 
 // ISO day of week
 export class ISODayParser extends Parser<number> {

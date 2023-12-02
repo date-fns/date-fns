@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import isSameHour from './index'
+import isSameHour from './index.js'
 
 describe('isSameHour', () => {
   it('returns true if the given dates have the same hour', () => {

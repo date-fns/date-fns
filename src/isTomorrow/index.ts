@@ -1,5 +1,5 @@
-import addDays from '../addDays/index'
-import isSameDay from '../isSameDay/index'
+import addDays from '../addDays/index.js'
+import isSameDay from '../isSameDay/index.js'
 
 /**
  * @name isTomorrow

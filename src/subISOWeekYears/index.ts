@@ -1,4 +1,4 @@
-import addISOWeekYears from '../addISOWeekYears/index'
+import addISOWeekYears from '../addISOWeekYears/index.js'
 
 /**
  * @name subISOWeekYears

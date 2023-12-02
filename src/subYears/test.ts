@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import subYears from './index'
+import subYears from './index.js'
 
 describe('subYears', () => {
   it('subtracts the given number of years', () => {

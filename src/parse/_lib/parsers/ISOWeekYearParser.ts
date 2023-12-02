@@ -1,8 +1,8 @@
-import startOfISOWeek from '../../../startOfISOWeek/index'
-import constructFrom from '../../../constructFrom/index'
-import { Parser } from '../Parser'
-import type { ParseFlags, ParseResult } from '../types'
-import { parseNDigitsSigned } from '../utils'
+import startOfISOWeek from '../../../startOfISOWeek/index.js'
+import constructFrom from '../../../constructFrom/index.js'
+import { Parser } from '../Parser.js'
+import type { ParseFlags, ParseResult } from '../types.js'
+import { parseNDigitsSigned } from '../utils.js'
 
 // ISO week-numbering year
 export class ISOWeekYearParser extends Parser<number> {

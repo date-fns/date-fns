@@ -1,4 +1,4 @@
-import nextDay from '../nextDay/index'
+import nextDay from '../nextDay/index.js'
 
 /**
  * @name nextWednesday

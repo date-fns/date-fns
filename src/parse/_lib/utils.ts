@@ -1,11 +1,11 @@
-import type { LocaleDayPeriod } from '../../locale/types'
+import type { LocaleDayPeriod } from '../../locale/types.js'
 import {
   millisecondsInHour,
   millisecondsInMinute,
   millisecondsInSecond,
-} from '../../constants'
-import type { ParseResult } from './types'
-import { numericPatterns } from './constants'
+} from '../../constants/index.js'
+import type { ParseResult } from './types.js'
+import { numericPatterns } from './constants.js'
 
 export function mapValue<TInput, TResult>(
   parseFnResult: ParseResult<TInput>,

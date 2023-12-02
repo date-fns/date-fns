@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import eachWeekOfInterval from './index'
+import eachWeekOfInterval from './index.js'
 
 describe('eachWeekOfInterval', () => {
   it('returns an array with starts of weeks from the week of the start date to the week of the end date', () => {

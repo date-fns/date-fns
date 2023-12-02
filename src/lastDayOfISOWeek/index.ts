@@ -1,4 +1,4 @@
-import lastDayOfWeek from '../lastDayOfWeek/index'
+import lastDayOfWeek from '../lastDayOfWeek/index.js'
 
 /**
  * @name lastDayOfISOWeek

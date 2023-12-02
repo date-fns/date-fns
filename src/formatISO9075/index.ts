@@ -1,7 +1,7 @@
-import isValid from '../isValid/index'
-import toDate from '../toDate/index'
-import type { ISOFormatOptions } from '../types'
-import addLeadingZeros from '../_lib/addLeadingZeros/index'
+import isValid from '../isValid/index.js'
+import toDate from '../toDate/index.js'
+import type { ISOFormatOptions } from '../types.js'
+import addLeadingZeros from '../_lib/addLeadingZeros/index.js'
 
 /**
  * The {@link formatISO9075} function options.

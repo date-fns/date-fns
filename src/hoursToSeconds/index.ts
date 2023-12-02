@@ -1,4 +1,4 @@
-import { secondsInHour } from '../constants/index'
+import { secondsInHour } from '../constants/index.js'
 
 /**
  * @name hoursToSeconds

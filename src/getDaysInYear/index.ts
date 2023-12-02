@@ -1,5 +1,5 @@
-import isLeapYear from '../isLeapYear/index'
-import toDate from '../toDate/index'
+import isLeapYear from '../isLeapYear/index.js'
+import toDate from '../toDate/index.js'
 
 /**
  * @name getDaysInYear

@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import set from './index'
+import set from './index.js'
 
 describe('set', () => {
   it('sets all values', () => {

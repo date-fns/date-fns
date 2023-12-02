@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import isValid from './index'
+import isValid from './index.js'
 
 describe('isValid', () => {
   it('returns true if the given date is valid', () => {

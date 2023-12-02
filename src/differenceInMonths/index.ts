@@ -1,7 +1,7 @@
-import compareAsc from '../compareAsc/index'
-import differenceInCalendarMonths from '../differenceInCalendarMonths/index'
-import isLastDayOfMonth from '../isLastDayOfMonth/index'
-import toDate from '../toDate/index'
+import compareAsc from '../compareAsc/index.js'
+import differenceInCalendarMonths from '../differenceInCalendarMonths/index.js'
+import isLastDayOfMonth from '../isLastDayOfMonth/index.js'
+import toDate from '../toDate/index.js'
 
 /**
  * @name differenceInMonths

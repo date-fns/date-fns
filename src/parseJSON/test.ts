@@ -2,8 +2,8 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import parseJSON from './index'
-import format from '../format/index'
+import parseJSON from './index.js'
+import format from '../format/index.js'
 
 describe('parseJSON', () => {
   it('parses a formatted new Date() back to UTC - issue 2149', () => {

@@ -1,4 +1,4 @@
-import addQuarters from '../addQuarters/index'
+import addQuarters from '../addQuarters/index.js'
 
 /**
  * @name subQuarters

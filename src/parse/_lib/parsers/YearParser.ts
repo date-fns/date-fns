@@ -1,7 +1,7 @@
-import type { Match } from '../../../locale/types'
-import { Parser } from '../Parser'
-import type { ParseFlags, ParseResult } from '../types'
-import { mapValue, normalizeTwoDigitYear, parseNDigits } from '../utils'
+import type { Match } from '../../../locale/types.js'
+import { Parser } from '../Parser.js'
+import type { ParseFlags, ParseResult } from '../types.js'
+import { mapValue, normalizeTwoDigitYear, parseNDigits } from '../utils.js'
 
 export interface YearParserValue {
   year: number

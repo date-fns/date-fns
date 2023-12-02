@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import lastDayOfWeek from './index'
+import lastDayOfWeek from './index.js'
 
 describe('lastDayOfWeek', () => {
   it('returns the date with the time set to 00:00:00 and the date set to the last day of a week', () => {

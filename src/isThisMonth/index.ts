@@ -1,4 +1,4 @@
-import isSameMonth from '../isSameMonth/index'
+import isSameMonth from '../isSameMonth/index.js'
 
 /**
  * @name isThisMonth

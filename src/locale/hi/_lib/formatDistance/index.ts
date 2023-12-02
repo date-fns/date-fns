@@ -1,5 +1,5 @@
-import type { FormatDistanceFn, FormatDistanceLocale } from '../../../types'
-import { numberToLocale } from '../localize/index'
+import type { FormatDistanceFn, FormatDistanceLocale } from '../../../types.js'
+import { numberToLocale } from '../localize/index.js'
 
 // Source: https://www.unicode.org/cldr/charts/32/summary/hi.html
 

@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import setQuarter from './index'
+import setQuarter from './index.js'
 
 describe('setQuarter', () => {
   it('sets the quarter of the year', () => {

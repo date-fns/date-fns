@@ -1,5 +1,5 @@
-import type { FormatLong } from '../../../types'
-import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index'
+import type { FormatLong } from '../../../types.js'
+import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index.js'
 
 const dateFormats = {
   // thứ Sáu, ngày 25 tháng 08 năm 2017

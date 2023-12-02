@@ -1,5 +1,5 @@
-import type { Day } from '../../../../types'
-import type { FormatRelativeFn } from '../../../types'
+import type { Day } from '../../../../types.js'
+import type { FormatRelativeFn } from '../../../types.js'
 
 const accusativeWeekdays = [
   'neděli',

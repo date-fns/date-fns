@@ -1,7 +1,7 @@
-import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
-import buildMatchFn from '../../../_lib/buildMatchFn/index'
-import type { Match } from '../../../types'
-import type { Quarter } from '../../../../types'
+import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
+import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
+import type { Match } from '../../../types.js'
+import type { Quarter } from '../../../../types.js'
 
 const matchOrdinalNumberPattern = /^第?\d+(年|四半期|月|週|日|時|分|秒)?/i
 const parseOrdinalNumberPattern = /\d+/i

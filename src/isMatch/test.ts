@@ -2,8 +2,8 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import isMatch from './index'
-import eo from '../locale/eo'
+import isMatch from './index.js'
+import eo from '../locale/eo/index.js'
 
 describe('isMatch', () => {
   it('accepts a dd-MM-yyyy format against 22-02-1998', () => {

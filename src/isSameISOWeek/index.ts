@@ -1,4 +1,4 @@
-import isSameWeek from '../isSameWeek/index'
+import isSameWeek from '../isSameWeek/index.js'
 
 /**
  * @name isSameISOWeek

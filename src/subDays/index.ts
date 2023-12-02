@@ -1,4 +1,4 @@
-import addDays from '../addDays/index'
+import addDays from '../addDays/index.js'
 
 /**
  * @name subDays

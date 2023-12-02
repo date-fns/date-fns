@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import isBefore from './index'
+import isBefore from './index.js'
 
 describe('isBefore', () => {
   it('returns true if the first date is before the second one', () => {

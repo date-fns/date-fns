@@ -1,5 +1,5 @@
-import setMonth from '../setMonth/index'
-import toDate from '../toDate/index'
+import setMonth from '../setMonth/index.js'
+import toDate from '../toDate/index.js'
 
 /**
  * @name setQuarter

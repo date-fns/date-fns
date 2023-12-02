@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import subBusinessDays from './index'
+import subBusinessDays from './index.js'
 
 describe('subBusinessDays', () => {
   it('substract the given number of business days', () => {

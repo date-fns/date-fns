@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import formatISO9075 from './index'
+import formatISO9075 from './index.js'
 
 describe('formatISO9075', () => {
   it('formats ISO-9075 extended date format', () => {

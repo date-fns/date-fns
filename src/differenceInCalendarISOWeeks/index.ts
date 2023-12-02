@@ -1,6 +1,6 @@
-import { millisecondsInWeek } from '../constants/index'
-import startOfISOWeek from '../startOfISOWeek/index'
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
+import { millisecondsInWeek } from '../constants/index.js'
+import startOfISOWeek from '../startOfISOWeek/index.js'
+import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
 
 /**
  * @name differenceInCalendarISOWeeks

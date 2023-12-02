@@ -1,7 +1,7 @@
-import type { Localize, LocalizeFn } from '../../../types'
-import type { Quarter } from '../../../../types'
+import type { Localize, LocalizeFn } from '../../../types.js'
+import type { Quarter } from '../../../../types.js'
 
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 
 const eraValues = {
   narrow: ['MÖ', 'MS'] as const,

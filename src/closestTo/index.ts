@@ -1,5 +1,5 @@
-import constructFrom from '../constructFrom/index'
-import toDate from '../toDate/index'
+import constructFrom from '../constructFrom/index.js'
+import toDate from '../toDate/index.js'
 
 /**
  * @name closestTo

@@ -1,11 +1,11 @@
-import { Quarter, Era, Day, Month } from '../../../types'
+import { Quarter, Era, Day, Month } from '../../../types.js'
 import {
   LocaleUnitValue,
   LocaleWidth,
   LocaleDayPeriod,
   MatchFn,
   MatchValueCallback,
-} from '../../types'
+} from '../../types.js'
 
 export interface BuildMatchFnArgs<
   Result extends LocaleUnitValue,
@@ -24,47 +24,44 @@ export interface BuildMatchFnArgs<
 
 export type BuildMatchFnMatchPatterns<DefaultWidth extends LocaleWidth> = {
   [Width in LocaleWidth]?: RegExp
-} &
-  {
-    [Width in DefaultWidth]: RegExp
-  }
+} & {
+  [Width in DefaultWidth]: RegExp
+}
 
 export type BuildMatchFnParsePatterns<
   Value extends LocaleUnitValue,
   DefaultWidth extends LocaleWidth
 > = {
   [Width in LocaleWidth]?: ParsePattern<Value>
-} &
-  {
-    [Width in DefaultWidth]: ParsePattern<Value>
-  }
+} & {
+  [Width in DefaultWidth]: ParsePattern<Value>
+}
 
-export type ParsePattern<
-  Value extends LocaleUnitValue
-> = Value extends LocaleDayPeriod
-  ? Record<LocaleDayPeriod, RegExp>
-  : Value extends Quarter
-  ? readonly [RegExp, RegExp, RegExp, RegExp]
-  : Value extends Era
-  ? readonly [RegExp, RegExp]
-  : Value extends Day
-  ? readonly [RegExp, RegExp, RegExp, RegExp, RegExp, RegExp, RegExp]
-  : Value extends Month
-  ? readonly [
-      RegExp,
-      RegExp,
-      RegExp,
-      RegExp,
-      RegExp,
-      RegExp,
-      RegExp,
-      RegExp,
-      RegExp,
-      RegExp,
-      RegExp,
-      RegExp
-    ]
-  : never
+export type ParsePattern<Value extends LocaleUnitValue> =
+  Value extends LocaleDayPeriod
+    ? Record<LocaleDayPeriod, RegExp>
+    : Value extends Quarter
+    ? readonly [RegExp, RegExp, RegExp, RegExp]
+    : Value extends Era
+    ? readonly [RegExp, RegExp]
+    : Value extends Day
+    ? readonly [RegExp, RegExp, RegExp, RegExp, RegExp, RegExp, RegExp]
+    : Value extends Month
+    ? readonly [
+        RegExp,
+        RegExp,
+        RegExp,
+        RegExp,
+        RegExp,
+        RegExp,
+        RegExp,
+        RegExp,
+        RegExp,
+        RegExp,
+        RegExp,
+        RegExp
+      ]
+    : never
 
 export default function buildMatchFn<
   Value extends LocaleUnitValue,
@@ -90,11 +87,11 @@ export default function buildMatchFn<
       (width && args.parsePatterns[width]) ||
       args.parsePatterns[args.defaultParseWidth]
 
-    const key = (Array.isArray(parsePatterns)
-      ? findIndex(parsePatterns, (pattern) => pattern.test(matchedString))
-      : findKey(parsePatterns, (pattern: any) =>
-          pattern.test(matchedString)
-        )) as Value extends LocaleDayPeriod ? string : number
+    const key = (
+      Array.isArray(parsePatterns)
+        ? findIndex(parsePatterns, (pattern) => pattern.test(matchedString))
+        : findKey(parsePatterns, (pattern: any) => pattern.test(matchedString))
+    ) as Value extends LocaleDayPeriod ? string : number
 
     let value: Value
 

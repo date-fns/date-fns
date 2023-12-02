@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import setWeek from './index'
+import setWeek from './index.js'
 
 describe('setWeek', () => {
   it('sets the local week', () => {

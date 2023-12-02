@@ -2,8 +2,8 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import differenceInCalendarDays from './index'
-import { getDstTransitions } from '../../test/dst/tzOffsetTransitions'
+import differenceInCalendarDays from './index.js'
+import { getDstTransitions } from '../../test/dst/tzOffsetTransitions.js'
 
 describe('differenceInCalendarDays', () => {
   it('returns the number of calendar days between the given dates', () => {

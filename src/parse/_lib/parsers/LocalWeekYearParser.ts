@@ -1,10 +1,10 @@
-import getWeekYear from '../../../getWeekYear/index'
-import type { Match } from '../../../locale/types'
-import startOfWeek from '../../../startOfWeek/index'
-import { Parser } from '../Parser'
-import type { ParseFlags, ParseResult, ParserOptions } from '../types'
-import { mapValue, normalizeTwoDigitYear, parseNDigits } from '../utils'
-import type { YearParserValue } from './YearParser'
+import getWeekYear from '../../../getWeekYear/index.js'
+import type { Match } from '../../../locale/types.js'
+import startOfWeek from '../../../startOfWeek/index.js'
+import { Parser } from '../Parser.js'
+import type { ParseFlags, ParseResult, ParserOptions } from '../types.js'
+import { mapValue, normalizeTwoDigitYear, parseNDigits } from '../utils.js'
+import type { YearParserValue } from './YearParser.js'
 
 // Local week-numbering year
 export class LocalWeekYearParser extends Parser<YearParserValue> {

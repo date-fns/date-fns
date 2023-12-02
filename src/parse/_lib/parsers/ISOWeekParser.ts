@@ -1,10 +1,10 @@
-import type { Match } from '../../../locale/types'
-import setISOWeek from '../../../setISOWeek/index'
-import startOfISOWeek from '../../../startOfISOWeek/index'
-import { numericPatterns } from '../constants'
-import { Parser } from '../Parser'
-import type { ParseFlags, ParseResult } from '../types'
-import { parseNDigits, parseNumericPattern } from '../utils'
+import type { Match } from '../../../locale/types.js'
+import setISOWeek from '../../../setISOWeek/index.js'
+import startOfISOWeek from '../../../startOfISOWeek/index.js'
+import { numericPatterns } from '../constants.js'
+import { Parser } from '../Parser.js'
+import type { ParseFlags, ParseResult } from '../types.js'
+import { parseNDigits, parseNumericPattern } from '../utils.js'
 
 // ISO week of year
 export class ISOWeekParser extends Parser<number> {

@@ -1,7 +1,7 @@
-import addMinutes from '../addMinutes/index'
-import startOfMinute from '../startOfMinute/index'
-import toDate from '../toDate/index'
-import type { Interval, StepOptions } from '../types'
+import addMinutes from '../addMinutes/index.js'
+import startOfMinute from '../startOfMinute/index.js'
+import toDate from '../toDate/index.js'
+import type { Interval, StepOptions } from '../types.js'
 
 /**
  * The {@link eachMinuteOfInterval} function options.

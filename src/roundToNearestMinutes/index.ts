@@ -1,7 +1,7 @@
-import constructFrom from '../constructFrom/index'
-import toDate from '../toDate/index'
-import type { NearestMinutesOptions, RoundingOptions } from '../types'
-import { getRoundingMethod } from '../_lib/roundingMethods/index'
+import constructFrom from '../constructFrom/index.js'
+import toDate from '../toDate/index.js'
+import type { NearestMinutesOptions, RoundingOptions } from '../types.js'
+import { getRoundingMethod } from '../_lib/roundingMethods/index.js'
 
 /**
  * The {@link roundToNearestMinutes} function options.

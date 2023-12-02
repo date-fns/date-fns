@@ -1,7 +1,7 @@
-import constructFrom from '../../../constructFrom/index'
-import { Parser } from '../Parser'
-import type { ParseFlags, ParseResult } from '../types'
-import { parseAnyDigitsSigned } from '../utils'
+import constructFrom from '../../../constructFrom/index.js'
+import { Parser } from '../Parser.js'
+import type { ParseFlags, ParseResult } from '../types.js'
+import { parseAnyDigitsSigned } from '../utils.js'
 
 export class TimestampSecondsParser extends Parser<number> {
   priority = 40

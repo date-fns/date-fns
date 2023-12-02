@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import convertToFP from './index'
+import convertToFP from './index.js'
 
 describe('convertToFP', () => {
   function fn(a: unknown, b: unknown, c: unknown) {

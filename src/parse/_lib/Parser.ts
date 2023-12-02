@@ -1,6 +1,6 @@
-import type { Match } from '../../locale/types'
-import { ValueSetter } from './Setter'
-import type { ParseFlags, ParseResult, ParserOptions } from './types'
+import type { Match } from '../../locale/types.js'
+import { ValueSetter } from './Setter.js'
+import type { ParseFlags, ParseResult, ParserOptions } from './types.js'
 
 export abstract class Parser<Value> {
   public abstract incompatibleTokens: string[] | '*'

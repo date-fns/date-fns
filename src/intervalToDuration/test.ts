@@ -2,8 +2,8 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import intervalToDuration from './index'
-import addMonths from '../addMonths/index'
+import intervalToDuration from './index.js'
+import addMonths from '../addMonths/index.js'
 
 describe('intervalToDuration', () => {
   it('returns correct duration for arbitrary dates', () => {

@@ -1,9 +1,9 @@
-import type { Locale } from '../types'
-import formatDistance from '../it/_lib/formatDistance/index'
-import formatRelative from '../it/_lib/formatRelative/index'
-import localize from '../it/_lib/localize/index'
-import match from '../it/_lib/match/index'
-import formatLong from './_lib/formatLong/index'
+import type { Locale } from '../types.js'
+import formatDistance from '../it/_lib/formatDistance/index.js'
+import formatRelative from '../it/_lib/formatRelative/index.js'
+import localize from '../it/_lib/localize/index.js'
+import match from '../it/_lib/match/index.js'
+import formatLong from './_lib/formatLong/index.js'
 
 /**
  * @category Locales

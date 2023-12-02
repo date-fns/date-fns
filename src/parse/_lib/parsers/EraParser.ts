@@ -1,7 +1,7 @@
-import type { Match } from '../../../locale/types'
-import type { Era } from '../../../types'
-import { Parser } from '../Parser'
-import type { ParseFlags, ParseResult } from '../types'
+import type { Match } from '../../../locale/types.js'
+import type { Era } from '../../../types.js'
+import { Parser } from '../Parser.js'
+import type { ParseFlags, ParseResult } from '../types.js'
 
 export class EraParser extends Parser<number> {
   priority = 140

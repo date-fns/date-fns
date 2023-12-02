@@ -1,4 +1,4 @@
-import type { MatchFn, MatchValueCallback } from '../../types'
+import type { MatchFn, MatchValueCallback } from '../../types.js'
 
 export interface BuildMatchPatternFnArgs<Result> {
   matchPattern: RegExp
@@ -16,9 +16,9 @@ export default function buildMatchPatternFn<Result>(
 
     const parseResult = string.match(args.parsePattern)
     if (!parseResult) return null
-    let value = (args.valueCallback
-      ? args.valueCallback(parseResult[0])
-      : parseResult[0]) as Result
+    let value = (
+      args.valueCallback ? args.valueCallback(parseResult[0]) : parseResult[0]
+    ) as Result
     value = options.valueCallback ? options.valueCallback(value as any) : value
 
     const rest = string.slice(matchedString.length)

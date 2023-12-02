@@ -3,7 +3,7 @@
 import assert from 'assert'
 import { describe, it } from 'vitest'
 
-import eachMinuteOfInterval from './index'
+import eachMinuteOfInterval from './index.js'
 
 describe('eachMinuteOfInterval', () => {
   it('should return an array of Date objects containing a Date for each minute between the interval', () => {

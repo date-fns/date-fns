@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import eachMonthOfInterval from './index'
+import eachMonthOfInterval from './index.js'
 
 describe('eachMonthOfInterval', () => {
   it('returns an array with starts of months from the month of the start date to the month of the end date', () => {

@@ -1,7 +1,7 @@
-import differenceInCalendarWeeks from '../differenceInCalendarWeeks/index'
-import lastDayOfMonth from '../lastDayOfMonth/index'
-import startOfMonth from '../startOfMonth/index'
-import type { LocalizedOptions, WeekOptions } from '../types'
+import differenceInCalendarWeeks from '../differenceInCalendarWeeks/index.js'
+import lastDayOfMonth from '../lastDayOfMonth/index.js'
+import startOfMonth from '../startOfMonth/index.js'
+import type { LocalizedOptions, WeekOptions } from '../types.js'
 
 /**
  * The {@link getWeeksInMonth} function options.

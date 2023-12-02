@@ -1,9 +1,9 @@
-import getDayOfYear from '../../../getDayOfYear/index'
-import getISOWeek from '../../../getISOWeek/index'
-import getISOWeekYear from '../../../getISOWeekYear/index'
-import getWeek from '../../../getWeek/index'
-import getWeekYear from '../../../getWeekYear/index'
-import type { LocaleDayPeriod, Localize } from '../../../locale/types'
+import getDayOfYear from '../../../getDayOfYear/index.js'
+import getISOWeek from '../../../getISOWeek/index.js'
+import getISOWeekYear from '../../../getISOWeekYear/index.js'
+import getWeek from '../../../getWeek/index.js'
+import getWeekYear from '../../../getWeekYear/index.js'
+import type { LocaleDayPeriod, Localize } from '../../../locale/types.js'
 import type {
   Day,
   Era,
@@ -12,9 +12,9 @@ import type {
   Month,
   Quarter,
   WeekOptions,
-} from '../../../types'
-import addLeadingZeros from '../../addLeadingZeros/index'
-import lightFormatters from '../lightFormatters/index'
+} from '../../../types.js'
+import addLeadingZeros from '../../addLeadingZeros/index.js'
+import lightFormatters from '../lightFormatters/index.js'
 
 const dayPeriodEnum = {
   am: 'am',

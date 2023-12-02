@@ -1,7 +1,7 @@
-import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
-import buildMatchFn from '../../../_lib/buildMatchFn/index'
-import type { Match } from '../../../types'
-import type { Quarter } from '../../../../types'
+import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
+import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
+import type { Match } from '../../../types.js'
+import type { Quarter } from '../../../../types.js'
 
 const matchOrdinalNumberPattern = /^(\d+)(th|st|nd|rd)?/i
 const parseOrdinalNumberPattern = /\d+/i
@@ -26,7 +26,8 @@ const parseQuarterPatterns = {
 
 const matchMonthPatterns = {
   narrow: /^[جفمأسند]/,
-  abbreviated: /^(جانفي|فيفري|مارس|أفريل|ماي|جوان|جويلية|أوت|سبتمبر|أكتوبر|نوفمبر|ديسمبر)/,
+  abbreviated:
+    /^(جانفي|فيفري|مارس|أفريل|ماي|جوان|جويلية|أوت|سبتمبر|أكتوبر|نوفمبر|ديسمبر)/,
   wide: /^(جانفي|فيفري|مارس|أفريل|ماي|جوان|جويلية|أوت|سبتمبر|أكتوبر|نوفمبر|ديسمبر)/,
 }
 const parseMonthPatterns = {

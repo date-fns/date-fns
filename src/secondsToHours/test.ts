@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import secondsToHours from './index'
+import secondsToHours from './index.js'
 
 describe('secondsToHours', () => {
   it('converts seconds to hours', () => {

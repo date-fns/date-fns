@@ -1,7 +1,7 @@
-import constructFrom from '../constructFrom/index'
-import differenceInCalendarDays from '../differenceInCalendarDays/index'
-import startOfISOWeekYear from '../startOfISOWeekYear/index'
-import toDate from '../toDate/index'
+import constructFrom from '../constructFrom/index.js'
+import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
+import startOfISOWeekYear from '../startOfISOWeekYear/index.js'
+import toDate from '../toDate/index.js'
 
 /**
  * @name setISOWeekYear

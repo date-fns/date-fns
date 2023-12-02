@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import lastDayOfMonth from './index'
+import lastDayOfMonth from './index.js'
 
 describe('lastDayOfMonth', () => {
   it('returns the date with the time set to 00:00:00 and the date set to the last day of a month', () => {

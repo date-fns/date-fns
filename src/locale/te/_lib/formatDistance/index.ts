@@ -1,4 +1,4 @@
-import type { FormatDistanceFn, FormatDistanceLocale } from '../../../types'
+import type { FormatDistanceFn, FormatDistanceLocale } from '../../../types.js'
 
 // Source: https://www.unicode.org/cldr/charts/32/summary/te.html
 

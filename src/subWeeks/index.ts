@@ -1,4 +1,4 @@
-import addWeeks from '../addWeeks/index'
+import addWeeks from '../addWeeks/index.js'
 
 /**
  * @name subWeeks

@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import getWeeksInMonth from './index'
+import getWeeksInMonth from './index.js'
 
 describe('getWeeksInMonth', () => {
   it('returns the number of calendar weeks the month in the given date spans', () => {

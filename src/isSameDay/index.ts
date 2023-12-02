@@ -1,4 +1,4 @@
-import startOfDay from '../startOfDay/index'
+import startOfDay from '../startOfDay/index.js'
 
 /**
  * @name isSameDay

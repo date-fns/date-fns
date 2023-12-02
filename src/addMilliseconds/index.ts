@@ -1,5 +1,5 @@
-import toDate from '../toDate/index'
-import constructFrom from '../constructFrom/index'
+import toDate from '../toDate/index.js'
+import constructFrom from '../constructFrom/index.js'
 
 /**
  * @name addMilliseconds

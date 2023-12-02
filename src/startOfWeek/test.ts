@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import startOfWeek from './index'
+import startOfWeek from './index.js'
 
 describe('startOfWeek', () => {
   it('returns the date with the time set to 00:00:00 and the date set to the first day of a week', () => {

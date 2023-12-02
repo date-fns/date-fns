@@ -1,4 +1,4 @@
-import endOfWeek from '../endOfWeek/index'
+import endOfWeek from '../endOfWeek/index.js'
 
 /**
  * @name endOfISOWeek

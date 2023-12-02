@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import clamp from './index'
+import clamp from './index.js'
 
 describe('clamp', () => {
   it('accepts timestamps', () => {

@@ -3,7 +3,7 @@
 import assert from 'assert'
 import { afterEach, beforeEach, describe, it } from 'vitest'
 import sinon from 'sinon'
-import isYesterday from './index'
+import isYesterday from './index.js'
 
 describe('isYesterday', () => {
   let clock: sinon.SinonFakeTimers

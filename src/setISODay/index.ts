@@ -1,6 +1,6 @@
-import addDays from '../addDays/index'
-import getISODay from '../getISODay/index'
-import toDate from '../toDate/index'
+import addDays from '../addDays/index.js'
+import getISODay from '../getISODay/index.js'
+import toDate from '../toDate/index.js'
 
 /**
  * @name setISODay

@@ -1,12 +1,12 @@
-import addWeeks from '../addWeeks/index'
-import startOfWeek from '../startOfWeek/index'
-import toDate from '../toDate/index'
+import addWeeks from '../addWeeks/index.js'
+import startOfWeek from '../startOfWeek/index.js'
+import toDate from '../toDate/index.js'
 import type {
   Interval,
   LocalizedOptions,
   StepOptions,
   WeekOptions,
-} from '../types'
+} from '../types.js'
 
 /**
  * The {@link eachWeekOfInterval} function options.

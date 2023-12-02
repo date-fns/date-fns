@@ -1,4 +1,4 @@
-import { millisecondsInHour } from '../constants/index'
+import { millisecondsInHour } from '../constants/index.js'
 
 /**
  * @name hoursToMilliseconds

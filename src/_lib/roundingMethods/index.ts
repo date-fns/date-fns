@@ -1,4 +1,4 @@
-import type { RoundingMethod } from '../../types'
+import type { RoundingMethod } from '../../types.js'
 
 type RoundingFn = typeof Math.round
 

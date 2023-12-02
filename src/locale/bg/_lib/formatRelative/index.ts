@@ -1,7 +1,7 @@
-import isSameWeek from '../../../../isSameWeek/index'
-import toDate from '../../../../toDate/index'
-import type { Day } from '../../../../types'
-import type { FormatRelativeFn, FormatRelativeTokenFn } from '../../../types'
+import isSameWeek from '../../../../isSameWeek/index.js'
+import toDate from '../../../../toDate/index.js'
+import type { Day } from '../../../../types.js'
+import type { FormatRelativeFn, FormatRelativeTokenFn } from '../../../types.js'
 
 // Adapted from the `ru` translation
 

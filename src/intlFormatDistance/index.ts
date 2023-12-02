@@ -6,16 +6,16 @@ import {
   secondsInQuarter,
   secondsInWeek,
   secondsInYear,
-} from '../constants/index'
-import differenceInCalendarDays from '../differenceInCalendarDays/index'
-import differenceInCalendarMonths from '../differenceInCalendarMonths/index'
-import differenceInCalendarQuarters from '../differenceInCalendarQuarters/index'
-import differenceInCalendarWeeks from '../differenceInCalendarWeeks/index'
-import differenceInCalendarYears from '../differenceInCalendarYears/index'
-import differenceInHours from '../differenceInHours/index'
-import differenceInMinutes from '../differenceInMinutes/index'
-import differenceInSeconds from '../differenceInSeconds/index'
-import toDate from '../toDate/index'
+} from '../constants/index.js'
+import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
+import differenceInCalendarMonths from '../differenceInCalendarMonths/index.js'
+import differenceInCalendarQuarters from '../differenceInCalendarQuarters/index.js'
+import differenceInCalendarWeeks from '../differenceInCalendarWeeks/index.js'
+import differenceInCalendarYears from '../differenceInCalendarYears/index.js'
+import differenceInHours from '../differenceInHours/index.js'
+import differenceInMinutes from '../differenceInMinutes/index.js'
+import differenceInSeconds from '../differenceInSeconds/index.js'
+import toDate from '../toDate/index.js'
 
 /**
  * The {@link intlFormatDistance} function options.

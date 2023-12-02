@@ -1,8 +1,8 @@
-import constructFrom from '../constructFrom/index'
-import isSaturday from '../isSaturday/index'
-import isSunday from '../isSunday/index'
-import isWeekend from '../isWeekend/index'
-import toDate from '../toDate/index'
+import constructFrom from '../constructFrom/index.js'
+import isSaturday from '../isSaturday/index.js'
+import isSunday from '../isSunday/index.js'
+import isWeekend from '../isWeekend/index.js'
+import toDate from '../toDate/index.js'
 
 /**
  * @name addBusinessDays

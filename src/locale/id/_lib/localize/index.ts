@@ -1,5 +1,5 @@
-import type { Localize, LocalizeFn } from '../../../types'
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
+import type { Localize, LocalizeFn } from '../../../types.js'
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 
 // All data for localization are taken from this page
 // https://www.unicode.org/cldr/charts/32/summary/id.html

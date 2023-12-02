@@ -1,4 +1,4 @@
-import isSameYear from '../isSameYear/index'
+import isSameYear from '../isSameYear/index.js'
 
 /**
  * @name isThisYear

@@ -1,4 +1,4 @@
-import type { FormatDistanceFn, FormatDistanceTokenFn } from '../../../types'
+import type { FormatDistanceFn, FormatDistanceTokenFn } from '../../../types.js'
 
 interface DeclensionScheme {
   one?: string

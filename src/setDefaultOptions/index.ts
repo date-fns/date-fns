@@ -2,7 +2,7 @@ import {
   getDefaultOptions,
   setDefaultOptions as setInternalDefaultOptions,
   DefaultOptions,
-} from '../_lib/defaultOptions/index'
+} from '../_lib/defaultOptions/index.js'
 
 /**
  * @name setDefaultOptions

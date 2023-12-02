@@ -1,6 +1,6 @@
-import isValid from '../isValid/index'
-import toDate from '../toDate/index'
-import formatters from '../_lib/format/lightFormatters/index'
+import isValid from '../isValid/index.js'
+import toDate from '../toDate/index.js'
+import formatters from '../_lib/format/lightFormatters/index.js'
 
 // This RegExp consists of three parts separated by `|`:
 // - (\w)\1* matches any sequences of the same letter

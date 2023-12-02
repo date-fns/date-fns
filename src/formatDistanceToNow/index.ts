@@ -1,4 +1,6 @@
-import distanceInWords, { FormatDistanceOptions } from '../formatDistance/index'
+import distanceInWords, {
+  FormatDistanceOptions,
+} from '../formatDistance/index.js'
 
 /**
  * The {@link formatDistanceToNow} function options.

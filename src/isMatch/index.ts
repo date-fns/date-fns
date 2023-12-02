@@ -1,11 +1,11 @@
-import isValid from '../isValid/index'
-import parse from '../parse/index'
+import isValid from '../isValid/index.js'
+import parse from '../parse/index.js'
 import type {
   AdditionalTokensOptions,
   FirstWeekContainsDateOptions,
   LocalizedOptions,
   WeekOptions,
-} from '../types'
+} from '../types.js'
 
 /**
  * The {@link isMatch} function options.

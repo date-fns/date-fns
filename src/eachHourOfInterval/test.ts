@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import eachHourOfInterval from './index'
+import eachHourOfInterval from './index.js'
 
 describe('eachHourOfInterval', () => {
   it('returns an array with starts of hours from the hour of the start date to the hour of the end date', () => {

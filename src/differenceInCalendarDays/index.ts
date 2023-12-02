@@ -1,6 +1,6 @@
-import { millisecondsInDay } from '../constants/index'
-import startOfDay from '../startOfDay/index'
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
+import { millisecondsInDay } from '../constants/index.js'
+import startOfDay from '../startOfDay/index.js'
+import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
 
 /**
  * @name differenceInCalendarDays

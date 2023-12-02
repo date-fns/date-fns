@@ -1,6 +1,6 @@
-import getISOWeekYear from '../getISOWeekYear/index'
-import startOfISOWeek from '../startOfISOWeek/index'
-import constructFrom from '../constructFrom/index'
+import getISOWeekYear from '../getISOWeekYear/index.js'
+import startOfISOWeek from '../startOfISOWeek/index.js'
+import constructFrom from '../constructFrom/index.js'
 
 /**
  * @name startOfISOWeekYear

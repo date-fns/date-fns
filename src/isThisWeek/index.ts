@@ -1,5 +1,5 @@
-import isSameWeek from '../isSameWeek/index'
-import type { LocalizedOptions, WeekOptions } from '../types'
+import isSameWeek from '../isSameWeek/index.js'
+import type { LocalizedOptions, WeekOptions } from '../types.js'
 
 /**
  * The {@link isThisWeek} function options.

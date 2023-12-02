@@ -3,8 +3,8 @@
 import assert from 'assert'
 import { afterEach, beforeEach, describe, it } from 'vitest'
 import sinon from 'sinon'
-import type { FormatDistanceFn } from '../locale/types'
-import formatDistanceToNowStrict from './index'
+import type { FormatDistanceFn } from '../locale/types.js'
+import formatDistanceToNowStrict from './index.js'
 
 describe('formatDistanceToNowStrict', () => {
   let clock: sinon.SinonFakeTimers

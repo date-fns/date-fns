@@ -1,7 +1,7 @@
-import constructFrom from '../constructFrom/index'
-import setMonth from '../setMonth/index'
-import toDate from '../toDate/index'
-import type { DateValues } from '../types'
+import constructFrom from '../constructFrom/index.js'
+import setMonth from '../setMonth/index.js'
+import toDate from '../toDate/index.js'
+import type { DateValues } from '../types.js'
 
 /**
  * @name set

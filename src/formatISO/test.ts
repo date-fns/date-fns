@@ -4,7 +4,7 @@ import assert from 'assert'
 import { describe, it } from 'vitest'
 import sinon from 'sinon'
 import formatISO from '.'
-import { generateOffset } from '../_lib/test'
+import { generateOffset } from '../_lib/test/index.js'
 
 describe('formatISO', () => {
   it('formats ISO-8601 extended format', () => {

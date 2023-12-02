@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import parse from './index'
+import parse from './index.js'
 
 describe('parse', () => {
   const referenceDate = new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 900)

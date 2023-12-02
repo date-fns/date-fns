@@ -1,8 +1,8 @@
-import getDate from '../getDate/index'
-import getDay from '../getDay/index'
-import startOfMonth from '../startOfMonth/index'
-import type { LocalizedOptions, WeekOptions } from '../types'
-import { getDefaultOptions } from '../_lib/defaultOptions/index'
+import getDate from '../getDate/index.js'
+import getDay from '../getDay/index.js'
+import startOfMonth from '../startOfMonth/index.js'
+import type { LocalizedOptions, WeekOptions } from '../types.js'
+import { getDefaultOptions } from '../_lib/defaultOptions/index.js'
 
 /**
  * The {@link getWeekOfMonth} function options.

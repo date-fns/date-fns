@@ -1,7 +1,7 @@
-import addDays from '../addDays/index'
-import toDate from '../toDate/index'
-import type { LocalizedOptions, WeekOptions } from '../types'
-import { getDefaultOptions } from '../_lib/defaultOptions/index'
+import addDays from '../addDays/index.js'
+import toDate from '../toDate/index.js'
+import type { LocalizedOptions, WeekOptions } from '../types.js'
+import { getDefaultOptions } from '../_lib/defaultOptions/index.js'
 
 /**
  * The {@link setDay} function options.

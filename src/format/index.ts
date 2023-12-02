@@ -1,5 +1,5 @@
-import isValid from '../isValid/index'
-import toDate from '../toDate/index'
+import isValid from '../isValid/index.js'
+import toDate from '../toDate/index.js'
 import type {
   AdditionalTokensOptions,
   Day,
@@ -7,16 +7,16 @@ import type {
   FirstWeekContainsDateOptions,
   LocalizedOptions,
   WeekOptions,
-} from '../types'
-import defaultLocale from '../_lib/defaultLocale/index'
-import { getDefaultOptions } from '../_lib/defaultOptions/index'
-import formatters from '../_lib/format/formatters/index'
-import longFormatters from '../_lib/format/longFormatters/index'
+} from '../types.js'
+import defaultLocale from '../_lib/defaultLocale/index.js'
+import { getDefaultOptions } from '../_lib/defaultOptions/index.js'
+import formatters from '../_lib/format/formatters/index.js'
+import longFormatters from '../_lib/format/longFormatters/index.js'
 import {
   isProtectedDayOfYearToken,
   isProtectedWeekYearToken,
   throwProtectedError,
-} from '../_lib/protectedTokens/index'
+} from '../_lib/protectedTokens/index.js'
 
 // This RegExp consists of three parts separated by `|`:
 // - [yYQqMLwIdDecihHKkms]o matches any available ordinal number token

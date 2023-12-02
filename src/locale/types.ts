@@ -8,7 +8,7 @@ import type {
   Month,
   Quarter,
   WeekOptions,
-} from '../types'
+} from '../types.js'
 
 /**
  * The locale object with all functions and data needed to parse and format

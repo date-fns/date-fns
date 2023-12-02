@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import compareDesc from './index'
+import compareDesc from './index.js'
 
 describe('compareDesc', () => {
   it('returns 0 if the given dates are equal', () => {

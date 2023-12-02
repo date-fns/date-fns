@@ -1,7 +1,7 @@
-import addQuarters from '../addQuarters/index'
-import startOfQuarter from '../startOfQuarter/index'
-import toDate from '../toDate/index'
-import type { Interval, StepOptions } from '../types'
+import addQuarters from '../addQuarters/index.js'
+import startOfQuarter from '../startOfQuarter/index.js'
+import toDate from '../toDate/index.js'
+import type { Interval, StepOptions } from '../types.js'
 
 /**
  * The {@link eachQuarterOfInterval} function options.

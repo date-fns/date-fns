@@ -1,4 +1,4 @@
-import getTime from '../getTime/index'
+import getTime from '../getTime/index.js'
 
 /**
  * @name getUnixTime

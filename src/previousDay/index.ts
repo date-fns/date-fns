@@ -1,6 +1,6 @@
-import getDay from '../getDay/index'
-import subDays from '../subDays/index'
-import type { Day } from '../types'
+import getDay from '../getDay/index.js'
+import subDays from '../subDays/index.js'
+import type { Day } from '../types.js'
 
 /**
  * @name previousDay

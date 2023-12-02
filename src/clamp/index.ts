@@ -1,6 +1,6 @@
-import max from '../max/index'
-import min from '../min/index'
-import type { Interval } from '../types'
+import max from '../max/index.js'
+import min from '../min/index.js'
+import type { Interval } from '../types.js'
 
 /**
  * @name clamp

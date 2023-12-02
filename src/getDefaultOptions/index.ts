@@ -1,7 +1,7 @@
 import {
   DefaultOptions,
   getDefaultOptions as getInternalDefaultOptions,
-} from '../_lib/defaultOptions/index'
+} from '../_lib/defaultOptions/index.js'
 
 /**
  * @name getDefaultOptions

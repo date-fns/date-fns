@@ -1,5 +1,8 @@
-import isSameWeek from '../../../../isSameWeek/index'
-import type { FormatRelativeFn, FormatRelativeFnOptions } from '../../../types'
+import isSameWeek from '../../../../isSameWeek/index.js'
+import type {
+  FormatRelativeFn,
+  FormatRelativeFnOptions,
+} from '../../../types.js'
 
 const weekdays = [
   'svētdienā',

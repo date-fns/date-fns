@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import setYear from './index'
+import setYear from './index.js'
 
 describe('setYear', () => {
   it('sets the year', () => {

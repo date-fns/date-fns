@@ -1,8 +1,8 @@
-import addDays from '../addDays/index'
-import addMonths from '../addMonths/index'
-import constructFrom from '../constructFrom/index'
-import toDate from '../toDate/index'
-import type { Duration } from '../types'
+import addDays from '../addDays/index.js'
+import addMonths from '../addMonths/index.js'
+import constructFrom from '../constructFrom/index.js'
+import toDate from '../toDate/index.js'
+import type { Duration } from '../types.js'
 
 /**
  * @name add

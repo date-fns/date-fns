@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import differenceInCalendarISOWeeks from './index'
+import differenceInCalendarISOWeeks from './index.js'
 
 describe('differenceInCalendarISOWeeks', () => {
   it('returns the number of calendar ISO weeks between the given dates', () => {

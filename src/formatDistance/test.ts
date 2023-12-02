@@ -2,8 +2,8 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import type { FormatDistanceFn } from '../locale/types'
-import formatDistance from './index'
+import type { FormatDistanceFn } from '../locale/types.js'
+import formatDistance from './index.js'
 
 describe('formatDistance', () => {
   describe('seconds', () => {

@@ -1,8 +1,8 @@
-import type { Quarter } from '../../../../types'
-import type { Match } from '../../../types'
-import buildMatchFn from '../../../_lib/buildMatchFn/index'
-import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
-import { localeToNumber } from '../localize/index'
+import type { Quarter } from '../../../../types.js'
+import type { Match } from '../../../types.js'
+import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
+import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
+import { localeToNumber } from '../localize/index.js'
 
 const matchOrdinalNumberPattern = /^[०१२३४५६७८९]+/i
 const parseOrdinalNumberPattern = /^[०१२३४५६७८९]+/i

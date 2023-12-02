@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import getYear from './index'
+import getYear from './index.js'
 
 describe('getYear', () => {
   it('returns the year of the given date', () => {

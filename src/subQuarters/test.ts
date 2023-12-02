@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import subQuarters from './index'
+import subQuarters from './index.js'
 
 describe('subQuarters', () => {
   it('subtracts the given number of quarters', () => {

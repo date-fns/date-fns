@@ -1,10 +1,11 @@
-import type { FormatLongFn, FormatLongWidth } from '../../types'
+import type { FormatLongFn, FormatLongWidth } from '../../types.js'
 
 export interface BuildFormatLongFnArgs<
   DefaultMatchWidth extends FormatLongWidth
 > {
-  formats: Partial<{ [format in FormatLongWidth]: string }> &
-    { [format in DefaultMatchWidth]: string }
+  formats: Partial<{ [format in FormatLongWidth]: string }> & {
+    [format in DefaultMatchWidth]: string
+  }
   defaultWidth: DefaultMatchWidth
 }
 

@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import startOfISOWeek from './index'
+import startOfISOWeek from './index.js'
 
 describe('startOfISOWeek', () => {
   it('returns the date with the time set to 00:00:00 and the date set to the first day of an ISO week', () => {

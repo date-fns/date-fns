@@ -1,5 +1,5 @@
-import toDate from '../toDate/index'
-import type { Interval } from '../types'
+import toDate from '../toDate/index.js'
+import type { Interval } from '../types.js'
 
 /**
  * @name isWithinInterval

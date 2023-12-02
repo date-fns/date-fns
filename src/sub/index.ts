@@ -1,7 +1,7 @@
-import subDays from '../subDays/index'
-import subMonths from '../subMonths/index'
-import type { Duration } from '../types'
-import constructFrom from '../constructFrom/index'
+import subDays from '../subDays/index.js'
+import subMonths from '../subMonths/index.js'
+import type { Duration } from '../types.js'
+import constructFrom from '../constructFrom/index.js'
 
 /**
  * @name sub

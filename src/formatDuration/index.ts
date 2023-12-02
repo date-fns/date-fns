@@ -1,7 +1,7 @@
-import type { FormatDistanceToken } from '../locale/types'
-import type { Duration, DurationUnit, LocalizedOptions } from '../types'
-import defaultLocale from '../_lib/defaultLocale/index'
-import { getDefaultOptions } from '../_lib/defaultOptions/index'
+import type { FormatDistanceToken } from '../locale/types.js'
+import type { Duration, DurationUnit, LocalizedOptions } from '../types.js'
+import defaultLocale from '../_lib/defaultLocale/index.js'
+import { getDefaultOptions } from '../_lib/defaultOptions/index.js'
 
 /**
  * The {@link formatDuration} function options.

@@ -1,10 +1,10 @@
-import differenceInCalendarDays from '../differenceInCalendarDays/index'
-import format from '../format/index'
-import type { FormatRelativeToken } from '../locale/types'
-import toDate from '../toDate/index'
-import type { LocalizedOptions, WeekOptions } from '../types'
-import defaultLocale from '../_lib/defaultLocale/index'
-import { getDefaultOptions } from '../_lib/defaultOptions/index'
+import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
+import format from '../format/index.js'
+import type { FormatRelativeToken } from '../locale/types.js'
+import toDate from '../toDate/index.js'
+import type { LocalizedOptions, WeekOptions } from '../types.js'
+import defaultLocale from '../_lib/defaultLocale/index.js'
+import { getDefaultOptions } from '../_lib/defaultOptions/index.js'
 
 /**
  * The {@link formatRelative} function options.

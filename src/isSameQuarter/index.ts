@@ -1,4 +1,4 @@
-import startOfQuarter from '../startOfQuarter/index'
+import startOfQuarter from '../startOfQuarter/index.js'
 
 /**
  * @name isSameQuarter

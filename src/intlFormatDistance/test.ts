@@ -759,7 +759,7 @@ describe('intlFormatDistance', () => {
             null,
             new Date(1986, 3, 4, 10, 30, 0),
             new Date(1986, 3, 4, 10, 30, 0),
-            // @ts-ignore: the value doesnt match one of the Unit values from '../types.ts'
+            // @ts-ignore: the value doesnt match one of the Unit values from '../types.ts.js'
             { unit: 'wrongValue' }
           ),
           RangeError

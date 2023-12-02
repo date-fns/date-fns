@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 
-import type { Locale } from './locale/types'
+import type { Locale } from './locale/types.js'
 
-export * from './locale/types'
+export * from './locale/types.js'
 
 /**
  * The generic date constructor. Replicates the Date constructor. Used to build

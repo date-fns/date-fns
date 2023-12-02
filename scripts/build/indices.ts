@@ -57,7 +57,21 @@ async function generatePackageJSON({
 }: GeneratePackageJSONProps) {
   const packageJSON = JSON.parse(await readFile('package.json', 'utf-8'))
   packageJSON.exports = Object.fromEntries(
-    [['.', { require: './index.js', import: './index.mjs' }]]
+    [
+      [
+        '.',
+        {
+          require: {
+            types: './index.d.ts',
+            default: './index.js',
+          },
+          import: {
+            types: './index.d.ts',
+            default: './index.mjs',
+          },
+        },
+      ],
+    ]
       .concat(mapExports(['./constants', './locale', './fp'], '.'))
       .concat(mapExports(mapFiles(fns)))
       .concat(mapExports(mapFiles(fpFns), './fp'))
@@ -73,7 +87,19 @@ function mapFiles(files: File[]) {
 function mapExports(paths: string[], prefix = '.') {
   return paths.map((path) => {
     const pth = `${prefix}${path.slice(1)}`
-    return [pth, { require: `${pth}.js`, import: `${pth}.mjs` }]
+    return [
+      pth,
+      {
+        require: {
+          types: `${pth}.d.ts`,
+          default: `${pth}.js`,
+        },
+        import: {
+          types: `${pth}.d.ts`,
+          default: `${pth}.mjs`,
+        },
+      },
+    ]
   })
 }
 
@@ -89,14 +115,14 @@ function generateIndex({
   includeConstants,
 }: GenerateIndexProps): string {
   const lines = files.map(
-    (file) => `export { default as ${file.name} } from '${file.path}/index'`
+    (file) => `export { default as ${file.name} } from '${file.path}/index.js'`
   )
 
   if (includeConstants)
-    lines.push(`export * from '${isFP ? '..' : '.'}/constants/index'`)
+    lines.push(`export * from '${isFP ? '..' : '.'}/constants/index.js'`)
 
   // Add types export
-  lines.push(`export * from '${isFP ? '..' : '.'}/types'`)
+  lines.push(`export * from '${isFP ? '..' : '.'}/types.js'`)
 
   return `// This file is generated automatically by \`scripts/build/indices.ts\`. Please, don't change it.
 

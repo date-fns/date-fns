@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import closestTo from './index'
+import closestTo from './index.js'
 
 describe('closestTo', () => {
   it('returns the date from the given array closest to the given date', () => {

@@ -2,8 +2,8 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import addDays from './index'
-import { getDstTransitions } from '../../test/dst/tzOffsetTransitions'
+import addDays from './index.js'
+import { getDstTransitions } from '../../test/dst/tzOffsetTransitions.js'
 
 describe('addDays', () => {
   it('adds the given number of days', () => {

@@ -1,12 +1,12 @@
-import add from '../add/index'
-import differenceInDays from '../differenceInDays/index'
-import differenceInHours from '../differenceInHours/index'
-import differenceInMinutes from '../differenceInMinutes/index'
-import differenceInMonths from '../differenceInMonths/index'
-import differenceInSeconds from '../differenceInSeconds/index'
-import differenceInYears from '../differenceInYears/index'
-import toDate from '../toDate/index'
-import type { Duration, Interval } from '../types'
+import add from '../add/index.js'
+import differenceInDays from '../differenceInDays/index.js'
+import differenceInHours from '../differenceInHours/index.js'
+import differenceInMinutes from '../differenceInMinutes/index.js'
+import differenceInMonths from '../differenceInMonths/index.js'
+import differenceInSeconds from '../differenceInSeconds/index.js'
+import differenceInYears from '../differenceInYears/index.js'
+import toDate from '../toDate/index.js'
+import type { Duration, Interval } from '../types.js'
 
 /**
  * @name intervalToDuration

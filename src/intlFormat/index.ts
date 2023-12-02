@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import toDate from '../toDate/index.js'
 
 /**
  * The locale string (see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument).

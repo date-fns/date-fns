@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import isWithinInterval from './index'
+import isWithinInterval from './index.js'
 
 describe('isWithinInterval', () => {
   it('returns true if the given date in within the given interval', () => {

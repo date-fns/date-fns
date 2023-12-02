@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import isWeekend from './index'
+import isWeekend from './index.js'
 
 describe('isWeekend', () => {
   it('returns true if the given date is in a weekend', () => {

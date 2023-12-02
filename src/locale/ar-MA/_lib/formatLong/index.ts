@@ -1,4 +1,4 @@
-import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index'
+import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index.js'
 
 const dateFormats = {
   full: 'EEEE, MMMM do, y',

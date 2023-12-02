@@ -1,4 +1,4 @@
-import type { FormatDistanceFn } from '../../../types'
+import type { FormatDistanceFn } from '../../../types.js'
 
 type Key = keyof typeof withSuffixes | keyof typeof withoutSuffixes
 type Adverb = keyof typeof translations

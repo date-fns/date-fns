@@ -1,6 +1,6 @@
 import formatDistanceStrict, {
   FormatDistanceStrictOptions,
-} from '../formatDistanceStrict/index'
+} from '../formatDistanceStrict/index.js'
 
 /**
  * The {@link formatDistanceToNowStrict} function options.
