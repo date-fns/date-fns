@@ -1,5 +1,5 @@
-import addDays from '../addDays'
-import getDay from '../getDay'
+import addDays from '../addDays/index'
+import getDay from '../getDay/index'
 import type { Day } from '../types'
 
 /**
