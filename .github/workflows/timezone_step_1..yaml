@@ -1,6 +1,7 @@
-name: Browser tests
+name: Timezones 1/5
 
-on: [push, pull_request]
+on: workflow_dispatch
+# on: [push, pull_request]
 
 jobs:
   tests:
@@ -12,7 +13,4 @@ jobs:
         with:
           node-version: 20
       - run: npm install
-      - run: npx playwright install chromium
-      - uses: coactions/setup-xvfb@v1
-        with:
-          run: npx vitest run --browser
+      - run: ./scripts/test/tzOffset.sh

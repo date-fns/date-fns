@@ -1,6 +1,7 @@
-name: Timezones 1/2
+name: Timezones 5/5
 
-on: [push, pull_request]
+on: workflow_dispatch
+# on: [push, pull_request]
 
 jobs:
   tests:
@@ -12,7 +13,7 @@ jobs:
         with:
           node-version: 20
       - run: npm install
-      - run: ./scripts/test/tzExtended.sh
+      - run: ./scripts/test/tzIANA.sh
         env:
-          TZ_LENGTH: 2
-          TZ_INDEX: 0
+          TZ_LENGTH: 4
+          TZ_INDEX: 3

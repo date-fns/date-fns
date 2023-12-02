@@ -1,4 +1,4 @@
-name: Node.js tests
+name: Unit tests
 
 on: [push, pull_request]
 
@@ -16,4 +16,15 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm install
-      - run: npx vitest run
+
+      - name: Node.js tests
+        run: npx vitest run
+
+      - run: npx playwright install chromium
+      - name: Browser tests
+        uses: coactions/setup-xvfb@v1
+        with:
+          run: npx vitest run --browser
+
+      - name: TZ tests
+        run: ./scripts/test/tz.sh

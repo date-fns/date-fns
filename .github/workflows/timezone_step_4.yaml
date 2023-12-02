@@ -1,4 +1,4 @@
-name: Timezones 2/5
+name: Timezones 4/5
 
 on: workflow_dispatch
 # on: [push, pull_request]
@@ -16,4 +16,4 @@ jobs:
       - run: ./scripts/test/tzIANA.sh
         env:
           TZ_LENGTH: 4
-          TZ_INDEX: 0
+          TZ_INDEX: 2

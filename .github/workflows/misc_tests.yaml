@@ -12,16 +12,16 @@ jobs:
         with:
           node-version: 20
       - run: npm install
+
       - name: Types
         run: npx tsc --noEmit
+
       # TODO: Rework linting process
       # - name: Linting
       #   run: npm run lint
+
       - name: Locale snapshots
         run: npm run locale-snapshots -- test
+
       - name: Smoke tests
         run: ./scripts/test/smoke.sh
-      - name: Extra TZ tests
-        run: ./scripts/test/tzExtra.sh
-      - name: TZ tests
-        run: ./scripts/test/tz.sh
