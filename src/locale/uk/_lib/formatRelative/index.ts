@@ -1,5 +1,5 @@
 import isSameWeek from '../../../../isSameWeek/index'
-import { toDate } from '../../../../index'
+import toDate from '../../../../toDate/index'
 import type { Day } from '../../../../types'
 import type { FormatRelativeFn, FormatRelativeTokenFn } from '../../../types'
 
