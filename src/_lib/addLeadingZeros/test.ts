@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import addLeadingZeros from './index.js'
+import { addLeadingZeros } from './index.js'
 
 describe('addLeadingZeros', () => {
   it('adds leading zeros when number has fewer digits than target length', () => {

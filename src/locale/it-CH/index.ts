@@ -1,9 +1,9 @@
 import type { Locale } from '../types.js'
-import formatDistance from '../it/_lib/formatDistance/index.js'
-import formatRelative from '../it/_lib/formatRelative/index.js'
-import localize from '../it/_lib/localize/index.js'
-import match from '../it/_lib/match/index.js'
-import formatLong from './_lib/formatLong/index.js'
+import { formatDistance } from '../it/_lib/formatDistance/index.js'
+import { formatRelative } from '../it/_lib/formatRelative/index.js'
+import { localize } from '../it/_lib/localize/index.js'
+import { match } from '../it/_lib/match/index.js'
+import { formatLong } from './_lib/formatLong/index.js'
 
 /**
  * @category Locales
@@ -12,7 +12,7 @@ import formatLong from './_lib/formatLong/index.js'
  * @iso-639-2 ita
  * @author Mike Peyer [@maic66](https://github.com/maic66)
  */
-const locale: Locale = {
+export const itCH: Locale = {
   code: 'it-CH',
   formatDistance: formatDistance,
   formatLong: formatLong,
@@ -24,5 +24,3 @@ const locale: Locale = {
     firstWeekContainsDate: 4,
   },
 }
-
-export default locale

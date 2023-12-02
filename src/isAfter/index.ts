@@ -1,4 +1,4 @@
-import toDate from '../toDate/index.js'
+import { toDate } from '../toDate/index.js'
 
 /**
  * @name isAfter
@@ -20,7 +20,7 @@ import toDate from '../toDate/index.js'
  * const result = isAfter(new Date(1989, 6, 10), new Date(1987, 1, 11))
  * //=> true
  */
-export default function isAfter<DateType extends Date>(
+export function isAfter<DateType extends Date>(
   date: DateType | number | string,
   dateToCompare: DateType | number | string
 ): boolean {

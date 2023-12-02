@@ -1,6 +1,6 @@
-import addMinutes from '../addMinutes/index.js'
-import startOfMinute from '../startOfMinute/index.js'
-import toDate from '../toDate/index.js'
+import { addMinutes } from '../addMinutes/index.js'
+import { startOfMinute } from '../startOfMinute/index.js'
+import { toDate } from '../toDate/index.js'
 import type { Interval, StepOptions } from '../types.js'
 
 /**
@@ -36,7 +36,7 @@ export interface EachMinuteOfIntervalOptions extends StepOptions {}
  * //   Wed Oct 14 2014 13:03:00
  * // ]
  */
-export default function eachMinuteOfInterval<DateType extends Date>(
+export function eachMinuteOfInterval<DateType extends Date>(
   interval: Interval<DateType>,
   options?: EachMinuteOfIntervalOptions
 ): DateType[] {

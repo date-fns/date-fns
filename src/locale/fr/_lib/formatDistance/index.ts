@@ -81,7 +81,7 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenForm> = {
   },
 }
 
-const formatDistance: FormatDistanceFn = (token, count, options) => {
+export const formatDistance: FormatDistanceFn = (token, count, options) => {
   let result
   const form = formatDistanceLocale[token]
   if (typeof form === 'string') {
@@ -102,5 +102,3 @@ const formatDistance: FormatDistanceFn = (token, count, options) => {
 
   return result
 }
-
-export default formatDistance

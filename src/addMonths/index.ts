@@ -1,5 +1,5 @@
-import toDate from '../toDate/index.js'
-import constructFrom from '../constructFrom/index.js'
+import { toDate } from '../toDate/index.js'
+import { constructFrom } from '../constructFrom/index.js'
 
 /**
  * @name addMonths
@@ -25,7 +25,7 @@ import constructFrom from '../constructFrom/index.js'
  * const result = addMonths(new Date(2023, 0, 30), 1)
  * //=> Tue Feb 28 2023 00:00:00
  */
-export default function addMonths<DateType extends Date>(
+export function addMonths<DateType extends Date>(
   date: DateType | number | string,
   amount: number
 ): DateType {

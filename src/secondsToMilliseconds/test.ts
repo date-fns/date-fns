@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import secondsToMilliseconds from './index.js'
+import { secondsToMilliseconds } from './index.js'
 
 describe('secondsToMilliseconds', () => {
   it('converts seconds to milliseconds', () => {

@@ -1,5 +1,5 @@
-import constructFrom from '../../../constructFrom/index.js'
-import getTimezoneOffsetInMilliseconds from '../../../_lib/getTimezoneOffsetInMilliseconds/index.js'
+import { constructFrom } from '../../../constructFrom/index.js'
+import { getTimezoneOffsetInMilliseconds } from '../../../_lib/getTimezoneOffsetInMilliseconds/index.js'
 import { timezonePatterns } from '../constants.js'
 import { Parser } from '../Parser.js'
 import type { ParseFlags, ParseResult } from '../types.js'

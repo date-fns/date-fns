@@ -22,7 +22,7 @@ import { minutesInHour } from '../constants/index.js'
  * const result = minutesToHours(179)
  * //=> 2
  */
-export default function minutesToHours(minutes: number): number {
+export function minutesToHours(minutes: number): number {
   const hours = minutes / minutesInHour
   return Math.floor(hours)
 }

@@ -1,7 +1,7 @@
-import addDays from '../addDays/index.js'
-import addMonths from '../addMonths/index.js'
-import constructFrom from '../constructFrom/index.js'
-import toDate from '../toDate/index.js'
+import { addDays } from '../addDays/index.js'
+import { addMonths } from '../addMonths/index.js'
+import { constructFrom } from '../constructFrom/index.js'
+import { toDate } from '../toDate/index.js'
 import type { Duration } from '../types.js'
 
 /**
@@ -44,7 +44,7 @@ import type { Duration } from '../types.js'
  * })
  * //=> Thu Jun 15 2017 15:29:20
  */
-export default function add<DateType extends Date>(
+export function add<DateType extends Date>(
   date: DateType | number | string,
   duration: Duration
 ): DateType {

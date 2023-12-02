@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import differenceInDays from './index.js'
+import { differenceInDays } from './index.js'
 import { getDstTransitions } from '../../test/dst/tzOffsetTransitions.js'
 
 describe('differenceInDays', () => {

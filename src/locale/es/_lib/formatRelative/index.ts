@@ -18,12 +18,15 @@ const formatRelativeLocalePlural = {
   other: 'P',
 }
 
-const formatRelative: FormatRelativeFn = (token, date, _baseDate, _options) => {
+export const formatRelative: FormatRelativeFn = (
+  token,
+  date,
+  _baseDate,
+  _options
+) => {
   if (date.getHours() !== 1) {
     return formatRelativeLocalePlural[token]
   } else {
     return formatRelativeLocale[token]
   }
 }
-
-export default formatRelative

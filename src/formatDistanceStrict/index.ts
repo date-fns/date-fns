@@ -1,15 +1,15 @@
-import compareAsc from '../compareAsc/index.js'
+import { compareAsc } from '../compareAsc/index.js'
 import {
   millisecondsInMinute,
   minutesInDay,
   minutesInMonth,
   minutesInYear,
 } from '../constants/index.js'
-import toDate from '../toDate/index.js'
+import { toDate } from '../toDate/index.js'
 import type { LocalizedOptions, RoundingOptions } from '../types.js'
-import defaultLocale from '../_lib/defaultLocale/index.js'
+import { defaultLocale } from '../_lib/defaultLocale/index.js'
 import { getDefaultOptions } from '../_lib/defaultOptions/index.js'
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
+import { getTimezoneOffsetInMilliseconds } from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
 import { getRoundingMethod } from '../_lib/roundingMethods/index.js'
 
 /**
@@ -115,7 +115,7 @@ export type FormatDistanceStrictUnit =
  * //=> '1 jaro'
  */
 
-export default function formatDistanceStrict<DateType extends Date>(
+export function formatDistanceStrict<DateType extends Date>(
   date: DateType | number | string,
   baseDate: DateType | number | string,
   options?: FormatDistanceStrictOptions

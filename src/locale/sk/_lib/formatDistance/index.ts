@@ -213,7 +213,7 @@ const formatDistanceLocale = {
   },
 }
 
-const formatDistance: FormatDistanceFn = (token, count, options) => {
+export const formatDistance: FormatDistanceFn = (token, count, options) => {
   const preposition = extractPreposition(token) || ''
   const key = lowercaseFirstLetter(
     token.substring(preposition.length)
@@ -244,5 +244,3 @@ const formatDistance: FormatDistanceFn = (token, count, options) => {
     )
   }
 }
-
-export default formatDistance

@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import getOverlappingDaysInIntervals from './index.js'
+import { getOverlappingDaysInIntervals } from './index.js'
 
 describe('getOverlappingDaysInIntervals', () => {
   const initialIntervalStart = new Date(2016, 10, 10, 13, 0, 0)

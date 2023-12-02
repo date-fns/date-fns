@@ -1,4 +1,4 @@
-import addBusinessDays from '../addBusinessDays/index.js'
+import { addBusinessDays } from '../addBusinessDays/index.js'
 
 /**
  * @name subBusinessDays
@@ -20,7 +20,7 @@ import addBusinessDays from '../addBusinessDays/index.js'
  * const result = subBusinessDays(new Date(2014, 8, 1), 10)
  * //=> Mon Aug 18 2014 00:00:00 (skipped weekend days)
  */
-export default function subBusinessDays<DateType extends Date>(
+export function subBusinessDays<DateType extends Date>(
   date: DateType | number | string,
   amount: number
 ): DateType {

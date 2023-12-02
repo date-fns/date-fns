@@ -63,7 +63,7 @@ export type ParsePattern<Value extends LocaleUnitValue> =
       ]
     : never
 
-export default function buildMatchFn<
+export function buildMatchFn<
   Value extends LocaleUnitValue,
   DefaultMatchWidth extends LocaleWidth,
   DefaultParseWidth extends LocaleWidth

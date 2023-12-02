@@ -1,5 +1,5 @@
-import getWeek from '../getWeek/index.js'
-import toDate from '../toDate/index.js'
+import { getWeek } from '../getWeek/index.js'
+import { toDate } from '../toDate/index.js'
 import type {
   FirstWeekContainsDateOptions,
   LocalizedOptions,
@@ -51,7 +51,7 @@ export interface SetWeekOptions
  * })
  * //=> Sun Jan 4 2004 00:00:00
  */
-export default function setWeek<DateType extends Date>(
+export function setWeek<DateType extends Date>(
   date: DateType | number | string,
   week: number,
   options?: SetWeekOptions

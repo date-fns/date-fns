@@ -92,7 +92,7 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   },
 }
 
-const formatDistance: FormatDistanceFn = (token, count, options) => {
+export const formatDistance: FormatDistanceFn = (token, count, options) => {
   options = options || {}
 
   let result
@@ -124,5 +124,3 @@ const formatDistance: FormatDistanceFn = (token, count, options) => {
 
   return result
 }
-
-export default formatDistance

@@ -220,7 +220,7 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   },
 }
 
-const formatDistance: FormatDistanceFn = (token, count, options) => {
+export const formatDistance: FormatDistanceFn = (token, count, options) => {
   const tense = options?.addSuffix
     ? options.comparison && options.comparison > 0
       ? 'in'
@@ -237,5 +237,3 @@ const formatDistance: FormatDistanceFn = (token, count, options) => {
     return tokenValue.other[tense].replace('{{count}}', String(count))
   }
 }
-
-export default formatDistance

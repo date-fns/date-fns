@@ -1,5 +1,5 @@
 import type { FormatLong } from '../../../types.js'
-import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index.js'
+import { buildFormatLongFn } from '../../../_lib/buildFormatLongFn/index.js'
 
 // DIN 5008: https://de.wikipedia.org/wiki/Datumsformat#DIN_5008
 
@@ -24,7 +24,7 @@ const dateTimeFormats = {
   short: '{{date}} {{time}}',
 }
 
-const formatLong: FormatLong = {
+export const formatLong: FormatLong = {
   date: buildFormatLongFn({
     formats: dateFormats,
     defaultWidth: 'full',
@@ -40,5 +40,3 @@ const formatLong: FormatLong = {
     defaultWidth: 'full',
   }),
 }
-
-export default formatLong

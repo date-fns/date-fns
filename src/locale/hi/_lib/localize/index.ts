@@ -1,5 +1,5 @@
 import type { Localize, LocalizeFn } from '../../../types.js'
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
+import { buildLocalizeFn } from '../../../_lib/buildLocalizeFn/index.js'
 
 type hiLocaleNumberType =
   | '\u0967'
@@ -232,7 +232,7 @@ export function numberToLocale(enNumber: number) {
   })
 }
 
-const localize: Localize = {
+export const localize: Localize = {
   ordinalNumber,
 
   era: buildLocalizeFn({
@@ -263,5 +263,3 @@ const localize: Localize = {
     defaultFormattingWidth: 'wide',
   }),
 }
-
-export default localize

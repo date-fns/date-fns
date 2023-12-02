@@ -19,6 +19,6 @@ import { monthsInQuarter } from '../constants/index.js'
  * const result = quartersToMonths(2)
  * //=> 6
  */
-export default function quartersToMonths(quarters: number): number {
+export function quartersToMonths(quarters: number): number {
   return Math.floor(quarters * monthsInQuarter)
 }

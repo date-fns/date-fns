@@ -4,7 +4,7 @@
 import assert from 'assert'
 import { afterEach, describe, it } from 'vitest'
 import { assertType } from '../_lib/test/index.js'
-import isDate from './index.js'
+import { isDate } from './index.js'
 
 describe('isDate', () => {
   it('returns true if the given value is a date object', () => {

@@ -1,6 +1,6 @@
-import eachWeekendOfInterval from '../eachWeekendOfInterval/index.js'
-import endOfYear from '../endOfYear/index.js'
-import startOfYear from '../startOfYear/index.js'
+import { eachWeekendOfInterval } from '../eachWeekendOfInterval/index.js'
+import { endOfYear } from '../endOfYear/index.js'
+import { startOfYear } from '../startOfYear/index.js'
 
 /**
  * @name eachWeekendOfYear
@@ -27,7 +27,7 @@ import startOfYear from '../startOfYear/index.js'
  * // ]
  * ]
  */
-export default function eachWeekendOfYear<DateType extends Date>(
+export function eachWeekendOfYear<DateType extends Date>(
   date: DateType | number | string
 ): DateType[] {
   const start = startOfYear(date)

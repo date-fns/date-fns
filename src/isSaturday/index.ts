@@ -1,4 +1,4 @@
-import toDate from '../toDate/index.js'
+import { toDate } from '../toDate/index.js'
 
 /**
  * @name isSaturday
@@ -19,7 +19,7 @@ import toDate from '../toDate/index.js'
  * const result = isSaturday(new Date(2014, 8, 27))
  * //=> true
  */
-export default function isSaturday<DateType extends Date>(
+export function isSaturday<DateType extends Date>(
   date: DateType | number | string
 ): boolean {
   return toDate(date).getDay() === 6

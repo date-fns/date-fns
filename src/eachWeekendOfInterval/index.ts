@@ -1,5 +1,5 @@
-import eachDayOfInterval from '../eachDayOfInterval/index.js'
-import isWeekend from '../isWeekend/index.js'
+import { eachDayOfInterval } from '../eachDayOfInterval/index.js'
+import { isWeekend } from '../isWeekend/index.js'
 import type { Interval } from '../types.js'
 
 /**
@@ -29,7 +29,7 @@ import type { Interval } from '../types.js'
  * //   Sun Sep 30 2018 00:00:00
  * // ]
  */
-export default function eachWeekendOfInterval<DateType extends Date>(
+export function eachWeekendOfInterval<DateType extends Date>(
   interval: Interval<DateType>
 ): DateType[] {
   const dateInterval = eachDayOfInterval(interval)

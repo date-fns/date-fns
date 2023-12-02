@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import daysToWeeks from './index.js'
+import { daysToWeeks } from './index.js'
 
 describe('daysToWeeks', () => {
   it('converts days to weeks', () => {

@@ -1,5 +1,5 @@
 import type { Match } from '../../../locale/types.js'
-import setISODay from '../../../setISODay/index.js'
+import { setISODay } from '../../../setISODay/index.js'
 import { Parser } from '../Parser.js'
 import type { ParseFlags, ParseResult } from '../types.js'
 import { mapValue, parseNDigits } from '../utils.js'

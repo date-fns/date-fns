@@ -14,7 +14,7 @@
  * const result = startOfTomorrow()
  * //=> Tue Oct 7 2014 00:00:00
  */
-export default function startOfTomorrow(): Date {
+export function startOfTomorrow(): Date {
   const now = new Date()
   const year = now.getFullYear()
   const month = now.getMonth()

@@ -2,8 +2,8 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import eachWeekendOfYear from './index.js'
-import isWeekend from '../isWeekend/index.js'
+import { eachWeekendOfYear } from './index.js'
+import { isWeekend } from '../isWeekend/index.js'
 
 describe('eachWeekendOfYear', () => {
   it('returns all weekends of the given year', () => {

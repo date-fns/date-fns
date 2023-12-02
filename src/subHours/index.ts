@@ -1,4 +1,4 @@
-import addHours from '../addHours/index.js'
+import { addHours } from '../addHours/index.js'
 
 /**
  * @name subHours
@@ -20,7 +20,7 @@ import addHours from '../addHours/index.js'
  * const result = subHours(new Date(2014, 6, 11, 1, 0), 2)
  * //=> Thu Jul 10 2014 23:00:00
  */
-export default function subHours<DateType extends Date>(
+export function subHours<DateType extends Date>(
   date: DateType | number | string,
   amount: number
 ): DateType {

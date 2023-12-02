@@ -1,7 +1,7 @@
 import { millisecondsInWeek } from '../constants/index.js'
-import startOfWeek from '../startOfWeek/index.js'
-import startOfWeekYear from '../startOfWeekYear/index.js'
-import toDate from '../toDate/index.js'
+import { startOfWeek } from '../startOfWeek/index.js'
+import { startOfWeekYear } from '../startOfWeekYear/index.js'
+import { toDate } from '../toDate/index.js'
 import type {
   FirstWeekContainsDateOptions,
   LocalizedOptions,
@@ -53,7 +53,7 @@ export interface GetWeekOptions
  * //=> 53
  */
 
-export default function getWeek<DateType extends Date>(
+export function getWeek<DateType extends Date>(
   date: DateType | number | string,
   options?: GetWeekOptions
 ): number {

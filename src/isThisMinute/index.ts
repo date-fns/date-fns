@@ -1,4 +1,4 @@
-import isSameMinute from '../isSameMinute/index.js'
+import { isSameMinute } from '../isSameMinute/index.js'
 
 /**
  * @name isThisMinute
@@ -22,7 +22,7 @@ import isSameMinute from '../isSameMinute/index.js'
  * //=> true
  */
 
-export default function isThisMinute<DateType extends Date>(
+export function isThisMinute<DateType extends Date>(
   date: DateType | number | string
 ): boolean {
   return isSameMinute(Date.now(), date)

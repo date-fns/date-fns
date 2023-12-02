@@ -65,9 +65,7 @@ const dateTimeLongFormatter: LongFormatter = (
     .replace('{{time}}', timeLongFormatter(timePattern, formatLong))
 }
 
-const longFormatters: Record<string, LongFormatter> = {
+export const longFormatters: Record<string, LongFormatter> = {
   p: timeLongFormatter,
   P: dateTimeLongFormatter,
 }
-
-export default longFormatters

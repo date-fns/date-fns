@@ -1,4 +1,4 @@
-import addMonths from '../addMonths/index.js'
+import { addMonths } from '../addMonths/index.js'
 
 /**
  * @name subMonths
@@ -20,7 +20,7 @@ import addMonths from '../addMonths/index.js'
  * const result = subMonths(new Date(2015, 1, 1), 5)
  * //=> Mon Sep 01 2014 00:00:00
  */
-export default function subMonths<DateType extends Date>(
+export function subMonths<DateType extends Date>(
   date: DateType | number | string,
   amount: number
 ): DateType {

@@ -1,4 +1,4 @@
-import toDate from '../toDate/index.js'
+import { toDate } from '../toDate/index.js'
 
 /**
  * @name endOfQuarter
@@ -20,7 +20,7 @@ import toDate from '../toDate/index.js'
  * const result = endOfQuarter(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Tue Sep 30 2014 23:59:59.999
  */
-export default function endOfQuarter<DateType extends Date>(
+export function endOfQuarter<DateType extends Date>(
   date: DateType | number | string
 ): DateType {
   const _date = toDate(date)

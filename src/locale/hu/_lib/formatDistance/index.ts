@@ -64,7 +64,7 @@ const withSuffixes = {
   },
 }
 
-const formatDistance: FormatDistanceFn = (token, count, options) => {
+export const formatDistance: FormatDistanceFn = (token, count, options) => {
   const adverb = token.match(/about|over|almost|lessthan/i)
   const unit = adverb ? token.replace(adverb[0], '') : token
 
@@ -85,5 +85,3 @@ const formatDistance: FormatDistanceFn = (token, count, options) => {
 
   return result
 }
-
-export default formatDistance

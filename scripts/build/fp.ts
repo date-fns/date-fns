@@ -15,7 +15,7 @@ import docsConfig from '../../docs/config'
 async function main() {
   const fns = await readRefsFromJSON(
     docsConfig.config,
-    path.resolve('../../docs/')
+    path.resolve(__dirname, '../../docs/')
   )
 
   await Promise.all(
@@ -35,10 +35,10 @@ async function main() {
       async function writeFn(
         arity: number,
         sourceName: string,
-        name = sourceName
+        fnName = sourceName
       ) {
-        const source = getFPFn(sourceName, arity)
-        const dir = `./src/fp/${name}`
+        const source = getFPFn(sourceName, fnName, arity)
+        const dir = `./src/fp/${fnName}`
 
         if (!(await exists(dir))) await mkdir(dir)
         return writeFile(`${dir}/index.ts`, source)
@@ -63,12 +63,12 @@ async function exists(filePath: string) {
 
 main()
 
-function getFPFn(sourceName: string, arity: number): string {
+function getFPFn(sourceName: string, fnName: string, arity: number): string {
   return `// This file is generated automatically by \`scripts/build/fp.ts\`. Please, don't change it.
 
-import fn from '../../${sourceName}/index'
-import convertToFP from '../_lib/convertToFP/index'
+import { ${sourceName} as fn } from '../../${sourceName}/index.js'
+import { convertToFP } from '../_lib/convertToFP/index.js'
 
-export default convertToFP(fn, ${arity})
+export const ${fnName} = convertToFP(fn, ${arity})
 `
 }

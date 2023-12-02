@@ -1,4 +1,4 @@
-import startOfWeek from '../startOfWeek/index.js'
+import { startOfWeek } from '../startOfWeek/index.js'
 import type { LocalizedOptions, WeekOptions } from '../types.js'
 
 /**
@@ -42,7 +42,7 @@ export interface IsSameWeekOptions
  * const result = isSameWeek(new Date(2014, 0, 1), new Date(2015, 0, 1))
  * //=> false
  */
-export default function isSameWeek<DateType extends Date>(
+export function isSameWeek<DateType extends Date>(
   dateLeft: DateType | number | string,
   dateRight: DateType | number | string,
   options?: IsSameWeekOptions

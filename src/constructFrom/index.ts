@@ -28,7 +28,7 @@ import type { GenericDateConstructor } from '../types.js'
  *   )
  * }
  */
-export default function constructFrom<DateType extends Date>(
+export function constructFrom<DateType extends Date>(
   date: DateType | number | string,
   value: Date | number | string
 ): DateType {

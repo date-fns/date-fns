@@ -1,4 +1,4 @@
-import toDate from '../toDate/index.js'
+import { toDate } from '../toDate/index.js'
 
 /**
  * @name isSameMonth
@@ -25,7 +25,7 @@ import toDate from '../toDate/index.js'
  * const result = isSameMonth(new Date(2014, 8, 2), new Date(2015, 8, 25))
  * //=> false
  */
-export default function isSameMonth<DateType extends Date>(
+export function isSameMonth<DateType extends Date>(
   dateLeft: DateType | number | string,
   dateRight: DateType | number | string
 ): boolean {

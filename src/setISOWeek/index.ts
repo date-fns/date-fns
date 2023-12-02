@@ -1,5 +1,5 @@
-import getISOWeek from '../getISOWeek/index.js'
-import toDate from '../toDate/index.js'
+import { getISOWeek } from '../getISOWeek/index.js'
+import { toDate } from '../toDate/index.js'
 
 /**
  * @name setISOWeek
@@ -23,7 +23,7 @@ import toDate from '../toDate/index.js'
  * const result = setISOWeek(new Date(2004, 7, 7), 53)
  * //=> Sat Jan 01 2005 00:00:00
  */
-export default function setISOWeek<DateType extends Date>(
+export function setISOWeek<DateType extends Date>(
   date: DateType | number | string,
   week: number
 ): DateType {

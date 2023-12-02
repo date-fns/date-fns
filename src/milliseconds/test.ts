@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import milliseconds from './index.js'
+import { milliseconds } from './index.js'
 
 describe('milliseconds', () => {
   it('converts years to milliseconds', () => {

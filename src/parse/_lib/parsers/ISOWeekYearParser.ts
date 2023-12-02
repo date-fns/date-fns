@@ -1,5 +1,5 @@
-import startOfISOWeek from '../../../startOfISOWeek/index.js'
-import constructFrom from '../../../constructFrom/index.js'
+import { startOfISOWeek } from '../../../startOfISOWeek/index.js'
+import { constructFrom } from '../../../constructFrom/index.js'
 import { Parser } from '../Parser.js'
 import type { ParseFlags, ParseResult } from '../types.js'
 import { parseNDigitsSigned } from '../utils.js'

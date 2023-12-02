@@ -1,4 +1,4 @@
-import toDate from '../toDate/index.js'
+import { toDate } from '../toDate/index.js'
 
 /**
  * @name getQuarter
@@ -19,7 +19,7 @@ import toDate from '../toDate/index.js'
  * const result = getQuarter(new Date(2014, 6, 2))
  * //=> 3
  */
-export default function getQuarter<DateType extends Date>(
+export function getQuarter<DateType extends Date>(
   date: DateType | number | string
 ): number {
   const _date = toDate(date)

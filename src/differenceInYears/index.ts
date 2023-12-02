@@ -1,6 +1,6 @@
-import compareAsc from '../compareAsc/index.js'
-import differenceInCalendarYears from '../differenceInCalendarYears/index.js'
-import toDate from '../toDate/index.js'
+import { compareAsc } from '../compareAsc/index.js'
+import { differenceInCalendarYears } from '../differenceInCalendarYears/index.js'
+import { toDate } from '../toDate/index.js'
 
 /**
  * @name differenceInYears
@@ -22,7 +22,7 @@ import toDate from '../toDate/index.js'
  * const result = differenceInYears(new Date(2015, 1, 11), new Date(2013, 11, 31))
  * //=> 1
  */
-export default function differenceInYears<DateType extends Date>(
+export function differenceInYears<DateType extends Date>(
   dateLeft: DateType | number | string,
   dateRight: DateType | number | string
 ): number {

@@ -1,5 +1,5 @@
 import type { FormatLong } from '../../../types.js'
-import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index.js'
+import { buildFormatLongFn } from '../../../_lib/buildFormatLongFn/index.js'
 
 // Reference: https://www.unicode.org/cldr/charts/32/summary/kn.html
 
@@ -24,7 +24,7 @@ const dateTimeFormats = {
   short: '{{date}} {{time}}', // CLDR 1827
 }
 
-const formatLong: FormatLong = {
+export const formatLong: FormatLong = {
   date: buildFormatLongFn({
     formats: dateFormats,
     defaultWidth: 'full',
@@ -40,5 +40,3 @@ const formatLong: FormatLong = {
     defaultWidth: 'full',
   }),
 }
-
-export default formatLong

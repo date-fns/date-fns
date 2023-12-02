@@ -1,4 +1,5 @@
-import formatDistanceStrict, {
+import {
+  formatDistanceStrict,
   FormatDistanceStrictOptions,
 } from '../formatDistanceStrict/index.js'
 
@@ -81,7 +82,7 @@ export interface FormatDistanceToNowStrictOptions
  * )
  * //=> '1 jaro'
  */
-export default function formatDistanceToNowStrict<DateType extends Date>(
+export function formatDistanceToNowStrict<DateType extends Date>(
   date: DateType | number | string,
   options?: FormatDistanceToNowStrictOptions
 ): string {

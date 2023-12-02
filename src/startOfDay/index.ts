@@ -1,4 +1,4 @@
-import toDate from '../toDate/index.js'
+import { toDate } from '../toDate/index.js'
 
 /**
  * @name startOfDay
@@ -20,7 +20,7 @@ import toDate from '../toDate/index.js'
  * const result = startOfDay(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Tue Sep 02 2014 00:00:00
  */
-export default function startOfDay<DateType extends Date>(
+export function startOfDay<DateType extends Date>(
   date: DateType | number | string
 ): DateType {
   const _date = toDate(date)

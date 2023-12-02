@@ -1,4 +1,4 @@
-import startOfISOWeekYear from '../startOfISOWeekYear/index.js'
+import { startOfISOWeekYear } from '../startOfISOWeekYear/index.js'
 
 /**
  * @name isSameISOWeekYear
@@ -22,7 +22,7 @@ import startOfISOWeekYear from '../startOfISOWeekYear/index.js'
  * const result = isSameISOWeekYear(new Date(2003, 11, 29), new Date(2005, 0, 2))
  * //=> true
  */
-export default function isSameISOWeekYear<DateType extends Date>(
+export function isSameISOWeekYear<DateType extends Date>(
   dateLeft: DateType | number | string,
   dateRight: DateType | number | string
 ): boolean {

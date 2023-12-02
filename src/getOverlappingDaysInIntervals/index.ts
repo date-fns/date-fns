@@ -1,5 +1,5 @@
 import { millisecondsInDay } from '../constants/index.js'
-import toDate from '../toDate/index.js'
+import { toDate } from '../toDate/index.js'
 import type { Interval } from '../types.js'
 
 /**
@@ -34,7 +34,7 @@ import type { Interval } from '../types.js'
  * //=> 0
  */
 
-export default function getOverlappingDaysInIntervals<DateType extends Date>(
+export function getOverlappingDaysInIntervals<DateType extends Date>(
   intervalLeft: Interval<DateType>,
   intervalRight: Interval<DateType>
 ): number {

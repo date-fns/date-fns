@@ -1,7 +1,7 @@
-import subDays from '../subDays/index.js'
-import subMonths from '../subMonths/index.js'
+import { subDays } from '../subDays/index.js'
+import { subMonths } from '../subMonths/index.js'
 import type { Duration } from '../types.js'
-import constructFrom from '../constructFrom/index.js'
+import { constructFrom } from '../constructFrom/index.js'
 
 /**
  * @name sub
@@ -43,7 +43,7 @@ import constructFrom from '../constructFrom/index.js'
  * })
  * //=> Mon Sep 1 2014 10:19:50
  */
-export default function sub<DateType extends Date>(
+export function sub<DateType extends Date>(
   date: DateType | number | string,
   duration: Duration
 ): DateType {

@@ -27,6 +27,6 @@ import {
  * const result = getDefaultOptions()
  * //=> { weekStarsOn: 1, firstWeekContainsDate: 4 }
  */
-export default function getDefaultOptions(): DefaultOptions {
+export function getDefaultOptions(): DefaultOptions {
   return Object.assign({}, getInternalDefaultOptions())
 }

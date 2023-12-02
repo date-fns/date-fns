@@ -1,6 +1,6 @@
 import { millisecondsInWeek } from '../constants/index.js'
-import startOfISOWeek from '../startOfISOWeek/index.js'
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
+import { startOfISOWeek } from '../startOfISOWeek/index.js'
+import { getTimezoneOffsetInMilliseconds } from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
 
 /**
  * @name differenceInCalendarISOWeeks
@@ -27,7 +27,7 @@ import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMillisec
  * )
  * //=> 3
  */
-export default function differenceInCalendarISOWeeks<DateType extends Date>(
+export function differenceInCalendarISOWeeks<DateType extends Date>(
   dateLeft: DateType | number | string,
   dateRight: DateType | number | string
 ): number {

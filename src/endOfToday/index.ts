@@ -1,4 +1,4 @@
-import endOfDay from '../endOfDay/index.js'
+import { endOfDay } from '../endOfDay/index.js'
 
 /**
  * @name endOfToday
@@ -18,6 +18,6 @@ import endOfDay from '../endOfDay/index.js'
  * const result = endOfToday()
  * //=> Mon Oct 6 2014 23:59:59.999
  */
-export default function endOfToday(): Date {
+export function endOfToday(): Date {
   return endOfDay(Date.now())
 }

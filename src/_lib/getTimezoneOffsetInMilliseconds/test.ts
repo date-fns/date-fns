@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import getTimezoneOffsetInMilliseconds from './index.js'
+import { getTimezoneOffsetInMilliseconds } from './index.js'
 
 describe('getTimezoneOffsetInMilliseconds', () => {
   it('works for a modern date', () => {

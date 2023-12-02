@@ -1,6 +1,6 @@
-import getWeekYear from '../../../getWeekYear/index.js'
+import { getWeekYear } from '../../../getWeekYear/index.js'
 import type { Match } from '../../../locale/types.js'
-import startOfWeek from '../../../startOfWeek/index.js'
+import { startOfWeek } from '../../../startOfWeek/index.js'
 import { Parser } from '../Parser.js'
 import type { ParseFlags, ParseResult, ParserOptions } from '../types.js'
 import { mapValue, normalizeTwoDigitYear, parseNDigits } from '../utils.js'

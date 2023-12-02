@@ -1,4 +1,4 @@
-import toDate from '../toDate/index.js'
+import { toDate } from '../toDate/index.js'
 
 /**
  * @name startOfMonth
@@ -20,7 +20,7 @@ import toDate from '../toDate/index.js'
  * const result = startOfMonth(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Mon Sep 01 2014 00:00:00
  */
-export default function startOfMonth<DateType extends Date>(
+export function startOfMonth<DateType extends Date>(
   date: DateType | number | string
 ): DateType {
   const _date = toDate(date)

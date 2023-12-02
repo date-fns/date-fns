@@ -1,6 +1,6 @@
-import getDate from '../getDate/index.js'
-import getDay from '../getDay/index.js'
-import startOfMonth from '../startOfMonth/index.js'
+import { getDate } from '../getDate/index.js'
+import { getDay } from '../getDay/index.js'
+import { startOfMonth } from '../startOfMonth/index.js'
 import type { LocalizedOptions, WeekOptions } from '../types.js'
 import { getDefaultOptions } from '../_lib/defaultOptions/index.js'
 
@@ -31,7 +31,7 @@ export interface GetWeekOfMonthOptions
  * const result = getWeekOfMonth(new Date(2017, 10, 9))
  * //=> 2
  */
-export default function getWeekOfMonth<DateType extends Date>(
+export function getWeekOfMonth<DateType extends Date>(
   date: DateType | number | string,
   options?: GetWeekOfMonthOptions
 ): number {

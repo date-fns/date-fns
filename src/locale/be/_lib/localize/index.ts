@@ -1,6 +1,6 @@
 import type { Localize } from '../../../types.js'
 import { LocalizeFn } from '../../../types.js'
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
+import { buildLocalizeFn } from '../../../_lib/buildLocalizeFn/index.js'
 
 const eraValues = {
   narrow: ['да н.э.', 'н.э.'] as const,
@@ -190,7 +190,7 @@ const ordinalNumber: LocalizeFn<number> = (dirtyNumber, options) => {
   return number + suffix
 }
 
-const localize: Localize = {
+export const localize: Localize = {
   ordinalNumber,
 
   era: buildLocalizeFn({
@@ -223,5 +223,3 @@ const localize: Localize = {
     defaultFormattingWidth: 'wide',
   }),
 }
-
-export default localize

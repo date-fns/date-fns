@@ -1,4 +1,4 @@
-import addLeadingZeros from '../../addLeadingZeros/index.js'
+import { addLeadingZeros } from '../../addLeadingZeros/index.js'
 
 /*
  * |     | Unit                           |     | Unit                           |
@@ -13,7 +13,7 @@ import addLeadingZeros from '../../addLeadingZeros/index.js'
  * Letters marked by * are not implemented but reserved by Unicode standard.
  */
 
-const formatters = {
+export const lightFormatters = {
   // Year
   y(date: Date, token: string): string {
     // From http://www.unicode.org/reports/tr35/tr35-31/tr35-dates.html#Date_Format_tokens
@@ -90,5 +90,3 @@ const formatters = {
     return addLeadingZeros(fractionalSeconds, token.length)
   },
 }
-
-export default formatters

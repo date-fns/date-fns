@@ -1,4 +1,4 @@
-import addMonths from '../addMonths/index.js'
+import { addMonths } from '../addMonths/index.js'
 
 /**
  * @name addYears
@@ -20,7 +20,7 @@ import addMonths from '../addMonths/index.js'
  * const result = addYears(new Date(2014, 8, 1), 5)
  * //=> Sun Sep 01 2019 00:00:00
  */
-export default function addYears<DateType extends Date>(
+export function addYears<DateType extends Date>(
   date: DateType | number | string,
   amount: number
 ): DateType {

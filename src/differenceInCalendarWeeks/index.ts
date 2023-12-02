@@ -1,7 +1,7 @@
 import { millisecondsInWeek } from '../constants/index.js'
-import startOfWeek from '../startOfWeek/index.js'
+import { startOfWeek } from '../startOfWeek/index.js'
 import type { LocalizedOptions, WeekOptions } from '../types.js'
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
+import { getTimezoneOffsetInMilliseconds } from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
 
 /**
  * The {@link differenceInCalendarWeeks} function options.
@@ -44,7 +44,7 @@ export interface DifferenceInCalendarWeeksOptions
  * )
  * //=> 2
  */
-export default function differenceInCalendarWeeks<DateType extends Date>(
+export function differenceInCalendarWeeks<DateType extends Date>(
   dateLeft: DateType | number | string,
   dateRight: DateType | number | string,
   options?: DifferenceInCalendarWeeksOptions

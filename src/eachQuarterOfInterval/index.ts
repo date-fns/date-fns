@@ -1,6 +1,6 @@
-import addQuarters from '../addQuarters/index.js'
-import startOfQuarter from '../startOfQuarter/index.js'
-import toDate from '../toDate/index.js'
+import { addQuarters } from '../addQuarters/index.js'
+import { startOfQuarter } from '../startOfQuarter/index.js'
+import { toDate } from '../toDate/index.js'
 import type { Interval, StepOptions } from '../types.js'
 
 /**
@@ -34,7 +34,7 @@ export interface EachQuarterOfIntervalOptions extends StepOptions {}
  * //   Tue Jul 01 2014 00:00:00,
  * // ]
  */
-export default function eachQuarterOfInterval<DateType extends Date>(
+export function eachQuarterOfInterval<DateType extends Date>(
   interval: Interval<DateType>,
   options?: EachQuarterOfIntervalOptions
 ): DateType[] {

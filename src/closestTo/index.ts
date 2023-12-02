@@ -1,5 +1,5 @@
-import constructFrom from '../constructFrom/index.js'
-import toDate from '../toDate/index.js'
+import { constructFrom } from '../constructFrom/index.js'
+import { toDate } from '../toDate/index.js'
 
 /**
  * @name closestTo
@@ -25,7 +25,7 @@ import toDate from '../toDate/index.js'
  * ])
  * //=> Tue Jan 01 2030 00:00:00
  */
-export default function closestTo<DateType extends Date>(
+export function closestTo<DateType extends Date>(
   dateToCompare: DateType | number | string,
   dates: Array<DateType | number | string>
 ): DateType | undefined {

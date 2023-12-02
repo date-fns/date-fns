@@ -247,7 +247,7 @@ function declension(scheme: Plural, count: number): string {
   }
 }
 
-const formatDistance: FormatDistanceFn = (token, count, options) => {
+export const formatDistance: FormatDistanceFn = (token, count, options) => {
   const tokenValue = formatDistanceLocale[token]
 
   if (typeof tokenValue === 'function') return tokenValue(options)
@@ -276,5 +276,3 @@ const formatDistance: FormatDistanceFn = (token, count, options) => {
     return declension(tokenValue.regular, count)
   }
 }
-
-export default formatDistance

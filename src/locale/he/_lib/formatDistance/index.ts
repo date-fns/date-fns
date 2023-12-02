@@ -102,7 +102,7 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   },
 }
 
-const formatDistance: FormatDistanceFn = (token, count, options) => {
+export const formatDistance: FormatDistanceFn = (token, count, options) => {
   // Return word instead of `in one day` or `one day ago`
   if (token === 'xDays' && options?.addSuffix && count <= 2) {
     if (options.comparison && options.comparison > 0) {
@@ -135,5 +135,3 @@ const formatDistance: FormatDistanceFn = (token, count, options) => {
 
   return result
 }
-
-export default formatDistance

@@ -23,7 +23,7 @@
         "default": "./index.js"
       },
       "import": {
-        "types": "./index.d.ts",
+        "types": "./index.d.mts",
         "default": "./index.mjs"
       }
     },
@@ -33,7 +33,7 @@
         "default": "./constants.js"
       },
       "import": {
-        "types": "./constants.d.ts",
+        "types": "./constants.d.mts",
         "default": "./constants.mjs"
       }
     },
@@ -43,7 +43,7 @@
         "default": "./locale.js"
       },
       "import": {
-        "types": "./locale.d.ts",
+        "types": "./locale.d.mts",
         "default": "./locale.mjs"
       }
     },
@@ -53,18 +53,8 @@
         "default": "./fp.js"
       },
       "import": {
-        "types": "./fp.d.ts",
+        "types": "./fp.d.mts",
         "default": "./fp.mjs"
-      }
-    },
-    "./Interval": {
-      "require": {
-        "types": "./Interval.d.ts",
-        "default": "./Interval.js"
-      },
-      "import": {
-        "types": "./Interval.d.ts",
-        "default": "./Interval.mjs"
       }
     },
     "./add": {
@@ -73,7 +63,7 @@
         "default": "./add.js"
       },
       "import": {
-        "types": "./add.d.ts",
+        "types": "./add.d.mts",
         "default": "./add.mjs"
       }
     },
@@ -83,7 +73,7 @@
         "default": "./addBusinessDays.js"
       },
       "import": {
-        "types": "./addBusinessDays.d.ts",
+        "types": "./addBusinessDays.d.mts",
         "default": "./addBusinessDays.mjs"
       }
     },
@@ -93,7 +83,7 @@
         "default": "./addDays.js"
       },
       "import": {
-        "types": "./addDays.d.ts",
+        "types": "./addDays.d.mts",
         "default": "./addDays.mjs"
       }
     },
@@ -103,7 +93,7 @@
         "default": "./addHours.js"
       },
       "import": {
-        "types": "./addHours.d.ts",
+        "types": "./addHours.d.mts",
         "default": "./addHours.mjs"
       }
     },
@@ -113,7 +103,7 @@
         "default": "./addISOWeekYears.js"
       },
       "import": {
-        "types": "./addISOWeekYears.d.ts",
+        "types": "./addISOWeekYears.d.mts",
         "default": "./addISOWeekYears.mjs"
       }
     },
@@ -123,7 +113,7 @@
         "default": "./addMilliseconds.js"
       },
       "import": {
-        "types": "./addMilliseconds.d.ts",
+        "types": "./addMilliseconds.d.mts",
         "default": "./addMilliseconds.mjs"
       }
     },
@@ -133,7 +123,7 @@
         "default": "./addMinutes.js"
       },
       "import": {
-        "types": "./addMinutes.d.ts",
+        "types": "./addMinutes.d.mts",
         "default": "./addMinutes.mjs"
       }
     },
@@ -143,7 +133,7 @@
         "default": "./addMonths.js"
       },
       "import": {
-        "types": "./addMonths.d.ts",
+        "types": "./addMonths.d.mts",
         "default": "./addMonths.mjs"
       }
     },
@@ -153,7 +143,7 @@
         "default": "./addQuarters.js"
       },
       "import": {
-        "types": "./addQuarters.d.ts",
+        "types": "./addQuarters.d.mts",
         "default": "./addQuarters.mjs"
       }
     },
@@ -163,7 +153,7 @@
         "default": "./addSeconds.js"
       },
       "import": {
-        "types": "./addSeconds.d.ts",
+        "types": "./addSeconds.d.mts",
         "default": "./addSeconds.mjs"
       }
     },
@@ -173,7 +163,7 @@
         "default": "./addWeeks.js"
       },
       "import": {
-        "types": "./addWeeks.d.ts",
+        "types": "./addWeeks.d.mts",
         "default": "./addWeeks.mjs"
       }
     },
@@ -183,7 +173,7 @@
         "default": "./addYears.js"
       },
       "import": {
-        "types": "./addYears.d.ts",
+        "types": "./addYears.d.mts",
         "default": "./addYears.mjs"
       }
     },
@@ -193,7 +183,7 @@
         "default": "./areIntervalsOverlapping.js"
       },
       "import": {
-        "types": "./areIntervalsOverlapping.d.ts",
+        "types": "./areIntervalsOverlapping.d.mts",
         "default": "./areIntervalsOverlapping.mjs"
       }
     },
@@ -203,7 +193,7 @@
         "default": "./clamp.js"
       },
       "import": {
-        "types": "./clamp.d.ts",
+        "types": "./clamp.d.mts",
         "default": "./clamp.mjs"
       }
     },
@@ -213,7 +203,7 @@
         "default": "./closestIndexTo.js"
       },
       "import": {
-        "types": "./closestIndexTo.d.ts",
+        "types": "./closestIndexTo.d.mts",
         "default": "./closestIndexTo.mjs"
       }
     },
@@ -223,7 +213,7 @@
         "default": "./closestTo.js"
       },
       "import": {
-        "types": "./closestTo.d.ts",
+        "types": "./closestTo.d.mts",
         "default": "./closestTo.mjs"
       }
     },
@@ -233,7 +223,7 @@
         "default": "./compareAsc.js"
       },
       "import": {
-        "types": "./compareAsc.d.ts",
+        "types": "./compareAsc.d.mts",
         "default": "./compareAsc.mjs"
       }
     },
@@ -243,7 +233,7 @@
         "default": "./compareDesc.js"
       },
       "import": {
-        "types": "./compareDesc.d.ts",
+        "types": "./compareDesc.d.mts",
         "default": "./compareDesc.mjs"
       }
     },
@@ -253,7 +243,7 @@
         "default": "./constructFrom.js"
       },
       "import": {
-        "types": "./constructFrom.d.ts",
+        "types": "./constructFrom.d.mts",
         "default": "./constructFrom.mjs"
       }
     },
@@ -263,7 +253,7 @@
         "default": "./daysToWeeks.js"
       },
       "import": {
-        "types": "./daysToWeeks.d.ts",
+        "types": "./daysToWeeks.d.mts",
         "default": "./daysToWeeks.mjs"
       }
     },
@@ -273,7 +263,7 @@
         "default": "./differenceInBusinessDays.js"
       },
       "import": {
-        "types": "./differenceInBusinessDays.d.ts",
+        "types": "./differenceInBusinessDays.d.mts",
         "default": "./differenceInBusinessDays.mjs"
       }
     },
@@ -283,7 +273,7 @@
         "default": "./differenceInCalendarDays.js"
       },
       "import": {
-        "types": "./differenceInCalendarDays.d.ts",
+        "types": "./differenceInCalendarDays.d.mts",
         "default": "./differenceInCalendarDays.mjs"
       }
     },
@@ -293,7 +283,7 @@
         "default": "./differenceInCalendarISOWeekYears.js"
       },
       "import": {
-        "types": "./differenceInCalendarISOWeekYears.d.ts",
+        "types": "./differenceInCalendarISOWeekYears.d.mts",
         "default": "./differenceInCalendarISOWeekYears.mjs"
       }
     },
@@ -303,7 +293,7 @@
         "default": "./differenceInCalendarISOWeeks.js"
       },
       "import": {
-        "types": "./differenceInCalendarISOWeeks.d.ts",
+        "types": "./differenceInCalendarISOWeeks.d.mts",
         "default": "./differenceInCalendarISOWeeks.mjs"
       }
     },
@@ -313,7 +303,7 @@
         "default": "./differenceInCalendarMonths.js"
       },
       "import": {
-        "types": "./differenceInCalendarMonths.d.ts",
+        "types": "./differenceInCalendarMonths.d.mts",
         "default": "./differenceInCalendarMonths.mjs"
       }
     },
@@ -323,7 +313,7 @@
         "default": "./differenceInCalendarQuarters.js"
       },
       "import": {
-        "types": "./differenceInCalendarQuarters.d.ts",
+        "types": "./differenceInCalendarQuarters.d.mts",
         "default": "./differenceInCalendarQuarters.mjs"
       }
     },
@@ -333,7 +323,7 @@
         "default": "./differenceInCalendarWeeks.js"
       },
       "import": {
-        "types": "./differenceInCalendarWeeks.d.ts",
+        "types": "./differenceInCalendarWeeks.d.mts",
         "default": "./differenceInCalendarWeeks.mjs"
       }
     },
@@ -343,7 +333,7 @@
         "default": "./differenceInCalendarYears.js"
       },
       "import": {
-        "types": "./differenceInCalendarYears.d.ts",
+        "types": "./differenceInCalendarYears.d.mts",
         "default": "./differenceInCalendarYears.mjs"
       }
     },
@@ -353,7 +343,7 @@
         "default": "./differenceInDays.js"
       },
       "import": {
-        "types": "./differenceInDays.d.ts",
+        "types": "./differenceInDays.d.mts",
         "default": "./differenceInDays.mjs"
       }
     },
@@ -363,7 +353,7 @@
         "default": "./differenceInHours.js"
       },
       "import": {
-        "types": "./differenceInHours.d.ts",
+        "types": "./differenceInHours.d.mts",
         "default": "./differenceInHours.mjs"
       }
     },
@@ -373,7 +363,7 @@
         "default": "./differenceInISOWeekYears.js"
       },
       "import": {
-        "types": "./differenceInISOWeekYears.d.ts",
+        "types": "./differenceInISOWeekYears.d.mts",
         "default": "./differenceInISOWeekYears.mjs"
       }
     },
@@ -383,7 +373,7 @@
         "default": "./differenceInMilliseconds.js"
       },
       "import": {
-        "types": "./differenceInMilliseconds.d.ts",
+        "types": "./differenceInMilliseconds.d.mts",
         "default": "./differenceInMilliseconds.mjs"
       }
     },
@@ -393,7 +383,7 @@
         "default": "./differenceInMinutes.js"
       },
       "import": {
-        "types": "./differenceInMinutes.d.ts",
+        "types": "./differenceInMinutes.d.mts",
         "default": "./differenceInMinutes.mjs"
       }
     },
@@ -403,7 +393,7 @@
         "default": "./differenceInMonths.js"
       },
       "import": {
-        "types": "./differenceInMonths.d.ts",
+        "types": "./differenceInMonths.d.mts",
         "default": "./differenceInMonths.mjs"
       }
     },
@@ -413,7 +403,7 @@
         "default": "./differenceInQuarters.js"
       },
       "import": {
-        "types": "./differenceInQuarters.d.ts",
+        "types": "./differenceInQuarters.d.mts",
         "default": "./differenceInQuarters.mjs"
       }
     },
@@ -423,7 +413,7 @@
         "default": "./differenceInSeconds.js"
       },
       "import": {
-        "types": "./differenceInSeconds.d.ts",
+        "types": "./differenceInSeconds.d.mts",
         "default": "./differenceInSeconds.mjs"
       }
     },
@@ -433,7 +423,7 @@
         "default": "./differenceInWeeks.js"
       },
       "import": {
-        "types": "./differenceInWeeks.d.ts",
+        "types": "./differenceInWeeks.d.mts",
         "default": "./differenceInWeeks.mjs"
       }
     },
@@ -443,7 +433,7 @@
         "default": "./differenceInYears.js"
       },
       "import": {
-        "types": "./differenceInYears.d.ts",
+        "types": "./differenceInYears.d.mts",
         "default": "./differenceInYears.mjs"
       }
     },
@@ -453,7 +443,7 @@
         "default": "./eachDayOfInterval.js"
       },
       "import": {
-        "types": "./eachDayOfInterval.d.ts",
+        "types": "./eachDayOfInterval.d.mts",
         "default": "./eachDayOfInterval.mjs"
       }
     },
@@ -463,7 +453,7 @@
         "default": "./eachHourOfInterval.js"
       },
       "import": {
-        "types": "./eachHourOfInterval.d.ts",
+        "types": "./eachHourOfInterval.d.mts",
         "default": "./eachHourOfInterval.mjs"
       }
     },
@@ -473,7 +463,7 @@
         "default": "./eachMinuteOfInterval.js"
       },
       "import": {
-        "types": "./eachMinuteOfInterval.d.ts",
+        "types": "./eachMinuteOfInterval.d.mts",
         "default": "./eachMinuteOfInterval.mjs"
       }
     },
@@ -483,7 +473,7 @@
         "default": "./eachMonthOfInterval.js"
       },
       "import": {
-        "types": "./eachMonthOfInterval.d.ts",
+        "types": "./eachMonthOfInterval.d.mts",
         "default": "./eachMonthOfInterval.mjs"
       }
     },
@@ -493,7 +483,7 @@
         "default": "./eachQuarterOfInterval.js"
       },
       "import": {
-        "types": "./eachQuarterOfInterval.d.ts",
+        "types": "./eachQuarterOfInterval.d.mts",
         "default": "./eachQuarterOfInterval.mjs"
       }
     },
@@ -503,7 +493,7 @@
         "default": "./eachWeekOfInterval.js"
       },
       "import": {
-        "types": "./eachWeekOfInterval.d.ts",
+        "types": "./eachWeekOfInterval.d.mts",
         "default": "./eachWeekOfInterval.mjs"
       }
     },
@@ -513,7 +503,7 @@
         "default": "./eachWeekendOfInterval.js"
       },
       "import": {
-        "types": "./eachWeekendOfInterval.d.ts",
+        "types": "./eachWeekendOfInterval.d.mts",
         "default": "./eachWeekendOfInterval.mjs"
       }
     },
@@ -523,7 +513,7 @@
         "default": "./eachWeekendOfMonth.js"
       },
       "import": {
-        "types": "./eachWeekendOfMonth.d.ts",
+        "types": "./eachWeekendOfMonth.d.mts",
         "default": "./eachWeekendOfMonth.mjs"
       }
     },
@@ -533,7 +523,7 @@
         "default": "./eachWeekendOfYear.js"
       },
       "import": {
-        "types": "./eachWeekendOfYear.d.ts",
+        "types": "./eachWeekendOfYear.d.mts",
         "default": "./eachWeekendOfYear.mjs"
       }
     },
@@ -543,7 +533,7 @@
         "default": "./eachYearOfInterval.js"
       },
       "import": {
-        "types": "./eachYearOfInterval.d.ts",
+        "types": "./eachYearOfInterval.d.mts",
         "default": "./eachYearOfInterval.mjs"
       }
     },
@@ -553,7 +543,7 @@
         "default": "./endOfDay.js"
       },
       "import": {
-        "types": "./endOfDay.d.ts",
+        "types": "./endOfDay.d.mts",
         "default": "./endOfDay.mjs"
       }
     },
@@ -563,7 +553,7 @@
         "default": "./endOfDecade.js"
       },
       "import": {
-        "types": "./endOfDecade.d.ts",
+        "types": "./endOfDecade.d.mts",
         "default": "./endOfDecade.mjs"
       }
     },
@@ -573,7 +563,7 @@
         "default": "./endOfHour.js"
       },
       "import": {
-        "types": "./endOfHour.d.ts",
+        "types": "./endOfHour.d.mts",
         "default": "./endOfHour.mjs"
       }
     },
@@ -583,7 +573,7 @@
         "default": "./endOfISOWeek.js"
       },
       "import": {
-        "types": "./endOfISOWeek.d.ts",
+        "types": "./endOfISOWeek.d.mts",
         "default": "./endOfISOWeek.mjs"
       }
     },
@@ -593,7 +583,7 @@
         "default": "./endOfISOWeekYear.js"
       },
       "import": {
-        "types": "./endOfISOWeekYear.d.ts",
+        "types": "./endOfISOWeekYear.d.mts",
         "default": "./endOfISOWeekYear.mjs"
       }
     },
@@ -603,7 +593,7 @@
         "default": "./endOfMinute.js"
       },
       "import": {
-        "types": "./endOfMinute.d.ts",
+        "types": "./endOfMinute.d.mts",
         "default": "./endOfMinute.mjs"
       }
     },
@@ -613,7 +603,7 @@
         "default": "./endOfMonth.js"
       },
       "import": {
-        "types": "./endOfMonth.d.ts",
+        "types": "./endOfMonth.d.mts",
         "default": "./endOfMonth.mjs"
       }
     },
@@ -623,7 +613,7 @@
         "default": "./endOfQuarter.js"
       },
       "import": {
-        "types": "./endOfQuarter.d.ts",
+        "types": "./endOfQuarter.d.mts",
         "default": "./endOfQuarter.mjs"
       }
     },
@@ -633,7 +623,7 @@
         "default": "./endOfSecond.js"
       },
       "import": {
-        "types": "./endOfSecond.d.ts",
+        "types": "./endOfSecond.d.mts",
         "default": "./endOfSecond.mjs"
       }
     },
@@ -643,7 +633,7 @@
         "default": "./endOfToday.js"
       },
       "import": {
-        "types": "./endOfToday.d.ts",
+        "types": "./endOfToday.d.mts",
         "default": "./endOfToday.mjs"
       }
     },
@@ -653,7 +643,7 @@
         "default": "./endOfTomorrow.js"
       },
       "import": {
-        "types": "./endOfTomorrow.d.ts",
+        "types": "./endOfTomorrow.d.mts",
         "default": "./endOfTomorrow.mjs"
       }
     },
@@ -663,7 +653,7 @@
         "default": "./endOfWeek.js"
       },
       "import": {
-        "types": "./endOfWeek.d.ts",
+        "types": "./endOfWeek.d.mts",
         "default": "./endOfWeek.mjs"
       }
     },
@@ -673,7 +663,7 @@
         "default": "./endOfYear.js"
       },
       "import": {
-        "types": "./endOfYear.d.ts",
+        "types": "./endOfYear.d.mts",
         "default": "./endOfYear.mjs"
       }
     },
@@ -683,7 +673,7 @@
         "default": "./endOfYesterday.js"
       },
       "import": {
-        "types": "./endOfYesterday.d.ts",
+        "types": "./endOfYesterday.d.mts",
         "default": "./endOfYesterday.mjs"
       }
     },
@@ -693,7 +683,7 @@
         "default": "./format.js"
       },
       "import": {
-        "types": "./format.d.ts",
+        "types": "./format.d.mts",
         "default": "./format.mjs"
       }
     },
@@ -703,7 +693,7 @@
         "default": "./formatDistance.js"
       },
       "import": {
-        "types": "./formatDistance.d.ts",
+        "types": "./formatDistance.d.mts",
         "default": "./formatDistance.mjs"
       }
     },
@@ -713,7 +703,7 @@
         "default": "./formatDistanceStrict.js"
       },
       "import": {
-        "types": "./formatDistanceStrict.d.ts",
+        "types": "./formatDistanceStrict.d.mts",
         "default": "./formatDistanceStrict.mjs"
       }
     },
@@ -723,7 +713,7 @@
         "default": "./formatDistanceToNow.js"
       },
       "import": {
-        "types": "./formatDistanceToNow.d.ts",
+        "types": "./formatDistanceToNow.d.mts",
         "default": "./formatDistanceToNow.mjs"
       }
     },
@@ -733,7 +723,7 @@
         "default": "./formatDistanceToNowStrict.js"
       },
       "import": {
-        "types": "./formatDistanceToNowStrict.d.ts",
+        "types": "./formatDistanceToNowStrict.d.mts",
         "default": "./formatDistanceToNowStrict.mjs"
       }
     },
@@ -743,7 +733,7 @@
         "default": "./formatDuration.js"
       },
       "import": {
-        "types": "./formatDuration.d.ts",
+        "types": "./formatDuration.d.mts",
         "default": "./formatDuration.mjs"
       }
     },
@@ -753,7 +743,7 @@
         "default": "./formatISO.js"
       },
       "import": {
-        "types": "./formatISO.d.ts",
+        "types": "./formatISO.d.mts",
         "default": "./formatISO.mjs"
       }
     },
@@ -763,7 +753,7 @@
         "default": "./formatISO9075.js"
       },
       "import": {
-        "types": "./formatISO9075.d.ts",
+        "types": "./formatISO9075.d.mts",
         "default": "./formatISO9075.mjs"
       }
     },
@@ -773,7 +763,7 @@
         "default": "./formatISODuration.js"
       },
       "import": {
-        "types": "./formatISODuration.d.ts",
+        "types": "./formatISODuration.d.mts",
         "default": "./formatISODuration.mjs"
       }
     },
@@ -783,7 +773,7 @@
         "default": "./formatRFC3339.js"
       },
       "import": {
-        "types": "./formatRFC3339.d.ts",
+        "types": "./formatRFC3339.d.mts",
         "default": "./formatRFC3339.mjs"
       }
     },
@@ -793,7 +783,7 @@
         "default": "./formatRFC7231.js"
       },
       "import": {
-        "types": "./formatRFC7231.d.ts",
+        "types": "./formatRFC7231.d.mts",
         "default": "./formatRFC7231.mjs"
       }
     },
@@ -803,7 +793,7 @@
         "default": "./formatRelative.js"
       },
       "import": {
-        "types": "./formatRelative.d.ts",
+        "types": "./formatRelative.d.mts",
         "default": "./formatRelative.mjs"
       }
     },
@@ -813,7 +803,7 @@
         "default": "./fromUnixTime.js"
       },
       "import": {
-        "types": "./fromUnixTime.d.ts",
+        "types": "./fromUnixTime.d.mts",
         "default": "./fromUnixTime.mjs"
       }
     },
@@ -823,7 +813,7 @@
         "default": "./getDate.js"
       },
       "import": {
-        "types": "./getDate.d.ts",
+        "types": "./getDate.d.mts",
         "default": "./getDate.mjs"
       }
     },
@@ -833,7 +823,7 @@
         "default": "./getDay.js"
       },
       "import": {
-        "types": "./getDay.d.ts",
+        "types": "./getDay.d.mts",
         "default": "./getDay.mjs"
       }
     },
@@ -843,7 +833,7 @@
         "default": "./getDayOfYear.js"
       },
       "import": {
-        "types": "./getDayOfYear.d.ts",
+        "types": "./getDayOfYear.d.mts",
         "default": "./getDayOfYear.mjs"
       }
     },
@@ -853,7 +843,7 @@
         "default": "./getDaysInMonth.js"
       },
       "import": {
-        "types": "./getDaysInMonth.d.ts",
+        "types": "./getDaysInMonth.d.mts",
         "default": "./getDaysInMonth.mjs"
       }
     },
@@ -863,7 +853,7 @@
         "default": "./getDaysInYear.js"
       },
       "import": {
-        "types": "./getDaysInYear.d.ts",
+        "types": "./getDaysInYear.d.mts",
         "default": "./getDaysInYear.mjs"
       }
     },
@@ -873,7 +863,7 @@
         "default": "./getDecade.js"
       },
       "import": {
-        "types": "./getDecade.d.ts",
+        "types": "./getDecade.d.mts",
         "default": "./getDecade.mjs"
       }
     },
@@ -883,7 +873,7 @@
         "default": "./getDefaultOptions.js"
       },
       "import": {
-        "types": "./getDefaultOptions.d.ts",
+        "types": "./getDefaultOptions.d.mts",
         "default": "./getDefaultOptions.mjs"
       }
     },
@@ -893,7 +883,7 @@
         "default": "./getHours.js"
       },
       "import": {
-        "types": "./getHours.d.ts",
+        "types": "./getHours.d.mts",
         "default": "./getHours.mjs"
       }
     },
@@ -903,7 +893,7 @@
         "default": "./getISODay.js"
       },
       "import": {
-        "types": "./getISODay.d.ts",
+        "types": "./getISODay.d.mts",
         "default": "./getISODay.mjs"
       }
     },
@@ -913,7 +903,7 @@
         "default": "./getISOWeek.js"
       },
       "import": {
-        "types": "./getISOWeek.d.ts",
+        "types": "./getISOWeek.d.mts",
         "default": "./getISOWeek.mjs"
       }
     },
@@ -923,7 +913,7 @@
         "default": "./getISOWeekYear.js"
       },
       "import": {
-        "types": "./getISOWeekYear.d.ts",
+        "types": "./getISOWeekYear.d.mts",
         "default": "./getISOWeekYear.mjs"
       }
     },
@@ -933,7 +923,7 @@
         "default": "./getISOWeeksInYear.js"
       },
       "import": {
-        "types": "./getISOWeeksInYear.d.ts",
+        "types": "./getISOWeeksInYear.d.mts",
         "default": "./getISOWeeksInYear.mjs"
       }
     },
@@ -943,7 +933,7 @@
         "default": "./getMilliseconds.js"
       },
       "import": {
-        "types": "./getMilliseconds.d.ts",
+        "types": "./getMilliseconds.d.mts",
         "default": "./getMilliseconds.mjs"
       }
     },
@@ -953,7 +943,7 @@
         "default": "./getMinutes.js"
       },
       "import": {
-        "types": "./getMinutes.d.ts",
+        "types": "./getMinutes.d.mts",
         "default": "./getMinutes.mjs"
       }
     },
@@ -963,7 +953,7 @@
         "default": "./getMonth.js"
       },
       "import": {
-        "types": "./getMonth.d.ts",
+        "types": "./getMonth.d.mts",
         "default": "./getMonth.mjs"
       }
     },
@@ -973,7 +963,7 @@
         "default": "./getOverlappingDaysInIntervals.js"
       },
       "import": {
-        "types": "./getOverlappingDaysInIntervals.d.ts",
+        "types": "./getOverlappingDaysInIntervals.d.mts",
         "default": "./getOverlappingDaysInIntervals.mjs"
       }
     },
@@ -983,7 +973,7 @@
         "default": "./getQuarter.js"
       },
       "import": {
-        "types": "./getQuarter.d.ts",
+        "types": "./getQuarter.d.mts",
         "default": "./getQuarter.mjs"
       }
     },
@@ -993,7 +983,7 @@
         "default": "./getSeconds.js"
       },
       "import": {
-        "types": "./getSeconds.d.ts",
+        "types": "./getSeconds.d.mts",
         "default": "./getSeconds.mjs"
       }
     },
@@ -1003,7 +993,7 @@
         "default": "./getTime.js"
       },
       "import": {
-        "types": "./getTime.d.ts",
+        "types": "./getTime.d.mts",
         "default": "./getTime.mjs"
       }
     },
@@ -1013,7 +1003,7 @@
         "default": "./getUnixTime.js"
       },
       "import": {
-        "types": "./getUnixTime.d.ts",
+        "types": "./getUnixTime.d.mts",
         "default": "./getUnixTime.mjs"
       }
     },
@@ -1023,7 +1013,7 @@
         "default": "./getWeek.js"
       },
       "import": {
-        "types": "./getWeek.d.ts",
+        "types": "./getWeek.d.mts",
         "default": "./getWeek.mjs"
       }
     },
@@ -1033,7 +1023,7 @@
         "default": "./getWeekOfMonth.js"
       },
       "import": {
-        "types": "./getWeekOfMonth.d.ts",
+        "types": "./getWeekOfMonth.d.mts",
         "default": "./getWeekOfMonth.mjs"
       }
     },
@@ -1043,7 +1033,7 @@
         "default": "./getWeekYear.js"
       },
       "import": {
-        "types": "./getWeekYear.d.ts",
+        "types": "./getWeekYear.d.mts",
         "default": "./getWeekYear.mjs"
       }
     },
@@ -1053,7 +1043,7 @@
         "default": "./getWeeksInMonth.js"
       },
       "import": {
-        "types": "./getWeeksInMonth.d.ts",
+        "types": "./getWeeksInMonth.d.mts",
         "default": "./getWeeksInMonth.mjs"
       }
     },
@@ -1063,7 +1053,7 @@
         "default": "./getYear.js"
       },
       "import": {
-        "types": "./getYear.d.ts",
+        "types": "./getYear.d.mts",
         "default": "./getYear.mjs"
       }
     },
@@ -1073,7 +1063,7 @@
         "default": "./hoursToMilliseconds.js"
       },
       "import": {
-        "types": "./hoursToMilliseconds.d.ts",
+        "types": "./hoursToMilliseconds.d.mts",
         "default": "./hoursToMilliseconds.mjs"
       }
     },
@@ -1083,7 +1073,7 @@
         "default": "./hoursToMinutes.js"
       },
       "import": {
-        "types": "./hoursToMinutes.d.ts",
+        "types": "./hoursToMinutes.d.mts",
         "default": "./hoursToMinutes.mjs"
       }
     },
@@ -1093,8 +1083,18 @@
         "default": "./hoursToSeconds.js"
       },
       "import": {
-        "types": "./hoursToSeconds.d.ts",
+        "types": "./hoursToSeconds.d.mts",
         "default": "./hoursToSeconds.mjs"
+      }
+    },
+    "./interval": {
+      "require": {
+        "types": "./interval.d.ts",
+        "default": "./interval.js"
+      },
+      "import": {
+        "types": "./interval.d.mts",
+        "default": "./interval.mjs"
       }
     },
     "./intervalToDuration": {
@@ -1103,7 +1103,7 @@
         "default": "./intervalToDuration.js"
       },
       "import": {
-        "types": "./intervalToDuration.d.ts",
+        "types": "./intervalToDuration.d.mts",
         "default": "./intervalToDuration.mjs"
       }
     },
@@ -1113,7 +1113,7 @@
         "default": "./intlFormat.js"
       },
       "import": {
-        "types": "./intlFormat.d.ts",
+        "types": "./intlFormat.d.mts",
         "default": "./intlFormat.mjs"
       }
     },
@@ -1123,7 +1123,7 @@
         "default": "./intlFormatDistance.js"
       },
       "import": {
-        "types": "./intlFormatDistance.d.ts",
+        "types": "./intlFormatDistance.d.mts",
         "default": "./intlFormatDistance.mjs"
       }
     },
@@ -1133,7 +1133,7 @@
         "default": "./isAfter.js"
       },
       "import": {
-        "types": "./isAfter.d.ts",
+        "types": "./isAfter.d.mts",
         "default": "./isAfter.mjs"
       }
     },
@@ -1143,7 +1143,7 @@
         "default": "./isBefore.js"
       },
       "import": {
-        "types": "./isBefore.d.ts",
+        "types": "./isBefore.d.mts",
         "default": "./isBefore.mjs"
       }
     },
@@ -1153,7 +1153,7 @@
         "default": "./isDate.js"
       },
       "import": {
-        "types": "./isDate.d.ts",
+        "types": "./isDate.d.mts",
         "default": "./isDate.mjs"
       }
     },
@@ -1163,7 +1163,7 @@
         "default": "./isEqual.js"
       },
       "import": {
-        "types": "./isEqual.d.ts",
+        "types": "./isEqual.d.mts",
         "default": "./isEqual.mjs"
       }
     },
@@ -1173,7 +1173,7 @@
         "default": "./isExists.js"
       },
       "import": {
-        "types": "./isExists.d.ts",
+        "types": "./isExists.d.mts",
         "default": "./isExists.mjs"
       }
     },
@@ -1183,7 +1183,7 @@
         "default": "./isFirstDayOfMonth.js"
       },
       "import": {
-        "types": "./isFirstDayOfMonth.d.ts",
+        "types": "./isFirstDayOfMonth.d.mts",
         "default": "./isFirstDayOfMonth.mjs"
       }
     },
@@ -1193,7 +1193,7 @@
         "default": "./isFriday.js"
       },
       "import": {
-        "types": "./isFriday.d.ts",
+        "types": "./isFriday.d.mts",
         "default": "./isFriday.mjs"
       }
     },
@@ -1203,7 +1203,7 @@
         "default": "./isFuture.js"
       },
       "import": {
-        "types": "./isFuture.d.ts",
+        "types": "./isFuture.d.mts",
         "default": "./isFuture.mjs"
       }
     },
@@ -1213,7 +1213,7 @@
         "default": "./isLastDayOfMonth.js"
       },
       "import": {
-        "types": "./isLastDayOfMonth.d.ts",
+        "types": "./isLastDayOfMonth.d.mts",
         "default": "./isLastDayOfMonth.mjs"
       }
     },
@@ -1223,7 +1223,7 @@
         "default": "./isLeapYear.js"
       },
       "import": {
-        "types": "./isLeapYear.d.ts",
+        "types": "./isLeapYear.d.mts",
         "default": "./isLeapYear.mjs"
       }
     },
@@ -1233,7 +1233,7 @@
         "default": "./isMatch.js"
       },
       "import": {
-        "types": "./isMatch.d.ts",
+        "types": "./isMatch.d.mts",
         "default": "./isMatch.mjs"
       }
     },
@@ -1243,7 +1243,7 @@
         "default": "./isMonday.js"
       },
       "import": {
-        "types": "./isMonday.d.ts",
+        "types": "./isMonday.d.mts",
         "default": "./isMonday.mjs"
       }
     },
@@ -1253,7 +1253,7 @@
         "default": "./isPast.js"
       },
       "import": {
-        "types": "./isPast.d.ts",
+        "types": "./isPast.d.mts",
         "default": "./isPast.mjs"
       }
     },
@@ -1263,7 +1263,7 @@
         "default": "./isSameDay.js"
       },
       "import": {
-        "types": "./isSameDay.d.ts",
+        "types": "./isSameDay.d.mts",
         "default": "./isSameDay.mjs"
       }
     },
@@ -1273,7 +1273,7 @@
         "default": "./isSameHour.js"
       },
       "import": {
-        "types": "./isSameHour.d.ts",
+        "types": "./isSameHour.d.mts",
         "default": "./isSameHour.mjs"
       }
     },
@@ -1283,7 +1283,7 @@
         "default": "./isSameISOWeek.js"
       },
       "import": {
-        "types": "./isSameISOWeek.d.ts",
+        "types": "./isSameISOWeek.d.mts",
         "default": "./isSameISOWeek.mjs"
       }
     },
@@ -1293,7 +1293,7 @@
         "default": "./isSameISOWeekYear.js"
       },
       "import": {
-        "types": "./isSameISOWeekYear.d.ts",
+        "types": "./isSameISOWeekYear.d.mts",
         "default": "./isSameISOWeekYear.mjs"
       }
     },
@@ -1303,7 +1303,7 @@
         "default": "./isSameMinute.js"
       },
       "import": {
-        "types": "./isSameMinute.d.ts",
+        "types": "./isSameMinute.d.mts",
         "default": "./isSameMinute.mjs"
       }
     },
@@ -1313,7 +1313,7 @@
         "default": "./isSameMonth.js"
       },
       "import": {
-        "types": "./isSameMonth.d.ts",
+        "types": "./isSameMonth.d.mts",
         "default": "./isSameMonth.mjs"
       }
     },
@@ -1323,7 +1323,7 @@
         "default": "./isSameQuarter.js"
       },
       "import": {
-        "types": "./isSameQuarter.d.ts",
+        "types": "./isSameQuarter.d.mts",
         "default": "./isSameQuarter.mjs"
       }
     },
@@ -1333,7 +1333,7 @@
         "default": "./isSameSecond.js"
       },
       "import": {
-        "types": "./isSameSecond.d.ts",
+        "types": "./isSameSecond.d.mts",
         "default": "./isSameSecond.mjs"
       }
     },
@@ -1343,7 +1343,7 @@
         "default": "./isSameWeek.js"
       },
       "import": {
-        "types": "./isSameWeek.d.ts",
+        "types": "./isSameWeek.d.mts",
         "default": "./isSameWeek.mjs"
       }
     },
@@ -1353,7 +1353,7 @@
         "default": "./isSameYear.js"
       },
       "import": {
-        "types": "./isSameYear.d.ts",
+        "types": "./isSameYear.d.mts",
         "default": "./isSameYear.mjs"
       }
     },
@@ -1363,7 +1363,7 @@
         "default": "./isSaturday.js"
       },
       "import": {
-        "types": "./isSaturday.d.ts",
+        "types": "./isSaturday.d.mts",
         "default": "./isSaturday.mjs"
       }
     },
@@ -1373,7 +1373,7 @@
         "default": "./isSunday.js"
       },
       "import": {
-        "types": "./isSunday.d.ts",
+        "types": "./isSunday.d.mts",
         "default": "./isSunday.mjs"
       }
     },
@@ -1383,7 +1383,7 @@
         "default": "./isThisHour.js"
       },
       "import": {
-        "types": "./isThisHour.d.ts",
+        "types": "./isThisHour.d.mts",
         "default": "./isThisHour.mjs"
       }
     },
@@ -1393,7 +1393,7 @@
         "default": "./isThisISOWeek.js"
       },
       "import": {
-        "types": "./isThisISOWeek.d.ts",
+        "types": "./isThisISOWeek.d.mts",
         "default": "./isThisISOWeek.mjs"
       }
     },
@@ -1403,7 +1403,7 @@
         "default": "./isThisMinute.js"
       },
       "import": {
-        "types": "./isThisMinute.d.ts",
+        "types": "./isThisMinute.d.mts",
         "default": "./isThisMinute.mjs"
       }
     },
@@ -1413,7 +1413,7 @@
         "default": "./isThisMonth.js"
       },
       "import": {
-        "types": "./isThisMonth.d.ts",
+        "types": "./isThisMonth.d.mts",
         "default": "./isThisMonth.mjs"
       }
     },
@@ -1423,7 +1423,7 @@
         "default": "./isThisQuarter.js"
       },
       "import": {
-        "types": "./isThisQuarter.d.ts",
+        "types": "./isThisQuarter.d.mts",
         "default": "./isThisQuarter.mjs"
       }
     },
@@ -1433,7 +1433,7 @@
         "default": "./isThisSecond.js"
       },
       "import": {
-        "types": "./isThisSecond.d.ts",
+        "types": "./isThisSecond.d.mts",
         "default": "./isThisSecond.mjs"
       }
     },
@@ -1443,7 +1443,7 @@
         "default": "./isThisWeek.js"
       },
       "import": {
-        "types": "./isThisWeek.d.ts",
+        "types": "./isThisWeek.d.mts",
         "default": "./isThisWeek.mjs"
       }
     },
@@ -1453,7 +1453,7 @@
         "default": "./isThisYear.js"
       },
       "import": {
-        "types": "./isThisYear.d.ts",
+        "types": "./isThisYear.d.mts",
         "default": "./isThisYear.mjs"
       }
     },
@@ -1463,7 +1463,7 @@
         "default": "./isThursday.js"
       },
       "import": {
-        "types": "./isThursday.d.ts",
+        "types": "./isThursday.d.mts",
         "default": "./isThursday.mjs"
       }
     },
@@ -1473,7 +1473,7 @@
         "default": "./isToday.js"
       },
       "import": {
-        "types": "./isToday.d.ts",
+        "types": "./isToday.d.mts",
         "default": "./isToday.mjs"
       }
     },
@@ -1483,7 +1483,7 @@
         "default": "./isTomorrow.js"
       },
       "import": {
-        "types": "./isTomorrow.d.ts",
+        "types": "./isTomorrow.d.mts",
         "default": "./isTomorrow.mjs"
       }
     },
@@ -1493,7 +1493,7 @@
         "default": "./isTuesday.js"
       },
       "import": {
-        "types": "./isTuesday.d.ts",
+        "types": "./isTuesday.d.mts",
         "default": "./isTuesday.mjs"
       }
     },
@@ -1503,7 +1503,7 @@
         "default": "./isValid.js"
       },
       "import": {
-        "types": "./isValid.d.ts",
+        "types": "./isValid.d.mts",
         "default": "./isValid.mjs"
       }
     },
@@ -1513,7 +1513,7 @@
         "default": "./isWednesday.js"
       },
       "import": {
-        "types": "./isWednesday.d.ts",
+        "types": "./isWednesday.d.mts",
         "default": "./isWednesday.mjs"
       }
     },
@@ -1523,7 +1523,7 @@
         "default": "./isWeekend.js"
       },
       "import": {
-        "types": "./isWeekend.d.ts",
+        "types": "./isWeekend.d.mts",
         "default": "./isWeekend.mjs"
       }
     },
@@ -1533,7 +1533,7 @@
         "default": "./isWithinInterval.js"
       },
       "import": {
-        "types": "./isWithinInterval.d.ts",
+        "types": "./isWithinInterval.d.mts",
         "default": "./isWithinInterval.mjs"
       }
     },
@@ -1543,7 +1543,7 @@
         "default": "./isYesterday.js"
       },
       "import": {
-        "types": "./isYesterday.d.ts",
+        "types": "./isYesterday.d.mts",
         "default": "./isYesterday.mjs"
       }
     },
@@ -1553,7 +1553,7 @@
         "default": "./lastDayOfDecade.js"
       },
       "import": {
-        "types": "./lastDayOfDecade.d.ts",
+        "types": "./lastDayOfDecade.d.mts",
         "default": "./lastDayOfDecade.mjs"
       }
     },
@@ -1563,7 +1563,7 @@
         "default": "./lastDayOfISOWeek.js"
       },
       "import": {
-        "types": "./lastDayOfISOWeek.d.ts",
+        "types": "./lastDayOfISOWeek.d.mts",
         "default": "./lastDayOfISOWeek.mjs"
       }
     },
@@ -1573,7 +1573,7 @@
         "default": "./lastDayOfISOWeekYear.js"
       },
       "import": {
-        "types": "./lastDayOfISOWeekYear.d.ts",
+        "types": "./lastDayOfISOWeekYear.d.mts",
         "default": "./lastDayOfISOWeekYear.mjs"
       }
     },
@@ -1583,7 +1583,7 @@
         "default": "./lastDayOfMonth.js"
       },
       "import": {
-        "types": "./lastDayOfMonth.d.ts",
+        "types": "./lastDayOfMonth.d.mts",
         "default": "./lastDayOfMonth.mjs"
       }
     },
@@ -1593,7 +1593,7 @@
         "default": "./lastDayOfQuarter.js"
       },
       "import": {
-        "types": "./lastDayOfQuarter.d.ts",
+        "types": "./lastDayOfQuarter.d.mts",
         "default": "./lastDayOfQuarter.mjs"
       }
     },
@@ -1603,7 +1603,7 @@
         "default": "./lastDayOfWeek.js"
       },
       "import": {
-        "types": "./lastDayOfWeek.d.ts",
+        "types": "./lastDayOfWeek.d.mts",
         "default": "./lastDayOfWeek.mjs"
       }
     },
@@ -1613,7 +1613,7 @@
         "default": "./lastDayOfYear.js"
       },
       "import": {
-        "types": "./lastDayOfYear.d.ts",
+        "types": "./lastDayOfYear.d.mts",
         "default": "./lastDayOfYear.mjs"
       }
     },
@@ -1623,7 +1623,7 @@
         "default": "./lightFormat.js"
       },
       "import": {
-        "types": "./lightFormat.d.ts",
+        "types": "./lightFormat.d.mts",
         "default": "./lightFormat.mjs"
       }
     },
@@ -1633,7 +1633,7 @@
         "default": "./max.js"
       },
       "import": {
-        "types": "./max.d.ts",
+        "types": "./max.d.mts",
         "default": "./max.mjs"
       }
     },
@@ -1643,7 +1643,7 @@
         "default": "./milliseconds.js"
       },
       "import": {
-        "types": "./milliseconds.d.ts",
+        "types": "./milliseconds.d.mts",
         "default": "./milliseconds.mjs"
       }
     },
@@ -1653,7 +1653,7 @@
         "default": "./millisecondsToHours.js"
       },
       "import": {
-        "types": "./millisecondsToHours.d.ts",
+        "types": "./millisecondsToHours.d.mts",
         "default": "./millisecondsToHours.mjs"
       }
     },
@@ -1663,7 +1663,7 @@
         "default": "./millisecondsToMinutes.js"
       },
       "import": {
-        "types": "./millisecondsToMinutes.d.ts",
+        "types": "./millisecondsToMinutes.d.mts",
         "default": "./millisecondsToMinutes.mjs"
       }
     },
@@ -1673,7 +1673,7 @@
         "default": "./millisecondsToSeconds.js"
       },
       "import": {
-        "types": "./millisecondsToSeconds.d.ts",
+        "types": "./millisecondsToSeconds.d.mts",
         "default": "./millisecondsToSeconds.mjs"
       }
     },
@@ -1683,7 +1683,7 @@
         "default": "./min.js"
       },
       "import": {
-        "types": "./min.d.ts",
+        "types": "./min.d.mts",
         "default": "./min.mjs"
       }
     },
@@ -1693,7 +1693,7 @@
         "default": "./minutesToHours.js"
       },
       "import": {
-        "types": "./minutesToHours.d.ts",
+        "types": "./minutesToHours.d.mts",
         "default": "./minutesToHours.mjs"
       }
     },
@@ -1703,7 +1703,7 @@
         "default": "./minutesToMilliseconds.js"
       },
       "import": {
-        "types": "./minutesToMilliseconds.d.ts",
+        "types": "./minutesToMilliseconds.d.mts",
         "default": "./minutesToMilliseconds.mjs"
       }
     },
@@ -1713,7 +1713,7 @@
         "default": "./minutesToSeconds.js"
       },
       "import": {
-        "types": "./minutesToSeconds.d.ts",
+        "types": "./minutesToSeconds.d.mts",
         "default": "./minutesToSeconds.mjs"
       }
     },
@@ -1723,7 +1723,7 @@
         "default": "./monthsToQuarters.js"
       },
       "import": {
-        "types": "./monthsToQuarters.d.ts",
+        "types": "./monthsToQuarters.d.mts",
         "default": "./monthsToQuarters.mjs"
       }
     },
@@ -1733,7 +1733,7 @@
         "default": "./monthsToYears.js"
       },
       "import": {
-        "types": "./monthsToYears.d.ts",
+        "types": "./monthsToYears.d.mts",
         "default": "./monthsToYears.mjs"
       }
     },
@@ -1743,7 +1743,7 @@
         "default": "./nextDay.js"
       },
       "import": {
-        "types": "./nextDay.d.ts",
+        "types": "./nextDay.d.mts",
         "default": "./nextDay.mjs"
       }
     },
@@ -1753,7 +1753,7 @@
         "default": "./nextFriday.js"
       },
       "import": {
-        "types": "./nextFriday.d.ts",
+        "types": "./nextFriday.d.mts",
         "default": "./nextFriday.mjs"
       }
     },
@@ -1763,7 +1763,7 @@
         "default": "./nextMonday.js"
       },
       "import": {
-        "types": "./nextMonday.d.ts",
+        "types": "./nextMonday.d.mts",
         "default": "./nextMonday.mjs"
       }
     },
@@ -1773,7 +1773,7 @@
         "default": "./nextSaturday.js"
       },
       "import": {
-        "types": "./nextSaturday.d.ts",
+        "types": "./nextSaturday.d.mts",
         "default": "./nextSaturday.mjs"
       }
     },
@@ -1783,7 +1783,7 @@
         "default": "./nextSunday.js"
       },
       "import": {
-        "types": "./nextSunday.d.ts",
+        "types": "./nextSunday.d.mts",
         "default": "./nextSunday.mjs"
       }
     },
@@ -1793,7 +1793,7 @@
         "default": "./nextThursday.js"
       },
       "import": {
-        "types": "./nextThursday.d.ts",
+        "types": "./nextThursday.d.mts",
         "default": "./nextThursday.mjs"
       }
     },
@@ -1803,7 +1803,7 @@
         "default": "./nextTuesday.js"
       },
       "import": {
-        "types": "./nextTuesday.d.ts",
+        "types": "./nextTuesday.d.mts",
         "default": "./nextTuesday.mjs"
       }
     },
@@ -1813,7 +1813,7 @@
         "default": "./nextWednesday.js"
       },
       "import": {
-        "types": "./nextWednesday.d.ts",
+        "types": "./nextWednesday.d.mts",
         "default": "./nextWednesday.mjs"
       }
     },
@@ -1823,7 +1823,7 @@
         "default": "./parse.js"
       },
       "import": {
-        "types": "./parse.d.ts",
+        "types": "./parse.d.mts",
         "default": "./parse.mjs"
       }
     },
@@ -1833,7 +1833,7 @@
         "default": "./parseISO.js"
       },
       "import": {
-        "types": "./parseISO.d.ts",
+        "types": "./parseISO.d.mts",
         "default": "./parseISO.mjs"
       }
     },
@@ -1843,7 +1843,7 @@
         "default": "./parseJSON.js"
       },
       "import": {
-        "types": "./parseJSON.d.ts",
+        "types": "./parseJSON.d.mts",
         "default": "./parseJSON.mjs"
       }
     },
@@ -1853,7 +1853,7 @@
         "default": "./previousDay.js"
       },
       "import": {
-        "types": "./previousDay.d.ts",
+        "types": "./previousDay.d.mts",
         "default": "./previousDay.mjs"
       }
     },
@@ -1863,7 +1863,7 @@
         "default": "./previousFriday.js"
       },
       "import": {
-        "types": "./previousFriday.d.ts",
+        "types": "./previousFriday.d.mts",
         "default": "./previousFriday.mjs"
       }
     },
@@ -1873,7 +1873,7 @@
         "default": "./previousMonday.js"
       },
       "import": {
-        "types": "./previousMonday.d.ts",
+        "types": "./previousMonday.d.mts",
         "default": "./previousMonday.mjs"
       }
     },
@@ -1883,7 +1883,7 @@
         "default": "./previousSaturday.js"
       },
       "import": {
-        "types": "./previousSaturday.d.ts",
+        "types": "./previousSaturday.d.mts",
         "default": "./previousSaturday.mjs"
       }
     },
@@ -1893,7 +1893,7 @@
         "default": "./previousSunday.js"
       },
       "import": {
-        "types": "./previousSunday.d.ts",
+        "types": "./previousSunday.d.mts",
         "default": "./previousSunday.mjs"
       }
     },
@@ -1903,7 +1903,7 @@
         "default": "./previousThursday.js"
       },
       "import": {
-        "types": "./previousThursday.d.ts",
+        "types": "./previousThursday.d.mts",
         "default": "./previousThursday.mjs"
       }
     },
@@ -1913,7 +1913,7 @@
         "default": "./previousTuesday.js"
       },
       "import": {
-        "types": "./previousTuesday.d.ts",
+        "types": "./previousTuesday.d.mts",
         "default": "./previousTuesday.mjs"
       }
     },
@@ -1923,7 +1923,7 @@
         "default": "./previousWednesday.js"
       },
       "import": {
-        "types": "./previousWednesday.d.ts",
+        "types": "./previousWednesday.d.mts",
         "default": "./previousWednesday.mjs"
       }
     },
@@ -1933,7 +1933,7 @@
         "default": "./quartersToMonths.js"
       },
       "import": {
-        "types": "./quartersToMonths.d.ts",
+        "types": "./quartersToMonths.d.mts",
         "default": "./quartersToMonths.mjs"
       }
     },
@@ -1943,7 +1943,7 @@
         "default": "./quartersToYears.js"
       },
       "import": {
-        "types": "./quartersToYears.d.ts",
+        "types": "./quartersToYears.d.mts",
         "default": "./quartersToYears.mjs"
       }
     },
@@ -1953,7 +1953,7 @@
         "default": "./roundToNearestMinutes.js"
       },
       "import": {
-        "types": "./roundToNearestMinutes.d.ts",
+        "types": "./roundToNearestMinutes.d.mts",
         "default": "./roundToNearestMinutes.mjs"
       }
     },
@@ -1963,7 +1963,7 @@
         "default": "./secondsToHours.js"
       },
       "import": {
-        "types": "./secondsToHours.d.ts",
+        "types": "./secondsToHours.d.mts",
         "default": "./secondsToHours.mjs"
       }
     },
@@ -1973,7 +1973,7 @@
         "default": "./secondsToMilliseconds.js"
       },
       "import": {
-        "types": "./secondsToMilliseconds.d.ts",
+        "types": "./secondsToMilliseconds.d.mts",
         "default": "./secondsToMilliseconds.mjs"
       }
     },
@@ -1983,7 +1983,7 @@
         "default": "./secondsToMinutes.js"
       },
       "import": {
-        "types": "./secondsToMinutes.d.ts",
+        "types": "./secondsToMinutes.d.mts",
         "default": "./secondsToMinutes.mjs"
       }
     },
@@ -1993,7 +1993,7 @@
         "default": "./set.js"
       },
       "import": {
-        "types": "./set.d.ts",
+        "types": "./set.d.mts",
         "default": "./set.mjs"
       }
     },
@@ -2003,7 +2003,7 @@
         "default": "./setDate.js"
       },
       "import": {
-        "types": "./setDate.d.ts",
+        "types": "./setDate.d.mts",
         "default": "./setDate.mjs"
       }
     },
@@ -2013,7 +2013,7 @@
         "default": "./setDay.js"
       },
       "import": {
-        "types": "./setDay.d.ts",
+        "types": "./setDay.d.mts",
         "default": "./setDay.mjs"
       }
     },
@@ -2023,7 +2023,7 @@
         "default": "./setDayOfYear.js"
       },
       "import": {
-        "types": "./setDayOfYear.d.ts",
+        "types": "./setDayOfYear.d.mts",
         "default": "./setDayOfYear.mjs"
       }
     },
@@ -2033,7 +2033,7 @@
         "default": "./setDefaultOptions.js"
       },
       "import": {
-        "types": "./setDefaultOptions.d.ts",
+        "types": "./setDefaultOptions.d.mts",
         "default": "./setDefaultOptions.mjs"
       }
     },
@@ -2043,7 +2043,7 @@
         "default": "./setHours.js"
       },
       "import": {
-        "types": "./setHours.d.ts",
+        "types": "./setHours.d.mts",
         "default": "./setHours.mjs"
       }
     },
@@ -2053,7 +2053,7 @@
         "default": "./setISODay.js"
       },
       "import": {
-        "types": "./setISODay.d.ts",
+        "types": "./setISODay.d.mts",
         "default": "./setISODay.mjs"
       }
     },
@@ -2063,7 +2063,7 @@
         "default": "./setISOWeek.js"
       },
       "import": {
-        "types": "./setISOWeek.d.ts",
+        "types": "./setISOWeek.d.mts",
         "default": "./setISOWeek.mjs"
       }
     },
@@ -2073,7 +2073,7 @@
         "default": "./setISOWeekYear.js"
       },
       "import": {
-        "types": "./setISOWeekYear.d.ts",
+        "types": "./setISOWeekYear.d.mts",
         "default": "./setISOWeekYear.mjs"
       }
     },
@@ -2083,7 +2083,7 @@
         "default": "./setMilliseconds.js"
       },
       "import": {
-        "types": "./setMilliseconds.d.ts",
+        "types": "./setMilliseconds.d.mts",
         "default": "./setMilliseconds.mjs"
       }
     },
@@ -2093,7 +2093,7 @@
         "default": "./setMinutes.js"
       },
       "import": {
-        "types": "./setMinutes.d.ts",
+        "types": "./setMinutes.d.mts",
         "default": "./setMinutes.mjs"
       }
     },
@@ -2103,7 +2103,7 @@
         "default": "./setMonth.js"
       },
       "import": {
-        "types": "./setMonth.d.ts",
+        "types": "./setMonth.d.mts",
         "default": "./setMonth.mjs"
       }
     },
@@ -2113,7 +2113,7 @@
         "default": "./setQuarter.js"
       },
       "import": {
-        "types": "./setQuarter.d.ts",
+        "types": "./setQuarter.d.mts",
         "default": "./setQuarter.mjs"
       }
     },
@@ -2123,7 +2123,7 @@
         "default": "./setSeconds.js"
       },
       "import": {
-        "types": "./setSeconds.d.ts",
+        "types": "./setSeconds.d.mts",
         "default": "./setSeconds.mjs"
       }
     },
@@ -2133,7 +2133,7 @@
         "default": "./setWeek.js"
       },
       "import": {
-        "types": "./setWeek.d.ts",
+        "types": "./setWeek.d.mts",
         "default": "./setWeek.mjs"
       }
     },
@@ -2143,7 +2143,7 @@
         "default": "./setWeekYear.js"
       },
       "import": {
-        "types": "./setWeekYear.d.ts",
+        "types": "./setWeekYear.d.mts",
         "default": "./setWeekYear.mjs"
       }
     },
@@ -2153,7 +2153,7 @@
         "default": "./setYear.js"
       },
       "import": {
-        "types": "./setYear.d.ts",
+        "types": "./setYear.d.mts",
         "default": "./setYear.mjs"
       }
     },
@@ -2163,7 +2163,7 @@
         "default": "./startOfDay.js"
       },
       "import": {
-        "types": "./startOfDay.d.ts",
+        "types": "./startOfDay.d.mts",
         "default": "./startOfDay.mjs"
       }
     },
@@ -2173,7 +2173,7 @@
         "default": "./startOfDecade.js"
       },
       "import": {
-        "types": "./startOfDecade.d.ts",
+        "types": "./startOfDecade.d.mts",
         "default": "./startOfDecade.mjs"
       }
     },
@@ -2183,7 +2183,7 @@
         "default": "./startOfHour.js"
       },
       "import": {
-        "types": "./startOfHour.d.ts",
+        "types": "./startOfHour.d.mts",
         "default": "./startOfHour.mjs"
       }
     },
@@ -2193,7 +2193,7 @@
         "default": "./startOfISOWeek.js"
       },
       "import": {
-        "types": "./startOfISOWeek.d.ts",
+        "types": "./startOfISOWeek.d.mts",
         "default": "./startOfISOWeek.mjs"
       }
     },
@@ -2203,7 +2203,7 @@
         "default": "./startOfISOWeekYear.js"
       },
       "import": {
-        "types": "./startOfISOWeekYear.d.ts",
+        "types": "./startOfISOWeekYear.d.mts",
         "default": "./startOfISOWeekYear.mjs"
       }
     },
@@ -2213,7 +2213,7 @@
         "default": "./startOfMinute.js"
       },
       "import": {
-        "types": "./startOfMinute.d.ts",
+        "types": "./startOfMinute.d.mts",
         "default": "./startOfMinute.mjs"
       }
     },
@@ -2223,7 +2223,7 @@
         "default": "./startOfMonth.js"
       },
       "import": {
-        "types": "./startOfMonth.d.ts",
+        "types": "./startOfMonth.d.mts",
         "default": "./startOfMonth.mjs"
       }
     },
@@ -2233,7 +2233,7 @@
         "default": "./startOfQuarter.js"
       },
       "import": {
-        "types": "./startOfQuarter.d.ts",
+        "types": "./startOfQuarter.d.mts",
         "default": "./startOfQuarter.mjs"
       }
     },
@@ -2243,7 +2243,7 @@
         "default": "./startOfSecond.js"
       },
       "import": {
-        "types": "./startOfSecond.d.ts",
+        "types": "./startOfSecond.d.mts",
         "default": "./startOfSecond.mjs"
       }
     },
@@ -2253,7 +2253,7 @@
         "default": "./startOfToday.js"
       },
       "import": {
-        "types": "./startOfToday.d.ts",
+        "types": "./startOfToday.d.mts",
         "default": "./startOfToday.mjs"
       }
     },
@@ -2263,7 +2263,7 @@
         "default": "./startOfTomorrow.js"
       },
       "import": {
-        "types": "./startOfTomorrow.d.ts",
+        "types": "./startOfTomorrow.d.mts",
         "default": "./startOfTomorrow.mjs"
       }
     },
@@ -2273,7 +2273,7 @@
         "default": "./startOfWeek.js"
       },
       "import": {
-        "types": "./startOfWeek.d.ts",
+        "types": "./startOfWeek.d.mts",
         "default": "./startOfWeek.mjs"
       }
     },
@@ -2283,7 +2283,7 @@
         "default": "./startOfWeekYear.js"
       },
       "import": {
-        "types": "./startOfWeekYear.d.ts",
+        "types": "./startOfWeekYear.d.mts",
         "default": "./startOfWeekYear.mjs"
       }
     },
@@ -2293,7 +2293,7 @@
         "default": "./startOfYear.js"
       },
       "import": {
-        "types": "./startOfYear.d.ts",
+        "types": "./startOfYear.d.mts",
         "default": "./startOfYear.mjs"
       }
     },
@@ -2303,7 +2303,7 @@
         "default": "./startOfYesterday.js"
       },
       "import": {
-        "types": "./startOfYesterday.d.ts",
+        "types": "./startOfYesterday.d.mts",
         "default": "./startOfYesterday.mjs"
       }
     },
@@ -2313,7 +2313,7 @@
         "default": "./sub.js"
       },
       "import": {
-        "types": "./sub.d.ts",
+        "types": "./sub.d.mts",
         "default": "./sub.mjs"
       }
     },
@@ -2323,7 +2323,7 @@
         "default": "./subBusinessDays.js"
       },
       "import": {
-        "types": "./subBusinessDays.d.ts",
+        "types": "./subBusinessDays.d.mts",
         "default": "./subBusinessDays.mjs"
       }
     },
@@ -2333,7 +2333,7 @@
         "default": "./subDays.js"
       },
       "import": {
-        "types": "./subDays.d.ts",
+        "types": "./subDays.d.mts",
         "default": "./subDays.mjs"
       }
     },
@@ -2343,7 +2343,7 @@
         "default": "./subHours.js"
       },
       "import": {
-        "types": "./subHours.d.ts",
+        "types": "./subHours.d.mts",
         "default": "./subHours.mjs"
       }
     },
@@ -2353,7 +2353,7 @@
         "default": "./subISOWeekYears.js"
       },
       "import": {
-        "types": "./subISOWeekYears.d.ts",
+        "types": "./subISOWeekYears.d.mts",
         "default": "./subISOWeekYears.mjs"
       }
     },
@@ -2363,7 +2363,7 @@
         "default": "./subMilliseconds.js"
       },
       "import": {
-        "types": "./subMilliseconds.d.ts",
+        "types": "./subMilliseconds.d.mts",
         "default": "./subMilliseconds.mjs"
       }
     },
@@ -2373,7 +2373,7 @@
         "default": "./subMinutes.js"
       },
       "import": {
-        "types": "./subMinutes.d.ts",
+        "types": "./subMinutes.d.mts",
         "default": "./subMinutes.mjs"
       }
     },
@@ -2383,7 +2383,7 @@
         "default": "./subMonths.js"
       },
       "import": {
-        "types": "./subMonths.d.ts",
+        "types": "./subMonths.d.mts",
         "default": "./subMonths.mjs"
       }
     },
@@ -2393,7 +2393,7 @@
         "default": "./subQuarters.js"
       },
       "import": {
-        "types": "./subQuarters.d.ts",
+        "types": "./subQuarters.d.mts",
         "default": "./subQuarters.mjs"
       }
     },
@@ -2403,7 +2403,7 @@
         "default": "./subSeconds.js"
       },
       "import": {
-        "types": "./subSeconds.d.ts",
+        "types": "./subSeconds.d.mts",
         "default": "./subSeconds.mjs"
       }
     },
@@ -2413,7 +2413,7 @@
         "default": "./subWeeks.js"
       },
       "import": {
-        "types": "./subWeeks.d.ts",
+        "types": "./subWeeks.d.mts",
         "default": "./subWeeks.mjs"
       }
     },
@@ -2423,7 +2423,7 @@
         "default": "./subYears.js"
       },
       "import": {
-        "types": "./subYears.d.ts",
+        "types": "./subYears.d.mts",
         "default": "./subYears.mjs"
       }
     },
@@ -2433,7 +2433,7 @@
         "default": "./toDate.js"
       },
       "import": {
-        "types": "./toDate.d.ts",
+        "types": "./toDate.d.mts",
         "default": "./toDate.mjs"
       }
     },
@@ -2443,7 +2443,7 @@
         "default": "./transpose.js"
       },
       "import": {
-        "types": "./transpose.d.ts",
+        "types": "./transpose.d.mts",
         "default": "./transpose.mjs"
       }
     },
@@ -2453,7 +2453,7 @@
         "default": "./weeksToDays.js"
       },
       "import": {
-        "types": "./weeksToDays.d.ts",
+        "types": "./weeksToDays.d.mts",
         "default": "./weeksToDays.mjs"
       }
     },
@@ -2463,7 +2463,7 @@
         "default": "./yearsToMonths.js"
       },
       "import": {
-        "types": "./yearsToMonths.d.ts",
+        "types": "./yearsToMonths.d.mts",
         "default": "./yearsToMonths.mjs"
       }
     },
@@ -2473,7 +2473,7 @@
         "default": "./yearsToQuarters.js"
       },
       "import": {
-        "types": "./yearsToQuarters.d.ts",
+        "types": "./yearsToQuarters.d.mts",
         "default": "./yearsToQuarters.mjs"
       }
     },
@@ -2483,7 +2483,7 @@
         "default": "./fp/add.js"
       },
       "import": {
-        "types": "./fp/add.d.ts",
+        "types": "./fp/add.d.mts",
         "default": "./fp/add.mjs"
       }
     },
@@ -2493,7 +2493,7 @@
         "default": "./fp/addBusinessDays.js"
       },
       "import": {
-        "types": "./fp/addBusinessDays.d.ts",
+        "types": "./fp/addBusinessDays.d.mts",
         "default": "./fp/addBusinessDays.mjs"
       }
     },
@@ -2503,7 +2503,7 @@
         "default": "./fp/addDays.js"
       },
       "import": {
-        "types": "./fp/addDays.d.ts",
+        "types": "./fp/addDays.d.mts",
         "default": "./fp/addDays.mjs"
       }
     },
@@ -2513,7 +2513,7 @@
         "default": "./fp/addHours.js"
       },
       "import": {
-        "types": "./fp/addHours.d.ts",
+        "types": "./fp/addHours.d.mts",
         "default": "./fp/addHours.mjs"
       }
     },
@@ -2523,7 +2523,7 @@
         "default": "./fp/addISOWeekYears.js"
       },
       "import": {
-        "types": "./fp/addISOWeekYears.d.ts",
+        "types": "./fp/addISOWeekYears.d.mts",
         "default": "./fp/addISOWeekYears.mjs"
       }
     },
@@ -2533,7 +2533,7 @@
         "default": "./fp/addMilliseconds.js"
       },
       "import": {
-        "types": "./fp/addMilliseconds.d.ts",
+        "types": "./fp/addMilliseconds.d.mts",
         "default": "./fp/addMilliseconds.mjs"
       }
     },
@@ -2543,7 +2543,7 @@
         "default": "./fp/addMinutes.js"
       },
       "import": {
-        "types": "./fp/addMinutes.d.ts",
+        "types": "./fp/addMinutes.d.mts",
         "default": "./fp/addMinutes.mjs"
       }
     },
@@ -2553,7 +2553,7 @@
         "default": "./fp/addMonths.js"
       },
       "import": {
-        "types": "./fp/addMonths.d.ts",
+        "types": "./fp/addMonths.d.mts",
         "default": "./fp/addMonths.mjs"
       }
     },
@@ -2563,7 +2563,7 @@
         "default": "./fp/addQuarters.js"
       },
       "import": {
-        "types": "./fp/addQuarters.d.ts",
+        "types": "./fp/addQuarters.d.mts",
         "default": "./fp/addQuarters.mjs"
       }
     },
@@ -2573,7 +2573,7 @@
         "default": "./fp/addSeconds.js"
       },
       "import": {
-        "types": "./fp/addSeconds.d.ts",
+        "types": "./fp/addSeconds.d.mts",
         "default": "./fp/addSeconds.mjs"
       }
     },
@@ -2583,7 +2583,7 @@
         "default": "./fp/addWeeks.js"
       },
       "import": {
-        "types": "./fp/addWeeks.d.ts",
+        "types": "./fp/addWeeks.d.mts",
         "default": "./fp/addWeeks.mjs"
       }
     },
@@ -2593,7 +2593,7 @@
         "default": "./fp/addYears.js"
       },
       "import": {
-        "types": "./fp/addYears.d.ts",
+        "types": "./fp/addYears.d.mts",
         "default": "./fp/addYears.mjs"
       }
     },
@@ -2603,7 +2603,7 @@
         "default": "./fp/areIntervalsOverlapping.js"
       },
       "import": {
-        "types": "./fp/areIntervalsOverlapping.d.ts",
+        "types": "./fp/areIntervalsOverlapping.d.mts",
         "default": "./fp/areIntervalsOverlapping.mjs"
       }
     },
@@ -2613,7 +2613,7 @@
         "default": "./fp/areIntervalsOverlappingWithOptions.js"
       },
       "import": {
-        "types": "./fp/areIntervalsOverlappingWithOptions.d.ts",
+        "types": "./fp/areIntervalsOverlappingWithOptions.d.mts",
         "default": "./fp/areIntervalsOverlappingWithOptions.mjs"
       }
     },
@@ -2623,7 +2623,7 @@
         "default": "./fp/clamp.js"
       },
       "import": {
-        "types": "./fp/clamp.d.ts",
+        "types": "./fp/clamp.d.mts",
         "default": "./fp/clamp.mjs"
       }
     },
@@ -2633,7 +2633,7 @@
         "default": "./fp/closestIndexTo.js"
       },
       "import": {
-        "types": "./fp/closestIndexTo.d.ts",
+        "types": "./fp/closestIndexTo.d.mts",
         "default": "./fp/closestIndexTo.mjs"
       }
     },
@@ -2643,7 +2643,7 @@
         "default": "./fp/closestTo.js"
       },
       "import": {
-        "types": "./fp/closestTo.d.ts",
+        "types": "./fp/closestTo.d.mts",
         "default": "./fp/closestTo.mjs"
       }
     },
@@ -2653,7 +2653,7 @@
         "default": "./fp/compareAsc.js"
       },
       "import": {
-        "types": "./fp/compareAsc.d.ts",
+        "types": "./fp/compareAsc.d.mts",
         "default": "./fp/compareAsc.mjs"
       }
     },
@@ -2663,8 +2663,18 @@
         "default": "./fp/compareDesc.js"
       },
       "import": {
-        "types": "./fp/compareDesc.d.ts",
+        "types": "./fp/compareDesc.d.mts",
         "default": "./fp/compareDesc.mjs"
+      }
+    },
+    "./fp/constructFrom": {
+      "require": {
+        "types": "./fp/constructFrom.d.ts",
+        "default": "./fp/constructFrom.js"
+      },
+      "import": {
+        "types": "./fp/constructFrom.d.mts",
+        "default": "./fp/constructFrom.mjs"
       }
     },
     "./fp/daysToWeeks": {
@@ -2673,7 +2683,7 @@
         "default": "./fp/daysToWeeks.js"
       },
       "import": {
-        "types": "./fp/daysToWeeks.d.ts",
+        "types": "./fp/daysToWeeks.d.mts",
         "default": "./fp/daysToWeeks.mjs"
       }
     },
@@ -2683,7 +2693,7 @@
         "default": "./fp/differenceInBusinessDays.js"
       },
       "import": {
-        "types": "./fp/differenceInBusinessDays.d.ts",
+        "types": "./fp/differenceInBusinessDays.d.mts",
         "default": "./fp/differenceInBusinessDays.mjs"
       }
     },
@@ -2693,7 +2703,7 @@
         "default": "./fp/differenceInCalendarDays.js"
       },
       "import": {
-        "types": "./fp/differenceInCalendarDays.d.ts",
+        "types": "./fp/differenceInCalendarDays.d.mts",
         "default": "./fp/differenceInCalendarDays.mjs"
       }
     },
@@ -2703,7 +2713,7 @@
         "default": "./fp/differenceInCalendarISOWeekYears.js"
       },
       "import": {
-        "types": "./fp/differenceInCalendarISOWeekYears.d.ts",
+        "types": "./fp/differenceInCalendarISOWeekYears.d.mts",
         "default": "./fp/differenceInCalendarISOWeekYears.mjs"
       }
     },
@@ -2713,7 +2723,7 @@
         "default": "./fp/differenceInCalendarISOWeeks.js"
       },
       "import": {
-        "types": "./fp/differenceInCalendarISOWeeks.d.ts",
+        "types": "./fp/differenceInCalendarISOWeeks.d.mts",
         "default": "./fp/differenceInCalendarISOWeeks.mjs"
       }
     },
@@ -2723,7 +2733,7 @@
         "default": "./fp/differenceInCalendarMonths.js"
       },
       "import": {
-        "types": "./fp/differenceInCalendarMonths.d.ts",
+        "types": "./fp/differenceInCalendarMonths.d.mts",
         "default": "./fp/differenceInCalendarMonths.mjs"
       }
     },
@@ -2733,7 +2743,7 @@
         "default": "./fp/differenceInCalendarQuarters.js"
       },
       "import": {
-        "types": "./fp/differenceInCalendarQuarters.d.ts",
+        "types": "./fp/differenceInCalendarQuarters.d.mts",
         "default": "./fp/differenceInCalendarQuarters.mjs"
       }
     },
@@ -2743,7 +2753,7 @@
         "default": "./fp/differenceInCalendarWeeks.js"
       },
       "import": {
-        "types": "./fp/differenceInCalendarWeeks.d.ts",
+        "types": "./fp/differenceInCalendarWeeks.d.mts",
         "default": "./fp/differenceInCalendarWeeks.mjs"
       }
     },
@@ -2753,7 +2763,7 @@
         "default": "./fp/differenceInCalendarWeeksWithOptions.js"
       },
       "import": {
-        "types": "./fp/differenceInCalendarWeeksWithOptions.d.ts",
+        "types": "./fp/differenceInCalendarWeeksWithOptions.d.mts",
         "default": "./fp/differenceInCalendarWeeksWithOptions.mjs"
       }
     },
@@ -2763,7 +2773,7 @@
         "default": "./fp/differenceInCalendarYears.js"
       },
       "import": {
-        "types": "./fp/differenceInCalendarYears.d.ts",
+        "types": "./fp/differenceInCalendarYears.d.mts",
         "default": "./fp/differenceInCalendarYears.mjs"
       }
     },
@@ -2773,7 +2783,7 @@
         "default": "./fp/differenceInDays.js"
       },
       "import": {
-        "types": "./fp/differenceInDays.d.ts",
+        "types": "./fp/differenceInDays.d.mts",
         "default": "./fp/differenceInDays.mjs"
       }
     },
@@ -2783,7 +2793,7 @@
         "default": "./fp/differenceInHours.js"
       },
       "import": {
-        "types": "./fp/differenceInHours.d.ts",
+        "types": "./fp/differenceInHours.d.mts",
         "default": "./fp/differenceInHours.mjs"
       }
     },
@@ -2793,7 +2803,7 @@
         "default": "./fp/differenceInHoursWithOptions.js"
       },
       "import": {
-        "types": "./fp/differenceInHoursWithOptions.d.ts",
+        "types": "./fp/differenceInHoursWithOptions.d.mts",
         "default": "./fp/differenceInHoursWithOptions.mjs"
       }
     },
@@ -2803,7 +2813,7 @@
         "default": "./fp/differenceInISOWeekYears.js"
       },
       "import": {
-        "types": "./fp/differenceInISOWeekYears.d.ts",
+        "types": "./fp/differenceInISOWeekYears.d.mts",
         "default": "./fp/differenceInISOWeekYears.mjs"
       }
     },
@@ -2813,7 +2823,7 @@
         "default": "./fp/differenceInMilliseconds.js"
       },
       "import": {
-        "types": "./fp/differenceInMilliseconds.d.ts",
+        "types": "./fp/differenceInMilliseconds.d.mts",
         "default": "./fp/differenceInMilliseconds.mjs"
       }
     },
@@ -2823,7 +2833,7 @@
         "default": "./fp/differenceInMinutes.js"
       },
       "import": {
-        "types": "./fp/differenceInMinutes.d.ts",
+        "types": "./fp/differenceInMinutes.d.mts",
         "default": "./fp/differenceInMinutes.mjs"
       }
     },
@@ -2833,7 +2843,7 @@
         "default": "./fp/differenceInMinutesWithOptions.js"
       },
       "import": {
-        "types": "./fp/differenceInMinutesWithOptions.d.ts",
+        "types": "./fp/differenceInMinutesWithOptions.d.mts",
         "default": "./fp/differenceInMinutesWithOptions.mjs"
       }
     },
@@ -2843,7 +2853,7 @@
         "default": "./fp/differenceInMonths.js"
       },
       "import": {
-        "types": "./fp/differenceInMonths.d.ts",
+        "types": "./fp/differenceInMonths.d.mts",
         "default": "./fp/differenceInMonths.mjs"
       }
     },
@@ -2853,7 +2863,7 @@
         "default": "./fp/differenceInQuarters.js"
       },
       "import": {
-        "types": "./fp/differenceInQuarters.d.ts",
+        "types": "./fp/differenceInQuarters.d.mts",
         "default": "./fp/differenceInQuarters.mjs"
       }
     },
@@ -2863,7 +2873,7 @@
         "default": "./fp/differenceInQuartersWithOptions.js"
       },
       "import": {
-        "types": "./fp/differenceInQuartersWithOptions.d.ts",
+        "types": "./fp/differenceInQuartersWithOptions.d.mts",
         "default": "./fp/differenceInQuartersWithOptions.mjs"
       }
     },
@@ -2873,7 +2883,7 @@
         "default": "./fp/differenceInSeconds.js"
       },
       "import": {
-        "types": "./fp/differenceInSeconds.d.ts",
+        "types": "./fp/differenceInSeconds.d.mts",
         "default": "./fp/differenceInSeconds.mjs"
       }
     },
@@ -2883,7 +2893,7 @@
         "default": "./fp/differenceInSecondsWithOptions.js"
       },
       "import": {
-        "types": "./fp/differenceInSecondsWithOptions.d.ts",
+        "types": "./fp/differenceInSecondsWithOptions.d.mts",
         "default": "./fp/differenceInSecondsWithOptions.mjs"
       }
     },
@@ -2893,7 +2903,7 @@
         "default": "./fp/differenceInWeeks.js"
       },
       "import": {
-        "types": "./fp/differenceInWeeks.d.ts",
+        "types": "./fp/differenceInWeeks.d.mts",
         "default": "./fp/differenceInWeeks.mjs"
       }
     },
@@ -2903,7 +2913,7 @@
         "default": "./fp/differenceInWeeksWithOptions.js"
       },
       "import": {
-        "types": "./fp/differenceInWeeksWithOptions.d.ts",
+        "types": "./fp/differenceInWeeksWithOptions.d.mts",
         "default": "./fp/differenceInWeeksWithOptions.mjs"
       }
     },
@@ -2913,7 +2923,7 @@
         "default": "./fp/differenceInYears.js"
       },
       "import": {
-        "types": "./fp/differenceInYears.d.ts",
+        "types": "./fp/differenceInYears.d.mts",
         "default": "./fp/differenceInYears.mjs"
       }
     },
@@ -2923,7 +2933,7 @@
         "default": "./fp/eachDayOfInterval.js"
       },
       "import": {
-        "types": "./fp/eachDayOfInterval.d.ts",
+        "types": "./fp/eachDayOfInterval.d.mts",
         "default": "./fp/eachDayOfInterval.mjs"
       }
     },
@@ -2933,7 +2943,7 @@
         "default": "./fp/eachDayOfIntervalWithOptions.js"
       },
       "import": {
-        "types": "./fp/eachDayOfIntervalWithOptions.d.ts",
+        "types": "./fp/eachDayOfIntervalWithOptions.d.mts",
         "default": "./fp/eachDayOfIntervalWithOptions.mjs"
       }
     },
@@ -2943,7 +2953,7 @@
         "default": "./fp/eachHourOfInterval.js"
       },
       "import": {
-        "types": "./fp/eachHourOfInterval.d.ts",
+        "types": "./fp/eachHourOfInterval.d.mts",
         "default": "./fp/eachHourOfInterval.mjs"
       }
     },
@@ -2953,7 +2963,7 @@
         "default": "./fp/eachHourOfIntervalWithOptions.js"
       },
       "import": {
-        "types": "./fp/eachHourOfIntervalWithOptions.d.ts",
+        "types": "./fp/eachHourOfIntervalWithOptions.d.mts",
         "default": "./fp/eachHourOfIntervalWithOptions.mjs"
       }
     },
@@ -2963,7 +2973,7 @@
         "default": "./fp/eachMinuteOfInterval.js"
       },
       "import": {
-        "types": "./fp/eachMinuteOfInterval.d.ts",
+        "types": "./fp/eachMinuteOfInterval.d.mts",
         "default": "./fp/eachMinuteOfInterval.mjs"
       }
     },
@@ -2973,7 +2983,7 @@
         "default": "./fp/eachMinuteOfIntervalWithOptions.js"
       },
       "import": {
-        "types": "./fp/eachMinuteOfIntervalWithOptions.d.ts",
+        "types": "./fp/eachMinuteOfIntervalWithOptions.d.mts",
         "default": "./fp/eachMinuteOfIntervalWithOptions.mjs"
       }
     },
@@ -2983,8 +2993,18 @@
         "default": "./fp/eachMonthOfInterval.js"
       },
       "import": {
-        "types": "./fp/eachMonthOfInterval.d.ts",
+        "types": "./fp/eachMonthOfInterval.d.mts",
         "default": "./fp/eachMonthOfInterval.mjs"
+      }
+    },
+    "./fp/eachMonthOfIntervalWithOptions": {
+      "require": {
+        "types": "./fp/eachMonthOfIntervalWithOptions.d.ts",
+        "default": "./fp/eachMonthOfIntervalWithOptions.js"
+      },
+      "import": {
+        "types": "./fp/eachMonthOfIntervalWithOptions.d.mts",
+        "default": "./fp/eachMonthOfIntervalWithOptions.mjs"
       }
     },
     "./fp/eachQuarterOfInterval": {
@@ -2993,8 +3013,18 @@
         "default": "./fp/eachQuarterOfInterval.js"
       },
       "import": {
-        "types": "./fp/eachQuarterOfInterval.d.ts",
+        "types": "./fp/eachQuarterOfInterval.d.mts",
         "default": "./fp/eachQuarterOfInterval.mjs"
+      }
+    },
+    "./fp/eachQuarterOfIntervalWithOptions": {
+      "require": {
+        "types": "./fp/eachQuarterOfIntervalWithOptions.d.ts",
+        "default": "./fp/eachQuarterOfIntervalWithOptions.js"
+      },
+      "import": {
+        "types": "./fp/eachQuarterOfIntervalWithOptions.d.mts",
+        "default": "./fp/eachQuarterOfIntervalWithOptions.mjs"
       }
     },
     "./fp/eachWeekOfInterval": {
@@ -3003,7 +3033,7 @@
         "default": "./fp/eachWeekOfInterval.js"
       },
       "import": {
-        "types": "./fp/eachWeekOfInterval.d.ts",
+        "types": "./fp/eachWeekOfInterval.d.mts",
         "default": "./fp/eachWeekOfInterval.mjs"
       }
     },
@@ -3013,7 +3043,7 @@
         "default": "./fp/eachWeekOfIntervalWithOptions.js"
       },
       "import": {
-        "types": "./fp/eachWeekOfIntervalWithOptions.d.ts",
+        "types": "./fp/eachWeekOfIntervalWithOptions.d.mts",
         "default": "./fp/eachWeekOfIntervalWithOptions.mjs"
       }
     },
@@ -3023,7 +3053,7 @@
         "default": "./fp/eachWeekendOfInterval.js"
       },
       "import": {
-        "types": "./fp/eachWeekendOfInterval.d.ts",
+        "types": "./fp/eachWeekendOfInterval.d.mts",
         "default": "./fp/eachWeekendOfInterval.mjs"
       }
     },
@@ -3033,7 +3063,7 @@
         "default": "./fp/eachWeekendOfMonth.js"
       },
       "import": {
-        "types": "./fp/eachWeekendOfMonth.d.ts",
+        "types": "./fp/eachWeekendOfMonth.d.mts",
         "default": "./fp/eachWeekendOfMonth.mjs"
       }
     },
@@ -3043,7 +3073,7 @@
         "default": "./fp/eachWeekendOfYear.js"
       },
       "import": {
-        "types": "./fp/eachWeekendOfYear.d.ts",
+        "types": "./fp/eachWeekendOfYear.d.mts",
         "default": "./fp/eachWeekendOfYear.mjs"
       }
     },
@@ -3053,8 +3083,18 @@
         "default": "./fp/eachYearOfInterval.js"
       },
       "import": {
-        "types": "./fp/eachYearOfInterval.d.ts",
+        "types": "./fp/eachYearOfInterval.d.mts",
         "default": "./fp/eachYearOfInterval.mjs"
+      }
+    },
+    "./fp/eachYearOfIntervalWithOptions": {
+      "require": {
+        "types": "./fp/eachYearOfIntervalWithOptions.d.ts",
+        "default": "./fp/eachYearOfIntervalWithOptions.js"
+      },
+      "import": {
+        "types": "./fp/eachYearOfIntervalWithOptions.d.mts",
+        "default": "./fp/eachYearOfIntervalWithOptions.mjs"
       }
     },
     "./fp/endOfDay": {
@@ -3063,7 +3103,7 @@
         "default": "./fp/endOfDay.js"
       },
       "import": {
-        "types": "./fp/endOfDay.d.ts",
+        "types": "./fp/endOfDay.d.mts",
         "default": "./fp/endOfDay.mjs"
       }
     },
@@ -3073,18 +3113,8 @@
         "default": "./fp/endOfDecade.js"
       },
       "import": {
-        "types": "./fp/endOfDecade.d.ts",
+        "types": "./fp/endOfDecade.d.mts",
         "default": "./fp/endOfDecade.mjs"
-      }
-    },
-    "./fp/endOfDecadeWithOptions": {
-      "require": {
-        "types": "./fp/endOfDecadeWithOptions.d.ts",
-        "default": "./fp/endOfDecadeWithOptions.js"
-      },
-      "import": {
-        "types": "./fp/endOfDecadeWithOptions.d.ts",
-        "default": "./fp/endOfDecadeWithOptions.mjs"
       }
     },
     "./fp/endOfHour": {
@@ -3093,7 +3123,7 @@
         "default": "./fp/endOfHour.js"
       },
       "import": {
-        "types": "./fp/endOfHour.d.ts",
+        "types": "./fp/endOfHour.d.mts",
         "default": "./fp/endOfHour.mjs"
       }
     },
@@ -3103,7 +3133,7 @@
         "default": "./fp/endOfISOWeek.js"
       },
       "import": {
-        "types": "./fp/endOfISOWeek.d.ts",
+        "types": "./fp/endOfISOWeek.d.mts",
         "default": "./fp/endOfISOWeek.mjs"
       }
     },
@@ -3113,7 +3143,7 @@
         "default": "./fp/endOfISOWeekYear.js"
       },
       "import": {
-        "types": "./fp/endOfISOWeekYear.d.ts",
+        "types": "./fp/endOfISOWeekYear.d.mts",
         "default": "./fp/endOfISOWeekYear.mjs"
       }
     },
@@ -3123,7 +3153,7 @@
         "default": "./fp/endOfMinute.js"
       },
       "import": {
-        "types": "./fp/endOfMinute.d.ts",
+        "types": "./fp/endOfMinute.d.mts",
         "default": "./fp/endOfMinute.mjs"
       }
     },
@@ -3133,7 +3163,7 @@
         "default": "./fp/endOfMonth.js"
       },
       "import": {
-        "types": "./fp/endOfMonth.d.ts",
+        "types": "./fp/endOfMonth.d.mts",
         "default": "./fp/endOfMonth.mjs"
       }
     },
@@ -3143,7 +3173,7 @@
         "default": "./fp/endOfQuarter.js"
       },
       "import": {
-        "types": "./fp/endOfQuarter.d.ts",
+        "types": "./fp/endOfQuarter.d.mts",
         "default": "./fp/endOfQuarter.mjs"
       }
     },
@@ -3153,8 +3183,28 @@
         "default": "./fp/endOfSecond.js"
       },
       "import": {
-        "types": "./fp/endOfSecond.d.ts",
+        "types": "./fp/endOfSecond.d.mts",
         "default": "./fp/endOfSecond.mjs"
+      }
+    },
+    "./fp/endOfToday": {
+      "require": {
+        "types": "./fp/endOfToday.d.ts",
+        "default": "./fp/endOfToday.js"
+      },
+      "import": {
+        "types": "./fp/endOfToday.d.mts",
+        "default": "./fp/endOfToday.mjs"
+      }
+    },
+    "./fp/endOfTomorrow": {
+      "require": {
+        "types": "./fp/endOfTomorrow.d.ts",
+        "default": "./fp/endOfTomorrow.js"
+      },
+      "import": {
+        "types": "./fp/endOfTomorrow.d.mts",
+        "default": "./fp/endOfTomorrow.mjs"
       }
     },
     "./fp/endOfWeek": {
@@ -3163,7 +3213,7 @@
         "default": "./fp/endOfWeek.js"
       },
       "import": {
-        "types": "./fp/endOfWeek.d.ts",
+        "types": "./fp/endOfWeek.d.mts",
         "default": "./fp/endOfWeek.mjs"
       }
     },
@@ -3173,7 +3223,7 @@
         "default": "./fp/endOfWeekWithOptions.js"
       },
       "import": {
-        "types": "./fp/endOfWeekWithOptions.d.ts",
+        "types": "./fp/endOfWeekWithOptions.d.mts",
         "default": "./fp/endOfWeekWithOptions.mjs"
       }
     },
@@ -3183,8 +3233,18 @@
         "default": "./fp/endOfYear.js"
       },
       "import": {
-        "types": "./fp/endOfYear.d.ts",
+        "types": "./fp/endOfYear.d.mts",
         "default": "./fp/endOfYear.mjs"
+      }
+    },
+    "./fp/endOfYesterday": {
+      "require": {
+        "types": "./fp/endOfYesterday.d.ts",
+        "default": "./fp/endOfYesterday.js"
+      },
+      "import": {
+        "types": "./fp/endOfYesterday.d.mts",
+        "default": "./fp/endOfYesterday.mjs"
       }
     },
     "./fp/format": {
@@ -3193,7 +3253,7 @@
         "default": "./fp/format.js"
       },
       "import": {
-        "types": "./fp/format.d.ts",
+        "types": "./fp/format.d.mts",
         "default": "./fp/format.mjs"
       }
     },
@@ -3203,7 +3263,7 @@
         "default": "./fp/formatDistance.js"
       },
       "import": {
-        "types": "./fp/formatDistance.d.ts",
+        "types": "./fp/formatDistance.d.mts",
         "default": "./fp/formatDistance.mjs"
       }
     },
@@ -3213,7 +3273,7 @@
         "default": "./fp/formatDistanceStrict.js"
       },
       "import": {
-        "types": "./fp/formatDistanceStrict.d.ts",
+        "types": "./fp/formatDistanceStrict.d.mts",
         "default": "./fp/formatDistanceStrict.mjs"
       }
     },
@@ -3223,8 +3283,48 @@
         "default": "./fp/formatDistanceStrictWithOptions.js"
       },
       "import": {
-        "types": "./fp/formatDistanceStrictWithOptions.d.ts",
+        "types": "./fp/formatDistanceStrictWithOptions.d.mts",
         "default": "./fp/formatDistanceStrictWithOptions.mjs"
+      }
+    },
+    "./fp/formatDistanceToNow": {
+      "require": {
+        "types": "./fp/formatDistanceToNow.d.ts",
+        "default": "./fp/formatDistanceToNow.js"
+      },
+      "import": {
+        "types": "./fp/formatDistanceToNow.d.mts",
+        "default": "./fp/formatDistanceToNow.mjs"
+      }
+    },
+    "./fp/formatDistanceToNowStrict": {
+      "require": {
+        "types": "./fp/formatDistanceToNowStrict.d.ts",
+        "default": "./fp/formatDistanceToNowStrict.js"
+      },
+      "import": {
+        "types": "./fp/formatDistanceToNowStrict.d.mts",
+        "default": "./fp/formatDistanceToNowStrict.mjs"
+      }
+    },
+    "./fp/formatDistanceToNowStrictWithOptions": {
+      "require": {
+        "types": "./fp/formatDistanceToNowStrictWithOptions.d.ts",
+        "default": "./fp/formatDistanceToNowStrictWithOptions.js"
+      },
+      "import": {
+        "types": "./fp/formatDistanceToNowStrictWithOptions.d.mts",
+        "default": "./fp/formatDistanceToNowStrictWithOptions.mjs"
+      }
+    },
+    "./fp/formatDistanceToNowWithOptions": {
+      "require": {
+        "types": "./fp/formatDistanceToNowWithOptions.d.ts",
+        "default": "./fp/formatDistanceToNowWithOptions.js"
+      },
+      "import": {
+        "types": "./fp/formatDistanceToNowWithOptions.d.mts",
+        "default": "./fp/formatDistanceToNowWithOptions.mjs"
       }
     },
     "./fp/formatDistanceWithOptions": {
@@ -3233,7 +3333,7 @@
         "default": "./fp/formatDistanceWithOptions.js"
       },
       "import": {
-        "types": "./fp/formatDistanceWithOptions.d.ts",
+        "types": "./fp/formatDistanceWithOptions.d.mts",
         "default": "./fp/formatDistanceWithOptions.mjs"
       }
     },
@@ -3243,7 +3343,7 @@
         "default": "./fp/formatDuration.js"
       },
       "import": {
-        "types": "./fp/formatDuration.d.ts",
+        "types": "./fp/formatDuration.d.mts",
         "default": "./fp/formatDuration.mjs"
       }
     },
@@ -3253,7 +3353,7 @@
         "default": "./fp/formatDurationWithOptions.js"
       },
       "import": {
-        "types": "./fp/formatDurationWithOptions.d.ts",
+        "types": "./fp/formatDurationWithOptions.d.mts",
         "default": "./fp/formatDurationWithOptions.mjs"
       }
     },
@@ -3263,7 +3363,7 @@
         "default": "./fp/formatISO.js"
       },
       "import": {
-        "types": "./fp/formatISO.d.ts",
+        "types": "./fp/formatISO.d.mts",
         "default": "./fp/formatISO.mjs"
       }
     },
@@ -3273,7 +3373,7 @@
         "default": "./fp/formatISO9075.js"
       },
       "import": {
-        "types": "./fp/formatISO9075.d.ts",
+        "types": "./fp/formatISO9075.d.mts",
         "default": "./fp/formatISO9075.mjs"
       }
     },
@@ -3283,7 +3383,7 @@
         "default": "./fp/formatISO9075WithOptions.js"
       },
       "import": {
-        "types": "./fp/formatISO9075WithOptions.d.ts",
+        "types": "./fp/formatISO9075WithOptions.d.mts",
         "default": "./fp/formatISO9075WithOptions.mjs"
       }
     },
@@ -3293,7 +3393,7 @@
         "default": "./fp/formatISODuration.js"
       },
       "import": {
-        "types": "./fp/formatISODuration.d.ts",
+        "types": "./fp/formatISODuration.d.mts",
         "default": "./fp/formatISODuration.mjs"
       }
     },
@@ -3303,7 +3403,7 @@
         "default": "./fp/formatISOWithOptions.js"
       },
       "import": {
-        "types": "./fp/formatISOWithOptions.d.ts",
+        "types": "./fp/formatISOWithOptions.d.mts",
         "default": "./fp/formatISOWithOptions.mjs"
       }
     },
@@ -3313,7 +3413,7 @@
         "default": "./fp/formatRFC3339.js"
       },
       "import": {
-        "types": "./fp/formatRFC3339.d.ts",
+        "types": "./fp/formatRFC3339.d.mts",
         "default": "./fp/formatRFC3339.mjs"
       }
     },
@@ -3323,7 +3423,7 @@
         "default": "./fp/formatRFC3339WithOptions.js"
       },
       "import": {
-        "types": "./fp/formatRFC3339WithOptions.d.ts",
+        "types": "./fp/formatRFC3339WithOptions.d.mts",
         "default": "./fp/formatRFC3339WithOptions.mjs"
       }
     },
@@ -3333,7 +3433,7 @@
         "default": "./fp/formatRFC7231.js"
       },
       "import": {
-        "types": "./fp/formatRFC7231.d.ts",
+        "types": "./fp/formatRFC7231.d.mts",
         "default": "./fp/formatRFC7231.mjs"
       }
     },
@@ -3343,7 +3443,7 @@
         "default": "./fp/formatRelative.js"
       },
       "import": {
-        "types": "./fp/formatRelative.d.ts",
+        "types": "./fp/formatRelative.d.mts",
         "default": "./fp/formatRelative.mjs"
       }
     },
@@ -3353,7 +3453,7 @@
         "default": "./fp/formatRelativeWithOptions.js"
       },
       "import": {
-        "types": "./fp/formatRelativeWithOptions.d.ts",
+        "types": "./fp/formatRelativeWithOptions.d.mts",
         "default": "./fp/formatRelativeWithOptions.mjs"
       }
     },
@@ -3363,7 +3463,7 @@
         "default": "./fp/formatWithOptions.js"
       },
       "import": {
-        "types": "./fp/formatWithOptions.d.ts",
+        "types": "./fp/formatWithOptions.d.mts",
         "default": "./fp/formatWithOptions.mjs"
       }
     },
@@ -3373,7 +3473,7 @@
         "default": "./fp/fromUnixTime.js"
       },
       "import": {
-        "types": "./fp/fromUnixTime.d.ts",
+        "types": "./fp/fromUnixTime.d.mts",
         "default": "./fp/fromUnixTime.mjs"
       }
     },
@@ -3383,7 +3483,7 @@
         "default": "./fp/getDate.js"
       },
       "import": {
-        "types": "./fp/getDate.d.ts",
+        "types": "./fp/getDate.d.mts",
         "default": "./fp/getDate.mjs"
       }
     },
@@ -3393,7 +3493,7 @@
         "default": "./fp/getDay.js"
       },
       "import": {
-        "types": "./fp/getDay.d.ts",
+        "types": "./fp/getDay.d.mts",
         "default": "./fp/getDay.mjs"
       }
     },
@@ -3403,7 +3503,7 @@
         "default": "./fp/getDayOfYear.js"
       },
       "import": {
-        "types": "./fp/getDayOfYear.d.ts",
+        "types": "./fp/getDayOfYear.d.mts",
         "default": "./fp/getDayOfYear.mjs"
       }
     },
@@ -3413,7 +3513,7 @@
         "default": "./fp/getDaysInMonth.js"
       },
       "import": {
-        "types": "./fp/getDaysInMonth.d.ts",
+        "types": "./fp/getDaysInMonth.d.mts",
         "default": "./fp/getDaysInMonth.mjs"
       }
     },
@@ -3423,7 +3523,7 @@
         "default": "./fp/getDaysInYear.js"
       },
       "import": {
-        "types": "./fp/getDaysInYear.d.ts",
+        "types": "./fp/getDaysInYear.d.mts",
         "default": "./fp/getDaysInYear.mjs"
       }
     },
@@ -3433,8 +3533,18 @@
         "default": "./fp/getDecade.js"
       },
       "import": {
-        "types": "./fp/getDecade.d.ts",
+        "types": "./fp/getDecade.d.mts",
         "default": "./fp/getDecade.mjs"
+      }
+    },
+    "./fp/getDefaultOptions": {
+      "require": {
+        "types": "./fp/getDefaultOptions.d.ts",
+        "default": "./fp/getDefaultOptions.js"
+      },
+      "import": {
+        "types": "./fp/getDefaultOptions.d.mts",
+        "default": "./fp/getDefaultOptions.mjs"
       }
     },
     "./fp/getHours": {
@@ -3443,7 +3553,7 @@
         "default": "./fp/getHours.js"
       },
       "import": {
-        "types": "./fp/getHours.d.ts",
+        "types": "./fp/getHours.d.mts",
         "default": "./fp/getHours.mjs"
       }
     },
@@ -3453,7 +3563,7 @@
         "default": "./fp/getISODay.js"
       },
       "import": {
-        "types": "./fp/getISODay.d.ts",
+        "types": "./fp/getISODay.d.mts",
         "default": "./fp/getISODay.mjs"
       }
     },
@@ -3463,7 +3573,7 @@
         "default": "./fp/getISOWeek.js"
       },
       "import": {
-        "types": "./fp/getISOWeek.d.ts",
+        "types": "./fp/getISOWeek.d.mts",
         "default": "./fp/getISOWeek.mjs"
       }
     },
@@ -3473,7 +3583,7 @@
         "default": "./fp/getISOWeekYear.js"
       },
       "import": {
-        "types": "./fp/getISOWeekYear.d.ts",
+        "types": "./fp/getISOWeekYear.d.mts",
         "default": "./fp/getISOWeekYear.mjs"
       }
     },
@@ -3483,7 +3593,7 @@
         "default": "./fp/getISOWeeksInYear.js"
       },
       "import": {
-        "types": "./fp/getISOWeeksInYear.d.ts",
+        "types": "./fp/getISOWeeksInYear.d.mts",
         "default": "./fp/getISOWeeksInYear.mjs"
       }
     },
@@ -3493,7 +3603,7 @@
         "default": "./fp/getMilliseconds.js"
       },
       "import": {
-        "types": "./fp/getMilliseconds.d.ts",
+        "types": "./fp/getMilliseconds.d.mts",
         "default": "./fp/getMilliseconds.mjs"
       }
     },
@@ -3503,7 +3613,7 @@
         "default": "./fp/getMinutes.js"
       },
       "import": {
-        "types": "./fp/getMinutes.d.ts",
+        "types": "./fp/getMinutes.d.mts",
         "default": "./fp/getMinutes.mjs"
       }
     },
@@ -3513,7 +3623,7 @@
         "default": "./fp/getMonth.js"
       },
       "import": {
-        "types": "./fp/getMonth.d.ts",
+        "types": "./fp/getMonth.d.mts",
         "default": "./fp/getMonth.mjs"
       }
     },
@@ -3523,7 +3633,7 @@
         "default": "./fp/getOverlappingDaysInIntervals.js"
       },
       "import": {
-        "types": "./fp/getOverlappingDaysInIntervals.d.ts",
+        "types": "./fp/getOverlappingDaysInIntervals.d.mts",
         "default": "./fp/getOverlappingDaysInIntervals.mjs"
       }
     },
@@ -3533,7 +3643,7 @@
         "default": "./fp/getQuarter.js"
       },
       "import": {
-        "types": "./fp/getQuarter.d.ts",
+        "types": "./fp/getQuarter.d.mts",
         "default": "./fp/getQuarter.mjs"
       }
     },
@@ -3543,7 +3653,7 @@
         "default": "./fp/getSeconds.js"
       },
       "import": {
-        "types": "./fp/getSeconds.d.ts",
+        "types": "./fp/getSeconds.d.mts",
         "default": "./fp/getSeconds.mjs"
       }
     },
@@ -3553,7 +3663,7 @@
         "default": "./fp/getTime.js"
       },
       "import": {
-        "types": "./fp/getTime.d.ts",
+        "types": "./fp/getTime.d.mts",
         "default": "./fp/getTime.mjs"
       }
     },
@@ -3563,7 +3673,7 @@
         "default": "./fp/getUnixTime.js"
       },
       "import": {
-        "types": "./fp/getUnixTime.d.ts",
+        "types": "./fp/getUnixTime.d.mts",
         "default": "./fp/getUnixTime.mjs"
       }
     },
@@ -3573,7 +3683,7 @@
         "default": "./fp/getWeek.js"
       },
       "import": {
-        "types": "./fp/getWeek.d.ts",
+        "types": "./fp/getWeek.d.mts",
         "default": "./fp/getWeek.mjs"
       }
     },
@@ -3583,7 +3693,7 @@
         "default": "./fp/getWeekOfMonth.js"
       },
       "import": {
-        "types": "./fp/getWeekOfMonth.d.ts",
+        "types": "./fp/getWeekOfMonth.d.mts",
         "default": "./fp/getWeekOfMonth.mjs"
       }
     },
@@ -3593,7 +3703,7 @@
         "default": "./fp/getWeekOfMonthWithOptions.js"
       },
       "import": {
-        "types": "./fp/getWeekOfMonthWithOptions.d.ts",
+        "types": "./fp/getWeekOfMonthWithOptions.d.mts",
         "default": "./fp/getWeekOfMonthWithOptions.mjs"
       }
     },
@@ -3603,7 +3713,7 @@
         "default": "./fp/getWeekWithOptions.js"
       },
       "import": {
-        "types": "./fp/getWeekWithOptions.d.ts",
+        "types": "./fp/getWeekWithOptions.d.mts",
         "default": "./fp/getWeekWithOptions.mjs"
       }
     },
@@ -3613,7 +3723,7 @@
         "default": "./fp/getWeekYear.js"
       },
       "import": {
-        "types": "./fp/getWeekYear.d.ts",
+        "types": "./fp/getWeekYear.d.mts",
         "default": "./fp/getWeekYear.mjs"
       }
     },
@@ -3623,7 +3733,7 @@
         "default": "./fp/getWeekYearWithOptions.js"
       },
       "import": {
-        "types": "./fp/getWeekYearWithOptions.d.ts",
+        "types": "./fp/getWeekYearWithOptions.d.mts",
         "default": "./fp/getWeekYearWithOptions.mjs"
       }
     },
@@ -3633,7 +3743,7 @@
         "default": "./fp/getWeeksInMonth.js"
       },
       "import": {
-        "types": "./fp/getWeeksInMonth.d.ts",
+        "types": "./fp/getWeeksInMonth.d.mts",
         "default": "./fp/getWeeksInMonth.mjs"
       }
     },
@@ -3643,7 +3753,7 @@
         "default": "./fp/getWeeksInMonthWithOptions.js"
       },
       "import": {
-        "types": "./fp/getWeeksInMonthWithOptions.d.ts",
+        "types": "./fp/getWeeksInMonthWithOptions.d.mts",
         "default": "./fp/getWeeksInMonthWithOptions.mjs"
       }
     },
@@ -3653,7 +3763,7 @@
         "default": "./fp/getYear.js"
       },
       "import": {
-        "types": "./fp/getYear.d.ts",
+        "types": "./fp/getYear.d.mts",
         "default": "./fp/getYear.mjs"
       }
     },
@@ -3663,7 +3773,7 @@
         "default": "./fp/hoursToMilliseconds.js"
       },
       "import": {
-        "types": "./fp/hoursToMilliseconds.d.ts",
+        "types": "./fp/hoursToMilliseconds.d.mts",
         "default": "./fp/hoursToMilliseconds.mjs"
       }
     },
@@ -3673,7 +3783,7 @@
         "default": "./fp/hoursToMinutes.js"
       },
       "import": {
-        "types": "./fp/hoursToMinutes.d.ts",
+        "types": "./fp/hoursToMinutes.d.mts",
         "default": "./fp/hoursToMinutes.mjs"
       }
     },
@@ -3683,8 +3793,18 @@
         "default": "./fp/hoursToSeconds.js"
       },
       "import": {
-        "types": "./fp/hoursToSeconds.d.ts",
+        "types": "./fp/hoursToSeconds.d.mts",
         "default": "./fp/hoursToSeconds.mjs"
+      }
+    },
+    "./fp/interval": {
+      "require": {
+        "types": "./fp/interval.d.ts",
+        "default": "./fp/interval.js"
+      },
+      "import": {
+        "types": "./fp/interval.d.mts",
+        "default": "./fp/interval.mjs"
       }
     },
     "./fp/intervalToDuration": {
@@ -3693,8 +3813,18 @@
         "default": "./fp/intervalToDuration.js"
       },
       "import": {
-        "types": "./fp/intervalToDuration.d.ts",
+        "types": "./fp/intervalToDuration.d.mts",
         "default": "./fp/intervalToDuration.mjs"
+      }
+    },
+    "./fp/intervalWithOptions": {
+      "require": {
+        "types": "./fp/intervalWithOptions.d.ts",
+        "default": "./fp/intervalWithOptions.js"
+      },
+      "import": {
+        "types": "./fp/intervalWithOptions.d.mts",
+        "default": "./fp/intervalWithOptions.mjs"
       }
     },
     "./fp/intlFormat": {
@@ -3703,7 +3833,7 @@
         "default": "./fp/intlFormat.js"
       },
       "import": {
-        "types": "./fp/intlFormat.d.ts",
+        "types": "./fp/intlFormat.d.mts",
         "default": "./fp/intlFormat.mjs"
       }
     },
@@ -3713,7 +3843,7 @@
         "default": "./fp/intlFormatDistance.js"
       },
       "import": {
-        "types": "./fp/intlFormatDistance.d.ts",
+        "types": "./fp/intlFormatDistance.d.mts",
         "default": "./fp/intlFormatDistance.mjs"
       }
     },
@@ -3723,7 +3853,7 @@
         "default": "./fp/intlFormatDistanceWithOptions.js"
       },
       "import": {
-        "types": "./fp/intlFormatDistanceWithOptions.d.ts",
+        "types": "./fp/intlFormatDistanceWithOptions.d.mts",
         "default": "./fp/intlFormatDistanceWithOptions.mjs"
       }
     },
@@ -3733,7 +3863,7 @@
         "default": "./fp/isAfter.js"
       },
       "import": {
-        "types": "./fp/isAfter.d.ts",
+        "types": "./fp/isAfter.d.mts",
         "default": "./fp/isAfter.mjs"
       }
     },
@@ -3743,7 +3873,7 @@
         "default": "./fp/isBefore.js"
       },
       "import": {
-        "types": "./fp/isBefore.d.ts",
+        "types": "./fp/isBefore.d.mts",
         "default": "./fp/isBefore.mjs"
       }
     },
@@ -3753,7 +3883,7 @@
         "default": "./fp/isDate.js"
       },
       "import": {
-        "types": "./fp/isDate.d.ts",
+        "types": "./fp/isDate.d.mts",
         "default": "./fp/isDate.mjs"
       }
     },
@@ -3763,7 +3893,7 @@
         "default": "./fp/isEqual.js"
       },
       "import": {
-        "types": "./fp/isEqual.d.ts",
+        "types": "./fp/isEqual.d.mts",
         "default": "./fp/isEqual.mjs"
       }
     },
@@ -3773,7 +3903,7 @@
         "default": "./fp/isExists.js"
       },
       "import": {
-        "types": "./fp/isExists.d.ts",
+        "types": "./fp/isExists.d.mts",
         "default": "./fp/isExists.mjs"
       }
     },
@@ -3783,7 +3913,7 @@
         "default": "./fp/isFirstDayOfMonth.js"
       },
       "import": {
-        "types": "./fp/isFirstDayOfMonth.d.ts",
+        "types": "./fp/isFirstDayOfMonth.d.mts",
         "default": "./fp/isFirstDayOfMonth.mjs"
       }
     },
@@ -3793,8 +3923,18 @@
         "default": "./fp/isFriday.js"
       },
       "import": {
-        "types": "./fp/isFriday.d.ts",
+        "types": "./fp/isFriday.d.mts",
         "default": "./fp/isFriday.mjs"
+      }
+    },
+    "./fp/isFuture": {
+      "require": {
+        "types": "./fp/isFuture.d.ts",
+        "default": "./fp/isFuture.js"
+      },
+      "import": {
+        "types": "./fp/isFuture.d.mts",
+        "default": "./fp/isFuture.mjs"
       }
     },
     "./fp/isLastDayOfMonth": {
@@ -3803,7 +3943,7 @@
         "default": "./fp/isLastDayOfMonth.js"
       },
       "import": {
-        "types": "./fp/isLastDayOfMonth.d.ts",
+        "types": "./fp/isLastDayOfMonth.d.mts",
         "default": "./fp/isLastDayOfMonth.mjs"
       }
     },
@@ -3813,7 +3953,7 @@
         "default": "./fp/isLeapYear.js"
       },
       "import": {
-        "types": "./fp/isLeapYear.d.ts",
+        "types": "./fp/isLeapYear.d.mts",
         "default": "./fp/isLeapYear.mjs"
       }
     },
@@ -3823,7 +3963,7 @@
         "default": "./fp/isMatch.js"
       },
       "import": {
-        "types": "./fp/isMatch.d.ts",
+        "types": "./fp/isMatch.d.mts",
         "default": "./fp/isMatch.mjs"
       }
     },
@@ -3833,7 +3973,7 @@
         "default": "./fp/isMatchWithOptions.js"
       },
       "import": {
-        "types": "./fp/isMatchWithOptions.d.ts",
+        "types": "./fp/isMatchWithOptions.d.mts",
         "default": "./fp/isMatchWithOptions.mjs"
       }
     },
@@ -3843,8 +3983,18 @@
         "default": "./fp/isMonday.js"
       },
       "import": {
-        "types": "./fp/isMonday.d.ts",
+        "types": "./fp/isMonday.d.mts",
         "default": "./fp/isMonday.mjs"
+      }
+    },
+    "./fp/isPast": {
+      "require": {
+        "types": "./fp/isPast.d.ts",
+        "default": "./fp/isPast.js"
+      },
+      "import": {
+        "types": "./fp/isPast.d.mts",
+        "default": "./fp/isPast.mjs"
       }
     },
     "./fp/isSameDay": {
@@ -3853,7 +4003,7 @@
         "default": "./fp/isSameDay.js"
       },
       "import": {
-        "types": "./fp/isSameDay.d.ts",
+        "types": "./fp/isSameDay.d.mts",
         "default": "./fp/isSameDay.mjs"
       }
     },
@@ -3863,7 +4013,7 @@
         "default": "./fp/isSameHour.js"
       },
       "import": {
-        "types": "./fp/isSameHour.d.ts",
+        "types": "./fp/isSameHour.d.mts",
         "default": "./fp/isSameHour.mjs"
       }
     },
@@ -3873,7 +4023,7 @@
         "default": "./fp/isSameISOWeek.js"
       },
       "import": {
-        "types": "./fp/isSameISOWeek.d.ts",
+        "types": "./fp/isSameISOWeek.d.mts",
         "default": "./fp/isSameISOWeek.mjs"
       }
     },
@@ -3883,7 +4033,7 @@
         "default": "./fp/isSameISOWeekYear.js"
       },
       "import": {
-        "types": "./fp/isSameISOWeekYear.d.ts",
+        "types": "./fp/isSameISOWeekYear.d.mts",
         "default": "./fp/isSameISOWeekYear.mjs"
       }
     },
@@ -3893,7 +4043,7 @@
         "default": "./fp/isSameMinute.js"
       },
       "import": {
-        "types": "./fp/isSameMinute.d.ts",
+        "types": "./fp/isSameMinute.d.mts",
         "default": "./fp/isSameMinute.mjs"
       }
     },
@@ -3903,7 +4053,7 @@
         "default": "./fp/isSameMonth.js"
       },
       "import": {
-        "types": "./fp/isSameMonth.d.ts",
+        "types": "./fp/isSameMonth.d.mts",
         "default": "./fp/isSameMonth.mjs"
       }
     },
@@ -3913,7 +4063,7 @@
         "default": "./fp/isSameQuarter.js"
       },
       "import": {
-        "types": "./fp/isSameQuarter.d.ts",
+        "types": "./fp/isSameQuarter.d.mts",
         "default": "./fp/isSameQuarter.mjs"
       }
     },
@@ -3923,7 +4073,7 @@
         "default": "./fp/isSameSecond.js"
       },
       "import": {
-        "types": "./fp/isSameSecond.d.ts",
+        "types": "./fp/isSameSecond.d.mts",
         "default": "./fp/isSameSecond.mjs"
       }
     },
@@ -3933,7 +4083,7 @@
         "default": "./fp/isSameWeek.js"
       },
       "import": {
-        "types": "./fp/isSameWeek.d.ts",
+        "types": "./fp/isSameWeek.d.mts",
         "default": "./fp/isSameWeek.mjs"
       }
     },
@@ -3943,7 +4093,7 @@
         "default": "./fp/isSameWeekWithOptions.js"
       },
       "import": {
-        "types": "./fp/isSameWeekWithOptions.d.ts",
+        "types": "./fp/isSameWeekWithOptions.d.mts",
         "default": "./fp/isSameWeekWithOptions.mjs"
       }
     },
@@ -3953,7 +4103,7 @@
         "default": "./fp/isSameYear.js"
       },
       "import": {
-        "types": "./fp/isSameYear.d.ts",
+        "types": "./fp/isSameYear.d.mts",
         "default": "./fp/isSameYear.mjs"
       }
     },
@@ -3963,7 +4113,7 @@
         "default": "./fp/isSaturday.js"
       },
       "import": {
-        "types": "./fp/isSaturday.d.ts",
+        "types": "./fp/isSaturday.d.mts",
         "default": "./fp/isSaturday.mjs"
       }
     },
@@ -3973,8 +4123,98 @@
         "default": "./fp/isSunday.js"
       },
       "import": {
-        "types": "./fp/isSunday.d.ts",
+        "types": "./fp/isSunday.d.mts",
         "default": "./fp/isSunday.mjs"
+      }
+    },
+    "./fp/isThisHour": {
+      "require": {
+        "types": "./fp/isThisHour.d.ts",
+        "default": "./fp/isThisHour.js"
+      },
+      "import": {
+        "types": "./fp/isThisHour.d.mts",
+        "default": "./fp/isThisHour.mjs"
+      }
+    },
+    "./fp/isThisISOWeek": {
+      "require": {
+        "types": "./fp/isThisISOWeek.d.ts",
+        "default": "./fp/isThisISOWeek.js"
+      },
+      "import": {
+        "types": "./fp/isThisISOWeek.d.mts",
+        "default": "./fp/isThisISOWeek.mjs"
+      }
+    },
+    "./fp/isThisMinute": {
+      "require": {
+        "types": "./fp/isThisMinute.d.ts",
+        "default": "./fp/isThisMinute.js"
+      },
+      "import": {
+        "types": "./fp/isThisMinute.d.mts",
+        "default": "./fp/isThisMinute.mjs"
+      }
+    },
+    "./fp/isThisMonth": {
+      "require": {
+        "types": "./fp/isThisMonth.d.ts",
+        "default": "./fp/isThisMonth.js"
+      },
+      "import": {
+        "types": "./fp/isThisMonth.d.mts",
+        "default": "./fp/isThisMonth.mjs"
+      }
+    },
+    "./fp/isThisQuarter": {
+      "require": {
+        "types": "./fp/isThisQuarter.d.ts",
+        "default": "./fp/isThisQuarter.js"
+      },
+      "import": {
+        "types": "./fp/isThisQuarter.d.mts",
+        "default": "./fp/isThisQuarter.mjs"
+      }
+    },
+    "./fp/isThisSecond": {
+      "require": {
+        "types": "./fp/isThisSecond.d.ts",
+        "default": "./fp/isThisSecond.js"
+      },
+      "import": {
+        "types": "./fp/isThisSecond.d.mts",
+        "default": "./fp/isThisSecond.mjs"
+      }
+    },
+    "./fp/isThisWeek": {
+      "require": {
+        "types": "./fp/isThisWeek.d.ts",
+        "default": "./fp/isThisWeek.js"
+      },
+      "import": {
+        "types": "./fp/isThisWeek.d.mts",
+        "default": "./fp/isThisWeek.mjs"
+      }
+    },
+    "./fp/isThisWeekWithOptions": {
+      "require": {
+        "types": "./fp/isThisWeekWithOptions.d.ts",
+        "default": "./fp/isThisWeekWithOptions.js"
+      },
+      "import": {
+        "types": "./fp/isThisWeekWithOptions.d.mts",
+        "default": "./fp/isThisWeekWithOptions.mjs"
+      }
+    },
+    "./fp/isThisYear": {
+      "require": {
+        "types": "./fp/isThisYear.d.ts",
+        "default": "./fp/isThisYear.js"
+      },
+      "import": {
+        "types": "./fp/isThisYear.d.mts",
+        "default": "./fp/isThisYear.mjs"
       }
     },
     "./fp/isThursday": {
@@ -3983,8 +4223,28 @@
         "default": "./fp/isThursday.js"
       },
       "import": {
-        "types": "./fp/isThursday.d.ts",
+        "types": "./fp/isThursday.d.mts",
         "default": "./fp/isThursday.mjs"
+      }
+    },
+    "./fp/isToday": {
+      "require": {
+        "types": "./fp/isToday.d.ts",
+        "default": "./fp/isToday.js"
+      },
+      "import": {
+        "types": "./fp/isToday.d.mts",
+        "default": "./fp/isToday.mjs"
+      }
+    },
+    "./fp/isTomorrow": {
+      "require": {
+        "types": "./fp/isTomorrow.d.ts",
+        "default": "./fp/isTomorrow.js"
+      },
+      "import": {
+        "types": "./fp/isTomorrow.d.mts",
+        "default": "./fp/isTomorrow.mjs"
       }
     },
     "./fp/isTuesday": {
@@ -3993,7 +4253,7 @@
         "default": "./fp/isTuesday.js"
       },
       "import": {
-        "types": "./fp/isTuesday.d.ts",
+        "types": "./fp/isTuesday.d.mts",
         "default": "./fp/isTuesday.mjs"
       }
     },
@@ -4003,7 +4263,7 @@
         "default": "./fp/isValid.js"
       },
       "import": {
-        "types": "./fp/isValid.d.ts",
+        "types": "./fp/isValid.d.mts",
         "default": "./fp/isValid.mjs"
       }
     },
@@ -4013,7 +4273,7 @@
         "default": "./fp/isWednesday.js"
       },
       "import": {
-        "types": "./fp/isWednesday.d.ts",
+        "types": "./fp/isWednesday.d.mts",
         "default": "./fp/isWednesday.mjs"
       }
     },
@@ -4023,7 +4283,7 @@
         "default": "./fp/isWeekend.js"
       },
       "import": {
-        "types": "./fp/isWeekend.d.ts",
+        "types": "./fp/isWeekend.d.mts",
         "default": "./fp/isWeekend.mjs"
       }
     },
@@ -4033,8 +4293,18 @@
         "default": "./fp/isWithinInterval.js"
       },
       "import": {
-        "types": "./fp/isWithinInterval.d.ts",
+        "types": "./fp/isWithinInterval.d.mts",
         "default": "./fp/isWithinInterval.mjs"
+      }
+    },
+    "./fp/isYesterday": {
+      "require": {
+        "types": "./fp/isYesterday.d.ts",
+        "default": "./fp/isYesterday.js"
+      },
+      "import": {
+        "types": "./fp/isYesterday.d.mts",
+        "default": "./fp/isYesterday.mjs"
       }
     },
     "./fp/lastDayOfDecade": {
@@ -4043,7 +4313,7 @@
         "default": "./fp/lastDayOfDecade.js"
       },
       "import": {
-        "types": "./fp/lastDayOfDecade.d.ts",
+        "types": "./fp/lastDayOfDecade.d.mts",
         "default": "./fp/lastDayOfDecade.mjs"
       }
     },
@@ -4053,7 +4323,7 @@
         "default": "./fp/lastDayOfISOWeek.js"
       },
       "import": {
-        "types": "./fp/lastDayOfISOWeek.d.ts",
+        "types": "./fp/lastDayOfISOWeek.d.mts",
         "default": "./fp/lastDayOfISOWeek.mjs"
       }
     },
@@ -4063,7 +4333,7 @@
         "default": "./fp/lastDayOfISOWeekYear.js"
       },
       "import": {
-        "types": "./fp/lastDayOfISOWeekYear.d.ts",
+        "types": "./fp/lastDayOfISOWeekYear.d.mts",
         "default": "./fp/lastDayOfISOWeekYear.mjs"
       }
     },
@@ -4073,7 +4343,7 @@
         "default": "./fp/lastDayOfMonth.js"
       },
       "import": {
-        "types": "./fp/lastDayOfMonth.d.ts",
+        "types": "./fp/lastDayOfMonth.d.mts",
         "default": "./fp/lastDayOfMonth.mjs"
       }
     },
@@ -4083,18 +4353,8 @@
         "default": "./fp/lastDayOfQuarter.js"
       },
       "import": {
-        "types": "./fp/lastDayOfQuarter.d.ts",
+        "types": "./fp/lastDayOfQuarter.d.mts",
         "default": "./fp/lastDayOfQuarter.mjs"
-      }
-    },
-    "./fp/lastDayOfQuarterWithOptions": {
-      "require": {
-        "types": "./fp/lastDayOfQuarterWithOptions.d.ts",
-        "default": "./fp/lastDayOfQuarterWithOptions.js"
-      },
-      "import": {
-        "types": "./fp/lastDayOfQuarterWithOptions.d.ts",
-        "default": "./fp/lastDayOfQuarterWithOptions.mjs"
       }
     },
     "./fp/lastDayOfWeek": {
@@ -4103,7 +4363,7 @@
         "default": "./fp/lastDayOfWeek.js"
       },
       "import": {
-        "types": "./fp/lastDayOfWeek.d.ts",
+        "types": "./fp/lastDayOfWeek.d.mts",
         "default": "./fp/lastDayOfWeek.mjs"
       }
     },
@@ -4113,7 +4373,7 @@
         "default": "./fp/lastDayOfWeekWithOptions.js"
       },
       "import": {
-        "types": "./fp/lastDayOfWeekWithOptions.d.ts",
+        "types": "./fp/lastDayOfWeekWithOptions.d.mts",
         "default": "./fp/lastDayOfWeekWithOptions.mjs"
       }
     },
@@ -4123,7 +4383,7 @@
         "default": "./fp/lastDayOfYear.js"
       },
       "import": {
-        "types": "./fp/lastDayOfYear.d.ts",
+        "types": "./fp/lastDayOfYear.d.mts",
         "default": "./fp/lastDayOfYear.mjs"
       }
     },
@@ -4133,7 +4393,7 @@
         "default": "./fp/lightFormat.js"
       },
       "import": {
-        "types": "./fp/lightFormat.d.ts",
+        "types": "./fp/lightFormat.d.mts",
         "default": "./fp/lightFormat.mjs"
       }
     },
@@ -4143,7 +4403,7 @@
         "default": "./fp/max.js"
       },
       "import": {
-        "types": "./fp/max.d.ts",
+        "types": "./fp/max.d.mts",
         "default": "./fp/max.mjs"
       }
     },
@@ -4153,7 +4413,7 @@
         "default": "./fp/milliseconds.js"
       },
       "import": {
-        "types": "./fp/milliseconds.d.ts",
+        "types": "./fp/milliseconds.d.mts",
         "default": "./fp/milliseconds.mjs"
       }
     },
@@ -4163,7 +4423,7 @@
         "default": "./fp/millisecondsToHours.js"
       },
       "import": {
-        "types": "./fp/millisecondsToHours.d.ts",
+        "types": "./fp/millisecondsToHours.d.mts",
         "default": "./fp/millisecondsToHours.mjs"
       }
     },
@@ -4173,7 +4433,7 @@
         "default": "./fp/millisecondsToMinutes.js"
       },
       "import": {
-        "types": "./fp/millisecondsToMinutes.d.ts",
+        "types": "./fp/millisecondsToMinutes.d.mts",
         "default": "./fp/millisecondsToMinutes.mjs"
       }
     },
@@ -4183,7 +4443,7 @@
         "default": "./fp/millisecondsToSeconds.js"
       },
       "import": {
-        "types": "./fp/millisecondsToSeconds.d.ts",
+        "types": "./fp/millisecondsToSeconds.d.mts",
         "default": "./fp/millisecondsToSeconds.mjs"
       }
     },
@@ -4193,7 +4453,7 @@
         "default": "./fp/min.js"
       },
       "import": {
-        "types": "./fp/min.d.ts",
+        "types": "./fp/min.d.mts",
         "default": "./fp/min.mjs"
       }
     },
@@ -4203,7 +4463,7 @@
         "default": "./fp/minutesToHours.js"
       },
       "import": {
-        "types": "./fp/minutesToHours.d.ts",
+        "types": "./fp/minutesToHours.d.mts",
         "default": "./fp/minutesToHours.mjs"
       }
     },
@@ -4213,7 +4473,7 @@
         "default": "./fp/minutesToMilliseconds.js"
       },
       "import": {
-        "types": "./fp/minutesToMilliseconds.d.ts",
+        "types": "./fp/minutesToMilliseconds.d.mts",
         "default": "./fp/minutesToMilliseconds.mjs"
       }
     },
@@ -4223,7 +4483,7 @@
         "default": "./fp/minutesToSeconds.js"
       },
       "import": {
-        "types": "./fp/minutesToSeconds.d.ts",
+        "types": "./fp/minutesToSeconds.d.mts",
         "default": "./fp/minutesToSeconds.mjs"
       }
     },
@@ -4233,7 +4493,7 @@
         "default": "./fp/monthsToQuarters.js"
       },
       "import": {
-        "types": "./fp/monthsToQuarters.d.ts",
+        "types": "./fp/monthsToQuarters.d.mts",
         "default": "./fp/monthsToQuarters.mjs"
       }
     },
@@ -4243,7 +4503,7 @@
         "default": "./fp/monthsToYears.js"
       },
       "import": {
-        "types": "./fp/monthsToYears.d.ts",
+        "types": "./fp/monthsToYears.d.mts",
         "default": "./fp/monthsToYears.mjs"
       }
     },
@@ -4253,7 +4513,7 @@
         "default": "./fp/nextDay.js"
       },
       "import": {
-        "types": "./fp/nextDay.d.ts",
+        "types": "./fp/nextDay.d.mts",
         "default": "./fp/nextDay.mjs"
       }
     },
@@ -4263,7 +4523,7 @@
         "default": "./fp/nextFriday.js"
       },
       "import": {
-        "types": "./fp/nextFriday.d.ts",
+        "types": "./fp/nextFriday.d.mts",
         "default": "./fp/nextFriday.mjs"
       }
     },
@@ -4273,7 +4533,7 @@
         "default": "./fp/nextMonday.js"
       },
       "import": {
-        "types": "./fp/nextMonday.d.ts",
+        "types": "./fp/nextMonday.d.mts",
         "default": "./fp/nextMonday.mjs"
       }
     },
@@ -4283,7 +4543,7 @@
         "default": "./fp/nextSaturday.js"
       },
       "import": {
-        "types": "./fp/nextSaturday.d.ts",
+        "types": "./fp/nextSaturday.d.mts",
         "default": "./fp/nextSaturday.mjs"
       }
     },
@@ -4293,7 +4553,7 @@
         "default": "./fp/nextSunday.js"
       },
       "import": {
-        "types": "./fp/nextSunday.d.ts",
+        "types": "./fp/nextSunday.d.mts",
         "default": "./fp/nextSunday.mjs"
       }
     },
@@ -4303,7 +4563,7 @@
         "default": "./fp/nextThursday.js"
       },
       "import": {
-        "types": "./fp/nextThursday.d.ts",
+        "types": "./fp/nextThursday.d.mts",
         "default": "./fp/nextThursday.mjs"
       }
     },
@@ -4313,7 +4573,7 @@
         "default": "./fp/nextTuesday.js"
       },
       "import": {
-        "types": "./fp/nextTuesday.d.ts",
+        "types": "./fp/nextTuesday.d.mts",
         "default": "./fp/nextTuesday.mjs"
       }
     },
@@ -4323,7 +4583,7 @@
         "default": "./fp/nextWednesday.js"
       },
       "import": {
-        "types": "./fp/nextWednesday.d.ts",
+        "types": "./fp/nextWednesday.d.mts",
         "default": "./fp/nextWednesday.mjs"
       }
     },
@@ -4333,7 +4593,7 @@
         "default": "./fp/parse.js"
       },
       "import": {
-        "types": "./fp/parse.d.ts",
+        "types": "./fp/parse.d.mts",
         "default": "./fp/parse.mjs"
       }
     },
@@ -4343,7 +4603,7 @@
         "default": "./fp/parseISO.js"
       },
       "import": {
-        "types": "./fp/parseISO.d.ts",
+        "types": "./fp/parseISO.d.mts",
         "default": "./fp/parseISO.mjs"
       }
     },
@@ -4353,7 +4613,7 @@
         "default": "./fp/parseISOWithOptions.js"
       },
       "import": {
-        "types": "./fp/parseISOWithOptions.d.ts",
+        "types": "./fp/parseISOWithOptions.d.mts",
         "default": "./fp/parseISOWithOptions.mjs"
       }
     },
@@ -4363,7 +4623,7 @@
         "default": "./fp/parseJSON.js"
       },
       "import": {
-        "types": "./fp/parseJSON.d.ts",
+        "types": "./fp/parseJSON.d.mts",
         "default": "./fp/parseJSON.mjs"
       }
     },
@@ -4373,7 +4633,7 @@
         "default": "./fp/parseWithOptions.js"
       },
       "import": {
-        "types": "./fp/parseWithOptions.d.ts",
+        "types": "./fp/parseWithOptions.d.mts",
         "default": "./fp/parseWithOptions.mjs"
       }
     },
@@ -4383,7 +4643,7 @@
         "default": "./fp/previousDay.js"
       },
       "import": {
-        "types": "./fp/previousDay.d.ts",
+        "types": "./fp/previousDay.d.mts",
         "default": "./fp/previousDay.mjs"
       }
     },
@@ -4393,7 +4653,7 @@
         "default": "./fp/previousFriday.js"
       },
       "import": {
-        "types": "./fp/previousFriday.d.ts",
+        "types": "./fp/previousFriday.d.mts",
         "default": "./fp/previousFriday.mjs"
       }
     },
@@ -4403,7 +4663,7 @@
         "default": "./fp/previousMonday.js"
       },
       "import": {
-        "types": "./fp/previousMonday.d.ts",
+        "types": "./fp/previousMonday.d.mts",
         "default": "./fp/previousMonday.mjs"
       }
     },
@@ -4413,7 +4673,7 @@
         "default": "./fp/previousSaturday.js"
       },
       "import": {
-        "types": "./fp/previousSaturday.d.ts",
+        "types": "./fp/previousSaturday.d.mts",
         "default": "./fp/previousSaturday.mjs"
       }
     },
@@ -4423,7 +4683,7 @@
         "default": "./fp/previousSunday.js"
       },
       "import": {
-        "types": "./fp/previousSunday.d.ts",
+        "types": "./fp/previousSunday.d.mts",
         "default": "./fp/previousSunday.mjs"
       }
     },
@@ -4433,7 +4693,7 @@
         "default": "./fp/previousThursday.js"
       },
       "import": {
-        "types": "./fp/previousThursday.d.ts",
+        "types": "./fp/previousThursday.d.mts",
         "default": "./fp/previousThursday.mjs"
       }
     },
@@ -4443,7 +4703,7 @@
         "default": "./fp/previousTuesday.js"
       },
       "import": {
-        "types": "./fp/previousTuesday.d.ts",
+        "types": "./fp/previousTuesday.d.mts",
         "default": "./fp/previousTuesday.mjs"
       }
     },
@@ -4453,7 +4713,7 @@
         "default": "./fp/previousWednesday.js"
       },
       "import": {
-        "types": "./fp/previousWednesday.d.ts",
+        "types": "./fp/previousWednesday.d.mts",
         "default": "./fp/previousWednesday.mjs"
       }
     },
@@ -4463,7 +4723,7 @@
         "default": "./fp/quartersToMonths.js"
       },
       "import": {
-        "types": "./fp/quartersToMonths.d.ts",
+        "types": "./fp/quartersToMonths.d.mts",
         "default": "./fp/quartersToMonths.mjs"
       }
     },
@@ -4473,7 +4733,7 @@
         "default": "./fp/quartersToYears.js"
       },
       "import": {
-        "types": "./fp/quartersToYears.d.ts",
+        "types": "./fp/quartersToYears.d.mts",
         "default": "./fp/quartersToYears.mjs"
       }
     },
@@ -4483,7 +4743,7 @@
         "default": "./fp/roundToNearestMinutes.js"
       },
       "import": {
-        "types": "./fp/roundToNearestMinutes.d.ts",
+        "types": "./fp/roundToNearestMinutes.d.mts",
         "default": "./fp/roundToNearestMinutes.mjs"
       }
     },
@@ -4493,7 +4753,7 @@
         "default": "./fp/roundToNearestMinutesWithOptions.js"
       },
       "import": {
-        "types": "./fp/roundToNearestMinutesWithOptions.d.ts",
+        "types": "./fp/roundToNearestMinutesWithOptions.d.mts",
         "default": "./fp/roundToNearestMinutesWithOptions.mjs"
       }
     },
@@ -4503,7 +4763,7 @@
         "default": "./fp/secondsToHours.js"
       },
       "import": {
-        "types": "./fp/secondsToHours.d.ts",
+        "types": "./fp/secondsToHours.d.mts",
         "default": "./fp/secondsToHours.mjs"
       }
     },
@@ -4513,7 +4773,7 @@
         "default": "./fp/secondsToMilliseconds.js"
       },
       "import": {
-        "types": "./fp/secondsToMilliseconds.d.ts",
+        "types": "./fp/secondsToMilliseconds.d.mts",
         "default": "./fp/secondsToMilliseconds.mjs"
       }
     },
@@ -4523,7 +4783,7 @@
         "default": "./fp/secondsToMinutes.js"
       },
       "import": {
-        "types": "./fp/secondsToMinutes.d.ts",
+        "types": "./fp/secondsToMinutes.d.mts",
         "default": "./fp/secondsToMinutes.mjs"
       }
     },
@@ -4533,7 +4793,7 @@
         "default": "./fp/set.js"
       },
       "import": {
-        "types": "./fp/set.d.ts",
+        "types": "./fp/set.d.mts",
         "default": "./fp/set.mjs"
       }
     },
@@ -4543,7 +4803,7 @@
         "default": "./fp/setDate.js"
       },
       "import": {
-        "types": "./fp/setDate.d.ts",
+        "types": "./fp/setDate.d.mts",
         "default": "./fp/setDate.mjs"
       }
     },
@@ -4553,7 +4813,7 @@
         "default": "./fp/setDay.js"
       },
       "import": {
-        "types": "./fp/setDay.d.ts",
+        "types": "./fp/setDay.d.mts",
         "default": "./fp/setDay.mjs"
       }
     },
@@ -4563,7 +4823,7 @@
         "default": "./fp/setDayOfYear.js"
       },
       "import": {
-        "types": "./fp/setDayOfYear.d.ts",
+        "types": "./fp/setDayOfYear.d.mts",
         "default": "./fp/setDayOfYear.mjs"
       }
     },
@@ -4573,8 +4833,28 @@
         "default": "./fp/setDayWithOptions.js"
       },
       "import": {
-        "types": "./fp/setDayWithOptions.d.ts",
+        "types": "./fp/setDayWithOptions.d.mts",
         "default": "./fp/setDayWithOptions.mjs"
+      }
+    },
+    "./fp/setDefaultOptions": {
+      "require": {
+        "types": "./fp/setDefaultOptions.d.ts",
+        "default": "./fp/setDefaultOptions.js"
+      },
+      "import": {
+        "types": "./fp/setDefaultOptions.d.mts",
+        "default": "./fp/setDefaultOptions.mjs"
+      }
+    },
+    "./fp/setDefaultOptionsWithOptions": {
+      "require": {
+        "types": "./fp/setDefaultOptionsWithOptions.d.ts",
+        "default": "./fp/setDefaultOptionsWithOptions.js"
+      },
+      "import": {
+        "types": "./fp/setDefaultOptionsWithOptions.d.mts",
+        "default": "./fp/setDefaultOptionsWithOptions.mjs"
       }
     },
     "./fp/setHours": {
@@ -4583,7 +4863,7 @@
         "default": "./fp/setHours.js"
       },
       "import": {
-        "types": "./fp/setHours.d.ts",
+        "types": "./fp/setHours.d.mts",
         "default": "./fp/setHours.mjs"
       }
     },
@@ -4593,7 +4873,7 @@
         "default": "./fp/setISODay.js"
       },
       "import": {
-        "types": "./fp/setISODay.d.ts",
+        "types": "./fp/setISODay.d.mts",
         "default": "./fp/setISODay.mjs"
       }
     },
@@ -4603,7 +4883,7 @@
         "default": "./fp/setISOWeek.js"
       },
       "import": {
-        "types": "./fp/setISOWeek.d.ts",
+        "types": "./fp/setISOWeek.d.mts",
         "default": "./fp/setISOWeek.mjs"
       }
     },
@@ -4613,7 +4893,7 @@
         "default": "./fp/setISOWeekYear.js"
       },
       "import": {
-        "types": "./fp/setISOWeekYear.d.ts",
+        "types": "./fp/setISOWeekYear.d.mts",
         "default": "./fp/setISOWeekYear.mjs"
       }
     },
@@ -4623,7 +4903,7 @@
         "default": "./fp/setMilliseconds.js"
       },
       "import": {
-        "types": "./fp/setMilliseconds.d.ts",
+        "types": "./fp/setMilliseconds.d.mts",
         "default": "./fp/setMilliseconds.mjs"
       }
     },
@@ -4633,7 +4913,7 @@
         "default": "./fp/setMinutes.js"
       },
       "import": {
-        "types": "./fp/setMinutes.d.ts",
+        "types": "./fp/setMinutes.d.mts",
         "default": "./fp/setMinutes.mjs"
       }
     },
@@ -4643,7 +4923,7 @@
         "default": "./fp/setMonth.js"
       },
       "import": {
-        "types": "./fp/setMonth.d.ts",
+        "types": "./fp/setMonth.d.mts",
         "default": "./fp/setMonth.mjs"
       }
     },
@@ -4653,7 +4933,7 @@
         "default": "./fp/setQuarter.js"
       },
       "import": {
-        "types": "./fp/setQuarter.d.ts",
+        "types": "./fp/setQuarter.d.mts",
         "default": "./fp/setQuarter.mjs"
       }
     },
@@ -4663,7 +4943,7 @@
         "default": "./fp/setSeconds.js"
       },
       "import": {
-        "types": "./fp/setSeconds.d.ts",
+        "types": "./fp/setSeconds.d.mts",
         "default": "./fp/setSeconds.mjs"
       }
     },
@@ -4673,7 +4953,7 @@
         "default": "./fp/setWeek.js"
       },
       "import": {
-        "types": "./fp/setWeek.d.ts",
+        "types": "./fp/setWeek.d.mts",
         "default": "./fp/setWeek.mjs"
       }
     },
@@ -4683,7 +4963,7 @@
         "default": "./fp/setWeekWithOptions.js"
       },
       "import": {
-        "types": "./fp/setWeekWithOptions.d.ts",
+        "types": "./fp/setWeekWithOptions.d.mts",
         "default": "./fp/setWeekWithOptions.mjs"
       }
     },
@@ -4693,7 +4973,7 @@
         "default": "./fp/setWeekYear.js"
       },
       "import": {
-        "types": "./fp/setWeekYear.d.ts",
+        "types": "./fp/setWeekYear.d.mts",
         "default": "./fp/setWeekYear.mjs"
       }
     },
@@ -4703,7 +4983,7 @@
         "default": "./fp/setWeekYearWithOptions.js"
       },
       "import": {
-        "types": "./fp/setWeekYearWithOptions.d.ts",
+        "types": "./fp/setWeekYearWithOptions.d.mts",
         "default": "./fp/setWeekYearWithOptions.mjs"
       }
     },
@@ -4713,7 +4993,7 @@
         "default": "./fp/setYear.js"
       },
       "import": {
-        "types": "./fp/setYear.d.ts",
+        "types": "./fp/setYear.d.mts",
         "default": "./fp/setYear.mjs"
       }
     },
@@ -4723,7 +5003,7 @@
         "default": "./fp/startOfDay.js"
       },
       "import": {
-        "types": "./fp/startOfDay.d.ts",
+        "types": "./fp/startOfDay.d.mts",
         "default": "./fp/startOfDay.mjs"
       }
     },
@@ -4733,7 +5013,7 @@
         "default": "./fp/startOfDecade.js"
       },
       "import": {
-        "types": "./fp/startOfDecade.d.ts",
+        "types": "./fp/startOfDecade.d.mts",
         "default": "./fp/startOfDecade.mjs"
       }
     },
@@ -4743,7 +5023,7 @@
         "default": "./fp/startOfHour.js"
       },
       "import": {
-        "types": "./fp/startOfHour.d.ts",
+        "types": "./fp/startOfHour.d.mts",
         "default": "./fp/startOfHour.mjs"
       }
     },
@@ -4753,7 +5033,7 @@
         "default": "./fp/startOfISOWeek.js"
       },
       "import": {
-        "types": "./fp/startOfISOWeek.d.ts",
+        "types": "./fp/startOfISOWeek.d.mts",
         "default": "./fp/startOfISOWeek.mjs"
       }
     },
@@ -4763,7 +5043,7 @@
         "default": "./fp/startOfISOWeekYear.js"
       },
       "import": {
-        "types": "./fp/startOfISOWeekYear.d.ts",
+        "types": "./fp/startOfISOWeekYear.d.mts",
         "default": "./fp/startOfISOWeekYear.mjs"
       }
     },
@@ -4773,7 +5053,7 @@
         "default": "./fp/startOfMinute.js"
       },
       "import": {
-        "types": "./fp/startOfMinute.d.ts",
+        "types": "./fp/startOfMinute.d.mts",
         "default": "./fp/startOfMinute.mjs"
       }
     },
@@ -4783,7 +5063,7 @@
         "default": "./fp/startOfMonth.js"
       },
       "import": {
-        "types": "./fp/startOfMonth.d.ts",
+        "types": "./fp/startOfMonth.d.mts",
         "default": "./fp/startOfMonth.mjs"
       }
     },
@@ -4793,7 +5073,7 @@
         "default": "./fp/startOfQuarter.js"
       },
       "import": {
-        "types": "./fp/startOfQuarter.d.ts",
+        "types": "./fp/startOfQuarter.d.mts",
         "default": "./fp/startOfQuarter.mjs"
       }
     },
@@ -4803,8 +5083,28 @@
         "default": "./fp/startOfSecond.js"
       },
       "import": {
-        "types": "./fp/startOfSecond.d.ts",
+        "types": "./fp/startOfSecond.d.mts",
         "default": "./fp/startOfSecond.mjs"
+      }
+    },
+    "./fp/startOfToday": {
+      "require": {
+        "types": "./fp/startOfToday.d.ts",
+        "default": "./fp/startOfToday.js"
+      },
+      "import": {
+        "types": "./fp/startOfToday.d.mts",
+        "default": "./fp/startOfToday.mjs"
+      }
+    },
+    "./fp/startOfTomorrow": {
+      "require": {
+        "types": "./fp/startOfTomorrow.d.ts",
+        "default": "./fp/startOfTomorrow.js"
+      },
+      "import": {
+        "types": "./fp/startOfTomorrow.d.mts",
+        "default": "./fp/startOfTomorrow.mjs"
       }
     },
     "./fp/startOfWeek": {
@@ -4813,7 +5113,7 @@
         "default": "./fp/startOfWeek.js"
       },
       "import": {
-        "types": "./fp/startOfWeek.d.ts",
+        "types": "./fp/startOfWeek.d.mts",
         "default": "./fp/startOfWeek.mjs"
       }
     },
@@ -4823,7 +5123,7 @@
         "default": "./fp/startOfWeekWithOptions.js"
       },
       "import": {
-        "types": "./fp/startOfWeekWithOptions.d.ts",
+        "types": "./fp/startOfWeekWithOptions.d.mts",
         "default": "./fp/startOfWeekWithOptions.mjs"
       }
     },
@@ -4833,7 +5133,7 @@
         "default": "./fp/startOfWeekYear.js"
       },
       "import": {
-        "types": "./fp/startOfWeekYear.d.ts",
+        "types": "./fp/startOfWeekYear.d.mts",
         "default": "./fp/startOfWeekYear.mjs"
       }
     },
@@ -4843,7 +5143,7 @@
         "default": "./fp/startOfWeekYearWithOptions.js"
       },
       "import": {
-        "types": "./fp/startOfWeekYearWithOptions.d.ts",
+        "types": "./fp/startOfWeekYearWithOptions.d.mts",
         "default": "./fp/startOfWeekYearWithOptions.mjs"
       }
     },
@@ -4853,8 +5153,18 @@
         "default": "./fp/startOfYear.js"
       },
       "import": {
-        "types": "./fp/startOfYear.d.ts",
+        "types": "./fp/startOfYear.d.mts",
         "default": "./fp/startOfYear.mjs"
+      }
+    },
+    "./fp/startOfYesterday": {
+      "require": {
+        "types": "./fp/startOfYesterday.d.ts",
+        "default": "./fp/startOfYesterday.js"
+      },
+      "import": {
+        "types": "./fp/startOfYesterday.d.mts",
+        "default": "./fp/startOfYesterday.mjs"
       }
     },
     "./fp/sub": {
@@ -4863,7 +5173,7 @@
         "default": "./fp/sub.js"
       },
       "import": {
-        "types": "./fp/sub.d.ts",
+        "types": "./fp/sub.d.mts",
         "default": "./fp/sub.mjs"
       }
     },
@@ -4873,7 +5183,7 @@
         "default": "./fp/subBusinessDays.js"
       },
       "import": {
-        "types": "./fp/subBusinessDays.d.ts",
+        "types": "./fp/subBusinessDays.d.mts",
         "default": "./fp/subBusinessDays.mjs"
       }
     },
@@ -4883,7 +5193,7 @@
         "default": "./fp/subDays.js"
       },
       "import": {
-        "types": "./fp/subDays.d.ts",
+        "types": "./fp/subDays.d.mts",
         "default": "./fp/subDays.mjs"
       }
     },
@@ -4893,7 +5203,7 @@
         "default": "./fp/subHours.js"
       },
       "import": {
-        "types": "./fp/subHours.d.ts",
+        "types": "./fp/subHours.d.mts",
         "default": "./fp/subHours.mjs"
       }
     },
@@ -4903,7 +5213,7 @@
         "default": "./fp/subISOWeekYears.js"
       },
       "import": {
-        "types": "./fp/subISOWeekYears.d.ts",
+        "types": "./fp/subISOWeekYears.d.mts",
         "default": "./fp/subISOWeekYears.mjs"
       }
     },
@@ -4913,7 +5223,7 @@
         "default": "./fp/subMilliseconds.js"
       },
       "import": {
-        "types": "./fp/subMilliseconds.d.ts",
+        "types": "./fp/subMilliseconds.d.mts",
         "default": "./fp/subMilliseconds.mjs"
       }
     },
@@ -4923,7 +5233,7 @@
         "default": "./fp/subMinutes.js"
       },
       "import": {
-        "types": "./fp/subMinutes.d.ts",
+        "types": "./fp/subMinutes.d.mts",
         "default": "./fp/subMinutes.mjs"
       }
     },
@@ -4933,7 +5243,7 @@
         "default": "./fp/subMonths.js"
       },
       "import": {
-        "types": "./fp/subMonths.d.ts",
+        "types": "./fp/subMonths.d.mts",
         "default": "./fp/subMonths.mjs"
       }
     },
@@ -4943,7 +5253,7 @@
         "default": "./fp/subQuarters.js"
       },
       "import": {
-        "types": "./fp/subQuarters.d.ts",
+        "types": "./fp/subQuarters.d.mts",
         "default": "./fp/subQuarters.mjs"
       }
     },
@@ -4953,7 +5263,7 @@
         "default": "./fp/subSeconds.js"
       },
       "import": {
-        "types": "./fp/subSeconds.d.ts",
+        "types": "./fp/subSeconds.d.mts",
         "default": "./fp/subSeconds.mjs"
       }
     },
@@ -4963,7 +5273,7 @@
         "default": "./fp/subWeeks.js"
       },
       "import": {
-        "types": "./fp/subWeeks.d.ts",
+        "types": "./fp/subWeeks.d.mts",
         "default": "./fp/subWeeks.mjs"
       }
     },
@@ -4973,7 +5283,7 @@
         "default": "./fp/subYears.js"
       },
       "import": {
-        "types": "./fp/subYears.d.ts",
+        "types": "./fp/subYears.d.mts",
         "default": "./fp/subYears.mjs"
       }
     },
@@ -4983,8 +5293,18 @@
         "default": "./fp/toDate.js"
       },
       "import": {
-        "types": "./fp/toDate.d.ts",
+        "types": "./fp/toDate.d.mts",
         "default": "./fp/toDate.mjs"
+      }
+    },
+    "./fp/transpose": {
+      "require": {
+        "types": "./fp/transpose.d.ts",
+        "default": "./fp/transpose.js"
+      },
+      "import": {
+        "types": "./fp/transpose.d.mts",
+        "default": "./fp/transpose.mjs"
       }
     },
     "./fp/weeksToDays": {
@@ -4993,7 +5313,7 @@
         "default": "./fp/weeksToDays.js"
       },
       "import": {
-        "types": "./fp/weeksToDays.d.ts",
+        "types": "./fp/weeksToDays.d.mts",
         "default": "./fp/weeksToDays.mjs"
       }
     },
@@ -5003,7 +5323,7 @@
         "default": "./fp/yearsToMonths.js"
       },
       "import": {
-        "types": "./fp/yearsToMonths.d.ts",
+        "types": "./fp/yearsToMonths.d.mts",
         "default": "./fp/yearsToMonths.mjs"
       }
     },
@@ -5013,7 +5333,7 @@
         "default": "./fp/yearsToQuarters.js"
       },
       "import": {
-        "types": "./fp/yearsToQuarters.d.ts",
+        "types": "./fp/yearsToQuarters.d.mts",
         "default": "./fp/yearsToQuarters.mjs"
       }
     },
@@ -5023,7 +5343,7 @@
         "default": "./locale/af.js"
       },
       "import": {
-        "types": "./locale/af.d.ts",
+        "types": "./locale/af.d.mts",
         "default": "./locale/af.mjs"
       }
     },
@@ -5033,7 +5353,7 @@
         "default": "./locale/ar.js"
       },
       "import": {
-        "types": "./locale/ar.d.ts",
+        "types": "./locale/ar.d.mts",
         "default": "./locale/ar.mjs"
       }
     },
@@ -5043,7 +5363,7 @@
         "default": "./locale/ar-DZ.js"
       },
       "import": {
-        "types": "./locale/ar-DZ.d.ts",
+        "types": "./locale/ar-DZ.d.mts",
         "default": "./locale/ar-DZ.mjs"
       }
     },
@@ -5053,7 +5373,7 @@
         "default": "./locale/ar-EG.js"
       },
       "import": {
-        "types": "./locale/ar-EG.d.ts",
+        "types": "./locale/ar-EG.d.mts",
         "default": "./locale/ar-EG.mjs"
       }
     },
@@ -5063,7 +5383,7 @@
         "default": "./locale/ar-MA.js"
       },
       "import": {
-        "types": "./locale/ar-MA.d.ts",
+        "types": "./locale/ar-MA.d.mts",
         "default": "./locale/ar-MA.mjs"
       }
     },
@@ -5073,7 +5393,7 @@
         "default": "./locale/ar-SA.js"
       },
       "import": {
-        "types": "./locale/ar-SA.d.ts",
+        "types": "./locale/ar-SA.d.mts",
         "default": "./locale/ar-SA.mjs"
       }
     },
@@ -5083,7 +5403,7 @@
         "default": "./locale/ar-TN.js"
       },
       "import": {
-        "types": "./locale/ar-TN.d.ts",
+        "types": "./locale/ar-TN.d.mts",
         "default": "./locale/ar-TN.mjs"
       }
     },
@@ -5093,7 +5413,7 @@
         "default": "./locale/az.js"
       },
       "import": {
-        "types": "./locale/az.d.ts",
+        "types": "./locale/az.d.mts",
         "default": "./locale/az.mjs"
       }
     },
@@ -5103,7 +5423,7 @@
         "default": "./locale/be.js"
       },
       "import": {
-        "types": "./locale/be.d.ts",
+        "types": "./locale/be.d.mts",
         "default": "./locale/be.mjs"
       }
     },
@@ -5113,7 +5433,7 @@
         "default": "./locale/be-tarask.js"
       },
       "import": {
-        "types": "./locale/be-tarask.d.ts",
+        "types": "./locale/be-tarask.d.mts",
         "default": "./locale/be-tarask.mjs"
       }
     },
@@ -5123,7 +5443,7 @@
         "default": "./locale/bg.js"
       },
       "import": {
-        "types": "./locale/bg.d.ts",
+        "types": "./locale/bg.d.mts",
         "default": "./locale/bg.mjs"
       }
     },
@@ -5133,7 +5453,7 @@
         "default": "./locale/bn.js"
       },
       "import": {
-        "types": "./locale/bn.d.ts",
+        "types": "./locale/bn.d.mts",
         "default": "./locale/bn.mjs"
       }
     },
@@ -5143,7 +5463,7 @@
         "default": "./locale/bs.js"
       },
       "import": {
-        "types": "./locale/bs.d.ts",
+        "types": "./locale/bs.d.mts",
         "default": "./locale/bs.mjs"
       }
     },
@@ -5153,7 +5473,7 @@
         "default": "./locale/ca.js"
       },
       "import": {
-        "types": "./locale/ca.d.ts",
+        "types": "./locale/ca.d.mts",
         "default": "./locale/ca.mjs"
       }
     },
@@ -5163,7 +5483,7 @@
         "default": "./locale/cs.js"
       },
       "import": {
-        "types": "./locale/cs.d.ts",
+        "types": "./locale/cs.d.mts",
         "default": "./locale/cs.mjs"
       }
     },
@@ -5173,7 +5493,7 @@
         "default": "./locale/cy.js"
       },
       "import": {
-        "types": "./locale/cy.d.ts",
+        "types": "./locale/cy.d.mts",
         "default": "./locale/cy.mjs"
       }
     },
@@ -5183,7 +5503,7 @@
         "default": "./locale/da.js"
       },
       "import": {
-        "types": "./locale/da.d.ts",
+        "types": "./locale/da.d.mts",
         "default": "./locale/da.mjs"
       }
     },
@@ -5193,7 +5513,7 @@
         "default": "./locale/de.js"
       },
       "import": {
-        "types": "./locale/de.d.ts",
+        "types": "./locale/de.d.mts",
         "default": "./locale/de.mjs"
       }
     },
@@ -5203,7 +5523,7 @@
         "default": "./locale/de-AT.js"
       },
       "import": {
-        "types": "./locale/de-AT.d.ts",
+        "types": "./locale/de-AT.d.mts",
         "default": "./locale/de-AT.mjs"
       }
     },
@@ -5213,7 +5533,7 @@
         "default": "./locale/el.js"
       },
       "import": {
-        "types": "./locale/el.d.ts",
+        "types": "./locale/el.d.mts",
         "default": "./locale/el.mjs"
       }
     },
@@ -5223,7 +5543,7 @@
         "default": "./locale/en-AU.js"
       },
       "import": {
-        "types": "./locale/en-AU.d.ts",
+        "types": "./locale/en-AU.d.mts",
         "default": "./locale/en-AU.mjs"
       }
     },
@@ -5233,7 +5553,7 @@
         "default": "./locale/en-CA.js"
       },
       "import": {
-        "types": "./locale/en-CA.d.ts",
+        "types": "./locale/en-CA.d.mts",
         "default": "./locale/en-CA.mjs"
       }
     },
@@ -5243,7 +5563,7 @@
         "default": "./locale/en-GB.js"
       },
       "import": {
-        "types": "./locale/en-GB.d.ts",
+        "types": "./locale/en-GB.d.mts",
         "default": "./locale/en-GB.mjs"
       }
     },
@@ -5253,7 +5573,7 @@
         "default": "./locale/en-IE.js"
       },
       "import": {
-        "types": "./locale/en-IE.d.ts",
+        "types": "./locale/en-IE.d.mts",
         "default": "./locale/en-IE.mjs"
       }
     },
@@ -5263,7 +5583,7 @@
         "default": "./locale/en-IN.js"
       },
       "import": {
-        "types": "./locale/en-IN.d.ts",
+        "types": "./locale/en-IN.d.mts",
         "default": "./locale/en-IN.mjs"
       }
     },
@@ -5273,7 +5593,7 @@
         "default": "./locale/en-NZ.js"
       },
       "import": {
-        "types": "./locale/en-NZ.d.ts",
+        "types": "./locale/en-NZ.d.mts",
         "default": "./locale/en-NZ.mjs"
       }
     },
@@ -5283,7 +5603,7 @@
         "default": "./locale/en-US.js"
       },
       "import": {
-        "types": "./locale/en-US.d.ts",
+        "types": "./locale/en-US.d.mts",
         "default": "./locale/en-US.mjs"
       }
     },
@@ -5293,7 +5613,7 @@
         "default": "./locale/en-ZA.js"
       },
       "import": {
-        "types": "./locale/en-ZA.d.ts",
+        "types": "./locale/en-ZA.d.mts",
         "default": "./locale/en-ZA.mjs"
       }
     },
@@ -5303,7 +5623,7 @@
         "default": "./locale/eo.js"
       },
       "import": {
-        "types": "./locale/eo.d.ts",
+        "types": "./locale/eo.d.mts",
         "default": "./locale/eo.mjs"
       }
     },
@@ -5313,7 +5633,7 @@
         "default": "./locale/es.js"
       },
       "import": {
-        "types": "./locale/es.d.ts",
+        "types": "./locale/es.d.mts",
         "default": "./locale/es.mjs"
       }
     },
@@ -5323,7 +5643,7 @@
         "default": "./locale/et.js"
       },
       "import": {
-        "types": "./locale/et.d.ts",
+        "types": "./locale/et.d.mts",
         "default": "./locale/et.mjs"
       }
     },
@@ -5333,7 +5653,7 @@
         "default": "./locale/eu.js"
       },
       "import": {
-        "types": "./locale/eu.d.ts",
+        "types": "./locale/eu.d.mts",
         "default": "./locale/eu.mjs"
       }
     },
@@ -5343,7 +5663,7 @@
         "default": "./locale/fa-IR.js"
       },
       "import": {
-        "types": "./locale/fa-IR.d.ts",
+        "types": "./locale/fa-IR.d.mts",
         "default": "./locale/fa-IR.mjs"
       }
     },
@@ -5353,7 +5673,7 @@
         "default": "./locale/fi.js"
       },
       "import": {
-        "types": "./locale/fi.d.ts",
+        "types": "./locale/fi.d.mts",
         "default": "./locale/fi.mjs"
       }
     },
@@ -5363,7 +5683,7 @@
         "default": "./locale/fr.js"
       },
       "import": {
-        "types": "./locale/fr.d.ts",
+        "types": "./locale/fr.d.mts",
         "default": "./locale/fr.mjs"
       }
     },
@@ -5373,7 +5693,7 @@
         "default": "./locale/fr-CA.js"
       },
       "import": {
-        "types": "./locale/fr-CA.d.ts",
+        "types": "./locale/fr-CA.d.mts",
         "default": "./locale/fr-CA.mjs"
       }
     },
@@ -5383,7 +5703,7 @@
         "default": "./locale/fr-CH.js"
       },
       "import": {
-        "types": "./locale/fr-CH.d.ts",
+        "types": "./locale/fr-CH.d.mts",
         "default": "./locale/fr-CH.mjs"
       }
     },
@@ -5393,7 +5713,7 @@
         "default": "./locale/fy.js"
       },
       "import": {
-        "types": "./locale/fy.d.ts",
+        "types": "./locale/fy.d.mts",
         "default": "./locale/fy.mjs"
       }
     },
@@ -5403,7 +5723,7 @@
         "default": "./locale/gd.js"
       },
       "import": {
-        "types": "./locale/gd.d.ts",
+        "types": "./locale/gd.d.mts",
         "default": "./locale/gd.mjs"
       }
     },
@@ -5413,7 +5733,7 @@
         "default": "./locale/gl.js"
       },
       "import": {
-        "types": "./locale/gl.d.ts",
+        "types": "./locale/gl.d.mts",
         "default": "./locale/gl.mjs"
       }
     },
@@ -5423,7 +5743,7 @@
         "default": "./locale/gu.js"
       },
       "import": {
-        "types": "./locale/gu.d.ts",
+        "types": "./locale/gu.d.mts",
         "default": "./locale/gu.mjs"
       }
     },
@@ -5433,7 +5753,7 @@
         "default": "./locale/he.js"
       },
       "import": {
-        "types": "./locale/he.d.ts",
+        "types": "./locale/he.d.mts",
         "default": "./locale/he.mjs"
       }
     },
@@ -5443,7 +5763,7 @@
         "default": "./locale/hi.js"
       },
       "import": {
-        "types": "./locale/hi.d.ts",
+        "types": "./locale/hi.d.mts",
         "default": "./locale/hi.mjs"
       }
     },
@@ -5453,7 +5773,7 @@
         "default": "./locale/hr.js"
       },
       "import": {
-        "types": "./locale/hr.d.ts",
+        "types": "./locale/hr.d.mts",
         "default": "./locale/hr.mjs"
       }
     },
@@ -5463,7 +5783,7 @@
         "default": "./locale/ht.js"
       },
       "import": {
-        "types": "./locale/ht.d.ts",
+        "types": "./locale/ht.d.mts",
         "default": "./locale/ht.mjs"
       }
     },
@@ -5473,7 +5793,7 @@
         "default": "./locale/hu.js"
       },
       "import": {
-        "types": "./locale/hu.d.ts",
+        "types": "./locale/hu.d.mts",
         "default": "./locale/hu.mjs"
       }
     },
@@ -5483,7 +5803,7 @@
         "default": "./locale/hy.js"
       },
       "import": {
-        "types": "./locale/hy.d.ts",
+        "types": "./locale/hy.d.mts",
         "default": "./locale/hy.mjs"
       }
     },
@@ -5493,7 +5813,7 @@
         "default": "./locale/id.js"
       },
       "import": {
-        "types": "./locale/id.d.ts",
+        "types": "./locale/id.d.mts",
         "default": "./locale/id.mjs"
       }
     },
@@ -5503,7 +5823,7 @@
         "default": "./locale/is.js"
       },
       "import": {
-        "types": "./locale/is.d.ts",
+        "types": "./locale/is.d.mts",
         "default": "./locale/is.mjs"
       }
     },
@@ -5513,7 +5833,7 @@
         "default": "./locale/it.js"
       },
       "import": {
-        "types": "./locale/it.d.ts",
+        "types": "./locale/it.d.mts",
         "default": "./locale/it.mjs"
       }
     },
@@ -5523,7 +5843,7 @@
         "default": "./locale/it-CH.js"
       },
       "import": {
-        "types": "./locale/it-CH.d.ts",
+        "types": "./locale/it-CH.d.mts",
         "default": "./locale/it-CH.mjs"
       }
     },
@@ -5533,7 +5853,7 @@
         "default": "./locale/ja.js"
       },
       "import": {
-        "types": "./locale/ja.d.ts",
+        "types": "./locale/ja.d.mts",
         "default": "./locale/ja.mjs"
       }
     },
@@ -5543,7 +5863,7 @@
         "default": "./locale/ja-Hira.js"
       },
       "import": {
-        "types": "./locale/ja-Hira.d.ts",
+        "types": "./locale/ja-Hira.d.mts",
         "default": "./locale/ja-Hira.mjs"
       }
     },
@@ -5553,7 +5873,7 @@
         "default": "./locale/ka.js"
       },
       "import": {
-        "types": "./locale/ka.d.ts",
+        "types": "./locale/ka.d.mts",
         "default": "./locale/ka.mjs"
       }
     },
@@ -5563,7 +5883,7 @@
         "default": "./locale/kk.js"
       },
       "import": {
-        "types": "./locale/kk.d.ts",
+        "types": "./locale/kk.d.mts",
         "default": "./locale/kk.mjs"
       }
     },
@@ -5573,7 +5893,7 @@
         "default": "./locale/km.js"
       },
       "import": {
-        "types": "./locale/km.d.ts",
+        "types": "./locale/km.d.mts",
         "default": "./locale/km.mjs"
       }
     },
@@ -5583,7 +5903,7 @@
         "default": "./locale/kn.js"
       },
       "import": {
-        "types": "./locale/kn.d.ts",
+        "types": "./locale/kn.d.mts",
         "default": "./locale/kn.mjs"
       }
     },
@@ -5593,7 +5913,7 @@
         "default": "./locale/ko.js"
       },
       "import": {
-        "types": "./locale/ko.d.ts",
+        "types": "./locale/ko.d.mts",
         "default": "./locale/ko.mjs"
       }
     },
@@ -5603,7 +5923,7 @@
         "default": "./locale/lb.js"
       },
       "import": {
-        "types": "./locale/lb.d.ts",
+        "types": "./locale/lb.d.mts",
         "default": "./locale/lb.mjs"
       }
     },
@@ -5613,7 +5933,7 @@
         "default": "./locale/lt.js"
       },
       "import": {
-        "types": "./locale/lt.d.ts",
+        "types": "./locale/lt.d.mts",
         "default": "./locale/lt.mjs"
       }
     },
@@ -5623,7 +5943,7 @@
         "default": "./locale/lv.js"
       },
       "import": {
-        "types": "./locale/lv.d.ts",
+        "types": "./locale/lv.d.mts",
         "default": "./locale/lv.mjs"
       }
     },
@@ -5633,7 +5953,7 @@
         "default": "./locale/mk.js"
       },
       "import": {
-        "types": "./locale/mk.d.ts",
+        "types": "./locale/mk.d.mts",
         "default": "./locale/mk.mjs"
       }
     },
@@ -5643,7 +5963,7 @@
         "default": "./locale/mn.js"
       },
       "import": {
-        "types": "./locale/mn.d.ts",
+        "types": "./locale/mn.d.mts",
         "default": "./locale/mn.mjs"
       }
     },
@@ -5653,7 +5973,7 @@
         "default": "./locale/ms.js"
       },
       "import": {
-        "types": "./locale/ms.d.ts",
+        "types": "./locale/ms.d.mts",
         "default": "./locale/ms.mjs"
       }
     },
@@ -5663,7 +5983,7 @@
         "default": "./locale/mt.js"
       },
       "import": {
-        "types": "./locale/mt.d.ts",
+        "types": "./locale/mt.d.mts",
         "default": "./locale/mt.mjs"
       }
     },
@@ -5673,7 +5993,7 @@
         "default": "./locale/nb.js"
       },
       "import": {
-        "types": "./locale/nb.d.ts",
+        "types": "./locale/nb.d.mts",
         "default": "./locale/nb.mjs"
       }
     },
@@ -5683,7 +6003,7 @@
         "default": "./locale/nl.js"
       },
       "import": {
-        "types": "./locale/nl.d.ts",
+        "types": "./locale/nl.d.mts",
         "default": "./locale/nl.mjs"
       }
     },
@@ -5693,7 +6013,7 @@
         "default": "./locale/nl-BE.js"
       },
       "import": {
-        "types": "./locale/nl-BE.d.ts",
+        "types": "./locale/nl-BE.d.mts",
         "default": "./locale/nl-BE.mjs"
       }
     },
@@ -5703,7 +6023,7 @@
         "default": "./locale/nn.js"
       },
       "import": {
-        "types": "./locale/nn.d.ts",
+        "types": "./locale/nn.d.mts",
         "default": "./locale/nn.mjs"
       }
     },
@@ -5713,7 +6033,7 @@
         "default": "./locale/oc.js"
       },
       "import": {
-        "types": "./locale/oc.d.ts",
+        "types": "./locale/oc.d.mts",
         "default": "./locale/oc.mjs"
       }
     },
@@ -5723,7 +6043,7 @@
         "default": "./locale/pl.js"
       },
       "import": {
-        "types": "./locale/pl.d.ts",
+        "types": "./locale/pl.d.mts",
         "default": "./locale/pl.mjs"
       }
     },
@@ -5733,7 +6053,7 @@
         "default": "./locale/pt.js"
       },
       "import": {
-        "types": "./locale/pt.d.ts",
+        "types": "./locale/pt.d.mts",
         "default": "./locale/pt.mjs"
       }
     },
@@ -5743,7 +6063,7 @@
         "default": "./locale/pt-BR.js"
       },
       "import": {
-        "types": "./locale/pt-BR.d.ts",
+        "types": "./locale/pt-BR.d.mts",
         "default": "./locale/pt-BR.mjs"
       }
     },
@@ -5753,7 +6073,7 @@
         "default": "./locale/ro.js"
       },
       "import": {
-        "types": "./locale/ro.d.ts",
+        "types": "./locale/ro.d.mts",
         "default": "./locale/ro.mjs"
       }
     },
@@ -5763,7 +6083,7 @@
         "default": "./locale/ru.js"
       },
       "import": {
-        "types": "./locale/ru.d.ts",
+        "types": "./locale/ru.d.mts",
         "default": "./locale/ru.mjs"
       }
     },
@@ -5773,7 +6093,7 @@
         "default": "./locale/sk.js"
       },
       "import": {
-        "types": "./locale/sk.d.ts",
+        "types": "./locale/sk.d.mts",
         "default": "./locale/sk.mjs"
       }
     },
@@ -5783,7 +6103,7 @@
         "default": "./locale/sl.js"
       },
       "import": {
-        "types": "./locale/sl.d.ts",
+        "types": "./locale/sl.d.mts",
         "default": "./locale/sl.mjs"
       }
     },
@@ -5793,7 +6113,7 @@
         "default": "./locale/sq.js"
       },
       "import": {
-        "types": "./locale/sq.d.ts",
+        "types": "./locale/sq.d.mts",
         "default": "./locale/sq.mjs"
       }
     },
@@ -5803,7 +6123,7 @@
         "default": "./locale/sr.js"
       },
       "import": {
-        "types": "./locale/sr.d.ts",
+        "types": "./locale/sr.d.mts",
         "default": "./locale/sr.mjs"
       }
     },
@@ -5813,7 +6133,7 @@
         "default": "./locale/sr-Latn.js"
       },
       "import": {
-        "types": "./locale/sr-Latn.d.ts",
+        "types": "./locale/sr-Latn.d.mts",
         "default": "./locale/sr-Latn.mjs"
       }
     },
@@ -5823,7 +6143,7 @@
         "default": "./locale/sv.js"
       },
       "import": {
-        "types": "./locale/sv.d.ts",
+        "types": "./locale/sv.d.mts",
         "default": "./locale/sv.mjs"
       }
     },
@@ -5833,7 +6153,7 @@
         "default": "./locale/ta.js"
       },
       "import": {
-        "types": "./locale/ta.d.ts",
+        "types": "./locale/ta.d.mts",
         "default": "./locale/ta.mjs"
       }
     },
@@ -5843,7 +6163,7 @@
         "default": "./locale/te.js"
       },
       "import": {
-        "types": "./locale/te.d.ts",
+        "types": "./locale/te.d.mts",
         "default": "./locale/te.mjs"
       }
     },
@@ -5853,7 +6173,7 @@
         "default": "./locale/th.js"
       },
       "import": {
-        "types": "./locale/th.d.ts",
+        "types": "./locale/th.d.mts",
         "default": "./locale/th.mjs"
       }
     },
@@ -5863,7 +6183,7 @@
         "default": "./locale/tr.js"
       },
       "import": {
-        "types": "./locale/tr.d.ts",
+        "types": "./locale/tr.d.mts",
         "default": "./locale/tr.mjs"
       }
     },
@@ -5873,7 +6193,7 @@
         "default": "./locale/ug.js"
       },
       "import": {
-        "types": "./locale/ug.d.ts",
+        "types": "./locale/ug.d.mts",
         "default": "./locale/ug.mjs"
       }
     },
@@ -5883,7 +6203,7 @@
         "default": "./locale/uk.js"
       },
       "import": {
-        "types": "./locale/uk.d.ts",
+        "types": "./locale/uk.d.mts",
         "default": "./locale/uk.mjs"
       }
     },
@@ -5893,7 +6213,7 @@
         "default": "./locale/uz.js"
       },
       "import": {
-        "types": "./locale/uz.d.ts",
+        "types": "./locale/uz.d.mts",
         "default": "./locale/uz.mjs"
       }
     },
@@ -5903,7 +6223,7 @@
         "default": "./locale/uz-Cyrl.js"
       },
       "import": {
-        "types": "./locale/uz-Cyrl.d.ts",
+        "types": "./locale/uz-Cyrl.d.mts",
         "default": "./locale/uz-Cyrl.mjs"
       }
     },
@@ -5913,7 +6233,7 @@
         "default": "./locale/vi.js"
       },
       "import": {
-        "types": "./locale/vi.d.ts",
+        "types": "./locale/vi.d.mts",
         "default": "./locale/vi.mjs"
       }
     },
@@ -5923,7 +6243,7 @@
         "default": "./locale/zh-CN.js"
       },
       "import": {
-        "types": "./locale/zh-CN.d.ts",
+        "types": "./locale/zh-CN.d.mts",
         "default": "./locale/zh-CN.mjs"
       }
     },
@@ -5933,7 +6253,7 @@
         "default": "./locale/zh-HK.js"
       },
       "import": {
-        "types": "./locale/zh-HK.d.ts",
+        "types": "./locale/zh-HK.d.mts",
         "default": "./locale/zh-HK.mjs"
       }
     },
@@ -5943,7 +6263,7 @@
         "default": "./locale/zh-TW.js"
       },
       "import": {
-        "types": "./locale/zh-TW.d.ts",
+        "types": "./locale/zh-TW.d.mts",
         "default": "./locale/zh-TW.mjs"
       }
     }
@@ -5978,7 +6298,7 @@
     "@babel/preset-env": "^7.22.10",
     "@babel/preset-typescript": "^7.22.5",
     "@date-fns/date-fns-scripts": "0.0.6",
-    "@date-fns/docs": "0.25.0",
+    "@date-fns/docs": "^0.26.0",
     "@js-fns/docs": "^0.1.2",
     "@octokit/core": "^3.2.5",
     "@types/node": "^20.10.2",

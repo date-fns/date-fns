@@ -1,6 +1,6 @@
-import constructFrom from '../constructFrom/index.js'
-import setMonth from '../setMonth/index.js'
-import toDate from '../toDate/index.js'
+import { constructFrom } from '../constructFrom/index.js'
+import { setMonth } from '../setMonth/index.js'
+import { toDate } from '../toDate/index.js'
 import type { DateValues } from '../types.js'
 
 /**
@@ -36,7 +36,7 @@ import type { DateValues } from '../types.js'
  * //=> Mon Sep 01 2014 12:23:45
  */
 
-export default function set<DateType extends Date>(
+export function set<DateType extends Date>(
   date: DateType | number | string,
   values: DateValues
 ): DateType {

@@ -1,6 +1,6 @@
-import addDays from '../addDays/index.js'
-import getISODay from '../getISODay/index.js'
-import toDate from '../toDate/index.js'
+import { addDays } from '../addDays/index.js'
+import { getISODay } from '../getISODay/index.js'
+import { toDate } from '../toDate/index.js'
 
 /**
  * @name setISODay
@@ -24,7 +24,7 @@ import toDate from '../toDate/index.js'
  * const result = setISODay(new Date(2014, 8, 1), 7)
  * //=> Sun Sep 07 2014 00:00:00
  */
-export default function setISODay<DateType extends Date>(
+export function setISODay<DateType extends Date>(
   date: DateType | number | string,
   day: number
 ): DateType {

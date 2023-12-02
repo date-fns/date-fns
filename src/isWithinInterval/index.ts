@@ -1,4 +1,4 @@
-import toDate from '../toDate/index.js'
+import { toDate } from '../toDate/index.js'
 import type { Interval } from '../types.js'
 
 /**
@@ -42,7 +42,7 @@ import type { Interval } from '../types.js'
  * isWithinInterval(date, { start: date, end })
  * // => true
  */
-export default function isWithinInterval<DateType extends Date>(
+export function isWithinInterval<DateType extends Date>(
   date: DateType | number | string,
   interval: Interval<DateType>
 ): boolean {

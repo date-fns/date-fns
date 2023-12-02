@@ -1,5 +1,5 @@
-import getQuarter from '../getQuarter/index.js'
-import toDate from '../toDate/index.js'
+import { getQuarter } from '../getQuarter/index.js'
+import { toDate } from '../toDate/index.js'
 
 /**
  * @name differenceInCalendarQuarters
@@ -24,7 +24,7 @@ import toDate from '../toDate/index.js'
  * )
  * //=> 3
  */
-export default function differenceInCalendarQuarters<DateType extends Date>(
+export function differenceInCalendarQuarters<DateType extends Date>(
   dateLeft: DateType | number | string,
   dateRight: DateType | number | string
 ): number {

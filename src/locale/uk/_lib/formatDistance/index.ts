@@ -256,10 +256,8 @@ const formatDistanceLocale = {
   }),
 }
 
-const formatDistance: FormatDistanceFn = (token, count, options) => {
+export const formatDistance: FormatDistanceFn = (token, count, options) => {
   options = options || {}
 
   return formatDistanceLocale[token](count, options)
 }
-
-export default formatDistance

@@ -1,4 +1,4 @@
-import toDate from '../toDate/index.js'
+import { toDate } from '../toDate/index.js'
 
 /**
  * The locale string (see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument).
@@ -43,7 +43,7 @@ export interface IntlFormatLocaleOptions {
  * const result = intlFormat(new Date(2019, 9, 4, 12, 30, 13, 456))
  * //=> 10/4/2019
  */
-export default function intlFormat<DateType extends Date>(
+export function intlFormat<DateType extends Date>(
   date: DateType | number | string
 ): string
 
@@ -65,7 +65,7 @@ export default function intlFormat<DateType extends Date>(
  * })
  * //=> 2019. 10. 4.
  */
-export default function intlFormat<DateType extends Date>(
+export function intlFormat<DateType extends Date>(
   date: DateType | number | string,
   localeOptions: IntlFormatLocaleOptions
 ): string
@@ -91,7 +91,7 @@ export default function intlFormat<DateType extends Date>(
  * })
  * //=> 10/4/2019, 12 PM
  */
-export default function intlFormat<DateType extends Date>(
+export function intlFormat<DateType extends Date>(
   date: DateType | number | string,
   formatOptions: IntlFormatFormatOptions
 ): string
@@ -120,13 +120,13 @@ export default function intlFormat<DateType extends Date>(
  * })
  * //=> Freitag, 4. Oktober 2019
  */
-export default function intlFormat<DateType extends Date>(
+export function intlFormat<DateType extends Date>(
   date: DateType | number | string,
   formatOptions: IntlFormatFormatOptions,
   localeOptions: IntlFormatLocaleOptions
 ): string
 
-export default function intlFormat<DateType extends Date>(
+export function intlFormat<DateType extends Date>(
   date: DateType | number | string,
   formatOrLocale?: IntlFormatFormatOptions | IntlFormatLocaleOptions,
   localeOptions?: IntlFormatLocaleOptions

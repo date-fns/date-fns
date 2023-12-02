@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import differenceInBusinessDays from './index.js'
+import { differenceInBusinessDays } from './index.js'
 
 describe('differenceInBusinessDays', () => {
   it('returns the number of business days between the given dates, excluding weekends', () => {

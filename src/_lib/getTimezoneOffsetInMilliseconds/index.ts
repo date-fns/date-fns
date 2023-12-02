@@ -9,7 +9,7 @@
  *
  * This function returns the timezone offset in milliseconds that takes seconds in account.
  */
-export default function getTimezoneOffsetInMilliseconds(date: Date): number {
+export function getTimezoneOffsetInMilliseconds(date: Date): number {
   const utcDate = new Date(
     Date.UTC(
       date.getFullYear(),

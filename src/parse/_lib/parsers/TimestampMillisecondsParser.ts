@@ -1,4 +1,4 @@
-import constructFrom from '../../../constructFrom/index.js'
+import { constructFrom } from '../../../constructFrom/index.js'
 import { Parser } from '../Parser.js'
 import type { ParseFlags, ParseResult } from '../types.js'
 import { parseAnyDigitsSigned } from '../utils.js'

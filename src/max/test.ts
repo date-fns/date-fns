@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import max from './index.js'
+import { max } from './index.js'
 
 describe('max', () => {
   const isInvalidDate = (date: any): boolean => {

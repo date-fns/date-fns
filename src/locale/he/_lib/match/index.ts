@@ -1,7 +1,7 @@
 import type { Quarter } from '../../../../types.js'
 import type { Match } from '../../../types.js'
-import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
-import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
+import { buildMatchFn } from '../../../_lib/buildMatchFn/index.js'
+import { buildMatchPatternFn } from '../../../_lib/buildMatchPatternFn/index.js'
 
 const matchOrdinalNumberPattern =
   /^(\d+|(ראשון|שני|שלישי|רביעי|חמישי|שישי|שביעי|שמיני|תשיעי|עשירי|ראשונה|שנייה|שלישית|רביעית|חמישית|שישית|שביעית|שמינית|תשיעית|עשירית))/i
@@ -91,7 +91,7 @@ const parseDayPeriodPatterns = {
 
 const ordinalName = ['רא', 'שנ', 'של', 'רב', 'ח', 'שי', 'שב', 'שמ', 'ת', 'ע']
 
-const match: Match = {
+export const match: Match = {
   ordinalNumber: buildMatchPatternFn({
     matchPattern: matchOrdinalNumberPattern,
     parsePattern: parseOrdinalNumberPattern,
@@ -137,5 +137,3 @@ const match: Match = {
     defaultParseWidth: 'any',
   }),
 }
-
-export default match

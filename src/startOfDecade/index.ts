@@ -1,4 +1,4 @@
-import toDate from '../toDate/index.js'
+import { toDate } from '../toDate/index.js'
 
 /**
  * @name startOfDecade
@@ -19,7 +19,7 @@ import toDate from '../toDate/index.js'
  * const result = startOfDecade(new Date(2015, 9, 21, 00, 00, 00))
  * //=> Jan 01 2010 00:00:00
  */
-export default function startOfDecade<DateType extends Date>(
+export function startOfDecade<DateType extends Date>(
   date: DateType | number | string
 ): DateType {
   const _date = toDate(date)

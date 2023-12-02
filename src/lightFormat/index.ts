@@ -1,6 +1,6 @@
-import isValid from '../isValid/index.js'
-import toDate from '../toDate/index.js'
-import formatters from '../_lib/format/lightFormatters/index.js'
+import { isValid } from '../isValid/index.js'
+import { toDate } from '../toDate/index.js'
+import { lightFormatters } from '../_lib/format/lightFormatters/index.js'
 
 // This RegExp consists of three parts separated by `|`:
 // - (\w)\1* matches any sequences of the same letter
@@ -20,7 +20,7 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/
 /**
  * @private
  */
-type Token = keyof typeof formatters
+type Token = keyof typeof lightFormatters
 
 /**
  * @name lightFormat
@@ -80,7 +80,7 @@ type Token = keyof typeof formatters
  * const result = lightFormat(new Date(2014, 1, 11), 'yyyy-MM-dd')
  * //=> '2014-02-11'
  */
-export default function lightFormat<DateType extends Date>(
+export function lightFormat<DateType extends Date>(
   date: DateType | number | string,
   formatStr: string
 ): string {
@@ -107,7 +107,7 @@ export default function lightFormat<DateType extends Date>(
         return cleanEscapedString(substring)
       }
 
-      const formatter = formatters[firstCharacter as Token]
+      const formatter = lightFormatters[firstCharacter as Token]
       if (formatter) {
         return formatter(_date, substring)
       }

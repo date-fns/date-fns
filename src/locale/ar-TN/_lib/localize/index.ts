@@ -1,5 +1,5 @@
 import type { Localize, LocalizeFn } from '../../../types.js'
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
+import { buildLocalizeFn } from '../../../_lib/buildLocalizeFn/index.js'
 
 const eraValues = {
   narrow: ['ق', 'ب'] as const,
@@ -141,7 +141,7 @@ const formattingDayPeriodValues = {
 
 const ordinalNumber: LocalizeFn<number> = (num) => String(num)
 
-const localize: Localize = {
+export const localize: Localize = {
   ordinalNumber: ordinalNumber,
 
   era: buildLocalizeFn({
@@ -172,5 +172,3 @@ const localize: Localize = {
     defaultFormattingWidth: 'wide',
   }),
 }
-
-export default localize

@@ -1,8 +1,8 @@
-import getDayOfYear from '../../../getDayOfYear/index.js'
-import getISOWeek from '../../../getISOWeek/index.js'
-import getISOWeekYear from '../../../getISOWeekYear/index.js'
-import getWeek from '../../../getWeek/index.js'
-import getWeekYear from '../../../getWeekYear/index.js'
+import { getDayOfYear } from '../../../getDayOfYear/index.js'
+import { getISOWeek } from '../../../getISOWeek/index.js'
+import { getISOWeekYear } from '../../../getISOWeekYear/index.js'
+import { getWeek } from '../../../getWeek/index.js'
+import { getWeekYear } from '../../../getWeekYear/index.js'
 import type { LocaleDayPeriod, Localize } from '../../../locale/types.js'
 import type {
   Day,
@@ -13,8 +13,8 @@ import type {
   Quarter,
   WeekOptions,
 } from '../../../types.js'
-import addLeadingZeros from '../../addLeadingZeros/index.js'
-import lightFormatters from '../lightFormatters/index.js'
+import { addLeadingZeros } from '../../addLeadingZeros/index.js'
+import { lightFormatters } from '../lightFormatters/index.js'
 
 const dayPeriodEnum = {
   am: 'am',
@@ -84,7 +84,7 @@ type Formatter = (
  * - `p` is long localized time format
  */
 
-const formatters: { [token: string]: Formatter } = {
+export const formatters: { [token: string]: Formatter } = {
   // Era
   G: function (date, token, localize) {
     const era: Era = date.getFullYear() > 0 ? 1 : 0
@@ -786,5 +786,3 @@ function formatTimezone(offset: number, delimiter: string = ''): string {
   const minutes = addLeadingZeros(absOffset % 60, 2)
   return sign + hours + delimiter + minutes
 }
-
-export default formatters

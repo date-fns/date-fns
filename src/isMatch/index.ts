@@ -1,5 +1,5 @@
-import isValid from '../isValid/index.js'
-import parse from '../parse/index.js'
+import { isValid } from '../isValid/index.js'
+import { parse } from '../parse/index.js'
 import type {
   AdditionalTokensOptions,
   FirstWeekContainsDateOptions,
@@ -302,7 +302,7 @@ export interface IsMatchOptions
  * })
  * //=> true
  */
-export default function isMatch(
+export function isMatch(
   dateStr: string,
   formatStr: string,
   options?: IsMatchOptions

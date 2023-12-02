@@ -1,12 +1,12 @@
-import compareAsc from '../compareAsc/index.js'
+import { compareAsc } from '../compareAsc/index.js'
 import { minutesInDay, minutesInMonth } from '../constants/index.js'
-import differenceInMonths from '../differenceInMonths/index.js'
-import differenceInSeconds from '../differenceInSeconds/index.js'
-import toDate from '../toDate/index.js'
+import { differenceInMonths } from '../differenceInMonths/index.js'
+import { differenceInSeconds } from '../differenceInSeconds/index.js'
+import { toDate } from '../toDate/index.js'
 import type { LocalizedOptions } from '../types.js'
-import defaultLocale from '../_lib/defaultLocale/index.js'
+import { defaultLocale } from '../_lib/defaultLocale/index.js'
 import { getDefaultOptions } from '../_lib/defaultOptions/index.js'
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
+import { getTimezoneOffsetInMilliseconds } from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
 
 /**
  * The {@link formatDistance} function options.
@@ -100,7 +100,7 @@ export interface FormatDistanceOptions
  * //=> 'pli ol 1 jaro'
  */
 
-export default function formatDistance<DateType extends Date>(
+export function formatDistance<DateType extends Date>(
   date: DateType | number | string,
   baseDate: DateType | number | string,
   options?: FormatDistanceOptions

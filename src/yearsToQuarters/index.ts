@@ -17,6 +17,6 @@ import { quartersInYear } from '../constants/index.js'
  * const result = yearsToQuarters(2)
  * //=> 8
  */
-export default function yearsToQuarters(years: number): number {
+export function yearsToQuarters(years: number): number {
   return Math.floor(years * quartersInYear)
 }

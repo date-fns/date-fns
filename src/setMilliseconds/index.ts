@@ -1,4 +1,4 @@
-import toDate from '../toDate/index.js'
+import { toDate } from '../toDate/index.js'
 
 /**
  * @name setMilliseconds
@@ -20,7 +20,7 @@ import toDate from '../toDate/index.js'
  * const result = setMilliseconds(new Date(2014, 8, 1, 11, 30, 40, 500), 300)
  * //=> Mon Sep 01 2014 11:30:40.300
  */
-export default function setMilliseconds<DateType extends Date>(
+export function setMilliseconds<DateType extends Date>(
   date: DateType | number | string,
   milliseconds: number
 ): DateType {

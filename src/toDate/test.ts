@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import toDate from './index.js'
+import { toDate } from './index.js'
 
 describe('toDate', () => {
   describe('date argument', () => {

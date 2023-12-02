@@ -1,7 +1,7 @@
-import constructFrom from '../constructFrom/index.js'
-import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
-import startOfISOWeekYear from '../startOfISOWeekYear/index.js'
-import toDate from '../toDate/index.js'
+import { constructFrom } from '../constructFrom/index.js'
+import { differenceInCalendarDays } from '../differenceInCalendarDays/index.js'
+import { startOfISOWeekYear } from '../startOfISOWeekYear/index.js'
+import { toDate } from '../toDate/index.js'
 
 /**
  * @name setISOWeekYear
@@ -26,7 +26,7 @@ import toDate from '../toDate/index.js'
  * const result = setISOWeekYear(new Date(2008, 11, 29), 2007)
  * //=> Mon Jan 01 2007 00:00:00
  */
-export default function setISOWeekYear<DateType extends Date>(
+export function setISOWeekYear<DateType extends Date>(
   date: DateType | number | string,
   weekYear: number
 ): DateType {

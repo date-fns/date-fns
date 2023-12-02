@@ -1,4 +1,4 @@
-import isSameWeek from '../isSameWeek/index.js'
+import { isSameWeek } from '../isSameWeek/index.js'
 import type { LocalizedOptions, WeekOptions } from '../types.js'
 
 /**
@@ -35,7 +35,7 @@ export interface IsThisWeekOptions
  * const result = isThisWeek(new Date(2014, 8, 21), { weekStartsOn: 1 })
  * //=> false
  */
-export default function isThisWeek<DateType extends Date>(
+export function isThisWeek<DateType extends Date>(
   date: DateType | number | string,
   options?: IsThisWeekOptions
 ): boolean {

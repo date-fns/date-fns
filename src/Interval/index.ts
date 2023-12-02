@@ -1,8 +1,8 @@
-import toDate from '../toDate/index.js'
-import type { Interval as IntervalInterface } from '../types.js'
+import { toDate } from '../toDate/index.js'
+import { Interval } from '../types.js'
 
 /**
- * The {@link Interval} constructor options.
+ * The {@link interval} function options.
  */
 export interface IntervalOptions {
   /** Asserts that the interval is positive (start is after the end). */
@@ -10,42 +10,32 @@ export interface IntervalOptions {
 }
 
 /**
- * An object that combines two dates to represent the time interval.
+ * Creates an interval object and validates its values.
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param start - The start of the interval.
+ * @param end - The end of the interval.
+ * @param options - The options object.
+ *
+ * @returns The interval object.
  */
-export default class Interval<DateType extends Date = Date>
-  implements IntervalInterface<DateType>
-{
-  /** The start of the interval. */
-  start: DateType
-  /** The end of the interval. */
-  end: DateType
+export function interval<DateType extends Date>(
+  start: DateType | number | string,
+  end: DateType | number | string,
+  options?: IntervalOptions
+): Interval {
+  if (!start) throw new TypeError('Start date is required')
+  if (!end) throw new TypeError('End date is required')
 
-  /**
-   * Creates an interval object.
-   *
-   * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
-   *
-   * @param start - The start of the interval.
-   * @param end - The end of the interval.
-   * @param options - The options object.
-   */
-  constructor(
-    start: DateType | number | string,
-    end: DateType | number | string,
-    options?: IntervalOptions
-  ) {
-    if (!start) throw new TypeError('Start date is required')
-    if (!end) throw new TypeError('End date is required')
+  const _start = toDate(start)
+  if (isNaN(+_start)) throw new TypeError('Start date is invalid')
 
-    this.start = toDate(start)
-    if (isNaN(+this.start)) throw new TypeError('Start date is invalid')
+  const _end = toDate(end)
+  if (isNaN(+_end)) throw new TypeError('End date is invalid')
 
-    this.end = toDate(end)
-    if (isNaN(+this.end)) throw new TypeError('End date is invalid')
+  if (options?.assertPositive && +_start > +_end)
+    throw new TypeError('End date must be after start date')
 
-    if (options?.assertPositive && +this.start > +this.end)
-      throw new TypeError('End date must be after start date')
-  }
+  return { start: _start, end: _end }
 }

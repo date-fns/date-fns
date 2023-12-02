@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import formatRFC7231 from './index.js'
+import { formatRFC7231 } from './index.js'
 
 describe('formatRFC7231', () => {
   it('formats RFC-7231 date string', () => {

@@ -1,4 +1,4 @@
-import toDate from '../toDate/index.js'
+import { toDate } from '../toDate/index.js'
 
 /**
  * @name startOfSecond
@@ -20,7 +20,7 @@ import toDate from '../toDate/index.js'
  * const result = startOfSecond(new Date(2014, 11, 1, 22, 15, 45, 400))
  * //=> Mon Dec 01 2014 22:15:45.000
  */
-export default function startOfSecond<DateType extends Date>(
+export function startOfSecond<DateType extends Date>(
   date: DateType | number | string
 ): DateType {
   const _date = toDate(date)

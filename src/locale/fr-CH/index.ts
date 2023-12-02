@@ -1,11 +1,11 @@
 // Same as fr
-import formatDistance from '../fr/_lib/formatDistance/index.js'
-import localize from '../fr/_lib/localize/index.js'
-import match from '../fr/_lib/match/index.js'
+import { formatDistance } from '../fr/_lib/formatDistance/index.js'
+import { localize } from '../fr/_lib/localize/index.js'
+import { match } from '../fr/_lib/match/index.js'
 import type { Locale } from '../types.js'
 // Unique for fr-CH
-import formatLong from './_lib/formatLong/index.js'
-import formatRelative from './_lib/formatRelative/index.js'
+import { formatLong } from './_lib/formatLong/index.js'
+import { formatRelative } from './_lib/formatRelative/index.js'
 
 /**
  * @category Locales
@@ -17,7 +17,7 @@ import formatRelative from './_lib/formatRelative/index.js'
  * @author Van Vuong Ngo [@vanvuongngo](https://github.com/vanvuongngo)
  * @author Alex Hoeing [@dcbn](https://github.com/dcbn)
  */
-const locale: Locale = {
+export const frCH: Locale = {
   code: 'fr-CH',
   formatDistance: formatDistance,
   formatLong: formatLong,
@@ -29,5 +29,3 @@ const locale: Locale = {
     firstWeekContainsDate: 4,
   },
 }
-
-export default locale

@@ -1,4 +1,4 @@
-import toDate from '../toDate/index.js'
+import { toDate } from '../toDate/index.js'
 
 /**
  * @name getMinutes
@@ -19,7 +19,7 @@ import toDate from '../toDate/index.js'
  * const result = getMinutes(new Date(2012, 1, 29, 11, 45, 5))
  * //=> 45
  */
-export default function getMinutes<DateType extends Date>(
+export function getMinutes<DateType extends Date>(
   date: DateType | number | string
 ): number {
   const _date = toDate(date)

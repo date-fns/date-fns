@@ -1,6 +1,6 @@
 import { millisecondsInDay } from '../constants/index.js'
-import startOfDay from '../startOfDay/index.js'
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
+import { startOfDay } from '../startOfDay/index.js'
+import { getTimezoneOffsetInMilliseconds } from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
 
 /**
  * @name differenceInCalendarDays
@@ -34,7 +34,7 @@ import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMillisec
  * )
  * //=> 1
  */
-export default function differenceInCalendarDays<DateType extends Date>(
+export function differenceInCalendarDays<DateType extends Date>(
   dateLeft: DateType | number | string,
   dateRight: DateType | number | string
 ): number {

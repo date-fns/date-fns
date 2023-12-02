@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import isSameISOWeek from './index.js'
+import { isSameISOWeek } from './index.js'
 
 describe('isSameISOWeek', () => {
   it('returns true if the given dates have the same ISO week', () => {

@@ -1,4 +1,4 @@
-import toDate from '../toDate/index.js'
+import { toDate } from '../toDate/index.js'
 import type { Interval, StepOptions } from '../types.js'
 
 /**
@@ -35,7 +35,7 @@ export interface EachDayOfIntervalOptions extends StepOptions {}
  * //   Fri Oct 10 2014 00:00:00
  * // ]
  */
-export default function eachDayOfInterval<DateType extends Date>(
+export function eachDayOfInterval<DateType extends Date>(
   interval: Interval<DateType>,
   options?: EachDayOfIntervalOptions
 ): DateType[] {

@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import differenceInMilliseconds from './index.js'
+import { differenceInMilliseconds } from './index.js'
 
 describe('differenceInMilliseconds', () => {
   it('returns the number of milliseconds between the given dates', () => {

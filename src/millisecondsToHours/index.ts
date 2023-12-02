@@ -22,7 +22,7 @@ import { millisecondsInHour } from '../constants/index.js'
  * const result = millisecondsToHours(7199999)
  * //=> 1
  */
-export default function millisecondsToHours(milliseconds: number): number {
+export function millisecondsToHours(milliseconds: number): number {
   const hours = milliseconds / millisecondsInHour
   return Math.floor(hours)
 }

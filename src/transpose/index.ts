@@ -1,5 +1,5 @@
 import type { GenericDateConstructor } from '../types.js'
-import constructFrom from '../constructFrom/index.js'
+import { constructFrom } from '../constructFrom/index.js'
 
 /**
  * @name transpose
@@ -29,7 +29,7 @@ import constructFrom from '../constructFrom/index.js'
  * transpose(date, UTCDate)
  * //=> 'Sun Jul 10 2022 00:00:00 GMT+0000 (Coordinated Universal Time)'
  */
-export default function transpose<
+export function transpose<
   DateInputType extends Date,
   DateOutputType extends Date
 >(

@@ -16,7 +16,7 @@
  * const result = endOfYesterday()
  * //=> Sun Oct 5 2014 23:59:59.999
  */
-export default function endOfYesterday(): Date {
+export function endOfYesterday(): Date {
   const now = new Date()
   const year = now.getFullYear()
   const month = now.getMonth()

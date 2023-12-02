@@ -1,4 +1,4 @@
-import isSameMonth from '../isSameMonth/index.js'
+import { isSameMonth } from '../isSameMonth/index.js'
 
 /**
  * @name isThisMonth
@@ -21,7 +21,7 @@ import isSameMonth from '../isSameMonth/index.js'
  * //=> true
  */
 
-export default function isThisMonth<DateType extends Date>(
+export function isThisMonth<DateType extends Date>(
   date: DateType | number | string
 ): boolean {
   return isSameMonth(Date.now(), date)

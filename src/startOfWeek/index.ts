@@ -1,4 +1,4 @@
-import toDate from '../toDate/index.js'
+import { toDate } from '../toDate/index.js'
 import type { LocalizedOptions, WeekOptions } from '../types.js'
 import { getDefaultOptions } from '../_lib/defaultOptions/index.js'
 
@@ -35,7 +35,7 @@ export interface StartOfWeekOptions
  * const result = startOfWeek(new Date(2014, 8, 2, 11, 55, 0), { weekStartsOn: 1 })
  * //=> Mon Sep 01 2014 00:00:00
  */
-export default function startOfWeek<DateType extends Date>(
+export function startOfWeek<DateType extends Date>(
   date: DateType | number | string,
   options?: StartOfWeekOptions
 ): DateType {

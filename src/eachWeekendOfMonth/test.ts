@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import eachWeekendOfMonth from './index.js'
+import { eachWeekendOfMonth } from './index.js'
 
 describe('eachWeekendOfMonth', () => {
   it('returns all weekends of the given month', () => {

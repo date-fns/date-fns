@@ -1,9 +1,9 @@
-import addDays from '../addDays/index.js'
-import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
-import isSameDay from '../isSameDay/index.js'
-import isValid from '../isValid/index.js'
-import isWeekend from '../isWeekend/index.js'
-import toDate from '../toDate/index.js'
+import { addDays } from '../addDays/index.js'
+import { differenceInCalendarDays } from '../differenceInCalendarDays/index.js'
+import { isSameDay } from '../isSameDay/index.js'
+import { isValid } from '../isValid/index.js'
+import { isWeekend } from '../isWeekend/index.js'
+import { toDate } from '../toDate/index.js'
 
 /**
  * @name differenceInBusinessDays
@@ -56,7 +56,7 @@ import toDate from '../toDate/index.js'
  * )
  * //=> 0
  */
-export default function differenceInBusinessDays<DateType extends Date>(
+export function differenceInBusinessDays<DateType extends Date>(
   dateLeft: DateType | number | string,
   dateRight: DateType | number | string
 ): number {

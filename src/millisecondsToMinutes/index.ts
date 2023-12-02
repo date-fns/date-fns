@@ -22,7 +22,7 @@ import { millisecondsInMinute } from '../constants/index.js'
  * const result = millisecondsToMinutes(119999)
  * //=> 1
  */
-export default function millisecondsToMinutes(milliseconds: number): number {
+export function millisecondsToMinutes(milliseconds: number): number {
   const minutes = milliseconds / millisecondsInMinute
   return Math.floor(minutes)
 }

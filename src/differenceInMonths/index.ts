@@ -1,7 +1,7 @@
-import compareAsc from '../compareAsc/index.js'
-import differenceInCalendarMonths from '../differenceInCalendarMonths/index.js'
-import isLastDayOfMonth from '../isLastDayOfMonth/index.js'
-import toDate from '../toDate/index.js'
+import { compareAsc } from '../compareAsc/index.js'
+import { differenceInCalendarMonths } from '../differenceInCalendarMonths/index.js'
+import { isLastDayOfMonth } from '../isLastDayOfMonth/index.js'
+import { toDate } from '../toDate/index.js'
 
 /**
  * @name differenceInMonths
@@ -23,7 +23,7 @@ import toDate from '../toDate/index.js'
  * const result = differenceInMonths(new Date(2014, 8, 1), new Date(2014, 0, 31))
  * //=> 7
  */
-export default function differenceInMonths<DateType extends Date>(
+export function differenceInMonths<DateType extends Date>(
   dateLeft: DateType | number | string,
   dateRight: DateType | number | string
 ): number {

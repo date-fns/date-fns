@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import roundToNearestMinutes from './index.js'
+import { roundToNearestMinutes } from './index.js'
 
 describe('roundToNearestMinutes', () => {
   it('rounds given date to the nearest minute by default', () => {

@@ -1,6 +1,6 @@
 import type { FormatDistanceToken } from '../locale/types.js'
 import type { Duration, DurationUnit, LocalizedOptions } from '../types.js'
-import defaultLocale from '../_lib/defaultLocale/index.js'
+import { defaultLocale } from '../_lib/defaultLocale/index.js'
 import { getDefaultOptions } from '../_lib/defaultOptions/index.js'
 
 /**
@@ -86,7 +86,7 @@ const defaultFormat: DurationUnit[] = [
  * formatDuration({ years: 2, months: 9, weeks: 3 }, { delimiter: ', ' })
  * //=> '2 years, 9 months, 3 weeks'
  */
-export default function formatDuration(
+export function formatDuration(
   duration: Duration,
   options?: FormatDurationOptions
 ): string {

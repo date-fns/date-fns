@@ -9,6 +9,5 @@ const formatRelativeLocale = {
   other: 'P',
 }
 
-const formatRelative: FormatRelativeFn = (token) => formatRelativeLocale[token]
-
-export default formatRelative
+export const formatRelative: FormatRelativeFn = (token) =>
+  formatRelativeLocale[token]

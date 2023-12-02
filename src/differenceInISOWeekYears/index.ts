@@ -1,7 +1,7 @@
-import compareAsc from '../compareAsc/index.js'
-import differenceInCalendarISOWeekYears from '../differenceInCalendarISOWeekYears/index.js'
-import subISOWeekYears from '../subISOWeekYears/index.js'
-import toDate from '../toDate/index.js'
+import { compareAsc } from '../compareAsc/index.js'
+import { differenceInCalendarISOWeekYears } from '../differenceInCalendarISOWeekYears/index.js'
+import { subISOWeekYears } from '../subISOWeekYears/index.js'
+import { toDate } from '../toDate/index.js'
 
 /**
  * @name differenceInISOWeekYears
@@ -28,7 +28,7 @@ import toDate from '../toDate/index.js'
  * )
  * //=> 1
  */
-export default function differenceInISOWeekYears<DateType extends Date>(
+export function differenceInISOWeekYears<DateType extends Date>(
   dateLeft: DateType | number | string,
   dateRight: DateType | number | string
 ): number {

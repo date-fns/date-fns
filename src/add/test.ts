@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import add from './index.js'
+import { add } from './index.js'
 import { getDstTransitions } from '../../test/dst/tzOffsetTransitions.js'
 
 describe('add', () => {

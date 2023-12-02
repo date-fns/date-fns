@@ -1,5 +1,5 @@
-import isValid from '../isValid/index.js'
-import toDate from '../toDate/index.js'
+import { isValid } from '../isValid/index.js'
+import { toDate } from '../toDate/index.js'
 import type {
   AdditionalTokensOptions,
   Day,
@@ -8,10 +8,10 @@ import type {
   LocalizedOptions,
   WeekOptions,
 } from '../types.js'
-import defaultLocale from '../_lib/defaultLocale/index.js'
+import { defaultLocale } from '../_lib/defaultLocale/index.js'
 import { getDefaultOptions } from '../_lib/defaultOptions/index.js'
-import formatters from '../_lib/format/formatters/index.js'
-import longFormatters from '../_lib/format/longFormatters/index.js'
+import { formatters } from '../_lib/format/formatters/index.js'
+import { longFormatters } from '../_lib/format/longFormatters/index.js'
 import {
   isProtectedDayOfYearToken,
   isProtectedWeekYearToken,
@@ -334,7 +334,7 @@ export interface FormatOptions
  * const result = format(new Date(2014, 6, 2, 15), "h 'o''clock'")
  * //=> "3 o'clock"
  */
-export default function format<DateType extends Date>(
+export function format<DateType extends Date>(
   date: DateType | number | string,
   formatStr: string,
   options?: FormatOptions

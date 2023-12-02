@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import getDaysInMonth from './index.js'
+import { getDaysInMonth } from './index.js'
 
 describe('getDaysInMonth', () => {
   it('returns the number of days in the month of the given date', () => {

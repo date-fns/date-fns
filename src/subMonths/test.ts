@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import subMonths from './index.js'
+import { subMonths } from './index.js'
 
 describe('subMonths', () => {
   it('subtracts the given number of months', () => {

@@ -1,5 +1,5 @@
-import setMonth from '../setMonth/index.js'
-import toDate from '../toDate/index.js'
+import { setMonth } from '../setMonth/index.js'
+import { toDate } from '../toDate/index.js'
 
 /**
  * @name setQuarter
@@ -21,7 +21,7 @@ import toDate from '../toDate/index.js'
  * const result = setQuarter(new Date(2014, 6, 2), 2)
  * //=> Wed Apr 02 2014 00:00:00
  */
-export default function setQuarter<DateType extends Date>(
+export function setQuarter<DateType extends Date>(
   date: DateType | number | string,
   quarter: number
 ): DateType {

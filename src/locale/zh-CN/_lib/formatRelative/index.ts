@@ -1,4 +1,4 @@
-import isSameWeek from '../../../../isSameWeek/index.js'
+import { isSameWeek } from '../../../../isSameWeek/index.js'
 import type {
   FormatRelativeFn,
   FormatRelativeFnOptions,
@@ -28,7 +28,12 @@ const formatRelativeLocale = {
   other: 'PP p',
 }
 
-const formatRelative: FormatRelativeFn = (token, date, baseDate, options) => {
+export const formatRelative: FormatRelativeFn = (
+  token,
+  date,
+  baseDate,
+  options
+) => {
   const format = formatRelativeLocale[token]
 
   if (typeof format === 'function') {
@@ -37,5 +42,3 @@ const formatRelative: FormatRelativeFn = (token, date, baseDate, options) => {
 
   return format
 }
-
-export default formatRelative

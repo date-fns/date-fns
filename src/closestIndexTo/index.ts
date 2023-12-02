@@ -1,4 +1,4 @@
-import toDate from '../toDate/index.js'
+import { toDate } from '../toDate/index.js'
 
 /**
  * @name closestIndexTo
@@ -26,7 +26,7 @@ import toDate from '../toDate/index.js'
  * const result = closestIndexTo(dateToCompare, datesArray)
  * //=> 1
  */
-export default function closestIndexTo<DateType extends Date>(
+export function closestIndexTo<DateType extends Date>(
   dateToCompare: DateType | number | string,
   dates: Array<DateType | number | string>
 ): number | undefined {

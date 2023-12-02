@@ -1,4 +1,4 @@
-import toDate from '../toDate/index.js'
+import { toDate } from '../toDate/index.js'
 
 /**
  * @name isThursday
@@ -19,7 +19,7 @@ import toDate from '../toDate/index.js'
  * const result = isThursday(new Date(2014, 8, 25))
  * //=> true
  */
-export default function isThursday<DateType extends Date>(
+export function isThursday<DateType extends Date>(
   date: DateType | number | string
 ): boolean {
   return toDate(date).getDay() === 4

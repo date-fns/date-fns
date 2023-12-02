@@ -1,4 +1,4 @@
-import toDate from '../toDate/index.js'
+import { toDate } from '../toDate/index.js'
 
 /**
  * @name max
@@ -24,7 +24,7 @@ import toDate from '../toDate/index.js'
  * ])
  * //=> Sun Jul 02 1995 00:00:00
  */
-export default function max<DateType extends Date>(
+export function max<DateType extends Date>(
   dates: Array<DateType | number | string>
 ): DateType | Date {
   let result: Date | undefined

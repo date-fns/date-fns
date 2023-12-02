@@ -1,11 +1,11 @@
-import add from '../add/index.js'
-import differenceInDays from '../differenceInDays/index.js'
-import differenceInHours from '../differenceInHours/index.js'
-import differenceInMinutes from '../differenceInMinutes/index.js'
-import differenceInMonths from '../differenceInMonths/index.js'
-import differenceInSeconds from '../differenceInSeconds/index.js'
-import differenceInYears from '../differenceInYears/index.js'
-import toDate from '../toDate/index.js'
+import { add } from '../add/index.js'
+import { differenceInDays } from '../differenceInDays/index.js'
+import { differenceInHours } from '../differenceInHours/index.js'
+import { differenceInMinutes } from '../differenceInMinutes/index.js'
+import { differenceInMonths } from '../differenceInMonths/index.js'
+import { differenceInSeconds } from '../differenceInSeconds/index.js'
+import { differenceInYears } from '../differenceInYears/index.js'
+import { toDate } from '../toDate/index.js'
 import type { Duration, Interval } from '../types.js'
 
 /**
@@ -30,7 +30,7 @@ import type { Duration, Interval } from '../types.js'
  * })
  * // => { years: 39, months: 2, days: 20, hours: 7, minutes: 5, seconds: 0 }
  */
-export default function intervalToDuration<DateType extends Date>(
+export function intervalToDuration<DateType extends Date>(
   interval: Interval<DateType>
 ): Duration {
   const start = toDate(interval.start)

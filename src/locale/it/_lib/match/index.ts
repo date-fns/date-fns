@@ -1,7 +1,7 @@
 import type { Quarter } from '../../../../types.js'
 import type { Match } from '../../../types.js'
-import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
-import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
+import { buildMatchFn } from '../../../_lib/buildMatchFn/index.js'
+import { buildMatchPatternFn } from '../../../_lib/buildMatchPatternFn/index.js'
 
 const matchOrdinalNumberPattern = /^(\d+)(º)?/i
 const parseOrdinalNumberPattern = /\d+/i
@@ -89,7 +89,7 @@ const parseDayPeriodPatterns = {
   },
 }
 
-const match: Match = {
+export const match: Match = {
   ordinalNumber: buildMatchPatternFn({
     matchPattern: matchOrdinalNumberPattern,
     parsePattern: parseOrdinalNumberPattern,
@@ -132,5 +132,3 @@ const match: Match = {
     defaultParseWidth: 'any',
   }),
 }
-
-export default match

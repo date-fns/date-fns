@@ -1,6 +1,6 @@
 import type { Match } from '../../../locale/types.js'
-import setWeek from '../../../setWeek/index.js'
-import startOfWeek from '../../../startOfWeek/index.js'
+import { setWeek } from '../../../setWeek/index.js'
+import { startOfWeek } from '../../../startOfWeek/index.js'
 import { numericPatterns } from '../constants.js'
 import { Parser } from '../Parser.js'
 import type { ParseFlags, ParseResult, ParserOptions } from '../types.js'

@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import differenceInMonths from './index.js'
+import { differenceInMonths } from './index.js'
 
 describe('differenceInMonths', () => {
   it('returns the number of full months between the given dates', () => {

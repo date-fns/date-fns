@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import parseISO from './index.js'
+import { parseISO } from './index.js'
 
 describe('parseISO', () => {
   describe('string argument', () => {

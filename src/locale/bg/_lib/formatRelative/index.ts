@@ -1,5 +1,5 @@
-import isSameWeek from '../../../../isSameWeek/index.js'
-import toDate from '../../../../toDate/index.js'
+import { isSameWeek } from '../../../../isSameWeek/index.js'
+import { toDate } from '../../../../toDate/index.js'
 import type { Day } from '../../../../types.js'
 import type { FormatRelativeFn, FormatRelativeTokenFn } from '../../../types.js'
 
@@ -94,7 +94,12 @@ const formatRelativeLocale = {
   other: 'P',
 }
 
-const formatRelative: FormatRelativeFn = (token, date, baseDate, options) => {
+export const formatRelative: FormatRelativeFn = (
+  token,
+  date,
+  baseDate,
+  options
+) => {
   const format = formatRelativeLocale[token]
 
   if (typeof format === 'function') {
@@ -103,5 +108,3 @@ const formatRelative: FormatRelativeFn = (token, date, baseDate, options) => {
 
   return format
 }
-
-export default formatRelative

@@ -1,14 +1,14 @@
-import constructFrom from '../constructFrom/index.js'
-import getDefaultOptions from '../getDefaultOptions/index.js'
-import defaultLocale from '../locale/en-US/index.js'
-import toDate from '../toDate/index.js'
+import { constructFrom } from '../constructFrom/index.js'
+import { getDefaultOptions } from '../getDefaultOptions/index.js'
+import { enUS as defaultLocale } from '../locale/en-US/index.js'
+import { toDate } from '../toDate/index.js'
 import type {
   AdditionalTokensOptions,
   FirstWeekContainsDateOptions,
   LocalizedOptions,
   WeekOptions,
 } from '../types.js'
-import longFormatters from '../_lib/format/longFormatters/index.js'
+import { longFormatters } from '../_lib/format/longFormatters/index.js'
 import {
   isProtectedDayOfYearToken,
   isProtectedWeekYearToken,
@@ -348,7 +348,7 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * })
  * //=> Sun Feb 28 2010 00:00:00
  */
-export default function parse<DateType extends Date>(
+export function parse<DateType extends Date>(
   dateStr: string,
   formatStr: string,
   referenceDate: DateType | number | string,

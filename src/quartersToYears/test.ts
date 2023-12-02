@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import quartersToYears from './index.js'
+import { quartersToYears } from './index.js'
 
 describe('quartersToYears', () => {
   it('converts quarters to years', () => {

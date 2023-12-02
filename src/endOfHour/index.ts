@@ -1,4 +1,4 @@
-import toDate from '../toDate/index.js'
+import { toDate } from '../toDate/index.js'
 
 /**
  * @name endOfHour
@@ -20,7 +20,7 @@ import toDate from '../toDate/index.js'
  * const result = endOfHour(new Date(2014, 8, 2, 11, 55))
  * //=> Tue Sep 02 2014 11:59:59.999
  */
-export default function endOfHour<DateType extends Date>(
+export function endOfHour<DateType extends Date>(
   date: DateType | number | string
 ): DateType {
   const _date = toDate(date)

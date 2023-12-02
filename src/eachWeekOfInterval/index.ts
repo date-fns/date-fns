@@ -1,6 +1,6 @@
-import addWeeks from '../addWeeks/index.js'
-import startOfWeek from '../startOfWeek/index.js'
-import toDate from '../toDate/index.js'
+import { addWeeks } from '../addWeeks/index.js'
+import { startOfWeek } from '../startOfWeek/index.js'
+import { toDate } from '../toDate/index.js'
 import type {
   Interval,
   LocalizedOptions,
@@ -48,7 +48,7 @@ export interface EachWeekOfIntervalOptions
  * //   Sun Nov 23 2014 00:00:00
  * // ]
  */
-export default function eachWeekOfInterval<DateType extends Date>(
+export function eachWeekOfInterval<DateType extends Date>(
   interval: Interval<DateType>,
   options?: EachWeekOfIntervalOptions
 ): DateType[] {

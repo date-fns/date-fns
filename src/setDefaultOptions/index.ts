@@ -49,7 +49,7 @@ import {
  * const result = startOfWeek(new Date(2014, 8, 2))
  * //=> Sun Aug 31 2014 00:00:00
  */
-export default function setDefaultOptions(options: DefaultOptions): void {
+export function setDefaultOptions(options: DefaultOptions): void {
   const result: DefaultOptions = {}
   const defaultOptions = getDefaultOptions()
 

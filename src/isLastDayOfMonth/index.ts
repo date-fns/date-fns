@@ -1,6 +1,6 @@
-import endOfDay from '../endOfDay/index.js'
-import endOfMonth from '../endOfMonth/index.js'
-import toDate from '../toDate/index.js'
+import { endOfDay } from '../endOfDay/index.js'
+import { endOfMonth } from '../endOfMonth/index.js'
+import { toDate } from '../toDate/index.js'
 
 /**
  * @name isLastDayOfMonth
@@ -21,7 +21,7 @@ import toDate from '../toDate/index.js'
  * const result = isLastDayOfMonth(new Date(2014, 1, 28))
  * //=> true
  */
-export default function isLastDayOfMonth<DateType extends Date>(
+export function isLastDayOfMonth<DateType extends Date>(
   date: DateType | number | string
 ): boolean {
   const _date = toDate(date)

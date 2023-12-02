@@ -1,4 +1,4 @@
-import toDate from '../toDate/index.js'
+import { toDate } from '../toDate/index.js'
 
 /**
  * @name differenceInMilliseconds
@@ -24,7 +24,7 @@ import toDate from '../toDate/index.js'
  * )
  * //=> 1100
  */
-export default function differenceInMilliseconds<DateType extends Date>(
+export function differenceInMilliseconds<DateType extends Date>(
   dateLeft: DateType | number | string,
   dateRight: DateType | number | string
 ): number {

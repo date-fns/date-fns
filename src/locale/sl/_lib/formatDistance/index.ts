@@ -326,7 +326,7 @@ function getFormFromCount(count: number): keyof Plural {
   }
 }
 
-const formatDistance: FormatDistanceFn = (token, count, options) => {
+export const formatDistance: FormatDistanceFn = (token, count, options) => {
   let result = ''
   let tense: keyof Tense = 'present'
 
@@ -355,5 +355,3 @@ const formatDistance: FormatDistanceFn = (token, count, options) => {
 
   return result
 }
-
-export default formatDistance

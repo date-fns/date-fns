@@ -30,7 +30,7 @@ import type { Duration } from '../types.js'
  * milliseconds({ months: 3 })
  * //=> 7889238000
  */
-export default function milliseconds({
+export function milliseconds({
   years,
   months,
   weeks,

@@ -1,4 +1,4 @@
-import toDate from '../toDate/index.js'
+import { toDate } from '../toDate/index.js'
 
 /**
  * @name compareAsc
@@ -34,7 +34,7 @@ import toDate from '../toDate/index.js'
  * //   Sun Jul 02 1995 00:00:00
  * // ]
  */
-export default function compareAsc<DateType extends Date>(
+export function compareAsc<DateType extends Date>(
   dateLeft: DateType | number | string,
   dateRight: DateType | number | string
 ): number {

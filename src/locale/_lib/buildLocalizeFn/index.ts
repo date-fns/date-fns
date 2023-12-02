@@ -104,7 +104,7 @@ export type LocalizeMonthValues = readonly [
   string
 ]
 
-export default function buildLocalizeFn<
+export function buildLocalizeFn<
   Value extends LocaleUnitValue,
   ArgCallback extends LocalizeFnArgCallback<Value> | undefined
 >(args: BuildLocalizeFnArgs<Value, ArgCallback>): LocalizeFn<Value> {

@@ -1,5 +1,5 @@
-import constructFrom from '../constructFrom/index.js'
-import toDate from '../toDate/index.js'
+import { constructFrom } from '../constructFrom/index.js'
+import { toDate } from '../toDate/index.js'
 import type { NearestMinutesOptions, RoundingOptions } from '../types.js'
 import { getRoundingMethod } from '../_lib/roundingMethods/index.js'
 
@@ -37,7 +37,7 @@ export interface RoundToNearestMinutesOptions
  * // rounds up because given date is exactly between 12:00:00 and 12:15:00
  * //=> Thu Jul 10 2014 12:15:00
  */
-export default function roundToNearestMinutes<DateType extends Date>(
+export function roundToNearestMinutes<DateType extends Date>(
   date: DateType | number | string,
   options?: RoundToNearestMinutesOptions
 ): DateType {

@@ -1,5 +1,5 @@
-import toDate from '../toDate/index.js'
-import constructFrom from '../constructFrom/index.js'
+import { toDate } from '../toDate/index.js'
+import { constructFrom } from '../constructFrom/index.js'
 
 /**
  * @name startOfYear
@@ -21,7 +21,7 @@ import constructFrom from '../constructFrom/index.js'
  * const result = startOfYear(new Date(2014, 8, 2, 11, 55, 00))
  * //=> Wed Jan 01 2014 00:00:00
  */
-export default function startOfYear<DateType extends Date>(
+export function startOfYear<DateType extends Date>(
   date: DateType | number | string
 ): DateType {
   const cleanDate = toDate(date)

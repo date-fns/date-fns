@@ -1,4 +1,4 @@
-import differenceInDays from '../differenceInDays/index.js'
+import { differenceInDays } from '../differenceInDays/index.js'
 import type { RoundingOptions } from '../types.js'
 import { getRoundingMethod } from '../_lib/roundingMethods/index.js'
 
@@ -49,7 +49,7 @@ export interface DifferenceInWeeksOptions extends RoundingOptions {}
  * )
  * //=> 8
  */
-export default function differenceInWeeks<DateType extends Date>(
+export function differenceInWeeks<DateType extends Date>(
   dateLeft: DateType | number | string,
   dateRight: DateType | number | string,
   options?: DifferenceInWeeksOptions

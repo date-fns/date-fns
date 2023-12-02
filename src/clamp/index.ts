@@ -1,5 +1,5 @@
-import max from '../max/index.js'
-import min from '../min/index.js'
+import { max } from '../max/index.js'
+import { min } from '../min/index.js'
 import type { Interval } from '../types.js'
 
 /**
@@ -30,7 +30,7 @@ import type { Interval } from '../types.js'
  * })
  * //=> Mon Mar 22 2021 00:00:00
  */
-export default function clamp<DateType extends Date>(
+export function clamp<DateType extends Date>(
   date: DateType | number | string,
   interval: Interval
 ): DateType | Date {

@@ -307,7 +307,7 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   },
 }
 
-const formatDistance: FormatDistanceFn = (token, count, options) => {
+export const formatDistance: FormatDistanceFn = (token, count, options) => {
   let pluralResult
 
   const tokenValue = formatDistanceLocale[token]
@@ -338,5 +338,3 @@ const formatDistance: FormatDistanceFn = (token, count, options) => {
 
   return timeResult.replace('{{count}}', String(count))
 }
-
-export default formatDistance

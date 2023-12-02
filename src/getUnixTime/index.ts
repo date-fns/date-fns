@@ -1,4 +1,4 @@
-import getTime from '../getTime/index.js'
+import { getTime } from '../getTime/index.js'
 
 /**
  * @name getUnixTime
@@ -19,7 +19,7 @@ import getTime from '../getTime/index.js'
  * const result = getUnixTime(new Date(2012, 1, 29, 11, 45, 5))
  * //=> 1330512305
  */
-export default function getUnixTime<DateType extends Date>(
+export function getUnixTime<DateType extends Date>(
   date: DateType | number | string
 ): number {
   return Math.floor(getTime(date) / 1000)

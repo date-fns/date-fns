@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import isSameMonth from './index.js'
+import { isSameMonth } from './index.js'
 
 describe('isSameMonth', () => {
   it('returns true if the given dates have the same month (and year)', () => {

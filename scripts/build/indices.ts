@@ -66,7 +66,7 @@ async function generatePackageJSON({
             default: './index.js',
           },
           import: {
-            types: './index.d.ts',
+            types: './index.d.mts',
             default: './index.mjs',
           },
         },
@@ -95,7 +95,7 @@ function mapExports(paths: string[], prefix = '.') {
           default: `${pth}.js`,
         },
         import: {
-          types: `${pth}.d.ts`,
+          types: `${pth}.d.mts`,
           default: `${pth}.mjs`,
         },
       },
@@ -114,9 +114,7 @@ function generateIndex({
   isFP,
   includeConstants,
 }: GenerateIndexProps): string {
-  const lines = files.map(
-    (file) => `export { default as ${file.name} } from '${file.path}/index.js'`
-  )
+  const lines = files.map((file) => `export * from '${file.path}/index.js'`)
 
   if (includeConstants)
     lines.push(`export * from '${isFP ? '..' : '.'}/constants/index.js'`)

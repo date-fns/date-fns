@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import formatDuration from './index.js'
+import { formatDuration } from './index.js'
 
 describe('formatDuration', () => {
   it('formats full duration', () => {

@@ -24,7 +24,7 @@ import type { Duration } from '../types.js'
  * })
  * //=> 'P39Y2M20DT0H0M0S'
  */
-export default function formatISODuration(duration: Duration): string {
+export function formatISODuration(duration: Duration): string {
   const {
     years = 0,
     months = 0,

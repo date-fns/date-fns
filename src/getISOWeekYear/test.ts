@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import getISOWeekYear from './index.js'
+import { getISOWeekYear } from './index.js'
 
 describe('getISOWeekYear', () => {
   it('returns the ISO week-numbering year of the given date', () => {

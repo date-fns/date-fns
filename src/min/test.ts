@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import min from './index.js'
+import { min } from './index.js'
 
 describe('min', () => {
   const isInvalidDate = (date: any): boolean => {

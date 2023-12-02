@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import previousMonday from './index.js'
+import { previousMonday } from './index.js'
 
 describe('previousMonday', () => {
   it('returns the previous Monday given various dates after the same', () => {

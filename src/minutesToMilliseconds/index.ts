@@ -17,6 +17,6 @@ import { millisecondsInMinute } from '../constants/index.js'
  * const result = minutesToMilliseconds(2)
  * //=> 120000
  */
-export default function minutesToMilliseconds(minutes: number): number {
+export function minutesToMilliseconds(minutes: number): number {
   return Math.floor(minutes * millisecondsInMinute)
 }

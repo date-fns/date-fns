@@ -1,5 +1,5 @@
 import type { Localize, LocalizeFn } from '../../../types.js'
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
+import { buildLocalizeFn } from '../../../_lib/buildLocalizeFn/index.js'
 
 // Reference: https://www.unicode.org/cldr/charts/32/summary/kn.html
 
@@ -154,7 +154,7 @@ const ordinalNumber: LocalizeFn<number> = (dirtyNumber, _options) => {
   return number + 'ನೇ'
 }
 
-const localize: Localize = {
+export const localize: Localize = {
   ordinalNumber,
 
   era: buildLocalizeFn({
@@ -185,5 +185,3 @@ const localize: Localize = {
     defaultFormattingWidth: 'wide',
   }),
 }
-
-export default localize

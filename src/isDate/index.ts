@@ -30,7 +30,7 @@
  * const result = isDate({})
  * //=> false
  */
-export default function isDate(value: unknown): value is Date {
+export function isDate(value: unknown): value is Date {
   return (
     value instanceof Date ||
     (typeof value === 'object' &&

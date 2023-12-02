@@ -1,5 +1,5 @@
-import isDate from '../isDate/index.js'
-import toDate from '../toDate/index.js'
+import { isDate } from '../isDate/index.js'
+import { toDate } from '../toDate/index.js'
 
 /**
  * @name isValid
@@ -34,7 +34,7 @@ import toDate from '../toDate/index.js'
  * const result = isValid(new Date(''))
  * //=> false
  */
-export default function isValid(date: unknown): boolean {
+export function isValid(date: unknown): boolean {
   if (!isDate(date) && typeof date !== 'number') {
     return false
   }

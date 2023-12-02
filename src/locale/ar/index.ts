@@ -1,8 +1,8 @@
-import formatDistance from './_lib/formatDistance/index.js'
-import formatLong from './_lib/formatLong/index.js'
-import formatRelative from './_lib/formatRelative/index.js'
-import localize from './_lib/localize/index.js'
-import match from './_lib/match/index.js'
+import { formatDistance } from './_lib/formatDistance/index.js'
+import { formatLong } from './_lib/formatLong/index.js'
+import { formatRelative } from './_lib/formatRelative/index.js'
+import { localize } from './_lib/localize/index.js'
+import { match } from './_lib/match/index.js'
 import type { Locale } from '../types.js'
 
 /**
@@ -13,7 +13,7 @@ import type { Locale } from '../types.js'
  * @author Abdallah Hassan [@AbdallahAHO](https://github.com/AbdallahAHO)
  * @author Koussay Haj Kacem [@essana3](https://github.com/essana3)
  */
-const locale: Locale = {
+export const ar: Locale = {
   code: 'ar',
   formatDistance: formatDistance,
   formatLong: formatLong,
@@ -25,5 +25,3 @@ const locale: Locale = {
     firstWeekContainsDate: 1,
   },
 }
-
-export default locale

@@ -220,7 +220,7 @@ function getResultByTense(
   return parentToken.default
 }
 
-const formatDistance: FormatDistanceFn = (token, count, options) => {
+export const formatDistance: FormatDistanceFn = (token, count, options) => {
   let result
 
   const tokenValue =
@@ -234,5 +234,3 @@ const formatDistance: FormatDistanceFn = (token, count, options) => {
 
   return result.replace('{{count}}', String(count))
 }
-
-export default formatDistance

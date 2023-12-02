@@ -1,5 +1,5 @@
-import addHours from '../addHours/index.js'
-import toDate from '../toDate/index.js'
+import { addHours } from '../addHours/index.js'
+import { toDate } from '../toDate/index.js'
 import type { Interval, StepOptions } from '../types.js'
 
 /**
@@ -35,7 +35,7 @@ export interface EachHourOfIntervalOptions extends StepOptions {}
  * //   Mon Oct 06 2014 15:00:00
  * // ]
  */
-export default function eachHourOfInterval<DateType extends Date>(
+export function eachHourOfInterval<DateType extends Date>(
   interval: Interval<DateType>,
   options?: EachHourOfIntervalOptions
 ): DateType[] {

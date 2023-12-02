@@ -1,5 +1,5 @@
-import addDays from '../addDays/index.js'
-import toDate from '../toDate/index.js'
+import { addDays } from '../addDays/index.js'
+import { toDate } from '../toDate/index.js'
 import type { LocalizedOptions, WeekOptions } from '../types.js'
 import { getDefaultOptions } from '../_lib/defaultOptions/index.js'
 
@@ -36,7 +36,7 @@ export interface SetDayOptions
  * const result = setDay(new Date(2014, 8, 1), 0, { weekStartsOn: 1 })
  * //=> Sun Sep 07 2014 00:00:00
  */
-export default function setDay<DateType extends Date>(
+export function setDay<DateType extends Date>(
   date: DateType | number | string,
   day: number,
   options?: SetDayOptions

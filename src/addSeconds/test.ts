@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import addSeconds from './index.js'
+import { addSeconds } from './index.js'
 
 describe('addSeconds', () => {
   it('adds the given number of seconds', () => {

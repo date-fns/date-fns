@@ -7,15 +7,15 @@ import {
   secondsInWeek,
   secondsInYear,
 } from '../constants/index.js'
-import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
-import differenceInCalendarMonths from '../differenceInCalendarMonths/index.js'
-import differenceInCalendarQuarters from '../differenceInCalendarQuarters/index.js'
-import differenceInCalendarWeeks from '../differenceInCalendarWeeks/index.js'
-import differenceInCalendarYears from '../differenceInCalendarYears/index.js'
-import differenceInHours from '../differenceInHours/index.js'
-import differenceInMinutes from '../differenceInMinutes/index.js'
-import differenceInSeconds from '../differenceInSeconds/index.js'
-import toDate from '../toDate/index.js'
+import { differenceInCalendarDays } from '../differenceInCalendarDays/index.js'
+import { differenceInCalendarMonths } from '../differenceInCalendarMonths/index.js'
+import { differenceInCalendarQuarters } from '../differenceInCalendarQuarters/index.js'
+import { differenceInCalendarWeeks } from '../differenceInCalendarWeeks/index.js'
+import { differenceInCalendarYears } from '../differenceInCalendarYears/index.js'
+import { differenceInHours } from '../differenceInHours/index.js'
+import { differenceInMinutes } from '../differenceInMinutes/index.js'
+import { differenceInSeconds } from '../differenceInSeconds/index.js'
+import { toDate } from '../toDate/index.js'
 
 /**
  * The {@link intlFormatDistance} function options.
@@ -145,7 +145,7 @@ export type IntlFormatDistanceUnit =
  * )
  * //=> 'in 2 yr'
  */
-export default function intlFormatDistance<DateType extends Date>(
+export function intlFormatDistance<DateType extends Date>(
   date: DateType | number | string,
   baseDate: DateType | number | string,
   options?: IntlFormatDistanceOptions

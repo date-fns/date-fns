@@ -1,6 +1,6 @@
-import constructFrom from '../constructFrom/index.js'
-import getWeekYear from '../getWeekYear/index.js'
-import startOfWeek from '../startOfWeek/index.js'
+import { constructFrom } from '../constructFrom/index.js'
+import { getWeekYear } from '../getWeekYear/index.js'
+import { startOfWeek } from '../startOfWeek/index.js'
 import type {
   FirstWeekContainsDateOptions,
   LocalizedOptions,
@@ -52,7 +52,7 @@ export interface StartOfWeekYearOptions
  * })
  * //=> Mon Jan 03 2005 00:00:00
  */
-export default function startOfWeekYear<DateType extends Date>(
+export function startOfWeekYear<DateType extends Date>(
   date: DateType | number | string,
   options?: StartOfWeekYearOptions
 ): DateType {

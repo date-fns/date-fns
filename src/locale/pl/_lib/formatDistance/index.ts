@@ -173,7 +173,7 @@ function declension(
   return finalText.replace('{{count}}', String(count))
 }
 
-const formatDistance: FormatDistanceFn = (token, count, options) => {
+export const formatDistance: FormatDistanceFn = (token, count, options) => {
   const scheme = formatDistanceLocale[token]
   if (!options?.addSuffix) {
     return declension(scheme, count, 'regular')
@@ -185,5 +185,3 @@ const formatDistance: FormatDistanceFn = (token, count, options) => {
     return declension(scheme, count, 'past') + ' temu'
   }
 }
-
-export default formatDistance

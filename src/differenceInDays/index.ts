@@ -1,5 +1,5 @@
-import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
-import toDate from '../toDate/index.js'
+import { differenceInCalendarDays } from '../differenceInCalendarDays/index.js'
+import { toDate } from '../toDate/index.js'
 
 /**
  * @name differenceInDays
@@ -55,7 +55,7 @@ import toDate from '../toDate/index.js'
  * )
  * //=> 92
  */
-export default function differenceInDays<DateType extends Date>(
+export function differenceInDays<DateType extends Date>(
   dateLeft: DateType | number | string,
   dateRight: DateType | number | string
 ): number {

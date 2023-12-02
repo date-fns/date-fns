@@ -1,5 +1,5 @@
-import addDays from '../addDays/index.js'
-import getDay from '../getDay/index.js'
+import { addDays } from '../addDays/index.js'
+import { getDay } from '../getDay/index.js'
 import type { Day } from '../types.js'
 
 /**
@@ -27,7 +27,7 @@ import type { Day } from '../types.js'
  * const result = nextDay(new Date(2020, 2, 21), 2)
  * //=> Tue Mar 24 2020 00:00:00
  */
-export default function nextDay<DateType extends Date>(
+export function nextDay<DateType extends Date>(
   date: DateType | number | string,
   day: Day
 ): DateType {

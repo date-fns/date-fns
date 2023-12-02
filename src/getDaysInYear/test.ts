@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import getDaysInYear from './index.js'
+import { getDaysInYear } from './index.js'
 
 describe('getDaysInYear', () => {
   it('returns the number of days in the year of the given date', () => {

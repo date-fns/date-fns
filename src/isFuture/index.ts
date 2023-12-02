@@ -1,4 +1,4 @@
-import toDate from '../toDate/index.js'
+import { toDate } from '../toDate/index.js'
 
 /**
  * @name isFuture
@@ -20,7 +20,7 @@ import toDate from '../toDate/index.js'
  * const result = isFuture(new Date(2014, 11, 31))
  * //=> true
  */
-export default function isFuture<DateType extends Date>(
+export function isFuture<DateType extends Date>(
   date: DateType | number | string
 ): boolean {
   return +toDate(date) > Date.now()

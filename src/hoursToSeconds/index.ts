@@ -19,6 +19,6 @@ import { secondsInHour } from '../constants/index.js'
  * const result = hoursToSeconds(2)
  * //=> 7200
  */
-export default function hoursToSeconds(hours: number): number {
+export function hoursToSeconds(hours: number): number {
   return Math.floor(hours * secondsInHour)
 }

@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import setHours from './index.js'
+import { setHours } from './index.js'
 
 describe('setHours', () => {
   it('sets the amount of hours', () => {

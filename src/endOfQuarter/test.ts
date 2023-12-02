@@ -2,7 +2,7 @@
 
 import assert from 'assert'
 import { describe, it } from 'vitest'
-import endOfQuarter from './index.js'
+import { endOfQuarter } from './index.js'
 
 describe('endOfQuarter', () => {
   it('returns the date with the time set to 23:59:59.999 and the date set to the last day of a quarter', () => {

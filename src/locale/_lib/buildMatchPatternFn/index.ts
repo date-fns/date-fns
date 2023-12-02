@@ -6,7 +6,7 @@ export interface BuildMatchPatternFnArgs<Result> {
   valueCallback?: MatchValueCallback<string, Result>
 }
 
-export default function buildMatchPatternFn<Result>(
+export function buildMatchPatternFn<Result>(
   args: BuildMatchPatternFnArgs<Result>
 ): MatchFn<Result> {
   return (string, options = {}) => {
