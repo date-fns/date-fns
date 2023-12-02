@@ -1,0 +1,21 @@
+.uncovered {
+  background: rgba(235, 26, 26, 0.3);
+}
+.CodeMirror {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  height: auto;
+}
+.TS-lineuncovered {
+  background: rgba(255, 255, 255, 0.3);
+  width: 24px;
+}
+/* NOTE: I have to increase the specificity because of semantic-ui */
+p.footer-text {
+  text-align: center;
+  margin: 3em 0;
+}
+.gutter-marker {
+  text-align: center;
+  font-size: 0.6em;
+}

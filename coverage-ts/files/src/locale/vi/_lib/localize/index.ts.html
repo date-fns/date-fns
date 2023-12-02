@@ -1,0 +1,323 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/vi/_lib/localize/index.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">166</td><td class="">166</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import type { Localize, LocalizeFn } from &#x27;../../../types&#x27;
+import buildLocalizeFn from &#x27;../../../_lib/buildLocalizeFn/index&#x27;
+
+// Vietnamese locale reference: http://www.localeplanet.com/icu/vi-VN/index.html
+// Capitalization reference: http://hcmup.edu.vn/index.php?option=com_content&amp;view=article&amp;id=4106%3Avit-hoa-trong-vn-bn-hanh-chinh&amp;catid=2345%3Atham-kho&amp;Itemid=4103&amp;lang=vi&amp;site=134
+
+const eraValues = {
+  narrow: [&#x27;TCN&#x27;, &#x27;SCN&#x27;] as const,
+  abbreviated: [&#x27;trước CN&#x27;, &#x27;sau CN&#x27;] as const,
+  wide: [&#x27;trước Công Nguyên&#x27;, &#x27;sau Công Nguyên&#x27;] as const,
+}
+
+const quarterValues = {
+  narrow: [&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;, &#x27;4&#x27;] as const,
+  abbreviated: [&#x27;Q1&#x27;, &#x27;Q2&#x27;, &#x27;Q3&#x27;, &#x27;Q4&#x27;] as const,
+  wide: [&#x27;Quý 1&#x27;, &#x27;Quý 2&#x27;, &#x27;Quý 3&#x27;, &#x27;Quý 4&#x27;] as const,
+}
+
+const formattingQuarterValues = {
+  narrow: [&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;, &#x27;4&#x27;] as const,
+  abbreviated: [&#x27;Q1&#x27;, &#x27;Q2&#x27;, &#x27;Q3&#x27;, &#x27;Q4&#x27;] as const,
+  // I notice many news outlet use this &quot;quý II/2018&quot;
+  wide: [&#x27;quý I&#x27;, &#x27;quý II&#x27;, &#x27;quý III&#x27;, &#x27;quý IV&#x27;] as const,
+}
+
+// Note: in English, the names of days of the week and months are capitalized.
+// If you are making a new locale based on this one, check if the same is true for the language you&#x27;re working on.
+// Generally, formatted dates should look like they are in the middle of a sentence,
+// e.g. in Spanish language the weekdays and months should be in the lowercase.
+const monthValues = {
+  narrow: [
+    &#x27;1&#x27;,
+    &#x27;2&#x27;,
+    &#x27;3&#x27;,
+    &#x27;4&#x27;,
+    &#x27;5&#x27;,
+    &#x27;6&#x27;,
+    &#x27;7&#x27;,
+    &#x27;8&#x27;,
+    &#x27;9&#x27;,
+    &#x27;10&#x27;,
+    &#x27;11&#x27;,
+    &#x27;12&#x27;,
+  ] as const,
+  abbreviated: [
+    &#x27;Thg 1&#x27;,
+    &#x27;Thg 2&#x27;,
+    &#x27;Thg 3&#x27;,
+    &#x27;Thg 4&#x27;,
+    &#x27;Thg 5&#x27;,
+    &#x27;Thg 6&#x27;,
+    &#x27;Thg 7&#x27;,
+    &#x27;Thg 8&#x27;,
+    &#x27;Thg 9&#x27;,
+    &#x27;Thg 10&#x27;,
+    &#x27;Thg 11&#x27;,
+    &#x27;Thg 12&#x27;,
+  ] as const,
+  wide: [
+    &#x27;Tháng Một&#x27;,
+    &#x27;Tháng Hai&#x27;,
+    &#x27;Tháng Ba&#x27;,
+    &#x27;Tháng Tư&#x27;,
+    &#x27;Tháng Năm&#x27;,
+    &#x27;Tháng Sáu&#x27;,
+    &#x27;Tháng Bảy&#x27;,
+    &#x27;Tháng Tám&#x27;,
+    &#x27;Tháng Chín&#x27;,
+    &#x27;Tháng Mười&#x27;,
+    &#x27;Tháng Mười Một&#x27;,
+    &#x27;Tháng Mười Hai&#x27;,
+  ] as const,
+}
+// In Vietnamese date formatting, month number less than 10 expected to have leading zero
+const formattingMonthValues = {
+  narrow: [
+    &#x27;01&#x27;,
+    &#x27;02&#x27;,
+    &#x27;03&#x27;,
+    &#x27;04&#x27;,
+    &#x27;05&#x27;,
+    &#x27;06&#x27;,
+    &#x27;07&#x27;,
+    &#x27;08&#x27;,
+    &#x27;09&#x27;,
+    &#x27;10&#x27;,
+    &#x27;11&#x27;,
+    &#x27;12&#x27;,
+  ] as const,
+  abbreviated: [
+    &#x27;thg 1&#x27;,
+    &#x27;thg 2&#x27;,
+    &#x27;thg 3&#x27;,
+    &#x27;thg 4&#x27;,
+    &#x27;thg 5&#x27;,
+    &#x27;thg 6&#x27;,
+    &#x27;thg 7&#x27;,
+    &#x27;thg 8&#x27;,
+    &#x27;thg 9&#x27;,
+    &#x27;thg 10&#x27;,
+    &#x27;thg 11&#x27;,
+    &#x27;thg 12&#x27;,
+  ] as const,
+  wide: [
+    &#x27;tháng 01&#x27;,
+    &#x27;tháng 02&#x27;,
+    &#x27;tháng 03&#x27;,
+    &#x27;tháng 04&#x27;,
+    &#x27;tháng 05&#x27;,
+    &#x27;tháng 06&#x27;,
+    &#x27;tháng 07&#x27;,
+    &#x27;tháng 08&#x27;,
+    &#x27;tháng 09&#x27;,
+    &#x27;tháng 10&#x27;,
+    &#x27;tháng 11&#x27;,
+    &#x27;tháng 12&#x27;,
+  ] as const,
+}
+
+const dayValues = {
+  narrow: [&#x27;CN&#x27;, &#x27;T2&#x27;, &#x27;T3&#x27;, &#x27;T4&#x27;, &#x27;T5&#x27;, &#x27;T6&#x27;, &#x27;T7&#x27;] as const,
+  short: [&#x27;CN&#x27;, &#x27;Th 2&#x27;, &#x27;Th 3&#x27;, &#x27;Th 4&#x27;, &#x27;Th 5&#x27;, &#x27;Th 6&#x27;, &#x27;Th 7&#x27;] as const,
+  abbreviated: [
+    &#x27;CN&#x27;,
+    &#x27;Thứ 2&#x27;,
+    &#x27;Thứ 3&#x27;,
+    &#x27;Thứ 4&#x27;,
+    &#x27;Thứ 5&#x27;,
+    &#x27;Thứ 6&#x27;,
+    &#x27;Thứ 7&#x27;,
+  ] as const,
+  wide: [
+    &#x27;Chủ Nhật&#x27;,
+    &#x27;Thứ Hai&#x27;,
+    &#x27;Thứ Ba&#x27;,
+    &#x27;Thứ Tư&#x27;,
+    &#x27;Thứ Năm&#x27;,
+    &#x27;Thứ Sáu&#x27;,
+    &#x27;Thứ Bảy&#x27;,
+  ] as const,
+}
+
+// Vietnamese are used to AM/PM borrowing from English, hence `narrow` and
+// `abbreviated` are just like English but I&#x27;m leaving the `wide`
+// format being localized with abbreviations found in some systems (SÁng / CHiều);
+// however, personally, I don&#x27;t think `Chiều` sounds appropriate for `PM`
+const dayPeriodValues = {
+  // narrow date period is extremely rare in Vietnamese
+  // I used abbreviated form for noon, morning and afternoon
+  // which are regconizable by Vietnamese, others cannot be any shorter
+  narrow: {
+    am: &#x27;am&#x27;,
+    pm: &#x27;pm&#x27;,
+    midnight: &#x27;nửa đêm&#x27;,
+    noon: &#x27;tr&#x27;,
+    morning: &#x27;sg&#x27;,
+    afternoon: &#x27;ch&#x27;,
+    evening: &#x27;tối&#x27;,
+    night: &#x27;đêm&#x27;,
+  },
+  abbreviated: {
+    am: &#x27;AM&#x27;,
+    pm: &#x27;PM&#x27;,
+    midnight: &#x27;nửa đêm&#x27;,
+    noon: &#x27;trưa&#x27;,
+    morning: &#x27;sáng&#x27;,
+    afternoon: &#x27;chiều&#x27;,
+    evening: &#x27;tối&#x27;,
+    night: &#x27;đêm&#x27;,
+  },
+  wide: {
+    am: &#x27;SA&#x27;,
+    pm: &#x27;CH&#x27;,
+    midnight: &#x27;nửa đêm&#x27;,
+    noon: &#x27;trưa&#x27;,
+    morning: &#x27;sáng&#x27;,
+    afternoon: &#x27;chiều&#x27;,
+    evening: &#x27;tối&#x27;,
+    night: &#x27;đêm&#x27;,
+  },
+}
+
+const formattingDayPeriodValues = {
+  narrow: {
+    am: &#x27;am&#x27;,
+    pm: &#x27;pm&#x27;,
+    midnight: &#x27;nửa đêm&#x27;,
+    noon: &#x27;tr&#x27;,
+    morning: &#x27;sg&#x27;,
+    afternoon: &#x27;ch&#x27;,
+    evening: &#x27;tối&#x27;,
+    night: &#x27;đêm&#x27;,
+  },
+  abbreviated: {
+    am: &#x27;AM&#x27;,
+    pm: &#x27;PM&#x27;,
+    midnight: &#x27;nửa đêm&#x27;,
+    noon: &#x27;trưa&#x27;,
+    morning: &#x27;sáng&#x27;,
+    afternoon: &#x27;chiều&#x27;,
+    evening: &#x27;tối&#x27;,
+    night: &#x27;đêm&#x27;,
+  },
+  wide: {
+    am: &#x27;SA&#x27;,
+    pm: &#x27;CH&#x27;,
+    midnight: &#x27;nửa đêm&#x27;,
+    noon: &#x27;giữa trưa&#x27;,
+    morning: &#x27;vào buổi sáng&#x27;,
+    afternoon: &#x27;vào buổi chiều&#x27;,
+    evening: &#x27;vào buổi tối&#x27;,
+    night: &#x27;vào ban đêm&#x27;,
+  },
+}
+
+const ordinalNumber: LocalizeFn&lt;number&gt; = (dirtyNumber, options) =&gt; {
+  const number = Number(dirtyNumber)
+  const unit = options?.unit
+
+  if (unit === &#x27;quarter&#x27;) {
+    // many news outlets use &quot;quý I&quot;...
+    switch (number) {
+      case 1:
+        return &#x27;I&#x27;
+      case 2:
+        return &#x27;II&#x27;
+      case 3:
+        return &#x27;III&#x27;
+      case 4:
+        return &#x27;IV&#x27;
+    }
+  } else if (unit === &#x27;day&#x27;) {
+    // day of week in Vietnamese has ordinal number meaning,
+    // so we should use them, else it&#x27;ll sound weird
+    switch (number) {
+      case 1:
+        return &#x27;thứ 2&#x27; // meaning 2nd day but it&#x27;s the first day of the week :D
+      case 2:
+        return &#x27;thứ 3&#x27; // meaning 3rd day
+      case 3:
+        return &#x27;thứ 4&#x27; // meaning 4th day and so on
+      case 4:
+        return &#x27;thứ 5&#x27;
+      case 5:
+        return &#x27;thứ 6&#x27;
+      case 6:
+        return &#x27;thứ 7&#x27;
+      case 7:
+        return &#x27;chủ nhật&#x27; // meaning Sunday, there&#x27;s no 8th day :D
+    }
+  } else if (unit === &#x27;week&#x27;) {
+    if (number === 1) {
+      return &#x27;thứ nhất&#x27;
+    } else {
+      return &#x27;thứ &#x27; + number
+    }
+  } else if (unit === &#x27;dayOfYear&#x27;) {
+    if (number === 1) {
+      return &#x27;đầu tiên&#x27;
+    } else {
+      return &#x27;thứ &#x27; + number
+    }
+  }
+
+  // there are no different forms of ordinal numbers in Vietnamese
+  return String(number)
+}
+
+const localize: Localize = {
+  ordinalNumber,
+
+  era: buildLocalizeFn({
+    values: eraValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  quarter: buildLocalizeFn({
+    values: quarterValues,
+    defaultWidth: &#x27;wide&#x27;,
+    formattingValues: formattingQuarterValues,
+    defaultFormattingWidth: &#x27;wide&#x27;,
+    argumentCallback: (quarter) =&gt; quarter - 1,
+  }),
+
+  month: buildLocalizeFn({
+    values: monthValues,
+    defaultWidth: &#x27;wide&#x27;,
+    formattingValues: formattingMonthValues,
+    defaultFormattingWidth: &#x27;wide&#x27;,
+  }),
+
+  day: buildLocalizeFn({
+    values: dayValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues,
+    defaultWidth: &#x27;wide&#x27;,
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: &#x27;wide&#x27;,
+  }),
+}
+
+export default localize
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:22 GMT</p>
+    </body>
+  </html>
+  

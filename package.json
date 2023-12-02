@@ -2395,7 +2395,8 @@
     "lint": "eslint .",
     "lint-types": "eslint --config=.ts-eslintrc.js typings.d.ts",
     "locale-snapshots": "env TZ=utc tsx ./scripts/build/localeSnapshots/index.ts",
-    "stats": "cloc . --exclude-dir=node_modules,tmp,.git"
+    "stats": "cloc . --exclude-dir=node_modules,tmp,.git",
+    "ts-coverage": "typescript-coverage-report"
   },
   "husky": {
     "hooks": {

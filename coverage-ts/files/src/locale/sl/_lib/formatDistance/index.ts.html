@@ -1,0 +1,377 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/sl/_lib/formatDistance/index.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">297</td><td class="">297</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import type { FormatDistanceFn, FormatDistanceLocale } from &#x27;../../../types&#x27;
+
+type Plural = {
+  one: string
+  two: string
+  few: string
+  other: string
+}
+
+type Tense = {
+  past: Plural
+  future: Plural
+  present: Plural
+}
+
+function isPluralType(val: Plural | Tense): val is Plural {
+  return (val as Plural).one !== undefined
+}
+
+type FormatDistanceTokenValue = string | Tense | Plural
+
+const formatDistanceLocale: FormatDistanceLocale&lt;FormatDistanceTokenValue&gt; = {
+  lessThanXSeconds: {
+    present: {
+      one: &#x27;manj kot {{count}} sekunda&#x27;,
+      two: &#x27;manj kot {{count}} sekundi&#x27;,
+      few: &#x27;manj kot {{count}} sekunde&#x27;,
+      other: &#x27;manj kot {{count}} sekund&#x27;,
+    },
+    past: {
+      one: &#x27;manj kot {{count}} sekundo&#x27;,
+      two: &#x27;manj kot {{count}} sekundama&#x27;,
+      few: &#x27;manj kot {{count}} sekundami&#x27;,
+      other: &#x27;manj kot {{count}} sekundami&#x27;,
+    },
+    future: {
+      one: &#x27;manj kot {{count}} sekundo&#x27;,
+      two: &#x27;manj kot {{count}} sekundi&#x27;,
+      few: &#x27;manj kot {{count}} sekunde&#x27;,
+      other: &#x27;manj kot {{count}} sekund&#x27;,
+    },
+  },
+
+  xSeconds: {
+    present: {
+      one: &#x27;{{count}} sekunda&#x27;,
+      two: &#x27;{{count}} sekundi&#x27;,
+      few: &#x27;{{count}} sekunde&#x27;,
+      other: &#x27;{{count}} sekund&#x27;,
+    },
+    past: {
+      one: &#x27;{{count}} sekundo&#x27;,
+      two: &#x27;{{count}} sekundama&#x27;,
+      few: &#x27;{{count}} sekundami&#x27;,
+      other: &#x27;{{count}} sekundami&#x27;,
+    },
+    future: {
+      one: &#x27;{{count}} sekundo&#x27;,
+      two: &#x27;{{count}} sekundi&#x27;,
+      few: &#x27;{{count}} sekunde&#x27;,
+      other: &#x27;{{count}} sekund&#x27;,
+    },
+  },
+
+  halfAMinute: &#x27;pol minute&#x27;,
+
+  lessThanXMinutes: {
+    present: {
+      one: &#x27;manj kot {{count}} minuta&#x27;,
+      two: &#x27;manj kot {{count}} minuti&#x27;,
+      few: &#x27;manj kot {{count}} minute&#x27;,
+      other: &#x27;manj kot {{count}} minut&#x27;,
+    },
+    past: {
+      one: &#x27;manj kot {{count}} minuto&#x27;,
+      two: &#x27;manj kot {{count}} minutama&#x27;,
+      few: &#x27;manj kot {{count}} minutami&#x27;,
+      other: &#x27;manj kot {{count}} minutami&#x27;,
+    },
+    future: {
+      one: &#x27;manj kot {{count}} minuto&#x27;,
+      two: &#x27;manj kot {{count}} minuti&#x27;,
+      few: &#x27;manj kot {{count}} minute&#x27;,
+      other: &#x27;manj kot {{count}} minut&#x27;,
+    },
+  },
+
+  xMinutes: {
+    present: {
+      one: &#x27;{{count}} minuta&#x27;,
+      two: &#x27;{{count}} minuti&#x27;,
+      few: &#x27;{{count}} minute&#x27;,
+      other: &#x27;{{count}} minut&#x27;,
+    },
+    past: {
+      one: &#x27;{{count}} minuto&#x27;,
+      two: &#x27;{{count}} minutama&#x27;,
+      few: &#x27;{{count}} minutami&#x27;,
+      other: &#x27;{{count}} minutami&#x27;,
+    },
+    future: {
+      one: &#x27;{{count}} minuto&#x27;,
+      two: &#x27;{{count}} minuti&#x27;,
+      few: &#x27;{{count}} minute&#x27;,
+      other: &#x27;{{count}} minut&#x27;,
+    },
+  },
+
+  aboutXHours: {
+    present: {
+      one: &#x27;približno {{count}} ura&#x27;,
+      two: &#x27;približno {{count}} uri&#x27;,
+      few: &#x27;približno {{count}} ure&#x27;,
+      other: &#x27;približno {{count}} ur&#x27;,
+    },
+    past: {
+      one: &#x27;približno {{count}} uro&#x27;,
+      two: &#x27;približno {{count}} urama&#x27;,
+      few: &#x27;približno {{count}} urami&#x27;,
+      other: &#x27;približno {{count}} urami&#x27;,
+    },
+    future: {
+      one: &#x27;približno {{count}} uro&#x27;,
+      two: &#x27;približno {{count}} uri&#x27;,
+      few: &#x27;približno {{count}} ure&#x27;,
+      other: &#x27;približno {{count}} ur&#x27;,
+    },
+  },
+
+  xHours: {
+    present: {
+      one: &#x27;{{count}} ura&#x27;,
+      two: &#x27;{{count}} uri&#x27;,
+      few: &#x27;{{count}} ure&#x27;,
+      other: &#x27;{{count}} ur&#x27;,
+    },
+    past: {
+      one: &#x27;{{count}} uro&#x27;,
+      two: &#x27;{{count}} urama&#x27;,
+      few: &#x27;{{count}} urami&#x27;,
+      other: &#x27;{{count}} urami&#x27;,
+    },
+    future: {
+      one: &#x27;{{count}} uro&#x27;,
+      two: &#x27;{{count}} uri&#x27;,
+      few: &#x27;{{count}} ure&#x27;,
+      other: &#x27;{{count}} ur&#x27;,
+    },
+  },
+
+  xDays: {
+    present: {
+      one: &#x27;{{count}} dan&#x27;,
+      two: &#x27;{{count}} dni&#x27;,
+      few: &#x27;{{count}} dni&#x27;,
+      other: &#x27;{{count}} dni&#x27;,
+    },
+    past: {
+      one: &#x27;{{count}} dnem&#x27;,
+      two: &#x27;{{count}} dnevoma&#x27;,
+      few: &#x27;{{count}} dnevi&#x27;,
+      other: &#x27;{{count}} dnevi&#x27;,
+    },
+    future: {
+      one: &#x27;{{count}} dan&#x27;,
+      two: &#x27;{{count}} dni&#x27;,
+      few: &#x27;{{count}} dni&#x27;,
+      other: &#x27;{{count}} dni&#x27;,
+    },
+  },
+
+  // no tenses for weeks?
+  aboutXWeeks: {
+    one: &#x27;približno {{count}} teden&#x27;,
+    two: &#x27;približno {{count}} tedna&#x27;,
+    few: &#x27;približno {{count}} tedne&#x27;,
+    other: &#x27;približno {{count}} tednov&#x27;,
+  },
+
+  // no tenses for weeks?
+  xWeeks: {
+    one: &#x27;{{count}} teden&#x27;,
+    two: &#x27;{{count}} tedna&#x27;,
+    few: &#x27;{{count}} tedne&#x27;,
+    other: &#x27;{{count}} tednov&#x27;,
+  },
+
+  aboutXMonths: {
+    present: {
+      one: &#x27;približno {{count}} mesec&#x27;,
+      two: &#x27;približno {{count}} meseca&#x27;,
+      few: &#x27;približno {{count}} mesece&#x27;,
+      other: &#x27;približno {{count}} mesecev&#x27;,
+    },
+    past: {
+      one: &#x27;približno {{count}} mesecem&#x27;,
+      two: &#x27;približno {{count}} mesecema&#x27;,
+      few: &#x27;približno {{count}} meseci&#x27;,
+      other: &#x27;približno {{count}} meseci&#x27;,
+    },
+    future: {
+      one: &#x27;približno {{count}} mesec&#x27;,
+      two: &#x27;približno {{count}} meseca&#x27;,
+      few: &#x27;približno {{count}} mesece&#x27;,
+      other: &#x27;približno {{count}} mesecev&#x27;,
+    },
+  },
+
+  xMonths: {
+    present: {
+      one: &#x27;{{count}} mesec&#x27;,
+      two: &#x27;{{count}} meseca&#x27;,
+      few: &#x27;{{count}} meseci&#x27;,
+      other: &#x27;{{count}} mesecev&#x27;,
+    },
+    past: {
+      one: &#x27;{{count}} mesecem&#x27;,
+      two: &#x27;{{count}} mesecema&#x27;,
+      few: &#x27;{{count}} meseci&#x27;,
+      other: &#x27;{{count}} meseci&#x27;,
+    },
+    future: {
+      one: &#x27;{{count}} mesec&#x27;,
+      two: &#x27;{{count}} meseca&#x27;,
+      few: &#x27;{{count}} mesece&#x27;,
+      other: &#x27;{{count}} mesecev&#x27;,
+    },
+  },
+
+  aboutXYears: {
+    present: {
+      one: &#x27;približno {{count}} leto&#x27;,
+      two: &#x27;približno {{count}} leti&#x27;,
+      few: &#x27;približno {{count}} leta&#x27;,
+      other: &#x27;približno {{count}} let&#x27;,
+    },
+    past: {
+      one: &#x27;približno {{count}} letom&#x27;,
+      two: &#x27;približno {{count}} letoma&#x27;,
+      few: &#x27;približno {{count}} leti&#x27;,
+      other: &#x27;približno {{count}} leti&#x27;,
+    },
+    future: {
+      one: &#x27;približno {{count}} leto&#x27;,
+      two: &#x27;približno {{count}} leti&#x27;,
+      few: &#x27;približno {{count}} leta&#x27;,
+      other: &#x27;približno {{count}} let&#x27;,
+    },
+  },
+
+  xYears: {
+    present: {
+      one: &#x27;{{count}} leto&#x27;,
+      two: &#x27;{{count}} leti&#x27;,
+      few: &#x27;{{count}} leta&#x27;,
+      other: &#x27;{{count}} let&#x27;,
+    },
+    past: {
+      one: &#x27;{{count}} letom&#x27;,
+      two: &#x27;{{count}} letoma&#x27;,
+      few: &#x27;{{count}} leti&#x27;,
+      other: &#x27;{{count}} leti&#x27;,
+    },
+    future: {
+      one: &#x27;{{count}} leto&#x27;,
+      two: &#x27;{{count}} leti&#x27;,
+      few: &#x27;{{count}} leta&#x27;,
+      other: &#x27;{{count}} let&#x27;,
+    },
+  },
+
+  overXYears: {
+    present: {
+      one: &#x27;več kot {{count}} leto&#x27;,
+      two: &#x27;več kot {{count}} leti&#x27;,
+      few: &#x27;več kot {{count}} leta&#x27;,
+      other: &#x27;več kot {{count}} let&#x27;,
+    },
+    past: {
+      one: &#x27;več kot {{count}} letom&#x27;,
+      two: &#x27;več kot {{count}} letoma&#x27;,
+      few: &#x27;več kot {{count}} leti&#x27;,
+      other: &#x27;več kot {{count}} leti&#x27;,
+    },
+    future: {
+      one: &#x27;več kot {{count}} leto&#x27;,
+      two: &#x27;več kot {{count}} leti&#x27;,
+      few: &#x27;več kot {{count}} leta&#x27;,
+      other: &#x27;več kot {{count}} let&#x27;,
+    },
+  },
+
+  almostXYears: {
+    present: {
+      one: &#x27;skoraj {{count}} leto&#x27;,
+      two: &#x27;skoraj {{count}} leti&#x27;,
+      few: &#x27;skoraj {{count}} leta&#x27;,
+      other: &#x27;skoraj {{count}} let&#x27;,
+    },
+    past: {
+      one: &#x27;skoraj {{count}} letom&#x27;,
+      two: &#x27;skoraj {{count}} letoma&#x27;,
+      few: &#x27;skoraj {{count}} leti&#x27;,
+      other: &#x27;skoraj {{count}} leti&#x27;,
+    },
+    future: {
+      one: &#x27;skoraj {{count}} leto&#x27;,
+      two: &#x27;skoraj {{count}} leti&#x27;,
+      few: &#x27;skoraj {{count}} leta&#x27;,
+      other: &#x27;skoraj {{count}} let&#x27;,
+    },
+  },
+}
+
+function getFormFromCount(count: number): keyof Plural {
+  switch (count % 100) {
+    case 1:
+      return &#x27;one&#x27;
+    case 2:
+      return &#x27;two&#x27;
+    case 3:
+    case 4:
+      return &#x27;few&#x27;
+    default:
+      return &#x27;other&#x27;
+  }
+}
+
+const formatDistance: FormatDistanceFn = (token, count, options) =&gt; {
+  let result = &#x27;&#x27;
+  let tense: keyof Tense = &#x27;present&#x27;
+
+  if (options?.addSuffix) {
+    if (options.comparison &amp;&amp; options.comparison &gt; 0) {
+      tense = &#x27;future&#x27;
+      result = &#x27;čez &#x27;
+    } else {
+      tense = &#x27;past&#x27;
+      result = &#x27;pred &#x27;
+    }
+  }
+
+  const tokenValue = formatDistanceLocale[token]
+
+  if (typeof tokenValue === &#x27;string&#x27;) {
+    result += tokenValue
+  } else {
+    const form = getFormFromCount(count)
+    if (isPluralType(tokenValue)) {
+      result += tokenValue[form].replace(&#x27;{{count}}&#x27;, String(count))
+    } else {
+      result += tokenValue[tense][form].replace(&#x27;{{count}}&#x27;, String(count))
+    }
+  }
+
+  return result
+}
+
+export default formatDistance
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:21 GMT</p>
+    </body>
+  </html>
+  

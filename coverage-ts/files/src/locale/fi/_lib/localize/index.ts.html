@@ -1,0 +1,200 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/fi/_lib/localize/index.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">128</td><td class="">128</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import type { Localize, LocalizeFn } from &#x27;../../../types&#x27;
+import buildLocalizeFn from &#x27;../../../_lib/buildLocalizeFn/index&#x27;
+
+const eraValues = {
+  narrow: [&#x27;eaa.&#x27;, &#x27;jaa.&#x27;] as const,
+  abbreviated: [&#x27;eaa.&#x27;, &#x27;jaa.&#x27;] as const,
+  wide: [&#x27;ennen ajanlaskun alkua&#x27;, &#x27;jälkeen ajanlaskun alun&#x27;] as const,
+}
+
+const quarterValues = {
+  narrow: [&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;, &#x27;4&#x27;] as const,
+  abbreviated: [&#x27;Q1&#x27;, &#x27;Q2&#x27;, &#x27;Q3&#x27;, &#x27;Q4&#x27;] as const,
+  wide: [
+    &#x27;1. kvartaali&#x27;,
+    &#x27;2. kvartaali&#x27;,
+    &#x27;3. kvartaali&#x27;,
+    &#x27;4. kvartaali&#x27;,
+  ] as const,
+}
+
+const monthValues = {
+  narrow: [&#x27;T&#x27;, &#x27;H&#x27;, &#x27;M&#x27;, &#x27;H&#x27;, &#x27;T&#x27;, &#x27;K&#x27;, &#x27;H&#x27;, &#x27;E&#x27;, &#x27;S&#x27;, &#x27;L&#x27;, &#x27;M&#x27;, &#x27;J&#x27;] as const,
+  abbreviated: [
+    &#x27;tammi&#x27;,
+    &#x27;helmi&#x27;,
+    &#x27;maalis&#x27;,
+    &#x27;huhti&#x27;,
+    &#x27;touko&#x27;,
+    &#x27;kesä&#x27;,
+    &#x27;heinä&#x27;,
+    &#x27;elo&#x27;,
+    &#x27;syys&#x27;,
+    &#x27;loka&#x27;,
+    &#x27;marras&#x27;,
+    &#x27;joulu&#x27;,
+  ] as const,
+  wide: [
+    &#x27;tammikuu&#x27;,
+    &#x27;helmikuu&#x27;,
+    &#x27;maaliskuu&#x27;,
+    &#x27;huhtikuu&#x27;,
+    &#x27;toukokuu&#x27;,
+    &#x27;kesäkuu&#x27;,
+    &#x27;heinäkuu&#x27;,
+    &#x27;elokuu&#x27;,
+    &#x27;syyskuu&#x27;,
+    &#x27;lokakuu&#x27;,
+    &#x27;marraskuu&#x27;,
+    &#x27;joulukuu&#x27;,
+  ] as const,
+}
+
+const formattingMonthValues = {
+  narrow: monthValues.narrow,
+  abbreviated: monthValues.abbreviated,
+  wide: [
+    &#x27;tammikuuta&#x27;,
+    &#x27;helmikuuta&#x27;,
+    &#x27;maaliskuuta&#x27;,
+    &#x27;huhtikuuta&#x27;,
+    &#x27;toukokuuta&#x27;,
+    &#x27;kesäkuuta&#x27;,
+    &#x27;heinäkuuta&#x27;,
+    &#x27;elokuuta&#x27;,
+    &#x27;syyskuuta&#x27;,
+    &#x27;lokakuuta&#x27;,
+    &#x27;marraskuuta&#x27;,
+    &#x27;joulukuuta&#x27;,
+  ] as const,
+}
+
+const dayValues = {
+  narrow: [&#x27;S&#x27;, &#x27;M&#x27;, &#x27;T&#x27;, &#x27;K&#x27;, &#x27;T&#x27;, &#x27;P&#x27;, &#x27;L&#x27;] as const,
+  short: [&#x27;su&#x27;, &#x27;ma&#x27;, &#x27;ti&#x27;, &#x27;ke&#x27;, &#x27;to&#x27;, &#x27;pe&#x27;, &#x27;la&#x27;] as const,
+  abbreviated: [
+    &#x27;sunn.&#x27;,
+    &#x27;maan.&#x27;,
+    &#x27;tiis.&#x27;,
+    &#x27;kesk.&#x27;,
+    &#x27;torst.&#x27;,
+    &#x27;perj.&#x27;,
+    &#x27;la&#x27;,
+  ] as const,
+  wide: [
+    &#x27;sunnuntai&#x27;,
+    &#x27;maanantai&#x27;,
+    &#x27;tiistai&#x27;,
+    &#x27;keskiviikko&#x27;,
+    &#x27;torstai&#x27;,
+    &#x27;perjantai&#x27;,
+    &#x27;lauantai&#x27;,
+  ] as const,
+}
+
+const formattingDayValues = {
+  narrow: dayValues.narrow,
+  short: dayValues.short,
+  abbreviated: dayValues.abbreviated,
+  wide: [
+    &#x27;sunnuntaina&#x27;,
+    &#x27;maanantaina&#x27;,
+    &#x27;tiistaina&#x27;,
+    &#x27;keskiviikkona&#x27;,
+    &#x27;torstaina&#x27;,
+    &#x27;perjantaina&#x27;,
+    &#x27;lauantaina&#x27;,
+  ] as const,
+}
+
+const dayPeriodValues = {
+  narrow: {
+    am: &#x27;ap&#x27;,
+    pm: &#x27;ip&#x27;,
+    midnight: &#x27;keskiyö&#x27;,
+    noon: &#x27;keskipäivä&#x27;,
+    morning: &#x27;ap&#x27;,
+    afternoon: &#x27;ip&#x27;,
+    evening: &#x27;illalla&#x27;,
+    night: &#x27;yöllä&#x27;,
+  },
+  abbreviated: {
+    am: &#x27;ap&#x27;,
+    pm: &#x27;ip&#x27;,
+    midnight: &#x27;keskiyö&#x27;,
+    noon: &#x27;keskipäivä&#x27;,
+    morning: &#x27;ap&#x27;,
+    afternoon: &#x27;ip&#x27;,
+    evening: &#x27;illalla&#x27;,
+    night: &#x27;yöllä&#x27;,
+  },
+  wide: {
+    am: &#x27;ap&#x27;,
+    pm: &#x27;ip&#x27;,
+    midnight: &#x27;keskiyöllä&#x27;,
+    noon: &#x27;keskipäivällä&#x27;,
+    morning: &#x27;aamupäivällä&#x27;,
+    afternoon: &#x27;iltapäivällä&#x27;,
+    evening: &#x27;illalla&#x27;,
+    night: &#x27;yöllä&#x27;,
+  },
+}
+
+const ordinalNumber: LocalizeFn&lt;number&gt; = (dirtyNumber, _options) =&gt; {
+  const number = Number(dirtyNumber)
+  return number + &#x27;.&#x27;
+}
+
+const localize: Localize = {
+  ordinalNumber,
+
+  era: buildLocalizeFn({
+    values: eraValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  quarter: buildLocalizeFn({
+    values: quarterValues,
+    defaultWidth: &#x27;wide&#x27;,
+    argumentCallback: (quarter) =&gt; quarter - 1,
+  }),
+
+  month: buildLocalizeFn({
+    values: monthValues,
+    defaultWidth: &#x27;wide&#x27;,
+    formattingValues: formattingMonthValues,
+    defaultFormattingWidth: &#x27;wide&#x27;,
+  }),
+
+  day: buildLocalizeFn({
+    values: dayValues,
+    defaultWidth: &#x27;wide&#x27;,
+    formattingValues: formattingDayValues,
+    defaultFormattingWidth: &#x27;wide&#x27;,
+  }),
+
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+}
+
+export default localize
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:20 GMT</p>
+    </body>
+  </html>
+  

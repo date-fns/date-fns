@@ -1,0 +1,654 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>test.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/setDefaultOptions/test.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">554</td><td class="">554</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">/* eslint-env mocha */
+
+import assert from &#x27;assert&#x27;
+import { afterEach, describe, it } from &#x27;vitest&#x27;
+import setDefaultOptions from &#x27;.&#x27;
+import {
+  DefaultOptions,
+  getDefaultOptions as getInternalDefaultOptions,
+} from &#x27;../_lib/defaultOptions/index&#x27;
+import enUS from &#x27;../locale/en-US&#x27;
+import eo from &#x27;../locale/eo&#x27;
+import differenceInCalendarWeeks from &#x27;../differenceInCalendarWeeks&#x27;
+import eachWeekOfInterval from &#x27;../eachWeekOfInterval&#x27;
+import endOfWeek from &#x27;../endOfWeek&#x27;
+import format from &#x27;../format&#x27;
+import formatDistance from &#x27;../formatDistance&#x27;
+import formatDistanceStrict from &#x27;../formatDistanceStrict&#x27;
+import formatDuration from &#x27;../formatDuration&#x27;
+import formatRelative from &#x27;../formatRelative&#x27;
+import getWeek from &#x27;../getWeek&#x27;
+import getWeekOfMonth from &#x27;../getWeekOfMonth&#x27;
+import getWeeksInMonth from &#x27;../getWeeksInMonth&#x27;
+import getWeekYear from &#x27;../getWeekYear&#x27;
+import isMatch from &#x27;../isMatch&#x27;
+import isSameWeek from &#x27;../isSameWeek&#x27;
+import lastDayOfWeek from &#x27;../lastDayOfWeek&#x27;
+import parse from &#x27;../parse&#x27;
+import setDay from &#x27;../setDay&#x27;
+import setWeek from &#x27;../setWeek&#x27;
+import setWeekYear from &#x27;../setWeekYear&#x27;
+import startOfWeek from &#x27;../startOfWeek&#x27;
+import startOfWeekYear from &#x27;../startOfWeekYear&#x27;
+import { resetDefaultOptions } from &#x27;../_lib/test&#x27;
+
+describe(&#x27;setDefaultOptions&#x27;, () =&gt; {
+  afterEach(resetDefaultOptions)
+
+  it(&#x27;changes the internal `defaultOptions` object&#x27;, () =&gt; {
+    setDefaultOptions({ weekStartsOn: 1, firstWeekContainsDate: 4, locale: eo })
+    assert.deepStrictEqual(getInternalDefaultOptions(), {
+      weekStartsOn: 1,
+      firstWeekContainsDate: 4,
+      locale: eo,
+    })
+  })
+
+  it(&#x27;merges with previous `defaultOptions` calls&#x27;, () =&gt; {
+    setDefaultOptions({ weekStartsOn: 1 })
+    setDefaultOptions({ firstWeekContainsDate: 4 })
+    setDefaultOptions({ locale: eo })
+    assert.deepStrictEqual(getInternalDefaultOptions(), {
+      weekStartsOn: 1,
+      firstWeekContainsDate: 4,
+      locale: eo,
+    })
+  })
+
+  it(&#x27;setting an option to `undefined` deletes it&#x27;, () =&gt; {
+    setDefaultOptions({ weekStartsOn: 1, firstWeekContainsDate: 4 })
+    setDefaultOptions({ weekStartsOn: undefined })
+    assert.deepStrictEqual(getInternalDefaultOptions(), {
+      firstWeekContainsDate: 4,
+    })
+  })
+
+  it(&#x27;does not mutate the argument&#x27;, () =&gt; {
+    const argument: DefaultOptions = { weekStartsOn: 1 }
+    setDefaultOptions(argument)
+    assert.deepStrictEqual(argument, { weekStartsOn: 1 })
+  })
+
+  describe(&#x27;locale&#x27;, () =&gt; {
+    it(&#x27;format&#x27;, () =&gt; {
+      // For reference: not setting any options
+      assert.deepStrictEqual(
+        format(new Date(2014, 0, 1), &#x27;PPPpp&#x27;),
+        &#x27;January 1st, 2014 at 12:00:00 AM&#x27;
+      )
+
+      setDefaultOptions({ locale: eo })
+
+      assert.deepStrictEqual(
+        format(new Date(2014, 0, 1), &#x27;PPPpp&#x27;),
+        &#x27;2014-januaro-01 00:00:00&#x27;
+      )
+
+      // Manually set `locale` take priority over `defaultOptions.locale`
+      assert.deepStrictEqual(
+        format(new Date(2014, 0, 1), &#x27;PPPpp&#x27;, { locale: enUS }),
+        &#x27;January 1st, 2014 at 12:00:00 AM&#x27;
+      )
+    })
+
+    it(&#x27;formatDistance&#x27;, () =&gt; {
+      // For reference: not setting any options
+      assert.deepStrictEqual(
+        formatDistance(new Date(2014, 0, 1), new Date(2015, 0, 1)),
+        &#x27;about 1 year&#x27;
+      )
+
+      setDefaultOptions({ locale: eo })
+
+      assert.deepStrictEqual(
+        formatDistance(new Date(2014, 0, 1), new Date(2015, 0, 1)),
+        &#x27;proksimume 1 jaro&#x27;
+      )
+
+      // Manually set `locale` take priority over `defaultOptions.locale`
+      assert.deepStrictEqual(
+        formatDistance(new Date(2014, 0, 1), new Date(2015, 0, 1), {
+          locale: enUS,
+        }),
+        &#x27;about 1 year&#x27;
+      )
+    })
+
+    it(&#x27;formatDistanceStrict&#x27;, () =&gt; {
+      // For reference: not setting any options
+      assert.deepStrictEqual(
+        formatDistanceStrict(new Date(2014, 0, 1), new Date(2015, 0, 1)),
+        &#x27;1 year&#x27;
+      )
+
+      setDefaultOptions({ locale: eo })
+
+      assert.deepStrictEqual(
+        formatDistanceStrict(new Date(2014, 0, 1), new Date(2015, 0, 1)),
+        &#x27;1 jaro&#x27;
+      )
+
+      // Manually set `locale` take priority over `defaultOptions.locale`
+      assert.deepStrictEqual(
+        formatDistanceStrict(new Date(2014, 0, 1), new Date(2015, 0, 1), {
+          locale: enUS,
+        }),
+        &#x27;1 year&#x27;
+      )
+    })
+
+    it(&#x27;formatDuration&#x27;, () =&gt; {
+      // For reference: not setting any options
+      assert.deepStrictEqual(formatDuration({ years: 1 }), &#x27;1 year&#x27;)
+
+      setDefaultOptions({ locale: eo })
+
+      assert.deepStrictEqual(formatDuration({ years: 1 }), &#x27;1 jaro&#x27;)
+
+      // Manually set `locale` take priority over `defaultOptions.locale`
+      assert.deepStrictEqual(
+        formatDuration({ years: 1 }, { locale: enUS }),
+        &#x27;1 year&#x27;
+      )
+    })
+
+    it(&#x27;formatRelative&#x27;, () =&gt; {
+      // For reference: not setting any options
+      assert.deepStrictEqual(
+        formatRelative(new Date(2014, 0, 1), new Date(2014, 0, 2)),
+        &#x27;yesterday at 12:00 AM&#x27;
+      )
+
+      setDefaultOptions({ locale: eo })
+
+      assert.deepStrictEqual(
+        formatRelative(new Date(2014, 0, 1), new Date(2014, 0, 2)),
+        &#x27;hieraŭ je 00:00&#x27;
+      )
+
+      // Manually set `locale` take priority over `defaultOptions.locale`
+      assert.deepStrictEqual(
+        formatRelative(new Date(2014, 0, 1), new Date(2014, 0, 2), {
+          locale: enUS,
+        }),
+        &#x27;yesterday at 12:00 AM&#x27;
+      )
+    })
+
+    it(&#x27;isMatch&#x27;, () =&gt; {
+      // For reference: not setting any options
+      assert(isMatch(&#x27;January 1st, 2014 at 12:00:00 AM&#x27;, &#x27;PPPpp&#x27;))
+
+      setDefaultOptions({ locale: eo })
+
+      assert(isMatch(&#x27;2014-januaro-01 00:00:00&#x27;, &#x27;PPPpp&#x27;))
+
+      // Manually set `locale` take priority over `defaultOptions.locale`
+      assert(
+        isMatch(&#x27;January 1st, 2014 at 12:00:00 AM&#x27;, &#x27;PPPpp&#x27;, { locale: enUS })
+      )
+    })
+
+    it(&#x27;parse&#x27;, () =&gt; {
+      // For reference: not setting any options
+      assert.deepStrictEqual(
+        parse(&#x27;January 1st, 2014 at 12:00:00 AM&#x27;, &#x27;PPPpp&#x27;, new Date()),
+        new Date(2014, 0, 1)
+      )
+
+      setDefaultOptions({ locale: eo })
+
+      assert.deepStrictEqual(
+        parse(&#x27;2014-januaro-01 00:00:00&#x27;, &#x27;PPPpp&#x27;, new Date()),
+        new Date(2014, 0, 1)
+      )
+
+      // Manually set `locale` take priority over `defaultOptions.locale`
+      assert.deepStrictEqual(
+        parse(&#x27;January 1st, 2014 at 12:00:00 AM&#x27;, &#x27;PPPpp&#x27;, new Date(), {
+          locale: enUS,
+        }),
+        new Date(2014, 0, 1)
+      )
+    })
+  })
+
+  describe(&#x27;weekStartsOn&#x27;, () =&gt; {
+    it(&#x27;differenceInCalendarWeeks&#x27;, () =&gt; {
+      // For reference: not setting any options
+      assert.strictEqual(
+        differenceInCalendarWeeks(
+          new Date(2014, 6 /* Jul */, 8, 18, 0),
+          new Date(2014, 5 /* Jun */, 29, 6, 0)
+        ),
+        1
+      )
+
+      setDefaultOptions({ weekStartsOn: 1 })
+
+      assert.strictEqual(
+        differenceInCalendarWeeks(
+          new Date(2014, 6 /* Jul */, 8, 18, 0),
+          new Date(2014, 5 /* Jun */, 29, 6, 0)
+        ),
+        2
+      )
+
+      // Manually set `weekStartsOn` take priority over `defaultOptions.weekStartsOn`
+      assert.strictEqual(
+        differenceInCalendarWeeks(
+          new Date(2014, 6 /* Jul */, 8, 18, 0),
+          new Date(2014, 5 /* Jun */, 29, 6, 0),
+          {
+            weekStartsOn: 0,
+          }
+        ),
+        1
+      )
+    })
+
+    it(&#x27;eachWeekOfInterval&#x27;, () =&gt; {
+      // For reference: not setting any options
+      assert.deepStrictEqual(
+        eachWeekOfInterval({
+          start: new Date(2014, 9 /* Oct */, 6),
+          end: new Date(2014, 10 /* Nov */, 23),
+        }),
+        [
+          new Date(2014, 9 /* Oct */, 5),
+          new Date(2014, 9 /* Oct */, 12),
+          new Date(2014, 9 /* Oct */, 19),
+          new Date(2014, 9 /* Oct */, 26),
+          new Date(2014, 10 /* Nov */, 2),
+          new Date(2014, 10 /* Nov */, 9),
+          new Date(2014, 10 /* Nov */, 16),
+          new Date(2014, 10 /* Nov */, 23),
+        ]
+      )
+
+      setDefaultOptions({ weekStartsOn: 1 })
+
+      assert.deepStrictEqual(
+        eachWeekOfInterval({
+          start: new Date(2014, 9 /* Oct */, 6, 6, 35),
+          end: new Date(2014, 10 /* Nov */, 25, 22, 15),
+        }),
+        [
+          new Date(2014, 9 /* Oct */, 6),
+          new Date(2014, 9 /* Oct */, 13),
+          new Date(2014, 9 /* Oct */, 20),
+          new Date(2014, 9 /* Oct */, 27),
+          new Date(2014, 10 /* Nov */, 3),
+          new Date(2014, 10 /* Nov */, 10),
+          new Date(2014, 10 /* Nov */, 17),
+          new Date(2014, 10 /* Nov */, 24),
+        ]
+      )
+
+      // Manually set `weekStartsOn` take priority over `defaultOptions.weekStartsOn`
+      assert.deepStrictEqual(
+        eachWeekOfInterval(
+          {
+            start: new Date(2014, 9 /* Oct */, 6),
+            end: new Date(2014, 10 /* Nov */, 23),
+          },
+          {
+            weekStartsOn: 0,
+          }
+        ),
+        [
+          new Date(2014, 9 /* Oct */, 5),
+          new Date(2014, 9 /* Oct */, 12),
+          new Date(2014, 9 /* Oct */, 19),
+          new Date(2014, 9 /* Oct */, 26),
+          new Date(2014, 10 /* Nov */, 2),
+          new Date(2014, 10 /* Nov */, 9),
+          new Date(2014, 10 /* Nov */, 16),
+          new Date(2014, 10 /* Nov */, 23),
+        ]
+      )
+    })
+
+    it(&#x27;endOfWeek&#x27;, () =&gt; {
+      // For reference: not setting any options
+      assert.deepStrictEqual(
+        endOfWeek(new Date(2014, 8 /* Sep */, 2, 11, 55, 0)),
+        new Date(2014, 8 /* Sep */, 6, 23, 59, 59, 999)
+      )
+
+      setDefaultOptions({ weekStartsOn: 1 })
+
+      assert.deepStrictEqual(
+        endOfWeek(new Date(2014, 8 /* Sep */, 2, 11, 55, 0)),
+        new Date(2014, 8 /* Sep */, 7, 23, 59, 59, 999)
+      )
+
+      // Manually set `weekStartsOn` take priority over `defaultOptions.weekStartsOn`
+      assert.deepStrictEqual(
+        endOfWeek(new Date(2014, 8 /* Sep */, 2, 11, 55, 0), {
+          weekStartsOn: 0,
+        }),
+        new Date(2014, 8 /* Sep */, 6, 23, 59, 59, 999)
+      )
+    })
+
+    it(&#x27;getWeekOfMonth&#x27;, () =&gt; {
+      // For reference: not setting any options
+      assert.strictEqual(getWeekOfMonth(new Date(2017, 10 /* Nov */, 15)), 3)
+
+      setDefaultOptions({ weekStartsOn: 1 })
+
+      assert.strictEqual(getWeekOfMonth(new Date(2017, 9 /* Oct */, 31)), 6)
+
+      // Manually set `weekStartsOn` take priority over `defaultOptions.weekStartsOn`
+      assert.strictEqual(
+        getWeekOfMonth(new Date(2017, 10 /* Nov */, 15), {
+          weekStartsOn: 0,
+        }),
+        3
+      )
+    })
+
+    it(&#x27;getWeeksInMonth&#x27;, () =&gt; {
+      // For reference: not setting any options
+      assert.strictEqual(
+        getWeeksInMonth(new Date(2015, 1 /* Feb */, 8, 18, 0)),
+        4
+      )
+
+      setDefaultOptions({ weekStartsOn: 1 })
+
+      assert.strictEqual(
+        getWeeksInMonth(new Date(2015, 1 /* Feb */, 8, 18, 0)),
+        5
+      )
+
+      // Manually set `weekStartsOn` take priority over `defaultOptions.weekStartsOn`
+      assert.strictEqual(
+        getWeeksInMonth(new Date(2015, 1 /* Feb */, 8, 18, 0), {
+          weekStartsOn: 0,
+        }),
+        4
+      )
+    })
+
+    it(&#x27;isSameWeek&#x27;, () =&gt; {
+      // For reference: not setting any options
+      assert.strictEqual(
+        isSameWeek(
+          new Date(2014, 7 /* Aug */, 31),
+          new Date(2014, 8 /* Sep */, 4)
+        ),
+        true
+      )
+
+      setDefaultOptions({ weekStartsOn: 1 })
+
+      assert.strictEqual(
+        isSameWeek(
+          new Date(2014, 7 /* Aug */, 31),
+          new Date(2014, 8 /* Sep */, 4)
+        ),
+        false
+      )
+
+      // Manually set `weekStartsOn` take priority over `defaultOptions.weekStartsOn`
+      assert.strictEqual(
+        isSameWeek(
+          new Date(2014, 7 /* Aug */, 31),
+          new Date(2014, 8 /* Sep */, 4),
+          {
+            weekStartsOn: 0,
+          }
+        ),
+        true
+      )
+    })
+
+    it(&#x27;lastDayOfWeek&#x27;, () =&gt; {
+      // For reference: not setting any options
+      assert.deepStrictEqual(
+        lastDayOfWeek(new Date(2014, 8 /* Sep */, 2, 11, 55, 0)),
+        new Date(2014, 8 /* Sep */, 6)
+      )
+
+      setDefaultOptions({ weekStartsOn: 1 })
+
+      assert.deepStrictEqual(
+        lastDayOfWeek(new Date(2014, 8 /* Sep */, 2, 11, 55, 0)),
+        new Date(2014, 8 /* Sep */, 7)
+      )
+
+      // Manually set `weekStartsOn` take priority over `defaultOptions.weekStartsOn`
+      assert.deepStrictEqual(
+        lastDayOfWeek(new Date(2014, 8 /* Sep */, 2, 11, 55, 0), {
+          weekStartsOn: 0,
+        }),
+        new Date(2014, 8 /* Sep */, 6)
+      )
+    })
+
+    it(&#x27;setDay&#x27;, () =&gt; {
+      // For reference: not setting any options
+      assert.deepStrictEqual(
+        setDay(new Date(2014, 8 /* Sep */, 1), 0),
+        new Date(2014, 7 /* Aug */, 31)
+      )
+
+      setDefaultOptions({ weekStartsOn: 1 })
+
+      assert.deepStrictEqual(
+        setDay(new Date(2014, 8 /* Sep */, 1), 0),
+        new Date(2014, 8 /* Sep */, 7)
+      )
+
+      // Manually set `weekStartsOn` take priority over `defaultOptions.weekStartsOn`
+      assert.deepStrictEqual(
+        setDay(new Date(2014, 8 /* Sep */, 1), 0, {
+          weekStartsOn: 0,
+        }),
+        new Date(2014, 7 /* Aug */, 31)
+      )
+    })
+
+    it(&#x27;startOfWeek&#x27;, () =&gt; {
+      // For reference: not setting any options
+      assert.deepStrictEqual(
+        startOfWeek(new Date(2014, 8 /* Sep */, 2, 11, 55, 0)),
+        new Date(2014, 7 /* Aug */, 31)
+      )
+
+      setDefaultOptions({ weekStartsOn: 1 })
+
+      assert.deepStrictEqual(
+        startOfWeek(new Date(2014, 8 /* Sep */, 2, 11, 55, 0)),
+        new Date(2014, 8 /* Sep */, 1)
+      )
+
+      // Manually set `weekStartsOn` take priority over `defaultOptions.weekStartsOn`
+      assert.deepStrictEqual(
+        startOfWeek(new Date(2014, 8 /* Sep */, 2, 11, 55, 0), {
+          weekStartsOn: 0,
+        }),
+        new Date(2014, 7 /* Aug */, 31)
+      )
+    })
+  })
+
+  describe(&#x27;firstWeekContainsDate&#x27;, () =&gt; {
+    it(&#x27;format&#x27;, () =&gt; {
+      // For reference: not setting any options
+      assert.strictEqual(
+        format(new Date(1986, 3 /* Apr */, 6), &#x27;w wo ww&#x27;),
+        &#x27;15 15th 15&#x27;
+      )
+
+      setDefaultOptions({ weekStartsOn: 1, firstWeekContainsDate: 4 })
+
+      assert.strictEqual(
+        format(new Date(1986, 3 /* Apr */, 6), &#x27;w wo ww&#x27;),
+        &#x27;14 14th 14&#x27;
+      )
+
+      // Manually set `firstWeekContainsDate` take priority over `defaultOptions.firstWeekContainsDate`
+      assert.strictEqual(
+        format(new Date(1986, 3 /* Apr */, 6), &#x27;w wo ww&#x27;, {
+          weekStartsOn: 0,
+          firstWeekContainsDate: 1,
+        }),
+        &#x27;15 15th 15&#x27;
+      )
+    })
+
+    it(&#x27;getWeek&#x27;, () =&gt; {
+      // For reference: not setting any options
+      assert.strictEqual(getWeek(new Date(2005, 0 /* Jan */, 2)), 2)
+
+      setDefaultOptions({ weekStartsOn: 1, firstWeekContainsDate: 4 })
+
+      assert.strictEqual(getWeek(new Date(2005, 0 /* Jan */, 2)), 53)
+
+      // Manually set `firstWeekContainsDate` take priority over `defaultOptions.firstWeekContainsDate`
+      assert.strictEqual(
+        getWeek(new Date(2005, 0 /* Jan */, 2), {
+          weekStartsOn: 0,
+          firstWeekContainsDate: 1,
+        }),
+        2
+      )
+    })
+
+    it(&#x27;getWeekYear&#x27;, () =&gt; {
+      // For reference: not setting any options
+      assert.strictEqual(getWeekYear(new Date(2004, 11 /* Dec */, 26)), 2005)
+
+      setDefaultOptions({ weekStartsOn: 1, firstWeekContainsDate: 4 })
+
+      assert.strictEqual(getWeekYear(new Date(2004, 11 /* Dec */, 26)), 2004)
+
+      // Manually set `firstWeekContainsDate` take priority over `defaultOptions.firstWeekContainsDate`
+      assert.strictEqual(
+        getWeekYear(new Date(2004, 11 /* Dec */, 26), {
+          weekStartsOn: 0,
+          firstWeekContainsDate: 1,
+        }),
+        2005
+      )
+    })
+
+    it(&#x27;parse&#x27;, () =&gt; {
+      const referenceDate = new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 900)
+      // For reference: not setting any options
+      assert.deepStrictEqual(
+        parse(&#x27;2018&#x27;, &#x27;Y&#x27;, referenceDate),
+        new Date(2017, 11 /* Dec */, 31)
+      )
+
+      setDefaultOptions({ weekStartsOn: 1, firstWeekContainsDate: 4 })
+
+      assert.deepStrictEqual(
+        parse(&#x27;2018&#x27;, &#x27;Y&#x27;, referenceDate),
+        new Date(2018, 0 /* Jan */, 1)
+      )
+
+      // Manually set `firstWeekContainsDate` take priority over `defaultOptions.firstWeekContainsDate`
+      assert.deepStrictEqual(
+        parse(&#x27;2018&#x27;, &#x27;Y&#x27;, referenceDate, {
+          weekStartsOn: 0,
+          firstWeekContainsDate: 1,
+        }),
+        new Date(2017, 11 /* Dec */, 31)
+      )
+    })
+
+    it(&#x27;setWeek&#x27;, () =&gt; {
+      // For reference: not setting any options
+      assert.deepStrictEqual(
+        setWeek(new Date(2005, 0 /* Jan */, 2), 1),
+        new Date(2004, 11 /* Dec */, 26)
+      )
+
+      setDefaultOptions({ weekStartsOn: 1, firstWeekContainsDate: 4 })
+
+      assert.deepStrictEqual(
+        setWeek(new Date(2005, 0 /* Jan */, 2), 1),
+        new Date(2004, 0 /* Jan */, 4)
+      )
+
+      // Manually set `firstWeekContainsDate` take priority over `defaultOptions.firstWeekContainsDate`
+      assert.deepStrictEqual(
+        setWeek(new Date(2005, 0 /* Jan */, 2), 1, {
+          weekStartsOn: 0,
+          firstWeekContainsDate: 1,
+        }),
+        new Date(2004, 11 /* Dec */, 26)
+      )
+    })
+
+    it(&#x27;setWeekYear&#x27;, () =&gt; {
+      // For reference: not setting any options
+      assert.deepStrictEqual(
+        setWeekYear(new Date(2010, 0 /* Jan */, 2), 2004),
+        new Date(2004, 0 /* Jan */, 3)
+      )
+
+      setDefaultOptions({ weekStartsOn: 1, firstWeekContainsDate: 4 })
+
+      assert.deepStrictEqual(
+        setWeekYear(new Date(2010, 0 /* Jan */, 2), 2004),
+        new Date(2005, 0 /* Jan */, 1)
+      )
+
+      // Manually set `firstWeekContainsDate` take priority over `defaultOptions.firstWeekContainsDate`
+      assert.deepStrictEqual(
+        setWeekYear(new Date(2010, 0 /* Jan */, 2), 2004, {
+          weekStartsOn: 0,
+          firstWeekContainsDate: 1,
+        }),
+        new Date(2004, 0 /* Jan */, 3)
+      )
+    })
+
+    it(&#x27;startOfWeekYear&#x27;, () =&gt; {
+      // For reference: not setting any options
+      assert.deepStrictEqual(
+        startOfWeekYear(new Date(2005, 6 /* Jul */, 2)),
+        new Date(2004, 11 /* Dec */, 26, 0, 0, 0, 0)
+      )
+
+      setDefaultOptions({ weekStartsOn: 1, firstWeekContainsDate: 4 })
+
+      assert.deepStrictEqual(
+        startOfWeekYear(new Date(2005, 6 /* Jul */, 2)),
+        new Date(2005, 0 /* Jan */, 3, 0, 0, 0, 0)
+      )
+
+      // Manually set `firstWeekContainsDate` take priority over `defaultOptions.firstWeekContainsDate`
+      assert.deepStrictEqual(
+        startOfWeekYear(new Date(2005, 6 /* Jul */, 2), {
+          weekStartsOn: 0,
+          firstWeekContainsDate: 1,
+        }),
+        new Date(2004, 11 /* Dec */, 26, 0, 0, 0, 0)
+      )
+    })
+  })
+})
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:22 GMT</p>
+    </body>
+  </html>
+  

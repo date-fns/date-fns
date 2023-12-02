@@ -1,0 +1,298 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/kk/_lib/formatDistance/index.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">248</td><td class="">248</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import type {
+  FormatDistanceFn,
+  FormatDistanceLocale,
+  FormatDistanceFnOptions,
+} from &#x27;../../../types&#x27;
+
+type Plural = {
+  one?: string
+  singularNominative: string
+  singularGenitive: string
+  pluralGenitive: string
+}
+
+type FormatDistanceTokenValue =
+  | {
+      type?: undefined
+      regular: Plural
+      past?: Plural
+      future?: Plural
+    }
+  | {
+      type: &#x27;weeks&#x27;
+      one: string
+      other: string
+    }
+
+  // eslint-disable-next-line no-unused-vars
+  | ((options?: FormatDistanceFnOptions) =&gt; string)
+
+const formatDistanceLocale: FormatDistanceLocale&lt;FormatDistanceTokenValue&gt; = {
+  lessThanXSeconds: {
+    regular: {
+      one: &#x27;1 секундтан аз&#x27;,
+      singularNominative: &#x27;{{count}} секундтан аз&#x27;,
+      singularGenitive: &#x27;{{count}} секундтан аз&#x27;,
+      pluralGenitive: &#x27;{{count}} секундтан аз&#x27;,
+    },
+    future: {
+      one: &#x27;бір секундтан кейін&#x27;,
+      singularNominative: &#x27;{{count}} секундтан кейін&#x27;,
+      singularGenitive: &#x27;{{count}} секундтан кейін&#x27;,
+      pluralGenitive: &#x27;{{count}} секундтан кейін&#x27;,
+    },
+  },
+
+  xSeconds: {
+    regular: {
+      singularNominative: &#x27;{{count}} секунд&#x27;,
+      singularGenitive: &#x27;{{count}} секунд&#x27;,
+      pluralGenitive: &#x27;{{count}} секунд&#x27;,
+    },
+    past: {
+      singularNominative: &#x27;{{count}} секунд бұрын&#x27;,
+      singularGenitive: &#x27;{{count}} секунд бұрын&#x27;,
+      pluralGenitive: &#x27;{{count}} секунд бұрын&#x27;,
+    },
+    future: {
+      singularNominative: &#x27;{{count}} секундтан кейін&#x27;,
+      singularGenitive: &#x27;{{count}} секундтан кейін&#x27;,
+      pluralGenitive: &#x27;{{count}} секундтан кейін&#x27;,
+    },
+  },
+
+  halfAMinute: (options?: FormatDistanceFnOptions) =&gt; {
+    if (options?.addSuffix) {
+      if (options.comparison &amp;&amp; options.comparison &gt; 0) {
+        return &#x27;жарты минут ішінде&#x27;
+      } else {
+        return &#x27;жарты минут бұрын&#x27;
+      }
+    }
+
+    return &#x27;жарты минут&#x27;
+  },
+
+  lessThanXMinutes: {
+    regular: {
+      one: &#x27;1 минуттан аз&#x27;,
+      singularNominative: &#x27;{{count}} минуттан аз&#x27;,
+      singularGenitive: &#x27;{{count}} минуттан аз&#x27;,
+      pluralGenitive: &#x27;{{count}} минуттан аз&#x27;,
+    },
+    future: {
+      one: &#x27;минуттан кем &#x27;,
+      singularNominative: &#x27;{{count}} минуттан кем&#x27;,
+      singularGenitive: &#x27;{{count}} минуттан кем&#x27;,
+      pluralGenitive: &#x27;{{count}} минуттан кем&#x27;,
+    },
+  },
+
+  xMinutes: {
+    regular: {
+      singularNominative: &#x27;{{count}} минут&#x27;,
+      singularGenitive: &#x27;{{count}} минут&#x27;,
+      pluralGenitive: &#x27;{{count}} минут&#x27;,
+    },
+    past: {
+      singularNominative: &#x27;{{count}} минут бұрын&#x27;,
+      singularGenitive: &#x27;{{count}} минут бұрын&#x27;,
+      pluralGenitive: &#x27;{{count}} минут бұрын&#x27;,
+    },
+    future: {
+      singularNominative: &#x27;{{count}} минуттан кейін&#x27;,
+      singularGenitive: &#x27;{{count}} минуттан кейін&#x27;,
+      pluralGenitive: &#x27;{{count}} минуттан кейін&#x27;,
+    },
+  },
+
+  aboutXHours: {
+    regular: {
+      singularNominative: &#x27;шамамен {{count}} сағат&#x27;,
+      singularGenitive: &#x27;шамамен {{count}} сағат&#x27;,
+      pluralGenitive: &#x27;шамамен {{count}} сағат&#x27;,
+    },
+    future: {
+      singularNominative: &#x27;шамамен {{count}} сағаттан кейін&#x27;,
+      singularGenitive: &#x27;шамамен {{count}} сағаттан кейін&#x27;,
+      pluralGenitive: &#x27;шамамен {{count}} сағаттан кейін&#x27;,
+    },
+  },
+
+  xHours: {
+    regular: {
+      singularNominative: &#x27;{{count}} сағат&#x27;,
+      singularGenitive: &#x27;{{count}} сағат&#x27;,
+      pluralGenitive: &#x27;{{count}} сағат&#x27;,
+    },
+  },
+
+  xDays: {
+    regular: {
+      singularNominative: &#x27;{{count}} күн&#x27;,
+      singularGenitive: &#x27;{{count}} күн&#x27;,
+      pluralGenitive: &#x27;{{count}} күн&#x27;,
+    },
+    future: {
+      singularNominative: &#x27;{{count}} күннен кейін&#x27;,
+      singularGenitive: &#x27;{{count}} күннен кейін&#x27;,
+      pluralGenitive: &#x27;{{count}} күннен кейін&#x27;,
+    },
+  },
+
+  aboutXWeeks: {
+    type: &#x27;weeks&#x27;,
+    one: &#x27;шамамен 1 апта&#x27;,
+    other: &#x27;шамамен {{count}} апта&#x27;,
+  },
+
+  xWeeks: {
+    type: &#x27;weeks&#x27;,
+    one: &#x27;1 апта&#x27;,
+    other: &#x27;{{count}} апта&#x27;,
+  },
+
+  aboutXMonths: {
+    regular: {
+      singularNominative: &#x27;шамамен {{count}} ай&#x27;,
+      singularGenitive: &#x27;шамамен {{count}} ай&#x27;,
+      pluralGenitive: &#x27;шамамен {{count}} ай&#x27;,
+    },
+    future: {
+      singularNominative: &#x27;шамамен {{count}} айдан кейін&#x27;,
+      singularGenitive: &#x27;шамамен {{count}} айдан кейін&#x27;,
+      pluralGenitive: &#x27;шамамен {{count}} айдан кейін&#x27;,
+    },
+  },
+
+  xMonths: {
+    regular: {
+      singularNominative: &#x27;{{count}} ай&#x27;,
+      singularGenitive: &#x27;{{count}} ай&#x27;,
+      pluralGenitive: &#x27;{{count}} ай&#x27;,
+    },
+  },
+
+  aboutXYears: {
+    regular: {
+      singularNominative: &#x27;шамамен {{count}} жыл&#x27;,
+      singularGenitive: &#x27;шамамен {{count}} жыл&#x27;,
+      pluralGenitive: &#x27;шамамен {{count}} жыл&#x27;,
+    },
+    future: {
+      singularNominative: &#x27;шамамен {{count}} жылдан кейін&#x27;,
+      singularGenitive: &#x27;шамамен {{count}} жылдан кейін&#x27;,
+      pluralGenitive: &#x27;шамамен {{count}} жылдан кейін&#x27;,
+    },
+  },
+
+  xYears: {
+    regular: {
+      singularNominative: &#x27;{{count}} жыл&#x27;,
+      singularGenitive: &#x27;{{count}} жыл&#x27;,
+      pluralGenitive: &#x27;{{count}} жыл&#x27;,
+    },
+    future: {
+      singularNominative: &#x27;{{count}} жылдан кейін&#x27;,
+      singularGenitive: &#x27;{{count}} жылдан кейін&#x27;,
+      pluralGenitive: &#x27;{{count}} жылдан кейін&#x27;,
+    },
+  },
+
+  overXYears: {
+    regular: {
+      singularNominative: &#x27;{{count}} жылдан астам&#x27;,
+      singularGenitive: &#x27;{{count}} жылдан астам&#x27;,
+      pluralGenitive: &#x27;{{count}} жылдан астам&#x27;,
+    },
+    future: {
+      singularNominative: &#x27;{{count}} жылдан астам&#x27;,
+      singularGenitive: &#x27;{{count}} жылдан астам&#x27;,
+      pluralGenitive: &#x27;{{count}} жылдан астам&#x27;,
+    },
+  },
+
+  almostXYears: {
+    regular: {
+      singularNominative: &#x27;{{count}} жылға жақын&#x27;,
+      singularGenitive: &#x27;{{count}} жылға жақын&#x27;,
+      pluralGenitive: &#x27;{{count}} жылға жақын&#x27;,
+    },
+    future: {
+      singularNominative: &#x27;{{count}} жылдан кейін&#x27;,
+      singularGenitive: &#x27;{{count}} жылдан кейін&#x27;,
+      pluralGenitive: &#x27;{{count}} жылдан кейін&#x27;,
+    },
+  },
+}
+
+function declension(scheme: Plural, count: number): string {
+  // scheme for count=1 exists
+  if (scheme.one &amp;&amp; count === 1) return scheme.one
+
+  const rem10 = count % 10
+  const rem100 = count % 100
+
+  // 1, 21, 31, ...
+  if (rem10 === 1 &amp;&amp; rem100 !== 11) {
+    return scheme.singularNominative.replace(&#x27;{{count}}&#x27;, String(count))
+
+    // 2, 3, 4, 22, 23, 24, 32 ...
+  } else if (rem10 &gt;= 2 &amp;&amp; rem10 &lt;= 4 &amp;&amp; (rem100 &lt; 10 || rem100 &gt; 20)) {
+    return scheme.singularGenitive.replace(&#x27;{{count}}&#x27;, String(count))
+
+    // 5, 6, 7, 8, 9, 10, 11, ...
+  } else {
+    return scheme.pluralGenitive.replace(&#x27;{{count}}&#x27;, String(count))
+  }
+}
+
+const formatDistance: FormatDistanceFn = (token, count, options) =&gt; {
+  const tokenValue = formatDistanceLocale[token]
+
+  if (typeof tokenValue === &#x27;function&#x27;) return tokenValue(options)
+
+  if (tokenValue.type === &#x27;weeks&#x27;) {
+    return count === 1
+      ? tokenValue.one
+      : tokenValue.other.replace(&#x27;{{count}}&#x27;, String(count))
+  }
+
+  if (options?.addSuffix) {
+    if (options.comparison &amp;&amp; options.comparison &gt; 0) {
+      if (tokenValue.future) {
+        return declension(tokenValue.future, count)
+      } else {
+        return declension(tokenValue.regular, count) + &#x27; кейін&#x27;
+      }
+    } else {
+      if (tokenValue.past) {
+        return declension(tokenValue.past, count)
+      } else {
+        return declension(tokenValue.regular, count) + &#x27; бұрын&#x27;
+      }
+    }
+  } else {
+    return declension(tokenValue.regular, count)
+  }
+}
+
+export default formatDistance
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:20 GMT</p>
+    </body>
+  </html>
+  

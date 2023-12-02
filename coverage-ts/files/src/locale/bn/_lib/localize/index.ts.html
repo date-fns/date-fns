@@ -1,0 +1,279 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/bn/_lib/localize/index.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">175</td><td class="">175</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import type { Localize, LocalizeFn } from &#x27;../../../types&#x27;
+import buildLocalizeFn from &#x27;../../../_lib/buildLocalizeFn/index&#x27;
+
+const numberValues = {
+  locale: {
+    &#x27;1&#x27;: &#x27;১&#x27;,
+    &#x27;2&#x27;: &#x27;২&#x27;,
+    &#x27;3&#x27;: &#x27;৩&#x27;,
+    &#x27;4&#x27;: &#x27;৪&#x27;,
+    &#x27;5&#x27;: &#x27;৫&#x27;,
+    &#x27;6&#x27;: &#x27;৬&#x27;,
+    &#x27;7&#x27;: &#x27;৭&#x27;,
+    &#x27;8&#x27;: &#x27;৮&#x27;,
+    &#x27;9&#x27;: &#x27;৯&#x27;,
+    &#x27;0&#x27;: &#x27;০&#x27;,
+  },
+  number: {
+    &#x27;১&#x27;: &#x27;1&#x27;,
+    &#x27;২&#x27;: &#x27;2&#x27;,
+    &#x27;৩&#x27;: &#x27;3&#x27;,
+    &#x27;৪&#x27;: &#x27;4&#x27;,
+    &#x27;৫&#x27;: &#x27;5&#x27;,
+    &#x27;৬&#x27;: &#x27;6&#x27;,
+    &#x27;৭&#x27;: &#x27;7&#x27;,
+    &#x27;৮&#x27;: &#x27;8&#x27;,
+    &#x27;৯&#x27;: &#x27;9&#x27;,
+    &#x27;০&#x27;: &#x27;0&#x27;,
+  },
+}
+
+const eraValues = {
+  narrow: [&#x27;খ্রিঃপূঃ&#x27;, &#x27;খ্রিঃ&#x27;] as const,
+  abbreviated: [&#x27;খ্রিঃপূর্ব&#x27;, &#x27;খ্রিঃ&#x27;] as const,
+  wide: [&#x27;খ্রিস্টপূর্ব&#x27;, &#x27;খ্রিস্টাব্দ&#x27;] as const,
+}
+
+const quarterValues = {
+  narrow: [&#x27;১&#x27;, &#x27;২&#x27;, &#x27;৩&#x27;, &#x27;৪&#x27;] as const,
+  abbreviated: [&#x27;১ত্রৈ&#x27;, &#x27;২ত্রৈ&#x27;, &#x27;৩ত্রৈ&#x27;, &#x27;৪ত্রৈ&#x27;] as const,
+  wide: [
+    &#x27;১ম ত্রৈমাসিক&#x27;,
+    &#x27;২য় ত্রৈমাসিক&#x27;,
+    &#x27;৩য় ত্রৈমাসিক&#x27;,
+    &#x27;৪র্থ ত্রৈমাসিক&#x27;,
+  ] as const,
+}
+
+const monthValues = {
+  narrow: [
+    &#x27;জানু&#x27;,
+    &#x27;ফেব্রু&#x27;,
+    &#x27;মার্চ&#x27;,
+    &#x27;এপ্রিল&#x27;,
+    &#x27;মে&#x27;,
+    &#x27;জুন&#x27;,
+    &#x27;জুলাই&#x27;,
+    &#x27;আগস্ট&#x27;,
+    &#x27;সেপ্ট&#x27;,
+    &#x27;অক্টো&#x27;,
+    &#x27;নভে&#x27;,
+    &#x27;ডিসে&#x27;,
+  ] as const,
+  abbreviated: [
+    &#x27;জানু&#x27;,
+    &#x27;ফেব্রু&#x27;,
+    &#x27;মার্চ&#x27;,
+    &#x27;এপ্রিল&#x27;,
+    &#x27;মে&#x27;,
+    &#x27;জুন&#x27;,
+    &#x27;জুলাই&#x27;,
+    &#x27;আগস্ট&#x27;,
+    &#x27;সেপ্ট&#x27;,
+    &#x27;অক্টো&#x27;,
+    &#x27;নভে&#x27;,
+    &#x27;ডিসে&#x27;,
+  ] as const,
+  wide: [
+    &#x27;জানুয়ারি&#x27;,
+    &#x27;ফেব্রুয়ারি&#x27;,
+    &#x27;মার্চ&#x27;,
+    &#x27;এপ্রিল&#x27;,
+    &#x27;মে&#x27;,
+    &#x27;জুন&#x27;,
+    &#x27;জুলাই&#x27;,
+    &#x27;আগস্ট&#x27;,
+    &#x27;সেপ্টেম্বর&#x27;,
+    &#x27;অক্টোবর&#x27;,
+    &#x27;নভেম্বর&#x27;,
+    &#x27;ডিসেম্বর&#x27;,
+  ] as const,
+}
+
+const dayValues = {
+  narrow: [&#x27;র&#x27;, &#x27;সো&#x27;, &#x27;ম&#x27;, &#x27;বু&#x27;, &#x27;বৃ&#x27;, &#x27;শু&#x27;, &#x27;শ&#x27;] as const,
+  short: [&#x27;রবি&#x27;, &#x27;সোম&#x27;, &#x27;মঙ্গল&#x27;, &#x27;বুধ&#x27;, &#x27;বৃহ&#x27;, &#x27;শুক্র&#x27;, &#x27;শনি&#x27;] as const,
+  abbreviated: [&#x27;রবি&#x27;, &#x27;সোম&#x27;, &#x27;মঙ্গল&#x27;, &#x27;বুধ&#x27;, &#x27;বৃহ&#x27;, &#x27;শুক্র&#x27;, &#x27;শনি&#x27;] as const,
+  wide: [
+    &#x27;রবিবার&#x27;,
+    &#x27;সোমবার&#x27;,
+    &#x27;মঙ্গলবার&#x27;,
+    &#x27;বুধবার&#x27;,
+    &#x27;বৃহস্পতিবার &#x27;,
+    &#x27;শুক্রবার&#x27;,
+    &#x27;শনিবার&#x27;,
+  ] as const,
+}
+
+const dayPeriodValues = {
+  narrow: {
+    am: &#x27;পূ&#x27;,
+    pm: &#x27;অপ&#x27;,
+    midnight: &#x27;মধ্যরাত&#x27;,
+    noon: &#x27;মধ্যাহ্ন&#x27;,
+    morning: &#x27;সকাল&#x27;,
+    afternoon: &#x27;বিকাল&#x27;,
+    evening: &#x27;সন্ধ্যা&#x27;,
+    night: &#x27;রাত&#x27;,
+  },
+  abbreviated: {
+    am: &#x27;পূর্বাহ্ন&#x27;,
+    pm: &#x27;অপরাহ্ন&#x27;,
+    midnight: &#x27;মধ্যরাত&#x27;,
+    noon: &#x27;মধ্যাহ্ন&#x27;,
+    morning: &#x27;সকাল&#x27;,
+    afternoon: &#x27;বিকাল&#x27;,
+    evening: &#x27;সন্ধ্যা&#x27;,
+    night: &#x27;রাত&#x27;,
+  },
+  wide: {
+    am: &#x27;পূর্বাহ্ন&#x27;,
+    pm: &#x27;অপরাহ্ন&#x27;,
+    midnight: &#x27;মধ্যরাত&#x27;,
+    noon: &#x27;মধ্যাহ্ন&#x27;,
+    morning: &#x27;সকাল&#x27;,
+    afternoon: &#x27;বিকাল&#x27;,
+    evening: &#x27;সন্ধ্যা&#x27;,
+    night: &#x27;রাত&#x27;,
+  },
+}
+
+const formattingDayPeriodValues = {
+  narrow: {
+    am: &#x27;পূ&#x27;,
+    pm: &#x27;অপ&#x27;,
+    midnight: &#x27;মধ্যরাত&#x27;,
+    noon: &#x27;মধ্যাহ্ন&#x27;,
+    morning: &#x27;সকাল&#x27;,
+    afternoon: &#x27;বিকাল&#x27;,
+    evening: &#x27;সন্ধ্যা&#x27;,
+    night: &#x27;রাত&#x27;,
+  },
+  abbreviated: {
+    am: &#x27;পূর্বাহ্ন&#x27;,
+    pm: &#x27;অপরাহ্ন&#x27;,
+    midnight: &#x27;মধ্যরাত&#x27;,
+    noon: &#x27;মধ্যাহ্ন&#x27;,
+    morning: &#x27;সকাল&#x27;,
+    afternoon: &#x27;বিকাল&#x27;,
+    evening: &#x27;সন্ধ্যা&#x27;,
+    night: &#x27;রাত&#x27;,
+  },
+  wide: {
+    am: &#x27;পূর্বাহ্ন&#x27;,
+    pm: &#x27;অপরাহ্ন&#x27;,
+    midnight: &#x27;মধ্যরাত&#x27;,
+    noon: &#x27;মধ্যাহ্ন&#x27;,
+    morning: &#x27;সকাল&#x27;,
+    afternoon: &#x27;বিকাল&#x27;,
+    evening: &#x27;সন্ধ্যা&#x27;,
+    night: &#x27;রাত&#x27;,
+  },
+}
+
+function dateOrdinalNumber(number: number, localeNumber: string): string {
+  if (number &gt; 18 &amp;&amp; number &lt;= 31) {
+    return localeNumber + &#x27;শে&#x27;
+  } else {
+    switch (number) {
+      case 1:
+        return localeNumber + &#x27;লা&#x27;
+      case 2:
+      case 3:
+        return localeNumber + &#x27;রা&#x27;
+      case 4:
+        return localeNumber + &#x27;ঠা&#x27;
+      default:
+        return localeNumber + &#x27;ই&#x27;
+    }
+  }
+}
+
+const ordinalNumber: LocalizeFn&lt;number&gt; = (dirtyNumber, options) =&gt; {
+  const number = Number(dirtyNumber)
+  const localeNumber = numberToLocale(number)
+  const unit = options?.unit
+
+  if (unit === &#x27;date&#x27;) {
+    return dateOrdinalNumber(number, localeNumber)
+  }
+  if (number &gt; 10 || number === 0) return localeNumber + &#x27;তম&#x27;
+
+  const rem10 = number % 10
+  switch (rem10) {
+    case 2:
+    case 3:
+      return localeNumber + &#x27;য়&#x27;
+    case 4:
+      return localeNumber + &#x27;র্থ&#x27;
+    case 6:
+      return localeNumber + &#x27;ষ্ঠ&#x27;
+    default:
+      return localeNumber + &#x27;ম&#x27;
+  }
+}
+
+// function localeToNumber(locale: string): number {
+//   const enNumber = locale.toString().replace(/[১২৩৪৫৬৭৮৯০]/g, function (match) {
+//     return numberValues.number[match as keyof typeof numberValues.number]
+//   })
+//   return Number(enNumber)
+// }
+
+export function numberToLocale(enNumber: number) {
+  return enNumber.toString().replace(/\d/g, function (match) {
+    return numberValues.locale[match as keyof typeof numberValues.locale]
+  })
+}
+
+const localize: Localize = {
+  ordinalNumber,
+
+  era: buildLocalizeFn({
+    values: eraValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  quarter: buildLocalizeFn({
+    values: quarterValues,
+    defaultWidth: &#x27;wide&#x27;,
+    argumentCallback: (quarter) =&gt; quarter - 1,
+  }),
+
+  month: buildLocalizeFn({
+    values: monthValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  day: buildLocalizeFn({
+    values: dayValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues,
+    defaultWidth: &#x27;wide&#x27;,
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: &#x27;wide&#x27;,
+  }),
+}
+
+export default localize
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:19 GMT</p>
+    </body>
+  </html>
+  

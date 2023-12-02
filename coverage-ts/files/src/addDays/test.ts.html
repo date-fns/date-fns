@@ -1,0 +1,131 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>test.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/addDays/test.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">200</td><td class="">200</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">/* eslint-env mocha */
+
+import assert from &#x27;assert&#x27;
+import { describe, it } from &#x27;vitest&#x27;
+import addDays from &#x27;./index&#x27;
+import { getDstTransitions } from &#x27;../../test/dst/tzOffsetTransitions&#x27;
+
+describe(&#x27;addDays&#x27;, () =&gt; {
+  it(&#x27;adds the given number of days in UTC time crossing months&#x27;, () =&gt; {
+    const result = addDays(new Date(Date.UTC(2023, 8 /* Sep */, 25)), 7)
+    assert.deepStrictEqual(result, new Date(Date.UTC(2023, 9 /* Oct */, 2)))
+  })
+
+  it(&#x27;adds the given number of days&#x27;, () =&gt; {
+    const result = addDays(new Date(2014, 8 /* Sep */, 1), 10)
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 11))
+  })
+
+  it(&#x27;accepts a timestamp&#x27;, () =&gt; {
+    const result = addDays(new Date(2014, 8 /* Sep */, 1).getTime(), 10)
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 11))
+  })
+
+  it(&#x27;does not mutate the original date&#x27;, () =&gt; {
+    const date = new Date(2014, 8 /* Sep */, 1)
+    addDays(date, 11)
+    assert.deepStrictEqual(date, new Date(2014, 8 /* Sep */, 1))
+  })
+
+  it(&#x27;returns `Invalid Date` if the given date is invalid&#x27;, () =&gt; {
+    const result = addDays(new Date(NaN), 10)
+    assert(result instanceof Date &amp;&amp; isNaN(result.getTime()))
+  })
+
+  it(&#x27;returns `Invalid Date` if the given amount is NaN&#x27;, () =&gt; {
+    const result = addDays(new Date(2014, 8 /* Sep */, 1), NaN)
+    assert(result instanceof Date &amp;&amp; isNaN(result.getTime()))
+  })
+
+  const dstTransitions = getDstTransitions(2017)
+  const dstOnly = dstTransitions.start &amp;&amp; dstTransitions.end ? it : it.skip
+  const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || process.env.tz
+  const HOUR = 1000 * 60 * 60
+
+  dstOnly(
+    `works at DST-start boundary in local timezone: ${tz || &#x27;(unknown)&#x27;}`,
+    () =&gt; {
+      const date = dstTransitions.start
+      const result = addDays(date!, 1)
+      assert.deepStrictEqual(result, new Date(date!.getTime() + 24 * HOUR))
+    }
+  )
+
+  dstOnly(
+    `works at DST-start - 30 mins in local timezone: ${tz || &#x27;(unknown)&#x27;}`,
+    () =&gt; {
+      const date = new Date(dstTransitions.start!.getTime() - 0.5 * HOUR)
+      const result = addDays(date, 1)
+      // started before the transition so will only be 23 hours later in local time
+      assert.deepStrictEqual(result, new Date(date.getTime() + 24 * HOUR))
+    }
+  )
+
+  dstOnly(
+    `works at DST-start - 60 mins in local timezone: ${tz || &#x27;(unknown)&#x27;}`,
+    () =&gt; {
+      const date = new Date(dstTransitions.start!.getTime() - 1 * HOUR)
+      const result = addDays(date, 1)
+      // started before the transition so will only be 23 hours later in local time
+      assert.deepStrictEqual(result, new Date(date.getTime() + 24 * HOUR))
+    }
+  )
+
+  dstOnly(
+    `works at DST-end boundary in local timezone: ${tz || &#x27;(unknown)&#x27;}`,
+    () =&gt; {
+      const date = dstTransitions.end
+      const result = addDays(date!, 1)
+      assert.deepStrictEqual(result, new Date(date!.getTime() + 24 * HOUR))
+    }
+  )
+
+  dstOnly(
+    `works at DST-end - 30 mins in local timezone: ${tz || &#x27;(unknown)&#x27;}`,
+    () =&gt; {
+      const date = new Date(dstTransitions.end!.getTime() - 0.5 * HOUR)
+      const result = addDays(date, 1)
+      // started before the transition so will be 25 hours later in local
+      // time because one hour repeats after DST ends.
+      assert.deepStrictEqual(result, new Date(date.getTime() + 24 * HOUR))
+    }
+  )
+
+  dstOnly(
+    `works at DST-end - 60 mins in local timezone: ${tz || &#x27;(unknown)&#x27;}`,
+    () =&gt; {
+      const date = new Date(dstTransitions.end!.getTime() - 1 * HOUR)
+      const result = addDays(date, 1)
+      // started before the transition so will be 25 hours later in local
+      // time because one hour repeats after DST ends.
+      assert.deepStrictEqual(result, new Date(date.getTime() + 24 * HOUR))
+    }
+  )
+
+  dstOnly(
+    `doesn&#x27;t mutate if zero increment is used: ${tz || &#x27;(unknown)&#x27;}`,
+    () =&gt; {
+      const date = new Date(dstTransitions.end!)
+      const result = addDays(date, 0)
+      assert.deepStrictEqual(result, date)
+    }
+  )
+})
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:18 GMT</p>
+    </body>
+  </html>
+  

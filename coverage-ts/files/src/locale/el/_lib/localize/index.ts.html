@@ -1,0 +1,200 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/el/_lib/localize/index.ts</td><td class="">96.83%</td><td class="">80%</td><td class="">126</td><td class="">122</td><td class="">4</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import type { Localize, LocalizeFn } from &#x27;../../../types&#x27;
+import buildLocalizeFn from &#x27;../../../_lib/buildLocalizeFn/index&#x27;
+
+const eraValues = {
+  narrow: [&#x27;πΧ&#x27;, &#x27;μΧ&#x27;] as const,
+  abbreviated: [&#x27;π.Χ.&#x27;, &#x27;μ.Χ.&#x27;] as const,
+  wide: [&#x27;προ Χριστού&#x27;, &#x27;μετά Χριστόν&#x27;] as const,
+}
+
+const quarterValues = {
+  narrow: [&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;, &#x27;4&#x27;] as const,
+  abbreviated: [&#x27;Τ1&#x27;, &#x27;Τ2&#x27;, &#x27;Τ3&#x27;, &#x27;Τ4&#x27;] as const,
+  wide: [&#x27;1ο τρίμηνο&#x27;, &#x27;2ο τρίμηνο&#x27;, &#x27;3ο τρίμηνο&#x27;, &#x27;4ο τρίμηνο&#x27;] as const,
+}
+
+const monthValues = {
+  narrow: [&#x27;Ι&#x27;, &#x27;Φ&#x27;, &#x27;Μ&#x27;, &#x27;Α&#x27;, &#x27;Μ&#x27;, &#x27;Ι&#x27;, &#x27;Ι&#x27;, &#x27;Α&#x27;, &#x27;Σ&#x27;, &#x27;Ο&#x27;, &#x27;Ν&#x27;, &#x27;Δ&#x27;] as const,
+  abbreviated: [
+    &#x27;Ιαν&#x27;,
+    &#x27;Φεβ&#x27;,
+    &#x27;Μάρ&#x27;,
+    &#x27;Απρ&#x27;,
+    &#x27;Μάι&#x27;,
+    &#x27;Ιούν&#x27;,
+    &#x27;Ιούλ&#x27;,
+    &#x27;Αύγ&#x27;,
+    &#x27;Σεπ&#x27;,
+    &#x27;Οκτ&#x27;,
+    &#x27;Νοέ&#x27;,
+    &#x27;Δεκ&#x27;,
+  ] as const,
+  wide: [
+    &#x27;Ιανουάριος&#x27;,
+    &#x27;Φεβρουάριος&#x27;,
+    &#x27;Μάρτιος&#x27;,
+    &#x27;Απρίλιος&#x27;,
+    &#x27;Μάιος&#x27;,
+    &#x27;Ιούνιος&#x27;,
+    &#x27;Ιούλιος&#x27;,
+    &#x27;Αύγουστος&#x27;,
+    &#x27;Σεπτέμβριος&#x27;,
+    &#x27;Οκτώβριος&#x27;,
+    &#x27;Νοέμβριος&#x27;,
+    &#x27;Δεκέμβριος&#x27;,
+  ] as const,
+}
+
+const formattingMonthValues = {
+  narrow: [&#x27;Ι&#x27;, &#x27;Φ&#x27;, &#x27;Μ&#x27;, &#x27;Α&#x27;, &#x27;Μ&#x27;, &#x27;Ι&#x27;, &#x27;Ι&#x27;, &#x27;Α&#x27;, &#x27;Σ&#x27;, &#x27;Ο&#x27;, &#x27;Ν&#x27;, &#x27;Δ&#x27;] as const,
+  abbreviated: [
+    &#x27;Ιαν&#x27;,
+    &#x27;Φεβ&#x27;,
+    &#x27;Μαρ&#x27;,
+    &#x27;Απρ&#x27;,
+    &#x27;Μαΐ&#x27;,
+    &#x27;Ιουν&#x27;,
+    &#x27;Ιουλ&#x27;,
+    &#x27;Αυγ&#x27;,
+    &#x27;Σεπ&#x27;,
+    &#x27;Οκτ&#x27;,
+    &#x27;Νοε&#x27;,
+    &#x27;Δεκ&#x27;,
+  ] as const,
+  wide: [
+    &#x27;Ιανουαρίου&#x27;,
+    &#x27;Φεβρουαρίου&#x27;,
+    &#x27;Μαρτίου&#x27;,
+    &#x27;Απριλίου&#x27;,
+    &#x27;Μαΐου&#x27;,
+    &#x27;Ιουνίου&#x27;,
+    &#x27;Ιουλίου&#x27;,
+    &#x27;Αυγούστου&#x27;,
+    &#x27;Σεπτεμβρίου&#x27;,
+    &#x27;Οκτωβρίου&#x27;,
+    &#x27;Νοεμβρίου&#x27;,
+    &#x27;Δεκεμβρίου&#x27;,
+  ] as const,
+}
+
+const dayValues = {
+  narrow: [&#x27;Κ&#x27;, &#x27;Δ&#x27;, &#x27;T&#x27;, &#x27;Τ&#x27;, &#x27;Π&#x27;, &#x27;Π&#x27;, &#x27;Σ&#x27;] as const,
+  short: [&#x27;Κυ&#x27;, &#x27;Δε&#x27;, &#x27;Τρ&#x27;, &#x27;Τε&#x27;, &#x27;Πέ&#x27;, &#x27;Πα&#x27;, &#x27;Σά&#x27;] as const,
+  abbreviated: [&#x27;Κυρ&#x27;, &#x27;Δευ&#x27;, &#x27;Τρί&#x27;, &#x27;Τετ&#x27;, &#x27;Πέμ&#x27;, &#x27;Παρ&#x27;, &#x27;Σάβ&#x27;] as const,
+  wide: [
+    &#x27;Κυριακή&#x27;,
+    &#x27;Δευτέρα&#x27;,
+    &#x27;Τρίτη&#x27;,
+    &#x27;Τετάρτη&#x27;,
+    &#x27;Πέμπτη&#x27;,
+    &#x27;Παρασκευή&#x27;,
+    &#x27;Σάββατο&#x27;,
+  ] as const,
+}
+
+const dayPeriodValues = {
+  narrow: {
+    am: &#x27;πμ&#x27;,
+    pm: &#x27;μμ&#x27;,
+    midnight: &#x27;μεσάνυχτα&#x27;,
+    noon: &#x27;μεσημέρι&#x27;,
+    morning: &#x27;πρωί&#x27;,
+    afternoon: &#x27;απόγευμα&#x27;,
+    evening: &#x27;βράδυ&#x27;,
+    night: &#x27;νύχτα&#x27;,
+  },
+  abbreviated: {
+    am: &#x27;π.μ.&#x27;,
+    pm: &#x27;μ.μ.&#x27;,
+    midnight: &#x27;μεσάνυχτα&#x27;,
+    noon: &#x27;μεσημέρι&#x27;,
+    morning: &#x27;πρωί&#x27;,
+    afternoon: &#x27;απόγευμα&#x27;,
+    evening: &#x27;βράδυ&#x27;,
+    night: &#x27;νύχτα&#x27;,
+  },
+  wide: {
+    am: &#x27;π.μ.&#x27;,
+    pm: &#x27;μ.μ.&#x27;,
+    midnight: &#x27;μεσάνυχτα&#x27;,
+    noon: &#x27;μεσημέρι&#x27;,
+    morning: &#x27;πρωί&#x27;,
+    afternoon: &#x27;απόγευμα&#x27;,
+    evening: &#x27;βράδυ&#x27;,
+    night: &#x27;νύχτα&#x27;,
+  },
+}
+
+const ordinalNumber: LocalizeFn&lt;number&gt; = (dirtyNumber, options) =&gt; {
+  const number = Number(dirtyNumber)
+  const unit = options?.unit
+  let suffix
+
+  if (unit === &#x27;year&#x27; || unit === &#x27;month&#x27;) {
+    suffix = &#x27;ος&#x27;
+  } else if (
+    unit === &#x27;week&#x27; ||
+    unit === &#x27;dayOfYear&#x27; ||
+    unit === &#x27;day&#x27; ||
+    unit === &#x27;hour&#x27; ||
+    unit === &#x27;date&#x27;
+  ) {
+    suffix = &#x27;η&#x27;
+  } else {
+    suffix = &#x27;ο&#x27;
+  }
+
+  return number + suffix
+}
+
+const localize: Localize = {
+  ordinalNumber,
+
+  era: buildLocalizeFn({
+    values: eraValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  quarter: buildLocalizeFn({
+    values: quarterValues,
+    defaultWidth: &#x27;wide&#x27;,
+    argumentCallback: (quarter) =&gt; quarter - 1,
+  }),
+
+  month: buildLocalizeFn({
+    values: monthValues,
+    defaultWidth: &#x27;wide&#x27;,
+    formattingValues: formattingMonthValues,
+    defaultFormattingWidth: &#x27;wide&#x27;,
+  }),
+
+  day: buildLocalizeFn({
+    values: dayValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+}
+
+export default localize
+</textarea><pre id="annotations" style="display:none">[{&quot;file&quot;:&quot;src/locale/el/_lib/localize/index.ts&quot;,&quot;line&quot;:130,&quot;character&quot;:6,&quot;text&quot;:&quot;suffix&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/el/_lib/localize/index.ts&quot;,&quot;line&quot;:133,&quot;character&quot;:4,&quot;text&quot;:&quot;suffix&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/el/_lib/localize/index.ts&quot;,&quot;line&quot;:141,&quot;character&quot;:4,&quot;text&quot;:&quot;suffix&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/el/_lib/localize/index.ts&quot;,&quot;line&quot;:143,&quot;character&quot;:4,&quot;text&quot;:&quot;suffix&quot;,&quot;kind&quot;:1}]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:19 GMT</p>
+    </body>
+  </html>
+  

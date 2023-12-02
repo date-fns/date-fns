@@ -1,5 +1,3 @@
-import addDays from '../addDays/index'
-
 /**
  * @name addWeeks
  * @category Week Helpers
@@ -24,6 +22,7 @@ export default function addWeeks<DateType extends Date>(
   date: DateType | number | string,
   amount: number
 ): DateType {
-  const days = amount * 7
-  return addDays(date, days)
+  const _date = new Date(date)
+  _date.setDate(_date.getDate() + amount * 7)
+  return _date as DateType
 }

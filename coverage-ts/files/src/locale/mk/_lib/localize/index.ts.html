@@ -1,0 +1,146 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/mk/_lib/localize/index.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">89</td><td class="">89</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import type { Localize, LocalizeFn } from &#x27;../../../types&#x27;
+import buildLocalizeFn from &#x27;../../../_lib/buildLocalizeFn/index&#x27;
+
+const eraValues = {
+  narrow: [&#x27;пр.н.е.&#x27;, &#x27;н.е.&#x27;] as const,
+  abbreviated: [&#x27;пред н. е.&#x27;, &#x27;н. е.&#x27;] as const,
+  wide: [&#x27;пред нашата ера&#x27;, &#x27;нашата ера&#x27;] as const,
+}
+
+const quarterValues = {
+  narrow: [&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;, &#x27;4&#x27;] as const,
+  abbreviated: [&#x27;1-ви кв.&#x27;, &#x27;2-ри кв.&#x27;, &#x27;3-ти кв.&#x27;, &#x27;4-ти кв.&#x27;] as const,
+  wide: [
+    &#x27;1-ви квартал&#x27;,
+    &#x27;2-ри квартал&#x27;,
+    &#x27;3-ти квартал&#x27;,
+    &#x27;4-ти квартал&#x27;,
+  ] as const,
+}
+
+const monthValues = {
+  abbreviated: [
+    &#x27;јан&#x27;,
+    &#x27;фев&#x27;,
+    &#x27;мар&#x27;,
+    &#x27;апр&#x27;,
+    &#x27;мај&#x27;,
+    &#x27;јун&#x27;,
+    &#x27;јул&#x27;,
+    &#x27;авг&#x27;,
+    &#x27;септ&#x27;,
+    &#x27;окт&#x27;,
+    &#x27;ноем&#x27;,
+    &#x27;дек&#x27;,
+  ] as const,
+  wide: [
+    &#x27;јануари&#x27;,
+    &#x27;февруари&#x27;,
+    &#x27;март&#x27;,
+    &#x27;април&#x27;,
+    &#x27;мај&#x27;,
+    &#x27;јуни&#x27;,
+    &#x27;јули&#x27;,
+    &#x27;август&#x27;,
+    &#x27;септември&#x27;,
+    &#x27;октомври&#x27;,
+    &#x27;ноември&#x27;,
+    &#x27;декември&#x27;,
+  ] as const,
+}
+
+const dayValues = {
+  narrow: [&#x27;Н&#x27;, &#x27;П&#x27;, &#x27;В&#x27;, &#x27;С&#x27;, &#x27;Ч&#x27;, &#x27;П&#x27;, &#x27;С&#x27;] as const,
+  short: [&#x27;не&#x27;, &#x27;по&#x27;, &#x27;вт&#x27;, &#x27;ср&#x27;, &#x27;че&#x27;, &#x27;пе&#x27;, &#x27;са&#x27;] as const,
+  abbreviated: [&#x27;нед&#x27;, &#x27;пон&#x27;, &#x27;вто&#x27;, &#x27;сре&#x27;, &#x27;чет&#x27;, &#x27;пет&#x27;, &#x27;саб&#x27;] as const,
+  wide: [
+    &#x27;недела&#x27;,
+    &#x27;понеделник&#x27;,
+    &#x27;вторник&#x27;,
+    &#x27;среда&#x27;,
+    &#x27;четврток&#x27;,
+    &#x27;петок&#x27;,
+    &#x27;сабота&#x27;,
+  ] as const,
+}
+
+const dayPeriodValues = {
+  wide: {
+    am: &#x27;претпладне&#x27;,
+    pm: &#x27;попладне&#x27;,
+    midnight: &#x27;полноќ&#x27;,
+    noon: &#x27;напладне&#x27;,
+    morning: &#x27;наутро&#x27;,
+    afternoon: &#x27;попладне&#x27;,
+    evening: &#x27;навечер&#x27;,
+    night: &#x27;ноќе&#x27;,
+  },
+}
+
+const ordinalNumber: LocalizeFn&lt;number&gt; = (dirtyNumber, _options) =&gt; {
+  const number = Number(dirtyNumber)
+
+  const rem100 = number % 100
+  if (rem100 &gt; 20 || rem100 &lt; 10) {
+    switch (rem100 % 10) {
+      case 1:
+        return number + &#x27;-ви&#x27;
+      case 2:
+        return number + &#x27;-ри&#x27;
+      case 7:
+      case 8:
+        return number + &#x27;-ми&#x27;
+    }
+  }
+  return number + &#x27;-ти&#x27;
+}
+
+const localize: Localize = {
+  ordinalNumber,
+
+  era: buildLocalizeFn({
+    values: eraValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  quarter: buildLocalizeFn({
+    values: quarterValues,
+    defaultWidth: &#x27;wide&#x27;,
+    argumentCallback: (quarter) =&gt; quarter - 1,
+  }),
+
+  month: buildLocalizeFn({
+    values: monthValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  day: buildLocalizeFn({
+    values: dayValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+}
+
+export default localize
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:20 GMT</p>
+    </body>
+  </html>
+  

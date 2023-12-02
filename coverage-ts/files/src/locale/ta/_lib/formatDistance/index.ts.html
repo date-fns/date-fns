@@ -1,0 +1,259 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/ta/_lib/formatDistance/index.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">196</td><td class="">196</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import type { FormatDistanceFn, FormatDistanceLocale } from &#x27;../../../types&#x27;
+
+type Tense = {
+  default: string
+  in: string
+  ago: string
+}
+
+type Plural = {
+  one: Tense
+  other: Tense
+}
+
+function isPluralType(val: Plural | Tense): val is Plural {
+  return (val as Plural).one !== undefined
+}
+
+type FormatDistanceTokenValue = Plural | Tense
+
+const formatDistanceLocale: FormatDistanceLocale&lt;FormatDistanceTokenValue&gt; = {
+  lessThanXSeconds: {
+    one: {
+      default: &#x27;ஒரு வினாடிக்கு குறைவாக&#x27;,
+      in: &#x27;ஒரு வினாடிக்குள்&#x27;,
+      ago: &#x27;ஒரு வினாடிக்கு முன்பு&#x27;,
+    },
+    other: {
+      default: &#x27;{{count}} வினாடிகளுக்கு குறைவாக&#x27;,
+      in: &#x27;{{count}} வினாடிகளுக்குள்&#x27;,
+      ago: &#x27;{{count}} வினாடிகளுக்கு முன்பு&#x27;,
+    },
+  },
+
+  xSeconds: {
+    one: {
+      default: &#x27;1 வினாடி&#x27;,
+      in: &#x27;1 வினாடியில்&#x27;,
+      ago: &#x27;1 வினாடி முன்பு&#x27;,
+    },
+    other: {
+      default: &#x27;{{count}} விநாடிகள்&#x27;,
+      in: &#x27;{{count}} வினாடிகளில்&#x27;,
+      ago: &#x27;{{count}} விநாடிகளுக்கு முன்பு&#x27;,
+    },
+  },
+
+  halfAMinute: {
+    default: &#x27;அரை நிமிடம்&#x27;,
+    in: &#x27;அரை நிமிடத்தில்&#x27;,
+    ago: &#x27;அரை நிமிடம் முன்பு&#x27;,
+  },
+
+  lessThanXMinutes: {
+    one: {
+      default: &#x27;ஒரு நிமிடத்திற்கும் குறைவாக&#x27;,
+      in: &#x27;ஒரு நிமிடத்திற்குள்&#x27;,
+      ago: &#x27;ஒரு நிமிடத்திற்கு முன்பு&#x27;,
+    },
+    other: {
+      default: &#x27;{{count}} நிமிடங்களுக்கும் குறைவாக&#x27;,
+      in: &#x27;{{count}} நிமிடங்களுக்குள்&#x27;,
+      ago: &#x27;{{count}} நிமிடங்களுக்கு முன்பு&#x27;,
+    },
+  },
+
+  xMinutes: {
+    one: {
+      default: &#x27;1 நிமிடம்&#x27;,
+      in: &#x27;1 நிமிடத்தில்&#x27;,
+      ago: &#x27;1 நிமிடம் முன்பு&#x27;,
+    },
+    other: {
+      default: &#x27;{{count}} நிமிடங்கள்&#x27;,
+      in: &#x27;{{count}} நிமிடங்களில்&#x27;,
+      ago: &#x27;{{count}} நிமிடங்களுக்கு முன்பு&#x27;,
+    },
+  },
+
+  aboutXHours: {
+    one: {
+      default: &#x27;சுமார் 1 மணி நேரம்&#x27;,
+      in: &#x27;சுமார் 1 மணி நேரத்தில்&#x27;,
+      ago: &#x27;சுமார் 1 மணி நேரத்திற்கு முன்பு&#x27;,
+    },
+    other: {
+      default: &#x27;சுமார் {{count}} மணி நேரம்&#x27;,
+      in: &#x27;சுமார் {{count}} மணி நேரத்திற்கு முன்பு&#x27;,
+      ago: &#x27;சுமார் {{count}} மணி நேரத்தில்&#x27;,
+    },
+  },
+
+  xHours: {
+    one: {
+      default: &#x27;1 மணி நேரம்&#x27;,
+      in: &#x27;1 மணி நேரத்தில்&#x27;,
+      ago: &#x27;1 மணி நேரத்திற்கு முன்பு&#x27;,
+    },
+    other: {
+      default: &#x27;{{count}} மணி நேரம்&#x27;,
+      in: &#x27;{{count}} மணி நேரத்தில்&#x27;,
+      ago: &#x27;{{count}} மணி நேரத்திற்கு முன்பு&#x27;,
+    },
+  },
+
+  xDays: {
+    one: {
+      default: &#x27;1 நாள்&#x27;,
+      in: &#x27;1 நாளில்&#x27;,
+      ago: &#x27;1 நாள் முன்பு&#x27;,
+    },
+    other: {
+      default: &#x27;{{count}} நாட்கள்&#x27;,
+      in: &#x27;{{count}} நாட்களில்&#x27;,
+      ago: &#x27;{{count}} நாட்களுக்கு முன்பு&#x27;,
+    },
+  },
+
+  aboutXWeeks: {
+    one: {
+      default: &#x27;சுமார் 1 வாரம்&#x27;,
+      in: &#x27;சுமார் 1 வாரத்தில்&#x27;,
+      ago: &#x27;சுமார் 1 வாரம் முன்பு&#x27;,
+    },
+    other: {
+      default: &#x27;சுமார் {{count}} வாரங்கள்&#x27;,
+      in: &#x27;சுமார் {{count}} வாரங்களில்&#x27;,
+      ago: &#x27;சுமார் {{count}} வாரங்களுக்கு முன்பு&#x27;,
+    },
+  },
+
+  xWeeks: {
+    one: {
+      default: &#x27;1 வாரம்&#x27;,
+      in: &#x27;1 வாரத்தில்&#x27;,
+      ago: &#x27;1 வாரம் முன்பு&#x27;,
+    },
+    other: {
+      default: &#x27;{{count}} வாரங்கள்&#x27;,
+      in: &#x27;{{count}} வாரங்களில்&#x27;,
+      ago: &#x27;{{count}} வாரங்களுக்கு முன்பு&#x27;,
+    },
+  },
+
+  aboutXMonths: {
+    one: {
+      default: &#x27;சுமார் 1 மாதம்&#x27;,
+      in: &#x27;சுமார் 1 மாதத்தில்&#x27;,
+      ago: &#x27;சுமார் 1 மாதத்திற்கு முன்பு&#x27;,
+    },
+    other: {
+      default: &#x27;சுமார் {{count}} மாதங்கள்&#x27;,
+      in: &#x27;சுமார் {{count}} மாதங்களில்&#x27;,
+      ago: &#x27;சுமார் {{count}} மாதங்களுக்கு முன்பு&#x27;,
+    },
+  },
+
+  xMonths: {
+    one: {
+      default: &#x27;1 மாதம்&#x27;,
+      in: &#x27;1 மாதத்தில்&#x27;,
+      ago: &#x27;1 மாதம் முன்பு&#x27;,
+    },
+    other: {
+      default: &#x27;{{count}} மாதங்கள்&#x27;,
+      in: &#x27;{{count}} மாதங்களில்&#x27;,
+      ago: &#x27;{{count}} மாதங்களுக்கு முன்பு&#x27;,
+    },
+  },
+
+  aboutXYears: {
+    one: {
+      default: &#x27;சுமார் 1 வருடம்&#x27;,
+      in: &#x27;சுமார் 1 ஆண்டில்&#x27;,
+      ago: &#x27;சுமார் 1 வருடம் முன்பு&#x27;,
+    },
+    other: {
+      default: &#x27;சுமார் {{count}} ஆண்டுகள்&#x27;,
+      in: &#x27;சுமார் {{count}} ஆண்டுகளில்&#x27;,
+      ago: &#x27;சுமார் {{count}} ஆண்டுகளுக்கு முன்பு&#x27;,
+    },
+  },
+
+  xYears: {
+    one: {
+      default: &#x27;1 வருடம்&#x27;,
+      in: &#x27;1 ஆண்டில்&#x27;,
+      ago: &#x27;1 வருடம் முன்பு&#x27;,
+    },
+    other: {
+      default: &#x27;{{count}} ஆண்டுகள்&#x27;,
+      in: &#x27;{{count}} ஆண்டுகளில்&#x27;,
+      ago: &#x27;{{count}} ஆண்டுகளுக்கு முன்பு&#x27;,
+    },
+  },
+
+  overXYears: {
+    one: {
+      default: &#x27;1 வருடத்திற்கு மேல்&#x27;,
+      in: &#x27;1 வருடத்திற்கும் மேலாக&#x27;,
+      ago: &#x27;1 வருடம் முன்பு&#x27;,
+    },
+    other: {
+      default: &#x27;{{count}} ஆண்டுகளுக்கும் மேலாக&#x27;,
+      in: &#x27;{{count}} ஆண்டுகளில்&#x27;,
+      ago: &#x27;{{count}} ஆண்டுகளுக்கு முன்பு&#x27;,
+    },
+  },
+
+  almostXYears: {
+    one: {
+      default: &#x27;கிட்டத்தட்ட 1 வருடம்&#x27;,
+      in: &#x27;கிட்டத்தட்ட 1 ஆண்டில்&#x27;,
+      ago: &#x27;கிட்டத்தட்ட 1 வருடம் முன்பு&#x27;,
+    },
+    other: {
+      default: &#x27;கிட்டத்தட்ட {{count}} ஆண்டுகள்&#x27;,
+      in: &#x27;கிட்டத்தட்ட {{count}} ஆண்டுகளில்&#x27;,
+      ago: &#x27;கிட்டத்தட்ட {{count}} ஆண்டுகளுக்கு முன்பு&#x27;,
+    },
+  },
+}
+
+const formatDistance: FormatDistanceFn = (token, count, options) =&gt; {
+  const tense = options?.addSuffix
+    ? options.comparison &amp;&amp; options.comparison &gt; 0
+      ? &#x27;in&#x27;
+      : &#x27;ago&#x27;
+    : &#x27;default&#x27;
+
+  const tokenValue = formatDistanceLocale[token]
+
+  if (!isPluralType(tokenValue)) return tokenValue[tense]
+
+  if (count === 1) {
+    return tokenValue.one[tense]
+  } else {
+    return tokenValue.other[tense].replace(&#x27;{{count}}&#x27;, String(count))
+  }
+}
+
+export default formatDistance
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:21 GMT</p>
+    </body>
+  </html>
+  

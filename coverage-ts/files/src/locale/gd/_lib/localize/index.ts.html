@@ -1,0 +1,207 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/gd/_lib/localize/index.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">140</td><td class="">140</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import type { Localize, LocalizeFn } from &#x27;../../../types&#x27;
+import buildLocalizeFn from &#x27;../../../_lib/buildLocalizeFn/index&#x27;
+
+const eraValues = {
+  narrow: [&#x27;R&#x27;, &#x27;A&#x27;] as const,
+  abbreviated: [&#x27;RC&#x27;, &#x27;AD&#x27;] as const,
+  wide: [&#x27;ro Chrìosta&#x27;, &#x27;anno domini&#x27;] as const,
+}
+
+const quarterValues = {
+  narrow: [&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;, &#x27;4&#x27;] as const,
+  abbreviated: [&#x27;C1&#x27;, &#x27;C2&#x27;, &#x27;C3&#x27;, &#x27;C4&#x27;] as const,
+  wide: [
+    &quot;a&#x27; chiad chairteal&quot;,
+    &#x27;an dàrna cairteal&#x27;,
+    &#x27;an treas cairteal&#x27;,
+    &#x27;an ceathramh cairteal&#x27;,
+  ] as const,
+}
+
+// Note: in English, the names of days of the week and months are capitalized.
+// If you are making a new locale based on this one, check if the same is true for the language you&#x27;re working on.
+// Generally, formatted dates should look like they are in the middle of a sentence,
+// e.g. in Spanish language the weekdays and months should be in the lowercase.
+const monthValues = {
+  narrow: [&#x27;F&#x27;, &#x27;G&#x27;, &#x27;M&#x27;, &#x27;G&#x27;, &#x27;C&#x27;, &#x27;Ò&#x27;, &#x27;I&#x27;, &#x27;L&#x27;, &#x27;S&#x27;, &#x27;D&#x27;, &#x27;S&#x27;, &#x27;D&#x27;] as const,
+  abbreviated: [
+    &#x27;Faoi&#x27;,
+    &#x27;Gear&#x27;,
+    &#x27;Màrt&#x27;,
+    &#x27;Gibl&#x27;,
+    &#x27;Cèit&#x27;,
+    &#x27;Ògmh&#x27;,
+    &#x27;Iuch&#x27;,
+    &#x27;Lùn&#x27;,
+    &#x27;Sult&#x27;,
+    &#x27;Dàmh&#x27;,
+    &#x27;Samh&#x27;,
+    &#x27;Dùbh&#x27;,
+  ] as const,
+  wide: [
+    &#x27;Am Faoilleach&#x27;,
+    &#x27;An Gearran&#x27;,
+    &#x27;Am Màrt&#x27;,
+    &#x27;An Giblean&#x27;,
+    &#x27;An Cèitean&#x27;,
+    &#x27;An t-Ògmhios&#x27;,
+    &#x27;An t-Iuchar&#x27;,
+    &#x27;An Lùnastal&#x27;,
+    &#x27;An t-Sultain&#x27;,
+    &#x27;An Dàmhair&#x27;,
+    &#x27;An t-Samhain&#x27;,
+    &#x27;An Dùbhlachd&#x27;,
+  ] as const,
+}
+
+const dayValues = {
+  narrow: [&#x27;D&#x27;, &#x27;L&#x27;, &#x27;M&#x27;, &#x27;C&#x27;, &#x27;A&#x27;, &#x27;H&#x27;, &#x27;S&#x27;] as const,
+  short: [&#x27;Dò&#x27;, &#x27;Lu&#x27;, &#x27;Mà&#x27;, &#x27;Ci&#x27;, &#x27;Ar&#x27;, &#x27;Ha&#x27;, &#x27;Sa&#x27;] as const,
+  abbreviated: [&#x27;Did&#x27;, &#x27;Dil&#x27;, &#x27;Dim&#x27;, &#x27;Dic&#x27;, &#x27;Dia&#x27;, &#x27;Dih&#x27;, &#x27;Dis&#x27;] as const,
+  wide: [
+    &#x27;Didòmhnaich&#x27;,
+    &#x27;Diluain&#x27;,
+    &#x27;Dimàirt&#x27;,
+    &#x27;Diciadain&#x27;,
+    &#x27;Diardaoin&#x27;,
+    &#x27;Dihaoine&#x27;,
+    &#x27;Disathairne&#x27;,
+  ] as const,
+}
+
+const dayPeriodValues = {
+  narrow: {
+    am: &#x27;m&#x27;,
+    pm: &#x27;f&#x27;,
+    midnight: &#x27;m.o.&#x27;,
+    noon: &#x27;m.l.&#x27;,
+    morning: &#x27;madainn&#x27;,
+    afternoon: &#x27;feasgar&#x27;,
+    evening: &#x27;feasgar&#x27;,
+    night: &#x27;oidhche&#x27;,
+  },
+  abbreviated: {
+    am: &#x27;M.&#x27;,
+    pm: &#x27;F.&#x27;,
+    midnight: &#x27;meadhan oidhche&#x27;,
+    noon: &#x27;meadhan là&#x27;,
+    morning: &#x27;madainn&#x27;,
+    afternoon: &#x27;feasgar&#x27;,
+    evening: &#x27;feasgar&#x27;,
+    night: &#x27;oidhche&#x27;,
+  },
+  wide: {
+    am: &#x27;m.&#x27;,
+    pm: &#x27;f.&#x27;,
+    midnight: &#x27;meadhan oidhche&#x27;,
+    noon: &#x27;meadhan là&#x27;,
+    morning: &#x27;madainn&#x27;,
+    afternoon: &#x27;feasgar&#x27;,
+    evening: &#x27;feasgar&#x27;,
+    night: &#x27;oidhche&#x27;,
+  },
+}
+
+const formattingDayPeriodValues = {
+  narrow: {
+    am: &#x27;m&#x27;,
+    pm: &#x27;f&#x27;,
+    midnight: &#x27;m.o.&#x27;,
+    noon: &#x27;m.l.&#x27;,
+    morning: &#x27;sa mhadainn&#x27;,
+    afternoon: &#x27;feasgar&#x27;,
+    evening: &#x27;feasgar&#x27;,
+    night: &#x27;air an oidhche&#x27;,
+  },
+  abbreviated: {
+    am: &#x27;M.&#x27;,
+    pm: &#x27;F.&#x27;,
+    midnight: &#x27;meadhan oidhche&#x27;,
+    noon: &#x27;meadhan là&#x27;,
+    morning: &#x27;sa mhadainn&#x27;,
+    afternoon: &#x27;feasgar&#x27;,
+    evening: &#x27;feasgar&#x27;,
+    night: &#x27;air an oidhche&#x27;,
+  },
+  wide: {
+    am: &#x27;m.&#x27;,
+    pm: &#x27;f.&#x27;,
+    midnight: &#x27;meadhan oidhche&#x27;,
+    noon: &#x27;meadhan là&#x27;,
+    morning: &#x27;sa mhadainn&#x27;,
+    afternoon: &#x27;feasgar&#x27;,
+    evening: &#x27;feasgar&#x27;,
+    night: &#x27;air an oidhche&#x27;,
+  },
+}
+
+const ordinalNumber: LocalizeFn&lt;number&gt; = (dirtyNumber) =&gt; {
+  const number = Number(dirtyNumber)
+  const rem100 = number % 100
+  if (rem100 &gt; 20 || rem100 &lt; 10) {
+    switch (rem100 % 10) {
+      case 1:
+        return number + &#x27;d&#x27;
+      case 2:
+        return number + &#x27;na&#x27;
+    }
+  }
+
+  if (rem100 === 12) {
+    return number + &#x27;na&#x27;
+  }
+
+  return number + &#x27;mh&#x27;
+}
+
+const localize: Localize = {
+  ordinalNumber,
+
+  era: buildLocalizeFn({
+    values: eraValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  quarter: buildLocalizeFn({
+    values: quarterValues,
+    defaultWidth: &#x27;wide&#x27;,
+    argumentCallback: (quarter) =&gt; quarter - 1,
+  }),
+
+  month: buildLocalizeFn({
+    values: monthValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  day: buildLocalizeFn({
+    values: dayValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues,
+    defaultWidth: &#x27;wide&#x27;,
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: &#x27;wide&#x27;,
+  }),
+}
+
+export default localize
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:20 GMT</p>
+    </body>
+  </html>
+  

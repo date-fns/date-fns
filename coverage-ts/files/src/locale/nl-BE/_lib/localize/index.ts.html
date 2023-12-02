@@ -1,0 +1,149 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/nl-BE/_lib/localize/index.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">101</td><td class="">101</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import type { Localize, LocalizeFn } from &#x27;../../../types&#x27;
+import buildLocalizeFn from &#x27;../../../_lib/buildLocalizeFn/index&#x27;
+
+const eraValues = {
+  narrow: [&#x27;v.C.&#x27;, &#x27;n.C.&#x27;] as const,
+  abbreviated: [&#x27;v.Chr.&#x27;, &#x27;n.Chr.&#x27;] as const,
+  wide: [&#x27;voor Christus&#x27;, &#x27;na Christus&#x27;] as const,
+}
+
+const quarterValues = {
+  narrow: [&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;, &#x27;4&#x27;] as const,
+  abbreviated: [&#x27;K1&#x27;, &#x27;K2&#x27;, &#x27;K3&#x27;, &#x27;K4&#x27;] as const,
+  wide: [&#x27;1e kwartaal&#x27;, &#x27;2e kwartaal&#x27;, &#x27;3e kwartaal&#x27;, &#x27;4e kwartaal&#x27;] as const,
+}
+
+const monthValues = {
+  narrow: [&#x27;J&#x27;, &#x27;F&#x27;, &#x27;M&#x27;, &#x27;A&#x27;, &#x27;M&#x27;, &#x27;J&#x27;, &#x27;J&#x27;, &#x27;A&#x27;, &#x27;S&#x27;, &#x27;O&#x27;, &#x27;N&#x27;, &#x27;D&#x27;] as const,
+  abbreviated: [
+    &#x27;jan.&#x27;,
+    &#x27;feb.&#x27;,
+    &#x27;mrt.&#x27;,
+    &#x27;apr.&#x27;,
+    &#x27;mei&#x27;,
+    &#x27;jun.&#x27;,
+    &#x27;jul.&#x27;,
+    &#x27;aug.&#x27;,
+    &#x27;sep.&#x27;,
+    &#x27;okt.&#x27;,
+    &#x27;nov.&#x27;,
+    &#x27;dec.&#x27;,
+  ] as const,
+  wide: [
+    &#x27;januari&#x27;,
+    &#x27;februari&#x27;,
+    &#x27;maart&#x27;,
+    &#x27;april&#x27;,
+    &#x27;mei&#x27;,
+    &#x27;juni&#x27;,
+    &#x27;juli&#x27;,
+    &#x27;augustus&#x27;,
+    &#x27;september&#x27;,
+    &#x27;oktober&#x27;,
+    &#x27;november&#x27;,
+    &#x27;december&#x27;,
+  ] as const,
+}
+
+const dayValues = {
+  narrow: [&#x27;Z&#x27;, &#x27;M&#x27;, &#x27;D&#x27;, &#x27;W&#x27;, &#x27;D&#x27;, &#x27;V&#x27;, &#x27;Z&#x27;] as const,
+  short: [&#x27;zo&#x27;, &#x27;ma&#x27;, &#x27;di&#x27;, &#x27;wo&#x27;, &#x27;do&#x27;, &#x27;vr&#x27;, &#x27;za&#x27;] as const,
+  abbreviated: [&#x27;zon&#x27;, &#x27;maa&#x27;, &#x27;din&#x27;, &#x27;woe&#x27;, &#x27;don&#x27;, &#x27;vri&#x27;, &#x27;zat&#x27;] as const,
+  wide: [
+    &#x27;zondag&#x27;,
+    &#x27;maandag&#x27;,
+    &#x27;dinsdag&#x27;,
+    &#x27;woensdag&#x27;,
+    &#x27;donderdag&#x27;,
+    &#x27;vrijdag&#x27;,
+    &#x27;zaterdag&#x27;,
+  ] as const,
+}
+
+const dayPeriodValues = {
+  narrow: {
+    am: &#x27;AM&#x27;,
+    pm: &#x27;PM&#x27;,
+    midnight: &#x27;middernacht&#x27;,
+    noon: &#x27;het middag&#x27;,
+    morning: &quot;&#x27;s ochtends&quot;,
+    afternoon: &quot;&#x27;s namiddags&quot;,
+    evening: &quot;&#x27;s avonds&quot;,
+    night: &quot;&#x27;s nachts&quot;,
+  },
+  abbreviated: {
+    am: &#x27;AM&#x27;,
+    pm: &#x27;PM&#x27;,
+    midnight: &#x27;middernacht&#x27;,
+    noon: &#x27;het middag&#x27;,
+    morning: &quot;&#x27;s ochtends&quot;,
+    afternoon: &quot;&#x27;s namiddags&quot;,
+    evening: &quot;&#x27;s avonds&quot;,
+    night: &quot;&#x27;s nachts&quot;,
+  },
+  wide: {
+    am: &#x27;AM&#x27;,
+    pm: &#x27;PM&#x27;,
+    midnight: &#x27;middernacht&#x27;,
+    noon: &#x27;het middag&#x27;,
+    morning: &quot;&#x27;s ochtends&quot;,
+    afternoon: &quot;&#x27;s namiddags&quot;,
+    evening: &quot;&#x27;s avonds&quot;,
+    night: &quot;&#x27;s nachts&quot;,
+  },
+}
+
+const ordinalNumber: LocalizeFn&lt;number&gt; = (dirtyNumber, _options) =&gt; {
+  const number = Number(dirtyNumber)
+  return number + &#x27;e&#x27;
+}
+
+const localize: Localize = {
+  ordinalNumber,
+
+  era: buildLocalizeFn({
+    values: eraValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  quarter: buildLocalizeFn({
+    values: quarterValues,
+    defaultWidth: &#x27;wide&#x27;,
+    argumentCallback: (quarter) =&gt; quarter - 1,
+  }),
+
+  month: buildLocalizeFn({
+    values: monthValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  day: buildLocalizeFn({
+    values: dayValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+}
+
+export default localize
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:20 GMT</p>
+    </body>
+  </html>
+  

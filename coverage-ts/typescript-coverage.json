@@ -1,0 +1,6505 @@
+{
+  "fileCounts": {},
+  "anys": [
+    {
+      "file": "src/differenceInMonths/index.ts",
+      "line": 34,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/differenceInMonths/index.ts",
+      "line": 38,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/differenceInMonths/index.ts",
+      "line": 61,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/en-US/_lib/formatDistance/index.ts",
+      "line": 89,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/en-US/_lib/formatDistance/index.ts",
+      "line": 93,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/en-US/_lib/formatDistance/index.ts",
+      "line": 95,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/en-US/_lib/formatDistance/index.ts",
+      "line": 97,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/_lib/buildMatchFn/index.ts",
+      "line": 93,
+      "character": 34,
+      "text": "pattern",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/_lib/buildMatchFn/index.ts",
+      "line": 93,
+      "character": 46,
+      "text": "pattern",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/_lib/buildMatchFn/index.ts",
+      "line": 93,
+      "character": 54,
+      "text": "test",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/_lib/buildMatchFn/index.ts",
+      "line": 94,
+      "character": 32,
+      "text": "pattern",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/_lib/buildMatchFn/index.ts",
+      "line": 95,
+      "character": 10,
+      "text": "pattern",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/_lib/buildMatchFn/index.ts",
+      "line": 95,
+      "character": 18,
+      "text": "test",
+      "kind": 1
+    },
+    {
+      "file": "src/formatDistance/index.ts",
+      "line": 122,
+      "character": 6,
+      "text": "dateLeft",
+      "kind": 1
+    },
+    {
+      "file": "src/formatDistance/index.ts",
+      "line": 123,
+      "character": 6,
+      "text": "dateRight",
+      "kind": 1
+    },
+    {
+      "file": "src/formatDistance/index.ts",
+      "line": 125,
+      "character": 4,
+      "text": "dateLeft",
+      "kind": 1
+    },
+    {
+      "file": "src/formatDistance/index.ts",
+      "line": 126,
+      "character": 4,
+      "text": "dateRight",
+      "kind": 1
+    },
+    {
+      "file": "src/formatDistance/index.ts",
+      "line": 128,
+      "character": 4,
+      "text": "dateLeft",
+      "kind": 1
+    },
+    {
+      "file": "src/formatDistance/index.ts",
+      "line": 129,
+      "character": 4,
+      "text": "dateRight",
+      "kind": 1
+    },
+    {
+      "file": "src/formatDistance/index.ts",
+      "line": 138,
+      "character": 6,
+      "text": "months",
+      "kind": 1
+    },
+    {
+      "file": "src/formatDistance/index.ts",
+      "line": 188,
+      "character": 4,
+      "text": "months",
+      "kind": 1
+    },
+    {
+      "file": "src/formatDistance/index.ts",
+      "line": 192,
+      "character": 2,
+      "text": "months",
+      "kind": 1
+    },
+    {
+      "file": "src/formatDistanceStrict/index.ts",
+      "line": 136,
+      "character": 6,
+      "text": "dateLeft",
+      "kind": 1
+    },
+    {
+      "file": "src/formatDistanceStrict/index.ts",
+      "line": 137,
+      "character": 6,
+      "text": "dateRight",
+      "kind": 1
+    },
+    {
+      "file": "src/formatDistanceStrict/index.ts",
+      "line": 139,
+      "character": 4,
+      "text": "dateLeft",
+      "kind": 1
+    },
+    {
+      "file": "src/formatDistanceStrict/index.ts",
+      "line": 140,
+      "character": 4,
+      "text": "dateRight",
+      "kind": 1
+    },
+    {
+      "file": "src/formatDistanceStrict/index.ts",
+      "line": 142,
+      "character": 4,
+      "text": "dateLeft",
+      "kind": 1
+    },
+    {
+      "file": "src/formatDistanceStrict/index.ts",
+      "line": 143,
+      "character": 4,
+      "text": "dateRight",
+      "kind": 1
+    },
+    {
+      "file": "src/parse/_lib/utils.ts",
+      "line": 141,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/parse/_lib/utils.ts",
+      "line": 143,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/parse/_lib/utils.ts",
+      "line": 148,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/parseISO/index.ts",
+      "line": 49,
+      "character": 6,
+      "text": "date",
+      "kind": 1
+    },
+    {
+      "file": "src/parseISO/index.ts",
+      "line": 52,
+      "character": 4,
+      "text": "date",
+      "kind": 1
+    },
+    {
+      "file": "src/parseISO/index.ts",
+      "line": 61,
+      "character": 6,
+      "text": "offset",
+      "kind": 1
+    },
+    {
+      "file": "src/parseISO/index.ts",
+      "line": 71,
+      "character": 4,
+      "text": "offset",
+      "kind": 1
+    },
+    {
+      "file": "src/parseISO/index.ts",
+      "line": 124,
+      "character": 6,
+      "text": "timeString",
+      "kind": 1
+    },
+    {
+      "file": "src/parseISO/index.ts",
+      "line": 133,
+      "character": 4,
+      "text": "timeString",
+      "kind": 1
+    },
+    {
+      "file": "src/parseISO/index.ts",
+      "line": 136,
+      "character": 4,
+      "text": "timeString",
+      "kind": 1
+    },
+    {
+      "file": "src/parseISO/index.ts",
+      "line": 139,
+      "character": 6,
+      "text": "timeString",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 2,
+      "character": 20,
+      "text": "add",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 2,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 3,
+      "character": 20,
+      "text": "addBusinessDays",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 3,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 4,
+      "character": 20,
+      "text": "addDays",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 4,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 5,
+      "character": 20,
+      "text": "addHours",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 5,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 6,
+      "character": 20,
+      "text": "addISOWeekYears",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 6,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 7,
+      "character": 20,
+      "text": "addMilliseconds",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 7,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 8,
+      "character": 20,
+      "text": "addMinutes",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 8,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 9,
+      "character": 20,
+      "text": "addMonths",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 9,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 10,
+      "character": 20,
+      "text": "addQuarters",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 10,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 11,
+      "character": 20,
+      "text": "addSeconds",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 11,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 12,
+      "character": 20,
+      "text": "addWeeks",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 12,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 13,
+      "character": 20,
+      "text": "addYears",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 13,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 14,
+      "character": 20,
+      "text": "areIntervalsOverlapping",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 14,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 15,
+      "character": 20,
+      "text": "areIntervalsOverlappingWithOptions",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 15,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 16,
+      "character": 20,
+      "text": "clamp",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 16,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 17,
+      "character": 20,
+      "text": "closestIndexTo",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 17,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 18,
+      "character": 20,
+      "text": "closestTo",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 18,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 19,
+      "character": 20,
+      "text": "compareAsc",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 19,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 20,
+      "character": 20,
+      "text": "compareDesc",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 20,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 21,
+      "character": 20,
+      "text": "daysToWeeks",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 21,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 22,
+      "character": 20,
+      "text": "differenceInBusinessDays",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 22,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 23,
+      "character": 20,
+      "text": "differenceInCalendarDays",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 23,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 24,
+      "character": 20,
+      "text": "differenceInCalendarISOWeekYears",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 24,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 25,
+      "character": 20,
+      "text": "differenceInCalendarISOWeeks",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 25,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 26,
+      "character": 20,
+      "text": "differenceInCalendarMonths",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 26,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 27,
+      "character": 20,
+      "text": "differenceInCalendarQuarters",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 27,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 28,
+      "character": 20,
+      "text": "differenceInCalendarWeeks",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 28,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 29,
+      "character": 20,
+      "text": "differenceInCalendarWeeksWithOptions",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 29,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 30,
+      "character": 20,
+      "text": "differenceInCalendarYears",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 30,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 31,
+      "character": 20,
+      "text": "differenceInDays",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 31,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 32,
+      "character": 20,
+      "text": "differenceInHours",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 32,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 33,
+      "character": 20,
+      "text": "differenceInHoursWithOptions",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 33,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 34,
+      "character": 20,
+      "text": "differenceInISOWeekYears",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 34,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 35,
+      "character": 20,
+      "text": "differenceInMilliseconds",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 35,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 36,
+      "character": 20,
+      "text": "differenceInMinutes",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 36,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 37,
+      "character": 20,
+      "text": "differenceInMinutesWithOptions",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 37,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 38,
+      "character": 20,
+      "text": "differenceInMonths",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 38,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 39,
+      "character": 20,
+      "text": "differenceInQuarters",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 39,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 40,
+      "character": 20,
+      "text": "differenceInQuartersWithOptions",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 40,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 41,
+      "character": 20,
+      "text": "differenceInSeconds",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 41,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 42,
+      "character": 20,
+      "text": "differenceInSecondsWithOptions",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 42,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 43,
+      "character": 20,
+      "text": "differenceInWeeks",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 43,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 44,
+      "character": 20,
+      "text": "differenceInWeeksWithOptions",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 44,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 45,
+      "character": 20,
+      "text": "differenceInYears",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 45,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 46,
+      "character": 20,
+      "text": "eachDayOfInterval",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 46,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 47,
+      "character": 20,
+      "text": "eachDayOfIntervalWithOptions",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 47,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 48,
+      "character": 20,
+      "text": "eachHourOfInterval",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 48,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 49,
+      "character": 20,
+      "text": "eachHourOfIntervalWithOptions",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 49,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 50,
+      "character": 20,
+      "text": "eachMinuteOfInterval",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 50,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 51,
+      "character": 20,
+      "text": "eachMinuteOfIntervalWithOptions",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 51,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 52,
+      "character": 20,
+      "text": "eachMonthOfInterval",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 52,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 53,
+      "character": 20,
+      "text": "eachQuarterOfInterval",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 53,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 54,
+      "character": 20,
+      "text": "eachWeekOfInterval",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 54,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 55,
+      "character": 20,
+      "text": "eachWeekOfIntervalWithOptions",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 55,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 56,
+      "character": 20,
+      "text": "eachWeekendOfInterval",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 56,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 57,
+      "character": 20,
+      "text": "eachWeekendOfMonth",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 57,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 58,
+      "character": 20,
+      "text": "eachWeekendOfYear",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 58,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 59,
+      "character": 20,
+      "text": "eachYearOfInterval",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 59,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 60,
+      "character": 20,
+      "text": "endOfDay",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 60,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 61,
+      "character": 20,
+      "text": "endOfDecade",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 61,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 62,
+      "character": 20,
+      "text": "endOfDecadeWithOptions",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 62,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 63,
+      "character": 20,
+      "text": "endOfHour",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 63,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 64,
+      "character": 20,
+      "text": "endOfISOWeek",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 64,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 65,
+      "character": 20,
+      "text": "endOfISOWeekYear",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 65,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 66,
+      "character": 20,
+      "text": "endOfMinute",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 66,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 67,
+      "character": 20,
+      "text": "endOfMonth",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 67,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 68,
+      "character": 20,
+      "text": "endOfQuarter",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 68,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 69,
+      "character": 20,
+      "text": "endOfSecond",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 69,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 70,
+      "character": 20,
+      "text": "endOfWeek",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 70,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 71,
+      "character": 20,
+      "text": "endOfWeekWithOptions",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 71,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 72,
+      "character": 20,
+      "text": "endOfYear",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 72,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 73,
+      "character": 20,
+      "text": "format",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 73,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 74,
+      "character": 20,
+      "text": "formatDistance",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 74,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 75,
+      "character": 20,
+      "text": "formatDistanceStrict",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 75,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 76,
+      "character": 20,
+      "text": "formatDistanceStrictWithOptions",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 76,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 77,
+      "character": 20,
+      "text": "formatDistanceWithOptions",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 77,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 78,
+      "character": 20,
+      "text": "formatDuration",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 78,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 79,
+      "character": 20,
+      "text": "formatDurationWithOptions",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 79,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 80,
+      "character": 20,
+      "text": "formatISO",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 80,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 81,
+      "character": 20,
+      "text": "formatISO9075",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 81,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 82,
+      "character": 20,
+      "text": "formatISO9075WithOptions",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 82,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 83,
+      "character": 20,
+      "text": "formatISODuration",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 83,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 84,
+      "character": 20,
+      "text": "formatISOWithOptions",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 84,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 85,
+      "character": 20,
+      "text": "formatRFC3339",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 85,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 86,
+      "character": 20,
+      "text": "formatRFC3339WithOptions",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 86,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 87,
+      "character": 20,
+      "text": "formatRFC7231",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 87,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 88,
+      "character": 20,
+      "text": "formatRelative",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 88,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 89,
+      "character": 20,
+      "text": "formatRelativeWithOptions",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 89,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 90,
+      "character": 20,
+      "text": "formatWithOptions",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 90,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 91,
+      "character": 20,
+      "text": "fromUnixTime",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 91,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 92,
+      "character": 20,
+      "text": "getDate",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 92,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 93,
+      "character": 20,
+      "text": "getDay",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 93,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 94,
+      "character": 20,
+      "text": "getDayOfYear",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 94,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 95,
+      "character": 20,
+      "text": "getDaysInMonth",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 95,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 96,
+      "character": 20,
+      "text": "getDaysInYear",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 96,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 97,
+      "character": 20,
+      "text": "getDecade",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 97,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 98,
+      "character": 20,
+      "text": "getHours",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 98,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 99,
+      "character": 20,
+      "text": "getISODay",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 99,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 100,
+      "character": 20,
+      "text": "getISOWeek",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 100,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 101,
+      "character": 20,
+      "text": "getISOWeekYear",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 101,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 102,
+      "character": 20,
+      "text": "getISOWeeksInYear",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 102,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 103,
+      "character": 20,
+      "text": "getMilliseconds",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 103,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 104,
+      "character": 20,
+      "text": "getMinutes",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 104,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 105,
+      "character": 20,
+      "text": "getMonth",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 105,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 106,
+      "character": 20,
+      "text": "getOverlappingDaysInIntervals",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 106,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 107,
+      "character": 20,
+      "text": "getQuarter",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 107,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 108,
+      "character": 20,
+      "text": "getSeconds",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 108,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 109,
+      "character": 20,
+      "text": "getTime",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 109,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 110,
+      "character": 20,
+      "text": "getUnixTime",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 110,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 111,
+      "character": 20,
+      "text": "getWeek",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 111,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 112,
+      "character": 20,
+      "text": "getWeekOfMonth",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 112,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 113,
+      "character": 20,
+      "text": "getWeekOfMonthWithOptions",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 113,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 114,
+      "character": 20,
+      "text": "getWeekWithOptions",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 114,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 115,
+      "character": 20,
+      "text": "getWeekYear",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 115,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 116,
+      "character": 20,
+      "text": "getWeekYearWithOptions",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 116,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 117,
+      "character": 20,
+      "text": "getWeeksInMonth",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 117,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 118,
+      "character": 20,
+      "text": "getWeeksInMonthWithOptions",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 118,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 119,
+      "character": 20,
+      "text": "getYear",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 119,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 120,
+      "character": 20,
+      "text": "hoursToMilliseconds",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 120,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 121,
+      "character": 20,
+      "text": "hoursToMinutes",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 121,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 122,
+      "character": 20,
+      "text": "hoursToSeconds",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 122,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 123,
+      "character": 20,
+      "text": "intervalToDuration",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 123,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 124,
+      "character": 20,
+      "text": "intlFormat",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 124,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 125,
+      "character": 20,
+      "text": "intlFormatDistance",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 125,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 126,
+      "character": 20,
+      "text": "intlFormatDistanceWithOptions",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 126,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 127,
+      "character": 20,
+      "text": "isAfter",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 127,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 128,
+      "character": 20,
+      "text": "isBefore",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 128,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 129,
+      "character": 20,
+      "text": "isDate",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 129,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 130,
+      "character": 20,
+      "text": "isEqual",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 130,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 131,
+      "character": 20,
+      "text": "isExists",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 131,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 132,
+      "character": 20,
+      "text": "isFirstDayOfMonth",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 132,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 133,
+      "character": 20,
+      "text": "isFriday",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 133,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 134,
+      "character": 20,
+      "text": "isLastDayOfMonth",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 134,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 135,
+      "character": 20,
+      "text": "isLeapYear",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 135,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 136,
+      "character": 20,
+      "text": "isMatch",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 136,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 137,
+      "character": 20,
+      "text": "isMatchWithOptions",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 137,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 138,
+      "character": 20,
+      "text": "isMonday",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 138,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 139,
+      "character": 20,
+      "text": "isSameDay",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 139,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 140,
+      "character": 20,
+      "text": "isSameHour",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 140,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 141,
+      "character": 20,
+      "text": "isSameISOWeek",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 141,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 142,
+      "character": 20,
+      "text": "isSameISOWeekYear",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 142,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 143,
+      "character": 20,
+      "text": "isSameMinute",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 143,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 144,
+      "character": 20,
+      "text": "isSameMonth",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 144,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 145,
+      "character": 20,
+      "text": "isSameQuarter",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 145,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 146,
+      "character": 20,
+      "text": "isSameSecond",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 146,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 147,
+      "character": 20,
+      "text": "isSameWeek",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 147,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 148,
+      "character": 20,
+      "text": "isSameWeekWithOptions",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 148,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 149,
+      "character": 20,
+      "text": "isSameYear",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 149,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 150,
+      "character": 20,
+      "text": "isSaturday",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 150,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 151,
+      "character": 20,
+      "text": "isSunday",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 151,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 152,
+      "character": 20,
+      "text": "isThursday",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 152,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 153,
+      "character": 20,
+      "text": "isTuesday",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 153,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 154,
+      "character": 20,
+      "text": "isValid",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 154,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 155,
+      "character": 20,
+      "text": "isWednesday",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 155,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 156,
+      "character": 20,
+      "text": "isWeekend",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 156,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 157,
+      "character": 20,
+      "text": "isWithinInterval",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 157,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 158,
+      "character": 20,
+      "text": "lastDayOfDecade",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 158,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 159,
+      "character": 20,
+      "text": "lastDayOfISOWeek",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 159,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 160,
+      "character": 20,
+      "text": "lastDayOfISOWeekYear",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 160,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 161,
+      "character": 20,
+      "text": "lastDayOfMonth",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 161,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 162,
+      "character": 20,
+      "text": "lastDayOfQuarter",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 162,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 163,
+      "character": 20,
+      "text": "lastDayOfQuarterWithOptions",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 163,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 164,
+      "character": 20,
+      "text": "lastDayOfWeek",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 164,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 165,
+      "character": 20,
+      "text": "lastDayOfWeekWithOptions",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 165,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 166,
+      "character": 20,
+      "text": "lastDayOfYear",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 166,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 167,
+      "character": 20,
+      "text": "lightFormat",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 167,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 168,
+      "character": 20,
+      "text": "max",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 168,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 169,
+      "character": 20,
+      "text": "milliseconds",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 169,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 170,
+      "character": 20,
+      "text": "millisecondsToHours",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 170,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 171,
+      "character": 20,
+      "text": "millisecondsToMinutes",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 171,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 172,
+      "character": 20,
+      "text": "millisecondsToSeconds",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 172,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 173,
+      "character": 20,
+      "text": "min",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 173,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 174,
+      "character": 20,
+      "text": "minutesToHours",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 174,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 175,
+      "character": 20,
+      "text": "minutesToMilliseconds",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 175,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 176,
+      "character": 20,
+      "text": "minutesToSeconds",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 176,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 177,
+      "character": 20,
+      "text": "monthsToQuarters",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 177,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 178,
+      "character": 20,
+      "text": "monthsToYears",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 178,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 179,
+      "character": 20,
+      "text": "nextDay",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 179,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 180,
+      "character": 20,
+      "text": "nextFriday",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 180,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 181,
+      "character": 20,
+      "text": "nextMonday",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 181,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 182,
+      "character": 20,
+      "text": "nextSaturday",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 182,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 183,
+      "character": 20,
+      "text": "nextSunday",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 183,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 184,
+      "character": 20,
+      "text": "nextThursday",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 184,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 185,
+      "character": 20,
+      "text": "nextTuesday",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 185,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 186,
+      "character": 20,
+      "text": "nextWednesday",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 186,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 187,
+      "character": 20,
+      "text": "parse",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 187,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 188,
+      "character": 20,
+      "text": "parseISO",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 188,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 189,
+      "character": 20,
+      "text": "parseISOWithOptions",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 189,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 190,
+      "character": 20,
+      "text": "parseJSON",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 190,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 191,
+      "character": 20,
+      "text": "parseWithOptions",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 191,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 192,
+      "character": 20,
+      "text": "previousDay",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 192,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 193,
+      "character": 20,
+      "text": "previousFriday",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 193,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 194,
+      "character": 20,
+      "text": "previousMonday",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 194,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 195,
+      "character": 20,
+      "text": "previousSaturday",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 195,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 196,
+      "character": 20,
+      "text": "previousSunday",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 196,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 197,
+      "character": 20,
+      "text": "previousThursday",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 197,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 198,
+      "character": 20,
+      "text": "previousTuesday",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 198,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 199,
+      "character": 20,
+      "text": "previousWednesday",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 199,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 200,
+      "character": 20,
+      "text": "quartersToMonths",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 200,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 201,
+      "character": 20,
+      "text": "quartersToYears",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 201,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 202,
+      "character": 20,
+      "text": "roundToNearestMinutes",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 202,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 203,
+      "character": 20,
+      "text": "roundToNearestMinutesWithOptions",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 203,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 204,
+      "character": 20,
+      "text": "secondsToHours",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 204,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 205,
+      "character": 20,
+      "text": "secondsToMilliseconds",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 205,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 206,
+      "character": 20,
+      "text": "secondsToMinutes",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 206,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 207,
+      "character": 20,
+      "text": "set",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 207,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 208,
+      "character": 20,
+      "text": "setDate",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 208,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 209,
+      "character": 20,
+      "text": "setDay",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 209,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 210,
+      "character": 20,
+      "text": "setDayOfYear",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 210,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 211,
+      "character": 20,
+      "text": "setDayWithOptions",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 211,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 212,
+      "character": 20,
+      "text": "setHours",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 212,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 213,
+      "character": 20,
+      "text": "setISODay",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 213,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 214,
+      "character": 20,
+      "text": "setISOWeek",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 214,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 215,
+      "character": 20,
+      "text": "setISOWeekYear",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 215,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 216,
+      "character": 20,
+      "text": "setMilliseconds",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 216,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 217,
+      "character": 20,
+      "text": "setMinutes",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 217,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 218,
+      "character": 20,
+      "text": "setMonth",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 218,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 219,
+      "character": 20,
+      "text": "setQuarter",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 219,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 220,
+      "character": 20,
+      "text": "setSeconds",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 220,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 221,
+      "character": 20,
+      "text": "setWeek",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 221,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 222,
+      "character": 20,
+      "text": "setWeekWithOptions",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 222,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 223,
+      "character": 20,
+      "text": "setWeekYear",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 223,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 224,
+      "character": 20,
+      "text": "setWeekYearWithOptions",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 224,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 225,
+      "character": 20,
+      "text": "setYear",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 225,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 226,
+      "character": 20,
+      "text": "startOfDay",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 226,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 227,
+      "character": 20,
+      "text": "startOfDecade",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 227,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 228,
+      "character": 20,
+      "text": "startOfHour",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 228,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 229,
+      "character": 20,
+      "text": "startOfISOWeek",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 229,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 230,
+      "character": 20,
+      "text": "startOfISOWeekYear",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 230,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 231,
+      "character": 20,
+      "text": "startOfMinute",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 231,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 232,
+      "character": 20,
+      "text": "startOfMonth",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 232,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 233,
+      "character": 20,
+      "text": "startOfQuarter",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 233,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 234,
+      "character": 20,
+      "text": "startOfSecond",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 234,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 235,
+      "character": 20,
+      "text": "startOfWeek",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 235,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 236,
+      "character": 20,
+      "text": "startOfWeekWithOptions",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 236,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 237,
+      "character": 20,
+      "text": "startOfWeekYear",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 237,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 238,
+      "character": 20,
+      "text": "startOfWeekYearWithOptions",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 238,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 239,
+      "character": 20,
+      "text": "startOfYear",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 239,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 240,
+      "character": 20,
+      "text": "sub",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 240,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 241,
+      "character": 20,
+      "text": "subBusinessDays",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 241,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 242,
+      "character": 20,
+      "text": "subDays",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 242,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 243,
+      "character": 20,
+      "text": "subHours",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 243,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 244,
+      "character": 20,
+      "text": "subISOWeekYears",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 244,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 245,
+      "character": 20,
+      "text": "subMilliseconds",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 245,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 246,
+      "character": 20,
+      "text": "subMinutes",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 246,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 247,
+      "character": 20,
+      "text": "subMonths",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 247,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 248,
+      "character": 20,
+      "text": "subQuarters",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 248,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 249,
+      "character": 20,
+      "text": "subSeconds",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 249,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 250,
+      "character": 20,
+      "text": "subWeeks",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 250,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 251,
+      "character": 20,
+      "text": "subYears",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 251,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 252,
+      "character": 20,
+      "text": "toDate",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 252,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 253,
+      "character": 20,
+      "text": "weeksToDays",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 253,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 254,
+      "character": 20,
+      "text": "yearsToMonths",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 254,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 255,
+      "character": 20,
+      "text": "yearsToQuarters",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/index.ts",
+      "line": 255,
+      "character": 9,
+      "text": "default",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/eo/_lib/formatDistance/index.ts",
+      "line": 89,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/eo/_lib/formatDistance/index.ts",
+      "line": 93,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/eo/_lib/formatDistance/index.ts",
+      "line": 95,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/eo/_lib/formatDistance/index.ts",
+      "line": 97,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/isDate/test.ts",
+      "line": 41,
+      "character": 56,
+      "text": "date",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/af/_lib/formatDistance/index.ts",
+      "line": 89,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/af/_lib/formatDistance/index.ts",
+      "line": 93,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/af/_lib/formatDistance/index.ts",
+      "line": 95,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/af/_lib/formatDistance/index.ts",
+      "line": 97,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ar/_lib/formatDistance/index.ts",
+      "line": 122,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ar/_lib/formatDistance/index.ts",
+      "line": 124,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ar/_lib/formatDistance/index.ts",
+      "line": 126,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ar/_lib/formatDistance/index.ts",
+      "line": 128,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ar/_lib/formatDistance/index.ts",
+      "line": 130,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ar/_lib/formatDistance/index.ts",
+      "line": 132,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ar-DZ/_lib/formatDistance/index.ts",
+      "line": 115,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ar-DZ/_lib/formatDistance/index.ts",
+      "line": 117,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ar-DZ/_lib/formatDistance/index.ts",
+      "line": 119,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ar-DZ/_lib/formatDistance/index.ts",
+      "line": 121,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ar-DZ/_lib/formatDistance/index.ts",
+      "line": 123,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ar-DZ/_lib/formatDistance/index.ts",
+      "line": 125,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ar-EG/_lib/formatDistance/index.ts",
+      "line": 121,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ar-EG/_lib/formatDistance/index.ts",
+      "line": 125,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ar-EG/_lib/formatDistance/index.ts",
+      "line": 127,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ar-EG/_lib/formatDistance/index.ts",
+      "line": 129,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ar-EG/_lib/formatDistance/index.ts",
+      "line": 131,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ar-EG/_lib/formatDistance/index.ts",
+      "line": 133,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ar-MA/_lib/formatDistance/index.ts",
+      "line": 115,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ar-MA/_lib/formatDistance/index.ts",
+      "line": 117,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ar-MA/_lib/formatDistance/index.ts",
+      "line": 119,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ar-MA/_lib/formatDistance/index.ts",
+      "line": 121,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ar-MA/_lib/formatDistance/index.ts",
+      "line": 123,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ar-MA/_lib/formatDistance/index.ts",
+      "line": 125,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ar-SA/_lib/formatDistance/index.ts",
+      "line": 121,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ar-SA/_lib/formatDistance/index.ts",
+      "line": 125,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ar-SA/_lib/formatDistance/index.ts",
+      "line": 127,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ar-SA/_lib/formatDistance/index.ts",
+      "line": 129,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ar-SA/_lib/formatDistance/index.ts",
+      "line": 131,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ar-SA/_lib/formatDistance/index.ts",
+      "line": 133,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ar-TN/_lib/formatDistance/index.ts",
+      "line": 122,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ar-TN/_lib/formatDistance/index.ts",
+      "line": 124,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ar-TN/_lib/formatDistance/index.ts",
+      "line": 126,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ar-TN/_lib/formatDistance/index.ts",
+      "line": 128,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ar-TN/_lib/formatDistance/index.ts",
+      "line": 130,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ar-TN/_lib/formatDistance/index.ts",
+      "line": 132,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/az/_lib/formatDistance/index.ts",
+      "line": 89,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/az/_lib/formatDistance/index.ts",
+      "line": 93,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/az/_lib/formatDistance/index.ts",
+      "line": 95,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/az/_lib/formatDistance/index.ts",
+      "line": 97,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/be/_lib/localize/index.ts",
+      "line": 162,
+      "character": 6,
+      "text": "suffix",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/be/_lib/localize/index.ts",
+      "line": 177,
+      "character": 4,
+      "text": "suffix",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/be/_lib/localize/index.ts",
+      "line": 179,
+      "character": 4,
+      "text": "suffix",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/be/_lib/localize/index.ts",
+      "line": 181,
+      "character": 4,
+      "text": "suffix",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/be-tarask/_lib/localize/index.ts",
+      "line": 162,
+      "character": 6,
+      "text": "suffix",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/be-tarask/_lib/localize/index.ts",
+      "line": 177,
+      "character": 4,
+      "text": "suffix",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/be-tarask/_lib/localize/index.ts",
+      "line": 179,
+      "character": 4,
+      "text": "suffix",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/be-tarask/_lib/localize/index.ts",
+      "line": 181,
+      "character": 4,
+      "text": "suffix",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/bg/_lib/formatDistance/index.ts",
+      "line": 89,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/bg/_lib/formatDistance/index.ts",
+      "line": 93,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/bg/_lib/formatDistance/index.ts",
+      "line": 95,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/bg/_lib/formatDistance/index.ts",
+      "line": 97,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/bn/_lib/formatDistance/index.ts",
+      "line": 90,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/bn/_lib/formatDistance/index.ts",
+      "line": 94,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/bn/_lib/formatDistance/index.ts",
+      "line": 96,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/bn/_lib/formatDistance/index.ts",
+      "line": 98,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/bs/_lib/formatDistance/index.ts",
+      "line": 169,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/bs/_lib/formatDistance/index.ts",
+      "line": 173,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/bs/_lib/formatDistance/index.ts",
+      "line": 177,
+      "character": 8,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/bs/_lib/formatDistance/index.ts",
+      "line": 179,
+      "character": 8,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/bs/_lib/formatDistance/index.ts",
+      "line": 182,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/bs/_lib/formatDistance/index.ts",
+      "line": 189,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/bs/_lib/formatDistance/index.ts",
+      "line": 191,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ca/_lib/formatDistance/index.ts",
+      "line": 104,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ca/_lib/formatDistance/index.ts",
+      "line": 108,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ca/_lib/formatDistance/index.ts",
+      "line": 110,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ca/_lib/formatDistance/index.ts",
+      "line": 112,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ca/_lib/formatDistance/index.ts",
+      "line": 114,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/cs/_lib/formatDistance/index.ts",
+      "line": 310,
+      "character": 6,
+      "text": "pluralResult",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/cs/_lib/formatDistance/index.ts",
+      "line": 316,
+      "character": 4,
+      "text": "pluralResult",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/cs/_lib/formatDistance/index.ts",
+      "line": 318,
+      "character": 4,
+      "text": "pluralResult",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/cs/_lib/formatDistance/index.ts",
+      "line": 320,
+      "character": 4,
+      "text": "pluralResult",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/cs/_lib/formatDistance/index.ts",
+      "line": 322,
+      "character": 4,
+      "text": "pluralResult",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/cs/_lib/formatDistance/index.ts",
+      "line": 329,
+      "character": 6,
+      "text": "timeResult",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/cs/_lib/formatDistance/index.ts",
+      "line": 331,
+      "character": 4,
+      "text": "timeResult",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/cs/_lib/formatDistance/index.ts",
+      "line": 333,
+      "character": 4,
+      "text": "timeResult",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/cs/_lib/formatDistance/index.ts",
+      "line": 335,
+      "character": 4,
+      "text": "timeResult",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/cy/_lib/formatDistance/index.ts",
+      "line": 101,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/cy/_lib/formatDistance/index.ts",
+      "line": 105,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/cy/_lib/formatDistance/index.ts",
+      "line": 107,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/cy/_lib/formatDistance/index.ts",
+      "line": 109,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/cy/_lib/formatDistance/index.ts",
+      "line": 111,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/da/_lib/formatDistance/index.ts",
+      "line": 89,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/da/_lib/formatDistance/index.ts",
+      "line": 93,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/da/_lib/formatDistance/index.ts",
+      "line": 95,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/da/_lib/formatDistance/index.ts",
+      "line": 97,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/de/_lib/formatDistance/index.ts",
+      "line": 182,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/de/_lib/formatDistance/index.ts",
+      "line": 188,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/de/_lib/formatDistance/index.ts",
+      "line": 190,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/de/_lib/formatDistance/index.ts",
+      "line": 192,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/el/_lib/formatDistance/index.ts",
+      "line": 89,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/el/_lib/formatDistance/index.ts",
+      "line": 93,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/el/_lib/formatDistance/index.ts",
+      "line": 95,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/el/_lib/formatDistance/index.ts",
+      "line": 97,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/el/_lib/localize/index.ts",
+      "line": 130,
+      "character": 6,
+      "text": "suffix",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/el/_lib/localize/index.ts",
+      "line": 133,
+      "character": 4,
+      "text": "suffix",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/el/_lib/localize/index.ts",
+      "line": 141,
+      "character": 4,
+      "text": "suffix",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/el/_lib/localize/index.ts",
+      "line": 143,
+      "character": 4,
+      "text": "suffix",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/en-CA/_lib/formatDistance/index.ts",
+      "line": 89,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/en-CA/_lib/formatDistance/index.ts",
+      "line": 93,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/en-CA/_lib/formatDistance/index.ts",
+      "line": 95,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/en-CA/_lib/formatDistance/index.ts",
+      "line": 97,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/es/_lib/formatDistance/index.ts",
+      "line": 89,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/es/_lib/formatDistance/index.ts",
+      "line": 93,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/es/_lib/formatDistance/index.ts",
+      "line": 95,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/es/_lib/formatDistance/index.ts",
+      "line": 97,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/et/_lib/formatDistance/index.ts",
+      "line": 189,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/et/_lib/formatDistance/index.ts",
+      "line": 191,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/et/_lib/formatDistance/index.ts",
+      "line": 193,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/et/_lib/formatDistance/index.ts",
+      "line": 195,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/eu/_lib/formatDistance/index.ts",
+      "line": 89,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/eu/_lib/formatDistance/index.ts",
+      "line": 93,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/eu/_lib/formatDistance/index.ts",
+      "line": 95,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/eu/_lib/formatDistance/index.ts",
+      "line": 97,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/fa-IR/_lib/formatDistance/index.ts",
+      "line": 89,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/fa-IR/_lib/formatDistance/index.ts",
+      "line": 93,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/fa-IR/_lib/formatDistance/index.ts",
+      "line": 95,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/fa-IR/_lib/formatDistance/index.ts",
+      "line": 97,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/fr/_lib/formatDistance/index.ts",
+      "line": 84,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/fr/_lib/formatDistance/index.ts",
+      "line": 87,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/fr/_lib/formatDistance/index.ts",
+      "line": 89,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/fr/_lib/formatDistance/index.ts",
+      "line": 91,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/fr/_lib/localize/index.ts",
+      "line": 115,
+      "character": 6,
+      "text": "suffix",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/fr/_lib/localize/index.ts",
+      "line": 118,
+      "character": 4,
+      "text": "suffix",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/fr/_lib/localize/index.ts",
+      "line": 120,
+      "character": 4,
+      "text": "suffix",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/fy/_lib/formatDistance/index.ts",
+      "line": 89,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/fy/_lib/formatDistance/index.ts",
+      "line": 93,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/fy/_lib/formatDistance/index.ts",
+      "line": 95,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/fy/_lib/formatDistance/index.ts",
+      "line": 97,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/gd/_lib/formatDistance/index.ts",
+      "line": 97,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/gd/_lib/formatDistance/index.ts",
+      "line": 101,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/gd/_lib/formatDistance/index.ts",
+      "line": 103,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/gd/_lib/formatDistance/index.ts",
+      "line": 105,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/gd/_lib/formatDistance/index.ts",
+      "line": 107,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/gd/_lib/formatDistance/index.ts",
+      "line": 109,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/gl/_lib/formatDistance/index.ts",
+      "line": 89,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/gl/_lib/formatDistance/index.ts",
+      "line": 93,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/gl/_lib/formatDistance/index.ts",
+      "line": 95,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/gl/_lib/formatDistance/index.ts",
+      "line": 97,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/gu/_lib/formatDistance/index.ts",
+      "line": 90,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/gu/_lib/formatDistance/index.ts",
+      "line": 94,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/gu/_lib/formatDistance/index.ts",
+      "line": 96,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/gu/_lib/formatDistance/index.ts",
+      "line": 98,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/he/_lib/formatDistance/index.ts",
+      "line": 114,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/he/_lib/formatDistance/index.ts",
+      "line": 118,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/he/_lib/formatDistance/index.ts",
+      "line": 120,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/he/_lib/formatDistance/index.ts",
+      "line": 122,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/he/_lib/formatDistance/index.ts",
+      "line": 124,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/hi/_lib/formatDistance/index.ts",
+      "line": 94,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/hi/_lib/formatDistance/index.ts",
+      "line": 98,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/hi/_lib/formatDistance/index.ts",
+      "line": 100,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/hi/_lib/formatDistance/index.ts",
+      "line": 102,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/hr/_lib/formatDistance/index.ts",
+      "line": 169,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/hr/_lib/formatDistance/index.ts",
+      "line": 173,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/hr/_lib/formatDistance/index.ts",
+      "line": 177,
+      "character": 8,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/hr/_lib/formatDistance/index.ts",
+      "line": 179,
+      "character": 8,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/hr/_lib/formatDistance/index.ts",
+      "line": 182,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/hr/_lib/formatDistance/index.ts",
+      "line": 189,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/hr/_lib/formatDistance/index.ts",
+      "line": 191,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ht/_lib/formatDistance/index.ts",
+      "line": 89,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ht/_lib/formatDistance/index.ts",
+      "line": 93,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ht/_lib/formatDistance/index.ts",
+      "line": 95,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ht/_lib/formatDistance/index.ts",
+      "line": 97,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/hy/_lib/formatDistance/index.ts",
+      "line": 89,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/hy/_lib/formatDistance/index.ts",
+      "line": 93,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/hy/_lib/formatDistance/index.ts",
+      "line": 95,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/hy/_lib/formatDistance/index.ts",
+      "line": 97,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/id/_lib/formatDistance/index.ts",
+      "line": 89,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/id/_lib/formatDistance/index.ts",
+      "line": 93,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/id/_lib/formatDistance/index.ts",
+      "line": 95,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/id/_lib/formatDistance/index.ts",
+      "line": 97,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/is/_lib/formatDistance/index.ts",
+      "line": 89,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/is/_lib/formatDistance/index.ts",
+      "line": 93,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/is/_lib/formatDistance/index.ts",
+      "line": 95,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/is/_lib/formatDistance/index.ts",
+      "line": 97,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/it/_lib/formatDistance/index.ts",
+      "line": 89,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/it/_lib/formatDistance/index.ts",
+      "line": 93,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/it/_lib/formatDistance/index.ts",
+      "line": 95,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/it/_lib/formatDistance/index.ts",
+      "line": 97,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ja/_lib/formatDistance/index.ts",
+      "line": 97,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ja/_lib/formatDistance/index.ts",
+      "line": 101,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ja/_lib/formatDistance/index.ts",
+      "line": 104,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ja/_lib/formatDistance/index.ts",
+      "line": 106,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ja/_lib/formatDistance/index.ts",
+      "line": 110,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ja/_lib/formatDistance/index.ts",
+      "line": 112,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ja-Hira/_lib/formatDistance/index.ts",
+      "line": 97,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ja-Hira/_lib/formatDistance/index.ts",
+      "line": 101,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ja-Hira/_lib/formatDistance/index.ts",
+      "line": 104,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ja-Hira/_lib/formatDistance/index.ts",
+      "line": 106,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ja-Hira/_lib/formatDistance/index.ts",
+      "line": 110,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ja-Hira/_lib/formatDistance/index.ts",
+      "line": 112,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ka/_lib/formatDistance/index.ts",
+      "line": 107,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ka/_lib/formatDistance/index.ts",
+      "line": 111,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ka/_lib/formatDistance/index.ts",
+      "line": 117,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ka/_lib/formatDistance/index.ts",
+      "line": 119,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ka/_lib/formatDistance/index.ts",
+      "line": 121,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/kn/_lib/formatDistance/index.ts",
+      "line": 223,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/kn/_lib/formatDistance/index.ts",
+      "line": 229,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/kn/_lib/formatDistance/index.ts",
+      "line": 231,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ko/_lib/formatDistance/index.ts",
+      "line": 89,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ko/_lib/formatDistance/index.ts",
+      "line": 93,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ko/_lib/formatDistance/index.ts",
+      "line": 95,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ko/_lib/formatDistance/index.ts",
+      "line": 97,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/lb/_lib/formatDistance/index.ts",
+      "line": 218,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/lb/_lib/formatDistance/index.ts",
+      "line": 227,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/lb/_lib/formatDistance/index.ts",
+      "line": 229,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/lb/_lib/formatDistance/index.ts",
+      "line": 231,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/lt/_lib/formatDistance/index.ts",
+      "line": 162,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/lt/_lib/formatDistance/index.ts",
+      "line": 166,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/lt/_lib/formatDistance/index.ts",
+      "line": 168,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/lt/_lib/formatDistance/index.ts",
+      "line": 175,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/lt/_lib/formatDistance/index.ts",
+      "line": 185,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/mk/_lib/formatDistance/index.ts",
+      "line": 89,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/mk/_lib/formatDistance/index.ts",
+      "line": 93,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/mk/_lib/formatDistance/index.ts",
+      "line": 95,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/mk/_lib/formatDistance/index.ts",
+      "line": 97,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/mn/_lib/formatDistance/index.ts",
+      "line": 89,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/mn/_lib/formatDistance/index.ts",
+      "line": 93,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/mn/_lib/formatDistance/index.ts",
+      "line": 95,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/mn/_lib/formatDistance/index.ts",
+      "line": 97,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/mn/_lib/formatDistance/index.ts",
+      "line": 106,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ms/_lib/formatDistance/index.ts",
+      "line": 89,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ms/_lib/formatDistance/index.ts",
+      "line": 93,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ms/_lib/formatDistance/index.ts",
+      "line": 95,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ms/_lib/formatDistance/index.ts",
+      "line": 97,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/mt/_lib/formatDistance/index.ts",
+      "line": 94,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/mt/_lib/formatDistance/index.ts",
+      "line": 98,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/mt/_lib/formatDistance/index.ts",
+      "line": 100,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/mt/_lib/formatDistance/index.ts",
+      "line": 102,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/mt/_lib/formatDistance/index.ts",
+      "line": 104,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/nb/_lib/formatDistance/index.ts",
+      "line": 89,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/nb/_lib/formatDistance/index.ts",
+      "line": 93,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/nb/_lib/formatDistance/index.ts",
+      "line": 95,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/nb/_lib/formatDistance/index.ts",
+      "line": 97,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/nl/_lib/formatDistance/index.ts",
+      "line": 89,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/nl/_lib/formatDistance/index.ts",
+      "line": 93,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/nl/_lib/formatDistance/index.ts",
+      "line": 95,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/nl/_lib/formatDistance/index.ts",
+      "line": 97,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/nl-BE/_lib/formatDistance/index.ts",
+      "line": 89,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/nl-BE/_lib/formatDistance/index.ts",
+      "line": 93,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/nl-BE/_lib/formatDistance/index.ts",
+      "line": 95,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/nl-BE/_lib/formatDistance/index.ts",
+      "line": 97,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/nn/_lib/formatDistance/index.ts",
+      "line": 105,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/nn/_lib/formatDistance/index.ts",
+      "line": 109,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/nn/_lib/formatDistance/index.ts",
+      "line": 111,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/nn/_lib/formatDistance/index.ts",
+      "line": 113,
+      "character": 36,
+      "text": "onlyNumeric",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/nn/_lib/formatDistance/index.ts",
+      "line": 114,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/nn/_lib/formatDistance/index.ts",
+      "line": 116,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/oc/_lib/formatDistance/index.ts",
+      "line": 89,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/oc/_lib/formatDistance/index.ts",
+      "line": 93,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/oc/_lib/formatDistance/index.ts",
+      "line": 95,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/oc/_lib/formatDistance/index.ts",
+      "line": 97,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/oc/_lib/localize/index.ts",
+      "line": 149,
+      "character": 6,
+      "text": "ordinal",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/oc/_lib/localize/index.ts",
+      "line": 153,
+      "character": 6,
+      "text": "ordinal",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/oc/_lib/localize/index.ts",
+      "line": 156,
+      "character": 6,
+      "text": "ordinal",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/oc/_lib/localize/index.ts",
+      "line": 159,
+      "character": 6,
+      "text": "ordinal",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/pl/_lib/formatRelative/index.ts",
+      "line": 44,
+      "character": 6,
+      "text": "adjectives",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/pl/_lib/formatRelative/index.ts",
+      "line": 46,
+      "character": 4,
+      "text": "adjectives",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/pl/_lib/formatRelative/index.ts",
+      "line": 48,
+      "character": 4,
+      "text": "adjectives",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/pl/_lib/formatRelative/index.ts",
+      "line": 50,
+      "character": 4,
+      "text": "adjectives",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/pt/_lib/formatDistance/index.ts",
+      "line": 89,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/pt/_lib/formatDistance/index.ts",
+      "line": 93,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/pt/_lib/formatDistance/index.ts",
+      "line": 95,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/pt/_lib/formatDistance/index.ts",
+      "line": 97,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/pt-BR/_lib/formatDistance/index.ts",
+      "line": 89,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/pt-BR/_lib/formatDistance/index.ts",
+      "line": 93,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/pt-BR/_lib/formatDistance/index.ts",
+      "line": 95,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/pt-BR/_lib/formatDistance/index.ts",
+      "line": 97,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ro/_lib/formatDistance/index.ts",
+      "line": 89,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ro/_lib/formatDistance/index.ts",
+      "line": 93,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ro/_lib/formatDistance/index.ts",
+      "line": 95,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ro/_lib/formatDistance/index.ts",
+      "line": 97,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ru/_lib/localize/index.ts",
+      "line": 164,
+      "character": 6,
+      "text": "suffix",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ru/_lib/localize/index.ts",
+      "line": 166,
+      "character": 4,
+      "text": "suffix",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ru/_lib/localize/index.ts",
+      "line": 168,
+      "character": 4,
+      "text": "suffix",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ru/_lib/localize/index.ts",
+      "line": 170,
+      "character": 4,
+      "text": "suffix",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/sq/_lib/formatDistance/index.ts",
+      "line": 89,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/sq/_lib/formatDistance/index.ts",
+      "line": 93,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/sq/_lib/formatDistance/index.ts",
+      "line": 95,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/sq/_lib/formatDistance/index.ts",
+      "line": 97,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/sr/_lib/formatDistance/index.ts",
+      "line": 169,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/sr/_lib/formatDistance/index.ts",
+      "line": 173,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/sr/_lib/formatDistance/index.ts",
+      "line": 177,
+      "character": 8,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/sr/_lib/formatDistance/index.ts",
+      "line": 179,
+      "character": 8,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/sr/_lib/formatDistance/index.ts",
+      "line": 182,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/sr/_lib/formatDistance/index.ts",
+      "line": 189,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/sr/_lib/formatDistance/index.ts",
+      "line": 191,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/sr-Latn/_lib/formatDistance/index.ts",
+      "line": 169,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/sr-Latn/_lib/formatDistance/index.ts",
+      "line": 173,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/sr-Latn/_lib/formatDistance/index.ts",
+      "line": 177,
+      "character": 8,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/sr-Latn/_lib/formatDistance/index.ts",
+      "line": 179,
+      "character": 8,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/sr-Latn/_lib/formatDistance/index.ts",
+      "line": 182,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/sr-Latn/_lib/formatDistance/index.ts",
+      "line": 189,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/sr-Latn/_lib/formatDistance/index.ts",
+      "line": 191,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/sv/_lib/formatDistance/index.ts",
+      "line": 105,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/sv/_lib/formatDistance/index.ts",
+      "line": 109,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/sv/_lib/formatDistance/index.ts",
+      "line": 111,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/sv/_lib/formatDistance/index.ts",
+      "line": 113,
+      "character": 36,
+      "text": "onlyNumeric",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/sv/_lib/formatDistance/index.ts",
+      "line": 114,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/sv/_lib/formatDistance/index.ts",
+      "line": 116,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/te/_lib/formatDistance/index.ts",
+      "line": 187,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/te/_lib/formatDistance/index.ts",
+      "line": 194,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/te/_lib/formatDistance/index.ts",
+      "line": 196,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/te/_lib/formatDistance/index.ts",
+      "line": 198,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/th/_lib/formatDistance/index.ts",
+      "line": 89,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/th/_lib/formatDistance/index.ts",
+      "line": 93,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/th/_lib/formatDistance/index.ts",
+      "line": 95,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/th/_lib/formatDistance/index.ts",
+      "line": 97,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/tr/_lib/formatDistance/index.ts",
+      "line": 89,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/tr/_lib/formatDistance/index.ts",
+      "line": 93,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/tr/_lib/formatDistance/index.ts",
+      "line": 95,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/tr/_lib/formatDistance/index.ts",
+      "line": 97,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ug/_lib/formatDistance/index.ts",
+      "line": 89,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ug/_lib/formatDistance/index.ts",
+      "line": 93,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ug/_lib/formatDistance/index.ts",
+      "line": 95,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/ug/_lib/formatDistance/index.ts",
+      "line": 97,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/uk/_lib/localize/index.ts",
+      "line": 164,
+      "character": 6,
+      "text": "suffix",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/uk/_lib/localize/index.ts",
+      "line": 168,
+      "character": 6,
+      "text": "suffix",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/uk/_lib/localize/index.ts",
+      "line": 170,
+      "character": 6,
+      "text": "suffix",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/uk/_lib/localize/index.ts",
+      "line": 173,
+      "character": 4,
+      "text": "suffix",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/uk/_lib/localize/index.ts",
+      "line": 175,
+      "character": 4,
+      "text": "suffix",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/uz/_lib/formatDistance/index.ts",
+      "line": 89,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/uz/_lib/formatDistance/index.ts",
+      "line": 93,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/uz/_lib/formatDistance/index.ts",
+      "line": 95,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/uz/_lib/formatDistance/index.ts",
+      "line": 97,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/uz-Cyrl/_lib/formatDistance/index.ts",
+      "line": 89,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/uz-Cyrl/_lib/formatDistance/index.ts",
+      "line": 93,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/uz-Cyrl/_lib/formatDistance/index.ts",
+      "line": 95,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/uz-Cyrl/_lib/formatDistance/index.ts",
+      "line": 97,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/vi/_lib/formatDistance/index.ts",
+      "line": 89,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/vi/_lib/formatDistance/index.ts",
+      "line": 93,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/vi/_lib/formatDistance/index.ts",
+      "line": 95,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/vi/_lib/formatDistance/index.ts",
+      "line": 97,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/zh-CN/_lib/formatDistance/index.ts",
+      "line": 89,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/zh-CN/_lib/formatDistance/index.ts",
+      "line": 93,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/zh-CN/_lib/formatDistance/index.ts",
+      "line": 95,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/zh-CN/_lib/formatDistance/index.ts",
+      "line": 97,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/zh-HK/_lib/formatDistance/index.ts",
+      "line": 89,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/zh-HK/_lib/formatDistance/index.ts",
+      "line": 93,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/zh-HK/_lib/formatDistance/index.ts",
+      "line": 95,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/zh-HK/_lib/formatDistance/index.ts",
+      "line": 97,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/zh-TW/_lib/formatDistance/index.ts",
+      "line": 89,
+      "character": 6,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/zh-TW/_lib/formatDistance/index.ts",
+      "line": 93,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/zh-TW/_lib/formatDistance/index.ts",
+      "line": 95,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/locale/zh-TW/_lib/formatDistance/index.ts",
+      "line": 97,
+      "character": 4,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/max/test.ts",
+      "line": 7,
+      "character": 25,
+      "text": "date",
+      "kind": 1
+    },
+    {
+      "file": "src/max/test.ts",
+      "line": 8,
+      "character": 11,
+      "text": "date",
+      "kind": 1
+    },
+    {
+      "file": "src/min/test.ts",
+      "line": 7,
+      "character": 25,
+      "text": "date",
+      "kind": 1
+    },
+    {
+      "file": "src/min/test.ts",
+      "line": 8,
+      "character": 11,
+      "text": "date",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/_lib/convertToFP/test.ts",
+      "line": 16,
+      "character": 12,
+      "text": "fpFn",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/_lib/convertToFP/test.ts",
+      "line": 17,
+      "character": 13,
+      "text": "fpFn",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/_lib/convertToFP/test.ts",
+      "line": 21,
+      "character": 12,
+      "text": "fpFn",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/_lib/convertToFP/test.ts",
+      "line": 22,
+      "character": 13,
+      "text": "fpFn",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/_lib/convertToFP/test.ts",
+      "line": 23,
+      "character": 13,
+      "text": "fpFn",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/_lib/convertToFP/test.ts",
+      "line": 27,
+      "character": 12,
+      "text": "fpFn",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/_lib/convertToFP/test.ts",
+      "line": 28,
+      "character": 13,
+      "text": "fpFn",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/_lib/convertToFP/test.ts",
+      "line": 32,
+      "character": 12,
+      "text": "fpFn",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/_lib/convertToFP/test.ts",
+      "line": 33,
+      "character": 13,
+      "text": "fpFn",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/_lib/convertToFP/test.ts",
+      "line": 37,
+      "character": 12,
+      "text": "fpFn",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/_lib/convertToFP/test.ts",
+      "line": 38,
+      "character": 13,
+      "text": "fpFn",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/_lib/convertToFP/test.ts",
+      "line": 39,
+      "character": 13,
+      "text": "fpFn",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/_lib/convertToFP/test.ts",
+      "line": 45,
+      "character": 12,
+      "text": "fpFn",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/_lib/convertToFP/test.ts",
+      "line": 46,
+      "character": 13,
+      "text": "fpFn",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/_lib/convertToFP/test.ts",
+      "line": 47,
+      "character": 13,
+      "text": "fpFn",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/_lib/convertToFP/test.ts",
+      "line": 51,
+      "character": 12,
+      "text": "fpFn",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/_lib/convertToFP/test.ts",
+      "line": 52,
+      "character": 13,
+      "text": "fpFn",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/_lib/convertToFP/test.ts",
+      "line": 53,
+      "character": 13,
+      "text": "fpFn",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/_lib/convertToFP/test.ts",
+      "line": 59,
+      "character": 12,
+      "text": "fpFn",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/_lib/convertToFP/test.ts",
+      "line": 60,
+      "character": 13,
+      "text": "fpFn",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/_lib/convertToFP/test.ts",
+      "line": 61,
+      "character": 13,
+      "text": "fpFn",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/_lib/convertToFP/test.ts",
+      "line": 67,
+      "character": 12,
+      "text": "result",
+      "kind": 1
+    },
+    {
+      "file": "src/fp/_lib/convertToFP/test.ts",
+      "line": 68,
+      "character": 13,
+      "text": "result",
+      "kind": 1
+    }
+  ],
+  "percentage": 98.76576049369581,
+  "total": 75188,
+  "covered": 74260,
+  "uncovered": 928
+}

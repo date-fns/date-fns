@@ -1,0 +1,150 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/_lib/buildMatchFn/index.ts</td><td class="">97.25%</td><td class="">80%</td><td class="">218</td><td class="">212</td><td class="">6</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import { Quarter, Era, Day, Month } from &#x27;../../../types&#x27;
+import {
+  LocaleUnitValue,
+  LocaleWidth,
+  LocaleDayPeriod,
+  MatchFn,
+  MatchValueCallback,
+} from &#x27;../../types&#x27;
+
+export interface BuildMatchFnArgs&lt;
+  Result extends LocaleUnitValue,
+  DefaultMatchWidth extends LocaleWidth,
+  DefaultParseWidth extends LocaleWidth
+&gt; {
+  matchPatterns: BuildMatchFnMatchPatterns&lt;DefaultMatchWidth&gt;
+  defaultMatchWidth: DefaultMatchWidth
+  parsePatterns: BuildMatchFnParsePatterns&lt;Result, DefaultParseWidth&gt;
+  defaultParseWidth: DefaultParseWidth
+  valueCallback?: MatchValueCallback&lt;
+    Result extends LocaleDayPeriod ? string : number,
+    Result
+  &gt;
+}
+
+export type BuildMatchFnMatchPatterns&lt;DefaultWidth extends LocaleWidth&gt; = {
+  [Width in LocaleWidth]?: RegExp
+} &amp;
+  {
+    [Width in DefaultWidth]: RegExp
+  }
+
+export type BuildMatchFnParsePatterns&lt;
+  Value extends LocaleUnitValue,
+  DefaultWidth extends LocaleWidth
+&gt; = {
+  [Width in LocaleWidth]?: ParsePattern&lt;Value&gt;
+} &amp;
+  {
+    [Width in DefaultWidth]: ParsePattern&lt;Value&gt;
+  }
+
+export type ParsePattern&lt;
+  Value extends LocaleUnitValue
+&gt; = Value extends LocaleDayPeriod
+  ? Record&lt;LocaleDayPeriod, RegExp&gt;
+  : Value extends Quarter
+  ? readonly [RegExp, RegExp, RegExp, RegExp]
+  : Value extends Era
+  ? readonly [RegExp, RegExp]
+  : Value extends Day
+  ? readonly [RegExp, RegExp, RegExp, RegExp, RegExp, RegExp, RegExp]
+  : Value extends Month
+  ? readonly [
+      RegExp,
+      RegExp,
+      RegExp,
+      RegExp,
+      RegExp,
+      RegExp,
+      RegExp,
+      RegExp,
+      RegExp,
+      RegExp,
+      RegExp,
+      RegExp
+    ]
+  : never
+
+export default function buildMatchFn&lt;
+  Value extends LocaleUnitValue,
+  DefaultMatchWidth extends LocaleWidth,
+  DefaultParseWidth extends LocaleWidth
+&gt;(
+  args: BuildMatchFnArgs&lt;Value, DefaultMatchWidth, DefaultParseWidth&gt;
+): MatchFn&lt;Value&gt; {
+  return (string, options = {}) =&gt; {
+    const width = options.width
+
+    const matchPattern =
+      (width &amp;&amp; args.matchPatterns[width]) ||
+      args.matchPatterns[args.defaultMatchWidth]
+    const matchResult = string.match(matchPattern)
+
+    if (!matchResult) {
+      return null
+    }
+    const matchedString = matchResult[0]
+
+    const parsePatterns =
+      (width &amp;&amp; args.parsePatterns[width]) ||
+      args.parsePatterns[args.defaultParseWidth]
+
+    const key = (Array.isArray(parsePatterns)
+      ? findIndex(parsePatterns, (pattern) =&gt; pattern.test(matchedString))
+      : findKey(parsePatterns, (pattern: any) =&gt;
+          pattern.test(matchedString)
+        )) as Value extends LocaleDayPeriod ? string : number
+
+    let value: Value
+
+    value = (args.valueCallback ? args.valueCallback(key) : key) as Value
+    value = options.valueCallback ? options.valueCallback(value as any) : value
+
+    const rest = string.slice(matchedString.length)
+
+    return { value, rest }
+  }
+}
+
+function findKey&lt;Value, Obj extends { [key in string | number]: Value }&gt;(
+  object: Obj,
+  predicate: (value: Value) =&gt; boolean
+): keyof Obj | undefined {
+  for (const key in object) {
+    if (object.hasOwnProperty(key) &amp;&amp; predicate(object[key])) {
+      return key
+    }
+  }
+  return undefined
+}
+
+function findIndex&lt;Item&gt;(
+  array: Item[],
+  predicate: (item: Item) =&gt; boolean
+): number | undefined {
+  for (let key = 0; key &lt; array.length; key++) {
+    if (predicate(array[key])) {
+      return key
+    }
+  }
+  return undefined
+}
+</textarea><pre id="annotations" style="display:none">[{&quot;file&quot;:&quot;src/locale/_lib/buildMatchFn/index.ts&quot;,&quot;line&quot;:93,&quot;character&quot;:34,&quot;text&quot;:&quot;pattern&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/_lib/buildMatchFn/index.ts&quot;,&quot;line&quot;:93,&quot;character&quot;:46,&quot;text&quot;:&quot;pattern&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/_lib/buildMatchFn/index.ts&quot;,&quot;line&quot;:93,&quot;character&quot;:54,&quot;text&quot;:&quot;test&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/_lib/buildMatchFn/index.ts&quot;,&quot;line&quot;:94,&quot;character&quot;:32,&quot;text&quot;:&quot;pattern&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/_lib/buildMatchFn/index.ts&quot;,&quot;line&quot;:95,&quot;character&quot;:10,&quot;text&quot;:&quot;pattern&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/_lib/buildMatchFn/index.ts&quot;,&quot;line&quot;:95,&quot;character&quot;:18,&quot;text&quot;:&quot;test&quot;,&quot;kind&quot;:1}]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:17 GMT</p>
+    </body>
+  </html>
+  

@@ -1,0 +1,207 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/ko/_lib/localize/index.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">140</td><td class="">140</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import type { Localize, LocalizeFn } from &#x27;../../../types&#x27;
+import buildLocalizeFn from &#x27;../../../_lib/buildLocalizeFn/index&#x27;
+
+const eraValues = {
+  narrow: [&#x27;BC&#x27;, &#x27;AD&#x27;] as const,
+  abbreviated: [&#x27;BC&#x27;, &#x27;AD&#x27;] as const,
+  wide: [&#x27;기원전&#x27;, &#x27;서기&#x27;] as const,
+}
+
+const quarterValues = {
+  narrow: [&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;, &#x27;4&#x27;] as const,
+  abbreviated: [&#x27;Q1&#x27;, &#x27;Q2&#x27;, &#x27;Q3&#x27;, &#x27;Q4&#x27;] as const,
+  wide: [&#x27;1분기&#x27;, &#x27;2분기&#x27;, &#x27;3분기&#x27;, &#x27;4분기&#x27;] as const,
+}
+
+const monthValues = {
+  narrow: [
+    &#x27;1&#x27;,
+    &#x27;2&#x27;,
+    &#x27;3&#x27;,
+    &#x27;4&#x27;,
+    &#x27;5&#x27;,
+    &#x27;6&#x27;,
+    &#x27;7&#x27;,
+    &#x27;8&#x27;,
+    &#x27;9&#x27;,
+    &#x27;10&#x27;,
+    &#x27;11&#x27;,
+    &#x27;12&#x27;,
+  ] as const,
+  abbreviated: [
+    &#x27;1월&#x27;,
+    &#x27;2월&#x27;,
+    &#x27;3월&#x27;,
+    &#x27;4월&#x27;,
+    &#x27;5월&#x27;,
+    &#x27;6월&#x27;,
+    &#x27;7월&#x27;,
+    &#x27;8월&#x27;,
+    &#x27;9월&#x27;,
+    &#x27;10월&#x27;,
+    &#x27;11월&#x27;,
+    &#x27;12월&#x27;,
+  ] as const,
+  wide: [
+    &#x27;1월&#x27;,
+    &#x27;2월&#x27;,
+    &#x27;3월&#x27;,
+    &#x27;4월&#x27;,
+    &#x27;5월&#x27;,
+    &#x27;6월&#x27;,
+    &#x27;7월&#x27;,
+    &#x27;8월&#x27;,
+    &#x27;9월&#x27;,
+    &#x27;10월&#x27;,
+    &#x27;11월&#x27;,
+    &#x27;12월&#x27;,
+  ] as const,
+}
+
+const dayValues = {
+  narrow: [&#x27;일&#x27;, &#x27;월&#x27;, &#x27;화&#x27;, &#x27;수&#x27;, &#x27;목&#x27;, &#x27;금&#x27;, &#x27;토&#x27;] as const,
+  short: [&#x27;일&#x27;, &#x27;월&#x27;, &#x27;화&#x27;, &#x27;수&#x27;, &#x27;목&#x27;, &#x27;금&#x27;, &#x27;토&#x27;] as const,
+  abbreviated: [&#x27;일&#x27;, &#x27;월&#x27;, &#x27;화&#x27;, &#x27;수&#x27;, &#x27;목&#x27;, &#x27;금&#x27;, &#x27;토&#x27;] as const,
+  wide: [
+    &#x27;일요일&#x27;,
+    &#x27;월요일&#x27;,
+    &#x27;화요일&#x27;,
+    &#x27;수요일&#x27;,
+    &#x27;목요일&#x27;,
+    &#x27;금요일&#x27;,
+    &#x27;토요일&#x27;,
+  ] as const,
+}
+
+const dayPeriodValues = {
+  narrow: {
+    am: &#x27;오전&#x27;,
+    pm: &#x27;오후&#x27;,
+    midnight: &#x27;자정&#x27;,
+    noon: &#x27;정오&#x27;,
+    morning: &#x27;아침&#x27;,
+    afternoon: &#x27;오후&#x27;,
+    evening: &#x27;저녁&#x27;,
+    night: &#x27;밤&#x27;,
+  },
+  abbreviated: {
+    am: &#x27;오전&#x27;,
+    pm: &#x27;오후&#x27;,
+    midnight: &#x27;자정&#x27;,
+    noon: &#x27;정오&#x27;,
+    morning: &#x27;아침&#x27;,
+    afternoon: &#x27;오후&#x27;,
+    evening: &#x27;저녁&#x27;,
+    night: &#x27;밤&#x27;,
+  },
+  wide: {
+    am: &#x27;오전&#x27;,
+    pm: &#x27;오후&#x27;,
+    midnight: &#x27;자정&#x27;,
+    noon: &#x27;정오&#x27;,
+    morning: &#x27;아침&#x27;,
+    afternoon: &#x27;오후&#x27;,
+    evening: &#x27;저녁&#x27;,
+    night: &#x27;밤&#x27;,
+  },
+}
+
+const formattingDayPeriodValues = {
+  narrow: {
+    am: &#x27;오전&#x27;,
+    pm: &#x27;오후&#x27;,
+    midnight: &#x27;자정&#x27;,
+    noon: &#x27;정오&#x27;,
+    morning: &#x27;아침&#x27;,
+    afternoon: &#x27;오후&#x27;,
+    evening: &#x27;저녁&#x27;,
+    night: &#x27;밤&#x27;,
+  },
+  abbreviated: {
+    am: &#x27;오전&#x27;,
+    pm: &#x27;오후&#x27;,
+    midnight: &#x27;자정&#x27;,
+    noon: &#x27;정오&#x27;,
+    morning: &#x27;아침&#x27;,
+    afternoon: &#x27;오후&#x27;,
+    evening: &#x27;저녁&#x27;,
+    night: &#x27;밤&#x27;,
+  },
+  wide: {
+    am: &#x27;오전&#x27;,
+    pm: &#x27;오후&#x27;,
+    midnight: &#x27;자정&#x27;,
+    noon: &#x27;정오&#x27;,
+    morning: &#x27;아침&#x27;,
+    afternoon: &#x27;오후&#x27;,
+    evening: &#x27;저녁&#x27;,
+    night: &#x27;밤&#x27;,
+  },
+}
+
+const ordinalNumber: LocalizeFn&lt;number&gt; = (dirtyNumber, options) =&gt; {
+  const number = Number(dirtyNumber)
+  const unit = String(options?.unit)
+
+  switch (unit) {
+    case &#x27;minute&#x27;:
+    case &#x27;second&#x27;:
+      return String(number)
+    case &#x27;date&#x27;:
+      return number + &#x27;일&#x27;
+    default:
+      return number + &#x27;번째&#x27;
+  }
+}
+
+const localize: Localize = {
+  ordinalNumber,
+
+  era: buildLocalizeFn({
+    values: eraValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  quarter: buildLocalizeFn({
+    values: quarterValues,
+    defaultWidth: &#x27;wide&#x27;,
+    argumentCallback: (quarter) =&gt; quarter - 1,
+  }),
+
+  month: buildLocalizeFn({
+    values: monthValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  day: buildLocalizeFn({
+    values: dayValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues,
+    defaultWidth: &#x27;wide&#x27;,
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: &#x27;wide&#x27;,
+  }),
+}
+
+export default localize
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:20 GMT</p>
+    </body>
+  </html>
+  

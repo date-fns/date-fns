@@ -1,0 +1,229 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>test.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/getOverlappingDaysInIntervals/test.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">324</td><td class="">324</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">/* eslint-env mocha */
+
+import assert from &#x27;assert&#x27;
+import { describe, it } from &#x27;vitest&#x27;
+import getOverlappingDaysInIntervals from &#x27;./index&#x27;
+
+describe(&#x27;getOverlappingDaysInIntervals&#x27;, () =&gt; {
+  const initialIntervalStart = new Date(2016, 10, 10, 13, 0, 0)
+  const initialIntervalEnd = new Date(2016, 11, 3, 15, 0, 0)
+
+  describe(&quot;when the time intervals don&#x27;t overlap&quot;, () =&gt; {
+    it(&#x27;returns 0 for a valid non overlapping interval before another interval&#x27;, () =&gt; {
+      const earlierIntervalStart = new Date(2016, 9, 25)
+      const earlierIntervalEnd = new Date(2016, 10, 9)
+
+      const numOverlappingDays = getOverlappingDaysInIntervals(
+        { start: initialIntervalStart, end: initialIntervalEnd },
+        { start: earlierIntervalStart, end: earlierIntervalEnd }
+      )
+      assert(numOverlappingDays === 0)
+    })
+
+    it(&#x27;returns 0 for a valid non overlapping interval after another interval&#x27;, () =&gt; {
+      const laterIntervalStart = new Date(2016, 11, 4)
+      const laterIntervalEnd = new Date(2016, 11, 9)
+
+      const numOverlappingDays = getOverlappingDaysInIntervals(
+        { start: initialIntervalStart, end: initialIntervalEnd },
+        { start: laterIntervalStart, end: laterIntervalEnd }
+      )
+      assert(numOverlappingDays === 0)
+    })
+
+    it(&#x27;returns 0 for a non overlapping same-day interval&#x27;, () =&gt; {
+      const sameDayIntervalStart = new Date(2016, 11, 4, 9, 0, 0)
+      const sameDayIntervalEnd = new Date(2016, 11, 4, 18, 0, 0)
+
+      const numOverlappingDays = getOverlappingDaysInIntervals(
+        { start: initialIntervalStart, end: initialIntervalEnd },
+        { start: sameDayIntervalStart, end: sameDayIntervalEnd }
+      )
+      assert(numOverlappingDays === 0)
+    })
+
+    it(&#x27;returns 0 for an interval differing by a few hours&#x27;, () =&gt; {
+      const oneDayOverlappingIntervalStart = new Date(2016, 11, 3, 18, 0, 0)
+      const oneDayOverlappingIntervalEnd = new Date(2016, 11, 14, 13, 0, 0)
+
+      const numOverlappingDays = getOverlappingDaysInIntervals(
+        { start: initialIntervalStart, end: initialIntervalEnd },
+        {
+          start: oneDayOverlappingIntervalStart,
+          end: oneDayOverlappingIntervalEnd,
+        }
+      )
+      assert(numOverlappingDays === 0)
+    })
+
+    it(&quot;returns 0 for an interval with the same startDateTime as the initial time intervals&#x27;s endDateTime&quot;, () =&gt; {
+      const oneDayOverlapIntervalStart = new Date(2016, 11, 3, 15, 0, 0)
+      const oneDayOverlapIntervalEnd = new Date(2016, 11, 14, 13, 0, 0)
+
+      const numOverlappingDays = getOverlappingDaysInIntervals(
+        { start: initialIntervalStart, end: initialIntervalEnd },
+        { start: oneDayOverlapIntervalStart, end: oneDayOverlapIntervalEnd }
+      )
+      assert(numOverlappingDays === 0)
+    })
+
+    it(&quot;returns 0 for an interval with the same endDateTime as the initial time interval&#x27;s startDateTime&quot;, () =&gt; {
+      const oneDayOverlapIntervalStart = new Date(2016, 10, 3, 15, 0, 0)
+      const oneDayOverlapIntervalEnd = new Date(2016, 10, 10, 13, 0, 0)
+
+      const numOverlappingDays = getOverlappingDaysInIntervals(
+        { start: initialIntervalStart, end: initialIntervalEnd },
+        { start: oneDayOverlapIntervalStart, end: oneDayOverlapIntervalEnd }
+      )
+      assert(numOverlappingDays === 0)
+    })
+  })
+
+  describe(&#x27;when the time intervals overlap&#x27;, () =&gt; {
+    it(&#x27;rounds up the result to include each started overlapping day&#x27;, () =&gt; {
+      const includedIntervalStart = new Date(2016, 10, 14, 9, 0, 0)
+      const includedIntervalEnd = new Date(2016, 10, 15, 18, 0, 0)
+
+      const numOverlappingDays = getOverlappingDaysInIntervals(
+        { start: initialIntervalStart, end: initialIntervalEnd },
+        { start: includedIntervalStart, end: includedIntervalEnd }
+      )
+      assert(numOverlappingDays === 2)
+    })
+
+    it(&#x27;returns the correct value for an interval included within another interval&#x27;, () =&gt; {
+      const includedIntervalStart = new Date(2016, 10, 14)
+      const includedIntervalEnd = new Date(2016, 10, 15)
+
+      const numOverlappingDays = getOverlappingDaysInIntervals(
+        { start: initialIntervalStart, end: initialIntervalEnd },
+        { start: includedIntervalStart, end: includedIntervalEnd }
+      )
+      assert(numOverlappingDays === 1)
+    })
+
+    it(&#x27;returns the correct value for an interval overlapping at the end&#x27;, () =&gt; {
+      const endOverlappingIntervalStart = new Date(2016, 10, 5)
+      const endOverlappingIntervalEnd = new Date(2016, 10, 14)
+
+      const numOverlappingDays = getOverlappingDaysInIntervals(
+        { start: initialIntervalStart, end: initialIntervalEnd },
+        { start: endOverlappingIntervalStart, end: endOverlappingIntervalEnd }
+      )
+      assert(numOverlappingDays === 4)
+    })
+
+    it(&#x27;returns the correct value for an interval overlapping at the beginning&#x27;, () =&gt; {
+      const startOverlappingIntervalStart = new Date(2016, 10, 20)
+      const startOverlappingIntervalEnd = new Date(2016, 11, 14)
+
+      const numOverlappingDays = getOverlappingDaysInIntervals(
+        { start: initialIntervalStart, end: initialIntervalEnd },
+        {
+          start: startOverlappingIntervalStart,
+          end: startOverlappingIntervalEnd,
+        }
+      )
+      assert(numOverlappingDays === 14)
+    })
+
+    it(&#x27;returns the correct value for an interval including another interval&#x27;, () =&gt; {
+      const includingIntervalStart = new Date(2016, 10, 5)
+      const includingIntervalEnd = new Date(2016, 11, 15)
+
+      const numOverlappingDays = getOverlappingDaysInIntervals(
+        { start: initialIntervalStart, end: initialIntervalEnd },
+        { start: includingIntervalStart, end: includingIntervalEnd }
+      )
+      assert(numOverlappingDays === 24)
+    })
+  })
+
+  it(&#x27;accepts a timestamp&#x27;, () =&gt; {
+    const initialIntervalStart = new Date(2016, 10, 10, 13, 0, 0).getTime()
+    const initialIntervalEnd = new Date(2016, 11, 3, 15, 0, 0).getTime()
+
+    const endOverlappingIntervalStart = new Date(2016, 10, 5).getTime()
+    const endOverlappingIntervalEnd = new Date(2016, 10, 14).getTime()
+
+    const numOverlappingDays = getOverlappingDaysInIntervals(
+      { start: initialIntervalStart, end: initialIntervalEnd },
+      { start: endOverlappingIntervalStart, end: endOverlappingIntervalEnd }
+    )
+    assert(numOverlappingDays === 4)
+  })
+
+  it(&#x27;throws an exception if the start date of the initial time interval is after the end date&#x27;, () =&gt; {
+    const block = getOverlappingDaysInIntervals.bind(
+      null,
+      { start: new Date(2016, 10, 7), end: new Date(2016, 10, 3) },
+      { start: new Date(2016, 10, 5), end: new Date(2016, 10, 15) }
+    )
+    assert.throws(block, RangeError)
+  })
+
+  it(&#x27;throws an exception if the start date of the compared time interval is after the end date&#x27;, () =&gt; {
+    const block = getOverlappingDaysInIntervals.bind(
+      null,
+      { start: new Date(2016, 10, 3), end: new Date(2016, 10, 7) },
+      { start: new Date(2016, 10, 15), end: new Date(2016, 10, 5) }
+    )
+    assert.throws(block, RangeError)
+  })
+
+  describe(&#x27;one of the dates is `Invalid Date`&#x27;, () =&gt; {
+    it(&#x27;throws an exception if the start date of the initial time interval is `Invalid Date`&#x27;, () =&gt; {
+      const block = getOverlappingDaysInIntervals.bind(
+        null,
+        { start: new Date(NaN), end: new Date(2016, 10, 3) },
+        { start: new Date(2016, 10, 5), end: new Date(2016, 10, 15) }
+      )
+      assert.throws(block, RangeError)
+    })
+
+    it(&#x27;throws an exception if the end date of the initial time interval is `Invalid Date`&#x27;, () =&gt; {
+      const block = getOverlappingDaysInIntervals.bind(
+        null,
+        { start: new Date(2016, 10, 3), end: new Date(NaN) },
+        { start: new Date(2016, 10, 5), end: new Date(2016, 10, 15) }
+      )
+      assert.throws(block, RangeError)
+    })
+
+    it(&#x27;throws an exception if the start date of the compared time interval is `Invalid Date`&#x27;, () =&gt; {
+      const block = getOverlappingDaysInIntervals.bind(
+        null,
+        { start: new Date(2016, 10, 3), end: new Date(2016, 10, 7) },
+        { start: new Date(NaN), end: new Date(2016, 10, 5) }
+      )
+      assert.throws(block, RangeError)
+    })
+
+    it(&#x27;throws an exception if the end date of the compared time interval is `Invalid Date`&#x27;, () =&gt; {
+      const block = getOverlappingDaysInIntervals.bind(
+        null,
+        { start: new Date(2016, 10, 3), end: new Date(2016, 10, 7) },
+        { start: new Date(2016, 10, 5), end: new Date(NaN) }
+      )
+      assert.throws(block, RangeError)
+    })
+  })
+})
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:19 GMT</p>
+    </body>
+  </html>
+  

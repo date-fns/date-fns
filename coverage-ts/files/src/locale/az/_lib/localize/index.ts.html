@@ -1,0 +1,226 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/az/_lib/localize/index.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">160</td><td class="">160</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import type { Localize, LocalizeFn } from &#x27;../../../types&#x27;
+import buildLocalizeFn from &#x27;../../../_lib/buildLocalizeFn/index&#x27;
+
+const eraValues = {
+  narrow: [&#x27;e.ə&#x27;, &#x27;b.e&#x27;] as const,
+  abbreviated: [&#x27;e.ə&#x27;, &#x27;b.e&#x27;] as const,
+  wide: [&#x27;eramızdan əvvəl&#x27;, &#x27;bizim era&#x27;] as const,
+}
+
+const quarterValues = {
+  narrow: [&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;, &#x27;4&#x27;] as const,
+  abbreviated: [&#x27;K1&#x27;, &#x27;K2&#x27;, &#x27;K3&#x27;, &#x27;K4&#x27;] as const,
+  wide: [&#x27;1ci kvartal&#x27;, &#x27;2ci kvartal&#x27;, &#x27;3cü kvartal&#x27;, &#x27;4cü kvartal&#x27;] as const,
+}
+const monthValues = {
+  narrow: [&#x27;Y&#x27;, &#x27;F&#x27;, &#x27;M&#x27;, &#x27;A&#x27;, &#x27;M&#x27;, &#x27;İ&#x27;, &#x27;İ&#x27;, &#x27;A&#x27;, &#x27;S&#x27;, &#x27;O&#x27;, &#x27;N&#x27;, &#x27;D&#x27;] as const,
+  abbreviated: [
+    &#x27;Yan&#x27;,
+    &#x27;Fev&#x27;,
+    &#x27;Mar&#x27;,
+    &#x27;Apr&#x27;,
+    &#x27;May&#x27;,
+    &#x27;İyun&#x27;,
+    &#x27;İyul&#x27;,
+    &#x27;Avq&#x27;,
+    &#x27;Sen&#x27;,
+    &#x27;Okt&#x27;,
+    &#x27;Noy&#x27;,
+    &#x27;Dek&#x27;,
+  ] as const,
+  wide: [
+    &#x27;Yanvar&#x27;,
+    &#x27;Fevral&#x27;,
+    &#x27;Mart&#x27;,
+    &#x27;Aprel&#x27;,
+    &#x27;May&#x27;,
+    &#x27;İyun&#x27;,
+    &#x27;İyul&#x27;,
+    &#x27;Avqust&#x27;,
+    &#x27;Sentyabr&#x27;,
+    &#x27;Oktyabr&#x27;,
+    &#x27;Noyabr&#x27;,
+    &#x27;Dekabr&#x27;,
+  ] as const,
+}
+
+const dayValues = {
+  narrow: [&#x27;B.&#x27;, &#x27;B.e&#x27;, &#x27;Ç.a&#x27;, &#x27;Ç.&#x27;, &#x27;C.a&#x27;, &#x27;C.&#x27;, &#x27;Ş.&#x27;] as const,
+  short: [&#x27;B.&#x27;, &#x27;B.e&#x27;, &#x27;Ç.a&#x27;, &#x27;Ç.&#x27;, &#x27;C.a&#x27;, &#x27;C.&#x27;, &#x27;Ş.&#x27;] as const,
+  abbreviated: [&#x27;Baz&#x27;, &#x27;Baz.e&#x27;, &#x27;Çər.a&#x27;, &#x27;Çər&#x27;, &#x27;Cüm.a&#x27;, &#x27;Cüm&#x27;, &#x27;Şə&#x27;] as const,
+  wide: [
+    &#x27;Bazar&#x27;,
+    &#x27;Bazar ertəsi&#x27;,
+    &#x27;Çərşənbə axşamı&#x27;,
+    &#x27;Çərşənbə&#x27;,
+    &#x27;Cümə axşamı&#x27;,
+    &#x27;Cümə&#x27;,
+    &#x27;Şənbə&#x27;,
+  ] as const,
+}
+
+const dayPeriodValues = {
+  narrow: {
+    am: &#x27;am&#x27;,
+    pm: &#x27;pm&#x27;,
+    midnight: &#x27;gecəyarı&#x27;,
+    noon: &#x27;gün&#x27;,
+    morning: &#x27;səhər&#x27;,
+    afternoon: &#x27;gündüz&#x27;,
+    evening: &#x27;axşam&#x27;,
+    night: &#x27;gecə&#x27;,
+  },
+  abbreviated: {
+    am: &#x27;AM&#x27;,
+    pm: &#x27;PM&#x27;,
+    midnight: &#x27;gecəyarı&#x27;,
+    noon: &#x27;gün&#x27;,
+    morning: &#x27;səhər&#x27;,
+    afternoon: &#x27;gündüz&#x27;,
+    evening: &#x27;axşam&#x27;,
+    night: &#x27;gecə&#x27;,
+  },
+  wide: {
+    am: &#x27;a.m.&#x27;,
+    pm: &#x27;p.m.&#x27;,
+    midnight: &#x27;gecəyarı&#x27;,
+    noon: &#x27;gün&#x27;,
+    morning: &#x27;səhər&#x27;,
+    afternoon: &#x27;gündüz&#x27;,
+    evening: &#x27;axşam&#x27;,
+    night: &#x27;gecə&#x27;,
+  },
+}
+
+const formattingDayPeriodValues = {
+  narrow: {
+    am: &#x27;a&#x27;,
+    pm: &#x27;p&#x27;,
+    midnight: &#x27;gecəyarı&#x27;,
+    noon: &#x27;gün&#x27;,
+    morning: &#x27;səhər&#x27;,
+    afternoon: &#x27;gündüz&#x27;,
+    evening: &#x27;axşam&#x27;,
+    night: &#x27;gecə&#x27;,
+  },
+  abbreviated: {
+    am: &#x27;AM&#x27;,
+    pm: &#x27;PM&#x27;,
+    midnight: &#x27;gecəyarı&#x27;,
+    noon: &#x27;gün&#x27;,
+    morning: &#x27;səhər&#x27;,
+    afternoon: &#x27;gündüz&#x27;,
+    evening: &#x27;axşam&#x27;,
+    night: &#x27;gecə&#x27;,
+  },
+  wide: {
+    am: &#x27;a.m.&#x27;,
+    pm: &#x27;p.m.&#x27;,
+    midnight: &#x27;gecəyarı&#x27;,
+    noon: &#x27;gün&#x27;,
+    morning: &#x27;səhər&#x27;,
+    afternoon: &#x27;gündüz&#x27;,
+    evening: &#x27;axşam&#x27;,
+    night: &#x27;gecə&#x27;,
+  },
+}
+
+const suffixes: { [key: number]: string } = {
+  1: &#x27;-inci&#x27;,
+  5: &#x27;-inci&#x27;,
+  8: &#x27;-inci&#x27;,
+  70: &#x27;-inci&#x27;,
+  80: &#x27;-inci&#x27;,
+  2: &#x27;-nci&#x27;,
+  7: &#x27;-nci&#x27;,
+  20: &#x27;-nci&#x27;,
+  50: &#x27;-nci&#x27;,
+  3: &#x27;-üncü&#x27;,
+  4: &#x27;-üncü&#x27;,
+  100: &#x27;-üncü&#x27;,
+  6: &#x27;-ncı&#x27;,
+  9: &#x27;-uncu&#x27;,
+  10: &#x27;-uncu&#x27;,
+  30: &#x27;-uncu&#x27;,
+  60: &#x27;-ıncı&#x27;,
+  90: &#x27;-ıncı&#x27;,
+}
+
+const getSuffix = (number: number): string =&gt; {
+  if (number === 0) {
+    // special case for zero
+    return number + &#x27;-ıncı&#x27;
+  }
+
+  const a = number % 10
+  const b = (number % 100) - a
+  const c = number &gt;= 100 ? 100 : null
+
+  if (suffixes[a]) {
+    return suffixes[a]
+  } else if (suffixes[b]) {
+    return suffixes[b]
+  } else if (c !== null) {
+    return suffixes[c]
+  }
+  return &#x27;&#x27;
+}
+
+const ordinalNumber: LocalizeFn&lt;number&gt; = (dirtyNumber, _options) =&gt; {
+  const number = Number(dirtyNumber)
+  const suffix = getSuffix(number)
+
+  return number + suffix
+}
+
+const localize: Localize = {
+  ordinalNumber,
+
+  era: buildLocalizeFn({
+    values: eraValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  quarter: buildLocalizeFn({
+    values: quarterValues,
+    defaultWidth: &#x27;wide&#x27;,
+    argumentCallback: (quarter) =&gt; quarter - 1,
+  }),
+
+  month: buildLocalizeFn({
+    values: monthValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  day: buildLocalizeFn({
+    values: dayValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues,
+    defaultWidth: &#x27;wide&#x27;,
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: &#x27;wide&#x27;,
+  }),
+}
+
+export default localize
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:19 GMT</p>
+    </body>
+  </html>
+  

@@ -1,0 +1,107 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>test.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/startOfWeek/test.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">131</td><td class="">131</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">/* eslint-env mocha */
+
+import assert from &#x27;assert&#x27;
+import { describe, it } from &#x27;vitest&#x27;
+import startOfWeek from &#x27;./index&#x27;
+
+describe(&#x27;startOfWeek&#x27;, () =&gt; {
+  it(&#x27;returns the date with the time set to 00:00:00 and the date set to the first day of a week&#x27;, () =&gt; {
+    const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
+    const result = startOfWeek(date)
+    assert.deepStrictEqual(result, new Date(2014, 7 /* Aug */, 31))
+  })
+
+  it(&#x27;allows to specify which day is the first day of the week&#x27;, () =&gt; {
+    const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
+    const result = startOfWeek(date, { weekStartsOn: 1 })
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1))
+  })
+
+  it(&#x27;allows to specify which day is the first day of the week in locale&#x27;, () =&gt; {
+    const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
+    const result = startOfWeek(date, {
+      locale: {
+        options: { weekStartsOn: 1 },
+      },
+    })
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1))
+  })
+
+  it(&#x27;`options.weekStartsOn` overwrites the first day of the week specified in locale&#x27;, () =&gt; {
+    const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
+    const result = startOfWeek(date, {
+      weekStartsOn: 1,
+      locale: {
+        options: { weekStartsOn: 0 },
+      },
+    })
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1))
+  })
+
+  it(&#x27;accepts a timestamp&#x27;, () =&gt; {
+    const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0).getTime()
+    const result = startOfWeek(date)
+    assert.deepStrictEqual(result, new Date(2014, 7 /* Aug */, 31))
+  })
+
+  it(&#x27;does not mutate the original date&#x27;, () =&gt; {
+    const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
+    startOfWeek(date)
+    assert.deepStrictEqual(date, new Date(2014, 8 /* Sep */, 2, 11, 55, 0))
+  })
+
+  describe(&#x27;edge cases&#x27;, () =&gt; {
+    describe(&#x27;when the given day is before the start of a week&#x27;, () =&gt; {
+      it(&#x27;it returns the start of a week&#x27;, () =&gt; {
+        const date = new Date(2014, 9 /* Oct */, 6)
+        const result = startOfWeek(date, { weekStartsOn: 3 })
+        assert.deepStrictEqual(result, new Date(2014, 9 /* Oct */, 1))
+      })
+    })
+
+    describe(&#x27;when the given day is the start of a week&#x27;, () =&gt; {
+      it(&#x27;it returns the start of a week&#x27;, () =&gt; {
+        const date = new Date(2014, 9 /* Oct */, 8)
+        const result = startOfWeek(date, { weekStartsOn: 3 })
+        assert.deepStrictEqual(result, new Date(2014, 9 /* Oct */, 8))
+      })
+    })
+
+    describe(&#x27;when the given day is after the start of a week&#x27;, () =&gt; {
+      it(&#x27;it returns the start of a week&#x27;, () =&gt; {
+        const date = new Date(2014, 9 /* Oct */, 10)
+        const result = startOfWeek(date, { weekStartsOn: 3 })
+        assert.deepStrictEqual(result, new Date(2014, 9 /* Oct */, 8))
+      })
+    })
+
+    it(&#x27;handles the week at the start of a year&#x27;, () =&gt; {
+      const date = new Date(2014, 0 /* Jan */, 1)
+      const result = startOfWeek(date)
+      assert.deepStrictEqual(result, new Date(2013, 11 /* Dec */, 29))
+    })
+  })
+
+  it(&#x27;returns `Invalid Date` if the given date is invalid&#x27;, () =&gt; {
+    const result = startOfWeek(new Date(NaN))
+    assert(result instanceof Date &amp;&amp; isNaN(result.getTime()))
+  })
+})
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:22 GMT</p>
+    </body>
+  </html>
+  

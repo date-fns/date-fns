@@ -1,0 +1,157 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/he/_lib/formatDistance/index.ts</td><td class="">95.69%</td><td class="">80%</td><td class="">116</td><td class="">111</td><td class="">5</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import type { FormatDistanceFn, FormatDistanceLocale } from &#x27;../../../types&#x27;
+
+type FormatDistanceTokenValue =
+  | string
+  | {
+      one: string
+      two: string
+      other: string
+    }
+
+const formatDistanceLocale: FormatDistanceLocale&lt;FormatDistanceTokenValue&gt; = {
+  lessThanXSeconds: {
+    one: &#x27;פחות משנייה&#x27;,
+    two: &#x27;פחות משתי שניות&#x27;,
+    other: &#x27;פחות מ־{{count}} שניות&#x27;,
+  },
+
+  xSeconds: {
+    one: &#x27;שנייה&#x27;,
+    two: &#x27;שתי שניות&#x27;,
+    other: &#x27;{{count}} שניות&#x27;,
+  },
+
+  halfAMinute: &#x27;חצי דקה&#x27;,
+
+  lessThanXMinutes: {
+    one: &#x27;פחות מדקה&#x27;,
+    two: &#x27;פחות משתי דקות&#x27;,
+    other: &#x27;פחות מ־{{count}} דקות&#x27;,
+  },
+
+  xMinutes: {
+    one: &#x27;דקה&#x27;,
+    two: &#x27;שתי דקות&#x27;,
+    other: &#x27;{{count}} דקות&#x27;,
+  },
+
+  aboutXHours: {
+    one: &#x27;כשעה&#x27;,
+    two: &#x27;כשעתיים&#x27;,
+    other: &#x27;כ־{{count}} שעות&#x27;,
+  },
+
+  xHours: {
+    one: &#x27;שעה&#x27;,
+    two: &#x27;שעתיים&#x27;,
+    other: &#x27;{{count}} שעות&#x27;,
+  },
+
+  xDays: {
+    one: &#x27;יום&#x27;,
+    two: &#x27;יומיים&#x27;,
+    other: &#x27;{{count}} ימים&#x27;,
+  },
+
+  aboutXWeeks: {
+    one: &#x27;כשבוע&#x27;,
+    two: &#x27;כשבועיים&#x27;,
+    other: &#x27;כ־{{count}} שבועות&#x27;,
+  },
+
+  xWeeks: {
+    one: &#x27;שבוע&#x27;,
+    two: &#x27;שבועיים&#x27;,
+    other: &#x27;{{count}} שבועות&#x27;,
+  },
+
+  aboutXMonths: {
+    one: &#x27;כחודש&#x27;,
+    two: &#x27;כחודשיים&#x27;,
+    other: &#x27;כ־{{count}} חודשים&#x27;,
+  },
+
+  xMonths: {
+    one: &#x27;חודש&#x27;,
+    two: &#x27;חודשיים&#x27;,
+    other: &#x27;{{count}} חודשים&#x27;,
+  },
+
+  aboutXYears: {
+    one: &#x27;כשנה&#x27;,
+    two: &#x27;כשנתיים&#x27;,
+    other: &#x27;כ־{{count}} שנים&#x27;,
+  },
+
+  xYears: {
+    one: &#x27;שנה&#x27;,
+    two: &#x27;שנתיים&#x27;,
+    other: &#x27;{{count}} שנים&#x27;,
+  },
+
+  overXYears: {
+    one: &#x27;יותר משנה&#x27;,
+    two: &#x27;יותר משנתיים&#x27;,
+    other: &#x27;יותר מ־{{count}} שנים&#x27;,
+  },
+
+  almostXYears: {
+    one: &#x27;כמעט שנה&#x27;,
+    two: &#x27;כמעט שנתיים&#x27;,
+    other: &#x27;כמעט {{count}} שנים&#x27;,
+  },
+}
+
+const formatDistance: FormatDistanceFn = (token, count, options) =&gt; {
+  // Return word instead of `in one day` or `one day ago`
+  if (token === &#x27;xDays&#x27; &amp;&amp; options?.addSuffix &amp;&amp; count &lt;= 2) {
+    if (options.comparison &amp;&amp; options.comparison &gt; 0) {
+      return count === 1 ? &#x27;מחר&#x27; : &#x27;מחרתיים&#x27;
+    }
+
+    return count === 1 ? &#x27;אתמול&#x27; : &#x27;שלשום&#x27;
+  }
+
+  let result
+
+  const tokenValue = formatDistanceLocale[token]
+  if (typeof tokenValue === &#x27;string&#x27;) {
+    result = tokenValue
+  } else if (count === 1) {
+    result = tokenValue.one
+  } else if (count === 2) {
+    result = tokenValue.two
+  } else {
+    result = tokenValue.other.replace(&#x27;{{count}}&#x27;, String(count))
+  }
+
+  if (options?.addSuffix) {
+    if (options.comparison &amp;&amp; options.comparison &gt; 0) {
+      return &#x27;בעוד &#x27; + result
+    } else {
+      return &#x27;לפני &#x27; + result
+    }
+  }
+
+  return result
+}
+
+export default formatDistance
+</textarea><pre id="annotations" style="display:none">[{&quot;file&quot;:&quot;src/locale/he/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:114,&quot;character&quot;:6,&quot;text&quot;:&quot;result&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/he/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:118,&quot;character&quot;:4,&quot;text&quot;:&quot;result&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/he/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:120,&quot;character&quot;:4,&quot;text&quot;:&quot;result&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/he/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:122,&quot;character&quot;:4,&quot;text&quot;:&quot;result&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/he/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:124,&quot;character&quot;:4,&quot;text&quot;:&quot;result&quot;,&quot;kind&quot;:1}]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:20 GMT</p>
+    </body>
+  </html>
+  

@@ -1,0 +1,360 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/cs/_lib/formatDistance/index.ts</td><td class="">96.69%</td><td class="">80%</td><td class="">272</td><td class="">263</td><td class="">9</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import type { FormatDistanceFn, FormatDistanceLocale } from &#x27;../../../types&#x27;
+
+type Tense = {
+  regular: string
+  past: string
+  future: string
+}
+
+type FormatDistanceTokenValue =
+  | {
+      type?: undefined
+      one: Tense
+      few: Tense
+      many: Tense
+    }
+  | {
+      type: &#x27;other&#x27;
+      other: Tense
+    }
+
+const formatDistanceLocale: FormatDistanceLocale&lt;FormatDistanceTokenValue&gt; = {
+  lessThanXSeconds: {
+    one: {
+      regular: &#x27;méně než sekunda&#x27;,
+      past: &#x27;před méně než sekundou&#x27;,
+      future: &#x27;za méně než sekundu&#x27;,
+    },
+    few: {
+      regular: &#x27;méně než {{count}} sekundy&#x27;,
+      past: &#x27;před méně než {{count}} sekundami&#x27;,
+      future: &#x27;za méně než {{count}} sekundy&#x27;,
+    },
+    many: {
+      regular: &#x27;méně než {{count}} sekund&#x27;,
+      past: &#x27;před méně než {{count}} sekundami&#x27;,
+      future: &#x27;za méně než {{count}} sekund&#x27;,
+    },
+  },
+
+  xSeconds: {
+    one: {
+      regular: &#x27;sekunda&#x27;,
+      past: &#x27;před sekundou&#x27;,
+      future: &#x27;za sekundu&#x27;,
+    },
+    few: {
+      regular: &#x27;{{count}} sekundy&#x27;,
+      past: &#x27;před {{count}} sekundami&#x27;,
+      future: &#x27;za {{count}} sekundy&#x27;,
+    },
+    many: {
+      regular: &#x27;{{count}} sekund&#x27;,
+      past: &#x27;před {{count}} sekundami&#x27;,
+      future: &#x27;za {{count}} sekund&#x27;,
+    },
+  },
+
+  halfAMinute: {
+    type: &#x27;other&#x27;,
+    other: {
+      regular: &#x27;půl minuty&#x27;,
+      past: &#x27;před půl minutou&#x27;,
+      future: &#x27;za půl minuty&#x27;,
+    },
+  },
+
+  lessThanXMinutes: {
+    one: {
+      regular: &#x27;méně než minuta&#x27;,
+      past: &#x27;před méně než minutou&#x27;,
+      future: &#x27;za méně než minutu&#x27;,
+    },
+    few: {
+      regular: &#x27;méně než {{count}} minuty&#x27;,
+      past: &#x27;před méně než {{count}} minutami&#x27;,
+      future: &#x27;za méně než {{count}} minuty&#x27;,
+    },
+    many: {
+      regular: &#x27;méně než {{count}} minut&#x27;,
+      past: &#x27;před méně než {{count}} minutami&#x27;,
+      future: &#x27;za méně než {{count}} minut&#x27;,
+    },
+  },
+
+  xMinutes: {
+    one: {
+      regular: &#x27;minuta&#x27;,
+      past: &#x27;před minutou&#x27;,
+      future: &#x27;za minutu&#x27;,
+    },
+    few: {
+      regular: &#x27;{{count}} minuty&#x27;,
+      past: &#x27;před {{count}} minutami&#x27;,
+      future: &#x27;za {{count}} minuty&#x27;,
+    },
+    many: {
+      regular: &#x27;{{count}} minut&#x27;,
+      past: &#x27;před {{count}} minutami&#x27;,
+      future: &#x27;za {{count}} minut&#x27;,
+    },
+  },
+
+  aboutXHours: {
+    one: {
+      regular: &#x27;přibližně hodina&#x27;,
+      past: &#x27;přibližně před hodinou&#x27;,
+      future: &#x27;přibližně za hodinu&#x27;,
+    },
+    few: {
+      regular: &#x27;přibližně {{count}} hodiny&#x27;,
+      past: &#x27;přibližně před {{count}} hodinami&#x27;,
+      future: &#x27;přibližně za {{count}} hodiny&#x27;,
+    },
+    many: {
+      regular: &#x27;přibližně {{count}} hodin&#x27;,
+      past: &#x27;přibližně před {{count}} hodinami&#x27;,
+      future: &#x27;přibližně za {{count}} hodin&#x27;,
+    },
+  },
+
+  xHours: {
+    one: {
+      regular: &#x27;hodina&#x27;,
+      past: &#x27;před hodinou&#x27;,
+      future: &#x27;za hodinu&#x27;,
+    },
+    few: {
+      regular: &#x27;{{count}} hodiny&#x27;,
+      past: &#x27;před {{count}} hodinami&#x27;,
+      future: &#x27;za {{count}} hodiny&#x27;,
+    },
+    many: {
+      regular: &#x27;{{count}} hodin&#x27;,
+      past: &#x27;před {{count}} hodinami&#x27;,
+      future: &#x27;za {{count}} hodin&#x27;,
+    },
+  },
+
+  xDays: {
+    one: {
+      regular: &#x27;den&#x27;,
+      past: &#x27;před dnem&#x27;,
+      future: &#x27;za den&#x27;,
+    },
+    few: {
+      regular: &#x27;{{count}} dny&#x27;,
+      past: &#x27;před {{count}} dny&#x27;,
+      future: &#x27;za {{count}} dny&#x27;,
+    },
+    many: {
+      regular: &#x27;{{count}} dní&#x27;,
+      past: &#x27;před {{count}} dny&#x27;,
+      future: &#x27;za {{count}} dní&#x27;,
+    },
+  },
+
+  aboutXWeeks: {
+    one: {
+      regular: &#x27;přibližně týden&#x27;,
+      past: &#x27;přibližně před týdnem&#x27;,
+      future: &#x27;přibližně za týden&#x27;,
+    },
+
+    few: {
+      regular: &#x27;přibližně {{count}} týdny&#x27;,
+      past: &#x27;přibližně před {{count}} týdny&#x27;,
+      future: &#x27;přibližně za {{count}} týdny&#x27;,
+    },
+
+    many: {
+      regular: &#x27;přibližně {{count}} týdnů&#x27;,
+      past: &#x27;přibližně před {{count}} týdny&#x27;,
+      future: &#x27;přibližně za {{count}} týdnů&#x27;,
+    },
+  },
+
+  xWeeks: {
+    one: {
+      regular: &#x27;týden&#x27;,
+      past: &#x27;před týdnem&#x27;,
+      future: &#x27;za týden&#x27;,
+    },
+
+    few: {
+      regular: &#x27;{{count}} týdny&#x27;,
+      past: &#x27;před {{count}} týdny&#x27;,
+      future: &#x27;za {{count}} týdny&#x27;,
+    },
+
+    many: {
+      regular: &#x27;{{count}} týdnů&#x27;,
+      past: &#x27;před {{count}} týdny&#x27;,
+      future: &#x27;za {{count}} týdnů&#x27;,
+    },
+  },
+
+  aboutXMonths: {
+    one: {
+      regular: &#x27;přibližně měsíc&#x27;,
+      past: &#x27;přibližně před měsícem&#x27;,
+      future: &#x27;přibližně za měsíc&#x27;,
+    },
+
+    few: {
+      regular: &#x27;přibližně {{count}} měsíce&#x27;,
+      past: &#x27;přibližně před {{count}} měsíci&#x27;,
+      future: &#x27;přibližně za {{count}} měsíce&#x27;,
+    },
+
+    many: {
+      regular: &#x27;přibližně {{count}} měsíců&#x27;,
+      past: &#x27;přibližně před {{count}} měsíci&#x27;,
+      future: &#x27;přibližně za {{count}} měsíců&#x27;,
+    },
+  },
+
+  xMonths: {
+    one: {
+      regular: &#x27;měsíc&#x27;,
+      past: &#x27;před měsícem&#x27;,
+      future: &#x27;za měsíc&#x27;,
+    },
+
+    few: {
+      regular: &#x27;{{count}} měsíce&#x27;,
+      past: &#x27;před {{count}} měsíci&#x27;,
+      future: &#x27;za {{count}} měsíce&#x27;,
+    },
+
+    many: {
+      regular: &#x27;{{count}} měsíců&#x27;,
+      past: &#x27;před {{count}} měsíci&#x27;,
+      future: &#x27;za {{count}} měsíců&#x27;,
+    },
+  },
+
+  aboutXYears: {
+    one: {
+      regular: &#x27;přibližně rok&#x27;,
+      past: &#x27;přibližně před rokem&#x27;,
+      future: &#x27;přibližně za rok&#x27;,
+    },
+    few: {
+      regular: &#x27;přibližně {{count}} roky&#x27;,
+      past: &#x27;přibližně před {{count}} roky&#x27;,
+      future: &#x27;přibližně za {{count}} roky&#x27;,
+    },
+    many: {
+      regular: &#x27;přibližně {{count}} roků&#x27;,
+      past: &#x27;přibližně před {{count}} roky&#x27;,
+      future: &#x27;přibližně za {{count}} roků&#x27;,
+    },
+  },
+
+  xYears: {
+    one: {
+      regular: &#x27;rok&#x27;,
+      past: &#x27;před rokem&#x27;,
+      future: &#x27;za rok&#x27;,
+    },
+    few: {
+      regular: &#x27;{{count}} roky&#x27;,
+      past: &#x27;před {{count}} roky&#x27;,
+      future: &#x27;za {{count}} roky&#x27;,
+    },
+    many: {
+      regular: &#x27;{{count}} roků&#x27;,
+      past: &#x27;před {{count}} roky&#x27;,
+      future: &#x27;za {{count}} roků&#x27;,
+    },
+  },
+
+  overXYears: {
+    one: {
+      regular: &#x27;více než rok&#x27;,
+      past: &#x27;před více než rokem&#x27;,
+      future: &#x27;za více než rok&#x27;,
+    },
+    few: {
+      regular: &#x27;více než {{count}} roky&#x27;,
+      past: &#x27;před více než {{count}} roky&#x27;,
+      future: &#x27;za více než {{count}} roky&#x27;,
+    },
+    many: {
+      regular: &#x27;více než {{count}} roků&#x27;,
+      past: &#x27;před více než {{count}} roky&#x27;,
+      future: &#x27;za více než {{count}} roků&#x27;,
+    },
+  },
+
+  almostXYears: {
+    one: {
+      regular: &#x27;skoro rok&#x27;,
+      past: &#x27;skoro před rokem&#x27;,
+      future: &#x27;skoro za rok&#x27;,
+    },
+    few: {
+      regular: &#x27;skoro {{count}} roky&#x27;,
+      past: &#x27;skoro před {{count}} roky&#x27;,
+      future: &#x27;skoro za {{count}} roky&#x27;,
+    },
+    many: {
+      regular: &#x27;skoro {{count}} roků&#x27;,
+      past: &#x27;skoro před {{count}} roky&#x27;,
+      future: &#x27;skoro za {{count}} roků&#x27;,
+    },
+  },
+}
+
+const formatDistance: FormatDistanceFn = (token, count, options) =&gt; {
+  let pluralResult
+
+  const tokenValue = formatDistanceLocale[token]
+
+  // cs pluralization
+  if (tokenValue.type === &#x27;other&#x27;) {
+    pluralResult = tokenValue.other
+  } else if (count === 1) {
+    pluralResult = tokenValue.one
+  } else if (count &gt; 1 &amp;&amp; count &lt; 5) {
+    pluralResult = tokenValue.few
+  } else {
+    pluralResult = tokenValue.many
+  }
+
+  // times
+  const suffixExist = options?.addSuffix === true
+  const comparison = options?.comparison
+
+  let timeResult
+  if (suffixExist &amp;&amp; comparison === -1) {
+    timeResult = pluralResult.past
+  } else if (suffixExist &amp;&amp; comparison === 1) {
+    timeResult = pluralResult.future
+  } else {
+    timeResult = pluralResult.regular
+  }
+
+  return timeResult.replace(&#x27;{{count}}&#x27;, String(count))
+}
+
+export default formatDistance
+</textarea><pre id="annotations" style="display:none">[{&quot;file&quot;:&quot;src/locale/cs/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:310,&quot;character&quot;:6,&quot;text&quot;:&quot;pluralResult&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/cs/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:316,&quot;character&quot;:4,&quot;text&quot;:&quot;pluralResult&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/cs/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:318,&quot;character&quot;:4,&quot;text&quot;:&quot;pluralResult&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/cs/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:320,&quot;character&quot;:4,&quot;text&quot;:&quot;pluralResult&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/cs/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:322,&quot;character&quot;:4,&quot;text&quot;:&quot;pluralResult&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/cs/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:329,&quot;character&quot;:6,&quot;text&quot;:&quot;timeResult&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/cs/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:331,&quot;character&quot;:4,&quot;text&quot;:&quot;timeResult&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/cs/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:333,&quot;character&quot;:4,&quot;text&quot;:&quot;timeResult&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/cs/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:335,&quot;character&quot;:4,&quot;text&quot;:&quot;timeResult&quot;,&quot;kind&quot;:1}]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:19 GMT</p>
+    </body>
+  </html>
+  

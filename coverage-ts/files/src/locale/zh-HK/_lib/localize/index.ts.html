@@ -1,0 +1,217 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/zh-HK/_lib/localize/index.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">138</td><td class="">138</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import type { Localize, LocalizeFn } from &#x27;../../../types&#x27;
+import buildLocalizeFn from &#x27;../../../_lib/buildLocalizeFn/index&#x27;
+
+const eraValues = {
+  narrow: [&#x27;前&#x27;, &#x27;公元&#x27;] as const,
+  abbreviated: [&#x27;前&#x27;, &#x27;公元&#x27;] as const,
+  wide: [&#x27;公元前&#x27;, &#x27;公元&#x27;] as const,
+}
+
+const quarterValues = {
+  narrow: [&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;, &#x27;4&#x27;] as const,
+  abbreviated: [&#x27;第一季&#x27;, &#x27;第二季&#x27;, &#x27;第三季&#x27;, &#x27;第四季&#x27;] as const,
+  wide: [&#x27;第一季度&#x27;, &#x27;第二季度&#x27;, &#x27;第三季度&#x27;, &#x27;第四季度&#x27;] as const,
+}
+
+const monthValues = {
+  narrow: [
+    &#x27;一&#x27;,
+    &#x27;二&#x27;,
+    &#x27;三&#x27;,
+    &#x27;四&#x27;,
+    &#x27;五&#x27;,
+    &#x27;六&#x27;,
+    &#x27;七&#x27;,
+    &#x27;八&#x27;,
+    &#x27;九&#x27;,
+    &#x27;十&#x27;,
+    &#x27;十一&#x27;,
+    &#x27;十二&#x27;,
+  ] as const,
+  abbreviated: [
+    &#x27;1月&#x27;,
+    &#x27;2月&#x27;,
+    &#x27;3月&#x27;,
+    &#x27;4月&#x27;,
+    &#x27;5月&#x27;,
+    &#x27;6月&#x27;,
+    &#x27;7月&#x27;,
+    &#x27;8月&#x27;,
+    &#x27;9月&#x27;,
+    &#x27;10月&#x27;,
+    &#x27;11月&#x27;,
+    &#x27;12月&#x27;,
+  ] as const,
+  wide: [
+    &#x27;一月&#x27;,
+    &#x27;二月&#x27;,
+    &#x27;三月&#x27;,
+    &#x27;四月&#x27;,
+    &#x27;五月&#x27;,
+    &#x27;六月&#x27;,
+    &#x27;七月&#x27;,
+    &#x27;八月&#x27;,
+    &#x27;九月&#x27;,
+    &#x27;十月&#x27;,
+    &#x27;十一月&#x27;,
+    &#x27;十二月&#x27;,
+  ] as const,
+}
+
+const dayValues = {
+  narrow: [&#x27;日&#x27;, &#x27;一&#x27;, &#x27;二&#x27;, &#x27;三&#x27;, &#x27;四&#x27;, &#x27;五&#x27;, &#x27;六&#x27;] as const,
+  short: [&#x27;日&#x27;, &#x27;一&#x27;, &#x27;二&#x27;, &#x27;三&#x27;, &#x27;四&#x27;, &#x27;五&#x27;, &#x27;六&#x27;] as const,
+  abbreviated: [
+    &#x27;週日&#x27;,
+    &#x27;週一&#x27;,
+    &#x27;週二&#x27;,
+    &#x27;週三&#x27;,
+    &#x27;週四&#x27;,
+    &#x27;週五&#x27;,
+    &#x27;週六&#x27;,
+  ] as const,
+  wide: [
+    &#x27;星期日&#x27;,
+    &#x27;星期一&#x27;,
+    &#x27;星期二&#x27;,
+    &#x27;星期三&#x27;,
+    &#x27;星期四&#x27;,
+    &#x27;星期五&#x27;,
+    &#x27;星期六&#x27;,
+  ] as const,
+}
+
+const dayPeriodValues = {
+  narrow: {
+    am: &#x27;上&#x27;,
+    pm: &#x27;下&#x27;,
+    midnight: &#x27;午夜&#x27;,
+    noon: &#x27;晌&#x27;,
+    morning: &#x27;早&#x27;,
+    afternoon: &#x27;午&#x27;,
+    evening: &#x27;晚&#x27;,
+    night: &#x27;夜&#x27;,
+  },
+  abbreviated: {
+    am: &#x27;上午&#x27;,
+    pm: &#x27;下午&#x27;,
+    midnight: &#x27;午夜&#x27;,
+    noon: &#x27;中午&#x27;,
+    morning: &#x27;上午&#x27;,
+    afternoon: &#x27;下午&#x27;,
+    evening: &#x27;晚上&#x27;,
+    night: &#x27;夜晚&#x27;,
+  },
+  wide: {
+    am: &#x27;上午&#x27;,
+    pm: &#x27;下午&#x27;,
+    midnight: &#x27;午夜&#x27;,
+    noon: &#x27;中午&#x27;,
+    morning: &#x27;上午&#x27;,
+    afternoon: &#x27;下午&#x27;,
+    evening: &#x27;晚上&#x27;,
+    night: &#x27;夜晚&#x27;,
+  },
+}
+
+const formattingDayPeriodValues = {
+  narrow: {
+    am: &#x27;上&#x27;,
+    pm: &#x27;下&#x27;,
+    midnight: &#x27;午夜&#x27;,
+    noon: &#x27;晌&#x27;,
+    morning: &#x27;早&#x27;,
+    afternoon: &#x27;午&#x27;,
+    evening: &#x27;晚&#x27;,
+    night: &#x27;夜&#x27;,
+  },
+  abbreviated: {
+    am: &#x27;上午&#x27;,
+    pm: &#x27;下午&#x27;,
+    midnight: &#x27;午夜&#x27;,
+    noon: &#x27;中午&#x27;,
+    morning: &#x27;上午&#x27;,
+    afternoon: &#x27;下午&#x27;,
+    evening: &#x27;晚上&#x27;,
+    night: &#x27;夜晚&#x27;,
+  },
+  wide: {
+    am: &#x27;上午&#x27;,
+    pm: &#x27;下午&#x27;,
+    midnight: &#x27;午夜&#x27;,
+    noon: &#x27;中午&#x27;,
+    morning: &#x27;上午&#x27;,
+    afternoon: &#x27;下午&#x27;,
+    evening: &#x27;晚上&#x27;,
+    night: &#x27;夜晚&#x27;,
+  },
+}
+
+const ordinalNumber: LocalizeFn&lt;number&gt; = (dirtyNumber, options) =&gt; {
+  const number = Number(dirtyNumber)
+
+  switch (options?.unit) {
+    case &#x27;date&#x27;:
+      return number + &#x27;日&#x27;
+    case &#x27;hour&#x27;:
+      return number + &#x27;時&#x27;
+    case &#x27;minute&#x27;:
+      return number + &#x27;分&#x27;
+    case &#x27;second&#x27;:
+      return number + &#x27;秒&#x27;
+    default:
+      return &#x27;第 &#x27; + number
+  }
+}
+
+const localize: Localize = {
+  ordinalNumber,
+
+  era: buildLocalizeFn({
+    values: eraValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  quarter: buildLocalizeFn({
+    values: quarterValues,
+    defaultWidth: &#x27;wide&#x27;,
+    argumentCallback: (quarter) =&gt; quarter - 1,
+  }),
+
+  month: buildLocalizeFn({
+    values: monthValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  day: buildLocalizeFn({
+    values: dayValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues,
+    defaultWidth: &#x27;wide&#x27;,
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: &#x27;wide&#x27;,
+  }),
+}
+
+export default localize
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:22 GMT</p>
+    </body>
+  </html>
+  

@@ -1,0 +1,182 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/vi/_lib/match/index.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">116</td><td class="">116</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import type { Quarter } from &#x27;../../../../types&#x27;
+import type { Match } from &#x27;../../../types&#x27;
+import buildMatchFn from &#x27;../../../_lib/buildMatchFn/index&#x27;
+import buildMatchPatternFn from &#x27;../../../_lib/buildMatchPatternFn/index&#x27;
+
+const matchOrdinalNumberPattern = /^(\d+)/i
+const parseOrdinalNumberPattern = /\d+/i
+
+const matchEraPatterns = {
+  narrow: /^(tcn|scn)/i,
+  abbreviated: /^(trước CN|sau CN)/i,
+  wide: /^(trước Công Nguyên|sau Công Nguyên)/i,
+}
+const parseEraPatterns = {
+  any: [/^t/i, /^s/i] as const,
+}
+
+const matchQuarterPatterns = {
+  narrow: /^([1234]|i{1,3}v?)/i,
+  abbreviated: /^q([1234]|i{1,3}v?)/i,
+  wide: /^quý ([1234]|i{1,3}v?)/i,
+}
+const parseQuarterPatterns = {
+  any: [/(1|i)$/i, /(2|ii)$/i, /(3|iii)$/i, /(4|iv)$/i] as const,
+}
+
+const matchMonthPatterns = {
+  // month number may contain leading 0, &#x27;thg&#x27; prefix may have space, underscore or empty before number
+  // note the order of &#x27;1&#x27; since it is a sub-string of &#x27;10&#x27;, so must be lower priority
+  narrow: /^(0?[2-9]|10|11|12|0?1)/i,
+  // note the order of &#x27;thg 1&#x27; since it is sub-string of &#x27;thg 10&#x27;, so must be lower priority
+  abbreviated: /^thg[ _]?(0?[1-9](?!\d)|10|11|12)/i,
+  // note the order of &#x27;Mười&#x27; since it is sub-string of Mười Một, so must be lower priority
+  wide: /^tháng ?(Một|Hai|Ba|Tư|Năm|Sáu|Bảy|Tám|Chín|Mười|Mười ?Một|Mười ?Hai|0?[1-9](?!\d)|10|11|12)/i,
+}
+const parseMonthPatterns = {
+  narrow: [
+    /0?1$/i,
+    /0?2/i,
+    /3/,
+    /4/,
+    /5/,
+    /6/,
+    /7/,
+    /8/,
+    /9/,
+    /10/,
+    /11/,
+    /12/,
+  ] as const,
+  abbreviated: [
+    /^thg[ _]?0?1(?!\d)/i,
+    /^thg[ _]?0?2/i,
+    /^thg[ _]?0?3/i,
+    /^thg[ _]?0?4/i,
+    /^thg[ _]?0?5/i,
+    /^thg[ _]?0?6/i,
+    /^thg[ _]?0?7/i,
+    /^thg[ _]?0?8/i,
+    /^thg[ _]?0?9/i,
+    /^thg[ _]?10/i,
+    /^thg[ _]?11/i,
+    /^thg[ _]?12/i,
+  ] as const,
+  wide: [
+    /^tháng ?(Một|0?1(?!\d))/i,
+    /^tháng ?(Hai|0?2)/i,
+    /^tháng ?(Ba|0?3)/i,
+    /^tháng ?(Tư|0?4)/i,
+    /^tháng ?(Năm|0?5)/i,
+    /^tháng ?(Sáu|0?6)/i,
+    /^tháng ?(Bảy|0?7)/i,
+    /^tháng ?(Tám|0?8)/i,
+    /^tháng ?(Chín|0?9)/i,
+    /^tháng ?(Mười|10)/i,
+    /^tháng ?(Mười ?Một|11)/i,
+    /^tháng ?(Mười ?Hai|12)/i,
+  ] as const,
+}
+
+const matchDayPatterns = {
+  narrow: /^(CN|T2|T3|T4|T5|T6|T7)/i,
+  short: /^(CN|Th ?2|Th ?3|Th ?4|Th ?5|Th ?6|Th ?7)/i,
+  abbreviated: /^(CN|Th ?2|Th ?3|Th ?4|Th ?5|Th ?6|Th ?7)/i,
+  wide: /^(Chủ ?Nhật|Chúa ?Nhật|thứ ?Hai|thứ ?Ba|thứ ?Tư|thứ ?Năm|thứ ?Sáu|thứ ?Bảy)/i,
+}
+const parseDayPatterns = {
+  narrow: [/CN/i, /2/i, /3/i, /4/i, /5/i, /6/i, /7/i] as const,
+  short: [/CN/i, /2/i, /3/i, /4/i, /5/i, /6/i, /7/i] as const,
+  abbreviated: [/CN/i, /2/i, /3/i, /4/i, /5/i, /6/i, /7/i] as const,
+  wide: [
+    /(Chủ|Chúa) ?Nhật/i,
+    /Hai/i,
+    /Ba/i,
+    /Tư/i,
+    /Năm/i,
+    /Sáu/i,
+    /Bảy/i,
+  ] as const,
+}
+
+const matchDayPeriodPatterns = {
+  narrow: /^(a|p|nửa đêm|trưa|(giờ) (sáng|chiều|tối|đêm))/i,
+  abbreviated: /^(am|pm|nửa đêm|trưa|(giờ) (sáng|chiều|tối|đêm))/i,
+  wide: /^(ch[^i]*|sa|nửa đêm|trưa|(giờ) (sáng|chiều|tối|đêm))/i,
+}
+const parseDayPeriodPatterns = {
+  any: {
+    am: /^(a|sa)/i,
+    pm: /^(p|ch[^i]*)/i,
+    midnight: /nửa đêm/i,
+    noon: /trưa/i,
+    morning: /sáng/i,
+    afternoon: /chiều/i,
+    evening: /tối/i,
+    night: /^đêm/i,
+  },
+}
+
+const match: Match = {
+  ordinalNumber: buildMatchPatternFn({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: (value) =&gt; parseInt(value, 10),
+  }),
+
+  era: buildMatchFn({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: &#x27;wide&#x27;,
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: &#x27;any&#x27;,
+  }),
+
+  quarter: buildMatchFn({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: &#x27;wide&#x27;,
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: &#x27;any&#x27;,
+    valueCallback: (index) =&gt; (index + 1) as Quarter,
+  }),
+
+  month: buildMatchFn({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: &#x27;wide&#x27;,
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: &#x27;wide&#x27;,
+  }),
+
+  day: buildMatchFn({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: &#x27;wide&#x27;,
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: &#x27;wide&#x27;,
+  }),
+
+  dayPeriod: buildMatchFn({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: &#x27;wide&#x27;,
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: &#x27;any&#x27;,
+  }),
+}
+
+export default match
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:22 GMT</p>
+    </body>
+  </html>
+  

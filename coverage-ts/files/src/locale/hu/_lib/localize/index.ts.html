@@ -1,0 +1,175 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/hu/_lib/localize/index.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">111</td><td class="">111</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import type { Localize, LocalizeFn } from &#x27;../../../types&#x27;
+import buildLocalizeFn from &#x27;../../../_lib/buildLocalizeFn/index&#x27;
+
+const eraValues = {
+  narrow: [&#x27;ie.&#x27;, &#x27;isz.&#x27;] as const,
+  abbreviated: [&#x27;i. e.&#x27;, &#x27;i. sz.&#x27;] as const,
+  wide: [&#x27;Krisztus előtt&#x27;, &#x27;időszámításunk szerint&#x27;] as const,
+}
+
+const quarterValues = {
+  narrow: [&#x27;1.&#x27;, &#x27;2.&#x27;, &#x27;3.&#x27;, &#x27;4.&#x27;] as const,
+  abbreviated: [&#x27;1. n.év&#x27;, &#x27;2. n.év&#x27;, &#x27;3. n.év&#x27;, &#x27;4. n.év&#x27;] as const,
+  wide: [&#x27;1. negyedév&#x27;, &#x27;2. negyedév&#x27;, &#x27;3. negyedév&#x27;, &#x27;4. negyedév&#x27;] as const,
+}
+
+const formattingQuarterValues = {
+  narrow: [&#x27;I.&#x27;, &#x27;II.&#x27;, &#x27;III.&#x27;, &#x27;IV.&#x27;] as const,
+  abbreviated: [&#x27;I. n.év&#x27;, &#x27;II. n.év&#x27;, &#x27;III. n.év&#x27;, &#x27;IV. n.év&#x27;] as const,
+  wide: [
+    &#x27;I. negyedév&#x27;,
+    &#x27;II. negyedév&#x27;,
+    &#x27;III. negyedév&#x27;,
+    &#x27;IV. negyedév&#x27;,
+  ] as const,
+}
+
+const monthValues = {
+  narrow: [
+    &#x27;J&#x27;,
+    &#x27;F&#x27;,
+    &#x27;M&#x27;,
+    &#x27;Á&#x27;,
+    &#x27;M&#x27;,
+    &#x27;J&#x27;,
+    &#x27;J&#x27;,
+    &#x27;A&#x27;,
+    &#x27;Sz&#x27;,
+    &#x27;O&#x27;,
+    &#x27;N&#x27;,
+    &#x27;D&#x27;,
+  ] as const,
+  abbreviated: [
+    &#x27;jan.&#x27;,
+    &#x27;febr.&#x27;,
+    &#x27;márc.&#x27;,
+    &#x27;ápr.&#x27;,
+    &#x27;máj.&#x27;,
+    &#x27;jún.&#x27;,
+    &#x27;júl.&#x27;,
+    &#x27;aug.&#x27;,
+    &#x27;szept.&#x27;,
+    &#x27;okt.&#x27;,
+    &#x27;nov.&#x27;,
+    &#x27;dec.&#x27;,
+  ] as const,
+  wide: [
+    &#x27;január&#x27;,
+    &#x27;február&#x27;,
+    &#x27;március&#x27;,
+    &#x27;április&#x27;,
+    &#x27;május&#x27;,
+    &#x27;június&#x27;,
+    &#x27;július&#x27;,
+    &#x27;augusztus&#x27;,
+    &#x27;szeptember&#x27;,
+    &#x27;október&#x27;,
+    &#x27;november&#x27;,
+    &#x27;december&#x27;,
+  ] as const,
+}
+
+const dayValues = {
+  narrow: [&#x27;V&#x27;, &#x27;H&#x27;, &#x27;K&#x27;, &#x27;Sz&#x27;, &#x27;Cs&#x27;, &#x27;P&#x27;, &#x27;Sz&#x27;] as const,
+  short: [&#x27;V&#x27;, &#x27;H&#x27;, &#x27;K&#x27;, &#x27;Sze&#x27;, &#x27;Cs&#x27;, &#x27;P&#x27;, &#x27;Szo&#x27;] as const,
+  abbreviated: [&#x27;V&#x27;, &#x27;H&#x27;, &#x27;K&#x27;, &#x27;Sze&#x27;, &#x27;Cs&#x27;, &#x27;P&#x27;, &#x27;Szo&#x27;] as const,
+  wide: [
+    &#x27;vasárnap&#x27;,
+    &#x27;hétfő&#x27;,
+    &#x27;kedd&#x27;,
+    &#x27;szerda&#x27;,
+    &#x27;csütörtök&#x27;,
+    &#x27;péntek&#x27;,
+    &#x27;szombat&#x27;,
+  ] as const,
+}
+
+const dayPeriodValues = {
+  narrow: {
+    am: &#x27;de.&#x27;,
+    pm: &#x27;du.&#x27;,
+    midnight: &#x27;éjfél&#x27;,
+    noon: &#x27;dél&#x27;,
+    morning: &#x27;reggel&#x27;,
+    afternoon: &#x27;du.&#x27;,
+    evening: &#x27;este&#x27;,
+    night: &#x27;éjjel&#x27;,
+  },
+  abbreviated: {
+    am: &#x27;de.&#x27;,
+    pm: &#x27;du.&#x27;,
+    midnight: &#x27;éjfél&#x27;,
+    noon: &#x27;dél&#x27;,
+    morning: &#x27;reggel&#x27;,
+    afternoon: &#x27;du.&#x27;,
+    evening: &#x27;este&#x27;,
+    night: &#x27;éjjel&#x27;,
+  },
+  wide: {
+    am: &#x27;de.&#x27;,
+    pm: &#x27;du.&#x27;,
+    midnight: &#x27;éjfél&#x27;,
+    noon: &#x27;dél&#x27;,
+    morning: &#x27;reggel&#x27;,
+    afternoon: &#x27;délután&#x27;,
+    evening: &#x27;este&#x27;,
+    night: &#x27;éjjel&#x27;,
+  },
+}
+
+const ordinalNumber: LocalizeFn&lt;number&gt; = (dirtyNumber, _options) =&gt; {
+  const number = Number(dirtyNumber)
+  return number + &#x27;.&#x27;
+}
+
+const localize: Localize = {
+  ordinalNumber,
+
+  era: buildLocalizeFn({
+    values: eraValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  quarter: buildLocalizeFn({
+    values: quarterValues,
+    defaultWidth: &#x27;wide&#x27;,
+    argumentCallback: (quarter) =&gt; quarter - 1,
+    formattingValues: formattingQuarterValues,
+    defaultFormattingWidth: &#x27;wide&#x27;,
+  }),
+
+  month: buildLocalizeFn({
+    values: monthValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  day: buildLocalizeFn({
+    values: dayValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+}
+
+export default localize
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:20 GMT</p>
+    </body>
+  </html>
+  

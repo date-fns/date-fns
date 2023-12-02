@@ -5,6 +5,18 @@ import { describe, it } from 'vitest'
 import subDays from './index'
 
 describe('subDays', () => {
+  it('subtracts the given number of days in UTC time crossing months', () => {
+    const startDate = new Date(Date.UTC(2021, 10, 5)) // .toISOString() = 2021-11-05T00:00:00.000Z
+    console.log(startDate)
+    const fourDaysLess = subDays(startDate, 4).toISOString() // 2021-11-01T00:00:00.000Z
+    console.log(fourDaysLess)
+    const fiveDaysLess = subDays(startDate, 5).toISOString() // 2021-10-30T23:00:00.000Z
+    console.log(fiveDaysLess)
+
+    const result = subDays(new Date(Date.UTC(2021, 10 /* Nov */, 5)), 5)
+    assert.deepStrictEqual(result, new Date(Date.UTC(2021, 9 /* Oct */, 31)))
+  })
+
   it('subtracts the given number of days', () => {
     const result = subDays(new Date(2014, 8 /* Sep */, 1), 10)
     assert.deepStrictEqual(result, new Date(2014, 7 /* Aug */, 22))

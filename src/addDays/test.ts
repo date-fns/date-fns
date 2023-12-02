@@ -6,6 +6,11 @@ import addDays from './index'
 import { getDstTransitions } from '../../test/dst/tzOffsetTransitions'
 
 describe('addDays', () => {
+  it('adds the given number of days in UTC time crossing months', () => {
+    const result = addDays(new Date(Date.UTC(2023, 8 /* Sep */, 25)), 7)
+    assert.deepStrictEqual(result, new Date(Date.UTC(2023, 9 /* Oct */, 2)))
+  })
+
   it('adds the given number of days', () => {
     const result = addDays(new Date(2014, 8 /* Sep */, 1), 10)
     assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 11))
@@ -36,14 +41,6 @@ describe('addDays', () => {
   const dstOnly = dstTransitions.start && dstTransitions.end ? it : it.skip
   const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || process.env.tz
   const HOUR = 1000 * 60 * 60
-  const MINUTE = 1000 * 60
-  // It's usually 1 hour, but for some timezones, e.g. Australia/Lord_Howe, it is 30 minutes
-  const dstOffset =
-    dstTransitions.start && dstTransitions.end
-      ? (dstTransitions.end.getTimezoneOffset() -
-          dstTransitions.start.getTimezoneOffset()) *
-        MINUTE
-      : NaN
 
   dstOnly(
     `works at DST-start boundary in local timezone: ${tz || '(unknown)'}`,
@@ -60,10 +57,7 @@ describe('addDays', () => {
       const date = new Date(dstTransitions.start!.getTime() - 0.5 * HOUR)
       const result = addDays(date, 1)
       // started before the transition so will only be 23 hours later in local time
-      assert.deepStrictEqual(
-        result,
-        new Date(date.getTime() + 24 * HOUR - dstOffset)
-      )
+      assert.deepStrictEqual(result, new Date(date.getTime() + 24 * HOUR))
     }
   )
 
@@ -73,10 +67,7 @@ describe('addDays', () => {
       const date = new Date(dstTransitions.start!.getTime() - 1 * HOUR)
       const result = addDays(date, 1)
       // started before the transition so will only be 23 hours later in local time
-      assert.deepStrictEqual(
-        result,
-        new Date(date.getTime() + 24 * HOUR - dstOffset)
-      )
+      assert.deepStrictEqual(result, new Date(date.getTime() + 24 * HOUR))
     }
   )
 
@@ -96,10 +87,7 @@ describe('addDays', () => {
       const result = addDays(date, 1)
       // started before the transition so will be 25 hours later in local
       // time because one hour repeats after DST ends.
-      assert.deepStrictEqual(
-        result,
-        new Date(date.getTime() + 24 * HOUR + dstOffset)
-      )
+      assert.deepStrictEqual(result, new Date(date.getTime() + 24 * HOUR))
     }
   )
 
@@ -110,10 +98,7 @@ describe('addDays', () => {
       const result = addDays(date, 1)
       // started before the transition so will be 25 hours later in local
       // time because one hour repeats after DST ends.
-      assert.deepStrictEqual(
-        result,
-        new Date(date.getTime() + 24 * HOUR + dstOffset)
-      )
+      assert.deepStrictEqual(result, new Date(date.getTime() + 24 * HOUR))
     }
   )
 

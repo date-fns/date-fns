@@ -1,0 +1,231 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/formatDistanceStrict/index.ts</td><td class="">96.36%</td><td class="">80%</td><td class="">165</td><td class="">159</td><td class="">6</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import compareAsc from &#x27;../compareAsc/index&#x27;
+import {
+  millisecondsInMinute,
+  minutesInDay,
+  minutesInMonth,
+  minutesInYear,
+} from &#x27;../constants/index&#x27;
+import toDate from &#x27;../toDate/index&#x27;
+import type { LocalizedOptions, RoundingOptions } from &#x27;../types&#x27;
+import defaultLocale from &#x27;../_lib/defaultLocale/index&#x27;
+import { getDefaultOptions } from &#x27;../_lib/defaultOptions/index&#x27;
+import getTimezoneOffsetInMilliseconds from &#x27;../_lib/getTimezoneOffsetInMilliseconds/index&#x27;
+import { getRoundingMethod } from &#x27;../_lib/roundingMethods/index&#x27;
+
+/**
+ * The {@link formatDistanceStrict} function options.
+ */
+export interface FormatDistanceStrictOptions
+  extends LocalizedOptions&lt;&#x27;formatDistance&#x27;&gt;,
+    RoundingOptions {
+  /** Add &quot;X ago&quot;/&quot;in X&quot; in the locale language */
+  addSuffix?: boolean
+  /** If specified, will force the unit */
+  unit?: FormatDistanceStrictUnit
+}
+
+/**
+ * The unit used to format the distance in {@link formatDistanceStrict}.
+ */
+export type FormatDistanceStrictUnit =
+  | &#x27;second&#x27;
+  | &#x27;minute&#x27;
+  | &#x27;hour&#x27;
+  | &#x27;day&#x27;
+  | &#x27;month&#x27;
+  | &#x27;year&#x27;
+
+/**
+ * @name formatDistanceStrict
+ * @category Common Helpers
+ * @summary Return the distance between the given dates in words.
+ *
+ * @description
+ * Return the distance between the given dates in words, using strict units.
+ * This is like `formatDistance`, but does not use helpers like &#x27;almost&#x27;, &#x27;over&#x27;,
+ * &#x27;less than&#x27; and the like.
+ *
+ * | Distance between dates | Result              |
+ * |------------------------|---------------------|
+ * | 0 ... 59 secs          | [0..59] seconds     |
+ * | 1 ... 59 mins          | [1..59] minutes     |
+ * | 1 ... 23 hrs           | [1..23] hours       |
+ * | 1 ... 29 days          | [1..29] days        |
+ * | 1 ... 11 months        | [1..11] months      |
+ * | 1 ... N years          | [1..N]  years       |
+ *
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date
+ * @param baseDate - The date to compare with
+ * @param options - An object with options
+ *
+ * @returns The distance in words
+ *
+ * @throws {RangeError} `date` must not be Invalid Date
+ * @throws {RangeError} `baseDate` must not be Invalid Date
+ * @throws {RangeError} `options.unit` must be &#x27;second&#x27;, &#x27;minute&#x27;, &#x27;hour&#x27;, &#x27;day&#x27;, &#x27;month&#x27; or &#x27;year&#x27;
+ * @throws {RangeError} `options.locale` must contain `formatDistance` property
+ *
+ * @example
+ * // What is the distance between 2 July 2014 and 1 January 2015?
+ * const result = formatDistanceStrict(new Date(2014, 6, 2), new Date(2015, 0, 2))
+ * //=&gt; &#x27;6 months&#x27;
+ *
+ * @example
+ * // What is the distance between 1 January 2015 00:00:15
+ * // and 1 January 2015 00:00:00?
+ * const result = formatDistanceStrict(
+ *   new Date(2015, 0, 1, 0, 0, 15),
+ *   new Date(2015, 0, 1, 0, 0, 0)
+ * )
+ * //=&gt; &#x27;15 seconds&#x27;
+ *
+ * @example
+ * // What is the distance from 1 January 2016
+ * // to 1 January 2015, with a suffix?
+ * const result = formatDistanceStrict(new Date(2015, 0, 1), new Date(2016, 0, 1), {
+ *   addSuffix: true
+ * })
+ * //=&gt; &#x27;1 year ago&#x27;
+ *
+ * @example
+ * // What is the distance from 1 January 2016
+ * // to 1 January 2015, in minutes?
+ * const result = formatDistanceStrict(new Date(2016, 0, 1), new Date(2015, 0, 1), {
+ *   unit: &#x27;minute&#x27;
+ * })
+ * //=&gt; &#x27;525600 minutes&#x27;
+ *
+ * @example
+ * // What is the distance from 1 January 2015
+ * // to 28 January 2015, in months, rounded up?
+ * const result = formatDistanceStrict(new Date(2015, 0, 28), new Date(2015, 0, 1), {
+ *   unit: &#x27;month&#x27;,
+ *   roundingMethod: &#x27;ceil&#x27;
+ * })
+ * //=&gt; &#x27;1 month&#x27;
+ *
+ * @example
+ * // What is the distance between 1 August 2016 and 1 January 2015 in Esperanto?
+ * import { eoLocale } from &#x27;date-fns/locale/eo&#x27;
+ * const result = formatDistanceStrict(new Date(2016, 7, 1), new Date(2015, 0, 1), {
+ *   locale: eoLocale
+ * })
+ * //=&gt; &#x27;1 jaro&#x27;
+ */
+
+export default function formatDistanceStrict&lt;DateType extends Date&gt;(
+  date: DateType | number,
+  baseDate: DateType | number,
+  options?: FormatDistanceStrictOptions
+): string {
+  const defaultOptions = getDefaultOptions()
+  const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale
+
+  const comparison = compareAsc(date, baseDate)
+
+  if (isNaN(comparison)) {
+    throw new RangeError(&#x27;Invalid time value&#x27;)
+  }
+
+  const localizeOptions = Object.assign({}, options, {
+    addSuffix: options?.addSuffix,
+    comparison: comparison as -1 | 0 | 1,
+  })
+
+  let dateLeft
+  let dateRight
+  if (comparison &gt; 0) {
+    dateLeft = toDate(baseDate)
+    dateRight = toDate(date)
+  } else {
+    dateLeft = toDate(date)
+    dateRight = toDate(baseDate)
+  }
+
+  const roundingMethod = getRoundingMethod(options?.roundingMethod ?? &#x27;round&#x27;)
+
+  const milliseconds = dateRight.getTime() - dateLeft.getTime()
+  const minutes = milliseconds / millisecondsInMinute
+
+  const timezoneOffset =
+    getTimezoneOffsetInMilliseconds(dateRight) -
+    getTimezoneOffsetInMilliseconds(dateLeft)
+
+  // Use DST-normalized difference in minutes for years, months and days;
+  // use regular difference in minutes for hours, minutes and seconds.
+  const dstNormalizedMinutes =
+    (milliseconds - timezoneOffset) / millisecondsInMinute
+
+  const defaultUnit = options?.unit
+  let unit: FormatDistanceStrictUnit
+  if (!defaultUnit) {
+    if (minutes &lt; 1) {
+      unit = &#x27;second&#x27;
+    } else if (minutes &lt; 60) {
+      unit = &#x27;minute&#x27;
+    } else if (minutes &lt; minutesInDay) {
+      unit = &#x27;hour&#x27;
+    } else if (dstNormalizedMinutes &lt; minutesInMonth) {
+      unit = &#x27;day&#x27;
+    } else if (dstNormalizedMinutes &lt; minutesInYear) {
+      unit = &#x27;month&#x27;
+    } else {
+      unit = &#x27;year&#x27;
+    }
+  } else {
+    unit = defaultUnit
+  }
+
+  // 0 up to 60 seconds
+  if (unit === &#x27;second&#x27;) {
+    const seconds = roundingMethod(milliseconds / 1000)
+    return locale.formatDistance(&#x27;xSeconds&#x27;, seconds, localizeOptions)
+
+    // 1 up to 60 mins
+  } else if (unit === &#x27;minute&#x27;) {
+    const roundedMinutes = roundingMethod(minutes)
+    return locale.formatDistance(&#x27;xMinutes&#x27;, roundedMinutes, localizeOptions)
+
+    // 1 up to 24 hours
+  } else if (unit === &#x27;hour&#x27;) {
+    const hours = roundingMethod(minutes / 60)
+    return locale.formatDistance(&#x27;xHours&#x27;, hours, localizeOptions)
+
+    // 1 up to 30 days
+  } else if (unit === &#x27;day&#x27;) {
+    const days = roundingMethod(dstNormalizedMinutes / minutesInDay)
+    return locale.formatDistance(&#x27;xDays&#x27;, days, localizeOptions)
+
+    // 1 up to 12 months
+  } else if (unit === &#x27;month&#x27;) {
+    const months = roundingMethod(dstNormalizedMinutes / minutesInMonth)
+    return months === 12 &amp;&amp; defaultUnit !== &#x27;month&#x27;
+      ? locale.formatDistance(&#x27;xYears&#x27;, 1, localizeOptions)
+      : locale.formatDistance(&#x27;xMonths&#x27;, months, localizeOptions)
+
+    // 1 year up to max Date
+  } else {
+    const years = roundingMethod(dstNormalizedMinutes / minutesInYear)
+    return locale.formatDistance(&#x27;xYears&#x27;, years, localizeOptions)
+  }
+}
+</textarea><pre id="annotations" style="display:none">[{&quot;file&quot;:&quot;src/formatDistanceStrict/index.ts&quot;,&quot;line&quot;:136,&quot;character&quot;:6,&quot;text&quot;:&quot;dateLeft&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/formatDistanceStrict/index.ts&quot;,&quot;line&quot;:137,&quot;character&quot;:6,&quot;text&quot;:&quot;dateRight&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/formatDistanceStrict/index.ts&quot;,&quot;line&quot;:139,&quot;character&quot;:4,&quot;text&quot;:&quot;dateLeft&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/formatDistanceStrict/index.ts&quot;,&quot;line&quot;:140,&quot;character&quot;:4,&quot;text&quot;:&quot;dateRight&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/formatDistanceStrict/index.ts&quot;,&quot;line&quot;:142,&quot;character&quot;:4,&quot;text&quot;:&quot;dateLeft&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/formatDistanceStrict/index.ts&quot;,&quot;line&quot;:143,&quot;character&quot;:4,&quot;text&quot;:&quot;dateRight&quot;,&quot;kind&quot;:1}]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:17 GMT</p>
+    </body>
+  </html>
+  

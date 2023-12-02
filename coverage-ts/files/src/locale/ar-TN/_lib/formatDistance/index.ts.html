@@ -1,0 +1,165 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/ar-TN/_lib/formatDistance/index.ts</td><td class="">95.35%</td><td class="">80%</td><td class="">129</td><td class="">123</td><td class="">6</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import type { FormatDistanceFn, FormatDistanceLocale } from &#x27;../../../types&#x27;
+
+type FormatDistanceTokenValue =
+  | string
+  | {
+      one: string
+      two: string
+      threeToTen: string
+      other: string
+    }
+
+const formatDistanceLocale: FormatDistanceLocale&lt;FormatDistanceTokenValue&gt; = {
+  lessThanXSeconds: {
+    one: &#x27;أقل من ثانية&#x27;,
+    two: &#x27;أقل من زوز ثواني&#x27;,
+    threeToTen: &#x27;أقل من {{count}} ثواني&#x27;,
+    other: &#x27;أقل من {{count}} ثانية&#x27;,
+  },
+
+  xSeconds: {
+    one: &#x27;ثانية&#x27;,
+    two: &#x27;زوز ثواني&#x27;,
+    threeToTen: &#x27;{{count}} ثواني&#x27;,
+    other: &#x27;{{count}} ثانية&#x27;,
+  },
+
+  halfAMinute: &#x27;نص دقيقة&#x27;,
+
+  lessThanXMinutes: {
+    one: &#x27;أقل من دقيقة&#x27;,
+    two: &#x27;أقل من دقيقتين&#x27;,
+    threeToTen: &#x27;أقل من {{count}} دقايق&#x27;,
+    other: &#x27;أقل من {{count}} دقيقة&#x27;,
+  },
+
+  xMinutes: {
+    one: &#x27;دقيقة&#x27;,
+    two: &#x27;دقيقتين&#x27;,
+    threeToTen: &#x27;{{count}} دقايق&#x27;,
+    other: &#x27;{{count}} دقيقة&#x27;,
+  },
+
+  aboutXHours: {
+    one: &#x27;ساعة تقريب&#x27;,
+    two: &#x27;ساعتين تقريب&#x27;,
+    threeToTen: &#x27;{{count}} سوايع تقريب&#x27;,
+    other: &#x27;{{count}} ساعة تقريب&#x27;,
+  },
+
+  xHours: {
+    one: &#x27;ساعة&#x27;,
+    two: &#x27;ساعتين&#x27;,
+    threeToTen: &#x27;{{count}} سوايع&#x27;,
+    other: &#x27;{{count}} ساعة&#x27;,
+  },
+
+  xDays: {
+    one: &#x27;نهار&#x27;,
+    two: &#x27;نهارين&#x27;,
+    threeToTen: &#x27;{{count}} أيام&#x27;,
+    other: &#x27;{{count}} يوم&#x27;,
+  },
+
+  aboutXWeeks: {
+    one: &#x27;جمعة تقريب&#x27;,
+    two: &#x27;جمعتين تقريب&#x27;,
+    threeToTen: &#x27;{{count}} جماع تقريب&#x27;,
+    other: &#x27;{{count}} جمعة تقريب&#x27;,
+  },
+
+  xWeeks: {
+    one: &#x27;جمعة&#x27;,
+    two: &#x27;جمعتين&#x27;,
+    threeToTen: &#x27;{{count}} جماع&#x27;,
+    other: &#x27;{{count}} جمعة&#x27;,
+  },
+
+  aboutXMonths: {
+    one: &#x27;شهر تقريب&#x27;,
+    two: &#x27;شهرين تقريب&#x27;,
+    threeToTen: &#x27;{{count}} أشهرة تقريب&#x27;,
+    other: &#x27;{{count}} شهر تقريب&#x27;,
+  },
+
+  xMonths: {
+    one: &#x27;شهر&#x27;,
+    two: &#x27;شهرين&#x27;,
+    threeToTen: &#x27;{{count}} أشهرة&#x27;,
+    other: &#x27;{{count}} شهر&#x27;,
+  },
+
+  aboutXYears: {
+    one: &#x27;عام تقريب&#x27;,
+    two: &#x27;عامين تقريب&#x27;,
+    threeToTen: &#x27;{{count}} أعوام تقريب&#x27;,
+    other: &#x27;{{count}} عام تقريب&#x27;,
+  },
+
+  xYears: {
+    one: &#x27;عام&#x27;,
+    two: &#x27;عامين&#x27;,
+    threeToTen: &#x27;{{count}} أعوام&#x27;,
+    other: &#x27;{{count}} عام&#x27;,
+  },
+
+  overXYears: {
+    one: &#x27;أكثر من عام&#x27;,
+    two: &#x27;أكثر من عامين&#x27;,
+    threeToTen: &#x27;أكثر من {{count}} أعوام&#x27;,
+    other: &#x27;أكثر من {{count}} عام&#x27;,
+  },
+
+  almostXYears: {
+    one: &#x27;عام تقريب&#x27;,
+    two: &#x27;عامين تقريب&#x27;,
+    threeToTen: &#x27;{{count}} أعوام تقريب&#x27;,
+    other: &#x27;{{count}} عام تقريب&#x27;,
+  },
+}
+
+const formatDistance: FormatDistanceFn = (token, count, options) =&gt; {
+  const usageGroup = formatDistanceLocale[token]
+  let result
+  if (typeof usageGroup === &#x27;string&#x27;) {
+    result = usageGroup
+  } else if (count === 1) {
+    result = usageGroup.one
+  } else if (count === 2) {
+    result = usageGroup.two
+  } else if (count &lt;= 10) {
+    result = usageGroup.threeToTen.replace(&#x27;{{count}}&#x27;, String(count))
+  } else {
+    result = usageGroup.other.replace(&#x27;{{count}}&#x27;, String(count))
+  }
+
+  if (options?.addSuffix) {
+    if (options.comparison &amp;&amp; options.comparison &gt; 0) {
+      return &#x27;في &#x27; + result
+    } else {
+      return &#x27;عندو &#x27; + result
+    }
+  }
+
+  return result
+}
+
+export default formatDistance
+</textarea><pre id="annotations" style="display:none">[{&quot;file&quot;:&quot;src/locale/ar-TN/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:122,&quot;character&quot;:6,&quot;text&quot;:&quot;result&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/ar-TN/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:124,&quot;character&quot;:4,&quot;text&quot;:&quot;result&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/ar-TN/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:126,&quot;character&quot;:4,&quot;text&quot;:&quot;result&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/ar-TN/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:128,&quot;character&quot;:4,&quot;text&quot;:&quot;result&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/ar-TN/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:130,&quot;character&quot;:4,&quot;text&quot;:&quot;result&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/ar-TN/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:132,&quot;character&quot;:4,&quot;text&quot;:&quot;result&quot;,&quot;kind&quot;:1}]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:19 GMT</p>
+    </body>
+  </html>
+  

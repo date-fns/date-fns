@@ -1,0 +1,223 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/ja-Hira/_lib/localize/index.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">149</td><td class="">149</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import type { Quarter } from &#x27;../../../../types&#x27;
+import type { Localize, LocalizeFn } from &#x27;../../../types&#x27;
+import buildLocalizeFn from &#x27;../../../_lib/buildLocalizeFn/index&#x27;
+
+const eraValues = {
+  narrow: [&#x27;BC&#x27;, &#x27;AC&#x27;] as const,
+  abbreviated: [&#x27;きげんぜん&#x27;, &#x27;せいれき&#x27;] as const,
+  wide: [&#x27;きげんぜん&#x27;, &#x27;せいれき&#x27;] as const,
+}
+
+const quarterValues = {
+  narrow: [&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;, &#x27;4&#x27;] as const,
+  abbreviated: [&#x27;Q1&#x27;, &#x27;Q2&#x27;, &#x27;Q3&#x27;, &#x27;Q4&#x27;] as const,
+  wide: [
+    &#x27;だい1しはんき&#x27;,
+    &#x27;だい2しはんき&#x27;,
+    &#x27;だい3しはんき&#x27;,
+    &#x27;だい4しはんき&#x27;,
+  ] as const,
+}
+
+const monthValues = {
+  narrow: [
+    &#x27;1&#x27;,
+    &#x27;2&#x27;,
+    &#x27;3&#x27;,
+    &#x27;4&#x27;,
+    &#x27;5&#x27;,
+    &#x27;6&#x27;,
+    &#x27;7&#x27;,
+    &#x27;8&#x27;,
+    &#x27;9&#x27;,
+    &#x27;10&#x27;,
+    &#x27;11&#x27;,
+    &#x27;12&#x27;,
+  ] as const,
+  abbreviated: [
+    &#x27;1がつ&#x27;,
+    &#x27;2がつ&#x27;,
+    &#x27;3がつ&#x27;,
+    &#x27;4がつ&#x27;,
+    &#x27;5がつ&#x27;,
+    &#x27;6がつ&#x27;,
+    &#x27;7がつ&#x27;,
+    &#x27;8がつ&#x27;,
+    &#x27;9がつ&#x27;,
+    &#x27;10がつ&#x27;,
+    &#x27;11がつ&#x27;,
+    &#x27;12がつ&#x27;,
+  ] as const,
+  wide: [
+    &#x27;1がつ&#x27;,
+    &#x27;2がつ&#x27;,
+    &#x27;3がつ&#x27;,
+    &#x27;4がつ&#x27;,
+    &#x27;5がつ&#x27;,
+    &#x27;6がつ&#x27;,
+    &#x27;7がつ&#x27;,
+    &#x27;8がつ&#x27;,
+    &#x27;9がつ&#x27;,
+    &#x27;10がつ&#x27;,
+    &#x27;11がつ&#x27;,
+    &#x27;12がつ&#x27;,
+  ] as const,
+}
+
+const dayValues = {
+  narrow: [&#x27;にち&#x27;, &#x27;げつ&#x27;, &#x27;か&#x27;, &#x27;すい&#x27;, &#x27;もく&#x27;, &#x27;きん&#x27;, &#x27;ど&#x27;] as const,
+  short: [&#x27;にち&#x27;, &#x27;げつ&#x27;, &#x27;か&#x27;, &#x27;すい&#x27;, &#x27;もく&#x27;, &#x27;きん&#x27;, &#x27;ど&#x27;] as const,
+  abbreviated: [&#x27;にち&#x27;, &#x27;げつ&#x27;, &#x27;か&#x27;, &#x27;すい&#x27;, &#x27;もく&#x27;, &#x27;きん&#x27;, &#x27;ど&#x27;] as const,
+  wide: [
+    &#x27;にちようび&#x27;,
+    &#x27;げつようび&#x27;,
+    &#x27;かようび&#x27;,
+    &#x27;すいようび&#x27;,
+    &#x27;もくようび&#x27;,
+    &#x27;きんようび&#x27;,
+    &#x27;どようび&#x27;,
+  ] as const,
+}
+
+const dayPeriodValues = {
+  narrow: {
+    am: &#x27;ごぜん&#x27;,
+    pm: &#x27;ごご&#x27;,
+    midnight: &#x27;しんや&#x27;,
+    noon: &#x27;しょうご&#x27;,
+    morning: &#x27;あさ&#x27;,
+    afternoon: &#x27;ごご&#x27;,
+    evening: &#x27;よる&#x27;,
+    night: &#x27;しんや&#x27;,
+  },
+  abbreviated: {
+    am: &#x27;ごぜん&#x27;,
+    pm: &#x27;ごご&#x27;,
+    midnight: &#x27;しんや&#x27;,
+    noon: &#x27;しょうご&#x27;,
+    morning: &#x27;あさ&#x27;,
+    afternoon: &#x27;ごご&#x27;,
+    evening: &#x27;よる&#x27;,
+    night: &#x27;しんや&#x27;,
+  },
+  wide: {
+    am: &#x27;ごぜん&#x27;,
+    pm: &#x27;ごご&#x27;,
+    midnight: &#x27;しんや&#x27;,
+    noon: &#x27;しょうご&#x27;,
+    morning: &#x27;あさ&#x27;,
+    afternoon: &#x27;ごご&#x27;,
+    evening: &#x27;よる&#x27;,
+    night: &#x27;しんや&#x27;,
+  },
+}
+const formattingDayPeriodValues = {
+  narrow: {
+    am: &#x27;ごぜん&#x27;,
+    pm: &#x27;ごご&#x27;,
+    midnight: &#x27;しんや&#x27;,
+    noon: &#x27;しょうご&#x27;,
+    morning: &#x27;あさ&#x27;,
+    afternoon: &#x27;ごご&#x27;,
+    evening: &#x27;よる&#x27;,
+    night: &#x27;しんや&#x27;,
+  },
+  abbreviated: {
+    am: &#x27;ごぜん&#x27;,
+    pm: &#x27;ごご&#x27;,
+    midnight: &#x27;しんや&#x27;,
+    noon: &#x27;しょうご&#x27;,
+    morning: &#x27;あさ&#x27;,
+    afternoon: &#x27;ごご&#x27;,
+    evening: &#x27;よる&#x27;,
+    night: &#x27;しんや&#x27;,
+  },
+  wide: {
+    am: &#x27;ごぜん&#x27;,
+    pm: &#x27;ごご&#x27;,
+    midnight: &#x27;しんや&#x27;,
+    noon: &#x27;しょうご&#x27;,
+    morning: &#x27;あさ&#x27;,
+    afternoon: &#x27;ごご&#x27;,
+    evening: &#x27;よる&#x27;,
+    night: &#x27;しんや&#x27;,
+  },
+}
+
+const ordinalNumber: LocalizeFn&lt;number&gt; = (dirtyNumber, options) =&gt; {
+  const number = Number(dirtyNumber)
+  const unit = String(options?.unit)
+
+  switch (unit) {
+    case &#x27;year&#x27;:
+      return `${number}ねん`
+    case &#x27;quarter&#x27;:
+      return `だい${number}しはんき`
+    case &#x27;month&#x27;:
+      return `${number}がつ`
+    case &#x27;week&#x27;:
+      return `だい${number}しゅう`
+    case &#x27;date&#x27;:
+      return `${number}にち`
+    case &#x27;hour&#x27;:
+      return `${number}じ`
+    case &#x27;minute&#x27;:
+      return `${number}ふん`
+    case &#x27;second&#x27;:
+      return `${number}びょう`
+    default:
+      return `${number}`
+  }
+}
+
+const localize: Localize = {
+  ordinalNumber: ordinalNumber,
+
+  era: buildLocalizeFn({
+    values: eraValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  quarter: buildLocalizeFn({
+    values: quarterValues,
+    defaultWidth: &#x27;wide&#x27;,
+    argumentCallback: (quarter) =&gt; (Number(quarter) - 1) as Quarter,
+  }),
+
+  month: buildLocalizeFn({
+    values: monthValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  day: buildLocalizeFn({
+    values: dayValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues,
+    defaultWidth: &#x27;wide&#x27;,
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: &#x27;wide&#x27;,
+  }),
+}
+
+export default localize
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:20 GMT</p>
+    </body>
+  </html>
+  

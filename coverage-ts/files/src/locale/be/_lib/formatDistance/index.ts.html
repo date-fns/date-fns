@@ -1,0 +1,292 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/be/_lib/formatDistance/index.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">260</td><td class="">260</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import type { FormatDistanceFn, FormatDistanceTokenFn } from &#x27;../../../types&#x27;
+
+interface DeclensionScheme {
+  one?: string
+  singularNominative: string
+  singularGenitive: string
+  pluralGenitive: string
+}
+
+function declension(scheme: DeclensionScheme, count: number): string {
+  // scheme for count=1 exists
+  if (scheme.one !== undefined &amp;&amp; count === 1) {
+    return scheme.one
+  }
+
+  const rem10 = count % 10
+  const rem100 = count % 100
+
+  // 1, 21, 31, ...
+  if (rem10 === 1 &amp;&amp; rem100 !== 11) {
+    return scheme.singularNominative.replace(&#x27;{{count}}&#x27;, String(count))
+
+    // 2, 3, 4, 22, 23, 24, 32 ...
+  } else if (rem10 &gt;= 2 &amp;&amp; rem10 &lt;= 4 &amp;&amp; (rem100 &lt; 10 || rem100 &gt; 20)) {
+    return scheme.singularGenitive.replace(&#x27;{{count}}&#x27;, String(count))
+
+    // 5, 6, 7, 8, 9, 10, 11, ...
+  } else {
+    return scheme.pluralGenitive.replace(&#x27;{{count}}&#x27;, String(count))
+  }
+}
+
+function buildLocalizeTokenFn(scheme: {
+  regular: DeclensionScheme
+  future?: DeclensionScheme
+  past?: DeclensionScheme
+}): FormatDistanceTokenFn {
+  return (count, options): string =&gt; {
+    if (options &amp;&amp; options.addSuffix) {
+      if (options.comparison &amp;&amp; options.comparison &gt; 0) {
+        if (scheme.future) {
+          return declension(scheme.future, count)
+        } else {
+          return &#x27;праз &#x27; + declension(scheme.regular, count)
+        }
+      } else {
+        if (scheme.past) {
+          return declension(scheme.past, count)
+        } else {
+          return declension(scheme.regular, count) + &#x27; таму&#x27;
+        }
+      }
+    } else {
+      return declension(scheme.regular, count)
+    }
+  }
+}
+
+const halfAMinute: FormatDistanceTokenFn = (_, options) =&gt; {
+  if (options &amp;&amp; options.addSuffix) {
+    if (options.comparison &amp;&amp; options.comparison &gt; 0) {
+      return &#x27;праз паўхвіліны&#x27;
+    } else {
+      return &#x27;паўхвіліны таму&#x27;
+    }
+  }
+
+  return &#x27;паўхвіліны&#x27;
+}
+
+const formatDistanceLocale = {
+  lessThanXSeconds: buildLocalizeTokenFn({
+    regular: {
+      one: &#x27;менш за секунду&#x27;,
+      singularNominative: &#x27;менш за {{count}} секунду&#x27;,
+      singularGenitive: &#x27;менш за {{count}} секунды&#x27;,
+      pluralGenitive: &#x27;менш за {{count}} секунд&#x27;,
+    },
+    future: {
+      one: &#x27;менш, чым праз секунду&#x27;,
+      singularNominative: &#x27;менш, чым праз {{count}} секунду&#x27;,
+      singularGenitive: &#x27;менш, чым праз {{count}} секунды&#x27;,
+      pluralGenitive: &#x27;менш, чым праз {{count}} секунд&#x27;,
+    },
+  }),
+
+  xSeconds: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: &#x27;{{count}} секунда&#x27;,
+      singularGenitive: &#x27;{{count}} секунды&#x27;,
+      pluralGenitive: &#x27;{{count}} секунд&#x27;,
+    },
+    past: {
+      singularNominative: &#x27;{{count}} секунду таму&#x27;,
+      singularGenitive: &#x27;{{count}} секунды таму&#x27;,
+      pluralGenitive: &#x27;{{count}} секунд таму&#x27;,
+    },
+    future: {
+      singularNominative: &#x27;праз {{count}} секунду&#x27;,
+      singularGenitive: &#x27;праз {{count}} секунды&#x27;,
+      pluralGenitive: &#x27;праз {{count}} секунд&#x27;,
+    },
+  }),
+
+  halfAMinute: halfAMinute,
+
+  lessThanXMinutes: buildLocalizeTokenFn({
+    regular: {
+      one: &#x27;менш за хвіліну&#x27;,
+      singularNominative: &#x27;менш за {{count}} хвіліну&#x27;,
+      singularGenitive: &#x27;менш за {{count}} хвіліны&#x27;,
+      pluralGenitive: &#x27;менш за {{count}} хвілін&#x27;,
+    },
+    future: {
+      one: &#x27;менш, чым праз хвіліну&#x27;,
+      singularNominative: &#x27;менш, чым праз {{count}} хвіліну&#x27;,
+      singularGenitive: &#x27;менш, чым праз {{count}} хвіліны&#x27;,
+      pluralGenitive: &#x27;менш, чым праз {{count}} хвілін&#x27;,
+    },
+  }),
+
+  xMinutes: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: &#x27;{{count}} хвіліна&#x27;,
+      singularGenitive: &#x27;{{count}} хвіліны&#x27;,
+      pluralGenitive: &#x27;{{count}} хвілін&#x27;,
+    },
+    past: {
+      singularNominative: &#x27;{{count}} хвіліну таму&#x27;,
+      singularGenitive: &#x27;{{count}} хвіліны таму&#x27;,
+      pluralGenitive: &#x27;{{count}} хвілін таму&#x27;,
+    },
+    future: {
+      singularNominative: &#x27;праз {{count}} хвіліну&#x27;,
+      singularGenitive: &#x27;праз {{count}} хвіліны&#x27;,
+      pluralGenitive: &#x27;праз {{count}} хвілін&#x27;,
+    },
+  }),
+
+  aboutXHours: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: &#x27;каля {{count}} гадзіны&#x27;,
+      singularGenitive: &#x27;каля {{count}} гадзін&#x27;,
+      pluralGenitive: &#x27;каля {{count}} гадзін&#x27;,
+    },
+    future: {
+      singularNominative: &#x27;прыблізна праз {{count}} гадзіну&#x27;,
+      singularGenitive: &#x27;прыблізна праз {{count}} гадзіны&#x27;,
+      pluralGenitive: &#x27;прыблізна праз {{count}} гадзін&#x27;,
+    },
+  }),
+
+  xHours: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: &#x27;{{count}} гадзіна&#x27;,
+      singularGenitive: &#x27;{{count}} гадзіны&#x27;,
+      pluralGenitive: &#x27;{{count}} гадзін&#x27;,
+    },
+    past: {
+      singularNominative: &#x27;{{count}} гадзіну таму&#x27;,
+      singularGenitive: &#x27;{{count}} гадзіны таму&#x27;,
+      pluralGenitive: &#x27;{{count}} гадзін таму&#x27;,
+    },
+    future: {
+      singularNominative: &#x27;праз {{count}} гадзіну&#x27;,
+      singularGenitive: &#x27;праз {{count}} гадзіны&#x27;,
+      pluralGenitive: &#x27;праз {{count}} гадзін&#x27;,
+    },
+  }),
+
+  xDays: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: &#x27;{{count}} дзень&#x27;,
+      singularGenitive: &#x27;{{count}} дні&#x27;,
+      pluralGenitive: &#x27;{{count}} дзён&#x27;,
+    },
+  }),
+
+  aboutXWeeks: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: &#x27;каля {{count}} месяца&#x27;, // TODO
+      singularGenitive: &#x27;каля {{count}} месяцаў&#x27;, // TODO
+      pluralGenitive: &#x27;каля {{count}} месяцаў&#x27;, // TODO
+    },
+    future: {
+      singularNominative: &#x27;прыблізна праз {{count}} месяц&#x27;, // TODO
+      singularGenitive: &#x27;прыблізна праз {{count}} месяцы&#x27;, // TODO
+      pluralGenitive: &#x27;прыблізна праз {{count}} месяцаў&#x27;, // TODO
+    },
+  }),
+
+  xWeeks: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: &#x27;{{count}} месяц&#x27;,
+      singularGenitive: &#x27;{{count}} месяцы&#x27;,
+      pluralGenitive: &#x27;{{count}} месяцаў&#x27;,
+    },
+  }),
+
+  aboutXMonths: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: &#x27;каля {{count}} месяца&#x27;,
+      singularGenitive: &#x27;каля {{count}} месяцаў&#x27;,
+      pluralGenitive: &#x27;каля {{count}} месяцаў&#x27;,
+    },
+    future: {
+      singularNominative: &#x27;прыблізна праз {{count}} месяц&#x27;,
+      singularGenitive: &#x27;прыблізна праз {{count}} месяцы&#x27;,
+      pluralGenitive: &#x27;прыблізна праз {{count}} месяцаў&#x27;,
+    },
+  }),
+
+  xMonths: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: &#x27;{{count}} месяц&#x27;,
+      singularGenitive: &#x27;{{count}} месяцы&#x27;,
+      pluralGenitive: &#x27;{{count}} месяцаў&#x27;,
+    },
+  }),
+
+  aboutXYears: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: &#x27;каля {{count}} года&#x27;,
+      singularGenitive: &#x27;каля {{count}} гадоў&#x27;,
+      pluralGenitive: &#x27;каля {{count}} гадоў&#x27;,
+    },
+    future: {
+      singularNominative: &#x27;прыблізна праз {{count}} год&#x27;,
+      singularGenitive: &#x27;прыблізна праз {{count}} гады&#x27;,
+      pluralGenitive: &#x27;прыблізна праз {{count}} гадоў&#x27;,
+    },
+  }),
+
+  xYears: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: &#x27;{{count}} год&#x27;,
+      singularGenitive: &#x27;{{count}} гады&#x27;,
+      pluralGenitive: &#x27;{{count}} гадоў&#x27;,
+    },
+  }),
+
+  overXYears: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: &#x27;больш за {{count}} год&#x27;,
+      singularGenitive: &#x27;больш за {{count}} гады&#x27;,
+      pluralGenitive: &#x27;больш за {{count}} гадоў&#x27;,
+    },
+    future: {
+      singularNominative: &#x27;больш, чым праз {{count}} год&#x27;,
+      singularGenitive: &#x27;больш, чым праз {{count}} гады&#x27;,
+      pluralGenitive: &#x27;больш, чым праз {{count}} гадоў&#x27;,
+    },
+  }),
+
+  almostXYears: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: &#x27;амаль {{count}} год&#x27;,
+      singularGenitive: &#x27;амаль {{count}} гады&#x27;,
+      pluralGenitive: &#x27;амаль {{count}} гадоў&#x27;,
+    },
+    future: {
+      singularNominative: &#x27;амаль праз {{count}} год&#x27;,
+      singularGenitive: &#x27;амаль праз {{count}} гады&#x27;,
+      pluralGenitive: &#x27;амаль праз {{count}} гадоў&#x27;,
+    },
+  }),
+}
+
+const formatDistance: FormatDistanceFn = (token, count, options) =&gt; {
+  options = options || {}
+  return formatDistanceLocale[token](count, options)
+}
+
+export default formatDistance
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:19 GMT</p>
+    </body>
+  </html>
+  

@@ -1,0 +1,226 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/kk/_lib/localize/index.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">142</td><td class="">142</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import type { Localize, LocalizeFn } from &#x27;../../../types&#x27;
+import buildLocalizeFn from &#x27;../../../_lib/buildLocalizeFn/index&#x27;
+
+const eraValues = {
+  narrow: [&#x27;б.з.д.&#x27;, &#x27;б.з.&#x27;] as const,
+  abbreviated: [&#x27;б.з.д.&#x27;, &#x27;б.з.&#x27;] as const,
+  wide: [&#x27;біздің заманымызға дейін&#x27;, &#x27;біздің заманымыз&#x27;] as const,
+}
+
+const quarterValues = {
+  narrow: [&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;, &#x27;4&#x27;] as const,
+  abbreviated: [&#x27;1-ші тоқ.&#x27;, &#x27;2-ші тоқ.&#x27;, &#x27;3-ші тоқ.&#x27;, &#x27;4-ші тоқ.&#x27;] as const,
+  wide: [&#x27;1-ші тоқсан&#x27;, &#x27;2-ші тоқсан&#x27;, &#x27;3-ші тоқсан&#x27;, &#x27;4-ші тоқсан&#x27;] as const,
+}
+
+const monthValues = {
+  narrow: [&#x27;Қ&#x27;, &#x27;А&#x27;, &#x27;Н&#x27;, &#x27;С&#x27;, &#x27;М&#x27;, &#x27;М&#x27;, &#x27;Ш&#x27;, &#x27;Т&#x27;, &#x27;Қ&#x27;, &#x27;Қ&#x27;, &#x27;Қ&#x27;, &#x27;Ж&#x27;] as const,
+  abbreviated: [
+    &#x27;қаң&#x27;,
+    &#x27;ақп&#x27;,
+    &#x27;нау&#x27;,
+    &#x27;сәу&#x27;,
+    &#x27;мам&#x27;,
+    &#x27;мау&#x27;,
+    &#x27;шіл&#x27;,
+    &#x27;там&#x27;,
+    &#x27;қыр&#x27;,
+    &#x27;қаз&#x27;,
+    &#x27;қар&#x27;,
+    &#x27;жел&#x27;,
+  ] as const,
+  wide: [
+    &#x27;қаңтар&#x27;,
+    &#x27;ақпан&#x27;,
+    &#x27;наурыз&#x27;,
+    &#x27;сәуір&#x27;,
+    &#x27;мамыр&#x27;,
+    &#x27;маусым&#x27;,
+    &#x27;шілде&#x27;,
+    &#x27;тамыз&#x27;,
+    &#x27;қыркүйек&#x27;,
+    &#x27;қазан&#x27;,
+    &#x27;қараша&#x27;,
+    &#x27;желтоқсан&#x27;,
+  ] as const,
+}
+const formattingMonthValues = {
+  narrow: [&#x27;Қ&#x27;, &#x27;А&#x27;, &#x27;Н&#x27;, &#x27;С&#x27;, &#x27;М&#x27;, &#x27;М&#x27;, &#x27;Ш&#x27;, &#x27;Т&#x27;, &#x27;Қ&#x27;, &#x27;Қ&#x27;, &#x27;Қ&#x27;, &#x27;Ж&#x27;] as const,
+  abbreviated: [
+    &#x27;қаң&#x27;,
+    &#x27;ақп&#x27;,
+    &#x27;нау&#x27;,
+    &#x27;сәу&#x27;,
+    &#x27;мам&#x27;,
+    &#x27;мау&#x27;,
+    &#x27;шіл&#x27;,
+    &#x27;там&#x27;,
+    &#x27;қыр&#x27;,
+    &#x27;қаз&#x27;,
+    &#x27;қар&#x27;,
+    &#x27;жел&#x27;,
+  ] as const,
+  wide: [
+    &#x27;қаңтар&#x27;,
+    &#x27;ақпан&#x27;,
+    &#x27;наурыз&#x27;,
+    &#x27;сәуір&#x27;,
+    &#x27;мамыр&#x27;,
+    &#x27;маусым&#x27;,
+    &#x27;шілде&#x27;,
+    &#x27;тамыз&#x27;,
+    &#x27;қыркүйек&#x27;,
+    &#x27;қазан&#x27;,
+    &#x27;қараша&#x27;,
+    &#x27;желтоқсан&#x27;,
+  ] as const,
+}
+
+const dayValues = {
+  narrow: [&#x27;Ж&#x27;, &#x27;Д&#x27;, &#x27;С&#x27;, &#x27;С&#x27;, &#x27;Б&#x27;, &#x27;Ж&#x27;, &#x27;С&#x27;] as const,
+  short: [&#x27;жс&#x27;, &#x27;дс&#x27;, &#x27;сс&#x27;, &#x27;ср&#x27;, &#x27;бс&#x27;, &#x27;жм&#x27;, &#x27;сб&#x27;] as const,
+  abbreviated: [&#x27;жс&#x27;, &#x27;дс&#x27;, &#x27;сс&#x27;, &#x27;ср&#x27;, &#x27;бс&#x27;, &#x27;жм&#x27;, &#x27;сб&#x27;] as const,
+  wide: [
+    &#x27;жексенбі&#x27;,
+    &#x27;дүйсенбі&#x27;,
+    &#x27;сейсенбі&#x27;,
+    &#x27;сәрсенбі&#x27;,
+    &#x27;бейсенбі&#x27;,
+    &#x27;жұма&#x27;,
+    &#x27;сенбі&#x27;,
+  ] as const,
+}
+
+const dayPeriodValues = {
+  narrow: {
+    am: &#x27;ТД&#x27;,
+    pm: &#x27;ТК&#x27;,
+    midnight: &#x27;түн ортасы&#x27;,
+    noon: &#x27;түс&#x27;,
+    morning: &#x27;таң&#x27;,
+    afternoon: &#x27;күндіз&#x27;,
+    evening: &#x27;кеш&#x27;,
+    night: &#x27;түн&#x27;,
+  },
+  wide: {
+    am: &#x27;ТД&#x27;,
+    pm: &#x27;ТК&#x27;,
+    midnight: &#x27;түн ортасы&#x27;,
+    noon: &#x27;түс&#x27;,
+    morning: &#x27;таң&#x27;,
+    afternoon: &#x27;күндіз&#x27;,
+    evening: &#x27;кеш&#x27;,
+    night: &#x27;түн&#x27;,
+  },
+}
+
+const formattingDayPeriodValues = {
+  narrow: {
+    am: &#x27;ТД&#x27;,
+    pm: &#x27;ТК&#x27;,
+    midnight: &#x27;түн ортасында&#x27;,
+    noon: &#x27;түс&#x27;,
+    morning: &#x27;таң&#x27;,
+    afternoon: &#x27;күн&#x27;,
+    evening: &#x27;кеш&#x27;,
+    night: &#x27;түн&#x27;,
+  },
+  wide: {
+    am: &#x27;ТД&#x27;,
+    pm: &#x27;ТК&#x27;,
+    midnight: &#x27;түн ортасында&#x27;,
+    noon: &#x27;түсте&#x27;,
+    morning: &#x27;таңертең&#x27;,
+    afternoon: &#x27;күндіз&#x27;,
+    evening: &#x27;кеште&#x27;,
+    night: &#x27;түнде&#x27;,
+  },
+}
+
+const suffixes = {
+  0: &#x27;-ші&#x27;,
+  1: &#x27;-ші&#x27;,
+  2: &#x27;-ші&#x27;,
+  3: &#x27;-ші&#x27;,
+  4: &#x27;-ші&#x27;,
+  5: &#x27;-ші&#x27;,
+  6: &#x27;-шы&#x27;,
+  7: &#x27;-ші&#x27;,
+  8: &#x27;-ші&#x27;,
+  9: &#x27;-шы&#x27;,
+  10: &#x27;-шы&#x27;,
+  20: &#x27;-шы&#x27;,
+  30: &#x27;-шы&#x27;,
+  40: &#x27;-шы&#x27;,
+  50: &#x27;-ші&#x27;,
+  60: &#x27;-шы&#x27;,
+  70: &#x27;-ші&#x27;,
+  80: &#x27;-ші&#x27;,
+  90: &#x27;-шы&#x27;,
+  100: &#x27;-ші&#x27;,
+}
+
+type SuffixesKey = keyof typeof suffixes
+
+const ordinalNumber: LocalizeFn&lt;number&gt; = (dirtyNumber, _options) =&gt; {
+  const number = Number(dirtyNumber) as SuffixesKey
+  const mod10 = (number % 10) as SuffixesKey
+  const b = number &gt;= 100 ? 100 : null
+  const suffix = suffixes[number] || suffixes[mod10] || (b &amp;&amp; suffixes[b]) || &#x27;&#x27;
+
+  return number + suffix
+}
+
+const localize: Localize = {
+  ordinalNumber,
+
+  era: buildLocalizeFn({
+    values: eraValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  quarter: buildLocalizeFn({
+    values: quarterValues,
+    defaultWidth: &#x27;wide&#x27;,
+    argumentCallback: (quarter) =&gt; quarter - 1,
+  }),
+
+  month: buildLocalizeFn({
+    values: monthValues,
+    defaultWidth: &#x27;wide&#x27;,
+    formattingValues: formattingMonthValues,
+    defaultFormattingWidth: &#x27;wide&#x27;,
+  }),
+
+  day: buildLocalizeFn({
+    values: dayValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues,
+    defaultWidth: &#x27;any&#x27;,
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: &#x27;wide&#x27;,
+  }),
+}
+
+export default localize
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:20 GMT</p>
+    </body>
+  </html>
+  

@@ -43,4 +43,17 @@ describe('isEqual', () => {
     const result = isEqual(new Date(NaN), new Date(NaN))
     assert(result === false)
   })
+  /* TUKE new Test */
+  it('two dates from the future', () => {
+    const result = isEqual(new Date(2987, 5, 5), new Date(2987, 5, 5))
+    assert(result === true)
+  })
+
+  it('two UTC dates', () => {
+    const result = isEqual(
+      new Date(Date.UTC(2023, 5, 5)),
+      new Date(Date.UTC(2023, 5, 5))
+    )
+    assert(result === true)
+  })
 })

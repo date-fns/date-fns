@@ -1,0 +1,389 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>test.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/parseISO/test.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">505</td><td class="">505</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">/* eslint-env mocha */
+
+import assert from &#x27;assert&#x27;
+import { describe, it } from &#x27;vitest&#x27;
+import parseISO from &#x27;./index&#x27;
+
+describe(&#x27;parseISO&#x27;, () =&gt; {
+  describe(&#x27;string argument&#x27;, () =&gt; {
+    describe(&#x27;centuries&#x27;, () =&gt; {
+      it(&#x27;parses YY&#x27;, () =&gt; {
+        const result = parseISO(&#x27;20&#x27;)
+        assert.deepStrictEqual(result, new Date(2000, 0 /* Jan */, 1))
+      })
+    })
+
+    describe(&#x27;years&#x27;, () =&gt; {
+      it(&#x27;parses YYYY&#x27;, () =&gt; {
+        const result = parseISO(&#x27;2014&#x27;)
+        assert.deepStrictEqual(result, new Date(2014, 0 /* Jan */, 1))
+      })
+    })
+
+    describe(&#x27;months&#x27;, () =&gt; {
+      it(&#x27;parses YYYY-MM&#x27;, () =&gt; {
+        const result = parseISO(&#x27;2014-02&#x27;)
+        assert.deepStrictEqual(result, new Date(2014, 1 /* Feb */, 1))
+      })
+    })
+
+    describe(&#x27;weeks&#x27;, () =&gt; {
+      it(&#x27;parses YYYY-Www&#x27;, () =&gt; {
+        const result = parseISO(&#x27;2014-W02&#x27;)
+        assert.deepStrictEqual(result, new Date(2014, 0 /* Jan */, 6))
+      })
+
+      it(&#x27;parses YYYYWww&#x27;, () =&gt; {
+        const result = parseISO(&#x27;2014W02&#x27;)
+        assert.deepStrictEqual(result, new Date(2014, 0 /* Jan */, 6))
+      })
+    })
+
+    describe(&#x27;calendar dates&#x27;, () =&gt; {
+      it(&#x27;parses YYYY-MM-DD&#x27;, () =&gt; {
+        const result = parseISO(&#x27;2014-02-11&#x27;)
+        assert.deepStrictEqual(result, new Date(2014, 1, /* Feb */ 11))
+      })
+
+      it(&#x27;parses YYYYMMDD&#x27;, () =&gt; {
+        const result = parseISO(&#x27;20140211&#x27;)
+        assert.deepStrictEqual(result, new Date(2014, 1 /* Feb */, 11))
+      })
+    })
+
+    describe(&#x27;week dates&#x27;, () =&gt; {
+      it(&#x27;parses YYYY-Www-D&#x27;, () =&gt; {
+        const result = parseISO(&#x27;2014-W02-7&#x27;)
+        assert.deepStrictEqual(result, new Date(2014, 0 /* Jan */, 12))
+      })
+
+      it(&#x27;parses YYYYWwwD&#x27;, () =&gt; {
+        const result = parseISO(&#x27;2014W027&#x27;)
+        assert.deepStrictEqual(result, new Date(2014, 0 /* Jan */, 12))
+      })
+
+      it(&#x27;correctly handles years in which 4 January is Sunday&#x27;, () =&gt; {
+        const result = parseISO(&#x27;2009-W01-1&#x27;)
+        assert.deepStrictEqual(result, new Date(2008, 11 /* Dec */, 29))
+      })
+    })
+
+    describe(&#x27;ordinal dates&#x27;, () =&gt; {
+      it(&#x27;parses YYYY-DDD&#x27;, () =&gt; {
+        const result = parseISO(&#x27;2014-026&#x27;)
+        assert.deepStrictEqual(result, new Date(2014, 0 /* Jan */, 26))
+      })
+
+      it(&#x27;parses YYYYDDD&#x27;, () =&gt; {
+        const result = parseISO(&#x27;2014026&#x27;)
+        assert.deepStrictEqual(result, new Date(2014, 0 /* Jan */, 26))
+      })
+    })
+
+    describe(&#x27;date and time combined&#x27;, () =&gt; {
+      it(&#x27;parses YYYY-MM-DDThh:mm&#x27;, () =&gt; {
+        const result = parseISO(&#x27;2014-02-11T11:30&#x27;)
+        assert.deepStrictEqual(result, new Date(2014, 1 /* Feb */, 11, 11, 30))
+      })
+
+      it(&#x27;parses YYYY-MM-DDThhmm&#x27;, () =&gt; {
+        const result = parseISO(&#x27;2014-02-11T1130&#x27;)
+        assert.deepStrictEqual(result, new Date(2014, 1 /* Feb */, 11, 11, 30))
+      })
+    })
+
+    describe(&#x27;extended century representation&#x27;, () =&gt; {
+      it(&#x27;parses century 101 BC - 2 BC&#x27;, () =&gt; {
+        const result = parseISO(&#x27;-0001&#x27;)
+        const date = new Date(0)
+        date.setFullYear(-100, 0 /* Jan */, 1)
+        date.setHours(0, 0, 0, 0)
+        assert.deepStrictEqual(result, date)
+      })
+
+      it(&#x27;parses century 1 BC - 99 AD&#x27;, () =&gt; {
+        const result = parseISO(&#x27;00&#x27;)
+        const date = new Date(0)
+        date.setFullYear(0, 0 /* Jan */, 1)
+        date.setHours(0, 0, 0, 0)
+        assert.deepStrictEqual(result, date)
+      })
+
+      it(&#x27;parses centuries after 9999 AD&#x27;, () =&gt; {
+        const result = parseISO(&#x27;+0123&#x27;)
+        assert.deepStrictEqual(result, new Date(12300, 0 /* Jan */, 1))
+      })
+
+      it(&#x27;allows to specify the number of additional digits&#x27;, () =&gt; {
+        const result = parseISO(&#x27;-20&#x27;, { additionalDigits: 0 })
+        const date = new Date(0)
+        date.setFullYear(-2000, 0 /* Jan */, 1)
+        date.setHours(0, 0, 0, 0)
+        assert.deepStrictEqual(result, date)
+      })
+    })
+
+    describe(&#x27;extended year representation&#x27;, () =&gt; {
+      it(&#x27;correctly parses years from 1 AD to 99 AD&#x27;, () =&gt; {
+        const result = parseISO(&#x27;0095-07-02&#x27;)
+        const date = new Date(0)
+        date.setFullYear(95, 6 /* Jul */, 2)
+        date.setHours(0, 0, 0, 0)
+        assert.deepStrictEqual(result, date)
+      })
+
+      it(&#x27;parses years after 9999 AD&#x27;, () =&gt; {
+        const result = parseISO(&#x27;+012345-07-02&#x27;)
+        assert.deepStrictEqual(result, new Date(12345, 6 /* Jul */, 2))
+      })
+
+      it(&#x27;allows to specify the number of additional digits&#x27;, () =&gt; {
+        const result = parseISO(&#x27;+12340702&#x27;, { additionalDigits: 0 })
+        assert.deepStrictEqual(result, new Date(1234, 6 /* Jul */, 2))
+      })
+
+      it(&#x27;parses year 1 BC&#x27;, () =&gt; {
+        const result = parseISO(&#x27;0000-07-02&#x27;)
+        const date = new Date(0)
+        date.setFullYear(0, 6 /* Jul */, 2)
+        date.setHours(0, 0, 0, 0)
+        assert.deepStrictEqual(result, date)
+      })
+
+      it(&#x27;parses years less than 1 BC&#x27;, () =&gt; {
+        const result = parseISO(&#x27;-000001-07-02&#x27;)
+        const date = new Date(0)
+        date.setFullYear(-1, 6 /* Jul */, 2)
+        date.setHours(0, 0, 0, 0)
+        assert.deepStrictEqual(result, date)
+      })
+    })
+
+    describe(&#x27;float time&#x27;, () =&gt; {
+      it(&#x27;parses float hours&#x27;, () =&gt; {
+        const result = parseISO(&#x27;2014-02-11T11.5&#x27;)
+        assert.deepStrictEqual(result, new Date(2014, 1 /* Feb */, 11, 11, 30))
+      })
+
+      it(&#x27;parses float minutes&#x27;, () =&gt; {
+        const result = parseISO(&#x27;2014-02-11T11:30.5&#x27;)
+        assert.deepStrictEqual(
+          result,
+          new Date(2014, 1 /* Feb */, 11, 11, 30, 30)
+        )
+      })
+
+      it(&#x27;parses float seconds&#x27;, () =&gt; {
+        const result = parseISO(&#x27;2014-02-11T11:30:30.768&#x27;)
+        assert.deepStrictEqual(
+          result,
+          new Date(2014, 1 /* Feb */, 11, 11, 30, 30, 768)
+        )
+      })
+
+      it(&#x27;parses , as decimal mark&#x27;, () =&gt; {
+        const result = parseISO(&#x27;2014-02-11T11,5&#x27;)
+        assert.deepStrictEqual(result, new Date(2014, 1 /* Feb */, 11, 11, 30))
+      })
+    })
+
+    describe(&#x27;timezones&#x27;, () =&gt; {
+      describe(&#x27;when the date and the time are specified&#x27;, () =&gt; {
+        it(&#x27;parses Z&#x27;, () =&gt; {
+          const result = parseISO(&#x27;2014-10-25T06:46:20Z&#x27;)
+          assert.deepStrictEqual(result, new Date(&#x27;2014-10-25T13:46:20+07:00&#x27;))
+        })
+
+        it(&#x27;parses ±hh:mm&#x27;, () =&gt; {
+          const result = parseISO(&#x27;2014-10-25T13:46:20+07:00&#x27;)
+          assert.deepStrictEqual(result, new Date(&#x27;2014-10-25T13:46:20+07:00&#x27;))
+        })
+
+        it(&#x27;parses ±hhmm&#x27;, () =&gt; {
+          const result = parseISO(&#x27;2014-10-25T03:46:20-0300&#x27;)
+          assert.deepStrictEqual(result, new Date(&#x27;2014-10-25T13:46:20+07:00&#x27;))
+        })
+
+        it(&#x27;parses ±hh&#x27;, () =&gt; {
+          const result = parseISO(&#x27;2014-10-25T13:46:20+07&#x27;)
+          assert.deepStrictEqual(result, new Date(&#x27;2014-10-25T13:46:20+07:00&#x27;))
+        })
+      })
+      describe(&#x27;when the year and the month are specified&#x27;, () =&gt; {
+        it(&#x27;sets timezone correctly on yyyy-MMZ format&#x27;, () =&gt; {
+          const result = parseISO(&#x27;2012-01Z&#x27;)
+          assert.deepStrictEqual(result, new Date(&#x27;2012-01-01T00:00:00+00:00&#x27;))
+        })
+      })
+    })
+
+    describe(&#x27;failure&#x27;, () =&gt; {
+      it(&#x27;returns `Invalid Date` if the string is not an ISO formatted date&#x27;, () =&gt; {
+        const result = parseISO(new Date(2014, 8 /* Sep */, 1, 11).toString())
+        assert(result instanceof Date)
+        assert(isNaN(result.getTime()))
+      })
+    })
+  })
+
+  describe(&#x27;validation&#x27;, () =&gt; {
+    describe(&#x27;months&#x27;, () =&gt; {
+      it(&#x27;returns `Invalid Date` for invalid month&#x27;, () =&gt; {
+        const result = parseISO(&#x27;2014-00&#x27;)
+        assert(result instanceof Date)
+        assert(isNaN(result.getTime()))
+      })
+    })
+
+    describe(&#x27;weeks&#x27;, () =&gt; {
+      it(&#x27;returns `Invalid Date` for invalid week&#x27;, () =&gt; {
+        const result = parseISO(&#x27;2014-W00&#x27;)
+        assert(result instanceof Date)
+        assert(isNaN(result.getTime()))
+      })
+
+      it(&#x27;returns `Invalid Date` for 54th week&#x27;, () =&gt; {
+        const result = parseISO(&#x27;2014-W54&#x27;)
+        assert(result instanceof Date)
+        assert(isNaN(result.getTime()))
+      })
+    })
+
+    describe(&#x27;calendar dates&#x27;, () =&gt; {
+      it(&#x27;returns `Invalid Date` for invalid day of the month&#x27;, () =&gt; {
+        const result = parseISO(&#x27;2012-02-30&#x27;)
+        assert(result instanceof Date)
+        assert(isNaN(result.getTime()))
+      })
+
+      it(&#x27;returns `Invalid Date` for 29th of February of non-leap year&#x27;, () =&gt; {
+        const result = parseISO(&#x27;2014-02-29&#x27;)
+        assert(result instanceof Date)
+        assert(isNaN(result.getTime()))
+      })
+
+      it(&#x27;parses 29th of February of leap year&#x27;, () =&gt; {
+        const result = parseISO(&#x27;2012-02-29&#x27;)
+        assert.deepStrictEqual(result, new Date(2012, 1, /* Feb */ 29))
+      })
+    })
+
+    describe(&#x27;week dates&#x27;, () =&gt; {
+      it(&#x27;returns `Invalid Date` for invalid day of the week&#x27;, () =&gt; {
+        const result = parseISO(&#x27;2014-W02-0&#x27;)
+        assert(result instanceof Date)
+        assert(isNaN(result.getTime()))
+      })
+    })
+
+    describe(&#x27;ordinal dates&#x27;, () =&gt; {
+      it(&#x27;returns `Invalid Date` for invalid day of the year&#x27;, () =&gt; {
+        const result = parseISO(&#x27;2012-000&#x27;)
+        assert(result instanceof Date)
+        assert(isNaN(result.getTime()))
+      })
+
+      it(&#x27;returns `Invalid Date` for 366th day of non-leap year&#x27;, () =&gt; {
+        const result = parseISO(&#x27;2014-366&#x27;)
+        assert(result instanceof Date)
+        assert(isNaN(result.getTime()))
+      })
+
+      it(&#x27;parses 366th day of leap year&#x27;, () =&gt; {
+        const result = parseISO(&#x27;2012-366&#x27;)
+        assert.deepStrictEqual(result, new Date(2012, 11, /* Dec */ 31))
+      })
+    })
+
+    describe(&#x27;date&#x27;, () =&gt; {
+      it(&#x27;returns `Invalid Date` when it contains spaces after the date&#x27;, () =&gt; {
+        const result = parseISO(&#x27;2014-02-11  basketball&#x27;)
+        assert(result instanceof Date)
+        assert(isNaN(result.getTime()))
+      })
+    })
+
+    describe(&#x27;time&#x27;, () =&gt; {
+      it(&#x27;parses 24:00 as midnight of the next day&#x27;, () =&gt; {
+        const result = parseISO(&#x27;2014-02-11T24:00&#x27;)
+        assert.deepStrictEqual(result, new Date(2014, 1 /* Feb */, 12, 0, 0))
+      })
+
+      it(&#x27;returns `Invalid Date` for anything after 24:00&#x27;, () =&gt; {
+        const result = parseISO(&#x27;2014-02-11T24:01&#x27;)
+        assert(result instanceof Date)
+        assert(isNaN(result.getTime()))
+      })
+
+      it(&#x27;returns `Invalid Date` for invalid hours&#x27;, () =&gt; {
+        const result = parseISO(&#x27;2014-02-11T25&#x27;)
+        assert(result instanceof Date)
+        assert(isNaN(result.getTime()))
+      })
+
+      it(&#x27;returns `Invalid Date` for invalid minutes&#x27;, () =&gt; {
+        const result = parseISO(&#x27;2014-02-11T21:60&#x27;)
+        assert(result instanceof Date)
+        assert(isNaN(result.getTime()))
+      })
+
+      it(&#x27;returns `Invalid Date` for invalid seconds&#x27;, () =&gt; {
+        const result = parseISO(&#x27;2014-02-11T21:59:60&#x27;)
+        assert(result instanceof Date)
+        assert(isNaN(result.getTime()))
+      })
+
+      it(&#x27;returns `Invalid Date` for invalid time&#x27;, () =&gt; {
+        const result = parseISO(&#x27;2014-02-11T21:basketball&#x27;)
+        assert(result instanceof Date)
+        assert(isNaN(result.getTime()))
+      })
+
+      it(&#x27;returns `Invalid Date` when it contains spaces after the time&#x27;, () =&gt; {
+        const result = parseISO(&#x27;2014-02-11T21:59:00  basketball&#x27;)
+        assert(result instanceof Date)
+        assert(isNaN(result.getTime()))
+      })
+    })
+
+    describe(&#x27;timezones&#x27;, () =&gt; {
+      it(&#x27;returns `Invalid Date` for invalid timezone minutes&#x27;, () =&gt; {
+        const result = parseISO(&#x27;2014-02-11T21:35:45+04:60&#x27;)
+        assert(result instanceof Date)
+        assert(isNaN(result.getTime()))
+      })
+    })
+  })
+
+  describe(&#x27;invalid argument&#x27;, () =&gt; {
+    it(&#x27;returns Invalid Date if argument is non-date string&#x27;, () =&gt; {
+      const result = parseISO(&#x27;abc&#x27;)
+      assert(result instanceof Date)
+      assert(isNaN(result.getTime()))
+    })
+
+    it(&#x27;returns Invalid Date if argument is non-date string containing a colon&#x27;, () =&gt; {
+      const result = parseISO(&#x27;00:00&#x27;)
+      assert(result instanceof Date)
+      assert(isNaN(result.getTime()))
+    })
+  })
+})
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:22 GMT</p>
+    </body>
+  </html>
+  

@@ -1,0 +1,283 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/uk/_lib/formatDistance/index.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">252</td><td class="">252</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import { FormatDistanceFn, FormatDistanceTokenFn } from &#x27;../../../types&#x27;
+
+type DeclensionScheme = {
+  one?: string
+  singularNominative: string
+  singularGenitive: string
+  pluralGenitive: string
+}
+
+function declension(scheme: DeclensionScheme, count: number) {
+  // scheme for count=1 exists
+  if (scheme.one !== undefined &amp;&amp; count === 1) {
+    return scheme.one
+  }
+
+  const rem10 = count % 10
+  const rem100 = count % 100
+
+  // 1, 21, 31, ...
+  if (rem10 === 1 &amp;&amp; rem100 !== 11) {
+    return scheme.singularNominative.replace(&#x27;{{count}}&#x27;, String(count))
+
+    // 2, 3, 4, 22, 23, 24, 32 ...
+  } else if (rem10 &gt;= 2 &amp;&amp; rem10 &lt;= 4 &amp;&amp; (rem100 &lt; 10 || rem100 &gt; 20)) {
+    return scheme.singularGenitive.replace(&#x27;{{count}}&#x27;, String(count))
+
+    // 5, 6, 7, 8, 9, 10, 11, ...
+  } else {
+    return scheme.pluralGenitive.replace(&#x27;{{count}}&#x27;, String(count))
+  }
+}
+
+function buildLocalizeTokenFn(scheme: {
+  regular: DeclensionScheme
+  future?: DeclensionScheme
+  past?: DeclensionScheme
+}): FormatDistanceTokenFn {
+  return (count, options): string =&gt; {
+    if (options &amp;&amp; options.addSuffix) {
+      if (options.comparison &amp;&amp; options.comparison &gt; 0) {
+        if (scheme.future) {
+          return declension(scheme.future, count)
+        } else {
+          return &#x27;за &#x27; + declension(scheme.regular, count)
+        }
+      } else {
+        if (scheme.past) {
+          return declension(scheme.past, count)
+        } else {
+          return declension(scheme.regular, count) + &#x27; тому&#x27;
+        }
+      }
+    } else {
+      return declension(scheme.regular, count)
+    }
+  }
+}
+
+const halfAtMinute: FormatDistanceTokenFn = (_, options) =&gt; {
+  if (options &amp;&amp; options.addSuffix) {
+    if (options.comparison &amp;&amp; options.comparison &gt; 0) {
+      return &#x27;за півхвилини&#x27;
+    } else {
+      return &#x27;півхвилини тому&#x27;
+    }
+  }
+
+  return &#x27;півхвилини&#x27;
+}
+
+const formatDistanceLocale = {
+  lessThanXSeconds: buildLocalizeTokenFn({
+    regular: {
+      one: &#x27;менше секунди&#x27;,
+      singularNominative: &#x27;менше {{count}} секунди&#x27;,
+      singularGenitive: &#x27;менше {{count}} секунд&#x27;,
+      pluralGenitive: &#x27;менше {{count}} секунд&#x27;,
+    },
+    future: {
+      one: &#x27;менше, ніж за секунду&#x27;,
+      singularNominative: &#x27;менше, ніж за {{count}} секунду&#x27;,
+      singularGenitive: &#x27;менше, ніж за {{count}} секунди&#x27;,
+      pluralGenitive: &#x27;менше, ніж за {{count}} секунд&#x27;,
+    },
+  }),
+
+  xSeconds: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: &#x27;{{count}} секунда&#x27;,
+      singularGenitive: &#x27;{{count}} секунди&#x27;,
+      pluralGenitive: &#x27;{{count}} секунд&#x27;,
+    },
+    past: {
+      singularNominative: &#x27;{{count}} секунду тому&#x27;,
+      singularGenitive: &#x27;{{count}} секунди тому&#x27;,
+      pluralGenitive: &#x27;{{count}} секунд тому&#x27;,
+    },
+    future: {
+      singularNominative: &#x27;за {{count}} секунду&#x27;,
+      singularGenitive: &#x27;за {{count}} секунди&#x27;,
+      pluralGenitive: &#x27;за {{count}} секунд&#x27;,
+    },
+  }),
+
+  halfAMinute: halfAtMinute,
+
+  lessThanXMinutes: buildLocalizeTokenFn({
+    regular: {
+      one: &#x27;менше хвилини&#x27;,
+      singularNominative: &#x27;менше {{count}} хвилини&#x27;,
+      singularGenitive: &#x27;менше {{count}} хвилин&#x27;,
+      pluralGenitive: &#x27;менше {{count}} хвилин&#x27;,
+    },
+    future: {
+      one: &#x27;менше, ніж за хвилину&#x27;,
+      singularNominative: &#x27;менше, ніж за {{count}} хвилину&#x27;,
+      singularGenitive: &#x27;менше, ніж за {{count}} хвилини&#x27;,
+      pluralGenitive: &#x27;менше, ніж за {{count}} хвилин&#x27;,
+    },
+  }),
+
+  xMinutes: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: &#x27;{{count}} хвилина&#x27;,
+      singularGenitive: &#x27;{{count}} хвилини&#x27;,
+      pluralGenitive: &#x27;{{count}} хвилин&#x27;,
+    },
+    past: {
+      singularNominative: &#x27;{{count}} хвилину тому&#x27;,
+      singularGenitive: &#x27;{{count}} хвилини тому&#x27;,
+      pluralGenitive: &#x27;{{count}} хвилин тому&#x27;,
+    },
+    future: {
+      singularNominative: &#x27;за {{count}} хвилину&#x27;,
+      singularGenitive: &#x27;за {{count}} хвилини&#x27;,
+      pluralGenitive: &#x27;за {{count}} хвилин&#x27;,
+    },
+  }),
+
+  aboutXHours: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: &#x27;близько {{count}} години&#x27;,
+      singularGenitive: &#x27;близько {{count}} годин&#x27;,
+      pluralGenitive: &#x27;близько {{count}} годин&#x27;,
+    },
+    future: {
+      singularNominative: &#x27;приблизно за {{count}} годину&#x27;,
+      singularGenitive: &#x27;приблизно за {{count}} години&#x27;,
+      pluralGenitive: &#x27;приблизно за {{count}} годин&#x27;,
+    },
+  }),
+
+  xHours: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: &#x27;{{count}} годину&#x27;,
+      singularGenitive: &#x27;{{count}} години&#x27;,
+      pluralGenitive: &#x27;{{count}} годин&#x27;,
+    },
+  }),
+
+  xDays: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: &#x27;{{count}} день&#x27;,
+      singularGenitive: &#x27;{{count}} днi&#x27;,
+      pluralGenitive: &#x27;{{count}} днів&#x27;,
+    },
+  }),
+
+  aboutXWeeks: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: &#x27;близько {{count}} тижня&#x27;,
+      singularGenitive: &#x27;близько {{count}} тижнів&#x27;,
+      pluralGenitive: &#x27;близько {{count}} тижнів&#x27;,
+    },
+    future: {
+      singularNominative: &#x27;приблизно за {{count}} тиждень&#x27;,
+      singularGenitive: &#x27;приблизно за {{count}} тижні&#x27;,
+      pluralGenitive: &#x27;приблизно за {{count}} тижнів&#x27;,
+    },
+  }),
+
+  xWeeks: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: &#x27;{{count}} тиждень&#x27;,
+      singularGenitive: &#x27;{{count}} тижні&#x27;,
+      pluralGenitive: &#x27;{{count}} тижнів&#x27;,
+    },
+  }),
+
+  aboutXMonths: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: &#x27;близько {{count}} місяця&#x27;,
+      singularGenitive: &#x27;близько {{count}} місяців&#x27;,
+      pluralGenitive: &#x27;близько {{count}} місяців&#x27;,
+    },
+    future: {
+      singularNominative: &#x27;приблизно за {{count}} місяць&#x27;,
+      singularGenitive: &#x27;приблизно за {{count}} місяці&#x27;,
+      pluralGenitive: &#x27;приблизно за {{count}} місяців&#x27;,
+    },
+  }),
+
+  xMonths: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: &#x27;{{count}} місяць&#x27;,
+      singularGenitive: &#x27;{{count}} місяці&#x27;,
+      pluralGenitive: &#x27;{{count}} місяців&#x27;,
+    },
+  }),
+
+  aboutXYears: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: &#x27;близько {{count}} року&#x27;,
+      singularGenitive: &#x27;близько {{count}} років&#x27;,
+      pluralGenitive: &#x27;близько {{count}} років&#x27;,
+    },
+    future: {
+      singularNominative: &#x27;приблизно за {{count}} рік&#x27;,
+      singularGenitive: &#x27;приблизно за {{count}} роки&#x27;,
+      pluralGenitive: &#x27;приблизно за {{count}} років&#x27;,
+    },
+  }),
+
+  xYears: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: &#x27;{{count}} рік&#x27;,
+      singularGenitive: &#x27;{{count}} роки&#x27;,
+      pluralGenitive: &#x27;{{count}} років&#x27;,
+    },
+  }),
+
+  overXYears: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: &#x27;більше {{count}} року&#x27;,
+      singularGenitive: &#x27;більше {{count}} років&#x27;,
+      pluralGenitive: &#x27;більше {{count}} років&#x27;,
+    },
+    future: {
+      singularNominative: &#x27;більше, ніж за {{count}} рік&#x27;,
+      singularGenitive: &#x27;більше, ніж за {{count}} роки&#x27;,
+      pluralGenitive: &#x27;більше, ніж за {{count}} років&#x27;,
+    },
+  }),
+
+  almostXYears: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: &#x27;майже {{count}} рік&#x27;,
+      singularGenitive: &#x27;майже {{count}} роки&#x27;,
+      pluralGenitive: &#x27;майже {{count}} років&#x27;,
+    },
+    future: {
+      singularNominative: &#x27;майже за {{count}} рік&#x27;,
+      singularGenitive: &#x27;майже за {{count}} роки&#x27;,
+      pluralGenitive: &#x27;майже за {{count}} років&#x27;,
+    },
+  }),
+}
+
+const formatDistance: FormatDistanceFn = (token, count, options) =&gt; {
+  options = options || {}
+
+  return formatDistanceLocale[token](count, options)
+}
+
+export default formatDistance
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:22 GMT</p>
+    </body>
+  </html>
+  

@@ -1,0 +1,158 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/he/_lib/match/index.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">118</td><td class="">118</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import type { Quarter } from &#x27;../../../../types&#x27;
+import type { Match } from &#x27;../../../types&#x27;
+import buildMatchFn from &#x27;../../../_lib/buildMatchFn/index&#x27;
+import buildMatchPatternFn from &#x27;../../../_lib/buildMatchPatternFn/index&#x27;
+
+const matchOrdinalNumberPattern = /^(\d+|(ראשון|שני|שלישי|רביעי|חמישי|שישי|שביעי|שמיני|תשיעי|עשירי|ראשונה|שנייה|שלישית|רביעית|חמישית|שישית|שביעית|שמינית|תשיעית|עשירית))/i
+const parseOrdinalNumberPattern = /^(\d+|רא|שנ|של|רב|ח|שי|שב|שמ|ת|ע)/i
+
+const matchEraPatterns = {
+  narrow: /^ל(ספירה|פנה״ס)/i,
+  abbreviated: /^ל(ספירה|פנה״ס)/i,
+  wide: /^ל(פני ה)?ספירה/i,
+}
+const parseEraPatterns = {
+  any: [/^לפ/i, /^לס/i] as const,
+}
+
+const matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^q[1234]/i,
+  wide: /^רבעון [1234]/i,
+}
+const parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i] as const,
+}
+
+const matchMonthPatterns = {
+  narrow: /^\d+/i,
+  abbreviated: /^(ינו|פבר|מרץ|אפר|מאי|יוני|יולי|אוג|ספט|אוק|נוב|דצמ)׳?/i,
+  wide: /^(ינואר|פברואר|מרץ|אפריל|מאי|יוני|יולי|אוגוסט|ספטמבר|אוקטובר|נובמבר|דצמבר)/i,
+}
+const parseMonthPatterns = {
+  narrow: [
+    /^1$/i,
+    /^2/i,
+    /^3/i,
+    /^4/i,
+    /^5/i,
+    /^6/i,
+    /^7/i,
+    /^8/i,
+    /^9/i,
+    /^10/i,
+    /^11/i,
+    /^12/i,
+  ] as const,
+  any: [
+    /^ינ/i,
+    /^פ/i,
+    /^מר/i,
+    /^אפ/i,
+    /^מא/i,
+    /^יונ/i,
+    /^יול/i,
+    /^אוג/i,
+    /^ס/i,
+    /^אוק/i,
+    /^נ/i,
+    /^ד/i,
+  ] as const,
+}
+
+const matchDayPatterns = {
+  narrow: /^[אבגדהוש]׳/i,
+  short: /^[אבגדהוש]׳/i,
+  abbreviated: /^(שבת|יום (א|ב|ג|ד|ה|ו)׳)/i,
+  wide: /^יום (ראשון|שני|שלישי|רביעי|חמישי|שישי|שבת)/i,
+}
+const parseDayPatterns = {
+  abbreviated: [/א׳$/i, /ב׳$/i, /ג׳$/i, /ד׳$/i, /ה׳$/i, /ו׳$/i, /^ש/i] as const,
+  wide: [/ן$/i, /ני$/i, /לישי$/i, /עי$/i, /מישי$/i, /שישי$/i, /ת$/i] as const,
+  any: [/^א/i, /^ב/i, /^ג/i, /^ד/i, /^ה/i, /^ו/i, /^ש/i] as const,
+}
+
+const matchDayPeriodPatterns = {
+  any: /^(אחר ה|ב)?(חצות|צהריים|בוקר|ערב|לילה|אחה״צ|לפנה״צ)/i,
+}
+const parseDayPeriodPatterns = {
+  any: {
+    am: /^לפ/i,
+    pm: /^אחה/i,
+    midnight: /^ח/i,
+    noon: /^צ/i,
+    morning: /בוקר/i,
+    afternoon: /בצ|אחר/i,
+    evening: /ערב/i,
+    night: /לילה/i,
+  },
+}
+
+const ordinalName = [&#x27;רא&#x27;, &#x27;שנ&#x27;, &#x27;של&#x27;, &#x27;רב&#x27;, &#x27;ח&#x27;, &#x27;שי&#x27;, &#x27;שב&#x27;, &#x27;שמ&#x27;, &#x27;ת&#x27;, &#x27;ע&#x27;]
+
+const match: Match = {
+  ordinalNumber: buildMatchPatternFn({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: (value) =&gt; {
+      const number = parseInt(value, 10)
+      return isNaN(number) ? ordinalName.indexOf(value) + 1 : number
+    },
+  }),
+
+  era: buildMatchFn({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: &#x27;wide&#x27;,
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: &#x27;any&#x27;,
+  }),
+
+  quarter: buildMatchFn({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: &#x27;wide&#x27;,
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: &#x27;any&#x27;,
+    valueCallback: (index) =&gt; (index + 1) as Quarter,
+  }),
+
+  month: buildMatchFn({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: &#x27;wide&#x27;,
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: &#x27;any&#x27;,
+  }),
+
+  day: buildMatchFn({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: &#x27;wide&#x27;,
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: &#x27;any&#x27;,
+  }),
+
+  dayPeriod: buildMatchFn({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: &#x27;any&#x27;,
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: &#x27;any&#x27;,
+  }),
+}
+
+export default match
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:20 GMT</p>
+    </body>
+  </html>
+  

@@ -1,0 +1,161 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>tzOffsetTransitions.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">test/dst/tzOffsetTransitions.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">186</td><td class="">186</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">type PartialInterval = {
+  start: Date | undefined
+  end: Date | undefined
+}
+
+/**
+ * Fetch the start and end of DST for the local time
+ * zone in a given year.
+ * We&#x27;ll assume that DST start &amp; end are the first
+ * forward and the last back transitions in the year,
+ * except transitions in Jan or Dec which are likely
+ * to be permanent TZ changes rather than DST changes.
+ * @param year
+ * @returns object with two Date-valued properties:
+ * - `start` is the first instant of DST in the Spring,
+ *   or undefined if there&#x27;s no DST in this year.
+ * - `end` is the first instant of standard time
+ *   in the Fall, or undefined if there&#x27;s no DST in
+ *   this year.
+ */
+export function getDstTransitions(year: number): PartialInterval {
+  const result: PartialInterval = {
+    start: undefined,
+    end: undefined,
+  }
+  const transitions = getTzOffsetTransitions(year)
+  for (let i = 0; i &lt; transitions.length; i++) {
+    const t = transitions[i]
+    const month = t.date.getMonth()
+    if (month &gt; 0 &amp;&amp; month &lt; 11) {
+      if (t.type === &#x27;forward&#x27;) result.start = t.date
+      if (t.type === &#x27;back&#x27; &amp;&amp; !result.end) result.end = t.date
+    }
+  }
+  return result
+}
+
+function isValidDate(date: unknown): date is Date {
+  return date instanceof Date &amp;&amp; !isNaN(date.getTime())
+}
+
+const MINUTE = 1000 * 60
+
+function firstTickInLocalDay(date: Date): Date {
+  const dateNumber = date.getDate()
+  let prev = date
+  let d = date
+  do {
+    prev = d
+    d = new Date(d.getTime() - MINUTE)
+  } while (dateNumber === d.getDate())
+  return prev
+}
+
+function fiveMinutesLater(date: Date): Date {
+  return new Date(date.getTime() + 5 * MINUTE)
+}
+
+function oneDayLater(date: Date): Date {
+  const d = new Date(date)
+  d.setDate(d.getDate() + 1)
+  return firstTickInLocalDay(d)
+}
+
+function previousTickTimezoneOffset(date: Date): number {
+  const d = new Date(date.getTime() - 1)
+  return d.getTimezoneOffset()
+}
+
+/**
+ * Fetch all timezone-offset transitions in a given
+ * year.  These are almost always DST transitions,
+ * but sometimes there are non-DST changes, e.g.
+ * when a country changes its time zone
+ * @param year
+ * @returns array of objects, each  with the following 
+ * propeerties:
+ * - `date` - a `Date` representing the first instant
+ *   when the new timezone offset is effective.
+ * - `type` - either `forward` for skippnig time like
+ *   the Spring transition to DST.
+ * - `before` - the timezone offset before the tranition.
+ *   For example, the UTC-0400 offset will return -240.
+ *   To match how times are displayed in ISO 8601 format,
+ *   the sign of this value is reversed from the return
+ *   value of `Date.getTimezoneOffset`.
+ * - `after` - the timezone offset after the tranition.
+ *   Examples and caveats are the same as `before`.
+
+ */
+export function getTzOffsetTransitions(year: number) {
+  // start at the end of the previous day
+  let date = firstTickInLocalDay(new Date(year, 0, 1))
+  if (!isValidDate(date)) {
+    throw new Error(&#x27;Invalid Date&#x27;)
+  }
+  let baseTzOffset = previousTickTimezoneOffset(date)
+  const transitions = []
+  do {
+    let tzOffset = date.getTimezoneOffset()
+    if (baseTzOffset !== tzOffset) {
+      if (tzOffset !== previousTickTimezoneOffset(date)) {
+        // Transition is the first tick of a local day.
+        transitions.push({
+          date: date,
+          type: tzOffset &lt; baseTzOffset ? &#x27;forward&#x27; : &#x27;back&#x27;,
+          before: -baseTzOffset,
+          after: -tzOffset,
+        })
+        baseTzOffset = tzOffset
+      } else {
+        // transition was not at the start of the day, so it must have happened
+        // yesterday. Back up one day and find the minute where it happened.
+        let transitionDate = new Date(date.getTime())
+        transitionDate.setDate(transitionDate.getDate() - 1)
+
+        // Iterate through each 5 mins of the day until we find a transition.
+        // TODO: this could be optimized to search hours then minutes or by or
+        // by using a binary search.
+        const dayNumber = transitionDate.getDate()
+        while (
+          isValidDate(transitionDate) &amp;&amp;
+          transitionDate.getDate() === dayNumber
+        ) {
+          tzOffset = transitionDate.getTimezoneOffset()
+          if (baseTzOffset !== tzOffset) {
+            transitions.push({
+              date: transitionDate,
+              type: tzOffset &lt; baseTzOffset ? &#x27;forward&#x27; : &#x27;back&#x27;,
+              before: -baseTzOffset,
+              after: -tzOffset,
+            })
+            baseTzOffset = tzOffset
+            break // assuming only 1 transition per day
+          }
+          transitionDate = fiveMinutesLater(transitionDate)
+        }
+      }
+    }
+    date = oneDayLater(date)
+  } while (date.getFullYear() === year)
+  return transitions
+}
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:18 GMT</p>
+    </body>
+  </html>
+  

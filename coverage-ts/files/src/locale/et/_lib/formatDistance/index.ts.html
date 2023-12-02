@@ -1,0 +1,228 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/et/_lib/formatDistance/index.ts</td><td class="">97.48%</td><td class="">80%</td><td class="">159</td><td class="">155</td><td class="">4</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import type { FormatDistanceFn, FormatDistanceLocale } from &#x27;../../../types&#x27;
+
+type Amount = {
+  one: string
+  other: string
+}
+
+type FormatDistanceTokenValue = {
+  standalone: Amount | string
+  withPreposition: Amount | string
+}
+
+const formatDistanceLocale: FormatDistanceLocale&lt;FormatDistanceTokenValue&gt; = {
+  lessThanXSeconds: {
+    standalone: {
+      one: &#x27;vähem kui üks sekund&#x27;,
+      other: &#x27;vähem kui {{count}} sekundit&#x27;,
+    },
+    withPreposition: {
+      one: &#x27;vähem kui ühe sekundi&#x27;,
+      other: &#x27;vähem kui {{count}} sekundi&#x27;,
+    },
+  },
+
+  xSeconds: {
+    standalone: {
+      one: &#x27;üks sekund&#x27;,
+      other: &#x27;{{count}} sekundit&#x27;,
+    },
+    withPreposition: {
+      one: &#x27;ühe sekundi&#x27;,
+      other: &#x27;{{count}} sekundi&#x27;,
+    },
+  },
+
+  halfAMinute: {
+    standalone: &#x27;pool minutit&#x27;,
+    withPreposition: &#x27;poole minuti&#x27;,
+  },
+
+  lessThanXMinutes: {
+    standalone: {
+      one: &#x27;vähem kui üks minut&#x27;,
+      other: &#x27;vähem kui {{count}} minutit&#x27;,
+    },
+    withPreposition: {
+      one: &#x27;vähem kui ühe minuti&#x27;,
+      other: &#x27;vähem kui {{count}} minuti&#x27;,
+    },
+  },
+
+  xMinutes: {
+    standalone: {
+      one: &#x27;üks minut&#x27;,
+      other: &#x27;{{count}} minutit&#x27;,
+    },
+    withPreposition: {
+      one: &#x27;ühe minuti&#x27;,
+      other: &#x27;{{count}} minuti&#x27;,
+    },
+  },
+
+  aboutXHours: {
+    standalone: {
+      one: &#x27;umbes üks tund&#x27;,
+      other: &#x27;umbes {{count}} tundi&#x27;,
+    },
+    withPreposition: {
+      one: &#x27;umbes ühe tunni&#x27;,
+      other: &#x27;umbes {{count}} tunni&#x27;,
+    },
+  },
+
+  xHours: {
+    standalone: {
+      one: &#x27;üks tund&#x27;,
+      other: &#x27;{{count}} tundi&#x27;,
+    },
+    withPreposition: {
+      one: &#x27;ühe tunni&#x27;,
+      other: &#x27;{{count}} tunni&#x27;,
+    },
+  },
+
+  xDays: {
+    standalone: {
+      one: &#x27;üks päev&#x27;,
+      other: &#x27;{{count}} päeva&#x27;,
+    },
+    withPreposition: {
+      one: &#x27;ühe päeva&#x27;,
+      other: &#x27;{{count}} päeva&#x27;,
+    },
+  },
+
+  aboutXWeeks: {
+    standalone: {
+      one: &#x27;umbes üks nädal&#x27;,
+      other: &#x27;umbes {{count}} nädalat&#x27;,
+    },
+    withPreposition: {
+      one: &#x27;umbes ühe nädala&#x27;,
+      other: &#x27;umbes {{count}} nädala&#x27;,
+    },
+  },
+
+  xWeeks: {
+    standalone: {
+      one: &#x27;üks nädal&#x27;,
+      other: &#x27;{{count}} nädalat&#x27;,
+    },
+    withPreposition: {
+      one: &#x27;ühe nädala&#x27;,
+      other: &#x27;{{count}} nädala&#x27;,
+    },
+  },
+
+  aboutXMonths: {
+    standalone: {
+      one: &#x27;umbes üks kuu&#x27;,
+      other: &#x27;umbes {{count}} kuud&#x27;,
+    },
+    withPreposition: {
+      one: &#x27;umbes ühe kuu&#x27;,
+      other: &#x27;umbes {{count}} kuu&#x27;,
+    },
+  },
+
+  xMonths: {
+    standalone: {
+      one: &#x27;üks kuu&#x27;,
+      other: &#x27;{{count}} kuud&#x27;,
+    },
+    withPreposition: {
+      one: &#x27;ühe kuu&#x27;,
+      other: &#x27;{{count}} kuu&#x27;,
+    },
+  },
+
+  aboutXYears: {
+    standalone: {
+      one: &#x27;umbes üks aasta&#x27;,
+      other: &#x27;umbes {{count}} aastat&#x27;,
+    },
+    withPreposition: {
+      one: &#x27;umbes ühe aasta&#x27;,
+      other: &#x27;umbes {{count}} aasta&#x27;,
+    },
+  },
+
+  xYears: {
+    standalone: {
+      one: &#x27;üks aasta&#x27;,
+      other: &#x27;{{count}} aastat&#x27;,
+    },
+    withPreposition: {
+      one: &#x27;ühe aasta&#x27;,
+      other: &#x27;{{count}} aasta&#x27;,
+    },
+  },
+
+  overXYears: {
+    standalone: {
+      one: &#x27;rohkem kui üks aasta&#x27;,
+      other: &#x27;rohkem kui {{count}} aastat&#x27;,
+    },
+    withPreposition: {
+      one: &#x27;rohkem kui ühe aasta&#x27;,
+      other: &#x27;rohkem kui {{count}} aasta&#x27;,
+    },
+  },
+
+  almostXYears: {
+    standalone: {
+      one: &#x27;peaaegu üks aasta&#x27;,
+      other: &#x27;peaaegu {{count}} aastat&#x27;,
+    },
+    withPreposition: {
+      one: &#x27;peaaegu ühe aasta&#x27;,
+      other: &#x27;peaaegu {{count}} aasta&#x27;,
+    },
+  },
+}
+
+const formatDistance: FormatDistanceFn = (token, count, options) =&gt; {
+  const usageGroup = options?.addSuffix
+    ? formatDistanceLocale[token].withPreposition
+    : formatDistanceLocale[token].standalone
+
+  let result
+  if (typeof usageGroup === &#x27;string&#x27;) {
+    result = usageGroup
+  } else if (count === 1) {
+    result = usageGroup.one
+  } else {
+    result = usageGroup.other.replace(&#x27;{{count}}&#x27;, String(count))
+  }
+
+  if (options?.addSuffix) {
+    if (options.comparison &amp;&amp; options.comparison &gt; 0) {
+      return result + &#x27; pärast&#x27;
+    } else {
+      return result + &#x27; eest&#x27;
+    }
+  }
+
+  return result
+}
+
+export default formatDistance
+</textarea><pre id="annotations" style="display:none">[{&quot;file&quot;:&quot;src/locale/et/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:189,&quot;character&quot;:6,&quot;text&quot;:&quot;result&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/et/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:191,&quot;character&quot;:4,&quot;text&quot;:&quot;result&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/et/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:193,&quot;character&quot;:4,&quot;text&quot;:&quot;result&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/et/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:195,&quot;character&quot;:4,&quot;text&quot;:&quot;result&quot;,&quot;kind&quot;:1}]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:19 GMT</p>
+    </body>
+  </html>
+  

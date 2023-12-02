@@ -1,0 +1,201 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/lv/_lib/formatDistance/index.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">144</td><td class="">144</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import type {
+  FormatDistanceFn,
+  FormatDistanceLocale,
+  FormatDistanceFnOptions,
+} from &#x27;../../../types&#x27;
+
+type Schema = {
+  one: string[]
+  other: string[]
+}
+
+type FormatDistanceTokenValue = (
+  // eslint-disable-next-line no-unused-vars
+  count: number,
+  // eslint-disable-next-line no-unused-vars
+  options?: FormatDistanceFnOptions
+) =&gt; string
+
+function buildLocalizeTokenFn(schema: Schema) {
+  return (count: number, options?: FormatDistanceFnOptions): string =&gt; {
+    if (count === 1) {
+      if (options?.addSuffix) {
+        return schema.one[0].replace(&#x27;{{time}}&#x27;, schema.one[2])
+      } else {
+        return schema.one[0].replace(&#x27;{{time}}&#x27;, schema.one[1])
+      }
+    } else {
+      const rem = count % 10 === 1 &amp;&amp; count % 100 !== 11
+      if (options?.addSuffix) {
+        return schema.other[0]
+          .replace(&#x27;{{time}}&#x27;, rem ? schema.other[3] : schema.other[4])
+          .replace(&#x27;{{count}}&#x27;, String(count))
+      } else {
+        return schema.other[0]
+          .replace(&#x27;{{time}}&#x27;, rem ? schema.other[1] : schema.other[2])
+          .replace(&#x27;{{count}}&#x27;, String(count))
+      }
+    }
+  }
+}
+
+const formatDistanceLocale: FormatDistanceLocale&lt;FormatDistanceTokenValue&gt; = {
+  lessThanXSeconds: buildLocalizeTokenFn({
+    one: [&#x27;mazāk par {{time}}&#x27;, &#x27;sekundi&#x27;, &#x27;sekundi&#x27;],
+    other: [
+      &#x27;mazāk nekā {{count}} {{time}}&#x27;,
+      &#x27;sekunde&#x27;,
+      &#x27;sekundes&#x27;,
+      &#x27;sekundes&#x27;,
+      &#x27;sekundēm&#x27;,
+    ],
+  }),
+
+  xSeconds: buildLocalizeTokenFn({
+    one: [&#x27;1 {{time}}&#x27;, &#x27;sekunde&#x27;, &#x27;sekundes&#x27;],
+    other: [
+      &#x27;{{count}} {{time}}&#x27;,
+      &#x27;sekunde&#x27;,
+      &#x27;sekundes&#x27;,
+      &#x27;sekundes&#x27;,
+      &#x27;sekundēm&#x27;,
+    ],
+  }),
+
+  halfAMinute: (_count, options) =&gt; {
+    if (options?.addSuffix) {
+      return &#x27;pusminūtes&#x27;
+    } else {
+      return &#x27;pusminūte&#x27;
+    }
+  },
+
+  lessThanXMinutes: buildLocalizeTokenFn({
+    one: [&#x27;mazāk par {{time}}&#x27;, &#x27;minūti&#x27;, &#x27;minūti&#x27;],
+    other: [
+      &#x27;mazāk nekā {{count}} {{time}}&#x27;,
+      &#x27;minūte&#x27;,
+      &#x27;minūtes&#x27;,
+      &#x27;minūtes&#x27;,
+      &#x27;minūtēm&#x27;,
+    ],
+  }),
+
+  xMinutes: buildLocalizeTokenFn({
+    one: [&#x27;1 {{time}}&#x27;, &#x27;minūte&#x27;, &#x27;minūtes&#x27;],
+    other: [&#x27;{{count}} {{time}}&#x27;, &#x27;minūte&#x27;, &#x27;minūtes&#x27;, &#x27;minūtes&#x27;, &#x27;minūtēm&#x27;],
+  }),
+
+  aboutXHours: buildLocalizeTokenFn({
+    one: [&#x27;apmēram 1 {{time}}&#x27;, &#x27;stunda&#x27;, &#x27;stundas&#x27;],
+    other: [
+      &#x27;apmēram {{count}} {{time}}&#x27;,
+      &#x27;stunda&#x27;,
+      &#x27;stundas&#x27;,
+      &#x27;stundas&#x27;,
+      &#x27;stundām&#x27;,
+    ],
+  }),
+
+  xHours: buildLocalizeTokenFn({
+    one: [&#x27;1 {{time}}&#x27;, &#x27;stunda&#x27;, &#x27;stundas&#x27;],
+    other: [&#x27;{{count}} {{time}}&#x27;, &#x27;stunda&#x27;, &#x27;stundas&#x27;, &#x27;stundas&#x27;, &#x27;stundām&#x27;],
+  }),
+
+  xDays: buildLocalizeTokenFn({
+    one: [&#x27;1 {{time}}&#x27;, &#x27;diena&#x27;, &#x27;dienas&#x27;],
+    other: [&#x27;{{count}} {{time}}&#x27;, &#x27;diena&#x27;, &#x27;dienas&#x27;, &#x27;dienas&#x27;, &#x27;dienām&#x27;],
+  }),
+
+  aboutXWeeks: buildLocalizeTokenFn({
+    one: [&#x27;apmēram 1 {{time}}&#x27;, &#x27;nedēļa&#x27;, &#x27;nedēļas&#x27;],
+    other: [
+      &#x27;apmēram {{count}} {{time}}&#x27;,
+      &#x27;nedēļa&#x27;,
+      &#x27;nedēļu&#x27;,
+      &#x27;nedēļas&#x27;,
+      &#x27;nedēļām&#x27;,
+    ],
+  }),
+
+  xWeeks: buildLocalizeTokenFn({
+    one: [&#x27;1 {{time}}&#x27;, &#x27;nedēļa&#x27;, &#x27;nedēļas&#x27;],
+    other: [
+      &#x27;{{count}} {{time}}&#x27;, // TODO
+      &#x27;nedēļa&#x27;,
+      &#x27;nedēļu&#x27;,
+      &#x27;nedēļas&#x27;,
+      &#x27;nedēļām&#x27;,
+    ],
+  }),
+
+  aboutXMonths: buildLocalizeTokenFn({
+    one: [&#x27;apmēram 1 {{time}}&#x27;, &#x27;mēnesis&#x27;, &#x27;mēneša&#x27;],
+    other: [
+      &#x27;apmēram {{count}} {{time}}&#x27;,
+      &#x27;mēnesis&#x27;,
+      &#x27;mēneši&#x27;,
+      &#x27;mēneša&#x27;,
+      &#x27;mēnešiem&#x27;,
+    ],
+  }),
+
+  xMonths: buildLocalizeTokenFn({
+    one: [&#x27;1 {{time}}&#x27;, &#x27;mēnesis&#x27;, &#x27;mēneša&#x27;],
+    other: [&#x27;{{count}} {{time}}&#x27;, &#x27;mēnesis&#x27;, &#x27;mēneši&#x27;, &#x27;mēneša&#x27;, &#x27;mēnešiem&#x27;],
+  }),
+
+  aboutXYears: buildLocalizeTokenFn({
+    one: [&#x27;apmēram 1 {{time}}&#x27;, &#x27;gads&#x27;, &#x27;gada&#x27;],
+    other: [&#x27;apmēram {{count}} {{time}}&#x27;, &#x27;gads&#x27;, &#x27;gadi&#x27;, &#x27;gada&#x27;, &#x27;gadiem&#x27;],
+  }),
+
+  xYears: buildLocalizeTokenFn({
+    one: [&#x27;1 {{time}}&#x27;, &#x27;gads&#x27;, &#x27;gada&#x27;],
+    other: [&#x27;{{count}} {{time}}&#x27;, &#x27;gads&#x27;, &#x27;gadi&#x27;, &#x27;gada&#x27;, &#x27;gadiem&#x27;],
+  }),
+
+  overXYears: buildLocalizeTokenFn({
+    one: [&#x27;ilgāk par 1 {{time}}&#x27;, &#x27;gadu&#x27;, &#x27;gadu&#x27;],
+    other: [&#x27;vairāk nekā {{count}} {{time}}&#x27;, &#x27;gads&#x27;, &#x27;gadi&#x27;, &#x27;gada&#x27;, &#x27;gadiem&#x27;],
+  }),
+
+  almostXYears: buildLocalizeTokenFn({
+    one: [&#x27;gandrīz 1 {{time}}&#x27;, &#x27;gads&#x27;, &#x27;gada&#x27;],
+    other: [&#x27;vairāk nekā {{count}} {{time}}&#x27;, &#x27;gads&#x27;, &#x27;gadi&#x27;, &#x27;gada&#x27;, &#x27;gadiem&#x27;],
+  }),
+}
+
+const formatDistance: FormatDistanceFn = (token, count, options) =&gt; {
+  const result = formatDistanceLocale[token](count, options)
+
+  if (options?.addSuffix) {
+    if (options.comparison &amp;&amp; options.comparison &gt; 0) {
+      return &#x27;pēc &#x27; + result
+    } else {
+      return &#x27;pirms &#x27; + result
+    }
+  }
+
+  return result
+}
+
+export default formatDistance
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:20 GMT</p>
+    </body>
+  </html>
+  

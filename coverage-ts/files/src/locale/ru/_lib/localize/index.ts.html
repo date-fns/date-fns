@@ -1,0 +1,229 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/ru/_lib/localize/index.ts</td><td class="">97.40%</td><td class="">80%</td><td class="">154</td><td class="">150</td><td class="">4</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import type { Localize, LocalizeFn } from &#x27;../../../types&#x27;
+import buildLocalizeFn from &#x27;../../../_lib/buildLocalizeFn/index&#x27;
+
+const eraValues = {
+  narrow: [&#x27;до н.э.&#x27;, &#x27;н.э.&#x27;] as const,
+  abbreviated: [&#x27;до н. э.&#x27;, &#x27;н. э.&#x27;] as const,
+  wide: [&#x27;до нашей эры&#x27;, &#x27;нашей эры&#x27;] as const,
+}
+
+const quarterValues = {
+  narrow: [&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;, &#x27;4&#x27;] as const,
+  abbreviated: [&#x27;1-й кв.&#x27;, &#x27;2-й кв.&#x27;, &#x27;3-й кв.&#x27;, &#x27;4-й кв.&#x27;] as const,
+  wide: [&#x27;1-й квартал&#x27;, &#x27;2-й квартал&#x27;, &#x27;3-й квартал&#x27;, &#x27;4-й квартал&#x27;] as const,
+}
+
+const monthValues = {
+  narrow: [&#x27;Я&#x27;, &#x27;Ф&#x27;, &#x27;М&#x27;, &#x27;А&#x27;, &#x27;М&#x27;, &#x27;И&#x27;, &#x27;И&#x27;, &#x27;А&#x27;, &#x27;С&#x27;, &#x27;О&#x27;, &#x27;Н&#x27;, &#x27;Д&#x27;] as const,
+  abbreviated: [
+    &#x27;янв.&#x27;,
+    &#x27;фев.&#x27;,
+    &#x27;март&#x27;,
+    &#x27;апр.&#x27;,
+    &#x27;май&#x27;,
+    &#x27;июнь&#x27;,
+    &#x27;июль&#x27;,
+    &#x27;авг.&#x27;,
+    &#x27;сент.&#x27;,
+    &#x27;окт.&#x27;,
+    &#x27;нояб.&#x27;,
+    &#x27;дек.&#x27;,
+  ] as const,
+  wide: [
+    &#x27;январь&#x27;,
+    &#x27;февраль&#x27;,
+    &#x27;март&#x27;,
+    &#x27;апрель&#x27;,
+    &#x27;май&#x27;,
+    &#x27;июнь&#x27;,
+    &#x27;июль&#x27;,
+    &#x27;август&#x27;,
+    &#x27;сентябрь&#x27;,
+    &#x27;октябрь&#x27;,
+    &#x27;ноябрь&#x27;,
+    &#x27;декабрь&#x27;,
+  ] as const,
+}
+
+const formattingMonthValues = {
+  narrow: [&#x27;Я&#x27;, &#x27;Ф&#x27;, &#x27;М&#x27;, &#x27;А&#x27;, &#x27;М&#x27;, &#x27;И&#x27;, &#x27;И&#x27;, &#x27;А&#x27;, &#x27;С&#x27;, &#x27;О&#x27;, &#x27;Н&#x27;, &#x27;Д&#x27;] as const,
+  abbreviated: [
+    &#x27;янв.&#x27;,
+    &#x27;фев.&#x27;,
+    &#x27;мар.&#x27;,
+    &#x27;апр.&#x27;,
+    &#x27;мая&#x27;,
+    &#x27;июн.&#x27;,
+    &#x27;июл.&#x27;,
+    &#x27;авг.&#x27;,
+    &#x27;сент.&#x27;,
+    &#x27;окт.&#x27;,
+    &#x27;нояб.&#x27;,
+    &#x27;дек.&#x27;,
+  ] as const,
+  wide: [
+    &#x27;января&#x27;,
+    &#x27;февраля&#x27;,
+    &#x27;марта&#x27;,
+    &#x27;апреля&#x27;,
+    &#x27;мая&#x27;,
+    &#x27;июня&#x27;,
+    &#x27;июля&#x27;,
+    &#x27;августа&#x27;,
+    &#x27;сентября&#x27;,
+    &#x27;октября&#x27;,
+    &#x27;ноября&#x27;,
+    &#x27;декабря&#x27;,
+  ] as const,
+}
+
+const dayValues = {
+  narrow: [&#x27;В&#x27;, &#x27;П&#x27;, &#x27;В&#x27;, &#x27;С&#x27;, &#x27;Ч&#x27;, &#x27;П&#x27;, &#x27;С&#x27;] as const,
+  short: [&#x27;вс&#x27;, &#x27;пн&#x27;, &#x27;вт&#x27;, &#x27;ср&#x27;, &#x27;чт&#x27;, &#x27;пт&#x27;, &#x27;сб&#x27;] as const,
+  abbreviated: [&#x27;вск&#x27;, &#x27;пнд&#x27;, &#x27;втр&#x27;, &#x27;срд&#x27;, &#x27;чтв&#x27;, &#x27;птн&#x27;, &#x27;суб&#x27;] as const,
+  wide: [
+    &#x27;воскресенье&#x27;,
+    &#x27;понедельник&#x27;,
+    &#x27;вторник&#x27;,
+    &#x27;среда&#x27;,
+    &#x27;четверг&#x27;,
+    &#x27;пятница&#x27;,
+    &#x27;суббота&#x27;,
+  ] as const,
+}
+
+const dayPeriodValues = {
+  narrow: {
+    am: &#x27;ДП&#x27;,
+    pm: &#x27;ПП&#x27;,
+    midnight: &#x27;полн.&#x27;,
+    noon: &#x27;полд.&#x27;,
+    morning: &#x27;утро&#x27;,
+    afternoon: &#x27;день&#x27;,
+    evening: &#x27;веч.&#x27;,
+    night: &#x27;ночь&#x27;,
+  },
+  abbreviated: {
+    am: &#x27;ДП&#x27;,
+    pm: &#x27;ПП&#x27;,
+    midnight: &#x27;полн.&#x27;,
+    noon: &#x27;полд.&#x27;,
+    morning: &#x27;утро&#x27;,
+    afternoon: &#x27;день&#x27;,
+    evening: &#x27;веч.&#x27;,
+    night: &#x27;ночь&#x27;,
+  },
+  wide: {
+    am: &#x27;ДП&#x27;,
+    pm: &#x27;ПП&#x27;,
+    midnight: &#x27;полночь&#x27;,
+    noon: &#x27;полдень&#x27;,
+    morning: &#x27;утро&#x27;,
+    afternoon: &#x27;день&#x27;,
+    evening: &#x27;вечер&#x27;,
+    night: &#x27;ночь&#x27;,
+  },
+}
+
+const formattingDayPeriodValues = {
+  narrow: {
+    am: &#x27;ДП&#x27;,
+    pm: &#x27;ПП&#x27;,
+    midnight: &#x27;полн.&#x27;,
+    noon: &#x27;полд.&#x27;,
+    morning: &#x27;утра&#x27;,
+    afternoon: &#x27;дня&#x27;,
+    evening: &#x27;веч.&#x27;,
+    night: &#x27;ночи&#x27;,
+  },
+  abbreviated: {
+    am: &#x27;ДП&#x27;,
+    pm: &#x27;ПП&#x27;,
+    midnight: &#x27;полн.&#x27;,
+    noon: &#x27;полд.&#x27;,
+    morning: &#x27;утра&#x27;,
+    afternoon: &#x27;дня&#x27;,
+    evening: &#x27;веч.&#x27;,
+    night: &#x27;ночи&#x27;,
+  },
+  wide: {
+    am: &#x27;ДП&#x27;,
+    pm: &#x27;ПП&#x27;,
+    midnight: &#x27;полночь&#x27;,
+    noon: &#x27;полдень&#x27;,
+    morning: &#x27;утра&#x27;,
+    afternoon: &#x27;дня&#x27;,
+    evening: &#x27;вечера&#x27;,
+    night: &#x27;ночи&#x27;,
+  },
+}
+
+const ordinalNumber: LocalizeFn&lt;number&gt; = (dirtyNumber, options) =&gt; {
+  const number = Number(dirtyNumber)
+  const unit = options?.unit
+
+  let suffix
+  if (unit === &#x27;date&#x27;) {
+    suffix = &#x27;-е&#x27;
+  } else if (unit === &#x27;week&#x27; || unit === &#x27;minute&#x27; || unit === &#x27;second&#x27;) {
+    suffix = &#x27;-я&#x27;
+  } else {
+    suffix = &#x27;-й&#x27;
+  }
+
+  return number + suffix
+}
+
+const localize: Localize = {
+  ordinalNumber,
+
+  era: buildLocalizeFn({
+    values: eraValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  quarter: buildLocalizeFn({
+    values: quarterValues,
+    defaultWidth: &#x27;wide&#x27;,
+    argumentCallback: (quarter) =&gt; quarter - 1,
+  }),
+
+  month: buildLocalizeFn({
+    values: monthValues,
+    defaultWidth: &#x27;wide&#x27;,
+    formattingValues: formattingMonthValues,
+    defaultFormattingWidth: &#x27;wide&#x27;,
+  }),
+
+  day: buildLocalizeFn({
+    values: dayValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues,
+    defaultWidth: &#x27;any&#x27;,
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: &#x27;wide&#x27;,
+  }),
+}
+
+export default localize
+</textarea><pre id="annotations" style="display:none">[{&quot;file&quot;:&quot;src/locale/ru/_lib/localize/index.ts&quot;,&quot;line&quot;:164,&quot;character&quot;:6,&quot;text&quot;:&quot;suffix&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/ru/_lib/localize/index.ts&quot;,&quot;line&quot;:166,&quot;character&quot;:4,&quot;text&quot;:&quot;suffix&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/ru/_lib/localize/index.ts&quot;,&quot;line&quot;:168,&quot;character&quot;:4,&quot;text&quot;:&quot;suffix&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/ru/_lib/localize/index.ts&quot;,&quot;line&quot;:170,&quot;character&quot;:4,&quot;text&quot;:&quot;suffix&quot;,&quot;kind&quot;:1}]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:21 GMT</p>
+    </body>
+  </html>
+  

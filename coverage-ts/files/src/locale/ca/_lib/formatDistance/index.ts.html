@@ -1,0 +1,147 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/ca/_lib/formatDistance/index.ts</td><td class="">94.79%</td><td class="">80%</td><td class="">96</td><td class="">91</td><td class="">5</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import type { FormatDistanceFn, FormatDistanceLocale } from &#x27;../../../types&#x27;
+
+/**
+ * Davant de les xifres que es diuen amb vocal inicial, 1 i 11, s&#x27;apostrofen els articles el i la i la preposició de igual que si estiguessin escrits amb lletres.
+ *    l&#x27;1 de juliol (&#x27;l&#x27;u&#x27;)
+ *    l&#x27;11 de novembre (&#x27;l&#x27;onze&#x27;)
+ *    l&#x27;11a clàusula del contracte (&#x27;l&#x27;onzena&#x27;)
+ *    la contractació d&#x27;11 jugadors (&#x27;d&#x27;onze&#x27;)
+ *    l&#x27;aval d&#x27;11.000 socis (&#x27;d&#x27;onze mil&#x27;)
+ *
+ * Reference: https://aplicacions.llengua.gencat.cat/llc/AppJava/index.html?input_cercar=apostrofaci%25F3+davant+xifres&amp;action=Principal&amp;method=detall_completa&amp;numPagina=1&amp;idHit=11236&amp;database=FITXES_PUB&amp;tipusFont=Fitxes%20de%20l%27Optimot&amp;idFont=11236&amp;titol=apostrofaci%F3%20davant%20de%20xifres%20%2F%20apostrofaci%F3%20davant%20de%201%20i%2011&amp;numeroResultat=1&amp;clickLink=detall&amp;tipusCerca=cerca.normes
+ */
+
+type FormatDistanceTokenValue =
+  | string
+  | {
+      one: string
+      eleven?: string
+      other: string
+    }
+
+const formatDistanceLocale: FormatDistanceLocale&lt;FormatDistanceTokenValue&gt; = {
+  lessThanXSeconds: {
+    one: &quot;menys d&#x27;un segon&quot;,
+    eleven: &quot;menys d&#x27;onze segons&quot;,
+    other: &#x27;menys de {{count}} segons&#x27;,
+  },
+
+  xSeconds: {
+    one: &#x27;1 segon&#x27;,
+    other: &#x27;{{count}} segons&#x27;,
+  },
+
+  halfAMinute: &#x27;mig minut&#x27;,
+
+  lessThanXMinutes: {
+    one: &quot;menys d&#x27;un minut&quot;,
+    eleven: &quot;menys d&#x27;onze minuts&quot;,
+    other: &#x27;menys de {{count}} minuts&#x27;,
+  },
+
+  xMinutes: {
+    one: &#x27;1 minut&#x27;,
+    other: &#x27;{{count}} minuts&#x27;,
+  },
+
+  aboutXHours: {
+    one: &#x27;aproximadament una hora&#x27;,
+    other: &#x27;aproximadament {{count}} hores&#x27;,
+  },
+
+  xHours: {
+    one: &#x27;1 hora&#x27;,
+    other: &#x27;{{count}} hores&#x27;,
+  },
+
+  xDays: {
+    one: &#x27;1 dia&#x27;,
+    other: &#x27;{{count}} dies&#x27;,
+  },
+
+  aboutXWeeks: {
+    one: &#x27;aproximadament una setmana&#x27;,
+    other: &#x27;aproximadament {{count}} setmanes&#x27;,
+  },
+
+  xWeeks: {
+    one: &#x27;1 setmana&#x27;,
+    other: &#x27;{{count}} setmanes&#x27;,
+  },
+
+  aboutXMonths: {
+    one: &#x27;aproximadament un mes&#x27;,
+    other: &#x27;aproximadament {{count}} mesos&#x27;,
+  },
+
+  xMonths: {
+    one: &#x27;1 mes&#x27;,
+    other: &#x27;{{count}} mesos&#x27;,
+  },
+
+  aboutXYears: {
+    one: &#x27;aproximadament un any&#x27;,
+    other: &#x27;aproximadament {{count}} anys&#x27;,
+  },
+
+  xYears: {
+    one: &#x27;1 any&#x27;,
+    other: &#x27;{{count}} anys&#x27;,
+  },
+
+  overXYears: {
+    one: &quot;més d&#x27;un any&quot;,
+    eleven: &quot;més d&#x27;onze anys&quot;,
+    other: &#x27;més de {{count}} anys&#x27;,
+  },
+
+  almostXYears: {
+    one: &#x27;gairebé un any&#x27;,
+    other: &#x27;gairebé {{count}} anys&#x27;,
+  },
+}
+
+const formatDistance: FormatDistanceFn = (token, count, options) =&gt; {
+  let result
+
+  const tokenValue = formatDistanceLocale[token]
+  if (typeof tokenValue === &#x27;string&#x27;) {
+    result = tokenValue
+  } else if (count === 1) {
+    result = tokenValue.one
+  } else if (count === 11 &amp;&amp; tokenValue.eleven) {
+    result = tokenValue.eleven
+  } else {
+    result = tokenValue.other.replace(&#x27;{{count}}&#x27;, String(count))
+  }
+
+  if (options?.addSuffix) {
+    if (options.comparison &amp;&amp; options.comparison &gt; 0) {
+      return &#x27;en &#x27; + result
+    } else {
+      return &#x27;fa &#x27; + result
+    }
+  }
+
+  return result
+}
+
+export default formatDistance
+</textarea><pre id="annotations" style="display:none">[{&quot;file&quot;:&quot;src/locale/ca/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:104,&quot;character&quot;:6,&quot;text&quot;:&quot;result&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/ca/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:108,&quot;character&quot;:4,&quot;text&quot;:&quot;result&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/ca/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:110,&quot;character&quot;:4,&quot;text&quot;:&quot;result&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/ca/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:112,&quot;character&quot;:4,&quot;text&quot;:&quot;result&quot;,&quot;kind&quot;:1},{&quot;file&quot;:&quot;src/locale/ca/_lib/formatDistance/index.ts&quot;,&quot;line&quot;:114,&quot;character&quot;:4,&quot;text&quot;:&quot;result&quot;,&quot;kind&quot;:1}]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:19 GMT</p>
+    </body>
+  </html>
+  

@@ -1,0 +1,189 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>index.ts</title>
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/javascript/javascript.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" type="text/css" rel="stylesheet">
+<script src="../../../../../../assets/source-file.js" type="text/javascript" charset="utf-8"></script>
+<link href="../../../../../../assets/source-file.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+    <div style="margin-top:3em" class="ui container"><h1 class="ui header"><a href="../../../../../../index.html">TypeScript coverage report</a></h1><table style="margin-top:2em" class="ui celled table"><thead class=""><tr class=""><th class="">Filename</th><th class="">Percent</th><th class="">Threshold</th><th class="">Total</th><th class="">Covered</th><th class="">Uncovered</th></tr></thead><tbody class=""><tr class="positive"><td class="">src/locale/eu/_lib/localize/index.ts</td><td class="">100.00%</td><td class="">80%</td><td class="">132</td><td class="">132</td><td class="">0</td></tr></tbody></table><textarea id="editor" readonly="" style="margin-top:3em">import type { Localize, LocalizeFn } from &#x27;../../../types&#x27;
+import buildLocalizeFn from &#x27;../../../_lib/buildLocalizeFn/index&#x27;
+
+const eraValues = {
+  narrow: [&#x27;k.a.&#x27;, &#x27;k.o.&#x27;] as const,
+  abbreviated: [&#x27;k.a.&#x27;, &#x27;k.o.&#x27;] as const,
+  wide: [&#x27;kristo aurretik&#x27;, &#x27;kristo ondoren&#x27;] as const,
+}
+
+const quarterValues = {
+  narrow: [&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;, &#x27;4&#x27;] as const,
+  abbreviated: [&#x27;1H&#x27;, &#x27;2H&#x27;, &#x27;3H&#x27;, &#x27;4H&#x27;] as const,
+  wide: [
+    &#x27;1. hiruhilekoa&#x27;,
+    &#x27;2. hiruhilekoa&#x27;,
+    &#x27;3. hiruhilekoa&#x27;,
+    &#x27;4. hiruhilekoa&#x27;,
+  ] as const,
+}
+
+const monthValues = {
+  narrow: [&#x27;u&#x27;, &#x27;o&#x27;, &#x27;m&#x27;, &#x27;a&#x27;, &#x27;m&#x27;, &#x27;e&#x27;, &#x27;u&#x27;, &#x27;a&#x27;, &#x27;i&#x27;, &#x27;u&#x27;, &#x27;a&#x27;, &#x27;a&#x27;] as const,
+  abbreviated: [
+    &#x27;urt&#x27;,
+    &#x27;ots&#x27;,
+    &#x27;mar&#x27;,
+    &#x27;api&#x27;,
+    &#x27;mai&#x27;,
+    &#x27;eka&#x27;,
+    &#x27;uzt&#x27;,
+    &#x27;abu&#x27;,
+    &#x27;ira&#x27;,
+    &#x27;urr&#x27;,
+    &#x27;aza&#x27;,
+    &#x27;abe&#x27;,
+  ] as const,
+  wide: [
+    &#x27;urtarrila&#x27;,
+    &#x27;otsaila&#x27;,
+    &#x27;martxoa&#x27;,
+    &#x27;apirila&#x27;,
+    &#x27;maiatza&#x27;,
+    &#x27;ekaina&#x27;,
+    &#x27;uztaila&#x27;,
+    &#x27;abuztua&#x27;,
+    &#x27;iraila&#x27;,
+    &#x27;urria&#x27;,
+    &#x27;azaroa&#x27;,
+    &#x27;abendua&#x27;,
+  ] as const,
+}
+
+const dayValues = {
+  narrow: [&#x27;i&#x27;, &#x27;a&#x27;, &#x27;a&#x27;, &#x27;a&#x27;, &#x27;o&#x27;, &#x27;o&#x27;, &#x27;l&#x27;] as const,
+  short: [&#x27;ig&#x27;, &#x27;al&#x27;, &#x27;as&#x27;, &#x27;az&#x27;, &#x27;og&#x27;, &#x27;or&#x27;, &#x27;lr&#x27;] as const,
+  abbreviated: [&#x27;iga&#x27;, &#x27;ast&#x27;, &#x27;ast&#x27;, &#x27;ast&#x27;, &#x27;ost&#x27;, &#x27;ost&#x27;, &#x27;lar&#x27;] as const,
+  wide: [
+    &#x27;igandea&#x27;,
+    &#x27;astelehena&#x27;,
+    &#x27;asteartea&#x27;,
+    &#x27;asteazkena&#x27;,
+    &#x27;osteguna&#x27;,
+    &#x27;ostirala&#x27;,
+    &#x27;larunbata&#x27;,
+  ] as const,
+}
+
+const dayPeriodValues = {
+  narrow: {
+    am: &#x27;a&#x27;,
+    pm: &#x27;p&#x27;,
+    midnight: &#x27;ge&#x27;,
+    noon: &#x27;eg&#x27;,
+    morning: &#x27;goiza&#x27;,
+    afternoon: &#x27;arratsaldea&#x27;,
+    evening: &#x27;arratsaldea&#x27;,
+    night: &#x27;gaua&#x27;,
+  },
+  abbreviated: {
+    am: &#x27;AM&#x27;,
+    pm: &#x27;PM&#x27;,
+    midnight: &#x27;gauerdia&#x27;,
+    noon: &#x27;eguerdia&#x27;,
+    morning: &#x27;goiza&#x27;,
+    afternoon: &#x27;arratsaldea&#x27;,
+    evening: &#x27;arratsaldea&#x27;,
+    night: &#x27;gaua&#x27;,
+  },
+  wide: {
+    am: &#x27;a.m.&#x27;,
+    pm: &#x27;p.m.&#x27;,
+    midnight: &#x27;gauerdia&#x27;,
+    noon: &#x27;eguerdia&#x27;,
+    morning: &#x27;goiza&#x27;,
+    afternoon: &#x27;arratsaldea&#x27;,
+    evening: &#x27;arratsaldea&#x27;,
+    night: &#x27;gaua&#x27;,
+  },
+}
+
+const formattingDayPeriodValues = {
+  narrow: {
+    am: &#x27;a&#x27;,
+    pm: &#x27;p&#x27;,
+    midnight: &#x27;ge&#x27;,
+    noon: &#x27;eg&#x27;,
+    morning: &#x27;goizean&#x27;,
+    afternoon: &#x27;arratsaldean&#x27;,
+    evening: &#x27;arratsaldean&#x27;,
+    night: &#x27;gauean&#x27;,
+  },
+  abbreviated: {
+    am: &#x27;AM&#x27;,
+    pm: &#x27;PM&#x27;,
+    midnight: &#x27;gauerdia&#x27;,
+    noon: &#x27;eguerdia&#x27;,
+    morning: &#x27;goizean&#x27;,
+    afternoon: &#x27;arratsaldean&#x27;,
+    evening: &#x27;arratsaldean&#x27;,
+    night: &#x27;gauean&#x27;,
+  },
+  wide: {
+    am: &#x27;a.m.&#x27;,
+    pm: &#x27;p.m.&#x27;,
+    midnight: &#x27;gauerdia&#x27;,
+    noon: &#x27;eguerdia&#x27;,
+    morning: &#x27;goizean&#x27;,
+    afternoon: &#x27;arratsaldean&#x27;,
+    evening: &#x27;arratsaldean&#x27;,
+    night: &#x27;gauean&#x27;,
+  },
+}
+
+const ordinalNumber: LocalizeFn&lt;number&gt; = (dirtyNumber, _options) =&gt; {
+  const number = Number(dirtyNumber)
+  return number + &#x27;.&#x27;
+}
+
+const localize: Localize = {
+  ordinalNumber,
+
+  era: buildLocalizeFn({
+    values: eraValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  quarter: buildLocalizeFn({
+    values: quarterValues,
+    defaultWidth: &#x27;wide&#x27;,
+    argumentCallback: (quarter) =&gt; quarter - 1,
+  }),
+
+  month: buildLocalizeFn({
+    values: monthValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  day: buildLocalizeFn({
+    values: dayValues,
+    defaultWidth: &#x27;wide&#x27;,
+  }),
+
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues,
+    defaultWidth: &#x27;wide&#x27;,
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: &#x27;wide&#x27;,
+  }),
+}
+
+export default localize
+</textarea><pre id="annotations" style="display:none">[]</pre></div>
+    <p class="footer-text">TypeScript Coverage Report generated by <a href="https://github.com/plantain-00/type-coverage">type-coverage</a> and <a href="https://github.com/alexcanessa/typescript-coverage-report">typescript-coverage-report</a> at Wed, 08 Nov 2023 22:58:19 GMT</p>
+    </body>
+  </html>
+  
