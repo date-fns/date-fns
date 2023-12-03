@@ -54,6 +54,14 @@ module.exports.config = {
     },
     {
       type: "markdown",
+      slug: "Security",
+      category: "General",
+      title: "Security policy",
+      summary: "Security policy",
+      path: "../SECURITY.md",
+    },
+    {
+      type: "markdown",
       slug: "I18n",
       category: "General",
       title: "I18n",
