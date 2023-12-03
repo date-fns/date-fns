@@ -8,6 +8,49 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+Kudos to @kossnocorp, @maximtop, @leshakoss and @tan75 for working on the release.
+
+## v3.0.0 - 2023-12-03
+
+## Changed
+
+- **BREAKING**: date-fns is now a dual-package with the support of both ESM and CommonJS. The files exports are now explicitly in the `package.json`. The ESM files now have `.mjs` extension.
+- **BREAKING**: The package now has a flat structure, meaning functions are now named `node_modules/date-fns/add.mjs`, locales are `node_modules/date-fns/locale/enUS.mjs`, etc.
+- **BREAKING**: Now all file content’s exported via named exports instead of `export default`, which will require change direct imports i.e. `const addDays = require(‘date-fns/addDays’)` to `const { addDays } = require(‘date-fns/addDays’)`.
+- **BREAKING**: TypeScript types are now completely rewritten, check out the `d.ts` files for more information.
+- **BREAKING**: Functions now don’t check the number of passed arguments, delegating this task to type checkers. The functions are now slimmer because of this.
+- **BREAKING** The arguments are not explicitly converted to the target types. Instead, they are passed as is, delegating this task to type checkers.
+- **BREAKING**: Functions that accept `Interval` arguments now do not throw an error if the start is before the end and handle it as a negative interval. If one of the properties in an `Invalid Date`, these functions also do not throw and handle them as invalid intervals.
+  - `areIntervalsOverlapping` normalize intervals before comparison, so `{ start: a, end: b }` is practically equivalent to `{ start: b, end: a }`. When comparing intervals with one of the properties being `Invalid Date`, the function will return false unless the others are valid and equal, given the `inclusive` option is passed. Otherwise, and when even one of the intervals has both properties invalid, the function will always return `false`.
+  - `getOverlappingDaysInIntervals` now normalizes intervals before comparison, so `{ start: a, end: b }` is practically equivalent to `{ start: b, end: a }`. If any of the intervals’ properties is an `Invalid Date`, the function will always return 0.
+  - `isWithinInterval` now normalizes intervals before comparison, so `{ start: a, end: b }` is practically equivalent to `{ start: b, end: a }`. If any of the intervals’ properties is an `Invalid Date`, the function will always return false.
+  - `intervalToDuration` now returns negative durations for negative intervals. If one or both of the interval properties are invalid, the function will return an empty object.
+  - The eachXOfInterval functions (`eachDayOfInterval`, `eachHourOfInterval`, `eachMinuteOfInterval`, `eachMonthOfInterval`, `eachWeekendOfInterval`, `eachWeekendOfMonth`, `eachWeekendOfYear`, `eachWeekOfInterval`, `eachYearOfInterval`) now return a reversed array if the passed interval’s start is after the end. Invalid properties will result in an empty array. Functions that accept the `step` option now also allow negative, 0, and NaN values and return reversed results if the step is negative and an empty array otherwise.
+- **BREAKING**: `intervalToDuration` now skips 0 values in the resulting duration, resulting in more compact objects with only relevant properties.
+- **BREAKING**: `roundToNearestMinutes` now returns `Invalid Date` instead of throwing an error when `nearestTo` option is less than 1 or more than 30.
+- **BREAKING**: IE is no longer supported.
+- **BREAKING**: Now all functions use `Math.trunc` rounding method where rounding is required. The behavior is configurable on a per-function basis.
+- **BREAKING**: Undocumented `onlyNumeric` option was removed from `nn` and `sv` locales. If you relied on it, [please contact me](mailto:koss@nocorp.me).
+- **BREAKING**: Flow is not supported anymore. If you relied on it, [please contact me](mailto:koss@nocorp.me).
+- **BREAKING**: The locales now use regular functions instead of the UTC version, which should not break any code unless you used locales directly.
+
+### Added
+
+- All functions that accept date arguments now also accept strings.
+- All functions now export options interfaces.
+- Now functions allow passing custom Date extensions like [UTCDate](https://github.com/date-fns/utc). They will detect and use the arguments constructor to generate the result of the same class.
+- `eachMonthOfInterval`, `eachQuarterOfInterval`, `eachWeekOfInterval`, and `eachYearOfInterval` now accept the `step` option like most of the eachXOfInterval functions.
+- A new `interval` function that validates interval, emulating the v2 interval functions behavior.
+- `differenceInX` functions now accept options and allow setting up `roundingMethod` that configures how the result is rounded. `Math.trunc` is the default method.
+
+## v2.30.0
+
+Kudos to @kossnocorp and @Andarist for working on the release.
+
+### Changes
+
+- Fixed increased build size after enabling compatibility with older browsers in the previous release. This was done by adding @babel/runtime as a dependency. [See more details](https://github.com/date-fns/date-fns/issues/3208#issuecomment-1528592465).
+
 ## v2.29.3 - 2022-09-13
 
 This release is prepared by our own @leshakoss.
@@ -782,10 +825,10 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 
   ```javascript
   // Before v2.0.0
-  addDays('2016-01-01', 1)
+  addDays("2016-01-01", 1);
 
   // v2.0.0 onward
-  addDays(parseISO('2016-01-01'), 1)
+  addDays(parseISO("2016-01-01"), 1);
   ```
 
 - **BREAKING**: new format string API for `format` function
@@ -952,7 +995,7 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
   you should set `useAdditionalWeekYearTokens` option:
 
   ```javascript
-  format(Date.now(), 'YY', { useAdditionalWeekYearTokens: true })
+  format(Date.now(), "YY", { useAdditionalWeekYearTokens: true });
   //=> '86'
   ```
 
@@ -960,7 +1003,7 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
   set `useAdditionalDayOfYearTokens` option:
 
   ```javascript
-  format(Date.now(), 'D', { useAdditionalDayOfYearTokens: true })
+  format(Date.now(), "D", { useAdditionalDayOfYearTokens: true });
   //=> '364'
   ```
 
@@ -968,10 +1011,10 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 
   ```javascript
   // Before v2.0.0
-  import differenceInCalendarISOYears from 'date-fns/difference_in_calendar_iso_years'
+  import differenceInCalendarISOYears from "date-fns/difference_in_calendar_iso_years";
 
   // v2.0.0 onward
-  import differenceInCalendarISOYears from 'date-fns/differenceInCalendarISOYears'
+  import differenceInCalendarISOYears from "date-fns/differenceInCalendarISOYears";
   ```
 
 - **BREAKING**: min and max functions now accept an array of dates
@@ -979,27 +1022,30 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 
   ```javascript
   // Before v2.0.0
-  var date1 = new Date(1989, 6 /* Jul */, 10)
-  var date2 = new Date(1987, 1 /* Feb */, 11)
+  var date1 = new Date(1989, 6 /* Jul */, 10);
+  var date2 = new Date(1987, 1 /* Feb */, 11);
 
-  var minDate = min(date1, date2)
-  var maxDate = max(date1, date2)
+  var minDate = min(date1, date2);
+  var maxDate = max(date1, date2);
 
   // v2.0.0 onward:
-  var dates = [new Date(1989, 6 /* Jul */, 10), new Date(1987, 1 /* Feb */, 11)]
+  var dates = [
+    new Date(1989, 6 /* Jul */, 10),
+    new Date(1987, 1 /* Feb */, 11),
+  ];
 
-  var minDate = min(dates)
-  var maxDate = max(dates)
+  var minDate = min(dates);
+  var maxDate = max(dates);
   ```
 
 - **BREAKING**: make the second argument of `format` required for the sake of explicitness.
 
   ```javascript
   // Before v2.0.0
-  format(new Date(2016, 0, 1))
+  format(new Date(2016, 0, 1));
 
   // v2.0.0 onward
-  format(new Date(2016, 0, 1), "yyyy-MM-dd'T'HH:mm:ss.SSSxxx")
+  format(new Date(2016, 0, 1), "yyyy-MM-dd'T'HH:mm:ss.SSSxxx");
   ```
 
 - **BREAKING** renamed ISO week-numbering year helpers:
@@ -1046,45 +1092,45 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
     new Date(2014, 0, 10),
     new Date(2014, 0, 20),
     new Date(2014, 0, 17),
-    new Date(2014, 0, 21)
-  )
+    new Date(2014, 0, 21),
+  );
 
-  eachDay(new Date(2014, 0, 10), new Date(2014, 0, 20))
+  eachDay(new Date(2014, 0, 10), new Date(2014, 0, 20));
 
   getOverlappingDaysInRanges(
     new Date(2014, 0, 10),
     new Date(2014, 0, 20),
     new Date(2014, 0, 17),
-    new Date(2014, 0, 21)
-  )
+    new Date(2014, 0, 21),
+  );
 
   isWithinRange(
     new Date(2014, 0, 3),
     new Date(2014, 0, 1),
-    new Date(2014, 0, 7)
-  )
+    new Date(2014, 0, 7),
+  );
 
   // v2.0.0 onward
 
   areIntervalsOverlapping(
     { start: new Date(2014, 0, 10), end: new Date(2014, 0, 20) },
-    { start: new Date(2014, 0, 17), end: new Date(2014, 0, 21) }
-  )
+    { start: new Date(2014, 0, 17), end: new Date(2014, 0, 21) },
+  );
 
   eachDayOfInterval({
     start: new Date(2014, 0, 10),
     end: new Date(2014, 0, 20),
-  })
+  });
 
   getOverlappingDaysInIntervals(
     { start: new Date(2014, 0, 10), end: new Date(2014, 0, 20) },
-    { start: new Date(2014, 0, 17), end: new Date(2014, 0, 21) }
-  )
+    { start: new Date(2014, 0, 17), end: new Date(2014, 0, 21) },
+  );
 
   isWithinInterval(new Date(2014, 0, 3), {
     start: new Date(2014, 0, 1),
     end: new Date(2014, 0, 7),
-  })
+  });
   ```
 
 - **BREAKING**: functions renamed:
@@ -1104,16 +1150,16 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
   distanceInWords(
     new Date(1986, 3, 4, 10, 32, 0),
     new Date(1986, 3, 4, 11, 32, 0),
-    { addSuffix: true }
-  ) //=> 'in about 1 hour'
+    { addSuffix: true },
+  ); //=> 'in about 1 hour'
 
   // v2.0.0 onward
 
   formatDistance(
     new Date(1986, 3, 4, 11, 32, 0),
     new Date(1986, 3, 4, 10, 32, 0),
-    { addSuffix: true }
-  ) //=> 'in about 1 hour'
+    { addSuffix: true },
+  ); //=> 'in about 1 hour'
   ```
 
 - **BREAKING**: `partialMethod` option in `formatDistanceStrict` is renamed to `roundingMethod`.
@@ -1124,16 +1170,16 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
   distanceInWordsStrict(
     new Date(1986, 3, 4, 10, 32, 0),
     new Date(1986, 3, 4, 10, 33, 1),
-    { partialMethod: 'ceil' }
-  ) //=> '2 minutes'
+    { partialMethod: "ceil" },
+  ); //=> '2 minutes'
 
   // v2.0.0 onward
 
   formatDistanceStrict(
     new Date(1986, 3, 4, 10, 33, 1),
     new Date(1986, 3, 4, 10, 32, 0),
-    { roundingMethod: 'ceil' }
-  ) //=> '2 minutes'
+    { roundingMethod: "ceil" },
+  ); //=> '2 minutes'
   ```
 
 - **BREAKING**: in `formatDistanceStrict`, if `roundingMethod` is not specified,
@@ -1148,16 +1194,16 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
   distanceInWordsStrict(
     new Date(1986, 3, 4, 10, 32, 0),
     new Date(1986, 3, 4, 10, 33, 1),
-    { unit: 'm' }
-  )
+    { unit: "m" },
+  );
 
   // v2.0.0 onward
 
   formatDistanceStrict(
     new Date(1986, 3, 4, 10, 33, 1),
     new Date(1986, 3, 4, 10, 32, 0),
-    { unit: 'minute' }
-  )
+    { unit: "minute" },
+  );
   ```
 
 - **BREAKING**: `parse` that previously used to convert strings and
@@ -1167,15 +1213,15 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 
   ```javascript
   // Before v2.0.0
-  parse('2016-01-01')
-  parse(1547005581366)
-  parse(new Date()) // Clone the date
+  parse("2016-01-01");
+  parse(1547005581366);
+  parse(new Date()); // Clone the date
 
   // v2.0.0 onward
-  parse('2016-01-01', 'yyyy-MM-dd', new Date())
-  parseISO('2016-01-01')
-  toDate(1547005581366)
-  toDate(new Date()) // Clone the date
+  parse("2016-01-01", "yyyy-MM-dd", new Date());
+  parseISO("2016-01-01");
+  toDate(1547005581366);
+  toDate(new Date()); // Clone the date
   ```
 
 - **BREAKING**: `toDate` (previously `parse`) now doesn't accept string
@@ -1192,10 +1238,10 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 
   ```javascript
   // Before v2.0.0
-  import locale from 'date-fns/locale/zh_cn'
+  import locale from "date-fns/locale/zh_cn";
 
   // v2.0.0 onward
-  import locale from 'date-fns/locale/zh-CN'
+  import locale from "date-fns/locale/zh-CN";
   ```
 
 - **BREAKING**: now `closestTo` and `closestIndexTo` don't throw an exception
@@ -1302,23 +1348,23 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
   See [FP Guide](https://date-fns.org/docs/FP-Guide) for more information.
 
   ```javascript
-  import addYears from 'date-fns/fp/addYears'
-  import formatWithOptions from 'date-fns/fp/formatWithOptions'
-  import eo from 'date-fns/locale/eo'
+  import addYears from "date-fns/fp/addYears";
+  import formatWithOptions from "date-fns/fp/formatWithOptions";
+  import eo from "date-fns/locale/eo";
 
   // If FP function has not received enough arguments, it returns another function
-  const addFiveYears = addYears(5)
+  const addFiveYears = addYears(5);
 
   // Several arguments can be curried at once
-  const dateToString = formatWithOptions({ locale: eo }, 'd MMMM yyyy')
+  const dateToString = formatWithOptions({ locale: eo }, "d MMMM yyyy");
 
   const dates = [
     new Date(2017, 0 /* Jan */, 1),
     new Date(2017, 1 /* Feb */, 11),
     new Date(2017, 6 /* Jul */, 2),
-  ]
+  ];
 
-  const formattedDates = dates.map((date) => dateToString(addFiveYears(date)))
+  const formattedDates = dates.map((date) => dateToString(addFiveYears(date)));
   //=> ['1 januaro 2022', '11 februaro 2022', '2 julio 2022']
   ```
 
@@ -1329,11 +1375,11 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 
   ```javascript
   // Without tree-shaking:
-  import format from 'date-fns/format'
-  import parse from 'date-fns/parse'
+  import format from "date-fns/format";
+  import parse from "date-fns/parse";
 
   // With tree-shaking:
-  import { format, parse } from 'date-fns'
+  import { format, parse } from "date-fns";
   ```
 
   Also, ESM functions provide default export, they can be used with TypeScript
@@ -1341,10 +1387,10 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 
   ```typescript
   // Before
-  import * as format from 'date-fns/format'
+  import * as format from "date-fns/format";
 
   // Now
-  import format from 'date-fns/format'
+  import format from "date-fns/format";
   ```
 
 - `formatRelative` function. See [formatRelative](https://date-fns.org/docs/formatRelative)
@@ -1830,7 +1876,7 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 - `parse` now can parse dates that are ISO 8601 centuries (e.g., `19` and `+0019`).
 
   ```javascript
-  var result = parse('19')
+  var result = parse("19");
   //=> Mon Jan 01 1900 00:00:00
   ```
 
@@ -1838,9 +1884,9 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
   for extended year or century format (possible values are 0, 1 or 2; default is 2).
 
   ```javascript
-  parse('+002016-11-01')
-  parse('+02016-11-01', { additionalDigits: 1 })
-  parse('+2016-11-01', { additionalDigits: 0 })
+  parse("+002016-11-01");
+  parse("+02016-11-01", { additionalDigits: 1 });
+  parse("+2016-11-01", { additionalDigits: 0 });
   ```
 
 ## [1.9.0] - 2016-10-25
@@ -1965,10 +2011,10 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 
   ```javascript
   // Before v1.0.0
-  var addMonths = require('date-fns/src/add_months')
+  var addMonths = require("date-fns/src/add_months");
 
   // v1.0.0 onward
-  var addMonths = require('date-fns/add_months')
+  var addMonths = require("date-fns/add_months");
   ```
 
 - **BREAKING**: functions that had the last optional argument `weekStartsAt`
@@ -1978,10 +2024,10 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 
   ```javascript
   // Before v1.0.0
-  var result = endOfWeek(new Date(2014, 8, 2), 1)
+  var result = endOfWeek(new Date(2014, 8, 2), 1);
 
   // v1.0.0 onward
-  var result = endOfWeek(new Date(2014, 8, 2), { weekStartsOn: 1 })
+  var result = endOfWeek(new Date(2014, 8, 2), { weekStartsOn: 1 });
   ```
 
 - **BREAKING**: remove the function `getTimeSinceMidnight` that was used inside
