@@ -20,10 +20,24 @@ rm -rf "$dir"
 mkdir -p "$dir"
 
 # Transpile CommonJS versions of files
-env BABEL_ENV=cjs npx babel src --config-file ./babel.config.js --source-root src --out-dir "$dir" --ignore "**/test.ts","**/*.d.ts" --extensions .mjs,.ts --out-file-extension .js --quiet
+env BABEL_ENV=cjs npx babel src \
+  --config-file ./babel.config.js \
+  --source-root src \
+  --out-dir "$dir" \
+  --ignore "**/test.ts","**/*.d.ts" \
+  --extensions .mjs,.ts \
+  --out-file-extension .js \
+  --quiet
 
 # Transpile ESM versions of files
-env BABEL_ENV=esm npx babel src --config-file ./babel.config.js --source-root src --out-dir "$dir" --ignore "**/test.ts","**/*.d.ts" --extensions .mjs,.ts --out-file-extension .mjs --quiet
+env BABEL_ENV=esm npx babel src \
+  --config-file ./babel.config.js \
+  --source-root src \
+  --out-dir "$dir" \
+  --ignore "**/test.ts","**/*.d.ts" \
+  --extensions .mjs,.ts \
+  --out-file-extension .mjs \
+  --quiet
 
 # Generate TypeScript
 npx tsc --project tsconfig.lib.json --outDir "$dir"
@@ -43,3 +57,6 @@ for pattern in CHANGELOG.md \
 do
   cp -r "$pattern" "$dir"
 done
+
+# Make it prettier
+npx prettier "$dir" --write --ignore-path "" > /dev/null 2>&1 || exit 1

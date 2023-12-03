@@ -6286,11 +6286,6 @@
       "git add"
     ]
   },
-  "browserslist": [
-    "last 1 version",
-    "> 1%",
-    "IE 11"
-  ],
   "devDependencies": {
     "@babel/cli": "^7.22.10",
     "@babel/core": "^7.22.10",
@@ -6310,7 +6305,6 @@
     "babel-eslint": "^10.0.2",
     "babel-loader": "8.0.6",
     "babel-plugin-add-import-extension": "^1.6.0",
-    "babel-plugin-add-module-exports": "^1.0.4",
     "cloc": "^2.2.0",
     "coveralls": "^3.1.1",
     "eslint": "^7.27.0",
@@ -6332,7 +6326,7 @@
     "node-fetch": "^1.7.3",
     "p-limit": "^3.1.0",
     "playwright": "^1.40.1",
-    "prettier": "2",
+    "prettier": "^3.1.0",
     "simple-git": "^2.35.2",
     "sinon": "^7.4.1",
     "size-limit": "^0.21.0",
@@ -6343,8 +6337,5 @@
     "typescript": "^5.3.2",
     "vitest": "^0.34.6",
     "world-countries": "^1.8.1"
-  },
-  "resolutions": {
-    "ajv": "6.8.1"
   }
 }
