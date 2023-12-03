@@ -1,4 +1,4 @@
-import format from "date-fns/format";
+import { format } from "date-fns/format";
 import * as dateFns from "date-fns";
 
 const date = dateFns.addDays(new Date(2017, 0, 25, 21, 28, 15), 1);

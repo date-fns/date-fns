@@ -1,7 +1,7 @@
-const addYears = require("date-fns/fp/addYears");
-const formatWithOptions = require("date-fns/fp/formatWithOptions");
-const parseISO = require("date-fns/fp/parseISO");
-const eo = require("date-fns/locale/eo");
+const { addYears } = require("date-fns/fp/addYears");
+const { formatWithOptions } = require("date-fns/fp/formatWithOptions");
+const { parseISO } = require("date-fns/fp/parseISO");
+const { eo } = require("date-fns/locale/eo");
 
 const compose = require("lodash/fp/compose");
 const toUpper = require("lodash/fp/toUpper");
