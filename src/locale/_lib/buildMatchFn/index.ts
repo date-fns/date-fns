@@ -10,7 +10,7 @@ import {
 export interface BuildMatchFnArgs<
   Result extends LocaleUnitValue,
   DefaultMatchWidth extends LocaleWidth,
-  DefaultParseWidth extends LocaleWidth
+  DefaultParseWidth extends LocaleWidth,
 > {
   matchPatterns: BuildMatchFnMatchPatterns<DefaultMatchWidth>
   defaultMatchWidth: DefaultMatchWidth
@@ -30,7 +30,7 @@ export type BuildMatchFnMatchPatterns<DefaultWidth extends LocaleWidth> = {
 
 export type BuildMatchFnParsePatterns<
   Value extends LocaleUnitValue,
-  DefaultWidth extends LocaleWidth
+  DefaultWidth extends LocaleWidth,
 > = {
   [Width in LocaleWidth]?: ParsePattern<Value>
 } & {
@@ -41,34 +41,34 @@ export type ParsePattern<Value extends LocaleUnitValue> =
   Value extends LocaleDayPeriod
     ? Record<LocaleDayPeriod, RegExp>
     : Value extends Quarter
-    ? readonly [RegExp, RegExp, RegExp, RegExp]
-    : Value extends Era
-    ? readonly [RegExp, RegExp]
-    : Value extends Day
-    ? readonly [RegExp, RegExp, RegExp, RegExp, RegExp, RegExp, RegExp]
-    : Value extends Month
-    ? readonly [
-        RegExp,
-        RegExp,
-        RegExp,
-        RegExp,
-        RegExp,
-        RegExp,
-        RegExp,
-        RegExp,
-        RegExp,
-        RegExp,
-        RegExp,
-        RegExp
-      ]
-    : never
+      ? readonly [RegExp, RegExp, RegExp, RegExp]
+      : Value extends Era
+        ? readonly [RegExp, RegExp]
+        : Value extends Day
+          ? readonly [RegExp, RegExp, RegExp, RegExp, RegExp, RegExp, RegExp]
+          : Value extends Month
+            ? readonly [
+                RegExp,
+                RegExp,
+                RegExp,
+                RegExp,
+                RegExp,
+                RegExp,
+                RegExp,
+                RegExp,
+                RegExp,
+                RegExp,
+                RegExp,
+                RegExp,
+              ]
+            : never
 
 export function buildMatchFn<
   Value extends LocaleUnitValue,
   DefaultMatchWidth extends LocaleWidth,
-  DefaultParseWidth extends LocaleWidth
+  DefaultParseWidth extends LocaleWidth,
 >(
-  args: BuildMatchFnArgs<Value, DefaultMatchWidth, DefaultParseWidth>
+  args: BuildMatchFnArgs<Value, DefaultMatchWidth, DefaultParseWidth>,
 ): MatchFn<Value> {
   return (string, options = {}) => {
     const width = options.width
@@ -90,13 +90,17 @@ export function buildMatchFn<
     const key = (
       Array.isArray(parsePatterns)
         ? findIndex(parsePatterns, (pattern) => pattern.test(matchedString))
-        : findKey(parsePatterns, (pattern: any) => pattern.test(matchedString))
+        : // eslint-disable-next-line @typescript-eslint/no-explicit-any -- I challange you to fix the type
+          findKey(parsePatterns, (pattern: any) => pattern.test(matchedString))
     ) as Value extends LocaleDayPeriod ? string : number
 
     let value: Value
 
     value = (args.valueCallback ? args.valueCallback(key) : key) as Value
-    value = options.valueCallback ? options.valueCallback(value as any) : value
+    value = options.valueCallback
+      ? // eslint-disable-next-line @typescript-eslint/no-explicit-any -- I challange you to fix the type
+        options.valueCallback(value as any)
+      : value
 
     const rest = string.slice(matchedString.length)
 
@@ -106,10 +110,13 @@ export function buildMatchFn<
 
 function findKey<Value, Obj extends { [key in string | number]: Value }>(
   object: Obj,
-  predicate: (value: Value) => boolean
+  predicate: (value: Value) => boolean,
 ): keyof Obj | undefined {
   for (const key in object) {
-    if (object.hasOwnProperty(key) && predicate(object[key])) {
+    if (
+      Object.prototype.hasOwnProperty.call(object, key) &&
+      predicate(object[key])
+    ) {
       return key
     }
   }
@@ -118,7 +125,7 @@ function findKey<Value, Obj extends { [key in string | number]: Value }>(
 
 function findIndex<Item>(
   array: Item[],
-  predicate: (item: Item) => boolean
+  predicate: (item: Item) => boolean,
 ): number | undefined {
   for (let key = 0; key < array.length; key++) {
     if (predicate(array[key])) {

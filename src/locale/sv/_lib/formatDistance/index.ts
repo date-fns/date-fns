@@ -111,14 +111,10 @@ export const formatDistance: FormatDistanceFn = (token, count, options) => {
   } else if (count === 1) {
     result = tokenValue.one
   } else {
-    if (options && (options as any).onlyNumeric) {
-      result = tokenValue.other.replace('{{count}}', String(count))
-    } else {
-      result = tokenValue.other.replace(
-        '{{count}}',
-        count < 13 ? wordMapping[count] : String(count)
-      )
-    }
+    result = tokenValue.other.replace(
+      '{{count}}',
+      count < 13 ? wordMapping[count] : String(count),
+    )
   }
 
   if (options?.addSuffix) {

@@ -10,7 +10,7 @@ import type {
 
 export type BuildLocalizeFnArgs<
   Value extends LocaleUnitValue,
-  ArgCallback extends LocalizeFnArgCallback<Value> | undefined
+  ArgCallback extends LocalizeFnArgCallback<Value> | undefined,
 > = {
   values: LocalizePeriodValuesMap<Value>
   defaultWidth: LocaleWidth
@@ -29,7 +29,7 @@ export type BuildLocalizeFnArgs<
  * @returns The converted value
  */
 export type LocalizeFnArgCallback<Value extends LocaleUnitValue | number> = (
-  value: Value
+  value: Value,
 ) => LocalizeUnitIndex<Value>
 
 /**
@@ -53,14 +53,14 @@ export type LocalizeValues<Value extends LocaleUnitValue> =
   Value extends LocaleDayPeriod
     ? Record<LocaleDayPeriod, string>
     : Value extends Era
-    ? LocalizeEraValues
-    : Value extends Quarter
-    ? LocalizeQuarterValues
-    : Value extends Day
-    ? LocalizeDayValues
-    : Value extends Month
-    ? LocalizeMonthValues
-    : never
+      ? LocalizeEraValues
+      : Value extends Quarter
+        ? LocalizeQuarterValues
+        : Value extends Day
+          ? LocalizeDayValues
+          : Value extends Month
+            ? LocalizeMonthValues
+            : never
 
 /**
  * The tuple of localized era values. The first element represents BC,
@@ -83,7 +83,7 @@ export type LocalizeDayValues = readonly [
   string,
   string,
   string,
-  string
+  string,
 ]
 
 /**
@@ -101,12 +101,12 @@ export type LocalizeMonthValues = readonly [
   string,
   string,
   string,
-  string
+  string,
 ]
 
 export function buildLocalizeFn<
   Value extends LocaleUnitValue,
-  ArgCallback extends LocalizeFnArgCallback<Value> | undefined
+  ArgCallback extends LocalizeFnArgCallback<Value> | undefined,
 >(args: BuildLocalizeFnArgs<Value, ArgCallback>): LocalizeFn<Value> {
   return (value, options) => {
     const context = options?.context ? String(options.context) : 'standalone'
@@ -130,7 +130,7 @@ export function buildLocalizeFn<
     const index = (
       args.argumentCallback ? args.argumentCallback(value as Value) : value
     ) as LocalizeUnitIndex<Value>
-    // @ts-ignore: For some reason TypeScript just don't want to match it, no matter how hard we try. I challenge you to try to remove it!
+    // @ts-expect-error - For some reason TypeScript just don't want to match it, no matter how hard we try. I challenge you to try to remove it!
     return valuesArray[index]
   }
 }

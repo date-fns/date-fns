@@ -15,7 +15,7 @@ describe('formatRelative', () => {
   it('before the last week', () => {
     const result = formatRelative(
       new Date(1986, 2 /* Mar */, 28, 16, 50),
-      baseDate
+      baseDate,
     )
     assert(result === '03/28/1986')
   })
@@ -28,7 +28,7 @@ describe('formatRelative', () => {
   it('yesterday', () => {
     const result = formatRelative(
       new Date(1986, 3 /* Apr */, 3, 22, 22),
-      baseDate
+      baseDate,
     )
     assert(result === 'yesterday at 10:22 PM')
   })
@@ -36,7 +36,7 @@ describe('formatRelative', () => {
   it('today', () => {
     const result = formatRelative(
       new Date(1986, 3 /* Apr */, 4, 16, 50),
-      baseDate
+      baseDate,
     )
     assert(result === 'today at 4:50 PM')
   })
@@ -44,7 +44,7 @@ describe('formatRelative', () => {
   it('tomorrow', () => {
     const result = formatRelative(
       new Date(1986, 3 /* Apr */, 5, 7, 30),
-      baseDate
+      baseDate,
     )
     assert(result === 'tomorrow at 7:30 AM')
   })
@@ -52,7 +52,7 @@ describe('formatRelative', () => {
   it('next week', () => {
     const result = formatRelative(
       new Date(1986, 3 /* Apr */, 6, 12, 0),
-      baseDate
+      baseDate,
     )
     assert(result === 'Sunday at 12:00 PM')
   })
@@ -60,7 +60,7 @@ describe('formatRelative', () => {
   it('after the next week', () => {
     const result = formatRelative(
       new Date(1986, 3 /* Apr */, 11, 16, 50),
-      baseDate
+      baseDate,
     )
     assert(result === '04/11/1986')
   })
@@ -69,7 +69,7 @@ describe('formatRelative', () => {
     it("throws RangeError if the date isn't valid", () => {
       assert.throws(
         formatRelative.bind(null, new Date(NaN), baseDate),
-        RangeError
+        RangeError,
       )
     })
 
@@ -78,16 +78,16 @@ describe('formatRelative', () => {
         formatRelative.bind(
           null,
           new Date(2017, 0 /* Jan */, 1),
-          new Date(NaN)
+          new Date(NaN),
         ),
-        RangeError
+        RangeError,
       )
     })
 
     it("throws RangeError if both dates aren't valid", () => {
       assert.throws(
         formatRelative.bind(null, new Date(NaN), new Date(NaN)),
-        RangeError
+        RangeError,
       )
     })
 
@@ -120,9 +120,9 @@ describe('formatRelative', () => {
         new Date(1986, 2 /* Mar */, 28, 16, 50),
         baseDate,
         {
-          // @ts-expect-error
+          // @ts-expect-error - It's ok to have incomplete locale
           locale: customLocale,
-        }
+        },
       )
       assert(result === 'It works perfectly!')
     })

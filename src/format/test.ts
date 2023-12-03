@@ -55,7 +55,7 @@ describe('format', () => {
     const date = new Date(2014, 3, 4, 5)
     assert.strictEqual(
       format(date, "yyyy-MM-dd'\n'HH:mm:ss"),
-      '2014-04-04\n05:00:00'
+      '2014-04-04\n05:00:00',
     )
   })
 
@@ -343,7 +343,7 @@ describe('format', () => {
         const result = format(
           new Date(1992, 11 /* Dec */, 31, 23, 59, 59, 999),
           'D',
-          { useAdditionalDayOfYearTokens: true }
+          { useAdditionalDayOfYearTokens: true },
         )
         assert(result === '366')
       })
@@ -393,7 +393,7 @@ describe('format', () => {
         const result = []
         for (let i = 1; i <= 7; i++) {
           result.push(
-            format(new Date(1986, 8 /* Sep */, i), 'e', { weekStartsOn: 1 })
+            format(new Date(1986, 8 /* Sep */, i), 'e', { weekStartsOn: 1 }),
           )
         }
         const expected = ['1', '2', '3', '4', '5', '6', '7']
@@ -420,7 +420,7 @@ describe('format', () => {
         const result = []
         for (let i = 1; i <= 7; i++) {
           result.push(
-            format(new Date(1986, 8 /* Sep */, i), 'c', { weekStartsOn: 1 })
+            format(new Date(1986, 8 /* Sep */, i), 'c', { weekStartsOn: 1 }),
           )
         }
         const expected = ['1', '2', '3', '4', '5', '6', '7']
@@ -433,7 +433,7 @@ describe('format', () => {
     it('hour [1-12]', () => {
       const result = format(
         new Date(2018, 0 /* Jan */, 1, 0, 0, 0, 0),
-        'h ho hh'
+        'h ho hh',
       )
       assert(result === '12 12th 12')
     })
@@ -441,7 +441,7 @@ describe('format', () => {
     it('hour [0-23]', () => {
       const result = format(
         new Date(2018, 0 /* Jan */, 1, 0, 0, 0, 0),
-        'H Ho HH'
+        'H Ho HH',
       )
       assert(result === '0 0th 00')
     })
@@ -449,7 +449,7 @@ describe('format', () => {
     it('hour [0-11]', () => {
       const result = format(
         new Date(2018, 0 /* Jan */, 1, 0, 0, 0, 0),
-        'K Ko KK'
+        'K Ko KK',
       )
       assert(result === '0 0th 00')
     })
@@ -457,7 +457,7 @@ describe('format', () => {
     it('hour [1-24]', () => {
       const result = format(
         new Date(2018, 0 /* Jan */, 1, 0, 0, 0, 0),
-        'k ko kk'
+        'k ko kk',
       )
       assert(result === '24 24th 24')
     })
@@ -466,7 +466,7 @@ describe('format', () => {
       it('works as expected', () => {
         const result = format(
           new Date(2018, 0 /* Jan */, 1, 0, 0, 0, 0),
-          'a aa aaa aaaa aaaaa'
+          'a aa aaa aaaa aaaaa',
         )
         assert(result === 'AM AM am a.m. a')
       })
@@ -486,13 +486,13 @@ describe('format', () => {
       it('works as expected', () => {
         const result = format(
           new Date(1986, 3 /* Apr */, 6, 2, 0, 0, 900),
-          'b bb bbb bbbb bbbbb'
+          'b bb bbb bbbb bbbbb',
         )
         assert(result === 'AM AM am a.m. a')
 
         const pmResult = format(
           new Date(1986, 3 /* Apr */, 6, 13, 0, 0, 900),
-          'b bb bbb bbbb bbbbb'
+          'b bb bbb bbbb bbbbb',
         )
         assert(pmResult === 'PM PM pm p.m. p')
       })
@@ -506,7 +506,7 @@ describe('format', () => {
         const date = new Date(1986, 3 /* Apr */, 6, 0, 0, 0, 900)
         assert(
           format(date, 'b bb bbb bbbb bbbbb') ===
-            'midnight midnight midnight midnight mi'
+            'midnight midnight midnight midnight mi',
         )
       })
     })
@@ -516,7 +516,7 @@ describe('format', () => {
         const result = format(date, 'B, BB, BBB, BBBB, BBBBB')
         assert(
           result ===
-            'in the morning, in the morning, in the morning, in the morning, in the morning'
+            'in the morning, in the morning, in the morning, in the morning, in the morning',
         )
       })
 
@@ -573,7 +573,7 @@ describe('format', () => {
 
       const getTimezoneOffsetStub = sinon.stub(
         Date.prototype,
-        'getTimezoneOffset'
+        'getTimezoneOffset',
       )
       getTimezoneOffsetStub.returns(0)
       const resultZeroOffset = format(date, 'X XX XXX XXXX XXXXX')
@@ -614,7 +614,7 @@ describe('format', () => {
 
       const getTimezoneOffsetStub = sinon.stub(
         Date.prototype,
-        'getTimezoneOffset'
+        'getTimezoneOffset',
       )
       getTimezoneOffsetStub.returns(480)
       const resultNegativeOffset = format(date, 'O OO OOO OOOO')
@@ -722,7 +722,7 @@ describe('format', () => {
     it('throws RangeError if the time value is invalid', () => {
       assert.throws(
         format.bind(null, new Date(NaN), 'MMMM d, yyyy'),
-        RangeError
+        RangeError,
       )
     })
 
@@ -749,7 +749,7 @@ describe('format', () => {
         },
       }
       const result = format(date, 'PPPP', {
-        // @ts-expect-error
+        // @ts-expect-error - It's ok to have incomplete locale
         locale: customLocale,
       })
       assert(result === 'It works!')

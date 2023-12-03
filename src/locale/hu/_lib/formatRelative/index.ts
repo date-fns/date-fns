@@ -10,7 +10,7 @@ const accusativeWeekdays = [
   'szombaton',
 ]
 
-function week(isFuture: Boolean) {
+function week(isFuture: boolean) {
   return (date: Date) => {
     const weekday = accusativeWeekdays[date.getDay()]
     const prefix = isFuture ? '' : "'múlt' "

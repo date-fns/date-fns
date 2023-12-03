@@ -5,10 +5,6 @@ import { describe, it } from 'vitest'
 import { min } from './index.js'
 
 describe('min', () => {
-  const isInvalidDate = (date: any): boolean => {
-    return date instanceof Date && isNaN(date.getTime())
-  }
-
   it('returns the earliest date', () => {
     const result = min([
       new Date(1989, 6 /* Jul */, 10),
@@ -41,11 +37,11 @@ describe('min', () => {
       new Date(NaN),
       new Date(1987, 1 /* Feb */, 11),
     ])
-    assert(isInvalidDate(result))
+    assert(isNaN(+result))
   })
 
   it('returns `Invalid Date` for empty array', () => {
     const result = min([])
-    assert(isInvalidDate(result))
+    assert(isNaN(+result))
   })
 })

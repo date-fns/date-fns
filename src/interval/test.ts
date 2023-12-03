@@ -19,12 +19,12 @@ describe('Interval', () => {
 
   it('throws an error if one of the arguments is missing', () => {
     assert.throws(() => {
-      // @ts-expect-error
+      // @ts-expect-error - We're testing the missing argument
       interval(new Date(2000, 0))
     }, new TypeError('End date is required'))
 
     assert.throws(() => {
-      // @ts-expect-error
+      // @ts-expect-error - We're testing the missing arguments
       interval()
     }, new TypeError('Start date is required'))
   })

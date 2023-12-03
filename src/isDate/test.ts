@@ -38,7 +38,8 @@ describe('isDate', () => {
           const iframe = document.createElement('iframe')
           iframe.id = 'iframe'
           iframe.addEventListener('load', () => {
-            execScript('window.date = new Date()') // eslint-disable-line no-implied-eval
+            execScript('window.date = new Date()')
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any -- It's ok we're messing with iframes
             assert(isDate((iframe.contentWindow as any).date))
             resolve(void 0)
           })
@@ -57,10 +58,10 @@ describe('isDate', () => {
       const doc = iframe.contentDocument!
       const script = doc.createElement('script')
       script.innerText = scriptText
-      // @ts-expect-error
+      // @ts-expect-error - We're messing with iframes
       if (!(doc.body instanceof iframe.contentWindow.HTMLBodyElement)) {
         throw new Error(
-          "Can't execute the script because iframe does not have body"
+          "Can't execute the script because iframe does not have body",
         )
       }
       doc.body.append(script)

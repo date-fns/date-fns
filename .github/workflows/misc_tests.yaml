@@ -16,9 +16,8 @@ jobs:
       - name: Types
         run: npx tsc --noEmit
 
-      # TODO: Rework linting process
-      # - name: Linting
-      #   run: npm run lint
+      - name: Linting
+        run: npm run lint
 
       - name: Locale snapshots
         run: npm run locale-snapshots -- test

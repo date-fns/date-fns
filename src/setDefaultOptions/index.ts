@@ -55,6 +55,7 @@ export function setDefaultOptions(options: DefaultOptions): void {
 
   for (const property in defaultOptions) {
     if (Object.prototype.hasOwnProperty.call(defaultOptions, property)) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any -- I challange you to fix the type
       ;(result as any)[property] =
         defaultOptions[property as keyof DefaultOptions]
     }
@@ -63,8 +64,10 @@ export function setDefaultOptions(options: DefaultOptions): void {
   for (const property in options) {
     if (Object.prototype.hasOwnProperty.call(options, property)) {
       if (options[property as keyof DefaultOptions] === undefined) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any -- I challange you to fix the type
         delete (result as any)[property]
       } else {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any -- I challange you to fix the type
         ;(result as any)[property] = options[property as keyof DefaultOptions]
       }
     }

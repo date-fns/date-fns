@@ -11,7 +11,7 @@ describe('parse', () => {
     const result = parse(
       '2018 hello world July 2nd',
       "yyyy 'hello world' MMMM do",
-      referenceDate
+      referenceDate,
     )
     assert.deepStrictEqual(result, new Date(2018, 6 /* Jul */, 2))
   })
@@ -25,7 +25,7 @@ describe('parse', () => {
     const result = parse(
       '2014-04-04\n05:00:00',
       "yyyy-MM-dd'\n'HH:mm:ss",
-      referenceDate
+      referenceDate,
     )
     assert.deepStrictEqual(result, new Date(2014, 3 /* Apr */, 4, 5))
   })
@@ -82,8 +82,8 @@ describe('parse', () => {
           assert.throws(
             block,
             new RegExp(
-              `The format string mustn't contain \`${token}\` and \`G\` at the same time`
-            )
+              `The format string mustn't contain \`${token}\` and \`G\` at the same time`,
+            ),
           )
         })
       })
@@ -155,8 +155,8 @@ describe('parse', () => {
           assert.throws(
             block,
             new RegExp(
-              `The format string mustn't contain \`${token}\` and \`y\` at the same time`
-            )
+              `The format string mustn't contain \`${token}\` and \`y\` at the same time`,
+            ),
           )
         })
       })
@@ -245,8 +245,8 @@ describe('parse', () => {
           assert.throws(
             block,
             new RegExp(
-              `The format string mustn't contain \`${token}\` and \`Y\` at the same time`
-            )
+              `The format string mustn't contain \`${token}\` and \`Y\` at the same time`,
+            ),
           )
         })
       })
@@ -311,8 +311,8 @@ describe('parse', () => {
           assert.throws(
             block,
             new RegExp(
-              `The format string mustn't contain \`${token}\` and \`R\` at the same time`
-            )
+              `The format string mustn't contain \`${token}\` and \`R\` at the same time`,
+            ),
           )
         })
       })
@@ -370,8 +370,8 @@ describe('parse', () => {
           assert.throws(
             block,
             new RegExp(
-              `The format string mustn't contain \`${token}\` and \`u\` at the same time`
-            )
+              `The format string mustn't contain \`${token}\` and \`u\` at the same time`,
+            ),
           )
         })
       })
@@ -459,8 +459,8 @@ describe('parse', () => {
           assert.throws(
             block,
             new RegExp(
-              `The format string mustn't contain \`${token}\` and \`Q\` at the same time`
-            )
+              `The format string mustn't contain \`${token}\` and \`Q\` at the same time`,
+            ),
           )
         })
       })
@@ -526,8 +526,8 @@ describe('parse', () => {
           assert.throws(
             block,
             new RegExp(
-              `The format string mustn't contain \`${token}\` and \`q\` at the same time`
-            )
+              `The format string mustn't contain \`${token}\` and \`q\` at the same time`,
+            ),
           )
         })
       })
@@ -592,8 +592,8 @@ describe('parse', () => {
           assert.throws(
             block,
             new RegExp(
-              `The format string mustn't contain \`${token}\` and \`M\` at the same time`
-            )
+              `The format string mustn't contain \`${token}\` and \`M\` at the same time`,
+            ),
           )
         })
       })
@@ -658,8 +658,8 @@ describe('parse', () => {
           assert.throws(
             block,
             new RegExp(
-              `The format string mustn't contain \`${token}\` and \`L\` at the same time`
-            )
+              `The format string mustn't contain \`${token}\` and \`L\` at the same time`,
+            ),
           )
         })
       })
@@ -717,8 +717,8 @@ describe('parse', () => {
           assert.throws(
             block,
             new RegExp(
-              `The format string mustn't contain \`${token}\` and \`w\` at the same time`
-            )
+              `The format string mustn't contain \`${token}\` and \`w\` at the same time`,
+            ),
           )
         })
       })
@@ -769,8 +769,8 @@ describe('parse', () => {
           assert.throws(
             block,
             new RegExp(
-              `The format string mustn't contain \`${token}\` and \`I\` at the same time`
-            )
+              `The format string mustn't contain \`${token}\` and \`I\` at the same time`,
+            ),
           )
         })
       })
@@ -819,8 +819,8 @@ describe('parse', () => {
           assert.throws(
             block,
             new RegExp(
-              `The format string mustn't contain \`${token}\` and \`d\` at the same time`
-            )
+              `The format string mustn't contain \`${token}\` and \`d\` at the same time`,
+            ),
           )
         })
       })
@@ -885,8 +885,8 @@ describe('parse', () => {
           assert.throws(
             block,
             new RegExp(
-              `The format string mustn't contain \`${token}\` and \`D\` at the same time`
-            )
+              `The format string mustn't contain \`${token}\` and \`D\` at the same time`,
+            ),
           )
         })
       })
@@ -941,8 +941,8 @@ describe('parse', () => {
           assert.throws(
             block,
             new RegExp(
-              `The format string mustn't contain \`${token}\` and \`E\` at the same time`
-            )
+              `The format string mustn't contain \`${token}\` and \`E\` at the same time`,
+            ),
           )
         })
       })
@@ -1014,8 +1014,8 @@ describe('parse', () => {
           assert.throws(
             block,
             new RegExp(
-              `The format string mustn't contain \`${token}\` and \`i\` at the same time`
-            )
+              `The format string mustn't contain \`${token}\` and \`i\` at the same time`,
+            ),
           )
         })
       })
@@ -1094,8 +1094,8 @@ describe('parse', () => {
           assert.throws(
             block,
             new RegExp(
-              `The format string mustn't contain \`${token}\` and \`e\` at the same time`
-            )
+              `The format string mustn't contain \`${token}\` and \`e\` at the same time`,
+            ),
           )
         })
       })
@@ -1174,8 +1174,8 @@ describe('parse', () => {
           assert.throws(
             block,
             new RegExp(
-              `The format string mustn't contain \`${token}\` and \`c\` at the same time`
-            )
+              `The format string mustn't contain \`${token}\` and \`c\` at the same time`,
+            ),
           )
         })
       })
@@ -1225,8 +1225,8 @@ describe('parse', () => {
           assert.throws(
             block,
             new RegExp(
-              `The format string mustn't contain \`${token}\` and \`a\` at the same time`
-            )
+              `The format string mustn't contain \`${token}\` and \`a\` at the same time`,
+            ),
           )
         })
       })
@@ -1266,8 +1266,8 @@ describe('parse', () => {
           assert.throws(
             block,
             new RegExp(
-              `The format string mustn't contain \`${token}\` and \`b\` at the same time`
-            )
+              `The format string mustn't contain \`${token}\` and \`b\` at the same time`,
+            ),
           )
         })
       })
@@ -1305,8 +1305,8 @@ describe('parse', () => {
           assert.throws(
             block,
             new RegExp(
-              `The format string mustn't contain \`${token}\` and \`B\` at the same time`
-            )
+              `The format string mustn't contain \`${token}\` and \`B\` at the same time`,
+            ),
           )
         })
       })
@@ -1344,8 +1344,8 @@ describe('parse', () => {
           assert.throws(
             block,
             new RegExp(
-              `The format string mustn't contain \`${token}\` and \`h\` at the same time`
-            )
+              `The format string mustn't contain \`${token}\` and \`h\` at the same time`,
+            ),
           )
         })
       })
@@ -1385,8 +1385,8 @@ describe('parse', () => {
           assert.throws(
             block,
             new RegExp(
-              `The format string mustn't contain \`${token}\` and \`H\` at the same time`
-            )
+              `The format string mustn't contain \`${token}\` and \`H\` at the same time`,
+            ),
           )
         })
       })
@@ -1424,8 +1424,8 @@ describe('parse', () => {
           assert.throws(
             block,
             new RegExp(
-              `The format string mustn't contain \`${token}\` and \`K\` at the same time`
-            )
+              `The format string mustn't contain \`${token}\` and \`K\` at the same time`,
+            ),
           )
         })
       })
@@ -1465,8 +1465,8 @@ describe('parse', () => {
           assert.throws(
             block,
             new RegExp(
-              `The format string mustn't contain \`${token}\` and \`k\` at the same time`
-            )
+              `The format string mustn't contain \`${token}\` and \`k\` at the same time`,
+            ),
           )
         })
       })
@@ -1501,8 +1501,8 @@ describe('parse', () => {
           assert.throws(
             block,
             new RegExp(
-              `The format string mustn't contain \`${token}\` and \`m\` at the same time`
-            )
+              `The format string mustn't contain \`${token}\` and \`m\` at the same time`,
+            ),
           )
         })
       })
@@ -1537,8 +1537,8 @@ describe('parse', () => {
           assert.throws(
             block,
             new RegExp(
-              `The format string mustn't contain \`${token}\` and \`s\` at the same time`
-            )
+              `The format string mustn't contain \`${token}\` and \`s\` at the same time`,
+            ),
           )
         })
       })
@@ -1550,7 +1550,7 @@ describe('parse', () => {
       const result = parse('1', 'S', referenceDate)
       assert.deepStrictEqual(
         result,
-        new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 100)
+        new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 100),
       )
     })
 
@@ -1558,7 +1558,7 @@ describe('parse', () => {
       const result = parse('12', 'SS', referenceDate)
       assert.deepStrictEqual(
         result,
-        new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 120)
+        new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 120),
       )
     })
 
@@ -1566,7 +1566,7 @@ describe('parse', () => {
       const result = parse('123', 'SSS', referenceDate)
       assert.deepStrictEqual(
         result,
-        new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 123)
+        new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 123),
       )
     })
 
@@ -1574,7 +1574,7 @@ describe('parse', () => {
       const result = parse('567890', 'SSSSSS', referenceDate)
       assert.deepStrictEqual(
         result,
-        new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 567)
+        new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 567),
       )
     })
 
@@ -1590,8 +1590,8 @@ describe('parse', () => {
           assert.throws(
             block,
             new RegExp(
-              `The format string mustn't contain \`${token}\` and \`S\` at the same time`
-            )
+              `The format string mustn't contain \`${token}\` and \`S\` at the same time`,
+            ),
           )
         })
       })
@@ -1604,11 +1604,11 @@ describe('parse', () => {
         const result = parse(
           '2016-11-25T16:38:38.123-0530',
           "yyyy-MM-dd'T'HH:mm:ss.SSSX",
-          referenceDate
+          referenceDate,
         )
         assert.deepStrictEqual(
           result,
-          new Date('2016-11-25T16:38:38.123-05:30')
+          new Date('2016-11-25T16:38:38.123-05:30'),
         )
       })
 
@@ -1616,7 +1616,7 @@ describe('parse', () => {
         const result = parse(
           '2016-11-25T16:38:38.123Z',
           "yyyy-MM-dd'T'HH:mm:ss.SSSX",
-          referenceDate
+          referenceDate,
         )
         assert.deepStrictEqual(result, new Date('2016-11-25T16:38:38.123Z'))
       })
@@ -1625,11 +1625,11 @@ describe('parse', () => {
         const result = parse(
           '2016-11-25T16:38:38.123+05',
           "yyyy-MM-dd'T'HH:mm:ss.SSSX",
-          referenceDate
+          referenceDate,
         )
         assert.deepStrictEqual(
           result,
-          new Date('2016-11-25T16:38:38.123+05:00')
+          new Date('2016-11-25T16:38:38.123+05:00'),
         )
       })
     })
@@ -1639,11 +1639,11 @@ describe('parse', () => {
         const result = parse(
           '2016-11-25T16:38:38.123-0530',
           "yyyy-MM-dd'T'HH:mm:ss.SSSXX",
-          referenceDate
+          referenceDate,
         )
         assert.deepStrictEqual(
           result,
-          new Date('2016-11-25T16:38:38.123-05:30')
+          new Date('2016-11-25T16:38:38.123-05:30'),
         )
       })
 
@@ -1651,7 +1651,7 @@ describe('parse', () => {
         const result = parse(
           '2016-11-25T16:38:38.123Z',
           "yyyy-MM-dd'T'HH:mm:ss.SSSXX",
-          referenceDate
+          referenceDate,
         )
         assert.deepStrictEqual(result, new Date('2016-11-25T16:38:38.123Z'))
       })
@@ -1662,11 +1662,11 @@ describe('parse', () => {
         const result = parse(
           '2016-11-25T16:38:38.123-05:30',
           "yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
-          referenceDate
+          referenceDate,
         )
         assert.deepStrictEqual(
           result,
-          new Date('2016-11-25T16:38:38.123-05:30')
+          new Date('2016-11-25T16:38:38.123-05:30'),
         )
       })
 
@@ -1674,7 +1674,7 @@ describe('parse', () => {
         const result = parse(
           '2016-11-25T16:38:38.123Z',
           "yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
-          referenceDate
+          referenceDate,
         )
         assert.deepStrictEqual(result, new Date('2016-11-25T16:38:38.123Z'))
       })
@@ -1685,11 +1685,11 @@ describe('parse', () => {
         const result = parse(
           '2016-11-25T16:38:38.123-0530',
           "yyyy-MM-dd'T'HH:mm:ss.SSSXXXX",
-          referenceDate
+          referenceDate,
         )
         assert.deepStrictEqual(
           result,
-          new Date('2016-11-25T16:38:38.123-05:30')
+          new Date('2016-11-25T16:38:38.123-05:30'),
         )
       })
 
@@ -1697,7 +1697,7 @@ describe('parse', () => {
         const result = parse(
           '2016-11-25T16:38:38.123Z',
           "yyyy-MM-dd'T'HH:mm:ss.SSSXXXX",
-          referenceDate
+          referenceDate,
         )
         assert.deepStrictEqual(result, new Date('2016-11-25T16:38:38.123Z'))
       })
@@ -1706,11 +1706,11 @@ describe('parse', () => {
         const result = parse(
           '2016-11-25T16:38:38.123+053045',
           "yyyy-MM-dd'T'HH:mm:ss.SSSXXXX",
-          referenceDate
+          referenceDate,
         )
         assert.deepStrictEqual(
           result,
-          new Date('2016-11-25T16:37:53.123+05:30')
+          new Date('2016-11-25T16:37:53.123+05:30'),
         )
       })
     })
@@ -1720,11 +1720,11 @@ describe('parse', () => {
         const result = parse(
           '2016-11-25T16:38:38.123-05:30',
           "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX",
-          referenceDate
+          referenceDate,
         )
         assert.deepStrictEqual(
           result,
-          new Date('2016-11-25T16:38:38.123-05:30')
+          new Date('2016-11-25T16:38:38.123-05:30'),
         )
       })
 
@@ -1732,7 +1732,7 @@ describe('parse', () => {
         const result = parse(
           '2016-11-25T16:38:38.123Z',
           "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX",
-          referenceDate
+          referenceDate,
         )
         assert.deepStrictEqual(result, new Date('2016-11-25T16:38:38.123Z'))
       })
@@ -1741,11 +1741,11 @@ describe('parse', () => {
         const result = parse(
           '2016-11-25T16:38:38.123+05:30:45',
           "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX",
-          referenceDate
+          referenceDate,
         )
         assert.deepStrictEqual(
           result,
-          new Date('2016-11-25T16:37:53.123+05:30')
+          new Date('2016-11-25T16:37:53.123+05:30'),
         )
       })
     })
@@ -1764,8 +1764,8 @@ describe('parse', () => {
           assert.throws(
             block,
             new RegExp(
-              `The format string mustn't contain \`${token}\` and \`X\` at the same time`
-            )
+              `The format string mustn't contain \`${token}\` and \`X\` at the same time`,
+            ),
           )
         })
       })
@@ -1778,11 +1778,11 @@ describe('parse', () => {
         const result = parse(
           '2016-11-25T16:38:38.123-0530',
           "yyyy-MM-dd'T'HH:mm:ss.SSSx",
-          referenceDate
+          referenceDate,
         )
         assert.deepStrictEqual(
           result,
-          new Date('2016-11-25T16:38:38.123-05:30')
+          new Date('2016-11-25T16:38:38.123-05:30'),
         )
       })
 
@@ -1790,7 +1790,7 @@ describe('parse', () => {
         const result = parse(
           '2016-11-25T16:38:38.123+0000',
           "yyyy-MM-dd'T'HH:mm:ss.SSSx",
-          referenceDate
+          referenceDate,
         )
         assert.deepStrictEqual(result, new Date('2016-11-25T16:38:38.123Z'))
       })
@@ -1799,11 +1799,11 @@ describe('parse', () => {
         const result = parse(
           '2016-11-25T16:38:38.123+05',
           "yyyy-MM-dd'T'HH:mm:ss.SSSx",
-          referenceDate
+          referenceDate,
         )
         assert.deepStrictEqual(
           result,
-          new Date('2016-11-25T16:38:38.123+05:00')
+          new Date('2016-11-25T16:38:38.123+05:00'),
         )
       })
     })
@@ -1813,11 +1813,11 @@ describe('parse', () => {
         const result = parse(
           '2016-11-25T16:38:38.123-0530',
           "yyyy-MM-dd'T'HH:mm:ss.SSSxx",
-          referenceDate
+          referenceDate,
         )
         assert.deepStrictEqual(
           result,
-          new Date('2016-11-25T16:38:38.123-05:30')
+          new Date('2016-11-25T16:38:38.123-05:30'),
         )
       })
 
@@ -1825,7 +1825,7 @@ describe('parse', () => {
         const result = parse(
           '2016-11-25T16:38:38.123+0000',
           "yyyy-MM-dd'T'HH:mm:ss.SSSxx",
-          referenceDate
+          referenceDate,
         )
         assert.deepStrictEqual(result, new Date('2016-11-25T16:38:38.123Z'))
       })
@@ -1836,11 +1836,11 @@ describe('parse', () => {
         const result = parse(
           '2016-11-25T16:38:38.123-05:30',
           "yyyy-MM-dd'T'HH:mm:ss.SSSxxx",
-          referenceDate
+          referenceDate,
         )
         assert.deepStrictEqual(
           result,
-          new Date('2016-11-25T16:38:38.123-05:30')
+          new Date('2016-11-25T16:38:38.123-05:30'),
         )
       })
 
@@ -1848,7 +1848,7 @@ describe('parse', () => {
         const result = parse(
           '2016-11-25T16:38:38.123+00:00',
           "yyyy-MM-dd'T'HH:mm:ss.SSSxxx",
-          referenceDate
+          referenceDate,
         )
         assert.deepStrictEqual(result, new Date('2016-11-25T16:38:38.123Z'))
       })
@@ -1859,11 +1859,11 @@ describe('parse', () => {
         const result = parse(
           '2016-11-25T16:38:38.123-0530',
           "yyyy-MM-dd'T'HH:mm:ss.SSSxxxx",
-          referenceDate
+          referenceDate,
         )
         assert.deepStrictEqual(
           result,
-          new Date('2016-11-25T16:38:38.123-05:30')
+          new Date('2016-11-25T16:38:38.123-05:30'),
         )
       })
 
@@ -1871,7 +1871,7 @@ describe('parse', () => {
         const result = parse(
           '2016-11-25T16:38:38.123+0000',
           "yyyy-MM-dd'T'HH:mm:ss.SSSxxxx",
-          referenceDate
+          referenceDate,
         )
         assert.deepStrictEqual(result, new Date('2016-11-25T16:38:38.123Z'))
       })
@@ -1880,11 +1880,11 @@ describe('parse', () => {
         const result = parse(
           '2016-11-25T16:38:38.123+053045',
           "yyyy-MM-dd'T'HH:mm:ss.SSSxxxx",
-          referenceDate
+          referenceDate,
         )
         assert.deepStrictEqual(
           result,
-          new Date('2016-11-25T16:37:53.123+05:30')
+          new Date('2016-11-25T16:37:53.123+05:30'),
         )
       })
     })
@@ -1894,11 +1894,11 @@ describe('parse', () => {
         const result = parse(
           '2016-11-25T16:38:38.123-05:30',
           "yyyy-MM-dd'T'HH:mm:ss.SSSxxxxx",
-          referenceDate
+          referenceDate,
         )
         assert.deepStrictEqual(
           result,
-          new Date('2016-11-25T16:38:38.123-05:30')
+          new Date('2016-11-25T16:38:38.123-05:30'),
         )
       })
 
@@ -1906,7 +1906,7 @@ describe('parse', () => {
         const result = parse(
           '2016-11-25T16:38:38.123+00:00',
           "yyyy-MM-dd'T'HH:mm:ss.SSSxxxxx",
-          referenceDate
+          referenceDate,
         )
         assert.deepStrictEqual(result, new Date('2016-11-25T16:38:38.123Z'))
       })
@@ -1915,11 +1915,11 @@ describe('parse', () => {
         const result = parse(
           '2016-11-25T16:38:38.123+05:30:45',
           "yyyy-MM-dd'T'HH:mm:ss.SSSxxxxx",
-          referenceDate
+          referenceDate,
         )
         assert.deepStrictEqual(
           result,
-          new Date('2016-11-25T16:37:53.123+05:30')
+          new Date('2016-11-25T16:37:53.123+05:30'),
         )
       })
     })
@@ -1938,8 +1938,8 @@ describe('parse', () => {
           assert.throws(
             block,
             new RegExp(
-              `The format string mustn't contain \`${token}\` and \`x\` at the same time`
-            )
+              `The format string mustn't contain \`${token}\` and \`x\` at the same time`,
+            ),
           )
         })
       })
@@ -1956,7 +1956,7 @@ describe('parse', () => {
       const result = parse(
         '00000000000512969520',
         'tttttttttttttttttttt',
-        referenceDate
+        referenceDate,
       )
       assert.deepStrictEqual(result, new Date(512969520000))
     })
@@ -1967,8 +1967,8 @@ describe('parse', () => {
       assert.throws(
         block,
         new RegExp(
-          `The format string mustn't contain \`t\` and any other token at the same time`
-        )
+          `The format string mustn't contain \`t\` and any other token at the same time`,
+        ),
       )
     })
   })
@@ -1983,7 +1983,7 @@ describe('parse', () => {
       const result = parse(
         '00000000512969520900',
         'TTTTTTTTTTTTTTTTTTTT',
-        referenceDate
+        referenceDate,
       )
       assert.deepStrictEqual(result, new Date(512969520900))
     })
@@ -1994,8 +1994,8 @@ describe('parse', () => {
       assert.throws(
         block,
         new RegExp(
-          `The format string mustn't contain \`T\` and any other token at the same time`
-        )
+          `The format string mustn't contain \`T\` and any other token at the same time`,
+        ),
       )
     })
   })
@@ -2005,11 +2005,11 @@ describe('parse', () => {
       const result = parse(
         '20161105T040404',
         "yyyyMMdd'T'HHmmss",
-        referenceDate
+        referenceDate,
       )
       assert.deepStrictEqual(
         result,
-        new Date(2016, 10 /* Nov */, 5, 4, 4, 4, 0)
+        new Date(2016, 10 /* Nov */, 5, 4, 4, 4, 0),
       )
     })
 
@@ -2017,11 +2017,11 @@ describe('parse', () => {
       const result = parse(
         '2016W474T153005',
         "RRRR'W'IIi'T'HHmmss",
-        referenceDate
+        referenceDate,
       )
       assert.deepStrictEqual(
         result,
-        new Date(2016, 10 /* Nov */, 24, 15, 30, 5, 0)
+        new Date(2016, 10 /* Nov */, 24, 15, 30, 5, 0),
       )
     })
 
@@ -2029,7 +2029,7 @@ describe('parse', () => {
       const result = parse('2010123T235959', "yyyyDDD'T'HHmmss", referenceDate)
       assert.deepStrictEqual(
         result,
-        new Date(2010, 4 /* May */, 3, 23, 59, 59, 0)
+        new Date(2010, 4 /* May */, 3, 23, 59, 59, 0),
       )
     })
 
@@ -2051,7 +2051,7 @@ describe('parse', () => {
       const result = parse(
         '5 a.m. 07/02/2016',
         'h aaaa MM/dd/yyyy',
-        referenceDate
+        referenceDate,
       )
       assert.deepStrictEqual(result, new Date(2016, 6 /* Jul */, 2, 5, 0, 0, 0))
     })
@@ -2282,7 +2282,7 @@ describe('parse', () => {
         },
       }
       const result = parse('2018 foobar', "y G 'it works!'", referenceDate, {
-        // @ts-expect-error
+        // @ts-expect-error - It's oke to have incomplete locale
         locale: customLocale,
       })
       assert.deepStrictEqual(result, new Date(-2017, 0 /* Jan */, 1))
@@ -2363,7 +2363,7 @@ describe('parse', () => {
     it('throws RangeError exception if the format string contains an unescaped latin alphabet character', () => {
       assert.throws(
         () => parse('2016-11-05-nnnn', 'yyyy-MM-dd-nnnn', referenceDate),
-        RangeError
+        RangeError,
       )
     })
   })
@@ -2473,7 +2473,7 @@ describe('parse', () => {
         referenceDate.getMonth(),
         referenceDate.getDate(),
         10,
-        32
+        32,
       )
       const timeString = '10:32 AM'
       const formatString = 'p'
@@ -2488,7 +2488,7 @@ describe('parse', () => {
         referenceDate.getDate(),
         10,
         32,
-        55
+        55,
       )
       const timeString = '10:32:55 AM'
       const formatString = 'pp'

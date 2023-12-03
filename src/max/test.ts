@@ -5,10 +5,6 @@ import { describe, it } from 'vitest'
 import { max } from './index.js'
 
 describe('max', () => {
-  const isInvalidDate = (date: any): boolean => {
-    return date instanceof Date && isNaN(date.getTime())
-  }
-
   it('returns the latest date', () => {
     const result = max([
       new Date(1989, 6 /* Jul */, 10),
@@ -41,11 +37,11 @@ describe('max', () => {
       new Date(NaN),
       new Date(1987, 1 /* Feb */, 11),
     ])
-    assert(isInvalidDate(result))
+    assert(isNaN(+result))
   })
 
   it('returns `Invalid Date` for empty array', () => {
     const result = max([])
-    assert(isInvalidDate(result))
+    assert(isNaN(+result))
   })
 })
