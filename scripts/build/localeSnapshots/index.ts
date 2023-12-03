@@ -28,8 +28,9 @@ listLocales()
     Promise.all(
       locales.map(async (localeObj) => {
         const { code, fullPath } = localeObj
-        const locale: Locale = (await import(`../../../src/locale/${code}`))
-          .default
+        const locale: Locale = (await import(`../../../src/locale/${code}`))[
+          convertLocaleToConst(code)
+        ]
         const source = (
           await readFile(path.join(process.cwd(), fullPath))
         ).toString()
@@ -51,24 +52,28 @@ ${renderFormatDuration(locale)}
 
         const snapshotPath = path.join(
           path.resolve(process.cwd(), path.dirname(fullPath)),
-          'snapshot.md'
+          'snapshot.md',
         )
-        const formattedSnapshot = formatCode(snapshot, 'markdown')
+        const formattedSnapshot = await formatCode(snapshot, 'markdown')
 
         if (mode === 'test') {
           return readFile(snapshotPath, 'utf8').then((snapshotFileContent) => {
             if (snapshotFileContent !== formattedSnapshot)
               throw new Error(
-                `The snapshot on the disk doesn't match the generated snapshot: ${snapshotPath}. Please run npm run locale-snapshots and commit the results.`
+                `The snapshot on the disk doesn't match the generated snapshot: ${snapshotPath}. Please run npm run locale-snapshots and commit the results.`,
               )
           })
         } else {
           return writeFile(snapshotPath, formattedSnapshot)
         }
-      })
-    )
+      }),
+    ),
   )
   .catch((err) => {
     console.error(err.stack)
     process.exit(1)
   })
+
+function convertLocaleToConst(input: string): string {
+  return input.replace(/-([a-zA-Z])/g, (_, char) => char.toUpperCase())
+}

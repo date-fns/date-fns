@@ -1,4 +1,4 @@
-import formatDuration from '../../../../src/formatDuration'
+import { formatDuration } from '../../../../src/formatDuration'
 import { Locale } from '../../../../src/types'
 
 const durations = [

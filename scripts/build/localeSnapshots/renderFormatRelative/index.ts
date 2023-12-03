@@ -1,4 +1,4 @@
-import formatRelative from '../../../../src/formatRelative'
+import { formatRelative } from '../../../../src/formatRelative'
 import { Locale } from '../../../../src/types'
 import { baseDate, relativeDates } from '../_lib/distanceDates'
 

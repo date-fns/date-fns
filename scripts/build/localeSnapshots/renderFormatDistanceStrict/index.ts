@@ -1,4 +1,4 @@
-import formatDistanceStrict from '../../../../src/formatDistanceStrict'
+import { formatDistanceStrict } from '../../../../src/formatDistanceStrict'
 import { Locale } from '../../../../src/types'
 import { baseDate, dates } from '../_lib/distanceDates'
 

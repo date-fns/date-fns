@@ -1,7 +1,7 @@
 import { fromEntries, last, sample, uniq } from 'js-fns'
 import sg from 'simple-git'
 import { Octokit } from '@octokit/core'
-import format from '../../src/format'
+import { format } from '../../src/format'
 
 const git = sg()
 const gh = new Octokit({ auth: process.env.GITHUB_TOKEN })
@@ -14,7 +14,7 @@ const gh = new Octokit({ auth: process.env.GITHUB_TOKEN })
 function renderChangelog(changelog: ChangelogVersion) {
   let markdown = `## ${renderVersion(changelog.version)} - ${format(
     Date.now(),
-    'yyyy-MM-dd'
+    'yyyy-MM-dd',
   )}
 
 ${sample(thanksOptions)!(renderAuthors(changelog.authors))}`
@@ -57,9 +57,9 @@ async function buildChangelog(): Promise<ChangelogVersion> {
             repo: 'date-fns',
             ref: c.hash,
           })
-          .then(({ data }) => [c.hash, data.author?.login] as [string, string])
-      )
-    )
+          .then(({ data }) => [c.hash, data.author?.login] as [string, string]),
+      ),
+    ),
   )
 
   const items: ChangelogItem[] = []
@@ -80,7 +80,7 @@ async function buildChangelog(): Promise<ChangelogVersion> {
       const issueCaptures = str.match(closesRegExp)
       if (issueCaptures)
         issues = (issues || []).concat(
-          issueCaptures.slice(1).map((issue) => parseInt(issue))
+          issueCaptures.slice(1).map((issue) => parseInt(issue)),
         )
     })
     if (!issues?.length) issues = undefined
@@ -132,7 +132,7 @@ function extractItems(
     author,
     pr,
     issues,
-  }: { author: Author; pr: number | undefined; issues: number[] | undefined }
+  }: { author: Author; pr: number | undefined; issues: number[] | undefined },
 ): ChangelogItem[] {
   const item = ({
     type,
@@ -145,9 +145,9 @@ function extractItems(
     const messageIssues = issuesCaptures?.reduce<number[]>(
       (acc, capture) =>
         acc.concat(
-          (capture.match(/#\d+/g) || []).map((str) => parseInt(str.slice(1)))
+          (capture.match(/#\d+/g) || []).map((str) => parseInt(str.slice(1))),
         ),
-      []
+      [],
     )
     const itemIssues = messageIssues?.length
       ? uniq(messageIssues.concat(issues || []))

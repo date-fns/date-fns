@@ -1,7 +1,7 @@
-import format from '../../../../src/format'
-import isValid from '../../../../src/isValid'
-import parse from '../../../../src/parse'
-import toDate from '../../../../src/toDate'
+import { format } from '../../../../src/format'
+import { isValid } from '../../../../src/isValid'
+import { parse } from '../../../../src/parse'
+import { toDate } from '../../../../src/toDate'
 import { Locale } from '../../../../src/types'
 import formatParseTokens from './formatParseTokens'
 
@@ -20,15 +20,15 @@ ${formatParseTokens
             const formatResult = format(
               date,
               token,
-              Object.assign({ locale }, options)
+              Object.assign({ locale }, options),
             )
-            let parsedDate
+            let parsedDate: Date | 'Errored'
             try {
               parsedDate = parse(
                 formatResult,
                 token,
                 date,
-                Object.assign({ locale }, options)
+                Object.assign({ locale }, options),
               )
             } catch (_err) {
               parsedDate = 'Errored'
@@ -38,8 +38,8 @@ ${formatParseTokens
               parsedDate === 'Errored'
                 ? parsedDate
                 : isValid(parsedDate)
-                ? parsedDate.toISOString()
-                : 'Invalid Date'
+                  ? parsedDate.toISOString()
+                  : 'Invalid Date'
 
             if (dateIndex === 0 && tokenIndex === 0) {
               return `| ${title} | ${token} | ${dateString} | ${formatResult} | ${parseResult} |`
