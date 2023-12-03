@@ -1,4 +1,4 @@
-import { GenericDateConstructor } from '../types.js'
+import { GenericDateConstructor } from "../types.js";
 
 /**
  * @name toDate
@@ -33,29 +33,29 @@ import { GenericDateConstructor } from '../types.js'
  * //=> Tue Feb 11 2014 11:30:30
  */
 export function toDate<DateType extends Date>(
-  argument: DateType | number | string
+  argument: DateType | number | string,
 ): DateType {
-  const argStr = Object.prototype.toString.call(argument)
+  const argStr = Object.prototype.toString.call(argument);
 
   // Clone the date
   if (
     argument instanceof Date ||
-    (typeof argument === 'object' && argStr === '[object Date]')
+    (typeof argument === "object" && argStr === "[object Date]")
   ) {
     // Prevent the date to lose the milliseconds when passed to new Date() in IE10
     return new (argument.constructor as GenericDateConstructor<DateType>)(
-      +argument
-    )
+      +argument,
+    );
   } else if (
-    typeof argument === 'number' ||
-    argStr === '[object Number]' ||
-    typeof argStr === 'string' ||
-    argStr === '[object String]'
+    typeof argument === "number" ||
+    argStr === "[object Number]" ||
+    typeof argStr === "string" ||
+    argStr === "[object String]"
   ) {
     // TODO: Can we get rid of as?
-    return new Date(argument) as DateType
+    return new Date(argument) as DateType;
   } else {
     // TODO: Can we get rid of as?
-    return new Date(NaN) as DateType
+    return new Date(NaN) as DateType;
   }
 }

@@ -1,4 +1,4 @@
-import { toDate } from '../toDate/index.js'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name setSeconds
@@ -22,9 +22,9 @@ import { toDate } from '../toDate/index.js'
  */
 export function setSeconds<DateType extends Date>(
   date: DateType | number | string,
-  seconds: number
+  seconds: number,
 ): DateType {
-  const _date = toDate(date)
-  _date.setSeconds(seconds)
-  return _date
+  const _date = toDate(date);
+  _date.setSeconds(seconds);
+  return _date;
 }

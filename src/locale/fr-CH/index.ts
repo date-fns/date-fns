@@ -1,11 +1,11 @@
 // Same as fr
-import { formatDistance } from '../fr/_lib/formatDistance/index.js'
-import { localize } from '../fr/_lib/localize/index.js'
-import { match } from '../fr/_lib/match/index.js'
-import type { Locale } from '../types.js'
+import { formatDistance } from "../fr/_lib/formatDistance/index.js";
+import { localize } from "../fr/_lib/localize/index.js";
+import { match } from "../fr/_lib/match/index.js";
+import type { Locale } from "../types.js";
 // Unique for fr-CH
-import { formatLong } from './_lib/formatLong/index.js'
-import { formatRelative } from './_lib/formatRelative/index.js'
+import { formatLong } from "./_lib/formatLong/index.js";
+import { formatRelative } from "./_lib/formatRelative/index.js";
 
 /**
  * @category Locales
@@ -18,7 +18,7 @@ import { formatRelative } from './_lib/formatRelative/index.js'
  * @author Alex Hoeing [@dcbn](https://github.com/dcbn)
  */
 export const frCH: Locale = {
-  code: 'fr-CH',
+  code: "fr-CH",
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
@@ -28,4 +28,4 @@ export const frCH: Locale = {
     weekStartsOn: 1 /* Monday */,
     firstWeekContainsDate: 4,
   },
-}
+};

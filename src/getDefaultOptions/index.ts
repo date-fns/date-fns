@@ -1,7 +1,7 @@
 import {
   DefaultOptions,
   getDefaultOptions as getInternalDefaultOptions,
-} from '../_lib/defaultOptions/index.js'
+} from "../_lib/defaultOptions/index.js";
 
 /**
  * @name getDefaultOptions
@@ -28,5 +28,5 @@ import {
  * //=> { weekStarsOn: 1, firstWeekContainsDate: 4 }
  */
 export function getDefaultOptions(): DefaultOptions {
-  return Object.assign({}, getInternalDefaultOptions())
+  return Object.assign({}, getInternalDefaultOptions());
 }

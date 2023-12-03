@@ -1,4 +1,4 @@
-import { isSameQuarter } from '../isSameQuarter/index.js'
+import { isSameQuarter } from "../isSameQuarter/index.js";
 
 /**
  * @name isThisQuarter
@@ -21,7 +21,7 @@ import { isSameQuarter } from '../isSameQuarter/index.js'
  * //=> true
  */
 export function isThisQuarter<DateType extends Date>(
-  date: DateType | number | string
+  date: DateType | number | string,
 ): boolean {
-  return isSameQuarter(Date.now(), date)
+  return isSameQuarter(Date.now(), date);
 }

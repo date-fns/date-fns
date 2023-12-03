@@ -6,45 +6,45 @@ import {
   secondsInQuarter,
   secondsInWeek,
   secondsInYear,
-} from '../constants/index.js'
-import { differenceInCalendarDays } from '../differenceInCalendarDays/index.js'
-import { differenceInCalendarMonths } from '../differenceInCalendarMonths/index.js'
-import { differenceInCalendarQuarters } from '../differenceInCalendarQuarters/index.js'
-import { differenceInCalendarWeeks } from '../differenceInCalendarWeeks/index.js'
-import { differenceInCalendarYears } from '../differenceInCalendarYears/index.js'
-import { differenceInHours } from '../differenceInHours/index.js'
-import { differenceInMinutes } from '../differenceInMinutes/index.js'
-import { differenceInSeconds } from '../differenceInSeconds/index.js'
-import { toDate } from '../toDate/index.js'
+} from "../constants/index.js";
+import { differenceInCalendarDays } from "../differenceInCalendarDays/index.js";
+import { differenceInCalendarMonths } from "../differenceInCalendarMonths/index.js";
+import { differenceInCalendarQuarters } from "../differenceInCalendarQuarters/index.js";
+import { differenceInCalendarWeeks } from "../differenceInCalendarWeeks/index.js";
+import { differenceInCalendarYears } from "../differenceInCalendarYears/index.js";
+import { differenceInHours } from "../differenceInHours/index.js";
+import { differenceInMinutes } from "../differenceInMinutes/index.js";
+import { differenceInSeconds } from "../differenceInSeconds/index.js";
+import { toDate } from "../toDate/index.js";
 
 /**
  * The {@link intlFormatDistance} function options.
  */
 export interface IntlFormatDistanceOptions {
   /** Force the distance unit */
-  unit?: IntlFormatDistanceUnit
+  unit?: IntlFormatDistanceUnit;
   /** The locale(s) to use (see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument) */
-  locale?: Intl.BCP47LanguageTag | Intl.BCP47LanguageTag[]
+  locale?: Intl.BCP47LanguageTag | Intl.BCP47LanguageTag[];
   /** The locale matching algorithm to use. Other value: 'lookup'. See MDN for details [Locale identification and negotiation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locale_identification_and_negotiation) */
-  localeMatcher?: Intl.RelativeTimeFormatLocaleMatcher
+  localeMatcher?: Intl.RelativeTimeFormatLocaleMatcher;
   /** The output message format. The values are 'auto' (e.g. `yesterday`), 'always'(e.g. `1 day ago`) */
-  numeric?: Intl.RelativeTimeFormatNumeric
+  numeric?: Intl.RelativeTimeFormatNumeric;
   /** The length of the result. The values are: 'long' (e.g. `1 month`), 'short' (e.g. 'in 1 mo.'), 'narrow' (e.g. 'in 1 mo.'). The narrow one could be similar to the short one for some locales. */
-  style?: Intl.RelativeTimeFormatStyle
+  style?: Intl.RelativeTimeFormatStyle;
 }
 
 /**
  * The unit used to format the distance in {@link intlFormatDistance}.
  */
 export type IntlFormatDistanceUnit =
-  | 'year'
-  | 'quarter'
-  | 'month'
-  | 'week'
-  | 'day'
-  | 'hour'
-  | 'minute'
-  | 'second'
+  | "year"
+  | "quarter"
+  | "month"
+  | "week"
+  | "day"
+  | "hour"
+  | "minute"
+  | "second";
 
 /**
  * @name intlFormatDistance
@@ -148,81 +148,81 @@ export type IntlFormatDistanceUnit =
 export function intlFormatDistance<DateType extends Date>(
   date: DateType | number | string,
   baseDate: DateType | number | string,
-  options?: IntlFormatDistanceOptions
+  options?: IntlFormatDistanceOptions,
 ): string {
-  let value: number = 0
-  let unit: Intl.RelativeTimeFormatUnit
-  const dateLeft = toDate(date)
-  const dateRight = toDate(baseDate)
+  let value: number = 0;
+  let unit: Intl.RelativeTimeFormatUnit;
+  const dateLeft = toDate(date);
+  const dateRight = toDate(baseDate);
 
   if (!options?.unit) {
     // Get the unit based on diffInSeconds calculations if no unit is specified
-    const diffInSeconds = differenceInSeconds(dateLeft, dateRight) // The smallest unit
+    const diffInSeconds = differenceInSeconds(dateLeft, dateRight); // The smallest unit
 
     if (Math.abs(diffInSeconds) < secondsInMinute) {
-      value = differenceInSeconds(dateLeft, dateRight)
-      unit = 'second'
+      value = differenceInSeconds(dateLeft, dateRight);
+      unit = "second";
     } else if (Math.abs(diffInSeconds) < secondsInHour) {
-      value = differenceInMinutes(dateLeft, dateRight)
-      unit = 'minute'
+      value = differenceInMinutes(dateLeft, dateRight);
+      unit = "minute";
     } else if (
       Math.abs(diffInSeconds) < secondsInDay &&
       Math.abs(differenceInCalendarDays(dateLeft, dateRight)) < 1
     ) {
-      value = differenceInHours(dateLeft, dateRight)
-      unit = 'hour'
+      value = differenceInHours(dateLeft, dateRight);
+      unit = "hour";
     } else if (
       Math.abs(diffInSeconds) < secondsInWeek &&
       (value = differenceInCalendarDays(dateLeft, dateRight)) &&
       Math.abs(value) < 7
     ) {
-      unit = 'day'
+      unit = "day";
     } else if (Math.abs(diffInSeconds) < secondsInMonth) {
-      value = differenceInCalendarWeeks(dateLeft, dateRight)
-      unit = 'week'
+      value = differenceInCalendarWeeks(dateLeft, dateRight);
+      unit = "week";
     } else if (Math.abs(diffInSeconds) < secondsInQuarter) {
-      value = differenceInCalendarMonths(dateLeft, dateRight)
-      unit = 'month'
+      value = differenceInCalendarMonths(dateLeft, dateRight);
+      unit = "month";
     } else if (Math.abs(diffInSeconds) < secondsInYear) {
       if (differenceInCalendarQuarters(dateLeft, dateRight) < 4) {
         // To filter out cases that are less than a year but match 4 quarters
-        value = differenceInCalendarQuarters(dateLeft, dateRight)
-        unit = 'quarter'
+        value = differenceInCalendarQuarters(dateLeft, dateRight);
+        unit = "quarter";
       } else {
-        value = differenceInCalendarYears(dateLeft, dateRight)
-        unit = 'year'
+        value = differenceInCalendarYears(dateLeft, dateRight);
+        unit = "year";
       }
     } else {
-      value = differenceInCalendarYears(dateLeft, dateRight)
-      unit = 'year'
+      value = differenceInCalendarYears(dateLeft, dateRight);
+      unit = "year";
     }
   } else {
     // Get the value if unit is specified
-    unit = options?.unit
-    if (unit === 'second') {
-      value = differenceInSeconds(dateLeft, dateRight)
-    } else if (unit === 'minute') {
-      value = differenceInMinutes(dateLeft, dateRight)
-    } else if (unit === 'hour') {
-      value = differenceInHours(dateLeft, dateRight)
-    } else if (unit === 'day') {
-      value = differenceInCalendarDays(dateLeft, dateRight)
-    } else if (unit === 'week') {
-      value = differenceInCalendarWeeks(dateLeft, dateRight)
-    } else if (unit === 'month') {
-      value = differenceInCalendarMonths(dateLeft, dateRight)
-    } else if (unit === 'quarter') {
-      value = differenceInCalendarQuarters(dateLeft, dateRight)
-    } else if (unit === 'year') {
-      value = differenceInCalendarYears(dateLeft, dateRight)
+    unit = options?.unit;
+    if (unit === "second") {
+      value = differenceInSeconds(dateLeft, dateRight);
+    } else if (unit === "minute") {
+      value = differenceInMinutes(dateLeft, dateRight);
+    } else if (unit === "hour") {
+      value = differenceInHours(dateLeft, dateRight);
+    } else if (unit === "day") {
+      value = differenceInCalendarDays(dateLeft, dateRight);
+    } else if (unit === "week") {
+      value = differenceInCalendarWeeks(dateLeft, dateRight);
+    } else if (unit === "month") {
+      value = differenceInCalendarMonths(dateLeft, dateRight);
+    } else if (unit === "quarter") {
+      value = differenceInCalendarQuarters(dateLeft, dateRight);
+    } else if (unit === "year") {
+      value = differenceInCalendarYears(dateLeft, dateRight);
     }
   }
 
   const rtf = new Intl.RelativeTimeFormat(options?.locale, {
     localeMatcher: options?.localeMatcher,
-    numeric: options?.numeric || 'auto',
+    numeric: options?.numeric || "auto",
     style: options?.style,
-  })
+  });
 
-  return rtf.format(value, unit)
+  return rtf.format(value, unit);
 }

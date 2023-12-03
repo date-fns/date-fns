@@ -1,6 +1,6 @@
-import { max } from '../max/index.js'
-import { min } from '../min/index.js'
-import type { Interval } from '../types.js'
+import { max } from "../max/index.js";
+import { min } from "../min/index.js";
+import type { Interval } from "../types.js";
 
 /**
  * @name clamp
@@ -32,7 +32,7 @@ import type { Interval } from '../types.js'
  */
 export function clamp<DateType extends Date>(
   date: DateType | number | string,
-  interval: Interval
+  interval: Interval,
 ): DateType | Date {
-  return min([max([date, interval.start]), interval.end])
+  return min([max([date, interval.start]), interval.end]);
 }

@@ -1,4 +1,4 @@
-import { monthsInQuarter } from '../constants/index.js'
+import { monthsInQuarter } from "../constants/index.js";
 
 /**
  * @name monthsToQuarters
@@ -23,6 +23,6 @@ import { monthsInQuarter } from '../constants/index.js'
  * //=> 2
  */
 export function monthsToQuarters(months: number): number {
-  const quarters = months / monthsInQuarter
-  return Math.floor(quarters)
+  const quarters = months / monthsInQuarter;
+  return Math.floor(quarters);
 }

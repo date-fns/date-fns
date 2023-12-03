@@ -1,4 +1,4 @@
-import type { FormatRelativeFn } from '../../../types.js'
+import type { FormatRelativeFn } from "../../../types.js";
 
 const formatRelativeLocale = {
   lastWeek: "'கடந்த' eeee p 'மணிக்கு'",
@@ -6,12 +6,12 @@ const formatRelativeLocale = {
   today: "'இன்று ' p 'மணிக்கு'",
   tomorrow: "'நாளை ' p 'மணிக்கு'",
   nextWeek: "eeee p 'மணிக்கு'",
-  other: 'P',
-}
+  other: "P",
+};
 
 export const formatRelative: FormatRelativeFn = (
   token,
   _date,
   _baseDate,
-  _options
-) => formatRelativeLocale[token]
+  _options,
+) => formatRelativeLocale[token];

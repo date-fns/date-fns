@@ -1,17 +1,17 @@
-import { differenceInCalendarDays } from '../differenceInCalendarDays/index.js'
-import { format } from '../format/index.js'
-import type { FormatRelativeToken } from '../locale/types.js'
-import { toDate } from '../toDate/index.js'
-import type { LocalizedOptions, WeekOptions } from '../types.js'
-import { defaultLocale } from '../_lib/defaultLocale/index.js'
-import { getDefaultOptions } from '../_lib/defaultOptions/index.js'
+import { differenceInCalendarDays } from "../differenceInCalendarDays/index.js";
+import { format } from "../format/index.js";
+import type { FormatRelativeToken } from "../locale/types.js";
+import { toDate } from "../toDate/index.js";
+import type { LocalizedOptions, WeekOptions } from "../types.js";
+import { defaultLocale } from "../_lib/defaultLocale/index.js";
+import { getDefaultOptions } from "../_lib/defaultOptions/index.js";
 
 /**
  * The {@link formatRelative} function options.
  */
 export interface FormatRelativeOptions
   extends LocalizedOptions<
-      'options' | 'localize' | 'formatLong' | 'formatRelative'
+      "options" | "localize" | "formatLong" | "formatRelative"
     >,
     WeekOptions {}
 
@@ -54,46 +54,46 @@ export interface FormatRelativeOptions
 export function formatRelative<DateType extends Date>(
   date: DateType | number | string,
   baseDate: DateType | number | string,
-  options?: FormatRelativeOptions
+  options?: FormatRelativeOptions,
 ): string {
-  const _date = toDate(date)
-  const _baseDate = toDate(baseDate)
+  const _date = toDate(date);
+  const _baseDate = toDate(baseDate);
 
-  const defaultOptions = getDefaultOptions()
-  const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale
+  const defaultOptions = getDefaultOptions();
+  const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale;
   const weekStartsOn =
     options?.weekStartsOn ??
     options?.locale?.options?.weekStartsOn ??
     defaultOptions.weekStartsOn ??
     defaultOptions.locale?.options?.weekStartsOn ??
-    0
+    0;
 
-  const diff = differenceInCalendarDays(_date, _baseDate)
+  const diff = differenceInCalendarDays(_date, _baseDate);
 
   if (isNaN(diff)) {
-    throw new RangeError('Invalid time value')
+    throw new RangeError("Invalid time value");
   }
 
-  let token: FormatRelativeToken
+  let token: FormatRelativeToken;
   if (diff < -6) {
-    token = 'other'
+    token = "other";
   } else if (diff < -1) {
-    token = 'lastWeek'
+    token = "lastWeek";
   } else if (diff < 0) {
-    token = 'yesterday'
+    token = "yesterday";
   } else if (diff < 1) {
-    token = 'today'
+    token = "today";
   } else if (diff < 2) {
-    token = 'tomorrow'
+    token = "tomorrow";
   } else if (diff < 7) {
-    token = 'nextWeek'
+    token = "nextWeek";
   } else {
-    token = 'other'
+    token = "other";
   }
 
   const formatStr = locale.formatRelative(token, _date, _baseDate, {
     locale,
     weekStartsOn,
-  })
-  return format(_date, formatStr, { locale, weekStartsOn })
+  });
+  return format(_date, formatStr, { locale, weekStartsOn });
 }

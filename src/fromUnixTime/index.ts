@@ -1,4 +1,4 @@
-import { toDate } from '../toDate/index.js'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name fromUnixTime
@@ -18,5 +18,5 @@ import { toDate } from '../toDate/index.js'
  * //=> Wed Feb 29 2012 11:45:05
  */
 export function fromUnixTime(unixTime: number): Date {
-  return toDate(unixTime * 1000)
+  return toDate(unixTime * 1000);
 }

@@ -1,4 +1,4 @@
-import { daysInWeek } from '../constants/index.js'
+import { daysInWeek } from "../constants/index.js";
 
 /**
  * @name daysToWeeks
@@ -25,6 +25,6 @@ import { daysInWeek } from '../constants/index.js'
  * //=> 1
  */
 export function daysToWeeks(days: number): number {
-  const weeks = days / daysInWeek
-  return Math.floor(weeks)
+  const weeks = days / daysInWeek;
+  return Math.floor(weeks);
 }

@@ -1,4 +1,4 @@
-import { toDate } from '../toDate/index.js'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name isSameYear
@@ -22,9 +22,9 @@ import { toDate } from '../toDate/index.js'
  */
 export function isSameYear<DateType extends Date>(
   dateLeft: DateType | number | string,
-  dateRight: DateType | number | string
+  dateRight: DateType | number | string,
 ): boolean {
-  const _dateLeft = toDate(dateLeft)
-  const _dateRight = toDate(dateRight)
-  return _dateLeft.getFullYear() === _dateRight.getFullYear()
+  const _dateLeft = toDate(dateLeft);
+  const _dateRight = toDate(dateRight);
+  return _dateLeft.getFullYear() === _dateRight.getFullYear();
 }

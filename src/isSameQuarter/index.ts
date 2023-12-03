@@ -1,4 +1,4 @@
-import { startOfQuarter } from '../startOfQuarter/index.js'
+import { startOfQuarter } from "../startOfQuarter/index.js";
 
 /**
  * @name isSameQuarter
@@ -27,10 +27,10 @@ import { startOfQuarter } from '../startOfQuarter/index.js'
  */
 export function isSameQuarter<DateType extends Date>(
   dateLeft: DateType | number | string,
-  dateRight: DateType | number | string
+  dateRight: DateType | number | string,
 ): boolean {
-  const dateLeftStartOfQuarter = startOfQuarter(dateLeft)
-  const dateRightStartOfQuarter = startOfQuarter(dateRight)
+  const dateLeftStartOfQuarter = startOfQuarter(dateLeft);
+  const dateRightStartOfQuarter = startOfQuarter(dateRight);
 
-  return +dateLeftStartOfQuarter === +dateRightStartOfQuarter
+  return +dateLeftStartOfQuarter === +dateRightStartOfQuarter;
 }

@@ -1,4 +1,4 @@
-import { toDate } from '../toDate/index.js'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name setDate
@@ -22,9 +22,9 @@ import { toDate } from '../toDate/index.js'
  */
 export function setDate<DateType extends Date>(
   date: DateType | number | string,
-  dayOfMonth: number
+  dayOfMonth: number,
 ): DateType {
-  const _date = toDate(date)
-  _date.setDate(dayOfMonth)
-  return _date
+  const _date = toDate(date);
+  _date.setDate(dayOfMonth);
+  return _date;
 }

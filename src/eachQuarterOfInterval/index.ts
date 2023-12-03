@@ -1,7 +1,7 @@
-import { addQuarters } from '../addQuarters/index.js'
-import { startOfQuarter } from '../startOfQuarter/index.js'
-import { toDate } from '../toDate/index.js'
-import type { Interval, StepOptions } from '../types.js'
+import { addQuarters } from "../addQuarters/index.js";
+import { startOfQuarter } from "../startOfQuarter/index.js";
+import { toDate } from "../toDate/index.js";
+import type { Interval, StepOptions } from "../types.js";
 
 /**
  * The {@link eachQuarterOfInterval} function options.
@@ -36,32 +36,32 @@ export interface EachQuarterOfIntervalOptions extends StepOptions {}
  */
 export function eachQuarterOfInterval<DateType extends Date>(
   interval: Interval<DateType>,
-  options?: EachQuarterOfIntervalOptions
+  options?: EachQuarterOfIntervalOptions,
 ): DateType[] {
-  const startDate = toDate(interval.start)
-  const endDate = toDate(interval.end)
+  const startDate = toDate(interval.start);
+  const endDate = toDate(interval.end);
 
-  let reversed = +startDate > +endDate
+  let reversed = +startDate > +endDate;
   const endTime = reversed
     ? +startOfQuarter(startDate)
-    : +startOfQuarter(endDate)
+    : +startOfQuarter(endDate);
   let currentDate = reversed
     ? startOfQuarter(endDate)
-    : startOfQuarter(startDate)
+    : startOfQuarter(startDate);
 
-  let step = options?.step ?? 1
-  if (!step) return []
+  let step = options?.step ?? 1;
+  if (!step) return [];
   if (step < 0) {
-    step = -step
-    reversed = !reversed
+    step = -step;
+    reversed = !reversed;
   }
 
-  const dates = []
+  const dates = [];
 
   while (+currentDate <= endTime) {
-    dates.push(toDate(currentDate))
-    currentDate = addQuarters(currentDate, step)
+    dates.push(toDate(currentDate));
+    currentDate = addQuarters(currentDate, step);
   }
 
-  return reversed ? dates.reverse() : dates
+  return reversed ? dates.reverse() : dates;
 }

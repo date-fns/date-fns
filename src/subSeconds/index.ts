@@ -1,4 +1,4 @@
-import { addSeconds } from '../addSeconds/index.js'
+import { addSeconds } from "../addSeconds/index.js";
 
 /**
  * @name subSeconds
@@ -22,7 +22,7 @@ import { addSeconds } from '../addSeconds/index.js'
  */
 export function subSeconds<DateType extends Date>(
   date: DateType | number | string,
-  amount: number
+  amount: number,
 ): DateType {
-  return addSeconds(date, -amount)
+  return addSeconds(date, -amount);
 }

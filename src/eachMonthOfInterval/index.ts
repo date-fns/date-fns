@@ -1,5 +1,5 @@
-import { toDate } from '../toDate/index.js'
-import type { Interval, StepOptions } from '../types.js'
+import { toDate } from "../toDate/index.js";
+import type { Interval, StepOptions } from "../types.js";
 
 /**
  * The {@link eachMonthOfInterval} function options.
@@ -38,30 +38,30 @@ export interface EachMonthOfIntervalOptions extends StepOptions {}
  */
 export function eachMonthOfInterval<DateType extends Date>(
   interval: Interval<DateType>,
-  options?: EachMonthOfIntervalOptions
+  options?: EachMonthOfIntervalOptions,
 ): DateType[] {
-  const startDate = toDate(interval.start)
-  const endDate = toDate(interval.end)
+  const startDate = toDate(interval.start);
+  const endDate = toDate(interval.end);
 
-  let reversed = +startDate > +endDate
-  const endTime = reversed ? +startDate : +endDate
-  const currentDate = reversed ? endDate : startDate
-  currentDate.setHours(0, 0, 0, 0)
-  currentDate.setDate(1)
+  let reversed = +startDate > +endDate;
+  const endTime = reversed ? +startDate : +endDate;
+  const currentDate = reversed ? endDate : startDate;
+  currentDate.setHours(0, 0, 0, 0);
+  currentDate.setDate(1);
 
-  let step = options?.step ?? 1
-  if (!step) return []
+  let step = options?.step ?? 1;
+  if (!step) return [];
   if (step < 0) {
-    step = -step
-    reversed = !reversed
+    step = -step;
+    reversed = !reversed;
   }
 
-  const dates = []
+  const dates = [];
 
   while (+currentDate <= endTime) {
-    dates.push(toDate(currentDate))
-    currentDate.setMonth(currentDate.getMonth() + step)
+    dates.push(toDate(currentDate));
+    currentDate.setMonth(currentDate.getMonth() + step);
   }
 
-  return reversed ? dates.reverse() : dates
+  return reversed ? dates.reverse() : dates;
 }

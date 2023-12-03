@@ -1,6 +1,6 @@
-import { millisecondsInWeek } from '../constants/index.js'
-import { startOfISOWeek } from '../startOfISOWeek/index.js'
-import { getTimezoneOffsetInMilliseconds } from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
+import { millisecondsInWeek } from "../constants/index.js";
+import { startOfISOWeek } from "../startOfISOWeek/index.js";
+import { getTimezoneOffsetInMilliseconds } from "../_lib/getTimezoneOffsetInMilliseconds/index.js";
 
 /**
  * @name differenceInCalendarISOWeeks
@@ -29,20 +29,20 @@ import { getTimezoneOffsetInMilliseconds } from '../_lib/getTimezoneOffsetInMill
  */
 export function differenceInCalendarISOWeeks<DateType extends Date>(
   dateLeft: DateType | number | string,
-  dateRight: DateType | number | string
+  dateRight: DateType | number | string,
 ): number {
-  const startOfISOWeekLeft = startOfISOWeek(dateLeft)
-  const startOfISOWeekRight = startOfISOWeek(dateRight)
+  const startOfISOWeekLeft = startOfISOWeek(dateLeft);
+  const startOfISOWeekRight = startOfISOWeek(dateRight);
 
   const timestampLeft =
     startOfISOWeekLeft.getTime() -
-    getTimezoneOffsetInMilliseconds(startOfISOWeekLeft)
+    getTimezoneOffsetInMilliseconds(startOfISOWeekLeft);
   const timestampRight =
     startOfISOWeekRight.getTime() -
-    getTimezoneOffsetInMilliseconds(startOfISOWeekRight)
+    getTimezoneOffsetInMilliseconds(startOfISOWeekRight);
 
   // Round the number of days to the nearest integer
   // because the number of milliseconds in a week is not constant
   // (e.g. it's different in the week of the daylight saving time clock shift)
-  return Math.round((timestampLeft - timestampRight) / millisecondsInWeek)
+  return Math.round((timestampLeft - timestampRight) / millisecondsInWeek);
 }

@@ -1,4 +1,4 @@
-import { toDate } from '../toDate/index.js'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name getMonth
@@ -20,9 +20,9 @@ import { toDate } from '../toDate/index.js'
  * //=> 1
  */
 export function getMonth<DateType extends Date>(
-  date: DateType | number | string
+  date: DateType | number | string,
 ): number {
-  const _date = toDate(date)
-  const month = _date.getMonth()
-  return month
+  const _date = toDate(date);
+  const month = _date.getMonth();
+  return month;
 }

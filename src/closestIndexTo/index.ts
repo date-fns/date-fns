@@ -1,4 +1,4 @@
-import { toDate } from '../toDate/index.js'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name closestIndexTo
@@ -28,31 +28,31 @@ import { toDate } from '../toDate/index.js'
  */
 export function closestIndexTo<DateType extends Date>(
   dateToCompare: DateType | number | string,
-  dates: Array<DateType | number | string>
+  dates: Array<DateType | number | string>,
 ): number | undefined {
-  const date = toDate(dateToCompare)
+  const date = toDate(dateToCompare);
 
-  if (isNaN(Number(date))) return NaN
+  if (isNaN(Number(date))) return NaN;
 
-  const timeToCompare = date.getTime()
+  const timeToCompare = date.getTime();
 
-  let result: number | undefined
-  let minDistance: number
+  let result: number | undefined;
+  let minDistance: number;
   dates.forEach(function (dirtyDate, index) {
-    const currentDate = toDate(dirtyDate)
+    const currentDate = toDate(dirtyDate);
 
     if (isNaN(Number(currentDate))) {
-      result = NaN
-      minDistance = NaN
-      return
+      result = NaN;
+      minDistance = NaN;
+      return;
     }
 
-    const distance = Math.abs(timeToCompare - currentDate.getTime())
+    const distance = Math.abs(timeToCompare - currentDate.getTime());
     if (result == null || distance < minDistance) {
-      result = index
-      minDistance = distance
+      result = index;
+      minDistance = distance;
     }
-  })
+  });
 
-  return result
+  return result;
 }

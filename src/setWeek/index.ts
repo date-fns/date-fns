@@ -1,16 +1,16 @@
-import { getWeek } from '../getWeek/index.js'
-import { toDate } from '../toDate/index.js'
+import { getWeek } from "../getWeek/index.js";
+import { toDate } from "../toDate/index.js";
 import type {
   FirstWeekContainsDateOptions,
   LocalizedOptions,
   WeekOptions,
-} from '../types.js'
+} from "../types.js";
 
 /**
  * The {@link setWeek} function options.
  */
 export interface SetWeekOptions
-  extends LocalizedOptions<'options'>,
+  extends LocalizedOptions<"options">,
     WeekOptions,
     FirstWeekContainsDateOptions {}
 
@@ -54,10 +54,10 @@ export interface SetWeekOptions
 export function setWeek<DateType extends Date>(
   date: DateType | number | string,
   week: number,
-  options?: SetWeekOptions
+  options?: SetWeekOptions,
 ): DateType {
-  const _date = toDate(date)
-  const diff = getWeek(_date, options) - week
-  _date.setDate(_date.getDate() - diff * 7)
-  return _date
+  const _date = toDate(date);
+  const diff = getWeek(_date, options) - week;
+  _date.setDate(_date.getDate() - diff * 7);
+  return _date;
 }

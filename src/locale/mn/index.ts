@@ -1,9 +1,9 @@
-import type { Locale } from '../types.js'
-import { formatDistance } from './_lib/formatDistance/index.js'
-import { formatLong } from './_lib/formatLong/index.js'
-import { formatRelative } from './_lib/formatRelative/index.js'
-import { localize } from './_lib/localize/index.js'
-import { match } from './_lib/match/index.js'
+import type { Locale } from "../types.js";
+import { formatDistance } from "./_lib/formatDistance/index.js";
+import { formatLong } from "./_lib/formatLong/index.js";
+import { formatRelative } from "./_lib/formatRelative/index.js";
+import { localize } from "./_lib/localize/index.js";
+import { match } from "./_lib/match/index.js";
 
 /**
  * @category Locales
@@ -13,7 +13,7 @@ import { match } from './_lib/match/index.js'
  * @author Bilguun Ochirbat [@bilguun0203](https://github.com/bilguun0203)
  */
 export const mn: Locale = {
-  code: 'mn',
+  code: "mn",
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
@@ -23,4 +23,4 @@ export const mn: Locale = {
     weekStartsOn: 1 /* Monday */,
     firstWeekContainsDate: 1,
   },
-}
+};

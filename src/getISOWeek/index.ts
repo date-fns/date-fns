@@ -1,7 +1,7 @@
-import { millisecondsInWeek } from '../constants/index.js'
-import { startOfISOWeek } from '../startOfISOWeek/index.js'
-import { startOfISOWeekYear } from '../startOfISOWeekYear/index.js'
-import { toDate } from '../toDate/index.js'
+import { millisecondsInWeek } from "../constants/index.js";
+import { startOfISOWeek } from "../startOfISOWeek/index.js";
+import { startOfISOWeekYear } from "../startOfISOWeekYear/index.js";
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name getISOWeek
@@ -25,14 +25,14 @@ import { toDate } from '../toDate/index.js'
  * //=> 53
  */
 export function getISOWeek<DateType extends Date>(
-  date: DateType | number | string
+  date: DateType | number | string,
 ): number {
-  const _date = toDate(date)
+  const _date = toDate(date);
   const diff =
-    startOfISOWeek(_date).getTime() - startOfISOWeekYear(_date).getTime()
+    startOfISOWeek(_date).getTime() - startOfISOWeekYear(_date).getTime();
 
   // Round the number of days to the nearest integer
   // because the number of milliseconds in a week is not constant
   // (e.g. it's different in the week of the daylight saving time clock shift)
-  return Math.round(diff / millisecondsInWeek) + 1
+  return Math.round(diff / millisecondsInWeek) + 1;
 }

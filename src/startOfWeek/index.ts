@@ -1,12 +1,12 @@
-import { toDate } from '../toDate/index.js'
-import type { LocalizedOptions, WeekOptions } from '../types.js'
-import { getDefaultOptions } from '../_lib/defaultOptions/index.js'
+import { toDate } from "../toDate/index.js";
+import type { LocalizedOptions, WeekOptions } from "../types.js";
+import { getDefaultOptions } from "../_lib/defaultOptions/index.js";
 
 /**
  * The {@link startOfWeek} function options.
  */
 export interface StartOfWeekOptions
-  extends LocalizedOptions<'options'>,
+  extends LocalizedOptions<"options">,
     WeekOptions {}
 
 /**
@@ -37,21 +37,21 @@ export interface StartOfWeekOptions
  */
 export function startOfWeek<DateType extends Date>(
   date: DateType | number | string,
-  options?: StartOfWeekOptions
+  options?: StartOfWeekOptions,
 ): DateType {
-  const defaultOptions = getDefaultOptions()
+  const defaultOptions = getDefaultOptions();
   const weekStartsOn =
     options?.weekStartsOn ??
     options?.locale?.options?.weekStartsOn ??
     defaultOptions.weekStartsOn ??
     defaultOptions.locale?.options?.weekStartsOn ??
-    0
+    0;
 
-  const _date = toDate(date)
-  const day = _date.getDay()
-  const diff = (day < weekStartsOn ? 7 : 0) + day - weekStartsOn
+  const _date = toDate(date);
+  const day = _date.getDay();
+  const diff = (day < weekStartsOn ? 7 : 0) + day - weekStartsOn;
 
-  _date.setDate(_date.getDate() - diff)
-  _date.setHours(0, 0, 0, 0)
-  return _date
+  _date.setDate(_date.getDate() - diff);
+  _date.setHours(0, 0, 0, 0);
+  return _date;
 }

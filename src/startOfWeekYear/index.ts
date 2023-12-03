@@ -1,18 +1,18 @@
-import { constructFrom } from '../constructFrom/index.js'
-import { getWeekYear } from '../getWeekYear/index.js'
-import { startOfWeek } from '../startOfWeek/index.js'
+import { constructFrom } from "../constructFrom/index.js";
+import { getWeekYear } from "../getWeekYear/index.js";
+import { startOfWeek } from "../startOfWeek/index.js";
 import type {
   FirstWeekContainsDateOptions,
   LocalizedOptions,
   WeekOptions,
-} from '../types.js'
-import { getDefaultOptions } from '../_lib/defaultOptions/index.js'
+} from "../types.js";
+import { getDefaultOptions } from "../_lib/defaultOptions/index.js";
 
 /**
  * The {@link startOfWeekYear} function options.
  */
 export interface StartOfWeekYearOptions
-  extends LocalizedOptions<'options'>,
+  extends LocalizedOptions<"options">,
     FirstWeekContainsDateOptions,
     WeekOptions {}
 
@@ -54,20 +54,20 @@ export interface StartOfWeekYearOptions
  */
 export function startOfWeekYear<DateType extends Date>(
   date: DateType | number | string,
-  options?: StartOfWeekYearOptions
+  options?: StartOfWeekYearOptions,
 ): DateType {
-  const defaultOptions = getDefaultOptions()
+  const defaultOptions = getDefaultOptions();
   const firstWeekContainsDate =
     options?.firstWeekContainsDate ??
     options?.locale?.options?.firstWeekContainsDate ??
     defaultOptions.firstWeekContainsDate ??
     defaultOptions.locale?.options?.firstWeekContainsDate ??
-    1
+    1;
 
-  const year = getWeekYear(date, options)
-  const firstWeek = constructFrom(date, 0)
-  firstWeek.setFullYear(year, 0, firstWeekContainsDate)
-  firstWeek.setHours(0, 0, 0, 0)
-  const _date = startOfWeek(firstWeek, options)
-  return _date
+  const year = getWeekYear(date, options);
+  const firstWeek = constructFrom(date, 0);
+  firstWeek.setFullYear(year, 0, firstWeekContainsDate);
+  firstWeek.setHours(0, 0, 0, 0);
+  const _date = startOfWeek(firstWeek, options);
+  return _date;
 }

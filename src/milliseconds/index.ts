@@ -1,5 +1,5 @@
-import { daysInYear } from '../constants/index.js'
-import type { Duration } from '../types.js'
+import { daysInYear } from "../constants/index.js";
+import type { Duration } from "../types.js";
 
 /**
  * @name milliseconds
@@ -39,18 +39,18 @@ export function milliseconds({
   minutes,
   seconds,
 }: Duration): number {
-  let totalDays = 0
+  let totalDays = 0;
 
-  if (years) totalDays += years * daysInYear
-  if (months) totalDays += months * (daysInYear / 12)
-  if (weeks) totalDays += weeks * 7
-  if (days) totalDays += days
+  if (years) totalDays += years * daysInYear;
+  if (months) totalDays += months * (daysInYear / 12);
+  if (weeks) totalDays += weeks * 7;
+  if (days) totalDays += days;
 
-  let totalSeconds = totalDays * 24 * 60 * 60
+  let totalSeconds = totalDays * 24 * 60 * 60;
 
-  if (hours) totalSeconds += hours * 60 * 60
-  if (minutes) totalSeconds += minutes * 60
-  if (seconds) totalSeconds += seconds
+  if (hours) totalSeconds += hours * 60 * 60;
+  if (minutes) totalSeconds += minutes * 60;
+  if (seconds) totalSeconds += seconds;
 
-  return Math.round(totalSeconds * 1000)
+  return Math.round(totalSeconds * 1000);
 }

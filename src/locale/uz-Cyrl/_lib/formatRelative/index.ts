@@ -1,4 +1,4 @@
-import type { FormatRelativeFn } from '../../../types.js'
+import type { FormatRelativeFn } from "../../../types.js";
 
 const formatRelativeLocale = {
   lastWeek: "'ўтган' eeee p 'да'",
@@ -6,12 +6,12 @@ const formatRelativeLocale = {
   today: "'бугун' p 'да'",
   tomorrow: "'эртага' p 'да'",
   nextWeek: "eeee p 'да'",
-  other: 'P',
-}
+  other: "P",
+};
 
 export const formatRelative: FormatRelativeFn = (
   token,
   _date,
   _baseDate,
-  _options
-) => formatRelativeLocale[token]
+  _options,
+) => formatRelativeLocale[token];

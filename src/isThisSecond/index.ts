@@ -1,4 +1,4 @@
-import { isSameSecond } from '../isSameSecond/index.js'
+import { isSameSecond } from "../isSameSecond/index.js";
 
 /**
  * @name isThisSecond
@@ -22,7 +22,7 @@ import { isSameSecond } from '../isSameSecond/index.js'
  * //=> true
  */
 export function isThisSecond<DateType extends Date>(
-  date: DateType | number | string
+  date: DateType | number | string,
 ): boolean {
-  return isSameSecond(Date.now(), date)
+  return isSameSecond(Date.now(), date);
 }

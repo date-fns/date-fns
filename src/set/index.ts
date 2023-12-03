@@ -1,7 +1,7 @@
-import { constructFrom } from '../constructFrom/index.js'
-import { setMonth } from '../setMonth/index.js'
-import { toDate } from '../toDate/index.js'
-import type { DateValues } from '../types.js'
+import { constructFrom } from "../constructFrom/index.js";
+import { setMonth } from "../setMonth/index.js";
+import { toDate } from "../toDate/index.js";
+import type { DateValues } from "../types.js";
 
 /**
  * @name set
@@ -38,42 +38,42 @@ import type { DateValues } from '../types.js'
 
 export function set<DateType extends Date>(
   date: DateType | number | string,
-  values: DateValues
+  values: DateValues,
 ): DateType {
-  let _date = toDate(date)
+  let _date = toDate(date);
 
   // Check if date is Invalid Date because Date.prototype.setFullYear ignores the value of Invalid Date
   if (isNaN(+_date)) {
-    return constructFrom(date, NaN)
+    return constructFrom(date, NaN);
   }
 
   if (values.year != null) {
-    _date.setFullYear(values.year)
+    _date.setFullYear(values.year);
   }
 
   if (values.month != null) {
-    _date = setMonth(_date, values.month)
+    _date = setMonth(_date, values.month);
   }
 
   if (values.date != null) {
-    _date.setDate(values.date)
+    _date.setDate(values.date);
   }
 
   if (values.hours != null) {
-    _date.setHours(values.hours)
+    _date.setHours(values.hours);
   }
 
   if (values.minutes != null) {
-    _date.setMinutes(values.minutes)
+    _date.setMinutes(values.minutes);
   }
 
   if (values.seconds != null) {
-    _date.setSeconds(values.seconds)
+    _date.setSeconds(values.seconds);
   }
 
   if (values.milliseconds != null) {
-    _date.setMilliseconds(values.milliseconds)
+    _date.setMilliseconds(values.milliseconds);
   }
 
-  return _date
+  return _date;
 }

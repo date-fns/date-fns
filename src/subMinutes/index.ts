@@ -1,4 +1,4 @@
-import { addMinutes } from '../addMinutes/index.js'
+import { addMinutes } from "../addMinutes/index.js";
 
 /**
  * @name subMinutes
@@ -22,7 +22,7 @@ import { addMinutes } from '../addMinutes/index.js'
  */
 export function subMinutes<DateType extends Date>(
   date: DateType | number | string,
-  amount: number
+  amount: number,
 ): DateType {
-  return addMinutes(date, -amount)
+  return addMinutes(date, -amount);
 }

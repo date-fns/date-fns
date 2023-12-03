@@ -1,4 +1,4 @@
-import { addHours } from '../addHours/index.js'
+import { addHours } from "../addHours/index.js";
 
 /**
  * @name subHours
@@ -22,7 +22,7 @@ import { addHours } from '../addHours/index.js'
  */
 export function subHours<DateType extends Date>(
   date: DateType | number | string,
-  amount: number
+  amount: number,
 ): DateType {
-  return addHours(date, -amount)
+  return addHours(date, -amount);
 }

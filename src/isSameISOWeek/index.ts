@@ -1,4 +1,4 @@
-import { isSameWeek } from '../isSameWeek/index.js'
+import { isSameWeek } from "../isSameWeek/index.js";
 
 /**
  * @name isSameISOWeek
@@ -29,7 +29,7 @@ import { isSameWeek } from '../isSameWeek/index.js'
  */
 export function isSameISOWeek<DateType extends Date>(
   dateLeft: DateType | number | string,
-  dateRight: DateType | number | string
+  dateRight: DateType | number | string,
 ): boolean {
-  return isSameWeek(dateLeft, dateRight, { weekStartsOn: 1 })
+  return isSameWeek(dateLeft, dateRight, { weekStartsOn: 1 });
 }

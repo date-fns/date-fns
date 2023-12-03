@@ -1,4 +1,4 @@
-import { addMonths } from '../addMonths/index.js'
+import { addMonths } from "../addMonths/index.js";
 
 /**
  * @name subMonths
@@ -22,7 +22,7 @@ import { addMonths } from '../addMonths/index.js'
  */
 export function subMonths<DateType extends Date>(
   date: DateType | number | string,
-  amount: number
+  amount: number,
 ): DateType {
-  return addMonths(date, -amount)
+  return addMonths(date, -amount);
 }

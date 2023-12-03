@@ -1,4 +1,4 @@
-import { addISOWeekYears } from '../addISOWeekYears/index.js'
+import { addISOWeekYears } from "../addISOWeekYears/index.js";
 
 /**
  * @name subISOWeekYears
@@ -24,7 +24,7 @@ import { addISOWeekYears } from '../addISOWeekYears/index.js'
  */
 export function subISOWeekYears<DateType extends Date>(
   date: DateType | number | string,
-  amount: number
+  amount: number,
 ): DateType {
-  return addISOWeekYears(date, -amount)
+  return addISOWeekYears(date, -amount);
 }

@@ -1,4 +1,4 @@
-import { lastDayOfWeek } from '../lastDayOfWeek/index.js'
+import { lastDayOfWeek } from "../lastDayOfWeek/index.js";
 
 /**
  * @name lastDayOfISOWeek
@@ -23,7 +23,7 @@ import { lastDayOfWeek } from '../lastDayOfWeek/index.js'
  * //=> Sun Sep 07 2014 00:00:00
  */
 export function lastDayOfISOWeek<DateType extends Date>(
-  date: DateType | number | string
+  date: DateType | number | string,
 ): DateType {
-  return lastDayOfWeek(date, { weekStartsOn: 1 })
+  return lastDayOfWeek(date, { weekStartsOn: 1 });
 }

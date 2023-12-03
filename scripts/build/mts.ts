@@ -7,32 +7,32 @@
  * It's a part of the build process.
  */
 
-import { readdir, writeFile } from 'fs/promises'
-import { join, resolve } from 'path'
+import { readdir, writeFile } from "fs/promises";
+import { join, resolve } from "path";
 
-createMTSFiles(resolve('./lib'))
+createMTSFiles(resolve("./lib"));
 
 async function createMTSFiles(dir: string): Promise<void> {
   try {
-    const files = await readdir(dir, { withFileTypes: true })
-    const promises: Promise<void>[] = []
+    const files = await readdir(dir, { withFileTypes: true });
+    const promises: Promise<void>[] = [];
 
     for (const file of files) {
-      const fullPath = join(dir, file.name)
+      const fullPath = join(dir, file.name);
 
       if (file.isDirectory()) {
-        promises.push(createMTSFiles(fullPath))
-      } else if (file.isFile() && file.name.endsWith('.d.ts')) {
-        const newFilePath = fullPath.replace('.d.ts', '.d.mts')
+        promises.push(createMTSFiles(fullPath));
+      } else if (file.isFile() && file.name.endsWith(".d.ts")) {
+        const newFilePath = fullPath.replace(".d.ts", ".d.mts");
         promises.push(
-          writeFile(newFilePath, `export type * from './${file.name}'`)
-        )
+          writeFile(newFilePath, `export type * from './${file.name}'`),
+        );
       }
     }
 
-    await Promise.all(promises) // Wait for all promises to resolve
+    await Promise.all(promises); // Wait for all promises to resolve
   } catch (error) {
-    console.error('Error processing directory:', error)
-    process.exit(1)
+    console.error("Error processing directory:", error);
+    process.exit(1);
   }
 }

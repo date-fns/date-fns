@@ -1,5 +1,5 @@
-import { addMilliseconds } from '../addMilliseconds/index.js'
-import { millisecondsInHour } from '../constants/index.js'
+import { addMilliseconds } from "../addMilliseconds/index.js";
+import { millisecondsInHour } from "../constants/index.js";
 
 /**
  * @name addHours
@@ -23,7 +23,7 @@ import { millisecondsInHour } from '../constants/index.js'
  */
 export function addHours<DateType extends Date>(
   date: DateType | number | string,
-  amount: number
+  amount: number,
 ): DateType {
-  return addMilliseconds(date, amount * millisecondsInHour)
+  return addMilliseconds(date, amount * millisecondsInHour);
 }

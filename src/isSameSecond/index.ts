@@ -1,4 +1,4 @@
-import { startOfSecond } from '../startOfSecond/index.js'
+import { startOfSecond } from "../startOfSecond/index.js";
 
 /**
  * @name isSameSecond
@@ -41,10 +41,10 @@ import { startOfSecond } from '../startOfSecond/index.js'
  */
 export function isSameSecond<DateType extends Date>(
   dateLeft: DateType | number | string,
-  dateRight: DateType | number | string
+  dateRight: DateType | number | string,
 ): boolean {
-  const dateLeftStartOfSecond = startOfSecond(dateLeft)
-  const dateRightStartOfSecond = startOfSecond(dateRight)
+  const dateLeftStartOfSecond = startOfSecond(dateLeft);
+  const dateRightStartOfSecond = startOfSecond(dateRight);
 
-  return +dateLeftStartOfSecond === +dateRightStartOfSecond
+  return +dateLeftStartOfSecond === +dateRightStartOfSecond;
 }

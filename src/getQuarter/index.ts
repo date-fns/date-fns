@@ -1,4 +1,4 @@
-import { toDate } from '../toDate/index.js'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name getQuarter
@@ -20,9 +20,9 @@ import { toDate } from '../toDate/index.js'
  * //=> 3
  */
 export function getQuarter<DateType extends Date>(
-  date: DateType | number | string
+  date: DateType | number | string,
 ): number {
-  const _date = toDate(date)
-  const quarter = Math.floor(_date.getMonth() / 3) + 1
-  return quarter
+  const _date = toDate(date);
+  const quarter = Math.floor(_date.getMonth() / 3) + 1;
+  return quarter;
 }

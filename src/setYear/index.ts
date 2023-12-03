@@ -1,5 +1,5 @@
-import { constructFrom } from '../constructFrom/index.js'
-import { toDate } from '../toDate/index.js'
+import { constructFrom } from "../constructFrom/index.js";
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name setYear
@@ -23,15 +23,15 @@ import { toDate } from '../toDate/index.js'
  */
 export function setYear<DateType extends Date>(
   date: DateType | number | string,
-  year: number
+  year: number,
 ): DateType {
-  const _date = toDate(date)
+  const _date = toDate(date);
 
   // Check if date is Invalid Date because Date.prototype.setFullYear ignores the value of Invalid Date
   if (isNaN(+_date)) {
-    return constructFrom(date, NaN)
+    return constructFrom(date, NaN);
   }
 
-  _date.setFullYear(year)
-  return _date
+  _date.setFullYear(year);
+  return _date;
 }

@@ -1,17 +1,17 @@
-import { isValid } from '../isValid/index.js'
-import { parse } from '../parse/index.js'
+import { isValid } from "../isValid/index.js";
+import { parse } from "../parse/index.js";
 import type {
   AdditionalTokensOptions,
   FirstWeekContainsDateOptions,
   LocalizedOptions,
   WeekOptions,
-} from '../types.js'
+} from "../types.js";
 
 /**
  * The {@link isMatch} function options.
  */
 export interface IsMatchOptions
-  extends LocalizedOptions<'options' | 'match' | 'formatLong'>,
+  extends LocalizedOptions<"options" | "match" | "formatLong">,
     WeekOptions,
     FirstWeekContainsDateOptions,
     AdditionalTokensOptions {}
@@ -305,7 +305,7 @@ export interface IsMatchOptions
 export function isMatch(
   dateStr: string,
   formatStr: string,
-  options?: IsMatchOptions
+  options?: IsMatchOptions,
 ): boolean {
-  return isValid(parse(dateStr, formatStr, new Date(), options))
+  return isValid(parse(dateStr, formatStr, new Date(), options));
 }

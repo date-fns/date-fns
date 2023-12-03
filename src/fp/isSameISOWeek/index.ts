@@ -1,6 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.
 
-import { isSameISOWeek as fn } from '../../isSameISOWeek/index.js'
-import { convertToFP } from '../_lib/convertToFP/index.js'
+import { isSameISOWeek as fn } from "../../isSameISOWeek/index.js";
+import { convertToFP } from "../_lib/convertToFP/index.js";
 
-export const isSameISOWeek = convertToFP(fn, 2)
+export const isSameISOWeek = convertToFP(fn, 2);

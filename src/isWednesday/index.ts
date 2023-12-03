@@ -1,4 +1,4 @@
-import { toDate } from '../toDate/index.js'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name isWednesday
@@ -20,7 +20,7 @@ import { toDate } from '../toDate/index.js'
  * //=> true
  */
 export function isWednesday<DateType extends Date>(
-  date: DateType | number | string
+  date: DateType | number | string,
 ): boolean {
-  return toDate(date).getDay() === 3
+  return toDate(date).getDay() === 3;
 }

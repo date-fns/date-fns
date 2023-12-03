@@ -1,5 +1,5 @@
-import { toDate } from '../toDate/index.js'
-import { constructFrom } from '../constructFrom/index.js'
+import { toDate } from "../toDate/index.js";
+import { constructFrom } from "../constructFrom/index.js";
 
 /**
  * @name getDaysInMonth
@@ -21,13 +21,13 @@ import { constructFrom } from '../constructFrom/index.js'
  * //=> 29
  */
 export function getDaysInMonth<DateType extends Date>(
-  date: DateType | number | string
+  date: DateType | number | string,
 ): number {
-  const _date = toDate(date)
-  const year = _date.getFullYear()
-  const monthIndex = _date.getMonth()
-  const lastDayOfMonth = constructFrom(date, 0)
-  lastDayOfMonth.setFullYear(year, monthIndex + 1, 0)
-  lastDayOfMonth.setHours(0, 0, 0, 0)
-  return lastDayOfMonth.getDate()
+  const _date = toDate(date);
+  const year = _date.getFullYear();
+  const monthIndex = _date.getMonth();
+  const lastDayOfMonth = constructFrom(date, 0);
+  lastDayOfMonth.setFullYear(year, monthIndex + 1, 0);
+  lastDayOfMonth.setHours(0, 0, 0, 0);
+  return lastDayOfMonth.getDate();
 }

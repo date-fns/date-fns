@@ -1,4 +1,4 @@
-import { previousDay } from '../previousDay/index.js'
+import { previousDay } from "../previousDay/index.js";
 
 /**
  * @name previousSaturday
@@ -20,7 +20,7 @@ import { previousDay } from '../previousDay/index.js'
  * //=> Sat June 19 2021 00:00:00
  */
 export function previousSaturday<DateType extends Date>(
-  date: DateType | number | string
+  date: DateType | number | string,
 ): DateType {
-  return previousDay(date, 6)
+  return previousDay(date, 6);
 }

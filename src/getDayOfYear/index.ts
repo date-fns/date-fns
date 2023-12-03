@@ -1,6 +1,6 @@
-import { differenceInCalendarDays } from '../differenceInCalendarDays/index.js'
-import { startOfYear } from '../startOfYear/index.js'
-import { toDate } from '../toDate/index.js'
+import { differenceInCalendarDays } from "../differenceInCalendarDays/index.js";
+import { startOfYear } from "../startOfYear/index.js";
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name getDayOfYear
@@ -22,10 +22,10 @@ import { toDate } from '../toDate/index.js'
  * //=> 183
  */
 export function getDayOfYear<DateType extends Date>(
-  date: DateType | number | string
+  date: DateType | number | string,
 ): number {
-  const _date = toDate(date)
-  const diff = differenceInCalendarDays(_date, startOfYear(_date))
-  const dayOfYear = diff + 1
-  return dayOfYear
+  const _date = toDate(date);
+  const diff = differenceInCalendarDays(_date, startOfYear(_date));
+  const dayOfYear = diff + 1;
+  return dayOfYear;
 }

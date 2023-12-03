@@ -1,4 +1,4 @@
-import { toDate } from '../toDate/index.js'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name isFirstDayOfMonth
@@ -20,7 +20,7 @@ import { toDate } from '../toDate/index.js'
  * //=> true
  */
 export function isFirstDayOfMonth<DateType extends Date>(
-  date: DateType | number | string
+  date: DateType | number | string,
 ): boolean {
-  return toDate(date).getDate() === 1
+  return toDate(date).getDate() === 1;
 }

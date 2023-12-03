@@ -1,4 +1,4 @@
-import { addWeeks } from '../addWeeks/index.js'
+import { addWeeks } from "../addWeeks/index.js";
 
 /**
  * @name subWeeks
@@ -22,7 +22,7 @@ import { addWeeks } from '../addWeeks/index.js'
  */
 export function subWeeks<DateType extends Date>(
   date: DateType | number | string,
-  amount: number
+  amount: number,
 ): DateType {
-  return addWeeks(date, -amount)
+  return addWeeks(date, -amount);
 }

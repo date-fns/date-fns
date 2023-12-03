@@ -1,12 +1,12 @@
-import { addWeeks } from '../addWeeks/index.js'
-import { startOfWeek } from '../startOfWeek/index.js'
-import { toDate } from '../toDate/index.js'
+import { addWeeks } from "../addWeeks/index.js";
+import { startOfWeek } from "../startOfWeek/index.js";
+import { toDate } from "../toDate/index.js";
 import type {
   Interval,
   LocalizedOptions,
   StepOptions,
   WeekOptions,
-} from '../types.js'
+} from "../types.js";
 
 /**
  * The {@link eachWeekOfInterval} function options.
@@ -14,7 +14,7 @@ import type {
 export interface EachWeekOfIntervalOptions
   extends StepOptions,
     WeekOptions,
-    LocalizedOptions<'options'> {}
+    LocalizedOptions<"options"> {}
 
 /**
  * @name eachWeekOfInterval
@@ -50,41 +50,41 @@ export interface EachWeekOfIntervalOptions
  */
 export function eachWeekOfInterval<DateType extends Date>(
   interval: Interval<DateType>,
-  options?: EachWeekOfIntervalOptions
+  options?: EachWeekOfIntervalOptions,
 ): DateType[] {
-  const startDate = toDate(interval.start)
-  const endDate = toDate(interval.end)
+  const startDate = toDate(interval.start);
+  const endDate = toDate(interval.end);
 
-  let reversed = +startDate > +endDate
+  let reversed = +startDate > +endDate;
   const startDateWeek = reversed
     ? startOfWeek(endDate, options)
-    : startOfWeek(startDate, options)
+    : startOfWeek(startDate, options);
   const endDateWeek = reversed
     ? startOfWeek(startDate, options)
-    : startOfWeek(endDate, options)
+    : startOfWeek(endDate, options);
 
   // Some timezones switch DST at midnight, making start of day unreliable in these timezones, 3pm is a safe bet
-  startDateWeek.setHours(15)
-  endDateWeek.setHours(15)
+  startDateWeek.setHours(15);
+  endDateWeek.setHours(15);
 
-  const endTime = +endDateWeek.getTime()
-  let currentDate = startDateWeek
+  const endTime = +endDateWeek.getTime();
+  let currentDate = startDateWeek;
 
-  let step = options?.step ?? 1
-  if (!step) return []
+  let step = options?.step ?? 1;
+  if (!step) return [];
   if (step < 0) {
-    step = -step
-    reversed = !reversed
+    step = -step;
+    reversed = !reversed;
   }
 
-  const dates = []
+  const dates = [];
 
   while (+currentDate <= endTime) {
-    currentDate.setHours(0)
-    dates.push(toDate(currentDate))
-    currentDate = addWeeks(currentDate, step)
-    currentDate.setHours(15)
+    currentDate.setHours(0);
+    dates.push(toDate(currentDate));
+    currentDate = addWeeks(currentDate, step);
+    currentDate.setHours(15);
   }
 
-  return reversed ? dates.reverse() : dates
+  return reversed ? dates.reverse() : dates;
 }

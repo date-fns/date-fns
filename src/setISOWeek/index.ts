@@ -1,5 +1,5 @@
-import { getISOWeek } from '../getISOWeek/index.js'
-import { toDate } from '../toDate/index.js'
+import { getISOWeek } from "../getISOWeek/index.js";
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name setISOWeek
@@ -25,10 +25,10 @@ import { toDate } from '../toDate/index.js'
  */
 export function setISOWeek<DateType extends Date>(
   date: DateType | number | string,
-  week: number
+  week: number,
 ): DateType {
-  const _date = toDate(date)
-  const diff = getISOWeek(_date) - week
-  _date.setDate(_date.getDate() - diff * 7)
-  return _date
+  const _date = toDate(date);
+  const diff = getISOWeek(_date) - week;
+  _date.setDate(_date.getDate() - diff * 7);
+  return _date;
 }

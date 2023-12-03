@@ -1,18 +1,18 @@
-import { constructFrom } from '../constructFrom/index.js'
-import { startOfWeek } from '../startOfWeek/index.js'
-import { toDate } from '../toDate/index.js'
+import { constructFrom } from "../constructFrom/index.js";
+import { startOfWeek } from "../startOfWeek/index.js";
+import { toDate } from "../toDate/index.js";
 import type {
   FirstWeekContainsDateOptions,
   LocalizedOptions,
   WeekOptions,
-} from '../types.js'
-import { getDefaultOptions } from '../_lib/defaultOptions/index.js'
+} from "../types.js";
+import { getDefaultOptions } from "../_lib/defaultOptions/index.js";
 
 /**
  * The {@link getWeekYear} function options.
  */
 export interface GetWeekYearOptions
-  extends LocalizedOptions<'options'>,
+  extends LocalizedOptions<"options">,
     WeekOptions,
     FirstWeekContainsDateOptions {}
 
@@ -54,34 +54,34 @@ export interface GetWeekYearOptions
  */
 export function getWeekYear<DateType extends Date>(
   date: DateType | number | string,
-  options?: GetWeekYearOptions
+  options?: GetWeekYearOptions,
 ): number {
-  const _date = toDate(date)
-  const year = _date.getFullYear()
+  const _date = toDate(date);
+  const year = _date.getFullYear();
 
-  const defaultOptions = getDefaultOptions()
+  const defaultOptions = getDefaultOptions();
   const firstWeekContainsDate =
     options?.firstWeekContainsDate ??
     options?.locale?.options?.firstWeekContainsDate ??
     defaultOptions.firstWeekContainsDate ??
     defaultOptions.locale?.options?.firstWeekContainsDate ??
-    1
+    1;
 
-  const firstWeekOfNextYear = constructFrom(date, 0)
-  firstWeekOfNextYear.setFullYear(year + 1, 0, firstWeekContainsDate)
-  firstWeekOfNextYear.setHours(0, 0, 0, 0)
-  const startOfNextYear = startOfWeek(firstWeekOfNextYear, options)
+  const firstWeekOfNextYear = constructFrom(date, 0);
+  firstWeekOfNextYear.setFullYear(year + 1, 0, firstWeekContainsDate);
+  firstWeekOfNextYear.setHours(0, 0, 0, 0);
+  const startOfNextYear = startOfWeek(firstWeekOfNextYear, options);
 
-  const firstWeekOfThisYear = constructFrom(date, 0)
-  firstWeekOfThisYear.setFullYear(year, 0, firstWeekContainsDate)
-  firstWeekOfThisYear.setHours(0, 0, 0, 0)
-  const startOfThisYear = startOfWeek(firstWeekOfThisYear, options)
+  const firstWeekOfThisYear = constructFrom(date, 0);
+  firstWeekOfThisYear.setFullYear(year, 0, firstWeekContainsDate);
+  firstWeekOfThisYear.setHours(0, 0, 0, 0);
+  const startOfThisYear = startOfWeek(firstWeekOfThisYear, options);
 
   if (_date.getTime() >= startOfNextYear.getTime()) {
-    return year + 1
+    return year + 1;
   } else if (_date.getTime() >= startOfThisYear.getTime()) {
-    return year
+    return year;
   } else {
-    return year - 1
+    return year - 1;
   }
 }

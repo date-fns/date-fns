@@ -1,4 +1,4 @@
-import { toDate } from '../toDate/index.js'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name isSameMonth
@@ -27,12 +27,12 @@ import { toDate } from '../toDate/index.js'
  */
 export function isSameMonth<DateType extends Date>(
   dateLeft: DateType | number | string,
-  dateRight: DateType | number | string
+  dateRight: DateType | number | string,
 ): boolean {
-  const _dateLeft = toDate(dateLeft)
-  const _dateRight = toDate(dateRight)
+  const _dateLeft = toDate(dateLeft);
+  const _dateRight = toDate(dateRight);
   return (
     _dateLeft.getFullYear() === _dateRight.getFullYear() &&
     _dateLeft.getMonth() === _dateRight.getMonth()
-  )
+  );
 }

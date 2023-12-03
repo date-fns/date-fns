@@ -1,4 +1,4 @@
-import { startOfHour } from '../startOfHour/index.js'
+import { startOfHour } from "../startOfHour/index.js";
 
 /**
  * @name isSameHour
@@ -27,10 +27,10 @@ import { startOfHour } from '../startOfHour/index.js'
  */
 export function isSameHour<DateType extends Date>(
   dateLeft: DateType | number | string,
-  dateRight: DateType | number | string
+  dateRight: DateType | number | string,
 ): boolean {
-  const dateLeftStartOfHour = startOfHour(dateLeft)
-  const dateRightStartOfHour = startOfHour(dateRight)
+  const dateLeftStartOfHour = startOfHour(dateLeft);
+  const dateRightStartOfHour = startOfHour(dateRight);
 
-  return +dateLeftStartOfHour === +dateRightStartOfHour
+  return +dateLeftStartOfHour === +dateRightStartOfHour;
 }

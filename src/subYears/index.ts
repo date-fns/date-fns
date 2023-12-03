@@ -1,4 +1,4 @@
-import { addYears } from '../addYears/index.js'
+import { addYears } from "../addYears/index.js";
 
 /**
  * @name subYears
@@ -22,7 +22,7 @@ import { addYears } from '../addYears/index.js'
  */
 export function subYears<DateType extends Date>(
   date: DateType | number | string,
-  amount: number
+  amount: number,
 ): DateType {
-  return addYears(date, -amount)
+  return addYears(date, -amount);
 }

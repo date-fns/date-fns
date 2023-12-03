@@ -1,4 +1,4 @@
-import { toDate } from '../toDate/index.js'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name max
@@ -25,20 +25,20 @@ import { toDate } from '../toDate/index.js'
  * //=> Sun Jul 02 1995 00:00:00
  */
 export function max<DateType extends Date>(
-  dates: Array<DateType | number | string>
+  dates: Array<DateType | number | string>,
 ): DateType | Date {
-  let result: Date | undefined
+  let result: Date | undefined;
   dates.forEach(function (dirtyDate) {
-    const currentDate = toDate(dirtyDate)
+    const currentDate = toDate(dirtyDate);
 
     if (
       result === undefined ||
       result < currentDate ||
       isNaN(Number(currentDate))
     ) {
-      result = currentDate
+      result = currentDate;
     }
-  })
+  });
 
-  return result || new Date(NaN)
+  return result || new Date(NaN);
 }

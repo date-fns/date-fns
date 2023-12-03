@@ -1,6 +1,6 @@
-import { getDay } from '../getDay/index.js'
-import { subDays } from '../subDays/index.js'
-import type { Day } from '../types.js'
+import { getDay } from "../getDay/index.js";
+import { subDays } from "../subDays/index.js";
+import type { Day } from "../types.js";
 
 /**
  * @name previousDay
@@ -29,10 +29,10 @@ import type { Day } from '../types.js'
  */
 export function previousDay<DateType extends Date>(
   date: DateType | number | string,
-  day: Day
+  day: Day,
 ): DateType {
-  let delta = getDay(date) - day
-  if (delta <= 0) delta += 7
+  let delta = getDay(date) - day;
+  if (delta <= 0) delta += 7;
 
-  return subDays(date, delta)
+  return subDays(date, delta);
 }

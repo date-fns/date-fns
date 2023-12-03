@@ -1,12 +1,12 @@
-import { toDate } from '../toDate/index.js'
-import { Interval } from '../types.js'
+import { toDate } from "../toDate/index.js";
+import { Interval } from "../types.js";
 
 /**
  * The {@link interval} function options.
  */
 export interface IntervalOptions {
   /** Asserts that the interval is positive (start is after the end). */
-  assertPositive?: boolean
+  assertPositive?: boolean;
 }
 
 /**
@@ -25,17 +25,17 @@ export function interval<DateType extends Date>(
   end: DateType | number | string,
   options?: IntervalOptions,
 ): Interval {
-  if (!start) throw new TypeError('Start date is required')
-  if (!end) throw new TypeError('End date is required')
+  if (!start) throw new TypeError("Start date is required");
+  if (!end) throw new TypeError("End date is required");
 
-  const _start = toDate(start)
-  if (isNaN(+_start)) throw new TypeError('Start date is invalid')
+  const _start = toDate(start);
+  if (isNaN(+_start)) throw new TypeError("Start date is invalid");
 
-  const _end = toDate(end)
-  if (isNaN(+_end)) throw new TypeError('End date is invalid')
+  const _end = toDate(end);
+  if (isNaN(+_end)) throw new TypeError("End date is invalid");
 
   if (options?.assertPositive && +_start > +_end)
-    throw new TypeError('End date must be after start date')
+    throw new TypeError("End date must be after start date");
 
-  return { start: _start, end: _end }
+  return { start: _start, end: _end };
 }

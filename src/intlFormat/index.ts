@@ -1,21 +1,21 @@
-import { toDate } from '../toDate/index.js'
+import { toDate } from "../toDate/index.js";
 
 /**
  * The locale string (see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument).
  */
-export type IntlFormatLocale = Intl.ResolvedDateTimeFormatOptions['locale']
+export type IntlFormatLocale = Intl.ResolvedDateTimeFormatOptions["locale"];
 
 /**
  * The format options (see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#options)
  */
-export type IntlFormatFormatOptions = Intl.DateTimeFormatOptions
+export type IntlFormatFormatOptions = Intl.DateTimeFormatOptions;
 
 /**
  * The locale options.
  */
 export interface IntlFormatLocaleOptions {
   /** The locale(s) to use (see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument) */
-  locale: IntlFormatLocale | IntlFormatLocale[]
+  locale: IntlFormatLocale | IntlFormatLocale[];
 }
 
 /**
@@ -44,8 +44,8 @@ export interface IntlFormatLocaleOptions {
  * //=> 10/4/2019
  */
 export function intlFormat<DateType extends Date>(
-  date: DateType | number | string
-): string
+  date: DateType | number | string,
+): string;
 
 /**
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
@@ -67,8 +67,8 @@ export function intlFormat<DateType extends Date>(
  */
 export function intlFormat<DateType extends Date>(
   date: DateType | number | string,
-  localeOptions: IntlFormatLocaleOptions
-): string
+  localeOptions: IntlFormatLocaleOptions,
+): string;
 
 /**
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
@@ -93,8 +93,8 @@ export function intlFormat<DateType extends Date>(
  */
 export function intlFormat<DateType extends Date>(
   date: DateType | number | string,
-  formatOptions: IntlFormatFormatOptions
-): string
+  formatOptions: IntlFormatFormatOptions,
+): string;
 
 /**
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
@@ -123,29 +123,29 @@ export function intlFormat<DateType extends Date>(
 export function intlFormat<DateType extends Date>(
   date: DateType | number | string,
   formatOptions: IntlFormatFormatOptions,
-  localeOptions: IntlFormatLocaleOptions
-): string
+  localeOptions: IntlFormatLocaleOptions,
+): string;
 
 export function intlFormat<DateType extends Date>(
   date: DateType | number | string,
   formatOrLocale?: IntlFormatFormatOptions | IntlFormatLocaleOptions,
-  localeOptions?: IntlFormatLocaleOptions
+  localeOptions?: IntlFormatLocaleOptions,
 ): string {
-  let formatOptions: IntlFormatFormatOptions | undefined
+  let formatOptions: IntlFormatFormatOptions | undefined;
 
   if (isFormatOptions(formatOrLocale)) {
-    formatOptions = formatOrLocale
+    formatOptions = formatOrLocale;
   } else {
-    localeOptions = formatOrLocale
+    localeOptions = formatOrLocale;
   }
 
   return new Intl.DateTimeFormat(localeOptions?.locale, formatOptions).format(
-    toDate(date)
-  )
+    toDate(date),
+  );
 }
 
 function isFormatOptions(
-  opts: IntlFormatLocaleOptions | IntlFormatFormatOptions | undefined
+  opts: IntlFormatLocaleOptions | IntlFormatFormatOptions | undefined,
 ): opts is IntlFormatFormatOptions {
-  return opts !== undefined && !('locale' in opts)
+  return opts !== undefined && !("locale" in opts);
 }

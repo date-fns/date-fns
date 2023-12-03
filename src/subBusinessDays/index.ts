@@ -1,4 +1,4 @@
-import { addBusinessDays } from '../addBusinessDays/index.js'
+import { addBusinessDays } from "../addBusinessDays/index.js";
 
 /**
  * @name subBusinessDays
@@ -22,7 +22,7 @@ import { addBusinessDays } from '../addBusinessDays/index.js'
  */
 export function subBusinessDays<DateType extends Date>(
   date: DateType | number | string,
-  amount: number
+  amount: number,
 ): DateType {
-  return addBusinessDays(date, -amount)
+  return addBusinessDays(date, -amount);
 }

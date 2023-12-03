@@ -1,28 +1,28 @@
-import { constructFrom } from '../constructFrom/index.js'
-import { getDefaultOptions } from '../getDefaultOptions/index.js'
-import { enUS as defaultLocale } from '../locale/en-US/index.js'
-import { toDate } from '../toDate/index.js'
+import { constructFrom } from "../constructFrom/index.js";
+import { getDefaultOptions } from "../getDefaultOptions/index.js";
+import { enUS as defaultLocale } from "../locale/en-US/index.js";
+import { toDate } from "../toDate/index.js";
 import type {
   AdditionalTokensOptions,
   FirstWeekContainsDateOptions,
   LocalizedOptions,
   WeekOptions,
-} from '../types.js'
-import { longFormatters } from '../_lib/format/longFormatters/index.js'
+} from "../types.js";
+import { longFormatters } from "../_lib/format/longFormatters/index.js";
 import {
   isProtectedDayOfYearToken,
   isProtectedWeekYearToken,
   throwProtectedError,
-} from '../_lib/protectedTokens/index.js'
-import { parsers } from './_lib/parsers/index.js'
-import { DateToSystemTimezoneSetter, Setter } from './_lib/Setter.js'
-import type { ParseFlags, ParserOptions } from './_lib/types.js'
+} from "../_lib/protectedTokens/index.js";
+import { parsers } from "./_lib/parsers/index.js";
+import { DateToSystemTimezoneSetter, Setter } from "./_lib/Setter.js";
+import type { ParseFlags, ParserOptions } from "./_lib/types.js";
 
 /**
  * The {@link parse} function options.
  */
 export interface ParseOptions
-  extends LocalizedOptions<'options' | 'match' | 'formatLong'>,
+  extends LocalizedOptions<"options" | "match" | "formatLong">,
     FirstWeekContainsDateOptions,
     WeekOptions,
     AdditionalTokensOptions {}
@@ -39,17 +39,17 @@ export interface ParseOptions
 //   then the sequence will continue until the end of the string.
 // - . matches any single character unmatched by previous parts of the RegExps
 const formattingTokensRegExp =
-  /[yYQqMLwIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)|./g
+  /[yYQqMLwIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)|./g;
 
 // This RegExp catches symbols escaped by quotes, and also
 // sequences of symbols P, p, and the combinations like `PPPPPPPppppp`
-const longFormattingTokensRegExp = /P+p+|P+|p+|''|'(''|[^'])+('|$)|./g
+const longFormattingTokensRegExp = /P+p+|P+|p+|''|'(''|[^'])+('|$)|./g;
 
-const escapedStringRegExp = /^'([^]*?)'?$/
-const doubleQuoteRegExp = /''/g
+const escapedStringRegExp = /^'([^]*?)'?$/;
+const doubleQuoteRegExp = /''/g;
 
-const notWhitespaceRegExp = /\S/
-const unescapedLatinCharacterRegExp = /[a-zA-Z]/
+const notWhitespaceRegExp = /\S/;
+const unescapedLatinCharacterRegExp = /[a-zA-Z]/;
 
 /**
  * @name parse
@@ -352,30 +352,30 @@ export function parse<DateType extends Date>(
   dateStr: string,
   formatStr: string,
   referenceDate: DateType | number | string,
-  options?: ParseOptions
+  options?: ParseOptions,
 ): DateType {
-  const defaultOptions = getDefaultOptions()
-  const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale
+  const defaultOptions = getDefaultOptions();
+  const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale;
 
   const firstWeekContainsDate =
     options?.firstWeekContainsDate ??
     options?.locale?.options?.firstWeekContainsDate ??
     defaultOptions.firstWeekContainsDate ??
     defaultOptions.locale?.options?.firstWeekContainsDate ??
-    1
+    1;
 
   const weekStartsOn =
     options?.weekStartsOn ??
     options?.locale?.options?.weekStartsOn ??
     defaultOptions.weekStartsOn ??
     defaultOptions.locale?.options?.weekStartsOn ??
-    0
+    0;
 
-  if (formatStr === '') {
-    if (dateStr === '') {
-      return toDate(referenceDate)
+  if (formatStr === "") {
+    if (dateStr === "") {
+      return toDate(referenceDate);
     } else {
-      return constructFrom(referenceDate, NaN)
+      return constructFrom(referenceDate, NaN);
     }
   }
 
@@ -383,100 +383,105 @@ export function parse<DateType extends Date>(
     firstWeekContainsDate,
     weekStartsOn,
     locale,
-  }
+  };
 
   // If timezone isn't specified, it will be set to the system timezone
-  const setters: Setter[] = [new DateToSystemTimezoneSetter()]
+  const setters: Setter[] = [new DateToSystemTimezoneSetter()];
 
   const tokens = formatStr
     .match(longFormattingTokensRegExp)!
     .map((substring) => {
-      const firstCharacter = substring[0]
+      const firstCharacter = substring[0];
       if (firstCharacter in longFormatters) {
-        const longFormatter = longFormatters[firstCharacter]
-        return longFormatter(substring, locale.formatLong)
+        const longFormatter = longFormatters[firstCharacter];
+        return longFormatter(substring, locale.formatLong);
       }
-      return substring
+      return substring;
     })
-    .join('')
-    .match(formattingTokensRegExp)!
+    .join("")
+    .match(formattingTokensRegExp)!;
 
-  const usedTokens: Array<{ token: string; fullToken: string }> = []
+  const usedTokens: Array<{ token: string; fullToken: string }> = [];
 
   for (let token of tokens) {
     if (
       !options?.useAdditionalWeekYearTokens &&
       isProtectedWeekYearToken(token)
     ) {
-      throwProtectedError(token, formatStr, dateStr)
+      throwProtectedError(token, formatStr, dateStr);
     }
     if (
       !options?.useAdditionalDayOfYearTokens &&
       isProtectedDayOfYearToken(token)
     ) {
-      throwProtectedError(token, formatStr, dateStr)
+      throwProtectedError(token, formatStr, dateStr);
     }
 
-    const firstCharacter = token[0]
-    const parser = parsers[firstCharacter]
+    const firstCharacter = token[0];
+    const parser = parsers[firstCharacter];
     if (parser) {
-      const { incompatibleTokens } = parser
+      const { incompatibleTokens } = parser;
       if (Array.isArray(incompatibleTokens)) {
         const incompatibleToken = usedTokens.find(
           (usedToken) =>
             incompatibleTokens.includes(usedToken.token) ||
-            usedToken.token === firstCharacter
-        )
+            usedToken.token === firstCharacter,
+        );
         if (incompatibleToken) {
           throw new RangeError(
-            `The format string mustn't contain \`${incompatibleToken.fullToken}\` and \`${token}\` at the same time`
-          )
+            `The format string mustn't contain \`${incompatibleToken.fullToken}\` and \`${token}\` at the same time`,
+          );
         }
-      } else if (parser.incompatibleTokens === '*' && usedTokens.length > 0) {
+      } else if (parser.incompatibleTokens === "*" && usedTokens.length > 0) {
         throw new RangeError(
-          `The format string mustn't contain \`${token}\` and any other token at the same time`
-        )
+          `The format string mustn't contain \`${token}\` and any other token at the same time`,
+        );
       }
 
-      usedTokens.push({ token: firstCharacter, fullToken: token })
+      usedTokens.push({ token: firstCharacter, fullToken: token });
 
-      const parseResult = parser.run(dateStr, token, locale.match, subFnOptions)
+      const parseResult = parser.run(
+        dateStr,
+        token,
+        locale.match,
+        subFnOptions,
+      );
 
       if (!parseResult) {
-        return constructFrom(referenceDate, NaN)
+        return constructFrom(referenceDate, NaN);
       }
 
-      setters.push(parseResult.setter)
+      setters.push(parseResult.setter);
 
-      dateStr = parseResult.rest
+      dateStr = parseResult.rest;
     } else {
       if (firstCharacter.match(unescapedLatinCharacterRegExp)) {
         throw new RangeError(
-          'Format string contains an unescaped latin alphabet character `' +
+          "Format string contains an unescaped latin alphabet character `" +
             firstCharacter +
-            '`'
-        )
+            "`",
+        );
       }
 
       // Replace two single quote characters with one single quote character
       if (token === "''") {
-        token = "'"
+        token = "'";
       } else if (firstCharacter === "'") {
-        token = cleanEscapedString(token)
+        token = cleanEscapedString(token);
       }
 
       // Cut token from string, or, if string doesn't match the token, return Invalid Date
       if (dateStr.indexOf(token) === 0) {
-        dateStr = dateStr.slice(token.length)
+        dateStr = dateStr.slice(token.length);
       } else {
-        return constructFrom(referenceDate, NaN)
+        return constructFrom(referenceDate, NaN);
       }
     }
   }
 
   // Check if the remaining input contains something other than whitespace
   if (dateStr.length > 0 && notWhitespaceRegExp.test(dateStr)) {
-    return constructFrom(referenceDate, NaN)
+    return constructFrom(referenceDate, NaN);
   }
 
   const uniquePrioritySetters = setters
@@ -486,36 +491,36 @@ export function parse<DateType extends Date>(
     .map((priority) =>
       setters
         .filter((setter) => setter.priority === priority)
-        .sort((a, b) => b.subPriority - a.subPriority)
+        .sort((a, b) => b.subPriority - a.subPriority),
     )
-    .map((setterArray) => setterArray[0])
+    .map((setterArray) => setterArray[0]);
 
-  let date = toDate(referenceDate)
+  let date = toDate(referenceDate);
 
   if (isNaN(date.getTime())) {
-    return constructFrom(referenceDate, NaN)
+    return constructFrom(referenceDate, NaN);
   }
 
-  const flags: ParseFlags = {}
+  const flags: ParseFlags = {};
   for (const setter of uniquePrioritySetters) {
     if (!setter.validate(date, subFnOptions)) {
-      return constructFrom(referenceDate, NaN)
+      return constructFrom(referenceDate, NaN);
     }
 
-    const result = setter.set(date, flags, subFnOptions)
+    const result = setter.set(date, flags, subFnOptions);
     // Result is tuple (date, flags)
     if (Array.isArray(result)) {
-      date = result[0]
-      Object.assign(flags, result[1])
+      date = result[0];
+      Object.assign(flags, result[1]);
       // Result is date
     } else {
-      date = result
+      date = result;
     }
   }
 
-  return constructFrom(referenceDate, date)
+  return constructFrom(referenceDate, date);
 }
 
 function cleanEscapedString(input: string) {
-  return input.match(escapedStringRegExp)![1].replace(doubleQuoteRegExp, "'")
+  return input.match(escapedStringRegExp)![1].replace(doubleQuoteRegExp, "'");
 }

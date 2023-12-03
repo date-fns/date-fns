@@ -1,4 +1,4 @@
-import { addMilliseconds } from '../addMilliseconds/index.js'
+import { addMilliseconds } from "../addMilliseconds/index.js";
 
 /**
  * @name addSeconds
@@ -22,7 +22,7 @@ import { addMilliseconds } from '../addMilliseconds/index.js'
  */
 export function addSeconds<DateType extends Date>(
   date: DateType | number | string,
-  amount: number
+  amount: number,
 ): DateType {
-  return addMilliseconds(date, amount * 1000)
+  return addMilliseconds(date, amount * 1000);
 }

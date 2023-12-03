@@ -8,17 +8,17 @@ and [webpack](https://webpack.js.org).
 If you have tree-shaking enabled in your bundler, just import functions normally:
 
 ```javascript
-import { format, parse } from 'date-fns'
-import { enUS, eo } from 'date-fns/locale'
-import { addDays, addHours } from 'date-fns/fp'
+import { format, parse } from "date-fns";
+import { enUS, eo } from "date-fns/locale";
+import { addDays, addHours } from "date-fns/fp";
 ```
 
 In TypeScript, now you can import individual functions in more idiomatic way:
 
 ```typescript
 // Before
-import * as format from 'date-fns/format'
+import * as format from "date-fns/format";
 
 // Now
-import format from 'date-fns/format'
+import format from "date-fns/format";
 ```

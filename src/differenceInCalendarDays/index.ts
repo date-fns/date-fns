@@ -1,6 +1,6 @@
-import { millisecondsInDay } from '../constants/index.js'
-import { startOfDay } from '../startOfDay/index.js'
-import { getTimezoneOffsetInMilliseconds } from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
+import { millisecondsInDay } from "../constants/index.js";
+import { startOfDay } from "../startOfDay/index.js";
+import { getTimezoneOffsetInMilliseconds } from "../_lib/getTimezoneOffsetInMilliseconds/index.js";
 
 /**
  * @name differenceInCalendarDays
@@ -36,18 +36,19 @@ import { getTimezoneOffsetInMilliseconds } from '../_lib/getTimezoneOffsetInMill
  */
 export function differenceInCalendarDays<DateType extends Date>(
   dateLeft: DateType | number | string,
-  dateRight: DateType | number | string
+  dateRight: DateType | number | string,
 ): number {
-  const startOfDayLeft = startOfDay(dateLeft)
-  const startOfDayRight = startOfDay(dateRight)
+  const startOfDayLeft = startOfDay(dateLeft);
+  const startOfDayRight = startOfDay(dateRight);
 
   const timestampLeft =
-    startOfDayLeft.getTime() - getTimezoneOffsetInMilliseconds(startOfDayLeft)
+    startOfDayLeft.getTime() - getTimezoneOffsetInMilliseconds(startOfDayLeft);
   const timestampRight =
-    startOfDayRight.getTime() - getTimezoneOffsetInMilliseconds(startOfDayRight)
+    startOfDayRight.getTime() -
+    getTimezoneOffsetInMilliseconds(startOfDayRight);
 
   // Round the number of days to the nearest integer
   // because the number of milliseconds in a day is not constant
   // (e.g. it's different in the day of the daylight saving time clock shift)
-  return Math.round((timestampLeft - timestampRight) / millisecondsInDay)
+  return Math.round((timestampLeft - timestampRight) / millisecondsInDay);
 }

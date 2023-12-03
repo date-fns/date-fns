@@ -1,13 +1,13 @@
-import { addDays } from '../addDays/index.js'
-import { toDate } from '../toDate/index.js'
-import type { LocalizedOptions, WeekOptions } from '../types.js'
-import { getDefaultOptions } from '../_lib/defaultOptions/index.js'
+import { addDays } from "../addDays/index.js";
+import { toDate } from "../toDate/index.js";
+import type { LocalizedOptions, WeekOptions } from "../types.js";
+import { getDefaultOptions } from "../_lib/defaultOptions/index.js";
 
 /**
  * The {@link setDay} function options.
  */
 export interface SetDayOptions
-  extends LocalizedOptions<'options'>,
+  extends LocalizedOptions<"options">,
     WeekOptions {}
 
 /**
@@ -39,26 +39,26 @@ export interface SetDayOptions
 export function setDay<DateType extends Date>(
   date: DateType | number | string,
   day: number,
-  options?: SetDayOptions
+  options?: SetDayOptions,
 ): DateType {
-  const defaultOptions = getDefaultOptions()
+  const defaultOptions = getDefaultOptions();
   const weekStartsOn =
     options?.weekStartsOn ??
     options?.locale?.options?.weekStartsOn ??
     defaultOptions.weekStartsOn ??
     defaultOptions.locale?.options?.weekStartsOn ??
-    0
+    0;
 
-  const _date = toDate(date)
-  const currentDay = _date.getDay()
+  const _date = toDate(date);
+  const currentDay = _date.getDay();
 
-  const remainder = day % 7
-  const dayIndex = (remainder + 7) % 7
+  const remainder = day % 7;
+  const dayIndex = (remainder + 7) % 7;
 
-  const delta = 7 - weekStartsOn
+  const delta = 7 - weekStartsOn;
   const diff =
     day < 0 || day > 6
       ? day - ((currentDay + delta) % 7)
-      : ((dayIndex + delta) % 7) - ((currentDay + delta) % 7)
-  return addDays(_date, diff)
+      : ((dayIndex + delta) % 7) - ((currentDay + delta) % 7);
+  return addDays(_date, diff);
 }

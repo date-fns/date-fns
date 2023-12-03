@@ -1,4 +1,4 @@
-import { toDate } from '../toDate/index.js'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name endOfSecond
@@ -21,9 +21,9 @@ import { toDate } from '../toDate/index.js'
  * //=> Mon Dec 01 2014 22:15:45.999
  */
 export function endOfSecond<DateType extends Date>(
-  date: DateType | number | string
+  date: DateType | number | string,
 ): DateType {
-  const _date = toDate(date)
-  _date.setMilliseconds(999)
-  return _date
+  const _date = toDate(date);
+  _date.setMilliseconds(999);
+  return _date;
 }

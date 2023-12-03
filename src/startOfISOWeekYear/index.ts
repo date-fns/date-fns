@@ -1,6 +1,6 @@
-import { getISOWeekYear } from '../getISOWeekYear/index.js'
-import { startOfISOWeek } from '../startOfISOWeek/index.js'
-import { constructFrom } from '../constructFrom/index.js'
+import { getISOWeekYear } from "../getISOWeekYear/index.js";
+import { startOfISOWeek } from "../startOfISOWeek/index.js";
+import { constructFrom } from "../constructFrom/index.js";
 
 /**
  * @name startOfISOWeekYear
@@ -26,11 +26,11 @@ import { constructFrom } from '../constructFrom/index.js'
  * //=> Mon Jan 03 2005 00:00:00
  */
 export function startOfISOWeekYear<DateType extends Date>(
-  date: DateType | number | string
+  date: DateType | number | string,
 ): DateType {
-  const year = getISOWeekYear(date)
-  const fourthOfJanuary = constructFrom(date, 0)
-  fourthOfJanuary.setFullYear(year, 0, 4)
-  fourthOfJanuary.setHours(0, 0, 0, 0)
-  return startOfISOWeek(fourthOfJanuary)
+  const year = getISOWeekYear(date);
+  const fourthOfJanuary = constructFrom(date, 0);
+  fourthOfJanuary.setFullYear(year, 0, 4);
+  fourthOfJanuary.setHours(0, 0, 0, 0);
+  return startOfISOWeek(fourthOfJanuary);
 }

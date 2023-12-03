@@ -1,4 +1,4 @@
-import { toDate } from '../toDate/index.js'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name lastDayOfYear
@@ -21,11 +21,11 @@ import { toDate } from '../toDate/index.js'
  * //=> Wed Dec 31 2014 00:00:00
  */
 export function lastDayOfYear<DateType extends Date>(
-  date: DateType | number | string
+  date: DateType | number | string,
 ): DateType {
-  const _date = toDate(date)
-  const year = _date.getFullYear()
-  _date.setFullYear(year + 1, 0, 0)
-  _date.setHours(0, 0, 0, 0)
-  return _date
+  const _date = toDate(date);
+  const year = _date.getFullYear();
+  _date.setFullYear(year + 1, 0, 0);
+  _date.setHours(0, 0, 0, 0);
+  return _date;
 }

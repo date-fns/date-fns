@@ -1,4 +1,4 @@
-import { toDate } from '../toDate/index.js'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name isBefore
@@ -22,9 +22,9 @@ import { toDate } from '../toDate/index.js'
  */
 export function isBefore<DateType extends Date>(
   date: DateType | number | string,
-  dateToCompare: DateType | number | string
+  dateToCompare: DateType | number | string,
 ): boolean {
-  const _date = toDate(date)
-  const _dateToCompare = toDate(dateToCompare)
-  return +_date < +_dateToCompare
+  const _date = toDate(date);
+  const _dateToCompare = toDate(dateToCompare);
+  return +_date < +_dateToCompare;
 }

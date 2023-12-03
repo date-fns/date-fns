@@ -1,4 +1,4 @@
-import { addDays } from '../addDays/index.js'
+import { addDays } from "../addDays/index.js";
 
 /**
  * @name subDays
@@ -22,7 +22,7 @@ import { addDays } from '../addDays/index.js'
  */
 export function subDays<DateType extends Date>(
   date: DateType | number | string,
-  amount: number
+  amount: number,
 ): DateType {
-  return addDays(date, -amount)
+  return addDays(date, -amount);
 }

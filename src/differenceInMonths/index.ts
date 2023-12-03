@@ -1,7 +1,7 @@
-import { compareAsc } from '../compareAsc/index.js'
-import { differenceInCalendarMonths } from '../differenceInCalendarMonths/index.js'
-import { isLastDayOfMonth } from '../isLastDayOfMonth/index.js'
-import { toDate } from '../toDate/index.js'
+import { compareAsc } from "../compareAsc/index.js";
+import { differenceInCalendarMonths } from "../differenceInCalendarMonths/index.js";
+import { isLastDayOfMonth } from "../isLastDayOfMonth/index.js";
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name differenceInMonths
@@ -25,30 +25,32 @@ import { toDate } from '../toDate/index.js'
  */
 export function differenceInMonths<DateType extends Date>(
   dateLeft: DateType | number | string,
-  dateRight: DateType | number | string
+  dateRight: DateType | number | string,
 ): number {
-  const _dateLeft = toDate(dateLeft)
-  const _dateRight = toDate(dateRight)
+  const _dateLeft = toDate(dateLeft);
+  const _dateRight = toDate(dateRight);
 
-  const sign = compareAsc(_dateLeft, _dateRight)
-  const difference = Math.abs(differenceInCalendarMonths(_dateLeft, _dateRight))
-  let result
+  const sign = compareAsc(_dateLeft, _dateRight);
+  const difference = Math.abs(
+    differenceInCalendarMonths(_dateLeft, _dateRight),
+  );
+  let result;
 
   // Check for the difference of less than month
   if (difference < 1) {
-    result = 0
+    result = 0;
   } else {
     if (_dateLeft.getMonth() === 1 && _dateLeft.getDate() > 27) {
       // This will check if the date is end of Feb and assign a higher end of month date
       // to compare it with Jan
-      _dateLeft.setDate(30)
+      _dateLeft.setDate(30);
     }
 
-    _dateLeft.setMonth(_dateLeft.getMonth() - sign * difference)
+    _dateLeft.setMonth(_dateLeft.getMonth() - sign * difference);
 
     // Math.abs(diff in full months - diff in calendar months) === 1 if last calendar month is not full
     // If so, result must be decreased by 1 in absolute value
-    let isLastMonthNotFull = compareAsc(_dateLeft, _dateRight) === -sign
+    let isLastMonthNotFull = compareAsc(_dateLeft, _dateRight) === -sign;
 
     // Check for cases of one full calendar month
     if (
@@ -56,12 +58,12 @@ export function differenceInMonths<DateType extends Date>(
       difference === 1 &&
       compareAsc(dateLeft, _dateRight) === 1
     ) {
-      isLastMonthNotFull = false
+      isLastMonthNotFull = false;
     }
 
-    result = sign * (difference - Number(isLastMonthNotFull))
+    result = sign * (difference - Number(isLastMonthNotFull));
   }
 
   // Prevent negative zero
-  return result === 0 ? 0 : result
+  return result === 0 ? 0 : result;
 }

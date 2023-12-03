@@ -1,4 +1,4 @@
-import type { Duration } from '../types.js'
+import type { Duration } from "../types.js";
 
 /**
  * @name formatISODuration
@@ -32,7 +32,7 @@ export function formatISODuration(duration: Duration): string {
     hours = 0,
     minutes = 0,
     seconds = 0,
-  } = duration
+  } = duration;
 
-  return `P${years}Y${months}M${days}DT${hours}H${minutes}M${seconds}S`
+  return `P${years}Y${months}M${days}DT${hours}H${minutes}M${seconds}S`;
 }

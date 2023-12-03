@@ -1,6 +1,6 @@
-import { addHours } from '../addHours/index.js'
-import { toDate } from '../toDate/index.js'
-import type { Interval, StepOptions } from '../types.js'
+import { addHours } from "../addHours/index.js";
+import { toDate } from "../toDate/index.js";
+import type { Interval, StepOptions } from "../types.js";
 
 /**
  * The {@link eachHourOfInterval} function options.
@@ -37,29 +37,29 @@ export interface EachHourOfIntervalOptions extends StepOptions {}
  */
 export function eachHourOfInterval<DateType extends Date>(
   interval: Interval<DateType>,
-  options?: EachHourOfIntervalOptions
+  options?: EachHourOfIntervalOptions,
 ): DateType[] {
-  const startDate = toDate(interval.start)
-  const endDate = toDate(interval.end)
+  const startDate = toDate(interval.start);
+  const endDate = toDate(interval.end);
 
-  let reversed = +startDate > +endDate
-  const endTime = reversed ? +startDate : +endDate
-  let currentDate = reversed ? endDate : startDate
-  currentDate.setMinutes(0, 0, 0)
+  let reversed = +startDate > +endDate;
+  const endTime = reversed ? +startDate : +endDate;
+  let currentDate = reversed ? endDate : startDate;
+  currentDate.setMinutes(0, 0, 0);
 
-  let step = options?.step ?? 1
-  if (!step) return []
+  let step = options?.step ?? 1;
+  if (!step) return [];
   if (step < 0) {
-    step = -step
-    reversed = !reversed
+    step = -step;
+    reversed = !reversed;
   }
 
-  const dates = []
+  const dates = [];
 
   while (+currentDate <= endTime) {
-    dates.push(toDate(currentDate))
-    currentDate = addHours(currentDate, step)
+    dates.push(toDate(currentDate));
+    currentDate = addHours(currentDate, step);
   }
 
-  return reversed ? dates.reverse() : dates
+  return reversed ? dates.reverse() : dates;
 }

@@ -1,9 +1,9 @@
-import { addDays } from '../addDays/index.js'
-import { differenceInCalendarDays } from '../differenceInCalendarDays/index.js'
-import { isSameDay } from '../isSameDay/index.js'
-import { isValid } from '../isValid/index.js'
-import { isWeekend } from '../isWeekend/index.js'
-import { toDate } from '../toDate/index.js'
+import { addDays } from "../addDays/index.js";
+import { differenceInCalendarDays } from "../differenceInCalendarDays/index.js";
+import { isSameDay } from "../isSameDay/index.js";
+import { isValid } from "../isValid/index.js";
+import { isWeekend } from "../isWeekend/index.js";
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name differenceInBusinessDays
@@ -58,28 +58,28 @@ import { toDate } from '../toDate/index.js'
  */
 export function differenceInBusinessDays<DateType extends Date>(
   dateLeft: DateType | number | string,
-  dateRight: DateType | number | string
+  dateRight: DateType | number | string,
 ): number {
-  const _dateLeft = toDate(dateLeft)
-  let _dateRight = toDate(dateRight)
+  const _dateLeft = toDate(dateLeft);
+  let _dateRight = toDate(dateRight);
 
-  if (!isValid(_dateLeft) || !isValid(_dateRight)) return NaN
+  if (!isValid(_dateLeft) || !isValid(_dateRight)) return NaN;
 
-  const calendarDifference = differenceInCalendarDays(_dateLeft, _dateRight)
-  const sign = calendarDifference < 0 ? -1 : 1
+  const calendarDifference = differenceInCalendarDays(_dateLeft, _dateRight);
+  const sign = calendarDifference < 0 ? -1 : 1;
 
-  const weeks = Math.trunc(calendarDifference / 7)
+  const weeks = Math.trunc(calendarDifference / 7);
 
-  let result = weeks * 5
-  _dateRight = addDays(_dateRight, weeks * 7)
+  let result = weeks * 5;
+  _dateRight = addDays(_dateRight, weeks * 7);
 
   // the loop below will run at most 6 times to account for the remaining days that don't makeup a full week
   while (!isSameDay(_dateLeft, _dateRight)) {
     // sign is used to account for both negative and positive differences
-    result += isWeekend(_dateRight) ? 0 : sign
-    _dateRight = addDays(_dateRight, sign)
+    result += isWeekend(_dateRight) ? 0 : sign;
+    _dateRight = addDays(_dateRight, sign);
   }
 
   // Prevent negative zero
-  return result === 0 ? 0 : result
+  return result === 0 ? 0 : result;
 }

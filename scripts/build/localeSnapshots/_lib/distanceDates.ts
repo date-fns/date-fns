@@ -1,4 +1,4 @@
-export const baseDate = new Date(2000, 0, 1)
+export const baseDate = new Date(2000, 0, 1);
 
 export const dates = [
   new Date(2006, 0, 1),
@@ -46,7 +46,7 @@ export const dates = [
   new Date(1996, 0, 1),
   new Date(1995, 0, 1),
   new Date(1994, 0, 1),
-]
+];
 
 export const relativeDates = [
   new Date(2000, 0, 10),
@@ -56,4 +56,4 @@ export const relativeDates = [
   new Date(1999, 11, 31),
   new Date(1999, 11, 27),
   new Date(1999, 11, 21),
-]
+];

@@ -1,5 +1,5 @@
-import { getISOWeekYear } from '../getISOWeekYear/index.js'
-import { setISOWeekYear } from '../setISOWeekYear/index.js'
+import { getISOWeekYear } from "../getISOWeekYear/index.js";
+import { setISOWeekYear } from "../setISOWeekYear/index.js";
 
 /**
  * @name addISOWeekYears
@@ -25,7 +25,7 @@ import { setISOWeekYear } from '../setISOWeekYear/index.js'
  */
 export function addISOWeekYears<DateType extends Date>(
   date: DateType | number | string,
-  amount: number
+  amount: number,
 ): DateType {
-  return setISOWeekYear(date, getISOWeekYear(date) + amount)
+  return setISOWeekYear(date, getISOWeekYear(date) + amount);
 }

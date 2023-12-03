@@ -1,4 +1,4 @@
-import { toDate } from '../toDate/index.js'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name setHours
@@ -22,9 +22,9 @@ import { toDate } from '../toDate/index.js'
  */
 export function setHours<DateType extends Date>(
   date: DateType | number | string,
-  hours: number
+  hours: number,
 ): DateType {
-  const _date = toDate(date)
-  _date.setHours(hours)
-  return _date
+  const _date = toDate(date);
+  _date.setHours(hours);
+  return _date;
 }

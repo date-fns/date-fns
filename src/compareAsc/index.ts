@@ -1,4 +1,4 @@
-import { toDate } from '../toDate/index.js'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name compareAsc
@@ -36,19 +36,19 @@ import { toDate } from '../toDate/index.js'
  */
 export function compareAsc<DateType extends Date>(
   dateLeft: DateType | number | string,
-  dateRight: DateType | number | string
+  dateRight: DateType | number | string,
 ): number {
-  const _dateLeft = toDate(dateLeft)
-  const _dateRight = toDate(dateRight)
+  const _dateLeft = toDate(dateLeft);
+  const _dateRight = toDate(dateRight);
 
-  const diff = _dateLeft.getTime() - _dateRight.getTime()
+  const diff = _dateLeft.getTime() - _dateRight.getTime();
 
   if (diff < 0) {
-    return -1
+    return -1;
   } else if (diff > 0) {
-    return 1
+    return 1;
     // Return 0 if diff is 0; return NaN if diff is NaN
   } else {
-    return diff
+    return diff;
   }
 }

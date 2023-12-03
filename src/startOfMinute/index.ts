@@ -1,4 +1,4 @@
-import { toDate } from '../toDate/index.js'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name startOfMinute
@@ -21,9 +21,9 @@ import { toDate } from '../toDate/index.js'
  * //=> Mon Dec 01 2014 22:15:00
  */
 export function startOfMinute<DateType extends Date>(
-  date: DateType | number | string
+  date: DateType | number | string,
 ): DateType {
-  const _date = toDate(date)
-  _date.setSeconds(0, 0)
-  return _date
+  const _date = toDate(date);
+  _date.setSeconds(0, 0);
+  return _date;
 }

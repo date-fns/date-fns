@@ -1,5 +1,5 @@
-import { toDate } from '../toDate/index.js'
-import { constructFrom } from '../constructFrom/index.js'
+import { toDate } from "../toDate/index.js";
+import { constructFrom } from "../constructFrom/index.js";
 
 /**
  * @name startOfYear
@@ -22,11 +22,11 @@ import { constructFrom } from '../constructFrom/index.js'
  * //=> Wed Jan 01 2014 00:00:00
  */
 export function startOfYear<DateType extends Date>(
-  date: DateType | number | string
+  date: DateType | number | string,
 ): DateType {
-  const cleanDate = toDate(date)
-  const _date = constructFrom(date, 0)
-  _date.setFullYear(cleanDate.getFullYear(), 0, 1)
-  _date.setHours(0, 0, 0, 0)
-  return _date
+  const cleanDate = toDate(date);
+  const _date = constructFrom(date, 0);
+  _date.setFullYear(cleanDate.getFullYear(), 0, 1);
+  _date.setHours(0, 0, 0, 0);
+  return _date;
 }

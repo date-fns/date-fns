@@ -1,12 +1,12 @@
-import { isSameWeek } from '../isSameWeek/index.js'
-import type { LocalizedOptions, WeekOptions } from '../types.js'
+import { isSameWeek } from "../isSameWeek/index.js";
+import type { LocalizedOptions, WeekOptions } from "../types.js";
 
 /**
  * The {@link isThisWeek} function options.
  */
 export interface IsThisWeekOptions
   extends WeekOptions,
-    LocalizedOptions<'options'> {}
+    LocalizedOptions<"options"> {}
 
 /**
  * @name isThisWeek
@@ -37,7 +37,7 @@ export interface IsThisWeekOptions
  */
 export function isThisWeek<DateType extends Date>(
   date: DateType | number | string,
-  options?: IsThisWeekOptions
+  options?: IsThisWeekOptions,
 ): boolean {
-  return isSameWeek(date, Date.now(), options)
+  return isSameWeek(date, Date.now(), options);
 }

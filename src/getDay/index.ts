@@ -1,4 +1,4 @@
-import { toDate } from '../toDate/index.js'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name getDay
@@ -20,9 +20,9 @@ import { toDate } from '../toDate/index.js'
  * //=> 3
  */
 export function getDay<DateType extends Date>(
-  date: DateType | number | string
+  date: DateType | number | string,
 ): number {
-  const _date = toDate(date)
-  const day = _date.getDay()
-  return day
+  const _date = toDate(date);
+  const day = _date.getDay();
+  return day;
 }

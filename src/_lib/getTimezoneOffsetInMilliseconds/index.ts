@@ -18,9 +18,9 @@ export function getTimezoneOffsetInMilliseconds(date: Date): number {
       date.getHours(),
       date.getMinutes(),
       date.getSeconds(),
-      date.getMilliseconds()
-    )
-  )
-  utcDate.setUTCFullYear(date.getFullYear())
-  return date.getTime() - utcDate.getTime()
+      date.getMilliseconds(),
+    ),
+  );
+  utcDate.setUTCFullYear(date.getFullYear());
+  return date.getTime() - utcDate.getTime();
 }

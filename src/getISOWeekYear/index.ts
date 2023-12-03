@@ -1,6 +1,6 @@
-import { constructFrom } from '../constructFrom/index.js'
-import { startOfISOWeek } from '../startOfISOWeek/index.js'
-import { toDate } from '../toDate/index.js'
+import { constructFrom } from "../constructFrom/index.js";
+import { startOfISOWeek } from "../startOfISOWeek/index.js";
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name getISOWeekYear
@@ -25,26 +25,26 @@ import { toDate } from '../toDate/index.js'
  * //=> 2004
  */
 export function getISOWeekYear<DateType extends Date>(
-  date: DateType | number | string
+  date: DateType | number | string,
 ): number {
-  const _date = toDate(date)
-  const year = _date.getFullYear()
+  const _date = toDate(date);
+  const year = _date.getFullYear();
 
-  const fourthOfJanuaryOfNextYear = constructFrom(date, 0)
-  fourthOfJanuaryOfNextYear.setFullYear(year + 1, 0, 4)
-  fourthOfJanuaryOfNextYear.setHours(0, 0, 0, 0)
-  const startOfNextYear = startOfISOWeek(fourthOfJanuaryOfNextYear)
+  const fourthOfJanuaryOfNextYear = constructFrom(date, 0);
+  fourthOfJanuaryOfNextYear.setFullYear(year + 1, 0, 4);
+  fourthOfJanuaryOfNextYear.setHours(0, 0, 0, 0);
+  const startOfNextYear = startOfISOWeek(fourthOfJanuaryOfNextYear);
 
-  const fourthOfJanuaryOfThisYear = constructFrom(date, 0)
-  fourthOfJanuaryOfThisYear.setFullYear(year, 0, 4)
-  fourthOfJanuaryOfThisYear.setHours(0, 0, 0, 0)
-  const startOfThisYear = startOfISOWeek(fourthOfJanuaryOfThisYear)
+  const fourthOfJanuaryOfThisYear = constructFrom(date, 0);
+  fourthOfJanuaryOfThisYear.setFullYear(year, 0, 4);
+  fourthOfJanuaryOfThisYear.setHours(0, 0, 0, 0);
+  const startOfThisYear = startOfISOWeek(fourthOfJanuaryOfThisYear);
 
   if (_date.getTime() >= startOfNextYear.getTime()) {
-    return year + 1
+    return year + 1;
   } else if (_date.getTime() >= startOfThisYear.getTime()) {
-    return year
+    return year;
   } else {
-    return year - 1
+    return year - 1;
   }
 }

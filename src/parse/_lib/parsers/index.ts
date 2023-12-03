@@ -1,35 +1,35 @@
-import { Parser } from '../Parser.js'
-import { EraParser } from './EraParser.js'
-import { YearParser } from './YearParser.js'
-import { LocalWeekYearParser } from './LocalWeekYearParser.js'
-import { ISOWeekYearParser } from './ISOWeekYearParser.js'
-import { ExtendedYearParser } from './ExtendedYearParser.js'
-import { QuarterParser } from './QuarterParser.js'
-import { StandAloneQuarterParser } from './StandAloneQuarterParser.js'
-import { MonthParser } from './MonthParser.js'
-import { StandAloneMonthParser } from './StandAloneMonthParser.js'
-import { LocalWeekParser } from './LocalWeekParser.js'
-import { ISOWeekParser } from './ISOWeekParser.js'
-import { DateParser } from './DateParser.js'
-import { DayOfYearParser } from './DayOfYearParser.js'
-import { DayParser } from './DayParser.js'
-import { LocalDayParser } from './LocalDayParser.js'
-import { StandAloneLocalDayParser } from './StandAloneLocalDayParser.js'
-import { ISODayParser } from './ISODayParser.js'
-import { AMPMParser } from './AMPMParser.js'
-import { AMPMMidnightParser } from './AMPMMidnightParser.js'
-import { DayPeriodParser } from './DayPeriodParser.js'
-import { Hour1to12Parser } from './Hour1to12Parser.js'
-import { Hour0to23Parser } from './Hour0to23Parser.js'
-import { Hour0To11Parser } from './Hour0To11Parser.js'
-import { Hour1To24Parser } from './Hour1To24Parser.js'
-import { MinuteParser } from './MinuteParser.js'
-import { SecondParser } from './SecondParser.js'
-import { FractionOfSecondParser } from './FractionOfSecondParser.js'
-import { ISOTimezoneWithZParser } from './ISOTimezoneWithZParser.js'
-import { ISOTimezoneParser } from './ISOTimezoneParser.js'
-import { TimestampSecondsParser } from './TimestampSecondsParser.js'
-import { TimestampMillisecondsParser } from './TimestampMillisecondsParser.js'
+import { Parser } from "../Parser.js";
+import { EraParser } from "./EraParser.js";
+import { YearParser } from "./YearParser.js";
+import { LocalWeekYearParser } from "./LocalWeekYearParser.js";
+import { ISOWeekYearParser } from "./ISOWeekYearParser.js";
+import { ExtendedYearParser } from "./ExtendedYearParser.js";
+import { QuarterParser } from "./QuarterParser.js";
+import { StandAloneQuarterParser } from "./StandAloneQuarterParser.js";
+import { MonthParser } from "./MonthParser.js";
+import { StandAloneMonthParser } from "./StandAloneMonthParser.js";
+import { LocalWeekParser } from "./LocalWeekParser.js";
+import { ISOWeekParser } from "./ISOWeekParser.js";
+import { DateParser } from "./DateParser.js";
+import { DayOfYearParser } from "./DayOfYearParser.js";
+import { DayParser } from "./DayParser.js";
+import { LocalDayParser } from "./LocalDayParser.js";
+import { StandAloneLocalDayParser } from "./StandAloneLocalDayParser.js";
+import { ISODayParser } from "./ISODayParser.js";
+import { AMPMParser } from "./AMPMParser.js";
+import { AMPMMidnightParser } from "./AMPMMidnightParser.js";
+import { DayPeriodParser } from "./DayPeriodParser.js";
+import { Hour1to12Parser } from "./Hour1to12Parser.js";
+import { Hour0to23Parser } from "./Hour0to23Parser.js";
+import { Hour0To11Parser } from "./Hour0To11Parser.js";
+import { Hour1To24Parser } from "./Hour1To24Parser.js";
+import { MinuteParser } from "./MinuteParser.js";
+import { SecondParser } from "./SecondParser.js";
+import { FractionOfSecondParser } from "./FractionOfSecondParser.js";
+import { ISOTimezoneWithZParser } from "./ISOTimezoneWithZParser.js";
+import { ISOTimezoneParser } from "./ISOTimezoneParser.js";
+import { TimestampSecondsParser } from "./TimestampSecondsParser.js";
+import { TimestampMillisecondsParser } from "./TimestampMillisecondsParser.js";
 
 /*
  * |     | Unit                           |     | Unit                           |
@@ -107,4 +107,4 @@ export const parsers: Record<string, Parser<any>> = {
   x: new ISOTimezoneParser(),
   t: new TimestampSecondsParser(),
   T: new TimestampMillisecondsParser(),
-}
+};

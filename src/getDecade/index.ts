@@ -1,4 +1,4 @@
-import { toDate } from '../toDate/index.js'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name getDecade
@@ -20,10 +20,10 @@ import { toDate } from '../toDate/index.js'
  * //=> 1940
  */
 export function getDecade<DateType extends Date>(
-  date: DateType | number | string
+  date: DateType | number | string,
 ): number {
-  const _date = toDate(date)
-  const year = _date.getFullYear()
-  const decade = Math.floor(year / 10) * 10
-  return decade
+  const _date = toDate(date);
+  const year = _date.getFullYear();
+  const decade = Math.floor(year / 10) * 10;
+  return decade;
 }

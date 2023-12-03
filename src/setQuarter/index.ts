@@ -1,5 +1,5 @@
-import { setMonth } from '../setMonth/index.js'
-import { toDate } from '../toDate/index.js'
+import { setMonth } from "../setMonth/index.js";
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name setQuarter
@@ -23,10 +23,10 @@ import { toDate } from '../toDate/index.js'
  */
 export function setQuarter<DateType extends Date>(
   date: DateType | number | string,
-  quarter: number
+  quarter: number,
 ): DateType {
-  const _date = toDate(date)
-  const oldQuarter = Math.floor(_date.getMonth() / 3) + 1
-  const diff = quarter - oldQuarter
-  return setMonth(_date, _date.getMonth() + diff * 3)
+  const _date = toDate(date);
+  const oldQuarter = Math.floor(_date.getMonth() / 3) + 1;
+  const diff = quarter - oldQuarter;
+  return setMonth(_date, _date.getMonth() + diff * 3);
 }

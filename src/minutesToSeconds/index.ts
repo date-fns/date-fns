@@ -1,4 +1,4 @@
-import { secondsInMinute } from '../constants/index.js'
+import { secondsInMinute } from "../constants/index.js";
 
 /**
  * @name minutesToSeconds
@@ -18,5 +18,5 @@ import { secondsInMinute } from '../constants/index.js'
  * //=> 120
  */
 export function minutesToSeconds(minutes: number): number {
-  return Math.floor(minutes * secondsInMinute)
+  return Math.floor(minutes * secondsInMinute);
 }

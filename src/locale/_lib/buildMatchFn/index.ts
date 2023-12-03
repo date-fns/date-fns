@@ -1,41 +1,41 @@
-import { Quarter, Era, Day, Month } from '../../../types.js'
+import { Quarter, Era, Day, Month } from "../../../types.js";
 import {
   LocaleUnitValue,
   LocaleWidth,
   LocaleDayPeriod,
   MatchFn,
   MatchValueCallback,
-} from '../../types.js'
+} from "../../types.js";
 
 export interface BuildMatchFnArgs<
   Result extends LocaleUnitValue,
   DefaultMatchWidth extends LocaleWidth,
   DefaultParseWidth extends LocaleWidth,
 > {
-  matchPatterns: BuildMatchFnMatchPatterns<DefaultMatchWidth>
-  defaultMatchWidth: DefaultMatchWidth
-  parsePatterns: BuildMatchFnParsePatterns<Result, DefaultParseWidth>
-  defaultParseWidth: DefaultParseWidth
+  matchPatterns: BuildMatchFnMatchPatterns<DefaultMatchWidth>;
+  defaultMatchWidth: DefaultMatchWidth;
+  parsePatterns: BuildMatchFnParsePatterns<Result, DefaultParseWidth>;
+  defaultParseWidth: DefaultParseWidth;
   valueCallback?: MatchValueCallback<
     Result extends LocaleDayPeriod ? string : number,
     Result
-  >
+  >;
 }
 
 export type BuildMatchFnMatchPatterns<DefaultWidth extends LocaleWidth> = {
-  [Width in LocaleWidth]?: RegExp
+  [Width in LocaleWidth]?: RegExp;
 } & {
-  [Width in DefaultWidth]: RegExp
-}
+  [Width in DefaultWidth]: RegExp;
+};
 
 export type BuildMatchFnParsePatterns<
   Value extends LocaleUnitValue,
   DefaultWidth extends LocaleWidth,
 > = {
-  [Width in LocaleWidth]?: ParsePattern<Value>
+  [Width in LocaleWidth]?: ParsePattern<Value>;
 } & {
-  [Width in DefaultWidth]: ParsePattern<Value>
-}
+  [Width in DefaultWidth]: ParsePattern<Value>;
+};
 
 export type ParsePattern<Value extends LocaleUnitValue> =
   Value extends LocaleDayPeriod
@@ -61,7 +61,7 @@ export type ParsePattern<Value extends LocaleUnitValue> =
                 RegExp,
                 RegExp,
               ]
-            : never
+            : never;
 
 export function buildMatchFn<
   Value extends LocaleUnitValue,
@@ -71,41 +71,41 @@ export function buildMatchFn<
   args: BuildMatchFnArgs<Value, DefaultMatchWidth, DefaultParseWidth>,
 ): MatchFn<Value> {
   return (string, options = {}) => {
-    const width = options.width
+    const width = options.width;
 
     const matchPattern =
       (width && args.matchPatterns[width]) ||
-      args.matchPatterns[args.defaultMatchWidth]
-    const matchResult = string.match(matchPattern)
+      args.matchPatterns[args.defaultMatchWidth];
+    const matchResult = string.match(matchPattern);
 
     if (!matchResult) {
-      return null
+      return null;
     }
-    const matchedString = matchResult[0]
+    const matchedString = matchResult[0];
 
     const parsePatterns =
       (width && args.parsePatterns[width]) ||
-      args.parsePatterns[args.defaultParseWidth]
+      args.parsePatterns[args.defaultParseWidth];
 
     const key = (
       Array.isArray(parsePatterns)
         ? findIndex(parsePatterns, (pattern) => pattern.test(matchedString))
         : // eslint-disable-next-line @typescript-eslint/no-explicit-any -- I challange you to fix the type
           findKey(parsePatterns, (pattern: any) => pattern.test(matchedString))
-    ) as Value extends LocaleDayPeriod ? string : number
+    ) as Value extends LocaleDayPeriod ? string : number;
 
-    let value: Value
+    let value: Value;
 
-    value = (args.valueCallback ? args.valueCallback(key) : key) as Value
+    value = (args.valueCallback ? args.valueCallback(key) : key) as Value;
     value = options.valueCallback
       ? // eslint-disable-next-line @typescript-eslint/no-explicit-any -- I challange you to fix the type
         options.valueCallback(value as any)
-      : value
+      : value;
 
-    const rest = string.slice(matchedString.length)
+    const rest = string.slice(matchedString.length);
 
-    return { value, rest }
-  }
+    return { value, rest };
+  };
 }
 
 function findKey<Value, Obj extends { [key in string | number]: Value }>(
@@ -117,10 +117,10 @@ function findKey<Value, Obj extends { [key in string | number]: Value }>(
       Object.prototype.hasOwnProperty.call(object, key) &&
       predicate(object[key])
     ) {
-      return key
+      return key;
     }
   }
-  return undefined
+  return undefined;
 }
 
 function findIndex<Item>(
@@ -129,8 +129,8 @@ function findIndex<Item>(
 ): number | undefined {
   for (let key = 0; key < array.length; key++) {
     if (predicate(array[key])) {
-      return key
+      return key;
     }
   }
-  return undefined
+  return undefined;
 }

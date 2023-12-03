@@ -1,4 +1,4 @@
-import { startOfWeek } from '../startOfWeek/index.js'
+import { startOfWeek } from "../startOfWeek/index.js";
 
 /**
  * @name startOfISOWeek
@@ -23,7 +23,7 @@ import { startOfWeek } from '../startOfWeek/index.js'
  * //=> Mon Sep 01 2014 00:00:00
  */
 export function startOfISOWeek<DateType extends Date>(
-  date: DateType | number | string
+  date: DateType | number | string,
 ): DateType {
-  return startOfWeek(date, { weekStartsOn: 1 })
+  return startOfWeek(date, { weekStartsOn: 1 });
 }

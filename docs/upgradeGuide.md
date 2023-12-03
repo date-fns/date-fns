@@ -10,10 +10,10 @@ Function submodules now use camelCase naming schema:
 
 ```javascript
 // Before v2.0.0
-import differenceInCalendarISOYears from 'date-fns/difference_in_calendar_iso_years'
+import differenceInCalendarISOYears from "date-fns/difference_in_calendar_iso_years";
 
 // v2.0.0 onward
-import differenceInCalendarISOYears from 'date-fns/differenceInCalendarISOYears'
+import differenceInCalendarISOYears from "date-fns/differenceInCalendarISOYears";
 ```
 
 ### New formatting tokens
@@ -31,10 +31,10 @@ See [this post](https://blog.date-fns.org/post/we-cut-date-fns-v2-minimal-build-
 
 ```javascript
 // Before v2.0.0
-addDays('2016-01-01', 1)
+addDays("2016-01-01", 1);
 
 // v2.0.0 onward
-addDays(parseISO('2016-01-01'), 1)
+addDays(parseISO("2016-01-01"), 1);
 ```
 
 ### Arguments conversion
@@ -109,10 +109,10 @@ Locales renamed:
 
 ```javascript
 // Before v2.0.0
-import locale from 'date-fns/locale/zh_cn'
+import locale from "date-fns/locale/zh_cn";
 
 // v2.0.0 onward
-import locale from 'date-fns/locale/zh-CN'
+import locale from "date-fns/locale/zh-CN";
 ```
 
 [unicode tokens]: https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table

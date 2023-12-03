@@ -1,7 +1,7 @@
 import {
   formatDistance,
   FormatDistanceOptions,
-} from '../formatDistance/index.js'
+} from "../formatDistance/index.js";
 
 /**
  * The {@link formatDistanceToNow} function options.
@@ -93,7 +93,7 @@ export interface FormatDistanceToNowOptions extends FormatDistanceOptions {}
  */
 export function formatDistanceToNow<DateType extends Date>(
   date: DateType | number | string,
-  options?: FormatDistanceToNowOptions
+  options?: FormatDistanceToNowOptions,
 ): string {
-  return formatDistance(date, Date.now(), options)
+  return formatDistance(date, Date.now(), options);
 }

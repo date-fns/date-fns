@@ -1,30 +1,30 @@
-import type { FormatDistanceToken } from '../locale/types.js'
-import type { Duration, DurationUnit, LocalizedOptions } from '../types.js'
-import { defaultLocale } from '../_lib/defaultLocale/index.js'
-import { getDefaultOptions } from '../_lib/defaultOptions/index.js'
+import type { FormatDistanceToken } from "../locale/types.js";
+import type { Duration, DurationUnit, LocalizedOptions } from "../types.js";
+import { defaultLocale } from "../_lib/defaultLocale/index.js";
+import { getDefaultOptions } from "../_lib/defaultOptions/index.js";
 
 /**
  * The {@link formatDuration} function options.
  */
 export interface FormatDurationOptions
-  extends LocalizedOptions<'formatDistance'> {
+  extends LocalizedOptions<"formatDistance"> {
   /** The array of units to format */
-  format?: DurationUnit[]
+  format?: DurationUnit[];
   /** Should be zeros be included in the output? */
-  zero?: boolean
+  zero?: boolean;
   /** The delimiter string to use */
-  delimiter?: string
+  delimiter?: string;
 }
 
 const defaultFormat: DurationUnit[] = [
-  'years',
-  'months',
-  'weeks',
-  'days',
-  'hours',
-  'minutes',
-  'seconds',
-]
+  "years",
+  "months",
+  "weeks",
+  "days",
+  "hours",
+  "minutes",
+  "seconds",
+];
 
 /**
  * @name formatDuration
@@ -88,30 +88,30 @@ const defaultFormat: DurationUnit[] = [
  */
 export function formatDuration(
   duration: Duration,
-  options?: FormatDurationOptions
+  options?: FormatDurationOptions,
 ): string {
-  const defaultOptions = getDefaultOptions()
-  const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale
-  const format = options?.format ?? defaultFormat
-  const zero = options?.zero ?? false
-  const delimiter = options?.delimiter ?? ' '
+  const defaultOptions = getDefaultOptions();
+  const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale;
+  const format = options?.format ?? defaultFormat;
+  const zero = options?.zero ?? false;
+  const delimiter = options?.delimiter ?? " ";
 
   if (!locale.formatDistance) {
-    return ''
+    return "";
   }
 
   const result = format
     .reduce((acc, unit) => {
       const token = `x${unit.replace(/(^.)/, (m) =>
-        m.toUpperCase()
-      )}` as FormatDistanceToken
-      const value = duration[unit]
+        m.toUpperCase(),
+      )}` as FormatDistanceToken;
+      const value = duration[unit];
       if (value !== undefined && (zero || duration[unit])) {
-        return acc.concat(locale.formatDistance(token, value))
+        return acc.concat(locale.formatDistance(token, value));
       }
-      return acc
+      return acc;
     }, [] as string[])
-    .join(delimiter)
+    .join(delimiter);
 
-  return result
+  return result;
 }

@@ -1,16 +1,16 @@
-import { readdir } from 'fs/promises'
-import path from 'path'
+import { readdir } from "fs/promises";
+import path from "path";
 
-const ignorePattern = /^_|\./ // can't start with `_` or have a `.` in it
+const ignorePattern = /^_|\./; // can't start with `_` or have a `.` in it
 
 export interface FPFnFile {
-  name: string
-  path: string
-  fullPath: string
+  name: string;
+  path: string;
+  fullPath: string;
 }
 
 export async function listFPFns(): Promise<FPFnFile[]> {
-  const files = await readdir(path.join(process.cwd(), 'src', 'fp'))
+  const files = await readdir(path.join(process.cwd(), "src", "fp"));
 
   return files
     .filter((file) => !ignorePattern.test(file))
@@ -18,5 +18,5 @@ export async function listFPFns(): Promise<FPFnFile[]> {
       name: file,
       path: `./${file}`,
       fullPath: `./src/fp/${file}/index.js`,
-    }))
+    }));
 }

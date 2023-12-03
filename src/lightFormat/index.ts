@@ -1,6 +1,6 @@
-import { isValid } from '../isValid/index.js'
-import { toDate } from '../toDate/index.js'
-import { lightFormatters } from '../_lib/format/lightFormatters/index.js'
+import { isValid } from "../isValid/index.js";
+import { toDate } from "../toDate/index.js";
+import { lightFormatters } from "../_lib/format/lightFormatters/index.js";
 
 // This RegExp consists of three parts separated by `|`:
 // - (\w)\1* matches any sequences of the same letter
@@ -11,16 +11,16 @@ import { lightFormatters } from '../_lib/format/lightFormatters/index.js'
 //   If there is no matching single quote
 //   then the sequence will continue until the end of the string.
 // - . matches any single character unmatched by previous parts of the RegExps
-const formattingTokensRegExp = /(\w)\1*|''|'(''|[^'])+('|$)|./g
+const formattingTokensRegExp = /(\w)\1*|''|'(''|[^'])+('|$)|./g;
 
-const escapedStringRegExp = /^'([^]*?)'?$/
-const doubleQuoteRegExp = /''/g
-const unescapedLatinCharacterRegExp = /[a-zA-Z]/
+const escapedStringRegExp = /^'([^]*?)'?$/;
+const doubleQuoteRegExp = /''/g;
+const unescapedLatinCharacterRegExp = /[a-zA-Z]/;
 
 /**
  * @private
  */
-type Token = keyof typeof lightFormatters
+type Token = keyof typeof lightFormatters;
 
 /**
  * @name lightFormat
@@ -82,57 +82,57 @@ type Token = keyof typeof lightFormatters
  */
 export function lightFormat<DateType extends Date>(
   date: DateType | number | string,
-  formatStr: string
+  formatStr: string,
 ): string {
-  const _date = toDate(date)
+  const _date = toDate(date);
 
   if (!isValid(_date)) {
-    throw new RangeError('Invalid time value')
+    throw new RangeError("Invalid time value");
   }
 
-  const tokens = formatStr.match(formattingTokensRegExp)
+  const tokens = formatStr.match(formattingTokensRegExp);
 
   // The only case when formattingTokensRegExp doesn't match the string is when it's empty
-  if (!tokens) return ''
+  if (!tokens) return "";
 
   const result = tokens
     .map((substring) => {
       // Replace two single quote characters with one single quote character
       if (substring === "''") {
-        return "'"
+        return "'";
       }
 
-      const firstCharacter = substring[0]
+      const firstCharacter = substring[0];
       if (firstCharacter === "'") {
-        return cleanEscapedString(substring)
+        return cleanEscapedString(substring);
       }
 
-      const formatter = lightFormatters[firstCharacter as Token]
+      const formatter = lightFormatters[firstCharacter as Token];
       if (formatter) {
-        return formatter(_date, substring)
+        return formatter(_date, substring);
       }
 
       if (firstCharacter.match(unescapedLatinCharacterRegExp)) {
         throw new RangeError(
-          'Format string contains an unescaped latin alphabet character `' +
+          "Format string contains an unescaped latin alphabet character `" +
             firstCharacter +
-            '`'
-        )
+            "`",
+        );
       }
 
-      return substring
+      return substring;
     })
-    .join('')
+    .join("");
 
-  return result
+  return result;
 }
 
 function cleanEscapedString(input: string) {
-  const matches = input.match(escapedStringRegExp)
+  const matches = input.match(escapedStringRegExp);
 
   if (!matches) {
-    return input
+    return input;
   }
 
-  return matches[1].replace(doubleQuoteRegExp, "'")
+  return matches[1].replace(doubleQuoteRegExp, "'");
 }

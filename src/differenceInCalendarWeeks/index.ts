@@ -1,13 +1,13 @@
-import { millisecondsInWeek } from '../constants/index.js'
-import { startOfWeek } from '../startOfWeek/index.js'
-import type { LocalizedOptions, WeekOptions } from '../types.js'
-import { getTimezoneOffsetInMilliseconds } from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
+import { millisecondsInWeek } from "../constants/index.js";
+import { startOfWeek } from "../startOfWeek/index.js";
+import type { LocalizedOptions, WeekOptions } from "../types.js";
+import { getTimezoneOffsetInMilliseconds } from "../_lib/getTimezoneOffsetInMilliseconds/index.js";
 
 /**
  * The {@link differenceInCalendarWeeks} function options.
  */
 export interface DifferenceInCalendarWeeksOptions
-  extends LocalizedOptions<'options'>,
+  extends LocalizedOptions<"options">,
     WeekOptions {}
 
 /**
@@ -47,19 +47,20 @@ export interface DifferenceInCalendarWeeksOptions
 export function differenceInCalendarWeeks<DateType extends Date>(
   dateLeft: DateType | number | string,
   dateRight: DateType | number | string,
-  options?: DifferenceInCalendarWeeksOptions
+  options?: DifferenceInCalendarWeeksOptions,
 ): number {
-  const startOfWeekLeft = startOfWeek(dateLeft, options)
-  const startOfWeekRight = startOfWeek(dateRight, options)
+  const startOfWeekLeft = startOfWeek(dateLeft, options);
+  const startOfWeekRight = startOfWeek(dateRight, options);
 
   const timestampLeft =
-    startOfWeekLeft.getTime() - getTimezoneOffsetInMilliseconds(startOfWeekLeft)
+    startOfWeekLeft.getTime() -
+    getTimezoneOffsetInMilliseconds(startOfWeekLeft);
   const timestampRight =
     startOfWeekRight.getTime() -
-    getTimezoneOffsetInMilliseconds(startOfWeekRight)
+    getTimezoneOffsetInMilliseconds(startOfWeekRight);
 
   // Round the number of days to the nearest integer
   // because the number of milliseconds in a week is not constant
   // (e.g. it's different in the week of the daylight saving time clock shift)
-  return Math.round((timestampLeft - timestampRight) / millisecondsInWeek)
+  return Math.round((timestampLeft - timestampRight) / millisecondsInWeek);
 }

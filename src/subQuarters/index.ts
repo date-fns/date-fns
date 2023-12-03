@@ -1,4 +1,4 @@
-import { addQuarters } from '../addQuarters/index.js'
+import { addQuarters } from "../addQuarters/index.js";
 
 /**
  * @name subQuarters
@@ -22,7 +22,7 @@ import { addQuarters } from '../addQuarters/index.js'
  */
 export function subQuarters<DateType extends Date>(
   date: DateType | number | string,
-  amount: number
+  amount: number,
 ): DateType {
-  return addQuarters(date, -amount)
+  return addQuarters(date, -amount);
 }

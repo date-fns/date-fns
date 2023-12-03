@@ -1,18 +1,18 @@
-import { millisecondsInWeek } from '../constants/index.js'
-import { startOfWeek } from '../startOfWeek/index.js'
-import { startOfWeekYear } from '../startOfWeekYear/index.js'
-import { toDate } from '../toDate/index.js'
+import { millisecondsInWeek } from "../constants/index.js";
+import { startOfWeek } from "../startOfWeek/index.js";
+import { startOfWeekYear } from "../startOfWeekYear/index.js";
+import { toDate } from "../toDate/index.js";
 import type {
   FirstWeekContainsDateOptions,
   LocalizedOptions,
   WeekOptions,
-} from '../types.js'
+} from "../types.js";
 
 /**
  * The {@link getWeek} function options.
  */
 export interface GetWeekOptions
-  extends LocalizedOptions<'options'>,
+  extends LocalizedOptions<"options">,
     WeekOptions,
     FirstWeekContainsDateOptions {}
 
@@ -55,15 +55,15 @@ export interface GetWeekOptions
 
 export function getWeek<DateType extends Date>(
   date: DateType | number | string,
-  options?: GetWeekOptions
+  options?: GetWeekOptions,
 ): number {
-  const _date = toDate(date)
+  const _date = toDate(date);
   const diff =
     startOfWeek(_date, options).getTime() -
-    startOfWeekYear(_date, options).getTime()
+    startOfWeekYear(_date, options).getTime();
 
   // Round the number of days to the nearest integer
   // because the number of milliseconds in a week is not constant
   // (e.g. it's different in the week of the daylight saving time clock shift)
-  return Math.round(diff / millisecondsInWeek) + 1
+  return Math.round(diff / millisecondsInWeek) + 1;
 }

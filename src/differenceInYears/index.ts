@@ -1,6 +1,6 @@
-import { compareAsc } from '../compareAsc/index.js'
-import { differenceInCalendarYears } from '../differenceInCalendarYears/index.js'
-import { toDate } from '../toDate/index.js'
+import { compareAsc } from "../compareAsc/index.js";
+import { differenceInCalendarYears } from "../differenceInCalendarYears/index.js";
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name differenceInYears
@@ -24,24 +24,24 @@ import { toDate } from '../toDate/index.js'
  */
 export function differenceInYears<DateType extends Date>(
   dateLeft: DateType | number | string,
-  dateRight: DateType | number | string
+  dateRight: DateType | number | string,
 ): number {
-  const _dateLeft = toDate(dateLeft)
-  const _dateRight = toDate(dateRight)
+  const _dateLeft = toDate(dateLeft);
+  const _dateRight = toDate(dateRight);
 
-  const sign = compareAsc(_dateLeft, _dateRight)
-  const difference = Math.abs(differenceInCalendarYears(_dateLeft, _dateRight))
+  const sign = compareAsc(_dateLeft, _dateRight);
+  const difference = Math.abs(differenceInCalendarYears(_dateLeft, _dateRight));
 
   // Set both dates to a valid leap year for accurate comparison when dealing
   // with leap days
-  _dateLeft.setFullYear(1584)
-  _dateRight.setFullYear(1584)
+  _dateLeft.setFullYear(1584);
+  _dateRight.setFullYear(1584);
 
   // Math.abs(diff in full years - diff in calendar years) === 1 if last calendar year is not full
   // If so, result must be decreased by 1 in absolute value
-  const isLastYearNotFull = compareAsc(_dateLeft, _dateRight) === -sign
-  const result = sign * (difference - +isLastYearNotFull)
+  const isLastYearNotFull = compareAsc(_dateLeft, _dateRight) === -sign;
+  const result = sign * (difference - +isLastYearNotFull);
 
   // Prevent negative zero
-  return result === 0 ? 0 : result
+  return result === 0 ? 0 : result;
 }

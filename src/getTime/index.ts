@@ -1,4 +1,4 @@
-import { toDate } from '../toDate/index.js'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name getTime
@@ -20,9 +20,9 @@ import { toDate } from '../toDate/index.js'
  * //=> 1330515905123
  */
 export function getTime<DateType extends Date>(
-  date: DateType | number | string
+  date: DateType | number | string,
 ): number {
-  const _date = toDate(date)
-  const timestamp = _date.getTime()
-  return timestamp
+  const _date = toDate(date);
+  const timestamp = _date.getTime();
+  return timestamp;
 }

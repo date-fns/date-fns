@@ -1,4 +1,4 @@
-import { toDate } from '../toDate/index.js'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name lastDayOfMonth
@@ -21,11 +21,11 @@ import { toDate } from '../toDate/index.js'
  * //=> Tue Sep 30 2014 00:00:00
  */
 export function lastDayOfMonth<DateType extends Date>(
-  date: DateType | number | string
+  date: DateType | number | string,
 ): DateType {
-  const _date = toDate(date)
-  const month = _date.getMonth()
-  _date.setFullYear(_date.getFullYear(), month + 1, 0)
-  _date.setHours(0, 0, 0, 0)
-  return _date
+  const _date = toDate(date);
+  const month = _date.getMonth();
+  _date.setFullYear(_date.getFullYear(), month + 1, 0);
+  _date.setHours(0, 0, 0, 0);
+  return _date;
 }

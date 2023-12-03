@@ -1,14 +1,14 @@
-import { getDate } from '../getDate/index.js'
-import { getDay } from '../getDay/index.js'
-import { startOfMonth } from '../startOfMonth/index.js'
-import type { LocalizedOptions, WeekOptions } from '../types.js'
-import { getDefaultOptions } from '../_lib/defaultOptions/index.js'
+import { getDate } from "../getDate/index.js";
+import { getDay } from "../getDay/index.js";
+import { startOfMonth } from "../startOfMonth/index.js";
+import type { LocalizedOptions, WeekOptions } from "../types.js";
+import { getDefaultOptions } from "../_lib/defaultOptions/index.js";
 
 /**
  * The {@link getWeekOfMonth} function options.
  */
 export interface GetWeekOfMonthOptions
-  extends LocalizedOptions<'options'>,
+  extends LocalizedOptions<"options">,
     WeekOptions {}
 
 /**
@@ -33,24 +33,24 @@ export interface GetWeekOfMonthOptions
  */
 export function getWeekOfMonth<DateType extends Date>(
   date: DateType | number | string,
-  options?: GetWeekOfMonthOptions
+  options?: GetWeekOfMonthOptions,
 ): number {
-  const defaultOptions = getDefaultOptions()
+  const defaultOptions = getDefaultOptions();
   const weekStartsOn =
     options?.weekStartsOn ??
     options?.locale?.options?.weekStartsOn ??
     defaultOptions.weekStartsOn ??
     defaultOptions.locale?.options?.weekStartsOn ??
-    0
+    0;
 
-  const currentDayOfMonth = getDate(date)
-  if (isNaN(currentDayOfMonth)) return NaN
+  const currentDayOfMonth = getDate(date);
+  if (isNaN(currentDayOfMonth)) return NaN;
 
-  const startWeekDay = getDay(startOfMonth(date))
+  const startWeekDay = getDay(startOfMonth(date));
 
-  let lastDayOfFirstWeek = weekStartsOn - startWeekDay
-  if (lastDayOfFirstWeek <= 0) lastDayOfFirstWeek += 7
+  let lastDayOfFirstWeek = weekStartsOn - startWeekDay;
+  if (lastDayOfFirstWeek <= 0) lastDayOfFirstWeek += 7;
 
-  const remainingDaysAfterFirstWeek = currentDayOfMonth - lastDayOfFirstWeek
-  return Math.ceil(remainingDaysAfterFirstWeek / 7) + 1
+  const remainingDaysAfterFirstWeek = currentDayOfMonth - lastDayOfFirstWeek;
+  return Math.ceil(remainingDaysAfterFirstWeek / 7) + 1;
 }

@@ -1,4 +1,4 @@
-import { startOfDay } from '../startOfDay/index.js'
+import { startOfDay } from "../startOfDay/index.js";
 
 /**
  * @name isSameDay
@@ -32,10 +32,10 @@ import { startOfDay } from '../startOfDay/index.js'
  */
 export function isSameDay<DateType extends Date>(
   dateLeft: DateType | number | string,
-  dateRight: DateType | number | string
+  dateRight: DateType | number | string,
 ): boolean {
-  const dateLeftStartOfDay = startOfDay(dateLeft)
-  const dateRightStartOfDay = startOfDay(dateRight)
+  const dateLeftStartOfDay = startOfDay(dateLeft);
+  const dateRightStartOfDay = startOfDay(dateRight);
 
-  return +dateLeftStartOfDay === +dateRightStartOfDay
+  return +dateLeftStartOfDay === +dateRightStartOfDay;
 }
