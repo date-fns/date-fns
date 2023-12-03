@@ -19,16 +19,6 @@ dir=${PACKAGE_OUTPUT_PATH:-"$root/lib"}
 rm -rf "$dir"
 mkdir -p "$dir"
 
-# Transpile CommonJS versions of files
-env BABEL_ENV=cjs npx babel src \
-  --config-file ./babel.config.js \
-  --source-root src \
-  --out-dir "$dir" \
-  --ignore "**/test.ts","**/*.d.ts" \
-  --extensions .mjs,.ts \
-  --out-file-extension .js \
-  --quiet
-
 # Transpile ESM versions of files
 env BABEL_ENV=esm npx babel src \
   --config-file ./babel.config.js \
@@ -37,6 +27,19 @@ env BABEL_ENV=esm npx babel src \
   --ignore "**/test.ts","**/*.d.ts" \
   --extensions .mjs,.ts \
   --out-file-extension .mjs \
+  --quiet
+
+# Add fallback for Next.js and other tools that modularize imports:
+npx tsx scripts/build/nextjs.ts
+
+# Transpile CommonJS versions of files
+env BABEL_ENV=cjs npx babel src \
+  --config-file ./babel.config.js \
+  --source-root src \
+  --out-dir "$dir" \
+  --ignore "**/test.ts","**/*.d.ts" \
+  --extensions .mjs,.ts \
+  --out-file-extension .js \
   --quiet
 
 # Generate TypeScript

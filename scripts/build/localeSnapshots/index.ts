@@ -12,6 +12,7 @@ import path from "path";
 import { Locale } from "../../../src/locale/types";
 import { listLocales } from "../../_lib/listLocales";
 import { formatCode } from "../_lib/prettier";
+import { convertLocaleToConst } from "./_lib/locale";
 import renderFormatDistance from "./renderFormatDistance";
 import renderFormatDistanceStrict from "./renderFormatDistanceStrict";
 import renderFormatDuration from "./renderFormatDuration";
@@ -52,7 +53,7 @@ ${renderFormatDuration(locale)}
 
         const snapshotPath = path.join(
           path.resolve(process.cwd(), path.dirname(fullPath)),
-          "snapshot.md",
+          "snapshot.md"
         );
         const formattedSnapshot = await formatCode(snapshot, "markdown");
 
@@ -60,20 +61,16 @@ ${renderFormatDuration(locale)}
           return readFile(snapshotPath, "utf8").then((snapshotFileContent) => {
             if (snapshotFileContent !== formattedSnapshot)
               throw new Error(
-                `The snapshot on the disk doesn't match the generated snapshot: ${snapshotPath}. Please run npm run locale-snapshots and commit the results.`,
+                `The snapshot on the disk doesn't match the generated snapshot: ${snapshotPath}. Please run npm run locale-snapshots and commit the results.`
               );
           });
         } else {
           return writeFile(snapshotPath, formattedSnapshot);
         }
-      }),
-    ),
+      })
+    )
   )
   .catch((err) => {
     console.error(err.stack);
     process.exit(1);
   });
-
-function convertLocaleToConst(input: string): string {
-  return input.replace(/-([a-zA-Z])/g, (_, char) => char.toUpperCase());
-}
