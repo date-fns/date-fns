@@ -23,7 +23,7 @@ export interface IntervalOptions {
 export function interval<DateType extends Date>(
   start: DateType | number | string,
   end: DateType | number | string,
-  options?: IntervalOptions
+  options?: IntervalOptions,
 ): Interval {
   if (!start) throw new TypeError('Start date is required')
   if (!end) throw new TypeError('End date is required')
