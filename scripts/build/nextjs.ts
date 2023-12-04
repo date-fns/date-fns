@@ -12,7 +12,7 @@ import { readdir, writeFile, readFile } from "fs/promises";
 import { dirname, join, resolve } from "path";
 import { convertLocaleToConst } from "./localeSnapshots/_lib/locale.js";
 
-const root = process.env.PACKAGE_OUTPUT_PATH || resolve("lib");
+const root = resolve(process.env.PACKAGE_OUTPUT_PATH || "lib");
 
 addNextJSFallbacks(root);
 

@@ -2,10 +2,10 @@
 
 import assert from "assert";
 import fs from "fs/promises";
-import path from "path";
+import { dirname, join, relative, resolve } from "path";
 
 const dirsToRemove = new Set<string>();
-const root = process.env.PACKAGE_OUTPUT_PATH || "lib";
+const root = resolve(process.env.PACKAGE_OUTPUT_PATH || "lib");
 
 async function main() {
   return getFiles(root)
@@ -21,23 +21,23 @@ async function main() {
             isCJS
               ? /require\("([^"]+)"\)/g
               : isESM
-                ? /from "([^"]+)"/g
-                : /from '([^']+)'/g,
+              ? /from "([^"]+)"/g
+              : /from '([^']+)'/g,
             (_str, relImportPath) => {
               const newRelImportPath = getNewImportPath(
                 filePath,
-                relImportPath,
+                relImportPath
               );
               return isCJS
                 ? `require("${newRelImportPath}")`
                 : isESM
-                  ? `from "${newRelImportPath}"`
-                  : `from '${newRelImportPath}'`;
-            },
+                ? `from "${newRelImportPath}"`
+                : `from '${newRelImportPath}'`;
+            }
           );
 
           // Non-empty dirs won't delete, so we can add all dirs
-          dirsToRemove.add(path.dirname(filePath));
+          dirsToRemove.add(dirname(filePath));
 
           if (newFilePath !== filePath)
             return Promise.all([
@@ -45,13 +45,11 @@ async function main() {
               fs.unlink(filePath),
             ]);
           else return fs.writeFile(filePath, newContent);
-        }),
-      ),
+        })
+      )
     )
     .then(() =>
-      Promise.all(
-        [...dirsToRemove].map((dir) => fs.rmdir(dir).catch(() => {})),
-      ),
+      Promise.all([...dirsToRemove].map((dir) => fs.rmdir(dir).catch(() => {})))
     )
     .catch((error) => {
       console.error(error);
@@ -66,10 +64,7 @@ function getNewImportPath(filePath: string, relImportPath: string): string {
   const newFullImportPath = getNewPath(importPath);
 
   // Determine the relative path between newFilePath and newFullImportPath
-  const newImportPath = path.relative(
-    path.dirname(newFilePath),
-    newFullImportPath,
-  );
+  const newImportPath = relative(dirname(newFilePath), newFullImportPath);
 
   return newImportPath.startsWith(".") ? newImportPath : "./" + newImportPath;
 }
@@ -84,8 +79,8 @@ function getNewPath(oldPath: string) {
 }
 
 function resolvePath(base: string, relativePath: string) {
-  const baseDir = path.dirname(base);
-  return path.join(baseDir, relativePath);
+  const baseDir = dirname(base);
+  return join(baseDir, relativePath);
 }
 
 const ignoreProcess = [new RegExp(`^${root}/docs`)];
@@ -95,7 +90,7 @@ async function getFiles(dir: string): Promise<string[]> {
   let allFiles: string[] = [];
 
   for (const file of files) {
-    const fullPath = path.join(dir, file);
+    const fullPath = join(dir, file);
     const stats = await fs.stat(fullPath);
 
     if (stats.isDirectory()) {
@@ -120,11 +115,11 @@ async function test() {
   assert.strictEqual(getNewPath("lib/addDays/index.js"), "lib/addDays.js");
   assert.strictEqual(
     getNewPath("lib/fp/addDays/index.js"),
-    "lib/fp/addDays.js",
+    "lib/fp/addDays.js"
   );
   assert.strictEqual(
     getNewPath("lib/locale/en-US/index.js"),
-    "lib/locale/en-US.js",
+    "lib/locale/en-US.js"
   );
   assert.strictEqual(getNewPath("lib/transpose/index.js"), "lib/transpose.js");
   assert.strictEqual(getNewPath("lib/fp/index.js"), "lib/fp.js");
@@ -134,7 +129,7 @@ async function test() {
   // Ignores non-index files
   assert.strictEqual(
     getNewPath("lib/parse/_lib/Setter.js"),
-    "lib/parse/_lib/Setter.js",
+    "lib/parse/_lib/Setter.js"
   );
   assert.strictEqual(getNewPath("./setWeek/index"), "./setWeek");
 
@@ -143,34 +138,34 @@ async function test() {
   // Resolves relative paths
   assert.strictEqual(
     resolvePath("lib/addDays/index.js", "./_lib/utils.js"),
-    "lib/addDays/_lib/utils.js",
+    "lib/addDays/_lib/utils.js"
   );
   assert.strictEqual(
     resolvePath("lib/parse/_lib/Setter.js", "../../transpose/index.js"),
-    "lib/transpose/index.js",
+    "lib/transpose/index.js"
   );
 
   // getNewImportPath
 
   assert.strictEqual(
     getNewImportPath("lib/addDays/index.js", "./_lib/utils.js"),
-    "./addDays/_lib/utils.js",
+    "./addDays/_lib/utils.js"
   );
   assert.strictEqual(
     getNewImportPath("lib/index.js", "./add/index.js"),
-    "./add.js",
+    "./add.js"
   );
   assert.strictEqual(
     getNewImportPath("lib/index.js", "./locale/en-US/index.js"),
-    "./locale/en-US.js",
+    "./locale/en-US.js"
   );
   assert.strictEqual(
     getNewImportPath("lib/locale/en-US/index.js", "../_lib/utils.js"),
-    "./_lib/utils.js",
+    "./_lib/utils.js"
   );
   assert.strictEqual(
     getNewImportPath("lib/parse/_lib/Setter.js", "../../transpose/index.js"),
-    "../../transpose.js",
+    "../../transpose.js"
   );
 }
 
