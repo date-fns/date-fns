@@ -9,7 +9,7 @@
 
 import { readFile, writeFile } from "fs/promises";
 import path from "path";
-import { Locale } from "../../../src/locale/types";
+import type { Locale } from "../../../src/locale/types";
 import { listLocales } from "../../_lib/listLocales";
 import { formatCode } from "../_lib/prettier";
 import { convertLocaleToConst } from "./_lib/locale";

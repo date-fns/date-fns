@@ -1,5 +1,6 @@
+import type {
+  DefaultOptions} from "../_lib/defaultOptions/index.js";
 import {
-  DefaultOptions,
   getDefaultOptions as getInternalDefaultOptions,
 } from "../_lib/defaultOptions/index.js";
 

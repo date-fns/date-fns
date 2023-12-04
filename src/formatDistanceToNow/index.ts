@@ -1,6 +1,7 @@
+import type {
+  FormatDistanceOptions} from "../formatDistance/index.js";
 import {
-  formatDistance,
-  FormatDistanceOptions,
+  formatDistance
 } from "../formatDistance/index.js";
 
 /**

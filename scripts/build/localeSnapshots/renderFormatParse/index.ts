@@ -2,7 +2,7 @@ import { format } from "../../../../src/format";
 import { isValid } from "../../../../src/isValid";
 import { parse } from "../../../../src/parse";
 import { toDate } from "../../../../src/toDate";
-import { Locale } from "../../../../src/types";
+import type { Locale } from "../../../../src/types";
 import formatParseTokens from "./formatParseTokens";
 
 export default function renderFormatParse(locale: Locale) {

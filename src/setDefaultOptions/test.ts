@@ -3,8 +3,9 @@
 import assert from "assert";
 import { afterEach, describe, it } from "vitest";
 import { setDefaultOptions } from ".";
+import type {
+  DefaultOptions} from "../_lib/defaultOptions/index.js";
 import {
-  DefaultOptions,
   getDefaultOptions as getInternalDefaultOptions,
 } from "../_lib/defaultOptions/index.js";
 import { enUS } from "../locale/en-US/index.js";

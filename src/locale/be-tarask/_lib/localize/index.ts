@@ -1,5 +1,5 @@
 import type { Localize } from "../../../types.js";
-import { LocalizeFn } from "../../../types.js";
+import type { LocalizeFn } from "../../../types.js";
 import { buildLocalizeFn } from "../../../_lib/buildLocalizeFn/index.js";
 
 const eraValues = {

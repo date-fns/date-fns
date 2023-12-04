@@ -1,4 +1,4 @@
-import { FormatLong } from "../../../types.js";
+import type { FormatLong } from "../../../types.js";
 import { buildFormatLongFn } from "../../../_lib/buildFormatLongFn/index.js";
 
 const dateFormats = {

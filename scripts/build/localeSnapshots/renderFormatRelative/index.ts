@@ -1,5 +1,5 @@
 import { formatRelative } from "../../../../src/formatRelative";
-import { Locale } from "../../../../src/types";
+import type { Locale } from "../../../../src/types";
 import { baseDate, relativeDates } from "../_lib/distanceDates";
 
 export default function renderFormatRelative(locale: Locale) {

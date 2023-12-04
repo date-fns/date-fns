@@ -1,5 +1,5 @@
 import { toDate } from "../toDate/index.js";
-import { Interval } from "../types.js";
+import type { Interval } from "../types.js";
 
 /**
  * The {@link interval} function options.

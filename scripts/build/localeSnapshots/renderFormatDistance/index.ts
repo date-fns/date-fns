@@ -1,5 +1,5 @@
 import { formatDistance } from "../../../../src/formatDistance";
-import { Locale } from "../../../../src/types";
+import type { Locale } from "../../../../src/types";
 import { baseDate, dates } from "../_lib/distanceDates";
 
 export default function renderFormatDistance(locale: Locale) {

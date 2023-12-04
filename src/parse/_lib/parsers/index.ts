@@ -1,4 +1,4 @@
-import { Parser } from "../Parser.js";
+import type { Parser } from "../Parser.js";
 import { EraParser } from "./EraParser.js";
 import { YearParser } from "./YearParser.js";
 import { LocalWeekYearParser } from "./LocalWeekYearParser.js";

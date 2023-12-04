@@ -15,7 +15,8 @@ import {
   throwProtectedError,
 } from "../_lib/protectedTokens/index.js";
 import { parsers } from "./_lib/parsers/index.js";
-import { DateToSystemTimezoneSetter, Setter } from "./_lib/Setter.js";
+import type { Setter } from "./_lib/Setter.js";
+import { DateToSystemTimezoneSetter } from "./_lib/Setter.js";
 import type { ParseFlags, ParserOptions } from "./_lib/types.js";
 
 /**

@@ -1,5 +1,5 @@
-import { Quarter, Era, Day, Month } from "../../../types.js";
-import {
+import type { Quarter, Era, Day, Month } from "../../../types.js";
+import type {
   LocaleUnitValue,
   LocaleWidth,
   LocaleDayPeriod,
