@@ -7,7 +7,7 @@
  * It's a part of the build process.
  */
 
-import { readRefsFromJSON } from "@date-fns/docs";
+import { joinTag, readRefsFromJSON } from "@date-fns/docs";
 import { mkdir, stat, writeFile } from "fs/promises";
 import path from "path";
 import { config } from "../../docs/config.js";
@@ -31,6 +31,16 @@ async function main() {
           Math.max(acc, signature.parameters?.length || 0),
         0
       );
+
+      // Skip non-pure functions, i.e. startOfToday as they can't
+      // be safely curried.
+      const pure = ref.fn.signatures.every(
+        (signature: any) =>
+          !signature.comment.blockTags.some(
+            (tag: any) => tag.tag === "@pure" && joinTag(tag) === "false"
+          )
+      );
+      if (!pure) return;
 
       async function writeFn(
         arity: number,
@@ -66,9 +76,9 @@ main();
 function getFPFn(sourceName: string, fnName: string, arity: number): string {
   return `// This file is generated automatically by \`scripts/build/fp.ts\`. Please, don't change it.
 
-import { ${sourceName} as fn } from '../../${sourceName}/index.js'
-import { convertToFP } from '../_lib/convertToFP/index.js'
+import { ${sourceName} as fn } from "../../${sourceName}/index.js";
+import { convertToFP } from "../_lib/convertToFP/index.js";
 
-export const ${fnName} = convertToFP(fn, ${arity})
+export const ${fnName} = convertToFP(fn, ${arity});
 `;
 }

@@ -3187,26 +3187,6 @@
         "default": "./fp/endOfSecond.mjs"
       }
     },
-    "./fp/endOfToday": {
-      "require": {
-        "types": "./fp/endOfToday.d.ts",
-        "default": "./fp/endOfToday.js"
-      },
-      "import": {
-        "types": "./fp/endOfToday.d.mts",
-        "default": "./fp/endOfToday.mjs"
-      }
-    },
-    "./fp/endOfTomorrow": {
-      "require": {
-        "types": "./fp/endOfTomorrow.d.ts",
-        "default": "./fp/endOfTomorrow.js"
-      },
-      "import": {
-        "types": "./fp/endOfTomorrow.d.mts",
-        "default": "./fp/endOfTomorrow.mjs"
-      }
-    },
     "./fp/endOfWeek": {
       "require": {
         "types": "./fp/endOfWeek.d.ts",
@@ -3235,16 +3215,6 @@
       "import": {
         "types": "./fp/endOfYear.d.mts",
         "default": "./fp/endOfYear.mjs"
-      }
-    },
-    "./fp/endOfYesterday": {
-      "require": {
-        "types": "./fp/endOfYesterday.d.ts",
-        "default": "./fp/endOfYesterday.js"
-      },
-      "import": {
-        "types": "./fp/endOfYesterday.d.mts",
-        "default": "./fp/endOfYesterday.mjs"
       }
     },
     "./fp/format": {
@@ -3285,46 +3255,6 @@
       "import": {
         "types": "./fp/formatDistanceStrictWithOptions.d.mts",
         "default": "./fp/formatDistanceStrictWithOptions.mjs"
-      }
-    },
-    "./fp/formatDistanceToNow": {
-      "require": {
-        "types": "./fp/formatDistanceToNow.d.ts",
-        "default": "./fp/formatDistanceToNow.js"
-      },
-      "import": {
-        "types": "./fp/formatDistanceToNow.d.mts",
-        "default": "./fp/formatDistanceToNow.mjs"
-      }
-    },
-    "./fp/formatDistanceToNowStrict": {
-      "require": {
-        "types": "./fp/formatDistanceToNowStrict.d.ts",
-        "default": "./fp/formatDistanceToNowStrict.js"
-      },
-      "import": {
-        "types": "./fp/formatDistanceToNowStrict.d.mts",
-        "default": "./fp/formatDistanceToNowStrict.mjs"
-      }
-    },
-    "./fp/formatDistanceToNowStrictWithOptions": {
-      "require": {
-        "types": "./fp/formatDistanceToNowStrictWithOptions.d.ts",
-        "default": "./fp/formatDistanceToNowStrictWithOptions.js"
-      },
-      "import": {
-        "types": "./fp/formatDistanceToNowStrictWithOptions.d.mts",
-        "default": "./fp/formatDistanceToNowStrictWithOptions.mjs"
-      }
-    },
-    "./fp/formatDistanceToNowWithOptions": {
-      "require": {
-        "types": "./fp/formatDistanceToNowWithOptions.d.ts",
-        "default": "./fp/formatDistanceToNowWithOptions.js"
-      },
-      "import": {
-        "types": "./fp/formatDistanceToNowWithOptions.d.mts",
-        "default": "./fp/formatDistanceToNowWithOptions.mjs"
       }
     },
     "./fp/formatDistanceWithOptions": {
@@ -3535,16 +3465,6 @@
       "import": {
         "types": "./fp/getDecade.d.mts",
         "default": "./fp/getDecade.mjs"
-      }
-    },
-    "./fp/getDefaultOptions": {
-      "require": {
-        "types": "./fp/getDefaultOptions.d.ts",
-        "default": "./fp/getDefaultOptions.js"
-      },
-      "import": {
-        "types": "./fp/getDefaultOptions.d.mts",
-        "default": "./fp/getDefaultOptions.mjs"
       }
     },
     "./fp/getHours": {
@@ -3927,16 +3847,6 @@
         "default": "./fp/isFriday.mjs"
       }
     },
-    "./fp/isFuture": {
-      "require": {
-        "types": "./fp/isFuture.d.ts",
-        "default": "./fp/isFuture.js"
-      },
-      "import": {
-        "types": "./fp/isFuture.d.mts",
-        "default": "./fp/isFuture.mjs"
-      }
-    },
     "./fp/isLastDayOfMonth": {
       "require": {
         "types": "./fp/isLastDayOfMonth.d.ts",
@@ -3985,16 +3895,6 @@
       "import": {
         "types": "./fp/isMonday.d.mts",
         "default": "./fp/isMonday.mjs"
-      }
-    },
-    "./fp/isPast": {
-      "require": {
-        "types": "./fp/isPast.d.ts",
-        "default": "./fp/isPast.js"
-      },
-      "import": {
-        "types": "./fp/isPast.d.mts",
-        "default": "./fp/isPast.mjs"
       }
     },
     "./fp/isSameDay": {
@@ -4127,96 +4027,6 @@
         "default": "./fp/isSunday.mjs"
       }
     },
-    "./fp/isThisHour": {
-      "require": {
-        "types": "./fp/isThisHour.d.ts",
-        "default": "./fp/isThisHour.js"
-      },
-      "import": {
-        "types": "./fp/isThisHour.d.mts",
-        "default": "./fp/isThisHour.mjs"
-      }
-    },
-    "./fp/isThisISOWeek": {
-      "require": {
-        "types": "./fp/isThisISOWeek.d.ts",
-        "default": "./fp/isThisISOWeek.js"
-      },
-      "import": {
-        "types": "./fp/isThisISOWeek.d.mts",
-        "default": "./fp/isThisISOWeek.mjs"
-      }
-    },
-    "./fp/isThisMinute": {
-      "require": {
-        "types": "./fp/isThisMinute.d.ts",
-        "default": "./fp/isThisMinute.js"
-      },
-      "import": {
-        "types": "./fp/isThisMinute.d.mts",
-        "default": "./fp/isThisMinute.mjs"
-      }
-    },
-    "./fp/isThisMonth": {
-      "require": {
-        "types": "./fp/isThisMonth.d.ts",
-        "default": "./fp/isThisMonth.js"
-      },
-      "import": {
-        "types": "./fp/isThisMonth.d.mts",
-        "default": "./fp/isThisMonth.mjs"
-      }
-    },
-    "./fp/isThisQuarter": {
-      "require": {
-        "types": "./fp/isThisQuarter.d.ts",
-        "default": "./fp/isThisQuarter.js"
-      },
-      "import": {
-        "types": "./fp/isThisQuarter.d.mts",
-        "default": "./fp/isThisQuarter.mjs"
-      }
-    },
-    "./fp/isThisSecond": {
-      "require": {
-        "types": "./fp/isThisSecond.d.ts",
-        "default": "./fp/isThisSecond.js"
-      },
-      "import": {
-        "types": "./fp/isThisSecond.d.mts",
-        "default": "./fp/isThisSecond.mjs"
-      }
-    },
-    "./fp/isThisWeek": {
-      "require": {
-        "types": "./fp/isThisWeek.d.ts",
-        "default": "./fp/isThisWeek.js"
-      },
-      "import": {
-        "types": "./fp/isThisWeek.d.mts",
-        "default": "./fp/isThisWeek.mjs"
-      }
-    },
-    "./fp/isThisWeekWithOptions": {
-      "require": {
-        "types": "./fp/isThisWeekWithOptions.d.ts",
-        "default": "./fp/isThisWeekWithOptions.js"
-      },
-      "import": {
-        "types": "./fp/isThisWeekWithOptions.d.mts",
-        "default": "./fp/isThisWeekWithOptions.mjs"
-      }
-    },
-    "./fp/isThisYear": {
-      "require": {
-        "types": "./fp/isThisYear.d.ts",
-        "default": "./fp/isThisYear.js"
-      },
-      "import": {
-        "types": "./fp/isThisYear.d.mts",
-        "default": "./fp/isThisYear.mjs"
-      }
-    },
     "./fp/isThursday": {
       "require": {
         "types": "./fp/isThursday.d.ts",
@@ -4225,26 +4035,6 @@
       "import": {
         "types": "./fp/isThursday.d.mts",
         "default": "./fp/isThursday.mjs"
-      }
-    },
-    "./fp/isToday": {
-      "require": {
-        "types": "./fp/isToday.d.ts",
-        "default": "./fp/isToday.js"
-      },
-      "import": {
-        "types": "./fp/isToday.d.mts",
-        "default": "./fp/isToday.mjs"
-      }
-    },
-    "./fp/isTomorrow": {
-      "require": {
-        "types": "./fp/isTomorrow.d.ts",
-        "default": "./fp/isTomorrow.js"
-      },
-      "import": {
-        "types": "./fp/isTomorrow.d.mts",
-        "default": "./fp/isTomorrow.mjs"
       }
     },
     "./fp/isTuesday": {
@@ -4295,16 +4085,6 @@
       "import": {
         "types": "./fp/isWithinInterval.d.mts",
         "default": "./fp/isWithinInterval.mjs"
-      }
-    },
-    "./fp/isYesterday": {
-      "require": {
-        "types": "./fp/isYesterday.d.ts",
-        "default": "./fp/isYesterday.js"
-      },
-      "import": {
-        "types": "./fp/isYesterday.d.mts",
-        "default": "./fp/isYesterday.mjs"
       }
     },
     "./fp/lastDayOfDecade": {
@@ -4837,26 +4617,6 @@
         "default": "./fp/setDayWithOptions.mjs"
       }
     },
-    "./fp/setDefaultOptions": {
-      "require": {
-        "types": "./fp/setDefaultOptions.d.ts",
-        "default": "./fp/setDefaultOptions.js"
-      },
-      "import": {
-        "types": "./fp/setDefaultOptions.d.mts",
-        "default": "./fp/setDefaultOptions.mjs"
-      }
-    },
-    "./fp/setDefaultOptionsWithOptions": {
-      "require": {
-        "types": "./fp/setDefaultOptionsWithOptions.d.ts",
-        "default": "./fp/setDefaultOptionsWithOptions.js"
-      },
-      "import": {
-        "types": "./fp/setDefaultOptionsWithOptions.d.mts",
-        "default": "./fp/setDefaultOptionsWithOptions.mjs"
-      }
-    },
     "./fp/setHours": {
       "require": {
         "types": "./fp/setHours.d.ts",
@@ -5087,26 +4847,6 @@
         "default": "./fp/startOfSecond.mjs"
       }
     },
-    "./fp/startOfToday": {
-      "require": {
-        "types": "./fp/startOfToday.d.ts",
-        "default": "./fp/startOfToday.js"
-      },
-      "import": {
-        "types": "./fp/startOfToday.d.mts",
-        "default": "./fp/startOfToday.mjs"
-      }
-    },
-    "./fp/startOfTomorrow": {
-      "require": {
-        "types": "./fp/startOfTomorrow.d.ts",
-        "default": "./fp/startOfTomorrow.js"
-      },
-      "import": {
-        "types": "./fp/startOfTomorrow.d.mts",
-        "default": "./fp/startOfTomorrow.mjs"
-      }
-    },
     "./fp/startOfWeek": {
       "require": {
         "types": "./fp/startOfWeek.d.ts",
@@ -5155,16 +4895,6 @@
       "import": {
         "types": "./fp/startOfYear.d.mts",
         "default": "./fp/startOfYear.mjs"
-      }
-    },
-    "./fp/startOfYesterday": {
-      "require": {
-        "types": "./fp/startOfYesterday.d.ts",
-        "default": "./fp/startOfYesterday.js"
-      },
-      "import": {
-        "types": "./fp/startOfYesterday.d.mts",
-        "default": "./fp/startOfYesterday.mjs"
       }
     },
     "./fp/sub": {
@@ -6271,7 +6001,7 @@
   "scripts": {
     "test": "vitest run",
     "lint": "eslint .",
-    "lint-types": "eslint --config=.ts-eslintrc.js typings.d.ts",
+    "types": "tsc --noEmit",
     "locale-snapshots": "env TZ=utc tsx ./scripts/build/localeSnapshots/index.ts",
     "stats": "cloc . --exclude-dir=node_modules,tmp,.git,lib"
   },
