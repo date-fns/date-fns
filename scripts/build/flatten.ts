@@ -1,28 +1,26 @@
 #!/usr/bin/env npx tsx
 
 import assert from "assert";
-import fs from "fs/promises";
+import { readFile, readdir, rmdir, stat, unlink, writeFile } from "fs/promises";
 import { dirname, join, relative, resolve } from "path";
 
 const dirsToRemove = new Set<string>();
 const root = resolve(process.env.PACKAGE_OUTPUT_PATH || "lib");
+const relativeRoot = relative(process.cwd(), root);
 
 async function main() {
-  return getFiles(root)
+  return getFiles(relativeRoot)
     .then((files) =>
       Promise.all(
         files.map(async (filePath) => {
-          const content = await fs.readFile(filePath, "utf-8");
+          const content = await readFile(filePath, "utf-8");
           const newFilePath = getNewPath(filePath);
           const isCJS = /\.js$/.test(filePath);
           const isESM = /\.mjs$/.test(filePath);
+          const replaceRE = isCJS ? /require\("([^"]+)"\)/g : /from "([^"]+)"/g;
 
           const newContent = content.replace(
-            isCJS
-              ? /require\("([^"]+)"\)/g
-              : isESM
-              ? /from "([^"]+)"/g
-              : /from '([^']+)'/g,
+            replaceRE,
             (_str, relImportPath) => {
               const newRelImportPath = getNewImportPath(
                 filePath,
@@ -41,15 +39,15 @@ async function main() {
 
           if (newFilePath !== filePath)
             return Promise.all([
-              fs.writeFile(newFilePath, newContent),
-              fs.unlink(filePath),
+              writeFile(newFilePath, newContent),
+              unlink(filePath),
             ]);
-          else return fs.writeFile(filePath, newContent);
+          else return writeFile(filePath, newContent);
         })
       )
     )
     .then(() =>
-      Promise.all([...dirsToRemove].map((dir) => fs.rmdir(dir).catch(() => {})))
+      Promise.all([...dirsToRemove].map((dir) => rmdir(dir).catch(() => {})))
     )
     .catch((error) => {
       console.error(error);
@@ -69,7 +67,7 @@ function getNewImportPath(filePath: string, relImportPath: string): string {
   return newImportPath.startsWith(".") ? newImportPath : "./" + newImportPath;
 }
 
-const ignoreMove = [new RegExp(`^${root}/index`)];
+const ignoreMove = [new RegExp(`^${relativeRoot}/index`)];
 
 function getNewPath(oldPath: string) {
   if (ignoreMove.some((r) => r.test(oldPath))) return oldPath;
@@ -83,15 +81,15 @@ function resolvePath(base: string, relativePath: string) {
   return join(baseDir, relativePath);
 }
 
-const ignoreProcess = [new RegExp(`^${root}/docs`)];
+const ignoreProcess = [new RegExp(`^${relativeRoot}/docs`)];
 
 async function getFiles(dir: string): Promise<string[]> {
-  const files = await fs.readdir(dir);
+  const files = await readdir(dir);
   let allFiles: string[] = [];
 
   for (const file of files) {
     const fullPath = join(dir, file);
-    const stats = await fs.stat(fullPath);
+    const stats = await stat(fullPath);
 
     if (stats.isDirectory()) {
       const subFiles = await getFiles(fullPath);
@@ -132,6 +130,7 @@ async function test() {
     "lib/parse/_lib/Setter.js"
   );
   assert.strictEqual(getNewPath("./setWeek/index"), "./setWeek");
+  assert.strictEqual(getNewPath("./add/index.d.ts"), "./add.d.ts");
 
   // resolvePath
 
@@ -166,6 +165,10 @@ async function test() {
   assert.strictEqual(
     getNewImportPath("lib/parse/_lib/Setter.js", "../../transpose/index.js"),
     "../../transpose.js"
+  );
+  assert.strictEqual(
+    getNewImportPath("lib/add/index.d.ts", "../types.js"),
+    "./types.js"
   );
 }
 

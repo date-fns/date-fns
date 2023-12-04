@@ -45,6 +45,10 @@ env BABEL_ENV=cjs npx babel src \
 # Generate TypeScript
 npx tsc --project tsconfig.lib.json --outDir "$dir"
 
+if [ -n "$TEST_FLATTEN" ]; then
+  exit 0
+fi
+
 # Flatten the structure
 npx tsx scripts/build/flatten.ts
 

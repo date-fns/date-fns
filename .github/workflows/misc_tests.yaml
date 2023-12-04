@@ -24,3 +24,6 @@ jobs:
 
       - name: Smoke tests
         run: ./scripts/test/smoke.sh
+
+      - name: Types tests
+        run: ./scripts/test/types.sh

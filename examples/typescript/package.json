@@ -2,7 +2,6 @@
   "name": "date-fns-example-typescript",
   "version": "0.1.0",
   "description": "Example of date-fns usage with TypeScript",
-  "type": "module",
   "author": "Sasha Koss <koss@nocorp.me>",
   "license": "MIT",
   "dependencies": {
