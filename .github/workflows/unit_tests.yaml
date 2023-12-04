@@ -8,13 +8,14 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18, 20]
+        node: [18, 20]
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: ${{ matrix.node }}
+          cache: "npm"
       - run: npm install
 
       - name: Node.js tests

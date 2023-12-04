@@ -1,4 +1,4 @@
-import formatISO from "../../src/formatISO";
+import { formatISO } from "../../src/formatISO/index.js";
 import assert from "assert";
 
 if (process.env.TZ !== "Asia/Kolkata")
