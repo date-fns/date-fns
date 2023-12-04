@@ -1,4 +1,4 @@
-name: Unit tests
+name: Browser tests
 
 on: [push, pull_request]
 
@@ -6,26 +6,16 @@ jobs:
   tests:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node: [18, 20]
-
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node }}
+          node-version: 20
           cache: "npm"
       - run: npm install
 
-      - name: Node.js tests
-        run: npx vitest run
-
       - run: npx playwright install chromium
-      - name: Browser tests
+      - name: Unit tests
         uses: coactions/setup-xvfb@v1
         with:
           run: npx vitest run --browser
-
-      - name: TZ tests
-        run: ./scripts/test/tz.sh

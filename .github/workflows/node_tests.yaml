@@ -1,0 +1,25 @@
+name: Node.js tests
+
+on: [push, pull_request]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node: [18, 20]
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: "npm"
+      - run: npm install
+
+      - name: Unit tests
+        run: npx vitest run
+
+      - name: TZ tests
+        run: ./scripts/test/tz.sh

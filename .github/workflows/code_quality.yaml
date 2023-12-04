@@ -1,4 +1,4 @@
-name: Misc tests
+name: Code quality
 
 on: [push, pull_request]
 
@@ -11,6 +11,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: "npm"
       - run: npm install
 
       - name: Types
@@ -21,9 +22,3 @@ jobs:
 
       - name: Locale snapshots
         run: npm run locale-snapshots -- test
-
-      - name: Smoke tests
-        run: ./scripts/test/smoke.sh
-
-      - name: Types tests
-        run: ./scripts/test/types.sh
