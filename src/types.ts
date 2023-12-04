@@ -2,7 +2,8 @@
 
 import type { Locale } from "./locale/types.js";
 
-export * from "./locale/types.js";
+export type * from "./locale/types.js";
+export type * from "./fp/types.js";
 
 /**
  * The generic date constructor. Replicates the Date constructor. Used to build

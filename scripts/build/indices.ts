@@ -28,15 +28,9 @@ interface File {
       writeFile("package.json", json)
     ),
 
-    writeFile(
-      "src/index.ts",
-      generateIndex({ files: fns, includeConstants: true })
-    ),
+    writeFile("src/index.ts", generateIndex({ files: fns })),
 
-    writeFile(
-      "src/fp/index.ts",
-      generateIndex({ files: fpFns, isFP: true, includeConstants: true })
-    ),
+    writeFile("src/fp/index.ts", generateIndex({ files: fpFns, isFP: true })),
 
     writeFile("src/locale/index.ts", generateIndex({ files: locales })),
 
@@ -106,21 +100,12 @@ function mapExports(paths: string[], prefix = ".") {
 interface GenerateIndexProps {
   files: File[];
   isFP?: boolean;
-  includeConstants?: boolean;
 }
 
-function generateIndex({
-  files,
-  isFP,
-  includeConstants,
-}: GenerateIndexProps): string {
-  const lines = files.map((file) => `export * from "${file.path}/index.js";`);
-
-  if (includeConstants)
-    lines.push(`export * from "${isFP ? ".." : "."}/constants/index.js";`);
-
-  // Add types export
-  lines.push(`export * from "${isFP ? ".." : "."}/types.js";`);
+function generateIndex({ files, isFP }: GenerateIndexProps): string {
+  const lines = files
+    .map((file) => `export * from "${file.path}/index.js";`)
+    .concat(`export type * from "${isFP ? ".." : "."}/types.js";`);
 
   return `// This file is generated automatically by \`scripts/build/indices.ts\`. Please, don't change it.
 

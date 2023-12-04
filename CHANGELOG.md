@@ -15,32 +15,57 @@ Kudos to @kossnocorp, @maximtop, @leshakoss and @tan75 for working on the releas
 ## Changed
 
 - **BREAKING**: date-fns is now a dual-package with the support of both ESM and CommonJS. The files exports are now explicitly in the `package.json`. The ESM files now have `.mjs` extension.
+
 - **BREAKING**: The package now has a flat structure, meaning functions are now named `node_modules/date-fns/add.mjs`, locales are `node_modules/date-fns/locale/enUS.mjs`, etc.
+
 - **BREAKING**: Now all file content’s exported via named exports instead of `export default`, which will require change direct imports i.e. `const addDays = require(‘date-fns/addDays’)` to `const { addDays } = require(‘date-fns/addDays’)`.
+
 - **BREAKING**: TypeScript types are now completely rewritten, check out the `d.ts` files for more information.
+
+- **BREAKING**: `constants` now is not exported via the index, so to import one use `import { daysInYear } from "date-fns/constants";`. It improves compatibility with setups that modularize imports [like Next.js](https://twitter.com/kossnocorp/status/1731181274579325260).
+
 - **BREAKING**: Functions now don’t check the number of passed arguments, delegating this task to type checkers. The functions are now slimmer because of this.
+
 - **BREAKING** The arguments are not explicitly converted to the target types. Instead, they are passed as is, delegating this task to type checkers.
+
 - **BREAKING**: Functions that accept `Interval` arguments now do not throw an error if the start is before the end and handle it as a negative interval. If one of the properties in an `Invalid Date`, these functions also do not throw and handle them as invalid intervals.
+
   - `areIntervalsOverlapping` normalize intervals before comparison, so `{ start: a, end: b }` is practically equivalent to `{ start: b, end: a }`. When comparing intervals with one of the properties being `Invalid Date`, the function will return false unless the others are valid and equal, given the `inclusive` option is passed. Otherwise, and when even one of the intervals has both properties invalid, the function will always return `false`.
+
   - `getOverlappingDaysInIntervals` now normalizes intervals before comparison, so `{ start: a, end: b }` is practically equivalent to `{ start: b, end: a }`. If any of the intervals’ properties is an `Invalid Date`, the function will always return 0.
+
   - `isWithinInterval` now normalizes intervals before comparison, so `{ start: a, end: b }` is practically equivalent to `{ start: b, end: a }`. If any of the intervals’ properties is an `Invalid Date`, the function will always return false.
+
   - `intervalToDuration` now returns negative durations for negative intervals. If one or both of the interval properties are invalid, the function will return an empty object.
+
   - The eachXOfInterval functions (`eachDayOfInterval`, `eachHourOfInterval`, `eachMinuteOfInterval`, `eachMonthOfInterval`, `eachWeekendOfInterval`, `eachWeekendOfMonth`, `eachWeekendOfYear`, `eachWeekOfInterval`, `eachYearOfInterval`) now return a reversed array if the passed interval’s start is after the end. Invalid properties will result in an empty array. Functions that accept the `step` option now also allow negative, 0, and NaN values and return reversed results if the step is negative and an empty array otherwise.
+
 - **BREAKING**: `intervalToDuration` now skips 0 values in the resulting duration, resulting in more compact objects with only relevant properties.
+
 - **BREAKING**: `roundToNearestMinutes` now returns `Invalid Date` instead of throwing an error when `nearestTo` option is less than 1 or more than 30.
+
 - **BREAKING**: IE is no longer supported.
+
 - **BREAKING**: Now all functions use `Math.trunc` rounding method where rounding is required. The behavior is configurable on a per-function basis.
+
 - **BREAKING**: Undocumented `onlyNumeric` option was removed from `nn` and `sv` locales. If you relied on it, [please contact me](mailto:koss@nocorp.me).
+
 - **BREAKING**: Flow is not supported anymore. If you relied on it, [please contact me](mailto:koss@nocorp.me).
+
 - **BREAKING**: The locales now use regular functions instead of the UTC version, which should not break any code unless you used locales directly.
 
 ### Added
 
 - All functions that accept date arguments now also accept strings.
+
 - All functions now export options interfaces.
+
 - Now functions allow passing custom Date extensions like [UTCDate](https://github.com/date-fns/utc). They will detect and use the arguments constructor to generate the result of the same class.
+
 - `eachMonthOfInterval`, `eachQuarterOfInterval`, `eachWeekOfInterval`, and `eachYearOfInterval` now accept the `step` option like most of the eachXOfInterval functions.
+
 - A new `interval` function that validates interval, emulating the v2 interval functions behavior.
+
 - `differenceInX` functions now accept options and allow setting up `roundingMethod` that configures how the result is rounded. `Math.trunc` is the default method.
 
 ## v2.30.0

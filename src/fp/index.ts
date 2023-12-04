@@ -286,5 +286,4 @@ export * from "./transpose/index.js";
 export * from "./weeksToDays/index.js";
 export * from "./yearsToMonths/index.js";
 export * from "./yearsToQuarters/index.js";
-export * from "../constants/index.js";
-export * from "../types.js";
+export type * from "../types.js";

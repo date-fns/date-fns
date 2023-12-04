@@ -93,4 +93,4 @@ export * from "./vi/index.js";
 export * from "./zh-CN/index.js";
 export * from "./zh-HK/index.js";
 export * from "./zh-TW/index.js";
-export * from "./types.js";
+export type * from "./types.js";
