@@ -35,7 +35,7 @@ async function addNextJSFallbacks(dir: string): Promise<void> {
               content +
                 `
 
-// Fallback for modularize imports:
+// Fallback for modularized imports:
 export default ${constName(relateivePath)};`,
             ),
           ),

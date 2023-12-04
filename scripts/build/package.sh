@@ -30,7 +30,7 @@ env BABEL_ENV=esm npx babel src \
   --quiet
 
 # Add fallback for Next.js and other tools that modularize imports:
-npx tsx scripts/build/nextjs.ts
+npx tsx scripts/build/modularized.ts
 
 # Transpile CommonJS versions of files
 env BABEL_ENV=cjs npx babel src \
