@@ -9,7 +9,7 @@
  */
 
 import { readdir, writeFile, readFile } from "fs/promises";
-import { dirname, join, resolve } from "path";
+import { basename, dirname, join, resolve } from "path";
 import { convertLocaleToConst } from "./localeSnapshots/_lib/locale.js";
 
 const root = resolve(process.env.PACKAGE_OUTPUT_PATH || "lib");
@@ -53,20 +53,22 @@ export default ${constName(relateivePath)};`,
 const fnRe = /^\w+\/index.mjs/;
 const localeRe = /^locale\/[\w-]+\/index.mjs/;
 const fpFn = /^fp\/\w+\/index.mjs/;
+const fnExceptions = [
+  "constants/index.mjs",
+  "locale/index.mjs",
+  "fp/index.mjs",
+];
 
 function isModule(relateivePath: string) {
   return (
-    (fnRe.test(relateivePath) &&
-      !["locale/index.mjs"].includes(relateivePath)) ||
-    fpFn.test(relateivePath) ||
-    localeRe.test(relateivePath)
+    !fnExceptions.includes(relateivePath) &&
+    (fnRe.test(relateivePath) ||
+      fpFn.test(relateivePath) ||
+      localeRe.test(relateivePath))
   );
 }
 
 function constName(relateivePath: string) {
-  if (localeRe.test(relateivePath)) {
-    return convertLocaleToConst(dirname(relateivePath));
-  } else {
-    return dirname(relateivePath);
-  }
+  const base = basename(dirname(relateivePath));
+  return localeRe.test(relateivePath) ? convertLocaleToConst(base) : base;
 }

@@ -16,23 +16,21 @@ async function main() {
           const content = await readFile(filePath, "utf-8");
           const newFilePath = getNewPath(filePath);
           const isCJS = /\.js$/.test(filePath);
-          const isESM = /\.mjs$/.test(filePath);
           const replaceRE = isCJS ? /require\("([^"]+)"\)/g : /from "([^"]+)"/g;
 
-          const newContent = content.replace(
-            replaceRE,
-            (_str, relImportPath) => {
-              const newRelImportPath = getNewImportPath(
-                filePath,
-                relImportPath
-              );
-              return isCJS
-                ? `require("${newRelImportPath}")`
-                : isESM
-                ? `from "${newRelImportPath}"`
-                : `from '${newRelImportPath}'`;
-            }
-          );
+          let newContent = content.replace(replaceRE, (_str, relImportPath) => {
+            const newRelImportPath = getNewImportPath(filePath, relImportPath);
+            return isCJS
+              ? `require("${newRelImportPath}")`
+              : `from "${newRelImportPath}"`;
+          });
+
+          if (!isCJS)
+            newContent = newContent.replace(
+              /import\("([^"]+)"\)/g,
+              (_str, relImportPath) =>
+                `import("${getNewImportPath(filePath, relImportPath)}")`
+            );
 
           // Non-empty dirs won't delete, so we can add all dirs
           dirsToRemove.add(dirname(filePath));

@@ -14,4 +14,5 @@ module.exports = {
     filename: "[name].js",
   },
   mode: "production",
+  target: "node",
 };
