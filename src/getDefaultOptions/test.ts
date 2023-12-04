@@ -2,7 +2,7 @@
 
 import assert from "assert";
 import { describe, it, afterEach } from "vitest";
-import { getDefaultOptions } from ".";
+import { getDefaultOptions } from "./index.js";
 import { setDefaultOptions } from "../setDefaultOptions/index.js";
 import { startOfWeek } from "../startOfWeek/index.js";
 import {

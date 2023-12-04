@@ -10,12 +10,12 @@
 import { readRefsFromJSON } from "@date-fns/docs";
 import { mkdir, stat, writeFile } from "fs/promises";
 import path from "path";
-import docsConfig from "../../docs/config";
+import { config } from "../../docs/config.js";
 
 async function main() {
   const fns = await readRefsFromJSON(
-    docsConfig.config,
-    path.resolve(__dirname, "../../docs/"),
+    config,
+    path.resolve(__dirname, "../../docs/")
   );
 
   await Promise.all(
@@ -23,20 +23,19 @@ async function main() {
       if (ref.kind !== "function") return;
 
       const name = ref.ref.name;
-      const hasOptions = !!ref.fn.signatures.find(
-        (singature: any) =>
-          singature.parameters?.find((p: any) => p.name === "options"),
+      const hasOptions = !!ref.fn.signatures.find((singature: any) =>
+        singature.parameters?.find((p: any) => p.name === "options")
       );
       const fnArity = ref.fn.signatures.reduce<number>(
         (acc: number, signature: any) =>
           Math.max(acc, signature.parameters?.length || 0),
-        0,
+        0
       );
 
       async function writeFn(
         arity: number,
         sourceName: string,
-        fnName = sourceName,
+        fnName = sourceName
       ) {
         const source = getFPFn(sourceName, fnName, arity);
         const dir = `./src/fp/${fnName}`;
@@ -49,7 +48,7 @@ async function main() {
         writeFn(hasOptions ? fnArity - 1 : fnArity, name),
         hasOptions && writeFn(fnArity, name, name + "WithOptions"),
       ]);
-    }),
+    })
   );
 }
 

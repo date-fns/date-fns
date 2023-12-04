@@ -1,6 +1,6 @@
-import { formatDistance } from "../../../../src/formatDistance";
-import type { Locale } from "../../../../src/types";
-import { baseDate, dates } from "../_lib/distanceDates";
+import { formatDistance } from "../../../../src/formatDistance/index.js";
+import type { Locale } from "../../../../src/types.js";
+import { baseDate, dates } from "../_lib/distanceDates.js";
 
 export default function renderFormatDistance(locale: Locale) {
   return `## \`formatDistance\`

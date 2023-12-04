@@ -1,7 +1,7 @@
 import { fromEntries, last, sample, uniq } from "js-fns";
 import sg from "simple-git";
 import { Octokit } from "@octokit/core";
-import { format } from "../../src/format";
+import { format } from "../../src/format/index.js";
 
 const git = sg();
 const gh = new Octokit({ auth: process.env.GITHUB_TOKEN });

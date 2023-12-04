@@ -10,7 +10,7 @@
 
 import { readdir, writeFile, readFile } from "fs/promises";
 import { dirname, join, resolve } from "path";
-import { convertLocaleToConst } from "./localeSnapshots/_lib/locale";
+import { convertLocaleToConst } from "./localeSnapshots/_lib/locale.js";
 
 const root = process.env.PACKAGE_OUTPUT_PATH || resolve("lib");
 

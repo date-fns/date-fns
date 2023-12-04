@@ -2,7 +2,7 @@
 
 import assert from "assert";
 import { describe, it } from "vitest";
-import { intlFormatDistance } from ".";
+import { intlFormatDistance } from "./index.js";
 
 describe("intlFormatDistance", () => {
   describe("with default values", () => {

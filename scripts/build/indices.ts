@@ -8,9 +8,9 @@
  */
 
 import { writeFile, readFile } from "fs/promises";
-import { listFns } from "../_lib/listFns";
-import { listFPFns } from "../_lib/listFPFns";
-import { listLocales } from "../_lib/listLocales";
+import { listFns } from "../_lib/listFns.js";
+import { listFPFns } from "../_lib/listFPFns.js";
+import { listLocales } from "../_lib/listLocales.js";
 
 interface File {
   name: string;

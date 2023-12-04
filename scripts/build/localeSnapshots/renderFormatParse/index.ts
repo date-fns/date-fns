@@ -1,9 +1,9 @@
-import { format } from "../../../../src/format";
-import { isValid } from "../../../../src/isValid";
-import { parse } from "../../../../src/parse";
-import { toDate } from "../../../../src/toDate";
-import type { Locale } from "../../../../src/types";
-import formatParseTokens from "./formatParseTokens";
+import { format } from "../../../../src/format/index.js";
+import { isValid } from "../../../../src/isValid/index.js";
+import { parse } from "../../../../src/parse/index.js";
+import { toDate } from "../../../../src/toDate/index.js";
+import type { Locale } from "../../../../src/types.js";
+import formatParseTokens from "./formatParseTokens.js";
 
 export default function renderFormatParse(locale: Locale) {
   return `## \`format\` and \`parse\`

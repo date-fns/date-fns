@@ -2,12 +2,9 @@
 
 import assert from "assert";
 import { afterEach, describe, it } from "vitest";
-import { setDefaultOptions } from ".";
-import type {
-  DefaultOptions} from "../_lib/defaultOptions/index.js";
-import {
-  getDefaultOptions as getInternalDefaultOptions,
-} from "../_lib/defaultOptions/index.js";
+import { setDefaultOptions } from "./index.js";
+import type { DefaultOptions } from "../_lib/defaultOptions/index.js";
+import { getDefaultOptions as getInternalDefaultOptions } from "../_lib/defaultOptions/index.js";
 import { enUS } from "../locale/en-US/index.js";
 import { eo } from "../locale/eo/index.js";
 import { differenceInCalendarWeeks } from "../differenceInCalendarWeeks/index.js";

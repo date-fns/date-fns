@@ -3,7 +3,7 @@
 import assert from "assert";
 import { describe, it } from "vitest";
 import sinon from "sinon";
-import { formatISO } from ".";
+import { formatISO } from "./index.js";
 import { generateOffset } from "../_lib/test/index.js";
 
 describe("formatISO", () => {
