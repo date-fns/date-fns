@@ -1,4 +1,4 @@
-name: Integration tests
+name: Are the types wrong?
 
 on: [push, pull_request]
 
@@ -14,8 +14,4 @@ jobs:
           cache: "npm"
       - run: npm install
 
-      - name: Smoke tests
-        run: ./scripts/test/smoke.sh
-
-      - name: Types tests
-        run: ./scripts/test/types.sh
+      - run: ./scripts/test/types.sh
