@@ -10,7 +10,9 @@
 import { readdir, writeFile } from "fs/promises";
 import { join, resolve } from "path";
 
-createMTSFiles(resolve("./lib"));
+const root = process.env.PACKAGE_OUTPUT_PATH || "lib";
+
+createMTSFiles(resolve(root));
 
 async function createMTSFiles(dir: string): Promise<void> {
   try {

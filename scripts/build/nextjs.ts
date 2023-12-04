@@ -12,9 +12,9 @@ import { readdir, writeFile, readFile } from "fs/promises";
 import { dirname, join, resolve } from "path";
 import { convertLocaleToConst } from "./localeSnapshots/_lib/locale";
 
-const rootPath = resolve("./lib");
+const root = process.env.PACKAGE_OUTPUT_PATH || resolve("lib");
 
-addNextJSFallbacks(rootPath);
+addNextJSFallbacks(root);
 
 async function addNextJSFallbacks(dir: string): Promise<void> {
   try {
@@ -23,7 +23,7 @@ async function addNextJSFallbacks(dir: string): Promise<void> {
 
     for (const file of files) {
       const fullPath = join(dir, file.name);
-      const relateivePath = fullPath.replace(rootPath + "/", "");
+      const relateivePath = fullPath.replace(root + "/", "");
 
       if (file.isDirectory()) {
         promises.push(addNextJSFallbacks(fullPath));

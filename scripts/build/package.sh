@@ -11,9 +11,9 @@ set -e
 root="$(pwd)/$(dirname "$0")/../.."
 cd "$root" || exit 1
 
-# PATH="$(npm bin):$PATH"
 # XXX: $PACKAGE_OUTPUT_PATH must be an absolute path!
 dir=${PACKAGE_OUTPUT_PATH:-"$root/lib"}
+export PACKAGE_OUTPUT_PATH="$dir"
 
 # Clean up output dir
 rm -rf "$dir"
@@ -62,5 +62,7 @@ do
   cp -r "$pattern" "$dir"
 done
 
-# Make it prettier
-npx prettier "$dir" --write --ignore-path "" > /dev/null 2>&1 || exit 1
+if [ -z "$PACKAGE_SKIP_BEAUTIFY" ]; then
+  # Make it prettier
+  npx prettier "$dir" --write --ignore-path "" > /dev/null 2>&1 || exit 1
+fi
