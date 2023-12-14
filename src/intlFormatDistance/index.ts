@@ -24,7 +24,7 @@ export interface IntlFormatDistanceOptions {
   /** Force the distance unit */
   unit?: IntlFormatDistanceUnit;
   /** The locale(s) to use (see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument) */
-  locale?: Intl.BCP47LanguageTag | Intl.BCP47LanguageTag[];
+  locale?: Intl.UnicodeBCP47LocaleIdentifier | Intl.UnicodeBCP47LocaleIdentifier[];
   /** The locale matching algorithm to use. Other value: 'lookup'. See MDN for details [Locale identification and negotiation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locale_identification_and_negotiation) */
   localeMatcher?: Intl.RelativeTimeFormatLocaleMatcher;
   /** The output message format. The values are 'auto' (e.g. `yesterday`), 'always'(e.g. `1 day ago`) */
