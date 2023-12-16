@@ -88,7 +88,7 @@ export type FormatDistanceTokenFn = (
  *     // ...
  *   }
  *
- * @paramType Template - The property value type.
+ * @typeParam Template - The property value type.
  */
 export type FormatDistanceLocale<Template> = {
   [Token in FormatDistanceToken]: Template;
@@ -251,8 +251,8 @@ export interface Match {
  * The match function. Part of {@link Match}. Implements matcher for particular
  * unit type.
  *
- * @paramType Result - The matched value type.
- * @paramType ExtraOptions - The the extra options type.
+ * @typeParam Result - The matched value type.
+ * @typeParam ExtraOptions - The the extra options type.
  *
  * @param str - The string to match
  * @param options - The object with options
@@ -287,8 +287,8 @@ export interface MatchFnOptions<Result> {
 /**
  * The function that allows to map the matched value to the actual type.
  *
- * @paramType Arg - The argument type.
- * @paramType Result - The matched value type.
+ * @typeParam Arg - The argument type.
+ * @typeParam Result - The matched value type.
  *
  * @param arg - The value to match
  *
@@ -299,7 +299,7 @@ export type MatchValueCallback<Arg, Result> = (value: Arg) => Result;
 /**
  * The {@link MatchFn} function result.
  *
- * @paramType Result - The matched value type.
+ * @typeParam Result - The matched value type.
  */
 export interface MatchFnResult<Result> {
   /** The matched value parsed as the corresponding unit type */

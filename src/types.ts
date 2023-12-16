@@ -205,7 +205,7 @@ export interface FirstWeekContainsDateOptions {
 /**
  * The localized function options. Used to build function options.
  *
- * @paramType LocaleFields - The locale fields used in the relevant function. Defines the minimum set of locale fields that must be provided.
+ * @typeParam LocaleFields - The locale fields used in the relevant function. Defines the minimum set of locale fields that must be provided.
  */
 export interface LocalizedOptions<LocaleFields extends keyof Locale> {
   /** The locale to use in the function. */
