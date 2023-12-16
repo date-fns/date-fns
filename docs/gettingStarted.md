@@ -48,12 +48,9 @@ To use submodule features, [install the npm package](#npm) and then import a fun
 
 ```js
 // The main submodule:
-import addDays from "date-fns/addDays";
+import { addDays } from "date-fns";
 
 // FP variation:
-import addDays from "date-fns/fp/addDays";
-
-// With tree-shaking enabled:
 import { addDays, format } from "date-fns/fp";
 ```
 

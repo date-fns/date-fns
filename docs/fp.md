@@ -57,7 +57,7 @@ const formattedDates = dates.map((date) =>
 Or you can use `compose` function provided by [lodash](https://lodash.com) to do the same in more idiomatic way:
 
 ```javascript
-import compose from "lodash/fp/compose";
+import { compose } from "lodash/fp/compose";
 
 const formattedDates = dates.map(compose(toUpper, dateToString, addFiveYears));
 ```

@@ -86,14 +86,6 @@ module.exports.config = {
     },
     {
       type: "markdown",
-      slug: "ECMAScript-Modules",
-      category: "General",
-      title: "ECMAScript Modules",
-      summary: "Tree-shaking guide",
-      path: "esm.md",
-    },
-    {
-      type: "markdown",
       slug: "webpack",
       category: "General",
       title: "webpack",
@@ -115,14 +107,6 @@ module.exports.config = {
       title: "Unicode Tokens",
       summary: "Usage of the Unicode tokens in parse and format",
       path: "unicodeTokens.md",
-    },
-    {
-      type: "markdown",
-      slug: "Upgrade-Guide",
-      category: "General",
-      title: "Upgrade guide",
-      summary: "Changes from v1 to v2",
-      path: "upgradeGuide.md",
     },
     {
       type: "markdown",
