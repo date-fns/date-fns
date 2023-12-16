@@ -4,11 +4,10 @@
  * @description
  * Collection of useful date constants.
  *
- * The constants could be imported from `date-fns/constants` or directly from `date-fns`:
+ * The constants could be imported from `date-fns/constants`:
  *
  * ```ts
- * import { maxTime } from 'date-fns/constants'
- * import { minTime } from 'date-fns'
+ * import { maxTime, minTime } from "date-fns/constants";
  *
  * function isAllowedTime(time) {
  *   return time <= maxTime && time >= minTime;
@@ -44,12 +43,12 @@ export const daysInYear = 365.2425;
  * @summary Maximum allowed time.
  *
  * @example
- * import { maxTime } from 'date-fns'
+ * import { maxTime } from "date-fns/constants";
  *
- * const isValid = 8640000000000001 <= maxTime
+ * const isValid = 8640000000000001 <= maxTime;
  * //=> false
  *
- * new Date(8640000000000001)
+ * new Date(8640000000000001);
  * //=> Invalid Date
  */
 export const maxTime = Math.pow(10, 8) * 24 * 60 * 60 * 1000;
@@ -60,9 +59,9 @@ export const maxTime = Math.pow(10, 8) * 24 * 60 * 60 * 1000;
  * @summary Minimum allowed time.
  *
  * @example
- * import { minTime } from 'date-fns'
+ * import { minTime } from "date-fns/constants";
  *
- * const isValid = -8640000000000001 >= minTime
+ * const isValid = -8640000000000001 >= minTime;
  * //=> false
  *
  * new Date(-8640000000000001)
