@@ -10,7 +10,11 @@ export interface IntervalOptions {
 }
 
 /**
- * Creates an interval object and validates its values.
+ * @category Interval Helpers
+ * @summary Creates an interval object and validates its values.
+ *
+ * @description
+ * Creates a normalized interval object and validates its values. If the interval is invalid, an exception is thrown.
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
