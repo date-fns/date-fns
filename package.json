@@ -17,6 +17,7 @@
   "main": "./index.js",
   "module": "./index.mjs",
   "exports": {
+    "./package.json": "./package.json",
     ".": {
       "require": {
         "types": "./index.d.ts",

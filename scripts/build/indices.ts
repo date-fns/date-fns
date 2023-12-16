@@ -52,6 +52,7 @@ async function generatePackageJSON({
   const packageJSON = JSON.parse(await readFile("package.json", "utf-8"));
   packageJSON.exports = Object.fromEntries(
     [
+      ["./package.json", "./package.json"],
       [
         ".",
         {
