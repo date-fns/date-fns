@@ -86,13 +86,13 @@ export type IntlFormatDistanceUnit =
  *
  * @returns The distance in words according to language-sensitive relative time formatting.
  *
- * @throws {RangeError} `date` must not be Invalid Date
- * @throws {RangeError} `baseDate` must not be Invalid Date
- * @throws {RangeError} `options.unit` must not be invalid Unit
- * @throws {RangeError} `options.locale` must not be invalid locale
- * @throws {RangeError} `options.localeMatcher` must not be invalid localeMatcher
- * @throws {RangeError} `options.numeric` must not be invalid numeric
- * @throws {RangeError} `options.style` must not be invalid style
+ * @throws `date` must not be Invalid Date
+ * @throws `baseDate` must not be Invalid Date
+ * @throws `options.unit` must not be invalid Unit
+ * @throws `options.locale` must not be invalid locale
+ * @throws `options.localeMatcher` must not be invalid localeMatcher
+ * @throws `options.numeric` must not be invalid numeric
+ * @throws `options.style` must not be invalid style
  *
  * @example
  * // What is the distance between the dates when the fist date is after the second?

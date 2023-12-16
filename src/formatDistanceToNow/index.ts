@@ -1,8 +1,5 @@
-import type {
-  FormatDistanceOptions} from "../formatDistance/index.js";
-import {
-  formatDistance
-} from "../formatDistance/index.js";
+import type { FormatDistanceOptions } from "../formatDistance/index.js";
+import { formatDistance } from "../formatDistance/index.js";
 
 /**
  * The {@link formatDistanceToNow} function options.
@@ -54,8 +51,8 @@ export interface FormatDistanceToNowOptions extends FormatDistanceOptions {}
  *
  * @returns The distance in words
  *
- * @throws {RangeError} `date` must not be Invalid Date
- * @throws {RangeError} `options.locale` must contain `formatDistance` property
+ * @throws `date` must not be Invalid Date
+ * @throws `options.locale` must contain `formatDistance` property
  *
  * @example
  * // If today is 1 January 2015, what is the distance to 2 July 2014?

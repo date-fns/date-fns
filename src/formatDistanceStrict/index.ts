@@ -62,10 +62,10 @@ export type FormatDistanceStrictUnit =
  *
  * @returns The distance in words
  *
- * @throws {RangeError} `date` must not be Invalid Date
- * @throws {RangeError} `baseDate` must not be Invalid Date
- * @throws {RangeError} `options.unit` must be 'second', 'minute', 'hour', 'day', 'month' or 'year'
- * @throws {RangeError} `options.locale` must contain `formatDistance` property
+ * @throws `date` must not be Invalid Date
+ * @throws `baseDate` must not be Invalid Date
+ * @throws `options.unit` must be 'second', 'minute', 'hour', 'day', 'month' or 'year'
+ * @throws `options.locale` must contain `formatDistance` property
  *
  * @example
  * // What is the distance between 2 July 2014 and 1 January 2015?

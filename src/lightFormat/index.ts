@@ -74,7 +74,8 @@ type Token = keyof typeof lightFormatters;
  *
  * @returns The formatted date string
  *
- * @throws {RangeError} format string contains an unescaped latin alphabet character
+ * @throws `Invalid time value` if the date is invalid
+ * @throws format string contains an unescaped latin alphabet character
  *
  * @example
  * const result = lightFormat(new Date(2014, 1, 11), 'yyyy-MM-dd')

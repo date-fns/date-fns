@@ -36,7 +36,7 @@ export interface IntlFormatLocaleOptions {
  *
  * @returns The formatted date string
  *
- * @throws {RangeError} `date` must not be Invalid Date
+ * @throws `date` must not be Invalid Date
  *
  * @example
  * // Represent 10 October 2019 in middle-endian format:
@@ -55,7 +55,7 @@ export function intlFormat<DateType extends Date>(
  *
  * @returns The formatted date string
  *
- * @throws {RangeError} `date` must not be Invalid Date
+ * @throws `date` must not be Invalid Date
  *
  * @example
  * // Represent 10 October 2019 in Korean.
@@ -78,7 +78,7 @@ export function intlFormat<DateType extends Date>(
  *
  * @returns The formatted date string
  *
- * @throws {RangeError} `date` must not be Invalid Date
+ * @throws `date` must not be Invalid Date
  *
  * @example
  * // Represent 10 October 2019.
@@ -105,7 +105,7 @@ export function intlFormat<DateType extends Date>(
  *
  * @returns The formatted date string
  *
- * @throws {RangeError} `date` must not be Invalid Date
+ * @throws `date` must not be Invalid Date
  *
  * @example
  * // Represent 10 October 2019 in German.

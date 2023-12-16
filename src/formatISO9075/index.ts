@@ -23,7 +23,7 @@ export interface FormatISO9075Options extends ISOFormatOptions {}
  *
  * @returns The formatted date string
  *
- * @throws {RangeError} `date` must not be Invalid Date
+ * @throws `date` must not be Invalid Date
  *
  * @example
  * // Represent 18 September 2019 in ISO 9075 format:

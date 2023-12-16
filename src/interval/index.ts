@@ -1,5 +1,5 @@
 import { toDate } from "../toDate/index.js";
-import type { Interval } from "../types.js";
+import type { NormalizedInterval } from "../types.js";
 
 /**
  * The {@link interval} function options.
@@ -18,16 +18,17 @@ export interface IntervalOptions {
  * @param end - The end of the interval.
  * @param options - The options object.
  *
- * @returns The interval object.
+ * @throws `Start date is invalid` when `start` is invalid.
+ * @throws `End date is invalid` when `end` is invalid.
+ * @throws `End date must be after start date` when end is before `start` and `options.assertPositive` is true.
+ *
+ * @returns The normalized and validated interval object.
  */
 export function interval<DateType extends Date>(
   start: DateType | number | string,
   end: DateType | number | string,
   options?: IntervalOptions,
-): Interval {
-  if (!start) throw new TypeError("Start date is required");
-  if (!end) throw new TypeError("End date is required");
-
+): NormalizedInterval<DateType> {
   const _start = toDate(start);
   if (isNaN(+_start)) throw new TypeError("Start date is invalid");
 

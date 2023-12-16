@@ -22,7 +22,7 @@ export interface FormatISOOptions extends ISOFormatOptions {}
  *
  * @returns The formatted date string (in loca.l time zone)
  *
- * @throws {RangeError} `date` must not be Invalid Date
+ * @throws `date` must not be Invalid Date
  *
  * @example
  * // Represent 18 September 2019 in ISO 8601 format (local time zone is UTC):

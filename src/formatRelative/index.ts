@@ -40,11 +40,11 @@ export interface FormatRelativeOptions
  *
  * @returns The date in words
  *
- * @throws {RangeError} `date` must not be Invalid Date
- * @throws {RangeError} `baseDate` must not be Invalid Date
- * @throws {RangeError} `options.locale` must contain `localize` property
- * @throws {RangeError} `options.locale` must contain `formatLong` property
- * @throws {RangeError} `options.locale` must contain `formatRelative` property
+ * @throws `date` must not be Invalid Date
+ * @throws `baseDate` must not be Invalid Date
+ * @throws `options.locale` must contain `localize` property
+ * @throws `options.locale` must contain `formatLong` property
+ * @throws `options.locale` must contain `formatRelative` property
  *
  * @example
  * // Represent the date of 6 days ago in words relative to the given base date. In this example, today is Wednesday
