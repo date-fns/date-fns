@@ -10,6 +10,7 @@ export interface IntervalOptions {
 }
 
 /**
+ * @name interval
  * @category Interval Helpers
  * @summary Creates an interval object and validates its values.
  *
