@@ -1,6 +1,6 @@
 {
   "name": "date-fns",
-  "version": "3.0.0-rc.2",
+  "version": "3.0.0",
   "contributors": [
     "Sasha Koss <koss@nocorp.me>",
     "Lesha Koss <regiusprod@gmail.com>"
@@ -9,8 +9,8 @@
   "description": "Modern JavaScript date utility library",
   "repository": "https://github.com/date-fns/date-fns",
   "funding": {
-    "type": "opencollective",
-    "url": "https://opencollective.com/date-fns"
+    "type": "github",
+    "url": "https://github.com/sponsors/kossnocorp"
   },
   "sideEffects": false,
   "browser": "./index",
