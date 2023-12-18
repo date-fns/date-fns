@@ -27,7 +27,7 @@ async function createMTSFiles(dir: string): Promise<void> {
       } else if (file.isFile() && file.name.endsWith(".d.ts")) {
         const newFilePath = fullPath.replace(".d.ts", ".d.mts");
         promises.push(
-          writeFile(newFilePath, `export type * from './${file.name}'`),
+          writeFile(newFilePath, `export * from './${file.name}'`),
         );
       }
     }
