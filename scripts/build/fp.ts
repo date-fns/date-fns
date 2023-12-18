@@ -15,7 +15,7 @@ import { config } from "../../docs/config.js";
 async function main() {
   const fns = await readRefsFromJSON(
     config,
-    path.resolve(__dirname, "../../docs/")
+    path.resolve(__dirname, "../../docs/"),
   );
 
   await Promise.all(
@@ -23,29 +23,31 @@ async function main() {
       if (ref.kind !== "function") return;
 
       const name = ref.ref.name;
-      const hasOptions = !!ref.fn.signatures.find((singature: any) =>
-        singature.parameters?.find((p: any) => p.name === "options")
+      const hasOptions = !!ref.fn.signatures?.find(
+        (singature: any) =>
+          singature.parameters?.find((p: any) => p.name === "options"),
       );
-      const fnArity = ref.fn.signatures.reduce<number>(
-        (acc: number, signature: any) =>
-          Math.max(acc, signature.parameters?.length || 0),
-        0
-      );
+      const fnArity =
+        ref.fn.signatures?.reduce<number>(
+          (acc: number, signature: any) =>
+            Math.max(acc, signature.parameters?.length || 0),
+          0,
+        ) || 0;
 
       // Skip non-pure functions, i.e. startOfToday as they can't
       // be safely curried.
-      const pure = ref.fn.signatures.every(
+      const pure = ref.fn.signatures?.every(
         (signature: any) =>
           !signature.comment.blockTags.some(
-            (tag: any) => tag.tag === "@pure" && joinTag(tag) === "false"
-          )
+            (tag: any) => tag.tag === "@pure" && joinTag(tag) === "false",
+          ),
       );
       if (!pure) return;
 
       async function writeFn(
         arity: number,
         sourceName: string,
-        fnName = sourceName
+        fnName = sourceName,
       ) {
         const source = getFPFn(sourceName, fnName, arity);
         const dir = `./src/fp/${fnName}`;
@@ -58,7 +60,7 @@ async function main() {
         writeFn(hasOptions ? fnArity - 1 : fnArity, name),
         hasOptions && writeFn(fnArity, name, name + "WithOptions"),
       ]);
-    })
+    }),
   );
 }
 
