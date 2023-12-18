@@ -30,9 +30,9 @@ If you're participating in hacktoberfest, please send your PRs to `main`.
 - **Modular**: Pick what you need. Works with webpack, Browserify, or Rollup and also supports tree-shaking.
 - **Native dates**: Uses existing native type. It doesn't extend core objects for safety's sake.
 - **Immutable & Pure**: Built using pure functions and always returns a new date instance.
-- **TypeScript & Flow**: Supports both Flow and TypeScript
+- **TypeScript & Flow**: Supports both Flow and TypeScript.
 - **I18n**: Dozens of locales. Include only what you need.
-- [and many more benefits](https://date-fns.org/)
+- ...[and many more benefits](https://date-fns.org/).
 
 ```js
 import { compareAsc, format } from 'date-fns'
