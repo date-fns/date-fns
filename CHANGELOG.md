@@ -8,8 +8,6 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
-Kudos to @kossnocorp, @maximtop, @leshakoss and @tan75 for working on the release.
-
 ## v3.0.0 - 2023-12-03
 
 ## Changed
