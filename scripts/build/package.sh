@@ -52,9 +52,6 @@ fi
 # Flatten the structure
 npx tsx scripts/build/flatten.ts
 
-# Generate .d.mts files
-npx tsx scripts/build/mts.ts
-
 # Copy basic files
 for pattern in CHANGELOG.md \
   package.json \
