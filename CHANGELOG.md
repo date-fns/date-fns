@@ -8,7 +8,13 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
-## v3.0.0 - 2023-12-03
+## v3.0.1 - 2023-12-20
+
+## Fixed
+
+- [Fixed an error](https://github.com/date-fns/date-fns/pull/3618) in certain environments caused by `d.mts` files exporting only types.
+
+## v3.0.0 - 2023-12-18
 
 ## Changed
 
