@@ -8,15 +8,25 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## v3.0.2 - 2023-12-21
+
+### Fixed
+
+- Fixed [yet another issue caused by ESM types](https://github.com/date-fns/date-fns/issues/3620) by pointing to the same `d.ts` files.
+
+- [Added `package.json` to exports](https://github.com/date-fns/date-fns/pull/3601) to provide access to tooling.
+
+- [Fixed TypeScript 5.4 build break](https://github.com/date-fns/date-fns/pull/3598) by using the latest type names.
+
 ## v3.0.1 - 2023-12-20
 
-## Fixed
+### Fixed
 
 - [Fixed an error](https://github.com/date-fns/date-fns/pull/3618) in certain environments caused by `d.mts` files exporting only types.
 
 ## v3.0.0 - 2023-12-18
 
-## Changed
+### Changed
 
 - **BREAKING**: date-fns is now a dual-package with the support of both ESM and CommonJS. The files exports are now explicitly in the `package.json`. The ESM files now have `.mjs` extension.
 
