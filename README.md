@@ -4,6 +4,10 @@
 
 date-fns provides the most comprehensive, yet simple and consistent toolset for manipulating JavaScript dates in a browser & Node.js
 
+👉 [Documentation](https://date-fns.org/)
+
+👉 [Blog](https://blog.date-fns.org/)
+
 <hr>
 
 It's like [Lodash](https://lodash.com) for dates
