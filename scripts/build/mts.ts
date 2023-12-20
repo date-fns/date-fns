@@ -7,7 +7,7 @@
  * It's a part of the build process.
  */
 
-import { readdir, writeFile } from "fs/promises";
+import { copyFile, readdir } from "fs/promises";
 import { join, resolve } from "path";
 
 const root = resolve(process.env.PACKAGE_OUTPUT_PATH || "lib");
@@ -26,7 +26,7 @@ async function createMTSFiles(dir: string): Promise<void> {
         promises.push(createMTSFiles(fullPath));
       } else if (file.isFile() && file.name.endsWith(".d.ts")) {
         const newFilePath = fullPath.replace(".d.ts", ".d.mts");
-        promises.push(writeFile(newFilePath, `export * from './${file.name}'`));
+        promises.push(copyFile(fullPath, newFilePath));
       }
     }
 
