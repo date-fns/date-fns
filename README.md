@@ -16,7 +16,7 @@ It's like [Lodash](https://lodash.com) for dates
 - **Modular**: Pick what you need. Works with webpack, Browserify, or Rollup and also supports tree-shaking.
 - **Native dates**: Uses existing native type. It doesn't extend core objects for safety's sake.
 - **Immutable & Pure**: Built using pure functions and always returns a new date instance.
-- **TypeScript**: Built-in types for TypeScript.
+- **TypeScript**: The library is 100% TypeScript with brand-new handcrafted types.
 - **I18n**: Dozens of locales. Include only what you need.
 - [and many more benefits](https://date-fns.org/)
 
