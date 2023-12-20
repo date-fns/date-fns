@@ -25,7 +25,7 @@ interface File {
 
   await Promise.all([
     generatePackageJSON({ fns, fpFns, locales }).then((json) =>
-      writeFile("package.json", json)
+      writeFile("package.json", json),
     ),
 
     writeFile("src/index.ts", generateIndex({ files: fns })),
@@ -61,7 +61,7 @@ async function generatePackageJSON({
             default: "./index.js",
           },
           import: {
-            types: "./index.d.mts",
+            types: "./index.d.ts",
             default: "./index.mjs",
           },
         },
@@ -70,7 +70,7 @@ async function generatePackageJSON({
       .concat(mapExports(["./constants", "./locale", "./fp"], "."))
       .concat(mapExports(mapFiles(fns)))
       .concat(mapExports(mapFiles(fpFns), "./fp"))
-      .concat(mapExports(mapFiles(locales), "./locale"))
+      .concat(mapExports(mapFiles(locales), "./locale")),
   );
   return JSON.stringify(packageJSON, null, 2);
 }
@@ -90,7 +90,7 @@ function mapExports(paths: string[], prefix = ".") {
           default: `${pth}.js`,
         },
         import: {
-          types: `${pth}.d.mts`,
+          types: `${pth}.d.ts`,
           default: `${pth}.mjs`,
         },
       },
@@ -127,7 +127,7 @@ function generateTypeDoc(fns: Awaited<ReturnType<typeof listFns>>) {
         plugin: ["typedoc-plugin-missing-exports"],
       },
       null,
-      2
+      2,
     )
   );
 }
