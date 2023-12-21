@@ -8,6 +8,14 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## v3.0.4 - 2023-12-21
+
+This release is brought to you by @kossnocorp.
+
+### Fixed
+
+- Fixed isWithinInterval bug caused by incorrectly sorting dates ([#3623](https://github.com/date-fns/date-fns/issues/3623)).
+
 ## v3.0.3 - 2023-12-21
 
 ### Fixed
