@@ -50,7 +50,7 @@ export function isWithinInterval<DateType extends Date>(
   const [startTime, endTime] = [
     +toDate(interval.start),
     +toDate(interval.end),
-  ].sort();
+  ].sort((a, b) => a - b);
 
   return time >= startTime && time <= endTime;
 }

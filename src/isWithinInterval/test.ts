@@ -84,4 +84,12 @@ describe("isWithinInterval", () => {
     });
     assert(!result);
   });
+
+  it("properly sorts the dates", () => {
+    const result = isWithinInterval(new Date(2023, 11 /* Dec */, 19), {
+      start: new Date(2001, 8 /* Sep */, 1),
+      end: new Date(2023, 11 /* Dec */, 20),
+    });
+    assert(result);
+  });
 });
