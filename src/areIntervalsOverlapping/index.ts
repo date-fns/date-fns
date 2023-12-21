@@ -71,11 +71,11 @@ export function areIntervalsOverlapping(
   const [leftStartTime, leftEndTime] = [
     +toDate(intervalLeft.start),
     +toDate(intervalLeft.end),
-  ].sort();
+  ].sort((a, b) => a - b);
   const [rightStartTime, rightEndTime] = [
     +toDate(intervalRight.start),
     +toDate(intervalRight.end),
-  ].sort();
+  ].sort((a, b) => a - b);
 
   if (options?.inclusive)
     return leftStartTime <= rightEndTime && rightStartTime <= leftEndTime;
