@@ -142,7 +142,7 @@ describe("areIntervalsOverlapping", () => {
     assert(isOverlapping);
   });
 
-  it('accepts timestamp 2', () => {
+  it('sort timestamp', () => {
     const result = areIntervalsOverlapping(
       { start: '1970-01-01T02:00:00.000Z', end: '1970-01-01T03:00:00.000Z' },
       { start: '1969-12-31T23:30:00.000Z', end: '1970-01-01T02:30:00.000Z' },
