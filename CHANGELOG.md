@@ -8,6 +8,14 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## v3.0.5 - 2023-12-21
+
+This release is brought to you by @goku4199.
+
+### Fixed
+
+- [Fixed internal `toDate` not processing string arguments properly](https://github.com/date-fns/date-fns/pull/3626)
+
 ## v3.0.4 - 2023-12-21
 
 This release is brought to you by @kossnocorp.
