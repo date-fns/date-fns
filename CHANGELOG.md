@@ -8,6 +8,12 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## v3.0.3 - 2023-12-21
+
+### Fixed
+
+- Rolled back pointing ESM types to the same `d.ts` files. Instead now it copies the content to avoid [the Masquerading as CJS problem](https://github.com/arethetypeswrong/arethetypeswrong.github.io/blob/main/docs/problems/FalseCJS.md) reported by "Are the types wrong?".
+
 ## v3.0.2 - 2023-12-21
 
 ### Fixed
