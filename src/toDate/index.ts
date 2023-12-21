@@ -49,7 +49,7 @@ export function toDate<DateType extends Date>(
   } else if (
     typeof argument === "number" ||
     argStr === "[object Number]" ||
-    typeof argStr === "string" ||
+    typeof argument === "string" ||
     argStr === "[object String]"
   ) {
     // TODO: Can we get rid of as?
