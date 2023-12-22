@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
-import parseISODuration from './index'
+import { describe, it } from 'vitest'
+import { parseISODuration } from './index'
 import assert from 'assert'
 
 describe('parseISODuration', () => {
@@ -109,6 +110,6 @@ describe('parseISODuration', () => {
   })
 
   it('returns `Invalid format` for invalid ISO string', () => {
-    assert.throws(() => parseISODuration('T1PSO'), 'Invalid format')
+    assert.throws(() => parseISODuration('T1PSO'), RangeError("Invalid format"))
   })
 })

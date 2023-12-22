@@ -1,6 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.
 
-import fn from '../../parseISODuration/index'
-import convertToFP from '../_lib/convertToFP/index'
+import { parseISODuration as fn } from "../../parseISODuration/index.js";
+import { convertToFP } from "../_lib/convertToFP/index.js";
 
-export default convertToFP(fn, 1)
+export const parseISODuration = convertToFP(fn, 1);

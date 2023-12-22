@@ -36,7 +36,7 @@ const ISO_DURATION_REGEX = /P(?:([\d]+\.?[\d]*|\.[\d]+)Y)?(?:([\d]+\.?[\d]*|\.[\
  * }
  */
 
-export default function parseISODuration(argument: string): Duration {
+export function parseISODuration(argument: string): Duration {
   const parsedArgument = argument.replace(/,/g, "."); // Decimal fraction may be specified with either a comma or a full stop
 
   const match = parsedArgument.match(ISO_DURATION_REGEX);
