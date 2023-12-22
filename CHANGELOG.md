@@ -8,6 +8,14 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## v3.0.6 - 2023-12-22
+
+On this release worked @imwh0im, @jamcry and @tyrw.
+
+### Fixed
+
+- [Fixed bug in `areIntervalsOverlapping` caused by incorrect sorting](https://github.com/date-fns/date-fns/pull/3628) ([#3614](https://github.com/date-fns/date-fns/issues/3614))
+
 ## v3.0.5 - 2023-12-21
 
 This release is brought to you by @goku4199.
