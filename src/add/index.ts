@@ -15,7 +15,7 @@ import type { Duration } from "../types.js";
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
  * @param date - The date to be changed
- * @param duration - The object with years, months, weeks, days, hours, minutes and seconds to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @param duration - The object with years, months, weeks, days, hours, minutes and seconds to be added.
  *
  * | Key            | Description                        |
  * |----------------|------------------------------------|
