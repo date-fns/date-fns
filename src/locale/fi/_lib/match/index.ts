@@ -1,34 +1,35 @@
-import type { Quarter } from '../../../../types'
-import type { Match } from '../../../types'
-import buildMatchFn from '../../../_lib/buildMatchFn/index'
-import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
+import type { Quarter } from "../../../../types.js";
+import type { Match } from "../../../types.js";
+import { buildMatchFn } from "../../../_lib/buildMatchFn/index.js";
+import { buildMatchPatternFn } from "../../../_lib/buildMatchPatternFn/index.js";
 
-const matchOrdinalNumberPattern = /^(\d+)(\.)/i
-const parseOrdinalNumberPattern = /\d+/i
+const matchOrdinalNumberPattern = /^(\d+)(\.)/i;
+const parseOrdinalNumberPattern = /\d+/i;
 
 const matchEraPatterns = {
   narrow: /^(e|j)/i,
   abbreviated: /^(eaa.|jaa.)/i,
   wide: /^(ennen ajanlaskun alkua|jälkeen ajanlaskun alun)/i,
-}
+};
 const parseEraPatterns = {
   any: [/^e/i, /^j/i] as const,
-}
+};
 
 const matchQuarterPatterns = {
   narrow: /^[1234]/i,
   abbreviated: /^q[1234]/i,
   wide: /^[1234]\.? kvartaali/i,
-}
+};
 const parseQuarterPatterns = {
   any: [/1/i, /2/i, /3/i, /4/i] as const,
-}
+};
 
 const matchMonthPatterns = {
   narrow: /^[thmkeslj]/i,
-  abbreviated: /^(tammi|helmi|maalis|huhti|touko|kesä|heinä|elo|syys|loka|marras|joulu)/i,
+  abbreviated:
+    /^(tammi|helmi|maalis|huhti|touko|kesä|heinä|elo|syys|loka|marras|joulu)/i,
   wide: /^(tammikuu|helmikuu|maaliskuu|huhtikuu|toukokuu|kesäkuu|heinäkuu|elokuu|syyskuu|lokakuu|marraskuu|joulukuu)(ta)?/i,
-}
+};
 const parseMonthPatterns = {
   narrow: [
     /^t/i,
@@ -58,23 +59,24 @@ const parseMonthPatterns = {
     /^mar/i,
     /^j/i,
   ] as const,
-}
+};
 
 const matchDayPatterns = {
   narrow: /^[smtkpl]/i,
   short: /^(su|ma|ti|ke|to|pe|la)/i,
   abbreviated: /^(sunn.|maan.|tiis.|kesk.|torst.|perj.|la)/i,
   wide: /^(sunnuntai|maanantai|tiistai|keskiviikko|torstai|perjantai|lauantai)(na)?/i,
-}
+};
 const parseDayPatterns = {
   narrow: [/^s/i, /^m/i, /^t/i, /^k/i, /^t/i, /^p/i, /^l/i] as const,
   any: [/^s/i, /^m/i, /^ti/i, /^k/i, /^to/i, /^p/i, /^l/i] as const,
-}
+};
 
 const matchDayPeriodPatterns = {
-  narrow: /^(ap|ip|keskiyö|keskipäivä|aamupäivällä|iltapäivällä|illalla|yöllä)/i,
+  narrow:
+    /^(ap|ip|keskiyö|keskipäivä|aamupäivällä|iltapäivällä|illalla|yöllä)/i,
   any: /^(ap|ip|keskiyöllä|keskipäivällä|aamupäivällä|iltapäivällä|illalla|yöllä)/i,
-}
+};
 const parseDayPeriodPatterns = {
   any: {
     am: /^ap/i,
@@ -86,9 +88,9 @@ const parseDayPeriodPatterns = {
     evening: /illalla/i,
     night: /yöllä/i,
   },
-}
+};
 
-const match: Match = {
+export const match: Match = {
   ordinalNumber: buildMatchPatternFn({
     matchPattern: matchOrdinalNumberPattern,
     parsePattern: parseOrdinalNumberPattern,
@@ -97,39 +99,37 @@ const match: Match = {
 
   era: buildMatchFn({
     matchPatterns: matchEraPatterns,
-    defaultMatchWidth: 'wide',
+    defaultMatchWidth: "wide",
     parsePatterns: parseEraPatterns,
-    defaultParseWidth: 'any',
+    defaultParseWidth: "any",
   }),
 
   quarter: buildMatchFn({
     matchPatterns: matchQuarterPatterns,
-    defaultMatchWidth: 'wide',
+    defaultMatchWidth: "wide",
     parsePatterns: parseQuarterPatterns,
-    defaultParseWidth: 'any',
+    defaultParseWidth: "any",
     valueCallback: (index) => (index + 1) as Quarter,
   }),
 
   month: buildMatchFn({
     matchPatterns: matchMonthPatterns,
-    defaultMatchWidth: 'wide',
+    defaultMatchWidth: "wide",
     parsePatterns: parseMonthPatterns,
-    defaultParseWidth: 'any',
+    defaultParseWidth: "any",
   }),
 
   day: buildMatchFn({
     matchPatterns: matchDayPatterns,
-    defaultMatchWidth: 'wide',
+    defaultMatchWidth: "wide",
     parsePatterns: parseDayPatterns,
-    defaultParseWidth: 'any',
+    defaultParseWidth: "any",
   }),
 
   dayPeriod: buildMatchFn({
     matchPatterns: matchDayPeriodPatterns,
-    defaultMatchWidth: 'any',
+    defaultMatchWidth: "any",
     parsePatterns: parseDayPeriodPatterns,
-    defaultParseWidth: 'any',
+    defaultParseWidth: "any",
   }),
-}
-
-export default match
+};

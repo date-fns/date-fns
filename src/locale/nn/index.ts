@@ -1,20 +1,19 @@
-import type { Locale } from '../types'
-import formatDistance from './_lib/formatDistance/index'
-import formatLong from './_lib/formatLong/index'
-import formatRelative from './_lib/formatRelative/index'
-import localize from './_lib/localize/index'
-import match from './_lib/match/index'
+import type { Locale } from "../types.js";
+import { formatDistance } from "./_lib/formatDistance/index.js";
+import { formatLong } from "./_lib/formatLong/index.js";
+import { formatRelative } from "./_lib/formatRelative/index.js";
+import { localize } from "./_lib/localize/index.js";
+import { match } from "./_lib/match/index.js";
 
 /**
- * @type {Locale}
  * @category Locales
  * @summary Norwegian Nynorsk locale.
  * @language Norwegian Nynorsk
  * @iso-639-2 nno
- * @author Mats Byrkjeland [@draperunner]{@link https://github.com/draperunner}
+ * @author Mats Byrkjeland [@draperunner](https://github.com/draperunner)
  */
-const locale: Locale = {
-  code: 'nn',
+export const nn: Locale = {
+  code: "nn",
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
@@ -24,6 +23,4 @@ const locale: Locale = {
     weekStartsOn: 1 /* Monday */,
     firstWeekContainsDate: 4,
   },
-}
-
-export default locale
+};

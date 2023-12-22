@@ -1,4 +1,4 @@
-import addYears from '../addYears/index'
+import { addYears } from "../addYears/index.js";
 
 /**
  * @name subYears
@@ -20,9 +20,9 @@ import addYears from '../addYears/index'
  * const result = subYears(new Date(2014, 8, 1), 5)
  * //=> Tue Sep 01 2009 00:00:00
  */
-export default function subYears<DateType extends Date>(
-  date: DateType | number,
-  amount: number
+export function subYears<DateType extends Date>(
+  date: DateType | number | string,
+  amount: number,
 ): DateType {
-  return addYears(date, -amount)
+  return addYears(date, -amount);
 }

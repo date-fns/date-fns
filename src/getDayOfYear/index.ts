@@ -1,6 +1,6 @@
-import differenceInCalendarDays from '../differenceInCalendarDays/index'
-import startOfYear from '../startOfYear/index'
-import toDate from '../toDate/index'
+import { differenceInCalendarDays } from "../differenceInCalendarDays/index.js";
+import { startOfYear } from "../startOfYear/index.js";
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name getDayOfYear
@@ -21,11 +21,11 @@ import toDate from '../toDate/index'
  * const result = getDayOfYear(new Date(2014, 6, 2))
  * //=> 183
  */
-export default function getDayOfYear<DateType extends Date>(
-  date: DateType | number
+export function getDayOfYear<DateType extends Date>(
+  date: DateType | number | string,
 ): number {
-  const _date = toDate(date)
-  const diff = differenceInCalendarDays(_date, startOfYear(_date))
-  const dayOfYear = diff + 1
-  return dayOfYear
+  const _date = toDate(date);
+  const diff = differenceInCalendarDays(_date, startOfYear(_date));
+  const dayOfYear = diff + 1;
+  return dayOfYear;
 }

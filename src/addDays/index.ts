@@ -1,5 +1,5 @@
-import toDate from '../toDate/index'
-import constructFrom from '../constructFrom/index'
+import { toDate } from "../toDate/index.js";
+import { constructFrom } from "../constructFrom/index.js";
 
 /**
  * @name addDays
@@ -21,16 +21,16 @@ import constructFrom from '../constructFrom/index'
  * const result = addDays(new Date(2014, 8, 1), 10)
  * //=> Thu Sep 11 2014 00:00:00
  */
-export default function addDays<DateType extends Date>(
-  date: DateType | number,
-  amount: number
+export function addDays<DateType extends Date>(
+  date: DateType | number | string,
+  amount: number,
 ): DateType {
-  const _date = toDate(date)
-  if (isNaN(amount)) return constructFrom(date, NaN)
+  const _date = toDate(date);
+  if (isNaN(amount)) return constructFrom(date, NaN);
   if (!amount) {
     // If 0 days, no-op to avoid changing times in the hour before end of DST
-    return _date
+    return _date;
   }
-  _date.setDate(_date.getDate() + amount)
-  return _date
+  _date.setDate(_date.getDate() + amount);
+  return _date;
 }

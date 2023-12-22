@@ -1,5 +1,5 @@
-import addMilliseconds from '../addMilliseconds/index'
-import { millisecondsInMinute } from '../constants/index'
+import { addMilliseconds } from "../addMilliseconds/index.js";
+import { millisecondsInMinute } from "../constants/index.js";
 
 /**
  * @name addMinutes
@@ -21,9 +21,9 @@ import { millisecondsInMinute } from '../constants/index'
  * const result = addMinutes(new Date(2014, 6, 10, 12, 0), 30)
  * //=> Thu Jul 10 2014 12:30:00
  */
-export default function addMinutes<DateType extends Date>(
-  date: DateType | number,
-  amount: number
+export function addMinutes<DateType extends Date>(
+  date: DateType | number | string,
+  amount: number,
 ): DateType {
-  return addMilliseconds(date, amount * millisecondsInMinute)
+  return addMilliseconds(date, amount * millisecondsInMinute);
 }

@@ -1,5 +1,5 @@
-import isLeapYear from '../isLeapYear/index'
-import toDate from '../toDate/index'
+import { isLeapYear } from "../isLeapYear/index.js";
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name getDaysInYear
@@ -20,14 +20,14 @@ import toDate from '../toDate/index'
  * const result = getDaysInYear(new Date(2012, 0, 1))
  * //=> 366
  */
-export default function getDaysInYear<DateType extends Date>(
-  date: DateType | number
+export function getDaysInYear<DateType extends Date>(
+  date: DateType | number | string,
 ): number {
-  const _date = toDate(date)
+  const _date = toDate(date);
 
-  if (String(new Date(_date)) === 'Invalid Date') {
-    return NaN
+  if (String(new Date(_date)) === "Invalid Date") {
+    return NaN;
   }
 
-  return isLeapYear(_date) ? 366 : 365
+  return isLeapYear(_date) ? 366 : 365;
 }

@@ -1,6 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.
 
-import fn from '../../eachWeekendOfMonth/index'
-import convertToFP from '../_lib/convertToFP/index'
+import { eachWeekendOfMonth as fn } from "../../eachWeekendOfMonth/index.js";
+import { convertToFP } from "../_lib/convertToFP/index.js";
 
-export default convertToFP(fn, 1)
+export const eachWeekendOfMonth = convertToFP(fn, 1);

@@ -11,7 +11,7 @@
     "lodash": "^4.17.4"
   },
   "scripts": {
-    "build": "yarn run build-date-fns && yarn run build-esbuild",
+    "build": "npm run build-date-fns && npm run build-esbuild",
     "build-date-fns": "rm -rf node_modules/date-fns && cp -r ../../lib node_modules/date-fns || env PACKAGE_OUTPUT_PATH=\"$(pwd)/node_modules/date-fns\" ../../scripts/build/package.sh",
     "build-esbuild": "esbuild example.js --outdir=dist",
     "stats-size": "gzip-size dist/example.min.js",

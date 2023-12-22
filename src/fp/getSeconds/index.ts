@@ -1,6 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.
 
-import fn from '../../getSeconds/index'
-import convertToFP from '../_lib/convertToFP/index'
+import { getSeconds as fn } from "../../getSeconds/index.js";
+import { convertToFP } from "../_lib/convertToFP/index.js";
 
-export default convertToFP(fn, 1)
+export const getSeconds = convertToFP(fn, 1);

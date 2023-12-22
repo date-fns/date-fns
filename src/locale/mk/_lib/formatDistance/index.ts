@@ -1,112 +1,110 @@
-import type { FormatDistanceFn, FormatDistanceLocale } from '../../../types'
+import type { FormatDistanceFn, FormatDistanceLocale } from "../../../types.js";
 
 type FormatDistanceTokenValue =
   | string
   | {
-      one: string
-      other: string
-    }
+      one: string;
+      other: string;
+    };
 
 const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   lessThanXSeconds: {
-    one: 'помалку од секунда',
-    other: 'помалку од {{count}} секунди',
+    one: "помалку од секунда",
+    other: "помалку од {{count}} секунди",
   },
 
   xSeconds: {
-    one: '1 секунда',
-    other: '{{count}} секунди',
+    one: "1 секунда",
+    other: "{{count}} секунди",
   },
 
-  halfAMinute: 'половина минута',
+  halfAMinute: "половина минута",
 
   lessThanXMinutes: {
-    one: 'помалку од минута',
-    other: 'помалку од {{count}} минути',
+    one: "помалку од минута",
+    other: "помалку од {{count}} минути",
   },
 
   xMinutes: {
-    one: '1 минута',
-    other: '{{count}} минути',
+    one: "1 минута",
+    other: "{{count}} минути",
   },
 
   aboutXHours: {
-    one: 'околу 1 час',
-    other: 'околу {{count}} часа',
+    one: "околу 1 час",
+    other: "околу {{count}} часа",
   },
 
   xHours: {
-    one: '1 час',
-    other: '{{count}} часа',
+    one: "1 час",
+    other: "{{count}} часа",
   },
 
   xDays: {
-    one: '1 ден',
-    other: '{{count}} дена',
+    one: "1 ден",
+    other: "{{count}} дена",
   },
 
   aboutXWeeks: {
-    one: 'околу 1 недела',
-    other: 'околу {{count}} месеци',
+    one: "околу 1 недела",
+    other: "околу {{count}} месеци",
   },
 
   xWeeks: {
-    one: '1 недела',
-    other: '{{count}} недели',
+    one: "1 недела",
+    other: "{{count}} недели",
   },
 
   aboutXMonths: {
-    one: 'околу 1 месец',
-    other: 'околу {{count}} недели',
+    one: "околу 1 месец",
+    other: "околу {{count}} недели",
   },
 
   xMonths: {
-    one: '1 месец',
-    other: '{{count}} месеци',
+    one: "1 месец",
+    other: "{{count}} месеци",
   },
 
   aboutXYears: {
-    one: 'околу 1 година',
-    other: 'околу {{count}} години',
+    one: "околу 1 година",
+    other: "околу {{count}} години",
   },
 
   xYears: {
-    one: '1 година',
-    other: '{{count}} години',
+    one: "1 година",
+    other: "{{count}} години",
   },
 
   overXYears: {
-    one: 'повеќе од 1 година',
-    other: 'повеќе од {{count}} години',
+    one: "повеќе од 1 година",
+    other: "повеќе од {{count}} години",
   },
 
   almostXYears: {
-    one: 'безмалку 1 година',
-    other: 'безмалку {{count}} години',
+    one: "безмалку 1 година",
+    other: "безмалку {{count}} години",
   },
-}
+};
 
-const formatDistance: FormatDistanceFn = (token, count, options) => {
-  let result
+export const formatDistance: FormatDistanceFn = (token, count, options) => {
+  let result;
 
-  const tokenValue = formatDistanceLocale[token]
-  if (typeof tokenValue === 'string') {
-    result = tokenValue
+  const tokenValue = formatDistanceLocale[token];
+  if (typeof tokenValue === "string") {
+    result = tokenValue;
   } else if (count === 1) {
-    result = tokenValue.one
+    result = tokenValue.one;
   } else {
-    result = tokenValue.other.replace('{{count}}', String(count))
+    result = tokenValue.other.replace("{{count}}", String(count));
   }
 
   if (options?.addSuffix) {
     if (options.comparison && options.comparison > 0) {
-      return 'за ' + result
+      return "за " + result;
     } else {
-      return 'пред ' + result
+      return "пред " + result;
     }
   }
 
-  return result
-}
-
-export default formatDistance
+  return result;
+};

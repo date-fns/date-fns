@@ -1,4 +1,4 @@
-import addWeeks from '../addWeeks/index'
+import { addWeeks } from "../addWeeks/index.js";
 
 /**
  * @name subWeeks
@@ -20,9 +20,9 @@ import addWeeks from '../addWeeks/index'
  * const result = subWeeks(new Date(2014, 8, 1), 4)
  * //=> Mon Aug 04 2014 00:00:00
  */
-export default function subWeeks<DateType extends Date>(
-  date: DateType | number,
-  amount: number
+export function subWeeks<DateType extends Date>(
+  date: DateType | number | string,
+  amount: number,
 ): DateType {
-  return addWeeks(date, -amount)
+  return addWeeks(date, -amount);
 }

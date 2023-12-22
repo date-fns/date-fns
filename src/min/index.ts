@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name min
@@ -24,22 +24,17 @@ import toDate from '../toDate/index'
  * ])
  * //=> Wed Feb 11 1987 00:00:00
  */
-export default function min<DateType extends Date>(
-  dates: Array<DateType | number>
+export function min<DateType extends Date>(
+  dates: Array<DateType | number | string>,
 ): DateType | Date {
-  let result: Date | undefined
+  let result: Date | undefined;
 
-  dates.forEach(function (dirtyDate: Date | number) {
-    let currentDate = toDate(dirtyDate)
-
-    if (
-      result === undefined ||
-      result > currentDate ||
-      isNaN(currentDate.getDate())
-    ) {
-      result = currentDate
+  dates.forEach((dirtyDate) => {
+    const date = toDate(dirtyDate);
+    if (!result || result > date || isNaN(+date)) {
+      result = date;
     }
-  })
+  });
 
-  return result || new Date(NaN)
+  return result || new Date(NaN);
 }

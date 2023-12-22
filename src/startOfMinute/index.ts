@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name startOfMinute
@@ -20,10 +20,10 @@ import toDate from '../toDate/index'
  * const result = startOfMinute(new Date(2014, 11, 1, 22, 15, 45, 400))
  * //=> Mon Dec 01 2014 22:15:00
  */
-export default function startOfMinute<DateType extends Date>(
-  date: DateType | number
+export function startOfMinute<DateType extends Date>(
+  date: DateType | number | string,
 ): DateType {
-  const _date = toDate(date)
-  _date.setSeconds(0, 0)
-  return _date
+  const _date = toDate(date);
+  _date.setSeconds(0, 0);
+  return _date;
 }

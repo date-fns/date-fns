@@ -1,4 +1,4 @@
-import addDays from '../addDays/index'
+import { addDays } from "../addDays/index.js";
 
 /**
  * @name addWeeks
@@ -20,10 +20,10 @@ import addDays from '../addDays/index'
  * const result = addWeeks(new Date(2014, 8, 1), 4)
  * //=> Mon Sep 29 2014 00:00:00
  */
-export default function addWeeks<DateType extends Date>(
-  date: DateType | number,
-  amount: number
+export function addWeeks<DateType extends Date>(
+  date: DateType | number | string,
+  amount: number,
 ): DateType {
-  const days = amount * 7
-  return addDays(date, days)
+  const days = amount * 7;
+  return addDays(date, days);
 }

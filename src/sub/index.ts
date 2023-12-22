@@ -1,7 +1,7 @@
-import subDays from '../subDays/index'
-import subMonths from '../subMonths/index'
-import type { Duration } from '../types'
-import constructFrom from '../constructFrom/index'
+import { subDays } from "../subDays/index.js";
+import { subMonths } from "../subMonths/index.js";
+import type { Duration } from "../types.js";
+import { constructFrom } from "../constructFrom/index.js";
 
 /**
  * @name sub
@@ -43,9 +43,9 @@ import constructFrom from '../constructFrom/index'
  * })
  * //=> Mon Sep 1 2014 10:19:50
  */
-export default function sub<DateType extends Date>(
-  date: DateType | number,
-  duration: Duration
+export function sub<DateType extends Date>(
+  date: DateType | number | string,
+  duration: Duration,
 ): DateType {
   const {
     years = 0,
@@ -55,19 +55,19 @@ export default function sub<DateType extends Date>(
     hours = 0,
     minutes = 0,
     seconds = 0,
-  } = duration
+  } = duration;
 
   // Subtract years and months
-  const dateWithoutMonths = subMonths(date, months + years * 12)
+  const dateWithoutMonths = subMonths(date, months + years * 12);
 
   // Subtract weeks and days
-  const dateWithoutDays = subDays(dateWithoutMonths, days + weeks * 7)
+  const dateWithoutDays = subDays(dateWithoutMonths, days + weeks * 7);
 
   // Subtract hours, minutes and seconds
-  const minutestoSub = minutes + hours * 60
-  const secondstoSub = seconds + minutestoSub * 60
-  const mstoSub = secondstoSub * 1000
-  const finalDate = constructFrom(date, dateWithoutDays.getTime() - mstoSub)
+  const minutestoSub = minutes + hours * 60;
+  const secondstoSub = seconds + minutestoSub * 60;
+  const mstoSub = secondstoSub * 1000;
+  const finalDate = constructFrom(date, dateWithoutDays.getTime() - mstoSub);
 
-  return finalDate
+  return finalDate;
 }

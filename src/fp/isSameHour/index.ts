@@ -1,6 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.
 
-import fn from '../../isSameHour/index'
-import convertToFP from '../_lib/convertToFP/index'
+import { isSameHour as fn } from "../../isSameHour/index.js";
+import { convertToFP } from "../_lib/convertToFP/index.js";
 
-export default convertToFP(fn, 2)
+export const isSameHour = convertToFP(fn, 2);

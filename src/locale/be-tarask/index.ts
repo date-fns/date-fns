@@ -1,20 +1,19 @@
-import type { Locale } from '../types'
-import formatDistance from './_lib/formatDistance/index'
-import formatLong from './_lib/formatLong/index'
-import formatRelative from './_lib/formatRelative/index'
-import localize from './_lib/localize/index'
-import match from './_lib/match/index'
+import type { Locale } from "../types.js";
+import { formatDistance } from "./_lib/formatDistance/index.js";
+import { formatLong } from "./_lib/formatLong/index.js";
+import { formatRelative } from "./_lib/formatRelative/index.js";
+import { localize } from "./_lib/localize/index.js";
+import { match } from "./_lib/match/index.js";
 
 /**
- * @type {Locale}
  * @category Locales
  * @summary Belarusian Classic locale.
  * @language Belarusian Classic
  * @iso-639-2 bel
- * @author Ryhor Nopears [@nopears]{@link https://github.com/nopears}
+ * @author Ryhor Nopears [@nopears](https://github.com/nopears)
  */
-const locale: Locale = {
-  code: 'be-tarask',
+export const beTarask: Locale = {
+  code: "be-tarask",
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
@@ -24,6 +23,4 @@ const locale: Locale = {
     weekStartsOn: 1 /* Monday */,
     firstWeekContainsDate: 1,
   },
-}
-
-export default locale
+};

@@ -1,112 +1,110 @@
-import type { FormatDistanceFn, FormatDistanceLocale } from '../../../types'
+import type { FormatDistanceFn, FormatDistanceLocale } from "../../../types.js";
 
 type FormatDistanceTokenValue =
   | string
   | {
-      one: string
-      other: string
-    }
+      one: string;
+      other: string;
+    };
 
 const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   lessThanXSeconds: {
     one: "minder as 'n sekonde",
-    other: 'minder as {{count}} sekondes',
+    other: "minder as {{count}} sekondes",
   },
 
   xSeconds: {
-    one: '1 sekonde',
-    other: '{{count}} sekondes',
+    one: "1 sekonde",
+    other: "{{count}} sekondes",
   },
 
   halfAMinute: "'n halwe minuut",
 
   lessThanXMinutes: {
     one: "minder as 'n minuut",
-    other: 'minder as {{count}} minute',
+    other: "minder as {{count}} minute",
   },
 
   xMinutes: {
     one: "'n minuut",
-    other: '{{count}} minute',
+    other: "{{count}} minute",
   },
 
   aboutXHours: {
-    one: 'ongeveer 1 uur',
-    other: 'ongeveer {{count}} ure',
+    one: "ongeveer 1 uur",
+    other: "ongeveer {{count}} ure",
   },
 
   xHours: {
-    one: '1 uur',
-    other: '{{count}} ure',
+    one: "1 uur",
+    other: "{{count}} ure",
   },
 
   xDays: {
-    one: '1 dag',
-    other: '{{count}} dae',
+    one: "1 dag",
+    other: "{{count}} dae",
   },
 
   aboutXWeeks: {
-    one: 'ongeveer 1 week',
-    other: 'ongeveer {{count}} weke',
+    one: "ongeveer 1 week",
+    other: "ongeveer {{count}} weke",
   },
 
   xWeeks: {
-    one: '1 week',
-    other: '{{count}} weke',
+    one: "1 week",
+    other: "{{count}} weke",
   },
 
   aboutXMonths: {
-    one: 'ongeveer 1 maand',
-    other: 'ongeveer {{count}} maande',
+    one: "ongeveer 1 maand",
+    other: "ongeveer {{count}} maande",
   },
 
   xMonths: {
-    one: '1 maand',
-    other: '{{count}} maande',
+    one: "1 maand",
+    other: "{{count}} maande",
   },
 
   aboutXYears: {
-    one: 'ongeveer 1 jaar',
-    other: 'ongeveer {{count}} jaar',
+    one: "ongeveer 1 jaar",
+    other: "ongeveer {{count}} jaar",
   },
 
   xYears: {
-    one: '1 jaar',
-    other: '{{count}} jaar',
+    one: "1 jaar",
+    other: "{{count}} jaar",
   },
 
   overXYears: {
-    one: 'meer as 1 jaar',
-    other: 'meer as {{count}} jaar',
+    one: "meer as 1 jaar",
+    other: "meer as {{count}} jaar",
   },
 
   almostXYears: {
-    one: 'byna 1 jaar',
-    other: 'byna {{count}} jaar',
+    one: "byna 1 jaar",
+    other: "byna {{count}} jaar",
   },
-}
+};
 
-const formatDistance: FormatDistanceFn = (token, count, options) => {
-  let result
+export const formatDistance: FormatDistanceFn = (token, count, options) => {
+  let result;
 
-  const tokenValue = formatDistanceLocale[token]
-  if (typeof tokenValue === 'string') {
-    result = tokenValue
+  const tokenValue = formatDistanceLocale[token];
+  if (typeof tokenValue === "string") {
+    result = tokenValue;
   } else if (count === 1) {
-    result = tokenValue.one
+    result = tokenValue.one;
   } else {
-    result = tokenValue.other.replace('{{count}}', String(count))
+    result = tokenValue.other.replace("{{count}}", String(count));
   }
 
   if (options?.addSuffix) {
     if (options.comparison && options.comparison > 0) {
-      return 'oor ' + result
+      return "oor " + result;
     } else {
-      return result + ' gelede'
+      return result + " gelede";
     }
   }
 
-  return result
-}
-
-export default formatDistance
+  return result;
+};

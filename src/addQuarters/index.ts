@@ -1,4 +1,4 @@
-import addMonths from '../addMonths/index'
+import { addMonths } from "../addMonths/index.js";
 
 /**
  * @name addQuarters
@@ -20,10 +20,10 @@ import addMonths from '../addMonths/index'
  * const result = addQuarters(new Date(2014, 8, 1), 1)
  * //=> Mon Dec 01 2014 00:00:00
  */
-export default function addQuarters<DateType extends Date>(
-  date: DateType | number,
-  amount: number
+export function addQuarters<DateType extends Date>(
+  date: DateType | number | string,
+  amount: number,
 ): DateType {
-  const months = amount * 3
-  return addMonths(date, months)
+  const months = amount * 3;
+  return addMonths(date, months);
 }

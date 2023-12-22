@@ -1,4 +1,4 @@
-import nextDay from '../nextDay/index'
+import { nextDay } from "../nextDay/index.js";
 
 /**
  * @name nextTuesday
@@ -19,8 +19,8 @@ import nextDay from '../nextDay/index'
  * const result = nextTuesday(new Date(2020, 2, 22))
  * //=> Tue Mar 24 2020 00:00:00
  */
-export default function nextTuesday<DateType extends Date>(
-  date: DateType | number
+export function nextTuesday<DateType extends Date>(
+  date: DateType | number | string,
 ): DateType {
-  return nextDay(date, 2)
+  return nextDay(date, 2);
 }

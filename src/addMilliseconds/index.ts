@@ -1,5 +1,5 @@
-import toDate from '../toDate/index'
-import constructFrom from '../constructFrom/index'
+import { toDate } from "../toDate/index.js";
+import { constructFrom } from "../constructFrom/index.js";
 
 /**
  * @name addMilliseconds
@@ -21,10 +21,10 @@ import constructFrom from '../constructFrom/index'
  * const result = addMilliseconds(new Date(2014, 6, 10, 12, 45, 30, 0), 750)
  * //=> Thu Jul 10 2014 12:45:30.750
  */
-export default function addMilliseconds<DateType extends Date>(
-  date: DateType | number,
-  amount: number
+export function addMilliseconds<DateType extends Date>(
+  date: DateType | number | string,
+  amount: number,
 ): DateType {
-  const timestamp = +toDate(date)
-  return constructFrom(date, timestamp + amount)
+  const timestamp = +toDate(date);
+  return constructFrom(date, timestamp + amount);
 }

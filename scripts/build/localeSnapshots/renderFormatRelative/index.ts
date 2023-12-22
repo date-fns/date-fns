@@ -1,6 +1,6 @@
-import formatRelative from '../../../../src/formatRelative'
-import { Locale } from '../../../../src/types'
-import { baseDate, relativeDates } from '../_lib/distanceDates'
+import { formatRelative } from "../../../../src/formatRelative/index.js";
+import type { Locale } from "../../../../src/types.js";
+import { baseDate, relativeDates } from "../_lib/distanceDates.js";
 
 export default function renderFormatRelative(locale: Locale) {
   return `## \`formatRelative\`
@@ -11,14 +11,14 @@ If now is January 1st, 2000, 00:00.
 |-|-|
 ${relativeDates
   .map((date) => {
-    const dateString = date.toISOString()
-    let result
+    const dateString = date.toISOString();
+    let result;
     try {
-      result = formatRelative(date, baseDate, { locale })
+      result = formatRelative(date, baseDate, { locale });
     } catch (_err) {
-      result = 'Errored'
+      result = "Errored";
     }
-    return `| ${dateString} | ${result} |`
+    return `| ${dateString} | ${result} |`;
   })
-  .join('\n')}`
+  .join("\n")}`;
 }
