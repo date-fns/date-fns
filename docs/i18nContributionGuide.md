@@ -77,7 +77,7 @@ Use the two/three letter code:
 
 - if all countries who use the language
   also use the same regional standards: the first day of the week,
-  the week numbering (see: https://en.wikipedia.org/wiki/Week#Week_numbering),
+  the week numbering (see: https://en.wikipedia.org/wiki/Week#The_ISO_week_date_system),
   calendar date format (see: https://en.wikipedia.org/wiki/Calendar_date)
   and date representation (see: https://en.wikipedia.org/wiki/Date_and_time_representation_by_country
   and: https://en.wikipedia.org/wiki/Date_format_by_country)
@@ -128,7 +128,7 @@ var locale = {
     weekStartsOn: 0,
 
     // Nth of January which is always in the first week of the year. See:
-    // https://en.wikipedia.org/wiki/Week#Week_numbering
+    // https://en.wikipedia.org/wiki/Week#The_ISO_week_date_system
     // http://www.pjh2.de/datetime/weeknumber/wnd.php?l=en
     firstWeekContainsDate: 1,
   },
