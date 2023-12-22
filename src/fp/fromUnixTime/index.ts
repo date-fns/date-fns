@@ -1,6 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.
 
-import fn from '../../fromUnixTime/index'
-import convertToFP from '../_lib/convertToFP/index'
+import { fromUnixTime as fn } from "../../fromUnixTime/index.js";
+import { convertToFP } from "../_lib/convertToFP/index.js";
 
-export default convertToFP(fn, 1)
+export const fromUnixTime = convertToFP(fn, 1);

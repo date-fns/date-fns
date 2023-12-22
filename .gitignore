@@ -1,6 +1,5 @@
 node_modules
 npm-debug.log*
-yarn-error.log*
 tmp
 dist
 .envrc
@@ -9,3 +8,4 @@ docs.json
 .vscode
 coverage
 /secrets
+/lib

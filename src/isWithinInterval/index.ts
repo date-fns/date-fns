@@ -1,5 +1,5 @@
-import toDate from '../toDate/index'
-import type { Interval } from '../types'
+import { toDate } from "../toDate/index.js";
+import type { Interval } from "../types.js";
 
 /**
  * @name isWithinInterval
@@ -9,11 +9,12 @@ import type { Interval } from '../types'
  * @description
  * Is the given date within the interval? (Including start and end.)
  *
- * @param date - the date to check
- * @param interval - the interval to check
- * @returns the date is within the interval
- * @throws {RangeError} The start of an interval cannot be after its end
- * @throws {RangeError} Date in interval cannot be `Invalid Date`
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date to check
+ * @param interval - The interval to check
+ *
+ * @returns The date is within the interval
  *
  * @example
  * // For the date within the interval:
@@ -33,24 +34,23 @@ import type { Interval } from '../types'
  *
  * @example
  * // For date equal to interval start:
- * isWithinInterval(date, { start, end: date }) // => true
+ * isWithinInterval(date, { start, end: date })
+ * // => true
  *
  * @example
  * // For date equal to interval end:
- * isWithinInterval(date, { start: date, end }) // => true
+ * isWithinInterval(date, { start: date, end })
+ * // => true
  */
-export default function isWithinInterval<DateType extends Date>(
-  dirtyDate: DateType | number,
-  interval: Interval<DateType>
+export function isWithinInterval<DateType extends Date>(
+  date: DateType | number | string,
+  interval: Interval<DateType>,
 ): boolean {
-  const time = toDate(dirtyDate).getTime()
-  const startTime = toDate(interval.start).getTime()
-  const endTime = toDate(interval.end).getTime()
+  const time = +toDate(date);
+  const [startTime, endTime] = [
+    +toDate(interval.start),
+    +toDate(interval.end),
+  ].sort((a, b) => a - b);
 
-  // Throw an exception if start date is after end date or if any date is `Invalid Date`
-  if (!(startTime <= endTime)) {
-    throw new RangeError('Invalid interval')
-  }
-
-  return time >= startTime && time <= endTime
+  return time >= startTime && time <= endTime;
 }

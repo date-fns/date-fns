@@ -1,6 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.
 
-import fn from '../../eachQuarterOfInterval/index'
-import convertToFP from '../_lib/convertToFP/index'
+import { eachQuarterOfInterval as fn } from "../../eachQuarterOfInterval/index.js";
+import { convertToFP } from "../_lib/convertToFP/index.js";
 
-export default convertToFP(fn, 1)
+export const eachQuarterOfInterval = convertToFP(fn, 1);

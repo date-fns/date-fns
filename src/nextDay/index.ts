@@ -1,6 +1,6 @@
-import addDays from '../addDays'
-import getDay from '../getDay'
-import type { Day } from '../types'
+import { addDays } from "../addDays/index.js";
+import { getDay } from "../getDay/index.js";
+import type { Day } from "../types.js";
 
 /**
  * @name nextDay
@@ -10,9 +10,12 @@ import type { Day } from '../types'
  * @description
  * When is the next day of the week? 0-6 the day of the week, 0 represents Sunday.
  *
- * @param date - the date to check
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date to check
  * @param day - day of the week
- * @returns - the date is the next day of week
+ *
+ * @returns The date is the next day of week
  *
  * @example
  * // When is the next Monday after Mar, 20, 2020?
@@ -24,12 +27,12 @@ import type { Day } from '../types'
  * const result = nextDay(new Date(2020, 2, 21), 2)
  * //=> Tue Mar 24 2020 00:00:00
  */
-export default function nextDay<DateType extends Date>(
-  date: DateType | number,
-  day: Day
+export function nextDay<DateType extends Date>(
+  date: DateType | number | string,
+  day: Day,
 ): DateType {
-  let delta = day - getDay(date)
-  if (delta <= 0) delta += 7
+  let delta = day - getDay(date);
+  if (delta <= 0) delta += 7;
 
-  return addDays(date, delta)
+  return addDays(date, delta);
 }

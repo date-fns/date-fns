@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name differenceInCalendarMonths
@@ -8,9 +8,12 @@ import toDate from '../toDate/index'
  * @description
  * Get the number of calendar months between the given dates.
  *
- * @param dateLeft - the later date
- * @param dateRight - the earlier date
- * @returns the number of calendar months
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param dateLeft - The later date
+ * @param dateRight - The earlier date
+ *
+ * @returns The number of calendar months
  *
  * @example
  * // How many calendar months are between 31 January 2014 and 1 September 2014?
@@ -20,15 +23,15 @@ import toDate from '../toDate/index'
  * )
  * //=> 8
  */
-export default function differenceInCalendarMonths<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+export function differenceInCalendarMonths<DateType extends Date>(
+  dateLeft: DateType | number | string,
+  dateRight: DateType | number | string,
 ): number {
-  const dateLeft = toDate(dirtyDateLeft)
-  const dateRight = toDate(dirtyDateRight)
+  const _dateLeft = toDate(dateLeft);
+  const _dateRight = toDate(dateRight);
 
-  const yearDiff = dateLeft.getFullYear() - dateRight.getFullYear()
-  const monthDiff = dateLeft.getMonth() - dateRight.getMonth()
+  const yearDiff = _dateLeft.getFullYear() - _dateRight.getFullYear();
+  const monthDiff = _dateLeft.getMonth() - _dateRight.getMonth();
 
-  return yearDiff * 12 + monthDiff
+  return yearDiff * 12 + monthDiff;
 }

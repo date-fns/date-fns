@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name setSeconds
@@ -8,20 +8,23 @@ import toDate from '../toDate/index'
  * @description
  * Set the seconds to the given date.
  *
- * @param date - the date to be changed
- * @param seconds - the seconds of the new date
- * @returns the new date with the seconds set
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date to be changed
+ * @param seconds - The seconds of the new date
+ *
+ * @returns The new date with the seconds set
  *
  * @example
  * // Set 45 seconds to 1 September 2014 11:30:40:
  * const result = setSeconds(new Date(2014, 8, 1, 11, 30, 40), 45)
  * //=> Mon Sep 01 2014 11:30:45
  */
-export default function setSeconds<DateType extends Date>(
-  dirtyDate: DateType | number,
-  seconds: number
+export function setSeconds<DateType extends Date>(
+  date: DateType | number | string,
+  seconds: number,
 ): DateType {
-  const date = toDate(dirtyDate)
-  date.setSeconds(seconds)
-  return date
+  const _date = toDate(date);
+  _date.setSeconds(seconds);
+  return _date;
 }
