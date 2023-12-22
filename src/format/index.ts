@@ -29,8 +29,7 @@ import {
 //   If there is no matching single quote
 //   then the sequence will continue until the end of the string.
 // - . matches any single character unmatched by previous parts of the RegExps
-const formattingTokensRegExp =
-  /[yYQqMLwIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)|./g;
+const formattingTokensRegExp = /[yYQqMLwIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)|./g;
 
 // This RegExp catches symbols escaped by quotes, and also
 // sequences of symbols P, p, and the combinations like `PPPPPPPppppp`
@@ -48,6 +47,10 @@ export interface FormatOptions
     WeekOptions,
     FirstWeekContainsDateOptions,
     AdditionalTokensOptions {}
+
+export type PrepareFormatOptions<DateType extends Date> = FormatOptions & {
+  _date: DateType;
+};
 
 /**
  * @name format
@@ -337,8 +340,28 @@ export interface FormatOptions
 export function format<DateType extends Date>(
   date: DateType | number | string,
   formatStr: string,
-  options?: FormatOptions,
+  options?: FormatOptions
 ): string {
+  const originalDate = toDate(date);
+
+  if (!isValid(originalDate)) {
+    throw new RangeError("Invalid time value");
+  }
+  return prepareFormat(formatStr, { ...options, _date: originalDate });
+}
+
+export function prepareFormat<DateType extends Date>(
+  _formatStr: string,
+  _options: PrepareFormatOptions<DateType>
+): string;
+export function prepareFormat<DateType extends Date>(
+  _formatStr: string,
+  _options?: FormatOptions
+): (_date: DateType | number) => string;
+export function prepareFormat<DateType extends Date>(
+  formatStr: string,
+  options?: PrepareFormatOptions<DateType> | FormatOptions
+): ((_date: DateType | number) => string) | string {
   const defaultOptions = getDefaultOptions();
   const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale;
 
@@ -356,11 +379,8 @@ export function format<DateType extends Date>(
     defaultOptions.locale?.options?.weekStartsOn ??
     0;
 
-  const originalDate = toDate(date);
-
-  if (!isValid(originalDate)) {
-    throw new RangeError("Invalid time value");
-  }
+  // We don't care for the undefined case, even later
+  const originalDate = (options as PrepareFormatOptions<DateType>)?._date;
 
   const formatterOptions = {
     firstWeekContainsDate: firstWeekContainsDate as FirstWeekContainsDate,
@@ -369,7 +389,7 @@ export function format<DateType extends Date>(
     _originalDate: originalDate,
   };
 
-  const result = formatStr
+  const prepared = formatStr
     .match(longFormattingTokensRegExp)!
     .map(function (substring) {
       const firstCharacter = substring[0];
@@ -398,35 +418,63 @@ export function format<DateType extends Date>(
           !options?.useAdditionalWeekYearTokens &&
           isProtectedWeekYearToken(substring)
         ) {
-          throwProtectedError(substring, formatStr, String(date));
+          throwProtectedError(
+            substring,
+            formatStr,
+            String(originalDate ?? "prepared format")
+          );
         }
         if (
           !options?.useAdditionalDayOfYearTokens &&
           isProtectedDayOfYearToken(substring)
         ) {
-          throwProtectedError(substring, formatStr, String(date));
+          throwProtectedError(
+            substring,
+            formatStr,
+            String(originalDate ?? "prepared format")
+          );
         }
-        return formatter(
-          originalDate,
-          substring,
-          locale.localize,
-          formatterOptions,
-        );
+        return originalDate !== undefined
+          ? formatter(
+              originalDate,
+              substring,
+              locale.localize,
+              formatterOptions as Parameters<typeof formatter>[3]
+            )
+          : (date: DateType) =>
+              formatter(date, substring, locale.localize, {
+                ...formatterOptions,
+                _originalDate: date,
+              });
       }
 
       if (firstCharacter.match(unescapedLatinCharacterRegExp)) {
         throw new RangeError(
           "Format string contains an unescaped latin alphabet character `" +
             firstCharacter +
-            "`",
+            "`"
         );
       }
 
       return substring;
-    })
-    .join("");
+    });
 
-  return result;
+  if (originalDate === undefined) {
+    const functions = prepared.map((stringOrFn) =>
+      typeof stringOrFn === "string" ? () => stringOrFn : stringOrFn
+    );
+    return (dirtyDate: DateType | number) => {
+      const originalDate = toDate(dirtyDate);
+
+      if (!isValid(originalDate)) {
+        throw new RangeError("Invalid time value");
+      }
+
+      return functions.map((fn) => fn(originalDate)).join("");
+    };
+  } else {
+    return (prepared as string[]).join("");
+  }
 }
 
 function cleanEscapedString(input: string): string {
