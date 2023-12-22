@@ -1,6 +1,6 @@
-import type { Duration } from '../types'
+import type { Duration } from "../types";
 
-const ISO_DURATION_REGEX = /P(?:([\d]+\.?[\d]*|\.[\d]+)Y)?(?:([\d]+\.?[\d]*|\.[\d]+)M)?(?:([\d]+\.?[\d]*|\.[\d]+)W)?(?:([\d]+\.?[\d]*|\.[\d]+)D)?(?:T(?:([\d]+\.?[\d]*|\.[\d]+)H)?(?:([\d]+\.?[\d]*|\.[\d]+)M)?(?:([\d]+\.?[\d]*|\.[\d]+)S)?)?$/
+const ISO_DURATION_REGEX = /P(?:([\d]+\.?[\d]*|\.[\d]+)Y)?(?:([\d]+\.?[\d]*|\.[\d]+)M)?(?:([\d]+\.?[\d]*|\.[\d]+)W)?(?:([\d]+\.?[\d]*|\.[\d]+)D)?(?:T(?:([\d]+\.?[\d]*|\.[\d]+)H)?(?:([\d]+\.?[\d]*|\.[\d]+)M)?(?:([\d]+\.?[\d]*|\.[\d]+)S)?)?$/;
 
 /**
  * @name parseISODuration
@@ -17,15 +17,15 @@ const ISO_DURATION_REGEX = /P(?:([\d]+\.?[\d]*|\.[\d]+)Y)?(?:([\d]+\.?[\d]*|\.[\
  * If the argument is not a valid ISO Duration it will throw Invalid format error.
  *
  * @param argument - ISO Duration string
- * @returns duration object
+ * @returns Parsed duration object
  *
- * @throws {RangeError} Duration in ISO format cannot be `Invalid format`
+ * @throws It throws an "Invalid format" error if the string doesn't match the ISO Duration format
  *
  * @example
  * // Convert string 'P3Y6M4DT12H30M5S' to duration:
  * const result = parseISODuration('P3Y6M4DT12H30M5S')
  * //=>
- * {
+ * const result = {
  *   years: 3,
  *   months: 6,
  *   weeks: 0,
@@ -37,12 +37,12 @@ const ISO_DURATION_REGEX = /P(?:([\d]+\.?[\d]*|\.[\d]+)Y)?(?:([\d]+\.?[\d]*|\.[\
  */
 
 export default function parseISODuration(argument: string): Duration {
-  const parsedArgument = argument.replace(/,/g, '.') // Decimal fraction may be specified with either a comma or a full stop
+  const parsedArgument = argument.replace(/,/g, "."); // Decimal fraction may be specified with either a comma or a full stop
 
-  const match = parsedArgument.match(ISO_DURATION_REGEX)
+  const match = parsedArgument.match(ISO_DURATION_REGEX);
 
   if (!match) {
-    throw new RangeError('Invalid format')
+    throw new RangeError("Invalid format");
   }
 
   const [
@@ -54,9 +54,9 @@ export default function parseISODuration(argument: string): Duration {
     hours = 0,
     minutes = 0,
     seconds = 0,
-  ] = match
+  ] = match;
 
-  return Object.entries({
+  const entries = Object.entries({
     years,
     months,
     weeks,
@@ -64,7 +64,10 @@ export default function parseISODuration(argument: string): Duration {
     hours,
     minutes,
     seconds,
-  }).reduce((prev, [key, value]) => {
-    return { ...prev, [key]: Number(value) }
-  }, {})
+  }) as [keyof Duration, string][];
+
+  return entries.reduce<Duration>((prev, [key, value]) => {
+    prev[key] = +value;
+    return prev;
+  }, {});
 }
