@@ -452,8 +452,8 @@ export function prepareFormat<DateType extends Date>(
         throw new RangeError(
           "Format string contains an unescaped latin alphabet character `" +
             firstCharacter +
-            '`'
-        )
+            "`"
+        );
       }
 
       return substring;
