@@ -24,6 +24,9 @@ export function getDay<DateType extends Date>(
   date: DateType | number | string,
 ): Day {
   const _date = toDate(date);
-  const day = _date.getDay() as Day
-  return day;
+  const day = _date.getDay();
+  if (isNaN(day)) {
+    throw new RangeError('Invalid day value');
+  }
+  return day as Day;
 }
