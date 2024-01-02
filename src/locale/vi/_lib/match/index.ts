@@ -1,28 +1,28 @@
-import type { Quarter } from '../../../../types'
-import type { Match } from '../../../types'
-import buildMatchFn from '../../../_lib/buildMatchFn/index'
-import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
+import type { Quarter } from "../../../../types.js";
+import type { Match } from "../../../types.js";
+import { buildMatchFn } from "../../../_lib/buildMatchFn/index.js";
+import { buildMatchPatternFn } from "../../../_lib/buildMatchPatternFn/index.js";
 
-const matchOrdinalNumberPattern = /^(\d+)/i
-const parseOrdinalNumberPattern = /\d+/i
+const matchOrdinalNumberPattern = /^(\d+)/i;
+const parseOrdinalNumberPattern = /\d+/i;
 
 const matchEraPatterns = {
   narrow: /^(tcn|scn)/i,
   abbreviated: /^(trước CN|sau CN)/i,
   wide: /^(trước Công Nguyên|sau Công Nguyên)/i,
-}
+};
 const parseEraPatterns = {
   any: [/^t/i, /^s/i] as const,
-}
+};
 
 const matchQuarterPatterns = {
   narrow: /^([1234]|i{1,3}v?)/i,
   abbreviated: /^q([1234]|i{1,3}v?)/i,
   wide: /^quý ([1234]|i{1,3}v?)/i,
-}
+};
 const parseQuarterPatterns = {
   any: [/(1|i)$/i, /(2|ii)$/i, /(3|iii)$/i, /(4|iv)$/i] as const,
-}
+};
 
 const matchMonthPatterns = {
   // month number may contain leading 0, 'thg' prefix may have space, underscore or empty before number
@@ -32,7 +32,7 @@ const matchMonthPatterns = {
   abbreviated: /^thg[ _]?(0?[1-9](?!\d)|10|11|12)/i,
   // note the order of 'Mười' since it is sub-string of Mười Một, so must be lower priority
   wide: /^tháng ?(Một|Hai|Ba|Tư|Năm|Sáu|Bảy|Tám|Chín|Mười|Mười ?Một|Mười ?Hai|0?[1-9](?!\d)|10|11|12)/i,
-}
+};
 const parseMonthPatterns = {
   narrow: [
     /0?1$/i,
@@ -76,14 +76,14 @@ const parseMonthPatterns = {
     /^tháng ?(Mười ?Một|11)/i,
     /^tháng ?(Mười ?Hai|12)/i,
   ] as const,
-}
+};
 
 const matchDayPatterns = {
   narrow: /^(CN|T2|T3|T4|T5|T6|T7)/i,
   short: /^(CN|Th ?2|Th ?3|Th ?4|Th ?5|Th ?6|Th ?7)/i,
   abbreviated: /^(CN|Th ?2|Th ?3|Th ?4|Th ?5|Th ?6|Th ?7)/i,
   wide: /^(Chủ ?Nhật|Chúa ?Nhật|thứ ?Hai|thứ ?Ba|thứ ?Tư|thứ ?Năm|thứ ?Sáu|thứ ?Bảy)/i,
-}
+};
 const parseDayPatterns = {
   narrow: [/CN/i, /2/i, /3/i, /4/i, /5/i, /6/i, /7/i] as const,
   short: [/CN/i, /2/i, /3/i, /4/i, /5/i, /6/i, /7/i] as const,
@@ -97,13 +97,13 @@ const parseDayPatterns = {
     /Sáu/i,
     /Bảy/i,
   ] as const,
-}
+};
 
 const matchDayPeriodPatterns = {
   narrow: /^(a|p|nửa đêm|trưa|(giờ) (sáng|chiều|tối|đêm))/i,
   abbreviated: /^(am|pm|nửa đêm|trưa|(giờ) (sáng|chiều|tối|đêm))/i,
   wide: /^(ch[^i]*|sa|nửa đêm|trưa|(giờ) (sáng|chiều|tối|đêm))/i,
-}
+};
 const parseDayPeriodPatterns = {
   any: {
     am: /^(a|sa)/i,
@@ -115,9 +115,9 @@ const parseDayPeriodPatterns = {
     evening: /tối/i,
     night: /^đêm/i,
   },
-}
+};
 
-const match: Match = {
+export const match: Match = {
   ordinalNumber: buildMatchPatternFn({
     matchPattern: matchOrdinalNumberPattern,
     parsePattern: parseOrdinalNumberPattern,
@@ -126,39 +126,37 @@ const match: Match = {
 
   era: buildMatchFn({
     matchPatterns: matchEraPatterns,
-    defaultMatchWidth: 'wide',
+    defaultMatchWidth: "wide",
     parsePatterns: parseEraPatterns,
-    defaultParseWidth: 'any',
+    defaultParseWidth: "any",
   }),
 
   quarter: buildMatchFn({
     matchPatterns: matchQuarterPatterns,
-    defaultMatchWidth: 'wide',
+    defaultMatchWidth: "wide",
     parsePatterns: parseQuarterPatterns,
-    defaultParseWidth: 'any',
+    defaultParseWidth: "any",
     valueCallback: (index) => (index + 1) as Quarter,
   }),
 
   month: buildMatchFn({
     matchPatterns: matchMonthPatterns,
-    defaultMatchWidth: 'wide',
+    defaultMatchWidth: "wide",
     parsePatterns: parseMonthPatterns,
-    defaultParseWidth: 'wide',
+    defaultParseWidth: "wide",
   }),
 
   day: buildMatchFn({
     matchPatterns: matchDayPatterns,
-    defaultMatchWidth: 'wide',
+    defaultMatchWidth: "wide",
     parsePatterns: parseDayPatterns,
-    defaultParseWidth: 'wide',
+    defaultParseWidth: "wide",
   }),
 
   dayPeriod: buildMatchFn({
     matchPatterns: matchDayPeriodPatterns,
-    defaultMatchWidth: 'wide',
+    defaultMatchWidth: "wide",
     parsePatterns: parseDayPeriodPatterns,
-    defaultParseWidth: 'any',
+    defaultParseWidth: "any",
   }),
-}
-
-export default match
+};

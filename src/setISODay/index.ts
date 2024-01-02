@@ -1,6 +1,6 @@
-import addDays from '../addDays/index'
-import getISODay from '../getISODay/index'
-import toDate from '../toDate/index'
+import { addDays } from "../addDays/index.js";
+import { getISODay } from "../getISODay/index.js";
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name setISODay
@@ -24,12 +24,12 @@ import toDate from '../toDate/index'
  * const result = setISODay(new Date(2014, 8, 1), 7)
  * //=> Sun Sep 07 2014 00:00:00
  */
-export default function setISODay<DateType extends Date>(
-  date: DateType | number,
-  day: number
+export function setISODay<DateType extends Date>(
+  date: DateType | number | string,
+  day: number,
 ): DateType {
-  const _date = toDate(date)
-  const currentDay = getISODay(_date)
-  const diff = day - currentDay
-  return addDays(_date, diff)
+  const _date = toDate(date);
+  const currentDay = getISODay(_date);
+  const diff = day - currentDay;
+  return addDays(_date, diff);
 }

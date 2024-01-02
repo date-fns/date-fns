@@ -1,8 +1,9 @@
+import type {
+  DefaultOptions} from "../_lib/defaultOptions/index.js";
 import {
   getDefaultOptions,
-  setDefaultOptions as setInternalDefaultOptions,
-  DefaultOptions,
-} from '../_lib/defaultOptions/index'
+  setDefaultOptions as setInternalDefaultOptions
+} from "../_lib/defaultOptions/index.js";
 
 /**
  * @name setDefaultOptions
@@ -49,26 +50,29 @@ import {
  * const result = startOfWeek(new Date(2014, 8, 2))
  * //=> Sun Aug 31 2014 00:00:00
  */
-export default function setDefaultOptions(options: DefaultOptions): void {
-  const result: DefaultOptions = {}
-  const defaultOptions = getDefaultOptions()
+export function setDefaultOptions(options: DefaultOptions): void {
+  const result: DefaultOptions = {};
+  const defaultOptions = getDefaultOptions();
 
   for (const property in defaultOptions) {
     if (Object.prototype.hasOwnProperty.call(defaultOptions, property)) {
-      ;(result as any)[property] =
-        defaultOptions[property as keyof DefaultOptions]
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any -- I challange you to fix the type
+      (result as any)[property] =
+        defaultOptions[property as keyof DefaultOptions];
     }
   }
 
   for (const property in options) {
     if (Object.prototype.hasOwnProperty.call(options, property)) {
       if (options[property as keyof DefaultOptions] === undefined) {
-        delete (result as any)[property]
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any -- I challange you to fix the type
+        delete (result as any)[property];
       } else {
-        ;(result as any)[property] = options[property as keyof DefaultOptions]
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any -- I challange you to fix the type
+        (result as any)[property] = options[property as keyof DefaultOptions];
       }
     }
   }
 
-  setInternalDefaultOptions(result)
+  setInternalDefaultOptions(result);
 }

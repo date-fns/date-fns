@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name getHours
@@ -19,10 +19,10 @@ import toDate from '../toDate/index'
  * const result = getHours(new Date(2012, 1, 29, 11, 45))
  * //=> 11
  */
-export default function getHours<DateType extends Date>(
-  date: DateType | number
+export function getHours<DateType extends Date>(
+  date: DateType | number | string,
 ): number {
-  const _date = toDate(date)
-  const hours = _date.getHours()
-  return hours
+  const _date = toDate(date);
+  const hours = _date.getHours();
+  return hours;
 }

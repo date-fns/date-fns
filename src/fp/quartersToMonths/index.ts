@@ -1,6 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.
 
-import fn from '../../quartersToMonths/index'
-import convertToFP from '../_lib/convertToFP/index'
+import { quartersToMonths as fn } from "../../quartersToMonths/index.js";
+import { convertToFP } from "../_lib/convertToFP/index.js";
 
-export default convertToFP(fn, 1)
+export const quartersToMonths = convertToFP(fn, 1);

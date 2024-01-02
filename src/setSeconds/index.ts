@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name setSeconds
@@ -20,11 +20,11 @@ import toDate from '../toDate/index'
  * const result = setSeconds(new Date(2014, 8, 1, 11, 30, 40), 45)
  * //=> Mon Sep 01 2014 11:30:45
  */
-export default function setSeconds<DateType extends Date>(
-  date: DateType | number,
-  seconds: number
+export function setSeconds<DateType extends Date>(
+  date: DateType | number | string,
+  seconds: number,
 ): DateType {
-  const _date = toDate(date)
-  _date.setSeconds(seconds)
-  return _date
+  const _date = toDate(date);
+  _date.setSeconds(seconds);
+  return _date;
 }

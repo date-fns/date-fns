@@ -1,21 +1,20 @@
-import type { Locale } from '../types'
-import formatDistance from './_lib/formatDistance/index'
-import formatLong from './_lib/formatLong/index'
-import formatRelative from './_lib/formatRelative/index'
-import localize from './_lib/localize/index'
-import match from './_lib/match/index'
+import type { Locale } from "../types.js";
+import { formatDistance } from "./_lib/formatDistance/index.js";
+import { formatLong } from "./_lib/formatLong/index.js";
+import { formatRelative } from "./_lib/formatRelative/index.js";
+import { localize } from "./_lib/localize/index.js";
+import { match } from "./_lib/match/index.js";
 
 /**
- * @type {Locale}
  * @category Locales
  * @summary Ukrainian locale.
  * @language Ukrainian
  * @iso-639-2 ukr
- * @author Andrii Korzh [@korzhyk]{@link https://github.com/korzhyk}
- * @author Andriy Shcherbyak [@shcherbyakdev]{@link https://github.com/shcherbyakdev}
+ * @author Andrii Korzh [@korzhyk](https://github.com/korzhyk)
+ * @author Andriy Shcherbyak [@shcherbyakdev](https://github.com/shcherbyakdev)
  */
-const locale: Locale = {
-  code: 'uk',
+export const uk: Locale = {
+  code: "uk",
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
@@ -25,6 +24,4 @@ const locale: Locale = {
     weekStartsOn: 1 /* Monday */,
     firstWeekContainsDate: 1,
   },
-}
-
-export default locale
+};

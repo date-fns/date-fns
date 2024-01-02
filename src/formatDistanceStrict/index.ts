@@ -1,39 +1,39 @@
-import compareAsc from '../compareAsc/index'
+import { compareAsc } from "../compareAsc/index.js";
 import {
   millisecondsInMinute,
   minutesInDay,
   minutesInMonth,
   minutesInYear,
-} from '../constants/index'
-import toDate from '../toDate/index'
-import type { LocalizedOptions, RoundingOptions } from '../types'
-import defaultLocale from '../_lib/defaultLocale/index'
-import { getDefaultOptions } from '../_lib/defaultOptions/index'
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
-import { getRoundingMethod } from '../_lib/roundingMethods/index'
+} from "../constants/index.js";
+import { toDate } from "../toDate/index.js";
+import type { LocalizedOptions, RoundingOptions } from "../types.js";
+import { defaultLocale } from "../_lib/defaultLocale/index.js";
+import { getDefaultOptions } from "../_lib/defaultOptions/index.js";
+import { getTimezoneOffsetInMilliseconds } from "../_lib/getTimezoneOffsetInMilliseconds/index.js";
+import { getRoundingMethod } from "../_lib/roundingMethods/index.js";
 
 /**
  * The {@link formatDistanceStrict} function options.
  */
 export interface FormatDistanceStrictOptions
-  extends LocalizedOptions<'formatDistance'>,
+  extends LocalizedOptions<"formatDistance">,
     RoundingOptions {
   /** Add "X ago"/"in X" in the locale language */
-  addSuffix?: boolean
+  addSuffix?: boolean;
   /** If specified, will force the unit */
-  unit?: FormatDistanceStrictUnit
+  unit?: FormatDistanceStrictUnit;
 }
 
 /**
  * The unit used to format the distance in {@link formatDistanceStrict}.
  */
 export type FormatDistanceStrictUnit =
-  | 'second'
-  | 'minute'
-  | 'hour'
-  | 'day'
-  | 'month'
-  | 'year'
+  | "second"
+  | "minute"
+  | "hour"
+  | "day"
+  | "month"
+  | "year";
 
 /**
  * @name formatDistanceStrict
@@ -62,10 +62,10 @@ export type FormatDistanceStrictUnit =
  *
  * @returns The distance in words
  *
- * @throws {RangeError} `date` must not be Invalid Date
- * @throws {RangeError} `baseDate` must not be Invalid Date
- * @throws {RangeError} `options.unit` must be 'second', 'minute', 'hour', 'day', 'month' or 'year'
- * @throws {RangeError} `options.locale` must contain `formatDistance` property
+ * @throws `date` must not be Invalid Date
+ * @throws `baseDate` must not be Invalid Date
+ * @throws `options.unit` must be 'second', 'minute', 'hour', 'day', 'month' or 'year'
+ * @throws `options.locale` must contain `formatDistance` property
  *
  * @example
  * // What is the distance between 2 July 2014 and 1 January 2015?
@@ -115,99 +115,99 @@ export type FormatDistanceStrictUnit =
  * //=> '1 jaro'
  */
 
-export default function formatDistanceStrict<DateType extends Date>(
-  date: DateType | number,
-  baseDate: DateType | number,
-  options?: FormatDistanceStrictOptions
+export function formatDistanceStrict<DateType extends Date>(
+  date: DateType | number | string,
+  baseDate: DateType | number | string,
+  options?: FormatDistanceStrictOptions,
 ): string {
-  const defaultOptions = getDefaultOptions()
-  const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale
+  const defaultOptions = getDefaultOptions();
+  const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale;
 
-  const comparison = compareAsc(date, baseDate)
+  const comparison = compareAsc(date, baseDate);
 
   if (isNaN(comparison)) {
-    throw new RangeError('Invalid time value')
+    throw new RangeError("Invalid time value");
   }
 
   const localizeOptions = Object.assign({}, options, {
     addSuffix: options?.addSuffix,
     comparison: comparison as -1 | 0 | 1,
-  })
+  });
 
-  let dateLeft
-  let dateRight
+  let dateLeft;
+  let dateRight;
   if (comparison > 0) {
-    dateLeft = toDate(baseDate)
-    dateRight = toDate(date)
+    dateLeft = toDate(baseDate);
+    dateRight = toDate(date);
   } else {
-    dateLeft = toDate(date)
-    dateRight = toDate(baseDate)
+    dateLeft = toDate(date);
+    dateRight = toDate(baseDate);
   }
 
-  const roundingMethod = getRoundingMethod(options?.roundingMethod ?? 'round')
+  const roundingMethod = getRoundingMethod(options?.roundingMethod ?? "round");
 
-  const milliseconds = dateRight.getTime() - dateLeft.getTime()
-  const minutes = milliseconds / millisecondsInMinute
+  const milliseconds = dateRight.getTime() - dateLeft.getTime();
+  const minutes = milliseconds / millisecondsInMinute;
 
   const timezoneOffset =
     getTimezoneOffsetInMilliseconds(dateRight) -
-    getTimezoneOffsetInMilliseconds(dateLeft)
+    getTimezoneOffsetInMilliseconds(dateLeft);
 
   // Use DST-normalized difference in minutes for years, months and days;
   // use regular difference in minutes for hours, minutes and seconds.
   const dstNormalizedMinutes =
-    (milliseconds - timezoneOffset) / millisecondsInMinute
+    (milliseconds - timezoneOffset) / millisecondsInMinute;
 
-  const defaultUnit = options?.unit
-  let unit: FormatDistanceStrictUnit
+  const defaultUnit = options?.unit;
+  let unit: FormatDistanceStrictUnit;
   if (!defaultUnit) {
     if (minutes < 1) {
-      unit = 'second'
+      unit = "second";
     } else if (minutes < 60) {
-      unit = 'minute'
+      unit = "minute";
     } else if (minutes < minutesInDay) {
-      unit = 'hour'
+      unit = "hour";
     } else if (dstNormalizedMinutes < minutesInMonth) {
-      unit = 'day'
+      unit = "day";
     } else if (dstNormalizedMinutes < minutesInYear) {
-      unit = 'month'
+      unit = "month";
     } else {
-      unit = 'year'
+      unit = "year";
     }
   } else {
-    unit = defaultUnit
+    unit = defaultUnit;
   }
 
   // 0 up to 60 seconds
-  if (unit === 'second') {
-    const seconds = roundingMethod(milliseconds / 1000)
-    return locale.formatDistance('xSeconds', seconds, localizeOptions)
+  if (unit === "second") {
+    const seconds = roundingMethod(milliseconds / 1000);
+    return locale.formatDistance("xSeconds", seconds, localizeOptions);
 
     // 1 up to 60 mins
-  } else if (unit === 'minute') {
-    const roundedMinutes = roundingMethod(minutes)
-    return locale.formatDistance('xMinutes', roundedMinutes, localizeOptions)
+  } else if (unit === "minute") {
+    const roundedMinutes = roundingMethod(minutes);
+    return locale.formatDistance("xMinutes", roundedMinutes, localizeOptions);
 
     // 1 up to 24 hours
-  } else if (unit === 'hour') {
-    const hours = roundingMethod(minutes / 60)
-    return locale.formatDistance('xHours', hours, localizeOptions)
+  } else if (unit === "hour") {
+    const hours = roundingMethod(minutes / 60);
+    return locale.formatDistance("xHours", hours, localizeOptions);
 
     // 1 up to 30 days
-  } else if (unit === 'day') {
-    const days = roundingMethod(dstNormalizedMinutes / minutesInDay)
-    return locale.formatDistance('xDays', days, localizeOptions)
+  } else if (unit === "day") {
+    const days = roundingMethod(dstNormalizedMinutes / minutesInDay);
+    return locale.formatDistance("xDays", days, localizeOptions);
 
     // 1 up to 12 months
-  } else if (unit === 'month') {
-    const months = roundingMethod(dstNormalizedMinutes / minutesInMonth)
-    return months === 12 && defaultUnit !== 'month'
-      ? locale.formatDistance('xYears', 1, localizeOptions)
-      : locale.formatDistance('xMonths', months, localizeOptions)
+  } else if (unit === "month") {
+    const months = roundingMethod(dstNormalizedMinutes / minutesInMonth);
+    return months === 12 && defaultUnit !== "month"
+      ? locale.formatDistance("xYears", 1, localizeOptions)
+      : locale.formatDistance("xMonths", months, localizeOptions);
 
     // 1 year up to max Date
   } else {
-    const years = roundingMethod(dstNormalizedMinutes / minutesInYear)
-    return locale.formatDistance('xYears', years, localizeOptions)
+    const years = roundingMethod(dstNormalizedMinutes / minutesInYear);
+    return locale.formatDistance("xYears", years, localizeOptions);
   }
 }

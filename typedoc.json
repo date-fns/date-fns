@@ -105,6 +105,7 @@
     "./src/hoursToMilliseconds/index.ts",
     "./src/hoursToMinutes/index.ts",
     "./src/hoursToSeconds/index.ts",
+    "./src/interval/index.ts",
     "./src/intervalToDuration/index.ts",
     "./src/intlFormat/index.ts",
     "./src/intlFormatDistance/index.ts",
@@ -246,5 +247,7 @@
     "./src/constants/index.ts"
   ],
   "json": "./tmp/docs.json",
-  "plugin": ["typedoc-plugin-missing-exports"]
+  "plugin": [
+    "typedoc-plugin-missing-exports"
+  ]
 }

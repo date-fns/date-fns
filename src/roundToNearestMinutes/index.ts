@@ -1,15 +1,14 @@
-import constructFrom from '../constructFrom/index'
-import toDate from '../toDate/index'
-import type { RoundingOptions } from '../types'
-import { getRoundingMethod } from '../_lib/roundingMethods/index'
+import { constructFrom } from "../constructFrom/index.js";
+import { toDate } from "../toDate/index.js";
+import type { NearestMinutesOptions, RoundingOptions } from "../types.js";
+import { getRoundingMethod } from "../_lib/roundingMethods/index.js";
 
 /**
  * The {@link roundToNearestMinutes} function options.
  */
-export interface RoundToNearestMinutesOptions extends RoundingOptions {
-  /** The nearest number of minutes to round to. E.g. `15` to round to quarter hours. */
-  nearestTo?: number
-}
+export interface RoundToNearestMinutesOptions
+  extends NearestMinutesOptions,
+    RoundingOptions {}
 
 /**
  * @name roundToNearestMinutes
@@ -27,8 +26,6 @@ export interface RoundToNearestMinutesOptions extends RoundingOptions {
  *
  * @returns The new date rounded to the closest minute
  *
- * @throws {RangeError} `options.nearestTo` must be between 1 and 30
- *
  * @example
  * // Round 10 July 2014 12:12:34 to nearest minute:
  * const result = roundToNearestMinutes(new Date(2014, 6, 10, 12, 12, 34))
@@ -40,25 +37,23 @@ export interface RoundToNearestMinutesOptions extends RoundingOptions {
  * // rounds up because given date is exactly between 12:00:00 and 12:15:00
  * //=> Thu Jul 10 2014 12:15:00
  */
-export default function roundToNearestMinutes<DateType extends Date>(
-  date: DateType | number,
-  options?: RoundToNearestMinutesOptions
+export function roundToNearestMinutes<DateType extends Date>(
+  date: DateType | number | string,
+  options?: RoundToNearestMinutesOptions,
 ): DateType {
-  const nearestTo = options?.nearestTo ?? 1
+  const nearestTo = options?.nearestTo ?? 1;
 
-  if (nearestTo < 1 || nearestTo > 30) {
-    throw new RangeError('`options.nearestTo` must be between 1 and 30')
-  }
+  if (nearestTo < 1 || nearestTo > 30) return constructFrom(date, NaN);
 
-  const _date = toDate(date)
-  const seconds = _date.getSeconds() // relevant if nearestTo is 1, which is the default case
-  const minutes = _date.getMinutes() + seconds / 60
-  const roundingMethod = getRoundingMethod(options?.roundingMethod)
-  const roundedMinutes = roundingMethod(minutes / nearestTo) * nearestTo
-  const remainderMinutes = minutes % nearestTo
-  const addedMinutes = Math.round(remainderMinutes / nearestTo) * nearestTo
+  const _date = toDate(date);
+  const seconds = _date.getSeconds(); // relevant if nearestTo is 1, which is the default case
+  const minutes = _date.getMinutes() + seconds / 60;
+  const roundingMethod = getRoundingMethod(options?.roundingMethod);
+  const roundedMinutes = roundingMethod(minutes / nearestTo) * nearestTo;
+  const remainderMinutes = minutes % nearestTo;
+  const addedMinutes = Math.round(remainderMinutes / nearestTo) * nearestTo;
 
-  const result = constructFrom(_date, _date)
-  result.setMinutes(roundedMinutes + addedMinutes, 0, 0)
-  return result
+  const result = constructFrom(_date, _date);
+  result.setMinutes(roundedMinutes + addedMinutes, 0, 0);
+  return result;
 }

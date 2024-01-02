@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name getDecade
@@ -19,11 +19,11 @@ import toDate from '../toDate/index'
  * const result = getDecade(new Date(1942, 10, 27))
  * //=> 1940
  */
-export default function getDecade<DateType extends Date>(
-  date: DateType | number
+export function getDecade<DateType extends Date>(
+  date: DateType | number | string,
 ): number {
-  const _date = toDate(date)
-  const year = _date.getFullYear()
-  const decade = Math.floor(year / 10) * 10
-  return decade
+  const _date = toDate(date);
+  const year = _date.getFullYear();
+  const decade = Math.floor(year / 10) * 10;
+  return decade;
 }

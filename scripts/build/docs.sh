@@ -4,4 +4,4 @@
 
 set -ex
 
-yarn typedoc
+npx typedoc

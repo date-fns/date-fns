@@ -1,4 +1,4 @@
-import addMilliseconds from '../addMilliseconds/index'
+import { addMilliseconds } from "../addMilliseconds/index.js";
 
 /**
  * @name subMilliseconds
@@ -11,7 +11,7 @@ import addMilliseconds from '../addMilliseconds/index'
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
  * @param date - The date to be changed
- * @param amount - The amount of milliseconds to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @param amount - The amount of milliseconds to be subtracted.
  *
  * @returns The new date with the milliseconds subtracted
  *
@@ -20,9 +20,9 @@ import addMilliseconds from '../addMilliseconds/index'
  * const result = subMilliseconds(new Date(2014, 6, 10, 12, 45, 30, 0), 750)
  * //=> Thu Jul 10 2014 12:45:29.250
  */
-export default function subMilliseconds<DateType extends Date>(
-  date: DateType | number,
-  amount: number
+export function subMilliseconds<DateType extends Date>(
+  date: DateType | number | string,
+  amount: number,
 ): DateType {
-  return addMilliseconds(date, -amount)
+  return addMilliseconds(date, -amount);
 }

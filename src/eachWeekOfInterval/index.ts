@@ -1,14 +1,20 @@
-import addWeeks from '../addWeeks/index'
-import startOfWeek from '../startOfWeek/index'
-import toDate from '../toDate/index'
-import type { Interval, LocalizedOptions, WeekOptions } from '../types'
+import { addWeeks } from "../addWeeks/index.js";
+import { startOfWeek } from "../startOfWeek/index.js";
+import { toDate } from "../toDate/index.js";
+import type {
+  Interval,
+  LocalizedOptions,
+  StepOptions,
+  WeekOptions,
+} from "../types.js";
 
 /**
  * The {@link eachWeekOfInterval} function options.
  */
 export interface EachWeekOfIntervalOptions
-  extends WeekOptions,
-    LocalizedOptions<'options'> {}
+  extends StepOptions,
+    WeekOptions,
+    LocalizedOptions<"options"> {}
 
 /**
  * @name eachWeekOfInterval
@@ -24,9 +30,6 @@ export interface EachWeekOfIntervalOptions
  * @param options - An object with options.
  *
  * @returns The array with starts of weeks from the week of the interval start to the week of the interval end
- *
- * @throws {RangeError} The start of an interval cannot be after its end
- * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *
  * @example
  * // Each week within interval 6 October 2014 - 23 November 2014:
@@ -45,39 +48,43 @@ export interface EachWeekOfIntervalOptions
  * //   Sun Nov 23 2014 00:00:00
  * // ]
  */
-export default function eachWeekOfInterval<DateType extends Date>(
+export function eachWeekOfInterval<DateType extends Date>(
   interval: Interval<DateType>,
-  options?: EachWeekOfIntervalOptions
+  options?: EachWeekOfIntervalOptions,
 ): DateType[] {
-  const startDate = toDate(interval.start)
-  const endDate = toDate(interval.end)
+  const startDate = toDate(interval.start);
+  const endDate = toDate(interval.end);
 
-  let endTime = endDate.getTime()
-
-  // Throw an exception if start date is after end date or if any date is `Invalid Date`
-  if (!(startDate.getTime() <= endTime)) {
-    throw new RangeError('Invalid interval')
-  }
-
-  const startDateWeek = startOfWeek(startDate, options)
-  const endDateWeek = startOfWeek(endDate, options)
+  let reversed = +startDate > +endDate;
+  const startDateWeek = reversed
+    ? startOfWeek(endDate, options)
+    : startOfWeek(startDate, options);
+  const endDateWeek = reversed
+    ? startOfWeek(startDate, options)
+    : startOfWeek(endDate, options);
 
   // Some timezones switch DST at midnight, making start of day unreliable in these timezones, 3pm is a safe bet
-  startDateWeek.setHours(15)
-  endDateWeek.setHours(15)
+  startDateWeek.setHours(15);
+  endDateWeek.setHours(15);
 
-  endTime = endDateWeek.getTime()
+  const endTime = +endDateWeek.getTime();
+  let currentDate = startDateWeek;
 
-  const weeks = []
-
-  let currentWeek = startDateWeek
-
-  while (currentWeek.getTime() <= endTime) {
-    currentWeek.setHours(0)
-    weeks.push(toDate(currentWeek))
-    currentWeek = addWeeks(currentWeek, 1)
-    currentWeek.setHours(15)
+  let step = options?.step ?? 1;
+  if (!step) return [];
+  if (step < 0) {
+    step = -step;
+    reversed = !reversed;
   }
 
-  return weeks
+  const dates = [];
+
+  while (+currentDate <= endTime) {
+    currentDate.setHours(0);
+    dates.push(toDate(currentDate));
+    currentDate = addWeeks(currentDate, step);
+    currentDate.setHours(15);
+  }
+
+  return reversed ? dates.reverse() : dates;
 }

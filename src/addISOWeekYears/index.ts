@@ -1,5 +1,5 @@
-import getISOWeekYear from '../getISOWeekYear/index'
-import setISOWeekYear from '../setISOWeekYear/index'
+import { getISOWeekYear } from "../getISOWeekYear/index.js";
+import { setISOWeekYear } from "../setISOWeekYear/index.js";
 
 /**
  * @name addISOWeekYears
@@ -14,7 +14,7 @@ import setISOWeekYear from '../setISOWeekYear/index'
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
  * @param date - The date to be changed
- * @param amount - The amount of ISO week-numbering years to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @param amount - The amount of ISO week-numbering years to be added.
  *
  * @returns The new date with the ISO week-numbering years added
  *
@@ -23,9 +23,9 @@ import setISOWeekYear from '../setISOWeekYear/index'
  * const result = addISOWeekYears(new Date(2010, 6, 2), 5)
  * //=> Fri Jn 26 2015 00:00:00
  */
-export default function addISOWeekYears<DateType extends Date>(
-  date: DateType | number,
-  amount: number
+export function addISOWeekYears<DateType extends Date>(
+  date: DateType | number | string,
+  amount: number,
 ): DateType {
-  return setISOWeekYear(date, getISOWeekYear(date) + amount)
+  return setISOWeekYear(date, getISOWeekYear(date) + amount);
 }

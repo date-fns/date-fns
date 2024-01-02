@@ -11,32 +11,62 @@ set -e
 root="$(pwd)/$(dirname "$0")/../.."
 cd "$root" || exit 1
 
-# PATH="$(npm bin):$PATH"
 # XXX: $PACKAGE_OUTPUT_PATH must be an absolute path!
 dir=${PACKAGE_OUTPUT_PATH:-"$root/lib"}
+export PACKAGE_OUTPUT_PATH="$dir"
 
 # Clean up output dir
 rm -rf "$dir"
 mkdir -p "$dir"
 
-# Transpile CommonJS versions of files
-env BABEL_ENV=cjs yarn babel src --config-file ./babel.config.js --source-root src --out-dir "$dir" --ignore "**/test.ts","**/*.d.ts" --extensions .mjs,.ts --out-file-extension .js --quiet
-
 # Transpile ESM versions of files
-env BABEL_ENV=esm yarn babel src --config-file ./babel.config.js --source-root src --out-dir "$dir" --ignore "**/test.ts","**/*.d.ts" --extensions .mjs,.ts --out-file-extension .mjs --quiet
+env BABEL_ENV=esm npx babel src \
+  --config-file ./babel.config.js \
+  --source-root src \
+  --out-dir "$dir" \
+  --ignore "**/test.ts","**/*.d.ts" \
+  --extensions .mjs,.ts \
+  --out-file-extension .mjs \
+  --quiet
+
+# Add fallback for Next.js and other tools that modularize imports:
+npx tsx scripts/build/modularized.ts
+
+# Transpile CommonJS versions of files
+env BABEL_ENV=cjs npx babel src \
+  --config-file ./babel.config.js \
+  --source-root src \
+  --out-dir "$dir" \
+  --ignore "**/test.ts","**/*.d.ts" \
+  --extensions .mjs,.ts \
+  --out-file-extension .js \
+  --quiet
 
 # Generate TypeScript
-yarn tsc --project tsconfig.lib.json --outDir "$dir"
+npx tsc --project tsconfig.lib.json --outDir "$dir"
+
+if [ -n "$TEST_FLATTEN" ]; then
+  exit 0
+fi
 
 # Flatten the structure
-yarn tsx scripts/build/flatten.ts
+npx tsx scripts/build/flatten.ts
+
+# Generate .d.mts files
+npx tsx scripts/build/mts.ts
 
 # Copy basic files
 for pattern in CHANGELOG.md \
   package.json \
   docs \
   LICENSE.md \
-  README.md
+  README.md \
+  SECURITY.md
 do
   cp -r "$pattern" "$dir"
 done
+
+if [ -z "$PACKAGE_SKIP_BEAUTIFY" ]; then
+  # Make it prettier
+  npx prettier "$dir" --write --ignore-path "" > /dev/null 2>&1 || exit 1
+fi

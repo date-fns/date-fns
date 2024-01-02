@@ -1,4 +1,4 @@
-import type { GenericDateConstructor } from '../types'
+import type { GenericDateConstructor } from "../types.js";
 
 /**
  * @name constructFrom
@@ -28,13 +28,13 @@ import type { GenericDateConstructor } from '../types'
  *   )
  * }
  */
-export default function constructFrom<DateType extends Date>(
-  date: DateType | number,
-  value: Date | number
+export function constructFrom<DateType extends Date>(
+  date: DateType | number | string,
+  value: Date | number | string,
 ): DateType {
   if (date instanceof Date) {
-    return new (date.constructor as GenericDateConstructor<DateType>)(value)
+    return new (date.constructor as GenericDateConstructor<DateType>)(value);
   } else {
-    return new Date(value) as DateType
+    return new Date(value) as DateType;
   }
 }

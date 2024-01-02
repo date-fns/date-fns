@@ -1,21 +1,20 @@
-import type { Locale } from '../types'
-import formatDistance from './_lib/formatDistance/index'
-import formatLong from './_lib/formatLong/index'
-import formatRelative from './_lib/formatRelative/index'
-import localize from './_lib/localize/index'
-import match from './_lib/match/index'
+import type { Locale } from "../types.js";
+import { formatDistance } from "./_lib/formatDistance/index.js";
+import { formatLong } from "./_lib/formatLong/index.js";
+import { formatRelative } from "./_lib/formatRelative/index.js";
+import { localize } from "./_lib/localize/index.js";
+import { match } from "./_lib/match/index.js";
 
 /**
- * @type {Locale}
  * @category Locales
  * @summary Icelandic locale.
  * @language Icelandic
  * @iso-639-2 isl
- * @author Derek Blank [@derekblank]{@link https://github.com/derekblank}
- * @author Arnór Ýmir [@lamayg]{@link https://github.com/lamayg}
+ * @author Derek Blank [@derekblank](https://github.com/derekblank)
+ * @author Arnór Ýmir [@lamayg](https://github.com/lamayg)
  */
-const locale: Locale = {
-  code: 'is',
+export const is: Locale = {
+  code: "is",
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
@@ -25,6 +24,4 @@ const locale: Locale = {
     weekStartsOn: 1 /* Monday */,
     firstWeekContainsDate: 4,
   },
-}
-
-export default locale
+};

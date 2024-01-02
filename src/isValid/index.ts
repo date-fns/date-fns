@@ -1,5 +1,5 @@
-import isDate from '../isDate/index'
-import toDate from '../toDate/index'
+import { isDate } from "../isDate/index.js";
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name isValid
@@ -8,7 +8,7 @@ import toDate from '../toDate/index'
  *
  * @description
  * Returns false if argument is Invalid Date and true otherwise.
- * Argument is converted to Date using `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
+ * Argument is converted to Date using `toDate`. See [toDate](https://date-fns.org/docs/toDate)
  * Invalid Date is a Date, whose time value is NaN.
  *
  * Time value of Date: http://es5.github.io/#x15.9.1.1
@@ -34,10 +34,10 @@ import toDate from '../toDate/index'
  * const result = isValid(new Date(''))
  * //=> false
  */
-export default function isValid(date: unknown): boolean {
-  if (!isDate(date) && typeof date !== 'number') {
-    return false
+export function isValid(date: unknown): boolean {
+  if (!isDate(date) && typeof date !== "number") {
+    return false;
   }
-  const _date = toDate(date)
-  return !isNaN(Number(_date))
+  const _date = toDate(date);
+  return !isNaN(Number(_date));
 }

@@ -1,210 +1,208 @@
-import type { FormatDistanceFn, FormatDistanceLocale } from '../../../types'
+import type { FormatDistanceFn, FormatDistanceLocale } from "../../../types.js";
 
 type Amount = {
-  one: string
-  other: string
-}
+  one: string;
+  other: string;
+};
 
 type FormatDistanceTokenValue = {
-  standalone: Amount | string
-  withPreposition: Amount | string
-}
+  standalone: Amount | string;
+  withPreposition: Amount | string;
+};
 
 const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   lessThanXSeconds: {
     standalone: {
-      one: 'vähem kui üks sekund',
-      other: 'vähem kui {{count}} sekundit',
+      one: "vähem kui üks sekund",
+      other: "vähem kui {{count}} sekundit",
     },
     withPreposition: {
-      one: 'vähem kui ühe sekundi',
-      other: 'vähem kui {{count}} sekundi',
+      one: "vähem kui ühe sekundi",
+      other: "vähem kui {{count}} sekundi",
     },
   },
 
   xSeconds: {
     standalone: {
-      one: 'üks sekund',
-      other: '{{count}} sekundit',
+      one: "üks sekund",
+      other: "{{count}} sekundit",
     },
     withPreposition: {
-      one: 'ühe sekundi',
-      other: '{{count}} sekundi',
+      one: "ühe sekundi",
+      other: "{{count}} sekundi",
     },
   },
 
   halfAMinute: {
-    standalone: 'pool minutit',
-    withPreposition: 'poole minuti',
+    standalone: "pool minutit",
+    withPreposition: "poole minuti",
   },
 
   lessThanXMinutes: {
     standalone: {
-      one: 'vähem kui üks minut',
-      other: 'vähem kui {{count}} minutit',
+      one: "vähem kui üks minut",
+      other: "vähem kui {{count}} minutit",
     },
     withPreposition: {
-      one: 'vähem kui ühe minuti',
-      other: 'vähem kui {{count}} minuti',
+      one: "vähem kui ühe minuti",
+      other: "vähem kui {{count}} minuti",
     },
   },
 
   xMinutes: {
     standalone: {
-      one: 'üks minut',
-      other: '{{count}} minutit',
+      one: "üks minut",
+      other: "{{count}} minutit",
     },
     withPreposition: {
-      one: 'ühe minuti',
-      other: '{{count}} minuti',
+      one: "ühe minuti",
+      other: "{{count}} minuti",
     },
   },
 
   aboutXHours: {
     standalone: {
-      one: 'umbes üks tund',
-      other: 'umbes {{count}} tundi',
+      one: "umbes üks tund",
+      other: "umbes {{count}} tundi",
     },
     withPreposition: {
-      one: 'umbes ühe tunni',
-      other: 'umbes {{count}} tunni',
+      one: "umbes ühe tunni",
+      other: "umbes {{count}} tunni",
     },
   },
 
   xHours: {
     standalone: {
-      one: 'üks tund',
-      other: '{{count}} tundi',
+      one: "üks tund",
+      other: "{{count}} tundi",
     },
     withPreposition: {
-      one: 'ühe tunni',
-      other: '{{count}} tunni',
+      one: "ühe tunni",
+      other: "{{count}} tunni",
     },
   },
 
   xDays: {
     standalone: {
-      one: 'üks päev',
-      other: '{{count}} päeva',
+      one: "üks päev",
+      other: "{{count}} päeva",
     },
     withPreposition: {
-      one: 'ühe päeva',
-      other: '{{count}} päeva',
+      one: "ühe päeva",
+      other: "{{count}} päeva",
     },
   },
 
   aboutXWeeks: {
     standalone: {
-      one: 'umbes üks nädal',
-      other: 'umbes {{count}} nädalat',
+      one: "umbes üks nädal",
+      other: "umbes {{count}} nädalat",
     },
     withPreposition: {
-      one: 'umbes ühe nädala',
-      other: 'umbes {{count}} nädala',
+      one: "umbes ühe nädala",
+      other: "umbes {{count}} nädala",
     },
   },
 
   xWeeks: {
     standalone: {
-      one: 'üks nädal',
-      other: '{{count}} nädalat',
+      one: "üks nädal",
+      other: "{{count}} nädalat",
     },
     withPreposition: {
-      one: 'ühe nädala',
-      other: '{{count}} nädala',
+      one: "ühe nädala",
+      other: "{{count}} nädala",
     },
   },
 
   aboutXMonths: {
     standalone: {
-      one: 'umbes üks kuu',
-      other: 'umbes {{count}} kuud',
+      one: "umbes üks kuu",
+      other: "umbes {{count}} kuud",
     },
     withPreposition: {
-      one: 'umbes ühe kuu',
-      other: 'umbes {{count}} kuu',
+      one: "umbes ühe kuu",
+      other: "umbes {{count}} kuu",
     },
   },
 
   xMonths: {
     standalone: {
-      one: 'üks kuu',
-      other: '{{count}} kuud',
+      one: "üks kuu",
+      other: "{{count}} kuud",
     },
     withPreposition: {
-      one: 'ühe kuu',
-      other: '{{count}} kuu',
+      one: "ühe kuu",
+      other: "{{count}} kuu",
     },
   },
 
   aboutXYears: {
     standalone: {
-      one: 'umbes üks aasta',
-      other: 'umbes {{count}} aastat',
+      one: "umbes üks aasta",
+      other: "umbes {{count}} aastat",
     },
     withPreposition: {
-      one: 'umbes ühe aasta',
-      other: 'umbes {{count}} aasta',
+      one: "umbes ühe aasta",
+      other: "umbes {{count}} aasta",
     },
   },
 
   xYears: {
     standalone: {
-      one: 'üks aasta',
-      other: '{{count}} aastat',
+      one: "üks aasta",
+      other: "{{count}} aastat",
     },
     withPreposition: {
-      one: 'ühe aasta',
-      other: '{{count}} aasta',
+      one: "ühe aasta",
+      other: "{{count}} aasta",
     },
   },
 
   overXYears: {
     standalone: {
-      one: 'rohkem kui üks aasta',
-      other: 'rohkem kui {{count}} aastat',
+      one: "rohkem kui üks aasta",
+      other: "rohkem kui {{count}} aastat",
     },
     withPreposition: {
-      one: 'rohkem kui ühe aasta',
-      other: 'rohkem kui {{count}} aasta',
+      one: "rohkem kui ühe aasta",
+      other: "rohkem kui {{count}} aasta",
     },
   },
 
   almostXYears: {
     standalone: {
-      one: 'peaaegu üks aasta',
-      other: 'peaaegu {{count}} aastat',
+      one: "peaaegu üks aasta",
+      other: "peaaegu {{count}} aastat",
     },
     withPreposition: {
-      one: 'peaaegu ühe aasta',
-      other: 'peaaegu {{count}} aasta',
+      one: "peaaegu ühe aasta",
+      other: "peaaegu {{count}} aasta",
     },
   },
-}
+};
 
-const formatDistance: FormatDistanceFn = (token, count, options) => {
+export const formatDistance: FormatDistanceFn = (token, count, options) => {
   const usageGroup = options?.addSuffix
     ? formatDistanceLocale[token].withPreposition
-    : formatDistanceLocale[token].standalone
+    : formatDistanceLocale[token].standalone;
 
-  let result
-  if (typeof usageGroup === 'string') {
-    result = usageGroup
+  let result;
+  if (typeof usageGroup === "string") {
+    result = usageGroup;
   } else if (count === 1) {
-    result = usageGroup.one
+    result = usageGroup.one;
   } else {
-    result = usageGroup.other.replace('{{count}}', String(count))
+    result = usageGroup.other.replace("{{count}}", String(count));
   }
 
   if (options?.addSuffix) {
     if (options.comparison && options.comparison > 0) {
-      return result + ' pärast'
+      return result + " pärast";
     } else {
-      return result + ' eest'
+      return result + " eest";
     }
   }
 
-  return result
-}
-
-export default formatDistance
+  return result;
+};

@@ -3,31 +3,18 @@ name: Coverage report
 on: workflow_dispatch
 # on:
 #   push:
-#     branches: [master]
+#     branches: [main]
 
 jobs:
   tests:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [16.x]
-
-    env:
-      COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
-
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.node-version }}
-      - name: export CHROME_BIN
-        run: export CHROME_BIN=chromium-browser
-      - name: export DISPLAY
-        run: export DISPLAY=:99.0
-      - name: Install yarn
-        run: npm install -g yarn
-      - name: Install dependencies
-        run: yarn install
-      - name: Run coverage report
-        run: ./scripts/test/coverage.sh
+          node-version: 20
+      - run: npm install
+      - run: npx vitest run --coverage
+        env:
+          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}

@@ -1,7 +1,7 @@
-import constructFrom from '../constructFrom/index'
-import differenceInCalendarDays from '../differenceInCalendarDays/index'
-import startOfISOWeekYear from '../startOfISOWeekYear/index'
-import toDate from '../toDate/index'
+import { constructFrom } from "../constructFrom/index.js";
+import { differenceInCalendarDays } from "../differenceInCalendarDays/index.js";
+import { startOfISOWeekYear } from "../startOfISOWeekYear/index.js";
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name setISOWeekYear
@@ -26,16 +26,16 @@ import toDate from '../toDate/index'
  * const result = setISOWeekYear(new Date(2008, 11, 29), 2007)
  * //=> Mon Jan 01 2007 00:00:00
  */
-export default function setISOWeekYear<DateType extends Date>(
-  date: DateType | number,
-  weekYear: number
+export function setISOWeekYear<DateType extends Date>(
+  date: DateType | number | string,
+  weekYear: number,
 ): DateType {
-  let _date = toDate(date)
-  const diff = differenceInCalendarDays(_date, startOfISOWeekYear(_date))
-  const fourthOfJanuary = constructFrom(date, 0)
-  fourthOfJanuary.setFullYear(weekYear, 0, 4)
-  fourthOfJanuary.setHours(0, 0, 0, 0)
-  _date = startOfISOWeekYear(fourthOfJanuary)
-  _date.setDate(_date.getDate() + diff)
-  return _date
+  let _date = toDate(date);
+  const diff = differenceInCalendarDays(_date, startOfISOWeekYear(_date));
+  const fourthOfJanuary = constructFrom(date, 0);
+  fourthOfJanuary.setFullYear(weekYear, 0, 4);
+  fourthOfJanuary.setHours(0, 0, 0, 0);
+  _date = startOfISOWeekYear(fourthOfJanuary);
+  _date.setDate(_date.getDate() + diff);
+  return _date;
 }

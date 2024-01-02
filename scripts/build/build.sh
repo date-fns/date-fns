@@ -6,6 +6,6 @@
 
 set -ex
 
-yarn tsx ./scripts/build/indices.ts
+npx tsx ./scripts/build/indices.ts
 ./scripts/build/docs.sh
-yarn tsx ./scripts/build/fp.ts
+npx tsx ./scripts/build/fp.ts

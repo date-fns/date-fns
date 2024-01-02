@@ -1,7 +1,7 @@
-import addMinutes from '../addMinutes/index'
-import startOfMinute from '../startOfMinute/index'
-import toDate from '../toDate/index'
-import type { Interval, StepOptions } from '../types'
+import { addMinutes } from "../addMinutes/index.js";
+import { startOfMinute } from "../startOfMinute/index.js";
+import { toDate } from "../toDate/index.js";
+import type { Interval, StepOptions } from "../types.js";
 
 /**
  * The {@link eachMinuteOfInterval} function options.
@@ -23,10 +23,6 @@ export interface EachMinuteOfIntervalOptions extends StepOptions {}
  *
  * @returns The array with starts of minutes from the minute of the interval start to the minute of the interval end
  *
- * @throws {RangeError} `options.step` must be a number equal to or greater than 1
- * @throws {RangeError} The start of an interval cannot be after its end
- * @throws {RangeError} Date in interval cannot be `Invalid Date`
- *
  * @example
  * // Each minute between 14 October 2020, 13:00 and 14 October 2020, 13:03
  * const result = eachMinuteOfInterval({
@@ -40,34 +36,30 @@ export interface EachMinuteOfIntervalOptions extends StepOptions {}
  * //   Wed Oct 14 2014 13:03:00
  * // ]
  */
-export default function eachMinuteOfInterval<DateType extends Date>(
+export function eachMinuteOfInterval<DateType extends Date>(
   interval: Interval<DateType>,
-  options?: EachMinuteOfIntervalOptions
+  options?: EachMinuteOfIntervalOptions,
 ): DateType[] {
-  const startDate = startOfMinute(toDate(interval.start))
-  const endDate = toDate(interval.end)
+  const startDate = startOfMinute(toDate(interval.start));
+  const endDate = toDate(interval.end);
 
-  const startTime = startDate.getTime()
-  const endTime = endDate.getTime()
+  let reversed = +startDate > +endDate;
+  const endTime = reversed ? +startDate : +endDate;
+  let currentDate = reversed ? endDate : startDate;
 
-  if (startTime >= endTime) {
-    throw new RangeError('Invalid interval')
+  let step = options?.step ?? 1;
+  if (!step) return [];
+  if (step < 0) {
+    step = -step;
+    reversed = !reversed;
   }
 
-  const dates = []
+  const dates = [];
 
-  let currentDate = startDate
-
-  const step = options?.step ?? 1
-  if (step < 1 || isNaN(step))
-    throw new RangeError(
-      '`options.step` must be a number equal to or greater than 1'
-    )
-
-  while (currentDate.getTime() <= endTime) {
-    dates.push(toDate(currentDate))
-    currentDate = addMinutes(currentDate, step)
+  while (+currentDate <= endTime) {
+    dates.push(toDate(currentDate));
+    currentDate = addMinutes(currentDate, step);
   }
 
-  return dates
+  return reversed ? dates.reverse() : dates;
 }
