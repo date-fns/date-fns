@@ -993,6 +993,10 @@
       "require": "./yearsToMonths.js",
       "import": "./yearsToMonths.mjs"
     },
+    "./yearsToDays": {
+      "require": "./yearsToDays.js",
+      "import": "./yearsToDays.mjs"
+    },
     "./yearsToQuarters": {
       "require": "./yearsToQuarters.js",
       "import": "./yearsToQuarters.mjs"
@@ -2008,6 +2012,10 @@
     "./fp/yearsToMonths": {
       "require": "./fp/yearsToMonths.js",
       "import": "./fp/yearsToMonths.mjs"
+    },
+    "./fp/yearsToDays": {
+      "require": "./fp/yearsToDays.js",
+      "import": "./fp/yearsToDays.mjs"
     },
     "./fp/yearsToQuarters": {
       "require": "./fp/yearsToQuarters.js",
