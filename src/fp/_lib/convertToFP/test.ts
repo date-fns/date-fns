@@ -2,7 +2,7 @@
 
 import assert from "assert";
 import { describe, it } from "vitest";
-import { convertToFP, convertToFP2 } from "./index.js";
+import { convertToFP, convertToFP2, convertToFPDual } from "./index.js";
 
 describe("convertToFP", () => {
   function fn(a: unknown, b: unknown, c: unknown) {
@@ -133,6 +133,18 @@ describe("convertToFP2", () => {
     it("type-checks with fp-ts style pipe function", () => {
       const fpFn = convertToFP2(fn);
       const result = pipe(1, fpFn(2), fpFn(3));
+      assertType<IsEqual<typeof result, string>>();
+      assert.strictEqual(result, "1 2 3");
+    });
+  });
+
+  describe("alternative implementation using effect-ts dual", () => {
+    it("type-checks with dual conversion", () => {
+      const fpFn: {
+        (that: unknown): (self: unknown) => string;
+        (self: unknown, that: unknown): string;
+      } = convertToFPDual(2, fn);
+      const result = [1].map(fpFn(2)).map(fpFn(3))[0];
       assertType<IsEqual<typeof result, string>>();
       assert.strictEqual(result, "1 2 3");
     });
