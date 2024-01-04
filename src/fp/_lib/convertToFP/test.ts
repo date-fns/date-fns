@@ -2,7 +2,7 @@
 
 import assert from "assert";
 import { describe, it } from "vitest";
-import { convertToFP } from "./index.js";
+import { convertToFP, convertToFP2 } from "./index.js";
 
 describe("convertToFP", () => {
   function fn(a: unknown, b: unknown, c: unknown) {
@@ -75,6 +75,66 @@ describe("convertToFP", () => {
       const result = convertToFP(fn, 0);
       // @ts-expect-error - It's ok, we're testing the function
       assert(result === "undefined undefined undefined");
+    });
+  });
+});
+
+describe("convertToFP2", () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  function assertType<T extends never>() {}
+
+  type IsEqual<A, B> = Exclude<A, B> | Exclude<B, A>;
+
+  /**
+   * Pipeline function modeled after fp-ts
+   * @see https://github.com/gcanti/fp-ts/blob/2.16.0/src/function.ts#L416
+   */
+  function pipe<A, B, C>(a: A, ab: (a: A) => B, bc: (b: B) => C): C {
+    return bc(ab(a));
+  }
+
+  function fn(a: unknown, b: unknown): string {
+    return "a b".replace("a", String(a)).replace("b", String(b));
+  }
+
+  describe("arity of converted function === arity of initial function", () => {
+    it("allows arguments to be curried (and reverses their order)", () => {
+      const fpFn = convertToFP2(fn);
+      assert(fpFn(2)(1) === "1 2");
+    });
+  });
+
+  describe("original convertToFP is not pipeable", () => {
+    it("does not type-check when mapping", () => {
+      const fpFn = convertToFP(fn, 2);
+      const result = [1].map(fpFn(2)).map(fpFn(3))[0];
+      // @ts-expect-error Type of result is "FPFn1<string, unknown>" instead of "string"
+      assertType<IsEqual<typeof result, string>>();
+      assert.strictEqual(result, "1 2 3");
+    });
+
+    it("does not type-check with fp-ts style pipe function", () => {
+      const fpFn = convertToFP(fn, 2);
+      const result = pipe(1, fpFn(2), fpFn(3));
+      // @ts-expect-error Type of result is "FPFn1<string, unknown>" instead of "string"
+      assertType<IsEqual<typeof result, string>>();
+      assert.strictEqual(result, "1 2 3");
+    });
+  });
+
+  describe("convertToFP2 is pipeable", () => {
+    it("type-checks with the alternative convertToFP2 implementation", () => {
+      const fpFn = convertToFP2(fn);
+      const result = [1].map(fpFn(2)).map(fpFn(3))[0];
+      assertType<IsEqual<typeof result, string>>();
+      assert.strictEqual(result, "1 2 3");
+    });
+
+    it("type-checks with fp-ts style pipe function", () => {
+      const fpFn = convertToFP2(fn);
+      const result = pipe(1, fpFn(2), fpFn(3));
+      assertType<IsEqual<typeof result, string>>();
+      assert.strictEqual(result, "1 2 3");
     });
   });
 });
