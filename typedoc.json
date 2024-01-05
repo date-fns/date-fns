@@ -242,6 +242,7 @@
     "./src/toDate/index.ts",
     "./src/transpose/index.ts",
     "./src/weeksToDays/index.ts",
+    "./src/yearsToDays/index.ts",
     "./src/yearsToMonths/index.ts",
     "./src/yearsToQuarters/index.ts",
     "./src/constants/index.ts"

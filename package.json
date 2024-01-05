@@ -2458,6 +2458,16 @@
         "default": "./weeksToDays.mjs"
       }
     },
+    "./yearsToDays": {
+      "require": {
+        "types": "./yearsToDays.d.ts",
+        "default": "./yearsToDays.js"
+      },
+      "import": {
+        "types": "./yearsToDays.d.mts",
+        "default": "./yearsToDays.mjs"
+      }
+    },
     "./yearsToMonths": {
       "require": {
         "types": "./yearsToMonths.d.ts",
