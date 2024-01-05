@@ -2468,10 +2468,6 @@
         "default": "./yearsToMonths.mjs"
       }
     },
-    "./yearsToDays": {
-      "require": "./yearsToDays.js",
-      "import": "./yearsToDays.mjs"
-    },
     "./yearsToQuarters": {
       "require": {
         "types": "./yearsToQuarters.d.ts",
