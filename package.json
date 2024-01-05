@@ -5062,10 +5062,6 @@
         "default": "./fp/yearsToMonths.mjs"
       }
     },
-    "./fp/yearsToDays": {
-      "require": "./fp/yearsToDays.js",
-      "import": "./fp/yearsToDays.mjs"
-    },
     "./fp/yearsToQuarters": {
       "require": {
         "types": "./fp/yearsToQuarters.d.ts",
