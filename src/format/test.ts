@@ -1,7 +1,15 @@
 /* eslint-env mocha */
 
 import assert from "assert";
-import { describe, it } from "vitest";
+import {
+  type SpyInstance,
+  afterEach,
+  beforeEach,
+  describe,
+  expect,
+  it,
+  vi,
+} from "vitest";
 import sinon from "sinon";
 import { format } from "./index.js";
 
@@ -764,12 +772,7 @@ describe("format", () => {
 
   describe("useAdditionalWeekYearTokens and useAdditionalDayOfYearTokens options", () => {
     it("throws an error if D token is used", () => {
-      try {
-        format.bind(null, date, "yyyy-MM-D");
-      } catch (e) {
-        assert(e instanceof RangeError);
-        assert(e.message.startsWith("Use `d` instead of `D`"));
-      }
+      expect(() => format(date, "yyyy-MM-D")).toThrow("Use `d` instead of `D`");
     });
 
     it("allows D token if useAdditionalDayOfYearTokens is set to true", () => {
@@ -780,12 +783,9 @@ describe("format", () => {
     });
 
     it("throws an error if DD token is used", () => {
-      try {
-        format.bind(null, date, "yyyy-MM-DD");
-      } catch (e) {
-        assert(e instanceof RangeError);
-        assert(e.message.startsWith("Use `dd` instead of `DD`"));
-      }
+      expect(() => format(date, "yyyy-MM-DD")).toThrow(
+        "Use `dd` instead of `DD`",
+      );
     });
 
     it("allows DD token if useAdditionalDayOfYearTokens is set to true", () => {
@@ -796,12 +796,9 @@ describe("format", () => {
     });
 
     it("throws an error if YY token is used", () => {
-      try {
-        format.bind(null, date, "YY-MM-dd");
-      } catch (e) {
-        assert(e instanceof RangeError);
-        assert(e.message.startsWith("Use `yy` instead of `YY`"));
-      }
+      expect(() => format(date, "YY-MM-dd")).toThrow(
+        "Use `yy` instead of `YY`",
+      );
     });
 
     it("allows YY token if useAdditionalWeekYearTokens is set to true", () => {
@@ -812,12 +809,9 @@ describe("format", () => {
     });
 
     it("throws an error if YYYY token is used", () => {
-      try {
-        format.bind(null, date, "YYYY-MM-dd");
-      } catch (e) {
-        assert(e instanceof RangeError);
-        assert(e.message.startsWith("Use `yyyy` instead of `YYYY`"));
-      }
+      expect(() => format(date, "YYYY-MM-dd")).toThrow(
+        "Use `yyyy` instead of `YYYY`",
+      );
     });
 
     it("allows YYYY token if useAdditionalWeekYearTokens is set to true", () => {
@@ -825,6 +819,148 @@ describe("format", () => {
         useAdditionalWeekYearTokens: true,
       });
       assert.deepStrictEqual(result, "1986-04-04");
+    });
+
+    describe("console.warn", () => {
+      let warn: SpyInstance;
+
+      beforeEach(() => {
+        warn = vi.spyOn(console, "warn").mockImplementation(() => undefined);
+      });
+
+      afterEach(() => {
+        warn.mockRestore();
+      });
+
+      it('warns if "D" token is used', () => {
+        try {
+          format(date, "yyyy-MM-D");
+        } catch (_) {
+          // Ignore the error
+        }
+        expect(warn).toBeCalledWith(
+          "Use `d` instead of `D` (in `yyyy-MM-D`) for formatting days of the month to the input `" +
+            date +
+            "`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md",
+        );
+      });
+
+      it('warns if "DD" token is used', () => {
+        try {
+          format(date, "yyyy-MM-DD");
+        } catch (_) {
+          // Ignore the error
+        }
+        expect(warn).toBeCalledWith(
+          "Use `dd` instead of `DD` (in `yyyy-MM-DD`) for formatting days of the month to the input `" +
+            date +
+            "`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md",
+        );
+      });
+
+      it('warns if "DDD" token is used', () => {
+        try {
+          format(date, "yyyy-MM-DDD");
+        } catch (_) {
+          // Ignore the error
+        }
+        expect(warn).toBeCalledWith(
+          "Use `ddd` instead of `DDD` (in `yyyy-MM-DDD`) for formatting days of the month to the input `" +
+            date +
+            "`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md",
+        );
+      });
+
+      it('warns if "DDDD" token is used', () => {
+        try {
+          format(date, "yyyy-MM-DDDD");
+        } catch (_) {
+          // Ignore the error
+        }
+        expect(warn).toBeCalledWith(
+          "Use `dddd` instead of `DDDD` (in `yyyy-MM-DDDD`) for formatting days of the month to the input `" +
+            date +
+            "`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md",
+        );
+      });
+
+      it('warns if "DDDDD" token is used', () => {
+        try {
+          format(date, "yyyy-MM-DDDDD");
+        } catch (_) {
+          // Ignore the error
+        }
+        expect(warn).toBeCalledWith(
+          "Use `ddddd` instead of `DDDDD` (in `yyyy-MM-DDDDD`) for formatting days of the month to the input `" +
+            date +
+            "`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md",
+        );
+      });
+
+      it('warns if "Y" token is used', () => {
+        try {
+          format(date, "Y-MM-dd");
+        } catch (_) {
+          // Ignore the error
+        }
+        expect(warn).toBeCalledWith(
+          "Use `y` instead of `Y` (in `Y-MM-dd`) for formatting years to the input `" +
+            date +
+            "`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md",
+        );
+      });
+
+      it('warns if "YY" token is used', () => {
+        try {
+          format(date, "YY-MM-dd");
+        } catch (_) {
+          // Ignore the error
+        }
+        expect(warn).toBeCalledWith(
+          "Use `yy` instead of `YY` (in `YY-MM-dd`) for formatting years to the input `" +
+            date +
+            "`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md",
+        );
+      });
+
+      it('warns if "YYY" token is used', () => {
+        try {
+          format(date, "YYY-MM-dd");
+        } catch (_) {
+          // Ignore the error
+        }
+        expect(warn).toBeCalledWith(
+          "Use `yyy` instead of `YYY` (in `YYY-MM-dd`) for formatting years to the input `" +
+            date +
+            "`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md",
+        );
+      });
+
+      it('warns if "YYYY" token is used', () => {
+        try {
+          format(date, "YYYY-MM-dd");
+        } catch (_) {
+          // Ignore the error
+        }
+        expect(warn).toBeCalledWith(
+          "Use `yyyy` instead of `YYYY` (in `YYYY-MM-dd`) for formatting years to the input `" +
+            date +
+            "`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md",
+        );
+      });
+
+      it('warns if "YYYYY" token is used', () => {
+        try {
+          format(date, "YYYYY-MM-dd");
+        } catch (_) {
+          // Ignore the error
+        }
+        expect(warn).toBeCalledWith(
+          "Use `yyyyy` instead of `YYYYY` (in `YYYYY-MM-dd`) for formatting years to the input `" +
+            date +
+            "`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md",
+        );
+      });
     });
   });
 });

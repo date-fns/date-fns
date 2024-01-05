@@ -15,7 +15,7 @@ import { longFormatters } from "../_lib/format/longFormatters/index.js";
 import {
   isProtectedDayOfYearToken,
   isProtectedWeekYearToken,
-  throwProtectedError,
+  warnOrThrowProtectedError,
 } from "../_lib/protectedTokens/index.js";
 
 // This RegExp consists of three parts separated by `|`:
@@ -398,13 +398,13 @@ export function format<DateType extends Date>(
           !options?.useAdditionalWeekYearTokens &&
           isProtectedWeekYearToken(substring)
         ) {
-          throwProtectedError(substring, formatStr, String(date));
+          warnOrThrowProtectedError(substring, formatStr, String(date));
         }
         if (
           !options?.useAdditionalDayOfYearTokens &&
           isProtectedDayOfYearToken(substring)
         ) {
-          throwProtectedError(substring, formatStr, String(date));
+          warnOrThrowProtectedError(substring, formatStr, String(date));
         }
         return formatter(
           originalDate,

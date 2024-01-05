@@ -12,7 +12,7 @@ import { longFormatters } from "../_lib/format/longFormatters/index.js";
 import {
   isProtectedDayOfYearToken,
   isProtectedWeekYearToken,
-  throwProtectedError,
+  warnOrThrowProtectedError,
 } from "../_lib/protectedTokens/index.js";
 import { parsers } from "./_lib/parsers/index.js";
 import type { Setter } from "./_lib/Setter.js";
@@ -409,13 +409,13 @@ export function parse<DateType extends Date>(
       !options?.useAdditionalWeekYearTokens &&
       isProtectedWeekYearToken(token)
     ) {
-      throwProtectedError(token, formatStr, dateStr);
+      warnOrThrowProtectedError(token, formatStr, dateStr);
     }
     if (
       !options?.useAdditionalDayOfYearTokens &&
       isProtectedDayOfYearToken(token)
     ) {
-      throwProtectedError(token, formatStr, dateStr);
+      warnOrThrowProtectedError(token, formatStr, dateStr);
     }
 
     const firstCharacter = token[0];
