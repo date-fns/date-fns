@@ -1,4 +1,4 @@
-import addMilliseconds from '../addMilliseconds/index'
+import { addMilliseconds } from "../addMilliseconds/index.js";
 
 /**
  * @name addSeconds
@@ -8,18 +8,21 @@ import addMilliseconds from '../addMilliseconds/index'
  * @description
  * Add the specified number of seconds to the given date.
  *
- * @param date - the date to be changed
- * @param amount - the amount of seconds to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
- * @returns the new date with the seconds added
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date to be changed
+ * @param amount - The amount of seconds to be added.
+ *
+ * @returns The new date with the seconds added
  *
  * @example
  * // Add 30 seconds to 10 July 2014 12:45:00:
  * const result = addSeconds(new Date(2014, 6, 10, 12, 45, 0), 30)
  * //=> Thu Jul 10 2014 12:45:30
  */
-export default function addSeconds<DateType extends Date>(
-  dirtyDate: DateType | number,
-  amount: number
+export function addSeconds<DateType extends Date>(
+  date: DateType | number | string,
+  amount: number,
 ): DateType {
-  return addMilliseconds(dirtyDate, amount * 1000)
+  return addMilliseconds(date, amount * 1000);
 }

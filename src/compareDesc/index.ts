@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name compareDesc
@@ -9,9 +9,12 @@ import toDate from '../toDate/index'
  * Compare the two dates and return -1 if the first date is after the second,
  * 1 if the first date is before the second or 0 if dates are equal.
  *
- * @param dateLeft - the first date to compare
- * @param dateRight - the second date to compare
- * @returns the result of the comparison
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param dateLeft - The first date to compare
+ * @param dateRight - The second date to compare
+ *
+ * @returns The result of the comparison
  *
  * @example
  * // Compare 11 February 1987 and 10 July 1989 reverse chronologically:
@@ -31,21 +34,21 @@ import toDate from '../toDate/index'
  * //   Wed Feb 11 1987 00:00:00
  * // ]
  */
-export default function compareDesc<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+export function compareDesc<DateType extends Date>(
+  dateLeft: DateType | number | string,
+  dateRight: DateType | number | string,
 ): number {
-  const dateLeft = toDate(dirtyDateLeft)
-  const dateRight = toDate(dirtyDateRight)
+  const _dateLeft = toDate(dateLeft);
+  const _dateRight = toDate(dateRight);
 
-  const diff = dateLeft.getTime() - dateRight.getTime()
+  const diff = _dateLeft.getTime() - _dateRight.getTime();
 
   if (diff > 0) {
-    return -1
+    return -1;
   } else if (diff < 0) {
-    return 1
+    return 1;
     // Return 0 if diff is 0; return NaN if diff is NaN
   } else {
-    return diff
+    return diff;
   }
 }

@@ -1,16 +1,16 @@
 import type {
-  LocaleOptions,
+  LocalizedOptions,
   FirstWeekContainsDateOptions,
-  WeekStartOptions,
-} from '../../types'
+  WeekOptions,
+} from "../../types.js";
 
 export interface ParseFlags {
-  timestampIsSet?: boolean
-  era?: number
+  timestampIsSet?: boolean;
+  era?: number;
 }
 
 export type ParserOptions = Required<
-  LocaleOptions & FirstWeekContainsDateOptions & WeekStartOptions
->
+  LocalizedOptions<"options"> & FirstWeekContainsDateOptions & WeekOptions
+>;
 
-export type ParseResult<TValue> = { value: TValue; rest: string } | null
+export type ParseResult<TValue> = { value: TValue; rest: string } | null;

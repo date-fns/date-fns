@@ -10,19 +10,19 @@ Let's assume that we have a single point in which supported locales are present:
 
 ```js
 // `see date-fns/src/locale` for available locales
-export const supportedLocales = ['en-US', 'de', 'pl', 'it']
+export const supportedLocales = ["en-US", "de", "pl", "it"];
 ```
 
 We could also have a function that formats the date:
 
 ```js
-const getLocale = (locale) => import(`date-fns/locale/${locale}/index.js`) // or require() if using CommonJS
+const getLocale = (locale) => import(`date-fns/locale/${locale}/index.js`); // or require() if using CommonJS
 
 const formatDate = (date, formatStyle, locale) => {
   return format(date, formatStyle, {
     locale: getLocale(locale),
-  })
-}
+  });
+};
 ```
 
 In order to exclude unused languages we can use webpacks [ContextReplacementPlugin].
