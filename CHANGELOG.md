@@ -8,6 +8,20 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## v3.1.0 - 2024-01-05
+
+This release is brought to you by @kossnocorp, @makstyle119 and @dmgawel.
+
+### Fixed
+
+- [Fixed the plural form of weeks in Swedish](https://github.com/date-fns/date-fns/pull/3448).
+
+### Added
+
+- [Added `yearsToDays` function](https://github.com/date-fns/date-fns/pull/3540).
+
+- Added warning about using protected tokens like `Y` or `D` without passing a corresponding option. [See #2950](https://github.com/date-fns/date-fns/issues/2950).
+
 ## v3.0.6 - 2023-12-22
 
 On this release worked @imwh0im, @jamcry and @tyrw.
