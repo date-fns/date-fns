@@ -62,7 +62,7 @@ export function addMonths<DateType extends Date>(
     // guaranteed to still have the original time.
     _date.setFullYear(
       endOfDesiredMonth.getFullYear(),
-      endOfDesiredMonth.getMonth(),
+      endOfDesiredMonth.getMonth() - amount,
       dayOfMonth,
     );
     return _date;
