@@ -1,21 +1,21 @@
-import { toDate } from '..'
+import { toDate } from "../toDate/index.js";
 
 /**
  * The locale string (see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument).
  */
-export type IntlFormatLocale = Intl.ResolvedDateTimeFormatOptions['locale']
+export type IntlFormatLocale = Intl.ResolvedDateTimeFormatOptions["locale"];
 
 /**
  * The format options (see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#options)
  */
-export type IntlFormatFormatOptions = Intl.DateTimeFormatOptions
+export type IntlFormatFormatOptions = Intl.DateTimeFormatOptions;
 
 /**
  * The locale options.
  */
 export interface IntlFormatLocaleOptions {
   /** The locale(s) to use (see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument) */
-  locale: IntlFormatLocale | IntlFormatLocale[]
+  locale: IntlFormatLocale | IntlFormatLocale[];
 }
 
 /**
@@ -36,16 +36,16 @@ export interface IntlFormatLocaleOptions {
  *
  * @returns The formatted date string
  *
- * @throws {RangeError} `date` must not be Invalid Date
+ * @throws `date` must not be Invalid Date
  *
  * @example
  * // Represent 10 October 2019 in middle-endian format:
  * const result = intlFormat(new Date(2019, 9, 4, 12, 30, 13, 456))
  * //=> 10/4/2019
  */
-export default function intlFormat<DateType extends Date>(
-  date: DateType | number | string
-): string
+export function intlFormat<DateType extends Date>(
+  date: DateType | number | string,
+): string;
 
 /**
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
@@ -55,7 +55,7 @@ export default function intlFormat<DateType extends Date>(
  *
  * @returns The formatted date string
  *
- * @throws {RangeError} `date` must not be Invalid Date
+ * @throws `date` must not be Invalid Date
  *
  * @example
  * // Represent 10 October 2019 in Korean.
@@ -65,10 +65,10 @@ export default function intlFormat<DateType extends Date>(
  * })
  * //=> 2019. 10. 4.
  */
-export default function intlFormat<DateType extends Date>(
+export function intlFormat<DateType extends Date>(
   date: DateType | number | string,
-  localeOptions: IntlFormatLocaleOptions
-): string
+  localeOptions: IntlFormatLocaleOptions,
+): string;
 
 /**
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
@@ -78,7 +78,7 @@ export default function intlFormat<DateType extends Date>(
  *
  * @returns The formatted date string
  *
- * @throws {RangeError} `date` must not be Invalid Date
+ * @throws `date` must not be Invalid Date
  *
  * @example
  * // Represent 10 October 2019.
@@ -91,10 +91,10 @@ export default function intlFormat<DateType extends Date>(
  * })
  * //=> 10/4/2019, 12 PM
  */
-export default function intlFormat<DateType extends Date>(
+export function intlFormat<DateType extends Date>(
   date: DateType | number | string,
-  formatOptions: IntlFormatFormatOptions
-): string
+  formatOptions: IntlFormatFormatOptions,
+): string;
 
 /**
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
@@ -105,7 +105,7 @@ export default function intlFormat<DateType extends Date>(
  *
  * @returns The formatted date string
  *
- * @throws {RangeError} `date` must not be Invalid Date
+ * @throws `date` must not be Invalid Date
  *
  * @example
  * // Represent 10 October 2019 in German.
@@ -120,32 +120,32 @@ export default function intlFormat<DateType extends Date>(
  * })
  * //=> Freitag, 4. Oktober 2019
  */
-export default function intlFormat<DateType extends Date>(
+export function intlFormat<DateType extends Date>(
   date: DateType | number | string,
   formatOptions: IntlFormatFormatOptions,
-  localeOptions: IntlFormatLocaleOptions
-): string
+  localeOptions: IntlFormatLocaleOptions,
+): string;
 
-export default function intlFormat<DateType extends Date>(
+export function intlFormat<DateType extends Date>(
   date: DateType | number | string,
   formatOrLocale?: IntlFormatFormatOptions | IntlFormatLocaleOptions,
-  localeOptions?: IntlFormatLocaleOptions
+  localeOptions?: IntlFormatLocaleOptions,
 ): string {
-  let formatOptions: IntlFormatFormatOptions | undefined
+  let formatOptions: IntlFormatFormatOptions | undefined;
 
   if (isFormatOptions(formatOrLocale)) {
-    formatOptions = formatOrLocale
+    formatOptions = formatOrLocale;
   } else {
-    localeOptions = formatOrLocale
+    localeOptions = formatOrLocale;
   }
 
   return new Intl.DateTimeFormat(localeOptions?.locale, formatOptions).format(
-    toDate(date)
-  )
+    toDate(date),
+  );
 }
 
 function isFormatOptions(
-  opts: IntlFormatLocaleOptions | IntlFormatFormatOptions | undefined
+  opts: IntlFormatLocaleOptions | IntlFormatFormatOptions | undefined,
 ): opts is IntlFormatFormatOptions {
-  return opts !== undefined && !('locale' in opts)
+  return opts !== undefined && !("locale" in opts);
 }

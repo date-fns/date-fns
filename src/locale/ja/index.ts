@@ -1,9 +1,9 @@
-import formatDistance from './_lib/formatDistance/index'
-import formatLong from './_lib/formatLong/index'
-import formatRelative from './_lib/formatRelative/index'
-import localize from './_lib/localize/index'
-import match from './_lib/match/index'
-import type { Locale } from '../types'
+import { formatDistance } from "./_lib/formatDistance/index.js";
+import { formatLong } from "./_lib/formatLong/index.js";
+import { formatRelative } from "./_lib/formatRelative/index.js";
+import { localize } from "./_lib/localize/index.js";
+import { match } from "./_lib/match/index.js";
+import type { Locale } from "../types.js";
 
 /**
  * @category Locales
@@ -16,8 +16,8 @@ import type { Locale } from '../types'
  * @author Terrence Lam [@skyuplam](https://github.com/skyuplam)
  * @author Taiki IKeda [@so99ynoodles](https://github.com/so99ynoodles)
  */
-const locale: Locale = {
-  code: 'ja',
+export const ja: Locale = {
+  code: "ja",
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
@@ -27,6 +27,4 @@ const locale: Locale = {
     weekStartsOn: 0 /* Sunday */,
     firstWeekContainsDate: 1,
   },
-}
-
-export default locale
+};

@@ -1,6 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.
 
-import fn from '../../parseISO/index'
-import convertToFP from '../_lib/convertToFP/index'
+import { parseISO as fn } from "../../parseISO/index.js";
+import { convertToFP } from "../_lib/convertToFP/index.js";
 
-export default convertToFP(fn, 2)
+export const parseISOWithOptions = convertToFP(fn, 2);

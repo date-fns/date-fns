@@ -1,6 +1,6 @@
-import { millisecondsInDay } from '../constants/index'
-import toDate from '../toDate/index'
-import type { Interval } from '../types'
+import { millisecondsInDay } from "../constants/index.js";
+import { toDate } from "../toDate/index.js";
+import type { Interval } from "../types.js";
 
 /**
  * @name getOverlappingDaysInIntervals
@@ -34,32 +34,33 @@ import type { Interval } from '../types'
  * //=> 0
  */
 
-export default function getOverlappingDaysInIntervals<DateType extends Date>(
+export function getOverlappingDaysInIntervals<DateType extends Date>(
   intervalLeft: Interval<DateType>,
-  intervalRight: Interval<DateType>
+  intervalRight: Interval<DateType>,
 ): number {
   const [leftStartTime, leftEndTime] = [
     +toDate(intervalLeft.start),
     +toDate(intervalLeft.end),
-  ].sort()
+  ].sort();
   const [rightStartTime, rightEndTime] = [
     +toDate(intervalRight.start),
     +toDate(intervalRight.end),
-  ].sort()
+  ].sort();
 
   const isOverlapping =
-    leftStartTime < rightEndTime && rightStartTime < leftEndTime
+    leftStartTime < rightEndTime && rightStartTime < leftEndTime;
 
   if (!isOverlapping) {
-    return 0
+    return 0;
   }
 
   const overlapStartDate =
-    rightStartTime < leftStartTime ? leftStartTime : rightStartTime
+    rightStartTime < leftStartTime ? leftStartTime : rightStartTime;
 
-  const overlapEndDate = rightEndTime > leftEndTime ? leftEndTime : rightEndTime
+  const overlapEndDate =
+    rightEndTime > leftEndTime ? leftEndTime : rightEndTime;
 
-  const differenceInMs = overlapEndDate - overlapStartDate
+  const differenceInMs = overlapEndDate - overlapStartDate;
 
-  return Math.ceil(differenceInMs / millisecondsInDay)
+  return Math.ceil(differenceInMs / millisecondsInDay);
 }

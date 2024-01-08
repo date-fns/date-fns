@@ -3,22 +3,14 @@
     "target": "es6",
     "outDir": "lib",
     "lib": ["dom", "es2020", "es2018.promise", "ESNext.Intl"],
-    "strict": true,
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitReturns": true,
-    "noImplicitAny": true,
-    "noImplicitThis": true,
-    "strictNullChecks": true,
-    "importHelpers": true,
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "allowJs": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "strict": true
+    // TODO: Enable these when we can:
+    // "noUncheckedIndexedAccess": true,
+    // "exactOptionalPropertyTypes": true
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "scripts/**/*.ts", "test/**/*.ts"],
   "exclude": ["node_modules", "dist", "tmp", "examples"]
 }

@@ -1,112 +1,110 @@
-import type { FormatDistanceFn, FormatDistanceLocale } from '../../../types'
+import type { FormatDistanceFn, FormatDistanceLocale } from "../../../types.js";
 
 type FormatDistanceTokenValue =
   | string
   | {
-      one: string
-      other: string
-    }
+      one: string;
+      other: string;
+    };
 
 const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   lessThanXSeconds: {
-    one: 'less than a second',
-    other: 'less than {{count}} seconds',
+    one: "less than a second",
+    other: "less than {{count}} seconds",
   },
 
   xSeconds: {
-    one: 'a second',
-    other: '{{count}} seconds',
+    one: "a second",
+    other: "{{count}} seconds",
   },
 
-  halfAMinute: 'half a minute',
+  halfAMinute: "half a minute",
 
   lessThanXMinutes: {
-    one: 'less than a minute',
-    other: 'less than {{count}} minutes',
+    one: "less than a minute",
+    other: "less than {{count}} minutes",
   },
 
   xMinutes: {
-    one: 'a minute',
-    other: '{{count}} minutes',
+    one: "a minute",
+    other: "{{count}} minutes",
   },
 
   aboutXHours: {
-    one: 'about an hour',
-    other: 'about {{count}} hours',
+    one: "about an hour",
+    other: "about {{count}} hours",
   },
 
   xHours: {
-    one: 'an hour',
-    other: '{{count}} hours',
+    one: "an hour",
+    other: "{{count}} hours",
   },
 
   xDays: {
-    one: 'a day',
-    other: '{{count}} days',
+    one: "a day",
+    other: "{{count}} days",
   },
 
   aboutXWeeks: {
-    one: 'about a week',
-    other: 'about {{count}} weeks',
+    one: "about a week",
+    other: "about {{count}} weeks",
   },
 
   xWeeks: {
-    one: 'a week',
-    other: '{{count}} weeks',
+    one: "a week",
+    other: "{{count}} weeks",
   },
 
   aboutXMonths: {
-    one: 'about a month',
-    other: 'about {{count}} months',
+    one: "about a month",
+    other: "about {{count}} months",
   },
 
   xMonths: {
-    one: 'a month',
-    other: '{{count}} months',
+    one: "a month",
+    other: "{{count}} months",
   },
 
   aboutXYears: {
-    one: 'about a year',
-    other: 'about {{count}} years',
+    one: "about a year",
+    other: "about {{count}} years",
   },
 
   xYears: {
-    one: 'a year',
-    other: '{{count}} years',
+    one: "a year",
+    other: "{{count}} years",
   },
 
   overXYears: {
-    one: 'over a year',
-    other: 'over {{count}} years',
+    one: "over a year",
+    other: "over {{count}} years",
   },
 
   almostXYears: {
-    one: 'almost a year',
-    other: 'almost {{count}} years',
+    one: "almost a year",
+    other: "almost {{count}} years",
   },
-}
+};
 
-const formatDistance: FormatDistanceFn = (token, count, options) => {
-  let result
+export const formatDistance: FormatDistanceFn = (token, count, options) => {
+  let result;
 
-  const tokenValue = formatDistanceLocale[token]
-  if (typeof tokenValue === 'string') {
-    result = tokenValue
+  const tokenValue = formatDistanceLocale[token];
+  if (typeof tokenValue === "string") {
+    result = tokenValue;
   } else if (count === 1) {
-    result = tokenValue.one
+    result = tokenValue.one;
   } else {
-    result = tokenValue.other.replace('{{count}}', count.toString())
+    result = tokenValue.other.replace("{{count}}", count.toString());
   }
 
   if (options?.addSuffix) {
     if (options.comparison && options.comparison > 0) {
-      return 'in ' + result
+      return "in " + result;
     } else {
-      return result + ' ago'
+      return result + " ago";
     }
   }
 
-  return result
-}
-
-export default formatDistance
+  return result;
+};

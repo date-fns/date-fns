@@ -1,7 +1,7 @@
-import addMinutes from '../addMinutes/index'
-import startOfMinute from '../startOfMinute/index'
-import toDate from '../toDate/index'
-import type { Interval, StepOptions } from '../types'
+import { addMinutes } from "../addMinutes/index.js";
+import { startOfMinute } from "../startOfMinute/index.js";
+import { toDate } from "../toDate/index.js";
+import type { Interval, StepOptions } from "../types.js";
 
 /**
  * The {@link eachMinuteOfInterval} function options.
@@ -36,30 +36,30 @@ export interface EachMinuteOfIntervalOptions extends StepOptions {}
  * //   Wed Oct 14 2014 13:03:00
  * // ]
  */
-export default function eachMinuteOfInterval<DateType extends Date>(
+export function eachMinuteOfInterval<DateType extends Date>(
   interval: Interval<DateType>,
-  options?: EachMinuteOfIntervalOptions
+  options?: EachMinuteOfIntervalOptions,
 ): DateType[] {
-  const startDate = startOfMinute(toDate(interval.start))
-  const endDate = toDate(interval.end)
+  const startDate = startOfMinute(toDate(interval.start));
+  const endDate = toDate(interval.end);
 
-  let reversed = +startDate > +endDate
-  const endTime = reversed ? +startDate : +endDate
-  let currentDate = reversed ? endDate : startDate
+  let reversed = +startDate > +endDate;
+  const endTime = reversed ? +startDate : +endDate;
+  let currentDate = reversed ? endDate : startDate;
 
-  let step = options?.step ?? 1
-  if (!step) return []
+  let step = options?.step ?? 1;
+  if (!step) return [];
   if (step < 0) {
-    step = -step
-    reversed = !reversed
+    step = -step;
+    reversed = !reversed;
   }
 
-  const dates = []
+  const dates = [];
 
   while (+currentDate <= endTime) {
-    dates.push(toDate(currentDate))
-    currentDate = addMinutes(currentDate, step)
+    dates.push(toDate(currentDate));
+    currentDate = addMinutes(currentDate, step);
   }
 
-  return reversed ? dates.reverse() : dates
+  return reversed ? dates.reverse() : dates;
 }

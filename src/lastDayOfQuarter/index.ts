@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name lastDayOfQuarter
@@ -20,13 +20,13 @@ import toDate from '../toDate/index'
  * const result = lastDayOfQuarter(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Tue Sep 30 2014 00:00:00
  */
-export default function lastDayOfQuarter<DateType extends Date>(
-  date: DateType | number | string
+export function lastDayOfQuarter<DateType extends Date>(
+  date: DateType | number | string,
 ): DateType {
-  const _date = toDate(date)
-  const currentMonth = _date.getMonth()
-  const month = currentMonth - (currentMonth % 3) + 3
-  _date.setMonth(month, 0)
-  _date.setHours(0, 0, 0, 0)
-  return _date
+  const _date = toDate(date);
+  const currentMonth = _date.getMonth();
+  const month = currentMonth - (currentMonth % 3) + 3;
+  _date.setMonth(month, 0);
+  _date.setHours(0, 0, 0, 0);
+  return _date;
 }

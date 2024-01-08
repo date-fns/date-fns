@@ -1,5 +1,5 @@
-import toDate from '../toDate/index'
-import type { Interval } from '../types'
+import { toDate } from "../toDate/index.js";
+import type { Interval } from "../types.js";
 
 /**
  * @name isWithinInterval
@@ -42,15 +42,15 @@ import type { Interval } from '../types'
  * isWithinInterval(date, { start: date, end })
  * // => true
  */
-export default function isWithinInterval<DateType extends Date>(
+export function isWithinInterval<DateType extends Date>(
   date: DateType | number | string,
-  interval: Interval<DateType>
+  interval: Interval<DateType>,
 ): boolean {
-  const time = +toDate(date)
+  const time = +toDate(date);
   const [startTime, endTime] = [
     +toDate(interval.start),
     +toDate(interval.end),
-  ].sort()
+  ].sort((a, b) => a - b);
 
-  return time >= startTime && time <= endTime
+  return time >= startTime && time <= endTime;
 }

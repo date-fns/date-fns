@@ -1,5 +1,5 @@
-import toDate from '../toDate/index'
-import type { Interval, StepOptions } from '../types'
+import { toDate } from "../toDate/index.js";
+import type { Interval, StepOptions } from "../types.js";
 
 /**
  * The {@link eachYearOfInterval} function options.
@@ -33,32 +33,32 @@ export interface EachYearOfIntervalOptions extends StepOptions {}
  * //   Sun Jan 01 2017 00:00:00
  * // ]
  */
-export default function eachYearOfInterval<DateType extends Date>(
+export function eachYearOfInterval<DateType extends Date>(
   interval: Interval<DateType>,
-  options?: EachYearOfIntervalOptions
+  options?: EachYearOfIntervalOptions,
 ): DateType[] {
-  const startDate = toDate(interval.start)
-  const endDate = toDate(interval.end)
+  const startDate = toDate(interval.start);
+  const endDate = toDate(interval.end);
 
-  let reversed = +startDate > +endDate
-  const endTime = reversed ? +startDate : +endDate
-  const currentDate = reversed ? endDate : startDate
-  currentDate.setHours(0, 0, 0, 0)
-  currentDate.setMonth(0, 1)
+  let reversed = +startDate > +endDate;
+  const endTime = reversed ? +startDate : +endDate;
+  const currentDate = reversed ? endDate : startDate;
+  currentDate.setHours(0, 0, 0, 0);
+  currentDate.setMonth(0, 1);
 
-  let step = options?.step ?? 1
-  if (!step) return []
+  let step = options?.step ?? 1;
+  if (!step) return [];
   if (step < 0) {
-    step = -step
-    reversed = !reversed
+    step = -step;
+    reversed = !reversed;
   }
 
-  const dates = []
+  const dates = [];
 
   while (+currentDate <= endTime) {
-    dates.push(toDate(currentDate))
-    currentDate.setFullYear(currentDate.getFullYear() + step)
+    dates.push(toDate(currentDate));
+    currentDate.setFullYear(currentDate.getFullYear() + step);
   }
 
-  return reversed ? dates.reverse() : dates
+  return reversed ? dates.reverse() : dates;
 }

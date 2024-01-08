@@ -1,112 +1,110 @@
-import type { FormatDistanceFn, FormatDistanceLocale } from '../../../types'
+import type { FormatDistanceFn, FormatDistanceLocale } from "../../../types.js";
 
 type FormatDistanceTokenValue =
   | string
   | {
-      one: string
-      other: string
-    }
+      one: string;
+      other: string;
+    };
 
 const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   lessThanXSeconds: {
-    one: 'malpli ol sekundo',
-    other: 'malpli ol {{count}} sekundoj',
+    one: "malpli ol sekundo",
+    other: "malpli ol {{count}} sekundoj",
   },
 
   xSeconds: {
-    one: '1 sekundo',
-    other: '{{count}} sekundoj',
+    one: "1 sekundo",
+    other: "{{count}} sekundoj",
   },
 
-  halfAMinute: 'duonminuto',
+  halfAMinute: "duonminuto",
 
   lessThanXMinutes: {
-    one: 'malpli ol minuto',
-    other: 'malpli ol {{count}} minutoj',
+    one: "malpli ol minuto",
+    other: "malpli ol {{count}} minutoj",
   },
 
   xMinutes: {
-    one: '1 minuto',
-    other: '{{count}} minutoj',
+    one: "1 minuto",
+    other: "{{count}} minutoj",
   },
 
   aboutXHours: {
-    one: 'proksimume 1 horo',
-    other: 'proksimume {{count}} horoj',
+    one: "proksimume 1 horo",
+    other: "proksimume {{count}} horoj",
   },
 
   xHours: {
-    one: '1 horo',
-    other: '{{count}} horoj',
+    one: "1 horo",
+    other: "{{count}} horoj",
   },
 
   xDays: {
-    one: '1 tago',
-    other: '{{count}} tagoj',
+    one: "1 tago",
+    other: "{{count}} tagoj",
   },
 
   aboutXMonths: {
-    one: 'proksimume 1 monato',
-    other: 'proksimume {{count}} monatoj',
+    one: "proksimume 1 monato",
+    other: "proksimume {{count}} monatoj",
   },
 
   xWeeks: {
-    one: '1 semajno',
-    other: '{{count}} semajnoj',
+    one: "1 semajno",
+    other: "{{count}} semajnoj",
   },
 
   aboutXWeeks: {
-    one: 'proksimume 1 semajno',
-    other: 'proksimume {{count}} semajnoj',
+    one: "proksimume 1 semajno",
+    other: "proksimume {{count}} semajnoj",
   },
 
   xMonths: {
-    one: '1 monato',
-    other: '{{count}} monatoj',
+    one: "1 monato",
+    other: "{{count}} monatoj",
   },
 
   aboutXYears: {
-    one: 'proksimume 1 jaro',
-    other: 'proksimume {{count}} jaroj',
+    one: "proksimume 1 jaro",
+    other: "proksimume {{count}} jaroj",
   },
 
   xYears: {
-    one: '1 jaro',
-    other: '{{count}} jaroj',
+    one: "1 jaro",
+    other: "{{count}} jaroj",
   },
 
   overXYears: {
-    one: 'pli ol 1 jaro',
-    other: 'pli ol {{count}} jaroj',
+    one: "pli ol 1 jaro",
+    other: "pli ol {{count}} jaroj",
   },
 
   almostXYears: {
-    one: 'preskaŭ 1 jaro',
-    other: 'preskaŭ {{count}} jaroj',
+    one: "preskaŭ 1 jaro",
+    other: "preskaŭ {{count}} jaroj",
   },
-}
+};
 
-const formatDistance: FormatDistanceFn = (token, count, options) => {
-  let result
+export const formatDistance: FormatDistanceFn = (token, count, options) => {
+  let result;
 
-  const tokenValue = formatDistanceLocale[token]
-  if (typeof tokenValue === 'string') {
-    result = tokenValue
+  const tokenValue = formatDistanceLocale[token];
+  if (typeof tokenValue === "string") {
+    result = tokenValue;
   } else if (count === 1) {
-    result = tokenValue.one
+    result = tokenValue.one;
   } else {
-    result = tokenValue.other.replace('{{count}}', String(count))
+    result = tokenValue.other.replace("{{count}}", String(count));
   }
 
   if (options?.addSuffix) {
     if (options?.comparison && options.comparison > 0) {
-      return 'post ' + result
+      return "post " + result;
     } else {
-      return 'antaŭ ' + result
+      return "antaŭ " + result;
     }
   }
 
-  return result
-}
-
-export default formatDistance
+  return result;
+};

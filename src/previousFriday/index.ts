@@ -1,4 +1,4 @@
-import previousDay from '../previousDay/index'
+import { previousDay } from "../previousDay/index.js";
 
 /**
  * @name previousFriday
@@ -19,8 +19,8 @@ import previousDay from '../previousDay/index'
  * const result = previousFriday(new Date(2021, 5, 19))
  * //=> Fri June 18 2021 00:00:00
  */
-export default function previousFriday<DateType extends Date>(
-  date: DateType | number | string
+export function previousFriday<DateType extends Date>(
+  date: DateType | number | string,
 ): DateType {
-  return previousDay(date, 5)
+  return previousDay(date, 5);
 }

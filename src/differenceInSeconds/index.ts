@@ -1,6 +1,6 @@
-import differenceInMilliseconds from '../differenceInMilliseconds/index'
-import type { RoundingOptions } from '../types'
-import { getRoundingMethod } from '../_lib/roundingMethods/index'
+import { differenceInMilliseconds } from "../differenceInMilliseconds/index.js";
+import type { RoundingOptions } from "../types.js";
+import { getRoundingMethod } from "../_lib/roundingMethods/index.js";
 
 /**
  * The {@link differenceInSeconds} function options.
@@ -32,11 +32,11 @@ export interface DifferenceInSecondsOptions extends RoundingOptions {}
  * )
  * //=> 12
  */
-export default function differenceInSeconds<DateType extends Date>(
+export function differenceInSeconds<DateType extends Date>(
   dateLeft: DateType | number | string,
   dateRight: DateType | number | string,
-  options?: DifferenceInSecondsOptions
+  options?: DifferenceInSecondsOptions,
 ): number {
-  const diff = differenceInMilliseconds(dateLeft, dateRight) / 1000
-  return getRoundingMethod(options?.roundingMethod)(diff)
+  const diff = differenceInMilliseconds(dateLeft, dateRight) / 1000;
+  return getRoundingMethod(options?.roundingMethod)(diff);
 }

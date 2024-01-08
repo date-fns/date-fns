@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name getYear
@@ -19,8 +19,8 @@ import toDate from '../toDate/index'
  * const result = getYear(new Date(2014, 6, 2))
  * //=> 2014
  */
-export default function getYear<DateType extends Date>(
-  date: DateType | number | string
+export function getYear<DateType extends Date>(
+  date: DateType | number | string,
 ): number {
-  return toDate(date).getFullYear()
+  return toDate(date).getFullYear();
 }

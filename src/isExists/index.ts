@@ -22,15 +22,11 @@
  * const result = isExists(2018, 1, 31)
  * //=> false
  */
-export default function isExists(
-  year: number,
-  month: number,
-  day: number
-): boolean {
-  const date = new Date(year, month, day)
+export function isExists(year: number, month: number, day: number): boolean {
+  const date = new Date(year, month, day);
   return (
     date.getFullYear() === year &&
     date.getMonth() === month &&
     date.getDate() === day
-  )
+  );
 }

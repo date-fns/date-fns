@@ -1,12 +1,12 @@
-import toDate from '../toDate/index'
-import type { LocalizedOptions, WeekOptions } from '../types'
-import { getDefaultOptions } from '../_lib/defaultOptions/index'
+import { toDate } from "../toDate/index.js";
+import type { LocalizedOptions, WeekOptions } from "../types.js";
+import { getDefaultOptions } from "../_lib/defaultOptions/index.js";
 
 /**
  * The {@link lastDayOfWeek} function options.
  */
 export interface LastDayOfWeekOptions
-  extends LocalizedOptions<'options'>,
+  extends LocalizedOptions<"options">,
     WeekOptions {}
 
 /**
@@ -35,23 +35,23 @@ export interface LastDayOfWeekOptions
  * const result = lastDayOfWeek(new Date(2014, 8, 2, 11, 55, 0), { weekStartsOn: 1 })
  * //=> Sun Sep 07 2014 00:00:00
  */
-export default function lastDayOfWeek<DateType extends Date>(
+export function lastDayOfWeek<DateType extends Date>(
   date: DateType | number | string,
-  options?: LastDayOfWeekOptions
+  options?: LastDayOfWeekOptions,
 ): DateType {
-  const defaultOptions = getDefaultOptions()
+  const defaultOptions = getDefaultOptions();
   const weekStartsOn =
     options?.weekStartsOn ??
     options?.locale?.options?.weekStartsOn ??
     defaultOptions.weekStartsOn ??
     defaultOptions.locale?.options?.weekStartsOn ??
-    0
+    0;
 
-  const _date = toDate(date)
-  const day = _date.getDay()
-  const diff = (day < weekStartsOn ? -7 : 0) + 6 - (day - weekStartsOn)
+  const _date = toDate(date);
+  const day = _date.getDay();
+  const diff = (day < weekStartsOn ? -7 : 0) + 6 - (day - weekStartsOn);
 
-  _date.setHours(0, 0, 0, 0)
-  _date.setDate(_date.getDate() + diff)
-  return _date
+  _date.setHours(0, 0, 0, 0);
+  _date.setDate(_date.getDate() + diff);
+  return _date;
 }

@@ -1,4 +1,4 @@
-import addDays from '../addDays/index'
+import { addDays } from "../addDays/index.js";
 
 /**
  * @name subDays
@@ -11,7 +11,7 @@ import addDays from '../addDays/index'
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
  * @param date - The date to be changed
- * @param amount - The amount of days to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @param amount - The amount of days to be subtracted.
  *
  * @returns The new date with the days subtracted
  *
@@ -20,9 +20,9 @@ import addDays from '../addDays/index'
  * const result = subDays(new Date(2014, 8, 1), 10)
  * //=> Fri Aug 22 2014 00:00:00
  */
-export default function subDays<DateType extends Date>(
+export function subDays<DateType extends Date>(
   date: DateType | number | string,
-  amount: number
+  amount: number,
 ): DateType {
-  return addDays(date, -amount)
+  return addDays(date, -amount);
 }

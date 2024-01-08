@@ -1,4 +1,4 @@
-import addDays from '../addDays/index'
+import { addDays } from "../addDays/index.js";
 
 /**
  * @name addWeeks
@@ -11,7 +11,7 @@ import addDays from '../addDays/index'
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
  * @param date - The date to be changed
- * @param amount - The amount of weeks to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @param amount - The amount of weeks to be added.
  *
  * @returns The new date with the weeks added
  *
@@ -20,10 +20,10 @@ import addDays from '../addDays/index'
  * const result = addWeeks(new Date(2014, 8, 1), 4)
  * //=> Mon Sep 29 2014 00:00:00
  */
-export default function addWeeks<DateType extends Date>(
+export function addWeeks<DateType extends Date>(
   date: DateType | number | string,
-  amount: number
+  amount: number,
 ): DateType {
-  const days = amount * 7
-  return addDays(date, days)
+  const days = amount * 7;
+  return addDays(date, days);
 }

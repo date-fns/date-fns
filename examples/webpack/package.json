@@ -11,11 +11,11 @@
     "webpack-cli": "^5.1.4"
   },
   "scripts": {
-    "build": "yarn build-date-fns && yarn build-webpack",
+    "build": "npm run build-date-fns && npm run build-webpack",
     "build-date-fns": "rm -rf node_modules/date-fns && cp -r ../../lib node_modules/date-fns || env PACKAGE_OUTPUT_PATH=\"$(pwd)/node_modules/date-fns\" ../../scripts/build/package.sh",
     "build-webpack": "webpack",
     "stats-size": "echo \"Minimal size: $(gzip-size dist/minimal.min.js)\nFormat size: $(gzip-size dist/example.min.js)\nFP size: $(gzip-size dist/fp.min.js)\nMisc size: $(gzip-size dist/misc.min.js)\"",
-    "test": "yarn test-example && yarn test-fp && yarn test-misc && yarn test-constants",
+    "test": "npm run test-example && npm run test-fp && npm run test-misc && npm run test-constants",
     "test-example": "test $(env TZ=UTC node ./dist/example.js) = true",
     "test-fp": "test $(env TZ=UTC node ./dist/fp.js) = true",
     "test-misc": "test $(env TZ=UTC node ./dist/misc.js) = true",

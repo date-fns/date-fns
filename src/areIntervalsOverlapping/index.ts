@@ -1,12 +1,12 @@
-import toDate from '../toDate/index'
-import type { Interval } from '../types'
+import { toDate } from "../toDate/index.js";
+import type { Interval } from "../types.js";
 
 /**
  * The {@link areIntervalsOverlapping} function options.
  */
 export interface AreIntervalsOverlappingOptions {
   /** Whether the comparison is inclusive or not */
-  inclusive?: boolean
+  inclusive?: boolean;
 }
 
 /**
@@ -63,22 +63,22 @@ export interface AreIntervalsOverlappingOptions {
  * )
  * //=> true
  */
-export default function areIntervalsOverlapping(
+export function areIntervalsOverlapping(
   intervalLeft: Interval,
   intervalRight: Interval,
-  options?: AreIntervalsOverlappingOptions
+  options?: AreIntervalsOverlappingOptions,
 ): boolean {
   const [leftStartTime, leftEndTime] = [
     +toDate(intervalLeft.start),
     +toDate(intervalLeft.end),
-  ].sort()
+  ].sort((a, b) => a - b);
   const [rightStartTime, rightEndTime] = [
     +toDate(intervalRight.start),
     +toDate(intervalRight.end),
-  ].sort()
+  ].sort((a, b) => a - b);
 
   if (options?.inclusive)
-    return leftStartTime <= rightEndTime && rightStartTime <= leftEndTime
+    return leftStartTime <= rightEndTime && rightStartTime <= leftEndTime;
 
-  return leftStartTime < rightEndTime && rightStartTime < leftEndTime
+  return leftStartTime < rightEndTime && rightStartTime < leftEndTime;
 }

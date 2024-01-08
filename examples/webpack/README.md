@@ -13,15 +13,15 @@ See [package.json scripts](./package.json) for CLI usage.
 ## Build example
 
 ```sh
-yarn
-yarn build
+npm install
+npm run build
 ```
 
 See `./dist` for the output.
 
 ## Minimal build size
 
-You can see the build size stats by running `yarn stats-size`:
+You can see the build size stats by running `npm run stats-size`:
 
 ```
 Minimal size: 1.41 kB

@@ -12,7 +12,6 @@ module.exports = {
 
       plugins: [
         ['@babel/plugin-transform-modules-commonjs', { strict: true }],
-        'add-module-exports',
         ['babel-plugin-add-import-extension', { extension: 'js' }],
       ],
     },
@@ -27,4 +26,6 @@ module.exports = {
   },
 
   ignore: [],
+
+  retainLines: true,
 }

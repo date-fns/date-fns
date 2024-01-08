@@ -1,12 +1,12 @@
-import startOfWeek from '../startOfWeek/index'
-import type { LocalizedOptions, WeekOptions } from '../types'
+import { startOfWeek } from "../startOfWeek/index.js";
+import type { LocalizedOptions, WeekOptions } from "../types.js";
 
 /**
  * The {@link isSameWeek} function options.
  */
 export interface IsSameWeekOptions
   extends WeekOptions,
-    LocalizedOptions<'options'> {}
+    LocalizedOptions<"options"> {}
 
 /**
  * @name isSameWeek
@@ -42,13 +42,13 @@ export interface IsSameWeekOptions
  * const result = isSameWeek(new Date(2014, 0, 1), new Date(2015, 0, 1))
  * //=> false
  */
-export default function isSameWeek<DateType extends Date>(
+export function isSameWeek<DateType extends Date>(
   dateLeft: DateType | number | string,
   dateRight: DateType | number | string,
-  options?: IsSameWeekOptions
+  options?: IsSameWeekOptions,
 ): boolean {
-  const dateLeftStartOfWeek = startOfWeek(dateLeft, options)
-  const dateRightStartOfWeek = startOfWeek(dateRight, options)
+  const dateLeftStartOfWeek = startOfWeek(dateLeft, options);
+  const dateRightStartOfWeek = startOfWeek(dateRight, options);
 
-  return +dateLeftStartOfWeek === +dateRightStartOfWeek
+  return +dateLeftStartOfWeek === +dateRightStartOfWeek;
 }

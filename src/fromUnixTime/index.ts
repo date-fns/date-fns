@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name fromUnixTime
@@ -17,6 +17,6 @@ import toDate from '../toDate/index'
  * const result = fromUnixTime(1330515905)
  * //=> Wed Feb 29 2012 11:45:05
  */
-export default function fromUnixTime(unixTime: number): Date {
-  return toDate(unixTime * 1000)
+export function fromUnixTime(unixTime: number): Date {
+  return toDate(unixTime * 1000);
 }

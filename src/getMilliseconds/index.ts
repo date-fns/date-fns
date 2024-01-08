@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name getMilliseconds
@@ -19,10 +19,10 @@ import toDate from '../toDate/index'
  * const result = getMilliseconds(new Date(2012, 1, 29, 11, 45, 5, 123))
  * //=> 123
  */
-export default function getMilliseconds<DateType extends Date>(
-  date: DateType | number | string
+export function getMilliseconds<DateType extends Date>(
+  date: DateType | number | string,
 ): number {
-  const _date = toDate(date)
-  const milliseconds = _date.getMilliseconds()
-  return milliseconds
+  const _date = toDate(date);
+  const milliseconds = _date.getMilliseconds();
+  return milliseconds;
 }

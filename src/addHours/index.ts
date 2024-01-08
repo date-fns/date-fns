@@ -1,5 +1,5 @@
-import addMilliseconds from '../addMilliseconds/index'
-import { millisecondsInHour } from '../constants/index'
+import { addMilliseconds } from "../addMilliseconds/index.js";
+import { millisecondsInHour } from "../constants/index.js";
 
 /**
  * @name addHours
@@ -12,7 +12,7 @@ import { millisecondsInHour } from '../constants/index'
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
  * @param date - The date to be changed
- * @param amount - The amount of hours to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @param amount - The amount of hours to be added.
  *
  * @returns The new date with the hours added
  *
@@ -21,9 +21,9 @@ import { millisecondsInHour } from '../constants/index'
  * const result = addHours(new Date(2014, 6, 10, 23, 0), 2)
  * //=> Fri Jul 11 2014 01:00:00
  */
-export default function addHours<DateType extends Date>(
+export function addHours<DateType extends Date>(
   date: DateType | number | string,
-  amount: number
+  amount: number,
 ): DateType {
-  return addMilliseconds(date, amount * millisecondsInHour)
+  return addMilliseconds(date, amount * millisecondsInHour);
 }

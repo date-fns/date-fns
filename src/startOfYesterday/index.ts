@@ -14,14 +14,14 @@
  * const result = startOfYesterday()
  * //=> Sun Oct 5 2014 00:00:00
  */
-export default function startOfYesterday(): Date {
-  const now = new Date()
-  const year = now.getFullYear()
-  const month = now.getMonth()
-  const day = now.getDate()
+export function startOfYesterday(): Date {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth();
+  const day = now.getDate();
 
-  const date = new Date(0)
-  date.setFullYear(year, month, day - 1)
-  date.setHours(0, 0, 0, 0)
-  return date
+  const date = new Date(0);
+  date.setFullYear(year, month, day - 1);
+  date.setHours(0, 0, 0, 0);
+  return date;
 }

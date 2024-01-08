@@ -1,5 +1,5 @@
-import toDate from '../toDate/index'
-import constructFrom from '../constructFrom/index'
+import { toDate } from "../toDate/index.js";
+import { constructFrom } from "../constructFrom/index.js";
 
 /**
  * @name addMonths
@@ -12,7 +12,7 @@ import constructFrom from '../constructFrom/index'
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
  * @param date - The date to be changed
- * @param amount - The amount of months to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @param amount - The amount of months to be added.
  *
  * @returns The new date with the months added
  *
@@ -25,17 +25,17 @@ import constructFrom from '../constructFrom/index'
  * const result = addMonths(new Date(2023, 0, 30), 1)
  * //=> Tue Feb 28 2023 00:00:00
  */
-export default function addMonths<DateType extends Date>(
+export function addMonths<DateType extends Date>(
   date: DateType | number | string,
-  amount: number
+  amount: number,
 ): DateType {
-  const _date = toDate(date)
-  if (isNaN(amount)) return constructFrom(date, NaN)
+  const _date = toDate(date);
+  if (isNaN(amount)) return constructFrom(date, NaN);
   if (!amount) {
     // If 0 months, no-op to avoid changing times in the hour before end of DST
-    return _date
+    return _date;
   }
-  const dayOfMonth = _date.getDate()
+  const dayOfMonth = _date.getDate();
 
   // The JS Date object supports date math by accepting out-of-bounds values for
   // month, day, etc. For example, new Date(2020, 0, 0) returns 31 Dec 2019 and
@@ -45,13 +45,13 @@ export default function addMonths<DateType extends Date>(
   // we'll default to the end of the desired month by adding 1 to the desired
   // month and using a date of 0 to back up one day to the end of the desired
   // month.
-  const endOfDesiredMonth = constructFrom(date, _date.getTime())
-  endOfDesiredMonth.setMonth(_date.getMonth() + amount + 1, 0)
-  const daysInMonth = endOfDesiredMonth.getDate()
+  const endOfDesiredMonth = constructFrom(date, _date.getTime());
+  endOfDesiredMonth.setMonth(_date.getMonth() + amount + 1, 0);
+  const daysInMonth = endOfDesiredMonth.getDate();
   if (dayOfMonth >= daysInMonth) {
     // If we're already at the end of the month, then this is the correct date
     // and we're done.
-    return endOfDesiredMonth
+    return endOfDesiredMonth;
   } else {
     // Otherwise, we now know that setting the original day-of-month value won't
     // cause an overflow, so set the desired day-of-month. Note that we can't
@@ -63,8 +63,8 @@ export default function addMonths<DateType extends Date>(
     _date.setFullYear(
       endOfDesiredMonth.getFullYear(),
       endOfDesiredMonth.getMonth(),
-      dayOfMonth
-    )
-    return _date
+      dayOfMonth,
+    );
+    return _date;
   }
 }

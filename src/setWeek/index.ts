@@ -1,16 +1,16 @@
-import getWeek from '../getWeek/index'
-import toDate from '../toDate/index'
+import { getWeek } from "../getWeek/index.js";
+import { toDate } from "../toDate/index.js";
 import type {
   FirstWeekContainsDateOptions,
   LocalizedOptions,
   WeekOptions,
-} from '../types'
+} from "../types.js";
 
 /**
  * The {@link setWeek} function options.
  */
 export interface SetWeekOptions
-  extends LocalizedOptions<'options'>,
+  extends LocalizedOptions<"options">,
     WeekOptions,
     FirstWeekContainsDateOptions {}
 
@@ -26,7 +26,7 @@ export interface SetWeekOptions
  * and `options.firstWeekContainsDate` (which is the day of January, which is always in
  * the first week of the week-numbering year)
  *
- * Week numbering: https://en.wikipedia.org/wiki/Week#Week_numbering
+ * Week numbering: https://en.wikipedia.org/wiki/Week#The_ISO_week_date_system
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
@@ -51,13 +51,13 @@ export interface SetWeekOptions
  * })
  * //=> Sun Jan 4 2004 00:00:00
  */
-export default function setWeek<DateType extends Date>(
+export function setWeek<DateType extends Date>(
   date: DateType | number | string,
   week: number,
-  options?: SetWeekOptions
+  options?: SetWeekOptions,
 ): DateType {
-  const _date = toDate(date)
-  const diff = getWeek(_date, options) - week
-  _date.setDate(_date.getDate() - diff * 7)
-  return _date
+  const _date = toDate(date);
+  const diff = getWeek(_date, options) - week;
+  _date.setDate(_date.getDate() - diff * 7);
+  return _date;
 }

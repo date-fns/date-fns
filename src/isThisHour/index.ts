@@ -1,4 +1,4 @@
-import isSameHour from '../isSameHour/index'
+import { isSameHour } from "../isSameHour/index.js";
 
 /**
  * @name isThisHour
@@ -21,8 +21,8 @@ import isSameHour from '../isSameHour/index'
  * const result = isThisHour(new Date(2014, 8, 25, 18))
  * //=> true
  */
-export default function isThisHour<DateType extends Date>(
-  date: DateType | number | string
+export function isThisHour<DateType extends Date>(
+  date: DateType | number | string,
 ): boolean {
-  return isSameHour(Date.now(), date)
+  return isSameHour(Date.now(), date);
 }

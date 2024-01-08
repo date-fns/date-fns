@@ -1,4 +1,4 @@
-import startOfMinute from '../startOfMinute/index'
+import { startOfMinute } from "../startOfMinute/index.js";
 
 /**
  * @name isSameMinute
@@ -31,12 +31,12 @@ import startOfMinute from '../startOfMinute/index'
  * )
  * //=> false
  */
-export default function isSameMinute<DateType extends Date>(
+export function isSameMinute<DateType extends Date>(
   dateLeft: DateType | number | string,
-  dateRight: DateType | number | string
+  dateRight: DateType | number | string,
 ): boolean {
-  const dateLeftStartOfMinute = startOfMinute(dateLeft)
-  const dateRightStartOfMinute = startOfMinute(dateRight)
+  const dateLeftStartOfMinute = startOfMinute(dateLeft);
+  const dateRightStartOfMinute = startOfMinute(dateRight);
 
-  return +dateLeftStartOfMinute === +dateRightStartOfMinute
+  return +dateLeftStartOfMinute === +dateRightStartOfMinute;
 }

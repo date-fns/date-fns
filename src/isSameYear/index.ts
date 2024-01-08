@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name isSameYear
@@ -20,11 +20,11 @@ import toDate from '../toDate/index'
  * const result = isSameYear(new Date(2014, 8, 2), new Date(2014, 8, 25))
  * //=> true
  */
-export default function isSameYear<DateType extends Date>(
+export function isSameYear<DateType extends Date>(
   dateLeft: DateType | number | string,
-  dateRight: DateType | number | string
+  dateRight: DateType | number | string,
 ): boolean {
-  const _dateLeft = toDate(dateLeft)
-  const _dateRight = toDate(dateRight)
-  return _dateLeft.getFullYear() === _dateRight.getFullYear()
+  const _dateLeft = toDate(dateLeft);
+  const _dateRight = toDate(dateRight);
+  return _dateLeft.getFullYear() === _dateRight.getFullYear();
 }

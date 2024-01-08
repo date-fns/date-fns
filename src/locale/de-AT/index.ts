@@ -1,10 +1,10 @@
-import formatDistance from '../de/_lib/formatDistance/index'
-import formatLong from '../de/_lib/formatLong/index'
-import formatRelative from '../de/_lib/formatRelative/index'
-import match from '../de/_lib/match/index'
-import type { Locale } from '../types'
+import { formatDistance } from "../de/_lib/formatDistance/index.js";
+import { formatLong } from "../de/_lib/formatLong/index.js";
+import { formatRelative } from "../de/_lib/formatRelative/index.js";
+import { match } from "../de/_lib/match/index.js";
+import type { Locale } from "../types.js";
 // difference to 'de' locale
-import localize from './_lib/localize/index'
+import { localize } from "./_lib/localize/index.js";
 
 /**
  * @category Locales
@@ -13,8 +13,8 @@ import localize from './_lib/localize/index'
  * @iso-639-2 deu
  * @author Christoph Tobias Stenglein [@cstenglein](https://github.com/cstenglein)
  */
-const locale: Locale = {
-  code: 'de-AT',
+export const deAT: Locale = {
+  code: "de-AT",
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
@@ -24,6 +24,4 @@ const locale: Locale = {
     weekStartsOn: 1 /* Monday */,
     firstWeekContainsDate: 4,
   },
-}
-
-export default locale
+};

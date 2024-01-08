@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name isBefore
@@ -20,11 +20,11 @@ import toDate from '../toDate/index'
  * const result = isBefore(new Date(1989, 6, 10), new Date(1987, 1, 11))
  * //=> false
  */
-export default function isBefore<DateType extends Date>(
+export function isBefore<DateType extends Date>(
   date: DateType | number | string,
-  dateToCompare: DateType | number | string
+  dateToCompare: DateType | number | string,
 ): boolean {
-  const _date = toDate(date)
-  const _dateToCompare = toDate(dateToCompare)
-  return +_date < +_dateToCompare
+  const _date = toDate(date);
+  const _dateToCompare = toDate(dateToCompare);
+  return +_date < +_dateToCompare;
 }

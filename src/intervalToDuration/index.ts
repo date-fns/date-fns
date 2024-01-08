@@ -1,12 +1,12 @@
-import add from '../add/index'
-import differenceInDays from '../differenceInDays/index'
-import differenceInHours from '../differenceInHours/index'
-import differenceInMinutes from '../differenceInMinutes/index'
-import differenceInMonths from '../differenceInMonths/index'
-import differenceInSeconds from '../differenceInSeconds/index'
-import differenceInYears from '../differenceInYears/index'
-import toDate from '../toDate/index'
-import type { Duration, Interval } from '../types'
+import { add } from "../add/index.js";
+import { differenceInDays } from "../differenceInDays/index.js";
+import { differenceInHours } from "../differenceInHours/index.js";
+import { differenceInMinutes } from "../differenceInMinutes/index.js";
+import { differenceInMonths } from "../differenceInMonths/index.js";
+import { differenceInSeconds } from "../differenceInSeconds/index.js";
+import { differenceInYears } from "../differenceInYears/index.js";
+import { toDate } from "../toDate/index.js";
+import type { Duration, Interval } from "../types.js";
 
 /**
  * @name intervalToDuration
@@ -30,41 +30,41 @@ import type { Duration, Interval } from '../types'
  * })
  * // => { years: 39, months: 2, days: 20, hours: 7, minutes: 5, seconds: 0 }
  */
-export default function intervalToDuration<DateType extends Date>(
-  interval: Interval<DateType>
+export function intervalToDuration<DateType extends Date>(
+  interval: Interval<DateType>,
 ): Duration {
-  const start = toDate(interval.start)
-  const end = toDate(interval.end)
+  const start = toDate(interval.start);
+  const end = toDate(interval.end);
 
-  const duration: Duration = {}
+  const duration: Duration = {};
 
-  const years = differenceInYears(end, start)
-  if (years) duration.years = years
+  const years = differenceInYears(end, start);
+  if (years) duration.years = years;
 
-  const remainingMonths = add(start, { years: duration.years })
+  const remainingMonths = add(start, { years: duration.years });
 
-  const months = differenceInMonths(end, remainingMonths)
-  if (months) duration.months = months
+  const months = differenceInMonths(end, remainingMonths);
+  if (months) duration.months = months;
 
-  const remainingDays = add(remainingMonths, { months: duration.months })
+  const remainingDays = add(remainingMonths, { months: duration.months });
 
-  const days = differenceInDays(end, remainingDays)
-  if (days) duration.days = days
+  const days = differenceInDays(end, remainingDays);
+  if (days) duration.days = days;
 
-  const remainingHours = add(remainingDays, { days: duration.days })
+  const remainingHours = add(remainingDays, { days: duration.days });
 
-  const hours = differenceInHours(end, remainingHours)
-  if (hours) duration.hours = hours
+  const hours = differenceInHours(end, remainingHours);
+  if (hours) duration.hours = hours;
 
-  const remainingMinutes = add(remainingHours, { hours: duration.hours })
+  const remainingMinutes = add(remainingHours, { hours: duration.hours });
 
-  const minutes = differenceInMinutes(end, remainingMinutes)
-  if (minutes) duration.minutes = minutes
+  const minutes = differenceInMinutes(end, remainingMinutes);
+  if (minutes) duration.minutes = minutes;
 
-  const remainingSeconds = add(remainingMinutes, { minutes: duration.minutes })
+  const remainingSeconds = add(remainingMinutes, { minutes: duration.minutes });
 
-  const seconds = differenceInSeconds(end, remainingSeconds)
-  if (seconds) duration.seconds = seconds
+  const seconds = differenceInSeconds(end, remainingSeconds);
+  if (seconds) duration.seconds = seconds;
 
-  return duration
+  return duration;
 }

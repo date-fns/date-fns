@@ -1,9 +1,9 @@
-import type { Locale } from '../types'
-import formatDistance from './_lib/formatDistance/index'
-import formatLong from './_lib/formatLong/index'
-import formatRelative from './_lib/formatRelative/index'
-import localize from './_lib/localize/index'
-import match from './_lib/match/index'
+import type { Locale } from "../types.js";
+import { formatDistance } from "./_lib/formatDistance/index.js";
+import { formatLong } from "./_lib/formatLong/index.js";
+import { formatRelative } from "./_lib/formatRelative/index.js";
+import { localize } from "./_lib/localize/index.js";
+import { match } from "./_lib/match/index.js";
 
 /**
  * @category Locales
@@ -12,8 +12,8 @@ import match from './_lib/match/index'
  * @iso-639-2 ira
  * @author Morteza Ziyae [@mort3za](https://github.com/mort3za)
  */
-const locale: Locale = {
-  code: 'fa-IR',
+export const faIR: Locale = {
+  code: "fa-IR",
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
@@ -23,6 +23,4 @@ const locale: Locale = {
     weekStartsOn: 6 /* Saturday */,
     firstWeekContainsDate: 1,
   },
-}
-
-export default locale
+};

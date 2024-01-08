@@ -1,4 +1,4 @@
-import getISOWeekYear from '../getISOWeekYear/index'
+import { getISOWeekYear } from "../getISOWeekYear/index.js";
 
 /**
  * @name differenceInCalendarISOWeekYears
@@ -25,9 +25,9 @@ import getISOWeekYear from '../getISOWeekYear/index'
  * )
  * //=> 2
  */
-export default function differenceInCalendarISOWeekYears<DateType extends Date>(
+export function differenceInCalendarISOWeekYears<DateType extends Date>(
   dateLeft: DateType | number | string,
-  dateRight: DateType | number | string
+  dateRight: DateType | number | string,
 ): number {
-  return getISOWeekYear(dateLeft) - getISOWeekYear(dateRight)
+  return getISOWeekYear(dateLeft) - getISOWeekYear(dateRight);
 }

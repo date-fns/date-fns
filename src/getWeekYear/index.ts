@@ -1,18 +1,18 @@
-import dateFrom from '../constructFrom/index'
-import startOfWeek from '../startOfWeek/index'
-import toDate from '../toDate/index'
+import { constructFrom } from "../constructFrom/index.js";
+import { startOfWeek } from "../startOfWeek/index.js";
+import { toDate } from "../toDate/index.js";
 import type {
   FirstWeekContainsDateOptions,
   LocalizedOptions,
   WeekOptions,
-} from '../types'
-import { getDefaultOptions } from '../_lib/defaultOptions/index'
+} from "../types.js";
+import { getDefaultOptions } from "../_lib/defaultOptions/index.js";
 
 /**
  * The {@link getWeekYear} function options.
  */
 export interface GetWeekYearOptions
-  extends LocalizedOptions<'options'>,
+  extends LocalizedOptions<"options">,
     WeekOptions,
     FirstWeekContainsDateOptions {}
 
@@ -28,7 +28,7 @@ export interface GetWeekYearOptions
  * and `options.firstWeekContainsDate` (which is the day of January, which is always in
  * the first week of the week-numbering year)
  *
- * Week numbering: https://en.wikipedia.org/wiki/Week#Week_numbering
+ * Week numbering: https://en.wikipedia.org/wiki/Week#The_ISO_week_date_system
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
@@ -52,36 +52,36 @@ export interface GetWeekYearOptions
  * const result = getWeekYear(new Date(2004, 11, 26), { firstWeekContainsDate: 4 })
  * //=> 2004
  */
-export default function getWeekYear<DateType extends Date>(
+export function getWeekYear<DateType extends Date>(
   date: DateType | number | string,
-  options?: GetWeekYearOptions
+  options?: GetWeekYearOptions,
 ): number {
-  const _date = toDate(date)
-  const year = _date.getFullYear()
+  const _date = toDate(date);
+  const year = _date.getFullYear();
 
-  const defaultOptions = getDefaultOptions()
+  const defaultOptions = getDefaultOptions();
   const firstWeekContainsDate =
     options?.firstWeekContainsDate ??
     options?.locale?.options?.firstWeekContainsDate ??
     defaultOptions.firstWeekContainsDate ??
     defaultOptions.locale?.options?.firstWeekContainsDate ??
-    1
+    1;
 
-  const firstWeekOfNextYear = dateFrom(date, 0)
-  firstWeekOfNextYear.setFullYear(year + 1, 0, firstWeekContainsDate)
-  firstWeekOfNextYear.setHours(0, 0, 0, 0)
-  const startOfNextYear = startOfWeek(firstWeekOfNextYear, options)
+  const firstWeekOfNextYear = constructFrom(date, 0);
+  firstWeekOfNextYear.setFullYear(year + 1, 0, firstWeekContainsDate);
+  firstWeekOfNextYear.setHours(0, 0, 0, 0);
+  const startOfNextYear = startOfWeek(firstWeekOfNextYear, options);
 
-  const firstWeekOfThisYear = dateFrom(date, 0)
-  firstWeekOfThisYear.setFullYear(year, 0, firstWeekContainsDate)
-  firstWeekOfThisYear.setHours(0, 0, 0, 0)
-  const startOfThisYear = startOfWeek(firstWeekOfThisYear, options)
+  const firstWeekOfThisYear = constructFrom(date, 0);
+  firstWeekOfThisYear.setFullYear(year, 0, firstWeekContainsDate);
+  firstWeekOfThisYear.setHours(0, 0, 0, 0);
+  const startOfThisYear = startOfWeek(firstWeekOfThisYear, options);
 
   if (_date.getTime() >= startOfNextYear.getTime()) {
-    return year + 1
+    return year + 1;
   } else if (_date.getTime() >= startOfThisYear.getTime()) {
-    return year
+    return year;
   } else {
-    return year - 1
+    return year - 1;
   }
 }

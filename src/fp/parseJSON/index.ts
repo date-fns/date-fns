@@ -1,6 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.
 
-import fn from '../../parseJSON/index'
-import convertToFP from '../_lib/convertToFP/index'
+import { parseJSON as fn } from "../../parseJSON/index.js";
+import { convertToFP } from "../_lib/convertToFP/index.js";
 
-export default convertToFP(fn, 1)
+export const parseJSON = convertToFP(fn, 1);

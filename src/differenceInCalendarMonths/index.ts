@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name differenceInCalendarMonths
@@ -23,15 +23,15 @@ import toDate from '../toDate/index'
  * )
  * //=> 8
  */
-export default function differenceInCalendarMonths<DateType extends Date>(
+export function differenceInCalendarMonths<DateType extends Date>(
   dateLeft: DateType | number | string,
-  dateRight: DateType | number | string
+  dateRight: DateType | number | string,
 ): number {
-  const _dateLeft = toDate(dateLeft)
-  const _dateRight = toDate(dateRight)
+  const _dateLeft = toDate(dateLeft);
+  const _dateRight = toDate(dateRight);
 
-  const yearDiff = _dateLeft.getFullYear() - _dateRight.getFullYear()
-  const monthDiff = _dateLeft.getMonth() - _dateRight.getMonth()
+  const yearDiff = _dateLeft.getFullYear() - _dateRight.getFullYear();
+  const monthDiff = _dateLeft.getMonth() - _dateRight.getMonth();
 
-  return yearDiff * 12 + monthDiff
+  return yearDiff * 12 + monthDiff;
 }

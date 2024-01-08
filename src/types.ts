@@ -1,8 +1,9 @@
 /* eslint-disable no-unused-vars */
 
-import type { Locale } from './locale/types'
+import type { Locale } from "./locale/types.js";
 
-export * from './locale/types'
+export type * from "./locale/types.js";
+export type * from "./fp/types.js";
 
 /**
  * The generic date constructor. Replicates the Date constructor. Used to build
@@ -16,7 +17,7 @@ export interface GenericDateConstructor<DateType extends Date = Date> {
    *
    * @returns The date instance
    */
-  new (): DateType
+  new (): DateType;
 
   /**
    * The date constructor. Creates date with the passed date, number of
@@ -26,7 +27,7 @@ export interface GenericDateConstructor<DateType extends Date = Date> {
    *
    * @returns The date instance
    */
-  new (value: Date | number | string): DateType
+  new (value: Date | number | string): DateType;
 
   /**
    * The date constructor. Creates date with the passed date values (year,
@@ -49,8 +50,8 @@ export interface GenericDateConstructor<DateType extends Date = Date> {
     hours?: number,
     minutes?: number,
     seconds?: number,
-    ms?: number
-  ): DateType
+    ms?: number,
+  ): DateType;
 }
 
 /**
@@ -59,25 +60,25 @@ export interface GenericDateConstructor<DateType extends Date = Date> {
  */
 export interface Duration {
   /** The number of years in the duration */
-  years?: number
+  years?: number;
   /** The number of months in the duration */
-  months?: number
+  months?: number;
   /** The number of weeks in the duration */
-  weeks?: number
+  weeks?: number;
   /** The number of days in the duration */
-  days?: number
+  days?: number;
   /** The number of hours in the duration */
-  hours?: number
+  hours?: number;
   /** The number of minutes in the duration */
-  minutes?: number
+  minutes?: number;
   /** The number of seconds in the duration */
-  seconds?: number
+  seconds?: number;
 }
 
 /**
  * The duration unit type alias.
  */
-export type DurationUnit = keyof Duration
+export type DurationUnit = keyof Duration;
 
 /**
  * An object that combines two dates to represent the time interval.
@@ -86,9 +87,9 @@ export type DurationUnit = keyof Duration
  */
 export interface Interval<DateType extends Date = Date> {
   /** The start of the interval. */
-  start: DateType | number | string
+  start: DateType | number | string;
   /** The end of the interval. */
-  end: DateType | number | string
+  end: DateType | number | string;
 }
 
 /**
@@ -96,20 +97,20 @@ export interface Interval<DateType extends Date = Date> {
  */
 export interface NormalizedInterval<DateType extends Date = Date> {
   /** The start of the interval. */
-  start: DateType
+  start: DateType;
   /** The end of the interval. */
-  end: DateType
+  end: DateType;
 }
 
 /**
  * The era. Can be either 0 (AD - Anno Domini) or 1 (BC - Before Christ).
  */
-export type Era = 0 | 1
+export type Era = 0 | 1;
 
 /**
  * The year quarter. Goes from 1 to 4.
  */
-export type Quarter = 1 | 2 | 3 | 4
+export type Quarter = 1 | 2 | 3 | 4;
 
 /**
  * The day of the week type alias. Unlike the date (the number of days since
@@ -118,13 +119,13 @@ export type Quarter = 1 | 2 | 3 | 4
  * it as an index in an array where Sunday is the first element and Saturday
  * is the last.
  */
-export type Day = 0 | 1 | 2 | 3 | 4 | 5 | 6
+export type Day = 0 | 1 | 2 | 3 | 4 | 5 | 6;
 
 /**
  * The month type alias. Goes from 0 to 11, where 0 is January and 11 is
  * December.
  */
-export type Month = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11
+export type Month = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
 
 /**
  * FirstWeekContainsDate is used to determine which week is the first week of
@@ -132,34 +133,34 @@ export type Month = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11
  *
  * The day in that week can only be 1 (Monday) or 4 (Thursday).
  *
- * Please see https://en.wikipedia.org/wiki/Week#Week_numbering for more information.
+ * Please see https://en.wikipedia.org/wiki/Week#The_ISO_week_date_system for more information.
  */
-export type FirstWeekContainsDate = 1 | 4
+export type FirstWeekContainsDate = 1 | 4;
 
 /**
  * The date values, used to set or get date object values.
  */
 export interface DateValues {
   /** The year */
-  year?: number
+  year?: number;
   /** The month */
-  month?: number
+  month?: number;
   /** The day of the month */
-  date?: number
+  date?: number;
   /** The hours */
-  hours?: number
+  hours?: number;
   /** The minutes */
-  minutes?: number
+  minutes?: number;
   /** The seconds */
-  seconds?: number
+  seconds?: number;
   /** The milliseconds */
-  milliseconds?: number
+  milliseconds?: number;
 }
 
 /**
  * The number rounding method.
  */
-export type RoundingMethod = 'ceil' | 'floor' | 'round' | 'trunc'
+export type RoundingMethod = "ceil" | "floor" | "round" | "trunc";
 
 /**
  * The ISO string format.
@@ -167,13 +168,13 @@ export type RoundingMethod = 'ceil' | 'floor' | 'round' | 'trunc'
  * - basic: Minimal number of separators
  * - extended: With separators added to enhance human readability
  */
-export type ISOStringFormat = 'extended' | 'basic'
+export type ISOStringFormat = "extended" | "basic";
 
 /**
  * The ISO date representation. Represents which component the string includes,
  * date, time or both.
  */
-export type ISOStringRepresentation = 'complete' | 'date' | 'time'
+export type ISOStringRepresentation = "complete" | "date" | "time";
 
 /// Function options types
 
@@ -182,7 +183,7 @@ export type ISOStringRepresentation = 'complete' | 'date' | 'time'
  */
 export interface StepOptions {
   /** The step to use when iterating */
-  step?: number
+  step?: number;
 }
 
 /**
@@ -190,7 +191,7 @@ export interface StepOptions {
  */
 export interface WeekOptions {
   /** Which day the week starts on. */
-  weekStartsOn?: Day
+  weekStartsOn?: Day;
 }
 
 /**
@@ -198,17 +199,17 @@ export interface WeekOptions {
  */
 export interface FirstWeekContainsDateOptions {
   /** See {@link FirstWeekContainsDate} for more details. */
-  firstWeekContainsDate?: FirstWeekContainsDate
+  firstWeekContainsDate?: FirstWeekContainsDate;
 }
 
 /**
  * The localized function options. Used to build function options.
  *
- * @paramType LocaleFields - The locale fields used in the relevant function. Defines the minimum set of locale fields that must be provided.
+ * @typeParam LocaleFields - The locale fields used in the relevant function. Defines the minimum set of locale fields that must be provided.
  */
 export interface LocalizedOptions<LocaleFields extends keyof Locale> {
   /** The locale to use in the function. */
-  locale?: Pick<Locale, LocaleFields>
+  locale?: Pick<Locale, LocaleFields>;
 }
 
 /**
@@ -217,10 +218,10 @@ export interface LocalizedOptions<LocaleFields extends keyof Locale> {
 export interface ISOFormatOptions {
   /** The format to use: basic with minimal number of separators or extended
    * with separators added to enhance human readability */
-  format?: ISOStringFormat
+  format?: ISOStringFormat;
   /** The date representation - what component to format: date, time\
    * or both (complete) */
-  representation?: ISOStringRepresentation
+  representation?: ISOStringRepresentation;
 }
 
 /**
@@ -228,7 +229,7 @@ export interface ISOFormatOptions {
  */
 export interface RoundingOptions {
   /** The rounding method to use */
-  roundingMethod?: RoundingMethod
+  roundingMethod?: RoundingMethod;
 }
 
 /**
@@ -237,10 +238,10 @@ export interface RoundingOptions {
 export interface AdditionalTokensOptions {
   /** If true, allows usage of the week-numbering year tokens `YY` and `YYYY`.
    * See: https://date-fns.org/docs/Unicode-Tokens */
-  useAdditionalWeekYearTokens?: boolean
+  useAdditionalWeekYearTokens?: boolean;
   /** If true, allows usage of the day of year tokens `D` and `DD`.
    * See: https://date-fns.org/docs/Unicode-Tokens */
-  useAdditionalDayOfYearTokens?: boolean
+  useAdditionalDayOfYearTokens?: boolean;
 }
 
 /**
@@ -277,12 +278,12 @@ export type NearestMinutes =
   | 27
   | 28
   | 29
-  | 30
+  | 30;
 
 /**
  * The nearest minutes function options. Used to build function options.
  */
 export interface NearestMinutesOptions {
   /** The nearest number of minutes to round to. E.g. `15` to round to quarter hours. */
-  nearestTo?: NearestMinutes
+  nearestTo?: NearestMinutes;
 }

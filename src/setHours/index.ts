@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name setHours
@@ -20,11 +20,11 @@ import toDate from '../toDate/index'
  * const result = setHours(new Date(2014, 8, 1, 11, 30), 4)
  * //=> Mon Sep 01 2014 04:30:00
  */
-export default function setHours<DateType extends Date>(
+export function setHours<DateType extends Date>(
   date: DateType | number | string,
-  hours: number
+  hours: number,
 ): DateType {
-  const _date = toDate(date)
-  _date.setHours(hours)
-  return _date
+  const _date = toDate(date);
+  _date.setHours(hours);
+  return _date;
 }

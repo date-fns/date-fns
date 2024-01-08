@@ -1,9 +1,9 @@
-import formatDistance from './_lib/formatDistance/index'
-import formatLong from './_lib/formatLong/index'
-import formatRelative from './_lib/formatRelative/index'
-import localize from './_lib/localize/index'
-import match from './_lib/match/index'
-import type { Locale } from '../types'
+import { formatDistance } from "./_lib/formatDistance/index.js";
+import { formatLong } from "./_lib/formatLong/index.js";
+import { formatRelative } from "./_lib/formatRelative/index.js";
+import { localize } from "./_lib/localize/index.js";
+import { match } from "./_lib/match/index.js";
+import type { Locale } from "../types.js";
 
 /**
  * @category Locales
@@ -16,8 +16,8 @@ import type { Locale } from '../types'
  * @author RomanErnst [@pex](https://github.com/pex)
  * @author Philipp Keck [@Philipp91](https://github.com/Philipp91)
  */
-const locale: Locale = {
-  code: 'de',
+export const de: Locale = {
+  code: "de",
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
@@ -27,6 +27,4 @@ const locale: Locale = {
     weekStartsOn: 1 /* Monday */,
     firstWeekContainsDate: 4,
   },
-}
-
-export default locale
+};

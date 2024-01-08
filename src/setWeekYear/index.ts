@@ -1,19 +1,19 @@
-import constructFrom from '../constructFrom/index'
-import differenceInCalendarDays from '../differenceInCalendarDays/index'
-import startOfWeekYear from '../startOfWeekYear/index'
-import toDate from '../toDate/index'
+import { constructFrom } from "../constructFrom/index.js";
+import { differenceInCalendarDays } from "../differenceInCalendarDays/index.js";
+import { startOfWeekYear } from "../startOfWeekYear/index.js";
+import { toDate } from "../toDate/index.js";
 import type {
   FirstWeekContainsDateOptions,
   LocalizedOptions,
   WeekOptions,
-} from '../types'
-import { getDefaultOptions } from '../_lib/defaultOptions/index'
+} from "../types.js";
+import { getDefaultOptions } from "../_lib/defaultOptions/index.js";
 
 /**
  * The {@link setWeekYear} function options.
  */
 export interface SetWeekYearOptions
-  extends LocalizedOptions<'options'>,
+  extends LocalizedOptions<"options">,
     WeekOptions,
     FirstWeekContainsDateOptions {}
 
@@ -30,7 +30,7 @@ export interface SetWeekYearOptions
  * and `options.firstWeekContainsDate` (which is the day of January, which is always in
  * the first week of the week-numbering year)
  *
- * Week numbering: https://en.wikipedia.org/wiki/Week#Week_numbering
+ * Week numbering: https://en.wikipedia.org/wiki/Week#The_ISO_week_date_system
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
@@ -55,25 +55,25 @@ export interface SetWeekYearOptions
  * })
  * //=> Sat Jan 01 2005 00:00:00
  */
-export default function setWeekYear<DateType extends Date>(
+export function setWeekYear<DateType extends Date>(
   date: DateType | number | string,
   weekYear: number,
-  options?: SetWeekYearOptions
+  options?: SetWeekYearOptions,
 ): DateType {
-  const defaultOptions = getDefaultOptions()
+  const defaultOptions = getDefaultOptions();
   const firstWeekContainsDate =
     options?.firstWeekContainsDate ??
     options?.locale?.options?.firstWeekContainsDate ??
     defaultOptions.firstWeekContainsDate ??
     defaultOptions.locale?.options?.firstWeekContainsDate ??
-    1
+    1;
 
-  let _date = toDate(date)
-  const diff = differenceInCalendarDays(_date, startOfWeekYear(_date, options))
-  const firstWeek = constructFrom(date, 0)
-  firstWeek.setFullYear(weekYear, 0, firstWeekContainsDate)
-  firstWeek.setHours(0, 0, 0, 0)
-  _date = startOfWeekYear(firstWeek, options)
-  _date.setDate(_date.getDate() + diff)
-  return _date
+  let _date = toDate(date);
+  const diff = differenceInCalendarDays(_date, startOfWeekYear(_date, options));
+  const firstWeek = constructFrom(date, 0);
+  firstWeek.setFullYear(weekYear, 0, firstWeekContainsDate);
+  firstWeek.setHours(0, 0, 0, 0);
+  _date = startOfWeekYear(firstWeek, options);
+  _date.setDate(_date.getDate() + diff);
+  return _date;
 }

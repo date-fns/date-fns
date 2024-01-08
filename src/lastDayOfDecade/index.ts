@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name lastDayOfDecade
@@ -19,13 +19,13 @@ import toDate from '../toDate/index'
  * const result = lastDayOfDecade(new Date(2012, 11, 21, 21, 12, 00))
  * //=> Wed Dec 31 2019 00:00:00
  */
-export default function lastDayOfDecade<DateType extends Date>(
-  date: DateType | number | string
+export function lastDayOfDecade<DateType extends Date>(
+  date: DateType | number | string,
 ): DateType {
-  const _date = toDate(date)
-  const year = _date.getFullYear()
-  const decade = 9 + Math.floor(year / 10) * 10
-  _date.setFullYear(decade + 1, 0, 0)
-  _date.setHours(0, 0, 0, 0)
-  return _date
+  const _date = toDate(date);
+  const year = _date.getFullYear();
+  const decade = 9 + Math.floor(year / 10) * 10;
+  _date.setFullYear(decade + 1, 0, 0);
+  _date.setHours(0, 0, 0, 0);
+  return _date;
 }

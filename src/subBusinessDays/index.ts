@@ -1,4 +1,4 @@
-import addBusinessDays from '../addBusinessDays/index'
+import { addBusinessDays } from "../addBusinessDays/index.js";
 
 /**
  * @name subBusinessDays
@@ -11,7 +11,7 @@ import addBusinessDays from '../addBusinessDays/index'
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
  * @param date - The date to be changed
- * @param amount - The amount of business days to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @param amount - The amount of business days to be subtracted.
  *
  * @returns The new date with the business days subtracted
  *
@@ -20,9 +20,9 @@ import addBusinessDays from '../addBusinessDays/index'
  * const result = subBusinessDays(new Date(2014, 8, 1), 10)
  * //=> Mon Aug 18 2014 00:00:00 (skipped weekend days)
  */
-export default function subBusinessDays<DateType extends Date>(
+export function subBusinessDays<DateType extends Date>(
   date: DateType | number | string,
-  amount: number
+  amount: number,
 ): DateType {
-  return addBusinessDays(date, -amount)
+  return addBusinessDays(date, -amount);
 }

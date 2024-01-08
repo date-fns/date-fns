@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name isEqual
@@ -23,11 +23,11 @@ import toDate from '../toDate/index'
  * )
  * //=> false
  */
-export default function isEqual<DateType extends Date>(
+export function isEqual<DateType extends Date>(
   leftDate: DateType | number | string,
-  rightDate: DateType | number | string
+  rightDate: DateType | number | string,
 ): boolean {
-  const _dateLeft = toDate(leftDate)
-  const _dateRight = toDate(rightDate)
-  return +_dateLeft === +_dateRight
+  const _dateLeft = toDate(leftDate);
+  const _dateRight = toDate(rightDate);
+  return +_dateLeft === +_dateRight;
 }
