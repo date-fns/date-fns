@@ -1,5 +1,4 @@
 /* eslint-env mocha */
-/* eslint-env mocha */
 
 import assert from "assert";
 import { describe, it } from "vitest";
@@ -7,15 +6,6 @@ import {
   roundToNearestMinutes,
   type RoundToNearestMinutesOptions,
 } from "./index.js";
-
-function makeDate(
-  minutes: number,
-  seconds: number = 0,
-  milliseconds: number = 0,
-) {
-  // helper to make tests more readable since we mostly care about minutes and seconds
-  return new Date(2014, 6 /* Jul */, 10, 12, minutes, seconds, milliseconds);
-}
 
 describe("roundToNearestMinutes", () => {
   it("rounds given date to the nearest minute by default", () => {
@@ -316,3 +306,12 @@ describe("roundToNearestMinutes", () => {
     assert(result instanceof Date && isNaN(result.getTime()));
   });
 });
+
+function makeDate(
+  minutes: number,
+  seconds: number = 0,
+  milliseconds: number = 0,
+) {
+  // helper to make tests more readable since we mostly care about minutes and seconds
+  return new Date(2014, 6 /* Jul */, 10, 12, minutes, seconds, milliseconds);
+}
