@@ -39,14 +39,14 @@ export type FPFn<Fn extends FPFnInput, Arity extends FPArity> = Arity extends 4
  */
 export interface FPFn1<Result, Arg> {
   /**
-   * Returns the result of the function call.
-   */
-  (arg: Arg): Result;
-
-  /**
    * Curried version of the function. Returns itself.
    */
   (): FPFn1<Result, Arg>;
+
+  /**
+   * Returns the result of the function call.
+   */
+  (arg: Arg): Result;
 }
 
 /**
@@ -54,9 +54,9 @@ export interface FPFn1<Result, Arg> {
  */
 export interface FPFn2<Result, Arg2, Arg1> {
   /**
-   * Returns the result of the function call.
+   * Curried version of the function. Returns itself.
    */
-  (arg2: Arg2, arg1: Arg1): Result;
+  (): FPFn2<Result, Arg2, Arg1>;
 
   /**
    * Curried version of the function. Returns a function that accepts the rest
@@ -65,9 +65,9 @@ export interface FPFn2<Result, Arg2, Arg1> {
   (arg2: Arg2): FPFn1<Result, Arg1>;
 
   /**
-   * Curried version of the function. Returns itself.
+   * Returns the result of the function call.
    */
-  (): FPFn2<Result, Arg2, Arg1>;
+  (arg2: Arg2, arg1: Arg1): Result;
 }
 
 /**
@@ -75,15 +75,9 @@ export interface FPFn2<Result, Arg2, Arg1> {
  */
 export interface FPFn3<Result, Arg3, Arg2, Arg1> {
   /**
-   * Returns the result of the function call.
+   * Curried version of the function. Returns itself.
    */
-  (arg3: Arg3, arg2: Arg2, arg1: Arg1): Result;
-
-  /**
-   * Curried version of the function. Returns a function that accepts the rest
-   * arguments.
-   */
-  (arg3: Arg3, arg2: Arg2): FPFn1<Result, Arg1>;
+  (): FPFn3<Result, Arg3, Arg2, Arg1>;
 
   /**
    * Curried version of the function. Returns a function that accepts the rest
@@ -92,9 +86,15 @@ export interface FPFn3<Result, Arg3, Arg2, Arg1> {
   (arg3: Arg3): FPFn2<Result, Arg2, Arg1>;
 
   /**
-   * Curried version of the function. Returns itself.
+   * Curried version of the function. Returns a function that accepts the rest
+   * arguments.
    */
-  (): FPFn3<Result, Arg3, Arg2, Arg1>;
+  (arg3: Arg3, arg2: Arg2): FPFn1<Result, Arg1>;
+
+  /**
+   * Returns the result of the function call.
+   */
+  (arg3: Arg3, arg2: Arg2, arg1: Arg1): Result;
 }
 
 /**
@@ -102,15 +102,15 @@ export interface FPFn3<Result, Arg3, Arg2, Arg1> {
  */
 export interface FPFn4<Result, Arg4, Arg3, Arg2, Arg1> {
   /**
-   * Returns the result of the function call.
+   * Curried version of the function. Returns itself.
    */
-  (arg4: Arg4, arg3: Arg3, arg2: Arg2, arg1: Arg1): Result;
+  (): FPFn4<Result, Arg4, Arg3, Arg2, Arg1>;
 
   /**
    * Curried version of the function. Returns a function that accepts the rest
    * arguments.
    */
-  (arg4: Arg4, arg3: Arg3, arg2: Arg2): FPFn1<Result, Arg1>;
+  (arg4: Arg4): FPFn3<Result, Arg3, Arg2, Arg1>;
 
   /**
    * Curried version of the function. Returns a function that accepts the rest
@@ -122,10 +122,10 @@ export interface FPFn4<Result, Arg4, Arg3, Arg2, Arg1> {
    * Curried version of the function. Returns a function that accepts the rest
    * arguments.
    */
-  (arg4: Arg4): FPFn3<Result, Arg3, Arg2, Arg1>;
+  (arg4: Arg4, arg3: Arg3, arg2: Arg2): FPFn1<Result, Arg1>;
 
   /**
-   * Curried version of the function. Returns itself.
+   * Returns the result of the function call.
    */
-  (): FPFn4<Result, Arg4, Arg3, Arg2, Arg1>;
+  (arg4: Arg4, arg3: Arg3, arg2: Arg2, arg1: Arg1): Result;
 }

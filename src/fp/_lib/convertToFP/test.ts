@@ -1,7 +1,11 @@
 /* eslint-env mocha */
 
 import assert from "assert";
+import { pipe } from "fp-ts/function";
+import { flow as jsFnsFlow } from "js-fns";
+import lodashFlow from "lodash/flow";
 import { describe, it } from "vitest";
+import { addDays, addHours, isEqual } from "../../index.js";
 import { convertToFP } from "./index.js";
 
 describe("convertToFP", () => {
@@ -75,6 +79,44 @@ describe("convertToFP", () => {
       const result = convertToFP(fn, 0);
       // @ts-expect-error - It's ok, we're testing the function
       assert(result === "undefined undefined undefined");
+    });
+  });
+
+  describe("types", () => {
+    it("resolves proper types", () => {
+      const fn1 = addDays();
+      const fn2 = fn1(1);
+      const result = fn2(new Date(1987, 1));
+      assert(result.getFullYear() === 1987);
+    });
+  });
+
+  describe("Lodash", () => {
+    it("works with flow", () => {
+      const fn = lodashFlow(addDays(1), addHours(1));
+      const result = fn(new Date(1987, 1, 11));
+      assert(result.getFullYear() === 1987);
+      assert.deepStrictEqual(result, new Date(1987, 1, 12, 1));
+    });
+  });
+
+  describe("fp-ts", () => {
+    it("works with pipe", () => {
+      const result = pipe(
+        new Date(1987, 1, 11),
+        isEqual(new Date(1987, 1, 11)),
+      );
+      const _assign: boolean = result;
+      assert(result);
+    });
+  });
+
+  describe("js-fns", () => {
+    it("works with flow", () => {
+      const fn = jsFnsFlow(addDays(1), addHours(1));
+      const result = fn(new Date(1987, 1, 11));
+      assert(result.getFullYear() === 1987);
+      assert.deepStrictEqual(result, new Date(1987, 1, 12, 1));
     });
   });
 });
