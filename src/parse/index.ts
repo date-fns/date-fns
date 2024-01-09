@@ -19,6 +19,10 @@ import type { Setter } from "./_lib/Setter.js";
 import { DateToSystemTimezoneSetter } from "./_lib/Setter.js";
 import type { ParseFlags, ParserOptions } from "./_lib/types.js";
 
+// Rexports of internal for libraries to use.
+// See: https://github.com/date-fns/date-fns/issues/3638#issuecomment-1877082874
+export { longFormatters, parsers };
+
 /**
  * The {@link parse} function options.
  */
