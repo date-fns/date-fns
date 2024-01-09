@@ -8,6 +8,20 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## v3.2.0 - 2024-01-09
+
+This release is brought to you by @kossnocorp, @fturmel, @grossbart, @MelvinVermeer, and @jcarstairs-scottlogic.
+
+### Fixed
+
+- Fixed types compatability with Lodash's `flow` and fp-ts's `pipe`. ([#3641](https://github.com/date-fns/date-fns/issues/3641))
+
+- [Fixed inconsistent behavior of `roundToNearestMinutes`.](https://github.com/date-fns/date-fns/pull/3132)
+
+### Added
+
+- Added exports of `format`, `lightFormat`, and `parse` internals that enable 3rd-parties to consume those.
+
 ## v3.1.0 - 2024-01-05
 
 This release is brought to you by @kossnocorp, @makstyle119 and @dmgawel.
