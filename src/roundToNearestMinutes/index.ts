@@ -46,7 +46,7 @@ export function roundToNearestMinutes<DateType extends Date>(
   if (nearestTo < 1 || nearestTo > 30) return constructFrom(date, NaN);
 
   const _date = toDate(date);
-  const seconds = date.getSeconds(); // relevant if nearestTo is 1, which is the default case
+  const seconds = _date.getSeconds(); // relevant if nearestTo is 1, which is the default case
   const minutes = date.getMinutes() + seconds / 60;
   const roundingMethod = getRoundingMethod(options?.roundingMethod);
 
