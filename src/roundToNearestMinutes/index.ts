@@ -47,11 +47,11 @@ export function roundToNearestMinutes<DateType extends Date>(
 
   const _date = toDate(date);
   const seconds = _date.getSeconds(); // relevant if nearestTo is 1, which is the default case
-  const minutes = date.getMinutes() + seconds / 60;
+  const minutes = _date.getMinutes() + seconds / 60;
   const roundingMethod = getRoundingMethod(options?.roundingMethod);
 
   const roundedMinutes = roundingMethod(minutes / nearestTo) * nearestTo;
-  const result = constructFrom(date, date);
+  const result = constructFrom(date, _date);
   result.setMinutes(roundedMinutes, 0, 0);
 
   return result;
