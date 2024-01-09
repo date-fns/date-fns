@@ -1,22 +1,21 @@
-import type { Locale } from '../types'
-import formatDistance from './_lib/formatDistance/index'
-import formatLong from './_lib/formatLong/index'
-import formatRelative from './_lib/formatRelative/index'
-import localize from './_lib/localize/index'
-import match from './_lib/match/index'
+import type { Locale } from "../types.js";
+import { formatDistance } from "./_lib/formatDistance/index.js";
+import { formatLong } from "./_lib/formatLong/index.js";
+import { formatRelative } from "./_lib/formatRelative/index.js";
+import { localize } from "./_lib/localize/index.js";
+import { match } from "./_lib/match/index.js";
 
 /**
- * @type {Locale}
  * @category Locales
  * @summary Finnish locale.
  * @language Finnish
  * @iso-639-2 fin
- * @author Pyry-Samuli Lahti [@Pyppe]{@link https://github.com/Pyppe}
- * @author Edo Rivai [@mikolajgrzyb]{@link https://github.com/mikolajgrzyb}
- * @author Samu Juvonen [@sjuvonen]{@link https://github.com/sjuvonen}
+ * @author Pyry-Samuli Lahti [@Pyppe](https://github.com/Pyppe)
+ * @author Edo Rivai [@mikolajgrzyb](https://github.com/mikolajgrzyb)
+ * @author Samu Juvonen [@sjuvonen](https://github.com/sjuvonen)
  */
-const locale: Locale = {
-  code: 'fi',
+export const fi: Locale = {
+  code: "fi",
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
@@ -26,6 +25,4 @@ const locale: Locale = {
     weekStartsOn: 1 /* Monday */,
     firstWeekContainsDate: 4,
   },
-}
-
-export default locale
+};

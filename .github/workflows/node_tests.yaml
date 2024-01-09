@@ -1,4 +1,4 @@
-name: Main tests
+name: Node.js tests
 
 on: [push, pull_request]
 
@@ -8,24 +8,18 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x]
+        node: [18, 20]
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
-      - name: export CHROME_BIN
-        run: export CHROME_BIN=chromium-browser
-      - name: export DISPLAY
-        run: export DISPLAY=:99.0
-      - name: Install yarn
-        run: npm install -g yarn
-      - name: Install dependencies
-        run: yarn install
-      - name: Run tests
-        uses: GabrielBB/xvfb-action@v1.0
-        with:
-          run: ./scripts/test/ci.sh
-        env:
-          TEST_SUITE: main
+          node-version: ${{ matrix.node }}
+          cache: "npm"
+      - run: npm install
+
+      - name: Unit tests
+        run: npx vitest run
+
+      - name: TZ tests
+        run: ./scripts/test/tz.sh

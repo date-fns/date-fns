@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name fromUnixTime
@@ -8,14 +8,15 @@ import toDate from '../toDate/index'
  * @description
  * Create a date from a Unix timestamp (in seconds). Decimal values will be discarded.
  *
- * @param unixTime - the given Unix timestamp (in seconds)
- * @returns the date
+ * @param unixTime - The given Unix timestamp (in seconds)
+ *
+ * @returns The date
  *
  * @example
  * // Create the date 29 February 2012 11:45:05:
  * const result = fromUnixTime(1330515905)
  * //=> Wed Feb 29 2012 11:45:05
  */
-export default function fromUnixTime(unixTime: number): Date {
-  return toDate(unixTime * 1000)
+export function fromUnixTime(unixTime: number): Date {
+  return toDate(unixTime * 1000);
 }

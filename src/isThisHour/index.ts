@@ -1,4 +1,4 @@
-import isSameHour from '../isSameHour/index'
+import { isSameHour } from "../isSameHour/index.js";
 
 /**
  * @name isThisHour
@@ -9,11 +9,11 @@ import isSameHour from '../isSameHour/index'
  * @description
  * Is the given date in the same hour as the current date?
  *
- * > ⚠️ Please note that this function is not present in the FP submodule as
- * > it uses `Date.now()` internally hence impure and can't be safely curried.
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
- * @param date - the date to check
- * @returns the date is in this hour
+ * @param date - The date to check
+ *
+ * @returns The date is in this hour
  *
  * @example
  * // If now is 25 September 2014 18:30:15.500,
@@ -21,8 +21,8 @@ import isSameHour from '../isSameHour/index'
  * const result = isThisHour(new Date(2014, 8, 25, 18))
  * //=> true
  */
-export default function isThisHour<DateType extends Date>(
-  dirtyDate: DateType | number
+export function isThisHour<DateType extends Date>(
+  date: DateType | number | string,
 ): boolean {
-  return isSameHour(Date.now(), dirtyDate)
+  return isSameHour(Date.now(), date);
 }

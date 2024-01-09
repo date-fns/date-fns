@@ -1,64 +1,64 @@
-import isSameWeek from '../../../../isSameWeek/index'
-import type { Day } from '../../../../types'
+import { isSameWeek } from "../../../../isSameWeek/index.js";
+import type { Day } from "../../../../types.js";
 import type {
   FormatRelativeFn,
   FormatRelativeFnOptions,
   FormatRelativeToken,
-} from '../../../types'
+} from "../../../types.js";
 
 type Adjective = {
-  masculine: string
-  feminine: string
-}
+  masculine: string;
+  feminine: string;
+};
 
 const adjectivesLastWeek = {
-  masculine: 'ostatni',
-  feminine: 'ostatnia',
-}
+  masculine: "ostatni",
+  feminine: "ostatnia",
+};
 
 const adjectivesThisWeek = {
-  masculine: 'ten',
-  feminine: 'ta',
-}
+  masculine: "ten",
+  feminine: "ta",
+};
 
 const adjectivesNextWeek = {
-  masculine: 'następny',
-  feminine: 'następna',
-}
+  masculine: "następny",
+  feminine: "następna",
+};
 
 const dayGrammaticalGender = {
-  0: 'feminine',
-  1: 'masculine',
-  2: 'masculine',
-  3: 'feminine',
-  4: 'masculine',
-  5: 'masculine',
-  6: 'feminine',
-}
+  0: "feminine",
+  1: "masculine",
+  2: "masculine",
+  3: "feminine",
+  4: "masculine",
+  5: "masculine",
+  6: "feminine",
+};
 
 function dayAndTimeWithAdjective(
   token: FormatRelativeToken,
   date: Date,
   baseDate: Date,
-  options?: FormatRelativeFnOptions
+  options?: FormatRelativeFnOptions,
 ): string {
-  let adjectives
+  let adjectives;
   if (isSameWeek(date, baseDate, options)) {
-    adjectives = adjectivesThisWeek
-  } else if (token === 'lastWeek') {
-    adjectives = adjectivesLastWeek
-  } else if (token === 'nextWeek') {
-    adjectives = adjectivesNextWeek
+    adjectives = adjectivesThisWeek;
+  } else if (token === "lastWeek") {
+    adjectives = adjectivesLastWeek;
+  } else if (token === "nextWeek") {
+    adjectives = adjectivesNextWeek;
   } else {
-    throw new Error(`Cannot determine adjectives for token ${token}`)
+    throw new Error(`Cannot determine adjectives for token ${token}`);
   }
 
-  const day = date.getDay() as Day
-  const grammaticalGender = dayGrammaticalGender[day] as keyof Adjective
+  const day = date.getDay() as Day;
+  const grammaticalGender = dayGrammaticalGender[day] as keyof Adjective;
 
-  const adjective = adjectives[grammaticalGender]
+  const adjective = adjectives[grammaticalGender];
 
-  return `'${adjective}' eeee 'o' p`
+  return `'${adjective}' eeee 'o' p`;
 }
 
 const formatRelativeLocale = {
@@ -67,17 +67,20 @@ const formatRelativeLocale = {
   today: "'dzisiaj o' p",
   tomorrow: "'jutro o' p",
   nextWeek: dayAndTimeWithAdjective,
-  other: 'P',
-}
+  other: "P",
+};
 
-const formatRelative: FormatRelativeFn = (token, date, baseDate, options) => {
-  const format = formatRelativeLocale[token]
+export const formatRelative: FormatRelativeFn = (
+  token,
+  date,
+  baseDate,
+  options,
+) => {
+  const format = formatRelativeLocale[token];
 
-  if (typeof format === 'function') {
-    return format(token, date, baseDate, options)
+  if (typeof format === "function") {
+    return format(token, date, baseDate, options);
   }
 
-  return format
-}
-
-export default formatRelative
+  return format;
+};

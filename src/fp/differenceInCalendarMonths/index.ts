@@ -1,6 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.
 
-import fn from '../../differenceInCalendarMonths/index'
-import convertToFP from '../_lib/convertToFP/index'
+import { differenceInCalendarMonths as fn } from "../../differenceInCalendarMonths/index.js";
+import { convertToFP } from "../_lib/convertToFP/index.js";
 
-export default convertToFP(fn, 2)
+export const differenceInCalendarMonths = convertToFP(fn, 2);

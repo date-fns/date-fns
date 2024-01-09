@@ -1,20 +1,19 @@
-import formatDistance from '../en-US/_lib/formatDistance/index'
-import formatRelative from '../en-US/_lib/formatRelative/index'
-import localize from '../en-US/_lib/localize/index'
-import match from '../en-US/_lib/match/index'
-import type { Locale } from '../types'
-import formatLong from './_lib/formatLong/index'
+import { formatDistance } from "../en-US/_lib/formatDistance/index.js";
+import { formatRelative } from "../en-US/_lib/formatRelative/index.js";
+import { localize } from "../en-US/_lib/localize/index.js";
+import { match } from "../en-US/_lib/match/index.js";
+import type { Locale } from "../types.js";
+import { formatLong } from "./_lib/formatLong/index.js";
 
 /**
- * @type {Locale}
  * @category Locales
  * @summary English locale (New Zealand).
  * @language English
  * @iso-639-2 eng
- * @author Murray Lucas [@muntact]{@link https://github.com/muntact}
+ * @author Murray Lucas [@muntact](https://github.com/muntact)
  */
-const locale: Locale = {
-  code: 'en-NZ',
+export const enNZ: Locale = {
+  code: "en-NZ",
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
@@ -24,6 +23,4 @@ const locale: Locale = {
     weekStartsOn: 1 /* Monday */,
     firstWeekContainsDate: 4,
   },
-}
-
-export default locale
+};

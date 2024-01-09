@@ -1,22 +1,21 @@
-import type { Locale } from '../types'
-import formatDistance from './_lib/formatDistance/index'
-import formatLong from './_lib/formatLong/index'
-import formatRelative from './_lib/formatRelative/index'
-import localize from './_lib/localize/index'
-import match from './_lib/match/index'
+import type { Locale } from "../types.js";
+import { formatDistance } from "./_lib/formatDistance/index.js";
+import { formatLong } from "./_lib/formatLong/index.js";
+import { formatRelative } from "./_lib/formatRelative/index.js";
+import { localize } from "./_lib/localize/index.js";
+import { match } from "./_lib/match/index.js";
 
 /**
- * @type {Locale}
  * @category Locales
  * @summary Swedish locale.
  * @language Swedish
  * @iso-639-2 swe
- * @author Johannes Ulén [@ejulen]{@link https://github.com/ejulen}
- * @author Alexander Nanberg [@alexandernanberg]{@link https://github.com/alexandernanberg}
- * @author Henrik Andersson [@limelights]{@link https://github.com/limelights}
+ * @author Johannes Ulén [@ejulen](https://github.com/ejulen)
+ * @author Alexander Nanberg [@alexandernanberg](https://github.com/alexandernanberg)
+ * @author Henrik Andersson [@limelights](https://github.com/limelights)
  */
-const locale: Locale = {
-  code: 'sv',
+export const sv: Locale = {
+  code: "sv",
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
@@ -26,6 +25,4 @@ const locale: Locale = {
     weekStartsOn: 1 /* Monday */,
     firstWeekContainsDate: 4,
   },
-}
-
-export default locale
+};

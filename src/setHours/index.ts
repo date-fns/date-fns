@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name setHours
@@ -8,20 +8,23 @@ import toDate from '../toDate/index'
  * @description
  * Set the hours to the given date.
  *
- * @param date - the date to be changed
- * @param hours - the hours of the new date
- * @returns the new date with the hours set
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date to be changed
+ * @param hours - The hours of the new date
+ *
+ * @returns The new date with the hours set
  *
  * @example
  * // Set 4 hours to 1 September 2014 11:30:00:
  * const result = setHours(new Date(2014, 8, 1, 11, 30), 4)
  * //=> Mon Sep 01 2014 04:30:00
  */
-export default function setHours<DateType extends Date>(
-  dirtyDate: DateType | number,
-  hours: number
+export function setHours<DateType extends Date>(
+  date: DateType | number | string,
+  hours: number,
 ): DateType {
-  const date = toDate(dirtyDate)
-  date.setHours(hours)
-  return date
+  const _date = toDate(date);
+  _date.setHours(hours);
+  return _date;
 }

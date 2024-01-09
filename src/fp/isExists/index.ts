@@ -1,6 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.
 
-import fn from '../../isExists/index'
-import convertToFP from '../_lib/convertToFP/index'
+import { isExists as fn } from "../../isExists/index.js";
+import { convertToFP } from "../_lib/convertToFP/index.js";
 
-export default convertToFP(fn, 3)
+export const isExists = convertToFP(fn, 3);

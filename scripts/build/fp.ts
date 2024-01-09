@@ -1,4 +1,4 @@
-#!/usr/bin/env yarn ts-node
+#!/usr/bin/env npx tsx
 
 /**
  * @file
@@ -7,53 +7,80 @@
  * It's a part of the build process.
  */
 
-import { existsSync } from 'fs'
-import { mkdir, readFile, unlink, writeFile } from 'fs/promises'
+import { joinTag, readRefsFromJSON } from "@date-fns/docs";
+import { mkdir, stat, writeFile } from "fs/promises";
+import path from "path";
+import { config } from "../../docs/config.js";
 
-interface DocFn {
-  kind: string
-  isFPFn: boolean
+async function main() {
+  const fns = await readRefsFromJSON(
+    config,
+    path.resolve(__dirname, "../../docs/"),
+  );
 
-  title: string
-  generatedFrom: string
-  args: {
-    length: number
-  }
+  await Promise.all(
+    fns.map(async (ref) => {
+      if (ref.kind !== "function") return;
+
+      const name = ref.ref.name;
+      const hasOptions = !!ref.fn.signatures?.find(
+        (singature: any) =>
+          singature.parameters?.find((p: any) => p.name === "options"),
+      );
+      const fnArity =
+        ref.fn.signatures?.reduce<number>(
+          (acc: number, signature: any) =>
+            Math.max(acc, signature.parameters?.length || 0),
+          0,
+        ) || 0;
+
+      // Skip non-pure functions, i.e. startOfToday as they can't
+      // be safely curried.
+      const pure = ref.fn.signatures?.every(
+        (signature: any) =>
+          !signature.comment.blockTags.some(
+            (tag: any) => tag.tag === "@pure" && joinTag(tag) === "false",
+          ),
+      );
+      if (!pure) return;
+
+      async function writeFn(
+        arity: number,
+        sourceName: string,
+        fnName = sourceName,
+      ) {
+        const source = getFPFn(sourceName, fnName, arity);
+        const dir = `./src/fp/${fnName}`;
+
+        if (!(await exists(dir))) await mkdir(dir);
+        return writeFile(`${dir}/index.ts`, source);
+      }
+
+      return Promise.all([
+        writeFn(hasOptions ? fnArity - 1 : fnArity, name),
+        hasOptions && writeFn(fnArity, name, name + "WithOptions"),
+      ]);
+    }),
+  );
 }
 
-;(async () => {
-  const jsDocs = JSON.parse((await readFile('./tmp/docs.json')).toString())
+async function exists(filePath: string) {
+  try {
+    await stat(filePath);
+  } catch (err) {
+    return false;
+  }
+  return true;
+}
 
-  const fpFns: DocFn[] = Object.keys(jsDocs)
-    .map((category) => jsDocs[category])
-    .reduce((previousValue, newValue) => [...previousValue, ...newValue], [])
-    .filter((doc: DocFn) => doc.kind === 'function' && doc.isFPFn)
+main();
 
-  fpFns.forEach(buildFPFn)
-})()
-
-function getFPFn(initialFnName: string, arity: number): string {
+function getFPFn(sourceName: string, fnName: string, arity: number): string {
   return `// This file is generated automatically by \`scripts/build/fp.ts\`. Please, don't change it.
 
-import fn from '../../${initialFnName}/index'
-import convertToFP from '../_lib/convertToFP/index'
+import { ${sourceName} as fn } from "../../${sourceName}/index.js";
+import { convertToFP } from "../_lib/convertToFP/index.js";
 
-export default convertToFP(fn, ${arity})
-`
-}
-
-async function buildFPFn({
-  title,
-  generatedFrom,
-  args: { length },
-}: DocFn): Promise<void> {
-  const source = getFPFn(generatedFrom, length)
-  const dir = `./src/fp/${title}`
-
-  if (!existsSync(dir)) await mkdir(dir)
-  writeFile(`${dir}/index.ts`, source)
-
-  // remove legacy index.js (if any)
-  const jsPath = `${dir}/index.js`
-  if (existsSync(jsPath)) unlink(jsPath)
+export const ${fnName} = convertToFP(fn, ${arity});
+`;
 }

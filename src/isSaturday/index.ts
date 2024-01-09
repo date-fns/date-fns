@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name isSaturday
@@ -8,16 +8,19 @@ import toDate from '../toDate/index'
  * @description
  * Is the given date Saturday?
  *
- * @param date - the date to check
- * @returns the date is Saturday
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date to check
+ *
+ * @returns The date is Saturday
  *
  * @example
  * // Is 27 September 2014 Saturday?
  * const result = isSaturday(new Date(2014, 8, 27))
  * //=> true
  */
-export default function isSaturday<DateType extends Date>(
-  dirtyDate: DateType | number
+export function isSaturday<DateType extends Date>(
+  date: DateType | number | string,
 ): boolean {
-  return toDate(dirtyDate).getDay() === 6
+  return toDate(date).getDay() === 6;
 }

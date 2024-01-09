@@ -1,10 +1,12 @@
-import isSameWeek from '../isSameWeek/index'
-import type { LocaleOptions, WeekStartOptions } from '../types'
+import { isSameWeek } from "../isSameWeek/index.js";
+import type { LocalizedOptions, WeekOptions } from "../types.js";
 
 /**
  * The {@link isThisWeek} function options.
  */
-export interface IsThisWeekOptions extends WeekStartOptions, LocaleOptions {}
+export interface IsThisWeekOptions
+  extends WeekOptions,
+    LocalizedOptions<"options"> {}
 
 /**
  * @name isThisWeek
@@ -15,12 +17,12 @@ export interface IsThisWeekOptions extends WeekStartOptions, LocaleOptions {}
  * @description
  * Is the given date in the same week as the current date?
  *
- * > ⚠️ Please note that this function is not present in the FP submodule as
- * > it uses `Date.now()` internally hence impure and can't be safely curried.
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
- * @param date - the date to check
- * @param options - the object with options
- * @returns the date is in this week
+ * @param date - The date to check
+ * @param options - The object with options
+ *
+ * @returns The date is in this week
  *
  * @example
  * // If today is 25 September 2014, is 21 September 2014 in this week?
@@ -33,10 +35,9 @@ export interface IsThisWeekOptions extends WeekStartOptions, LocaleOptions {}
  * const result = isThisWeek(new Date(2014, 8, 21), { weekStartsOn: 1 })
  * //=> false
  */
-
-export default function is<DateType extends Date>(
-  dirtyDate: DateType | number,
-  options?: IsThisWeekOptions
+export function isThisWeek<DateType extends Date>(
+  date: DateType | number | string,
+  options?: IsThisWeekOptions,
 ): boolean {
-  return isSameWeek(dirtyDate, Date.now(), options)
+  return isSameWeek(date, Date.now(), options);
 }

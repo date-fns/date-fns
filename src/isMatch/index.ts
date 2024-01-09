@@ -1,18 +1,18 @@
-import isValid from '../isValid/index'
-import parse from '../parse/index'
+import { isValid } from "../isValid/index.js";
+import { parse } from "../parse/index.js";
 import type {
   AdditionalTokensOptions,
   FirstWeekContainsDateOptions,
-  LocaleOptions,
-  WeekStartOptions,
-} from '../types'
+  LocalizedOptions,
+  WeekOptions,
+} from "../types.js";
 
 /**
  * The {@link isMatch} function options.
  */
 export interface IsMatchOptions
-  extends LocaleOptions,
-    WeekStartOptions,
+  extends LocalizedOptions<"options" | "match" | "formatLong">,
+    WeekOptions,
     FirstWeekContainsDateOptions,
     AdditionalTokensOptions {}
 
@@ -237,8 +237,8 @@ export interface IsMatchOptions
  *
  *    The same difference is true for local and ISO week-numbering years (`Y` and `R`),
  *    except local week-numbering years are dependent on `options.weekStartsOn`
- *    and `options.firstWeekContainsDate` (compare [setISOWeekYear]{@link https://date-fns.org/docs/setISOWeekYear}
- *    and [setWeekYear]{@link https://date-fns.org/docs/setWeekYear}).
+ *    and `options.firstWeekContainsDate` (compare [setISOWeekYear](https://date-fns.org/docs/setISOWeekYear)
+ *    and [setWeekYear](https://date-fns.org/docs/setWeekYear)).
  *
  * 5. These patterns are not in the Unicode Technical Standard #35:
  *    - `i`: ISO day of week
@@ -272,20 +272,22 @@ export interface IsMatchOptions
  *
  * If `formatString` matches with `dateString` but does not provides tokens, `referenceDate` will be returned.
  *
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
- *
- * @param dateString - the date string to verify
- * @param formatString - the string of tokens
- * @param options - an object with options.
+ * @param dateStr - The date string to verify
+ * @param format - The string of tokens
+ * @param options - An object with options.
  *   see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
  *   see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
- * @returns is format string a match for date string?
- * @throws {RangeError} `options.locale` must contain `match` property
- * @throws {RangeError} use `yyyy` instead of `YYYY` for formatting years; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
- * @throws {RangeError} use `yy` instead of `YY` for formatting years; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
- * @throws {RangeError} use `d` instead of `D` for formatting days of the month; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
- * @throws {RangeError} use `dd` instead of `DD` for formatting days of the month; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
- * @throws {RangeError} format string contains an unescaped latin alphabet character
+ *
+ * @returns Is format string a match for date string?
+ *
+ * @throws `options.locale` must contain `match` property
+ * @throws use `yyyy` instead of `YYYY` for formatting years; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
+ * @throws use `yy` instead of `YY` for formatting years; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
+ * @throws use `d` instead of `D` for formatting days of the month; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
+ * @throws use `dd` instead of `DD` for formatting days of the month; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
+ * @throws format string contains an unescaped latin alphabet character
  *
  * @example
  * // Match 11 February 2014 from middle-endian format:
@@ -300,10 +302,10 @@ export interface IsMatchOptions
  * })
  * //=> true
  */
-export default function isMatch(
-  dateString: string,
-  formatString: string,
-  options?: IsMatchOptions
+export function isMatch(
+  dateStr: string,
+  formatStr: string,
+  options?: IsMatchOptions,
 ): boolean {
-  return isValid(parse(dateString, formatString, new Date(), options))
+  return isValid(parse(dateStr, formatStr, new Date(), options));
 }

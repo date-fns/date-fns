@@ -513,9 +513,9 @@ If now is January 1st, 2000, 00:00.
 | {"months":0}  | noll månader  |
 | {"months":1}  | en månad      |
 | {"months":2}  | två månader   |
-| {"weeks":0}   | noll vecka    |
+| {"weeks":0}   | noll veckor   |
 | {"weeks":1}   | en vecka      |
-| {"weeks":2}   | två vecka     |
+| {"weeks":2}   | två veckor    |
 | {"days":0}    | noll dagar    |
 | {"days":1}    | en dag        |
 | {"days":2}    | två dagar     |

@@ -1,4 +1,4 @@
-import startOfDay from '../startOfDay/index'
+import { startOfDay } from "../startOfDay/index.js";
 
 /**
  * @name isSameDay
@@ -8,9 +8,12 @@ import startOfDay from '../startOfDay/index'
  * @description
  * Are the given dates in the same day (and year and month)?
  *
- * @param dateLeft - the first date to check
- * @param dateRight - the second date to check
- * @returns the dates are in the same day (and year and month)
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param dateLeft - The first date to check
+ * @param dateRight - The second date to check
+
+ * @returns The dates are in the same day (and year and month)
  *
  * @example
  * // Are 4 September 06:00:00 and 4 September 18:00:00 in the same day?
@@ -27,12 +30,12 @@ import startOfDay from '../startOfDay/index'
  * const result = isSameDay(new Date(2014, 8, 4), new Date(2015, 8, 4))
  * //=> false
  */
-export default function isSameDay<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+export function isSameDay<DateType extends Date>(
+  dateLeft: DateType | number | string,
+  dateRight: DateType | number | string,
 ): boolean {
-  const dateLeftStartOfDay = startOfDay(dirtyDateLeft)
-  const dateRightStartOfDay = startOfDay(dirtyDateRight)
+  const dateLeftStartOfDay = startOfDay(dateLeft);
+  const dateRightStartOfDay = startOfDay(dateRight);
 
-  return dateLeftStartOfDay.getTime() === dateRightStartOfDay.getTime()
+  return +dateLeftStartOfDay === +dateRightStartOfDay;
 }

@@ -1,112 +1,110 @@
-import type { FormatDistanceFn, FormatDistanceLocale } from '../../../types'
+import type { FormatDistanceFn, FormatDistanceLocale } from "../../../types.js";
 
 type FormatDistanceTokenValue =
   | string
   | {
-      one: string
-      other: string
-    }
+      one: string;
+      other: string;
+    };
 
 const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   lessThanXSeconds: {
-    one: 'më pak se një sekondë',
-    other: 'më pak se {{count}} sekonda',
+    one: "më pak se një sekondë",
+    other: "më pak se {{count}} sekonda",
   },
 
   xSeconds: {
-    one: '1 sekondë',
-    other: '{{count}} sekonda',
+    one: "1 sekondë",
+    other: "{{count}} sekonda",
   },
 
-  halfAMinute: 'gjysëm minuti',
+  halfAMinute: "gjysëm minuti",
 
   lessThanXMinutes: {
-    one: 'më pak se një minute',
-    other: 'më pak se {{count}} minuta',
+    one: "më pak se një minute",
+    other: "më pak se {{count}} minuta",
   },
 
   xMinutes: {
-    one: '1 minutë',
-    other: '{{count}} minuta',
+    one: "1 minutë",
+    other: "{{count}} minuta",
   },
 
   aboutXHours: {
-    one: 'rreth 1 orë',
-    other: 'rreth {{count}} orë',
+    one: "rreth 1 orë",
+    other: "rreth {{count}} orë",
   },
 
   xHours: {
-    one: '1 orë',
-    other: '{{count}} orë',
+    one: "1 orë",
+    other: "{{count}} orë",
   },
 
   xDays: {
-    one: '1 ditë',
-    other: '{{count}} ditë',
+    one: "1 ditë",
+    other: "{{count}} ditë",
   },
 
   aboutXWeeks: {
-    one: 'rreth 1 javë',
-    other: 'rreth {{count}} javë',
+    one: "rreth 1 javë",
+    other: "rreth {{count}} javë",
   },
 
   xWeeks: {
-    one: '1 javë',
-    other: '{{count}} javë',
+    one: "1 javë",
+    other: "{{count}} javë",
   },
 
   aboutXMonths: {
-    one: 'rreth 1 muaj',
-    other: 'rreth {{count}} muaj',
+    one: "rreth 1 muaj",
+    other: "rreth {{count}} muaj",
   },
 
   xMonths: {
-    one: '1 muaj',
-    other: '{{count}} muaj',
+    one: "1 muaj",
+    other: "{{count}} muaj",
   },
 
   aboutXYears: {
-    one: 'rreth 1 vit',
-    other: 'rreth {{count}} vite',
+    one: "rreth 1 vit",
+    other: "rreth {{count}} vite",
   },
 
   xYears: {
-    one: '1 vit',
-    other: '{{count}} vite',
+    one: "1 vit",
+    other: "{{count}} vite",
   },
 
   overXYears: {
-    one: 'mbi 1 vit',
-    other: 'mbi {{count}} vite',
+    one: "mbi 1 vit",
+    other: "mbi {{count}} vite",
   },
 
   almostXYears: {
-    one: 'pothuajse 1 vit',
-    other: 'pothuajse {{count}} vite',
+    one: "pothuajse 1 vit",
+    other: "pothuajse {{count}} vite",
   },
-}
+};
 
-const formatDistance: FormatDistanceFn = (token, count, options) => {
-  let result
+export const formatDistance: FormatDistanceFn = (token, count, options) => {
+  let result;
 
-  const tokenValue = formatDistanceLocale[token]
-  if (typeof tokenValue === 'string') {
-    result = tokenValue
+  const tokenValue = formatDistanceLocale[token];
+  if (typeof tokenValue === "string") {
+    result = tokenValue;
   } else if (count === 1) {
-    result = tokenValue.one
+    result = tokenValue.one;
   } else {
-    result = tokenValue.other.replace('{{count}}', String(count))
+    result = tokenValue.other.replace("{{count}}", String(count));
   }
 
   if (options?.addSuffix) {
     if (options.comparison && options.comparison > 0) {
-      return 'në ' + result
+      return "në " + result;
     } else {
-      return result + ' më parë'
+      return result + " më parë";
     }
   }
 
-  return result
-}
-
-export default formatDistance
+  return result;
+};
