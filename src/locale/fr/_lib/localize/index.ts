@@ -118,7 +118,7 @@ const ordinalNumber: LocalizeFn<number> = (dirtyNumber, options) => {
   if (number === 1) {
     suffix = unit && feminineUnits.includes(unit) ? "ère" : "er";
   } else {
-    suffix = "ème";
+    suffix = unit === "date" ? "" : "ème";
   }
 
   return number + suffix;
