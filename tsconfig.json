@@ -10,6 +10,8 @@
     // TODO: Enable these when we can:
     // "noUncheckedIndexedAccess": true,
     // "exactOptionalPropertyTypes": true
+    // Enable for debug, but keep disabled after that as it slows down builds a lot
+    // "noErrorTruncation": true
   },
   "include": ["src/**/*.ts", "scripts/**/*.ts", "test/**/*.ts"],
   "exclude": ["node_modules", "dist", "tmp", "examples"]
