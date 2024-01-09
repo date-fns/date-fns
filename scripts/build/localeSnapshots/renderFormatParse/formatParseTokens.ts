@@ -70,6 +70,13 @@ const localizedDates = [
   new Date(1987, 11, 11, 12, 13, 14, 15),
 ];
 
+const ordinalDates = [
+  new Date(2019, 0, 1),
+  new Date(2019, 0, 2),
+  new Date(2019, 1, 1),
+  new Date(2019, 1, 2),
+]
+
 const formatParseTokens = [
   {
     title: "Calendar year",
@@ -233,6 +240,12 @@ const formatParseTokens = [
     title: "Combination of date and time",
     tokens: ["Pp", "PPpp", "PPPppp", "PPPPpppp"],
     dates: localizedDates,
+  },
+
+  {
+    title: "Ordinals",
+    tokens: ["Do", "do", "do MMM", "do MMMM"],
+    dates: ordinalDates,
   },
 ];
 export default formatParseTokens;
