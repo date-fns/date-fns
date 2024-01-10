@@ -1,16 +1,17 @@
 /* eslint-env mocha */
 
 import assert from "assert";
+import sinon from "sinon";
 import {
-  type SpyInstance,
   afterEach,
   beforeEach,
   describe,
   expect,
   it,
   vi,
+  type SpyInstance,
 } from "vitest";
-import sinon from "sinon";
+import type { FormatPart } from "../types.js";
 import { format } from "./index.js";
 
 describe("format", () => {
@@ -744,7 +745,7 @@ describe("format", () => {
     });
   });
 
-  describe("custom locale", () => {
+  describe("locale features", () => {
     it("allows to pass a custom locale", () => {
       const customLocale = {
         localize: {
@@ -763,6 +764,38 @@ describe("format", () => {
         locale: customLocale,
       });
       assert(result === "It works!");
+    });
+
+    it("allows a localize preprocessor", () => {
+      const customLocale = {
+        localize: {
+          month: (v: number) => ["janvier"][v],
+          ordinalNumber: (v: number) => String(v) + "er",
+
+          preprocessor: (date: Date, parts: FormatPart[]) => {
+            // replace `do` tokens to `d` if not the first of the month
+            if (date.getDate() === 1) return parts;
+
+            return parts.map((part) =>
+              part.isToken && part.value === "do"
+                ? { isToken: true, value: "d" }
+                : part,
+            );
+          },
+        },
+      };
+
+      let result = format(new Date(2024, 0, 1), "do MMMM", {
+        // @ts-expect-error - It's ok to have incomplete locale
+        locale: customLocale,
+      });
+      expect(result).toEqual("1er janvier");
+
+      result = format(new Date(2024, 0, 2), "do MMMM", {
+        // @ts-expect-error - It's ok to have incomplete locale
+        locale: customLocale,
+      });
+      expect(result).toEqual("2 janvier");
     });
   });
 
