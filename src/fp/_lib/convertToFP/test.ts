@@ -3,7 +3,8 @@
 import assert from "assert";
 import { pipe } from "fp-ts/function";
 import { flow as jsFnsFlow } from "js-fns";
-import lodashFlow from "lodash/flow";
+// @ts-expect-error - Lodash, come on, bro
+import { flow as lodashFlow } from "loedash";
 import { describe, it } from "vitest";
 import { addDays, addHours, isEqual } from "../../index.js";
 import { convertToFP } from "./index.js";
