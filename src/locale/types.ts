@@ -179,7 +179,12 @@ export type FormatRelativeToken =
 /**
  * A format part that represents a token or string literal, used by format parser/tokenizer
  */
-export type FormatPart = { isToken: boolean; value: string };
+export interface FormatPart {
+  /** If the part is a format token. */
+  isToken: boolean;
+  /** The format part value (i.e. `"do"`). */
+  value: string
+};
 
 /// Localize types
 
