@@ -116,17 +116,19 @@ describe("differenceInSeconds", () => {
     });
 
     it("does not return -0 when the given dates are the same", () => {
-      function isNegativeZero(x: number): boolean {
-        return x === 0 && 1 / x < 0;
-      }
-
       const result = differenceInSeconds(
         new Date(2014, 8 /* Sep */, 5, 0, 0),
         new Date(2014, 8 /* Sep */, 5, 0, 0),
       );
+      assert(!isNegativeZero(result));
+    });
 
-      const resultIsNegative = isNegativeZero(result);
-      assert(resultIsNegative === false);
+    it("does not return -0 when the given dates have milliseconds difference", () => {
+      const result = differenceInSeconds(
+        new Date(2014, 8 /* Sep */, 5, 0, 0, 0, 973),
+        new Date(2014, 8 /* Sep */, 5, 0, 0, 0, 976),
+      );
+      assert(!isNegativeZero(result));
     });
   });
 
@@ -151,3 +153,7 @@ describe("differenceInSeconds", () => {
     assert(isNaN(result));
   });
 });
+
+function isNegativeZero(x: number): boolean {
+  return x === 0 && 1 / x < 0;
+}
