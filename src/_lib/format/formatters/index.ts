@@ -33,9 +33,7 @@ type Formatter = (
   localize: Localize,
   options: Required<
     LocalizedOptions<"options"> & WeekOptions & FirstWeekContainsDateOptions
-  > & {
-    _originalDate: Date;
-  },
+  >,
 ) => string;
 
 /*
@@ -667,9 +665,8 @@ export const formatters: { [token: string]: Formatter } = {
   },
 
   // Timezone (ISO-8601. If offset is 0, output is always `'Z'`)
-  X: function (date, token, _localize, options) {
-    const originalDate = options._originalDate || date;
-    const timezoneOffset = originalDate.getTimezoneOffset();
+  X: function (date, token, _localize) {
+    const timezoneOffset = date.getTimezoneOffset();
 
     if (timezoneOffset === 0) {
       return "Z";
@@ -698,9 +695,8 @@ export const formatters: { [token: string]: Formatter } = {
   },
 
   // Timezone (ISO-8601. If offset is 0, output is `'+00:00'` or equivalent)
-  x: function (date, token, _localize, options) {
-    const originalDate = options._originalDate || date;
-    const timezoneOffset = originalDate.getTimezoneOffset();
+  x: function (date, token, _localize) {
+    const timezoneOffset = date.getTimezoneOffset();
 
     switch (token) {
       // Hours and optional minutes
@@ -725,9 +721,8 @@ export const formatters: { [token: string]: Formatter } = {
   },
 
   // Timezone (GMT)
-  O: function (date, token, _localize, options) {
-    const originalDate = options._originalDate || date;
-    const timezoneOffset = originalDate.getTimezoneOffset();
+  O: function (date, token, _localize) {
+    const timezoneOffset = date.getTimezoneOffset();
 
     switch (token) {
       // Short
@@ -743,9 +738,8 @@ export const formatters: { [token: string]: Formatter } = {
   },
 
   // Timezone (specific non-location)
-  z: function (date, token, _localize, options) {
-    const originalDate = options._originalDate || date;
-    const timezoneOffset = originalDate.getTimezoneOffset();
+  z: function (date, token, _localize) {
+    const timezoneOffset = date.getTimezoneOffset();
 
     switch (token) {
       // Short
@@ -761,16 +755,14 @@ export const formatters: { [token: string]: Formatter } = {
   },
 
   // Seconds timestamp
-  t: function (date, token, _localize, options) {
-    const originalDate = options._originalDate || date;
-    const timestamp = Math.floor(originalDate.getTime() / 1000);
+  t: function (date, token, _localize) {
+    const timestamp = Math.floor(date.getTime() / 1000);
     return addLeadingZeros(timestamp, token.length);
   },
 
   // Milliseconds timestamp
-  T: function (date, token, _localize, options) {
-    const originalDate = options._originalDate || date;
-    const timestamp = originalDate.getTime();
+  T: function (date, token, _localize) {
+    const timestamp = date.getTime();
     return addLeadingZeros(timestamp, token.length);
   },
 };
