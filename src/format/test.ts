@@ -1,7 +1,6 @@
 /* eslint-env mocha */
 
 import assert from "assert";
-import sinon from "sinon";
 import {
   afterEach,
   beforeEach,
@@ -11,8 +10,9 @@ import {
   vi,
   type SpyInstance,
 } from "vitest";
+import sinon from "sinon";
 import type { FormatPart } from "../types.js";
-import { format } from "./index.js";
+import { format, formatDate } from "./index.js";
 
 describe("format", () => {
   const date = new Date(1986, 3 /* Apr */, 4, 10, 32, 55, 123);
@@ -65,6 +65,14 @@ describe("format", () => {
     assert.strictEqual(
       format(date, "yyyy-MM-dd'\n'HH:mm:ss"),
       "2014-04-04\n05:00:00",
+    );
+  });
+
+  it("alias formatDate has same behavior as format", () => {
+    const date = new Date(2014, 3, 4, 5);
+    assert.strictEqual(
+      formatDate(date, "yyyy-MM-dd'\n'HH:mm:ss"),
+      format(date, "yyyy-MM-dd'\n'HH:mm:ss"),
     );
   });
 

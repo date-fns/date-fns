@@ -43,6 +43,9 @@ const escapedStringRegExp = /^'([^]*?)'?$/;
 const doubleQuoteRegExp = /''/g;
 const unescapedLatinCharacterRegExp = /[a-zA-Z]/;
 
+export { format as formatDate };
+export type { FormatOptions as FormatDateOptions };
+
 /**
  * The {@link format} function options.
  */
@@ -54,6 +57,7 @@ export interface FormatOptions
 
 /**
  * @name format
+ * @alias formatDate
  * @category Common Helpers
  * @summary Format the date.
  *
