@@ -84,7 +84,7 @@ export const lightFormatters = {
   S(date: Date, token: string): string {
     const numberOfDigits = token.length;
     const milliseconds = date.getMilliseconds();
-    const fractionalSeconds = Math.floor(
+    const fractionalSeconds = Math.trunc(
       milliseconds * Math.pow(10, numberOfDigits - 3),
     );
     return addLeadingZeros(fractionalSeconds, token.length);

@@ -80,7 +80,7 @@ export function formatISO<DateType extends Date>(
 
     if (offset !== 0) {
       const absoluteOffset = Math.abs(offset);
-      const hourOffset = addLeadingZeros(Math.floor(absoluteOffset / 60), 2);
+      const hourOffset = addLeadingZeros(Math.trunc(absoluteOffset / 60), 2);
       const minuteOffset = addLeadingZeros(absoluteOffset % 60, 2);
       // If less than 0, the sign is +, because it is ahead of time.
       const sign = offset < 0 ? "+" : "-";

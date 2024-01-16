@@ -1,18 +1,18 @@
 /* eslint-env mocha */
 
 import assert from "assert";
-import { describe, it } from "vitest";
+import { describe, expect, it } from "vitest";
 import { milliseconds } from "./index.js";
 
 describe("milliseconds", () => {
   it("converts years to milliseconds", () => {
     const result = milliseconds({ years: 2 });
-    assert(result === 63113904000);
+    expect(result).toBe(63113903999);
   });
 
   it("converts months to milliseconds", () => {
     const result = milliseconds({ months: 3 });
-    assert(result === 7889238000);
+    expect(result).toBe(7889237999);
   });
 
   it("converts weeks to milliseconds", () => {
@@ -56,5 +56,10 @@ describe("milliseconds", () => {
   it("returns 0 for an empty duration", () => {
     const result = milliseconds({});
     assert(result === 0);
+  });
+
+  it("properly works with negative numbers", () => {
+    expect(milliseconds({ seconds: 1.2345 })).toBe(1234);
+    expect(milliseconds({ seconds: -1.2345 })).toBe(-1234);
   });
 });

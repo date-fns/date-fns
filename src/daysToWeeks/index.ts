@@ -20,11 +20,11 @@ import { daysInWeek } from "../constants/index.js";
  * //=> 2
  *
  * @example
- * // It uses floor rounding:
+ * // It uses trunc rounding:
  * const result = daysToWeeks(13)
  * //=> 1
  */
 export function daysToWeeks(days: number): number {
   const weeks = days / daysInWeek;
-  return Math.floor(weeks);
+  return Math.trunc(weeks);
 }

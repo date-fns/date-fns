@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from "assert";
-import { describe, it } from "vitest";
+import { describe, expect, it } from "vitest";
 import { getISOWeek } from "./index.js";
 
 describe("getISOWeek", () => {
@@ -34,6 +34,11 @@ describe("getISOWeek", () => {
     it("returns the ISO week at 31 May 2016", () => {
       const result = getISOWeek(new Date(2016, 4 /* May */, 31));
       assert(result === 22);
+    });
+
+    it("properly works with negative numbers", () => {
+      expect(getISOWeek(new Date(2014, 6 /* Jul */, 14))).toBe(29);
+      expect(getISOWeek(new Date(-2014, 6 /* Jul */, 14))).toBe(29);
     });
   });
 

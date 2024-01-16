@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from "assert";
-import { describe, it } from "vitest";
+import { describe, expect, it } from "vitest";
 import { getWeek } from "./index.js";
 
 describe("getWeek", () => {
@@ -21,6 +21,13 @@ describe("getWeek", () => {
     initialDate.setHours(0, 0, 0, 0);
     const result = getWeek(initialDate);
     assert(result === 1);
+  });
+
+  it("properly works with negative numbers", () => {
+    expect(getWeek(new Date(2005, 0 /* Jan */, 4))).toBe(2);
+    // Calendars repeat every 400 years
+    expect(getWeek(new Date(395, 0 /* Jan */, 4))).toBe(1);
+    expect(getWeek(new Date(-2005, 0 /* Jan */, 4))).toBe(1);
   });
 
   it("returns NaN if the given date is invalid", () => {

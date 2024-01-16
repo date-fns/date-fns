@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from "assert";
-import { describe, it } from "vitest";
+import { describe, expect, it } from "vitest";
 import { minutesToHours } from "./index.js";
 
 describe("minuteToHours", () => {
@@ -18,5 +18,10 @@ describe("minuteToHours", () => {
   it("handles border values", () => {
     assert(minutesToHours(60.5) === 1);
     assert(minutesToHours(0) === 0);
+  });
+
+  it("properly works with negative numbers", () => {
+    expect(minutesToHours(123456)).toBe(2057);
+    expect(minutesToHours(-123456)).toBe(-2057);
   });
 });

@@ -18,5 +18,5 @@ import { daysInYear } from "../constants/index.js";
  * //=> 24
  */
 export function yearsToDays(years: number): number {
-  return Math.floor(years * daysInYear);
+  return Math.trunc(years * daysInYear);
 }

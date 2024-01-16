@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from "assert";
-import { describe, it } from "vitest";
+import { describe, expect, it } from "vitest";
 import { differenceInCalendarISOWeeks } from "./index.js";
 
 describe("differenceInCalendarISOWeeks", () => {
@@ -74,6 +74,13 @@ describe("differenceInCalendarISOWeeks", () => {
 
       const resultIsNegative = isNegativeZero(result);
       assert(resultIsNegative === false);
+    });
+
+    it("properly works with negative numbers", () => {
+      const a = new Date(2014, 6 /* Jul */, 9);
+      const b = new Date(2014, 6 /* Jul */, 19);
+      expect(differenceInCalendarISOWeeks(b, a)).toBe(1);
+      expect(differenceInCalendarISOWeeks(a, b)).toBe(-1);
     });
   });
 

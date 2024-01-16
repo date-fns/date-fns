@@ -24,5 +24,5 @@ import { millisecondsInHour } from "../constants/index.js";
  */
 export function millisecondsToHours(milliseconds: number): number {
   const hours = milliseconds / millisecondsInHour;
-  return Math.floor(hours);
+  return Math.trunc(hours);
 }

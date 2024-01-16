@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from "assert";
-import { describe, it } from "vitest";
+import { describe, expect, it } from "vitest";
 import { yearsToQuarters } from "./index.js";
 
 describe("yearsToQuarters", () => {
@@ -18,5 +18,10 @@ describe("yearsToQuarters", () => {
   it("handles border values", () => {
     assert(yearsToQuarters(1.5) === 6);
     assert(yearsToQuarters(0) === 0);
+  });
+
+  it("properly works with negative numbers", () => {
+    expect(yearsToQuarters(1.23)).toBe(4);
+    expect(yearsToQuarters(-1.23)).toBe(-4);
   });
 });

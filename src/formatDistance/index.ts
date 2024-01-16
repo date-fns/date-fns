@@ -200,7 +200,7 @@ export function formatDistance<DateType extends Date>(
     // 1 year up to max Date
   } else {
     const monthsSinceStartOfYear = months % 12;
-    const years = Math.floor(months / 12);
+    const years = Math.trunc(months / 12);
 
     // N years up to 1 years 3 months
     if (monthsSinceStartOfYear < 3) {

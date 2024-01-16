@@ -24,5 +24,5 @@ import { millisecondsInSecond } from "../constants/index.js";
  */
 export function millisecondsToSeconds(milliseconds: number): number {
   const seconds = milliseconds / millisecondsInSecond;
-  return Math.floor(seconds);
+  return Math.trunc(seconds);
 }

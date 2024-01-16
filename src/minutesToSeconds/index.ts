@@ -18,5 +18,5 @@ import { secondsInMinute } from "../constants/index.js";
  * //=> 120
  */
 export function minutesToSeconds(minutes: number): number {
-  return Math.floor(minutes * secondsInMinute);
+  return Math.trunc(minutes * secondsInMinute);
 }

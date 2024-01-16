@@ -1,4 +1,4 @@
-import { getTime } from "../getTime/index.js";
+import { toDate } from "../index.js";
 
 /**
  * @name getUnixTime
@@ -22,5 +22,5 @@ import { getTime } from "../getTime/index.js";
 export function getUnixTime<DateType extends Date>(
   date: DateType | number | string,
 ): number {
-  return Math.floor(getTime(date) / 1000);
+  return Math.trunc(+toDate(date) / 1000);
 }

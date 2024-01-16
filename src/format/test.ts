@@ -19,7 +19,7 @@ describe("format", () => {
 
   const offset = date.getTimezoneOffset();
   const absoluteOffset = Math.abs(offset);
-  const hours = Math.floor(absoluteOffset / 60);
+  const hours = Math.trunc(absoluteOffset / 60);
   const hoursLeadingZero = hours < 10 ? "0" : "";
   const minutes = absoluteOffset % 60;
   const minutesLeadingZero = minutes < 10 ? "0" : "";
@@ -43,7 +43,7 @@ describe("format", () => {
   const timezoneGMT = "GMT" + timezone;
 
   const timestamp = date.getTime().toString();
-  const secondsTimestamp = Math.floor(date.getTime() / 1000).toString();
+  const secondsTimestamp = Math.trunc(date.getTime() / 1000).toString();
 
   it("accepts a timestamp", () => {
     const date = new Date(2014, 3, 4).getTime();
@@ -665,6 +665,11 @@ describe("format", () => {
     it("milliseconds timestamp", () => {
       const result = format(date, "T");
       assert(result === timestamp);
+    });
+
+    it("seconds timestamp handles negative numbers", () => {
+      expect(format(new Date(1001), "t")).toBe("1");
+      expect(format(new Date(-1001), "t")).toBe("-1");
     });
   });
 

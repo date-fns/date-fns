@@ -52,5 +52,5 @@ export function milliseconds({
   if (minutes) totalSeconds += minutes * 60;
   if (seconds) totalSeconds += seconds;
 
-  return Math.round(totalSeconds * 1000);
+  return Math.trunc(totalSeconds * 1000);
 }

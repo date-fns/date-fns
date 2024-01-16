@@ -756,7 +756,7 @@ export const formatters: { [token: string]: Formatter } = {
 
   // Seconds timestamp
   t: function (date, token, _localize) {
-    const timestamp = Math.floor(date.getTime() / 1000);
+    const timestamp = Math.trunc(date.getTime() / 1000);
     return addLeadingZeros(timestamp, token.length);
   },
 
@@ -770,7 +770,7 @@ export const formatters: { [token: string]: Formatter } = {
 function formatTimezoneShort(offset: number, delimiter: string = ""): string {
   const sign = offset > 0 ? "-" : "+";
   const absOffset = Math.abs(offset);
-  const hours = Math.floor(absOffset / 60);
+  const hours = Math.trunc(absOffset / 60);
   const minutes = absOffset % 60;
   if (minutes === 0) {
     return sign + String(hours);
@@ -792,7 +792,7 @@ function formatTimezoneWithOptionalMinutes(
 function formatTimezone(offset: number, delimiter: string = ""): string {
   const sign = offset > 0 ? "-" : "+";
   const absOffset = Math.abs(offset);
-  const hours = addLeadingZeros(Math.floor(absOffset / 60), 2);
+  const hours = addLeadingZeros(Math.trunc(absOffset / 60), 2);
   const minutes = addLeadingZeros(absOffset % 60, 2);
   return sign + hours + delimiter + minutes;
 }

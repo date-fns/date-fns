@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from "assert";
-import { describe, it } from "vitest";
+import { describe, expect, it } from "vitest";
 import { differenceInCalendarDays } from "./index.js";
 import { getDstTransitions } from "../../test/dst/tzOffsetTransitions.js";
 
@@ -75,6 +75,14 @@ describe("differenceInCalendarDays", () => {
 
       const resultIsNegative = isNegativeZero(result);
       assert(resultIsNegative === false);
+    });
+
+    it("properly works with negative numbers", () => {
+      const a = new Date(2014, 6 /* Jul */, 1);
+      const b = new Date(2014, 6 /* Jul */, 2, 1);
+
+      expect(differenceInCalendarDays(b, a)).toBe(1);
+      expect(differenceInCalendarDays(a, b)).toBe(-1);
     });
   });
 
