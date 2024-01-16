@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from "assert";
-import { describe, it } from "vitest";
+import { describe, expect, it } from "vitest";
 import { startOfDecade } from "./index.js";
 
 describe("startOfDecade", () => {
@@ -26,5 +26,10 @@ describe("startOfDecade", () => {
   it("returns `Invalid Date` if the given date is invalid", () => {
     const result = startOfDecade(new Date(NaN));
     assert(result instanceof Date && isNaN(result.getTime()));
+  });
+
+  it("properly works with negative numbers", () => {
+    expect(startOfDecade(new Date(2009, 0, 1))).toEqual(new Date(2000, 0, 1));
+    expect(startOfDecade(new Date(-2001, 0, 1))).toEqual(new Date(-2010, 0, 1));
   });
 });
