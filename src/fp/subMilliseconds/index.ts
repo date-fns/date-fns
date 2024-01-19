@@ -1,6 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.
 
-import fn from '../../subMilliseconds/index'
-import convertToFP from '../_lib/convertToFP/index'
+import { subMilliseconds as fn } from "../../subMilliseconds/index.js";
+import { convertToFP } from "../_lib/convertToFP/index.js";
 
-export default convertToFP(fn, 2)
+export const subMilliseconds = convertToFP(fn, 2);

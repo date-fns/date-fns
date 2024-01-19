@@ -1,8 +1,8 @@
-import addDays from '../addDays/index'
-import addMonths from '../addMonths/index'
-import constructFrom from '../constructFrom/index'
-import toDate from '../toDate/index'
-import type { Duration } from '../types'
+import { addDays } from "../addDays/index.js";
+import { addMonths } from "../addMonths/index.js";
+import { constructFrom } from "../constructFrom/index.js";
+import { toDate } from "../toDate/index.js";
+import type { Duration } from "../types.js";
 
 /**
  * @name add
@@ -12,8 +12,10 @@ import type { Duration } from '../types'
  * @description
  * Add the specified years, months, weeks, days, hours, minutes and seconds to the given date.
  *
- * @param date - the date to be changed
- * @param duration - the object with years, months, weeks, days, hours, minutes and seconds to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date to be changed
+ * @param duration - The object with years, months, weeks, days, hours, minutes and seconds to be added.
  *
  * | Key            | Description                        |
  * |----------------|------------------------------------|
@@ -27,7 +29,7 @@ import type { Duration } from '../types'
  *
  * All values default to 0
  *
- * @returns the new date with the seconds added
+ * @returns The new date with the seconds added
  *
  * @example
  * // Add the following duration to 1 September 2014, 10:19:50
@@ -36,15 +38,15 @@ import type { Duration } from '../types'
  *   months: 9,
  *   weeks: 1,
  *   days: 7,
- *   hours: 5,
+ *   hours: 5,\\-7
  *   minutes: 9,
  *   seconds: 30,
  * })
  * //=> Thu Jun 15 2017 15:29:20
  */
-export default function add<DateType extends Date>(
-  dirtyDate: DateType | number,
-  duration: Duration
+export function add<DateType extends Date>(
+  date: DateType | number | string,
+  duration: Duration,
 ): DateType {
   const {
     years = 0,
@@ -54,22 +56,22 @@ export default function add<DateType extends Date>(
     hours = 0,
     minutes = 0,
     seconds = 0,
-  } = duration
+  } = duration;
 
   // Add years and months
-  const date = toDate(dirtyDate)
+  const _date = toDate(date);
   const dateWithMonths =
-    months || years ? addMonths(date, months + years * 12) : date
+    months || years ? addMonths(_date, months + years * 12) : _date;
 
   // Add weeks and days
   const dateWithDays =
-    days || weeks ? addDays(dateWithMonths, days + weeks * 7) : dateWithMonths
+    days || weeks ? addDays(dateWithMonths, days + weeks * 7) : dateWithMonths;
 
   // Add days, hours, minutes and seconds
-  const minutesToAdd = minutes + hours * 60
-  const secondsToAdd = seconds + minutesToAdd * 60
-  const msToAdd = secondsToAdd * 1000
-  const finalDate = constructFrom(dirtyDate, dateWithDays.getTime() + msToAdd)
+  const minutesToAdd = minutes + hours * 60;
+  const secondsToAdd = seconds + minutesToAdd * 60;
+  const msToAdd = secondsToAdd * 1000;
+  const finalDate = constructFrom(date, dateWithDays.getTime() + msToAdd);
 
-  return finalDate
+  return finalDate;
 }

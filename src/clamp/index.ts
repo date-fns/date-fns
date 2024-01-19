@@ -1,6 +1,6 @@
-import max from '../max/index'
-import min from '../min/index'
-import type { Interval } from '../types'
+import { max } from "../max/index.js";
+import { min } from "../min/index.js";
+import type { Interval } from "../types.js";
 
 /**
  * @name clamp
@@ -15,6 +15,13 @@ import type { Interval } from '../types'
  * - When the date is greater than the end of the interval, the end is returned.
  * - Otherwise the date is returned.
  *
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date to be bounded
+ * @param interval - The interval to bound to
+ *
+ * @returns The date bounded by the start and the end of the interval
+ *
  * @example
  * // What is Mar, 21, 2021 bounded to an interval starting at Mar, 22, 2021 and ending at Apr, 01, 2021
  * const result = clamp(new Date(2021, 2, 21), {
@@ -22,14 +29,10 @@ import type { Interval } from '../types'
  *   end: new Date(2021, 3, 1),
  * })
  * //=> Mon Mar 22 2021 00:00:00
- *
- * @param date - the date to be bounded
- * @param interval - the interval to bound to
- * @returns the date bounded by the start and the end of the interval
  */
-export default function clamp<DateType extends Date>(
-  date: DateType | number,
-  { start, end }: Interval
+export function clamp<DateType extends Date>(
+  date: DateType | number | string,
+  interval: Interval,
 ): DateType | Date {
-  return min([max([date, start]), end])
+  return min([max([date, interval.start]), interval.end]);
 }

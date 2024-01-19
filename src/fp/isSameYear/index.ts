@@ -1,6 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.
 
-import fn from '../../isSameYear/index'
-import convertToFP from '../_lib/convertToFP/index'
+import { isSameYear as fn } from "../../isSameYear/index.js";
+import { convertToFP } from "../_lib/convertToFP/index.js";
 
-export default convertToFP(fn, 2)
+export const isSameYear = convertToFP(fn, 2);

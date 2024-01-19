@@ -1,4 +1,4 @@
-import startOfISOWeekYear from '../startOfISOWeekYear/index'
+import { startOfISOWeekYear } from "../startOfISOWeekYear/index.js";
 
 /**
  * @name isSameISOWeekYear
@@ -10,21 +10,24 @@ import startOfISOWeekYear from '../startOfISOWeekYear/index'
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @param dateLeft - the first date to check
- * @param dateRight - the second date to check
- * @returns the dates are in the same ISO week-numbering year
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param dateLeft - The first date to check
+ * @param dateRight - The second date to check
+ *
+ * @returns The dates are in the same ISO week-numbering year
  *
  * @example
  * // Are 29 December 2003 and 2 January 2005 in the same ISO week-numbering year?
  * const result = isSameISOWeekYear(new Date(2003, 11, 29), new Date(2005, 0, 2))
  * //=> true
  */
-export default function isSameISOWeekYear<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+export function isSameISOWeekYear<DateType extends Date>(
+  dateLeft: DateType | number | string,
+  dateRight: DateType | number | string,
 ): boolean {
-  const dateLeftStartOfYear = startOfISOWeekYear(dirtyDateLeft)
-  const dateRightStartOfYear = startOfISOWeekYear(dirtyDateRight)
+  const dateLeftStartOfYear = startOfISOWeekYear(dateLeft);
+  const dateRightStartOfYear = startOfISOWeekYear(dateRight);
 
-  return dateLeftStartOfYear.getTime() === dateRightStartOfYear.getTime()
+  return +dateLeftStartOfYear === +dateRightStartOfYear;
 }

@@ -1,6 +1,6 @@
-import addHours from '../addHours/index'
-import toDate from '../toDate/index'
-import type { Interval, StepOptions } from '../types'
+import { addHours } from "../addHours/index.js";
+import { toDate } from "../toDate/index.js";
+import type { Interval, StepOptions } from "../types.js";
 
 /**
  * The {@link eachHourOfInterval} function options.
@@ -15,12 +15,12 @@ export interface EachHourOfIntervalOptions extends StepOptions {}
  * @description
  * Return the array of hours within the specified time interval.
  *
- * @param interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
- * @param options - an object with options.
- * @returns the array with starts of hours from the hour of the interval start to the hour of the interval end
- * @throws {RangeError} `options.step` must be a number greater than 1
- * @throws {RangeError} The start of an interval cannot be after its end
- * @throws {RangeError} Date in interval cannot be `Invalid Date`
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param interval - The interval.
+ * @param options - An object with options.
+ *
+ * @returns The array with starts of hours from the hour of the interval start to the hour of the interval end
  *
  * @example
  * // Each hour between 6 October 2014, 12:00 and 6 October 2014, 15:00
@@ -35,34 +35,31 @@ export interface EachHourOfIntervalOptions extends StepOptions {}
  * //   Mon Oct 06 2014 15:00:00
  * // ]
  */
-export default function eachHourOfInterval<DateType extends Date>(
+export function eachHourOfInterval<DateType extends Date>(
   interval: Interval<DateType>,
-  options?: EachHourOfIntervalOptions
+  options?: EachHourOfIntervalOptions,
 ): DateType[] {
-  const startDate = toDate(interval.start)
-  const endDate = toDate(interval.end)
+  const startDate = toDate(interval.start);
+  const endDate = toDate(interval.end);
 
-  const startTime = startDate.getTime()
-  const endTime = endDate.getTime()
+  let reversed = +startDate > +endDate;
+  const endTime = reversed ? +startDate : +endDate;
+  let currentDate = reversed ? endDate : startDate;
+  currentDate.setMinutes(0, 0, 0);
 
-  // Throw an exception if start date is after end date or if any date is `Invalid Date`
-  if (!(startTime <= endTime)) {
-    throw new RangeError('Invalid interval')
+  let step = options?.step ?? 1;
+  if (!step) return [];
+  if (step < 0) {
+    step = -step;
+    reversed = !reversed;
   }
 
-  const dates = []
+  const dates = [];
 
-  let currentDate = startDate
-  currentDate.setMinutes(0, 0, 0)
-
-  const step = options?.step ?? 1
-  if (step < 1 || isNaN(step))
-    throw new RangeError('`options.step` must be a number greater than 1')
-
-  while (currentDate.getTime() <= endTime) {
-    dates.push(toDate(currentDate))
-    currentDate = addHours(currentDate, step)
+  while (+currentDate <= endTime) {
+    dates.push(toDate(currentDate));
+    currentDate = addHours(currentDate, step);
   }
 
-  return dates
+  return reversed ? dates.reverse() : dates;
 }

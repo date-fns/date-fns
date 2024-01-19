@@ -1,50 +1,50 @@
-import constructFrom from '../../../constructFrom/index'
-import getTimezoneOffsetInMilliseconds from '../../../_lib/getTimezoneOffsetInMilliseconds/index'
-import { timezonePatterns } from '../constants'
-import { Parser } from '../Parser'
-import type { ParseFlags, ParseResult } from '../types'
-import { parseTimezonePattern } from '../utils'
+import { constructFrom } from "../../../constructFrom/index.js";
+import { getTimezoneOffsetInMilliseconds } from "../../../_lib/getTimezoneOffsetInMilliseconds/index.js";
+import { timezonePatterns } from "../constants.js";
+import { Parser } from "../Parser.js";
+import type { ParseFlags, ParseResult } from "../types.js";
+import { parseTimezonePattern } from "../utils.js";
 
 // Timezone (ISO-8601. +00:00 is `'Z'`)
 export class ISOTimezoneWithZParser extends Parser<number> {
-  priority = 10
+  priority = 10;
 
   parse(dateString: string, token: string): ParseResult<number> {
     switch (token) {
-      case 'X':
+      case "X":
         return parseTimezonePattern(
           timezonePatterns.basicOptionalMinutes,
-          dateString
-        )
-      case 'XX':
-        return parseTimezonePattern(timezonePatterns.basic, dateString)
-      case 'XXXX':
+          dateString,
+        );
+      case "XX":
+        return parseTimezonePattern(timezonePatterns.basic, dateString);
+      case "XXXX":
         return parseTimezonePattern(
           timezonePatterns.basicOptionalSeconds,
-          dateString
-        )
-      case 'XXXXX':
+          dateString,
+        );
+      case "XXXXX":
         return parseTimezonePattern(
           timezonePatterns.extendedOptionalSeconds,
-          dateString
-        )
-      case 'XXX':
+          dateString,
+        );
+      case "XXX":
       default:
-        return parseTimezonePattern(timezonePatterns.extended, dateString)
+        return parseTimezonePattern(timezonePatterns.extended, dateString);
     }
   }
 
   set<DateType extends Date>(
     date: DateType,
     flags: ParseFlags,
-    value: number
+    value: number,
   ): DateType {
-    if (flags.timestampIsSet) return date
+    if (flags.timestampIsSet) return date;
     return constructFrom(
       date,
-      date.getTime() - getTimezoneOffsetInMilliseconds(date) - value
-    )
+      date.getTime() - getTimezoneOffsetInMilliseconds(date) - value,
+    );
   }
 
-  incompatibleTokens = ['t', 'T', 'x']
+  incompatibleTokens = ["t", "T", "x"];
 }

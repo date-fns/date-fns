@@ -1,4 +1,4 @@
-import endOfDay from '../endOfDay/index'
+import { endOfDay } from "../endOfDay/index.js";
 
 /**
  * @name endOfToday
@@ -9,16 +9,15 @@ import endOfDay from '../endOfDay/index'
  * @description
  * Return the end of today.
  *
- * > ⚠️ Please note that this function is not present in the FP submodule as
- * > it uses `Date.now()` internally hence impure and can't be safely curried.
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
- * @returns the end of today
+ * @returns The end of today
  *
  * @example
  * // If today is 6 October 2014:
  * const result = endOfToday()
  * //=> Mon Oct 6 2014 23:59:59.999
  */
-export default function endOfToday(): Date {
-  return endOfDay(Date.now())
+export function endOfToday(): Date {
+  return endOfDay(Date.now());
 }

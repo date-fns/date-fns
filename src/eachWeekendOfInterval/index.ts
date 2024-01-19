@@ -1,7 +1,6 @@
-import eachDayOfInterval from '../eachDayOfInterval/index'
-import isSunday from '../isSunday/index'
-import isWeekend from '../isWeekend/index'
-import type { Interval } from '../types'
+import { eachDayOfInterval } from "../eachDayOfInterval/index.js";
+import { isWeekend } from "../isWeekend/index.js";
+import type { Interval } from "../types.js";
 
 /**
  * @name eachWeekendOfInterval
@@ -11,10 +10,11 @@ import type { Interval } from '../types'
  * @description
  * Get all the Saturdays and Sundays in the given date interval.
  *
- * @param interval - the given interval. See [Interval]{@link https://date-fns.org/docs/Interval}
- * @returns an array containing all the Saturdays and Sundays
- * @throws {RangeError} The start of an interval cannot be after its end
- * @throws {RangeError} Date in interval cannot be `Invalid Date`
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param interval - The given interval
+ *
+ * @returns An array containing all the Saturdays and Sundays
  *
  * @example
  * // Lists all Saturdays and Sundays in the given date interval
@@ -29,18 +29,15 @@ import type { Interval } from '../types'
  * //   Sun Sep 30 2018 00:00:00
  * // ]
  */
-export default function eachWeekendOfInterval<DateType extends Date>(
-  interval: Interval<DateType>
+export function eachWeekendOfInterval<DateType extends Date>(
+  interval: Interval<DateType>,
 ): DateType[] {
-  const dateInterval = eachDayOfInterval(interval)
-  const weekends = []
-  let index = 0
+  const dateInterval = eachDayOfInterval(interval);
+  const weekends = [];
+  let index = 0;
   while (index < dateInterval.length) {
-    const date = dateInterval[index++]
-    if (isWeekend(date)) {
-      weekends.push(date)
-      if (isSunday(date)) index = index + 5
-    }
+    const date = dateInterval[index++];
+    if (isWeekend(date)) weekends.push(date);
   }
-  return weekends
+  return weekends;
 }

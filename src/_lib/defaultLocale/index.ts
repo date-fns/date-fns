@@ -1,2 +1,1 @@
-import defaultLocale from '../../locale/en-US/index'
-export default defaultLocale
+export { enUS as defaultLocale } from "../../locale/en-US/index.js";

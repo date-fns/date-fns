@@ -1,5 +1,5 @@
-import addDays from '../addDays/index'
-import isSameDay from '../isSameDay/index'
+import { addDays } from "../addDays/index.js";
+import { isSameDay } from "../isSameDay/index.js";
 
 /**
  * @name isTomorrow
@@ -10,19 +10,19 @@ import isSameDay from '../isSameDay/index'
  * @description
  * Is the given date tomorrow?
  *
- * > ⚠️ Please note that this function is not present in the FP submodule as
- * > it uses `Date.now()` internally hence impure and can't be safely curried.
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
- * @param date - the date to check
- * @returns the date is tomorrow
+ * @param date - The date to check
+ *
+ * @returns The date is tomorrow
  *
  * @example
  * // If today is 6 October 2014, is 7 October 14:00:00 tomorrow?
  * const result = isTomorrow(new Date(2014, 9, 7, 14, 0))
  * //=> true
  */
-export default function isTomorrow<DateType extends Date>(
-  dirtyDate: DateType | number
+export function isTomorrow<DateType extends Date>(
+  date: DateType | number | string,
 ): boolean {
-  return isSameDay(dirtyDate, addDays(Date.now(), 1))
+  return isSameDay(date, addDays(Date.now(), 1));
 }
