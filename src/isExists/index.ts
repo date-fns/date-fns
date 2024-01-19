@@ -1,5 +1,8 @@
+export { isExists as isExisting };
+
 /**
  * @name isExists
+ * @alias isExisting
  * @category Common Helpers
  * @summary Is the given date exists?
  *

@@ -2,7 +2,7 @@
 
 import assert from "assert";
 import { describe, it } from "vitest";
-import { isExists } from "./index.js";
+import { isExists, isExisting } from "./index.js";
 
 describe("isValid", () => {
   it("returns true if the given date is valid", () => {
@@ -13,5 +13,12 @@ describe("isValid", () => {
   it("returns false if the given date is invalid", () => {
     const result = isExists(2018, 1 /* Feb */, 31);
     assert(result === false);
+  });
+
+  it("alias isExisting has same behavior as isExists", () => {
+    assert.strictEqual(
+        isExists(2018, 0, 31),
+        isExisting(2018, 0, 31),
+    );
   });
 });
