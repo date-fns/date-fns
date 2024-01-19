@@ -21,9 +21,9 @@ type FormatDistanceTokenValue =
 const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   lessThanXSeconds: {
     one: {
-      regular: "méně než sekunda",
-      past: "před méně než sekundou",
-      future: "za méně než sekundu",
+      regular: "méně než 1 sekunda",
+      past: "před méně než 1 sekundou",
+      future: "za méně než 1 sekundu",
     },
     few: {
       regular: "méně než {{count}} sekundy",
@@ -39,9 +39,9 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
 
   xSeconds: {
     one: {
-      regular: "sekunda",
-      past: "před sekundou",
-      future: "za sekundu",
+      regular: "1 sekunda",
+      past: "před 1 sekundou",
+      future: "za 1 sekundu",
     },
     few: {
       regular: "{{count}} sekundy",
@@ -66,9 +66,9 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
 
   lessThanXMinutes: {
     one: {
-      regular: "méně než minuta",
-      past: "před méně než minutou",
-      future: "za méně než minutu",
+      regular: "méně než 1 minuta",
+      past: "před méně než 1 minutou",
+      future: "za méně než 1 minutu",
     },
     few: {
       regular: "méně než {{count}} minuty",
@@ -84,9 +84,9 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
 
   xMinutes: {
     one: {
-      regular: "minuta",
-      past: "před minutou",
-      future: "za minutu",
+      regular: "1 minuta",
+      past: "před 1 minutou",
+      future: "za 1 minutu",
     },
     few: {
       regular: "{{count}} minuty",
@@ -102,9 +102,9 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
 
   aboutXHours: {
     one: {
-      regular: "přibližně hodina",
-      past: "přibližně před hodinou",
-      future: "přibližně za hodinu",
+      regular: "přibližně 1 hodina",
+      past: "přibližně před 1 hodinou",
+      future: "přibližně za 1 hodinu",
     },
     few: {
       regular: "přibližně {{count}} hodiny",
@@ -120,9 +120,9 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
 
   xHours: {
     one: {
-      regular: "hodina",
-      past: "před hodinou",
-      future: "za hodinu",
+      regular: "1 hodina",
+      past: "před 1 hodinou",
+      future: "za 1 hodinu",
     },
     few: {
       regular: "{{count}} hodiny",
@@ -138,9 +138,9 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
 
   xDays: {
     one: {
-      regular: "den",
-      past: "před dnem",
-      future: "za den",
+      regular: "1 den",
+      past: "před 1 dnem",
+      future: "za 1 den",
     },
     few: {
       regular: "{{count}} dny",
@@ -156,9 +156,9 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
 
   aboutXWeeks: {
     one: {
-      regular: "přibližně týden",
-      past: "přibližně před týdnem",
-      future: "přibližně za týden",
+      regular: "přibližně 1 týden",
+      past: "přibližně před 1 týdnem",
+      future: "přibližně za 1 týden",
     },
 
     few: {
@@ -176,9 +176,9 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
 
   xWeeks: {
     one: {
-      regular: "týden",
-      past: "před týdnem",
-      future: "za týden",
+      regular: "1 týden",
+      past: "před 1 týdnem",
+      future: "za 1 týden",
     },
 
     few: {
@@ -196,9 +196,9 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
 
   aboutXMonths: {
     one: {
-      regular: "přibližně měsíc",
-      past: "přibližně před měsícem",
-      future: "přibližně za měsíc",
+      regular: "přibližně 1 měsíc",
+      past: "přibližně před 1 měsícem",
+      future: "přibližně za 1 měsíc",
     },
 
     few: {
@@ -216,9 +216,9 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
 
   xMonths: {
     one: {
-      regular: "měsíc",
-      past: "před měsícem",
-      future: "za měsíc",
+      regular: "1 měsíc",
+      past: "před 1 měsícem",
+      future: "za 1 měsíc",
     },
 
     few: {
@@ -236,9 +236,9 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
 
   aboutXYears: {
     one: {
-      regular: "přibližně rok",
-      past: "přibližně před rokem",
-      future: "přibližně za rok",
+      regular: "přibližně 1 rok",
+      past: "přibližně před 1 rokem",
+      future: "přibližně za 1 rok",
     },
     few: {
       regular: "přibližně {{count}} roky",
@@ -254,9 +254,9 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
 
   xYears: {
     one: {
-      regular: "rok",
-      past: "před rokem",
-      future: "za rok",
+      regular: "1 rok",
+      past: "před 1 rokem",
+      future: "za 1 rok",
     },
     few: {
       regular: "{{count}} roky",
@@ -272,9 +272,9 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
 
   overXYears: {
     one: {
-      regular: "více než rok",
-      past: "před více než rokem",
-      future: "za více než rok",
+      regular: "více než 1 rok",
+      past: "před více než 1 rokem",
+      future: "za více než 1 rok",
     },
     few: {
       regular: "více než {{count}} roky",
@@ -290,9 +290,9 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
 
   almostXYears: {
     one: {
-      regular: "skoro rok",
-      past: "skoro před rokem",
-      future: "skoro za rok",
+      regular: "skoro 1 rok",
+      past: "skoro před 1 rokem",
+      future: "skoro za 1 rok",
     },
     few: {
       regular: "skoro {{count}} roky",
