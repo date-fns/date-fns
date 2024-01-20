@@ -28,6 +28,8 @@ On this release worked @kossnocorp, @TheKvikk, @fturmel and @ckcherry23.
 
 - Added missing `yearsToDays` to the FP submodule.
 
+- Made functions using rounding methods always return `0` instead of `-0`.
+
 ### Added
 
 - [Added `format` alias `formatDate` with corresponding `FormatDateOptions` interface](https://github.com/date-fns/date-fns/pull/3653).
