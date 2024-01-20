@@ -8,6 +8,30 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## v3.3.0 - 2024-01-20
+
+On this release worked @kossnocorp, @TheKvikk, @fturmel and @ckcherry23.
+
+### Fixed
+
+- Fixed the bug in `getOverlappingDaysInIntervals` caused by incorrect sorting of interval components that led to 0 for timestamps of different lengths.
+
+- Fixed bugs when working with negative numbers caused by using `Math.floor` (`-1.1` → `-2`) instead of `Math.trunc` (`-1.1` → `-1`). Most of the conversion functions (i.e., `hoursToMinutes`) were affected when passing some negative fractional input. Also, some other functions that could be possibly affected by unfortunate timezone/date combinations were fixed.
+
+  The functions that were affected: `format`, `parse`, `getUnixTime`, `daysToWeeks`, `hoursToMilliseconds`, `hoursToMinutes`, `hoursToSeconds`, `milliseconds`, `minutesToMilliseconds`, `millisecondsToMinutes`, `monthsToYears`, `millisecondsToHours`, `millisecondsToSeconds`, `minutesToHours`, `minutesToSeconds`, `yearsToQuarters`, `yearsToMonths`, `yearsToDays`, `weeksToDays`, `secondsToMinutes`, `secondsToHours`, `quartersToYears`, `quartersToMonths` and `monthsToQuarters`.
+
+- [Fixed the Czech locale's `formatDistance` to include `1` in `formatDistance`.](https://github.com/date-fns/date-fns/pull/3269)
+
+- Fixed `differenceInSeconds` and other functions relying on rounding options that can produce a negative 0.
+
+- [Added a preprocessor to the locales API, enabling fixing a long-standing bug in the French locale.](https://github.com/date-fns/date-fns/pull/3662) ([#1391](https://github.com/date-fns/date-fns/issues/1391))
+
+- Added missing `yearsToDays` to the FP submodule.
+
+### Added
+
+- [Added `format` alias `formatDate` with corresponding `FormatDateOptions` interface](https://github.com/date-fns/date-fns/pull/3653).
+
 ## v3.2.0 - 2024-01-09
 
 This release is brought to you by @kossnocorp, @fturmel, @grossbart, @MelvinVermeer, and @jcarstairs-scottlogic.

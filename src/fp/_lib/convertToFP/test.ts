@@ -3,6 +3,7 @@
 import assert from "assert";
 import { pipe } from "fp-ts/function";
 import { flow as jsFnsFlow } from "js-fns";
+// @ts-expect-error - Lodash types are tripping ("Module '"lodash"' has no exported member 'flow'.ts(2305)")
 import { flow as lodashFlow } from "lodash";
 import { describe, it } from "vitest";
 import { addDays, addHours, isEqual } from "../../index.js";
