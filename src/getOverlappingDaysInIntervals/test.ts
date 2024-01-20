@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from "assert";
-import { describe, it } from "vitest";
+import { describe, expect, it } from "vitest";
 import { getOverlappingDaysInIntervals } from "./index.js";
 
 describe("getOverlappingDaysInIntervals", () => {
@@ -213,5 +213,19 @@ describe("getOverlappingDaysInIntervals", () => {
       );
       assert(numOverlappingDays === 0);
     });
+  });
+
+  it("properly sorts the dates", () => {
+    const result = getOverlappingDaysInIntervals(
+      {
+        start: new Date(2001, 8 /* Sep */, 1),
+        end: new Date(2023, 11 /* Dec */, 20),
+      },
+      {
+        start: new Date(2023, 11 /* Dec */, 21),
+        end: new Date(2001, 8 /* Sep */, 9),
+      },
+    );
+    expect(result).toBe(8137);
   });
 });

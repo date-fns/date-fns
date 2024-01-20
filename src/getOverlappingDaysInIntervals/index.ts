@@ -41,11 +41,11 @@ export function getOverlappingDaysInIntervals<DateType extends Date>(
   const [leftStartTime, leftEndTime] = [
     +toDate(intervalLeft.start),
     +toDate(intervalLeft.end),
-  ].sort();
+  ].sort((a, b) => a - b);
   const [rightStartTime, rightEndTime] = [
     +toDate(intervalRight.start),
     +toDate(intervalRight.end),
-  ].sort();
+  ].sort((a, b) => a - b);
 
   const isOverlapping =
     leftStartTime < rightEndTime && rightStartTime < leftEndTime;
