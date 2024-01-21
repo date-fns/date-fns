@@ -1,4 +1,4 @@
-import { toDate } from "../index.js";
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name getUnixTime
