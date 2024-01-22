@@ -1,7 +1,4 @@
-/* eslint-env mocha */
-
-import assert from "assert";
-import { describe, it } from "vitest";
+import { expect, assert, describe, it } from "vitest";
 import { formatISO9075 } from "./index.js";
 
 describe("formatISO9075", () => {

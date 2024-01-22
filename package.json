@@ -1,6 +1,6 @@
 {
   "name": "date-fns",
-  "version": "3.3.0",
+  "version": "3.3.1",
   "contributors": [
     "Sasha Koss <koss@nocorp.me>",
     "Lesha Koss <regiusprod@gmail.com>"
@@ -5058,6 +5058,16 @@
         "default": "./fp/weeksToDays.mjs"
       }
     },
+    "./fp/yearsToDays": {
+      "require": {
+        "types": "./fp/yearsToDays.d.ts",
+        "default": "./fp/yearsToDays.js"
+      },
+      "import": {
+        "types": "./fp/yearsToDays.d.mts",
+        "default": "./fp/yearsToDays.mjs"
+      }
+    },
     "./fp/yearsToMonths": {
       "require": {
         "types": "./fp/yearsToMonths.d.ts",
@@ -6030,8 +6040,8 @@
     "@types/sinon": "^9.0.6",
     "@typescript-eslint/eslint-plugin": "^6.13.1",
     "@typescript-eslint/parser": "^6.13.1",
-    "@vitest/browser": "^0.34.6",
-    "@vitest/coverage-v8": "^0.34.6",
+    "@vitest/browser": "^1.2.1",
+    "@vitest/coverage-v8": "^1.2.1",
     "babel-plugin-add-import-extension": "^1.6.0",
     "cloc": "^2.2.0",
     "coveralls": "^3.1.1",
@@ -6049,6 +6059,6 @@
     "typedoc": "^0.25.4",
     "typedoc-plugin-missing-exports": "^2.1.0",
     "typescript": "^5.3.2",
-    "vitest": "^0.34.6"
+    "vitest": "^1.2.1"
   }
 }

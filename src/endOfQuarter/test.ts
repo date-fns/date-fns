@@ -1,7 +1,4 @@
-/* eslint-env mocha */
-
-import assert from "assert";
-import { describe, it } from "vitest";
+import { expect, assert, describe, it } from "vitest";
 import { endOfQuarter } from "./index.js";
 
 describe("endOfQuarter", () => {
@@ -26,7 +23,7 @@ describe("endOfQuarter", () => {
   it("does not mutate the original date", () => {
     const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0);
     endOfQuarter(date);
-    assert.deepStrictEqual(date, new Date(2014, 8 /* Sep */, 2, 11, 55, 0));
+    expect(date).toEqual(new Date(2014, 8 /* Sep */, 2, 11, 55, 0));
   });
 
   it("returns `Invalid Date` if the given date is invalid", () => {

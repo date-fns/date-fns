@@ -1,13 +1,10 @@
-/* eslint-env mocha */
-
-import assert from "assert";
-import { describe, it } from "vitest";
+import { expect, assert, describe, it } from "vitest";
 import { addSeconds } from "./index.js";
 
 describe("addSeconds", () => {
   it("adds the given number of seconds", () => {
     const result = addSeconds(new Date(2014, 6 /* Jul */, 10, 12, 45, 0), 30);
-    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 45, 30));
+    expect(result).toEqual(new Date(2014, 6 /* Jul */, 10, 12, 45, 30));
   });
 
   it("accepts a timestamp", () => {
@@ -15,13 +12,13 @@ describe("addSeconds", () => {
       new Date(2014, 6 /* Jul */, 10, 12, 45, 0).getTime(),
       20,
     );
-    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 45, 20));
+    expect(result).toEqual(new Date(2014, 6 /* Jul */, 10, 12, 45, 20));
   });
 
   it("does not mutate the original date", () => {
     const date = new Date(2014, 6 /* Jul */, 10, 12, 45, 0);
     addSeconds(date, 15);
-    assert.deepStrictEqual(date, new Date(2014, 6 /* Jul */, 10, 12, 45, 0));
+    expect(date).toEqual(new Date(2014, 6 /* Jul */, 10, 12, 45, 0));
   });
 
   it("returns `Invalid Date` if the given date is invalid", () => {

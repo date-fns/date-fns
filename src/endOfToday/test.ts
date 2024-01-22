@@ -1,7 +1,4 @@
-/* eslint-env mocha */
-
-import assert from "assert";
-import { afterEach, beforeEach, describe, it } from "vitest";
+import { expect, assert, afterEach, beforeEach, describe, it } from "vitest";
 import sinon from "sinon";
 import { endOfToday } from "./index.js";
 

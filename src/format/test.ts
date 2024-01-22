@@ -1,11 +1,9 @@
-/* eslint-env mocha */
-
-import assert from "assert";
 import {
   afterEach,
   beforeEach,
   describe,
   expect,
+  assert,
   it,
   vi,
   type SpyInstance,
@@ -120,7 +118,7 @@ describe("format", () => {
         "30th",
         "31st",
       ];
-      assert.deepStrictEqual(result, expected);
+      expect(result).toEqual(expected);
     });
   });
 
@@ -301,7 +299,7 @@ describe("format", () => {
         "4",
         "4",
       ];
-      assert.deepStrictEqual(result, expected);
+      expect(result).toEqual(expected);
     });
   });
 
@@ -387,7 +385,7 @@ describe("format", () => {
           result.push(format(new Date(1986, 8 /* Sep */, i), "i"));
         }
         const expected = ["1", "2", "3", "4", "5", "6", "7"];
-        assert.deepStrictEqual(result, expected);
+        expect(result).toEqual(expected);
       });
     });
 
@@ -403,7 +401,7 @@ describe("format", () => {
           result.push(format(new Date(1986, 8 /* Sep */, i), "e"));
         }
         const expected = ["1", "2", "3", "4", "5", "6", "7"];
-        assert.deepStrictEqual(result, expected);
+        expect(result).toEqual(expected);
       });
 
       it("allows to specify which day is the first day of the week", () => {
@@ -414,7 +412,7 @@ describe("format", () => {
           );
         }
         const expected = ["1", "2", "3", "4", "5", "6", "7"];
-        assert.deepStrictEqual(result, expected);
+        expect(result).toEqual(expected);
       });
     });
 
@@ -430,7 +428,7 @@ describe("format", () => {
           result.push(format(new Date(1986, 8 /* Sep */, i), "c"));
         }
         const expected = ["1", "2", "3", "4", "5", "6", "7"];
-        assert.deepStrictEqual(result, expected);
+        expect(result).toEqual(expected);
       });
 
       it("allows to specify which day is the first day of the week", () => {
@@ -441,7 +439,7 @@ describe("format", () => {
           );
         }
         const expected = ["1", "2", "3", "4", "5", "6", "7"];
-        assert.deepStrictEqual(result, expected);
+        expect(result).toEqual(expected);
       });
     });
   });
@@ -825,7 +823,7 @@ describe("format", () => {
       const result = format(date, "yyyy-MM-D", {
         useAdditionalDayOfYearTokens: true,
       });
-      assert.deepStrictEqual(result, "1986-04-94");
+      expect(result).toEqual("1986-04-94");
     });
 
     it("throws an error if DD token is used", () => {
@@ -838,7 +836,7 @@ describe("format", () => {
       const result = format(date, "yyyy-MM-DD", {
         useAdditionalDayOfYearTokens: true,
       });
-      assert.deepStrictEqual(result, "1986-04-94");
+      expect(result).toEqual("1986-04-94");
     });
 
     it("throws an error if YY token is used", () => {
@@ -851,7 +849,7 @@ describe("format", () => {
       const result = format(date, "YY-MM-dd", {
         useAdditionalWeekYearTokens: true,
       });
-      assert.deepStrictEqual(result, "86-04-04");
+      expect(result).toEqual("86-04-04");
     });
 
     it("throws an error if YYYY token is used", () => {
@@ -864,7 +862,7 @@ describe("format", () => {
       const result = format(date, "YYYY-MM-dd", {
         useAdditionalWeekYearTokens: true,
       });
-      assert.deepStrictEqual(result, "1986-04-04");
+      expect(result).toEqual("1986-04-04");
     });
 
     describe("console.warn", () => {

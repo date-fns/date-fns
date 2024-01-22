@@ -1,7 +1,4 @@
-/* eslint-env mocha */
-
-import assert from "assert";
-import { describe, it, beforeEach, afterEach } from "vitest";
+import { expect, assert, describe, it, beforeEach, afterEach } from "vitest";
 import sinon from "sinon";
 import { isThisISOWeek } from "./index.js";
 

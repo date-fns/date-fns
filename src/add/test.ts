@@ -1,7 +1,4 @@
-/* eslint-env mocha */
-
-import assert from "assert";
-import { describe, it } from "vitest";
+import { expect, assert, describe, it } from "vitest";
 import { add } from "./index.js";
 import { getDstTransitions } from "../../test/dst/tzOffsetTransitions.js";
 
@@ -48,31 +45,31 @@ describe("add", () => {
       minutes: undefined,
       seconds: undefined,
     });
-    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1, 10));
+    expect(result).toEqual(new Date(2014, 8 /* Sep */, 1, 10));
   });
 
   it("returns same date object when passed undefined duration values", () => {
     const result = add(new Date(2014, 8 /* Sep */, 1, 10).getTime(), {});
-    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1, 10));
+    expect(result).toEqual(new Date(2014, 8 /* Sep */, 1, 10));
   });
 
   it("accepts a timestamp", () => {
     const result = add(new Date(2014, 8 /* Sep */, 1, 10).getTime(), {
       hours: 4,
     });
-    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1, 14));
+    expect(result).toEqual(new Date(2014, 8 /* Sep */, 1, 14));
   });
 
   it("does not mutate the original date", () => {
     const date = new Date(2014, 8 /* Sep */, 1, 10);
     add(date, { hours: 4 });
-    assert.deepStrictEqual(date, new Date(2014, 8 /* Sep */, 1, 10));
+    expect(date).toEqual(new Date(2014, 8 /* Sep */, 1, 10));
   });
 
   it("works well if the desired month has fewer days and the provided date is in the last day of a month", () => {
     const date = new Date(2014, 11 /* Dec */, 31);
     const result = add(date, { months: 9 });
-    assert.deepStrictEqual(result, new Date(2015, 8 /* Sep */, 30));
+    expect(result).toEqual(new Date(2015, 8 /* Sep */, 30));
   });
 
   const dstTransitions = getDstTransitions(2017);
@@ -85,7 +82,7 @@ describe("add", () => {
     () => {
       const date = dstTransitions.end;
       const result = add(date!, { hours: 1 });
-      assert.deepStrictEqual(result, new Date(date!.getTime() + HOUR));
+      expect(result).toEqual(new Date(date!.getTime() + HOUR));
     },
   );
 
@@ -97,7 +94,7 @@ describe("add", () => {
     expectedResult.setFullYear(0, 1 /* Feb */, 29);
     expectedResult.setHours(0, 0, 0, 0);
     const result = add(initialDate, { months: 3 });
-    assert.deepStrictEqual(result, expectedResult);
+    expect(result).toEqual(expectedResult);
   });
 
   it("returns `Invalid Date` if the given date is invalid", () => {

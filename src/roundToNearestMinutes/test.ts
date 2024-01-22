@@ -1,7 +1,4 @@
-/* eslint-env mocha */
-
-import assert from "assert";
-import { describe, it } from "vitest";
+import { expect, assert, describe, it } from "vitest";
 import {
   roundToNearestMinutes,
   type RoundToNearestMinutesOptions,
@@ -264,21 +261,21 @@ describe("roundToNearestMinutes", () => {
   describe("examples", () => {
     it("example 1", () => {
       const result = roundToNearestMinutes(new Date(2014, 6, 10, 12, 12, 34));
-      assert.deepStrictEqual(result, new Date(2014, 6, 10, 12, 13));
+      expect(result).toEqual(new Date(2014, 6, 10, 12, 13));
     });
 
     it("example 2", () => {
       const result = roundToNearestMinutes(new Date(2014, 6, 10, 12, 12, 34), {
         nearestTo: 15,
       });
-      assert.deepStrictEqual(result, new Date(2014, 6, 10, 12, 15));
+      expect(result).toEqual(new Date(2014, 6, 10, 12, 15));
     });
 
     it("example 3", () => {
       const result = roundToNearestMinutes(new Date(2014, 6, 10, 12, 12, 34), {
         roundingMethod: "floor",
       });
-      assert.deepStrictEqual(result, new Date(2014, 6, 10, 12, 12));
+      expect(result).toEqual(new Date(2014, 6, 10, 12, 12));
     });
 
     it("example 4", () => {
@@ -286,19 +283,19 @@ describe("roundToNearestMinutes", () => {
         roundingMethod: "ceil",
         nearestTo: 30,
       });
-      assert.deepStrictEqual(result, new Date(2014, 6, 10, 12, 30));
+      expect(result).toEqual(new Date(2014, 6, 10, 12, 30));
     });
   });
 
   it("accepts a timestamp", () => {
     const result = roundToNearestMinutes(makeDate(13, 16).getTime());
-    assert.deepStrictEqual(result, makeDate(13));
+    expect(result).toEqual(makeDate(13));
   });
 
   it("does not mutate the original date", () => {
     const date = makeDate(10, 10);
     roundToNearestMinutes(date);
-    assert.deepStrictEqual(date, makeDate(10, 10));
+    expect(date).toEqual(makeDate(10, 10));
   });
 
   it("returns `Invalid Date` if the given date is invalid", () => {

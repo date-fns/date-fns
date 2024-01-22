@@ -1,7 +1,4 @@
-/* eslint-env mocha */
-
-import assert from "assert";
-import { describe, it } from "vitest";
+import { expect, assert, describe, it } from "vitest";
 import { endOfWeek } from "./index.js";
 
 describe("endOfWeek", () => {
@@ -62,7 +59,7 @@ describe("endOfWeek", () => {
   it("does not mutate the original date", () => {
     const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0);
     endOfWeek(date);
-    assert.deepStrictEqual(date, new Date(2014, 8 /* Sep */, 2, 11, 55, 0));
+    expect(date).toEqual(new Date(2014, 8 /* Sep */, 2, 11, 55, 0));
   });
 
   describe("edge cases", () => {

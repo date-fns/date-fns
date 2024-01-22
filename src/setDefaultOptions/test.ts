@@ -1,7 +1,4 @@
-/* eslint-env mocha */
-
-import assert from "assert";
-import { afterEach, describe, it } from "vitest";
+import { expect, assert, afterEach, describe, it } from "vitest";
 import { setDefaultOptions } from "./index.js";
 import type { DefaultOptions } from "../_lib/defaultOptions/index.js";
 import { getDefaultOptions as getInternalDefaultOptions } from "../_lib/defaultOptions/index.js";
@@ -39,7 +36,7 @@ describe("setDefaultOptions", () => {
       firstWeekContainsDate: 4,
       locale: eo,
     });
-    assert.deepStrictEqual(getInternalDefaultOptions(), {
+    expect(getInternalDefaultOptions()).toEqual({
       weekStartsOn: 1,
       firstWeekContainsDate: 4,
       locale: eo,
@@ -50,7 +47,7 @@ describe("setDefaultOptions", () => {
     setDefaultOptions({ weekStartsOn: 1 });
     setDefaultOptions({ firstWeekContainsDate: 4 });
     setDefaultOptions({ locale: eo });
-    assert.deepStrictEqual(getInternalDefaultOptions(), {
+    expect(getInternalDefaultOptions()).toEqual({
       weekStartsOn: 1,
       firstWeekContainsDate: 4,
       locale: eo,
@@ -60,7 +57,7 @@ describe("setDefaultOptions", () => {
   it("setting an option to `undefined` deletes it", () => {
     setDefaultOptions({ weekStartsOn: 1, firstWeekContainsDate: 4 });
     setDefaultOptions({ weekStartsOn: undefined });
-    assert.deepStrictEqual(getInternalDefaultOptions(), {
+    expect(getInternalDefaultOptions()).toEqual({
       firstWeekContainsDate: 4,
     });
   });
@@ -68,7 +65,7 @@ describe("setDefaultOptions", () => {
   it("does not mutate the argument", () => {
     const argument: DefaultOptions = { weekStartsOn: 1 };
     setDefaultOptions(argument);
-    assert.deepStrictEqual(argument, { weekStartsOn: 1 });
+    expect(argument).toEqual({ weekStartsOn: 1 });
   });
 
   describe("locale", () => {
@@ -141,11 +138,11 @@ describe("setDefaultOptions", () => {
 
     it("formatDuration", () => {
       // For reference: not setting any options
-      assert.deepStrictEqual(formatDuration({ years: 1 }), "1 year");
+      expect(formatDuration({ years: 1 })).toEqual("1 year");
 
       setDefaultOptions({ locale: eo });
 
-      assert.deepStrictEqual(formatDuration({ years: 1 }), "1 jaro");
+      expect(formatDuration({ years: 1 })).toEqual("1 jaro");
 
       // Manually set `locale` take priority over `defaultOptions.locale`
       assert.deepStrictEqual(

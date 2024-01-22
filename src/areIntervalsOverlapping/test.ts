@@ -1,7 +1,4 @@
-/* eslint-env mocha */
-
-import assert from "assert";
-import { describe, it } from "vitest";
+import { expect, assert, describe, it } from "vitest";
 import { areIntervalsOverlapping } from "./index.js";
 
 describe("areIntervalsOverlapping", () => {
@@ -142,13 +139,13 @@ describe("areIntervalsOverlapping", () => {
     assert(isOverlapping);
   });
 
-  it('sort timestamp', () => {
+  it("sort timestamp", () => {
     const result = areIntervalsOverlapping(
-      { start: '1970-01-01T02:00:00.000Z', end: '1970-01-01T03:00:00.000Z' },
-      { start: '1969-12-31T23:30:00.000Z', end: '1970-01-01T02:30:00.000Z' },
+      { start: "1970-01-01T02:00:00.000Z", end: "1970-01-01T03:00:00.000Z" },
+      { start: "1969-12-31T23:30:00.000Z", end: "1970-01-01T02:30:00.000Z" },
     );
     assert(result);
-  })
+  });
 
   it("returns result for the normalized intervals if the start date of the initial time interval is after the end date", () => {
     const includedIntervalStart = new Date(2016, 10, 14);

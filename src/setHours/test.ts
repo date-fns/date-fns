@@ -1,24 +1,21 @@
-/* eslint-env mocha */
-
-import assert from "assert";
-import { describe, it } from "vitest";
+import { expect, assert, describe, it } from "vitest";
 import { setHours } from "./index.js";
 
 describe("setHours", () => {
   it("sets the amount of hours", () => {
     const result = setHours(new Date(2014, 8 /* Sep */, 1, 11, 30), 4);
-    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1, 4, 30));
+    expect(result).toEqual(new Date(2014, 8 /* Sep */, 1, 4, 30));
   });
 
   it("accepts a timestamp", () => {
     const result = setHours(new Date(2014, 8 /* Sep */, 1, 11).getTime(), 5);
-    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1, 5));
+    expect(result).toEqual(new Date(2014, 8 /* Sep */, 1, 5));
   });
 
   it("does not mutate the original date", () => {
     const date = new Date(2014, 8 /* Sep */, 1, 11);
     setHours(date, 12);
-    assert.deepStrictEqual(date, new Date(2014, 8 /* Sep */, 1, 11));
+    expect(date).toEqual(new Date(2014, 8 /* Sep */, 1, 11));
   });
 
   it("returns `Invalid Date` if the given date is invalid", () => {

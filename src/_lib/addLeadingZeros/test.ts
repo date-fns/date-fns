@@ -1,7 +1,4 @@
-/* eslint-env mocha */
-
-import assert from "assert";
-import { describe, it } from "vitest";
+import { assert, describe, it } from "vitest";
 import { addLeadingZeros } from "./index.js";
 
 describe("addLeadingZeros", () => {

@@ -1,12 +1,9 @@
-/* eslint-env mocha */
-
-import assert from "assert";
 import { pipe } from "fp-ts/function";
 import { flow as jsFnsFlow } from "js-fns";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment -- Lodash types trip in different environemnts, so we can't put ts-expect-error
 // @ts-ignore - Lodash types are tripping ("Module '"lodash"' has no exported member 'flow'.ts(2305)")
 import { flow as lodashFlow } from "lodash";
-import { describe, it } from "vitest";
+import { expect, assert, describe, it } from "vitest";
 import { addDays, addHours, isEqual } from "../../index.js";
 import { convertToFP } from "./index.js";
 
@@ -98,7 +95,7 @@ describe("convertToFP", () => {
       const fn = lodashFlow(addDays(1), addHours(1));
       const result = fn(new Date(1987, 1, 11));
       assert(result.getFullYear() === 1987);
-      assert.deepStrictEqual(result, new Date(1987, 1, 12, 1));
+      expect(result).toEqual(new Date(1987, 1, 12, 1));
     });
   });
 
@@ -118,7 +115,7 @@ describe("convertToFP", () => {
       const fn = jsFnsFlow(addDays(1), addHours(1));
       const result = fn(new Date(1987, 1, 11));
       assert(result.getFullYear() === 1987);
-      assert.deepStrictEqual(result, new Date(1987, 1, 12, 1));
+      expect(result).toEqual(new Date(1987, 1, 12, 1));
     });
   });
 });

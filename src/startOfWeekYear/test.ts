@@ -1,7 +1,4 @@
-/* eslint-env mocha */
-
-import assert from "assert";
-import { describe, it } from "vitest";
+import { expect, assert, describe, it } from "vitest";
 import { startOfWeekYear } from "./index.js";
 
 describe("startOfWeekYear", () => {
@@ -26,7 +23,7 @@ describe("startOfWeekYear", () => {
   it("does not mutate the original date", () => {
     const date = new Date(2014, 6 /* Jul */, 2);
     startOfWeekYear(date);
-    assert.deepStrictEqual(date, new Date(2014, 6 /* Jul */, 2));
+    expect(date).toEqual(new Date(2014, 6 /* Jul */, 2));
   });
 
   it("handles dates before 100 AD", () => {
@@ -37,7 +34,7 @@ describe("startOfWeekYear", () => {
     expectedResult.setFullYear(8, 11 /* Dec */, 28);
     expectedResult.setHours(0, 0, 0, 0);
     const result = startOfWeekYear(initialDate);
-    assert.deepStrictEqual(result, expectedResult);
+    expect(result).toEqual(expectedResult);
   });
 
   it("returns `Invalid Date` if the given date is invalid", () => {
@@ -52,7 +49,7 @@ describe("startOfWeekYear", () => {
         options: { weekStartsOn: 1, firstWeekContainsDate: 4 },
       },
     });
-    assert.deepStrictEqual(result, new Date(2005, 0 /* Jan */, 3, 0, 0, 0, 0));
+    expect(result).toEqual(new Date(2005, 0 /* Jan */, 3, 0, 0, 0, 0));
   });
 
   it("`options.weekStartsOn` overwrites the first day of the week specified in locale", () => {
@@ -64,6 +61,6 @@ describe("startOfWeekYear", () => {
         options: { weekStartsOn: 0, firstWeekContainsDate: 1 },
       },
     });
-    assert.deepStrictEqual(result, new Date(2005, 0 /* Jan */, 3, 0, 0, 0, 0));
+    expect(result).toEqual(new Date(2005, 0 /* Jan */, 3, 0, 0, 0, 0));
   });
 });

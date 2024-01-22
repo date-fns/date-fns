@@ -1,7 +1,4 @@
-/* eslint-env mocha */
-
-import assert from "assert";
-import { describe, it } from "vitest";
+import { expect, assert, describe, it } from "vitest";
 import { getWeeksInMonth } from "./index.js";
 
 describe("getWeeksInMonth", () => {
@@ -46,7 +43,7 @@ describe("getWeeksInMonth", () => {
   it("does not mutate the original date", () => {
     const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0);
     getWeeksInMonth(date);
-    assert.deepStrictEqual(date, new Date(2014, 8 /* Sep */, 2, 11, 55, 0));
+    expect(date).toEqual(new Date(2014, 8 /* Sep */, 2, 11, 55, 0));
   });
 
   it("returns NaN if the date is `Invalid Date`", () => {
