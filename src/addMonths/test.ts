@@ -1,6 +1,6 @@
 /* eslint-env mocha */
 
-import assert from "assert";
+import assert from "node:assert";
 import { describe, it } from "vitest";
 import { addMonths } from "./index.js";
 import { getDstTransitions } from "../../test/dst/tzOffsetTransitions.js";

@@ -1,6 +1,6 @@
 /* eslint-env mocha */
 
-import assert from "assert";
+import assert from "node:assert";
 import { describe, it } from "vitest";
 import { eachWeekendOfYear } from "./index.js";
 import { isWeekend } from "../isWeekend/index.js";

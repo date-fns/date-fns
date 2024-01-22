@@ -1,6 +1,6 @@
 /* eslint-env mocha */
 
-import assert from "assert";
+import assert from "node:assert";
 import { describe, it } from "vitest";
 import { intervalToDuration } from "./index.js";
 import { addMonths } from "../addMonths/index.js";
