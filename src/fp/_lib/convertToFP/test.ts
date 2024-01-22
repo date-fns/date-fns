@@ -1,6 +1,6 @@
 /* eslint-env mocha */
 
-import assert from "assert";
+import assert from "node:assert";
 import { pipe } from "fp-ts/function";
 import { flow as jsFnsFlow } from "js-fns";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment -- Lodash types trip in different environemnts, so we can't put ts-expect-error

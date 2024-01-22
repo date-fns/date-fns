@@ -1,4 +1,5 @@
-import { assert, describe, it } from "vitest";
+import { describe, it } from "vitest";
+import assert from "node:assert";
 import { getRoundingMethod } from ".";
 
 describe("getRoundingMethod", () => {

@@ -1,6 +1,6 @@
 /* eslint-env mocha */
 
-import assert from "assert";
+import assert from "node:assert";
 import { describe, it } from "vitest";
 import { parseJSON } from "./index.js";
 import { format } from "../format/index.js";

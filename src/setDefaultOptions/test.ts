@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
-import assert from "assert";
-import { afterEach, describe, it } from "vitest";
+import assert from "node:assert";
+import { afterEach, describe, it, expect } from "vitest";
 import { setDefaultOptions } from "./index.js";
 import type { DefaultOptions } from "../_lib/defaultOptions/index.js";
 import { getDefaultOptions as getInternalDefaultOptions } from "../_lib/defaultOptions/index.js";
@@ -60,7 +60,7 @@ describe("setDefaultOptions", () => {
   it("setting an option to `undefined` deletes it", () => {
     setDefaultOptions({ weekStartsOn: 1, firstWeekContainsDate: 4 });
     setDefaultOptions({ weekStartsOn: undefined });
-    assert.deepStrictEqual(getInternalDefaultOptions(), {
+    expect(getInternalDefaultOptions()).toEqual({
       firstWeekContainsDate: 4,
     });
   });

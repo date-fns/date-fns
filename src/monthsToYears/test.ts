@@ -1,6 +1,6 @@
 /* eslint-env mocha */
 
-import assert from "assert";
+import assert from "node:assert";
 import { describe, expect, it } from "vitest";
 import { monthsToYears } from "./index.js";
 

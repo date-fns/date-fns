@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 /* global HTMLIFrameElement */
 
-import assert from "assert";
+import assert from "node:assert";
 import { afterEach, describe, it } from "vitest";
 import { assertType } from "../_lib/test/index.js";
 import { isDate } from "./index.js";
