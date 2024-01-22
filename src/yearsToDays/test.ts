@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import assert from "node:assert";
-import { describe, expect, it } from "bun:test";
+import { describe, expect, it } from "vitest";
 import { yearsToDays } from "./index";
 
 describe("yearsToDays", () => {
