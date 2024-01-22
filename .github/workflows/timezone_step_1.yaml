@@ -1,7 +1,8 @@
 name: Timezones 1/5
 
-on: workflow_dispatch
-# on: [push, pull_request]
+on:
+  push:
+    branches: [main]
 
 jobs:
   tests:
