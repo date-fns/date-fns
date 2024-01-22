@@ -8,6 +8,16 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## v3.3.1 - 2024-01-22
+
+Kudos to @kossnocorp and @fturmel for working on the release.
+
+### Fixed
+
+- Fixed DST issue in `getOverlappingDaysInIntervals`, resulting in an inconsistent number of days returned for intervals starting and ending in different DST periods.
+
+- Fixed functions incorrectly using `trunc` instead of `round`. The bug was introduced in v3.3.0. The affected functions: `differenceInCalendarDays`, `differenceInCalendarISOWeeks`, `differenceInCalendarWeeks`, `getISOWeek`, `getWeek`, and `getISOWeeksInYear`.
+
 ## v3.3.0 - 2024-01-20
 
 On this release worked @kossnocorp, @TheKvikk, @fturmel and @ckcherry23.
