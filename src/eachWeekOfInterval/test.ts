@@ -1,4 +1,7 @@
-import { expect, assert, describe, it } from "vitest";
+/* eslint-env mocha */
+
+import assert from "assert";
+import { describe, it } from "vitest";
 import { eachWeekOfInterval } from "./index.js";
 
 describe("eachWeekOfInterval", () => {
@@ -7,7 +10,7 @@ describe("eachWeekOfInterval", () => {
       start: new Date(2014, 9 /* Oct */, 6),
       end: new Date(2014, 10 /* Nov */, 23),
     });
-    expect(result).toEqual([
+    assert.deepStrictEqual(result, [
       new Date(2014, 9 /* Oct */, 5),
       new Date(2014, 9 /* Oct */, 12),
       new Date(2014, 9 /* Oct */, 19),
@@ -24,7 +27,7 @@ describe("eachWeekOfInterval", () => {
       start: new Date(2014, 9 /* Oct */, 6).getTime(),
       end: new Date(2014, 10 /* Nov */, 23).getTime(),
     });
-    expect(result).toEqual([
+    assert.deepStrictEqual(result, [
       new Date(2014, 9 /* Oct */, 5),
       new Date(2014, 9 /* Oct */, 12),
       new Date(2014, 9 /* Oct */, 19),
@@ -41,7 +44,7 @@ describe("eachWeekOfInterval", () => {
       start: new Date(2014, 9 /* Oct */, 6, 6, 35),
       end: new Date(2014, 10 /* Nov */, 25, 22, 16),
     });
-    expect(result).toEqual([
+    assert.deepStrictEqual(result, [
       new Date(2014, 9 /* Oct */, 5),
       new Date(2014, 9 /* Oct */, 12),
       new Date(2014, 9 /* Oct */, 19),
@@ -61,7 +64,7 @@ describe("eachWeekOfInterval", () => {
       },
       { weekStartsOn: 2 },
     );
-    expect(result).toEqual([
+    assert.deepStrictEqual(result, [
       new Date(2014, 8 /* Sep */, 30),
       new Date(2014, 9 /* Oct */, 7),
       new Date(2014, 9 /* Oct */, 14),
@@ -79,7 +82,7 @@ describe("eachWeekOfInterval", () => {
       start: new Date(2014, 9 /* Oct */, 6, 14),
       end: new Date(2014, 9 /* Oct */, 8, 15),
     });
-    expect(result).toEqual([new Date(2014, 9 /* Oct */, 5)]);
+    assert.deepStrictEqual(result, [new Date(2014, 9 /* Oct */, 5)]);
   });
 
   it("returns one day if the both arguments are the same", () => {
@@ -87,7 +90,7 @@ describe("eachWeekOfInterval", () => {
       start: new Date(2014, 9 /* Oct */, 6, 14),
       end: new Date(2014, 9 /* Oct */, 6, 14),
     });
-    expect(result).toEqual([new Date(2014, 9 /* Oct */, 5)]);
+    assert.deepStrictEqual(result, [new Date(2014, 9 /* Oct */, 5)]);
   });
 
   it("returns reversed array if the start date is after the end date", () => {
@@ -95,7 +98,7 @@ describe("eachWeekOfInterval", () => {
       start: new Date(2014, 10 /* Nov */, 23),
       end: new Date(2014, 9 /* Oct */, 6),
     });
-    expect(result).toEqual([
+    assert.deepStrictEqual(result, [
       new Date(2014, 10 /* Nov */, 23),
       new Date(2014, 10 /* Nov */, 16),
       new Date(2014, 10 /* Nov */, 9),
@@ -112,7 +115,7 @@ describe("eachWeekOfInterval", () => {
       start: new Date(NaN),
       end: new Date(2014, 9 /* Oct */, 6),
     });
-    expect(result).toEqual([]);
+    assert.deepStrictEqual(result, []);
   });
 
   it("returns an empty array if the end date is `Invalid Date`", () => {
@@ -120,7 +123,7 @@ describe("eachWeekOfInterval", () => {
       start: new Date(2014, 9 /* Oct */, 12),
       end: new Date(NaN),
     });
-    expect(result).toEqual([]);
+    assert.deepStrictEqual(result, []);
   });
 
   it("returns an empty array if both of the properties are `Invalid Date`", () => {
@@ -128,7 +131,7 @@ describe("eachWeekOfInterval", () => {
       start: new Date(NaN),
       end: new Date(NaN),
     });
-    expect(result).toEqual([]);
+    assert.deepStrictEqual(result, []);
   });
 
   describe("options.step", () => {
@@ -139,7 +142,7 @@ describe("eachWeekOfInterval", () => {
 
     it("returns an array with starts of days from the day of the start date to the day of the end date with the given step", () => {
       const result = eachWeekOfInterval(interval, { step: 3 });
-      expect(result).toEqual([
+      assert.deepStrictEqual(result, [
         new Date(2014, 9 /* Oct */, 5),
         new Date(2014, 9 /* Oct */, 26),
         new Date(2014, 10 /* Nov */, 16),
@@ -148,7 +151,7 @@ describe("eachWeekOfInterval", () => {
 
     it("returns reversed array if `options.step` is negative", () => {
       const result = eachWeekOfInterval(interval, { step: -3 });
-      expect(result).toEqual([
+      assert.deepStrictEqual(result, [
         new Date(2014, 10 /* Nov */, 16),
         new Date(2014, 9 /* Oct */, 26),
         new Date(2014, 9 /* Oct */, 5),
@@ -160,7 +163,7 @@ describe("eachWeekOfInterval", () => {
         { start: interval.end, end: interval.start },
         { step: -3 },
       );
-      expect(result).toEqual([
+      assert.deepStrictEqual(result, [
         new Date(2014, 9 /* Oct */, 5),
         new Date(2014, 9 /* Oct */, 26),
         new Date(2014, 10 /* Nov */, 16),
@@ -169,12 +172,12 @@ describe("eachWeekOfInterval", () => {
 
     it("returns empty array if `options.step` is less than 1", () => {
       const result = eachWeekOfInterval(interval, { step: 0 });
-      expect(result).toEqual([]);
+      assert.deepStrictEqual(result, []);
     });
 
     it("returns empty array if `options.step` is NaN", () => {
       const result = eachWeekOfInterval(interval, { step: NaN });
-      expect(result).toEqual([]);
+      assert.deepStrictEqual(result, []);
     });
   });
 });

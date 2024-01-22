@@ -1,21 +1,24 @@
-import { expect, assert, describe, it } from "vitest";
+/* eslint-env mocha */
+
+import assert from "assert";
+import { describe, it } from "vitest";
 import { setYear } from "./index.js";
 
 describe("setYear", () => {
   it("sets the year", () => {
     const result = setYear(new Date(2014, 8 /* Sep */, 1), 2013);
-    expect(result).toEqual(new Date(2013, 8 /* Sep */, 1));
+    assert.deepStrictEqual(result, new Date(2013, 8 /* Sep */, 1));
   });
 
   it("accepts a timestamp", () => {
     const result = setYear(new Date(2014, 8 /* Sep */, 1).getTime(), 2016);
-    expect(result).toEqual(new Date(2016, 8 /* Sep */, 1));
+    assert.deepStrictEqual(result, new Date(2016, 8 /* Sep */, 1));
   });
 
   it("does not mutate the original date", () => {
     const date = new Date(2014, 8 /* Sep */, 1);
     setYear(date, 2011);
-    expect(date).toEqual(new Date(2014, 8 /* Sep */, 1));
+    assert.deepStrictEqual(date, new Date(2014, 8 /* Sep */, 1));
   });
 
   it("returns `Invalid Date` if the given date is invalid", () => {

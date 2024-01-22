@@ -1,4 +1,7 @@
-import { expect, assert, describe, it } from "vitest";
+/* eslint-env mocha */
+
+import assert from "assert";
+import { describe, it } from "vitest";
 import { formatRFC7231 } from "./index.js";
 
 describe("formatRFC7231", () => {

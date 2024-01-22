@@ -1,4 +1,7 @@
-import { expect, assert, describe, it } from "vitest";
+/* eslint-env mocha */
+
+import assert from "assert";
+import { describe, it } from "vitest";
 import { eachDayOfInterval } from "./index.js";
 
 describe("eachDayOfInterval", () => {
@@ -7,7 +10,7 @@ describe("eachDayOfInterval", () => {
       start: new Date(2014, 9 /* Oct */, 6),
       end: new Date(2014, 9 /* Oct */, 12),
     });
-    expect(result).toEqual([
+    assert.deepStrictEqual(result, [
       new Date(2014, 9 /* Oct */, 6),
       new Date(2014, 9 /* Oct */, 7),
       new Date(2014, 9 /* Oct */, 8),
@@ -23,7 +26,7 @@ describe("eachDayOfInterval", () => {
       start: new Date(2014, 9 /* Oct */, 6).getTime(),
       end: new Date(2014, 9 /* Oct */, 12).getTime(),
     });
-    expect(result).toEqual([
+    assert.deepStrictEqual(result, [
       new Date(2014, 9 /* Oct */, 6),
       new Date(2014, 9 /* Oct */, 7),
       new Date(2014, 9 /* Oct */, 8),
@@ -39,7 +42,7 @@ describe("eachDayOfInterval", () => {
       start: new Date(2014, 9 /* Oct */, 6, 6, 35),
       end: new Date(2014, 9 /* Oct */, 12, 22, 15),
     });
-    expect(result).toEqual([
+    assert.deepStrictEqual(result, [
       new Date(2014, 9 /* Oct */, 6),
       new Date(2014, 9 /* Oct */, 7),
       new Date(2014, 9 /* Oct */, 8),
@@ -55,7 +58,7 @@ describe("eachDayOfInterval", () => {
       start: new Date(2014, 9 /* Oct */, 6, 14),
       end: new Date(2014, 9 /* Oct */, 6, 15),
     });
-    expect(result).toEqual([new Date(2014, 9 /* Oct */, 6)]);
+    assert.deepStrictEqual(result, [new Date(2014, 9 /* Oct */, 6)]);
   });
 
   it("returns one day if the both arguments are the same", () => {
@@ -63,7 +66,7 @@ describe("eachDayOfInterval", () => {
       start: new Date(2014, 9 /* Oct */, 6, 14),
       end: new Date(2014, 9 /* Oct */, 6, 14),
     });
-    expect(result).toEqual([new Date(2014, 9 /* Oct */, 6)]);
+    assert.deepStrictEqual(result, [new Date(2014, 9 /* Oct */, 6)]);
   });
 
   it("returns reversed array if the start date is after the end date", () => {
@@ -71,7 +74,7 @@ describe("eachDayOfInterval", () => {
       start: new Date(2014, 9 /* Oct */, 12),
       end: new Date(2014, 9 /* Oct */, 6),
     });
-    expect(result).toEqual([
+    assert.deepStrictEqual(result, [
       new Date(2014, 9 /* Oct */, 12),
       new Date(2014, 9 /* Oct */, 11),
       new Date(2014, 9 /* Oct */, 10),
@@ -87,7 +90,7 @@ describe("eachDayOfInterval", () => {
       start: new Date(NaN),
       end: new Date(2014, 9 /* Oct */, 6),
     });
-    expect(result).toEqual([]);
+    assert.deepStrictEqual(result, []);
   });
 
   it("returns an empty array if the end date is `Invalid Date`", () => {
@@ -95,7 +98,7 @@ describe("eachDayOfInterval", () => {
       start: new Date(2014, 9 /* Oct */, 12),
       end: new Date(NaN),
     });
-    expect(result).toEqual([]);
+    assert.deepStrictEqual(result, []);
   });
 
   it("returns an empty array if both of the properties are `Invalid Date`", () => {
@@ -103,7 +106,7 @@ describe("eachDayOfInterval", () => {
       start: new Date(NaN),
       end: new Date(NaN),
     });
-    expect(result).toEqual([]);
+    assert.deepStrictEqual(result, []);
   });
 
   describe("options.step", () => {
@@ -114,7 +117,7 @@ describe("eachDayOfInterval", () => {
 
     it("returns an array with starts of days from the day of the start date to the day of the end date with the given step", () => {
       const result = eachDayOfInterval(interval, { step: 3 });
-      expect(result).toEqual([
+      assert.deepStrictEqual(result, [
         new Date(2014, 9 /* Oct */, 6),
         new Date(2014, 9 /* Oct */, 9),
         new Date(2014, 9 /* Oct */, 12),
@@ -129,7 +132,7 @@ describe("eachDayOfInterval", () => {
         },
         { step: -1 },
       );
-      expect(result).toEqual([
+      assert.deepStrictEqual(result, [
         new Date(2014, 9 /* Oct */, 12),
         new Date(2014, 9 /* Oct */, 11),
         new Date(2014, 9 /* Oct */, 10),
@@ -144,7 +147,7 @@ describe("eachDayOfInterval", () => {
         },
         { step: -1 },
       );
-      expect(result).toEqual([
+      assert.deepStrictEqual(result, [
         new Date(2014, 9 /* Oct */, 10),
         new Date(2014, 9 /* Oct */, 11),
         new Date(2014, 9 /* Oct */, 12),
@@ -153,12 +156,12 @@ describe("eachDayOfInterval", () => {
 
     it("returns empty array if `options.step` is less than 1", () => {
       const result = eachDayOfInterval(interval, { step: 0 });
-      expect(result).toEqual([]);
+      assert.deepStrictEqual(result, []);
     });
 
     it("returns empty array if `options.step` is NaN", () => {
       const result = eachDayOfInterval(interval, { step: NaN });
-      expect(result).toEqual([]);
+      assert.deepStrictEqual(result, []);
     });
   });
 });

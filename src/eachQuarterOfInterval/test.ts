@@ -1,4 +1,7 @@
-import { expect, assert, describe, it } from "vitest";
+/* eslint-env mocha */
+
+import assert from "assert";
+import { describe, it } from "vitest";
 import { eachQuarterOfInterval } from "./index.js";
 
 describe("eachQuarterOfInterval", () => {
@@ -7,7 +10,7 @@ describe("eachQuarterOfInterval", () => {
       start: new Date(2014, 2 /* Mar */, 6),
       end: new Date(2014, 7 /* Aug */, 12),
     });
-    expect(result).toEqual([
+    assert.deepStrictEqual(result, [
       new Date(2014, 0 /* Jan */, 1),
       new Date(2014, 3 /* Apr */, 1),
       new Date(2014, 6 /* Jul */, 1),
@@ -19,7 +22,7 @@ describe("eachQuarterOfInterval", () => {
       start: new Date(2014, 2 /* Mar */, 6).getTime(),
       end: new Date(2014, 7 /* Aug */, 12).getTime(),
     });
-    expect(result).toEqual([
+    assert.deepStrictEqual(result, [
       new Date(2014, 0 /* Jan */, 1),
       new Date(2014, 3 /* Apr */, 1),
       new Date(2014, 6 /* Jul */, 1),
@@ -31,7 +34,7 @@ describe("eachQuarterOfInterval", () => {
       start: new Date(2014, 2 /* Mar */, 6, 6, 35),
       end: new Date(2014, 7 /* Aug */, 12, 22, 15),
     });
-    expect(result).toEqual([
+    assert.deepStrictEqual(result, [
       new Date(2014, 0 /* Jan */, 1),
       new Date(2014, 3 /* Apr */, 1),
       new Date(2014, 6 /* Jul */, 1),
@@ -43,7 +46,7 @@ describe("eachQuarterOfInterval", () => {
       start: new Date(2014, 2 /* Mar */),
       end: new Date(2014, 7 /* Oct */),
     });
-    expect(result).toEqual([
+    assert.deepStrictEqual(result, [
       new Date(2014, 0 /* Jan */, 1),
       new Date(2014, 3 /* Apr */, 1),
       new Date(2014, 6 /* Jul */, 1),
@@ -55,7 +58,7 @@ describe("eachQuarterOfInterval", () => {
       start: new Date(2014, 0 /* Jan */, 6, 14),
       end: new Date(2014, 2 /* Feb */, 9, 15),
     });
-    expect(result).toEqual([new Date(2014, 0 /* Jan */, 1)]);
+    assert.deepStrictEqual(result, [new Date(2014, 0 /* Jan */, 1)]);
   });
 
   it("returns one quarter if the both arguments are the same", () => {
@@ -63,7 +66,7 @@ describe("eachQuarterOfInterval", () => {
       start: new Date(2014, 9 /* Oct */, 6, 14),
       end: new Date(2014, 9 /* Oct */, 6, 14),
     });
-    expect(result).toEqual([new Date(2014, 9 /* Oct */, 1)]);
+    assert.deepStrictEqual(result, [new Date(2014, 9 /* Oct */, 1)]);
   });
 
   it("returns reversed array if the start date is after the end date", () => {
@@ -71,7 +74,7 @@ describe("eachQuarterOfInterval", () => {
       start: new Date(2014, 7 /* Aug */, 12),
       end: new Date(2014, 2 /* Mar */, 6),
     });
-    expect(result).toEqual([
+    assert.deepStrictEqual(result, [
       new Date(2014, 6 /* Jul */, 1),
       new Date(2014, 3 /* Apr */, 1),
       new Date(2014, 0 /* Jan */, 1),
@@ -83,7 +86,7 @@ describe("eachQuarterOfInterval", () => {
       start: new Date(NaN),
       end: new Date(2014, 9 /* Oct */, 6),
     });
-    expect(result).toEqual([]);
+    assert.deepStrictEqual(result, []);
   });
 
   it("returns an empty array if the end date is `Invalid Date`", () => {
@@ -91,7 +94,7 @@ describe("eachQuarterOfInterval", () => {
       start: new Date(2014, 9 /* Oct */, 12),
       end: new Date(NaN),
     });
-    expect(result).toEqual([]);
+    assert.deepStrictEqual(result, []);
   });
 
   it("returns an empty array if both of the properties are `Invalid Date`", () => {
@@ -99,7 +102,7 @@ describe("eachQuarterOfInterval", () => {
       start: new Date(NaN),
       end: new Date(NaN),
     });
-    expect(result).toEqual([]);
+    assert.deepStrictEqual(result, []);
   });
 
   describe("options.step", () => {
@@ -110,7 +113,7 @@ describe("eachQuarterOfInterval", () => {
 
     it("returns an array with starts of days from the day of the start date to the day of the end date with the given step", () => {
       const result = eachQuarterOfInterval(interval, { step: 2 });
-      expect(result).toEqual([
+      assert.deepStrictEqual(result, [
         new Date(2014, 0 /* Jan */, 1),
         new Date(2014, 6 /* Jul */, 1),
       ]);
@@ -118,7 +121,7 @@ describe("eachQuarterOfInterval", () => {
 
     it("returns reversed array if `options.step` is negative", () => {
       const result = eachQuarterOfInterval(interval, { step: -2 });
-      expect(result).toEqual([
+      assert.deepStrictEqual(result, [
         new Date(2014, 6 /* Jul */, 1),
         new Date(2014, 0 /* Jan */, 1),
       ]);
@@ -129,7 +132,7 @@ describe("eachQuarterOfInterval", () => {
         { start: interval.end, end: interval.start },
         { step: -2 },
       );
-      expect(result).toEqual([
+      assert.deepStrictEqual(result, [
         new Date(2014, 0 /* Jan */, 1),
         new Date(2014, 6 /* Jul */, 1),
       ]);
@@ -137,12 +140,12 @@ describe("eachQuarterOfInterval", () => {
 
     it("returns empty array if `options.step` is less than 1", () => {
       const result = eachQuarterOfInterval(interval, { step: 0 });
-      expect(result).toEqual([]);
+      assert.deepStrictEqual(result, []);
     });
 
     it("returns empty array if `options.step` is NaN", () => {
       const result = eachQuarterOfInterval(interval, { step: NaN });
-      expect(result).toEqual([]);
+      assert.deepStrictEqual(result, []);
     });
   });
 });

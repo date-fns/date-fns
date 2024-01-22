@@ -1,4 +1,7 @@
-import { expect, assert, describe, it } from "vitest";
+/* eslint-env mocha */
+
+import assert from "assert";
+import { describe, it } from "vitest";
 import { compareDesc } from "./index.js";
 
 describe("compareDesc", () => {
@@ -42,7 +45,7 @@ describe("compareDesc", () => {
     unsortedArray.sort(compareDesc);
     const result = unsortedArray;
 
-    expect(result).toEqual(sortedArray);
+    assert.deepStrictEqual(result, sortedArray);
   });
 
   it("accepts timestamps", () => {

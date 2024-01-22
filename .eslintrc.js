@@ -26,11 +26,7 @@ module.exports = {
   rules: {
     "@typescript-eslint/no-unused-vars": [
       "error",
-      {
-        argsIgnorePattern: "^_",
-        // While we're mirgraing to Vitest's expect, we need to ignore it.
-        varsIgnorePattern: "(^_|expect|assert)",
-      },
+      { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
     ],
     "@typescript-eslint/consistent-type-imports": "error",
     // The following rules are deprecated: https://eslint.org/blog/2023/10/deprecating-formatting-rules

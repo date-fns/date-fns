@@ -1,22 +1,25 @@
-import { expect, assert, describe, it } from "vitest";
+/* eslint-env mocha */
+
+import assert from "assert";
+import { describe, it } from "vitest";
 import { addDays } from "./index.js";
 import { getDstTransitions } from "../../test/dst/tzOffsetTransitions.js";
 
 describe("addDays", () => {
   it("adds the given number of days", () => {
     const result = addDays(new Date(2014, 8 /* Sep */, 1), 10);
-    expect(result).toEqual(new Date(2014, 8 /* Sep */, 11));
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 11));
   });
 
   it("accepts a timestamp", () => {
     const result = addDays(new Date(2014, 8 /* Sep */, 1).getTime(), 10);
-    expect(result).toEqual(new Date(2014, 8 /* Sep */, 11));
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 11));
   });
 
   it("does not mutate the original date", () => {
     const date = new Date(2014, 8 /* Sep */, 1);
     addDays(date, 11);
-    expect(date).toEqual(new Date(2014, 8 /* Sep */, 1));
+    assert.deepStrictEqual(date, new Date(2014, 8 /* Sep */, 1));
   });
 
   it("returns `Invalid Date` if the given date is invalid", () => {
@@ -47,7 +50,7 @@ describe("addDays", () => {
     () => {
       const date = dstTransitions.start;
       const result = addDays(date!, 1);
-      expect(result).toEqual(new Date(date!.getTime() + 24 * HOUR));
+      assert.deepStrictEqual(result, new Date(date!.getTime() + 24 * HOUR));
     },
   );
 
@@ -82,7 +85,7 @@ describe("addDays", () => {
     () => {
       const date = dstTransitions.end;
       const result = addDays(date!, 1);
-      expect(result).toEqual(new Date(date!.getTime() + 24 * HOUR));
+      assert.deepStrictEqual(result, new Date(date!.getTime() + 24 * HOUR));
     },
   );
 
@@ -119,7 +122,7 @@ describe("addDays", () => {
     () => {
       const date = new Date(dstTransitions.end!);
       const result = addDays(date, 0);
-      expect(result).toEqual(date);
+      assert.deepStrictEqual(result, date);
     },
   );
 });

@@ -1,4 +1,7 @@
-import { expect, assert, describe, it } from "vitest";
+/* eslint-env mocha */
+
+import assert from "assert";
+import { describe, it } from "vitest";
 import { parseISO } from "./index.js";
 
 describe("parseISO", () => {
@@ -6,86 +9,86 @@ describe("parseISO", () => {
     describe("centuries", () => {
       it("parses YY", () => {
         const result = parseISO("20");
-        expect(result).toEqual(new Date(2000, 0 /* Jan */, 1));
+        assert.deepStrictEqual(result, new Date(2000, 0 /* Jan */, 1));
       });
     });
 
     describe("years", () => {
       it("parses YYYY", () => {
         const result = parseISO("2014");
-        expect(result).toEqual(new Date(2014, 0 /* Jan */, 1));
+        assert.deepStrictEqual(result, new Date(2014, 0 /* Jan */, 1));
       });
     });
 
     describe("months", () => {
       it("parses YYYY-MM", () => {
         const result = parseISO("2014-02");
-        expect(result).toEqual(new Date(2014, 1 /* Feb */, 1));
+        assert.deepStrictEqual(result, new Date(2014, 1 /* Feb */, 1));
       });
     });
 
     describe("weeks", () => {
       it("parses YYYY-Www", () => {
         const result = parseISO("2014-W02");
-        expect(result).toEqual(new Date(2014, 0 /* Jan */, 6));
+        assert.deepStrictEqual(result, new Date(2014, 0 /* Jan */, 6));
       });
 
       it("parses YYYYWww", () => {
         const result = parseISO("2014W02");
-        expect(result).toEqual(new Date(2014, 0 /* Jan */, 6));
+        assert.deepStrictEqual(result, new Date(2014, 0 /* Jan */, 6));
       });
     });
 
     describe("calendar dates", () => {
       it("parses YYYY-MM-DD", () => {
         const result = parseISO("2014-02-11");
-        expect(result).toEqual(new Date(2014, 1, /* Feb */ 11));
+        assert.deepStrictEqual(result, new Date(2014, 1, /* Feb */ 11));
       });
 
       it("parses YYYYMMDD", () => {
         const result = parseISO("20140211");
-        expect(result).toEqual(new Date(2014, 1 /* Feb */, 11));
+        assert.deepStrictEqual(result, new Date(2014, 1 /* Feb */, 11));
       });
     });
 
     describe("week dates", () => {
       it("parses YYYY-Www-D", () => {
         const result = parseISO("2014-W02-7");
-        expect(result).toEqual(new Date(2014, 0 /* Jan */, 12));
+        assert.deepStrictEqual(result, new Date(2014, 0 /* Jan */, 12));
       });
 
       it("parses YYYYWwwD", () => {
         const result = parseISO("2014W027");
-        expect(result).toEqual(new Date(2014, 0 /* Jan */, 12));
+        assert.deepStrictEqual(result, new Date(2014, 0 /* Jan */, 12));
       });
 
       it("correctly handles years in which 4 January is Sunday", () => {
         const result = parseISO("2009-W01-1");
-        expect(result).toEqual(new Date(2008, 11 /* Dec */, 29));
+        assert.deepStrictEqual(result, new Date(2008, 11 /* Dec */, 29));
       });
     });
 
     describe("ordinal dates", () => {
       it("parses YYYY-DDD", () => {
         const result = parseISO("2014-026");
-        expect(result).toEqual(new Date(2014, 0 /* Jan */, 26));
+        assert.deepStrictEqual(result, new Date(2014, 0 /* Jan */, 26));
       });
 
       it("parses YYYYDDD", () => {
         const result = parseISO("2014026");
-        expect(result).toEqual(new Date(2014, 0 /* Jan */, 26));
+        assert.deepStrictEqual(result, new Date(2014, 0 /* Jan */, 26));
       });
     });
 
     describe("date and time combined", () => {
       it("parses YYYY-MM-DDThh:mm", () => {
         const result = parseISO("2014-02-11T11:30");
-        expect(result).toEqual(new Date(2014, 1 /* Feb */, 11, 11, 30));
+        assert.deepStrictEqual(result, new Date(2014, 1 /* Feb */, 11, 11, 30));
       });
 
       it("parses YYYY-MM-DDThhmm", () => {
         const result = parseISO("2014-02-11T1130");
-        expect(result).toEqual(new Date(2014, 1 /* Feb */, 11, 11, 30));
+        assert.deepStrictEqual(result, new Date(2014, 1 /* Feb */, 11, 11, 30));
       });
     });
 
@@ -95,7 +98,7 @@ describe("parseISO", () => {
         const date = new Date(0);
         date.setFullYear(-100, 0 /* Jan */, 1);
         date.setHours(0, 0, 0, 0);
-        expect(result).toEqual(date);
+        assert.deepStrictEqual(result, date);
       });
 
       it("parses century 1 BC - 99 AD", () => {
@@ -103,12 +106,12 @@ describe("parseISO", () => {
         const date = new Date(0);
         date.setFullYear(0, 0 /* Jan */, 1);
         date.setHours(0, 0, 0, 0);
-        expect(result).toEqual(date);
+        assert.deepStrictEqual(result, date);
       });
 
       it("parses centuries after 9999 AD", () => {
         const result = parseISO("+0123");
-        expect(result).toEqual(new Date(12300, 0 /* Jan */, 1));
+        assert.deepStrictEqual(result, new Date(12300, 0 /* Jan */, 1));
       });
 
       it("allows to specify the number of additional digits", () => {
@@ -116,7 +119,7 @@ describe("parseISO", () => {
         const date = new Date(0);
         date.setFullYear(-2000, 0 /* Jan */, 1);
         date.setHours(0, 0, 0, 0);
-        expect(result).toEqual(date);
+        assert.deepStrictEqual(result, date);
       });
     });
 
@@ -126,17 +129,17 @@ describe("parseISO", () => {
         const date = new Date(0);
         date.setFullYear(95, 6 /* Jul */, 2);
         date.setHours(0, 0, 0, 0);
-        expect(result).toEqual(date);
+        assert.deepStrictEqual(result, date);
       });
 
       it("parses years after 9999 AD", () => {
         const result = parseISO("+012345-07-02");
-        expect(result).toEqual(new Date(12345, 6 /* Jul */, 2));
+        assert.deepStrictEqual(result, new Date(12345, 6 /* Jul */, 2));
       });
 
       it("allows to specify the number of additional digits", () => {
         const result = parseISO("+12340702", { additionalDigits: 0 });
-        expect(result).toEqual(new Date(1234, 6 /* Jul */, 2));
+        assert.deepStrictEqual(result, new Date(1234, 6 /* Jul */, 2));
       });
 
       it("parses year 1 BC", () => {
@@ -144,7 +147,7 @@ describe("parseISO", () => {
         const date = new Date(0);
         date.setFullYear(0, 6 /* Jul */, 2);
         date.setHours(0, 0, 0, 0);
-        expect(result).toEqual(date);
+        assert.deepStrictEqual(result, date);
       });
 
       it("parses years less than 1 BC", () => {
@@ -152,14 +155,14 @@ describe("parseISO", () => {
         const date = new Date(0);
         date.setFullYear(-1, 6 /* Jul */, 2);
         date.setHours(0, 0, 0, 0);
-        expect(result).toEqual(date);
+        assert.deepStrictEqual(result, date);
       });
     });
 
     describe("float time", () => {
       it("parses float hours", () => {
         const result = parseISO("2014-02-11T11.5");
-        expect(result).toEqual(new Date(2014, 1 /* Feb */, 11, 11, 30));
+        assert.deepStrictEqual(result, new Date(2014, 1 /* Feb */, 11, 11, 30));
       });
 
       it("parses float minutes", () => {
@@ -180,7 +183,7 @@ describe("parseISO", () => {
 
       it("parses , as decimal mark", () => {
         const result = parseISO("2014-02-11T11,5");
-        expect(result).toEqual(new Date(2014, 1 /* Feb */, 11, 11, 30));
+        assert.deepStrictEqual(result, new Date(2014, 1 /* Feb */, 11, 11, 30));
       });
     });
 
@@ -188,28 +191,28 @@ describe("parseISO", () => {
       describe("when the date and the time are specified", () => {
         it("parses Z", () => {
           const result = parseISO("2014-10-25T06:46:20Z");
-          expect(result).toEqual(new Date("2014-10-25T13:46:20+07:00"));
+          assert.deepStrictEqual(result, new Date("2014-10-25T13:46:20+07:00"));
         });
 
         it("parses ±hh:mm", () => {
           const result = parseISO("2014-10-25T13:46:20+07:00");
-          expect(result).toEqual(new Date("2014-10-25T13:46:20+07:00"));
+          assert.deepStrictEqual(result, new Date("2014-10-25T13:46:20+07:00"));
         });
 
         it("parses ±hhmm", () => {
           const result = parseISO("2014-10-25T03:46:20-0300");
-          expect(result).toEqual(new Date("2014-10-25T13:46:20+07:00"));
+          assert.deepStrictEqual(result, new Date("2014-10-25T13:46:20+07:00"));
         });
 
         it("parses ±hh", () => {
           const result = parseISO("2014-10-25T13:46:20+07");
-          expect(result).toEqual(new Date("2014-10-25T13:46:20+07:00"));
+          assert.deepStrictEqual(result, new Date("2014-10-25T13:46:20+07:00"));
         });
       });
       describe("when the year and the month are specified", () => {
         it("sets timezone correctly on yyyy-MMZ format", () => {
           const result = parseISO("2012-01Z");
-          expect(result).toEqual(new Date("2012-01-01T00:00:00+00:00"));
+          assert.deepStrictEqual(result, new Date("2012-01-01T00:00:00+00:00"));
         });
       });
     });
@@ -261,7 +264,7 @@ describe("parseISO", () => {
 
       it("parses 29th of February of leap year", () => {
         const result = parseISO("2012-02-29");
-        expect(result).toEqual(new Date(2012, 1, /* Feb */ 29));
+        assert.deepStrictEqual(result, new Date(2012, 1, /* Feb */ 29));
       });
     });
 
@@ -288,7 +291,7 @@ describe("parseISO", () => {
 
       it("parses 366th day of leap year", () => {
         const result = parseISO("2012-366");
-        expect(result).toEqual(new Date(2012, 11, /* Dec */ 31));
+        assert.deepStrictEqual(result, new Date(2012, 11, /* Dec */ 31));
       });
     });
 
@@ -303,7 +306,7 @@ describe("parseISO", () => {
     describe("time", () => {
       it("parses 24:00 as midnight of the next day", () => {
         const result = parseISO("2014-02-11T24:00");
-        expect(result).toEqual(new Date(2014, 1 /* Feb */, 12, 0, 0));
+        assert.deepStrictEqual(result, new Date(2014, 1 /* Feb */, 12, 0, 0));
       });
 
       it("returns `Invalid Date` for anything after 24:00", () => {

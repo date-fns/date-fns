@@ -1,4 +1,7 @@
-import { expect, assert, describe, it } from "vitest";
+/* eslint-env mocha */
+
+import assert from "assert";
+import { describe, it } from "vitest";
 
 import { eachMinuteOfInterval } from "./index.js";
 
@@ -9,7 +12,7 @@ describe("eachMinuteOfInterval", () => {
       end: new Date(2020, 10, 14, 13, 5),
     });
 
-    expect(result).toEqual([
+    assert.deepStrictEqual(result, [
       new Date(2020, 10, 14, 13, 0),
       new Date(2020, 10, 14, 13, 1),
       new Date(2020, 10, 14, 13, 2),
@@ -25,8 +28,8 @@ describe("eachMinuteOfInterval", () => {
       end: new Date(2020, 10, 14, 13, 2),
     });
 
-    expect(result[0]).toEqual(new Date(2020, 10, 14, 13));
-    expect(result[2]).toEqual(new Date(2020, 10, 14, 13, 2));
+    assert.deepStrictEqual(result[0], new Date(2020, 10, 14, 13));
+    assert.deepStrictEqual(result[2], new Date(2020, 10, 14, 13, 2));
   });
 
   it("should accept timestamps", () => {
@@ -38,7 +41,7 @@ describe("eachMinuteOfInterval", () => {
       end,
     });
 
-    expect(result).toEqual([
+    assert.deepStrictEqual(result, [
       new Date(2020, 10, 14, 13, 0),
       new Date(2020, 10, 14, 13, 1),
       new Date(2020, 10, 14, 13, 2),
@@ -59,7 +62,7 @@ describe("eachMinuteOfInterval", () => {
       end: new Date(2020, 10, 14, 13, 0),
     });
 
-    expect(result).toEqual([
+    assert.deepStrictEqual(result, [
       new Date(2020, 10, 14, 13, 5),
       new Date(2020, 10, 14, 13, 4),
       new Date(2020, 10, 14, 13, 3),
@@ -74,7 +77,7 @@ describe("eachMinuteOfInterval", () => {
       start: new Date(NaN),
       end: new Date(2014, 9 /* Oct */, 6),
     });
-    expect(result).toEqual([]);
+    assert.deepStrictEqual(result, []);
   });
 
   it("returns an empty array if the end date is `Invalid Date`", () => {
@@ -82,7 +85,7 @@ describe("eachMinuteOfInterval", () => {
       start: new Date(2014, 9 /* Oct */, 12),
       end: new Date(NaN),
     });
-    expect(result).toEqual([]);
+    assert.deepStrictEqual(result, []);
   });
 
   it("returns an empty array if both of the properties are `Invalid Date`", () => {
@@ -90,7 +93,7 @@ describe("eachMinuteOfInterval", () => {
       start: new Date(NaN),
       end: new Date(NaN),
     });
-    expect(result).toEqual([]);
+    assert.deepStrictEqual(result, []);
   });
 
   describe("options.step", () => {
@@ -101,7 +104,7 @@ describe("eachMinuteOfInterval", () => {
 
     it("returns an array with starts of hours from the hour of the start date to the hour of the end date with the given step", () => {
       const result = eachMinuteOfInterval(interval, { step: 3 });
-      expect(result).toEqual([
+      assert.deepStrictEqual(result, [
         new Date(2020, 9, 14, 13, 1),
         new Date(2020, 9, 14, 13, 4),
         new Date(2020, 9, 14, 13, 7),
@@ -117,7 +120,7 @@ describe("eachMinuteOfInterval", () => {
         { step: -1 },
       );
 
-      expect(result).toEqual([
+      assert.deepStrictEqual(result, [
         new Date(2020, 10, 14, 13, 5),
         new Date(2020, 10, 14, 13, 4),
         new Date(2020, 10, 14, 13, 3),
@@ -136,7 +139,7 @@ describe("eachMinuteOfInterval", () => {
         { step: -1 },
       );
 
-      expect(result).toEqual([
+      assert.deepStrictEqual(result, [
         new Date(2020, 10, 14, 13, 0),
         new Date(2020, 10, 14, 13, 1),
         new Date(2020, 10, 14, 13, 2),
@@ -148,12 +151,12 @@ describe("eachMinuteOfInterval", () => {
 
     it("returns empty array if `options.step` is less than 1", () => {
       const result = eachMinuteOfInterval(interval, { step: 0 });
-      expect(result).toEqual([]);
+      assert.deepStrictEqual(result, []);
     });
 
     it("returns empty array if `options.step` is NaN", () => {
       const result = eachMinuteOfInterval(interval, { step: NaN });
-      expect(result).toEqual([]);
+      assert.deepStrictEqual(result, []);
     });
   });
 });

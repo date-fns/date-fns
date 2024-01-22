@@ -1,4 +1,7 @@
-import { expect, assert, describe, it } from "vitest";
+/* eslint-env mocha */
+
+import assert from "assert";
+import { describe, it } from "vitest";
 import { closestTo } from "./index.js";
 
 describe("closestTo", () => {
@@ -8,7 +11,7 @@ describe("closestTo", () => {
       new Date(2015, 7 /* Aug */, 31),
       new Date(2012, 6 /* Jul */, 2),
     ]);
-    expect(result).toEqual(new Date(2015, 7 /* Aug */, 31));
+    assert.deepStrictEqual(result, new Date(2015, 7 /* Aug */, 31));
   });
 
   it("works if the closest date from the given array is before the given date", () => {
@@ -30,13 +33,13 @@ describe("closestTo", () => {
       new Date(2015, 7 /* Aug */, 31).getTime(),
       new Date(2012, 6 /* Jul */, 2).getTime(),
     ]);
-    expect(result).toEqual(new Date(2015, 7 /* Aug */, 31));
+    assert.deepStrictEqual(result, new Date(2015, 7 /* Aug */, 31));
   });
 
   it("returns undefined if the given array is empty", () => {
     const date = new Date(2014, 6 /* Jul */, 2).getTime();
     const result = closestTo(date, []);
-    expect(result).toEqual(undefined);
+    assert.deepStrictEqual(result, undefined);
   });
 
   it("returns `Invalid Date` if the given date is `Invalid Date`", () => {

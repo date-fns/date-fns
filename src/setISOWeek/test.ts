@@ -1,21 +1,24 @@
-import { expect, assert, describe, it } from "vitest";
+/* eslint-env mocha */
+
+import assert from "assert";
+import { describe, it } from "vitest";
 import { setISOWeek } from "./index.js";
 
 describe("setISOWeek", () => {
   it("sets the ISO week", () => {
     const result = setISOWeek(new Date(2004, 7 /* Aug */, 7), 53);
-    expect(result).toEqual(new Date(2005, 0 /* Jan */, 1));
+    assert.deepStrictEqual(result, new Date(2005, 0 /* Jan */, 1));
   });
 
   it("accepts a timestamp", () => {
     const result = setISOWeek(new Date(2009, 11 /* Dec */, 2).getTime(), 1);
-    expect(result).toEqual(new Date(2008, 11 /* Dec */, 31));
+    assert.deepStrictEqual(result, new Date(2008, 11 /* Dec */, 31));
   });
 
   it("does not mutate the original date", () => {
     const date = new Date(2014, 6 /* Jul */, 2);
     setISOWeek(date, 52);
-    expect(date).toEqual(new Date(2014, 6 /* Jul */, 2));
+    assert.deepStrictEqual(date, new Date(2014, 6 /* Jul */, 2));
   });
 
   it("handles dates before 100 AD", () => {
@@ -26,7 +29,7 @@ describe("setISOWeek", () => {
     expectedResult.setFullYear(4, 11 /* Dec */, 26);
     expectedResult.setHours(0, 0, 0, 0);
     const result = setISOWeek(initialDate, 52);
-    expect(result).toEqual(expectedResult);
+    assert.deepStrictEqual(result, expectedResult);
   });
 
   it("returns `Invalid Date` if the given date is invalid", () => {

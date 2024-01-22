@@ -1,4 +1,7 @@
-import { expect, assert, describe, it } from "vitest";
+/* eslint-env mocha */
+
+import assert from "assert";
+import { describe, it } from "vitest";
 import { clamp } from "./index.js";
 
 describe("clamp", () => {
@@ -7,7 +10,7 @@ describe("clamp", () => {
     const date = new Date(2000, 1, 2).getTime();
     const end = new Date(2000, 1, 3).getTime();
     const result = clamp(date, { start, end });
-    expect(result).toEqual(new Date(2000, 1, 2));
+    assert.deepStrictEqual(result, new Date(2000, 1, 2));
   });
 
   it("returns the start date when the date is less than start", () => {
@@ -15,7 +18,7 @@ describe("clamp", () => {
     const date = new Date(2000, 1, 1);
     const end = new Date(2020, 1, 1);
     const result = clamp(date, { start, end });
-    expect(result).toEqual(new Date(2001, 1, 1));
+    assert.deepStrictEqual(result, new Date(2001, 1, 1));
   });
 
   it("returns the end date when the date is greater than the end date", () => {
@@ -23,7 +26,7 @@ describe("clamp", () => {
     const date = new Date(2003, 1, 1);
     const end = new Date(2001, 1, 1);
     const result = clamp(date, { start, end });
-    expect(result).toEqual(new Date(2001, 1, 1));
+    assert.deepStrictEqual(result, new Date(2001, 1, 1));
   });
 
   it("returns the date when the date is within the bound of start and end", () => {
@@ -31,6 +34,6 @@ describe("clamp", () => {
     const date = new Date(2001, 1, 1);
     const end = new Date(2003, 1, 1);
     const result = clamp(date, { start, end });
-    expect(result).toEqual(new Date(2001, 1, 1));
+    assert.deepStrictEqual(result, new Date(2001, 1, 1));
   });
 });

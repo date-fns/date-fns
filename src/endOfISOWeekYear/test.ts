@@ -1,4 +1,7 @@
-import { expect, assert, describe, it } from "vitest";
+/* eslint-env mocha */
+
+import assert from "assert";
+import { describe, it } from "vitest";
 import { endOfISOWeekYear } from "./index.js";
 
 describe("endOfISOWeekYear", () => {
@@ -23,7 +26,7 @@ describe("endOfISOWeekYear", () => {
   it("does not mutate the original date", () => {
     const date = new Date(2014, 6 /* Jul */, 2);
     endOfISOWeekYear(date);
-    expect(date).toEqual(new Date(2014, 6 /* Jul */, 2));
+    assert.deepStrictEqual(date, new Date(2014, 6 /* Jul */, 2));
   });
 
   it("handles dates before 100 AD", () => {
@@ -34,7 +37,7 @@ describe("endOfISOWeekYear", () => {
     expectedResult.setFullYear(6, 0 /* Jan */, 1);
     expectedResult.setHours(23, 59, 59, 999);
     const result = endOfISOWeekYear(initialDate);
-    expect(result).toEqual(expectedResult);
+    assert.deepStrictEqual(result, expectedResult);
   });
 
   it("returns `Invalid Date` if the given date is invalid", () => {

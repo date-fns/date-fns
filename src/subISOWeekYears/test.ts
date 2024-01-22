@@ -1,10 +1,13 @@
-import { expect, assert, describe, it } from "vitest";
+/* eslint-env mocha */
+
+import assert from "assert";
+import { describe, it } from "vitest";
 import { subISOWeekYears } from "./index.js";
 
 describe("subISOWeekYears", () => {
   it("subtracts the given number of ISO week-numbering years", () => {
     const result = subISOWeekYears(new Date(2014, 8 /* Sep */, 1), 5);
-    expect(result).toEqual(new Date(2009, 7 /* Aug */, 31));
+    assert.deepStrictEqual(result, new Date(2009, 7 /* Aug */, 31));
   });
 
   it("accepts a timestamp", () => {
@@ -12,13 +15,13 @@ describe("subISOWeekYears", () => {
       new Date(2014, 8 /* Sep */, 1).getTime(),
       12,
     );
-    expect(result).toEqual(new Date(2002, 8 /* Sep */, 2));
+    assert.deepStrictEqual(result, new Date(2002, 8 /* Sep */, 2));
   });
 
   it("does not mutate the original date", () => {
     const date = new Date(2014, 8 /* Sep */, 1);
     subISOWeekYears(date, 12);
-    expect(date).toEqual(new Date(2014, 8 /* Sep */, 1));
+    assert.deepStrictEqual(date, new Date(2014, 8 /* Sep */, 1));
   });
 
   it("handles dates before 100 AD", () => {
@@ -29,7 +32,7 @@ describe("subISOWeekYears", () => {
     expectedResult.setFullYear(10, 6 /* Jul */, 2);
     expectedResult.setHours(0, 0, 0, 0);
     const result = subISOWeekYears(initialDate, 5);
-    expect(result).toEqual(expectedResult);
+    assert.deepStrictEqual(result, expectedResult);
   });
 
   it("returns `Invalid Date` if the given date is invalid", () => {

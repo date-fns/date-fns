@@ -1,4 +1,7 @@
-import { expect, assert, describe, it } from "vitest";
+/* eslint-env mocha */
+
+import assert from "assert";
+import { describe, it } from "vitest";
 import { setSeconds } from "./index.js";
 
 describe("setSeconds", () => {
@@ -18,13 +21,13 @@ describe("setSeconds", () => {
       new Date(2014, 8 /* Sep */, 1, 11, 30, 15).getTime(),
       45,
     );
-    expect(result).toEqual(new Date(2014, 8 /* Sep */, 1, 11, 30, 45));
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1, 11, 30, 45));
   });
 
   it("does not mutate the original date", () => {
     const date = new Date(2014, 8 /* Sep */, 1, 11, 30, 40);
     setSeconds(date, 15);
-    expect(date).toEqual(new Date(2014, 8 /* Sep */, 1, 11, 30, 40));
+    assert.deepStrictEqual(date, new Date(2014, 8 /* Sep */, 1, 11, 30, 40));
   });
 
   it("returns `Invalid Date` if the given date is invalid", () => {

@@ -1,4 +1,7 @@
-import { expect, assert, describe, it } from "vitest";
+/* eslint-env mocha */
+
+import assert from "assert";
+import { describe, it } from "vitest";
 import { eachWeekendOfInterval } from "./index.js";
 
 describe("eachWeekendOfInterval", () => {
@@ -7,7 +10,7 @@ describe("eachWeekendOfInterval", () => {
       start: new Date(2018, 8 /* Sept */, 17),
       end: new Date(2018, 8 /* Sept */, 30),
     });
-    expect(result).toEqual([
+    assert.deepStrictEqual(result, [
       new Date(2018, 8 /* Sept */, 22),
       new Date(2018, 8 /* Sept */, 23),
       new Date(2018, 8 /* Sept */, 29),
@@ -20,7 +23,7 @@ describe("eachWeekendOfInterval", () => {
       start: new Date(2018, 8 /* Sept */, 22),
       end: new Date(2018, 8 /* Sept */, 30),
     });
-    expect(result).toEqual([
+    assert.deepStrictEqual(result, [
       new Date(2018, 8 /* Sept */, 22),
       new Date(2018, 8 /* Sept */, 23),
       new Date(2018, 8 /* Sept */, 29),
@@ -33,7 +36,7 @@ describe("eachWeekendOfInterval", () => {
       start: new Date(2018, 8 /* Sept */, 30),
       end: new Date(2018, 8 /* Sept */, 17),
     });
-    expect(result).toEqual([
+    assert.deepStrictEqual(result, [
       new Date(2018, 8 /* Sept */, 30),
       new Date(2018, 8 /* Sept */, 29),
       new Date(2018, 8 /* Sept */, 23),
@@ -46,7 +49,7 @@ describe("eachWeekendOfInterval", () => {
       start: new Date(NaN),
       end: new Date(2019, 11 /* Dec */, 31),
     });
-    expect(result).toEqual([]);
+    assert.deepStrictEqual(result, []);
   });
 
   it("returns an empty array if the end date is `Invalid Date`", () => {
@@ -54,7 +57,7 @@ describe("eachWeekendOfInterval", () => {
       start: new Date(2019, 0 /* Jan */, 1),
       end: new Date(NaN),
     });
-    expect(result).toEqual([]);
+    assert.deepStrictEqual(result, []);
   });
 
   it("returns an empty array if both of the properties are `Invalid Date`", () => {
@@ -62,6 +65,6 @@ describe("eachWeekendOfInterval", () => {
       start: new Date(NaN),
       end: new Date(NaN),
     });
-    expect(result).toEqual([]);
+    assert.deepStrictEqual(result, []);
   });
 });

@@ -1,4 +1,6 @@
-import { expect, describe, it } from "vitest";
+/* eslint-env mocha */
+
+import { describe, expect, it } from "vitest";
 import { getOverlappingDaysInIntervals } from "./index.js";
 
 describe("getOverlappingDaysInIntervals", () => {

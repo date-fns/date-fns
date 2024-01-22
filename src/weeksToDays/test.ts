@@ -1,4 +1,7 @@
-import { expect, assert, describe, it } from "vitest";
+/* eslint-env mocha */
+
+import assert from "assert";
+import { describe, expect, it } from "vitest";
 import { weeksToDays } from "./index.js";
 
 describe("weeksToDays", () => {
