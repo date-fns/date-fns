@@ -60,8 +60,8 @@ export function getWeek<DateType extends Date>(
   const _date = toDate(date);
   const diff = +startOfWeek(_date, options) - +startOfWeekYear(_date, options);
 
-  // Round the number of days to the nearest integer
-  // because the number of milliseconds in a week is not constant
-  // (e.g. it's different in the week of the daylight saving time clock shift)
-  return Math.trunc(diff / millisecondsInWeek) + 1;
+  // Round the number of weeks to the nearest integer because the number of
+  // milliseconds in a week is not constant (e.g. it's different in the week of
+  // the daylight saving time clock shift).
+  return Math.round(diff / millisecondsInWeek) + 1;
 }

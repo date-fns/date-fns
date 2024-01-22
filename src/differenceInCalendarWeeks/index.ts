@@ -57,8 +57,8 @@ export function differenceInCalendarWeeks<DateType extends Date>(
   const timestampRight =
     +startOfWeekRight - getTimezoneOffsetInMilliseconds(startOfWeekRight);
 
-  // Round the number of days to the nearest integer
-  // because the number of milliseconds in a week is not constant
-  // (e.g. it's different in the week of the daylight saving time clock shift)
-  return Math.trunc((timestampLeft - timestampRight) / millisecondsInWeek);
+  // Round the number of days to the nearest integer because the number of
+  // milliseconds in a days is not constant (e.g. it's different in the week of
+  // the daylight saving time clock shift).
+  return Math.round((timestampLeft - timestampRight) / millisecondsInWeek);
 }

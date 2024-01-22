@@ -46,8 +46,8 @@ export function differenceInCalendarDays<DateType extends Date>(
   const timestampRight =
     +startOfDayRight - getTimezoneOffsetInMilliseconds(startOfDayRight);
 
-  // Round the number of days to the nearest integer
-  // because the number of milliseconds in a day is not constant
-  // (e.g. it's different in the day of the daylight saving time clock shift)
-  return Math.trunc((timestampLeft - timestampRight) / millisecondsInDay);
+  // Round the number of days to the nearest integer because the number of
+  // milliseconds in a day is not constant (e.g. it's different in the week of
+  // the daylight saving time clock shift).
+  return Math.round((timestampLeft - timestampRight) / millisecondsInDay);
 }
