@@ -1,6 +1,5 @@
 /* eslint-env mocha */
 
-import assert from "assert";
 import { describe, expect, it } from "vitest";
 import { getOverlappingDaysInIntervals } from "./index.js";
 
@@ -17,7 +16,7 @@ describe("getOverlappingDaysInIntervals", () => {
         { start: initialIntervalStart, end: initialIntervalEnd },
         { start: earlierIntervalStart, end: earlierIntervalEnd },
       );
-      assert(numOverlappingDays === 0);
+      expect(numOverlappingDays).toBe(0);
     });
 
     it("returns 0 for a valid non overlapping interval after another interval", () => {
@@ -28,7 +27,7 @@ describe("getOverlappingDaysInIntervals", () => {
         { start: initialIntervalStart, end: initialIntervalEnd },
         { start: laterIntervalStart, end: laterIntervalEnd },
       );
-      assert(numOverlappingDays === 0);
+      expect(numOverlappingDays).toBe(0);
     });
 
     it("returns 0 for a non overlapping same-day interval", () => {
@@ -39,7 +38,7 @@ describe("getOverlappingDaysInIntervals", () => {
         { start: initialIntervalStart, end: initialIntervalEnd },
         { start: sameDayIntervalStart, end: sameDayIntervalEnd },
       );
-      assert(numOverlappingDays === 0);
+      expect(numOverlappingDays).toBe(0);
     });
 
     it("returns 0 for an interval differing by a few hours", () => {
@@ -53,7 +52,7 @@ describe("getOverlappingDaysInIntervals", () => {
           end: oneDayOverlappingIntervalEnd,
         },
       );
-      assert(numOverlappingDays === 0);
+      expect(numOverlappingDays).toBe(0);
     });
 
     it("returns 0 for an interval with the same startDateTime as the initial time intervals's endDateTime", () => {
@@ -64,7 +63,7 @@ describe("getOverlappingDaysInIntervals", () => {
         { start: initialIntervalStart, end: initialIntervalEnd },
         { start: oneDayOverlapIntervalStart, end: oneDayOverlapIntervalEnd },
       );
-      assert(numOverlappingDays === 0);
+      expect(numOverlappingDays).toBe(0);
     });
 
     it("returns 0 for an interval with the same endDateTime as the initial time interval's startDateTime", () => {
@@ -75,7 +74,7 @@ describe("getOverlappingDaysInIntervals", () => {
         { start: initialIntervalStart, end: initialIntervalEnd },
         { start: oneDayOverlapIntervalStart, end: oneDayOverlapIntervalEnd },
       );
-      assert(numOverlappingDays === 0);
+      expect(numOverlappingDays).toBe(0);
     });
   });
 
@@ -88,7 +87,7 @@ describe("getOverlappingDaysInIntervals", () => {
         { start: initialIntervalStart, end: initialIntervalEnd },
         { start: includedIntervalStart, end: includedIntervalEnd },
       );
-      assert(numOverlappingDays === 2);
+      expect(numOverlappingDays).toBe(2);
     });
 
     it("returns the correct value for an interval included within another interval", () => {
@@ -99,7 +98,7 @@ describe("getOverlappingDaysInIntervals", () => {
         { start: initialIntervalStart, end: initialIntervalEnd },
         { start: includedIntervalStart, end: includedIntervalEnd },
       );
-      assert(numOverlappingDays === 1);
+      expect(numOverlappingDays).toBe(1);
     });
 
     it("returns the correct value for an interval overlapping at the end", () => {
@@ -110,7 +109,7 @@ describe("getOverlappingDaysInIntervals", () => {
         { start: initialIntervalStart, end: initialIntervalEnd },
         { start: endOverlappingIntervalStart, end: endOverlappingIntervalEnd },
       );
-      assert(numOverlappingDays === 4);
+      expect(numOverlappingDays).toBe(4);
     });
 
     it("returns the correct value for an interval overlapping at the beginning", () => {
@@ -124,7 +123,7 @@ describe("getOverlappingDaysInIntervals", () => {
           end: startOverlappingIntervalEnd,
         },
       );
-      assert(numOverlappingDays === 14);
+      expect(numOverlappingDays).toBe(14);
     });
 
     it("returns the correct value for an interval including another interval", () => {
@@ -135,7 +134,26 @@ describe("getOverlappingDaysInIntervals", () => {
         { start: initialIntervalStart, end: initialIntervalEnd },
         { start: includingIntervalStart, end: includingIntervalEnd },
       );
-      assert(numOverlappingDays === 24);
+      expect(numOverlappingDays).toBe(24);
+    });
+
+    it("considers equal 0-lenght intervals not overlapping", () => {
+      const date = new Date(2016, 10, 15);
+      const numOverlappingDays = getOverlappingDaysInIntervals(
+        { start: date, end: date },
+        { start: date, end: date },
+      );
+      expect(numOverlappingDays).toBe(0);
+    });
+
+    it("considers equal 1ms-length intervals overlapping", () => {
+      const start = new Date(2016, 10, 15);
+      const end = new Date(2016, 10, 15, 0, 0, 0, 1);
+      const numOverlappingDays = getOverlappingDaysInIntervals(
+        { start, end },
+        { start, end },
+      );
+      expect(numOverlappingDays).toBe(1);
     });
   });
 
@@ -150,7 +168,7 @@ describe("getOverlappingDaysInIntervals", () => {
       { start: initialIntervalStart, end: initialIntervalEnd },
       { start: endOverlappingIntervalStart, end: endOverlappingIntervalEnd },
     );
-    assert(numOverlappingDays === 4);
+    expect(numOverlappingDays).toBe(4);
   });
 
   it("normalizes the left interval if its start date is after the end date", () => {
@@ -164,7 +182,7 @@ describe("getOverlappingDaysInIntervals", () => {
       { start: initialIntervalEnd, end: initialIntervalStart },
       { start: endOverlappingIntervalStart, end: endOverlappingIntervalEnd },
     );
-    assert(numOverlappingDays === 4);
+    expect(numOverlappingDays).toBe(4);
   });
 
   it("normalizes the right interval if its start date is after the end date", () => {
@@ -178,7 +196,7 @@ describe("getOverlappingDaysInIntervals", () => {
       { start: initialIntervalStart, end: initialIntervalEnd },
       { start: endOverlappingIntervalEnd, end: endOverlappingIntervalStart },
     );
-    assert(numOverlappingDays === 4);
+    expect(numOverlappingDays).toBe(4);
   });
 
   describe("one of the dates is `Invalid Date`", () => {
@@ -187,7 +205,7 @@ describe("getOverlappingDaysInIntervals", () => {
         { start: new Date(NaN), end: new Date(2016, 10, 3) },
         { start: new Date(2016, 10, 5), end: new Date(2016, 10, 15) },
       );
-      assert(numOverlappingDays === 0);
+      expect(numOverlappingDays).toBe(0);
     });
 
     it("throws an exception if the end date of the initial time interval is `Invalid Date`", () => {
@@ -195,7 +213,7 @@ describe("getOverlappingDaysInIntervals", () => {
         { start: new Date(2016, 10, 3), end: new Date(NaN) },
         { start: new Date(2016, 10, 5), end: new Date(2016, 10, 15) },
       );
-      assert(numOverlappingDays === 0);
+      expect(numOverlappingDays).toBe(0);
     });
 
     it("returns 0 if the start date of the compared time interval is `Invalid Date`", () => {
@@ -203,7 +221,7 @@ describe("getOverlappingDaysInIntervals", () => {
         { start: new Date(2016, 10, 3), end: new Date(2016, 10, 7) },
         { start: new Date(NaN), end: new Date(2016, 10, 5) },
       );
-      assert(numOverlappingDays === 0);
+      expect(numOverlappingDays).toBe(0);
     });
 
     it("returns 0 if the end date of the compared time interval is `Invalid Date`", () => {
@@ -211,19 +229,19 @@ describe("getOverlappingDaysInIntervals", () => {
         { start: new Date(2016, 10, 3), end: new Date(2016, 10, 7) },
         { start: new Date(2016, 10, 5), end: new Date(NaN) },
       );
-      assert(numOverlappingDays === 0);
+      expect(numOverlappingDays).toBe(0);
     });
   });
 
   it("properly sorts the dates", () => {
     const result = getOverlappingDaysInIntervals(
       {
-        start: new Date(2001, 8 /* Sep */, 1),
-        end: new Date(2023, 11 /* Dec */, 20),
+        start: new Date(2001, 8 /* Sep */, 1, 16),
+        end: new Date(2023, 11 /* Dec */, 20, 16),
       },
       {
-        start: new Date(2023, 11 /* Dec */, 21),
-        end: new Date(2001, 8 /* Sep */, 9),
+        start: new Date(2023, 11 /* Dec */, 21, 16),
+        end: new Date(2001, 8 /* Sep */, 9, 16),
       },
     );
     expect(result).toBe(8137);
