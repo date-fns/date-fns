@@ -1,10 +1,11 @@
 /* eslint-env mocha */
 
-import assert from 'assert'
-import formatDuration from './index'
+import assert from "node:assert";
+import { describe, it } from "vitest";
+import { formatDuration } from "./index.js";
 
-describe('formatDuration', () => {
-  it('formats full duration', () => {
+describe("formatDuration", () => {
+  it("formats full duration", () => {
     assert(
       formatDuration({
         years: 2,
@@ -14,15 +15,15 @@ describe('formatDuration', () => {
         hours: 5,
         minutes: 9,
         seconds: 30,
-      }) === '2 years 9 months 1 week 7 days 5 hours 9 minutes 30 seconds'
-    )
-  })
+      }) === "2 years 9 months 1 week 7 days 5 hours 9 minutes 30 seconds",
+    );
+  });
 
-  it('formats partial duration', () => {
-    assert(formatDuration({ months: 9, days: 2 }) === '9 months 2 days')
-  })
+  it("formats partial duration", () => {
+    assert(formatDuration({ months: 9, days: 2 }) === "9 months 2 days");
+  });
 
-  it('allows to customize the format', () => {
+  it("allows to customize the format", () => {
     assert(
       formatDuration(
         {
@@ -34,12 +35,12 @@ describe('formatDuration', () => {
           minutes: 9,
           seconds: 30,
         },
-        { format: ['months', 'weeks'] }
-      ) === '9 months 1 week'
-    )
-  })
+        { format: ["months", "weeks"] },
+      ) === "9 months 1 week",
+    );
+  });
 
-  it('does not include zeros by default', () => {
+  it("does not include zeros by default", () => {
     assert(
       formatDuration({
         years: 0,
@@ -49,11 +50,11 @@ describe('formatDuration', () => {
         hours: 0,
         minutes: 0,
         seconds: 0,
-      }) === '1 week'
-    )
-  })
+      }) === "1 week",
+    );
+  });
 
-  it('allows to include zeros', () => {
+  it("allows to include zeros", () => {
     assert(
       formatDuration(
         {
@@ -65,15 +66,15 @@ describe('formatDuration', () => {
           minutes: 0,
           seconds: 0,
         },
-        { zero: true }
-      ) === '0 years 0 months 1 week 0 days 0 hours 0 minutes 0 seconds'
-    )
-  })
+        { zero: true },
+      ) === "0 years 0 months 1 week 0 days 0 hours 0 minutes 0 seconds",
+    );
+  });
 
-  it('allows to customize the delimiter', () => {
+  it("allows to customize the delimiter", () => {
     assert(
-      formatDuration({ months: 9, days: 2 }, { delimiter: ', ' }) ===
-        '9 months, 2 days'
-    )
-  })
-})
+      formatDuration({ months: 9, days: 2 }, { delimiter: ", " }) ===
+        "9 months, 2 days",
+    );
+  });
+});

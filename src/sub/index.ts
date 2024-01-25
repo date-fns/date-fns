@@ -1,7 +1,7 @@
-import subDays from '../subDays/index'
-import subMonths from '../subMonths/index'
-import type { Duration } from '../types'
-import constructFrom from '../constructFrom/index'
+import { subDays } from "../subDays/index.js";
+import { subMonths } from "../subMonths/index.js";
+import type { Duration } from "../types.js";
+import { constructFrom } from "../constructFrom/index.js";
 
 /**
  * @name sub
@@ -11,8 +11,10 @@ import constructFrom from '../constructFrom/index'
  * @description
  * Subtract the specified years, months, weeks, days, hours, minutes and seconds from the given date.
  *
- * @param date - the date to be changed
- * @param duration - the object with years, months, weeks, days, hours, minutes and seconds to be subtracted
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date to be changed
+ * @param duration - The object with years, months, weeks, days, hours, minutes and seconds to be subtracted
  *
  * | Key     | Description                        |
  * |---------|------------------------------------|
@@ -26,7 +28,7 @@ import constructFrom from '../constructFrom/index'
  *
  * All values default to 0
  *
- * @returns the new date with the seconds subtracted
+ * @returns The new date with the seconds subtracted
  *
  * @example
  * // Subtract the following duration from 15 June 2017 15:29:20
@@ -41,9 +43,9 @@ import constructFrom from '../constructFrom/index'
  * })
  * //=> Mon Sep 1 2014 10:19:50
  */
-export default function sub<DateType extends Date>(
-  date: DateType | number,
-  duration: Duration
+export function sub<DateType extends Date>(
+  date: DateType | number | string,
+  duration: Duration,
 ): DateType {
   const {
     years = 0,
@@ -53,19 +55,19 @@ export default function sub<DateType extends Date>(
     hours = 0,
     minutes = 0,
     seconds = 0,
-  } = duration
+  } = duration;
 
   // Subtract years and months
-  const dateWithoutMonths = subMonths(date, months + years * 12)
+  const dateWithoutMonths = subMonths(date, months + years * 12);
 
   // Subtract weeks and days
-  const dateWithoutDays = subDays(dateWithoutMonths, days + weeks * 7)
+  const dateWithoutDays = subDays(dateWithoutMonths, days + weeks * 7);
 
   // Subtract hours, minutes and seconds
-  const minutestoSub = minutes + hours * 60
-  const secondstoSub = seconds + minutestoSub * 60
-  const mstoSub = secondstoSub * 1000
-  const finalDate = constructFrom(date, dateWithoutDays.getTime() - mstoSub)
+  const minutestoSub = minutes + hours * 60;
+  const secondstoSub = seconds + minutestoSub * 60;
+  const mstoSub = secondstoSub * 1000;
+  const finalDate = constructFrom(date, dateWithoutDays.getTime() - mstoSub);
 
-  return finalDate
+  return finalDate;
 }

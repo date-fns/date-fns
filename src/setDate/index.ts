@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name setDate
@@ -8,20 +8,23 @@ import toDate from '../toDate/index'
  * @description
  * Set the day of the month to the given date.
  *
- * @param date - the date to be changed
- * @param dayOfMonth - the day of the month of the new date
- * @returns the new date with the day of the month set
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date to be changed
+ * @param dayOfMonth - The day of the month of the new date
+ *
+ * @returns The new date with the day of the month set
  *
  * @example
  * // Set the 30th day of the month to 1 September 2014:
  * const result = setDate(new Date(2014, 8, 1), 30)
  * //=> Tue Sep 30 2014 00:00:00
  */
-export default function setDate<DateType extends Date>(
-  dirtyDate: DateType | number,
-  dayOfMonth: number
+export function setDate<DateType extends Date>(
+  date: DateType | number | string,
+  dayOfMonth: number,
 ): DateType {
-  const date = toDate(dirtyDate)
-  date.setDate(dayOfMonth)
-  return date
+  const _date = toDate(date);
+  _date.setDate(dayOfMonth);
+  return _date;
 }

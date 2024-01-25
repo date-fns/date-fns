@@ -1,103 +1,104 @@
-import type { Match } from '../../../locale/types'
-import setDay from '../../../setDay/index'
-import { Parser } from '../Parser'
-import type { ParseFlags, ParseResult, ParserOptions } from '../types'
-import { mapValue, parseNDigits } from '../utils'
+import type { Match } from "../../../locale/types.js";
+import { setDay } from "../../../setDay/index.js";
+import { Parser } from "../Parser.js";
+import type { ParseFlags, ParseResult, ParserOptions } from "../types.js";
+import { mapValue, parseNDigits } from "../utils.js";
 
 // Local day of week
 export class LocalDayParser extends Parser<number> {
-  priority = 90
+  priority = 90;
   parse(
     dateString: string,
     token: string,
     match: Match,
-    options: ParserOptions
+    options: ParserOptions,
   ): ParseResult<number> {
     const valueCallback = (value: number) => {
-      const wholeWeekDays = Math.floor((value - 1) / 7) * 7
-      return ((value + options.weekStartsOn + 6) % 7) + wholeWeekDays
-    }
+      // We want here floor instead of trunc, so we get -7 for value 0 instead of 0
+      const wholeWeekDays = Math.floor((value - 1) / 7) * 7;
+      return ((value + options.weekStartsOn + 6) % 7) + wholeWeekDays;
+    };
 
     switch (token) {
       // 3
-      case 'e':
-      case 'ee': // 03
-        return mapValue(parseNDigits(token.length, dateString), valueCallback)
+      case "e":
+      case "ee": // 03
+        return mapValue(parseNDigits(token.length, dateString), valueCallback);
       // 3rd
-      case 'eo':
+      case "eo":
         return mapValue(
           match.ordinalNumber(dateString, {
-            unit: 'day',
+            unit: "day",
           }),
-          valueCallback
-        )
+          valueCallback,
+        );
       // Tue
-      case 'eee':
+      case "eee":
         return (
           match.day(dateString, {
-            width: 'abbreviated',
-            context: 'formatting',
+            width: "abbreviated",
+            context: "formatting",
           }) ||
-          match.day(dateString, { width: 'short', context: 'formatting' }) ||
-          match.day(dateString, { width: 'narrow', context: 'formatting' })
-        )
+          match.day(dateString, { width: "short", context: "formatting" }) ||
+          match.day(dateString, { width: "narrow", context: "formatting" })
+        );
       // T
-      case 'eeeee':
+      case "eeeee":
         return match.day(dateString, {
-          width: 'narrow',
-          context: 'formatting',
-        })
+          width: "narrow",
+          context: "formatting",
+        });
       // Tu
-      case 'eeeeee':
+      case "eeeeee":
         return (
-          match.day(dateString, { width: 'short', context: 'formatting' }) ||
-          match.day(dateString, { width: 'narrow', context: 'formatting' })
-        )
+          match.day(dateString, { width: "short", context: "formatting" }) ||
+          match.day(dateString, { width: "narrow", context: "formatting" })
+        );
       // Tuesday
-      case 'eeee':
+      case "eeee":
       default:
         return (
-          match.day(dateString, { width: 'wide', context: 'formatting' }) ||
+          match.day(dateString, { width: "wide", context: "formatting" }) ||
           match.day(dateString, {
-            width: 'abbreviated',
-            context: 'formatting',
+            width: "abbreviated",
+            context: "formatting",
           }) ||
-          match.day(dateString, { width: 'short', context: 'formatting' }) ||
-          match.day(dateString, { width: 'narrow', context: 'formatting' })
-        )
+          match.day(dateString, { width: "short", context: "formatting" }) ||
+          match.day(dateString, { width: "narrow", context: "formatting" })
+        );
     }
   }
 
   validate<DateType extends Date>(_date: DateType, value: number): boolean {
-    return value >= 0 && value <= 6
+    return value >= 0 && value <= 6;
   }
 
   set<DateType extends Date>(
     date: DateType,
     _flags: ParseFlags,
     value: number,
-    options: ParserOptions
+    options: ParserOptions,
   ): DateType {
-    date = setDay(date, value, options)
-    date.setHours(0, 0, 0, 0)
-    return date
+    date = setDay(date, value, options);
+    date.setHours(0, 0, 0, 0);
+    return date;
   }
 
   incompatibleTokens = [
-    'y',
-    'R',
-    'u',
-    'q',
-    'Q',
-    'M',
-    'L',
-    'I',
-    'd',
-    'D',
-    'E',
-    'i',
-    'c',
-    't',
-    'T',
-  ]
+    "y",
+    "R",
+    "u",
+    "q",
+    "Q",
+    "M",
+    "L",
+    "I",
+    "d",
+    "D",
+    "E",
+    "i",
+    "c",
+    "t",
+    "T",
+  ];
 }

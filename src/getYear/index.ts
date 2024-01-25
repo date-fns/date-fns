@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name getYear
@@ -8,16 +8,19 @@ import toDate from '../toDate/index'
  * @description
  * Get the year of the given date.
  *
- * @param date - the given date
- * @returns the year
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The given date
+ *
+ * @returns The year
  *
  * @example
  * // Which year is 2 July 2014?
  * const result = getYear(new Date(2014, 6, 2))
  * //=> 2014
  */
-export default function getYear<DateType extends Date>(
-  dirtyDate: DateType | number
+export function getYear<DateType extends Date>(
+  date: DateType | number | string,
 ): number {
-  return toDate(dirtyDate).getFullYear()
+  return toDate(date).getFullYear();
 }

@@ -5,29 +5,23 @@
   "main": "example.js",
   "author": "Sasha Koss <koss@nocorp.me>",
   "license": "MIT",
+  "type": "module",
   "dependencies": {
-    "@rollup/plugin-commonjs": "^22.0.1",
-    "@rollup/plugin-node-resolve": "^13.3.0",
-    "babel-minify": "^0.5.2",
-    "gzip-size-cli": "^1.0.0",
-    "pretty-bytes-cli": "^2.0.0",
-    "rollup": "^2.76.0"
+    "@rollup/plugin-commonjs": "^25.0.4",
+    "@rollup/plugin-node-resolve": "^15.2.1",
+    "@rollup/plugin-terser": "^0.4.4",
+    "gzip-size-cli": "^5.1.0",
+    "rollup": "^3.28.1"
   },
   "scripts": {
-    "build": "yarn run build-date-fns && yarn run build-rollup && yarn run build-babel-minify",
-    "build-date-fns": "env PACKAGE_OUTPUT_PATH=\"$(pwd)/node_modules/date-fns\" ../../scripts/build/package.sh",
-    "build-rollup": "yarn run build-rollup-example && yarn run build-rollup-fp && yarn run build-rollup-misc",
-    "build-rollup-example": "rollup -c rollup.config.example.js",
-    "build-rollup-fp": "rollup -c rollup.config.fp.js",
-    "build-rollup-misc": "rollup -c rollup.config.misc.js",
-    "build-babel-minify": "yarn run build-babel-minify-example && yarn run build-babel-minify-fp && yarn run build-babel-minify-misc && yarn run stats-size",
-    "build-babel-minify-example": "babel-minify dist/example.js --out-file dist/example.min.js",
-    "build-babel-minify-fp": "babel-minify dist/fp.js --out-file dist/fp.min.js",
-    "build-babel-minify-misc": "babel-minify dist/misc.js --out-file dist/misc.min.js",
-    "stats-size": "gzip-size dist/example.min.js | pretty-bytes",
-    "test": "yarn run test-example && yarn run test-fp && yarn run test-misc",
-    "test-example": "test $(env TZ=UTC node ./dist/example.min.js) = true",
-    "test-fp": "test $(env TZ=UTC node ./dist/fp.min.js) = true",
-    "test-misc": "test $(env TZ=UTC node ./dist/misc.min.js) = true"
+    "build": "npm run build-date-fns && npm run build-rollup",
+    "build-date-fns": "rm -rf node_modules/date-fns && cp -r ../../lib node_modules/date-fns || env PACKAGE_OUTPUT_PATH=\"$(pwd)/node_modules/date-fns\" ../../scripts/build/package.sh",
+    "build-rollup": "rollup --config",
+    "stats-size": "echo \"Minimal size: $(gzip-size dist/minimal.js)\nFormat size: $(gzip-size dist/example.js)\nFP size: $(gzip-size dist/fp.js)\nMisc size: $(gzip-size dist/misc.js)\"",
+    "test": "npm run test-example && npm run test-fp && npm run test-misc && npm run test-constants",
+    "test-example": "test $(env TZ=UTC node ./dist/example.js) = true",
+    "test-fp": "test $(env TZ=UTC node ./dist/fp.js) = true",
+    "test-misc": "test $(env TZ=UTC node ./dist/misc.js) = true",
+    "test-constants": "test $(env TZ=UTC node ./dist/constants.js) = true"
   }
 }

@@ -1,0 +1,21 @@
+{
+  "extends": "./tsconfig",
+  "compilerOptions": {
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "rootDir": "src"
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": [
+    "lib",
+    "node_modules",
+    "config",
+    "test.js",
+    "**/test.ts",
+    "test",
+    "scripts",
+    "examples",
+    "tmp",
+    "docs"
+  ]
+}

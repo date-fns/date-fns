@@ -1,4 +1,4 @@
-import { secondsInHour } from '../constants/index'
+import { secondsInHour } from "../constants/index.js";
 
 /**
  * @name hoursToSeconds
@@ -8,15 +8,17 @@ import { secondsInHour } from '../constants/index'
  * @description
  * Convert a number of hours to a full number of seconds.
  *
- * @param hours - number of hours to be converted
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
- * @returns the number of hours converted in seconds
+ * @param hours - The number of hours to be converted
+ *
+ * @returns The number of hours converted in seconds
  *
  * @example
  * // Convert 2 hours to seconds:
  * const result = hoursToSeconds(2)
  * //=> 7200
  */
-export default function hoursToSeconds(hours: number): number {
-  return Math.floor(hours * secondsInHour)
+export function hoursToSeconds(hours: number): number {
+  return Math.trunc(hours * secondsInHour);
 }

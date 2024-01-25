@@ -1,24 +1,24 @@
-import type { Quarter } from '../../../../types'
-import type { Match } from '../../../types'
-import buildMatchFn from '../../../_lib/buildMatchFn/index'
-import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
+import type { Quarter } from "../../../../types.js";
+import type { Match } from "../../../types.js";
+import { buildMatchFn } from "../../../_lib/buildMatchFn/index.js";
+import { buildMatchPatternFn } from "../../../_lib/buildMatchPatternFn/index.js";
 
-const matchOrdinalNumberPattern = /^(\d+)/
-const parseOrdinalNumberPattern = /\d+/i
+const matchOrdinalNumberPattern = /^(\d+)/;
+const parseOrdinalNumberPattern = /\d+/i;
 
 const matchEraPatterns = {
   narrow: /^(ق|ب)/g,
   abbreviated: /^(ق.م|ب.م)/g,
   wide: /^(قبل الميلاد|بعد الميلاد)/g,
-}
+};
 const parseEraPatterns = {
   any: [/^ق/g, /^ب/g] as const,
-}
+};
 const matchQuarterPatterns = {
   narrow: /^[1234]/,
   abbreviated: /^ر[1234]/,
   wide: /^الربع (الأول|الثاني|الثالث|الرابع)/,
-}
+};
 const parseQuarterPatterns = {
   wide: [
     /الربع الأول/,
@@ -27,13 +27,13 @@ const parseQuarterPatterns = {
     /الربع الرابع/,
   ] as const,
   any: [/1/, /2/, /3/, /4/] as const,
-}
+};
 
 const matchMonthPatterns = {
   narrow: /^(ي|ف|م|أ|س|ن|د)/,
   abbreviated: /^(ينا|فبر|مارس|أبريل|مايو|يونـ|يولـ|أغسـ|سبتـ|أكتـ|نوفـ|ديسـ)/,
   wide: /^(يناير|فبراير|مارس|أبريل|مايو|يونيو|يوليو|أغسطس|سبتمبر|أكتوبر|نوفمبر|ديسمبر)/,
-}
+};
 const parseMonthPatterns = {
   narrow: [
     /^ي/,
@@ -63,25 +63,25 @@ const parseMonthPatterns = {
     /^نوف/,
     /^ديس/,
   ] as const,
-}
+};
 
 const matchDayPatterns = {
   narrow: /^(ح|ن|ث|ر|خ|ج|س)/,
   short: /^(أحد|اثنين|ثلاثاء|أربعاء|خميس|جمعة|سبت)/,
   abbreviated: /^(أحد|اثنين|ثلاثاء|أربعاء|خميس|جمعة|سبت)/,
   wide: /^(الأحد|الاثنين|الثلاثاء|الأربعاء|الخميس|الجمعة|السبت)/,
-}
+};
 const parseDayPatterns = {
   narrow: [/^ح/, /^ن/, /^ث/, /^ر/, /^خ/, /^ج/, /^س/] as const,
   any: [/أحد/, /اثنين/, /ثلاثاء/, /أربعاء/, /خميس/, /جمعة/, /سبت/] as const,
-}
+};
 
 const matchDayPeriodPatterns = {
   narrow: /^(ص|م|ن|ظ|في الصباح|بعد الظهر|في المساء|في الليل)/,
   abbreviated: /^(ص|م|نصف الليل|ظهراً|في الصباح|بعد الظهر|في المساء|في الليل)/,
   wide: /^(ص|م|نصف الليل|في الصباح|ظهراً|بعد الظهر|في المساء|في الليل)/,
   any: /^(ص|م|صباح|ظهر|مساء|ليل)/,
-}
+};
 const parseDayPeriodPatterns = {
   any: {
     am: /^ص/,
@@ -93,52 +93,50 @@ const parseDayPeriodPatterns = {
     evening: /^م/,
     night: /^ل/,
   },
-}
+};
 
-const match: Match = {
+export const match: Match = {
   ordinalNumber: buildMatchPatternFn({
     matchPattern: matchOrdinalNumberPattern,
     parsePattern: parseOrdinalNumberPattern,
     valueCallback: function (value) {
-      return parseInt(value, 10)
+      return parseInt(value, 10);
     },
   }),
 
   era: buildMatchFn({
     matchPatterns: matchEraPatterns,
-    defaultMatchWidth: 'wide',
+    defaultMatchWidth: "wide",
     parsePatterns: parseEraPatterns,
-    defaultParseWidth: 'any',
+    defaultParseWidth: "any",
   }),
 
   quarter: buildMatchFn({
     matchPatterns: matchQuarterPatterns,
-    defaultMatchWidth: 'wide',
+    defaultMatchWidth: "wide",
     parsePatterns: parseQuarterPatterns,
-    defaultParseWidth: 'any',
+    defaultParseWidth: "any",
     valueCallback: (index) => (index + 1) as Quarter,
   }),
 
   month: buildMatchFn({
     matchPatterns: matchMonthPatterns,
-    defaultMatchWidth: 'wide',
+    defaultMatchWidth: "wide",
     parsePatterns: parseMonthPatterns,
-    defaultParseWidth: 'any',
+    defaultParseWidth: "any",
   }),
 
   day: buildMatchFn({
     matchPatterns: matchDayPatterns,
-    defaultMatchWidth: 'wide',
+    defaultMatchWidth: "wide",
     parsePatterns: parseDayPatterns,
-    defaultParseWidth: 'any',
+    defaultParseWidth: "any",
   }),
 
   dayPeriod: buildMatchFn({
     matchPatterns: matchDayPeriodPatterns,
-    defaultMatchWidth: 'any',
+    defaultMatchWidth: "any",
     parsePatterns: parseDayPeriodPatterns,
-    defaultParseWidth: 'any',
+    defaultParseWidth: "any",
   }),
-}
-
-export default match
+};

@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name endOfDay
@@ -9,18 +9,21 @@ import toDate from '../toDate/index'
  * Return the end of a day for the given date.
  * The result will be in the local timezone.
  *
- * @param date - the original date
- * @returns the end of a day
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The original date
+ *
+ * @returns The end of a day
  *
  * @example
  * // The end of a day for 2 September 2014 11:55:00:
  * const result = endOfDay(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Tue Sep 02 2014 23:59:59.999
  */
-export default function endOfDay<DateType extends Date>(
-  dirtyDate: DateType | number
+export function endOfDay<DateType extends Date>(
+  date: DateType | number | string,
 ): DateType {
-  const date = toDate(dirtyDate)
-  date.setHours(23, 59, 59, 999)
-  return date
+  const _date = toDate(date);
+  _date.setHours(23, 59, 59, 999);
+  return _date;
 }

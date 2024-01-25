@@ -1,26 +1,25 @@
-import type { FormatRelativeFn } from '../../../types'
+import type { FormatRelativeFn } from "../../../types.js";
 
 const formatRelativeLocale = {
   lastWeek: (date: Date) => {
     switch (date.getDay()) {
       case 6: //Σάββατο
-        return "'το προηγούμενο' eeee 'στις' p"
+        return "'το προηγούμενο' eeee 'στις' p";
       default:
-        return "'την προηγούμενη' eeee 'στις' p"
+        return "'την προηγούμενη' eeee 'στις' p";
     }
   },
   yesterday: "'χθες στις' p",
   today: "'σήμερα στις' p",
   tomorrow: "'αύριο στις' p",
   nextWeek: "eeee 'στις' p",
-  other: 'P',
-}
+  other: "P",
+};
 
-const formatRelative: FormatRelativeFn = (token, date) => {
-  const format = formatRelativeLocale[token]
+export const formatRelative: FormatRelativeFn = (token, date) => {
+  const format = formatRelativeLocale[token];
 
-  if (typeof format === 'function') return format(date)
+  if (typeof format === "function") return format(date);
 
-  return format
-}
-export default formatRelative
+  return format;
+};

@@ -1,21 +1,20 @@
-import type { Locale } from '../types'
-import formatDistance from './_lib/formatDistance/index'
-import formatLong from './_lib/formatLong/index'
-import formatRelative from './_lib/formatRelative/index'
-import localize from './_lib/localize/index'
-import match from './_lib/match/index'
+import type { Locale } from "../types.js";
+import { formatDistance } from "./_lib/formatDistance/index.js";
+import { formatLong } from "./_lib/formatLong/index.js";
+import { formatRelative } from "./_lib/formatRelative/index.js";
+import { localize } from "./_lib/localize/index.js";
+import { match } from "./_lib/match/index.js";
 
 /**
- * @type {Locale}
  * @category Locales
  * @summary Greek locale.
  * @language Greek
  * @iso-639-2 ell
- * @author Fanis Katsimpas [@fanixk]{@link https://github.com/fanixk}
- * @author Theodoros Orfanidis [@teoulas]{@link https://github.com/teoulas}
+ * @author Fanis Katsimpas [@fanixk](https://github.com/fanixk)
+ * @author Theodoros Orfanidis [@teoulas](https://github.com/teoulas)
  */
-const locale: Locale = {
-  code: 'el',
+export const el: Locale = {
+  code: "el",
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
@@ -25,6 +24,4 @@ const locale: Locale = {
     weekStartsOn: 1 /* Monday */,
     firstWeekContainsDate: 4,
   },
-}
-
-export default locale
+};

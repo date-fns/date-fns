@@ -1,4 +1,4 @@
-import type { FormatRelativeFn } from '../../../types'
+import type { FormatRelativeFn } from "../../../types.js";
 
 // Source: https://www.unicode.org/cldr/charts/32/summary/te.html
 
@@ -8,10 +8,12 @@ const formatRelativeLocale = {
   today: "'ఈ రోజు' p", // CLDR #1394
   tomorrow: "'రేపు' p", // CLDR #1395
   nextWeek: "'తదుపరి' eeee p", // CLDR #1386
-  other: 'P',
-}
+  other: "P",
+};
 
-const formatRelative: FormatRelativeFn = (token, _date, _baseDate, _options) =>
-  formatRelativeLocale[token]
-
-export default formatRelative
+export const formatRelative: FormatRelativeFn = (
+  token,
+  _date,
+  _baseDate,
+  _options,
+) => formatRelativeLocale[token];

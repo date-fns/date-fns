@@ -1,4 +1,4 @@
-import isSameWeek from '../isSameWeek/index'
+import { isSameWeek } from "../isSameWeek/index.js";
 
 /**
  * @name isSameISOWeek
@@ -10,9 +10,12 @@ import isSameWeek from '../isSameWeek/index'
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @param dateLeft - the first date to check
- * @param dateRight - the second date to check
- * @returns the dates are in the same ISO week (and year)
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param dateLeft - The first date to check
+ * @param dateRight - The second date to check
+ *
+ * @returns The dates are in the same ISO week (and year)
  *
  * @example
  * // Are 1 September 2014 and 7 September 2014 in the same ISO week?
@@ -24,9 +27,9 @@ import isSameWeek from '../isSameWeek/index'
  * const result = isSameISOWeek(new Date(2014, 8, 1), new Date(2015, 8, 1))
  * //=> false
  */
-export default function isSameISOWeek<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+export function isSameISOWeek<DateType extends Date>(
+  dateLeft: DateType | number | string,
+  dateRight: DateType | number | string,
 ): boolean {
-  return isSameWeek(dirtyDateLeft, dirtyDateRight, { weekStartsOn: 1 })
+  return isSameWeek(dateLeft, dateRight, { weekStartsOn: 1 });
 }

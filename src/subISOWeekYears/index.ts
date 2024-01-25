@@ -1,4 +1,4 @@
-import addISOWeekYears from '../addISOWeekYears/index'
+import { addISOWeekYears } from "../addISOWeekYears/index.js";
 
 /**
  * @name subISOWeekYears
@@ -10,18 +10,21 @@ import addISOWeekYears from '../addISOWeekYears/index'
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @param date - the date to be changed
- * @param amount - the amount of ISO week-numbering years to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
- * @returns the new date with the ISO week-numbering years subtracted
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date to be changed
+ * @param amount - The amount of ISO week-numbering years to be subtracted.
+ *
+ * @returns The new date with the ISO week-numbering years subtracted
  *
  * @example
  * // Subtract 5 ISO week-numbering years from 1 September 2014:
  * const result = subISOWeekYears(new Date(2014, 8, 1), 5)
  * //=> Mon Aug 31 2009 00:00:00
  */
-export default function subISOWeekYears<DateType extends Date>(
-  dirtyDate: DateType | number,
-  amount: number
+export function subISOWeekYears<DateType extends Date>(
+  date: DateType | number | string,
+  amount: number,
 ): DateType {
-  return addISOWeekYears(dirtyDate, -amount)
+  return addISOWeekYears(date, -amount);
 }

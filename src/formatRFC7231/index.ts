@@ -1,23 +1,23 @@
-import isValid from '../isValid/index'
-import toDate from '../toDate/index'
-import addLeadingZeros from '../_lib/addLeadingZeros/index'
+import { isValid } from "../isValid/index.js";
+import { toDate } from "../toDate/index.js";
+import { addLeadingZeros } from "../_lib/addLeadingZeros/index.js";
 
-const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 const months = [
-  'Jan',
-  'Feb',
-  'Mar',
-  'Apr',
-  'May',
-  'Jun',
-  'Jul',
-  'Aug',
-  'Sep',
-  'Oct',
-  'Nov',
-  'Dec',
-]
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
 
 /**
  * @name formatRFC7231
@@ -28,33 +28,37 @@ const months = [
  * Return the formatted date string in RFC 7231 format.
  * The result will always be in UTC timezone.
  *
- * @param date - the original date
- * @returns the formatted date string
- * @throws {RangeError} `date` must not be Invalid Date
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The original date
+ *
+ * @returns The formatted date string
+ *
+ * @throws `date` must not be Invalid Date
  *
  * @example
  * // Represent 18 September 2019 in RFC 7231 format:
  * const result = formatRFC7231(new Date(2019, 8, 18, 19, 0, 52))
  * //=> 'Wed, 18 Sep 2019 19:00:52 GMT'
  */
-export default function formatRFC7231<DateType extends Date>(
-  dirtyDate: DateType | number
+export function formatRFC7231<DateType extends Date>(
+  date: DateType | number | string,
 ): string {
-  const originalDate = toDate(dirtyDate)
+  const _date = toDate(date);
 
-  if (!isValid(originalDate)) {
-    throw new RangeError('Invalid time value')
+  if (!isValid(_date)) {
+    throw new RangeError("Invalid time value");
   }
 
-  const dayName = days[originalDate.getUTCDay()]
-  const dayOfMonth = addLeadingZeros(originalDate.getUTCDate(), 2)
-  const monthName = months[originalDate.getUTCMonth()]
-  const year = originalDate.getUTCFullYear()
+  const dayName = days[_date.getUTCDay()];
+  const dayOfMonth = addLeadingZeros(_date.getUTCDate(), 2);
+  const monthName = months[_date.getUTCMonth()];
+  const year = _date.getUTCFullYear();
 
-  const hour = addLeadingZeros(originalDate.getUTCHours(), 2)
-  const minute = addLeadingZeros(originalDate.getUTCMinutes(), 2)
-  const second = addLeadingZeros(originalDate.getUTCSeconds(), 2)
+  const hour = addLeadingZeros(_date.getUTCHours(), 2);
+  const minute = addLeadingZeros(_date.getUTCMinutes(), 2);
+  const second = addLeadingZeros(_date.getUTCSeconds(), 2);
 
   // Result variables.
-  return `${dayName}, ${dayOfMonth} ${monthName} ${year} ${hour}:${minute}:${second} GMT`
+  return `${dayName}, ${dayOfMonth} ${monthName} ${year} ${hour}:${minute}:${second} GMT`;
 }

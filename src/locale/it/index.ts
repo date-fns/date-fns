@@ -1,22 +1,21 @@
-import type { Locale } from '../types'
-import formatDistance from './_lib/formatDistance/index'
-import formatLong from './_lib/formatLong/index'
-import formatRelative from './_lib/formatRelative/index'
-import localize from './_lib/localize/index'
-import match from './_lib/match/index'
+import type { Locale } from "../types.js";
+import { formatDistance } from "./_lib/formatDistance/index.js";
+import { formatLong } from "./_lib/formatLong/index.js";
+import { formatRelative } from "./_lib/formatRelative/index.js";
+import { localize } from "./_lib/localize/index.js";
+import { match } from "./_lib/match/index.js";
 
 /**
- * @type {Locale}
  * @category Locales
  * @summary Italian locale.
  * @language Italian
  * @iso-639-2 ita
- * @author Alberto Restifo [@albertorestifo]{@link https://github.com/albertorestifo}
- * @author Giovanni Polimeni [@giofilo]{@link https://github.com/giofilo}
- * @author Vincenzo Carrese [@vin-car]{@link https://github.com/vin-car}
+ * @author Alberto Restifo [@albertorestifo](https://github.com/albertorestifo)
+ * @author Giovanni Polimeni [@giofilo](https://github.com/giofilo)
+ * @author Vincenzo Carrese [@vin-car](https://github.com/vin-car)
  */
-const locale: Locale = {
-  code: 'it',
+export const it: Locale = {
+  code: "it",
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
@@ -26,6 +25,4 @@ const locale: Locale = {
     weekStartsOn: 1 /* Monday */,
     firstWeekContainsDate: 4,
   },
-}
-
-export default locale
+};

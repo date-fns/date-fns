@@ -1,6 +1,6 @@
-import eachWeekendOfInterval from '../eachWeekendOfInterval/index'
-import endOfMonth from '../endOfMonth/index'
-import startOfMonth from '../startOfMonth/index'
+import { eachWeekendOfInterval } from "../eachWeekendOfInterval/index.js";
+import { endOfMonth } from "../endOfMonth/index.js";
+import { startOfMonth } from "../startOfMonth/index.js";
 
 /**
  * @name eachWeekendOfMonth
@@ -10,9 +10,11 @@ import startOfMonth from '../startOfMonth/index'
  * @description
  * Get all the Saturdays and Sundays in the given month.
  *
- * @param date - the given month
- * @returns an array containing all the Saturdays and Sundays
- * @throws {RangeError} The passed date is invalid
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The given month
+ *
+ * @returns An array containing all the Saturdays and Sundays
  *
  * @example
  * // Lists all Saturdays and Sundays in the given month
@@ -28,13 +30,10 @@ import startOfMonth from '../startOfMonth/index'
  * //   Sun Feb 27 2022 00:00:00
  * // ]
  */
-export default function eachWeekendOfMonth<DateType extends Date>(
-  dirtyDate: DateType
+export function eachWeekendOfMonth<DateType extends Date>(
+  date: DateType,
 ): DateType[] {
-  const startDate = startOfMonth(dirtyDate)
-  if (isNaN(startDate.getTime()))
-    throw new RangeError('The passed date is invalid')
-
-  const endDate = endOfMonth(dirtyDate)
-  return eachWeekendOfInterval({ start: startDate, end: endDate })
+  const start = startOfMonth(date);
+  const end = endOfMonth(date);
+  return eachWeekendOfInterval({ start, end });
 }

@@ -6,12 +6,6 @@
 
 set -e
 
-if [ -z "${APP_ENV+x}" ];
-then
-  echo 'APP_ENV is unset; please set to staging or production'
-  exit 1
-fi
-
 # A pre-release is a version with a label i.e. v2.0.0-alpha.1
 if [[ "$VERSION" =~ ^v[0-9]+\.[0-9]+\.[0-9]+-.+$ ]]
 then
@@ -20,9 +14,15 @@ else
   IS_PRE_RELEASE=false
 fi
 
-PACKAGE_PATH="$(pwd)/../../tmp/package"
+# Write version & commit package.json
 ./scripts/release/writeVersion.js
+git add package.json
+git commit -m "Prepare $VERSION"
+git tag -a "$VERSION" -m "$VERSION"
+git push
 
+# Build the package
+PACKAGE_PATH="$(pwd)/../../tmp/package"
 env PACKAGE_OUTPUT_PATH="$PACKAGE_PATH" ./scripts/build/package.sh
 
 # Right now, we do releases manually, but when we move to GitHub Actions we'll need this line:
@@ -36,8 +36,9 @@ else
 fi
 cd - || exit
 
-./scripts/build/docs.js
-./scripts/release/updateFirebase.js
+# Build & deploy docs JSON
+env APP_ENV=production ./scripts/release/docs.sh
+
 # TODO: Reanimate it
 # if [ "$IS_PRE_RELEASE" = false ]
 # then

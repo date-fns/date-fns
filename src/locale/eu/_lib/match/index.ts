@@ -1,36 +1,36 @@
-import type { Quarter } from '../../../../types'
-import type { Match } from '../../../types'
-import buildMatchFn from '../../../_lib/buildMatchFn/index'
-import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
+import type { Quarter } from "../../../../types.js";
+import type { Match } from "../../../types.js";
+import { buildMatchFn } from "../../../_lib/buildMatchFn/index.js";
+import { buildMatchPatternFn } from "../../../_lib/buildMatchPatternFn/index.js";
 
-const matchOrdinalNumberPattern = /^(\d+)(.)?/i
-const parseOrdinalNumberPattern = /\d+/i
+const matchOrdinalNumberPattern = /^(\d+)(.)?/i;
+const parseOrdinalNumberPattern = /\d+/i;
 
 const matchEraPatterns = {
   narrow: /^(k.a.|k.o.)/i,
   abbreviated: /^(k.a.|k.o.)/i,
   wide: /^(kristo aurretik|kristo ondoren)/i,
-}
+};
 const parseEraPatterns = {
   narrow: [/^k.a./i, /^k.o./i] as const,
   abbreviated: [/^(k.a.)/i, /^(k.o.)/i] as const,
   wide: [/^(kristo aurretik)/i, /^(kristo ondoren)/i] as const,
-}
+};
 
 const matchQuarterPatterns = {
   narrow: /^[1234]/i,
   abbreviated: /^[1234]H/i,
   wide: /^[1234](.)? hiruhilekoa/i,
-}
+};
 const parseQuarterPatterns = {
   any: [/1/i, /2/i, /3/i, /4/i] as const,
-}
+};
 
 const matchMonthPatterns = {
   narrow: /^[uomaei]/i,
   abbreviated: /^(urt|ots|mar|api|mai|eka|uzt|abu|ira|urr|aza|abe)/i,
   wide: /^(urtarrila|otsaila|martxoa|apirila|maiatza|ekaina|uztaila|abuztua|iraila|urria|azaroa|abendua)/i,
-}
+};
 const parseMonthPatterns = {
   narrow: [
     /^u/i,
@@ -60,14 +60,14 @@ const parseMonthPatterns = {
     /^aza/i,
     /^abe/i,
   ] as const,
-}
+};
 
 const matchDayPatterns = {
   narrow: /^[iaol]/i,
   short: /^(ig|al|as|az|og|or|lr)/i,
   abbreviated: /^(iga|ast|ast|ast|ost|ost|lar)/i,
   wide: /^(igandea|astelehena|asteartea|asteazkena|osteguna|ostirala|larunbata)/i,
-}
+};
 const parseDayPatterns = {
   narrow: [/^i/i, /^a/i, /^a/i, /^a/i, /^o/i, /^o/i, /^l/i] as const,
   short: [/^ig/i, /^al/i, /^as/i, /^az/i, /^og/i, /^or/i, /^lr/i] as const,
@@ -89,12 +89,12 @@ const parseDayPatterns = {
     /^ostirala/i,
     /^larunbata/i,
   ] as const,
-}
+};
 
 const matchDayPeriodPatterns = {
   narrow: /^(a|p|ge|eg|((goiza|goizean)|arratsaldea|(gaua|gauean)))/i,
   any: /^([ap]\.?\s?m\.?|gauerdia|eguerdia|((goiza|goizean)|arratsaldea|(gaua|gauean)))/i,
-}
+};
 const parseDayPeriodPatterns = {
   narrow: {
     am: /^a/i,
@@ -116,9 +116,9 @@ const parseDayPeriodPatterns = {
     evening: /arratsaldea/i,
     night: /gau/i,
   },
-}
+};
 
-const match: Match = {
+export const match: Match = {
   ordinalNumber: buildMatchPatternFn({
     matchPattern: matchOrdinalNumberPattern,
     parsePattern: parseOrdinalNumberPattern,
@@ -127,39 +127,37 @@ const match: Match = {
 
   era: buildMatchFn({
     matchPatterns: matchEraPatterns,
-    defaultMatchWidth: 'wide',
+    defaultMatchWidth: "wide",
     parsePatterns: parseEraPatterns,
-    defaultParseWidth: 'wide',
+    defaultParseWidth: "wide",
   }),
 
   quarter: buildMatchFn({
     matchPatterns: matchQuarterPatterns,
-    defaultMatchWidth: 'wide',
+    defaultMatchWidth: "wide",
     parsePatterns: parseQuarterPatterns,
-    defaultParseWidth: 'any',
+    defaultParseWidth: "any",
     valueCallback: (index) => (index + 1) as Quarter,
   }),
 
   month: buildMatchFn({
     matchPatterns: matchMonthPatterns,
-    defaultMatchWidth: 'wide',
+    defaultMatchWidth: "wide",
     parsePatterns: parseMonthPatterns,
-    defaultParseWidth: 'any',
+    defaultParseWidth: "any",
   }),
 
   day: buildMatchFn({
     matchPatterns: matchDayPatterns,
-    defaultMatchWidth: 'wide',
+    defaultMatchWidth: "wide",
     parsePatterns: parseDayPatterns,
-    defaultParseWidth: 'wide',
+    defaultParseWidth: "wide",
   }),
 
   dayPeriod: buildMatchFn({
     matchPatterns: matchDayPeriodPatterns,
-    defaultMatchWidth: 'any',
+    defaultMatchWidth: "any",
     parsePatterns: parseDayPeriodPatterns,
-    defaultParseWidth: 'any',
+    defaultParseWidth: "any",
   }),
-}
-
-export default match
+};

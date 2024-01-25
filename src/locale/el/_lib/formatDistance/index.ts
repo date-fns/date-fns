@@ -1,112 +1,110 @@
-import type { FormatDistanceFn, FormatDistanceLocale } from '../../../types'
+import type { FormatDistanceFn, FormatDistanceLocale } from "../../../types.js";
 
 type FormatDistanceTokenValue =
   | string
   | {
-      one: string
-      other: string
-    }
+      one: string;
+      other: string;
+    };
 
 const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   lessThanXSeconds: {
-    one: 'λιγότερο από ένα δευτερόλεπτο',
-    other: 'λιγότερο από {{count}} δευτερόλεπτα',
+    one: "λιγότερο από ένα δευτερόλεπτο",
+    other: "λιγότερο από {{count}} δευτερόλεπτα",
   },
 
   xSeconds: {
-    one: '1 δευτερόλεπτο',
-    other: '{{count}} δευτερόλεπτα',
+    one: "1 δευτερόλεπτο",
+    other: "{{count}} δευτερόλεπτα",
   },
 
-  halfAMinute: 'μισό λεπτό',
+  halfAMinute: "μισό λεπτό",
 
   lessThanXMinutes: {
-    one: 'λιγότερο από ένα λεπτό',
-    other: 'λιγότερο από {{count}} λεπτά',
+    one: "λιγότερο από ένα λεπτό",
+    other: "λιγότερο από {{count}} λεπτά",
   },
 
   xMinutes: {
-    one: '1 λεπτό',
-    other: '{{count}} λεπτά',
+    one: "1 λεπτό",
+    other: "{{count}} λεπτά",
   },
 
   aboutXHours: {
-    one: 'περίπου 1 ώρα',
-    other: 'περίπου {{count}} ώρες',
+    one: "περίπου 1 ώρα",
+    other: "περίπου {{count}} ώρες",
   },
 
   xHours: {
-    one: '1 ώρα',
-    other: '{{count}} ώρες',
+    one: "1 ώρα",
+    other: "{{count}} ώρες",
   },
 
   xDays: {
-    one: '1 ημέρα',
-    other: '{{count}} ημέρες',
+    one: "1 ημέρα",
+    other: "{{count}} ημέρες",
   },
 
   aboutXWeeks: {
-    one: 'περίπου 1 εβδομάδα',
-    other: 'περίπου {{count}} εβδομάδες',
+    one: "περίπου 1 εβδομάδα",
+    other: "περίπου {{count}} εβδομάδες",
   },
 
   xWeeks: {
-    one: '1 εβδομάδα',
-    other: '{{count}} εβδομάδες',
+    one: "1 εβδομάδα",
+    other: "{{count}} εβδομάδες",
   },
 
   aboutXMonths: {
-    one: 'περίπου 1 μήνας',
-    other: 'περίπου {{count}} μήνες',
+    one: "περίπου 1 μήνας",
+    other: "περίπου {{count}} μήνες",
   },
 
   xMonths: {
-    one: '1 μήνας',
-    other: '{{count}} μήνες',
+    one: "1 μήνας",
+    other: "{{count}} μήνες",
   },
 
   aboutXYears: {
-    one: 'περίπου 1 χρόνο',
-    other: 'περίπου {{count}} χρόνια',
+    one: "περίπου 1 χρόνο",
+    other: "περίπου {{count}} χρόνια",
   },
 
   xYears: {
-    one: '1 χρόνο',
-    other: '{{count}} χρόνια',
+    one: "1 χρόνο",
+    other: "{{count}} χρόνια",
   },
 
   overXYears: {
-    one: 'πάνω από 1 χρόνο',
-    other: 'πάνω από {{count}} χρόνια',
+    one: "πάνω από 1 χρόνο",
+    other: "πάνω από {{count}} χρόνια",
   },
 
   almostXYears: {
-    one: 'περίπου 1 χρόνο',
-    other: 'περίπου {{count}} χρόνια',
+    one: "περίπου 1 χρόνο",
+    other: "περίπου {{count}} χρόνια",
   },
-}
+};
 
-const formatDistance: FormatDistanceFn = (token, count, options) => {
-  let result
+export const formatDistance: FormatDistanceFn = (token, count, options) => {
+  let result;
 
-  const tokenValue = formatDistanceLocale[token]
-  if (typeof tokenValue === 'string') {
-    result = tokenValue
+  const tokenValue = formatDistanceLocale[token];
+  if (typeof tokenValue === "string") {
+    result = tokenValue;
   } else if (count === 1) {
-    result = tokenValue.one
+    result = tokenValue.one;
   } else {
-    result = tokenValue.other.replace('{{count}}', String(count))
+    result = tokenValue.other.replace("{{count}}", String(count));
   }
 
   if (options?.addSuffix) {
     if (options.comparison && options.comparison > 0) {
-      return 'σε ' + result
+      return "σε " + result;
     } else {
-      return result + ' πριν'
+      return result + " πριν";
     }
   }
 
-  return result
-}
-
-export default formatDistance
+  return result;
+};

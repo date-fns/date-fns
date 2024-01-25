@@ -21,20 +21,21 @@
  * - `2000-03-15 05:20:10`: With a space instead of a 'T' separator for APIs returning a SQL date without reformatting
  *
  * For convenience and ease of use these other input types are also supported
- * via [toDate]{@link https://date-fns.org/docs/toDate}:
+ * via [toDate](https://date-fns.org/docs/toDate):
  *
  * - A `Date` instance will be cloned
  * - A `number` will be treated as a timestamp
  *
  * Any other input type or invalid date strings will return an `Invalid Date`.
  *
- * @param argument A fully formed ISO8601 date string to convert
- * @returns the parsed date in the local time zone
+ * @param dateStr - A fully formed ISO8601 date string to convert
+ *
+ * @returns The parsed date in the local time zone
  */
-export default function parseJSON(dateString: string): Date {
-  const parts = dateString.match(
-    /(\d{4})-(\d{2})-(\d{2})[T ](\d{2}):(\d{2}):(\d{2})(?:\.(\d{0,7}))?(?:Z|(.)(\d{2}):?(\d{2})?)?/
-  )
+export function parseJSON(dateStr: string): Date {
+  const parts = dateStr.match(
+    /(\d{4})-(\d{2})-(\d{2})[T ](\d{2}):(\d{2}):(\d{2})(?:\.(\d{0,7}))?(?:Z|(.)(\d{2}):?(\d{2})?)?/,
+  );
   if (parts) {
     // Group 8 matches the sign
     return new Date(
@@ -42,12 +43,12 @@ export default function parseJSON(dateString: string): Date {
         +parts[1],
         +parts[2] - 1,
         +parts[3],
-        +parts[4] - (+parts[9] || 0) * (parts[8] == '-' ? -1 : 1),
-        +parts[5] - (+parts[10] || 0) * (parts[8] == '-' ? -1 : 1),
+        +parts[4] - (+parts[9] || 0) * (parts[8] == "-" ? -1 : 1),
+        +parts[5] - (+parts[10] || 0) * (parts[8] == "-" ? -1 : 1),
         +parts[6],
-        +((parts[7] || '0') + '00').substring(0, 3)
-      )
-    )
+        +((parts[7] || "0") + "00").substring(0, 3),
+      ),
+    );
   }
-  return new Date(NaN)
+  return new Date(NaN);
 }

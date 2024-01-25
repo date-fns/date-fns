@@ -1,4 +1,4 @@
-import type { Duration } from '../types'
+import type { Duration } from "../types.js";
 
 /**
  * @name formatISODuration
@@ -6,9 +6,9 @@ import type { Duration } from '../types'
  * @summary Format a duration object according as ISO 8601 duration string
  *
  * @description
- * Format a duration object according to the ISO 8601 duration standard (https://www.digi.com/resources/documentation/digidocs/90001437-13/reference/r_iso_8601_duration_format.htm)
+ * Format a duration object according to the ISO 8601 duration standard (https://www.digi.com/resources/documentation/digidocs//90001488-13/reference/r_iso_8601_duration_format.htm)
  *
- * @param duration - the duration to format
+ * @param duration - The duration to format
  *
  * @returns The ISO 8601 duration string
  *
@@ -24,7 +24,7 @@ import type { Duration } from '../types'
  * })
  * //=> 'P39Y2M20DT0H0M0S'
  */
-export default function formatISODuration(duration: Duration): string {
+export function formatISODuration(duration: Duration): string {
   const {
     years = 0,
     months = 0,
@@ -32,7 +32,7 @@ export default function formatISODuration(duration: Duration): string {
     hours = 0,
     minutes = 0,
     seconds = 0,
-  } = duration
+  } = duration;
 
-  return `P${years}Y${months}M${days}DT${hours}H${minutes}M${seconds}S`
+  return `P${years}Y${months}M${days}DT${hours}H${minutes}M${seconds}S`;
 }

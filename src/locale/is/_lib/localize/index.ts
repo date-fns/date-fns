@@ -1,184 +1,178 @@
-import type { Quarter } from '../../../../types'
-import type { Localize, LocalizeFn } from '../../../types'
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
+import type { Localize, LocalizeFn } from "../../../types.js";
+import { buildLocalizeFn } from "../../../_lib/buildLocalizeFn/index.js";
 
 const eraValues = {
-  narrow: ['f.Kr.', 'e.Kr.'] as const,
-  abbreviated: ['f.Kr.', 'e.Kr.'] as const,
-  wide: ['fyrir Krist', 'eftir Krist'] as const,
-}
+  narrow: ["f.Kr.", "e.Kr."] as const,
+  abbreviated: ["f.Kr.", "e.Kr."] as const,
+  wide: ["fyrir Krist", "eftir Krist"] as const,
+};
 
 const quarterValues = {
-  narrow: ['1', '2', '3', '4'] as const,
-  abbreviated: ['1F', '2F', '3F', '4F'] as const,
+  narrow: ["1", "2", "3", "4"] as const,
+  abbreviated: ["1F", "2F", "3F", "4F"] as const,
   wide: [
-    '1. fjórðungur',
-    '2. fjórðungur',
-    '3. fjórðungur',
-    '4. fjórðungur',
+    "1. fjórðungur",
+    "2. fjórðungur",
+    "3. fjórðungur",
+    "4. fjórðungur",
   ] as const,
-}
+};
 
 const monthValues = {
-  narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'Á', 'S', 'Ó', 'N', 'D'] as const,
+  narrow: ["J", "F", "M", "A", "M", "J", "J", "Á", "S", "Ó", "N", "D"] as const,
   abbreviated: [
-    'jan.',
-    'feb.',
-    'mars',
-    'apríl',
-    'maí',
-    'júní',
-    'júlí',
-    'ágúst',
-    'sept.',
-    'okt.',
-    'nóv.',
-    'des.',
+    "jan.",
+    "feb.",
+    "mars",
+    "apríl",
+    "maí",
+    "júní",
+    "júlí",
+    "ágúst",
+    "sept.",
+    "okt.",
+    "nóv.",
+    "des.",
   ] as const,
   wide: [
-    'janúar',
-    'febrúar',
-    'mars',
-    'apríl',
-    'maí',
-    'júní',
-    'júlí',
-    'ágúst',
-    'september',
-    'október',
-    'nóvember',
-    'desember',
+    "janúar",
+    "febrúar",
+    "mars",
+    "apríl",
+    "maí",
+    "júní",
+    "júlí",
+    "ágúst",
+    "september",
+    "október",
+    "nóvember",
+    "desember",
   ] as const,
-}
+};
 
 const dayValues = {
-  narrow: ['S', 'M', 'Þ', 'M', 'F', 'F', 'L'] as const,
-  short: ['Su', 'Má', 'Þr', 'Mi', 'Fi', 'Fö', 'La'] as const,
+  narrow: ["S", "M", "Þ", "M", "F", "F", "L"] as const,
+  short: ["Su", "Má", "Þr", "Mi", "Fi", "Fö", "La"] as const,
   abbreviated: [
-    'sun.',
-    'mán.',
-    'þri.',
-    'mið.',
-    'fim.',
-    'fös.',
-    'lau.',
+    "sun.",
+    "mán.",
+    "þri.",
+    "mið.",
+    "fim.",
+    "fös.",
+    "lau.",
   ] as const,
   wide: [
-    'sunnudagur',
-    'mánudagur',
-    'þriðjudagur',
-    'miðvikudagur',
-    'fimmtudagur',
-    'föstudagur',
-    'laugardagur',
+    "sunnudagur",
+    "mánudagur",
+    "þriðjudagur",
+    "miðvikudagur",
+    "fimmtudagur",
+    "föstudagur",
+    "laugardagur",
   ] as const,
-}
+};
 
 const dayPeriodValues = {
   narrow: {
-    am: 'f',
-    pm: 'e',
-    midnight: 'miðnætti',
-    noon: 'hádegi',
-    morning: 'morgunn',
-    afternoon: 'síðdegi',
-    evening: 'kvöld',
-    night: 'nótt',
+    am: "f",
+    pm: "e",
+    midnight: "miðnætti",
+    noon: "hádegi",
+    morning: "morgunn",
+    afternoon: "síðdegi",
+    evening: "kvöld",
+    night: "nótt",
   },
   abbreviated: {
-    am: 'f.h.',
-    pm: 'e.h.',
-    midnight: 'miðnætti',
-    noon: 'hádegi',
-    morning: 'morgunn',
-    afternoon: 'síðdegi',
-    evening: 'kvöld',
-    night: 'nótt',
+    am: "f.h.",
+    pm: "e.h.",
+    midnight: "miðnætti",
+    noon: "hádegi",
+    morning: "morgunn",
+    afternoon: "síðdegi",
+    evening: "kvöld",
+    night: "nótt",
   },
   wide: {
-    am: 'fyrir hádegi',
-    pm: 'eftir hádegi',
-    midnight: 'miðnætti',
-    noon: 'hádegi',
-    morning: 'morgunn',
-    afternoon: 'síðdegi',
-    evening: 'kvöld',
-    night: 'nótt',
+    am: "fyrir hádegi",
+    pm: "eftir hádegi",
+    midnight: "miðnætti",
+    noon: "hádegi",
+    morning: "morgunn",
+    afternoon: "síðdegi",
+    evening: "kvöld",
+    night: "nótt",
   },
-}
+};
 
 const formattingDayPeriodValues = {
   narrow: {
-    am: 'f',
-    pm: 'e',
-    midnight: 'á miðnætti',
-    noon: 'á hádegi',
-    morning: 'að morgni',
-    afternoon: 'síðdegis',
-    evening: 'um kvöld',
-    night: 'um nótt',
+    am: "f",
+    pm: "e",
+    midnight: "á miðnætti",
+    noon: "á hádegi",
+    morning: "að morgni",
+    afternoon: "síðdegis",
+    evening: "um kvöld",
+    night: "um nótt",
   },
   abbreviated: {
-    am: 'f.h.',
-    pm: 'e.h.',
-    midnight: 'á miðnætti',
-    noon: 'á hádegi',
-    morning: 'að morgni',
-    afternoon: 'síðdegis',
-    evening: 'um kvöld',
-    night: 'um nótt',
+    am: "f.h.",
+    pm: "e.h.",
+    midnight: "á miðnætti",
+    noon: "á hádegi",
+    morning: "að morgni",
+    afternoon: "síðdegis",
+    evening: "um kvöld",
+    night: "um nótt",
   },
   wide: {
-    am: 'fyrir hádegi',
-    pm: 'eftir hádegi',
-    midnight: 'á miðnætti',
-    noon: 'á hádegi',
-    morning: 'að morgni',
-    afternoon: 'síðdegis',
-    evening: 'um kvöld',
-    night: 'um nótt',
+    am: "fyrir hádegi",
+    pm: "eftir hádegi",
+    midnight: "á miðnætti",
+    noon: "á hádegi",
+    morning: "að morgni",
+    afternoon: "síðdegis",
+    evening: "um kvöld",
+    night: "um nótt",
   },
-}
+};
 
-const ordinalNumber: LocalizeFn<number, undefined> = (
-  dirtyNumber,
-  _options
-) => {
-  const number = Number(dirtyNumber)
+const ordinalNumber: LocalizeFn<number> = (dirtyNumber, _options) => {
+  const number = Number(dirtyNumber);
 
-  return number + '.'
-}
+  return number + ".";
+};
 
-const localize: Localize = {
+export const localize: Localize = {
   ordinalNumber,
 
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide',
+    defaultWidth: "wide",
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
-    defaultWidth: 'wide',
-    argumentCallback: (quarter) => (quarter - 1) as Quarter,
+    defaultWidth: "wide",
+    argumentCallback: (quarter) => quarter - 1,
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide',
+    defaultWidth: "wide",
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide',
+    defaultWidth: "wide",
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
-    defaultWidth: 'wide',
+    defaultWidth: "wide",
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide',
+    defaultFormattingWidth: "wide",
   }),
-}
-
-export default localize
+};

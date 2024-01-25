@@ -1,6 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.
 
-import fn from '../../lastDayOfYear/index'
-import convertToFP from '../_lib/convertToFP/index'
+import { lastDayOfYear as fn } from "../../lastDayOfYear/index.js";
+import { convertToFP } from "../_lib/convertToFP/index.js";
 
-export default convertToFP(fn, 1)
+export const lastDayOfYear = convertToFP(fn, 1);
