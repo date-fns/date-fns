@@ -2,6 +2,7 @@ import { compareAsc } from "../compareAsc/index.js";
 import { differenceInCalendarMonths } from "../differenceInCalendarMonths/index.js";
 import { isLastDayOfMonth } from "../isLastDayOfMonth/index.js";
 import { toDate } from "../toDate/index.js";
+import { isLeapYear } from "../isLeapYear/index.js";
 
 /**
  * @name differenceInMonths
@@ -40,7 +41,7 @@ export function differenceInMonths<DateType extends Date>(
   if (difference < 1) {
     result = 0;
   } else {
-    if (_dateLeft.getMonth() === 1 && _dateLeft.getDate() > 27) {
+    if (_dateLeft.getMonth() === 1 && ((_dateLeft.getDate() > 27 && !isLeapYear(_dateLeft)) || (_dateLeft.getDate() > 28 && isLeapYear(_dateLeft)))) {
       // This will check if the date is end of Feb and assign a higher end of month date
       // to compare it with Jan
       _dateLeft.setDate(30);

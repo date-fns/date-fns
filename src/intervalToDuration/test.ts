@@ -238,5 +238,41 @@ describe("intervalToDuration", () => {
         assert.deepStrictEqual(duration, expectedDuration);
       });
     });
+
+    it("returns correct duration for Jan 31 to Feb 28 on leap year", () => {
+      const duration = intervalToDuration({
+        start: new Date(2024, 0, 31),
+        end: new Date(2024, 1, 28),
+      });
+      const expectedDuration = {
+        days: 28,
+      };
+
+      assert.deepStrictEqual(duration, expectedDuration);
+    });
+
+    it("returns correct duration for Jan 31 to Feb 28 on non-leap year", () => {
+      const duration = intervalToDuration({
+        start: new Date(2023, 0, 31),
+        end: new Date(2023, 1, 28),
+      });
+      const expectedDuration = {
+        months: 1,
+      };
+
+      assert.deepStrictEqual(duration, expectedDuration);
+    });
+
+    it("returns correct duration for Jan 31 to Feb 29 on leap year", () => {
+      const duration = intervalToDuration({
+        start: new Date(2024, 0, 31),
+        end: new Date(2024, 1, 29),
+      });
+      const expectedDuration = {
+        months: 1,
+      };
+
+      assert.deepStrictEqual(duration, expectedDuration);
+    });
   });
 });

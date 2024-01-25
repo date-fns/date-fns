@@ -46,6 +46,30 @@ describe("differenceInMonths", () => {
       assert(result === 1);
     });
 
+    it("it returns diff of 0 months between Feb 28 and Jan 31 on a leap year", () => {
+      const result = differenceInMonths(
+        new Date(2024, 1 /* Feb */, 28),
+        new Date(2024, 0 /* Jan */, 31),
+      );
+      assert(result === 0);
+    });
+
+    it("it returns diff of 1 month between Feb 28 and Jan 31 on a non-leap year", () => {
+      const result = differenceInMonths(
+        new Date(2023, 1 /* Feb */, 28),
+        new Date(2023, 0 /* Jan */, 31),
+      );
+      assert(result === 1);
+    });
+
+    it("it returns diff of 1 month between Feb 29 and Jan 31 on a leap year", () => {
+      const result = differenceInMonths(
+        new Date(2024, 1 /* Feb */, 29),
+        new Date(2024, 0 /* Jan */, 31),
+      );
+      assert(result === 1);
+    });
+
     it("it returns diff of 1 month between Nov, 30 2021 and Oct, 31 2021", () => {
       const result = differenceInMonths(
         new Date(2021, 10 /* Nov */, 30),
