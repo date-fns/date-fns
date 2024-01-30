@@ -2,7 +2,7 @@
 
 import assert from "node:assert";
 import { describe, it } from "vitest";
-import { parse } from "./index.js";
+import { parse, parseDate } from "./index.js";
 
 describe("parse", () => {
   const referenceDate = new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 900);
@@ -28,6 +28,25 @@ describe("parse", () => {
       referenceDate,
     );
     assert.deepStrictEqual(result, new Date(2014, 3 /* Apr */, 4, 5));
+  });
+
+  it("alias parseDate has the same behavior as parse", () => {
+    const resultWithParse = parse(
+      "2014-04-04\n05:00:00",
+      "yyyy-MM-dd'\n'HH:mm:ss",
+      referenceDate,
+    );
+    const resultWithParseDate = parseDate(
+      "2014-04-04\n05:00:00",
+      "yyyy-MM-dd'\n'HH:mm:ss",
+      referenceDate,
+    );
+    assert.deepStrictEqual(resultWithParse, new Date(2014, 3 /* Apr */, 4, 5));
+    assert.deepStrictEqual(
+      resultWithParseDate,
+      new Date(2014, 3 /* Apr */, 4, 5),
+    );
+    assert.deepStrictEqual(resultWithParse, resultWithParseDate);
   });
 
   describe("era", () => {
