@@ -1,5 +1,5 @@
 /**
- * @name isExists
+ * @name isExisting
  * @category Common Helpers
  * @summary Is the given date exists?
  *
@@ -14,15 +14,15 @@
  *
  * @example
  * // For the valid date:
- * const result = isExists(2018, 0, 31)
+ * const result = isExisting(2018, 0, 31)
  * //=> true
  *
  * @example
  * // For the invalid date:
- * const result = isExists(2018, 1, 31)
+ * const result = isExisting(2018, 1, 31)
  * //=> false
  */
-export function isExists(year: number, month: number, day: number): boolean {
+export function isExisting(year: number, month: number, day: number): boolean {
   const date = new Date(year, month, day);
   return (
     date.getFullYear() === year &&

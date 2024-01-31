@@ -111,7 +111,7 @@ export * from "./isAfter/index.js";
 export * from "./isBefore/index.js";
 export * from "./isDate/index.js";
 export * from "./isEqual/index.js";
-export * from "./isExists/index.js";
+export * from "./isExisting/index.js";
 export * from "./isFirstDayOfMonth/index.js";
 export * from "./isFriday/index.js";
 export * from "./isFuture/index.js";
