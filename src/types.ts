@@ -287,3 +287,13 @@ export interface NearestMinutesOptions {
   /** The nearest number of minutes to round to. E.g. `15` to round to quarter hours. */
   nearestTo?: NearestMinutes;
 }
+
+/**
+ * Nearest hour type. Goes from 1 to 12, where 1 is the nearest hour and 12
+ * is nearest half a day.
+ */
+export type NearestHours = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+
+export interface NearestHoursOptions {
+  nearestTo?: NearestHours;
+}
