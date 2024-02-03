@@ -46,7 +46,7 @@ export function addMonths<DateType extends Date>(
   // month and using a date of 0 to back up one day to the end of the desired
   // month.
   const endOfDesiredMonth = constructFrom(date, _date.getTime());
-  endOfDesiredMonth.setMonth(_date.getMonth() + amount + 1, 0);
+  endOfDesiredMonth.setMonth(_date.getMonth() + +amount + 1, 0);
   const daysInMonth = endOfDesiredMonth.getDate();
   if (dayOfMonth >= daysInMonth) {
     // If we're already at the end of the month, then this is the correct date
