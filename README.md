@@ -24,7 +24,7 @@ It's like [Lodash](https://lodash.com) for dates
 import { compareAsc, format } from "date-fns";
 
 format(new Date(2014, 1, 11), "yyyy-MM-dd");
-//=> '2014-02-11'
+//=> '2014-01-11'
 
 const dates = [
   new Date(1995, 6, 2),
