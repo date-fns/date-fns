@@ -1,11 +1,11 @@
 import type { FormatRelativeFn } from "../../../types.js";
 
 const formatRelativeLocale = {
-  lastWeek: "'forrige' eeee 'kl.' p",
-  yesterday: "'i går kl.' p",
-  today: "'i dag kl.' p",
-  tomorrow: "'i morgen kl.' p",
-  nextWeek: "EEEE 'kl.' p",
+  lastWeek: "'ovddit' eeee 'dii.' p",
+  yesterday: "'ikte dii.' p",
+  today: "'odne dii.' p",
+  tomorrow: "'ihtin dii.' p",
+  nextWeek: "EEEE 'dii.' p",
   other: "P",
 };
 

@@ -9,80 +9,80 @@ type FormatDistanceTokenValue =
 
 const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   lessThanXSeconds: {
-    one: "mindre enn ett sekund",
-    other: "mindre enn {{count}} sekunder",
+    one: "unnit go ovtta sekundda",
+    other: "unnit go {{count}} sekundda",
   },
 
   xSeconds: {
-    one: "ett sekund",
-    other: "{{count}} sekunder",
+    one: "sekundda",
+    other: "{{count}} sekundda",
   },
 
-  halfAMinute: "et halvt minutt",
+  halfAMinute: "bealle minuhta",
 
   lessThanXMinutes: {
-    one: "mindre enn ett minutt",
-    other: "mindre enn {{count}} minutter",
+    one: "unnit go bealle minuhta",
+    other: "unnit go {{count}} minuhta",
   },
 
   xMinutes: {
-    one: "ett minutt",
-    other: "{{count}} minutter",
+    one: "minuhta",
+    other: "{{count}} minuhta",
   },
 
   aboutXHours: {
-    one: "omtrent en time",
-    other: "omtrent {{count}} timer",
+    one: "sullii ovtta diimmu",
+    other: "sullii {{count}} diimmu",
   },
 
   xHours: {
-    one: "en time",
-    other: "{{count}} timer",
+    one: "diimmu",
+    other: "{{count}} diimmu",
   },
 
   xDays: {
-    one: "en dag",
-    other: "{{count}} dager",
+    one: "beaivvi",
+    other: "{{count}} beaivvi",
   },
 
   aboutXWeeks: {
-    one: "omtrent en uke",
-    other: "omtrent {{count}} uker",
+    one: "sullii ovtta vahku",
+    other: "sullii {{count}} vahku",
   },
 
   xWeeks: {
-    one: "en uke",
-    other: "{{count}} uker",
+    one: "vahku",
+    other: "{{count}} vahku",
   },
 
   aboutXMonths: {
-    one: "omtrent en måned",
-    other: "omtrent {{count}} måneder",
+    one: "sullii ovtta mánu",
+    other: "sullii {{count}} mánu",
   },
 
   xMonths: {
-    one: "en måned",
-    other: "{{count}} måneder",
+    one: "mánu",
+    other: "{{count}} mánu",
   },
 
   aboutXYears: {
-    one: "omtrent ett år",
-    other: "omtrent {{count}} år",
+    one: "sullii ovtta jagi",
+    other: "sullii {{count}} jagi",
   },
 
   xYears: {
-    one: "ett år",
-    other: "{{count}} år",
+    one: "jagi",
+    other: "{{count}} jagi",
   },
 
   overXYears: {
-    one: "over ett år",
-    other: "over {{count}} år",
+    one: "guhkit go jagi",
+    other: "guhkit go {{count}} jagi",
   },
 
   almostXYears: {
-    one: "nesten ett år",
-    other: "nesten {{count}} år",
+    one: "measta jagi",
+    other: "measta {{count}} jagi",
   },
 };
 
@@ -100,9 +100,9 @@ export const formatDistance: FormatDistanceFn = (token, count, options) => {
 
   if (options?.addSuffix) {
     if (options.comparison && options.comparison > 0) {
-      return "om " + result;
+      return "geahčen " + result;
     } else {
-      return result + " siden";
+      return result + " áigi";
     }
   }
 

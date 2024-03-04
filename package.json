@@ -5828,6 +5828,16 @@
         "default": "./locale/ru.mjs"
       }
     },
+    "./locale/se": {
+      "require": {
+        "types": "./locale/se.d.ts",
+        "default": "./locale/se.js"
+      },
+      "import": {
+        "types": "./locale/se.d.mts",
+        "default": "./locale/se.mjs"
+      }
+    },
     "./locale/sk": {
       "require": {
         "types": "./locale/sk.d.ts",

@@ -7,15 +7,13 @@ import { match } from "./_lib/match/index.js";
 
 /**
  * @category Locales
- * @summary Norwegian Bokmål locale.
- * @language Norwegian Bokmål
- * @iso-639-2 nob
- * @author Hans-Kristian Koren [@Hanse](https://github.com/Hanse)
- * @author Mikolaj Grzyb [@mikolajgrzyb](https://github.com/mikolajgrzyb)
- * @author Dag Stuan [@dagstuan](https://github.com/dagstuan)
+ * @summary Northern Sámi locale.
+ * @language Northern Sámi
+ * @iso-639-2 sme
+ * @author Audun Rundberg [@audunru](https://github.com/audunru)
  */
-export const nb: Locale = {
-  code: "nb",
+export const se: Locale = {
+  code: "se",
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

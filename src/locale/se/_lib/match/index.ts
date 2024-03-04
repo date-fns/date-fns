@@ -7,84 +7,85 @@ const matchOrdinalNumberPattern = /^(\d+)\.?/i;
 const parseOrdinalNumberPattern = /\d+/i;
 
 const matchEraPatterns = {
-  narrow: /^(f\.? ?Kr\.?|fvt\.?|e\.? ?Kr\.?|evt\.?)/i,
-  abbreviated: /^(f\.? ?Kr\.?|fvt\.?|e\.? ?Kr\.?|evt\.?)/i,
-  wide: /^(før Kristus|før vår tid|etter Kristus|vår tid)/i,
+  narrow: /^(o\.? ?Kr\.?|m\.? ?Kr\.?)/i,
+  abbreviated: /^(o\.? ?Kr\.?|m\.? ?Kr\.?)/i,
+  wide: /^(ovdal Kristusa|ovdal min áiggi|maŋŋel Kristusa|min áigi)/i,
 };
 const parseEraPatterns = {
-  any: [/^f/i, /^e/i] as const,
+  any: [/^o/i, /^m/i] as const,
 };
 
 const matchQuarterPatterns = {
   narrow: /^[1234]/i,
   abbreviated: /^q[1234]/i,
-  wide: /^[1234](\.)? kvartal/i,
+  wide: /^[1234](\.)? kvartála/i,
 };
 const parseQuarterPatterns = {
   any: [/1/i, /2/i, /3/i, /4/i] as const,
 };
 
 const matchMonthPatterns = {
-  narrow: /^[jfmasond]/i,
-  abbreviated: /^(jan|feb|mars?|apr|mai|juni?|juli?|aug|sep|okt|nov|des)\.?/i,
-  wide: /^(januar|februar|mars|april|mai|juni|juli|august|september|oktober|november|desember)/i,
+  narrow: /^[ogncmsbčj]/i,
+  abbreviated:
+    /^(ođđa|guov|njuk|cuo|mies|geas|suoi|borg|čakč|golg|skáb|juov)\.?/i,
+  wide: /^(ođđajagemánnu|guovvamánnu|njukčamánnu|cuoŋománnu|miessemánnu|geassemánnu|suoidnemánnu|borgemánnu|čakčamánnu|golggotmánnu|skábmamánnu|juovlamánnu)/i,
 };
 const parseMonthPatterns = {
   narrow: [
-    /^j/i,
-    /^f/i,
-    /^m/i,
-    /^a/i,
-    /^m/i,
-    /^j/i,
-    /^j/i,
-    /^a/i,
-    /^s/i,
     /^o/i,
+    /^g/i,
     /^n/i,
-    /^d/i,
+    /^c/i,
+    /^m/i,
+    /^g/i,
+    /^s/i,
+    /^b/i,
+    /^č/i,
+    /^g/i,
+    /^s/i,
+    /^j/i,
   ] as const,
   any: [
-    /^ja/i,
-    /^f/i,
-    /^mar/i,
-    /^ap/i,
-    /^mai/i,
-    /^jun/i,
-    /^jul/i,
-    /^aug/i,
-    /^s/i,
     /^o/i,
+    /^gu/i,
     /^n/i,
-    /^d/i,
+    /^c/i,
+    /^m/i,
+    /^ge/i,
+    /^su/i,
+    /^b/i,
+    /^č/i,
+    /^go/i,
+    /^sk/i,
+    /^j/i,
   ] as const,
 };
 
 const matchDayPatterns = {
-  narrow: /^[smtofl]/i,
-  short: /^(sø|ma|ti|on|to|fr|lø)/i,
-  abbreviated: /^(søn|man|tir|ons|tor|fre|lør)/i,
-  wide: /^(søndag|mandag|tirsdag|onsdag|torsdag|fredag|lørdag)/i,
+  narrow: /^[svmgdbl]/i,
+  short: /^(sotn|vuos|maŋ|gask|duor|bear|láv)/i,
+  abbreviated: /^(sotn|vuos|maŋ|gask|duor|bear|láv)/i,
+  wide: /^(sotnabeaivi|vuossárga|maŋŋebárga|gaskavahkku|duorastat|bearjadat|lávvardat)/i,
 };
 const parseDayPatterns = {
-  any: [/^s/i, /^m/i, /^ti/i, /^o/i, /^to/i, /^f/i, /^l/i] as const,
+  any: [/^s/i, /^v/i, /^m/i, /^g/i, /^d/i, /^b/i, /^l/i] as const,
 };
 
 const matchDayPeriodPatterns = {
   narrow:
-    /^(midnatt|middag|(på) (morgenen|ettermiddagen|kvelden|natten)|[ap])/i,
-  any: /^([ap]\.?\s?m\.?|midnatt|middag|(på) (morgenen|ettermiddagen|kvelden|natten))/i,
+    /^(gaskaidja|gaskabeaivvi|(på) (iđđes|maŋŋel gaskabeaivvi|eahkes|ihkku)|[ap])/i,
+  any: /^([ap]\.?\s?m\.?|gaskaidja|gaskabeaivvi|(på) (iđđes|maŋŋel gaskabeaivvi|eahkes|ihkku))/i,
 };
 const parseDayPeriodPatterns = {
   any: {
     am: /^a(\.?\s?m\.?)?$/i,
     pm: /^p(\.?\s?m\.?)?$/i,
-    midnight: /^midn/i,
-    noon: /^midd/i,
-    morning: /morgen/i,
-    afternoon: /ettermiddag/i,
-    evening: /kveld/i,
-    night: /natt/i,
+    midnight: /^gaskai/i,
+    noon: /^gaskab/i,
+    morning: /iđđes/i,
+    afternoon: /maŋŋel gaskabeaivvi/i,
+    evening: /eahkes/i,
+    night: /ihkku/i,
   },
 };
 
