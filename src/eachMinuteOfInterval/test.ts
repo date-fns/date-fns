@@ -22,7 +22,7 @@ describe("eachMinuteOfInterval", () => {
     ]);
   });
 
-  it('should handle all the minutes that are not in the beginning', () => {
+  it("should handle all the minutes that are not in the beginning", () => {
     const result = eachMinuteOfInterval({
       start: new Date(2020, 10, 14, 13, 0, 33),
       end: new Date(2020, 10, 14, 13, 2),
