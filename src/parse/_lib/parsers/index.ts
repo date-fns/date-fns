@@ -1,35 +1,35 @@
-import { Parser } from '../Parser'
-import { EraParser } from './EraParser'
-import { YearParser } from './YearParser'
-import { LocalWeekYearParser } from './LocalWeekYearParser'
-import { ISOWeekYearParser } from './ISOWeekYearParser'
-import { ExtendedYearParser } from './ExtendedYearParser'
-import { QuarterParser } from './QuarterParser'
-import { StandAloneQuarterParser } from './StandAloneQuarterParser'
-import { MonthParser } from './MonthParser'
-import { StandAloneMonthParser } from './StandAloneMonthParser'
-import { LocalWeekParser } from './LocalWeekParser'
-import { ISOWeekParser } from './ISOWeekParser'
-import { DateParser } from './DateParser'
-import { DayOfYearParser } from './DayOfYearParser'
-import { DayParser } from './DayParser'
-import { LocalDayParser } from './LocalDayParser'
-import { StandAloneLocalDayParser } from './StandAloneLocalDayParser'
-import { ISODayParser } from './ISODayParser'
-import { AMPMParser } from './AMPMParser'
-import { AMPMMidnightParser } from './AMPMMidnightParser'
-import { DayPeriodParser } from './DayPeriodParser'
-import { Hour1to12Parser } from './Hour1to12Parser'
-import { Hour0to23Parser } from './Hour0to23Parser'
-import { Hour0To11Parser } from './Hour0To11Parser'
-import { Hour1To24Parser } from './Hour1To24Parser'
-import { MinuteParser } from './MinuteParser'
-import { SecondParser } from './SecondParser'
-import { FractionOfSecondParser } from './FractionOfSecondParser'
-import { ISOTimezoneWithZParser } from './ISOTimezoneWithZParser'
-import { ISOTimezoneParser } from './ISOTimezoneParser'
-import { TimestampSecondsParser } from './TimestampSecondsParser'
-import { TimestampMillisecondsParser } from './TimestampMillisecondsParser'
+import type { Parser } from "../Parser.js";
+import { EraParser } from "./EraParser.js";
+import { YearParser } from "./YearParser.js";
+import { LocalWeekYearParser } from "./LocalWeekYearParser.js";
+import { ISOWeekYearParser } from "./ISOWeekYearParser.js";
+import { ExtendedYearParser } from "./ExtendedYearParser.js";
+import { QuarterParser } from "./QuarterParser.js";
+import { StandAloneQuarterParser } from "./StandAloneQuarterParser.js";
+import { MonthParser } from "./MonthParser.js";
+import { StandAloneMonthParser } from "./StandAloneMonthParser.js";
+import { LocalWeekParser } from "./LocalWeekParser.js";
+import { ISOWeekParser } from "./ISOWeekParser.js";
+import { DateParser } from "./DateParser.js";
+import { DayOfYearParser } from "./DayOfYearParser.js";
+import { DayParser } from "./DayParser.js";
+import { LocalDayParser } from "./LocalDayParser.js";
+import { StandAloneLocalDayParser } from "./StandAloneLocalDayParser.js";
+import { ISODayParser } from "./ISODayParser.js";
+import { AMPMParser } from "./AMPMParser.js";
+import { AMPMMidnightParser } from "./AMPMMidnightParser.js";
+import { DayPeriodParser } from "./DayPeriodParser.js";
+import { Hour1to12Parser } from "./Hour1to12Parser.js";
+import { Hour0to23Parser } from "./Hour0to23Parser.js";
+import { Hour0To11Parser } from "./Hour0To11Parser.js";
+import { Hour1To24Parser } from "./Hour1To24Parser.js";
+import { MinuteParser } from "./MinuteParser.js";
+import { SecondParser } from "./SecondParser.js";
+import { FractionOfSecondParser } from "./FractionOfSecondParser.js";
+import { ISOTimezoneWithZParser } from "./ISOTimezoneWithZParser.js";
+import { ISOTimezoneParser } from "./ISOTimezoneParser.js";
+import { TimestampSecondsParser } from "./TimestampSecondsParser.js";
+import { TimestampMillisecondsParser } from "./TimestampMillisecondsParser.js";
 
 /*
  * |     | Unit                           |     | Unit                           |
@@ -74,6 +74,7 @@ import { TimestampMillisecondsParser } from './TimestampMillisecondsParser'
  *   `Y` is supposed to be used in conjunction with `w` and `e`
  *   for week-numbering date specific to the locale.
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- It's ok, we want any here
 export const parsers: Record<string, Parser<any>> = {
   G: new EraParser(),
   y: new YearParser(),
@@ -106,4 +107,4 @@ export const parsers: Record<string, Parser<any>> = {
   x: new ISOTimezoneParser(),
   t: new TimestampSecondsParser(),
   T: new TimestampMillisecondsParser(),
-}
+};

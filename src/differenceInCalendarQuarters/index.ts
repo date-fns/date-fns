@@ -1,5 +1,5 @@
-import getQuarter from '../getQuarter/index'
-import toDate from '../toDate/index'
+import { getQuarter } from "../getQuarter/index.js";
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name differenceInCalendarQuarters
@@ -9,9 +9,12 @@ import toDate from '../toDate/index'
  * @description
  * Get the number of calendar quarters between the given dates.
  *
- * @param dateLeft - the later date
- * @param dateRight - the earlier date
- * @returns the number of calendar quarters
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param dateLeft - The later date
+ * @param dateRight - The earlier date
+
+ * @returns The number of calendar quarters
  *
  * @example
  * // How many calendar quarters are between 31 December 2013 and 2 July 2014?
@@ -21,15 +24,15 @@ import toDate from '../toDate/index'
  * )
  * //=> 3
  */
-export default function differenceInCalendarQuarters<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+export function differenceInCalendarQuarters<DateType extends Date>(
+  dateLeft: DateType | number | string,
+  dateRight: DateType | number | string,
 ): number {
-  const dateLeft = toDate(dirtyDateLeft)
-  const dateRight = toDate(dirtyDateRight)
+  const _dateLeft = toDate(dateLeft);
+  const _dateRight = toDate(dateRight);
 
-  const yearDiff = dateLeft.getFullYear() - dateRight.getFullYear()
-  const quarterDiff = getQuarter(dateLeft) - getQuarter(dateRight)
+  const yearDiff = _dateLeft.getFullYear() - _dateRight.getFullYear();
+  const quarterDiff = getQuarter(_dateLeft) - getQuarter(_dateRight);
 
-  return yearDiff * 4 + quarterDiff
+  return yearDiff * 4 + quarterDiff;
 }

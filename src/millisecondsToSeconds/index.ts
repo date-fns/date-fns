@@ -1,4 +1,4 @@
-import { millisecondsInSecond } from '../constants/index'
+import { millisecondsInSecond } from "../constants/index.js";
 
 /**
  * @name millisecondsToSeconds
@@ -8,9 +8,9 @@ import { millisecondsInSecond } from '../constants/index'
  * @description
  * Convert a number of milliseconds to a full number of seconds.
  *
- * @param milliseconds - number of milliseconds to be converted
+ * @param milliseconds - The number of milliseconds to be converted
  *
- * @returns the number of milliseconds converted in seconds
+ * @returns The number of milliseconds converted in seconds
  *
  * @example
  * // Convert 1000 miliseconds to seconds:
@@ -22,7 +22,7 @@ import { millisecondsInSecond } from '../constants/index'
  * const result = millisecondsToSeconds(1999)
  * //=> 1
  */
-export default function millisecondsToSeconds(milliseconds: number): number {
-  const seconds = milliseconds / millisecondsInSecond
-  return Math.floor(seconds)
+export function millisecondsToSeconds(milliseconds: number): number {
+  const seconds = milliseconds / millisecondsInSecond;
+  return Math.trunc(seconds);
 }

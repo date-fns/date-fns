@@ -122,8 +122,12 @@
 |                                 |              | 2019-12-01T12:13:14.015Z | ৪৯তম                                                          | Invalid Date             |
 | ISO week of year                | Io           | 2019-01-01T12:13:14.015Z | ১ম                                                            | Invalid Date             |
 |                                 |              | 2019-12-01T12:13:14.015Z | ৪৮তম                                                          | Invalid Date             |
-| Day of month                    | do           | 2019-02-11T12:13:14.015Z | ১১ই                                                           | Invalid Date             |
+| Day of month                    | do           | 2019-02-01T12:13:14.015Z | ১লা                                                           | Invalid Date             |
+|                                 |              | 2019-02-11T12:13:14.015Z | ১১ই                                                           | Invalid Date             |
 |                                 |              | 2019-02-28T12:13:14.015Z | ২৮শে                                                          | Invalid Date             |
+|                                 | do MMMM      | 2019-02-01T12:13:14.015Z | ১লা ফেব্রুয়ারি                                                | Invalid Date             |
+|                                 |              | 2019-02-11T12:13:14.015Z | ১১ই ফেব্রুয়ারি                                                | Invalid Date             |
+|                                 |              | 2019-02-28T12:13:14.015Z | ২৮শে ফেব্রুয়ারি                                               | Invalid Date             |
 | Day of year                     | Do           | 2019-02-11T12:13:14.015Z | ৪২তম                                                          | Invalid Date             |
 |                                 |              | 2019-12-31T12:13:14.015Z | ৩৬৫তম                                                         | Invalid Date             |
 | Day of week (formatting)        | E            | 2019-02-11T12:13:14.015Z | সোম                                                           | 2019-02-11T00:00:00.000Z |

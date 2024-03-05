@@ -1,4 +1,5 @@
-import distanceInWords, { FormatDistanceOptions } from '../formatDistance/index'
+import type { FormatDistanceOptions } from "../formatDistance/index.js";
+import { formatDistance } from "../formatDistance/index.js";
 
 /**
  * The {@link formatDistanceToNow} function options.
@@ -43,14 +44,15 @@ export interface FormatDistanceToNowOptions extends FormatDistanceOptions {}
  * | 40 secs ... 60 secs | less than a minute   |
  * | 60 secs ... 90 secs | 1 minute             |
  *
- * > ⚠️ Please note that this function is not present in the FP submodule as
- * > it uses `Date.now()` internally hence impure and can't be safely curried.
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
- * @param date - the given date
- * @param options - the object with options
- * @returns the distance in words
- * @throws {RangeError} `date` must not be Invalid Date
- * @throws {RangeError} `options.locale` must contain `formatDistance` property
+ * @param date - The given date
+ * @param options - The object with options
+ *
+ * @returns The distance in words
+ *
+ * @throws `date` must not be Invalid Date
+ * @throws `options.locale` must contain `formatDistance` property
  *
  * @example
  * // If today is 1 January 2015, what is the distance to 2 July 2014?
@@ -87,9 +89,9 @@ export interface FormatDistanceToNowOptions extends FormatDistanceOptions {}
  * )
  * //=> 'pli ol 1 jaro'
  */
-export default function formatDistanceToNow<DateType extends Date>(
-  dirtyDate: DateType | number,
-  options?: FormatDistanceToNowOptions
+export function formatDistanceToNow<DateType extends Date>(
+  date: DateType | number | string,
+  options?: FormatDistanceToNowOptions,
 ): string {
-  return distanceInWords(dirtyDate, Date.now(), options)
+  return formatDistance(date, Date.now(), options);
 }

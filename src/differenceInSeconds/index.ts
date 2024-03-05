@@ -1,6 +1,6 @@
-import differenceInMilliseconds from '../differenceInMilliseconds/index'
-import type { RoundingOptions } from '../types'
-import { getRoundingMethod } from '../_lib/roundingMethods/index'
+import { getRoundingMethod } from "../_lib/getRoundingMethod/index.js";
+import { differenceInMilliseconds } from "../differenceInMilliseconds/index.js";
+import type { RoundingOptions } from "../types.js";
 
 /**
  * The {@link differenceInSeconds} function options.
@@ -15,10 +15,13 @@ export interface DifferenceInSecondsOptions extends RoundingOptions {}
  * @description
  * Get the number of seconds between the given dates.
  *
- * @param dateLeft - the later date
- * @param dateRight - the earlier date
- * @param options - an object with options.
- * @returns the number of seconds
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param dateLeft - The later date
+ * @param dateRight - The earlier date
+ * @param options - An object with options.
+ *
+ * @returns The number of seconds
  *
  * @example
  * // How many seconds are between
@@ -29,11 +32,11 @@ export interface DifferenceInSecondsOptions extends RoundingOptions {}
  * )
  * //=> 12
  */
-export default function differenceInSeconds<DateType extends Date>(
-  dateLeft: DateType | number,
-  dateRight: DateType | number,
-  options?: DifferenceInSecondsOptions
+export function differenceInSeconds<DateType extends Date>(
+  dateLeft: DateType | number | string,
+  dateRight: DateType | number | string,
+  options?: DifferenceInSecondsOptions,
 ): number {
-  const diff = differenceInMilliseconds(dateLeft, dateRight) / 1000
-  return getRoundingMethod(options?.roundingMethod)(diff)
+  const diff = differenceInMilliseconds(dateLeft, dateRight) / 1000;
+  return getRoundingMethod(options?.roundingMethod)(diff);
 }

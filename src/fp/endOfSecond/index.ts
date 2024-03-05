@@ -1,6 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.
 
-import fn from '../../endOfSecond/index'
-import convertToFP from '../_lib/convertToFP/index'
+import { endOfSecond as fn } from "../../endOfSecond/index.js";
+import { convertToFP } from "../_lib/convertToFP/index.js";
 
-export default convertToFP(fn, 1)
+export const endOfSecond = convertToFP(fn, 1);

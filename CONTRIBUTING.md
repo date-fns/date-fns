@@ -1,9 +1,5 @@
 # Contributing Guide
 
-**⚠⚠⚠ Please contribute new code in TypeScript ⚠⚠⚠**
-
-[Read more about migration to TypeScript](https://github.com/date-fns/date-fns/discussions/1932)
-
 ## Table of Contents
 
 - [How to Help?](#how-to-help)
@@ -14,10 +10,9 @@
 
 - [Testing](#testing)
 
-  - [Unit tests](#unit-tests)  
+  - [Unit tests](#unit-tests)
   - [REPL](#repl)
   - [Test build](#test-build)
-
 
 - [Code Style Guide](#code-style-guide)
 
@@ -35,7 +30,7 @@ Help is always welcome. There are areas where you can help:
   new features, etc.).
 
 - Documentation ([markdown documents](https://github.com/date-fns/date-fns/tree/master/docs),
-  [JSDoc annotations in source code](https://github.com/date-fns/date-fns/blob/master/src/toDate/index.ts)).
+  [TDCod annotations in source code](https://github.com/date-fns/date-fns/blob/master/src/toDate/index.ts)).
 
 - Test suite & development environment improvements.
 
@@ -76,72 +71,66 @@ Please follow the main contributing rules, to maintain date-fns' top quality:
 
 ## Getting Started
 
-1. Install [Node.js 14 or greater (LTS recommended)](https://nodejs.org/en/download/)
+1. Install [Node.js 20 or greater (LTS recommended)](https://nodejs.org/en/download/)
 
-2. Install or upgrade to the latest [Yarn classic (v1)](https://classic.yarnpkg.com/en/docs/install) by running `npm install -g yarn@latest`
+2. Fork the project, and clone your fork of the repo
 
-3. Fork the project, and clone your fork of the repo
-
-4. Run `yarn` to install the dev dependencies
+3. Run `npm` to install the dependencies
 
 ## Testing
 
 ### Unit tests
 
-Karma + Mocha (Chrome):
+Node.js:
 
 ```sh
-# all tests in watch mode
-yarn test
+npx vitest run
 
-# all tests once
-yarn test --single-run
+# Or in the watch mode:
+npx vitest watch
 ```
 
-Jest (Node.js):
+Browser
 
 ```sh
-# all tests in watch mode
-yarn jest --watch
+npx vitest run --browser
 
-# all tests once
-yarn jest
+# Or in the watch mode:
+npx vitest watch --browser
 ```
 
 ### REPL
 
-To test functions in a REPL, use `babel-node` located in `./node_modules/.bin` (mind the `-x` flag to also support TypeScript files):
+To test functions in a REPL, use `tsx`:
 
 ```sh
-yarn babel-node -x .ts,.js
+npx tsx
 ```
 
-and then require invididual functions:
+...and then require invididual functions:
+
 ```sh
-> const toDate = require('./src/toDate')
+> const toDate = require('./src/toDate').default
 undefined
 > toDate(1392098430000).toString()
-'Tue Feb 11 2014 01:00:30 GMT-0500 (Eastern Standard Time)'
->
-```
-
-or all functions (slower):
-```sh
-> const fns = require('./src')
-undefined
-> fns.toDate(1392098430000).toString()
-'Tue Feb 11 2014 01:00:30 GMT-0500 (Eastern Standard Time)'
+'Tue Feb 11 2014 14:00:30 GMT+0800 (Singapore Standard Time)'
 >
 ```
 
 ### Test build
 
-Build date-fns from source to test in your project. The ouput is equivalent to what gets published on npm with each release.
+To test the build, run:
 
 ```sh
-# replace {YOUR-PROJECT-PATH} with an absolute or relative path to your project root
-env PACKAGE_OUTPUT_PATH="{YOUR-PROJECT-PATH}/node_modules/date-fns" ./scripts/build/package.sh
+./scripts/build/package.sh
+cd lib
+npm link
+
+cd YOUR_PROJECT
+npm link date-fns
 ```
+
+[Read more about `npm link`](https://docs.npmjs.com/cli/commands/npm-link).
 
 ## Code Style Guide
 
@@ -151,7 +140,7 @@ The project follows [Prettier] code style and uses [ESLint] as the linter.
 To lint the code, run:
 
 ```bash
-yarn lint
+npm run lint
 ```
 
 [prettier]: https://prettier.io/
@@ -161,9 +150,6 @@ yarn lint
 
 ### JSDoc
 
-- [JSDoc](https://jsdoc.app/) is used for the code documentation. Along with the
-standard JSDoc tags, date-fns uses `@category` tag that allows
-to group functions.
+- [TSDoc](https://tsdoc.org/) is used for the code documentation.
 
-- [jsdoc-to-markdown](https://github.com/jsdoc2md/jsdoc-to-markdown/) is used to parse
-JSDoc annotations.
+- [TypeDoc](https://typedoc.org/) is used to parse the TSDoc annotations and populate the database.

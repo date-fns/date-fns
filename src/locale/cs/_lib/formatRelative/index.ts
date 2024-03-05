@@ -1,15 +1,15 @@
-import type { Day } from '../../../../types'
-import type { FormatRelativeFn } from '../../../types'
+import type { Day } from "../../../../types.js";
+import type { FormatRelativeFn } from "../../../types.js";
 
 const accusativeWeekdays = [
-  'neděli',
-  'pondělí',
-  'úterý',
-  'středu',
-  'čtvrtek',
-  'pátek',
-  'sobotu',
-]
+  "neděli",
+  "pondělí",
+  "úterý",
+  "středu",
+  "čtvrtek",
+  "pátek",
+  "sobotu",
+];
 
 const formatRelativeLocale = {
   lastWeek: "'poslední' eeee 've' p",
@@ -17,20 +17,18 @@ const formatRelativeLocale = {
   today: "'dnes v' p",
   tomorrow: "'zítra v' p",
   nextWeek: (date: Date) => {
-    const day = date.getDay() as Day
-    return "'v " + accusativeWeekdays[day] + " o' p"
+    const day = date.getDay() as Day;
+    return "'v " + accusativeWeekdays[day] + " o' p";
   },
-  other: 'P',
-}
+  other: "P",
+};
 
-const formatRelative: FormatRelativeFn = (token, date) => {
-  const format = formatRelativeLocale[token]
+export const formatRelative: FormatRelativeFn = (token, date) => {
+  const format = formatRelativeLocale[token];
 
-  if (typeof format === 'function') {
-    return format(date)
+  if (typeof format === "function") {
+    return format(date);
   }
 
-  return format
-}
-
-export default formatRelative
+  return format;
+};

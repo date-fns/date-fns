@@ -1,8 +1,8 @@
-import constructFrom from '../constructFrom/index'
-import isSaturday from '../isSaturday/index'
-import isSunday from '../isSunday/index'
-import isWeekend from '../isWeekend/index'
-import toDate from '../toDate/index'
+import { constructFrom } from "../constructFrom/index.js";
+import { isSaturday } from "../isSaturday/index.js";
+import { isSunday } from "../isSunday/index.js";
+import { isWeekend } from "../isWeekend/index.js";
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name addBusinessDays
@@ -12,51 +12,54 @@ import toDate from '../toDate/index'
  * @description
  * Add the specified number of business days (mon - fri) to the given date, ignoring weekends.
  *
- * @param date - the date to be changed
- * @param amount - the amount of business days to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
- * @returns the new date with the business days added
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date to be changed
+ * @param amount - The amount of business days to be added.
+ *
+ * @returns The new date with the business days added
  *
  * @example
  * // Add 10 business days to 1 September 2014:
  * const result = addBusinessDays(new Date(2014, 8, 1), 10)
  * //=> Mon Sep 15 2014 00:00:00 (skipped weekend days)
  */
-export default function addBusinessDays<DateType extends Date>(
-  dirtyDate: DateType | number,
-  amount: number
+export function addBusinessDays<DateType extends Date>(
+  date: DateType | number | string,
+  amount: number,
 ): DateType {
-  const date = toDate(dirtyDate)
-  const startedOnWeekend = isWeekend(date)
+  const _date = toDate(date);
+  const startedOnWeekend = isWeekend(_date);
 
-  if (isNaN(amount)) return constructFrom(dirtyDate, NaN)
+  if (isNaN(amount)) return constructFrom(date, NaN);
 
-  const hours = date.getHours()
-  const sign = amount < 0 ? -1 : 1
-  const fullWeeks = Math.trunc(amount / 5)
+  const hours = _date.getHours();
+  const sign = amount < 0 ? -1 : 1;
+  const fullWeeks = Math.trunc(amount / 5);
 
-  date.setDate(date.getDate() + fullWeeks * 7)
+  _date.setDate(_date.getDate() + fullWeeks * 7);
 
   // Get remaining days not part of a full week
-  let restDays = Math.abs(amount % 5)
+  let restDays = Math.abs(amount % 5);
 
   // Loops over remaining days
   while (restDays > 0) {
-    date.setDate(date.getDate() + sign)
-    if (!isWeekend(date)) restDays -= 1
+    _date.setDate(_date.getDate() + sign);
+    if (!isWeekend(_date)) restDays -= 1;
   }
 
   // If the date is a weekend day and we reduce a dividable of
   // 5 from it, we land on a weekend date.
   // To counter this, we add days accordingly to land on the next business day
-  if (startedOnWeekend && isWeekend(date) && amount !== 0) {
+  if (startedOnWeekend && isWeekend(_date) && amount !== 0) {
     // If we're reducing days, we want to add days until we land on a weekday
     // If we're adding days we want to reduce days until we land on a weekday
-    if (isSaturday(date)) date.setDate(date.getDate() + (sign < 0 ? 2 : -1))
-    if (isSunday(date)) date.setDate(date.getDate() + (sign < 0 ? 1 : -2))
+    if (isSaturday(_date)) _date.setDate(_date.getDate() + (sign < 0 ? 2 : -1));
+    if (isSunday(_date)) _date.setDate(_date.getDate() + (sign < 0 ? 1 : -2));
   }
 
   // Restore hours to avoid DST lag
-  date.setHours(hours)
+  _date.setHours(hours);
 
-  return date
+  return _date;
 }

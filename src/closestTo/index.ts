@@ -1,5 +1,5 @@
-import constructFrom from '../constructFrom/index'
-import toDate from '../toDate/index'
+import { constructFrom } from "../constructFrom/index.js";
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name closestTo
@@ -9,9 +9,12 @@ import toDate from '../toDate/index'
  * @description
  * Return a date from the array closest to the given date.
  *
- * @param dateToCompare - the date to compare with
- * @param datesArray - the array to search
- * @returns the date from the array closest to the given date or undefined if no valid value is given
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param dateToCompare - The date to compare with
+ * @param dates - The array to search
+ *
+ * @returns The date from the array closest to the given date or undefined if no valid value is given
  *
  * @example
  * // Which date is closer to 6 September 2015: 1 January 2000 or 1 January 2030?
@@ -22,34 +25,33 @@ import toDate from '../toDate/index'
  * ])
  * //=> Tue Jan 01 2030 00:00:00
  */
-export default function closestTo<DateType extends Date>(
-  dirtyDateToCompare: DateType | number,
-  datesArray: Array<DateType | number>
+export function closestTo<DateType extends Date>(
+  dateToCompare: DateType | number | string,
+  dates: Array<DateType | number | string>,
 ): DateType | undefined {
-  const dateToCompare = toDate(dirtyDateToCompare)
+  const date = toDate(dateToCompare);
 
-  if (isNaN(Number(dateToCompare)))
-    return constructFrom(dirtyDateToCompare, NaN)
+  if (isNaN(Number(date))) return constructFrom(dateToCompare, NaN);
 
-  const timeToCompare = dateToCompare.getTime()
+  const timeToCompare = date.getTime();
 
-  let result: DateType | undefined
-  let minDistance: number
-  datesArray.forEach((dirtyDate) => {
-    const currentDate = toDate(dirtyDate)
+  let result: DateType | undefined;
+  let minDistance: number;
+  dates.forEach((dirtyDate) => {
+    const currentDate = toDate(dirtyDate);
 
     if (isNaN(Number(currentDate))) {
-      result = constructFrom(dirtyDateToCompare, NaN)
-      minDistance = NaN
-      return
+      result = constructFrom(dateToCompare, NaN);
+      minDistance = NaN;
+      return;
     }
 
-    const distance = Math.abs(timeToCompare - currentDate.getTime())
+    const distance = Math.abs(timeToCompare - currentDate.getTime());
     if (result == null || distance < minDistance) {
-      result = currentDate
-      minDistance = distance
+      result = currentDate;
+      minDistance = distance;
     }
-  })
+  });
 
-  return result
+  return result;
 }

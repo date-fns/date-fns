@@ -1,78 +1,78 @@
-import type { FormatDistanceFn, FormatDistanceLocale } from '../../../types'
+import type { FormatDistanceFn, FormatDistanceLocale } from "../../../types.js";
 
 type FormatDistanceTokenValue =
   | string
   | {
-      one: string
-      other: string
-    }
+      one: string;
+      other: string;
+    };
 
 const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   lessThanXSeconds: {
-    one: 'sekunddan kam',
-    other: '{{count}} sekunddan kam',
+    one: "sekunddan kam",
+    other: "{{count}} sekunddan kam",
   },
 
   xSeconds: {
-    one: '1 sekund',
-    other: '{{count}} sekund',
+    one: "1 sekund",
+    other: "{{count}} sekund",
   },
 
-  halfAMinute: 'yarim minut',
+  halfAMinute: "yarim minut",
 
   lessThanXMinutes: {
-    one: 'bir minutdan kam',
-    other: '{{count}} minutdan kam',
+    one: "bir minutdan kam",
+    other: "{{count}} minutdan kam",
   },
 
   xMinutes: {
-    one: '1 minut',
-    other: '{{count}} minut',
+    one: "1 minut",
+    other: "{{count}} minut",
   },
 
   aboutXHours: {
-    one: 'tahminan 1 soat',
-    other: 'tahminan {{count}} soat',
+    one: "tahminan 1 soat",
+    other: "tahminan {{count}} soat",
   },
 
   xHours: {
-    one: '1 soat',
-    other: '{{count}} soat',
+    one: "1 soat",
+    other: "{{count}} soat",
   },
 
   xDays: {
-    one: '1 kun',
-    other: '{{count}} kun',
+    one: "1 kun",
+    other: "{{count}} kun",
   },
 
   aboutXWeeks: {
-    one: 'tahminan 1 hafta',
-    other: 'tahminan {{count}} hafta',
+    one: "tahminan 1 hafta",
+    other: "tahminan {{count}} hafta",
   },
 
   xWeeks: {
-    one: '1 hafta',
-    other: '{{count}} hafta',
+    one: "1 hafta",
+    other: "{{count}} hafta",
   },
 
   aboutXMonths: {
-    one: 'tahminan 1 oy',
-    other: 'tahminan {{count}} oy',
+    one: "tahminan 1 oy",
+    other: "tahminan {{count}} oy",
   },
 
   xMonths: {
-    one: '1 oy',
-    other: '{{count}} oy',
+    one: "1 oy",
+    other: "{{count}} oy",
   },
 
   aboutXYears: {
-    one: 'tahminan 1 yil',
-    other: 'tahminan {{count}} yil',
+    one: "tahminan 1 yil",
+    other: "tahminan {{count}} yil",
   },
 
   xYears: {
-    one: '1 yil',
-    other: '{{count}} yil',
+    one: "1 yil",
+    other: "{{count}} yil",
   },
 
   overXYears: {
@@ -81,32 +81,30 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   },
 
   almostXYears: {
-    one: 'deyarli 1 yil',
-    other: 'deyarli {{count}} yil',
+    one: "deyarli 1 yil",
+    other: "deyarli {{count}} yil",
   },
-}
+};
 
-const formatDistance: FormatDistanceFn = (token, count, options) => {
-  let result
+export const formatDistance: FormatDistanceFn = (token, count, options) => {
+  let result;
 
-  const tokenValue = formatDistanceLocale[token]
-  if (typeof tokenValue === 'string') {
-    result = tokenValue
+  const tokenValue = formatDistanceLocale[token];
+  if (typeof tokenValue === "string") {
+    result = tokenValue;
   } else if (count === 1) {
-    result = tokenValue.one
+    result = tokenValue.one;
   } else {
-    result = tokenValue.other.replace('{{count}}', String(count))
+    result = tokenValue.other.replace("{{count}}", String(count));
   }
 
   if (options?.addSuffix) {
     if (options.comparison && options.comparison > 0) {
-      return result + ' dan keyin'
+      return result + " dan keyin";
     } else {
-      return result + ' oldin'
+      return result + " oldin";
     }
   }
 
-  return result
-}
-
-export default formatDistance
+  return result;
+};
