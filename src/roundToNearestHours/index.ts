@@ -1,13 +1,17 @@
 import { getRoundingMethod } from "../_lib/getRoundingMethod/index.js";
 import { constructFrom } from "../constructFrom/index.js";
 import { toDate } from "../toDate/index.js";
-import type { NearestHoursOptions, RoundingOptions } from "../types";
+import type {
+  NearestHours,
+  NearestToUnitOptions,
+  RoundingOptions,
+} from "../types.js";
 
 /**
  * The {@link roundToNearestHours} function options.
  */
 export interface RoundToNearestHoursOptions
-  extends NearestHoursOptions,
+  extends NearestToUnitOptions<NearestHours>,
     RoundingOptions {}
 
 /**
