@@ -14,4 +14,4 @@ fi
 
 # Build & deploy docs JSON
 ./scripts/build/docs.sh
-env GOOGLE_APPLICATION_CREDENTIALS="secrets/$APP_ENV/key.json" npm run date-fns-docs docs/config.js
+env GOOGLE_APPLICATION_CREDENTIALS="secrets/$APP_ENV/key.json" npx date-fns-docs docs/config.js
