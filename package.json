@@ -4538,6 +4538,26 @@
         "default": "./fp/quartersToYears.mjs"
       }
     },
+    "./fp/roundToNearestHours": {
+      "require": {
+        "types": "./fp/roundToNearestHours.d.ts",
+        "default": "./fp/roundToNearestHours.js"
+      },
+      "import": {
+        "types": "./fp/roundToNearestHours.d.mts",
+        "default": "./fp/roundToNearestHours.mjs"
+      }
+    },
+    "./fp/roundToNearestHoursWithOptions": {
+      "require": {
+        "types": "./fp/roundToNearestHoursWithOptions.d.ts",
+        "default": "./fp/roundToNearestHoursWithOptions.js"
+      },
+      "import": {
+        "types": "./fp/roundToNearestHoursWithOptions.d.mts",
+        "default": "./fp/roundToNearestHoursWithOptions.mjs"
+      }
+    },
     "./fp/roundToNearestMinutes": {
       "require": {
         "types": "./fp/roundToNearestMinutes.d.ts",
