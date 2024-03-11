@@ -76,6 +76,7 @@ export * from "./pt/index.js";
 export * from "./pt-BR/index.js";
 export * from "./ro/index.js";
 export * from "./ru/index.js";
+export * from "./se/index.js";
 export * from "./sk/index.js";
 export * from "./sl/index.js";
 export * from "./sq/index.js";
