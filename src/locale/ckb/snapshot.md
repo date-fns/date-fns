@@ -1,4 +1,4 @@
-# Kurdish (ku-CKB) locale
+# Central Kurdish (ckb) locale
 
 ## `format` and `parse`
 

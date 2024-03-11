@@ -8,13 +8,13 @@ import { match } from "./_lib/match/index.js";
 /**
  * @type {Locale}
  * @category Locales
- * @summary Kurdish locale (Central Kurdish).
- * @language Kurdish
- * @iso-639-2 kur
+ * @summary Central Kurdish locale.
+ * @language Central Kurdish
+ * @iso-639-2 ckb
  * @author Revan Sarbast [@Revan99]{@link https://github.com/Revan99}
  */
-export const kuCKB: Locale = {
-  code: "ku-CKB",
+export const ckb: Locale = {
+  code: "ckb",
   formatDistance,
   formatLong,
   formatRelative,
