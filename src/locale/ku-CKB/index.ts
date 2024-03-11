@@ -1,29 +1,27 @@
-import formatDistance from './_lib/formatDistance/index'
-import formatLong from './_lib/formatLong/index'
-import formatRelative from './_lib/formatRelative/index'
-import localize from './_lib/localize/index'
-import match from './_lib/match/index'
-import type { Locale } from '../types'
+import type { Locale } from "../types.js";
+import { formatDistance } from "./_lib/formatDistance/index.js";
+import { formatLong } from "./_lib/formatLong/index.js";
+import { formatRelative } from "./_lib/formatRelative/index.js";
+import { localize } from "./_lib/localize/index.js";
+import { match } from "./_lib/match/index.js";
 
 /**
  * @type {Locale}
  * @category Locales
- * @summary Arabic locale (Egypt).
- * @language Arabic
+ * @summary Kurdish locale (Central Kurdish).
+ * @language Kurdish
  * @iso-639-2 kur
  * @author Revan Sarbast [@Revan99]{@link https://github.com/Revan99}
  */
-const locale: Locale = {
-  code: 'ku-CKB',
-  formatDistance: formatDistance,
-  formatLong: formatLong,
-  formatRelative: formatRelative,
-  localize: localize,
-  match: match,
+export const kuCKB: Locale = {
+  code: "ku-CKB",
+  formatDistance,
+  formatLong,
+  formatRelative,
+  localize,
+  match,
   options: {
     weekStartsOn: 0 /* Sunday */,
     firstWeekContainsDate: 1,
   },
-}
-
-export default locale
+};

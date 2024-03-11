@@ -1,40 +1,41 @@
-import type { Quarter } from '../../../../types'
-import type { Match } from '../../../types'
-import buildMatchFn from '../../../_lib/buildMatchFn/index'
-import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
+import type { Quarter } from "../../../../types.js";
+import type { Match } from "../../../types.js";
+import { buildMatchFn } from "../../../_lib/buildMatchFn/index.js";
+import { buildMatchPatternFn } from "../../../_lib/buildMatchPatternFn/index.js";
 
-const matchOrdinalNumberPattern = /^(\d+)(th|st|nd|rd)?/i
-const parseOrdinalNumberPattern = /\d+/i
+const matchOrdinalNumberPattern = /^(\d+)(th|st|nd|rd)?/i;
+const parseOrdinalNumberPattern = /\d+/i;
 
 const matchEraPatterns = {
   narrow: /^(پ|د)/i,
   abbreviated: /^(پ-ز|د.ز)/i,
   wide: /^(پێش زاین| دوای زاین)/i,
-}
+};
 const parseEraPatterns = {
   any: [/^د/g, /^پ/g] as const,
-}
+};
 
 const matchQuarterPatterns = {
   narrow: /^[1234]/i,
   abbreviated: /^م[1234]چ/i,
   wide: /^(یەکەم|دووەم|سێیەم| چوارەم) (چارەگی)? quarter/i,
-}
+};
 const parseQuarterPatterns = {
-    wide: [
+  wide: [
     /چارەگی یەکەم/,
     /چارەگی دووەم/,
     /چارەگی سيیەم/,
     /چارەگی چوارەم/,
   ] as const,
   any: [/1/i, /2/i, /3/i, /4/i] as const,
-}
+};
 
 const matchMonthPatterns = {
   narrow: /^(ک-د|ش|ئا|ن|م|ح|ت|ئە|تش-ی|تش-د|ک-ی)/i,
-  abbreviated: /^(کان-دوو|شوب|ئاد|نیس|مایس|حوز|تەم|ئاب|ئەل|تش-یەک|تش-دوو|کان-یەک)/i,
+  abbreviated:
+    /^(کان-دوو|شوب|ئاد|نیس|مایس|حوز|تەم|ئاب|ئەل|تش-یەک|تش-دوو|کان-یەک)/i,
   wide: /^(کانوونی دووەم|شوبات|ئادار|نیسان|مایس|حوزەیران|تەمموز|ئاب|ئەیلول|تشرینی یەکەم|تشرینی دووەم|کانوونی یەکەم)/i,
-}
+};
 const parseMonthPatterns = {
   narrow: [
     /^ک-د/i,
@@ -64,25 +65,25 @@ const parseMonthPatterns = {
     /^تش-دوو/i,
     /^|کان-یەک/i,
   ] as const,
-}
+};
 
 const matchDayPatterns = {
   narrow: /^(ش|ی|د|س|چ|پ|هە)/i,
   short: /^(یە-شە|دوو-شە|سێ-شە|چو-شە|پێ-شە|هە|شە)/i,
   abbreviated: /^(یەک-شەم|دوو-شەم|سێ-شەم|چوار-شەم|پێنخ-شەم|هەینی|شەمە)/i,
   wide: /^(یەک شەمە|دوو شەمە|سێ شەمە|چوار شەمە|پێنج شەمە|هەینی|شەمە)/i,
-}
+};
 const parseDayPatterns = {
   narrow: [/^s/i, /^m/i, /^t/i, /^w/i, /^t/i, /^f/i, /^s/i] as const,
   any: [/^su/i, /^m/i, /^tu/i, /^w/i, /^th/i, /^f/i, /^sa/i] as const,
-}
+};
 
 const matchDayPeriodPatterns = {
   narrow: /^(پ|د|ن-ش|ن| (بەیانی|دوای نیوەڕۆ|ئێوارە|شەو))/i,
   abbreviated: /^(پ-ن|د-ن|نیوە شەو|نیوەڕۆ|بەیانی|دوای نیوەڕۆ|ئێوارە|شەو)/,
   wide: /^(پێش نیوەڕۆ|دوای نیوەڕۆ|نیوەڕۆ|نیوە شەو|لەبەیانیدا|لەدواینیوەڕۆدا|لە ئێوارەدا|لە شەودا)/,
-  any: /^(پ|د|بەیانی|نیوەڕۆ|ئێوارە|شەو)/
-}
+  any: /^(پ|د|بەیانی|نیوەڕۆ|ئێوارە|شەو)/,
+};
 const parseDayPeriodPatterns = {
   any: {
     am: /^د/i,
@@ -94,9 +95,9 @@ const parseDayPeriodPatterns = {
     evening: /ئێوارە/i,
     night: /شەو/i,
   },
-}
+};
 
-const match: Match = {
+export const match: Match = {
   ordinalNumber: buildMatchPatternFn({
     matchPattern: matchOrdinalNumberPattern,
     parsePattern: parseOrdinalNumberPattern,
@@ -105,39 +106,37 @@ const match: Match = {
 
   era: buildMatchFn({
     matchPatterns: matchEraPatterns,
-    defaultMatchWidth: 'wide',
+    defaultMatchWidth: "wide",
     parsePatterns: parseEraPatterns,
-    defaultParseWidth: 'any',
+    defaultParseWidth: "any",
   }),
 
   quarter: buildMatchFn({
     matchPatterns: matchQuarterPatterns,
-    defaultMatchWidth: 'wide',
+    defaultMatchWidth: "wide",
     parsePatterns: parseQuarterPatterns,
-    defaultParseWidth: 'any',
+    defaultParseWidth: "any",
     valueCallback: (index) => (index + 1) as Quarter,
   }),
 
   month: buildMatchFn({
     matchPatterns: matchMonthPatterns,
-    defaultMatchWidth: 'wide',
+    defaultMatchWidth: "wide",
     parsePatterns: parseMonthPatterns,
-    defaultParseWidth: 'any',
+    defaultParseWidth: "any",
   }),
 
   day: buildMatchFn({
     matchPatterns: matchDayPatterns,
-    defaultMatchWidth: 'wide',
+    defaultMatchWidth: "wide",
     parsePatterns: parseDayPatterns,
-    defaultParseWidth: 'any',
+    defaultParseWidth: "any",
   }),
 
   dayPeriod: buildMatchFn({
     matchPatterns: matchDayPeriodPatterns,
-    defaultMatchWidth: 'any',
+    defaultMatchWidth: "any",
     parsePatterns: parseDayPeriodPatterns,
-    defaultParseWidth: 'any',
+    defaultParseWidth: "any",
   }),
-}
-
-export default match
+};
