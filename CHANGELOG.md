@@ -8,6 +8,16 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## v3.4.0 - 2024-03-11
+
+Kudos to @kossnocorp, @sakamossan and @Revan99 for working on the release. Also thanks to [@seated](https://github.com/seated) for sponsoring me.
+
+### Added
+
+- [Added `roundToNearestHours` function.](https://github.com/date-fns/date-fns/pull/2752)
+
+- [Added Central Kurdish (`ckb`) locale.](https://github.com/date-fns/date-fns/pull/3421)
+
 ## v3.3.1 - 2024-01-22
 
 Kudos to @kossnocorp and @fturmel for working on the release.
