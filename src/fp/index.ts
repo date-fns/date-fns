@@ -257,6 +257,7 @@ export * from "./subYears/index.js";
 export * from "./toDate/index.js";
 export * from "./transpose/index.js";
 export * from "./weeksToDays/index.js";
+export * from "./yearsToDays/index.js";
 export * from "./yearsToMonths/index.js";
 export * from "./yearsToQuarters/index.js";
 export type * from "../types.js";

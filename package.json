@@ -1948,6 +1948,16 @@
         "default": "./quartersToYears.mjs"
       }
     },
+    "./roundToNearestHours": {
+      "require": {
+        "types": "./roundToNearestHours.d.ts",
+        "default": "./roundToNearestHours.js"
+      },
+      "import": {
+        "types": "./roundToNearestHours.d.mts",
+        "default": "./roundToNearestHours.mjs"
+      }
+    },
     "./roundToNearestMinutes": {
       "require": {
         "types": "./roundToNearestMinutes.d.ts",
@@ -5058,6 +5068,16 @@
         "default": "./fp/weeksToDays.mjs"
       }
     },
+    "./fp/yearsToDays": {
+      "require": {
+        "types": "./fp/yearsToDays.d.ts",
+        "default": "./fp/yearsToDays.js"
+      },
+      "import": {
+        "types": "./fp/yearsToDays.d.mts",
+        "default": "./fp/yearsToDays.mjs"
+      }
+    },
     "./fp/yearsToMonths": {
       "require": {
         "types": "./fp/yearsToMonths.d.ts",
@@ -5216,6 +5236,16 @@
       "import": {
         "types": "./locale/ca.d.mts",
         "default": "./locale/ca.mjs"
+      }
+    },
+    "./locale/ckb": {
+      "require": {
+        "types": "./locale/ckb.d.ts",
+        "default": "./locale/ckb.js"
+      },
+      "import": {
+        "types": "./locale/ckb.d.mts",
+        "default": "./locale/ckb.mjs"
       }
     },
     "./locale/cs": {

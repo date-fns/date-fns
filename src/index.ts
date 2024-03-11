@@ -189,6 +189,7 @@ export * from "./previousTuesday/index.js";
 export * from "./previousWednesday/index.js";
 export * from "./quartersToMonths/index.js";
 export * from "./quartersToYears/index.js";
+export * from "./roundToNearestHours/index.js";
 export * from "./roundToNearestMinutes/index.js";
 export * from "./secondsToHours/index.js";
 export * from "./secondsToMilliseconds/index.js";
