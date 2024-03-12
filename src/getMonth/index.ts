@@ -12,7 +12,7 @@ import { toDate } from "../toDate/index.js";
  *
  * @param date - The given date
  *
- * @returns The month
+ * @returns The month index (0-11)
  *
  * @example
  * // Which month is 29 February 2012?
