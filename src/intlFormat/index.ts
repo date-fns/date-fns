@@ -39,7 +39,7 @@ export interface IntlFormatLocaleOptions {
  * @throws `date` must not be Invalid Date
  *
  * @example
- * // Represent 10 October 2019 in middle-endian format:
+ * // Represent 4 October 2019 in middle-endian format:
  * const result = intlFormat(new Date(2019, 9, 4, 12, 30, 13, 456))
  * //=> 10/4/2019
  */
@@ -58,7 +58,7 @@ export function intlFormat<DateType extends Date>(
  * @throws `date` must not be Invalid Date
  *
  * @example
- * // Represent 10 October 2019 in Korean.
+ * // Represent 4 October 2019 in Korean.
  * // Convert the date with locale's options.
  * const result = intlFormat(new Date(2019, 9, 4, 12, 30, 13, 456), {
  *   locale: 'ko-KR',
@@ -81,7 +81,7 @@ export function intlFormat<DateType extends Date>(
  * @throws `date` must not be Invalid Date
  *
  * @example
- * // Represent 10 October 2019.
+ * // Represent 4 October 2019.
  * // Convert the date with format's options.
  * const result = intlFormat.default(new Date(2019, 9, 4, 12, 30, 13, 456), {
  *   year: 'numeric',
@@ -108,7 +108,7 @@ export function intlFormat<DateType extends Date>(
  * @throws `date` must not be Invalid Date
  *
  * @example
- * // Represent 10 October 2019 in German.
+ * // Represent 4 October 2019 in German.
  * // Convert the date with format's options and locale's options.
  * const result = intlFormat(new Date(2019, 9, 4, 12, 30, 13, 456), {
  *   weekday: 'long',
