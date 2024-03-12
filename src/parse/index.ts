@@ -1,6 +1,6 @@
 import { constructFrom } from "../constructFrom/index.js";
 import { getDefaultOptions } from "../getDefaultOptions/index.js";
-import { enUS as defaultLocale } from "../locale/en-US/index.js";
+import { defaultLocale } from "../_lib/defaultLocale/index.js";
 import { toDate } from "../toDate/index.js";
 import type {
   AdditionalTokensOptions,
