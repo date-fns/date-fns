@@ -15,6 +15,10 @@ export const numericPatterns = {
   threeDigits: /^\d{1,3}/, // 0 to 999
   fourDigits: /^\d{1,4}/, // 0 to 9999
 
+  exactTwoDigits: /^\d{2}/, // 00 to 99
+  exactThreeDigits: /^\d{3}/, // 000 to 999
+  exactFourDigits: /^\d{4}/, // 0000 to 9999
+
   anyDigitsSigned: /^-?\d+/,
   singleDigitSigned: /^-?\d/, // 0 to 9, -0 to -9
   twoDigitsSigned: /^-?\d{1,2}/, // 0 to 99, -0 to -99

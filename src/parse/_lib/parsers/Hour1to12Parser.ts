@@ -2,7 +2,7 @@ import type { Match } from "../../../locale/types.js";
 import { numericPatterns } from "../constants.js";
 import { Parser } from "../Parser.js";
 import type { ParseFlags, ParseResult } from "../types.js";
-import { parseNDigits, parseNumericPattern } from "../utils.js";
+import { parseNumericPattern } from "../utils.js";
 
 export class Hour1to12Parser extends Parser<number> {
   priority = 70;
@@ -14,7 +14,7 @@ export class Hour1to12Parser extends Parser<number> {
       case "ho":
         return match.ordinalNumber(dateString, { unit: "hour" });
       default:
-        return parseNDigits(token.length, dateString);
+        return parseNumericPattern(numericPatterns.exactTwoDigits, dateString);
     }
   }
 

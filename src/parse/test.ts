@@ -2259,6 +2259,13 @@ describe("parse", () => {
       expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
     });
 
+    it("H, h, m, s parsers returns Invalid Date if the digits of `formatString` does not match exactly that of the `datestring`", () => {
+      ["HH", "hh", "mm", "ss"].forEach((token) => {
+        const result = parse("1", token, referenceDate);
+        assert(result instanceof Date && isNaN(result.getTime()));
+      });
+    });
+
     it("parses normally if the remaining input is just whitespace", () => {
       const result = parse("2016-11-05   \n", "yyyy-MM-dd", referenceDate);
       expect(result).toEqual(new Date(2016, 10 /* Nov */, 5));
