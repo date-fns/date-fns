@@ -1,5 +1,5 @@
 import { addDays } from "../addDays/index.js";
-import { constructNow } from "../index.js";
+import { constructNow } from "../constructNow/index.js";
 import { isSameDay } from "../isSameDay/index.js";
 
 /**
