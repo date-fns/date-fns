@@ -114,7 +114,7 @@
     "./src/isBefore/index.ts",
     "./src/isDate/index.ts",
     "./src/isEqual/index.ts",
-    "./src/isExists/index.ts",
+    "./src/isExisting/index.ts",
     "./src/isFirstDayOfMonth/index.ts",
     "./src/isFriday/index.ts",
     "./src/isFuture/index.ts",

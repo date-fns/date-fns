@@ -1178,14 +1178,14 @@
         "default": "./isEqual.mjs"
       }
     },
-    "./isExists": {
+    "./isExisting": {
       "require": {
-        "types": "./isExists.d.ts",
-        "default": "./isExists.js"
+        "types": "./isExisting.d.ts",
+        "default": "./isExisting.js"
       },
       "import": {
-        "types": "./isExists.d.mts",
-        "default": "./isExists.mjs"
+        "types": "./isExisting.d.mts",
+        "default": "./isExisting.mjs"
       }
     },
     "./isFirstDayOfMonth": {
@@ -3848,14 +3848,14 @@
         "default": "./fp/isEqual.mjs"
       }
     },
-    "./fp/isExists": {
+    "./fp/isExisting": {
       "require": {
-        "types": "./fp/isExists.d.ts",
-        "default": "./fp/isExists.js"
+        "types": "./fp/isExisting.d.ts",
+        "default": "./fp/isExisting.js"
       },
       "import": {
-        "types": "./fp/isExists.d.mts",
-        "default": "./fp/isExists.mjs"
+        "types": "./fp/isExisting.d.mts",
+        "default": "./fp/isExisting.mjs"
       }
     },
     "./fp/isFirstDayOfMonth": {
