@@ -1,5 +1,6 @@
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { UTCDate } from "@date-fns/utc";
 import sinon from "sinon";
+import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { isThisSecond } from "./index.js";
 
 describe("isThisSecond", () => {
@@ -27,5 +28,13 @@ describe("isThisSecond", () => {
   it("accepts a timestamp", () => {
     const date = new Date(2014, 8 /* Sep */, 25, 18, 30, 15, 250).getTime();
     expect(isThisSecond(date)).toBe(true);
+  });
+
+  it("respects date extensions", () => {
+    expect(
+      isThisSecond(
+        new UTCDate(+new Date(2014, 8 /* Sep */, 25, 18, 30, 15, 500)),
+      ),
+    ).toBe(true);
   });
 });

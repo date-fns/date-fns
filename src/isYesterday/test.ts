@@ -1,5 +1,6 @@
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { UTCDate } from "@date-fns/utc";
 import sinon from "sinon";
+import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { isYesterday } from "./index.js";
 
 describe("isYesterday", () => {
@@ -25,5 +26,11 @@ describe("isYesterday", () => {
   it("accepts a timestamp", () => {
     const result = isYesterday(new Date(2014, 8 /* Sep */, 24).getTime());
     expect(result).toBe(true);
+  });
+
+  it("respects date extensions", () => {
+    expect(isYesterday(new UTCDate(+new Date(2014, 8 /* Aug */, 24)))).toBe(
+      true,
+    );
   });
 });

@@ -1,5 +1,6 @@
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { UTCDate } from "@date-fns/utc";
 import sinon from "sinon";
+import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import type { FormatDistanceFn } from "../locale/types.js";
 import { formatDistanceToNowStrict } from "./index.js";
 
@@ -366,6 +367,15 @@ describe("formatDistanceToNowStrict", () => {
   });
 
   it("throws `RangeError` if the date is `Invalid Date`", () => {
-    expect(formatDistanceToNowStrict.bind(null, new Date(NaN))).toThrow(RangeError);
+    expect(formatDistanceToNowStrict.bind(null, new Date(NaN))).toThrow(
+      RangeError,
+    );
+  });
+
+  it("respects date extensions", () => {
+    const result = formatDistanceToNowStrict(
+      new UTCDate(+new Date(1986, 3, 4, 10, 32, 5)),
+    );
+    expect(result).toBe("5 seconds");
   });
 });

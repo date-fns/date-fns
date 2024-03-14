@@ -1,11 +1,12 @@
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { UTCDate } from "@date-fns/utc";
 import sinon from "sinon";
+import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { isThisQuarter } from "./index.js";
 
 describe("isThisQuarter", () => {
   let clock: sinon.SinonFakeTimers;
   beforeEach(() => {
-    clock = sinon.useFakeTimers(new Date(2014, 8 /* Sep */, 25).getTime());
+    clock = sinon.useFakeTimers(new Date(2014, 6 /* Jul */, 1).getTime());
   });
 
   afterEach(() => {
@@ -25,5 +26,11 @@ describe("isThisQuarter", () => {
   it("accepts a timestamp", () => {
     const date = new Date(2014, 6 /* Jul */, 2).getTime();
     expect(isThisQuarter(date)).toBe(true);
+  });
+
+  it("respects date extensions", () => {
+    expect(isThisQuarter(new UTCDate(+new Date(2014, 6 /* Jul */, 1)))).toBe(
+      true,
+    );
   });
 });

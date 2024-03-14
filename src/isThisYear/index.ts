@@ -1,3 +1,4 @@
+import { constructNow } from "../index.js";
 import { isSameYear } from "../isSameYear/index.js";
 
 /**
@@ -23,5 +24,5 @@ import { isSameYear } from "../isSameYear/index.js";
 export function isThisYear<DateType extends Date>(
   date: DateType | number | string,
 ): boolean {
-  return isSameYear(date, Date.now());
+  return isSameYear(date, constructNow(date));
 }
