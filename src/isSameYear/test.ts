@@ -1,7 +1,4 @@
-/* eslint-env mocha */
-
-import assert from "node:assert";
-import { describe, it } from "vitest";
+import { describe, expect, it } from "vitest";
 import { isSameYear } from "./index.js";
 
 describe("isSameYear", () => {
@@ -10,7 +7,7 @@ describe("isSameYear", () => {
       new Date(2014, 8 /* Sep */, 2),
       new Date(2014, 8 /* Sep */, 25),
     );
-    assert(result === true);
+    expect(result).toBe(true);
   });
 
   it("returns false if the given dates have different years", () => {
@@ -18,7 +15,7 @@ describe("isSameYear", () => {
       new Date(2014, 8 /* Sep */, 2),
       new Date(2013, 8 /* Sep */, 25),
     );
-    assert(result === false);
+    expect(result).toBe(false);
   });
 
   it("accepts a timestamp", () => {
@@ -26,21 +23,21 @@ describe("isSameYear", () => {
       new Date(2014, 8 /* Sep */, 2).getTime(),
       new Date(2014, 8 /* Sep */, 25).getTime(),
     );
-    assert(result === true);
+    expect(result).toBe(true);
   });
 
   it("returns false if the first date is `Invalid Date`", () => {
     const result = isSameYear(new Date(NaN), new Date(1989, 6 /* Jul */, 10));
-    assert(result === false);
+    expect(result).toBe(false);
   });
 
   it("returns false if the second date is `Invalid Date`", () => {
     const result = isSameYear(new Date(1987, 1 /* Feb */, 11), new Date(NaN));
-    assert(result === false);
+    expect(result).toBe(false);
   });
 
   it("returns false if the both dates are `Invalid Date`", () => {
     const result = isSameYear(new Date(NaN), new Date(NaN));
-    assert(result === false);
+    expect(result).toBe(false);
   });
 });

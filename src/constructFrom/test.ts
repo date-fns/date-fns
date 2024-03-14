@@ -1,5 +1,4 @@
-import assert from "assert";
-import { describe, it } from "vitest";
+import { describe, expect, it } from "vitest";
 import { constructFrom } from ".";
 
 describe("constructFrom", () => {
@@ -9,9 +8,9 @@ describe("constructFrom", () => {
 
     const result = constructFrom(referenceDate, value);
 
-    assert.ok(result instanceof Date);
-    assert.deepStrictEqual(result, value);
-    assert.strictEqual(result.constructor, referenceDate.constructor);
+    expect(result instanceof Date).toBe(true);
+    expect(result).toEqual(value);
+    expect(result.constructor).toBe(referenceDate.constructor);
   });
 
   it("should create a new Date instance using a number as the reference date", () => {
@@ -20,8 +19,8 @@ describe("constructFrom", () => {
 
     const result = constructFrom(referenceDate, value);
 
-    assert.ok(result instanceof Date);
-    assert.deepStrictEqual(result, value);
+    expect(result instanceof Date).toBe(true);
+    expect(result).toEqual(value);
   });
 
   it("should create a new custom Date instance using the constructor from the reference date", () => {
@@ -31,9 +30,9 @@ describe("constructFrom", () => {
 
     const result = constructFrom(referenceDate, value);
 
-    assert.ok(result instanceof CustomDate);
-    assert.deepStrictEqual(result, value);
-    assert.strictEqual(result.constructor, referenceDate.constructor);
+    expect(result instanceof CustomDate).toBe(true);
+    expect(result).toEqual(value);
+    expect(result.constructor).toBe(referenceDate.constructor);
   });
 
   it("should create a new Date instance using numbers as both referenceDate and value", () => {
@@ -42,7 +41,7 @@ describe("constructFrom", () => {
 
     const result = constructFrom(referenceDate, value);
 
-    assert.ok(result instanceof Date);
-    assert.deepStrictEqual(result.getTime(), value);
+    expect(result instanceof Date).toBe(true);
+    expect(result.getTime()).toEqual(value);
   });
 });

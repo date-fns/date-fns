@@ -1,22 +1,19 @@
-/* eslint-env mocha */
-
-import assert from "node:assert";
 import { describe, expect, it } from "vitest";
 import { hoursToSeconds } from "./index.js";
 
 describe("hoursToSeconds", () => {
   it("converts hours to seconds", () => {
-    assert(hoursToSeconds(1) === 3600);
-    assert(hoursToSeconds(2) === 7200);
+    expect(hoursToSeconds(1)).toBe(3600);
+    expect(hoursToSeconds(2)).toBe(7200);
   });
 
   it("uses floor rounding", () => {
-    assert(hoursToSeconds(0.123) === 442);
+    expect(hoursToSeconds(0.123)).toBe(442);
   });
 
   it("handles border values", () => {
-    assert(hoursToSeconds(1.5) === 5400);
-    assert(hoursToSeconds(0) === 0);
+    expect(hoursToSeconds(1.5)).toBe(5400);
+    expect(hoursToSeconds(0)).toBe(0);
   });
 
   it("properly works with negative numbers", () => {

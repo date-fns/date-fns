@@ -1,43 +1,22 @@
-/* eslint-env mocha */
-
-import assert from "node:assert";
-import { describe, it } from "vitest";
+import { describe, expect, it } from "vitest";
 import { previousWednesday } from "./index.js";
 
 describe("previousWednesday", () => {
   it("returns the previous Wednesday given various dates after the same", () => {
-    assert.deepStrictEqual(
-      previousWednesday(new Date(2021, 5 /* Jun */, 5)),
-      new Date(2021, 5 /* Jun */, 2),
-    );
+    expect(previousWednesday(new Date(2021, 5 /* Jun */, 5))).toEqual(new Date(2021, 5 /* Jun */, 2));
 
-    assert.deepStrictEqual(
-      previousWednesday(new Date(2021, 5 /* Jun */, 6)),
-      new Date(2021, 5 /* Jun */, 2),
-    );
+    expect(previousWednesday(new Date(2021, 5 /* Jun */, 6))).toEqual(new Date(2021, 5 /* Jun */, 2));
 
-    assert.deepStrictEqual(
-      previousWednesday(new Date(2021, 5 /* Jun */, 9)),
-      new Date(2021, 5 /* Jun */, 2),
-    );
+    expect(previousWednesday(new Date(2021, 5 /* Jun */, 9))).toEqual(new Date(2021, 5 /* Jun */, 2));
 
-    assert.deepStrictEqual(
-      previousWednesday(new Date(2021, 5 /* Jun */, 17)),
-      new Date(2021, 5 /* Jun */, 16),
-    );
+    expect(previousWednesday(new Date(2021, 5 /* Jun */, 17))).toEqual(new Date(2021, 5 /* Jun */, 16));
 
-    assert.deepStrictEqual(
-      previousWednesday(new Date(2021, 5 /* Jun */, 18)),
-      new Date(2021, 5 /* Jun */, 16),
-    );
+    expect(previousWednesday(new Date(2021, 5 /* Jun */, 18))).toEqual(new Date(2021, 5 /* Jun */, 16));
 
-    assert.deepStrictEqual(
-      previousWednesday(new Date(2021, 5 /* Jun */, 25)),
-      new Date(2021, 5 /* Jun */, 23),
-    );
+    expect(previousWednesday(new Date(2021, 5 /* Jun */, 25))).toEqual(new Date(2021, 5 /* Jun */, 23));
   });
 
   it("returns `Invalid Date` if the given date is invalid", () => {
-    assert(previousWednesday(new Date(NaN)) instanceof Date);
+    expect(previousWednesday(new Date(NaN)) instanceof Date).toBe(true);
   });
 });
