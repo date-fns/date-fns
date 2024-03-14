@@ -6111,6 +6111,7 @@
     "firebase": "^3.7.1",
     "fp-ts": "^2.16.2",
     "js-fns": "^2.5.1",
+    "jscodeshift": "^0.15.2",
     "lodash": "^4.17.21",
     "playwright": "^1.40.1",
     "prettier": "^3.1.0",
