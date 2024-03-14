@@ -1,8 +1,6 @@
 name: Browser tests
 
-# TODO: Fix Vitest browser mode (https://github.com/vitest-dev/vitest/issues/5382)
-# on: [push, pull_request]
-on: []
+on: [push, pull_request]
 
 jobs:
   tests:
