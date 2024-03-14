@@ -7,7 +7,7 @@ describe("isThisHour", () => {
   let clock: sinon.SinonFakeTimers;
   beforeEach(() => {
     clock = sinon.useFakeTimers(
-      new Date(2014, 8 /* Sep */, 25, 18, 30, 15, 500).getTime(),
+      new Date(2014, 8 /* Sep */, 25, 18, 15, 15, 500).getTime(),
     );
   });
 
@@ -31,8 +31,8 @@ describe("isThisHour", () => {
   });
 
   it("respects date extensions", () => {
-    expect(
-      isThisHour(new UTCDate(+new Date(2014, 8 /* Sep */, 25, 18, 45))),
-    ).toBe(true);
+    expect(isThisHour(new UTCDate(+new Date(2014, 8 /* Sep */, 25, 18)))).toBe(
+      true,
+    );
   });
 });
