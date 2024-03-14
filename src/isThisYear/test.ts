@@ -1,7 +1,4 @@
-/* eslint-env mocha */
-
-import assert from "node:assert";
-import { afterEach, beforeEach, describe, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import sinon from "sinon";
 import { isThisYear } from "./index.js";
 
@@ -17,16 +14,16 @@ describe("isThisYear", () => {
 
   it("returns true if the given date and the current date have the same year", () => {
     const date = new Date(2014, 6 /* Jul */, 2);
-    assert(isThisYear(date) === true);
+    expect(isThisYear(date)).toBe(true);
   });
 
   it("returns false if the given date and the current date have different years", () => {
     const date = new Date(2015, 6 /* Jul */, 2);
-    assert(isThisYear(date) === false);
+    expect(isThisYear(date)).toBe(false);
   });
 
   it("accepts a timestamp", () => {
     const date = new Date(2014, 6 /* Jul */, 2).getTime();
-    assert(isThisYear(date) === true);
+    expect(isThisYear(date)).toBe(true);
   });
 });

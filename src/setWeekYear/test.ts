@@ -1,13 +1,10 @@
-/* eslint-env mocha */
-
-import assert from "node:assert";
-import { describe, it } from "vitest";
+import { describe, expect, it } from "vitest";
 import { setWeekYear } from "./index.js";
 
 describe("setWeekYear", () => {
   it("sets the local week-numbering year, saving the week and the day of the week", () => {
     const result = setWeekYear(new Date(2010, 0 /* Jan */, 2), 2004);
-    assert.deepStrictEqual(result, new Date(2004, 0 /* Jan */, 3));
+    expect(result).toEqual(new Date(2004, 0 /* Jan */, 3));
   });
 
   it("accepts a timestamp", () => {
@@ -15,13 +12,13 @@ describe("setWeekYear", () => {
       new Date(2008, 11 /* Dec */, 29).getTime(),
       2007,
     );
-    assert.deepStrictEqual(result, new Date(2007, 0 /* Jan */, 1));
+    expect(result).toEqual(new Date(2007, 0 /* Jan */, 1));
   });
 
   it("does not mutate the original date", () => {
     const date = new Date(2008, 11 /* Dec */, 29);
     setWeekYear(date, 2000);
-    assert.deepStrictEqual(date, new Date(2008, 11 /* Dec */, 29));
+    expect(date).toEqual(new Date(2008, 11 /* Dec */, 29));
   });
 
   it("sets local week-numbering years less than 100", () => {
@@ -30,7 +27,7 @@ describe("setWeekYear", () => {
     expectedResult.setFullYear(7, 0 /* Jan */, 1);
     expectedResult.setHours(0, 0, 0, 0);
     const result = setWeekYear(initialDate, 7);
-    assert.deepStrictEqual(result, expectedResult);
+    expect(result).toEqual(expectedResult);
   });
 
   it("handles dates before 100 AD", () => {
@@ -41,17 +38,17 @@ describe("setWeekYear", () => {
     expectedResult.setFullYear(7, 0 /* Jan */, 1);
     expectedResult.setHours(0, 0, 0, 0);
     const result = setWeekYear(initialDate, 7);
-    assert.deepStrictEqual(result, expectedResult);
+    expect(result).toEqual(expectedResult);
   });
 
   it("returns `Invalid Date` if the given date is invalid", () => {
     const result = setWeekYear(new Date(NaN), 2007);
-    assert(result instanceof Date && isNaN(result.getDate()));
+    expect(result instanceof Date && isNaN(result.getDate())).toBe(true);
   });
 
   it("returns `Invalid Date` if the given amount is NaN", () => {
     const result = setWeekYear(new Date(2008, 11 /* Dec */, 29), NaN);
-    assert(result instanceof Date && isNaN(result.getDate()));
+    expect(result instanceof Date && isNaN(result.getDate())).toBe(true);
   });
 
   it("allows to specify `weekStartsOn` and `firstWeekContainsDate` in locale", () => {
@@ -61,7 +58,7 @@ describe("setWeekYear", () => {
         options: { weekStartsOn: 1, firstWeekContainsDate: 4 },
       },
     });
-    assert.deepStrictEqual(result, new Date(2005, 0 /* Jan */, 1));
+    expect(result).toEqual(new Date(2005, 0 /* Jan */, 1));
   });
 
   it("`options.weekStartsOn` overwrites the first day of the week specified in locale", () => {
@@ -73,6 +70,6 @@ describe("setWeekYear", () => {
         options: { weekStartsOn: 0, firstWeekContainsDate: 1 },
       },
     });
-    assert.deepStrictEqual(result, new Date(2005, 0 /* Jan */, 1));
+    expect(result).toEqual(new Date(2005, 0 /* Jan */, 1));
   });
 });

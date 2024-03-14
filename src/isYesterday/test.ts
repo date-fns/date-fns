@@ -1,7 +1,4 @@
-/* eslint-env mocha */
-
-import assert from "node:assert";
-import { afterEach, beforeEach, describe, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import sinon from "sinon";
 import { isYesterday } from "./index.js";
 
@@ -17,16 +14,16 @@ describe("isYesterday", () => {
 
   it("returns true if the given date is yesterday", () => {
     const result = isYesterday(new Date(2014, 8 /* Sep */, 24));
-    assert(result === true);
+    expect(result).toBe(true);
   });
 
   it("returns false if the given date is not yesterday", () => {
     const result = isYesterday(new Date(2014, 8 /* Sep */, 25));
-    assert(result === false);
+    expect(result).toBe(false);
   });
 
   it("accepts a timestamp", () => {
     const result = isYesterday(new Date(2014, 8 /* Sep */, 24).getTime());
-    assert(result === true);
+    expect(result).toBe(true);
   });
 });

@@ -1,7 +1,4 @@
-/* eslint-env mocha */
-
-import assert from "node:assert";
-import { afterEach, beforeEach, describe, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import sinon from "sinon";
 import { isThisHour } from "./index.js";
 
@@ -19,16 +16,16 @@ describe("isThisHour", () => {
 
   it("returns true if the given date and the current date have the same hour", () => {
     const date = new Date(2014, 8 /* Sep */, 25, 18);
-    assert(isThisHour(date) === true);
+    expect(isThisHour(date)).toBe(true);
   });
 
   it("returns false if the given date and the current date have different hours", () => {
     const date = new Date(2014, 8 /* Sep */, 25, 19);
-    assert(isThisHour(date) === false);
+    expect(isThisHour(date)).toBe(false);
   });
 
   it("accepts a timestamp", () => {
     const date = new Date(2014, 8 /* Sep */, 25, 18, 45).getTime();
-    assert(isThisHour(date) === true);
+    expect(isThisHour(date)).toBe(true);
   });
 });

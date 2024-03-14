@@ -1,6 +1,3 @@
-/* eslint-env mocha */
-
-import assert from "node:assert";
 import { describe, expect, it } from "vitest";
 import { getISOWeeksInYear } from "./index.js";
 
@@ -26,7 +23,7 @@ describe("getISOWeeksInYear", () => {
 
   it("returns NaN if the given date is invalid", () => {
     const result = getISOWeeksInYear(new Date(NaN));
-    assert(isNaN(result));
+    expect(isNaN(result)).toBe(true);
   });
 
   it("properly works with negative numbers", () => {
