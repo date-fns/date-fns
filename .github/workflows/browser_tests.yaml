@@ -1,6 +1,8 @@
 name: Browser tests
 
-on: [push, pull_request]
+# TODO: Fix Vitest browser mode
+# on: [push, pull_request]
+on: []
 
 jobs:
   tests:
