@@ -19,6 +19,7 @@ export * from "./closestTo/index.js";
 export * from "./compareAsc/index.js";
 export * from "./compareDesc/index.js";
 export * from "./constructFrom/index.js";
+export * from "./constructNow/index.js";
 export * from "./daysToWeeks/index.js";
 export * from "./differenceInBusinessDays/index.js";
 export * from "./differenceInCalendarDays/index.js";

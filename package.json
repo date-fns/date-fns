@@ -248,6 +248,16 @@
         "default": "./constructFrom.mjs"
       }
     },
+    "./constructNow": {
+      "require": {
+        "types": "./constructNow.d.ts",
+        "default": "./constructNow.js"
+      },
+      "import": {
+        "types": "./constructNow.d.mts",
+        "default": "./constructNow.mjs"
+      }
+    },
     "./daysToWeeks": {
       "require": {
         "types": "./daysToWeeks.d.ts",

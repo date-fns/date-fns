@@ -21,6 +21,7 @@
     "./src/compareAsc/index.ts",
     "./src/compareDesc/index.ts",
     "./src/constructFrom/index.ts",
+    "./src/constructNow/index.ts",
     "./src/daysToWeeks/index.ts",
     "./src/differenceInBusinessDays/index.ts",
     "./src/differenceInCalendarDays/index.ts",
