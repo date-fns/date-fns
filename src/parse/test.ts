@@ -76,9 +76,11 @@ describe("parse", () => {
           const block = () =>
             parse(`${example} 420`, `${token} G`, referenceDate);
           expect(block).toThrow(RangeError);
-          expect(block).toThrow(new RegExp(
-            `The format string mustn't contain \`${token}\` and \`G\` at the same time`,
-          ));
+          expect(block).toThrow(
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`G\` at the same time`,
+            ),
+          );
         });
       });
     });
@@ -146,9 +148,11 @@ describe("parse", () => {
           const block = () =>
             parse(`${example} 2019`, `${token} y`, referenceDate);
           expect(block).toThrow(RangeError);
-          expect(block).toThrow(new RegExp(
-            `The format string mustn't contain \`${token}\` and \`y\` at the same time`,
-          ));
+          expect(block).toThrow(
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`y\` at the same time`,
+            ),
+          );
         });
       });
     });
@@ -233,9 +237,11 @@ describe("parse", () => {
           const block = () =>
             parse(`${example} 2019`, `${token} Y`, referenceDate, options);
           expect(block).toThrow(RangeError);
-          expect(block).toThrow(new RegExp(
-            `The format string mustn't contain \`${token}\` and \`Y\` at the same time`,
-          ));
+          expect(block).toThrow(
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`Y\` at the same time`,
+            ),
+          );
         });
       });
     });
@@ -296,9 +302,11 @@ describe("parse", () => {
           const block = () =>
             parse(`${example} 2019`, `${token} R`, referenceDate, options);
           expect(block).toThrow(RangeError);
-          expect(block).toThrow(new RegExp(
-            `The format string mustn't contain \`${token}\` and \`R\` at the same time`,
-          ));
+          expect(block).toThrow(
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`R\` at the same time`,
+            ),
+          );
         });
       });
     });
@@ -352,9 +360,11 @@ describe("parse", () => {
           const block = () =>
             parse(`${example} 2019`, `${token} u`, referenceDate);
           expect(block).toThrow(RangeError);
-          expect(block).toThrow(new RegExp(
-            `The format string mustn't contain \`${token}\` and \`u\` at the same time`,
-          ));
+          expect(block).toThrow(
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`u\` at the same time`,
+            ),
+          );
         });
       });
     });
@@ -438,9 +448,11 @@ describe("parse", () => {
           const block = () =>
             parse(`${example} 1`, `${token} Q`, referenceDate, options);
           expect(block).toThrow(RangeError);
-          expect(block).toThrow(new RegExp(
-            `The format string mustn't contain \`${token}\` and \`Q\` at the same time`,
-          ));
+          expect(block).toThrow(
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`Q\` at the same time`,
+            ),
+          );
         });
       });
     });
@@ -502,9 +514,11 @@ describe("parse", () => {
           const block = () =>
             parse(`${example} 1`, `${token} q`, referenceDate, options);
           expect(block).toThrow(RangeError);
-          expect(block).toThrow(new RegExp(
-            `The format string mustn't contain \`${token}\` and \`q\` at the same time`,
-          ));
+          expect(block).toThrow(
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`q\` at the same time`,
+            ),
+          );
         });
       });
     });
@@ -565,9 +579,11 @@ describe("parse", () => {
           const block = () =>
             parse(`${example} 1`, `${token} M`, referenceDate, options);
           expect(block).toThrow(RangeError);
-          expect(block).toThrow(new RegExp(
-            `The format string mustn't contain \`${token}\` and \`M\` at the same time`,
-          ));
+          expect(block).toThrow(
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`M\` at the same time`,
+            ),
+          );
         });
       });
     });
@@ -628,9 +644,11 @@ describe("parse", () => {
           const block = () =>
             parse(`${example} 1`, `${token} L`, referenceDate, options);
           expect(block).toThrow(RangeError);
-          expect(block).toThrow(new RegExp(
-            `The format string mustn't contain \`${token}\` and \`L\` at the same time`,
-          ));
+          expect(block).toThrow(
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`L\` at the same time`,
+            ),
+          );
         });
       });
     });
@@ -684,9 +702,11 @@ describe("parse", () => {
           const block = () =>
             parse(`${example} 1`, `${token} w`, referenceDate, options);
           expect(block).toThrow(RangeError);
-          expect(block).toThrow(new RegExp(
-            `The format string mustn't contain \`${token}\` and \`w\` at the same time`,
-          ));
+          expect(block).toThrow(
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`w\` at the same time`,
+            ),
+          );
         });
       });
     });
@@ -733,9 +753,11 @@ describe("parse", () => {
           const block = () =>
             parse(`${example} 1`, `${token} I`, referenceDate, options);
           expect(block).toThrow(RangeError);
-          expect(block).toThrow(new RegExp(
-            `The format string mustn't contain \`${token}\` and \`I\` at the same time`,
-          ));
+          expect(block).toThrow(
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`I\` at the same time`,
+            ),
+          );
         });
       });
     });
@@ -780,9 +802,11 @@ describe("parse", () => {
           const block = () =>
             parse(`${example} 1`, `${token} d`, referenceDate, options);
           expect(block).toThrow(RangeError);
-          expect(block).toThrow(new RegExp(
-            `The format string mustn't contain \`${token}\` and \`d\` at the same time`,
-          ));
+          expect(block).toThrow(
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`d\` at the same time`,
+            ),
+          );
         });
       });
     });
@@ -843,9 +867,11 @@ describe("parse", () => {
               useAdditionalDayOfYearTokens: true,
             });
           expect(block).toThrow(RangeError);
-          expect(block).toThrow(new RegExp(
-            `The format string mustn't contain \`${token}\` and \`D\` at the same time`,
-          ));
+          expect(block).toThrow(
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`D\` at the same time`,
+            ),
+          );
         });
       });
     });
@@ -896,9 +922,11 @@ describe("parse", () => {
           const block = () =>
             parse(`${example} Mon`, `${token} E`, referenceDate, options);
           expect(block).toThrow(RangeError);
-          expect(block).toThrow(new RegExp(
-            `The format string mustn't contain \`${token}\` and \`E\` at the same time`,
-          ));
+          expect(block).toThrow(
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`E\` at the same time`,
+            ),
+          );
         });
       });
     });
@@ -966,9 +994,11 @@ describe("parse", () => {
           const block = () =>
             parse(`${example} 1`, `${token} i`, referenceDate, options);
           expect(block).toThrow(RangeError);
-          expect(block).toThrow(new RegExp(
-            `The format string mustn't contain \`${token}\` and \`i\` at the same time`,
-          ));
+          expect(block).toThrow(
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`i\` at the same time`,
+            ),
+          );
         });
       });
     });
@@ -1043,9 +1073,11 @@ describe("parse", () => {
           const block = () =>
             parse(`${example} 1`, `${token} e`, referenceDate, options);
           expect(block).toThrow(RangeError);
-          expect(block).toThrow(new RegExp(
-            `The format string mustn't contain \`${token}\` and \`e\` at the same time`,
-          ));
+          expect(block).toThrow(
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`e\` at the same time`,
+            ),
+          );
         });
       });
     });
@@ -1120,9 +1152,11 @@ describe("parse", () => {
           const block = () =>
             parse(`${example} 1`, `${token} c`, referenceDate, options);
           expect(block).toThrow(RangeError);
-          expect(block).toThrow(new RegExp(
-            `The format string mustn't contain \`${token}\` and \`c\` at the same time`,
-          ));
+          expect(block).toThrow(
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`c\` at the same time`,
+            ),
+          );
         });
       });
     });
@@ -1168,9 +1202,11 @@ describe("parse", () => {
           const block = () =>
             parse(`${example} AM`, `${token} a`, referenceDate);
           expect(block).toThrow(RangeError);
-          expect(block).toThrow(new RegExp(
-            `The format string mustn't contain \`${token}\` and \`a\` at the same time`,
-          ));
+          expect(block).toThrow(
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`a\` at the same time`,
+            ),
+          );
         });
       });
     });
@@ -1206,9 +1242,11 @@ describe("parse", () => {
           const block = () =>
             parse(`${example} AM`, `${token} b`, referenceDate);
           expect(block).toThrow(RangeError);
-          expect(block).toThrow(new RegExp(
-            `The format string mustn't contain \`${token}\` and \`b\` at the same time`,
-          ));
+          expect(block).toThrow(
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`b\` at the same time`,
+            ),
+          );
         });
       });
     });
@@ -1242,9 +1280,11 @@ describe("parse", () => {
           const block = () =>
             parse(`${example} in the morning`, `${token} B`, referenceDate);
           expect(block).toThrow(RangeError);
-          expect(block).toThrow(new RegExp(
-            `The format string mustn't contain \`${token}\` and \`B\` at the same time`,
-          ));
+          expect(block).toThrow(
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`B\` at the same time`,
+            ),
+          );
         });
       });
     });
@@ -1279,9 +1319,11 @@ describe("parse", () => {
           const block = () =>
             parse(`${example} 1`, `${token} h`, referenceDate);
           expect(block).toThrow(RangeError);
-          expect(block).toThrow(new RegExp(
-            `The format string mustn't contain \`${token}\` and \`h\` at the same time`,
-          ));
+          expect(block).toThrow(
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`h\` at the same time`,
+            ),
+          );
         });
       });
     });
@@ -1318,9 +1360,11 @@ describe("parse", () => {
           const block = () =>
             parse(`${example} 1`, `${token} H`, referenceDate);
           expect(block).toThrow(RangeError);
-          expect(block).toThrow(new RegExp(
-            `The format string mustn't contain \`${token}\` and \`H\` at the same time`,
-          ));
+          expect(block).toThrow(
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`H\` at the same time`,
+            ),
+          );
         });
       });
     });
@@ -1355,9 +1399,11 @@ describe("parse", () => {
           const block = () =>
             parse(`${example} 1`, `${token} K`, referenceDate);
           expect(block).toThrow(RangeError);
-          expect(block).toThrow(new RegExp(
-            `The format string mustn't contain \`${token}\` and \`K\` at the same time`,
-          ));
+          expect(block).toThrow(
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`K\` at the same time`,
+            ),
+          );
         });
       });
     });
@@ -1394,9 +1440,11 @@ describe("parse", () => {
           const block = () =>
             parse(`${example} 1`, `${token} k`, referenceDate);
           expect(block).toThrow(RangeError);
-          expect(block).toThrow(new RegExp(
-            `The format string mustn't contain \`${token}\` and \`k\` at the same time`,
-          ));
+          expect(block).toThrow(
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`k\` at the same time`,
+            ),
+          );
         });
       });
     });
@@ -1428,9 +1476,11 @@ describe("parse", () => {
           const block = () =>
             parse(`${example} 1`, `${token} m`, referenceDate);
           expect(block).toThrow(RangeError);
-          expect(block).toThrow(new RegExp(
-            `The format string mustn't contain \`${token}\` and \`m\` at the same time`,
-          ));
+          expect(block).toThrow(
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`m\` at the same time`,
+            ),
+          );
         });
       });
     });
@@ -1462,9 +1512,11 @@ describe("parse", () => {
           const block = () =>
             parse(`${example} 1`, `${token} s`, referenceDate);
           expect(block).toThrow(RangeError);
-          expect(block).toThrow(new RegExp(
-            `The format string mustn't contain \`${token}\` and \`s\` at the same time`,
-          ));
+          expect(block).toThrow(
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`s\` at the same time`,
+            ),
+          );
         });
       });
     });
@@ -1501,9 +1553,11 @@ describe("parse", () => {
           const block = () =>
             parse(`${example} 1`, `${token} S`, referenceDate);
           expect(block).toThrow(RangeError);
-          expect(block).toThrow(new RegExp(
-            `The format string mustn't contain \`${token}\` and \`S\` at the same time`,
-          ));
+          expect(block).toThrow(
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`S\` at the same time`,
+            ),
+          );
         });
       });
     });
@@ -1648,9 +1702,11 @@ describe("parse", () => {
           const block = () =>
             parse(`${example} -0530`, `${token} X`, referenceDate);
           expect(block).toThrow(RangeError);
-          expect(block).toThrow(new RegExp(
-            `The format string mustn't contain \`${token}\` and \`X\` at the same time`,
-          ));
+          expect(block).toThrow(
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`X\` at the same time`,
+            ),
+          );
         });
       });
     });
@@ -1795,9 +1851,11 @@ describe("parse", () => {
           const block = () =>
             parse(`${example} -0530`, `${token} x`, referenceDate);
           expect(block).toThrow(RangeError);
-          expect(block).toThrow(new RegExp(
-            `The format string mustn't contain \`${token}\` and \`x\` at the same time`,
-          ));
+          expect(block).toThrow(
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`x\` at the same time`,
+            ),
+          );
         });
       });
     });
@@ -1821,9 +1879,11 @@ describe("parse", () => {
     it(`throws an error when it is used after any token`, () => {
       const block = () => parse(`1 512969520`, `h t`, referenceDate);
       expect(block).toThrow(RangeError);
-      expect(block).toThrow(new RegExp(
-        `The format string mustn't contain \`t\` and any other token at the same time`,
-      ));
+      expect(block).toThrow(
+        new RegExp(
+          `The format string mustn't contain \`t\` and any other token at the same time`,
+        ),
+      );
     });
   });
 
@@ -1845,9 +1905,11 @@ describe("parse", () => {
     it(`throws an error when it is used after any token`, () => {
       const block = () => parse(`1 512969520900`, `h T`, referenceDate);
       expect(block).toThrow(RangeError);
-      expect(block).toThrow(new RegExp(
-        `The format string mustn't contain \`T\` and any other token at the same time`,
-      ));
+      expect(block).toThrow(
+        new RegExp(
+          `The format string mustn't contain \`T\` and any other token at the same time`,
+        ),
+      );
     });
   });
 
@@ -2203,7 +2265,9 @@ describe("parse", () => {
     });
 
     it("throws RangeError exception if the format string contains an unescaped latin alphabet character", () => {
-      expect(() => parse("2016-11-05-nnnn", "yyyy-MM-dd-nnnn", referenceDate)).toThrow(RangeError);
+      expect(() =>
+        parse("2016-11-05-nnnn", "yyyy-MM-dd-nnnn", referenceDate),
+      ).toThrow(RangeError);
     });
   });
 
@@ -2212,8 +2276,10 @@ describe("parse", () => {
       try {
         parse("2016 5", "yyyy D", referenceDate);
       } catch (e) {
-        expect(e instanceof RangeError).toBe(true);
-        expect(e.message.startsWith("Use `d` instead of `D`")).toBe(true);
+        expect(
+          e instanceof RangeError &&
+            e.message.startsWith("Use `d` instead of `D`"),
+        ).toBe(true);
       }
     });
 
@@ -2228,8 +2294,10 @@ describe("parse", () => {
       try {
         parse("2016 05", "yyyy DD", referenceDate);
       } catch (e) {
-        expect(e instanceof RangeError).toBe(true);
-        expect(e.message.startsWith("Use `dd` instead of `DD`")).toBe(true);
+        expect(
+          e instanceof RangeError &&
+            e.message.startsWith("Use `dd` instead of `DD`"),
+        ).toBe(true);
       }
     });
 
@@ -2244,8 +2312,10 @@ describe("parse", () => {
       try {
         parse("16 1", "YY w", referenceDate);
       } catch (e) {
-        expect(e instanceof RangeError).toBe(true);
-        expect(e.message.startsWith("Use `yy` instead of `YY`")).toBe(true);
+        expect(
+          e instanceof RangeError &&
+            e.message.startsWith("Use `yy` instead of `YY`"),
+        ).toBe(true);
       }
     });
 
@@ -2260,8 +2330,10 @@ describe("parse", () => {
       try {
         parse("2016 1", "YYYY w", referenceDate);
       } catch (e) {
-        expect(e instanceof RangeError).toBe(true);
-        expect(e.message.startsWith("Use `yyyy` instead of `YYYY`")).toBe(true);
+        expect(
+          e instanceof RangeError &&
+            e.message.startsWith("Use `yyyy` instead of `YYYY`"),
+        ).toBe(true);
       }
     });
 

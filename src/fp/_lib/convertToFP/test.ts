@@ -76,7 +76,6 @@ describe("convertToFP", () => {
     it("returns the constant instead of function", () => {
       // @ts-expect-error - It's ok, we're testing the function
       const result = convertToFP(fn, 0);
-      // @ts-expect-error - It's ok, we're testing the function
       expect(result).toBe("undefined undefined undefined");
     });
   });
