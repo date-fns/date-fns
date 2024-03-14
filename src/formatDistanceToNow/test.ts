@@ -1,5 +1,6 @@
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { UTCDate } from "@date-fns/utc";
 import sinon from "sinon";
+import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import type { FormatDistanceFn } from "../locale/types.js";
 import { formatDistanceToNow } from "./index.js";
 
@@ -188,5 +189,12 @@ describe("formatDistanceToNow", () => {
 
   it("throws RangeError if the passed date is `Invalid Date`", function () {
     expect(formatDistanceToNow.bind(null, new Date(NaN))).toThrow(RangeError);
+  });
+
+  it("respects date extensions", () => {
+    const result = formatDistanceToNow(
+      new UTCDate(+new Date(1986, 3, 4, 9, 32, 0)),
+    );
+    expect(result).toBe("about 1 hour");
   });
 });

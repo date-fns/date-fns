@@ -1,5 +1,6 @@
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { UTCDate } from "@date-fns/utc";
 import sinon from "sinon";
+import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { isThisHour } from "./index.js";
 
 describe("isThisHour", () => {
@@ -27,5 +28,11 @@ describe("isThisHour", () => {
   it("accepts a timestamp", () => {
     const date = new Date(2014, 8 /* Sep */, 25, 18, 45).getTime();
     expect(isThisHour(date)).toBe(true);
+  });
+
+  it("respects date extensions", () => {
+    expect(
+      isThisHour(new UTCDate(+new Date(2014, 8 /* Sep */, 25, 18, 45))),
+    ).toBe(true);
   });
 });

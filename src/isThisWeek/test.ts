@@ -1,11 +1,12 @@
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { UTCDate } from "@date-fns/utc";
 import sinon from "sinon";
+import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { isThisWeek } from "./index.js";
 
 describe("isThisWeek", () => {
   let clock: sinon.SinonFakeTimers;
   beforeEach(() => {
-    clock = sinon.useFakeTimers(new Date(2014, 8 /* Sep */, 25).getTime());
+    clock = sinon.useFakeTimers(new Date(2014, 8 /* Sep */, 21).getTime());
   });
 
   afterEach(() => {
@@ -23,12 +24,18 @@ describe("isThisWeek", () => {
   });
 
   it("allows to specify which day is the first day of the week", () => {
-    const date = new Date(2014, 8 /* Sep */, 28);
-    expect(isThisWeek(date, { weekStartsOn: 1 })).toBe(true);
+    const date = new Date(2014, 8 /* Sep */, 22);
+    expect(isThisWeek(date, { weekStartsOn: 1 })).toBe(false);
   });
 
   it("accepts a timestamp", () => {
     const date = new Date(2014, 8 /* Sep */, 21).getTime();
     expect(isThisWeek(date)).toBe(true);
+  });
+
+  it("respects date extensions", () => {
+    expect(isThisWeek(new UTCDate(+new Date(2014, 8 /* Sep */, 21)))).toBe(
+      true,
+    );
   });
 });

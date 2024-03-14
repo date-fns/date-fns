@@ -1,5 +1,6 @@
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { UTCDate } from "@date-fns/utc";
 import sinon from "sinon";
+import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { isThisISOWeek } from "./index.js";
 
 describe("isSameISOWeek", () => {
@@ -25,5 +26,11 @@ describe("isSameISOWeek", () => {
   it("accepts a timestamp", () => {
     const date = new Date(2014, 8 /* Sep */, 29).getTime();
     expect(isThisISOWeek(date)).toBe(false);
+  });
+
+  it("respects date extensions", () => {
+    expect(isThisISOWeek(new UTCDate(+new Date(2014, 8 /* Sep */, 25)))).toBe(
+      true,
+    );
   });
 });
