@@ -8,9 +8,25 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## v3.5.0 - 2024-03-15
+
+Kudos to @fturmel, @kossnocorp, @makstyle119, @tan75, @marcreichel, @tareknatsheh and @audunru for working on the release. Also, thanks to [@seated](https://github.com/seated) [for sponsoring me](https://github.com/sponsors/kossnocorp).
+
+### Fixed
+
+- [Fixed functions that use current date internally and made them work with date extensions like `UTCDate`.](https://github.com/date-fns/date-fns/issues/3730)
+
+- [Fixed `daysToWeeks` returning negative 0.](https://github.com/date-fns/date-fns/commit/882ced61c692c7c4a79eaaec6eb07cb9c8c9195b)
+
+- [Fixed German grammar for the "half a minute" string.](https://github.com/date-fns/date-fns/pull/3715)
+
+### Added
+
+- Added the `constructNow` function that creates the current date using the passed reference date's constructor.
+
 ## v3.4.0 - 2024-03-11
 
-Kudos to @kossnocorp, @sakamossan and @Revan99 for working on the release. Also thanks to [@seated](https://github.com/seated) for sponsoring me.
+Kudos to @kossnocorp, @sakamossan and @Revan99 for working on the release. Also, thanks to [@seated](https://github.com/seated) [for sponsoring me](https://github.com/sponsors/kossnocorp).
 
 ### Added
 
