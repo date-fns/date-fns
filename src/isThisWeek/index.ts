@@ -1,4 +1,4 @@
-import { constructNow } from "../index.js";
+import { constructNow } from "../constructNow/index.js";
 import { isSameWeek } from "../isSameWeek/index.js";
 import type { LocalizedOptions, WeekOptions } from "../types.js";
 

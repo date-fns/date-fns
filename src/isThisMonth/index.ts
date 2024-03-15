@@ -1,4 +1,4 @@
-import { constructNow } from "../index.js";
+import { constructNow } from "../constructNow/index.js";
 import { isSameMonth } from "../isSameMonth/index.js";
 
 /**
