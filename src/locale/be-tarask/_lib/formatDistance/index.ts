@@ -181,22 +181,22 @@ const formatDistanceLocale = {
 
   aboutXWeeks: buildLocalizeTokenFn({
     regular: {
-      singularNominative: "каля {{count}} месяца", // TODO
-      singularGenitive: "каля {{count}} месяцаў", // TODO
-      pluralGenitive: "каля {{count}} месяцаў", // TODO
+      singularNominative: "каля {{count}} тыдні",
+      singularGenitive: "каля {{count}} тыдняў",
+      pluralGenitive: "каля {{count}} тыдняў",
     },
     future: {
-      singularNominative: "прыблізна праз {{count}} месяц", // TODO
-      singularGenitive: "прыблізна праз {{count}} месяцы", // TODO
-      pluralGenitive: "прыблізна праз {{count}} месяцаў", // TODO
+      singularNominative: "прыблізна праз {{count}} тыдзень",
+      singularGenitive: "прыблізна праз {{count}} тыдні",
+      pluralGenitive: "прыблізна праз {{count}} тыдняў",
     },
   }),
 
   xWeeks: buildLocalizeTokenFn({
     regular: {
-      singularNominative: "{{count}} месяц",
-      singularGenitive: "{{count}} месяцы",
-      pluralGenitive: "{{count}} месяцаў",
+      singularNominative: "{{count}} тыдзень",
+      singularGenitive: "{{count}} тыдні",
+      pluralGenitive: "{{count}} тыдняў",
     },
   }),
 
