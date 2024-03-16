@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 
-import { Day, Era, Month, Quarter } from "../../../types.js";
+import type { Day, Era, Month, Quarter } from "../../../types.js";
 import type {
   LocaleDayPeriod,
   LocaleUnitValue,
