@@ -22,6 +22,8 @@ Kudos to @fturmel, @kossnocorp, @makstyle119, @tan75, @marcreichel, @tareknatshe
 
 ### Added
 
+- [Added the Northern Sámi (`se`) locale.](https://github.com/date-fns/date-fns/pull/3724)
+
 - Added the `constructNow` function that creates the current date using the passed reference date's constructor.
 
 ## v3.4.0 - 2024-03-11
