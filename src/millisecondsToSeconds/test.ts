@@ -1,22 +1,24 @@
-/* eslint-env mocha */
+import { describe, expect, it } from "vitest";
+import { millisecondsToSeconds } from "./index.js";
 
-import assert from 'assert'
-import { describe, it } from 'vitest'
-import millisecondsToSeconds from './index'
+describe("millisecondsToSeconds", () => {
+  it("converts milliseconds to seconds", () => {
+    expect(millisecondsToSeconds(1000)).toBe(1);
+    expect(millisecondsToSeconds(2000)).toBe(2);
+  });
 
-describe('millisecondsToSeconds', () => {
-  it('converts milliseconds to seconds', () => {
-    assert(millisecondsToSeconds(1000) === 1)
-    assert(millisecondsToSeconds(2000) === 2)
-  })
+  it("uses floor rounding", () => {
+    expect(millisecondsToSeconds(1001)).toBe(1);
+    expect(millisecondsToSeconds(999)).toBe(0);
+  });
 
-  it('uses floor rounding', () => {
-    assert(millisecondsToSeconds(1001) === 1)
-    assert(millisecondsToSeconds(999) === 0)
-  })
+  it("handles border values", () => {
+    expect(millisecondsToSeconds(1000.5)).toBe(1);
+    expect(millisecondsToSeconds(0)).toBe(0);
+  });
 
-  it('handles border values', () => {
-    assert(millisecondsToSeconds(1000.5) === 1)
-    assert(millisecondsToSeconds(0) === 0)
-  })
-})
+  it("properly works with negative numbers", () => {
+    expect(millisecondsToSeconds(123456789)).toBe(123456);
+    expect(millisecondsToSeconds(-123456789)).toBe(-123456);
+  });
+});

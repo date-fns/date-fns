@@ -1,27 +1,24 @@
-/* eslint-env mocha */
+import { describe, expect, it } from "vitest";
+import { isValid } from "./index.js";
 
-import assert from 'assert'
-import { describe, it } from 'vitest'
-import isValid from './index'
+describe("isValid", () => {
+  it("returns true if the given date is valid", () => {
+    const result = isValid(new Date());
+    expect(result).toBe(true);
+  });
 
-describe('isValid', () => {
-  it('returns true if the given date is valid', () => {
-    const result = isValid(new Date())
-    assert(result === true)
-  })
+  it("returns false if the given date is invalid", () => {
+    const result = isValid(new Date(""));
+    expect(result).toBe(false);
+  });
 
-  it('returns false if the given date is invalid', () => {
-    const result = isValid(new Date(''))
-    assert(result === false)
-  })
+  it("accepts a timestamp", () => {
+    expect(isValid(new Date(2014, 1 /* Feb */, 11).getTime())).toBe(true);
+    expect(isValid(NaN)).toBe(false);
+  });
 
-  it('accepts a timestamp', () => {
-    assert(isValid(new Date(2014, 1 /* Feb */, 11).getTime()) === true)
-    assert(isValid(NaN) === false)
-  })
-
-  it('treats null as an invalid date', () => {
-    const result = isValid(null)
-    assert(result === false)
-  })
-})
+  it("treats null as an invalid date", () => {
+    const result = isValid(null);
+    expect(result).toBe(false);
+  });
+});

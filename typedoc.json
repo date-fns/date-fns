@@ -21,6 +21,7 @@
     "./src/compareAsc/index.ts",
     "./src/compareDesc/index.ts",
     "./src/constructFrom/index.ts",
+    "./src/constructNow/index.ts",
     "./src/daysToWeeks/index.ts",
     "./src/differenceInBusinessDays/index.ts",
     "./src/differenceInCalendarDays/index.ts",
@@ -105,6 +106,7 @@
     "./src/hoursToMilliseconds/index.ts",
     "./src/hoursToMinutes/index.ts",
     "./src/hoursToSeconds/index.ts",
+    "./src/interval/index.ts",
     "./src/intervalToDuration/index.ts",
     "./src/intlFormat/index.ts",
     "./src/intlFormatDistance/index.ts",
@@ -190,6 +192,7 @@
     "./src/previousWednesday/index.ts",
     "./src/quartersToMonths/index.ts",
     "./src/quartersToYears/index.ts",
+    "./src/roundToNearestHours/index.ts",
     "./src/roundToNearestMinutes/index.ts",
     "./src/secondsToHours/index.ts",
     "./src/secondsToMilliseconds/index.ts",
@@ -241,10 +244,13 @@
     "./src/toDate/index.ts",
     "./src/transpose/index.ts",
     "./src/weeksToDays/index.ts",
+    "./src/yearsToDays/index.ts",
     "./src/yearsToMonths/index.ts",
     "./src/yearsToQuarters/index.ts",
     "./src/constants/index.ts"
   ],
   "json": "./tmp/docs.json",
-  "plugin": ["typedoc-plugin-missing-exports"]
+  "plugin": [
+    "typedoc-plugin-missing-exports"
+  ]
 }

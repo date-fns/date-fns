@@ -1,15 +1,15 @@
-import formatDuration from '../../../../src/formatDuration'
-import { Locale } from '../../../../src/types'
+import { formatDuration } from "../../../../src/formatDuration/index.js";
+import type { Locale } from "../../../../src/types.js";
 
 const durations = [
-  'years',
-  'months',
-  'weeks',
-  'days',
-  'hours',
-  'minutes',
-  'seconds',
-].flatMap((unit) => [{ [unit]: 0 }, { [unit]: 1 }, { [unit]: 2 }])
+  "years",
+  "months",
+  "weeks",
+  "days",
+  "hours",
+  "minutes",
+  "seconds",
+].flatMap((unit) => [{ [unit]: 0 }, { [unit]: 1 }, { [unit]: 2 }]);
 
 export default function renderFormatDurationStrict(locale: Locale) {
   return `## \`formatDuration\`
@@ -18,13 +18,13 @@ export default function renderFormatDurationStrict(locale: Locale) {
 |-|-|
 ${durations
   .map((duration) => {
-    const durationString = JSON.stringify(duration)
+    const durationString = JSON.stringify(duration);
     try {
-      const result = formatDuration(duration, { locale, zero: true })
-      return `| ${durationString} | ${result} |`
+      const result = formatDuration(duration, { locale, zero: true });
+      return `| ${durationString} | ${result} |`;
     } catch {
-      return `| ${durationString} | not supported |`
+      return `| ${durationString} | not supported |`;
     }
   })
-  .join('\n')}`
+  .join("\n")}`;
 }

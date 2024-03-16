@@ -1,4 +1,6 @@
-import distanceInWords, { FormatDistanceOptions } from '../formatDistance/index'
+import { constructNow } from "../constructNow/index.js";
+import type { FormatDistanceOptions } from "../formatDistance/index.js";
+import { formatDistance } from "../formatDistance/index.js";
 
 /**
  * The {@link formatDistanceToNow} function options.
@@ -50,8 +52,8 @@ export interface FormatDistanceToNowOptions extends FormatDistanceOptions {}
  *
  * @returns The distance in words
  *
- * @throws {RangeError} `date` must not be Invalid Date
- * @throws {RangeError} `options.locale` must contain `formatDistance` property
+ * @throws `date` must not be Invalid Date
+ * @throws `options.locale` must contain `formatDistance` property
  *
  * @example
  * // If today is 1 January 2015, what is the distance to 2 July 2014?
@@ -88,9 +90,9 @@ export interface FormatDistanceToNowOptions extends FormatDistanceOptions {}
  * )
  * //=> 'pli ol 1 jaro'
  */
-export default function formatDistanceToNow<DateType extends Date>(
-  date: DateType | number,
-  options?: FormatDistanceToNowOptions
+export function formatDistanceToNow<DateType extends Date>(
+  date: DateType | number | string,
+  options?: FormatDistanceToNowOptions,
 ): string {
-  return distanceInWords(date, Date.now(), options)
+  return formatDistance(date, constructNow(date), options);
 }

@@ -1,4 +1,4 @@
-import { monthsInYear } from '../constants/index'
+import { monthsInYear } from "../constants/index.js";
 
 /**
  * @name monthsToYears
@@ -21,7 +21,7 @@ import { monthsInYear } from '../constants/index'
  * const result = monthsToYears(40)
  * //=> 3
  */
-export default function monthsToYears(months: number): number {
-  const years = months / monthsInYear
-  return Math.floor(years)
+export function monthsToYears(months: number): number {
+  const years = months / monthsInYear;
+  return Math.trunc(years);
 }

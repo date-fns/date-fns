@@ -1,12 +1,13 @@
-import isSameWeek from '../isSameWeek/index'
-import type { LocalizedOptions, WeekOptions } from '../types'
+import { constructNow } from "../constructNow/index.js";
+import { isSameWeek } from "../isSameWeek/index.js";
+import type { LocalizedOptions, WeekOptions } from "../types.js";
 
 /**
  * The {@link isThisWeek} function options.
  */
 export interface IsThisWeekOptions
   extends WeekOptions,
-    LocalizedOptions<'options'> {}
+    LocalizedOptions<"options"> {}
 
 /**
  * @name isThisWeek
@@ -35,9 +36,9 @@ export interface IsThisWeekOptions
  * const result = isThisWeek(new Date(2014, 8, 21), { weekStartsOn: 1 })
  * //=> false
  */
-export default function isThisWeek<DateType extends Date>(
-  date: DateType | number,
-  options?: IsThisWeekOptions
+export function isThisWeek<DateType extends Date>(
+  date: DateType | number | string,
+  options?: IsThisWeekOptions,
 ): boolean {
-  return isSameWeek(date, Date.now(), options)
+  return isSameWeek(date, constructNow(date), options);
 }

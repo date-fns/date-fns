@@ -1,112 +1,110 @@
-import type { FormatDistanceFn, FormatDistanceLocale } from '../../../types'
+import type { FormatDistanceFn, FormatDistanceLocale } from "../../../types.js";
 
 type FormatDistanceTokenValue =
   | string
   | {
-      one: string
-      other: string
-    }
+      one: string;
+      other: string;
+    };
 
 const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   lessThanXSeconds: {
-    one: 'کمتر از یک ثانیه',
-    other: 'کمتر از {{count}} ثانیه',
+    one: "کمتر از یک ثانیه",
+    other: "کمتر از {{count}} ثانیه",
   },
 
   xSeconds: {
-    one: '1 ثانیه',
-    other: '{{count}} ثانیه',
+    one: "1 ثانیه",
+    other: "{{count}} ثانیه",
   },
 
-  halfAMinute: 'نیم دقیقه',
+  halfAMinute: "نیم دقیقه",
 
   lessThanXMinutes: {
-    one: 'کمتر از یک دقیقه',
-    other: 'کمتر از {{count}} دقیقه',
+    one: "کمتر از یک دقیقه",
+    other: "کمتر از {{count}} دقیقه",
   },
 
   xMinutes: {
-    one: '1 دقیقه',
-    other: '{{count}} دقیقه',
+    one: "1 دقیقه",
+    other: "{{count}} دقیقه",
   },
 
   aboutXHours: {
-    one: 'حدود 1 ساعت',
-    other: 'حدود {{count}} ساعت',
+    one: "حدود 1 ساعت",
+    other: "حدود {{count}} ساعت",
   },
 
   xHours: {
-    one: '1 ساعت',
-    other: '{{count}} ساعت',
+    one: "1 ساعت",
+    other: "{{count}} ساعت",
   },
 
   xDays: {
-    one: '1 روز',
-    other: '{{count}} روز',
+    one: "1 روز",
+    other: "{{count}} روز",
   },
 
   aboutXWeeks: {
-    one: 'حدود 1 هفته',
-    other: 'حدود {{count}} هفته',
+    one: "حدود 1 هفته",
+    other: "حدود {{count}} هفته",
   },
 
   xWeeks: {
-    one: '1 هفته',
-    other: '{{count}} هفته',
+    one: "1 هفته",
+    other: "{{count}} هفته",
   },
 
   aboutXMonths: {
-    one: 'حدود 1 ماه',
-    other: 'حدود {{count}} ماه',
+    one: "حدود 1 ماه",
+    other: "حدود {{count}} ماه",
   },
 
   xMonths: {
-    one: '1 ماه',
-    other: '{{count}} ماه',
+    one: "1 ماه",
+    other: "{{count}} ماه",
   },
 
   aboutXYears: {
-    one: 'حدود 1 سال',
-    other: 'حدود {{count}} سال',
+    one: "حدود 1 سال",
+    other: "حدود {{count}} سال",
   },
 
   xYears: {
-    one: '1 سال',
-    other: '{{count}} سال',
+    one: "1 سال",
+    other: "{{count}} سال",
   },
 
   overXYears: {
-    one: 'بیشتر از 1 سال',
-    other: 'بیشتر از {{count}} سال',
+    one: "بیشتر از 1 سال",
+    other: "بیشتر از {{count}} سال",
   },
 
   almostXYears: {
-    one: 'نزدیک 1 سال',
-    other: 'نزدیک {{count}} سال',
+    one: "نزدیک 1 سال",
+    other: "نزدیک {{count}} سال",
   },
-}
+};
 
-const formatDistance: FormatDistanceFn = (token, count, options) => {
-  let result
+export const formatDistance: FormatDistanceFn = (token, count, options) => {
+  let result;
 
-  const tokenValue = formatDistanceLocale[token]
-  if (typeof tokenValue === 'string') {
-    result = tokenValue
+  const tokenValue = formatDistanceLocale[token];
+  if (typeof tokenValue === "string") {
+    result = tokenValue;
   } else if (count === 1) {
-    result = tokenValue.one
+    result = tokenValue.one;
   } else {
-    result = tokenValue.other.replace('{{count}}', String(count))
+    result = tokenValue.other.replace("{{count}}", String(count));
   }
 
   if (options?.addSuffix) {
     if (options.comparison && options.comparison > 0) {
-      return 'در ' + result
+      return "در " + result;
     } else {
-      return result + ' قبل'
+      return result + " قبل";
     }
   }
 
-  return result
-}
-
-export default formatDistance
+  return result;
+};

@@ -1,4 +1,4 @@
-import { millisecondsInMinute } from '../constants/index'
+import { millisecondsInMinute } from "../constants/index.js";
 
 /**
  * @name millisecondsToMinutes
@@ -22,7 +22,7 @@ import { millisecondsInMinute } from '../constants/index'
  * const result = millisecondsToMinutes(119999)
  * //=> 1
  */
-export default function millisecondsToMinutes(milliseconds: number): number {
-  const minutes = milliseconds / millisecondsInMinute
-  return Math.floor(minutes)
+export function millisecondsToMinutes(milliseconds: number): number {
+  const minutes = milliseconds / millisecondsInMinute;
+  return Math.trunc(minutes);
 }

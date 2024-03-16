@@ -1,89 +1,92 @@
-import isSameWeek from '../../../../isSameWeek/index'
-import toDate from '../../../../toDate/index'
-import type { Day } from '../../../../types'
-import type { FormatRelativeFn, FormatRelativeTokenFn } from '../../../types'
+import { isSameWeek } from "../../../../isSameWeek/index.js";
+import { toDate } from "../../../../toDate/index.js";
+import type { Day } from "../../../../types.js";
+import type {
+  FormatRelativeFn,
+  FormatRelativeTokenFn,
+} from "../../../types.js";
 
 // Adapted from the `ru` translation
 
 const weekdays = [
-  'неделя',
-  'понеделник',
-  'вторник',
-  'сряда',
-  'четвъртък',
-  'петък',
-  'събота',
-]
+  "неделя",
+  "понеделник",
+  "вторник",
+  "сряда",
+  "четвъртък",
+  "петък",
+  "събота",
+];
 
 function lastWeek(day: Day): string {
-  const weekday = weekdays[day]
+  const weekday = weekdays[day];
 
   switch (day) {
     case 0:
     case 3:
     case 6:
-      return "'миналата " + weekday + " в' p"
+      return "'миналата " + weekday + " в' p";
     case 1:
     case 2:
     case 4:
     case 5:
-      return "'миналия " + weekday + " в' p"
+      return "'миналия " + weekday + " в' p";
   }
 }
 
 function thisWeek(day: Day): string {
-  const weekday = weekdays[day]
+  const weekday = weekdays[day];
 
   if (day === 2 /* Tue */) {
-    return "'във " + weekday + " в' p"
+    return "'във " + weekday + " в' p";
   } else {
-    return "'в " + weekday + " в' p"
+    return "'в " + weekday + " в' p";
   }
 }
 
 function nextWeek(day: Day): string {
-  const weekday = weekdays[day]
+  const weekday = weekdays[day];
 
   switch (day) {
     case 0:
     case 3:
     case 6:
-      return "'следващата " + weekday + " в' p"
+      return "'следващата " + weekday + " в' p";
     case 1:
     case 2:
     case 4:
     case 5:
-      return "'следващия " + weekday + " в' p"
+      return "'следващия " + weekday + " в' p";
   }
 }
 
 const lastWeekFormatToken: FormatRelativeTokenFn = (
   dirtyDate,
   baseDate,
-  options
+  options,
 ) => {
-  const date = toDate(dirtyDate)
-  const day = date.getDay() as Day
+  const date = toDate(dirtyDate);
+  const day = date.getDay() as Day;
   if (isSameWeek(date, baseDate, options)) {
-    return thisWeek(day)
+    return thisWeek(day);
   } else {
-    return lastWeek(day)
+    return lastWeek(day);
   }
-}
+};
 
 const nextWeekFormatToken: FormatRelativeTokenFn = (
   dirtyDate,
   baseDate,
-  options
+  options,
 ) => {
-  const date = toDate(dirtyDate)
-  const day = date.getDay() as Day
+  const date = toDate(dirtyDate);
+  const day = date.getDay() as Day;
   if (isSameWeek(date, baseDate, options)) {
-    return thisWeek(day)
+    return thisWeek(day);
   } else {
-    return nextWeek(day)
+    return nextWeek(day);
   }
-}
+};
 
 const formatRelativeLocale = {
   lastWeek: lastWeekFormatToken,
@@ -91,17 +94,20 @@ const formatRelativeLocale = {
   today: "'днес в' p",
   tomorrow: "'утре в' p",
   nextWeek: nextWeekFormatToken,
-  other: 'P',
-}
+  other: "P",
+};
 
-const formatRelative: FormatRelativeFn = (token, date, baseDate, options) => {
-  const format = formatRelativeLocale[token]
+export const formatRelative: FormatRelativeFn = (
+  token,
+  date,
+  baseDate,
+  options,
+) => {
+  const format = formatRelativeLocale[token];
 
-  if (typeof format === 'function') {
-    return format(date, baseDate, options)
+  if (typeof format === "function") {
+    return format(date, baseDate, options);
   }
 
-  return format
-}
-
-export default formatRelative
+  return format;
+};

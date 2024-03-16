@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name startOfDecade
@@ -19,13 +19,16 @@ import toDate from '../toDate/index'
  * const result = startOfDecade(new Date(2015, 9, 21, 00, 00, 00))
  * //=> Jan 01 2010 00:00:00
  */
-export default function startOfDecade<DateType extends Date>(
-  date: DateType | number
+export function startOfDecade<DateType extends Date>(
+  date: DateType | number | string,
 ): DateType {
-  const _date = toDate(date)
-  const year = _date.getFullYear()
-  const decade = Math.floor(year / 10) * 10
-  _date.setFullYear(decade, 0, 1)
-  _date.setHours(0, 0, 0, 0)
-  return _date
+  // TODO: Switch to more technical definition in of decades that start with 1
+  // end with 0. I.e. 2001-2010 instead of current 2000-2009. It's a breaking
+  // change, so it can only be done in 4.0.
+  const _date = toDate(date);
+  const year = _date.getFullYear();
+  const decade = Math.floor(year / 10) * 10;
+  _date.setFullYear(decade, 0, 1);
+  _date.setHours(0, 0, 0, 0);
+  return _date;
 }

@@ -1,22 +1,24 @@
-/* eslint-env mocha */
+import { describe, expect, it } from "vitest";
+import { minutesToHours } from "./index.js";
 
-import assert from 'assert'
-import { describe, it } from 'vitest'
-import minuteToHours from './index'
+describe("minuteToHours", () => {
+  it("converts minutes to hours", () => {
+    expect(minutesToHours(60)).toBe(1);
+    expect(minutesToHours(120)).toBe(2);
+  });
 
-describe('minuteToHours', () => {
-  it('converts minutes to hours', () => {
-    assert(minuteToHours(60) === 1)
-    assert(minuteToHours(120) === 2)
-  })
+  it("uses floor rounding", () => {
+    expect(minutesToHours(61)).toBe(1);
+    expect(minutesToHours(59)).toBe(0);
+  });
 
-  it('uses floor rounding', () => {
-    assert(minuteToHours(61) === 1)
-    assert(minuteToHours(59) === 0)
-  })
+  it("handles border values", () => {
+    expect(minutesToHours(60.5)).toBe(1);
+    expect(minutesToHours(0)).toBe(0);
+  });
 
-  it('handles border values', () => {
-    assert(minuteToHours(60.5) === 1)
-    assert(minuteToHours(0) === 0)
-  })
-})
+  it("properly works with negative numbers", () => {
+    expect(minutesToHours(123456)).toBe(2057);
+    expect(minutesToHours(-123456)).toBe(-2057);
+  });
+});

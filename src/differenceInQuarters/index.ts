@@ -1,6 +1,6 @@
-import differenceInMonths from '../differenceInMonths/index'
-import type { RoundingOptions } from '../types'
-import { getRoundingMethod } from '../_lib/roundingMethods/index'
+import { getRoundingMethod } from "../_lib/getRoundingMethod/index.js";
+import { differenceInMonths } from "../differenceInMonths/index.js";
+import type { RoundingOptions } from "../types.js";
 
 /**
  * The {@link differenceInQuarters} function options.
@@ -28,11 +28,11 @@ export interface DifferenceInQuartersOptions extends RoundingOptions {}
  * const result = differenceInQuarters(new Date(2014, 6, 2), new Date(2013, 11, 31))
  * //=> 2
  */
-export default function differenceInQuarters<DateType extends Date>(
-  dateLeft: DateType | number,
-  dateRight: DateType | number,
-  options?: DifferenceInQuartersOptions
+export function differenceInQuarters<DateType extends Date>(
+  dateLeft: DateType | number | string,
+  dateRight: DateType | number | string,
+  options?: DifferenceInQuartersOptions,
 ): number {
-  const diff = differenceInMonths(dateLeft, dateRight) / 3
-  return getRoundingMethod(options?.roundingMethod)(diff)
+  const diff = differenceInMonths(dateLeft, dateRight) / 3;
+  return getRoundingMethod(options?.roundingMethod)(diff);
 }

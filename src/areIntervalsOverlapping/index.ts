@@ -1,12 +1,12 @@
-import toDate from '../toDate/index'
-import type { Interval } from '../types'
+import { toDate } from "../toDate/index.js";
+import type { Interval } from "../types.js";
 
 /**
  * The {@link areIntervalsOverlapping} function options.
  */
 export interface AreIntervalsOverlappingOptions {
   /** Whether the comparison is inclusive or not */
-  inclusive?: boolean
+  inclusive?: boolean;
 }
 
 /**
@@ -15,16 +15,13 @@ export interface AreIntervalsOverlappingOptions {
  * @summary Is the given time interval overlapping with another time interval?
  *
  * @description
- * Is the given time interval overlapping with another time interval? Adjacent intervals do not count as overlapping.
+ * Is the given time interval overlapping with another time interval? Adjacent intervals do not count as overlapping unless `inclusive` is set to `true`.
  *
  * @param intervalLeft - The first interval to compare.
  * @param intervalRight - The second interval to compare.
  * @param options - The object with options
  *
  * @returns Whether the time intervals are overlapping
- *
- * @throws RangeError - The start of an interval cannot be after its end
- * @throws RangeError - Date in interval cannot be `Invalid Date`
  *
  * @example
  * // For overlapping time intervals:
@@ -57,6 +54,8 @@ export interface AreIntervalsOverlappingOptions {
  *   { start: new Date(2014, 0, 20), end: new Date(2014, 0, 24) }
  * )
  * //=> false
+ *
+ * @example
  * areIntervalsOverlapping(
  *   { start: new Date(2014, 0, 10), end: new Date(2014, 0, 20) },
  *   { start: new Date(2014, 0, 20), end: new Date(2014, 0, 24) },
@@ -64,24 +63,22 @@ export interface AreIntervalsOverlappingOptions {
  * )
  * //=> true
  */
-export default function areIntervalsOverlapping(
+export function areIntervalsOverlapping(
   intervalLeft: Interval,
   intervalRight: Interval,
-  options?: AreIntervalsOverlappingOptions
+  options?: AreIntervalsOverlappingOptions,
 ): boolean {
-  const leftStartTime = +toDate(intervalLeft.start)
-  const leftEndTime = +toDate(intervalLeft.end)
-  const rightStartTime = +toDate(intervalRight.start)
-  const rightEndTime = +toDate(intervalRight.end)
+  const [leftStartTime, leftEndTime] = [
+    +toDate(intervalLeft.start),
+    +toDate(intervalLeft.end),
+  ].sort((a, b) => a - b);
+  const [rightStartTime, rightEndTime] = [
+    +toDate(intervalRight.start),
+    +toDate(intervalRight.end),
+  ].sort((a, b) => a - b);
 
-  // Throw an exception if start date is after end date or if any date is `Invalid Date`
-  if (!(leftStartTime <= leftEndTime && rightStartTime <= rightEndTime)) {
-    throw new RangeError('Invalid interval')
-  }
+  if (options?.inclusive)
+    return leftStartTime <= rightEndTime && rightStartTime <= leftEndTime;
 
-  if (options?.inclusive) {
-    return leftStartTime <= rightEndTime && rightStartTime <= leftEndTime
-  }
-
-  return leftStartTime < rightEndTime && rightStartTime < leftEndTime
+  return leftStartTime < rightEndTime && rightStartTime < leftEndTime;
 }

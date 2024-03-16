@@ -1,27 +1,21 @@
-/* eslint-env mocha */
+import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import sinon from "sinon";
+import { endOfToday } from "./index.js";
 
-import assert from 'assert'
-import { afterEach, beforeEach, describe, it } from 'vitest'
-import sinon from 'sinon'
-import endOfToday from './index'
-
-describe('endOfToday', () => {
-  let clock: sinon.SinonFakeTimers
+describe("endOfToday", () => {
+  let clock: sinon.SinonFakeTimers;
   beforeEach(() => {
     clock = sinon.useFakeTimers(
-      new Date(2014, 8 /* Sep */, 25, 14, 30, 45, 500).getTime()
-    )
-  })
+      new Date(2014, 8 /* Sep */, 25, 14, 30, 45, 500).getTime(),
+    );
+  });
 
   afterEach(() => {
-    clock.restore()
-  })
+    clock.restore();
+  });
 
-  it('returns the current date with the time settled to 23:59:59.999', () => {
-    const result = endOfToday()
-    assert.deepStrictEqual(
-      result,
-      new Date(2014, 8 /* Sep */, 25, 23, 59, 59, 999)
-    )
-  })
-})
+  it("returns the current date with the time settled to 23:59:59.999", () => {
+    const result = endOfToday();
+    expect(result).toEqual(new Date(2014, 8 /* Sep */, 25, 23, 59, 59, 999));
+  });
+});

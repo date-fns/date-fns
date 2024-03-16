@@ -5,6 +5,7 @@
     "emitDeclarationOnly": true,
     "rootDir": "src"
   },
+  "include": ["src/**/*.ts"],
   "exclude": [
     "lib",
     "node_modules",

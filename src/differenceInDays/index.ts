@@ -1,5 +1,5 @@
-import differenceInCalendarDays from '../differenceInCalendarDays/index'
-import toDate from '../toDate/index'
+import { differenceInCalendarDays } from "../differenceInCalendarDays/index.js";
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name differenceInDays
@@ -15,7 +15,7 @@ import toDate from '../toDate/index'
  * or more than 24 hours if a daylight savings change happens between two dates.
  *
  * To ignore DST and only measure exact 24-hour periods, use this instead:
- * `Math.floor(differenceInHours(dateLeft, dateRight)/24)|0`.
+ * `Math.trunc(differenceInHours(dateLeft, dateRight)/24)|0`.
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
@@ -55,26 +55,26 @@ import toDate from '../toDate/index'
  * )
  * //=> 92
  */
-export default function differenceInDays<DateType extends Date>(
-  dateLeft: DateType | number,
-  dateRight: DateType | number
+export function differenceInDays<DateType extends Date>(
+  dateLeft: DateType | number | string,
+  dateRight: DateType | number | string,
 ): number {
-  const _dateLeft = toDate(dateLeft)
-  const _dateRight = toDate(dateRight)
+  const _dateLeft = toDate(dateLeft);
+  const _dateRight = toDate(dateRight);
 
-  const sign = compareLocalAsc(_dateLeft, _dateRight)
-  const difference = Math.abs(differenceInCalendarDays(_dateLeft, _dateRight))
+  const sign = compareLocalAsc(_dateLeft, _dateRight);
+  const difference = Math.abs(differenceInCalendarDays(_dateLeft, _dateRight));
 
-  _dateLeft.setDate(_dateLeft.getDate() - sign * difference)
+  _dateLeft.setDate(_dateLeft.getDate() - sign * difference);
 
   // Math.abs(diff in full days - diff in calendar days) === 1 if last calendar day is not full
   // If so, result must be decreased by 1 in absolute value
   const isLastDayNotFull = Number(
-    compareLocalAsc(_dateLeft, _dateRight) === -sign
-  )
-  const result = sign * (difference - isLastDayNotFull)
+    compareLocalAsc(_dateLeft, _dateRight) === -sign,
+  );
+  const result = sign * (difference - isLastDayNotFull);
   // Prevent negative zero
-  return result === 0 ? 0 : result
+  return result === 0 ? 0 : result;
 }
 
 // Like `compareAsc` but uses local time not UTC, which is needed
@@ -83,7 +83,7 @@ export default function differenceInDays<DateType extends Date>(
 // DST ends vs. the instant that DST ends.
 function compareLocalAsc<DateType extends Date>(
   dateLeft: DateType,
-  dateRight: DateType
+  dateRight: DateType,
 ): number {
   const diff =
     dateLeft.getFullYear() - dateRight.getFullYear() ||
@@ -92,14 +92,14 @@ function compareLocalAsc<DateType extends Date>(
     dateLeft.getHours() - dateRight.getHours() ||
     dateLeft.getMinutes() - dateRight.getMinutes() ||
     dateLeft.getSeconds() - dateRight.getSeconds() ||
-    dateLeft.getMilliseconds() - dateRight.getMilliseconds()
+    dateLeft.getMilliseconds() - dateRight.getMilliseconds();
 
   if (diff < 0) {
-    return -1
+    return -1;
   } else if (diff > 0) {
-    return 1
+    return 1;
     // Return 0 if diff is 0; return NaN if diff is NaN
   } else {
-    return diff
+    return diff;
   }
 }

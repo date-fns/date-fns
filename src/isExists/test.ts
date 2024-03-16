@@ -1,17 +1,14 @@
-/* eslint-env mocha */
+import { describe, expect, it } from "vitest";
+import { isExists } from "./index.js";
 
-import assert from 'assert'
-import { describe, it } from 'vitest'
-import isExists from './index'
+describe("isValid", () => {
+  it("returns true if the given date is valid", () => {
+    const result = isExists(2018, 0, 31);
+    expect(result).toBe(true);
+  });
 
-describe('isValid', () => {
-  it('returns true if the given date is valid', () => {
-    const result = isExists(2018, 0, 31)
-    assert(result === true)
-  })
-
-  it('returns false if the given date is invalid', () => {
-    const result = isExists(2018, 1 /* Feb */, 31)
-    assert(result === false)
-  })
-})
+  it("returns false if the given date is invalid", () => {
+    const result = isExists(2018, 1 /* Feb */, 31);
+    expect(result).toBe(false);
+  });
+});

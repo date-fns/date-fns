@@ -1,4 +1,4 @@
-import { millisecondsInHour } from '../constants/index'
+import { millisecondsInHour } from "../constants/index.js";
 
 /**
  * @name millisecondsToHours
@@ -22,7 +22,7 @@ import { millisecondsInHour } from '../constants/index'
  * const result = millisecondsToHours(7199999)
  * //=> 1
  */
-export default function millisecondsToHours(milliseconds: number): number {
-  const hours = milliseconds / millisecondsInHour
-  return Math.floor(hours)
+export function millisecondsToHours(milliseconds: number): number {
+  const hours = milliseconds / millisecondsInHour;
+  return Math.trunc(hours);
 }

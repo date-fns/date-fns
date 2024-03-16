@@ -1,4 +1,5 @@
-import isSameMinute from '../isSameMinute/index'
+import { constructNow } from "../constructNow/index.js";
+import { isSameMinute } from "../isSameMinute/index.js";
 
 /**
  * @name isThisMinute
@@ -22,8 +23,8 @@ import isSameMinute from '../isSameMinute/index'
  * //=> true
  */
 
-export default function isThisMinute<DateType extends Date>(
-  date: DateType | number
+export function isThisMinute<DateType extends Date>(
+  date: DateType | number | string,
 ): boolean {
-  return isSameMinute(Date.now(), date)
+  return isSameMinute(date, constructNow(date));
 }

@@ -1,58 +1,61 @@
-import isSameWeek from '../../../../isSameWeek/index'
-import type { Day } from '../../../../types'
-import type { FormatRelativeFn, FormatRelativeFnOptions } from '../../../types'
+import { isSameWeek } from "../../../../isSameWeek/index.js";
+import type { Day } from "../../../../types.js";
+import type {
+  FormatRelativeFn,
+  FormatRelativeFnOptions,
+} from "../../../types.js";
 
 const accusativeWeekdays = [
-  'воскресенье',
-  'понедельник',
-  'вторник',
-  'среду',
-  'четверг',
-  'пятницу',
-  'субботу',
-]
+  "воскресенье",
+  "понедельник",
+  "вторник",
+  "среду",
+  "четверг",
+  "пятницу",
+  "субботу",
+];
 
 function lastWeek(day: Day): string {
-  const weekday = accusativeWeekdays[day]
+  const weekday = accusativeWeekdays[day];
 
   switch (day) {
     case 0:
-      return "'в прошлое " + weekday + " в' p"
+      return "'в прошлое " + weekday + " в' p";
     case 1:
     case 2:
     case 4:
-      return "'в прошлый " + weekday + " в' p"
+      return "'в прошлый " + weekday + " в' p";
     case 3:
     case 5:
     case 6:
-      return "'в прошлую " + weekday + " в' p"
+      return "'в прошлую " + weekday + " в' p";
   }
 }
 
 function thisWeek(day: Day) {
-  const weekday = accusativeWeekdays[day]
+  const weekday = accusativeWeekdays[day];
 
   if (day === 2 /* Tue */) {
-    return "'во " + weekday + " в' p"
+    return "'во " + weekday + " в' p";
   } else {
-    return "'в " + weekday + " в' p"
+    return "'в " + weekday + " в' p";
   }
 }
 
 function nextWeek(day: Day) {
-  const weekday = accusativeWeekdays[day]
+  const weekday = accusativeWeekdays[day];
 
   switch (day) {
     case 0:
-      return "'в следующее " + weekday + " в' p"
+      return "'в следующее " + weekday + " в' p";
     case 1:
     case 2:
     case 4:
-      return "'в следующий " + weekday + " в' p"
+      return "'в следующий " + weekday + " в' p";
     case 3:
     case 5:
     case 6:
-      return "'в следующую " + weekday + " в' p"
+      return "'в следующую " + weekday + " в' p";
   }
 }
 
@@ -60,13 +63,13 @@ const formatRelativeLocale = {
   lastWeek: <DateType extends Date>(
     date: DateType,
     baseDate: DateType,
-    options?: FormatRelativeFnOptions
+    options?: FormatRelativeFnOptions,
   ): string => {
-    const day = date.getDay() as Day
+    const day = date.getDay() as Day;
     if (isSameWeek(date, baseDate, options)) {
-      return thisWeek(day)
+      return thisWeek(day);
     } else {
-      return lastWeek(day)
+      return lastWeek(day);
     }
   },
   yesterday: "'вчера в' p",
@@ -75,26 +78,29 @@ const formatRelativeLocale = {
   nextWeek: <DateType extends Date>(
     date: DateType,
     baseDate: DateType,
-    options?: FormatRelativeFnOptions
+    options?: FormatRelativeFnOptions,
   ): string => {
-    const day = date.getDay() as Day
+    const day = date.getDay() as Day;
     if (isSameWeek(date, baseDate, options)) {
-      return thisWeek(day)
+      return thisWeek(day);
     } else {
-      return nextWeek(day)
+      return nextWeek(day);
     }
   },
-  other: 'P',
-}
+  other: "P",
+};
 
-const formatRelative: FormatRelativeFn = (token, date, baseDate, options) => {
-  const format = formatRelativeLocale[token]
+export const formatRelative: FormatRelativeFn = (
+  token,
+  date,
+  baseDate,
+  options,
+) => {
+  const format = formatRelativeLocale[token];
 
-  if (typeof format === 'function') {
-    return format(date, baseDate, options)
+  if (typeof format === "function") {
+    return format(date, baseDate, options);
   }
 
-  return format
-}
-
-export default formatRelative
+  return format;
+};

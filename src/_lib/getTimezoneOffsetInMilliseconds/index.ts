@@ -1,3 +1,5 @@
+import { toDate } from "../../toDate/index.js";
+
 /**
  * Google Chrome as of 67.0.3396.87 introduced timezones with offset that includes seconds.
  * They usually appear for dates that denote time before the timezones were introduced
@@ -9,18 +11,21 @@
  *
  * This function returns the timezone offset in milliseconds that takes seconds in account.
  */
-export default function getTimezoneOffsetInMilliseconds(date: Date): number {
+export function getTimezoneOffsetInMilliseconds(
+  date: Date | number | string,
+): number {
+  const _date = toDate(date);
   const utcDate = new Date(
     Date.UTC(
-      date.getFullYear(),
-      date.getMonth(),
-      date.getDate(),
-      date.getHours(),
-      date.getMinutes(),
-      date.getSeconds(),
-      date.getMilliseconds()
-    )
-  )
-  utcDate.setUTCFullYear(date.getFullYear())
-  return date.getTime() - utcDate.getTime()
+      _date.getFullYear(),
+      _date.getMonth(),
+      _date.getDate(),
+      _date.getHours(),
+      _date.getMinutes(),
+      _date.getSeconds(),
+      _date.getMilliseconds(),
+    ),
+  );
+  utcDate.setUTCFullYear(_date.getFullYear());
+  return +date - +utcDate;
 }

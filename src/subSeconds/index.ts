@@ -1,4 +1,4 @@
-import addSeconds from '../addSeconds/index'
+import { addSeconds } from "../addSeconds/index.js";
 
 /**
  * @name subSeconds
@@ -11,7 +11,7 @@ import addSeconds from '../addSeconds/index'
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
  * @param date - The date to be changed
- * @param amount - The amount of seconds to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @param amount - The amount of seconds to be subtracted.
  *
  * @returns The new date with the seconds subtracted
  *
@@ -20,9 +20,9 @@ import addSeconds from '../addSeconds/index'
  * const result = subSeconds(new Date(2014, 6, 10, 12, 45, 0), 30)
  * //=> Thu Jul 10 2014 12:44:30
  */
-export default function subSeconds<DateType extends Date>(
-  date: DateType | number,
-  amount: number
+export function subSeconds<DateType extends Date>(
+  date: DateType | number | string,
+  amount: number,
 ): DateType {
-  return addSeconds(date, -amount)
+  return addSeconds(date, -amount);
 }

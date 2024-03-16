@@ -1,17 +1,17 @@
-import isValid from '../isValid/index'
-import parse from '../parse/index'
+import { isValid } from "../isValid/index.js";
+import { parse } from "../parse/index.js";
 import type {
   AdditionalTokensOptions,
   FirstWeekContainsDateOptions,
   LocalizedOptions,
   WeekOptions,
-} from '../types'
+} from "../types.js";
 
 /**
  * The {@link isMatch} function options.
  */
 export interface IsMatchOptions
-  extends LocalizedOptions<'options' | 'match' | 'formatLong'>,
+  extends LocalizedOptions<"options" | "match" | "formatLong">,
     WeekOptions,
     FirstWeekContainsDateOptions,
     AdditionalTokensOptions {}
@@ -237,8 +237,8 @@ export interface IsMatchOptions
  *
  *    The same difference is true for local and ISO week-numbering years (`Y` and `R`),
  *    except local week-numbering years are dependent on `options.weekStartsOn`
- *    and `options.firstWeekContainsDate` (compare [setISOWeekYear]{@link https://date-fns.org/docs/setISOWeekYear}
- *    and [setWeekYear]{@link https://date-fns.org/docs/setWeekYear}).
+ *    and `options.firstWeekContainsDate` (compare [setISOWeekYear](https://date-fns.org/docs/setISOWeekYear)
+ *    and [setWeekYear](https://date-fns.org/docs/setWeekYear)).
  *
  * 5. These patterns are not in the Unicode Technical Standard #35:
  *    - `i`: ISO day of week
@@ -282,12 +282,12 @@ export interface IsMatchOptions
  *
  * @returns Is format string a match for date string?
  *
- * @throws {RangeError} `options.locale` must contain `match` property
- * @throws {RangeError} use `yyyy` instead of `YYYY` for formatting years; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
- * @throws {RangeError} use `yy` instead of `YY` for formatting years; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
- * @throws {RangeError} use `d` instead of `D` for formatting days of the month; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
- * @throws {RangeError} use `dd` instead of `DD` for formatting days of the month; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
- * @throws {RangeError} format string contains an unescaped latin alphabet character
+ * @throws `options.locale` must contain `match` property
+ * @throws use `yyyy` instead of `YYYY` for formatting years; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
+ * @throws use `yy` instead of `YY` for formatting years; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
+ * @throws use `d` instead of `D` for formatting days of the month; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
+ * @throws use `dd` instead of `DD` for formatting days of the month; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
+ * @throws format string contains an unescaped latin alphabet character
  *
  * @example
  * // Match 11 February 2014 from middle-endian format:
@@ -302,10 +302,10 @@ export interface IsMatchOptions
  * })
  * //=> true
  */
-export default function isMatch(
+export function isMatch(
   dateStr: string,
   formatStr: string,
-  options?: IsMatchOptions
+  options?: IsMatchOptions,
 ): boolean {
-  return isValid(parse(dateStr, formatStr, new Date(), options))
+  return isValid(parse(dateStr, formatStr, new Date(), options));
 }

@@ -1,4 +1,4 @@
-import { secondsInMinute } from '../constants/index'
+import { secondsInMinute } from "../constants/index.js";
 
 /**
  * @name secondsToMinutes
@@ -22,7 +22,7 @@ import { secondsInMinute } from '../constants/index'
  * const result = secondsToMinutes(119)
  * //=> 1
  */
-export default function secondsToMinutes(seconds: number): number {
-  const minutes = seconds / secondsInMinute
-  return Math.floor(minutes)
+export function secondsToMinutes(seconds: number): number {
+  const minutes = seconds / secondsInMinute;
+  return Math.trunc(minutes);
 }

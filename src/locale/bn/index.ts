@@ -1,21 +1,20 @@
-import type { Locale } from '../types'
-import formatDistance from './_lib/formatDistance/index'
-import formatLong from './_lib/formatLong/index'
-import formatRelative from './_lib/formatRelative/index'
-import localize from './_lib/localize/index'
-import match from './_lib/match/index'
+import type { Locale } from "../types.js";
+import { formatDistance } from "./_lib/formatDistance/index.js";
+import { formatLong } from "./_lib/formatLong/index.js";
+import { formatRelative } from "./_lib/formatRelative/index.js";
+import { localize } from "./_lib/localize/index.js";
+import { match } from "./_lib/match/index.js";
 
 /**
- * @type {Locale}
  * @category Locales
  * @summary Bengali locale.
  * @language Bengali
  * @iso-639-2 ben
- * @author Touhidur Rahman [@touhidrahman]{@link https://github.com/touhidrahman}
- * @author Farhad Yasir [@nutboltu]{@link https://github.com/nutboltu}
+ * @author Touhidur Rahman [@touhidrahman](https://github.com/touhidrahman)
+ * @author Farhad Yasir [@nutboltu](https://github.com/nutboltu)
  */
-const locale: Locale = {
-  code: 'bn',
+export const bn: Locale = {
+  code: "bn",
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
@@ -25,6 +24,4 @@ const locale: Locale = {
     weekStartsOn: 0 /* Sunday */,
     firstWeekContainsDate: 1,
   },
-}
-
-export default locale
+};

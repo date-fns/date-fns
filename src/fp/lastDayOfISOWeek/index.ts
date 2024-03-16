@@ -1,6 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.
 
-import fn from '../../lastDayOfISOWeek/index'
-import convertToFP from '../_lib/convertToFP/index'
+import { lastDayOfISOWeek as fn } from "../../lastDayOfISOWeek/index.js";
+import { convertToFP } from "../_lib/convertToFP/index.js";
 
-export default convertToFP(fn, 1)
+export const lastDayOfISOWeek = convertToFP(fn, 1);
