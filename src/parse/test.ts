@@ -1,6 +1,3 @@
-/* eslint-env mocha */
-
-import assert from "node:assert";
 import { describe, expect, it } from "vitest";
 import { parse, parseDate } from "./index.js";
 
