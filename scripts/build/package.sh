@@ -71,5 +71,7 @@ if [ -z "$PACKAGE_SKIP_BEAUTIFY" ]; then
   npx prettier "$dir" --write --ignore-path "" > /dev/null 2>&1 || exit 1
 fi
 
-# Build CDN versions
-bun ./scripts/build/cdn.ts
+if [ -z "$PACKAGE_SKIP_BEAUTIFY" ]; then
+  # Build CDN versions
+  bun ./scripts/build/cdn.ts
+fi
