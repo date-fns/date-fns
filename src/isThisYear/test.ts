@@ -1,14 +1,12 @@
-/* eslint-env mocha */
-
-import assert from "node:assert";
-import { afterEach, beforeEach, describe, it } from "vitest";
+import { UTCDate } from "@date-fns/utc";
 import sinon from "sinon";
+import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { isThisYear } from "./index.js";
 
 describe("isThisYear", () => {
   let clock: sinon.SinonFakeTimers;
   beforeEach(() => {
-    clock = sinon.useFakeTimers(new Date(2014, 8 /* Sep */, 25).getTime());
+    clock = sinon.useFakeTimers(new Date(2014, 0 /* Jan */, 1).getTime());
   });
 
   afterEach(() => {
@@ -17,16 +15,20 @@ describe("isThisYear", () => {
 
   it("returns true if the given date and the current date have the same year", () => {
     const date = new Date(2014, 6 /* Jul */, 2);
-    assert(isThisYear(date) === true);
+    expect(isThisYear(date)).toBe(true);
   });
 
   it("returns false if the given date and the current date have different years", () => {
     const date = new Date(2015, 6 /* Jul */, 2);
-    assert(isThisYear(date) === false);
+    expect(isThisYear(date)).toBe(false);
   });
 
   it("accepts a timestamp", () => {
     const date = new Date(2014, 6 /* Jul */, 2).getTime();
-    assert(isThisYear(date) === true);
+    expect(isThisYear(date)).toBe(true);
+  });
+
+  it("respects date extensions", () => {
+    expect(isThisYear(new UTCDate(+new Date(2014, 0 /* Jan */, 1)))).toBe(true);
   });
 });

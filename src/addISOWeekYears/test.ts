@@ -1,13 +1,10 @@
-/* eslint-env mocha */
-
-import assert from "node:assert";
-import { describe, it } from "vitest";
+import { describe, expect, it } from "vitest";
 import { addISOWeekYears } from "./index.js";
 
 describe("addISOWeekYears", () => {
   it("adds the given number of ISO week-numbering years", () => {
     const result = addISOWeekYears(new Date(2010, 6 /* Jul */, 2), 5);
-    assert.deepStrictEqual(result, new Date(2015, 5 /* Jun */, 26));
+    expect(result).toEqual(new Date(2015, 5 /* Jun */, 26));
   });
 
   it("accepts a timestamp", () => {
@@ -15,13 +12,13 @@ describe("addISOWeekYears", () => {
       new Date(2014, 8 /* Sep */, 1).getTime(),
       12,
     );
-    assert.deepStrictEqual(result, new Date(2026, 7 /* Aug */, 31));
+    expect(result).toEqual(new Date(2026, 7 /* Aug */, 31));
   });
 
   it("does not mutate the original date", () => {
     const date = new Date(2014, 8 /* Sep */, 1);
     addISOWeekYears(date, 12);
-    assert.deepStrictEqual(date, new Date(2014, 8 /* Sep */, 1));
+    expect(date).toEqual(new Date(2014, 8 /* Sep */, 1));
   });
 
   it("handles dates before 100 AD", () => {
@@ -32,16 +29,16 @@ describe("addISOWeekYears", () => {
     expectedResult.setFullYear(15, 5 /* Jun */, 26);
     expectedResult.setHours(0, 0, 0, 0);
     const result = addISOWeekYears(initialDate, 5);
-    assert.deepStrictEqual(result, expectedResult);
+    expect(result).toEqual(expectedResult);
   });
 
   it("returns `Invalid Date` if the given date is invalid", () => {
     const result = addISOWeekYears(new Date(NaN), 5);
-    assert(result instanceof Date && isNaN(result.getTime()));
+    expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
   });
 
   it("returns `Invalid Date` if the given amount is NaN", () => {
     const result = addISOWeekYears(new Date(2010, 6 /* Jul */, 2), NaN);
-    assert(result instanceof Date && isNaN(result.getTime()));
+    expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
   });
 });

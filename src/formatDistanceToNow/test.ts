@@ -1,8 +1,6 @@
-/* eslint-env mocha */
-
-import assert from "node:assert";
-import { describe, it, beforeEach, afterEach } from "vitest";
+import { UTCDate } from "@date-fns/utc";
 import sinon from "sinon";
+import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import type { FormatDistanceFn } from "../locale/types.js";
 import { formatDistanceToNow } from "./index.js";
 
@@ -22,42 +20,42 @@ describe("formatDistanceToNow", () => {
         const result = formatDistanceToNow(new Date(1986, 3, 4, 10, 31, 58), {
           includeSeconds: true,
         });
-        assert(result === "less than 5 seconds");
+        expect(result).toBe("less than 5 seconds");
       });
 
       it("less than 10 seconds", () => {
         const result = formatDistanceToNow(new Date(1986, 3, 4, 10, 31, 52), {
           includeSeconds: true,
         });
-        assert(result === "less than 10 seconds");
+        expect(result).toBe("less than 10 seconds");
       });
 
       it("less than 20 seconds", () => {
         const result = formatDistanceToNow(new Date(1986, 3, 4, 10, 31, 45), {
           includeSeconds: true,
         });
-        assert(result === "less than 20 seconds");
+        expect(result).toBe("less than 20 seconds");
       });
 
       it("half a minute", () => {
         const result = formatDistanceToNow(new Date(1986, 3, 4, 10, 31, 35), {
           includeSeconds: true,
         });
-        assert(result === "half a minute");
+        expect(result).toBe("half a minute");
       });
 
       it("less than a minute", () => {
         const result = formatDistanceToNow(new Date(1986, 3, 4, 10, 31, 15), {
           includeSeconds: true,
         });
-        assert(result === "less than a minute");
+        expect(result).toBe("less than a minute");
       });
 
       it("1 minute", () => {
         const result = formatDistanceToNow(new Date(1986, 3, 4, 10, 31, 0), {
           includeSeconds: true,
         });
-        assert(result === "1 minute");
+        expect(result).toBe("1 minute");
       });
     });
   });
@@ -65,80 +63,80 @@ describe("formatDistanceToNow", () => {
   describe("minutes", () => {
     it("less than a minute", () => {
       const result = formatDistanceToNow(new Date(1986, 3, 4, 10, 31, 40));
-      assert(result === "less than a minute");
+      expect(result).toBe("less than a minute");
     });
 
     it("1 minute", () => {
       const result = formatDistanceToNow(new Date(1986, 3, 4, 10, 31, 10));
-      assert(result === "1 minute");
+      expect(result).toBe("1 minute");
     });
 
     it("n minutes", () => {
       const result = formatDistanceToNow(new Date(1986, 3, 4, 10, 29, 10));
-      assert(result === "3 minutes");
+      expect(result).toBe("3 minutes");
     });
   });
 
   describe("hours", () => {
     it("about 1 hour", () => {
       const result = formatDistanceToNow(new Date(1986, 3, 4, 9, 32, 0));
-      assert(result === "about 1 hour");
+      expect(result).toBe("about 1 hour");
     });
 
     it("about n hours", () => {
       const result = formatDistanceToNow(new Date(1986, 3, 4, 7, 32, 0));
-      assert(result === "about 3 hours");
+      expect(result).toBe("about 3 hours");
     });
   });
 
   describe("days", () => {
     it("1 day", () => {
       const result = formatDistanceToNow(new Date(1986, 3, 3, 10, 32, 0));
-      assert(result === "1 day");
+      expect(result).toBe("1 day");
     });
 
     it("n days", () => {
       const result = formatDistanceToNow(new Date(1986, 3, 1, 10, 32, 0));
-      assert(result === "3 days");
+      expect(result).toBe("3 days");
     });
   });
 
   describe("months", () => {
     it("about 1 month", () => {
       const result = formatDistanceToNow(new Date(1986, 2, 4, 10, 32, 0));
-      assert(result === "about 1 month");
+      expect(result).toBe("about 1 month");
     });
 
     it("n months", () => {
       const result = formatDistanceToNow(new Date(1986, 0, 4, 10, 32, 0));
-      assert(result === "3 months");
+      expect(result).toBe("3 months");
     });
   });
 
   describe("years", () => {
     it("about 1 year", () => {
       const result = formatDistanceToNow(new Date(1985, 3, 4, 10, 32, 0));
-      assert(result === "about 1 year");
+      expect(result).toBe("about 1 year");
     });
 
     it("over 1 year", () => {
       const result = formatDistanceToNow(new Date(1984, 10, 4, 10, 32, 0));
-      assert(result === "over 1 year");
+      expect(result).toBe("over 1 year");
     });
 
     it("almost n years", () => {
       const result = formatDistanceToNow(new Date(1983, 4, 4, 10, 32, 0));
-      assert(result === "almost 3 years");
+      expect(result).toBe("almost 3 years");
     });
 
     it("about n years", () => {
       const result = formatDistanceToNow(new Date(1983, 3, 4, 10, 32, 0));
-      assert(result === "about 3 years");
+      expect(result).toBe("about 3 years");
     });
 
     it("over n years", () => {
       const result = formatDistanceToNow(new Date(1982, 10, 4, 10, 32, 0));
-      assert(result === "over 3 years");
+      expect(result).toBe("over 3 years");
     });
   });
 
@@ -146,7 +144,7 @@ describe("formatDistanceToNow", () => {
     const result = formatDistanceToNow(
       new Date(1986, 3, 4, 10, 31, 40).getTime(),
     );
-    assert(result === "less than a minute");
+    expect(result).toBe("less than a minute");
   });
 
   describe("when the addSuffix option is true", () => {
@@ -155,24 +153,24 @@ describe("formatDistanceToNow", () => {
         includeSeconds: true,
         addSuffix: true,
       });
-      assert(result === "half a minute ago");
+      expect(result).toBe("half a minute ago");
     });
 
     it("adds a future suffix", () => {
       const result = formatDistanceToNow(new Date(1986, 3, 4, 11, 32, 0), {
         addSuffix: true,
       });
-      assert(result === "in about 1 hour");
+      expect(result).toBe("in about 1 hour");
     });
   });
 
   describe("custom locale", () => {
     it("can be passed to the function", () => {
       const localizeDistance: FormatDistanceFn = (token, count, options) => {
-        assert(token === "aboutXHours");
-        assert(count === 1);
-        assert(options!.addSuffix === true);
-        assert(options!.comparison! > 0);
+        expect(token).toBe("aboutXHours");
+        expect(count).toBe(1);
+        expect(options!.addSuffix).toBe(true);
+        expect(options!.comparison!).toBeGreaterThan(0);
         return "It works!";
       };
 
@@ -185,11 +183,18 @@ describe("formatDistanceToNow", () => {
         locale: customLocale,
       });
 
-      assert(result === "It works!");
+      expect(result).toBe("It works!");
     });
   });
 
   it("throws RangeError if the passed date is `Invalid Date`", function () {
-    assert.throws(formatDistanceToNow.bind(null, new Date(NaN)), RangeError);
+    expect(formatDistanceToNow.bind(null, new Date(NaN))).toThrow(RangeError);
+  });
+
+  it("respects date extensions", () => {
+    const result = formatDistanceToNow(
+      new UTCDate(+new Date(1986, 3, 4, 9, 32, 0)),
+    );
+    expect(result).toBe("about 1 hour");
   });
 });

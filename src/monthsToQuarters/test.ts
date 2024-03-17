@@ -1,23 +1,20 @@
-/* eslint-env mocha */
-
-import assert from "node:assert";
 import { describe, expect, it } from "vitest";
 import { monthsToQuarters } from "./index.js";
 
 describe("monthsToQuarters", () => {
   it("converts months to quarters", () => {
-    assert(monthsToQuarters(3) === 1);
-    assert(monthsToQuarters(6) === 2);
+    expect(monthsToQuarters(3)).toBe(1);
+    expect(monthsToQuarters(6)).toBe(2);
   });
 
   it("uses floor rounding", () => {
-    assert(monthsToQuarters(4) === 1);
-    assert(monthsToQuarters(2) === 0);
+    expect(monthsToQuarters(4)).toBe(1);
+    expect(monthsToQuarters(2)).toBe(0);
   });
 
   it("handles border values", () => {
-    assert(monthsToQuarters(3.5) === 1);
-    assert(monthsToQuarters(0) === 0);
+    expect(monthsToQuarters(3.5)).toBe(1);
+    expect(monthsToQuarters(0)).toBe(0);
   });
 
   it("properly works with negative numbers", () => {

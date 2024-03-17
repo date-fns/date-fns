@@ -1,12 +1,9 @@
-/* eslint-env mocha */
-
-import assert from "node:assert";
 import { pipe } from "fp-ts/function";
 import { flow as jsFnsFlow } from "js-fns";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment -- Lodash types trip in different environemnts, so we can't put ts-expect-error
 // @ts-ignore - Lodash types are tripping ("Module '"lodash"' has no exported member 'flow'.ts(2305)")
 import { flow as lodashFlow } from "lodash";
-import { describe, it } from "vitest";
+import { describe, expect, it } from "vitest";
 import { addDays, addHours, isEqual } from "../../index.js";
 import { convertToFP } from "./index.js";
 
@@ -21,47 +18,47 @@ describe("convertToFP", () => {
   describe("arity of converted function === arity of initial function", () => {
     it("allows arguments to be curried (and reverses their order)", () => {
       const fpFn = convertToFP(fn, 3);
-      assert(fpFn(3)(2)(1) === "1 2 3");
+      expect(fpFn(3)(2)(1)).toBe("1 2 3");
     });
 
     it("allows to group arguments", () => {
       const fpFn = convertToFP(fn, 3);
-      assert(fpFn(3, 2)(1) === "1 2 3");
-      assert(fpFn(3)(2, 1) === "1 2 3");
+      expect(fpFn(3, 2)(1)).toBe("1 2 3");
+      expect(fpFn(3)(2, 1)).toBe("1 2 3");
     });
 
     it("allows the function to be called with all arguments in the reversed order", () => {
       const fpFn = convertToFP(fn, 3);
-      assert(fpFn(3, 2, 1) === "1 2 3");
+      expect(fpFn(3, 2, 1)).toBe("1 2 3");
     });
 
     it("ignores calls without curried arguments", () => {
       const fpFn = convertToFP(fn, 3);
-      assert(fpFn()()(3, 2)()()(1) === "1 2 3");
+      expect(fpFn()()(3, 2)()()(1)).toBe("1 2 3");
     });
 
     it("ignores extra curried arguments in the last group", () => {
       const fpFn = convertToFP(fn, 3);
       // @ts-expect-error - It's ok, we're testing the function
-      assert(fpFn(3, 2, 1, 0, -1, -2) === "1 2 3");
+      expect(fpFn(3, 2, 1, 0, -1, -2)).toBe("1 2 3");
       // @ts-expect-error - It's ok, we're testing the function
-      assert(fpFn(3)(2)(1, 0, -1, -2) === "1 2 3");
+      expect(fpFn(3)(2)(1, 0, -1, -2)).toBe("1 2 3");
     });
   });
 
   describe("arity of converted function < arity of initial function", () => {
     it("calls the initial function with a short list of arguments", () => {
       const fpFn = convertToFP(fn, 2);
-      assert(fpFn(2)(1) === "1 2 undefined");
-      assert(fpFn(2, 1) === "1 2 undefined");
+      expect(fpFn(2)(1)).toBe("1 2 undefined");
+      expect(fpFn(2, 1)).toBe("1 2 undefined");
     });
 
     it("ignores extra curried arguments in the last group", () => {
       const fpFn = convertToFP(fn, 2);
       // @ts-expect-error - It's ok, we're testing the function
-      assert(fpFn(3)(2, 1) === "2 3 undefined");
+      expect(fpFn(3)(2, 1)).toBe("2 3 undefined");
       // @ts-expect-error - It's ok, we're testing the function
-      assert(fpFn(3, 2, 1) === "2 3 undefined");
+      expect(fpFn(3, 2, 1)).toBe("2 3 undefined");
     });
   });
 
@@ -69,9 +66,9 @@ describe("convertToFP", () => {
     it("works, but ignores the extra arguments", () => {
       const fpFn = convertToFP(fn, 4);
       // @ts-expect-error - It's ok, we're testing the function
-      assert(fpFn(4)(3)(2)(1) === "1 2 3");
+      expect(fpFn(4)(3)(2)(1)).toBe("1 2 3");
       // @ts-expect-error - It's ok, we're testing the function
-      assert(fpFn(4, 3, 2, 1) === "1 2 3");
+      expect(fpFn(4, 3, 2, 1)).toBe("1 2 3");
     });
   });
 
@@ -79,8 +76,7 @@ describe("convertToFP", () => {
     it("returns the constant instead of function", () => {
       // @ts-expect-error - It's ok, we're testing the function
       const result = convertToFP(fn, 0);
-      // @ts-expect-error - It's ok, we're testing the function
-      assert(result === "undefined undefined undefined");
+      expect(result).toBe("undefined undefined undefined");
     });
   });
 
@@ -89,7 +85,7 @@ describe("convertToFP", () => {
       const fn1 = addDays();
       const fn2 = fn1(1);
       const result = fn2(new Date(1987, 1));
-      assert(result.getFullYear() === 1987);
+      expect(result.getFullYear()).toBe(1987);
     });
   });
 
@@ -97,8 +93,8 @@ describe("convertToFP", () => {
     it("works with flow", () => {
       const fn = lodashFlow(addDays(1), addHours(1));
       const result = fn(new Date(1987, 1, 11));
-      assert(result.getFullYear() === 1987);
-      assert.deepStrictEqual(result, new Date(1987, 1, 12, 1));
+      expect(result.getFullYear()).toBe(1987);
+      expect(result).toEqual(new Date(1987, 1, 12, 1));
     });
   });
 
@@ -109,7 +105,7 @@ describe("convertToFP", () => {
         isEqual(new Date(1987, 1, 11)),
       );
       const _assign: boolean = result;
-      assert(result);
+      expect(result).toBe(true);
     });
   });
 
@@ -117,8 +113,8 @@ describe("convertToFP", () => {
     it("works with flow", () => {
       const fn = jsFnsFlow(addDays(1), addHours(1));
       const result = fn(new Date(1987, 1, 11));
-      assert(result.getFullYear() === 1987);
-      assert.deepStrictEqual(result, new Date(1987, 1, 12, 1));
+      expect(result.getFullYear()).toBe(1987);
+      expect(result).toEqual(new Date(1987, 1, 12, 1));
     });
   });
 });

@@ -1,6 +1,3 @@
-/* eslint-env mocha */
-
-import assert from "node:assert";
 import { describe, expect, it } from "vitest";
 import { differenceInCalendarISOWeeks } from "./index.js";
 
@@ -10,7 +7,7 @@ describe("differenceInCalendarISOWeeks", () => {
       new Date(2014, 6 /* Jul */, 8, 18, 0),
       new Date(2014, 5 /* Jun */, 29, 6, 0),
     );
-    assert(result === 2);
+    expect(result).toBe(2);
   });
 
   it("returns a negative number if the time value of the first date is smaller", () => {
@@ -18,7 +15,7 @@ describe("differenceInCalendarISOWeeks", () => {
       new Date(2014, 5 /* Jun */, 29, 6, 0),
       new Date(2014, 6 /* Jul */, 8, 18, 0),
     );
-    assert(result === -2);
+    expect(result).toBe(-2);
   });
 
   it("accepts timestamps", () => {
@@ -26,7 +23,7 @@ describe("differenceInCalendarISOWeeks", () => {
       new Date(2014, 6 /* Jul */, 12).getTime(),
       new Date(2014, 6 /* Jul */, 2).getTime(),
     );
-    assert(result === 1);
+    expect(result).toBe(1);
   });
 
   describe("edge cases", () => {
@@ -35,7 +32,7 @@ describe("differenceInCalendarISOWeeks", () => {
         new Date(2014, 6 /* Jul */, 7),
         new Date(2014, 6 /* Jul */, 6),
       );
-      assert(result === 1);
+      expect(result).toBe(1);
     });
 
     it("the same for the swapped dates", () => {
@@ -43,7 +40,7 @@ describe("differenceInCalendarISOWeeks", () => {
         new Date(2014, 6 /* Jul */, 6),
         new Date(2014, 6 /* Jul */, 7),
       );
-      assert(result === -1);
+      expect(result).toBe(-1);
     });
 
     it("the days of weeks of the given dates are the same", () => {
@@ -51,7 +48,7 @@ describe("differenceInCalendarISOWeeks", () => {
         new Date(2014, 6 /* Jul */, 9),
         new Date(2014, 6 /* Jul */, 2),
       );
-      assert(result === 1);
+      expect(result).toBe(1);
     });
 
     it("the given dates are the same", () => {
@@ -59,7 +56,7 @@ describe("differenceInCalendarISOWeeks", () => {
         new Date(2014, 8 /* Sep */, 5, 0, 0),
         new Date(2014, 8 /* Sep */, 5, 0, 0),
       );
-      assert(result === 0);
+      expect(result).toBe(0);
     });
 
     it("does not return -0 when the given dates are the same", () => {
@@ -73,7 +70,7 @@ describe("differenceInCalendarISOWeeks", () => {
       );
 
       const resultIsNegative = isNegativeZero(result);
-      assert(resultIsNegative === false);
+      expect(resultIsNegative).toBe(false);
     });
 
     it("properly works with negative numbers", () => {
@@ -89,7 +86,7 @@ describe("differenceInCalendarISOWeeks", () => {
       new Date(NaN),
       new Date(2017, 0 /* Jan */, 1),
     );
-    assert(isNaN(result));
+    expect(isNaN(result)).toBe(true);
   });
 
   it("returns NaN if the second date is `Invalid Date`", () => {
@@ -97,11 +94,11 @@ describe("differenceInCalendarISOWeeks", () => {
       new Date(2017, 0 /* Jan */, 1),
       new Date(NaN),
     );
-    assert(isNaN(result));
+    expect(isNaN(result)).toBe(true);
   });
 
   it("returns NaN if the both dates are `Invalid Date`", () => {
     const result = differenceInCalendarISOWeeks(new Date(NaN), new Date(NaN));
-    assert(isNaN(result));
+    expect(isNaN(result)).toBe(true);
   });
 });

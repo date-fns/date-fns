@@ -75,7 +75,7 @@ Please follow the main contributing rules, to maintain date-fns' top quality:
 
 2. Fork the project, and clone your fork of the repo
 
-3. Run `npm` to install the dependencies
+3. Run `npm install` to install the dependencies
 
 ## Testing
 

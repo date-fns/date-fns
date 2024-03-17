@@ -1,8 +1,6 @@
-/* eslint-env mocha */
-
-import assert from "node:assert";
-import { describe, it, beforeEach, afterEach } from "vitest";
+import { UTCDate } from "@date-fns/utc";
 import sinon from "sinon";
+import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { isThisISOWeek } from "./index.js";
 
 describe("isSameISOWeek", () => {
@@ -17,16 +15,22 @@ describe("isSameISOWeek", () => {
 
   it("returns true if the given date and the current date have the same ISO week", () => {
     const date = new Date(2014, 8 /* Sep */, 22);
-    assert(isThisISOWeek(date) === true);
+    expect(isThisISOWeek(date)).toBe(true);
   });
 
   it("returns false if the given date and the current date have different ISO weeks", () => {
     const date = new Date(2014, 8 /* Sep */, 21);
-    assert(isThisISOWeek(date) === false);
+    expect(isThisISOWeek(date)).toBe(false);
   });
 
   it("accepts a timestamp", () => {
     const date = new Date(2014, 8 /* Sep */, 29).getTime();
-    assert(isThisISOWeek(date) === false);
+    expect(isThisISOWeek(date)).toBe(false);
+  });
+
+  it("respects date extensions", () => {
+    expect(isThisISOWeek(new UTCDate(+new Date(2014, 8 /* Sep */, 25)))).toBe(
+      true,
+    );
   });
 });
