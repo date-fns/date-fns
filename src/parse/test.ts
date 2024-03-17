@@ -1,3 +1,4 @@
+import assert from "assert";
 import { describe, expect, it } from "vitest";
 import { parse, parseDate } from "./index.js";
 
