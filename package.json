@@ -16,6 +16,7 @@
   "browser": "./index",
   "main": "./index.js",
   "module": "./index.mjs",
+  "jsdelivr": "./cdn.min.js",
   "exports": {
     "./package.json": "./package.json",
     ".": {
