@@ -3,7 +3,7 @@
  */
 
 import { $ } from "bun";
-import { writeFile } from "fs/promises";
+import { writeFile, readFile } from "fs/promises";
 import { dirname, join, relative } from "path";
 import { listLocales, type LocaleFile } from "../_lib/listLocales";
 import { availableParallelism } from "node:os";
@@ -52,10 +52,13 @@ Promise.all([
 
     // Make it compatible with older browser
     await promiseQueue(
-      paths.map(
-        (path) => () =>
-          $`env BABEL_ENV=cdn npx babel ${path} --out-file ${path} --source-maps`,
-      ),
+      paths.map((path) => async () => {
+        // Wrap into IIFE, to avoid polluting global scope
+        const content = await readFile(path, "utf-8");
+        await writeFile(path, `(() => { ${content} })();`);
+        // Use Babel to transpile
+        await $`env BABEL_ENV=cdn npx babel ${path} --out-file ${path} --source-maps`;
+      }),
       availableParallelism(),
     );
 
@@ -71,7 +74,7 @@ function indexTemplate() {
   return `import * as dateFns from "./index.mjs";
 window.dateFns = {
   ...window.dateFns,
-  dateFns
+  ...dateFns
 };`;
 }
 
@@ -84,11 +87,11 @@ window.dateFns = {
 }
 
 function localesIndexTemplate() {
-  return ` import * as locales from "../locale.mjs";
+  return `import * as locales from "../locale.mjs";
 window.dateFns = {
   ...window.dateFns,
   locale: {
-    ...window.dateFns.locale,
+    ...window.dateFns?.locale,
     ...locales
   }
 };`;
@@ -99,7 +102,7 @@ function localeTemplate({ name, code }: LocaleFile) {
 window.dateFns = {
   ...window.dateFns,
   locale: {
-    ...window.dateFns.locale,
+    ...window.dateFns?.locale,
     ${name}
   }
 };`;
