@@ -107,7 +107,7 @@ To test functions in a REPL, use `tsx`:
 npx tsx
 ```
 
-...and then require invididual functions:
+...and then require individual functions:
 
 ```sh
 > const toDate = require('./src/toDate').default
