@@ -8,6 +8,18 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## v3.6.0 - 2024-03-18
+
+On this release worked @kossnocorp and @world1dan. Also, thanks to [@seated](https://github.com/seated) [for sponsoring me](https://github.com/sponsors/kossnocorp).
+
+### Fixed
+
+- [Fixed weeks in the Belarisuan locale's `formatDistance`.](https://github.com/date-fns/date-fns/pull/3720)
+
+### Added
+
+- [Added CDN versions of modules compatible with older browsers.](https://github.com/date-fns/date-fns/pull/3737) [See the CDN guide.](https://date-fns.org/docs/CDN)
+
 ## v3.5.0 - 2024-03-15
 
 Kudos to @fturmel, @kossnocorp, @makstyle119, @tan75, @marcreichel, @tareknatsheh and @audunru for working on the release. Also, thanks to [@seated](https://github.com/seated) [for sponsoring me](https://github.com/sponsors/kossnocorp).
