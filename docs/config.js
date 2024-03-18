@@ -86,6 +86,14 @@ module.exports.config = {
     },
     {
       type: "markdown",
+      slug: "CDN",
+      category: "General",
+      title: "CDN",
+      summary: "CDN version of date-fns",
+      path: "cdn.md",
+    },
+    {
+      type: "markdown",
       slug: "webpack",
       category: "General",
       title: "webpack",
