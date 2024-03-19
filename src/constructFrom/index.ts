@@ -20,14 +20,14 @@ import type { GenericDateConstructor } from "../types.js";
  * @returns Date initialized using the given date and value
  *
  * @example
- * import { constructFrom } from 'date-fns'
+ * import { constructFrom } from "date-fns";
  *
  * // A function that clones a date preserving the original type
- * function cloneDate<DateType extends Date(date: DateType): DateType {
+ * function cloneDate<DateType extends Date>(date: DateType): DateType {
  *   return constructFrom(
  *     date, // Use contrustor from the given date
  *     date.getTime() // Use the date value to create a new date
- *   )
+ *   );
  * }
  */
 export function constructFrom<DateType extends Date>(
