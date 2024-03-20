@@ -6085,7 +6085,7 @@
     "lint": "eslint .",
     "types": "tsc --noEmit",
     "locale-snapshots": "env TZ=utc tsx ./scripts/build/localeSnapshots/index.ts",
-    "stats": "cloc . --exclude-dir=node_modules,tmp,.git,lib"
+    "stats": "cloc . --exclude-dir=node_modules,lib,examples,tmp,.git --exclude-ext=yaml,yml,json,svg,xml"
   },
   "devDependencies": {
     "@babel/cli": "^7.22.10",
