@@ -6,7 +6,7 @@ import { toDate } from "../toDate/index.js";
 
 /**
  * @name addBusinessDays
- * @category Date Extension Helpers
+ * @category Day Helpers
  * @summary Add the specified number of business days (mon - fri) to the given date.
  *
  * @description
