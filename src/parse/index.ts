@@ -56,8 +56,12 @@ const doubleQuoteRegExp = /''/g;
 const notWhitespaceRegExp = /\S/;
 const unescapedLatinCharacterRegExp = /[a-zA-Z]/;
 
+export { parse as parseDate };
+export type { ParseOptions as ParseDateOptions };
+
 /**
  * @name parse
+ * @alias parseDate
  * @category Common Helpers
  * @summary Parse the date.
  *
