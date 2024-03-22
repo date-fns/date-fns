@@ -5279,6 +5279,16 @@
         "default": "./locale/ckb.mjs"
       }
     },
+    "./locale/cnr": {
+      "require": {
+        "types": "./locale/cnr.d.ts",
+        "default": "./locale/cnr.js"
+      },
+      "import": {
+        "types": "./locale/cnr.d.mts",
+        "default": "./locale/cnr.mjs"
+      }
+    },
     "./locale/cs": {
       "require": {
         "types": "./locale/cs.d.ts",
