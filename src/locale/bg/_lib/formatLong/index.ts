@@ -5,7 +5,7 @@ const dateFormats = {
   full: "EEEE, dd MMMM yyyy",
   long: "dd MMMM yyyy",
   medium: "dd MMM yyyy",
-  short: "dd/MM/yyyy",
+  short: 'dd.MM.yyyy',
 };
 
 const timeFormats = {
