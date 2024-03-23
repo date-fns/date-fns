@@ -2259,13 +2259,6 @@ describe("parse", () => {
       expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
     });
 
-    it("H, h, m, s parsers returns Invalid Date if the digits of `formatString` does not match exactly that of the `datestring`", () => {
-      ["HH", "hh", "mm", "ss"].forEach((token) => {
-        const result = parse("1", token, referenceDate);
-        assert(result instanceof Date && isNaN(result.getTime()));
-      });
-    });
-
     it("parses normally if the remaining input is just whitespace", () => {
       const result = parse("2016-11-05   \n", "yyyy-MM-dd", referenceDate);
       expect(result).toEqual(new Date(2016, 10 /* Nov */, 5));
@@ -2275,6 +2268,53 @@ describe("parse", () => {
       expect(() =>
         parse("2016-11-05-nnnn", "yyyy-MM-dd-nnnn", referenceDate),
       ).toThrow(RangeError);
+    });
+  });
+
+  describe("strict mode", () => {
+    it("works as expected if the digits match", () => {
+      const result = parse(
+        "2024-03-22 15:10:05",
+        "y-MM-d HH:m:ss",
+        referenceDate,
+      );
+      expect(result).toEqual(new Date(2024, 2 /* march */, 22, 15, 10, 5));
+    });
+
+    it("returns Invalid Date if the digits of `formatString` does not match exactly that of the `datestring`", () => {
+      const tokensToValidate: Array<
+        [string, string, { useAdditionalDayOfYearTokens: boolean }?]
+      > = [
+        ["y", "01"],
+        ["yy", "1"],
+        ["yy", "100"],
+        ["yyy", "0100"],
+        ["yyyy", "100"],
+        ["yyyyy", "10"],
+        ["u", "-01"],
+        ["uu", "-1"],
+        ["uuu", "-1234"],
+        ["uuuu", "-01234"],
+        ["uuuuu", "-01"],
+        ["D", "01", { useAdditionalDayOfYearTokens: true }],
+        ["DD", "0100", { useAdditionalDayOfYearTokens: true }],
+        ["K", "01"],
+        ["KK", "010"],
+        ["m", "00"],
+        ["mm", "1"],
+        ["S", "10"],
+        ["SS", "1"],
+        ["SSS", "10"],
+        ["SSSS", "01000"],
+        ["SSSSS", "999999"],
+      ];
+      tokensToValidate.forEach(([token, example, options = {}]) => {
+        const result = parse(example, token, referenceDate, {
+          ...options,
+          strict: true,
+        });
+        expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
+      });
     });
   });
 

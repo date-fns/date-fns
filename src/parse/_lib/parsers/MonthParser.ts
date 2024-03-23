@@ -1,8 +1,13 @@
 import type { Match } from "../../../locale/types.js";
 import { numericPatterns } from "../constants.js";
 import { Parser } from "../Parser.js";
-import type { ParseFlags, ParseResult } from "../types.js";
-import { mapValue, parseNDigits, parseNumericPattern } from "../utils.js";
+import type { ParseFlags, ParseResult, ParserOptions } from "../types.js";
+import {
+  mapValue,
+  parseNDigits,
+  parseMinNDigits,
+  parseNumericPattern,
+} from "../utils.js";
 
 export class MonthParser extends Parser<number> {
   incompatibleTokens = [
@@ -22,19 +27,30 @@ export class MonthParser extends Parser<number> {
   ];
   priority = 110;
 
-  parse(dateString: string, token: string, match: Match): ParseResult<number> {
+  parse(
+    dateString: string,
+    token: string,
+    match: Match,
+    options: ParserOptions,
+  ): ParseResult<number> {
     const valueCallback = (value: number) => value - 1;
 
     switch (token) {
       // 1, 2, ..., 12
-      case "M":
+      case "M": {
+        const pattern = options.strict
+          ? numericPatterns.minSingleDigits
+          : numericPatterns.month;
         return mapValue(
-          parseNumericPattern(numericPatterns.month, dateString),
+          parseNumericPattern(pattern, dateString),
           valueCallback,
         );
+      }
       // 01, 02, ..., 12
-      case "MM":
-        return mapValue(parseNDigits(2, dateString), valueCallback);
+      case "MM": {
+        const parseFn = options.strict ? parseMinNDigits : parseNDigits;
+        return mapValue(parseFn(2, dateString), valueCallback);
+      }
       // 1st, 2nd, ..., 12th
       case "Mo":
         return mapValue(

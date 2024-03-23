@@ -1,20 +1,35 @@
 import type { Match } from "../../../locale/types.js";
 import { numericPatterns } from "../constants.js";
 import { Parser } from "../Parser.js";
-import type { ParseFlags, ParseResult } from "../types.js";
-import { parseNumericPattern } from "../utils.js";
+import type { ParseFlags, ParseResult, ParserOptions } from "../types.js";
+import {
+  parseNDigits,
+  parseNumericPattern,
+  parseMinNDigits,
+} from "../utils.js";
 
 export class Hour1to12Parser extends Parser<number> {
   priority = 70;
 
-  parse(dateString: string, token: string, match: Match): ParseResult<number> {
+  parse(
+    dateString: string,
+    token: string,
+    match: Match,
+    options: ParserOptions,
+  ): ParseResult<number> {
     switch (token) {
-      case "h":
-        return parseNumericPattern(numericPatterns.hour12h, dateString);
+      case "h": {
+        const pattern = options.strict
+          ? numericPatterns.minSingleDigits
+          : numericPatterns.hour12h;
+        return parseNumericPattern(pattern, dateString);
+      }
       case "ho":
         return match.ordinalNumber(dateString, { unit: "hour" });
-      default:
-        return parseNumericPattern(numericPatterns.exactTwoDigits, dateString);
+      default: {
+        const parseFn = options.strict ? parseMinNDigits : parseNDigits;
+        return parseFn(token.length, dateString);
+      }
     }
   }
 

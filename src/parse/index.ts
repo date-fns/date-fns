@@ -17,7 +17,11 @@ import {
 import { parsers } from "./_lib/parsers/index.js";
 import type { Setter } from "./_lib/Setter.js";
 import { DateToSystemTimezoneSetter } from "./_lib/Setter.js";
-import type { ParseFlags, ParserOptions } from "./_lib/types.js";
+import type {
+  ParseFlags,
+  ParserOptions,
+  StrictModeOptions,
+} from "./_lib/types.js";
 
 // Rexports of internal for libraries to use.
 // See: https://github.com/date-fns/date-fns/issues/3638#issuecomment-1877082874
@@ -30,7 +34,8 @@ export interface ParseOptions
   extends LocalizedOptions<"options" | "match" | "formatLong">,
     FirstWeekContainsDateOptions,
     WeekOptions,
-    AdditionalTokensOptions {}
+    AdditionalTokensOptions,
+    StrictModeOptions {}
 
 // This RegExp consists of three parts separated by `|`:
 // - [yYQqMLwIdDecihHKkms]o matches any available ordinal number token
@@ -376,6 +381,8 @@ export function parse<DateType extends Date>(
     defaultOptions.locale?.options?.weekStartsOn ??
     0;
 
+  const strict = options?.strict ?? false;
+
   if (formatStr === "") {
     if (dateStr === "") {
       return toDate(referenceDate);
@@ -388,6 +395,7 @@ export function parse<DateType extends Date>(
     firstWeekContainsDate,
     weekStartsOn,
     locale,
+    strict,
   };
 
   // If timezone isn't specified, it will be set to the system timezone

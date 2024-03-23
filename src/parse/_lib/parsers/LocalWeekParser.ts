@@ -4,20 +4,35 @@ import { startOfWeek } from "../../../startOfWeek/index.js";
 import { numericPatterns } from "../constants.js";
 import { Parser } from "../Parser.js";
 import type { ParseFlags, ParseResult, ParserOptions } from "../types.js";
-import { parseNDigits, parseNumericPattern } from "../utils.js";
+import {
+  parseNDigits,
+  parseMinNDigits,
+  parseNumericPattern,
+} from "../utils.js";
 
 // Local week of year
 export class LocalWeekParser extends Parser<number> {
   priority = 100;
 
-  parse(dateString: string, token: string, match: Match): ParseResult<number> {
+  parse(
+    dateString: string,
+    token: string,
+    match: Match,
+    options: ParserOptions,
+  ): ParseResult<number> {
     switch (token) {
-      case "w":
-        return parseNumericPattern(numericPatterns.week, dateString);
+      case "w": {
+        const pattern = options.strict
+          ? numericPatterns.minSingleDigits
+          : numericPatterns.week;
+        return parseNumericPattern(pattern, dateString);
+      }
       case "wo":
         return match.ordinalNumber(dateString, { unit: "week" });
-      default:
-        return parseNDigits(token.length, dateString);
+      default: {
+        const parseFn = options.strict ? parseMinNDigits : parseNDigits;
+        return parseFn(token.length, dateString);
+      }
     }
   }
 
