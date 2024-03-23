@@ -1,7 +1,14 @@
 import type { Match } from "../../../locale/types.js";
 import { Parser } from "../Parser.js";
-import type { ParseFlags, ParseResult } from "../types.js";
-import { mapValue, normalizeTwoDigitYear, parseNDigits } from "../utils.js";
+import { numericPatterns } from "../constants.js";
+import type { ParseFlags, ParseResult, ParserOptions } from "../types.js";
+import {
+  mapValue,
+  normalizeTwoDigitYear,
+  parseNDigits,
+  parseMinNDigits,
+  parseNumericPattern,
+} from "../utils.js";
 
 export interface YearParserValue {
   year: number;
@@ -24,6 +31,7 @@ export class YearParser extends Parser<YearParserValue> {
     dateString: string,
     token: string,
     match: Match,
+    options: ParserOptions,
   ): ParseResult<YearParserValue> {
     const valueCallback = (year: number) => ({
       year,
@@ -32,7 +40,9 @@ export class YearParser extends Parser<YearParserValue> {
 
     switch (token) {
       case "y":
-        return mapValue(parseNDigits(4, dateString), valueCallback);
+        return options.strict
+          ? mapValue(parseMinNDigits(1, dateString), valueCallback)
+          : mapValue(parseNDigits(4, dateString), valueCallback);
       case "yo":
         return mapValue(
           match.ordinalNumber(dateString, {
@@ -40,8 +50,19 @@ export class YearParser extends Parser<YearParserValue> {
           }),
           valueCallback,
         );
-      default:
-        return mapValue(parseNDigits(token.length, dateString), valueCallback);
+      case "yy": {
+        const pattern = options.strict
+          ? numericPatterns.exactTwoDigits
+          : numericPatterns.twoDigits;
+        return mapValue(
+          parseNumericPattern(pattern, dateString),
+          valueCallback,
+        );
+      }
+      default: {
+        const parseFn = options.strict ? parseMinNDigits : parseNDigits;
+        return mapValue(parseFn(token.length, dateString), valueCallback);
+      }
     }
   }
 

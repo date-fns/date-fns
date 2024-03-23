@@ -9,8 +9,15 @@ export interface ParseFlags {
   era?: number;
 }
 
+export type StrictModeOptions = {
+  strict?: boolean;
+};
+
 export type ParserOptions = Required<
-  LocalizedOptions<"options"> & FirstWeekContainsDateOptions & WeekOptions
+  LocalizedOptions<"options"> &
+    FirstWeekContainsDateOptions &
+    WeekOptions &
+    StrictModeOptions
 >;
 
 export type ParseResult<TValue> = { value: TValue; rest: string } | null;

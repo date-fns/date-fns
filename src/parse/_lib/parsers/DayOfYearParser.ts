@@ -1,11 +1,12 @@
 import type { Match } from "../../../locale/types.js";
 import { numericPatterns } from "../constants.js";
 import { Parser } from "../Parser.js";
-import type { ParseFlags, ParseResult } from "../types.js";
+import type { ParseFlags, ParseResult, ParserOptions } from "../types.js";
 import {
   isLeapYearIndex,
   parseNDigits,
   parseNumericPattern,
+  parseMinNDigits,
 } from "../utils.js";
 
 export class DayOfYearParser extends Parser<number> {
@@ -13,15 +14,24 @@ export class DayOfYearParser extends Parser<number> {
 
   subpriority = 1;
 
-  parse(dateString: string, token: string, match: Match): ParseResult<number> {
+  parse(
+    dateString: string,
+    token: string,
+    match: Match,
+    options: ParserOptions,
+  ): ParseResult<number> {
     switch (token) {
       case "D":
       case "DD":
-        return parseNumericPattern(numericPatterns.dayOfYear, dateString);
+        return options.strict
+          ? parseMinNDigits(token.length, dateString)
+          : parseNumericPattern(numericPatterns.dayOfYear, dateString);
       case "Do":
         return match.ordinalNumber(dateString, { unit: "date" });
-      default:
-        return parseNDigits(token.length, dateString);
+      default: {
+        const parseFn = options.strict ? parseMinNDigits : parseNDigits;
+        return parseFn(token.length, dateString);
+      }
     }
   }
 

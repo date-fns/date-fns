@@ -15,11 +15,26 @@ export const numericPatterns = {
   threeDigits: /^\d{1,3}/, // 0 to 999
   fourDigits: /^\d{1,4}/, // 0 to 9999
 
+  exactTwoDigits: /^\d{2}/, // 00 to 99
+  exactThreeDigits: /^\d{3}/, // 00 to 99
+  exactFourDigits: /^\d{4}/, // 00 to 99
+
+  minSingleDigits: /^(?!0\d)\d+/, // more than 0
+  minTwoDigits: /(^(?!0\d)\d{3,})|(\d{2})/, // more than 00
+  minThreeDigits: /(^(?!0\d)\d{4,})|(\d{3})/, // more than 000
+  minFourDigits: /(^(?!0\d)\d{5,})|(\d{4})/, // more than 0000
+
   anyDigitsSigned: /^-?\d+/,
   singleDigitSigned: /^-?\d/, // 0 to 9, -0 to -9
   twoDigitsSigned: /^-?\d{1,2}/, // 0 to 99, -0 to -99
   threeDigitsSigned: /^-?\d{1,3}/, // 0 to 999, -0 to -999
   fourDigitsSigned: /^-?\d{1,4}/, // 0 to 9999, -0 to -9999
+
+  exactTwoDigitsSigned: /^-?\d{2}/, // 0 to 99, -0 to -99
+  exactThreeDigitsSigned: /^-?\d{3}/, // 0 to 999, -0 to -999
+  exactFourDigitsSigned: /^-?\d{4}/, // 0 to 9999, -0 to -9999
+
+  minSingleDigitSigned: /^-?(?!0\d)\d+/, // more than 0, less than -0, not starting with 0
 };
 
 export const timezonePatterns = {
