@@ -14,7 +14,7 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   },
 
   xSeconds: {
-    one: "1 segundo",
+    one: "segundo bat",
     other: "{{count}} segundo",
   },
 
@@ -26,22 +26,22 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   },
 
   xMinutes: {
-    one: "1 minutu",
+    one: "minutu bat",
     other: "{{count}} minutu",
   },
 
   aboutXHours: {
-    one: "1 ordu gutxi gorabehera",
+    one: "ordu bat gutxi gorabehera",
     other: "{{count}} ordu gutxi gorabehera",
   },
 
   xHours: {
-    one: "1 ordu",
+    one: "ordu bat",
     other: "{{count}} ordu",
   },
 
   xDays: {
-    one: "1 egun",
+    one: "egun bat",
     other: "{{count}} egun",
   },
 
@@ -51,37 +51,37 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   },
 
   xWeeks: {
-    one: "1 aste",
+    one: "aste bat",
     other: "{{count}} astean",
   },
 
   aboutXMonths: {
-    one: "1 hilabete gutxi gorabehera",
+    one: "hilabete bat gutxi gorabehera",
     other: "{{count}} hilabete gutxi gorabehera",
   },
 
   xMonths: {
-    one: "1 hilabete",
+    one: "hilabete bat",
     other: "{{count}} hilabete",
   },
 
   aboutXYears: {
-    one: "1 urte gutxi gorabehera",
+    one: "urte bat gutxi gorabehera",
     other: "{{count}} urte gutxi gorabehera",
   },
 
   xYears: {
-    one: "1 urte",
+    one: "urte bat",
     other: "{{count}} urte",
   },
 
   overXYears: {
-    one: "1 urte baino gehiago",
+    one: "urte bat baino gehiago",
     other: "{{count}} urte baino gehiago",
   },
 
   almostXYears: {
-    one: "ia 1 urte",
+    one: "ia urte bat",
     other: "ia {{count}} urte",
   },
 };
@@ -100,7 +100,7 @@ export const formatDistance: FormatDistanceFn = (token, count, options) => {
 
   if (options?.addSuffix) {
     if (options.comparison && options.comparison > 0) {
-      return "en " + result;
+      return result + " barru";
     } else {
       return "duela " + result;
     }
