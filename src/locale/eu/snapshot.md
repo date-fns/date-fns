@@ -393,105 +393,105 @@
 
 If now is January 1st, 2000, 00:00.
 
-| Date                     | Result                      | `includeSeconds: true`      | `addSuffix: true`                 |
-| ------------------------ | --------------------------- | --------------------------- | --------------------------------- |
-| 2006-01-01T00:00:00.000Z | 6 urte gutxi gorabehera     | 6 urte gutxi gorabehera     | en 6 urte gutxi gorabehera        |
-| 2005-01-01T00:00:00.000Z | 5 urte gutxi gorabehera     | 5 urte gutxi gorabehera     | en 5 urte gutxi gorabehera        |
-| 2004-01-01T00:00:00.000Z | 4 urte gutxi gorabehera     | 4 urte gutxi gorabehera     | en 4 urte gutxi gorabehera        |
-| 2003-01-01T00:00:00.000Z | 3 urte gutxi gorabehera     | 3 urte gutxi gorabehera     | en 3 urte gutxi gorabehera        |
-| 2002-01-01T00:00:00.000Z | 2 urte gutxi gorabehera     | 2 urte gutxi gorabehera     | en 2 urte gutxi gorabehera        |
-| 2001-06-01T00:00:00.000Z | 1 urte baino gehiago        | 1 urte baino gehiago        | en 1 urte baino gehiago           |
-| 2001-02-01T00:00:00.000Z | 1 urte gutxi gorabehera     | 1 urte gutxi gorabehera     | en 1 urte gutxi gorabehera        |
-| 2001-01-01T00:00:00.000Z | 1 urte gutxi gorabehera     | 1 urte gutxi gorabehera     | en 1 urte gutxi gorabehera        |
-| 2000-06-01T00:00:00.000Z | 5 hilabete                  | 5 hilabete                  | en 5 hilabete                     |
-| 2000-03-01T00:00:00.000Z | 2 hilabete                  | 2 hilabete                  | en 2 hilabete                     |
-| 2000-02-01T00:00:00.000Z | 1 hilabete gutxi gorabehera | 1 hilabete gutxi gorabehera | en 1 hilabete gutxi gorabehera    |
-| 2000-01-15T00:00:00.000Z | 14 egun                     | 14 egun                     | en 14 egun                        |
-| 2000-01-02T00:00:00.000Z | 1 egun                      | 1 egun                      | en 1 egun                         |
-| 2000-01-01T06:00:00.000Z | 6 ordu gutxi gorabehera     | 6 ordu gutxi gorabehera     | en 6 ordu gutxi gorabehera        |
-| 2000-01-01T01:00:00.000Z | 1 ordu gutxi gorabehera     | 1 ordu gutxi gorabehera     | en 1 ordu gutxi gorabehera        |
-| 2000-01-01T00:45:00.000Z | 1 ordu gutxi gorabehera     | 1 ordu gutxi gorabehera     | en 1 ordu gutxi gorabehera        |
-| 2000-01-01T00:30:00.000Z | 30 minutu                   | 30 minutu                   | en 30 minutu                      |
-| 2000-01-01T00:15:00.000Z | 15 minutu                   | 15 minutu                   | en 15 minutu                      |
-| 2000-01-01T00:01:00.000Z | 1 minutu                    | 1 minutu                    | en 1 minutu                       |
-| 2000-01-01T00:00:25.000Z | minutu bat baino gutxiago   | minutu erdi                 | en minutu bat baino gutxiago      |
-| 2000-01-01T00:00:15.000Z | minutu bat baino gutxiago   | 20 segundo baino gutxiago   | en minutu bat baino gutxiago      |
-| 2000-01-01T00:00:05.000Z | minutu bat baino gutxiago   | 10 segundo baino gutxiago   | en minutu bat baino gutxiago      |
-| 2000-01-01T00:00:00.000Z | minutu bat baino gutxiago   | 5 segundo baino gutxiago    | duela minutu bat baino gutxiago   |
-| 1999-12-31T23:59:55.000Z | minutu bat baino gutxiago   | 10 segundo baino gutxiago   | duela minutu bat baino gutxiago   |
-| 1999-12-31T23:59:45.000Z | minutu bat baino gutxiago   | 20 segundo baino gutxiago   | duela minutu bat baino gutxiago   |
-| 1999-12-31T23:59:35.000Z | minutu bat baino gutxiago   | minutu erdi                 | duela minutu bat baino gutxiago   |
-| 1999-12-31T23:59:00.000Z | 1 minutu                    | 1 minutu                    | duela 1 minutu                    |
-| 1999-12-31T23:45:00.000Z | 15 minutu                   | 15 minutu                   | duela 15 minutu                   |
-| 1999-12-31T23:30:00.000Z | 30 minutu                   | 30 minutu                   | duela 30 minutu                   |
-| 1999-12-31T23:15:00.000Z | 1 ordu gutxi gorabehera     | 1 ordu gutxi gorabehera     | duela 1 ordu gutxi gorabehera     |
-| 1999-12-31T23:00:00.000Z | 1 ordu gutxi gorabehera     | 1 ordu gutxi gorabehera     | duela 1 ordu gutxi gorabehera     |
-| 1999-12-31T18:00:00.000Z | 6 ordu gutxi gorabehera     | 6 ordu gutxi gorabehera     | duela 6 ordu gutxi gorabehera     |
-| 1999-12-30T00:00:00.000Z | 2 egun                      | 2 egun                      | duela 2 egun                      |
-| 1999-12-15T00:00:00.000Z | 17 egun                     | 17 egun                     | duela 17 egun                     |
-| 1999-12-01T00:00:00.000Z | 1 hilabete gutxi gorabehera | 1 hilabete gutxi gorabehera | duela 1 hilabete gutxi gorabehera |
-| 1999-11-01T00:00:00.000Z | 2 hilabete                  | 2 hilabete                  | duela 2 hilabete                  |
-| 1999-06-01T00:00:00.000Z | 7 hilabete                  | 7 hilabete                  | duela 7 hilabete                  |
-| 1999-01-01T00:00:00.000Z | 1 urte gutxi gorabehera     | 1 urte gutxi gorabehera     | duela 1 urte gutxi gorabehera     |
-| 1998-12-01T00:00:00.000Z | 1 urte gutxi gorabehera     | 1 urte gutxi gorabehera     | duela 1 urte gutxi gorabehera     |
-| 1998-06-01T00:00:00.000Z | 1 urte baino gehiago        | 1 urte baino gehiago        | duela 1 urte baino gehiago        |
-| 1998-01-01T00:00:00.000Z | 2 urte gutxi gorabehera     | 2 urte gutxi gorabehera     | duela 2 urte gutxi gorabehera     |
-| 1997-01-01T00:00:00.000Z | 3 urte gutxi gorabehera     | 3 urte gutxi gorabehera     | duela 3 urte gutxi gorabehera     |
-| 1996-01-01T00:00:00.000Z | 4 urte gutxi gorabehera     | 4 urte gutxi gorabehera     | duela 4 urte gutxi gorabehera     |
-| 1995-01-01T00:00:00.000Z | 5 urte gutxi gorabehera     | 5 urte gutxi gorabehera     | duela 5 urte gutxi gorabehera     |
-| 1994-01-01T00:00:00.000Z | 6 urte gutxi gorabehera     | 6 urte gutxi gorabehera     | duela 6 urte gutxi gorabehera     |
+| Date                     | Result                        | `includeSeconds: true`        | `addSuffix: true`                   |
+| ------------------------ | ----------------------------- | ----------------------------- | ----------------------------------- |
+| 2006-01-01T00:00:00.000Z | 6 urte gutxi gorabehera       | 6 urte gutxi gorabehera       | 6 urte gutxi gorabehera barru       |
+| 2005-01-01T00:00:00.000Z | 5 urte gutxi gorabehera       | 5 urte gutxi gorabehera       | 5 urte gutxi gorabehera barru       |
+| 2004-01-01T00:00:00.000Z | 4 urte gutxi gorabehera       | 4 urte gutxi gorabehera       | 4 urte gutxi gorabehera barru       |
+| 2003-01-01T00:00:00.000Z | 3 urte gutxi gorabehera       | 3 urte gutxi gorabehera       | 3 urte gutxi gorabehera barru       |
+| 2002-01-01T00:00:00.000Z | 2 urte gutxi gorabehera       | 2 urte gutxi gorabehera       | 2 urte gutxi gorabehera barru       |
+| 2001-06-01T00:00:00.000Z | urte bat baino gehiago        | urte bat baino gehiago        | urte bat baino gehiago barru        |
+| 2001-02-01T00:00:00.000Z | urte bat gutxi gorabehera     | urte bat gutxi gorabehera     | urte bat gutxi gorabehera barru     |
+| 2001-01-01T00:00:00.000Z | urte bat gutxi gorabehera     | urte bat gutxi gorabehera     | urte bat gutxi gorabehera barru     |
+| 2000-06-01T00:00:00.000Z | 5 hilabete                    | 5 hilabete                    | 5 hilabete barru                    |
+| 2000-03-01T00:00:00.000Z | 2 hilabete                    | 2 hilabete                    | 2 hilabete barru                    |
+| 2000-02-01T00:00:00.000Z | hilabete bat gutxi gorabehera | hilabete bat gutxi gorabehera | hilabete bat gutxi gorabehera barru |
+| 2000-01-15T00:00:00.000Z | 14 egun                       | 14 egun                       | 14 egun barru                       |
+| 2000-01-02T00:00:00.000Z | egun bat                      | egun bat                      | egun bat barru                      |
+| 2000-01-01T06:00:00.000Z | 6 ordu gutxi gorabehera       | 6 ordu gutxi gorabehera       | 6 ordu gutxi gorabehera barru       |
+| 2000-01-01T01:00:00.000Z | ordu bat gutxi gorabehera     | ordu bat gutxi gorabehera     | ordu bat gutxi gorabehera barru     |
+| 2000-01-01T00:45:00.000Z | ordu bat gutxi gorabehera     | ordu bat gutxi gorabehera     | ordu bat gutxi gorabehera barru     |
+| 2000-01-01T00:30:00.000Z | 30 minutu                     | 30 minutu                     | 30 minutu barru                     |
+| 2000-01-01T00:15:00.000Z | 15 minutu                     | 15 minutu                     | 15 minutu barru                     |
+| 2000-01-01T00:01:00.000Z | minutu bat                    | minutu bat                    | minutu bat barru                    |
+| 2000-01-01T00:00:25.000Z | minutu bat baino gutxiago     | minutu erdi                   | minutu bat baino gutxiago barru     |
+| 2000-01-01T00:00:15.000Z | minutu bat baino gutxiago     | 20 segundo baino gutxiago     | minutu bat baino gutxiago barru     |
+| 2000-01-01T00:00:05.000Z | minutu bat baino gutxiago     | 10 segundo baino gutxiago     | minutu bat baino gutxiago barru     |
+| 2000-01-01T00:00:00.000Z | minutu bat baino gutxiago     | 5 segundo baino gutxiago      | duela minutu bat baino gutxiago     |
+| 1999-12-31T23:59:55.000Z | minutu bat baino gutxiago     | 10 segundo baino gutxiago     | duela minutu bat baino gutxiago     |
+| 1999-12-31T23:59:45.000Z | minutu bat baino gutxiago     | 20 segundo baino gutxiago     | duela minutu bat baino gutxiago     |
+| 1999-12-31T23:59:35.000Z | minutu bat baino gutxiago     | minutu erdi                   | duela minutu bat baino gutxiago     |
+| 1999-12-31T23:59:00.000Z | minutu bat                    | minutu bat                    | duela minutu bat                    |
+| 1999-12-31T23:45:00.000Z | 15 minutu                     | 15 minutu                     | duela 15 minutu                     |
+| 1999-12-31T23:30:00.000Z | 30 minutu                     | 30 minutu                     | duela 30 minutu                     |
+| 1999-12-31T23:15:00.000Z | ordu bat gutxi gorabehera     | ordu bat gutxi gorabehera     | duela ordu bat gutxi gorabehera     |
+| 1999-12-31T23:00:00.000Z | ordu bat gutxi gorabehera     | ordu bat gutxi gorabehera     | duela ordu bat gutxi gorabehera     |
+| 1999-12-31T18:00:00.000Z | 6 ordu gutxi gorabehera       | 6 ordu gutxi gorabehera       | duela 6 ordu gutxi gorabehera       |
+| 1999-12-30T00:00:00.000Z | 2 egun                        | 2 egun                        | duela 2 egun                        |
+| 1999-12-15T00:00:00.000Z | 17 egun                       | 17 egun                       | duela 17 egun                       |
+| 1999-12-01T00:00:00.000Z | hilabete bat gutxi gorabehera | hilabete bat gutxi gorabehera | duela hilabete bat gutxi gorabehera |
+| 1999-11-01T00:00:00.000Z | 2 hilabete                    | 2 hilabete                    | duela 2 hilabete                    |
+| 1999-06-01T00:00:00.000Z | 7 hilabete                    | 7 hilabete                    | duela 7 hilabete                    |
+| 1999-01-01T00:00:00.000Z | urte bat gutxi gorabehera     | urte bat gutxi gorabehera     | duela urte bat gutxi gorabehera     |
+| 1998-12-01T00:00:00.000Z | urte bat gutxi gorabehera     | urte bat gutxi gorabehera     | duela urte bat gutxi gorabehera     |
+| 1998-06-01T00:00:00.000Z | urte bat baino gehiago        | urte bat baino gehiago        | duela urte bat baino gehiago        |
+| 1998-01-01T00:00:00.000Z | 2 urte gutxi gorabehera       | 2 urte gutxi gorabehera       | duela 2 urte gutxi gorabehera       |
+| 1997-01-01T00:00:00.000Z | 3 urte gutxi gorabehera       | 3 urte gutxi gorabehera       | duela 3 urte gutxi gorabehera       |
+| 1996-01-01T00:00:00.000Z | 4 urte gutxi gorabehera       | 4 urte gutxi gorabehera       | duela 4 urte gutxi gorabehera       |
+| 1995-01-01T00:00:00.000Z | 5 urte gutxi gorabehera       | 5 urte gutxi gorabehera       | duela 5 urte gutxi gorabehera       |
+| 1994-01-01T00:00:00.000Z | 6 urte gutxi gorabehera       | 6 urte gutxi gorabehera       | duela 6 urte gutxi gorabehera       |
 
 ## `formatDistanceStrict`
 
 If now is January 1st, 2000, 00:00.
 
-| Date                     | Result     | `addSuffix: true` | With forced unit (i.e. `hour`) |
-| ------------------------ | ---------- | ----------------- | ------------------------------ |
-| 2006-01-01T00:00:00.000Z | 6 urte     | en 6 urte         | 52608 ordu                     |
-| 2005-01-01T00:00:00.000Z | 5 urte     | en 5 urte         | 43848 ordu                     |
-| 2004-01-01T00:00:00.000Z | 4 urte     | en 4 urte         | 35064 ordu                     |
-| 2003-01-01T00:00:00.000Z | 3 urte     | en 3 urte         | 26304 ordu                     |
-| 2002-01-01T00:00:00.000Z | 2 urte     | en 2 urte         | 17544 ordu                     |
-| 2001-06-01T00:00:00.000Z | 1 urte     | en 1 urte         | 12408 ordu                     |
-| 2001-02-01T00:00:00.000Z | 1 urte     | en 1 urte         | 9528 ordu                      |
-| 2001-01-01T00:00:00.000Z | 1 urte     | en 1 urte         | 8784 ordu                      |
-| 2000-06-01T00:00:00.000Z | 5 hilabete | en 5 hilabete     | 3648 ordu                      |
-| 2000-03-01T00:00:00.000Z | 2 hilabete | en 2 hilabete     | 1440 ordu                      |
-| 2000-02-01T00:00:00.000Z | 1 hilabete | en 1 hilabete     | 744 ordu                       |
-| 2000-01-15T00:00:00.000Z | 14 egun    | en 14 egun        | 336 ordu                       |
-| 2000-01-02T00:00:00.000Z | 1 egun     | en 1 egun         | 24 ordu                        |
-| 2000-01-01T06:00:00.000Z | 6 ordu     | en 6 ordu         | 6 ordu                         |
-| 2000-01-01T01:00:00.000Z | 1 ordu     | en 1 ordu         | 1 ordu                         |
-| 2000-01-01T00:45:00.000Z | 45 minutu  | en 45 minutu      | 1 ordu                         |
-| 2000-01-01T00:30:00.000Z | 30 minutu  | en 30 minutu      | 1 ordu                         |
-| 2000-01-01T00:15:00.000Z | 15 minutu  | en 15 minutu      | 0 ordu                         |
-| 2000-01-01T00:01:00.000Z | 1 minutu   | en 1 minutu       | 0 ordu                         |
-| 2000-01-01T00:00:25.000Z | 25 segundo | en 25 segundo     | 0 ordu                         |
-| 2000-01-01T00:00:15.000Z | 15 segundo | en 15 segundo     | 0 ordu                         |
-| 2000-01-01T00:00:05.000Z | 5 segundo  | en 5 segundo      | 0 ordu                         |
-| 2000-01-01T00:00:00.000Z | 0 segundo  | duela 0 segundo   | 0 ordu                         |
-| 1999-12-31T23:59:55.000Z | 5 segundo  | duela 5 segundo   | 0 ordu                         |
-| 1999-12-31T23:59:45.000Z | 15 segundo | duela 15 segundo  | 0 ordu                         |
-| 1999-12-31T23:59:35.000Z | 25 segundo | duela 25 segundo  | 0 ordu                         |
-| 1999-12-31T23:59:00.000Z | 1 minutu   | duela 1 minutu    | 0 ordu                         |
-| 1999-12-31T23:45:00.000Z | 15 minutu  | duela 15 minutu   | 0 ordu                         |
-| 1999-12-31T23:30:00.000Z | 30 minutu  | duela 30 minutu   | 1 ordu                         |
-| 1999-12-31T23:15:00.000Z | 45 minutu  | duela 45 minutu   | 1 ordu                         |
-| 1999-12-31T23:00:00.000Z | 1 ordu     | duela 1 ordu      | 1 ordu                         |
-| 1999-12-31T18:00:00.000Z | 6 ordu     | duela 6 ordu      | 6 ordu                         |
-| 1999-12-30T00:00:00.000Z | 2 egun     | duela 2 egun      | 48 ordu                        |
-| 1999-12-15T00:00:00.000Z | 17 egun    | duela 17 egun     | 408 ordu                       |
-| 1999-12-01T00:00:00.000Z | 1 hilabete | duela 1 hilabete  | 744 ordu                       |
-| 1999-11-01T00:00:00.000Z | 2 hilabete | duela 2 hilabete  | 1464 ordu                      |
-| 1999-06-01T00:00:00.000Z | 7 hilabete | duela 7 hilabete  | 5136 ordu                      |
-| 1999-01-01T00:00:00.000Z | 1 urte     | duela 1 urte      | 8760 ordu                      |
-| 1998-12-01T00:00:00.000Z | 1 urte     | duela 1 urte      | 9504 ordu                      |
-| 1998-06-01T00:00:00.000Z | 2 urte     | duela 2 urte      | 13896 ordu                     |
-| 1998-01-01T00:00:00.000Z | 2 urte     | duela 2 urte      | 17520 ordu                     |
-| 1997-01-01T00:00:00.000Z | 3 urte     | duela 3 urte      | 26280 ordu                     |
-| 1996-01-01T00:00:00.000Z | 4 urte     | duela 4 urte      | 35064 ordu                     |
-| 1995-01-01T00:00:00.000Z | 5 urte     | duela 5 urte      | 43824 ordu                     |
-| 1994-01-01T00:00:00.000Z | 6 urte     | duela 6 urte      | 52584 ordu                     |
+| Date                     | Result       | `addSuffix: true`  | With forced unit (i.e. `hour`) |
+| ------------------------ | ------------ | ------------------ | ------------------------------ |
+| 2006-01-01T00:00:00.000Z | 6 urte       | 6 urte barru       | 52608 ordu                     |
+| 2005-01-01T00:00:00.000Z | 5 urte       | 5 urte barru       | 43848 ordu                     |
+| 2004-01-01T00:00:00.000Z | 4 urte       | 4 urte barru       | 35064 ordu                     |
+| 2003-01-01T00:00:00.000Z | 3 urte       | 3 urte barru       | 26304 ordu                     |
+| 2002-01-01T00:00:00.000Z | 2 urte       | 2 urte barru       | 17544 ordu                     |
+| 2001-06-01T00:00:00.000Z | urte bat     | urte bat barru     | 12408 ordu                     |
+| 2001-02-01T00:00:00.000Z | urte bat     | urte bat barru     | 9528 ordu                      |
+| 2001-01-01T00:00:00.000Z | urte bat     | urte bat barru     | 8784 ordu                      |
+| 2000-06-01T00:00:00.000Z | 5 hilabete   | 5 hilabete barru   | 3648 ordu                      |
+| 2000-03-01T00:00:00.000Z | 2 hilabete   | 2 hilabete barru   | 1440 ordu                      |
+| 2000-02-01T00:00:00.000Z | hilabete bat | hilabete bat barru | 744 ordu                       |
+| 2000-01-15T00:00:00.000Z | 14 egun      | 14 egun barru      | 336 ordu                       |
+| 2000-01-02T00:00:00.000Z | egun bat     | egun bat barru     | 24 ordu                        |
+| 2000-01-01T06:00:00.000Z | 6 ordu       | 6 ordu barru       | 6 ordu                         |
+| 2000-01-01T01:00:00.000Z | ordu bat     | ordu bat barru     | ordu bat                       |
+| 2000-01-01T00:45:00.000Z | 45 minutu    | 45 minutu barru    | ordu bat                       |
+| 2000-01-01T00:30:00.000Z | 30 minutu    | 30 minutu barru    | ordu bat                       |
+| 2000-01-01T00:15:00.000Z | 15 minutu    | 15 minutu barru    | 0 ordu                         |
+| 2000-01-01T00:01:00.000Z | minutu bat   | minutu bat barru   | 0 ordu                         |
+| 2000-01-01T00:00:25.000Z | 25 segundo   | 25 segundo barru   | 0 ordu                         |
+| 2000-01-01T00:00:15.000Z | 15 segundo   | 15 segundo barru   | 0 ordu                         |
+| 2000-01-01T00:00:05.000Z | 5 segundo    | 5 segundo barru    | 0 ordu                         |
+| 2000-01-01T00:00:00.000Z | 0 segundo    | duela 0 segundo    | 0 ordu                         |
+| 1999-12-31T23:59:55.000Z | 5 segundo    | duela 5 segundo    | 0 ordu                         |
+| 1999-12-31T23:59:45.000Z | 15 segundo   | duela 15 segundo   | 0 ordu                         |
+| 1999-12-31T23:59:35.000Z | 25 segundo   | duela 25 segundo   | 0 ordu                         |
+| 1999-12-31T23:59:00.000Z | minutu bat   | duela minutu bat   | 0 ordu                         |
+| 1999-12-31T23:45:00.000Z | 15 minutu    | duela 15 minutu    | 0 ordu                         |
+| 1999-12-31T23:30:00.000Z | 30 minutu    | duela 30 minutu    | ordu bat                       |
+| 1999-12-31T23:15:00.000Z | 45 minutu    | duela 45 minutu    | ordu bat                       |
+| 1999-12-31T23:00:00.000Z | ordu bat     | duela ordu bat     | ordu bat                       |
+| 1999-12-31T18:00:00.000Z | 6 ordu       | duela 6 ordu       | 6 ordu                         |
+| 1999-12-30T00:00:00.000Z | 2 egun       | duela 2 egun       | 48 ordu                        |
+| 1999-12-15T00:00:00.000Z | 17 egun      | duela 17 egun      | 408 ordu                       |
+| 1999-12-01T00:00:00.000Z | hilabete bat | duela hilabete bat | 744 ordu                       |
+| 1999-11-01T00:00:00.000Z | 2 hilabete   | duela 2 hilabete   | 1464 ordu                      |
+| 1999-06-01T00:00:00.000Z | 7 hilabete   | duela 7 hilabete   | 5136 ordu                      |
+| 1999-01-01T00:00:00.000Z | urte bat     | duela urte bat     | 8760 ordu                      |
+| 1998-12-01T00:00:00.000Z | urte bat     | duela urte bat     | 9504 ordu                      |
+| 1998-06-01T00:00:00.000Z | 2 urte       | duela 2 urte       | 13896 ordu                     |
+| 1998-01-01T00:00:00.000Z | 2 urte       | duela 2 urte       | 17520 ordu                     |
+| 1997-01-01T00:00:00.000Z | 3 urte       | duela 3 urte       | 26280 ordu                     |
+| 1996-01-01T00:00:00.000Z | 4 urte       | duela 4 urte       | 35064 ordu                     |
+| 1995-01-01T00:00:00.000Z | 5 urte       | duela 5 urte       | 43824 ordu                     |
+| 1994-01-01T00:00:00.000Z | 6 urte       | duela 6 urte       | 52584 ordu                     |
 
 ## `formatRelative`
 
@@ -509,26 +509,26 @@ If now is January 1st, 2000, 00:00.
 
 ## `formatDuration`
 
-| Duration      | Result     |
-| ------------- | ---------- |
-| {"years":0}   | 0 urte     |
-| {"years":1}   | 1 urte     |
-| {"years":2}   | 2 urte     |
-| {"months":0}  | 0 hilabete |
-| {"months":1}  | 1 hilabete |
-| {"months":2}  | 2 hilabete |
-| {"weeks":0}   | 0 astean   |
-| {"weeks":1}   | 1 aste     |
-| {"weeks":2}   | 2 astean   |
-| {"days":0}    | 0 egun     |
-| {"days":1}    | 1 egun     |
-| {"days":2}    | 2 egun     |
-| {"hours":0}   | 0 ordu     |
-| {"hours":1}   | 1 ordu     |
-| {"hours":2}   | 2 ordu     |
-| {"minutes":0} | 0 minutu   |
-| {"minutes":1} | 1 minutu   |
-| {"minutes":2} | 2 minutu   |
-| {"seconds":0} | 0 segundo  |
-| {"seconds":1} | 1 segundo  |
-| {"seconds":2} | 2 segundo  |
+| Duration      | Result       |
+| ------------- | ------------ |
+| {"years":0}   | 0 urte       |
+| {"years":1}   | urte bat     |
+| {"years":2}   | 2 urte       |
+| {"months":0}  | 0 hilabete   |
+| {"months":1}  | hilabete bat |
+| {"months":2}  | 2 hilabete   |
+| {"weeks":0}   | 0 astean     |
+| {"weeks":1}   | aste bat     |
+| {"weeks":2}   | 2 astean     |
+| {"days":0}    | 0 egun       |
+| {"days":1}    | egun bat     |
+| {"days":2}    | 2 egun       |
+| {"hours":0}   | 0 ordu       |
+| {"hours":1}   | ordu bat     |
+| {"hours":2}   | 2 ordu       |
+| {"minutes":0} | 0 minutu     |
+| {"minutes":1} | minutu bat   |
+| {"minutes":2} | 2 minutu     |
+| {"seconds":0} | 0 segundo    |
+| {"seconds":1} | segundo bat  |
+| {"seconds":2} | 2 segundo    |
