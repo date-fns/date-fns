@@ -26,7 +26,7 @@ export interface IsMatchOptions
  * will return false.
  *
  * > ⚠️ Please note that the `format` tokens differ from Moment.js and other libraries.
- * > See: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
+ * > See: https://github.com/date-fns/date-fns/blob/main/docs/unicodeTokens.md
  *
  * The characters in the format string wrapped between two single quotes characters (') are escaped.
  * Two single quotes in a row, whether inside or outside a quoted sequence, represent a 'real' single quote.
@@ -249,10 +249,10 @@ export interface IsMatchOptions
  *    - `p`: long localized time
  *
  * 6. `YY` and `YYYY` tokens represent week-numbering years but they are often confused with years.
- *    You should enable `options.useAdditionalWeekYearTokens` to use them. See: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
+ *    You should enable `options.useAdditionalWeekYearTokens` to use them. See: https://github.com/date-fns/date-fns/blob/main/docs/unicodeTokens.md
  *
  * 7. `D` and `DD` tokens represent days of the year but they are ofthen confused with days of the month.
- *    You should enable `options.useAdditionalDayOfYearTokens` to use them. See: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
+ *    You should enable `options.useAdditionalDayOfYearTokens` to use them. See: https://github.com/date-fns/date-fns/blob/main/docs/unicodeTokens.md
  *
  * 8. `P+` tokens do not have a defined priority since they are merely aliases to other tokens based
  *    on the given locale.
@@ -277,16 +277,16 @@ export interface IsMatchOptions
  * @param dateStr - The date string to verify
  * @param format - The string of tokens
  * @param options - An object with options.
- *   see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
- *   see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
+ *   see: https://github.com/date-fns/date-fns/blob/main/docs/unicodeTokens.md
+ *   see: https://github.com/date-fns/date-fns/blob/main/docs/unicodeTokens.md
  *
  * @returns Is format string a match for date string?
  *
  * @throws `options.locale` must contain `match` property
- * @throws use `yyyy` instead of `YYYY` for formatting years; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
- * @throws use `yy` instead of `YY` for formatting years; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
- * @throws use `d` instead of `D` for formatting days of the month; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
- * @throws use `dd` instead of `DD` for formatting days of the month; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
+ * @throws use `yyyy` instead of `YYYY` for formatting years; see: https://github.com/date-fns/date-fns/blob/main/docs/unicodeTokens.md
+ * @throws use `yy` instead of `YY` for formatting years; see: https://github.com/date-fns/date-fns/blob/main/docs/unicodeTokens.md
+ * @throws use `d` instead of `D` for formatting days of the month; see: https://github.com/date-fns/date-fns/blob/main/docs/unicodeTokens.md
+ * @throws use `dd` instead of `DD` for formatting days of the month; see: https://github.com/date-fns/date-fns/blob/main/docs/unicodeTokens.md
  * @throws format string contains an unescaped latin alphabet character
  *
  * @example
