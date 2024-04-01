@@ -8,7 +8,7 @@ export interface YearParserValue {
   isTwoDigitYear: boolean;
 }
 
-// From http://www.unicode.org/reports/tr35/tr35-31/tr35-dates.html#Date_Format_Patterns
+// From https://www.unicode.org/reports/tr35/tr35-31/tr35-dates.html#Date_Format_Patterns
 // | Year     |     y | yy |   yyy |  yyyy | yyyyy |
 // |----------|-------|----|-------|-------|-------|
 // | AD 1     |     1 | 01 |   001 |  0001 | 00001 |

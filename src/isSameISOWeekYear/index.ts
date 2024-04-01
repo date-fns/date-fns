@@ -8,7 +8,7 @@ import { startOfISOWeekYear } from "../startOfISOWeekYear/index.js";
  * @description
  * Are the given dates in the same ISO week-numbering year?
  *
- * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ * ISO week-numbering year: https://en.wikipedia.org/wiki/ISO_week_date
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *

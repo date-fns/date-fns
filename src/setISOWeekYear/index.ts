@@ -12,7 +12,7 @@ import { toDate } from "../toDate/index.js";
  * Set the ISO week-numbering year to the given date,
  * saving the week number and the weekday number.
  *
- * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ * ISO week-numbering year: https://en.wikipedia.org/wiki/ISO_week_date
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *

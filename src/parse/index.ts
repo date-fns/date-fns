@@ -320,7 +320,7 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/;
  *
  * If parsing failed, `Invalid Date` will be returned.
  * Invalid Date is a Date, whose time value is NaN.
- * Time value of Date: http://es5.github.io/#x15.9.1.1
+ * Time value of Date: https://es5.github.io/#x15.9.1.1
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
