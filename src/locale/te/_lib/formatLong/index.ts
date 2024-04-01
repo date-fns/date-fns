@@ -1,7 +1,7 @@
 import type { FormatLong } from "../../../types.js";
 import { buildFormatLongFn } from "../../../_lib/buildFormatLongFn/index.js";
 
-// Source: https://www.unicode.org/cldr/charts/32/summary/te.html
+// Source: https://www.unicode.org/cldr/charts/44/summary/te.html
 
 // CLDR #1807 - #1811
 const dateFormats = {

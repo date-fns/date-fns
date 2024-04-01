@@ -1,7 +1,7 @@
 import type { Localize, LocalizeFn } from "../../../types.js";
 import { buildLocalizeFn } from "../../../_lib/buildLocalizeFn/index.js";
 
-// Ref: https://www.unicode.org/cldr/charts/32/summary/ta.html
+// Ref: https://www.unicode.org/cldr/charts/44/summary/ta.html
 
 const eraValues = {
   narrow: ["கி.மு.", "கி.பி."] as const,

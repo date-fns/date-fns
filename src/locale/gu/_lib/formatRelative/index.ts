@@ -1,6 +1,6 @@
 import type { FormatRelativeFn } from "../../../types.js";
 
-// Source: https://www.unicode.org/cldr/charts/32/summary/gu.html
+// Source: https://www.unicode.org/cldr/charts/44/summary/gu.html
 
 const formatRelativeLocale = {
   lastWeek: "'પાછલા' eeee p", // CLDR #1384

@@ -84,7 +84,7 @@ const dayValues = {
   ] as const,
 };
 
-// https://www.unicode.org/cldr/charts/32/summary/de.html#1881
+// https://www.unicode.org/cldr/charts/44/summary/de.html#5abbc8f185730579
 const dayPeriodValues = {
   narrow: {
     am: "vm.",

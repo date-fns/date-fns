@@ -1,21 +1,21 @@
 import type { Localize, LocalizeFn } from "../../../types.js";
 import { buildLocalizeFn } from "../../../_lib/buildLocalizeFn/index.js";
 
-// https://www.unicode.org/cldr/charts/32/summary/sk.html#1772
+// https://www.unicode.org/cldr/charts/44/summary/sk.html#57fb0deb17870cb9
 const eraValues = {
   narrow: ["pred Kr.", "po Kr."] as const,
   abbreviated: ["pred Kr.", "po Kr."] as const,
   wide: ["pred Kristom", "po Kristovi"] as const,
 };
 
-// https://www.unicode.org/cldr/charts/32/summary/sk.html#1780
+// https://www.unicode.org/cldr/charts/44/summary/sk.html#cb664830a41f487
 const quarterValues = {
   narrow: ["1", "2", "3", "4"] as const,
   abbreviated: ["Q1", "Q2", "Q3", "Q4"] as const,
   wide: ["1. štvrťrok", "2. štvrťrok", "3. štvrťrok", "4. štvrťrok"] as const,
 };
 
-// https://www.unicode.org/cldr/charts/32/summary/sk.html#1804
+// https://www.unicode.org/cldr/charts/44/summary/sk.html#2bd0ab9fba1a49d8
 const monthValues = {
   narrow: ["j", "f", "m", "a", "m", "j", "j", "a", "s", "o", "n", "d"] as const,
   abbreviated: [
@@ -79,7 +79,7 @@ const formattingMonthValues = {
   ] as const,
 };
 
-// https://www.unicode.org/cldr/charts/32/summary/sk.html#1876
+// https://www.unicode.org/cldr/charts/44/summary/sk.html#7349f53135bf929c
 const dayValues = {
   narrow: ["n", "p", "u", "s", "š", "p", "s"] as const,
   short: ["ne", "po", "ut", "st", "št", "pi", "so"] as const,
@@ -95,7 +95,7 @@ const dayValues = {
   ] as const,
 };
 
-// https://www.unicode.org/cldr/charts/32/summary/sk.html#1932
+// https://www.unicode.org/cldr/charts/44/summary/sk.html#531768795c3cdb89
 const dayPeriodValues = {
   narrow: {
     am: "AM",

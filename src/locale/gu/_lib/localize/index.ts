@@ -1,7 +1,7 @@
 import type { Localize, LocalizeFn } from "../../../types.js";
 import { buildLocalizeFn } from "../../../_lib/buildLocalizeFn/index.js";
 
-// https://www.unicode.org/cldr/charts/32/summary/gu.html
+// https://www.unicode.org/cldr/charts/44/summary/gu.html
 // #1621 - #1630
 const eraValues = {
   narrow: ["ઈસપૂ", "ઈસ"] as const,
@@ -9,7 +9,7 @@ const eraValues = {
   wide: ["ઈસવીસન પૂર્વે", "ઈસવીસન"] as const,
 };
 
-// https://www.unicode.org/cldr/charts/32/summary/gu.html
+// https://www.unicode.org/cldr/charts/44/summary/gu.html
 // #1631 - #1654
 const quarterValues = {
   narrow: ["1", "2", "3", "4"] as const,
@@ -22,7 +22,7 @@ const quarterValues = {
 // Generally, formatted dates should look like they are in the middle of a sentence,
 // e.g. in Spanish language the weekdays and months should be in the lowercase.
 
-// https://www.unicode.org/cldr/charts/32/summary/gu.html
+// https://www.unicode.org/cldr/charts/44/summary/gu.html
 // #1655 - #1726
 const monthValues = {
   narrow: [
@@ -69,7 +69,7 @@ const monthValues = {
   ] as const,
 };
 
-// https://www.unicode.org/cldr/charts/32/summary/gu.html
+// https://www.unicode.org/cldr/charts/44/summary/gu.html
 // #1727 - #1768
 const dayValues = {
   narrow: ["ર", "સો", "મં", "બુ", "ગુ", "શુ", "શ"] as const,
@@ -86,7 +86,7 @@ const dayValues = {
   ] as const,
 };
 
-// https://www.unicode.org/cldr/charts/32/summary/gu.html
+// https://www.unicode.org/cldr/charts/44/summary/gu.html
 // #1783 - #1824
 const dayPeriodValues = {
   narrow: {
