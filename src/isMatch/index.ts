@@ -278,7 +278,6 @@ export interface IsMatchOptions
  * @param format - The string of tokens
  * @param options - An object with options.
  *   see: https://github.com/date-fns/date-fns/blob/main/docs/unicodeTokens.md
- *   see: https://github.com/date-fns/date-fns/blob/main/docs/unicodeTokens.md
  *
  * @returns Is format string a match for date string?
  *
