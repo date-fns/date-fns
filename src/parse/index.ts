@@ -329,7 +329,6 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/;
  * @param referenceDate - defines values missing from the parsed dateString
  * @param options - An object with options.
  *   see: https://github.com/date-fns/date-fns/blob/main/docs/unicodeTokens.md
- *   see: https://github.com/date-fns/date-fns/blob/main/docs/unicodeTokens.md
  *
  * @returns The parsed date
  *
