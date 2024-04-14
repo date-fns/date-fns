@@ -24,16 +24,7 @@ const ISO_DURATION_REGEX = /P(?:([\d]+\.?[\d]*|\.[\d]+)Y)?(?:([\d]+\.?[\d]*|\.[\
  * @example
  * // Convert string 'P3Y6M4DT12H30M5S' to duration:
  * const result = parseISODuration('P3Y6M4DT12H30M5S')
- * //=>
- * const result = {
- *   years: 3,
- *   months: 6,
- *   weeks: 0,
- *   days: 4,
- *   hours: 12,
- *   minutes: 30,
- *   seconds: 5,
- * }
+ * //=> { years: 3, months: 6, weeks: 0, days: 4, hours: 12, minutes: 30, seconds: 5 }
  */
 
 export function parseISODuration(argument: string): Duration {
