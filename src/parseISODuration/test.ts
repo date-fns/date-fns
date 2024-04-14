@@ -109,32 +109,6 @@ describe('parseISODuration', () => {
     })
   })
 
-  it('parses ISO duration with just P', () => {
-    const result = parseISODuration('P')
-    assert.deepStrictEqual(result, {
-      years: 0,
-      months: 0,
-      weeks: 0,
-      days: 0,
-      hours: 0,
-      minutes: 0,
-      seconds: 0,
-    })
-  })
-
-  it('parses ISO duration with just P and T', () => {
-    const result = parseISODuration('PT')
-    assert.deepStrictEqual(result, {
-      years: 0,
-      months: 0,
-      weeks: 0,
-      days: 0,
-      hours: 0,
-      minutes: 0,
-      seconds: 0,
-    })
-  })
-
   it('parses ISO duration with zero values', () => {
     const result = parseISODuration('P0DT0S')
     assert.deepStrictEqual(result, {
@@ -150,6 +124,18 @@ describe('parseISODuration', () => {
 
   it('returns `Invalid format` for empty string', () => {
     assert.throws(() => parseISODuration(''), RangeError("Invalid format"))
+  })
+
+  it('returns `Invalid format` for ISO duration with just P', () => {
+    assert.throws(() => parseISODuration('P'), RangeError("Invalid format"))
+  })
+
+  it('returns `Invalid format` for ISO duration with nothing after T', () => {
+    assert.throws(() => parseISODuration('P1MT'), RangeError("Invalid format"))
+  })
+
+  it('returns `Invalid format` for ISO duration with missing value', () => {
+    assert.throws(() => parseISODuration('P3YT30MS'), RangeError("Invalid format"))
   })
 
   it('returns `Invalid format` for invalid ISO string', () => {
