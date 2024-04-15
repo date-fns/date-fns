@@ -10,6 +10,8 @@ import type { GenericDateConstructor } from "../types.js";
  * date and the given value. It helps to build generic functions that accept
  * date extensions.
  *
+ * It defaults to `Date` if the passed reference date is a number or a string.
+ *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
  * @param date - The reference date to take constructor from
@@ -18,14 +20,14 @@ import type { GenericDateConstructor } from "../types.js";
  * @returns Date initialized using the given date and value
  *
  * @example
- * import { constructFrom } from 'date-fns'
+ * import { constructFrom } from "date-fns";
  *
  * // A function that clones a date preserving the original type
- * function cloneDate<DateType extends Date(date: DateType): DateType {
+ * function cloneDate<DateType extends Date>(date: DateType): DateType {
  *   return constructFrom(
  *     date, // Use contrustor from the given date
  *     date.getTime() // Use the date value to create a new date
- *   )
+ *   );
  * }
  */
 export function constructFrom<DateType extends Date>(

@@ -24,7 +24,10 @@ module.exports = {
   plugins: ["@typescript-eslint"],
   ignorePatterns: ["lib", "tmp", "examples"],
   rules: {
-    "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
+    ],
     "@typescript-eslint/consistent-type-imports": "error",
     // The following rules are deprecated: https://eslint.org/blog/2023/10/deprecating-formatting-rules
     "array-bracket-newline": "off",

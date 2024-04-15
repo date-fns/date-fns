@@ -8,6 +8,118 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## v3.6.0 - 2024-03-18
+
+On this release worked @kossnocorp and @world1dan. Also, thanks to [@seated](https://github.com/seated) [for sponsoring me](https://github.com/sponsors/kossnocorp).
+
+### Fixed
+
+- [Fixed weeks in the Belarisuan locale's `formatDistance`.](https://github.com/date-fns/date-fns/pull/3720)
+
+### Added
+
+- [Added CDN versions of modules compatible with older browsers.](https://github.com/date-fns/date-fns/pull/3737) [See the CDN guide.](https://date-fns.org/docs/CDN)
+
+## v3.5.0 - 2024-03-15
+
+Kudos to @fturmel, @kossnocorp, @makstyle119, @tan75, @marcreichel, @tareknatsheh and @audunru for working on the release. Also, thanks to [@seated](https://github.com/seated) [for sponsoring me](https://github.com/sponsors/kossnocorp).
+
+### Fixed
+
+- [Fixed functions that use current date internally and made them work with date extensions like `UTCDate`.](https://github.com/date-fns/date-fns/issues/3730)
+
+- [Fixed `daysToWeeks` returning negative 0.](https://github.com/date-fns/date-fns/commit/882ced61c692c7c4a79eaaec6eb07cb9c8c9195b)
+
+- [Fixed German grammar for the "half a minute" string.](https://github.com/date-fns/date-fns/pull/3715)
+
+### Added
+
+- [Added the Northern Sámi (`se`) locale.](https://github.com/date-fns/date-fns/pull/3724)
+
+- Added the `constructNow` function that creates the current date using the passed reference date's constructor.
+
+## v3.4.0 - 2024-03-11
+
+Kudos to @kossnocorp, @sakamossan and @Revan99 for working on the release. Also, thanks to [@seated](https://github.com/seated) [for sponsoring me](https://github.com/sponsors/kossnocorp).
+
+### Added
+
+- [Added `roundToNearestHours` function.](https://github.com/date-fns/date-fns/pull/2752)
+
+- [Added Central Kurdish (`ckb`) locale.](https://github.com/date-fns/date-fns/pull/3421)
+
+## v3.3.1 - 2024-01-22
+
+Kudos to @kossnocorp and @fturmel for working on the release.
+
+### Fixed
+
+- Fixed DST issue in `getOverlappingDaysInIntervals`, resulting in an inconsistent number of days returned for intervals starting and ending in different DST periods.
+
+- Fixed functions incorrectly using `trunc` instead of `round`. The bug was introduced in v3.3.0. The affected functions: `differenceInCalendarDays`, `differenceInCalendarISOWeeks`, `differenceInCalendarWeeks`, `getISOWeek`, `getWeek`, and `getISOWeeksInYear`.
+
+## v3.3.0 - 2024-01-20
+
+On this release worked @kossnocorp, @TheKvikk, @fturmel and @ckcherry23.
+
+### Fixed
+
+- Fixed the bug in `getOverlappingDaysInIntervals` caused by incorrect sorting of interval components that led to 0 for timestamps of different lengths.
+
+- Fixed bugs when working with negative numbers caused by using `Math.floor` (`-1.1` → `-2`) instead of `Math.trunc` (`-1.1` → `-1`). Most of the conversion functions (i.e., `hoursToMinutes`) were affected when passing some negative fractional input. Also, some other functions that could be possibly affected by unfortunate timezone/date combinations were fixed.
+
+  The functions that were affected: `format`, `parse`, `getUnixTime`, `daysToWeeks`, `hoursToMilliseconds`, `hoursToMinutes`, `hoursToSeconds`, `milliseconds`, `minutesToMilliseconds`, `millisecondsToMinutes`, `monthsToYears`, `millisecondsToHours`, `millisecondsToSeconds`, `minutesToHours`, `minutesToSeconds`, `yearsToQuarters`, `yearsToMonths`, `yearsToDays`, `weeksToDays`, `secondsToMinutes`, `secondsToHours`, `quartersToYears`, `quartersToMonths` and `monthsToQuarters`.
+
+- [Fixed the Czech locale's `formatDistance` to include `1` in `formatDistance`.](https://github.com/date-fns/date-fns/pull/3269)
+
+- Fixed `differenceInSeconds` and other functions relying on rounding options that can produce a negative 0.
+
+- [Added a preprocessor to the locales API, enabling fixing a long-standing bug in the French locale.](https://github.com/date-fns/date-fns/pull/3662) ([#1391](https://github.com/date-fns/date-fns/issues/1391))
+
+- Added missing `yearsToDays` to the FP submodule.
+
+- Made functions using rounding methods always return `0` instead of `-0`.
+
+### Added
+
+- [Added `format` alias `formatDate` with corresponding `FormatDateOptions` interface](https://github.com/date-fns/date-fns/pull/3653).
+
+## v3.2.0 - 2024-01-09
+
+This release is brought to you by @kossnocorp, @fturmel, @grossbart, @MelvinVermeer, and @jcarstairs-scottlogic.
+
+### Fixed
+
+- Fixed types compatability with Lodash's `flow` and fp-ts's `pipe`. ([#3641](https://github.com/date-fns/date-fns/issues/3641))
+
+- [Fixed inconsistent behavior of `roundToNearestMinutes`.](https://github.com/date-fns/date-fns/pull/3132)
+
+### Added
+
+- Added exports of `format`, `lightFormat`, and `parse` internals that enable 3rd-parties to consume those.
+
+## v3.1.0 - 2024-01-05
+
+This release is brought to you by @kossnocorp, @makstyle119 and @dmgawel.
+
+### Fixed
+
+- [Fixed the plural form of weeks in Swedish](https://github.com/date-fns/date-fns/pull/3448).
+
+### Added
+
+- [Added `yearsToDays` function](https://github.com/date-fns/date-fns/pull/3540).
+
+- Added warning about using protected tokens like `Y` or `D` without passing a corresponding option. [See #2950](https://github.com/date-fns/date-fns/issues/2950).
+
+## v3.0.6 - 2023-12-22
+
+On this release worked @imwh0im, @jamcry and @tyrw.
+
+### Fixed
+
+- [Fixed bug in `areIntervalsOverlapping` caused by incorrect sorting](https://github.com/date-fns/date-fns/pull/3628) ([#3614](https://github.com/date-fns/date-fns/issues/3614))
+
 ## v3.0.5 - 2023-12-21
 
 This release is brought to you by @goku4199.

@@ -26,5 +26,5 @@ import { quartersInYear } from "../constants/index.js";
  */
 export function quartersToYears(quarters: number): number {
   const years = quarters / quartersInYear;
-  return Math.floor(years);
+  return Math.trunc(years);
 }

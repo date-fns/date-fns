@@ -4,7 +4,7 @@ import { Octokit } from "@octokit/core";
 import { format } from "../../src/format/index.js";
 
 const git = sg();
-const gh = new Octokit({ auth: process.env.GITHUB_TOKEN });
+const gh = new Octokit({ auth: process.env.OCTOKIT_TOKEN });
 
 (async () => {
   const changelog = await buildChangelog();

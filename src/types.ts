@@ -281,9 +281,23 @@ export type NearestMinutes =
   | 30;
 
 /**
- * The nearest minutes function options. Used to build function options.
+ * Nearest hour type. Goes from 1 to 12, where 1 is the nearest hour and 12
+ * is nearest half a day.
  */
-export interface NearestMinutesOptions {
-  /** The nearest number of minutes to round to. E.g. `15` to round to quarter hours. */
-  nearestTo?: NearestMinutes;
+export type NearestHours = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+
+/**
+ * The nearest minutes function options. Used to build function options.
+ *
+ * @deprecated Use {@link NearestToUnitOptions} instead.
+ */
+export type NearestMinutesOptions = NearestToUnitOptions<NearestMinutes>;
+
+/**
+ * The nearest unit function options. Used to build function options.
+ */
+export interface NearestToUnitOptions<Unit extends number> {
+  /** The nearest unit to round to. E.g. for minutes `15` to round to quarter
+   * hours. */
+  nearestTo?: Unit;
 }

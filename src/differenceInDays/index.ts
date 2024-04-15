@@ -15,7 +15,7 @@ import { toDate } from "../toDate/index.js";
  * or more than 24 hours if a daylight savings change happens between two dates.
  *
  * To ignore DST and only measure exact 24-hour periods, use this instead:
- * `Math.floor(differenceInHours(dateLeft, dateRight)/24)|0`.
+ * `Math.trunc(differenceInHours(dateLeft, dateRight)/24)|0`.
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *

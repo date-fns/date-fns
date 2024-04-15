@@ -1,3 +1,4 @@
+import { constructNow } from "../constructNow/index.js";
 import { isSameDay } from "../isSameDay/index.js";
 import { subDays } from "../subDays/index.js";
 
@@ -24,5 +25,5 @@ import { subDays } from "../subDays/index.js";
 export function isYesterday<DateType extends Date>(
   date: DateType | number | string,
 ): boolean {
-  return isSameDay(date, subDays(Date.now(), 1));
+  return isSameDay(date, subDays(constructNow(date), 1));
 }

@@ -24,5 +24,5 @@ import { monthsInQuarter } from "../constants/index.js";
  */
 export function monthsToQuarters(months: number): number {
   const quarters = months / monthsInQuarter;
-  return Math.floor(quarters);
+  return Math.trunc(quarters);
 }

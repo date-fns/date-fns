@@ -12,6 +12,7 @@ jobs:
         with:
           node-version: 20
           cache: "npm"
+      - uses: oven-sh/setup-bun@v1
       - run: npm install
 
       - name: Smoke tests

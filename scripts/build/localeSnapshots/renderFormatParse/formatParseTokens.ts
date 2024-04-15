@@ -29,6 +29,7 @@ const weekOfYearDates = [
 ];
 
 const dayOfMonthDates = [
+  new Date(2019, 1, 1, 12, 13, 14, 15),
   new Date(2019, 1, 11, 12, 13, 14, 15),
   new Date(2019, 1, 28, 12, 13, 14, 15),
 ];
@@ -122,7 +123,7 @@ const formatParseTokens = [
 
   {
     title: "Day of month",
-    tokens: ["do"],
+    tokens: ["do", "do MMMM"], // ordinal with long month relevant for french locales
     dates: dayOfMonthDates,
   },
 

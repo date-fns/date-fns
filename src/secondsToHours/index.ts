@@ -24,5 +24,5 @@ import { secondsInHour } from "../constants/index.js";
  */
 export function secondsToHours(seconds: number): number {
   const hours = seconds / secondsInHour;
-  return Math.floor(hours);
+  return Math.trunc(hours);
 }

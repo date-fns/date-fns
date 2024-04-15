@@ -176,6 +176,16 @@ export type FormatRelativeToken =
   | "nextWeek"
   | "other";
 
+/**
+ * A format part that represents a token or string literal, used by format parser/tokenizer
+ */
+export interface FormatPart {
+  /** If the part is a format token. */
+  isToken: boolean;
+  /** The format part value (i.e. `"do"`). */
+  value: string
+};
+
 /// Localize types
 
 /**
@@ -195,6 +205,12 @@ export interface Localize {
   day: LocalizeFn<Day>;
   /** The function that localizes the day period */
   dayPeriod: LocalizeFn<LocaleDayPeriod>;
+
+  /** The function that can preprocess parts/tokens **/
+  preprocessor?: <DateType extends Date>(
+    date: DateType,
+    parts: FormatPart[],
+  ) => FormatPart[];
 }
 
 /**

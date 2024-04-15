@@ -1,7 +1,4 @@
-/* eslint-env mocha */
-
-import assert from "assert";
-import { describe, it } from "vitest";
+import { describe, expect, it } from "vitest";
 import { compareDesc } from "./index.js";
 
 describe("compareDesc", () => {
@@ -10,7 +7,7 @@ describe("compareDesc", () => {
       new Date(1989, 6 /* Jul */, 10),
       new Date(1989, 6 /* Jul */, 10),
     );
-    assert(result === 0);
+    expect(result).toBe(0);
   });
 
   it("returns 1 if the first date is before the second one", () => {
@@ -18,7 +15,7 @@ describe("compareDesc", () => {
       new Date(1987, 1 /* Feb */, 11),
       new Date(1989, 6 /* Jul */, 10),
     );
-    assert(result === 1);
+    expect(result).toBe(1);
   });
 
   it("returns -1 if the first date is after the second one", () => {
@@ -26,7 +23,7 @@ describe("compareDesc", () => {
       new Date(1989, 6 /* Jul */, 10),
       new Date(1987, 1 /* Feb */, 11),
     );
-    assert(result === -1);
+    expect(result).toBe(-1);
   });
 
   it("sorts the dates array in the reverse chronological order when function is passed as the argument to Array.prototype.sort()", () => {
@@ -45,7 +42,7 @@ describe("compareDesc", () => {
     unsortedArray.sort(compareDesc);
     const result = unsortedArray;
 
-    assert.deepStrictEqual(result, sortedArray);
+    expect(result).toEqual(sortedArray);
   });
 
   it("accepts timestamps", () => {
@@ -53,21 +50,21 @@ describe("compareDesc", () => {
       new Date(1987, 1 /* Feb */, 11).getTime(),
       new Date(1989, 6 /* Jul */, 10).getTime(),
     );
-    assert(result === 1);
+    expect(result).toBe(1);
   });
 
   it("returns NaN if the first date is `Invalid Date`", () => {
     const result = compareDesc(new Date(NaN), new Date(1989, 6 /* Jul */, 10));
-    assert(isNaN(result));
+    expect(isNaN(result)).toBe(true);
   });
 
   it("returns NaN if the second date is `Invalid Date`", () => {
     const result = compareDesc(new Date(1989, 6 /* Jul */, 10), new Date(NaN));
-    assert(isNaN(result));
+    expect(isNaN(result)).toBe(true);
   });
 
   it("returns NaN if the both dates are `Invalid Date`", () => {
     const result = compareDesc(new Date(1989, 6 /* Jul */, 10), new Date(NaN));
-    assert(isNaN(result));
+    expect(isNaN(result)).toBe(true);
   });
 });

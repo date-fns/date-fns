@@ -7,7 +7,7 @@ export class FractionOfSecondParser extends Parser<number> {
 
   parse(dateString: string, token: string): ParseResult<number> {
     const valueCallback = (value: number) =>
-      Math.floor(value * Math.pow(10, -token.length + 3));
+      Math.trunc(value * Math.pow(10, -token.length + 3));
     return mapValue(parseNDigits(token.length, dateString), valueCallback);
   }
 

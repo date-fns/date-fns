@@ -28,5 +28,5 @@ export function differenceInMilliseconds<DateType extends Date>(
   dateLeft: DateType | number | string,
   dateRight: DateType | number | string,
 ): number {
-  return toDate(dateLeft).getTime() - toDate(dateRight).getTime();
+  return +toDate(dateLeft) - +toDate(dateRight);
 }

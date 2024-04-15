@@ -35,14 +35,12 @@ export function differenceInCalendarISOWeeks<DateType extends Date>(
   const startOfISOWeekRight = startOfISOWeek(dateRight);
 
   const timestampLeft =
-    startOfISOWeekLeft.getTime() -
-    getTimezoneOffsetInMilliseconds(startOfISOWeekLeft);
+    +startOfISOWeekLeft - getTimezoneOffsetInMilliseconds(startOfISOWeekLeft);
   const timestampRight =
-    startOfISOWeekRight.getTime() -
-    getTimezoneOffsetInMilliseconds(startOfISOWeekRight);
+    +startOfISOWeekRight - getTimezoneOffsetInMilliseconds(startOfISOWeekRight);
 
-  // Round the number of days to the nearest integer
-  // because the number of milliseconds in a week is not constant
-  // (e.g. it's different in the week of the daylight saving time clock shift)
+  // Round the number of weeks to the nearest integer because the number of
+  // milliseconds in a week is not constant (e.g. it's different in the week of
+  // the daylight saving time clock shift).
   return Math.round((timestampLeft - timestampRight) / millisecondsInWeek);
 }

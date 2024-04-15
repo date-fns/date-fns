@@ -62,7 +62,7 @@ export function formatRFC3339<DateType extends Date>(
   let fractionalSecond = "";
   if (fractionDigits > 0) {
     const milliseconds = _date.getMilliseconds();
-    const fractionalSeconds = Math.floor(
+    const fractionalSeconds = Math.trunc(
       milliseconds * Math.pow(10, fractionDigits - 3),
     );
     fractionalSecond = "." + addLeadingZeros(fractionalSeconds, fractionDigits);

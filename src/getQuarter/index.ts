@@ -23,6 +23,6 @@ export function getQuarter<DateType extends Date>(
   date: DateType | number | string,
 ): number {
   const _date = toDate(date);
-  const quarter = Math.floor(_date.getMonth() / 3) + 1;
+  const quarter = Math.trunc(_date.getMonth() / 3) + 1;
   return quarter;
 }

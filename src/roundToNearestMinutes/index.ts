@@ -1,13 +1,17 @@
+import { getRoundingMethod } from "../_lib/getRoundingMethod/index.js";
 import { constructFrom } from "../constructFrom/index.js";
 import { toDate } from "../toDate/index.js";
-import type { NearestMinutesOptions, RoundingOptions } from "../types.js";
-import { getRoundingMethod } from "../_lib/roundingMethods/index.js";
+import type {
+  NearestMinutes,
+  NearestToUnitOptions,
+  RoundingOptions,
+} from "../types.js";
 
 /**
  * The {@link roundToNearestMinutes} function options.
  */
 export interface RoundToNearestMinutesOptions
-  extends NearestMinutesOptions,
+  extends NearestToUnitOptions<NearestMinutes>,
     RoundingOptions {}
 
 /**
@@ -32,10 +36,19 @@ export interface RoundToNearestMinutesOptions
  * //=> Thu Jul 10 2014 12:13:00
  *
  * @example
- * // Round 10 July 2014 12:07:30 to nearest quarter hour:
+ * // Round 10 July 2014 12:12:34 to nearest quarter hour:
  * const result = roundToNearestMinutes(new Date(2014, 6, 10, 12, 12, 34), { nearestTo: 15 })
- * // rounds up because given date is exactly between 12:00:00 and 12:15:00
  * //=> Thu Jul 10 2014 12:15:00
+ *
+ * @example
+ * // Floor (rounds down) 10 July 2014 12:12:34 to nearest minute:
+ * const result = roundToNearestMinutes(new Date(2014, 6, 10, 12, 12, 34), { roundingMethod: 'floor' })
+ * //=> Thu Jul 10 2014 12:12:00
+ *
+ * @example
+ * // Ceil (rounds up) 10 July 2014 12:12:34 to nearest half hour:
+ * const result = roundToNearestMinutes(new Date(2014, 6, 10, 12, 12, 34), { roundingMethod: 'ceil', nearestTo: 30 })
+ * //=> Thu Jul 10 2014 12:30:00
  */
 export function roundToNearestMinutes<DateType extends Date>(
   date: DateType | number | string,
@@ -46,14 +59,18 @@ export function roundToNearestMinutes<DateType extends Date>(
   if (nearestTo < 1 || nearestTo > 30) return constructFrom(date, NaN);
 
   const _date = toDate(date);
-  const seconds = _date.getSeconds(); // relevant if nearestTo is 1, which is the default case
-  const minutes = _date.getMinutes() + seconds / 60;
-  const roundingMethod = getRoundingMethod(options?.roundingMethod);
-  const roundedMinutes = roundingMethod(minutes / nearestTo) * nearestTo;
-  const remainderMinutes = minutes % nearestTo;
-  const addedMinutes = Math.round(remainderMinutes / nearestTo) * nearestTo;
+  const fractionalSeconds = _date.getSeconds() / 60;
+  const fractionalMilliseconds = _date.getMilliseconds() / 1000 / 60;
+  const minutes =
+    _date.getMinutes() + fractionalSeconds + fractionalMilliseconds;
 
-  const result = constructFrom(_date, _date);
-  result.setMinutes(roundedMinutes + addedMinutes, 0, 0);
+  // Unlike the `differenceIn*` functions, the default rounding behavior is `round` and not 'trunc'
+  const method = options?.roundingMethod ?? "round";
+  const roundingMethod = getRoundingMethod(method);
+
+  const roundedMinutes = roundingMethod(minutes / nearestTo) * nearestTo;
+
+  const result = constructFrom(date, _date);
+  result.setMinutes(roundedMinutes, 0, 0);
   return result;
 }

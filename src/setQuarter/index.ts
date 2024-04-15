@@ -26,7 +26,7 @@ export function setQuarter<DateType extends Date>(
   quarter: number,
 ): DateType {
   const _date = toDate(date);
-  const oldQuarter = Math.floor(_date.getMonth() / 3) + 1;
+  const oldQuarter = Math.trunc(_date.getMonth() / 3) + 1;
   const diff = quarter - oldQuarter;
   return setMonth(_date, _date.getMonth() + diff * 3);
 }

@@ -66,7 +66,16 @@ do
   cp -r "$pattern" "$dir"
 done
 
+# Make it prettier
 if [ -z "$PACKAGE_SKIP_BEAUTIFY" ]; then
-  # Make it prettier
-  npx prettier "$dir" --write --ignore-path "" > /dev/null 2>&1 || exit 1
+  # Prettier won't format in node_modules, but when running the smoke tests, we
+  # need to format the files in node_modules.
+  cd $dir
+  npx prettier . --write --ignore-path "" > /dev/null 2>&1 || exit 1
+  cd -
+fi
+
+# Build CDN versions
+if [ -z "$PACKAGE_SKIP_CDN" ]; then
+  bun ./scripts/build/cdn.ts
 fi

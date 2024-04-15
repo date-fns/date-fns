@@ -1,13 +1,3 @@
-import { isValid } from "../isValid/index.js";
-import { toDate } from "../toDate/index.js";
-import type {
-  AdditionalTokensOptions,
-  Day,
-  FirstWeekContainsDate,
-  FirstWeekContainsDateOptions,
-  LocalizedOptions,
-  WeekOptions,
-} from "../types.js";
 import { defaultLocale } from "../_lib/defaultLocale/index.js";
 import { getDefaultOptions } from "../_lib/defaultOptions/index.js";
 import { formatters } from "../_lib/format/formatters/index.js";
@@ -15,8 +5,21 @@ import { longFormatters } from "../_lib/format/longFormatters/index.js";
 import {
   isProtectedDayOfYearToken,
   isProtectedWeekYearToken,
-  throwProtectedError,
+  warnOrThrowProtectedError,
 } from "../_lib/protectedTokens/index.js";
+import { isValid } from "../isValid/index.js";
+import { toDate } from "../toDate/index.js";
+import type {
+  AdditionalTokensOptions,
+  FirstWeekContainsDateOptions,
+  FormatPart,
+  LocalizedOptions,
+  WeekOptions,
+} from "../types.js";
+
+// Rexports of internal for libraries to use.
+// See: https://github.com/date-fns/date-fns/issues/3638#issuecomment-1877082874
+export { formatters, longFormatters };
 
 // This RegExp consists of three parts separated by `|`:
 // - [yYQqMLwIdDecihHKkms]o matches any available ordinal number token
@@ -40,6 +43,9 @@ const escapedStringRegExp = /^'([^]*?)'?$/;
 const doubleQuoteRegExp = /''/g;
 const unescapedLatinCharacterRegExp = /[a-zA-Z]/;
 
+export { format as formatDate };
+export type { FormatOptions as FormatDateOptions };
+
 /**
  * The {@link format} function options.
  */
@@ -51,6 +57,7 @@ export interface FormatOptions
 
 /**
  * @name format
+ * @alias formatDate
  * @category Common Helpers
  * @summary Format the date.
  *
@@ -362,16 +369,9 @@ export function format<DateType extends Date>(
     throw new RangeError("Invalid time value");
   }
 
-  const formatterOptions = {
-    firstWeekContainsDate: firstWeekContainsDate as FirstWeekContainsDate,
-    weekStartsOn: weekStartsOn as Day,
-    locale: locale,
-    _originalDate: originalDate,
-  };
-
-  const result = formatStr
+  let parts: FormatPart[] = formatStr
     .match(longFormattingTokensRegExp)!
-    .map(function (substring) {
+    .map((substring) => {
       const firstCharacter = substring[0];
       if (firstCharacter === "p" || firstCharacter === "P") {
         const longFormatter = longFormatters[firstCharacter];
@@ -381,37 +381,19 @@ export function format<DateType extends Date>(
     })
     .join("")
     .match(formattingTokensRegExp)!
-    .map(function (substring) {
+    .map((substring) => {
       // Replace two single quote characters with one single quote character
       if (substring === "''") {
-        return "'";
+        return { isToken: false, value: "'" };
       }
 
       const firstCharacter = substring[0];
       if (firstCharacter === "'") {
-        return cleanEscapedString(substring);
+        return { isToken: false, value: cleanEscapedString(substring) };
       }
 
-      const formatter = formatters[firstCharacter];
-      if (formatter) {
-        if (
-          !options?.useAdditionalWeekYearTokens &&
-          isProtectedWeekYearToken(substring)
-        ) {
-          throwProtectedError(substring, formatStr, String(date));
-        }
-        if (
-          !options?.useAdditionalDayOfYearTokens &&
-          isProtectedDayOfYearToken(substring)
-        ) {
-          throwProtectedError(substring, formatStr, String(date));
-        }
-        return formatter(
-          originalDate,
-          substring,
-          locale.localize,
-          formatterOptions,
-        );
+      if (formatters[firstCharacter]) {
+        return { isToken: true, value: substring };
       }
 
       if (firstCharacter.match(unescapedLatinCharacterRegExp)) {
@@ -422,11 +404,39 @@ export function format<DateType extends Date>(
         );
       }
 
-      return substring;
+      return { isToken: false, value: substring };
+    });
+
+  // invoke localize preprocessor (only for french locales at the moment)
+  if (locale.localize.preprocessor) {
+    parts = locale.localize.preprocessor(originalDate, parts);
+  }
+
+  const formatterOptions = {
+    firstWeekContainsDate,
+    weekStartsOn,
+    locale,
+  };
+
+  return parts
+    .map((part) => {
+      if (!part.isToken) return part.value;
+
+      const token = part.value;
+
+      if (
+        (!options?.useAdditionalWeekYearTokens &&
+          isProtectedWeekYearToken(token)) ||
+        (!options?.useAdditionalDayOfYearTokens &&
+          isProtectedDayOfYearToken(token))
+      ) {
+        warnOrThrowProtectedError(token, formatStr, String(date));
+      }
+
+      const formatter = formatters[token[0]];
+      return formatter(originalDate, token, locale.localize, formatterOptions);
     })
     .join("");
-
-  return result;
 }
 
 function cleanEscapedString(input: string): string {

@@ -144,7 +144,7 @@ export function normalizeTwoDigitYear(
     result = twoDigitYear || 100;
   } else {
     const rangeEnd = absCurrentYear + 50;
-    const rangeEndCentury = Math.floor(rangeEnd / 100) * 100;
+    const rangeEndCentury = Math.trunc(rangeEnd / 100) * 100;
     const isPreviousCentury = twoDigitYear >= rangeEnd % 100;
     result = twoDigitYear + rangeEndCentury - (isPreviousCentury ? 100 : 0);
   }

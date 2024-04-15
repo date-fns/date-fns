@@ -1,3 +1,4 @@
+import { constructNow } from "../constructNow/index.js";
 import { isSameHour } from "../isSameHour/index.js";
 
 /**
@@ -24,5 +25,5 @@ import { isSameHour } from "../isSameHour/index.js";
 export function isThisHour<DateType extends Date>(
   date: DateType | number | string,
 ): boolean {
-  return isSameHour(Date.now(), date);
+  return isSameHour(date, constructNow(date));
 }

@@ -1,5 +1,5 @@
-import type { Localize, LocalizeFn } from "../../../types.js";
 import { buildLocalizeFn } from "../../../_lib/buildLocalizeFn/index.js";
+import type { Localize, LocalizeFn } from "../../../types.js";
 
 const eraValues = {
   narrow: ["av. J.-C", "ap. J.-C"] as const,
@@ -124,7 +124,29 @@ const ordinalNumber: LocalizeFn<number> = (dirtyNumber, options) => {
   return number + suffix;
 };
 
+const LONG_MONTHS_TOKENS = ["MMM", "MMMM"];
+
 export const localize: Localize = {
+  preprocessor: (date, parts) => {
+    // Replaces the `do` tokens with `d` when used with long month tokens and the day of the month is greater than one.
+    // Use case "do MMMM" => 1er août, 29 août
+    // see https://github.com/date-fns/date-fns/issues/1391
+
+    if (date.getDate() === 1) return parts;
+
+    const hasLongMonthToken = parts.some(
+      (part) => part.isToken && LONG_MONTHS_TOKENS.includes(part.value),
+    );
+
+    if (!hasLongMonthToken) return parts;
+
+    return parts.map((part) =>
+      part.isToken && part.value === "do"
+        ? { isToken: true, value: "d" }
+        : part,
+    );
+  },
+
   ordinalNumber,
 
   era: buildLocalizeFn({

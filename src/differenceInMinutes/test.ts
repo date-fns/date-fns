@@ -1,7 +1,4 @@
-/* eslint-env mocha */
-
-import assert from "assert";
-import { describe, it } from "vitest";
+import { describe, expect, it } from "vitest";
 import { differenceInMinutes } from "./index.js";
 
 describe("differenceInMinutes", () => {
@@ -10,7 +7,7 @@ describe("differenceInMinutes", () => {
       new Date(2014, 6 /* Jul */, 2, 12, 20),
       new Date(2014, 6 /* Jul */, 2, 12, 6),
     );
-    assert(result === 14);
+    expect(result).toBe(14);
   });
 
   it("returns the number of minutes between the given dates with `trunc` as a default rounding method", () => {
@@ -18,7 +15,7 @@ describe("differenceInMinutes", () => {
       new Date(2014, 6 /* Jul */, 2, 12, 6, 50),
       new Date(2014, 6 /* Jul */, 2, 12, 20, 10),
     );
-    assert(result === -13);
+    expect(result).toBe(-13);
   });
 
   it("returns the number of minutes between the given dates with `trunc` passed in as a rounding method ", () => {
@@ -27,7 +24,7 @@ describe("differenceInMinutes", () => {
       new Date(2014, 6 /* Jul */, 2, 12, 6, 10),
       { roundingMethod: "trunc" },
     );
-    assert(result === 14);
+    expect(result).toBe(14);
   });
 
   it("returns the number of minutes between the given dates with `ceil` passed in as a rounding method ", () => {
@@ -36,7 +33,7 @@ describe("differenceInMinutes", () => {
       new Date(2014, 6 /* Jul */, 2, 12, 6, 10),
       { roundingMethod: "ceil" },
     );
-    assert(result === 15);
+    expect(result).toBe(15);
   });
 
   it("returns the number of minutes between the given dates with `floor` passed in as a rounding method ", () => {
@@ -45,7 +42,7 @@ describe("differenceInMinutes", () => {
       new Date(2014, 6 /* Jul */, 2, 12, 6, 10),
       { roundingMethod: "floor" },
     );
-    assert(result === 14);
+    expect(result).toBe(14);
   });
 
   it("returns the number of minutes between the given dates with `round` passed in as a rounding method ", () => {
@@ -54,7 +51,7 @@ describe("differenceInMinutes", () => {
       new Date(2014, 6 /* Jul */, 2, 12, 6, 10),
       { roundingMethod: "round" },
     );
-    assert(result === 15);
+    expect(result).toBe(15);
   });
 
   it("returns a negative number if the time value of the first date is smaller", () => {
@@ -62,7 +59,7 @@ describe("differenceInMinutes", () => {
       new Date(2014, 6 /* Jul */, 2, 12, 6),
       new Date(2014, 6 /* Jul */, 2, 12, 20),
     );
-    assert(result === -14);
+    expect(result).toBe(-14);
   });
 
   it("accepts timestamps", () => {
@@ -70,7 +67,7 @@ describe("differenceInMinutes", () => {
       new Date(2014, 8 /* Sep */, 5, 18, 45).getTime(),
       new Date(2014, 8 /* Sep */, 5, 18, 15).getTime(),
     );
-    assert(result === 30);
+    expect(result).toBe(30);
   });
 
   describe("edge cases", () => {
@@ -79,7 +76,7 @@ describe("differenceInMinutes", () => {
         new Date(2014, 8 /* Sep */, 5, 12, 12),
         new Date(2014, 8 /* Sep */, 5, 12, 11, 59),
       );
-      assert(result === 0);
+      expect(result).toBe(0);
     });
 
     it("the same for the swapped dates", () => {
@@ -87,7 +84,7 @@ describe("differenceInMinutes", () => {
         new Date(2014, 8 /* Sep */, 5, 12, 11, 59),
         new Date(2014, 8 /* Sep */, 5, 12, 12),
       );
-      assert(result === 0);
+      expect(result).toBe(0);
     });
 
     it("the difference is an integral number of minutes", () => {
@@ -95,7 +92,7 @@ describe("differenceInMinutes", () => {
         new Date(2014, 8 /* Sep */, 5, 12, 25),
         new Date(2014, 8 /* Sep */, 5, 12, 15),
       );
-      assert(result === 10);
+      expect(result).toBe(10);
     });
 
     it("the given dates are the same", () => {
@@ -103,7 +100,7 @@ describe("differenceInMinutes", () => {
         new Date(2014, 8 /* Sep */, 5, 0, 0),
         new Date(2014, 8 /* Sep */, 5, 0, 0),
       );
-      assert(result === 0);
+      expect(result).toBe(0);
     });
 
     it("does not return -0 when the given dates are the same", () => {
@@ -117,7 +114,7 @@ describe("differenceInMinutes", () => {
       );
 
       const resultIsNegative = isNegativeZero(result);
-      assert(resultIsNegative === false);
+      expect(resultIsNegative).toBe(false);
     });
   });
 
@@ -126,7 +123,7 @@ describe("differenceInMinutes", () => {
       new Date(NaN),
       new Date(2017, 0 /* Jan */, 1),
     );
-    assert(isNaN(result));
+    expect(isNaN(result)).toBe(true);
   });
 
   it("returns NaN if the second date is `Invalid Date`", () => {
@@ -134,11 +131,11 @@ describe("differenceInMinutes", () => {
       new Date(2017, 0 /* Jan */, 1),
       new Date(NaN),
     );
-    assert(isNaN(result));
+    expect(isNaN(result)).toBe(true);
   });
 
   it("returns NaN if the both dates are `Invalid Date`", () => {
     const result = differenceInMinutes(new Date(NaN), new Date(NaN));
-    assert(isNaN(result));
+    expect(isNaN(result)).toBe(true);
   });
 });

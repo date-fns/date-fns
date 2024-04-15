@@ -1,7 +1,4 @@
-/* eslint-env mocha */
-
-import assert from "assert";
-import { describe, it } from "vitest";
+import { describe, expect, it } from "vitest";
 import { differenceInMilliseconds } from "./index.js";
 
 describe("differenceInMilliseconds", () => {
@@ -10,7 +7,7 @@ describe("differenceInMilliseconds", () => {
       new Date(2014, 6 /* Jul */, 2, 12, 30, 20, 700),
       new Date(2014, 6 /* Jul */, 2, 12, 30, 20, 600),
     );
-    assert(result === 100);
+    expect(result).toBe(100);
   });
 
   it("returns a negative number if the time value of the first date is smaller", () => {
@@ -18,7 +15,7 @@ describe("differenceInMilliseconds", () => {
       new Date(2014, 6 /* Jul */, 2, 12, 30, 20, 600),
       new Date(2014, 6 /* Jul */, 2, 12, 30, 20, 700),
     );
-    assert(result === -100);
+    expect(result).toBe(-100);
   });
 
   it("accepts timestamps", () => {
@@ -26,7 +23,7 @@ describe("differenceInMilliseconds", () => {
       new Date(2014, 8 /* Sep */, 5, 18, 30, 45, 500).getTime(),
       new Date(2014, 8 /* Sep */, 5, 18, 30, 45, 500).getTime(),
     );
-    assert(result === 0);
+    expect(result).toBe(0);
   });
 
   it("does not return -0 when the given dates are the same", () => {
@@ -39,7 +36,7 @@ describe("differenceInMilliseconds", () => {
     );
 
     const resultIsNegative = isNegativeZero(result);
-    assert(resultIsNegative === false);
+    expect(resultIsNegative).toBe(false);
   });
 
   it("returns NaN if the first date is `Invalid Date`", () => {
@@ -47,7 +44,7 @@ describe("differenceInMilliseconds", () => {
       new Date(NaN),
       new Date(2017, 0 /* Jan */, 1),
     );
-    assert(isNaN(result));
+    expect(isNaN(result)).toBe(true);
   });
 
   it("returns NaN if the second date is `Invalid Date`", () => {
@@ -55,11 +52,11 @@ describe("differenceInMilliseconds", () => {
       new Date(2017, 0 /* Jan */, 1),
       new Date(NaN),
     );
-    assert(isNaN(result));
+    expect(isNaN(result)).toBe(true);
   });
 
   it("returns NaN if the both dates are `Invalid Date`", () => {
     const result = differenceInMilliseconds(new Date(NaN), new Date(NaN));
-    assert(isNaN(result));
+    expect(isNaN(result)).toBe(true);
   });
 });

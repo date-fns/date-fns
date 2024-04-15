@@ -1,7 +1,4 @@
-/* eslint-env mocha */
-
-import assert from "assert";
-import { describe, it, afterEach } from "vitest";
+import { afterEach, describe, expect, it } from "vitest";
 import { getDefaultOptions } from "./index.js";
 import { setDefaultOptions } from "../setDefaultOptions/index.js";
 import { startOfWeek } from "../startOfWeek/index.js";
@@ -17,26 +14,26 @@ describe("getDefaultOptions", () => {
 
   it("returns an empty object", () => {
     const result = getDefaultOptions();
-    assert.deepStrictEqual(result, {});
+    expect(result).toEqual({});
   });
 
   it("returns a clone of the original object", () => {
     setInternalDefaultOptions({ weekStartsOn: 1 });
     const result = getDefaultOptions();
-    assert.deepStrictEqual(getInternalDefaultOptions(), result);
+    expect(getInternalDefaultOptions()).toEqual(result);
   });
 
   it("mutating the result does not affect functions that use options", () => {
     const defaultOptionsClone = getDefaultOptions();
     defaultOptionsClone.weekStartsOn = 1;
     const result = startOfWeek(new Date(2014, 8 /* Sep */, 2, 11, 55, 0));
-    assert.deepStrictEqual(result, new Date(2014, 7 /* Aug */, 31));
+    expect(result).toEqual(new Date(2014, 7 /* Aug */, 31));
 
     // Mutating the original object does affect `startOfWeek`
     const _defaultOptions = getInternalDefaultOptions();
     _defaultOptions.weekStartsOn = 1;
     const result2 = startOfWeek(new Date(2014, 8 /* Sep */, 2, 11, 55, 0));
-    assert.deepStrictEqual(result2, new Date(2014, 8 /* Sep */, 1));
+    expect(result2).toEqual(new Date(2014, 8 /* Sep */, 1));
   });
 
   it("returns new values after setting them via `setDefaultOptions`", () => {
@@ -46,7 +43,7 @@ describe("getDefaultOptions", () => {
       locale: eo,
     });
     const result = getDefaultOptions();
-    assert.deepStrictEqual(result, {
+    expect(result).toEqual({
       weekStartsOn: 1,
       firstWeekContainsDate: 4,
       locale: eo,

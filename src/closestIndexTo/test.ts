@@ -1,7 +1,4 @@
-/* eslint-env mocha */
-
-import assert from "assert";
-import { describe, it } from "vitest";
+import { describe, expect, it } from "vitest";
 import { closestIndexTo } from "./index.js";
 
 describe("closestIndexTo", () => {
@@ -11,7 +8,7 @@ describe("closestIndexTo", () => {
       new Date(2015, 7 /* Aug */, 31),
       new Date(2012, 6 /* Jul */, 2),
     ]);
-    assert.strictEqual(result, 0);
+    expect(result).toBe(0);
   });
 
   it("works if the closest date from the given array is before the given date", () => {
@@ -21,7 +18,7 @@ describe("closestIndexTo", () => {
       new Date(2014, 6 /* Jul */, 2, 6, 30, 3, 900),
       new Date(2014, 6 /* Jul */, 2, 6, 30, 10),
     ]);
-    assert.strictEqual(result, 1);
+    expect(result).toBe(1);
   });
 
   it("accepts timestamps", () => {
@@ -30,13 +27,13 @@ describe("closestIndexTo", () => {
       new Date(2015, 7 /* Aug */, 31).getTime(),
       new Date(2012, 6 /* Jul */, 2).getTime(),
     ]);
-    assert.strictEqual(result, 0);
+    expect(result).toBe(0);
   });
 
   it("returns undefined if the given array is empty", () => {
     const date = new Date(2014, 6 /* Jul */, 2).getTime();
     const result = closestIndexTo(date, []);
-    assert.strictEqual(result, undefined);
+    expect(result).toBe(undefined);
   });
 
   it("returns NaN if the given date is `Invalid Date`", () => {
@@ -45,7 +42,7 @@ describe("closestIndexTo", () => {
       new Date(2015, 7 /* Aug */, 31),
       new Date(2012, 6 /* Jul */, 2),
     ]);
-    assert(result != null && isNaN(result));
+    expect(result != null && isNaN(result)).toBe(true);
   });
 
   it("returns NaN if any date in the given array is `Invalid Date`", () => {
@@ -55,6 +52,6 @@ describe("closestIndexTo", () => {
       new Date(NaN),
       new Date(2012, 6 /* Jul */, 2),
     ]);
-    assert(result != null && isNaN(result));
+    expect(result != null && isNaN(result)).toBe(true);
   });
 });

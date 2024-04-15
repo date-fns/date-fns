@@ -16,6 +16,8 @@ env TZ=Asia/Damascus npx tsx ./test/dst/eachDayOfInterval/basic.ts
 env TZ=America/Santiago npx tsx ./test/dst/addBusinessDays/basic.ts
 env TZ=Australia/Melbourne npx tsx ./test/dst/formatDistanceStrict/melbourne.ts
 env TZ=Africa/Cairo npx tsx ./test/dst/formatDistanceStrict/cairo.ts
+env TZ=Asia/Singapore npx tsx ./test/dst/getOverlappingDaysInIntervals/basic.ts
+env TZ=Asia/Chita npx tsx ./test/dst/getOverlappingDaysInIntervals/basic.ts
 echo "✅ DST tests passed"
 
 echo "Running formatISO tests"

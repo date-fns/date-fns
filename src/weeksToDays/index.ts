@@ -18,5 +18,5 @@ import { daysInWeek } from "../constants/index.js";
  * //=> 14
  */
 export function weeksToDays(weeks: number): number {
-  return Math.floor(weeks * daysInWeek);
+  return Math.trunc(weeks * daysInWeek);
 }

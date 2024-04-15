@@ -20,5 +20,5 @@ import { minutesInHour } from "../constants/index.js";
  * //=> 120
  */
 export function hoursToMinutes(hours: number): number {
-  return Math.floor(hours * minutesInHour);
+  return Math.trunc(hours * minutesInHour);
 }

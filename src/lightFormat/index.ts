@@ -2,6 +2,10 @@ import { isValid } from "../isValid/index.js";
 import { toDate } from "../toDate/index.js";
 import { lightFormatters } from "../_lib/format/lightFormatters/index.js";
 
+// Rexports of internal for libraries to use.
+// See: https://github.com/date-fns/date-fns/issues/3638#issuecomment-1877082874
+export { lightFormatters };
+
 // This RegExp consists of three parts separated by `|`:
 // - (\w)\1* matches any sequences of the same letter
 // - '' matches two quote characters in a row

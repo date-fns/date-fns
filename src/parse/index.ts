@@ -1,6 +1,6 @@
 import { constructFrom } from "../constructFrom/index.js";
 import { getDefaultOptions } from "../getDefaultOptions/index.js";
-import { enUS as defaultLocale } from "../locale/en-US/index.js";
+import { defaultLocale } from "../_lib/defaultLocale/index.js";
 import { toDate } from "../toDate/index.js";
 import type {
   AdditionalTokensOptions,
@@ -12,12 +12,16 @@ import { longFormatters } from "../_lib/format/longFormatters/index.js";
 import {
   isProtectedDayOfYearToken,
   isProtectedWeekYearToken,
-  throwProtectedError,
+  warnOrThrowProtectedError,
 } from "../_lib/protectedTokens/index.js";
 import { parsers } from "./_lib/parsers/index.js";
 import type { Setter } from "./_lib/Setter.js";
 import { DateToSystemTimezoneSetter } from "./_lib/Setter.js";
 import type { ParseFlags, ParserOptions } from "./_lib/types.js";
+
+// Rexports of internal for libraries to use.
+// See: https://github.com/date-fns/date-fns/issues/3638#issuecomment-1877082874
+export { longFormatters, parsers };
 
 /**
  * The {@link parse} function options.
@@ -409,13 +413,13 @@ export function parse<DateType extends Date>(
       !options?.useAdditionalWeekYearTokens &&
       isProtectedWeekYearToken(token)
     ) {
-      throwProtectedError(token, formatStr, dateStr);
+      warnOrThrowProtectedError(token, formatStr, dateStr);
     }
     if (
       !options?.useAdditionalDayOfYearTokens &&
       isProtectedDayOfYearToken(token)
     ) {
-      throwProtectedError(token, formatStr, dateStr);
+      warnOrThrowProtectedError(token, formatStr, dateStr);
     }
 
     const firstCharacter = token[0];

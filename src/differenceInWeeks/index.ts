@@ -1,6 +1,6 @@
+import { getRoundingMethod } from "../_lib/getRoundingMethod/index.js";
 import { differenceInDays } from "../differenceInDays/index.js";
 import type { RoundingOptions } from "../types.js";
-import { getRoundingMethod } from "../_lib/roundingMethods/index.js";
 
 /**
  * The {@link differenceInWeeks} function options.
@@ -21,7 +21,7 @@ export interface DifferenceInWeeksOptions extends RoundingOptions {}
  * or more than 7*24 hours if a daylight savings change happens between two dates.
  *
  * To ignore DST and only measure exact 7*24-hour periods, use this instead:
- * `Math.floor(differenceInHours(dateLeft, dateRight)/(7*24))|0`.
+ * `Math.trunc(differenceInHours(dateLeft, dateRight)/(7*24))|0`.
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *

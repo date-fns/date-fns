@@ -1,5 +1,6 @@
 import type { FormatDistanceStrictOptions } from "../formatDistanceStrict/index.js";
 import { formatDistanceStrict } from "../formatDistanceStrict/index.js";
+import { constructNow } from "../constructNow/index.js";
 
 /**
  * The {@link formatDistanceToNowStrict} function options.
@@ -84,5 +85,5 @@ export function formatDistanceToNowStrict<DateType extends Date>(
   date: DateType | number | string,
   options?: FormatDistanceToNowStrictOptions,
 ): string {
-  return formatDistanceStrict(date, Date.now(), options);
+  return formatDistanceStrict(date, constructNow(date), options);
 }
