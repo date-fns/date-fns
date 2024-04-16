@@ -20,52 +20,29 @@ describe('parseISODuration', () => {
   it('parses partial ISO duration without time P1M', () => {
     const result = parseISODuration('P1M')
     expect(result).toEqual({
-      years: 0,
       months: 1,
-      weeks: 0,
-      days: 0,
-      hours: 0,
-      minutes: 0,
-      seconds: 0,
     })
   })
 
   it('parses partial ISO duration with days P1D', () => {
     const result = parseISODuration('P1D')
     expect(result).toEqual({
-      years: 0,
-      months: 0,
-      weeks: 0,
       days: 1,
-      hours: 0,
-      minutes: 0,
-      seconds: 0,
     })
   })
 
   it('parses partial ISO duration with time PT1M', () => {
     const result = parseISODuration('PT1M')
     expect(result).toEqual({
-      years: 0,
-      months: 0,
-      weeks: 0,
-      days: 0,
-      hours: 0,
       minutes: 1,
-      seconds: 0,
     })
   })
 
   it('parses ISO duration without normalizing P23DT3000H', () => {
     const result = parseISODuration('P23DT3000H')
     expect(result).toEqual({
-      years: 0,
-      months: 0,
-      weeks: 0,
       days: 23,
       hours: 3000,
-      minutes: 0,
-      seconds: 0,
     })
   })
 
@@ -74,7 +51,6 @@ describe('parseISODuration', () => {
     expect(result).toEqual({
       years: 1,
       months: 2,
-      weeks: 0,
       days: 4,
       hours: 20,
       minutes: 44,
@@ -87,7 +63,6 @@ describe('parseISODuration', () => {
     expect(result).toEqual({
       years: 1,
       months: 2,
-      weeks: 0,
       days: 4,
       hours: 20,
       minutes: 44,
@@ -99,24 +74,13 @@ describe('parseISODuration', () => {
     const result = parseISODuration('P0.5Y')
     expect(result).toEqual({
       years: 0.5,
-      months: 0,
-      weeks: 0,
-      days: 0,
-      hours: 0,
-      minutes: 0,
-      seconds: 0,
     })
   })
 
   it('parses ISO duration with zero values', () => {
     const result = parseISODuration('P0DT0S')
     expect(result).toEqual({
-      years: 0,
-      months: 0,
-      weeks: 0,
       days: 0,
-      hours: 0,
-      minutes: 0,
       seconds: 0,
     })
   })

@@ -26,7 +26,6 @@ const ISO_DURATION_REGEX = /P(?!$)(?:([\d]+\.?[\d]*|\.[\d]+)Y)?(?:([\d]+\.?[\d]*
  * const result = parseISODuration('P3Y6M4DT12H30M5S')
  * //=> { years: 3, months: 6, weeks: 0, days: 4, hours: 12, minutes: 30, seconds: 5 }
  */
-
 export function parseISODuration(argument: string): Duration {
   const parsedArgument = argument.replace(/,/g, "."); // Decimal fraction may be specified with either a comma or a full stop
 
@@ -38,13 +37,13 @@ export function parseISODuration(argument: string): Duration {
 
   const [
     ,
-    years = 0,
-    months = 0,
-    weeks = 0,
-    days = 0,
-    hours = 0,
-    minutes = 0,
-    seconds = 0,
+    years,
+    months,
+    weeks,
+    days,
+    hours,
+    minutes,
+    seconds,
   ] = match;
 
   const entries = Object.entries({
@@ -58,7 +57,9 @@ export function parseISODuration(argument: string): Duration {
   }) as [keyof Duration, string][];
 
   return entries.reduce<Duration>((prev, [key, value]) => {
-    prev[key] = +value;
+    if (value !== undefined) {
+      prev[key] = +value;
+    }
     return prev;
   }, {});
 }
