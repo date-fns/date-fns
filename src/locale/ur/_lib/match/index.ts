@@ -9,7 +9,7 @@ const parseOrdinalNumberPattern = /\d+/i;
 const matchEraPatterns = {
   narrow: /^(ق|ع)/g,
   abbreviated: /^(ق.م|ع)/g,
-  wide: /^(قبل مسیح|قبل مشترکہ دور|عیسوی دور|مشترکہ دور)/i,
+  wide: /^(قبل مسیح|عیسوی)/i,
 };
 
 const parseEraPatterns = {
@@ -35,7 +35,7 @@ const parseQuarterPatterns = {
 
 const matchMonthPatterns = {
   narrow: /^(ج|ف|م|ا|م|ج|ج|ا|س|ا|ن|د)/i,
-  abbreviated: /^(جنو|فرور|مارچ|اپر|مئ|جون|جولا|اگست|ستم|اکت|نوم|دسم)/i,
+  abbreviated: /^(جنو|فرو|مارچ|اپر|مئ|جون|جولا|اگست|ستم|اکت|نوم|دسم)/i,
   wide: /^(جنوری|فروری|مارچ|اپریل|مئی|جون|جولائی|اگست|ستمبر|اکتوبر|نومبر|دسمبر)/i,
 };
 const parseMonthPatterns = {
@@ -55,7 +55,7 @@ const parseMonthPatterns = {
   ] as const,
   any: [
     /^جنو/i,
-    /^فرور/i,
+    /^فرو/i,
     /^مارچ/i,
     /^اپر/i,
     /^مئ/i,
@@ -81,32 +81,20 @@ const parseDayPatterns = {
 };
 
 const matchDayPeriodPatterns = {
-  narrow: /^(ص|ش|د|ر|آر)/,
-  abbreviated: /^(ص|ش|صبح|دوپہر|شام|رات|آدھی رات) کو/,
-  wide: /^(ص|ش|صبح|دوپہر|شام|رات|آدھی رات) کے وقت/,
-  any: /^(ص|ش|صبح|دوپہر|شام|رات|آدھی رات)/,
+  narrow: /^(شام|صبح|ص|ش|ز|د|ر|آر)/i,
+  any: /^(شام|صبح|ص|ش|زوال|دوپہر|رات|آدھی رات)/,
 };
 
 const parseDayPeriodPatterns = {
-  narrow: {
-    am: /^ص/,
-    pm: /^ش/,
-    morning: /^ص/,
-    noon: /^د/,
-    afternoon: /^د/,
-    evening: /^ش/,
-    night: /^ر/,
-    midnight: /^آر/,
-  },
   any: {
-    am: /^ص/,
-    pm: /^ش/,
-    morning: /^صبح/,
-    noon: /^دوپہر/,
-    afternoon: /^دوپہر/,
-    evening: /^شام/,
-    night: /^رات/,
-    midnight: /^آدھی رات/,
+    am: /^(ص)/i,
+    pm: /^(ش)/i,
+    morning: /^(صبح)/,
+    noon: /^(زوال|ز)/,
+    afternoon: /^(دوپہر|د)/,
+    evening: /^(شام)/,
+    night: /^(رات|ر)/,
+    midnight: /^(آدھی رات|آر)/,
   },
 };
 

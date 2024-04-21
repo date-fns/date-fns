@@ -21,6 +21,6 @@ export const ur: Locale = {
   match: match,
   options: {
     weekStartsOn: 1 /* Monday */,
-    firstWeekContainsDate: 4,
+    firstWeekContainsDate: 1,
   },
 };

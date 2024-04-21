@@ -3,8 +3,8 @@ import { buildLocalizeFn } from "../../../_lib/buildLocalizeFn/index.js";
 
 const eraValues = {
   narrow: ["ق", "ع"] as const,
-  abbreviated: ["۔ق۔م", "ع۔د۔"] as const,
-  wide: ["قبل مسیح", "عیسوی دور"] as const,
+  abbreviated: ["ق۔م", "ع"] as const,
+  wide: ["قبل مسیح", "عیسوی"] as const,
 };
 
 const quarterValues = {
@@ -22,7 +22,7 @@ const monthValues = {
   narrow: ["ج", "ف", "م", "ا", "م", "ج", "ج", "ا", "س", "ا", "ن", "د"] as const,
   abbreviated: [
     "جنو",
-    "فرور",
+    "فرو",
     "مارچ",
     "اپر",
     "مئ",
@@ -52,6 +52,16 @@ const monthValues = {
 
 const dayValues = {
   narrow: ["ا", "پ", "م", "ب", "ج", "ج", "ہ"] as const,
+  short: ["ا", "پ", "م", "ب", "ج", "ج", "ہ"] as const,
+  abbreviated: [
+    "اتوار",
+    "پیر",
+    "منگل",
+    "بدھ",
+    "جمعرات",
+    "جمعہ",
+    "ہفتہ",
+  ] as const,
   wide: ["اتوار", "پیر", "منگل", "بدھ", "جمعرات", "جمعہ", "ہفتہ"] as const,
 };
 
@@ -59,10 +69,10 @@ const dayPeriodValues = {
   narrow: {
     am: "ص",
     pm: "ش",
-    morning: "ص",
-    noon: "د",
+    morning: "صبح",
+    noon: "ز",
     afternoon: "د",
-    evening: "ش",
+    evening: "شام",
     night: "ر",
     midnight: "آر",
   },
@@ -70,7 +80,7 @@ const dayPeriodValues = {
     am: "ص",
     pm: "ش",
     morning: "صبح",
-    noon: "دوپہر",
+    noon: "زوال",
     afternoon: "دوپہر",
     evening: "شام",
     night: "رات",
@@ -80,7 +90,7 @@ const dayPeriodValues = {
     am: "ص",
     pm: "ش",
     morning: "صبح",
-    noon: "دوپہر",
+    noon: "زوال",
     afternoon: "دوپہر",
     evening: "شام",
     night: "رات",
@@ -93,7 +103,7 @@ const formattingDayPeriodValues = {
     am: "ص",
     pm: "ش",
     morning: "ص",
-    noon: "د",
+    noon: "ز",
     afternoon: "د",
     evening: "ش",
     night: "ر",
@@ -102,22 +112,22 @@ const formattingDayPeriodValues = {
   abbreviated: {
     am: "ص",
     pm: "ش",
-    morning: "صبح کو",
-    noon: "دوپہر کو",
-    afternoon: "دوپہر کو",
-    evening: "شام کو",
-    night: "رات کو",
-    midnight: "آدھی رات کو",
+    morning: "صبح",
+    noon: "زوال",
+    afternoon: "دوپہر",
+    evening: "شام",
+    night: "رات",
+    midnight: "آدھی رات",
   },
   wide: {
     am: "ص",
     pm: "ش",
-    morning: "صبح کے وقت",
-    noon: "دوپہر کے وقت",
-    afternoon: "دوپہر کے وقت",
-    evening: "شام کے وقت",
-    night: "رات کے وقت",
-    midnight: "آدھی رات کے وقت",
+    morning: "صبح",
+    noon: "زوال",
+    afternoon: "دوپہر",
+    evening: "شام",
+    night: "رات",
+    midnight: "آدھی رات",
   },
 };
 
