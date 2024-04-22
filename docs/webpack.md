@@ -33,7 +33,7 @@ In order to exclude unused languages we can use webpacks [ContextReplacementPlug
 import webpack from 'webpack'
 import { supportedLocales } from './config.js'
 
-export default const config = {
+export default config = {
 	resolve: {
 		alias: {
 			'date-fns-locale': path.dirname(
