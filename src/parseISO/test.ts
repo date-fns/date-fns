@@ -110,6 +110,11 @@ describe("parseISO", () => {
         const result = parseISO("+0123");
         expect(result).toEqual(new Date(12300, 0 /* Jan */, 1));
       });
+
+      it("allows to specify the number of additional digits", () => {
+        const result = parseISO("20", { additionalDigits: 0 });
+        expect(result.getUTCFullYear()).toEqual(19);
+      });
     });
 
     describe("extended year representation", () => {
