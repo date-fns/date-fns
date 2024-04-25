@@ -6,7 +6,7 @@ import { toDate } from "../toDate/index.js";
  * @summary Does the given date fall on a weekend?
  *
  * @description
- * Does the given date fall on a weekend?
+ * Does the given date fall on a weekend? A weekend is either saturday(day=6) or sunday(day=0)
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
