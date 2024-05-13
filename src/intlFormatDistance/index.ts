@@ -16,16 +16,19 @@ import { differenceInHours } from "../differenceInHours/index.js";
 import { differenceInMinutes } from "../differenceInMinutes/index.js";
 import { differenceInSeconds } from "../differenceInSeconds/index.js";
 import { toDate } from "../toDate/index.js";
-import type { IntlFormatLocale } from "../intlFormat/index.js";
+import type { DateFns } from "../types.js";
 
 /**
  * The {@link intlFormatDistance} function options.
  */
-export interface IntlFormatDistanceOptions extends Intl.RelativeTimeFormatOptions {
+export interface IntlFormatDistanceOptions
+  extends Intl.RelativeTimeFormatOptions {
   /** Force the distance unit */
   unit?: IntlFormatDistanceUnit;
-  /** The locale(s) to use (see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument) */
-  locale?: IntlFormatLocale | IntlFormatLocale[];
+  /** The locales to use (see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument) */
+  locale: DateFns.Utils.MaybeArray<
+    Intl.ResolvedDateTimeFormatOptions["locale"]
+  >;
 }
 
 /**
