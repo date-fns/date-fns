@@ -10,19 +10,19 @@ Let's assume that we have a single point in which supported locales are present:
 
 ```js
 // `see date-fns/src/locale` for available locales
-export const supportedLocales = ['en-US', 'de', 'pl', 'it']
+export const supportedLocales = ["en-US", "de", "pl", "it"];
 ```
 
 We could also have a function that formats the date:
 
 ```js
-const getLocale = (locale) => import(`date-fns-locale/locale/${locale}.mjs`) // or require() if using CommonJS
+const getLocale = (locale) => import(`date-fns-locale/locale/${locale}.mjs`); // or require() if using CommonJS
 
 const formatDate = (date, formatStyle, locale) => {
   return format(date, formatStyle, {
     locale: getLocale(locale).default,
-  })
-}
+  });
+};
 ```
 
 In order to exclude unused languages we can use webpacks [ContextReplacementPlugin].
@@ -30,24 +30,22 @@ In order to exclude unused languages we can use webpacks [ContextReplacementPlug
 `webpack.config.js`:
 
 ```js
-import webpack from 'webpack'
-import { supportedLocales } from './config.js'
+import webpack from "webpack";
+import { supportedLocales } from "./config.js";
 
 export default config = {
-	resolve: {
-		alias: {
-			'date-fns-locale': path.dirname(
-				require.resolve('date-fns/package.json')
-			),
-		},
-	},
-	plugins: [
-		new webpack.ContextReplacementPlugin(
-			/date-fns[/\\]locale/,
-			new RegExp(`(${locales.join('|')})\.mjs$`)
-		),
-	]
-}
+  resolve: {
+    alias: {
+      "date-fns-locale": path.dirname(require.resolve("date-fns/package.json")),
+    },
+  },
+  plugins: [
+    new webpack.ContextReplacementPlugin(
+      /date-fns[/\\]locale/,
+      new RegExp(`(${locales.join("|")})\.mjs$`),
+    ),
+  ],
+};
 ```
 
 This results in a language bundle of ~23kb .
