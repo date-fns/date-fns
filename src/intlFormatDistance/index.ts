@@ -16,21 +16,19 @@ import { differenceInHours } from "../differenceInHours/index.js";
 import { differenceInMinutes } from "../differenceInMinutes/index.js";
 import { differenceInSeconds } from "../differenceInSeconds/index.js";
 import { toDate } from "../toDate/index.js";
+import type { DateFns } from "../types.js";
 
 /**
  * The {@link intlFormatDistance} function options.
  */
-export interface IntlFormatDistanceOptions {
+export interface IntlFormatDistanceOptions
+  extends Intl.RelativeTimeFormatOptions {
   /** Force the distance unit */
   unit?: IntlFormatDistanceUnit;
-  /** The locale(s) to use (see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument) */
-  locale?: Intl.UnicodeBCP47LocaleIdentifier | Intl.UnicodeBCP47LocaleIdentifier[];
-  /** The locale matching algorithm to use. Other value: 'lookup'. See MDN for details [Locale identification and negotiation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locale_identification_and_negotiation) */
-  localeMatcher?: Intl.RelativeTimeFormatLocaleMatcher;
-  /** The output message format. The values are 'auto' (e.g. `yesterday`), 'always'(e.g. `1 day ago`) */
-  numeric?: Intl.RelativeTimeFormatNumeric;
-  /** The length of the result. The values are: 'long' (e.g. `1 month`), 'short' (e.g. 'in 1 mo.'), 'narrow' (e.g. 'in 1 mo.'). The narrow one could be similar to the short one for some locales. */
-  style?: Intl.RelativeTimeFormatStyle;
+  /** The locales to use (see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument) */
+  locale?: DateFns.Utils.MaybeArray<
+    Intl.ResolvedDateTimeFormatOptions["locale"]
+  >;
 }
 
 /**
@@ -219,9 +217,8 @@ export function intlFormatDistance<DateType extends Date>(
   }
 
   const rtf = new Intl.RelativeTimeFormat(options?.locale, {
-    localeMatcher: options?.localeMatcher,
-    numeric: options?.numeric || "auto",
-    style: options?.style,
+    numeric: "auto",
+    ...options,
   });
 
   return rtf.format(value, unit);

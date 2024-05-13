@@ -1,7 +1,11 @@
 import { toDate } from "../toDate/index.js";
+import type { DateFns } from "../types.js";
 
 /**
  * The locale string (see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument).
+ * @deprecated
+ *
+ * [TODO] Remove in v4
  */
 export type IntlFormatLocale = Intl.ResolvedDateTimeFormatOptions["locale"];
 
@@ -14,8 +18,10 @@ export type IntlFormatFormatOptions = Intl.DateTimeFormatOptions;
  * The locale options.
  */
 export interface IntlFormatLocaleOptions {
-  /** The locale(s) to use (see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument) */
-  locale: IntlFormatLocale | IntlFormatLocale[];
+  /** The locales to use (see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument) */
+  locale: DateFns.Utils.MaybeArray<
+    Intl.ResolvedDateTimeFormatOptions["locale"]
+  >;
 }
 
 /**

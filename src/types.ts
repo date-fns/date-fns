@@ -301,3 +301,22 @@ export interface NearestToUnitOptions<Unit extends number> {
    * hours. */
   nearestTo?: Unit;
 }
+
+/**
+ * Namespace for service-level types that are not oriented to the end users.
+ *
+ * [NOTE] Right now it is empty except the utils, but it will be useful to move
+ * some types here in the future. For instance {@link GenericDateConstructor}
+ * doesn't belong in the root namespace.
+ */
+export namespace DateFns {
+  /**
+   * Type utilities.
+   */
+  export namespace Utils {
+    /**
+     * Resolves passed type or array of types.
+     */
+    export type MaybeArray<Type> = Type | Type[];
+  }
+}
