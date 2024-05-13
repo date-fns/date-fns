@@ -26,7 +26,7 @@ export interface IntlFormatDistanceOptions
   /** Force the distance unit */
   unit?: IntlFormatDistanceUnit;
   /** The locales to use (see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument) */
-  locale: DateFns.Utils.MaybeArray<
+  locale?: DateFns.Utils.MaybeArray<
     Intl.ResolvedDateTimeFormatOptions["locale"]
   >;
 }
