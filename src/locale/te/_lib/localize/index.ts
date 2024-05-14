@@ -1,7 +1,7 @@
 import type { Localize, LocalizeFn } from "../../../types.js";
 import { buildLocalizeFn } from "../../../_lib/buildLocalizeFn/index.js";
 
-// Source: https://www.unicode.org/cldr/charts/32/summary/te.html
+// Source: https://www.unicode.org/cldr/charts/44/summary/te.html
 // Source: https://dsal.uchicago.edu/dictionaries/brown/
 
 // CLDR #1605 - #1608

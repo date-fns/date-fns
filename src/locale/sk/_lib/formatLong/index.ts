@@ -1,7 +1,7 @@
 import type { FormatLong } from "../../../types.js";
 import { buildFormatLongFn } from "../../../_lib/buildFormatLongFn/index.js";
 
-// https://www.unicode.org/cldr/charts/32/summary/sk.html?hide#1986
+// https://www.unicode.org/cldr/charts/44/summary/sk.html#4d988ef42af07ea2
 const dateFormats = {
   full: "EEEE d. MMMM y",
   long: "d. MMMM y",
@@ -9,7 +9,7 @@ const dateFormats = {
   short: "d. M. y",
 };
 
-// https://www.unicode.org/cldr/charts/32/summary/sk.html?hide#2149
+// https://www.unicode.org/cldr/charts/44/summary/sk.html#683ddbe8510f73c
 const timeFormats = {
   full: "H:mm:ss zzzz",
   long: "H:mm:ss z",
@@ -17,7 +17,7 @@ const timeFormats = {
   short: "H:mm",
 };
 
-// https://www.unicode.org/cldr/charts/32/summary/sk.html?hide#1994
+// https://www.unicode.org/cldr/charts/44/summary/sk.html#68725f8fff1b6db9
 const dateTimeFormats = {
   full: "{{date}}, {{time}}",
   long: "{{date}}, {{time}}",

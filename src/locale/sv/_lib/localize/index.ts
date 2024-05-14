@@ -65,7 +65,7 @@ const dayValues = {
   ] as const,
 };
 
-// https://www.unicode.org/cldr/charts/32/summary/sv.html#1888
+// https://www.unicode.org/cldr/charts/44/summary/sv.html#1b950d155352ae90
 const dayPeriodValues = {
   narrow: {
     am: "fm",

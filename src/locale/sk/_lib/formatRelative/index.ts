@@ -5,7 +5,7 @@ import type {
   FormatRelativeFnOptions,
 } from "../../../types.js";
 
-// https://www.unicode.org/cldr/charts/32/summary/sk.html?hide#1308
+// https://www.unicode.org/cldr/charts/44/summary/sk.html#282cce0efeef5811
 const accusativeWeekdays = [
   "nedeľu",
   "pondelok",

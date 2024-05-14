@@ -36,7 +36,7 @@ type Token = keyof typeof lightFormatters;
  * `lightFormat` doesn't use locales and outputs date using the most popular tokens.
  *
  * > ⚠️ Please note that the `lightFormat` tokens differ from Moment.js and other libraries.
- * > See: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
+ * > See: https://github.com/date-fns/date-fns/blob/main/docs/unicodeTokens.md
  *
  * The characters wrapped between two single quotes characters (') are escaped.
  * Two single quotes in a row, whether inside or outside a quoted sequence, represent a 'real' single quote.

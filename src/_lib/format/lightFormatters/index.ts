@@ -16,7 +16,7 @@ import { addLeadingZeros } from "../../addLeadingZeros/index.js";
 export const lightFormatters = {
   // Year
   y(date: Date, token: string): string {
-    // From http://www.unicode.org/reports/tr35/tr35-31/tr35-dates.html#Date_Format_tokens
+    // From https://www.unicode.org/reports/tr35/tr35-31/tr35-dates.html#Date_Format_tokens
     // | Year     |     y | yy |   yyy |  yyyy | yyyyy |
     // |----------|-------|----|-------|-------|-------|
     // | AD 1     |     1 | 01 |   001 |  0001 | 00001 |

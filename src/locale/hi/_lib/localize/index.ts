@@ -85,7 +85,7 @@ const quarterValues = {
 // If you are making a new locale based on this one, check if the same is true for the language you're working on.
 // Generally, formatted dates should look like they are in the middle of a sentence,
 // e.g. in Spanish language the weekdays and months should be in the lowercase.
-// https://www.unicode.org/cldr/charts/32/summary/hi.html
+// https://www.unicode.org/cldr/charts/44/summary/hi.html
 // CLDR #1617 - #1688
 const monthValues = {
   narrow: [

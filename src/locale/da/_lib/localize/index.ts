@@ -46,7 +46,7 @@ const monthValues = {
 };
 
 // Note that 'Days - abbreviated - Formatting' has periods at the end.
-// https://www.unicode.org/cldr/charts/32/summary/da.html#1760
+// https://www.unicode.org/cldr/charts/44/summary/da.html#f3229b3855261cb
 // This makes grammatical sense in danish, as most abbreviations have periods.
 const dayValues = {
   narrow: ["S", "M", "T", "O", "T", "F", "L"] as const,

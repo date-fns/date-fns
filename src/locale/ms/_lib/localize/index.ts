@@ -2,7 +2,7 @@ import type { Localize, LocalizeFn } from "../../../types.js";
 import { buildLocalizeFn } from "../../../_lib/buildLocalizeFn/index.js";
 
 // Most data for localization are taken from this page
-// https://www.unicode.org/cldr/charts/32/summary/ms.html
+// https://www.unicode.org/cldr/charts/44/summary/ms.html
 const eraValues = {
   narrow: ["SM", "M"] as const,
   abbreviated: ["SM", "M"] as const,

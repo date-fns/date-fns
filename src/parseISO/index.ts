@@ -20,7 +20,7 @@ export interface ParseISOOptions {
  * Parse the given string in ISO 8601 format and return an instance of Date.
  *
  * Function accepts complete ISO 8601 formats as well as partial implementations.
- * ISO 8601: http://en.wikipedia.org/wiki/ISO_8601
+ * ISO 8601: https://en.wikipedia.org/wiki/ISO_8601
  *
  * If the argument isn't a string, the function cannot parse the string or
  * the values are invalid, it returns Invalid Date.

@@ -1,7 +1,7 @@
 import type { FormatDistanceFn, FormatDistanceLocale } from "../../../types.js";
 import { numberToLocale } from "../localize/index.js";
 
-// Source: https://www.unicode.org/cldr/charts/32/summary/hi.html
+// Source: https://www.unicode.org/cldr/charts/44/summary/hi.html
 
 export type FormatDistanceTokanRelativeValue = {
   one: string;
