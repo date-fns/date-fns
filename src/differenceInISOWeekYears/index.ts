@@ -49,5 +49,5 @@ export function differenceInISOWeekYears<DateType extends Date>(
   );
   const result = sign * (difference - isLastISOWeekYearNotFull);
   // Prevent negative zero
-  return result === 0 ? 0 : result;
+  return result || 0;
 }

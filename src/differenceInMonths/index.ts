@@ -65,5 +65,5 @@ export function differenceInMonths<DateType extends Date>(
   }
 
   // Prevent negative zero
-  return result === 0 ? 0 : result;
+  return result || 0;
 }
