@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { intlFormat } from "./index.js";
+import { intlFormat, type IntlFormatOptions } from "./index.js";
 
 // Before Node version 13.0.0, only the locale data for en-US is available by default.
 const hasFullICU = () => {
@@ -22,7 +22,7 @@ const getOperationSystemLocale = () => {
 describe("intlFormat", () => {
   describe("formats date", () => {
     fullICUOnly(
-      "should work without format's options and locale's options",
+      "should work without options",
       () => {
         const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456);
         const result = intlFormat(date);
@@ -34,7 +34,7 @@ describe("intlFormat", () => {
       },
     );
 
-    fullICUOnly("should work with only format's options", () => {
+    fullICUOnly("should work with only format options", () => {
       const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456);
       const formatOptions: Intl.DateTimeFormatOptions = {
         year: "numeric",
@@ -48,40 +48,39 @@ describe("intlFormat", () => {
       };
 
       const result = intlFormat(date, formatOptions);
-      const localeResult = intlFormat(date, formatOptions, {
+      const localeResult = intlFormat(date, {
+        ...formatOptions,
         locale: getOperationSystemLocale(),
       });
 
       expect(result).toBe(localeResult);
     });
 
-    fullICUOnly("should work with only locale's options", () => {
+    fullICUOnly("should work with only locale option", () => {
       const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456);
       // Korean uses year-month-day order
-      const localeOptions = {
+      const options = {
         locale: "ko-KR",
       };
 
-      const result = intlFormat(date, localeOptions);
+      const result = intlFormat(date, options);
 
       expect(result).toBe("2019. 10. 4.");
     });
 
     fullICUOnly(
-      "should work with format's options and locale's options",
+      "should work with both format and locale options",
       () => {
         const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456);
-        const formatOptions: Intl.DateTimeFormatOptions = {
+        const options: IntlFormatOptions = {
           weekday: "long",
           year: "numeric",
           month: "long",
           day: "numeric",
-        };
-        const localeOptions = {
           locale: "de-DE",
         };
 
-        const result = intlFormat(date, formatOptions, localeOptions);
+        const result = intlFormat(date, options);
 
         expect(result).toBe("Freitag, 4. Oktober 2019");
       },
