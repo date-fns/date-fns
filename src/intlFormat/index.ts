@@ -10,18 +10,32 @@ import type { DateFns } from "../types.js";
 export type IntlFormatLocale = Intl.ResolvedDateTimeFormatOptions["locale"];
 
 /**
+ * The {@link intlFormat} function options.
+ */
+export interface IntlFormatOptions
+  extends Intl.DateTimeFormatOptions {
+  /** The locales to use (see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument) */
+  locale?: DateFns.Utils.MaybeArray<
+    Intl.ResolvedDateTimeFormatOptions["locale"]
+  >;
+}
+
+/**
  * The format options (see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#options)
+ * @deprecated
+ *
+ * [TODO] Remove in v4
  */
 export type IntlFormatFormatOptions = Intl.DateTimeFormatOptions;
 
 /**
  * The locale options.
+ * @deprecated
+ *
+ * [TODO] Remove in v4
  */
 export interface IntlFormatLocaleOptions {
-  /** The locales to use (see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument) */
-  locale: DateFns.Utils.MaybeArray<
-    Intl.ResolvedDateTimeFormatOptions["locale"]
-  >;
+  locale: IntlFormatOptions["locale"];
 }
 
 /**
@@ -57,7 +71,7 @@ export function intlFormat<DateType extends Date>(
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
  * @param date - The date to format
- * @param localeOptions - An object with locale
+ * @param options - An object with format and locale options
  *
  * @returns The formatted date string
  *
@@ -65,41 +79,16 @@ export function intlFormat<DateType extends Date>(
  *
  * @example
  * // Represent 4 October 2019 in Korean.
- * // Convert the date with locale's options.
+ * // Convert the date with specified format and locale options.
  * const result = intlFormat(new Date(2019, 9, 4, 12, 30, 13, 456), {
+ *   dateStyle: 'short',
  *   locale: 'ko-KR',
  * })
- * //=> 2019. 10. 4.
+ * //=> 19. 10. 4.
  */
 export function intlFormat<DateType extends Date>(
   date: DateType | number | string,
-  localeOptions: IntlFormatLocaleOptions,
-): string;
-
-/**
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- *
- * @param date - The date to format
- * @param formatOptions - The format options
- *
- * @returns The formatted date string
- *
- * @throws `date` must not be Invalid Date
- *
- * @example
- * // Represent 4 October 2019.
- * // Convert the date with format's options.
- * const result = intlFormat.default(new Date(2019, 9, 4, 12, 30, 13, 456), {
- *   year: 'numeric',
- *   month: 'numeric',
- *   day: 'numeric',
- *   hour: 'numeric',
- * })
- * //=> 10/4/2019, 12 PM
- */
-export function intlFormat<DateType extends Date>(
-  date: DateType | number | string,
-  formatOptions: IntlFormatFormatOptions,
+  options: IntlFormatOptions,
 ): string;
 
 /**
@@ -125,6 +114,8 @@ export function intlFormat<DateType extends Date>(
  *   locale: 'de-DE',
  * })
  * //=> Freitag, 4. Oktober 2019
+ *
+ * @deprecated Passing separate arguments for format and locale options is deprecated. Use a single options argument instead.
  */
 export function intlFormat<DateType extends Date>(
   date: DateType | number | string,
@@ -134,24 +125,13 @@ export function intlFormat<DateType extends Date>(
 
 export function intlFormat<DateType extends Date>(
   date: DateType | number | string,
-  formatOrLocale?: IntlFormatFormatOptions | IntlFormatLocaleOptions,
+  options?: IntlFormatOptions,
+  /* [TODO] Remove in v4 */
   localeOptions?: IntlFormatLocaleOptions,
 ): string {
-  let formatOptions: IntlFormatFormatOptions | undefined;
+  const { locale, ...formatOptions } = { ...options, ...localeOptions };
 
-  if (isFormatOptions(formatOrLocale)) {
-    formatOptions = formatOrLocale;
-  } else {
-    localeOptions = formatOrLocale;
-  }
-
-  return new Intl.DateTimeFormat(localeOptions?.locale, formatOptions).format(
+  return new Intl.DateTimeFormat(locale, formatOptions).format(
     toDate(date),
   );
-}
-
-function isFormatOptions(
-  opts: IntlFormatLocaleOptions | IntlFormatFormatOptions | undefined,
-): opts is IntlFormatFormatOptions {
-  return opts !== undefined && !("locale" in opts);
 }
