@@ -12,7 +12,7 @@ import { toDate } from "../toDate/index.js";
  *
  * @description
  * Get the number of business day periods between the given dates.
- * Business days being days that arent in the weekend.
+ * Business days being days that aren't in the weekend.
  * Like `differenceInCalendarDays`, the function removes the times from
  * the dates before calculating the difference.
  *

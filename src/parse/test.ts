@@ -18,7 +18,7 @@ describe("parse", () => {
     expect(result).toEqual(new Date(1986, 3 /* Apr */, 4, 5));
   });
 
-  it("accepts new line charactor", () => {
+  it("accepts new line character", () => {
     const result = parse(
       "2014-04-04\n05:00:00",
       "yyyy-MM-dd'\n'HH:mm:ss",

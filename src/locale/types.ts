@@ -372,7 +372,7 @@ export type LocaleUnitValue = Era | Quarter | Month | Day | LocaleDayPeriod;
 
 /**
  * The format width. Defines how short or long the formatted string might be.
- * The actaul result length depends on the locale.
+ * The actual result length depends on the locale.
  */
 export type LocaleWidth = "narrow" | "short" | "abbreviated" | "wide" | "any";
 

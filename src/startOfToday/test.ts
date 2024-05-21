@@ -14,7 +14,7 @@ describe("startOfToday", () => {
     clock.restore();
   });
 
-  it("returns the current date with the time setted to 00:00:00", () => {
+  it("returns the current date with the time set to 00:00:00", () => {
     const result = startOfToday();
     expect(result).toEqual(new Date(2014, 8 /* Sep */, 25));
   });

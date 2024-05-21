@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { subBusinessDays } from "./index.js";
 
 describe("subBusinessDays", () => {
-  it("substract the given number of business days", () => {
+  it("subtract the given number of business days", () => {
     const result = subBusinessDays(new Date(2014, 8 /* Sep */, 1), 10);
     expect(result).toEqual(new Date(2014, 7 /* Aug */, 18));
   });

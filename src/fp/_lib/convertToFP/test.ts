@@ -1,6 +1,6 @@
 import { pipe } from "fp-ts/function";
 import { flow as jsFnsFlow } from "js-fns";
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment -- Lodash types trip in different environemnts, so we can't put ts-expect-error
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment -- Lodash types trip in different environments, so we can't put ts-expect-error
 // @ts-ignore - Lodash types are tripping ("Module '"lodash"' has no exported member 'flow'.ts(2305)")
 import { flow as lodashFlow } from "lodash";
 import { describe, expect, it } from "vitest";

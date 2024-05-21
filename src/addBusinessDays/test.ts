@@ -60,8 +60,8 @@ describe("addBusinessDays", () => {
   });
 
   it("starting from a weekend day should land on a weekday when reducing a divisible by 5", () => {
-    const substractResult = addBusinessDays(new Date(2019, 7, 18), -5);
-    expect(substractResult).toEqual(new Date(2019, 7, 12));
+    const subtractResult = addBusinessDays(new Date(2019, 7, 18), -5);
+    expect(subtractResult).toEqual(new Date(2019, 7, 12));
 
     const subtractResultWeekend = addBusinessDays(new Date(2019, 7, 17), -5);
     expect(subtractResultWeekend).toEqual(new Date(2019, 7, 12));
