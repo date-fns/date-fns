@@ -51,6 +51,14 @@ npm install date-fns --save
 [See date-fns.org](https://date-fns.org/) for more details, API,
 and other docs.
 
+## Downloads Trend
+
+[Downloads Trend of date-fns](https://npm-compare.com/date-fns#timeRange=FIVE_YEARS)
+
+<a href="https://npm-compare.com/date-fns#timeRange=FIVE_YEARS" target="_blank">
+  <img src="https://npm-compare.com/img/npm-trend/FIVE_YEARS/date-fns.png" width="100%" alt="NPM Usage Trend of date-fns" />
+</a>
+
 <br />
 <!-- END OF README-JOB SECTION -->
 
