@@ -18,7 +18,7 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
     other: "{{count}} segundo",
   },
 
-  halfAMinute: "minutu erdi",
+  halfAMinute: "minutu erdi bat",
 
   lessThanXMinutes: {
     one: "minutu bat baino gutxiago",
@@ -31,8 +31,8 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   },
 
   aboutXHours: {
-    one: "ordu bat gutxi gorabehera",
-    other: "{{count}} ordu gutxi gorabehera",
+    one: "ordubete inguru",
+    other: "{{count}} ordu inguru",
   },
 
   xHours: {
@@ -46,18 +46,18 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   },
 
   aboutXWeeks: {
-    one: "aste 1 inguru",
+    one: "astebete inguru",
     other: "{{count}} aste inguru",
   },
 
   xWeeks: {
     one: "aste bat",
-    other: "{{count}} astean",
+    other: "{{count}} aste",
   },
 
   aboutXMonths: {
-    one: "hilabete bat gutxi gorabehera",
-    other: "{{count}} hilabete gutxi gorabehera",
+    one: "hilabete inguru",
+    other: "{{count}} hilabete inguru",
   },
 
   xMonths: {
@@ -66,8 +66,8 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   },
 
   aboutXYears: {
-    one: "urte bat gutxi gorabehera",
-    other: "{{count}} urte gutxi gorabehera",
+    one: "urtebete inguru",
+    other: "{{count}} urte inguru",
   },
 
   xYears: {
@@ -76,12 +76,12 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   },
 
   overXYears: {
-    one: "urte bat baino gehiago",
+    one: "urtebete baino gehiago",
     other: "{{count}} urte baino gehiago",
   },
 
   almostXYears: {
-    one: "ia urte bat",
+    one: "ia urtebete",
     other: "ia {{count}} urte",
   },
 };
