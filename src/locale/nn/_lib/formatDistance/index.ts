@@ -86,22 +86,6 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   },
 };
 
-const wordMapping = [
-  "null",
-  "ein",
-  "to",
-  "tre",
-  "fire",
-  "fem",
-  "seks",
-  "sju",
-  "åtte",
-  "ni",
-  "ti",
-  "elleve",
-  "tolv",
-];
-
 export const formatDistance: FormatDistanceFn = (token, count, options) => {
   let result;
 
@@ -111,10 +95,7 @@ export const formatDistance: FormatDistanceFn = (token, count, options) => {
   } else if (count === 1) {
     result = tokenValue.one;
   } else {
-    result = tokenValue.other.replace(
-      "{{count}}",
-      count < 13 ? wordMapping[count] : String(count),
-    );
+    result = tokenValue.other.replace("{{count}}", String(count));
   }
 
   if (options?.addSuffix) {
