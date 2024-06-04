@@ -23,7 +23,6 @@ import { toDate } from "../toDate";
  * // Add 5 ISO week-numbering years to 2 July 2010:
  * const result = addISOWeekYears(new Date(2010, 6, 2), 5)
  * //=> Fri Jn 26 2015 00:00:00
- * I save the initial full time and set the final result with that initial time
  */
 export function addISOWeekYears<DateType extends Date>(
   date: DateType | number | string,
