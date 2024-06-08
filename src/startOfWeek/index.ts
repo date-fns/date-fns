@@ -1,13 +1,14 @@
 import { toDate } from "../toDate/index.js";
-import type { LocalizedOptions, WeekOptions } from "../types.js";
+import type { LocalizedOptions, WeekOptions, Locale } from "../types.js";
 import { getDefaultOptions } from "../_lib/defaultOptions/index.js";
+import { enUS } from "../locale/index.js";
 
 /**
  * The {@link startOfWeek} function options.
  */
 export interface StartOfWeekOptions
   extends LocalizedOptions<"options">,
-    WeekOptions {}
+  WeekOptions { }
 
 /**
  * @name startOfWeek
@@ -40,11 +41,16 @@ export function startOfWeek<DateType extends Date>(
   options?: StartOfWeekOptions,
 ): DateType {
   const defaultOptions = getDefaultOptions();
+  const locale: Locale = options?.locale as Locale || defaultOptions.locale as Locale || enUS
+
+
+  const localeWeekStartsOn = locale.options?.weekStartsOn;
+
+
   const weekStartsOn =
     options?.weekStartsOn ??
-    options?.locale?.options?.weekStartsOn ??
+    localeWeekStartsOn ??
     defaultOptions.weekStartsOn ??
-    defaultOptions.locale?.options?.weekStartsOn ??
     0;
 
   const _date = toDate(date);
