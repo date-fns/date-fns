@@ -25,7 +25,7 @@ import { toDate } from "../toDate/index.js";
  * //=> true
  *
  * @example
- * // For the value, convertable into a date:
+ * // For the value, convertible into a date:
  * const result = isValid(1393804800000)
  * //=> true
  *

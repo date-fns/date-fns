@@ -20,7 +20,7 @@ export interface FormatISOOptions extends ISOFormatOptions {}
  * @param date - The original date
  * @param options - An object with options.
  *
- * @returns The formatted date string (in loca.l time zone)
+ * @returns The formatted date string (in local time zone)
  *
  * @throws `date` must not be Invalid Date
  *
