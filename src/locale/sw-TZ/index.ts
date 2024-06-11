@@ -12,7 +12,7 @@ import { match } from "./_lib/match/index.js";
  * @iso-639-2 swa
  */
 export const swTZ: Locale = {
-  code: 'sw-TZ',
+  code: "sw-TZ",
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
@@ -22,6 +22,4 @@ export const swTZ: Locale = {
     weekStartsOn: 0 /* Sunday */,
     firstWeekContainsDate: 1,
   },
-}
-
-export default swTZ
+};

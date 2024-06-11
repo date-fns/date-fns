@@ -13,7 +13,7 @@ import { match } from "./_lib/match/index.js";
  * @author Lua Takeishi[@ltakeishi](https://github.com/ltakeishi)
  */
 export const fil: Locale = {
-  code: 'fil-PH',
+  code: "fil-PH",
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
@@ -23,6 +23,4 @@ export const fil: Locale = {
     weekStartsOn: 0 /* Sunday */,
     firstWeekContainsDate: 1,
   },
-}
-
-export default fil
+};
