@@ -5479,6 +5479,16 @@
         "default": "./locale/fi.mjs"
       }
     },
+    "./locale/fil": {
+      "require": {
+        "types": "./locale/fil.d.ts",
+        "default": "./locale/fil.js"
+      },
+      "import": {
+        "types": "./locale/fil.d.mts",
+        "default": "./locale/fil.mjs"
+      }
+    },
     "./locale/fr": {
       "require": {
         "types": "./locale/fr.d.ts",
@@ -5959,6 +5969,16 @@
         "default": "./locale/sv.mjs"
       }
     },
+    "./locale/sw-TZ": {
+      "require": {
+        "types": "./locale/sw-TZ.d.ts",
+        "default": "./locale/sw-TZ.js"
+      },
+      "import": {
+        "types": "./locale/sw-TZ.d.mts",
+        "default": "./locale/sw-TZ.mjs"
+      }
+    },
     "./locale/ta": {
       "require": {
         "types": "./locale/ta.d.ts",
@@ -6084,7 +6104,7 @@
     "test": "vitest run",
     "lint": "eslint .",
     "types": "tsc --noEmit",
-    "locale-snapshots": "env TZ=utc tsx ./scripts/build/localeSnapshots/index.ts",
+    "locale-snapshots": "env TZ=utc node --no-warnings=ExperimentalWarning --import tsx ./scripts/build/localeSnapshots/index.ts",
     "stats": "cloc . --exclude-dir=node_modules,lib,examples,tmp,.git --exclude-ext=yaml,yml,json,svg,xml"
   },
   "devDependencies": {
