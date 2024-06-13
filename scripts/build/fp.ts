@@ -24,8 +24,8 @@ async function main() {
 
       const name = ref.ref.name;
       const hasOptions = !!ref.fn.signatures?.find(
-        (singature: any) =>
-          singature.parameters?.find((p: any) => p.name === "options"),
+        (signature: any) =>
+          signature.parameters?.find((p: any) => p.name === "options"),
       );
       const fnArity =
         ref.fn.signatures?.reduce<number>(

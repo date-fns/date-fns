@@ -202,7 +202,7 @@ export interface IsMatchOptions
  *
  *    `format(new Date(2017, 10, 6), 'do MMMM', {locale: cs}) //=> '6. listopadu'`
  *
- *    `isMatch` will try to match both formatting and stand-alone units interchangably.
+ *    `isMatch` will try to match both formatting and stand-alone units interchangeably.
  *
  * 2. Any sequence of the identical letters is a pattern, unless it is escaped by
  *    the single quote characters (see below).

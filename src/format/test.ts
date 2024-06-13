@@ -57,7 +57,7 @@ describe("format", () => {
     expect(format(date, "''h 'o''clock'''")).toBe("'5 o'clock'");
   });
 
-  it("accepts new line charactor", () => {
+  it("accepts new line character", () => {
     const date = new Date(2014, 3, 4, 5);
     expect(format(date, "yyyy-MM-dd'\n'HH:mm:ss")).toBe("2014-04-04\n05:00:00");
   });

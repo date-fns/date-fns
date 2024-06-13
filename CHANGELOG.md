@@ -90,7 +90,7 @@ This release is brought to you by @kossnocorp, @fturmel, @grossbart, @MelvinVerm
 
 ### Fixed
 
-- Fixed types compatability with Lodash's `flow` and fp-ts's `pipe`. ([#3641](https://github.com/date-fns/date-fns/issues/3641))
+- Fixed types compatibility with Lodash's `flow` and fp-ts's `pipe`. ([#3641](https://github.com/date-fns/date-fns/issues/3641))
 
 - [Fixed inconsistent behavior of `roundToNearestMinutes`.](https://github.com/date-fns/date-fns/pull/3132)
 
@@ -1599,7 +1599,7 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 
 - [New `roundToNearestMinutes` function](https://github.com/date-fns/date-fns/pull/928). Kudos to [@xkizer](https://github.com/xkizer).
 
-- Added new function `fromUnixTime`. Thansk to [@xkizer](https://github.com/xkizer).
+- Added new function `fromUnixTime`. Thanks to [@xkizer](https://github.com/xkizer).
 
 - New interval, month, and year helpers to fetch a list of all Saturdays and Sundays (weekends) for a given date interval. `eachWeekendOfInterval` is the handler function while the other two are wrapper functions. Kudos to [@laekettavong](https://github.com/laekettavong)!
 

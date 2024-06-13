@@ -153,7 +153,7 @@ describe("roundToNearestHours", () => {
     });
 
     it("ceils correctly with 0 seconds and 1 millisecond", () => {
-      // "ceil" does not round up when exactly oclock
+      // "ceil" does not round up when exactly o'clock
       expect(roundToNearestHours(makeDate(15, 0, 0, 0), { roundingMethod: "ceil" })).toEqual(makeDate(15));
 
       expect(roundToNearestHours(makeDate(15, 0, 0, 1), { roundingMethod: "ceil" })).toEqual(makeDate(16));

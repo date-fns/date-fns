@@ -31,7 +31,7 @@ describe("parseJSON", () => {
     expect(parsedDate.toISOString()).toBe(expectedDate.toISOString());
   });
 
-  it("parses a formatted Indian Standart Time in Asia/Kolkata with +5:30 hours of offset back to UTC - issue 2149", () => {
+  it("parses a formatted Indian Standard Time in Asia/Kolkata with +5:30 hours of offset back to UTC - issue 2149", () => {
     const date = "2021-02-15T02:56:04.678+05:30";
     const expectedDate = new Date("2021-02-14T21:26:04.678Z");
     const parsedDate = parseJSON(date);
