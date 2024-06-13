@@ -43,7 +43,7 @@ describe("isDate", () => {
           document.body.appendChild(iframe);
         }));
     } else {
-      it.skip("returns true for a date passed from another iframe");
+      it.skip("returns true for a date passed from another iframe", () => {});
     }
 
     function execScript(scriptText: string) {
