@@ -15,6 +15,7 @@ export * from "./bn/index.js";
 export * from "./bs/index.js";
 export * from "./ca/index.js";
 export * from "./ckb/index.js";
+export * from "./cnr/index.js";
 export * from "./cs/index.js";
 export * from "./cy/index.js";
 export * from "./da/index.js";
