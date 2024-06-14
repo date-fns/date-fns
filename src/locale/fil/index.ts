@@ -7,20 +7,20 @@ import { match } from "./_lib/match/index.js";
 
 /**
  * @category Locales
- * @summary Filipino locale (Philippines).
+ * @summary Filipino locale.
  * @language Filipino
  * @iso-639-2 fil
- * @author Lua Takeishi[@ltakeishi](https://github.com/ltakeishi)
+ * @author Lua Takeishi [@ltakeishi](https://github.com/ltakeishi)
  */
 export const fil: Locale = {
   code: "fil-PH",
-  formatDistance: formatDistance,
-  formatLong: formatLong,
-  formatRelative: formatRelative,
-  localize: localize,
-  match: match,
+  formatDistance,
+  formatLong,
+  formatRelative,
+  localize,
+  match,
   options: {
-    weekStartsOn: 0 /* Sunday */,
+    weekStartsOn: 1 /* Monday */,
     firstWeekContainsDate: 1,
   },
 };

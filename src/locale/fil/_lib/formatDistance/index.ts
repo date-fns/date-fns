@@ -9,65 +9,65 @@ type FormatDistanceTokenValue =
 
 const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   lessThanXSeconds: {
-    one: 'mas mababa sa isang segundo',
-    other: 'mas mababa sa {{count}} segundo'
+    one: "mas mababa sa isang segundo",
+    other: "mas mababa sa {{count}} segundo",
   },
   xSeconds: {
-    one: 'isang segundo',
-    other: '{{count}} segundo'
+    one: "isang segundo",
+    other: "{{count}} segundo",
   },
-  halfAMinute: 'kalahating minuto',
+  halfAMinute: "kalahating minuto",
   lessThanXMinutes: {
-    one: 'mas mababa sa isang minuto',
-    other: 'mas mababa sa {{count}} minuto'
+    one: "mas mababa sa isang minuto",
+    other: "mas mababa sa {{count}} minuto",
   },
   xMinutes: {
-    one: 'isang minuto',
-    other: '{{count}} minuto'
+    one: "isang minuto",
+    other: "{{count}} minuto",
   },
   aboutXHours: {
-    one: 'mga isang oras',
-    other: 'mga {{count}} oras'
+    one: "mga isang oras",
+    other: "mga {{count}} oras",
   },
   xHours: {
-    one: 'isang oras',
-    other: '{{count}} oras'
+    one: "isang oras",
+    other: "{{count}} oras",
   },
   xDays: {
-    one: 'isang araw',
-    other: '{{count}} araw'
+    one: "isang araw",
+    other: "{{count}} araw",
   },
   aboutXWeeks: {
-    one: 'mga isang linggo',
-    other: 'mga {{count}} linggo'
+    one: "mga isang linggo",
+    other: "mga {{count}} linggo",
   },
   xWeeks: {
-    one: 'isang linggo',
-    other: '{{count}} linggo'
+    one: "isang linggo",
+    other: "{{count}} linggo",
   },
   aboutXMonths: {
-    one: 'mga isang buwan',
-    other: 'mga {{count}} buwan'
+    one: "mga isang buwan",
+    other: "mga {{count}} buwan",
   },
   xMonths: {
-    one: 'isang buwan',
-    other: '{{count}} buwan'
+    one: "isang buwan",
+    other: "{{count}} buwan",
   },
   aboutXYears: {
-    one: 'mga isang taon',
-    other: 'mga {{count}} taon'
+    one: "mga isang taon",
+    other: "mga {{count}} taon",
   },
   xYears: {
-    one: 'isang taon',
-    other: '{{count}} taon'
+    one: "isang taon",
+    other: "{{count}} taon",
   },
   overXYears: {
-    one: 'higit sa isang taon',
-    other: 'higit sa {{count}} taon'
+    one: "higit sa isang taon",
+    other: "higit sa {{count}} taon",
   },
   almostXYears: {
-    one: 'halos isang taon',
-    other: 'halos {{count}} taon'
+    one: "halos isang taon",
+    other: "halos {{count}} taon",
   },
 };
 

@@ -11,6 +11,7 @@ const matchEraPatterns = {
   abbreviated: /^(bc|ad)/i,
   wide: /^(bago si kristo|anno domini)/i,
 };
+
 const parseEraPatterns = {
   any: [/^b/i, /^a/i] as const,
 };
@@ -20,6 +21,7 @@ const matchQuarterPatterns = {
   abbreviated: /^q[1234]/i,
   wide: /^[1234](st|nd|rd|th)? quarter/i,
 };
+
 const parseQuarterPatterns = {
   any: [/1/i, /2/i, /3/i, /4/i] as const,
 };
@@ -29,6 +31,7 @@ const matchMonthPatterns = {
   abbreviated: /^(ene|peb|mar|abr|may|hun|hul|ago|set|okt|nob|dis)/i,
   wide: /^(enero|pebrero|marso|abril|mayo|hunyo|hulyo|agosto|setyembre|oktubre|nobyembre|disyembre)/i,
 };
+
 const parseMonthPatterns = {
   narrow: [
     /^e/i,
@@ -66,31 +69,17 @@ const matchDayPatterns = {
   abbreviated: /^(linggo|lunes|martes|miyerkules|huwebes|biyernes|sabado)/i,
   wide: /^(linggo|lunes|martes|miyerkules|huwebes|biyernes|sabado)/i,
 };
+
 const parseDayPatterns = {
-  narrow: [
-    /^l/i,
-    /^l/i,
-    /^m/i,
-    /^m/i,
-    /^h/i,
-    /^b/i,
-    /^s/i,
-  ] as const,
-  any: [
-    /^li/i,
-    /^lu/i,
-    /^ma/i,
-    /^mi/i,
-    /^hu/i,
-    /^bi/i,
-    /^sa/i,
-  ] as const,
+  narrow: [/^l/i, /^l/i, /^m/i, /^m/i, /^h/i, /^b/i, /^s/i] as const,
+  any: [/^li/i, /^lu/i, /^ma/i, /^mi/i, /^hu/i, /^bi/i, /^sa/i] as const,
 };
 
 const matchDayPeriodPatterns = {
   narrow: /^(a|p|mi|n|umaga|hapon|gabi)/i,
   any: /^(am|pm|hatinggabi|tanghali|umaga|hapon|gabi)/i,
 };
+
 const parseDayPeriodPatterns = {
   any: {
     am: /^a/i,

@@ -10,16 +10,17 @@ import { match } from "./_lib/match/index.js";
  * @summary Swahili locale (Tanzania).
  * @language Swahili
  * @iso-639-2 swa
+ * @author Lua Takeishi [@ltakeishi](https://github.com/ltakeishi)
  */
 export const swTZ: Locale = {
   code: "sw-TZ",
-  formatDistance: formatDistance,
-  formatLong: formatLong,
-  formatRelative: formatRelative,
-  localize: localize,
-  match: match,
+  formatDistance,
+  formatLong,
+  formatRelative,
+  localize,
+  match,
   options: {
-    weekStartsOn: 0 /* Sunday */,
+    weekStartsOn: 1 /* Monday */,
     firstWeekContainsDate: 1,
   },
 };
