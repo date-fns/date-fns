@@ -24,10 +24,10 @@ describe("addISOWeekYears", () => {
   it("handles dates before 100 AD", () => {
     const initialDate = new Date(0);
     initialDate.setFullYear(10, 6 /* Jul */, 2);
-    initialDate.setHours(0, 0, 0, 0);
+    initialDate.setHours(2, 30, 30, 0);
     const expectedResult = new Date(0);
     expectedResult.setFullYear(15, 5 /* Jun */, 26);
-    expectedResult.setHours(0, 0, 0, 0);
+    expectedResult.setHours(2, 30, 30, 0);
     const result = addISOWeekYears(initialDate, 5);
     expect(result).toEqual(expectedResult);
   });

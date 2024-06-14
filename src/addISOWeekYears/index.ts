@@ -1,5 +1,6 @@
 import { getISOWeekYear } from "../getISOWeekYear/index.js";
 import { setISOWeekYear } from "../setISOWeekYear/index.js";
+import { toDate } from "../toDate";
 
 /**
  * @name addISOWeekYears
@@ -27,5 +28,14 @@ export function addISOWeekYears<DateType extends Date>(
   date: DateType | number | string,
   amount: number,
 ): DateType {
-  return setISOWeekYear(date, getISOWeekYear(date) + amount);
+  const _date = toDate(date);
+  const hours: number = _date.getHours();
+  const minutes = _date.getMinutes();
+  const seconds = _date.getSeconds();
+  const milliseconds = _date.getMilliseconds();
+
+  const result = setISOWeekYear(date, getISOWeekYear(date) + amount);
+  result.setHours(hours, minutes, seconds, milliseconds);
+
+  return result;
 }
