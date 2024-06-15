@@ -1,5 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { startOfWeek } from "./index.js";
+import { enUS, fr } from "../locale/index.js";
+
 
 describe("startOfWeek", () => {
   it("returns the date with the time set to 00:00:00 and the date set to the first day of a week", () => {
@@ -83,4 +85,14 @@ describe("startOfWeek", () => {
     const result = startOfWeek(new Date(NaN));
     expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
   });
+});
+
+
+it("allows to specify which day is the first day of the week in different locales", () => {
+  const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0);
+  const result_enUS = startOfWeek(date, { locale: enUS }); // Using en-US locale
+  expect(result_enUS).toEqual(new Date(2014, 7 /* Aug */, 31));
+
+  const result_fr = startOfWeek(date, { locale: fr }); // Using fr locale
+  expect(result_fr).toEqual(new Date(2014, 8 /* Sep */, 1));
 });
