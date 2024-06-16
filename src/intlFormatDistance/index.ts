@@ -152,8 +152,9 @@ export function intlFormatDistance<DateType extends Date>(
   let unit: Intl.RelativeTimeFormatUnit;
   const dateLeft = toDate(date);
   const dateRight = toDate(baseDate);
+  const { locale, unit: selectedUnit, ...formatOptions } = options ?? {};
 
-  if (!options?.unit) {
+  if (!selectedUnit) {
     // Get the unit based on diffInSeconds calculations if no unit is specified
     const diffInSeconds = differenceInSeconds(dateLeft, dateRight); // The smallest unit
 
@@ -196,7 +197,7 @@ export function intlFormatDistance<DateType extends Date>(
     }
   } else {
     // Get the value if unit is specified
-    unit = options?.unit;
+    unit = selectedUnit;
     if (unit === "second") {
       value = differenceInSeconds(dateLeft, dateRight);
     } else if (unit === "minute") {
@@ -216,9 +217,9 @@ export function intlFormatDistance<DateType extends Date>(
     }
   }
 
-  const rtf = new Intl.RelativeTimeFormat(options?.locale, {
+  const rtf = new Intl.RelativeTimeFormat(locale, {
     numeric: "auto",
-    ...options,
+    ...formatOptions,
   });
 
   return rtf.format(value, unit);
