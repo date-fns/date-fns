@@ -43,5 +43,5 @@ export function differenceInYears<DateType extends Date>(
   const result = sign * (difference - +isLastYearNotFull);
 
   // Prevent negative zero
-  return result === 0 ? 0 : result;
+  return result || 0;
 }
