@@ -70,6 +70,72 @@ describe("intervalToDuration", () => {
     expect(result).toEqual({});
   });
 
+  describe("includeZeroValues", () => {
+    it("return zero value as properties", () => {
+      const start = new Date(1929, 0, 15, 12, 0, 0);
+      const end = new Date(1968, 3, 4, 19, 5, 0);
+      const result = intervalToDuration(
+        { start, end },
+        { includeZeroValues: true },
+      );
+
+      expect(result).toEqual({
+        years: 39,
+        months: 2,
+        days: 20,
+        hours: 7,
+        minutes: 5,
+        seconds: 0,
+      });
+    });
+
+    it("returns zero values when the dates are the same", () => {
+      const start = new Date(2020, 2, 1, 12, 0, 0);
+      const end = new Date(2020, 2, 1, 12, 0, 0);
+      const result = intervalToDuration(
+        { start, end },
+        { includeZeroValues: true },
+      );
+
+      expect(result).toEqual({
+        years: 0,
+        months: 0,
+        days: 0,
+        hours: 0,
+        minutes: 0,
+        seconds: 0,
+      });
+    });
+
+    it("exclude zero value when 'includeZeroValues' is false", () => {
+      const start = new Date(1929, 0, 15, 12, 0, 0);
+      const end = new Date(1968, 3, 4, 19, 5, 0);
+      const result = intervalToDuration(
+        { start, end },
+        { includeZeroValues: false },
+      );
+
+      expect(result).toEqual({
+        years: 39,
+        months: 2,
+        days: 20,
+        hours: 7,
+        minutes: 5,
+      });
+    });
+
+    it("returns duration of 0 when 'includeZeroValues' is false and the dates are the same", () => {
+      const start = new Date(2020, 2, 1, 12, 0, 0);
+      const end = new Date(2020, 2, 1, 12, 0, 0);
+      const result = intervalToDuration(
+        { start, end },
+        { includeZeroValues: false },
+      );
+
+      expect(result).toEqual({});
+    });
+  });
+
   describe("edge cases", () => {
     it("returns correct duration for dates in the end of Feb - issue 2255", () => {
       expect(intervalToDuration({
