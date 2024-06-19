@@ -1,20 +1,33 @@
 import type { Match } from "../../../locale/types.js";
 import { numericPatterns } from "../constants.js";
 import { Parser } from "../Parser.js";
-import type { ParseFlags, ParseResult } from "../types.js";
-import { parseNDigits, parseNumericPattern } from "../utils.js";
+import type { ParseFlags, ParseResult, ParserOptions } from "../types.js";
+import { parseNumericPattern } from "../utils.js";
 
 export class MinuteParser extends Parser<number> {
   priority = 60;
 
-  parse(dateString: string, token: string, match: Match): ParseResult<number> {
+  parse(
+    dateString: string,
+    token: string,
+    match: Match,
+    options: ParserOptions,
+  ): ParseResult<number> {
     switch (token) {
-      case "m":
-        return parseNumericPattern(numericPatterns.minute, dateString);
+      case "m": {
+        const pattern = options.strict
+          ? numericPatterns.minSingleDigits
+          : numericPatterns.minute;
+        return parseNumericPattern(pattern, dateString);
+      }
       case "mo":
         return match.ordinalNumber(dateString, { unit: "minute" });
-      default:
-        return parseNDigits(token.length, dateString);
+      default: {
+        const pattern = options.strict
+          ? numericPatterns.minTwoDigits
+          : numericPatterns.twoDigits;
+        return parseNumericPattern(pattern, dateString);
+      }
     }
   }
 

@@ -1,14 +1,19 @@
 import type { Match } from "../../../locale/types.js";
 import { setISODay } from "../../../setISODay/index.js";
 import { Parser } from "../Parser.js";
-import type { ParseFlags, ParseResult } from "../types.js";
-import { mapValue, parseNDigits } from "../utils.js";
+import type { ParseFlags, ParseResult, ParserOptions } from "../types.js";
+import { mapValue, parseNDigits, parseMinNDigits } from "../utils.js";
 
 // ISO day of week
 export class ISODayParser extends Parser<number> {
   priority = 90;
 
-  parse(dateString: string, token: string, match: Match): ParseResult<number> {
+  parse(
+    dateString: string,
+    token: string,
+    match: Match,
+    options: ParserOptions,
+  ): ParseResult<number> {
     const valueCallback = (value: number) => {
       if (value === 0) {
         return 7;
@@ -20,7 +25,9 @@ export class ISODayParser extends Parser<number> {
       // 2
       case "i":
       case "ii": // 02
-        return parseNDigits(token.length, dateString);
+        return options.strict
+          ? parseMinNDigits(token.length, dateString)
+          : parseNDigits(token.length, dateString);
       // 2nd
       case "io":
         return match.ordinalNumber(dateString, { unit: "day" });

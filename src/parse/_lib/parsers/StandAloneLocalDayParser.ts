@@ -2,7 +2,7 @@ import type { Match } from "../../../locale/types.js";
 import { setDay } from "../../../setDay/index.js";
 import { Parser } from "../Parser.js";
 import type { ParseFlags, ParseResult, ParserOptions } from "../types.js";
-import { mapValue, parseNDigits } from "../utils.js";
+import { mapValue, parseNDigits, parseMinNDigits } from "../utils.js";
 
 // Stand-alone local day of week
 export class StandAloneLocalDayParser extends Parser<number> {
@@ -22,9 +22,12 @@ export class StandAloneLocalDayParser extends Parser<number> {
 
     switch (token) {
       // 3
+      // 03
       case "c":
-      case "cc": // 03
-        return mapValue(parseNDigits(token.length, dateString), valueCallback);
+      case "cc": {
+        const parseFn = options.strict ? parseMinNDigits : parseNDigits;
+        return mapValue(parseFn(token.length, dateString), valueCallback);
+      }
       // 3rd
       case "co":
         return mapValue(

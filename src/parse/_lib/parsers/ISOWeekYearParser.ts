@@ -1,19 +1,41 @@
+import type { Match } from "../../../locale/types.js";
 import { startOfISOWeek } from "../../../startOfISOWeek/index.js";
 import { constructFrom } from "../../../constructFrom/index.js";
 import { Parser } from "../Parser.js";
-import type { ParseFlags, ParseResult } from "../types.js";
-import { parseNDigitsSigned } from "../utils.js";
+import type { ParseFlags, ParseResult, ParserOptions } from "../types.js";
+import {
+  parseExactNDigitsSigned,
+  parseNDigitsSigned,
+  parseNumericPattern,
+} from "../utils.js";
+import { numericPatterns } from "../constants.js";
 
 // ISO week-numbering year
 export class ISOWeekYearParser extends Parser<number> {
   priority = 130;
 
-  parse(dateString: string, token: string): ParseResult<number> {
-    if (token === "R") {
-      return parseNDigitsSigned(4, dateString);
-    }
+  parse(
+    dateString: string,
+    token: string,
+    _: Match,
+    options: ParserOptions,
+  ): ParseResult<number> {
+    if (options.strict) {
+      if (token === "R") {
+        return parseNumericPattern(
+          numericPatterns.minSingleDigitSigned,
+          dateString,
+        );
+      }
 
-    return parseNDigitsSigned(token.length, dateString);
+      return parseExactNDigitsSigned(token.length, dateString);
+    } else {
+      if (token === "R") {
+        return parseNDigitsSigned(4, dateString);
+      }
+
+      return parseNDigitsSigned(token.length, dateString);
+    }
   }
 
   set<DateType extends Date>(

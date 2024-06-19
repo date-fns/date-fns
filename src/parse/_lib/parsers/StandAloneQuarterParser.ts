@@ -1,17 +1,25 @@
 import type { Match } from "../../../locale/types.js";
 import { Parser } from "../Parser.js";
-import type { ParseFlags, ParseResult } from "../types.js";
-import { parseNDigits } from "../utils.js";
+import type { ParseFlags, ParseResult, ParserOptions } from "../types.js";
+import { parseNDigits, parseMinNDigits } from "../utils.js";
 
 export class StandAloneQuarterParser extends Parser<number> {
   priority = 120;
 
-  parse(dateString: string, token: string, match: Match): ParseResult<number> {
+  parse(
+    dateString: string,
+    token: string,
+    match: Match,
+    options: ParserOptions,
+  ): ParseResult<number> {
     switch (token) {
       // 1, 2, 3, 4
       case "q":
-      case "qq": // 01, 02, 03, 04
-        return parseNDigits(token.length, dateString);
+      case "qq": {
+        // 01, 02, 03, 04
+        const parseFn = options.strict ? parseMinNDigits : parseNDigits;
+        return parseFn(token.length, dateString);
+      }
       // 1st, 2nd, 3rd, 4th
       case "qo":
         return match.ordinalNumber(dateString, { unit: "quarter" });

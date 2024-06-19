@@ -92,6 +92,46 @@ export function parseNDigits(
   }
 }
 
+export function parseMinNDigits(
+  n: number,
+  dateString: string,
+): ParseResult<number> {
+  switch (n) {
+    case 1:
+      return parseNumericPattern(numericPatterns.minSingleDigits, dateString);
+    case 2:
+      return parseNumericPattern(numericPatterns.minTwoDigits, dateString);
+    case 3:
+      return parseNumericPattern(numericPatterns.minThreeDigits, dateString);
+    case 4:
+      return parseNumericPattern(numericPatterns.minFourDigits, dateString);
+    default: {
+      return parseNumericPattern(
+        new RegExp(`(^(?!0\\d)\\d{${n + 1},})|(\\d{${n}})`),
+        dateString,
+      );
+    }
+  }
+}
+
+export function parseExactNDigits(
+  n: number,
+  dateString: string,
+): ParseResult<number> {
+  switch (n) {
+    case 1:
+      return parseNumericPattern(numericPatterns.singleDigit, dateString);
+    case 2:
+      return parseNumericPattern(numericPatterns.exactTwoDigits, dateString);
+    case 3:
+      return parseNumericPattern(numericPatterns.exactThreeDigits, dateString);
+    case 4:
+      return parseNumericPattern(numericPatterns.exactFourDigits, dateString);
+    default:
+      return parseNumericPattern(new RegExp(`^\\d{${n}}`), dateString);
+  }
+}
+
 export function parseNDigitsSigned(
   n: number,
   dateString: string,
@@ -107,6 +147,33 @@ export function parseNDigitsSigned(
       return parseNumericPattern(numericPatterns.fourDigitsSigned, dateString);
     default:
       return parseNumericPattern(new RegExp("^-?\\d{1," + n + "}"), dateString);
+  }
+}
+
+export function parseExactNDigitsSigned(
+  n: number,
+  dateString: string,
+): ParseResult<number> {
+  switch (n) {
+    case 1:
+      return parseNumericPattern(numericPatterns.singleDigitSigned, dateString);
+    case 2:
+      return parseNumericPattern(
+        numericPatterns.exactTwoDigitsSigned,
+        dateString,
+      );
+    case 3:
+      return parseNumericPattern(
+        numericPatterns.exactThreeDigitsSigned,
+        dateString,
+      );
+    case 4:
+      return parseNumericPattern(
+        numericPatterns.exactFourDigitsSigned,
+        dateString,
+      );
+    default:
+      return parseNumericPattern(new RegExp("^-?\\d{" + n + "}"), dateString);
   }
 }
 

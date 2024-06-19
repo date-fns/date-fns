@@ -2,8 +2,15 @@ import { getWeekYear } from "../../../getWeekYear/index.js";
 import type { Match } from "../../../locale/types.js";
 import { startOfWeek } from "../../../startOfWeek/index.js";
 import { Parser } from "../Parser.js";
+import { numericPatterns } from "../constants.js";
 import type { ParseFlags, ParseResult, ParserOptions } from "../types.js";
-import { mapValue, normalizeTwoDigitYear, parseNDigits } from "../utils.js";
+import {
+  mapValue,
+  normalizeTwoDigitYear,
+  parseNDigits,
+  parseNumericPattern,
+  parseMinNDigits,
+} from "../utils.js";
 import type { YearParserValue } from "./YearParser.js";
 
 // Local week-numbering year
@@ -14,6 +21,7 @@ export class LocalWeekYearParser extends Parser<YearParserValue> {
     dateString: string,
     token: string,
     match: Match,
+    options: ParserOptions,
   ): ParseResult<YearParserValue> {
     const valueCallback = (year: number) => ({
       year,
@@ -22,7 +30,9 @@ export class LocalWeekYearParser extends Parser<YearParserValue> {
 
     switch (token) {
       case "Y":
-        return mapValue(parseNDigits(4, dateString), valueCallback);
+        return options.strict
+          ? mapValue(parseMinNDigits(1, dateString), valueCallback)
+          : mapValue(parseNDigits(4, dateString), valueCallback);
       case "Yo":
         return mapValue(
           match.ordinalNumber(dateString, {
@@ -30,8 +40,19 @@ export class LocalWeekYearParser extends Parser<YearParserValue> {
           }),
           valueCallback,
         );
-      default:
-        return mapValue(parseNDigits(token.length, dateString), valueCallback);
+      case "YY": {
+        const pattern = options.strict
+          ? numericPatterns.exactTwoDigits
+          : numericPatterns.twoDigits;
+        return mapValue(
+          parseNumericPattern(pattern, dateString),
+          valueCallback,
+        );
+      }
+      default: {
+        const parseFn = options.strict ? parseMinNDigits : parseNDigits;
+        return mapValue(parseFn(token.length, dateString), valueCallback);
+      }
     }
   }
 
