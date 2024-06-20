@@ -1,5 +1,3 @@
-import { addMonths } from "../addMonths/index.js";
-
 /**
  * @name addYears
  * @category Year Helpers
@@ -8,7 +6,8 @@ import { addMonths } from "../addMonths/index.js";
  * @description
  * Add the specified number of years to the given date.
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments.
+ * Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
  * @param date - The date to be changed
  * @param amount - The amount of years to be added.
@@ -24,5 +23,8 @@ export function addYears<DateType extends Date>(
   date: DateType | number | string,
   amount: number,
 ): DateType {
-  return addMonths(date, amount * 12);
+  // Convert date to UTC to perform timezone agnostic calculations
+  const utcDate = new Date(date);
+  utcDate.setUTCMonth(utcDate.getUTCMonth() + amount * 12);
+  return utcDate as DateType;
 }
