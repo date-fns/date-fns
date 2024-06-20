@@ -15,7 +15,7 @@ import { toDate } from "../toDate/index.js";
  * @returns The month index (0-11)
  *
  * @example
- * // Which month is 29 February 2012?
+ * // Which month is 29 January 2012?
  * const result = getMonth(new Date(2012, 1, 29))
  * //=> 1
  */
