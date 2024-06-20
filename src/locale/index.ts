@@ -84,7 +84,7 @@ export * from "./sq/index.js";
 export * from "./sr/index.js";
 export * from "./sr-Latn/index.js";
 export * from "./sv/index.js";
-export * from './sw-TZ/index.js';
+export * from "./sw-TZ/index.js";
 export * from "./ta/index.js";
 export * from "./te/index.js";
 export * from "./th/index.js";
