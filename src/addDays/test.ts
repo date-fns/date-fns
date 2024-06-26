@@ -4,7 +4,7 @@ import { getDstTransitions } from "../../test/dst/tzOffsetTransitions.js";
 
 describe("addDays", () => {
   it("adds the given number of days", () => {
-    const result = addDays(new Date(2014, 8 /* Sep */, 1), 10);
+    const result = addDays(new Date('2024-02-15'), 0.5)
     expect(result).toEqual(new Date(2014, 8 /* Sep */, 11));
   });
 
