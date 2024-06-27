@@ -1,6 +1,6 @@
 {
   "name": "date-fns",
-  "version": "3.6.0",
+  "version": "3.6.4",
   "contributors": [
     "Sasha Koss <koss@nocorp.me>",
     "Lesha Koss <regiusprod@gmail.com>"
@@ -5479,6 +5479,16 @@
         "default": "./locale/fi.mjs"
       }
     },
+    "./locale/fil": {
+      "require": {
+        "types": "./locale/fil.d.ts",
+        "default": "./locale/fil.js"
+      },
+      "import": {
+        "types": "./locale/fil.d.mts",
+        "default": "./locale/fil.mjs"
+      }
+    },
     "./locale/fr": {
       "require": {
         "types": "./locale/fr.d.ts",
@@ -5959,6 +5969,16 @@
         "default": "./locale/sv.mjs"
       }
     },
+    "./locale/sw-TZ": {
+      "require": {
+        "types": "./locale/sw-TZ.d.ts",
+        "default": "./locale/sw-TZ.js"
+      },
+      "import": {
+        "types": "./locale/sw-TZ.d.mts",
+        "default": "./locale/sw-TZ.mjs"
+      }
+    },
     "./locale/ta": {
       "require": {
         "types": "./locale/ta.d.ts",
@@ -6085,9 +6105,17 @@
     "lint": "eslint .",
     "types": "tsc --noEmit",
     "locale-snapshots": "env TZ=utc tsx ./scripts/build/localeSnapshots/index.ts",
+    "build-indices": "tsx ./scripts/build/indices.ts",
+    "build-docs": "npx typedoc",
+    "build-fp": "tsx ./scripts/build/fp.ts",
+    "modularized": "tsx ./scripts/build/modularized.ts",
+    "flatten": "tsx ./scripts/build/flatten.ts",
+    "mts": "tsx ./scripts/build/mts.ts",
+    "buildChangelog": "tsx ./scripts/release/buildChangelog.ts",
     "stats": "cloc . --exclude-dir=node_modules,lib,examples,tmp,.git --exclude-ext=yaml,yml,json,svg,xml"
   },
   "devDependencies": {
+    "@arethetypeswrong/cli": "^0.15.3",
     "@babel/cli": "^7.22.10",
     "@babel/core": "^7.22.10",
     "@babel/preset-env": "^7.22.10",
@@ -6120,7 +6148,7 @@
     "simple-git": "^2.35.2",
     "sinon": "^7.4.1",
     "size-limit": "^11.0.1",
-    "tsx": "^4.6.1",
+    "tsx": "^4.15.6",
     "typedoc": "^0.25.4",
     "typedoc-plugin-missing-exports": "^2.1.0",
     "typescript": "^5.4.5",

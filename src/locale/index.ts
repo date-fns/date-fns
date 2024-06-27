@@ -35,6 +35,7 @@ export * from "./et/index.js";
 export * from "./eu/index.js";
 export * from "./fa-IR/index.js";
 export * from "./fi/index.js";
+export * from "./fil/index.js";
 export * from "./fr/index.js";
 export * from "./fr-CA/index.js";
 export * from "./fr-CH/index.js";
@@ -83,6 +84,7 @@ export * from "./sq/index.js";
 export * from "./sr/index.js";
 export * from "./sr-Latn/index.js";
 export * from "./sv/index.js";
+export * from "./sw-TZ/index.js";
 export * from "./ta/index.js";
 export * from "./te/index.js";
 export * from "./th/index.js";
@@ -95,4 +97,34 @@ export * from "./vi/index.js";
 export * from "./zh-CN/index.js";
 export * from "./zh-HK/index.js";
 export * from "./zh-TW/index.js";
-export type * from "./types.js";
+export type {
+  Locale,
+  LocaleOptions,
+  FormatDistanceFn,
+  FormatDistanceFnOptions,
+  FormatDistanceTokenFn,
+  FormatDistanceLocale,
+  FormatDistanceToken,
+  FormatRelativeFn,
+  FormatRelativeFnOptions,
+  FormatRelativeTokenFn,
+  FormatRelativeTokenFnOptions,
+  FormatRelativeToken,
+  FormatPart,
+  Localize,
+  LocalizeFn,
+  LocalizeFnOptions,
+  Match,
+  MatchFn,
+  MatchFnOptions,
+  MatchValueCallback,
+  MatchFnResult,
+  FormatLong,
+  FormatLongFn,
+  FormatLongFnOptions,
+  FormatLongWidth,
+  LocaleUnitValue,
+  LocaleWidth,
+  LocaleDayPeriod,
+  LocaleUnit,
+} from "./types.js";
