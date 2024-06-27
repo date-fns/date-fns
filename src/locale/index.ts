@@ -97,4 +97,34 @@ export * from "./vi/index.js";
 export * from "./zh-CN/index.js";
 export * from "./zh-HK/index.js";
 export * from "./zh-TW/index.js";
-export type * from "./types.js";
+export type {
+  Locale,
+  LocaleOptions,
+  FormatDistanceFn,
+  FormatDistanceFnOptions,
+  FormatDistanceTokenFn,
+  FormatDistanceLocale,
+  FormatDistanceToken,
+  FormatRelativeFn,
+  FormatRelativeFnOptions,
+  FormatRelativeTokenFn,
+  FormatRelativeTokenFnOptions,
+  FormatRelativeToken,
+  FormatPart,
+  Localize,
+  LocalizeFn,
+  LocalizeFnOptions,
+  Match,
+  MatchFn,
+  MatchFnOptions,
+  MatchValueCallback,
+  MatchFnResult,
+  FormatLong,
+  FormatLongFn,
+  FormatLongFnOptions,
+  FormatLongWidth,
+  LocaleUnitValue,
+  LocaleWidth,
+  LocaleDayPeriod,
+  LocaleUnit,
+} from "./types.js";

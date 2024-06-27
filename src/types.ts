@@ -2,8 +2,46 @@
 
 import type { Locale } from "./locale/types.js";
 
-export type * from "./locale/types.js";
-export type * from "./fp/types.js";
+export type {
+  Locale,
+  LocaleOptions,
+  FormatDistanceFn,
+  FormatDistanceFnOptions,
+  FormatDistanceTokenFn,
+  FormatDistanceLocale,
+  FormatDistanceToken,
+  FormatRelativeFn,
+  FormatRelativeFnOptions,
+  FormatRelativeTokenFn,
+  FormatRelativeTokenFnOptions,
+  FormatRelativeToken,
+  FormatPart,
+  Localize,
+  LocalizeFn,
+  LocalizeFnOptions,
+  Match,
+  MatchFn,
+  MatchFnOptions,
+  MatchValueCallback,
+  MatchFnResult,
+  FormatLong,
+  FormatLongFn,
+  FormatLongFnOptions,
+  FormatLongWidth,
+  LocaleUnitValue,
+  LocaleWidth,
+  LocaleDayPeriod,
+  LocaleUnit,
+} from "./locale/types.js";
+export type {
+  FPFnInput,
+  FPArity,
+  FPFn,
+  FPFn1,
+  FPFn2,
+  FPFn3,
+  FPFn4,
+} from "./fp/types.js";
 
 /**
  * The generic date constructor. Replicates the Date constructor. Used to build
