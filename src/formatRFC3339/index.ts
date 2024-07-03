@@ -53,7 +53,7 @@ export function formatRFC3339<DateType extends Date>(
 
   const day = addLeadingZeros(_date.getDate(), 2);
   const month = addLeadingZeros(_date.getMonth() + 1, 2);
-  const year = _date.getFullYear();
+  const year = addLeadingZeros(_date.getFullYear(), 4);
 
   const hour = addLeadingZeros(_date.getHours(), 2);
   const minute = addLeadingZeros(_date.getMinutes(), 2);
