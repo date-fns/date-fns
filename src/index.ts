@@ -246,4 +246,5 @@ export * from "./yearsToDays/index.js";
 export * from "./yearsToMonths/index.js";
 export * from "./yearsToQuarters/index.js";
 export * from "./nextIdenticalCalanderYear";
+export * from "./hasIdenticalCalander";
 export type * from "./types.js";
