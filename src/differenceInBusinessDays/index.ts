@@ -18,8 +18,8 @@ import { toDate } from "../toDate/index.js";
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
- * @param dateLeft - The later date
- * @param dateRight - The earlier date
+ * @param dateLeft - The later date (excluded)
+ * @param dateRight - The earlier date (included)
  *
  * @returns The number of business days
  *
