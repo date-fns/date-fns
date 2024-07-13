@@ -5,39 +5,52 @@ import { buildMatchPatternFn } from "../../../_lib/buildMatchPatternFn/index.js"
 
 const matchOrdinalNumberPattern = /^(\d+)(th|st|nd|rd)?/i;
 const parseOrdinalNumberPattern = /\d+/i;
+// ý ü ä ş ň ö
 
 const matchEraPatterns = {
-  narrow: /^(b|a)/i,
-  abbreviated: /^(b\.?\s?c\.?|b\.?\s?c\.?\s?e\.?|a\.?\s?d\.?|c\.?\s?e\.?)/i,
-  wide: /^(before christ|before common era|anno domini|common era)/i,
+  narrow: /^(beö|bes)/i,
+  abbreviated: /^(beö|bes)/i,
+  wide: /^(biziň eýýammyzdan öň|biziň eýýammyzdan soň)/i,
 };
+
 const parseEraPatterns = {
-  any: [/^b/i, /^(a|c)/i] as const,
+  any: [
+    /(^beö|^biziň eýýammyzdan öň)/i,
+    /(^bes|^biziň eýýammyzdan soň)/i,
+  ] as const,
 };
 
 const matchQuarterPatterns = {
   narrow: /^[1234]/i,
-  abbreviated: /^q[1234]/i,
-  wide: /^[1234](th|st|nd|rd)? quarter/i,
+  abbreviated: /^[1234]ç/i,
+  wide: /^([1234]-nji çärýek)/i,
 };
+
 const parseQuarterPatterns = {
-  any: [/1/i, /2/i, /3/i, /4/i] as const,
+  any: [/^1$/i, /^2$/i, /^3$/i, /^4$/i] as const,
+  abbreviated: [/^1Ç$/i, /^2Ç$/i, /^3Ç$/i, /^4Ç$/i] as const,
+  wide: [
+    /^1-nji çärýek$/i,
+    /^2-nji çärýek$/i,
+    /^3-nji çärýek$/i,
+    /^4-nji çärýek$/i,
+  ] as const,
 };
 
 const matchMonthPatterns = {
-  narrow: /^[jfmasond]/i,
-  abbreviated: /^(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)/i,
-  wide: /^(january|february|march|april|may|june|july|august|september|october|november|december)/i,
+  narrow: /^[ýfmaisond]/i,
+  abbreviated: /^(ýan|few|mar|apr|maý|iýn|iýl|awg|sen|okt|noý|dek)/i,
+  wide: /^(ýanwar|fewral|mart|aprel|maý|iýun|iýul|awgust|sentýabr|oktýabr|noýabr|dekabr)/i,
 };
 const parseMonthPatterns = {
   narrow: [
-    /^j/i,
+    /^ý/i,
     /^f/i,
     /^m/i,
     /^a/i,
     /^m/i,
-    /^j/i,
-    /^j/i,
+    /^i/i,
+    /^i/i,
     /^a/i,
     /^s/i,
     /^o/i,
@@ -45,14 +58,14 @@ const parseMonthPatterns = {
     /^d/i,
   ] as const,
   any: [
-    /^ja/i,
+    /^ýa/i,
     /^f/i,
     /^mar/i,
     /^ap/i,
-    /^may/i,
-    /^jun/i,
-    /^jul/i,
-    /^au/i,
+    /^maý/i,
+    /^iýn/i,
+    /^iýl/i,
+    /^aw/i,
     /^s/i,
     /^o/i,
     /^n/i,
@@ -61,30 +74,31 @@ const parseMonthPatterns = {
 };
 
 const matchDayPatterns = {
-  narrow: /^[smtwf]/i,
-  short: /^(su|mo|tu|we|th|fr|sa)/i,
-  abbreviated: /^(sun|mon|tue|wed|thu|fri|sat)/i,
-  wide: /^(sunday|monday|tuesday|wednesday|thursday|friday|saturday)/i,
+  narrow: /^[ýdsçpaş]/i,
+  short: /^(ýk|dş|sş|çr|pn|an|şn)/i,
+  abbreviated: /^(ýek|duş|siş|çar|pen|ann|şen)/i,
+  wide: /^(ýekşenbe|duşenbe|sişenbe|çarşenbe|penşenbe|anna|şenbe)/i,
 };
 const parseDayPatterns = {
-  narrow: [/^s/i, /^m/i, /^t/i, /^w/i, /^t/i, /^f/i, /^s/i] as const,
-  any: [/^su/i, /^m/i, /^tu/i, /^w/i, /^th/i, /^f/i, /^sa/i] as const,
+  narrow: [/^ý/i, /^d/i, /^s/i, /^ç/i, /^p/i, /^a/i, /^ş/i] as const,
+  any: [/^ý/i, /^d/i, /^s/i, /^ç/i, /^p/i, /^a/i, /^ş/i] as const,
 };
 
 const matchDayPeriodPatterns = {
-  narrow: /^(a|p|mi|n|(in the|at) (morning|afternoon|evening|night))/i,
-  any: /^([ap]\.?\s?m\.?|midnight|noon|(in the|at) (morning|afternoon|evening|night))/i,
+  narrow: /^(gö|gs|ýg|gü|ir|ag|gi)$/i,
+  any: /^(G\.Ö\.|G\.S\.|ýary gije|günortan|irden|günortandan soň|agşam|gije)$/i,
 };
+
 const parseDayPeriodPatterns = {
   any: {
-    am: /^a/i,
-    pm: /^p/i,
-    midnight: /^mi/i,
-    noon: /^no/i,
-    morning: /morning/i,
-    afternoon: /afternoon/i,
-    evening: /evening/i,
-    night: /night/i,
+    am: /^G\.?Ö\.?/i,
+    pm: /^G\.?S\.?/i,
+    midnight: /^(ýg|ýary gije)$/i,
+    noon: /^günortan$/i,
+    morning: /^irden$/i,
+    afternoon: /^günortandan soň$/i,
+    evening: /^agşam$/i,
+    night: /^gije$/i,
   },
 };
 

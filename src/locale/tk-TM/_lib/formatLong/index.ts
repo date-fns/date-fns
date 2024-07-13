@@ -2,22 +2,22 @@ import { buildFormatLongFn } from "../../../_lib/buildFormatLongFn/index.js";
 import type { FormatLong } from "../../../types.js";
 
 const dateFormats = {
-  full: "EEEE, MMMM do, y",
-  long: "MMMM do, y",
-  medium: "MMM d, y",
-  short: "MM/dd/yyyy",
+  full: "EEEE, do MMMM, y",
+  long: "do MMMM, y",
+  medium: "d MMM, y",
+  short: "dd.MM.yyyy",
 };
 
 const timeFormats = {
-  full: "h:mm:ss a zzzz",
-  long: "h:mm:ss a z",
-  medium: "h:mm:ss a",
-  short: "h:mm a",
+  full: "HH:mm:ss zzzz",
+  long: "HH:mm:ss z",
+  medium: "HH:mm:ss",
+  short: "HH:mm",
 };
 
 const dateTimeFormats = {
-  full: "{{date}} 'at' {{time}}",
-  long: "{{date}} 'at' {{time}}",
+  full: "{{date}} 'sagat' {{time}}",
+  long: "{{date}} 'sagat' {{time}}",
   medium: "{{date}}, {{time}}",
   short: "{{date}}, {{time}}",
 };
