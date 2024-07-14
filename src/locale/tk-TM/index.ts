@@ -7,14 +7,13 @@ import type { Locale } from "../types.js";
 
 /**
  * @category Locales
- * @summary English locale (United States).
- * @language English
- * @iso-639-2 eng
- * @author Sasha Koss [@kossnocorp](https://github.com/kossnocorp)
- * @author Lesha Koss [@leshakoss](https://github.com/leshakoss)
+ * @summary Turkmen locale.
+ * @language Turkmen
+ * @iso-639-1 tk
+ * @author Berdimyrat Nazarov [@berdi00](https://github.com/berdi00)
  */
 export const enUS: Locale = {
-  code: "en-US",
+  code: "tk-TM",
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
