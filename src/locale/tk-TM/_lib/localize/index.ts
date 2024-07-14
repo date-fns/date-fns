@@ -169,7 +169,7 @@ export const localize: Localize = {
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: "wide",
-    argumentCallback: (quarter) => quarter - 1,
+    argumentCallback: (quarter) => Number(quarter) - 1,
   }),
 
   month: buildLocalizeFn({

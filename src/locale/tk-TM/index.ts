@@ -12,7 +12,7 @@ import type { Locale } from "../types.js";
  * @iso-639-1 tk
  * @author Berdimyrat Nazarov [@berdi00](https://github.com/berdi00)
  */
-export const enUS: Locale = {
+export const tkTM: Locale = {
   code: "tk-TM",
   formatDistance: formatDistance,
   formatLong: formatLong,

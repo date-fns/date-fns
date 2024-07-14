@@ -3,8 +3,9 @@ import type { Match } from "../../../types.js";
 import { buildMatchFn } from "../../../_lib/buildMatchFn/index.js";
 import { buildMatchPatternFn } from "../../../_lib/buildMatchPatternFn/index.js";
 
-const matchOrdinalNumberPattern = /^(\d+)(th|st|nd|rd)?/i;
+const matchOrdinalNumberPattern = /^(\d+)(-nji|-njy)?/i;
 const parseOrdinalNumberPattern = /\d+/i;
+
 // ý ü ä ş ň ö
 
 const matchEraPatterns = {
@@ -63,8 +64,8 @@ const parseMonthPatterns = {
     /^mar/i,
     /^ap/i,
     /^maý/i,
-    /^iýn/i,
-    /^iýl/i,
+    /^iý/i,
+    /^iý/i,
     /^aw/i,
     /^s/i,
     /^o/i,
