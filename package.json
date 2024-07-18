@@ -5899,6 +5899,16 @@
         "default": "./locale/se.mjs"
       }
     },
+    "./locale/si": {
+      "require": {
+        "types": "./locale/si.d.ts",
+        "default": "./locale/si.js"
+      },
+      "import": {
+        "types": "./locale/si.d.mts",
+        "default": "./locale/si.mjs"
+      }
+    },
     "./locale/sk": {
       "require": {
         "types": "./locale/sk.d.ts",
