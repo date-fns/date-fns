@@ -1,4 +1,5 @@
-import type { GenericDateConstructor } from "../types.js";
+import { constructFromSymbol } from "../constants/index.js";
+import type { GenericDateConstructor, ConstructableDate } from "../types.js";
 
 /**
  * @name constructFrom
@@ -11,6 +12,11 @@ import type { GenericDateConstructor } from "../types.js";
  * date extensions.
  *
  * It defaults to `Date` if the passed reference date is a number or a string.
+ *
+ * Starting from v3.7.0, it allows to construct a date using `[Symbol.for("constructDateFrom")]`
+ * enabling to transfer extra properties from the reference date to the new date.
+ * It's useful for extensions like [`TZDate`](https://github.com/date-fns/tz)
+ * that accept a time zone as a constructor argument.
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
@@ -30,11 +36,13 @@ import type { GenericDateConstructor } from "../types.js";
  *   );
  * }
  */
-export function constructFrom<DateType extends Date>(
+export function constructFrom<DateType extends Date | ConstructableDate>(
   date: DateType | number | string,
   value: Date | number | string,
 ): DateType {
-  if (date instanceof Date) {
+  if (typeof date === "object" && constructFromSymbol in date) {
+    return date[constructFromSymbol](value);
+  } else if (date instanceof Date) {
     return new (date.constructor as GenericDateConstructor<DateType>)(value);
   } else {
     return new Date(value) as DateType;

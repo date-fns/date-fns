@@ -1,4 +1,5 @@
-import type { GenericDateConstructor } from "../types.js";
+import { constructFromSymbol } from "../constants/index.js";
+import type { ConstructableDate, GenericDateConstructor } from "../types.js";
 
 /**
  * @name toDate
@@ -13,6 +14,11 @@ import type { GenericDateConstructor } from "../types.js";
  * If the argument is a number, it is treated as a timestamp.
  *
  * If the argument is none of the above, the function returns Invalid Date.
+ *
+ * Starting from v3.7.0, it clones a date using `[Symbol.for("constructDateFrom")]`
+ * enabling to transfer extra properties from the reference date to the new date.
+ * It's useful for extensions like [`TZDate`](https://github.com/date-fns/tz)
+ * that accept a time zone as a constructor argument.
  *
  * **Note**: *all* Date arguments passed to any *date-fns* function is processed by `toDate`.
  *
@@ -32,13 +38,15 @@ import type { GenericDateConstructor } from "../types.js";
  * const result = toDate(1392098430000)
  * //=> Tue Feb 11 2014 11:30:30
  */
-export function toDate<DateType extends Date>(
+export function toDate<DateType extends Date | ConstructableDate>(
   argument: DateType | number | string,
 ): DateType {
   const argStr = Object.prototype.toString.call(argument);
 
   // Clone the date
-  if (
+  if (typeof argument === "object" && constructFromSymbol in argument) {
+    return argument[constructFromSymbol](argument);
+  } else if (
     argument instanceof Date ||
     (typeof argument === "object" && argStr === "[object Date]")
   ) {
