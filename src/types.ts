@@ -1,9 +1,21 @@
 /* eslint-disable no-unused-vars */
 
 import type { Locale } from "./locale/types.js";
+import { type constructFromSymbol } from "./constants/index.js";
 
 export type * from "./locale/types.js";
 export type * from "./fp/types.js";
+
+/**
+ * Date extension interface that allows to transfer extra properties from
+ * the reference date to the new date. It's useful for extensions like [`TZDate`](https://github.com/date-fns/tz)
+ * that accept a time zone as a constructor argument.
+ */
+export interface ConstructableDate extends Date {
+  [constructFromSymbol]: <DateType extends Date = Date>(
+    value: Date | number | string,
+  ) => DateType;
+}
 
 /**
  * The generic date constructor. Replicates the Date constructor. Used to build

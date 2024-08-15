@@ -201,3 +201,16 @@ export const secondsInMonth = secondsInYear / 12;
  * @summary Seconds in 1 quarter.
  */
 export const secondsInQuarter = secondsInMonth * 3;
+
+/**
+ * @constant
+ * @name constructFromSymbol
+ * @summary Symbol enabling Date extensions to inherit properties from the reference date.
+ *
+ * The symbol is used to enable the `constructFrom` function to construct a date
+ * using a reference date and a value. It allows to transfer extra properties
+ * from the reference date to the new date. It's useful for extensions like
+ * [`TZDate`](https://github.com/date-fns/tz) that accept a time zone as
+ * a constructor argument.
+ */
+export const constructFromSymbol = Symbol.for("constructDateFrom");
