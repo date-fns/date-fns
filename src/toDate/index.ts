@@ -1,5 +1,9 @@
 import { constructFromSymbol } from "../constants/index.js";
-import type { ConstructableDate, GenericDateConstructor } from "../types.js";
+import type {
+  ConstructableDate,
+  DateFns,
+  GenericDateConstructor,
+} from "../types.js";
 
 /**
  * @name toDate
@@ -40,7 +44,10 @@ import type { ConstructableDate, GenericDateConstructor } from "../types.js";
  */
 export function toDate<DateType extends Date | ConstructableDate>(
   argument: DateType | number | string,
+  context?: DateFns.ContextFn<DateType> | undefined,
 ): DateType {
+  if (context) return context(argument);
+
   const argStr = Object.prototype.toString.call(argument);
 
   // Clone the date

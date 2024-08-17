@@ -331,4 +331,23 @@ export namespace DateFns {
      */
     export type MaybeArray<Type> = Type | Type[];
   }
+
+  /**
+   * The context function type. It's used to normalize the input arguments to
+   * a specific date instance, which is useful for extensions like [`TZDate`](https://github.com/date-fns/tz).
+   */
+  export type ContextFn<DateType extends Date> = (
+    value: Date | number | string,
+  ) => DateType;
+
+  /**
+   * The context options. Used to build function options.
+   */
+  export interface ContextOptions<DateType extends Date> {
+    /**
+     * The context to use in the function. It allows to normalize the arguments
+     * to a specific date instance, which is useful for extensions like [`TZDate`](https://github.com/date-fns/tz).
+     */
+    in?: ContextFn<DateType> | undefined;
+  }
 }

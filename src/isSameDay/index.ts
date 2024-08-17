@@ -1,4 +1,11 @@
 import { startOfDay } from "../startOfDay/index.js";
+import { type DateFns } from "../types.js";
+
+/**
+ * The {@link isSameDay} function options.
+ */
+export interface IsSameDayOptions<DateType extends Date>
+  extends DateFns.ContextOptions<DateType> {}
 
 /**
  * @name isSameDay
@@ -12,7 +19,8 @@ import { startOfDay } from "../startOfDay/index.js";
  *
  * @param dateLeft - The first date to check
  * @param dateRight - The second date to check
-
+ * @param options - An object with options
+ *
  * @returns The dates are in the same day (and year and month)
  *
  * @example
@@ -33,9 +41,10 @@ import { startOfDay } from "../startOfDay/index.js";
 export function isSameDay<DateType extends Date>(
   dateLeft: DateType | number | string,
   dateRight: DateType | number | string,
+  options?: IsSameDayOptions<DateType> | undefined,
 ): boolean {
-  const dateLeftStartOfDay = startOfDay(dateLeft);
-  const dateRightStartOfDay = startOfDay(dateRight);
+  const dateLeftStartOfDay = startOfDay(dateLeft, options);
+  const dateRightStartOfDay = startOfDay(dateRight, options);
 
   return +dateLeftStartOfDay === +dateRightStartOfDay;
 }
