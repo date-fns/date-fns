@@ -1,5 +1,9 @@
 import { constructFromSymbol } from "../constants/index.js";
-import type { GenericDateConstructor, ConstructableDate } from "../types.js";
+import type {
+  ConstructableDate,
+  DateFns,
+  GenericDateConstructor,
+} from "../types.js";
 
 /**
  * @name constructFrom
@@ -37,14 +41,16 @@ import type { GenericDateConstructor, ConstructableDate } from "../types.js";
  * }
  */
 export function constructFrom<DateType extends Date | ConstructableDate>(
-  date: DateType | number | string,
+  date: DateType | number | string | DateFns.ContextFn<DateType>,
   value: Date | number | string,
 ): DateType {
-  if (typeof date === "object" && constructFromSymbol in date) {
+  if (typeof date === "function") return date(value);
+
+  if (typeof date === "object" && constructFromSymbol in date)
     return date[constructFromSymbol](value);
-  } else if (date instanceof Date) {
+
+  if (date instanceof Date)
     return new (date.constructor as GenericDateConstructor<DateType>)(value);
-  } else {
-    return new Date(value) as DateType;
-  }
+
+  return new Date(value) as DateType;
 }
