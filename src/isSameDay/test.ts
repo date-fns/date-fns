@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { isSameDay } from "./index.js";
-import { tz } from "@date-fns/tz";
+import { tz, TZDate } from "@date-fns/tz";
 
 describe("isSameDay", () => {
   it("returns true if the given dates have the same day", () => {
@@ -43,16 +43,17 @@ describe("isSameDay", () => {
   });
 
   describe("context", () => {
-    const dateA = new Date("2024-04-10T07:00:00Z"); // 10th April 2024, 00:00 Los Angeles time
-    const dateB = new Date("2024-04-10T15:00:00Z"); // 10th April 2024, 08:00 Los Angeles time
-
     it("allows to specify the context", () => {
-      expect(isSameDay(dateA, dateB, { in: tz("America/Los_Angeles") })).toBe(
-        true,
-      );
-      expect(isSameDay(dateA, dateB, { in: tz("America/Los_Angeles") })).toBe(
-        false,
-      );
+      expect(
+        isSameDay("2024-04-10T07:00:00Z", "2024-04-10T15:00:00Z", {
+          in: tz("America/Los_Angeles"),
+        }),
+      ).toBe(true);
+      expect(
+        isSameDay("2024-04-10T07:00:00Z", "2024-04-11T07:00:00Z", {
+          in: tz("America/Los_Angeles"),
+        }),
+      ).toBe(false);
     });
   });
 });
