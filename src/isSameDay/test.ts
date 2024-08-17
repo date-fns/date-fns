@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { isSameDay } from "./index.js";
-import { tz, TZDate } from "@date-fns/tz";
+import { tz } from "@date-fns/tz";
 
 describe("isSameDay", () => {
   it("returns true if the given dates have the same day", () => {
