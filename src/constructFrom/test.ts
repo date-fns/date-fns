@@ -1,3 +1,4 @@
+import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
 import { constructFrom } from ".";
 
@@ -42,6 +43,13 @@ describe("constructFrom", () => {
     const result = constructFrom(referenceDate, value);
 
     expect(result instanceof Date).toBe(true);
+    expect(result.getTime()).toEqual(value);
+  });
+
+  it("allows to pass a context function as the reference date", () => {
+    const value = 1635244800000; // October 26, 2023
+    const result = constructFrom(tz("Asia/Singapore"), value);
+    expect(result instanceof TZDate).toBe(true);
     expect(result.getTime()).toEqual(value);
   });
 });
