@@ -1,3 +1,4 @@
+import { tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
 import { isSunday } from "./index.js";
 
@@ -20,5 +21,36 @@ describe("isSunday", () => {
   it("returns false if the given date is `Invalid Date`", () => {
     const result = isSunday(new Date(NaN));
     expect(result).toBe(false);
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      expect(
+        isSunday("2024-08-18T16:00:00Z", {
+          in: tz("Asia/Singapore"),
+        }),
+      ).toBe(false);
+      expect(
+        isSunday("2024-08-18T15:00:00Z", {
+          in: tz("Asia/Singapore"),
+        }),
+      ).toBe(true);
+      expect(
+        isSunday("2024-08-18T03:00:00Z", {
+          in: tz("America/New_York"),
+        }),
+      ).toBe(false);
+      expect(
+        isSunday("2024-08-18T04:00:00Z", {
+          in: tz("America/New_York"),
+        }),
+      ).toBe(true);
+    });
+
+    it("doesn't enforce using the same context type as the passed argument", () => {
+      isSunday(new Date("2024-08-18T04:00:00Z"), {
+        in: tz("America/New_York"),
+      });
+    });
   });
 });
