@@ -17,6 +17,7 @@ export interface AddDaysOptions<DateType extends Date>
  * Add the specified number of days to the given date.
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
  *
  * @param date - The date to be changed
  * @param amount - The amount of days to be added.
@@ -29,11 +30,14 @@ export interface AddDaysOptions<DateType extends Date>
  * const result = addDays(new Date(2014, 8, 1), 10)
  * //=> Thu Sep 11 2014 00:00:00
  */
-export function addDays<DateType extends Date>(
+export function addDays<
+  DateType extends Date,
+  ResultDate extends Date = DateType,
+>(
   date: DateType | number | string,
   amount: number,
-  options?: AddDaysOptions<DateType> | undefined,
-): DateType {
+  options?: AddDaysOptions<ResultDate> | undefined,
+): ResultDate {
   const _date = toDate(date, options?.in);
   if (isNaN(amount)) return constructFrom(options?.in || date, NaN);
 

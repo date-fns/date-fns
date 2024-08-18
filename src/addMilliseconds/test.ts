@@ -1,8 +1,8 @@
 import { TZDate, tz } from "@date-fns/tz";
-import { describe, expect, it } from "vitest";
-import { addMilliseconds } from "./index.js";
 import { UTCDate } from "@date-fns/utc";
+import { describe, expect, it } from "vitest";
 import { assertType } from "../_lib/test/index.js";
+import { addMilliseconds } from "./index.js";
 
 describe("addMilliseconds", () => {
   it("adds the given number of milliseconds", () => {
@@ -42,11 +42,13 @@ describe("addMilliseconds", () => {
 
   it("resolves the date type by default", () => {
     const result = addMilliseconds(Date.now(), 5);
+    expect(result).toBeInstanceOf(Date);
     assertType<assertType.Equal<Date, typeof result>>(true);
   });
 
   it("resolves the argument type if a date extension is passed", () => {
     const result = addMilliseconds(new UTCDate(), 5);
+    expect(result).toBeInstanceOf(UTCDate);
     assertType<assertType.Equal<UTCDate, typeof result>>(true);
   });
 
