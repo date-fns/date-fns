@@ -1,4 +1,11 @@
 import { toDate } from "../toDate/index.js";
+import { type DateFns } from "../types.js";
+
+/**
+ * The {@link isSunday} function options.
+ */
+export interface IsSundayOptions<DateType extends Date>
+  extends DateFns.ContextOptions<DateType> {}
 
 /**
  * @name isSunday
@@ -11,6 +18,7 @@ import { toDate } from "../toDate/index.js";
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
  * @param date - The date to check
+ * @param options - The options object
  *
  * @returns The date is Sunday
  *
@@ -21,6 +29,7 @@ import { toDate } from "../toDate/index.js";
  */
 export function isSunday<DateType extends Date>(
   date: DateType | number | string,
+  options?: IsSundayOptions<DateType> | undefined,
 ): boolean {
-  return toDate(date).getDay() === 0;
+  return toDate(date, options?.in).getDay() === 0;
 }

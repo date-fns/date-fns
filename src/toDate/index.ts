@@ -42,10 +42,13 @@ import type {
  * const result = toDate(1392098430000)
  * //=> Tue Feb 11 2014 11:30:30
  */
-export function toDate<DateType extends Date | ConstructableDate>(
+export function toDate<
+  DateType extends Date | ConstructableDate,
+  ResultDate extends Date = DateType,
+>(
   argument: DateType | number | string,
-  context?: DateFns.ContextFn<DateType> | undefined,
-): DateType {
+  context?: DateFns.ContextFn<ResultDate> | undefined,
+): ResultDate {
   if (context) return context(argument);
 
   const argStr = Object.prototype.toString.call(argument);
@@ -58,7 +61,7 @@ export function toDate<DateType extends Date | ConstructableDate>(
     (typeof argument === "object" && argStr === "[object Date]")
   ) {
     // Prevent the date to lose the milliseconds when passed to new Date() in IE10
-    return new (argument.constructor as GenericDateConstructor<DateType>)(
+    return new (argument.constructor as GenericDateConstructor<ResultDate>)(
       +argument,
     );
   } else if (
@@ -68,9 +71,9 @@ export function toDate<DateType extends Date | ConstructableDate>(
     argStr === "[object String]"
   ) {
     // TODO: Can we get rid of as?
-    return new Date(argument) as DateType;
+    return new Date(argument) as ResultDate;
   } else {
     // TODO: Can we get rid of as?
-    return new Date(NaN) as DateType;
+    return new Date(NaN) as ResultDate;
   }
 }
