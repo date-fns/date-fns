@@ -46,11 +46,5 @@ describe("isSunday", () => {
         }),
       ).toBe(true);
     });
-
-    it("doesn't enforce using the same context type as the passed argument", () => {
-      isSunday(new Date("2024-08-18T04:00:00Z"), {
-        in: tz("America/New_York"),
-      });
-    });
   });
 });

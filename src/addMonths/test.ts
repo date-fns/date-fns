@@ -150,11 +150,13 @@ describe("addMonths", () => {
 
   it("resolves the date type by default", () => {
     const result = addMonths(Date.now(), 5);
+    expect(result).toBeInstanceOf(Date);
     assertType<assertType.Equal<Date, typeof result>>(true);
   });
 
   it("resolves the argument type if a date extension is passed", () => {
     const result = addMonths(new UTCDate(), 5);
+    expect(result).toBeInstanceOf(UTCDate);
     assertType<assertType.Equal<UTCDate, typeof result>>(true);
   });
 

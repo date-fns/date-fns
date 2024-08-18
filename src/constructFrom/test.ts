@@ -1,6 +1,8 @@
 import { TZDate, tz } from "@date-fns/tz";
+import { UTCDate } from "@date-fns/utc";
 import { describe, expect, it } from "vitest";
 import { constructFrom } from ".";
+import { assertType } from "../_lib/test";
 
 describe("constructFrom", () => {
   it("should create a new Date instance using the constructor from the reference date", () => {
@@ -51,5 +53,23 @@ describe("constructFrom", () => {
     const result = constructFrom(tz("Asia/Singapore"), value);
     expect(result instanceof TZDate).toBe(true);
     expect(result.getTime()).toEqual(value);
+  });
+
+  it("resolves the date type by default", () => {
+    const result = constructFrom(Date.now(), Date.now());
+    expect(result instanceof Date).toBe(true);
+    assertType<assertType.Equal<Date, typeof result>>(true);
+  });
+
+  it("resolves the argument type if a date extension is passed", () => {
+    const result = constructFrom(new UTCDate(), Date.now());
+    expect(result instanceof UTCDate).toBe(true);
+    assertType<assertType.Equal<UTCDate, typeof result>>(true);
+  });
+
+  it("resolves the context type if it is passed as the argument", () => {
+    const result = constructFrom(tz("Asia/Singapore"), Date.now());
+    expect(result instanceof TZDate).toBe(true);
+    assertType<assertType.Equal<TZDate, typeof result>>(true);
   });
 });
