@@ -1,6 +1,13 @@
 import { constructFrom } from "../constructFrom/index.js";
 import { startOfISOWeek } from "../startOfISOWeek/index.js";
 import { toDate } from "../toDate/index.js";
+import { type DateFns } from "../types.js";
+
+/**
+ * The {@link getISOWeekYear} function options.
+ */
+export interface GetISOWeekYearOptions<DateType extends Date>
+  extends DateFns.ContextOptions<DateType> {}
 
 /**
  * @name getISOWeekYear
@@ -14,6 +21,7 @@ import { toDate } from "../toDate/index.js";
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam ContextDate - The `Date` type of the context function.
  *
  * @param date - The given date
  *
@@ -24,21 +32,22 @@ import { toDate } from "../toDate/index.js";
  * const result = getISOWeekYear(new Date(2005, 0, 2))
  * //=> 2004
  */
-export function getISOWeekYear<DateType extends Date>(
+export function getISOWeekYear<DateType extends Date, ContextDate extends Date>(
   date: DateType | number | string,
+  options?: GetISOWeekYearOptions<ContextDate> | undefined,
 ): number {
-  const _date = toDate(date);
+  const _date = toDate(date, options?.in);
   const year = _date.getFullYear();
 
   const fourthOfJanuaryOfNextYear = constructFrom(date, 0);
   fourthOfJanuaryOfNextYear.setFullYear(year + 1, 0, 4);
   fourthOfJanuaryOfNextYear.setHours(0, 0, 0, 0);
-  const startOfNextYear = startOfISOWeek(fourthOfJanuaryOfNextYear);
+  const startOfNextYear = startOfISOWeek(fourthOfJanuaryOfNextYear, options);
 
   const fourthOfJanuaryOfThisYear = constructFrom(date, 0);
   fourthOfJanuaryOfThisYear.setFullYear(year, 0, 4);
   fourthOfJanuaryOfThisYear.setHours(0, 0, 0, 0);
-  const startOfThisYear = startOfISOWeek(fourthOfJanuaryOfThisYear);
+  const startOfThisYear = startOfISOWeek(fourthOfJanuaryOfThisYear, options);
 
   if (_date.getTime() >= startOfNextYear.getTime()) {
     return year + 1;

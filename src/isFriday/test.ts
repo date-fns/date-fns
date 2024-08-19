@@ -1,5 +1,6 @@
 import { tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
+import { type DateFns } from "../types.js";
 import { isFriday } from "./index.js";
 
 describe("isFriday", () => {
@@ -45,6 +46,15 @@ describe("isFriday", () => {
           in: tz("America/New_York"),
         }),
       ).toBe(true);
+    });
+
+    it("doesn't enforce argument and context to be of the same type", () => {
+      function _test<DateType extends Date, ResultDate extends Date = DateType>(
+        arg: DateType | number | string,
+        options?: DateFns.ContextOptions<ResultDate>,
+      ) {
+        isFriday(arg, { in: options?.in });
+      }
     });
   });
 });
