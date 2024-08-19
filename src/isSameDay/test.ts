@@ -1,6 +1,7 @@
-import { describe, expect, it } from "vitest";
-import { isSameDay } from "./index.js";
 import { tz } from "@date-fns/tz";
+import { describe, expect, it } from "vitest";
+import { type DateFns } from "../types.js";
+import { isSameDay } from "./index.js";
 
 describe("isSameDay", () => {
   it("returns true if the given dates have the same day", () => {
@@ -54,6 +55,16 @@ describe("isSameDay", () => {
           in: tz("America/Los_Angeles"),
         }),
       ).toBe(false);
+    });
+
+    it("doesn't enforce argument and context to be of the same type", () => {
+      function _test<DateType extends Date, ResultDate extends Date = DateType>(
+        arg1: DateType | number | string,
+        arg2: DateType | number | string,
+        options?: DateFns.ContextOptions<ResultDate>,
+      ) {
+        isSameDay(arg1, arg2, { in: options?.in });
+      }
     });
   });
 });

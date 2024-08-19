@@ -16,6 +16,7 @@ export interface IsSameDayOptions<DateType extends Date>
  * Are the given dates in the same day (and year and month)?
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam ContextDate - The `Date` type of the context function.
  *
  * @param dateLeft - The first date to check
  * @param dateRight - The second date to check
@@ -38,10 +39,10 @@ export interface IsSameDayOptions<DateType extends Date>
  * const result = isSameDay(new Date(2014, 8, 4), new Date(2015, 8, 4))
  * //=> false
  */
-export function isSameDay<DateType extends Date>(
+export function isSameDay<DateType extends Date, ContextDate extends Date>(
   dateLeft: DateType | number | string,
   dateRight: DateType | number | string,
-  options?: IsSameDayOptions<DateType> | undefined,
+  options?: IsSameDayOptions<ContextDate> | undefined,
 ): boolean {
   const dateLeftStartOfDay = startOfDay(dateLeft, options);
   const dateRightStartOfDay = startOfDay(dateRight, options);

@@ -13,6 +13,7 @@ export interface IsLeapYearOptions<DateType extends Date>
  * Is the given date in the leap year?
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam ContextDate - The `Date` type of the context function.
  *
  * @param date - The date to check
  * @param options - The options object
@@ -24,9 +25,9 @@ export interface IsLeapYearOptions<DateType extends Date>
  * const result = isLeapYear(new Date(2012, 8, 1))
  * //=> true
  */
-export function isLeapYear<DateType extends Date>(
+export function isLeapYear<DateType extends Date, ContextDate extends Date>(
   date: DateType | number | string,
-  options?: IsLeapYearOptions<DateType> | undefined,
+  options?: IsLeapYearOptions<ContextDate> | undefined,
 ): boolean {
   const _date = toDate(date, options?.in);
   const year = _date.getFullYear();
