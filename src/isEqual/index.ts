@@ -27,7 +27,5 @@ export function isEqual<DateType extends Date>(
   leftDate: DateType | number | string,
   rightDate: DateType | number | string,
 ): boolean {
-  const _dateLeft = toDate(leftDate);
-  const _dateRight = toDate(rightDate);
-  return +_dateLeft === +_dateRight;
+  return +toDate(leftDate) === +toDate(rightDate);
 }
