@@ -1,4 +1,5 @@
 import { constructFrom } from "../constructFrom/index.js";
+import { type DateFns } from "../types.js";
 
 /**
  * @name constructNow
@@ -31,7 +32,7 @@ import { constructFrom } from "../constructFrom/index.js";
  * }
  */
 export function constructNow<DateType extends Date>(
-  date: DateType | number | string,
+  date: DateType | number | string | DateFns.ContextFn<DateType> | undefined,
 ): DateType {
   return constructFrom(date, Date.now());
 }

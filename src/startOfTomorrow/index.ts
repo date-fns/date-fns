@@ -1,5 +1,5 @@
 import { constructFrom } from "../constructFrom/index.js";
-import { toDate } from "../toDate/index.js";
+import { constructNow } from "../constructNow/index.js";
 import { type DateFns } from "../types.js";
 
 /**
@@ -31,12 +31,12 @@ export interface StartOfTomorrowOptions<DateType extends Date>
 export function startOfTomorrow<ContextDate extends Date>(
   options?: StartOfTomorrowOptions<ContextDate> | undefined,
 ): ContextDate {
-  const now = toDate(Date.now(), options?.in);
+  const now = constructNow(options?.in);
   const year = now.getFullYear();
   const month = now.getMonth();
   const day = now.getDate();
 
-  const date = constructFrom(options?.in || now, 0);
+  const date = constructFrom(options?.in, 0);
   date.setFullYear(year, month, day + 1);
   date.setHours(0, 0, 0, 0);
   return date;

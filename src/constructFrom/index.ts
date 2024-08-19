@@ -40,20 +40,17 @@ import type {
  *   );
  * }
  */
-export function constructFrom<
-  DateType extends Date | ConstructableDate,
-  ResultDate extends Date = DateType,
->(
-  date: DateType | number | string | DateFns.ContextFn<ResultDate>,
+export function constructFrom<DateType extends Date | ConstructableDate>(
+  date: DateType | number | string | DateFns.ContextFn<DateType> | undefined,
   value: Date | number | string,
-): ResultDate {
+): DateType {
   if (typeof date === "function") return date(value);
 
   if (typeof date === "object" && constructFromSymbol in date)
     return date[constructFromSymbol](value);
 
   if (date instanceof Date)
-    return new (date.constructor as GenericDateConstructor<ResultDate>)(value);
+    return new (date.constructor as GenericDateConstructor<DateType>)(value);
 
-  return new Date(value) as ResultDate;
+  return new Date(value) as DateType;
 }
