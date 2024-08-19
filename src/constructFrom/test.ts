@@ -48,6 +48,13 @@ describe("constructFrom", () => {
     expect(result.getTime()).toEqual(value);
   });
 
+  it("allows to pass undefined", () => {
+    const value = 1635244800000; // October 26, 2023
+    const result = constructFrom(undefined, value);
+    expect(result instanceof Date).toBe(true);
+    expect(result.getTime()).toEqual(value);
+  });
+
   it("allows to pass a context function as the reference date", () => {
     const value = 1635244800000; // October 26, 2023
     const result = constructFrom(tz("Asia/Singapore"), value);

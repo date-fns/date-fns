@@ -25,8 +25,8 @@ describe("startOfTomorrow", () => {
     const now = new Date(0);
     now.setFullYear(14, 8 /* Sep */, 25);
     now.setHours(0, 0, 0, 0);
-
     clock = sinon.useFakeTimers(now.getTime());
+
     const expectedResult = new Date(0);
     expectedResult.setFullYear(14, 8 /* Sep */, 26);
     expectedResult.setHours(0, 0, 0, 0);
