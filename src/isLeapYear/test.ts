@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { isLeapYear } from "./index.js";
+import { tz } from "@date-fns/tz";
 
 describe("isLeapYear", () => {
   it("returns true if the given date is in the leap year", () => {
@@ -31,5 +32,20 @@ describe("isLeapYear", () => {
   it("returns false if the given date is `Invalid Date`", () => {
     const result = isLeapYear(new Date(NaN));
     expect(result).toBe(false);
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      expect(
+        isLeapYear("2012-01-01T00:00:00Z", {
+          in: tz("Asia/Singapore"),
+        }),
+      ).toBe(true);
+      expect(
+        isLeapYear("2012-01-01T00:00:00Z", {
+          in: tz("America/New_York"),
+        }),
+      ).toBe(false);
+    });
   });
 });
