@@ -1,26 +1,42 @@
+import { constructFrom } from "../constructFrom/index.js";
+import { toDate } from "../toDate/index.js";
+import { type DateFns } from "../types.js";
+
+/**
+ * The {@link startOfTomorrow} function options.
+ */
+export interface StartOfTomorrowOptions<DateType extends Date>
+  extends DateFns.ContextOptions<DateType> {}
+
 /**
  * @name startOfTomorrow
  * @category Day Helpers
  * @summary Return the start of tomorrow.
  * @pure false
  *
- * @description
- * Return the start of tomorrow.
+ * @typeParam ContextDate - The `Date` type of the context function.
+ *
+ * @param options - An object with options
  *
  * @returns The start of tomorrow
+ *
+ * @description
+ * Return the start of tomorrow.
  *
  * @example
  * // If today is 6 October 2014:
  * const result = startOfTomorrow()
  * //=> Tue Oct 7 2014 00:00:00
  */
-export function startOfTomorrow(): Date {
-  const now = new Date();
+export function startOfTomorrow<ContextDate extends Date>(
+  options?: StartOfTomorrowOptions<ContextDate> | undefined,
+): ContextDate {
+  const now = toDate(Date.now(), options?.in);
   const year = now.getFullYear();
   const month = now.getMonth();
   const day = now.getDate();
 
-  const date = new Date(0);
+  const date = constructFrom(options?.in || now, 0);
   date.setFullYear(year, month, day + 1);
   date.setHours(0, 0, 0, 0);
   return date;
