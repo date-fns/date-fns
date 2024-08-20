@@ -31,12 +31,11 @@ export interface AddMillisecondsOptions<DateType extends Date>
  */
 export function addMilliseconds<
   DateType extends Date,
-  ResultDate extends DateType,
+  ResultDate extends Date = DateType,
 >(
   date: DateType | number | string,
   amount: number,
   options?: AddMillisecondsOptions<ResultDate> | undefined,
 ): ResultDate {
-  const timestamp = +toDate(date);
-  return constructFrom(options?.in || date, timestamp + amount);
+  return constructFrom(options?.in || date, +toDate(date) + amount);
 }
