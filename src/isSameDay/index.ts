@@ -44,8 +44,5 @@ export function isSameDay<DateType extends Date, ContextDate extends Date>(
   dateRight: DateType | number | string,
   options?: IsSameDayOptions<ContextDate> | undefined,
 ): boolean {
-  const dateLeftStartOfDay = startOfDay(dateLeft, options);
-  const dateRightStartOfDay = startOfDay(dateRight, options);
-
-  return +dateLeftStartOfDay === +dateRightStartOfDay;
+  return +startOfDay(dateLeft, options) === +startOfDay(dateRight, options);
 }
