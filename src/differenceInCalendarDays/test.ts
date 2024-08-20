@@ -1,6 +1,7 @@
+import { tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import { differenceInCalendarDays } from "./index.js";
 import { getDstTransitions } from "../../test/dst/tzOffsetTransitions.js";
+import { differenceInCalendarDays } from "./index.js";
 
 describe("differenceInCalendarDays", () => {
   it("returns the number of calendar days between the given dates", () => {
@@ -108,9 +109,10 @@ describe("differenceInCalendarDays", () => {
   // `differenceInDays`
   const dstTransitions = getDstTransitions(2017);
   const dstOnly = dstTransitions.start && dstTransitions.end ? it : it.skip;
-  const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || process.env.tz;
+  const tzName =
+    Intl.DateTimeFormat().resolvedOptions().timeZone || process.env.tz;
   dstOnly(
-    `works across DST start & end in local timezone: ${tz || "(unknown)"}`,
+    `works across DST start & end in local timezone: ${tzName || "(unknown)"}`,
     () => {
       const { start, end } = dstTransitions;
       const HOUR = 1000 * 60 * 60;
@@ -213,4 +215,37 @@ describe("differenceInCalendarDays", () => {
       }
     },
   );
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      expect(
+        differenceInCalendarDays(
+          new Date("2014-12-12T00:00:00Z"),
+          new Date("2014-12-02T04:00:00Z"),
+          { in: tz("Asia/Singapore") },
+        ),
+      ).toBe(10);
+      expect(
+        differenceInCalendarDays(
+          new Date("2014-12-12T00:00:00Z"),
+          new Date("2014-12-02T05:00:00Z"),
+          { in: tz("Asia/Singapore") },
+        ),
+      ).toBe(10);
+      expect(
+        differenceInCalendarDays(
+          new Date("2014-12-12T00:00:00Z"),
+          new Date("2014-12-02T04:00:00Z"),
+          { in: tz("America/New_York") },
+        ),
+      ).toBe(10);
+      expect(
+        differenceInCalendarDays(
+          new Date("2014-12-12T00:00:00Z"),
+          new Date("2014-12-02T05:00:00Z"),
+          { in: tz("America/New_York") },
+        ),
+      ).toBe(9);
+    });
+  });
 });

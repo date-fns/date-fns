@@ -1,4 +1,11 @@
 import { toDate } from "../toDate/index.js";
+import { type DateFns } from "../types.js";
+
+/**
+ * The {@link getDay} function options.
+ */
+export interface GetDayOptions<DateType extends Date>
+  extends DateFns.ContextOptions<DateType> {}
 
 /**
  * @name getDay
@@ -9,8 +16,10 @@ import { toDate } from "../toDate/index.js";
  * Get the day of the week of the given date.
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam ContextDate - The `Date` type of the context function.
  *
  * @param date - The given date
+ * @param options - The options
  *
  * @returns The day of week, 0 represents Sunday
  *
@@ -19,10 +28,9 @@ import { toDate } from "../toDate/index.js";
  * const result = getDay(new Date(2012, 1, 29))
  * //=> 3
  */
-export function getDay<DateType extends Date>(
+export function getDay<DateType extends Date, ContextDate extends Date>(
   date: DateType | number | string,
+  options?: GetDayOptions<ContextDate> | undefined,
 ): number {
-  const _date = toDate(date);
-  const day = _date.getDay();
-  return day;
+  return toDate(date, options?.in).getDay();
 }

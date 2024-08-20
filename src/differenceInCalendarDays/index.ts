@@ -1,6 +1,13 @@
+import { getTimezoneOffsetInMilliseconds } from "../_lib/getTimezoneOffsetInMilliseconds/index.js";
 import { millisecondsInDay } from "../constants/index.js";
 import { startOfDay } from "../startOfDay/index.js";
-import { getTimezoneOffsetInMilliseconds } from "../_lib/getTimezoneOffsetInMilliseconds/index.js";
+import { type DateFns } from "../types.js";
+
+/**
+ * The {@link differenceInCalendarDays} function options.
+ */
+export interface DifferenceInCalendarDaysOptions<DateType extends Date>
+  extends DateFns.ContextOptions<DateType> {}
 
 /**
  * @name differenceInCalendarDays
@@ -15,6 +22,7 @@ import { getTimezoneOffsetInMilliseconds } from "../_lib/getTimezoneOffsetInMill
  *
  * @param dateLeft - The later date
  * @param dateRight - The earlier date
+ * @param options - The options object
  *
  * @returns The number of calendar days
  *
@@ -34,12 +42,16 @@ import { getTimezoneOffsetInMilliseconds } from "../_lib/getTimezoneOffsetInMill
  * )
  * //=> 1
  */
-export function differenceInCalendarDays<DateType extends Date>(
+export function differenceInCalendarDays<
+  DateType extends Date,
+  ResultDate extends Date = DateType,
+>(
   dateLeft: DateType | number | string,
   dateRight: DateType | number | string,
+  options?: DifferenceInCalendarDaysOptions<ResultDate> | undefined,
 ): number {
-  const startOfDayLeft = startOfDay(dateLeft);
-  const startOfDayRight = startOfDay(dateRight);
+  const startOfDayLeft = startOfDay(dateLeft, options);
+  const startOfDayRight = startOfDay(dateRight, options);
 
   const timestampLeft =
     +startOfDayLeft - getTimezoneOffsetInMilliseconds(startOfDayLeft);
