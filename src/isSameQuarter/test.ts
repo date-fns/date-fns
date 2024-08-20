@@ -1,4 +1,6 @@
+import { tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
+import { type DateFns } from "../types.js";
 import { isSameQuarter } from "./index.js";
 
 describe("isSameQuarter", () => {
@@ -45,5 +47,46 @@ describe("isSameQuarter", () => {
   it("returns false if the both dates are `Invalid Date`", () => {
     const result = isSameQuarter(new Date(NaN), new Date(NaN));
     expect(result).toBe(false);
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      expect(
+        isSameQuarter("2024-09-30T16:00:00Z", "2024-09-31T00:00:00Z", {
+          in: tz("Asia/Singapore"),
+        }),
+      ).toBe(true);
+      expect(
+        isSameQuarter("2024-09-30T15:00:00Z", "2024-09-31T00:00:00Z", {
+          in: tz("Asia/Singapore"),
+        }),
+      ).toBe(false);
+      expect(
+        isSameQuarter("2024-10-01T04:00:00Z", "2024-10-02T00:00:00Z", {
+          in: tz("America/New_York"),
+        }),
+      ).toBe(true);
+      expect(
+        isSameQuarter("2024-10-01T03:00:00Z", "2024-10-02T00:00:00Z", {
+          in: tz("America/New_York"),
+        }),
+      ).toBe(false);
+    });
+
+    it("doesn't enforce argument and context to be of the same type", () => {
+      function _test<
+        DateType extends Date,
+        ContextDate extends Date = DateType,
+      >(
+        arg1: DateType | number | string,
+        arg2: DateType | number | string,
+        options?: DateFns.ContextOptions<ContextDate>,
+      ) {
+        isSameQuarter(arg1, arg2, { in: options?.in });
+      }
+      _test("2014-02-11T00:00:00.000Z", "2014-05-18T00:00:00.000Z", {
+        in: tz("Asia/Singapore"),
+      });
+    });
   });
 });

@@ -35,8 +35,5 @@ export function isSameMinute<DateType extends Date>(
   dateLeft: DateType | number | string,
   dateRight: DateType | number | string,
 ): boolean {
-  const dateLeftStartOfMinute = startOfMinute(dateLeft);
-  const dateRightStartOfMinute = startOfMinute(dateRight);
-
-  return +dateLeftStartOfMinute === +dateRightStartOfMinute;
+  return +startOfMinute(dateLeft) === +startOfMinute(dateRight);
 }

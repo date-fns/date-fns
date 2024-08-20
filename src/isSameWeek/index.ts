@@ -1,12 +1,14 @@
 import { startOfWeek } from "../startOfWeek/index.js";
 import type { LocalizedOptions, WeekOptions } from "../types.js";
+import { type DateFns } from "../types.js";
 
 /**
  * The {@link isSameWeek} function options.
  */
-export interface IsSameWeekOptions
+export interface IsSameWeekOptions<DateType extends Date>
   extends WeekOptions,
-    LocalizedOptions<"options"> {}
+    LocalizedOptions<"options">,
+    DateFns.ContextOptions<DateType> {}
 
 /**
  * @name isSameWeek
@@ -17,6 +19,7 @@ export interface IsSameWeekOptions
  * Are the given dates in the same week (and month and year)?
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam ContextDate - The `Date` type of the context function.
  *
  * @param dateLeft - The first date to check
  * @param dateRight - The second date to check
@@ -42,13 +45,10 @@ export interface IsSameWeekOptions
  * const result = isSameWeek(new Date(2014, 0, 1), new Date(2015, 0, 1))
  * //=> false
  */
-export function isSameWeek<DateType extends Date>(
+export function isSameWeek<DateType extends Date, ContextDate extends Date>(
   dateLeft: DateType | number | string,
   dateRight: DateType | number | string,
-  options?: IsSameWeekOptions,
+  options?: IsSameWeekOptions<ContextDate>,
 ): boolean {
-  const dateLeftStartOfWeek = startOfWeek(dateLeft, options);
-  const dateRightStartOfWeek = startOfWeek(dateRight, options);
-
-  return +dateLeftStartOfWeek === +dateRightStartOfWeek;
+  return +startOfWeek(dateLeft, options) === +startOfWeek(dateRight, options);
 }

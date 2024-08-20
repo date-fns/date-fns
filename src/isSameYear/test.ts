@@ -1,4 +1,6 @@
+import { tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
+import { type DateFns } from "../types.js";
 import { isSameYear } from "./index.js";
 
 describe("isSameYear", () => {
@@ -39,5 +41,30 @@ describe("isSameYear", () => {
   it("returns false if the both dates are `Invalid Date`", () => {
     const result = isSameYear(new Date(NaN), new Date(NaN));
     expect(result).toBe(false);
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      expect(
+        isSameYear("2023-12-31T15:00:00Z", "2023-12-31T21:00:00Z", {
+          in: tz("Asia/Singapore"),
+        }),
+      ).toBe(false);
+      expect(
+        isSameYear("2023-12-31T16:00:00Z", "2024-08-23T00:00:00Z", {
+          in: tz("Asia/Singapore"),
+        }),
+      ).toBe(true);
+    });
+
+    it("doesn't enforce argument and context to be of the same type", () => {
+      function _test<DateType extends Date, ResultDate extends Date = DateType>(
+        arg1: DateType | number | string,
+        arg2: DateType | number | string,
+        options?: DateFns.ContextOptions<ResultDate>,
+      ) {
+        isSameYear(arg1, arg2, { in: options?.in });
+      }
+    });
   });
 });

@@ -1,4 +1,6 @@
+import { tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
+import { type DateFns } from "../types.js";
 import { isSameHour } from "./index.js";
 
 describe("isSameHour", () => {
@@ -39,5 +41,30 @@ describe("isSameHour", () => {
   it("returns false if the both dates are `Invalid Date`", () => {
     const result = isSameHour(new Date(NaN), new Date(NaN));
     expect(result).toBe(false);
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      expect(
+        isSameHour("2024-04-10T07:00:00Z", "2024-04-10T07:30:00Z", {
+          in: tz("Asia/Kolkata"),
+        }),
+      ).toBe(false);
+      expect(
+        isSameHour("2024-04-10T07:30:00Z", "2024-04-10T08:00:00Z", {
+          in: tz("Asia/Kolkata"),
+        }),
+      ).toBe(true);
+    });
+
+    it("doesn't enforce argument and context to be of the same type", () => {
+      function _test<DateType extends Date, ResultDate extends Date = DateType>(
+        arg1: DateType | number | string,
+        arg2: DateType | number | string,
+        options?: DateFns.ContextOptions<ResultDate>,
+      ) {
+        isSameHour(arg1, arg2, { in: options?.in });
+      }
+    });
   });
 });
