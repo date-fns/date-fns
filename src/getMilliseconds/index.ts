@@ -22,7 +22,5 @@ import { toDate } from "../toDate/index.js";
 export function getMilliseconds<DateType extends Date>(
   date: DateType | number | string,
 ): number {
-  const _date = toDate(date);
-  const milliseconds = _date.getMilliseconds();
-  return milliseconds;
+  return toDate(date).getMilliseconds();
 }

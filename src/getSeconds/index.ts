@@ -22,7 +22,5 @@ import { toDate } from "../toDate/index.js";
 export function getSeconds<DateType extends Date>(
   date: DateType | number | string,
 ): number {
-  const _date = toDate(date);
-  const seconds = _date.getSeconds();
-  return seconds;
+  return toDate(date).getSeconds();
 }
