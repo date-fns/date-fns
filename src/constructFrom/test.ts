@@ -3,6 +3,7 @@ import { UTCDate } from "@date-fns/utc";
 import { describe, expect, it } from "vitest";
 import { constructFrom } from ".";
 import { assertType } from "../_lib/test";
+import { type DateFns } from "../types";
 
 describe("constructFrom", () => {
   it("should create a new Date instance using the constructor from the reference date", () => {
@@ -78,5 +79,14 @@ describe("constructFrom", () => {
     const result = constructFrom(tz("Asia/Singapore"), Date.now());
     expect(result instanceof TZDate).toBe(true);
     assertType<assertType.Equal<TZDate, typeof result>>(true);
+  });
+
+  it("doesn't enforce argument and context to be of the same type", () => {
+    function _test<DateType extends Date, ResultDate extends Date = DateType>(
+      arg: DateType | number | string,
+      options?: DateFns.ContextOptions<ResultDate>,
+    ) {
+      constructFrom(options?.in || arg, arg);
+    }
   });
 });

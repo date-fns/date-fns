@@ -1,5 +1,12 @@
-import { addMilliseconds } from "../addMilliseconds/index.js";
+import { toDate } from "../toDate/index.js";
 import { millisecondsInMinute } from "../constants/index.js";
+import { type DateFns } from "../types.js";
+
+/**
+ * The {@link addMinutes} function options.
+ */
+export interface AddMinutesOptions<DateType extends Date>
+  extends DateFns.ContextOptions<DateType> {}
 
 /**
  * @name addMinutes
@@ -10,9 +17,11 @@ import { millisecondsInMinute } from "../constants/index.js";
  * Add the specified number of minutes to the given date.
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
  *
  * @param date - The date to be changed
  * @param amount - The amount of minutes to be added.
+ * @param options - An object with options
  *
  * @returns The new date with the minutes added
  *
@@ -21,9 +30,15 @@ import { millisecondsInMinute } from "../constants/index.js";
  * const result = addMinutes(new Date(2014, 6, 10, 12, 0), 30)
  * //=> Thu Jul 10 2014 12:30:00
  */
-export function addMinutes<DateType extends Date>(
+export function addMinutes<
+  DateType extends Date,
+  ResultDate extends Date = DateType,
+>(
   date: DateType | number | string,
   amount: number,
-): DateType {
-  return addMilliseconds(date, amount * millisecondsInMinute);
+  options?: AddMinutesOptions<ResultDate> | undefined,
+): ResultDate {
+  const _date = toDate(date, options?.in);
+  _date.setTime(_date.getTime() + amount * millisecondsInMinute);
+  return _date;
 }
