@@ -1,4 +1,6 @@
+import { tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
+import type { DateFns, Interval } from "../types.js";
 import { isWithinInterval } from "./index.js";
 
 describe("isWithinInterval", () => {
@@ -88,5 +90,34 @@ describe("isWithinInterval", () => {
       end: new Date(2023, 11 /* Dec */, 20),
     });
     expect(result).toBe(true);
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      const interval = {
+        start: "2024-04-10T00:00:00+08:00",
+        end: "2024-04-10T23:59:59+08:00",
+      };
+      expect(
+        isWithinInterval("2024-04-09T16:00:00Z", interval, {
+          in: tz("Asia/Singapore"),
+        }),
+      ).toBe(true);
+      expect(
+        isWithinInterval("2024-04-09T15:00:00Z", interval, {
+          in: tz("Asia/Singapore"),
+        }),
+      ).toBe(false);
+    });
+
+    it("doesn't enforce argument and context to be of the same type", () => {
+      function _test<DateType extends Date, ResultDate extends Date = DateType>(
+        arg1: DateType | number | string,
+        arg2: Interval<DateType>,
+        options?: DateFns.ContextOptions<ResultDate>,
+      ) {
+        isWithinInterval(arg1, arg2, { in: options?.in });
+      }
+    });
   });
 });
