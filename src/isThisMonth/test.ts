@@ -1,6 +1,8 @@
+import { tz } from "@date-fns/tz";
 import { UTCDate } from "@date-fns/utc";
 import sinon from "sinon";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { type DateFns } from "../types.js";
 import { isThisMonth } from "./index.js";
 
 describe("isThisMonth", () => {
@@ -32,5 +34,30 @@ describe("isThisMonth", () => {
     expect(isThisMonth(new UTCDate(+new Date(2014, 8 /* Sep */, 1)))).toBe(
       true,
     );
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      clock = sinon.useFakeTimers(new Date("2014-09-02T00:00:00Z").getTime());
+      expect(
+        isThisMonth("2014-09-01T04:00:00Z", {
+          in: tz("America/New_York"),
+        }),
+      ).toBe(true);
+      expect(
+        isThisMonth("2014-09-01T03:00:00Z", {
+          in: tz("America/New_York"),
+        }),
+      ).toBe(false);
+    });
+
+    it("doesn't enforce argument and context to be of the same type", () => {
+      function _test<DateType extends Date, ResultDate extends Date = DateType>(
+        arg: DateType | number | string,
+        options?: DateFns.ContextOptions<ResultDate>,
+      ) {
+        isThisMonth(arg, { in: options?.in });
+      }
+    });
   });
 });

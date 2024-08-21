@@ -1,9 +1,10 @@
-import { UTCDate } from "@date-fns/utc";
+import { tz } from "@date-fns/tz";
 import sinon from "sinon";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { type DateFns } from "../types.js";
 import { isThisISOWeek } from "./index.js";
 
-describe("isSameISOWeek", () => {
+describe("isThisISOWeek", () => {
   let clock: sinon.SinonFakeTimers;
   beforeEach(() => {
     clock = sinon.useFakeTimers(new Date(2014, 8 /* Sep */, 25).getTime());
@@ -29,8 +30,33 @@ describe("isSameISOWeek", () => {
   });
 
   it("respects date extensions", () => {
-    expect(isThisISOWeek(new UTCDate(+new Date(2014, 8 /* Sep */, 25)))).toBe(
+    expect(isThisISOWeek(new Date(+new Date(2014, 8 /* Sep */, 25)))).toBe(
       true,
     );
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      clock = sinon.useFakeTimers(new Date("2024-08-20T00:00:00Z").getTime());
+      expect(
+        isThisISOWeek("2024-08-19T04:00:00Z", {
+          in: tz("America/New_York"),
+        }),
+      ).toBe(true);
+      expect(
+        isThisISOWeek("2024-08-19T03:00:00Z", {
+          in: tz("America/New_York"),
+        }),
+      ).toBe(false);
+    });
+
+    it("doesn't enforce argument and context to be of the same type", () => {
+      function _test<DateType extends Date, ResultDate extends Date = DateType>(
+        arg: DateType | number | string,
+        options?: DateFns.ContextOptions<ResultDate>,
+      ) {
+        isThisISOWeek(arg, { in: options?.in });
+      }
+    });
   });
 });

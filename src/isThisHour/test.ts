@@ -1,6 +1,8 @@
+import { tz } from "@date-fns/tz";
 import { UTCDate } from "@date-fns/utc";
 import sinon from "sinon";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { type DateFns } from "../types.js";
 import { isThisHour } from "./index.js";
 
 describe("isThisHour", () => {
@@ -34,5 +36,24 @@ describe("isThisHour", () => {
     expect(isThisHour(new UTCDate(+new Date(2014, 8 /* Sep */, 25, 18)))).toBe(
       true,
     );
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      const in30Minutes = Date.now() + 30 * 60 * 1000;
+      expect(isThisHour(in30Minutes, { in: tz("America/Los_Angeles") })).toBe(
+        true,
+      );
+      expect(isThisHour(in30Minutes, { in: tz("Asia/Kolkata") })).toBe(false);
+    });
+
+    it("doesn't enforce argument and context to be of the same type", () => {
+      function _test<DateType extends Date, ResultDate extends Date = DateType>(
+        arg: DateType | number | string,
+        options?: DateFns.ContextOptions<ResultDate>,
+      ) {
+        isThisHour(arg, { in: options?.in });
+      }
+    });
   });
 });

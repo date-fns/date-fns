@@ -31,8 +31,11 @@ import { type DateFns } from "../types.js";
  *   return isSameDay(date, constructNow(date));
  * }
  */
-export function constructNow<DateType extends Date>(
-  date: DateType | number | string | DateFns.ContextFn<DateType> | undefined,
-): DateType {
+export function constructNow<
+  DateType extends Date,
+  ResultDate extends Date = DateType,
+>(
+  date: DateType | number | string | DateFns.ContextFn<ResultDate> | undefined,
+): ResultDate {
   return constructFrom(date, Date.now());
 }

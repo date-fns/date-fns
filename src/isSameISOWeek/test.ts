@@ -1,4 +1,6 @@
+import { tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
+import { type DateFns } from "../types.js";
 import { isSameISOWeek } from "./index.js";
 
 describe("isSameISOWeek", () => {
@@ -45,5 +47,30 @@ describe("isSameISOWeek", () => {
   it("returns false if the both dates are `Invalid Date`", () => {
     const result = isSameISOWeek(new Date(NaN), new Date(NaN));
     expect(result).toBe(false);
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      expect(
+        isSameISOWeek("2024-08-19T00:00:00Z", "2024-08-19T04:00:00Z", {
+          in: tz("America/New_York"),
+        }),
+      ).toBe(false);
+      expect(
+        isSameISOWeek("2024-08-19T00:00:00Z", "2024-08-19T03:00:00Z", {
+          in: tz("America/New_York"),
+        }),
+      ).toBe(true);
+    });
+
+    it("doesn't enforce argument and context to be of the same type", () => {
+      function _test<DateType extends Date, ResultDate extends Date = DateType>(
+        arg1: DateType | number | string,
+        arg2: DateType | number | string,
+        options?: DateFns.ContextOptions<ResultDate>,
+      ) {
+        isSameISOWeek(arg1, arg2, { in: options?.in });
+      }
+    });
   });
 });
