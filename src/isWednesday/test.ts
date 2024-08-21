@@ -1,4 +1,6 @@
+import { tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
+import { type DateFns } from "../types.js";
 import { isWednesday } from "./index.js";
 
 describe("isWednesday", () => {
@@ -20,5 +22,29 @@ describe("isWednesday", () => {
   it("returns false if the given date is `Invalid Date`", () => {
     const result = isWednesday(new Date(NaN));
     expect(result).toBe(false);
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      expect(
+        isWednesday("2024-08-21T03:00:00Z", {
+          in: tz("America/New_York"),
+        }),
+      ).toBe(false);
+      expect(
+        isWednesday("2024-08-21T04:00:00Z", {
+          in: tz("America/New_York"),
+        }),
+      ).toBe(true);
+    });
+
+    it("doesn't enforce argument and context to be of the same type", () => {
+      function _test<DateType extends Date, ResultDate extends Date = DateType>(
+        arg: DateType | number | string,
+        options?: DateFns.ContextOptions<ResultDate>,
+      ) {
+        isWednesday(arg, { in: options?.in });
+      }
+    });
   });
 });

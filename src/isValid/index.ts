@@ -35,9 +35,5 @@ import { toDate } from "../toDate/index.js";
  * //=> false
  */
 export function isValid(date: unknown): boolean {
-  if (!isDate(date) && typeof date !== "number") {
-    return false;
-  }
-  const _date = toDate(date);
-  return !isNaN(Number(_date));
+  return !((!isDate(date) && typeof date !== "number") || isNaN(+toDate(date)));
 }
