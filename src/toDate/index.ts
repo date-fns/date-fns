@@ -49,6 +49,7 @@ export function toDate<
   argument: DateType | number | string,
   context?: DateFns.ContextFn<ResultDate> | undefined,
 ): ResultDate {
+  // [TODO] Use constructFrom here instead?
   if (context) return context(argument);
 
   const argStr = Object.prototype.toString.call(argument);
