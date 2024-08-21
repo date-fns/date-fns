@@ -1,4 +1,6 @@
+import { tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
+import { type DateFns } from "../types.js";
 import { getDecade } from "./index.js";
 
 describe("getDecade", () => {
@@ -20,5 +22,23 @@ describe("getDecade", () => {
   it("properly works with negative numbers", () => {
     expect(getDecade(new Date(2009, 0, 1))).toBe(2000);
     expect(getDecade(new Date(-2001, 0, 1))).toBe(-2010);
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      const result = getDecade("1971-11-08T07:00:00Z", {
+        in: tz("America/New_York"),
+      });
+      expect(result).toBe(1970);
+    });
+
+    it("doesn't enforce argument and context to be of the same type", () => {
+      function _test<DateType extends Date, ResultDate extends Date = DateType>(
+        arg: DateType | number | string,
+        options?: DateFns.ContextOptions<ResultDate>,
+      ) {
+        getDecade(arg, { in: options?.in });
+      }
+    });
   });
 });
