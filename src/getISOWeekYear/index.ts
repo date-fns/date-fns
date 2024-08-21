@@ -39,15 +39,15 @@ export function getISOWeekYear<DateType extends Date, ContextDate extends Date>(
   const _date = toDate(date, options?.in);
   const year = _date.getFullYear();
 
-  const fourthOfJanuaryOfNextYear = constructFrom(date, 0);
+  const fourthOfJanuaryOfNextYear = constructFrom(_date, 0);
   fourthOfJanuaryOfNextYear.setFullYear(year + 1, 0, 4);
   fourthOfJanuaryOfNextYear.setHours(0, 0, 0, 0);
-  const startOfNextYear = startOfISOWeek(fourthOfJanuaryOfNextYear, options);
+  const startOfNextYear = startOfISOWeek(fourthOfJanuaryOfNextYear);
 
-  const fourthOfJanuaryOfThisYear = constructFrom(date, 0);
+  const fourthOfJanuaryOfThisYear = constructFrom(_date, 0);
   fourthOfJanuaryOfThisYear.setFullYear(year, 0, 4);
   fourthOfJanuaryOfThisYear.setHours(0, 0, 0, 0);
-  const startOfThisYear = startOfISOWeek(fourthOfJanuaryOfThisYear, options);
+  const startOfThisYear = startOfISOWeek(fourthOfJanuaryOfThisYear);
 
   if (_date.getTime() >= startOfNextYear.getTime()) {
     return year + 1;

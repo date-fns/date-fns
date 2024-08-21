@@ -1,5 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { getDayOfYear } from "./index.js";
+import { tz } from "@date-fns/tz";
+import { type DateFns } from "../types.js";
 
 describe("getDayOfYear", () => {
   it("returns the day of the year of the given date", () => {
@@ -23,5 +25,29 @@ describe("getDayOfYear", () => {
   it("returns NaN if the given date is invalid", () => {
     const result = getDayOfYear(new Date(NaN));
     expect(isNaN(result)).toBe(true);
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      expect(
+        getDayOfYear(new Date("2014-07-02T00:00:00Z"), {
+          in: tz("Asia/Singapore"),
+        }),
+      ).toBe(183);
+      expect(
+        getDayOfYear(new Date("2014-07-02T00:00:00Z"), {
+          in: tz("America/Los_Angeles"),
+        }),
+      ).toBe(182);
+    });
+
+    it("doesn't enforce argument and context to be of the same type", () => {
+      function _test<DateType extends Date, ResultDate extends Date = DateType>(
+        arg: DateType | number | string,
+        options?: DateFns.ContextOptions<ResultDate>,
+      ) {
+        getDayOfYear(arg, { in: options?.in });
+      }
+    });
   });
 });

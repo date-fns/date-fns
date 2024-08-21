@@ -1,4 +1,6 @@
+import { tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
+import { type DateFns } from "../types.js";
 import { getISOWeek } from "./index.js";
 
 describe("getISOWeek", () => {
@@ -50,5 +52,25 @@ describe("getISOWeek", () => {
   it("returns NaN if the given date is invalid", () => {
     const result = getISOWeek(new Date(NaN));
     expect(isNaN(result)).toBe(true);
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      expect(
+        getISOWeek("2024-08-26T03:00:00Z", { in: tz("America/New_York") }),
+      ).toBe(34);
+      expect(
+        getISOWeek("2024-08-26T04:00:00Z", { in: tz("America/New_York") }),
+      ).toBe(35);
+    });
+
+    it("doesn't enforce argument and context to be of the same type", () => {
+      function _test<DateType extends Date, ResultDate extends Date = DateType>(
+        arg: DateType | number | string,
+        options?: DateFns.ContextOptions<ResultDate>,
+      ) {
+        getISOWeek(arg, { in: options?.in });
+      }
+    });
   });
 });
