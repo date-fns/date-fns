@@ -28,25 +28,25 @@ import { toDate } from "../toDate/index.js";
 export function closestTo<DateType extends Date>(
   dateToCompare: DateType | number | string,
   dates: Array<DateType | number | string>,
-): DateType | undefined {
+): DateType | Date | undefined {
   const date = toDate(dateToCompare);
 
-  if (isNaN(Number(date))) return constructFrom(dateToCompare, NaN);
+  if (isNaN(+date)) return constructFrom(dateToCompare, NaN);
 
-  const timeToCompare = date.getTime();
+  const timeToCompare = +date;
 
-  let result: DateType | undefined;
+  let result: DateType | Date | undefined;
   let minDistance: number;
   dates.forEach((dirtyDate) => {
     const currentDate = toDate(dirtyDate);
 
-    if (isNaN(Number(currentDate))) {
+    if (isNaN(+currentDate)) {
       result = constructFrom(dateToCompare, NaN);
       minDistance = NaN;
       return;
     }
 
-    const distance = Math.abs(timeToCompare - currentDate.getTime());
+    const distance = Math.abs(timeToCompare - +currentDate);
     if (result == null || distance < minDistance) {
       result = currentDate;
       minDistance = distance;

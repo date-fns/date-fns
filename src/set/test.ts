@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { set } from "./index.js";
+import { TZDate, tz } from "@date-fns/tz";
+import { assertType } from "../_lib/test/index.js";
+import { UTCDate } from "@date-fns/utc";
 
 describe("set", () => {
   it("sets all values", () => {
@@ -12,7 +15,9 @@ describe("set", () => {
       seconds: 12,
       milliseconds: 12,
     });
-    expect(result.toString()).toEqual(new Date(2014, 8 /* Sep */, 20, 12, 12, 12, 12).toString());
+    expect(result.toString()).toEqual(
+      new Date(2014, 8 /* Sep */, 20, 12, 12, 12, 12).toString(),
+    );
   });
 
   it("sets year", () => {
@@ -50,6 +55,44 @@ describe("set", () => {
       milliseconds: 500,
     });
     expect(result).toEqual(new Date(2014, 8 /* Sep */, 1, 1, 1, 1, 500));
+  });
+
+  it("resolves the date type by default", () => {
+    const result = set(Date.now(), { hours: 5 });
+    expect(result).toBeInstanceOf(Date);
+    assertType<assertType.Equal<Date, typeof result>>(true);
+  });
+
+  it("resolves the argument type if a date extension is passed", () => {
+    const result = set(new UTCDate(), { hours: 5 });
+    expect(result).toBeInstanceOf(UTCDate);
+    assertType<assertType.Equal<UTCDate, typeof result>>(true);
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      expect(
+        set(
+          new Date("2024-04-10T07:00:00Z"),
+          { year: 2015 },
+          { in: tz("Asia/Singapore") },
+        ).toISOString(),
+      ).toBe("2015-04-10T15:00:00.000+08:00");
+      expect(
+        set(
+          new Date("2024-04-10T07:00:00Z"),
+          { year: 2015 },
+          { in: tz("America/Los_Angeles") },
+        ).toISOString(),
+      ).toBe("2015-04-10T00:00:00.000-07:00");
+    });
+
+    it("resolves the context date type", () => {
+      const date = new Date("2014-09-01T00:00:00Z");
+      const result = set(date, { month: 0 }, { in: tz("Asia/Tokyo") });
+      expect(result).toBeInstanceOf(TZDate);
+      assertType<assertType.Equal<TZDate, typeof result>>(true);
+    });
   });
 
   describe("value overflow", () => {

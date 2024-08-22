@@ -1,4 +1,6 @@
+import { tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
+import { type DateFns } from "../types.js";
 import { differenceInCalendarMonths } from "./index.js";
 
 describe("differenceInCalendarMonths", () => {
@@ -27,7 +29,7 @@ describe("differenceInCalendarMonths", () => {
   });
 
   describe("edge cases", () => {
-    it("the difference is less than a month, but the given dates are in different calendar months", () => {
+    it("returns 1 when dates are in different months but less than a month apart", () => {
       const result = differenceInCalendarMonths(
         new Date(2014, 8 /* Sep */, 1),
         new Date(2014, 7 /* Aug */, 31),
@@ -35,7 +37,7 @@ describe("differenceInCalendarMonths", () => {
       expect(result).toBe(1);
     });
 
-    it("the same for the swapped dates", () => {
+    it("returns -1 for swapped dates with a month difference", () => {
       const result = differenceInCalendarMonths(
         new Date(2014, 7 /* Aug */, 31),
         new Date(2014, 8 /* Sep */, 1),
@@ -43,7 +45,7 @@ describe("differenceInCalendarMonths", () => {
       expect(result).toBe(-1);
     });
 
-    it("the days of months of the given dates are the same", () => {
+    it("handles same day of month correctly", () => {
       const result = differenceInCalendarMonths(
         new Date(2014, 8 /* Sep */, 6),
         new Date(2014, 7 /* Aug */, 6),
@@ -51,7 +53,7 @@ describe("differenceInCalendarMonths", () => {
       expect(result).toBe(1);
     });
 
-    it("the given dates are the same", () => {
+    it("returns 0 when given the same dates", () => {
       const result = differenceInCalendarMonths(
         new Date(2014, 8 /* Sep */, 5, 0, 0),
         new Date(2014, 8 /* Sep */, 5, 0, 0),
@@ -59,7 +61,7 @@ describe("differenceInCalendarMonths", () => {
       expect(result).toBe(0);
     });
 
-    it("does not return -0 when the given dates are the same", () => {
+    it("does not return -0 for the same dates", () => {
       function isNegativeZero(x: number): boolean {
         return x === 0 && 1 / x < 0;
       }
@@ -90,8 +92,37 @@ describe("differenceInCalendarMonths", () => {
     expect(isNaN(result)).toBe(true);
   });
 
-  it("returns NaN if the both dates are `Invalid Date`", () => {
+  it("returns NaN if both dates are `Invalid Date`", () => {
     const result = differenceInCalendarMonths(new Date(NaN), new Date(NaN));
     expect(isNaN(result)).toBe(true);
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      expect(
+        differenceInCalendarMonths(
+          "2025-08-31T00:00:00Z",
+          "2025-08-01T03:00:00Z",
+          { in: tz("America/New_York") },
+        ),
+      ).toBe(1);
+      expect(
+        differenceInCalendarMonths(
+          "2025-08-31T00:00:00Z",
+          "2025-08-01T04:00:00Z",
+          { in: tz("America/New_York") },
+        ),
+      ).toBe(0);
+    });
+
+    it("context doesn't enforce argument and context to be of the same type", () => {
+      function _test<DateType extends Date, ResultDate extends Date = DateType>(
+        arg1: DateType | number | string,
+        arg2: DateType | number | string,
+        options?: DateFns.ContextOptions<ResultDate>,
+      ) {
+        differenceInCalendarMonths(arg1, arg2, { in: options?.in });
+      }
+    });
   });
 });

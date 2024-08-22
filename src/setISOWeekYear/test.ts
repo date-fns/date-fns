@@ -1,4 +1,7 @@
+import { TZDate, tz } from "@date-fns/tz";
+import { UTCDate } from "@date-fns/utc";
 import { describe, expect, it } from "vitest";
+import { assertType } from "../_lib/test/index.js";
 import { setISOWeekYear } from "./index.js";
 
 describe("setISOWeekYear", () => {
@@ -49,5 +52,41 @@ describe("setISOWeekYear", () => {
   it("returns `Invalid Date` if the given amount is NaN", () => {
     const result = setISOWeekYear(new Date(2008, 11 /* Dec */, 29), NaN);
     expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
+  });
+
+  it("resolves the date type by default", () => {
+    const result = setISOWeekYear(Date.now(), 5);
+    expect(result).toBeInstanceOf(Date);
+    assertType<assertType.Equal<Date, typeof result>>(true);
+  });
+
+  it("resolves the argument type if a date extension is passed", () => {
+    const result = setISOWeekYear(new UTCDate(), 5);
+    expect(result).toBeInstanceOf(UTCDate);
+    assertType<assertType.Equal<UTCDate, typeof result>>(true);
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      expect(
+        setISOWeekYear("2024-04-10T07:00:00Z", 2024, {
+          in: tz("Asia/Singapore"),
+        }).toISOString(),
+      ).toBe("2024-04-10T00:00:00.000+08:00");
+      expect(
+        setISOWeekYear("2024-04-10T07:00:00Z", 2024, {
+          in: tz("America/New_York"),
+        }).toISOString(),
+      ).toBe("2024-04-10T00:00:00.000-04:00");
+    });
+
+    it("resolves the context date type", () => {
+      const date = new Date("2024-04-10T07:00:00Z");
+      const result = setISOWeekYear(date, 2024, {
+        in: tz("Asia/Tokyo"),
+      });
+      expect(result).toBeInstanceOf(TZDate);
+      assertType<assertType.Equal<TZDate, typeof result>>(true);
+    });
   });
 });

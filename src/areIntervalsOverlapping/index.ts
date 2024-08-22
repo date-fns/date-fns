@@ -1,10 +1,11 @@
 import { toDate } from "../toDate/index.js";
-import type { Interval } from "../types.js";
+import type { DateFns, Interval } from "../types.js";
 
 /**
  * The {@link areIntervalsOverlapping} function options.
  */
-export interface AreIntervalsOverlappingOptions {
+export interface AreIntervalsOverlappingOptions<DateType extends Date>
+  extends DateFns.ContextOptions<DateType> {
   /** Whether the comparison is inclusive or not */
   inclusive?: boolean;
 }
@@ -16,6 +17,9 @@ export interface AreIntervalsOverlappingOptions {
  *
  * @description
  * Is the given time interval overlapping with another time interval? Adjacent intervals do not count as overlapping unless `inclusive` is set to `true`.
+ *
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments.
+ * @typeParam ContextDate - The `Date` type of the context function.
  *
  * @param intervalLeft - The first interval to compare.
  * @param intervalRight - The second interval to compare.
@@ -51,30 +55,26 @@ export interface AreIntervalsOverlappingOptions {
  * // Using the inclusive option:
  * areIntervalsOverlapping(
  *   { start: new Date(2014, 0, 10), end: new Date(2014, 0, 20) },
- *   { start: new Date(2014, 0, 20), end: new Date(2014, 0, 24) }
- * )
- * //=> false
- *
- * @example
- * areIntervalsOverlapping(
- *   { start: new Date(2014, 0, 10), end: new Date(2014, 0, 20) },
  *   { start: new Date(2014, 0, 20), end: new Date(2014, 0, 24) },
  *   { inclusive: true }
  * )
  * //=> true
  */
-export function areIntervalsOverlapping(
-  intervalLeft: Interval,
-  intervalRight: Interval,
-  options?: AreIntervalsOverlappingOptions,
+export function areIntervalsOverlapping<
+  DateType extends Date,
+  ContextDate extends Date,
+>(
+  intervalLeft: Interval<DateType>,
+  intervalRight: Interval<DateType>,
+  options?: AreIntervalsOverlappingOptions<ContextDate>,
 ): boolean {
   const [leftStartTime, leftEndTime] = [
-    +toDate(intervalLeft.start),
-    +toDate(intervalLeft.end),
+    +toDate(intervalLeft.start, options?.in),
+    +toDate(intervalLeft.end, options?.in),
   ].sort((a, b) => a - b);
   const [rightStartTime, rightEndTime] = [
-    +toDate(intervalRight.start),
-    +toDate(intervalRight.end),
+    +toDate(intervalRight.start, options?.in),
+    +toDate(intervalRight.end, options?.in),
   ].sort((a, b) => a - b);
 
   if (options?.inclusive)
