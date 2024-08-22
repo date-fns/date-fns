@@ -1,4 +1,6 @@
+import { tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
+import { type DateFns } from "../types.js";
 import { differenceInCalendarQuarters } from "./index.js";
 
 describe("differenceInCalendarQuarters", () => {
@@ -93,5 +95,34 @@ describe("differenceInCalendarQuarters", () => {
   it("returns NaN if the both dates are `Invalid Date`", () => {
     const result = differenceInCalendarQuarters(new Date(NaN), new Date(NaN));
     expect(isNaN(result)).toBe(true);
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      expect(
+        differenceInCalendarQuarters(
+          "2024-04-01T03:00:00Z",
+          "2024-01-01T00:00:00Z",
+          { in: tz("America/New_York") },
+        ),
+      ).toBe(1);
+      expect(
+        differenceInCalendarQuarters(
+          "2024-04-01T04:00:00Z",
+          "2024-01-01T00:00:00Z",
+          { in: tz("America/New_York") },
+        ),
+      ).toBe(2);
+    });
+
+    it("doesn't enforce argument and context to be of the same type", () => {
+      function _test<DateType extends Date, ResultDate extends Date = DateType>(
+        arg1: DateType | number | string,
+        arg2: DateType | number | string,
+        options?: DateFns.ContextOptions<ResultDate>,
+      ) {
+        differenceInCalendarQuarters(arg1, arg2, { in: options?.in });
+      }
+    });
   });
 });

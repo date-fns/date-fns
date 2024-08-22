@@ -41,13 +41,13 @@ export function closestIndexTo<DateType extends Date>(
   dates.forEach(function (dirtyDate, index) {
     const currentDate = toDate(dirtyDate);
 
-    if (isNaN(Number(currentDate))) {
+    if (isNaN(+currentDate)) {
       result = NaN;
       minDistance = NaN;
       return;
     }
 
-    const distance = Math.abs(timeToCompare - currentDate.getTime());
+    const distance = Math.abs(timeToCompare - +currentDate);
     if (result == null || distance < minDistance) {
       result = index;
       minDistance = distance;

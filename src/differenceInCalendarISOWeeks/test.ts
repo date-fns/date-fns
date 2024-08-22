@@ -1,4 +1,6 @@
+import { tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
+import { type DateFns } from "../types.js";
 import { differenceInCalendarISOWeeks } from "./index.js";
 
 describe("differenceInCalendarISOWeeks", () => {
@@ -100,5 +102,34 @@ describe("differenceInCalendarISOWeeks", () => {
   it("returns NaN if the both dates are `Invalid Date`", () => {
     const result = differenceInCalendarISOWeeks(new Date(NaN), new Date(NaN));
     expect(isNaN(result)).toBe(true);
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      expect(
+        differenceInCalendarISOWeeks(
+          "2024-08-19T03:00:00Z",
+          "2024-08-01T00:00:00Z",
+          { in: tz("America/New_York") },
+        ),
+      ).toBe(2);
+      expect(
+        differenceInCalendarISOWeeks(
+          "2024-08-19T04:00:00Z",
+          "2024-08-01T00:00:00Z",
+          { in: tz("America/New_York") },
+        ),
+      ).toBe(3);
+    });
+
+    it("context doesn't enforce argument and context to be of the same type", () => {
+      function _test<DateType extends Date, ResultDate extends Date = DateType>(
+        arg1: DateType | number | string,
+        arg2: DateType | number | string,
+        options?: DateFns.ContextOptions<ResultDate>,
+      ) {
+        differenceInCalendarISOWeeks(arg1, arg2, { in: options?.in });
+      }
+    });
   });
 });

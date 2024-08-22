@@ -1,4 +1,6 @@
+import { tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
+import { type DateFns } from "../types.js";
 import { differenceInCalendarISOWeekYears } from "./index.js";
 
 describe("differenceInCalendarISOWeekYears", () => {
@@ -107,5 +109,34 @@ describe("differenceInCalendarISOWeekYears", () => {
       new Date(NaN),
     );
     expect(isNaN(result)).toBe(true);
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      expect(
+        differenceInCalendarISOWeekYears(
+          "2024-01-01T00:00:00Z",
+          "2022-12-31T00:00:00Z",
+          { in: tz("Europe/Paris") },
+        ),
+      ).toBe(2);
+      expect(
+        differenceInCalendarISOWeekYears(
+          "2024-01-01T00:00:00Z",
+          "2022-12-31T00:00:00Z",
+          { in: tz("America/New_York") },
+        ),
+      ).toBe(1);
+    });
+
+    it("doesn't enforce argument and context to be of the same type", () => {
+      function _test<DateType extends Date, ResultDate extends Date = DateType>(
+        arg1: DateType | number | string,
+        arg2: DateType | number | string,
+        options?: DateFns.ContextOptions<ResultDate>,
+      ) {
+        differenceInCalendarISOWeekYears(arg1, arg2, { in: options?.in });
+      }
+    });
   });
 });

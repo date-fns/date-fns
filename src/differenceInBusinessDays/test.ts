@@ -1,4 +1,6 @@
+import { tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
+import { type DateFns } from "../types.js";
 import { differenceInBusinessDays } from "./index.js";
 
 describe("differenceInBusinessDays", () => {
@@ -56,6 +58,35 @@ describe("differenceInBusinessDays", () => {
       new Date(2014, 0, 10).getTime(),
     );
     expect(result).toBe(135);
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      expect(
+        differenceInBusinessDays(
+          "2024-04-10T02:00:00Z",
+          "2024-04-07T02:00:00Z",
+          { in: tz("America/New_York") },
+        ),
+      ).toBe(1);
+      expect(
+        differenceInBusinessDays(
+          "2024-04-10T02:00:00Z",
+          "2024-04-07T02:00:00Z",
+          { in: tz("Asia/Singapore") },
+        ),
+      ).toBe(2);
+    });
+
+    it("doesn't enforce argument and context to be of the same type", () => {
+      function _test<DateType extends Date, ContextDate extends Date>(
+        arg1: DateType | number | string,
+        arg2: DateType | number | string,
+        options?: DateFns.ContextOptions<ContextDate>,
+      ) {
+        differenceInBusinessDays(arg1, arg2, { in: options?.in });
+      }
+    });
   });
 
   describe("edge cases", () => {

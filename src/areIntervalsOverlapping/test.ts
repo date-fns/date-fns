@@ -1,4 +1,6 @@
+import { tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
+import type { DateFns, Interval } from "../types.js";
 import { areIntervalsOverlapping } from "./index.js";
 
 describe("areIntervalsOverlapping", () => {
@@ -14,7 +16,7 @@ describe("areIntervalsOverlapping", () => {
         { start: initialIntervalStart, end: initialIntervalEnd },
         { start: earlierIntervalStart, end: earlierIntervalEnd },
       );
-      expect(!isOverlapping).toBe(true);
+      expect(isOverlapping).toBe(false);
     });
 
     it("returns false for a valid non overlapping interval after another interval", () => {
@@ -25,7 +27,7 @@ describe("areIntervalsOverlapping", () => {
         { start: initialIntervalStart, end: initialIntervalEnd },
         { start: laterIntervalStart, end: laterIntervalEnd },
       );
-      expect(!isOverlapping).toBe(true);
+      expect(isOverlapping).toBe(false);
     });
 
     it("returns false for a non overlapping same-day interval", () => {
@@ -36,24 +38,10 @@ describe("areIntervalsOverlapping", () => {
         { start: initialIntervalStart, end: initialIntervalEnd },
         { start: sameDayIntervalStart, end: sameDayIntervalEnd },
       );
-      expect(!isOverlapping).toBe(true);
+      expect(isOverlapping).toBe(false);
     });
 
-    it("returns false for an interval differing by a few hours", () => {
-      const oneDayOverlappingIntervalStart = new Date(2016, 11, 3, 18, 0, 0);
-      const oneDayOverlappingIntervalEnd = new Date(2016, 11, 14, 13, 0, 0);
-
-      const isOverlapping = areIntervalsOverlapping(
-        { start: initialIntervalStart, end: initialIntervalEnd },
-        {
-          start: oneDayOverlappingIntervalStart,
-          end: oneDayOverlappingIntervalEnd,
-        },
-      );
-      expect(!isOverlapping).toBe(true);
-    });
-
-    it("returns false for an interval with the same startDateTime as the initial time intervals's endDateTime", () => {
+    it("returns false for an interval with the same startDateTime as the initial time interval's endDateTime", () => {
       const oneDayOverlapIntervalStart = new Date(2016, 11, 3, 15, 0, 0);
       const oneDayOverlapIntervalEnd = new Date(2016, 11, 14, 13, 0, 0);
 
@@ -61,7 +49,7 @@ describe("areIntervalsOverlapping", () => {
         { start: initialIntervalStart, end: initialIntervalEnd },
         { start: oneDayOverlapIntervalStart, end: oneDayOverlapIntervalEnd },
       );
-      expect(!isOverlapping).toBe(true);
+      expect(isOverlapping).toBe(false);
     });
 
     it("returns false for an interval with the same endDateTime as the initial time interval's startDateTime", () => {
@@ -72,7 +60,7 @@ describe("areIntervalsOverlapping", () => {
         { start: initialIntervalStart, end: initialIntervalEnd },
         { start: oneDayOverlapIntervalStart, end: oneDayOverlapIntervalEnd },
       );
-      expect(!isOverlapping).toBe(true);
+      expect(isOverlapping).toBe(false);
     });
   });
 
@@ -169,29 +157,37 @@ describe("areIntervalsOverlapping", () => {
     expect(isOverlapping).toBe(true);
   });
 
-  describe("when the inclusive option is true", () => {
-    it("returns true for an interval with the same startDateTime as the initial time interval's endDateTime", () => {
-      const oneDayOverlapIntervalStart = new Date(2016, 11, 3, 15, 0, 0);
-      const oneDayOverlapIntervalEnd = new Date(2016, 11, 14, 13, 0, 0);
-
-      const isOverlapping = areIntervalsOverlapping(
-        { start: initialIntervalStart, end: initialIntervalEnd },
-        { start: oneDayOverlapIntervalStart, end: oneDayOverlapIntervalEnd },
-        { inclusive: true },
-      );
-      expect(isOverlapping).toBe(true);
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      expect(
+        areIntervalsOverlapping(
+          { start: "2024-04-10T07:00:00Z", end: "2024-04-14T07:00:00Z" },
+          { start: "2024-04-14T07:00:00Z", end: "2024-04-16T07:00:00Z" },
+          {
+            in: tz("America/Los_Angeles"),
+            inclusive: true,
+          },
+        ),
+      ).toBe(true);
+      expect(
+        areIntervalsOverlapping(
+          { start: "2024-04-10T07:00:00Z", end: "2024-04-10T15:00:00Z" },
+          { start: "2024-04-10T16:00:00Z", end: "2024-04-11T07:00:00Z" },
+          {
+            in: tz("America/Los_Angeles"),
+          },
+        ),
+      ).toBe(false);
     });
 
-    it("returns true for an interval with the same endDateTime as the initial time interval's startDateTime", () => {
-      const oneDayOverlapIntervalStart = new Date(2016, 10, 3, 15, 0, 0);
-      const oneDayOverlapIntervalEnd = new Date(2016, 10, 10, 13, 0, 0);
-
-      const isOverlapping = areIntervalsOverlapping(
-        { start: initialIntervalStart, end: initialIntervalEnd },
-        { start: oneDayOverlapIntervalStart, end: oneDayOverlapIntervalEnd },
-        { inclusive: true },
-      );
-      expect(isOverlapping).toBe(true);
+    it("doesn't enforce argument and context to be of the same type", () => {
+      function _test<DateType extends Date, ResultDate extends Date = DateType>(
+        arg1: Interval<DateType>,
+        arg2: Interval<DateType>,
+        options?: DateFns.ContextOptions<ResultDate>,
+      ) {
+        areIntervalsOverlapping(arg1, arg2, { in: options?.in });
+      }
     });
   });
 
@@ -201,7 +197,7 @@ describe("areIntervalsOverlapping", () => {
         { start: new Date(NaN), end: new Date(2016, 10, 3) },
         { start: new Date(2016, 10, 5), end: new Date(2016, 10, 15) },
       );
-      expect(!result).toBe(true);
+      expect(result).toBe(false);
     });
 
     it("returns false if the end date of the initial time interval is `Invalid Date`", () => {
@@ -209,7 +205,7 @@ describe("areIntervalsOverlapping", () => {
         { start: new Date(2016, 10, 3), end: new Date(NaN) },
         { start: new Date(2016, 10, 5), end: new Date(2016, 10, 15) },
       );
-      expect(!result).toBe(true);
+      expect(result).toBe(false);
     });
 
     it("returns false if the start date of the compared time interval is `Invalid Date`", () => {
@@ -217,7 +213,7 @@ describe("areIntervalsOverlapping", () => {
         { start: new Date(2016, 10, 3), end: new Date(2016, 10, 7) },
         { start: new Date(NaN), end: new Date(2016, 10, 5) },
       );
-      expect(!result).toBe(true);
+      expect(result).toBe(false);
     });
 
     it("returns false if the end date of the compared time interval is `Invalid Date`", () => {
@@ -225,7 +221,7 @@ describe("areIntervalsOverlapping", () => {
         { start: new Date(2016, 10, 3), end: new Date(2016, 10, 7) },
         { start: new Date(2016, 10, 5), end: new Date(NaN) },
       );
-      expect(!result).toBe(true);
+      expect(result).toBe(false);
     });
   });
 });

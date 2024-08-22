@@ -4,6 +4,13 @@ import { isSameDay } from "../isSameDay/index.js";
 import { isValid } from "../isValid/index.js";
 import { isWeekend } from "../isWeekend/index.js";
 import { toDate } from "../toDate/index.js";
+import { type DateFns } from "../types.js";
+
+/**
+ * The {@link differenceInBusinessDays} function options.
+ */
+export interface DifferenceInBusinessDaysOptions<DateType extends Date>
+  extends DateFns.ContextOptions<DateType> {}
 
 /**
  * @name differenceInBusinessDays
@@ -17,9 +24,11 @@ import { toDate } from "../toDate/index.js";
  * the dates before calculating the difference.
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam ContextDate - The `Date` type of the context function.
  *
  * @param dateLeft - The later date
  * @param dateRight - The earlier date
+ * @param options - An object with options
  *
  * @returns The number of business days
  *
@@ -56,12 +65,16 @@ import { toDate } from "../toDate/index.js";
  * )
  * //=> 0
  */
-export function differenceInBusinessDays<DateType extends Date>(
+export function differenceInBusinessDays<
+  DateType extends Date,
+  ContextDate extends Date,
+>(
   dateLeft: DateType | number | string,
   dateRight: DateType | number | string,
+  options?: DifferenceInBusinessDaysOptions<ContextDate> | undefined,
 ): number {
-  const _dateLeft = toDate(dateLeft);
-  let _dateRight = toDate(dateRight);
+  const _dateLeft = toDate(dateLeft, options?.in);
+  let _dateRight = toDate(dateRight, options?.in);
 
   if (!isValid(_dateLeft) || !isValid(_dateRight)) return NaN;
 
@@ -76,7 +89,7 @@ export function differenceInBusinessDays<DateType extends Date>(
   // the loop below will run at most 6 times to account for the remaining days that don't makeup a full week
   while (!isSameDay(_dateLeft, _dateRight)) {
     // sign is used to account for both negative and positive differences
-    result += isWeekend(_dateRight) ? 0 : sign;
+    result += isWeekend(_dateRight, options) ? 0 : sign;
     _dateRight = addDays(_dateRight, sign);
   }
 
