@@ -25,8 +25,7 @@ import { daysInWeek } from "../constants/index.js";
  * //=> 1
  */
 export function daysToWeeks(days: number): number {
-  const weeks = days / daysInWeek;
-  const result = Math.trunc(weeks);
+  const result = Math.trunc(days / daysInWeek);
   // Prevent negative zero
   return result === 0 ? 0 : result;
 }

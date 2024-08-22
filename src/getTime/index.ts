@@ -22,7 +22,5 @@ import { toDate } from "../toDate/index.js";
 export function getTime<DateType extends Date>(
   date: DateType | number | string,
 ): number {
-  const _date = toDate(date);
-  const timestamp = _date.getTime();
-  return timestamp;
+  return +toDate(date);
 }
