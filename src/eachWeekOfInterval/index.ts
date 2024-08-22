@@ -2,6 +2,7 @@ import { addWeeks } from "../addWeeks/index.js";
 import { startOfWeek } from "../startOfWeek/index.js";
 import { toDate } from "../toDate/index.js";
 import type {
+  DateFns,
   Interval,
   LocalizedOptions,
   StepOptions,
@@ -11,10 +12,11 @@ import type {
 /**
  * The {@link eachWeekOfInterval} function options.
  */
-export interface EachWeekOfIntervalOptions
+export interface EachWeekOfIntervalOptions<DateType extends Date>
   extends StepOptions,
     WeekOptions,
-    LocalizedOptions<"options"> {}
+    LocalizedOptions<"options">,
+    DateFns.ContextOptions<DateType> {}
 
 /**
  * @name eachWeekOfInterval
@@ -25,6 +27,7 @@ export interface EachWeekOfIntervalOptions
  * Return the array of weeks within the specified time interval.
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
  *
  * @param interval - The interval.
  * @param options - An object with options.
@@ -48,12 +51,15 @@ export interface EachWeekOfIntervalOptions
  * //   Sun Nov 23 2014 00:00:00
  * // ]
  */
-export function eachWeekOfInterval<DateType extends Date>(
+export function eachWeekOfInterval<
+  DateType extends Date,
+  ResultDate extends Date = DateType,
+>(
   interval: Interval<DateType>,
-  options?: EachWeekOfIntervalOptions,
-): DateType[] {
-  const startDate = toDate(interval.start);
-  const endDate = toDate(interval.end);
+  options?: EachWeekOfIntervalOptions<ResultDate>,
+): ResultDate[] {
+  const startDate = toDate(interval.start, options?.in);
+  const endDate = toDate(interval.end, options?.in);
 
   let reversed = +startDate > +endDate;
   const startDateWeek = reversed
@@ -81,7 +87,7 @@ export function eachWeekOfInterval<DateType extends Date>(
 
   while (+currentDate <= endTime) {
     currentDate.setHours(0);
-    dates.push(toDate(currentDate));
+    dates.push(toDate(currentDate, options?.in));
     currentDate = addWeeks(currentDate, step);
     currentDate.setHours(15);
   }
