@@ -1,10 +1,12 @@
 import { toDate } from "../toDate/index.js";
-import type { Interval, StepOptions } from "../types.js";
+import type { Interval, StepOptions, DateFns } from "../types.js";
 
 /**
  * The {@link eachDayOfInterval} function options.
  */
-export interface EachDayOfIntervalOptions extends StepOptions {}
+export interface EachDayOfIntervalOptions<DateType extends Date>
+  extends StepOptions,
+    DateFns.ContextOptions<DateType> {}
 
 /**
  * @name eachDayOfInterval
@@ -15,6 +17,7 @@ export interface EachDayOfIntervalOptions extends StepOptions {}
  * Return the array of dates within the specified time interval.
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
  *
  * @param interval - The interval.
  * @param options - An object with options.
@@ -35,12 +38,15 @@ export interface EachDayOfIntervalOptions extends StepOptions {}
  * //   Fri Oct 10 2014 00:00:00
  * // ]
  */
-export function eachDayOfInterval<DateType extends Date>(
+export function eachDayOfInterval<
+  DateType extends Date,
+  ResultDate extends Date = DateType,
+>(
   interval: Interval<DateType>,
-  options?: EachDayOfIntervalOptions,
-): DateType[] {
-  const startDate = toDate(interval.start);
-  const endDate = toDate(interval.end);
+  options?: EachDayOfIntervalOptions<ResultDate>,
+): ResultDate[] {
+  const startDate = toDate(interval.start, options?.in);
+  const endDate = toDate(interval.end, options?.in);
 
   let reversed = +startDate > +endDate;
   const endTime = reversed ? +startDate : +endDate;
@@ -54,10 +60,10 @@ export function eachDayOfInterval<DateType extends Date>(
     reversed = !reversed;
   }
 
-  const dates = [];
+  const dates: ResultDate[] = [];
 
   while (+currentDate <= endTime) {
-    dates.push(toDate(currentDate));
+    dates.push(toDate(currentDate, options?.in));
     currentDate.setDate(currentDate.getDate() + step);
     currentDate.setHours(0, 0, 0, 0);
   }

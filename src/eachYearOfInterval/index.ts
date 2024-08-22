@@ -1,10 +1,12 @@
 import { toDate } from "../toDate/index.js";
-import type { Interval, StepOptions } from "../types.js";
+import type { Interval, StepOptions, DateFns } from "../types.js";
 
 /**
  * The {@link eachYearOfInterval} function options.
  */
-export interface EachYearOfIntervalOptions extends StepOptions {}
+export interface EachYearOfIntervalOptions<DateType extends Date>
+  extends StepOptions,
+    DateFns.ContextOptions<DateType> {}
 
 /**
  * @name eachYearOfInterval
@@ -15,8 +17,10 @@ export interface EachYearOfIntervalOptions extends StepOptions {}
  * Return the array of yearly timestamps within the specified time interval.
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
  *
  * @param interval - The interval.
+ * @param options - An object with options.
  *
  * @returns The array with starts of yearly timestamps from the month of the interval start to the month of the interval end
  *
@@ -33,12 +37,15 @@ export interface EachYearOfIntervalOptions extends StepOptions {}
  * //   Sun Jan 01 2017 00:00:00
  * // ]
  */
-export function eachYearOfInterval<DateType extends Date>(
+export function eachYearOfInterval<
+  DateType extends Date,
+  ResultDate extends Date = DateType,
+>(
   interval: Interval<DateType>,
-  options?: EachYearOfIntervalOptions,
-): DateType[] {
-  const startDate = toDate(interval.start);
-  const endDate = toDate(interval.end);
+  options?: EachYearOfIntervalOptions<ResultDate>,
+): ResultDate[] {
+  const startDate = toDate(interval.start, options?.in);
+  const endDate = toDate(interval.end, options?.in);
 
   let reversed = +startDate > +endDate;
   const endTime = reversed ? +startDate : +endDate;
@@ -56,7 +63,7 @@ export function eachYearOfInterval<DateType extends Date>(
   const dates = [];
 
   while (+currentDate <= endTime) {
-    dates.push(toDate(currentDate));
+    dates.push(toDate(currentDate, options?.in));
     currentDate.setFullYear(currentDate.getFullYear() + step);
   }
 

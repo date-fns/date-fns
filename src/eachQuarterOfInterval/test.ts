@@ -1,4 +1,7 @@
+import { TZDate, tz } from "@date-fns/tz";
+import { UTCDate } from "@date-fns/utc";
 import { describe, expect, it } from "vitest";
+import { assertType } from "../_lib/test/index.js";
 import { eachQuarterOfInterval } from "./index.js";
 
 describe("eachQuarterOfInterval", () => {
@@ -100,6 +103,67 @@ describe("eachQuarterOfInterval", () => {
       end: new Date(NaN),
     });
     expect(result).toEqual([]);
+  });
+
+  it("resolves the date type by default", () => {
+    const interval = {
+      start: +new Date("2014-01-01T00:00:00Z"),
+      end: +new Date("2014-12-31T23:59:59Z"),
+    };
+    const result = eachQuarterOfInterval(interval);
+    expect(result[0]).toBeInstanceOf(Date);
+    assertType<assertType.Equal<Date, (typeof result)[0]>>(true);
+  });
+
+  it("resolves the context date type", () => {
+    const interval = {
+      start: new UTCDate("2014-01-01T00:00:00Z"),
+      end: new UTCDate("2014-12-31T23:59:59Z"),
+    };
+    const result = eachQuarterOfInterval(interval);
+    expect(result[0]).toBeInstanceOf(UTCDate);
+    assertType<assertType.Equal<UTCDate, (typeof result)[0]>>(true);
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      const interval = {
+        start: "2024-01-10T07:00:00Z",
+        end: "2024-10-10T07:00:00Z",
+      };
+      expect(
+        eachQuarterOfInterval(interval, { in: tz("America/Los_Angeles") }).map(
+          (date) => date.toISOString(),
+        ),
+      ).toEqual([
+        "2024-01-01T00:00:00.000-08:00",
+        "2024-04-01T00:00:00.000-07:00",
+        "2024-07-01T00:00:00.000-07:00",
+        "2024-10-01T00:00:00.000-07:00",
+      ]);
+      expect(
+        eachQuarterOfInterval(interval, { in: tz("Asia/Singapore") }).map(
+          (date) => date.toISOString(),
+        ),
+      ).toEqual([
+        "2024-01-01T00:00:00.000+08:00",
+        "2024-04-01T00:00:00.000+08:00",
+        "2024-07-01T00:00:00.000+08:00",
+        "2024-10-01T00:00:00.000+08:00",
+      ]);
+    });
+
+    it("resolves the context date type", () => {
+      const interval = {
+        start: new Date("2014-01-01T00:00:00Z"),
+        end: new Date("2014-12-31T23:59:59Z"),
+      };
+      const result = eachQuarterOfInterval(interval, {
+        in: tz("Asia/Tokyo"),
+      });
+      expect(result[0]).toBeInstanceOf(TZDate);
+      assertType<assertType.Equal<TZDate[], typeof result>>(true);
+    });
   });
 
   describe("options.step", () => {

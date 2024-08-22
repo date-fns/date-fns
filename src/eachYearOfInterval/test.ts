@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { eachYearOfInterval } from "./index.js";
+import { TZDate, tz } from "@date-fns/tz";
+import { assertType } from "../_lib/test/index.js";
+import { UTCDate } from "@date-fns/utc";
 
 describe("eachYearOfInterval", () => {
   it("returns an array with starts of days from the day of the start date to the day of the end date", () => {
@@ -143,6 +146,67 @@ describe("eachYearOfInterval", () => {
     it("returns empty array if `options.step` is NaN", () => {
       const result = eachYearOfInterval(interval, { step: NaN });
       expect(result).toEqual([]);
+    });
+  });
+
+  it("resolves the date type by default", () => {
+    const interval = {
+      start: new Date(2012, 9 /* Oct */, 6),
+      end: new Date(2017, 9 /* Oct */, 12),
+    };
+    const result = eachYearOfInterval(interval);
+    expect(result[0]).toBeInstanceOf(Date);
+    assertType<assertType.Equal<Date, (typeof result)[0]>>(true);
+  });
+
+  it("resolves the argument type if a date extension is passed", () => {
+    const interval = {
+      start: new UTCDate(),
+      end: new UTCDate(),
+    };
+    const result = eachYearOfInterval(interval);
+    expect(result[0]).toBeInstanceOf(UTCDate);
+    assertType<assertType.Equal<UTCDate, (typeof result)[0]>>(true);
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      const interval = {
+        start: "2024-04-10T07:00:00Z",
+        end: "2027-04-10T07:00:00Z",
+      };
+      expect(
+        eachYearOfInterval(interval, { in: tz("America/Los_Angeles") }).map(
+          (date) => date.toISOString(),
+        ),
+      ).toEqual([
+        "2024-01-01T00:00:00.000-08:00",
+        "2025-01-01T00:00:00.000-08:00",
+        "2026-01-01T00:00:00.000-08:00",
+        "2027-01-01T00:00:00.000-08:00",
+      ]);
+      expect(
+        eachYearOfInterval(interval, { in: tz("Asia/Singapore") }).map((date) =>
+          date.toISOString(),
+        ),
+      ).toEqual([
+        "2024-01-01T00:00:00.000+08:00",
+        "2025-01-01T00:00:00.000+08:00",
+        "2026-01-01T00:00:00.000+08:00",
+        "2027-01-01T00:00:00.000+08:00",
+      ]);
+    });
+
+    it("resolves the context date type", () => {
+      const interval = {
+        start: new Date("2024-04-10T07:00:00Z"),
+        end: new Date("2027-04-10T07:00:00Z"),
+      };
+      const result = eachYearOfInterval(interval, {
+        in: tz("Asia/Tokyo"),
+      });
+      expect(result[0]).toBeInstanceOf(TZDate);
+      assertType<assertType.Equal<TZDate[], typeof result>>(true);
     });
   });
 });

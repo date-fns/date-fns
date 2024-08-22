@@ -1,12 +1,14 @@
 import { addMinutes } from "../addMinutes/index.js";
 import { startOfMinute } from "../startOfMinute/index.js";
 import { toDate } from "../toDate/index.js";
-import type { Interval, StepOptions } from "../types.js";
+import type { Interval, StepOptions, DateFns } from "../types.js";
 
 /**
  * The {@link eachMinuteOfInterval} function options.
  */
-export interface EachMinuteOfIntervalOptions extends StepOptions {}
+export interface EachMinuteOfIntervalOptions<DateType extends Date>
+  extends StepOptions,
+    DateFns.ContextOptions<DateType> {}
 
 /**
  * @name eachMinuteOfInterval
@@ -17,6 +19,7 @@ export interface EachMinuteOfIntervalOptions extends StepOptions {}
  * Returns the array of minutes within the specified time interval.
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
  *
  * @param interval - The interval.
  * @param options - An object with options.
@@ -36,12 +39,15 @@ export interface EachMinuteOfIntervalOptions extends StepOptions {}
  * //   Wed Oct 14 2014 13:03:00
  * // ]
  */
-export function eachMinuteOfInterval<DateType extends Date>(
+export function eachMinuteOfInterval<
+  DateType extends Date,
+  ResultDate extends Date = DateType,
+>(
   interval: Interval<DateType>,
-  options?: EachMinuteOfIntervalOptions,
-): DateType[] {
-  const startDate = startOfMinute(toDate(interval.start));
-  const endDate = toDate(interval.end);
+  options?: EachMinuteOfIntervalOptions<ResultDate>,
+): ResultDate[] {
+  const startDate = startOfMinute(interval.start, options);
+  const endDate = toDate(interval.end, options?.in);
 
   let reversed = +startDate > +endDate;
   const endTime = reversed ? +startDate : +endDate;
@@ -54,10 +60,10 @@ export function eachMinuteOfInterval<DateType extends Date>(
     reversed = !reversed;
   }
 
-  const dates = [];
+  const dates: ResultDate[] = [];
 
   while (+currentDate <= endTime) {
-    dates.push(toDate(currentDate));
+    dates.push(toDate(currentDate, options?.in));
     currentDate = addMinutes(currentDate, step);
   }
 

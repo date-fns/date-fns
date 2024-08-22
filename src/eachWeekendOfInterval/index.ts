@@ -1,6 +1,12 @@
 import { eachDayOfInterval } from "../eachDayOfInterval/index.js";
 import { isWeekend } from "../isWeekend/index.js";
-import type { Interval } from "../types.js";
+import type { Interval, DateFns } from "../types.js";
+
+/**
+ * The {@link eachWeekendOfInterval} function options.
+ */
+export interface EachWeekendOfIntervalOptions<DateType extends Date>
+  extends DateFns.ContextOptions<DateType> {}
 
 /**
  * @name eachWeekendOfInterval
@@ -11,8 +17,10 @@ import type { Interval } from "../types.js";
  * Get all the Saturdays and Sundays in the given date interval.
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
  *
  * @param interval - The given interval
+ * @param options - An object with options
  *
  * @returns An array containing all the Saturdays and Sundays
  *
@@ -29,11 +37,15 @@ import type { Interval } from "../types.js";
  * //   Sun Sep 30 2018 00:00:00
  * // ]
  */
-export function eachWeekendOfInterval<DateType extends Date>(
+export function eachWeekendOfInterval<
+  DateType extends Date,
+  ResultDate extends Date = DateType,
+>(
   interval: Interval<DateType>,
-): DateType[] {
-  const dateInterval = eachDayOfInterval(interval);
-  const weekends = [];
+  options?: EachWeekendOfIntervalOptions<ResultDate>,
+): ResultDate[] {
+  const dateInterval = eachDayOfInterval(interval, options);
+  const weekends: ResultDate[] = [];
   let index = 0;
   while (index < dateInterval.length) {
     const date = dateInterval[index++];

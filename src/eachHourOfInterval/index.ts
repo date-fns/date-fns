@@ -1,11 +1,13 @@
 import { addHours } from "../addHours/index.js";
 import { toDate } from "../toDate/index.js";
-import type { Interval, StepOptions } from "../types.js";
+import type { Interval, StepOptions, DateFns } from "../types.js";
 
 /**
  * The {@link eachHourOfInterval} function options.
  */
-export interface EachHourOfIntervalOptions extends StepOptions {}
+export interface EachHourOfIntervalOptions<DateType extends Date>
+  extends StepOptions,
+    DateFns.ContextOptions<DateType> {}
 
 /**
  * @name eachHourOfInterval
@@ -16,6 +18,7 @@ export interface EachHourOfIntervalOptions extends StepOptions {}
  * Return the array of hours within the specified time interval.
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam ResultDate - The result `Date` type, inferred from the context options if provided.
  *
  * @param interval - The interval.
  * @param options - An object with options.
@@ -35,12 +38,15 @@ export interface EachHourOfIntervalOptions extends StepOptions {}
  * //   Mon Oct 06 2014 15:00:00
  * // ]
  */
-export function eachHourOfInterval<DateType extends Date>(
+export function eachHourOfInterval<
+  DateType extends Date,
+  ResultDate extends Date = DateType,
+>(
   interval: Interval<DateType>,
-  options?: EachHourOfIntervalOptions,
-): DateType[] {
-  const startDate = toDate(interval.start);
-  const endDate = toDate(interval.end);
+  options?: EachHourOfIntervalOptions<ResultDate>,
+): ResultDate[] {
+  const startDate = toDate(interval.start, options?.in);
+  const endDate = toDate(interval.end, options?.in);
 
   let reversed = +startDate > +endDate;
   const endTime = reversed ? +startDate : +endDate;
@@ -57,9 +63,9 @@ export function eachHourOfInterval<DateType extends Date>(
   const dates = [];
 
   while (+currentDate <= endTime) {
-    dates.push(toDate(currentDate));
+    dates.push(toDate(currentDate, options?.in));
     currentDate = addHours(currentDate, step);
   }
 
-  return reversed ? dates.reverse() : dates;
+  return (reversed ? dates.reverse() : dates) as ResultDate[];
 }

@@ -1,5 +1,8 @@
+import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
+import { assertType } from "../_lib/test/index.js";
 import { eachHourOfInterval } from "./index.js";
+import { UTCDate } from "@date-fns/utc";
 
 describe("eachHourOfInterval", () => {
   it("returns an array with starts of hours from the hour of the start date to the hour of the end date", () => {
@@ -149,6 +152,77 @@ describe("eachHourOfInterval", () => {
     it("returns empty array if `options.step` is NaN", () => {
       const result = eachHourOfInterval(interval, { step: NaN });
       expect(result).toEqual([]);
+    });
+  });
+
+  it("resolves the date type by default", () => {
+    const interval = {
+      start: +new Date("2014-09-01T00:00:00Z"),
+      end: +new Date("2014-09-05T00:00:00Z"),
+    };
+    const result = eachHourOfInterval(interval);
+    expect(result[0]).toBeInstanceOf(Date);
+    assertType<assertType.Equal<Date, (typeof result)[0]>>(true);
+  });
+
+  it("resolves the context date type", () => {
+    const interval = {
+      start: new UTCDate("2014-09-01T00:00:00Z"),
+      end: new UTCDate("2014-09-05T00:00:00Z"),
+    };
+    const result = eachHourOfInterval(interval);
+    expect(result[0]).toBeInstanceOf(UTCDate);
+    assertType<assertType.Equal<UTCDate, (typeof result)[0]>>(true);
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      const interval = {
+        start: "2024-04-10T07:00:00Z",
+        end: "2024-04-10T15:00:00Z",
+      };
+      expect(
+        eachHourOfInterval(interval, {
+          in: tz("America/Los_Angeles"),
+        }).map((date) => date.toISOString()),
+      ).toEqual([
+        "2024-04-10T00:00:00.000-07:00",
+        "2024-04-10T01:00:00.000-07:00",
+        "2024-04-10T02:00:00.000-07:00",
+        "2024-04-10T03:00:00.000-07:00",
+        "2024-04-10T04:00:00.000-07:00",
+        "2024-04-10T05:00:00.000-07:00",
+        "2024-04-10T06:00:00.000-07:00",
+        "2024-04-10T07:00:00.000-07:00",
+        "2024-04-10T08:00:00.000-07:00",
+      ]);
+      expect(
+        eachHourOfInterval(interval, {
+          in: tz("Asia/Singapore"),
+        }).map((date) => date.toISOString()),
+      ).toEqual([
+        "2024-04-10T15:00:00.000+08:00",
+        "2024-04-10T16:00:00.000+08:00",
+        "2024-04-10T17:00:00.000+08:00",
+        "2024-04-10T18:00:00.000+08:00",
+        "2024-04-10T19:00:00.000+08:00",
+        "2024-04-10T20:00:00.000+08:00",
+        "2024-04-10T21:00:00.000+08:00",
+        "2024-04-10T22:00:00.000+08:00",
+        "2024-04-10T23:00:00.000+08:00",
+      ]);
+    });
+
+    it("resolves the context date type", () => {
+      const interval = {
+        start: new Date("2014-09-01T00:00:00Z"),
+        end: new Date("2014-09-01T03:00:00Z"),
+      };
+      const result = eachHourOfInterval(interval, {
+        in: tz("Asia/Tokyo"),
+      });
+      expect(result[0]).toBeInstanceOf(TZDate);
+      assertType<assertType.Equal<TZDate, (typeof result)[0]>>(true);
     });
   });
 });

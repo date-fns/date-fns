@@ -1,4 +1,7 @@
+import { TZDate, tz } from "@date-fns/tz";
+import { UTCDate } from "@date-fns/utc";
 import { describe, expect, it } from "vitest";
+import { assertType } from "../_lib/test/index.js";
 import { eachWeekendOfInterval } from "./index.js";
 
 describe("eachWeekendOfInterval", () => {
@@ -63,5 +66,75 @@ describe("eachWeekendOfInterval", () => {
       end: new Date(NaN),
     });
     expect(result).toEqual([]);
+  });
+
+  it("resolves the date type by default", () => {
+    const interval = {
+      start: new Date("2024-09-01T00:00:00Z"),
+      end: new Date("2024-09-30T00:00:00Z"),
+    };
+    const result = eachWeekendOfInterval(interval);
+    expect(result[0]).toBeInstanceOf(Date);
+    assertType<assertType.Equal<Date, (typeof result)[0]>>(true);
+  });
+
+  it("resolves the context date type", () => {
+    const interval = {
+      start: new UTCDate("2024-09-01T00:00:00Z"),
+      end: new UTCDate("2024-09-30T00:00:00Z"),
+    };
+    const result = eachWeekendOfInterval(interval);
+    expect(result[0]).toBeInstanceOf(UTCDate);
+    assertType<assertType.Equal<UTCDate, (typeof result)[0]>>(true);
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      const interval = {
+        start: "2024-04-01T00:00:00Z",
+        end: "2024-04-30T23:59:59Z",
+      };
+      expect(
+        eachWeekendOfInterval(interval, { in: tz("America/New_York") }).map(
+          (date) => date.toISOString(),
+        ),
+      ).toEqual([
+        "2024-03-31T00:00:00.000-04:00",
+        "2024-04-06T00:00:00.000-04:00",
+        "2024-04-07T00:00:00.000-04:00",
+        "2024-04-13T00:00:00.000-04:00",
+        "2024-04-14T00:00:00.000-04:00",
+        "2024-04-20T00:00:00.000-04:00",
+        "2024-04-21T00:00:00.000-04:00",
+        "2024-04-27T00:00:00.000-04:00",
+        "2024-04-28T00:00:00.000-04:00",
+      ]);
+      expect(
+        eachWeekendOfInterval(interval, { in: tz("Asia/Singapore") }).map(
+          (date) => date.toISOString(),
+        ),
+      ).toEqual([
+        "2024-04-06T00:00:00.000+08:00",
+        "2024-04-07T00:00:00.000+08:00",
+        "2024-04-13T00:00:00.000+08:00",
+        "2024-04-14T00:00:00.000+08:00",
+        "2024-04-20T00:00:00.000+08:00",
+        "2024-04-21T00:00:00.000+08:00",
+        "2024-04-27T00:00:00.000+08:00",
+        "2024-04-28T00:00:00.000+08:00",
+      ]);
+    });
+
+    it("resolves the context date type", () => {
+      const interval = {
+        start: new Date("2024-09-01T00:00:00Z"),
+        end: new Date("2024-09-30T00:00:00Z"),
+      };
+      const result = eachWeekendOfInterval(interval, {
+        in: tz("Asia/Tokyo"),
+      });
+      expect(result[0]).toBeInstanceOf(TZDate);
+      assertType<assertType.Equal<TZDate[], typeof result>>(true);
+    });
   });
 });
