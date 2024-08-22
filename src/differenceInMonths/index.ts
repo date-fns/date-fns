@@ -2,19 +2,26 @@ import { compareAsc } from "../compareAsc/index.js";
 import { differenceInCalendarMonths } from "../differenceInCalendarMonths/index.js";
 import { isLastDayOfMonth } from "../isLastDayOfMonth/index.js";
 import { toDate } from "../toDate/index.js";
+import { type DateFns } from "../types.js";
+
+/**
+ * The {@link differenceInMonths} function options.
+ */
+export interface DifferenceInMonthsOptions<DateType extends Date>
+  extends DateFns.ContextOptions<DateType> {}
 
 /**
  * @name differenceInMonths
  * @category Month Helpers
  * @summary Get the number of full months between the given dates.
  *
- * @description
- * Get the number of full months between the given dates using trunc as a default rounding method.
- *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows using extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam ContextDate - The `Date` type of the context function.
  *
  * @param dateLeft - The later date
  * @param dateRight - The earlier date
+ * @param options - An object with options
  *
  * @returns The number of full months
  *
@@ -23,47 +30,39 @@ import { toDate } from "../toDate/index.js";
  * const result = differenceInMonths(new Date(2014, 8, 1), new Date(2014, 0, 31))
  * //=> 7
  */
-export function differenceInMonths<DateType extends Date>(
+export function differenceInMonths<
+  DateType extends Date,
+  ContextDate extends Date,
+>(
   dateLeft: DateType | number | string,
   dateRight: DateType | number | string,
+  options?: DifferenceInMonthsOptions<ContextDate> | undefined,
 ): number {
-  const _dateLeft = toDate(dateLeft);
-  const _dateRight = toDate(dateRight);
+  const _dateLeft = toDate(dateLeft, options?.in);
+  const _dateRight = toDate(dateRight, options?.in);
 
   const sign = compareAsc(_dateLeft, _dateRight);
   const difference = Math.abs(
     differenceInCalendarMonths(_dateLeft, _dateRight),
   );
-  let result;
 
-  // Check for the difference of less than month
-  if (difference < 1) {
-    result = 0;
-  } else {
-    if (_dateLeft.getMonth() === 1 && _dateLeft.getDate() > 27) {
-      // This will check if the date is end of Feb and assign a higher end of month date
-      // to compare it with Jan
-      _dateLeft.setDate(30);
-    }
+  if (difference < 1) return 0;
 
-    _dateLeft.setMonth(_dateLeft.getMonth() - sign * difference);
+  if (_dateLeft.getMonth() === 1 && _dateLeft.getDate() > 27)
+    _dateLeft.setDate(30);
 
-    // Math.abs(diff in full months - diff in calendar months) === 1 if last calendar month is not full
-    // If so, result must be decreased by 1 in absolute value
-    let isLastMonthNotFull = compareAsc(_dateLeft, _dateRight) === -sign;
+  _dateLeft.setMonth(_dateLeft.getMonth() - sign * difference);
 
-    // Check for cases of one full calendar month
-    if (
-      isLastDayOfMonth(toDate(dateLeft)) &&
-      difference === 1 &&
-      compareAsc(dateLeft, _dateRight) === 1
-    ) {
-      isLastMonthNotFull = false;
-    }
+  let isLastMonthNotFull = compareAsc(_dateLeft, _dateRight) === -sign;
 
-    result = sign * (difference - Number(isLastMonthNotFull));
+  if (
+    isLastDayOfMonth(toDate(dateLeft, options?.in)) &&
+    difference === 1 &&
+    compareAsc(dateLeft, _dateRight) === 1
+  ) {
+    isLastMonthNotFull = false;
   }
 
-  // Prevent negative zero
+  const result = sign * (difference - Number(isLastMonthNotFull));
   return result === 0 ? 0 : result;
 }

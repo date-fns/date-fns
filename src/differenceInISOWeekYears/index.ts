@@ -2,6 +2,13 @@ import { compareAsc } from "../compareAsc/index.js";
 import { differenceInCalendarISOWeekYears } from "../differenceInCalendarISOWeekYears/index.js";
 import { subISOWeekYears } from "../subISOWeekYears/index.js";
 import { toDate } from "../toDate/index.js";
+import { type DateFns } from "../types.js";
+
+/**
+ * The {@link differenceInISOWeekYears} function options.
+ */
+export interface DifferenceInISOWeekYearsOptions<DateType extends Date>
+  extends DateFns.ContextOptions<DateType> {}
 
 /**
  * @name differenceInISOWeekYears
@@ -17,6 +24,7 @@ import { toDate } from "../toDate/index.js";
  *
  * @param dateLeft - The later date
  * @param dateRight - The earlier date
+ * @param options - The options
  *
  * @returns The number of full ISO week-numbering years
  *
@@ -26,28 +34,29 @@ import { toDate } from "../toDate/index.js";
  *   new Date(2012, 0, 1),
  *   new Date(2010, 0, 1)
  * )
- * //=> 1
+ * // => 1
  */
-export function differenceInISOWeekYears<DateType extends Date>(
+export function differenceInISOWeekYears<
+  DateType extends Date,
+  ContextDate extends Date,
+>(
   dateLeft: DateType | number | string,
   dateRight: DateType | number | string,
+  options?: DifferenceInISOWeekYearsOptions<ContextDate> | undefined,
 ): number {
-  let _dateLeft = toDate(dateLeft);
-  const _dateRight = toDate(dateRight);
+  let _dateLeft = toDate(dateLeft, options?.in);
+  const _dateRight = toDate(dateRight, options?.in);
 
   const sign = compareAsc(_dateLeft, _dateRight);
   const difference = Math.abs(
-    differenceInCalendarISOWeekYears(_dateLeft, _dateRight),
+    differenceInCalendarISOWeekYears(_dateLeft, _dateRight, options),
   );
-  _dateLeft = subISOWeekYears(_dateLeft, sign * difference);
+  _dateLeft = subISOWeekYears(_dateLeft, sign * difference, options);
 
-  // Math.abs(diff in full ISO years - diff in calendar ISO years) === 1
-  // if last calendar ISO year is not full
-  // If so, result must be decreased by 1 in absolute value
   const isLastISOWeekYearNotFull = Number(
     compareAsc(_dateLeft, _dateRight) === -sign,
   );
   const result = sign * (difference - isLastISOWeekYearNotFull);
-  // Prevent negative zero
+
   return result === 0 ? 0 : result;
 }

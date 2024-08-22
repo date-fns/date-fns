@@ -1,4 +1,6 @@
+import { tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
+import { type DateFns } from "../types.js";
 import { differenceInCalendarWeeks } from "./index.js";
 
 describe("differenceInCalendarWeeks", () => {
@@ -32,7 +34,7 @@ describe("differenceInCalendarWeeks", () => {
     expect(result).toBe(2);
   });
 
-  it("`options.weekStartsOn` overwrites the first day of the week specified in locale", () => {
+  it("options.weekStartsOn overwrites the first day of the week specified in locale", () => {
     const result = differenceInCalendarWeeks(
       new Date(2014, 6 /* Jul */, 8, 18, 0),
       new Date(2014, 5 /* Jun */, 29, 6, 0),
@@ -147,5 +149,34 @@ describe("differenceInCalendarWeeks", () => {
   it("returns NaN if the both dates are `Invalid Date`", () => {
     const result = differenceInCalendarWeeks(new Date(NaN), new Date(NaN));
     expect(isNaN(result)).toBe(true);
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      expect(
+        differenceInCalendarWeeks(
+          "2024-08-18T03:00:00Z",
+          "2024-08-01T00:00:00Z",
+          { in: tz("America/New_York") },
+        ),
+      ).toBe(2);
+      expect(
+        differenceInCalendarWeeks(
+          "2024-08-18T04:00:00Z",
+          "2024-08-01T00:00:00Z",
+          { in: tz("America/New_York") },
+        ),
+      ).toBe(3);
+    });
+
+    it("doesn't enforce argument and context to be of the same type", () => {
+      function _test<DateType extends Date, ResultDate extends Date = DateType>(
+        arg1: DateType | number | string,
+        arg2: DateType | number | string,
+        options?: DateFns.ContextOptions<ResultDate>,
+      ) {
+        differenceInCalendarWeeks(arg1, arg2, { in: options?.in });
+      }
+    });
   });
 });
