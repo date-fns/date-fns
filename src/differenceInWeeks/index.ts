@@ -1,11 +1,15 @@
 import { getRoundingMethod } from "../_lib/getRoundingMethod/index.js";
 import { differenceInDays } from "../differenceInDays/index.js";
+import { toDate } from "../toDate/index.js"; // Added import to handle context
 import type { RoundingOptions } from "../types.js";
+import { type DateFns } from "../types.js";
 
 /**
  * The {@link differenceInWeeks} function options.
  */
-export interface DifferenceInWeeksOptions extends RoundingOptions {}
+export interface DifferenceInWeeksOptions<DateType extends Date>
+  extends RoundingOptions,
+    DateFns.ContextOptions<DateType> {}
 
 /**
  * @name differenceInWeeks
@@ -49,11 +53,16 @@ export interface DifferenceInWeeksOptions extends RoundingOptions {}
  * )
  * //=> 8
  */
-export function differenceInWeeks<DateType extends Date>(
+export function differenceInWeeks<
+  DateType extends Date,
+  ContextDate extends Date,
+>(
   dateLeft: DateType | number | string,
   dateRight: DateType | number | string,
-  options?: DifferenceInWeeksOptions,
+  options?: DifferenceInWeeksOptions<ContextDate>,
 ): number {
-  const diff = differenceInDays(dateLeft, dateRight) / 7;
+  const dateLeft_ = toDate(dateLeft, options?.in);
+  const dateRight_ = toDate(dateRight, options?.in);
+  const diff = differenceInDays(dateLeft_, dateRight_) / 7;
   return getRoundingMethod(options?.roundingMethod)(diff);
 }

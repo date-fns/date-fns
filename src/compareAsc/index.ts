@@ -34,9 +34,9 @@ import { toDate } from "../toDate/index.js";
  * //   Sun Jul 02 1995 00:00:00
  * // ]
  */
-export function compareAsc<DateType extends Date>(
-  dateLeft: DateType | number | string,
-  dateRight: DateType | number | string,
+export function compareAsc(
+  dateLeft: Date | number | string,
+  dateRight: Date | number | string,
 ): number {
   const diff = +toDate(dateLeft) - +toDate(dateRight);
 

@@ -1,14 +1,16 @@
+import { getTimezoneOffsetInMilliseconds } from "../_lib/getTimezoneOffsetInMilliseconds/index.js";
 import { millisecondsInWeek } from "../constants/index.js";
 import { startOfWeek } from "../startOfWeek/index.js";
 import type { LocalizedOptions, WeekOptions } from "../types.js";
-import { getTimezoneOffsetInMilliseconds } from "../_lib/getTimezoneOffsetInMilliseconds/index.js";
+import { type DateFns } from "../types.js";
 
 /**
  * The {@link differenceInCalendarWeeks} function options.
  */
-export interface DifferenceInCalendarWeeksOptions
+export interface DifferenceInCalendarWeeksOptions<DateType extends Date>
   extends LocalizedOptions<"options">,
-    WeekOptions {}
+    WeekOptions,
+    DateFns.ContextOptions<DateType> {}
 
 /**
  * @name differenceInCalendarWeeks
@@ -44,10 +46,13 @@ export interface DifferenceInCalendarWeeksOptions
  * )
  * //=> 2
  */
-export function differenceInCalendarWeeks<DateType extends Date>(
+export function differenceInCalendarWeeks<
+  DateType extends Date,
+  ContextDate extends Date,
+>(
   dateLeft: DateType | number | string,
   dateRight: DateType | number | string,
-  options?: DifferenceInCalendarWeeksOptions,
+  options?: DifferenceInCalendarWeeksOptions<ContextDate>,
 ): number {
   const startOfWeekLeft = startOfWeek(dateLeft, options);
   const startOfWeekRight = startOfWeek(dateRight, options);
@@ -57,8 +62,5 @@ export function differenceInCalendarWeeks<DateType extends Date>(
   const timestampRight =
     +startOfWeekRight - getTimezoneOffsetInMilliseconds(startOfWeekRight);
 
-  // Round the number of days to the nearest integer because the number of
-  // milliseconds in a days is not constant (e.g. it's different in the week of
-  // the daylight saving time clock shift).
   return Math.round((timestampLeft - timestampRight) / millisecondsInWeek);
 }

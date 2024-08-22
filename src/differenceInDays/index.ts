@@ -1,5 +1,12 @@
 import { differenceInCalendarDays } from "../differenceInCalendarDays/index.js";
 import { toDate } from "../toDate/index.js";
+import { type DateFns } from "../types.js";
+
+/**
+ * The {@link differenceInDays} function options.
+ */
+export interface DifferenceInDaysOptions<DateType extends Date>
+  extends DateFns.ContextOptions<DateType> {}
 
 /**
  * @name differenceInDays
@@ -21,6 +28,7 @@ import { toDate } from "../toDate/index.js";
  *
  * @param dateLeft - The later date
  * @param dateRight - The earlier date
+ * @param options - An object with options
  *
  * @returns The number of full days according to the local timezone
  *
@@ -55,12 +63,16 @@ import { toDate } from "../toDate/index.js";
  * )
  * //=> 92
  */
-export function differenceInDays<DateType extends Date>(
+export function differenceInDays<
+  DateType extends Date,
+  ContextDate extends Date,
+>(
   dateLeft: DateType | number | string,
   dateRight: DateType | number | string,
+  options?: DifferenceInDaysOptions<ContextDate> | undefined,
 ): number {
-  const _dateLeft = toDate(dateLeft);
-  const _dateRight = toDate(dateRight);
+  const _dateLeft = toDate(dateLeft, options?.in);
+  const _dateRight = toDate(dateRight, options?.in);
 
   const sign = compareLocalAsc(_dateLeft, _dateRight);
   const difference = Math.abs(differenceInCalendarDays(_dateLeft, _dateRight));
