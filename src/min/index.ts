@@ -28,12 +28,9 @@ export function min<DateType extends Date>(
   dates: Array<DateType | number | string>,
 ): DateType | Date {
   let result: Date | undefined;
-
   dates.forEach((dirtyDate) => {
     const date = toDate(dirtyDate);
-    if (!result || result > date || isNaN(+date)) {
-      result = date;
-    }
+    if (!result || result > date || isNaN(+date)) result = date;
   });
 
   return result || new Date(NaN);

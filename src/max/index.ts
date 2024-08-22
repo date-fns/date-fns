@@ -28,16 +28,10 @@ export function max<DateType extends Date>(
   dates: Array<DateType | number | string>,
 ): DateType | Date {
   let result: Date | undefined;
-  dates.forEach(function (dirtyDate) {
-    const currentDate = toDate(dirtyDate);
-
-    if (
-      result === undefined ||
-      result < currentDate ||
-      isNaN(Number(currentDate))
-    ) {
+  dates.forEach((date) => {
+    const currentDate = toDate(date);
+    if (!result || result < currentDate || isNaN(+currentDate))
       result = currentDate;
-    }
   });
 
   return result || new Date(NaN);

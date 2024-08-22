@@ -38,17 +38,11 @@ export function compareAsc<DateType extends Date>(
   dateLeft: DateType | number | string,
   dateRight: DateType | number | string,
 ): number {
-  const _dateLeft = toDate(dateLeft);
-  const _dateRight = toDate(dateRight);
+  const diff = +toDate(dateLeft) - +toDate(dateRight);
 
-  const diff = _dateLeft.getTime() - _dateRight.getTime();
+  if (diff < 0) return -1;
+  else if (diff > 0) return 1;
 
-  if (diff < 0) {
-    return -1;
-  } else if (diff > 0) {
-    return 1;
-    // Return 0 if diff is 0; return NaN if diff is NaN
-  } else {
-    return diff;
-  }
+  // Return 0 if diff is 0; return NaN if diff is NaN
+  return diff;
 }
