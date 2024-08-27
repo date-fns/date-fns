@@ -1,4 +1,6 @@
+import { tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
+import { type DateFns } from "../types.js";
 import { getQuarter } from "./index.js";
 
 describe("getQuarter", () => {
@@ -15,5 +17,31 @@ describe("getQuarter", () => {
   it("returns NaN if the given date is invalid", () => {
     const result = getQuarter(new Date(NaN));
     expect(isNaN(result)).toBe(true);
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      expect(
+        getQuarter("2024-03-31T16:00:00Z", { in: tz("Asia/Singapore") }),
+      ).toBe(2);
+      expect(
+        getQuarter("2024-03-31T15:00:00Z", { in: tz("Asia/Singapore") }),
+      ).toBe(1);
+      expect(
+        getQuarter("2024-04-01T04:00:00Z", { in: tz("America/New_York") }),
+      ).toBe(2);
+      expect(
+        getQuarter("2024-04-01T03:00:00Z", { in: tz("America/New_York") }),
+      ).toBe(1);
+    });
+
+    it("doesn't enforce argument and context to be of the same type", () => {
+      function _test<DateType extends Date, ResultDate extends Date = DateType>(
+        arg: DateType | number | string,
+        options?: DateFns.ContextOptions<ResultDate>,
+      ) {
+        getQuarter(arg, { in: options?.in });
+      }
+    });
   });
 });

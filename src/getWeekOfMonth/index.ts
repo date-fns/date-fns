@@ -1,15 +1,17 @@
+import { getDefaultOptions } from "../_lib/defaultOptions/index.js";
 import { getDate } from "../getDate/index.js";
 import { getDay } from "../getDay/index.js";
 import { startOfMonth } from "../startOfMonth/index.js";
-import type { LocalizedOptions, WeekOptions } from "../types.js";
-import { getDefaultOptions } from "../_lib/defaultOptions/index.js";
+import { toDate } from "../toDate/index.js";
+import type { DateFns, LocalizedOptions, WeekOptions } from "../types.js";
 
 /**
  * The {@link getWeekOfMonth} function options.
  */
-export interface GetWeekOfMonthOptions
+export interface GetWeekOfMonthOptions<DateType extends Date>
   extends LocalizedOptions<"options">,
-    WeekOptions {}
+    WeekOptions,
+    DateFns.ContextOptions<DateType> {}
 
 /**
  * @name getWeekOfMonth
@@ -20,6 +22,7 @@ export interface GetWeekOfMonthOptions
  * Get the week of the month of the given date.
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam ContextDate - The `Date` type of the context function.
  *
  * @param date - The given date
  * @param options - An object with options.
@@ -31,9 +34,9 @@ export interface GetWeekOfMonthOptions
  * const result = getWeekOfMonth(new Date(2017, 10, 9))
  * //=> 2
  */
-export function getWeekOfMonth<DateType extends Date>(
+export function getWeekOfMonth<DateType extends Date, ContextDate extends Date>(
   date: DateType | number | string,
-  options?: GetWeekOfMonthOptions,
+  options?: GetWeekOfMonthOptions<ContextDate>,
 ): number {
   const defaultOptions = getDefaultOptions();
   const weekStartsOn =
@@ -43,10 +46,10 @@ export function getWeekOfMonth<DateType extends Date>(
     defaultOptions.locale?.options?.weekStartsOn ??
     0;
 
-  const currentDayOfMonth = getDate(date);
+  const currentDayOfMonth = getDate(toDate(date, options?.in));
   if (isNaN(currentDayOfMonth)) return NaN;
 
-  const startWeekDay = getDay(startOfMonth(date));
+  const startWeekDay = getDay(startOfMonth(date, options));
 
   let lastDayOfFirstWeek = weekStartsOn - startWeekDay;
   if (lastDayOfFirstWeek <= 0) lastDayOfFirstWeek += 7;

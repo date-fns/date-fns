@@ -1,7 +1,13 @@
 import { getTimezoneOffsetInMilliseconds } from "../_lib/getTimezoneOffsetInMilliseconds/index.js";
 import { millisecondsInDay } from "../constants/index.js";
 import { toDate } from "../toDate/index.js";
-import type { Interval } from "../types.js";
+import type { DateFns, Interval } from "../types.js";
+
+/**
+ * The {@link getOverlappingDaysInIntervals} function options.
+ */
+export interface GetOverlappingDaysInIntervalsOptions<DateType extends Date>
+  extends DateFns.ContextOptions<DateType> {}
 
 /**
  * @name getOverlappingDaysInIntervals
@@ -17,9 +23,11 @@ import type { Interval } from "../types.js";
  * result in 1.
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam ContextDate - The `Date` type of the context function.
  *
  * @param intervalLeft - The first interval to compare.
  * @param intervalRight - The second interval to compare.
+ * @param options - An object with options
  *
  * @returns The number of days that overlap in two time intervals
  *
@@ -40,17 +48,21 @@ import type { Interval } from "../types.js";
  * //=> 0
  */
 
-export function getOverlappingDaysInIntervals<DateType extends Date>(
+export function getOverlappingDaysInIntervals<
+  DateType extends Date,
+  ContextDate extends Date,
+>(
   intervalLeft: Interval<DateType>,
   intervalRight: Interval<DateType>,
+  options?: GetOverlappingDaysInIntervalsOptions<ContextDate> | undefined,
 ): number {
   const [leftStart, leftEnd] = [
-    +toDate(intervalLeft.start),
-    +toDate(intervalLeft.end),
+    +toDate(intervalLeft.start, options?.in),
+    +toDate(intervalLeft.end, options?.in),
   ].sort((a, b) => a - b);
   const [rightStart, rightEnd] = [
-    +toDate(intervalRight.start),
-    +toDate(intervalRight.end),
+    +toDate(intervalRight.start, options?.in),
+    +toDate(intervalRight.end, options?.in),
   ].sort((a, b) => a - b);
 
   // Prevent NaN result if intervals don't overlap at all.

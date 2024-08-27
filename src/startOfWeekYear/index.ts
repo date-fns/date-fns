@@ -71,7 +71,7 @@ export function startOfWeekYear<
     1;
 
   const year = getWeekYear(date, options);
-  const firstWeek = constructFrom(options?.in, 0);
+  const firstWeek = constructFrom(options?.in || date, 0);
   firstWeek.setFullYear(year, 0, firstWeekContainsDate);
   firstWeek.setHours(0, 0, 0, 0);
   const _date = startOfWeek(firstWeek, options);
