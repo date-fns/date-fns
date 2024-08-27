@@ -1,5 +1,6 @@
+import { tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import { getWeekOfMonth } from "./index.js";
+import { getWeekOfMonth, type GetWeekOfMonthOptions } from "./index.js";
 
 describe("getWeekOfMonth", () => {
   it("returns the week of the month of the given date", () => {
@@ -46,7 +47,7 @@ describe("getWeekOfMonth", () => {
     expect(result).toBe(6);
   });
 
-  it("`options.weekStartsOn` overwrites the first day of the week specified in locale", () => {
+  it("options.weekStartsOn overwrites the first day of the week specified in locale", () => {
     const result = getWeekOfMonth(new Date(2017, 10 /* Nov */, 13), {
       weekStartsOn: 1,
       locale: {
@@ -71,5 +72,31 @@ describe("getWeekOfMonth", () => {
       weekStartsOn: 1,
     });
     expect(result).toBe(1);
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      expect(
+        getWeekOfMonth("2024-08-24T15:00:00Z", { in: tz("Asia/Singapore") }),
+      ).toBe(4);
+      expect(
+        getWeekOfMonth("2024-08-24T16:00:00Z", { in: tz("Asia/Singapore") }),
+      ).toBe(5);
+      expect(
+        getWeekOfMonth("2024-08-25T03:00:00Z", { in: tz("America/New_York") }),
+      ).toBe(4);
+      expect(
+        getWeekOfMonth("2024-08-25T04:00:00Z", { in: tz("America/New_York") }),
+      ).toBe(5);
+    });
+
+    it("doesn't enforce argument and context to be of the same type", () => {
+      function _test<DateType extends Date, ResultDate extends Date = DateType>(
+        arg: DateType | number | string,
+        options?: GetWeekOfMonthOptions<ResultDate>,
+      ) {
+        getWeekOfMonth(arg, { in: options?.in });
+      }
+    });
   });
 });

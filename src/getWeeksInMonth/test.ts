@@ -1,5 +1,6 @@
+import { tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import { getWeeksInMonth } from "./index.js";
+import { getWeeksInMonth, type GetWeeksInMonthOptions } from "./index.js";
 
 describe("getWeeksInMonth", () => {
   it("returns the number of calendar weeks the month in the given date spans", () => {
@@ -23,7 +24,7 @@ describe("getWeeksInMonth", () => {
     expect(result).toBe(5);
   });
 
-  it("`options.weekStartsOn` overwrites the first day of the week specified in locale", () => {
+  it("options.weekStartsOn overwrites the first day of the week specified in locale", () => {
     const result = getWeeksInMonth(new Date(2015, 1 /* Feb */, 8, 18, 0), {
       weekStartsOn: 1,
       locale: {
@@ -49,5 +50,39 @@ describe("getWeeksInMonth", () => {
   it("returns NaN if the date is `Invalid Date`", () => {
     const result = getWeeksInMonth(new Date(NaN));
     expect(isNaN(result)).toBe(true);
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      expect(
+        getWeeksInMonth("2023-12-31T15:00:00Z", {
+          in: tz("Asia/Singapore"),
+        }),
+      ).toBe(6);
+      expect(
+        getWeeksInMonth("2023-12-31T16:00:00Z", {
+          in: tz("Asia/Singapore"),
+        }),
+      ).toBe(5);
+      expect(
+        getWeeksInMonth("2024-01-01T04:00:00Z", {
+          in: tz("America/New_York"),
+        }),
+      ).toBe(6);
+      expect(
+        getWeeksInMonth("2024-01-01T05:00:00Z", {
+          in: tz("America/New_York"),
+        }),
+      ).toBe(5);
+    });
+
+    it("doesn't enforce argument and context to be of the same type", () => {
+      function _test<DateType extends Date, ResultDate extends Date = DateType>(
+        arg: DateType | number | string,
+        options?: GetWeeksInMonthOptions<ResultDate>,
+      ) {
+        getWeeksInMonth(arg, { in: options?.in });
+      }
+    });
   });
 });
