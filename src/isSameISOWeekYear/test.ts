@@ -1,4 +1,6 @@
+import { tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
+import { type DateFns } from "../types.js";
 import { isSameISOWeekYear } from "./index.js";
 
 describe("isSameISOWeekYear", () => {
@@ -53,8 +55,43 @@ describe("isSameISOWeekYear", () => {
     expect(result).toBe(false);
   });
 
-  it("returns false if the both dates are `Invalid Date`", () => {
+  it("returns false if both dates are `Invalid Date`", () => {
     const result = isSameISOWeekYear(new Date(NaN), new Date(NaN));
     expect(result).toBe(false);
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      expect(
+        isSameISOWeekYear("2023-12-31T00:00:00Z", "2023-12-31T15:00:00Z", {
+          in: tz("Asia/Singapore"),
+        }),
+      ).toBe(true);
+      expect(
+        isSameISOWeekYear("2023-12-31T00:00:00Z", "2023-12-31T16:00:00Z", {
+          in: tz("Asia/Singapore"),
+        }),
+      ).toBe(false);
+      expect(
+        isSameISOWeekYear("2024-01-01T00:00:00Z", "2024-01-01T04:00:00Z", {
+          in: tz("America/New_York"),
+        }),
+      ).toBe(true);
+      expect(
+        isSameISOWeekYear("2024-01-01T00:00:00Z", "2024-01-01T05:00:00Z", {
+          in: tz("America/New_York"),
+        }),
+      ).toBe(false);
+    });
+
+    it("doesn't enforce argument and context to be of the same type", () => {
+      function _test<DateType extends Date, ResultDate extends Date = DateType>(
+        arg1: DateType | number | string,
+        arg2: DateType | number | string,
+        options?: DateFns.ContextOptions<ResultDate>,
+      ) {
+        isSameISOWeekYear(arg1, arg2, { in: options?.in });
+      }
+    });
   });
 });
