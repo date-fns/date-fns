@@ -97,7 +97,7 @@ describe("add", () => {
 
   it("returns `Invalid Date` if the given date is invalid", () => {
     const result = add(new Date(NaN), { hours: 5 });
-    expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
+    expect(result instanceof Date && isNaN(+result)).toBe(true);
   });
 
   it("resolves the date type by default", () => {
@@ -131,8 +131,11 @@ describe("add", () => {
     });
 
     it("resolves the context date type", () => {
-      const date = new Date("2014-09-01T00:00:00Z");
-      const result = add(date, { days: 10 }, { in: tz("Asia/Tokyo") });
+      const result = add(
+        "2014-09-01T00:00:00Z",
+        { days: 10 },
+        { in: tz("Asia/Tokyo") },
+      );
       expect(result).toBeInstanceOf(TZDate);
       assertType<assertType.Equal<TZDate, typeof result>>(true);
     });

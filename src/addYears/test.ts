@@ -69,8 +69,7 @@ describe("addYears", () => {
     });
 
     it("resolves the context date type", () => {
-      const date = new Date("2014-09-01T00:00:00Z");
-      const result = addYears(date, 1, {
+      const result = addYears("2014-09-01T00:00:00Z", 1, {
         in: tz("Asia/Tokyo"),
       });
       expect(result).toBeInstanceOf(TZDate);
