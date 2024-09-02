@@ -56,8 +56,7 @@ describe("addSeconds", () => {
     });
 
     it("resolves the context date type", () => {
-      const date = new Date("2024-08-18T15:00:00Z");
-      const result = addSeconds(date, 30, {
+      const result = addSeconds("2024-08-18T15:00:00Z", 30, {
         in: tz("Asia/Tokyo"),
       });
       expect(result).toBeInstanceOf(TZDate);
