@@ -4,15 +4,17 @@ import type {
   FirstWeekContainsDateOptions,
   LocalizedOptions,
   WeekOptions,
+  DateFns,
 } from "../types.js";
 
 /**
  * The {@link setWeek} function options.
  */
-export interface SetWeekOptions
+export interface SetWeekOptions<DateType extends Date>
   extends LocalizedOptions<"options">,
     WeekOptions,
-    FirstWeekContainsDateOptions {}
+    FirstWeekContainsDateOptions,
+    DateFns.ContextOptions<DateType> {}
 
 /**
  * @name setWeek
@@ -29,6 +31,7 @@ export interface SetWeekOptions
  * Week numbering: https://en.wikipedia.org/wiki/Week#The_ISO_week_date_system
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
  *
  * @param date - The date to be changed
  * @param week - The week of the new date
@@ -51,13 +54,16 @@ export interface SetWeekOptions
  * })
  * //=> Sun Jan 4 2004 00:00:00
  */
-export function setWeek<DateType extends Date>(
+export function setWeek<
+  DateType extends Date,
+  ResultDate extends Date = DateType,
+>(
   date: DateType | number | string,
   week: number,
-  options?: SetWeekOptions,
-): DateType {
-  const _date = toDate(date);
-  const diff = getWeek(_date, options) - week;
-  _date.setDate(_date.getDate() - diff * 7);
-  return _date;
+  options?: SetWeekOptions<ResultDate>,
+): ResultDate {
+  const date_ = toDate(date, options?.in);
+  const diff = getWeek(date_, options) - week;
+  date_.setDate(date_.getDate() - diff * 7);
+  return toDate(date_, options?.in);
 }

@@ -1,4 +1,7 @@
+import { TZDate, tz } from "@date-fns/tz";
+import { UTCDate } from "@date-fns/utc";
 import { describe, expect, it } from "vitest";
+import { assertType } from "../_lib/test/index.js";
 import { setWeekYear } from "./index.js";
 
 describe("setWeekYear", () => {
@@ -71,5 +74,40 @@ describe("setWeekYear", () => {
       },
     });
     expect(result).toEqual(new Date(2005, 0 /* Jan */, 1));
+  });
+
+  it("resolves the date type by default", () => {
+    const result = setWeekYear(Date.now(), 2020);
+    expect(result).toBeInstanceOf(Date);
+    assertType<assertType.Equal<Date, typeof result>>(true);
+  });
+
+  it("resolves the argument type if a date extension is passed", () => {
+    const result = setWeekYear(new UTCDate(), 2020);
+    expect(result).toBeInstanceOf(UTCDate);
+    assertType<assertType.Equal<UTCDate, typeof result>>(true);
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      expect(
+        setWeekYear("2024-04-10T07:00:00Z", 2014, {
+          in: tz("America/Los_Angeles"),
+        }).toISOString(),
+      ).toBe("2014-04-09T00:00:00.000-07:00");
+      expect(
+        setWeekYear("2024-04-10T07:00:00Z", 2016, {
+          in: tz("Asia/Singapore"),
+        }).toISOString(),
+      ).toBe("2016-04-06T00:00:00.000+08:00");
+    });
+
+    it("resolves the context date type", () => {
+      const result = setWeekYear("2010-01-02T00:00:00Z", 2004, {
+        in: tz("Asia/Tokyo"),
+      });
+      expect(result).toBeInstanceOf(TZDate);
+      assertType<assertType.Equal<TZDate, typeof result>>(true);
+    });
   });
 });

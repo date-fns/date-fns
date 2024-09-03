@@ -1,5 +1,12 @@
 import { setMonth } from "../setMonth/index.js";
 import { toDate } from "../toDate/index.js";
+import { type DateFns } from "../types.js";
+
+/**
+ * The {@link setQuarter} function options.
+ */
+export interface SetQuarterOptions<DateType extends Date>
+  extends DateFns.ContextOptions<DateType> {}
 
 /**
  * @name setQuarter
@@ -10,9 +17,11 @@ import { toDate } from "../toDate/index.js";
  * Set the year quarter to the given date.
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
  *
  * @param date - The date to be changed
  * @param quarter - The quarter of the new date
+ * @param options - The options
  *
  * @returns The new date with the quarter set
  *
@@ -21,12 +30,16 @@ import { toDate } from "../toDate/index.js";
  * const result = setQuarter(new Date(2014, 6, 2), 2)
  * //=> Wed Apr 02 2014 00:00:00
  */
-export function setQuarter<DateType extends Date>(
+export function setQuarter<
+  DateType extends Date,
+  ResultDate extends Date = DateType,
+>(
   date: DateType | number | string,
   quarter: number,
-): DateType {
-  const _date = toDate(date);
-  const oldQuarter = Math.trunc(_date.getMonth() / 3) + 1;
+  options?: SetQuarterOptions<ResultDate>,
+): ResultDate {
+  const date_ = toDate(date, options?.in);
+  const oldQuarter = Math.trunc(date_.getMonth() / 3) + 1;
   const diff = quarter - oldQuarter;
-  return setMonth(_date, _date.getMonth() + diff * 3);
+  return setMonth(date_, date_.getMonth() + diff * 3);
 }
