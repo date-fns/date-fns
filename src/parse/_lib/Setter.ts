@@ -16,7 +16,7 @@ export abstract class Setter {
   }
 
   public abstract set<DateType extends Date>(
-    utcDate: DateType,
+    date: DateType,
     flags: ParseFlags,
     options: ParserOptions,
   ): DateType | [DateType, ParseFlags];
@@ -27,13 +27,13 @@ export class ValueSetter<Value> extends Setter {
     private value: Value,
 
     private validateValue: <DateType extends Date>(
-      utcDate: DateType,
+      date: DateType,
       value: Value,
       options: ParserOptions,
     ) => boolean,
 
     private setValue: <DateType extends Date>(
-      utcDate: DateType,
+      date: DateType,
       flags: ParseFlags,
       value: Value,
       options: ParserOptions,

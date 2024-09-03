@@ -1,6 +1,8 @@
+import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import { parseJSON } from "./index.js";
+import { assertType } from "../_lib/test/index.js";
 import { format } from "../format/index.js";
+import { parseJSON } from "./index.js";
 
 describe("parseJSON", () => {
   it("parses a formatted new Date() back to UTC - issue 2149", () => {
@@ -125,5 +127,34 @@ describe("parseJSON", () => {
     expect(parseJSON("").toString()).toBe("Invalid Date");
     expect(parseJSON("invalid").toString()).toBe("Invalid Date");
     expect(parseJSON("2020-10-10").toString()).toBe("Invalid Date");
+  });
+
+  it("resolves the date type by default", () => {
+    const result = parseJSON("2024-04-10T07:00:00Z");
+    expect(result).toBeInstanceOf(Date);
+    assertType<assertType.Equal<Date, typeof result>>(true);
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      expect(
+        parseJSON("2024-04-10T07:00:00Z", {
+          in: tz("Asia/Singapore"),
+        }).toISOString(),
+      ).toBe("2024-04-10T15:00:00.000+08:00");
+      expect(
+        parseJSON("2024-04-10T07:00:00Z", {
+          in: tz("Africa/Cairo"),
+        }).toISOString(),
+      ).toBe("2024-04-10T09:00:00.000+02:00");
+    });
+
+    it("resolves the context date type", () => {
+      const result = parseJSON("2014-09-01T00:00:00Z", {
+        in: tz("Asia/Tokyo"),
+      });
+      expect(result).toBeInstanceOf(TZDate);
+      assertType<assertType.Equal<TZDate, typeof result>>(true);
+    });
   });
 });
