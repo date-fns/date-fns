@@ -99,7 +99,6 @@ export interface FormatDistanceOptions
  * })
  * //=> 'pli ol 1 jaro'
  */
-
 export function formatDistance<DateType extends Date>(
   date: DateType | number | string,
   baseDate: DateType | number | string,

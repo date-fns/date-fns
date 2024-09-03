@@ -240,14 +240,20 @@ describe("formatDistance", () => {
   });
 
   it("throws RangeError if the first date is `Invalid Date`", () => {
-    expect(formatDistance.bind(null, new Date(NaN), new Date(1986, 3, 7, 10, 32, 0))).toThrow(RangeError);
+    expect(
+      formatDistance.bind(null, new Date(NaN), new Date(1986, 3, 7, 10, 32, 0)),
+    ).toThrow(RangeError);
   });
 
   it("throws RangeError if the second date is `Invalid Date`", () => {
-    expect(formatDistance.bind(null, new Date(1986, 3, 4, 10, 32, 0), new Date(NaN))).toThrow(RangeError);
+    expect(
+      formatDistance.bind(null, new Date(1986, 3, 4, 10, 32, 0), new Date(NaN)),
+    ).toThrow(RangeError);
   });
 
   it("throws RangeError if the both dates are `Invalid Date`", () => {
-    expect(formatDistance.bind(null, new Date(NaN), new Date(NaN))).toThrow(RangeError);
+    expect(formatDistance.bind(null, new Date(NaN), new Date(NaN))).toThrow(
+      RangeError,
+    );
   });
 });
