@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { parse } from "./index.js";
+import { assertType } from "../_lib/test/index.js";
+import { UTCDate } from "@date-fns/utc";
+import { TZDate, tz } from "@date-fns/tz";
 
 describe("parse", () => {
   const referenceDate = new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 900);
@@ -2469,6 +2472,58 @@ describe("parse", () => {
       const formatString = "PPPPpp";
       const result = parse(dateTimeString, formatString, referenceDate);
       expect(result).toEqual(expected);
+    });
+  });
+
+  it("resolves the date type by default", () => {
+    const result = parse(
+      "2018 hello world July 2nd",
+      "yyyy 'hello world' MMMM do",
+      Date.now(),
+    );
+    expect(result).toBeInstanceOf(Date);
+    assertType<assertType.Equal<Date, typeof result>>(true);
+  });
+
+  it("resolves the argument type if a date extension is passed", () => {
+    const result = parse(
+      "2018 hello world July 2nd",
+      "yyyy 'hello world' MMMM do",
+      new UTCDate(),
+    );
+    expect(result).toBeInstanceOf(UTCDate);
+    assertType<assertType.Equal<UTCDate, typeof result>>(true);
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      expect(
+        parse(
+          "2018 hello world July 2nd",
+          "yyyy 'hello world' MMMM do",
+          "2024-04-07T00:00:00Z",
+          { in: tz("Asia/Singapore") },
+        ).toISOString(),
+      ).toBe("2018-07-02T00:00:00.000+08:00");
+      expect(
+        parse(
+          "2018 hello world July 2nd",
+          "yyyy 'hello world' MMMM do",
+          "2024-04-07T00:00:00Z",
+          { in: tz("America/Los_Angeles") },
+        ).toISOString(),
+      ).toBe("2018-07-01T09:00:00.000-07:00");
+    });
+
+    it("resolves the context date type", () => {
+      const result = parse(
+        "2018 hello world July 2nd",
+        "yyyy 'hello world' MMMM do",
+        "2024-04-07T00:00:00Z",
+        { in: tz("Asia/Tokyo") },
+      );
+      expect(result).toBeInstanceOf(TZDate);
+      assertType<assertType.Equal<TZDate, typeof result>>(true);
     });
   });
 });

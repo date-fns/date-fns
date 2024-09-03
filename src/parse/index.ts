@@ -1,22 +1,23 @@
-import { constructFrom } from "../constructFrom/index.js";
-import { getDefaultOptions } from "../getDefaultOptions/index.js";
 import { defaultLocale } from "../_lib/defaultLocale/index.js";
-import { toDate } from "../toDate/index.js";
-import type {
-  AdditionalTokensOptions,
-  FirstWeekContainsDateOptions,
-  LocalizedOptions,
-  WeekOptions,
-} from "../types.js";
 import { longFormatters } from "../_lib/format/longFormatters/index.js";
 import {
   isProtectedDayOfYearToken,
   isProtectedWeekYearToken,
   warnOrThrowProtectedError,
 } from "../_lib/protectedTokens/index.js";
-import { parsers } from "./_lib/parsers/index.js";
+import { constructFrom } from "../constructFrom/index.js";
+import { getDefaultOptions } from "../getDefaultOptions/index.js";
+import { toDate } from "../toDate/index.js";
+import type {
+  AdditionalTokensOptions,
+  DateFns,
+  FirstWeekContainsDateOptions,
+  LocalizedOptions,
+  WeekOptions,
+} from "../types.js";
 import type { Setter } from "./_lib/Setter.js";
 import { DateToSystemTimezoneSetter } from "./_lib/Setter.js";
+import { parsers } from "./_lib/parsers/index.js";
 import type { ParseFlags, ParserOptions } from "./_lib/types.js";
 
 // Rexports of internal for libraries to use.
@@ -26,11 +27,12 @@ export { longFormatters, parsers };
 /**
  * The {@link parse} function options.
  */
-export interface ParseOptions
+export interface ParseOptions<DateType extends Date>
   extends LocalizedOptions<"options" | "match" | "formatLong">,
     FirstWeekContainsDateOptions,
     WeekOptions,
-    AdditionalTokensOptions {}
+    AdditionalTokensOptions,
+    DateFns.ContextOptions<DateType> {}
 
 // This RegExp consists of three parts separated by `|`:
 // - [yYQqMLwIdDecihHKkms]o matches any available ordinal number token
@@ -353,12 +355,16 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/;
  * })
  * //=> Sun Feb 28 2010 00:00:00
  */
-export function parse<DateType extends Date>(
+export function parse<
+  DateType extends Date,
+  ResultDate extends Date = DateType,
+>(
   dateStr: string,
   formatStr: string,
   referenceDate: DateType | number | string,
-  options?: ParseOptions,
-): DateType {
+  options?: ParseOptions<ResultDate>,
+): ResultDate {
+  const invalidDate = () => constructFrom(options?.in || referenceDate, NaN);
   const defaultOptions = getDefaultOptions();
   const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale;
 
@@ -376,13 +382,8 @@ export function parse<DateType extends Date>(
     defaultOptions.locale?.options?.weekStartsOn ??
     0;
 
-  if (formatStr === "") {
-    if (dateStr === "") {
-      return toDate(referenceDate);
-    } else {
-      return constructFrom(referenceDate, NaN);
-    }
-  }
+  if (!formatStr)
+    return dateStr ? invalidDate() : toDate(referenceDate, options?.in);
 
   const subFnOptions: ParserOptions = {
     firstWeekContainsDate,
@@ -453,7 +454,7 @@ export function parse<DateType extends Date>(
       );
 
       if (!parseResult) {
-        return constructFrom(referenceDate, NaN);
+        return invalidDate();
       }
 
       setters.push(parseResult.setter);
@@ -479,14 +480,14 @@ export function parse<DateType extends Date>(
       if (dateStr.indexOf(token) === 0) {
         dateStr = dateStr.slice(token.length);
       } else {
-        return constructFrom(referenceDate, NaN);
+        return invalidDate();
       }
     }
   }
 
   // Check if the remaining input contains something other than whitespace
   if (dateStr.length > 0 && notWhitespaceRegExp.test(dateStr)) {
-    return constructFrom(referenceDate, NaN);
+    return invalidDate();
   }
 
   const uniquePrioritySetters = setters
@@ -500,16 +501,16 @@ export function parse<DateType extends Date>(
     )
     .map((setterArray) => setterArray[0]);
 
-  let date = toDate(referenceDate);
+  let date = toDate(referenceDate, options?.in);
 
-  if (isNaN(date.getTime())) {
-    return constructFrom(referenceDate, NaN);
+  if (isNaN(+date)) {
+    return invalidDate();
   }
 
   const flags: ParseFlags = {};
   for (const setter of uniquePrioritySetters) {
     if (!setter.validate(date, subFnOptions)) {
-      return constructFrom(referenceDate, NaN);
+      return invalidDate();
     }
 
     const result = setter.set(date, flags, subFnOptions);
@@ -523,7 +524,7 @@ export function parse<DateType extends Date>(
     }
   }
 
-  return constructFrom(referenceDate, date);
+  return date;
 }
 
 function cleanEscapedString(input: string) {
