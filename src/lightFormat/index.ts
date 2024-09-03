@@ -89,9 +89,9 @@ export function lightFormat<DateType extends Date>(
   date: DateType | number | string,
   formatStr: string,
 ): string {
-  const _date = toDate(date);
+  const date_ = toDate(date);
 
-  if (!isValid(_date)) {
+  if (!isValid(date_)) {
     throw new RangeError("Invalid time value");
   }
 
@@ -114,7 +114,7 @@ export function lightFormat<DateType extends Date>(
 
       const formatter = lightFormatters[firstCharacter as Token];
       if (formatter) {
-        return formatter(_date, substring);
+        return formatter(date_, substring);
       }
 
       if (firstCharacter.match(unescapedLatinCharacterRegExp)) {
@@ -134,10 +134,6 @@ export function lightFormat<DateType extends Date>(
 
 function cleanEscapedString(input: string) {
   const matches = input.match(escapedStringRegExp);
-
-  if (!matches) {
-    return input;
-  }
-
+  if (!matches) return input;
   return matches[1].replace(doubleQuoteRegExp, "'");
 }
