@@ -38,17 +38,32 @@ export function differenceInYears<
   dateRight: DateType | number | string,
   options?: DifferenceInYearsOptions<ContextDate> | undefined,
 ): number {
-  const _dateLeft = toDate(dateLeft, options?.in);
-  const _dateRight = toDate(dateRight, options?.in);
+  const dateLeft_ = toDate(dateLeft, options?.in);
+  const dateRight_ = toDate(dateRight, options?.in);
 
-  const sign = compareAsc(_dateLeft, _dateRight);
-  const difference = Math.abs(differenceInCalendarYears(_dateLeft, _dateRight));
+  // -1 if the left date is earlier than the right date
+  // 2023-12-31 - 2024-01-01 = -1
+  const sign = compareAsc(dateLeft_, dateRight_);
 
-  _dateLeft.setFullYear(1584);
-  _dateRight.setFullYear(1584);
+  // First calculate the difference in calendar years
+  // 2024-01-01 - 2023-12-31 = 1 year
+  const difference = Math.abs(differenceInCalendarYears(dateLeft_, dateRight_));
 
-  const isLastYearNotFull = compareAsc(_dateLeft, _dateRight) === -sign;
-  const result = sign * (difference - +isLastYearNotFull);
+  // Now we need to calculate if the difference is full. To do that we set
+  // both dates to the same year and check if the both date's month and day
+  // form a full year.
+  dateLeft_.setFullYear(1584);
+  dateRight_.setFullYear(1584);
 
+  // For it to be true, when the left date is later than the right date
+  // (2026-02-01 - 2023-12-10 = 3 years), the difference is full if
+  // the normalized left date is also later than the normalized right date.
+  // In our example, 1584-02-01 is earlier than 1584-12-10, so the difference
+  // is partial, hence we need to subtract 1 from the difference 3 - 1 = 2.
+  const partial = compareAsc(dateLeft_, dateRight_) === -sign;
+
+  const result = sign * (difference - +partial);
+
+  // Prevent negative zero
   return result === 0 ? 0 : result;
 }
