@@ -323,14 +323,9 @@ export interface NearestToUnitOptions<Unit extends number> {
  */
 export namespace DateFns {
   /**
-   * Type utilities.
+   * The argument type.
    */
-  export namespace Utils {
-    /**
-     * Resolves passed type or array of types.
-     */
-    export type MaybeArray<Type> = Type | Type[];
-  }
+  export type Arg<DateType extends Date = Date> = DateType | number | string;
 
   /**
    * The context function type. It's used to normalize the input arguments to
@@ -349,5 +344,15 @@ export namespace DateFns {
      * to a specific date instance, which is useful for extensions like [`TZDate`](https://github.com/date-fns/tz).
      */
     in?: ContextFn<DateType> | undefined;
+  }
+
+  /**
+   * Type utilities.
+   */
+  export namespace Utils {
+    /**
+     * Resolves passed type or array of types.
+     */
+    export type MaybeArray<Type> = Type | Type[];
   }
 }
