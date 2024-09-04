@@ -1,4 +1,5 @@
 import { getTimezoneOffsetInMilliseconds } from "../_lib/getTimezoneOffsetInMilliseconds/index.js";
+import { normalizeDates } from "../_lib/normalizeDates/index.js";
 import { millisecondsInDay } from "../constants/index.js";
 import { startOfDay } from "../startOfDay/index.js";
 import { type DateFns } from "../types.js";
@@ -6,8 +7,8 @@ import { type DateFns } from "../types.js";
 /**
  * The {@link differenceInCalendarDays} function options.
  */
-export interface DifferenceInCalendarDaysOptions<DateType extends Date>
-  extends DateFns.ContextOptions<DateType> {}
+export interface DifferenceInCalendarDaysOptions
+  extends DateFns.ContextOptions<Date> {}
 
 /**
  * @name differenceInCalendarDays
@@ -18,10 +19,8 @@ export interface DifferenceInCalendarDaysOptions<DateType extends Date>
  * Get the number of calendar days between the given dates. This means that the times are removed
  * from the dates and then the difference in days is calculated.
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- *
- * @param dateLeft - The later date
- * @param dateRight - The earlier date
+ * @param laterDate - The later date
+ * @param earlierDate - The earlier date
  * @param options - The options object
  *
  * @returns The number of calendar days
@@ -42,24 +41,27 @@ export interface DifferenceInCalendarDaysOptions<DateType extends Date>
  * )
  * //=> 1
  */
-export function differenceInCalendarDays<
-  DateType extends Date,
-  ResultDate extends Date = DateType,
->(
-  dateLeft: DateType | number | string,
-  dateRight: DateType | number | string,
-  options?: DifferenceInCalendarDaysOptions<ResultDate> | undefined,
+export function differenceInCalendarDays(
+  laterDate: DateFns.Arg,
+  earlierDate: DateFns.Arg,
+  options?: DifferenceInCalendarDaysOptions | undefined,
 ): number {
-  const startOfDayLeft = startOfDay(dateLeft, options);
-  const startOfDayRight = startOfDay(dateRight, options);
+  const [laterDate_, earlierDate_] = normalizeDates(
+    options?.in,
+    laterDate,
+    earlierDate,
+  );
 
-  const timestampLeft =
-    +startOfDayLeft - getTimezoneOffsetInMilliseconds(startOfDayLeft);
-  const timestampRight =
-    +startOfDayRight - getTimezoneOffsetInMilliseconds(startOfDayRight);
+  const laterStartOfDay = startOfDay(laterDate_);
+  const earlierStartOfDay = startOfDay(earlierDate_);
+
+  const laterTimestamp =
+    +laterStartOfDay - getTimezoneOffsetInMilliseconds(laterStartOfDay);
+  const earlierTimestamp =
+    +earlierStartOfDay - getTimezoneOffsetInMilliseconds(earlierStartOfDay);
 
   // Round the number of days to the nearest integer because the number of
   // milliseconds in a day is not constant (e.g. it's different in the week of
   // the daylight saving time clock shift).
-  return Math.round((timestampLeft - timestampRight) / millisecondsInDay);
+  return Math.round((laterTimestamp - earlierTimestamp) / millisecondsInDay);
 }

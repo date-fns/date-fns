@@ -1,4 +1,4 @@
-import { tz } from "@date-fns/tz";
+import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
 import { getDstTransitions } from "../../test/dst/tzOffsetTransitions.js";
 import { type DateFns } from "../types.js";
@@ -205,6 +205,24 @@ describe("differenceInDays", () => {
   it("returns NaN if the both dates are `Invalid Date`", () => {
     const result = differenceInDays(new Date(NaN), new Date(NaN));
     expect(isNaN(result)).toBe(true);
+  });
+
+  it("normalizes the dates", () => {
+    const dateLeft = new TZDate(2025, 0, 1, "Asia/Singapore");
+    const dateRight = new TZDate(2024, 0, 1, "America/New_York");
+    expect(differenceInDays(+dateLeft, +dateRight)).toBe(365);
+    expect(differenceInDays(+dateRight, +dateLeft)).toBe(-365);
+    expect(differenceInDays(dateLeft, dateRight)).toBe(365);
+    expect(differenceInDays(dateRight, dateLeft)).toBe(-365);
+  });
+
+  it("allows dates to be of different types", () => {
+    function _test<DateType1 extends Date, DateType2 extends Date>(
+      arg1: DateType1 | number | string,
+      arg2: DateType2 | number | string,
+    ) {
+      differenceInDays(arg1, arg2);
+    }
   });
 
   describe("context", () => {

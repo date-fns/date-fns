@@ -1,11 +1,11 @@
-import { toDate } from "../toDate/index.js";
+import { normalizeDates } from "../_lib/normalizeDates/index.js";
 import { type DateFns } from "../types.js";
 
 /**
  * The {@link differenceInCalendarYears} function options.
  */
-export interface DifferenceInCalendarYearsOptions<DateType extends Date>
-  extends DateFns.ContextOptions<DateType> {}
+export interface DifferenceInCalendarYearsOptions
+  extends DateFns.ContextOptions<Date> {}
 
 /**
  * @name differenceInCalendarYears
@@ -15,11 +15,8 @@ export interface DifferenceInCalendarYearsOptions<DateType extends Date>
  * @description
  * Get the number of calendar years between the given dates.
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- * @typeParam ContextDate - The `Date` type of the context function.
- *
- * @param dateLeft - The later date
- * @param dateRight - The earlier date
+ * @param laterDate - The later date
+ * @param earlierDate - The earlier date
  * @param options - An object with options
 
  * @returns The number of calendar years
@@ -29,19 +26,18 @@ export interface DifferenceInCalendarYearsOptions<DateType extends Date>
  * const result = differenceInCalendarYears(
  *   new Date(2015, 1, 11),
  *   new Date(2013, 11, 31)
- * )
+ * );
  * //=> 2
  */
-export function differenceInCalendarYears<
-  DateType extends Date,
-  ContextDate extends Date,
->(
-  dateLeft: DateType | number | string,
-  dateRight: DateType | number | string,
-  options?: DifferenceInCalendarYearsOptions<ContextDate> | undefined,
+export function differenceInCalendarYears(
+  laterDate: DateFns.Arg,
+  earlierDate: DateFns.Arg,
+  options?: DifferenceInCalendarYearsOptions | undefined,
 ): number {
-  return (
-    toDate(dateLeft, options?.in).getFullYear() -
-    toDate(dateRight, options?.in).getFullYear()
+  const [laterDate_, earlierDate_] = normalizeDates(
+    options?.in,
+    laterDate,
+    earlierDate,
   );
+  return laterDate_.getFullYear() - earlierDate_.getFullYear();
 }
