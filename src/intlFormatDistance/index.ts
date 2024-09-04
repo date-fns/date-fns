@@ -21,8 +21,9 @@ import type { DateFns } from "../types.js";
 /**
  * The {@link intlFormatDistance} function options.
  */
-export interface IntlFormatDistanceOptions
-  extends Intl.RelativeTimeFormatOptions {
+export interface IntlFormatDistanceOptions<DateType extends Date>
+  extends Intl.RelativeTimeFormatOptions,
+    DateFns.ContextOptions<DateType> {
   /** Force the distance unit */
   unit?: IntlFormatDistanceUnit;
   /** The locales to use (see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument) */
@@ -146,12 +147,12 @@ export type IntlFormatDistanceUnit =
 export function intlFormatDistance<DateType extends Date>(
   date: DateType | number | string,
   baseDate: DateType | number | string,
-  options?: IntlFormatDistanceOptions,
+  options?: IntlFormatDistanceOptions<DateType>,
 ): string {
   let value: number = 0;
   let unit: Intl.RelativeTimeFormatUnit;
-  const dateLeft = toDate(date);
-  const dateRight = toDate(baseDate);
+  const dateLeft = toDate(date, options?.in);
+  const dateRight = toDate(baseDate, options?.in);
 
   if (!options?.unit) {
     // Get the unit based on diffInSeconds calculations if no unit is specified
