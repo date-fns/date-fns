@@ -1,4 +1,5 @@
 import { daysInWeek } from "../constants/index.js";
+import { handleZero } from "../handleZero/index.js";
 
 /**
  * @name daysToWeeks
@@ -25,8 +26,7 @@ import { daysInWeek } from "../constants/index.js";
  * //=> 1
  */
 export function daysToWeeks(days: number): number {
-  const weeks = days / daysInWeek;
-  const result = Math.trunc(weeks);
-  // Prevent negative zero
-  return result === 0 ? 0 : result;
+  const weeks = Math.trunc(days / daysInWeek);
+  return handleZero(weeks);
 }
+
