@@ -1,14 +1,14 @@
+import { normalizeDates } from "../_lib/normalizeDates/index.js";
 import { compareAsc } from "../compareAsc/index.js";
 import { differenceInCalendarISOWeekYears } from "../differenceInCalendarISOWeekYears/index.js";
 import { subISOWeekYears } from "../subISOWeekYears/index.js";
-import { toDate } from "../toDate/index.js";
 import { type DateFns } from "../types.js";
 
 /**
  * The {@link differenceInISOWeekYears} function options.
  */
-export interface DifferenceInISOWeekYearsOptions<DateType extends Date>
-  extends DateFns.ContextOptions<DateType> {}
+export interface DifferenceInISOWeekYearsOptions
+  extends DateFns.ContextOptions<Date> {}
 
 /**
  * @name differenceInISOWeekYears
@@ -20,10 +20,8 @@ export interface DifferenceInISOWeekYearsOptions<DateType extends Date>
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- *
- * @param dateLeft - The later date
- * @param dateRight - The earlier date
+ * @param laterDate - The later date
+ * @param earlierDate - The earlier date
  * @param options - The options
  *
  * @returns The number of full ISO week-numbering years
@@ -36,27 +34,29 @@ export interface DifferenceInISOWeekYearsOptions<DateType extends Date>
  * )
  * // => 1
  */
-export function differenceInISOWeekYears<
-  DateType extends Date,
-  ContextDate extends Date,
->(
-  dateLeft: DateType | number | string,
-  dateRight: DateType | number | string,
-  options?: DifferenceInISOWeekYearsOptions<ContextDate> | undefined,
+export function differenceInISOWeekYears(
+  laterDate: DateFns.Arg,
+  earlierDate: DateFns.Arg,
+  options?: DifferenceInISOWeekYearsOptions | undefined,
 ): number {
-  let _dateLeft = toDate(dateLeft, options?.in);
-  const _dateRight = toDate(dateRight, options?.in);
-
-  const sign = compareAsc(_dateLeft, _dateRight);
-  const difference = Math.abs(
-    differenceInCalendarISOWeekYears(_dateLeft, _dateRight, options),
+  const [laterDate_, earlierDate_] = normalizeDates(
+    options?.in,
+    laterDate,
+    earlierDate,
   );
-  _dateLeft = subISOWeekYears(_dateLeft, sign * difference, options);
+
+  const sign = compareAsc(laterDate_, earlierDate_);
+  const diff = Math.abs(
+    differenceInCalendarISOWeekYears(laterDate_, earlierDate_, options),
+  );
+
+  const adjustedDate = subISOWeekYears(laterDate_, sign * diff, options);
 
   const isLastISOWeekYearNotFull = Number(
-    compareAsc(_dateLeft, _dateRight) === -sign,
+    compareAsc(adjustedDate, earlierDate_) === -sign,
   );
-  const result = sign * (difference - isLastISOWeekYearNotFull);
+  const result = sign * (diff - isLastISOWeekYearNotFull);
 
+  // Prevent negative zero
   return result === 0 ? 0 : result;
 }
