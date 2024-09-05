@@ -1,4 +1,5 @@
 import { getTimezoneOffsetInMilliseconds } from "../_lib/getTimezoneOffsetInMilliseconds/index.js";
+import { normalizeDates } from "../_lib/normalizeDates/index.js";
 import { millisecondsInWeek } from "../constants/index.js";
 import { startOfWeek } from "../startOfWeek/index.js";
 import type { LocalizedOptions, WeekOptions } from "../types.js";
@@ -7,10 +8,10 @@ import { type DateFns } from "../types.js";
 /**
  * The {@link differenceInCalendarWeeks} function options.
  */
-export interface DifferenceInCalendarWeeksOptions<DateType extends Date>
+export interface DifferenceInCalendarWeeksOptions
   extends LocalizedOptions<"options">,
     WeekOptions,
-    DateFns.ContextOptions<DateType> {}
+    DateFns.ContextOptions<Date> {}
 
 /**
  * @name differenceInCalendarWeeks
@@ -20,10 +21,8 @@ export interface DifferenceInCalendarWeeksOptions<DateType extends Date>
  * @description
  * Get the number of calendar weeks between the given dates.
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- *
- * @param dateLeft - The later date
- * @param dateRight - The earlier date
+ * @param laterDate - The later date
+ * @param earlierDate - The earlier date
  * @param options - An object with options.
  *
  * @returns The number of calendar weeks
@@ -46,21 +45,24 @@ export interface DifferenceInCalendarWeeksOptions<DateType extends Date>
  * )
  * //=> 2
  */
-export function differenceInCalendarWeeks<
-  DateType extends Date,
-  ContextDate extends Date,
->(
-  dateLeft: DateType | number | string,
-  dateRight: DateType | number | string,
-  options?: DifferenceInCalendarWeeksOptions<ContextDate>,
+export function differenceInCalendarWeeks(
+  laterDate: DateFns.Arg,
+  earlierDate: DateFns.Arg,
+  options?: DifferenceInCalendarWeeksOptions | undefined,
 ): number {
-  const startOfWeekLeft = startOfWeek(dateLeft, options);
-  const startOfWeekRight = startOfWeek(dateRight, options);
+  const [laterDate_, earlierDate_] = normalizeDates(
+    options?.in,
+    laterDate,
+    earlierDate,
+  );
 
-  const timestampLeft =
-    +startOfWeekLeft - getTimezoneOffsetInMilliseconds(startOfWeekLeft);
-  const timestampRight =
-    +startOfWeekRight - getTimezoneOffsetInMilliseconds(startOfWeekRight);
+  const laterStartOfWeek = startOfWeek(laterDate_, options);
+  const earlierStartOfWeek = startOfWeek(earlierDate_, options);
 
-  return Math.round((timestampLeft - timestampRight) / millisecondsInWeek);
+  const laterTimestamp =
+    +laterStartOfWeek - getTimezoneOffsetInMilliseconds(laterStartOfWeek);
+  const earlierTimestamp =
+    +earlierStartOfWeek - getTimezoneOffsetInMilliseconds(earlierStartOfWeek);
+
+  return Math.round((laterTimestamp - earlierTimestamp) / millisecondsInWeek);
 }

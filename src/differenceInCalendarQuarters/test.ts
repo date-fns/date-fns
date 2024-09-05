@@ -1,4 +1,4 @@
-import { tz } from "@date-fns/tz";
+import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
 import { type DateFns } from "../types.js";
 import { differenceInCalendarQuarters } from "./index.js";
@@ -95,6 +95,24 @@ describe("differenceInCalendarQuarters", () => {
   it("returns NaN if the both dates are `Invalid Date`", () => {
     const result = differenceInCalendarQuarters(new Date(NaN), new Date(NaN));
     expect(isNaN(result)).toBe(true);
+  });
+
+  it("allows dates to be of different types", () => {
+    function _test<DateType1 extends Date, DateType2 extends Date>(
+      arg1: DateType1 | number | string,
+      arg2: DateType2 | number | string,
+    ) {
+      differenceInCalendarQuarters(arg1, arg2);
+    }
+  });
+
+  it("normalizes the dates", () => {
+    const dateLeft = new TZDate(2024, 3, 1, "Asia/Singapore");
+    const dateRight = new TZDate(2023, 11, 1, "America/New_York");
+    expect(differenceInCalendarQuarters(+dateLeft, +dateRight)).toBe(2);
+    expect(differenceInCalendarQuarters(+dateRight, +dateLeft)).toBe(-2);
+    expect(differenceInCalendarQuarters(dateLeft, dateRight)).toBe(2);
+    expect(differenceInCalendarQuarters(dateRight, dateLeft)).toBe(-1);
   });
 
   describe("context", () => {

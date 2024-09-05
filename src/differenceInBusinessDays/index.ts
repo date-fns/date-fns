@@ -3,14 +3,14 @@ import { differenceInCalendarDays } from "../differenceInCalendarDays/index.js";
 import { isSameDay } from "../isSameDay/index.js";
 import { isValid } from "../isValid/index.js";
 import { isWeekend } from "../isWeekend/index.js";
-import { toDate } from "../toDate/index.js";
+import { normalizeDates } from "../_lib/normalizeDates/index.js";
 import { type DateFns } from "../types.js";
 
 /**
  * The {@link differenceInBusinessDays} function options.
  */
-export interface DifferenceInBusinessDaysOptions<DateType extends Date>
-  extends DateFns.ContextOptions<DateType> {}
+export interface DifferenceInBusinessDaysOptions
+  extends DateFns.ContextOptions<Date> {}
 
 /**
  * @name differenceInBusinessDays
@@ -23,11 +23,8 @@ export interface DifferenceInBusinessDaysOptions<DateType extends Date>
  * Like `differenceInCalendarDays`, the function removes the times from
  * the dates before calculating the difference.
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- * @typeParam ContextDate - The `Date` type of the context function.
- *
- * @param dateLeft - The later date
- * @param dateRight - The earlier date
+ * @param laterDate - The later date
+ * @param earlierDate - The earlier date
  * @param options - An object with options
  *
  * @returns The number of business days
@@ -65,32 +62,31 @@ export interface DifferenceInBusinessDaysOptions<DateType extends Date>
  * )
  * //=> 0
  */
-export function differenceInBusinessDays<
-  DateType extends Date,
-  ContextDate extends Date,
->(
-  dateLeft: DateType | number | string,
-  dateRight: DateType | number | string,
-  options?: DifferenceInBusinessDaysOptions<ContextDate> | undefined,
+export function differenceInBusinessDays(
+  laterDate: DateFns.Arg,
+  earlierDate: DateFns.Arg,
+  options?: DifferenceInBusinessDaysOptions | undefined,
 ): number {
-  const _dateLeft = toDate(dateLeft, options?.in);
-  let _dateRight = toDate(dateRight, options?.in);
+  const [laterDate_, earlierDate_] = normalizeDates(
+    options?.in,
+    laterDate,
+    earlierDate,
+  );
 
-  if (!isValid(_dateLeft) || !isValid(_dateRight)) return NaN;
+  if (!isValid(laterDate_) || !isValid(earlierDate_)) return NaN;
 
-  const calendarDifference = differenceInCalendarDays(_dateLeft, _dateRight);
-  const sign = calendarDifference < 0 ? -1 : 1;
-
-  const weeks = Math.trunc(calendarDifference / 7);
+  const diff = differenceInCalendarDays(laterDate_, earlierDate_);
+  const sign = diff < 0 ? -1 : 1;
+  const weeks = Math.trunc(diff / 7);
 
   let result = weeks * 5;
-  _dateRight = addDays(_dateRight, weeks * 7);
+  let movingDate = addDays(earlierDate_, weeks * 7);
 
   // the loop below will run at most 6 times to account for the remaining days that don't makeup a full week
-  while (!isSameDay(_dateLeft, _dateRight)) {
+  while (!isSameDay(laterDate_, movingDate)) {
     // sign is used to account for both negative and positive differences
-    result += isWeekend(_dateRight, options) ? 0 : sign;
-    _dateRight = addDays(_dateRight, sign);
+    result += isWeekend(movingDate, options) ? 0 : sign;
+    movingDate = addDays(movingDate, sign);
   }
 
   // Prevent negative zero

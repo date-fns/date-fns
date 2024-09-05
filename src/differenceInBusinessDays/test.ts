@@ -1,4 +1,4 @@
-import { tz } from "@date-fns/tz";
+import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
 import { type DateFns } from "../types.js";
 import { differenceInBusinessDays } from "./index.js";
@@ -58,6 +58,24 @@ describe("differenceInBusinessDays", () => {
       new Date(2014, 0, 10).getTime(),
     );
     expect(result).toBe(135);
+  });
+
+  it("normalizes the dates", () => {
+    const dateLeft = new TZDate(2025, 0, 1, "Asia/Singapore");
+    const dateRight = new TZDate(2024, 0, 1, "America/New_York");
+    expect(differenceInBusinessDays(+dateLeft, +dateRight)).toBe(262);
+    expect(differenceInBusinessDays(+dateRight, +dateLeft)).toBe(-262);
+    expect(differenceInBusinessDays(dateLeft, dateRight)).toBe(262);
+    expect(differenceInBusinessDays(dateRight, dateLeft)).toBe(-261);
+  });
+
+  it("allows dates to be of different types", () => {
+    function _test<DateType1 extends Date, DateType2 extends Date>(
+      arg1: DateType1 | number | string,
+      arg2: DateType2 | number | string,
+    ) {
+      differenceInBusinessDays(arg1, arg2);
+    }
   });
 
   describe("context", () => {

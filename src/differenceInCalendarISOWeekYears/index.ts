@@ -1,11 +1,12 @@
+import { normalizeDates } from "../_lib/normalizeDates/index.js";
 import { getISOWeekYear } from "../getISOWeekYear/index.js";
 import { type DateFns } from "../types.js";
 
 /**
  * The {@link differenceInCalendarISOWeekYears} function options.
  */
-export interface DifferenceInCalendarISOWeekYearsOptions<DateType extends Date>
-  extends DateFns.ContextOptions<DateType> {}
+export interface DifferenceInCalendarISOWeekYearsOptions
+  extends DateFns.ContextOptions<Date> {}
 
 /**
  * @name differenceInCalendarISOWeekYears
@@ -17,11 +18,8 @@ export interface DifferenceInCalendarISOWeekYearsOptions<DateType extends Date>
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- * @typeParam ContextDate - The `Date` type of the context function.
- *
- * @param dateLeft - The later date
- * @param dateRight - The earlier date
+ * @param laterDate - The later date
+ * @param earlierDate - The earlier date
  * @param options - An object with options
  *
  * @returns The number of calendar ISO week-numbering years
@@ -34,13 +32,17 @@ export interface DifferenceInCalendarISOWeekYearsOptions<DateType extends Date>
  * )
  * //=> 2
  */
-export function differenceInCalendarISOWeekYears<
-  DateType extends Date,
-  ContextDate extends Date,
->(
-  dateLeft: DateType | number | string,
-  dateRight: DateType | number | string,
-  options?: DifferenceInCalendarISOWeekYearsOptions<ContextDate> | undefined,
+export function differenceInCalendarISOWeekYears(
+  laterDate: DateFns.Arg,
+  earlierDate: DateFns.Arg,
+  options?: DifferenceInCalendarISOWeekYearsOptions | undefined,
 ): number {
-  return getISOWeekYear(dateLeft, options) - getISOWeekYear(dateRight, options);
+  const [laterDate_, earlierDate_] = normalizeDates(
+    options?.in,
+    laterDate,
+    earlierDate,
+  );
+  return (
+    getISOWeekYear(laterDate_, options) - getISOWeekYear(earlierDate_, options)
+  );
 }

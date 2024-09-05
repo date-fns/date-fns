@@ -1,3 +1,4 @@
+import { normalizeDates } from "../_lib/normalizeDates/index.js";
 import { millisecondsInWeek } from "../constants/index.js";
 import { startOfISOWeek } from "../startOfISOWeek/index.js";
 import { getTimezoneOffsetInMilliseconds } from "../_lib/getTimezoneOffsetInMilliseconds/index.js";
@@ -6,8 +7,8 @@ import { type DateFns } from "../types.js";
 /**
  * The {@link differenceInCalendarISOWeeks} function options.
  */
-export interface DifferenceInCalendarISOWeeksOptions<DateType extends Date>
-  extends DateFns.ContextOptions<DateType> {}
+export interface DifferenceInCalendarISOWeeksOptions
+  extends DateFns.ContextOptions<Date> {}
 
 /**
  * @name differenceInCalendarISOWeeks
@@ -19,10 +20,8 @@ export interface DifferenceInCalendarISOWeeksOptions<DateType extends Date>
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- *
- * @param dateLeft - The later date
- * @param dateRight - The earlier date
+ * @param laterDate - The later date
+ * @param earlierDate - The earlier date
  * @param options - An object with options
  *
  * @returns The number of calendar ISO weeks
@@ -32,19 +31,22 @@ export interface DifferenceInCalendarISOWeeksOptions<DateType extends Date>
  * const result = differenceInCalendarISOWeeks(
  *   new Date(2014, 6, 21),
  *   new Date(2014, 6, 6),
- * )
+ * );
  * //=> 3
  */
-export function differenceInCalendarISOWeeks<
-  DateType extends Date,
-  ContextDate extends Date,
->(
-  dateLeft: DateType | number | string,
-  dateRight: DateType | number | string,
-  options?: DifferenceInCalendarISOWeeksOptions<ContextDate> | undefined,
+export function differenceInCalendarISOWeeks(
+  laterDate: DateFns.Arg,
+  earlierDate: DateFns.Arg,
+  options?: DifferenceInCalendarISOWeeksOptions | undefined,
 ): number {
-  const startOfISOWeekLeft = startOfISOWeek(dateLeft, options);
-  const startOfISOWeekRight = startOfISOWeek(dateRight, options);
+  const [laterDate_, earlierDate_] = normalizeDates(
+    options?.in,
+    laterDate,
+    earlierDate,
+  );
+
+  const startOfISOWeekLeft = startOfISOWeek(laterDate_);
+  const startOfISOWeekRight = startOfISOWeek(earlierDate_);
 
   const timestampLeft =
     +startOfISOWeekLeft - getTimezoneOffsetInMilliseconds(startOfISOWeekLeft);

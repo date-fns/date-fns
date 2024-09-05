@@ -1,4 +1,4 @@
-import { tz } from "@date-fns/tz";
+import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
 import { type DateFns } from "../types.js";
 import { differenceInCalendarWeeks } from "./index.js";
@@ -149,6 +149,24 @@ describe("differenceInCalendarWeeks", () => {
   it("returns NaN if the both dates are `Invalid Date`", () => {
     const result = differenceInCalendarWeeks(new Date(NaN), new Date(NaN));
     expect(isNaN(result)).toBe(true);
+  });
+
+  it("allows dates to be of different types", () => {
+    function _test<DateType1 extends Date, DateType2 extends Date>(
+      arg1: DateType1 | number | string,
+      arg2: DateType2 | number | string,
+    ) {
+      differenceInCalendarWeeks(arg1, arg2);
+    }
+  });
+
+  it("normalizes the dates", () => {
+    const dateLeft = new TZDate(2024, 6, 7, "Asia/Singapore");
+    const dateRight = new TZDate(2024, 5, 30, "America/New_York");
+    expect(differenceInCalendarWeeks(+dateLeft, +dateRight)).toBe(1);
+    expect(differenceInCalendarWeeks(+dateRight, +dateLeft)).toBe(-1);
+    expect(differenceInCalendarWeeks(dateLeft, dateRight)).toBe(1);
+    expect(differenceInCalendarWeeks(dateRight, dateLeft)).toBe(0);
   });
 
   describe("context", () => {

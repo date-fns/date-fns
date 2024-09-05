@@ -1,15 +1,13 @@
 import { getRoundingMethod } from "../_lib/getRoundingMethod/index.js";
 import { differenceInDays } from "../differenceInDays/index.js";
-import { toDate } from "../toDate/index.js"; // Added import to handle context
-import type { RoundingOptions } from "../types.js";
-import { type DateFns } from "../types.js";
+import type { DateFns, RoundingOptions } from "../types.js";
 
 /**
  * The {@link differenceInWeeks} function options.
  */
-export interface DifferenceInWeeksOptions<DateType extends Date>
+export interface DifferenceInWeeksOptions
   extends RoundingOptions,
-    DateFns.ContextOptions<DateType> {}
+    DateFns.ContextOptions<Date> {}
 
 /**
  * @name differenceInWeeks
@@ -27,10 +25,8 @@ export interface DifferenceInWeeksOptions<DateType extends Date>
  * To ignore DST and only measure exact 7*24-hour periods, use this instead:
  * `Math.trunc(differenceInHours(dateLeft, dateRight)/(7*24))|0`.
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- *
- * @param dateLeft - The later date
- * @param dateRight - The earlier date
+ * @param laterDate - The later date
+ * @param earlierDate - The earlier date
  * @param options - An object with options
  *
  * @returns The number of full weeks
@@ -53,16 +49,11 @@ export interface DifferenceInWeeksOptions<DateType extends Date>
  * )
  * //=> 8
  */
-export function differenceInWeeks<
-  DateType extends Date,
-  ContextDate extends Date,
->(
-  dateLeft: DateType | number | string,
-  dateRight: DateType | number | string,
-  options?: DifferenceInWeeksOptions<ContextDate>,
+export function differenceInWeeks(
+  laterDate: DateFns.Arg,
+  earlierDate: DateFns.Arg,
+  options?: DifferenceInWeeksOptions | undefined,
 ): number {
-  const dateLeft_ = toDate(dateLeft, options?.in);
-  const dateRight_ = toDate(dateRight, options?.in);
-  const diff = differenceInDays(dateLeft_, dateRight_) / 7;
+  const diff = differenceInDays(laterDate, earlierDate, options) / 7;
   return getRoundingMethod(options?.roundingMethod)(diff);
 }
