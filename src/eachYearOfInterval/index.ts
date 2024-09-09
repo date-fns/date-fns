@@ -1,6 +1,6 @@
 import { normalizeInterval } from "../_lib/normalizeInterval/index.js";
 import { constructFrom } from "../constructFrom/index.js";
-import type { Interval, StepOptions, DateFns } from "../types.js";
+import type { DateFns, Interval, StepOptions } from "../types.js";
 
 /**
  * The {@link eachYearOfInterval} function options.

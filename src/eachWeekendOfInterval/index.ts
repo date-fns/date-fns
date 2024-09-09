@@ -1,8 +1,8 @@
-import { eachDayOfInterval } from "../eachDayOfInterval/index.js";
-import { isWeekend } from "../isWeekend/index.js";
 import { normalizeInterval } from "../_lib/normalizeInterval/index.js";
 import { constructFrom } from "../constructFrom/index.js";
-import type { Interval, DateFns } from "../types.js";
+import { eachDayOfInterval } from "../eachDayOfInterval/index.js";
+import { isWeekend } from "../isWeekend/index.js";
+import type { DateFns, Interval } from "../types.js";
 
 /**
  * The {@link eachWeekendOfInterval} function options.
