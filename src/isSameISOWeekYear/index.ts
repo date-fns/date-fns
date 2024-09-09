@@ -1,11 +1,12 @@
 import { startOfISOWeekYear } from "../startOfISOWeekYear/index.js";
 import { type DateFns } from "../types.js";
+import { normalizeDates } from "../_lib/normalizeDates/index.js";
 
 /**
  * The {@link isSameISOWeekYear} function options.
  */
-export interface IsSameISOWeekYearOptions<DateType extends Date>
-  extends DateFns.ContextOptions<DateType> {}
+export interface IsSameISOWeekYearOptions
+  extends DateFns.ContextOptions<Date> {}
 
 /**
  * @name isSameISOWeekYear
@@ -17,11 +18,8 @@ export interface IsSameISOWeekYearOptions<DateType extends Date>
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- * @typeParam ContextDate - The `Date` type of the context function.
- *
- * @param dateLeft - The first date to check
- * @param dateRight - The second date to check
+ * @param laterDate - The first date to check
+ * @param earlierDate - The second date to check
  * @param options - An object with options
  *
  * @returns The dates are in the same ISO week-numbering year
@@ -31,16 +29,15 @@ export interface IsSameISOWeekYearOptions<DateType extends Date>
  * const result = isSameISOWeekYear(new Date(2003, 11, 29), new Date(2005, 0, 2))
  * //=> true
  */
-export function isSameISOWeekYear<
-  DateType extends Date,
-  ContextDate extends Date,
->(
-  dateLeft: DateType | number | string,
-  dateRight: DateType | number | string,
-  options?: IsSameISOWeekYearOptions<ContextDate> | undefined,
+export function isSameISOWeekYear(
+  laterDate: DateFns.Arg,
+  earlierDate: DateFns.Arg,
+  options?: IsSameISOWeekYearOptions | undefined,
 ): boolean {
-  return (
-    +startOfISOWeekYear(dateLeft, options) ===
-    +startOfISOWeekYear(dateRight, options)
+  const [laterDate_, earlierDate_] = normalizeDates(
+    options?.in,
+    laterDate,
+    earlierDate,
   );
+  return +startOfISOWeekYear(laterDate_) === +startOfISOWeekYear(earlierDate_);
 }

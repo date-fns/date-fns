@@ -1,4 +1,4 @@
-import { tz } from "@date-fns/tz";
+import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
 import { type DateFns } from "../types.js";
 import { isSameWeek } from "./index.js";
@@ -77,6 +77,24 @@ describe("isSameWeek", () => {
   it("returns false if the both dates are `Invalid Date`", () => {
     const result = isSameWeek(new Date(NaN), new Date(NaN));
     expect(result).toBe(false);
+  });
+
+  it("allows dates to be of different types", () => {
+    function _test<DateType1 extends Date, DateType2 extends Date>(
+      arg1: DateType1 | number | string,
+      arg2: DateType2 | number | string,
+    ) {
+      isSameWeek(arg1, arg2);
+    }
+  });
+
+  it("normalizes the dates", () => {
+    const dateLeft = new TZDate(2024, 8, 2, 0, "America/New_York");
+    const dateRight = new TZDate(2024, 8, 9, 4, "Europe/London");
+    expect(isSameWeek(+dateLeft, +dateRight, { weekStartsOn: 1 })).toBe(false);
+    expect(isSameWeek(+dateRight, +dateLeft, { weekStartsOn: 1 })).toBe(false);
+    expect(isSameWeek(dateLeft, dateRight, { weekStartsOn: 1 })).toBe(true);
+    expect(isSameWeek(dateRight, dateLeft, { weekStartsOn: 1 })).toBe(false);
   });
 
   describe("context", () => {

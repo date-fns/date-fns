@@ -1,12 +1,32 @@
-import { toDate } from "../toDate/index.js";
-import type { Interval, StepOptions, DateFns } from "../types.js";
+import { normalizeInterval } from "../_lib/normalizeInterval/index.js";
+import { constructFrom } from "../constructFrom/index.js";
+import type { DateFns, Interval, StepOptions } from "../types.js";
 
 /**
  * The {@link eachDayOfInterval} function options.
  */
-export interface EachDayOfIntervalOptions<DateType extends Date>
+export interface EachDayOfIntervalOptions<DateType extends Date = Date>
   extends StepOptions,
     DateFns.ContextOptions<DateType> {}
+
+/**
+ * The {@link eachDayOfInterval} function result type. It resolves the proper data type.
+ * It uses the first argument date object type, starting from the date argument,
+ * then the start interval date, and finally the end interval date. If
+ * a context function is passed, it uses the context function return type.
+ */
+export type EachDayOfIntervalResult<
+  IntervalType extends Interval,
+  Options extends EachDayOfIntervalOptions | undefined,
+> = Array<
+  Options extends EachDayOfIntervalOptions<infer DateType>
+    ? DateType
+    : IntervalType["start"] extends Date
+      ? IntervalType["start"]
+      : IntervalType["end"] extends Date
+        ? IntervalType["end"]
+        : Date
+>;
 
 /**
  * @name eachDayOfInterval
@@ -39,19 +59,18 @@ export interface EachDayOfIntervalOptions<DateType extends Date>
  * // ]
  */
 export function eachDayOfInterval<
-  DateType extends Date,
-  ResultDate extends Date = DateType,
+  IntervalType extends Interval,
+  Options extends EachDayOfIntervalOptions | undefined = undefined,
 >(
-  interval: Interval<DateType>,
-  options?: EachDayOfIntervalOptions<ResultDate>,
-): ResultDate[] {
-  const startDate = toDate(interval.start, options?.in);
-  const endDate = toDate(interval.end, options?.in);
+  interval: IntervalType,
+  options?: Options,
+): EachDayOfIntervalResult<IntervalType, Options> {
+  const { start, end } = normalizeInterval(options?.in, interval);
 
-  let reversed = +startDate > +endDate;
-  const endTime = reversed ? +startDate : +endDate;
-  const currentDate = reversed ? endDate : startDate;
-  currentDate.setHours(0, 0, 0, 0);
+  let reversed = +start > +end;
+  const endTime = reversed ? +start : +end;
+  const date = reversed ? end : start;
+  date.setHours(0, 0, 0, 0);
 
   let step = options?.step ?? 1;
   if (!step) return [];
@@ -60,12 +79,12 @@ export function eachDayOfInterval<
     reversed = !reversed;
   }
 
-  const dates: ResultDate[] = [];
+  const dates: EachDayOfIntervalResult<IntervalType, Options> = [];
 
-  while (+currentDate <= endTime) {
-    dates.push(toDate(currentDate, options?.in));
-    currentDate.setDate(currentDate.getDate() + step);
-    currentDate.setHours(0, 0, 0, 0);
+  while (+date <= endTime) {
+    dates.push(constructFrom(start, date));
+    date.setDate(date.getDate() + step);
+    date.setHours(0, 0, 0, 0);
   }
 
   return reversed ? dates.reverse() : dates;

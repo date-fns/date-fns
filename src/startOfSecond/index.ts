@@ -36,7 +36,7 @@ export function startOfSecond<
   date: DateType | number | string,
   options?: StartOfSecondOptions<ResultDate> | undefined,
 ): ResultDate {
-  const _date = toDate(date, options?.in);
-  _date.setMilliseconds(0);
-  return _date;
+  const date_ = toDate(date, options?.in);
+  date_.setMilliseconds(0);
+  return date_;
 }

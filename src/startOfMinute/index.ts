@@ -36,7 +36,7 @@ export function startOfMinute<
   date: DateType | number | string,
   options?: StartOfMinuteOptions<ResultDate> | undefined,
 ): ResultDate {
-  const _date = toDate(date, options?.in);
-  _date.setSeconds(0, 0);
-  return _date;
+  const date_ = toDate(date, options?.in);
+  date_.setSeconds(0, 0);
+  return date_;
 }

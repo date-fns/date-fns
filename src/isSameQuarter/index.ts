@@ -1,11 +1,11 @@
+import { normalizeDates } from "../_lib/normalizeDates/index.js";
 import { startOfQuarter } from "../startOfQuarter/index.js";
 import { type DateFns } from "../types.js";
 
 /**
  * The {@link isSameQuarter} function options.
  */
-export interface IsSameQuarterOptions<DateType extends Date>
-  extends DateFns.ContextOptions<DateType> {}
+export interface IsSameQuarterOptions extends DateFns.ContextOptions<Date> {}
 
 /**
  * @name isSameQuarter
@@ -15,11 +15,8 @@ export interface IsSameQuarterOptions<DateType extends Date>
  * @description
  * Are the given dates in the same quarter (and year)?
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- * @typeParam ContextDate - The `Date` type of the context function.
- *
- * @param dateLeft - The first date to check
- * @param dateRight - The second date to check
+ * @param laterDate - The first date to check
+ * @param earlierDate - The second date to check
  * @param options - An object with options
  *
  * @returns The dates are in the same quarter (and year)
@@ -34,12 +31,15 @@ export interface IsSameQuarterOptions<DateType extends Date>
  * const result = isSameQuarter(new Date(2014, 0, 1), new Date(2015, 0, 1))
  * //=> false
  */
-export function isSameQuarter<DateType extends Date, ContextDate extends Date>(
-  dateLeft: DateType | number | string,
-  dateRight: DateType | number | string,
-  options?: IsSameQuarterOptions<ContextDate> | undefined,
+export function isSameQuarter(
+  laterDate: DateFns.Arg,
+  earlierDate: DateFns.Arg,
+  options?: IsSameQuarterOptions | undefined,
 ): boolean {
-  return (
-    +startOfQuarter(dateLeft, options) === +startOfQuarter(dateRight, options)
+  const [dateLeft_, dateRight_] = normalizeDates(
+    options?.in,
+    laterDate,
+    earlierDate,
   );
+  return +startOfQuarter(dateLeft_) === +startOfQuarter(dateRight_);
 }

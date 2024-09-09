@@ -1,6 +1,4 @@
-import { tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import type { DateFns, Interval } from "../types.js";
 import { getOverlappingDaysInIntervals } from "./index.js";
 
 describe("getOverlappingDaysInIntervals", () => {
@@ -245,42 +243,5 @@ describe("getOverlappingDaysInIntervals", () => {
       },
     );
     expect(result).toBe(8137);
-  });
-
-  describe("context", () => {
-    it("allows to specify the context", () => {
-      const interval1 = {
-        start: "2024-04-10T00:00:00Z",
-        end: "2024-04-15T00:00:00Z",
-      };
-      const interval2 = {
-        start: "2024-04-11T15:00:00Z",
-        end: "2024-04-18T00:00:00Z",
-      };
-      const interval3 = {
-        start: "2024-04-10T16:00:00Z",
-        end: "2024-04-18T00:00:00Z",
-      };
-      expect(
-        getOverlappingDaysInIntervals(interval1, interval2, {
-          in: tz("Asia/Singapore"),
-        }),
-      ).toBe(4);
-      expect(
-        getOverlappingDaysInIntervals(interval1, interval3, {
-          in: tz("Asia/Singapore"),
-        }),
-      ).toBe(5);
-    });
-
-    it("doesn't enforce argument and context to be of the same type", () => {
-      function _test<DateType extends Date, ResultDate extends Date = DateType>(
-        arg1: Interval<DateType>,
-        arg2: Interval<DateType>,
-        options?: DateFns.ContextOptions<ResultDate>,
-      ) {
-        getOverlappingDaysInIntervals(arg1, arg2, { in: options?.in });
-      }
-    });
   });
 });

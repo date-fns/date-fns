@@ -1,3 +1,4 @@
+import { normalizeDates } from "../_lib/normalizeDates/index.js";
 import { startOfWeek } from "../startOfWeek/index.js";
 import type { LocalizedOptions, WeekOptions } from "../types.js";
 import { type DateFns } from "../types.js";
@@ -5,10 +6,10 @@ import { type DateFns } from "../types.js";
 /**
  * The {@link isSameWeek} function options.
  */
-export interface IsSameWeekOptions<DateType extends Date>
+export interface IsSameWeekOptions
   extends WeekOptions,
     LocalizedOptions<"options">,
-    DateFns.ContextOptions<DateType> {}
+    DateFns.ContextOptions<Date> {}
 
 /**
  * @name isSameWeek
@@ -18,11 +19,8 @@ export interface IsSameWeekOptions<DateType extends Date>
  * @description
  * Are the given dates in the same week (and month and year)?
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- * @typeParam ContextDate - The `Date` type of the context function.
- *
- * @param dateLeft - The first date to check
- * @param dateRight - The second date to check
+ * @param laterDate - The first date to check
+ * @param earlierDate - The second date to check
  * @param options - An object with options
  *
  * @returns The dates are in the same week (and month and year)
@@ -45,10 +43,17 @@ export interface IsSameWeekOptions<DateType extends Date>
  * const result = isSameWeek(new Date(2014, 0, 1), new Date(2015, 0, 1))
  * //=> false
  */
-export function isSameWeek<DateType extends Date, ContextDate extends Date>(
-  dateLeft: DateType | number | string,
-  dateRight: DateType | number | string,
-  options?: IsSameWeekOptions<ContextDate>,
+export function isSameWeek(
+  laterDate: DateFns.Arg,
+  earlierDate: DateFns.Arg,
+  options?: IsSameWeekOptions,
 ): boolean {
-  return +startOfWeek(dateLeft, options) === +startOfWeek(dateRight, options);
+  const [laterDate_, earlierDate_] = normalizeDates(
+    options?.in,
+    laterDate,
+    earlierDate,
+  );
+  return (
+    +startOfWeek(laterDate_, options) === +startOfWeek(earlierDate_, options)
+  );
 }

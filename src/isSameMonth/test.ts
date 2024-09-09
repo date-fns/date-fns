@@ -1,4 +1,4 @@
-import { tz } from "@date-fns/tz";
+import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
 import { type DateFns } from "../types.js";
 import { isSameMonth } from "./index.js";
@@ -41,6 +41,24 @@ describe("isSameMonth", () => {
   it("returns false if the both dates are `Invalid Date`", () => {
     const result = isSameMonth(new Date(NaN), new Date(NaN));
     expect(result).toBe(false);
+  });
+
+  it("normalizes the dates", () => {
+    const dateLeft = new TZDate(2023, 11, 31, 23, "Asia/Singapore");
+    const dateRight = new TZDate(2023, 11, 31, 12, "America/New_York");
+    expect(isSameMonth(+dateLeft, +dateRight)).toBe(false);
+    expect(isSameMonth(+dateRight, +dateLeft)).toBe(false);
+    expect(isSameMonth(dateLeft, dateRight)).toBe(false);
+    expect(isSameMonth(dateRight, dateLeft)).toBe(true);
+  });
+
+  it("allows dates to be of different types", () => {
+    function _test<DateType1 extends Date, DateType2 extends Date>(
+      arg1: DateType1 | number | string,
+      arg2: DateType2 | number | string,
+    ) {
+      isSameMonth(arg1, arg2);
+    }
   });
 
   describe("context", () => {
