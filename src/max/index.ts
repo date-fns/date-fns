@@ -5,7 +5,7 @@ import { type DateFns } from "../types.js";
 /**
  * The {@link max} function options.
  */
-export interface MaxOptions<DateType extends Date>
+export interface MaxOptions<DateType extends Date = Date>
   extends DateFns.ContextOptions<DateType> {}
 
 /**

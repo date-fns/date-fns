@@ -4,7 +4,7 @@ import { type DateFns } from "../types.js";
 /**
  * The {@link subQuarters} function options.
  */
-export interface SubQuartersOptions<DateType extends Date>
+export interface SubQuartersOptions<DateType extends Date = Date>
   extends DateFns.ContextOptions<DateType> {}
 
 /**

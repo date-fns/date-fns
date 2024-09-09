@@ -5,7 +5,7 @@ import { type DateFns } from "../types.js";
 /**
  * The {@link addHours} function options.
  */
-export interface AddHoursOptions<DateType extends Date>
+export interface AddHoursOptions<DateType extends Date = Date>
   extends DateFns.ContextOptions<DateType> {}
 
 /**

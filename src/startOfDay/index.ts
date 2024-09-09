@@ -4,7 +4,7 @@ import { type DateFns } from "../types.js";
 /**
  * The {@link startOfDay} function options.
  */
-export interface StartOfDayOptions<DateType extends Date>
+export interface StartOfDayOptions<DateType extends Date = Date>
   extends DateFns.ContextOptions<DateType> {}
 
 /**

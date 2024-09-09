@@ -5,7 +5,7 @@ import { type DateFns } from "../types.js";
 /**
  * The {@link getDaysInMonth} function options.
  */
-export interface GetDaysInMonthOptions<DateType extends Date>
+export interface GetDaysInMonthOptions<DateType extends Date = Date>
   extends DateFns.ContextOptions<DateType> {}
 
 /**

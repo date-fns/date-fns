@@ -12,7 +12,7 @@ import type {
 /**
  * The {@link getWeek} function options.
  */
-export interface GetWeekOptions<DateType extends Date>
+export interface GetWeekOptions<DateType extends Date = Date>
   extends LocalizedOptions<"options">,
     WeekOptions,
     FirstWeekContainsDateOptions,

@@ -3,7 +3,7 @@ import { endOfMonth } from "../endOfMonth/index.js";
 import { toDate } from "../toDate/index.js";
 import { type DateFns } from "../types.js";
 
-export interface IsLastDayOfMonthOptions<DateType extends Date>
+export interface IsLastDayOfMonthOptions<DateType extends Date = Date>
   extends DateFns.ContextOptions<DateType> {}
 
 /**

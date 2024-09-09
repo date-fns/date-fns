@@ -9,7 +9,7 @@ import { constructFrom } from "../constructFrom/index.js";
 /**
  * The {@link parseISO} function options.
  */
-export interface ParseISOOptions<DateType extends Date>
+export interface ParseISOOptions<DateType extends Date = Date>
   extends DateFns.ContextOptions<DateType> {
   /** The additional number of digits in the extended year format */
   additionalDigits?: 0 | 1 | 2;

@@ -6,7 +6,7 @@ import { type DateFns } from "../types.js";
 /**
  * The {@link isThisMonth} function options.
  */
-export interface IsThisMonthOptions<DateType extends Date>
+export interface IsThisMonthOptions<DateType extends Date = Date>
   extends DateFns.ContextOptions<DateType> {}
 
 /**

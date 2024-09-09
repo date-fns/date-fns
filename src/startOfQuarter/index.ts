@@ -4,7 +4,7 @@ import { type DateFns } from "../types.js";
 /**
  * The {@link startOfQuarter} function options.
  */
-export interface StartOfQuarterOptions<DateType extends Date>
+export interface StartOfQuarterOptions<DateType extends Date = Date>
   extends DateFns.ContextOptions<DateType> {}
 
 /**

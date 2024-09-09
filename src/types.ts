@@ -340,7 +340,7 @@ export namespace DateFns {
   /**
    * The context options. Used to build function options.
    */
-  export interface ContextOptions<DateType extends Date> {
+  export interface ContextOptions<DateType extends Date = Date> {
     /**
      * The context to use in the function. It allows to normalize the arguments
      * to a specific date instance, which is useful for extensions like [`TZDate`](https://github.com/date-fns/tz).

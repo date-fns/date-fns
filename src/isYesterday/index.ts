@@ -7,7 +7,7 @@ import { type DateFns } from "../types.js";
 /**
  * The {@link isYesterday} function options.
  */
-export interface IsYesterdayOptions<DateType extends Date>
+export interface IsYesterdayOptions<DateType extends Date = Date>
   extends DateFns.ContextOptions<DateType> {}
 
 /**

@@ -27,7 +27,7 @@ export { longFormatters, parsers };
 /**
  * The {@link parse} function options.
  */
-export interface ParseOptions<DateType extends Date>
+export interface ParseOptions<DateType extends Date = Date>
   extends LocalizedOptions<"options" | "match" | "formatLong">,
     FirstWeekContainsDateOptions,
     WeekOptions,

@@ -4,7 +4,7 @@ import { type DateFns } from "../types.js";
 /**
  * The {@link lastDayOfISOWeek} function options.
  */
-export interface LastDayOfISOWeekOptions<DateType extends Date>
+export interface LastDayOfISOWeekOptions<DateType extends Date = Date>
   extends DateFns.ContextOptions<DateType> {}
 
 /**
