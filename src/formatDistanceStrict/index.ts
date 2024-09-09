@@ -2,6 +2,7 @@ import { defaultLocale } from "../_lib/defaultLocale/index.js";
 import { getDefaultOptions } from "../_lib/defaultOptions/index.js";
 import { getRoundingMethod } from "../_lib/getRoundingMethod/index.js";
 import { getTimezoneOffsetInMilliseconds } from "../_lib/getTimezoneOffsetInMilliseconds/index.js";
+import { normalizeDates } from "../_lib/normalizeDates/index.js";
 import { compareAsc } from "../compareAsc/index.js";
 import {
   millisecondsInMinute,
@@ -9,15 +10,15 @@ import {
   minutesInMonth,
   minutesInYear,
 } from "../constants/index.js";
-import { toDate } from "../toDate/index.js";
-import type { LocalizedOptions, RoundingOptions } from "../types.js";
+import type { DateFns, LocalizedOptions, RoundingOptions } from "../types.js";
 
 /**
  * The {@link formatDistanceStrict} function options.
  */
 export interface FormatDistanceStrictOptions
   extends LocalizedOptions<"formatDistance">,
-    RoundingOptions {
+    RoundingOptions,
+    DateFns.ContextOptions<Date> {
   /** Add "X ago"/"in X" in the locale language */
   addSuffix?: boolean;
   /** If specified, will force the unit */
@@ -54,10 +55,8 @@ export type FormatDistanceStrictUnit =
  * | 1 ... 11 months        | [1..11] months      |
  * | 1 ... N years          | [1..N]  years       |
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- *
- * @param date - The date
- * @param baseDate - The date to compare with
+ * @param laterDate - The date
+ * @param earlierDate - The date to compare with
  * @param options - An object with options
  *
  * @returns The distance in words
@@ -115,15 +114,15 @@ export type FormatDistanceStrictUnit =
  * //=> '1 jaro'
  */
 
-export function formatDistanceStrict<DateType extends Date>(
-  date: DateType | number | string,
-  baseDate: DateType | number | string,
+export function formatDistanceStrict(
+  laterDate: DateFns.Arg,
+  earlierDate: DateFns.Arg,
   options?: FormatDistanceStrictOptions,
 ): string {
   const defaultOptions = getDefaultOptions();
   const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale;
 
-  const comparison = compareAsc(date, baseDate);
+  const comparison = compareAsc(laterDate, earlierDate);
 
   if (isNaN(comparison)) {
     throw new RangeError("Invalid time value");
@@ -134,24 +133,19 @@ export function formatDistanceStrict<DateType extends Date>(
     comparison: comparison as -1 | 0 | 1,
   });
 
-  let dateLeft;
-  let dateRight;
-  if (comparison > 0) {
-    dateLeft = toDate(baseDate);
-    dateRight = toDate(date);
-  } else {
-    dateLeft = toDate(date);
-    dateRight = toDate(baseDate);
-  }
+  const [laterDate_, earlierDate_] = normalizeDates(
+    options?.in,
+    ...(comparison > 0 ? [earlierDate, laterDate] : [laterDate, earlierDate]),
+  );
 
   const roundingMethod = getRoundingMethod(options?.roundingMethod ?? "round");
 
-  const milliseconds = dateRight.getTime() - dateLeft.getTime();
+  const milliseconds = earlierDate_.getTime() - laterDate_.getTime();
   const minutes = milliseconds / millisecondsInMinute;
 
   const timezoneOffset =
-    getTimezoneOffsetInMilliseconds(dateRight) -
-    getTimezoneOffsetInMilliseconds(dateLeft);
+    getTimezoneOffsetInMilliseconds(earlierDate_) -
+    getTimezoneOffsetInMilliseconds(laterDate_);
 
   // Use DST-normalized difference in minutes for years, months and days;
   // use regular difference in minutes for hours, minutes and seconds.

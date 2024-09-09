@@ -1,18 +1,19 @@
+import { defaultLocale } from "../_lib/defaultLocale/index.js";
+import { getDefaultOptions } from "../_lib/defaultOptions/index.js";
+import { getTimezoneOffsetInMilliseconds } from "../_lib/getTimezoneOffsetInMilliseconds/index.js";
+import { normalizeDates } from "../_lib/normalizeDates/index.js";
 import { compareAsc } from "../compareAsc/index.js";
 import { minutesInDay, minutesInMonth } from "../constants/index.js";
 import { differenceInMonths } from "../differenceInMonths/index.js";
 import { differenceInSeconds } from "../differenceInSeconds/index.js";
-import { toDate } from "../toDate/index.js";
-import type { LocalizedOptions } from "../types.js";
-import { defaultLocale } from "../_lib/defaultLocale/index.js";
-import { getDefaultOptions } from "../_lib/defaultOptions/index.js";
-import { getTimezoneOffsetInMilliseconds } from "../_lib/getTimezoneOffsetInMilliseconds/index.js";
+import type { DateFns, LocalizedOptions } from "../types.js";
 
 /**
  * The {@link formatDistance} function options.
  */
 export interface FormatDistanceOptions
-  extends LocalizedOptions<"formatDistance"> {
+  extends LocalizedOptions<"formatDistance">,
+    DateFns.ContextOptions<Date> {
   /** Distances less than a minute are more detailed */
   includeSeconds?: boolean;
   /** Add "X ago"/"in X" in the locale language */
@@ -56,10 +57,8 @@ export interface FormatDistanceOptions
  * | 40 secs ... 60 secs    | less than a minute   |
  * | 60 secs ... 90 secs    | 1 minute             |
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- *
- * @param date - The date
- * @param baseDate - The date to compare with
+ * @param laterDate - The date
+ * @param earlierDate - The date to compare with
  * @param options - An object with options
  *
  * @returns The distance in words
@@ -99,40 +98,33 @@ export interface FormatDistanceOptions
  * })
  * //=> 'pli ol 1 jaro'
  */
-export function formatDistance<DateType extends Date>(
-  date: DateType | number | string,
-  baseDate: DateType | number | string,
+export function formatDistance(
+  laterDate: DateFns.Arg,
+  earlierDate: DateFns.Arg,
   options?: FormatDistanceOptions,
 ): string {
   const defaultOptions = getDefaultOptions();
   const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale;
   const minutesInAlmostTwoDays = 2520;
 
-  const comparison = compareAsc(date, baseDate);
+  const comparison = compareAsc(laterDate, earlierDate);
 
-  if (isNaN(comparison)) {
-    throw new RangeError("Invalid time value");
-  }
+  if (isNaN(comparison)) throw new RangeError("Invalid time value");
 
   const localizeOptions = Object.assign({}, options, {
     addSuffix: options?.addSuffix,
     comparison: comparison as -1 | 0 | 1,
   });
 
-  let dateLeft;
-  let dateRight;
-  if (comparison > 0) {
-    dateLeft = toDate(baseDate);
-    dateRight = toDate(date);
-  } else {
-    dateLeft = toDate(date);
-    dateRight = toDate(baseDate);
-  }
+  const [laterDate_, earlierDate_] = normalizeDates(
+    options?.in,
+    ...(comparison > 0 ? [earlierDate, laterDate] : [laterDate, earlierDate]),
+  );
 
-  const seconds = differenceInSeconds(dateRight, dateLeft);
+  const seconds = differenceInSeconds(earlierDate_, laterDate_);
   const offsetInSeconds =
-    (getTimezoneOffsetInMilliseconds(dateRight) -
-      getTimezoneOffsetInMilliseconds(dateLeft)) /
+    (getTimezoneOffsetInMilliseconds(earlierDate_) -
+      getTimezoneOffsetInMilliseconds(laterDate_)) /
     1000;
   const minutes = Math.round((seconds - offsetInSeconds) / 60);
   let months;
@@ -189,7 +181,7 @@ export function formatDistance<DateType extends Date>(
     return locale.formatDistance("aboutXMonths", months, localizeOptions);
   }
 
-  months = differenceInMonths(dateRight, dateLeft);
+  months = differenceInMonths(earlierDate_, laterDate_);
 
   // 2 months up to 12 months
   if (months < 12) {
