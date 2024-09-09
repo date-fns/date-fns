@@ -2512,7 +2512,7 @@ describe("parse", () => {
           "2024-04-07T00:00:00Z",
           { in: tz("America/Los_Angeles") },
         ).toISOString(),
-      ).toBe("2018-07-01T09:00:00.000-07:00");
+      ).toBe("2018-07-02T00:00:00.000-07:00");
     });
 
     it("resolves the context date type", () => {
