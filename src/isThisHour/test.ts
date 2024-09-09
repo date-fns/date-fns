@@ -6,7 +6,9 @@ import { type DateFns } from "../types.js";
 import { isThisHour } from "./index.js";
 
 describe("isThisHour", () => {
-  fakeDate(new Date(2014, 8 /* Sep */, 25, 18, 15, 15, 500));
+  const { fakeNow } = fakeDate(
+    new Date(2014, 8 /* Sep */, 25, 18, 15, 15, 500),
+  );
 
   it("returns true if the given date and the current date have the same hour", () => {
     const date = new Date(2014, 8 /* Sep */, 25, 18);
@@ -31,6 +33,7 @@ describe("isThisHour", () => {
 
   describe("context", () => {
     it("allows to specify the context", () => {
+      fakeNow(new Date("2014-09-25T16:00:00Z"));
       const in30Minutes = Date.now() + 30 * 60 * 1000;
       expect(isThisHour(in30Minutes, { in: tz("America/Los_Angeles") })).toBe(
         true,
