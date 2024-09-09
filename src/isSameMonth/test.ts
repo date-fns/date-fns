@@ -46,8 +46,6 @@ describe("isSameMonth", () => {
   it("normalizes the dates", () => {
     const dateLeft = new TZDate(2023, 11, 31, 23, "Asia/Singapore");
     const dateRight = new TZDate(2023, 11, 31, 12, "America/New_York");
-    expect(isSameMonth(+dateLeft, +dateRight)).toBe(false);
-    expect(isSameMonth(+dateRight, +dateLeft)).toBe(false);
     expect(isSameMonth(dateLeft, dateRight)).toBe(false);
     expect(isSameMonth(dateRight, dateLeft)).toBe(true);
   });

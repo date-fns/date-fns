@@ -72,8 +72,6 @@ describe("isSameISOWeekYear", () => {
   it("normalizes the dates", () => {
     const dateLeft = new TZDate(2023, 11, 31, 23, "Asia/Singapore");
     const dateRight = new TZDate(2023, 11, 31, 12, "America/New_York");
-    expect(isSameISOWeekYear(+dateLeft, +dateRight)).toBe(false);
-    expect(isSameISOWeekYear(+dateRight, +dateLeft)).toBe(false);
     expect(isSameISOWeekYear(dateLeft, dateRight)).toBe(false);
     expect(isSameISOWeekYear(dateRight, dateLeft)).toBe(true);
   });

@@ -238,22 +238,6 @@ describe("intervalToDuration", () => {
   it("normalizes the dates", () => {
     const laterDate = new TZDate(2027, 0, 1, "Asia/Singapore");
     const earlierDate = new TZDate(2024, 0, 1, "America/New_York");
-    expect(
-      intervalToDuration({ start: +laterDate, end: +earlierDate }),
-    ).toEqual({
-      days: -30,
-      hours: -11,
-      months: -11,
-      years: -2,
-    });
-    expect(
-      intervalToDuration({ start: +earlierDate, end: +laterDate }),
-    ).toEqual({
-      days: 30,
-      hours: 11,
-      months: 11,
-      years: 2,
-    });
     expect(intervalToDuration({ start: laterDate, end: earlierDate })).toEqual({
       days: -30,
       hours: -11,

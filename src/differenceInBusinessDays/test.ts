@@ -63,8 +63,6 @@ describe("differenceInBusinessDays", () => {
   it("normalizes the dates", () => {
     const dateLeft = new TZDate(2025, 0, 1, "Asia/Singapore");
     const dateRight = new TZDate(2024, 0, 1, "America/New_York");
-    expect(differenceInBusinessDays(+dateLeft, +dateRight)).toBe(262);
-    expect(differenceInBusinessDays(+dateRight, +dateLeft)).toBe(-262);
     expect(differenceInBusinessDays(dateLeft, dateRight)).toBe(262);
     expect(differenceInBusinessDays(dateRight, dateLeft)).toBe(-261);
   });

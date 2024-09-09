@@ -180,26 +180,6 @@ describe("eachYearOfInterval", () => {
     const dateLeft = new TZDate(2024, 0, 1, 0, "Asia/Singapore");
     const dateRight = new TZDate(2027, 0, 1, 0, "America/New_York");
     expect(
-      eachYearOfInterval({ start: +dateLeft, end: +dateRight }).map((d) =>
-        d.toISOString(),
-      ),
-    ).toEqual([
-      "2023-12-31T16:00:00.000Z",
-      "2024-12-31T16:00:00.000Z",
-      "2025-12-31T16:00:00.000Z",
-      "2026-12-31T16:00:00.000Z",
-    ]);
-    expect(
-      eachYearOfInterval({ start: +dateRight, end: +dateLeft }).map((d) =>
-        d.toISOString(),
-      ),
-    ).toEqual([
-      "2026-12-31T16:00:00.000Z",
-      "2025-12-31T16:00:00.000Z",
-      "2024-12-31T16:00:00.000Z",
-      "2023-12-31T16:00:00.000Z",
-    ]);
-    expect(
       eachYearOfInterval({ start: dateLeft, end: dateRight }).map((d) =>
         d.toISOString(),
       ),

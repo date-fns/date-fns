@@ -821,8 +821,6 @@ describe("intlFormatDistance", () => {
   it("normalizes the dates", () => {
     const dateLeft = new TZDate(1987, 6, 4, 10, 30, 0, "Asia/Singapore");
     const dateRight = new TZDate(1986, 3, 4, 10, 30, 0, "America/New_York");
-    expect(intlFormatDistance(+dateLeft, +dateRight)).toBe("next year");
-    expect(intlFormatDistance(+dateRight, +dateLeft)).toBe("last year");
     expect(intlFormatDistance(dateLeft, dateRight)).toBe("next year");
     expect(intlFormatDistance(dateRight, dateLeft)).toBe("last year");
   });

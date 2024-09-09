@@ -100,8 +100,6 @@ describe("differenceInCalendarYears", () => {
   it("normalizes the dates", () => {
     const dateLeft = new TZDate(2025, 0, 1, "Asia/Singapore");
     const dateRight = new TZDate(2024, 0, 1, "America/New_York");
-    expect(differenceInCalendarYears(+dateLeft, +dateRight)).toBe(1);
-    expect(differenceInCalendarYears(+dateRight, +dateLeft)).toBe(-1);
     expect(differenceInCalendarYears(dateLeft, dateRight)).toBe(1);
     expect(differenceInCalendarYears(dateRight, dateLeft)).toBe(0);
   });

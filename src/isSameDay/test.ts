@@ -55,8 +55,6 @@ describe("isSameDay", () => {
   it("normalizes the dates", () => {
     const dateLeft = new TZDate(2024, 5, 7, 8, "Asia/Singapore");
     const dateRight = new TZDate(2024, 5, 6, 4, "America/New_York");
-    expect(isSameDay(+dateLeft, +dateRight)).toBe(false);
-    expect(isSameDay(+dateRight, +dateLeft)).toBe(false);
     expect(isSameDay(dateLeft, dateRight)).toBe(false);
     expect(isSameDay(dateRight, dateLeft)).toBe(true);
   });

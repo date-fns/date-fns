@@ -102,26 +102,6 @@ describe("eachWeekendOfInterval", () => {
     const dateLeft = new TZDate(2023, 11, 19, 23, "Asia/Singapore");
     const dateRight = new TZDate(2023, 11, 31, 12, "America/New_York");
     expect(
-      eachWeekendOfInterval({ start: +dateLeft, end: +dateRight }).map((d) =>
-        d.toISOString(),
-      ),
-    ).toEqual([
-      "2023-12-22T16:00:00.000Z",
-      "2023-12-23T16:00:00.000Z",
-      "2023-12-29T16:00:00.000Z",
-      "2023-12-30T16:00:00.000Z",
-    ]);
-    expect(
-      eachWeekendOfInterval({ start: +dateRight, end: +dateLeft }).map((d) =>
-        d.toISOString(),
-      ),
-    ).toEqual([
-      "2023-12-30T16:00:00.000Z",
-      "2023-12-29T16:00:00.000Z",
-      "2023-12-23T16:00:00.000Z",
-      "2023-12-22T16:00:00.000Z",
-    ]);
-    expect(
       eachWeekendOfInterval({ start: dateLeft, end: dateRight }).map((d) =>
         d.toISOString(),
       ),

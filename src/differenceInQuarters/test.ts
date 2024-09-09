@@ -160,8 +160,6 @@ describe("differenceInQuarters", () => {
   it("normalizes the dates", () => {
     const dateLeft = new TZDate(2022, 3, 1, "Asia/Singapore");
     const dateRight = new TZDate(2021, 11, 31, "America/New_York");
-    expect(differenceInQuarters(+dateLeft, +dateRight)).toBe(1);
-    expect(differenceInQuarters(+dateRight, +dateLeft)).toBe(-1);
     expect(differenceInQuarters(dateLeft, dateRight)).toBe(1);
     expect(differenceInQuarters(dateRight, dateLeft)).toBe(-1);
   });

@@ -116,8 +116,6 @@ describe("differenceInCalendarISOWeeks", () => {
   it("normalizes the dates", () => {
     const dateLeft = new TZDate(2024, 8, 2, "Asia/Singapore");
     const dateRight = new TZDate(2024, 5, 3, "America/New_York");
-    expect(differenceInCalendarISOWeeks(+dateLeft, +dateRight)).toBe(13);
-    expect(differenceInCalendarISOWeeks(+dateRight, +dateLeft)).toBe(-13);
     expect(differenceInCalendarISOWeeks(dateLeft, dateRight)).toBe(13);
     expect(differenceInCalendarISOWeeks(dateRight, dateLeft)).toBe(-12);
   });

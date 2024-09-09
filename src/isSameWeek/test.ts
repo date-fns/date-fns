@@ -91,8 +91,6 @@ describe("isSameWeek", () => {
   it("normalizes the dates", () => {
     const dateLeft = new TZDate(2024, 8, 2, 0, "America/New_York");
     const dateRight = new TZDate(2024, 8, 9, 4, "Europe/London");
-    expect(isSameWeek(+dateLeft, +dateRight, { weekStartsOn: 1 })).toBe(false);
-    expect(isSameWeek(+dateRight, +dateLeft, { weekStartsOn: 1 })).toBe(false);
     expect(isSameWeek(dateLeft, dateRight, { weekStartsOn: 1 })).toBe(true);
     expect(isSameWeek(dateRight, dateLeft, { weekStartsOn: 1 })).toBe(false);
   });

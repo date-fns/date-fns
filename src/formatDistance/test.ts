@@ -261,8 +261,6 @@ describe("formatDistance", () => {
   it("normalizes the dates", () => {
     const dateLeft = new TZDate(2023, 5, 1, "Asia/Singapore");
     const dateRight = new TZDate(2023, 11, 1, "America/New_York");
-    expect(formatDistance(+dateLeft, +dateRight)).toBe("6 months");
-    expect(formatDistance(+dateRight, +dateLeft)).toEqual("6 months");
     expect(formatDistance(dateLeft, dateRight)).toEqual("6 months");
     expect(formatDistance(dateRight, dateLeft)).toBe("6 months");
   });

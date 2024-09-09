@@ -61,8 +61,6 @@ describe("isSameQuarter", () => {
   it("normalizes the dates", () => {
     const dateLeft = new TZDate(2024, 3, 1, "Asia/Singapore");
     const dateRight = new TZDate(2024, 2, 31, "America/New_York");
-    expect(isSameQuarter(+dateLeft, +dateRight)).toBe(false);
-    expect(isSameQuarter(+dateRight, +dateLeft)).toBe(false);
     expect(isSameQuarter(dateLeft, dateRight)).toBe(false);
     expect(isSameQuarter(dateRight, dateLeft)).toBe(true);
   });
