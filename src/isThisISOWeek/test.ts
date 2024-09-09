@@ -1,9 +1,8 @@
 import { tz } from "@date-fns/tz";
-import sinon from "sinon";
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { describe, expect, it } from "vitest";
+import { fakeDate } from "../_lib/test/index.js";
 import { type DateFns } from "../types.js";
 import { isThisISOWeek } from "./index.js";
-import { fakeDate } from "../_lib/test/index.js";
 
 describe("isThisISOWeek", () => {
   const { fakeNow } = fakeDate(new Date(2014, 8 /* Sep */, 25));
