@@ -4,7 +4,7 @@ import { type DateFns } from "../types.js";
 /**
  * The {@link fromUnixTime} function options.
  */
-export interface FromUnixTimeOptions<DateType extends Date>
+export interface FromUnixTimeOptions<DateType extends Date = Date>
   extends DateFns.ContextOptions<DateType> {}
 
 /**

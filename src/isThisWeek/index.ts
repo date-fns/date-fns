@@ -6,7 +6,7 @@ import type { LocalizedOptions, WeekOptions, DateFns } from "../types.js";
 /**
  * The {@link isThisWeek} function options.
  */
-export interface IsThisWeekOptions<DateType extends Date>
+export interface IsThisWeekOptions<DateType extends Date = Date>
   extends WeekOptions,
     LocalizedOptions<"options">,
     DateFns.ContextOptions<DateType> {}

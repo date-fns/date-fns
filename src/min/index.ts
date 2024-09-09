@@ -5,7 +5,7 @@ import { type DateFns } from "../types.js";
 /**
  * The {@link min} function options.
  */
-export interface MinOptions<DateType extends Date>
+export interface MinOptions<DateType extends Date = Date>
   extends DateFns.ContextOptions<DateType> {}
 
 /**

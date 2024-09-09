@@ -6,7 +6,7 @@ import { type DateFns } from "../types.js";
 /**
  * The {@link getDayOfYear} function options.
  */
-export interface GetDayOfYearOptions<DateType extends Date>
+export interface GetDayOfYearOptions<DateType extends Date = Date>
   extends DateFns.ContextOptions<DateType> {}
 
 /**

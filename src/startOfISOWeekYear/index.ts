@@ -6,7 +6,7 @@ import { type DateFns } from "../types.js";
 /**
  * The {@link startOfISOWeekYear} function options.
  */
-export interface StartOfISOWeekYearOptions<DateType extends Date>
+export interface StartOfISOWeekYearOptions<DateType extends Date = Date>
   extends DateFns.ContextOptions<DateType> {}
 
 /**

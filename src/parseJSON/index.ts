@@ -4,7 +4,7 @@ import { type DateFns } from "../types.js";
 /**
  * The {@link parseJSON} function options.
  */
-export interface ParseJSONOptions<DateType extends Date>
+export interface ParseJSONOptions<DateType extends Date = Date>
   extends DateFns.ContextOptions<DateType> {}
 
 /**

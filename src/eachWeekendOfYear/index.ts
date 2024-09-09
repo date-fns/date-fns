@@ -6,7 +6,7 @@ import { type DateFns } from "../types.js";
 /**
  * The {@link eachWeekendOfYear} function options.
  */
-export interface EachWeekendOfYearOptions<DateType extends Date>
+export interface EachWeekendOfYearOptions<DateType extends Date = Date>
   extends DateFns.ContextOptions<DateType> {}
 
 /**

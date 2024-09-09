@@ -4,7 +4,7 @@ import { type DateFns } from "../types.js";
 /**
  * The {@link isFirstDayOfMonth} function options.
  */
-export interface IsFirstDayOfMonthOptions<DateType extends Date>
+export interface IsFirstDayOfMonthOptions<DateType extends Date = Date>
   extends DateFns.ContextOptions<DateType> {}
 
 /**

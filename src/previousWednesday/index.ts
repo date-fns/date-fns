@@ -4,7 +4,7 @@ import { type DateFns } from "../types.js";
 /**
  * The {@link previousWednesday} function options.
  */
-export interface PreviousWednesdayOptions<DateType extends Date>
+export interface PreviousWednesdayOptions<DateType extends Date = Date>
   extends DateFns.ContextOptions<DateType> {}
 
 /**

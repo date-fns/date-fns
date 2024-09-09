@@ -4,7 +4,7 @@ import { type DateFns } from "../types.js";
 /**
  * The {@link getDecade} function options.
  */
-export interface GetDecadeOptions<DateType extends Date>
+export interface GetDecadeOptions<DateType extends Date = Date>
   extends DateFns.ContextOptions<DateType> {}
 
 /**

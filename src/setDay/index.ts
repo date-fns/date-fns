@@ -6,7 +6,7 @@ import type { DateFns, LocalizedOptions, WeekOptions } from "../types.js";
 /**
  * The {@link setDay} function options.
  */
-export interface SetDayOptions<DateType extends Date>
+export interface SetDayOptions<DateType extends Date = Date>
   extends LocalizedOptions<"options">,
     WeekOptions,
     DateFns.ContextOptions<DateType> {}

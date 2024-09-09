@@ -4,7 +4,7 @@ import { type DateFns } from "../types.js";
 /**
  * The {@link subWeeks} function options.
  */
-export interface SubWeeksOptions<DateType extends Date>
+export interface SubWeeksOptions<DateType extends Date = Date>
   extends DateFns.ContextOptions<DateType> {}
 
 /**

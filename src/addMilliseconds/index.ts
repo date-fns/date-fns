@@ -4,7 +4,7 @@ import { type DateFns } from "../types.js";
 /**
  * The {@link addMilliseconds} function options.
  */
-export interface AddMillisecondsOptions<DateType extends Date>
+export interface AddMillisecondsOptions<DateType extends Date = Date>
   extends DateFns.ContextOptions<DateType> {}
 
 /**

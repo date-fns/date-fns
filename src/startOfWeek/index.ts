@@ -5,7 +5,7 @@ import type { DateFns, LocalizedOptions, WeekOptions } from "../types.js";
 /**
  * The {@link startOfWeek} function options.
  */
-export interface StartOfWeekOptions<DateType extends Date>
+export interface StartOfWeekOptions<DateType extends Date = Date>
   extends LocalizedOptions<"options">,
     WeekOptions,
     DateFns.ContextOptions<DateType> {}

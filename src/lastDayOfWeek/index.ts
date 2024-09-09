@@ -5,7 +5,7 @@ import { getDefaultOptions } from "../_lib/defaultOptions/index.js";
 /**
  * The {@link lastDayOfWeek} function options.
  */
-export interface LastDayOfWeekOptions<DateType extends Date>
+export interface LastDayOfWeekOptions<DateType extends Date = Date>
   extends LocalizedOptions<"options">,
     WeekOptions,
     DateFns.ContextOptions<DateType> {}

@@ -6,7 +6,7 @@ import { type DateFns } from "../types.js";
 /**
  * The {@link isThisQuarter} function options.
  */
-export interface IsThisQuarterOptions<DateType extends Date>
+export interface IsThisQuarterOptions<DateType extends Date = Date>
   extends DateFns.ContextOptions<DateType> {}
 
 /**

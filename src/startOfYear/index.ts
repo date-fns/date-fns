@@ -4,7 +4,7 @@ import { type DateFns } from "../types.js";
 /**
  * The {@link startOfYear} function options.
  */
-export interface StartOfYearOptions<DateType extends Date>
+export interface StartOfYearOptions<DateType extends Date = Date>
   extends DateFns.ContextOptions<DateType> {}
 
 /**

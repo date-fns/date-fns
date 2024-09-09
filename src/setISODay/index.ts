@@ -6,7 +6,7 @@ import { type DateFns } from "../types.js";
 /**
  * The {@link setISODay} function options.
  */
-export interface SetISODayOptions<DateType extends Date>
+export interface SetISODayOptions<DateType extends Date = Date>
   extends DateFns.ContextOptions<DateType> {}
 
 /**

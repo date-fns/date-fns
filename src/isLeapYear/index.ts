@@ -1,7 +1,7 @@
 import { toDate } from "../toDate/index.js";
 import { type DateFns } from "../types.js";
 
-export interface IsLeapYearOptions<DateType extends Date>
+export interface IsLeapYearOptions<DateType extends Date = Date>
   extends DateFns.ContextOptions<DateType> {}
 
 /**
