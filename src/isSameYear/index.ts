@@ -1,11 +1,10 @@
-import { toDate } from "../toDate/index.js";
+import { normalizeDates } from "../_lib/normalizeDates/index.js";
 import { type DateFns } from "../types.js";
 
 /**
  * The {@link isSameYear} function options.
  */
-export interface IsSameYearOptions<DateType extends Date>
-  extends DateFns.ContextOptions<DateType> {}
+export interface IsSameYearOptions extends DateFns.ContextOptions<Date> {}
 
 /**
  * @name isSameYear
@@ -15,11 +14,8 @@ export interface IsSameYearOptions<DateType extends Date>
  * @description
  * Are the given dates in the same year?
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- * @typeParam ContextDate - The `Date` type of the context function.
- *
- * @param dateLeft - The first date to check
- * @param dateRight - The second date to check
+ * @param laterDate - The first date to check
+ * @param earlierDate - The second date to check
  * @param options - An object with options
  *
  * @returns The dates are in the same year
@@ -29,13 +25,15 @@ export interface IsSameYearOptions<DateType extends Date>
  * const result = isSameYear(new Date(2014, 8, 2), new Date(2014, 8, 25))
  * //=> true
  */
-export function isSameYear<DateType extends Date, ContextDate extends Date>(
-  dateLeft: DateType | number | string,
-  dateRight: DateType | number | string,
-  options?: IsSameYearOptions<ContextDate> | undefined,
+export function isSameYear(
+  laterDate: DateFns.Arg,
+  earlierDate: DateFns.Arg,
+  options?: IsSameYearOptions | undefined,
 ): boolean {
-  return (
-    toDate(dateLeft, options?.in).getFullYear() ===
-    toDate(dateRight, options?.in).getFullYear()
+  const [laterDate_, earlierDate_] = normalizeDates(
+    options?.in,
+    laterDate,
+    earlierDate,
   );
+  return laterDate_.getFullYear() === earlierDate_.getFullYear();
 }

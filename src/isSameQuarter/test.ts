@@ -1,4 +1,4 @@
-import { tz } from "@date-fns/tz";
+import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
 import { type DateFns } from "../types.js";
 import { isSameQuarter } from "./index.js";
@@ -47,6 +47,24 @@ describe("isSameQuarter", () => {
   it("returns false if the both dates are `Invalid Date`", () => {
     const result = isSameQuarter(new Date(NaN), new Date(NaN));
     expect(result).toBe(false);
+  });
+
+  it("allows dates to be of different types", () => {
+    function _test<DateType1 extends Date, DateType2 extends Date>(
+      arg1: DateType1 | number | string,
+      arg2: DateType2 | number | string,
+    ) {
+      isSameQuarter(arg1, arg2);
+    }
+  });
+
+  it("normalizes the dates", () => {
+    const dateLeft = new TZDate(2024, 3, 1, "Asia/Singapore");
+    const dateRight = new TZDate(2024, 2, 31, "America/New_York");
+    expect(isSameQuarter(+dateLeft, +dateRight)).toBe(false);
+    expect(isSameQuarter(+dateRight, +dateLeft)).toBe(false);
+    expect(isSameQuarter(dateLeft, dateRight)).toBe(false);
+    expect(isSameQuarter(dateRight, dateLeft)).toBe(true);
   });
 
   describe("context", () => {

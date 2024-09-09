@@ -1,4 +1,5 @@
 import { startOfMinute } from "../startOfMinute/index.js";
+import { type DateFns } from "../types.js";
 
 /**
  * @name isSameMinute
@@ -8,10 +9,8 @@ import { startOfMinute } from "../startOfMinute/index.js";
  * @description
  * Are the given dates in the same minute (and hour and day)?
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- *
- * @param dateLeft - The first date to check
- * @param dateRight - The second date to check
+ * @param laterDate - The first date to check
+ * @param earlierDate - The second date to check
  *
  * @returns The dates are in the same minute (and hour and day)
  *
@@ -31,9 +30,9 @@ import { startOfMinute } from "../startOfMinute/index.js";
  * )
  * //=> false
  */
-export function isSameMinute<DateType extends Date>(
-  dateLeft: DateType | number | string,
-  dateRight: DateType | number | string,
+export function isSameMinute(
+  laterDate: DateFns.Arg,
+  earlierDate: DateFns.Arg,
 ): boolean {
-  return +startOfMinute(dateLeft) === +startOfMinute(dateRight);
+  return +startOfMinute(laterDate) === +startOfMinute(earlierDate);
 }

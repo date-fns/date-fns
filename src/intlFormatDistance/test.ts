@@ -1,4 +1,4 @@
-import { tz } from "@date-fns/tz";
+import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
 import { intlFormatDistance } from "./index.js";
 
@@ -807,6 +807,24 @@ describe("intlFormatDistance", () => {
         ).toThrow(RangeError);
       });
     });
+  });
+
+  it("allows dates to be of different types", () => {
+    function _test<DateType1 extends Date, DateType2 extends Date>(
+      arg1: DateType1 | number | string,
+      arg2: DateType2 | number | string,
+    ) {
+      intlFormatDistance(arg1, arg2);
+    }
+  });
+
+  it("normalizes the dates", () => {
+    const dateLeft = new TZDate(1987, 6, 4, 10, 30, 0, "Asia/Singapore");
+    const dateRight = new TZDate(1986, 3, 4, 10, 30, 0, "America/New_York");
+    expect(intlFormatDistance(+dateLeft, +dateRight)).toBe("next year");
+    expect(intlFormatDistance(+dateRight, +dateLeft)).toBe("last year");
+    expect(intlFormatDistance(dateLeft, dateRight)).toBe("next year");
+    expect(intlFormatDistance(dateRight, dateLeft)).toBe("last year");
   });
 
   describe("context", () => {

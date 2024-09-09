@@ -1,11 +1,11 @@
+import { normalizeDates } from "../_lib/normalizeDates/index.js";
 import { startOfHour } from "../startOfHour/index.js";
 import { type DateFns } from "../types.js";
 
 /**
  * The {@link isSameHour} function options.
  */
-export interface IsSameHourOptions<DateType extends Date>
-  extends DateFns.ContextOptions<DateType> {}
+export interface IsSameHourOptions extends DateFns.ContextOptions<Date> {}
 
 /**
  * @name isSameHour
@@ -14,9 +14,6 @@ export interface IsSameHourOptions<DateType extends Date>
  *
  * @description
  * Are the given dates in the same hour (and same day)?
- *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- * @typeParam ContextDate - The `Date` type of the context function.
  *
  * @param dateLeft - The first date to check
  * @param dateRight - The second date to check
@@ -34,10 +31,15 @@ export interface IsSameHourOptions<DateType extends Date>
  * const result = isSameHour(new Date(2014, 8, 4, 6, 0), new Date(2014, 8, 5, 6, 0))
  * //=> false
  */
-export function isSameHour<DateType extends Date, ContextDate extends Date>(
-  dateLeft: DateType | number | string,
-  dateRight: DateType | number | string,
-  options?: IsSameHourOptions<ContextDate> | undefined,
+export function isSameHour(
+  dateLeft: DateFns.Arg,
+  dateRight: DateFns.Arg,
+  options?: IsSameHourOptions | undefined,
 ): boolean {
-  return +startOfHour(dateLeft, options) === +startOfHour(dateRight, options);
+  const [dateLeft_, dateRight_] = normalizeDates(
+    options?.in,
+    dateLeft,
+    dateRight,
+  );
+  return +startOfHour(dateLeft_) === +startOfHour(dateRight_);
 }

@@ -5,8 +5,7 @@ import { type DateFns } from "../types.js";
 /**
  * The {@link isWithinInterval} function options.
  */
-export interface IsWithinIntervalOptions<DateType extends Date>
-  extends DateFns.ContextOptions<DateType> {}
+export interface IsWithinIntervalOptions extends DateFns.ContextOptions<Date> {}
 
 /**
  * @name isWithinInterval
@@ -15,9 +14,6 @@ export interface IsWithinIntervalOptions<DateType extends Date>
  *
  * @description
  * Is the given date within the interval? (Including start and end.)
- *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- * @typeParam ContextDate - The `Date` type of the context function.
  *
  * @param date - The date to check
  * @param interval - The interval to check
@@ -51,13 +47,10 @@ export interface IsWithinIntervalOptions<DateType extends Date>
  * isWithinInterval(date, { start: date, end })
  * // => true
  */
-export function isWithinInterval<
-  DateType extends Date,
-  ContextDate extends Date,
->(
-  date: DateType | number | string,
-  interval: Interval<DateType>,
-  options?: IsWithinIntervalOptions<ContextDate> | undefined,
+export function isWithinInterval(
+  date: DateFns.Arg,
+  interval: Interval,
+  options?: IsWithinIntervalOptions | undefined,
 ): boolean {
   const time = +toDate(date, options?.in);
   const [startTime, endTime] = [

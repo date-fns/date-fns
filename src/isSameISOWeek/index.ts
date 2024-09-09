@@ -4,8 +4,7 @@ import { type DateFns } from "../types.js";
 /**
  * The {@link isSameISOWeek} function options.
  */
-export interface IsSameISOWeekOptions<DateType extends Date>
-  extends DateFns.ContextOptions<DateType> {}
+export interface IsSameISOWeekOptions extends DateFns.ContextOptions<Date> {}
 
 /**
  * @name isSameISOWeek
@@ -17,11 +16,8 @@ export interface IsSameISOWeekOptions<DateType extends Date>
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- * @typeParam ContextDate - The `Date` type of the context function.
- *
- * @param dateLeft - The first date to check
- * @param dateRight - The second date to check
+ * @param laterDate - The first date to check
+ * @param earlierDate - The second date to check
  * @param options - An object with options
  *
  * @returns The dates are in the same ISO week (and year)
@@ -36,10 +32,10 @@ export interface IsSameISOWeekOptions<DateType extends Date>
  * const result = isSameISOWeek(new Date(2014, 8, 1), new Date(2015, 8, 1))
  * //=> false
  */
-export function isSameISOWeek<DateType extends Date, ContextDate extends Date>(
-  dateLeft: DateType | number | string,
-  dateRight: DateType | number | string,
-  options?: IsSameISOWeekOptions<ContextDate> | undefined,
+export function isSameISOWeek(
+  laterDate: DateFns.Arg,
+  earlierDate: DateFns.Arg,
+  options?: IsSameISOWeekOptions | undefined,
 ): boolean {
-  return isSameWeek(dateLeft, dateRight, { ...options, weekStartsOn: 1 });
+  return isSameWeek(laterDate, earlierDate, { ...options, weekStartsOn: 1 });
 }
