@@ -1,20 +1,12 @@
 import { TZDate, tz } from "@date-fns/tz";
-import sinon from "sinon";
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
-import { assertType } from "../_lib/test/index.js";
+import { describe, expect, it } from "vitest";
+import { assertType, fakeDate } from "../_lib/test/index.js";
 import { endOfYesterday } from "./index.js";
 
 describe("endOfYesterday", () => {
-  let clock: sinon.SinonFakeTimers;
-  beforeEach(() => {
-    clock = sinon.useFakeTimers(
-      new Date(2014, 8 /* Sep */, 25, 14, 30, 45, 500).getTime(),
-    );
-  });
-
-  afterEach(() => {
-    clock.restore();
-  });
+  const { fakeNow } = fakeDate(
+    new Date(2014, 8 /* Sep */, 25, 14, 30, 45, 500),
+  );
 
   it("returns yesterday with the time settled to 23:59:59.999", () => {
     const result = endOfYesterday();
@@ -25,7 +17,7 @@ describe("endOfYesterday", () => {
     const now = new Date(0);
     now.setFullYear(14, 8 /* Sep */, 25);
     now.setHours(14, 30, 45, 500);
-    sinon.useFakeTimers(+now);
+    fakeNow(now);
 
     const expectedResult = new Date(0);
     expectedResult.setFullYear(14, 8 /* Sep */, 24);
@@ -42,19 +34,19 @@ describe("endOfYesterday", () => {
 
   describe("context", () => {
     it("allows to specify the context", () => {
-      clock = sinon.useFakeTimers(new Date("2024-08-18T15:00:00Z").getTime());
+      fakeNow(new Date("2024-08-18T15:00:00Z"));
       expect(endOfYesterday({ in: tz("Asia/Singapore") }).toISOString()).toBe(
         "2024-08-17T23:59:59.999+08:00",
       );
-      clock = sinon.useFakeTimers(new Date("2024-08-18T16:00:00Z").getTime());
+      fakeNow(new Date("2024-08-18T16:00:00Z"));
       expect(endOfYesterday({ in: tz("Asia/Singapore") }).toISOString()).toBe(
         "2024-08-18T23:59:59.999+08:00",
       );
-      clock = sinon.useFakeTimers(new Date("2024-08-18T03:00:00Z").getTime());
+      fakeNow(new Date("2024-08-18T03:00:00Z"));
       expect(endOfYesterday({ in: tz("America/New_York") }).toISOString()).toBe(
         "2024-08-16T23:59:59.999-04:00",
       );
-      clock = sinon.useFakeTimers(new Date("2024-08-18T04:00:00Z").getTime());
+      fakeNow(new Date("2024-08-18T04:00:00Z"));
       expect(endOfYesterday({ in: tz("America/New_York") }).toISOString()).toBe(
         "2024-08-17T23:59:59.999-04:00",
       );

@@ -1,19 +1,12 @@
-import { UTCDate } from "@date-fns/utc";
-import sinon from "sinon";
 import { tz } from "@date-fns/tz";
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { UTCDate } from "@date-fns/utc";
+import { describe, expect, it } from "vitest";
+import { fakeDate } from "../_lib/test/index.js";
 import { type DateFns } from "../types.js";
 import { isYesterday } from "./index.js";
 
 describe("isYesterday", () => {
-  let clock: sinon.SinonFakeTimers;
-  beforeEach(() => {
-    clock = sinon.useFakeTimers(new Date(2014, 8 /* Sep */, 25).getTime());
-  });
-
-  afterEach(() => {
-    clock.restore();
-  });
+  const { fakeNow } = fakeDate(new Date(2014, 8 /* Sep */, 25));
 
   it("returns true if the given date is yesterday", () => {
     const result = isYesterday(new Date(2014, 8 /* Sep */, 24));
@@ -38,7 +31,7 @@ describe("isYesterday", () => {
 
   describe("context", () => {
     it("allows to specify the context", () => {
-      clock = sinon.useFakeTimers(+new Date("2024-08-18T15:00:00Z"));
+      fakeNow(new Date("2024-08-18T15:00:00Z"));
       expect(
         isYesterday("2024-08-17T04:00:00Z", { in: tz("America/New_York") }),
       ).toBe(true);

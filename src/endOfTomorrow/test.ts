@@ -1,20 +1,12 @@
 import { TZDate, tz } from "@date-fns/tz";
-import sinon from "sinon";
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
-import { assertType } from "../_lib/test/index.js";
+import { describe, expect, it } from "vitest";
+import { assertType, fakeDate } from "../_lib/test/index.js";
 import { endOfTomorrow } from "./index.js";
 
 describe("endOfTomorrow", () => {
-  let clock: sinon.SinonFakeTimers;
-  beforeEach(() => {
-    clock = sinon.useFakeTimers(
-      new Date(2014, 8 /* Sep */, 25, 14, 30, 45, 500).getTime(),
-    );
-  });
-
-  afterEach(() => {
-    clock.restore();
-  });
+  const { fakeNow } = fakeDate(
+    new Date(2014, 8 /* Sep */, 25, 14, 30, 45, 500),
+  );
 
   it("returns tomorrow with the time settled to 23:59:59.999", () => {
     const result = endOfTomorrow();
@@ -25,7 +17,7 @@ describe("endOfTomorrow", () => {
     const now = new Date(0);
     now.setFullYear(14, 8 /* Sep */, 25);
     now.setHours(14, 30, 45, 500);
-    clock = sinon.useFakeTimers(now.getTime());
+    fakeNow(+now);
 
     const expectedResult = new Date(0);
     expectedResult.setFullYear(14, 8 /* Sep */, 26);

@@ -1,18 +1,11 @@
 import { UTCDate } from "@date-fns/utc";
-import sinon from "sinon";
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { describe, expect, it } from "vitest";
+import { fakeDate } from "../_lib/test/index.js";
 import type { FormatDistanceFn } from "../locale/types.js";
 import { formatDistanceToNowStrict } from "./index.js";
 
 describe("formatDistanceToNowStrict", () => {
-  let clock: sinon.SinonFakeTimers;
-  beforeEach(() => {
-    clock = sinon.useFakeTimers(new Date(1986, 3, 4, 10, 32, 0).getTime());
-  });
-
-  afterEach(() => {
-    clock.restore();
-  });
+  fakeDate(new Date(1986, 3, 4, 10, 32, 0));
 
   describe("seconds", () => {
     describe("when no unit is set", () => {
