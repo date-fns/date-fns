@@ -1,11 +1,11 @@
+import { normalizeDates } from "../_lib/normalizeDates/index.js";
 import { startOfDay } from "../startOfDay/index.js";
 import { type DateFns } from "../types.js";
 
 /**
  * The {@link isSameDay} function options.
  */
-export interface IsSameDayOptions<DateType extends Date>
-  extends DateFns.ContextOptions<DateType> {}
+export interface IsSameDayOptions extends DateFns.ContextOptions<Date> {}
 
 /**
  * @name isSameDay
@@ -15,11 +15,8 @@ export interface IsSameDayOptions<DateType extends Date>
  * @description
  * Are the given dates in the same day (and year and month)?
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- * @typeParam ContextDate - The `Date` type of the context function.
- *
- * @param dateLeft - The first date to check
- * @param dateRight - The second date to check
+ * @param laterDate - The first date to check
+ * @param earlierDate - The second date to check
  * @param options - An object with options
  *
  * @returns The dates are in the same day (and year and month)
@@ -39,10 +36,15 @@ export interface IsSameDayOptions<DateType extends Date>
  * const result = isSameDay(new Date(2014, 8, 4), new Date(2015, 8, 4))
  * //=> false
  */
-export function isSameDay<DateType extends Date, ContextDate extends Date>(
-  dateLeft: DateType | number | string,
-  dateRight: DateType | number | string,
-  options?: IsSameDayOptions<ContextDate> | undefined,
+export function isSameDay(
+  laterDate: DateFns.Arg,
+  earlierDate: DateFns.Arg,
+  options?: IsSameDayOptions | undefined,
 ): boolean {
-  return +startOfDay(dateLeft, options) === +startOfDay(dateRight, options);
+  const [dateLeft_, dateRight_] = normalizeDates(
+    options?.in,
+    laterDate,
+    earlierDate,
+  );
+  return +startOfDay(dateLeft_) === +startOfDay(dateRight_);
 }
