@@ -38,7 +38,7 @@ describe("getISOWeeksInYear", () => {
   });
 
   describe("context", () => {
-    it.only("allows to specify the context", () => {
+    it("allows to specify the context", () => {
       expect(
         getISOWeeksInYear("2024-01-01T00:00:00Z", {
           in: tz("Europe/London"),

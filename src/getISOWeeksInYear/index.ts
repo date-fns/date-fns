@@ -38,7 +38,6 @@ export function getISOWeeksInYear<
   date: DateType | number | string,
   options?: GetISOWeeksInYearOptions<ContextDate> | undefined,
 ): number {
-  console.log("~~~", { date, options });
   const thisYear = startOfISOWeekYear(date, options);
   const nextYear = startOfISOWeekYear(addWeeks(thisYear, 60));
   const diff = +nextYear - +thisYear;
