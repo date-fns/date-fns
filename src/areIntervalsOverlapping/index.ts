@@ -4,8 +4,8 @@ import type { DateFns, Interval } from "../types.js";
 /**
  * The {@link areIntervalsOverlapping} function options.
  */
-export interface AreIntervalsOverlappingOptions<DateType extends Date>
-  extends DateFns.ContextOptions<DateType> {
+export interface AreIntervalsOverlappingOptions
+  extends DateFns.ContextOptions<Date> {
   /** Whether the comparison is inclusive or not */
   inclusive?: boolean;
 }
@@ -17,9 +17,6 @@ export interface AreIntervalsOverlappingOptions<DateType extends Date>
  *
  * @description
  * Is the given time interval overlapping with another time interval? Adjacent intervals do not count as overlapping unless `inclusive` is set to `true`.
- *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments.
- * @typeParam ContextDate - The `Date` type of the context function.
  *
  * @param intervalLeft - The first interval to compare.
  * @param intervalRight - The second interval to compare.
@@ -60,13 +57,10 @@ export interface AreIntervalsOverlappingOptions<DateType extends Date>
  * )
  * //=> true
  */
-export function areIntervalsOverlapping<
-  DateType extends Date,
-  ContextDate extends Date,
->(
-  intervalLeft: Interval<DateType>,
-  intervalRight: Interval<DateType>,
-  options?: AreIntervalsOverlappingOptions<ContextDate>,
+export function areIntervalsOverlapping(
+  intervalLeft: Interval,
+  intervalRight: Interval,
+  options?: AreIntervalsOverlappingOptions,
 ): boolean {
   const [leftStartTime, leftEndTime] = [
     +toDate(intervalLeft.start, options?.in),
