@@ -1,7 +1,7 @@
-import { addWeeks } from "../addWeeks/index.js";
 import { normalizeInterval } from "../_lib/normalizeInterval/index.js";
-import { startOfWeek } from "../startOfWeek/index.js";
+import { addWeeks } from "../addWeeks/index.js";
 import { constructFrom } from "../constructFrom/index.js";
+import { startOfWeek } from "../startOfWeek/index.js";
 import type {
   DateFns,
   Interval,
