@@ -16,7 +16,7 @@ import type {
   WeekOptions,
 } from "../types.js";
 import type { Setter } from "./_lib/Setter.js";
-import { DateToSystemTimezoneSetter } from "./_lib/Setter.js";
+import { DateTimezoneSetter } from "./_lib/Setter.js";
 import { parsers } from "./_lib/parsers/index.js";
 import type { ParseFlags, ParserOptions } from "./_lib/types.js";
 
@@ -391,8 +391,11 @@ export function parse<
     locale,
   };
 
-  // If timezone isn't specified, it will be set to the system timezone
-  const setters: Setter[] = [new DateToSystemTimezoneSetter()];
+  // If timezone isn't specified, it will try to use the context or
+  // the reference date and fallback to the system time zone.
+  const setters: Setter[] = [
+    new DateTimezoneSetter(options?.in, referenceDate),
+  ];
 
   const tokens = formatStr
     .match(longFormattingTokensRegExp)!
@@ -503,9 +506,7 @@ export function parse<
 
   let date = toDate(referenceDate, options?.in);
 
-  if (isNaN(+date)) {
-    return invalidDate();
-  }
+  if (isNaN(+date)) return invalidDate();
 
   const flags: ParseFlags = {};
   for (const setter of uniquePrioritySetters) {
