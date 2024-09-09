@@ -1,12 +1,32 @@
-import { toDate } from "../toDate/index.js";
+import { normalizeInterval } from "../_lib/normalizeInterval/index.js";
+import { constructFrom } from "../constructFrom/index.js";
 import type { Interval, StepOptions, DateFns } from "../types.js";
 
 /**
  * The {@link eachYearOfInterval} function options.
  */
-export interface EachYearOfIntervalOptions<DateType extends Date>
+export interface EachYearOfIntervalOptions<DateType extends Date = Date>
   extends StepOptions,
     DateFns.ContextOptions<DateType> {}
+
+/**
+ * The {@link eachYearOfInterval} function result type. It resolves the proper data type.
+ * It uses the first argument date object type, starting from the date argument,
+ * then the start interval date, and finally the end interval date. If
+ * a context function is passed, it uses the context function return type.
+ */
+export type EachYearOfIntervalResult<
+  IntervalType extends Interval,
+  Options extends EachYearOfIntervalOptions | undefined,
+> = Array<
+  Options extends EachYearOfIntervalOptions<infer DateType>
+    ? DateType
+    : IntervalType["start"] extends Date
+      ? IntervalType["start"]
+      : IntervalType["end"] extends Date
+        ? IntervalType["end"]
+        : Date
+>;
 
 /**
  * @name eachYearOfInterval
@@ -16,8 +36,8 @@ export interface EachYearOfIntervalOptions<DateType extends Date>
  * @description
  * Return the array of yearly timestamps within the specified time interval.
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
+ * @typeParam IntervalType - Interval type.
+ * @typeParam Options - Options type.
  *
  * @param interval - The interval.
  * @param options - An object with options.
@@ -38,20 +58,19 @@ export interface EachYearOfIntervalOptions<DateType extends Date>
  * // ]
  */
 export function eachYearOfInterval<
-  DateType extends Date,
-  ResultDate extends Date = DateType,
+  IntervalType extends Interval,
+  Options extends EachYearOfIntervalOptions | undefined = undefined,
 >(
-  interval: Interval<DateType>,
-  options?: EachYearOfIntervalOptions<ResultDate>,
-): ResultDate[] {
-  const startDate = toDate(interval.start, options?.in);
-  const endDate = toDate(interval.end, options?.in);
+  interval: IntervalType,
+  options?: Options,
+): EachYearOfIntervalResult<IntervalType, Options> {
+  const { start, end } = normalizeInterval(options?.in, interval);
 
-  let reversed = +startDate > +endDate;
-  const endTime = reversed ? +startDate : +endDate;
-  const currentDate = reversed ? endDate : startDate;
-  currentDate.setHours(0, 0, 0, 0);
-  currentDate.setMonth(0, 1);
+  let reversed = +start > +end;
+  const endTime = reversed ? +start : +end;
+  const date = reversed ? end : start;
+  date.setHours(0, 0, 0, 0);
+  date.setMonth(0, 1);
 
   let step = options?.step ?? 1;
   if (!step) return [];
@@ -60,11 +79,11 @@ export function eachYearOfInterval<
     reversed = !reversed;
   }
 
-  const dates = [];
+  const dates: EachYearOfIntervalResult<IntervalType, Options> = [];
 
-  while (+currentDate <= endTime) {
-    dates.push(toDate(currentDate, options?.in));
-    currentDate.setFullYear(currentDate.getFullYear() + step);
+  while (+date <= endTime) {
+    dates.push(constructFrom(start, date));
+    date.setFullYear(date.getFullYear() + step);
   }
 
   return reversed ? dates.reverse() : dates;

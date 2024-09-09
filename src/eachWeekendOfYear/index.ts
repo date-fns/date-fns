@@ -40,7 +40,7 @@ export function eachWeekendOfYear<
   DateType extends Date,
   ResultDate extends Date = DateType,
 >(
-  date: DateType | number | string,
+  date: DateFns.Arg<DateType>,
   options?: EachWeekendOfYearOptions<ResultDate>,
 ): ResultDate[] {
   const start = startOfYear(date, options);

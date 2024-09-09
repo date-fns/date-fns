@@ -165,23 +165,96 @@ describe("eachMonthOfInterval", () => {
   });
 
   it("resolves the date type by default", () => {
-    const interval = {
-      start: +new Date("2014-09-01T00:00:00Z"),
-      end: +new Date("2014-09-05T00:00:00Z"),
-    };
-    const result = eachMonthOfInterval(interval);
+    const result = eachMonthOfInterval({
+      start: Date.now(),
+      end: Date.now(),
+    });
     expect(result[0]).toBeInstanceOf(Date);
-    assertType<assertType.Equal<Date, (typeof result)[0]>>(true);
+    assertType<assertType.Equal<Date[], typeof result>>(true);
   });
 
-  it("resolves the context date type", () => {
-    const interval = {
-      start: new UTCDate("2014-09-01T00:00:00Z"),
-      end: new UTCDate("2014-09-05T00:00:00Z"),
-    };
-    const result = eachMonthOfInterval(interval);
+  it("resolves the start date object type", () => {
+    const result = eachMonthOfInterval({
+      start: new TZDate(),
+      end: new UTCDate(),
+    });
+    expect(result[0]).toBeInstanceOf(TZDate);
+    assertType<assertType.Equal<TZDate[], typeof result>>(true);
+  });
+
+  it("resolves the end date object type if the start isn't object", () => {
+    const result = eachMonthOfInterval({
+      start: Date.now(),
+      end: new UTCDate(),
+    });
     expect(result[0]).toBeInstanceOf(UTCDate);
-    assertType<assertType.Equal<UTCDate, (typeof result)[0]>>(true);
+    assertType<assertType.Equal<UTCDate[], typeof result>>(true);
+  });
+
+  it("normalizes the dates", () => {
+    const dateLeft = new TZDate(2024, 0, 1, 12, "Asia/Singapore");
+    const dateRight = new TZDate(2024, 5, 30, 12, "America/New_York");
+    expect(
+      eachMonthOfInterval({ start: +dateLeft, end: +dateRight }).map((d) =>
+        d.toISOString(),
+      ),
+    ).toEqual([
+      "2023-12-31T16:00:00.000Z",
+      "2024-01-31T16:00:00.000Z",
+      "2024-02-29T16:00:00.000Z",
+      "2024-03-31T16:00:00.000Z",
+      "2024-04-30T16:00:00.000Z",
+      "2024-05-31T16:00:00.000Z",
+      "2024-06-30T16:00:00.000Z",
+    ]);
+    expect(
+      eachMonthOfInterval({ start: +dateRight, end: +dateLeft }).map((d) =>
+        d.toISOString(),
+      ),
+    ).toEqual([
+      "2024-06-30T16:00:00.000Z",
+      "2024-05-31T16:00:00.000Z",
+      "2024-04-30T16:00:00.000Z",
+      "2024-03-31T16:00:00.000Z",
+      "2024-02-29T16:00:00.000Z",
+      "2024-01-31T16:00:00.000Z",
+      "2023-12-31T16:00:00.000Z",
+    ]);
+    expect(
+      eachMonthOfInterval({ start: dateLeft, end: dateRight }).map((d) =>
+        d.toISOString(),
+      ),
+    ).toEqual([
+      "2024-01-01T00:00:00.000+08:00",
+      "2024-02-01T00:00:00.000+08:00",
+      "2024-03-01T00:00:00.000+08:00",
+      "2024-04-01T00:00:00.000+08:00",
+      "2024-05-01T00:00:00.000+08:00",
+      "2024-06-01T00:00:00.000+08:00",
+      "2024-07-01T00:00:00.000+08:00",
+    ]);
+    expect(
+      eachMonthOfInterval({ start: dateRight, end: dateLeft }).map((d) =>
+        d.toISOString(),
+      ),
+    ).toEqual([
+      "2024-06-01T00:00:00.000-04:00",
+      "2024-05-01T00:00:00.000-04:00",
+      "2024-04-01T00:00:00.000-04:00",
+      "2024-03-01T00:00:00.000-05:00",
+      "2024-02-01T00:00:00.000-05:00",
+      "2024-01-01T00:00:00.000-05:00",
+      "2023-12-01T00:00:00.000-05:00",
+    ]);
+  });
+
+  it("allows dates to be of different types", () => {
+    function _test<DateType1 extends Date, DateType2 extends Date>(
+      start: DateType1 | number | string,
+      end: DateType2 | number | string,
+    ) {
+      eachMonthOfInterval({ start, end });
+    }
   });
 
   describe("context", () => {

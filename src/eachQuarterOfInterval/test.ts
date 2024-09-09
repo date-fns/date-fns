@@ -106,23 +106,70 @@ describe("eachQuarterOfInterval", () => {
   });
 
   it("resolves the date type by default", () => {
-    const interval = {
-      start: +new Date("2014-01-01T00:00:00Z"),
-      end: +new Date("2014-12-31T23:59:59Z"),
-    };
-    const result = eachQuarterOfInterval(interval);
+    const result = eachQuarterOfInterval({
+      start: Date.now(),
+      end: Date.now(),
+    });
     expect(result[0]).toBeInstanceOf(Date);
-    assertType<assertType.Equal<Date, (typeof result)[0]>>(true);
+    assertType<assertType.Equal<Date[], typeof result>>(true);
   });
 
-  it("resolves the context date type", () => {
-    const interval = {
-      start: new UTCDate("2014-01-01T00:00:00Z"),
-      end: new UTCDate("2014-12-31T23:59:59Z"),
-    };
-    const result = eachQuarterOfInterval(interval);
+  it("resolves the start date object type", () => {
+    const result = eachQuarterOfInterval({
+      start: new TZDate(),
+      end: new UTCDate(),
+    });
+    expect(result[0]).toBeInstanceOf(TZDate);
+    assertType<assertType.Equal<TZDate[], typeof result>>(true);
+  });
+
+  it("resolves the end date object type if the start isn't object", () => {
+    const result = eachQuarterOfInterval({
+      start: Date.now(),
+      end: new UTCDate(),
+    });
     expect(result[0]).toBeInstanceOf(UTCDate);
-    assertType<assertType.Equal<UTCDate, (typeof result)[0]>>(true);
+    assertType<assertType.Equal<UTCDate[], typeof result>>(true);
+  });
+
+  it("normalizes the dates", () => {
+    const dateLeft = new TZDate(2024, 0, 1, "Asia/Singapore");
+    const dateRight = new TZDate(2024, 2, 31, 23, "America/New_York");
+    expect(
+      eachQuarterOfInterval({ start: +dateLeft, end: +dateRight }).map((d) =>
+        d.toISOString(),
+      ),
+    ).toEqual(["2023-12-31T16:00:00.000Z", "2024-03-31T16:00:00.000Z"]);
+    expect(
+      eachQuarterOfInterval({ start: +dateRight, end: +dateLeft }).map((d) =>
+        d.toISOString(),
+      ),
+    ).toEqual(["2024-03-31T16:00:00.000Z", "2023-12-31T16:00:00.000Z"]);
+    expect(
+      eachQuarterOfInterval({ start: dateLeft, end: dateRight }).map((d) =>
+        d.toISOString(),
+      ),
+    ).toEqual([
+      "2024-01-01T00:00:00.000+08:00",
+      "2024-04-01T00:00:00.000+08:00",
+    ]);
+    expect(
+      eachQuarterOfInterval({ start: dateRight, end: dateLeft }).map((d) =>
+        d.toISOString(),
+      ),
+    ).toEqual([
+      "2024-01-01T00:00:00.000-05:00",
+      "2023-10-01T00:00:00.000-04:00",
+    ]);
+  });
+
+  it("allows dates to be of different types", () => {
+    function _test<DateType1 extends Date, DateType2 extends Date>(
+      start: DateType1 | number | string,
+      end: DateType2 | number | string,
+    ) {
+      eachQuarterOfInterval({ start, end });
+    }
   });
 
   describe("context", () => {

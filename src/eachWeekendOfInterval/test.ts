@@ -3,6 +3,7 @@ import { UTCDate } from "@date-fns/utc";
 import { describe, expect, it } from "vitest";
 import { assertType } from "../_lib/test/index.js";
 import { eachWeekendOfInterval } from "./index.js";
+import { subWeeks } from "../subWeeks/index.js";
 
 describe("eachWeekendOfInterval", () => {
   it("returns all weekends within the interval", () => {
@@ -70,22 +71,85 @@ describe("eachWeekendOfInterval", () => {
 
   it("resolves the date type by default", () => {
     const interval = {
-      start: new Date("2024-09-01T00:00:00Z"),
-      end: new Date("2024-09-30T00:00:00Z"),
+      start: +new Date("2024-01-01T00:00:00Z"),
+      end: +new Date("2024-12-31T23:59:59Z"),
     };
     const result = eachWeekendOfInterval(interval);
     expect(result[0]).toBeInstanceOf(Date);
-    assertType<assertType.Equal<Date, (typeof result)[0]>>(true);
+    assertType<assertType.Equal<Date[], typeof result>>(true);
   });
 
-  it("resolves the context date type", () => {
+  it("resolves the start date object type", () => {
     const interval = {
-      start: new UTCDate("2024-09-01T00:00:00Z"),
-      end: new UTCDate("2024-09-30T00:00:00Z"),
+      start: new TZDate(2024, 4, 18, 0, "Asia/Singapore"),
+      end: new UTCDate(2024, 4, 28, 0, 0),
     };
     const result = eachWeekendOfInterval(interval);
+    expect(result[0]).toBeInstanceOf(TZDate);
+    assertType<assertType.Equal<TZDate[], typeof result>>(true);
+  });
+
+  it("resolves the end date object type if the start isn't object", () => {
+    const result = eachWeekendOfInterval({
+      start: +subWeeks(Date.now(), 2),
+      end: new UTCDate(),
+    });
     expect(result[0]).toBeInstanceOf(UTCDate);
-    assertType<assertType.Equal<UTCDate, (typeof result)[0]>>(true);
+    assertType<assertType.Equal<UTCDate[], typeof result>>(true);
+  });
+
+  it("normalizes the dates", () => {
+    const dateLeft = new TZDate(2023, 11, 19, 23, "Asia/Singapore");
+    const dateRight = new TZDate(2023, 11, 31, 12, "America/New_York");
+    expect(
+      eachWeekendOfInterval({ start: +dateLeft, end: +dateRight }).map((d) =>
+        d.toISOString(),
+      ),
+    ).toEqual([
+      "2023-12-22T16:00:00.000Z",
+      "2023-12-23T16:00:00.000Z",
+      "2023-12-29T16:00:00.000Z",
+      "2023-12-30T16:00:00.000Z",
+    ]);
+    expect(
+      eachWeekendOfInterval({ start: +dateRight, end: +dateLeft }).map((d) =>
+        d.toISOString(),
+      ),
+    ).toEqual([
+      "2023-12-30T16:00:00.000Z",
+      "2023-12-29T16:00:00.000Z",
+      "2023-12-23T16:00:00.000Z",
+      "2023-12-22T16:00:00.000Z",
+    ]);
+    expect(
+      eachWeekendOfInterval({ start: dateLeft, end: dateRight }).map((d) =>
+        d.toISOString(),
+      ),
+    ).toEqual([
+      "2023-12-23T00:00:00.000+08:00",
+      "2023-12-24T00:00:00.000+08:00",
+      "2023-12-30T00:00:00.000+08:00",
+      "2023-12-31T00:00:00.000+08:00",
+    ]);
+    expect(
+      eachWeekendOfInterval({ start: dateRight, end: dateLeft }).map((d) =>
+        d.toISOString(),
+      ),
+    ).toEqual([
+      "2023-12-31T00:00:00.000-05:00",
+      "2023-12-30T00:00:00.000-05:00",
+      "2023-12-24T00:00:00.000-05:00",
+      "2023-12-23T00:00:00.000-05:00",
+    ]);
+  });
+
+  it("allows dates to be of different types", () => {
+    function _test<DateType1 extends Date, DateType2 extends Date>(
+      start: DateType1 | number | string,
+      end: DateType2 | number | string,
+    ) {
+      eachWeekendOfInterval({ start, end });
+    }
   });
 
   describe("context", () => {

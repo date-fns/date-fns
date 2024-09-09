@@ -1,14 +1,34 @@
 import { addQuarters } from "../addQuarters/index.js";
+import { normalizeInterval } from "../_lib/normalizeInterval/index.js";
 import { startOfQuarter } from "../startOfQuarter/index.js";
-import { toDate } from "../toDate/index.js";
+import { constructFrom } from "../constructFrom/index.js";
 import type { DateFns, Interval, StepOptions } from "../types.js";
 
 /**
  * The {@link eachQuarterOfInterval} function options.
  */
-export interface EachQuarterOfIntervalOptions<DateType extends Date>
+export interface EachQuarterOfIntervalOptions<DateType extends Date = Date>
   extends StepOptions,
     DateFns.ContextOptions<DateType> {}
+
+/**
+ * The {@link eachQuarterOfInterval} function result type. It resolves the proper data type.
+ * It uses the first argument date object type, starting from the date argument,
+ * then the start interval date, and finally the end interval date. If
+ * a context function is passed, it uses the context function return type.
+ */
+export type EachQuarterOfIntervalResult<
+  IntervalType extends Interval,
+  Options extends EachQuarterOfIntervalOptions | undefined,
+> = Array<
+  Options extends EachQuarterOfIntervalOptions<infer DateType>
+    ? DateType
+    : IntervalType["start"] extends Date
+      ? IntervalType["start"]
+      : IntervalType["end"] extends Date
+        ? IntervalType["end"]
+        : Date
+>;
 
 /**
  * @name eachQuarterOfInterval
@@ -18,8 +38,8 @@ export interface EachQuarterOfIntervalOptions<DateType extends Date>
  * @description
  * Return the array of quarters within the specified time interval.
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [UTCDate](https://github.com/date-fns/utc).
- * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
+ * @typeParam IntervalType - Interval type.
+ * @typeParam Options - Options type.
  *
  * @param interval - The interval
  * @param options - An object with options
@@ -39,22 +59,17 @@ export interface EachQuarterOfIntervalOptions<DateType extends Date>
  * // ]
  */
 export function eachQuarterOfInterval<
-  DateType extends Date,
-  ResultDate extends Date = DateType,
+  IntervalType extends Interval,
+  Options extends EachQuarterOfIntervalOptions | undefined = undefined,
 >(
-  interval: Interval<DateType>,
-  options?: EachQuarterOfIntervalOptions<ResultDate>,
-): ResultDate[] {
-  const startDate = toDate(interval.start, options?.in);
-  const endDate = toDate(interval.end, options?.in);
+  interval: IntervalType,
+  options?: Options,
+): EachQuarterOfIntervalResult<IntervalType, Options> {
+  const { start, end } = normalizeInterval(options?.in, interval);
 
-  let reversed = +startDate > +endDate;
-  const endTime = reversed
-    ? +startOfQuarter(startDate, options)
-    : +startOfQuarter(endDate, options);
-  let currentDate = reversed
-    ? startOfQuarter(endDate, options)
-    : startOfQuarter(startDate, options);
+  let reversed = +start > +end;
+  const endTime = reversed ? +startOfQuarter(start) : +startOfQuarter(end);
+  let date = reversed ? startOfQuarter(end) : startOfQuarter(start);
 
   let step = options?.step ?? 1;
   if (!step) return [];
@@ -63,11 +78,11 @@ export function eachQuarterOfInterval<
     reversed = !reversed;
   }
 
-  const dates: ResultDate[] = [];
+  const dates: EachQuarterOfIntervalResult<IntervalType, Options> = [];
 
-  while (+currentDate <= endTime) {
-    dates.push(toDate(currentDate));
-    currentDate = addQuarters(currentDate, step, options);
+  while (+date <= endTime) {
+    dates.push(constructFrom(start, date));
+    date = addQuarters(date, step);
   }
 
   return reversed ? dates.reverse() : dates;

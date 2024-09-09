@@ -34,6 +34,9 @@ export type EachHourOfIntervalResult<
  * @description
  * Return the array of hours within the specified time interval.
  *
+ * @typeParam IntervalType - Interval type.
+ * @typeParam Options - Options type.
+ *
  * @param interval - The interval.
  * @param options - An object with options.
  *

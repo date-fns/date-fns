@@ -43,7 +43,7 @@ export function eachWeekendOfMonth<
   DateType extends Date,
   ResultDate extends Date = DateType,
 >(
-  date: DateType | number | string,
+  date: DateFns.Arg<DateType>,
   options?: EachWeekendOfMonthOptions<ResultDate>,
 ): ResultDate[] {
   const start = startOfMonth(date, options);
