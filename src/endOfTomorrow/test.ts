@@ -34,11 +34,12 @@ describe("endOfTomorrow", () => {
 
   describe("context", () => {
     it("allows to specify the context", () => {
+      fakeNow(new Date("2014-09-25T16:00:00Z"));
       expect(
         endOfTomorrow({
           in: tz("Asia/Tokyo"),
         }).toISOString(),
-      ).toBe("2014-09-26T23:59:59.999+09:00");
+      ).toBe("2014-09-27T23:59:59.999+09:00");
       expect(
         endOfTomorrow({
           in: tz("America/New_York"),
