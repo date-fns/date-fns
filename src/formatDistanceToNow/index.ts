@@ -1,11 +1,14 @@
 import { constructNow } from "../constructNow/index.js";
 import type { FormatDistanceOptions } from "../formatDistance/index.js";
 import { formatDistance } from "../formatDistance/index.js";
+import { type DateFns } from "../types.js";
 
 /**
  * The {@link formatDistanceToNow} function options.
  */
-export interface FormatDistanceToNowOptions extends FormatDistanceOptions {}
+export interface FormatDistanceToNowOptions
+  extends FormatDistanceOptions,
+    DateFns.ContextOptions<Date> {}
 
 /**
  * @name formatDistanceToNow
@@ -44,8 +47,6 @@ export interface FormatDistanceToNowOptions extends FormatDistanceOptions {}
  * | 20 secs ... 40 secs | half a minute        |
  * | 40 secs ... 60 secs | less than a minute   |
  * | 60 secs ... 90 secs | 1 minute             |
- *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
  * @param date - The given date
  * @param options - The object with options
@@ -90,8 +91,8 @@ export interface FormatDistanceToNowOptions extends FormatDistanceOptions {}
  * )
  * //=> 'pli ol 1 jaro'
  */
-export function formatDistanceToNow<DateType extends Date>(
-  date: DateType | number | string,
+export function formatDistanceToNow(
+  date: DateFns.Arg,
   options?: FormatDistanceToNowOptions,
 ): string {
   return formatDistance(date, constructNow(date), options);
