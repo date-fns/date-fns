@@ -95,24 +95,26 @@ export type DurationUnit = keyof Duration;
 /**
  * An object that combines two dates to represent the time interval.
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam StartDate - The start `Date` type.
+ * @typeParam EndDate - The end `Date` type.
  */
-export interface Interval<DateType extends Date = Date> {
+export interface Interval<
+  StartType extends DateFns.Arg = DateFns.Arg,
+  EndType extends DateFns.Arg = DateFns.Arg,
+> {
   /** The start of the interval. */
-  start: DateType | number | string;
+  start: StartType;
   /** The end of the interval. */
-  end: DateType | number | string;
+  end: EndType;
 }
 
 /**
  * A version of {@link Interval} that has both start and end resolved to Date.
  */
-export interface NormalizedInterval<DateType extends Date = Date> {
-  /** The start of the interval. */
-  start: DateType;
-  /** The end of the interval. */
-  end: DateType;
-}
+export type NormalizedInterval<DateType extends Date = Date> = Interval<
+  DateType,
+  DateType
+>;
 
 /**
  * The era. Can be either 0 (AD - Anno Domini) or 1 (BC - Before Christ).
