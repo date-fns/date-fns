@@ -161,22 +161,94 @@ describe("eachMinuteOfInterval", () => {
 
   it("resolves the date type by default", () => {
     const interval = {
-      start: +new Date("2014-09-01T00:00:00Z"),
-      end: +new Date("2014-09-05T00:00:00Z"),
+      start: Date.now(),
+      end: Date.now(),
     };
     const result = eachMinuteOfInterval(interval);
     expect(result[0]).toBeInstanceOf(Date);
-    assertType<assertType.Equal<Date, (typeof result)[0]>>(true);
+    assertType<assertType.Equal<Date[], typeof result>>(true);
   });
 
-  it("resolves the context date type", () => {
+  it("resolves the start date object type", () => {
     const interval = {
-      start: new UTCDate("2014-09-01T00:00:00Z"),
-      end: new UTCDate("2014-09-05T00:00:00Z"),
+      start: new TZDate("2024-09-01T00:00:00Z"),
+      end: new UTCDate("2024-09-01T00:05:00Z"),
+    };
+    const result = eachMinuteOfInterval(interval);
+    expect(result[0]).toBeInstanceOf(TZDate);
+    assertType<assertType.Equal<TZDate[], typeof result>>(true);
+  });
+
+  it("resolves the end date object type if the start isn't object", () => {
+    const interval = {
+      start: Date.now(),
+      end: new UTCDate("2024-09-01T00:00:00Z"),
     };
     const result = eachMinuteOfInterval(interval);
     expect(result[0]).toBeInstanceOf(UTCDate);
-    assertType<assertType.Equal<UTCDate, (typeof result)[0]>>(true);
+    assertType<assertType.Equal<UTCDate[], typeof result>>(true);
+  });
+
+  it("normalizes the dates", () => {
+    const dateLeft = new TZDate(2024, 8, 9, 6, 40, "America/New_York");
+    const dateRight = new TZDate(2024, 8, 9, 16, 15, "Asia/Kolkata");
+    expect(
+      eachMinuteOfInterval({ start: +dateLeft, end: +dateRight }).map((d) =>
+        d.toISOString(),
+      ),
+    ).toEqual([
+      "2024-09-09T10:40:00.000Z",
+      "2024-09-09T10:41:00.000Z",
+      "2024-09-09T10:42:00.000Z",
+      "2024-09-09T10:43:00.000Z",
+      "2024-09-09T10:44:00.000Z",
+      "2024-09-09T10:45:00.000Z",
+    ]);
+    expect(
+      eachMinuteOfInterval({ start: +dateRight, end: +dateLeft }).map((d) =>
+        d.toISOString(),
+      ),
+    ).toEqual([
+      "2024-09-09T10:45:00.000Z",
+      "2024-09-09T10:44:00.000Z",
+      "2024-09-09T10:43:00.000Z",
+      "2024-09-09T10:42:00.000Z",
+      "2024-09-09T10:41:00.000Z",
+      "2024-09-09T10:40:00.000Z",
+    ]);
+    expect(
+      eachMinuteOfInterval({ start: dateLeft, end: dateRight }).map((d) =>
+        d.toISOString(),
+      ),
+    ).toEqual([
+      "2024-09-09T06:40:00.000-04:00",
+      "2024-09-09T06:41:00.000-04:00",
+      "2024-09-09T06:42:00.000-04:00",
+      "2024-09-09T06:43:00.000-04:00",
+      "2024-09-09T06:44:00.000-04:00",
+      "2024-09-09T06:45:00.000-04:00",
+    ]);
+    expect(
+      eachMinuteOfInterval({ start: dateRight, end: dateLeft }).map((d) =>
+        d.toISOString(),
+      ),
+    ).toEqual([
+      "2024-09-09T16:15:00.000+05:30",
+      "2024-09-09T16:14:00.000+05:30",
+      "2024-09-09T16:13:00.000+05:30",
+      "2024-09-09T16:12:00.000+05:30",
+      "2024-09-09T16:11:00.000+05:30",
+      "2024-09-09T16:10:00.000+05:30",
+    ]);
+  });
+
+  it("allows dates to be of different types", () => {
+    function _test<DateType1 extends Date, DateType2 extends Date>(
+      start: DateType1 | number | string,
+      end: DateType2 | number | string,
+    ) {
+      eachMinuteOfInterval({ start, end });
+    }
   });
 
   describe("context", () => {

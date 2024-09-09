@@ -1,12 +1,30 @@
 import { eachDayOfInterval } from "../eachDayOfInterval/index.js";
 import { isWeekend } from "../isWeekend/index.js";
+import { normalizeInterval } from "../_lib/normalizeInterval/index.js";
+import { constructFrom } from "../constructFrom/index.js";
 import type { Interval, DateFns } from "../types.js";
 
 /**
  * The {@link eachWeekendOfInterval} function options.
  */
-export interface EachWeekendOfIntervalOptions<DateType extends Date>
+export interface EachWeekendOfIntervalOptions<DateType extends Date = Date>
   extends DateFns.ContextOptions<DateType> {}
+
+/**
+ * The {@link eachWeekendOfInterval} function result type.
+ */
+export type EachWeekendOfIntervalResult<
+  IntervalType extends Interval,
+  Options extends EachWeekendOfIntervalOptions | undefined,
+> = Array<
+  Options extends EachWeekendOfIntervalOptions<infer DateType>
+    ? DateType
+    : IntervalType["start"] extends Date
+      ? IntervalType["start"]
+      : IntervalType["end"] extends Date
+        ? IntervalType["end"]
+        : Date
+>;
 
 /**
  * @name eachWeekendOfInterval
@@ -16,8 +34,8 @@ export interface EachWeekendOfIntervalOptions<DateType extends Date>
  * @description
  * Get all the Saturdays and Sundays in the given date interval.
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
+ * @typeParam IntervalType - Interval type.
+ * @typeParam Options - Options type.
  *
  * @param interval - The given interval
  * @param options - An object with options
@@ -38,18 +56,19 @@ export interface EachWeekendOfIntervalOptions<DateType extends Date>
  * // ]
  */
 export function eachWeekendOfInterval<
-  DateType extends Date,
-  ResultDate extends Date = DateType,
+  IntervalType extends Interval,
+  Options extends EachWeekendOfIntervalOptions | undefined = undefined,
 >(
-  interval: Interval<DateType>,
-  options?: EachWeekendOfIntervalOptions<ResultDate>,
-): ResultDate[] {
-  const dateInterval = eachDayOfInterval(interval, options);
-  const weekends: ResultDate[] = [];
+  interval: IntervalType,
+  options?: Options,
+): EachWeekendOfIntervalResult<IntervalType, Options> {
+  const { start, end } = normalizeInterval(options?.in, interval);
+  const dateInterval = eachDayOfInterval({ start, end }, options);
+  const weekends: EachWeekendOfIntervalResult<IntervalType, Options> = [];
   let index = 0;
   while (index < dateInterval.length) {
     const date = dateInterval[index++];
-    if (isWeekend(date)) weekends.push(date);
+    if (isWeekend(date)) weekends.push(constructFrom(start, date));
   }
   return weekends;
 }
