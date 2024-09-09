@@ -1,19 +1,12 @@
 import { tz } from "@date-fns/tz";
 import { UTCDate } from "@date-fns/utc";
-import sinon from "sinon";
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { describe, expect, it } from "vitest";
+import { fakeDate } from "../_lib/test/index.js";
 import { type DateFns } from "../types.js";
 import { isThisQuarter } from "./index.js";
 
 describe("isThisQuarter", () => {
-  let clock: sinon.SinonFakeTimers;
-  beforeEach(() => {
-    clock = sinon.useFakeTimers(new Date(2014, 6 /* Jul */, 1).getTime());
-  });
-
-  afterEach(() => {
-    clock.restore();
-  });
+  const { fakeNow } = fakeDate(new Date(2014, 6 /* Jul */, 1));
 
   it("returns true if the given date and the current date have the same quarter (and year)", () => {
     const date = new Date(2014, 6 /* Jul */, 2);
@@ -38,7 +31,7 @@ describe("isThisQuarter", () => {
 
   describe("context", () => {
     it("allows to specify the context", () => {
-      clock = sinon.useFakeTimers(new Date("2024-01-02T00:00:00Z").getTime());
+      fakeNow(new Date("2024-01-02T00:00:00Z"));
       expect(
         isThisQuarter("2024-01-01T05:00:00Z", {
           in: tz("America/New_York"),

@@ -1,20 +1,10 @@
 import { TZDate, tz } from "@date-fns/tz";
-import sinon from "sinon";
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
-import { assertType } from "../_lib/test/index.js";
+import { describe, expect, it } from "vitest";
+import { assertType, fakeDate } from "../_lib/test/index.js";
 import { endOfToday } from "./index.js";
 
 describe("endOfToday", () => {
-  let clock: sinon.SinonFakeTimers;
-  beforeEach(() => {
-    clock = sinon.useFakeTimers(
-      new Date(2014, 8 /* Sep */, 25, 14, 30, 45, 500).getTime(),
-    );
-  });
-
-  afterEach(() => {
-    clock.restore();
-  });
+  fakeDate(new Date(2014, 8 /* Sep */, 25, 14, 30, 45, 500));
 
   it("returns the current date with the time settled to 23:59:59.999", () => {
     const result = endOfToday();

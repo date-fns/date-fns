@@ -3,16 +3,10 @@ import sinon from "sinon";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { type DateFns } from "../types.js";
 import { isThisISOWeek } from "./index.js";
+import { fakeDate } from "../_lib/test/index.js";
 
 describe("isThisISOWeek", () => {
-  let clock: sinon.SinonFakeTimers;
-  beforeEach(() => {
-    clock = sinon.useFakeTimers(new Date(2014, 8 /* Sep */, 25).getTime());
-  });
-
-  afterEach(() => {
-    clock.restore();
-  });
+  const { fakeNow } = fakeDate(new Date(2014, 8 /* Sep */, 25));
 
   it("returns true if the given date and the current date have the same ISO week", () => {
     const date = new Date(2014, 8 /* Sep */, 22);
@@ -37,7 +31,7 @@ describe("isThisISOWeek", () => {
 
   describe("context", () => {
     it("allows to specify the context", () => {
-      clock = sinon.useFakeTimers(new Date("2024-08-20T00:00:00Z").getTime());
+      fakeNow(new Date("2024-08-20T00:00:00Z"));
       expect(
         isThisISOWeek("2024-08-19T04:00:00Z", {
           in: tz("America/New_York"),
