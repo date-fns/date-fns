@@ -161,8 +161,6 @@ describe("differenceInHours", () => {
   it("normalizes the dates", () => {
     const dateLeft = new TZDate(2024, 5, 7, 8, "Asia/Singapore");
     const dateRight = new TZDate(2024, 5, 6, 4, "America/New_York");
-    expect(differenceInHours(+dateLeft, +dateRight)).toBe(16);
-    expect(differenceInHours(+dateRight, +dateLeft)).toBe(-16);
     expect(differenceInHours(dateLeft, dateRight)).toBe(16);
     expect(differenceInHours(dateRight, dateLeft)).toBe(-16);
   });

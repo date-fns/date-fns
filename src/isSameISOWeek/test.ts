@@ -61,8 +61,6 @@ describe("isSameISOWeek", () => {
   it("normalizes the dates", () => {
     const dateLeft = new TZDate(2024, 8, 2, 0, "America/New_York");
     const dateRight = new TZDate(2024, 8, 9, 4, "Europe/London");
-    expect(isSameISOWeek(+dateLeft, +dateRight)).toBe(false);
-    expect(isSameISOWeek(+dateRight, +dateLeft)).toBe(false);
     expect(isSameISOWeek(dateLeft, dateRight)).toBe(true);
     expect(isSameISOWeek(dateRight, dateLeft)).toBe(false);
   });

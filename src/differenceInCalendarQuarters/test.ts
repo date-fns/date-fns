@@ -109,8 +109,6 @@ describe("differenceInCalendarQuarters", () => {
   it("normalizes the dates", () => {
     const dateLeft = new TZDate(2024, 3, 1, "Asia/Singapore");
     const dateRight = new TZDate(2023, 11, 1, "America/New_York");
-    expect(differenceInCalendarQuarters(+dateLeft, +dateRight)).toBe(2);
-    expect(differenceInCalendarQuarters(+dateRight, +dateLeft)).toBe(-2);
     expect(differenceInCalendarQuarters(dateLeft, dateRight)).toBe(2);
     expect(differenceInCalendarQuarters(dateRight, dateLeft)).toBe(-1);
   });

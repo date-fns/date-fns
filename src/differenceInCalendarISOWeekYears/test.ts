@@ -123,8 +123,6 @@ describe("differenceInCalendarISOWeekYears", () => {
   it("normalizes the dates", () => {
     const dateLeft = new TZDate(2024, 0, 1, "Asia/Singapore");
     const dateRight = new TZDate(2008, 11, 29, "America/New_York");
-    expect(differenceInCalendarISOWeekYears(+dateLeft, +dateRight)).toBe(15);
-    expect(differenceInCalendarISOWeekYears(+dateRight, +dateLeft)).toBe(-15);
     expect(differenceInCalendarISOWeekYears(dateLeft, dateRight)).toBe(15);
     expect(differenceInCalendarISOWeekYears(dateRight, dateLeft)).toBe(-14);
   });

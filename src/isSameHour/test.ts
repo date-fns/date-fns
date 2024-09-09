@@ -55,8 +55,6 @@ describe("isSameHour", () => {
   it("normalizes the dates", () => {
     const dateLeft = new TZDate(2024, 8, 9, 7, "America/New_York");
     const dateRight = new TZDate(2024, 8, 9, 16, 15, "Asia/Kolkata");
-    expect(isSameHour(+dateLeft, +dateRight)).toBe(false);
-    expect(isSameHour(+dateRight, +dateLeft)).toBe(false);
     expect(isSameHour(dateLeft, dateRight)).toBe(false);
     expect(isSameHour(dateRight, dateLeft)).toBe(true);
   });

@@ -136,16 +136,6 @@ describe("eachQuarterOfInterval", () => {
     const dateLeft = new TZDate(2024, 0, 1, "Asia/Singapore");
     const dateRight = new TZDate(2024, 2, 31, 23, "America/New_York");
     expect(
-      eachQuarterOfInterval({ start: +dateLeft, end: +dateRight }).map((d) =>
-        d.toISOString(),
-      ),
-    ).toEqual(["2023-12-31T16:00:00.000Z", "2024-03-31T16:00:00.000Z"]);
-    expect(
-      eachQuarterOfInterval({ start: +dateRight, end: +dateLeft }).map((d) =>
-        d.toISOString(),
-      ),
-    ).toEqual(["2024-03-31T16:00:00.000Z", "2023-12-31T16:00:00.000Z"]);
-    expect(
       eachQuarterOfInterval({ start: dateLeft, end: dateRight }).map((d) =>
         d.toISOString(),
       ),

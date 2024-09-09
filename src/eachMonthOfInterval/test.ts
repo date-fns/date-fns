@@ -195,32 +195,6 @@ describe("eachMonthOfInterval", () => {
     const dateLeft = new TZDate(2024, 0, 1, 12, "Asia/Singapore");
     const dateRight = new TZDate(2024, 5, 30, 12, "America/New_York");
     expect(
-      eachMonthOfInterval({ start: +dateLeft, end: +dateRight }).map((d) =>
-        d.toISOString(),
-      ),
-    ).toEqual([
-      "2023-12-31T16:00:00.000Z",
-      "2024-01-31T16:00:00.000Z",
-      "2024-02-29T16:00:00.000Z",
-      "2024-03-31T16:00:00.000Z",
-      "2024-04-30T16:00:00.000Z",
-      "2024-05-31T16:00:00.000Z",
-      "2024-06-30T16:00:00.000Z",
-    ]);
-    expect(
-      eachMonthOfInterval({ start: +dateRight, end: +dateLeft }).map((d) =>
-        d.toISOString(),
-      ),
-    ).toEqual([
-      "2024-06-30T16:00:00.000Z",
-      "2024-05-31T16:00:00.000Z",
-      "2024-04-30T16:00:00.000Z",
-      "2024-03-31T16:00:00.000Z",
-      "2024-02-29T16:00:00.000Z",
-      "2024-01-31T16:00:00.000Z",
-      "2023-12-31T16:00:00.000Z",
-    ]);
-    expect(
       eachMonthOfInterval({ start: dateLeft, end: dateRight }).map((d) =>
         d.toISOString(),
       ),

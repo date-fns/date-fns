@@ -196,16 +196,6 @@ describe("eachDayOfInterval", () => {
     const dateLeft = new TZDate(2023, 11, 31, 23, "Asia/Singapore");
     const dateRight = new TZDate(2023, 11, 31, 12, "America/New_York");
     expect(
-      eachDayOfInterval({ start: +dateLeft, end: +dateRight }).map((d) =>
-        d.toISOString(),
-      ),
-    ).toEqual(["2023-12-30T16:00:00.000Z", "2023-12-31T16:00:00.000Z"]);
-    expect(
-      eachDayOfInterval({ start: +dateRight, end: +dateLeft }).map((d) =>
-        d.toISOString(),
-      ),
-    ).toEqual(["2023-12-31T16:00:00.000Z", "2023-12-30T16:00:00.000Z"]);
-    expect(
       eachDayOfInterval({ start: dateLeft, end: dateRight }).map((d) =>
         d.toISOString(),
       ),

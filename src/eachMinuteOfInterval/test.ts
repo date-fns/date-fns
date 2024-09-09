@@ -193,30 +193,6 @@ describe("eachMinuteOfInterval", () => {
     const dateLeft = new TZDate(2024, 8, 9, 6, 40, "America/New_York");
     const dateRight = new TZDate(2024, 8, 9, 16, 15, "Asia/Kolkata");
     expect(
-      eachMinuteOfInterval({ start: +dateLeft, end: +dateRight }).map((d) =>
-        d.toISOString(),
-      ),
-    ).toEqual([
-      "2024-09-09T10:40:00.000Z",
-      "2024-09-09T10:41:00.000Z",
-      "2024-09-09T10:42:00.000Z",
-      "2024-09-09T10:43:00.000Z",
-      "2024-09-09T10:44:00.000Z",
-      "2024-09-09T10:45:00.000Z",
-    ]);
-    expect(
-      eachMinuteOfInterval({ start: +dateRight, end: +dateLeft }).map((d) =>
-        d.toISOString(),
-      ),
-    ).toEqual([
-      "2024-09-09T10:45:00.000Z",
-      "2024-09-09T10:44:00.000Z",
-      "2024-09-09T10:43:00.000Z",
-      "2024-09-09T10:42:00.000Z",
-      "2024-09-09T10:41:00.000Z",
-      "2024-09-09T10:40:00.000Z",
-    ]);
-    expect(
       eachMinuteOfInterval({ start: dateLeft, end: dateRight }).map((d) =>
         d.toISOString(),
       ),

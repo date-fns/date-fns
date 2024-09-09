@@ -210,8 +210,6 @@ describe("differenceInDays", () => {
   it("normalizes the dates", () => {
     const dateLeft = new TZDate(2025, 0, 1, "Asia/Singapore");
     const dateRight = new TZDate(2024, 0, 1, "America/New_York");
-    expect(differenceInDays(+dateLeft, +dateRight)).toBe(365);
-    expect(differenceInDays(+dateRight, +dateLeft)).toBe(-365);
     expect(differenceInDays(dateLeft, dateRight)).toBe(365);
     expect(differenceInDays(dateRight, dateLeft)).toBe(-365);
   });

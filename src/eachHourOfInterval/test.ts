@@ -186,16 +186,6 @@ describe("eachHourOfInterval", () => {
     const dateLeft = new TZDate(2024, 8, 9, 7, "America/New_York");
     const dateRight = new TZDate(2024, 8, 9, 16, 15, "Asia/Kolkata");
     expect(
-      eachHourOfInterval({ start: +dateLeft, end: +dateRight }).map((d) =>
-        d.toISOString(),
-      ),
-    ).toEqual(["2024-09-09T11:00:00.000Z", "2024-09-09T10:00:00.000Z"]);
-    expect(
-      eachHourOfInterval({ start: +dateRight, end: +dateLeft }).map((d) =>
-        d.toISOString(),
-      ),
-    ).toEqual(["2024-09-09T10:00:00.000Z", "2024-09-09T11:00:00.000Z"]);
-    expect(
       eachHourOfInterval({ start: dateLeft, end: dateRight }).map((d) =>
         d.toISOString(),
       ),

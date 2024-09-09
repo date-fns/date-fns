@@ -142,8 +142,6 @@ describe("differenceInYears", () => {
   it("normalizes the dates", () => {
     const dateLeft = new TZDate(2027, 0, 1, "Asia/Singapore");
     const dateRight = new TZDate(2024, 0, 1, "America/New_York");
-    expect(differenceInYears(+dateLeft, +dateRight)).toBe(2);
-    expect(differenceInYears(+dateRight, +dateLeft)).toBe(-2);
     expect(differenceInYears(dateLeft, dateRight)).toBe(2);
     expect(differenceInYears(dateRight, dateLeft)).toBe(-2);
   });

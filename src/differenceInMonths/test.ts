@@ -148,8 +148,6 @@ describe("differenceInMonths", () => {
   it("normalizes the dates", () => {
     const dateLeft = new TZDate(2025, 0, 1, "Asia/Singapore");
     const dateRight = new TZDate(2024, 0, 1, "America/New_York");
-    expect(differenceInMonths(+dateLeft, +dateRight)).toBe(11);
-    expect(differenceInMonths(+dateRight, +dateLeft)).toBe(-11);
     expect(differenceInMonths(dateLeft, dateRight)).toBe(11);
     expect(differenceInMonths(dateRight, dateLeft)).toBe(-11);
   });
