@@ -9,8 +9,6 @@ import type { DateArg } from "../types.js";
  * @description
  * Are the given dates equal?
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- *
  * @param dateLeft - The first date to compare
  * @param dateRight - The second date to compare
  *

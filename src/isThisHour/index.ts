@@ -17,9 +17,6 @@ export interface IsThisHourOptions extends ContextOptions<Date> {}
  * @description
  * Is the given date in the same hour as the current date?
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- * @typeParam ContextDate - The `Date` type of the context function.
- *
  * @param date - The date to check
  * @param options - An object with options
  *

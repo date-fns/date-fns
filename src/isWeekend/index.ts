@@ -14,9 +14,6 @@ export interface IsWeekendOptions extends ContextOptions<Date> {}
  * @description
  * Does the given date fall on a weekend? A weekend is either Saturday (`6`) or Sunday (`0`).
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- * @typeParam ContextDate - The `Date` type of the context function.
- *
  * @param date - The date to check
  * @param options - An object with options
  *

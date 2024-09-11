@@ -272,8 +272,6 @@ export interface IsMatchOptions
  *
  * If `formatString` matches with `dateString` but does not provides tokens, `referenceDate` will be returned.
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- *
  * @param dateStr - The date string to verify
  * @param format - The string of tokens
  * @param options - An object with options.

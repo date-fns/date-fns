@@ -32,8 +32,6 @@ export interface FormatRelativeOptions
  * | Next 6 days               | Sunday at 04:30 AM        |
  * | Other                     | 12/31/2017                |
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- *
  * @param date - The date to format
  * @param baseDate - The date to compare with
  * @param options - An object with options

@@ -19,7 +19,6 @@ export interface FromUnixTimeOptions<DateType extends Date = Date>
  * @param options - An object with options. Allows to pass a context.
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
  *
  * @returns The date
  *

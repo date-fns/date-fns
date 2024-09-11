@@ -25,9 +25,6 @@ export interface IsThisWeekOptions
  * @description
  * Is the given date in the same week as the current date?
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows using extensions like [`UTCDate`](https://github.com/date-fns/utc).
- * @typeParam ContextDate - The `Date` type of the context function.
- *
  * @param date - The date to check
  * @param options - The object with options
  *

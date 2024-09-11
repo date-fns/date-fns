@@ -326,6 +326,7 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/;
  * Time value of Date: http://es5.github.io/#x15.9.1.1
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
  *
  * @param dateStr - The string to parse
  * @param formatStr - The string of tokens

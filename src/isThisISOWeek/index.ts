@@ -19,9 +19,6 @@ export interface IsThisISOWeekOptions extends ContextOptions<Date> {}
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows using extensions like [`UTCDate`](https://github.com/date-fns/utc).
- * @typeParam ContextDate - The `Date` type of the context function.
- *
  * @param date - The date to check
  * @param options - An object with options
  *

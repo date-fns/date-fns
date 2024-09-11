@@ -29,8 +29,6 @@ const months = [
  * Return the formatted date string in RFC 7231 format.
  * The result will always be in UTC timezone.
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- *
  * @param date - The original date
  *
  * @returns The formatted date string

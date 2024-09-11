@@ -73,8 +73,6 @@ export type IntlFormatDistanceUnit =
  * | 1 year                 | last year      | next year       |
  * | 2+ years               | X years ago    | in X years      |
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- *
  * @param laterDate - The date
  * @param earlierDate - The date to compare with.
  * @param options - An object with options.

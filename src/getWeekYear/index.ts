@@ -33,8 +33,6 @@ export interface GetWeekYearOptions
  *
  * Week numbering: https://en.wikipedia.org/wiki/Week#The_ISO_week_date_system
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- *
  * @param date - The given date
  * @param options - An object with options.
  *

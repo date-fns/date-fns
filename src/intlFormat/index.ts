@@ -34,8 +34,6 @@ export interface IntlFormatLocaleOptions {
  *
  * > ⚠️ Please note that before Node version 13.0.0, only the locale data for en-US is available by default.
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- *
  * @param date - The date to format
  *
  * @returns The formatted date string
@@ -50,8 +48,6 @@ export interface IntlFormatLocaleOptions {
 export function intlFormat(date: DateArg<Date> & {}): string;
 
 /**
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- *
  * @param date - The date to format
  * @param localeOptions - An object with locale
  *
@@ -73,8 +69,6 @@ export function intlFormat(
 ): string;
 
 /**
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- *
  * @param date - The date to format
  * @param formatOptions - The format options
  *
@@ -99,8 +93,6 @@ export function intlFormat(
 ): string;
 
 /**
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- *
  * @param date - The date to format
  * @param formatOptions - The format options
  * @param localeOptions - An object with locale

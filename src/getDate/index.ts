@@ -14,8 +14,6 @@ export interface GetDateOptions extends ContextOptions<Date> {}
  * @description
  * Get the day of the month of the given date.
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- *
  * @param date - The given date
  * @param options - An object with options.
  *

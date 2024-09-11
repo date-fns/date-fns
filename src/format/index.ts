@@ -307,8 +307,6 @@ export interface FormatOptions
  * 9. `D` and `DD` tokens represent days of the year but they are often confused with days of the month.
  *    You should enable `options.useAdditionalDayOfYearTokens` to use them. See: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- *
  * @param date - The original date
  * @param format - The string of tokens
  * @param options - An object with options
@@ -343,7 +341,7 @@ export interface FormatOptions
  * //=> "3 o'clock"
  */
 export function format(
-  date: DateArg<Date> & {} & {},
+  date: DateArg<Date> & {},
   formatStr: string,
   options?: FormatOptions,
 ): string {
