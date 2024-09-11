@@ -1,6 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.
 
-import { toDate as fn } from "../../toDate/index.js";
+import { subISOWeekYears as fn } from "../../subISOWeekYears/index.js";
 import { convertToFP } from "../_lib/convertToFP/index.js";
 
-export const toDate = convertToFP(fn, 2);
+export const subISOWeekYearsWithOptions = convertToFP(fn, 3);
