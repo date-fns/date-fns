@@ -1,6 +1,6 @@
 import { tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import type { DateFns, Interval } from "../types.js";
+import type { ContextOptions, Interval } from "../types.js";
 import { areIntervalsOverlapping } from "./index.js";
 
 describe("areIntervalsOverlapping", () => {
@@ -184,7 +184,7 @@ describe("areIntervalsOverlapping", () => {
       function _test<DateType extends Date, ResultDate extends Date = DateType>(
         arg1: Interval<DateType>,
         arg2: Interval<DateType>,
-        options?: DateFns.ContextOptions<ResultDate>,
+        options?: ContextOptions<ResultDate>,
       ) {
         areIntervalsOverlapping(arg1, arg2, { in: options?.in });
       }

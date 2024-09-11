@@ -1,10 +1,10 @@
 import { normalizeDates } from "../_lib/normalizeDates/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link isSameMonth} function options.
  */
-export interface IsSameMonthOptions extends DateFns.ContextOptions<Date> {}
+export interface IsSameMonthOptions extends ContextOptions<Date> {}
 
 /**
  * @name isSameMonth
@@ -31,8 +31,8 @@ export interface IsSameMonthOptions extends DateFns.ContextOptions<Date> {}
  * //=> false
  */
 export function isSameMonth(
-  laterDate: DateFns.Arg,
-  earlierDate: DateFns.Arg,
+  laterDate: DateArg<Date> & {},
+  earlierDate: DateArg<Date> & {},
   options?: IsSameMonthOptions | undefined,
 ): boolean {
   const [laterDate_, earlierDate_] = normalizeDates(

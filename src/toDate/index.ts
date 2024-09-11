@@ -1,7 +1,8 @@
 import { constructFromSymbol } from "../constants/index.js";
 import type {
   ConstructableDate,
-  DateFns,
+  ContextFn,
+  DateArg,
   GenericDateConstructor,
 } from "../types.js";
 
@@ -46,8 +47,8 @@ export function toDate<
   DateType extends Date | ConstructableDate,
   ResultDate extends Date = DateType,
 >(
-  argument: DateType | number | string,
-  context?: DateFns.ContextFn<ResultDate> | undefined,
+  argument: DateArg<DateType>,
+  context?: ContextFn<ResultDate> | undefined,
 ): ResultDate {
   // [TODO] Use constructFrom here instead?
   if (context) return context(argument);

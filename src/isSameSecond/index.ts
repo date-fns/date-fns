@@ -1,5 +1,5 @@
 import { startOfSecond } from "../startOfSecond/index.js";
-import { type DateFns } from "../types.js";
+import type { DateArg } from "../types.js";
 
 /**
  * @name isSameSecond
@@ -39,8 +39,8 @@ import { type DateFns } from "../types.js";
  * //=> false
  */
 export function isSameSecond(
-  laterDate: DateFns.Arg,
-  earlierDate: DateFns.Arg,
+  laterDate: DateArg<Date> & {},
+  earlierDate: DateArg<Date> & {},
 ): boolean {
   return +startOfSecond(laterDate) === +startOfSecond(earlierDate);
 }

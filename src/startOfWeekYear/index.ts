@@ -3,7 +3,8 @@ import { constructFrom } from "../constructFrom/index.js";
 import { getWeekYear } from "../getWeekYear/index.js";
 import { startOfWeek } from "../startOfWeek/index.js";
 import type {
-  DateFns,
+  ContextOptions,
+  DateArg,
   FirstWeekContainsDateOptions,
   LocalizedOptions,
   WeekOptions,
@@ -16,7 +17,7 @@ export interface StartOfWeekYearOptions<DateType extends Date = Date>
   extends LocalizedOptions<"options">,
     FirstWeekContainsDateOptions,
     WeekOptions,
-    DateFns.ContextOptions<DateType> {}
+    ContextOptions<DateType> {}
 
 /**
  * @name startOfWeekYear
@@ -59,7 +60,7 @@ export function startOfWeekYear<
   DateType extends Date,
   ResultDate extends Date = DateType,
 >(
-  date: DateType | number | string,
+  date: DateArg<DateType>,
   options?: StartOfWeekYearOptions<ResultDate>,
 ): ResultDate {
   const defaultOptions = getDefaultOptions();

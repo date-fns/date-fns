@@ -1,12 +1,12 @@
 import { constructFrom } from "../constructFrom/index.js";
 import { toDate } from "../toDate/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextFn, ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link min} function options.
  */
 export interface MinOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * @name min
@@ -34,7 +34,7 @@ export interface MinOptions<DateType extends Date = Date>
  * //=> Wed Feb 11 1987 00:00:00
  */
 export function min<DateType extends Date, ResultDate extends Date = DateType>(
-  dates: Array<DateType | number | string>,
+  dates: Array<DateArg<DateType>>,
   options?: MinOptions<ResultDate> | undefined,
 ): ResultDate {
   let result: ResultDate | undefined;
@@ -43,7 +43,7 @@ export function min<DateType extends Date, ResultDate extends Date = DateType>(
   dates.forEach((date) => {
     // Use the first date object as the context function
     if (!context && typeof date === "object")
-      context = constructFrom.bind(null, date) as DateFns.ContextFn<ResultDate>;
+      context = constructFrom.bind(null, date) as ContextFn<ResultDate>;
 
     const date_ = toDate(date, context);
     if (!result || result > date_ || isNaN(+date_)) result = date_;

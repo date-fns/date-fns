@@ -1,6 +1,6 @@
 import { constructFrom } from "../../constructFrom/index.js";
 import { transpose } from "../../transpose/index.js";
-import { type DateFns } from "../../types.js";
+import type { ContextFn, DateArg } from "../../types.js";
 import type { ParseFlags, ParserOptions } from "./types.js";
 
 const TIMEZONE_UNIT_PRIORITY = 10;
@@ -67,11 +67,11 @@ export class ValueSetter<Value> extends Setter {
 export class DateTimezoneSetter extends Setter {
   priority = TIMEZONE_UNIT_PRIORITY;
   subPriority = -1;
-  context: DateFns.ContextFn<Date>;
+  context: ContextFn<Date>;
 
   constructor(
-    context: DateFns.ContextFn<Date> | undefined,
-    reference: DateFns.Arg,
+    context: ContextFn<Date> | undefined,
+    reference: DateArg<Date> & {},
   ) {
     super();
     this.context = context || ((date) => constructFrom(reference, date));

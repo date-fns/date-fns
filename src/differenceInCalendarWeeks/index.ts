@@ -2,8 +2,12 @@ import { getTimezoneOffsetInMilliseconds } from "../_lib/getTimezoneOffsetInMill
 import { normalizeDates } from "../_lib/normalizeDates/index.js";
 import { millisecondsInWeek } from "../constants/index.js";
 import { startOfWeek } from "../startOfWeek/index.js";
-import type { LocalizedOptions, WeekOptions } from "../types.js";
-import { type DateFns } from "../types.js";
+import type {
+  ContextOptions,
+  DateArg,
+  LocalizedOptions,
+  WeekOptions,
+} from "../types.js";
 
 /**
  * The {@link differenceInCalendarWeeks} function options.
@@ -11,7 +15,7 @@ import { type DateFns } from "../types.js";
 export interface DifferenceInCalendarWeeksOptions
   extends LocalizedOptions<"options">,
     WeekOptions,
-    DateFns.ContextOptions<Date> {}
+    ContextOptions<Date> {}
 
 /**
  * @name differenceInCalendarWeeks
@@ -46,8 +50,8 @@ export interface DifferenceInCalendarWeeksOptions
  * //=> 2
  */
 export function differenceInCalendarWeeks(
-  laterDate: DateFns.Arg,
-  earlierDate: DateFns.Arg,
+  laterDate: DateArg<Date> & {},
+  earlierDate: DateArg<Date> & {},
   options?: DifferenceInCalendarWeeksOptions | undefined,
 ): number {
   const [laterDate_, earlierDate_] = normalizeDates(

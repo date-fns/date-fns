@@ -1,10 +1,10 @@
+import { defaultLocale } from "../_lib/defaultLocale/index.js";
+import { getDefaultOptions } from "../_lib/defaultOptions/index.js";
 import { differenceInCalendarDays } from "../differenceInCalendarDays/index.js";
 import { format } from "../format/index.js";
 import type { FormatRelativeToken } from "../locale/types.js";
 import { toDate } from "../toDate/index.js";
-import type { LocalizedOptions, WeekOptions } from "../types.js";
-import { defaultLocale } from "../_lib/defaultLocale/index.js";
-import { getDefaultOptions } from "../_lib/defaultOptions/index.js";
+import type { DateArg, LocalizedOptions, WeekOptions } from "../types.js";
 
 /**
  * The {@link formatRelative} function options.
@@ -51,9 +51,9 @@ export interface FormatRelativeOptions
  * const result = formatRelative(subDays(new Date(), 6), new Date())
  * //=> "last Thursday at 12:45 AM"
  */
-export function formatRelative<DateType extends Date>(
-  date: DateType | number | string,
-  baseDate: DateType | number | string,
+export function formatRelative(
+  date: DateArg<Date> & {},
+  baseDate: DateArg<Date> & {},
   options?: FormatRelativeOptions,
 ): string {
   const _date = toDate(date);

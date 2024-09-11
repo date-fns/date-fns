@@ -1,5 +1,5 @@
 import { startOfMinute } from "../startOfMinute/index.js";
-import { type DateFns } from "../types.js";
+import type { DateArg } from "../types.js";
 
 /**
  * @name isSameMinute
@@ -31,8 +31,8 @@ import { type DateFns } from "../types.js";
  * //=> false
  */
 export function isSameMinute(
-  laterDate: DateFns.Arg,
-  earlierDate: DateFns.Arg,
+  laterDate: DateArg<Date> & {},
+  earlierDate: DateArg<Date> & {},
 ): boolean {
   return +startOfMinute(laterDate) === +startOfMinute(earlierDate);
 }

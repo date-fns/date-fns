@@ -1,11 +1,11 @@
 import { normalizeDates } from "../_lib/normalizeDates/index.js";
 import { startOfQuarter } from "../startOfQuarter/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link isSameQuarter} function options.
  */
-export interface IsSameQuarterOptions extends DateFns.ContextOptions<Date> {}
+export interface IsSameQuarterOptions extends ContextOptions<Date> {}
 
 /**
  * @name isSameQuarter
@@ -32,8 +32,8 @@ export interface IsSameQuarterOptions extends DateFns.ContextOptions<Date> {}
  * //=> false
  */
 export function isSameQuarter(
-  laterDate: DateFns.Arg,
-  earlierDate: DateFns.Arg,
+  laterDate: DateArg<Date> & {},
+  earlierDate: DateArg<Date> & {},
   options?: IsSameQuarterOptions | undefined,
 ): boolean {
   const [dateLeft_, dateRight_] = normalizeDates(

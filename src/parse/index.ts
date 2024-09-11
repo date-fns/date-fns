@@ -10,7 +10,8 @@ import { getDefaultOptions } from "../getDefaultOptions/index.js";
 import { toDate } from "../toDate/index.js";
 import type {
   AdditionalTokensOptions,
-  DateFns,
+  ContextOptions,
+  DateArg,
   FirstWeekContainsDateOptions,
   LocalizedOptions,
   WeekOptions,
@@ -32,7 +33,7 @@ export interface ParseOptions<DateType extends Date = Date>
     FirstWeekContainsDateOptions,
     WeekOptions,
     AdditionalTokensOptions,
-    DateFns.ContextOptions<DateType> {}
+    ContextOptions<DateType> {}
 
 // This RegExp consists of three parts separated by `|`:
 // - [yYQqMLwIdDecihHKkms]o matches any available ordinal number token
@@ -361,7 +362,7 @@ export function parse<
 >(
   dateStr: string,
   formatStr: string,
-  referenceDate: DateType | number | string,
+  referenceDate: DateArg<DateType>,
   options?: ParseOptions<ResultDate>,
 ): ResultDate {
   const invalidDate = () => constructFrom(options?.in || referenceDate, NaN);

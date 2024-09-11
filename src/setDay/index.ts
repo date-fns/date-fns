@@ -1,7 +1,12 @@
 import { getDefaultOptions } from "../_lib/defaultOptions/index.js";
 import { addDays } from "../addDays/index.js";
 import { toDate } from "../toDate/index.js";
-import type { DateFns, LocalizedOptions, WeekOptions } from "../types.js";
+import type {
+  ContextOptions,
+  DateArg,
+  LocalizedOptions,
+  WeekOptions,
+} from "../types.js";
 
 /**
  * The {@link setDay} function options.
@@ -9,7 +14,7 @@ import type { DateFns, LocalizedOptions, WeekOptions } from "../types.js";
 export interface SetDayOptions<DateType extends Date = Date>
   extends LocalizedOptions<"options">,
     WeekOptions,
-    DateFns.ContextOptions<DateType> {}
+    ContextOptions<DateType> {}
 
 /**
  * @name setDay
@@ -42,7 +47,7 @@ export function setDay<
   DateType extends Date,
   ResultDate extends Date = DateType,
 >(
-  date: DateType | number | string,
+  date: DateArg<DateType>,
   day: number,
   options?: SetDayOptions<ResultDate>,
 ): ResultDate {

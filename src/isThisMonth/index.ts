@@ -1,13 +1,12 @@
 import { constructFrom } from "../constructFrom/index.js";
 import { constructNow } from "../constructNow/index.js";
 import { isSameMonth } from "../isSameMonth/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link isThisMonth} function options.
  */
-export interface IsThisMonthOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+export interface IsThisMonthOptions extends ContextOptions<Date> {}
 
 /**
  * @name isThisMonth
@@ -31,9 +30,9 @@ export interface IsThisMonthOptions<DateType extends Date = Date>
  * const result = isThisMonth(new Date(2014, 8, 15))
  * //=> true
  */
-export function isThisMonth<DateType extends Date, ContextDate extends Date>(
-  date: DateType | number | string,
-  options?: IsThisMonthOptions<ContextDate> | undefined,
+export function isThisMonth(
+  date: DateArg<Date> & {},
+  options?: IsThisMonthOptions | undefined,
 ): boolean {
   return isSameMonth(
     constructFrom(options?.in || date, date),

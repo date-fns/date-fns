@@ -1,6 +1,6 @@
 import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 import { isSameQuarter } from "./index.js";
 
 describe("isSameQuarter", () => {
@@ -94,9 +94,9 @@ describe("isSameQuarter", () => {
         DateType extends Date,
         ContextDate extends Date = DateType,
       >(
-        arg1: DateType | number | string,
-        arg2: DateType | number | string,
-        options?: DateFns.ContextOptions<ContextDate>,
+        arg1: DateArg<DateType>,
+        arg2: DateArg<DateType>,
+        options?: ContextOptions<ContextDate>,
       ) {
         isSameQuarter(arg1, arg2, { in: options?.in });
       }

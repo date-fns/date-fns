@@ -1,13 +1,12 @@
 import { normalizeDates } from "../_lib/normalizeDates/index.js";
 import { compareAsc } from "../compareAsc/index.js";
 import { differenceInCalendarYears } from "../differenceInCalendarYears/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link differenceInYears} function options.
  */
-export interface DifferenceInYearsOptions
-  extends DateFns.ContextOptions<Date> {}
+export interface DifferenceInYearsOptions extends ContextOptions<Date> {}
 
 /**
  * @name differenceInYears
@@ -29,8 +28,8 @@ export interface DifferenceInYearsOptions
  * //=> 1
  */
 export function differenceInYears(
-  laterDate: DateFns.Arg,
-  earlierDate: DateFns.Arg,
+  laterDate: DateArg<Date> & {},
+  earlierDate: DateArg<Date> & {},
   options?: DifferenceInYearsOptions | undefined,
 ): number {
   const [laterDate_, earlierDate_] = normalizeDates(

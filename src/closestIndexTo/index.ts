@@ -1,5 +1,5 @@
 import { toDate } from "../toDate/index.js";
-import { type DateFns } from "../types.js";
+import type { DateArg } from "../types.js";
 
 /**
  * @name closestIndexTo
@@ -26,8 +26,8 @@ import { type DateFns } from "../types.js";
  * //=> 1
  */
 export function closestIndexTo(
-  dateToCompare: DateFns.Arg,
-  dates: DateFns.Arg[],
+  dateToCompare: DateArg<Date> & {},
+  dates: Array<DateArg<Date> & {}>,
 ): number | undefined {
   // [TODO] It would be better to return -1 here rather than undefined, as this
   // is how JS behaves, but it would be a breaking change, so we need

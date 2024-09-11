@@ -1,7 +1,7 @@
+import { addLeadingZeros } from "../_lib/addLeadingZeros/index.js";
 import { isValid } from "../isValid/index.js";
 import { toDate } from "../toDate/index.js";
-import type { ISOFormatOptions } from "../types.js";
-import { addLeadingZeros } from "../_lib/addLeadingZeros/index.js";
+import type { DateArg, ISOFormatOptions } from "../types.js";
 
 /**
  * The {@link formatISO9075} function options.
@@ -45,8 +45,8 @@ export interface FormatISO9075Options extends ISOFormatOptions {}
  * const result = formatISO9075(new Date(2019, 8, 18, 19, 0, 52), { representation: 'time' })
  * //=> '19:00:52'
  */
-export function formatISO9075<DateType extends Date>(
-  date: DateType | number | string,
+export function formatISO9075(
+  date: DateArg<Date> & {},
   options?: FormatISO9075Options,
 ): string {
   const _date = toDate(date);

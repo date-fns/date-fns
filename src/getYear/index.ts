@@ -1,11 +1,10 @@
 import { toDate } from "../toDate/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link getYear} function options.
  */
-export interface GetYearOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+export interface GetYearOptions extends ContextOptions<Date> {}
 
 /**
  * @name getYear
@@ -28,9 +27,9 @@ export interface GetYearOptions<DateType extends Date = Date>
  * const result = getYear(new Date(2014, 6, 2))
  * //=> 2014
  */
-export function getYear<DateType extends Date, ContextDate extends Date>(
-  date: DateType | number | string,
-  options?: GetYearOptions<ContextDate> | undefined,
+export function getYear(
+  date: DateArg<Date> & {},
+  options?: GetYearOptions | undefined,
 ): number {
   return toDate(date, options?.in).getFullYear();
 }

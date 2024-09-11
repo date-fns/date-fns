@@ -1,11 +1,11 @@
 import { toDate } from "../toDate/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link setHours} function options.
  */
 export interface SetHoursOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * @name setHours
@@ -33,7 +33,7 @@ export function setHours<
   DateType extends Date,
   ResultDate extends Date = DateType,
 >(
-  date: DateType | number | string,
+  date: DateArg<DateType>,
   hours: number,
   options?: SetHoursOptions<ResultDate> | undefined,
 ): ResultDate {

@@ -1,11 +1,11 @@
 import { startOfDay } from "../startOfDay/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions } from "../types.js";
 
 /**
  * The {@link startOfToday} function options.
  */
 export interface StartOfTodayOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * @name startOfToday

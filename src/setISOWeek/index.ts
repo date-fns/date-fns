@@ -1,12 +1,12 @@
 import { getISOWeek } from "../getISOWeek/index.js";
 import { toDate } from "../toDate/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link setISOWeek} function options.
  */
 export interface SetISOWeekOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * @name setISOWeek
@@ -36,7 +36,7 @@ export function setISOWeek<
   DateType extends Date,
   ResultDate extends Date = DateType,
 >(
-  date: DateType | number | string,
+  date: DateArg<DateType>,
   week: number,
   options?: SetISOWeekOptions<ResultDate>,
 ): ResultDate {

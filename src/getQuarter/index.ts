@@ -1,11 +1,10 @@
 import { toDate } from "../toDate/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link getQuarter} function options.
  */
-export interface GetQuarterOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+export interface GetQuarterOptions extends ContextOptions<Date> {}
 
 /**
  * @name getQuarter
@@ -28,9 +27,9 @@ export interface GetQuarterOptions<DateType extends Date = Date>
  * const result = getQuarter(new Date(2014, 6, 2));
  * //=> 3
  */
-export function getQuarter<DateType extends Date, ContextDate extends Date>(
-  date: DateType | number | string,
-  options?: GetQuarterOptions<ContextDate> | undefined,
+export function getQuarter(
+  date: DateArg<Date> & {},
+  options?: GetQuarterOptions | undefined,
 ): number {
   const _date = toDate(date, options?.in);
   const quarter = Math.trunc(_date.getMonth() / 3) + 1;

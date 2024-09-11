@@ -3,7 +3,8 @@ import { constructFrom } from "../constructFrom/index.js";
 import { startOfWeek } from "../startOfWeek/index.js";
 import { toDate } from "../toDate/index.js";
 import type {
-  DateFns,
+  ContextOptions,
+  DateArg,
   FirstWeekContainsDateOptions,
   LocalizedOptions,
   WeekOptions,
@@ -12,11 +13,11 @@ import type {
 /**
  * The {@link getWeekYear} function options.
  */
-export interface GetWeekYearOptions<DateType extends Date = Date>
+export interface GetWeekYearOptions
   extends LocalizedOptions<"options">,
     WeekOptions,
     FirstWeekContainsDateOptions,
-    DateFns.ContextOptions<DateType> {}
+    ContextOptions<Date> {}
 
 /**
  * @name getWeekYear
@@ -54,9 +55,9 @@ export interface GetWeekYearOptions<DateType extends Date = Date>
  * const result = getWeekYear(new Date(2004, 11, 26), { firstWeekContainsDate: 4 })
  * //=> 2004
  */
-export function getWeekYear<DateType extends Date, ContextDate extends Date>(
-  date: DateType | number | string,
-  options?: GetWeekYearOptions<ContextDate>,
+export function getWeekYear(
+  date: DateArg<Date> & {},
+  options?: GetWeekYearOptions,
 ): number {
   const _date = toDate(date, options?.in);
   const year = _date.getFullYear();

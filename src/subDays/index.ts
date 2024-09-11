@@ -1,11 +1,11 @@
 import { addDays } from "../addDays/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link subDays} function options.
  */
 export interface SubDaysOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * @name subDays
@@ -30,7 +30,7 @@ export function subDays<
   DateType extends Date,
   ResultDate extends Date = DateType,
 >(
-  date: DateType | number | string,
+  date: DateArg<DateType>,
   amount: number,
   options?: SubDaysOptions<ResultDate> | undefined,
 ): ResultDate {

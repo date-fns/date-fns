@@ -30,6 +30,7 @@ module.exports = {
     ],
     "@typescript-eslint/consistent-type-imports": "error",
     "@typescript-eslint/no-namespace": "off",
+    "@typescript-eslint/ban-types": "off",
     // The following rules are deprecated: https://eslint.org/blog/2023/10/deprecating-formatting-rules
     "array-bracket-newline": "off",
     "array-bracket-spacing": "off",

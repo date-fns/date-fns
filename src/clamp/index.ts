@@ -1,13 +1,13 @@
 import { normalizeDates } from "../_lib/normalizeDates/index.js";
 import { max } from "../max/index.js";
 import { min } from "../min/index.js";
-import type { DateFns, Interval } from "../types.js";
+import type { ContextOptions, DateArg, Interval } from "../types.js";
 
 /**
  * The {@link clamp} function options.
  */
 export interface ClampOptions<ContextDate extends Date = Date>
-  extends DateFns.ContextOptions<ContextDate> {}
+  extends ContextOptions<ContextDate> {}
 
 /**
  * The {@link clamp} function result type. It resolves the proper data type.
@@ -16,7 +16,7 @@ export interface ClampOptions<ContextDate extends Date = Date>
  * a context function is passed, it uses the context function return type.
  */
 export type ClampResult<
-  DateType extends DateFns.Arg,
+  DateType extends DateArg<Date>,
   IntervalType extends Interval,
   Options extends ClampOptions | undefined,
 > =
@@ -62,7 +62,7 @@ export type ClampResult<
  * //=> Mon Mar 22 2021 00:00:00
  */
 export function clamp<
-  DateType extends DateFns.Arg,
+  DateType extends DateArg<Date>,
   IntervalType extends Interval,
   Options extends ClampOptions | undefined = undefined,
 >(

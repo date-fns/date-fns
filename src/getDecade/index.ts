@@ -1,11 +1,10 @@
 import { toDate } from "../toDate/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link getDecade} function options.
  */
-export interface GetDecadeOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+export interface GetDecadeOptions extends ContextOptions<Date> {}
 
 /**
  * @name getDecade
@@ -28,9 +27,9 @@ export interface GetDecadeOptions<DateType extends Date = Date>
  * const result = getDecade(new Date(1942, 10, 27))
  * //=> 1940
  */
-export function getDecade<DateType extends Date, ContextDate extends Date>(
-  date: DateType | number | string,
-  options?: GetDecadeOptions<ContextDate> | undefined,
+export function getDecade(
+  date: DateArg<Date> & {},
+  options?: GetDecadeOptions | undefined,
 ): number {
   // TODO: Switch to more technical definition in of decades that start with 1
   // end with 0. I.e. 2001-2010 instead of current 2000-2009. It's a breaking

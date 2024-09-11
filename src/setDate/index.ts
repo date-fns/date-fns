@@ -1,11 +1,11 @@
 import { toDate } from "../toDate/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link setDate} function options.
  */
 export interface SetDateOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * @name setDate
@@ -33,7 +33,7 @@ export function setDate<
   DateType extends Date,
   ResultDate extends Date = DateType,
 >(
-  date: DateType | number | string,
+  date: DateArg<DateType>,
   dayOfMonth: number,
   options?: SetDateOptions<ResultDate> | undefined,
 ): ResultDate {

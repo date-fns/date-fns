@@ -1,13 +1,13 @@
 import { constructFrom } from "../constructFrom/index.js";
 import { getISOWeekYear } from "../getISOWeekYear/index.js";
 import { startOfISOWeek } from "../startOfISOWeek/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link lastDayOfISOWeekYear} function options.
  */
 export interface LastDayOfISOWeekYearOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * @name lastDayOfISOWeekYear
@@ -38,7 +38,7 @@ export function lastDayOfISOWeekYear<
   DateType extends Date,
   ResultDate extends Date = DateType,
 >(
-  date: DateType | number | string,
+  date: DateArg<DateType>,
   options?: LastDayOfISOWeekYearOptions<ResultDate> | undefined,
 ): ResultDate {
   const year = getISOWeekYear(date, options);

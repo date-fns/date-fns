@@ -1,13 +1,13 @@
 import { constructFrom } from "../constructFrom/index.js";
 import { getDaysInMonth } from "../getDaysInMonth/index.js";
 import { toDate } from "../toDate/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link setMonth} function options.
  */
 export interface SetMonthOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * @name setMonth
@@ -34,7 +34,7 @@ export function setMonth<
   DateType extends Date,
   ResultDate extends Date = DateType,
 >(
-  date: DateType | number | string,
+  date: DateArg<DateType>,
   month: number,
   options?: SetMonthOptions<ResultDate> | undefined,
 ): ResultDate {

@@ -1,13 +1,13 @@
 import { getRoundingMethod } from "../_lib/getRoundingMethod/index.js";
 import { differenceInDays } from "../differenceInDays/index.js";
-import type { DateFns, RoundingOptions } from "../types.js";
+import type { ContextOptions, DateArg, RoundingOptions } from "../types.js";
 
 /**
  * The {@link differenceInWeeks} function options.
  */
 export interface DifferenceInWeeksOptions
   extends RoundingOptions,
-    DateFns.ContextOptions<Date> {}
+    ContextOptions<Date> {}
 
 /**
  * @name differenceInWeeks
@@ -50,8 +50,8 @@ export interface DifferenceInWeeksOptions
  * //=> 8
  */
 export function differenceInWeeks(
-  laterDate: DateFns.Arg,
-  earlierDate: DateFns.Arg,
+  laterDate: DateArg<Date> & {},
+  earlierDate: DateArg<Date> & {},
   options?: DifferenceInWeeksOptions | undefined,
 ): number {
   const diff = differenceInDays(laterDate, earlierDate, options) / 7;

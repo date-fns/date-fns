@@ -11,6 +11,7 @@ import { isValid } from "../isValid/index.js";
 import { toDate } from "../toDate/index.js";
 import type {
   AdditionalTokensOptions,
+  DateArg,
   FirstWeekContainsDateOptions,
   FormatPart,
   LocalizedOptions,
@@ -341,8 +342,8 @@ export interface FormatOptions
  * const result = format(new Date(2014, 6, 2, 15), "h 'o''clock'")
  * //=> "3 o'clock"
  */
-export function format<DateType extends Date>(
-  date: DateType | number | string,
+export function format(
+  date: DateArg<Date> & {} & {},
   formatStr: string,
   options?: FormatOptions,
 ): string {

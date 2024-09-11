@@ -1,10 +1,10 @@
 import { isSameWeek } from "../isSameWeek/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link isSameISOWeek} function options.
  */
-export interface IsSameISOWeekOptions extends DateFns.ContextOptions<Date> {}
+export interface IsSameISOWeekOptions extends ContextOptions<Date> {}
 
 /**
  * @name isSameISOWeek
@@ -33,8 +33,8 @@ export interface IsSameISOWeekOptions extends DateFns.ContextOptions<Date> {}
  * //=> false
  */
 export function isSameISOWeek(
-  laterDate: DateFns.Arg,
-  earlierDate: DateFns.Arg,
+  laterDate: DateArg<Date> & {},
+  earlierDate: DateArg<Date> & {},
   options?: IsSameISOWeekOptions | undefined,
 ): boolean {
   return isSameWeek(laterDate, earlierDate, { ...options, weekStartsOn: 1 });

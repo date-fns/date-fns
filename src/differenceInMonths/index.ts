@@ -2,13 +2,12 @@ import { normalizeDates } from "../_lib/normalizeDates/index.js";
 import { compareAsc } from "../compareAsc/index.js";
 import { differenceInCalendarMonths } from "../differenceInCalendarMonths/index.js";
 import { isLastDayOfMonth } from "../isLastDayOfMonth/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link differenceInMonths} function options.
  */
-export interface DifferenceInMonthsOptions
-  extends DateFns.ContextOptions<Date> {}
+export interface DifferenceInMonthsOptions extends ContextOptions<Date> {}
 
 /**
  * @name differenceInMonths
@@ -27,8 +26,8 @@ export interface DifferenceInMonthsOptions
  * //=> 7
  */
 export function differenceInMonths(
-  laterDate: DateFns.Arg,
-  earlierDate: DateFns.Arg,
+  laterDate: DateArg<Date> & {},
+  earlierDate: DateArg<Date> & {},
   options?: DifferenceInMonthsOptions | undefined,
 ): number {
   const [laterDate_, workingLaterDate, earlierDate_] = normalizeDates(

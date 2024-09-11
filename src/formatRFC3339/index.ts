@@ -1,6 +1,7 @@
+import { addLeadingZeros } from "../_lib/addLeadingZeros/index.js";
 import { isValid } from "../isValid/index.js";
 import { toDate } from "../toDate/index.js";
-import { addLeadingZeros } from "../_lib/addLeadingZeros/index.js";
+import type { DateArg } from "../types.js";
 
 /**
  * The {@link formatRFC3339} function options.
@@ -39,8 +40,8 @@ export interface FormatRFC3339Options {
  * })
  * //=> '2019-09-18T19:00:52.234Z'
  */
-export function formatRFC3339<DateType extends Date>(
-  date: DateType | number | string,
+export function formatRFC3339(
+  date: DateArg<Date> & {},
   options?: FormatRFC3339Options,
 ): string {
   const _date = toDate(date);

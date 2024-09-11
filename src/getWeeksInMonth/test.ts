@@ -1,6 +1,7 @@
 import { tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import { getWeeksInMonth, type GetWeeksInMonthOptions } from "./index.js";
+import type { ContextOptions, DateArg } from "../types.js";
+import { getWeeksInMonth } from "./index.js";
 
 describe("getWeeksInMonth", () => {
   it("returns the number of calendar weeks the month in the given date spans", () => {
@@ -78,8 +79,8 @@ describe("getWeeksInMonth", () => {
 
     it("doesn't enforce argument and context to be of the same type", () => {
       function _test<DateType extends Date, ResultDate extends Date = DateType>(
-        arg: DateType | number | string,
-        options?: GetWeeksInMonthOptions<ResultDate>,
+        arg: DateArg<DateType>,
+        options?: ContextOptions<ResultDate>,
       ) {
         getWeeksInMonth(arg, { in: options?.in });
       }

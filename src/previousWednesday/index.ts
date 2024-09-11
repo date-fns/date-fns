@@ -1,11 +1,11 @@
 import { previousDay } from "../previousDay/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link previousWednesday} function options.
  */
 export interface PreviousWednesdayOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * @name previousWednesday
@@ -32,7 +32,7 @@ export function previousWednesday<
   DateType extends Date,
   ResultDate extends Date = DateType,
 >(
-  date: DateType | number | string,
+  date: DateArg<DateType>,
   options?: PreviousWednesdayOptions<ResultDate> | undefined,
 ): ResultDate {
   return previousDay(date, 3, options);

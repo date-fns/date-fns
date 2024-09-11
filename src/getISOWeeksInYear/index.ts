@@ -1,13 +1,12 @@
 import { addWeeks } from "../addWeeks/index.js";
 import { millisecondsInWeek } from "../constants/index.js";
 import { startOfISOWeekYear } from "../startOfISOWeekYear/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link getISOWeeksInYear} function options.
  */
-export interface GetISOWeeksInYearOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+export interface GetISOWeeksInYearOptions extends ContextOptions<Date> {}
 
 /**
  * @name getISOWeeksInYear
@@ -31,12 +30,9 @@ export interface GetISOWeeksInYearOptions<DateType extends Date = Date>
  * const result = getISOWeeksInYear(new Date(2015, 1, 11))
  * //=> 53
  */
-export function getISOWeeksInYear<
-  DateType extends Date,
-  ContextDate extends Date,
->(
-  date: DateType | number | string,
-  options?: GetISOWeeksInYearOptions<ContextDate> | undefined,
+export function getISOWeeksInYear(
+  date: DateArg<Date> & {},
+  options?: GetISOWeeksInYearOptions | undefined,
 ): number {
   const thisYear = startOfISOWeekYear(date, options);
   const nextYear = startOfISOWeekYear(addWeeks(thisYear, 60));

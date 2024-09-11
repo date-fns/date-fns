@@ -1,11 +1,11 @@
 import { toDate } from "../toDate/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link setMilliseconds} function options.
  */
 export interface SetMillisecondsOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * @name setMilliseconds
@@ -33,7 +33,7 @@ export function setMilliseconds<
   DateType extends Date,
   ResultDate extends Date = DateType,
 >(
-  date: DateType | number | string,
+  date: DateArg<DateType>,
   milliseconds: number,
   options?: SetMillisecondsOptions<ResultDate> | undefined,
 ): ResultDate {

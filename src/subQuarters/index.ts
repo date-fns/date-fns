@@ -1,11 +1,11 @@
 import { addQuarters } from "../addQuarters/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link subQuarters} function options.
  */
 export interface SubQuartersOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * @name subQuarters
@@ -33,7 +33,7 @@ export function subQuarters<
   DateType extends Date,
   ResultDate extends Date = DateType,
 >(
-  date: DateType | number | string,
+  date: DateArg<DateType>,
   amount: number,
   options?: SubQuartersOptions<ResultDate>,
 ): ResultDate {

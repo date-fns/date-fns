@@ -1,13 +1,12 @@
 import { constructFrom } from "../constructFrom/index.js";
 import { constructNow } from "../constructNow/index.js";
 import { isSameISOWeek } from "../isSameISOWeek/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link isThisISOWeek} function options.
  */
-export interface IsThisISOWeekOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+export interface IsThisISOWeekOptions extends ContextOptions<Date> {}
 
 /**
  * @name isThisISOWeek
@@ -33,9 +32,9 @@ export interface IsThisISOWeekOptions<DateType extends Date = Date>
  * const result = isThisISOWeek(new Date(2014, 8, 22))
  * //=> true
  */
-export function isThisISOWeek<DateType extends Date, ContextDate extends Date>(
-  date: DateType | number | string,
-  options?: IsThisISOWeekOptions<ContextDate> | undefined,
+export function isThisISOWeek(
+  date: DateArg<Date> & {},
+  options?: IsThisISOWeekOptions | undefined,
 ): boolean {
   return isSameISOWeek(
     constructFrom(options?.in || date, date),

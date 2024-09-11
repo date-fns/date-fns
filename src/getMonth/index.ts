@@ -1,11 +1,10 @@
 import { toDate } from "../toDate/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link getMonth} function options.
  */
-export interface GetMonthOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+export interface GetMonthOptions extends ContextOptions<Date> {}
 
 /**
  * @name getMonth
@@ -28,9 +27,9 @@ export interface GetMonthOptions<DateType extends Date = Date>
  * const result = getMonth(new Date(2012, 1, 29))
  * //=> 1
  */
-export function getMonth<DateType extends Date, ContextDate extends Date>(
-  date: DateType | number | string,
-  options?: GetMonthOptions<ContextDate> | undefined,
+export function getMonth(
+  date: DateArg<Date> & {},
+  options?: GetMonthOptions | undefined,
 ): number {
   return toDate(date, options?.in).getMonth();
 }

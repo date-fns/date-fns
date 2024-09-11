@@ -1,11 +1,11 @@
 import { toDate } from "../toDate/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link endOfYear} function options.
  */
 export interface EndOfYearOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * @name endOfYear
@@ -32,10 +32,7 @@ export interface EndOfYearOptions<DateType extends Date = Date>
 export function endOfYear<
   DateType extends Date,
   ResultDate extends Date = DateType,
->(
-  date: DateType | number | string,
-  options?: EndOfYearOptions<ResultDate>,
-): ResultDate {
+>(date: DateArg<DateType>, options?: EndOfYearOptions<ResultDate>): ResultDate {
   const _date = toDate(date, options?.in);
   const year = _date.getFullYear();
   _date.setFullYear(year + 1, 0, 0);

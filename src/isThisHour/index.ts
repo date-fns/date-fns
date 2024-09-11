@@ -1,13 +1,12 @@
 import { constructNow } from "../constructNow/index.js";
 import { isSameHour } from "../isSameHour/index.js";
 import { toDate } from "../toDate/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link isThisHour} function options.
  */
-export interface IsThisHourOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+export interface IsThisHourOptions extends ContextOptions<Date> {}
 
 /**
  * @name isThisHour
@@ -32,9 +31,9 @@ export interface IsThisHourOptions<DateType extends Date = Date>
  * const result = isThisHour(new Date(2014, 8, 25, 18))
  * //=> true
  */
-export function isThisHour<DateType extends Date, ContextDate extends Date>(
-  date: DateType | number | string,
-  options?: IsThisHourOptions<ContextDate>,
+export function isThisHour(
+  date: DateArg<Date> & {},
+  options?: IsThisHourOptions,
 ): boolean {
   return isSameHour(
     toDate(date, options?.in),

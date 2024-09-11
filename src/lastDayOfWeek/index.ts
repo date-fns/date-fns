@@ -1,6 +1,11 @@
-import { toDate } from "../toDate/index.js";
-import type { LocalizedOptions, WeekOptions, DateFns } from "../types.js";
 import { getDefaultOptions } from "../_lib/defaultOptions/index.js";
+import { toDate } from "../toDate/index.js";
+import type {
+  ContextOptions,
+  DateArg,
+  LocalizedOptions,
+  WeekOptions,
+} from "../types.js";
 
 /**
  * The {@link lastDayOfWeek} function options.
@@ -8,7 +13,7 @@ import { getDefaultOptions } from "../_lib/defaultOptions/index.js";
 export interface LastDayOfWeekOptions<DateType extends Date = Date>
   extends LocalizedOptions<"options">,
     WeekOptions,
-    DateFns.ContextOptions<DateType> {}
+    ContextOptions<DateType> {}
 
 /**
  * @name lastDayOfWeek
@@ -31,7 +36,7 @@ export function lastDayOfWeek<
   DateType extends Date,
   ResultDate extends Date = DateType,
 >(
-  date: DateType | number | string,
+  date: DateArg<DateType>,
   options?: LastDayOfWeekOptions<ResultDate>,
 ): ResultDate {
   const defaultOptions = getDefaultOptions();

@@ -1,4 +1,5 @@
 import { toDate } from "../toDate/index.js";
+import type { DateArg } from "../types.js";
 
 /**
  * @name getUnixTime
@@ -19,8 +20,6 @@ import { toDate } from "../toDate/index.js";
  * const result = getUnixTime(new Date(2012, 1, 29, 11, 45, 5))
  * //=> 1330512305
  */
-export function getUnixTime<DateType extends Date>(
-  date: DateType | number | string,
-): number {
+export function getUnixTime(date: DateArg<Date> & {}): number {
   return Math.trunc(+toDate(date) / 1000);
 }

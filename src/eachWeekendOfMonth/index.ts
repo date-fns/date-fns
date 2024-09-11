@@ -1,13 +1,13 @@
 import { eachWeekendOfInterval } from "../eachWeekendOfInterval/index.js";
 import { endOfMonth } from "../endOfMonth/index.js";
 import { startOfMonth } from "../startOfMonth/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link eachWeekendOfMonth} function options.
  */
 export interface EachWeekendOfMonthOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * @name eachWeekendOfMonth
@@ -43,7 +43,7 @@ export function eachWeekendOfMonth<
   DateType extends Date,
   ResultDate extends Date = DateType,
 >(
-  date: DateFns.Arg<DateType>,
+  date: DateArg<DateType>,
   options?: EachWeekendOfMonthOptions<ResultDate>,
 ): ResultDate[] {
   const start = startOfMonth(date, options);

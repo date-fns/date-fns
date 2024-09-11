@@ -1,11 +1,11 @@
 import { addMinutes } from "../addMinutes/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link subMinutes} function options.
  */
 export interface SubMinutesOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * @name subMinutes
@@ -33,7 +33,7 @@ export function subMinutes<
   DateType extends Date,
   ResultDate extends Date = DateType,
 >(
-  date: DateType | number | string,
+  date: DateArg<DateType>,
   amount: number,
   options?: SubMinutesOptions<ResultDate> | undefined,
 ): ResultDate {

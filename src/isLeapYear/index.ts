@@ -1,8 +1,7 @@
 import { toDate } from "../toDate/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
-export interface IsLeapYearOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+export interface IsLeapYearOptions extends ContextOptions<Date> {}
 
 /**
  * @name isLeapYear
@@ -25,9 +24,9 @@ export interface IsLeapYearOptions<DateType extends Date = Date>
  * const result = isLeapYear(new Date(2012, 8, 1))
  * //=> true
  */
-export function isLeapYear<DateType extends Date, ContextDate extends Date>(
-  date: DateType | number | string,
-  options?: IsLeapYearOptions<ContextDate> | undefined,
+export function isLeapYear(
+  date: DateArg<Date> & {},
+  options?: IsLeapYearOptions | undefined,
 ): boolean {
   const _date = toDate(date, options?.in);
   const year = _date.getFullYear();

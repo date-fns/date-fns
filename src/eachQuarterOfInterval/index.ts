@@ -1,15 +1,15 @@
-import { addQuarters } from "../addQuarters/index.js";
 import { normalizeInterval } from "../_lib/normalizeInterval/index.js";
-import { startOfQuarter } from "../startOfQuarter/index.js";
+import { addQuarters } from "../addQuarters/index.js";
 import { constructFrom } from "../constructFrom/index.js";
-import type { DateFns, Interval, StepOptions } from "../types.js";
+import { startOfQuarter } from "../startOfQuarter/index.js";
+import type { ContextOptions, Interval, StepOptions } from "../types.js";
 
 /**
  * The {@link eachQuarterOfInterval} function options.
  */
 export interface EachQuarterOfIntervalOptions<DateType extends Date = Date>
   extends StepOptions,
-    DateFns.ContextOptions<DateType> {}
+    ContextOptions<DateType> {}
 
 /**
  * The {@link eachQuarterOfInterval} function result type. It resolves the proper data type.

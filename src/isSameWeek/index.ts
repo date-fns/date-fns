@@ -1,7 +1,7 @@
 import { normalizeDates } from "../_lib/normalizeDates/index.js";
 import { startOfWeek } from "../startOfWeek/index.js";
 import type { LocalizedOptions, WeekOptions } from "../types.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link isSameWeek} function options.
@@ -9,7 +9,7 @@ import { type DateFns } from "../types.js";
 export interface IsSameWeekOptions
   extends WeekOptions,
     LocalizedOptions<"options">,
-    DateFns.ContextOptions<Date> {}
+    ContextOptions<Date> {}
 
 /**
  * @name isSameWeek
@@ -44,8 +44,8 @@ export interface IsSameWeekOptions
  * //=> false
  */
 export function isSameWeek(
-  laterDate: DateFns.Arg,
-  earlierDate: DateFns.Arg,
+  laterDate: DateArg<Date> & {},
+  earlierDate: DateArg<Date> & {},
   options?: IsSameWeekOptions,
 ): boolean {
   const [laterDate_, earlierDate_] = normalizeDates(

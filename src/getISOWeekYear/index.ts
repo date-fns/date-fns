@@ -1,13 +1,12 @@
 import { constructFrom } from "../constructFrom/index.js";
 import { startOfISOWeek } from "../startOfISOWeek/index.js";
 import { toDate } from "../toDate/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link getISOWeekYear} function options.
  */
-export interface GetISOWeekYearOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+export interface GetISOWeekYearOptions extends ContextOptions<Date> {}
 
 /**
  * @name getISOWeekYear
@@ -32,9 +31,9 @@ export interface GetISOWeekYearOptions<DateType extends Date = Date>
  * const result = getISOWeekYear(new Date(2005, 0, 2))
  * //=> 2004
  */
-export function getISOWeekYear<DateType extends Date, ContextDate extends Date>(
-  date: DateType | number | string,
-  options?: GetISOWeekYearOptions<ContextDate> | undefined,
+export function getISOWeekYear(
+  date: DateArg<Date> & {},
+  options?: GetISOWeekYearOptions | undefined,
 ): number {
   const _date = toDate(date, options?.in);
   const year = _date.getFullYear();

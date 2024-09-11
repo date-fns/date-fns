@@ -1,11 +1,11 @@
 import { endOfWeek } from "../endOfWeek/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link endOfISOWeek} function options.
  */
 export interface EndOfISOWeekOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * @name endOfISOWeek
@@ -35,7 +35,7 @@ export function endOfISOWeek<
   DateType extends Date,
   ResultDate extends Date = DateType,
 >(
-  date: DateType | number | string,
+  date: DateArg<DateType>,
   options?: EndOfISOWeekOptions<ResultDate> | undefined,
 ): ResultDate {
   return endOfWeek(date, { ...options, weekStartsOn: 1 });

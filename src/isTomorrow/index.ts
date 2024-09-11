@@ -1,13 +1,12 @@
 import { addDays } from "../addDays/index.js";
 import { constructNow } from "../constructNow/index.js";
 import { isSameDay } from "../isSameDay/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link isTomorrow} function options.
  */
-export interface IsTomorrowOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+export interface IsTomorrowOptions extends ContextOptions<Date> {}
 
 /**
  * @name isTomorrow
@@ -31,9 +30,9 @@ export interface IsTomorrowOptions<DateType extends Date = Date>
  * const result = isTomorrow(new Date(2014, 9, 7, 14, 0))
  * //=> true
  */
-export function isTomorrow<DateType extends Date, ContextDate extends Date>(
-  date: DateType | number | string,
-  options?: IsTomorrowOptions<ContextDate> | undefined,
+export function isTomorrow(
+  date: DateArg<Date> & {},
+  options?: IsTomorrowOptions | undefined,
 ): boolean {
   return isSameDay(
     date,

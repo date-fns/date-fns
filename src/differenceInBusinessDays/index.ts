@@ -1,16 +1,15 @@
+import { normalizeDates } from "../_lib/normalizeDates/index.js";
 import { addDays } from "../addDays/index.js";
 import { differenceInCalendarDays } from "../differenceInCalendarDays/index.js";
 import { isSameDay } from "../isSameDay/index.js";
 import { isValid } from "../isValid/index.js";
 import { isWeekend } from "../isWeekend/index.js";
-import { normalizeDates } from "../_lib/normalizeDates/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link differenceInBusinessDays} function options.
  */
-export interface DifferenceInBusinessDaysOptions
-  extends DateFns.ContextOptions<Date> {}
+export interface DifferenceInBusinessDaysOptions extends ContextOptions<Date> {}
 
 /**
  * @name differenceInBusinessDays
@@ -63,8 +62,8 @@ export interface DifferenceInBusinessDaysOptions
  * //=> 0
  */
 export function differenceInBusinessDays(
-  laterDate: DateFns.Arg,
-  earlierDate: DateFns.Arg,
+  laterDate: DateArg<Date> & {},
+  earlierDate: DateArg<Date> & {},
   options?: DifferenceInBusinessDaysOptions | undefined,
 ): number {
   const [laterDate_, earlierDate_] = normalizeDates(

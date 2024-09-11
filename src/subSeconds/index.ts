@@ -1,11 +1,11 @@
 import { addSeconds } from "../addSeconds/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link subSeconds} function options.
  */
 export interface SubSecondsOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * Subtract the specified number of seconds from the given date.
@@ -28,7 +28,7 @@ export function subSeconds<
   DateType extends Date,
   ResultDate extends Date = DateType,
 >(
-  date: DateType | number | string,
+  date: DateArg<DateType>,
   amount: number,
   options?: SubSecondsOptions<ResultDate> | undefined,
 ): ResultDate {

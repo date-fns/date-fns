@@ -1,14 +1,14 @@
 import { getRoundingMethod } from "../_lib/getRoundingMethod/index.js";
 import { normalizeDates } from "../_lib/normalizeDates/index.js";
 import { millisecondsInHour } from "../constants/index.js";
-import type { DateFns, RoundingOptions } from "../types.js";
+import type { ContextOptions, DateArg, RoundingOptions } from "../types.js";
 
 /**
  * The {@link differenceInHours} function options.
  */
 export interface DifferenceInHoursOptions
   extends RoundingOptions,
-    DateFns.ContextOptions<Date> {}
+    ContextOptions<Date> {}
 
 /**
  * @name differenceInHours
@@ -33,8 +33,8 @@ export interface DifferenceInHoursOptions
  * //=> 12
  */
 export function differenceInHours(
-  laterDate: DateFns.Arg,
-  earlierDate: DateFns.Arg,
+  laterDate: DateArg<Date> & {},
+  earlierDate: DateArg<Date> & {},
   options?: DifferenceInHoursOptions,
 ): number {
   const [laterDate_, earlierDate_] = normalizeDates(

@@ -1,12 +1,12 @@
 import { constructFrom } from "../constructFrom/index.js";
 import { toDate } from "../toDate/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextFn, ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link max} function options.
  */
 export interface MaxOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * @name max
@@ -34,7 +34,7 @@ export interface MaxOptions<DateType extends Date = Date>
  * //=> Sun Jul 02 1995 00:00:00
  */
 export function max<DateType extends Date, ResultDate extends Date = DateType>(
-  dates: DateFns.Arg<DateType>[],
+  dates: DateArg<DateType>[],
   options?: MaxOptions<ResultDate> | undefined,
 ): ResultDate {
   let result: ResultDate | undefined;
@@ -43,7 +43,7 @@ export function max<DateType extends Date, ResultDate extends Date = DateType>(
   dates.forEach((date) => {
     // Use the first date object as the context function
     if (!context && typeof date === "object")
-      context = constructFrom.bind(null, date) as DateFns.ContextFn<ResultDate>;
+      context = constructFrom.bind(null, date) as ContextFn<ResultDate>;
 
     const date_ = toDate(date, context);
     if (!result || result < date_ || isNaN(+date_)) result = date_;

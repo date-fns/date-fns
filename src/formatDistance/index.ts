@@ -6,14 +6,14 @@ import { compareAsc } from "../compareAsc/index.js";
 import { minutesInDay, minutesInMonth } from "../constants/index.js";
 import { differenceInMonths } from "../differenceInMonths/index.js";
 import { differenceInSeconds } from "../differenceInSeconds/index.js";
-import type { DateFns, LocalizedOptions } from "../types.js";
+import type { ContextOptions, DateArg, LocalizedOptions } from "../types.js";
 
 /**
  * The {@link formatDistance} function options.
  */
 export interface FormatDistanceOptions
   extends LocalizedOptions<"formatDistance">,
-    DateFns.ContextOptions<Date> {
+    ContextOptions<Date> {
   /** Distances less than a minute are more detailed */
   includeSeconds?: boolean;
   /** Add "X ago"/"in X" in the locale language */
@@ -99,8 +99,8 @@ export interface FormatDistanceOptions
  * //=> 'pli ol 1 jaro'
  */
 export function formatDistance(
-  laterDate: DateFns.Arg,
-  earlierDate: DateFns.Arg,
+  laterDate: DateArg<Date> & {},
+  earlierDate: DateArg<Date> & {},
   options?: FormatDistanceOptions,
 ): string {
   const defaultOptions = getDefaultOptions();

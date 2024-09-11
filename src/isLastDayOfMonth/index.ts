@@ -1,10 +1,9 @@
 import { endOfDay } from "../endOfDay/index.js";
 import { endOfMonth } from "../endOfMonth/index.js";
 import { toDate } from "../toDate/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
-export interface IsLastDayOfMonthOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+export interface IsLastDayOfMonthOptions extends ContextOptions<Date> {}
 
 /**
  * @name isLastDayOfMonth
@@ -27,12 +26,9 @@ export interface IsLastDayOfMonthOptions<DateType extends Date = Date>
  * const result = isLastDayOfMonth(new Date(2014, 1, 28))
  * //=> true
  */
-export function isLastDayOfMonth<
-  DateType extends Date,
-  ContextDate extends Date,
->(
-  date: DateType | number | string,
-  options?: IsLastDayOfMonthOptions<ContextDate> | undefined,
+export function isLastDayOfMonth(
+  date: DateArg<Date> & {},
+  options?: IsLastDayOfMonthOptions | undefined,
 ): boolean {
   const _date = toDate(date, options?.in);
   return +endOfDay(_date, options) === +endOfMonth(_date, options);

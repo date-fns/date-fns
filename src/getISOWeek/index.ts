@@ -2,13 +2,12 @@ import { millisecondsInWeek } from "../constants/index.js";
 import { startOfISOWeek } from "../startOfISOWeek/index.js";
 import { startOfISOWeekYear } from "../startOfISOWeekYear/index.js";
 import { toDate } from "../toDate/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link getISOWeek} function options.
  */
-export interface GetISOWeekOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+export interface GetISOWeekOptions extends ContextOptions<Date> {}
 
 /**
  * @name getISOWeek
@@ -32,9 +31,9 @@ export interface GetISOWeekOptions<DateType extends Date = Date>
  * const result = getISOWeek(new Date(2005, 0, 2))
  * //=> 53
  */
-export function getISOWeek<DateType extends Date, ContextDate extends Date>(
-  date: DateType | number | string,
-  options?: GetISOWeekOptions<ContextDate> | undefined,
+export function getISOWeek(
+  date: DateArg<Date> & {},
+  options?: GetISOWeekOptions | undefined,
 ): number {
   const _date = toDate(date, options?.in);
   const diff = +startOfISOWeek(_date) - +startOfISOWeekYear(_date);

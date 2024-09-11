@@ -1,13 +1,12 @@
 import { constructFrom } from "../constructFrom/index.js";
 import { constructNow } from "../constructNow/index.js";
 import { isSameYear } from "../isSameYear/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link isThisYear} function options.
  */
-export interface IsThisYearOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+export interface IsThisYearOptions extends ContextOptions<Date> {}
 
 /**
  * @name isThisYear
@@ -30,9 +29,9 @@ export interface IsThisYearOptions<DateType extends Date = Date>
  * const result = isThisYear(new Date(2014, 6, 2))
  * //=> true
  */
-export function isThisYear<DateType extends Date, ContextDate extends Date>(
-  date: DateType | number | string,
-  options?: IsThisYearOptions<ContextDate> | undefined,
+export function isThisYear(
+  date: DateArg<Date> & {},
+  options?: IsThisYearOptions | undefined,
 ): boolean {
   return isSameYear(
     constructFrom(options?.in || date, date),

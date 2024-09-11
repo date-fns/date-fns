@@ -1,11 +1,11 @@
 import { endOfDay } from "../endOfDay/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions } from "../types.js";
 
 /**
  * The {@link endOfToday} function options.
  */
 export interface EndOfTodayOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * @name endOfToday

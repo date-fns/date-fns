@@ -1,11 +1,11 @@
 import { normalizeDates } from "../_lib/normalizeDates/index.js";
-import type { DateFns, NormalizedInterval } from "../types.js";
+import type { ContextOptions, DateArg, NormalizedInterval } from "../types.js";
 
 /**
  * The {@link interval} function options.
  */
 export interface IntervalOptions<ContextDate extends Date = Date>
-  extends DateFns.ContextOptions<ContextDate> {
+  extends ContextOptions<ContextDate> {
   /** Asserts that the interval is positive (start is after the end). */
   assertPositive?: boolean;
 }
@@ -17,8 +17,8 @@ export interface IntervalOptions<ContextDate extends Date = Date>
  * function return type.
  */
 export type IntervalResult<
-  StartDate extends DateFns.Arg,
-  EndDate extends DateFns.Arg,
+  StartDate extends DateArg<Date>,
+  EndDate extends DateArg<Date>,
   Options extends IntervalOptions | undefined = undefined,
 > = NormalizedInterval<
   Options extends IntervalOptions<infer DateType extends Date>
@@ -53,8 +53,8 @@ export type IntervalResult<
  * @returns The normalized and validated interval object.
  */
 export function interval<
-  StartDate extends DateFns.Arg,
-  EndDate extends DateFns.Arg,
+  StartDate extends DateArg<Date>,
+  EndDate extends DateArg<Date>,
   Options extends IntervalOptions | undefined = undefined,
 >(
   start: StartDate,

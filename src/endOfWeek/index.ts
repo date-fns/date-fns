@@ -1,7 +1,11 @@
 import { getDefaultOptions } from "../_lib/defaultOptions/index.js";
 import { toDate } from "../toDate/index.js";
-import type { LocalizedOptions, WeekOptions } from "../types.js";
-import { type DateFns } from "../types.js";
+import type {
+  ContextOptions,
+  DateArg,
+  LocalizedOptions,
+  WeekOptions,
+} from "../types.js";
 
 /**
  * The {@link endOfWeek} function options.
@@ -9,7 +13,7 @@ import { type DateFns } from "../types.js";
 export interface EndOfWeekOptions<DateType extends Date = Date>
   extends WeekOptions,
     LocalizedOptions<"options">,
-    DateFns.ContextOptions<DateType> {}
+    ContextOptions<DateType> {}
 
 /**
  * @name endOfWeek
@@ -41,10 +45,7 @@ export interface EndOfWeekOptions<DateType extends Date = Date>
 export function endOfWeek<
   DateType extends Date,
   ResultDate extends Date = DateType,
->(
-  date: DateType | number | string,
-  options?: EndOfWeekOptions<ResultDate>,
-): ResultDate {
+>(date: DateArg<DateType>, options?: EndOfWeekOptions<ResultDate>): ResultDate {
   const defaultOptions = getDefaultOptions();
   const weekStartsOn =
     options?.weekStartsOn ??

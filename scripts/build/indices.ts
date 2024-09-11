@@ -7,9 +7,9 @@
  * It's a part of the build process.
  */
 
-import { writeFile, readFile } from "fs/promises";
-import { listFns } from "../_lib/listFns.js";
+import { readFile, writeFile } from "fs/promises";
 import { listFPFns } from "../_lib/listFPFns.js";
+import { listFns } from "../_lib/listFns.js";
 import { listLocales } from "../_lib/listLocales.js";
 
 interface File {
@@ -25,7 +25,7 @@ interface File {
 
   await Promise.all([
     generatePackageJSON({ fns, fpFns, locales }).then((json) =>
-      writeFile("package.json", json)
+      writeFile("package.json", json),
     ),
 
     writeFile("src/index.ts", generateIndex({ files: fns })),
@@ -70,7 +70,7 @@ async function generatePackageJSON({
       .concat(mapExports(["./constants", "./locale", "./fp"], "."))
       .concat(mapExports(mapFiles(fns)))
       .concat(mapExports(mapFiles(fpFns), "./fp"))
-      .concat(mapExports(mapFiles(locales), "./locale"))
+      .concat(mapExports(mapFiles(locales), "./locale")),
   );
   return JSON.stringify(packageJSON, null, 2);
 }
@@ -122,12 +122,12 @@ function generateTypeDoc(fns: Awaited<ReturnType<typeof listFns>>) {
         name: "date-fns",
         entryPoints: fns
           .map((fn) => fn.fullPath)
-          .concat("./src/constants/index.ts"),
+          .concat(["./src/constants/index.ts"]),
         json: "./tmp/docs.json",
         plugin: ["typedoc-plugin-missing-exports"],
       },
       null,
-      2
+      2,
     )
   );
 }

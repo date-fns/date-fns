@@ -1,6 +1,7 @@
+import { lightFormatters } from "../_lib/format/lightFormatters/index.js";
 import { isValid } from "../isValid/index.js";
 import { toDate } from "../toDate/index.js";
-import { lightFormatters } from "../_lib/format/lightFormatters/index.js";
+import type { DateArg } from "../types.js";
 
 // Rexports of internal for libraries to use.
 // See: https://github.com/date-fns/date-fns/issues/3638#issuecomment-1877082874
@@ -85,8 +86,8 @@ type Token = keyof typeof lightFormatters;
  * const result = lightFormat(new Date(2014, 1, 11), 'yyyy-MM-dd')
  * //=> '2014-02-11'
  */
-export function lightFormat<DateType extends Date>(
-  date: DateType | number | string,
+export function lightFormat(
+  date: DateArg<Date> & {},
   formatStr: string,
 ): string {
   const date_ = toDate(date);

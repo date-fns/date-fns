@@ -1,13 +1,13 @@
 import { normalizeInterval } from "../_lib/normalizeInterval/index.js";
 import { constructFrom } from "../constructFrom/index.js";
-import type { DateFns, Interval, StepOptions } from "../types.js";
+import type { ContextOptions, Interval, StepOptions } from "../types.js";
 
 /**
  * The {@link eachYearOfInterval} function options.
  */
 export interface EachYearOfIntervalOptions<DateType extends Date = Date>
   extends StepOptions,
-    DateFns.ContextOptions<DateType> {}
+    ContextOptions<DateType> {}
 
 /**
  * The {@link eachYearOfInterval} function result type. It resolves the proper data type.

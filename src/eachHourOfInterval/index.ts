@@ -1,13 +1,13 @@
 import { normalizeInterval } from "../_lib/normalizeInterval/index.js";
 import { constructFrom } from "../constructFrom/index.js";
-import type { DateFns, Interval, StepOptions } from "../types.js";
+import type { ContextOptions, Interval, StepOptions } from "../types.js";
 
 /**
  * The {@link eachHourOfInterval} function options.
  */
 export interface EachHourOfIntervalOptions<DateType extends Date = Date>
   extends StepOptions,
-    DateFns.ContextOptions<DateType> {}
+    ContextOptions<DateType> {}
 
 /**
  * The {@link eachHourOfInterval} function result type.

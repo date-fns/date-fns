@@ -4,7 +4,8 @@ import { differenceInCalendarDays } from "../differenceInCalendarDays/index.js";
 import { startOfWeekYear } from "../startOfWeekYear/index.js";
 import { toDate } from "../toDate/index.js";
 import type {
-  DateFns,
+  ContextOptions,
+  DateArg,
   FirstWeekContainsDateOptions,
   LocalizedOptions,
   WeekOptions,
@@ -17,7 +18,7 @@ export interface SetWeekYearOptions<DateType extends Date = Date>
   extends LocalizedOptions<"options">,
     WeekOptions,
     FirstWeekContainsDateOptions,
-    DateFns.ContextOptions<DateType> {}
+    ContextOptions<DateType> {}
 
 /**
  * @name setWeekYear
@@ -62,7 +63,7 @@ export function setWeekYear<
   DateType extends Date,
   ResultDate extends Date = DateType,
 >(
-  date: DateType | number | string,
+  date: DateArg<DateType>,
   weekYear: number,
   options?: SetWeekYearOptions<ResultDate>,
 ): ResultDate {

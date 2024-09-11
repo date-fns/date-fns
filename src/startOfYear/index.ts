@@ -1,11 +1,11 @@
 import { toDate } from "../toDate/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link startOfYear} function options.
  */
 export interface StartOfYearOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * @name startOfYear
@@ -33,7 +33,7 @@ export function startOfYear<
   DateType extends Date,
   ResultDate extends Date = DateType,
 >(
-  date: DateType | number | string,
+  date: DateArg<DateType>,
   options?: StartOfYearOptions<ResultDate> | undefined,
 ): ResultDate {
   const date_ = toDate(date, options?.in);

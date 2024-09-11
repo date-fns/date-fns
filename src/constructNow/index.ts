@@ -1,5 +1,5 @@
 import { constructFrom } from "../constructFrom/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextFn, DateArg } from "../types.js";
 
 /**
  * @name constructNow
@@ -24,7 +24,7 @@ import { type DateFns } from "../types.js";
  * import { constructNow, isSameDay } from 'date-fns'
  *
  * function isToday<DateType extends Date>(
- *   date: DateType | number | string,
+ *   date: DateArg<DateType>,
  * ): boolean {
  *   // If we were to use `new Date()` directly, the function would  behave
  *   // differently in different timezones and return false for the same date.
@@ -34,8 +34,6 @@ import { type DateFns } from "../types.js";
 export function constructNow<
   DateType extends Date,
   ResultDate extends Date = DateType,
->(
-  date: DateType | number | string | DateFns.ContextFn<ResultDate> | undefined,
-): ResultDate {
+>(date: DateArg<DateType> | ContextFn<ResultDate> | undefined): ResultDate {
   return constructFrom(date, Date.now());
 }

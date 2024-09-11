@@ -1,11 +1,10 @@
 import { toDate } from "../toDate/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link isWeekend} function options.
  */
-export interface IsWeekendOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+export interface IsWeekendOptions extends ContextOptions<Date> {}
 
 /**
  * @name isWeekend
@@ -28,9 +27,9 @@ export interface IsWeekendOptions<DateType extends Date = Date>
  * const result = isWeekend(new Date(2014, 9, 5))
  * //=> true
  */
-export function isWeekend<DateType extends Date, ContextDate extends Date>(
-  date: DateType | number | string,
-  options?: IsWeekendOptions<ContextDate> | undefined,
+export function isWeekend(
+  date: DateArg<Date> & {},
+  options?: IsWeekendOptions | undefined,
 ): boolean {
   const day = toDate(date, options?.in).getDay();
   return day === 0 || day === 6;

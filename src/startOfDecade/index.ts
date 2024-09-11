@@ -1,11 +1,11 @@
 import { toDate } from "../toDate/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link startOfDecade} options.
  */
 export interface StartOfDecadeOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * @name startOfDecade
@@ -32,7 +32,7 @@ export function startOfDecade<
   DateType extends Date,
   ResultDate extends Date = DateType,
 >(
-  date: DateType | number | string,
+  date: DateArg<DateType>,
   options?: StartOfDecadeOptions<ResultDate> | undefined,
 ): ResultDate {
   // TODO: Switch to more technical definition in of decades that start with 1

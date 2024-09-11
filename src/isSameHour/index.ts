@@ -1,11 +1,11 @@
 import { normalizeDates } from "../_lib/normalizeDates/index.js";
 import { startOfHour } from "../startOfHour/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link isSameHour} function options.
  */
-export interface IsSameHourOptions extends DateFns.ContextOptions<Date> {}
+export interface IsSameHourOptions extends ContextOptions<Date> {}
 
 /**
  * @name isSameHour
@@ -32,8 +32,8 @@ export interface IsSameHourOptions extends DateFns.ContextOptions<Date> {}
  * //=> false
  */
 export function isSameHour(
-  dateLeft: DateFns.Arg,
-  dateRight: DateFns.Arg,
+  dateLeft: DateArg<Date> & {},
+  dateRight: DateArg<Date> & {},
   options?: IsSameHourOptions | undefined,
 ): boolean {
   const [dateLeft_, dateRight_] = normalizeDates(

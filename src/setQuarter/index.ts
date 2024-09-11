@@ -1,12 +1,12 @@
 import { setMonth } from "../setMonth/index.js";
 import { toDate } from "../toDate/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link setQuarter} function options.
  */
 export interface SetQuarterOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * @name setQuarter
@@ -34,7 +34,7 @@ export function setQuarter<
   DateType extends Date,
   ResultDate extends Date = DateType,
 >(
-  date: DateType | number | string,
+  date: DateArg<DateType>,
   quarter: number,
   options?: SetQuarterOptions<ResultDate>,
 ): ResultDate {

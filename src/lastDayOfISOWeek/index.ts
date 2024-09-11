@@ -1,11 +1,11 @@
 import { lastDayOfWeek } from "../lastDayOfWeek/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link lastDayOfISOWeek} function options.
  */
 export interface LastDayOfISOWeekOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * @name lastDayOfISOWeek
@@ -35,7 +35,7 @@ export function lastDayOfISOWeek<
   DateType extends Date,
   ResultDate extends Date = DateType,
 >(
-  date: DateType | number | string,
+  date: DateArg<DateType>,
   options?: LastDayOfISOWeekOptions<ResultDate> | undefined,
 ): ResultDate {
   return lastDayOfWeek(date, { ...options, weekStartsOn: 1 });

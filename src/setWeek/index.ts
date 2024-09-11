@@ -1,10 +1,11 @@
 import { getWeek } from "../getWeek/index.js";
 import { toDate } from "../toDate/index.js";
 import type {
+  ContextOptions,
+  DateArg,
   FirstWeekContainsDateOptions,
   LocalizedOptions,
   WeekOptions,
-  DateFns,
 } from "../types.js";
 
 /**
@@ -14,7 +15,7 @@ export interface SetWeekOptions<DateType extends Date = Date>
   extends LocalizedOptions<"options">,
     WeekOptions,
     FirstWeekContainsDateOptions,
-    DateFns.ContextOptions<DateType> {}
+    ContextOptions<DateType> {}
 
 /**
  * @name setWeek
@@ -58,7 +59,7 @@ export function setWeek<
   DateType extends Date,
   ResultDate extends Date = DateType,
 >(
-  date: DateType | number | string,
+  date: DateArg<DateType>,
   week: number,
   options?: SetWeekOptions<ResultDate>,
 ): ResultDate {

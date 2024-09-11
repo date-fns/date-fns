@@ -2,13 +2,13 @@ import { addDays } from "../addDays/index.js";
 import { addMonths } from "../addMonths/index.js";
 import { constructFrom } from "../constructFrom/index.js";
 import { toDate } from "../toDate/index.js";
-import type { DateFns, Duration } from "../types.js";
+import type { ContextOptions, DateArg, Duration } from "../types.js";
 
 /**
  * The {@link add} function options.
  */
 export interface AddOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * @name add
@@ -41,7 +41,7 @@ export interface AddOptions<DateType extends Date = Date>
  * //=> Thu Jun 15 2017 15:29:20
  */
 export function add<DateType extends Date, ResultDate extends Date = DateType>(
-  date: DateType | number | string,
+  date: DateArg<DateType>,
   duration: Duration,
   options?: AddOptions<ResultDate> | undefined,
 ): ResultDate {

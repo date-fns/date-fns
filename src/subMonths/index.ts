@@ -1,11 +1,11 @@
 import { addMonths } from "../addMonths/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The subMonths function options.
  */
 export interface SubMonthsOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * @name subMonths
@@ -33,7 +33,7 @@ export function subMonths<
   DateType extends Date,
   ResultDate extends Date = DateType,
 >(
-  date: DateType | number | string,
+  date: DateArg<DateType>,
   amount: number,
   options?: SubMonthsOptions<ResultDate> | undefined,
 ): ResultDate {

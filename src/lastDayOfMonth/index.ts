@@ -1,11 +1,11 @@
 import { toDate } from "../toDate/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link lastDayOfMonth} function options.
  */
 export interface LastDayOfMonthOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * @name lastDayOfMonth
@@ -33,7 +33,7 @@ export function lastDayOfMonth<
   DateType extends Date,
   ResultDate extends Date = DateType,
 >(
-  date: DateType | number | string,
+  date: DateArg<DateType>,
   options?: LastDayOfMonthOptions<ResultDate> | undefined,
 ): ResultDate {
   const _date = toDate(date, options?.in);

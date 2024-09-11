@@ -1,11 +1,11 @@
 import { toDate } from "../toDate/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link startOfDay} function options.
  */
 export interface StartOfDayOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * @name startOfDay
@@ -33,7 +33,7 @@ export function startOfDay<
   DateType extends Date,
   ResultDate extends Date = DateType,
 >(
-  date: DateType | number | string,
+  date: DateArg<DateType>,
   options?: StartOfDayOptions<ResultDate> | undefined,
 ): ResultDate {
   const _date = toDate(date, options?.in);

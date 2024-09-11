@@ -1,14 +1,13 @@
 import { constructFrom } from "../constructFrom/index.js";
 import { setMonth } from "../setMonth/index.js";
 import { toDate } from "../toDate/index.js";
-import type { DateValues } from "../types.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg, DateValues } from "../types.js";
 
 /**
  * The {@link set} function options.
  */
 export interface SetOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * @name set
@@ -45,7 +44,7 @@ export interface SetOptions<DateType extends Date = Date>
  * //=> Mon Sep 01 2014 12:23:45
  */
 export function set<DateType extends Date, ResultDate extends Date = DateType>(
-  date: DateType | number | string,
+  date: DateArg<DateType>,
   values: DateValues,
   options?: SetOptions<ResultDate>,
 ): ResultDate {

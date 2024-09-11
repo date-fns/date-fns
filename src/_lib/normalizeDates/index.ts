@@ -1,24 +1,24 @@
 import { constructFrom } from "../../constructFrom";
-import { type DateFns } from "../../types.js";
+import type { ContextFn, DateArg } from "../../types.js";
 
 export function normalizeDates(
-  context: DateFns.ContextFn<Date> | undefined,
-  ...dates: [DateFns.Arg, DateFns.Arg, DateFns.Arg]
+  context: ContextFn<Date> | undefined,
+  ...dates: [DateArg<Date>, DateArg<Date>, DateArg<Date>]
 ): [Date, Date, Date];
 
 export function normalizeDates(
-  context: DateFns.ContextFn<Date> | undefined,
-  ...dates: [DateFns.Arg, DateFns.Arg]
+  context: ContextFn<Date> | undefined,
+  ...dates: [DateArg<Date>, DateArg<Date>]
 ): [Date, Date];
 
 export function normalizeDates(
-  context: DateFns.ContextFn<Date> | undefined,
-  ...dates: DateFns.Arg[]
+  context: ContextFn<Date> | undefined,
+  ...dates: Array<DateArg<Date> & {}>
 ): Date[];
 
 export function normalizeDates(
-  context: DateFns.ContextFn<Date> | undefined,
-  ...dates: DateFns.Arg[]
+  context: ContextFn<Date> | undefined,
+  ...dates: Array<DateArg<Date> & {}>
 ) {
   const normalize =
     context ||

@@ -1,5 +1,5 @@
 import { toDate } from "../toDate/index.js";
-import type { DateFns } from "../types.js";
+import type { DateArg, MaybeArray } from "../types.js";
 
 /**
  * The locale string (see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument).
@@ -19,9 +19,7 @@ export type IntlFormatFormatOptions = Intl.DateTimeFormatOptions;
  */
 export interface IntlFormatLocaleOptions {
   /** The locales to use (see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument) */
-  locale: DateFns.Utils.MaybeArray<
-    Intl.ResolvedDateTimeFormatOptions["locale"]
-  >;
+  locale: MaybeArray<Intl.ResolvedDateTimeFormatOptions["locale"]>;
 }
 
 /**
@@ -49,9 +47,7 @@ export interface IntlFormatLocaleOptions {
  * const result = intlFormat(new Date(2019, 9, 4, 12, 30, 13, 456))
  * //=> 10/4/2019
  */
-export function intlFormat<DateType extends Date>(
-  date: DateType | number | string,
-): string;
+export function intlFormat(date: DateArg<Date> & {}): string;
 
 /**
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
@@ -71,8 +67,8 @@ export function intlFormat<DateType extends Date>(
  * })
  * //=> 2019. 10. 4.
  */
-export function intlFormat<DateType extends Date>(
-  date: DateType | number | string,
+export function intlFormat(
+  date: DateArg<Date> & {},
   localeOptions: IntlFormatLocaleOptions,
 ): string;
 
@@ -97,8 +93,8 @@ export function intlFormat<DateType extends Date>(
  * })
  * //=> 10/4/2019, 12 PM
  */
-export function intlFormat<DateType extends Date>(
-  date: DateType | number | string,
+export function intlFormat(
+  date: DateArg<Date> & {},
   formatOptions: IntlFormatFormatOptions,
 ): string;
 
@@ -126,14 +122,14 @@ export function intlFormat<DateType extends Date>(
  * })
  * //=> Freitag, 4. Oktober 2019
  */
-export function intlFormat<DateType extends Date>(
-  date: DateType | number | string,
+export function intlFormat(
+  date: DateArg<Date> & {},
   formatOptions: IntlFormatFormatOptions,
   localeOptions: IntlFormatLocaleOptions,
 ): string;
 
-export function intlFormat<DateType extends Date>(
-  date: DateType | number | string,
+export function intlFormat(
+  date: DateArg<Date> & {},
   formatOrLocale?: IntlFormatFormatOptions | IntlFormatLocaleOptions,
   localeOptions?: IntlFormatLocaleOptions,
 ): string {

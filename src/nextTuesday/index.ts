@@ -1,11 +1,11 @@
 import { nextDay } from "../nextDay/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link nextTuesday} function options.
  */
 export interface NextTuesdayOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * @name nextTuesday
@@ -32,7 +32,7 @@ export function nextTuesday<
   DateType extends Date,
   ResultDate extends Date = DateType,
 >(
-  date: DateType | number | string,
+  date: DateArg<DateType>,
   options?: NextTuesdayOptions<ResultDate>,
 ): ResultDate {
   return nextDay(date, 2, options);

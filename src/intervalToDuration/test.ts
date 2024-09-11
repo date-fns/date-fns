@@ -1,7 +1,7 @@
 import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
 import { addMonths } from "../addMonths/index.js";
-import type { DateFns, Interval } from "../types.js";
+import type { ContextOptions, Interval } from "../types.js";
 import { intervalToDuration } from "./index.js";
 
 describe("intervalToDuration", () => {
@@ -292,7 +292,7 @@ describe("intervalToDuration", () => {
     it("doesn't enforce argument and context to be of the same type", () => {
       function _test<DateType extends Date, ResultDate extends Date = DateType>(
         arg: Interval<DateType>,
-        options?: DateFns.ContextOptions<ResultDate>,
+        options?: ContextOptions<ResultDate>,
       ) {
         intervalToDuration(arg, { in: options?.in });
       }

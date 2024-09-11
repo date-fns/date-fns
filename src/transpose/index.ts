@@ -1,5 +1,5 @@
 import { constructFrom } from "../constructFrom/index.js";
-import type { DateFns, GenericDateConstructor } from "../types.js";
+import type { ContextFn, GenericDateConstructor } from "../types.js";
 
 /**
  * @name transpose
@@ -34,7 +34,7 @@ export function transpose<InputDate extends Date, ResultDate extends Date>(
   constructor:
     | ResultDate
     | GenericDateConstructor<ResultDate>
-    | DateFns.ContextFn<ResultDate>,
+    | ContextFn<ResultDate>,
 ): ResultDate {
   const date_ = isConstructor(constructor)
     ? new constructor(0)

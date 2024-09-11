@@ -1,4 +1,5 @@
 import { toDate } from "../toDate/index.js";
+import type { DateArg } from "../types.js";
 
 /**
  * @name compareAsc
@@ -35,8 +36,8 @@ import { toDate } from "../toDate/index.js";
  * // ]
  */
 export function compareAsc(
-  dateLeft: Date | number | string,
-  dateRight: Date | number | string,
+  dateLeft: DateArg<Date> & {},
+  dateRight: DateArg<Date> & {},
 ): number {
   const diff = +toDate(dateLeft) - +toDate(dateRight);
 

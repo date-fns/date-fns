@@ -1,11 +1,10 @@
 import { toDate } from "../toDate/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link getHours} function options.
  */
-export interface GetHoursOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+export interface GetHoursOptions extends ContextOptions<Date> {}
 
 /**
  * @name getHours
@@ -28,9 +27,9 @@ export interface GetHoursOptions<DateType extends Date = Date>
  * const result = getHours(new Date(2012, 1, 29, 11, 45))
  * //=> 11
  */
-export function getHours<DateType extends Date, ContextDate extends Date>(
-  date: DateType | number | string,
-  options?: GetHoursOptions<ContextDate> | undefined,
+export function getHours(
+  date: DateArg<Date> & {},
+  options?: GetHoursOptions | undefined,
 ): number {
   return toDate(date, options?.in).getHours();
 }

@@ -1,11 +1,11 @@
 import { addHours } from "../addHours/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link subHours} function options.
  */
 export interface SubHoursOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * @name subHours
@@ -33,7 +33,7 @@ export function subHours<
   DateType extends Date,
   ResultDate extends Date = DateType,
 >(
-  date: DateType | number | string,
+  date: DateArg<DateType>,
   amount: number,
   options?: SubHoursOptions<ResultDate> | undefined,
 ): ResultDate {

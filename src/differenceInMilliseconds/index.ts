@@ -1,5 +1,5 @@
 import { toDate } from "../toDate/index.js";
-import { type DateFns } from "../types.js";
+import type { DateArg } from "../types.js";
 
 /**
  * @name differenceInMilliseconds
@@ -24,8 +24,8 @@ import { type DateFns } from "../types.js";
  * //=> 1100
  */
 export function differenceInMilliseconds(
-  laterDate: DateFns.Arg,
-  earlierDate: DateFns.Arg,
+  laterDate: DateArg<Date> & {},
+  earlierDate: DateArg<Date> & {},
 ): number {
   return +toDate(laterDate) - +toDate(earlierDate);
 }

@@ -1,11 +1,11 @@
 import { toDate } from "../toDate/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link startOfQuarter} function options.
  */
 export interface StartOfQuarterOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * @name startOfQuarter
@@ -33,7 +33,7 @@ export function startOfQuarter<
   DateType extends Date,
   ResultDate extends Date = DateType,
 >(
-  date: DateType | number | string,
+  date: DateArg<DateType>,
   options?: StartOfQuarterOptions<ResultDate> | undefined,
 ): ResultDate {
   const _date = toDate(date, options?.in);

@@ -1,6 +1,6 @@
 import { tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 import { getQuarter } from "./index.js";
 
 describe("getQuarter", () => {
@@ -37,8 +37,8 @@ describe("getQuarter", () => {
 
     it("doesn't enforce argument and context to be of the same type", () => {
       function _test<DateType extends Date, ResultDate extends Date = DateType>(
-        arg: DateType | number | string,
-        options?: DateFns.ContextOptions<ResultDate>,
+        arg: DateArg<DateType>,
+        options?: ContextOptions<ResultDate>,
       ) {
         getQuarter(arg, { in: options?.in });
       }

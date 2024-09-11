@@ -1,13 +1,12 @@
 import { constructFrom } from "../constructFrom/index.js";
 import { constructNow } from "../constructNow/index.js";
 import { isSameQuarter } from "../isSameQuarter/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link isThisQuarter} function options.
  */
-export interface IsThisQuarterOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+export interface IsThisQuarterOptions extends ContextOptions<Date> {}
 
 /**
  * @name isThisQuarter
@@ -31,9 +30,9 @@ export interface IsThisQuarterOptions<DateType extends Date = Date>
  * const result = isThisQuarter(new Date(2014, 6, 2))
  * //=> true
  */
-export function isThisQuarter<DateType extends Date, ContextDate extends Date>(
-  date: DateType | number | string,
-  options?: IsThisQuarterOptions<ContextDate>,
+export function isThisQuarter(
+  date: DateArg<Date> & {},
+  options?: IsThisQuarterOptions,
 ): boolean {
   return isSameQuarter(
     constructFrom(options?.in || date, date),

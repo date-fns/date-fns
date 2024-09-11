@@ -1,6 +1,6 @@
 import { tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import type { DateFns, Interval } from "../types.js";
+import type { ContextOptions, DateArg, Interval } from "../types.js";
 import { isWithinInterval } from "./index.js";
 
 describe("isWithinInterval", () => {
@@ -112,9 +112,9 @@ describe("isWithinInterval", () => {
 
     it("doesn't enforce argument and context to be of the same type", () => {
       function _test<DateType extends Date, ResultDate extends Date = DateType>(
-        arg1: DateType | number | string,
+        arg1: DateArg<DateType>,
         arg2: Interval<DateType>,
-        options?: DateFns.ContextOptions<ResultDate>,
+        options?: ContextOptions<ResultDate>,
       ) {
         isWithinInterval(arg1, arg2, { in: options?.in });
       }

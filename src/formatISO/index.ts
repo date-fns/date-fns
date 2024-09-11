@@ -1,6 +1,6 @@
-import { toDate } from "../toDate/index.js";
-import type { ISOFormatOptions } from "../types.js";
 import { addLeadingZeros } from "../_lib/addLeadingZeros/index.js";
+import { toDate } from "../toDate/index.js";
+import type { DateArg, ISOFormatOptions } from "../types.js";
 
 /**
  * The {@link formatISO} function options.
@@ -44,8 +44,8 @@ export interface FormatISOOptions extends ISOFormatOptions {}
  * const result = formatISO(new Date(2019, 8, 18, 19, 0, 52), { representation: 'time' })
  * //=> '19:00:52Z'
  */
-export function formatISO<DateType extends Date>(
-  date: DateType | number | string,
+export function formatISO(
+  date: DateArg<Date> & {},
   options?: FormatISOOptions,
 ): string {
   const _date = toDate(date);

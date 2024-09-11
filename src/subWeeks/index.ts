@@ -1,11 +1,11 @@
 import { addWeeks } from "../addWeeks/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link subWeeks} function options.
  */
 export interface SubWeeksOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * @name subWeeks
@@ -33,7 +33,7 @@ export function subWeeks<
   DateType extends Date,
   ResultDate extends Date = DateType,
 >(
-  date: DateType | number | string,
+  date: DateArg<DateType>,
   amount: number,
   options?: SubWeeksOptions<ResultDate> | undefined,
 ): ResultDate {

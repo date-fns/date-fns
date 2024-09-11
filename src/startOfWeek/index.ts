@@ -1,6 +1,11 @@
 import { getDefaultOptions } from "../_lib/defaultOptions/index.js";
 import { toDate } from "../toDate/index.js";
-import type { DateFns, LocalizedOptions, WeekOptions } from "../types.js";
+import type {
+  ContextOptions,
+  DateArg,
+  LocalizedOptions,
+  WeekOptions,
+} from "../types.js";
 
 /**
  * The {@link startOfWeek} function options.
@@ -8,7 +13,7 @@ import type { DateFns, LocalizedOptions, WeekOptions } from "../types.js";
 export interface StartOfWeekOptions<DateType extends Date = Date>
   extends LocalizedOptions<"options">,
     WeekOptions,
-    DateFns.ContextOptions<DateType> {}
+    ContextOptions<DateType> {}
 
 /**
  * @name startOfWeek
@@ -41,7 +46,7 @@ export function startOfWeek<
   DateType extends Date,
   ResultDate extends Date = DateType,
 >(
-  date: DateType | number | string,
+  date: DateArg<DateType>,
   options?: StartOfWeekOptions<ResultDate>,
 ): ResultDate {
   const defaultOptions = getDefaultOptions();

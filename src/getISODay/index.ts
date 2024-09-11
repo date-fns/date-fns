@@ -1,11 +1,10 @@
 import { toDate } from "../toDate/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link getISODay} function options.
  */
-export interface GetISODayOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+export interface GetISODayOptions extends ContextOptions<Date> {}
 
 /**
  * @name getISODay
@@ -31,9 +30,9 @@ export interface GetISODayOptions<DateType extends Date = Date>
  * const result = getISODay(new Date(2012, 1, 26))
  * //=> 7
  */
-export function getISODay<DateType extends Date, ContextDate extends Date>(
-  date: DateType | number | string,
-  options?: GetISODayOptions<ContextDate>,
+export function getISODay(
+  date: DateArg<Date> & {},
+  options?: GetISODayOptions,
 ): number {
   const day = toDate(date, options?.in).getDay();
   return day === 0 ? 7 : day;

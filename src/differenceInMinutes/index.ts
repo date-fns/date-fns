@@ -1,7 +1,7 @@
 import { getRoundingMethod } from "../_lib/getRoundingMethod/index.js";
 import { millisecondsInMinute } from "../constants/index.js";
 import { differenceInMilliseconds } from "../differenceInMilliseconds/index.js";
-import type { DateFns, RoundingOptions } from "../types.js";
+import type { DateArg, RoundingOptions } from "../types.js";
 
 /**
  * The {@link differenceInMinutes} function options.
@@ -39,8 +39,8 @@ export interface DifferenceInMinutesOptions extends RoundingOptions {}
  * //=> -1
  */
 export function differenceInMinutes(
-  dateLeft: DateFns.Arg,
-  dateRight: DateFns.Arg,
+  dateLeft: DateArg<Date> & {},
+  dateRight: DateArg<Date> & {},
   options?: DifferenceInMinutesOptions,
 ): number {
   const diff =

@@ -2,13 +2,12 @@ import { getTimezoneOffsetInMilliseconds } from "../_lib/getTimezoneOffsetInMill
 import { normalizeDates } from "../_lib/normalizeDates/index.js";
 import { millisecondsInDay } from "../constants/index.js";
 import { startOfDay } from "../startOfDay/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link differenceInCalendarDays} function options.
  */
-export interface DifferenceInCalendarDaysOptions
-  extends DateFns.ContextOptions<Date> {}
+export interface DifferenceInCalendarDaysOptions extends ContextOptions<Date> {}
 
 /**
  * @name differenceInCalendarDays
@@ -42,8 +41,8 @@ export interface DifferenceInCalendarDaysOptions
  * //=> 1
  */
 export function differenceInCalendarDays(
-  laterDate: DateFns.Arg,
-  earlierDate: DateFns.Arg,
+  laterDate: DateArg<Date> & {},
+  earlierDate: DateArg<Date> & {},
   options?: DifferenceInCalendarDaysOptions | undefined,
 ): number {
   const [laterDate_, earlierDate_] = normalizeDates(

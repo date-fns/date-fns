@@ -1,16 +1,16 @@
-import { toDate } from "../toDate/index.js";
-import { type DateFns } from "../types.js";
 import {
   millisecondsInHour,
   millisecondsInMinute,
 } from "../constants/index.js";
 import { constructFrom } from "../constructFrom/index.js";
+import { toDate } from "../toDate/index.js";
+import type { ContextOptions } from "../types.js";
 
 /**
  * The {@link parseISO} function options.
  */
 export interface ParseISOOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {
+  extends ContextOptions<DateType> {
   /** The additional number of digits in the extended year format */
   additionalDigits?: 0 | 1 | 2;
 }

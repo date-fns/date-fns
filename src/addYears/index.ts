@@ -1,11 +1,11 @@
 import { addMonths } from "../addMonths/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link addYears} function options.
  */
 export interface AddYearsOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * @name addYears
@@ -33,7 +33,7 @@ export function addYears<
   DateType extends Date,
   ResultDate extends Date = DateType,
 >(
-  date: DateType | number | string,
+  date: DateArg<DateType>,
   amount: number,
   options?: AddYearsOptions<ResultDate> | undefined,
 ): ResultDate {

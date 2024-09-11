@@ -1,11 +1,10 @@
 import { toDate } from "../toDate/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link isFirstDayOfMonth} function options.
  */
-export interface IsFirstDayOfMonthOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+export interface IsFirstDayOfMonthOptions extends ContextOptions<Date> {}
 
 /**
  * @name isFirstDayOfMonth
@@ -28,12 +27,9 @@ export interface IsFirstDayOfMonthOptions<DateType extends Date = Date>
  * const result = isFirstDayOfMonth(new Date(2014, 8, 1))
  * //=> true
  */
-export function isFirstDayOfMonth<
-  DateType extends Date,
-  ContextDate extends Date,
->(
-  date: DateType | number | string,
-  options?: IsFirstDayOfMonthOptions<ContextDate> | undefined,
+export function isFirstDayOfMonth(
+  date: DateArg<Date> & {},
+  options?: IsFirstDayOfMonthOptions | undefined,
 ): boolean {
   return toDate(date, options?.in).getDate() === 1;
 }

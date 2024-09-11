@@ -1,13 +1,13 @@
 import { normalizeDates } from "../_lib/normalizeDates/index.js";
 import { closestIndexTo } from "../closestIndexTo/index.js";
 import { constructFrom } from "../constructFrom/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link closestTo} function options.
  */
 export interface ClosestToOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * The {@link closestTo} function result type. It resolves the proper data type.
@@ -16,15 +16,15 @@ export interface ClosestToOptions<DateType extends Date = Date>
  * a context function is passed, it uses the context function return type.
  */
 export type ClosestToResult<
-  DateToCompare extends DateFns.Arg,
-  DatesType extends DateFns.Arg[],
+  DateToCompare extends DateArg<Date>,
+  DatesType extends DateArg<Date>[],
   Options extends ClosestToOptions | undefined,
 > =
   Options extends ClosestToOptions<infer DateType extends Date>
     ? DateType
     : DateToCompare extends Date
       ? DateToCompare
-      : DatesType extends DateFns.Arg<infer DateType>[]
+      : DatesType extends DateArg<infer DateType>[]
         ? DateType
         : Date;
 
@@ -55,8 +55,8 @@ export type ClosestToResult<
  * //=> Tue Jan 01 2030 00:00:00
  */
 export function closestTo<
-  DateToCompare extends DateFns.Arg,
-  DatesType extends DateFns.Arg[],
+  DateToCompare extends DateArg<Date>,
+  DatesType extends DateArg<Date>[],
   Options extends ClosestToOptions | undefined = undefined,
 >(
   dateToCompare: DateToCompare,

@@ -1,13 +1,13 @@
 import { constructFrom } from "../constructFrom/index.js";
 import { subDays } from "../subDays/index.js";
 import { subMonths } from "../subMonths/index.js";
-import type { DateFns, Duration } from "../types.js";
+import type { ContextOptions, DateArg, Duration } from "../types.js";
 
 /**
  * The {@link sub} function options.
  */
 export interface SubOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * @name sub
@@ -52,7 +52,7 @@ export interface SubOptions<DateType extends Date = Date>
  * //=> Mon Sep 1 2014 10:19:50
  */
 export function sub<DateType extends Date, ResultDate extends Date = DateType>(
-  date: DateType | number | string,
+  date: DateArg<DateType>,
   duration: Duration,
   options?: SubOptions<ResultDate>,
 ): ResultDate {

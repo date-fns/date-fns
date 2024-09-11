@@ -1,11 +1,10 @@
 import { toDate } from "../toDate/index.js";
-import type { DateFns, Interval } from "../types.js";
+import type { ContextOptions, Interval } from "../types.js";
 
 /**
  * The {@link areIntervalsOverlapping} function options.
  */
-export interface AreIntervalsOverlappingOptions
-  extends DateFns.ContextOptions<Date> {
+export interface AreIntervalsOverlappingOptions extends ContextOptions<Date> {
   /** Whether the comparison is inclusive or not */
   inclusive?: boolean;
 }

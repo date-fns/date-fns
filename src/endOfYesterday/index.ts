@@ -1,12 +1,12 @@
 import { constructFrom } from "../constructFrom/index.js";
 import { constructNow } from "../constructNow/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions } from "../types.js";
 
 /**
  * The {@link endOfYesterday} function options.
  */
 export interface EndOfYesterdayOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * @name endOfYesterday

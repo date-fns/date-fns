@@ -1,7 +1,7 @@
 import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
 import { getDstTransitions } from "../../test/dst/tzOffsetTransitions.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions } from "../types.js";
 import { differenceInDays } from "./index.js";
 
 describe("differenceInDays", () => {
@@ -241,7 +241,7 @@ describe("differenceInDays", () => {
       function _test<DateType extends Date, ResultDate extends Date = DateType>(
         arg1: DateType | number | string,
         arg2: DateType | number | string,
-        options?: DateFns.ContextOptions<ResultDate>,
+        options?: ContextOptions<ResultDate>,
       ) {
         differenceInDays(arg1, arg2, { in: options?.in });
       }

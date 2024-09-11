@@ -1,11 +1,11 @@
 import { normalizeDates } from "../_lib/normalizeDates/index.js";
 import { startOfDay } from "../startOfDay/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link isSameDay} function options.
  */
-export interface IsSameDayOptions extends DateFns.ContextOptions<Date> {}
+export interface IsSameDayOptions extends ContextOptions<Date> {}
 
 /**
  * @name isSameDay
@@ -37,8 +37,8 @@ export interface IsSameDayOptions extends DateFns.ContextOptions<Date> {}
  * //=> false
  */
 export function isSameDay(
-  laterDate: DateFns.Arg,
-  earlierDate: DateFns.Arg,
+  laterDate: DateArg<Date> & {},
+  earlierDate: DateArg<Date> & {},
   options?: IsSameDayOptions | undefined,
 ): boolean {
   const [dateLeft_, dateRight_] = normalizeDates(

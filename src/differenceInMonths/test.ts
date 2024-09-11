@@ -1,6 +1,6 @@
 import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 import { differenceInMonths } from "./index.js";
 
 describe("differenceInMonths", () => {
@@ -177,9 +177,9 @@ describe("differenceInMonths", () => {
 
     it("doesn't enforce argument and context to be of the same type", () => {
       function _test<DateType extends Date, ContextDate extends Date>(
-        arg1: DateType | number | string,
-        arg2: DateType | number | string,
-        options?: DateFns.ContextOptions<ContextDate>,
+        arg1: DateArg<DateType>,
+        arg2: DateArg<DateType>,
+        options?: ContextOptions<ContextDate>,
       ) {
         differenceInMonths(arg1, arg2, { in: options?.in });
       }

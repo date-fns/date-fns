@@ -10,7 +10,12 @@ import {
   minutesInMonth,
   minutesInYear,
 } from "../constants/index.js";
-import type { DateFns, LocalizedOptions, RoundingOptions } from "../types.js";
+import type {
+  ContextOptions,
+  DateArg,
+  LocalizedOptions,
+  RoundingOptions,
+} from "../types.js";
 
 /**
  * The {@link formatDistanceStrict} function options.
@@ -18,7 +23,7 @@ import type { DateFns, LocalizedOptions, RoundingOptions } from "../types.js";
 export interface FormatDistanceStrictOptions
   extends LocalizedOptions<"formatDistance">,
     RoundingOptions,
-    DateFns.ContextOptions<Date> {
+    ContextOptions<Date> {
   /** Add "X ago"/"in X" in the locale language */
   addSuffix?: boolean;
   /** If specified, will force the unit */
@@ -115,8 +120,8 @@ export type FormatDistanceStrictUnit =
  */
 
 export function formatDistanceStrict(
-  laterDate: DateFns.Arg,
-  earlierDate: DateFns.Arg,
+  laterDate: DateArg<Date> & {},
+  earlierDate: DateArg<Date> & {},
   options?: FormatDistanceStrictOptions,
 ): string {
   const defaultOptions = getDefaultOptions();

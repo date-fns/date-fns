@@ -1,13 +1,12 @@
 import { differenceInCalendarDays } from "../differenceInCalendarDays/index.js";
 import { startOfYear } from "../startOfYear/index.js";
 import { toDate } from "../toDate/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link getDayOfYear} function options.
  */
-export interface GetDayOfYearOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+export interface GetDayOfYearOptions extends ContextOptions<Date> {}
 
 /**
  * @name getDayOfYear
@@ -30,9 +29,9 @@ export interface GetDayOfYearOptions<DateType extends Date = Date>
  * const result = getDayOfYear(new Date(2014, 6, 2))
  * //=> 183
  */
-export function getDayOfYear<DateType extends Date, ContextDate extends Date>(
-  date: DateType | number | string,
-  options?: GetDayOfYearOptions<ContextDate> | undefined,
+export function getDayOfYear(
+  date: DateArg<Date> & {},
+  options?: GetDayOfYearOptions | undefined,
 ): number {
   const _date = toDate(date, options?.in);
   const diff = differenceInCalendarDays(_date, startOfYear(_date));

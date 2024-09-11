@@ -2,13 +2,13 @@ import { normalizeInterval } from "../_lib/normalizeInterval/index.js";
 import { constructFrom } from "../constructFrom/index.js";
 import { eachDayOfInterval } from "../eachDayOfInterval/index.js";
 import { isWeekend } from "../isWeekend/index.js";
-import type { DateFns, Interval } from "../types.js";
+import type { ContextOptions, Interval } from "../types.js";
 
 /**
  * The {@link eachWeekendOfInterval} function options.
  */
 export interface EachWeekendOfIntervalOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * The {@link eachWeekendOfInterval} function result type.

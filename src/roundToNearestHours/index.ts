@@ -2,7 +2,8 @@ import { getRoundingMethod } from "../_lib/getRoundingMethod/index.js";
 import { constructFrom } from "../constructFrom/index.js";
 import { toDate } from "../toDate/index.js";
 import type {
-  DateFns,
+  ContextOptions,
+  DateArg,
   NearestHours,
   NearestToUnitOptions,
   RoundingOptions,
@@ -14,7 +15,7 @@ import type {
 export interface RoundToNearestHoursOptions<DateType extends Date = Date>
   extends NearestToUnitOptions<NearestHours>,
     RoundingOptions,
-    DateFns.ContextOptions<DateType> {}
+    ContextOptions<DateType> {}
 
 /**
  * @name roundToNearestHours
@@ -62,7 +63,7 @@ export function roundToNearestHours<
   DateType extends Date,
   ResultDate extends Date = DateType,
 >(
-  date: DateType | number | string,
+  date: DateArg<DateType>,
   options?: RoundToNearestHoursOptions<ResultDate>,
 ): ResultDate {
   const nearestTo = options?.nearestTo ?? 1;

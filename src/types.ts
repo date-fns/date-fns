@@ -1,10 +1,15 @@
 /* eslint-disable no-unused-vars */
 
-import type { Locale } from "./locale/types.js";
 import { type constructFromSymbol } from "./constants/index.js";
+import type { Locale } from "./locale/types.js";
 
-export type * from "./locale/types.js";
 export type * from "./fp/types.js";
+export type * from "./locale/types.js";
+
+/**
+ * The argument type.
+ */
+export type DateArg<DateType extends Date> = DateType | number | string;
 
 /**
  * Date extension interface that allows to transfer extra properties from
@@ -13,7 +18,7 @@ export type * from "./fp/types.js";
  */
 export interface ConstructableDate extends Date {
   [constructFromSymbol]: <DateType extends Date = Date>(
-    value: Date | number | string,
+    value: DateArg<Date> & {},
   ) => DateType;
 }
 
@@ -39,7 +44,7 @@ export interface GenericDateConstructor<DateType extends Date = Date> {
    *
    * @returns The date instance
    */
-  new (value: Date | number | string): DateType;
+  new (value: DateArg<Date> & {}): DateType;
 
   /**
    * The date constructor. Creates date with the passed date values (year,
@@ -99,8 +104,8 @@ export type DurationUnit = keyof Duration;
  * @typeParam EndDate - The end `Date` type.
  */
 export interface Interval<
-  StartType extends DateFns.Arg = DateFns.Arg,
-  EndType extends DateFns.Arg = DateFns.Arg,
+  StartType extends DateArg<Date> = DateArg<Date>,
+  EndType extends DateArg<Date> = DateArg<Date>,
 > {
   /** The start of the interval. */
   start: StartType;
@@ -317,44 +322,26 @@ export interface NearestToUnitOptions<Unit extends number> {
 }
 
 /**
- * Namespace for service-level types that are not oriented to the end users.
- *
- * [NOTE] Right now it is empty except the utils, but it will be useful to move
- * some types here in the future. For instance {@link GenericDateConstructor}
- * doesn't belong in the root namespace.
+ * The context options. Used to build function options.
  */
-export namespace DateFns {
+export interface ContextOptions<DateType extends Date> {
   /**
-   * The argument type.
+   * The context to use in the function. It allows to normalize the arguments
+   * to a specific date instance, which is useful for extensions like [`TZDate`](https://github.com/date-fns/tz).
    */
-  export type Arg<DateType extends Date = Date> = DateType | number | string;
+  in?: ContextFn<DateType> | undefined;
+}
 
+/**
   /**
    * The context function type. It's used to normalize the input arguments to
    * a specific date instance, which is useful for extensions like [`TZDate`](https://github.com/date-fns/tz).
    */
-  export type ContextFn<DateType extends Date> = (
-    value: Date | number | string,
-  ) => DateType;
+export type ContextFn<DateType extends Date> = (
+  value: DateArg<Date> & {},
+) => DateType;
 
-  /**
-   * The context options. Used to build function options.
-   */
-  export interface ContextOptions<DateType extends Date = Date> {
-    /**
-     * The context to use in the function. It allows to normalize the arguments
-     * to a specific date instance, which is useful for extensions like [`TZDate`](https://github.com/date-fns/tz).
-     */
-    in?: ContextFn<DateType> | undefined;
-  }
-
-  /**
-   * Type utilities.
-   */
-  export namespace Utils {
-    /**
-     * Resolves passed type or array of types.
-     */
-    export type MaybeArray<Type> = Type | Type[];
-  }
-}
+/**
+ * Resolves passed type or array of types.
+ */
+export type MaybeArray<Type> = Type | Type[];

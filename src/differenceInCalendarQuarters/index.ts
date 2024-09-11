@@ -1,12 +1,12 @@
-import { getQuarter } from "../getQuarter/index.js";
 import { normalizeDates } from "../_lib/normalizeDates/index.js";
-import { type DateFns } from "../types.js";
+import { getQuarter } from "../getQuarter/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link differenceInCalendarQuarters} function options.
  */
 export interface DifferenceInCalendarQuartersOptions
-  extends DateFns.ContextOptions<Date> {}
+  extends ContextOptions<Date> {}
 
 /**
  * @name differenceInCalendarQuarters
@@ -31,8 +31,8 @@ export interface DifferenceInCalendarQuartersOptions
  * //=> 3
  */
 export function differenceInCalendarQuarters(
-  laterDate: DateFns.Arg,
-  earlierDate: DateFns.Arg,
+  laterDate: DateArg<Date> & {},
+  earlierDate: DateArg<Date> & {},
   options?: DifferenceInCalendarQuartersOptions | undefined,
 ): number {
   const [laterDate_, earlierDate_] = normalizeDates(

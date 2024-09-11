@@ -3,7 +3,8 @@ import { startOfWeek } from "../startOfWeek/index.js";
 import { startOfWeekYear } from "../startOfWeekYear/index.js";
 import { toDate } from "../toDate/index.js";
 import type {
-  DateFns,
+  ContextOptions,
+  DateArg,
   FirstWeekContainsDateOptions,
   LocalizedOptions,
   WeekOptions,
@@ -12,11 +13,11 @@ import type {
 /**
  * The {@link getWeek} function options.
  */
-export interface GetWeekOptions<DateType extends Date = Date>
+export interface GetWeekOptions
   extends LocalizedOptions<"options">,
     WeekOptions,
     FirstWeekContainsDateOptions,
-    DateFns.ContextOptions<DateType> {}
+    ContextOptions<Date> {}
 
 /**
  * @name getWeek
@@ -54,9 +55,9 @@ export interface GetWeekOptions<DateType extends Date = Date>
  * })
  * //=> 53
  */
-export function getWeek<DateType extends Date, ContextDate extends Date>(
-  date: DateType | number | string,
-  options?: GetWeekOptions<ContextDate> | undefined,
+export function getWeek(
+  date: DateArg<Date> & {},
+  options?: GetWeekOptions | undefined,
 ): number {
   const _date = toDate(date, options?.in);
   const diff = +startOfWeek(_date, options) - +startOfWeekYear(_date, options);

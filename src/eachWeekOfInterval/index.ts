@@ -3,7 +3,7 @@ import { addWeeks } from "../addWeeks/index.js";
 import { constructFrom } from "../constructFrom/index.js";
 import { startOfWeek } from "../startOfWeek/index.js";
 import type {
-  DateFns,
+  ContextOptions,
   Interval,
   LocalizedOptions,
   StepOptions,
@@ -17,7 +17,7 @@ export interface EachWeekOfIntervalOptions<DateType extends Date = Date>
   extends StepOptions,
     WeekOptions,
     LocalizedOptions<"options">,
-    DateFns.ContextOptions<DateType> {}
+    ContextOptions<DateType> {}
 
 /**
  * The {@link eachWeekOfInterval} function result type. It resolves the proper data type.

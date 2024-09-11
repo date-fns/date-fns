@@ -1,4 +1,5 @@
 import { toDate } from "../toDate/index.js";
+import type { DateArg } from "../types.js";
 
 /**
  * @name compareDesc
@@ -34,9 +35,9 @@ import { toDate } from "../toDate/index.js";
  * //   Wed Feb 11 1987 00:00:00
  * // ]
  */
-export function compareDesc<DateType extends Date>(
-  dateLeft: DateType | number | string,
-  dateRight: DateType | number | string,
+export function compareDesc(
+  dateLeft: DateArg<Date> & {},
+  dateRight: DateArg<Date> & {},
 ): number {
   const diff = +toDate(dateLeft) - +toDate(dateRight);
 

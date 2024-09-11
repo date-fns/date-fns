@@ -6,13 +6,12 @@ import { differenceInMinutes } from "../differenceInMinutes/index.js";
 import { differenceInMonths } from "../differenceInMonths/index.js";
 import { differenceInSeconds } from "../differenceInSeconds/index.js";
 import { differenceInYears } from "../differenceInYears/index.js";
-import type { DateFns, Duration, Interval } from "../types.js";
+import type { ContextOptions, Duration, Interval } from "../types.js";
 
 /**
  * The {@link intervalToDuration} function options.
  */
-export interface IntervalToDurationOptions
-  extends DateFns.ContextOptions<Date> {}
+export interface IntervalToDurationOptions extends ContextOptions<Date> {}
 
 /**
  * @name intervalToDuration

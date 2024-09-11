@@ -1,4 +1,5 @@
 import { toDate } from "../toDate/index.js";
+import type { DateArg } from "../types.js";
 
 /**
  * @name getTime
@@ -19,8 +20,6 @@ import { toDate } from "../toDate/index.js";
  * const result = getTime(new Date(2012, 1, 29, 11, 45, 5, 123))
  * //=> 1330515905123
  */
-export function getTime<DateType extends Date>(
-  date: DateType | number | string,
-): number {
+export function getTime(date: DateArg<Date> & {}): number {
   return +toDate(date);
 }

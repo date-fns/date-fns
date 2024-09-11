@@ -1,11 +1,11 @@
 import { addBusinessDays } from "../addBusinessDays/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link subBusinessDays} function options.
  */
 export interface SubBusinessDaysOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * @name subBusinessDays
@@ -33,7 +33,7 @@ export function subBusinessDays<
   DateType extends Date,
   ResultDate extends Date = DateType,
 >(
-  date: DateType | number | string,
+  date: DateArg<DateType>,
   amount: number,
   options?: SubBusinessDaysOptions<ResultDate> | undefined,
 ): ResultDate {

@@ -1,12 +1,11 @@
 import { startOfISOWeekYear } from "../startOfISOWeekYear/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 import { normalizeDates } from "../_lib/normalizeDates/index.js";
 
 /**
  * The {@link isSameISOWeekYear} function options.
  */
-export interface IsSameISOWeekYearOptions
-  extends DateFns.ContextOptions<Date> {}
+export interface IsSameISOWeekYearOptions extends ContextOptions<Date> {}
 
 /**
  * @name isSameISOWeekYear
@@ -30,8 +29,8 @@ export interface IsSameISOWeekYearOptions
  * //=> true
  */
 export function isSameISOWeekYear(
-  laterDate: DateFns.Arg,
-  earlierDate: DateFns.Arg,
+  laterDate: DateArg<Date> & {},
+  earlierDate: DateArg<Date> & {},
   options?: IsSameISOWeekYearOptions | undefined,
 ): boolean {
   const [laterDate_, earlierDate_] = normalizeDates(

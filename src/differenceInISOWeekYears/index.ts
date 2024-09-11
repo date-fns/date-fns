@@ -2,13 +2,12 @@ import { normalizeDates } from "../_lib/normalizeDates/index.js";
 import { compareAsc } from "../compareAsc/index.js";
 import { differenceInCalendarISOWeekYears } from "../differenceInCalendarISOWeekYears/index.js";
 import { subISOWeekYears } from "../subISOWeekYears/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link differenceInISOWeekYears} function options.
  */
-export interface DifferenceInISOWeekYearsOptions
-  extends DateFns.ContextOptions<Date> {}
+export interface DifferenceInISOWeekYearsOptions extends ContextOptions<Date> {}
 
 /**
  * @name differenceInISOWeekYears
@@ -35,8 +34,8 @@ export interface DifferenceInISOWeekYearsOptions
  * // => 1
  */
 export function differenceInISOWeekYears(
-  laterDate: DateFns.Arg,
-  earlierDate: DateFns.Arg,
+  laterDate: DateArg<Date> & {},
+  earlierDate: DateArg<Date> & {},
   options?: DifferenceInISOWeekYearsOptions | undefined,
 ): number {
   const [laterDate_, earlierDate_] = normalizeDates(

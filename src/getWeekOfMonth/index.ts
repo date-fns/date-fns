@@ -3,15 +3,20 @@ import { getDate } from "../getDate/index.js";
 import { getDay } from "../getDay/index.js";
 import { startOfMonth } from "../startOfMonth/index.js";
 import { toDate } from "../toDate/index.js";
-import type { DateFns, LocalizedOptions, WeekOptions } from "../types.js";
+import type {
+  ContextOptions,
+  DateArg,
+  LocalizedOptions,
+  WeekOptions,
+} from "../types.js";
 
 /**
  * The {@link getWeekOfMonth} function options.
  */
-export interface GetWeekOfMonthOptions<DateType extends Date = Date>
+export interface GetWeekOfMonthOptions
   extends LocalizedOptions<"options">,
     WeekOptions,
-    DateFns.ContextOptions<DateType> {}
+    ContextOptions<Date> {}
 
 /**
  * @name getWeekOfMonth
@@ -34,9 +39,9 @@ export interface GetWeekOfMonthOptions<DateType extends Date = Date>
  * const result = getWeekOfMonth(new Date(2017, 10, 9))
  * //=> 2
  */
-export function getWeekOfMonth<DateType extends Date, ContextDate extends Date>(
-  date: DateType | number | string,
-  options?: GetWeekOfMonthOptions<ContextDate>,
+export function getWeekOfMonth(
+  date: DateArg<Date> & {},
+  options?: GetWeekOfMonthOptions,
 ): number {
   const defaultOptions = getDefaultOptions();
   const weekStartsOn =

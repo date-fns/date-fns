@@ -1,11 +1,11 @@
 import { constructFrom } from "../constructFrom/index.js";
 import { toDate } from "../toDate/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 /**
  * The {@link addMilliseconds} function options.
  */
 export interface AddMillisecondsOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * @name addMilliseconds
@@ -33,7 +33,7 @@ export function addMilliseconds<
   DateType extends Date,
   ResultDate extends Date = DateType,
 >(
-  date: DateType | number | string,
+  date: DateArg<DateType>,
   amount: number,
   options?: AddMillisecondsOptions<ResultDate> | undefined,
 ): ResultDate {

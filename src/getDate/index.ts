@@ -1,11 +1,10 @@
 import { toDate } from "../toDate/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link getDate} function options.
  */
-export interface GetDateOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+export interface GetDateOptions extends ContextOptions<Date> {}
 
 /**
  * @name getDate
@@ -27,12 +26,9 @@ export interface GetDateOptions<DateType extends Date = Date>
  * const result = getDate(new Date(2012, 1, 29))
  * //=> 29
  */
-export function getDate<
-  DateType extends Date,
-  ResultDate extends Date = DateType,
->(
-  date: DateType | number | string,
-  options?: GetDateOptions<ResultDate> | undefined,
+export function getDate(
+  date: DateArg<Date> & {},
+  options?: GetDateOptions | undefined,
 ): number {
   return toDate(date, options?.in).getDate();
 }

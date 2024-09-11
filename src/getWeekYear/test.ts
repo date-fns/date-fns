@@ -1,6 +1,7 @@
 import { tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import { getWeekYear, type GetWeekYearOptions } from "./index.js";
+import type { ContextOptions, DateArg } from "../types.js";
+import { getWeekYear } from "./index.js";
 
 describe("getWeekYear", () => {
   it("returns the local week-numbering year of the given date", () => {
@@ -78,8 +79,8 @@ describe("getWeekYear", () => {
 
     it("doesn't enforce argument and context to be of the same type", () => {
       function _test<DateType extends Date, ResultDate extends Date = DateType>(
-        arg: DateType | number | string,
-        options?: GetWeekYearOptions<ResultDate>,
+        arg: DateArg<DateType>,
+        options?: ContextOptions<ResultDate>,
       ) {
         getWeekYear(arg, { in: options?.in });
       }

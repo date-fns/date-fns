@@ -16,20 +16,18 @@ import { differenceInCalendarYears } from "../differenceInCalendarYears/index.js
 import { differenceInHours } from "../differenceInHours/index.js";
 import { differenceInMinutes } from "../differenceInMinutes/index.js";
 import { differenceInSeconds } from "../differenceInSeconds/index.js";
-import type { DateFns } from "../types.js";
+import type { ContextOptions, DateArg, MaybeArray } from "../types.js";
 
 /**
  * The {@link intlFormatDistance} function options.
  */
 export interface IntlFormatDistanceOptions
   extends Intl.RelativeTimeFormatOptions,
-    DateFns.ContextOptions<Date> {
+    ContextOptions<Date> {
   /** Force the distance unit */
   unit?: IntlFormatDistanceUnit;
   /** The locales to use (see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument) */
-  locale?: DateFns.Utils.MaybeArray<
-    Intl.ResolvedDateTimeFormatOptions["locale"]
-  >;
+  locale?: MaybeArray<Intl.ResolvedDateTimeFormatOptions["locale"]>;
 }
 
 /**
@@ -145,8 +143,8 @@ export type IntlFormatDistanceUnit =
  * //=> 'in 2 yr'
  */
 export function intlFormatDistance(
-  laterDate: DateFns.Arg,
-  earlierDate: DateFns.Arg,
+  laterDate: DateArg<Date> & {},
+  earlierDate: DateArg<Date> & {},
   options?: IntlFormatDistanceOptions,
 ): string {
   let value: number = 0;

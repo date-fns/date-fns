@@ -1,13 +1,13 @@
 import { getRoundingMethod } from "../_lib/getRoundingMethod/index.js";
 import { differenceInMonths } from "../differenceInMonths/index.js";
-import type { DateFns, RoundingOptions } from "../types.js";
+import type { ContextOptions, DateArg, RoundingOptions } from "../types.js";
 
 /**
  * The {@link differenceInQuarters} function options.
  */
 export interface DifferenceInQuartersOptions
   extends RoundingOptions,
-    DateFns.ContextOptions<Date> {}
+    ContextOptions<Date> {}
 
 /**
  * @name differenceInQuarters
@@ -29,8 +29,8 @@ export interface DifferenceInQuartersOptions
  * //=> 2
  */
 export function differenceInQuarters(
-  laterDate: DateFns.Arg,
-  earlierDate: DateFns.Arg,
+  laterDate: DateArg<Date> & {},
+  earlierDate: DateArg<Date> & {},
   options?: DifferenceInQuartersOptions | undefined,
 ): number {
   const diff = differenceInMonths(laterDate, earlierDate, options) / 3;

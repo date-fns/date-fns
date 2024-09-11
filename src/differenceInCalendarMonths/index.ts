@@ -1,11 +1,11 @@
 import { normalizeDates } from "../_lib/normalizeDates/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link differenceInCalendarMonths} function options.
  */
 export interface DifferenceInCalendarMonthsOptions
-  extends DateFns.ContextOptions<Date> {}
+  extends ContextOptions<Date> {}
 
 /**
  * @name differenceInCalendarMonths
@@ -30,8 +30,8 @@ export interface DifferenceInCalendarMonthsOptions
  * //=> 8
  */
 export function differenceInCalendarMonths(
-  laterDate: DateFns.Arg,
-  earlierDate: DateFns.Arg,
+  laterDate: DateArg<Date> & {},
+  earlierDate: DateArg<Date> & {},
   options?: DifferenceInCalendarMonthsOptions | undefined,
 ): number {
   const [laterDate_, earlierDate_] = normalizeDates(

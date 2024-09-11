@@ -2,13 +2,13 @@ import { constructFrom } from "../constructFrom/index.js";
 import { differenceInCalendarDays } from "../differenceInCalendarDays/index.js";
 import { startOfISOWeekYear } from "../startOfISOWeekYear/index.js";
 import { toDate } from "../toDate/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link setISOWeekYear} function options.
  */
 export interface SetISOWeekYearOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * @name setISOWeekYear
@@ -39,7 +39,7 @@ export function setISOWeekYear<
   DateType extends Date,
   ResultDate extends Date = DateType,
 >(
-  date: DateType | number | string,
+  date: DateArg<DateType>,
   weekYear: number,
   options?: SetISOWeekYearOptions<ResultDate> | undefined,
 ): ResultDate {

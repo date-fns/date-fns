@@ -1,13 +1,13 @@
 import { addDays } from "../addDays/index.js";
 import { getISODay } from "../getISODay/index.js";
 import { toDate } from "../toDate/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link setISODay} function options.
  */
 export interface SetISODayOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * @name setISODay
@@ -37,7 +37,7 @@ export function setISODay<
   DateType extends Date,
   ResultDate extends Date = DateType,
 >(
-  date: DateType | number | string,
+  date: DateArg<DateType>,
   day: number,
   options?: SetISODayOptions<ResultDate> | undefined,
 ): ResultDate {

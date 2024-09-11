@@ -1,11 +1,10 @@
 import { toDate } from "../toDate/index.js";
-import type { Interval } from "../types.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg, Interval } from "../types.js";
 
 /**
  * The {@link isWithinInterval} function options.
  */
-export interface IsWithinIntervalOptions extends DateFns.ContextOptions<Date> {}
+export interface IsWithinIntervalOptions extends ContextOptions<Date> {}
 
 /**
  * @name isWithinInterval
@@ -48,7 +47,7 @@ export interface IsWithinIntervalOptions extends DateFns.ContextOptions<Date> {}
  * // => true
  */
 export function isWithinInterval(
-  date: DateFns.Arg,
+  date: DateArg<Date> & {},
   interval: Interval,
   options?: IsWithinIntervalOptions | undefined,
 ): boolean {

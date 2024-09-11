@@ -3,12 +3,13 @@ import { isSaturday } from "../isSaturday/index.js";
 import { isSunday } from "../isSunday/index.js";
 import { isWeekend } from "../isWeekend/index.js";
 import { toDate } from "../toDate/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
+
 /**
  * The {@link addBusinessDays} function options.
  */
 export interface AddBusinessDaysOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * @name addBusinessDays
@@ -36,7 +37,7 @@ export function addBusinessDays<
   DateType extends Date,
   ResultDate extends Date = DateType,
 >(
-  date: DateType | number | string,
+  date: DateArg<DateType>,
   amount: number,
   options?: AddBusinessDaysOptions<ResultDate> | undefined,
 ): ResultDate {

@@ -1,6 +1,6 @@
 import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import { type DateFns } from "../types.js";
+import type { ContextOptions } from "../types.js";
 import { differenceInCalendarMonths } from "./index.js";
 
 describe("differenceInCalendarMonths", () => {
@@ -135,7 +135,7 @@ describe("differenceInCalendarMonths", () => {
       function _test<DateType extends Date, ResultDate extends Date = DateType>(
         arg1: DateType | number | string,
         arg2: DateType | number | string,
-        options?: DateFns.ContextOptions<ResultDate>,
+        options?: ContextOptions<ResultDate>,
       ) {
         differenceInCalendarMonths(arg1, arg2, { in: options?.in });
       }

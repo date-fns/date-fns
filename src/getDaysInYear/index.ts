@@ -1,12 +1,11 @@
 import { isLeapYear } from "../isLeapYear/index.js";
 import { toDate } from "../toDate/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link getDaysInYear} function options.
  */
-export interface GetDaysInYearOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+export interface GetDaysInYearOptions extends ContextOptions<Date> {}
 
 /**
  * @name getDaysInYear
@@ -29,9 +28,9 @@ export interface GetDaysInYearOptions<DateType extends Date = Date>
  * const result = getDaysInYear(new Date(2012, 0, 1))
  * //=> 366
  */
-export function getDaysInYear<DateType extends Date, ContextDate extends Date>(
-  date: DateType | number | string,
-  options?: GetDaysInYearOptions<ContextDate> | undefined,
+export function getDaysInYear(
+  date: DateArg<Date> & {},
+  options?: GetDaysInYearOptions | undefined,
 ): number {
   const _date = toDate(date, options?.in);
   if (Number.isNaN(+_date)) return NaN;

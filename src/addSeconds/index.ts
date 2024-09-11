@@ -1,11 +1,11 @@
 import { addMilliseconds } from "../addMilliseconds/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link addSeconds} function options.
  */
 export interface AddSecondsOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * @name addSeconds
@@ -33,7 +33,7 @@ export function addSeconds<
   DateType extends Date,
   ResultDate extends Date = DateType,
 >(
-  date: DateType | number | string,
+  date: DateArg<DateType>,
   amount: number,
   options?: AddSecondsOptions<ResultDate> | undefined,
 ): ResultDate {

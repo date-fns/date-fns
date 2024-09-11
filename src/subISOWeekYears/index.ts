@@ -1,11 +1,11 @@
 import { addISOWeekYears } from "../addISOWeekYears/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link subISOWeekYears} function options.
  */
 export interface SubISOWeekYearsOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * @name subISOWeekYears
@@ -35,7 +35,7 @@ export function subISOWeekYears<
   DateType extends Date,
   ResultDate extends Date = DateType,
 >(
-  date: DateType | number | string,
+  date: DateArg<DateType>,
   amount: number,
   options?: SubISOWeekYearsOptions<ResultDate> | undefined,
 ): ResultDate {

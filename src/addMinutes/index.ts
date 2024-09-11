@@ -1,12 +1,12 @@
-import { toDate } from "../toDate/index.js";
 import { millisecondsInMinute } from "../constants/index.js";
-import { type DateFns } from "../types.js";
+import { toDate } from "../toDate/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link addMinutes} function options.
  */
 export interface AddMinutesOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * @name addMinutes
@@ -34,7 +34,7 @@ export function addMinutes<
   DateType extends Date,
   ResultDate extends Date = DateType,
 >(
-  date: DateType | number | string,
+  date: DateArg<DateType>,
   amount: number,
   options?: AddMinutesOptions<ResultDate> | undefined,
 ): ResultDate {

@@ -1,4 +1,5 @@
 import { toDate } from "../toDate/index.js";
+import type { DateArg } from "../types.js";
 
 /**
  * @name isEqual
@@ -23,9 +24,9 @@ import { toDate } from "../toDate/index.js";
  * )
  * //=> false
  */
-export function isEqual<DateType extends Date>(
-  leftDate: DateType | number | string,
-  rightDate: DateType | number | string,
+export function isEqual(
+  leftDate: DateArg<Date> & {},
+  rightDate: DateArg<Date> & {},
 ): boolean {
   return +toDate(leftDate) === +toDate(rightDate);
 }

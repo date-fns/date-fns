@@ -1,11 +1,11 @@
 import { toDate } from "../toDate/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link startOfMinute} function options.
  */
 export interface StartOfMinuteOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * @name startOfMinute
@@ -33,7 +33,7 @@ export function startOfMinute<
   DateType extends Date,
   ResultDate extends Date = DateType,
 >(
-  date: DateType | number | string,
+  date: DateArg<DateType>,
   options?: StartOfMinuteOptions<ResultDate> | undefined,
 ): ResultDate {
   const date_ = toDate(date, options?.in);

@@ -1,12 +1,12 @@
 import { getISOWeekYear } from "../getISOWeekYear/index.js";
 import { setISOWeekYear } from "../setISOWeekYear/index.js";
-import { type DateFns } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link addISOWeekYears} function options.
  */
 export interface AddISOWeekYearsOptions<DateType extends Date = Date>
-  extends DateFns.ContextOptions<DateType> {}
+  extends ContextOptions<DateType> {}
 
 /**
  * @name addISOWeekYears
@@ -35,7 +35,7 @@ export function addISOWeekYears<
   DateType extends Date,
   ResultDate extends Date = DateType,
 >(
-  date: DateType | number | string,
+  date: DateArg<DateType>,
   amount: number,
   options?: AddISOWeekYearsOptions<ResultDate> | undefined,
 ): ResultDate {
