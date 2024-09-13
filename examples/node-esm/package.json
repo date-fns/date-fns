@@ -5,7 +5,7 @@
   "main": "example.ts",
   "author": "Sasha Koss <koss@nocorp.me>",
   "license": "MIT",
-  "module": "true",
+  "type": "module",
   "scripts": {
     "build": "rm -rf node_modules/date-fns && mkdir -p node_modules && cp -r ../../lib node_modules/date-fns || npm run build-date-fns",
     "build-date-fns": "env PACKAGE_OUTPUT_PATH=\"$(pwd)/node_modules/date-fns\" ../../scripts/build/package.sh",

@@ -3,7 +3,7 @@
  * It's a part of the test process.
  */
 
-import { testTimeZones } from "./_lib/tz";
+import { testTimeZones } from "./_lib/tz.js";
 
 testTimeZones([
   "Africa/Abidjan",

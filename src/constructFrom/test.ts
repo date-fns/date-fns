@@ -1,9 +1,9 @@
 import { TZDate, tz } from "@date-fns/tz";
 import { UTCDate } from "@date-fns/utc";
 import { describe, expect, it } from "vitest";
-import { constructFrom } from ".";
-import { assertType } from "../_lib/test";
-import type { ContextOptions, DateArg } from "../types";
+import { constructFrom } from "./index.js";
+import { assertType } from "../_lib/test/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 describe("constructFrom", () => {
   it("should create a new Date instance using the constructor from the reference date", () => {

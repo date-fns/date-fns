@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "ESNext",
     "outDir": "lib",
     "lib": ["dom", "es2020", "es2018.promise", "ESNext.Intl"],
     "module": "NodeNext",
