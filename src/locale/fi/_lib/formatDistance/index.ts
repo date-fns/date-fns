@@ -3,7 +3,6 @@ import type { FormatDistanceFn, FormatDistanceLocale } from "../../../types.js";
 type FormatDistanceTokenValue = {
   one: string;
   other: string;
-  // eslint-disable-next-line no-unused-vars
   futureTense: (text: string) => string;
 };
 

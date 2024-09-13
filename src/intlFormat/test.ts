@@ -7,7 +7,7 @@ const hasFullICU = () => {
     const january = new Date(9e8);
     const spanish = new Intl.DateTimeFormat("es", { month: "long" });
     return spanish.format(january) === "enero";
-  } catch (err) {
+  } catch (_err) {
     return false;
   }
 };

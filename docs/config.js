@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 /** @type {import('@date-fns/docs').DateFnsDocs.Config} */
 module.exports.config = {
   package: "..",

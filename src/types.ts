@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-
 import { type constructFromSymbol } from "./constants/index.js";
 import type { Locale } from "./locale/types.js";
 

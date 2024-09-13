@@ -1,8 +1,10 @@
+/* eslint-disable */
+
 // Run:
 // npx jscodeshift --parser=ts -t codemods/expectify.js src/**/test.ts
 
 module.exports = function transformer(file, api) {
-  const j = api.jscodeshift;
+  const j = api.jscodggeshift;
 
   const source = j(file.source);
 
