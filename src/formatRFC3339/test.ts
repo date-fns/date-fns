@@ -41,4 +41,10 @@ describe("formatRFC3339", () => {
   it("throws RangeError if the time value is invalid", () => {
     expect(formatRFC3339.bind(null, new Date(NaN))).toThrow(RangeError);
   });
+
+  it("formats correctly 2 digit years utilising Constructor with number", () => {
+    const date = new Date(2024, 11 /* Dec */, 11, 1, 0, 0, 12);
+    date.setFullYear(24)
+    expect(formatRFC3339(date)).toBe(`0024-12-11T01:00:00${generateOffset(date)}`);
+  });
 });
