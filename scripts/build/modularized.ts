@@ -50,14 +50,10 @@ export default ${constName(relateivePath)};`,
   }
 }
 
-const fnRe = /^\w+\/index.mjs/;
-const localeRe = /^locale\/[\w-]+\/index.mjs/;
-const fpFn = /^fp\/\w+\/index.mjs/;
-const fnExceptions = [
-  "constants/index.mjs",
-  "locale/index.mjs",
-  "fp/index.mjs",
-];
+const fnRe = /^\w+\/index.js/;
+const localeRe = /^locale\/[\w-]+\/index.js/;
+const fpFn = /^fp\/\w+\/index.js/;
+const fnExceptions = ["constants/index.js", "locale/index.js", "fp/index.js"];
 
 function isModule(relateivePath: string) {
   return (

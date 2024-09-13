@@ -15,8 +15,4 @@ export PACKAGE_SKIP_CDN=true
 
 ./scripts/build/package.sh
 
-if ! command -v attw >/dev/null 2>&1; then
-    npm i -g @arethetypeswrong/cli
-fi
-
-attw --pack "$PACKAGE_OUTPUT_PATH"
+npm exec attw --pack "$PACKAGE_OUTPUT_PATH"

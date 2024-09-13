@@ -16,7 +16,7 @@ export const supportedLocales = ["en-US", "de", "pl", "it"];
 We could also have a function that formats the date:
 
 ```js
-const getLocale = (locale) => import(`date-fns-locale/locale/${locale}.mjs`); // or require() if using CommonJS
+const getLocale = (locale) => import(`date-fns-locale/locale/${locale}.js`); // or require() if using CommonJS
 
 const formatDate = (date, formatStyle, locale) => {
   return format(date, formatStyle, {
@@ -42,7 +42,7 @@ export default config = {
   plugins: [
     new webpack.ContextReplacementPlugin(
       /date-fns[/\\]locale/,
-      new RegExp(`(${locales.join("|")})\.mjs$`),
+      new RegExp(`(${locales.join("|")})\.js$`),
     ),
   ],
 };

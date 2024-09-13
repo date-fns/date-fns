@@ -1,4 +1,4 @@
-import type { FPArity, FPFn, FPFnInput } from "../../types";
+import type { FPArity, FPFn, FPFnInput } from "../../types.js";
 
 /**
  * Converts a function to a curried function that accepts arguments in reverse

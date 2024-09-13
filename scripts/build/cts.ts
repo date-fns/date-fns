@@ -2,7 +2,7 @@
 
 /**
  * @file
- * The script generates .d.mts files for ESM imports.
+ * The script generates .d.cts files for CommonJS imports.
  *
  * It's a part of the build process.
  */
@@ -12,9 +12,9 @@ import { join, resolve } from "path";
 
 const root = resolve(process.env.PACKAGE_OUTPUT_PATH || "lib");
 
-createMTSFiles(resolve(root));
+createCTSFiles(resolve(root));
 
-async function createMTSFiles(dir: string): Promise<void> {
+async function createCTSFiles(dir: string): Promise<void> {
   try {
     const files = await readdir(dir, { withFileTypes: true });
     const promises: Promise<void>[] = [];
@@ -23,9 +23,9 @@ async function createMTSFiles(dir: string): Promise<void> {
       const fullPath = join(dir, file.name);
 
       if (file.isDirectory()) {
-        promises.push(createMTSFiles(fullPath));
+        promises.push(createCTSFiles(fullPath));
       } else if (file.isFile() && file.name.endsWith(".d.ts")) {
-        const newFilePath = fullPath.replace(".d.ts", ".d.mts");
+        const newFilePath = fullPath.replace(".d.ts", ".d.cts");
         promises.push(copyFile(fullPath, newFilePath));
       }
     }

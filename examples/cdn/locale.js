@@ -1,4 +1,4 @@
-import { testScript } from "./dom.mjs";
+import { testScript } from "./dom.js";
 
 testScript(["cdn.min.js", "locale/es/cdn.min.js"], (dom) => {
   const result = dom.window.eval(

@@ -57,12 +57,12 @@ async function generatePackageJSON({
         ".",
         {
           require: {
-            types: "./index.d.ts",
-            default: "./index.js",
+            types: "./index.d.cts",
+            default: "./index.cjs",
           },
           import: {
-            types: "./index.d.mts",
-            default: "./index.mjs",
+            types: "./index.d.ts",
+            default: "./index.js",
           },
         },
       ],
@@ -86,12 +86,12 @@ function mapExports(paths: string[], prefix = ".") {
       pth,
       {
         require: {
-          types: `${pth}.d.ts`,
-          default: `${pth}.js`,
+          types: `${pth}.d.cts`,
+          default: `${pth}.cjs`,
         },
         import: {
-          types: `${pth}.d.mts`,
-          default: `${pth}.mjs`,
+          types: `${pth}.d.ts`,
+          default: `${pth}.js`,
         },
       },
     ];

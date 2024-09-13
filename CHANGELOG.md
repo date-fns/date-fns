@@ -52,6 +52,12 @@ Another great news is that there aren't many breaking changes in this release. A
 
 - **BREAKING**: This release contains a bunch of types changes that should not affect the library's expected usage. The changes are primarily internal and nuanced, so rather than listing them here, I recommend you running the type checker after the upgrade. If there are unfixable problems, please [open an issue](https://github.com/date-fns/date-fns/issues/new).
 
+- **BREAKING**: The package now is ESM-first. The CommonJS is still support and It should not affect most users, but it might break in certains environments. If you encounter any issues, please [report them](https://github.com/date-fns/date-fns/issues/new).
+
+### Fixed
+
+- Fixed CDN build compatibility with jQuery and other tools that expose `$` by properly wrapping the code in an IIFE.
+
 ## v3.6.0 - 2024-03-18
 
 On this release worked @kossnocorp and @world1dan. Also, thanks to [@seated](https://github.com/seated) [for sponsoring me](https://github.com/sponsors/kossnocorp).
