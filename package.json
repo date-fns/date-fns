@@ -6092,7 +6092,7 @@
     "@babel/core": "^7.22.10",
     "@babel/preset-env": "^7.22.10",
     "@babel/preset-typescript": "^7.22.5",
-    "@date-fns/docs": "^0.31.0",
+    "@date-fns/docs": "^0.33.0",
     "@date-fns/tz": "^0.3.3",
     "@date-fns/utc": "^1.2.0",
     "@octokit/core": "^3.2.5",
