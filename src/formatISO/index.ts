@@ -41,6 +41,7 @@ export interface FormatISOOptions extends ISOFormatOptions {}
  * // Represent 18 September 2019 in ISO 8601 format, time only (local time zone is UTC):
  * const result = formatISO(new Date(2019, 8, 18, 19, 0, 52), { representation: 'time' })
  * //=> '19:00:52Z'
+ * 
  */
 export function formatISO(
   date: DateArg<Date> & {},
@@ -91,15 +92,20 @@ export function formatISO(
     const hour = addLeadingZeros(_date.getHours(), 2);
     const minute = addLeadingZeros(_date.getMinutes(), 2);
     const second = addLeadingZeros(_date.getSeconds(), 2);
+    const millisecond = addLeadingZeros(_date.getMilliseconds(), 3);
 
     // If there's also date, separate it with time with 'T'
     const separator = result === "" ? "" : "T";
+    
 
     // Creates a time string consisting of hour, minute, and second, separated by delimiters, if defined.
     const time = [hour, minute, second].join(timeDelimiter);
 
+    // If milliseconds are zero, exclude from string
+    const precisionTime = millisecond === '000' ? '' : `${timeDelimiter === '' ? '' : '.'}${millisecond}`
+
     // HHmmss or HH:mm:ss.
-    result = `${result}${separator}${time}${tzOffset}`;
+    result = `${result}${separator}${time}${precisionTime}${tzOffset}`;
   }
 
   return result;
