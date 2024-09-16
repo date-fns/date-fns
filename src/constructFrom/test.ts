@@ -89,4 +89,14 @@ describe("constructFrom", () => {
       constructFrom(options?.in || arg, arg);
     }
   });
+
+  describe("edge cases", () => {
+    it("does not trip over null", () => {
+      const value = 1635244800000; // October 26, 2023
+      // @ts-expect-error - We want to pass null here
+      const result = constructFrom(null, value);
+      expect(result instanceof Date).toBe(true);
+      expect(result.getTime()).toEqual(value);
+    });
+  });
 });

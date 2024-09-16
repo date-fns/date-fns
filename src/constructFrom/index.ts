@@ -50,7 +50,7 @@ export function constructFrom<
 ): ResultDate {
   if (typeof date === "function") return date(value);
 
-  if (typeof date === "object" && constructFromSymbol in date)
+  if (date && typeof date === "object" && constructFromSymbol in date)
     return date[constructFromSymbol](value);
 
   if (date instanceof Date)
