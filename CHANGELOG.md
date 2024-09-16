@@ -8,19 +8,19 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
-## v4.0.0 - 2024-09-??
+## v4.0.0 - 2024-09-16
 
 I have great news! First, ten years after its release, date-fns finally gets first-class time zone support.
 
 Another great news is that there aren't many breaking changes in this release. All of them are type-related and will affect only those explicitly using internal date-fns types. Finally, it has been less than a year since the last major release, which is an improvement over the previous four years between v2 and v3. I plan on keeping the pace and minimizing breaking changes moving forward.
 
-[Read more about the release in the announcement blog post](#TODO).
+[Read more about the release in the announcement blog post](https://blog.date-fns.org/v40-with-time-zone-support/).
 
 \- [Sasha @kossnocorp](https://twitter.com/kossnocorp)
 
 ### Added
 
-- Added time zones support via [@date-fns/tz](https://github.com/date-fns/tz)'s `TZDate` class and `tz` helper function. See its [README](https://github.com/date-fns/tz) for the details about the API.
+- Added time zones support via [`@date-fns/tz`](https://github.com/date-fns/tz)'s `TZDate` class and `tz` helper function. See its [README](https://github.com/date-fns/tz) for the details about the API.
 
 - All relevant functions now accept the context `in` option, which allows to specify the time zone to make the calculations in. If the function also returns a date, it will be in the specified time zone:
 

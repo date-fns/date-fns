@@ -4,9 +4,9 @@ Starting from v4, date-fns has first-class support for time zones. It is provide
 
 Just like with everything else in date-fns, the time zones support has a minimal bundle size footprint with `UTCDateMini` and `TZDateMini` being `239 B` and `761 B`, respectively.
 
-If you're looking for time zone support prior to date-fns v4, see the third-party [date-fns-tz](https://github.com/marnusw/date-fns-tz) package.
+If you're looking for time zone support prior to date-fns v4, see the third-party [`date-fns-tz`](https://github.com/marnusw/date-fns-tz) package.
 
-See the announcement blog post for details about the motivation and implementation.
+[See the announcement blog post](https://blog.date-fns.org/v40-with-time-zone-support/) for details about the motivation and implementation and [the change log entry for the list of changes in v4.0](https://date-fns.org/v4.0.0/docs/Change-Log#v4.0.0-2024-09-16).
 
 ## Working with time zones
 
