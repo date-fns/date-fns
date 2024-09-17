@@ -1,10 +1,5 @@
-import { constructFromSymbol } from "../constants/index.js";
-import type {
-  ConstructableDate,
-  ContextFn,
-  DateArg,
-  GenericDateConstructor,
-} from "../types.js";
+import { constructFrom } from "../constructFrom/index.js";
+import type { ConstructableDate, ContextFn, DateArg } from "../types.js";
 
 /**
  * @name toDate
@@ -51,32 +46,6 @@ export function toDate<
   argument: DateArg<DateType>,
   context?: ContextFn<ResultDate> | undefined,
 ): ResultDate {
-  // [TODO] Use constructFrom here instead?
-  if (context) return context(argument);
-
-  const argStr = Object.prototype.toString.call(argument);
-
-  // Clone the date
-  if (typeof argument === "object" && constructFromSymbol in argument) {
-    return argument[constructFromSymbol](argument);
-  } else if (
-    argument instanceof Date ||
-    (typeof argument === "object" && argStr === "[object Date]")
-  ) {
-    // Prevent the date to lose the milliseconds when passed to new Date() in IE10
-    return new (argument.constructor as GenericDateConstructor<ResultDate>)(
-      +argument,
-    );
-  } else if (
-    typeof argument === "number" ||
-    argStr === "[object Number]" ||
-    typeof argument === "string" ||
-    argStr === "[object String]"
-  ) {
-    // TODO: Can we get rid of as?
-    return new Date(argument) as ResultDate;
-  } else {
-    // TODO: Can we get rid of as?
-    return new Date(NaN) as ResultDate;
-  }
+  // [TODO] Get rid of `toDate` or `constructFrom`?
+  return constructFrom(context || argument, argument);
 }

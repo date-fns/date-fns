@@ -264,4 +264,15 @@ describe("differenceInCalendarDays", () => {
       ).toBe(9);
     });
   });
+
+  describe("edge cases", () => {
+    it("works consistently with invalid arguments", () => {
+      expect(differenceInCalendarDays(NaN, Date.now())).toBe(NaN);
+      expect(
+        differenceInCalendarDays(NaN, Date.now(), {
+          in: tz("America/New_York"),
+        }),
+      ).toBe(NaN);
+    });
+  });
 });

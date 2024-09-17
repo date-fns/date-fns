@@ -98,5 +98,10 @@ describe("constructFrom", () => {
       expect(result instanceof Date).toBe(true);
       expect(result.getTime()).toEqual(value);
     });
+
+    it("returns invalid date for invalid arguments consistently", () => {
+      expect(+constructFrom(undefined, NaN)).toBe(NaN);
+      expect(+constructFrom(tz("Asia/Singapore"), NaN)).toBe(NaN);
+    });
   });
 });

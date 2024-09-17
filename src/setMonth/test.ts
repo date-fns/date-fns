@@ -70,7 +70,7 @@ describe("setMonth", () => {
         setMonth("2024-04-10T07:00:00Z", 2, {
           in: tz("America/New_York"),
         }).toISOString(),
-      ).toBe("2024-03-10T04:00:00.000-04:00");
+      ).toBe("2024-03-10T03:00:00.000-04:00");
     });
 
     it("resolves the context date type", () => {

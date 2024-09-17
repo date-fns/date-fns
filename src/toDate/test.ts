@@ -55,4 +55,11 @@ describe("toDate", () => {
       assertType<assertType.Equal<TZDate, typeof result>>(true);
     });
   });
+
+  describe("edge cases", () => {
+    it("returns invalid date for invalid arguments consistently", () => {
+      expect(+toDate(NaN)).toBe(NaN);
+      expect(+toDate(NaN, tz("Asia/Singapore"))).toBe(NaN);
+    });
+  });
 });
