@@ -8,6 +8,20 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## v4.1.0 - 2024-09-17
+
+This release brings adds time zone support to format functions (that I somehow missed when working on the feature) and fixes a few bugs.
+
+Make sure also upgrade `TZDate` to v1.0.2 as it [includes a bunch of critical bug fixes](https://github.com/date-fns/tz/blob/main/CHANGELOG.md#v102---2024-09-14).
+
+### Fixed
+
+- Fixed internal `constructFrom` throwing an exception on `null` arguments. While `null` isn't allowed, the functions should rather return `Invalid Date` or `NaN` in such cases. See [#3885](https://github.com/date-fns/date-fns/issues/3885).
+
+### Added
+
+- Added missing time zone support to `format`, `formatISO`, `formatISO9075`, `formatRelative` and `formatRFC3339`. See [#3886](https://github.com/date-fns/date-fns/issues/3886).
+
 ## v4.0.0 - 2024-09-16
 
 I have great news! First, ten years after its release, date-fns finally gets first-class time zone support.
