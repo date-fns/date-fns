@@ -93,6 +93,29 @@ differenceInBusinessDays(laterDate, earlierDate, {
 
 In the example, we forced `differenceInBusinessDays` to use the Los Angeles time zone.
 
+## Transposing date values
+
+Sometimes, you want to transpose date values from a date instance to another time zone or vice versa. For that, you would use the `transpose` function:
+
+```ts
+import { transpose } from "date-fns";
+import { tz } from "@date-fns/tz";
+
+// Singapore is the system time zone:
+const sgDate = new Date(2024, 8 /* Sep */, 7, 6, 5, 4);
+//=> 'Wed Sep 07 2024 06:05:04 GMT+0800 (Singapore Standard Time)'
+
+// Transpose the date to Los Angeles time zone:
+const laDate = transpose(sgDate, tz("America/Los_Angeles"));
+//=> 'Wed Sep 07 2024 06:05:04 GMT-0700 (Pacific Daylight Time)'
+
+// Transpose back to local time zone using Date:
+const systemDate = transpose(laDate, Date);
+//=> 'Wed Sep 07 2024 06:05:04 GMT+0800 (Singapore Standard Time)'
+```
+
+This is the `date-fns-tz`'s `fromZonedTime` and `toZonedTime` equivalent.
+
 ## Further reading
 
 Read more about the time zone packages visiting their READMEs:
