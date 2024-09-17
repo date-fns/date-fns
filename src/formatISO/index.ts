@@ -1,11 +1,13 @@
 import { addLeadingZeros } from "../_lib/addLeadingZeros/index.js";
 import { toDate } from "../toDate/index.js";
-import type { DateArg, ISOFormatOptions } from "../types.js";
+import type { ContextOptions, DateArg, ISOFormatOptions } from "../types.js";
 
 /**
  * The {@link formatISO} function options.
  */
-export interface FormatISOOptions extends ISOFormatOptions {}
+export interface FormatISOOptions
+  extends ISOFormatOptions,
+    ContextOptions<Date> {}
 
 /**
  * @name formatISO
@@ -46,9 +48,9 @@ export function formatISO(
   date: DateArg<Date> & {},
   options?: FormatISOOptions,
 ): string {
-  const _date = toDate(date);
+  const date_ = toDate(date, options?.in);
 
-  if (isNaN(_date.getTime())) {
+  if (isNaN(+date_)) {
     throw new RangeError("Invalid time value");
   }
 
@@ -63,9 +65,9 @@ export function formatISO(
 
   // Representation is either 'date' or 'complete'
   if (representation !== "time") {
-    const day = addLeadingZeros(_date.getDate(), 2);
-    const month = addLeadingZeros(_date.getMonth() + 1, 2);
-    const year = addLeadingZeros(_date.getFullYear(), 4);
+    const day = addLeadingZeros(date_.getDate(), 2);
+    const month = addLeadingZeros(date_.getMonth() + 1, 2);
+    const year = addLeadingZeros(date_.getFullYear(), 4);
 
     // yyyyMMdd or yyyy-MM-dd.
     result = `${year}${dateDelimiter}${month}${dateDelimiter}${day}`;
@@ -74,7 +76,7 @@ export function formatISO(
   // Representation is either 'time' or 'complete'
   if (representation !== "date") {
     // Add the timezone.
-    const offset = _date.getTimezoneOffset();
+    const offset = date_.getTimezoneOffset();
 
     if (offset !== 0) {
       const absoluteOffset = Math.abs(offset);
@@ -88,9 +90,9 @@ export function formatISO(
       tzOffset = "Z";
     }
 
-    const hour = addLeadingZeros(_date.getHours(), 2);
-    const minute = addLeadingZeros(_date.getMinutes(), 2);
-    const second = addLeadingZeros(_date.getSeconds(), 2);
+    const hour = addLeadingZeros(date_.getHours(), 2);
+    const minute = addLeadingZeros(date_.getMinutes(), 2);
+    const second = addLeadingZeros(date_.getSeconds(), 2);
 
     // If there's also date, separate it with time with 'T'
     const separator = result === "" ? "" : "T";

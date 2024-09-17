@@ -1,12 +1,12 @@
 import { addLeadingZeros } from "../_lib/addLeadingZeros/index.js";
 import { isValid } from "../isValid/index.js";
 import { toDate } from "../toDate/index.js";
-import type { DateArg } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link formatRFC3339} function options.
  */
-export interface FormatRFC3339Options {
+export interface FormatRFC3339Options extends ContextOptions<Date> {
   /** The number of digits after the decimal point after seconds, defaults to 0 */
   fractionDigits?: 0 | 1 | 2 | 3;
 }
@@ -42,25 +42,25 @@ export function formatRFC3339(
   date: DateArg<Date> & {},
   options?: FormatRFC3339Options,
 ): string {
-  const _date = toDate(date);
+  const date_ = toDate(date, options?.in);
 
-  if (!isValid(_date)) {
+  if (!isValid(date_)) {
     throw new RangeError("Invalid time value");
   }
 
   const fractionDigits = options?.fractionDigits ?? 0;
 
-  const day = addLeadingZeros(_date.getDate(), 2);
-  const month = addLeadingZeros(_date.getMonth() + 1, 2);
-  const year = _date.getFullYear();
+  const day = addLeadingZeros(date_.getDate(), 2);
+  const month = addLeadingZeros(date_.getMonth() + 1, 2);
+  const year = date_.getFullYear();
 
-  const hour = addLeadingZeros(_date.getHours(), 2);
-  const minute = addLeadingZeros(_date.getMinutes(), 2);
-  const second = addLeadingZeros(_date.getSeconds(), 2);
+  const hour = addLeadingZeros(date_.getHours(), 2);
+  const minute = addLeadingZeros(date_.getMinutes(), 2);
+  const second = addLeadingZeros(date_.getSeconds(), 2);
 
   let fractionalSecond = "";
   if (fractionDigits > 0) {
-    const milliseconds = _date.getMilliseconds();
+    const milliseconds = date_.getMilliseconds();
     const fractionalSeconds = Math.trunc(
       milliseconds * Math.pow(10, fractionDigits - 3),
     );
@@ -68,7 +68,7 @@ export function formatRFC3339(
   }
 
   let offset = "";
-  const tzOffset = _date.getTimezoneOffset();
+  const tzOffset = date_.getTimezoneOffset();
 
   if (tzOffset !== 0) {
     const absoluteOffset = Math.abs(tzOffset);

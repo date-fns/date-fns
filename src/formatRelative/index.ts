@@ -1,10 +1,15 @@
 import { defaultLocale } from "../_lib/defaultLocale/index.js";
 import { getDefaultOptions } from "../_lib/defaultOptions/index.js";
+import { normalizeDates } from "../_lib/normalizeDates/index.js";
 import { differenceInCalendarDays } from "../differenceInCalendarDays/index.js";
 import { format } from "../format/index.js";
 import type { FormatRelativeToken } from "../locale/types.js";
-import { toDate } from "../toDate/index.js";
-import type { DateArg, LocalizedOptions, WeekOptions } from "../types.js";
+import type {
+  ContextOptions,
+  DateArg,
+  LocalizedOptions,
+  WeekOptions,
+} from "../types.js";
 
 /**
  * The {@link formatRelative} function options.
@@ -13,7 +18,8 @@ export interface FormatRelativeOptions
   extends LocalizedOptions<
       "options" | "localize" | "formatLong" | "formatRelative"
     >,
-    WeekOptions {}
+    WeekOptions,
+    ContextOptions<Date> {}
 
 /**
  * @name formatRelative
@@ -54,8 +60,7 @@ export function formatRelative(
   baseDate: DateArg<Date> & {},
   options?: FormatRelativeOptions,
 ): string {
-  const _date = toDate(date);
-  const _baseDate = toDate(baseDate);
+  const [date_, baseDate_] = normalizeDates(options?.in, date, baseDate);
 
   const defaultOptions = getDefaultOptions();
   const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale;
@@ -66,7 +71,7 @@ export function formatRelative(
     defaultOptions.locale?.options?.weekStartsOn ??
     0;
 
-  const diff = differenceInCalendarDays(_date, _baseDate);
+  const diff = differenceInCalendarDays(date_, baseDate_);
 
   if (isNaN(diff)) {
     throw new RangeError("Invalid time value");
@@ -89,9 +94,9 @@ export function formatRelative(
     token = "other";
   }
 
-  const formatStr = locale.formatRelative(token, _date, _baseDate, {
+  const formatStr = locale.formatRelative(token, date_, baseDate_, {
     locale,
     weekStartsOn,
   });
-  return format(_date, formatStr, { locale, weekStartsOn });
+  return format(date_, formatStr, { locale, weekStartsOn });
 }

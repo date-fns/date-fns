@@ -756,14 +756,13 @@ export const formatters: { [token: string]: Formatter } = {
 
   // Seconds timestamp
   t: function (date, token, _localize) {
-    const timestamp = Math.trunc(date.getTime() / 1000);
+    const timestamp = Math.trunc(+date / 1000);
     return addLeadingZeros(timestamp, token.length);
   },
 
   // Milliseconds timestamp
   T: function (date, token, _localize) {
-    const timestamp = date.getTime();
-    return addLeadingZeros(timestamp, token.length);
+    return addLeadingZeros(+date, token.length);
   },
 };
 

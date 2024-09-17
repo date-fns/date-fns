@@ -11,6 +11,7 @@ import { isValid } from "../isValid/index.js";
 import { toDate } from "../toDate/index.js";
 import type {
   AdditionalTokensOptions,
+  ContextOptions,
   DateArg,
   FirstWeekContainsDateOptions,
   FormatPart,
@@ -54,7 +55,8 @@ export interface FormatOptions
   extends LocalizedOptions<"options" | "localize" | "formatLong">,
     WeekOptions,
     FirstWeekContainsDateOptions,
-    AdditionalTokensOptions {}
+    AdditionalTokensOptions,
+    ContextOptions<Date> {}
 
 /**
  * @name format
@@ -362,7 +364,7 @@ export function format(
     defaultOptions.locale?.options?.weekStartsOn ??
     0;
 
-  const originalDate = toDate(date);
+  const originalDate = toDate(date, options?.in);
 
   if (!isValid(originalDate)) {
     throw new RangeError("Invalid time value");
