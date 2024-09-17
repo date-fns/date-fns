@@ -10,7 +10,7 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## v4.1.0 - 2024-09-17
 
-This release brings adds time zone support to format functions (that I somehow missed when working on the feature) and fixes a few bugs.
+This release adds time zone support to format functions (that I somehow missed when working on the feature) and fixes a few bugs.
 
 Make sure also upgrade `TZDate` to v1.0.2 as it [includes a bunch of critical bug fixes](https://github.com/date-fns/tz/blob/main/CHANGELOG.md#v102---2024-09-14).
 
