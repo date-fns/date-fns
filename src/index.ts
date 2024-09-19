@@ -119,6 +119,7 @@ export * from "./isFuture/index.js";
 export * from "./isLastDayOfMonth/index.js";
 export * from "./isLeapYear/index.js";
 export * from "./isMatch/index.js";
+export * from "./isMatchStrictMode/index.js";
 export * from "./isMonday/index.js";
 export * from "./isPast/index.js";
 export * from "./isSameDay/index.js";
