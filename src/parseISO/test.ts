@@ -412,4 +412,28 @@ describe("parseISO", () => {
       assertType<assertType.Equal<TZDate, typeof result>>(true);
     });
   });
+
+  describe("time zones", () => {
+    it("properly parses dates around DST transitions", () => {
+      const ny = tz("America/New_York");
+      expect(parseISO("2023-03-11T01:30", { in: ny }).toISOString()).toBe(
+        "2023-03-11T01:30:00.000-05:00",
+      );
+      expect(parseISO("2023-03-12T01:30", { in: ny }).toISOString()).toBe(
+        "2023-03-12T01:30:00.000-05:00",
+      );
+      expect(parseISO("2023-03-12T02:00", { in: ny }).toISOString()).toBe(
+        "2023-03-12T03:00:00.000-04:00",
+      );
+      expect(parseISO("2023-03-12T03:00", { in: ny }).toISOString()).toBe(
+        "2023-03-12T03:00:00.000-04:00",
+      );
+      expect(parseISO("2023-03-12T03:30", { in: ny }).toISOString()).toBe(
+        "2023-03-12T03:30:00.000-04:00",
+      );
+      expect(parseISO("2023-03-13T03:30", { in: ny }).toISOString()).toBe(
+        "2023-03-13T03:30:00.000-04:00",
+      );
+    });
+  });
 });
