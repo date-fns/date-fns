@@ -395,20 +395,20 @@ If now is January 1st, 2000, 00:00.
 
 | Date                     | Result             | `includeSeconds: true` | `addSuffix: true`        |
 | ------------------------ | ------------------ | ---------------------- | ------------------------ |
-| 2006-01-01T00:00:00.000Z | ungefär sex år     | ungefär sex år         | om ungefär sex år        |
-| 2005-01-01T00:00:00.000Z | ungefär fem år     | ungefär fem år         | om ungefär fem år        |
-| 2004-01-01T00:00:00.000Z | ungefär fyra år    | ungefär fyra år        | om ungefär fyra år       |
-| 2003-01-01T00:00:00.000Z | ungefär tre år     | ungefär tre år         | om ungefär tre år        |
-| 2002-01-01T00:00:00.000Z | ungefär två år     | ungefär två år         | om ungefär två år        |
+| 2006-01-01T00:00:00.000Z | ungefär 6 år       | ungefär 6 år           | om ungefär 6 år          |
+| 2005-01-01T00:00:00.000Z | ungefär 5 år       | ungefär 5 år           | om ungefär 5 år          |
+| 2004-01-01T00:00:00.000Z | ungefär 4 år       | ungefär 4 år           | om ungefär 4 år          |
+| 2003-01-01T00:00:00.000Z | ungefär 3 år       | ungefär 3 år           | om ungefär 3 år          |
+| 2002-01-01T00:00:00.000Z | ungefär 2 år       | ungefär 2 år           | om ungefär 2 år          |
 | 2001-06-01T00:00:00.000Z | över ett år        | över ett år            | om över ett år           |
 | 2001-02-01T00:00:00.000Z | ungefär ett år     | ungefär ett år         | om ungefär ett år        |
 | 2001-01-01T00:00:00.000Z | ungefär ett år     | ungefär ett år         | om ungefär ett år        |
-| 2000-06-01T00:00:00.000Z | fem månader        | fem månader            | om fem månader           |
-| 2000-03-01T00:00:00.000Z | två månader        | två månader            | om två månader           |
+| 2000-06-01T00:00:00.000Z | 5 månader          | 5 månader              | om 5 månader             |
+| 2000-03-01T00:00:00.000Z | 2 månader          | 2 månader              | om 2 månader             |
 | 2000-02-01T00:00:00.000Z | ungefär en månad   | ungefär en månad       | om ungefär en månad      |
 | 2000-01-15T00:00:00.000Z | 14 dagar           | 14 dagar               | om 14 dagar              |
 | 2000-01-02T00:00:00.000Z | en dag             | en dag                 | om en dag                |
-| 2000-01-01T06:00:00.000Z | ungefär sex timmar | ungefär sex timmar     | om ungefär sex timmar    |
+| 2000-01-01T06:00:00.000Z | ungefär 6 timmar   | ungefär 6 timmar       | om ungefär 6 timmar      |
 | 2000-01-01T01:00:00.000Z | ungefär en timme   | ungefär en timme       | om ungefär en timme      |
 | 2000-01-01T00:45:00.000Z | ungefär en timme   | ungefär en timme       | om ungefär en timme      |
 | 2000-01-01T00:30:00.000Z | 30 minuter         | 30 minuter             | om 30 minuter            |
@@ -416,9 +416,9 @@ If now is January 1st, 2000, 00:00.
 | 2000-01-01T00:01:00.000Z | en minut           | en minut               | om en minut              |
 | 2000-01-01T00:00:25.000Z | mindre än en minut | en halv minut          | om mindre än en minut    |
 | 2000-01-01T00:00:15.000Z | mindre än en minut | mindre än 20 sekunder  | om mindre än en minut    |
-| 2000-01-01T00:00:05.000Z | mindre än en minut | mindre än tio sekunder | om mindre än en minut    |
-| 2000-01-01T00:00:00.000Z | mindre än en minut | mindre än fem sekunder | mindre än en minut sedan |
-| 1999-12-31T23:59:55.000Z | mindre än en minut | mindre än tio sekunder | mindre än en minut sedan |
+| 2000-01-01T00:00:05.000Z | mindre än en minut | mindre än 10 sekunder  | om mindre än en minut    |
+| 2000-01-01T00:00:00.000Z | mindre än en minut | mindre än 5 sekunder   | mindre än en minut sedan |
+| 1999-12-31T23:59:55.000Z | mindre än en minut | mindre än 10 sekunder  | mindre än en minut sedan |
 | 1999-12-31T23:59:45.000Z | mindre än en minut | mindre än 20 sekunder  | mindre än en minut sedan |
 | 1999-12-31T23:59:35.000Z | mindre än en minut | en halv minut          | mindre än en minut sedan |
 | 1999-12-31T23:59:00.000Z | en minut           | en minut               | en minut sedan           |
@@ -426,72 +426,72 @@ If now is January 1st, 2000, 00:00.
 | 1999-12-31T23:30:00.000Z | 30 minuter         | 30 minuter             | 30 minuter sedan         |
 | 1999-12-31T23:15:00.000Z | ungefär en timme   | ungefär en timme       | ungefär en timme sedan   |
 | 1999-12-31T23:00:00.000Z | ungefär en timme   | ungefär en timme       | ungefär en timme sedan   |
-| 1999-12-31T18:00:00.000Z | ungefär sex timmar | ungefär sex timmar     | ungefär sex timmar sedan |
-| 1999-12-30T00:00:00.000Z | två dagar          | två dagar              | två dagar sedan          |
+| 1999-12-31T18:00:00.000Z | ungefär 6 timmar   | ungefär 6 timmar       | ungefär 6 timmar sedan   |
+| 1999-12-30T00:00:00.000Z | 2 dagar            | 2 dagar                | 2 dagar sedan            |
 | 1999-12-15T00:00:00.000Z | 17 dagar           | 17 dagar               | 17 dagar sedan           |
 | 1999-12-01T00:00:00.000Z | ungefär en månad   | ungefär en månad       | ungefär en månad sedan   |
-| 1999-11-01T00:00:00.000Z | två månader        | två månader            | två månader sedan        |
-| 1999-06-01T00:00:00.000Z | sju månader        | sju månader            | sju månader sedan        |
+| 1999-11-01T00:00:00.000Z | 2 månader          | 2 månader              | 2 månader sedan          |
+| 1999-06-01T00:00:00.000Z | 7 månader          | 7 månader              | 7 månader sedan          |
 | 1999-01-01T00:00:00.000Z | ungefär ett år     | ungefär ett år         | ungefär ett år sedan     |
 | 1998-12-01T00:00:00.000Z | ungefär ett år     | ungefär ett år         | ungefär ett år sedan     |
 | 1998-06-01T00:00:00.000Z | över ett år        | över ett år            | över ett år sedan        |
-| 1998-01-01T00:00:00.000Z | ungefär två år     | ungefär två år         | ungefär två år sedan     |
-| 1997-01-01T00:00:00.000Z | ungefär tre år     | ungefär tre år         | ungefär tre år sedan     |
-| 1996-01-01T00:00:00.000Z | ungefär fyra år    | ungefär fyra år        | ungefär fyra år sedan    |
-| 1995-01-01T00:00:00.000Z | ungefär fem år     | ungefär fem år         | ungefär fem år sedan     |
-| 1994-01-01T00:00:00.000Z | ungefär sex år     | ungefär sex år         | ungefär sex år sedan     |
+| 1998-01-01T00:00:00.000Z | ungefär 2 år       | ungefär 2 år           | ungefär 2 år sedan       |
+| 1997-01-01T00:00:00.000Z | ungefär 3 år       | ungefär 3 år           | ungefär 3 år sedan       |
+| 1996-01-01T00:00:00.000Z | ungefär 4 år       | ungefär 4 år           | ungefär 4 år sedan       |
+| 1995-01-01T00:00:00.000Z | ungefär 5 år       | ungefär 5 år           | ungefär 5 år sedan       |
+| 1994-01-01T00:00:00.000Z | ungefär 6 år       | ungefär 6 år           | ungefär 6 år sedan       |
 
 ## `formatDistanceStrict`
 
 If now is January 1st, 2000, 00:00.
 
-| Date                     | Result        | `addSuffix: true`   | With forced unit (i.e. `hour`) |
-| ------------------------ | ------------- | ------------------- | ------------------------------ |
-| 2006-01-01T00:00:00.000Z | sex år        | om sex år           | 52608 timmar                   |
-| 2005-01-01T00:00:00.000Z | fem år        | om fem år           | 43848 timmar                   |
-| 2004-01-01T00:00:00.000Z | fyra år       | om fyra år          | 35064 timmar                   |
-| 2003-01-01T00:00:00.000Z | tre år        | om tre år           | 26304 timmar                   |
-| 2002-01-01T00:00:00.000Z | två år        | om två år           | 17544 timmar                   |
-| 2001-06-01T00:00:00.000Z | ett år        | om ett år           | 12408 timmar                   |
-| 2001-02-01T00:00:00.000Z | ett år        | om ett år           | 9528 timmar                    |
-| 2001-01-01T00:00:00.000Z | ett år        | om ett år           | 8784 timmar                    |
-| 2000-06-01T00:00:00.000Z | fem månader   | om fem månader      | 3648 timmar                    |
-| 2000-03-01T00:00:00.000Z | två månader   | om två månader      | 1440 timmar                    |
-| 2000-02-01T00:00:00.000Z | en månad      | om en månad         | 744 timmar                     |
-| 2000-01-15T00:00:00.000Z | 14 dagar      | om 14 dagar         | 336 timmar                     |
-| 2000-01-02T00:00:00.000Z | en dag        | om en dag           | 24 timmar                      |
-| 2000-01-01T06:00:00.000Z | sex timmar    | om sex timmar       | sex timmar                     |
-| 2000-01-01T01:00:00.000Z | en timme      | om en timme         | en timme                       |
-| 2000-01-01T00:45:00.000Z | 45 minuter    | om 45 minuter       | en timme                       |
-| 2000-01-01T00:30:00.000Z | 30 minuter    | om 30 minuter       | en timme                       |
-| 2000-01-01T00:15:00.000Z | 15 minuter    | om 15 minuter       | noll timmar                    |
-| 2000-01-01T00:01:00.000Z | en minut      | om en minut         | noll timmar                    |
-| 2000-01-01T00:00:25.000Z | 25 sekunder   | om 25 sekunder      | noll timmar                    |
-| 2000-01-01T00:00:15.000Z | 15 sekunder   | om 15 sekunder      | noll timmar                    |
-| 2000-01-01T00:00:05.000Z | fem sekunder  | om fem sekunder     | noll timmar                    |
-| 2000-01-01T00:00:00.000Z | noll sekunder | noll sekunder sedan | noll timmar                    |
-| 1999-12-31T23:59:55.000Z | fem sekunder  | fem sekunder sedan  | noll timmar                    |
-| 1999-12-31T23:59:45.000Z | 15 sekunder   | 15 sekunder sedan   | noll timmar                    |
-| 1999-12-31T23:59:35.000Z | 25 sekunder   | 25 sekunder sedan   | noll timmar                    |
-| 1999-12-31T23:59:00.000Z | en minut      | en minut sedan      | noll timmar                    |
-| 1999-12-31T23:45:00.000Z | 15 minuter    | 15 minuter sedan    | noll timmar                    |
-| 1999-12-31T23:30:00.000Z | 30 minuter    | 30 minuter sedan    | en timme                       |
-| 1999-12-31T23:15:00.000Z | 45 minuter    | 45 minuter sedan    | en timme                       |
-| 1999-12-31T23:00:00.000Z | en timme      | en timme sedan      | en timme                       |
-| 1999-12-31T18:00:00.000Z | sex timmar    | sex timmar sedan    | sex timmar                     |
-| 1999-12-30T00:00:00.000Z | två dagar     | två dagar sedan     | 48 timmar                      |
-| 1999-12-15T00:00:00.000Z | 17 dagar      | 17 dagar sedan      | 408 timmar                     |
-| 1999-12-01T00:00:00.000Z | en månad      | en månad sedan      | 744 timmar                     |
-| 1999-11-01T00:00:00.000Z | två månader   | två månader sedan   | 1464 timmar                    |
-| 1999-06-01T00:00:00.000Z | sju månader   | sju månader sedan   | 5136 timmar                    |
-| 1999-01-01T00:00:00.000Z | ett år        | ett år sedan        | 8760 timmar                    |
-| 1998-12-01T00:00:00.000Z | ett år        | ett år sedan        | 9504 timmar                    |
-| 1998-06-01T00:00:00.000Z | två år        | två år sedan        | 13896 timmar                   |
-| 1998-01-01T00:00:00.000Z | två år        | två år sedan        | 17520 timmar                   |
-| 1997-01-01T00:00:00.000Z | tre år        | tre år sedan        | 26280 timmar                   |
-| 1996-01-01T00:00:00.000Z | fyra år       | fyra år sedan       | 35064 timmar                   |
-| 1995-01-01T00:00:00.000Z | fem år        | fem år sedan        | 43824 timmar                   |
-| 1994-01-01T00:00:00.000Z | sex år        | sex år sedan        | 52584 timmar                   |
+| Date                     | Result      | `addSuffix: true` | With forced unit (i.e. `hour`) |
+| ------------------------ | ----------- | ----------------- | ------------------------------ |
+| 2006-01-01T00:00:00.000Z | 6 år        | om 6 år           | 52608 timmar                   |
+| 2005-01-01T00:00:00.000Z | 5 år        | om 5 år           | 43848 timmar                   |
+| 2004-01-01T00:00:00.000Z | 4 år        | om 4 år           | 35064 timmar                   |
+| 2003-01-01T00:00:00.000Z | 3 år        | om 3 år           | 26304 timmar                   |
+| 2002-01-01T00:00:00.000Z | 2 år        | om 2 år           | 17544 timmar                   |
+| 2001-06-01T00:00:00.000Z | ett år      | om ett år         | 12408 timmar                   |
+| 2001-02-01T00:00:00.000Z | ett år      | om ett år         | 9528 timmar                    |
+| 2001-01-01T00:00:00.000Z | ett år      | om ett år         | 8784 timmar                    |
+| 2000-06-01T00:00:00.000Z | 5 månader   | om 5 månader      | 3648 timmar                    |
+| 2000-03-01T00:00:00.000Z | 2 månader   | om 2 månader      | 1440 timmar                    |
+| 2000-02-01T00:00:00.000Z | en månad    | om en månad       | 744 timmar                     |
+| 2000-01-15T00:00:00.000Z | 14 dagar    | om 14 dagar       | 336 timmar                     |
+| 2000-01-02T00:00:00.000Z | en dag      | om en dag         | 24 timmar                      |
+| 2000-01-01T06:00:00.000Z | 6 timmar    | om 6 timmar       | 6 timmar                       |
+| 2000-01-01T01:00:00.000Z | en timme    | om en timme       | en timme                       |
+| 2000-01-01T00:45:00.000Z | 45 minuter  | om 45 minuter     | en timme                       |
+| 2000-01-01T00:30:00.000Z | 30 minuter  | om 30 minuter     | en timme                       |
+| 2000-01-01T00:15:00.000Z | 15 minuter  | om 15 minuter     | 0 timmar                       |
+| 2000-01-01T00:01:00.000Z | en minut    | om en minut       | 0 timmar                       |
+| 2000-01-01T00:00:25.000Z | 25 sekunder | om 25 sekunder    | 0 timmar                       |
+| 2000-01-01T00:00:15.000Z | 15 sekunder | om 15 sekunder    | 0 timmar                       |
+| 2000-01-01T00:00:05.000Z | 5 sekunder  | om 5 sekunder     | 0 timmar                       |
+| 2000-01-01T00:00:00.000Z | 0 sekunder  | 0 sekunder sedan  | 0 timmar                       |
+| 1999-12-31T23:59:55.000Z | 5 sekunder  | 5 sekunder sedan  | 0 timmar                       |
+| 1999-12-31T23:59:45.000Z | 15 sekunder | 15 sekunder sedan | 0 timmar                       |
+| 1999-12-31T23:59:35.000Z | 25 sekunder | 25 sekunder sedan | 0 timmar                       |
+| 1999-12-31T23:59:00.000Z | en minut    | en minut sedan    | 0 timmar                       |
+| 1999-12-31T23:45:00.000Z | 15 minuter  | 15 minuter sedan  | 0 timmar                       |
+| 1999-12-31T23:30:00.000Z | 30 minuter  | 30 minuter sedan  | en timme                       |
+| 1999-12-31T23:15:00.000Z | 45 minuter  | 45 minuter sedan  | en timme                       |
+| 1999-12-31T23:00:00.000Z | en timme    | en timme sedan    | en timme                       |
+| 1999-12-31T18:00:00.000Z | 6 timmar    | 6 timmar sedan    | 6 timmar                       |
+| 1999-12-30T00:00:00.000Z | 2 dagar     | 2 dagar sedan     | 48 timmar                      |
+| 1999-12-15T00:00:00.000Z | 17 dagar    | 17 dagar sedan    | 408 timmar                     |
+| 1999-12-01T00:00:00.000Z | en månad    | en månad sedan    | 744 timmar                     |
+| 1999-11-01T00:00:00.000Z | 2 månader   | 2 månader sedan   | 1464 timmar                    |
+| 1999-06-01T00:00:00.000Z | 7 månader   | 7 månader sedan   | 5136 timmar                    |
+| 1999-01-01T00:00:00.000Z | ett år      | ett år sedan      | 8760 timmar                    |
+| 1998-12-01T00:00:00.000Z | ett år      | ett år sedan      | 9504 timmar                    |
+| 1998-06-01T00:00:00.000Z | 2 år        | 2 år sedan        | 13896 timmar                   |
+| 1998-01-01T00:00:00.000Z | 2 år        | 2 år sedan        | 17520 timmar                   |
+| 1997-01-01T00:00:00.000Z | 3 år        | 3 år sedan        | 26280 timmar                   |
+| 1996-01-01T00:00:00.000Z | 4 år        | 4 år sedan        | 35064 timmar                   |
+| 1995-01-01T00:00:00.000Z | 5 år        | 5 år sedan        | 43824 timmar                   |
+| 1994-01-01T00:00:00.000Z | 6 år        | 6 år sedan        | 52584 timmar                   |
 
 ## `formatRelative`
 
@@ -509,26 +509,26 @@ If now is January 1st, 2000, 00:00.
 
 ## `formatDuration`
 
-| Duration      | Result        |
-| ------------- | ------------- |
-| {"years":0}   | noll år       |
-| {"years":1}   | ett år        |
-| {"years":2}   | två år        |
-| {"months":0}  | noll månader  |
-| {"months":1}  | en månad      |
-| {"months":2}  | två månader   |
-| {"weeks":0}   | noll veckor   |
-| {"weeks":1}   | en vecka      |
-| {"weeks":2}   | två veckor    |
-| {"days":0}    | noll dagar    |
-| {"days":1}    | en dag        |
-| {"days":2}    | två dagar     |
-| {"hours":0}   | noll timmar   |
-| {"hours":1}   | en timme      |
-| {"hours":2}   | två timmar    |
-| {"minutes":0} | noll minuter  |
-| {"minutes":1} | en minut      |
-| {"minutes":2} | två minuter   |
-| {"seconds":0} | noll sekunder |
-| {"seconds":1} | en sekund     |
-| {"seconds":2} | två sekunder  |
+| Duration      | Result     |
+| ------------- | ---------- |
+| {"years":0}   | 0 år       |
+| {"years":1}   | ett år     |
+| {"years":2}   | 2 år       |
+| {"months":0}  | 0 månader  |
+| {"months":1}  | en månad   |
+| {"months":2}  | 2 månader  |
+| {"weeks":0}   | 0 veckor   |
+| {"weeks":1}   | en vecka   |
+| {"weeks":2}   | 2 veckor   |
+| {"days":0}    | 0 dagar    |
+| {"days":1}    | en dag     |
+| {"days":2}    | 2 dagar    |
+| {"hours":0}   | 0 timmar   |
+| {"hours":1}   | en timme   |
+| {"hours":2}   | 2 timmar   |
+| {"minutes":0} | 0 minuter  |
+| {"minutes":1} | en minut   |
+| {"minutes":2} | 2 minuter  |
+| {"seconds":0} | 0 sekunder |
+| {"seconds":1} | en sekund  |
+| {"seconds":2} | 2 sekunder |
