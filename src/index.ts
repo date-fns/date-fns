@@ -72,6 +72,7 @@ export * from "./formatDuration/index.js";
 export * from "./formatISO/index.js";
 export * from "./formatISO9075/index.js";
 export * from "./formatISODuration/index.js";
+export * from "./formatRFC822/index.js";
 export * from "./formatRFC3339/index.js";
 export * from "./formatRFC7231/index.js";
 export * from "./formatRelative/index.js";
