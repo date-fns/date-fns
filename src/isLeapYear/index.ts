@@ -1,4 +1,7 @@
 import { toDate } from "../toDate/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
+
+export interface IsLeapYearOptions extends ContextOptions<Date> {}
 
 /**
  * @name isLeapYear
@@ -8,9 +11,8 @@ import { toDate } from "../toDate/index.js";
  * @description
  * Is the given date in the leap year?
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- *
  * @param date - The date to check
+ * @param options - The options object
  *
  * @returns The date is in the leap year
  *
@@ -19,10 +21,11 @@ import { toDate } from "../toDate/index.js";
  * const result = isLeapYear(new Date(2012, 8, 1))
  * //=> true
  */
-export function isLeapYear<DateType extends Date>(
-  date: DateType | number | string,
+export function isLeapYear(
+  date: DateArg<Date> & {},
+  options?: IsLeapYearOptions | undefined,
 ): boolean {
-  const _date = toDate(date);
+  const _date = toDate(date, options?.in);
   const year = _date.getFullYear();
   return year % 400 === 0 || (year % 4 === 0 && year % 100 !== 0);
 }

@@ -23,8 +23,6 @@ type FormatDistanceTokenValue =
       one: string;
       other: string;
     }
-
-  // eslint-disable-next-line no-unused-vars
   | ((options?: FormatDistanceFnOptions) => string);
 
 const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {

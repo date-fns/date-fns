@@ -35,7 +35,6 @@ describe("isDate", () => {
           iframe.id = "iframe";
           iframe.addEventListener("load", () => {
             execScript("window.date = new Date()");
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any -- It's ok we're messing with iframes
             expect(isDate((iframe.contentWindow as any).date)).toBe(true);
             resolve(void 0);
           });
@@ -43,7 +42,7 @@ describe("isDate", () => {
           document.body.appendChild(iframe);
         }));
     } else {
-      it.skip("returns true for a date passed from another iframe");
+      it.skip("returns true for a date passed from another iframe", () => {});
     }
 
     function execScript(scriptText: string) {

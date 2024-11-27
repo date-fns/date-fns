@@ -1,7 +1,18 @@
+import { afterEach, beforeEach } from "vitest";
 import { addLeadingZeros } from "../addLeadingZeros/index.js";
 import { setDefaultOptions } from "../defaultOptions/index.js";
+import sinon from "sinon";
 
-export function assertType<T>(_: T): void {}
+export function assertType<Type>(_value: Type) {}
+
+export namespace assertType {
+  export type Equal<T, U> =
+    Exclude<T, U> extends never
+      ? Exclude<U, T> extends never
+        ? true
+        : false
+      : false;
+}
 
 export function resetDefaultOptions(): void {
   setDefaultOptions({});
@@ -26,4 +37,24 @@ export function generateOffset(originalDate: Date) {
   }
 
   return offset;
+}
+
+export function fakeDate(date: number | Date) {
+  let clock: sinon.SinonFakeTimers | undefined;
+
+  function fakeNow(date: number | Date) {
+    clock?.restore();
+    clock = sinon.useFakeTimers(+date);
+  }
+
+  beforeEach(() => {
+    fakeNow(+date);
+  });
+
+  afterEach(() => {
+    clock?.restore();
+    clock = undefined;
+  });
+
+  return { fakeNow };
 }

@@ -1,5 +1,32 @@
+import { normalizeDates } from "../_lib/normalizeDates/index.js";
+import { closestIndexTo } from "../closestIndexTo/index.js";
 import { constructFrom } from "../constructFrom/index.js";
-import { toDate } from "../toDate/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
+
+/**
+ * The {@link closestTo} function options.
+ */
+export interface ClosestToOptions<DateType extends Date = Date>
+  extends ContextOptions<DateType> {}
+
+/**
+ * The {@link closestTo} function result type. It resolves the proper data type.
+ * It uses the first argument date object type, starting from the date argument,
+ * then the start interval date, and finally the end interval date. If
+ * a context function is passed, it uses the context function return type.
+ */
+export type ClosestToResult<
+  DateToCompare extends DateArg<Date>,
+  DatesType extends DateArg<Date>[],
+  Options extends ClosestToOptions | undefined,
+> =
+  Options extends ClosestToOptions<infer DateType extends Date>
+    ? DateType
+    : DateToCompare extends Date
+      ? DateToCompare
+      : DatesType extends DateArg<infer DateType>[]
+        ? DateType
+        : Date;
 
 /**
  * @name closestTo
@@ -9,7 +36,9 @@ import { toDate } from "../toDate/index.js";
  * @description
  * Return a date from the array closest to the given date.
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam DateToCompare - Date to compare argument type.
+ * @typeParam DatesType - Dates array argument type.
+ * @typeParam Options - Options type.
  *
  * @param dateToCompare - The date to compare with
  * @param dates - The array to search
@@ -25,33 +54,30 @@ import { toDate } from "../toDate/index.js";
  * ])
  * //=> Tue Jan 01 2030 00:00:00
  */
-export function closestTo<DateType extends Date>(
-  dateToCompare: DateType | number | string,
-  dates: Array<DateType | number | string>,
-): DateType | undefined {
-  const date = toDate(dateToCompare);
+export function closestTo<
+  DateToCompare extends DateArg<Date>,
+  DatesType extends DateArg<Date>[],
+  Options extends ClosestToOptions | undefined = undefined,
+>(
+  dateToCompare: DateToCompare,
+  dates: DatesType,
+  options?: Options | undefined,
+): ClosestToResult<DateToCompare, DatesType, Options> | undefined {
+  const [dateToCompare_, ...dates_] = normalizeDates(
+    options?.in,
+    dateToCompare,
+    ...dates,
+  );
 
-  if (isNaN(Number(date))) return constructFrom(dateToCompare, NaN);
+  const index = closestIndexTo(dateToCompare_, dates_);
 
-  const timeToCompare = date.getTime();
+  if (typeof index === "number" && isNaN(index))
+    return constructFrom(dateToCompare_, NaN) as ClosestToResult<
+      DateToCompare,
+      DatesType,
+      Options
+    >;
 
-  let result: DateType | undefined;
-  let minDistance: number;
-  dates.forEach((dirtyDate) => {
-    const currentDate = toDate(dirtyDate);
-
-    if (isNaN(Number(currentDate))) {
-      result = constructFrom(dateToCompare, NaN);
-      minDistance = NaN;
-      return;
-    }
-
-    const distance = Math.abs(timeToCompare - currentDate.getTime());
-    if (result == null || distance < minDistance) {
-      result = currentDate;
-      minDistance = distance;
-    }
-  });
-
-  return result;
+  if (index !== undefined)
+    return dates_[index] as ClosestToResult<DateToCompare, DatesType, Options>;
 }

@@ -1,4 +1,5 @@
 import { constructFrom } from "../constructFrom/index.js";
+import type { ContextFn, DateArg } from "../types.js";
 
 /**
  * @name constructNow
@@ -13,8 +14,6 @@ import { constructFrom } from "../constructFrom/index.js";
  *
  * It defaults to `Date` if the passed reference date is a number or a string.
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- *
  * @param date - The reference date to take constructor from
  *
  * @returns Current date initialized using the given date constructor
@@ -23,15 +22,16 @@ import { constructFrom } from "../constructFrom/index.js";
  * import { constructNow, isSameDay } from 'date-fns'
  *
  * function isToday<DateType extends Date>(
- *   date: DateType | number | string,
+ *   date: DateArg<DateType>,
  * ): boolean {
  *   // If we were to use `new Date()` directly, the function would  behave
  *   // differently in different timezones and return false for the same date.
  *   return isSameDay(date, constructNow(date));
  * }
  */
-export function constructNow<DateType extends Date>(
-  date: DateType | number | string,
-): DateType {
+export function constructNow<
+  DateType extends Date,
+  ResultDate extends Date = DateType,
+>(date: DateArg<DateType> | ContextFn<ResultDate> | undefined): ResultDate {
   return constructFrom(date, Date.now());
 }

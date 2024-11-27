@@ -1,4 +1,7 @@
+import { TZDate, tz } from "@date-fns/tz";
+import { UTCDate } from "@date-fns/utc";
 import { describe, expect, it } from "vitest";
+import { assertType } from "../_lib/test/index.js";
 import { closestTo } from "./index.js";
 
 describe("closestTo", () => {
@@ -55,5 +58,51 @@ describe("closestTo", () => {
     ]);
 
     expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
+  });
+
+  it("resolves the date type by default", () => {
+    const result = closestTo(Date.now(), [Date.now(), Date.now()]);
+    expect(result).toBeInstanceOf(Date);
+    assertType<assertType.Equal<Date | undefined, typeof result>>(true);
+  });
+
+  it("resolves the argument object type", () => {
+    const result = closestTo(new UTCDate(), [new TZDate(), Date.now()]);
+    expect(result).toBeInstanceOf(UTCDate);
+    assertType<assertType.Equal<UTCDate | undefined, typeof result>>(true);
+  });
+
+  it("resolves the first date object type in the array", () => {
+    const result = closestTo(Date.now(), [
+      "2024-01-01T00:00:00Z",
+      new UTCDate(),
+    ]);
+    expect(result).toBeInstanceOf(UTCDate);
+    assertType<assertType.Equal<UTCDate | undefined, typeof result>>(true);
+  });
+
+  it("resolves the date union when the array contains more than single date object", () => {
+    const result = closestTo(Date.now(), [
+      new Date(),
+      Date.now(),
+      "2024-01-01T00:00:00Z",
+      new UTCDate(),
+    ]);
+    expect(result).toBeInstanceOf(Date);
+    assertType<assertType.Equal<UTCDate | Date | undefined, typeof result>>(
+      true,
+    );
+  });
+
+  describe("context", () => {
+    it("resolves the context date type", () => {
+      const result = closestTo(
+        new Date("2014-09-01T00:00:00Z"),
+        [new UTCDate()],
+        { in: tz("Asia/Tokyo") },
+      );
+      expect(result).toBeInstanceOf(TZDate);
+      assertType<assertType.Equal<TZDate | undefined, typeof result>>(true);
+    });
   });
 });

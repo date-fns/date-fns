@@ -74,7 +74,6 @@ import { TimestampMillisecondsParser } from "./TimestampMillisecondsParser.js";
  *   `Y` is supposed to be used in conjunction with `w` and `e`
  *   for week-numbering date specific to the locale.
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any -- It's ok, we want any here
 export const parsers: Record<string, Parser<any>> = {
   G: new EraParser(),
   y: new YearParser(),

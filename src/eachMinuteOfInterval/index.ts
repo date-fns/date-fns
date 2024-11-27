@@ -1,12 +1,33 @@
+import { normalizeInterval } from "../_lib/normalizeInterval/index.js";
 import { addMinutes } from "../addMinutes/index.js";
-import { startOfMinute } from "../startOfMinute/index.js";
-import { toDate } from "../toDate/index.js";
-import type { Interval, StepOptions } from "../types.js";
+import { constructFrom } from "../constructFrom/index.js";
+import type { ContextOptions, Interval, StepOptions } from "../types.js";
 
 /**
  * The {@link eachMinuteOfInterval} function options.
  */
-export interface EachMinuteOfIntervalOptions extends StepOptions {}
+export interface EachMinuteOfIntervalOptions<DateType extends Date = Date>
+  extends StepOptions,
+    ContextOptions<DateType> {}
+
+/**
+ * The {@link eachMinuteOfInterval} function result type. It resolves the proper data type.
+ * It uses the first argument date object type, starting from the date argument,
+ * then the start interval date, and finally the end interval date. If
+ * a context function is passed, it uses the context function return type.
+ */
+export type EachMinuteOfIntervalResult<
+  IntervalType extends Interval,
+  Options extends EachMinuteOfIntervalOptions | undefined,
+> = Array<
+  Options extends EachMinuteOfIntervalOptions<infer DateType>
+    ? DateType
+    : IntervalType["start"] extends Date
+      ? IntervalType["start"]
+      : IntervalType["end"] extends Date
+        ? IntervalType["end"]
+        : Date
+>;
 
 /**
  * @name eachMinuteOfInterval
@@ -16,7 +37,8 @@ export interface EachMinuteOfIntervalOptions extends StepOptions {}
  * @description
  * Returns the array of minutes within the specified time interval.
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam IntervalType - Interval type.
+ * @typeParam Options - Options type.
  *
  * @param interval - The interval.
  * @param options - An object with options.
@@ -36,16 +58,20 @@ export interface EachMinuteOfIntervalOptions extends StepOptions {}
  * //   Wed Oct 14 2014 13:03:00
  * // ]
  */
-export function eachMinuteOfInterval<DateType extends Date>(
-  interval: Interval<DateType>,
-  options?: EachMinuteOfIntervalOptions,
-): DateType[] {
-  const startDate = startOfMinute(toDate(interval.start));
-  const endDate = toDate(interval.end);
+export function eachMinuteOfInterval<
+  IntervalType extends Interval,
+  Options extends EachMinuteOfIntervalOptions | undefined = undefined,
+>(
+  interval: IntervalType,
+  options?: Options,
+): EachMinuteOfIntervalResult<IntervalType, Options> {
+  const { start, end } = normalizeInterval(options?.in, interval);
+  // Set to the start of the minute
+  start.setSeconds(0, 0);
 
-  let reversed = +startDate > +endDate;
-  const endTime = reversed ? +startDate : +endDate;
-  let currentDate = reversed ? endDate : startDate;
+  let reversed = +start > +end;
+  const endTime = reversed ? +start : +end;
+  let date = reversed ? end : start;
 
   let step = options?.step ?? 1;
   if (!step) return [];
@@ -54,11 +80,11 @@ export function eachMinuteOfInterval<DateType extends Date>(
     reversed = !reversed;
   }
 
-  const dates = [];
+  const dates: EachMinuteOfIntervalResult<IntervalType, Options> = [];
 
-  while (+currentDate <= endTime) {
-    dates.push(toDate(currentDate));
-    currentDate = addMinutes(currentDate, step);
+  while (+date <= endTime) {
+    dates.push(constructFrom(start, date));
+    date = addMinutes(date, step);
   }
 
   return reversed ? dates.reverse() : dates;

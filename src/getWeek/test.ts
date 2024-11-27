@@ -1,4 +1,6 @@
+import { tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
+import type { ContextOptions, DateArg } from "../types.js";
 import { getWeek } from "./index.js";
 
 describe("getWeek", () => {
@@ -52,5 +54,31 @@ describe("getWeek", () => {
       },
     });
     expect(result).toBe(53);
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      expect(
+        getWeek("2024-08-24T15:00:00Z", { in: tz("Asia/Singapore") }),
+      ).toBe(34);
+      expect(
+        getWeek("2024-08-24T16:00:00Z", { in: tz("Asia/Singapore") }),
+      ).toBe(35);
+      expect(
+        getWeek("2024-08-25T03:00:00Z", { in: tz("America/New_York") }),
+      ).toBe(34);
+      expect(
+        getWeek("2024-08-25T04:00:00Z", { in: tz("America/New_York") }),
+      ).toBe(35);
+    });
+
+    it("doesn't enforce argument and context to be of the same type", () => {
+      function _test<DateType extends Date, ResultDate extends Date = DateType>(
+        arg: DateArg<DateType>,
+        options?: ContextOptions<ResultDate>,
+      ) {
+        getWeek(arg, { in: options?.in });
+      }
+    });
   });
 });

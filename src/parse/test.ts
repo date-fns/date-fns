@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { parse } from "./index.js";
+import { assertType } from "../_lib/test/index.js";
+import { UTCDate } from "@date-fns/utc";
+import { TZDate, tz } from "@date-fns/tz";
 
 describe("parse", () => {
   const referenceDate = new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 900);
@@ -18,7 +21,7 @@ describe("parse", () => {
     expect(result).toEqual(new Date(1986, 3 /* Apr */, 4, 5));
   });
 
-  it("accepts new line charactor", () => {
+  it("accepts new line character", () => {
     const result = parse(
       "2014-04-04\n05:00:00",
       "yyyy-MM-dd'\n'HH:mm:ss",
@@ -2469,6 +2472,83 @@ describe("parse", () => {
       const formatString = "PPPPpp";
       const result = parse(dateTimeString, formatString, referenceDate);
       expect(result).toEqual(expected);
+    });
+  });
+
+  it("resolves the date type by default", () => {
+    const result = parse(
+      "2018 hello world July 2nd",
+      "yyyy 'hello world' MMMM do",
+      Date.now(),
+    );
+    expect(result).toBeInstanceOf(Date);
+    assertType<assertType.Equal<Date, typeof result>>(true);
+  });
+
+  it("resolves the argument type if a date extension is passed", () => {
+    const result = parse(
+      "2018 hello world July 2nd",
+      "yyyy 'hello world' MMMM do",
+      new UTCDate(),
+    );
+    expect(result).toBeInstanceOf(UTCDate);
+    assertType<assertType.Equal<UTCDate, typeof result>>(true);
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      expect(
+        parse(
+          "2018 hello world July 2nd",
+          "yyyy 'hello world' MMMM do",
+          "2024-04-07T00:00:00Z",
+          { in: tz("Asia/Singapore") },
+        ).toISOString(),
+      ).toBe("2018-07-02T00:00:00.000+08:00");
+      expect(
+        parse(
+          "2018 hello world July 2nd",
+          "yyyy 'hello world' MMMM do",
+          "2024-04-07T00:00:00Z",
+          { in: tz("America/Los_Angeles") },
+        ).toISOString(),
+      ).toBe("2018-07-02T00:00:00.000-07:00");
+    });
+
+    it("resolves the context date type", () => {
+      const result = parse(
+        "2018 hello world July 2nd",
+        "yyyy 'hello world' MMMM do",
+        "2024-04-07T00:00:00Z",
+        { in: tz("Asia/Tokyo") },
+      );
+      expect(result).toBeInstanceOf(TZDate);
+      assertType<assertType.Equal<TZDate, typeof result>>(true);
+    });
+  });
+
+  describe("time zones", () => {
+    it("properly parses dates around DST transitions", () => {
+      const format = "yyyy-MM-dd HH:mm";
+      const ny = tz("America/New_York");
+      expect(
+        parse("2023-03-11 01:30", format, new Date(), { in: ny }).toISOString(),
+      ).toBe("2023-03-11T01:30:00.000-05:00");
+      expect(
+        parse("2023-03-12 01:30", format, new Date(), { in: ny }).toISOString(),
+      ).toBe("2023-03-12T01:30:00.000-05:00");
+      expect(
+        parse("2023-03-12 02:00", format, new Date(), { in: ny }).toISOString(),
+      ).toBe("2023-03-12T03:00:00.000-04:00");
+      expect(
+        parse("2023-03-12 03:00", format, new Date(), { in: ny }).toISOString(),
+      ).toBe("2023-03-12T03:00:00.000-04:00");
+      expect(
+        parse("2023-03-12 03:30", format, new Date(), { in: ny }).toISOString(),
+      ).toBe("2023-03-12T03:30:00.000-04:00");
+      expect(
+        parse("2023-03-13 03:30", format, new Date(), { in: ny }).toISOString(),
+      ).toBe("2023-03-13T03:30:00.000-04:00");
     });
   });
 });

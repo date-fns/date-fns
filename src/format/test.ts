@@ -1,13 +1,14 @@
+import { tz } from "@date-fns/tz";
+import sinon from "sinon";
 import {
   afterEach,
   beforeEach,
   describe,
   expect,
   it,
-  type SpyInstance,
   vi,
+  type SpyInstance,
 } from "vitest";
-import sinon from "sinon";
 import type { FormatPart } from "../types.js";
 import { format, formatDate } from "./index.js";
 
@@ -57,14 +58,16 @@ describe("format", () => {
     expect(format(date, "''h 'o''clock'''")).toBe("'5 o'clock'");
   });
 
-  it("accepts new line charactor", () => {
+  it("accepts new line character", () => {
     const date = new Date(2014, 3, 4, 5);
     expect(format(date, "yyyy-MM-dd'\n'HH:mm:ss")).toBe("2014-04-04\n05:00:00");
   });
 
   it("alias formatDate has same behavior as format", () => {
     const date = new Date(2014, 3, 4, 5);
-    expect(formatDate(date, "yyyy-MM-dd'\n'HH:mm:ss")).toBe(format(date, "yyyy-MM-dd'\n'HH:mm:ss"));
+    expect(formatDate(date, "yyyy-MM-dd'\n'HH:mm:ss")).toBe(
+      format(date, "yyyy-MM-dd'\n'HH:mm:ss"),
+    );
   });
 
   describe("ordinal numbers", () => {
@@ -507,12 +510,16 @@ describe("format", () => {
 
       it("12 PM", () => {
         const date = new Date(1986, 3 /* Apr */, 4, 12, 0, 0, 900);
-        expect(format(date, "b bb bbb bbbb bbbbb")).toBe("noon noon noon noon n");
+        expect(format(date, "b bb bbb bbbb bbbbb")).toBe(
+          "noon noon noon noon n",
+        );
       });
 
       it("12 AM", () => {
         const date = new Date(1986, 3 /* Apr */, 6, 0, 0, 0, 900);
-        expect(format(date, "b bb bbb bbbb bbbbb")).toBe("midnight midnight midnight midnight mi");
+        expect(format(date, "b bb bbb bbbb bbbbb")).toBe(
+          "midnight midnight midnight midnight mi",
+        );
       });
     });
 
@@ -520,7 +527,7 @@ describe("format", () => {
       it("works as expected", () => {
         const result = format(date, "B, BB, BBB, BBBB, BBBBB");
         expect(result).toBe(
-          "in the morning, in the morning, in the morning, in the morning, in the morning"
+          "in the morning, in the morning, in the morning, in the morning, in the morning",
         );
       });
 
@@ -626,7 +633,9 @@ describe("format", () => {
 
       getTimezoneOffsetStub.returns(450);
       const resultNegative30Offset = format(date, "O OO OOO OOOO");
-      expect(resultNegative30Offset).toBe("GMT-7:30 GMT-7:30 GMT-7:30 GMT-07:30");
+      expect(resultNegative30Offset).toBe(
+        "GMT-7:30 GMT-7:30 GMT-7:30 GMT-07:30",
+      );
 
       getTimezoneOffsetStub.restore();
     });
@@ -718,7 +727,9 @@ describe("format", () => {
 
     it("full date + time", () => {
       const result = format(date, "PPPPpppp");
-      expect(result).toBe("Friday, April 4th, 1986 at 10:32:55 AM " + timezoneGMT);
+      expect(result).toBe(
+        "Friday, April 4th, 1986 at 10:32:55 AM " + timezoneGMT,
+      );
     });
 
     it("allows arbitrary combination of date and time", () => {
@@ -729,7 +740,9 @@ describe("format", () => {
 
   describe("edge cases", () => {
     it("throws RangeError if the time value is invalid", () => {
-      expect(format.bind(null, new Date(NaN), "MMMM d, yyyy")).toThrow(RangeError);
+      expect(format.bind(null, new Date(NaN), "MMMM d, yyyy")).toThrow(
+        RangeError,
+      );
     });
 
     it("handles dates before 100 AD", () => {
@@ -989,6 +1002,22 @@ describe("format", () => {
             "`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md",
         );
       });
+    });
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      const date = "2024-09-17T10:00:00Z";
+      expect(
+        format(date, "yyyy-MM-dd", {
+          in: tz("Pacific/Midway"), // UTC-11:00
+        }),
+      ).toBe("2024-09-16");
+      expect(
+        format(date, "yyyy-MM-dd", {
+          in: tz("Pacific/Kiritimati"), // UTC+14:00
+        }),
+      ).toBe("2024-09-18");
     });
   });
 });

@@ -1,5 +1,12 @@
+import { constructFrom } from "../constructFrom/index.js";
 import { constructNow } from "../constructNow/index.js";
 import { isSameISOWeek } from "../isSameISOWeek/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
+
+/**
+ * The {@link isThisISOWeek} function options.
+ */
+export interface IsThisISOWeekOptions extends ContextOptions<Date> {}
 
 /**
  * @name isThisISOWeek
@@ -12,9 +19,8 @@ import { isSameISOWeek } from "../isSameISOWeek/index.js";
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- *
  * @param date - The date to check
+ * @param options - An object with options
  *
  * @returns The date is in this ISO week
  *
@@ -23,9 +29,12 @@ import { isSameISOWeek } from "../isSameISOWeek/index.js";
  * const result = isThisISOWeek(new Date(2014, 8, 22))
  * //=> true
  */
-
-export function isThisISOWeek<DateType extends Date>(
-  date: DateType | number | string,
+export function isThisISOWeek(
+  date: DateArg<Date> & {},
+  options?: IsThisISOWeekOptions | undefined,
 ): boolean {
-  return isSameISOWeek(date, constructNow(date));
+  return isSameISOWeek(
+    constructFrom(options?.in || date, date),
+    constructNow(options?.in || date),
+  );
 }

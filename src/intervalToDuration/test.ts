@@ -1,6 +1,8 @@
+import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import { intervalToDuration } from "./index.js";
 import { addMonths } from "../addMonths/index.js";
+import type { ContextOptions, Interval } from "../types.js";
+import { intervalToDuration } from "./index.js";
 
 describe("intervalToDuration", () => {
   it("returns correct duration for arbitrary dates", () => {
@@ -72,33 +74,41 @@ describe("intervalToDuration", () => {
 
   describe("edge cases", () => {
     it("returns correct duration for dates in the end of Feb - issue 2255", () => {
-      expect(intervalToDuration({
-        start: new Date(2012, 1 /* Feb */, 28, 9, 0, 0),
-        end: new Date(2012, 1 /* Feb */, 29, 10, 0, 0),
-      })).toEqual({
+      expect(
+        intervalToDuration({
+          start: new Date(2012, 1 /* Feb */, 28, 9, 0, 0),
+          end: new Date(2012, 1 /* Feb */, 29, 10, 0, 0),
+        }),
+      ).toEqual({
         days: 1,
         hours: 1,
       });
 
-      expect(intervalToDuration({
-        start: new Date(2012, 1 /* Feb */, 29, 9, 0, 0),
-        end: new Date(2012, 1 /* Feb */, 29, 10, 0, 0),
-      })).toEqual({
+      expect(
+        intervalToDuration({
+          start: new Date(2012, 1 /* Feb */, 29, 9, 0, 0),
+          end: new Date(2012, 1 /* Feb */, 29, 10, 0, 0),
+        }),
+      ).toEqual({
         hours: 1,
       });
 
-      expect(intervalToDuration({
-        start: new Date(2012, 1 /* Feb */, 28, 9, 0, 0),
-        end: new Date(2012, 1 /* Feb */, 28, 10, 0, 0),
-      })).toEqual({
+      expect(
+        intervalToDuration({
+          start: new Date(2012, 1 /* Feb */, 28, 9, 0, 0),
+          end: new Date(2012, 1 /* Feb */, 28, 10, 0, 0),
+        }),
+      ).toEqual({
         hours: 1,
       });
 
       // Issue 2261
-      expect(intervalToDuration({
-        start: new Date(2021, 1 /* Feb */, 28, 7, 23, 7),
-        end: new Date(2021, 1 /* Feb */, 28, 7, 38, 18),
-      })).toEqual({
+      expect(
+        intervalToDuration({
+          start: new Date(2021, 1 /* Feb */, 28, 7, 23, 7),
+          end: new Date(2021, 1 /* Feb */, 28, 7, 38, 18),
+        }),
+      ).toEqual({
         minutes: 15,
         seconds: 11,
       });
@@ -222,6 +232,70 @@ describe("intervalToDuration", () => {
 
         expect(duration).toEqual(expectedDuration);
       });
+    });
+  });
+
+  it("normalizes the dates", () => {
+    const laterDate = new TZDate(2027, 0, 1, "Asia/Singapore");
+    const earlierDate = new TZDate(2024, 0, 1, "America/New_York");
+    expect(intervalToDuration({ start: laterDate, end: earlierDate })).toEqual({
+      days: -30,
+      hours: -11,
+      months: -11,
+      years: -2,
+    });
+    expect(intervalToDuration({ start: earlierDate, end: laterDate })).toEqual({
+      days: 30,
+      hours: 11,
+      months: 11,
+      years: 2,
+    });
+  });
+
+  it("allows dates to be of different types", () => {
+    function _test<DateType1 extends Date, DateType2 extends Date>(
+      start: DateType1 | number | string,
+      end: DateType2 | number | string,
+    ) {
+      intervalToDuration({ start, end });
+    }
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      expect(
+        intervalToDuration(
+          {
+            start: new Date("2023-09-03T00:00:00Z"),
+            end: new Date("2024-09-03T15:00:00Z"),
+          },
+          { in: tz("Asia/Singapore") },
+        ),
+      ).toEqual({
+        years: 1,
+        hours: 15,
+      });
+      expect(
+        intervalToDuration(
+          {
+            start: new Date("2023-09-03T00:00:00Z"),
+            end: new Date("2024-09-03T15:00:00Z"),
+          },
+          { in: tz("America/New_York") },
+        ),
+      ).toEqual({
+        years: 1,
+        hours: 15,
+      });
+    });
+
+    it("doesn't enforce argument and context to be of the same type", () => {
+      function _test<DateType extends Date, ResultDate extends Date = DateType>(
+        arg: Interval<DateType>,
+        options?: ContextOptions<ResultDate>,
+      ) {
+        intervalToDuration(arg, { in: options?.in });
+      }
     });
   });
 });

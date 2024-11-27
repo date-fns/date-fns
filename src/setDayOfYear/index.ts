@@ -1,4 +1,11 @@
 import { toDate } from "../toDate/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
+
+/**
+ * The {@link setDayOfYear} function options.
+ */
+export interface SetDayOfYearOptions<DateType extends Date = Date>
+  extends ContextOptions<DateType> {}
 
 /**
  * @name setDayOfYear
@@ -9,9 +16,11 @@ import { toDate } from "../toDate/index.js";
  * Set the day of the year to the given date.
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
  *
  * @param date - The date to be changed
  * @param dayOfYear - The day of the year of the new date
+ * @param options - An object with options
  *
  * @returns The new date with the day of the year set
  *
@@ -20,12 +29,16 @@ import { toDate } from "../toDate/index.js";
  * const result = setDayOfYear(new Date(2014, 6, 2), 2)
  * //=> Thu Jan 02 2014 00:00:00
  */
-export function setDayOfYear<DateType extends Date>(
-  date: DateType | number | string,
+export function setDayOfYear<
+  DateType extends Date,
+  ResultDate extends Date = DateType,
+>(
+  date: DateArg<DateType>,
   dayOfYear: number,
-): DateType {
-  const _date = toDate(date);
-  _date.setMonth(0);
-  _date.setDate(dayOfYear);
-  return _date;
+  options?: SetDayOfYearOptions<ResultDate> | undefined,
+): ResultDate {
+  const date_ = toDate(date, options?.in);
+  date_.setMonth(0);
+  date_.setDate(dayOfYear);
+  return date_;
 }

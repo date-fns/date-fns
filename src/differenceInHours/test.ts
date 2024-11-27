@@ -1,4 +1,6 @@
+import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
+import type { ContextOptions, DateArg } from "../types.js";
 import { differenceInHours } from "./index.js";
 
 describe("differenceInHours", () => {
@@ -145,5 +147,46 @@ describe("differenceInHours", () => {
   it("returns NaN if the both dates are `Invalid Date`", () => {
     const result = differenceInHours(new Date(NaN), new Date(NaN));
     expect(isNaN(result)).toBe(true);
+  });
+
+  it("allows dates to be of different types", () => {
+    function _test<DateType1 extends Date, DateType2 extends Date>(
+      arg1: DateType1 | number | string,
+      arg2: DateType2 | number | string,
+    ) {
+      differenceInHours(arg1, arg2);
+    }
+  });
+
+  it("normalizes the dates", () => {
+    const dateLeft = new TZDate(2024, 5, 7, 8, "Asia/Singapore");
+    const dateRight = new TZDate(2024, 5, 6, 4, "America/New_York");
+    expect(differenceInHours(dateLeft, dateRight)).toBe(16);
+    expect(differenceInHours(dateRight, dateLeft)).toBe(-16);
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      expect(
+        differenceInHours("2024-08-18T03:00:00Z", "2024-08-01T00:00:00Z", {
+          in: tz("America/New_York"),
+        }),
+      ).toBe(411);
+      expect(
+        differenceInHours("2024-08-18T03:00:00Z", "2024-08-01T00:00:00Z", {
+          in: tz("Asia/Singapore"),
+        }),
+      ).toBe(411);
+    });
+
+    it("doesn't enforce argument and context to be of the same type", () => {
+      function _test<DateType extends Date, ResultDate extends Date = DateType>(
+        arg1: DateArg<DateType>,
+        arg2: DateArg<DateType>,
+        options?: ContextOptions<ResultDate>,
+      ) {
+        differenceInHours(arg1, arg2, { in: options?.in });
+      }
+    });
   });
 });

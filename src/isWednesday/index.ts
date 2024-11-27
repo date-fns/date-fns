@@ -1,4 +1,10 @@
 import { toDate } from "../toDate/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
+
+/**
+ * The {@link isWednesday} function options.
+ */
+export interface IsWednesdayOptions extends ContextOptions<Date> {}
 
 /**
  * @name isWednesday
@@ -8,9 +14,8 @@ import { toDate } from "../toDate/index.js";
  * @description
  * Is the given date Wednesday?
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- *
  * @param date - The date to check
+ * @param options - An object with options
  *
  * @returns The date is Wednesday
  *
@@ -19,8 +24,9 @@ import { toDate } from "../toDate/index.js";
  * const result = isWednesday(new Date(2014, 8, 24))
  * //=> true
  */
-export function isWednesday<DateType extends Date>(
-  date: DateType | number | string,
+export function isWednesday(
+  date: DateArg<Date> & {},
+  options?: IsWednesdayOptions | undefined,
 ): boolean {
-  return toDate(date).getDay() === 3;
+  return toDate(date, options?.in).getDay() === 3;
 }

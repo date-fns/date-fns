@@ -1,4 +1,6 @@
+import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
+import type { ContextOptions, DateArg } from "../types.js";
 import { isSameDay } from "./index.js";
 
 describe("isSameDay", () => {
@@ -39,5 +41,46 @@ describe("isSameDay", () => {
   it("returns false if the both dates are `Invalid Date`", () => {
     const result = isSameDay(new Date(NaN), new Date(NaN));
     expect(result).toBe(false);
+  });
+
+  it("allows dates to be of different types", () => {
+    function _test<DateType1 extends Date, DateType2 extends Date>(
+      arg1: DateType1 | number | string,
+      arg2: DateType2 | number | string,
+    ) {
+      isSameDay(arg1, arg2);
+    }
+  });
+
+  it("normalizes the dates", () => {
+    const dateLeft = new TZDate(2024, 5, 7, 8, "Asia/Singapore");
+    const dateRight = new TZDate(2024, 5, 6, 4, "America/New_York");
+    expect(isSameDay(dateLeft, dateRight)).toBe(false);
+    expect(isSameDay(dateRight, dateLeft)).toBe(true);
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      expect(
+        isSameDay("2024-04-10T07:00:00Z", "2024-04-10T15:00:00Z", {
+          in: tz("America/Los_Angeles"),
+        }),
+      ).toBe(true);
+      expect(
+        isSameDay("2024-04-10T07:00:00Z", "2024-04-11T07:00:00Z", {
+          in: tz("America/Los_Angeles"),
+        }),
+      ).toBe(false);
+    });
+
+    it("doesn't enforce argument and context to be of the same type", () => {
+      function _test<DateType extends Date, ResultDate extends Date = DateType>(
+        arg1: DateArg<DateType>,
+        arg2: DateArg<DateType>,
+        options?: ContextOptions<ResultDate>,
+      ) {
+        isSameDay(arg1, arg2, { in: options?.in });
+      }
+    });
   });
 });

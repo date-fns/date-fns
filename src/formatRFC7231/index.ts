@@ -1,6 +1,7 @@
+import { addLeadingZeros } from "../_lib/addLeadingZeros/index.js";
 import { isValid } from "../isValid/index.js";
 import { toDate } from "../toDate/index.js";
-import { addLeadingZeros } from "../_lib/addLeadingZeros/index.js";
+import type { DateArg } from "../types.js";
 
 const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
@@ -28,8 +29,6 @@ const months = [
  * Return the formatted date string in RFC 7231 format.
  * The result will always be in UTC timezone.
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- *
  * @param date - The original date
  *
  * @returns The formatted date string
@@ -41,9 +40,7 @@ const months = [
  * const result = formatRFC7231(new Date(2019, 8, 18, 19, 0, 52))
  * //=> 'Wed, 18 Sep 2019 19:00:52 GMT'
  */
-export function formatRFC7231<DateType extends Date>(
-  date: DateType | number | string,
-): string {
+export function formatRFC7231(date: DateArg<Date> & {}): string {
   const _date = toDate(date);
 
   if (!isValid(_date)) {

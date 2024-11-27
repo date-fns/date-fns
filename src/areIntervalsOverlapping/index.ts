@@ -1,10 +1,10 @@
 import { toDate } from "../toDate/index.js";
-import type { Interval } from "../types.js";
+import type { ContextOptions, Interval } from "../types.js";
 
 /**
  * The {@link areIntervalsOverlapping} function options.
  */
-export interface AreIntervalsOverlappingOptions {
+export interface AreIntervalsOverlappingOptions extends ContextOptions<Date> {
   /** Whether the comparison is inclusive or not */
   inclusive?: boolean;
 }
@@ -51,13 +51,6 @@ export interface AreIntervalsOverlappingOptions {
  * // Using the inclusive option:
  * areIntervalsOverlapping(
  *   { start: new Date(2014, 0, 10), end: new Date(2014, 0, 20) },
- *   { start: new Date(2014, 0, 20), end: new Date(2014, 0, 24) }
- * )
- * //=> false
- *
- * @example
- * areIntervalsOverlapping(
- *   { start: new Date(2014, 0, 10), end: new Date(2014, 0, 20) },
  *   { start: new Date(2014, 0, 20), end: new Date(2014, 0, 24) },
  *   { inclusive: true }
  * )
@@ -69,12 +62,12 @@ export function areIntervalsOverlapping(
   options?: AreIntervalsOverlappingOptions,
 ): boolean {
   const [leftStartTime, leftEndTime] = [
-    +toDate(intervalLeft.start),
-    +toDate(intervalLeft.end),
+    +toDate(intervalLeft.start, options?.in),
+    +toDate(intervalLeft.end, options?.in),
   ].sort((a, b) => a - b);
   const [rightStartTime, rightEndTime] = [
-    +toDate(intervalRight.start),
-    +toDate(intervalRight.end),
+    +toDate(intervalRight.start, options?.in),
+    +toDate(intervalRight.end, options?.in),
   ].sort((a, b) => a - b);
 
   if (options?.inclusive)

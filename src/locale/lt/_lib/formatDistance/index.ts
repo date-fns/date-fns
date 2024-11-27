@@ -3,13 +3,9 @@ import type { FormatDistanceFn, FormatDistanceLocale } from "../../../types.js";
 type TranslationKey = keyof typeof translations;
 
 type Translater = (
-  // eslint-disable-next-line no-unused-vars
   number: number,
-  // eslint-disable-next-line no-unused-vars
   addSuffix: boolean,
-  // eslint-disable-next-line no-unused-vars
   key: TranslationKey,
-  // eslint-disable-next-line no-unused-vars
   isFuture: boolean,
 ) => string;
 

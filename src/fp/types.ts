@@ -1,7 +1,6 @@
 /**
  * The type of a function that can be converted to FP.
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any -- We want any here.
 export type FPFnInput = (...args: any[]) => any;
 
 /**

@@ -1,5 +1,6 @@
 import { constructNow } from "../constructNow/index.js";
 import { isSameSecond } from "../isSameSecond/index.js";
+import type { DateArg } from "../types.js";
 
 /**
  * @name isThisSecond
@@ -9,8 +10,6 @@ import { isSameSecond } from "../isSameSecond/index.js";
  *
  * @description
  * Is the given date in the same second as the current date?
- *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
  * @param date - The date to check
  *
@@ -22,8 +21,6 @@ import { isSameSecond } from "../isSameSecond/index.js";
  * const result = isThisSecond(new Date(2014, 8, 25, 18, 30, 15))
  * //=> true
  */
-export function isThisSecond<DateType extends Date>(
-  date: DateType | number | string,
-): boolean {
+export function isThisSecond(date: DateArg<Date> & {}): boolean {
   return isSameSecond(date, constructNow(date));
 }

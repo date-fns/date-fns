@@ -1,6 +1,7 @@
+import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import { differenceInCalendarDays } from "./index.js";
 import { getDstTransitions } from "../../test/dst/tzOffsetTransitions.js";
+import { differenceInCalendarDays } from "./index.js";
 
 describe("differenceInCalendarDays", () => {
   it("returns the number of calendar days between the given dates", () => {
@@ -108,9 +109,10 @@ describe("differenceInCalendarDays", () => {
   // `differenceInDays`
   const dstTransitions = getDstTransitions(2017);
   const dstOnly = dstTransitions.start && dstTransitions.end ? it : it.skip;
-  const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || process.env.tz;
+  const tzName =
+    Intl.DateTimeFormat().resolvedOptions().timeZone || process.env.tz;
   dstOnly(
-    `works across DST start & end in local timezone: ${tz || "(unknown)"}`,
+    `works across DST start & end in local timezone: ${tzName || "(unknown)"}`,
     () => {
       const { start, end } = dstTransitions;
       const HOUR = 1000 * 60 * 60;
@@ -213,4 +215,64 @@ describe("differenceInCalendarDays", () => {
       }
     },
   );
+
+  it("normalizes the dates", () => {
+    const dateLeft = new TZDate(2025, 0, 1, "Asia/Singapore");
+    const dateRight = new TZDate(2024, 0, 1, "America/New_York");
+    expect(differenceInCalendarDays(dateLeft, dateRight)).toBe(366);
+    expect(differenceInCalendarDays(dateRight, dateLeft)).toBe(-365);
+  });
+
+  it("allows dates to be of different types", () => {
+    function _test<DateType1 extends Date, DateType2 extends Date>(
+      arg1: DateType1 | number | string,
+      arg2: DateType2 | number | string,
+    ) {
+      differenceInCalendarDays(arg1, arg2);
+    }
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      expect(
+        differenceInCalendarDays(
+          new Date("2014-12-12T00:00:00Z"),
+          new Date("2014-12-02T04:00:00Z"),
+          { in: tz("Asia/Singapore") },
+        ),
+      ).toBe(10);
+      expect(
+        differenceInCalendarDays(
+          new Date("2014-12-12T00:00:00Z"),
+          new Date("2014-12-02T05:00:00Z"),
+          { in: tz("Asia/Singapore") },
+        ),
+      ).toBe(10);
+      expect(
+        differenceInCalendarDays(
+          new Date("2014-12-12T00:00:00Z"),
+          new Date("2014-12-02T04:00:00Z"),
+          { in: tz("America/New_York") },
+        ),
+      ).toBe(10);
+      expect(
+        differenceInCalendarDays(
+          new Date("2014-12-12T00:00:00Z"),
+          new Date("2014-12-02T05:00:00Z"),
+          { in: tz("America/New_York") },
+        ),
+      ).toBe(9);
+    });
+  });
+
+  describe("edge cases", () => {
+    it("works consistently with invalid arguments", () => {
+      expect(differenceInCalendarDays(NaN, Date.now())).toBe(NaN);
+      expect(
+        differenceInCalendarDays(NaN, Date.now(), {
+          in: tz("America/New_York"),
+        }),
+      ).toBe(NaN);
+    });
+  });
 });

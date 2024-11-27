@@ -1,4 +1,10 @@
-import { toDate } from "../toDate/index.js";
+import { normalizeDates } from "../_lib/normalizeDates/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
+
+/**
+ * The {@link isSameMonth} function options.
+ */
+export interface IsSameMonthOptions extends ContextOptions<Date> {}
 
 /**
  * @name isSameMonth
@@ -8,10 +14,9 @@ import { toDate } from "../toDate/index.js";
  * @description
  * Are the given dates in the same month (and year)?
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- *
- * @param dateLeft - The first date to check
- * @param dateRight - The second date to check
+ * @param laterDate - The first date to check
+ * @param earlierDate - The second date to check
+ * @param options - An object with options
  *
  * @returns The dates are in the same month (and year)
  *
@@ -25,14 +30,18 @@ import { toDate } from "../toDate/index.js";
  * const result = isSameMonth(new Date(2014, 8, 2), new Date(2015, 8, 25))
  * //=> false
  */
-export function isSameMonth<DateType extends Date>(
-  dateLeft: DateType | number | string,
-  dateRight: DateType | number | string,
+export function isSameMonth(
+  laterDate: DateArg<Date> & {},
+  earlierDate: DateArg<Date> & {},
+  options?: IsSameMonthOptions | undefined,
 ): boolean {
-  const _dateLeft = toDate(dateLeft);
-  const _dateRight = toDate(dateRight);
+  const [laterDate_, earlierDate_] = normalizeDates(
+    options?.in,
+    laterDate,
+    earlierDate,
+  );
   return (
-    _dateLeft.getFullYear() === _dateRight.getFullYear() &&
-    _dateLeft.getMonth() === _dateRight.getMonth()
+    laterDate_.getFullYear() === earlierDate_.getFullYear() &&
+    laterDate_.getMonth() === earlierDate_.getMonth()
   );
 }

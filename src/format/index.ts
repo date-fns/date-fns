@@ -11,6 +11,8 @@ import { isValid } from "../isValid/index.js";
 import { toDate } from "../toDate/index.js";
 import type {
   AdditionalTokensOptions,
+  ContextOptions,
+  DateArg,
   FirstWeekContainsDateOptions,
   FormatPart,
   LocalizedOptions,
@@ -53,7 +55,8 @@ export interface FormatOptions
   extends LocalizedOptions<"options" | "localize" | "formatLong">,
     WeekOptions,
     FirstWeekContainsDateOptions,
-    AdditionalTokensOptions {}
+    AdditionalTokensOptions,
+    ContextOptions<Date> {}
 
 /**
  * @name format
@@ -306,8 +309,6 @@ export interface FormatOptions
  * 9. `D` and `DD` tokens represent days of the year but they are often confused with days of the month.
  *    You should enable `options.useAdditionalDayOfYearTokens` to use them. See: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- *
  * @param date - The original date
  * @param format - The string of tokens
  * @param options - An object with options
@@ -341,8 +342,8 @@ export interface FormatOptions
  * const result = format(new Date(2014, 6, 2, 15), "h 'o''clock'")
  * //=> "3 o'clock"
  */
-export function format<DateType extends Date>(
-  date: DateType | number | string,
+export function format(
+  date: DateArg<Date> & {},
   formatStr: string,
   options?: FormatOptions,
 ): string {
@@ -363,7 +364,7 @@ export function format<DateType extends Date>(
     defaultOptions.locale?.options?.weekStartsOn ??
     0;
 
-  const originalDate = toDate(date);
+  const originalDate = toDate(date, options?.in);
 
   if (!isValid(originalDate)) {
     throw new RangeError("Invalid time value");

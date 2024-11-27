@@ -1,5 +1,12 @@
-import { toDate } from "../toDate/index.js";
 import { constructFrom } from "../constructFrom/index.js";
+import { toDate } from "../toDate/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
+
+/**
+ * The {@link addMonths} function options.
+ */
+export interface AddMonthsOptions<DateType extends Date = Date>
+  extends ContextOptions<DateType> {}
 
 /**
  * @name addMonths
@@ -10,9 +17,11 @@ import { constructFrom } from "../constructFrom/index.js";
  * Add the specified number of months to the given date.
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
  *
  * @param date - The date to be changed
  * @param amount - The amount of months to be added.
+ * @param options - The options object
  *
  * @returns The new date with the months added
  *
@@ -25,12 +34,16 @@ import { constructFrom } from "../constructFrom/index.js";
  * const result = addMonths(new Date(2023, 0, 30), 1)
  * //=> Tue Feb 28 2023 00:00:00
  */
-export function addMonths<DateType extends Date>(
-  date: DateType | number | string,
+export function addMonths<
+  DateType extends Date,
+  ResultDate extends Date = DateType,
+>(
+  date: DateArg<DateType>,
   amount: number,
-): DateType {
-  const _date = toDate(date);
-  if (isNaN(amount)) return constructFrom(date, NaN);
+  options?: AddMonthsOptions<ResultDate> | undefined,
+): ResultDate {
+  const _date = toDate(date, options?.in);
+  if (isNaN(amount)) return constructFrom(options?.in || date, NaN);
   if (!amount) {
     // If 0 months, no-op to avoid changing times in the hour before end of DST
     return _date;
@@ -45,7 +58,7 @@ export function addMonths<DateType extends Date>(
   // we'll default to the end of the desired month by adding 1 to the desired
   // month and using a date of 0 to back up one day to the end of the desired
   // month.
-  const endOfDesiredMonth = constructFrom(date, _date.getTime());
+  const endOfDesiredMonth = constructFrom(options?.in || date, _date.getTime());
   endOfDesiredMonth.setMonth(_date.getMonth() + amount + 1, 0);
   const daysInMonth = endOfDesiredMonth.getDate();
   if (dayOfMonth >= daysInMonth) {

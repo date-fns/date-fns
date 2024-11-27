@@ -8,6 +8,70 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## v4.1.0 - 2024-09-17
+
+This release adds time zone support to format functions (that I somehow missed when working on the feature) and fixes a few bugs.
+
+Make sure also upgrade `TZDate` to v1.0.2 as it [includes a bunch of critical bug fixes](https://github.com/date-fns/tz/blob/main/CHANGELOG.md#v102---2024-09-14).
+
+### Fixed
+
+- Fixed internal `constructFrom` throwing an exception on `null` arguments. While `null` isn't allowed, the functions should rather return `Invalid Date` or `NaN` in such cases. See [#3885](https://github.com/date-fns/date-fns/issues/3885).
+
+### Added
+
+- Added missing time zone support to `format`, `formatISO`, `formatISO9075`, `formatRelative` and `formatRFC3339`. See [#3886](https://github.com/date-fns/date-fns/issues/3886).
+
+## v4.0.0 - 2024-09-16
+
+I have great news! First, ten years after its release, date-fns finally gets first-class time zone support.
+
+Another great news is that there aren't many breaking changes in this release. All of them are type-related and will affect only those explicitly using internal date-fns types. Finally, it has been less than a year since the last major release, which is an improvement over the previous four years between v2 and v3. I plan on keeping the pace and minimizing breaking changes moving forward.
+
+[Read more about the release in the announcement blog post](https://blog.date-fns.org/v40-with-time-zone-support/).
+
+\- [Sasha @kossnocorp](https://twitter.com/kossnocorp)
+
+### Added
+
+- Added time zones support via [`@date-fns/tz`](https://github.com/date-fns/tz)'s `TZDate` class and `tz` helper function. See its [README](https://github.com/date-fns/tz) for the details about the API.
+
+- All relevant functions now accept the context `in` option, which allows to specify the time zone to make the calculations in. If the function also returns a date, it will be in the specified time zone:
+
+  ```ts
+  import { addDays, startOfDay } from "date-fns";
+  import { tz } from "@date-fns/tz";
+
+  startOfDay(addDays(Date.now(), 5, { in: tz("Asia/Singapore") }));
+  //=> "2024-09-16T00:00:00.000+08:00"
+  ```
+
+  In the example, `addDays` will get the current date and time in Singapore and add 5 days to it. `startOfDay` will inherit the date type and return the start of the day in Singapore.
+
+### Changed
+
+- The function arguments, as well as `Interval`'s `start` and `end`, now can be of different types, allowing you to mix `UTCDate`, `TZDate`, `Date`, and other extensions, as well as primitives (strings and numbers).
+
+  The functions will normalize these values, make calculations, and return the result in the same type, preventing any bugs caused by the discrepancy. If passed, the type will be inferred from the context `in` option or the first encountered argument object type. The `Interval`'s `start` and `end` will be considered separately, starting from `start`.
+
+  In the given example, the result will be in the `TZDate` as the first argument is a number, and the `start` takes precedence over the `end`.
+
+  ```ts
+  clamp(Date.now(), {
+    start: new TZDate(start, "Asia/Singapore"),
+    end: new UTCDate(),
+  });
+  //=> TZDate
+  ```
+
+- **BREAKING**: This release contains a bunch of types changes that should not affect the library's expected usage. The changes are primarily internal and nuanced, so rather than listing them here, I recommend you running the type checker after the upgrade. If there are unfixable problems, please [open an issue](https://github.com/date-fns/date-fns/issues/new).
+
+- **BREAKING**: The package now is ESM-first. The CommonJS is still support and It should not affect most users, but it might break in certains environments. If you encounter any issues, please [report them](https://github.com/date-fns/date-fns/issues/new).
+
+### Fixed
+
+- Fixed CDN build compatibility with jQuery and other tools that expose `$` by properly wrapping the code in an IIFE.
+
 ## v3.6.0 - 2024-03-18
 
 On this release worked @kossnocorp and @world1dan. Also, thanks to [@seated](https://github.com/seated) [for sponsoring me](https://github.com/sponsors/kossnocorp).
@@ -90,7 +154,7 @@ This release is brought to you by @kossnocorp, @fturmel, @grossbart, @MelvinVerm
 
 ### Fixed
 
-- Fixed types compatability with Lodash's `flow` and fp-ts's `pipe`. ([#3641](https://github.com/date-fns/date-fns/issues/3641))
+- Fixed types compatibility with Lodash's `flow` and fp-ts's `pipe`. ([#3641](https://github.com/date-fns/date-fns/issues/3641))
 
 - [Fixed inconsistent behavior of `roundToNearestMinutes`.](https://github.com/date-fns/date-fns/pull/3132)
 
@@ -1599,7 +1663,7 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 
 - [New `roundToNearestMinutes` function](https://github.com/date-fns/date-fns/pull/928). Kudos to [@xkizer](https://github.com/xkizer).
 
-- Added new function `fromUnixTime`. Thansk to [@xkizer](https://github.com/xkizer).
+- Added new function `fromUnixTime`. Thanks to [@xkizer](https://github.com/xkizer).
 
 - New interval, month, and year helpers to fetch a list of all Saturdays and Sundays (weekends) for a given date interval. `eachWeekendOfInterval` is the handler function while the other two are wrapper functions. Kudos to [@laekettavong](https://github.com/laekettavong)!
 

@@ -1,13 +1,34 @@
-import { toDate } from "../toDate/index.js";
-import type { NormalizedInterval } from "../types.js";
+import { normalizeDates } from "../_lib/normalizeDates/index.js";
+import type { ContextOptions, DateArg, NormalizedInterval } from "../types.js";
 
 /**
  * The {@link interval} function options.
  */
-export interface IntervalOptions {
+export interface IntervalOptions<ContextDate extends Date = Date>
+  extends ContextOptions<ContextDate> {
   /** Asserts that the interval is positive (start is after the end). */
   assertPositive?: boolean;
 }
+
+/**
+ * The {@link interval} function result type. It resolves the proper data type.
+ * It uses the first argument date object type, starting from the start argument,
+ * then the end interval date. If a context function is passed, it uses the context
+ * function return type.
+ */
+export type IntervalResult<
+  StartDate extends DateArg<Date>,
+  EndDate extends DateArg<Date>,
+  Options extends IntervalOptions | undefined = undefined,
+> = NormalizedInterval<
+  Options extends IntervalOptions<infer DateType extends Date>
+    ? DateType
+    : StartDate extends Date
+      ? StartDate
+      : EndDate extends Date
+        ? EndDate
+        : Date
+>;
 
 /**
  * @name interval
@@ -17,7 +38,9 @@ export interface IntervalOptions {
  * @description
  * Creates a normalized interval object and validates its values. If the interval is invalid, an exception is thrown.
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam StartDate - Start date type.
+ * @typeParam EndDate - End date type.
+ * @typeParam Options - Options type.
  *
  * @param start - The start of the interval.
  * @param end - The end of the interval.
@@ -29,19 +52,26 @@ export interface IntervalOptions {
  *
  * @returns The normalized and validated interval object.
  */
-export function interval<DateType extends Date>(
-  start: DateType | number | string,
-  end: DateType | number | string,
-  options?: IntervalOptions,
-): NormalizedInterval<DateType> {
-  const _start = toDate(start);
-  if (isNaN(+_start)) throw new TypeError("Start date is invalid");
+export function interval<
+  StartDate extends DateArg<Date>,
+  EndDate extends DateArg<Date>,
+  Options extends IntervalOptions | undefined = undefined,
+>(
+  start: StartDate,
+  end: EndDate,
+  options?: Options,
+): IntervalResult<StartDate, EndDate, Options> {
+  const [_start, _end] = normalizeDates(options?.in, start, end);
 
-  const _end = toDate(end);
+  if (isNaN(+_start)) throw new TypeError("Start date is invalid");
   if (isNaN(+_end)) throw new TypeError("End date is invalid");
 
   if (options?.assertPositive && +_start > +_end)
     throw new TypeError("End date must be after start date");
 
-  return { start: _start, end: _end };
+  return { start: _start, end: _end } as IntervalResult<
+    StartDate,
+    EndDate,
+    Options
+  >;
 }

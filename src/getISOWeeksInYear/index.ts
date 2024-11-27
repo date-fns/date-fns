@@ -1,6 +1,12 @@
 import { addWeeks } from "../addWeeks/index.js";
 import { millisecondsInWeek } from "../constants/index.js";
 import { startOfISOWeekYear } from "../startOfISOWeekYear/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
+
+/**
+ * The {@link getISOWeeksInYear} function options.
+ */
+export interface GetISOWeeksInYearOptions extends ContextOptions<Date> {}
 
 /**
  * @name getISOWeeksInYear
@@ -12,9 +18,8 @@ import { startOfISOWeekYear } from "../startOfISOWeekYear/index.js";
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- *
  * @param date - The given date
+ * @param options - An object with options
  *
  * @returns The number of ISO weeks in a year
  *
@@ -23,10 +28,11 @@ import { startOfISOWeekYear } from "../startOfISOWeekYear/index.js";
  * const result = getISOWeeksInYear(new Date(2015, 1, 11))
  * //=> 53
  */
-export function getISOWeeksInYear<DateType extends Date>(
-  date: DateType | number | string,
+export function getISOWeeksInYear(
+  date: DateArg<Date> & {},
+  options?: GetISOWeeksInYearOptions | undefined,
 ): number {
-  const thisYear = startOfISOWeekYear(date);
+  const thisYear = startOfISOWeekYear(date, options);
   const nextYear = startOfISOWeekYear(addWeeks(thisYear, 60));
   const diff = +nextYear - +thisYear;
 

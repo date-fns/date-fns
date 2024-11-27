@@ -1,6 +1,9 @@
+import { TZDate, tz } from "@date-fns/tz";
+import { UTCDate } from "@date-fns/utc";
 import { describe, expect, it } from "vitest";
-import { addDays } from "./index.js";
 import { getDstTransitions } from "../../test/dst/tzOffsetTransitions.js";
+import { assertType } from "../_lib/test/index.js";
+import { addDays } from "./index.js";
 
 describe("addDays", () => {
   it("adds the given number of days", () => {
@@ -31,7 +34,8 @@ describe("addDays", () => {
 
   const dstTransitions = getDstTransitions(2017);
   const dstOnly = dstTransitions.start && dstTransitions.end ? it : it.skip;
-  const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || process.env.tz;
+  const tzName =
+    Intl.DateTimeFormat().resolvedOptions().timeZone || process.env.tz;
   const HOUR = 1000 * 60 * 60;
   const MINUTE = 1000 * 60;
   // It's usually 1 hour, but for some timezones, e.g. Australia/Lord_Howe, it is 30 minutes
@@ -43,7 +47,7 @@ describe("addDays", () => {
       : NaN;
 
   dstOnly(
-    `works at DST-start boundary in local timezone: ${tz || "(unknown)"}`,
+    `works at DST-start boundary in local timezone: ${tzName || "(unknown)"}`,
     () => {
       const date = dstTransitions.start;
       const result = addDays(date!, 1);
@@ -52,7 +56,7 @@ describe("addDays", () => {
   );
 
   dstOnly(
-    `works at DST-start - 30 mins in local timezone: ${tz || "(unknown)"}`,
+    `works at DST-start - 30 mins in local timezone: ${tzName || "(unknown)"}`,
     () => {
       const date = new Date(dstTransitions.start!.getTime() - 0.5 * HOUR);
       const result = addDays(date, 1);
@@ -62,7 +66,7 @@ describe("addDays", () => {
   );
 
   dstOnly(
-    `works at DST-start - 60 mins in local timezone: ${tz || "(unknown)"}`,
+    `works at DST-start - 60 mins in local timezone: ${tzName || "(unknown)"}`,
     () => {
       const date = new Date(dstTransitions.start!.getTime() - 1 * HOUR);
       const result = addDays(date, 1);
@@ -72,7 +76,7 @@ describe("addDays", () => {
   );
 
   dstOnly(
-    `works at DST-end boundary in local timezone: ${tz || "(unknown)"}`,
+    `works at DST-end boundary in local timezone: ${tzName || "(unknown)"}`,
     () => {
       const date = dstTransitions.end;
       const result = addDays(date!, 1);
@@ -81,7 +85,7 @@ describe("addDays", () => {
   );
 
   dstOnly(
-    `works at DST-end - 30 mins in local timezone: ${tz || "(unknown)"}`,
+    `works at DST-end - 30 mins in local timezone: ${tzName || "(unknown)"}`,
     () => {
       const date = new Date(dstTransitions.end!.getTime() - 0.5 * HOUR);
       const result = addDays(date, 1);
@@ -92,7 +96,7 @@ describe("addDays", () => {
   );
 
   dstOnly(
-    `works at DST-end - 60 mins in local timezone: ${tz || "(unknown)"}`,
+    `works at DST-end - 60 mins in local timezone: ${tzName || "(unknown)"}`,
     () => {
       const date = new Date(dstTransitions.end!.getTime() - 1 * HOUR);
       const result = addDays(date, 1);
@@ -103,11 +107,47 @@ describe("addDays", () => {
   );
 
   dstOnly(
-    `doesn't mutate if zero increment is used: ${tz || "(unknown)"}`,
+    `doesn't mutate if zero increment is used: ${tzName || "(unknown)"}`,
     () => {
       const date = new Date(dstTransitions.end!);
       const result = addDays(date, 0);
       expect(result).toEqual(date);
     },
   );
+
+  it("resolves the date type by default", () => {
+    const result = addDays(Date.now(), 5);
+    expect(result).toBeInstanceOf(Date);
+    assertType<assertType.Equal<Date, typeof result>>(true);
+  });
+
+  it("resolves the argument type if a date extension is passed", () => {
+    const result = addDays(new UTCDate(), 5);
+    expect(result).toBeInstanceOf(UTCDate);
+    assertType<assertType.Equal<UTCDate, typeof result>>(true);
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      expect(
+        addDays("2024-04-10T07:00:00Z", 10, {
+          in: tz("Asia/Singapore"),
+        }).toISOString(),
+      ).toBe("2024-04-20T15:00:00.000+08:00");
+      expect(
+        addDays("2024-04-10T07:00:00Z", 10, {
+          in: tz("America/Los_Angeles"),
+        }).toISOString(),
+      ).toBe("2024-04-20T00:00:00.000-07:00");
+    });
+
+    it("resolves the context date type", () => {
+      const date = new Date("2014-09-01T00:00:00Z");
+      const result = addDays(date, 1, {
+        in: tz("Asia/Tokyo"),
+      });
+      expect(result).toBeInstanceOf(TZDate);
+      assertType<assertType.Equal<TZDate, typeof result>>(true);
+    });
+  });
 });

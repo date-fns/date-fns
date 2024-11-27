@@ -1,10 +1,29 @@
-import { toDate } from "../toDate/index.js";
-import type { Interval, StepOptions } from "../types.js";
+import { normalizeInterval } from "../_lib/normalizeInterval/index.js";
+import { constructFrom } from "../constructFrom/index.js";
+import type { ContextOptions, Interval, StepOptions } from "../types.js";
 
 /**
  * The {@link eachMonthOfInterval} function options.
  */
-export interface EachMonthOfIntervalOptions extends StepOptions {}
+export interface EachMonthOfIntervalOptions<DateType extends Date = Date>
+  extends StepOptions,
+    ContextOptions<DateType> {}
+
+/**
+ * The {@link eachMonthOfInterval} function result type. It resolves the proper data type.
+ */
+export type EachMonthOfIntervalResult<
+  IntervalType extends Interval,
+  Options extends EachMonthOfIntervalOptions | undefined,
+> = Array<
+  Options extends EachMonthOfIntervalOptions<infer DateType>
+    ? DateType
+    : IntervalType["start"] extends Date
+      ? IntervalType["start"]
+      : IntervalType["end"] extends Date
+        ? IntervalType["end"]
+        : Date
+>;
 
 /**
  * @name eachMonthOfInterval
@@ -14,9 +33,11 @@ export interface EachMonthOfIntervalOptions extends StepOptions {}
  * @description
  * Return the array of months within the specified time interval.
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam IntervalType - Interval type.
+ * @typeParam Options - Options type.
  *
- * @param interval - The interval
+ * @param interval - The interval.
+ * @param options - An object with options.
  *
  * @returns The array with starts of months from the month of the interval start to the month of the interval end
  *
@@ -36,18 +57,20 @@ export interface EachMonthOfIntervalOptions extends StepOptions {}
  * //   Fri Aug 01 2014 00:00:00
  * // ]
  */
-export function eachMonthOfInterval<DateType extends Date>(
-  interval: Interval<DateType>,
-  options?: EachMonthOfIntervalOptions,
-): DateType[] {
-  const startDate = toDate(interval.start);
-  const endDate = toDate(interval.end);
+export function eachMonthOfInterval<
+  IntervalType extends Interval,
+  Options extends EachMonthOfIntervalOptions | undefined = undefined,
+>(
+  interval: IntervalType,
+  options?: Options,
+): EachMonthOfIntervalResult<IntervalType, Options> {
+  const { start, end } = normalizeInterval(options?.in, interval);
 
-  let reversed = +startDate > +endDate;
-  const endTime = reversed ? +startDate : +endDate;
-  const currentDate = reversed ? endDate : startDate;
-  currentDate.setHours(0, 0, 0, 0);
-  currentDate.setDate(1);
+  let reversed = +start > +end;
+  const endTime = reversed ? +start : +end;
+  const date = reversed ? end : start;
+  date.setHours(0, 0, 0, 0);
+  date.setDate(1);
 
   let step = options?.step ?? 1;
   if (!step) return [];
@@ -56,11 +79,11 @@ export function eachMonthOfInterval<DateType extends Date>(
     reversed = !reversed;
   }
 
-  const dates = [];
+  const dates: EachMonthOfIntervalResult<IntervalType, Options> = [];
 
-  while (+currentDate <= endTime) {
-    dates.push(toDate(currentDate));
-    currentDate.setMonth(currentDate.getMonth() + step);
+  while (+date <= endTime) {
+    dates.push(constructFrom(start, date));
+    date.setMonth(date.getMonth() + step);
   }
 
   return reversed ? dates.reverse() : dates;

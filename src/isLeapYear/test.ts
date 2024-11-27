@@ -1,4 +1,6 @@
+import { tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
+import type { ContextOptions, DateArg } from "../types.js";
 import { isLeapYear } from "./index.js";
 
 describe("isLeapYear", () => {
@@ -31,5 +33,29 @@ describe("isLeapYear", () => {
   it("returns false if the given date is `Invalid Date`", () => {
     const result = isLeapYear(new Date(NaN));
     expect(result).toBe(false);
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      expect(
+        isLeapYear("2012-01-01T00:00:00Z", {
+          in: tz("Asia/Singapore"),
+        }),
+      ).toBe(true);
+      expect(
+        isLeapYear("2012-01-01T00:00:00Z", {
+          in: tz("America/New_York"),
+        }),
+      ).toBe(false);
+    });
+
+    it("doesn't enforce argument and context to be of the same type", () => {
+      function _test<DateType extends Date, ResultDate extends Date = DateType>(
+        arg: DateArg<DateType>,
+        options?: ContextOptions<ResultDate>,
+      ) {
+        isLeapYear(arg, { in: options?.in });
+      }
+    });
   });
 });

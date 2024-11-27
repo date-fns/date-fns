@@ -1,4 +1,6 @@
+import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
+import type { ContextOptions, DateArg } from "../types.js";
 import { differenceInCalendarQuarters } from "./index.js";
 
 describe("differenceInCalendarQuarters", () => {
@@ -93,5 +95,50 @@ describe("differenceInCalendarQuarters", () => {
   it("returns NaN if the both dates are `Invalid Date`", () => {
     const result = differenceInCalendarQuarters(new Date(NaN), new Date(NaN));
     expect(isNaN(result)).toBe(true);
+  });
+
+  it("allows dates to be of different types", () => {
+    function _test<DateType1 extends Date, DateType2 extends Date>(
+      arg1: DateType1 | number | string,
+      arg2: DateType2 | number | string,
+    ) {
+      differenceInCalendarQuarters(arg1, arg2);
+    }
+  });
+
+  it("normalizes the dates", () => {
+    const dateLeft = new TZDate(2024, 3, 1, "Asia/Singapore");
+    const dateRight = new TZDate(2023, 11, 1, "America/New_York");
+    expect(differenceInCalendarQuarters(dateLeft, dateRight)).toBe(2);
+    expect(differenceInCalendarQuarters(dateRight, dateLeft)).toBe(-1);
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      expect(
+        differenceInCalendarQuarters(
+          "2024-04-01T03:00:00Z",
+          "2024-01-01T00:00:00Z",
+          { in: tz("America/New_York") },
+        ),
+      ).toBe(1);
+      expect(
+        differenceInCalendarQuarters(
+          "2024-04-01T04:00:00Z",
+          "2024-01-01T00:00:00Z",
+          { in: tz("America/New_York") },
+        ),
+      ).toBe(2);
+    });
+
+    it("doesn't enforce argument and context to be of the same type", () => {
+      function _test<DateType extends Date, ResultDate extends Date = DateType>(
+        arg1: DateArg<DateType>,
+        arg2: DateArg<DateType>,
+        options?: ContextOptions<ResultDate>,
+      ) {
+        differenceInCalendarQuarters(arg1, arg2, { in: options?.in });
+      }
+    });
   });
 });

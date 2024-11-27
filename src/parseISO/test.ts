@@ -1,4 +1,6 @@
+import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
+import { assertType } from "../_lib/test/index.js";
 import { parseISO } from "./index.js";
 
 describe("parseISO", () => {
@@ -169,7 +171,9 @@ describe("parseISO", () => {
 
       it("parses float seconds", () => {
         const result = parseISO("2014-02-11T11:30:30.768");
-        expect(result).toEqual(new Date(2014, 1 /* Feb */, 11, 11, 30, 30, 768));
+        expect(result).toEqual(
+          new Date(2014, 1 /* Feb */, 11, 11, 30, 30, 768),
+        );
       });
 
       it("parses , as decimal mark", () => {
@@ -357,6 +361,79 @@ describe("parseISO", () => {
       const result = parseISO("00:00");
       expect(result instanceof Date).toBe(true);
       expect(isNaN(result.getTime())).toBe(true);
+    });
+  });
+
+  it("resolves the date type by default", () => {
+    const result = parseISO("2014-02-11T11:30:30");
+    expect(result).toBeInstanceOf(Date);
+    assertType<assertType.Equal<Date, typeof result>>(true);
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      expect(
+        parseISO("2024-04-10T00:00:00Z", {
+          in: tz("Asia/Singapore"),
+        }).toISOString(),
+      ).toBe("2024-04-10T08:00:00.000+08:00");
+      expect(
+        parseISO("2024-04-10T00:00:00+10:00", {
+          in: tz("Asia/Singapore"),
+        }).toISOString(),
+      ).toBe("2024-04-09T22:00:00.000+08:00");
+      expect(
+        parseISO("2024-04-10T00:00:00", {
+          in: tz("Asia/Singapore"),
+        }).toISOString(),
+      ).toBe("2024-04-10T00:00:00.000+08:00");
+      expect(
+        parseISO("2024-04-10T00:00:00Z", {
+          in: tz("America/Los_Angeles"),
+        }).toISOString(),
+      ).toBe("2024-04-09T17:00:00.000-07:00");
+      expect(
+        parseISO("2024-04-10T00:00:00+10:00", {
+          in: tz("America/Los_Angeles"),
+        }).toISOString(),
+      ).toBe("2024-04-09T07:00:00.000-07:00");
+      expect(
+        parseISO("2024-04-10T00:00:00", {
+          in: tz("America/Los_Angeles"),
+        }).toISOString(),
+      ).toBe("2024-04-10T00:00:00.000-07:00");
+    });
+
+    it("resolves the context date type", () => {
+      const result = parseISO("2014-02-11T11:30:30", {
+        in: tz("Asia/Tokyo"),
+      });
+      expect(result).toBeInstanceOf(TZDate);
+      assertType<assertType.Equal<TZDate, typeof result>>(true);
+    });
+  });
+
+  describe("time zones", () => {
+    it("properly parses dates around DST transitions", () => {
+      const ny = tz("America/New_York");
+      expect(parseISO("2023-03-11T01:30", { in: ny }).toISOString()).toBe(
+        "2023-03-11T01:30:00.000-05:00",
+      );
+      expect(parseISO("2023-03-12T01:30", { in: ny }).toISOString()).toBe(
+        "2023-03-12T01:30:00.000-05:00",
+      );
+      expect(parseISO("2023-03-12T02:00", { in: ny }).toISOString()).toBe(
+        "2023-03-12T03:00:00.000-04:00",
+      );
+      expect(parseISO("2023-03-12T03:00", { in: ny }).toISOString()).toBe(
+        "2023-03-12T03:00:00.000-04:00",
+      );
+      expect(parseISO("2023-03-12T03:30", { in: ny }).toISOString()).toBe(
+        "2023-03-12T03:30:00.000-04:00",
+      );
+      expect(parseISO("2023-03-13T03:30", { in: ny }).toISOString()).toBe(
+        "2023-03-13T03:30:00.000-04:00",
+      );
     });
   });
 });

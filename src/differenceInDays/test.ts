@@ -1,6 +1,8 @@
+import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import { differenceInDays } from "./index.js";
 import { getDstTransitions } from "../../test/dst/tzOffsetTransitions.js";
+import type { ContextOptions } from "../types.js";
+import { differenceInDays } from "./index.js";
 
 describe("differenceInDays", () => {
   it("returns the number of full days between the given dates", () => {
@@ -203,5 +205,46 @@ describe("differenceInDays", () => {
   it("returns NaN if the both dates are `Invalid Date`", () => {
     const result = differenceInDays(new Date(NaN), new Date(NaN));
     expect(isNaN(result)).toBe(true);
+  });
+
+  it("normalizes the dates", () => {
+    const dateLeft = new TZDate(2025, 0, 1, "Asia/Singapore");
+    const dateRight = new TZDate(2024, 0, 1, "America/New_York");
+    expect(differenceInDays(dateLeft, dateRight)).toBe(365);
+    expect(differenceInDays(dateRight, dateLeft)).toBe(-365);
+  });
+
+  it("allows dates to be of different types", () => {
+    function _test<DateType1 extends Date, DateType2 extends Date>(
+      arg1: DateType1 | number | string,
+      arg2: DateType2 | number | string,
+    ) {
+      differenceInDays(arg1, arg2);
+    }
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      expect(
+        differenceInDays("2024-01-08T00:00:00Z", "2024-01-01T00:00:00Z", {
+          in: tz("Asia/Singapore"),
+        }),
+      ).toBe(7);
+      expect(
+        differenceInDays("2024-01-08T00:00:00Z", "2024-01-01T00:00:00Z", {
+          in: tz("America/New_York"),
+        }),
+      ).toBe(7);
+    });
+
+    it("doesn't enforce argument and context to be of the same type", () => {
+      function _test<DateType extends Date, ResultDate extends Date = DateType>(
+        arg1: DateType | number | string,
+        arg2: DateType | number | string,
+        options?: ContextOptions<ResultDate>,
+      ) {
+        differenceInDays(arg1, arg2, { in: options?.in });
+      }
+    });
   });
 });

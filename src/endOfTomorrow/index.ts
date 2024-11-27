@@ -1,3 +1,12 @@
+import { constructNow } from "../constructNow/index.js";
+import type { ContextOptions } from "../types.js";
+
+/**
+ * The {@link endOfTomorrow} function options.
+ */
+export interface EndOfTomorrowOptions<DateType extends Date = Date>
+  extends ContextOptions<DateType> {}
+
 /**
  * @name endOfTomorrow
  * @category Day Helpers
@@ -8,7 +17,9 @@
  * Return the end of tomorrow.
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
  *
+ * @param options - The options
  * @returns The end of tomorrow
  *
  * @example
@@ -16,14 +27,17 @@
  * const result = endOfTomorrow()
  * //=> Tue Oct 7 2014 23:59:59.999
  */
-export function endOfTomorrow(): Date {
-  const now = new Date();
+export function endOfTomorrow<
+  DateType extends Date,
+  ResultDate extends Date = DateType,
+>(options?: EndOfTomorrowOptions<ResultDate> | undefined): ResultDate {
+  const now = constructNow(options?.in);
   const year = now.getFullYear();
   const month = now.getMonth();
   const day = now.getDate();
 
-  const date = new Date(0);
+  const date = constructNow(options?.in);
   date.setFullYear(year, month, day + 1);
   date.setHours(23, 59, 59, 999);
-  return date;
+  return options?.in ? options.in(date) : (date as ResultDate);
 }

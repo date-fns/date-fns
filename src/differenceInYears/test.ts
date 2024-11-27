@@ -1,4 +1,6 @@
+import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
+import type { ContextOptions, DateArg } from "../types.js";
 import { differenceInYears } from "./index.js";
 
 describe("differenceInYears", () => {
@@ -135,5 +137,46 @@ describe("differenceInYears", () => {
   it("returns NaN if the both dates are `Invalid Date`", () => {
     const result = differenceInYears(new Date(NaN), new Date(NaN));
     expect(isNaN(result)).toBe(true);
+  });
+
+  it("normalizes the dates", () => {
+    const dateLeft = new TZDate(2027, 0, 1, "Asia/Singapore");
+    const dateRight = new TZDate(2024, 0, 1, "America/New_York");
+    expect(differenceInYears(dateLeft, dateRight)).toBe(2);
+    expect(differenceInYears(dateRight, dateLeft)).toBe(-2);
+  });
+
+  it("allows dates to be of different types", () => {
+    function _test<DateType1 extends Date, DateType2 extends Date>(
+      arg1: DateType1 | number | string,
+      arg2: DateType2 | number | string,
+    ) {
+      differenceInYears(arg1, arg2);
+    }
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      expect(
+        differenceInYears("2025-01-01T00:00:00Z", "2024-01-01T00:00:00Z", {
+          in: tz("America/New_York"),
+        }),
+      ).toBe(1);
+      expect(
+        differenceInYears("2025-01-01T00:00:00Z", "2024-01-01T00:00:00Z", {
+          in: tz("Asia/Singapore"),
+        }),
+      ).toBe(1);
+    });
+
+    it("doesn't enforce argument and context to be of the same type", () => {
+      function _test<DateType extends Date, ResultDate extends Date = DateType>(
+        arg1: DateArg<DateType>,
+        arg2: DateArg<DateType>,
+        options?: ContextOptions<ResultDate>,
+      ) {
+        differenceInYears(arg1, arg2, { in: options?.in });
+      }
+    });
   });
 });

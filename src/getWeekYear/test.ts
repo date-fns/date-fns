@@ -1,4 +1,6 @@
+import { tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
+import type { ContextOptions, DateArg } from "../types.js";
 import { getWeekYear } from "./index.js";
 
 describe("getWeekYear", () => {
@@ -45,5 +47,43 @@ describe("getWeekYear", () => {
       },
     });
     expect(result).toBe(2004);
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      expect(
+        getWeekYear("2023-12-31T15:00:00Z", {
+          in: tz("Asia/Singapore"),
+          weekStartsOn: 1,
+        }),
+      ).toBe(2023);
+      expect(
+        getWeekYear("2023-12-31T16:00:00Z", {
+          in: tz("Asia/Singapore"),
+          weekStartsOn: 1,
+        }),
+      ).toBe(2024);
+      expect(
+        getWeekYear("2024-01-01T04:00:00Z", {
+          in: tz("America/New_York"),
+          weekStartsOn: 1,
+        }),
+      ).toBe(2023);
+      expect(
+        getWeekYear("2024-01-01T05:00:00Z", {
+          in: tz("America/New_York"),
+          weekStartsOn: 1,
+        }),
+      ).toBe(2024);
+    });
+
+    it("doesn't enforce argument and context to be of the same type", () => {
+      function _test<DateType extends Date, ResultDate extends Date = DateType>(
+        arg: DateArg<DateType>,
+        options?: ContextOptions<ResultDate>,
+      ) {
+        getWeekYear(arg, { in: options?.in });
+      }
+    });
   });
 });

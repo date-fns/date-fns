@@ -1,5 +1,3 @@
-/* eslint-env mocha */
-
 import { describe, expect, it } from "vitest";
 import { getOverlappingDaysInIntervals } from "./index.js";
 
@@ -137,7 +135,7 @@ describe("getOverlappingDaysInIntervals", () => {
       expect(numOverlappingDays).toBe(24);
     });
 
-    it("considers equal 0-lenght intervals not overlapping", () => {
+    it("considers equal 0-length intervals not overlapping", () => {
       const date = new Date(2016, 10, 15);
       const numOverlappingDays = getOverlappingDaysInIntervals(
         { start: date, end: date },

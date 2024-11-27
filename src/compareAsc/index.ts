@@ -1,4 +1,5 @@
 import { toDate } from "../toDate/index.js";
+import type { DateArg } from "../types.js";
 
 /**
  * @name compareAsc
@@ -8,8 +9,6 @@ import { toDate } from "../toDate/index.js";
  * @description
  * Compare the two dates and return 1 if the first date is after the second,
  * -1 if the first date is before the second or 0 if dates are equal.
- *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
  * @param dateLeft - The first date to compare
  * @param dateRight - The second date to compare
@@ -34,21 +33,15 @@ import { toDate } from "../toDate/index.js";
  * //   Sun Jul 02 1995 00:00:00
  * // ]
  */
-export function compareAsc<DateType extends Date>(
-  dateLeft: DateType | number | string,
-  dateRight: DateType | number | string,
+export function compareAsc(
+  dateLeft: DateArg<Date> & {},
+  dateRight: DateArg<Date> & {},
 ): number {
-  const _dateLeft = toDate(dateLeft);
-  const _dateRight = toDate(dateRight);
+  const diff = +toDate(dateLeft) - +toDate(dateRight);
 
-  const diff = _dateLeft.getTime() - _dateRight.getTime();
+  if (diff < 0) return -1;
+  else if (diff > 0) return 1;
 
-  if (diff < 0) {
-    return -1;
-  } else if (diff > 0) {
-    return 1;
-    // Return 0 if diff is 0; return NaN if diff is NaN
-  } else {
-    return diff;
-  }
+  // Return 0 if diff is 0; return NaN if diff is NaN
+  return diff;
 }

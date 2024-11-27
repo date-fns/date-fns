@@ -1,6 +1,5 @@
-/* eslint-disable no-unused-vars */
-
 import type {
+  DateArg,
   Day,
   Era,
   FirstWeekContainsDateOptions,
@@ -155,8 +154,8 @@ export interface FormatRelativeFnOptions
  * @param options - The object with options
  */
 export type FormatRelativeTokenFn = <DateType extends Date>(
-  date: DateType | number | string,
-  baseDate: DateType | number | string,
+  date: DateArg<DateType>,
+  baseDate: DateArg<DateType>,
   options?: FormatRelativeTokenFnOptions,
 ) => string;
 
@@ -183,8 +182,8 @@ export interface FormatPart {
   /** If the part is a format token. */
   isToken: boolean;
   /** The format part value (i.e. `"do"`). */
-  value: string
-};
+  value: string;
+}
 
 /// Localize types
 
@@ -372,7 +371,7 @@ export type LocaleUnitValue = Era | Quarter | Month | Day | LocaleDayPeriod;
 
 /**
  * The format width. Defines how short or long the formatted string might be.
- * The actaul result length depends on the locale.
+ * The actual result length depends on the locale.
  */
 export type LocaleWidth = "narrow" | "short" | "abbreviated" | "wide" | "any";
 

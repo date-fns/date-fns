@@ -1,4 +1,5 @@
 import { toDate } from "../toDate/index.js";
+import type { DateArg } from "../types.js";
 
 /**
  * @name closestIndexTo
@@ -7,8 +8,6 @@ import { toDate } from "../toDate/index.js";
  *
  * @description
  * Return an index of the closest date from the array comparing to the given date.
- *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
  * @param dateToCompare - The date to compare with
  * @param dates - The array to search
@@ -26,28 +25,29 @@ import { toDate } from "../toDate/index.js";
  * const result = closestIndexTo(dateToCompare, datesArray)
  * //=> 1
  */
-export function closestIndexTo<DateType extends Date>(
-  dateToCompare: DateType | number | string,
-  dates: Array<DateType | number | string>,
+export function closestIndexTo(
+  dateToCompare: DateArg<Date> & {},
+  dates: Array<DateArg<Date> & {}>,
 ): number | undefined {
-  const date = toDate(dateToCompare);
+  // [TODO] It would be better to return -1 here rather than undefined, as this
+  // is how JS behaves, but it would be a breaking change, so we need
+  // to consider it for v4.
+  const timeToCompare = +toDate(dateToCompare);
 
-  if (isNaN(Number(date))) return NaN;
-
-  const timeToCompare = date.getTime();
+  if (isNaN(timeToCompare)) return NaN;
 
   let result: number | undefined;
   let minDistance: number;
-  dates.forEach(function (dirtyDate, index) {
-    const currentDate = toDate(dirtyDate);
+  dates.forEach((date, index) => {
+    const date_ = toDate(date);
 
-    if (isNaN(Number(currentDate))) {
+    if (isNaN(+date_)) {
       result = NaN;
       minDistance = NaN;
       return;
     }
 
-    const distance = Math.abs(timeToCompare - currentDate.getTime());
+    const distance = Math.abs(timeToCompare - +date_);
     if (result == null || distance < minDistance) {
       result = index;
       minDistance = distance;

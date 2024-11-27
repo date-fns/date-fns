@@ -1,21 +1,26 @@
 import { addDays } from "../addDays/index.js";
 import { getDay } from "../getDay/index.js";
-import type { Day } from "../types.js";
+import type { ContextOptions, DateArg, Day } from "../types.js";
+
+/**
+ * The {@link nextDay} function options.
+ */
+export interface NextDayOptions<DateType extends Date = Date>
+  extends ContextOptions<DateType> {}
 
 /**
  * @name nextDay
  * @category Weekday Helpers
- * @summary When is the next day of the week?
- *
- * @description
- * When is the next day of the week? 0-6 the day of the week, 0 represents Sunday.
+ * @summary When is the next day of the week? 0-6 the day of the week, 0 represents Sunday.
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
  *
  * @param date - The date to check
- * @param day - day of the week
+ * @param day - Day of the week
+ * @param options - An object with options
  *
- * @returns The date is the next day of week
+ * @returns The date is the next day of the week
  *
  * @example
  * // When is the next Monday after Mar, 20, 2020?
@@ -27,12 +32,16 @@ import type { Day } from "../types.js";
  * const result = nextDay(new Date(2020, 2, 21), 2)
  * //=> Tue Mar 24 2020 00:00:00
  */
-export function nextDay<DateType extends Date>(
-  date: DateType | number | string,
+export function nextDay<
+  DateType extends Date,
+  ResultDate extends Date = DateType,
+>(
+  date: DateArg<DateType>,
   day: Day,
-): DateType {
-  let delta = day - getDay(date);
+  options?: NextDayOptions<ResultDate> | undefined,
+): ResultDate {
+  let delta = day - getDay(date, options);
   if (delta <= 0) delta += 7;
 
-  return addDays(date, delta);
+  return addDays(date, delta, options);
 }

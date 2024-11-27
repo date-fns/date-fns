@@ -2,32 +2,28 @@ import { addDays } from "../addDays/index.js";
 import { addMonths } from "../addMonths/index.js";
 import { constructFrom } from "../constructFrom/index.js";
 import { toDate } from "../toDate/index.js";
-import type { Duration } from "../types.js";
+import type { ContextOptions, DateArg, Duration } from "../types.js";
+
+/**
+ * The {@link add} function options.
+ */
+export interface AddOptions<DateType extends Date = Date>
+  extends ContextOptions<DateType> {}
 
 /**
  * @name add
  * @category Common Helpers
- * @summary Add the specified years, months, weeks, days, hours, minutes and seconds to the given date.
+ * @summary Add the specified years, months, weeks, days, hours, minutes, and seconds to the given date.
  *
  * @description
- * Add the specified years, months, weeks, days, hours, minutes and seconds to the given date.
+ * Add the specified years, months, weeks, days, hours, minutes, and seconds to the given date.
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam DateType - The `Date` type the function operates on. Gets inferred from passed arguments. Allows using extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
  *
  * @param date - The date to be changed
- * @param duration - The object with years, months, weeks, days, hours, minutes and seconds to be added.
- *
- * | Key            | Description                        |
- * |----------------|------------------------------------|
- * | years          | Amount of years to be added        |
- * | months         | Amount of months to be added       |
- * | weeks          | Amount of weeks to be added        |
- * | days           | Amount of days to be added         |
- * | hours          | Amount of hours to be added        |
- * | minutes        | Amount of minutes to be added      |
- * | seconds        | Amount of seconds to be added      |
- *
- * All values default to 0
+ * @param duration - The object with years, months, weeks, days, hours, minutes, and seconds to be added.
+ * @param options - An object with options
  *
  * @returns The new date with the seconds added
  *
@@ -38,16 +34,17 @@ import type { Duration } from "../types.js";
  *   months: 9,
  *   weeks: 1,
  *   days: 7,
- *   hours: 5,\\-7
+ *   hours: 5,
  *   minutes: 9,
  *   seconds: 30,
  * })
  * //=> Thu Jun 15 2017 15:29:20
  */
-export function add<DateType extends Date>(
-  date: DateType | number | string,
+export function add<DateType extends Date, ResultDate extends Date = DateType>(
+  date: DateArg<DateType>,
   duration: Duration,
-): DateType {
+  options?: AddOptions<ResultDate> | undefined,
+): ResultDate {
   const {
     years = 0,
     months = 0,
@@ -59,7 +56,7 @@ export function add<DateType extends Date>(
   } = duration;
 
   // Add years and months
-  const _date = toDate(date);
+  const _date = toDate(date, options?.in);
   const dateWithMonths =
     months || years ? addMonths(_date, months + years * 12) : _date;
 
@@ -67,11 +64,10 @@ export function add<DateType extends Date>(
   const dateWithDays =
     days || weeks ? addDays(dateWithMonths, days + weeks * 7) : dateWithMonths;
 
-  // Add days, hours, minutes and seconds
+  // Add days, hours, minutes, and seconds
   const minutesToAdd = minutes + hours * 60;
   const secondsToAdd = seconds + minutesToAdd * 60;
   const msToAdd = secondsToAdd * 1000;
-  const finalDate = constructFrom(date, dateWithDays.getTime() + msToAdd);
 
-  return finalDate;
+  return constructFrom(options?.in || date, +dateWithDays + msToAdd);
 }

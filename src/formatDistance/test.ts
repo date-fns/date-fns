@@ -1,3 +1,4 @@
+import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
 import type { FormatDistanceFn } from "../locale/types.js";
 import { formatDistance } from "./index.js";
@@ -240,14 +241,51 @@ describe("formatDistance", () => {
   });
 
   it("throws RangeError if the first date is `Invalid Date`", () => {
-    expect(formatDistance.bind(null, new Date(NaN), new Date(1986, 3, 7, 10, 32, 0))).toThrow(RangeError);
+    expect(
+      formatDistance.bind(null, new Date(NaN), new Date(1986, 3, 7, 10, 32, 0)),
+    ).toThrow(RangeError);
   });
 
   it("throws RangeError if the second date is `Invalid Date`", () => {
-    expect(formatDistance.bind(null, new Date(1986, 3, 4, 10, 32, 0), new Date(NaN))).toThrow(RangeError);
+    expect(
+      formatDistance.bind(null, new Date(1986, 3, 4, 10, 32, 0), new Date(NaN)),
+    ).toThrow(RangeError);
   });
 
   it("throws RangeError if the both dates are `Invalid Date`", () => {
-    expect(formatDistance.bind(null, new Date(NaN), new Date(NaN))).toThrow(RangeError);
+    expect(formatDistance.bind(null, new Date(NaN), new Date(NaN))).toThrow(
+      RangeError,
+    );
+  });
+
+  it("normalizes the dates", () => {
+    const dateLeft = new TZDate(2023, 5, 1, "Asia/Singapore");
+    const dateRight = new TZDate(2023, 11, 1, "America/New_York");
+    expect(formatDistance(dateLeft, dateRight)).toEqual("6 months");
+    expect(formatDistance(dateRight, dateLeft)).toBe("6 months");
+  });
+
+  it("allows dates to be of different types", () => {
+    function _test<DateType1 extends Date, DateType2 extends Date>(
+      start: DateType1 | number | string,
+      end: DateType2 | number | string,
+    ) {
+      formatDistance(start, end);
+    }
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      expect(
+        formatDistance("2024-04-10T07:00:00Z", "2024-04-12T07:00:00Z", {
+          in: tz("America/Los_Angeles"),
+        }),
+      ).toEqual("2 days");
+      expect(
+        formatDistance("2024-04-10T07:00:00Z", "2024-04-12T07:00:00Z", {
+          in: tz("Asia/Singapore"),
+        }),
+      ).toEqual("2 days");
+    });
   });
 });

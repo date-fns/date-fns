@@ -1,15 +1,14 @@
 import { $ } from "bun";
 import { availableParallelism } from "node:os";
-import { promiseQueue } from "./queue";
+import { promiseQueue } from "./queue.js";
 
 export async function testTimeZone(timeZone: string) {
-  const { stderr, exitCode } =
+  try {
     await $`TZ=${timeZone} bun test ./src/**/test.ts`.quiet();
-
-  if (exitCode) {
-    console.log(stderr.toString());
+  } catch (err: any) {
+    console.log(err.stderr.toString());
     console.log(`⛔ Tests for the time zone ${timeZone}`);
-    process.exit(exitCode);
+    process.exit(err.exitCode);
   }
 
   console.log(`✅ Tests for the time zone ${timeZone}`);

@@ -1,4 +1,5 @@
-import type { GenericDateConstructor } from "../types.js";
+import { constructFrom } from "../constructFrom/index.js";
+import type { ConstructableDate, ContextFn, DateArg } from "../types.js";
 
 /**
  * @name toDate
@@ -14,9 +15,15 @@ import type { GenericDateConstructor } from "../types.js";
  *
  * If the argument is none of the above, the function returns Invalid Date.
  *
+ * Starting from v3.7.0, it clones a date using `[Symbol.for("constructDateFrom")]`
+ * enabling to transfer extra properties from the reference date to the new date.
+ * It's useful for extensions like [`TZDate`](https://github.com/date-fns/tz)
+ * that accept a time zone as a constructor argument.
+ *
  * **Note**: *all* Date arguments passed to any *date-fns* function is processed by `toDate`.
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
  *
  * @param argument - The value to convert
  *
@@ -32,30 +39,13 @@ import type { GenericDateConstructor } from "../types.js";
  * const result = toDate(1392098430000)
  * //=> Tue Feb 11 2014 11:30:30
  */
-export function toDate<DateType extends Date>(
-  argument: DateType | number | string,
-): DateType {
-  const argStr = Object.prototype.toString.call(argument);
-
-  // Clone the date
-  if (
-    argument instanceof Date ||
-    (typeof argument === "object" && argStr === "[object Date]")
-  ) {
-    // Prevent the date to lose the milliseconds when passed to new Date() in IE10
-    return new (argument.constructor as GenericDateConstructor<DateType>)(
-      +argument,
-    );
-  } else if (
-    typeof argument === "number" ||
-    argStr === "[object Number]" ||
-    typeof argument === "string" ||
-    argStr === "[object String]"
-  ) {
-    // TODO: Can we get rid of as?
-    return new Date(argument) as DateType;
-  } else {
-    // TODO: Can we get rid of as?
-    return new Date(NaN) as DateType;
-  }
+export function toDate<
+  DateType extends Date | ConstructableDate,
+  ResultDate extends Date = DateType,
+>(
+  argument: DateArg<DateType>,
+  context?: ContextFn<ResultDate> | undefined,
+): ResultDate {
+  // [TODO] Get rid of `toDate` or `constructFrom`?
+  return constructFrom(context || argument, argument);
 }

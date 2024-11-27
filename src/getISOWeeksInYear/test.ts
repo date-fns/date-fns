@@ -1,4 +1,6 @@
+import { tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
+import type { ContextOptions, DateArg } from "../types.js";
 import { getISOWeeksInYear } from "./index.js";
 
 describe("getISOWeeksInYear", () => {
@@ -33,5 +35,24 @@ describe("getISOWeeksInYear", () => {
     // there was 52 ISO weeks.
     expect(getISOWeeksInYear(new Date(-2015, 1 /* Feb */, 11))).toBe(52);
     expect(getISOWeeksInYear(new Date(385, 1 /* Feb */, 11))).toBe(52);
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      expect(
+        getISOWeeksInYear("2024-01-01T00:00:00Z", {
+          in: tz("Europe/London"),
+        }),
+      ).toBe(52);
+    });
+
+    it("doesn't enforce argument and context to be of the same type", () => {
+      function _test<DateType extends Date, ResultDate extends Date = DateType>(
+        arg: DateArg<DateType>,
+        options?: ContextOptions<ResultDate>,
+      ) {
+        getISOWeeksInYear(arg, { in: options?.in });
+      }
+    });
   });
 });

@@ -1,5 +1,11 @@
+import { normalizeDates } from "../_lib/normalizeDates/index.js";
 import { differenceInCalendarDays } from "../differenceInCalendarDays/index.js";
-import { toDate } from "../toDate/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
+
+/**
+ * The {@link differenceInDays} function options.
+ */
+export interface DifferenceInDaysOptions extends ContextOptions<Date> {}
 
 /**
  * @name differenceInDays
@@ -17,10 +23,9 @@ import { toDate } from "../toDate/index.js";
  * To ignore DST and only measure exact 24-hour periods, use this instead:
  * `Math.trunc(differenceInHours(dateLeft, dateRight)/24)|0`.
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- *
- * @param dateLeft - The later date
- * @param dateRight - The earlier date
+ * @param laterDate - The later date
+ * @param earlierDate - The earlier date
+ * @param options - An object with options
  *
  * @returns The number of full days according to the local timezone
  *
@@ -55,23 +60,30 @@ import { toDate } from "../toDate/index.js";
  * )
  * //=> 92
  */
-export function differenceInDays<DateType extends Date>(
-  dateLeft: DateType | number | string,
-  dateRight: DateType | number | string,
+export function differenceInDays(
+  laterDate: DateArg<Date> & {},
+  earlierDate: DateArg<Date> & {},
+  options?: DifferenceInDaysOptions | undefined,
 ): number {
-  const _dateLeft = toDate(dateLeft);
-  const _dateRight = toDate(dateRight);
+  const [laterDate_, earlierDate_] = normalizeDates(
+    options?.in,
+    laterDate,
+    earlierDate,
+  );
 
-  const sign = compareLocalAsc(_dateLeft, _dateRight);
-  const difference = Math.abs(differenceInCalendarDays(_dateLeft, _dateRight));
+  const sign = compareLocalAsc(laterDate_, earlierDate_);
+  const difference = Math.abs(
+    differenceInCalendarDays(laterDate_, earlierDate_),
+  );
 
-  _dateLeft.setDate(_dateLeft.getDate() - sign * difference);
+  laterDate_.setDate(laterDate_.getDate() - sign * difference);
 
   // Math.abs(diff in full days - diff in calendar days) === 1 if last calendar day is not full
   // If so, result must be decreased by 1 in absolute value
   const isLastDayNotFull = Number(
-    compareLocalAsc(_dateLeft, _dateRight) === -sign,
+    compareLocalAsc(laterDate_, earlierDate_) === -sign,
   );
+
   const result = sign * (difference - isLastDayNotFull);
   // Prevent negative zero
   return result === 0 ? 0 : result;
@@ -81,25 +93,19 @@ export function differenceInDays<DateType extends Date>(
 // for accurate equality comparisons of UTC timestamps that end up
 // having the same representation in local time, e.g. one hour before
 // DST ends vs. the instant that DST ends.
-function compareLocalAsc<DateType extends Date>(
-  dateLeft: DateType,
-  dateRight: DateType,
-): number {
+function compareLocalAsc(laterDate: Date, earlierDate: Date): number {
   const diff =
-    dateLeft.getFullYear() - dateRight.getFullYear() ||
-    dateLeft.getMonth() - dateRight.getMonth() ||
-    dateLeft.getDate() - dateRight.getDate() ||
-    dateLeft.getHours() - dateRight.getHours() ||
-    dateLeft.getMinutes() - dateRight.getMinutes() ||
-    dateLeft.getSeconds() - dateRight.getSeconds() ||
-    dateLeft.getMilliseconds() - dateRight.getMilliseconds();
+    laterDate.getFullYear() - earlierDate.getFullYear() ||
+    laterDate.getMonth() - earlierDate.getMonth() ||
+    laterDate.getDate() - earlierDate.getDate() ||
+    laterDate.getHours() - earlierDate.getHours() ||
+    laterDate.getMinutes() - earlierDate.getMinutes() ||
+    laterDate.getSeconds() - earlierDate.getSeconds() ||
+    laterDate.getMilliseconds() - earlierDate.getMilliseconds();
 
-  if (diff < 0) {
-    return -1;
-  } else if (diff > 0) {
-    return 1;
-    // Return 0 if diff is 0; return NaN if diff is NaN
-  } else {
-    return diff;
-  }
+  if (diff < 0) return -1;
+  if (diff > 0) return 1;
+
+  // Return 0 if diff is 0; return NaN if diff is NaN
+  return diff;
 }

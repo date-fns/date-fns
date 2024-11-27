@@ -1,4 +1,12 @@
+import { constructFrom } from "../constructFrom/index.js";
 import { toDate } from "../toDate/index.js";
+import type { ContextFn, ContextOptions, DateArg } from "../types.js";
+
+/**
+ * The {@link max} function options.
+ */
+export interface MaxOptions<DateType extends Date = Date>
+  extends ContextOptions<DateType> {}
 
 /**
  * @name max
@@ -9,6 +17,7 @@ import { toDate } from "../toDate/index.js";
  * Return the latest of the given dates.
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
  *
  * @param dates - The dates to compare
  *
@@ -24,21 +33,21 @@ import { toDate } from "../toDate/index.js";
  * ])
  * //=> Sun Jul 02 1995 00:00:00
  */
-export function max<DateType extends Date>(
-  dates: Array<DateType | number | string>,
-): DateType | Date {
-  let result: Date | undefined;
-  dates.forEach(function (dirtyDate) {
-    const currentDate = toDate(dirtyDate);
+export function max<DateType extends Date, ResultDate extends Date = DateType>(
+  dates: DateArg<DateType>[],
+  options?: MaxOptions<ResultDate> | undefined,
+): ResultDate {
+  let result: ResultDate | undefined;
+  let context = options?.in;
 
-    if (
-      result === undefined ||
-      result < currentDate ||
-      isNaN(Number(currentDate))
-    ) {
-      result = currentDate;
-    }
+  dates.forEach((date) => {
+    // Use the first date object as the context function
+    if (!context && typeof date === "object")
+      context = constructFrom.bind(null, date) as ContextFn<ResultDate>;
+
+    const date_ = toDate(date, context);
+    if (!result || result < date_ || isNaN(+date_)) result = date_;
   });
 
-  return result || new Date(NaN);
+  return constructFrom(context, result || NaN);
 }

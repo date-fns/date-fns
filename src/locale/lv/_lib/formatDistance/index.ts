@@ -10,9 +10,7 @@ type Schema = {
 };
 
 type FormatDistanceTokenValue = (
-  // eslint-disable-next-line no-unused-vars
   count: number,
-  // eslint-disable-next-line no-unused-vars
   options?: FormatDistanceFnOptions,
 ) => string;
 

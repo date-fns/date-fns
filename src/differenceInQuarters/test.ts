@@ -1,8 +1,10 @@
+import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
 import { differenceInQuarters } from "./index.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 describe("differenceInQuarters", () => {
-  it("returns the number of full quarters between the given dates  with `trunc` as a default rounding method", () => {
+  it("returns the number of full quarters between the given dates with `trunc` as a default rounding method", () => {
     const result = differenceInQuarters(
       new Date(2012, 6 /* Jul */, 2, 5, 0),
       new Date(2011, 6 /* Jul */, 2, 6, 0),
@@ -141,8 +143,47 @@ describe("differenceInQuarters", () => {
     expect(isNaN(result)).toBe(true);
   });
 
-  it("returns NaN if the both dates are `Invalid Date`", () => {
+  it("returns NaN if both dates are `Invalid Date`", () => {
     const result = differenceInQuarters(new Date(NaN), new Date(NaN));
     expect(isNaN(result)).toBe(true);
+  });
+
+  it("allows dates to be of different types", () => {
+    function _test<DateType1 extends Date, DateType2 extends Date>(
+      arg1: DateType1 | number | string,
+      arg2: DateType2 | number | string,
+    ) {
+      differenceInQuarters(arg1, arg2);
+    }
+  });
+
+  it("normalizes the dates", () => {
+    const dateLeft = new TZDate(2022, 3, 1, "Asia/Singapore");
+    const dateRight = new TZDate(2021, 11, 31, "America/New_York");
+    expect(differenceInQuarters(dateLeft, dateRight)).toBe(1);
+    expect(differenceInQuarters(dateRight, dateLeft)).toBe(-1);
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      const result = differenceInQuarters(
+        "2024-01-10T07:00:00Z",
+        "2023-01-10T07:00:00Z",
+        {
+          in: tz("America/Los_Angeles"),
+        },
+      );
+      expect(result).toBe(4);
+    });
+
+    it("doesn't enforce argument and context to be of the same type", () => {
+      function _test<DateType extends Date, ResultDate extends Date = DateType>(
+        arg1: DateArg<DateType>,
+        arg2: DateArg<DateType>,
+        options?: ContextOptions<ResultDate>,
+      ) {
+        differenceInQuarters(arg1, arg2, { in: options?.in });
+      }
+    });
   });
 });

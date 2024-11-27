@@ -1,63 +1,127 @@
-# Time Zones
+# Time zones
 
-## Table of Contents
+Starting from v4, date-fns has first-class support for time zones. It is provided via [`@date-fns/tz`] and [`@date-fns/utc`] packages. Visit the links to learn more about corresponding packages.
 
-- [Overview](#overview)
+Just like with everything else in date-fns, the time zones support has a minimal bundle size footprint with `UTCDateMini` and `TZDateMini` being `239 B` and `761 B`, respectively.
 
-- [`date-fns-tz`](#date-fns-tz)
+If you're looking for time zone support prior to date-fns v4, see the third-party [`date-fns-tz`](https://github.com/marnusw/date-fns-tz) package.
 
-## Overview
+[See the announcement blog post](https://blog.date-fns.org/v40-with-time-zone-support/) for details about the motivation and implementation and [the change log entry for the list of changes in v4.0](https://date-fns.org/v4.0.0/docs/Change-Log#v4.0.0-2024-09-16).
 
-Working with UTC or ISO date strings is easy, and so is working with JS dates when all times
-are displayed in a user's local time in the browser. The difficulty comes when working with another
-time zone's local time, other than the current system's, like showing the local time of an event in LA
-at 8pm PST on a Node server in Europe or a user's machine set to EST.
+## Working with time zones
 
-In this case there are two relevant pieces of information:
+There are two ways to start working with time zones:
 
-- a fixed moment in time in the form of a timestamp, UTC or ISO date string, and
-- the time zone descriptor, usually an offset or IANA time zone name (e.g. `America/Los_Angeles`).
+- [Using the `Date` extensions `TZDate` and `UTCDate`](#using-tzdate-utcdate)
+- [Using the date-fns functions' `in` option](#using-in-option)
 
-Libraries like Moment and Luxon, which provide their own date time classes, manage these timestamp and time
-zone values internally. Since `date-fns` always returns a plain JS Date, which implicitly has the current
-system's time zone, helper functions are needed for handling common time zone related use cases.
+### Using `TZDate` & `UTCDate`
 
-## [`date-fns-tz`](https://www.npmjs.com/package/date-fns-tz)
+One way is to use [`TZDate`](https://github.com/date-fns/tz) or [`UTCDate`](https://github.com/date-fns/tz) `Date` extensions,with regular date-fns functions:
 
-Dependency free IANA time zone support is implemented via the
-[Intl API](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl) to keep
-actual time zone data out of code bundles. Modern browsers all support the
-[necessary features](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat#Browser_compatibility),
-and for those that don't a [polyfill](https://github.com/yahoo/date-time-format-timezone) can be used.
+```ts
+import { TZDate } from "@date-fns/tz";
+import { addHours } from "date-fns";
 
-Functions are provided for converting to and from a Date instance which will have the internal UTC time
-adjusted so it prints to the correct time value in the associated time zone, regardless of the current
-system time zone. The `date-fns` `format` function is extended with support for the `z...zzzz` tokens to
-format long and short time zone names.
+// Given that the system time zone is America/Los_Angeles
+// where DST happens on Sunday, 13 March 2022, 02:00:00
 
-Compatible with `date-fns` version 2
+// Using the system time zone will produce 03:00 instead of 02:00 because of DST:
+const date = new Date(2022, 2, 13);
+addHours(date, 2).toString();
+//=> 'Sun Mar 13 2022 03:00:00 GMT-0700 (Pacific Daylight Time)'
 
-License: MIT
-
-### Synopsis
-
-```js
-const { zonedTimeToUtc, utcToZonedTime, format } = require("date-fns-tz");
-
-// Set the date to "2018-09-01T16:01:36.386Z"
-const utcDate = zonedTimeToUtc("2018-09-01 18:01:36.386", "Europe/Berlin");
-
-// Obtain a Date instance that will render the equivalent Berlin time for the UTC date
-const date = new Date("2018-09-01T16:01:36.386Z");
-const timeZone = "Europe/Berlin";
-const zonedDate = utcToZonedTime(date, timeZone);
-// zonedDate could be used to initialize a date picker or display the formatted local date/time
-
-// Set the output to "1.9.2018 18:01:36.386 GMT+02:00 (CEST)"
-const pattern = "d.M.yyyy HH:mm:ss.SSS 'GMT' XXX (z)";
-const output = format(zonedDate, pattern, { timeZone: "Europe/Berlin" });
+// Using Asia/Singapore will provide the expected 02:00:
+const tzDate = new TZDate(2022, 2, 13, "Asia/Singapore");
+addHours(tzDate, 2).toString();
+//=> 'Sun Mar 13 2022 02:00:00 GMT+0800 (Singapore Standard Time)'
 ```
 
-### Links
+You can safely mix and match regular `Date` instances, as well as `UTCDate` or `TZDate` in different time zones and primitive values (timestamps and strings). date-fns will normalize the arguments, taking the first object argument (`Date` or a `Date` extension instance) as the reference and return the result in the reference type:
 
-- [API / Usage Scenarios](https://github.com/marnusw/date-fns-tz#time-zone-helpers)
+```ts
+import { TZDate } from "@date-fns/tz";
+import { differenceInBusinessDays } from "date-fns";
+
+const laterDate = new TZDate(2025, 0, 1, "Asia/Singapore");
+const earlierDate = new TZDate(2024, 0, 1, "America/New_York");
+
+// Will calculate in Asia/Singapore
+differenceInBusinessDays(laterDate, earlierDate);
+//=> 262
+
+// Will calculate in America/New_York
+differenceInBusinessDays(earlierDate, laterDate);
+//=> -261
+```
+
+In the given example, the one-day difference comes from the fact that in New York (UTC-5), the `earlierDate` will be `Dec 31` rather than `Jan 1`:
+
+```ts
+laterDate.withTimeZone("Asia/Singapore").toString();
+//=> 'Wed Jan 01 2025 00:00:00 GMT+0800 (Singapore Standard Time)'
+earlierDate.withTimeZone("Asia/Singapore").toString();
+//=> 'Mon Jan 01 2024 13:00:00 GMT+0800 (Singapore Standard Time)'
+
+laterDate.withTimeZone("America/New_York").toString();
+//=> 'Tue Dec 31 2024 11:00:00 GMT-0500 (Eastern Standard Time)'
+earlierDate.withTimeZone("America/New_York").toString();
+//=> 'Mon Jan 01 2024 00:00:00 GMT-0500 (Eastern Standard Time)'
+```
+
+This is essential to understand and consider when making calculations.
+
+### Using `in` option
+
+When it is important to get the value in a specific time zone or when you are unsure about the type of arguments, use the function context `in` option.
+
+Each function, where the calculation might be affected by the time zone, like with `differenceInBusinessDays`, accepts the `in` option that provides the context for the arguments and the result, so you can explicitly say what time zone to use:
+
+```ts
+import { tz } from "@date-fns/tz";
+
+// Will calculate in Asia/Singapore
+differenceInBusinessDays(laterDate, earlierDate);
+//=> 262
+
+// Will normalize to America/Los_Angeles
+differenceInBusinessDays(laterDate, earlierDate, {
+  in: tz("America/Los_Angeles"),
+});
+//=> 261
+```
+
+In the example, we forced `differenceInBusinessDays` to use the Los Angeles time zone.
+
+## Transposing date values
+
+Sometimes, you want to transpose date values from a date instance to another time zone or vice versa. For that, you would use the `transpose` function:
+
+```ts
+import { transpose } from "date-fns";
+import { tz } from "@date-fns/tz";
+
+// Singapore is the system time zone:
+const sgDate = new Date(2024, 8 /* Sep */, 7, 6, 5, 4);
+//=> 'Wed Sep 07 2024 06:05:04 GMT+0800 (Singapore Standard Time)'
+
+// Transpose the date to Los Angeles time zone:
+const laDate = transpose(sgDate, tz("America/Los_Angeles"));
+//=> 'Wed Sep 07 2024 06:05:04 GMT-0700 (Pacific Daylight Time)'
+
+// Transpose back to local time zone using Date:
+const systemDate = transpose(laDate, Date);
+//=> 'Wed Sep 07 2024 06:05:04 GMT+0800 (Singapore Standard Time)'
+```
+
+This is the `date-fns-tz`'s `fromZonedTime` and `toZonedTime` equivalent.
+
+## Further reading
+
+Read more about the time zone packages visiting their READMEs:
+
+- [`@date-fns/tz`]
+- [`@date-fns/utc`]
+
+[`@date-fns/tz`]: https://github.com/date-fns/tz
+[`@date-fns/utc`]: https://github.com/date-fns/utc

@@ -13,7 +13,7 @@ import { millisecondsInSecond } from "../constants/index.js";
  * @returns The number of milliseconds converted in seconds
  *
  * @example
- * // Convert 1000 miliseconds to seconds:
+ * // Convert 1000 milliseconds to seconds:
  * const result = millisecondsToSeconds(1000)
  * //=> 1
  *

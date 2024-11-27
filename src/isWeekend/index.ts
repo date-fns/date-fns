@@ -1,4 +1,10 @@
 import { toDate } from "../toDate/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
+
+/**
+ * The {@link isWeekend} function options.
+ */
+export interface IsWeekendOptions extends ContextOptions<Date> {}
 
 /**
  * @name isWeekend
@@ -6,11 +12,10 @@ import { toDate } from "../toDate/index.js";
  * @summary Does the given date fall on a weekend?
  *
  * @description
- * Does the given date fall on a weekend?
- *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * Does the given date fall on a weekend? A weekend is either Saturday (`6`) or Sunday (`0`).
  *
  * @param date - The date to check
+ * @param options - An object with options
  *
  * @returns The date falls on a weekend
  *
@@ -19,9 +24,10 @@ import { toDate } from "../toDate/index.js";
  * const result = isWeekend(new Date(2014, 9, 5))
  * //=> true
  */
-export function isWeekend<DateType extends Date>(
-  date: DateType | number | string,
+export function isWeekend(
+  date: DateArg<Date> & {},
+  options?: IsWeekendOptions | undefined,
 ): boolean {
-  const day = toDate(date).getDay();
+  const day = toDate(date, options?.in).getDay();
   return day === 0 || day === 6;
 }
