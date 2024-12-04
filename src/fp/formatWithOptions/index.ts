@@ -1,6 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.
 
-import fn from '../../format/index'
-import convertToFP from '../_lib/convertToFP/index'
+import { format as fn } from "../../format/index.js";
+import { convertToFP } from "../_lib/convertToFP/index.js";
 
-export default convertToFP(fn, 3)
+export const formatWithOptions = convertToFP(fn, 3);

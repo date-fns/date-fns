@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name getDecade
@@ -8,19 +8,25 @@ import toDate from '../toDate/index'
  * @description
  * Get the decade of the given date.
  *
- * @param date - the given date
- * @returns the year of decade
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The given date
+ *
+ * @returns The year of decade
  *
  * @example
  * // Which decade belongs 27 November 1942?
  * const result = getDecade(new Date(1942, 10, 27))
  * //=> 1940
  */
-export default function getDecade<DateType extends Date>(
-  dirtyDate: DateType | number
+export function getDecade<DateType extends Date>(
+  date: DateType | number | string,
 ): number {
-  const date = toDate(dirtyDate)
-  const year = date.getFullYear()
-  const decade = Math.floor(year / 10) * 10
-  return decade
+  // TODO: Switch to more technical definition in of decades that start with 1
+  // end with 0. I.e. 2001-2010 instead of current 2000-2009. It's a breaking
+  // change, so it can only be done in 4.0.
+  const _date = toDate(date);
+  const year = _date.getFullYear();
+  const decade = Math.floor(year / 10) * 10;
+  return decade;
 }

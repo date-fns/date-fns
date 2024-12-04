@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name differenceInCalendarYears
@@ -8,9 +8,12 @@ import toDate from '../toDate/index'
  * @description
  * Get the number of calendar years between the given dates.
  *
- * @param dateLeft - the later date
- * @param dateRight - the earlier date
- * @returns the number of calendar years
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param dateLeft - The later date
+ * @param dateRight - The earlier date
+
+ * @returns The number of calendar years
  *
  * @example
  * // How many calendar years are between 31 December 2013 and 11 February 2015?
@@ -20,12 +23,12 @@ import toDate from '../toDate/index'
  * )
  * //=> 2
  */
-export default function differenceInCalendarYears<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+export function differenceInCalendarYears<DateType extends Date>(
+  dateLeft: DateType | number | string,
+  dateRight: DateType | number | string,
 ): number {
-  const dateLeft = toDate(dirtyDateLeft)
-  const dateRight = toDate(dirtyDateRight)
+  const _dateLeft = toDate(dateLeft);
+  const _dateRight = toDate(dateRight);
 
-  return dateLeft.getFullYear() - dateRight.getFullYear()
+  return _dateLeft.getFullYear() - _dateRight.getFullYear();
 }

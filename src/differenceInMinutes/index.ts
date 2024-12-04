@@ -1,7 +1,7 @@
-import { millisecondsInMinute } from '../constants/index'
-import differenceInMilliseconds from '../differenceInMilliseconds/index'
-import type { RoundingOptions } from '../types'
-import { getRoundingMethod } from '../_lib/roundingMethods/index'
+import { getRoundingMethod } from "../_lib/getRoundingMethod/index.js";
+import { millisecondsInMinute } from "../constants/index.js";
+import { differenceInMilliseconds } from "../differenceInMilliseconds/index.js";
+import type { RoundingOptions } from "../types.js";
 
 /**
  * The {@link differenceInMinutes} function options.
@@ -16,10 +16,13 @@ export interface DifferenceInMinutesOptions extends RoundingOptions {}
  * @description
  * Get the signed number of full (rounded towards 0) minutes between the given dates.
  *
- * @param dateLeft - the later date
- * @param dateRight - the earlier date
- * @param options - an object with options.
- * @returns the number of minutes
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param dateLeft - The later date
+ * @param dateRight - The earlier date
+ * @param options - An object with options.
+ *
+ * @returns The number of minutes
  *
  * @example
  * // How many minutes are between 2 July 2014 12:07:59 and 2 July 2014 12:20:00?
@@ -37,12 +40,12 @@ export interface DifferenceInMinutesOptions extends RoundingOptions {}
  * )
  * //=> -1
  */
-export default function differenceInMinutes<DateType extends Date>(
-  dateLeft: DateType | number,
-  dateRight: DateType | number,
-  options?: DifferenceInMinutesOptions
+export function differenceInMinutes<DateType extends Date>(
+  dateLeft: DateType | number | string,
+  dateRight: DateType | number | string,
+  options?: DifferenceInMinutesOptions,
 ): number {
   const diff =
-    differenceInMilliseconds(dateLeft, dateRight) / millisecondsInMinute
-  return getRoundingMethod(options?.roundingMethod)(diff)
+    differenceInMilliseconds(dateLeft, dateRight) / millisecondsInMinute;
+  return getRoundingMethod(options?.roundingMethod)(diff);
 }

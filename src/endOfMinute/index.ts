@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name endOfMinute
@@ -9,18 +9,21 @@ import toDate from '../toDate/index'
  * Return the end of a minute for the given date.
  * The result will be in the local timezone.
  *
- * @param date - the original date
- * @returns the end of a minute
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The original date
+ *
+ * @returns The end of a minute
  *
  * @example
  * // The end of a minute for 1 December 2014 22:15:45.400:
  * const result = endOfMinute(new Date(2014, 11, 1, 22, 15, 45, 400))
  * //=> Mon Dec 01 2014 22:15:59.999
  */
-export default function endOfMinute<DateType extends Date>(
-  dirtyDate: DateType | number
+export function endOfMinute<DateType extends Date>(
+  date: DateType | number | string,
 ): DateType {
-  const date = toDate(dirtyDate)
-  date.setSeconds(59, 999)
-  return date
+  const _date = toDate(date);
+  _date.setSeconds(59, 999);
+  return _date;
 }

@@ -1,4 +1,4 @@
-import { secondsInMinute } from '../constants/index'
+import { secondsInMinute } from "../constants/index.js";
 
 /**
  * @name secondsToMinutes
@@ -8,9 +8,9 @@ import { secondsInMinute } from '../constants/index'
  * @description
  * Convert a number of seconds to a full number of minutes.
  *
- * @param seconds - number of seconds to be converted
+ * @param seconds - The number of seconds to be converted
  *
- * @returns the number of seconds converted in minutes
+ * @returns The number of seconds converted in minutes
  *
  * @example
  * // Convert 120 seconds into minutes
@@ -22,7 +22,7 @@ import { secondsInMinute } from '../constants/index'
  * const result = secondsToMinutes(119)
  * //=> 1
  */
-export default function secondsToMinutes(seconds: number): number {
-  const minutes = seconds / secondsInMinute
-  return Math.floor(minutes)
+export function secondsToMinutes(seconds: number): number {
+  const minutes = seconds / secondsInMinute;
+  return Math.trunc(minutes);
 }

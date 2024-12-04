@@ -1,20 +1,19 @@
-import type { Locale } from '../types'
-import formatDistance from './_lib/formatDistance/index'
-import formatLong from './_lib/formatLong/index'
-import formatRelative from './_lib/formatRelative/index'
-import localize from './_lib/localize/index'
-import match from './_lib/match/index'
+import type { Locale } from "../types.js";
+import { formatDistance } from "./_lib/formatDistance/index.js";
+import { formatLong } from "./_lib/formatLong/index.js";
+import { formatRelative } from "./_lib/formatRelative/index.js";
+import { localize } from "./_lib/localize/index.js";
+import { match } from "./_lib/match/index.js";
 
 /**
- * @type {Locale}
  * @category Locales
  * @summary Kazakh locale.
  * @language Kazakh
  * @iso-639-2 kaz
- * @author Nikita Bayev [@drugoi]{@link https://github.com/drugoi}
+ * @author Nikita Bayev [@drugoi](https://github.com/drugoi)
  */
-const locale: Locale = {
-  code: 'kk',
+export const kk: Locale = {
+  code: "kk",
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
@@ -24,6 +23,4 @@ const locale: Locale = {
     weekStartsOn: 1 /* Monday */,
     firstWeekContainsDate: 1,
   },
-}
-
-export default locale
+};

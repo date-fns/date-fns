@@ -1,4 +1,4 @@
-import { secondsInHour } from '../constants/index'
+import { secondsInHour } from "../constants/index.js";
 
 /**
  * @name secondsToHours
@@ -8,9 +8,9 @@ import { secondsInHour } from '../constants/index'
  * @description
  * Convert a number of seconds to a full number of hours.
  *
- * @param seconds - number of seconds to be converted
+ * @param seconds - The number of seconds to be converted
  *
- * @returns the number of seconds converted in hours
+ * @returns The number of seconds converted in hours
  *
  * @example
  * // Convert 7200 seconds into hours
@@ -22,7 +22,7 @@ import { secondsInHour } from '../constants/index'
  * const result = secondsToHours(7199)
  * //=> 1
  */
-export default function secondsToHours(seconds: number): number {
-  const hours = seconds / secondsInHour
-  return Math.floor(hours)
+export function secondsToHours(seconds: number): number {
+  const hours = seconds / secondsInHour;
+  return Math.trunc(hours);
 }

@@ -1,44 +1,39 @@
-/* eslint-env mocha */
+import { describe, expect, it } from "vitest";
+import { setSeconds } from "./index.js";
 
-import assert from 'assert'
-import setSeconds from './index'
-
-describe('setSeconds', () => {
-  it('sets the seconds', () => {
+describe("setSeconds", () => {
+  it("sets the seconds", () => {
     const result = setSeconds(
       new Date(2014, 8 /* Sep */, 1, 11, 30, 40, 500),
-      45
-    )
-    assert.deepStrictEqual(
-      result,
-      new Date(2014, 8 /* Sep */, 1, 11, 30, 45, 500)
-    )
-  })
+      45,
+    );
+    expect(result).toEqual(new Date(2014, 8 /* Sep */, 1, 11, 30, 45, 500));
+  });
 
-  it('accepts a timestamp', () => {
+  it("accepts a timestamp", () => {
     const result = setSeconds(
       new Date(2014, 8 /* Sep */, 1, 11, 30, 15).getTime(),
-      45
-    )
-    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1, 11, 30, 45))
-  })
+      45,
+    );
+    expect(result).toEqual(new Date(2014, 8 /* Sep */, 1, 11, 30, 45));
+  });
 
-  it('does not mutate the original date', () => {
-    const date = new Date(2014, 8 /* Sep */, 1, 11, 30, 40)
-    setSeconds(date, 15)
-    assert.deepStrictEqual(date, new Date(2014, 8 /* Sep */, 1, 11, 30, 40))
-  })
+  it("does not mutate the original date", () => {
+    const date = new Date(2014, 8 /* Sep */, 1, 11, 30, 40);
+    setSeconds(date, 15);
+    expect(date).toEqual(new Date(2014, 8 /* Sep */, 1, 11, 30, 40));
+  });
 
-  it('returns `Invalid Date` if the given date is invalid', () => {
-    const result = setSeconds(new Date(NaN), 45)
-    assert(result instanceof Date && isNaN(result.getTime()))
-  })
+  it("returns `Invalid Date` if the given date is invalid", () => {
+    const result = setSeconds(new Date(NaN), 45);
+    expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
+  });
 
-  it('returns `Invalid Date` if the given amount is NaN', () => {
+  it("returns `Invalid Date` if the given amount is NaN", () => {
     const result = setSeconds(
       new Date(2014, 8 /* Sep */, 1, 11, 30, 40, 500),
-      NaN
-    )
-    assert(result instanceof Date && isNaN(result.getTime()))
-  })
-})
+      NaN,
+    );
+    expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
+  });
+});
