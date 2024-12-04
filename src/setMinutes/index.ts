@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name setMinutes
@@ -8,20 +8,23 @@ import toDate from '../toDate/index'
  * @description
  * Set the minutes to the given date.
  *
- * @param date - the date to be changed
- * @param minutes - the minutes of the new date
- * @returns the new date with the minutes set
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date to be changed
+ * @param minutes - The minutes of the new date
+ *
+ * @returns The new date with the minutes set
  *
  * @example
  * // Set 45 minutes to 1 September 2014 11:30:40:
  * const result = setMinutes(new Date(2014, 8, 1, 11, 30, 40), 45)
  * //=> Mon Sep 01 2014 11:45:40
  */
-export default function setMinutes<DateType extends Date>(
-  dirtyDate: DateType | number,
-  minutes: number
+export function setMinutes<DateType extends Date>(
+  date: DateType | number | string,
+  minutes: number,
 ): DateType {
-  const date = toDate(dirtyDate)
-  date.setMinutes(minutes)
-  return date
+  const _date = toDate(date);
+  _date.setMinutes(minutes);
+  return _date;
 }

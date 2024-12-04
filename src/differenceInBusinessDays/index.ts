@@ -1,9 +1,9 @@
-import addDays from '../addDays/index'
-import differenceInCalendarDays from '../differenceInCalendarDays/index'
-import isSameDay from '../isSameDay/index'
-import isValid from '../isValid/index'
-import isWeekend from '../isWeekend/index'
-import toDate from '../toDate/index'
+import { addDays } from "../addDays/index.js";
+import { differenceInCalendarDays } from "../differenceInCalendarDays/index.js";
+import { isSameDay } from "../isSameDay/index.js";
+import { isValid } from "../isValid/index.js";
+import { isWeekend } from "../isWeekend/index.js";
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name differenceInBusinessDays
@@ -16,9 +16,12 @@ import toDate from '../toDate/index'
  * Like `differenceInCalendarDays`, the function removes the times from
  * the dates before calculating the difference.
  *
- * @param dateLeft - the later date
- * @param dateRight - the earlier date
- * @returns the number of business days
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param dateLeft - The later date
+ * @param dateRight - The earlier date
+ *
+ * @returns The number of business days
  *
  * @example
  * // How many business days are between
@@ -53,29 +56,30 @@ import toDate from '../toDate/index'
  * )
  * //=> 0
  */
-export default function differenceInBusinessDays<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+export function differenceInBusinessDays<DateType extends Date>(
+  dateLeft: DateType | number | string,
+  dateRight: DateType | number | string,
 ): number {
-  const dateLeft = toDate(dirtyDateLeft)
-  let dateRight = toDate(dirtyDateRight)
+  const _dateLeft = toDate(dateLeft);
+  let _dateRight = toDate(dateRight);
 
-  if (!isValid(dateLeft) || !isValid(dateRight)) return NaN
+  if (!isValid(_dateLeft) || !isValid(_dateRight)) return NaN;
 
-  const calendarDifference = differenceInCalendarDays(dateLeft, dateRight)
-  const sign = calendarDifference < 0 ? -1 : 1
+  const calendarDifference = differenceInCalendarDays(_dateLeft, _dateRight);
+  const sign = calendarDifference < 0 ? -1 : 1;
 
-  const weeks = Math.trunc(calendarDifference / 7)
+  const weeks = Math.trunc(calendarDifference / 7);
 
-  let result = weeks * 5
-  dateRight = addDays(dateRight, weeks * 7)
+  let result = weeks * 5;
+  _dateRight = addDays(_dateRight, weeks * 7);
 
   // the loop below will run at most 6 times to account for the remaining days that don't makeup a full week
-  while (!isSameDay(dateLeft, dateRight)) {
+  while (!isSameDay(_dateLeft, _dateRight)) {
     // sign is used to account for both negative and positive differences
-    result += isWeekend(dateRight) ? 0 : sign
-    dateRight = addDays(dateRight, sign)
+    result += isWeekend(_dateRight) ? 0 : sign;
+    _dateRight = addDays(_dateRight, sign);
   }
 
-  return result === 0 ? 0 : result
+  // Prevent negative zero
+  return result === 0 ? 0 : result;
 }

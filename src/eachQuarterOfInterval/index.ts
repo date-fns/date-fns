@@ -1,7 +1,12 @@
-import addQuarters from '../addQuarters/index'
-import startOfQuarter from '../startOfQuarter/index'
-import toDate from '../toDate/index'
-import type { Interval } from '../types'
+import { addQuarters } from "../addQuarters/index.js";
+import { startOfQuarter } from "../startOfQuarter/index.js";
+import { toDate } from "../toDate/index.js";
+import type { Interval, StepOptions } from "../types.js";
+
+/**
+ * The {@link eachQuarterOfInterval} function options.
+ */
+export interface EachQuarterOfIntervalOptions extends StepOptions {}
 
 /**
  * @name eachQuarterOfInterval
@@ -11,10 +16,11 @@ import type { Interval } from '../types'
  * @description
  * Return the array of quarters within the specified time interval.
  *
- * @param interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
- * @returns the array with starts of quarters from the quarter of the interval start to the quarter of the interval end
- * @throws {RangeError} The start of an interval cannot be after its end
- * @throws {RangeError} Date in interval cannot be `Invalid Date`
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param interval - The interval
+ *
+ * @returns The array with starts of quarters from the quarter of the interval start to the quarter of the interval end
  *
  * @example
  * // Each quarter within interval 6 February 2014 - 10 August 2014:
@@ -28,32 +34,34 @@ import type { Interval } from '../types'
  * //   Tue Jul 01 2014 00:00:00,
  * // ]
  */
-export default function eachQuarterOfInterval<DateType extends Date>(
-  interval: Interval<DateType>
+export function eachQuarterOfInterval<DateType extends Date>(
+  interval: Interval<DateType>,
+  options?: EachQuarterOfIntervalOptions,
 ): DateType[] {
-  const startDate = toDate(interval.start)
-  const endDate = toDate(interval.end)
+  const startDate = toDate(interval.start);
+  const endDate = toDate(interval.end);
 
-  let endTime = endDate.getTime()
+  let reversed = +startDate > +endDate;
+  const endTime = reversed
+    ? +startOfQuarter(startDate)
+    : +startOfQuarter(endDate);
+  let currentDate = reversed
+    ? startOfQuarter(endDate)
+    : startOfQuarter(startDate);
 
-  // Throw an exception if start date is after end date or if any date is `Invalid Date`
-  if (!(startDate.getTime() <= endTime)) {
-    throw new RangeError('Invalid interval')
+  let step = options?.step ?? 1;
+  if (!step) return [];
+  if (step < 0) {
+    step = -step;
+    reversed = !reversed;
   }
 
-  const startDateQuarter = startOfQuarter(startDate)
-  const endDateQuarter = startOfQuarter(endDate)
+  const dates = [];
 
-  endTime = endDateQuarter.getTime()
-
-  const quarters = []
-
-  let currentQuarter = startDateQuarter
-
-  while (currentQuarter.getTime() <= endTime) {
-    quarters.push(toDate(currentQuarter))
-    currentQuarter = addQuarters(currentQuarter, 1)
+  while (+currentDate <= endTime) {
+    dates.push(toDate(currentDate));
+    currentDate = addQuarters(currentDate, step);
   }
 
-  return quarters
+  return reversed ? dates.reverse() : dates;
 }

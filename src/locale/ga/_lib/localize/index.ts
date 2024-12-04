@@ -1,6 +1,6 @@
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn';
-import type { Localize, LocalizeFn, Quarter } from '../../../types';
-
+import { buildLocalizeFn } from '../../../_lib/buildLocalizeFn';
+import type { Localize, LocalizeFn } from '../../../types';
+import type { Quarter } from '../../../../types';
 
 const eraValues = {
     narrow: ['R', 'A'] as const,
@@ -145,7 +145,7 @@ const localize: Localize = {
     quarter: buildLocalizeFn({
         values: quarterValues,
         defaultWidth: 'wide',
-        argumentCallback: (quarter: number) => (quarter - 1) as Quarter,
+        argumentCallback: (quarter) => quarter - 1,
     }),
 
     month: buildLocalizeFn({

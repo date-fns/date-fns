@@ -1,22 +1,21 @@
-import type { Locale } from '../types'
-import formatDistance from './_lib/formatDistance/index'
-import formatLong from './_lib/formatLong/index'
-import formatRelative from './_lib/formatRelative/index'
-import localize from './_lib/localize/index'
-import match from './_lib/match/index'
+import type { Locale } from "../types.js";
+import { formatDistance } from "./_lib/formatDistance/index.js";
+import { formatLong } from "./_lib/formatLong/index.js";
+import { formatRelative } from "./_lib/formatRelative/index.js";
+import { localize } from "./_lib/localize/index.js";
+import { match } from "./_lib/match/index.js";
 
 /**
- * @type {Locale}
  * @category Locales
  * @summary Czech locale.
  * @language Czech
  * @iso-639-2 ces
- * @author David Rus [@davidrus]{@link https://github.com/davidrus}
- * @author Pavel Hrách [@SilenY]{@link https://github.com/SilenY}
- * @author Jozef Bíroš [@JozefBiros]{@link https://github.com/JozefBiros}
+ * @author David Rus [@davidrus](https://github.com/davidrus)
+ * @author Pavel Hrách [@SilenY](https://github.com/SilenY)
+ * @author Jozef Bíroš [@JozefBiros](https://github.com/JozefBiros)
  */
-const locale: Locale = {
-  code: 'cs',
+export const cs: Locale = {
+  code: "cs",
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
@@ -26,6 +25,4 @@ const locale: Locale = {
     weekStartsOn: 1 /* Monday */,
     firstWeekContainsDate: 4,
   },
-}
-
-export default locale
+};

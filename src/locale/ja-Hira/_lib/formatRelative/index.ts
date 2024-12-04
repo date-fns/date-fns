@@ -1,21 +1,19 @@
-import type { FormatRelativeFn } from '../../../types'
+import type { FormatRelativeFn } from "../../../types.js";
 
 const formatRelativeLocale = {
-  lastWeek: 'せんしゅうのeeeeのp',
-  yesterday: 'きのうのp',
-  today: 'きょうのp',
-  tomorrow: 'あしたのp',
-  nextWeek: 'よくしゅうのeeeeのp',
-  other: 'P',
-}
+  lastWeek: "せんしゅうのeeeeのp",
+  yesterday: "きのうのp",
+  today: "きょうのp",
+  tomorrow: "あしたのp",
+  nextWeek: "よくしゅうのeeeeのp",
+  other: "P",
+};
 
-const formatRelative: FormatRelativeFn = (
+export const formatRelative: FormatRelativeFn = (
   token,
   _date,
   _baseDate,
-  _options
+  _options,
 ) => {
-  return formatRelativeLocale[token]
-}
-
-export default formatRelative
+  return formatRelativeLocale[token];
+};

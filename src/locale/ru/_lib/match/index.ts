@@ -1,35 +1,36 @@
-import type { Quarter } from '../../../../types'
-import type { Match } from '../../../types'
-import buildMatchFn from '../../../_lib/buildMatchFn/index'
-import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
+import type { Quarter } from "../../../../types.js";
+import type { Match } from "../../../types.js";
+import { buildMatchFn } from "../../../_lib/buildMatchFn/index.js";
+import { buildMatchPatternFn } from "../../../_lib/buildMatchPatternFn/index.js";
 
-const matchOrdinalNumberPattern = /^(\d+)(-?(е|я|й|ое|ье|ая|ья|ый|ой|ий|ый))?/i
-const parseOrdinalNumberPattern = /\d+/i
+const matchOrdinalNumberPattern = /^(\d+)(-?(е|я|й|ое|ье|ая|ья|ый|ой|ий|ый))?/i;
+const parseOrdinalNumberPattern = /\d+/i;
 
 const matchEraPatterns = {
   narrow: /^((до )?н\.?\s?э\.?)/i,
   abbreviated: /^((до )?н\.?\s?э\.?)/i,
   wide: /^(до нашей эры|нашей эры|наша эра)/i,
-}
+};
 const parseEraPatterns = {
   any: [/^д/i, /^н/i] as const,
-}
+};
 
 const matchQuarterPatterns = {
   narrow: /^[1234]/i,
   abbreviated: /^[1234](-?[ыои]?й?)? кв.?/i,
   wide: /^[1234](-?[ыои]?й?)? квартал/i,
-}
+};
 
 const parseQuarterPatterns = {
   any: [/1/i, /2/i, /3/i, /4/i] as const,
-}
+};
 
 const matchMonthPatterns = {
   narrow: /^[яфмаисонд]/i,
-  abbreviated: /^(янв|фев|март?|апр|ма[йя]|июн[ья]?|июл[ья]?|авг|сент?|окт|нояб?|дек)\.?/i,
+  abbreviated:
+    /^(янв|фев|март?|апр|ма[йя]|июн[ья]?|июл[ья]?|авг|сент?|окт|нояб?|дек)\.?/i,
   wide: /^(январ[ья]|феврал[ья]|марта?|апрел[ья]|ма[йя]|июн[ья]|июл[ья]|августа?|сентябр[ья]|октябр[ья]|октябр[ья]|ноябр[ья]|декабр[ья])/i,
-}
+};
 
 const parseMonthPatterns = {
   narrow: [
@@ -60,14 +61,14 @@ const parseMonthPatterns = {
     /^н/i,
     /^д/i,
   ] as const,
-}
+};
 
 const matchDayPatterns = {
   narrow: /^[впсч]/i,
   short: /^(вс|во|пн|по|вт|ср|чт|че|пт|пя|сб|су)\.?/i,
   abbreviated: /^(вск|вос|пнд|пон|втр|вто|срд|сре|чтв|чет|птн|пят|суб).?/i,
   wide: /^(воскресень[ея]|понедельника?|вторника?|сред[аы]|четверга?|пятниц[аы]|суббот[аы])/i,
-}
+};
 
 const parseDayPatterns = {
   narrow: [/^в/i, /^п/i, /^в/i, /^с/i, /^ч/i, /^п/i, /^с/i] as const,
@@ -80,13 +81,13 @@ const parseDayPatterns = {
     /^п[ят]/i,
     /^с[уб]/i,
   ] as const,
-}
+};
 
 const matchDayPeriodPatterns = {
   narrow: /^([дп]п|полн\.?|полд\.?|утр[оа]|день|дня|веч\.?|ноч[ьи])/i,
   abbreviated: /^([дп]п|полн\.?|полд\.?|утр[оа]|день|дня|веч\.?|ноч[ьи])/i,
   wide: /^([дп]п|полночь|полдень|утр[оа]|день|дня|вечера?|ноч[ьи])/i,
-}
+};
 
 const parseDayPeriodPatterns = {
   any: {
@@ -99,9 +100,9 @@ const parseDayPeriodPatterns = {
     evening: /^в/i,
     night: /^н/i,
   },
-}
+};
 
-const match: Match = {
+export const match: Match = {
   ordinalNumber: buildMatchPatternFn({
     matchPattern: matchOrdinalNumberPattern,
     parsePattern: parseOrdinalNumberPattern,
@@ -110,39 +111,37 @@ const match: Match = {
 
   era: buildMatchFn({
     matchPatterns: matchEraPatterns,
-    defaultMatchWidth: 'wide',
+    defaultMatchWidth: "wide",
     parsePatterns: parseEraPatterns,
-    defaultParseWidth: 'any',
+    defaultParseWidth: "any",
   }),
 
   quarter: buildMatchFn({
     matchPatterns: matchQuarterPatterns,
-    defaultMatchWidth: 'wide',
+    defaultMatchWidth: "wide",
     parsePatterns: parseQuarterPatterns,
-    defaultParseWidth: 'any',
+    defaultParseWidth: "any",
     valueCallback: (index) => (index + 1) as Quarter,
   }),
 
   month: buildMatchFn({
     matchPatterns: matchMonthPatterns,
-    defaultMatchWidth: 'wide',
+    defaultMatchWidth: "wide",
     parsePatterns: parseMonthPatterns,
-    defaultParseWidth: 'any',
+    defaultParseWidth: "any",
   }),
 
   day: buildMatchFn({
     matchPatterns: matchDayPatterns,
-    defaultMatchWidth: 'wide',
+    defaultMatchWidth: "wide",
     parsePatterns: parseDayPatterns,
-    defaultParseWidth: 'any',
+    defaultParseWidth: "any",
   }),
 
   dayPeriod: buildMatchFn({
     matchPatterns: matchDayPeriodPatterns,
-    defaultMatchWidth: 'wide',
+    defaultMatchWidth: "wide",
     parsePatterns: parseDayPeriodPatterns,
-    defaultParseWidth: 'any',
+    defaultParseWidth: "any",
   }),
-}
-
-export default match
+};

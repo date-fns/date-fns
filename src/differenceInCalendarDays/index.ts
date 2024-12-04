@@ -1,6 +1,6 @@
-import { millisecondsInDay } from '../constants/index'
-import startOfDay from '../startOfDay/index'
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
+import { millisecondsInDay } from "../constants/index.js";
+import { startOfDay } from "../startOfDay/index.js";
+import { getTimezoneOffsetInMilliseconds } from "../_lib/getTimezoneOffsetInMilliseconds/index.js";
 
 /**
  * @name differenceInCalendarDays
@@ -11,9 +11,12 @@ import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMillisec
  * Get the number of calendar days between the given dates. This means that the times are removed
  * from the dates and then the difference in days is calculated.
  *
- * @param dateLeft - the later date
- * @param dateRight - the earlier date
- * @returns the number of calendar days
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param dateLeft - The later date
+ * @param dateRight - The earlier date
+ *
+ * @returns The number of calendar days
  *
  * @example
  * // How many calendar days are between
@@ -31,20 +34,20 @@ import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMillisec
  * )
  * //=> 1
  */
-export default function differenceInCalendarDays<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+export function differenceInCalendarDays<DateType extends Date>(
+  dateLeft: DateType | number | string,
+  dateRight: DateType | number | string,
 ): number {
-  const startOfDayLeft = startOfDay(dirtyDateLeft)
-  const startOfDayRight = startOfDay(dirtyDateRight)
+  const startOfDayLeft = startOfDay(dateLeft);
+  const startOfDayRight = startOfDay(dateRight);
 
   const timestampLeft =
-    startOfDayLeft.getTime() - getTimezoneOffsetInMilliseconds(startOfDayLeft)
+    +startOfDayLeft - getTimezoneOffsetInMilliseconds(startOfDayLeft);
   const timestampRight =
-    startOfDayRight.getTime() - getTimezoneOffsetInMilliseconds(startOfDayRight)
+    +startOfDayRight - getTimezoneOffsetInMilliseconds(startOfDayRight);
 
-  // Round the number of days to the nearest integer
-  // because the number of milliseconds in a day is not constant
-  // (e.g. it's different in the day of the daylight saving time clock shift)
-  return Math.round((timestampLeft - timestampRight) / millisecondsInDay)
+  // Round the number of days to the nearest integer because the number of
+  // milliseconds in a day is not constant (e.g. it's different in the week of
+  // the daylight saving time clock shift).
+  return Math.round((timestampLeft - timestampRight) / millisecondsInDay);
 }

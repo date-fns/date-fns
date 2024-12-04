@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name getMinutes
@@ -8,18 +8,21 @@ import toDate from '../toDate/index'
  * @description
  * Get the minutes of the given date.
  *
- * @param date - the given date
- * @returns the minutes
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The given date
+ *
+ * @returns The minutes
  *
  * @example
  * // Get the minutes of 29 February 2012 11:45:05:
  * const result = getMinutes(new Date(2012, 1, 29, 11, 45, 5))
  * //=> 45
  */
-export default function getMinutes<DateType extends Date>(
-  dirtyDate: DateType | number
+export function getMinutes<DateType extends Date>(
+  date: DateType | number | string,
 ): number {
-  const date = toDate(dirtyDate)
-  const minutes = date.getMinutes()
-  return minutes
+  const _date = toDate(date);
+  const minutes = _date.getMinutes();
+  return minutes;
 }

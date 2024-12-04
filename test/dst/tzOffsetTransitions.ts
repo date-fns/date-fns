@@ -1,7 +1,7 @@
 type PartialInterval = {
-  start: Date | undefined
-  end: Date | undefined
-}
+  start: Date | undefined;
+  end: Date | undefined;
+};
 
 /**
  * Fetch the start and end of DST for the local time
@@ -22,49 +22,49 @@ export function getDstTransitions(year: number): PartialInterval {
   const result: PartialInterval = {
     start: undefined,
     end: undefined,
-  }
-  const transitions = getTzOffsetTransitions(year)
+  };
+  const transitions = getTzOffsetTransitions(year);
   for (let i = 0; i < transitions.length; i++) {
-    const t = transitions[i]
-    const month = t.date.getMonth()
+    const t = transitions[i];
+    const month = t.date.getMonth();
     if (month > 0 && month < 11) {
-      if (t.type === 'forward') result.start = t.date
-      if (t.type === 'back' && !result.end) result.end = t.date
+      if (t.type === "forward") result.start = t.date;
+      if (t.type === "back" && !result.end) result.end = t.date;
     }
   }
-  return result
+  return result;
 }
 
 function isValidDate(date: unknown): date is Date {
-  return date instanceof Date && !isNaN(date.getTime())
+  return date instanceof Date && !isNaN(date.getTime());
 }
 
-const MINUTE = 1000 * 60
+const MINUTE = 1000 * 60;
 
 function firstTickInLocalDay(date: Date): Date {
-  const dateNumber = date.getDate()
-  let prev = date
-  let d = date
+  const dateNumber = date.getDate();
+  let prev = date;
+  let d = date;
   do {
-    prev = d
-    d = new Date(d.getTime() - MINUTE)
-  } while (dateNumber === d.getDate())
-  return prev
+    prev = d;
+    d = new Date(d.getTime() - MINUTE);
+  } while (dateNumber === d.getDate());
+  return prev;
 }
 
 function fiveMinutesLater(date: Date): Date {
-  return new Date(date.getTime() + 5 * MINUTE)
+  return new Date(date.getTime() + 5 * MINUTE);
 }
 
 function oneDayLater(date: Date): Date {
-  const d = new Date(date)
-  d.setDate(d.getDate() + 1)
-  return firstTickInLocalDay(d)
+  const d = new Date(date);
+  d.setDate(d.getDate() + 1);
+  return firstTickInLocalDay(d);
 }
 
 function previousTickTimezoneOffset(date: Date): number {
-  const d = new Date(date.getTime() - 1)
-  return d.getTimezoneOffset()
+  const d = new Date(date.getTime() - 1);
+  return d.getTimezoneOffset();
 }
 
 /**
@@ -90,54 +90,54 @@ function previousTickTimezoneOffset(date: Date): number {
  */
 export function getTzOffsetTransitions(year: number) {
   // start at the end of the previous day
-  let date = firstTickInLocalDay(new Date(year, 0, 1))
+  let date = firstTickInLocalDay(new Date(year, 0, 1));
   if (!isValidDate(date)) {
-    throw new Error('Invalid Date')
+    throw new Error("Invalid Date");
   }
-  let baseTzOffset = previousTickTimezoneOffset(date)
-  const transitions = []
+  let baseTzOffset = previousTickTimezoneOffset(date);
+  const transitions = [];
   do {
-    let tzOffset = date.getTimezoneOffset()
+    let tzOffset = date.getTimezoneOffset();
     if (baseTzOffset !== tzOffset) {
       if (tzOffset !== previousTickTimezoneOffset(date)) {
         // Transition is the first tick of a local day.
         transitions.push({
           date: date,
-          type: tzOffset < baseTzOffset ? 'forward' : 'back',
+          type: tzOffset < baseTzOffset ? "forward" : "back",
           before: -baseTzOffset,
           after: -tzOffset,
-        })
-        baseTzOffset = tzOffset
+        });
+        baseTzOffset = tzOffset;
       } else {
         // transition was not at the start of the day, so it must have happened
         // yesterday. Back up one day and find the minute where it happened.
-        let transitionDate = new Date(date.getTime())
-        transitionDate.setDate(transitionDate.getDate() - 1)
+        let transitionDate = new Date(date.getTime());
+        transitionDate.setDate(transitionDate.getDate() - 1);
 
         // Iterate through each 5 mins of the day until we find a transition.
         // TODO: this could be optimized to search hours then minutes or by or
         // by using a binary search.
-        const dayNumber = transitionDate.getDate()
+        const dayNumber = transitionDate.getDate();
         while (
           isValidDate(transitionDate) &&
           transitionDate.getDate() === dayNumber
         ) {
-          tzOffset = transitionDate.getTimezoneOffset()
+          tzOffset = transitionDate.getTimezoneOffset();
           if (baseTzOffset !== tzOffset) {
             transitions.push({
               date: transitionDate,
-              type: tzOffset < baseTzOffset ? 'forward' : 'back',
+              type: tzOffset < baseTzOffset ? "forward" : "back",
               before: -baseTzOffset,
               after: -tzOffset,
-            })
-            baseTzOffset = tzOffset
-            break // assuming only 1 transition per day
+            });
+            baseTzOffset = tzOffset;
+            break; // assuming only 1 transition per day
           }
-          transitionDate = fiveMinutesLater(transitionDate)
+          transitionDate = fiveMinutesLater(transitionDate);
         }
       }
     }
-    date = oneDayLater(date)
-  } while (date.getFullYear() === year)
-  return transitions
+    date = oneDayLater(date);
+  } while (date.getFullYear() === year);
+  return transitions;
 }

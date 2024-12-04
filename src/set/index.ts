@@ -1,7 +1,7 @@
-import constructFrom from '../constructFrom/index'
-import setMonth from '../setMonth/index'
-import toDate from '../toDate/index'
-import type { DateValues } from '../types'
+import { constructFrom } from "../constructFrom/index.js";
+import { setMonth } from "../setMonth/index.js";
+import { toDate } from "../toDate/index.js";
+import type { DateValues } from "../types.js";
 
 /**
  * @name set
@@ -18,16 +18,12 @@ import type { DateValues } from '../types'
  * to use native `Date#setX` methods. If you use this function, you may not want to include the
  * other `setX` functions that date-fns provides if you are concerned about the bundle size.
  *
- * @param date - the date to be changed
- * @param values - an object with options
- * @param values.year - the number of years to be set
- * @param values.month - the number of months to be set
- * @param values.date - the number of days to be set
- * @param values.hours - the number of hours to be set
- * @param values.minutes - the number of minutes to be set
- * @param values.seconds - the number of seconds to be set
- * @param values.milliseconds - the number of milliseconds to be set
- * @returns the new date with options set
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date to be changed
+ * @param values - The date values to be set
+ *
+ * @returns The new date with options set
  *
  * @example
  * // Transform 1 September 2014 into 20 October 2015 in a single line:
@@ -40,44 +36,44 @@ import type { DateValues } from '../types'
  * //=> Mon Sep 01 2014 12:23:45
  */
 
-export default function set<DateType extends Date>(
-  dirtyDate: DateType | number,
-  values: DateValues
+export function set<DateType extends Date>(
+  date: DateType | number | string,
+  values: DateValues,
 ): DateType {
-  let date = toDate(dirtyDate)
+  let _date = toDate(date);
 
   // Check if date is Invalid Date because Date.prototype.setFullYear ignores the value of Invalid Date
-  if (isNaN(date.getTime())) {
-    return constructFrom(dirtyDate, NaN)
+  if (isNaN(+_date)) {
+    return constructFrom(date, NaN);
   }
 
   if (values.year != null) {
-    date.setFullYear(values.year)
+    _date.setFullYear(values.year);
   }
 
   if (values.month != null) {
-    date = setMonth(date, values.month)
+    _date = setMonth(_date, values.month);
   }
 
   if (values.date != null) {
-    date.setDate(values.date)
+    _date.setDate(values.date);
   }
 
   if (values.hours != null) {
-    date.setHours(values.hours)
+    _date.setHours(values.hours);
   }
 
   if (values.minutes != null) {
-    date.setMinutes(values.minutes)
+    _date.setMinutes(values.minutes);
   }
 
   if (values.seconds != null) {
-    date.setSeconds(values.seconds)
+    _date.setSeconds(values.seconds);
   }
 
   if (values.milliseconds != null) {
-    date.setMilliseconds(values.milliseconds)
+    _date.setMilliseconds(values.milliseconds);
   }
 
-  return date
+  return _date;
 }

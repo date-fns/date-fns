@@ -1,5 +1,10 @@
-import toDate from '../toDate/index'
-import type { Interval } from '../types'
+import { toDate } from "../toDate/index.js";
+import type { Interval, StepOptions } from "../types.js";
+
+/**
+ * The {@link eachMonthOfInterval} function options.
+ */
+export interface EachMonthOfIntervalOptions extends StepOptions {}
 
 /**
  * @name eachMonthOfInterval
@@ -9,10 +14,11 @@ import type { Interval } from '../types'
  * @description
  * Return the array of months within the specified time interval.
  *
- * @param interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
- * @returns the array with starts of months from the month of the interval start to the month of the interval end
- * @throws {RangeError} The start of an interval cannot be after its end
- * @throws {RangeError} Date in interval cannot be `Invalid Date`
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param interval - The interval
+ *
+ * @returns The array with starts of months from the month of the interval start to the month of the interval end
  *
  * @example
  * // Each month between 6 February 2014 and 10 August 2014:
@@ -30,28 +36,32 @@ import type { Interval } from '../types'
  * //   Fri Aug 01 2014 00:00:00
  * // ]
  */
-export default function eachMonthOfInterval<DateType extends Date>(
-  interval: Interval<DateType>
+export function eachMonthOfInterval<DateType extends Date>(
+  interval: Interval<DateType>,
+  options?: EachMonthOfIntervalOptions,
 ): DateType[] {
-  const startDate = toDate(interval.start)
-  const endDate = toDate(interval.end)
+  const startDate = toDate(interval.start);
+  const endDate = toDate(interval.end);
 
-  const endTime = endDate.getTime()
-  const dates = []
+  let reversed = +startDate > +endDate;
+  const endTime = reversed ? +startDate : +endDate;
+  const currentDate = reversed ? endDate : startDate;
+  currentDate.setHours(0, 0, 0, 0);
+  currentDate.setDate(1);
 
-  // Throw an exception if start date is after end date or if any date is `Invalid Date`
-  if (!(startDate.getTime() <= endTime)) {
-    throw new RangeError('Invalid interval')
+  let step = options?.step ?? 1;
+  if (!step) return [];
+  if (step < 0) {
+    step = -step;
+    reversed = !reversed;
   }
 
-  const currentDate = startDate
-  currentDate.setHours(0, 0, 0, 0)
-  currentDate.setDate(1)
+  const dates = [];
 
-  while (currentDate.getTime() <= endTime) {
-    dates.push(toDate(currentDate))
-    currentDate.setMonth(currentDate.getMonth() + 1)
+  while (+currentDate <= endTime) {
+    dates.push(toDate(currentDate));
+    currentDate.setMonth(currentDate.getMonth() + step);
   }
 
-  return dates
+  return reversed ? dates.reverse() : dates;
 }

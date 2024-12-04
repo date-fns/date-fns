@@ -1,19 +1,19 @@
-import { millisecondsInWeek } from '../constants/index'
-import startOfWeek from '../startOfWeek/index'
-import startOfWeekYear from '../startOfWeekYear/index'
-import toDate from '../toDate/index'
+import { millisecondsInWeek } from "../constants/index.js";
+import { startOfWeek } from "../startOfWeek/index.js";
+import { startOfWeekYear } from "../startOfWeekYear/index.js";
+import { toDate } from "../toDate/index.js";
 import type {
   FirstWeekContainsDateOptions,
-  LocaleOptions,
-  WeekStartOptions,
-} from '../types'
+  LocalizedOptions,
+  WeekOptions,
+} from "../types.js";
 
 /**
  * The {@link getWeek} function options.
  */
 export interface GetWeekOptions
-  extends LocaleOptions,
-    WeekStartOptions,
+  extends LocalizedOptions<"options">,
+    WeekOptions,
     FirstWeekContainsDateOptions {}
 
 /**
@@ -28,17 +28,21 @@ export interface GetWeekOptions
  * and `options.firstWeekContainsDate` (which is the day of January, which is always in
  * the first week of the week-numbering year)
  *
- * Week numbering: https://en.wikipedia.org/wiki/Week#Week_numbering
+ * Week numbering: https://en.wikipedia.org/wiki/Week#The_ISO_week_date_system
  *
- * @param date - the given date
- * @param options - an object with options.
- * @returns the week
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The given date
+ * @param options - An object with options
+ *
+ * @returns The week
  *
  * @example
  * // Which week of the local week numbering year is 2 January 2005 with default options?
  * const result = getWeek(new Date(2005, 0, 2))
  * //=> 2
  *
+ * @example
  * // Which week of the local week numbering year is 2 January 2005,
  * // if Monday is the first day of the week,
  * // and the first week of the year always contains 4 January?
@@ -49,17 +53,15 @@ export interface GetWeekOptions
  * //=> 53
  */
 
-export default function getWeek<DateType extends Date>(
-  dirtyDate: DateType | number,
-  options?: GetWeekOptions
+export function getWeek<DateType extends Date>(
+  date: DateType | number | string,
+  options?: GetWeekOptions,
 ): number {
-  const date = toDate(dirtyDate)
-  const diff =
-    startOfWeek(date, options).getTime() -
-    startOfWeekYear(date, options).getTime()
+  const _date = toDate(date);
+  const diff = +startOfWeek(_date, options) - +startOfWeekYear(_date, options);
 
-  // Round the number of days to the nearest integer
-  // because the number of milliseconds in a week is not constant
-  // (e.g. it's different in the week of the daylight saving time clock shift)
-  return Math.round(diff / millisecondsInWeek) + 1
+  // Round the number of weeks to the nearest integer because the number of
+  // milliseconds in a week is not constant (e.g. it's different in the week of
+  // the daylight saving time clock shift).
+  return Math.round(diff / millisecondsInWeek) + 1;
 }

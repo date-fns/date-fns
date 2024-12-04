@@ -1,4 +1,4 @@
-import nextDay from '../nextDay/index'
+import { nextDay } from "../nextDay/index.js";
 
 /**
  * @name nextFriday
@@ -8,16 +8,19 @@ import nextDay from '../nextDay/index'
  * @description
  * When is the next Friday?
  *
- * @param date - the date to start counting from
- * @returns the next Friday
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date to start counting from
+ *
+ * @returns The next Friday
  *
  * @example
  * // When is the next Friday after Mar, 22, 2020?
  * const result = nextFriday(new Date(2020, 2, 22))
  * //=> Fri Mar 27 2020 00:00:00
  */
-export default function nextFriday<DateType extends Date>(
-  date: DateType | number
+export function nextFriday<DateType extends Date>(
+  date: DateType | number | string,
 ): DateType {
-  return nextDay(date, 5)
+  return nextDay(date, 5);
 }

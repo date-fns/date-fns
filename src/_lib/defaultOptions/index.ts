@@ -1,19 +1,20 @@
 import type {
   FirstWeekContainsDateOptions,
-  LocaleOptions,
-  WeekStartOptions,
-} from '../../types'
+  Locale,
+  LocalizedOptions,
+  WeekOptions,
+} from "../../types.js";
 
-export type DefaultOptions = LocaleOptions &
-  WeekStartOptions &
-  FirstWeekContainsDateOptions
+export type DefaultOptions = LocalizedOptions<keyof Locale> &
+  WeekOptions &
+  FirstWeekContainsDateOptions;
 
-let defaultOptions: DefaultOptions = {}
+let defaultOptions: DefaultOptions = {};
 
 export function getDefaultOptions(): DefaultOptions {
-  return defaultOptions
+  return defaultOptions;
 }
 
 export function setDefaultOptions(newOptions: DefaultOptions): void {
-  defaultOptions = newOptions
+  defaultOptions = newOptions;
 }

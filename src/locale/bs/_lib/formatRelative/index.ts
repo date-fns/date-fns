@@ -1,16 +1,16 @@
-import type { FormatRelativeFn } from '../../../types'
+import type { FormatRelativeFn } from "../../../types.js";
 
 const formatRelativeLocale = {
   lastWeek: (date: Date) => {
     switch (date.getDay()) {
       case 0:
-        return "'prošle nedjelje u' p"
+        return "'prošle nedjelje u' p";
       case 3:
-        return "'prošle srijede u' p"
+        return "'prošle srijede u' p";
       case 6:
-        return "'prošle subote u' p"
+        return "'prošle subote u' p";
       default:
-        return "'prošli' EEEE 'u' p"
+        return "'prošli' EEEE 'u' p";
     }
   },
   yesterday: "'juče u' p",
@@ -19,26 +19,29 @@ const formatRelativeLocale = {
   nextWeek: (date: Date) => {
     switch (date.getDay()) {
       case 0:
-        return "'sljedeće nedjelje u' p"
+        return "'sljedeće nedjelje u' p";
       case 3:
-        return "'sljedeću srijedu u' p"
+        return "'sljedeću srijedu u' p";
       case 6:
-        return "'sljedeću subotu u' p"
+        return "'sljedeću subotu u' p";
       default:
-        return "'sljedeći' EEEE 'u' p"
+        return "'sljedeći' EEEE 'u' p";
     }
   },
-  other: 'P',
-}
+  other: "P",
+};
 
-const formatRelative: FormatRelativeFn = (token, date, _baseDate, _options) => {
-  const format = formatRelativeLocale[token]
+export const formatRelative: FormatRelativeFn = (
+  token,
+  date,
+  _baseDate,
+  _options,
+) => {
+  const format = formatRelativeLocale[token];
 
-  if (typeof format === 'function') {
-    return format(date)
+  if (typeof format === "function") {
+    return format(date);
   }
 
-  return format
-}
-
-export default formatRelative
+  return format;
+};

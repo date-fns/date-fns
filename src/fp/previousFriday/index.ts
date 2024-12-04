@@ -1,6 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.
 
-import fn from '../../previousFriday/index'
-import convertToFP from '../_lib/convertToFP/index'
+import { previousFriday as fn } from "../../previousFriday/index.js";
+import { convertToFP } from "../_lib/convertToFP/index.js";
 
-export default convertToFP(fn, 1)
+export const previousFriday = convertToFP(fn, 1);

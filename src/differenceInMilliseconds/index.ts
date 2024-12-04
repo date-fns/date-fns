@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import { toDate } from "../toDate/index.js";
 
 /**
  * @name differenceInMilliseconds
@@ -8,9 +8,12 @@ import toDate from '../toDate/index'
  * @description
  * Get the number of milliseconds between the given dates.
  *
- * @param dateLeft - the later date
- * @param dateRight - the earlier date
- * @returns the number of milliseconds
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param dateLeft - The later date
+ * @param dateRight - The earlier date
+ *
+ * @returns The number of milliseconds
  *
  * @example
  * // How many milliseconds are between
@@ -21,9 +24,9 @@ import toDate from '../toDate/index'
  * )
  * //=> 1100
  */
-export default function differenceInMilliseconds<DateType extends Date>(
-  dateLeft: DateType | number,
-  dateRight: DateType | number
+export function differenceInMilliseconds<DateType extends Date>(
+  dateLeft: DateType | number | string,
+  dateRight: DateType | number | string,
 ): number {
-  return toDate(dateLeft).getTime() - toDate(dateRight).getTime()
+  return +toDate(dateLeft) - +toDate(dateRight);
 }

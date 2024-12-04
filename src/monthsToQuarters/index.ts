@@ -1,4 +1,4 @@
-import { monthsInQuarter } from '../constants/index'
+import { monthsInQuarter } from "../constants/index.js";
 
 /**
  * @name monthsToQuarters
@@ -8,9 +8,9 @@ import { monthsInQuarter } from '../constants/index'
  * @description
  * Convert a number of months to a full number of quarters.
  *
- * @param months - number of months to be converted.
+ * @param months - The number of months to be converted.
  *
- * @returns the number of months converted in quarters
+ * @returns The number of months converted in quarters
  *
  * @example
  * // Convert 6 months to quarters:
@@ -22,7 +22,7 @@ import { monthsInQuarter } from '../constants/index'
  * const result = monthsToQuarters(7)
  * //=> 2
  */
-export default function monthsToQuarters(months: number): number {
-  const quarters = months / monthsInQuarter
-  return Math.floor(quarters)
+export function monthsToQuarters(months: number): number {
+  const quarters = months / monthsInQuarter;
+  return Math.trunc(quarters);
 }

@@ -1,139 +1,137 @@
-import type { FormatDistanceFn, FormatDistanceLocale } from '../../../types'
+import type { FormatDistanceFn, FormatDistanceLocale } from "../../../types.js";
 
 type FormatDistanceTokenValue =
   | string
   | {
-      one: string
-      two: string
-      other: string
-    }
+      one: string;
+      two: string;
+      other: string;
+    };
 
 const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   lessThanXSeconds: {
-    one: 'פחות משנייה',
-    two: 'פחות משתי שניות',
-    other: 'פחות מ־{{count}} שניות',
+    one: "פחות משנייה",
+    two: "פחות משתי שניות",
+    other: "פחות מ־{{count}} שניות",
   },
 
   xSeconds: {
-    one: 'שנייה',
-    two: 'שתי שניות',
-    other: '{{count}} שניות',
+    one: "שנייה",
+    two: "שתי שניות",
+    other: "{{count}} שניות",
   },
 
-  halfAMinute: 'חצי דקה',
+  halfAMinute: "חצי דקה",
 
   lessThanXMinutes: {
-    one: 'פחות מדקה',
-    two: 'פחות משתי דקות',
-    other: 'פחות מ־{{count}} דקות',
+    one: "פחות מדקה",
+    two: "פחות משתי דקות",
+    other: "פחות מ־{{count}} דקות",
   },
 
   xMinutes: {
-    one: 'דקה',
-    two: 'שתי דקות',
-    other: '{{count}} דקות',
+    one: "דקה",
+    two: "שתי דקות",
+    other: "{{count}} דקות",
   },
 
   aboutXHours: {
-    one: 'כשעה',
-    two: 'כשעתיים',
-    other: 'כ־{{count}} שעות',
+    one: "כשעה",
+    two: "כשעתיים",
+    other: "כ־{{count}} שעות",
   },
 
   xHours: {
-    one: 'שעה',
-    two: 'שעתיים',
-    other: '{{count}} שעות',
+    one: "שעה",
+    two: "שעתיים",
+    other: "{{count}} שעות",
   },
 
   xDays: {
-    one: 'יום',
-    two: 'יומיים',
-    other: '{{count}} ימים',
+    one: "יום",
+    two: "יומיים",
+    other: "{{count}} ימים",
   },
 
   aboutXWeeks: {
-    one: 'כשבוע',
-    two: 'כשבועיים',
-    other: 'כ־{{count}} שבועות',
+    one: "כשבוע",
+    two: "כשבועיים",
+    other: "כ־{{count}} שבועות",
   },
 
   xWeeks: {
-    one: 'שבוע',
-    two: 'שבועיים',
-    other: '{{count}} שבועות',
+    one: "שבוע",
+    two: "שבועיים",
+    other: "{{count}} שבועות",
   },
 
   aboutXMonths: {
-    one: 'כחודש',
-    two: 'כחודשיים',
-    other: 'כ־{{count}} חודשים',
+    one: "כחודש",
+    two: "כחודשיים",
+    other: "כ־{{count}} חודשים",
   },
 
   xMonths: {
-    one: 'חודש',
-    two: 'חודשיים',
-    other: '{{count}} חודשים',
+    one: "חודש",
+    two: "חודשיים",
+    other: "{{count}} חודשים",
   },
 
   aboutXYears: {
-    one: 'כשנה',
-    two: 'כשנתיים',
-    other: 'כ־{{count}} שנים',
+    one: "כשנה",
+    two: "כשנתיים",
+    other: "כ־{{count}} שנים",
   },
 
   xYears: {
-    one: 'שנה',
-    two: 'שנתיים',
-    other: '{{count}} שנים',
+    one: "שנה",
+    two: "שנתיים",
+    other: "{{count}} שנים",
   },
 
   overXYears: {
-    one: 'יותר משנה',
-    two: 'יותר משנתיים',
-    other: 'יותר מ־{{count}} שנים',
+    one: "יותר משנה",
+    two: "יותר משנתיים",
+    other: "יותר מ־{{count}} שנים",
   },
 
   almostXYears: {
-    one: 'כמעט שנה',
-    two: 'כמעט שנתיים',
-    other: 'כמעט {{count}} שנים',
+    one: "כמעט שנה",
+    two: "כמעט שנתיים",
+    other: "כמעט {{count}} שנים",
   },
-}
+};
 
-const formatDistance: FormatDistanceFn = (token, count, options) => {
+export const formatDistance: FormatDistanceFn = (token, count, options) => {
   // Return word instead of `in one day` or `one day ago`
-  if (token === 'xDays' && options?.addSuffix && count <= 2) {
+  if (token === "xDays" && options?.addSuffix && count <= 2) {
     if (options.comparison && options.comparison > 0) {
-      return count === 1 ? 'מחר' : 'מחרתיים'
+      return count === 1 ? "מחר" : "מחרתיים";
     }
 
-    return count === 1 ? 'אתמול' : 'שלשום'
+    return count === 1 ? "אתמול" : "שלשום";
   }
 
-  let result
+  let result;
 
-  const tokenValue = formatDistanceLocale[token]
-  if (typeof tokenValue === 'string') {
-    result = tokenValue
+  const tokenValue = formatDistanceLocale[token];
+  if (typeof tokenValue === "string") {
+    result = tokenValue;
   } else if (count === 1) {
-    result = tokenValue.one
+    result = tokenValue.one;
   } else if (count === 2) {
-    result = tokenValue.two
+    result = tokenValue.two;
   } else {
-    result = tokenValue.other.replace('{{count}}', String(count))
+    result = tokenValue.other.replace("{{count}}", String(count));
   }
 
   if (options?.addSuffix) {
     if (options.comparison && options.comparison > 0) {
-      return 'בעוד ' + result
+      return "בעוד " + result;
     } else {
-      return 'לפני ' + result
+      return "לפני " + result;
     }
   }
 
-  return result
-}
-
-export default formatDistance
+  return result;
+};

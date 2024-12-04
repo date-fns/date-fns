@@ -1,4 +1,4 @@
-import buildFormatLongFn from '../../../_lib/buildFormatLongFn';
+import { buildFormatLongFn } from '../../../_lib/buildFormatLongFn';
 import type { FormatLong } from '../../../types';
 
 
