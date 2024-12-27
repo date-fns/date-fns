@@ -1,5 +1,6 @@
 import { addDays } from "../addDays/index.js";
 import { addMonths } from "../addMonths/index.js";
+import { daysInWeek, millisecondsInSecond, minutesInHour, monthsInYear } from "../constants/index.js";
 import { constructFrom } from "../constructFrom/index.js";
 import { toDate } from "../toDate/index.js";
 import type { ContextOptions, DateArg, Duration } from "../types.js";
@@ -58,16 +59,16 @@ export function add<DateType extends Date, ResultDate extends Date = DateType>(
   // Add years and months
   const _date = toDate(date, options?.in);
   const dateWithMonths =
-    months || years ? addMonths(_date, months + years * 12) : _date;
+    months || years ? addMonths(_date, months + years * monthsInYear) : _date;
 
   // Add weeks and days
   const dateWithDays =
-    days || weeks ? addDays(dateWithMonths, days + weeks * 7) : dateWithMonths;
+    days || weeks ? addDays(dateWithMonths, days + weeks * daysInWeek) : dateWithMonths;
 
   // Add days, hours, minutes, and seconds
-  const minutesToAdd = minutes + hours * 60;
-  const secondsToAdd = seconds + minutesToAdd * 60;
-  const msToAdd = secondsToAdd * 1000;
+  const minutesToAdd = minutes + hours * minutesInHour;
+  const secondsToAdd = seconds + minutesToAdd * minutesInHour;
+  const msToAdd = secondsToAdd * millisecondsInSecond;
 
   return constructFrom(options?.in || date, +dateWithDays + msToAdd);
 }
