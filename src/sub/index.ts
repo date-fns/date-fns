@@ -1,3 +1,4 @@
+import { daysInWeek, millisecondsInSecond, minutesInHour, monthsInYear } from "../constants/index.js";
 import { constructFrom } from "../constructFrom/index.js";
 import { subDays } from "../subDays/index.js";
 import { subMonths } from "../subMonths/index.js";
@@ -66,12 +67,12 @@ export function sub<DateType extends Date, ResultDate extends Date = DateType>(
     seconds = 0,
   } = duration;
 
-  const withoutMonths = subMonths(date, months + years * 12, options);
-  const withoutDays = subDays(withoutMonths, days + weeks * 7, options);
+  const withoutMonths = subMonths(date, months + years * monthsInYear, options);
+  const withoutDays = subDays(withoutMonths, days + weeks * daysInWeek, options);
 
-  const minutesToSub = minutes + hours * 60;
-  const secondsToSub = seconds + minutesToSub * 60;
-  const msToSub = secondsToSub * 1000;
+  const minutesToSub = minutes + hours * minutesInHour;
+  const secondsToSub = seconds + minutesToSub * minutesInHour;
+  const msToSub = secondsToSub * millisecondsInSecond;
 
   return constructFrom(options?.in || date, +withoutDays - msToSub);
 }
