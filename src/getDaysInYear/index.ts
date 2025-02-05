@@ -1,5 +1,11 @@
-import isLeapYear from '../isLeapYear/index'
-import toDate from '../toDate/index'
+import { isLeapYear } from "../isLeapYear/index.js";
+import { toDate } from "../toDate/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
+
+/**
+ * The {@link getDaysInYear} function options.
+ */
+export interface GetDaysInYearOptions extends ContextOptions<Date> {}
 
 /**
  * @name getDaysInYear
@@ -9,22 +15,21 @@ import toDate from '../toDate/index'
  * @description
  * Get the number of days in a year of the given date.
  *
- * @param date - the given date
- * @returns the number of days in a year
+ * @param date - The given date
+ * @param options - An object with options
+ *
+ * @returns The number of days in a year
  *
  * @example
  * // How many days are in 2012?
  * const result = getDaysInYear(new Date(2012, 0, 1))
  * //=> 366
  */
-export default function getDaysInYear<DateType extends Date>(
-  dirtyDate: DateType | number
+export function getDaysInYear(
+  date: DateArg<Date> & {},
+  options?: GetDaysInYearOptions | undefined,
 ): number {
-  const date = toDate(dirtyDate)
-
-  if (String(new Date(date)) === 'Invalid Date') {
-    return NaN
-  }
-
-  return isLeapYear(date) ? 366 : 365
+  const _date = toDate(date, options?.in);
+  if (Number.isNaN(+_date)) return NaN;
+  return isLeapYear(_date) ? 366 : 365;
 }

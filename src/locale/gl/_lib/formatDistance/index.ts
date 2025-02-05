@@ -1,112 +1,110 @@
-import type { FormatDistanceFn, FormatDistanceLocale } from '../../../types'
+import type { FormatDistanceFn, FormatDistanceLocale } from "../../../types.js";
 
 type FormatDistanceTokenValue =
   | string
   | {
-      one: string
-      other: string
-    }
+      one: string;
+      other: string;
+    };
 
 const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   lessThanXSeconds: {
-    one: 'menos dun segundo',
-    other: 'menos de {{count}} segundos',
+    one: "menos dun segundo",
+    other: "menos de {{count}} segundos",
   },
 
   xSeconds: {
-    one: '1 segundo',
-    other: '{{count}} segundos',
+    one: "1 segundo",
+    other: "{{count}} segundos",
   },
 
-  halfAMinute: 'medio minuto',
+  halfAMinute: "medio minuto",
 
   lessThanXMinutes: {
-    one: 'menos dun minuto',
-    other: 'menos de {{count}} minutos',
+    one: "menos dun minuto",
+    other: "menos de {{count}} minutos",
   },
 
   xMinutes: {
-    one: '1 minuto',
-    other: '{{count}} minutos',
+    one: "1 minuto",
+    other: "{{count}} minutos",
   },
 
   aboutXHours: {
-    one: 'arredor dunha hora',
-    other: 'arredor de {{count}} horas',
+    one: "arredor dunha hora",
+    other: "arredor de {{count}} horas",
   },
 
   xHours: {
-    one: '1 hora',
-    other: '{{count}} horas',
+    one: "1 hora",
+    other: "{{count}} horas",
   },
 
   xDays: {
-    one: '1 día',
-    other: '{{count}} días',
+    one: "1 día",
+    other: "{{count}} días",
   },
 
   aboutXWeeks: {
-    one: 'arredor dunha semana',
-    other: 'arredor de {{count}} semanas',
+    one: "arredor dunha semana",
+    other: "arredor de {{count}} semanas",
   },
 
   xWeeks: {
-    one: '1 semana',
-    other: '{{count}} semanas',
+    one: "1 semana",
+    other: "{{count}} semanas",
   },
 
   aboutXMonths: {
-    one: 'arredor de 1 mes',
-    other: 'arredor de {{count}} meses',
+    one: "arredor de 1 mes",
+    other: "arredor de {{count}} meses",
   },
 
   xMonths: {
-    one: '1 mes',
-    other: '{{count}} meses',
+    one: "1 mes",
+    other: "{{count}} meses",
   },
 
   aboutXYears: {
-    one: 'arredor dun ano',
-    other: 'arredor de {{count}} anos',
+    one: "arredor dun ano",
+    other: "arredor de {{count}} anos",
   },
 
   xYears: {
-    one: '1 ano',
-    other: '{{count}} anos',
+    one: "1 ano",
+    other: "{{count}} anos",
   },
 
   overXYears: {
-    one: 'máis dun ano',
-    other: 'máis de {{count}} anos',
+    one: "máis dun ano",
+    other: "máis de {{count}} anos",
   },
 
   almostXYears: {
-    one: 'case un ano',
-    other: 'case {{count}} anos',
+    one: "case un ano",
+    other: "case {{count}} anos",
   },
-}
+};
 
-const formatDistance: FormatDistanceFn = (token, count, options) => {
-  let result
+export const formatDistance: FormatDistanceFn = (token, count, options) => {
+  let result;
 
-  const tokenValue = formatDistanceLocale[token]
-  if (typeof tokenValue === 'string') {
-    result = tokenValue
+  const tokenValue = formatDistanceLocale[token];
+  if (typeof tokenValue === "string") {
+    result = tokenValue;
   } else if (count === 1) {
-    result = tokenValue.one
+    result = tokenValue.one;
   } else {
-    result = tokenValue.other.replace('{{count}}', String(count))
+    result = tokenValue.other.replace("{{count}}", String(count));
   }
 
   if (options?.addSuffix) {
     if (options.comparison && options.comparison > 0) {
-      return 'en ' + result
+      return "en " + result;
     } else {
-      return 'hai ' + result
+      return "hai " + result;
     }
   }
 
-  return result
-}
-
-export default formatDistance
+  return result;
+};

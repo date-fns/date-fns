@@ -1,4 +1,11 @@
-import previousDay from '../previousDay/index'
+import { previousDay } from "../previousDay/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
+
+/**
+ * The {@link previousFriday} function options.
+ */
+export interface PreviousFridayOptions<DateType extends Date = Date>
+  extends ContextOptions<DateType> {}
 
 /**
  * @name previousFriday
@@ -8,16 +15,25 @@ import previousDay from '../previousDay/index'
  * @description
  * When is the previous Friday?
  *
- * @param date - the date to start counting from
- * @returns the previous Friday
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [UTCDate](https://github.com/date-fns/utc).
+ * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
+ *
+ * @param date - The date to start counting from
+ * @param options - The options
+ *
+ * @returns The previous Friday
  *
  * @example
  * // When is the previous Friday before Jun, 19, 2021?
  * const result = previousFriday(new Date(2021, 5, 19))
  * //=> Fri June 18 2021 00:00:00
  */
-export default function previousFriday<DateType extends Date>(
-  date: DateType | number
-): DateType {
-  return previousDay(date, 5)
+export function previousFriday<
+  DateType extends Date,
+  ResultDate extends Date = DateType,
+>(
+  date: DateArg<DateType>,
+  options?: PreviousFridayOptions<ResultDate> | undefined,
+): ResultDate {
+  return previousDay(date, 5, options);
 }

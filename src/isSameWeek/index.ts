@@ -1,10 +1,15 @@
-import startOfWeek from '../startOfWeek/index'
-import type { LocaleOptions, WeekStartOptions } from '../types'
+import { normalizeDates } from "../_lib/normalizeDates/index.js";
+import { startOfWeek } from "../startOfWeek/index.js";
+import type { LocalizedOptions, WeekOptions } from "../types.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link isSameWeek} function options.
  */
-export interface IsSameWeekOptions extends WeekStartOptions, LocaleOptions {}
+export interface IsSameWeekOptions
+  extends WeekOptions,
+    LocalizedOptions<"options">,
+    ContextOptions<Date> {}
 
 /**
  * @name isSameWeek
@@ -14,10 +19,11 @@ export interface IsSameWeekOptions extends WeekStartOptions, LocaleOptions {}
  * @description
  * Are the given dates in the same week (and month and year)?
  *
- * @param dateLeft - the first date to check
- * @param dateRight - the second date to check
- * @param options - an object with options.
- * @returns the dates are in the same week (and month and year)
+ * @param laterDate - The first date to check
+ * @param earlierDate - The second date to check
+ * @param options - An object with options
+ *
+ * @returns The dates are in the same week (and month and year)
  *
  * @example
  * // Are 31 August 2014 and 4 September 2014 in the same week?
@@ -37,13 +43,17 @@ export interface IsSameWeekOptions extends WeekStartOptions, LocaleOptions {}
  * const result = isSameWeek(new Date(2014, 0, 1), new Date(2015, 0, 1))
  * //=> false
  */
-export default function isSameWeek<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number,
-  options?: IsSameWeekOptions
+export function isSameWeek(
+  laterDate: DateArg<Date> & {},
+  earlierDate: DateArg<Date> & {},
+  options?: IsSameWeekOptions,
 ): boolean {
-  const dateLeftStartOfWeek = startOfWeek(dirtyDateLeft, options)
-  const dateRightStartOfWeek = startOfWeek(dirtyDateRight, options)
-
-  return dateLeftStartOfWeek.getTime() === dateRightStartOfWeek.getTime()
+  const [laterDate_, earlierDate_] = normalizeDates(
+    options?.in,
+    laterDate,
+    earlierDate,
+  );
+  return (
+    +startOfWeek(laterDate_, options) === +startOfWeek(earlierDate_, options)
+  );
 }

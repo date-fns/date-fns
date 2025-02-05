@@ -1,4 +1,12 @@
-import isSameISOWeek from '../isSameISOWeek/index'
+import { constructFrom } from "../constructFrom/index.js";
+import { constructNow } from "../constructNow/index.js";
+import { isSameISOWeek } from "../isSameISOWeek/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
+
+/**
+ * The {@link isThisISOWeek} function options.
+ */
+export interface IsThisISOWeekOptions extends ContextOptions<Date> {}
 
 /**
  * @name isThisISOWeek
@@ -11,20 +19,22 @@ import isSameISOWeek from '../isSameISOWeek/index'
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * > ⚠️ Please note that this function is not present in the FP submodule as
- * > it uses `Date.now()` internally hence impure and can't be safely curried.
+ * @param date - The date to check
+ * @param options - An object with options
  *
- * @param date - the date to check
- * @returns the date is in this ISO week
+ * @returns The date is in this ISO week
  *
  * @example
  * // If today is 25 September 2014, is 22 September 2014 in this ISO week?
  * const result = isThisISOWeek(new Date(2014, 8, 22))
  * //=> true
  */
-
-export default function isThisISOWeek<DateType extends Date>(
-  dirtyDate: DateType | number
+export function isThisISOWeek(
+  date: DateArg<Date> & {},
+  options?: IsThisISOWeekOptions | undefined,
 ): boolean {
-  return isSameISOWeek(dirtyDate, Date.now())
+  return isSameISOWeek(
+    constructFrom(options?.in || date, date),
+    constructNow(options?.in || date),
+  );
 }

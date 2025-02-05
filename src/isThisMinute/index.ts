@@ -1,4 +1,6 @@
-import isSameMinute from '../isSameMinute/index'
+import { constructNow } from "../constructNow/index.js";
+import { isSameMinute } from "../isSameMinute/index.js";
+import type { DateArg } from "../types.js";
 
 /**
  * @name isThisMinute
@@ -9,11 +11,9 @@ import isSameMinute from '../isSameMinute/index'
  * @description
  * Is the given date in the same minute as the current date?
  *
- * > ⚠️ Please note that this function is not present in the FP submodule as
- * > it uses `Date.now()` internally hence impure and can't be safely curried.
+ * @param date - The date to check
  *
- * @param date - the date to check
- * @returns the date is in this minute
+ * @returns The date is in this minute
  *
  * @example
  * // If now is 25 September 2014 18:30:15.500,
@@ -22,8 +22,6 @@ import isSameMinute from '../isSameMinute/index'
  * //=> true
  */
 
-export default function isThisMinute<DateType extends Date>(
-  dirtyDate: DateType | number
-): boolean {
-  return isSameMinute(Date.now(), dirtyDate)
+export function isThisMinute(date: DateArg<Date> & {}): boolean {
+  return isSameMinute(date, constructNow(date));
 }

@@ -1,5 +1,12 @@
-import getQuarter from '../getQuarter/index'
-import toDate from '../toDate/index'
+import { normalizeDates } from "../_lib/normalizeDates/index.js";
+import { getQuarter } from "../getQuarter/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
+
+/**
+ * The {@link differenceInCalendarQuarters} function options.
+ */
+export interface DifferenceInCalendarQuartersOptions
+  extends ContextOptions<Date> {}
 
 /**
  * @name differenceInCalendarQuarters
@@ -9,9 +16,11 @@ import toDate from '../toDate/index'
  * @description
  * Get the number of calendar quarters between the given dates.
  *
- * @param dateLeft - the later date
- * @param dateRight - the earlier date
- * @returns the number of calendar quarters
+ * @param laterDate - The later date
+ * @param earlierDate - The earlier date
+ * @param options - An object with options
+ *
+ * @returns The number of calendar quarters
  *
  * @example
  * // How many calendar quarters are between 31 December 2013 and 2 July 2014?
@@ -21,15 +30,19 @@ import toDate from '../toDate/index'
  * )
  * //=> 3
  */
-export default function differenceInCalendarQuarters<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+export function differenceInCalendarQuarters(
+  laterDate: DateArg<Date> & {},
+  earlierDate: DateArg<Date> & {},
+  options?: DifferenceInCalendarQuartersOptions | undefined,
 ): number {
-  const dateLeft = toDate(dirtyDateLeft)
-  const dateRight = toDate(dirtyDateRight)
+  const [laterDate_, earlierDate_] = normalizeDates(
+    options?.in,
+    laterDate,
+    earlierDate,
+  );
 
-  const yearDiff = dateLeft.getFullYear() - dateRight.getFullYear()
-  const quarterDiff = getQuarter(dateLeft) - getQuarter(dateRight)
+  const yearsDiff = laterDate_.getFullYear() - earlierDate_.getFullYear();
+  const quartersDiff = getQuarter(laterDate_) - getQuarter(earlierDate_);
 
-  return yearDiff * 4 + quarterDiff
+  return yearsDiff * 4 + quartersDiff;
 }

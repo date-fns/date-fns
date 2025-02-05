@@ -1,12 +1,14 @@
-import { millisecondsInHour } from '../constants/index'
-import differenceInMilliseconds from '../differenceInMilliseconds/index'
-import type { RoundingOptions } from '../types'
-import { getRoundingMethod } from '../_lib/roundingMethods/index'
+import { getRoundingMethod } from "../_lib/getRoundingMethod/index.js";
+import { normalizeDates } from "../_lib/normalizeDates/index.js";
+import { millisecondsInHour } from "../constants/index.js";
+import type { ContextOptions, DateArg, RoundingOptions } from "../types.js";
 
 /**
  * The {@link differenceInHours} function options.
  */
-export interface DifferenceInHoursOptions extends RoundingOptions {}
+export interface DifferenceInHoursOptions
+  extends RoundingOptions,
+    ContextOptions<Date> {}
 
 /**
  * @name differenceInHours
@@ -16,10 +18,11 @@ export interface DifferenceInHoursOptions extends RoundingOptions {}
  * @description
  * Get the number of hours between the given dates.
  *
- * @param dateLeft - the later date
- * @param dateRight - the earlier date
- * @param options - an object with options.
- * @returns the number of hours
+ * @param laterDate - The later date
+ * @param earlierDate - The earlier date
+ * @param options - An object with options.
+ *
+ * @returns The number of hours
  *
  * @example
  * // How many hours are between 2 July 2014 06:50:00 and 2 July 2014 19:00:00?
@@ -29,12 +32,16 @@ export interface DifferenceInHoursOptions extends RoundingOptions {}
  * )
  * //=> 12
  */
-export default function differenceInHours<DateType extends Date>(
-  dateLeft: DateType | number,
-  dateRight: DateType | number,
-  options?: DifferenceInHoursOptions
+export function differenceInHours(
+  laterDate: DateArg<Date> & {},
+  earlierDate: DateArg<Date> & {},
+  options?: DifferenceInHoursOptions,
 ): number {
-  const diff =
-    differenceInMilliseconds(dateLeft, dateRight) / millisecondsInHour
-  return getRoundingMethod(options?.roundingMethod)(diff)
+  const [laterDate_, earlierDate_] = normalizeDates(
+    options?.in,
+    laterDate,
+    earlierDate,
+  );
+  const diff = (+laterDate_ - +earlierDate_) / millisecondsInHour;
+  return getRoundingMethod(options?.roundingMethod)(diff);
 }

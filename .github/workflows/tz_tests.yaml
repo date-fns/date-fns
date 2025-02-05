@@ -1,0 +1,14 @@
+name: Time zone tests
+
+on: [push, pull_request]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: oven-sh/setup-bun@v1
+      - run: bun install
+      - run: bun ./scripts/test/tzOffset.ts
+      - run: bun ./scripts/test/tzIANA.ts

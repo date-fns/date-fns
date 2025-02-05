@@ -1,4 +1,5 @@
-import toDate from '../toDate/index'
+import { toDate } from "../toDate/index.js";
+import type { DateArg } from "../types.js";
 
 /**
  * @name isPast
@@ -9,19 +10,15 @@ import toDate from '../toDate/index'
  * @description
  * Is the given date in the past?
  *
- * > ⚠️ Please note that this function is not present in the FP submodule as
- * > it uses `Date.now()` internally hence impure and can't be safely curried.
+ * @param date - The date to check
  *
- * @param date - the date to check
- * @returns the date is in the past
+ * @returns The date is in the past
  *
  * @example
  * // If today is 6 October 2014, is 2 July 2014 in the past?
  * const result = isPast(new Date(2014, 6, 2))
  * //=> true
  */
-export default function isPast<DateType extends Date>(
-  dirtyDate: DateType | number
-): boolean {
-  return toDate(dirtyDate).getTime() < Date.now()
+export function isPast(date: DateArg<Date> & {}): boolean {
+  return +toDate(date) < Date.now();
 }

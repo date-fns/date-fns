@@ -1,4 +1,11 @@
-import toDate from '../toDate/index'
+import { normalizeDates } from "../_lib/normalizeDates/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
+
+/**
+ * The {@link differenceInCalendarYears} function options.
+ */
+export interface DifferenceInCalendarYearsOptions
+  extends ContextOptions<Date> {}
 
 /**
  * @name differenceInCalendarYears
@@ -8,24 +15,29 @@ import toDate from '../toDate/index'
  * @description
  * Get the number of calendar years between the given dates.
  *
- * @param dateLeft - the later date
- * @param dateRight - the earlier date
- * @returns the number of calendar years
+ * @param laterDate - The later date
+ * @param earlierDate - The earlier date
+ * @param options - An object with options
+
+ * @returns The number of calendar years
  *
  * @example
  * // How many calendar years are between 31 December 2013 and 11 February 2015?
  * const result = differenceInCalendarYears(
  *   new Date(2015, 1, 11),
  *   new Date(2013, 11, 31)
- * )
+ * );
  * //=> 2
  */
-export default function differenceInCalendarYears<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+export function differenceInCalendarYears(
+  laterDate: DateArg<Date> & {},
+  earlierDate: DateArg<Date> & {},
+  options?: DifferenceInCalendarYearsOptions | undefined,
 ): number {
-  const dateLeft = toDate(dirtyDateLeft)
-  const dateRight = toDate(dirtyDateRight)
-
-  return dateLeft.getFullYear() - dateRight.getFullYear()
+  const [laterDate_, earlierDate_] = normalizeDates(
+    options?.in,
+    laterDate,
+    earlierDate,
+  );
+  return laterDate_.getFullYear() - earlierDate_.getFullYear();
 }

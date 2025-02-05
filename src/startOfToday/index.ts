@@ -1,4 +1,11 @@
-import startOfDay from '../startOfDay/index'
+import { startOfDay } from "../startOfDay/index.js";
+import type { ContextOptions } from "../types.js";
+
+/**
+ * The {@link startOfToday} function options.
+ */
+export interface StartOfTodayOptions<DateType extends Date = Date>
+  extends ContextOptions<DateType> {}
 
 /**
  * @name startOfToday
@@ -9,16 +16,19 @@ import startOfDay from '../startOfDay/index'
  * @description
  * Return the start of today.
  *
- * > ⚠️ Please note that this function is not present in the FP submodule as
- * > it uses `Date.now()` internally hence impure and can't be safely curried.
+ * @typeParam ContextDate - The `Date` type of the context function.
  *
- * @returns the start of today
+ * @param options - An object with options
+ *
+ * @returns The start of today
  *
  * @example
  * // If today is 6 October 2014:
  * const result = startOfToday()
  * //=> Mon Oct 6 2014 00:00:00
  */
-export default function startOfToday(): Date {
-  return startOfDay(Date.now())
+export function startOfToday<ContextDate extends Date>(
+  options?: StartOfTodayOptions<ContextDate> | undefined,
+): ContextDate {
+  return startOfDay(Date.now(), options);
 }

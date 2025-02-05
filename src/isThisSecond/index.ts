@@ -1,4 +1,6 @@
-import isSameSecond from '../isSameSecond/index'
+import { constructNow } from "../constructNow/index.js";
+import { isSameSecond } from "../isSameSecond/index.js";
+import type { DateArg } from "../types.js";
 
 /**
  * @name isThisSecond
@@ -9,11 +11,9 @@ import isSameSecond from '../isSameSecond/index'
  * @description
  * Is the given date in the same second as the current date?
  *
- * > ⚠️ Please note that this function is not present in the FP submodule as
- * > it uses `Date.now()` internally hence impure and can't be safely curried.
+ * @param date - The date to check
  *
- * @param date - the date to check
- * @returns the date is in this second
+ * @returns The date is in this second
  *
  * @example
  * // If now is 25 September 2014 18:30:15.500,
@@ -21,8 +21,6 @@ import isSameSecond from '../isSameSecond/index'
  * const result = isThisSecond(new Date(2014, 8, 25, 18, 30, 15))
  * //=> true
  */
-export default function isThisSecond<DateType extends Date>(
-  dirtyDate: DateType | number
-): boolean {
-  return isSameSecond(Date.now(), dirtyDate)
+export function isThisSecond(date: DateArg<Date> & {}): boolean {
+  return isSameSecond(date, constructNow(date));
 }

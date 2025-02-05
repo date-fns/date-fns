@@ -1,4 +1,4 @@
-import { minutesInHour } from '../constants/index'
+import { minutesInHour } from "../constants/index.js";
 
 /**
  * @name hoursToMinutes
@@ -10,13 +10,13 @@ import { minutesInHour } from '../constants/index'
  *
  * @param hours - number of hours to be converted
  *
- * @returns the number of hours converted in minutes
+ * @returns The number of hours converted in minutes
  *
  * @example
  * // Convert 2 hours to minutes:
  * const result = hoursToMinutes(2)
  * //=> 120
  */
-export default function hoursToMinutes(hours: number): number {
-  return Math.floor(hours * minutesInHour)
+export function hoursToMinutes(hours: number): number {
+  return Math.trunc(hours * minutesInHour);
 }

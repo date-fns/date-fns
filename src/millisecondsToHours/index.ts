@@ -1,4 +1,4 @@
-import { millisecondsInHour } from '../constants/index'
+import { millisecondsInHour } from "../constants/index.js";
 
 /**
  * @name millisecondsToHours
@@ -8,9 +8,9 @@ import { millisecondsInHour } from '../constants/index'
  * @description
  * Convert a number of milliseconds to a full number of hours.
  *
- * @param milliseconds - number of milliseconds to be converted
+ * @param milliseconds - The number of milliseconds to be converted
  *
- * @returns the number of milliseconds converted in hours
+ * @returns The number of milliseconds converted in hours
  *
  * @example
  * // Convert 7200000 milliseconds to hours:
@@ -22,7 +22,7 @@ import { millisecondsInHour } from '../constants/index'
  * const result = millisecondsToHours(7199999)
  * //=> 1
  */
-export default function millisecondsToHours(milliseconds: number): number {
-  const hours = milliseconds / millisecondsInHour
-  return Math.floor(hours)
+export function millisecondsToHours(milliseconds: number): number {
+  const hours = milliseconds / millisecondsInHour;
+  return Math.trunc(hours);
 }

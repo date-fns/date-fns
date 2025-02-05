@@ -1,7 +1,34 @@
-import addQuarters from '../addQuarters/index'
-import startOfQuarter from '../startOfQuarter/index'
-import toDate from '../toDate/index'
-import type { Interval } from '../types'
+import { normalizeInterval } from "../_lib/normalizeInterval/index.js";
+import { addQuarters } from "../addQuarters/index.js";
+import { constructFrom } from "../constructFrom/index.js";
+import { startOfQuarter } from "../startOfQuarter/index.js";
+import type { ContextOptions, Interval, StepOptions } from "../types.js";
+
+/**
+ * The {@link eachQuarterOfInterval} function options.
+ */
+export interface EachQuarterOfIntervalOptions<DateType extends Date = Date>
+  extends StepOptions,
+    ContextOptions<DateType> {}
+
+/**
+ * The {@link eachQuarterOfInterval} function result type. It resolves the proper data type.
+ * It uses the first argument date object type, starting from the date argument,
+ * then the start interval date, and finally the end interval date. If
+ * a context function is passed, it uses the context function return type.
+ */
+export type EachQuarterOfIntervalResult<
+  IntervalType extends Interval,
+  Options extends EachQuarterOfIntervalOptions | undefined,
+> = Array<
+  Options extends EachQuarterOfIntervalOptions<infer DateType>
+    ? DateType
+    : IntervalType["start"] extends Date
+      ? IntervalType["start"]
+      : IntervalType["end"] extends Date
+        ? IntervalType["end"]
+        : Date
+>;
 
 /**
  * @name eachQuarterOfInterval
@@ -11,16 +38,19 @@ import type { Interval } from '../types'
  * @description
  * Return the array of quarters within the specified time interval.
  *
- * @param interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
- * @returns the array with starts of quarters from the quarter of the interval start to the quarter of the interval end
- * @throws {RangeError} The start of an interval cannot be after its end
- * @throws {RangeError} Date in interval cannot be `Invalid Date`
+ * @typeParam IntervalType - Interval type.
+ * @typeParam Options - Options type.
+ *
+ * @param interval - The interval
+ * @param options - An object with options
+ *
+ * @returns The array with starts of quarters from the quarter of the interval start to the quarter of the interval end
  *
  * @example
  * // Each quarter within interval 6 February 2014 - 10 August 2014:
  * const result = eachQuarterOfInterval({
  *   start: new Date(2014, 1, 6),
- *   end: new Date(2014, 7, 10)
+ *   end: new Date(2014, 7, 10),
  * })
  * //=> [
  * //   Wed Jan 01 2014 00:00:00,
@@ -28,32 +58,32 @@ import type { Interval } from '../types'
  * //   Tue Jul 01 2014 00:00:00,
  * // ]
  */
-export default function eachQuarterOfInterval<DateType extends Date>(
-  interval: Interval<DateType>
-): DateType[] {
-  const startDate = toDate(interval.start)
-  const endDate = toDate(interval.end)
+export function eachQuarterOfInterval<
+  IntervalType extends Interval,
+  Options extends EachQuarterOfIntervalOptions | undefined = undefined,
+>(
+  interval: IntervalType,
+  options?: Options,
+): EachQuarterOfIntervalResult<IntervalType, Options> {
+  const { start, end } = normalizeInterval(options?.in, interval);
 
-  let endTime = endDate.getTime()
+  let reversed = +start > +end;
+  const endTime = reversed ? +startOfQuarter(start) : +startOfQuarter(end);
+  let date = reversed ? startOfQuarter(end) : startOfQuarter(start);
 
-  // Throw an exception if start date is after end date or if any date is `Invalid Date`
-  if (!(startDate.getTime() <= endTime)) {
-    throw new RangeError('Invalid interval')
+  let step = options?.step ?? 1;
+  if (!step) return [];
+  if (step < 0) {
+    step = -step;
+    reversed = !reversed;
   }
 
-  const startDateQuarter = startOfQuarter(startDate)
-  const endDateQuarter = startOfQuarter(endDate)
+  const dates: EachQuarterOfIntervalResult<IntervalType, Options> = [];
 
-  endTime = endDateQuarter.getTime()
-
-  const quarters = []
-
-  let currentQuarter = startDateQuarter
-
-  while (currentQuarter.getTime() <= endTime) {
-    quarters.push(toDate(currentQuarter))
-    currentQuarter = addQuarters(currentQuarter, 1)
+  while (+date <= endTime) {
+    dates.push(constructFrom(start, date));
+    date = addQuarters(date, step);
   }
 
-  return quarters
+  return reversed ? dates.reverse() : dates;
 }

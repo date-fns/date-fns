@@ -1,3 +1,13 @@
+import { constructFrom } from "../constructFrom/index.js";
+import { constructNow } from "../constructNow/index.js";
+import type { ContextOptions } from "../types.js";
+
+/**
+ * The {@link endOfYesterday} function options.
+ */
+export interface EndOfYesterdayOptions<DateType extends Date = Date>
+  extends ContextOptions<DateType> {}
+
 /**
  * @name endOfYesterday
  * @category Day Helpers
@@ -7,24 +17,23 @@
  * @description
  * Return the end of yesterday.
  *
- * > ⚠️ Please note that this function is not present in the FP submodule as
- * > it uses `new Date()` internally hence impure and can't be safely curried.
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
  *
- * @returns the end of yesterday
+ * @returns The end of yesterday
  *
  * @example
  * // If today is 6 October 2014:
  * const result = endOfYesterday()
  * //=> Sun Oct 5 2014 23:59:59.999
  */
-export default function endOfYesterday(): Date {
-  const now = new Date()
-  const year = now.getFullYear()
-  const month = now.getMonth()
-  const day = now.getDate()
-
-  const date = new Date(0)
-  date.setFullYear(year, month, day - 1)
-  date.setHours(23, 59, 59, 999)
-  return date
+export function endOfYesterday<
+  DateType extends Date,
+  ResultDate extends Date = DateType,
+>(options?: EndOfYesterdayOptions<ResultDate> | undefined): ResultDate {
+  const now = constructNow(options?.in);
+  const date = constructFrom(options?.in, 0);
+  date.setFullYear(now.getFullYear(), now.getMonth(), now.getDate() - 1);
+  date.setHours(23, 59, 59, 999);
+  return date;
 }

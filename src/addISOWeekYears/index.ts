@@ -1,5 +1,12 @@
-import getISOWeekYear from '../getISOWeekYear/index'
-import setISOWeekYear from '../setISOWeekYear/index'
+import { getISOWeekYear } from "../getISOWeekYear/index.js";
+import { setISOWeekYear } from "../setISOWeekYear/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
+
+/**
+ * The {@link addISOWeekYears} function options.
+ */
+export interface AddISOWeekYearsOptions<DateType extends Date = Date>
+  extends ContextOptions<DateType> {}
 
 /**
  * @name addISOWeekYears
@@ -11,18 +18,26 @@ import setISOWeekYear from '../setISOWeekYear/index'
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @param date - the date to be changed
- * @param amount - the amount of ISO week-numbering years to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
- * @returns the new date with the ISO week-numbering years added
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ *
+ * @param date - The date to be changed
+ * @param amount - The amount of ISO week-numbering years to be added.
+ * @param options - An object with options
+ *
+ * @returns The new date with the ISO week-numbering years added
  *
  * @example
  * // Add 5 ISO week-numbering years to 2 July 2010:
  * const result = addISOWeekYears(new Date(2010, 6, 2), 5)
- * //=> Fri Jn 26 2015 00:00:00
+ * //=> Fri Jun 26 2015 00:00:00
  */
-export default function addISOWeekYears<DateType extends Date>(
-  dirtyDate: DateType | number,
-  amount: number
-): DateType {
-  return setISOWeekYear(dirtyDate, getISOWeekYear(dirtyDate) + amount)
+export function addISOWeekYears<
+  DateType extends Date,
+  ResultDate extends Date = DateType,
+>(
+  date: DateArg<DateType>,
+  amount: number,
+  options?: AddISOWeekYearsOptions<ResultDate> | undefined,
+): ResultDate {
+  return setISOWeekYear(date, getISOWeekYear(date, options) + amount, options);
 }

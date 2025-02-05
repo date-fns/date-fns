@@ -1,4 +1,5 @@
-import toDate from '../toDate/index'
+import { toDate } from "../toDate/index.js";
+import type { DateArg } from "../types.js";
 
 /**
  * @name closestIndexTo
@@ -8,9 +9,10 @@ import toDate from '../toDate/index'
  * @description
  * Return an index of the closest date from the array comparing to the given date.
  *
- * @param dateToCompare - the date to compare with
- * @param datesArray - the array to search
- * @returns an index of the date closest to the given date or undefined if no valid value is given
+ * @param dateToCompare - The date to compare with
+ * @param dates - The array to search
+ *
+ * @returns An index of the date closest to the given date or undefined if no valid value is given
  *
  * @example
  * // Which date is closer to 6 September 2015?
@@ -23,33 +25,34 @@ import toDate from '../toDate/index'
  * const result = closestIndexTo(dateToCompare, datesArray)
  * //=> 1
  */
-export default function closestIndexTo<DateType extends Date>(
-  dirtyDateToCompare: DateType | number,
-  datesArray: Array<DateType | number>
+export function closestIndexTo(
+  dateToCompare: DateArg<Date> & {},
+  dates: Array<DateArg<Date> & {}>,
 ): number | undefined {
-  const dateToCompare = toDate(dirtyDateToCompare)
+  // [TODO] It would be better to return -1 here rather than undefined, as this
+  // is how JS behaves, but it would be a breaking change, so we need
+  // to consider it for v4.
+  const timeToCompare = +toDate(dateToCompare);
 
-  if (isNaN(Number(dateToCompare))) return NaN
+  if (isNaN(timeToCompare)) return NaN;
 
-  const timeToCompare = dateToCompare.getTime()
+  let result: number | undefined;
+  let minDistance: number;
+  dates.forEach((date, index) => {
+    const date_ = toDate(date);
 
-  let result: number | undefined
-  let minDistance: number
-  datesArray.forEach(function (dirtyDate, index) {
-    const currentDate = toDate(dirtyDate)
-
-    if (isNaN(Number(currentDate))) {
-      result = NaN
-      minDistance = NaN
-      return
+    if (isNaN(+date_)) {
+      result = NaN;
+      minDistance = NaN;
+      return;
     }
 
-    const distance = Math.abs(timeToCompare - currentDate.getTime())
+    const distance = Math.abs(timeToCompare - +date_);
     if (result == null || distance < minDistance) {
-      result = index
-      minDistance = distance
+      result = index;
+      minDistance = distance;
     }
-  })
+  });
 
-  return result
+  return result;
 }

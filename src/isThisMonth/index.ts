@@ -1,4 +1,12 @@
-import isSameMonth from '../isSameMonth/index'
+import { constructFrom } from "../constructFrom/index.js";
+import { constructNow } from "../constructNow/index.js";
+import { isSameMonth } from "../isSameMonth/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
+
+/**
+ * The {@link isThisMonth} function options.
+ */
+export interface IsThisMonthOptions extends ContextOptions<Date> {}
 
 /**
  * @name isThisMonth
@@ -9,20 +17,22 @@ import isSameMonth from '../isSameMonth/index'
  * @description
  * Is the given date in the same month as the current date?
  *
- * > ⚠️ Please note that this function is not present in the FP submodule as
- * > it uses `Date.now()` internally hence impure and can't be safely curried.
+ * @param date - The date to check
+ * @param options - An object with options
  *
- * @param date - the date to check
- * @returns the date is in this month
+ * @returns The date is in this month
  *
  * @example
  * // If today is 25 September 2014, is 15 September 2014 in this month?
  * const result = isThisMonth(new Date(2014, 8, 15))
  * //=> true
  */
-
-export default function isThisMonth<DateType extends Date>(
-  dirtyDate: DateType | number
+export function isThisMonth(
+  date: DateArg<Date> & {},
+  options?: IsThisMonthOptions | undefined,
 ): boolean {
-  return isSameMonth(Date.now(), dirtyDate)
+  return isSameMonth(
+    constructFrom(options?.in || date, date),
+    constructNow(options?.in || date),
+  );
 }

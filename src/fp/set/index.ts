@@ -1,6 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.
 
-import fn from '../../set/index'
-import convertToFP from '../_lib/convertToFP/index'
+import { set as fn } from "../../set/index.js";
+import { convertToFP } from "../_lib/convertToFP/index.js";
 
-export default convertToFP(fn, 2)
+export const set = convertToFP(fn, 2);

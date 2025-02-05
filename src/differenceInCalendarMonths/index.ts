@@ -1,4 +1,11 @@
-import toDate from '../toDate/index'
+import { normalizeDates } from "../_lib/normalizeDates/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
+
+/**
+ * The {@link differenceInCalendarMonths} function options.
+ */
+export interface DifferenceInCalendarMonthsOptions
+  extends ContextOptions<Date> {}
 
 /**
  * @name differenceInCalendarMonths
@@ -8,9 +15,11 @@ import toDate from '../toDate/index'
  * @description
  * Get the number of calendar months between the given dates.
  *
- * @param dateLeft - the later date
- * @param dateRight - the earlier date
- * @returns the number of calendar months
+ * @param laterDate - The later date
+ * @param earlierDate - The earlier date
+ * @param options - An object with options
+ *
+ * @returns The number of calendar months
  *
  * @example
  * // How many calendar months are between 31 January 2014 and 1 September 2014?
@@ -20,15 +29,19 @@ import toDate from '../toDate/index'
  * )
  * //=> 8
  */
-export default function differenceInCalendarMonths<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+export function differenceInCalendarMonths(
+  laterDate: DateArg<Date> & {},
+  earlierDate: DateArg<Date> & {},
+  options?: DifferenceInCalendarMonthsOptions | undefined,
 ): number {
-  const dateLeft = toDate(dirtyDateLeft)
-  const dateRight = toDate(dirtyDateRight)
+  const [laterDate_, earlierDate_] = normalizeDates(
+    options?.in,
+    laterDate,
+    earlierDate,
+  );
 
-  const yearDiff = dateLeft.getFullYear() - dateRight.getFullYear()
-  const monthDiff = dateLeft.getMonth() - dateRight.getMonth()
+  const yearsDiff = laterDate_.getFullYear() - earlierDate_.getFullYear();
+  const monthsDiff = laterDate_.getMonth() - earlierDate_.getMonth();
 
-  return yearDiff * 12 + monthDiff
+  return yearsDiff * 12 + monthsDiff;
 }

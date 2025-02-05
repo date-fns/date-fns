@@ -1,4 +1,4 @@
-import { daysInWeek } from '../constants/index'
+import { daysInWeek } from "../constants/index.js";
 
 /**
  * @name daysToWeeks
@@ -8,9 +8,9 @@ import { daysInWeek } from '../constants/index'
  * @description
  * Convert a number of days to a full number of weeks.
  *
- * @param days - number of days to be converted
+ * @param days - The number of days to be converted
  *
- * @returns the number of days converted in weeks
+ * @returns The number of days converted in weeks
  *
  * @example
  * // Convert 14 days to weeks:
@@ -18,11 +18,12 @@ import { daysInWeek } from '../constants/index'
  * //=> 2
  *
  * @example
- * // It uses floor rounding:
+ * // It uses trunc rounding:
  * const result = daysToWeeks(13)
  * //=> 1
  */
-export default function daysToWeeks(days: number): number {
-  const weeks = days / daysInWeek
-  return Math.floor(weeks)
+export function daysToWeeks(days: number): number {
+  const result = Math.trunc(days / daysInWeek);
+  // Prevent negative zero
+  return result === 0 ? 0 : result;
 }

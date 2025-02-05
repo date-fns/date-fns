@@ -1,4 +1,10 @@
-import toDate from '../toDate/index'
+import { toDate } from "../toDate/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
+
+/**
+ * The {@link getMonth} function options.
+ */
+export interface GetMonthOptions extends ContextOptions<Date> {}
 
 /**
  * @name getMonth
@@ -8,18 +14,19 @@ import toDate from '../toDate/index'
  * @description
  * Get the month of the given date.
  *
- * @param date - the given date
- * @returns the month
+ * @param date - The given date
+ * @param options - An object with options
+ *
+ * @returns The month index (0-11)
  *
  * @example
  * // Which month is 29 February 2012?
  * const result = getMonth(new Date(2012, 1, 29))
  * //=> 1
  */
-export default function getMonth<DateType extends Date>(
-  dirtyDate: DateType | number
+export function getMonth(
+  date: DateArg<Date> & {},
+  options?: GetMonthOptions | undefined,
 ): number {
-  const date = toDate(dirtyDate)
-  const month = date.getMonth()
-  return month
+  return toDate(date, options?.in).getMonth();
 }

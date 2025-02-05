@@ -1,0 +1,19 @@
+name: Smoke tests
+
+on: [push, pull_request]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+      - uses: oven-sh/setup-bun@v1
+      - run: npm install
+
+      - name: Smoke tests
+        run: ./scripts/test/smoke.sh

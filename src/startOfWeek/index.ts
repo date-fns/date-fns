@@ -1,11 +1,19 @@
-import toDate from '../toDate/index'
-import type { LocaleOptions, WeekStartOptions } from '../types'
-import { getDefaultOptions } from '../_lib/defaultOptions/index'
+import { getDefaultOptions } from "../_lib/defaultOptions/index.js";
+import { toDate } from "../toDate/index.js";
+import type {
+  ContextOptions,
+  DateArg,
+  LocalizedOptions,
+  WeekOptions,
+} from "../types.js";
 
 /**
  * The {@link startOfWeek} function options.
  */
-export interface StartOfWeekOptions extends LocaleOptions, WeekStartOptions {}
+export interface StartOfWeekOptions<DateType extends Date = Date>
+  extends LocalizedOptions<"options">,
+    WeekOptions,
+    ContextOptions<DateType> {}
 
 /**
  * @name startOfWeek
@@ -16,9 +24,13 @@ export interface StartOfWeekOptions extends LocaleOptions, WeekStartOptions {}
  * Return the start of a week for the given date.
  * The result will be in the local timezone.
  *
- * @param date - the original date
- * @param options - an object with options.
- * @returns the start of a week
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
+ *
+ * @param date - The original date
+ * @param options - An object with options
+ *
+ * @returns The start of a week
  *
  * @example
  * // The start of a week for 2 September 2014 11:55:00:
@@ -30,23 +42,26 @@ export interface StartOfWeekOptions extends LocaleOptions, WeekStartOptions {}
  * const result = startOfWeek(new Date(2014, 8, 2, 11, 55, 0), { weekStartsOn: 1 })
  * //=> Mon Sep 01 2014 00:00:00
  */
-export default function startOfWeek<DateType extends Date>(
-  dirtyDate: DateType | number,
-  options?: StartOfWeekOptions
-): DateType {
-  const defaultOptions = getDefaultOptions()
+export function startOfWeek<
+  DateType extends Date,
+  ResultDate extends Date = DateType,
+>(
+  date: DateArg<DateType>,
+  options?: StartOfWeekOptions<ResultDate>,
+): ResultDate {
+  const defaultOptions = getDefaultOptions();
   const weekStartsOn =
     options?.weekStartsOn ??
     options?.locale?.options?.weekStartsOn ??
     defaultOptions.weekStartsOn ??
     defaultOptions.locale?.options?.weekStartsOn ??
-    0
+    0;
 
-  const date = toDate(dirtyDate)
-  const day = date.getDay()
-  const diff = (day < weekStartsOn ? 7 : 0) + day - weekStartsOn
+  const _date = toDate(date, options?.in);
+  const day = _date.getDay();
+  const diff = (day < weekStartsOn ? 7 : 0) + day - weekStartsOn;
 
-  date.setDate(date.getDate() - diff)
-  date.setHours(0, 0, 0, 0)
-  return date
+  _date.setDate(_date.getDate() - diff);
+  _date.setHours(0, 0, 0, 0);
+  return _date;
 }

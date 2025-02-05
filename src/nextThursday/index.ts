@@ -1,4 +1,11 @@
-import nextDay from '../nextDay/index'
+import { nextDay } from "../nextDay/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
+
+/**
+ * The {@link nextThursday} function options.
+ */
+export interface NextThursdayOptions<DateType extends Date = Date>
+  extends ContextOptions<DateType> {}
 
 /**
  * @name nextThursday
@@ -8,16 +15,25 @@ import nextDay from '../nextDay/index'
  * @description
  * When is the next Thursday?
  *
- * @param date - the date to start counting from
- * @returns the next Thursday
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
+ *
+ * @param date - The date to start counting from
+ * @param options - An object with options
+ *
+ * @returns The next Thursday
  *
  * @example
  * // When is the next Thursday after Mar, 22, 2020?
  * const result = nextThursday(new Date(2020, 2, 22))
  * //=> Thur Mar 26 2020 00:00:00
  */
-export default function nextThursday<DateType extends Date>(
-  date: DateType | number
-): DateType {
-  return nextDay(date, 4)
+export function nextThursday<
+  DateType extends Date,
+  ResultDate extends Date = DateType,
+>(
+  date: DateArg<DateType>,
+  options?: NextThursdayOptions<ResultDate> | undefined,
+): ResultDate {
+  return nextDay(date, 4, options);
 }

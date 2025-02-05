@@ -1,4 +1,5 @@
-import toDate from '../toDate/index'
+import { toDate } from "../toDate/index.js";
+import type { DateArg } from "../types.js";
 
 /**
  * @name getSeconds
@@ -8,18 +9,15 @@ import toDate from '../toDate/index'
  * @description
  * Get the seconds of the given date.
  *
- * @param date - the given date
- * @returns the seconds
+ * @param date - The given date
+ *
+ * @returns The seconds
  *
  * @example
  * // Get the seconds of 29 February 2012 11:45:05.123:
  * const result = getSeconds(new Date(2012, 1, 29, 11, 45, 5, 123))
  * //=> 5
  */
-export default function getSeconds<DateType extends Date>(
-  dirtyDate: DateType | number
-): number {
-  const date = toDate(dirtyDate)
-  const seconds = date.getSeconds()
-  return seconds
+export function getSeconds(date: DateArg<Date> & {}): number {
+  return toDate(date).getSeconds();
 }

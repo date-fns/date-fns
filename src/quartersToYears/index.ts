@@ -1,4 +1,4 @@
-import { quartersInYear } from '../constants/index'
+import { quartersInYear } from "../constants/index.js";
 
 /**
  * @name quartersToYears
@@ -8,9 +8,9 @@ import { quartersInYear } from '../constants/index'
  * @description
  * Convert a number of quarters to a full number of years.
  *
- * @param quarters - number of quarters to be converted
+ * @param quarters - The number of quarters to be converted
  *
- * @returns the number of quarters converted in years
+ * @returns The number of quarters converted in years
  *
  * @example
  * // Convert 8 quarters to years
@@ -22,7 +22,7 @@ import { quartersInYear } from '../constants/index'
  * const result = quartersToYears(11)
  * //=> 2
  */
-export default function quartersToYears(quarters: number): number {
-  const years = quarters / quartersInYear
-  return Math.floor(years)
+export function quartersToYears(quarters: number): number {
+  const years = quarters / quartersInYear;
+  return Math.trunc(years);
 }

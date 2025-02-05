@@ -1,25 +1,36 @@
-import addSeconds from '../addSeconds/index'
+import { addSeconds } from "../addSeconds/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
- * @name subSeconds
- * @category Second Helpers
- * @summary Subtract the specified number of seconds from the given date.
- *
- * @description
+ * The {@link subSeconds} function options.
+ */
+export interface SubSecondsOptions<DateType extends Date = Date>
+  extends ContextOptions<DateType> {}
+
+/**
  * Subtract the specified number of seconds from the given date.
  *
- * @param date - the date to be changed
- * @param amount - the amount of seconds to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
- * @returns the new date with the seconds subtracted
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
+ *
+ * @param date - The date to be changed
+ * @param amount - The amount of seconds to be subtracted.
+ * @param options - The options
+ *
+ * @returns The new date with the seconds subtracted
  *
  * @example
  * // Subtract 30 seconds from 10 July 2014 12:45:00:
  * const result = subSeconds(new Date(2014, 6, 10, 12, 45, 0), 30)
  * //=> Thu Jul 10 2014 12:44:30
  */
-export default function subSeconds<DateType extends Date>(
-  dirtyDate: DateType | number,
-  amount: number
-): DateType {
-  return addSeconds(dirtyDate, -amount)
+export function subSeconds<
+  DateType extends Date,
+  ResultDate extends Date = DateType,
+>(
+  date: DateArg<DateType>,
+  amount: number,
+  options?: SubSecondsOptions<ResultDate> | undefined,
+): ResultDate {
+  return addSeconds(date, -amount, options);
 }

@@ -1,36 +1,37 @@
-import type { Quarter } from '../../../../types'
-import type { Match } from '../../../types'
-import buildMatchFn from '../../../_lib/buildMatchFn/index'
-import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
+import type { Quarter } from "../../../../types.js";
+import type { Match } from "../../../types.js";
+import { buildMatchFn } from "../../../_lib/buildMatchFn/index.js";
+import { buildMatchPatternFn } from "../../../_lib/buildMatchPatternFn/index.js";
 
-const matchOrdinalNumberPattern = /^(\d+)(-?(е|й|є|а|я))?/i
-const parseOrdinalNumberPattern = /\d+/i
+const matchOrdinalNumberPattern = /^(\d+)(-?(е|й|є|а|я))?/i;
+const parseOrdinalNumberPattern = /\d+/i;
 
 const matchEraPatterns = {
   narrow: /^((до )?н\.?\s?е\.?)/i,
   abbreviated: /^((до )?н\.?\s?е\.?)/i,
   wide: /^(до нашої ери|нашої ери|наша ера)/i,
-}
+};
 
 const parseEraPatterns = {
   any: [/^д/i, /^н/i] as const,
-}
+};
 
 const matchQuarterPatterns = {
   narrow: /^[1234]/i,
   abbreviated: /^[1234](-?[иі]?й?)? кв.?/i,
   wide: /^[1234](-?[иі]?й?)? квартал/i,
-}
+};
 
 const parseQuarterPatterns = {
   any: [/1/i, /2/i, /3/i, /4/i] as const,
-}
+};
 
 const matchMonthPatterns = {
   narrow: /^[слбктчвжг]/i,
-  abbreviated: /^(січ|лют|бер(ез)?|квіт|трав|черв|лип|серп|вер(ес)?|жовт|лис(топ)?|груд)\.?/i,
+  abbreviated:
+    /^(січ|лют|бер(ез)?|квіт|трав|черв|лип|серп|вер(ес)?|жовт|лис(топ)?|груд)\.?/i,
   wide: /^(січень|січня|лютий|лютого|березень|березня|квітень|квітня|травень|травня|червня|червень|липень|липня|серпень|серпня|вересень|вересня|жовтень|жовтня|листопад[а]?|грудень|грудня)/i,
-}
+};
 
 const parseMonthPatterns = {
   narrow: [
@@ -61,14 +62,14 @@ const parseMonthPatterns = {
     /^лис/i,
     /^г/i,
   ] as const,
-}
+};
 
 const matchDayPatterns = {
   narrow: /^[нпвсч]/i,
   short: /^(нд|пн|вт|ср|чт|пт|сб)\.?/i,
   abbreviated: /^(нед|пон|вів|сер|че?тв|птн?|суб)\.?/i,
   wide: /^(неділ[яі]|понеділ[ок][ка]|вівтор[ок][ка]|серед[аи]|четвер(га)?|п\W*?ятниц[яі]|субот[аи])/i,
-}
+};
 
 const parseDayPatterns = {
   narrow: [/^н/i, /^п/i, /^в/i, /^с/i, /^ч/i, /^п/i, /^с/i] as const,
@@ -81,13 +82,13 @@ const parseDayPatterns = {
     /^п\W*?[ят]/i,
     /^с[уб]/i,
   ] as const,
-}
+};
 
 const matchDayPeriodPatterns = {
   narrow: /^([дп]п|півн\.?|пол\.?|ранок|ранку|день|дня|веч\.?|ніч|ночі)/i,
   abbreviated: /^([дп]п|півн\.?|пол\.?|ранок|ранку|день|дня|веч\.?|ніч|ночі)/i,
   wide: /^([дп]п|північ|полудень|ранок|ранку|день|дня|вечір|вечора|ніч|ночі)/i,
-}
+};
 
 const parseDayPeriodPatterns = {
   any: {
@@ -100,9 +101,9 @@ const parseDayPeriodPatterns = {
     evening: /^в/i,
     night: /^н/i,
   },
-}
+};
 
-const match: Match = {
+export const match: Match = {
   ordinalNumber: buildMatchPatternFn({
     matchPattern: matchOrdinalNumberPattern,
     parsePattern: parseOrdinalNumberPattern,
@@ -111,39 +112,37 @@ const match: Match = {
 
   era: buildMatchFn({
     matchPatterns: matchEraPatterns,
-    defaultMatchWidth: 'wide',
+    defaultMatchWidth: "wide",
     parsePatterns: parseEraPatterns,
-    defaultParseWidth: 'any',
+    defaultParseWidth: "any",
   }),
 
   quarter: buildMatchFn({
     matchPatterns: matchQuarterPatterns,
-    defaultMatchWidth: 'wide',
+    defaultMatchWidth: "wide",
     parsePatterns: parseQuarterPatterns,
-    defaultParseWidth: 'any',
+    defaultParseWidth: "any",
     valueCallback: (index) => (index + 1) as Quarter,
   }),
 
   month: buildMatchFn({
     matchPatterns: matchMonthPatterns,
-    defaultMatchWidth: 'wide',
+    defaultMatchWidth: "wide",
     parsePatterns: parseMonthPatterns,
-    defaultParseWidth: 'any',
+    defaultParseWidth: "any",
   }),
 
   day: buildMatchFn({
     matchPatterns: matchDayPatterns,
-    defaultMatchWidth: 'wide',
+    defaultMatchWidth: "wide",
     parsePatterns: parseDayPatterns,
-    defaultParseWidth: 'any',
+    defaultParseWidth: "any",
   }),
 
   dayPeriod: buildMatchFn({
     matchPatterns: matchDayPeriodPatterns,
-    defaultMatchWidth: 'wide',
+    defaultMatchWidth: "wide",
     parsePatterns: parseDayPeriodPatterns,
-    defaultParseWidth: 'any',
+    defaultParseWidth: "any",
   }),
-}
-
-export default match
+};

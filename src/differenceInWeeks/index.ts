@@ -1,11 +1,13 @@
-import differenceInDays from '../differenceInDays/index'
-import type { RoundingOptions } from '../types'
-import { getRoundingMethod } from '../_lib/roundingMethods/index'
+import { getRoundingMethod } from "../_lib/getRoundingMethod/index.js";
+import { differenceInDays } from "../differenceInDays/index.js";
+import type { ContextOptions, DateArg, RoundingOptions } from "../types.js";
 
 /**
  * The {@link differenceInWeeks} function options.
  */
-export interface DifferenceInWeeksOptions extends RoundingOptions {}
+export interface DifferenceInWeeksOptions
+  extends RoundingOptions,
+    ContextOptions<Date> {}
 
 /**
  * @name differenceInWeeks
@@ -21,19 +23,20 @@ export interface DifferenceInWeeksOptions extends RoundingOptions {}
  * or more than 7*24 hours if a daylight savings change happens between two dates.
  *
  * To ignore DST and only measure exact 7*24-hour periods, use this instead:
- * `Math.floor(differenceInHours(dateLeft, dateRight)/(7*24))|0`.
+ * `Math.trunc(differenceInHours(dateLeft, dateRight)/(7*24))|0`.
  *
+ * @param laterDate - The later date
+ * @param earlierDate - The earlier date
+ * @param options - An object with options
  *
- * @param dateLeft - the later date
- * @param dateRight - the earlier date
- * @param options - an object with options.
- * @returns the number of full weeks
+ * @returns The number of full weeks
  *
  * @example
  * // How many full weeks are between 5 July 2014 and 20 July 2014?
  * const result = differenceInWeeks(new Date(2014, 6, 20), new Date(2014, 6, 5))
  * //=> 2
  *
+ * @example
  * // How many full weeks are between
  * // 1 March 2020 0:00 and 6 June 2020 0:00 ?
  * // Note: because local time is used, the
@@ -46,11 +49,11 @@ export interface DifferenceInWeeksOptions extends RoundingOptions {}
  * )
  * //=> 8
  */
-export default function differenceInWeeks<DateType extends Date>(
-  dateLeft: DateType | number,
-  dateRight: DateType | number,
-  options?: DifferenceInWeeksOptions
+export function differenceInWeeks(
+  laterDate: DateArg<Date> & {},
+  earlierDate: DateArg<Date> & {},
+  options?: DifferenceInWeeksOptions | undefined,
 ): number {
-  const diff = differenceInDays(dateLeft, dateRight) / 7
-  return getRoundingMethod(options?.roundingMethod)(diff)
+  const diff = differenceInDays(laterDate, earlierDate, options) / 7;
+  return getRoundingMethod(options?.roundingMethod)(diff);
 }

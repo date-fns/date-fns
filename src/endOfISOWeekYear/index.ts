@@ -1,6 +1,13 @@
-import getISOWeekYear from '../getISOWeekYear/index'
-import startOfISOWeek from '../startOfISOWeek/index'
-import constructFrom from '../constructFrom/index'
+import { constructFrom } from "../constructFrom/index.js";
+import { getISOWeekYear } from "../getISOWeekYear/index.js";
+import { startOfISOWeek } from "../startOfISOWeek/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
+
+/**
+ * The {@link endOfISOWeekYear} function options.
+ */
+export interface EndOfISOWeekYearOptions<DateType extends Date = Date>
+  extends ContextOptions<DateType> {}
 
 /**
  * @name endOfISOWeekYear
@@ -14,22 +21,31 @@ import constructFrom from '../constructFrom/index'
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @param date - the original date
- * @returns the end of an ISO week-numbering year
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam ContextDate - The `Date` type of the context function.
+ *
+ * @param date - The original date
+ * @param options - The options
+ *
+ * @returns The end of an ISO week-numbering year
  *
  * @example
  * // The end of an ISO week-numbering year for 2 July 2005:
  * const result = endOfISOWeekYear(new Date(2005, 6, 2))
  * //=> Sun Jan 01 2006 23:59:59.999
  */
-export default function endOfISOWeekYear<DateType extends Date>(
-  dirtyDate: DateType | number
-): DateType {
-  const year = getISOWeekYear(dirtyDate)
-  const fourthOfJanuaryOfNextYear = constructFrom(dirtyDate, 0)
-  fourthOfJanuaryOfNextYear.setFullYear(year + 1, 0, 4)
-  fourthOfJanuaryOfNextYear.setHours(0, 0, 0, 0)
-  const date = startOfISOWeek(fourthOfJanuaryOfNextYear)
-  date.setMilliseconds(date.getMilliseconds() - 1)
-  return date
+export function endOfISOWeekYear<
+  DateType extends Date,
+  ResultDate extends Date = DateType,
+>(
+  date: DateArg<DateType>,
+  options?: EndOfISOWeekYearOptions<ResultDate> | undefined,
+): ResultDate {
+  const year = getISOWeekYear(date, options);
+  const fourthOfJanuaryOfNextYear = constructFrom(options?.in || date, 0);
+  fourthOfJanuaryOfNextYear.setFullYear(year + 1, 0, 4);
+  fourthOfJanuaryOfNextYear.setHours(0, 0, 0, 0);
+  const _date = startOfISOWeek(fourthOfJanuaryOfNextYear, options);
+  _date.setMilliseconds(_date.getMilliseconds() - 1);
+  return _date;
 }

@@ -1,4 +1,10 @@
-import toDate from '../toDate/index'
+import { toDate } from "../toDate/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
+
+/**
+ * The {@link isFirstDayOfMonth} function options.
+ */
+export interface IsFirstDayOfMonthOptions extends ContextOptions<Date> {}
 
 /**
  * @name isFirstDayOfMonth
@@ -8,16 +14,19 @@ import toDate from '../toDate/index'
  * @description
  * Is the given date the first day of a month?
  *
- * @param date - the date to check
- * @returns the date is the first day of a month
+ * @param date - The date to check
+ * @param options - An object with options
+ *
+ * @returns The date is the first day of a month
  *
  * @example
  * // Is 1 September 2014 the first day of a month?
  * const result = isFirstDayOfMonth(new Date(2014, 8, 1))
  * //=> true
  */
-export default function isFirstDayOfMonth<DateType extends Date>(
-  dirtyDate: DateType | number
+export function isFirstDayOfMonth(
+  date: DateArg<Date> & {},
+  options?: IsFirstDayOfMonthOptions | undefined,
 ): boolean {
-  return toDate(dirtyDate).getDate() === 1
+  return toDate(date, options?.in).getDate() === 1;
 }

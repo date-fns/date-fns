@@ -1,4 +1,10 @@
-import toDate from '../toDate/index'
+import { toDate } from "../toDate/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
+
+/**
+ * The {@link getHours} function options.
+ */
+export interface GetHoursOptions extends ContextOptions<Date> {}
 
 /**
  * @name getHours
@@ -8,18 +14,19 @@ import toDate from '../toDate/index'
  * @description
  * Get the hours of the given date.
  *
- * @param date - the given date
- * @returns the hours
+ * @param date - The given date
+ * @param options - An object with options
+ *
+ * @returns The hours
  *
  * @example
  * // Get the hours of 29 February 2012 11:45:00:
  * const result = getHours(new Date(2012, 1, 29, 11, 45))
  * //=> 11
  */
-export default function getHours<DateType extends Date>(
-  dirtyDate: DateType | number
+export function getHours(
+  date: DateArg<Date> & {},
+  options?: GetHoursOptions | undefined,
 ): number {
-  const date = toDate(dirtyDate)
-  const hours = date.getHours()
-  return hours
+  return toDate(date, options?.in).getHours();
 }

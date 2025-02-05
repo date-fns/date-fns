@@ -1,3 +1,12 @@
+import { constructNow } from "../constructNow/index.js";
+import type { ContextOptions } from "../types.js";
+
+/**
+ * The {@link endOfTomorrow} function options.
+ */
+export interface EndOfTomorrowOptions<DateType extends Date = Date>
+  extends ContextOptions<DateType> {}
+
 /**
  * @name endOfTomorrow
  * @category Day Helpers
@@ -7,24 +16,28 @@
  * @description
  * Return the end of tomorrow.
  *
- * > ⚠️ Please note that this function is not present in the FP submodule as
- * > it uses `new Date()` internally hence impure and can't be safely curried.
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
  *
- * @returns the end of tomorrow
+ * @param options - The options
+ * @returns The end of tomorrow
  *
  * @example
  * // If today is 6 October 2014:
  * const result = endOfTomorrow()
  * //=> Tue Oct 7 2014 23:59:59.999
  */
-export default function endOfTomorrow(): Date {
-  const now = new Date()
-  const year = now.getFullYear()
-  const month = now.getMonth()
-  const day = now.getDate()
+export function endOfTomorrow<
+  DateType extends Date,
+  ResultDate extends Date = DateType,
+>(options?: EndOfTomorrowOptions<ResultDate> | undefined): ResultDate {
+  const now = constructNow(options?.in);
+  const year = now.getFullYear();
+  const month = now.getMonth();
+  const day = now.getDate();
 
-  const date = new Date(0)
-  date.setFullYear(year, month, day + 1)
-  date.setHours(23, 59, 59, 999)
-  return date
+  const date = constructNow(options?.in);
+  date.setFullYear(year, month, day + 1);
+  date.setHours(23, 59, 59, 999);
+  return options?.in ? options.in(date) : (date as ResultDate);
 }

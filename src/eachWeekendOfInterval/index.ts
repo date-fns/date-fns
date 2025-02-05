@@ -1,7 +1,30 @@
-import eachDayOfInterval from '../eachDayOfInterval/index'
-import isSunday from '../isSunday/index'
-import isWeekend from '../isWeekend/index'
-import type { Interval } from '../types'
+import { normalizeInterval } from "../_lib/normalizeInterval/index.js";
+import { constructFrom } from "../constructFrom/index.js";
+import { eachDayOfInterval } from "../eachDayOfInterval/index.js";
+import { isWeekend } from "../isWeekend/index.js";
+import type { ContextOptions, Interval } from "../types.js";
+
+/**
+ * The {@link eachWeekendOfInterval} function options.
+ */
+export interface EachWeekendOfIntervalOptions<DateType extends Date = Date>
+  extends ContextOptions<DateType> {}
+
+/**
+ * The {@link eachWeekendOfInterval} function result type.
+ */
+export type EachWeekendOfIntervalResult<
+  IntervalType extends Interval,
+  Options extends EachWeekendOfIntervalOptions | undefined,
+> = Array<
+  Options extends EachWeekendOfIntervalOptions<infer DateType>
+    ? DateType
+    : IntervalType["start"] extends Date
+      ? IntervalType["start"]
+      : IntervalType["end"] extends Date
+        ? IntervalType["end"]
+        : Date
+>;
 
 /**
  * @name eachWeekendOfInterval
@@ -11,10 +34,13 @@ import type { Interval } from '../types'
  * @description
  * Get all the Saturdays and Sundays in the given date interval.
  *
- * @param interval - the given interval. See [Interval]{@link https://date-fns.org/docs/Interval}
- * @returns an array containing all the Saturdays and Sundays
- * @throws {RangeError} The start of an interval cannot be after its end
- * @throws {RangeError} Date in interval cannot be `Invalid Date`
+ * @typeParam IntervalType - Interval type.
+ * @typeParam Options - Options type.
+ *
+ * @param interval - The given interval
+ * @param options - An object with options
+ *
+ * @returns An array containing all the Saturdays and Sundays
  *
  * @example
  * // Lists all Saturdays and Sundays in the given date interval
@@ -29,18 +55,20 @@ import type { Interval } from '../types'
  * //   Sun Sep 30 2018 00:00:00
  * // ]
  */
-export default function eachWeekendOfInterval<DateType extends Date>(
-  interval: Interval<DateType>
-): DateType[] {
-  const dateInterval = eachDayOfInterval(interval)
-  const weekends = []
-  let index = 0
+export function eachWeekendOfInterval<
+  IntervalType extends Interval,
+  Options extends EachWeekendOfIntervalOptions | undefined = undefined,
+>(
+  interval: IntervalType,
+  options?: Options,
+): EachWeekendOfIntervalResult<IntervalType, Options> {
+  const { start, end } = normalizeInterval(options?.in, interval);
+  const dateInterval = eachDayOfInterval({ start, end }, options);
+  const weekends: EachWeekendOfIntervalResult<IntervalType, Options> = [];
+  let index = 0;
   while (index < dateInterval.length) {
-    const date = dateInterval[index++]
-    if (isWeekend(date)) {
-      weekends.push(date)
-      if (isSunday(date)) index = index + 5
-    }
+    const date = dateInterval[index++];
+    if (isWeekend(date)) weekends.push(constructFrom(start, date));
   }
-  return weekends
+  return weekends;
 }

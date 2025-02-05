@@ -1,4 +1,5 @@
-import toDate from '../toDate/index'
+import { toDate } from "../toDate/index.js";
+import type { DateArg } from "../types.js";
 
 /**
  * @name differenceInMilliseconds
@@ -8,9 +9,10 @@ import toDate from '../toDate/index'
  * @description
  * Get the number of milliseconds between the given dates.
  *
- * @param dateLeft - the later date
- * @param dateRight - the earlier date
- * @returns the number of milliseconds
+ * @param laterDate - The later date
+ * @param earlierDate - The earlier date
+ *
+ * @returns The number of milliseconds
  *
  * @example
  * // How many milliseconds are between
@@ -21,9 +23,9 @@ import toDate from '../toDate/index'
  * )
  * //=> 1100
  */
-export default function differenceInMilliseconds<DateType extends Date>(
-  dateLeft: DateType | number,
-  dateRight: DateType | number
+export function differenceInMilliseconds(
+  laterDate: DateArg<Date> & {},
+  earlierDate: DateArg<Date> & {},
 ): number {
-  return toDate(dateLeft).getTime() - toDate(dateRight).getTime()
+  return +toDate(laterDate) - +toDate(earlierDate);
 }

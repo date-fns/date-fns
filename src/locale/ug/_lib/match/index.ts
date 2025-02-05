@@ -1,34 +1,35 @@
-import type { Quarter } from '../../../../types'
-import type { Match } from '../../../types'
-import buildMatchFn from '../../../_lib/buildMatchFn/index'
-import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
+import type { Quarter } from "../../../../types.js";
+import type { Match } from "../../../types.js";
+import { buildMatchFn } from "../../../_lib/buildMatchFn/index.js";
+import { buildMatchPatternFn } from "../../../_lib/buildMatchPatternFn/index.js";
 
-const matchOrdinalNumberPattern = /^(\d+)(th|st|nd|rd)?/i
-const parseOrdinalNumberPattern = /\d+/i
+const matchOrdinalNumberPattern = /^(\d+)(th|st|nd|rd)?/i;
+const parseOrdinalNumberPattern = /\d+/i;
 
 const matchEraPatterns = {
   narrow: /^(ب|ك)/i,
   wide: /^(مىيلادىدىن بۇرۇن|مىيلادىدىن كىيىن)/i,
-}
+};
 const parseEraPatterns = {
   any: [/^بۇرۇن/i, /^كىيىن/i] as const,
-}
+};
 
 const matchQuarterPatterns = {
   narrow: /^[1234]/i,
   abbreviated: /^چ[1234]/i,
   wide: /^چارەك [1234]/i,
-}
+};
 const parseQuarterPatterns = {
   any: [/1/i, /2/i, /3/i, /4/i] as const,
-}
+};
 
 const matchMonthPatterns = {
   // eslint-disable-next-line no-misleading-character-class
   narrow: /^[يفمئامئ‍ئاسۆند]/i,
-  abbreviated: /^(يانۋار|فېۋىرال|مارت|ئاپرىل|ماي|ئىيۇن|ئىيول|ئاۋغۇست|سىنتەبىر|ئۆكتەبىر|نويابىر|دىكابىر)/i,
+  abbreviated:
+    /^(يانۋار|فېۋىرال|مارت|ئاپرىل|ماي|ئىيۇن|ئىيول|ئاۋغۇست|سىنتەبىر|ئۆكتەبىر|نويابىر|دىكابىر)/i,
   wide: /^(يانۋار|فېۋىرال|مارت|ئاپرىل|ماي|ئىيۇن|ئىيول|ئاۋغۇست|سىنتەبىر|ئۆكتەبىر|نويابىر|دىكابىر)/i,
-}
+};
 const parseMonthPatterns = {
   narrow: [
     /^ي/i,
@@ -58,23 +59,23 @@ const parseMonthPatterns = {
     /^نوي/i,
     /^دىك/i,
   ] as const,
-}
+};
 
 const matchDayPatterns = {
   narrow: /^[دسچپجشي]/i,
   short: /^(يە|دۈ|سە|چا|پە|جۈ|شە)/i,
   abbreviated: /^(يە|دۈ|سە|چا|پە|جۈ|شە)/i,
   wide: /^(يەكشەنبە|دۈشەنبە|سەيشەنبە|چارشەنبە|پەيشەنبە|جۈمە|شەنبە)/i,
-}
+};
 const parseDayPatterns = {
   narrow: [/^ي/i, /^د/i, /^س/i, /^چ/i, /^پ/i, /^ج/i, /^ش/i] as const,
   any: [/^ي/i, /^د/i, /^س/i, /^چ/i, /^پ/i, /^ج/i, /^ش/i] as const,
-}
+};
 
 const matchDayPeriodPatterns = {
   narrow: /^(ئە|چ|ك|چ|(دە|ئەتىگەن) ( ئە‍|چۈشتىن كىيىن|ئاخشىم|كىچە))/i,
   any: /^(ئە|چ|ك|چ|(دە|ئەتىگەن) ( ئە‍|چۈشتىن كىيىن|ئاخشىم|كىچە))/i,
-}
+};
 const parseDayPeriodPatterns = {
   any: {
     am: /^ئە/i,
@@ -86,9 +87,9 @@ const parseDayPeriodPatterns = {
     evening: /ئاخشىم/i,
     night: /كىچە/i,
   },
-}
+};
 
-const match: Match = {
+export const match: Match = {
   ordinalNumber: buildMatchPatternFn({
     matchPattern: matchOrdinalNumberPattern,
     parsePattern: parseOrdinalNumberPattern,
@@ -97,39 +98,37 @@ const match: Match = {
 
   era: buildMatchFn({
     matchPatterns: matchEraPatterns,
-    defaultMatchWidth: 'wide',
+    defaultMatchWidth: "wide",
     parsePatterns: parseEraPatterns,
-    defaultParseWidth: 'any',
+    defaultParseWidth: "any",
   }),
 
   quarter: buildMatchFn({
     matchPatterns: matchQuarterPatterns,
-    defaultMatchWidth: 'wide',
+    defaultMatchWidth: "wide",
     parsePatterns: parseQuarterPatterns,
-    defaultParseWidth: 'any',
+    defaultParseWidth: "any",
     valueCallback: (index) => (index + 1) as Quarter,
   }),
 
   month: buildMatchFn({
     matchPatterns: matchMonthPatterns,
-    defaultMatchWidth: 'wide',
+    defaultMatchWidth: "wide",
     parsePatterns: parseMonthPatterns,
-    defaultParseWidth: 'any',
+    defaultParseWidth: "any",
   }),
 
   day: buildMatchFn({
     matchPatterns: matchDayPatterns,
-    defaultMatchWidth: 'wide',
+    defaultMatchWidth: "wide",
     parsePatterns: parseDayPatterns,
-    defaultParseWidth: 'any',
+    defaultParseWidth: "any",
   }),
 
   dayPeriod: buildMatchFn({
     matchPatterns: matchDayPeriodPatterns,
-    defaultMatchWidth: 'any',
+    defaultMatchWidth: "any",
     parsePatterns: parseDayPeriodPatterns,
-    defaultParseWidth: 'any',
+    defaultParseWidth: "any",
   }),
-}
-
-export default match
+};

@@ -1,4 +1,10 @@
-import toDate from '../toDate/index'
+import { toDate } from "../toDate/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
+
+/**
+ * The {@link getDate} function options.
+ */
+export interface GetDateOptions extends ContextOptions<Date> {}
 
 /**
  * @name getDate
@@ -8,18 +14,19 @@ import toDate from '../toDate/index'
  * @description
  * Get the day of the month of the given date.
  *
- * @param date - the given date
- * @returns the day of month
+ * @param date - The given date
+ * @param options - An object with options.
+ *
+ * @returns The day of month
  *
  * @example
  * // Which day of the month is 29 February 2012?
  * const result = getDate(new Date(2012, 1, 29))
  * //=> 29
  */
-export default function getDate<DateType extends Date>(
-  dirtyDate: DateType | number
+export function getDate(
+  date: DateArg<Date> & {},
+  options?: GetDateOptions | undefined,
 ): number {
-  const date = toDate(dirtyDate)
-  const dayOfMonth = date.getDate()
-  return dayOfMonth
+  return toDate(date, options?.in).getDate();
 }

@@ -1,4 +1,10 @@
-import toDate from '../toDate/index'
+import { toDate } from "../toDate/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
+
+/**
+ * The {@link getISODay} function options.
+ */
+export interface GetISODayOptions extends ContextOptions<Date> {}
 
 /**
  * @name getISODay
@@ -11,23 +17,20 @@ import toDate from '../toDate/index'
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @param date - the given date
- * @returns the day of ISO week
+ * @param date - The given date
+ * @param options - An object with options
+ *
+ * @returns The day of ISO week
  *
  * @example
  * // Which day of the ISO week is 26 February 2012?
  * const result = getISODay(new Date(2012, 1, 26))
  * //=> 7
  */
-export default function getISODay<DateType extends Date>(
-  dirtyDate: DateType | number
+export function getISODay(
+  date: DateArg<Date> & {},
+  options?: GetISODayOptions,
 ): number {
-  const date = toDate(dirtyDate)
-  let day = date.getDay()
-
-  if (day === 0) {
-    day = 7
-  }
-
-  return day
+  const day = toDate(date, options?.in).getDay();
+  return day === 0 ? 7 : day;
 }

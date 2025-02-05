@@ -1,4 +1,10 @@
-import toDate from '../toDate/index'
+import { normalizeDates } from "../_lib/normalizeDates/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
+
+/**
+ * The {@link isSameYear} function options.
+ */
+export interface IsSameYearOptions extends ContextOptions<Date> {}
 
 /**
  * @name isSameYear
@@ -8,20 +14,26 @@ import toDate from '../toDate/index'
  * @description
  * Are the given dates in the same year?
  *
- * @param dateLeft - the first date to check
- * @param dateRight - the second date to check
- * @returns the dates are in the same year
+ * @param laterDate - The first date to check
+ * @param earlierDate - The second date to check
+ * @param options - An object with options
+ *
+ * @returns The dates are in the same year
  *
  * @example
  * // Are 2 September 2014 and 25 September 2014 in the same year?
  * const result = isSameYear(new Date(2014, 8, 2), new Date(2014, 8, 25))
  * //=> true
  */
-export default function isSameYear<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+export function isSameYear(
+  laterDate: DateArg<Date> & {},
+  earlierDate: DateArg<Date> & {},
+  options?: IsSameYearOptions | undefined,
 ): boolean {
-  const dateLeft = toDate(dirtyDateLeft)
-  const dateRight = toDate(dirtyDateRight)
-  return dateLeft.getFullYear() === dateRight.getFullYear()
+  const [laterDate_, earlierDate_] = normalizeDates(
+    options?.in,
+    laterDate,
+    earlierDate,
+  );
+  return laterDate_.getFullYear() === earlierDate_.getFullYear();
 }

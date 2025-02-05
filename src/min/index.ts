@@ -1,4 +1,12 @@
-import toDate from '../toDate/index'
+import { constructFrom } from "../constructFrom/index.js";
+import { toDate } from "../toDate/index.js";
+import type { ContextFn, ContextOptions, DateArg } from "../types.js";
+
+/**
+ * The {@link min} function options.
+ */
+export interface MinOptions<DateType extends Date = Date>
+  extends ContextOptions<DateType> {}
 
 /**
  * @name min
@@ -8,8 +16,12 @@ import toDate from '../toDate/index'
  * @description
  * Returns the earliest of the given dates.
  *
- * @param datesArray - the dates to compare
- * @returns - the earliest of the dates
+ * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
+ *
+ * @param dates - The dates to compare
+ *
+ * @returns The earliest of the dates
  *
  * @example
  * // Which of these dates is the earliest?
@@ -21,22 +33,21 @@ import toDate from '../toDate/index'
  * ])
  * //=> Wed Feb 11 1987 00:00:00
  */
-export default function min<DateType extends Date>(
-  datesArray: Array<DateType | number>
-): DateType | Date {
-  let result: Date | undefined
+export function min<DateType extends Date, ResultDate extends Date = DateType>(
+  dates: Array<DateArg<DateType>>,
+  options?: MinOptions<ResultDate> | undefined,
+): ResultDate {
+  let result: ResultDate | undefined;
+  let context = options?.in;
 
-  datesArray.forEach(function (dirtyDate: Date | number) {
-    let currentDate = toDate(dirtyDate)
+  dates.forEach((date) => {
+    // Use the first date object as the context function
+    if (!context && typeof date === "object")
+      context = constructFrom.bind(null, date) as ContextFn<ResultDate>;
 
-    if (
-      result === undefined ||
-      result > currentDate ||
-      isNaN(currentDate.getDate())
-    ) {
-      result = currentDate
-    }
-  })
+    const date_ = toDate(date, context);
+    if (!result || result > date_ || isNaN(+date_)) result = date_;
+  });
 
-  return result || new Date(NaN)
+  return constructFrom(context, result || NaN);
 }

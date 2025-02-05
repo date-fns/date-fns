@@ -1,4 +1,5 @@
-import toDate from '../toDate/index'
+import { toDate } from "../toDate/index.js";
+import type { DateArg } from "../types.js";
 
 /**
  * @name isEqual
@@ -8,9 +9,10 @@ import toDate from '../toDate/index'
  * @description
  * Are the given dates equal?
  *
- * @param dateLeft - the first date to compare
- * @param dateRight - the second date to compare
- * @returns the dates are equal
+ * @param dateLeft - The first date to compare
+ * @param dateRight - The second date to compare
+ *
+ * @returns The dates are equal
  *
  * @example
  * // Are 2 July 2014 06:30:45.000 and 2 July 2014 06:30:45.500 equal?
@@ -20,11 +22,9 @@ import toDate from '../toDate/index'
  * )
  * //=> false
  */
-export default function isEqual<DateType extends Date>(
-  dirtyLeftDate: DateType | number,
-  dirtyRightDate: DateType | number
+export function isEqual(
+  leftDate: DateArg<Date> & {},
+  rightDate: DateArg<Date> & {},
 ): boolean {
-  const dateLeft = toDate(dirtyLeftDate)
-  const dateRight = toDate(dirtyRightDate)
-  return dateLeft.getTime() === dateRight.getTime()
+  return +toDate(leftDate) === +toDate(rightDate);
 }

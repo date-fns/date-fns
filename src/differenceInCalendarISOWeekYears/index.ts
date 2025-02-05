@@ -1,4 +1,12 @@
-import getISOWeekYear from '../getISOWeekYear/index'
+import { normalizeDates } from "../_lib/normalizeDates/index.js";
+import { getISOWeekYear } from "../getISOWeekYear/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
+
+/**
+ * The {@link differenceInCalendarISOWeekYears} function options.
+ */
+export interface DifferenceInCalendarISOWeekYearsOptions
+  extends ContextOptions<Date> {}
 
 /**
  * @name differenceInCalendarISOWeekYears
@@ -10,9 +18,11 @@ import getISOWeekYear from '../getISOWeekYear/index'
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @param dateLeft - the later date
- * @param dateRight - the earlier date
- * @returns the number of calendar ISO week-numbering years
+ * @param laterDate - The later date
+ * @param earlierDate - The earlier date
+ * @param options - An object with options
+ *
+ * @returns The number of calendar ISO week-numbering years
  *
  * @example
  * // How many calendar ISO week-numbering years are 1 January 2010 and 1 January 2012?
@@ -22,9 +32,17 @@ import getISOWeekYear from '../getISOWeekYear/index'
  * )
  * //=> 2
  */
-export default function differenceInCalendarISOWeekYears<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+export function differenceInCalendarISOWeekYears(
+  laterDate: DateArg<Date> & {},
+  earlierDate: DateArg<Date> & {},
+  options?: DifferenceInCalendarISOWeekYearsOptions | undefined,
 ): number {
-  return getISOWeekYear(dirtyDateLeft) - getISOWeekYear(dirtyDateRight)
+  const [laterDate_, earlierDate_] = normalizeDates(
+    options?.in,
+    laterDate,
+    earlierDate,
+  );
+  return (
+    getISOWeekYear(laterDate_, options) - getISOWeekYear(earlierDate_, options)
+  );
 }

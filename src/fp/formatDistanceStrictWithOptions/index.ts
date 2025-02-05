@@ -1,6 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.
 
-import fn from '../../formatDistanceStrict/index'
-import convertToFP from '../_lib/convertToFP/index'
+import { formatDistanceStrict as fn } from "../../formatDistanceStrict/index.js";
+import { convertToFP } from "../_lib/convertToFP/index.js";
 
-export default convertToFP(fn, 3)
+export const formatDistanceStrictWithOptions = convertToFP(fn, 3);

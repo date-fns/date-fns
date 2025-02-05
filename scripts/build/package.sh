@@ -11,19 +11,56 @@ set -e
 root="$(pwd)/$(dirname "$0")/../.."
 cd "$root" || exit 1
 
-PATH="$(npm bin):$PATH"
 # XXX: $PACKAGE_OUTPUT_PATH must be an absolute path!
-dir=${PACKAGE_OUTPUT_PATH:-"$root/tmp/package"}
+dir=${PACKAGE_OUTPUT_PATH:-"$root/lib"}
+export PACKAGE_OUTPUT_PATH="$dir"
 
 # Clean up output dir
 rm -rf "$dir"
 mkdir -p "$dir"
 
-# Traspile CommonJS versions of files
-env BABEL_ENV='commonjs' babel src --source-root src --out-dir "$dir" --extensions .ts,.js --ignore test.js,snapshot.md --copy-files --quiet
+# Transpile ESM versions of files
+env BABEL_ENV=esm npx babel src \
+  --config-file ./babel.config.json \
+  --source-root src \
+  --out-dir "$dir" \
+  --extensions .js,.ts \
+  --out-file-extension .js \
+  --quiet
 
-# Traspile ESM versions of files
-env BABEL_ENV='esm' babel src --source-root src --out-dir "$dir/esm" --extensions .ts,.js --ignore test.js,snapshot.md,package.json --copy-files --quiet
+# Add fallback for Next.js and other tools that modularize imports:
+npx tsx scripts/build/modularized.ts
+
+# Transpile CommonJS versions of files
+env BABEL_ENV=cjs npx babel src \
+  --config-file ./babel.config.json \
+  --source-root src \
+  --out-dir "$dir" \
+  --extensions .js,.ts \
+  --out-file-extension .cjs \
+  --quiet
+
+# Generate TypeScript
+npx tsc --project tsconfig.lib.json --outDir "$dir"
+
+if [ -n "$TEST_FLATTEN" ]; then
+  exit 0
+fi
+
+# Make it prettier
+if [ -z "$PACKAGE_SKIP_BEAUTIFY" ]; then
+  # Prettier won't format in node_modules, but when running the smoke tests, we
+  # need to format the files in node_modules.
+  cd $dir
+  npx prettier . --write --ignore-path "" > /dev/null 2>&1 || exit 1
+  cd -
+fi
+
+# Flatten the structure
+npx tsx scripts/build/flatten.ts
+
+# Generate .d.cts files
+npx tsx scripts/build/cts.ts
 
 # Copy basic files
 for pattern in CHANGELOG.md \
@@ -31,19 +68,12 @@ for pattern in CHANGELOG.md \
   docs \
   LICENSE.md \
   README.md \
-  typings.d.ts
+  SECURITY.md
 do
   cp -r "$pattern" "$dir"
 done
 
-# Remove clean up code when this issues is resolved:
-# https://github.com/babel/babel/issues/6226
-
-# Clean up dev code
-find "$dir" -type f -name "test.js" -delete
-find "$dir" -type f -name "snapshot.md" -delete
-
-# Clean up package.json pointing to the modules
-find "$dir/esm" -type f -name "package.json" -delete
-
-./scripts/build/packages.js
+# Build CDN versions
+if [ -z "$PACKAGE_SKIP_CDN" ]; then
+  bun ./scripts/build/cdn.ts
+fi

@@ -1,6 +1,9 @@
-import endOfDay from '../endOfDay/index'
-import endOfMonth from '../endOfMonth/index'
-import toDate from '../toDate/index'
+import { endOfDay } from "../endOfDay/index.js";
+import { endOfMonth } from "../endOfMonth/index.js";
+import { toDate } from "../toDate/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
+
+export interface IsLastDayOfMonthOptions extends ContextOptions<Date> {}
 
 /**
  * @name isLastDayOfMonth
@@ -10,17 +13,20 @@ import toDate from '../toDate/index'
  * @description
  * Is the given date the last day of a month?
  *
- * @param date - the date to check
- * @returns the date is the last day of a month
+ * @param date - The date to check
+ * @param options - An object with options
+ *
+ * @returns The date is the last day of a month
  *
  * @example
  * // Is 28 February 2014 the last day of a month?
  * const result = isLastDayOfMonth(new Date(2014, 1, 28))
  * //=> true
  */
-export default function isLastDayOfMonth<DateType extends Date>(
-  dirtyDate: DateType | number
+export function isLastDayOfMonth(
+  date: DateArg<Date> & {},
+  options?: IsLastDayOfMonthOptions | undefined,
 ): boolean {
-  const date = toDate(dirtyDate)
-  return endOfDay(date).getTime() === endOfMonth(date).getTime()
+  const _date = toDate(date, options?.in);
+  return +endOfDay(_date, options) === +endOfMonth(_date, options);
 }

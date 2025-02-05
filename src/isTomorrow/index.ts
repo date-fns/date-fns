@@ -1,5 +1,12 @@
-import addDays from '../addDays/index'
-import isSameDay from '../isSameDay/index'
+import { addDays } from "../addDays/index.js";
+import { constructNow } from "../constructNow/index.js";
+import { isSameDay } from "../isSameDay/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
+
+/**
+ * The {@link isTomorrow} function options.
+ */
+export interface IsTomorrowOptions extends ContextOptions<Date> {}
 
 /**
  * @name isTomorrow
@@ -10,19 +17,23 @@ import isSameDay from '../isSameDay/index'
  * @description
  * Is the given date tomorrow?
  *
- * > ⚠️ Please note that this function is not present in the FP submodule as
- * > it uses `Date.now()` internally hence impure and can't be safely curried.
+ * @param date - The date to check
+ * @param options - An object with options
  *
- * @param date - the date to check
- * @returns the date is tomorrow
+ * @returns The date is tomorrow
  *
  * @example
  * // If today is 6 October 2014, is 7 October 14:00:00 tomorrow?
  * const result = isTomorrow(new Date(2014, 9, 7, 14, 0))
  * //=> true
  */
-export default function isTomorrow<DateType extends Date>(
-  dirtyDate: DateType | number
+export function isTomorrow(
+  date: DateArg<Date> & {},
+  options?: IsTomorrowOptions | undefined,
 ): boolean {
-  return isSameDay(dirtyDate, addDays(Date.now(), 1))
+  return isSameDay(
+    date,
+    addDays(constructNow(options?.in || date), 1),
+    options,
+  );
 }

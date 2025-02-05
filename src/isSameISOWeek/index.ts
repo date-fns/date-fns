@@ -1,4 +1,10 @@
-import isSameWeek from '../isSameWeek/index'
+import { isSameWeek } from "../isSameWeek/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
+
+/**
+ * The {@link isSameISOWeek} function options.
+ */
+export interface IsSameISOWeekOptions extends ContextOptions<Date> {}
 
 /**
  * @name isSameISOWeek
@@ -10,9 +16,11 @@ import isSameWeek from '../isSameWeek/index'
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @param dateLeft - the first date to check
- * @param dateRight - the second date to check
- * @returns the dates are in the same ISO week (and year)
+ * @param laterDate - The first date to check
+ * @param earlierDate - The second date to check
+ * @param options - An object with options
+ *
+ * @returns The dates are in the same ISO week (and year)
  *
  * @example
  * // Are 1 September 2014 and 7 September 2014 in the same ISO week?
@@ -24,9 +32,10 @@ import isSameWeek from '../isSameWeek/index'
  * const result = isSameISOWeek(new Date(2014, 8, 1), new Date(2015, 8, 1))
  * //=> false
  */
-export default function isSameISOWeek<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+export function isSameISOWeek(
+  laterDate: DateArg<Date> & {},
+  earlierDate: DateArg<Date> & {},
+  options?: IsSameISOWeekOptions | undefined,
 ): boolean {
-  return isSameWeek(dirtyDateLeft, dirtyDateRight, { weekStartsOn: 1 })
+  return isSameWeek(laterDate, earlierDate, { ...options, weekStartsOn: 1 });
 }

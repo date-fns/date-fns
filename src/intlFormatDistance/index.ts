@@ -1,3 +1,4 @@
+import { normalizeDates } from "../_lib/normalizeDates/index.js";
 import {
   secondsInDay,
   secondsInHour,
@@ -6,28 +7,41 @@ import {
   secondsInQuarter,
   secondsInWeek,
   secondsInYear,
-} from '../constants/index'
-import differenceInCalendarDays from '../differenceInCalendarDays/index'
-import differenceInCalendarMonths from '../differenceInCalendarMonths/index'
-import differenceInCalendarQuarters from '../differenceInCalendarQuarters/index'
-import differenceInCalendarWeeks from '../differenceInCalendarWeeks/index'
-import differenceInCalendarYears from '../differenceInCalendarYears/index'
-import differenceInHours from '../differenceInHours/index'
-import differenceInMinutes from '../differenceInMinutes/index'
-import differenceInSeconds from '../differenceInSeconds/index'
-import toDate from '../toDate/index'
-import type { IntlOptionsUnit } from '../types'
+} from "../constants/index.js";
+import { differenceInCalendarDays } from "../differenceInCalendarDays/index.js";
+import { differenceInCalendarMonths } from "../differenceInCalendarMonths/index.js";
+import { differenceInCalendarQuarters } from "../differenceInCalendarQuarters/index.js";
+import { differenceInCalendarWeeks } from "../differenceInCalendarWeeks/index.js";
+import { differenceInCalendarYears } from "../differenceInCalendarYears/index.js";
+import { differenceInHours } from "../differenceInHours/index.js";
+import { differenceInMinutes } from "../differenceInMinutes/index.js";
+import { differenceInSeconds } from "../differenceInSeconds/index.js";
+import type { ContextOptions, DateArg, MaybeArray } from "../types.js";
 
 /**
  * The {@link intlFormatDistance} function options.
  */
-export interface IntlFormatDistanceOptions {
-  unit?: IntlOptionsUnit
-  locale?: Intl.BCP47LanguageTag
-  localeMatcher?: Intl.RelativeTimeFormatLocaleMatcher
-  numeric?: Intl.RelativeTimeFormatNumeric
-  style?: Intl.RelativeTimeFormatStyle
+export interface IntlFormatDistanceOptions
+  extends Intl.RelativeTimeFormatOptions,
+    ContextOptions<Date> {
+  /** Force the distance unit */
+  unit?: IntlFormatDistanceUnit;
+  /** The locales to use (see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument) */
+  locale?: MaybeArray<Intl.ResolvedDateTimeFormatOptions["locale"]>;
 }
+
+/**
+ * The unit used to format the distance in {@link intlFormatDistance}.
+ */
+export type IntlFormatDistanceUnit =
+  | "year"
+  | "quarter"
+  | "month"
+  | "week"
+  | "day"
+  | "hour"
+  | "minute"
+  | "second";
 
 /**
  * @name intlFormatDistance
@@ -59,19 +73,21 @@ export interface IntlFormatDistanceOptions {
  * | 1 year                 | last year      | next year       |
  * | 2+ years               | X years ago    | in X years      |
  *
- * @param date - the date
- * @param baseDate - the date to compare with.
- * @param options - an object with options.
+ * @param laterDate - The date
+ * @param earlierDate - The date to compare with.
+ * @param options - An object with options.
  * See MDN for details [Locale identification and negotiation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locale_identification_and_negotiation)
  * The narrow one could be similar to the short one for some locales.
- * @returns the distance in words according to language-sensitive relative time formatting.
- * @throws {RangeError} `date` must not be Invalid Date
- * @throws {RangeError} `baseDate` must not be Invalid Date
- * @throws {RangeError} `options.unit` must not be invalid Unit
- * @throws {RangeError} `options.locale` must not be invalid locale
- * @throws {RangeError} `options.localeMatcher` must not be invalid localeMatcher
- * @throws {RangeError} `options.numeric` must not be invalid numeric
- * @throws {RangeError} `options.style` must not be invalid style
+ *
+ * @returns The distance in words according to language-sensitive relative time formatting.
+ *
+ * @throws `date` must not be Invalid Date
+ * @throws `baseDate` must not be Invalid Date
+ * @throws `options.unit` must not be invalid Unit
+ * @throws `options.locale` must not be invalid locale
+ * @throws `options.localeMatcher` must not be invalid localeMatcher
+ * @throws `options.numeric` must not be invalid numeric
+ * @throws `options.style` must not be invalid style
  *
  * @example
  * // What is the distance between the dates when the fist date is after the second?
@@ -124,84 +140,87 @@ export interface IntlFormatDistanceOptions {
  * )
  * //=> 'in 2 yr'
  */
-export default function intlFormatDistance<DateType extends Date>(
-  date: DateType | number,
-  baseDate: DateType | number,
-  options?: IntlFormatDistanceOptions
+export function intlFormatDistance(
+  laterDate: DateArg<Date> & {},
+  earlierDate: DateArg<Date> & {},
+  options?: IntlFormatDistanceOptions,
 ): string {
-  let value: number = 0
-  let unit: Intl.RelativeTimeFormatUnit
-  const dateLeft = toDate(date)
-  const dateRight = toDate(baseDate)
+  let value: number = 0;
+  let unit: Intl.RelativeTimeFormatUnit;
+
+  const [laterDate_, earlierDate_] = normalizeDates(
+    options?.in,
+    laterDate,
+    earlierDate,
+  );
 
   if (!options?.unit) {
     // Get the unit based on diffInSeconds calculations if no unit is specified
-    const diffInSeconds = differenceInSeconds(dateLeft, dateRight) // The smallest unit
+    const diffInSeconds = differenceInSeconds(laterDate_, earlierDate_); // The smallest unit
 
     if (Math.abs(diffInSeconds) < secondsInMinute) {
-      value = differenceInSeconds(dateLeft, dateRight)
-      unit = 'second'
+      value = differenceInSeconds(laterDate_, earlierDate_);
+      unit = "second";
     } else if (Math.abs(diffInSeconds) < secondsInHour) {
-      value = differenceInMinutes(dateLeft, dateRight)
-      unit = 'minute'
+      value = differenceInMinutes(laterDate_, earlierDate_);
+      unit = "minute";
     } else if (
       Math.abs(diffInSeconds) < secondsInDay &&
-      Math.abs(differenceInCalendarDays(dateLeft, dateRight)) < 1
+      Math.abs(differenceInCalendarDays(laterDate_, earlierDate_)) < 1
     ) {
-      value = differenceInHours(dateLeft, dateRight)
-      unit = 'hour'
+      value = differenceInHours(laterDate_, earlierDate_);
+      unit = "hour";
     } else if (
       Math.abs(diffInSeconds) < secondsInWeek &&
-      (value = differenceInCalendarDays(dateLeft, dateRight)) &&
+      (value = differenceInCalendarDays(laterDate_, earlierDate_)) &&
       Math.abs(value) < 7
     ) {
-      unit = 'day'
+      unit = "day";
     } else if (Math.abs(diffInSeconds) < secondsInMonth) {
-      value = differenceInCalendarWeeks(dateLeft, dateRight)
-      unit = 'week'
+      value = differenceInCalendarWeeks(laterDate_, earlierDate_);
+      unit = "week";
     } else if (Math.abs(diffInSeconds) < secondsInQuarter) {
-      value = differenceInCalendarMonths(dateLeft, dateRight)
-      unit = 'month'
+      value = differenceInCalendarMonths(laterDate_, earlierDate_);
+      unit = "month";
     } else if (Math.abs(diffInSeconds) < secondsInYear) {
-      if (differenceInCalendarQuarters(dateLeft, dateRight) < 4) {
+      if (differenceInCalendarQuarters(laterDate_, earlierDate_) < 4) {
         // To filter out cases that are less than a year but match 4 quarters
-        value = differenceInCalendarQuarters(dateLeft, dateRight)
-        unit = 'quarter'
+        value = differenceInCalendarQuarters(laterDate_, earlierDate_);
+        unit = "quarter";
       } else {
-        value = differenceInCalendarYears(dateLeft, dateRight)
-        unit = 'year'
+        value = differenceInCalendarYears(laterDate_, earlierDate_);
+        unit = "year";
       }
     } else {
-      value = differenceInCalendarYears(dateLeft, dateRight)
-      unit = 'year'
+      value = differenceInCalendarYears(laterDate_, earlierDate_);
+      unit = "year";
     }
   } else {
     // Get the value if unit is specified
-    unit = options?.unit
-    if (unit === 'second') {
-      value = differenceInSeconds(dateLeft, dateRight)
-    } else if (unit === 'minute') {
-      value = differenceInMinutes(dateLeft, dateRight)
-    } else if (unit === 'hour') {
-      value = differenceInHours(dateLeft, dateRight)
-    } else if (unit === 'day') {
-      value = differenceInCalendarDays(dateLeft, dateRight)
-    } else if (unit === 'week') {
-      value = differenceInCalendarWeeks(dateLeft, dateRight)
-    } else if (unit === 'month') {
-      value = differenceInCalendarMonths(dateLeft, dateRight)
-    } else if (unit === 'quarter') {
-      value = differenceInCalendarQuarters(dateLeft, dateRight)
-    } else if (unit === 'year') {
-      value = differenceInCalendarYears(dateLeft, dateRight)
+    unit = options?.unit;
+    if (unit === "second") {
+      value = differenceInSeconds(laterDate_, earlierDate_);
+    } else if (unit === "minute") {
+      value = differenceInMinutes(laterDate_, earlierDate_);
+    } else if (unit === "hour") {
+      value = differenceInHours(laterDate_, earlierDate_);
+    } else if (unit === "day") {
+      value = differenceInCalendarDays(laterDate_, earlierDate_);
+    } else if (unit === "week") {
+      value = differenceInCalendarWeeks(laterDate_, earlierDate_);
+    } else if (unit === "month") {
+      value = differenceInCalendarMonths(laterDate_, earlierDate_);
+    } else if (unit === "quarter") {
+      value = differenceInCalendarQuarters(laterDate_, earlierDate_);
+    } else if (unit === "year") {
+      value = differenceInCalendarYears(laterDate_, earlierDate_);
     }
   }
 
   const rtf = new Intl.RelativeTimeFormat(options?.locale, {
-    localeMatcher: options?.localeMatcher,
-    numeric: options?.numeric || 'auto',
-    style: options?.style,
-  })
+    numeric: "auto",
+    ...options,
+  });
 
-  return rtf.format(value, unit)
+  return rtf.format(value, unit);
 }

@@ -1,4 +1,12 @@
-import isSameQuarter from '../isSameQuarter/index'
+import { constructFrom } from "../constructFrom/index.js";
+import { constructNow } from "../constructNow/index.js";
+import { isSameQuarter } from "../isSameQuarter/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
+
+/**
+ * The {@link isThisQuarter} function options.
+ */
+export interface IsThisQuarterOptions extends ContextOptions<Date> {}
 
 /**
  * @name isThisQuarter
@@ -9,19 +17,22 @@ import isSameQuarter from '../isSameQuarter/index'
  * @description
  * Is the given date in the same quarter as the current date?
  *
- * > ⚠️ Please note that this function is not present in the FP submodule as
- * > it uses `Date.now()` internally hence impure and can't be safely curried.
+ * @param date - The date to check
+ * @param options - An object with options
  *
- * @param date - the date to check
- * @returns the date is in this quarter
+ * @returns The date is in this quarter
  *
  * @example
  * // If today is 25 September 2014, is 2 July 2014 in this quarter?
  * const result = isThisQuarter(new Date(2014, 6, 2))
  * //=> true
  */
-export default function isThisQuarter<DateType extends Date>(
-  dirtyDate: DateType | number
+export function isThisQuarter(
+  date: DateArg<Date> & {},
+  options?: IsThisQuarterOptions,
 ): boolean {
-  return isSameQuarter(Date.now(), dirtyDate)
+  return isSameQuarter(
+    constructFrom(options?.in || date, date),
+    constructNow(options?.in || date),
+  );
 }

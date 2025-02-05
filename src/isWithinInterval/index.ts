@@ -1,5 +1,10 @@
-import toDate from '../toDate/index'
-import type { Interval } from '../types'
+import { toDate } from "../toDate/index.js";
+import type { ContextOptions, DateArg, Interval } from "../types.js";
+
+/**
+ * The {@link isWithinInterval} function options.
+ */
+export interface IsWithinIntervalOptions extends ContextOptions<Date> {}
 
 /**
  * @name isWithinInterval
@@ -9,11 +14,11 @@ import type { Interval } from '../types'
  * @description
  * Is the given date within the interval? (Including start and end.)
  *
- * @param date - the date to check
- * @param interval - the interval to check
- * @returns the date is within the interval
- * @throws {RangeError} The start of an interval cannot be after its end
- * @throws {RangeError} Date in interval cannot be `Invalid Date`
+ * @param date - The date to check
+ * @param interval - The interval to check
+ * @param options - An object with options
+ *
+ * @returns The date is within the interval
  *
  * @example
  * // For the date within the interval:
@@ -21,7 +26,7 @@ import type { Interval } from '../types'
  *   start: new Date(2014, 0, 1),
  *   end: new Date(2014, 0, 7)
  * })
- * //=> true
+ * // => true
  *
  * @example
  * // For the date outside of the interval:
@@ -29,28 +34,28 @@ import type { Interval } from '../types'
  *   start: new Date(2014, 0, 1),
  *   end: new Date(2014, 0, 7)
  * })
- * //=> false
+ * // => false
  *
  * @example
- * // For date equal to interval start:
- * isWithinInterval(date, { start, end: date }) // => true
+ * // For date equal to the interval start:
+ * isWithinInterval(date, { start, end: date })
+ * // => true
  *
  * @example
- * // For date equal to interval end:
- * isWithinInterval(date, { start: date, end }) // => true
+ * // For date equal to the interval end:
+ * isWithinInterval(date, { start: date, end })
+ * // => true
  */
-export default function isWithinInterval<DateType extends Date>(
-  dirtyDate: DateType | number,
-  interval: Interval<DateType>
+export function isWithinInterval(
+  date: DateArg<Date> & {},
+  interval: Interval,
+  options?: IsWithinIntervalOptions | undefined,
 ): boolean {
-  const time = toDate(dirtyDate).getTime()
-  const startTime = toDate(interval.start).getTime()
-  const endTime = toDate(interval.end).getTime()
+  const time = +toDate(date, options?.in);
+  const [startTime, endTime] = [
+    +toDate(interval.start, options?.in),
+    +toDate(interval.end, options?.in),
+  ].sort((a, b) => a - b);
 
-  // Throw an exception if start date is after end date or if any date is `Invalid Date`
-  if (!(startTime <= endTime)) {
-    throw new RangeError('Invalid interval')
-  }
-
-  return time >= startTime && time <= endTime
+  return time >= startTime && time <= endTime;
 }

@@ -1,4 +1,5 @@
-import startOfMinute from '../startOfMinute/index'
+import { startOfMinute } from "../startOfMinute/index.js";
+import type { DateArg } from "../types.js";
 
 /**
  * @name isSameMinute
@@ -8,9 +9,10 @@ import startOfMinute from '../startOfMinute/index'
  * @description
  * Are the given dates in the same minute (and hour and day)?
  *
- * @param dateLeft - the first date to check
- * @param dateRight - the second date to check
- * @returns the dates are in the same minute (and hour and day)
+ * @param laterDate - The first date to check
+ * @param earlierDate - The second date to check
+ *
+ * @returns The dates are in the same minute (and hour and day)
  *
  * @example
  * // Are 4 September 2014 06:30:00 and 4 September 2014 06:30:15 in the same minute?
@@ -28,12 +30,9 @@ import startOfMinute from '../startOfMinute/index'
  * )
  * //=> false
  */
-export default function isSameMinute<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+export function isSameMinute(
+  laterDate: DateArg<Date> & {},
+  earlierDate: DateArg<Date> & {},
 ): boolean {
-  const dateLeftStartOfMinute = startOfMinute(dirtyDateLeft)
-  const dateRightStartOfMinute = startOfMinute(dirtyDateRight)
-
-  return dateLeftStartOfMinute.getTime() === dateRightStartOfMinute.getTime()
+  return +startOfMinute(laterDate) === +startOfMinute(earlierDate);
 }

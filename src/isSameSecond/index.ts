@@ -1,4 +1,5 @@
-import startOfSecond from '../startOfSecond/index'
+import { startOfSecond } from "../startOfSecond/index.js";
+import type { DateArg } from "../types.js";
 
 /**
  * @name isSameSecond
@@ -8,9 +9,10 @@ import startOfSecond from '../startOfSecond/index'
  * @description
  * Are the given dates in the same second (and hour and day)?
  *
- * @param dateLeft - the first date to check
- * @param dateRight - the second date to check
- * @returns the dates are in the same second (and hour and day)
+ * @param laterDate - The first date to check
+ * @param earlierDate - The second date to check
+ *
+ * @returns The dates are in the same second (and hour and day)
  *
  * @example
  * // Are 4 September 2014 06:30:15.000 and 4 September 2014 06:30.15.500 in the same second?
@@ -36,12 +38,9 @@ import startOfSecond from '../startOfSecond/index'
  * )
  * //=> false
  */
-export default function isSameSecond<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+export function isSameSecond(
+  laterDate: DateArg<Date> & {},
+  earlierDate: DateArg<Date> & {},
 ): boolean {
-  const dateLeftStartOfSecond = startOfSecond(dirtyDateLeft)
-  const dateRightStartOfSecond = startOfSecond(dirtyDateRight)
-
-  return dateLeftStartOfSecond.getTime() === dateRightStartOfSecond.getTime()
+  return +startOfSecond(laterDate) === +startOfSecond(earlierDate);
 }

@@ -1,14 +1,41 @@
-import addWeeks from '../addWeeks/index'
-import startOfWeek from '../startOfWeek/index'
-import toDate from '../toDate/index'
-import type { Interval, LocaleOptions, WeekStartOptions } from '../types'
+import { normalizeInterval } from "../_lib/normalizeInterval/index.js";
+import { addWeeks } from "../addWeeks/index.js";
+import { constructFrom } from "../constructFrom/index.js";
+import { startOfWeek } from "../startOfWeek/index.js";
+import type {
+  ContextOptions,
+  Interval,
+  LocalizedOptions,
+  StepOptions,
+  WeekOptions,
+} from "../types.js";
 
 /**
  * The {@link eachWeekOfInterval} function options.
  */
-export interface EachWeekOfIntervalOptions
-  extends WeekStartOptions,
-    LocaleOptions {}
+export interface EachWeekOfIntervalOptions<DateType extends Date = Date>
+  extends StepOptions,
+    WeekOptions,
+    LocalizedOptions<"options">,
+    ContextOptions<DateType> {}
+
+/**
+ * The {@link eachWeekOfInterval} function result type. It resolves the proper data type.
+ * It uses the first argument date object type, starting from the interval start date,
+ * then the end interval date. If a context function is passed, it uses the context function return type.
+ */
+export type EachWeekOfIntervalResult<
+  IntervalType extends Interval,
+  Options extends EachWeekOfIntervalOptions | undefined,
+> = Array<
+  Options extends EachWeekOfIntervalOptions<infer DateType>
+    ? DateType
+    : IntervalType["start"] extends Date
+      ? IntervalType["start"]
+      : IntervalType["end"] extends Date
+        ? IntervalType["end"]
+        : Date
+>;
 
 /**
  * @name eachWeekOfInterval
@@ -18,11 +45,10 @@ export interface EachWeekOfIntervalOptions
  * @description
  * Return the array of weeks within the specified time interval.
  *
- * @param interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
- * @param options - an object with options.
- * @returns the array with starts of weeks from the week of the interval start to the week of the interval end
- * @throws {RangeError} The start of an interval cannot be after its end
- * @throws {RangeError} Date in interval cannot be `Invalid Date`
+ * @param interval - The interval.
+ * @param options - An object with options.
+ *
+ * @returns The array with starts of weeks from the week of the interval start to the week of the interval end
  *
  * @example
  * // Each week within interval 6 October 2014 - 23 November 2014:
@@ -41,39 +67,44 @@ export interface EachWeekOfIntervalOptions
  * //   Sun Nov 23 2014 00:00:00
  * // ]
  */
-export default function eachWeekOfInterval<DateType extends Date>(
-  interval: Interval<DateType>,
-  options?: EachWeekOfIntervalOptions
-): DateType[] {
-  const startDate = toDate(interval.start)
-  const endDate = toDate(interval.end)
+export function eachWeekOfInterval<
+  IntervalType extends Interval,
+  Options extends EachWeekOfIntervalOptions | undefined = undefined,
+>(
+  interval: IntervalType,
+  options?: Options,
+): EachWeekOfIntervalResult<IntervalType, Options> {
+  const { start, end } = normalizeInterval(options?.in, interval);
 
-  let endTime = endDate.getTime()
+  let reversed = +start > +end;
+  const startDateWeek = reversed
+    ? startOfWeek(end, options)
+    : startOfWeek(start, options);
+  const endDateWeek = reversed
+    ? startOfWeek(start, options)
+    : startOfWeek(end, options);
 
-  // Throw an exception if start date is after end date or if any date is `Invalid Date`
-  if (!(startDate.getTime() <= endTime)) {
-    throw new RangeError('Invalid interval')
+  startDateWeek.setHours(15);
+  endDateWeek.setHours(15);
+
+  const endTime = +endDateWeek.getTime();
+  let currentDate = startDateWeek;
+
+  let step = options?.step ?? 1;
+  if (!step) return [];
+  if (step < 0) {
+    step = -step;
+    reversed = !reversed;
   }
 
-  const startDateWeek = startOfWeek(startDate, options)
-  const endDateWeek = startOfWeek(endDate, options)
+  const dates: EachWeekOfIntervalResult<IntervalType, Options> = [];
 
-  // Some timezones switch DST at midnight, making start of day unreliable in these timezones, 3pm is a safe bet
-  startDateWeek.setHours(15)
-  endDateWeek.setHours(15)
-
-  endTime = endDateWeek.getTime()
-
-  const weeks = []
-
-  let currentWeek = startDateWeek
-
-  while (currentWeek.getTime() <= endTime) {
-    currentWeek.setHours(0)
-    weeks.push(toDate(currentWeek))
-    currentWeek = addWeeks(currentWeek, 1)
-    currentWeek.setHours(15)
+  while (+currentDate <= endTime) {
+    currentDate.setHours(0);
+    dates.push(constructFrom(start, currentDate));
+    currentDate = addWeeks(currentDate, step);
+    currentDate.setHours(15);
   }
 
-  return weeks
+  return reversed ? dates.reverse() : dates;
 }

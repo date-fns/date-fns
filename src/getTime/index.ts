@@ -1,4 +1,5 @@
-import toDate from '../toDate/index'
+import { toDate } from "../toDate/index.js";
+import type { DateArg } from "../types.js";
 
 /**
  * @name getTime
@@ -8,18 +9,15 @@ import toDate from '../toDate/index'
  * @description
  * Get the milliseconds timestamp of the given date.
  *
- * @param date - the given date
- * @returns the timestamp
+ * @param date - The given date
+ *
+ * @returns The timestamp
  *
  * @example
  * // Get the timestamp of 29 February 2012 11:45:05.123:
  * const result = getTime(new Date(2012, 1, 29, 11, 45, 5, 123))
  * //=> 1330515905123
  */
-export default function getTime<DateType extends Date>(
-  dirtyDate: DateType | number
-): number {
-  const date = toDate(dirtyDate)
-  const timestamp = date.getTime()
-  return timestamp
+export function getTime(date: DateArg<Date> & {}): number {
+  return +toDate(date);
 }

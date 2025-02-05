@@ -1,12 +1,14 @@
-import formatDistanceStrict, {
-  FormatDistanceStrictOptions,
-} from '../formatDistanceStrict/index'
+import { constructNow } from "../constructNow/index.js";
+import type { FormatDistanceStrictOptions } from "../formatDistanceStrict/index.js";
+import { formatDistanceStrict } from "../formatDistanceStrict/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
 
 /**
  * The {@link formatDistanceToNowStrict} function options.
  */
 export interface FormatDistanceToNowStrictOptions
-  extends FormatDistanceStrictOptions {}
+  extends FormatDistanceStrictOptions,
+    ContextOptions<Date> {}
 
 /**
  * @name formatDistanceToNowStrict
@@ -28,11 +30,13 @@ export interface FormatDistanceToNowStrictOptions
  * | 1 ... 11 months        | [1..11] months      |
  * | 1 ... N years          | [1..N]  years       |
  *
- * @param date - the given date
- * @param options - an object with options.
- * @returns the distance in words
- * @throws {RangeError} `date` must not be Invalid Date
- * @throws {RangeError} `options.locale` must contain `formatDistance` property
+ * @param date - The given date
+ * @param options - An object with options.
+ *
+ * @returns The distance in words
+ *
+ * @throws `date` must not be Invalid Date
+ * @throws `options.locale` must contain `formatDistance` property
  *
  * @example
  * // If today is 1 January 2015, what is the distance to 2 July 2014?
@@ -77,9 +81,9 @@ export interface FormatDistanceToNowStrictOptions
  * )
  * //=> '1 jaro'
  */
-export default function formatDistanceToNowStrict<DateType extends Date>(
-  dirtyDate: DateType | number,
-  options?: FormatDistanceToNowStrictOptions
+export function formatDistanceToNowStrict(
+  date: DateArg<Date> & {},
+  options?: FormatDistanceToNowStrictOptions,
 ): string {
-  return formatDistanceStrict(dirtyDate, Date.now(), options)
+  return formatDistanceStrict(date, constructNow(date), options);
 }
