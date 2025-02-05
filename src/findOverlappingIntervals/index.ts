@@ -1,8 +1,9 @@
-import toDate from '../toDate/index'
-import areIntervalsOverlapping from '../areIntervalsOverlapping/index'
-import isBefore from '../isBefore/index'
-import isAfter from '../isAfter/index'
-import type { Interval } from '../types'
+import { toDate } from '../toDate/index.js'
+import { areIntervalsOverlapping } from '../areIntervalsOverlapping/index.js'
+import { isBefore } from '../isBefore/index.js'
+import { isAfter } from '../isAfter/index.js'
+import type { Interval } from '../types.js'
+import { isValid } from '../isValid/index.js'
 
 /**
  * @name findOverlappingIntervals
@@ -64,14 +65,23 @@ import type { Interval } from '../types'
  * //=>[]
  */
 const findOverlappingIntervals = (intervals: Interval[]): Interval[] => {
+  intervals.forEach((interval) => {
+    if (isBefore(interval.end, interval.start)) {
+      throw new RangeError("End is before start");
+    }
+    if (!(isValid(interval.start) && isValid(interval.end))) {
+      throw new RangeError("Invalid time value");
+    }
+  })
+
   if (intervals.length < 2) {
     return []
   }
 
   // function to sort intervals ascending by 'start' property
   const sortIntervals = (leftInterval: Interval, rightInterval: Interval) => {
-    let leftStartTime = toDate(leftInterval.start).getTime()
-    let rightStartTime = toDate(rightInterval.start).getTime()
+    const leftStartTime = toDate(leftInterval.start).getTime()
+    const rightStartTime = toDate(rightInterval.start).getTime()
     const result = leftStartTime - rightStartTime
     return result
   }
