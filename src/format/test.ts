@@ -690,6 +690,46 @@ describe("format", () => {
       expect(result).toBe("Friday, April 4th, 1986");
     });
 
+    it("short date without year", () => {
+      const result = format(date, "V");
+      expect(result).toBe("04/04");
+    });
+
+    it("medium date without year", () => {
+      const result = format(date, "VV");
+      expect(result).toBe("Apr 4");
+    });
+
+    it("long date without year", () => {
+      const result = format(date, "VVV");
+      expect(result).toBe("April 4th");
+    });
+
+    it("full date without year", () => {
+      const result = format(date, "VVVV");
+      expect(result).toBe("Friday, April 4th");
+    });
+
+    it("short date without year + time", () => {
+      const result = format(date, "V (p)");
+      expect(result).toBe("04/04 (10:32 AM)");
+    });
+
+    it("medium date without year + time", () => {
+      const result = format(date, "VV (p)");
+      expect(result).toBe("Apr 4 (10:32 AM)");
+    });
+
+    it("long date without year + time", () => {
+      const result = format(date, "VVV (p)");
+      expect(result).toBe("April 4th (10:32 AM)");
+    });
+
+    it("full date without year + time", () => {
+      const result = format(date, "VVVV (p)");
+      expect(result).toBe("Friday, April 4th (10:32 AM)");
+    });
+
     it("short time", () => {
       const result = format(date, "p");
       expect(result).toBe("10:32 AM");

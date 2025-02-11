@@ -16,6 +16,20 @@ const dateLongFormatter: LongFormatter = (pattern, formatLong) => {
   }
 };
 
+const dateShortFormatter: LongFormatter = (pattern, formatLong) => {
+  switch (pattern) {
+    case "V":
+      return formatLong.date({ width: "shortWithoutYear" });
+    case "VV":
+      return formatLong.date({ width: "mediumWithoutYear" });
+    case "VVV":
+      return formatLong.date({ width: "longWithoutYear" });
+    case "VVVV":
+    default:
+      return formatLong.date({ width: "fullWithoutYear" });
+  }
+}
+
 const timeLongFormatter: LongFormatter = (pattern, formatLong) => {
   switch (pattern) {
     case "p":
@@ -68,4 +82,5 @@ const dateTimeLongFormatter: LongFormatter = (
 export const longFormatters: Record<string, LongFormatter> = {
   p: timeLongFormatter,
   P: dateTimeLongFormatter,
+  V: dateShortFormatter,
 };

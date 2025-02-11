@@ -38,8 +38,8 @@ const formattingTokensRegExp =
   /[yYQqMLwIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)|./g;
 
 // This RegExp catches symbols escaped by quotes, and also
-// sequences of symbols P, p, and the combinations like `PPPPPPPppppp`
-const longFormattingTokensRegExp = /P+p+|P+|p+|''|'(''|[^'])+('|$)|./g;
+// sequences of symbols V, P, p, and the combinations like `PPPPPPPppppp`
+const longFormattingTokensRegExp = /V+|P+p+|P+|p+|''|'(''|[^'])+('|$)|./g;
 
 const escapedStringRegExp = /^'([^]*?)'?$/;
 const doubleQuoteRegExp = /''/g;
@@ -232,6 +232,10 @@ export interface FormatOptions
  * |                                 | PPpp    | Apr 29, 1453, 12:00:00 AM         | 7     |
  * |                                 | PPPppp  | April 29th, 1453 at ...           | 7     |
  * |                                 | PPPPpppp| Friday, April 29th, 1453 at ...   | 2,7   |
+ * | Long localized date without year| V       | 04/29                             | 7     |
+ * |                                 | VV      | Apr 29                            | 7     |
+ * |                                 | VVV     | April 29th                        | 7     |
+ * |                                 | VVVV    | Friday, April 29th                | 2,7   |
  * Notes:
  * 1. "Formatting" units (e.g. formatting quarter) in the default en-US locale
  *    are the same as "stand-alone" units, but are different in some languages.
@@ -302,6 +306,7 @@ export interface FormatOptions
  *    - `o`: ordinal number modifier
  *    - `P`: long localized date
  *    - `p`: long localized time
+ *    - `V`: long localized date without year
  *
  * 8. `YY` and `YYYY` tokens represent week-numbering years but they are often confused with years.
  *    You should enable `options.useAdditionalWeekYearTokens` to use them. See: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
@@ -374,7 +379,7 @@ export function format(
     .match(longFormattingTokensRegExp)!
     .map((substring) => {
       const firstCharacter = substring[0];
-      if (firstCharacter === "p" || firstCharacter === "P") {
+      if (firstCharacter === "p" || firstCharacter === "P" || firstCharacter === "V") {
         const longFormatter = longFormatters[firstCharacter];
         return longFormatter(substring, locale.formatLong);
       }

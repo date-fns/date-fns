@@ -357,10 +357,19 @@ export interface FormatLongFnOptions {
 }
 
 /**
- * The format long width token, defines how short or long the formnatted value
+ * The format long width token, defines how short or long the formatted value
  * might be. The actual result length is defined by the locale.
  */
-export type FormatLongWidth = "full" | "long" | "medium" | "short" | "any";
+export type FormatLongWidth =
+  | "full"
+  | "long"
+  | "medium"
+  | "short"
+  | "fullWithoutYear"
+  | "longWithoutYear"
+  | "mediumWithoutYear"
+  | "shortWithoutYear"
+  | "any";
 
 /// Common types
 
