@@ -6,6 +6,10 @@ const dateFormats = {
   long: "d 'de' MMMM 'de' y",
   medium: "d 'de' MMM 'de' y",
   short: "dd/MM/y",
+  fullWithoutYear: "EEEE, d 'de' MMMM",
+  longWithoutYear: "d 'de' MMMM",
+  mediumWithoutYear: "d 'de' MMM",
+  shortWithoutYear: "dd/MM",
 };
 
 const timeFormats = {

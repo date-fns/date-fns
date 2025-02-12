@@ -7,6 +7,10 @@ const dateFormats = {
   long: "d. MMMM y",
   medium: "d. M. y",
   short: "d. M. y",
+  fullWithoutYear: "EEEE d. MMMM",
+  longWithoutYear: "d. MMMM",
+  mediumWithoutYear: "d. M.",
+  shortWithoutYear: "d. M.",
 };
 
 // https://www.unicode.org/cldr/charts/32/summary/sk.html?hide#2149

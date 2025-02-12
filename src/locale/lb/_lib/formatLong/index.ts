@@ -8,6 +8,10 @@ const dateFormats = {
   long: "do MMMM y", // 7. Januar 2018
   medium: "do MMM y", // 7. Jan 2018
   short: "dd.MM.yy", // 07.01.18
+  fullWithoutYear: "EEEE, do MMMM y",
+  longWithoutYear: "do MMMM",
+  mediumWithoutYear: "do MMM",
+  shortWithoutYear: "dd.MM",
 };
 
 const timeFormats = {

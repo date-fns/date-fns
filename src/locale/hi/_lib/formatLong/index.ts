@@ -6,6 +6,10 @@ const dateFormats = {
   long: "do MMMM, y", // CLDR #1788
   medium: "d MMM, y", // CLDR #1789
   short: "dd/MM/yyyy", // CLDR #1790
+  fullWithoutYear: "EEEE, do MMMM",
+  longWithoutYear: "do MMMM",
+  mediumWithoutYear: "d MMM",
+  shortWithoutYear: "dd/MM",
 };
 
 const timeFormats = {
