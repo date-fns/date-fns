@@ -2381,6 +2381,38 @@ describe("parse", () => {
       expect(result).toEqual(expected);
     });
 
+    it("short date without year", () => {
+      const expected = new Date(1986, 4 /* May */, 26);
+      const dateString = "05/26";
+      const formatString = "V";
+      const result = parse(dateString, formatString, referenceDate);
+      expect(result).toEqual(expected);
+    });
+
+    it("medium date without year", () => {
+      const expected = new Date(1986, 4 /* May */, 26);
+      const dateString = "May 26";
+      const formatString = "VV";
+      const result = parse(dateString, formatString, referenceDate);
+      expect(result).toEqual(expected);
+    });
+
+    it("long date without year", () => {
+      const expected = new Date(1986, 4 /* May */, 26);
+      const dateString = "May 26th";
+      const formatString = "VVV";
+      const result = parse(dateString, formatString, referenceDate);
+      expect(result).toEqual(expected);
+    });
+
+    it("full date without year", () => {
+      const expected = new Date(1986, 4 /* May */, 26);
+      const dateString = "Friday, May 26th";
+      const formatString = "VVVV";
+      const result = parse(dateString, formatString, referenceDate);
+      expect(result).toEqual(expected);
+    });
+
     it("short time", () => {
       const expected = new Date(
         referenceDate.getFullYear(),
@@ -2471,6 +2503,38 @@ describe("parse", () => {
       const dateTimeString = "Friday, May 26th, 1995 at 10:32:55 AM";
       const formatString = "PPPPpp";
       const result = parse(dateTimeString, formatString, referenceDate);
+      expect(result).toEqual(expected);
+    });
+
+    it("short date without year + time", () => {
+      const expected = new Date(1986, 4 /* May */, 26, 14, 50);
+      const dateString = "05/26 (14:50)";
+      const formatString = "V (HH:mm)";
+      const result = parse(dateString, formatString, referenceDate);
+      expect(result).toEqual(expected);
+    });
+
+    it("medium date without year + time", () => {
+      const expected = new Date(1986, 4 /* May */, 26, 12, 30);
+      const dateString = "May 26 (12:30)";
+      const formatString = "VV (HH:mm)";
+      const result = parse(dateString, formatString, referenceDate);
+      expect(result).toEqual(expected);
+    });
+
+    it("long date without year + time", () => {
+      const expected = new Date(1986, 4 /* May */, 26, 8, 5);
+      const dateString = "May 26th (8:05)";
+      const formatString = "VVV (H:mm)";
+      const result = parse(dateString, formatString, referenceDate);
+      expect(result).toEqual(expected);
+    });
+
+    it("full date without year + time", () => {
+      const expected = new Date(1986, 4 /* May */, 26, 8, 5);
+      const dateString = "Friday, May 26th (08:05)";
+      const formatString = "VVVV (HH:mm)";
+      const result = parse(dateString, formatString, referenceDate);
       expect(result).toEqual(expected);
     });
   });

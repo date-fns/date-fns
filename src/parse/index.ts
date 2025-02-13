@@ -50,8 +50,8 @@ const formattingTokensRegExp =
   /[yYQqMLwIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)|./g;
 
 // This RegExp catches symbols escaped by quotes, and also
-// sequences of symbols P, p, and the combinations like `PPPPPPPppppp`
-const longFormattingTokensRegExp = /P+p+|P+|p+|''|'(''|[^'])+('|$)|./g;
+// sequences of symbols V, P, p, and the combinations like `PPPPPPPppppp`
+const longFormattingTokensRegExp = /V+|P+p+|P+|p+|''|'(''|[^'])+('|$)|./g;
 
 const escapedStringRegExp = /^'([^]*?)'?$/;
 const doubleQuoteRegExp = /''/g;
