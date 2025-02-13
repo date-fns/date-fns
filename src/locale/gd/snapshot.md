@@ -328,18 +328,18 @@
 |                                      |              | 1987-10-11T12:13:14.015Z | An Dàmhair 11mh                                                 | Invalid Date             |
 |                                      |              | 1987-11-11T12:13:14.015Z | An t-Samhain 11mh                                               | Invalid Date             |
 |                                      |              | 1987-12-11T12:13:14.015Z | An Dùbhlachd 11mh                                               | Invalid Date             |
-|                                      | VVV          | 1987-01-11T12:13:14.015Z | Am Faoilleach 11mh                                              | Invalid Date             |
-|                                      |              | 1987-02-11T12:13:14.015Z | An Gearran 11mh                                                 | Invalid Date             |
-|                                      |              | 1987-03-11T12:13:14.015Z | Am Màrt 11mh                                                    | Invalid Date             |
-|                                      |              | 1987-04-11T12:13:14.015Z | An Giblean 11mh                                                 | Invalid Date             |
-|                                      |              | 1453-05-29T23:59:59.999Z | An Cèitean 29mh                                                 | Invalid Date             |
-|                                      |              | 1987-06-11T12:13:14.015Z | An t-Ògmhios 11mh                                               | Invalid Date             |
-|                                      |              | 1987-07-11T12:13:14.015Z | An t-Iuchar 11mh                                                | Invalid Date             |
-|                                      |              | 1987-08-11T12:13:14.015Z | An Lùnastal 11mh                                                | Invalid Date             |
-|                                      |              | 1987-09-11T12:13:14.015Z | An t-Sultain 11mh                                               | Invalid Date             |
-|                                      |              | 1987-10-11T12:13:14.015Z | An Dàmhair 11mh                                                 | Invalid Date             |
-|                                      |              | 1987-11-11T12:13:14.015Z | An t-Samhain 11mh                                               | Invalid Date             |
-|                                      |              | 1987-12-11T12:13:14.015Z | An Dùbhlachd 11mh                                               | Invalid Date             |
+|                                      | VVVV         | 1987-01-11T12:13:14.015Z | Didòmhnaich, Am Faoilleach 11mh                                 | Invalid Date             |
+|                                      |              | 1987-02-11T12:13:14.015Z | Diciadain, An Gearran 11mh                                      | Invalid Date             |
+|                                      |              | 1987-03-11T12:13:14.015Z | Diciadain, Am Màrt 11mh                                         | Invalid Date             |
+|                                      |              | 1987-04-11T12:13:14.015Z | Disathairne, An Giblean 11mh                                    | Invalid Date             |
+|                                      |              | 1453-05-29T23:59:59.999Z | Didòmhnaich, An Cèitean 29mh                                    | Invalid Date             |
+|                                      |              | 1987-06-11T12:13:14.015Z | Diardaoin, An t-Ògmhios 11mh                                    | Invalid Date             |
+|                                      |              | 1987-07-11T12:13:14.015Z | Disathairne, An t-Iuchar 11mh                                   | Invalid Date             |
+|                                      |              | 1987-08-11T12:13:14.015Z | Dimàirt, An Lùnastal 11mh                                       | Invalid Date             |
+|                                      |              | 1987-09-11T12:13:14.015Z | Dihaoine, An t-Sultain 11mh                                     | Invalid Date             |
+|                                      |              | 1987-10-11T12:13:14.015Z | Didòmhnaich, An Dàmhair 11mh                                    | Invalid Date             |
+|                                      |              | 1987-11-11T12:13:14.015Z | Diciadain, An t-Samhain 11mh                                    | Invalid Date             |
+|                                      |              | 1987-12-11T12:13:14.015Z | Dihaoine, An Dùbhlachd 11mh                                     | Invalid Date             |
 | Long localized time                  | p            | 1987-01-11T12:13:14.015Z | 12:13 F.                                                        | Invalid Date             |
 |                                      |              | 1987-02-11T12:13:14.015Z | 12:13 F.                                                        | Invalid Date             |
 |                                      |              | 1987-03-11T12:13:14.015Z | 12:13 F.                                                        | Invalid Date             |

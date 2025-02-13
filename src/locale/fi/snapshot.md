@@ -328,18 +328,18 @@
 |                                      |              | 1987-10-11T12:13:14.015Z | 11. lokakuuta                                             | 1987-10-11T00:00:00.000Z |
 |                                      |              | 1987-11-11T12:13:14.015Z | 11. marraskuuta                                           | 1987-11-11T00:00:00.000Z |
 |                                      |              | 1987-12-11T12:13:14.015Z | 11. joulukuuta                                            | 1987-12-11T00:00:00.000Z |
-|                                      | VVV          | 1987-01-11T12:13:14.015Z | 11. tammikuuta                                            | 1987-01-11T00:00:00.000Z |
-|                                      |              | 1987-02-11T12:13:14.015Z | 11. helmikuuta                                            | 1987-02-11T00:00:00.000Z |
-|                                      |              | 1987-03-11T12:13:14.015Z | 11. maaliskuuta                                           | 1987-03-11T00:00:00.000Z |
-|                                      |              | 1987-04-11T12:13:14.015Z | 11. huhtikuuta                                            | 1987-04-11T00:00:00.000Z |
-|                                      |              | 1453-05-29T23:59:59.999Z | 29. toukokuuta                                            | 1453-05-29T00:00:00.000Z |
-|                                      |              | 1987-06-11T12:13:14.015Z | 11. kesäkuuta                                             | 1987-06-11T00:00:00.000Z |
-|                                      |              | 1987-07-11T12:13:14.015Z | 11. heinäkuuta                                            | 1987-07-11T00:00:00.000Z |
-|                                      |              | 1987-08-11T12:13:14.015Z | 11. elokuuta                                              | 1987-08-11T00:00:00.000Z |
-|                                      |              | 1987-09-11T12:13:14.015Z | 11. syyskuuta                                             | 1987-09-11T00:00:00.000Z |
-|                                      |              | 1987-10-11T12:13:14.015Z | 11. lokakuuta                                             | 1987-10-11T00:00:00.000Z |
-|                                      |              | 1987-11-11T12:13:14.015Z | 11. marraskuuta                                           | 1987-11-11T00:00:00.000Z |
-|                                      |              | 1987-12-11T12:13:14.015Z | 11. joulukuuta                                            | 1987-12-11T00:00:00.000Z |
+|                                      | VVVV         | 1987-01-11T12:13:14.015Z | sunnuntaina 11. tammikuuta                                | Errored                  |
+|                                      |              | 1987-02-11T12:13:14.015Z | keskiviikkona 11. helmikuuta                              | Errored                  |
+|                                      |              | 1987-03-11T12:13:14.015Z | keskiviikkona 11. maaliskuuta                             | Errored                  |
+|                                      |              | 1987-04-11T12:13:14.015Z | lauantaina 11. huhtikuuta                                 | Errored                  |
+|                                      |              | 1453-05-29T23:59:59.999Z | sunnuntaina 29. toukokuuta                                | Errored                  |
+|                                      |              | 1987-06-11T12:13:14.015Z | torstaina 11. kesäkuuta                                   | Errored                  |
+|                                      |              | 1987-07-11T12:13:14.015Z | lauantaina 11. heinäkuuta                                 | Errored                  |
+|                                      |              | 1987-08-11T12:13:14.015Z | tiistaina 11. elokuuta                                    | Errored                  |
+|                                      |              | 1987-09-11T12:13:14.015Z | perjantaina 11. syyskuuta                                 | Errored                  |
+|                                      |              | 1987-10-11T12:13:14.015Z | sunnuntaina 11. lokakuuta                                 | Errored                  |
+|                                      |              | 1987-11-11T12:13:14.015Z | keskiviikkona 11. marraskuuta                             | Errored                  |
+|                                      |              | 1987-12-11T12:13:14.015Z | perjantaina 11. joulukuuta                                | Errored                  |
 | Long localized time                  | p            | 1987-01-11T12:13:14.015Z | 12.13                                                     | 1987-01-11T12:13:00.000Z |
 |                                      |              | 1987-02-11T12:13:14.015Z | 12.13                                                     | 1987-02-11T12:13:00.000Z |
 |                                      |              | 1987-03-11T12:13:14.015Z | 12.13                                                     | 1987-03-11T12:13:00.000Z |
