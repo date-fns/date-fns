@@ -233,6 +233,10 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/;
  * |                                 |     | PPpp    | May 29, 1453, 12:00:00 AM         |       |
  * |                                 |     | PPPpp   | May 29th, 1453 at ...             |       |
  * |                                 |     | PPPPpp  | Sunday, May 29th, 1453 at ...     | 2,5,8 |
+ * | Long localized date without year| NA  | V       | 05/29                             | 5     |
+ * |                                 |     | VV      | May 29                            |       |
+ * |                                 |     | VVV     | May 29th                          |       |
+ * |                                 |     | VVVV    | Sunday, May 29th                  | 2,5,8 |
  * Notes:
  * 1. "Formatting" units (e.g. formatting quarter) in the default en-US locale
  *    are the same as "stand-alone" units, but are different in some languages.
@@ -289,6 +293,7 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/;
  *    - `o`: ordinal number modifier
  *    - `P`: long localized date
  *    - `p`: long localized time
+ *    - `V`: long localized date without year
  *
  * 6. `YY` and `YYYY` tokens represent week-numbering years but they are often confused with years.
  *    You should enable `options.useAdditionalWeekYearTokens` to use them. See: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
@@ -296,13 +301,16 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/;
  * 7. `D` and `DD` tokens represent days of the year but they are often confused with days of the month.
  *    You should enable `options.useAdditionalDayOfYearTokens` to use them. See: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
  *
- * 8. `P+` tokens do not have a defined priority since they are merely aliases to other tokens based
+ * 8. `P+` and `V+` tokens do not have a defined priority since they are merely aliases to other tokens based
  *    on the given locale.
  *
  *    using `en-US` locale: `P` => `MM/dd/yyyy`
  *    using `en-US` locale: `p` => `hh:mm a`
  *    using `pt-BR` locale: `P` => `dd/MM/yyyy`
  *    using `pt-BR` locale: `p` => `HH:mm`
+ *
+ *    using `en-US` locale: `V` => `MM/dd`
+ *    using `pt-BR` locale: `V` => `MM/dd`
  *
  * Values will be assigned to the date in the descending order of its unit's priority.
  * Units of an equal priority overwrite each other in the order of appearance.
