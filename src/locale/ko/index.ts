@@ -13,6 +13,7 @@ import { match } from "./_lib/match/index.js";
  * @author Hong Chulju [@angdev](https://github.com/angdev)
  * @author Lee Seoyoen [@iamssen](https://github.com/iamssen)
  * @author Taiki IKeda [@so99ynoodles](https://github.com/so99ynoodles)
+ * @author Seungduk Seo [@seosd97](https://github.com/seosd97)
  */
 export const ko: Locale = {
   code: "ko",
