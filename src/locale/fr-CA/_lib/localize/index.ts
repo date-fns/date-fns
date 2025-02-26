@@ -1,5 +1,5 @@
-import { buildLocalizeFn } from "../../../_lib/buildLocalizeFn/index.js"
-import type { Localize } from "../../../types.js"
+import { buildLocalizeFn } from "../../../_lib/buildLocalizeFn/index.js";
+import type { Localize } from "../../../types.js";
 
 const monthValues = {
   narrow: ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"] as const,
