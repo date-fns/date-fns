@@ -1,6 +1,4 @@
 import { normalizeDates } from "../_lib/normalizeDates/index.js";
-import { compareAsc } from "../compareAsc/index.js";
-import { differenceInCalendarYears } from "../differenceInCalendarYears/index.js";
 import type { ContextOptions, DateArg } from "../types.js";
 
 /**
@@ -38,29 +36,12 @@ export function differenceInYears(
     earlierDate,
   );
 
-  // -1 if the left date is earlier than the right date
-  // 2023-12-31 - 2024-01-01 = -1
-  const sign = compareAsc(laterDate_, earlierDate_);
+  // NOTE: There are two scenarios to consider based on the order of input dates:
+  // 1. Ascending order: Only negative differences in days and/or months affect the year count.
+  // 2. Descending order: Only positive differences in days and/or months affect the year count.
+  const diffInYears = laterDate.getFullYear() - earlierDate.getFullYear();
+  const diffInMonths = (laterDate.getMonth() - earlierDate.getMonth()) / 100.0;
+  const diffInDays = (laterDate.getDate() - earlierDate.getDate()) / 10000.0;
 
-  // First calculate the difference in calendar years
-  // 2024-01-01 - 2023-12-31 = 1 year
-  const diff = Math.abs(differenceInCalendarYears(laterDate_, earlierDate_));
-
-  // Now we need to calculate if the difference is full. To do that we set
-  // both dates to the same year and check if the both date's month and day
-  // form a full year.
-  laterDate_.setFullYear(1584);
-  earlierDate_.setFullYear(1584);
-
-  // For it to be true, when the later date is indeed later than the earlier date
-  // (2026-02-01 - 2023-12-10 = 3 years), the difference is full if
-  // the normalized later date is also later than the normalized earlier date.
-  // In our example, 1584-02-01 is earlier than 1584-12-10, so the difference
-  // is partial, hence we need to subtract 1 from the difference 3 - 1 = 2.
-  const partial = compareAsc(laterDate_, earlierDate_) === -sign;
-
-  const result = sign * (diff - +partial);
-
-  // Prevent negative zero
-  return result === 0 ? 0 : result;
+  return Math.trunc(diffInYears + diffInMonths + diffInDays);
 }
