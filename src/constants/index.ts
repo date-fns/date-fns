@@ -32,7 +32,7 @@ export const daysInWeek = 7;
  *
  * One years equals 365.2425 days according to the formula:
  *
- * > Leap year occures every 4 years, except for years that are divisable by 100 and not divisable by 400.
+ * > Leap year occurs every 4 years, except for years that are divisible by 100 and not divisible by 400.
  * > 1 mean year = (365+1/4-1/100+1/400) days = 365.2425 days
  */
 export const daysInYear = 365.2425;
@@ -201,3 +201,16 @@ export const secondsInMonth = secondsInYear / 12;
  * @summary Seconds in 1 quarter.
  */
 export const secondsInQuarter = secondsInMonth * 3;
+
+/**
+ * @constant
+ * @name constructFromSymbol
+ * @summary Symbol enabling Date extensions to inherit properties from the reference date.
+ *
+ * The symbol is used to enable the `constructFrom` function to construct a date
+ * using a reference date and a value. It allows to transfer extra properties
+ * from the reference date to the new date. It's useful for extensions like
+ * [`TZDate`](https://github.com/date-fns/tz) that accept a time zone as
+ * a constructor argument.
+ */
+export const constructFromSymbol = Symbol.for("constructDateFrom");

@@ -1,4 +1,5 @@
 import { toDate } from "../toDate/index.js";
+import type { DateArg } from "../types.js";
 
 /**
  * @name getMilliseconds
@@ -7,8 +8,6 @@ import { toDate } from "../toDate/index.js";
  *
  * @description
  * Get the milliseconds of the given date.
- *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
  * @param date - The given date
  *
@@ -19,10 +18,6 @@ import { toDate } from "../toDate/index.js";
  * const result = getMilliseconds(new Date(2012, 1, 29, 11, 45, 5, 123))
  * //=> 123
  */
-export function getMilliseconds<DateType extends Date>(
-  date: DateType | number | string,
-): number {
-  const _date = toDate(date);
-  const milliseconds = _date.getMilliseconds();
-  return milliseconds;
+export function getMilliseconds(date: DateArg<Date> & {}): number {
+  return toDate(date).getMilliseconds();
 }

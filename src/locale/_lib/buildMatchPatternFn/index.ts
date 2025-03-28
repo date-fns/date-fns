@@ -19,7 +19,7 @@ export function buildMatchPatternFn<Result>(
     let value = (
       args.valueCallback ? args.valueCallback(parseResult[0]) : parseResult[0]
     ) as Result;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- I challange you to fix the type
+    // [TODO] I challenge you to fix the type
     value = options.valueCallback ? options.valueCallback(value as any) : value;
 
     const rest = string.slice(matchedString.length);

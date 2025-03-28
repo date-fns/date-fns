@@ -1,5 +1,7 @@
+/* eslint-disable */
+
 /** @type {import('@date-fns/docs').DateFnsDocs.Config} */
-module.exports.config = {
+export const config = {
   package: "..",
 
   json: "../tmp/docs.json",
@@ -81,7 +83,7 @@ module.exports.config = {
       slug: "Time-Zones",
       category: "General",
       title: "Time Zones",
-      summary: "Time zone functions",
+      summary: "Time zone support",
       path: "timeZones.md",
     },
     {

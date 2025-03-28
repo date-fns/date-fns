@@ -1,12 +1,14 @@
+import { addLeadingZeros } from "../_lib/addLeadingZeros/index.js";
 import { isValid } from "../isValid/index.js";
 import { toDate } from "../toDate/index.js";
-import type { ISOFormatOptions } from "../types.js";
-import { addLeadingZeros } from "../_lib/addLeadingZeros/index.js";
+import type { ContextOptions, DateArg, ISOFormatOptions } from "../types.js";
 
 /**
  * The {@link formatISO9075} function options.
  */
-export interface FormatISO9075Options extends ISOFormatOptions {}
+export interface FormatISO9075Options
+  extends ISOFormatOptions,
+    ContextOptions<Date> {}
 
 /**
  * @name formatISO9075
@@ -15,8 +17,6 @@ export interface FormatISO9075Options extends ISOFormatOptions {}
  *
  * @description
  * Return the formatted date string in ISO 9075 format. Options may be passed to control the parts and notations of the date.
- *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
  * @param date - The original date
  * @param options - An object with options.
@@ -45,13 +45,13 @@ export interface FormatISO9075Options extends ISOFormatOptions {}
  * const result = formatISO9075(new Date(2019, 8, 18, 19, 0, 52), { representation: 'time' })
  * //=> '19:00:52'
  */
-export function formatISO9075<DateType extends Date>(
-  date: DateType | number | string,
+export function formatISO9075(
+  date: DateArg<Date> & {},
   options?: FormatISO9075Options,
 ): string {
-  const _date = toDate(date);
+  const date_ = toDate(date, options?.in);
 
-  if (!isValid(_date)) {
+  if (!isValid(date_)) {
     throw new RangeError("Invalid time value");
   }
 
@@ -65,9 +65,9 @@ export function formatISO9075<DateType extends Date>(
 
   // Representation is either 'date' or 'complete'
   if (representation !== "time") {
-    const day = addLeadingZeros(_date.getDate(), 2);
-    const month = addLeadingZeros(_date.getMonth() + 1, 2);
-    const year = addLeadingZeros(_date.getFullYear(), 4);
+    const day = addLeadingZeros(date_.getDate(), 2);
+    const month = addLeadingZeros(date_.getMonth() + 1, 2);
+    const year = addLeadingZeros(date_.getFullYear(), 4);
 
     // yyyyMMdd or yyyy-MM-dd.
     result = `${year}${dateDelimiter}${month}${dateDelimiter}${day}`;
@@ -75,9 +75,9 @@ export function formatISO9075<DateType extends Date>(
 
   // Representation is either 'time' or 'complete'
   if (representation !== "date") {
-    const hour = addLeadingZeros(_date.getHours(), 2);
-    const minute = addLeadingZeros(_date.getMinutes(), 2);
-    const second = addLeadingZeros(_date.getSeconds(), 2);
+    const hour = addLeadingZeros(date_.getHours(), 2);
+    const minute = addLeadingZeros(date_.getMinutes(), 2);
+    const second = addLeadingZeros(date_.getSeconds(), 2);
 
     // If there's also date, separate it with time with a space
     const separator = result === "" ? "" : " ";

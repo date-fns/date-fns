@@ -1,12 +1,15 @@
 import { describe, expect, it } from "vitest";
 import { formatRelative } from "./index.js";
+import { TZDate, tz } from "@date-fns/tz";
 
 describe("formatRelative", () => {
   const baseDate = new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 900);
 
   it("accepts a timestamp", () => {
     const date = new Date(2014, 3 /* Apr */, 4);
-    expect(formatRelative(date.getTime(), baseDate.getTime())).toBe("04/04/2014");
+    expect(formatRelative(date.getTime(), baseDate.getTime())).toBe(
+      "04/04/2014",
+    );
   });
 
   it("before the last week", () => {
@@ -64,19 +67,25 @@ describe("formatRelative", () => {
 
   describe("edge cases", () => {
     it("throws RangeError if the date isn't valid", () => {
-      expect(formatRelative.bind(null, new Date(NaN), baseDate)).toThrow(RangeError);
+      expect(formatRelative.bind(null, new Date(NaN), baseDate)).toThrow(
+        RangeError,
+      );
     });
 
     it("throws RangeError if the base date isn't valid", () => {
-      expect(formatRelative.bind(
-        null,
-        new Date(2017, 0 /* Jan */, 1),
-        new Date(NaN),
-      )).toThrow(RangeError);
+      expect(
+        formatRelative.bind(
+          null,
+          new Date(2017, 0 /* Jan */, 1),
+          new Date(NaN),
+        ),
+      ).toThrow(RangeError);
     });
 
     it("throws RangeError if both dates aren't valid", () => {
-      expect(formatRelative.bind(null, new Date(NaN), new Date(NaN))).toThrow(RangeError);
+      expect(formatRelative.bind(null, new Date(NaN), new Date(NaN))).toThrow(
+        RangeError,
+      );
     });
 
     it("handles dates before 100 AD", () => {
@@ -113,6 +122,47 @@ describe("formatRelative", () => {
         },
       );
       expect(result).toBe("It works perfectly!");
+    });
+  });
+
+  it("allows dates to be of different types", () => {
+    function _test<DateType1 extends Date, DateType2 extends Date>(
+      arg1: DateType1 | number | string,
+      arg2: DateType2 | number | string,
+    ) {
+      formatRelative(arg1, arg2);
+    }
+  });
+
+  it("normalizes the dates", () => {
+    const dateLeft = new TZDate(1987, 6, 4, 10, 30, 0, "Asia/Singapore");
+    const dateRight = new TZDate(1986, 3, 4, 10, 30, 0, "America/New_York");
+    expect(formatRelative(dateLeft, dateRight)).toBe("07/04/1987");
+    expect(formatRelative(dateRight, dateLeft)).toBe("04/04/1986");
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      expect(
+        formatRelative("2024-09-03T00:00:00Z", "2024-09-03T16:00:00Z", {
+          in: tz("Asia/Singapore"),
+        }),
+      ).toBe("yesterday at 8:00 AM");
+      expect(
+        formatRelative("2024-09-03T00:00:00Z", "2024-09-03T15:00:00Z", {
+          in: tz("Asia/Singapore"),
+        }),
+      ).toBe("today at 8:00 AM");
+      expect(
+        formatRelative("2024-09-03T00:00:00Z", "2024-09-03T04:00:00Z", {
+          in: tz("America/New_York"),
+        }),
+      ).toBe("yesterday at 8:00 PM");
+      expect(
+        formatRelative("2024-09-03T00:00:00Z", "2024-09-03T03:00:00Z", {
+          in: tz("America/New_York"),
+        }),
+      ).toBe("today at 8:00 PM");
     });
   });
 });

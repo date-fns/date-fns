@@ -202,7 +202,7 @@ export interface IsMatchOptions
  *
  *    `format(new Date(2017, 10, 6), 'do MMMM', {locale: cs}) //=> '6. listopadu'`
  *
- *    `isMatch` will try to match both formatting and stand-alone units interchangably.
+ *    `isMatch` will try to match both formatting and stand-alone units interchangeably.
  *
  * 2. Any sequence of the identical letters is a pattern, unless it is escaped by
  *    the single quote characters (see below).
@@ -251,7 +251,7 @@ export interface IsMatchOptions
  * 6. `YY` and `YYYY` tokens represent week-numbering years but they are often confused with years.
  *    You should enable `options.useAdditionalWeekYearTokens` to use them. See: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
  *
- * 7. `D` and `DD` tokens represent days of the year but they are ofthen confused with days of the month.
+ * 7. `D` and `DD` tokens represent days of the year but they are often confused with days of the month.
  *    You should enable `options.useAdditionalDayOfYearTokens` to use them. See: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
  *
  * 8. `P+` tokens do not have a defined priority since they are merely aliases to other tokens based
@@ -271,8 +271,6 @@ export interface IsMatchOptions
  * The result may vary by locale.
  *
  * If `formatString` matches with `dateString` but does not provides tokens, `referenceDate` will be returned.
- *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
  * @param dateStr - The date string to verify
  * @param format - The string of tokens

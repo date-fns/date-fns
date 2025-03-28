@@ -90,7 +90,7 @@ export function buildMatchFn<
     const key = (
       Array.isArray(parsePatterns)
         ? findIndex(parsePatterns, (pattern) => pattern.test(matchedString))
-        : // eslint-disable-next-line @typescript-eslint/no-explicit-any -- I challange you to fix the type
+        : // [TODO] -- I challenge you to fix the type
           findKey(parsePatterns, (pattern: any) => pattern.test(matchedString))
     ) as Value extends LocaleDayPeriod ? string : number;
 
@@ -98,7 +98,7 @@ export function buildMatchFn<
 
     value = (args.valueCallback ? args.valueCallback(key) : key) as Value;
     value = options.valueCallback
-      ? // eslint-disable-next-line @typescript-eslint/no-explicit-any -- I challange you to fix the type
+      ? // [TODO] -- I challenge you to fix the type
         options.valueCallback(value as any)
       : value;
 

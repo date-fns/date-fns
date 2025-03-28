@@ -1,5 +1,6 @@
-import { transpose } from "../../transpose/index.js";
 import { constructFrom } from "../../constructFrom/index.js";
+import { transpose } from "../../transpose/index.js";
+import type { ContextFn, DateArg } from "../../types.js";
 import type { ParseFlags, ParserOptions } from "./types.js";
 
 const TIMEZONE_UNIT_PRIORITY = 10;
@@ -16,7 +17,7 @@ export abstract class Setter {
   }
 
   public abstract set<DateType extends Date>(
-    utcDate: DateType,
+    date: DateType,
     flags: ParseFlags,
     options: ParserOptions,
   ): DateType | [DateType, ParseFlags];
@@ -27,13 +28,13 @@ export class ValueSetter<Value> extends Setter {
     private value: Value,
 
     private validateValue: <DateType extends Date>(
-      utcDate: DateType,
+      date: DateType,
       value: Value,
       options: ParserOptions,
     ) => boolean,
 
     private setValue: <DateType extends Date>(
-      utcDate: DateType,
+      date: DateType,
       flags: ParseFlags,
       value: Value,
       options: ParserOptions,
@@ -63,11 +64,21 @@ export class ValueSetter<Value> extends Setter {
   }
 }
 
-export class DateToSystemTimezoneSetter extends Setter {
+export class DateTimezoneSetter extends Setter {
   priority = TIMEZONE_UNIT_PRIORITY;
   subPriority = -1;
+  context: ContextFn<Date>;
+
+  constructor(
+    context: ContextFn<Date> | undefined,
+    reference: DateArg<Date> & {},
+  ) {
+    super();
+    this.context = context || ((date) => constructFrom(reference, date));
+  }
+
   set<DateType extends Date>(date: DateType, flags: ParseFlags): DateType {
     if (flags.timestampIsSet) return date;
-    return constructFrom(date, transpose(date, Date));
+    return constructFrom(date, transpose(date, this.context));
   }
 }

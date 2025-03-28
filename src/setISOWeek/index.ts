@@ -1,5 +1,12 @@
 import { getISOWeek } from "../getISOWeek/index.js";
 import { toDate } from "../toDate/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
+
+/**
+ * The {@link setISOWeek} function options.
+ */
+export interface SetISOWeekOptions<DateType extends Date = Date>
+  extends ContextOptions<DateType> {}
 
 /**
  * @name setISOWeek
@@ -12,9 +19,11 @@ import { toDate } from "../toDate/index.js";
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam ResultDate - The `Date` type of the context function.
  *
  * @param date - The date to be changed
  * @param week - The ISO week of the new date
+ * @param options - An object with options
  *
  * @returns The new date with the ISO week set
  *
@@ -23,12 +32,16 @@ import { toDate } from "../toDate/index.js";
  * const result = setISOWeek(new Date(2004, 7, 7), 53)
  * //=> Sat Jan 01 2005 00:00:00
  */
-export function setISOWeek<DateType extends Date>(
-  date: DateType | number | string,
+export function setISOWeek<
+  DateType extends Date,
+  ResultDate extends Date = DateType,
+>(
+  date: DateArg<DateType>,
   week: number,
-): DateType {
-  const _date = toDate(date);
-  const diff = getISOWeek(_date) - week;
+  options?: SetISOWeekOptions<ResultDate>,
+): ResultDate {
+  const _date = toDate(date, options?.in);
+  const diff = getISOWeek(_date, options) - week;
   _date.setDate(_date.getDate() - diff * 7);
   return _date;
 }

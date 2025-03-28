@@ -26,12 +26,10 @@ type enLocaleNumberType =
   | "0";
 
 type enHiLocaleNumberType = {
-  // eslint-disable-next-line no-unused-vars
   [enNumber in enLocaleNumberType]: hiLocaleNumberType;
 };
 
 type hiLocaleEnNumberType = {
-  // eslint-disable-next-line no-unused-vars
   [hiNumber in hiLocaleNumberType]: enLocaleNumberType;
 };
 

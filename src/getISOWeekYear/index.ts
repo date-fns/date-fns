@@ -1,6 +1,12 @@
 import { constructFrom } from "../constructFrom/index.js";
 import { startOfISOWeek } from "../startOfISOWeek/index.js";
 import { toDate } from "../toDate/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
+
+/**
+ * The {@link getISOWeekYear} function options.
+ */
+export interface GetISOWeekYearOptions extends ContextOptions<Date> {}
 
 /**
  * @name getISOWeekYear
@@ -13,8 +19,6 @@ import { toDate } from "../toDate/index.js";
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- *
  * @param date - The given date
  *
  * @returns The ISO week-numbering year
@@ -24,18 +28,19 @@ import { toDate } from "../toDate/index.js";
  * const result = getISOWeekYear(new Date(2005, 0, 2))
  * //=> 2004
  */
-export function getISOWeekYear<DateType extends Date>(
-  date: DateType | number | string,
+export function getISOWeekYear(
+  date: DateArg<Date> & {},
+  options?: GetISOWeekYearOptions | undefined,
 ): number {
-  const _date = toDate(date);
+  const _date = toDate(date, options?.in);
   const year = _date.getFullYear();
 
-  const fourthOfJanuaryOfNextYear = constructFrom(date, 0);
+  const fourthOfJanuaryOfNextYear = constructFrom(_date, 0);
   fourthOfJanuaryOfNextYear.setFullYear(year + 1, 0, 4);
   fourthOfJanuaryOfNextYear.setHours(0, 0, 0, 0);
   const startOfNextYear = startOfISOWeek(fourthOfJanuaryOfNextYear);
 
-  const fourthOfJanuaryOfThisYear = constructFrom(date, 0);
+  const fourthOfJanuaryOfThisYear = constructFrom(_date, 0);
   fourthOfJanuaryOfThisYear.setFullYear(year, 0, 4);
   fourthOfJanuaryOfThisYear.setHours(0, 0, 0, 0);
   const startOfThisYear = startOfISOWeek(fourthOfJanuaryOfThisYear);

@@ -1,6 +1,13 @@
 import { eachWeekendOfInterval } from "../eachWeekendOfInterval/index.js";
 import { endOfMonth } from "../endOfMonth/index.js";
 import { startOfMonth } from "../startOfMonth/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
+
+/**
+ * The {@link eachWeekendOfMonth} function options.
+ */
+export interface EachWeekendOfMonthOptions<DateType extends Date = Date>
+  extends ContextOptions<DateType> {}
 
 /**
  * @name eachWeekendOfMonth
@@ -11,8 +18,10 @@ import { startOfMonth } from "../startOfMonth/index.js";
  * Get all the Saturdays and Sundays in the given month.
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
  *
  * @param date - The given month
+ * @param options - An object with options
  *
  * @returns An array containing all the Saturdays and Sundays
  *
@@ -30,10 +39,14 @@ import { startOfMonth } from "../startOfMonth/index.js";
  * //   Sun Feb 27 2022 00:00:00
  * // ]
  */
-export function eachWeekendOfMonth<DateType extends Date>(
-  date: DateType,
-): DateType[] {
-  const start = startOfMonth(date);
-  const end = endOfMonth(date);
-  return eachWeekendOfInterval({ start, end });
+export function eachWeekendOfMonth<
+  DateType extends Date,
+  ResultDate extends Date = DateType,
+>(
+  date: DateArg<DateType>,
+  options?: EachWeekendOfMonthOptions<ResultDate>,
+): ResultDate[] {
+  const start = startOfMonth(date, options);
+  const end = endOfMonth(date, options);
+  return eachWeekendOfInterval({ start, end }, options);
 }

@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { startOfWeekYear } from "./index.js";
+import { TZDate, tz } from "@date-fns/tz";
+import { assertType } from "../_lib/test/index.js";
+import { UTCDate } from "@date-fns/utc";
 
 describe("startOfWeekYear", () => {
   it("returns the date with the time set to 00:00:00 and the date set to the first day of a week year", () => {
@@ -56,5 +59,67 @@ describe("startOfWeekYear", () => {
       },
     });
     expect(result).toEqual(new Date(2005, 0 /* Jan */, 3, 0, 0, 0, 0));
+  });
+
+  it("resolves the date type by default", () => {
+    const result = startOfWeekYear(Date.now(), {
+      weekStartsOn: 1,
+      firstWeekContainsDate: 4,
+    });
+    expect(result).toBeInstanceOf(Date);
+    assertType<assertType.Equal<Date, typeof result>>(true);
+  });
+
+  it("resolves the argument type if a date extension is passed", () => {
+    const result = startOfWeekYear(new UTCDate(), {
+      weekStartsOn: 1,
+      firstWeekContainsDate: 4,
+    });
+    expect(result).toBeInstanceOf(UTCDate);
+    assertType<assertType.Equal<UTCDate, typeof result>>(true);
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      expect(
+        startOfWeekYear("2023-12-31T15:00:00Z", {
+          weekStartsOn: 1,
+          firstWeekContainsDate: 4,
+          in: tz("Asia/Singapore"),
+        }).toISOString(),
+      ).toBe("2023-01-02T00:00:00.000+08:00");
+      expect(
+        startOfWeekYear("2023-12-31T16:00:00Z", {
+          weekStartsOn: 1,
+          firstWeekContainsDate: 4,
+          in: tz("Asia/Singapore"),
+        }).toISOString(),
+      ).toBe("2024-01-01T00:00:00.000+08:00");
+      expect(
+        startOfWeekYear("2024-01-01T04:00:00Z", {
+          weekStartsOn: 1,
+          firstWeekContainsDate: 4,
+          in: tz("America/New_York"),
+        }).toISOString(),
+      ).toBe("2023-01-02T00:00:00.000-05:00");
+      expect(
+        startOfWeekYear("2024-01-01T05:00:00Z", {
+          weekStartsOn: 1,
+          firstWeekContainsDate: 4,
+          in: tz("America/New_York"),
+        }).toISOString(),
+      ).toBe("2024-01-01T00:00:00.000-05:00");
+    });
+
+    it("resolves the context date type", () => {
+      const date = new Date("2014-09-01T00:00:00Z");
+      const result = startOfWeekYear(date, {
+        weekStartsOn: 1,
+        firstWeekContainsDate: 4,
+        in: tz("Asia/Tokyo"),
+      });
+      expect(result).toBeInstanceOf(TZDate);
+      assertType<assertType.Equal<TZDate, typeof result>>(true);
+    });
   });
 });

@@ -1,5 +1,12 @@
+import { constructFrom } from "../constructFrom/index.js";
 import { constructNow } from "../constructNow/index.js";
 import { isSameQuarter } from "../isSameQuarter/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
+
+/**
+ * The {@link isThisQuarter} function options.
+ */
+export interface IsThisQuarterOptions extends ContextOptions<Date> {}
 
 /**
  * @name isThisQuarter
@@ -10,9 +17,8 @@ import { isSameQuarter } from "../isSameQuarter/index.js";
  * @description
  * Is the given date in the same quarter as the current date?
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- *
  * @param date - The date to check
+ * @param options - An object with options
  *
  * @returns The date is in this quarter
  *
@@ -21,8 +27,12 @@ import { isSameQuarter } from "../isSameQuarter/index.js";
  * const result = isThisQuarter(new Date(2014, 6, 2))
  * //=> true
  */
-export function isThisQuarter<DateType extends Date>(
-  date: DateType | number | string,
+export function isThisQuarter(
+  date: DateArg<Date> & {},
+  options?: IsThisQuarterOptions,
 ): boolean {
-  return isSameQuarter(date, constructNow(date));
+  return isSameQuarter(
+    constructFrom(options?.in || date, date),
+    constructNow(options?.in || date),
+  );
 }

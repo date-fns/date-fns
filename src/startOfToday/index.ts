@@ -1,4 +1,11 @@
 import { startOfDay } from "../startOfDay/index.js";
+import type { ContextOptions } from "../types.js";
+
+/**
+ * The {@link startOfToday} function options.
+ */
+export interface StartOfTodayOptions<DateType extends Date = Date>
+  extends ContextOptions<DateType> {}
 
 /**
  * @name startOfToday
@@ -9,6 +16,10 @@ import { startOfDay } from "../startOfDay/index.js";
  * @description
  * Return the start of today.
  *
+ * @typeParam ContextDate - The `Date` type of the context function.
+ *
+ * @param options - An object with options
+ *
  * @returns The start of today
  *
  * @example
@@ -16,6 +27,8 @@ import { startOfDay } from "../startOfDay/index.js";
  * const result = startOfToday()
  * //=> Mon Oct 6 2014 00:00:00
  */
-export function startOfToday(): Date {
-  return startOfDay(Date.now());
+export function startOfToday<ContextDate extends Date>(
+  options?: StartOfTodayOptions<ContextDate> | undefined,
+): ContextDate {
+  return startOfDay(Date.now(), options);
 }

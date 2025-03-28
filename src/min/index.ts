@@ -1,4 +1,12 @@
+import { constructFrom } from "../constructFrom/index.js";
 import { toDate } from "../toDate/index.js";
+import type { ContextFn, ContextOptions, DateArg } from "../types.js";
+
+/**
+ * The {@link min} function options.
+ */
+export interface MinOptions<DateType extends Date = Date>
+  extends ContextOptions<DateType> {}
 
 /**
  * @name min
@@ -9,6 +17,7 @@ import { toDate } from "../toDate/index.js";
  * Returns the earliest of the given dates.
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
  *
  * @param dates - The dates to compare
  *
@@ -24,17 +33,21 @@ import { toDate } from "../toDate/index.js";
  * ])
  * //=> Wed Feb 11 1987 00:00:00
  */
-export function min<DateType extends Date>(
-  dates: Array<DateType | number | string>,
-): DateType | Date {
-  let result: Date | undefined;
+export function min<DateType extends Date, ResultDate extends Date = DateType>(
+  dates: Array<DateArg<DateType>>,
+  options?: MinOptions<ResultDate> | undefined,
+): ResultDate {
+  let result: ResultDate | undefined;
+  let context = options?.in;
 
-  dates.forEach((dirtyDate) => {
-    const date = toDate(dirtyDate);
-    if (!result || result > date || isNaN(+date)) {
-      result = date;
-    }
+  dates.forEach((date) => {
+    // Use the first date object as the context function
+    if (!context && typeof date === "object")
+      context = constructFrom.bind(null, date) as ContextFn<ResultDate>;
+
+    const date_ = toDate(date, context);
+    if (!result || result > date_ || isNaN(+date_)) result = date_;
   });
 
-  return result || new Date(NaN);
+  return constructFrom(context, result || NaN);
 }

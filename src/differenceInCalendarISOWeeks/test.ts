@@ -1,4 +1,6 @@
+import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
+import type { ContextOptions, DateArg } from "../types.js";
 import { differenceInCalendarISOWeeks } from "./index.js";
 
 describe("differenceInCalendarISOWeeks", () => {
@@ -100,5 +102,50 @@ describe("differenceInCalendarISOWeeks", () => {
   it("returns NaN if the both dates are `Invalid Date`", () => {
     const result = differenceInCalendarISOWeeks(new Date(NaN), new Date(NaN));
     expect(isNaN(result)).toBe(true);
+  });
+
+  it("allows dates to be of different types", () => {
+    function _test<DateType1 extends Date, DateType2 extends Date>(
+      arg1: DateType1 | number | string,
+      arg2: DateType2 | number | string,
+    ) {
+      differenceInCalendarISOWeeks(arg1, arg2);
+    }
+  });
+
+  it("normalizes the dates", () => {
+    const dateLeft = new TZDate(2024, 8, 2, "Asia/Singapore");
+    const dateRight = new TZDate(2024, 5, 3, "America/New_York");
+    expect(differenceInCalendarISOWeeks(dateLeft, dateRight)).toBe(13);
+    expect(differenceInCalendarISOWeeks(dateRight, dateLeft)).toBe(-12);
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      expect(
+        differenceInCalendarISOWeeks(
+          "2024-08-19T03:00:00Z",
+          "2024-08-01T00:00:00Z",
+          { in: tz("America/New_York") },
+        ),
+      ).toBe(2);
+      expect(
+        differenceInCalendarISOWeeks(
+          "2024-08-19T04:00:00Z",
+          "2024-08-01T00:00:00Z",
+          { in: tz("America/New_York") },
+        ),
+      ).toBe(3);
+    });
+
+    it("context doesn't enforce argument and context to be of the same type", () => {
+      function _test<DateType extends Date, ResultDate extends Date = DateType>(
+        arg1: DateArg<DateType>,
+        arg2: DateArg<DateType>,
+        options?: ContextOptions<ResultDate>,
+      ) {
+        differenceInCalendarISOWeeks(arg1, arg2, { in: options?.in });
+      }
+    });
   });
 });

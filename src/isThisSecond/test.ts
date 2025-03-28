@@ -1,19 +1,10 @@
 import { UTCDate } from "@date-fns/utc";
-import sinon from "sinon";
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { describe, expect, it } from "vitest";
+import { fakeDate } from "../_lib/test/index.js";
 import { isThisSecond } from "./index.js";
 
 describe("isThisSecond", () => {
-  let clock: sinon.SinonFakeTimers;
-  beforeEach(() => {
-    clock = sinon.useFakeTimers(
-      new Date(2014, 8 /* Sep */, 25, 18, 30, 15, 500).getTime(),
-    );
-  });
-
-  afterEach(() => {
-    clock.restore();
-  });
+  fakeDate(new Date(2014, 8 /* Sep */, 25, 18, 30, 15, 500));
 
   it("returns true if the given date and the current date have the same second", () => {
     const date = new Date(2014, 8 /* Sep */, 25, 18, 30, 15);

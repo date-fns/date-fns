@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { yearsToDays } from "./index";
+import { yearsToDays } from "./index.js";
 
 describe("yearsToDays", () => {
   it("converts years to days", () => {

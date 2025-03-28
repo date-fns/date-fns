@@ -1,4 +1,4 @@
-🎉️ **NEW**: [date-fns v3 is out!](https://blog.date-fns.org/v3-is-out/)
+🔥️ **NEW**: [date-fns v4.0 with first-class time zone support is out!](https://blog.date-fns.org/v40-with-time-zone-support/)
 
 <img alt="date-fns" title="date-fns" src="https://raw.githubusercontent.com/date-fns/date-fns/master/docs/logotype.svg" width="150" />
 
@@ -52,7 +52,6 @@ npm install date-fns --save
 and other docs.
 
 <br />
-<!-- END OF README-JOB SECTION -->
 
 ## License
 

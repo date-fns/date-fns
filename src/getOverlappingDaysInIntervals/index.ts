@@ -16,10 +16,9 @@ import type { Interval } from "../types.js";
  * Two equal 0-length intervals will result in 0. Two equal 1ms intervals will
  * result in 1.
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- *
  * @param intervalLeft - The first interval to compare.
  * @param intervalRight - The second interval to compare.
+ * @param options - An object with options
  *
  * @returns The number of days that overlap in two time intervals
  *
@@ -40,9 +39,9 @@ import type { Interval } from "../types.js";
  * //=> 0
  */
 
-export function getOverlappingDaysInIntervals<DateType extends Date>(
-  intervalLeft: Interval<DateType>,
-  intervalRight: Interval<DateType>,
+export function getOverlappingDaysInIntervals(
+  intervalLeft: Interval,
+  intervalRight: Interval,
 ): number {
   const [leftStart, leftEnd] = [
     +toDate(intervalLeft.start),

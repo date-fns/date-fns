@@ -1,5 +1,7 @@
+import { TZDate, tz } from "@date-fns/tz";
+import { UTCDate } from "@date-fns/utc";
 import { describe, expect, it } from "vitest";
-
+import { assertType } from "../_lib/test/index.js";
 import { eachMinuteOfInterval } from "./index.js";
 
 describe("eachMinuteOfInterval", () => {
@@ -19,7 +21,7 @@ describe("eachMinuteOfInterval", () => {
     ]);
   });
 
-  it("should handle all the minutes that are not in the begining", () => {
+  it("should handle all the minutes that are not in the beginning", () => {
     const result = eachMinuteOfInterval({
       start: new Date(2020, 10, 14, 13, 0, 33),
       end: new Date(2020, 10, 14, 13, 2),
@@ -154,6 +156,115 @@ describe("eachMinuteOfInterval", () => {
     it("returns empty array if `options.step` is NaN", () => {
       const result = eachMinuteOfInterval(interval, { step: NaN });
       expect(result).toEqual([]);
+    });
+  });
+
+  it("resolves the date type by default", () => {
+    const interval = {
+      start: Date.now(),
+      end: Date.now(),
+    };
+    const result = eachMinuteOfInterval(interval);
+    expect(result[0]).toBeInstanceOf(Date);
+    assertType<assertType.Equal<Date[], typeof result>>(true);
+  });
+
+  it("resolves the start date object type", () => {
+    const interval = {
+      start: new TZDate("2024-09-01T00:00:00Z"),
+      end: new UTCDate("2024-09-01T00:05:00Z"),
+    };
+    const result = eachMinuteOfInterval(interval);
+    expect(result[0]).toBeInstanceOf(TZDate);
+    assertType<assertType.Equal<TZDate[], typeof result>>(true);
+  });
+
+  it("resolves the end date object type if the start isn't object", () => {
+    const interval = {
+      start: Date.now(),
+      end: new UTCDate("2024-09-01T00:00:00Z"),
+    };
+    const result = eachMinuteOfInterval(interval);
+    expect(result[0]).toBeInstanceOf(UTCDate);
+    assertType<assertType.Equal<UTCDate[], typeof result>>(true);
+  });
+
+  it("normalizes the dates", () => {
+    const dateLeft = new TZDate(2024, 8, 9, 6, 40, "America/New_York");
+    const dateRight = new TZDate(2024, 8, 9, 16, 15, "Asia/Kolkata");
+    expect(
+      eachMinuteOfInterval({ start: dateLeft, end: dateRight }).map((d) =>
+        d.toISOString(),
+      ),
+    ).toEqual([
+      "2024-09-09T06:40:00.000-04:00",
+      "2024-09-09T06:41:00.000-04:00",
+      "2024-09-09T06:42:00.000-04:00",
+      "2024-09-09T06:43:00.000-04:00",
+      "2024-09-09T06:44:00.000-04:00",
+      "2024-09-09T06:45:00.000-04:00",
+    ]);
+    expect(
+      eachMinuteOfInterval({ start: dateRight, end: dateLeft }).map((d) =>
+        d.toISOString(),
+      ),
+    ).toEqual([
+      "2024-09-09T16:15:00.000+05:30",
+      "2024-09-09T16:14:00.000+05:30",
+      "2024-09-09T16:13:00.000+05:30",
+      "2024-09-09T16:12:00.000+05:30",
+      "2024-09-09T16:11:00.000+05:30",
+      "2024-09-09T16:10:00.000+05:30",
+    ]);
+  });
+
+  it("allows dates to be of different types", () => {
+    function _test<DateType1 extends Date, DateType2 extends Date>(
+      start: DateType1 | number | string,
+      end: DateType2 | number | string,
+    ) {
+      eachMinuteOfInterval({ start, end });
+    }
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      const interval = {
+        start: "2024-04-10T07:00:00Z",
+        end: "2024-04-10T07:03:00Z",
+      };
+      expect(
+        eachMinuteOfInterval(interval, { in: tz("America/Los_Angeles") }).map(
+          (date) => date.toISOString(),
+        ),
+      ).toEqual([
+        "2024-04-10T00:00:00.000-07:00",
+        "2024-04-10T00:01:00.000-07:00",
+        "2024-04-10T00:02:00.000-07:00",
+        "2024-04-10T00:03:00.000-07:00",
+      ]);
+      expect(
+        eachMinuteOfInterval(interval, { in: tz("Asia/Singapore") }).map(
+          (date) => date.toISOString(),
+        ),
+      ).toEqual([
+        "2024-04-10T15:00:00.000+08:00",
+        "2024-04-10T15:01:00.000+08:00",
+        "2024-04-10T15:02:00.000+08:00",
+        "2024-04-10T15:03:00.000+08:00",
+      ]);
+    });
+
+    it("resolves the context date type", () => {
+      const interval = {
+        start: new Date("2014-09-01T13:00:00Z"),
+        end: new Date("2014-09-01T13:02:00Z"),
+      };
+      const result = eachMinuteOfInterval(interval, {
+        in: tz("Asia/Tokyo"),
+      });
+      expect(result[0]).toBeInstanceOf(TZDate);
+      assertType<assertType.Equal<TZDate[], typeof result>>(true);
     });
   });
 });

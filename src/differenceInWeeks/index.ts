@@ -1,11 +1,13 @@
 import { getRoundingMethod } from "../_lib/getRoundingMethod/index.js";
 import { differenceInDays } from "../differenceInDays/index.js";
-import type { RoundingOptions } from "../types.js";
+import type { ContextOptions, DateArg, RoundingOptions } from "../types.js";
 
 /**
  * The {@link differenceInWeeks} function options.
  */
-export interface DifferenceInWeeksOptions extends RoundingOptions {}
+export interface DifferenceInWeeksOptions
+  extends RoundingOptions,
+    ContextOptions<Date> {}
 
 /**
  * @name differenceInWeeks
@@ -23,10 +25,8 @@ export interface DifferenceInWeeksOptions extends RoundingOptions {}
  * To ignore DST and only measure exact 7*24-hour periods, use this instead:
  * `Math.trunc(differenceInHours(dateLeft, dateRight)/(7*24))|0`.
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- *
- * @param dateLeft - The later date
- * @param dateRight - The earlier date
+ * @param laterDate - The later date
+ * @param earlierDate - The earlier date
  * @param options - An object with options
  *
  * @returns The number of full weeks
@@ -49,11 +49,11 @@ export interface DifferenceInWeeksOptions extends RoundingOptions {}
  * )
  * //=> 8
  */
-export function differenceInWeeks<DateType extends Date>(
-  dateLeft: DateType | number | string,
-  dateRight: DateType | number | string,
-  options?: DifferenceInWeeksOptions,
+export function differenceInWeeks(
+  laterDate: DateArg<Date> & {},
+  earlierDate: DateArg<Date> & {},
+  options?: DifferenceInWeeksOptions | undefined,
 ): number {
-  const diff = differenceInDays(dateLeft, dateRight) / 7;
+  const diff = differenceInDays(laterDate, earlierDate, options) / 7;
   return getRoundingMethod(options?.roundingMethod)(diff);
 }

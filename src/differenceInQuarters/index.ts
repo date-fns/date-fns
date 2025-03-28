@@ -1,11 +1,13 @@
 import { getRoundingMethod } from "../_lib/getRoundingMethod/index.js";
 import { differenceInMonths } from "../differenceInMonths/index.js";
-import type { RoundingOptions } from "../types.js";
+import type { ContextOptions, DateArg, RoundingOptions } from "../types.js";
 
 /**
  * The {@link differenceInQuarters} function options.
  */
-export interface DifferenceInQuartersOptions extends RoundingOptions {}
+export interface DifferenceInQuartersOptions
+  extends RoundingOptions,
+    ContextOptions<Date> {}
 
 /**
  * @name differenceInQuarters
@@ -15,10 +17,8 @@ export interface DifferenceInQuartersOptions extends RoundingOptions {}
  * @description
  * Get the number of quarters between the given dates.
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- *
- * @param dateLeft - The later date
- * @param dateRight - The earlier date
+ * @param laterDate - The later date
+ * @param earlierDate - The earlier date
  * @param options - An object with options.
  *
  * @returns The number of full quarters
@@ -28,11 +28,11 @@ export interface DifferenceInQuartersOptions extends RoundingOptions {}
  * const result = differenceInQuarters(new Date(2014, 6, 2), new Date(2013, 11, 31))
  * //=> 2
  */
-export function differenceInQuarters<DateType extends Date>(
-  dateLeft: DateType | number | string,
-  dateRight: DateType | number | string,
-  options?: DifferenceInQuartersOptions,
+export function differenceInQuarters(
+  laterDate: DateArg<Date> & {},
+  earlierDate: DateArg<Date> & {},
+  options?: DifferenceInQuartersOptions | undefined,
 ): number {
-  const diff = differenceInMonths(dateLeft, dateRight) / 3;
+  const diff = differenceInMonths(laterDate, earlierDate, options) / 3;
   return getRoundingMethod(options?.roundingMethod)(diff);
 }

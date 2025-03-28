@@ -1,16 +1,9 @@
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
-import sinon from "sinon";
+import { describe, expect, it } from "vitest";
+import { fakeDate } from "../_lib/test/index.js";
 import { isFuture } from "./index.js";
 
 describe("isFuture", () => {
-  let clock: sinon.SinonFakeTimers;
-  beforeEach(() => {
-    clock = sinon.useFakeTimers(new Date(2014, 8 /* Sep */, 25).getTime());
-  });
-
-  afterEach(() => {
-    clock.restore();
-  });
+  fakeDate(new Date(2014, 8 /* Sep */, 25));
 
   it("returns true if the given date is in the future", () => {
     const result = isFuture(new Date(2014, 9 /* Oct */, 31));

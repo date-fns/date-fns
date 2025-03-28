@@ -23,9 +23,8 @@ async function main() {
       if (ref.kind !== "function") return;
 
       const name = ref.ref.name;
-      const hasOptions = !!ref.fn.signatures?.find(
-        (singature: any) =>
-          singature.parameters?.find((p: any) => p.name === "options"),
+      const hasOptions = !!ref.fn.signatures?.find((signature: any) =>
+        signature.parameters?.find((p: any) => p.name === "options"),
       );
       const fnArity =
         ref.fn.signatures?.reduce<number>(
@@ -67,7 +66,7 @@ async function main() {
 async function exists(filePath: string) {
   try {
     await stat(filePath);
-  } catch (err) {
+  } catch (_err) {
     return false;
   }
   return true;

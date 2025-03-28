@@ -1,4 +1,10 @@
 import { toDate } from "../toDate/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
+
+/**
+ * The {@link getMinutes} function options.
+ */
+export interface GetMinutesOptions extends ContextOptions<Date> {}
 
 /**
  * @name getMinutes
@@ -8,9 +14,8 @@ import { toDate } from "../toDate/index.js";
  * @description
  * Get the minutes of the given date.
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- *
  * @param date - The given date
+ * @param options - The options
  *
  * @returns The minutes
  *
@@ -19,10 +24,9 @@ import { toDate } from "../toDate/index.js";
  * const result = getMinutes(new Date(2012, 1, 29, 11, 45, 5))
  * //=> 45
  */
-export function getMinutes<DateType extends Date>(
-  date: DateType | number | string,
+export function getMinutes(
+  date: DateArg<Date> & {},
+  options?: GetMinutesOptions | undefined,
 ): number {
-  const _date = toDate(date);
-  const minutes = _date.getMinutes();
-  return minutes;
+  return toDate(date, options?.in).getMinutes();
 }

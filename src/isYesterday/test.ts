@@ -1,17 +1,12 @@
+import { tz } from "@date-fns/tz";
 import { UTCDate } from "@date-fns/utc";
-import sinon from "sinon";
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { describe, expect, it } from "vitest";
+import { fakeDate } from "../_lib/test/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
 import { isYesterday } from "./index.js";
 
 describe("isYesterday", () => {
-  let clock: sinon.SinonFakeTimers;
-  beforeEach(() => {
-    clock = sinon.useFakeTimers(new Date(2014, 8 /* Aug */, 25).getTime());
-  });
-
-  afterEach(() => {
-    clock.restore();
-  });
+  const { fakeNow } = fakeDate(new Date(2014, 8 /* Sep */, 25));
 
   it("returns true if the given date is yesterday", () => {
     const result = isYesterday(new Date(2014, 8 /* Sep */, 24));
@@ -29,8 +24,29 @@ describe("isYesterday", () => {
   });
 
   it("respects date extensions", () => {
-    expect(isYesterday(new UTCDate(+new Date(2014, 8 /* Aug */, 24)))).toBe(
+    expect(isYesterday(new UTCDate(+new Date(2014, 8 /* Sep */, 24)))).toBe(
       true,
     );
+  });
+
+  describe("context", () => {
+    it("allows to specify the context", () => {
+      fakeNow(new Date("2024-08-18T15:00:00Z"));
+      expect(
+        isYesterday("2024-08-17T04:00:00Z", { in: tz("America/New_York") }),
+      ).toBe(true);
+      expect(
+        isYesterday("2024-08-17T03:00:00Z", { in: tz("America/New_York") }),
+      ).toBe(false);
+    });
+
+    it("doesn't enforce argument and context to be of the same type", () => {
+      function _test<DateType extends Date, ResultDate extends Date = DateType>(
+        arg: DateArg<DateType>,
+        options?: ContextOptions<ResultDate>,
+      ) {
+        isYesterday(arg, { in: options?.in });
+      }
+    });
   });
 });

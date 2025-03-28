@@ -34,8 +34,6 @@ const defaultFormat: DurationUnit[] = [
  * @description
  * Return human-readable duration string i.e. "9 months 2 days"
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- *
  * @param duration - The duration to format
  * @param options - An object with options.
  *

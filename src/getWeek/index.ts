@@ -3,6 +3,8 @@ import { startOfWeek } from "../startOfWeek/index.js";
 import { startOfWeekYear } from "../startOfWeekYear/index.js";
 import { toDate } from "../toDate/index.js";
 import type {
+  ContextOptions,
+  DateArg,
   FirstWeekContainsDateOptions,
   LocalizedOptions,
   WeekOptions,
@@ -14,7 +16,8 @@ import type {
 export interface GetWeekOptions
   extends LocalizedOptions<"options">,
     WeekOptions,
-    FirstWeekContainsDateOptions {}
+    FirstWeekContainsDateOptions,
+    ContextOptions<Date> {}
 
 /**
  * @name getWeek
@@ -29,8 +32,6 @@ export interface GetWeekOptions
  * the first week of the week-numbering year)
  *
  * Week numbering: https://en.wikipedia.org/wiki/Week#The_ISO_week_date_system
- *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
  * @param date - The given date
  * @param options - An object with options
@@ -52,12 +53,11 @@ export interface GetWeekOptions
  * })
  * //=> 53
  */
-
-export function getWeek<DateType extends Date>(
-  date: DateType | number | string,
-  options?: GetWeekOptions,
+export function getWeek(
+  date: DateArg<Date> & {},
+  options?: GetWeekOptions | undefined,
 ): number {
-  const _date = toDate(date);
+  const _date = toDate(date, options?.in);
   const diff = +startOfWeek(_date, options) - +startOfWeekYear(_date, options);
 
   // Round the number of weeks to the nearest integer because the number of

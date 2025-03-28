@@ -1,4 +1,10 @@
 import { toDate } from "../toDate/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
+
+/**
+ * The {@link isFirstDayOfMonth} function options.
+ */
+export interface IsFirstDayOfMonthOptions extends ContextOptions<Date> {}
 
 /**
  * @name isFirstDayOfMonth
@@ -8,10 +14,9 @@ import { toDate } from "../toDate/index.js";
  * @description
  * Is the given date the first day of a month?
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- *
  * @param date - The date to check
-
+ * @param options - An object with options
+ *
  * @returns The date is the first day of a month
  *
  * @example
@@ -19,8 +24,9 @@ import { toDate } from "../toDate/index.js";
  * const result = isFirstDayOfMonth(new Date(2014, 8, 1))
  * //=> true
  */
-export function isFirstDayOfMonth<DateType extends Date>(
-  date: DateType | number | string,
+export function isFirstDayOfMonth(
+  date: DateArg<Date> & {},
+  options?: IsFirstDayOfMonthOptions | undefined,
 ): boolean {
-  return toDate(date).getDate() === 1;
+  return toDate(date, options?.in).getDate() === 1;
 }

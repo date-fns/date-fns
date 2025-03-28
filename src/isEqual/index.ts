@@ -1,4 +1,5 @@
 import { toDate } from "../toDate/index.js";
+import type { DateArg } from "../types.js";
 
 /**
  * @name isEqual
@@ -7,8 +8,6 @@ import { toDate } from "../toDate/index.js";
  *
  * @description
  * Are the given dates equal?
- *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
  * @param dateLeft - The first date to compare
  * @param dateRight - The second date to compare
@@ -23,11 +22,9 @@ import { toDate } from "../toDate/index.js";
  * )
  * //=> false
  */
-export function isEqual<DateType extends Date>(
-  leftDate: DateType | number | string,
-  rightDate: DateType | number | string,
+export function isEqual(
+  leftDate: DateArg<Date> & {},
+  rightDate: DateArg<Date> & {},
 ): boolean {
-  const _dateLeft = toDate(leftDate);
-  const _dateRight = toDate(rightDate);
-  return +_dateLeft === +_dateRight;
+  return +toDate(leftDate) === +toDate(rightDate);
 }

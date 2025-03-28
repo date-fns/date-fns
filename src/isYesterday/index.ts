@@ -1,6 +1,13 @@
+import { constructFrom } from "../constructFrom/index.js";
 import { constructNow } from "../constructNow/index.js";
 import { isSameDay } from "../isSameDay/index.js";
 import { subDays } from "../subDays/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
+
+/**
+ * The {@link isYesterday} function options.
+ */
+export interface IsYesterdayOptions extends ContextOptions<Date> {}
 
 /**
  * @name isYesterday
@@ -11,9 +18,8 @@ import { subDays } from "../subDays/index.js";
  * @description
  * Is the given date yesterday?
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- *
  * @param date - The date to check
+ * @param options - An object with options
  *
  * @returns The date is yesterday
  *
@@ -22,8 +28,12 @@ import { subDays } from "../subDays/index.js";
  * const result = isYesterday(new Date(2014, 9, 5, 14, 0))
  * //=> true
  */
-export function isYesterday<DateType extends Date>(
-  date: DateType | number | string,
+export function isYesterday(
+  date: DateArg<Date> & {},
+  options?: IsYesterdayOptions | undefined,
 ): boolean {
-  return isSameDay(date, subDays(constructNow(date), 1));
+  return isSameDay(
+    constructFrom(options?.in || date, date),
+    subDays(constructNow(options?.in || date), 1),
+  );
 }

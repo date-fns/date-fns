@@ -1,4 +1,11 @@
-import { toDate } from "../toDate/index.js";
+import { normalizeDates } from "../_lib/normalizeDates/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
+
+/**
+ * The {@link differenceInCalendarMonths} function options.
+ */
+export interface DifferenceInCalendarMonthsOptions
+  extends ContextOptions<Date> {}
 
 /**
  * @name differenceInCalendarMonths
@@ -8,10 +15,9 @@ import { toDate } from "../toDate/index.js";
  * @description
  * Get the number of calendar months between the given dates.
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- *
- * @param dateLeft - The later date
- * @param dateRight - The earlier date
+ * @param laterDate - The later date
+ * @param earlierDate - The earlier date
+ * @param options - An object with options
  *
  * @returns The number of calendar months
  *
@@ -23,15 +29,19 @@ import { toDate } from "../toDate/index.js";
  * )
  * //=> 8
  */
-export function differenceInCalendarMonths<DateType extends Date>(
-  dateLeft: DateType | number | string,
-  dateRight: DateType | number | string,
+export function differenceInCalendarMonths(
+  laterDate: DateArg<Date> & {},
+  earlierDate: DateArg<Date> & {},
+  options?: DifferenceInCalendarMonthsOptions | undefined,
 ): number {
-  const _dateLeft = toDate(dateLeft);
-  const _dateRight = toDate(dateRight);
+  const [laterDate_, earlierDate_] = normalizeDates(
+    options?.in,
+    laterDate,
+    earlierDate,
+  );
 
-  const yearDiff = _dateLeft.getFullYear() - _dateRight.getFullYear();
-  const monthDiff = _dateLeft.getMonth() - _dateRight.getMonth();
+  const yearsDiff = laterDate_.getFullYear() - earlierDate_.getFullYear();
+  const monthsDiff = laterDate_.getMonth() - earlierDate_.getMonth();
 
-  return yearDiff * 12 + monthDiff;
+  return yearsDiff * 12 + monthsDiff;
 }

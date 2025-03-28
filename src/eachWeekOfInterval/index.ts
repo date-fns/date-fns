@@ -1,7 +1,9 @@
+import { normalizeInterval } from "../_lib/normalizeInterval/index.js";
 import { addWeeks } from "../addWeeks/index.js";
+import { constructFrom } from "../constructFrom/index.js";
 import { startOfWeek } from "../startOfWeek/index.js";
-import { toDate } from "../toDate/index.js";
 import type {
+  ContextOptions,
   Interval,
   LocalizedOptions,
   StepOptions,
@@ -11,10 +13,29 @@ import type {
 /**
  * The {@link eachWeekOfInterval} function options.
  */
-export interface EachWeekOfIntervalOptions
+export interface EachWeekOfIntervalOptions<DateType extends Date = Date>
   extends StepOptions,
     WeekOptions,
-    LocalizedOptions<"options"> {}
+    LocalizedOptions<"options">,
+    ContextOptions<DateType> {}
+
+/**
+ * The {@link eachWeekOfInterval} function result type. It resolves the proper data type.
+ * It uses the first argument date object type, starting from the interval start date,
+ * then the end interval date. If a context function is passed, it uses the context function return type.
+ */
+export type EachWeekOfIntervalResult<
+  IntervalType extends Interval,
+  Options extends EachWeekOfIntervalOptions | undefined,
+> = Array<
+  Options extends EachWeekOfIntervalOptions<infer DateType>
+    ? DateType
+    : IntervalType["start"] extends Date
+      ? IntervalType["start"]
+      : IntervalType["end"] extends Date
+        ? IntervalType["end"]
+        : Date
+>;
 
 /**
  * @name eachWeekOfInterval
@@ -23,8 +44,6 @@ export interface EachWeekOfIntervalOptions
  *
  * @description
  * Return the array of weeks within the specified time interval.
- *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
  * @param interval - The interval.
  * @param options - An object with options.
@@ -48,22 +67,23 @@ export interface EachWeekOfIntervalOptions
  * //   Sun Nov 23 2014 00:00:00
  * // ]
  */
-export function eachWeekOfInterval<DateType extends Date>(
-  interval: Interval<DateType>,
-  options?: EachWeekOfIntervalOptions,
-): DateType[] {
-  const startDate = toDate(interval.start);
-  const endDate = toDate(interval.end);
+export function eachWeekOfInterval<
+  IntervalType extends Interval,
+  Options extends EachWeekOfIntervalOptions | undefined = undefined,
+>(
+  interval: IntervalType,
+  options?: Options,
+): EachWeekOfIntervalResult<IntervalType, Options> {
+  const { start, end } = normalizeInterval(options?.in, interval);
 
-  let reversed = +startDate > +endDate;
+  let reversed = +start > +end;
   const startDateWeek = reversed
-    ? startOfWeek(endDate, options)
-    : startOfWeek(startDate, options);
+    ? startOfWeek(end, options)
+    : startOfWeek(start, options);
   const endDateWeek = reversed
-    ? startOfWeek(startDate, options)
-    : startOfWeek(endDate, options);
+    ? startOfWeek(start, options)
+    : startOfWeek(end, options);
 
-  // Some timezones switch DST at midnight, making start of day unreliable in these timezones, 3pm is a safe bet
   startDateWeek.setHours(15);
   endDateWeek.setHours(15);
 
@@ -77,11 +97,11 @@ export function eachWeekOfInterval<DateType extends Date>(
     reversed = !reversed;
   }
 
-  const dates = [];
+  const dates: EachWeekOfIntervalResult<IntervalType, Options> = [];
 
   while (+currentDate <= endTime) {
     currentDate.setHours(0);
-    dates.push(toDate(currentDate));
+    dates.push(constructFrom(start, currentDate));
     currentDate = addWeeks(currentDate, step);
     currentDate.setHours(15);
   }

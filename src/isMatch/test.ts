@@ -12,8 +12,10 @@ describe("isMatch", () => {
   });
 
   it("accepts a date & format with locale", () => {
-    expect(isMatch("28-a de februaro", "do 'de' MMMM", {
-      locale: eo,
-    })).toBe(true);
+    expect(
+      isMatch("28-a de februaro", "do 'de' MMMM", {
+        locale: eo,
+      }),
+    ).toBe(true);
   });
 });

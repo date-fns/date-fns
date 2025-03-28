@@ -1,5 +1,12 @@
+import { normalizeDates } from "../_lib/normalizeDates/index.js";
 import { getQuarter } from "../getQuarter/index.js";
-import { toDate } from "../toDate/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
+
+/**
+ * The {@link differenceInCalendarQuarters} function options.
+ */
+export interface DifferenceInCalendarQuartersOptions
+  extends ContextOptions<Date> {}
 
 /**
  * @name differenceInCalendarQuarters
@@ -9,11 +16,10 @@ import { toDate } from "../toDate/index.js";
  * @description
  * Get the number of calendar quarters between the given dates.
  *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @param laterDate - The later date
+ * @param earlierDate - The earlier date
+ * @param options - An object with options
  *
- * @param dateLeft - The later date
- * @param dateRight - The earlier date
-
  * @returns The number of calendar quarters
  *
  * @example
@@ -24,15 +30,19 @@ import { toDate } from "../toDate/index.js";
  * )
  * //=> 3
  */
-export function differenceInCalendarQuarters<DateType extends Date>(
-  dateLeft: DateType | number | string,
-  dateRight: DateType | number | string,
+export function differenceInCalendarQuarters(
+  laterDate: DateArg<Date> & {},
+  earlierDate: DateArg<Date> & {},
+  options?: DifferenceInCalendarQuartersOptions | undefined,
 ): number {
-  const _dateLeft = toDate(dateLeft);
-  const _dateRight = toDate(dateRight);
+  const [laterDate_, earlierDate_] = normalizeDates(
+    options?.in,
+    laterDate,
+    earlierDate,
+  );
 
-  const yearDiff = _dateLeft.getFullYear() - _dateRight.getFullYear();
-  const quarterDiff = getQuarter(_dateLeft) - getQuarter(_dateRight);
+  const yearsDiff = laterDate_.getFullYear() - earlierDate_.getFullYear();
+  const quartersDiff = getQuarter(laterDate_) - getQuarter(earlierDate_);
 
-  return yearDiff * 4 + quarterDiff;
+  return yearsDiff * 4 + quartersDiff;
 }

@@ -1,4 +1,11 @@
 import { toDate } from "../toDate/index.js";
+import type { DateArg, ContextOptions } from "../types.js";
+
+/**
+ * The {@link startOfSecond} function options.
+ */
+export interface StartOfSecondOptions<DateType extends Date = Date>
+  extends ContextOptions<DateType> {}
 
 /**
  * @name startOfSecond
@@ -10,8 +17,10 @@ import { toDate } from "../toDate/index.js";
  * The result will be in the local timezone.
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
  *
  * @param date - The original date
+ * @param options - The options
  *
  * @returns The start of a second
  *
@@ -20,10 +29,14 @@ import { toDate } from "../toDate/index.js";
  * const result = startOfSecond(new Date(2014, 11, 1, 22, 15, 45, 400))
  * //=> Mon Dec 01 2014 22:15:45.000
  */
-export function startOfSecond<DateType extends Date>(
-  date: DateType | number | string,
-): DateType {
-  const _date = toDate(date);
-  _date.setMilliseconds(0);
-  return _date;
+export function startOfSecond<
+  DateType extends Date,
+  ResultDate extends Date = DateType,
+>(
+  date: DateArg<DateType>,
+  options?: StartOfSecondOptions<ResultDate> | undefined,
+): ResultDate {
+  const date_ = toDate(date, options?.in);
+  date_.setMilliseconds(0);
+  return date_;
 }

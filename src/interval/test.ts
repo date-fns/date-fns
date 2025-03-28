@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { interval } from "./index.js";
+import { assertType } from "../_lib/test/index.js";
+import { UTCDate } from "@date-fns/utc";
+import { TZDate, tz } from "@date-fns/tz";
 
 describe("Interval", () => {
   it("exposes start and end", () => {
@@ -40,6 +43,42 @@ describe("Interval", () => {
     // Should be ok too
     interval(new Date(2000, 0), new Date(2000, 0), {
       assertPositive: true,
+    });
+  });
+
+  it("resolves the date type by default", () => {
+    const result = interval(Date.now(), Date.now());
+    expect(result.start).toBeInstanceOf(Date);
+    assertType<assertType.Equal<Date, typeof result.start>>(true);
+    expect(result.end).toBeInstanceOf(Date);
+    assertType<assertType.Equal<Date, typeof result.end>>(true);
+  });
+
+  it("resolves the start date object type", () => {
+    const result = interval(new UTCDate(), new TZDate());
+    expect(result.start).toBeInstanceOf(UTCDate);
+    assertType<assertType.Equal<UTCDate, typeof result.start>>(true);
+    expect(result.end).toBeInstanceOf(UTCDate);
+    assertType<assertType.Equal<UTCDate, typeof result.end>>(true);
+  });
+
+  it("resolves the end date object type if the start isn't object", () => {
+    const result = interval(Date.now(), new TZDate());
+    expect(result.start).toBeInstanceOf(TZDate);
+    assertType<assertType.Equal<TZDate, typeof result.start>>(true);
+    expect(result.end).toBeInstanceOf(TZDate);
+    assertType<assertType.Equal<TZDate, typeof result.end>>(true);
+  });
+
+  describe("context", () => {
+    it("resolves the context date type", () => {
+      const result = interval(new UTCDate(), new Date(), {
+        in: tz("Asia/Tokyo"),
+      });
+      expect(result.start).toBeInstanceOf(TZDate);
+      assertType<assertType.Equal<TZDate, typeof result.start>>(true);
+      expect(result.end).toBeInstanceOf(TZDate);
+      assertType<assertType.Equal<TZDate, typeof result.end>>(true);
     });
   });
 });

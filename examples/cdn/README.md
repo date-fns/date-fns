@@ -1,5 +1,5 @@
 # Usage With CDN
 
-See [basic.mjs](./basic.mjs), [fp.mjs](./fp.mjs), [locale.mjs](./locale.mjs) and [locales.mjs](./locales.mjs) for source code examples.
+See [basic.js](./basic.js), [fp.js](./fp.js), [locale.js](./locale.js) and [locales.js](./locales.js) for source code examples.
 
 See [package.json scripts](./package.json) for CLI usage

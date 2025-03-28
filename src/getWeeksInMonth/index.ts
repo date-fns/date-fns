@@ -1,14 +1,21 @@
 import { differenceInCalendarWeeks } from "../differenceInCalendarWeeks/index.js";
 import { lastDayOfMonth } from "../lastDayOfMonth/index.js";
 import { startOfMonth } from "../startOfMonth/index.js";
-import type { LocalizedOptions, WeekOptions } from "../types.js";
+import { toDate } from "../toDate/index.js";
+import type {
+  ContextOptions,
+  DateArg,
+  LocalizedOptions,
+  WeekOptions,
+} from "../types.js";
 
 /**
  * The {@link getWeeksInMonth} function options.
  */
 export interface GetWeeksInMonthOptions
   extends LocalizedOptions<"options">,
-    WeekOptions {}
+    WeekOptions,
+    ContextOptions<Date> {}
 
 /**
  * @name getWeeksInMonth
@@ -17,8 +24,6 @@ export interface GetWeeksInMonthOptions
  *
  * @description
  * Get the number of calendar weeks the month in the given date spans.
- *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
  * @param date - The given date
  * @param options - An object with options.
@@ -36,14 +41,15 @@ export interface GetWeeksInMonthOptions
  * const result = getWeeksInMonth(new Date(2017, 6, 5), { weekStartsOn: 1 })
  * //=> 6
  */
-export function getWeeksInMonth<DateType extends Date>(
-  date: DateType | number | string,
-  options?: GetWeeksInMonthOptions,
+export function getWeeksInMonth(
+  date: DateArg<Date> & {},
+  options?: GetWeeksInMonthOptions | undefined,
 ): number {
+  const contextDate = toDate(date, options?.in);
   return (
     differenceInCalendarWeeks(
-      lastDayOfMonth(date),
-      startOfMonth(date),
+      lastDayOfMonth(contextDate, options),
+      startOfMonth(contextDate, options),
       options,
     ) + 1
   );

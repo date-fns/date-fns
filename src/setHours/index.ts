@@ -1,4 +1,11 @@
 import { toDate } from "../toDate/index.js";
+import type { ContextOptions, DateArg } from "../types.js";
+
+/**
+ * The {@link setHours} function options.
+ */
+export interface SetHoursOptions<DateType extends Date = Date>
+  extends ContextOptions<DateType> {}
 
 /**
  * @name setHours
@@ -9,9 +16,11 @@ import { toDate } from "../toDate/index.js";
  * Set the hours to the given date.
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
+ * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
  *
  * @param date - The date to be changed
  * @param hours - The hours of the new date
+ * @param options - An object with options
  *
  * @returns The new date with the hours set
  *
@@ -20,11 +29,15 @@ import { toDate } from "../toDate/index.js";
  * const result = setHours(new Date(2014, 8, 1, 11, 30), 4)
  * //=> Mon Sep 01 2014 04:30:00
  */
-export function setHours<DateType extends Date>(
-  date: DateType | number | string,
+export function setHours<
+  DateType extends Date,
+  ResultDate extends Date = DateType,
+>(
+  date: DateArg<DateType>,
   hours: number,
-): DateType {
-  const _date = toDate(date);
+  options?: SetHoursOptions<ResultDate> | undefined,
+): ResultDate {
+  const _date = toDate(date, options?.in);
   _date.setHours(hours);
   return _date;
 }

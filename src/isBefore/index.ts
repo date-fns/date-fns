@@ -1,4 +1,5 @@
 import { toDate } from "../toDate/index.js";
+import type { DateArg } from "../types.js";
 
 /**
  * @name isBefore
@@ -7,8 +8,6 @@ import { toDate } from "../toDate/index.js";
  *
  * @description
  * Is the first date before the second one?
- *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  *
  * @param date - The date that should be before the other one to return true
  * @param dateToCompare - The date to compare with
@@ -20,11 +19,9 @@ import { toDate } from "../toDate/index.js";
  * const result = isBefore(new Date(1989, 6, 10), new Date(1987, 1, 11))
  * //=> false
  */
-export function isBefore<DateType extends Date>(
-  date: DateType | number | string,
-  dateToCompare: DateType | number | string,
+export function isBefore(
+  date: DateArg<Date> & {},
+  dateToCompare: DateArg<Date> & {},
 ): boolean {
-  const _date = toDate(date);
-  const _dateToCompare = toDate(dateToCompare);
-  return +_date < +_dateToCompare;
+  return +toDate(date) < +toDate(dateToCompare);
 }
