@@ -1,7 +1,7 @@
-import { buildMatchFn } from '../../../_lib/buildMatchFn';
-import { buildMatchPatternFn } from '../../../_lib/buildMatchPatternFn';
-import { Match } from '../../../types';
-import { Quarter } from '../../../../types';
+import { buildMatchFn } from "../../../_lib/buildMatchFn/index.js";
+import { buildMatchPatternFn } from "../../../_lib/buildMatchPatternFn/index.js";
+import type { Match } from "../../../types.js";
+import type { Quarter } from "../../../../types.js";
 
 const matchOrdinalNumberPattern = /^(\d+)(d|na|mh)?/i;
 const parseOrdinalNumberPattern = /\d+/i;

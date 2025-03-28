@@ -1,6 +1,5 @@
-import { buildLocalizeFn } from '../../../_lib/buildLocalizeFn';
-import type { Localize, LocalizeFn } from '../../../types';
-import type { Quarter } from '../../../../types';
+import { buildLocalizeFn } from "../../../_lib/buildLocalizeFn/index.js";
+import type { Localize, LocalizeFn } from "../../../types.js";
 
 const eraValues = {
     narrow: ['R', 'A'] as const,

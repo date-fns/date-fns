@@ -1,4 +1,4 @@
-import { FormatDistanceFn, FormatDistanceLocale } from '../../../types';
+import type { FormatDistanceFn, FormatDistanceLocale } from "../../../types.js";
 
 
 const formatDistanceLocale: FormatDistanceLocale<string> = {
