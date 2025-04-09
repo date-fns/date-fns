@@ -22,7 +22,7 @@ export interface IsMatchOptions
  * @summary validates the date string against given formats
  *
  * @description
- * Return the true if given date is string correct against the given format else
+ * Return the true if given date string is correct against the given format else
  * will return false.
  *
  * > ⚠️ Please note that the `format` tokens differ from Moment.js and other libraries.
@@ -278,7 +278,7 @@ export interface IsMatchOptions
  *   see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
  *   see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
  *
- * @returns Is format string a match for date string?
+ * @returns Is format a string match for date string?
  *
  * @throws `options.locale` must contain `match` property
  * @throws use `yyyy` instead of `YYYY` for formatting years; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
