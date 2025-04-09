@@ -22,7 +22,7 @@ export interface IsMatchOptions
  * @summary validates the date string against given formats
  *
  * @description
- * Return the true if given date is string correct against the given format else
+ * Return the true if given date string is correct against the given format else
  * will return false.
  *
  * > ⚠️ Please note that the `format` tokens differ from Moment.js and other libraries.
