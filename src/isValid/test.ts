@@ -17,6 +17,16 @@ describe("isValid", () => {
     expect(isValid(NaN)).toBe(false);
   });
 
+  it("accepts a valid number", () => {
+    expect(isValid(1393804800000)).toBe(true);
+    expect(isValid(2**53+1)).toBe(false);
+  });
+
+  it("accepts a valid string", () => {
+    expect(isValid('2014-02-11T11:30:30.000Z')).toBe(true);
+    expect(isValid('asd')).toBe(false);
+  });
+
   it("treats null as an invalid date", () => {
     const result = isValid(null);
     expect(result).toBe(false);
