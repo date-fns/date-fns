@@ -2,7 +2,7 @@ import { defineConfig } from "vitest/config";
 
 export default defineConfig({
   test: {
-    include: ["src/**/test.ts"],
+    include: ["src/**/test.ts", "scripts/_lib/**/test.ts"],
     // Speed up tests, but also it's a workaround for the browser issue:
     // https://github.com/vitest-dev/vitest/issues/5382
     isolate: false,

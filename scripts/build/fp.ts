@@ -7,10 +7,14 @@
  * It's a part of the build process.
  */
 
+import { mkdir, stat, writeFile } from "node:fs/promises";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { joinTag, readRefsFromJSON } from "@date-fns/docs";
-import { mkdir, stat, writeFile } from "fs/promises";
-import path from "path";
 import { config } from "../../docs/config.js";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 async function main() {
   const fns = await readRefsFromJSON(

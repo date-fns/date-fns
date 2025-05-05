@@ -16,10 +16,11 @@ interface File {
   name: string;
   path: string;
   fullPath: string;
+  exports: string[] | undefined;
 }
 
 (async () => {
-  const locales = await listLocales();
+  const locales = await listLocales(/* includeExports */ true);
   const fns = await listFns();
   const fpFns = await listFPFns();
 
@@ -105,7 +106,18 @@ interface GenerateIndexProps {
 
 function generateIndex({ files, isFP }: GenerateIndexProps): string {
   const lines = files
-    .map((file) => `export * from "${file.path}/index.js";`)
+    .map((file) => {
+      // HACK: longFormatters is exported twice, with identical values:
+      // - https://github.com/date-fns/date-fns/issues/3769
+      // - https://github.com/date-fns/date-fns/pull/3770
+      // Strip it from the `parse` module until this is fixed (which may require
+      // a _technically_ breaking change)
+      let exports = file.exports!;
+      if (file.name === "parse" && !isFP) {
+        exports = exports.filter((e) => e !== "longFormatters");
+      }
+      return `export {${exports.join(", ")}} from "${file.path}/index.js";`;
+    })
     .concat(`export type * from "${isFP ? ".." : "."}/types.js";`);
 
   return `// This file is generated automatically by \`scripts/build/indices.ts\`. Please, don't change it.
