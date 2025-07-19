@@ -25,14 +25,17 @@ describe("startOfToday", () => {
       expect(startOfToday({ in: tz("Asia/Singapore") }).toISOString()).toBe(
         "2024-08-18T00:00:00.000+08:00",
       );
+
       fakeNow(new Date("2024-08-18T16:00:00Z"));
       expect(startOfToday({ in: tz("Asia/Singapore") }).toISOString()).toBe(
         "2024-08-19T00:00:00.000+08:00",
       );
+
       fakeNow(new Date("2024-08-18T03:00:00Z"));
       expect(startOfToday({ in: tz("America/New_York") }).toISOString()).toBe(
         "2024-08-17T00:00:00.000-04:00",
       );
+
       fakeNow(new Date("2024-08-18T04:00:00Z"));
       expect(startOfToday({ in: tz("America/New_York") }).toISOString()).toBe(
         "2024-08-18T00:00:00.000-04:00",
