@@ -26,6 +26,12 @@ export interface StartOfTodayOptions<DateType extends Date = Date>
  * // If today is 6 October 2014:
  * const result = startOfToday()
  * //=> Mon Oct 6 2014 00:00:00
+ *
+ * @example
+ * // If today is 18 August 2024 in Asia/Tokyo:
+ * import { tz } from '@date-fns/tz'
+ * const result = startOfToday({ in: tz('Asia/Tokyo') })
+ * //=> Sun Aug 18 2024 00:00:00 GMT+0900 (Japan Standard Time)
  */
 export function startOfToday<ContextDate extends Date>(
   options?: StartOfTodayOptions<ContextDate> | undefined,
