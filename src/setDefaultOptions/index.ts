@@ -49,26 +49,46 @@ import {
  * const result = startOfWeek(new Date(2014, 8, 2))
  * //=> Sun Aug 31 2014 00:00:00
  */
+
 export function setDefaultOptions(options: DefaultOptions): void {
   const result: DefaultOptions = {};
   const defaultOptions = getDefaultOptions();
 
   for (const property in defaultOptions) {
     if (Object.prototype.hasOwnProperty.call(defaultOptions, property)) {
-      // [TODO] I challenge you to fix the type
-      (result as any)[property] =
-        defaultOptions[property as keyof DefaultOptions];
+      const key = property as keyof DefaultOptions;
+      if (key === "locale") {
+        result.locale = defaultOptions.locale;
+      } else if (key === "weekStartsOn") {
+        result.weekStartsOn = defaultOptions.weekStartsOn;
+      } else if (key === "firstWeekContainsDate") {
+        result.firstWeekContainsDate = defaultOptions.firstWeekContainsDate;
+      }
     }
   }
 
   for (const property in options) {
     if (Object.prototype.hasOwnProperty.call(options, property)) {
-      if (options[property as keyof DefaultOptions] === undefined) {
-        // [TODO] I challenge you to fix the type
-        delete (result as any)[property];
-      } else {
-        // [TODO] I challenge you to fix the type
-        (result as any)[property] = options[property as keyof DefaultOptions];
+      const key = property as keyof DefaultOptions;
+
+      if (key === "locale") {
+        if (options.locale === undefined) {
+          delete result.locale;
+        } else {
+          result.locale = options.locale;
+        }
+      } else if (key === "weekStartsOn") {
+        if (options.weekStartsOn === undefined) {
+          delete result.weekStartsOn;
+        } else {
+          result.weekStartsOn = options.weekStartsOn;
+        }
+      } else if (key === "firstWeekContainsDate") {
+        if (options.firstWeekContainsDate === undefined) {
+          delete result.firstWeekContainsDate;
+        } else {
+          result.firstWeekContainsDate = options.firstWeekContainsDate;
+        }
       }
     }
   }
