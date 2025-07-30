@@ -6,7 +6,7 @@ import {
   describe,
   expect,
   it,
-  MockInstance,
+  type MockInstance,
   vi,
 } from "vitest";
 import type { FormatPart } from "../types.js";
