@@ -7424,8 +7424,8 @@
   "scripts": {
     "test": "vitest run",
     "lint": "eslint .",
-    "types": "pnpm tsc --build --pretty",
-    "locale-snapshots": "env TZ=utc tsx ./scripts/build/localeSnapshots/index.ts",
+    "types": "tsc --build --pretty",
+    "locale-snapshots": "env TZ=utc tsx --tsconfig scripts/tsconfig.json -- ./scripts/build/localeSnapshots/index.ts",
     "stats": "cloc . --exclude-dir=node_modules,lib,examples,tmp,.git --exclude-ext=yaml,yml,json,svg,xml"
   },
   "devDependencies": {
