@@ -28,7 +28,10 @@
         "terminal.integrated.profiles.linux": {
           "fish": { "path": "/usr/bin/fish" }
         },
-        "mise.binPath": "/home/vscode/.local/bin/mise"
+        "mise.binPath": "/home/vscode/.local/bin/mise",
+        "debug.javascript.defaultRuntimeExecutable": {
+          "pwa-node": "/home/vscode/.local/share/mise/shims/node"
+        }
       }
     }
   }

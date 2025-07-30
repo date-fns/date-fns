@@ -8,3 +8,6 @@ eval "$(mise activate bash --shims)"
 
 # Update mise
 mise self-update -y
+
+# Install stack
+mise install
