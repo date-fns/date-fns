@@ -20,7 +20,8 @@
         "esbenp.prettier-vscode",
         "hverlin.mise-vscode",
         "tekumara.typos-vscode",
-        "davidlday.languagetool-linter"
+        "davidlday.languagetool-linter",
+        "vitest.explorer"
       ],
       "settings": {
         "terminal.integrated.defaultProfile.linux": "fish",
