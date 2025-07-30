@@ -1,0 +1,3 @@
+[tools]
+node = "lts"
+bun = "latest"
