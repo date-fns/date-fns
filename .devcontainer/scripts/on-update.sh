@@ -11,3 +11,9 @@ mise self-update -y
 
 # Install stack
 mise install
+
+# Pulls git submodules
+./scripts/maintain/pull.sh
+
+# Install dependencies
+pnpm install

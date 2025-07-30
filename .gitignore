@@ -1,10 +1,13 @@
-node_modules
+# Node.js
+node_modules/
+.pnpm-store/
 npm-debug.log*
+# Dist
+/lib/
+# Dev
 tmp
-dist
 .envrc
 docs.json
 .idea
 coverage
 /secrets
-/lib
