@@ -6,8 +6,8 @@ import {
   describe,
   expect,
   it,
+  MockInstance,
   vi,
-  type SpyInstance,
 } from "vitest";
 import type { FormatPart } from "../types.js";
 import { format, formatDate } from "./index.js";
@@ -863,7 +863,7 @@ describe("format", () => {
     });
 
     describe("console.warn", () => {
-      let warn: SpyInstance;
+      let warn: MockInstance;
 
       beforeEach(() => {
         warn = vi.spyOn(console, "warn").mockImplementation(() => undefined);
