@@ -8,18 +8,20 @@ jobs:
 
     strategy:
       matrix:
-        node: [18, 20]
+        node: [18, 20, 22]
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          submodules: "recursive"
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
-          cache: "npm"
-      - run: npm install
+          cache: "pnpm"
+      - run: pnpm install
 
       - name: Unit tests
-        run: npx vitest run
+        run: pnpm vitest run
 
       - name: TZ tests
         run: ./scripts/test/tz.sh

@@ -1,4 +1,4 @@
-#!/usr/bin/env npx tsx
+#!/usr/bin/env pnpm tsx
 
 /**
  * @file
@@ -53,7 +53,7 @@ ${renderFormatDuration(locale)}
 
         const snapshotPath = path.join(
           path.resolve(process.cwd(), path.dirname(fullPath)),
-          "snapshot.md"
+          "snapshot.md",
         );
         const formattedSnapshot = await formatCode(snapshot, "markdown");
 
@@ -61,14 +61,14 @@ ${renderFormatDuration(locale)}
           return readFile(snapshotPath, "utf8").then((snapshotFileContent) => {
             if (snapshotFileContent !== formattedSnapshot)
               throw new Error(
-                `The snapshot on the disk doesn't match the generated snapshot: ${snapshotPath}. Please run npm run locale-snapshots and commit the results.`
+                `The snapshot on the disk doesn't match the generated snapshot: ${snapshotPath}. Please run pnpm run locale-snapshots and commit the results.`,
               );
           });
         } else {
           return writeFile(snapshotPath, formattedSnapshot);
         }
-      })
-    )
+      }),
+    ),
   )
   .catch((err) => {
     console.error(err.stack);

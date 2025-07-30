@@ -8,12 +8,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          submodules: "recursive"
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: "npm"
+          node-version: 22
+          cache: "pnpm"
       - uses: oven-sh/setup-bun@v1
-      - run: npm install
+      - run: pnpm install
 
       - name: Smoke tests
         run: ./scripts/test/smoke.sh

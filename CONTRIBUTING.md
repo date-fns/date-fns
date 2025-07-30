@@ -9,17 +9,14 @@
 - [Getting Started](#getting-started)
 
 - [Testing](#testing)
-
   - [Unit tests](#unit-tests)
   - [REPL](#repl)
   - [Test build](#test-build)
 
 - [Code Style Guide](#code-style-guide)
-
   - [Lint the Code](#lint-the-code)
 
 - [Documentation](#documentation)
-
   - [JSDoc](#jsdoc)
 
 ## How to Help?
@@ -58,7 +55,6 @@ the author can be asked to move the code to a new or another package.
 Please follow the main contributing rules, to maintain date-fns' top quality:
 
 - Follow style guides:
-
   - [Lint the code](#lint-the-code).
 
 - Write tests.
@@ -75,7 +71,7 @@ Please follow the main contributing rules, to maintain date-fns' top quality:
 
 2. Fork the project, and clone your fork of the repo
 
-3. Run `npm install` to install the dependencies
+3. Run `pnpm install` to install the dependencies
 
 ## Testing
 
@@ -84,19 +80,19 @@ Please follow the main contributing rules, to maintain date-fns' top quality:
 Node.js:
 
 ```sh
-npx vitest run
+pnpm vitest run
 
 # Or in the watch mode:
-npx vitest watch
+pnpm vitest watch
 ```
 
 Browser
 
 ```sh
-npx vitest run --browser
+pnpm vitest run --browser
 
 # Or in the watch mode:
-npx vitest watch --browser
+pnpm vitest watch --browser
 ```
 
 ### REPL
@@ -104,7 +100,7 @@ npx vitest watch --browser
 To test functions in a REPL, use `tsx`:
 
 ```sh
-npx tsx
+pnpm tsx
 ```
 
 ...and then require individual functions:
@@ -140,7 +136,7 @@ The project follows [Prettier] code style and uses [ESLint] as the linter.
 To lint the code, run:
 
 ```bash
-npm run lint
+pnpm run lint
 ```
 
 [prettier]: https://prettier.io/

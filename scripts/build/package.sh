@@ -20,7 +20,7 @@ rm -rf "$dir"
 mkdir -p "$dir"
 
 # Transpile ESM versions of files
-env BABEL_ENV=esm npx babel src \
+env BABEL_ENV=esm pnpm babel src \
   --config-file ./babel.config.json \
   --source-root src \
   --out-dir "$dir" \
@@ -29,10 +29,10 @@ env BABEL_ENV=esm npx babel src \
   --quiet
 
 # Add fallback for Next.js and other tools that modularize imports:
-npx tsx scripts/build/modularized.ts
+pnpm tsx scripts/build/modularized.ts
 
 # Transpile CommonJS versions of files
-env BABEL_ENV=cjs npx babel src \
+env BABEL_ENV=cjs pnpm babel src \
   --config-file ./babel.config.json \
   --source-root src \
   --out-dir "$dir" \
@@ -41,7 +41,7 @@ env BABEL_ENV=cjs npx babel src \
   --quiet
 
 # Generate TypeScript
-npx tsc --project tsconfig.lib.json --outDir "$dir"
+pnpm tsc --project tsconfig.lib.json --outDir "$dir"
 
 if [ -n "$TEST_FLATTEN" ]; then
   exit 0
@@ -52,15 +52,15 @@ if [ -z "$PACKAGE_SKIP_BEAUTIFY" ]; then
   # Prettier won't format in node_modules, but when running the smoke tests, we
   # need to format the files in node_modules.
   cd $dir
-  npx prettier . --write --ignore-path "" > /dev/null 2>&1 || exit 1
+  pnpm prettier . --write --ignore-path "" > /dev/null 2>&1 || exit 1
   cd -
 fi
 
 # Flatten the structure
-npx tsx scripts/build/flatten.ts
+pnpm tsx scripts/build/flatten.ts
 
 # Generate .d.cts files
-npx tsx scripts/build/cts.ts
+pnpm tsx scripts/build/cts.ts
 
 # Copy basic files
 for pattern in CHANGELOG.md \

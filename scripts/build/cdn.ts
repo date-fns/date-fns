@@ -55,7 +55,7 @@ Promise.all([
       paths.map((path) => async () => {
         // Use Babel to transpile
         assertShellOutput(
-          await $`env BABEL_ENV=cdn npx babel ${path} --out-file ${path} --source-maps`,
+          await $`env BABEL_ENV=cdn pnpm babel ${path} --out-file ${path} --source-maps`,
         );
 
         // Wrap into IIFE, to avoid polluting global scope

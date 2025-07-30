@@ -1,4 +1,4 @@
-#!/usr/bin/env npx tsx
+#!/usr/bin/env pnpm tsx
 
 import assert from "assert";
 import { readFile, readdir, rmdir, stat, unlink, writeFile } from "fs/promises";
