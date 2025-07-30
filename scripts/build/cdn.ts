@@ -2,7 +2,7 @@
  * The script builds the CDN version of the library.
  */
 
-import { $, type BuildOutput, type ShellOutput } from "bun";
+import { $, type BuildOutput } from "bun";
 import { readFile, writeFile } from "fs/promises";
 import { availableParallelism } from "node:os";
 import { dirname, join, relative } from "path";
@@ -120,7 +120,7 @@ function assertBunBuild(output: BuildOutput) {
   }
 }
 
-function assertShellOutput(output: ShellOutput) {
+function assertShellOutput(output: $.ShellOutput) {
   if (output.exitCode !== 0) {
     console.log(output.stderr);
     process.exit(1);
