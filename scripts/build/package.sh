@@ -49,10 +49,8 @@ fi
 
 # Make it prettier
 if [ -z "$PACKAGE_SKIP_BEAUTIFY" ]; then
-  # Prettier won't format in node_modules, but when running the smoke tests, we
-  # need to format the files in node_modules.
   cd $dir
-  pnpm prettier . --write --ignore-path "" > /dev/null 2>&1 || exit 1
+  pnpm prettier . --write > /dev/null 2>&1 || exit 1
   cd -
 fi
 
