@@ -1,10 +1,10 @@
 {
-  "name": "date-fns-format",
+  "name": "@date-fns/example-vite",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "build": "npm run build-date-fns && tsc && vite build",
+    "build": "pnpm run build-date-fns && tsc && vite build",
     "build-date-fns": "rm -rf node_modules/date-fns && cp -r ../../lib node_modules/date-fns || env PACKAGE_OUTPUT_PATH=\"$(pwd)/node_modules/date-fns\" ../../scripts/build/package.sh",
     "test": "echo \"We're just testing if it builds atm\""
   },
