@@ -1,5 +1,5 @@
-import { formatDuration } from "../../../../src/formatDuration/index.js";
-import type { Locale } from "../../../../src/types.js";
+import { formatDuration } from "@wrkspc/src/formatDuration/index.js";
+import type { Locale } from "@wrkspc/src/types.js";
 
 const durations = [
   "years",

@@ -1,6 +1,6 @@
 // This is DST test for formatDistanceStrict in the Cairo timezone
 
-import { formatDistanceStrict } from "../../../src/formatDistanceStrict/index.js";
+import { formatDistanceStrict } from "../../formatDistanceStrict/index.js";
 import assert from "assert";
 
 if (process.env.TZ !== "Africa/Cairo")

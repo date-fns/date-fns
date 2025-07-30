@@ -1,6 +1,6 @@
 // This is an edge case DST test for parseISO
 
-import { parseISO } from "../../../src/parseISO/index.js";
+import { parseISO } from "../../parseISO/index.js";
 import assert from "assert";
 
 if (process.env.TZ !== "Pacific/Apia")

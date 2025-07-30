@@ -1,6 +1,6 @@
 import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import { getDstTransitions } from "../../test/dst/tzOffsetTransitions.js";
+import { getDstTransitions } from "../_lib/tzOffsetTransitions.js";
 import { differenceInCalendarDays } from "./index.js";
 
 describe("differenceInCalendarDays", () => {

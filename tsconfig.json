@@ -1,18 +1,10 @@
 {
-  "compilerOptions": {
-    "target": "ESNext",
-    "outDir": "lib",
-    "lib": ["dom", "es2020", "es2018.promise", "ESNext.Intl"],
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "skipLibCheck": true,
-    "strict": true
-    // TODO: Enable these when we can:
-    // "noUncheckedIndexedAccess": true,
-    // "exactOptionalPropertyTypes": true
-    // Enable for debug, but keep disabled after that as it slows down builds a lot
-    // "noErrorTruncation": true
-  },
-  "include": ["src/**/*.ts", "scripts/**/*.ts", "test/**/*.ts"],
-  "exclude": ["node_modules", "dist", "tmp", "examples"]
+  "files": [],
+  "references": [
+    { "path": "./src" },
+    { "path": "./submodules/tz" },
+    { "path": "./submodules/utc" },
+    { "path": "./scripts" },
+    { "path": "./test" }
+  ]
 }

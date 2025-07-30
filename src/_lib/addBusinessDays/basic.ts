@@ -1,7 +1,7 @@
 // This is basic DST test for addBusinessDays
 
 import assert from "assert";
-import { addBusinessDays } from "../../../src/addBusinessDays/index.js";
+import { addBusinessDays } from "../../addBusinessDays/index.js";
 
 if (process.env.TZ !== "America/Santiago")
   throw new Error("The test must be run with TZ=America/Santiago");

@@ -1,5 +1,5 @@
-import { formatDistance } from "../../../../src/formatDistance/index.js";
-import type { Locale } from "../../../../src/types.js";
+import { formatDistance } from "@wrkspc/src/formatDistance/index.js";
+import type { Locale } from "@wrkspc/src/types.js";
 import { baseDate, dates } from "../_lib/distanceDates.js";
 
 export default function renderFormatDistance(locale: Locale) {

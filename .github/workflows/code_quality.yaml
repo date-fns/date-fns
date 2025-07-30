@@ -18,7 +18,7 @@ jobs:
       - run: pnpm install
 
       - name: Types
-        run: pnpm tsc --noEmit
+        run: pnpm tsc --build --pretty
 
       - name: Linting
         run: pnpm run lint

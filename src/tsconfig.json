@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "rootDir": ".",
+    "target": "ESNext",
+    "lib": ["dom", "es2020", "es2018.promise", "ESNext.Intl"],
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "skipLibCheck": true,
+    "strict": true,
+    // TODO: Enable these when we can:
+    // "noUncheckedIndexedAccess": true,
+    // "exactOptionalPropertyTypes": true
+    // Enable for debug, but keep disabled after that as it slows down builds a lot
+    // "noErrorTruncation": true,
+    // Project References setup
+    "composite": true,
+    "incremental": true,
+    "declaration": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": true,
+    "outDir": "${configDir}/../.ts",
+    "tsBuildInfoFile": "${configDir}/../.ts/tsconfig.tsbuildinfo"
+  },
+  "include": ["./**/*.ts"],
+  "references": [
+    { "path": "../submodules/tz" },
+    { "path": "../submodules/utc" }
+  ]
+}

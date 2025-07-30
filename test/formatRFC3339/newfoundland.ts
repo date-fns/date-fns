@@ -1,4 +1,4 @@
-import { formatRFC3339 } from "../../src/formatRFC3339/index.js";
+import { formatRFC3339 } from "@wrkspc/src/formatRFC3339/index.js";
 import assert from "assert";
 
 /**

@@ -1,8 +1,8 @@
-import { format } from "../../../../src/format/index.js";
-import { isValid } from "../../../../src/isValid/index.js";
-import { parse } from "../../../../src/parse/index.js";
-import { toDate } from "../../../../src/toDate/index.js";
-import type { Locale } from "../../../../src/types.js";
+import { format } from "@wrkspc/src/format/index.js";
+import { isValid } from "@wrkspc/src/isValid/index.js";
+import { parse } from "@wrkspc/src/parse/index.js";
+import { toDate } from "@wrkspc/src/toDate/index.js";
+import type { Locale } from "@wrkspc/src/types.js";
 import formatParseTokens from "./formatParseTokens.js";
 
 export default function renderFormatParse(locale: Locale) {

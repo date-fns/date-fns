@@ -9,7 +9,7 @@
 
 import { readFile, writeFile } from "fs/promises";
 import path from "path";
-import type { Locale } from "../../../src/locale/types.js";
+import type { Locale } from "@wrkspc/src/locale/types.js";
 import { listLocales } from "../../_lib/listLocales.js";
 import { formatCode } from "../_lib/prettier.js";
 import { convertLocaleToConst } from "./_lib/locale.js";
@@ -29,7 +29,7 @@ listLocales()
     Promise.all(
       locales.map(async (localeObj) => {
         const { code, fullPath } = localeObj;
-        const locale: Locale = (await import(`../../../src/locale/${code}`))[
+        const locale: Locale = (await import(`@wrkspc/src/locale/${code}`))[
           convertLocaleToConst(code)
         ];
         const source = (
