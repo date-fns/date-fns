@@ -5,7 +5,6 @@ dist
 .envrc
 docs.json
 .idea
-.vscode
 coverage
 /secrets
 /lib
