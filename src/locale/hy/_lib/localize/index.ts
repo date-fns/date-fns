@@ -46,7 +46,7 @@ const monthValues = {
 };
 
 const dayValues = {
-  narrow: ["Կ", "Ե", "Ե", "Չ", "Հ", "Ո", "Շ"] as const,
+  narrow: ["Կ", "Ե", "Ե", "Չ", "Հ", "Ու", "Շ"] as const,
   short: ["կր", "եր", "եք", "չք", "հգ", "ուր", "շբ"] as const,
   abbreviated: ["կիր", "երկ", "երք", "չոր", "հնգ", "ուրբ", "շաբ"] as const,
   wide: [
