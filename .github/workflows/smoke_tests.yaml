@@ -10,6 +10,12 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: "recursive"
+      - uses: actions/cache@v4
+        with:
+          path: examples/node_modules
+          key: ${{ runner.os }}-examples-node-modules-${{ hashFiles('examples/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-examples-node-modules-
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
