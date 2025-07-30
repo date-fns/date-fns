@@ -18,8 +18,8 @@
     "declaration": true,
     "declarationMap": true,
     "emitDeclarationOnly": true,
-    "outDir": "${configDir}/.ts",
-    "tsBuildInfoFile": "${configDir}/.ts/tsconfig.tsbuildinfo",
+    "outDir": ".ts",
+    "tsBuildInfoFile": ".ts/tsconfig.tsbuildinfo",
     // Paths
     "paths": {
       "@wrkspc/src/*": ["../src/*"]

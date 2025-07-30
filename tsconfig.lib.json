@@ -1,10 +1,6 @@
 {
-  "extends": "./tsconfig",
-  "compilerOptions": {
-    "declaration": true,
-    "emitDeclarationOnly": true,
-    "rootDir": "src"
-  },
+  "extends": "./src/tsconfig",
+  "compilerOptions": {},
   "include": ["src/**/*.ts"],
   "exclude": [
     "lib",
