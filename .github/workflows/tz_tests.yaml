@@ -7,7 +7,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+        with:
+          submodules: "recursive"
       - uses: oven-sh/setup-bun@v1
       - run: bun install
       - run: bun ./scripts/test/tzOffset.ts
