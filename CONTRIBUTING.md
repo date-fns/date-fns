@@ -27,7 +27,7 @@ Help is always welcome. There are areas where you can help:
   new features, etc.).
 
 - Documentation ([markdown documents](https://github.com/date-fns/date-fns/tree/master/docs),
-  [TDCod annotations in source code](https://github.com/date-fns/date-fns/blob/master/src/toDate/index.ts)).
+  [TSDoc annotations in source code](https://github.com/date-fns/date-fns/blob/master/src/toDate/index.ts)).
 
 - Test suite & development environment improvements.
 
@@ -37,19 +37,11 @@ If you see a gap, but don't have time, experience, or you just need help
 with the library, don't hesitate to [start a discussion](https://github.com/date-fns/date-fns/discussions/new) or
 [open a new issue](https://github.com/date-fns/date-fns/issues/new).
 
-The date-fns functionality is comprehensive and covers most of the use cases,
-however it doesn't have an extended time zone support. Please leave a comment
-to the [Extended time zones support issue](https://github.com/date-fns/date-fns/issues/180)
-if you are interested in the functionality or want to help with development.
-
-If you are interested in Elm/ClojureScript/etc. wrappers,
-please [file an issue](https://github.com/date-fns/date-fns/issues/new).
-
 ## Contribution Guidelines
 
 Due to the modular nature of date-fns, it's more than open to new features.
 However, when a new function duplicates the existing functionality, native API
-or causes significant build size increase, a PR might be rejected or
+or causes a significant build size increase, a PR might be rejected, or
 the author can be asked to move the code to a new or another package.
 
 Please follow the main contributing rules, to maintain date-fns' top quality:
@@ -67,7 +59,7 @@ Please follow the main contributing rules, to maintain date-fns' top quality:
 
 ## Getting Started
 
-1. Install [Node.js 20 or greater (LTS recommended)](https://nodejs.org/en/download/)
+1. Install [Node.js 22 or greater (LTS recommended)](https://nodejs.org/en/download/)
 
 2. Fork the project, and clone your fork of the repo
 
