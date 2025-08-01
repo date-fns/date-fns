@@ -225,6 +225,12 @@ const formatParseTokens = [
   },
 
   {
+    title: "Long localized date without the year",
+    tokens: ["V", "VV", "VVV", "VVVV"],
+    dates: localizedDates,
+  },
+
+  {
     title: "Long localized time",
     tokens: ["p", "pp", "ppp", "pppp"],
     dates: localizedDates,

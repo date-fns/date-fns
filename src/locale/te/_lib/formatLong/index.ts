@@ -9,6 +9,10 @@ const dateFormats = {
   long: "d MMMM, y",
   medium: "d MMM, y",
   short: "dd-MM-yy",
+  fullWithoutYear: "d, MMMM, EEEE",
+  longWithoutYear: "d MMMM",
+  mediumWithoutYear: "d MMM",
+  shortWithoutYear: "dd-MM",
 };
 
 // CLDR #1807 - #1811

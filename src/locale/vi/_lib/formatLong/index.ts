@@ -10,6 +10,10 @@ const dateFormats = {
   medium: "d MMM 'năm' y",
   // 25/08/2017
   short: "dd/MM/y",
+  fullWithoutYear: "EEEE, 'ngày' d MMMM",
+  longWithoutYear: "'ngày' d MMMM",
+  mediumWithoutYear: "d MMM",
+  shortWithoutYear: "dd/MM",
 };
 
 const timeFormats = {
