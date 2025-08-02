@@ -12,6 +12,8 @@ import type { ConstructableDate, ContextFn, DateArg } from "../types.js";
  * If the argument is an instance of Date, the function returns its clone.
  *
  * If the argument is a number, it is treated as a timestamp.
+ * 
+ * If the argument is a string, it is parsed by new Date("string").
  *
  * If the argument is none of the above, the function returns Invalid Date.
  *
@@ -37,6 +39,11 @@ import type { ConstructableDate, ContextFn, DateArg } from "../types.js";
  * @example
  * // Convert the timestamp to date:
  * const result = toDate(1392098430000)
+ * //=> Tue Feb 11 2014 11:30:30
+ * 
+ * @example
+ * // Convert the string to date:
+ * const result = toDate('2014-02-11T11:30:30.000Z')
  * //=> Tue Feb 11 2014 11:30:30
  */
 export function toDate<

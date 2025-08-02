@@ -22,6 +22,17 @@ describe("toDate", () => {
     });
   });
 
+  describe("string argument", () => {
+    it("creates a date from a valid string", () => {
+      const result = toDate("2016-01-01T23:30:45.123Z");
+      expect(result).toEqual(new Date("2016-01-01T23:30:45.123Z"));
+    });
+    it("returns invalid Date if string is invalid date", () => {
+      const result = toDate("asd");
+      expect(isNaN(result.getTime())).toBe(true);
+    });
+  });
+
   describe("invalid argument", () => {
     it("returns Invalid Date if argument is NaN", () => {
       const result = toDate(NaN);
