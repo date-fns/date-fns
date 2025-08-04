@@ -11,6 +11,7 @@ import { match } from "./_lib/match/index.js";
  * @language Mongolian
  * @iso-639-2 mon
  * @author Bilguun Ochirbat [@bilguun0203](https://github.com/bilguun0203)
+ * @author Ankhgerel Amgalantamir [@filename24](https://github.com/filename24)
  */
 export const mn: Locale = {
   code: "mn",
