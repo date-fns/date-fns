@@ -1,4 +1,5 @@
 import { constructFrom } from "../constructFrom/index.js";
+import { getDaysInMonth } from "../getDaysInMonth/index.js";
 import { toDate } from "../toDate/index.js";
 import type { ContextOptions, DateArg } from "../types.js";
 
@@ -43,6 +44,16 @@ export function setYear<
   // Check if date is Invalid Date because Date.prototype.setFullYear ignores the value of Invalid Date
   if (isNaN(+date_)) return constructFrom(options?.in || date, NaN);
 
+  const month = date_.getMonth();
+  const day = date_.getDate();
+
+  const midMonth = constructFrom(options?.in || date, 0);
+  midMonth.setFullYear(year, month, 15);
+  midMonth.setHours(0, 0, 0, 0);
+  const daysInMonth = getDaysInMonth(midMonth);
+
+  // Set the earlier date, allows to handle Feb 29 to Feb 28 automatically
   date_.setFullYear(year);
+  date_.setMonth(month, Math.min(day, daysInMonth));
   return date_;
 }

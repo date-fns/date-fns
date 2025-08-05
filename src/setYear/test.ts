@@ -64,5 +64,15 @@ describe("setYear", () => {
       expect(result).toBeInstanceOf(TZDate);
       assertType<assertType.Equal<TZDate, typeof result>>(true);
     });
+
+    it("handles leap year dates correctly when setting to non-leap year", () => {
+      // Setting Feb 29, 2024 (leap year) to 2025 (non-leap year)
+      const result = setYear(new Date(2024, 1, 29), 2025);
+      expect(result).toEqual(new Date(2025, 1, 28));
+
+      // Setting Feb 29, 2024 (leap year) to 2028 (leap year)
+      const result2 = setYear(new Date(2024, 1, 29), 2028);
+      expect(result2).toEqual(new Date(2028, 1, 29));
+    });
   });
 });
