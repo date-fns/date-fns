@@ -27,11 +27,11 @@ importers:
         specifier: ^0.38.0
         version: 0.38.0(typescript@5.9.2)
       '@date-fns/tz':
-        specifier: ^1.2.0
-        version: 1.2.0
+        specifier: workspace:^
+        version: link:submodules/tz
       '@date-fns/utc':
-        specifier: ^2.1.1
-        version: 2.1.1
+        specifier: workspace:^
+        version: link:submodules/utc
       '@octokit/core':
         specifier: ^3.6.0
         version: 3.6.0
@@ -828,12 +828,6 @@ packages:
   '@date-fns/docs@0.38.0':
     resolution: {integrity: sha512-1eixhCpBlwlYG5J5CKtm/z5+O2Ij0yYoqGVViIvtwr2zjbAgHQuZN4VPl2CspCIvkPMfnU64OILo6+Tcd3OxGQ==}
     hasBin: true
-
-  '@date-fns/tz@1.2.0':
-    resolution: {integrity: sha512-LBrd7MiJZ9McsOgxqWX7AaxrDjcFVjWH/tIKJd7pnR7McaslGYOP1QmmiBXdJH/H/yLCT+rcQ7FaPBUxRGUtrg==}
-
-  '@date-fns/utc@2.1.1':
-    resolution: {integrity: sha512-SlJDfG6RPeEX8wEVv6ZB3kak4MmbtyiI2qX/5zuKdordbrhB/iaJ58GVMZgJ6P1sJaM1gMgENFYYeg1JWrCFrA==}
 
   '@esbuild/aix-ppc64@0.25.8':
     resolution: {integrity: sha512-urAvrUedIqEiFR3FYSLTWQgLu5tb+m0qZw0NBEasUeo6wuqatkMDaRT+1uABiGXEu5vqgPd7FGE1BhsAIy9QVA==}
@@ -4673,10 +4667,6 @@ snapshots:
       - encoding
       - supports-color
       - typescript
-
-  '@date-fns/tz@1.2.0': {}
-
-  '@date-fns/utc@2.1.1': {}
 
   '@esbuild/aix-ppc64@0.25.8':
     optional: true
