@@ -3,6 +3,9 @@
 node = { version = "lts", postinstall = "corepack enable" }
 bun = "latest"
 
+## Tools
+gh = "latest"
+
 [settings]
 # Enable extra features
 experimental = true
