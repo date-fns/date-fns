@@ -5,6 +5,7 @@ bun = "latest"
 
 ## Tools
 gh = "latest"
+"npm:@anthropic-ai/claude-code" = "latest"
 
 [settings]
 # Enable extra features
