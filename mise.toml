@@ -1,6 +1,10 @@
 [tools]
-node = "lts"
+## Stack
+node = { version = "lts", postinstall = "corepack enable" }
 bun = "latest"
 
-[hooks]
-postinstall = 'npx corepack enable'
+[settings]
+# Enable extra features
+experimental = true
+# Consume Node.js version from .nvmrc, .tool-versions, etc.
+idiomatic_version_file_enable_tools = ["node"]

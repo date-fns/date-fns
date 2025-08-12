@@ -4,7 +4,12 @@
 
 set -e
 
-eval "$(mise activate bash --shims)"
+# Pull git submodules
+git submodule update --recursive --init --remote
+
+# Trust all mise configs
+mise trust
+git submodule foreach --recursive "mise trust"
 
 # Update mise
 mise self-update -y
@@ -12,8 +17,11 @@ mise self-update -y
 # Install stack
 mise install
 
-# Pulls git submodules
-./scripts/maintain/pull.sh
-
 # Install dependencies
-pnpm install
+if [ -f ./pnpm-lock.yaml ]; then
+  yes | pnpm install
+elif [ -f ./yarn.lock ]; then
+  yes | yarn install
+elif [ -f ./package-lock.json ]; then
+  yes | npm install
+fi
