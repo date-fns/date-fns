@@ -21,7 +21,9 @@ describe("lightFormat", () => {
 
   it("accepts new line character", () => {
     const date = new Date(2014, 3, 4, 5);
-    expect(lightFormat(date, "yyyy-MM-dd'\n'HH:mm:ss")).toBe("2014-04-04\n05:00:00");
+    expect(lightFormat(date, "yyyy-MM-dd'\n'HH:mm:ss")).toBe(
+      "2014-04-04\n05:00:00",
+    );
   });
 
   describe("year", () => {
@@ -129,7 +131,9 @@ describe("lightFormat", () => {
   });
 
   it("throws RangeError if the date isn't valid", () => {
-    expect(lightFormat.bind(null, new Date(NaN), "MMMM d, yyyy")).toThrow(RangeError);
+    expect(lightFormat.bind(null, new Date(NaN), "MMMM d, yyyy")).toThrow(
+      RangeError,
+    );
   });
 
   it("throws RangeError exception if the format string contains an unescaped latin alphabet character", () => {

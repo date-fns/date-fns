@@ -129,22 +129,22 @@ importers:
   submodules/tz:
     devDependencies:
       '@arethetypeswrong/cli':
-        specifier: ^0.16.2
-        version: 0.16.4
+        specifier: ^0.18.2
+        version: 0.18.2
       '@babel/cli':
-        specifier: ^7.24.1
+        specifier: ^7.28.0
         version: 7.28.0(@babel/core@7.28.0)
       '@babel/core':
-        specifier: ^7.24.4
+        specifier: ^7.28.0
         version: 7.28.0
       '@babel/plugin-transform-modules-commonjs':
-        specifier: ^7.24.1
+        specifier: ^7.27.1
         version: 7.27.1(@babel/core@7.28.0)
       '@babel/preset-env':
-        specifier: ^7.24.4
+        specifier: ^7.28.0
         version: 7.28.0(@babel/core@7.28.0)
       '@babel/preset-typescript':
-        specifier: ^7.24.1
+        specifier: ^7.27.1
         version: 7.27.1(@babel/core@7.28.0)
       '@parcel/watcher':
         specifier: ^2.4.1
@@ -159,7 +159,7 @@ importers:
         specifier: ^8.1.5
         version: 8.1.5
       babel-plugin-replace-import-extension:
-        specifier: ^1.1.4
+        specifier: ^1.1.5
         version: 1.1.5
       bytes-iec:
         specifier: ^3.1.1
@@ -176,12 +176,15 @@ importers:
       picocolors:
         specifier: ^1.0.0
         version: 1.1.1
+      prettier:
+        specifier: ^3.6.2
+        version: 3.6.2
       tinybench:
         specifier: ^2.7.0
         version: 2.9.0
       typescript:
-        specifier: 5.9.0-beta
-        version: 5.9.0-beta
+        specifier: 5.9.2
+        version: 5.9.2
       vitest:
         specifier: ^3.2.4
         version: 3.2.4(@types/node@22.17.0)(@vitest/browser@3.2.4)(jiti@2.5.1)(tsx@4.20.3)(yaml@2.8.0)
@@ -224,9 +227,12 @@ importers:
       minimatch:
         specifier: ^10.0.1
         version: 10.0.3
+      prettier:
+        specifier: ^3.6.2
+        version: 3.6.2
       typescript:
-        specifier: 5.9.0-beta
-        version: 5.9.0-beta
+        specifier: 5.9.2
+        version: 5.9.2
       vitest:
         specifier: ^3.2.4
         version: 3.2.4(@types/node@22.17.0)(@vitest/browser@3.2.4)(jiti@2.5.1)(tsx@4.20.3)(yaml@2.8.0)
@@ -3609,6 +3615,11 @@ packages:
 
   typescript@5.9.0-beta:
     resolution: {integrity: sha512-p91qoTdwWKj9YEBYavmGiBn0DF4OBElzw4pW4oPbK4HeCfr/SDz9+yviVWshZXGvGvFCJ3AVQ+J7F1UZXc23QQ==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+
+  typescript@5.9.2:
+    resolution: {integrity: sha512-CWBzXQrc/qOkhidw1OzBTQuYRbfyxDXJMVJ1XNwUHGROVmuaeiEm3OslpZ1RV96d7SKKjZKrSJu3+t/xlw3R9A==}
     engines: {node: '>=14.17'}
     hasBin: true
 
@@ -7657,6 +7668,8 @@ snapshots:
   typescript@5.6.1-rc: {}
 
   typescript@5.9.0-beta: {}
+
+  typescript@5.9.2: {}
 
   uc.micro@2.1.0: {}
 

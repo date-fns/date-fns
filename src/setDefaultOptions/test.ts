@@ -71,42 +71,60 @@ describe("setDefaultOptions", () => {
   describe("locale", () => {
     it("format", () => {
       // For reference: not setting any options
-      expect(format(new Date(2014, 0, 1), "PPPpp")).toEqual("January 1st, 2014 at 12:00:00 AM");
+      expect(format(new Date(2014, 0, 1), "PPPpp")).toEqual(
+        "January 1st, 2014 at 12:00:00 AM",
+      );
 
       setDefaultOptions({ locale: eo });
 
-      expect(format(new Date(2014, 0, 1), "PPPpp")).toEqual("2014-januaro-01 00:00:00");
+      expect(format(new Date(2014, 0, 1), "PPPpp")).toEqual(
+        "2014-januaro-01 00:00:00",
+      );
 
       // Manually set `locale` take priority over `defaultOptions.locale`
-      expect(format(new Date(2014, 0, 1), "PPPpp", { locale: enUS })).toEqual("January 1st, 2014 at 12:00:00 AM");
+      expect(format(new Date(2014, 0, 1), "PPPpp", { locale: enUS })).toEqual(
+        "January 1st, 2014 at 12:00:00 AM",
+      );
     });
 
     it("formatDistance", () => {
       // For reference: not setting any options
-      expect(formatDistance(new Date(2014, 0, 1), new Date(2015, 0, 1))).toEqual("about 1 year");
+      expect(
+        formatDistance(new Date(2014, 0, 1), new Date(2015, 0, 1)),
+      ).toEqual("about 1 year");
 
       setDefaultOptions({ locale: eo });
 
-      expect(formatDistance(new Date(2014, 0, 1), new Date(2015, 0, 1))).toEqual("proksimume 1 jaro");
+      expect(
+        formatDistance(new Date(2014, 0, 1), new Date(2015, 0, 1)),
+      ).toEqual("proksimume 1 jaro");
 
       // Manually set `locale` take priority over `defaultOptions.locale`
-      expect(formatDistance(new Date(2014, 0, 1), new Date(2015, 0, 1), {
-        locale: enUS,
-      })).toEqual("about 1 year");
+      expect(
+        formatDistance(new Date(2014, 0, 1), new Date(2015, 0, 1), {
+          locale: enUS,
+        }),
+      ).toEqual("about 1 year");
     });
 
     it("formatDistanceStrict", () => {
       // For reference: not setting any options
-      expect(formatDistanceStrict(new Date(2014, 0, 1), new Date(2015, 0, 1))).toEqual("1 year");
+      expect(
+        formatDistanceStrict(new Date(2014, 0, 1), new Date(2015, 0, 1)),
+      ).toEqual("1 year");
 
       setDefaultOptions({ locale: eo });
 
-      expect(formatDistanceStrict(new Date(2014, 0, 1), new Date(2015, 0, 1))).toEqual("1 jaro");
+      expect(
+        formatDistanceStrict(new Date(2014, 0, 1), new Date(2015, 0, 1)),
+      ).toEqual("1 jaro");
 
       // Manually set `locale` take priority over `defaultOptions.locale`
-      expect(formatDistanceStrict(new Date(2014, 0, 1), new Date(2015, 0, 1), {
-        locale: enUS,
-      })).toEqual("1 year");
+      expect(
+        formatDistanceStrict(new Date(2014, 0, 1), new Date(2015, 0, 1), {
+          locale: enUS,
+        }),
+      ).toEqual("1 year");
     });
 
     it("formatDuration", () => {
@@ -123,16 +141,22 @@ describe("setDefaultOptions", () => {
 
     it("formatRelative", () => {
       // For reference: not setting any options
-      expect(formatRelative(new Date(2014, 0, 1), new Date(2014, 0, 2))).toEqual("yesterday at 12:00 AM");
+      expect(
+        formatRelative(new Date(2014, 0, 1), new Date(2014, 0, 2)),
+      ).toEqual("yesterday at 12:00 AM");
 
       setDefaultOptions({ locale: eo });
 
-      expect(formatRelative(new Date(2014, 0, 1), new Date(2014, 0, 2))).toEqual("hieraŭ je 00:00");
+      expect(
+        formatRelative(new Date(2014, 0, 1), new Date(2014, 0, 2)),
+      ).toEqual("hieraŭ je 00:00");
 
       // Manually set `locale` take priority over `defaultOptions.locale`
-      expect(formatRelative(new Date(2014, 0, 1), new Date(2014, 0, 2), {
-        locale: enUS,
-      })).toEqual("yesterday at 12:00 AM");
+      expect(
+        formatRelative(new Date(2014, 0, 1), new Date(2014, 0, 2), {
+          locale: enUS,
+        }),
+      ).toEqual("yesterday at 12:00 AM");
     });
 
     it("isMatch", () => {
@@ -144,55 +168,71 @@ describe("setDefaultOptions", () => {
       expect(isMatch("2014-januaro-01 00:00:00", "PPPpp")).toBe(true);
 
       // Manually set `locale` take priority over `defaultOptions.locale`
-      expect(isMatch("January 1st, 2014 at 12:00:00 AM", "PPPpp", { locale: enUS })).toBe(true);
+      expect(
+        isMatch("January 1st, 2014 at 12:00:00 AM", "PPPpp", { locale: enUS }),
+      ).toBe(true);
     });
 
     it("parse", () => {
       // For reference: not setting any options
-      expect(parse("January 1st, 2014 at 12:00:00 AM", "PPPpp", new Date())).toEqual(new Date(2014, 0, 1));
+      expect(
+        parse("January 1st, 2014 at 12:00:00 AM", "PPPpp", new Date()),
+      ).toEqual(new Date(2014, 0, 1));
 
       setDefaultOptions({ locale: eo });
 
-      expect(parse("2014-januaro-01 00:00:00", "PPPpp", new Date())).toEqual(new Date(2014, 0, 1));
+      expect(parse("2014-januaro-01 00:00:00", "PPPpp", new Date())).toEqual(
+        new Date(2014, 0, 1),
+      );
 
       // Manually set `locale` take priority over `defaultOptions.locale`
-      expect(parse("January 1st, 2014 at 12:00:00 AM", "PPPpp", new Date(), {
-        locale: enUS,
-      })).toEqual(new Date(2014, 0, 1));
+      expect(
+        parse("January 1st, 2014 at 12:00:00 AM", "PPPpp", new Date(), {
+          locale: enUS,
+        }),
+      ).toEqual(new Date(2014, 0, 1));
     });
   });
 
   describe("weekStartsOn", () => {
     it("differenceInCalendarWeeks", () => {
       // For reference: not setting any options
-      expect(differenceInCalendarWeeks(
-        new Date(2014, 6 /* Jul */, 8, 18, 0),
-        new Date(2014, 5 /* Jun */, 29, 6, 0),
-      )).toBe(1);
+      expect(
+        differenceInCalendarWeeks(
+          new Date(2014, 6 /* Jul */, 8, 18, 0),
+          new Date(2014, 5 /* Jun */, 29, 6, 0),
+        ),
+      ).toBe(1);
 
       setDefaultOptions({ weekStartsOn: 1 });
 
-      expect(differenceInCalendarWeeks(
-        new Date(2014, 6 /* Jul */, 8, 18, 0),
-        new Date(2014, 5 /* Jun */, 29, 6, 0),
-      )).toBe(2);
+      expect(
+        differenceInCalendarWeeks(
+          new Date(2014, 6 /* Jul */, 8, 18, 0),
+          new Date(2014, 5 /* Jun */, 29, 6, 0),
+        ),
+      ).toBe(2);
 
       // Manually set `weekStartsOn` take priority over `defaultOptions.weekStartsOn`
-      expect(differenceInCalendarWeeks(
-        new Date(2014, 6 /* Jul */, 8, 18, 0),
-        new Date(2014, 5 /* Jun */, 29, 6, 0),
-        {
-          weekStartsOn: 0,
-        },
-      )).toBe(1);
+      expect(
+        differenceInCalendarWeeks(
+          new Date(2014, 6 /* Jul */, 8, 18, 0),
+          new Date(2014, 5 /* Jun */, 29, 6, 0),
+          {
+            weekStartsOn: 0,
+          },
+        ),
+      ).toBe(1);
     });
 
     it("eachWeekOfInterval", () => {
       // For reference: not setting any options
-      expect(eachWeekOfInterval({
-        start: new Date(2014, 9 /* Oct */, 6),
-        end: new Date(2014, 10 /* Nov */, 23),
-      })).toEqual([
+      expect(
+        eachWeekOfInterval({
+          start: new Date(2014, 9 /* Oct */, 6),
+          end: new Date(2014, 10 /* Nov */, 23),
+        }),
+      ).toEqual([
         new Date(2014, 9 /* Oct */, 5),
         new Date(2014, 9 /* Oct */, 12),
         new Date(2014, 9 /* Oct */, 19),
@@ -205,10 +245,12 @@ describe("setDefaultOptions", () => {
 
       setDefaultOptions({ weekStartsOn: 1 });
 
-      expect(eachWeekOfInterval({
-        start: new Date(2014, 9 /* Oct */, 6, 6, 35),
-        end: new Date(2014, 10 /* Nov */, 25, 22, 15),
-      })).toEqual([
+      expect(
+        eachWeekOfInterval({
+          start: new Date(2014, 9 /* Oct */, 6, 6, 35),
+          end: new Date(2014, 10 /* Nov */, 25, 22, 15),
+        }),
+      ).toEqual([
         new Date(2014, 9 /* Oct */, 6),
         new Date(2014, 9 /* Oct */, 13),
         new Date(2014, 9 /* Oct */, 20),
@@ -220,15 +262,17 @@ describe("setDefaultOptions", () => {
       ]);
 
       // Manually set `weekStartsOn` take priority over `defaultOptions.weekStartsOn`
-      expect(eachWeekOfInterval(
-        {
-          start: new Date(2014, 9 /* Oct */, 6),
-          end: new Date(2014, 10 /* Nov */, 23),
-        },
-        {
-          weekStartsOn: 0,
-        },
-      )).toEqual([
+      expect(
+        eachWeekOfInterval(
+          {
+            start: new Date(2014, 9 /* Oct */, 6),
+            end: new Date(2014, 10 /* Nov */, 23),
+          },
+          {
+            weekStartsOn: 0,
+          },
+        ),
+      ).toEqual([
         new Date(2014, 9 /* Oct */, 5),
         new Date(2014, 9 /* Oct */, 12),
         new Date(2014, 9 /* Oct */, 19),
@@ -242,16 +286,22 @@ describe("setDefaultOptions", () => {
 
     it("endOfWeek", () => {
       // For reference: not setting any options
-      expect(endOfWeek(new Date(2014, 8 /* Sep */, 2, 11, 55, 0))).toEqual(new Date(2014, 8 /* Sep */, 6, 23, 59, 59, 999));
+      expect(endOfWeek(new Date(2014, 8 /* Sep */, 2, 11, 55, 0))).toEqual(
+        new Date(2014, 8 /* Sep */, 6, 23, 59, 59, 999),
+      );
 
       setDefaultOptions({ weekStartsOn: 1 });
 
-      expect(endOfWeek(new Date(2014, 8 /* Sep */, 2, 11, 55, 0))).toEqual(new Date(2014, 8 /* Sep */, 7, 23, 59, 59, 999));
+      expect(endOfWeek(new Date(2014, 8 /* Sep */, 2, 11, 55, 0))).toEqual(
+        new Date(2014, 8 /* Sep */, 7, 23, 59, 59, 999),
+      );
 
       // Manually set `weekStartsOn` take priority over `defaultOptions.weekStartsOn`
-      expect(endOfWeek(new Date(2014, 8 /* Sep */, 2, 11, 55, 0), {
-        weekStartsOn: 0,
-      })).toEqual(new Date(2014, 8 /* Sep */, 6, 23, 59, 59, 999));
+      expect(
+        endOfWeek(new Date(2014, 8 /* Sep */, 2, 11, 55, 0), {
+          weekStartsOn: 0,
+        }),
+      ).toEqual(new Date(2014, 8 /* Sep */, 6, 23, 59, 59, 999));
     });
 
     it("getWeekOfMonth", () => {
@@ -263,9 +313,11 @@ describe("setDefaultOptions", () => {
       expect(getWeekOfMonth(new Date(2017, 9 /* Oct */, 31))).toBe(6);
 
       // Manually set `weekStartsOn` take priority over `defaultOptions.weekStartsOn`
-      expect(getWeekOfMonth(new Date(2017, 10 /* Nov */, 15), {
-        weekStartsOn: 0,
-      })).toBe(3);
+      expect(
+        getWeekOfMonth(new Date(2017, 10 /* Nov */, 15), {
+          weekStartsOn: 0,
+        }),
+      ).toBe(3);
     });
 
     it("getWeeksInMonth", () => {
@@ -277,92 +329,124 @@ describe("setDefaultOptions", () => {
       expect(getWeeksInMonth(new Date(2015, 1 /* Feb */, 8, 18, 0))).toBe(5);
 
       // Manually set `weekStartsOn` take priority over `defaultOptions.weekStartsOn`
-      expect(getWeeksInMonth(new Date(2015, 1 /* Feb */, 8, 18, 0), {
-        weekStartsOn: 0,
-      })).toBe(4);
+      expect(
+        getWeeksInMonth(new Date(2015, 1 /* Feb */, 8, 18, 0), {
+          weekStartsOn: 0,
+        }),
+      ).toBe(4);
     });
 
     it("isSameWeek", () => {
       // For reference: not setting any options
-      expect(isSameWeek(
-        new Date(2014, 7 /* Aug */, 31),
-        new Date(2014, 8 /* Sep */, 4),
-      )).toBe(true);
+      expect(
+        isSameWeek(
+          new Date(2014, 7 /* Aug */, 31),
+          new Date(2014, 8 /* Sep */, 4),
+        ),
+      ).toBe(true);
 
       setDefaultOptions({ weekStartsOn: 1 });
 
-      expect(isSameWeek(
-        new Date(2014, 7 /* Aug */, 31),
-        new Date(2014, 8 /* Sep */, 4),
-      )).toBe(false);
+      expect(
+        isSameWeek(
+          new Date(2014, 7 /* Aug */, 31),
+          new Date(2014, 8 /* Sep */, 4),
+        ),
+      ).toBe(false);
 
       // Manually set `weekStartsOn` take priority over `defaultOptions.weekStartsOn`
-      expect(isSameWeek(
-        new Date(2014, 7 /* Aug */, 31),
-        new Date(2014, 8 /* Sep */, 4),
-        {
-          weekStartsOn: 0,
-        },
-      )).toBe(true);
+      expect(
+        isSameWeek(
+          new Date(2014, 7 /* Aug */, 31),
+          new Date(2014, 8 /* Sep */, 4),
+          {
+            weekStartsOn: 0,
+          },
+        ),
+      ).toBe(true);
     });
 
     it("lastDayOfWeek", () => {
       // For reference: not setting any options
-      expect(lastDayOfWeek(new Date(2014, 8 /* Sep */, 2, 11, 55, 0))).toEqual(new Date(2014, 8 /* Sep */, 6));
+      expect(lastDayOfWeek(new Date(2014, 8 /* Sep */, 2, 11, 55, 0))).toEqual(
+        new Date(2014, 8 /* Sep */, 6),
+      );
 
       setDefaultOptions({ weekStartsOn: 1 });
 
-      expect(lastDayOfWeek(new Date(2014, 8 /* Sep */, 2, 11, 55, 0))).toEqual(new Date(2014, 8 /* Sep */, 7));
+      expect(lastDayOfWeek(new Date(2014, 8 /* Sep */, 2, 11, 55, 0))).toEqual(
+        new Date(2014, 8 /* Sep */, 7),
+      );
 
       // Manually set `weekStartsOn` take priority over `defaultOptions.weekStartsOn`
-      expect(lastDayOfWeek(new Date(2014, 8 /* Sep */, 2, 11, 55, 0), {
-        weekStartsOn: 0,
-      })).toEqual(new Date(2014, 8 /* Sep */, 6));
+      expect(
+        lastDayOfWeek(new Date(2014, 8 /* Sep */, 2, 11, 55, 0), {
+          weekStartsOn: 0,
+        }),
+      ).toEqual(new Date(2014, 8 /* Sep */, 6));
     });
 
     it("setDay", () => {
       // For reference: not setting any options
-      expect(setDay(new Date(2014, 8 /* Sep */, 1), 0)).toEqual(new Date(2014, 7 /* Aug */, 31));
+      expect(setDay(new Date(2014, 8 /* Sep */, 1), 0)).toEqual(
+        new Date(2014, 7 /* Aug */, 31),
+      );
 
       setDefaultOptions({ weekStartsOn: 1 });
 
-      expect(setDay(new Date(2014, 8 /* Sep */, 1), 0)).toEqual(new Date(2014, 8 /* Sep */, 7));
+      expect(setDay(new Date(2014, 8 /* Sep */, 1), 0)).toEqual(
+        new Date(2014, 8 /* Sep */, 7),
+      );
 
       // Manually set `weekStartsOn` take priority over `defaultOptions.weekStartsOn`
-      expect(setDay(new Date(2014, 8 /* Sep */, 1), 0, {
-        weekStartsOn: 0,
-      })).toEqual(new Date(2014, 7 /* Aug */, 31));
+      expect(
+        setDay(new Date(2014, 8 /* Sep */, 1), 0, {
+          weekStartsOn: 0,
+        }),
+      ).toEqual(new Date(2014, 7 /* Aug */, 31));
     });
 
     it("startOfWeek", () => {
       // For reference: not setting any options
-      expect(startOfWeek(new Date(2014, 8 /* Sep */, 2, 11, 55, 0))).toEqual(new Date(2014, 7 /* Aug */, 31));
+      expect(startOfWeek(new Date(2014, 8 /* Sep */, 2, 11, 55, 0))).toEqual(
+        new Date(2014, 7 /* Aug */, 31),
+      );
 
       setDefaultOptions({ weekStartsOn: 1 });
 
-      expect(startOfWeek(new Date(2014, 8 /* Sep */, 2, 11, 55, 0))).toEqual(new Date(2014, 8 /* Sep */, 1));
+      expect(startOfWeek(new Date(2014, 8 /* Sep */, 2, 11, 55, 0))).toEqual(
+        new Date(2014, 8 /* Sep */, 1),
+      );
 
       // Manually set `weekStartsOn` take priority over `defaultOptions.weekStartsOn`
-      expect(startOfWeek(new Date(2014, 8 /* Sep */, 2, 11, 55, 0), {
-        weekStartsOn: 0,
-      })).toEqual(new Date(2014, 7 /* Aug */, 31));
+      expect(
+        startOfWeek(new Date(2014, 8 /* Sep */, 2, 11, 55, 0), {
+          weekStartsOn: 0,
+        }),
+      ).toEqual(new Date(2014, 7 /* Aug */, 31));
     });
   });
 
   describe("firstWeekContainsDate", () => {
     it("format", () => {
       // For reference: not setting any options
-      expect(format(new Date(1986, 3 /* Apr */, 6), "w wo ww")).toBe("15 15th 15");
+      expect(format(new Date(1986, 3 /* Apr */, 6), "w wo ww")).toBe(
+        "15 15th 15",
+      );
 
       setDefaultOptions({ weekStartsOn: 1, firstWeekContainsDate: 4 });
 
-      expect(format(new Date(1986, 3 /* Apr */, 6), "w wo ww")).toBe("14 14th 14");
+      expect(format(new Date(1986, 3 /* Apr */, 6), "w wo ww")).toBe(
+        "14 14th 14",
+      );
 
       // Manually set `firstWeekContainsDate` take priority over `defaultOptions.firstWeekContainsDate`
-      expect(format(new Date(1986, 3 /* Apr */, 6), "w wo ww", {
-        weekStartsOn: 0,
-        firstWeekContainsDate: 1,
-      })).toBe("15 15th 15");
+      expect(
+        format(new Date(1986, 3 /* Apr */, 6), "w wo ww", {
+          weekStartsOn: 0,
+          firstWeekContainsDate: 1,
+        }),
+      ).toBe("15 15th 15");
     });
 
     it("getWeek", () => {
@@ -374,10 +458,12 @@ describe("setDefaultOptions", () => {
       expect(getWeek(new Date(2005, 0 /* Jan */, 2))).toBe(53);
 
       // Manually set `firstWeekContainsDate` take priority over `defaultOptions.firstWeekContainsDate`
-      expect(getWeek(new Date(2005, 0 /* Jan */, 2), {
-        weekStartsOn: 0,
-        firstWeekContainsDate: 1,
-      })).toBe(2);
+      expect(
+        getWeek(new Date(2005, 0 /* Jan */, 2), {
+          weekStartsOn: 0,
+          firstWeekContainsDate: 1,
+        }),
+      ).toBe(2);
     });
 
     it("getWeekYear", () => {
@@ -389,71 +475,97 @@ describe("setDefaultOptions", () => {
       expect(getWeekYear(new Date(2004, 11 /* Dec */, 26))).toBe(2004);
 
       // Manually set `firstWeekContainsDate` take priority over `defaultOptions.firstWeekContainsDate`
-      expect(getWeekYear(new Date(2004, 11 /* Dec */, 26), {
-        weekStartsOn: 0,
-        firstWeekContainsDate: 1,
-      })).toBe(2005);
+      expect(
+        getWeekYear(new Date(2004, 11 /* Dec */, 26), {
+          weekStartsOn: 0,
+          firstWeekContainsDate: 1,
+        }),
+      ).toBe(2005);
     });
 
     it("parse", () => {
       const referenceDate = new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 900);
       // For reference: not setting any options
-      expect(parse("2018", "Y", referenceDate)).toEqual(new Date(2017, 11 /* Dec */, 31));
+      expect(parse("2018", "Y", referenceDate)).toEqual(
+        new Date(2017, 11 /* Dec */, 31),
+      );
 
       setDefaultOptions({ weekStartsOn: 1, firstWeekContainsDate: 4 });
 
-      expect(parse("2018", "Y", referenceDate)).toEqual(new Date(2018, 0 /* Jan */, 1));
+      expect(parse("2018", "Y", referenceDate)).toEqual(
+        new Date(2018, 0 /* Jan */, 1),
+      );
 
       // Manually set `firstWeekContainsDate` take priority over `defaultOptions.firstWeekContainsDate`
-      expect(parse("2018", "Y", referenceDate, {
-        weekStartsOn: 0,
-        firstWeekContainsDate: 1,
-      })).toEqual(new Date(2017, 11 /* Dec */, 31));
+      expect(
+        parse("2018", "Y", referenceDate, {
+          weekStartsOn: 0,
+          firstWeekContainsDate: 1,
+        }),
+      ).toEqual(new Date(2017, 11 /* Dec */, 31));
     });
 
     it("setWeek", () => {
       // For reference: not setting any options
-      expect(setWeek(new Date(2005, 0 /* Jan */, 2), 1)).toEqual(new Date(2004, 11 /* Dec */, 26));
+      expect(setWeek(new Date(2005, 0 /* Jan */, 2), 1)).toEqual(
+        new Date(2004, 11 /* Dec */, 26),
+      );
 
       setDefaultOptions({ weekStartsOn: 1, firstWeekContainsDate: 4 });
 
-      expect(setWeek(new Date(2005, 0 /* Jan */, 2), 1)).toEqual(new Date(2004, 0 /* Jan */, 4));
+      expect(setWeek(new Date(2005, 0 /* Jan */, 2), 1)).toEqual(
+        new Date(2004, 0 /* Jan */, 4),
+      );
 
       // Manually set `firstWeekContainsDate` take priority over `defaultOptions.firstWeekContainsDate`
-      expect(setWeek(new Date(2005, 0 /* Jan */, 2), 1, {
-        weekStartsOn: 0,
-        firstWeekContainsDate: 1,
-      })).toEqual(new Date(2004, 11 /* Dec */, 26));
+      expect(
+        setWeek(new Date(2005, 0 /* Jan */, 2), 1, {
+          weekStartsOn: 0,
+          firstWeekContainsDate: 1,
+        }),
+      ).toEqual(new Date(2004, 11 /* Dec */, 26));
     });
 
     it("setWeekYear", () => {
       // For reference: not setting any options
-      expect(setWeekYear(new Date(2010, 0 /* Jan */, 2), 2004)).toEqual(new Date(2004, 0 /* Jan */, 3));
+      expect(setWeekYear(new Date(2010, 0 /* Jan */, 2), 2004)).toEqual(
+        new Date(2004, 0 /* Jan */, 3),
+      );
 
       setDefaultOptions({ weekStartsOn: 1, firstWeekContainsDate: 4 });
 
-      expect(setWeekYear(new Date(2010, 0 /* Jan */, 2), 2004)).toEqual(new Date(2005, 0 /* Jan */, 1));
+      expect(setWeekYear(new Date(2010, 0 /* Jan */, 2), 2004)).toEqual(
+        new Date(2005, 0 /* Jan */, 1),
+      );
 
       // Manually set `firstWeekContainsDate` take priority over `defaultOptions.firstWeekContainsDate`
-      expect(setWeekYear(new Date(2010, 0 /* Jan */, 2), 2004, {
-        weekStartsOn: 0,
-        firstWeekContainsDate: 1,
-      })).toEqual(new Date(2004, 0 /* Jan */, 3));
+      expect(
+        setWeekYear(new Date(2010, 0 /* Jan */, 2), 2004, {
+          weekStartsOn: 0,
+          firstWeekContainsDate: 1,
+        }),
+      ).toEqual(new Date(2004, 0 /* Jan */, 3));
     });
 
     it("startOfWeekYear", () => {
       // For reference: not setting any options
-      expect(startOfWeekYear(new Date(2005, 6 /* Jul */, 2))).toEqual(new Date(2004, 11 /* Dec */, 26, 0, 0, 0, 0));
+      expect(startOfWeekYear(new Date(2005, 6 /* Jul */, 2))).toEqual(
+        new Date(2004, 11 /* Dec */, 26, 0, 0, 0, 0),
+      );
 
       setDefaultOptions({ weekStartsOn: 1, firstWeekContainsDate: 4 });
 
-      expect(startOfWeekYear(new Date(2005, 6 /* Jul */, 2))).toEqual(new Date(2005, 0 /* Jan */, 3, 0, 0, 0, 0));
+      expect(startOfWeekYear(new Date(2005, 6 /* Jul */, 2))).toEqual(
+        new Date(2005, 0 /* Jan */, 3, 0, 0, 0, 0),
+      );
 
       // Manually set `firstWeekContainsDate` take priority over `defaultOptions.firstWeekContainsDate`
-      expect(startOfWeekYear(new Date(2005, 6 /* Jul */, 2), {
-        weekStartsOn: 0,
-        firstWeekContainsDate: 1,
-      })).toEqual(new Date(2004, 11 /* Dec */, 26, 0, 0, 0, 0));
+      expect(
+        startOfWeekYear(new Date(2005, 6 /* Jul */, 2), {
+          weekStartsOn: 0,
+          firstWeekContainsDate: 1,
+        }),
+      ).toEqual(new Date(2004, 11 /* Dec */, 26, 0, 0, 0, 0));
     });
   });
 });
