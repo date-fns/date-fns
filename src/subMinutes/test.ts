@@ -52,7 +52,7 @@ describe("subMinutes", () => {
         subMinutes("2024-04-10T07:00:00Z", 10, {
           in: tz("Asia/Singapore"),
         }).toISOString(),
-      ).toBe("2024-04-10T15:00:00.000+08:00");
+      ).toBe("2024-04-10T14:50:00.000+08:00");
     });
 
     it("resolves the context date type", () => {
