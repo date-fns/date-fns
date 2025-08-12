@@ -1,5 +1,5 @@
-import { formatRFC3339 } from "@wrkspc/src/formatRFC3339/index.js";
-import assert from "assert";
+import { formatRFC3339 } from "@wrkspc/src/formatRFC3339/index.ts";
+import assert from "node:assert";
 
 /**
  * Pacific/Chatham (Chatham Islands, New Zealand) is interesting for being the farthest from UTC.

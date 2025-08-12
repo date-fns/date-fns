@@ -1,4 +1,4 @@
-import type { Duration } from "../types.js";
+import type { Duration } from "../types.ts";
 
 /**
  * @name formatISODuration

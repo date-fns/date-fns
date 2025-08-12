@@ -1,7 +1,7 @@
 // This is basic DST test for parseISO
 
-import { parseISO } from "../../parseISO/index.js";
-import assert from "assert";
+import { parseISO } from "../../parseISO/index.ts";
+import assert from "node:assert";
 
 if (process.env.TZ !== "Australia/Sydney")
   throw new Error("The test must be run with TZ=Australia/Sydney");

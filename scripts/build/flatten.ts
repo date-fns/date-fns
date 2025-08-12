@@ -1,6 +1,6 @@
 #!/usr/bin/env pnpm tsx
 
-import assert from "assert";
+import assert from "node:assert";
 import { readFile, readdir, rmdir, stat, unlink, writeFile } from "fs/promises";
 import { dirname, join, relative, resolve } from "path";
 
@@ -108,24 +108,24 @@ async function test() {
   // getNewPath
 
   // Moves files
-  assert.strictEqual(getNewPath("lib/addDays/index.js"), "lib/addDays.js");
+  assert.strictEqual(getNewPath("lib/addDays/index.ts"), "lib/addDays.js");
   assert.strictEqual(
-    getNewPath("lib/fp/addDays/index.js"),
+    getNewPath("lib/fp/addDays/index.ts"),
     "lib/fp/addDays.js",
   );
   assert.strictEqual(
-    getNewPath("lib/locale/en-US/index.js"),
+    getNewPath("lib/locale/en-US/index.ts"),
     "lib/locale/en-US.js",
   );
-  assert.strictEqual(getNewPath("lib/transpose/index.js"), "lib/transpose.js");
-  assert.strictEqual(getNewPath("lib/fp/index.js"), "lib/fp.js");
-  assert.strictEqual(getNewPath("lib/locale/index.js"), "lib/locale.js");
+  assert.strictEqual(getNewPath("lib/transpose/index.ts"), "lib/transpose.js");
+  assert.strictEqual(getNewPath("lib/fp/index.ts"), "lib/fp.js");
+  assert.strictEqual(getNewPath("lib/locale/index.ts"), "lib/locale.js");
   // Ignores the index file
-  assert.strictEqual(getNewPath("lib/index.js"), "lib/index.js");
+  assert.strictEqual(getNewPath("lib/index.ts"), "lib/index.ts");
   // Ignores non-index files
   assert.strictEqual(
-    getNewPath("lib/parse/_lib/Setter.js"),
-    "lib/parse/_lib/Setter.js",
+    getNewPath("lib/parse/_lib/Setter.ts"),
+    "lib/parse/_lib/Setter.ts",
   );
   assert.strictEqual(getNewPath("./setWeek/index"), "./setWeek");
   assert.strictEqual(getNewPath("./add/index.d.ts"), "./add.d.ts");
@@ -134,39 +134,39 @@ async function test() {
 
   // Resolves relative paths
   assert.strictEqual(
-    resolvePath("lib/addDays/index.js", "./_lib/utils.js"),
-    "lib/addDays/_lib/utils.js",
+    resolvePath("lib/addDays/index.ts", "./_lib/utils.ts"),
+    "lib/addDays/_lib/utils.ts",
   );
   assert.strictEqual(
-    resolvePath("lib/parse/_lib/Setter.js", "../../transpose/index.js"),
-    "lib/transpose/index.js",
+    resolvePath("lib/parse/_lib/Setter.ts", "../../transpose/index.ts"),
+    "lib/transpose/index.ts",
   );
 
   // getNewImportPath
 
   assert.strictEqual(
-    getNewImportPath("lib/addDays/index.js", "./_lib/utils.js"),
-    "./addDays/_lib/utils.js",
+    getNewImportPath("lib/addDays/index.ts", "./_lib/utils.ts"),
+    "./addDays/_lib/utils.ts",
   );
   assert.strictEqual(
-    getNewImportPath("lib/index.js", "./add/index.js"),
+    getNewImportPath("lib/index.ts", "./add/index.ts"),
     "./add.js",
   );
   assert.strictEqual(
-    getNewImportPath("lib/index.js", "./locale/en-US/index.js"),
+    getNewImportPath("lib/index.ts", "./locale/en-US/index.ts"),
     "./locale/en-US.js",
   );
   assert.strictEqual(
-    getNewImportPath("lib/locale/en-US/index.js", "../_lib/utils.js"),
-    "./_lib/utils.js",
+    getNewImportPath("lib/locale/en-US/index.ts", "../_lib/utils.ts"),
+    "./_lib/utils.ts",
   );
   assert.strictEqual(
-    getNewImportPath("lib/parse/_lib/Setter.js", "../../transpose/index.js"),
+    getNewImportPath("lib/parse/_lib/Setter.ts", "../../transpose/index.ts"),
     "../../transpose.js",
   );
   assert.strictEqual(
-    getNewImportPath("lib/add/index.d.ts", "../types.js"),
-    "./types.js",
+    getNewImportPath("lib/add/index.d.ts", "../types.ts"),
+    "./types.ts",
   );
 }
 

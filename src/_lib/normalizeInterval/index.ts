@@ -1,5 +1,5 @@
-import type { ContextFn, Interval, NormalizedInterval } from "../../types.js";
-import { normalizeDates } from "../normalizeDates/index.js";
+import type { ContextFn, Interval, NormalizedInterval } from "../../types.ts";
+import { normalizeDates } from "../normalizeDates/index.ts";
 
 export function normalizeInterval(
   context: ContextFn<Date> | undefined,

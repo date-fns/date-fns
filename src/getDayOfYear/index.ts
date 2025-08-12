@@ -1,7 +1,7 @@
-import { differenceInCalendarDays } from "../differenceInCalendarDays/index.js";
-import { startOfYear } from "../startOfYear/index.js";
-import { toDate } from "../toDate/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { differenceInCalendarDays } from "../differenceInCalendarDays/index.ts";
+import { startOfYear } from "../startOfYear/index.ts";
+import { toDate } from "../toDate/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link getDayOfYear} function options.

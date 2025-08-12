@@ -1,9 +1,9 @@
 // subISOWeekYears tests with "context" feature
 
 import { describe, expect, it } from "vitest";
-import { subISOWeekYears } from "./index.js";
+import { subISOWeekYears } from "./index.ts";
 import { TZDate, tz } from "@date-fns/tz";
-import { assertType } from "../_lib/test/index.js";
+import { assertType } from "../_lib/test/index.ts";
 import { UTCDate } from "@date-fns/utc";
 
 describe("subISOWeekYears", () => {

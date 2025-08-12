@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { isSameMinute } from "./index.js";
+import { isSameMinute } from "./index.ts";
 
 describe("isSameMinute", () => {
   it("returns true if the given dates have the same minute", () => {

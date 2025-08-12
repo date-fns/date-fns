@@ -1,8 +1,8 @@
 // This is DST test for formatDistanceStrict in the Melbourne timezone
 
-import { formatDistanceStrict } from "../../formatDistanceStrict/index.js";
-import { parseISO } from "../../parseISO/index.js";
-import assert from "assert";
+import { formatDistanceStrict } from "../../formatDistanceStrict/index.ts";
+import { parseISO } from "../../parseISO/index.ts";
+import assert from "node:assert";
 
 if (process.env.TZ !== "Australia/Melbourne")
   throw new Error("The test must be run with TZ=Australia/Melbourne");

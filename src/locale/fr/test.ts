@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { format } from "../../format/index.js";
-import { fr } from "./index.js";
+import { format } from "../../format/index.ts";
+import { fr } from "./index.ts";
 
 describe("fr locale", () => {
   describe("format edge case with day ordinal and long month format", () => {

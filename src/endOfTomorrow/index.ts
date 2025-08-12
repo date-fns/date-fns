@@ -1,5 +1,5 @@
-import { constructNow } from "../constructNow/index.js";
-import type { ContextOptions } from "../types.js";
+import { constructNow } from "../constructNow/index.ts";
+import type { ContextOptions } from "../types.ts";
 
 /**
  * The {@link endOfTomorrow} function options.

@@ -1,7 +1,7 @@
 import { tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import type { ContextOptions, DateArg } from "../types.js";
-import { getMinutes } from "./index.js";
+import type { ContextOptions, DateArg } from "../types.ts";
+import { getMinutes } from "./index.ts";
 
 describe("getMinutes", () => {
   it("returns the minutes of the given date", () => {

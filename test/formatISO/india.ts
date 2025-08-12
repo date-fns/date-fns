@@ -1,5 +1,5 @@
-import { formatISO } from "@wrkspc/src/formatISO/index.js";
-import assert from "assert";
+import { formatISO } from "@wrkspc/src/formatISO/index.ts";
+import assert from "node:assert";
 
 if (process.env.TZ !== "Asia/Kolkata")
   throw new Error("The test must be run with TZ=Asia/Kolkata");

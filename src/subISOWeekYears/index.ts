@@ -1,5 +1,5 @@
-import { addISOWeekYears } from "../addISOWeekYears/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { addISOWeekYears } from "../addISOWeekYears/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link subISOWeekYears} function options.

@@ -1,5 +1,5 @@
-import { startOfSecond } from "../startOfSecond/index.js";
-import type { DateArg } from "../types.js";
+import { startOfSecond } from "../startOfSecond/index.ts";
+import type { DateArg } from "../types.ts";
 
 /**
  * @name isSameSecond

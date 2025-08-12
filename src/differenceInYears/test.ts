@@ -1,7 +1,7 @@
 import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import type { ContextOptions, DateArg } from "../types.js";
-import { differenceInYears } from "./index.js";
+import type { ContextOptions, DateArg } from "../types.ts";
+import { differenceInYears } from "./index.ts";
 
 describe("differenceInYears", () => {
   it("returns the number of full years between the given dates", () => {

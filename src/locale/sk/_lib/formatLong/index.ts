@@ -1,5 +1,5 @@
-import type { FormatLong } from "../../../types.js";
-import { buildFormatLongFn } from "../../../_lib/buildFormatLongFn/index.js";
+import type { FormatLong } from "../../../types.ts";
+import { buildFormatLongFn } from "../../../_lib/buildFormatLongFn/index.ts";
 
 // https://www.unicode.org/cldr/charts/32/summary/sk.html?hide#1986
 const dateFormats = {

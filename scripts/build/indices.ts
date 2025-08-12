@@ -8,9 +8,9 @@
  */
 
 import { readFile, writeFile } from "fs/promises";
-import { listFPFns } from "../_lib/listFPFns.js";
-import { listFns } from "../_lib/listFns.js";
-import { listLocales } from "../_lib/listLocales.js";
+import { listFPFns } from "../_lib/listFPFns.ts";
+import { listFns } from "../_lib/listFns.ts";
+import { listLocales } from "../_lib/listLocales.ts";
 
 interface File {
   name: string;
@@ -62,7 +62,7 @@ async function generatePackageJSON({
           },
           import: {
             types: "./index.d.ts",
-            default: "./index.js",
+            default: "./index.ts",
           },
         },
       ],
@@ -105,8 +105,8 @@ interface GenerateIndexProps {
 
 function generateIndex({ files, isFP }: GenerateIndexProps): string {
   const lines = files
-    .map((file) => `export * from "${file.path}/index.js";`)
-    .concat(`export type * from "${isFP ? ".." : "."}/types.js";`);
+    .map((file) => `export * from "${file.path}/index.ts";`)
+    .concat(`export type * from "${isFP ? ".." : "."}/types.ts";`);
 
   return `// This file is generated automatically by \`scripts/build/indices.ts\`. Please, don't change it.
 

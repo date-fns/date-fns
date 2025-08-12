@@ -1,7 +1,7 @@
 import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import { assertType } from "../_lib/test/index.js";
-import { parseISO } from "./index.js";
+import { assertType } from "../_lib/test/index.ts";
+import { parseISO } from "./index.ts";
 
 describe("parseISO", () => {
   describe("string argument", () => {

@@ -6,8 +6,8 @@ import { $, type BuildOutput } from "bun";
 import { readFile, writeFile } from "fs/promises";
 import { availableParallelism } from "node:os";
 import { dirname, join, relative } from "path";
-import { listLocales, type LocaleFile } from "../_lib/listLocales.js";
-import { promiseQueue } from "../test/_lib/queue.js";
+import { listLocales, type LocaleFile } from "../_lib/listLocales.ts";
+import { promiseQueue } from "../test/_lib/queue.ts";
 
 if (!process.env.PACKAGE_OUTPUT_PATH)
   throw new Error("PACKAGE_OUTPUT_PATH is not set");
@@ -76,7 +76,7 @@ Promise.all([
   });
 
 function indexTemplate() {
-  return `import * as dateFns from "./index.js";
+  return `import * as dateFns from "./index.ts";
 window.dateFns = {
   ...window.dateFns,
   ...dateFns
@@ -84,7 +84,7 @@ window.dateFns = {
 }
 
 function fpIndexTemplate() {
-  return `import * as fp from "../fp.js";
+  return `import * as fp from "../fp.ts";
 window.dateFns = {
   ...window.dateFns,
   fp
@@ -92,7 +92,7 @@ window.dateFns = {
 }
 
 function localesIndexTemplate() {
-  return `import * as locales from "../locale.js";
+  return `import * as locales from "../locale.ts";
 window.dateFns = {
   ...window.dateFns,
   locale: {
@@ -103,7 +103,7 @@ window.dateFns = {
 }
 
 function localeTemplate({ name, code }: LocaleFile) {
-  return `import { ${name} } from "../${code}.js";
+  return `import { ${name} } from "../${code}.ts";
 window.dateFns = {
   ...window.dateFns,
   locale: {

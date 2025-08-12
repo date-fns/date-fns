@@ -1,7 +1,7 @@
-import { constructFrom } from "../constructFrom/index.js";
-import { constructNow } from "../constructNow/index.js";
-import { isSameYear } from "../isSameYear/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { constructFrom } from "../constructFrom/index.ts";
+import { constructNow } from "../constructNow/index.ts";
+import { isSameYear } from "../isSameYear/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link isThisYear} function options.

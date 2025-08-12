@@ -1,8 +1,8 @@
-import { addDays } from "../addDays/index.js";
-import { addMonths } from "../addMonths/index.js";
-import { constructFrom } from "../constructFrom/index.js";
-import { toDate } from "../toDate/index.js";
-import type { ContextOptions, DateArg, Duration } from "../types.js";
+import { addDays } from "../addDays/index.ts";
+import { addMonths } from "../addMonths/index.ts";
+import { constructFrom } from "../constructFrom/index.ts";
+import { toDate } from "../toDate/index.ts";
+import type { ContextOptions, DateArg, Duration } from "../types.ts";
 
 /**
  * The {@link add} function options.

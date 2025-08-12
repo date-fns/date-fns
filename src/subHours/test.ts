@@ -1,8 +1,8 @@
 import { tz, TZDate } from "@date-fns/tz";
 import { UTCDate } from "@date-fns/utc";
 import { describe, expect, it } from "vitest";
-import { assertType } from "../_lib/test/index.js";
-import { subHours } from "./index.js";
+import { assertType } from "../_lib/test/index.ts";
+import { subHours } from "./index.ts";
 
 describe("subHours", () => {
   it("subtracts the given numbers of hours", () => {

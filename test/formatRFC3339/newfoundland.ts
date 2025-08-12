@@ -1,5 +1,5 @@
-import { formatRFC3339 } from "@wrkspc/src/formatRFC3339/index.js";
-import assert from "assert";
+import { formatRFC3339 } from "@wrkspc/src/formatRFC3339/index.ts";
+import assert from "node:assert";
 
 /**
  * America/St_Johns (Canada) is interesting for its negative to UTC time, with 30 minutes offset.

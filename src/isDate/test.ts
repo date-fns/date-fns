@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it } from "vitest";
-import { assertType } from "../_lib/test/index.js";
-import { isDate } from "./index.js";
+import { assertType } from "../_lib/test/index.ts";
+import { isDate } from "./index.ts";
 
 describe("isDate", () => {
   it("returns true if the given value is a date object", () => {

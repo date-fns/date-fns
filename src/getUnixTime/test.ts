@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { getUnixTime } from "./index.js";
+import { getUnixTime } from "./index.ts";
 
 describe("getUnixTime", () => {
   it("returns the timestamp of the given date", () => {

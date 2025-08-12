@@ -1,8 +1,8 @@
 import { tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import { fakeDate } from "../_lib/test/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
-import { isThisISOWeek } from "./index.js";
+import { fakeDate } from "../_lib/test/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
+import { isThisISOWeek } from "./index.ts";
 
 describe("isThisISOWeek", () => {
   const { fakeNow } = fakeDate(new Date(2014, 8 /* Sep */, 25));

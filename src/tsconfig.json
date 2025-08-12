@@ -5,6 +5,7 @@
     "lib": ["dom", "es2020", "es2018.promise", "ESNext.Intl"],
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
+    "allowImportingTsExtensions": true,
     "skipLibCheck": true,
     "strict": true,
     // TODO: Enable these when we can:

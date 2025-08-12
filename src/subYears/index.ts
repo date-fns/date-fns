@@ -1,5 +1,5 @@
-import { addYears } from "../addYears/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { addYears } from "../addYears/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link subYears} function options.

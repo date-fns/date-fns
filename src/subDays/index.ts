@@ -1,5 +1,5 @@
-import { addDays } from "../addDays/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { addDays } from "../addDays/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link subDays} function options.

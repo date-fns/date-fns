@@ -1,5 +1,5 @@
-import { toDate } from "../toDate/index.js";
-import type { DateArg, ContextOptions } from "../types.js";
+import { toDate } from "../toDate/index.ts";
+import type { DateArg, ContextOptions } from "../types.ts";
 
 /**
  * The {@link startOfSecond} function options.

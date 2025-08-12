@@ -1,8 +1,8 @@
-import { normalizeInterval } from "../_lib/normalizeInterval/index.js";
-import { constructFrom } from "../constructFrom/index.js";
-import { eachDayOfInterval } from "../eachDayOfInterval/index.js";
-import { isWeekend } from "../isWeekend/index.js";
-import type { ContextOptions, Interval } from "../types.js";
+import { normalizeInterval } from "../_lib/normalizeInterval/index.ts";
+import { constructFrom } from "../constructFrom/index.ts";
+import { eachDayOfInterval } from "../eachDayOfInterval/index.ts";
+import { isWeekend } from "../isWeekend/index.ts";
+import type { ContextOptions, Interval } from "../types.ts";
 
 /**
  * The {@link eachWeekendOfInterval} function options.

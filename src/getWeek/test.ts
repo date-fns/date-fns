@@ -1,7 +1,7 @@
 import { tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import type { ContextOptions, DateArg } from "../types.js";
-import { getWeek } from "./index.js";
+import type { ContextOptions, DateArg } from "../types.ts";
+import { getWeek } from "./index.ts";
 
 describe("getWeek", () => {
   it("returns the local week of year of the given date", () => {

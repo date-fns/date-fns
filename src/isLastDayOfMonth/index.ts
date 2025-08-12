@@ -1,7 +1,7 @@
-import { endOfDay } from "../endOfDay/index.js";
-import { endOfMonth } from "../endOfMonth/index.js";
-import { toDate } from "../toDate/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { endOfDay } from "../endOfDay/index.ts";
+import { endOfMonth } from "../endOfMonth/index.ts";
+import { toDate } from "../toDate/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 export interface IsLastDayOfMonthOptions extends ContextOptions<Date> {}
 

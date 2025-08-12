@@ -1,8 +1,8 @@
-import { getTimezoneOffsetInMilliseconds } from "../_lib/getTimezoneOffsetInMilliseconds/index.js";
-import { normalizeDates } from "../_lib/normalizeDates/index.js";
-import { millisecondsInDay } from "../constants/index.js";
-import { startOfDay } from "../startOfDay/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { getTimezoneOffsetInMilliseconds } from "../_lib/getTimezoneOffsetInMilliseconds/index.ts";
+import { normalizeDates } from "../_lib/normalizeDates/index.ts";
+import { millisecondsInDay } from "../constants/index.ts";
+import { startOfDay } from "../startOfDay/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link differenceInCalendarDays} function options.

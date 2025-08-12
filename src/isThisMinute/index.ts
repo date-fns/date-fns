@@ -1,6 +1,6 @@
-import { constructNow } from "../constructNow/index.js";
-import { isSameMinute } from "../isSameMinute/index.js";
-import type { DateArg } from "../types.js";
+import { constructNow } from "../constructNow/index.ts";
+import { isSameMinute } from "../isSameMinute/index.ts";
+import type { DateArg } from "../types.ts";
 
 /**
  * @name isThisMinute

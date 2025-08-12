@@ -1,5 +1,5 @@
-import assert from "assert";
-import { getOverlappingDaysInIntervals } from "../../getOverlappingDaysInIntervals/index.js";
+import assert from "node:assert";
+import { getOverlappingDaysInIntervals } from "../../getOverlappingDaysInIntervals/index.ts";
 
 assert.strictEqual(
   getOverlappingDaysInIntervals(

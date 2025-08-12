@@ -1,8 +1,8 @@
-import { constructFrom } from "../constructFrom/index.js";
-import { constructNow } from "../constructNow/index.js";
-import { isSameDay } from "../isSameDay/index.js";
-import { subDays } from "../subDays/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { constructFrom } from "../constructFrom/index.ts";
+import { constructNow } from "../constructNow/index.ts";
+import { isSameDay } from "../isSameDay/index.ts";
+import { subDays } from "../subDays/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link isYesterday} function options.

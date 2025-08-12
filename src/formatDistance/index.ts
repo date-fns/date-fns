@@ -1,12 +1,12 @@
-import { defaultLocale } from "../_lib/defaultLocale/index.js";
-import { getDefaultOptions } from "../_lib/defaultOptions/index.js";
-import { getTimezoneOffsetInMilliseconds } from "../_lib/getTimezoneOffsetInMilliseconds/index.js";
-import { normalizeDates } from "../_lib/normalizeDates/index.js";
-import { compareAsc } from "../compareAsc/index.js";
-import { minutesInDay, minutesInMonth } from "../constants/index.js";
-import { differenceInMonths } from "../differenceInMonths/index.js";
-import { differenceInSeconds } from "../differenceInSeconds/index.js";
-import type { ContextOptions, DateArg, LocalizedOptions } from "../types.js";
+import { defaultLocale } from "../_lib/defaultLocale/index.ts";
+import { getDefaultOptions } from "../_lib/defaultOptions/index.ts";
+import { getTimezoneOffsetInMilliseconds } from "../_lib/getTimezoneOffsetInMilliseconds/index.ts";
+import { normalizeDates } from "../_lib/normalizeDates/index.ts";
+import { compareAsc } from "../compareAsc/index.ts";
+import { minutesInDay, minutesInMonth } from "../constants/index.ts";
+import { differenceInMonths } from "../differenceInMonths/index.ts";
+import { differenceInSeconds } from "../differenceInSeconds/index.ts";
+import type { ContextOptions, DateArg, LocalizedOptions } from "../types.ts";
 
 /**
  * The {@link formatDistance} function options.

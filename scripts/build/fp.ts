@@ -10,7 +10,7 @@
 import { joinTag, readRefsFromJSON } from "@date-fns/docs";
 import { mkdir, stat, writeFile } from "fs/promises";
 import path from "path";
-import { config } from "../../docs/config.js";
+import { config } from "../../docs/config.ts";
 
 async function main() {
   const fns = await readRefsFromJSON(
@@ -77,8 +77,8 @@ main();
 function getFPFn(sourceName: string, fnName: string, arity: number): string {
   return `// This file is generated automatically by \`scripts/build/fp.ts\`. Please, don't change it.
 
-import { ${sourceName} as fn } from "../../${sourceName}/index.js";
-import { convertToFP } from "../_lib/convertToFP/index.js";
+import { ${sourceName} as fn } from "../../${sourceName}/index.ts";
+import { convertToFP } from "../_lib/convertToFP/index.ts";
 
 export const ${fnName} = convertToFP(fn, ${arity});
 `;

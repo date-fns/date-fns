@@ -1,4 +1,4 @@
-import type { FormatDistanceFn, FormatDistanceLocale } from "../../../types.js";
+import type { FormatDistanceFn, FormatDistanceLocale } from "../../../types.ts";
 
 /**
  * Davant de les xifres que es diuen amb vocal inicial, 1 i 11, s'apostrofen els articles el i la i la preposició de igual que si estiguessin escrits amb lletres.

@@ -1,12 +1,12 @@
-import { normalizeInterval } from "../_lib/normalizeInterval/index.js";
-import { add } from "../add/index.js";
-import { differenceInDays } from "../differenceInDays/index.js";
-import { differenceInHours } from "../differenceInHours/index.js";
-import { differenceInMinutes } from "../differenceInMinutes/index.js";
-import { differenceInMonths } from "../differenceInMonths/index.js";
-import { differenceInSeconds } from "../differenceInSeconds/index.js";
-import { differenceInYears } from "../differenceInYears/index.js";
-import type { ContextOptions, Duration, Interval } from "../types.js";
+import { normalizeInterval } from "../_lib/normalizeInterval/index.ts";
+import { add } from "../add/index.ts";
+import { differenceInDays } from "../differenceInDays/index.ts";
+import { differenceInHours } from "../differenceInHours/index.ts";
+import { differenceInMinutes } from "../differenceInMinutes/index.ts";
+import { differenceInMonths } from "../differenceInMonths/index.ts";
+import { differenceInSeconds } from "../differenceInSeconds/index.ts";
+import { differenceInYears } from "../differenceInYears/index.ts";
+import type { ContextOptions, Duration, Interval } from "../types.ts";
 
 /**
  * The {@link intervalToDuration} function options.

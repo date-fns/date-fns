@@ -9,15 +9,15 @@
 
 import { readFile, writeFile } from "fs/promises";
 import path from "path";
-import type { Locale } from "@wrkspc/src/locale/types.js";
-import { listLocales } from "../../_lib/listLocales.js";
-import { formatCode } from "../_lib/prettier.js";
-import { convertLocaleToConst } from "./_lib/locale.js";
-import renderFormatDistance from "./renderFormatDistance/index.js";
-import renderFormatDistanceStrict from "./renderFormatDistanceStrict/index.js";
-import renderFormatDuration from "./renderFormatDuration/index.js";
-import renderFormatParse from "./renderFormatParse/index.js";
-import renderFormatRelative from "./renderFormatRelative/index.js";
+import type { Locale } from "@wrkspc/src/locale/types.ts";
+import { listLocales } from "../../_lib/listLocales.ts";
+import { formatCode } from "../_lib/prettier.ts";
+import { convertLocaleToConst } from "./_lib/locale.ts";
+import renderFormatDistance from "./renderFormatDistance/index.ts";
+import renderFormatDistanceStrict from "./renderFormatDistanceStrict/index.ts";
+import renderFormatDuration from "./renderFormatDuration/index.ts";
+import renderFormatParse from "./renderFormatParse/index.ts";
+import renderFormatRelative from "./renderFormatRelative/index.ts";
 
 const mode = process.argv[2] || "generate";
 

@@ -1,5 +1,5 @@
-import { previousDay } from "../previousDay/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { previousDay } from "../previousDay/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link previousMonday} function options.

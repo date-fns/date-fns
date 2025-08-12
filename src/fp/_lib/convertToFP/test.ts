@@ -4,8 +4,8 @@ import { flow as jsFnsFlow } from "js-fns";
 // @ts-ignore - Lodash types are tripping ("Module '"lodash"' has no exported member 'flow'.ts(2305)")
 import { flow as lodashFlow } from "lodash";
 import { describe, expect, it } from "vitest";
-import { addDays, addHours, isEqual } from "../../index.js";
-import { convertToFP } from "./index.js";
+import { addDays, addHours, isEqual } from "../../index.ts";
+import { convertToFP } from "./index.ts";
 
 describe("convertToFP", () => {
   function fn(a: unknown, b: unknown, c: unknown) {

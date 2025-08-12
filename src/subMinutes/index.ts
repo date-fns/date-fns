@@ -1,5 +1,5 @@
-import { addMinutes } from "../addMinutes/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { addMinutes } from "../addMinutes/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link subMinutes} function options.

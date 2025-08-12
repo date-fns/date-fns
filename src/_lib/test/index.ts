@@ -1,6 +1,6 @@
 import { afterEach, beforeEach } from "vitest";
-import { addLeadingZeros } from "../addLeadingZeros/index.js";
-import { setDefaultOptions } from "../defaultOptions/index.js";
+import { addLeadingZeros } from "../addLeadingZeros/index.ts";
+import { setDefaultOptions } from "../defaultOptions/index.ts";
 import sinon from "sinon";
 
 export function assertType<Type>(_value: Type) {}

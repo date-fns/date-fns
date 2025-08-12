@@ -1,7 +1,7 @@
-import { addWeeks } from "../addWeeks/index.js";
-import { millisecondsInWeek } from "../constants/index.js";
-import { startOfISOWeekYear } from "../startOfISOWeekYear/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { addWeeks } from "../addWeeks/index.ts";
+import { millisecondsInWeek } from "../constants/index.ts";
+import { startOfISOWeekYear } from "../startOfISOWeekYear/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link getISOWeeksInYear} function options.

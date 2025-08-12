@@ -1,5 +1,5 @@
-import type { FormatLong } from "../../../types.js";
-import { buildFormatLongFn } from "../../../_lib/buildFormatLongFn/index.js";
+import type { FormatLong } from "../../../types.ts";
+import { buildFormatLongFn } from "../../../_lib/buildFormatLongFn/index.ts";
 
 // DIN 5008: https://de.wikipedia.org/wiki/Datumsformat#DIN_5008
 

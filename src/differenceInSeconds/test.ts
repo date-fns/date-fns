@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { differenceInSeconds } from "./index.js";
+import { differenceInSeconds } from "./index.ts";
 
 describe("differenceInSeconds", () => {
   it("returns the number of seconds between the given dates with `trunc` as a default rounding method", () => {

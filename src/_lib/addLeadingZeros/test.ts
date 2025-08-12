@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { addLeadingZeros } from "./index.js";
+import { addLeadingZeros } from "./index.ts";
 
 describe("addLeadingZeros", () => {
   it("adds leading zeros when number has fewer digits than target length", () => {

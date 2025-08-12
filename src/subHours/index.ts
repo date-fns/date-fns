@@ -1,5 +1,5 @@
-import { addHours } from "../addHours/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { addHours } from "../addHours/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link subHours} function options.
