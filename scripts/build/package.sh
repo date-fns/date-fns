@@ -7,6 +7,10 @@
 
 set -e
 
+echo "⚡️ Building package"
+
+#region Prepare
+
 # cd to the root dir
 root="$(pwd)/$(dirname "$0")/../.."
 cd "$root" || exit 1
@@ -19,6 +23,13 @@ export PACKAGE_OUTPUT_PATH="$dir"
 rm -rf "$dir"
 mkdir -p "$dir"
 
+#endregion
+
+#region ESM
+
+echo
+echo "🚧 Building ESM code..."
+
 # Transpile ESM versions of files
 env BABEL_ENV=esm pnpm babel src \
   --config-file ./babel.config.json \
@@ -28,8 +39,18 @@ env BABEL_ENV=esm pnpm babel src \
   --out-file-extension .js \
   --quiet
 
+
 # Add fallback for Next.js and other tools that modularize imports:
 pnpm tsx scripts/build/modularized.ts
+
+echo "🟢 ESM code is ready!"
+
+#endregion
+
+#region CommonJS
+
+echo
+echo "🚧 Building CommonJS code..."
 
 # Transpile CommonJS versions of files
 env BABEL_ENV=cjs pnpm babel src \
@@ -40,25 +61,68 @@ env BABEL_ENV=cjs pnpm babel src \
   --out-file-extension .cjs \
   --quiet
 
+echo "🟢 CommonJS code is ready!"
+
+#endregion
+
+#region TypeScript
+
+echo
+echo "🚧 Building TypeScript definitions..."
+
 # Generate TypeScript
 pnpm tsc --project tsconfig.lib.json --outDir "$dir"
+
+echo "🟢 TypeScript definitions are ready!"
+
+#endregion
+
+#region Beautification
+
+echo
+echo "🚧 Formatting code..."
+
+# Make it prettier
+if [ -z "$PACKAGE_SKIP_BEAUTIFY" ]; then
+  pnpm prettier --write --ignore-path "" "$dir" 1> /dev/null
+fi
+
+echo "🟢 Formatting is complete!"
+
+#endregion
+
+#region Flattening
 
 if [ -n "$TEST_FLATTEN" ]; then
   exit 0
 fi
 
-# Make it prettier
-if [ -z "$PACKAGE_SKIP_BEAUTIFY" ]; then
-  cd $dir
-  pnpm prettier . --write > /dev/null 2>&1 || exit 1
-  cd -
-fi
+echo
+echo "🚧 Flattening the modules..."
 
 # Flatten the structure
 pnpm tsx scripts/build/flatten.ts
 
+echo "🟢 Flattening is complete!"
+
+#endregion
+
+#region CommonJS types
+
+echo
+echo "🚧 Building CommonJS type definitions..."
+
 # Generate .d.cts files
 pnpm tsx scripts/build/cts.ts
+
+echo "🟢 CommonJS type definitions are ready!"
+
+#endregion
+
+#region Files
+
+echo
+echo "🚧 Copying misc files..."
 
 # Copy basic files
 for pattern in CHANGELOG.md \
@@ -71,7 +135,25 @@ do
   cp -r "$pattern" "$dir"
 done
 
+echo "🟢 Misc files are ready!"
+
+#endregion
+
+#region CDN
+
+echo
+
 # Build CDN versions
 if [ -z "$PACKAGE_SKIP_CDN" ]; then
+  echo "🚧 Building CDN versions..."
+
   bun ./scripts/build/cdn.ts
+
+  echo "🟢 CDN versions are ready!"
+else
+  echo "⚪️ PACKAGE_SKIP_CDN is set, CDN versions are skipped"
 fi
+
+#endregion
+
+echo -e "\n⭐️ Build complete!"

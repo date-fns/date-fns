@@ -76,7 +76,7 @@ Promise.all([
   });
 
 function indexTemplate() {
-  return `import * as dateFns from "./index.ts";
+  return `import * as dateFns from "./index.js";
 window.dateFns = {
   ...window.dateFns,
   ...dateFns
@@ -84,7 +84,7 @@ window.dateFns = {
 }
 
 function fpIndexTemplate() {
-  return `import * as fp from "../fp.ts";
+  return `import * as fp from "../fp.js";
 window.dateFns = {
   ...window.dateFns,
   fp
@@ -92,7 +92,7 @@ window.dateFns = {
 }
 
 function localesIndexTemplate() {
-  return `import * as locales from "../locale.ts";
+  return `import * as locales from "../locale.js";
 window.dateFns = {
   ...window.dateFns,
   locale: {
@@ -103,7 +103,7 @@ window.dateFns = {
 }
 
 function localeTemplate({ name, code }: LocaleFile) {
-  return `import { ${name} } from "../${code}.ts";
+  return `import { ${name} } from "../${code}.js";
 window.dateFns = {
   ...window.dateFns,
   locale: {
