@@ -13,3 +13,7 @@ docs.json
 .idea
 coverage
 /secrets
+# Secrets
+.env
+.env.*
+!.env.example
