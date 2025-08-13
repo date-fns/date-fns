@@ -4,3 +4,6 @@
 [submodule "submodules/utc"]
 	path = submodules/utc
 	url = git@github.com:date-fns/utc.git
+[submodule "submodules/docs"]
+	path = submodules/docs
+	url = git@github.com:date-fns/docs.git
