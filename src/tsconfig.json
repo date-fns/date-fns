@@ -1,4 +1,9 @@
 {
+  "include": ["./**/*.ts"],
+  "references": [
+    { "path": "../submodules/tz" },
+    { "path": "../submodules/utc" }
+  ],
   "compilerOptions": {
     "rootDir": ".",
     "target": "ESNext",
@@ -21,10 +26,5 @@
     "emitDeclarationOnly": true,
     "outDir": "../.ts",
     "tsBuildInfoFile": "../.ts/tsconfig.tsbuildinfo"
-  },
-  "include": ["./**/*.ts"],
-  "references": [
-    { "path": "../submodules/tz" },
-    { "path": "../submodules/utc" }
-  ]
+  }
 }

@@ -1,4 +1,6 @@
 {
+  "include": ["**/*.ts"],
+  "references": [{ "path": "../src" }],
   "compilerOptions": {
     "rootDir": ".",
     "target": "ESNext",
@@ -25,7 +27,5 @@
     "paths": {
       "@wrkspc/src/*": ["../src/*"]
     }
-  },
-  "include": ["**/*.ts"],
-  "references": [{ "path": "../src" }]
+  }
 }
