@@ -7,3 +7,6 @@
 [submodule "submodules/docs"]
 	path = submodules/docs
 	url = git@github.com:date-fns/docs.git
+[submodule "submodules/build"]
+	path = submodules/build
+	url = git@github.com:date-fns/build.git

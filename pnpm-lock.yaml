@@ -23,9 +23,12 @@ importers:
       '@babel/preset-typescript':
         specifier: ^7.27.1
         version: 7.27.1(@babel/core@7.28.0)
+      '@date-fns/build':
+        specifier: workspace:^
+        version: link:submodules/build
       '@date-fns/docs':
-        specifier: ^0.38.0
-        version: 0.38.0(typescript@5.9.2)
+        specifier: workspace:^
+        version: link:submodules/docs
       '@date-fns/tz':
         specifier: workspace:^
         version: link:submodules/tz
@@ -126,6 +129,15 @@ importers:
         specifier: ^3.2.4
         version: 3.2.4(@types/node@20.19.9)(@vitest/browser@3.2.4)(jiti@2.5.1)(tsx@4.20.3)(yaml@2.8.0)
 
+  submodules/build:
+    devDependencies:
+      typescript:
+        specifier: ^5.9.2
+        version: 5.9.2
+      vitest:
+        specifier: ^3.2.4
+        version: 3.2.4(@types/node@22.17.0)(@vitest/browser@3.2.4)(jiti@2.5.1)(tsx@4.20.3)(yaml@2.8.0)
+
   submodules/docs:
     dependencies:
       firebase-admin:
@@ -144,11 +156,14 @@ importers:
         specifier: ^10.7.0
         version: 10.7.0
     devDependencies:
+      '@date-fns/build':
+        specifier: workspace:^
+        version: link:../build
       '@deno/doc':
         specifier: jsr:^0.181.0
         version: '@jsr/deno__doc@0.181.0'
       '@types/node':
-        specifier: ^20.16.5
+        specifier: ^20.19.9
         version: 20.19.9
       json-bond:
         specifier: ^1.0.0
@@ -855,10 +870,6 @@ packages:
   '@colors/colors@1.5.0':
     resolution: {integrity: sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==}
     engines: {node: '>=0.1.90'}
-
-  '@date-fns/docs@0.38.0':
-    resolution: {integrity: sha512-1eixhCpBlwlYG5J5CKtm/z5+O2Ij0yYoqGVViIvtwr2zjbAgHQuZN4VPl2CspCIvkPMfnU64OILo6+Tcd3OxGQ==}
-    hasBin: true
 
   '@esbuild/aix-ppc64@0.25.8':
     resolution: {integrity: sha512-urAvrUedIqEiFR3FYSLTWQgLu5tb+m0qZw0NBEasUeo6wuqatkMDaRT+1uABiGXEu5vqgPd7FGE1BhsAIy9QVA==}
@@ -4719,18 +4730,6 @@ snapshots:
 
   '@colors/colors@1.5.0':
     optional: true
-
-  '@date-fns/docs@0.38.0(typescript@5.9.2)':
-    dependencies:
-      firebase-admin: 12.7.0
-      js-fns: 2.5.2
-      typedoc: 0.26.11(typescript@5.9.2)
-      typeroo: 0.16.0
-      typesaurus: 10.7.0
-    transitivePeerDependencies:
-      - encoding
-      - supports-color
-      - typescript
 
   '@esbuild/aix-ppc64@0.25.8':
     optional: true

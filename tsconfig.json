@@ -5,6 +5,7 @@
     { "path": "./submodules/tz" },
     { "path": "./submodules/utc" },
     { "path": "./submodules/docs" },
+    { "path": "./submodules/build" },
     { "path": "./scripts" },
     { "path": "./test" }
   ]
