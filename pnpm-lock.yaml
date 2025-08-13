@@ -126,6 +126,31 @@ importers:
         specifier: ^3.2.4
         version: 3.2.4(@types/node@20.19.9)(@vitest/browser@3.2.4)(jiti@2.5.1)(tsx@4.20.3)(yaml@2.8.0)
 
+  submodules/docs:
+    dependencies:
+      firebase-admin:
+        specifier: ^12.4.0
+        version: 12.7.0
+      js-fns:
+        specifier: ^2.5.2
+        version: 2.5.2
+      typedoc:
+        specifier: ^0.26.7
+        version: 0.26.11(typescript@5.9.2)
+      typeroo:
+        specifier: ^0.16.0
+        version: 0.16.0
+      typesaurus:
+        specifier: ^10.7.0
+        version: 10.7.0
+    devDependencies:
+      '@types/node':
+        specifier: ^20.16.5
+        version: 20.19.9
+      typescript:
+        specifier: ^5.6.2
+        version: 5.9.2
+
   submodules/tz:
     devDependencies:
       '@arethetypeswrong/cli':

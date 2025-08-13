@@ -4,6 +4,7 @@
     { "path": "./src" },
     { "path": "./submodules/tz" },
     { "path": "./submodules/utc" },
+    { "path": "./submodules/docs" },
     { "path": "./scripts" },
     { "path": "./test" }
   ]
