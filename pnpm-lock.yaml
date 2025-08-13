@@ -144,9 +144,15 @@ importers:
         specifier: ^10.7.0
         version: 10.7.0
     devDependencies:
+      '@deno/doc':
+        specifier: jsr:^0.181.0
+        version: '@jsr/deno__doc@0.181.0'
       '@types/node':
         specifier: ^20.16.5
         version: 20.19.9
+      json-bond:
+        specifier: ^1.0.0
+        version: 1.0.0
       typescript:
         specifier: ^5.6.2
         version: 5.9.2
@@ -1158,6 +1164,36 @@ packages:
 
   '@js-sdsl/ordered-map@4.4.2':
     resolution: {integrity: sha512-iUKgm52T8HOE/makSxjqoWhe95ZJA1/G1sYsGev2JDKUSS14KAgg1LHb+Ba+IPow0xflbnSkOsZcO08C7w1gYw==}
+
+  '@jsr/deno__cache-dir@0.14.0':
+    resolution: {integrity: sha512-aHcnmRRVOxQ03lGBys6rfapCQDKxQ4E4iJfjKRZ3Qy6oYgrhoe/K5HF2NIu0uR74SlKh1Zsi5uq13P9FL9LUNA==, tarball: https://npm.jsr.io/~/11/@jsr/deno__cache-dir/0.14.0.tgz}
+
+  '@jsr/deno__doc@0.181.0':
+    resolution: {integrity: sha512-bzWq2fQEB6zQ/Rjd04mTcM7NvIEoGxxJhMuEyo3hqw9cnx1Y7EoOF+swayvi1towgZ/oLVzWBj4si+w1yyy6aA==, tarball: https://npm.jsr.io/~/11/@jsr/deno__doc/0.181.0.tgz}
+
+  '@jsr/deno__graph@0.82.3':
+    resolution: {integrity: sha512-MAXLdNqjkbHWg/e0teacvRkE8MOR8GYLcQwF301QK4cIBslZmmIgvXiRN5SiCdbEiGWBDm3XQ/oFgGcQGyyFGg==, tarball: https://npm.jsr.io/~/11/@jsr/deno__graph/0.82.3.tgz}
+
+  '@jsr/deno__graph@0.86.9':
+    resolution: {integrity: sha512-+qrrma5/bL+hcG20mfaEeC8SLopqoyd1RjcKFMRu++3SAXyrTKuvuIjBJCn/NyN7X+kV+QrJG67BCHX38Rzw+g==, tarball: https://npm.jsr.io/~/11/@jsr/deno__graph/0.86.9.tgz}
+
+  '@jsr/std__bytes@1.0.6':
+    resolution: {integrity: sha512-St6yKggjFGhxS52IFLJWvkchRFbAKg2Xh8UxA4S1EGz7GJ2Ui+ssDDldj/w2c8vCxvl6qgR0HaYbKeFJNqujmA==, tarball: https://npm.jsr.io/~/11/@jsr/std__bytes/1.0.6.tgz}
+
+  '@jsr/std__fmt@1.0.8':
+    resolution: {integrity: sha512-miZHzj9OgjuajrcMKzpqNVwFb9O71UHZzV/FHVq0E0Uwmv/1JqXgmXAoBNPrn+MP0fHT3mMgaZ6XvQO7dam67Q==, tarball: https://npm.jsr.io/~/11/@jsr/std__fmt/1.0.8.tgz}
+
+  '@jsr/std__fs@1.0.19':
+    resolution: {integrity: sha512-TEjyE8g+46jPlu7dJHLrwc8NMGl8zfG+JjWxyNQyDbxP0RtqZ4JmYZfR9vy4RWYWJQbLpw6Kbt2n+K/2zAO/JA==, tarball: https://npm.jsr.io/~/11/@jsr/std__fs/1.0.19.tgz}
+
+  '@jsr/std__internal@1.0.10':
+    resolution: {integrity: sha512-fmD6yKep/sMnB2yPQU/REZG7Z4N9SZwcUBNnceo4QkXk67l3JEfxHoROQ/YHeVSOmq6x55Ra6nuMjz2ib3nj3g==, tarball: https://npm.jsr.io/~/11/@jsr/std__internal/1.0.10.tgz}
+
+  '@jsr/std__io@0.225.2':
+    resolution: {integrity: sha512-QNImMbao6pKXvV4xpFkY2zviZi1r+1KpYzgMqaa2gHDPZhXQqlia/Og+VqMxxfAr8Pw6BF3tw/hSw3LrWWTRmA==, tarball: https://npm.jsr.io/~/11/@jsr/std__io/0.225.2.tgz}
+
+  '@jsr/std__path@1.1.1':
+    resolution: {integrity: sha512-+x5LgcNUSpMzOZIRmFSjqrMTCxHlgXjWzK8ZFr7lwgHfWZxoVXeis3MFQlkR5mN5uQ61Y1P30Li1PU0yx9uluA==, tarball: https://npm.jsr.io/~/11/@jsr/std__path/1.1.1.tgz}
 
   '@kwsites/file-exists@1.1.1':
     resolution: {integrity: sha512-m9/5YGR18lIwxSFDwfE3oA7bWuq9kdau6ugN4H2rJeyhFQZcG9AgSHkQtSD15a8WvTgfz9aikZMrKPHvbpqFiw==}
@@ -2770,6 +2806,9 @@ packages:
 
   json-bigint@1.0.0:
     resolution: {integrity: sha512-SiPv/8VpZuWbvLSMtTDU8hEfrZWg/mH/nV/b4o0CYbSxu1UIQPLdwKOCIyLQX+VIPO5vrLX3i8qtqFyhdPSUSQ==}
+
+  json-bond@1.0.0:
+    resolution: {integrity: sha512-nqFhCIi+s/FcUyPRjRzOtZBXb8RI7Ec5dV8uXv+3GP3oeS22GFVTi0GI5jhrLz7QWwHJZRBCKnKzuC+hAkFXIg==}
 
   json-buffer@3.0.1:
     resolution: {integrity: sha512-4bV5BfR2mqfQTJm+V5tPPdf+ZpuhiIvTuAB5g8kcrXOZpTT/QwwVRWBywX1ozr6lEuPdbHxwaJlm9G6mI2sfSQ==}
@@ -4967,6 +5006,42 @@ snapshots:
   '@js-sdsl/ordered-map@4.4.2':
     optional: true
 
+  '@jsr/deno__cache-dir@0.14.0':
+    dependencies:
+      '@jsr/deno__graph': 0.86.9
+      '@jsr/std__fmt': 1.0.8
+      '@jsr/std__fs': 1.0.19
+      '@jsr/std__io': 0.225.2
+      '@jsr/std__path': 1.1.1
+
+  '@jsr/deno__doc@0.181.0':
+    dependencies:
+      '@jsr/deno__cache-dir': 0.14.0
+      '@jsr/deno__graph': 0.82.3
+
+  '@jsr/deno__graph@0.82.3': {}
+
+  '@jsr/deno__graph@0.86.9': {}
+
+  '@jsr/std__bytes@1.0.6': {}
+
+  '@jsr/std__fmt@1.0.8': {}
+
+  '@jsr/std__fs@1.0.19':
+    dependencies:
+      '@jsr/std__internal': 1.0.10
+      '@jsr/std__path': 1.1.1
+
+  '@jsr/std__internal@1.0.10': {}
+
+  '@jsr/std__io@0.225.2':
+    dependencies:
+      '@jsr/std__bytes': 1.0.6
+
+  '@jsr/std__path@1.1.1':
+    dependencies:
+      '@jsr/std__internal': 1.0.10
+
   '@kwsites/file-exists@1.1.1':
     dependencies:
       debug: 4.4.1
@@ -6763,6 +6838,8 @@ snapshots:
     dependencies:
       bignumber.js: 9.3.1
     optional: true
+
+  json-bond@1.0.0: {}
 
   json-buffer@3.0.1: {}
 
