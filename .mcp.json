@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "date-fns": {
+      "command": "pnpm",
+      "args": ["date-fns-mcp"],
+      "env": {}
+    }
+  }
+}

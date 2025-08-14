@@ -7436,6 +7436,7 @@
     "@babel/preset-typescript": "^7.27.1",
     "@date-fns/build": "workspace:^",
     "@date-fns/docs": "workspace:^",
+    "@date-fns/mcp": "workspace:^",
     "@date-fns/tz": "workspace:^",
     "@date-fns/utc": "workspace:^",
     "@octokit/core": "^3.6.0",
