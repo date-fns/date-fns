@@ -10,3 +10,6 @@
 [submodule "submodules/build"]
 	path = submodules/build
 	url = git@github.com:date-fns/build.git
+[submodule "submodules/mcp"]
+	path = submodules/mcp
+	url = git@github.com:date-fns/mcp.git

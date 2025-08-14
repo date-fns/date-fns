@@ -171,6 +171,18 @@ importers:
       typescript:
         specifier: ^5.6.2
         version: 5.9.2
+      vitest:
+        specifier: ^3.2.4
+        version: 3.2.4(@types/node@20.19.9)(@vitest/browser@3.2.4)(jiti@2.5.1)(tsx@4.20.3)(yaml@2.8.0)
+
+  submodules/mcp:
+    devDependencies:
+      '@types/node':
+        specifier: ^20.19.9
+        version: 20.19.9
+      typescript:
+        specifier: ^5.9.2
+        version: 5.9.2
 
   submodules/tz:
     devDependencies:
