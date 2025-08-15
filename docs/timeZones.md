@@ -17,7 +17,7 @@ There are two ways to start working with time zones:
 
 ### Using `TZDate` & `UTCDate`
 
-One way is to use [`TZDate`](https://github.com/date-fns/tz) or [`UTCDate`](https://github.com/date-fns/tz) `Date` extensions,with regular date-fns functions:
+One way is to use [`TZDate`](https://github.com/date-fns/tz) or [`UTCDate`](https://github.com/date-fns/utc) `Date` extensions,with regular date-fns functions:
 
 ```ts
 import { TZDate } from "@date-fns/tz";
