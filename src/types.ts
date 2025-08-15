@@ -72,6 +72,7 @@ export interface GenericDateConstructor<DateType extends Date = Date> {
 /**
  * The duration object. Contains the duration in the units specified by the
  * object.
+ * @note Values should be integers.
  */
 export interface Duration {
   /** The number of years in the duration */
