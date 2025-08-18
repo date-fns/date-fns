@@ -3,7 +3,7 @@ import type { Match } from "../../../types.ts";
 import { buildMatchFn } from "../../../_lib/buildMatchFn/index.ts";
 import { buildMatchPatternFn } from "../../../_lib/buildMatchPatternFn/index.ts";
 
-const matchOrdinalNumberPattern = /^(\d+)(일|번째)?/i;
+const matchOrdinalNumberPattern = /^(\d+)(년|분기|월|주|일|시|분|초|번째)?/i;
 const parseOrdinalNumberPattern = /\d+/i;
 
 const matchEraPatterns = {
