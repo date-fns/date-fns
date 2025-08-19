@@ -2,7 +2,7 @@ import type { Localize, LocalizeFn } from "../../../types.ts";
 import { buildLocalizeFn } from "../../../_lib/buildLocalizeFn/index.ts";
 
 // All data for localization are taken from this page
-// https://www.unicode.org/cldr/charts/32/summary/id.html
+// https://www.unicode.org/cldr/charts/44/summary/id.html
 const eraValues = {
   narrow: ["SM", "M"] as const,
   abbreviated: ["SM", "M"] as const,
@@ -34,7 +34,7 @@ const monthValues = {
     "Mei",
     "Jun",
     "Jul",
-    "Agt",
+    "Agu",
     "Sep",
     "Okt",
     "Nov",
