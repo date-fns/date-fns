@@ -27,7 +27,7 @@
       },
       "import": {
         "types": "./index.d.ts",
-        "default": "./index.js"
+        "default": "./index.ts"
       }
     },
     "./constants": {
@@ -290,16 +290,6 @@
         "default": "./differenceInCalendarDays.js"
       }
     },
-    "./differenceInCalendarISOWeekYears": {
-      "require": {
-        "types": "./differenceInCalendarISOWeekYears.d.cts",
-        "default": "./differenceInCalendarISOWeekYears.cjs"
-      },
-      "import": {
-        "types": "./differenceInCalendarISOWeekYears.d.ts",
-        "default": "./differenceInCalendarISOWeekYears.js"
-      }
-    },
     "./differenceInCalendarISOWeeks": {
       "require": {
         "types": "./differenceInCalendarISOWeeks.d.cts",
@@ -308,6 +298,16 @@
       "import": {
         "types": "./differenceInCalendarISOWeeks.d.ts",
         "default": "./differenceInCalendarISOWeeks.js"
+      }
+    },
+    "./differenceInCalendarISOWeekYears": {
+      "require": {
+        "types": "./differenceInCalendarISOWeekYears.d.cts",
+        "default": "./differenceInCalendarISOWeekYears.cjs"
+      },
+      "import": {
+        "types": "./differenceInCalendarISOWeekYears.d.ts",
+        "default": "./differenceInCalendarISOWeekYears.js"
       }
     },
     "./differenceInCalendarMonths": {
@@ -500,16 +500,6 @@
         "default": "./eachQuarterOfInterval.js"
       }
     },
-    "./eachWeekOfInterval": {
-      "require": {
-        "types": "./eachWeekOfInterval.d.cts",
-        "default": "./eachWeekOfInterval.cjs"
-      },
-      "import": {
-        "types": "./eachWeekOfInterval.d.ts",
-        "default": "./eachWeekOfInterval.js"
-      }
-    },
     "./eachWeekendOfInterval": {
       "require": {
         "types": "./eachWeekendOfInterval.d.cts",
@@ -538,6 +528,16 @@
       "import": {
         "types": "./eachWeekendOfYear.d.ts",
         "default": "./eachWeekendOfYear.js"
+      }
+    },
+    "./eachWeekOfInterval": {
+      "require": {
+        "types": "./eachWeekOfInterval.d.cts",
+        "default": "./eachWeekOfInterval.cjs"
+      },
+      "import": {
+        "types": "./eachWeekOfInterval.d.ts",
+        "default": "./eachWeekOfInterval.js"
       }
     },
     "./eachYearOfInterval": {
@@ -780,6 +780,16 @@
         "default": "./formatISODuration.js"
       }
     },
+    "./formatRelative": {
+      "require": {
+        "types": "./formatRelative.d.cts",
+        "default": "./formatRelative.cjs"
+      },
+      "import": {
+        "types": "./formatRelative.d.ts",
+        "default": "./formatRelative.js"
+      }
+    },
     "./formatRFC3339": {
       "require": {
         "types": "./formatRFC3339.d.cts",
@@ -798,16 +808,6 @@
       "import": {
         "types": "./formatRFC7231.d.ts",
         "default": "./formatRFC7231.js"
-      }
-    },
-    "./formatRelative": {
-      "require": {
-        "types": "./formatRelative.d.cts",
-        "default": "./formatRelative.cjs"
-      },
-      "import": {
-        "types": "./formatRelative.d.ts",
-        "default": "./formatRelative.js"
       }
     },
     "./fromUnixTime": {
@@ -920,16 +920,6 @@
         "default": "./getISOWeek.js"
       }
     },
-    "./getISOWeekYear": {
-      "require": {
-        "types": "./getISOWeekYear.d.cts",
-        "default": "./getISOWeekYear.cjs"
-      },
-      "import": {
-        "types": "./getISOWeekYear.d.ts",
-        "default": "./getISOWeekYear.js"
-      }
-    },
     "./getISOWeeksInYear": {
       "require": {
         "types": "./getISOWeeksInYear.d.cts",
@@ -938,6 +928,16 @@
       "import": {
         "types": "./getISOWeeksInYear.d.ts",
         "default": "./getISOWeeksInYear.js"
+      }
+    },
+    "./getISOWeekYear": {
+      "require": {
+        "types": "./getISOWeekYear.d.cts",
+        "default": "./getISOWeekYear.cjs"
+      },
+      "import": {
+        "types": "./getISOWeekYear.d.ts",
+        "default": "./getISOWeekYear.js"
       }
     },
     "./getMilliseconds": {
@@ -1040,16 +1040,6 @@
         "default": "./getWeekOfMonth.js"
       }
     },
-    "./getWeekYear": {
-      "require": {
-        "types": "./getWeekYear.d.cts",
-        "default": "./getWeekYear.cjs"
-      },
-      "import": {
-        "types": "./getWeekYear.d.ts",
-        "default": "./getWeekYear.js"
-      }
-    },
     "./getWeeksInMonth": {
       "require": {
         "types": "./getWeeksInMonth.d.cts",
@@ -1058,6 +1048,16 @@
       "import": {
         "types": "./getWeeksInMonth.d.ts",
         "default": "./getWeeksInMonth.js"
+      }
+    },
+    "./getWeekYear": {
+      "require": {
+        "types": "./getWeekYear.d.cts",
+        "default": "./getWeekYear.cjs"
+      },
+      "import": {
+        "types": "./getWeekYear.d.ts",
+        "default": "./getWeekYear.js"
       }
     },
     "./getYear": {
@@ -1128,6 +1128,16 @@
       "import": {
         "types": "./intlFormat.d.ts",
         "default": "./intlFormat.js"
+      }
+    },
+    "./intlFormatDayAndMonth": {
+      "require": {
+        "types": "./intlFormatDayAndMonth.d.cts",
+        "default": "./intlFormatDayAndMonth.cjs"
+      },
+      "import": {
+        "types": "./intlFormatDayAndMonth.d.ts",
+        "default": "./intlFormatDayAndMonth.js"
       }
     },
     "./intlFormatDistance": {
@@ -2900,26 +2910,6 @@
         "default": "./fp/differenceInCalendarDaysWithOptions.js"
       }
     },
-    "./fp/differenceInCalendarISOWeekYears": {
-      "require": {
-        "types": "./fp/differenceInCalendarISOWeekYears.d.cts",
-        "default": "./fp/differenceInCalendarISOWeekYears.cjs"
-      },
-      "import": {
-        "types": "./fp/differenceInCalendarISOWeekYears.d.ts",
-        "default": "./fp/differenceInCalendarISOWeekYears.js"
-      }
-    },
-    "./fp/differenceInCalendarISOWeekYearsWithOptions": {
-      "require": {
-        "types": "./fp/differenceInCalendarISOWeekYearsWithOptions.d.cts",
-        "default": "./fp/differenceInCalendarISOWeekYearsWithOptions.cjs"
-      },
-      "import": {
-        "types": "./fp/differenceInCalendarISOWeekYearsWithOptions.d.ts",
-        "default": "./fp/differenceInCalendarISOWeekYearsWithOptions.js"
-      }
-    },
     "./fp/differenceInCalendarISOWeeks": {
       "require": {
         "types": "./fp/differenceInCalendarISOWeeks.d.cts",
@@ -2938,6 +2928,26 @@
       "import": {
         "types": "./fp/differenceInCalendarISOWeeksWithOptions.d.ts",
         "default": "./fp/differenceInCalendarISOWeeksWithOptions.js"
+      }
+    },
+    "./fp/differenceInCalendarISOWeekYears": {
+      "require": {
+        "types": "./fp/differenceInCalendarISOWeekYears.d.cts",
+        "default": "./fp/differenceInCalendarISOWeekYears.cjs"
+      },
+      "import": {
+        "types": "./fp/differenceInCalendarISOWeekYears.d.ts",
+        "default": "./fp/differenceInCalendarISOWeekYears.js"
+      }
+    },
+    "./fp/differenceInCalendarISOWeekYearsWithOptions": {
+      "require": {
+        "types": "./fp/differenceInCalendarISOWeekYearsWithOptions.d.cts",
+        "default": "./fp/differenceInCalendarISOWeekYearsWithOptions.cjs"
+      },
+      "import": {
+        "types": "./fp/differenceInCalendarISOWeekYearsWithOptions.d.ts",
+        "default": "./fp/differenceInCalendarISOWeekYearsWithOptions.js"
       }
     },
     "./fp/differenceInCalendarMonths": {
@@ -3310,26 +3320,6 @@
         "default": "./fp/eachQuarterOfIntervalWithOptions.js"
       }
     },
-    "./fp/eachWeekOfInterval": {
-      "require": {
-        "types": "./fp/eachWeekOfInterval.d.cts",
-        "default": "./fp/eachWeekOfInterval.cjs"
-      },
-      "import": {
-        "types": "./fp/eachWeekOfInterval.d.ts",
-        "default": "./fp/eachWeekOfInterval.js"
-      }
-    },
-    "./fp/eachWeekOfIntervalWithOptions": {
-      "require": {
-        "types": "./fp/eachWeekOfIntervalWithOptions.d.cts",
-        "default": "./fp/eachWeekOfIntervalWithOptions.cjs"
-      },
-      "import": {
-        "types": "./fp/eachWeekOfIntervalWithOptions.d.ts",
-        "default": "./fp/eachWeekOfIntervalWithOptions.js"
-      }
-    },
     "./fp/eachWeekendOfInterval": {
       "require": {
         "types": "./fp/eachWeekendOfInterval.d.cts",
@@ -3388,6 +3378,26 @@
       "import": {
         "types": "./fp/eachWeekendOfYearWithOptions.d.ts",
         "default": "./fp/eachWeekendOfYearWithOptions.js"
+      }
+    },
+    "./fp/eachWeekOfInterval": {
+      "require": {
+        "types": "./fp/eachWeekOfInterval.d.cts",
+        "default": "./fp/eachWeekOfInterval.cjs"
+      },
+      "import": {
+        "types": "./fp/eachWeekOfInterval.d.ts",
+        "default": "./fp/eachWeekOfInterval.js"
+      }
+    },
+    "./fp/eachWeekOfIntervalWithOptions": {
+      "require": {
+        "types": "./fp/eachWeekOfIntervalWithOptions.d.cts",
+        "default": "./fp/eachWeekOfIntervalWithOptions.cjs"
+      },
+      "import": {
+        "types": "./fp/eachWeekOfIntervalWithOptions.d.ts",
+        "default": "./fp/eachWeekOfIntervalWithOptions.js"
       }
     },
     "./fp/eachYearOfInterval": {
@@ -3750,6 +3760,26 @@
         "default": "./fp/formatISOWithOptions.js"
       }
     },
+    "./fp/formatRelative": {
+      "require": {
+        "types": "./fp/formatRelative.d.cts",
+        "default": "./fp/formatRelative.cjs"
+      },
+      "import": {
+        "types": "./fp/formatRelative.d.ts",
+        "default": "./fp/formatRelative.js"
+      }
+    },
+    "./fp/formatRelativeWithOptions": {
+      "require": {
+        "types": "./fp/formatRelativeWithOptions.d.cts",
+        "default": "./fp/formatRelativeWithOptions.cjs"
+      },
+      "import": {
+        "types": "./fp/formatRelativeWithOptions.d.ts",
+        "default": "./fp/formatRelativeWithOptions.js"
+      }
+    },
     "./fp/formatRFC3339": {
       "require": {
         "types": "./fp/formatRFC3339.d.cts",
@@ -3778,26 +3808,6 @@
       "import": {
         "types": "./fp/formatRFC7231.d.ts",
         "default": "./fp/formatRFC7231.js"
-      }
-    },
-    "./fp/formatRelative": {
-      "require": {
-        "types": "./fp/formatRelative.d.cts",
-        "default": "./fp/formatRelative.cjs"
-      },
-      "import": {
-        "types": "./fp/formatRelative.d.ts",
-        "default": "./fp/formatRelative.js"
-      }
-    },
-    "./fp/formatRelativeWithOptions": {
-      "require": {
-        "types": "./fp/formatRelativeWithOptions.d.cts",
-        "default": "./fp/formatRelativeWithOptions.cjs"
-      },
-      "import": {
-        "types": "./fp/formatRelativeWithOptions.d.ts",
-        "default": "./fp/formatRelativeWithOptions.js"
       }
     },
     "./fp/formatWithOptions": {
@@ -3880,16 +3890,6 @@
         "default": "./fp/getDayOfYearWithOptions.js"
       }
     },
-    "./fp/getDayWithOptions": {
-      "require": {
-        "types": "./fp/getDayWithOptions.d.cts",
-        "default": "./fp/getDayWithOptions.cjs"
-      },
-      "import": {
-        "types": "./fp/getDayWithOptions.d.ts",
-        "default": "./fp/getDayWithOptions.js"
-      }
-    },
     "./fp/getDaysInMonth": {
       "require": {
         "types": "./fp/getDaysInMonth.d.cts",
@@ -3928,6 +3928,16 @@
       "import": {
         "types": "./fp/getDaysInYearWithOptions.d.ts",
         "default": "./fp/getDaysInYearWithOptions.js"
+      }
+    },
+    "./fp/getDayWithOptions": {
+      "require": {
+        "types": "./fp/getDayWithOptions.d.cts",
+        "default": "./fp/getDayWithOptions.cjs"
+      },
+      "import": {
+        "types": "./fp/getDayWithOptions.d.ts",
+        "default": "./fp/getDayWithOptions.js"
       }
     },
     "./fp/getDecade": {
@@ -4000,6 +4010,26 @@
         "default": "./fp/getISOWeek.js"
       }
     },
+    "./fp/getISOWeeksInYear": {
+      "require": {
+        "types": "./fp/getISOWeeksInYear.d.cts",
+        "default": "./fp/getISOWeeksInYear.cjs"
+      },
+      "import": {
+        "types": "./fp/getISOWeeksInYear.d.ts",
+        "default": "./fp/getISOWeeksInYear.js"
+      }
+    },
+    "./fp/getISOWeeksInYearWithOptions": {
+      "require": {
+        "types": "./fp/getISOWeeksInYearWithOptions.d.cts",
+        "default": "./fp/getISOWeeksInYearWithOptions.cjs"
+      },
+      "import": {
+        "types": "./fp/getISOWeeksInYearWithOptions.d.ts",
+        "default": "./fp/getISOWeeksInYearWithOptions.js"
+      }
+    },
     "./fp/getISOWeekWithOptions": {
       "require": {
         "types": "./fp/getISOWeekWithOptions.d.cts",
@@ -4028,26 +4058,6 @@
       "import": {
         "types": "./fp/getISOWeekYearWithOptions.d.ts",
         "default": "./fp/getISOWeekYearWithOptions.js"
-      }
-    },
-    "./fp/getISOWeeksInYear": {
-      "require": {
-        "types": "./fp/getISOWeeksInYear.d.cts",
-        "default": "./fp/getISOWeeksInYear.cjs"
-      },
-      "import": {
-        "types": "./fp/getISOWeeksInYear.d.ts",
-        "default": "./fp/getISOWeeksInYear.js"
-      }
-    },
-    "./fp/getISOWeeksInYearWithOptions": {
-      "require": {
-        "types": "./fp/getISOWeeksInYearWithOptions.d.cts",
-        "default": "./fp/getISOWeeksInYearWithOptions.cjs"
-      },
-      "import": {
-        "types": "./fp/getISOWeeksInYearWithOptions.d.ts",
-        "default": "./fp/getISOWeeksInYearWithOptions.js"
       }
     },
     "./fp/getMilliseconds": {
@@ -4190,6 +4200,26 @@
         "default": "./fp/getWeekOfMonthWithOptions.js"
       }
     },
+    "./fp/getWeeksInMonth": {
+      "require": {
+        "types": "./fp/getWeeksInMonth.d.cts",
+        "default": "./fp/getWeeksInMonth.cjs"
+      },
+      "import": {
+        "types": "./fp/getWeeksInMonth.d.ts",
+        "default": "./fp/getWeeksInMonth.js"
+      }
+    },
+    "./fp/getWeeksInMonthWithOptions": {
+      "require": {
+        "types": "./fp/getWeeksInMonthWithOptions.d.cts",
+        "default": "./fp/getWeeksInMonthWithOptions.cjs"
+      },
+      "import": {
+        "types": "./fp/getWeeksInMonthWithOptions.d.ts",
+        "default": "./fp/getWeeksInMonthWithOptions.js"
+      }
+    },
     "./fp/getWeekWithOptions": {
       "require": {
         "types": "./fp/getWeekWithOptions.d.cts",
@@ -4218,26 +4248,6 @@
       "import": {
         "types": "./fp/getWeekYearWithOptions.d.ts",
         "default": "./fp/getWeekYearWithOptions.js"
-      }
-    },
-    "./fp/getWeeksInMonth": {
-      "require": {
-        "types": "./fp/getWeeksInMonth.d.cts",
-        "default": "./fp/getWeeksInMonth.cjs"
-      },
-      "import": {
-        "types": "./fp/getWeeksInMonth.d.ts",
-        "default": "./fp/getWeeksInMonth.js"
-      }
-    },
-    "./fp/getWeeksInMonthWithOptions": {
-      "require": {
-        "types": "./fp/getWeeksInMonthWithOptions.d.cts",
-        "default": "./fp/getWeeksInMonthWithOptions.cjs"
-      },
-      "import": {
-        "types": "./fp/getWeeksInMonthWithOptions.d.ts",
-        "default": "./fp/getWeeksInMonthWithOptions.js"
       }
     },
     "./fp/getYear": {
@@ -5080,16 +5090,6 @@
         "default": "./fp/min.js"
       }
     },
-    "./fp/minWithOptions": {
-      "require": {
-        "types": "./fp/minWithOptions.d.cts",
-        "default": "./fp/minWithOptions.cjs"
-      },
-      "import": {
-        "types": "./fp/minWithOptions.d.ts",
-        "default": "./fp/minWithOptions.js"
-      }
-    },
     "./fp/minutesToHours": {
       "require": {
         "types": "./fp/minutesToHours.d.cts",
@@ -5118,6 +5118,16 @@
       "import": {
         "types": "./fp/minutesToSeconds.d.ts",
         "default": "./fp/minutesToSeconds.js"
+      }
+    },
+    "./fp/minWithOptions": {
+      "require": {
+        "types": "./fp/minWithOptions.d.cts",
+        "default": "./fp/minWithOptions.cjs"
+      },
+      "import": {
+        "types": "./fp/minWithOptions.d.ts",
+        "default": "./fp/minWithOptions.js"
       }
     },
     "./fp/monthsToQuarters": {
