@@ -2,10 +2,10 @@ import type { FormatLong } from "../../../types.ts";
 import { buildFormatLongFn } from "../../../_lib/buildFormatLongFn/index.ts";
 
 const dateFormats = {
-  full: "EEEE, dd. MMMM y",
-  long: "dd. MMMM y",
-  medium: "d. MMM y",
-  short: "d. MM. yy",
+  full: "EEEE, dd. MMMM yyyy",
+  long: "dd. MMMM yyyy",
+  medium: "d. MMM yyyy",
+  short: "d. M. yyyy",
 };
 
 const timeFormats = {
