@@ -1,5 +1,5 @@
 import { toDate } from "../toDate/index.ts";
-import type { ContextOptions, DateArg } from "../types.ts";
+import type { ContextOptions, DateArg, Day } from "../types.ts";
 
 /**
  * The {@link getDay} function options.
@@ -27,6 +27,6 @@ export interface GetDayOptions extends ContextOptions<Date> {}
 export function getDay(
   date: DateArg<Date> & {},
   options?: GetDayOptions | undefined,
-): number {
+): Day {
   return toDate(date, options?.in).getDay();
 }
