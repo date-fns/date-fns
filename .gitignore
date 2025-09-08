@@ -4,6 +4,8 @@ node_modules/
 npm-debug.log*
 # TypeScript
 .ts/
+# Dev Container
+/.devcontainer/state/
 # Dist
 /lib/
 # Dev

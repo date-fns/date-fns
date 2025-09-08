@@ -1,6 +1,10 @@
 {
   "include": ["**/*.ts"],
-  "references": [{ "path": "../src" }, { "path": "../submodules/build" }],
+  "references": [
+    { "path": "../src" },
+    { "path": "../submodules/build" },
+    { "path": "../submodules/docs" }
+  ],
   "compilerOptions": {
     "rootDir": ".",
     "target": "ESNext",
