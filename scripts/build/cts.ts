@@ -7,7 +7,7 @@
  * It's a part of the build process.
  */
 
-import { readdir, copyFile } from "fs/promises";
+import { readdir, readFile, writeFile } from "fs/promises";
 import { join, resolve } from "path";
 
 const root = resolve(process.env.PACKAGE_OUTPUT_PATH || "lib");
@@ -26,7 +26,14 @@ async function createCTSFiles(dir: string): Promise<void> {
         promises.push(createCTSFiles(fullPath));
       } else if (file.isFile() && file.name.endsWith(".d.ts")) {
         const newFilePath = fullPath.replace(".d.ts", ".d.cts");
-        promises.push(copyFile(fullPath, newFilePath));
+        promises.push(
+          (async () => {
+            const contents = await readFile(fullPath, "utf8");
+            // Replace `.js` with `.cjs` in imports
+            const updatedContents = contents.replace(/\.js/g, ".cjs");
+            await writeFile(newFilePath, updatedContents);
+          })(),
+        );
       }
     }
 
