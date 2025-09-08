@@ -12,6 +12,7 @@ error_message="\n\033[0;31m✗ Something went wrong!\033[0m\n"
 scripts/build/package.sh
 
 cd "$dir" || exit 1
+pnpm install
 
 for example in `ls`
 do
@@ -20,7 +21,6 @@ do
   fi
   printf "\n\033[0;32mTesting $example...\033[0m\n\n"
   cd "$example" || exit 1
-  pnpm install
   pnpm run build
   pnpm test || (printf "$error_message" && exit 1) || exit 1
   cd - || exit 1
