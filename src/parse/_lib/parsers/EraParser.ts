@@ -4,7 +4,14 @@ import { Parser } from "../Parser.ts";
 import type { ParseFlags, ParseResult } from "../types.ts";
 
 export class EraParser extends Parser<number> {
-  priority = 140;
+  priority: number;
+  incompatibleTokens: string[];
+
+  constructor() {
+    super();
+    this.priority = 140;
+    this.incompatibleTokens = ["R", "u", "t", "T"];
+  }
 
   parse(dateString: string, token: string, match: Match): ParseResult<Era> {
     switch (token) {
@@ -40,6 +47,4 @@ export class EraParser extends Parser<number> {
     date.setHours(0, 0, 0, 0);
     return date;
   }
-
-  incompatibleTokens = ["R", "u", "t", "T"];
 }
