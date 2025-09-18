@@ -1,7 +1,7 @@
 import { tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import type { ContextOptions, DateArg } from "../types.js";
-import { getDaysInMonth } from "./index.js";
+import type { ContextOptions, DateArg } from "../types.ts";
+import { getDaysInMonth } from "./index.ts";
 
 describe("getDaysInMonth", () => {
   it("returns the number of days in the month of the given date", () => {

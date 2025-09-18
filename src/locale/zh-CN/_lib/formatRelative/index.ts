@@ -1,8 +1,8 @@
-import { isSameWeek } from "../../../../isSameWeek/index.js";
+import { isSameWeek } from "../../../../isSameWeek/index.ts";
 import type {
   FormatRelativeFn,
   FormatRelativeFnOptions,
-} from "../../../types.js";
+} from "../../../types.ts";
 
 function checkWeek(
   date: Date,

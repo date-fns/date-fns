@@ -1,8 +1,8 @@
-import { normalizeInterval } from "../_lib/normalizeInterval/index.js";
-import { addQuarters } from "../addQuarters/index.js";
-import { constructFrom } from "../constructFrom/index.js";
-import { startOfQuarter } from "../startOfQuarter/index.js";
-import type { ContextOptions, Interval, StepOptions } from "../types.js";
+import { normalizeInterval } from "../_lib/normalizeInterval/index.ts";
+import { addQuarters } from "../addQuarters/index.ts";
+import { constructFrom } from "../constructFrom/index.ts";
+import { startOfQuarter } from "../startOfQuarter/index.ts";
+import type { ContextOptions, Interval, StepOptions } from "../types.ts";
 
 /**
  * The {@link eachQuarterOfInterval} function options.

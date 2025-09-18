@@ -1,7 +1,7 @@
 import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import type { ContextOptions, DateArg } from "../types.js";
-import { differenceInWeeks } from "./index.js";
+import type { ContextOptions, DateArg } from "../types.ts";
+import { differenceInWeeks } from "./index.ts";
 
 describe("differenceInWeeks", () => {
   it("returns the number of full weeks between the given dates", () => {

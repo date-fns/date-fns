@@ -1,11 +1,10 @@
 // Same as fr
-import { formatDistance } from "../fr/_lib/formatDistance/index.js";
-import { formatRelative } from "../fr/_lib/formatRelative/index.js";
-import { localize } from "../fr/_lib/localize/index.js";
-import { match } from "../fr/_lib/match/index.js";
-import type { Locale } from "../types.js";
-// Unique for fr-CA
-import { formatLong } from "./_lib/formatLong/index.js";
+import { formatDistance } from "../fr/_lib/formatDistance/index.ts";
+import { formatRelative } from "../fr/_lib/formatRelative/index.ts";
+import { localize } from "../fr/_lib/localize/index.ts";
+import { match } from "../fr/_lib/match/index.ts";
+import type { Locale } from "../types.ts";
+import { formatLong } from "./_lib/formatLong/index.ts";
 import { localize as localizeOverrides } from "./_lib/localize/index.js";
 
 /**

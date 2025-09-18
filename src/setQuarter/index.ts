@@ -1,6 +1,6 @@
-import { setMonth } from "../setMonth/index.js";
-import { toDate } from "../toDate/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { setMonth } from "../setMonth/index.ts";
+import { toDate } from "../toDate/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link setQuarter} function options.

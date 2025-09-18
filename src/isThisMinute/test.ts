@@ -1,7 +1,7 @@
 import { UTCDate } from "@date-fns/utc";
 import { describe, expect, it } from "vitest";
-import { fakeDate } from "../_lib/test/index.js";
-import { isThisMinute } from "./index.js";
+import { fakeDate } from "../_lib/test/index.ts";
+import { isThisMinute } from "./index.ts";
 
 describe("isThisMinute", () => {
   fakeDate(new Date(2014, 8 /* Sep */, 25, 18, 30, 15, 500));

@@ -1,7 +1,7 @@
 import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import type { ContextOptions, DateArg } from "../types.js";
-import { isSameHour } from "./index.js";
+import type { ContextOptions, DateArg } from "../types.ts";
+import { isSameHour } from "./index.ts";
 
 describe("isSameHour", () => {
   it("returns true if the given dates have the same hour", () => {

@@ -1,7 +1,7 @@
-import { constructFrom } from "../constructFrom/index.js";
-import { setMonth } from "../setMonth/index.js";
-import { toDate } from "../toDate/index.js";
-import type { ContextOptions, DateArg, DateValues } from "../types.js";
+import { constructFrom } from "../constructFrom/index.ts";
+import { setMonth } from "../setMonth/index.ts";
+import { toDate } from "../toDate/index.ts";
+import type { ContextOptions, DateArg, DateValues } from "../types.ts";
 
 /**
  * The {@link set} function options.

@@ -1,0 +1,50 @@
+{
+  "name": "date-fns",
+
+  "build": { "dockerfile": "Dockerfile", "context": ".." },
+
+  // Put repo to /wrkspc
+  "workspaceMount": "source=${localWorkspaceFolder},target=/wrkspc/${localWorkspaceFolderBasename},type=bind",
+  "workspaceFolder": "/wrkspc/${localWorkspaceFolderBasename}",
+
+  "mounts": [
+    // Mount credentials from host machine:
+    "source=${localEnv:HOME}/.cargo/credentials.toml,target=/home/vscode/.cargo/credentials.toml,type=bind,readonly",
+    "source=${localEnv:HOME}/.codex/auth.json,target=/home/vscode/.codex/auth.json,type=bind,readonly",
+    // Mount state directories from local directory:
+    "source=${localWorkspaceFolder}/.devcontainer/state/.cache,target=/home/vscode/.cache,type=bind",
+    "source=${localWorkspaceFolder}/.devcontainer/state/.local/share,target=/home/vscode/.local/share,type=bind",
+    "source=${localWorkspaceFolder}/.devcontainer/state/.local/state,target=/home/vscode/.local/state,type=bind",
+    "source=${localWorkspaceFolder}/.devcontainer/state/.codex/sessions,target=/home/vscode/.codex/sessions,type=bind"
+    // NOTE: When adding new mounts, make sure to also update ./Dockerfile to ensure the directories
+  ],
+
+  "onCreateCommand": ".devcontainer/scripts/on-create.sh",
+  "postCreateCommand": ".devcontainer/scripts/post-create.sh",
+  "updateContentCommand": ".devcontainer/scripts/on-update.sh",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "tamasfe.even-better-toml",
+        "nefrob.vscode-just-syntax",
+        "docker.docker",
+        "esbenp.prettier-vscode",
+        "hverlin.mise-vscode",
+        "tekumara.typos-vscode",
+        "davidlday.languagetool-linter",
+        "vitest.explorer"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "fish",
+        "terminal.integrated.profiles.linux": {
+          "fish": { "path": "/usr/bin/fish" }
+        },
+        "mise.binPath": "/home/vscode/.local/bin/mise",
+        "debug.javascript.defaultRuntimeExecutable": {
+          "pwa-node": "/home/vscode/.local/share/mise/shims/node"
+        }
+      }
+    }
+  }
+}

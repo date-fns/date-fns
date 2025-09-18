@@ -8,10 +8,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          submodules: "recursive"
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: "npm"
-      - run: npm install
+          node-version: 22
+          cache: "pnpm"
+      - run: pnpm install
 
       - run: ./scripts/test/types.sh

@@ -1,8 +1,8 @@
-import { normalizeDates } from "../_lib/normalizeDates/index.js";
-import { compareAsc } from "../compareAsc/index.js";
-import { differenceInCalendarMonths } from "../differenceInCalendarMonths/index.js";
-import { isLastDayOfMonth } from "../isLastDayOfMonth/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { normalizeDates } from "../_lib/normalizeDates/index.ts";
+import { compareAsc } from "../compareAsc/index.ts";
+import { differenceInCalendarMonths } from "../differenceInCalendarMonths/index.ts";
+import { isLastDayOfMonth } from "../isLastDayOfMonth/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link differenceInMonths} function options.

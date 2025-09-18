@@ -1,5 +1,5 @@
-import { lastDayOfWeek } from "../lastDayOfWeek/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { lastDayOfWeek } from "../lastDayOfWeek/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link lastDayOfISOWeek} function options.

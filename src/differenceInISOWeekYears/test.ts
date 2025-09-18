@@ -1,7 +1,7 @@
 import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import type { ContextOptions, DateArg } from "../types.js";
-import { differenceInISOWeekYears } from "./index.js";
+import type { ContextOptions, DateArg } from "../types.ts";
+import { differenceInISOWeekYears } from "./index.ts";
 
 describe("differenceInISOWeekYears", () => {
   it("returns the number of full ISO week-numbering years between the given dates", () => {

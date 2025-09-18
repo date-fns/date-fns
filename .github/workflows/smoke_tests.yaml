@@ -8,12 +8,21 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          submodules: "recursive"
+      - uses: actions/cache@v4
+        with:
+          path: examples/node_modules
+          key: ${{ runner.os }}-examples-node-modules-${{ hashFiles('examples/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-examples-node-modules-
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: "npm"
+          node-version: 22
+          cache: "pnpm"
       - uses: oven-sh/setup-bun@v1
-      - run: npm install
+      - run: pnpm install
 
       - name: Smoke tests
         run: ./scripts/test/smoke.sh

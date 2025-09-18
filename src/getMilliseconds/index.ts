@@ -1,5 +1,5 @@
-import { toDate } from "../toDate/index.js";
-import type { DateArg } from "../types.js";
+import { toDate } from "../toDate/index.ts";
+import type { DateArg } from "../types.ts";
 
 /**
  * @name getMilliseconds

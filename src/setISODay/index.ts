@@ -1,7 +1,7 @@
-import { addDays } from "../addDays/index.js";
-import { getISODay } from "../getISODay/index.js";
-import { toDate } from "../toDate/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { addDays } from "../addDays/index.ts";
+import { getISODay } from "../getISODay/index.ts";
+import { toDate } from "../toDate/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link setISODay} function options.

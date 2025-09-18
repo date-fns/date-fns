@@ -1,7 +1,7 @@
 import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import type { ContextOptions, DateArg } from "../types.js";
-import { differenceInHours } from "./index.js";
+import type { ContextOptions, DateArg } from "../types.ts";
+import { differenceInHours } from "./index.ts";
 
 describe("differenceInHours", () => {
   it("returns the number of hours between the given dates with `trunc` as a default rounding method", () => {

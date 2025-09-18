@@ -1,15 +1,15 @@
-import { getDefaultOptions } from "../_lib/defaultOptions/index.js";
-import { constructFrom } from "../constructFrom/index.js";
-import { differenceInCalendarDays } from "../differenceInCalendarDays/index.js";
-import { startOfWeekYear } from "../startOfWeekYear/index.js";
-import { toDate } from "../toDate/index.js";
+import { getDefaultOptions } from "../_lib/defaultOptions/index.ts";
+import { constructFrom } from "../constructFrom/index.ts";
+import { differenceInCalendarDays } from "../differenceInCalendarDays/index.ts";
+import { startOfWeekYear } from "../startOfWeekYear/index.ts";
+import { toDate } from "../toDate/index.ts";
 import type {
   ContextOptions,
   DateArg,
   FirstWeekContainsDateOptions,
   LocalizedOptions,
   WeekOptions,
-} from "../types.js";
+} from "../types.ts";
 
 /**
  * The {@link setWeekYear} function options.

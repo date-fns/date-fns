@@ -1,6 +1,6 @@
-import { normalizeInterval } from "../_lib/normalizeInterval/index.js";
-import { constructFrom } from "../constructFrom/index.js";
-import type { ContextOptions, Interval, StepOptions } from "../types.js";
+import { normalizeInterval } from "../_lib/normalizeInterval/index.ts";
+import { constructFrom } from "../constructFrom/index.ts";
+import type { ContextOptions, Interval, StepOptions } from "../types.ts";
 
 /**
  * The {@link eachDayOfInterval} function options.

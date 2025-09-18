@@ -30,9 +30,9 @@ env PACKAGE_OUTPUT_PATH="$PACKAGE_PATH" ./scripts/build/package.sh
 cd "$PACKAGE_PATH" || exit 1
 if [ "$IS_PRE_RELEASE" = true ]
 then
-  npm publish --tag next
+  pnpm publish --tag next
 else
-  npm publish
+  pnpm publish
 fi
 cd - || exit
 

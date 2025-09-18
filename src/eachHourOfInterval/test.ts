@@ -1,8 +1,8 @@
 import { TZDate, tz } from "@date-fns/tz";
 import { UTCDate } from "@date-fns/utc";
 import { describe, expect, it } from "vitest";
-import { assertType } from "../_lib/test/index.js";
-import { eachHourOfInterval } from "./index.js";
+import { assertType } from "../_lib/test/index.ts";
+import { eachHourOfInterval } from "./index.ts";
 
 describe("eachHourOfInterval", () => {
   it("returns an array with starts of hours from the hour of the start date to the hour of the end date", () => {

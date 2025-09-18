@@ -1,6 +1,6 @@
-import { getRoundingMethod } from "../_lib/getRoundingMethod/index.js";
-import { differenceInMonths } from "../differenceInMonths/index.js";
-import type { ContextOptions, DateArg, RoundingOptions } from "../types.js";
+import { getRoundingMethod } from "../_lib/getRoundingMethod/index.ts";
+import { differenceInMonths } from "../differenceInMonths/index.ts";
+import type { ContextOptions, DateArg, RoundingOptions } from "../types.ts";
 
 /**
  * The {@link differenceInQuarters} function options.

@@ -1,8 +1,8 @@
 import { TZDate, tz } from "@date-fns/tz";
 import { UTCDate } from "@date-fns/utc";
 import { describe, expect, it } from "vitest";
-import { assertType } from "../_lib/test/index.js";
-import { eachDayOfInterval } from "./index.js";
+import { assertType } from "../_lib/test/index.ts";
+import { eachDayOfInterval } from "./index.ts";
 
 describe("eachDayOfInterval", () => {
   it("returns an array with starts of days from the day of the start date to the day of the end date", () => {

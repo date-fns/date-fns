@@ -1,5 +1,5 @@
-import { addMonths } from "../addMonths/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { addMonths } from "../addMonths/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link addQuarters} function options.

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { getTime } from "./index.js";
+import { getTime } from "./index.ts";
 
 describe("getTime", () => {
   it("returns the timestamp of the given date", () => {

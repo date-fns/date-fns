@@ -1,9 +1,9 @@
 import { TZDate, tz } from "@date-fns/tz";
 import { UTCDate } from "@date-fns/utc";
 import { describe, expect, it } from "vitest";
-import { getDstTransitions } from "../../test/dst/tzOffsetTransitions.js";
-import { assertType } from "../_lib/test/index.js";
-import { add } from "./index.js";
+import { getDstTransitions } from "../_lib/tzOffsetTransitions.ts";
+import { assertType } from "../_lib/test/index.ts";
+import { add } from "./index.ts";
 
 describe("add", () => {
   it("adds the values from the given object", () => {

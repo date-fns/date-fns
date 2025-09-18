@@ -1,8 +1,8 @@
 import { TZDate, tz } from "@date-fns/tz";
 import { UTCDate } from "@date-fns/utc";
 import { describe, expect, it } from "vitest";
-import { assertType } from "../_lib/test/index.js";
-import { eachMinuteOfInterval } from "./index.js";
+import { assertType } from "../_lib/test/index.ts";
+import { eachMinuteOfInterval } from "./index.ts";
 
 describe("eachMinuteOfInterval", () => {
   it("should return an array of Date objects containing a Date for each minute between the interval", () => {

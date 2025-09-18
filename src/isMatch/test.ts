@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { isMatch } from "./index.js";
-import { eo } from "../locale/eo/index.js";
+import { isMatch } from "./index.ts";
+import { eo } from "../locale/eo/index.ts";
 
 describe("isMatch", () => {
   it("accepts a dd-MM-yyyy format against 22-02-1998", () => {

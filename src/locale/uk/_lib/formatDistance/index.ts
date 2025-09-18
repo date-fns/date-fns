@@ -1,4 +1,7 @@
-import type { FormatDistanceFn, FormatDistanceTokenFn } from "../../../types.js";
+import type {
+  FormatDistanceFn,
+  FormatDistanceTokenFn,
+} from "../../../types.ts";
 
 type DeclensionScheme = {
   one?: string;

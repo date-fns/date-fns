@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { isBefore } from "./index.js";
+import { isBefore } from "./index.ts";
 
 describe("isBefore", () => {
   it("returns true if the first date is before the second one", () => {

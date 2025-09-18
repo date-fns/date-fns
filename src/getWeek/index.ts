@@ -1,14 +1,14 @@
-import { millisecondsInWeek } from "../constants/index.js";
-import { startOfWeek } from "../startOfWeek/index.js";
-import { startOfWeekYear } from "../startOfWeekYear/index.js";
-import { toDate } from "../toDate/index.js";
+import { millisecondsInWeek } from "../constants/index.ts";
+import { startOfWeek } from "../startOfWeek/index.ts";
+import { startOfWeekYear } from "../startOfWeekYear/index.ts";
+import { toDate } from "../toDate/index.ts";
 import type {
   ContextOptions,
   DateArg,
   FirstWeekContainsDateOptions,
   LocalizedOptions,
   WeekOptions,
-} from "../types.js";
+} from "../types.ts";
 
 /**
  * The {@link getWeek} function options.

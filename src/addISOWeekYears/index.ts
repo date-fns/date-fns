@@ -1,6 +1,6 @@
-import { getISOWeekYear } from "../getISOWeekYear/index.js";
-import { setISOWeekYear } from "../setISOWeekYear/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { getISOWeekYear } from "../getISOWeekYear/index.ts";
+import { setISOWeekYear } from "../setISOWeekYear/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link addISOWeekYears} function options.

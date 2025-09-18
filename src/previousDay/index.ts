@@ -1,6 +1,6 @@
-import { getDay } from "../getDay/index.js";
-import { subDays } from "../subDays/index.js";
-import type { ContextOptions, DateArg, Day } from "../types.js";
+import { getDay } from "../getDay/index.ts";
+import { subDays } from "../subDays/index.ts";
+import type { ContextOptions, DateArg, Day } from "../types.ts";
 
 /**
  * The {@link previousDay} function options.

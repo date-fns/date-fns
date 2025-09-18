@@ -1,4 +1,4 @@
-import type { FormatLong } from "../../../locale/types.js";
+import type { FormatLong } from "../../../locale/types.ts";
 
 type LongFormatter = (pattern: string, formatLong: FormatLong) => string;
 

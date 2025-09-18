@@ -1,4 +1,4 @@
-import type { FormatRelativeFn } from "../../../types.js";
+import type { FormatRelativeFn } from "../../../types.ts";
 
 const formatRelativeLocale = {
   lastWeek: "'ថ្ងៃ'eeee'ស​ប្តា​ហ៍​មុនម៉ោង' p",

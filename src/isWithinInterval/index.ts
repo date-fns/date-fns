@@ -1,5 +1,5 @@
-import { toDate } from "../toDate/index.js";
-import type { ContextOptions, DateArg, Interval } from "../types.js";
+import { toDate } from "../toDate/index.ts";
+import type { ContextOptions, DateArg, Interval } from "../types.ts";
 
 /**
  * The {@link isWithinInterval} function options.

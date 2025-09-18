@@ -1,7 +1,7 @@
-import { constructFrom } from "../../constructFrom/index.js";
-import { transpose } from "../../transpose/index.js";
-import type { ContextFn, DateArg } from "../../types.js";
-import type { ParseFlags, ParserOptions } from "./types.js";
+import { constructFrom } from "../../constructFrom/index.ts";
+import { transpose } from "../../transpose/index.ts";
+import type { ContextFn, DateArg } from "../../types.ts";
+import type { ParseFlags, ParserOptions } from "./types.ts";
 
 const TIMEZONE_UNIT_PRIORITY = 10;
 

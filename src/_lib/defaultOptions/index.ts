@@ -3,7 +3,7 @@ import type {
   Locale,
   LocalizedOptions,
   WeekOptions,
-} from "../../types.js";
+} from "../../types.ts";
 
 export type DefaultOptions = LocalizedOptions<keyof Locale> &
   WeekOptions &

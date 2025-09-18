@@ -1,4 +1,4 @@
-import type { FormatLongFn, FormatLongWidth } from "../../types.js";
+import type { FormatLongFn, FormatLongWidth } from "../../types.ts";
 
 export interface BuildFormatLongFnArgs<
   DefaultMatchWidth extends FormatLongWidth,

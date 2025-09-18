@@ -1,7 +1,7 @@
 import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import { differenceInQuarters } from "./index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { differenceInQuarters } from "./index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 describe("differenceInQuarters", () => {
   it("returns the number of full quarters between the given dates with `trunc` as a default rounding method", () => {

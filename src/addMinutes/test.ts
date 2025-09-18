@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
-import { addMinutes } from "./index.js";
+import { addMinutes } from "./index.ts";
 import { TZDate, tz } from "@date-fns/tz";
-import { assertType } from "../_lib/test/index.js";
+import { assertType } from "../_lib/test/index.ts";
 import { UTCDate } from "@date-fns/utc";
 
 describe("addMinutes", () => {
@@ -49,15 +49,15 @@ describe("addMinutes", () => {
   describe("context", () => {
     it("allows to specify the context", () => {
       expect(
-        addMinutes("2024-04-10T15:00:00Z", 60, {
+        addMinutes("2024-04-10T15:00:00Z", 10, {
           in: tz("Asia/Singapore"),
         }).toISOString(),
-      ).toBe("2024-04-10T23:00:00.000+08:00");
+      ).toBe("2024-04-10T23:10:00.000+08:00");
       expect(
         addMinutes("2024-04-10T15:00:00Z", 60, {
           in: tz("America/Los_Angeles"),
         }).toISOString(),
-      ).toBe("2024-04-10T08:00:00.000-07:00");
+      ).toBe("2024-04-10T09:00:00.000-07:00");
     });
 
     it("resolves the context date type", () => {

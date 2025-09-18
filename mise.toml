@@ -1,0 +1,14 @@
+[tools]
+## Stack
+node = { version = "lts", postinstall = "corepack enable && node -v > .nvmrc" }
+bun = "latest"
+
+## Tools
+gh = "latest"
+"npm:@anthropic-ai/claude-code" = "latest"
+
+[settings]
+# Enable extra features
+experimental = true
+# Ignore idiomatic version files
+idiomatic_version_file_enable_tools = []

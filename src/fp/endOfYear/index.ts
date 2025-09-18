@@ -1,6 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.
 
-import { endOfYear as fn } from "../../endOfYear/index.js";
-import { convertToFP } from "../_lib/convertToFP/index.js";
+import { endOfYear as fn } from "../../endOfYear/index.ts";
+import { convertToFP } from "../_lib/convertToFP/index.ts";
 
 export const endOfYear = convertToFP(fn, 1);

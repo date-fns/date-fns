@@ -1,7 +1,7 @@
-import { normalizeDates } from "../_lib/normalizeDates/index.js";
-import { compareAsc } from "../compareAsc/index.js";
-import { differenceInCalendarYears } from "../differenceInCalendarYears/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { normalizeDates } from "../_lib/normalizeDates/index.ts";
+import { compareAsc } from "../compareAsc/index.ts";
+import { differenceInCalendarYears } from "../differenceInCalendarYears/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link differenceInYears} function options.

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { minutesToSeconds } from "./index.js";
+import { minutesToSeconds } from "./index.ts";
 
 describe("minutesToSeconds", () => {
   it("converts minutes to seconds", () => {

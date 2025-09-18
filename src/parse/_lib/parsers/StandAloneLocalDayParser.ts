@@ -1,8 +1,8 @@
-import type { Match } from "../../../locale/types.js";
-import { setDay } from "../../../setDay/index.js";
-import { Parser } from "../Parser.js";
-import type { ParseFlags, ParseResult, ParserOptions } from "../types.js";
-import { mapValue, parseNDigits } from "../utils.js";
+import type { Match } from "../../../locale/types.ts";
+import { setDay } from "../../../setDay/index.ts";
+import { Parser } from "../Parser.ts";
+import type { ParseFlags, ParseResult, ParserOptions } from "../types.ts";
+import { mapValue, parseNDigits } from "../utils.ts";
 
 // Stand-alone local day of week
 export class StandAloneLocalDayParser extends Parser<number> {

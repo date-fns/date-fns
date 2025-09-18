@@ -3,13 +3,11 @@
 ## Table of Contents
 
 - [Adding a new locale](#adding-a-new-locale)
-
   - [Choosing a directory name for a locale](#choosing-a-directory-name-for-a-locale)
 
   - [index.js](#index.js)
 
   - [localize](#localize)
-
     - [localize.ordinalNumber](#localize.ordinalnumber)
 
     - [localize.era and using buildLocalizeFn function](#localize.era-and-using-buildlocalizefn-function)
@@ -25,7 +23,6 @@
     - [localize.dayPeriod](#localize.dayperiod)
 
   - [formatLong](#formatlong)
-
     - [formatLong.dateFormats](#formatlong.dateformats)
 
     - [formatLong.timeFormats](#formatlong.timeformats)
@@ -1016,7 +1013,7 @@ Your best guess is to copy `formatDistance` property from another locale and cha
 
 To test locales we use snapshots. See [`en-US` snapshot](https://github.com/date-fns/date-fns/blob/master/src/locale/en-US/snapshot.md) for an example.
 
-To generate snapshots, run `npm run locale-snapshots`. The snapshot for the locale
+To generate snapshots, run `pnpm run locale-snapshots`. The snapshot for the locale
 you're working on will appear in the root locale directory (e.g. `src/locales/ru/snapshot.md`).
 
 Once you are done with the locale, generate the snapshot and review the output values.

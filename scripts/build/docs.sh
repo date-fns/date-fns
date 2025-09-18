@@ -4,4 +4,4 @@
 
 set -ex
 
-npx typedoc
+pnpm typedoc

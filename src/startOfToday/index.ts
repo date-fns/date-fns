@@ -1,5 +1,5 @@
-import { startOfDay } from "../startOfDay/index.js";
-import type { ContextOptions } from "../types.js";
+import { startOfDay } from "../startOfDay/index.ts";
+import type { ContextOptions } from "../types.ts";
 
 /**
  * The {@link startOfToday} function options.

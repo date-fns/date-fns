@@ -1,7 +1,7 @@
 import { tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import type { ContextOptions, DateArg } from "../types.js";
-import { getWeekOfMonth } from "./index.js";
+import type { ContextOptions, DateArg } from "../types.ts";
+import { getWeekOfMonth } from "./index.ts";
 
 describe("getWeekOfMonth", () => {
   it("returns the week of the month of the given date", () => {
