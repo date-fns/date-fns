@@ -4,8 +4,8 @@ import { formatRelative } from "../fr/_lib/formatRelative/index.ts";
 import { localize } from "../fr/_lib/localize/index.ts";
 import { match } from "../fr/_lib/match/index.ts";
 import type { Locale } from "../types.ts";
-// Unique for fr-CA
 import { formatLong } from "./_lib/formatLong/index.ts";
+import { localize as localizeOverrides } from "./_lib/localize/index.js";
 
 /**
  * @category Locales
@@ -21,7 +21,7 @@ export const frCA: Locale = {
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
-  localize: localize,
+  localize: { ...localize, ...localizeOverrides },
   match: match,
 
   // Unique for fr-CA
