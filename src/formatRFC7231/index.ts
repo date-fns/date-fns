@@ -1,7 +1,7 @@
-import { addLeadingZeros } from "../_lib/addLeadingZeros/index.js";
-import { isValid } from "../isValid/index.js";
-import { toDate } from "../toDate/index.js";
-import type { DateArg } from "../types.js";
+import { addLeadingZeros } from "../_lib/addLeadingZeros/index.ts";
+import { isValid } from "../isValid/index.ts";
+import { toDate } from "../toDate/index.ts";
+import type { DateArg } from "../types.ts";
 
 const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 

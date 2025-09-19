@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { interval } from "./index.js";
-import { assertType } from "../_lib/test/index.js";
+import { interval } from "./index.ts";
+import { assertType } from "../_lib/test/index.ts";
 import { UTCDate } from "@date-fns/utc";
 import { TZDate, tz } from "@date-fns/tz";
 

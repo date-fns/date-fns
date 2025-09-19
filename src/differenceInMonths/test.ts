@@ -1,7 +1,7 @@
 import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import type { ContextOptions, DateArg } from "../types.js";
-import { differenceInMonths } from "./index.js";
+import type { ContextOptions, DateArg } from "../types.ts";
+import { differenceInMonths } from "./index.ts";
 
 describe("differenceInMonths", () => {
   it("returns the number of full months between the given dates", () => {

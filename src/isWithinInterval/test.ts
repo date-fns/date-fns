@@ -1,7 +1,7 @@
 import { tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import type { ContextOptions, DateArg, Interval } from "../types.js";
-import { isWithinInterval } from "./index.js";
+import type { ContextOptions, DateArg, Interval } from "../types.ts";
+import { isWithinInterval } from "./index.ts";
 
 describe("isWithinInterval", () => {
   it("returns true if the given date in within the given interval", () => {

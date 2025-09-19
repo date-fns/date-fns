@@ -1,7 +1,7 @@
 import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import { subMilliseconds } from "./index.js";
-import { assertType } from "../_lib/test/index.js";
+import { subMilliseconds } from "./index.ts";
+import { assertType } from "../_lib/test/index.ts";
 import { UTCDate } from "@date-fns/utc";
 
 describe("subMilliseconds", () => {

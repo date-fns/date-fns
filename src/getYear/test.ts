@@ -1,7 +1,7 @@
 import { tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import type { ContextOptions, DateArg } from "../types.js";
-import { getYear } from "./index.js";
+import type { ContextOptions, DateArg } from "../types.ts";
+import { getYear } from "./index.ts";
 
 describe("getYear", () => {
   it("returns the year of the given date", () => {

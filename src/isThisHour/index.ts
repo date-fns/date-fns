@@ -1,7 +1,7 @@
-import { constructNow } from "../constructNow/index.js";
-import { isSameHour } from "../isSameHour/index.js";
-import { toDate } from "../toDate/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { constructNow } from "../constructNow/index.ts";
+import { isSameHour } from "../isSameHour/index.ts";
+import { toDate } from "../toDate/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link isThisHour} function options.

@@ -17,6 +17,6 @@ export async function listFPFns(): Promise<FPFnFile[]> {
     .map((file) => ({
       name: file,
       path: `./${file}`,
-      fullPath: `./src/fp/${file}/index.js`,
+      fullPath: `./src/fp/${file}/index.ts`,
     }));
 }

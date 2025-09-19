@@ -1,10 +1,10 @@
 import {
   millisecondsInHour,
   millisecondsInMinute,
-} from "../constants/index.js";
-import { constructFrom } from "../constructFrom/index.js";
-import { toDate } from "../toDate/index.js";
-import type { ContextOptions } from "../types.js";
+} from "../constants/index.ts";
+import { constructFrom } from "../constructFrom/index.ts";
+import { toDate } from "../toDate/index.ts";
+import type { ContextOptions } from "../types.ts";
 
 /**
  * The {@link parseISO} function options.

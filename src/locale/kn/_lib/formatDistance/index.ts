@@ -2,7 +2,7 @@ import type {
   FormatDistanceFn,
   FormatDistanceLocale,
   FormatDistanceFnOptions,
-} from "../../../types.js";
+} from "../../../types.ts";
 
 type Tense = {
   default: string;

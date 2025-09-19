@@ -2,12 +2,12 @@
  * The script builds the CDN version of the library.
  */
 
-import { $, type BuildOutput, type ShellOutput } from "bun";
+import { $, type BuildOutput } from "bun";
 import { readFile, writeFile } from "fs/promises";
 import { availableParallelism } from "node:os";
 import { dirname, join, relative } from "path";
-import { listLocales, type LocaleFile } from "../_lib/listLocales.js";
-import { promiseQueue } from "../test/_lib/queue.js";
+import { listLocales, type LocaleFile } from "../_lib/listLocales.ts";
+import { promiseQueue } from "../test/_lib/queue.ts";
 
 if (!process.env.PACKAGE_OUTPUT_PATH)
   throw new Error("PACKAGE_OUTPUT_PATH is not set");
@@ -55,7 +55,7 @@ Promise.all([
       paths.map((path) => async () => {
         // Use Babel to transpile
         assertShellOutput(
-          await $`env BABEL_ENV=cdn npx babel ${path} --out-file ${path} --source-maps`,
+          await $`env BABEL_ENV=cdn pnpm babel ${path} --out-file ${path} --source-maps`,
         );
 
         // Wrap into IIFE, to avoid polluting global scope
@@ -120,7 +120,7 @@ function assertBunBuild(output: BuildOutput) {
   }
 }
 
-function assertShellOutput(output: ShellOutput) {
+function assertShellOutput(output: $.ShellOutput) {
   if (output.exitCode !== 0) {
     console.log(output.stderr);
     process.exit(1);

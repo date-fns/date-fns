@@ -1,7 +1,7 @@
-import type { Match } from "../../../locale/types.js";
-import { setDay } from "../../../setDay/index.js";
-import { Parser } from "../Parser.js";
-import type { ParseFlags, ParseResult, ParserOptions } from "../types.js";
+import type { Match } from "../../../locale/types.ts";
+import { setDay } from "../../../setDay/index.ts";
+import { Parser } from "../Parser.ts";
+import type { ParseFlags, ParseResult, ParserOptions } from "../types.ts";
 
 // Day of week
 export class DayParser extends Parser<number> {

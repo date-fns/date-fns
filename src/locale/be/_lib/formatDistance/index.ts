@@ -1,7 +1,7 @@
 import type {
   FormatDistanceFn,
   FormatDistanceTokenFn,
-} from "../../../types.js";
+} from "../../../types.ts";
 
 interface DeclensionScheme {
   one?: string;

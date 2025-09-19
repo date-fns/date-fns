@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { compareDesc } from "./index.js";
+import { compareDesc } from "./index.ts";
 
 describe("compareDesc", () => {
   it("returns 0 if the given dates are equal", () => {

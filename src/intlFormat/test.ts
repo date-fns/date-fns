@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { intlFormat } from "./index.js";
+import { intlFormat } from "./index.ts";
 
 // Before Node version 13.0.0, only the locale data for en-US is available by default.
 const hasFullICU = () => {

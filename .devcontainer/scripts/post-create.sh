@@ -4,5 +4,4 @@
 
 set -e
 
-# Set up fish shell
-sudo chsh -s /usr/bin/fish $(whoami)
+# Nothing here yet

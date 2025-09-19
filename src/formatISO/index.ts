@@ -1,6 +1,6 @@
-import { addLeadingZeros } from "../_lib/addLeadingZeros/index.js";
-import { toDate } from "../toDate/index.js";
-import type { ContextOptions, DateArg, ISOFormatOptions } from "../types.js";
+import { addLeadingZeros } from "../_lib/addLeadingZeros/index.ts";
+import { toDate } from "../toDate/index.ts";
+import type { ContextOptions, DateArg, ISOFormatOptions } from "../types.ts";
 
 /**
  * The {@link formatISO} function options.

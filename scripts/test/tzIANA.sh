@@ -363,6 +363,6 @@ fi
 for tz in "${tz_array[@]}"
 do
   printf "Run test in time zone $tz\n"
-  env TZ=$tz npx vitest run \
+  env TZ=$tz pnpm vitest run \
     &>tmp/last_test_output.txt || (cat tmp/last_test_output.txt && exit 1) || exit 1
 done

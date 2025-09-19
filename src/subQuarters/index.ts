@@ -1,5 +1,5 @@
-import { addQuarters } from "../addQuarters/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { addQuarters } from "../addQuarters/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link subQuarters} function options.

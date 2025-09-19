@@ -1,8 +1,8 @@
 import { tz } from "@date-fns/tz";
 import sinon from "sinon";
 import { describe, expect, it } from "vitest";
-import { generateOffset } from "../_lib/test/index.js";
-import { formatISO } from "./index.js";
+import { generateOffset } from "../_lib/test/index.ts";
+import { formatISO } from "./index.ts";
 
 describe("formatISO", () => {
   it("formats ISO-8601 extended format", () => {

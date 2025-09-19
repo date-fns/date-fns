@@ -1,4 +1,4 @@
-#!/usr/bin/env npx tsx
+#!/usr/bin/env pnpm tsx
 
 /**
  * @file
@@ -10,7 +10,7 @@
 
 import { readdir, writeFile, readFile } from "fs/promises";
 import { basename, dirname, join, resolve } from "path";
-import { convertLocaleToConst } from "./localeSnapshots/_lib/locale.js";
+import { convertLocaleToConst } from "./localeSnapshots/_lib/locale.ts";
 
 const root = resolve(process.env.PACKAGE_OUTPUT_PATH || "lib");
 
@@ -50,10 +50,10 @@ export default ${constName(relateivePath)};`,
   }
 }
 
-const fnRe = /^\w+\/index.js/;
-const localeRe = /^locale\/[\w-]+\/index.js/;
-const fpFn = /^fp\/\w+\/index.js/;
-const fnExceptions = ["constants/index.js", "locale/index.js", "fp/index.js"];
+const fnRe = /^\w+\/index.ts/;
+const localeRe = /^locale\/[\w-]+\/index.ts/;
+const fpFn = /^fp\/\w+\/index.ts/;
+const fnExceptions = ["constants/index.ts", "locale/index.ts", "fp/index.ts"];
 
 function isModule(relateivePath: string) {
   return (

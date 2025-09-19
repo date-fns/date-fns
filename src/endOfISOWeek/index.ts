@@ -1,5 +1,5 @@
-import { endOfWeek } from "../endOfWeek/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { endOfWeek } from "../endOfWeek/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link endOfISOWeek} function options.

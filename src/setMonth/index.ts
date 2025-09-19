@@ -1,7 +1,7 @@
-import { constructFrom } from "../constructFrom/index.js";
-import { getDaysInMonth } from "../getDaysInMonth/index.js";
-import { toDate } from "../toDate/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { constructFrom } from "../constructFrom/index.ts";
+import { getDaysInMonth } from "../getDaysInMonth/index.ts";
+import { toDate } from "../toDate/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link setMonth} function options.

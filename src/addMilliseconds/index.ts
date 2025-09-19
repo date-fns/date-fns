@@ -1,6 +1,6 @@
-import { constructFrom } from "../constructFrom/index.js";
-import { toDate } from "../toDate/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { constructFrom } from "../constructFrom/index.ts";
+import { toDate } from "../toDate/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 /**
  * The {@link addMilliseconds} function options.
  */

@@ -1,6 +1,6 @@
-import { Parser } from "../Parser.js";
-import type { ParseFlags, ParseResult } from "../types.js";
-import { mapValue, parseNDigits } from "../utils.js";
+import { Parser } from "../Parser.ts";
+import type { ParseFlags, ParseResult } from "../types.ts";
+import { mapValue, parseNDigits } from "../utils.ts";
 
 export class FractionOfSecondParser extends Parser<number> {
   priority = 30;

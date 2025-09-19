@@ -1,5 +1,5 @@
-import { toDate } from "../toDate/index.js";
-import type { ContextOptions } from "../types.js";
+import { toDate } from "../toDate/index.ts";
+import type { ContextOptions } from "../types.ts";
 
 /**
  * The {@link parseJSON} function options.

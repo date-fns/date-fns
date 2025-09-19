@@ -1,7 +1,7 @@
 import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import { getDstTransitions } from "../../test/dst/tzOffsetTransitions.js";
-import { differenceInCalendarDays } from "./index.js";
+import { getDstTransitions } from "../_lib/tzOffsetTransitions.ts";
+import { differenceInCalendarDays } from "./index.ts";
 
 describe("differenceInCalendarDays", () => {
   it("returns the number of calendar days between the given dates", () => {

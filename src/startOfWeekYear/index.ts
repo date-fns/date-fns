@@ -1,14 +1,14 @@
-import { getDefaultOptions } from "../_lib/defaultOptions/index.js";
-import { constructFrom } from "../constructFrom/index.js";
-import { getWeekYear } from "../getWeekYear/index.js";
-import { startOfWeek } from "../startOfWeek/index.js";
+import { getDefaultOptions } from "../_lib/defaultOptions/index.ts";
+import { constructFrom } from "../constructFrom/index.ts";
+import { getWeekYear } from "../getWeekYear/index.ts";
+import { startOfWeek } from "../startOfWeek/index.ts";
 import type {
   ContextOptions,
   DateArg,
   FirstWeekContainsDateOptions,
   LocalizedOptions,
   WeekOptions,
-} from "../types.js";
+} from "../types.ts";
 
 /**
  * The {@link startOfWeekYear} function options.

@@ -6,11 +6,11 @@ import {
   describe,
   expect,
   it,
+  type MockInstance,
   vi,
-  type SpyInstance,
 } from "vitest";
-import type { FormatPart } from "../types.js";
-import { format, formatDate } from "./index.js";
+import type { FormatPart } from "../types.ts";
+import { format, formatDate } from "./index.ts";
 
 describe("format", () => {
   const date = new Date(1986, 3 /* Apr */, 4, 10, 32, 55, 123);
@@ -863,7 +863,7 @@ describe("format", () => {
     });
 
     describe("console.warn", () => {
-      let warn: SpyInstance;
+      let warn: MockInstance;
 
       beforeEach(() => {
         warn = vi.spyOn(console, "warn").mockImplementation(() => undefined);

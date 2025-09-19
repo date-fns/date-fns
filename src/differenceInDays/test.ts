@@ -1,8 +1,8 @@
 import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import { getDstTransitions } from "../../test/dst/tzOffsetTransitions.js";
-import type { ContextOptions } from "../types.js";
-import { differenceInDays } from "./index.js";
+import { getDstTransitions } from "../_lib/tzOffsetTransitions.ts";
+import type { ContextOptions } from "../types.ts";
+import { differenceInDays } from "./index.ts";
 
 describe("differenceInDays", () => {
   it("returns the number of full days between the given dates", () => {

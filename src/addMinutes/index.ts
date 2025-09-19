@@ -1,6 +1,6 @@
-import { millisecondsInMinute } from "../constants/index.js";
-import { toDate } from "../toDate/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { millisecondsInMinute } from "../constants/index.ts";
+import { toDate } from "../toDate/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link addMinutes} function options.

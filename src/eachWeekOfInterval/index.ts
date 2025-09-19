@@ -1,14 +1,14 @@
-import { normalizeInterval } from "../_lib/normalizeInterval/index.js";
-import { addWeeks } from "../addWeeks/index.js";
-import { constructFrom } from "../constructFrom/index.js";
-import { startOfWeek } from "../startOfWeek/index.js";
+import { normalizeInterval } from "../_lib/normalizeInterval/index.ts";
+import { addWeeks } from "../addWeeks/index.ts";
+import { constructFrom } from "../constructFrom/index.ts";
+import { startOfWeek } from "../startOfWeek/index.ts";
 import type {
   ContextOptions,
   Interval,
   LocalizedOptions,
   StepOptions,
   WeekOptions,
-} from "../types.js";
+} from "../types.ts";
 
 /**
  * The {@link eachWeekOfInterval} function options.

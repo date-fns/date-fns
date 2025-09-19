@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
-import { set } from "./index.js";
+import { set } from "./index.ts";
 import { TZDate, tz } from "@date-fns/tz";
-import { assertType } from "../_lib/test/index.js";
+import { assertType } from "../_lib/test/index.ts";
 import { UTCDate } from "@date-fns/utc";
 
 describe("set", () => {
