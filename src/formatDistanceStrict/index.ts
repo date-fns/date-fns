@@ -48,8 +48,9 @@ export type FormatDistanceStrictUnit =
  *
  * @description
  * Return the distance between the given dates in words, using strict units.
- * This is like `formatDistance`, but does not use helpers like 'almost', 'over',
- * 'less than' and the like.
+ * This function uses exact time calculations and rounds durations based on a configurable
+ * `roundingMethod` (defaults to 'round') and does not use helpers
+ * like "almost", "over", or "less than".
  *
  * | Distance between dates | Result              |
  * |------------------------|---------------------|
