@@ -362,6 +362,54 @@ describe("parseISO", () => {
       expect(result instanceof Date).toBe(true);
       expect(isNaN(result.getTime())).toBe(true);
     });
+
+    it("returns Invalid Date if argument is undefined", () => {
+      const result = parseISO(undefined as any);
+      expect(result instanceof Date).toBe(true);
+      expect(isNaN(result.getTime())).toBe(true);
+    });
+
+    it("returns Invalid Date if argument is null", () => {
+      const result = parseISO(null as any);
+      expect(result instanceof Date).toBe(true);
+      expect(isNaN(result.getTime())).toBe(true);
+    });
+
+    it("returns Invalid Date if argument is empty string", () => {
+      const result = parseISO("");
+      expect(result instanceof Date).toBe(true);
+      expect(isNaN(result.getTime())).toBe(true);
+    });
+
+    it("returns Invalid Date if argument is whitespace only", () => {
+      const result = parseISO("   ");
+      expect(result instanceof Date).toBe(true);
+      expect(isNaN(result.getTime())).toBe(true);
+    });
+
+    it("returns Invalid Date if argument is a number", () => {
+      const result = parseISO(123 as any);
+      expect(result instanceof Date).toBe(true);
+      expect(isNaN(result.getTime())).toBe(true);
+    });
+
+    it("returns Invalid Date if argument is an object", () => {
+      const result = parseISO({} as any);
+      expect(result instanceof Date).toBe(true);
+      expect(isNaN(result.getTime())).toBe(true);
+    });
+
+    it("returns Invalid Date if argument is an array", () => {
+      const result = parseISO([] as any);
+      expect(result instanceof Date).toBe(true);
+      expect(isNaN(result.getTime())).toBe(true);
+    });
+
+    it("returns Invalid Date if argument is a boolean", () => {
+      const result = parseISO(true as any);
+      expect(result instanceof Date).toBe(true);
+      expect(isNaN(result.getTime())).toBe(true);
+    });
   });
 
   it("resolves the date type by default", () => {

@@ -26,8 +26,8 @@ export interface ParseISOOptions<DateType extends Date = Date>
  * Function accepts complete ISO 8601 formats as well as partial implementations.
  * ISO 8601: http://en.wikipedia.org/wiki/ISO_8601
  *
- * If the argument isn't a string, the function cannot parse the string or
- * the values are invalid, it returns Invalid Date.
+ * If the argument isn't a string, is undefined, null, or an empty/whitespace-only string,
+ * the function cannot parse the string or the values are invalid, it returns Invalid Date.
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
@@ -53,6 +53,16 @@ export function parseISO<
   ResultDate extends Date = DateType,
 >(argument: string, options?: ParseISOOptions<ResultDate>): ResultDate {
   const invalidDate = () => constructFrom(options?.in, NaN);
+
+  // Guard against invalid input types
+  if (typeof argument !== "string") {
+    return invalidDate();
+  }
+
+  // Guard against empty string
+  if (argument.trim() === "") {
+    return invalidDate();
+  }
 
   const additionalDigits = options?.additionalDigits ?? 2;
   const dateStrings = splitDateString(argument);
