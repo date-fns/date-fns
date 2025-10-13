@@ -69,6 +69,24 @@ describe("formatISO", () => {
     expect(formatISO.bind(null, new Date(NaN))).toThrow(RangeError);
   });
 
+  it("handles sub-minute timezone offsets by rounding to nearest minute", () => {
+    const date = new Date(2019, 2 /* Mar */, 3, 19, 0, 52, 123);
+    const getTimezoneOffsetStub = sinon.stub(
+      Date.prototype,
+      "getTimezoneOffset",
+    );
+
+    // Simulate fractional minute offset (e.g., historical London timezone UTC-0:01:15 = -1.25 minutes)
+    getTimezoneOffsetStub.returns(-1.25);
+    expect(formatISO(date)).toBe("2019-03-03T19:00:52+00:01");
+
+    // Simulate positive fractional minute offset
+    getTimezoneOffsetStub.returns(1.25);
+    expect(formatISO(date)).toBe("2019-03-03T19:00:52-00:01");
+
+    getTimezoneOffsetStub.restore();
+  });
+
   describe("context", () => {
     it("allows to specify the context", () => {
       const date = "2024-09-17T10:00:00Z";

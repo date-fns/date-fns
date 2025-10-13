@@ -768,7 +768,8 @@ export const formatters: { [token: string]: Formatter } = {
 
 function formatTimezoneShort(offset: number, delimiter: string = ""): string {
   const sign = offset > 0 ? "-" : "+";
-  const absOffset = Math.abs(offset);
+  // Round to nearest minute to handle fractional minute offsets (e.g., historical timezones)
+  const absOffset = Math.abs(Math.round(offset));
   const hours = Math.trunc(absOffset / 60);
   const minutes = absOffset % 60;
   if (minutes === 0) {
@@ -781,16 +782,19 @@ function formatTimezoneWithOptionalMinutes(
   offset: number,
   delimiter?: string,
 ): string {
-  if (offset % 60 === 0) {
-    const sign = offset > 0 ? "-" : "+";
-    return sign + addLeadingZeros(Math.abs(offset) / 60, 2);
+  // Round to nearest minute to handle fractional minute offsets (e.g., historical timezones)
+  const roundedOffset = Math.round(offset);
+  if (roundedOffset % 60 === 0) {
+    const sign = roundedOffset > 0 ? "-" : "+";
+    return sign + addLeadingZeros(Math.abs(roundedOffset) / 60, 2);
   }
-  return formatTimezone(offset, delimiter);
+  return formatTimezone(roundedOffset, delimiter);
 }
 
 function formatTimezone(offset: number, delimiter: string = ""): string {
   const sign = offset > 0 ? "-" : "+";
-  const absOffset = Math.abs(offset);
+  // Round to nearest minute to handle fractional minute offsets (e.g., historical timezones)
+  const absOffset = Math.abs(Math.round(offset));
   const hours = addLeadingZeros(Math.trunc(absOffset / 60), 2);
   const minutes = addLeadingZeros(absOffset % 60, 2);
   return sign + hours + delimiter + minutes;

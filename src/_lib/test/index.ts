@@ -25,7 +25,8 @@ export function generateOffset(originalDate: Date) {
   const tzOffset = originalDate.getTimezoneOffset();
 
   if (tzOffset !== 0) {
-    const absoluteOffset = Math.abs(tzOffset);
+    // Round to nearest minute to handle fractional minute offsets (e.g., historical timezones)
+    const absoluteOffset = Math.abs(Math.round(tzOffset));
     const hourOffset = addLeadingZeros(Math.trunc(absoluteOffset / 60), 2);
     const minuteOffset = addLeadingZeros(absoluteOffset % 60, 2);
     // If less than 0, the sign is +, because it is ahead of time.
