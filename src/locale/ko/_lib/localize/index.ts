@@ -144,13 +144,24 @@ const ordinalNumber: LocalizeFn<number> = (dirtyNumber, options) => {
   const unit = String(options?.unit);
 
   switch (unit) {
-    case "minute":
-    case "second":
-      return String(number);
+    case "year":
+      return `${number}년`;
+    case "quater":
+      return `${number}분기`;
+    case "month":
+      return `${number}월`;
+    case "week":
+      return `${number}주`;
     case "date":
-      return number + "일";
+      return `${number}일`;
+    case "hour":
+      return `${number}시`;
+    case "minute":
+      return `${number}분`;
+    case "second":
+      return `${number}초`;
     default:
-      return number + "번째";
+      return `${number}`;
   }
 };
 
