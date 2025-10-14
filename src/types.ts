@@ -331,10 +331,9 @@ export interface ContextOptions<DateType extends Date> {
 }
 
 /**
-  /**
-   * The context function type. It's used to normalize the input arguments to
-   * a specific date instance, which is useful for extensions like [`TZDate`](https://github.com/date-fns/tz).
-   */
+  * The context function type. It's used to normalize the input arguments to
+  * a specific date instance, which is useful for extensions like [`TZDate`](https://github.com/date-fns/tz).
+  */
 export type ContextFn<DateType extends Date> = (
   value: DateArg<Date> & {},
 ) => DateType;
