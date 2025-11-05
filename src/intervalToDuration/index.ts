@@ -66,3 +66,6 @@ export function intervalToDuration(
 
   return duration;
 }
+
+// Re-export Duration type to ensure TypeDoc picks up its documentation
+export type { Duration } from "../types.ts";
