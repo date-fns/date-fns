@@ -12,7 +12,16 @@
     "type": "github",
     "url": "https://github.com/sponsors/kossnocorp"
   },
-  "sideEffects": false,
+  "sideEffects": [
+    "./_lib/format/formatters.js",
+    "./_lib/format/formatters/index.js",
+    "./_lib/format/longFormatters.js",
+    "./_lib/format/longFormatters/index.js",
+    "./format/_lib/format/formatters.js",
+    "./format/_lib/format/formatters/index.js",
+    "./format/_lib/format/longFormatters.js",
+    "./format/_lib/format/longFormatters/index.js"
+  ],
   "browser": "./index",
   "type": "module",
   "main": "index.cjs",
