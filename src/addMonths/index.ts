@@ -48,7 +48,11 @@ export function addMonths<
     // If 0 months, no-op to avoid changing times in the hour before end of DST
     return _date;
   }
-  const dayOfMonth = _date.getDate();
+  // Detect if this is a UTC date by checking if local and UTC values differ
+  const isUTCDate = _date.getTime() === new Date(_date.getUTCFullYear(), _date.getUTCMonth(), _date.getUTCDate(), _date.getUTCHours(), _date.getUTCMinutes(), _date.getUTCSeconds(), _date.getUTCMilliseconds()).getTime();
+  
+  const dayOfMonth = isUTCDate ? _date.getUTCDate() : _date.getDate();
+  const currentMonth = isUTCDate ? _date.getUTCMonth() : _date.getMonth();
 
   // The JS Date object supports date math by accepting out-of-bounds values for
   // month, day, etc. For example, new Date(2020, 0, 0) returns 31 Dec 2019 and
@@ -59,8 +63,12 @@ export function addMonths<
   // month and using a date of 0 to back up one day to the end of the desired
   // month.
   const endOfDesiredMonth = constructFrom(options?.in || date, _date.getTime());
-  endOfDesiredMonth.setMonth(_date.getMonth() + amount + 1, 0);
-  const daysInMonth = endOfDesiredMonth.getDate();
+  if (isUTCDate) {
+    endOfDesiredMonth.setUTCMonth(currentMonth + amount + 1, 0);
+  } else {
+    endOfDesiredMonth.setMonth(currentMonth + amount + 1, 0);
+  }
+  const daysInMonth = isUTCDate ? endOfDesiredMonth.getUTCDate() : endOfDesiredMonth.getDate();
   if (dayOfMonth >= daysInMonth) {
     // If we're already at the end of the month, then this is the correct date
     // and we're done.
@@ -73,11 +81,19 @@ export function addMonths<
     // the last day of the month and its local time was in the hour skipped or
     // repeated next to a DST transition.  So we use `date` instead which is
     // guaranteed to still have the original time.
-    _date.setFullYear(
-      endOfDesiredMonth.getFullYear(),
-      endOfDesiredMonth.getMonth(),
-      dayOfMonth,
-    );
+    if (isUTCDate) {
+      _date.setUTCFullYear(
+        endOfDesiredMonth.getUTCFullYear(),
+        endOfDesiredMonth.getUTCMonth(),
+        dayOfMonth,
+      );
+    } else {
+      _date.setFullYear(
+        endOfDesiredMonth.getFullYear(),
+        endOfDesiredMonth.getMonth(),
+        dayOfMonth,
+      );
+    }
     return _date;
   }
 }

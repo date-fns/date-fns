@@ -32,6 +32,52 @@ export interface AddBusinessDaysOptions<DateType extends Date = Date>
  * // Add 10 business days to 1 September 2014:
  * const result = addBusinessDays(new Date(2014, 8, 1), 10)
  * //=> Mon Sep 15 2014 00:00:00 (skipped weekend days)
+ *
+ * @example
+ * // Adding business days with holiday handling:
+ * import { addBusinessDays, isWeekend } from 'date-fns'
+ * 
+ * // Define your holidays (e.g., US federal holidays for 2024)
+ * const holidays = [
+ *   new Date(2024, 0, 1),   // New Year's Day
+ *   new Date(2024, 0, 15),  // Martin Luther King Jr. Day
+ *   new Date(2024, 1, 19),  // Presidents' Day
+ *   new Date(2024, 4, 27),  // Memorial Day
+ *   new Date(2024, 5, 19),  // Juneteenth
+ *   new Date(2024, 6, 4),   // Independence Day
+ *   new Date(2024, 8, 2),   // Labor Day
+ *   new Date(2024, 9, 14),  // Columbus Day
+ *   new Date(2024, 10, 11), // Veterans Day
+ *   new Date(2024, 10, 28), // Thanksgiving
+ *   new Date(2024, 11, 25)  // Christmas
+ * ]
+ * 
+ * function addBusinessDaysWithHolidays(startDate, businessDaysToAdd, holidays = []) {
+ *   let currentDate = new Date(startDate)
+ *   let remainingDays = businessDaysToAdd
+ *   
+ *   while (remainingDays > 0) {
+ *     currentDate = addBusinessDays(currentDate, 1)
+ *     
+ *     // Check if current date is a holiday
+ *     const isHoliday = holidays.some(holiday => 
+ *       currentDate.getFullYear() === holiday.getFullYear() &&
+ *       currentDate.getMonth() === holiday.getMonth() &&
+ *       currentDate.getDate() === holiday.getDate()
+ *     )
+ *     
+ *     if (!isHoliday) {
+ *       remainingDays--
+ *     }
+ *   }
+ *   
+ *   return currentDate
+ * }
+ * 
+ * // Usage: Add 5 business days excluding holidays
+ * const startDate = new Date(2024, 0, 2) // January 2, 2024 (Tuesday)
+ * const result = addBusinessDaysWithHolidays(startDate, 5, holidays)
+ * // Result will skip weekends AND holidays, ensuring exactly 5 business days
  */
 export function addBusinessDays<
   DateType extends Date,
