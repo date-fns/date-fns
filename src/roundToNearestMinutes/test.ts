@@ -261,6 +261,20 @@ describe("roundToNearestMinutes", () => {
     expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
   });
 
+  it("returns `Invalid Date` if nearestTo is less than 1", () => {
+    const result = roundToNearestMinutes(new Date(2014, 6, 10, 12, 30), {
+      nearestTo: 0,
+    });
+    expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
+  });
+
+  it("returns `Invalid Date` if nearestTo is greater than 30", () => {
+    const result = roundToNearestMinutes(new Date(2014, 6, 10, 12, 30), {
+      nearestTo: 31,
+    });
+    expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
+  });
+
   it("resolves the date type by default", () => {
     const result = roundToNearestMinutes(Date.now());
     expect(result).toBeInstanceOf(Date);
@@ -292,6 +306,16 @@ describe("roundToNearestMinutes", () => {
         in: tz("Asia/Tokyo"),
       });
       expect(result).toBeInstanceOf(TZDate);
+      assertType<assertType.Equal<TZDate, typeof result>>(true);
+    });
+
+    it("returns Invalid Date with correct context type when nearestTo is invalid", () => {
+      const result = roundToNearestMinutes("2014-09-01T00:00:00Z", {
+        in: tz("Asia/Tokyo"),
+        nearestTo: 0,
+      });
+      expect(result).toBeInstanceOf(TZDate);
+      expect(isNaN(result.getTime())).toBe(true);
       assertType<assertType.Equal<TZDate, typeof result>>(true);
     });
   });

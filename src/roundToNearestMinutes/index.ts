@@ -63,7 +63,8 @@ export function roundToNearestMinutes<
 ): ResultDate {
   const nearestTo = options?.nearestTo ?? 1;
 
-  if (nearestTo < 1 || nearestTo > 30) return constructFrom(date, NaN);
+  if (nearestTo < 1 || nearestTo > 30)
+    return constructFrom(options?.in || date, NaN);
 
   const date_ = toDate(date, options?.in);
   const fractionalSeconds = date_.getSeconds() / 60;
