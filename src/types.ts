@@ -7,7 +7,7 @@ export type * from "./locale/types.ts";
 /**
  * The argument type.
  */
-export type DateArg<DateType extends Date> = DateType | number | string;
+export type DateArg<DateType extends Date> = DateType | number;
 
 /**
  * Date extension interface that allows to transfer extra properties from
