@@ -59,6 +59,17 @@ export interface FormatOptions
     ContextOptions<Date> {}
 
 /**
+ * @overload
+ * @param {string} date
+ * @param {string} formatStr
+ * @param {FormatOptions} [options]
+ * @throws {TypeError} Strings are not valid date arguments. Use parse() or toDate() first.
+ *
+ * NOTE: This is a **JSDoc-only overload**. No TypeScript signature is declared here
+ * because implementation files cannot contain overload signatures.
+ */
+
+/**
  * @name format
  * @alias formatDate
  * @category Common Helpers
