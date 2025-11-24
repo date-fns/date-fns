@@ -453,7 +453,6 @@ export function format(
 
 function cleanEscapedString(input: string): string {
   const matched = input.match(escapedStringRegExp);
-  
   if (!matched) {
     return input;
   }
