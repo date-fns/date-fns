@@ -76,7 +76,7 @@ export interface FormatOptions
  * @summary Format the date.
  *
  * @description
-* Return the formatted date string in the given format. The result may vary by locale.
+ * Return the formatted date string in the given format. The result may vary by locale.
  *
  * > ⚠️ Please note that the `format` tokens differ from Moment.js and other libraries.
  * > See: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
@@ -453,7 +453,8 @@ export function format(
 
 function cleanEscapedString(input: string): string {
   const matched = input.match(escapedStringRegExp);
-    if (!matched) {
+  
+  if (!matched) {
     return input;
   }
 
