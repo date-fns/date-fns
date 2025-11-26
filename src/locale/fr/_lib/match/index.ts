@@ -25,11 +25,12 @@ const parseQuarterPatterns = {
 };
 
 const matchMonthPatterns = {
-  narrow: /^[jfmasond]/i,
   abbreviated:
-    /^(janv|févr|mars|avr|mai|juin|juill|juil|août|sept|oct|nov|déc)\.?/i,
-  wide: /^(janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)/i,
+    /^(janv?|févr?|fevr?|mars|avr|mai|juin|juil?|juill?|août|aout|sept|oct|nov|déc|dec)\.?/i,
+  wide:
+    /^(janvier|février|fevrier|mars|avril|mai|juin|juillet|août|aout|septembre|octobre|novembre|décembre|decembre)/i,
 };
+
 const parseMonthPatterns = {
   narrow: [
     /^j/i,
