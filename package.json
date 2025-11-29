@@ -27,7 +27,7 @@
       },
       "import": {
         "types": "./index.d.ts",
-        "default": "./index.js"
+        "default": "./index.ts"
       }
     },
     "./constants": {
@@ -78,6 +78,16 @@
       "import": {
         "types": "./addBusinessDays.d.ts",
         "default": "./addBusinessDays.js"
+      }
+    },
+    "./addBusinessHours": {
+      "require": {
+        "types": "./addBusinessHours.d.cts",
+        "default": "./addBusinessHours.cjs"
+      },
+      "import": {
+        "types": "./addBusinessHours.d.ts",
+        "default": "./addBusinessHours.js"
       }
     },
     "./addDays": {
@@ -188,6 +198,16 @@
       "import": {
         "types": "./areIntervalsOverlapping.d.ts",
         "default": "./areIntervalsOverlapping.js"
+      }
+    },
+    "./businessHoursInInterval": {
+      "require": {
+        "types": "./businessHoursInInterval.d.cts",
+        "default": "./businessHoursInInterval.cjs"
+      },
+      "import": {
+        "types": "./businessHoursInInterval.d.ts",
+        "default": "./businessHoursInInterval.js"
       }
     },
     "./clamp": {
@@ -1538,6 +1558,16 @@
       "import": {
         "types": "./isWeekend.d.ts",
         "default": "./isWeekend.js"
+      }
+    },
+    "./isWithinBusinessHours": {
+      "require": {
+        "types": "./isWithinBusinessHours.d.cts",
+        "default": "./isWithinBusinessHours.cjs"
+      },
+      "import": {
+        "types": "./isWithinBusinessHours.d.ts",
+        "default": "./isWithinBusinessHours.js"
       }
     },
     "./isWithinInterval": {

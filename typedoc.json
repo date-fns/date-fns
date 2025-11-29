@@ -4,6 +4,7 @@
   "entryPoints": [
     "./src/add/index.ts",
     "./src/addBusinessDays/index.ts",
+    "./src/addBusinessHours/index.ts",
     "./src/addDays/index.ts",
     "./src/addHours/index.ts",
     "./src/addISOWeekYears/index.ts",
@@ -15,6 +16,7 @@
     "./src/addWeeks/index.ts",
     "./src/addYears/index.ts",
     "./src/areIntervalsOverlapping/index.ts",
+    "./src/businessHoursInInterval/index.ts",
     "./src/clamp/index.ts",
     "./src/closestIndexTo/index.ts",
     "./src/closestTo/index.ts",
@@ -150,6 +152,7 @@
     "./src/isValid/index.ts",
     "./src/isWednesday/index.ts",
     "./src/isWeekend/index.ts",
+    "./src/isWithinBusinessHours/index.ts",
     "./src/isWithinInterval/index.ts",
     "./src/isYesterday/index.ts",
     "./src/lastDayOfDecade/index.ts",
@@ -250,5 +253,7 @@
     "./src/constants/index.ts"
   ],
   "json": "./tmp/docs.json",
-  "plugin": ["typedoc-plugin-missing-exports"]
+  "plugin": [
+    "typedoc-plugin-missing-exports"
+  ]
 }
