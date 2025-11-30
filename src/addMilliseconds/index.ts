@@ -5,7 +5,7 @@ import type { ContextOptions, DateArg } from "../types.ts";
  * The {@link addMilliseconds} function options.
  */
 export interface AddMillisecondsOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+  extends ContextOptions<DateType> { }
 
 /**
  * @name addMilliseconds
@@ -37,5 +37,6 @@ export function addMilliseconds<
   amount: number,
   options?: AddMillisecondsOptions<ResultDate> | undefined,
 ): ResultDate {
+  if (isNaN(amount)) return constructFrom(options?.in || date, NaN);
   return constructFrom(options?.in || date, +toDate(date) + amount);
 }
