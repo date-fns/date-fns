@@ -73,6 +73,29 @@ describe("intervalToDuration", () => {
   });
 
   describe("edge cases", () => {
+    it("documents timezone behavior for month boundaries - issue 4041", () => {
+      const atUtcMidnight = intervalToDuration({
+        start: new Date("2024-03-31"),
+        end: new Date("2024-04-30"),
+      });
+
+      const atUtcFour = intervalToDuration({
+        start: new Date("2024-03-31T04:00:00.000Z"),
+        end: new Date("2024-04-30T04:00:00.000Z"),
+      });
+
+      // Current behavior:
+      expect(atUtcMidnight).toEqual({ days: 30 });
+      expect(atUtcFour).toEqual({ months: 1 });
+
+      const atUtcThree = intervalToDuration({
+        start: new Date("2024-03-31T03:00:00.000Z"),
+        end: new Date("2024-04-30T03:00:00.000Z"),
+      });
+
+      expect(atUtcThree).toEqual(atUtcMidnight);
+    });
+
     it("returns correct duration for dates in the end of Feb - issue 2255", () => {
       expect(
         intervalToDuration({
