@@ -24,4 +24,19 @@ describe("isPast", () => {
     const result = isPast(new Date(2014, 6 /* Jul */, 2).getTime());
     expect(result).toBe(true);
   });
+
+  it("returns false for null", () => {
+    const result = isPast(null as any);
+    expect(result).toBe(false);
+  });
+
+  it("returns false for undefined", () => {
+    const result = isPast(undefined as any);
+    expect(result).toBe(false);
+  });
+
+  it("returns false for invalid date", () => {
+    const result = isPast(new Date("invalid"));
+    expect(result).toBe(false);
+  });
 });
