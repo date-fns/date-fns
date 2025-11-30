@@ -1,3 +1,4 @@
+import { isValid } from "../isValid/index.ts";
 import { toDate } from "../toDate/index.ts";
 import type { DateArg } from "../types.ts";
 
@@ -20,5 +21,6 @@ import type { DateArg } from "../types.ts";
  * //=> true
  */
 export function isPast(date: DateArg<Date> & {}): boolean {
+  if (!isValid(date)) return false;
   return +toDate(date) < Date.now();
 }

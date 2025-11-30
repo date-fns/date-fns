@@ -24,4 +24,19 @@ describe("isFuture", () => {
     const result = isFuture(new Date(2014, 9 /* Oct */, 31).getTime());
     expect(result).toBe(true);
   });
+
+  it("returns false for null", () => {
+    const result = isFuture(null as any);
+    expect(result).toBe(false);
+  });
+
+  it("returns false for undefined", () => {
+    const result = isFuture(undefined as any);
+    expect(result).toBe(false);
+  });
+
+  it("returns false for invalid date", () => {
+    const result = isFuture(new Date("invalid"));
+    expect(result).toBe(false);
+  });
 });
