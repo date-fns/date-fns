@@ -13,24 +13,24 @@ export class ISOTimezoneParser extends Parser<number> {
     switch (token) {
       case "x":
         return parseTimezonePattern(
-          timezonePatterns.basicOptionalMinutes,
+          timezonePatterns.basicOptionalMinutesWithoutZ,
           dateString,
         );
       case "xx":
-        return parseTimezonePattern(timezonePatterns.basic, dateString);
+        return parseTimezonePattern(timezonePatterns.basicWithoutZ, dateString);
       case "xxxx":
         return parseTimezonePattern(
-          timezonePatterns.basicOptionalSeconds,
+          timezonePatterns.basicOptionalSecondsWithoutZ,
           dateString,
         );
       case "xxxxx":
         return parseTimezonePattern(
-          timezonePatterns.extendedOptionalSeconds,
+          timezonePatterns.extendedOptionalSecondsWithoutZ,
           dateString,
         );
       case "xxx":
       default:
-        return parseTimezonePattern(timezonePatterns.extended, dateString);
+        return parseTimezonePattern(timezonePatterns.extendedWithoutZ, dateString);
     }
   }
 
