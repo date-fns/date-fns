@@ -2,6 +2,7 @@
 
 export * from "./add/index.ts";
 export * from "./addBusinessDays/index.ts";
+export * from "./addBusinessHours/index.ts";
 export * from "./addDays/index.ts";
 export * from "./addHours/index.ts";
 export * from "./addISOWeekYears/index.ts";
@@ -13,6 +14,7 @@ export * from "./addSeconds/index.ts";
 export * from "./addWeeks/index.ts";
 export * from "./addYears/index.ts";
 export * from "./areIntervalsOverlapping/index.ts";
+export * from "./businessHoursInInterval/index.ts";
 export * from "./clamp/index.ts";
 export * from "./closestIndexTo/index.ts";
 export * from "./closestTo/index.ts";
@@ -148,6 +150,7 @@ export * from "./isTuesday/index.ts";
 export * from "./isValid/index.ts";
 export * from "./isWednesday/index.ts";
 export * from "./isWeekend/index.ts";
+export * from "./isWithinBusinessHours/index.ts";
 export * from "./isWithinInterval/index.ts";
 export * from "./isYesterday/index.ts";
 export * from "./lastDayOfDecade/index.ts";
