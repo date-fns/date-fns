@@ -28,4 +28,9 @@ export const timezonePatterns = {
   basicOptionalSeconds: /^([+-])(\d{2})(\d{2})((\d{2}))?|Z/,
   extended: /^([+-])(\d{2}):(\d{2})|Z/,
   extendedOptionalSeconds: /^([+-])(\d{2}):(\d{2})(:(\d{2}))?|Z/,
+  basicOptionalMinutesWithoutZ: /^([+-])(\d{2})(\d{2})?/,
+  basicWithoutZ: /^([+-])(\d{2})(\d{2})/,
+  basicOptionalSecondsWithoutZ: /^([+-])(\d{2})(\d{2})((\d{2}))?/,
+  extendedWithoutZ: /^([+-])(\d{2}):(\d{2})/,
+  extendedOptionalSecondsWithoutZ: /^([+-])(\d{2}):(\d{2})(:(\d{2}))?/,
 };
