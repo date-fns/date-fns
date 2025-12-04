@@ -4,6 +4,10 @@ import { getRoundingMethod } from "../_lib/getRoundingMethod/index.ts";
 import { getTimezoneOffsetInMilliseconds } from "../_lib/getTimezoneOffsetInMilliseconds/index.ts";
 import { normalizeDates } from "../_lib/normalizeDates/index.ts";
 import { compareAsc } from "../compareAsc/index.ts";
+import { differenceInMonths } from "../differenceInMonths/index.ts";
+import { differenceInYears } from "../differenceInYears/index.ts";
+import { addMonths } from "../addMonths/index.ts";
+import { addYears } from "../addYears/index.ts";
 import {
   millisecondsInMinute,
   minutesInDay,
@@ -199,14 +203,26 @@ export function formatDistanceStrict(
 
     // 1 up to 12 months
   } else if (unit === "month") {
-    const months = roundingMethod(dstNormalizedMinutes / minutesInMonth);
-    return months === 12 && defaultUnit !== "month"
+    const months = differenceInMonths(earlierDate_, laterDate_);
+    const remainder =
+      earlierDate_.getTime() - addMonths(laterDate_, months).getTime();
+
+    const roundedMonths = roundingMethod(
+      months + remainder / (millisecondsInMinute * minutesInMonth),
+    );
+    return roundedMonths === 12 && defaultUnit !== "month"
       ? locale.formatDistance("xYears", 1, localizeOptions)
-      : locale.formatDistance("xMonths", months, localizeOptions);
+      : locale.formatDistance("xMonths", roundedMonths, localizeOptions);
 
     // 1 year up to max Date
   } else {
-    const years = roundingMethod(dstNormalizedMinutes / minutesInYear);
-    return locale.formatDistance("xYears", years, localizeOptions);
+    const years = differenceInYears(earlierDate_, laterDate_);
+    const remainder =
+      earlierDate_.getTime() - addYears(laterDate_, years).getTime();
+
+    const roundedYears = roundingMethod(
+      years + remainder / (millisecondsInMinute * minutesInYear),
+    );
+    return locale.formatDistance("xYears", roundedYears, localizeOptions);
   }
 }
