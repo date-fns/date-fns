@@ -7300,6 +7300,16 @@
         "default": "./locale/sv.js"
       }
     },
+    "./locale/sv-FI": {
+      "require": {
+        "types": "./locale/sv-FI.d.cts",
+        "default": "./locale/sv-FI.cjs"
+      },
+      "import": {
+        "types": "./locale/sv-FI.d.ts",
+        "default": "./locale/sv-FI.js"
+      }
+    },
     "./locale/ta": {
       "require": {
         "types": "./locale/ta.d.cts",
