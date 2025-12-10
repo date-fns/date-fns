@@ -83,6 +83,7 @@ export * from "./sq/index.ts";
 export * from "./sr/index.ts";
 export * from "./sr-Latn/index.ts";
 export * from "./sv/index.ts";
+export * from "./sv-FI/index.ts";
 export * from "./ta/index.ts";
 export * from "./te/index.ts";
 export * from "./th/index.ts";
