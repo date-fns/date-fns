@@ -28,7 +28,7 @@ const matchMonthPatterns = {
   narrow: /^[jfmasond]/i,
   abbreviated:
     /^(janv?|f[eé]vr?|mars?|avr|mai|juin|juill?|ao[uû]t?|sept?|oct|nov|d[eé]c)\.?/i,
-  wide: /^(janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)/i,
+  wide: /^(janvier|f[eé]vrier|mars|avril|mai|juin|juillet|ao[uû]t|septembre|octobre|novembre|d[eé]cembre)/i,
 };
 const parseMonthPatterns = {
   narrow: [
