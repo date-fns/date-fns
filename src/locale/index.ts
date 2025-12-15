@@ -35,6 +35,7 @@ export * from "./et/index.ts";
 export * from "./eu/index.ts";
 export * from "./fa-IR/index.ts";
 export * from "./fi/index.ts";
+export * from "./fo/index.ts";
 export * from "./fr/index.ts";
 export * from "./fr-CA/index.ts";
 export * from "./fr-CH/index.ts";
