@@ -1,6 +1,7 @@
 import type { LocaleUnit, Localize, LocalizeFn } from "../../../types.ts";
 import { buildLocalizeFn } from "../../../_lib/buildLocalizeFn/index.ts";
 
+// https://www.unicode.org/cldr/charts/32/summary/bg.html
 const eraValues = {
   narrow: ["пр.н.е.", "н.е."] as const,
   abbreviated: ["преди н. е.", "н. е."] as const,
@@ -9,21 +10,17 @@ const eraValues = {
 
 const quarterValues = {
   narrow: ["1", "2", "3", "4"] as const,
-  abbreviated: [
-    "1-во тримес.",
-    "2-ро тримес.",
-    "3-то тримес.",
-    "4-то тримес.",
-  ] as const,
+  abbreviated: ["1. трим.", "2. трим.", "3. трим.", "4. трим."] as const,
   wide: [
-    "1-во тримесечие",
-    "2-ро тримесечие",
-    "3-то тримесечие",
-    "4-то тримесечие",
+    "1. тримесечие",
+    "2. тримесечие",
+    "3. тримесечие",
+    "4. тримесечие",
   ] as const,
 };
 
 const monthValues = {
+  narrow: ["я", "ф", "м", "а", "м", "ю", "ю", "а", "с", "о", "н", "д"] as const,
   abbreviated: [
     "яну",
     "фев",
@@ -55,9 +52,9 @@ const monthValues = {
 };
 
 const dayValues = {
-  narrow: ["Н", "П", "В", "С", "Ч", "П", "С"] as const,
+  narrow: ["н", "п", "в", "с", "ч", "п", "с"] as const,
   short: ["нд", "пн", "вт", "ср", "чт", "пт", "сб"] as const,
-  abbreviated: ["нед", "пон", "вто", "сря", "чет", "пет", "съб"] as const,
+  abbreviated: ["нд", "пн", "вт", "ср", "чт", "пт", "сб"] as const,
   wide: [
     "неделя",
     "понеделник",
@@ -70,10 +67,63 @@ const dayValues = {
 };
 
 const dayPeriodValues = {
+  narrow: {
+    am: "am",
+    pm: "pm",
+    midnight: "полунощ",
+    noon: "на обяд",
+    morning: "сутринта",
+    afternoon: "следобед",
+    evening: "вечерта",
+    night: "през нощта",
+  },
+  abbreviated: {
+    am: "am",
+    pm: "pm",
+    midnight: "полунощ",
+    noon: "на обяд",
+    morning: "сутринта",
+    afternoon: "следобед",
+    evening: "вечерта",
+    night: "през нощта",
+  },
   wide: {
-    am: "преди обяд",
-    pm: "след обяд",
-    midnight: "в полунощ",
+    am: "am",
+    pm: "pm",
+    midnight: "полунощ",
+    noon: "на обяд",
+    morning: "сутринта",
+    afternoon: "следобед",
+    evening: "вечерта",
+    night: "през нощта",
+  },
+};
+
+const formattingDayPeriodValues = {
+  narrow: {
+    am: "пр.об.",
+    pm: "сл.об.",
+    midnight: "полунощ",
+    noon: "на обяд",
+    morning: "сутринта",
+    afternoon: "следобед",
+    evening: "вечерта",
+    night: "през нощта",
+  },
+  abbreviated: {
+    am: "пр.об.",
+    pm: "сл.об.",
+    midnight: "полунощ",
+    noon: "на обяд",
+    morning: "сутринта",
+    afternoon: "следобед",
+    evening: "вечерта",
+    night: "през нощта",
+  },
+  wide: {
+    am: "пр.об.",
+    pm: "сл.об.",
+    midnight: "полунощ",
     noon: "на обяд",
     morning: "сутринта",
     afternoon: "следобед",
@@ -162,5 +212,7 @@ export const localize: Localize = {
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: "wide",
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: "wide",
   }),
 };
