@@ -1270,6 +1270,16 @@
         "default": "./isPast.js"
       }
     },
+     "./isSameBusinessWeek": {
+      "require": {
+        "types": "./isSameBusinessWeek.d.ts",
+        "default": "./isSameBusinessWeek.js"
+      },
+      "import": {
+        "types": "./isSameBusinessWeek.d.mts",
+        "default": "./isSameBusinessWeek.mjs"
+      }
+    },
     "./isSameDay": {
       "require": {
         "types": "./isSameDay.d.cts",

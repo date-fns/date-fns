@@ -121,6 +121,7 @@ export * from "./isLeapYear/index.ts";
 export * from "./isMatch/index.ts";
 export * from "./isMonday/index.ts";
 export * from "./isPast/index.ts";
+export * from "./isSameBusinessWeek/index.js";
 export * from "./isSameDay/index.ts";
 export * from "./isSameHour/index.ts";
 export * from "./isSameISOWeek/index.ts";
