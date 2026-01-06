@@ -32,6 +32,17 @@ describe("addDays", () => {
     expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
   });
 
+  it("returns `Invalid Date` if the given amount is Infinity", () => {
+  const result = addDays(new Date(2014, 8 /* Sep */, 1), Infinity);
+  expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
+});
+
+it("returns `Invalid Date` if the given amount is -Infinity", () => {
+  const result = addDays(new Date(2014, 8 /* Sep */, 1), -Infinity);
+  expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
+});
+
+
   const dstTransitions = getDstTransitions(2017);
   const dstOnly = dstTransitions.start && dstTransitions.end ? it : it.skip;
   const tzName =

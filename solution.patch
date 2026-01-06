@@ -1,0 +1,16 @@
+diff --git a/src/addDays/index.ts b/src/addDays/index.ts
+index 796e4c09a..11c74a3ef 100644
+--- a/src/addDays/index.ts
++++ b/src/addDays/index.ts
+@@ -39,7 +39,10 @@ export function addDays<
+   options?: AddDaysOptions<ResultDate> | undefined,
+ ): ResultDate {
+   const _date = toDate(date, options?.in);
+-  if (isNaN(amount)) return constructFrom(options?.in || date, NaN);
++  if (!Number.isFinite(amount)) {
++  return constructFrom(options?.in || date, NaN);
++}
++
+ 
+   // If 0 days, no-op to avoid changing times in the hour before end of DST
+   if (!amount) return _date;
