@@ -1,8 +1,24 @@
+import { parseISO } from "./index.ts";
 import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
 import { assertType } from "../_lib/test/index.ts";
-import { parseISO } from "./index.ts";
 
+describe("parseISO null/undefined handling", () => {
+  it("returns Invalid Date when argument is null", () => {
+    const result = parseISO(null as any);
+    expect(result.toString()).toBe("Invalid Date");
+  });
+
+  it("returns Invalid Date when argument is undefined", () => {
+    const result = parseISO(undefined as any);
+    expect(result.toString()).toBe("Invalid Date");
+  });
+
+  it("returns Invalid Date when argument is non-string", () => {
+    const result = parseISO(123 as any);
+    expect(result.toString()).toBe("Invalid Date");
+  });
+});
 describe("parseISO", () => {
   describe("string argument", () => {
     describe("centuries", () => {

@@ -54,6 +54,11 @@ export function parseISO<
 >(argument: string, options?: ParseISOOptions<ResultDate>): ResultDate {
   const invalidDate = () => constructFrom(options?.in, NaN);
 
+  // If the argument isn't a string, return Invalid Date (do not throw).
+  // This mirrors the repository-wide behavior of treating non-strings
+  // as invalid input instead of raising runtime errors.
+  if (typeof argument !== "string") return invalidDate();
+
   const additionalDigits = options?.additionalDigits ?? 2;
   const dateStrings = splitDateString(argument);
 
