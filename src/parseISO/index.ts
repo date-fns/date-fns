@@ -243,7 +243,9 @@ function parseTimezone(timezoneString: string): number {
   if (timezoneString === "Z") return 0;
 
   const captures = timezoneString.match(timezoneRegex);
-  if (!captures) return 0;
+
+  // ✅ FIX 1: malformed timezone should be invalid, not treated as UTC
+  if (!captures) return NaN;
 
   const sign = captures[1] === "+" ? -1 : 1;
   const hours = parseInt(captures[2]);
@@ -255,6 +257,7 @@ function parseTimezone(timezoneString: string): number {
 
   return sign * (hours * millisecondsInHour + minutes * millisecondsInMinute);
 }
+
 
 function dayOfISOWeekYear(
   isoWeekYear: number,
@@ -314,6 +317,8 @@ function validateTime(
   );
 }
 
-function validateTimezone(_hours: number, minutes: number): boolean {
-  return minutes >= 0 && minutes <= 59;
+function validateTimezone(hours: number, minutes: number): boolean {
+  // ✅ FIX 2: validate hour range as well as minutes
+  return hours >= 0 && hours <= 23 && minutes >= 0 && minutes <= 59;
 }
+
