@@ -76,11 +76,14 @@ export function eachHourOfInterval<
     reversed = !reversed;
   }
 
+  const current = date.getTime();
+  const stepMs = step*60*60*1000;
   const dates: EachHourOfIntervalResult<IntervalType, Options> = [];
 
-  while (+date <= endTime) {
-    dates.push(constructFrom(start, date));
-    date.setHours(date.getHours() + step);
+  let time = current;
+  while (time <= endTime) {
+    dates.push(constructFrom(start, time));
+    time += stepMs;
   }
 
   return reversed ? dates.reverse() : dates;
