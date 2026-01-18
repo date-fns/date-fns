@@ -80,9 +80,9 @@ function lowercaseFirstLetter(string: string) {
 const formatDistanceLocale = {
   xSeconds: {
     one: {
-      present: "sekunda",
-      past: "sekundou",
-      future: "sekundu",
+      present: "1 sekunda",
+      past: "1 sekundou",
+      future: "1 sekundu",
     },
     twoFour: {
       present: "{{count}} sekundy",
@@ -106,9 +106,9 @@ const formatDistanceLocale = {
 
   xMinutes: {
     one: {
-      present: "minúta",
-      past: "minútou",
-      future: "minútu",
+      present: "1 minúta",
+      past: "1 minútou",
+      future: "1 minútu",
     },
     twoFour: {
       present: "{{count}} minúty",
@@ -124,9 +124,9 @@ const formatDistanceLocale = {
 
   xHours: {
     one: {
-      present: "hodina",
-      past: "hodinou",
-      future: "hodinu",
+      present: "1 hodina",
+      past: "1 hodinou",
+      future: "1 hodinu",
     },
     twoFour: {
       present: "{{count}} hodiny",
@@ -142,9 +142,9 @@ const formatDistanceLocale = {
 
   xDays: {
     one: {
-      present: "deň",
-      past: "dňom",
-      future: "deň",
+      present: "1 deň",
+      past: "1 dňom",
+      future: "1 deň",
     },
     twoFour: {
       present: "{{count}} dni",
@@ -160,9 +160,9 @@ const formatDistanceLocale = {
 
   xWeeks: {
     one: {
-      present: "týždeň",
-      past: "týždňom",
-      future: "týždeň",
+      present: "1 týždeň",
+      past: "1 týždňom",
+      future: "1 týždeň",
     },
     twoFour: {
       present: "{{count}} týždne",
@@ -178,9 +178,9 @@ const formatDistanceLocale = {
 
   xMonths: {
     one: {
-      present: "mesiac",
-      past: "mesiacom",
-      future: "mesiac",
+      present: "1 mesiac",
+      past: "1 mesiacom",
+      future: "1 mesiac",
     },
     twoFour: {
       present: "{{count}} mesiace",
@@ -196,9 +196,9 @@ const formatDistanceLocale = {
 
   xYears: {
     one: {
-      present: "rok",
-      past: "rokom",
-      future: "rok",
+      present: "1 rok",
+      past: "1 rokom",
+      future: "1 rok",
     },
     twoFour: {
       present: "{{count}} roky",
