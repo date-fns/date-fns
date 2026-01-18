@@ -15,9 +15,9 @@ type FormatDistanceTokenValue = {
 const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   lessThanXSeconds: {
     one: {
-      regular: "mniej niż sekunda",
-      past: "mniej niż sekundę",
-      future: "mniej niż sekundę",
+      regular: "mniej niż 1 sekunda",
+      past: "mniej niż 1 sekundę",
+      future: "mniej niż 1 sekundę",
     },
     twoFour: "mniej niż {{count}} sekundy",
     other: "mniej niż {{count}} sekund",
@@ -25,9 +25,9 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
 
   xSeconds: {
     one: {
-      regular: "sekunda",
-      past: "sekundę",
-      future: "sekundę",
+      regular: "1 sekunda",
+      past: "1 sekundę",
+      future: "1 sekundę",
     },
     twoFour: "{{count}} sekundy",
     other: "{{count}} sekund",
@@ -41,9 +41,9 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
 
   lessThanXMinutes: {
     one: {
-      regular: "mniej niż minuta",
-      past: "mniej niż minutę",
-      future: "mniej niż minutę",
+      regular: "mniej niż 1 minuta",
+      past: "mniej niż 1 minutę",
+      future: "mniej niż 1 minutę",
     },
     twoFour: "mniej niż {{count}} minuty",
     other: "mniej niż {{count}} minut",
@@ -51,9 +51,9 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
 
   xMinutes: {
     one: {
-      regular: "minuta",
-      past: "minutę",
-      future: "minutę",
+      regular: "1 minuta",
+      past: "1 minutę",
+      future: "1 minutę",
     },
     twoFour: "{{count}} minuty",
     other: "{{count}} minut",
@@ -61,9 +61,9 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
 
   aboutXHours: {
     one: {
-      regular: "około godziny",
-      past: "około godziny",
-      future: "około godzinę",
+      regular: "około 1 godziny",
+      past: "około 1 godziny",
+      future: "około 1 godzinę",
     },
     twoFour: "około {{count}} godziny",
     other: "około {{count}} godzin",
@@ -71,9 +71,9 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
 
   xHours: {
     one: {
-      regular: "godzina",
-      past: "godzinę",
-      future: "godzinę",
+      regular: "1 godzina",
+      past: "1 godzinę",
+      future: "1 godzinę",
     },
     twoFour: "{{count}} godziny",
     other: "{{count}} godzin",
@@ -81,8 +81,8 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
 
   xDays: {
     one: {
-      regular: "dzień",
-      past: "dzień",
+      regular: "1 dzień",
+      past: "1 dzień",
       future: "1 dzień",
     },
     twoFour: "{{count}} dni",
@@ -90,49 +90,49 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   },
 
   aboutXWeeks: {
-    one: "około tygodnia",
+    one: "około 1 tygodnia",
     twoFour: "około {{count}} tygodni",
     other: "około {{count}} tygodni",
   },
 
   xWeeks: {
-    one: "tydzień",
+    one: "1tydzień",
     twoFour: "{{count}} tygodnie",
     other: "{{count}} tygodni",
   },
 
   aboutXMonths: {
-    one: "około miesiąc",
+    one: "około 1 miesiąc",
     twoFour: "około {{count}} miesiące",
     other: "około {{count}} miesięcy",
   },
 
   xMonths: {
-    one: "miesiąc",
+    one: "1 miesiąc",
     twoFour: "{{count}} miesiące",
     other: "{{count}} miesięcy",
   },
 
   aboutXYears: {
-    one: "około rok",
+    one: "około 1 rok",
     twoFour: "około {{count}} lata",
     other: "około {{count}} lat",
   },
 
   xYears: {
-    one: "rok",
+    one: "1 rok",
     twoFour: "{{count}} lata",
     other: "{{count}} lat",
   },
 
   overXYears: {
-    one: "ponad rok",
+    one: "ponad 1 rok",
     twoFour: "ponad {{count}} lata",
     other: "ponad {{count}} lat",
   },
 
   almostXYears: {
-    one: "prawie rok",
+    one: "prawie 1 rok",
     twoFour: "prawie {{count}} lata",
     other: "prawie {{count}} lat",
   },

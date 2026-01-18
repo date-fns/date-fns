@@ -36,13 +36,13 @@ function futureYears(text: string): string {
 
 const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   lessThanXSeconds: {
-    one: "alle sekunti",
+    one: "alle 1 sekunti",
     other: "alle {{count}} sekuntia",
     futureTense: futureSeconds,
   },
 
   xSeconds: {
-    one: "sekunti",
+    one: "1 sekunti",
     other: "{{count}} sekuntia",
     futureTense: futureSeconds,
   },
@@ -54,79 +54,79 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   },
 
   lessThanXMinutes: {
-    one: "alle minuutti",
+    one: "alle 1 minuutti",
     other: "alle {{count}} minuuttia",
     futureTense: futureMinutes,
   },
 
   xMinutes: {
-    one: "minuutti",
+    one: "1 minuutti",
     other: "{{count}} minuuttia",
     futureTense: futureMinutes,
   },
 
   aboutXHours: {
-    one: "noin tunti",
+    one: "noin 1 tunti",
     other: "noin {{count}} tuntia",
     futureTense: futureHours,
   },
 
   xHours: {
-    one: "tunti",
+    one: "1 tunti",
     other: "{{count}} tuntia",
     futureTense: futureHours,
   },
 
   xDays: {
-    one: "päivä",
+    one: "1 päivä",
     other: "{{count}} päivää",
     futureTense: futureDays,
   },
 
   aboutXWeeks: {
-    one: "noin viikko",
+    one: "noin 1 viikko",
     other: "noin {{count}} viikkoa",
     futureTense: futureWeeks,
   },
 
   xWeeks: {
-    one: "viikko",
+    one: "1 viikko",
     other: "{{count}} viikkoa",
     futureTense: futureWeeks,
   },
 
   aboutXMonths: {
-    one: "noin kuukausi",
+    one: "noin 1 kuukausi",
     other: "noin {{count}} kuukautta",
     futureTense: futureMonths,
   },
 
   xMonths: {
-    one: "kuukausi",
+    one: "1 kuukausi",
     other: "{{count}} kuukautta",
     futureTense: futureMonths,
   },
 
   aboutXYears: {
-    one: "noin vuosi",
+    one: "noin 1 vuosi",
     other: "noin {{count}} vuotta",
     futureTense: futureYears,
   },
 
   xYears: {
-    one: "vuosi",
+    one: "1 vuosi",
     other: "{{count}} vuotta",
     futureTense: futureYears,
   },
 
   overXYears: {
-    one: "yli vuosi",
+    one: "yli 1 vuosi",
     other: "yli {{count}} vuotta",
     futureTense: futureYears,
   },
 
   almostXYears: {
-    one: "lähes vuosi",
+    one: "lähes 1 vuosi",
     other: "lähes {{count}} vuotta",
     futureTense: futureYears,
   },
