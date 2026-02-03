@@ -1,0 +1,34 @@
+# Solution Summary:
+# This patch tightens ISO-8601 timezone validation in parseISO.
+# - Malformed timezone offsets no longer default to UTC; they produce Invalid Date.
+# - Timezone hour values are validated to prevent out-of-range offsets.
+
+diff --git a/src/parseISO/index.ts b/src/parseISO/index.ts
+index 0000000..0000000 100644
+--- a/src/parseISO/index.ts
++++ b/src/parseISO/index.ts
+@@ -1,7 +1,7 @@
+ function parseTimezone(timezoneString: string): number {
+   if (timezoneString === "Z") return 0;
+
+   const captures = timezoneString.match(timezoneRegex);
+-  if (!captures) return 0;
++  if (!captures) return NaN;
+
+   const sign = captures[1] === "+" ? -1 : 1;
+   const hours = parseInt(captures[2]);
+   const minutes = (captures[3] && parseInt(captures[3])) || 0;
+
+   if (!validateTimezone(hours, minutes)) {
+     return NaN;
+   }
+
+   return sign * (hours * millisecondsInHour + minutes * millisecondsInMinute);
+ }
+@@ -1,4 +1,4 @@
+-function validateTimezone(_hours: number, minutes: number): boolean {
+-  return minutes >= 0 && minutes <= 59;
+-}
++function validateTimezone(hours: number, minutes: number): boolean {
++  return hours >= 0 && hours <= 23 && minutes >= 0 && minutes <= 59;
++}
