@@ -41,27 +41,69 @@ export function intervalToDuration(
   const { start, end } = normalizeInterval(options?.in, interval);
   const duration: Duration = {};
 
+  // Determine the sign of the interval (positive if end > start)
+  const sign = end.getTime() >= start.getTime() ? 1 : -1;
+
   const years = differenceInYears(end, start);
   if (years) duration.years = years;
 
   const remainingMonths = add(start, { years: duration.years });
-  const months = differenceInMonths(end, remainingMonths);
+  let months = differenceInMonths(end, remainingMonths);
   if (months) duration.months = months;
 
-  const remainingDays = add(remainingMonths, { months: duration.months });
-  const days = differenceInDays(end, remainingDays);
+  let remainingDays = add(remainingMonths, { months: duration.months });
+  let days = differenceInDays(end, remainingDays);
   if (days) duration.days = days;
 
-  const remainingHours = add(remainingDays, { days: duration.days });
-  const hours = differenceInHours(end, remainingHours);
+  let remainingHours = add(remainingDays, { days: duration.days });
+  let hours = differenceInHours(end, remainingHours);
+
+  // If hours has opposite sign to the overall interval, we need to borrow
+  if (hours * sign < 0) {
+    if (duration.days !== undefined) {
+      // Borrow from days
+      duration.days -= sign;
+      if (duration.days === 0) delete duration.days;
+    } else if (duration.months !== undefined) {
+      // Borrow from months (which will give us days to work with)
+      duration.months -= sign;
+      if (duration.months === 0) delete duration.months;
+    } else if (duration.years !== undefined) {
+      // Borrow from years
+      duration.years -= sign;
+      if (duration.years === 0) delete duration.years;
+    }
+    // Recalculate from months forward
+    remainingDays = add(remainingMonths, { months: duration.months });
+    days = differenceInDays(end, remainingDays);
+    if (days) duration.days = days;
+    remainingHours = add(remainingDays, { days: duration.days });
+    hours = differenceInHours(end, remainingHours);
+  }
   if (hours) duration.hours = hours;
 
-  const remainingMinutes = add(remainingHours, { hours: duration.hours });
-  const minutes = differenceInMinutes(end, remainingMinutes);
+  let remainingMinutes = add(remainingHours, { hours: duration.hours });
+  let minutes = differenceInMinutes(end, remainingMinutes);
+
+  // If minutes has opposite sign to the overall interval, borrow from hours
+  if (minutes * sign < 0 && duration.hours !== undefined) {
+    duration.hours -= sign;
+    if (duration.hours === 0) delete duration.hours;
+    remainingMinutes = add(remainingHours, { hours: duration.hours });
+    minutes = differenceInMinutes(end, remainingMinutes);
+  }
   if (minutes) duration.minutes = minutes;
 
-  const remainingSeconds = add(remainingMinutes, { minutes: duration.minutes });
-  const seconds = differenceInSeconds(end, remainingSeconds);
+  let remainingSeconds = add(remainingMinutes, { minutes: duration.minutes });
+  let seconds = differenceInSeconds(end, remainingSeconds);
+
+  // If seconds has opposite sign to the overall interval, borrow from minutes
+  if (seconds * sign < 0 && duration.minutes !== undefined) {
+    duration.minutes -= sign;
+    if (duration.minutes === 0) delete duration.minutes;
+    remainingSeconds = add(remainingMinutes, { minutes: duration.minutes });
+    seconds = differenceInSeconds(end, remainingSeconds);
+  }
   if (seconds) duration.seconds = seconds;
 
   return duration;
