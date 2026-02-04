@@ -153,6 +153,27 @@ describe("intervalToDuration", () => {
       expect(duration).toEqual(expectedDuration);
     });
 
+    it("returns non-negative hours/minutes when end time is earlier than start time - issue 4150", () => {
+      // When crossing a month boundary with end time earlier in the day than start time,
+      // hours and minutes should still be non-negative (borrow from days/months as needed)
+      const duration = intervalToDuration({
+        start: new Date(2026, 0, 28, 22, 45, 0), // Jan 28, 22:45
+        end: new Date(2026, 1, 28, 16, 23, 0), // Feb 28, 16:23
+      });
+
+      // All components should be non-negative since end > start
+      expect(duration.days).toBeGreaterThanOrEqual(0);
+      expect(duration.hours).toBeGreaterThanOrEqual(0);
+      expect(duration.minutes).toBeGreaterThanOrEqual(0);
+
+      // The duration should be: 30 days, 17 hours, 38 minutes
+      expect(duration).toEqual({
+        days: 30,
+        hours: 17,
+        minutes: 38,
+      });
+    });
+
     describe("issue 2470", () => {
       it("returns correct duration for Feb 28 to Aug 31 interval", () => {
         const duration = intervalToDuration({
