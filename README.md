@@ -53,6 +53,14 @@ and other docs.
 
 <br />
 
+## Used by
+
+This library is used by [Next.js](https://github.com/vercel/next.js), [Vuetify](https://github.com/vuetifyjs/vuetify), [Langfuse](https://github.com/langfuse/langfuse), [Midday](https://github.com/midday-ai/midday), [TinaCMS](https://github.com/tinacms/tinacms), and [many more](https://github.com/date-fns/date-fns/network/dependents).
+
+[![Used by](https://api.usedby.dev/npm/date-fns?max=50&sort=stars)](https://github.com/date-fns/date-fns/network/dependents)
+
+<sub>Generated with <a href="https://usedby.dev/">usedby.dev</a><sub>
+
 ## License
 
 [MIT © Sasha Koss](https://kossnocorp.mit-license.org/)
