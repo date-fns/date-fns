@@ -32,7 +32,23 @@ export interface IntervalToDurationOptions extends ContextOptions<Date> {}
  *   start: new Date(1929, 0, 15, 12, 0, 0),
  *   end: new Date(1968, 3, 4, 19, 5, 0)
  * });
- * //=> { years: 39, months: 2, days: 20, hours: 7, minutes: 5, seconds: 0 }
+ * //=> { years: 39, months: 2, days: 20, hours: 7, minutes: 5 }
+ *
+ * @example
+ * // Get the duration between January 1, 2023, 12:00:00 and January 1, 2023, 12:00:01
+ * intervalToDuration({
+ *   start: new Date(2023, 0, 1, 12, 0, 0),
+ *   end: new Date(2023, 0, 1, 12, 0, 1)
+ * });
+ * //=> { seconds: 1 }
+ *
+ * @example
+ * // Duration object will only include non-zero values
+ * intervalToDuration({
+ *   start: new Date(2023, 0, 1, 12, 0, 0),
+ *   end: new Date(2023, 0, 1, 12, 0, 0)
+ * });
+ * //=> {}
  */
 export function intervalToDuration(
   interval: Interval,
