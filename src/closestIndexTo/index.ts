@@ -16,7 +16,7 @@ import type { DateArg } from "../types.ts";
  *
  * @example
  * // Which date is closer to 6 September 2015?
- * const dateToCompare = new Date(2015, 8, 6)
+ * const dateToCompare = new Date(2015, 8, 6) // Note: months are 0-indexed, so 8 = September
  * const datesArray = [
  *   new Date(2015, 0, 1),
  *   new Date(2016, 0, 1),
