@@ -362,6 +362,34 @@ describe("parseISO", () => {
       expect(result instanceof Date).toBe(true);
       expect(isNaN(result.getTime())).toBe(true);
     });
+
+    it("returns Invalid Date if argument is null", () => {
+      // @ts-expect-error - testing runtime behavior with invalid input
+      const result = parseISO(null);
+      expect(result instanceof Date).toBe(true);
+      expect(isNaN(result.getTime())).toBe(true);
+    });
+
+    it("returns Invalid Date if argument is undefined", () => {
+      // @ts-expect-error - testing runtime behavior with invalid input
+      const result = parseISO(undefined);
+      expect(result instanceof Date).toBe(true);
+      expect(isNaN(result.getTime())).toBe(true);
+    });
+
+    it("returns Invalid Date if argument is a number", () => {
+      // @ts-expect-error - testing runtime behavior with invalid input
+      const result = parseISO(1234567890);
+      expect(result instanceof Date).toBe(true);
+      expect(isNaN(result.getTime())).toBe(true);
+    });
+
+    it("returns Invalid Date if argument is a Date object", () => {
+      // @ts-expect-error - testing runtime behavior with invalid input
+      const result = parseISO(new Date());
+      expect(result instanceof Date).toBe(true);
+      expect(isNaN(result.getTime())).toBe(true);
+    });
   });
 
   it("resolves the date type by default", () => {
