@@ -88,19 +88,15 @@ export function buildMatchFn<
       args.parsePatterns[args.defaultParseWidth];
 
     const key = (
-      Array.isArray(parsePatterns)
+      isParsePatternsArray(parsePatterns)
         ? findIndex(parsePatterns, (pattern) => pattern.test(matchedString))
-        : // [TODO] -- I challenge you to fix the type
-          findKey(parsePatterns, (pattern: any) => pattern.test(matchedString))
+        : findKey(parsePatterns, (pattern) => pattern.test(matchedString))
     ) as Value extends LocaleDayPeriod ? string : number;
 
     let value: Value;
 
     value = (args.valueCallback ? args.valueCallback(key) : key) as Value;
-    value = options.valueCallback
-      ? // [TODO] -- I challenge you to fix the type
-        options.valueCallback(value as any)
-      : value;
+    value = options.valueCallback ? options.valueCallback(value) : value;
 
     const rest = string.slice(matchedString.length);
 
@@ -124,7 +120,7 @@ function findKey<Value, Obj extends { [key in string | number]: Value }>(
 }
 
 function findIndex<Item>(
-  array: Item[],
+  array: readonly Item[],
   predicate: (item: Item) => boolean,
 ): number | undefined {
   for (let key = 0; key < array.length; key++) {
@@ -133,4 +129,10 @@ function findIndex<Item>(
     }
   }
   return undefined;
+}
+
+function isParsePatternsArray<Value extends LocaleUnitValue>(
+  parsePatterns: ParsePattern<Value>,
+): parsePatterns is ReadonlyArray<RegExp> {
+  return Array.isArray(parsePatterns);
 }

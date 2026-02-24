@@ -53,25 +53,22 @@ export function setDefaultOptions(options: DefaultOptions): void {
   const result: DefaultOptions = {};
   const defaultOptions = getDefaultOptions();
 
-  for (const property in defaultOptions) {
-    if (Object.prototype.hasOwnProperty.call(defaultOptions, property)) {
-      // [TODO] I challenge you to fix the type
-      (result as any)[property] =
-        defaultOptions[property as keyof DefaultOptions];
-    }
+  for (const property of getOwnKeys(defaultOptions)) {
+    result[property] = defaultOptions[property];
   }
 
-  for (const property in options) {
-    if (Object.prototype.hasOwnProperty.call(options, property)) {
-      if (options[property as keyof DefaultOptions] === undefined) {
-        // [TODO] I challenge you to fix the type
-        delete (result as any)[property];
-      } else {
-        // [TODO] I challenge you to fix the type
-        (result as any)[property] = options[property as keyof DefaultOptions];
-      }
+  for (const property of getOwnKeys(options)) {
+    const value = options[property];
+    if (value === undefined) {
+      delete result[property];
+    } else {
+      result[property] = value;
     }
   }
 
   setInternalDefaultOptions(result);
+}
+
+function getOwnKeys<T extends object>(value: T): Array<keyof T> {
+  return Object.keys(value) as Array<keyof T>;
 }

@@ -296,7 +296,7 @@ export interface MatchFnOptions<Result> {
    *   matchResult.value = valueCallback(matchResult.value)
    * }
    */
-  valueCallback?: MatchValueCallback<string, Result>;
+  valueCallback?: MatchValueCallback<Result, Result>;
 }
 
 /**
