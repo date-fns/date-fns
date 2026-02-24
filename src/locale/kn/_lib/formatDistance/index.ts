@@ -15,13 +15,7 @@ type FormatDistanceTokenValue = {
   other: Tense;
 };
 
-// note: no implementation for weeks
-type FormatDistanceLocaleNoWeeks = Omit<
-  FormatDistanceLocale<FormatDistanceTokenValue>,
-  "aboutXWeeks" | "xWeeks"
->;
-
-const formatDistanceLocale: FormatDistanceLocaleNoWeeks = {
+const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   lessThanXSeconds: {
     one: {
       default: "1 ಸೆಕೆಂಡ್‌ಗಿಂತ ಕಡಿಮೆ",
@@ -121,11 +115,31 @@ const formatDistanceLocale: FormatDistanceLocaleNoWeeks = {
     },
   },
 
-  // TODO
-  // aboutXWeeks: {},
+  aboutXWeeks: {
+    one: {
+      default: "ಸುಮಾರು 1 ವಾರ",
+      future: "ಸುಮಾರು 1 ವಾರದಲ್ಲಿ",
+      past: "ಸುಮಾರು 1 ವಾರದ ಹಿಂದೆ",
+    },
+    other: {
+      default: "ಸುಮಾರು {{count}} ವಾರಗಳು",
+      future: "ಸುಮಾರು {{count}} ವಾರಗಳಲ್ಲಿ",
+      past: "ಸುಮಾರು {{count}} ವಾರಗಳ ಹಿಂದೆ",
+    },
+  },
 
-  // TODO
-  // xWeeks: {},
+  xWeeks: {
+    one: {
+      default: "1 ವಾರ",
+      future: "1 ವಾರದಲ್ಲಿ",
+      past: "1 ವಾರದ ಹಿಂದೆ",
+    },
+    other: {
+      default: "{{count}} ವಾರಗಳು",
+      future: "{{count}} ವಾರಗಳಲ್ಲಿ",
+      past: "{{count}} ವಾರಗಳ ಹಿಂದೆ",
+    },
+  },
 
   aboutXMonths: {
     one: {

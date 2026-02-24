@@ -1,15 +1,15 @@
 [submodule "submodules/tz"]
 	path = submodules/tz
-	url = git@github.com:date-fns/tz.git
+	url = https://github.com/date-fns/tz.git
 [submodule "submodules/utc"]
 	path = submodules/utc
-	url = git@github.com:date-fns/utc.git
+	url = https://github.com/date-fns/utc.git
 [submodule "submodules/docs"]
 	path = submodules/docs
-	url = git@github.com:date-fns/docs.git
+	url = https://github.com/date-fns/docs.git
 [submodule "submodules/build"]
 	path = submodules/build
-	url = git@github.com:date-fns/build.git
+	url = https://github.com/date-fns/build.git
 [submodule "submodules/mcp"]
 	path = submodules/mcp
-	url = git@github.com:date-fns/mcp.git
+	url = https://github.com/date-fns/mcp.git
