@@ -1,5 +1,5 @@
 import type { Localize, LocalizeFn } from "../../../types.ts";
-import { buildLocalizeFn } from "../../../_lib/buildLocalizeFn/index.ts";
+import { buildLocalizeFn } from "../../../buildLocalizeFn/index.ts";
 
 // Most data for localization are taken from this page
 // https://www.unicode.org/cldr/charts/32/summary/ms.html

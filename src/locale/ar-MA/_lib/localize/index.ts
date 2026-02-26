@@ -1,4 +1,4 @@
-import { buildLocalizeFn } from "../../../_lib/buildLocalizeFn/index.ts";
+import { buildLocalizeFn } from "../../../buildLocalizeFn/index.ts";
 import type { Localize, LocalizeFn } from "../../../types.ts";
 import type { Quarter } from "../../../../types.ts";
 

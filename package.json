@@ -27,7 +27,7 @@
       },
       "import": {
         "types": "./index.d.ts",
-        "default": "./index.js"
+        "default": "./index.ts"
       }
     },
     "./constants": {
@@ -58,6 +58,26 @@
       "import": {
         "types": "./fp.d.ts",
         "default": "./fp.js"
+      }
+    },
+    "./locale/buildLocalizeFn": {
+      "require": {
+        "types": "./locale/buildLocalizeFn.d.cts",
+        "default": "./locale/buildLocalizeFn.cjs"
+      },
+      "import": {
+        "types": "./locale/buildLocalizeFn.d.ts",
+        "default": "./locale/buildLocalizeFn.js"
+      }
+    },
+    "./locale/buildMatchFn": {
+      "require": {
+        "types": "./locale/buildMatchFn.d.cts",
+        "default": "./locale/buildMatchFn.cjs"
+      },
+      "import": {
+        "types": "./locale/buildMatchFn.d.ts",
+        "default": "./locale/buildMatchFn.js"
       }
     },
     "./add": {

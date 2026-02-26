@@ -1,6 +1,6 @@
 import type { Quarter } from "../../../../types.ts";
 import type { Match } from "../../../types.ts";
-import { buildMatchFn } from "../../../_lib/buildMatchFn/index.ts";
+import { buildMatchFn } from "../../../buildMatchFn/index.ts";
 import { buildMatchPatternFn } from "../../../_lib/buildMatchPatternFn/index.ts";
 
 const matchOrdinalNumberPattern = /^(\d+)(ste|de)?/i;

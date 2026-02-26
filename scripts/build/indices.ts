@@ -22,7 +22,6 @@ interface File {
   const locales = await listLocales();
   const fns = await listFns();
   const fpFns = await listFPFns();
-
   await Promise.all([
     generatePackageJSON({ fns, fpFns, locales }).then((json) =>
       writeFile("package.json", json),
@@ -49,6 +48,7 @@ async function generatePackageJSON({
   fpFns,
   locales,
 }: GeneratePackageJSONProps) {
+  const localeHelpers = ["./locale/buildLocalizeFn", "./locale/buildMatchFn"];
   const packageJSON = JSON.parse(await readFile("package.json", "utf-8"));
   packageJSON.exports = Object.fromEntries(
     [
@@ -68,6 +68,7 @@ async function generatePackageJSON({
       ],
     ]
       .concat(mapExports(["./constants", "./locale", "./fp"], "."))
+      .concat(mapExports(localeHelpers))
       .concat(mapExports(mapFiles(fns)))
       .concat(mapExports(mapFiles(fpFns), "./fp"))
       .concat(mapExports(mapFiles(locales), "./locale")),
