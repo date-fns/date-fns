@@ -214,7 +214,7 @@ From the CLDR chart, use ['Date & Time'/'Gregorian'/'Eras'](https://www.unicode.
 
 ```js
 // In `en-US` locale:
-import buildLocalizeFn from "../../../_lib/buildLocalizeFn/index.js";
+import buildLocalizeFn from "../../../buildLocalizeFn/index.js";
 
 var eraValues = {
   narrow: ["B", "A"],
@@ -356,7 +356,7 @@ From the CLDR chart, use ['Date & Time'/'Gregorian'/'Quarters'](https://www.unic
 
 ```js
 // In `en-US` locale:
-import buildLocalizeFn from "../../../_lib/buildLocalizeFn/index.js";
+import buildLocalizeFn from "../../../buildLocalizeFn/index.js";
 
 var quarterValues = {
   narrow: ["1", "2", "3", "4"],
@@ -390,7 +390,7 @@ From the CLDR chart, use ['Date & Time'/'Gregorian'/'Months'](https://www.unicod
 
 ```js
 // In `en-US` locale:
-import buildLocalizeFn from "../../../_lib/buildLocalizeFn/index.js";
+import buildLocalizeFn from "../../../buildLocalizeFn/index.js";
 
 var monthValues = {
   narrow: ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"],
@@ -486,7 +486,7 @@ From the CLDR chart, use ['Date & Time'/'Gregorian'/'Days'](https://www.unicode.
 
 ```js
 // In `en-US` locale:
-import buildLocalizeFn from "../../../_lib/buildLocalizeFn/index.js";
+import buildLocalizeFn from "../../../buildLocalizeFn/index.js";
 
 var dayValues = {
   narrow: ["S", "M", "T", "W", "T", "F", "S"],
@@ -526,7 +526,7 @@ From the CLDR chart, use ['Date & Time'/'Gregorian'/'Day periods'](https://www.u
 
 ```js
 // In `en-US` locale:
-import buildLocalizeFn from "../../../_lib/buildLocalizeFn/index.js";
+import buildLocalizeFn from "../../../buildLocalizeFn/index.js";
 
 var dayPeriodValues = {
   narrow: {
@@ -783,7 +783,7 @@ Contains the functions used by `parse` to parse a localized value:
 ```js
 // In `en-US` locale:
 import buildMatchPatternFn from "../../../_lib/buildMatchPatternFn/index.js";
-import buildMatchFn from "../../../_lib/buildMatchFn/index.js";
+import buildMatchFn from "../../../buildMatchFn/index.js";
 
 var matchOrdinalNumberPattern = /^(\d+)(th|st|nd|rd)?/i;
 var parseOrdinalNumberPattern = /\d+/i;

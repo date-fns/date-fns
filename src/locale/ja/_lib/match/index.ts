@@ -1,5 +1,5 @@
 import { buildMatchPatternFn } from "../../../_lib/buildMatchPatternFn/index.ts";
-import { buildMatchFn } from "../../../_lib/buildMatchFn/index.ts";
+import { buildMatchFn } from "../../../buildMatchFn/index.ts";
 import type { Match } from "../../../types.ts";
 import type { Quarter } from "../../../../types.ts";
 
