@@ -235,6 +235,21 @@ describe("intervalToDuration", () => {
     });
   });
 
+  describe("issue 4150 reproduction", () => {
+    it("should not produce negative hours/minutes when end is after start", () => {
+      // 2026-01-28 22:45:00+00
+      // 2026-02-28 16:23:00+00
+      const start = new Date(Date.UTC(2026, 0, 28, 22, 45, 0));
+      const end = new Date(Date.UTC(2026, 1, 28, 16, 23, 0));
+
+      const result = intervalToDuration({ start, end });
+
+      expect(result.hours || 0).toBeGreaterThanOrEqual(0);
+      expect(result.minutes || 0).toBeGreaterThanOrEqual(0);
+      expect(result.seconds || 0).toBeGreaterThanOrEqual(0);
+    });
+  });
+
   it("normalizes the dates", () => {
     const laterDate = new TZDate(2027, 0, 1, "Asia/Singapore");
     const earlierDate = new TZDate(2024, 0, 1, "America/New_York");
