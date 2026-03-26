@@ -1,8 +1,8 @@
 import { TZDate, tz } from "@date-fns/tz";
 import { UTCDate } from "@date-fns/utc";
 import { describe, expect, it } from "vitest";
-import { assertType } from "../_lib/test/index.js";
-import { subMinutes } from "./index.js";
+import { assertType } from "../_lib/test/index.ts";
+import { subMinutes } from "./index.ts";
 
 describe("subMinutes", () => {
   it("subtracts the given number of minutes", () => {
@@ -52,7 +52,7 @@ describe("subMinutes", () => {
         subMinutes("2024-04-10T07:00:00Z", 10, {
           in: tz("Asia/Singapore"),
         }).toISOString(),
-      ).toBe("2024-04-10T15:00:00.000+08:00");
+      ).toBe("2024-04-10T14:50:00.000+08:00");
     });
 
     it("resolves the context date type", () => {

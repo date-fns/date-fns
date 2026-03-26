@@ -1,6 +1,6 @@
-import { addDays } from "../addDays/index.js";
-import { getDay } from "../getDay/index.js";
-import type { ContextOptions, DateArg, Day } from "../types.js";
+import { addDays } from "../addDays/index.ts";
+import { getDay } from "../getDay/index.ts";
+import type { ContextOptions, DateArg, Day } from "../types.ts";
 
 /**
  * The {@link nextDay} function options.

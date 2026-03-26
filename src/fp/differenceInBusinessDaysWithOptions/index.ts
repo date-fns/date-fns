@@ -1,6 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.
 
-import { differenceInBusinessDays as fn } from "../../differenceInBusinessDays/index.js";
-import { convertToFP } from "../_lib/convertToFP/index.js";
+import { differenceInBusinessDays as fn } from "../../differenceInBusinessDays/index.ts";
+import { convertToFP } from "../_lib/convertToFP/index.ts";
 
 export const differenceInBusinessDaysWithOptions = convertToFP(fn, 3);

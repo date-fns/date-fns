@@ -1,5 +1,5 @@
-import { constructFrom } from "../constructFrom/index.js";
-import type { ConstructableDate, ContextFn, DateArg } from "../types.js";
+import { constructFrom } from "../constructFrom/index.ts";
+import type { ConstructableDate, ContextFn, DateArg } from "../types.ts";
 
 /**
  * @name toDate

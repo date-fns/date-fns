@@ -1,10 +1,10 @@
-import { constructFromSymbol } from "../constants/index.js";
+import { constructFromSymbol } from "../constants/index.ts";
 import type {
   ConstructableDate,
   ContextFn,
   DateArg,
   GenericDateConstructor,
-} from "../types.js";
+} from "../types.ts";
 
 /**
  * @name constructFrom

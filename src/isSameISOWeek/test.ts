@@ -1,7 +1,7 @@
 import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import type { ContextOptions, DateArg } from "../types.js";
-import { isSameISOWeek } from "./index.js";
+import type { ContextOptions, DateArg } from "../types.ts";
+import { isSameISOWeek } from "./index.ts";
 
 describe("isSameISOWeek", () => {
   it("returns true if the given dates have the same ISO week", () => {

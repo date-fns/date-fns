@@ -1,8 +1,8 @@
 import { TZDate, tz } from "@date-fns/tz";
 import { UTCDate } from "@date-fns/utc";
 import { describe, expect, it } from "vitest";
-import { assertType } from "../_lib/test/index.js";
-import { previousSunday } from "./index.js";
+import { assertType } from "../_lib/test/index.ts";
+import { previousSunday } from "./index.ts";
 
 describe("previousSunday", () => {
   it("returns the previous Sunday given various dates after the same", () => {

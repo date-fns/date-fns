@@ -7,8 +7,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+        with:
+          submodules: "recursive"
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "pnpm"
+      - run: pnpm install
       - uses: oven-sh/setup-bun@v1
-      - run: bun install
+
       - run: bun ./scripts/test/tzOffset.ts
       - run: bun ./scripts/test/tzIANA.ts

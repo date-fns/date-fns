@@ -1,9 +1,9 @@
-import { isSameWeek } from "../../../../isSameWeek/index.js";
-import type { Day } from "../../../../types.js";
+import { isSameWeek } from "../../../../isSameWeek/index.ts";
+import type { Day } from "../../../../types.ts";
 import type {
   FormatRelativeFn,
   FormatRelativeFnOptions,
-} from "../../../types.js";
+} from "../../../types.ts";
 
 const accusativeWeekdays = [
   "воскресенье",

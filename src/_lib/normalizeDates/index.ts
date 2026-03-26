@@ -1,5 +1,5 @@
-import { constructFrom } from "../../constructFrom/index.js";
-import type { ContextFn, DateArg } from "../../types.js";
+import { constructFrom } from "../../constructFrom/index.ts";
+import type { ContextFn, DateArg } from "../../types.ts";
 
 export function normalizeDates(
   context: ContextFn<Date> | undefined,

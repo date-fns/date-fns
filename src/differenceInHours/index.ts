@@ -1,7 +1,7 @@
-import { getRoundingMethod } from "../_lib/getRoundingMethod/index.js";
-import { normalizeDates } from "../_lib/normalizeDates/index.js";
-import { millisecondsInHour } from "../constants/index.js";
-import type { ContextOptions, DateArg, RoundingOptions } from "../types.js";
+import { getRoundingMethod } from "../_lib/getRoundingMethod/index.ts";
+import { normalizeDates } from "../_lib/normalizeDates/index.ts";
+import { millisecondsInHour } from "../constants/index.ts";
+import type { ContextOptions, DateArg, RoundingOptions } from "../types.ts";
 
 /**
  * The {@link differenceInHours} function options.

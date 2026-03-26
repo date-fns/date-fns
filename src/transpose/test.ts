@@ -1,6 +1,6 @@
 import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import { transpose } from "./index.js";
+import { transpose } from "./index.ts";
 
 describe("transpose", () => {
   it("allows to use context function", () => {

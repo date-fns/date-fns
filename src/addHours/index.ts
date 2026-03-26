@@ -1,6 +1,6 @@
-import { addMilliseconds } from "../addMilliseconds/index.js";
-import { millisecondsInHour } from "../constants/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { addMilliseconds } from "../addMilliseconds/index.ts";
+import { millisecondsInHour } from "../constants/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link addHours} function options.

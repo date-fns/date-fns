@@ -1,13 +1,13 @@
-import { defaultLocale } from "../_lib/defaultLocale/index.js";
-import { longFormatters } from "../_lib/format/longFormatters/index.js";
+import { defaultLocale } from "../_lib/defaultLocale/index.ts";
+import { longFormatters } from "../_lib/format/longFormatters/index.ts";
 import {
   isProtectedDayOfYearToken,
   isProtectedWeekYearToken,
   warnOrThrowProtectedError,
-} from "../_lib/protectedTokens/index.js";
-import { constructFrom } from "../constructFrom/index.js";
-import { getDefaultOptions } from "../getDefaultOptions/index.js";
-import { toDate } from "../toDate/index.js";
+} from "../_lib/protectedTokens/index.ts";
+import { constructFrom } from "../constructFrom/index.ts";
+import { getDefaultOptions } from "../getDefaultOptions/index.ts";
+import { toDate } from "../toDate/index.ts";
 import type {
   AdditionalTokensOptions,
   ContextOptions,
@@ -15,11 +15,11 @@ import type {
   FirstWeekContainsDateOptions,
   LocalizedOptions,
   WeekOptions,
-} from "../types.js";
-import type { Setter } from "./_lib/Setter.js";
-import { DateTimezoneSetter } from "./_lib/Setter.js";
-import { parsers } from "./_lib/parsers/index.js";
-import type { ParseFlags, ParserOptions } from "./_lib/types.js";
+} from "../types.ts";
+import type { Setter } from "./_lib/Setter.ts";
+import { DateTimezoneSetter } from "./_lib/Setter.ts";
+import { parsers } from "./_lib/parsers/index.ts";
+import type { ParseFlags, ParserOptions } from "./_lib/types.ts";
 
 // Rexports of internal for libraries to use.
 // See: https://github.com/date-fns/date-fns/issues/3638#issuecomment-1877082874

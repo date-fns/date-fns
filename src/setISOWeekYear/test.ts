@@ -1,8 +1,8 @@
 import { TZDate, tz } from "@date-fns/tz";
 import { UTCDate } from "@date-fns/utc";
 import { describe, expect, it } from "vitest";
-import { assertType } from "../_lib/test/index.js";
-import { setISOWeekYear } from "./index.js";
+import { assertType } from "../_lib/test/index.ts";
+import { setISOWeekYear } from "./index.ts";
 
 describe("setISOWeekYear", () => {
   it("sets the ISO week-numbering year, saving the ISO week and the day of the week", () => {

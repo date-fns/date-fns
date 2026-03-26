@@ -1,8 +1,8 @@
 import { TZDate, tz } from "@date-fns/tz";
 import { UTCDate } from "@date-fns/utc";
 import { describe, expect, it } from "vitest";
-import { assertType } from "../_lib/test/index.js";
-import { addBusinessDays } from "./index.js";
+import { assertType } from "../_lib/test/index.ts";
+import { addBusinessDays } from "./index.ts";
 
 describe("addBusinessDays", () => {
   it("adds the given number of business days", () => {

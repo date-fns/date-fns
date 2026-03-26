@@ -1,10 +1,10 @@
-import type { Match } from "../../../locale/types.js";
-import { setWeek } from "../../../setWeek/index.js";
-import { startOfWeek } from "../../../startOfWeek/index.js";
-import { numericPatterns } from "../constants.js";
-import { Parser } from "../Parser.js";
-import type { ParseFlags, ParseResult, ParserOptions } from "../types.js";
-import { parseNDigits, parseNumericPattern } from "../utils.js";
+import type { Match } from "../../../locale/types.ts";
+import { setWeek } from "../../../setWeek/index.ts";
+import { startOfWeek } from "../../../startOfWeek/index.ts";
+import { numericPatterns } from "../constants.ts";
+import { Parser } from "../Parser.ts";
+import type { ParseFlags, ParseResult, ParserOptions } from "../types.ts";
+import { parseNDigits, parseNumericPattern } from "../utils.ts";
 
 // Local week of year
 export class LocalWeekParser extends Parser<number> {

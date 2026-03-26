@@ -1,21 +1,21 @@
-import { defaultLocale } from "../_lib/defaultLocale/index.js";
-import { getDefaultOptions } from "../_lib/defaultOptions/index.js";
-import { getRoundingMethod } from "../_lib/getRoundingMethod/index.js";
-import { getTimezoneOffsetInMilliseconds } from "../_lib/getTimezoneOffsetInMilliseconds/index.js";
-import { normalizeDates } from "../_lib/normalizeDates/index.js";
-import { compareAsc } from "../compareAsc/index.js";
+import { defaultLocale } from "../_lib/defaultLocale/index.ts";
+import { getDefaultOptions } from "../_lib/defaultOptions/index.ts";
+import { getRoundingMethod } from "../_lib/getRoundingMethod/index.ts";
+import { getTimezoneOffsetInMilliseconds } from "../_lib/getTimezoneOffsetInMilliseconds/index.ts";
+import { normalizeDates } from "../_lib/normalizeDates/index.ts";
+import { compareAsc } from "../compareAsc/index.ts";
 import {
   millisecondsInMinute,
   minutesInDay,
   minutesInMonth,
   minutesInYear,
-} from "../constants/index.js";
+} from "../constants/index.ts";
 import type {
   ContextOptions,
   DateArg,
   LocalizedOptions,
   RoundingOptions,
-} from "../types.js";
+} from "../types.ts";
 
 /**
  * The {@link formatDistanceStrict} function options.

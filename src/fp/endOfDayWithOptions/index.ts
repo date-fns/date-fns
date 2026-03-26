@@ -1,6 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.
 
-import { endOfDay as fn } from "../../endOfDay/index.js";
-import { convertToFP } from "../_lib/convertToFP/index.js";
+import { endOfDay as fn } from "../../endOfDay/index.ts";
+import { convertToFP } from "../_lib/convertToFP/index.ts";
 
 export const endOfDayWithOptions = convertToFP(fn, 2);

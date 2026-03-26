@@ -1,13 +1,13 @@
-import { getTimezoneOffsetInMilliseconds } from "../_lib/getTimezoneOffsetInMilliseconds/index.js";
-import { normalizeDates } from "../_lib/normalizeDates/index.js";
-import { millisecondsInWeek } from "../constants/index.js";
-import { startOfWeek } from "../startOfWeek/index.js";
+import { getTimezoneOffsetInMilliseconds } from "../_lib/getTimezoneOffsetInMilliseconds/index.ts";
+import { normalizeDates } from "../_lib/normalizeDates/index.ts";
+import { millisecondsInWeek } from "../constants/index.ts";
+import { startOfWeek } from "../startOfWeek/index.ts";
 import type {
   ContextOptions,
   DateArg,
   LocalizedOptions,
   WeekOptions,
-} from "../types.js";
+} from "../types.ts";
 
 /**
  * The {@link differenceInCalendarWeeks} function options.

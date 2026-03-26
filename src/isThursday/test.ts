@@ -1,7 +1,7 @@
 import { tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import type { ContextOptions, DateArg } from "../types.js";
-import { isThursday } from "./index.js";
+import type { ContextOptions, DateArg } from "../types.ts";
+import { isThursday } from "./index.ts";
 
 describe("isThursday", () => {
   it("returns true if the given date is Thursday", () => {

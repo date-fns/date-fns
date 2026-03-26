@@ -1,4 +1,4 @@
-import type { FormatRelativeFn } from "../../../types.js";
+import type { FormatRelativeFn } from "../../../types.ts";
 
 const formatRelativeLocale = {
   lastWeek: "'sonuncu' eeee p -'də'",

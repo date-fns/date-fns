@@ -1,7 +1,7 @@
-import type { LocaleDayPeriod, Match } from "../../../locale/types.js";
-import { Parser } from "../Parser.js";
-import type { ParseFlags, ParseResult } from "../types.js";
-import { dayPeriodEnumToHours } from "../utils.js";
+import type { LocaleDayPeriod, Match } from "../../../locale/types.ts";
+import { Parser } from "../Parser.ts";
+import type { ParseFlags, ParseResult } from "../types.ts";
+import { dayPeriodEnumToHours } from "../utils.ts";
 
 export class AMPMMidnightParser extends Parser<LocaleDayPeriod> {
   priority = 80;

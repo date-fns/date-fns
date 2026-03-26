@@ -1,4 +1,4 @@
-#!/usr/bin/env npx tsx
+#!/usr/bin/env pnpm tsx
 
 /**
  * @file
@@ -9,15 +9,15 @@
 
 import { readFile, writeFile } from "fs/promises";
 import path from "path";
-import type { Locale } from "../../../src/locale/types.js";
-import { listLocales } from "../../_lib/listLocales.js";
-import { formatCode } from "../_lib/prettier.js";
-import { convertLocaleToConst } from "./_lib/locale.js";
-import renderFormatDistance from "./renderFormatDistance/index.js";
-import renderFormatDistanceStrict from "./renderFormatDistanceStrict/index.js";
-import renderFormatDuration from "./renderFormatDuration/index.js";
-import renderFormatParse from "./renderFormatParse/index.js";
-import renderFormatRelative from "./renderFormatRelative/index.js";
+import type { Locale } from "@wrkspc/src/locale/types.ts";
+import { listLocales } from "../../_lib/listLocales.ts";
+import { formatCode } from "../_lib/prettier.ts";
+import { convertLocaleToConst } from "./_lib/locale.ts";
+import renderFormatDistance from "./renderFormatDistance/index.ts";
+import renderFormatDistanceStrict from "./renderFormatDistanceStrict/index.ts";
+import renderFormatDuration from "./renderFormatDuration/index.ts";
+import renderFormatParse from "./renderFormatParse/index.ts";
+import renderFormatRelative from "./renderFormatRelative/index.ts";
 
 const mode = process.argv[2] || "generate";
 
@@ -29,7 +29,7 @@ listLocales()
     Promise.all(
       locales.map(async (localeObj) => {
         const { code, fullPath } = localeObj;
-        const locale: Locale = (await import(`../../../src/locale/${code}`))[
+        const locale: Locale = (await import(`@wrkspc/src/locale/${code}`))[
           convertLocaleToConst(code)
         ];
         const source = (
@@ -53,7 +53,7 @@ ${renderFormatDuration(locale)}
 
         const snapshotPath = path.join(
           path.resolve(process.cwd(), path.dirname(fullPath)),
-          "snapshot.md"
+          "snapshot.md",
         );
         const formattedSnapshot = await formatCode(snapshot, "markdown");
 
@@ -61,14 +61,14 @@ ${renderFormatDuration(locale)}
           return readFile(snapshotPath, "utf8").then((snapshotFileContent) => {
             if (snapshotFileContent !== formattedSnapshot)
               throw new Error(
-                `The snapshot on the disk doesn't match the generated snapshot: ${snapshotPath}. Please run npm run locale-snapshots and commit the results.`
+                `The snapshot on the disk doesn't match the generated snapshot: ${snapshotPath}. Please run pnpm run locale-snapshots and commit the results.`,
               );
           });
         } else {
           return writeFile(snapshotPath, formattedSnapshot);
         }
-      })
-    )
+      }),
+    ),
   )
   .catch((err) => {
     console.error(err.stack);

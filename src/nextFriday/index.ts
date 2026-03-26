@@ -1,5 +1,5 @@
-import { nextDay } from "../nextDay/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { nextDay } from "../nextDay/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link nextFriday} function options.

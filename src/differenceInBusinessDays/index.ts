@@ -1,10 +1,10 @@
-import { normalizeDates } from "../_lib/normalizeDates/index.js";
-import { addDays } from "../addDays/index.js";
-import { differenceInCalendarDays } from "../differenceInCalendarDays/index.js";
-import { isSameDay } from "../isSameDay/index.js";
-import { isValid } from "../isValid/index.js";
-import { isWeekend } from "../isWeekend/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { normalizeDates } from "../_lib/normalizeDates/index.ts";
+import { addDays } from "../addDays/index.ts";
+import { differenceInCalendarDays } from "../differenceInCalendarDays/index.ts";
+import { isSameDay } from "../isSameDay/index.ts";
+import { isValid } from "../isValid/index.ts";
+import { isWeekend } from "../isWeekend/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link differenceInBusinessDays} function options.

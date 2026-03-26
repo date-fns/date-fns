@@ -1,6 +1,6 @@
-import { getRoundingMethod } from "../_lib/getRoundingMethod/index.js";
-import { differenceInMilliseconds } from "../differenceInMilliseconds/index.js";
-import type { DateArg, RoundingOptions } from "../types.js";
+import { getRoundingMethod } from "../_lib/getRoundingMethod/index.ts";
+import { differenceInMilliseconds } from "../differenceInMilliseconds/index.ts";
+import type { DateArg, RoundingOptions } from "../types.ts";
 
 /**
  * The {@link differenceInSeconds} function options.

@@ -1,6 +1,6 @@
-import { isLeapYear } from "../isLeapYear/index.js";
-import { toDate } from "../toDate/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { isLeapYear } from "../isLeapYear/index.ts";
+import { toDate } from "../toDate/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link getDaysInYear} function options.

@@ -1,8 +1,8 @@
-import { millisecondsInWeek } from "../constants/index.js";
-import { startOfISOWeek } from "../startOfISOWeek/index.js";
-import { startOfISOWeekYear } from "../startOfISOWeekYear/index.js";
-import { toDate } from "../toDate/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { millisecondsInWeek } from "../constants/index.ts";
+import { startOfISOWeek } from "../startOfISOWeek/index.ts";
+import { startOfISOWeekYear } from "../startOfISOWeekYear/index.ts";
+import { toDate } from "../toDate/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link getISOWeek} function options.

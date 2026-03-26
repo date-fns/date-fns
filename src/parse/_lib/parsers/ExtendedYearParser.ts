@@ -1,6 +1,6 @@
-import { Parser } from "../Parser.js";
-import type { ParseFlags, ParseResult } from "../types.js";
-import { parseNDigitsSigned } from "../utils.js";
+import { Parser } from "../Parser.ts";
+import type { ParseFlags, ParseResult } from "../types.ts";
+import { parseNDigitsSigned } from "../utils.ts";
 
 export class ExtendedYearParser extends Parser<number> {
   priority = 130;

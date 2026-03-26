@@ -1,9 +1,9 @@
 import { tz } from "@date-fns/tz";
 import { UTCDate } from "@date-fns/utc";
 import { describe, expect, it } from "vitest";
-import { fakeDate } from "../_lib/test/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
-import { isThisQuarter } from "./index.js";
+import { fakeDate } from "../_lib/test/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
+import { isThisQuarter } from "./index.ts";
 
 describe("isThisQuarter", () => {
   const { fakeNow } = fakeDate(new Date(2014, 6 /* Jul */, 1));

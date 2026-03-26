@@ -1,5 +1,5 @@
-import { addWeeks } from "../addWeeks/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { addWeeks } from "../addWeeks/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link subWeeks} function options.

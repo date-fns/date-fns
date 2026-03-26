@@ -1,8 +1,8 @@
 import { TZDate, tz } from "@date-fns/tz";
 import { UTCDate } from "@date-fns/utc";
 import { describe, expect, it } from "vitest";
-import { assertType } from "../_lib/test/index.js";
-import { eachWeekOfInterval } from "./index.js";
+import { assertType } from "../_lib/test/index.ts";
+import { eachWeekOfInterval } from "./index.ts";
 
 describe("eachWeekOfInterval", () => {
   it("returns an array with starts of weeks from the week of the start date to the week of the end date", () => {

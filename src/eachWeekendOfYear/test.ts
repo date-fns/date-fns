@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { eachWeekendOfYear } from "./index.js";
-import { isWeekend } from "../isWeekend/index.js";
+import { eachWeekendOfYear } from "./index.ts";
+import { isWeekend } from "../isWeekend/index.ts";
 import { tz, TZDate } from "@date-fns/tz";
-import { assertType } from "../_lib/test/index.js";
+import { assertType } from "../_lib/test/index.ts";
 import { UTCDate } from "@date-fns/utc";
 
 describe("eachWeekendOfYear", () => {

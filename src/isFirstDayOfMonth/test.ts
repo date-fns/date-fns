@@ -1,7 +1,7 @@
 import { tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import { isFirstDayOfMonth } from "./index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { isFirstDayOfMonth } from "./index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 describe("isFirstDayOfMonth", () => {
   it("returns true if the given date is the first day of a month", () => {

@@ -1,14 +1,14 @@
-import { getDefaultOptions } from "../_lib/defaultOptions/index.js";
-import { getDate } from "../getDate/index.js";
-import { getDay } from "../getDay/index.js";
-import { startOfMonth } from "../startOfMonth/index.js";
-import { toDate } from "../toDate/index.js";
+import { getDefaultOptions } from "../_lib/defaultOptions/index.ts";
+import { getDate } from "../getDate/index.ts";
+import { getDay } from "../getDay/index.ts";
+import { startOfMonth } from "../startOfMonth/index.ts";
+import { toDate } from "../toDate/index.ts";
 import type {
   ContextOptions,
   DateArg,
   LocalizedOptions,
   WeekOptions,
-} from "../types.js";
+} from "../types.ts";
 
 /**
  * The {@link getWeekOfMonth} function options.

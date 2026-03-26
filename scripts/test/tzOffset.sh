@@ -15,6 +15,6 @@ for tz in UTC-12:00 UTC-11:00 UTC-10:00 UTC-09:30 UTC-09:00 \
   UTC+11:30 UTC+12:00 UTC+12:45 UTC+13:00 UTC+14:00
 do
   printf "Run test in time zone $tz\n"
-  env TZ=$tz npx vitest run \
+  env TZ=$tz pnpm vitest run \
     &>tmp/last_test_output.txt || (cat tmp/last_test_output.txt && exit 1) || exit 1
 done

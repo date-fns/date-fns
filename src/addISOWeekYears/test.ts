@@ -1,8 +1,8 @@
 import { tz, TZDate } from "@date-fns/tz";
 import { UTCDate } from "@date-fns/utc";
 import { describe, expect, it } from "vitest";
-import { assertType } from "../_lib/test/index.js";
-import { addISOWeekYears } from "./index.js";
+import { assertType } from "../_lib/test/index.ts";
+import { addISOWeekYears } from "./index.ts";
 
 describe("addISOWeekYears", () => {
   it("adds the given number of ISO week-numbering years", () => {

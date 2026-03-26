@@ -1,7 +1,7 @@
 {
-  "name": "date-fns-example-babel",
+  "name": "@date-fns/example-lodash-fp",
   "version": "0.1.0",
-  "description": "Example of date-fns usage with webpack 1.x, babel and lodash",
+  "description": "Example of date-fns usage with Lodash FP submodule",
   "main": "example.js",
   "author": "Sasha Koss <koss@nocorp.me>",
   "license": "MIT",
@@ -11,7 +11,7 @@
     "lodash": "^4.17.4"
   },
   "scripts": {
-    "build": "npm run build-date-fns && npm run build-esbuild",
+    "build": "pnpm run build-date-fns && pnpm run build-esbuild",
     "build-date-fns": "rm -rf node_modules/date-fns && cp -r ../../lib node_modules/date-fns || env PACKAGE_OUTPUT_PATH=\"$(pwd)/node_modules/date-fns\" ../../scripts/build/package.sh",
     "build-esbuild": "esbuild example.js --outdir=dist",
     "stats-size": "gzip-size dist/example.min.js",

@@ -1,8 +1,8 @@
 import { TZDate, tz } from "@date-fns/tz";
 import { UTCDate } from "@date-fns/utc";
 import { describe, expect, it } from "vitest";
-import { assertType } from "../_lib/test/index.js";
-import { lastDayOfWeek } from "./index.js";
+import { assertType } from "../_lib/test/index.ts";
+import { lastDayOfWeek } from "./index.ts";
 
 describe("lastDayOfWeek", () => {
   it("returns the date with the time set to 00:00:00 and the date set to the last day of a week", () => {

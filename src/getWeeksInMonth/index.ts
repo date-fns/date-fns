@@ -1,13 +1,13 @@
-import { differenceInCalendarWeeks } from "../differenceInCalendarWeeks/index.js";
-import { lastDayOfMonth } from "../lastDayOfMonth/index.js";
-import { startOfMonth } from "../startOfMonth/index.js";
-import { toDate } from "../toDate/index.js";
+import { differenceInCalendarWeeks } from "../differenceInCalendarWeeks/index.ts";
+import { lastDayOfMonth } from "../lastDayOfMonth/index.ts";
+import { startOfMonth } from "../startOfMonth/index.ts";
+import { toDate } from "../toDate/index.ts";
 import type {
   ContextOptions,
   DateArg,
   LocalizedOptions,
   WeekOptions,
-} from "../types.js";
+} from "../types.ts";
 
 /**
  * The {@link getWeeksInMonth} function options.

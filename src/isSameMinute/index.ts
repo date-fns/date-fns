@@ -1,5 +1,5 @@
-import { startOfMinute } from "../startOfMinute/index.js";
-import type { DateArg } from "../types.js";
+import { startOfMinute } from "../startOfMinute/index.ts";
+import type { DateArg } from "../types.ts";
 
 /**
  * @name isSameMinute

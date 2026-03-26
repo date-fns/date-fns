@@ -1,5 +1,5 @@
-import { toDate } from "../../toDate/index.js";
-import type { DateArg } from "../../types.js";
+import { toDate } from "../../toDate/index.ts";
+import type { DateArg } from "../../types.ts";
 
 /**
  * Google Chrome as of 67.0.3396.87 introduced timezones with offset that includes seconds.

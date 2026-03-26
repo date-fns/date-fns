@@ -1,8 +1,8 @@
 import { TZDate, tz } from "@date-fns/tz";
 import { UTCDate } from "@date-fns/utc";
 import { describe, expect, it } from "vitest";
-import { assertType } from "../_lib/test/index.js";
-import { addHours } from "./index.js";
+import { assertType } from "../_lib/test/index.ts";
+import { addHours } from "./index.ts";
 
 describe("addHours", () => {
   it("adds the given numbers of hours", () => {

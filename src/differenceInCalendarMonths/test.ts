@@ -1,7 +1,7 @@
 import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import type { ContextOptions } from "../types.js";
-import { differenceInCalendarMonths } from "./index.js";
+import type { ContextOptions } from "../types.ts";
+import { differenceInCalendarMonths } from "./index.ts";
 
 describe("differenceInCalendarMonths", () => {
   it("returns the number of calendar months between the given dates", () => {

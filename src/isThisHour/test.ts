@@ -1,9 +1,9 @@
 import { tz } from "@date-fns/tz";
 import { UTCDate } from "@date-fns/utc";
 import { describe, expect, it } from "vitest";
-import { fakeDate } from "../_lib/test/index.js";
-import type { ContextOptions } from "../types.js";
-import { isThisHour } from "./index.js";
+import { fakeDate } from "../_lib/test/index.ts";
+import type { ContextOptions } from "../types.ts";
+import { isThisHour } from "./index.ts";
 
 describe("isThisHour", () => {
   const { fakeNow } = fakeDate(

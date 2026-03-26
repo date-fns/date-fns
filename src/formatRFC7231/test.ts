@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { formatRFC7231 } from "./index.js";
+import { formatRFC7231 } from "./index.ts";
 
 describe("formatRFC7231", () => {
   it("formats RFC-7231 date string", () => {

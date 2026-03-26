@@ -1,7 +1,7 @@
-import { constructNow } from "../constructNow/index.js";
-import type { FormatDistanceOptions } from "../formatDistance/index.js";
-import { formatDistance } from "../formatDistance/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { constructNow } from "../constructNow/index.ts";
+import type { FormatDistanceOptions } from "../formatDistance/index.ts";
+import { formatDistance } from "../formatDistance/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link formatDistanceToNow} function options.

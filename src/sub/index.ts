@@ -1,7 +1,7 @@
-import { constructFrom } from "../constructFrom/index.js";
-import { subDays } from "../subDays/index.js";
-import { subMonths } from "../subMonths/index.js";
-import type { ContextOptions, DateArg, Duration } from "../types.js";
+import { constructFrom } from "../constructFrom/index.ts";
+import { subDays } from "../subDays/index.ts";
+import { subMonths } from "../subMonths/index.ts";
+import type { ContextOptions, DateArg, Duration } from "../types.ts";
 
 /**
  * The {@link sub} function options.

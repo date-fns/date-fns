@@ -1,8 +1,8 @@
-import type { Match } from "../../../locale/types.js";
-import { numericPatterns } from "../constants.js";
-import { Parser } from "../Parser.js";
-import type { ParseFlags, ParseResult } from "../types.js";
-import { parseNDigits, parseNumericPattern } from "../utils.js";
+import type { Match } from "../../../locale/types.ts";
+import { numericPatterns } from "../constants.ts";
+import { Parser } from "../Parser.ts";
+import type { ParseFlags, ParseResult } from "../types.ts";
+import { parseNDigits, parseNumericPattern } from "../utils.ts";
 
 export class Hour0to23Parser extends Parser<number> {
   priority = 70;

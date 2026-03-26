@@ -4,7 +4,7 @@
  * It's a part of the test process.
  */
 
-import { testTimeZones } from "./_lib/tz.js";
+import { testTimeZones } from "./_lib/tz.ts";
 
 testTimeZones([
   "UTC-12:00",

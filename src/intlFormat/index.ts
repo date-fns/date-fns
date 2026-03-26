@@ -1,5 +1,5 @@
-import { toDate } from "../toDate/index.js";
-import type { DateArg, MaybeArray } from "../types.js";
+import { toDate } from "../toDate/index.ts";
+import type { DateArg, MaybeArray } from "../types.ts";
 
 /**
  * The locale string (see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument).

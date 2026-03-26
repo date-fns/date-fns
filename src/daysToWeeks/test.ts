@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { daysToWeeks } from "./index.js";
+import { daysToWeeks } from "./index.ts";
 
 describe("daysToWeeks", () => {
   it("converts days to weeks", () => {

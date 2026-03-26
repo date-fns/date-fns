@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { fakeDate } from "../_lib/test/index.js";
-import { isFuture } from "./index.js";
+import { fakeDate } from "../_lib/test/index.ts";
+import { isFuture } from "./index.ts";
 
 describe("isFuture", () => {
   fakeDate(new Date(2014, 8 /* Sep */, 25));

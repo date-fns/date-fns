@@ -3,7 +3,7 @@
 import { fromEntries, last, sample, uniq } from "js-fns";
 import sg from "simple-git";
 import { Octokit } from "@octokit/core";
-import { format } from "../../src/format/index.js";
+import { format } from "@wrkspc/src/format/index.ts";
 
 const git = sg();
 const gh = new Octokit({ auth: process.env.OCTOKIT_TOKEN });

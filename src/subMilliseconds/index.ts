@@ -1,5 +1,5 @@
-import { addMilliseconds } from "../addMilliseconds/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { addMilliseconds } from "../addMilliseconds/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link subMilliseconds} function options.

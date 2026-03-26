@@ -1,7 +1,7 @@
 import { tz, TZDate } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import { assertType } from "../_lib/test/index.js";
-import { startOfSecond } from "./index.js";
+import { assertType } from "../_lib/test/index.ts";
+import { startOfSecond } from "./index.ts";
 
 describe("startOfSecond", () => {
   it("returns the date with the time set to the first millisecond of a second", () => {

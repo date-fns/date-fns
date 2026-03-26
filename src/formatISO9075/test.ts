@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { formatISO9075 } from "./index.js";
+import { formatISO9075 } from "./index.ts";
 import { tz } from "@date-fns/tz";
 
 describe("formatISO9075", () => {

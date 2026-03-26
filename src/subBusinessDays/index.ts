@@ -1,5 +1,5 @@
-import { addBusinessDays } from "../addBusinessDays/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { addBusinessDays } from "../addBusinessDays/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link subBusinessDays} function options.

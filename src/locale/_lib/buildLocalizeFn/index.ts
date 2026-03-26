@@ -1,10 +1,10 @@
-import type { Day, Era, Month, Quarter } from "../../../types.js";
+import type { Day, Era, Month, Quarter } from "../../../types.ts";
 import type {
   LocaleDayPeriod,
   LocaleUnitValue,
   LocaleWidth,
   LocalizeFn,
-} from "../../types.js";
+} from "../../types.ts";
 
 export type BuildLocalizeFnArgs<
   Value extends LocaleUnitValue,

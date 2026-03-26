@@ -1,9 +1,9 @@
-import { isSameWeek } from "../../../../isSameWeek/index.js";
-import type { Day } from "../../../../types.js";
+import { isSameWeek } from "../../../../isSameWeek/index.ts";
+import type { Day } from "../../../../types.ts";
 import type {
   FormatRelativeFn,
   FormatRelativeFnOptions,
-} from "../../../types.js";
+} from "../../../types.ts";
 
 // https://www.unicode.org/cldr/charts/32/summary/sk.html?hide#1308
 const accusativeWeekdays = [

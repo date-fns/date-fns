@@ -1,8 +1,8 @@
-import { type constructFromSymbol } from "./constants/index.js";
-import type { Locale } from "./locale/types.js";
+import { type constructFromSymbol } from "./constants/index.ts";
+import type { Locale } from "./locale/types.ts";
 
-export type * from "./fp/types.js";
-export type * from "./locale/types.js";
+export type * from "./fp/types.ts";
+export type * from "./locale/types.ts";
 
 /**
  * The argument type.

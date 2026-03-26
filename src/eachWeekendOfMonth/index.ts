@@ -1,7 +1,7 @@
-import { eachWeekendOfInterval } from "../eachWeekendOfInterval/index.js";
-import { endOfMonth } from "../endOfMonth/index.js";
-import { startOfMonth } from "../startOfMonth/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { eachWeekendOfInterval } from "../eachWeekendOfInterval/index.ts";
+import { endOfMonth } from "../endOfMonth/index.ts";
+import { startOfMonth } from "../startOfMonth/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link eachWeekendOfMonth} function options.

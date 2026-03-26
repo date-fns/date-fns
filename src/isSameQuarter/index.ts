@@ -1,6 +1,6 @@
-import { normalizeDates } from "../_lib/normalizeDates/index.js";
-import { startOfQuarter } from "../startOfQuarter/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { normalizeDates } from "../_lib/normalizeDates/index.ts";
+import { startOfQuarter } from "../startOfQuarter/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link isSameQuarter} function options.

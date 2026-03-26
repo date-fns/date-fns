@@ -1,7 +1,7 @@
-import { normalizeDates } from "../_lib/normalizeDates/index.js";
-import { startOfWeek } from "../startOfWeek/index.js";
-import type { LocalizedOptions, WeekOptions } from "../types.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { normalizeDates } from "../_lib/normalizeDates/index.ts";
+import { startOfWeek } from "../startOfWeek/index.ts";
+import type { LocalizedOptions, WeekOptions } from "../types.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link isSameWeek} function options.

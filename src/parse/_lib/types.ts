@@ -2,7 +2,7 @@ import type {
   LocalizedOptions,
   FirstWeekContainsDateOptions,
   WeekOptions,
-} from "../../types.js";
+} from "../../types.ts";
 
 export interface ParseFlags {
   timestampIsSet?: boolean;

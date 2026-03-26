@@ -1,7 +1,7 @@
-import { constructFrom } from "../constructFrom/index.js";
-import { getISOWeekYear } from "../getISOWeekYear/index.js";
-import { startOfISOWeek } from "../startOfISOWeek/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { constructFrom } from "../constructFrom/index.ts";
+import { getISOWeekYear } from "../getISOWeekYear/index.ts";
+import { startOfISOWeek } from "../startOfISOWeek/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link endOfISOWeekYear} function options.

@@ -11,10 +11,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v2
         with:
-          node-version: 20
-      - run: npm install
-      - run: npx vitest run --coverage
+          node-version: 22
+      - run: pnpm install
+      - run: pnpm vitest run --coverage
         env:
           COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}

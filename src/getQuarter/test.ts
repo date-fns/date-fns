@@ -1,7 +1,7 @@
 import { tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import type { ContextOptions, DateArg } from "../types.js";
-import { getQuarter } from "./index.js";
+import type { ContextOptions, DateArg } from "../types.ts";
+import { getQuarter } from "./index.ts";
 
 describe("getQuarter", () => {
   it("returns the quarter of the given date", () => {

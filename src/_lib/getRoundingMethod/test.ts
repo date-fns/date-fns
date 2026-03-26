@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { getRoundingMethod } from "./index.js";
+import { getRoundingMethod } from "./index.ts";
 
 describe("getRoundingMethod", () => {
   it("rounds with truncate by default", () => {

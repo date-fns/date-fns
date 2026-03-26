@@ -1,6 +1,6 @@
-import { formatDistanceStrict } from "../../../../src/formatDistanceStrict/index.js";
-import type { Locale } from "../../../../src/types.js";
-import { baseDate, dates } from "../_lib/distanceDates.js";
+import { formatDistanceStrict } from "@wrkspc/src/formatDistanceStrict/index.ts";
+import type { Locale } from "@wrkspc/src/types.ts";
+import { baseDate, dates } from "../_lib/distanceDates.ts";
 
 export default function renderFormatDistanceStrict(locale: Locale) {
   return `## \`formatDistanceStrict\`

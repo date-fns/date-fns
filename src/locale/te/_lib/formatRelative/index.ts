@@ -1,4 +1,4 @@
-import type { FormatRelativeFn } from "../../../types.js";
+import type { FormatRelativeFn } from "../../../types.ts";
 
 // Source: https://www.unicode.org/cldr/charts/32/summary/te.html
 

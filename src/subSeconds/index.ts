@@ -1,5 +1,5 @@
-import { addSeconds } from "../addSeconds/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { addSeconds } from "../addSeconds/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link subSeconds} function options.

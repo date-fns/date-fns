@@ -1,5 +1,5 @@
-import { constructFrom } from "../constructFrom/index.js";
-import type { ContextFn, GenericDateConstructor } from "../types.js";
+import { constructFrom } from "../constructFrom/index.ts";
+import type { ContextFn, GenericDateConstructor } from "../types.ts";
 
 /**
  * @name transpose

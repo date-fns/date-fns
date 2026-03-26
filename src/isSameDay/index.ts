@@ -1,6 +1,6 @@
-import { normalizeDates } from "../_lib/normalizeDates/index.js";
-import { startOfDay } from "../startOfDay/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { normalizeDates } from "../_lib/normalizeDates/index.ts";
+import { startOfDay } from "../startOfDay/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link isSameDay} function options.

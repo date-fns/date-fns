@@ -1,7 +1,7 @@
-import { normalizeDates } from "../_lib/normalizeDates/index.js";
-import { closestIndexTo } from "../closestIndexTo/index.js";
-import { constructFrom } from "../constructFrom/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { normalizeDates } from "../_lib/normalizeDates/index.ts";
+import { closestIndexTo } from "../closestIndexTo/index.ts";
+import { constructFrom } from "../constructFrom/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link closestTo} function options.

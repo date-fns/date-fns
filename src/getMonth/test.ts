@@ -1,7 +1,7 @@
 import { tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import type { ContextOptions, DateArg } from "../types.js";
-import { getMonth } from "./index.js";
+import type { ContextOptions, DateArg } from "../types.ts";
+import { getMonth } from "./index.ts";
 
 describe("getMonth", () => {
   it("returns the month of the given date", () => {

@@ -1,9 +1,9 @@
-import { constructFrom } from "../../../constructFrom/index.js";
-import { getTimezoneOffsetInMilliseconds } from "../../../_lib/getTimezoneOffsetInMilliseconds/index.js";
-import { timezonePatterns } from "../constants.js";
-import { Parser } from "../Parser.js";
-import type { ParseFlags, ParseResult } from "../types.js";
-import { parseTimezonePattern } from "../utils.js";
+import { constructFrom } from "../../../constructFrom/index.ts";
+import { getTimezoneOffsetInMilliseconds } from "../../../_lib/getTimezoneOffsetInMilliseconds/index.ts";
+import { timezonePatterns } from "../constants.ts";
+import { Parser } from "../Parser.ts";
+import type { ParseFlags, ParseResult } from "../types.ts";
+import { parseTimezonePattern } from "../utils.ts";
 
 // Timezone (ISO-8601. +00:00 is `'Z'`)
 export class ISOTimezoneWithZParser extends Parser<number> {

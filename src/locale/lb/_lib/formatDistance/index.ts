@@ -1,4 +1,4 @@
-import type { FormatDistanceFn, FormatDistanceLocale } from "../../../types.js";
+import type { FormatDistanceFn, FormatDistanceLocale } from "../../../types.ts";
 
 type Plural = {
   one: string;

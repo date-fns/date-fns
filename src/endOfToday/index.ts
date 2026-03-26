@@ -1,5 +1,5 @@
-import { endOfDay } from "../endOfDay/index.js";
-import type { ContextOptions } from "../types.js";
+import { endOfDay } from "../endOfDay/index.ts";
+import type { ContextOptions } from "../types.ts";
 
 /**
  * The {@link endOfToday} function options.

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { getTimezoneOffsetInMilliseconds } from "./index.js";
+import { getTimezoneOffsetInMilliseconds } from "./index.ts";
 
 describe("getTimezoneOffsetInMilliseconds", () => {
   it("works for a modern date", () => {

@@ -1,9 +1,9 @@
-import { getDayOfYear } from "../../../getDayOfYear/index.js";
-import { getISOWeek } from "../../../getISOWeek/index.js";
-import { getISOWeekYear } from "../../../getISOWeekYear/index.js";
-import { getWeek } from "../../../getWeek/index.js";
-import { getWeekYear } from "../../../getWeekYear/index.js";
-import type { LocaleDayPeriod, Localize } from "../../../locale/types.js";
+import { getDayOfYear } from "../../../getDayOfYear/index.ts";
+import { getISOWeek } from "../../../getISOWeek/index.ts";
+import { getISOWeekYear } from "../../../getISOWeekYear/index.ts";
+import { getWeek } from "../../../getWeek/index.ts";
+import { getWeekYear } from "../../../getWeekYear/index.ts";
+import type { LocaleDayPeriod, Localize } from "../../../locale/types.ts";
 import type {
   Day,
   Era,
@@ -12,9 +12,9 @@ import type {
   Month,
   Quarter,
   WeekOptions,
-} from "../../../types.js";
-import { addLeadingZeros } from "../../addLeadingZeros/index.js";
-import { lightFormatters } from "../lightFormatters/index.js";
+} from "../../../types.ts";
+import { addLeadingZeros } from "../../addLeadingZeros/index.ts";
+import { lightFormatters } from "../lightFormatters/index.ts";
 
 const dayPeriodEnum = {
   am: "am",

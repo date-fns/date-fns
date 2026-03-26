@@ -1,4 +1,4 @@
-import { normalizeDates } from "../_lib/normalizeDates/index.js";
+import { normalizeDates } from "../_lib/normalizeDates/index.ts";
 import {
   secondsInDay,
   secondsInHour,
@@ -7,16 +7,16 @@ import {
   secondsInQuarter,
   secondsInWeek,
   secondsInYear,
-} from "../constants/index.js";
-import { differenceInCalendarDays } from "../differenceInCalendarDays/index.js";
-import { differenceInCalendarMonths } from "../differenceInCalendarMonths/index.js";
-import { differenceInCalendarQuarters } from "../differenceInCalendarQuarters/index.js";
-import { differenceInCalendarWeeks } from "../differenceInCalendarWeeks/index.js";
-import { differenceInCalendarYears } from "../differenceInCalendarYears/index.js";
-import { differenceInHours } from "../differenceInHours/index.js";
-import { differenceInMinutes } from "../differenceInMinutes/index.js";
-import { differenceInSeconds } from "../differenceInSeconds/index.js";
-import type { ContextOptions, DateArg, MaybeArray } from "../types.js";
+} from "../constants/index.ts";
+import { differenceInCalendarDays } from "../differenceInCalendarDays/index.ts";
+import { differenceInCalendarMonths } from "../differenceInCalendarMonths/index.ts";
+import { differenceInCalendarQuarters } from "../differenceInCalendarQuarters/index.ts";
+import { differenceInCalendarWeeks } from "../differenceInCalendarWeeks/index.ts";
+import { differenceInCalendarYears } from "../differenceInCalendarYears/index.ts";
+import { differenceInHours } from "../differenceInHours/index.ts";
+import { differenceInMinutes } from "../differenceInMinutes/index.ts";
+import { differenceInSeconds } from "../differenceInSeconds/index.ts";
+import type { ContextOptions, DateArg, MaybeArray } from "../types.ts";
 
 /**
  * The {@link intlFormatDistance} function options.

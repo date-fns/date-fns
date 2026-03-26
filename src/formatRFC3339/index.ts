@@ -1,7 +1,7 @@
-import { addLeadingZeros } from "../_lib/addLeadingZeros/index.js";
-import { isValid } from "../isValid/index.js";
-import { toDate } from "../toDate/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { addLeadingZeros } from "../_lib/addLeadingZeros/index.ts";
+import { isValid } from "../isValid/index.ts";
+import { toDate } from "../toDate/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link formatRFC3339} function options.

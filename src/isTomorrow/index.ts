@@ -1,7 +1,7 @@
-import { addDays } from "../addDays/index.js";
-import { constructNow } from "../constructNow/index.js";
-import { isSameDay } from "../isSameDay/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { addDays } from "../addDays/index.ts";
+import { constructNow } from "../constructNow/index.ts";
+import { isSameDay } from "../isSameDay/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link isTomorrow} function options.

@@ -1,8 +1,8 @@
 import { TZDate, tz } from "@date-fns/tz";
 import { UTCDate } from "@date-fns/utc";
 import { describe, expect, it } from "vitest";
-import { assertType } from "../_lib/test/index.js";
-import { lastDayOfISOWeekYear } from "./index.js";
+import { assertType } from "../_lib/test/index.ts";
+import { lastDayOfISOWeekYear } from "./index.ts";
 
 describe("lastDayOfISOWeekYear", () => {
   it("returns the date with the time set to 00:00:00 and the date set to the last day of an ISO year", () => {

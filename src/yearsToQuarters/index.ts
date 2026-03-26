@@ -1,4 +1,4 @@
-import { quartersInYear } from "../constants/index.js";
+import { quartersInYear } from "../constants/index.ts";
 
 /**
  * @name yearsToQuarters

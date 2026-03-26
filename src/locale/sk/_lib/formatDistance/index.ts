@@ -1,4 +1,4 @@
-import type { FormatDistanceFn } from "../../../types.js";
+import type { FormatDistanceFn } from "../../../types.ts";
 
 type Tense = {
   present: string;

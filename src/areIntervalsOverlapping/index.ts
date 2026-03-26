@@ -1,5 +1,5 @@
-import { toDate } from "../toDate/index.js";
-import type { ContextOptions, Interval } from "../types.js";
+import { toDate } from "../toDate/index.ts";
+import type { ContextOptions, Interval } from "../types.ts";
 
 /**
  * The {@link areIntervalsOverlapping} function options.

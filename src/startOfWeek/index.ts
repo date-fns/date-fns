@@ -1,11 +1,11 @@
-import { getDefaultOptions } from "../_lib/defaultOptions/index.js";
-import { toDate } from "../toDate/index.js";
+import { getDefaultOptions } from "../_lib/defaultOptions/index.ts";
+import { toDate } from "../toDate/index.ts";
 import type {
   ContextOptions,
   DateArg,
   LocalizedOptions,
   WeekOptions,
-} from "../types.js";
+} from "../types.ts";
 
 /**
  * The {@link startOfWeek} function options.

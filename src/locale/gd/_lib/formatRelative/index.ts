@@ -1,4 +1,4 @@
-import type { FormatRelativeFn } from "../../../types.js";
+import type { FormatRelativeFn } from "../../../types.ts";
 
 const formatRelativeLocale = {
   lastWeek: "'mu dheireadh' eeee 'aig' p", //FIX

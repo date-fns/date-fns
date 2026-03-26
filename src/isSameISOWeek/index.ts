@@ -1,5 +1,5 @@
-import { isSameWeek } from "../isSameWeek/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { isSameWeek } from "../isSameWeek/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link isSameISOWeek} function options.

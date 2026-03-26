@@ -1,12 +1,12 @@
-import { constructFrom } from "../constructFrom/index.js";
-import { constructNow } from "../constructNow/index.js";
-import { isSameWeek } from "../isSameWeek/index.js";
+import { constructFrom } from "../constructFrom/index.ts";
+import { constructNow } from "../constructNow/index.ts";
+import { isSameWeek } from "../isSameWeek/index.ts";
 import type {
   ContextOptions,
   DateArg,
   LocalizedOptions,
   WeekOptions,
-} from "../types.js";
+} from "../types.ts";
 
 /**
  * The {@link isThisWeek} function options.

@@ -1,7 +1,7 @@
-import type { Match } from "../../../locale/types.js";
-import { Parser } from "../Parser.js";
-import type { ParseFlags, ParseResult } from "../types.js";
-import { parseNDigits } from "../utils.js";
+import type { Match } from "../../../locale/types.ts";
+import { Parser } from "../Parser.ts";
+import type { ParseFlags, ParseResult } from "../types.ts";
+import { parseNDigits } from "../utils.ts";
 
 export class QuarterParser extends Parser<number> {
   priority = 120;

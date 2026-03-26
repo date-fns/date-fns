@@ -16,4 +16,4 @@ export PACKAGE_SKIP_CDN=true
 ./scripts/build/package.sh
 
 echo "$PACKAGE_OUTPUT_PATH"
-npx attw --pack "$PACKAGE_OUTPUT_PATH"
+pnpm attw --pack "$PACKAGE_OUTPUT_PATH"

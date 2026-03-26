@@ -1,5 +1,5 @@
-import { startOfWeek } from "../startOfWeek/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { startOfWeek } from "../startOfWeek/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link startOfISOWeek} function options.

@@ -1,0 +1,9 @@
+{
+  "servers": {
+    "date-fns": {
+      "type": "stdio",
+      "command": "pnpm",
+      "args": ["date-fns-mcp"]
+    }
+  }
+}

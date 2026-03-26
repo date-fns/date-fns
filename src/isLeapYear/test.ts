@@ -1,7 +1,7 @@
 import { tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import type { ContextOptions, DateArg } from "../types.js";
-import { isLeapYear } from "./index.js";
+import type { ContextOptions, DateArg } from "../types.ts";
+import { isLeapYear } from "./index.ts";
 
 describe("isLeapYear", () => {
   it("returns true if the given date is in the leap year", () => {

@@ -1,13 +1,13 @@
-import { getRoundingMethod } from "../_lib/getRoundingMethod/index.js";
-import { constructFrom } from "../constructFrom/index.js";
-import { toDate } from "../toDate/index.js";
+import { getRoundingMethod } from "../_lib/getRoundingMethod/index.ts";
+import { constructFrom } from "../constructFrom/index.ts";
+import { toDate } from "../toDate/index.ts";
 import type {
   ContextOptions,
   DateArg,
   NearestMinutes,
   NearestToUnitOptions,
   RoundingOptions,
-} from "../types.js";
+} from "../types.ts";
 
 /**
  * The {@link roundToNearestMinutes} function options.

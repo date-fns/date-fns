@@ -1,9 +1,9 @@
-import { constructFrom } from "../constructFrom/index.js";
-import { isSaturday } from "../isSaturday/index.js";
-import { isSunday } from "../isSunday/index.js";
-import { isWeekend } from "../isWeekend/index.js";
-import { toDate } from "../toDate/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { constructFrom } from "../constructFrom/index.ts";
+import { isSaturday } from "../isSaturday/index.ts";
+import { isSunday } from "../isSunday/index.ts";
+import { isWeekend } from "../isWeekend/index.ts";
+import { toDate } from "../toDate/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link addBusinessDays} function options.

@@ -1,8 +1,8 @@
-import { normalizeDates } from "../_lib/normalizeDates/index.js";
-import { compareAsc } from "../compareAsc/index.js";
-import { differenceInCalendarISOWeekYears } from "../differenceInCalendarISOWeekYears/index.js";
-import { subISOWeekYears } from "../subISOWeekYears/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { normalizeDates } from "../_lib/normalizeDates/index.ts";
+import { compareAsc } from "../compareAsc/index.ts";
+import { differenceInCalendarISOWeekYears } from "../differenceInCalendarISOWeekYears/index.ts";
+import { subISOWeekYears } from "../subISOWeekYears/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link differenceInISOWeekYears} function options.

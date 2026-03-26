@@ -1,7 +1,7 @@
 import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import type { ContextOptions } from "../types.js";
-import { differenceInCalendarWeeks } from "./index.js";
+import type { ContextOptions } from "../types.ts";
+import { differenceInCalendarWeeks } from "./index.ts";
 
 describe("differenceInCalendarWeeks", () => {
   it("returns the number of calendar weeks between the given dates", () => {

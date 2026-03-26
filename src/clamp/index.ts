@@ -1,7 +1,7 @@
-import { normalizeDates } from "../_lib/normalizeDates/index.js";
-import { max } from "../max/index.js";
-import { min } from "../min/index.js";
-import type { ContextOptions, DateArg, Interval } from "../types.js";
+import { normalizeDates } from "../_lib/normalizeDates/index.ts";
+import { max } from "../max/index.ts";
+import { min } from "../min/index.ts";
+import type { ContextOptions, DateArg, Interval } from "../types.ts";
 
 /**
  * The {@link clamp} function options.

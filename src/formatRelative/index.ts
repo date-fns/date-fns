@@ -1,15 +1,15 @@
-import { defaultLocale } from "../_lib/defaultLocale/index.js";
-import { getDefaultOptions } from "../_lib/defaultOptions/index.js";
-import { normalizeDates } from "../_lib/normalizeDates/index.js";
-import { differenceInCalendarDays } from "../differenceInCalendarDays/index.js";
-import { format } from "../format/index.js";
-import type { FormatRelativeToken } from "../locale/types.js";
+import { defaultLocale } from "../_lib/defaultLocale/index.ts";
+import { getDefaultOptions } from "../_lib/defaultOptions/index.ts";
+import { normalizeDates } from "../_lib/normalizeDates/index.ts";
+import { differenceInCalendarDays } from "../differenceInCalendarDays/index.ts";
+import { format } from "../format/index.ts";
+import type { FormatRelativeToken } from "../locale/types.ts";
 import type {
   ContextOptions,
   DateArg,
   LocalizedOptions,
   WeekOptions,
-} from "../types.js";
+} from "../types.ts";
 
 /**
  * The {@link formatRelative} function options.

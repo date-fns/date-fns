@@ -1,7 +1,7 @@
 import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import type { ContextOptions, DateArg } from "../types.js";
-import { isSameQuarter } from "./index.js";
+import type { ContextOptions, DateArg } from "../types.ts";
+import { isSameQuarter } from "./index.ts";
 
 describe("isSameQuarter", () => {
   it("returns true if the given dates have the same quarter (and year)", () => {

@@ -7,7 +7,7 @@ import type {
   Month,
   Quarter,
   WeekOptions,
-} from "../types.js";
+} from "../types.ts";
 
 /**
  * The locale object with all functions and data needed to parse and format

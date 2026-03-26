@@ -8,17 +8,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          submodules: "recursive"
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: "npm"
-      - run: npm install
+          node-version: 22
+          cache: "pnpm"
+      - run: pnpm install
 
       - name: Types
-        run: npx tsc --noEmit
+        run: pnpm tsc --build --pretty
 
       - name: Linting
-        run: npm run lint
+        run: pnpm run lint
 
       - name: Locale snapshots
-        run: npm run locale-snapshots -- test
+        run: pnpm run locale-snapshots -- test

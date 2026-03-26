@@ -1,8 +1,8 @@
 import { TZDate, tz } from "@date-fns/tz";
 import { UTCDate } from "@date-fns/utc";
 import { describe, expect, it } from "vitest";
-import { assertType } from "../_lib/test/index.js";
-import { setDayOfYear } from "./index.js";
+import { assertType } from "../_lib/test/index.ts";
+import { setDayOfYear } from "./index.ts";
 
 describe("setDayOfYear", () => {
   it("sets the day of the year", () => {

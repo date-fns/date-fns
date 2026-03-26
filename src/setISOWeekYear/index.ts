@@ -1,8 +1,8 @@
-import { constructFrom } from "../constructFrom/index.js";
-import { differenceInCalendarDays } from "../differenceInCalendarDays/index.js";
-import { startOfISOWeekYear } from "../startOfISOWeekYear/index.js";
-import { toDate } from "../toDate/index.js";
-import type { ContextOptions, DateArg } from "../types.js";
+import { constructFrom } from "../constructFrom/index.ts";
+import { differenceInCalendarDays } from "../differenceInCalendarDays/index.ts";
+import { startOfISOWeekYear } from "../startOfISOWeekYear/index.ts";
+import { toDate } from "../toDate/index.ts";
+import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
  * The {@link setISOWeekYear} function options.
