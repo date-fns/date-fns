@@ -54,6 +54,7 @@ function isConstructor(
 ): constructor is GenericDateConstructor {
   return (
     typeof constructor === "function" &&
-    constructor.prototype?.constructor === constructor
+    constructor.name !== "" &&
+    !!constructor.prototype
   );
 }
