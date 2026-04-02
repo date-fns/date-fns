@@ -38,6 +38,11 @@ type Token = keyof typeof lightFormatters;
  *
  * > ⚠️ Please note that the `lightFormat` tokens differ from Moment.js and other libraries.
  * > See: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
+ * >
+ * > **Common Pitfalls:**
+ * > - Use `yyyy` instead of `YYYY` for calendar years; use `yy` instead of `YY`.
+ * > - Use `dd` instead of `DD` for days of the month; use `d` instead of `D`.
+ * > - See [Unicode Tokens](https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md) for more details.
  *
  * The characters wrapped between two single quotes characters (') are escaped.
  * Two single quotes in a row, whether inside or outside a quoted sequence, represent a 'real' single quote.

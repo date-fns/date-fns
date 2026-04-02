@@ -69,6 +69,11 @@ export interface FormatOptions
  *
  * > ⚠️ Please note that the `format` tokens differ from Moment.js and other libraries.
  * > See: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
+ * >
+ * > **Common Pitfalls:**
+ * > - Use `yyyy` instead of `YYYY` for calendar years; use `yy` instead of `YY`.
+ * > - Use `dd` instead of `DD` for days of the month; use `d` instead of `D`.
+ * > - See [Unicode Tokens](https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md) for more details.
  *
  * The characters wrapped between two single quotes characters (') are escaped.
  * Two single quotes in a row, whether inside or outside a quoted sequence, represent a 'real' single quote.
@@ -90,12 +95,12 @@ export interface FormatOptions
  * |                                 | yyy     | 044, 001, 1900, 2017              | 5     |
  * |                                 | yyyy    | 0044, 0001, 1900, 2017            | 5     |
  * |                                 | yyyyy   | ...                               | 3,5   |
- * | Local week-numbering year       | Y       | 44, 1, 1900, 2017                 | 5     |
- * |                                 | Yo      | 44th, 1st, 1900th, 2017th         | 5,7   |
+ * | Local week-numbering year       | Y       | 44, 1, 1900, 2017                 | 5,8   |
+ * |                                 | Yo      | 44th, 1st, 1900th, 2017th         | 5,7,8 |
  * |                                 | YY      | 44, 01, 00, 17                    | 5,8   |
- * |                                 | YYY     | 044, 001, 1900, 2017              | 5     |
+ * |                                 | YYY     | 044, 001, 1900, 2017              | 5,8   |
  * |                                 | YYYY    | 0044, 0001, 1900, 2017            | 5,8   |
- * |                                 | YYYYY   | ...                               | 3,5   |
+ * |                                 | YYYYY   | ...                               | 3,5,8 |
  * | ISO week-numbering year         | R       | -43, 0, 1, 1900, 2017             | 5,7   |
  * |                                 | RR      | -43, 00, 01, 1900, 2017           | 5,7   |
  * |                                 | RRR     | -043, 000, 001, 1900, 2017        | 5,7   |
@@ -140,10 +145,10 @@ export interface FormatOptions
  * |                                 | do      | 1st, 2nd, ..., 31st               | 7     |
  * |                                 | dd      | 01, 02, ..., 31                   |       |
  * | Day of year                     | D       | 1, 2, ..., 365, 366               | 9     |
- * |                                 | Do      | 1st, 2nd, ..., 365th, 366th       | 7     |
+ * |                                 | Do      | 1st, 2nd, ..., 365th, 366th       | 7,9   |
  * |                                 | DD      | 01, 02, ..., 365, 366             | 9     |
- * |                                 | DDD     | 001, 002, ..., 365, 366           |       |
- * |                                 | DDDD    | ...                               | 3     |
+ * |                                 | DDD     | 001, 002, ..., 365, 366           | 9     |
+ * |                                 | DDDD    | ...                               | 3,9   |
  * | Day of week (formatting)        | E..EEE  | Mon, Tue, Wed, ..., Sun           |       |
  * |                                 | EEEE    | Monday, Tuesday, ..., Sunday      | 2     |
  * |                                 | EEEEE   | M, T, W, T, F, S, S               |       |
@@ -303,10 +308,12 @@ export interface FormatOptions
  *    - `P`: long localized date
  *    - `p`: long localized time
  *
- * 8. `YY` and `YYYY` tokens represent week-numbering years but they are often confused with years.
+ * 8. `Y` tokens represent week-numbering years but they are often confused with calendar years.
+ *    For calendar year, use `y`.
  *    You should enable `options.useAdditionalWeekYearTokens` to use them. See: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
  *
- * 9. `D` and `DD` tokens represent days of the year but they are often confused with days of the month.
+ * 9. `D` tokens represent days of the year but they are often confused with days of the month.
+ *    For day of month, use `d`.
  *    You should enable `options.useAdditionalDayOfYearTokens` to use them. See: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
  *
  * @param date - The original date
