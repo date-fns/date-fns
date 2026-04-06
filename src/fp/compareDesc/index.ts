@@ -1,6 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.
 
-import fn from '../../compareDesc/index'
-import convertToFP from '../_lib/convertToFP/index'
+import { compareDesc as fn } from "../../compareDesc/index.ts";
+import { convertToFP } from "../_lib/convertToFP/index.ts";
 
-export default convertToFP(fn, 2)
+export const compareDesc = convertToFP(fn, 2);

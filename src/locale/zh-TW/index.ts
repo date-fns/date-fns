@@ -1,22 +1,21 @@
-import type { Locale } from '../types'
-import formatDistance from './_lib/formatDistance/index'
-import formatLong from './_lib/formatLong/index'
-import formatRelative from './_lib/formatRelative/index'
-import localize from './_lib/localize/index'
-import match from './_lib/match/index'
+import type { Locale } from "../types.ts";
+import { formatDistance } from "./_lib/formatDistance/index.ts";
+import { formatLong } from "./_lib/formatLong/index.ts";
+import { formatRelative } from "./_lib/formatRelative/index.ts";
+import { localize } from "./_lib/localize/index.ts";
+import { match } from "./_lib/match/index.ts";
 
 /**
- * @type {Locale}
  * @category Locales
  * @summary Chinese Traditional locale.
  * @language Chinese Traditional
  * @iso-639-2 zho
- * @author tonypai [@tpai]{@link https://github.com/tpai}
- * @author Jack Hsu [@jackhsu978]{@link https://github.com/jackhsu978}
- * @author Terrence Lam [@skyuplam]{@link https://github.com/skyuplam}
+ * @author tonypai [@tpai](https://github.com/tpai)
+ * @author Jack Hsu [@jackhsu978](https://github.com/jackhsu978)
+ * @author Terrence Lam [@skyuplam](https://github.com/skyuplam)
  */
-const locale: Locale = {
-  code: 'zh-TW',
+export const zhTW: Locale = {
+  code: "zh-TW",
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
@@ -26,6 +25,4 @@ const locale: Locale = {
     weekStartsOn: 1 /* Monday */,
     firstWeekContainsDate: 4,
   },
-}
-
-export default locale
+};

@@ -1,6 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.
 
-import fn from '../../getWeek/index'
-import convertToFP from '../_lib/convertToFP/index'
+import { getWeek as fn } from "../../getWeek/index.ts";
+import { convertToFP } from "../_lib/convertToFP/index.ts";
 
-export default convertToFP(fn, 2)
+export const getWeekWithOptions = convertToFP(fn, 2);

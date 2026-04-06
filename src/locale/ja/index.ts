@@ -1,24 +1,23 @@
-import formatDistance from './_lib/formatDistance/index'
-import formatLong from './_lib/formatLong/index'
-import formatRelative from './_lib/formatRelative/index'
-import localize from './_lib/localize/index'
-import match from './_lib/match/index'
-import type { Locale } from '../types'
+import { formatDistance } from "./_lib/formatDistance/index.ts";
+import { formatLong } from "./_lib/formatLong/index.ts";
+import { formatRelative } from "./_lib/formatRelative/index.ts";
+import { localize } from "./_lib/localize/index.ts";
+import { match } from "./_lib/match/index.ts";
+import type { Locale } from "../types.ts";
 
 /**
- * @type {Locale}
  * @category Locales
  * @summary Japanese locale.
  * @language Japanese
  * @iso-639-2 jpn
- * @author Thomas Eilmsteiner [@DeMuu]{@link https://github.com/DeMuu}
- * @author Yamagishi Kazutoshi [@ykzts]{@link https://github.com/ykzts}
- * @author Luca Ban [@mesqueeb]{@link https://github.com/mesqueeb}
- * @author Terrence Lam [@skyuplam]{@link https://github.com/skyuplam}
- * @author Taiki IKeda [@so99ynoodles]{@link https://github.com/so99ynoodles}
+ * @author Thomas Eilmsteiner [@DeMuu](https://github.com/DeMuu)
+ * @author Yamagishi Kazutoshi [@ykzts](https://github.com/ykzts)
+ * @author Luca Ban [@mesqueeb](https://github.com/mesqueeb)
+ * @author Terrence Lam [@skyuplam](https://github.com/skyuplam)
+ * @author Taiki IKeda [@so99ynoodles](https://github.com/so99ynoodles)
  */
-const locale: Locale = {
-  code: 'ja',
+export const ja: Locale = {
+  code: "ja",
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
@@ -28,6 +27,4 @@ const locale: Locale = {
     weekStartsOn: 0 /* Sunday */,
     firstWeekContainsDate: 1,
   },
-}
-
-export default locale
+};

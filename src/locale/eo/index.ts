@@ -1,20 +1,19 @@
-import formatDistance from './_lib/formatDistance/index'
-import formatLong from './_lib/formatLong/index'
-import formatRelative from './_lib/formatRelative/index'
-import localize from './_lib/localize/index'
-import match from './_lib/match/index'
-import type { Locale } from '../types'
+import { formatDistance } from "./_lib/formatDistance/index.ts";
+import { formatLong } from "./_lib/formatLong/index.ts";
+import { formatRelative } from "./_lib/formatRelative/index.ts";
+import { localize } from "./_lib/localize/index.ts";
+import { match } from "./_lib/match/index.ts";
+import type { Locale } from "../types.ts";
 
 /**
- * @type {Locale}
  * @category Locales
  * @summary Esperanto locale.
  * @language Esperanto
  * @iso-639-2 epo
  * @author date-fns
  */
-const locale: Locale = {
-  code: 'eo',
+export const eo: Locale = {
+  code: "eo",
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
@@ -24,6 +23,4 @@ const locale: Locale = {
     weekStartsOn: 1 /* Monday */,
     firstWeekContainsDate: 4,
   },
-}
-
-export default locale
+};

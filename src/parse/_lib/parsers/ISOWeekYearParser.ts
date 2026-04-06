@@ -1,47 +1,47 @@
-import startOfISOWeek from '../../../startOfISOWeek/index'
-import constructFrom from '../../../constructFrom/index'
-import { Parser } from '../Parser'
-import type { ParseFlags, ParseResult } from '../types'
-import { parseNDigitsSigned } from '../utils'
+import { startOfISOWeek } from "../../../startOfISOWeek/index.ts";
+import { constructFrom } from "../../../constructFrom/index.ts";
+import { Parser } from "../Parser.ts";
+import type { ParseFlags, ParseResult } from "../types.ts";
+import { parseNDigitsSigned } from "../utils.ts";
 
 // ISO week-numbering year
 export class ISOWeekYearParser extends Parser<number> {
-  priority = 130
+  priority = 130;
 
   parse(dateString: string, token: string): ParseResult<number> {
-    if (token === 'R') {
-      return parseNDigitsSigned(4, dateString)
+    if (token === "R") {
+      return parseNDigitsSigned(4, dateString);
     }
 
-    return parseNDigitsSigned(token.length, dateString)
+    return parseNDigitsSigned(token.length, dateString);
   }
 
   set<DateType extends Date>(
     date: DateType,
     _flags: ParseFlags,
-    value: number
+    value: number,
   ): DateType {
-    const firstWeekOfYear = constructFrom(date, 0)
-    firstWeekOfYear.setFullYear(value, 0, 4)
-    firstWeekOfYear.setHours(0, 0, 0, 0)
-    return startOfISOWeek(firstWeekOfYear)
+    const firstWeekOfYear = constructFrom(date, 0);
+    firstWeekOfYear.setFullYear(value, 0, 4);
+    firstWeekOfYear.setHours(0, 0, 0, 0);
+    return startOfISOWeek(firstWeekOfYear);
   }
 
   incompatibleTokens = [
-    'G',
-    'y',
-    'Y',
-    'u',
-    'Q',
-    'q',
-    'M',
-    'L',
-    'w',
-    'd',
-    'D',
-    'e',
-    'c',
-    't',
-    'T',
-  ]
+    "G",
+    "y",
+    "Y",
+    "u",
+    "Q",
+    "q",
+    "M",
+    "L",
+    "w",
+    "d",
+    "D",
+    "e",
+    "c",
+    "t",
+    "T",
+  ];
 }

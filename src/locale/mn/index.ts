@@ -1,20 +1,19 @@
-import type { Locale } from '../types'
-import formatDistance from './_lib/formatDistance/index'
-import formatLong from './_lib/formatLong/index'
-import formatRelative from './_lib/formatRelative/index'
-import localize from './_lib/localize/index'
-import match from './_lib/match/index'
+import type { Locale } from "../types.ts";
+import { formatDistance } from "./_lib/formatDistance/index.ts";
+import { formatLong } from "./_lib/formatLong/index.ts";
+import { formatRelative } from "./_lib/formatRelative/index.ts";
+import { localize } from "./_lib/localize/index.ts";
+import { match } from "./_lib/match/index.ts";
 
 /**
- * @type {Locale}
  * @category Locales
  * @summary Mongolian locale.
  * @language Mongolian
  * @iso-639-2 mon
- * @author Bilguun Ochirbat [@bilguun0203]{@link https://github.com/bilguun0203}
+ * @author Bilguun Ochirbat [@bilguun0203](https://github.com/bilguun0203)
  */
-const locale: Locale = {
-  code: 'mn',
+export const mn: Locale = {
+  code: "mn",
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
@@ -24,6 +23,4 @@ const locale: Locale = {
     weekStartsOn: 1 /* Monday */,
     firstWeekContainsDate: 1,
   },
-}
-
-export default locale
+};

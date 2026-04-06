@@ -1,6 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.
 
-import fn from '../../sub/index'
-import convertToFP from '../_lib/convertToFP/index'
+import { sub as fn } from "../../sub/index.ts";
+import { convertToFP } from "../_lib/convertToFP/index.ts";
 
-export default convertToFP(fn, 2)
+export const sub = convertToFP(fn, 2);

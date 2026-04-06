@@ -1,6 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.
 
-import fn from '../../isWithinInterval/index'
-import convertToFP from '../_lib/convertToFP/index'
+import { isWithinInterval as fn } from "../../isWithinInterval/index.ts";
+import { convertToFP } from "../_lib/convertToFP/index.ts";
 
-export default convertToFP(fn, 2)
+export const isWithinInterval = convertToFP(fn, 2);

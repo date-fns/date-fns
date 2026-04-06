@@ -1,0 +1,27 @@
+name: Code quality
+
+on: [push, pull_request]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: "recursive"
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "pnpm"
+      - run: pnpm install
+
+      - name: Types
+        run: pnpm tsc --build --pretty
+
+      - name: Linting
+        run: pnpm run lint
+
+      - name: Locale snapshots
+        run: pnpm run locale-snapshots -- test

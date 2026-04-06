@@ -1,6 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.
 
-import fn from '../../formatRelative/index'
-import convertToFP from '../_lib/convertToFP/index'
+import { formatRelative as fn } from "../../formatRelative/index.ts";
+import { convertToFP } from "../_lib/convertToFP/index.ts";
 
-export default convertToFP(fn, 2)
+export const formatRelative = convertToFP(fn, 2);

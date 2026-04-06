@@ -1,21 +1,20 @@
-import formatDistance from './_lib/formatDistance/index'
-import formatLong from './_lib/formatLong/index'
-import formatRelative from './_lib/formatRelative/index'
-import localize from './_lib/localize/index'
-import match from './_lib/match/index'
-import type { Locale } from '../types'
+import { formatDistance } from "./_lib/formatDistance/index.ts";
+import { formatLong } from "./_lib/formatLong/index.ts";
+import { formatRelative } from "./_lib/formatRelative/index.ts";
+import { localize } from "./_lib/localize/index.ts";
+import { match } from "./_lib/match/index.ts";
+import type { Locale } from "../types.ts";
 
 /**
- * @type {Locale}
  * @category Locales
  * @summary Arabic locale (Algerian Arabic).
  * @language Algerian Arabic
  * @iso-639-2 ara
- * @author Badreddine Boumaza [@badre429]{@link https://github.com/badre429}
- * @author Ahmed ElShahat [@elshahat]{@link https://github.com/elshahat}
+ * @author Badreddine Boumaza [@badre429](https://github.com/badre429)
+ * @author Ahmed ElShahat [@elshahat](https://github.com/elshahat)
  */
-const locale: Locale = {
-  code: 'ar-DZ',
+export const arDZ: Locale = {
+  code: "ar-DZ",
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
@@ -25,6 +24,4 @@ const locale: Locale = {
     weekStartsOn: 0 /* Sunday */,
     firstWeekContainsDate: 1,
   },
-}
-
-export default locale
+};

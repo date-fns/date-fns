@@ -21,23 +21,23 @@ The name of the former has `WithOptions` added to the end of its name.
 In **date-fns'** FP functions, the order of arguments is reversed.
 
 ```javascript
-import { addYears, formatWithOptions } from 'date-fns/fp'
-import { eo } from 'date-fns/locale'
-import toUpper from 'lodash/fp/toUpper' // 'date-fns/fp' is compatible with 'lodash/fp'!
+import { addYears, formatWithOptions } from "date-fns/fp";
+import { eo } from "date-fns/locale";
+import toUpper from "lodash/fp/toUpper"; // 'date-fns/fp' is compatible with 'lodash/fp'!
 
 // If FP function has not received enough arguments, it returns another function
-const addFiveYears = addYears(5)
+const addFiveYears = addYears(5);
 
 // Several arguments can be curried at once
-const dateToString = formatWithOptions({ locale: eo }, 'd MMMM yyyy')
+const dateToString = formatWithOptions({ locale: eo }, "d MMMM yyyy");
 
 const dates = [
   new Date(2017, 0 /* Jan */, 1),
   new Date(2017, 1 /* Feb */, 11),
-  new Date(2017, 6 /* Jul */, 2)
-]
+  new Date(2017, 6 /* Jul */, 2),
+];
 
-const formattedDates = dates.map(addFiveYears).map(dateToString).map(toUpper)
+const formattedDates = dates.map(addFiveYears).map(dateToString).map(toUpper);
 //=> ['1 JANUARO 2022', '11 FEBRUARO 2022', '2 JULIO 2022']
 ```
 
@@ -49,22 +49,24 @@ The main advantage of FP functions is support of functional-style
 In the example above, you can compose `addFiveYears`, `dateToString` and `toUpper` into a single function:
 
 ```javascript
-const formattedDates = dates.map((date) => toUpper(dateToString(addFiveYears(date))))
+const formattedDates = dates.map((date) =>
+  toUpper(dateToString(addFiveYears(date))),
+);
 ```
 
 Or you can use `compose` function provided by [lodash](https://lodash.com) to do the same in more idiomatic way:
 
 ```javascript
-import compose from 'lodash/fp/compose'
+import { compose } from "lodash/fp/compose";
 
-const formattedDates = dates.map(compose(toUpper, dateToString, addFiveYears))
+const formattedDates = dates.map(compose(toUpper, dateToString, addFiveYears));
 ```
 
 Or if you prefer natural direction of composing (as opposed to the computationally correct order),
 you can use lodash' `flow` instead:
 
 ```javascript
-import flow from 'lodash/fp/flow'
+import flow from "lodash/fp/flow";
 
-const formattedDates = dates.map(flow(addFiveYears, dateToString, toUpper))
+const formattedDates = dates.map(flow(addFiveYears, dateToString, toUpper));
 ```

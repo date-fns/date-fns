@@ -1,24 +1,23 @@
-import type { Locale } from '../types'
-import formatDistance from './_lib/formatDistance/index'
-import formatLong from './_lib/formatLong/index'
-import formatRelative from './_lib/formatRelative/index'
-import localize from './_lib/localize/index'
-import match from './_lib/match/index'
+import type { Locale } from "../types.ts";
+import { formatDistance } from "./_lib/formatDistance/index.ts";
+import { formatLong } from "./_lib/formatLong/index.ts";
+import { formatRelative } from "./_lib/formatRelative/index.ts";
+import { localize } from "./_lib/localize/index.ts";
+import { match } from "./_lib/match/index.ts";
 
 /**
- * @type {Locale}
  * @category Locales
  * @summary Chinese Simplified locale.
  * @language Chinese Simplified
  * @iso-639-2 zho
- * @author Changyu Geng [@KingMario]{@link https://github.com/KingMario}
- * @author Song Shuoyun [@fnlctrl]{@link https://github.com/fnlctrl}
- * @author sabrinaM [@sabrinamiao]{@link https://github.com/sabrinamiao}
- * @author Carney Wu [@cubicwork]{@link https://github.com/cubicwork}
- * @author Terrence Lam [@skyuplam]{@link https://github.com/skyuplam}
+ * @author Changyu Geng [@KingMario](https://github.com/KingMario)
+ * @author Song Shuoyun [@fnlctrl](https://github.com/fnlctrl)
+ * @author sabrinaM [@sabrinamiao](https://github.com/sabrinamiao)
+ * @author Carney Wu [@cubicwork](https://github.com/cubicwork)
+ * @author Terrence Lam [@skyuplam](https://github.com/skyuplam)
  */
-const locale: Locale = {
-  code: 'zh-CN',
+export const zhCN: Locale = {
+  code: "zh-CN",
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
@@ -28,6 +27,4 @@ const locale: Locale = {
     weekStartsOn: 1 /* Monday */,
     firstWeekContainsDate: 4,
   },
-}
-
-export default locale
+};

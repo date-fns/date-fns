@@ -1,6 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.
 
-import fn from '../../setSeconds/index'
-import convertToFP from '../_lib/convertToFP/index'
+import { setSeconds as fn } from "../../setSeconds/index.ts";
+import { convertToFP } from "../_lib/convertToFP/index.ts";
 
-export default convertToFP(fn, 2)
+export const setSeconds = convertToFP(fn, 2);

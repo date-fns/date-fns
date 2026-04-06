@@ -7,8 +7,8 @@ See [package.json scripts](./package.json) for CLI usage
 ## Build Example
 
 ```sh
-yarn
-yarn run build
+npm install
+npm run build
 ```
 
 See ./dist for output.

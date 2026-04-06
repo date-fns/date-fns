@@ -1,21 +1,20 @@
-import type { Locale } from '../types'
-import formatDistance from './_lib/formatDistance/index'
-import formatLong from './_lib/formatLong/index'
-import formatRelative from './_lib/formatRelative/index'
-import localize from './_lib/localize/index'
-import match from './_lib/match/index'
+import type { Locale } from "../types.ts";
+import { formatDistance } from "./_lib/formatDistance/index.ts";
+import { formatLong } from "./_lib/formatLong/index.ts";
+import { formatRelative } from "./_lib/formatRelative/index.ts";
+import { localize } from "./_lib/localize/index.ts";
+import { match } from "./_lib/match/index.ts";
 
 /**
- * @type {Locale}
  * @category Locales
  * @summary Haitian Creole locale.
  * @language Haitian Creole
  * @iso-639-2 hat
- * @author Rubens Mariuzzo [@rmariuzzo]{@link https://github.com/rmariuzzo}
- * @author Watson Marcelain [@watsongm24]{@link https://github.com/watsongm24}
+ * @author Rubens Mariuzzo [@rmariuzzo](https://github.com/rmariuzzo)
+ * @author Watson Marcelain [@watsongm24](https://github.com/watsongm24)
  */
-const locale: Locale = {
-  code: 'ht',
+export const ht: Locale = {
+  code: "ht",
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
@@ -25,6 +24,4 @@ const locale: Locale = {
     weekStartsOn: 1 /* Monday */,
     firstWeekContainsDate: 4,
   },
-}
-
-export default locale
+};

@@ -6,7 +6,6 @@
 
 set -ex
 
-./scripts/build/docs.js
-./scripts/build/fp.ts
-./scripts/build/typings.js
-./scripts/build/indices.ts
+pnpm tsx ./scripts/build/indices.ts
+./scripts/build/docs.sh
+pnpm tsx ./scripts/build/fp.ts

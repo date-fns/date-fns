@@ -1,6 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.
 
-import fn from '../../endOfQuarter/index'
-import convertToFP from '../_lib/convertToFP/index'
+import { endOfQuarter as fn } from "../../endOfQuarter/index.ts";
+import { convertToFP } from "../_lib/convertToFP/index.ts";
 
-export default convertToFP(fn, 1)
+export const endOfQuarter = convertToFP(fn, 1);

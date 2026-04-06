@@ -1,22 +1,21 @@
-import type { Locale } from '../types'
-import formatDistance from './_lib/formatDistance/index'
-import formatLong from './_lib/formatLong/index'
-import formatRelative from './_lib/formatRelative/index'
-import localize from './_lib/localize/index'
-import match from './_lib/match/index'
+import type { Locale } from "../types.ts";
+import { formatDistance } from "./_lib/formatDistance/index.ts";
+import { formatLong } from "./_lib/formatLong/index.ts";
+import { formatRelative } from "./_lib/formatRelative/index.ts";
+import { localize } from "./_lib/localize/index.ts";
+import { match } from "./_lib/match/index.ts";
 
 /**
- * @type {Locale}
  * @category Locales
  * @summary Croatian locale.
  * @language Croatian
  * @iso-639-2 hrv
- * @author Matija Marohnić [@silvenon]{@link https://github.com/silvenon}
- * @author Manico [@manico]{@link https://github.com/manico}
- * @author Ivan Jeržabek [@jerzabek]{@link https://github.com/jerzabek}
+ * @author Matija Marohnić [@silvenon](https://github.com/silvenon)
+ * @author Manico [@manico](https://github.com/manico)
+ * @author Ivan Jeržabek [@jerzabek](https://github.com/jerzabek)
  */
-const locale: Locale = {
-  code: 'hr',
+export const hr: Locale = {
+  code: "hr",
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
@@ -26,6 +25,4 @@ const locale: Locale = {
     weekStartsOn: 1 /* Monday */,
     firstWeekContainsDate: 1,
   },
-}
-
-export default locale
+};

@@ -122,8 +122,12 @@
 |                                 |              | 2019-12-01T12:13:14.015Z | 48.                                             | 2019-11-25T00:00:00.000Z |
 | ISO week of year                | Io           | 2019-01-01T12:13:14.015Z | 1.                                              | 2018-12-31T00:00:00.000Z |
 |                                 |              | 2019-12-01T12:13:14.015Z | 48.                                             | 2019-11-25T00:00:00.000Z |
-| Day of month                    | do           | 2019-02-11T12:13:14.015Z | 11.                                             | 2019-02-11T00:00:00.000Z |
+| Day of month                    | do           | 2019-02-01T12:13:14.015Z | 1.                                              | 2019-02-01T00:00:00.000Z |
+|                                 |              | 2019-02-11T12:13:14.015Z | 11.                                             | 2019-02-11T00:00:00.000Z |
 |                                 |              | 2019-02-28T12:13:14.015Z | 28.                                             | 2019-02-28T00:00:00.000Z |
+|                                 | do MMMM      | 2019-02-01T12:13:14.015Z | 1. února                                        | 2019-02-01T00:00:00.000Z |
+|                                 |              | 2019-02-11T12:13:14.015Z | 11. února                                       | 2019-02-11T00:00:00.000Z |
+|                                 |              | 2019-02-28T12:13:14.015Z | 28. února                                       | 2019-02-28T00:00:00.000Z |
 | Day of year                     | Do           | 2019-02-11T12:13:14.015Z | 42.                                             | 2019-02-11T00:00:00.000Z |
 |                                 |              | 2019-12-31T12:13:14.015Z | 365.                                            | 2019-12-31T00:00:00.000Z |
 | Day of week (formatting)        | E            | 2019-02-11T12:13:14.015Z | pon                                             | 2019-02-11T00:00:00.000Z |
@@ -389,53 +393,53 @@
 
 If now is January 1st, 2000, 00:00.
 
-| Date                     | Result            | `includeSeconds: true` | `addSuffix: true`         |
-| ------------------------ | ----------------- | ---------------------- | ------------------------- |
-| 2006-01-01T00:00:00.000Z | přibližně 6 roků  | přibližně 6 roků       | přibližně za 6 roků       |
-| 2005-01-01T00:00:00.000Z | přibližně 5 roků  | přibližně 5 roků       | přibližně za 5 roků       |
-| 2004-01-01T00:00:00.000Z | přibližně 4 roky  | přibližně 4 roky       | přibližně za 4 roky       |
-| 2003-01-01T00:00:00.000Z | přibližně 3 roky  | přibližně 3 roky       | přibližně za 3 roky       |
-| 2002-01-01T00:00:00.000Z | přibližně 2 roky  | přibližně 2 roky       | přibližně za 2 roky       |
-| 2001-06-01T00:00:00.000Z | více než rok      | více než rok           | za více než rok           |
-| 2001-02-01T00:00:00.000Z | přibližně rok     | přibližně rok          | přibližně za rok          |
-| 2001-01-01T00:00:00.000Z | přibližně rok     | přibližně rok          | přibližně za rok          |
-| 2000-06-01T00:00:00.000Z | 5 měsíců          | 5 měsíců               | za 5 měsíců               |
-| 2000-03-01T00:00:00.000Z | 2 měsíce          | 2 měsíce               | za 2 měsíce               |
-| 2000-02-01T00:00:00.000Z | přibližně měsíc   | přibližně měsíc        | přibližně za měsíc        |
-| 2000-01-15T00:00:00.000Z | 14 dní            | 14 dní                 | za 14 dní                 |
-| 2000-01-02T00:00:00.000Z | den               | den                    | za den                    |
-| 2000-01-01T06:00:00.000Z | přibližně 6 hodin | přibližně 6 hodin      | přibližně za 6 hodin      |
-| 2000-01-01T01:00:00.000Z | přibližně hodina  | přibližně hodina       | přibližně za hodinu       |
-| 2000-01-01T00:45:00.000Z | přibližně hodina  | přibližně hodina       | přibližně za hodinu       |
-| 2000-01-01T00:30:00.000Z | 30 minut          | 30 minut               | za 30 minut               |
-| 2000-01-01T00:15:00.000Z | 15 minut          | 15 minut               | za 15 minut               |
-| 2000-01-01T00:01:00.000Z | minuta            | minuta                 | za minutu                 |
-| 2000-01-01T00:00:25.000Z | méně než minuta   | půl minuty             | za méně než minutu        |
-| 2000-01-01T00:00:15.000Z | méně než minuta   | méně než 20 sekund     | za méně než minutu        |
-| 2000-01-01T00:00:05.000Z | méně než minuta   | méně než 10 sekund     | za méně než minutu        |
-| 2000-01-01T00:00:00.000Z | méně než minuta   | méně než 5 sekund      | méně než minuta           |
-| 1999-12-31T23:59:55.000Z | méně než minuta   | méně než 10 sekund     | před méně než minutou     |
-| 1999-12-31T23:59:45.000Z | méně než minuta   | méně než 20 sekund     | před méně než minutou     |
-| 1999-12-31T23:59:35.000Z | méně než minuta   | půl minuty             | před méně než minutou     |
-| 1999-12-31T23:59:00.000Z | minuta            | minuta                 | před minutou              |
-| 1999-12-31T23:45:00.000Z | 15 minut          | 15 minut               | před 15 minutami          |
-| 1999-12-31T23:30:00.000Z | 30 minut          | 30 minut               | před 30 minutami          |
-| 1999-12-31T23:15:00.000Z | přibližně hodina  | přibližně hodina       | přibližně před hodinou    |
-| 1999-12-31T23:00:00.000Z | přibližně hodina  | přibližně hodina       | přibližně před hodinou    |
-| 1999-12-31T18:00:00.000Z | přibližně 6 hodin | přibližně 6 hodin      | přibližně před 6 hodinami |
-| 1999-12-30T00:00:00.000Z | 2 dny             | 2 dny                  | před 2 dny                |
-| 1999-12-15T00:00:00.000Z | 17 dní            | 17 dní                 | před 17 dny               |
-| 1999-12-01T00:00:00.000Z | přibližně měsíc   | přibližně měsíc        | přibližně před měsícem    |
-| 1999-11-01T00:00:00.000Z | 2 měsíce          | 2 měsíce               | před 2 měsíci             |
-| 1999-06-01T00:00:00.000Z | 7 měsíců          | 7 měsíců               | před 7 měsíci             |
-| 1999-01-01T00:00:00.000Z | přibližně rok     | přibližně rok          | přibližně před rokem      |
-| 1998-12-01T00:00:00.000Z | přibližně rok     | přibližně rok          | přibližně před rokem      |
-| 1998-06-01T00:00:00.000Z | více než rok      | více než rok           | před více než rokem       |
-| 1998-01-01T00:00:00.000Z | přibližně 2 roky  | přibližně 2 roky       | přibližně před 2 roky     |
-| 1997-01-01T00:00:00.000Z | přibližně 3 roky  | přibližně 3 roky       | přibližně před 3 roky     |
-| 1996-01-01T00:00:00.000Z | přibližně 4 roky  | přibližně 4 roky       | přibližně před 4 roky     |
-| 1995-01-01T00:00:00.000Z | přibližně 5 roků  | přibližně 5 roků       | přibližně před 5 roky     |
-| 1994-01-01T00:00:00.000Z | přibližně 6 roků  | přibližně 6 roků       | přibližně před 6 roky     |
+| Date                     | Result             | `includeSeconds: true` | `addSuffix: true`         |
+| ------------------------ | ------------------ | ---------------------- | ------------------------- |
+| 2006-01-01T00:00:00.000Z | přibližně 6 roků   | přibližně 6 roků       | přibližně za 6 roků       |
+| 2005-01-01T00:00:00.000Z | přibližně 5 roků   | přibližně 5 roků       | přibližně za 5 roků       |
+| 2004-01-01T00:00:00.000Z | přibližně 4 roky   | přibližně 4 roky       | přibližně za 4 roky       |
+| 2003-01-01T00:00:00.000Z | přibližně 3 roky   | přibližně 3 roky       | přibližně za 3 roky       |
+| 2002-01-01T00:00:00.000Z | přibližně 2 roky   | přibližně 2 roky       | přibližně za 2 roky       |
+| 2001-06-01T00:00:00.000Z | více než 1 rok     | více než 1 rok         | za více než 1 rok         |
+| 2001-02-01T00:00:00.000Z | přibližně 1 rok    | přibližně 1 rok        | přibližně za 1 rok        |
+| 2001-01-01T00:00:00.000Z | přibližně 1 rok    | přibližně 1 rok        | přibližně za 1 rok        |
+| 2000-06-01T00:00:00.000Z | 5 měsíců           | 5 měsíců               | za 5 měsíců               |
+| 2000-03-01T00:00:00.000Z | 2 měsíce           | 2 měsíce               | za 2 měsíce               |
+| 2000-02-01T00:00:00.000Z | přibližně 1 měsíc  | přibližně 1 měsíc      | přibližně za 1 měsíc      |
+| 2000-01-15T00:00:00.000Z | 14 dní             | 14 dní                 | za 14 dní                 |
+| 2000-01-02T00:00:00.000Z | 1 den              | 1 den                  | za 1 den                  |
+| 2000-01-01T06:00:00.000Z | přibližně 6 hodin  | přibližně 6 hodin      | přibližně za 6 hodin      |
+| 2000-01-01T01:00:00.000Z | přibližně 1 hodina | přibližně 1 hodina     | přibližně za 1 hodinu     |
+| 2000-01-01T00:45:00.000Z | přibližně 1 hodina | přibližně 1 hodina     | přibližně za 1 hodinu     |
+| 2000-01-01T00:30:00.000Z | 30 minut           | 30 minut               | za 30 minut               |
+| 2000-01-01T00:15:00.000Z | 15 minut           | 15 minut               | za 15 minut               |
+| 2000-01-01T00:01:00.000Z | 1 minuta           | 1 minuta               | za 1 minutu               |
+| 2000-01-01T00:00:25.000Z | méně než 1 minuta  | půl minuty             | za méně než 1 minutu      |
+| 2000-01-01T00:00:15.000Z | méně než 1 minuta  | méně než 20 sekund     | za méně než 1 minutu      |
+| 2000-01-01T00:00:05.000Z | méně než 1 minuta  | méně než 10 sekund     | za méně než 1 minutu      |
+| 2000-01-01T00:00:00.000Z | méně než 1 minuta  | méně než 5 sekund      | méně než 1 minuta         |
+| 1999-12-31T23:59:55.000Z | méně než 1 minuta  | méně než 10 sekund     | před méně než 1 minutou   |
+| 1999-12-31T23:59:45.000Z | méně než 1 minuta  | méně než 20 sekund     | před méně než 1 minutou   |
+| 1999-12-31T23:59:35.000Z | méně než 1 minuta  | půl minuty             | před méně než 1 minutou   |
+| 1999-12-31T23:59:00.000Z | 1 minuta           | 1 minuta               | před 1 minutou            |
+| 1999-12-31T23:45:00.000Z | 15 minut           | 15 minut               | před 15 minutami          |
+| 1999-12-31T23:30:00.000Z | 30 minut           | 30 minut               | před 30 minutami          |
+| 1999-12-31T23:15:00.000Z | přibližně 1 hodina | přibližně 1 hodina     | přibližně před 1 hodinou  |
+| 1999-12-31T23:00:00.000Z | přibližně 1 hodina | přibližně 1 hodina     | přibližně před 1 hodinou  |
+| 1999-12-31T18:00:00.000Z | přibližně 6 hodin  | přibližně 6 hodin      | přibližně před 6 hodinami |
+| 1999-12-30T00:00:00.000Z | 2 dny              | 2 dny                  | před 2 dny                |
+| 1999-12-15T00:00:00.000Z | 17 dní             | 17 dní                 | před 17 dny               |
+| 1999-12-01T00:00:00.000Z | přibližně 1 měsíc  | přibližně 1 měsíc      | přibližně před 1 měsícem  |
+| 1999-11-01T00:00:00.000Z | 2 měsíce           | 2 měsíce               | před 2 měsíci             |
+| 1999-06-01T00:00:00.000Z | 7 měsíců           | 7 měsíců               | před 7 měsíci             |
+| 1999-01-01T00:00:00.000Z | přibližně 1 rok    | přibližně 1 rok        | přibližně před 1 rokem    |
+| 1998-12-01T00:00:00.000Z | přibližně 1 rok    | přibližně 1 rok        | přibližně před 1 rokem    |
+| 1998-06-01T00:00:00.000Z | více než 1 rok     | více než 1 rok         | před více než 1 rokem     |
+| 1998-01-01T00:00:00.000Z | přibližně 2 roky   | přibližně 2 roky       | přibližně před 2 roky     |
+| 1997-01-01T00:00:00.000Z | přibližně 3 roky   | přibližně 3 roky       | přibližně před 3 roky     |
+| 1996-01-01T00:00:00.000Z | přibližně 4 roky   | přibližně 4 roky       | přibližně před 4 roky     |
+| 1995-01-01T00:00:00.000Z | přibližně 5 roků   | přibližně 5 roků       | přibližně před 5 roky     |
+| 1994-01-01T00:00:00.000Z | přibližně 6 roků   | přibližně 6 roků       | přibližně před 6 roky     |
 
 ## `formatDistanceStrict`
 
@@ -448,20 +452,20 @@ If now is January 1st, 2000, 00:00.
 | 2004-01-01T00:00:00.000Z | 4 roky    | za 4 roky         | 35064 hodin                    |
 | 2003-01-01T00:00:00.000Z | 3 roky    | za 3 roky         | 26304 hodin                    |
 | 2002-01-01T00:00:00.000Z | 2 roky    | za 2 roky         | 17544 hodin                    |
-| 2001-06-01T00:00:00.000Z | rok       | za rok            | 12408 hodin                    |
-| 2001-02-01T00:00:00.000Z | rok       | za rok            | 9528 hodin                     |
-| 2001-01-01T00:00:00.000Z | rok       | za rok            | 8784 hodin                     |
+| 2001-06-01T00:00:00.000Z | 1 rok     | za 1 rok          | 12408 hodin                    |
+| 2001-02-01T00:00:00.000Z | 1 rok     | za 1 rok          | 9528 hodin                     |
+| 2001-01-01T00:00:00.000Z | 1 rok     | za 1 rok          | 8784 hodin                     |
 | 2000-06-01T00:00:00.000Z | 5 měsíců  | za 5 měsíců       | 3648 hodin                     |
 | 2000-03-01T00:00:00.000Z | 2 měsíce  | za 2 měsíce       | 1440 hodin                     |
-| 2000-02-01T00:00:00.000Z | měsíc     | za měsíc          | 744 hodin                      |
+| 2000-02-01T00:00:00.000Z | 1 měsíc   | za 1 měsíc        | 744 hodin                      |
 | 2000-01-15T00:00:00.000Z | 14 dní    | za 14 dní         | 336 hodin                      |
-| 2000-01-02T00:00:00.000Z | den       | za den            | 24 hodin                       |
+| 2000-01-02T00:00:00.000Z | 1 den     | za 1 den          | 24 hodin                       |
 | 2000-01-01T06:00:00.000Z | 6 hodin   | za 6 hodin        | 6 hodin                        |
-| 2000-01-01T01:00:00.000Z | hodina    | za hodinu         | hodina                         |
-| 2000-01-01T00:45:00.000Z | 45 minut  | za 45 minut       | hodina                         |
-| 2000-01-01T00:30:00.000Z | 30 minut  | za 30 minut       | hodina                         |
+| 2000-01-01T01:00:00.000Z | 1 hodina  | za 1 hodinu       | 1 hodina                       |
+| 2000-01-01T00:45:00.000Z | 45 minut  | za 45 minut       | 1 hodina                       |
+| 2000-01-01T00:30:00.000Z | 30 minut  | za 30 minut       | 1 hodina                       |
 | 2000-01-01T00:15:00.000Z | 15 minut  | za 15 minut       | 0 hodin                        |
-| 2000-01-01T00:01:00.000Z | minuta    | za minutu         | 0 hodin                        |
+| 2000-01-01T00:01:00.000Z | 1 minuta  | za 1 minutu       | 0 hodin                        |
 | 2000-01-01T00:00:25.000Z | 25 sekund | za 25 sekund      | 0 hodin                        |
 | 2000-01-01T00:00:15.000Z | 15 sekund | za 15 sekund      | 0 hodin                        |
 | 2000-01-01T00:00:05.000Z | 5 sekund  | za 5 sekund       | 0 hodin                        |
@@ -469,19 +473,19 @@ If now is January 1st, 2000, 00:00.
 | 1999-12-31T23:59:55.000Z | 5 sekund  | před 5 sekundami  | 0 hodin                        |
 | 1999-12-31T23:59:45.000Z | 15 sekund | před 15 sekundami | 0 hodin                        |
 | 1999-12-31T23:59:35.000Z | 25 sekund | před 25 sekundami | 0 hodin                        |
-| 1999-12-31T23:59:00.000Z | minuta    | před minutou      | 0 hodin                        |
+| 1999-12-31T23:59:00.000Z | 1 minuta  | před 1 minutou    | 0 hodin                        |
 | 1999-12-31T23:45:00.000Z | 15 minut  | před 15 minutami  | 0 hodin                        |
-| 1999-12-31T23:30:00.000Z | 30 minut  | před 30 minutami  | hodina                         |
-| 1999-12-31T23:15:00.000Z | 45 minut  | před 45 minutami  | hodina                         |
-| 1999-12-31T23:00:00.000Z | hodina    | před hodinou      | hodina                         |
+| 1999-12-31T23:30:00.000Z | 30 minut  | před 30 minutami  | 1 hodina                       |
+| 1999-12-31T23:15:00.000Z | 45 minut  | před 45 minutami  | 1 hodina                       |
+| 1999-12-31T23:00:00.000Z | 1 hodina  | před 1 hodinou    | 1 hodina                       |
 | 1999-12-31T18:00:00.000Z | 6 hodin   | před 6 hodinami   | 6 hodin                        |
 | 1999-12-30T00:00:00.000Z | 2 dny     | před 2 dny        | 48 hodin                       |
 | 1999-12-15T00:00:00.000Z | 17 dní    | před 17 dny       | 408 hodin                      |
-| 1999-12-01T00:00:00.000Z | měsíc     | před měsícem      | 744 hodin                      |
+| 1999-12-01T00:00:00.000Z | 1 měsíc   | před 1 měsícem    | 744 hodin                      |
 | 1999-11-01T00:00:00.000Z | 2 měsíce  | před 2 měsíci     | 1464 hodin                     |
 | 1999-06-01T00:00:00.000Z | 7 měsíců  | před 7 měsíci     | 5136 hodin                     |
-| 1999-01-01T00:00:00.000Z | rok       | před rokem        | 8760 hodin                     |
-| 1998-12-01T00:00:00.000Z | rok       | před rokem        | 9504 hodin                     |
+| 1999-01-01T00:00:00.000Z | 1 rok     | před 1 rokem      | 8760 hodin                     |
+| 1998-12-01T00:00:00.000Z | 1 rok     | před 1 rokem      | 9504 hodin                     |
 | 1998-06-01T00:00:00.000Z | 2 roky    | před 2 roky       | 13896 hodin                    |
 | 1998-01-01T00:00:00.000Z | 2 roky    | před 2 roky       | 17520 hodin                    |
 | 1997-01-01T00:00:00.000Z | 3 roky    | před 3 roky       | 26280 hodin                    |
@@ -508,23 +512,23 @@ If now is January 1st, 2000, 00:00.
 | Duration      | Result    |
 | ------------- | --------- |
 | {"years":0}   | 0 roků    |
-| {"years":1}   | rok       |
+| {"years":1}   | 1 rok     |
 | {"years":2}   | 2 roky    |
 | {"months":0}  | 0 měsíců  |
-| {"months":1}  | měsíc     |
+| {"months":1}  | 1 měsíc   |
 | {"months":2}  | 2 měsíce  |
 | {"weeks":0}   | 0 týdnů   |
-| {"weeks":1}   | týden     |
+| {"weeks":1}   | 1 týden   |
 | {"weeks":2}   | 2 týdny   |
 | {"days":0}    | 0 dní     |
-| {"days":1}    | den       |
+| {"days":1}    | 1 den     |
 | {"days":2}    | 2 dny     |
 | {"hours":0}   | 0 hodin   |
-| {"hours":1}   | hodina    |
+| {"hours":1}   | 1 hodina  |
 | {"hours":2}   | 2 hodiny  |
 | {"minutes":0} | 0 minut   |
-| {"minutes":1} | minuta    |
+| {"minutes":1} | 1 minuta  |
 | {"minutes":2} | 2 minuty  |
 | {"seconds":0} | 0 sekund  |
-| {"seconds":1} | sekunda   |
+| {"seconds":1} | 1 sekunda |
 | {"seconds":2} | 2 sekundy |

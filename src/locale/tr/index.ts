@@ -1,26 +1,25 @@
-import type { Locale } from '../types'
-import formatDistance from './_lib/formatDistance/index'
-import formatLong from './_lib/formatLong/index'
-import formatRelative from './_lib/formatRelative/index'
-import localize from './_lib/localize/index'
-import match from './_lib/match/index'
+import type { Locale } from "../types.ts";
+import { formatDistance } from "./_lib/formatDistance/index.ts";
+import { formatLong } from "./_lib/formatLong/index.ts";
+import { formatRelative } from "./_lib/formatRelative/index.ts";
+import { localize } from "./_lib/localize/index.ts";
+import { match } from "./_lib/match/index.ts";
 
 /**
- * @type {Locale}
  * @category Locales
  * @summary Turkish locale.
  * @language Turkish
  * @iso-639-2 tur
- * @author Alpcan Aydın [@alpcanaydin]{@link https://github.com/alpcanaydin}
- * @author Berkay Sargın [@berkaey]{@link https://github.com/berkaey}
- * @author Fatih Bulut [@bulutfatih]{@link https://github.com/bulutfatih}
- * @author Ismail Demirbilek [@dbtek]{@link https://github.com/dbtek}
- * @author İsmail Kayar [@ikayar]{@link https://github.com/ikayar}
+ * @author Alpcan Aydın [@alpcanaydin](https://github.com/alpcanaydin)
+ * @author Berkay Sargın [@berkaey](https://github.com/berkaey)
+ * @author Fatih Bulut [@bulutfatih](https://github.com/bulutfatih)
+ * @author Ismail Demirbilek [@dbtek](https://github.com/dbtek)
+ * @author İsmail Kayar [@ikayar](https://github.com/ikayar)
  *
  *
  */
-const locale: Locale = {
-  code: 'tr',
+export const tr: Locale = {
+  code: "tr",
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
@@ -30,6 +29,4 @@ const locale: Locale = {
     weekStartsOn: 1 /* Monday */,
     firstWeekContainsDate: 1,
   },
-}
-
-export default locale
+};

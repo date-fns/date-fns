@@ -1,20 +1,19 @@
-import formatDistance from '../en-US/_lib/formatDistance/index'
-import formatRelative from '../en-US/_lib/formatRelative/index'
-import localize from '../en-US/_lib/localize/index'
-import match from '../en-US/_lib/match/index'
-import type { Locale } from '../types'
-import formatLong from './_lib/formatLong/index'
+import { formatDistance } from "../en-US/_lib/formatDistance/index.ts";
+import { formatRelative } from "../en-US/_lib/formatRelative/index.ts";
+import { localize } from "../en-US/_lib/localize/index.ts";
+import { match } from "../en-US/_lib/match/index.ts";
+import type { Locale } from "../types.ts";
+import { formatLong } from "./_lib/formatLong/index.ts";
 
 /**
- * @type {Locale}
  * @category Locales
  * @summary English locale (United Kingdom).
  * @language English
  * @iso-639-2 eng
- * @author Alex [@glintik]{@link https://github.com/glintik}
+ * @author Alex [@glintik](https://github.com/glintik)
  */
-const locale: Locale = {
-  code: 'en-GB',
+export const enGB: Locale = {
+  code: "en-GB",
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
@@ -24,6 +23,4 @@ const locale: Locale = {
     weekStartsOn: 1 /* Monday */,
     firstWeekContainsDate: 4,
   },
-}
-
-export default locale
+};

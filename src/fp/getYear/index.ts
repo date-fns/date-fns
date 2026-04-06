@@ -1,6 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.
 
-import fn from '../../getYear/index'
-import convertToFP from '../_lib/convertToFP/index'
+import { getYear as fn } from "../../getYear/index.ts";
+import { convertToFP } from "../_lib/convertToFP/index.ts";
 
-export default convertToFP(fn, 1)
+export const getYear = convertToFP(fn, 1);

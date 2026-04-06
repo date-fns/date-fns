@@ -1,6 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.
 
-import fn from '../../addHours/index'
-import convertToFP from '../_lib/convertToFP/index'
+import { addHours as fn } from "../../addHours/index.ts";
+import { convertToFP } from "../_lib/convertToFP/index.ts";
 
-export default convertToFP(fn, 2)
+export const addHours = convertToFP(fn, 2);

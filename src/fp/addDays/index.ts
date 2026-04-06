@@ -1,6 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.
 
-import fn from '../../addDays/index'
-import convertToFP from '../_lib/convertToFP/index'
+import { addDays as fn } from "../../addDays/index.ts";
+import { convertToFP } from "../_lib/convertToFP/index.ts";
 
-export default convertToFP(fn, 2)
+export const addDays = convertToFP(fn, 2);

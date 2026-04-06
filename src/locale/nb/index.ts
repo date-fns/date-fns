@@ -1,22 +1,21 @@
-import type { Locale } from '../types'
-import formatDistance from './_lib/formatDistance/index'
-import formatLong from './_lib/formatLong/index'
-import formatRelative from './_lib/formatRelative/index'
-import localize from './_lib/localize/index'
-import match from './_lib/match/index'
+import type { Locale } from "../types.ts";
+import { formatDistance } from "./_lib/formatDistance/index.ts";
+import { formatLong } from "./_lib/formatLong/index.ts";
+import { formatRelative } from "./_lib/formatRelative/index.ts";
+import { localize } from "./_lib/localize/index.ts";
+import { match } from "./_lib/match/index.ts";
 
 /**
- * @type {Locale}
  * @category Locales
  * @summary Norwegian Bokmål locale.
  * @language Norwegian Bokmål
  * @iso-639-2 nob
- * @author Hans-Kristian Koren [@Hanse]{@link https://github.com/Hanse}
- * @author Mikolaj Grzyb [@mikolajgrzyb]{@link https://github.com/mikolajgrzyb}
- * @author Dag Stuan [@dagstuan]{@link https://github.com/dagstuan}
+ * @author Hans-Kristian Koren [@Hanse](https://github.com/Hanse)
+ * @author Mikolaj Grzyb [@mikolajgrzyb](https://github.com/mikolajgrzyb)
+ * @author Dag Stuan [@dagstuan](https://github.com/dagstuan)
  */
-const locale: Locale = {
-  code: 'nb',
+export const nb: Locale = {
+  code: "nb",
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
@@ -26,6 +25,4 @@ const locale: Locale = {
     weekStartsOn: 1 /* Monday */,
     firstWeekContainsDate: 4,
   },
-}
-
-export default locale
+};

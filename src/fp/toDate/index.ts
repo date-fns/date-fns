@@ -1,6 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.
 
-import fn from '../../toDate/index'
-import convertToFP from '../_lib/convertToFP/index'
+import { toDate as fn } from "../../toDate/index.ts";
+import { convertToFP } from "../_lib/convertToFP/index.ts";
 
-export default convertToFP(fn, 1)
+export const toDate = convertToFP(fn, 2);

@@ -122,8 +122,12 @@
 |                                 |              | 2019-12-01T12:13:14.015Z | 48.                                               | 2019-11-25T00:00:00.000Z |
 | ISO week of year                | Io           | 2019-01-01T12:13:14.015Z | 1.                                                | 2018-12-31T00:00:00.000Z |
 |                                 |              | 2019-12-01T12:13:14.015Z | 48.                                               | 2019-11-25T00:00:00.000Z |
-| Day of month                    | do           | 2019-02-11T12:13:14.015Z | 11.                                               | 2019-02-11T00:00:00.000Z |
+| Day of month                    | do           | 2019-02-01T12:13:14.015Z | 1.                                                | 2019-02-01T00:00:00.000Z |
+|                                 |              | 2019-02-11T12:13:14.015Z | 11.                                               | 2019-02-11T00:00:00.000Z |
 |                                 |              | 2019-02-28T12:13:14.015Z | 28.                                               | 2019-02-28T00:00:00.000Z |
+|                                 | do MMMM      | 2019-02-01T12:13:14.015Z | 1. Februar                                        | 2019-02-01T00:00:00.000Z |
+|                                 |              | 2019-02-11T12:13:14.015Z | 11. Februar                                       | 2019-02-11T00:00:00.000Z |
+|                                 |              | 2019-02-28T12:13:14.015Z | 28. Februar                                       | 2019-02-28T00:00:00.000Z |
 | Day of year                     | Do           | 2019-02-11T12:13:14.015Z | 42.                                               | 2019-02-11T00:00:00.000Z |
 |                                 |              | 2019-12-31T12:13:14.015Z | 365.                                              | 2019-12-31T00:00:00.000Z |
 | Day of week (formatting)        | E            | 2019-02-11T12:13:14.015Z | Mo.                                               | 2019-02-11T00:00:00.000Z |
@@ -410,13 +414,13 @@ If now is January 1st, 2000, 00:00.
 | 2000-01-01T00:30:00.000Z | 30 Minuten           | 30 Minuten              | in 30 Minuten            |
 | 2000-01-01T00:15:00.000Z | 15 Minuten           | 15 Minuten              | in 15 Minuten            |
 | 2000-01-01T00:01:00.000Z | 1 Minute             | 1 Minute                | in 1 Minute              |
-| 2000-01-01T00:00:25.000Z | weniger als 1 Minute | halbe Minute            | in weniger als 1 Minute  |
+| 2000-01-01T00:00:25.000Z | weniger als 1 Minute | eine halbe Minute       | in weniger als 1 Minute  |
 | 2000-01-01T00:00:15.000Z | weniger als 1 Minute | weniger als 20 Sekunden | in weniger als 1 Minute  |
 | 2000-01-01T00:00:05.000Z | weniger als 1 Minute | weniger als 10 Sekunden | in weniger als 1 Minute  |
 | 2000-01-01T00:00:00.000Z | weniger als 1 Minute | weniger als 5 Sekunden  | vor weniger als 1 Minute |
 | 1999-12-31T23:59:55.000Z | weniger als 1 Minute | weniger als 10 Sekunden | vor weniger als 1 Minute |
 | 1999-12-31T23:59:45.000Z | weniger als 1 Minute | weniger als 20 Sekunden | vor weniger als 1 Minute |
-| 1999-12-31T23:59:35.000Z | weniger als 1 Minute | halbe Minute            | vor weniger als 1 Minute |
+| 1999-12-31T23:59:35.000Z | weniger als 1 Minute | eine halbe Minute       | vor weniger als 1 Minute |
 | 1999-12-31T23:59:00.000Z | 1 Minute             | 1 Minute                | vor 1 Minute             |
 | 1999-12-31T23:45:00.000Z | 15 Minuten           | 15 Minuten              | vor 15 Minuten           |
 | 1999-12-31T23:30:00.000Z | 30 Minuten           | 30 Minuten              | vor 30 Minuten           |

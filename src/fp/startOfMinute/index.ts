@@ -1,6 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.
 
-import fn from '../../startOfMinute/index'
-import convertToFP from '../_lib/convertToFP/index'
+import { startOfMinute as fn } from "../../startOfMinute/index.ts";
+import { convertToFP } from "../_lib/convertToFP/index.ts";
 
-export default convertToFP(fn, 1)
+export const startOfMinute = convertToFP(fn, 1);

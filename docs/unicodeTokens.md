@@ -20,19 +20,19 @@ There are 4 tokens that cause most of the confusion:
 
 ```js
 // ❌ Wrong!
-format(new Date(), 'YYYY-MM-DD')
+format(new Date(), "YYYY-MM-DD");
 //=> 2018-10-283
 
 // ✅ Correct
-format(new Date(), 'yyyy-MM-dd')
+format(new Date(), "yyyy-MM-dd");
 //=> 2018-10-10
 
 // ❌ Wrong!
-parse('11.02.87', 'D.MM.YY', new Date()).toString()
+parse("11.02.87", "D.MM.YY", new Date()).toString();
 //=> 'Sat Jan 11 1986 00:00:00 GMT+0200 (EET)'
 
 // ✅ Correct
-parse('11.02.87', 'd.MM.yy', new Date()).toString()
+parse("11.02.87", "d.MM.yy", new Date()).toString();
 //=> 'Wed Feb 11 1987 00:00:00 GMT+0200 (EET)'
 ```
 
@@ -41,13 +41,13 @@ these tokens without `useAdditionalDayOfYearTokens` option for `D` and `DD` and
 `useAdditionalWeekYearTokens` options for `YY` and `YYYY`:
 
 ```js
-format(new Date(), 'D', { useAdditionalDayOfYearTokens: true })
+format(new Date(), "D", { useAdditionalDayOfYearTokens: true });
 //=> '283'
 
-parse('365+1987', 'DD+YYYY', new Date(), {
+parse("365+1987", "DD+YYYY", new Date(), {
   useAdditionalDayOfYearTokens: true,
-  useAdditionalWeekYearTokens: true
-}).toString()
+  useAdditionalWeekYearTokens: true,
+}).toString();
 //=> 'Wed Dec 31 1986 00:00:00 GMT+0200 (EET)'
 ```
 

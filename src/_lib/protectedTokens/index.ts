@@ -1,34 +1,27 @@
-const protectedDayOfYearTokens = ['D', 'DD']
-const protectedWeekYearTokens = ['YY', 'YYYY']
+const dayOfYearTokenRE = /^D+$/;
+const weekYearTokenRE = /^Y+$/;
 
-export function isProtectedDayOfYearToken(token: string): boolean {
-  return protectedDayOfYearTokens.indexOf(token) !== -1
+const throwTokens = ["D", "DD", "YY", "YYYY"];
+
+export function isProtectedDayOfYearToken(token: string) {
+  return dayOfYearTokenRE.test(token);
 }
 
-export function isProtectedWeekYearToken(token: string): boolean {
-  return protectedWeekYearTokens.indexOf(token) !== -1
+export function isProtectedWeekYearToken(token: string) {
+  return weekYearTokenRE.test(token);
 }
 
-export function throwProtectedError(
+export function warnOrThrowProtectedError(
   token: string,
   format: string,
-  input: string
+  input: string,
 ): void {
-  if (token === 'YYYY') {
-    throw new RangeError(
-      `Use \`yyyy\` instead of \`YYYY\` (in \`${format}\`) for formatting years to the input \`${input}\`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md`
-    )
-  } else if (token === 'YY') {
-    throw new RangeError(
-      `Use \`yy\` instead of \`YY\` (in \`${format}\`) for formatting years to the input \`${input}\`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md`
-    )
-  } else if (token === 'D') {
-    throw new RangeError(
-      `Use \`d\` instead of \`D\` (in \`${format}\`) for formatting days of the month to the input \`${input}\`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md`
-    )
-  } else if (token === 'DD') {
-    throw new RangeError(
-      `Use \`dd\` instead of \`DD\` (in \`${format}\`) for formatting days of the month to the input \`${input}\`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md`
-    )
-  }
+  const _message = message(token, format, input);
+  console.warn(_message);
+  if (throwTokens.includes(token)) throw new RangeError(_message);
+}
+
+function message(token: string, format: string, input: string) {
+  const subject = token[0] === "Y" ? "years" : "days of the month";
+  return `Use \`${token.toLowerCase()}\` instead of \`${token}\` (in \`${format}\`) for formatting ${subject} to the input \`${input}\`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md`;
 }

@@ -1,0 +1,23 @@
+{
+  "name": "@date-fns/example-vite",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "pnpm run build-date-fns && tsc && vite build",
+    "build-date-fns": "rm -rf node_modules/date-fns && cp -r ../../lib node_modules/date-fns || env PACKAGE_OUTPUT_PATH=\"$(pwd)/node_modules/date-fns\" ../../scripts/build/package.sh",
+    "test": "echo \"We're just testing if it builds atm\""
+  },
+  "dependencies": {
+    "date-fns": "^3.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@vitejs/plugin-react": "^4.2.1",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.8"
+  }
+}

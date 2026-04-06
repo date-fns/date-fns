@@ -20,7 +20,7 @@ export const numericPatterns = {
   twoDigitsSigned: /^-?\d{1,2}/, // 0 to 99, -0 to -99
   threeDigitsSigned: /^-?\d{1,3}/, // 0 to 999, -0 to -999
   fourDigitsSigned: /^-?\d{1,4}/, // 0 to 9999, -0 to -9999
-}
+};
 
 export const timezonePatterns = {
   basicOptionalMinutes: /^([+-])(\d{2})(\d{2})?|Z/,
@@ -28,4 +28,4 @@ export const timezonePatterns = {
   basicOptionalSeconds: /^([+-])(\d{2})(\d{2})((\d{2}))?|Z/,
   extended: /^([+-])(\d{2}):(\d{2})|Z/,
   extendedOptionalSeconds: /^([+-])(\d{2}):(\d{2})(:(\d{2}))?|Z/,
-}
+};

@@ -1,11 +1,9 @@
-/* eslint-env mocha */
+import { describe, expect, it } from "vitest";
+import { formatDuration } from "./index.ts";
 
-import assert from 'assert'
-import formatDuration from './index'
-
-describe('formatDuration', () => {
-  it('formats full duration', () => {
-    assert(
+describe("formatDuration", () => {
+  it("formats full duration", () => {
+    expect(
       formatDuration({
         years: 2,
         months: 9,
@@ -14,16 +12,16 @@ describe('formatDuration', () => {
         hours: 5,
         minutes: 9,
         seconds: 30,
-      }) === '2 years 9 months 1 week 7 days 5 hours 9 minutes 30 seconds'
-    )
-  })
+      }),
+    ).toBe("2 years 9 months 1 week 7 days 5 hours 9 minutes 30 seconds");
+  });
 
-  it('formats partial duration', () => {
-    assert(formatDuration({ months: 9, days: 2 }) === '9 months 2 days')
-  })
+  it("formats partial duration", () => {
+    expect(formatDuration({ months: 9, days: 2 })).toBe("9 months 2 days");
+  });
 
-  it('allows to customize the format', () => {
-    assert(
+  it("allows to customize the format", () => {
+    expect(
       formatDuration(
         {
           years: 2,
@@ -34,13 +32,13 @@ describe('formatDuration', () => {
           minutes: 9,
           seconds: 30,
         },
-        { format: ['months', 'weeks'] }
-      ) === '9 months 1 week'
-    )
-  })
+        { format: ["months", "weeks"] },
+      ),
+    ).toBe("9 months 1 week");
+  });
 
-  it('does not include zeros by default', () => {
-    assert(
+  it("does not include zeros by default", () => {
+    expect(
       formatDuration({
         years: 0,
         months: 0,
@@ -49,12 +47,12 @@ describe('formatDuration', () => {
         hours: 0,
         minutes: 0,
         seconds: 0,
-      }) === '1 week'
-    )
-  })
+      }),
+    ).toBe("1 week");
+  });
 
-  it('allows to include zeros', () => {
-    assert(
+  it("allows to include zeros", () => {
+    expect(
       formatDuration(
         {
           years: 0,
@@ -65,15 +63,14 @@ describe('formatDuration', () => {
           minutes: 0,
           seconds: 0,
         },
-        { zero: true }
-      ) === '0 years 0 months 1 week 0 days 0 hours 0 minutes 0 seconds'
-    )
-  })
+        { zero: true },
+      ),
+    ).toBe("0 years 0 months 1 week 0 days 0 hours 0 minutes 0 seconds");
+  });
 
-  it('allows to customize the delimiter', () => {
-    assert(
-      formatDuration({ months: 9, days: 2 }, { delimiter: ', ' }) ===
-        '9 months, 2 days'
-    )
-  })
-})
+  it("allows to customize the delimiter", () => {
+    expect(formatDuration({ months: 9, days: 2 }, { delimiter: ", " })).toBe(
+      "9 months, 2 days",
+    );
+  });
+});

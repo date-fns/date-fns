@@ -1,6 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.
 
-import fn from '../../closestTo/index'
-import convertToFP from '../_lib/convertToFP/index'
+import { closestTo as fn } from "../../closestTo/index.ts";
+import { convertToFP } from "../_lib/convertToFP/index.ts";
 
-export default convertToFP(fn, 2)
+export const closestTo = convertToFP(fn, 2);

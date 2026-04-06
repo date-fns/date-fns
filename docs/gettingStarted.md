@@ -17,17 +17,17 @@ for manipulating **JavaScript dates** in **a browser** & **Node.js**.
 [**200+ functions** for all occasions](https://date-fns.org/docs/).
 
 ```js
-import { format, compareAsc } from 'date-fns'
+import { format, compareAsc } from "date-fns";
 
-format(new Date(2014, 1, 11), 'MM/dd/yyyy')
+format(new Date(2014, 1, 11), "MM/dd/yyyy");
 //=> '02/11/2014'
 
 const dates = [
   new Date(1995, 6, 2),
   new Date(1987, 1, 11),
   new Date(1989, 6, 10),
-]
-dates.sort(compareAsc)
+];
+dates.sort(compareAsc);
 //=> [
 //   Wed Feb 11 1987 00:00:00,
 //   Mon Jul 10 1989 00:00:00,
@@ -48,13 +48,10 @@ To use submodule features, [install the npm package](#npm) and then import a fun
 
 ```js
 // The main submodule:
-import addDays from 'date-fns/addDays'
+import { addDays } from "date-fns";
 
 // FP variation:
-import addDays from 'date-fns/fp/addDays'
-
-// With tree-shaking enabled:
-import { addDays, format } from 'date-fns/fp'
+import { addDays, format } from "date-fns/fp";
 ```
 
 ## Installation
@@ -72,8 +69,8 @@ yarn add date-fns
 Start using:
 
 ```js
-import { formatDistance, subDays } from 'date-fns'
+import { formatDistance, subDays } from "date-fns";
 
-formatDistance(subDays(new Date(), 3), new Date(), { addSuffix: true })
+formatDistance(subDays(new Date(), 3), new Date(), { addSuffix: true });
 //=> "3 days ago"
 ```

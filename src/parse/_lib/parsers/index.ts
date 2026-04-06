@@ -1,35 +1,35 @@
-import { Parser } from '../Parser'
-import { EraParser } from './EraParser'
-import { YearParser } from './YearParser'
-import { LocalWeekYearParser } from './LocalWeekYearParser'
-import { ISOWeekYearParser } from './ISOWeekYearParser'
-import { ExtendedYearParser } from './ExtendedYearParser'
-import { QuarterParser } from './QuarterParser'
-import { StandAloneQuarterParser } from './StandAloneQuarterParser'
-import { MonthParser } from './MonthParser'
-import { StandAloneMonthParser } from './StandAloneMonthParser'
-import { LocalWeekParser } from './LocalWeekParser'
-import { ISOWeekParser } from './ISOWeekParser'
-import { DateParser } from './DateParser'
-import { DayOfYearParser } from './DayOfYearParser'
-import { DayParser } from './DayParser'
-import { LocalDayParser } from './LocalDayParser'
-import { StandAloneLocalDayParser } from './StandAloneLocalDayParser'
-import { ISODayParser } from './ISODayParser'
-import { AMPMParser } from './AMPMParser'
-import { AMPMMidnightParser } from './AMPMMidnightParser'
-import { DayPeriodParser } from './DayPeriodParser'
-import { Hour1to12Parser } from './Hour1to12Parser'
-import { Hour0to23Parser } from './Hour0to23Parser'
-import { Hour0To11Parser } from './Hour0To11Parser'
-import { Hour1To24Parser } from './Hour1To24Parser'
-import { MinuteParser } from './MinuteParser'
-import { SecondParser } from './SecondParser'
-import { FractionOfSecondParser } from './FractionOfSecondParser'
-import { ISOTimezoneWithZParser } from './ISOTimezoneWithZParser'
-import { ISOTimezoneParser } from './ISOTimezoneParser'
-import { TimestampSecondsParser } from './TimestampSecondsParser'
-import { TimestampMillisecondsParser } from './TimestampMillisecondsParser'
+import type { Parser } from "../Parser.ts";
+import { EraParser } from "./EraParser.ts";
+import { YearParser } from "./YearParser.ts";
+import { LocalWeekYearParser } from "./LocalWeekYearParser.ts";
+import { ISOWeekYearParser } from "./ISOWeekYearParser.ts";
+import { ExtendedYearParser } from "./ExtendedYearParser.ts";
+import { QuarterParser } from "./QuarterParser.ts";
+import { StandAloneQuarterParser } from "./StandAloneQuarterParser.ts";
+import { MonthParser } from "./MonthParser.ts";
+import { StandAloneMonthParser } from "./StandAloneMonthParser.ts";
+import { LocalWeekParser } from "./LocalWeekParser.ts";
+import { ISOWeekParser } from "./ISOWeekParser.ts";
+import { DateParser } from "./DateParser.ts";
+import { DayOfYearParser } from "./DayOfYearParser.ts";
+import { DayParser } from "./DayParser.ts";
+import { LocalDayParser } from "./LocalDayParser.ts";
+import { StandAloneLocalDayParser } from "./StandAloneLocalDayParser.ts";
+import { ISODayParser } from "./ISODayParser.ts";
+import { AMPMParser } from "./AMPMParser.ts";
+import { AMPMMidnightParser } from "./AMPMMidnightParser.ts";
+import { DayPeriodParser } from "./DayPeriodParser.ts";
+import { Hour1to12Parser } from "./Hour1to12Parser.ts";
+import { Hour0to23Parser } from "./Hour0to23Parser.ts";
+import { Hour0To11Parser } from "./Hour0To11Parser.ts";
+import { Hour1To24Parser } from "./Hour1To24Parser.ts";
+import { MinuteParser } from "./MinuteParser.ts";
+import { SecondParser } from "./SecondParser.ts";
+import { FractionOfSecondParser } from "./FractionOfSecondParser.ts";
+import { ISOTimezoneWithZParser } from "./ISOTimezoneWithZParser.ts";
+import { ISOTimezoneParser } from "./ISOTimezoneParser.ts";
+import { TimestampSecondsParser } from "./TimestampSecondsParser.ts";
+import { TimestampMillisecondsParser } from "./TimestampMillisecondsParser.ts";
 
 /*
  * |     | Unit                           |     | Unit                           |
@@ -106,4 +106,4 @@ export const parsers: Record<string, Parser<any>> = {
   x: new ISOTimezoneParser(),
   t: new TimestampSecondsParser(),
   T: new TimestampMillisecondsParser(),
-}
+};

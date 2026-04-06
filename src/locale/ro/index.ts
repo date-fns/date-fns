@@ -1,22 +1,21 @@
-import type { Locale } from '../types'
-import formatDistance from './_lib/formatDistance/index'
-import formatLong from './_lib/formatLong/index'
-import formatRelative from './_lib/formatRelative/index'
-import localize from './_lib/localize/index'
-import match from './_lib/match/index'
+import type { Locale } from "../types.ts";
+import { formatDistance } from "./_lib/formatDistance/index.ts";
+import { formatLong } from "./_lib/formatLong/index.ts";
+import { formatRelative } from "./_lib/formatRelative/index.ts";
+import { localize } from "./_lib/localize/index.ts";
+import { match } from "./_lib/match/index.ts";
 
 /**
- * @type {Locale}
  * @category Locales
  * @summary Romanian locale.
  * @language Romanian
  * @iso-639-2 ron
- * @author Sergiu Munteanu [@jsergiu]{@link https://github.com/jsergiu}
- * @author Adrian Ocneanu [@aocneanu]{@link https://github.com/aocneanu}
- * @author Mihai Ocneanu [@gandesc]{@link https://github.com/gandesc}
+ * @author Sergiu Munteanu [@jsergiu](https://github.com/jsergiu)
+ * @author Adrian Ocneanu [@aocneanu](https://github.com/aocneanu)
+ * @author Mihai Ocneanu [@gandesc](https://github.com/gandesc)
  */
-const locale: Locale = {
-  code: 'ro',
+export const ro: Locale = {
+  code: "ro",
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
@@ -26,6 +25,4 @@ const locale: Locale = {
     weekStartsOn: 1 /* Monday */,
     firstWeekContainsDate: 1,
   },
-}
-
-export default locale
+};

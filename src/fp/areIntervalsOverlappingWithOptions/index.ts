@@ -1,6 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.
 
-import fn from '../../areIntervalsOverlapping/index'
-import convertToFP from '../_lib/convertToFP/index'
+import { areIntervalsOverlapping as fn } from "../../areIntervalsOverlapping/index.ts";
+import { convertToFP } from "../_lib/convertToFP/index.ts";
 
-export default convertToFP(fn, 3)
+export const areIntervalsOverlappingWithOptions = convertToFP(fn, 3);

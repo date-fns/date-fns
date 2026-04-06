@@ -1,6 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.
 
-import fn from '../../setISOWeek/index'
-import convertToFP from '../_lib/convertToFP/index'
+import { setISOWeek as fn } from "../../setISOWeek/index.ts";
+import { convertToFP } from "../_lib/convertToFP/index.ts";
 
-export default convertToFP(fn, 2)
+export const setISOWeek = convertToFP(fn, 2);

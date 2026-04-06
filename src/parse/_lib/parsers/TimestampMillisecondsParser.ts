@@ -1,22 +1,22 @@
-import constructFrom from '../../../constructFrom/index'
-import { Parser } from '../Parser'
-import type { ParseFlags, ParseResult } from '../types'
-import { parseAnyDigitsSigned } from '../utils'
+import { constructFrom } from "../../../constructFrom/index.ts";
+import { Parser } from "../Parser.ts";
+import type { ParseFlags, ParseResult } from "../types.ts";
+import { parseAnyDigitsSigned } from "../utils.ts";
 
 export class TimestampMillisecondsParser extends Parser<number> {
-  priority = 20
+  priority = 20;
 
   parse(dateString: string): ParseResult<number> {
-    return parseAnyDigitsSigned(dateString)
+    return parseAnyDigitsSigned(dateString);
   }
 
   set<DateType extends Date>(
     date: DateType,
     _flags: ParseFlags,
-    value: number
+    value: number,
   ): [DateType, ParseFlags] {
-    return [constructFrom(date, value), { timestampIsSet: true }]
+    return [constructFrom(date, value), { timestampIsSet: true }];
   }
 
-  incompatibleTokens = '*' as const
+  incompatibleTokens = "*" as const;
 }

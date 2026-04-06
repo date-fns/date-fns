@@ -1,6 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.
 
-import fn from '../../roundToNearestMinutes/index'
-import convertToFP from '../_lib/convertToFP/index'
+import { roundToNearestMinutes as fn } from "../../roundToNearestMinutes/index.ts";
+import { convertToFP } from "../_lib/convertToFP/index.ts";
 
-export default convertToFP(fn, 1)
+export const roundToNearestMinutes = convertToFP(fn, 1);

@@ -1,6 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.
 
-import fn from '../../getDayOfYear/index'
-import convertToFP from '../_lib/convertToFP/index'
+import { getDayOfYear as fn } from "../../getDayOfYear/index.ts";
+import { convertToFP } from "../_lib/convertToFP/index.ts";
 
-export default convertToFP(fn, 1)
+export const getDayOfYear = convertToFP(fn, 1);

@@ -1,9 +1,0 @@
-// @flow
-
-const format = require('date-fns').format
-const eo = require('date-fns/locale/eo')
-
-const dateString : Date = new Date(2017, 0, 25, 21, 28, 15)
-const formatString : string = 'dd.MM.yyyy HH:mm:ss'
-const result : string = format(new Date(2017, 0, 25, 21, 28, 15), 'eeee, dd MMMM HH:mm:ss', {locale: eo})
-console.log(result === 'merkredo, 25 januaro 21:28:15')
