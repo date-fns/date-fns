@@ -53,8 +53,17 @@ export function constructFrom<
   if (date && typeof date === "object" && constructFromSymbol in date)
     return date[constructFromSymbol](value);
 
-  if (date instanceof Date)
-    return new (date.constructor as GenericDateConstructor<ResultDate>)(value);
+  if (date instanceof Date) {
+    if (date.constructor === Date)
+      return new Date(value) as ResultDate;
+    try {
+      const result = new (date.constructor as GenericDateConstructor<ResultDate>)(value);
+      const valueTime = +new Date(value);
+      if (result instanceof Date && !isNaN(+result) && +result === valueTime)
+        return result;
+    } catch {}
+    return new Date(value) as ResultDate;
+  }
 
   return new Date(value) as ResultDate;
 }
