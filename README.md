@@ -17,7 +17,7 @@ It's like [Lodash](https://lodash.com) for dates
 - **Native dates**: Uses existing native type. It doesn't extend core objects for safety's sake.
 - **Immutable & Pure**: Built using pure functions and always returns a new date instance.
 - **TypeScript**: The library is 100% TypeScript with brand-new handcrafted types.
-- **I18n**: Dozens of locales. Include only what you need.
+- **I18n**: [Dozens of locales](https://github.com/date-fns/date-fns/tree/main/src/locale). Include only what you need.
 - [and many more benefits](https://date-fns.org/)
 
 ```js
