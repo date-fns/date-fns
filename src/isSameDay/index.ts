@@ -23,16 +23,19 @@ export interface IsSameDayOptions extends ContextOptions<Date> {}
  *
  * @example
  * // Are 4 September 06:00:00 and 4 September 18:00:00 in the same day?
+ * // Note: months are 0-based, so 8 = September
  * const result = isSameDay(new Date(2014, 8, 4, 6, 0), new Date(2014, 8, 4, 18, 0))
  * //=> true
  *
  * @example
  * // Are 4 September and 4 October in the same day?
+ * // Note: months are 0-based, so 8 = September and 9 = October
  * const result = isSameDay(new Date(2014, 8, 4), new Date(2014, 9, 4))
  * //=> false
  *
  * @example
  * // Are 4 September, 2014 and 4 September, 2015 in the same day?
+ * // Note: months are 0-based, so 8 = September
  * const result = isSameDay(new Date(2014, 8, 4), new Date(2015, 8, 4))
  * //=> false
  */
