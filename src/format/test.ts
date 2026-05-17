@@ -48,6 +48,21 @@ describe("format", () => {
     expect(format(date, "yyyy-MM-dd")).toBe("2014-04-04");
   });
 
+  it("formats common ISO date patterns for edge years", () => {
+    const firstBc = new Date(0, 0, 1);
+    firstBc.setFullYear(0);
+
+    const secondBc = new Date(0, 0, 1);
+    secondBc.setFullYear(-1);
+
+    const largeYear = new Date(0, 0, 1);
+    largeYear.setFullYear(10000);
+
+    expect(format(firstBc, "yyyy-MM-dd")).toBe("0001-01-01");
+    expect(format(secondBc, "yyyy-MM-dd")).toBe("0002-01-01");
+    expect(format(largeYear, "yyyy-MM-dd")).toBe("10000-01-01");
+  });
+
   it("escapes characters between the single quote characters", () => {
     const result = format(date, "'yyyy-'MM-dd'THH:mm:ss.SSSX' yyyy-'MM-dd'");
     expect(result).toBe("yyyy-04-04THH:mm:ss.SSSX 1986-MM-dd");
@@ -804,6 +819,34 @@ describe("format", () => {
         locale: customLocale,
       });
       expect(result).toEqual("2 janvier");
+    });
+
+    it("uses localize preprocessors for common ISO date patterns", () => {
+      const customLocale = {
+        localize: {
+          preprocessor: (_date: Date, parts: FormatPart[]) =>
+            parts.map((part) =>
+              part.isToken && part.value === "yyyy"
+                ? { isToken: false, value: "year" }
+                : part,
+            ),
+        },
+      };
+
+      const result = format(new Date(2024, 0, 2), "yyyy-MM-dd", {
+        // @ts-expect-error - It's ok to have incomplete locale
+        locale: customLocale,
+      });
+      expect(result).toEqual("year-01-02");
+    });
+
+    it("keeps throwing for common ISO date patterns with invalid locales", () => {
+      expect(() =>
+        format(new Date(2024, 0, 2), "yyyy-MM-dd", {
+          // @ts-expect-error - It's ok to have incomplete locale
+          locale: {},
+        }),
+      ).toThrow();
     });
   });
 
