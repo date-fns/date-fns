@@ -54,6 +54,11 @@ export function parseISO<
 >(argument: string, options?: ParseISOOptions<ResultDate>): ResultDate {
   const invalidDate = () => constructFrom(options?.in, NaN);
 
+  // Return Invalid Date for non-string arguments (including null/undefined)
+  if (typeof argument !== "string") {
+    return invalidDate();
+  }
+
   const additionalDigits = options?.additionalDigits ?? 2;
   const dateStrings = splitDateString(argument);
 
