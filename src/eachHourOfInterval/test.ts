@@ -97,6 +97,16 @@ describe("eachHourOfInterval", () => {
     expect(result).toEqual([]);
   });
 
+  it("handles DST Fall Back (25 hour day)", () => {
+      const interval =  {
+        start: new TZDate(2026, 10, 1, 0, 0, 0, "America/New_York"),
+        end: new TZDate(2026, 10, 1, 23, 59, 59, "America/New_York"),
+      };
+
+      const result = eachHourOfInterval(interval);
+      expect(result.length).toBe(25); 
+  });
+
   describe("options.step", () => {
     const interval = {
       start: new Date(2014, 9 /* Oct */, 6, 12),
@@ -153,6 +163,16 @@ describe("eachHourOfInterval", () => {
       const result = eachHourOfInterval(interval, { step: NaN });
       expect(result).toEqual([]);
     });
+
+    it("handles DST Fall Back with options.step", () => {
+      const interval =  {
+        start: new TZDate(2026, 10, 1, 0, 0, 0, "America/New_York"),
+        end: new TZDate(2026, 10, 1, 23, 59, 59, "America/New_York"),
+      };
+      const result = eachHourOfInterval(interval, {step: 2});
+
+      expect(result.length).toBe(13);
+    })
   });
 
   it("resolves the date type by default", () => {
