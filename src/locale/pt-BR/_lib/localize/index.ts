@@ -52,7 +52,7 @@ const monthValues = {
 
 const dayValues = {
   narrow: ["D", "S", "T", "Q", "Q", "S", "S"] as const,
-  short: ["dom", "seg", "ter", "qua", "qui", "sex", "sab"] as const,
+  short: ["dom", "seg", "ter", "qua", "qui", "sex", "sáb"] as const,
   abbreviated: [
     "domingo",
     "segunda",
