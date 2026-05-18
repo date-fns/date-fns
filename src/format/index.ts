@@ -1,3 +1,4 @@
+import { addLeadingZeros } from "../_lib/addLeadingZeros/index.ts";
 import { defaultLocale } from "../_lib/defaultLocale/index.ts";
 import { getDefaultOptions } from "../_lib/defaultOptions/index.ts";
 import { formatters } from "../_lib/format/formatters/index.ts";
@@ -370,6 +371,14 @@ export function format(
     throw new RangeError("Invalid time value");
   }
 
+  if (
+    formatStr === "yyyy-MM-dd" &&
+    locale.localize &&
+    !locale.localize.preprocessor
+  ) {
+    return formatYearMonthDay(originalDate);
+  }
+
   let parts: FormatPart[] = formatStr
     .match(longFormattingTokensRegExp)!
     .map((substring) => {
@@ -438,6 +447,18 @@ export function format(
       return formatter(originalDate, token, locale.localize, formatterOptions);
     })
     .join("");
+}
+
+function formatYearMonthDay(date: Date): string {
+  const signedYear = date.getFullYear();
+  const year = signedYear > 0 ? signedYear : 1 - signedYear;
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+
+  return `${addLeadingZeros(year, 4)}-${addLeadingZeros(
+    month,
+    2,
+  )}-${addLeadingZeros(day, 2)}`;
 }
 
 function cleanEscapedString(input: string): string {
