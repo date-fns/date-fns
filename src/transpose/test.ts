@@ -15,4 +15,17 @@ describe("transpose", () => {
     expect(result.getSeconds()).toBe(56);
     expect(result.getMilliseconds()).toBe(789);
   });
+
+  it("transpose to UTCDate (issue 4161 reproduction)", async () => {
+    const { UTCDate } = await import("../../submodules/utc/src/index.ts");
+    const date = new Date(2022, 6, 10, 0, 0, 0); // July 10 2022 00:00 local
+    const transposed = transpose(date, UTCDate);
+    
+    expect(transposed).toBeInstanceOf(UTCDate);
+    expect(transposed.getFullYear()).toBe(2022);
+    expect(transposed.getMonth()).toBe(6);
+    expect(transposed.getDate()).toBe(10);
+    expect(transposed.getHours()).toBe(0);
+    expect(transposed.toString()).toMatch(/GMT\+0000 \(Coordinated Universal Time\)/);
+  });
 });

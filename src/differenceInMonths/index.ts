@@ -1,7 +1,7 @@
 import { normalizeDates } from "../_lib/normalizeDates/index.ts";
 import { compareAsc } from "../compareAsc/index.ts";
 import { differenceInCalendarMonths } from "../differenceInCalendarMonths/index.ts";
-import { isLastDayOfMonth } from "../isLastDayOfMonth/index.ts";
+import { addMonths } from "../addMonths/index.ts";
 import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
@@ -30,34 +30,22 @@ export function differenceInMonths(
   earlierDate: DateArg<Date> & {},
   options?: DifferenceInMonthsOptions | undefined,
 ): number {
-  const [laterDate_, workingLaterDate, earlierDate_] = normalizeDates(
+  const [laterDate_, , earlierDate_] = normalizeDates(
     options?.in,
     laterDate,
     laterDate,
     earlierDate,
   );
 
-  const sign = compareAsc(workingLaterDate, earlierDate_);
+  const sign = compareAsc(laterDate_, earlierDate_);
   const difference = Math.abs(
-    differenceInCalendarMonths(workingLaterDate, earlierDate_),
+    differenceInCalendarMonths(laterDate_, earlierDate_),
   );
 
   if (difference < 1) return 0;
 
-  if (workingLaterDate.getMonth() === 1 && workingLaterDate.getDate() > 27)
-    workingLaterDate.setDate(30);
-
-  workingLaterDate.setMonth(workingLaterDate.getMonth() - sign * difference);
-
-  let isLastMonthNotFull = compareAsc(workingLaterDate, earlierDate_) === -sign;
-
-  if (
-    isLastDayOfMonth(laterDate_) &&
-    difference === 1 &&
-    compareAsc(laterDate_, earlierDate_) === 1
-  ) {
-    isLastMonthNotFull = false;
-  }
+  const fullMonthsDate = addMonths(earlierDate_, sign * difference, options);
+  const isLastMonthNotFull = compareAsc(laterDate_, fullMonthsDate) === -sign;
 
   const result = sign * (difference - +isLastMonthNotFull);
   return result === 0 ? 0 : result;
