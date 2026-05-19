@@ -6,8 +6,8 @@ import { buildLocalizeFn } from "../../../_lib/buildLocalizeFn/index.ts";
 
 const eraValues = {
   narrow: ["TCN", "SCN"] as const,
-  abbreviated: ["trước CN", "sau CN"] as const,
-  wide: ["trước Công Nguyên", "sau Công Nguyên"] as const,
+  abbreviated: ["Trước CN", "Sau CN"] as const,
+  wide: ["Trước Công Nguyên", "Sau Công Nguyên"] as const,
 };
 
 const quarterValues = {
@@ -20,7 +20,7 @@ const formattingQuarterValues = {
   narrow: ["1", "2", "3", "4"] as const,
   abbreviated: ["Q1", "Q2", "Q3", "Q4"] as const,
   // I notice many news outlet use this "quý II/2018"
-  wide: ["quý I", "quý II", "quý III", "quý IV"] as const,
+  wide: ["Quý I", "Quý II", "Quý III", "Quý IV"] as const,
 };
 
 // Note: in English, the names of days of the week and months are capitalized.
@@ -88,32 +88,32 @@ const formattingMonthValues = {
     "12",
   ] as const,
   abbreviated: [
-    "thg 1",
-    "thg 2",
-    "thg 3",
-    "thg 4",
-    "thg 5",
-    "thg 6",
-    "thg 7",
-    "thg 8",
-    "thg 9",
-    "thg 10",
-    "thg 11",
-    "thg 12",
+    "Thg 1",
+    "Thg 2",
+    "Thg 3",
+    "Thg 4",
+    "Thg 5",
+    "Thg 6",
+    "Thg 7",
+    "Thg 8",
+    "Thg 9",
+    "Thg 10",
+    "Thg 11",
+    "Thg 12",
   ] as const,
   wide: [
-    "tháng 01",
-    "tháng 02",
-    "tháng 03",
-    "tháng 04",
-    "tháng 05",
-    "tháng 06",
-    "tháng 07",
-    "tháng 08",
-    "tháng 09",
-    "tháng 10",
-    "tháng 11",
-    "tháng 12",
+    "Tháng 01",
+    "Tháng 02",
+    "Tháng 03",
+    "Tháng 04",
+    "Tháng 05",
+    "Tháng 06",
+    "Tháng 07",
+    "Tháng 08",
+    "Tháng 09",
+    "Tháng 10",
+    "Tháng 11",
+    "Tháng 12",
   ] as const,
 };
 
