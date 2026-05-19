@@ -8,6 +8,8 @@ import type { DateArg } from "../types.ts";
  *
  * @description
  * Is the first date before the second one?
+ * 
+ * Note: This comparison is strict (`<`). The function returns `true` only if `date` is strictly earlier than `dateToCompare`. If both dates are equal, the function returns `false`.
  *
  * @param date - The date that should be before the other one to return true
  * @param dateToCompare - The date to compare with
@@ -17,6 +19,11 @@ import type { DateArg } from "../types.ts";
  * @example
  * // Is 10 July 1989 before 11 February 1987?
  * const result = isBefore(new Date(1989, 6, 10), new Date(1987, 1, 11))
+ * //=> false
+ * 
+ * @example
+ * // Is 10 July 1989 before 10 July 1989?
+ * const result = isBefore(new Date(1989, 6, 10), new Date(1989, 6, 10))
  * //=> false
  */
 export function isBefore(
