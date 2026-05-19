@@ -334,6 +334,25 @@ describe("format", () => {
       const result = format(date, "I Io II");
       expect(result).toBe("14 14th 14");
     });
+
+    describe("week of month", () => {
+      it("works as expected", () => {
+        const result = format(new Date(2017, 10 /* Nov */, 9), "W Wo WW");
+        expect(result).toBe("2 2nd 02");
+      });
+
+      it("returns week 1 for the first day of the month", () => {
+        const result = format(new Date(2017, 10 /* Nov */, 1), "W");
+        expect(result).toBe("1");
+      });
+
+      it("allows to specify `weekStartsOn` in options", () => {
+        const result = format(new Date(2017, 10 /* Nov */, 30), "W", {
+          weekStartsOn: 4,
+        });
+        expect(result).toBe("6");
+      });
+    });
   });
 
   describe("day", () => {
