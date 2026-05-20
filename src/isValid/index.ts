@@ -23,15 +23,20 @@ import { toDate } from "../toDate/index.ts";
  * //=> true
  *
  * @example
- * // For the value, convertible into a date:
+ * // For the numeric value, convertible into a date:
  * const result = isValid(1393804800000)
  * //=> true
  *
+ * @example
+ * // For the string value, convertible into a date:
+ * const result = isValid('2014-02-11T11:30:30.000Z')
+ * //=> true
+ * 
  * @example
  * // For the invalid date:
  * const result = isValid(new Date(''))
  * //=> false
  */
 export function isValid(date: unknown): boolean {
-  return !((!isDate(date) && typeof date !== "number") || isNaN(+toDate(date)));
+  return !((!isDate(date) && typeof date !== "number" && typeof date !== "string") || isNaN(+toDate(date)));
 }
