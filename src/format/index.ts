@@ -409,7 +409,7 @@ export function format(
     });
 
   // invoke localize preprocessor (only for french locales at the moment)
-  if (locale.localize.preprocessor) {
+  if (locale.localize?.preprocessor) {
     parts = locale.localize.preprocessor(originalDate, parts);
   }
 
