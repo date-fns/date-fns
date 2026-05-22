@@ -4,7 +4,11 @@
 #
 # It's a part of the test process.
 
+echo "🟠 These tests are deprecated as attw hangs on date-fns and will be removed in the future. If needed, add a smoke test to \`pkgs/core/examples\`".
+exit 0
+
 set -e
+
 
 root="$(pwd)/$(dirname "$0")/../.."
 root_rel_path="$root/tmp/types"
