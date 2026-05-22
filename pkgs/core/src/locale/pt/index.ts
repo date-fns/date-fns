@@ -21,7 +21,7 @@ export const pt: Locale = {
   localize: localize,
   match: match,
   options: {
-    weekStartsOn: 1 /* Monday */,
+    weekStartsOn: 0 /* Sunday */,
     firstWeekContainsDate: 4,
   },
 };
