@@ -8,7 +8,7 @@
   "main": "example.js",
   "scripts": {
     "build": "pnpm run build-date-fns && pnpm run build-rollup",
-    "build-date-fns": "rm -rf node_modules/date-fns && cp -r ../../dist node_modules/date-fns || ../../scripts/build/package.sh --dist \"$(pwd)/node_modules/date-fns\"",
+    "build-date-fns": "rm -rf node_modules/date-fns && cp -r ../../dist/date-fns node_modules/date-fns || ../../scripts/build/package.sh --dist \"$(pwd)/node_modules/date-fns\" --no-cdn",
     "build-rollup": "rollup --config",
     "stats-size": "echo \"Minimal size: $(gzip-size dist/minimal.js)\nFormat size: $(gzip-size dist/example.js)\nFP size: $(gzip-size dist/fp.js)\nMisc size: $(gzip-size dist/misc.js)\"",
     "test": "pnpm run test-example && pnpm run test-fp && pnpm run test-misc && pnpm run test-constants",

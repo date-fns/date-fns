@@ -13,7 +13,10 @@ format_code=true
 include_docs=true
 include_fp=true
 include_i18n=true
+split_output=false
+dist_provided=false
 dist=
+cdn_dist=
 
 while [ "$#" -gt 0 ]; do
   case "$1" in
@@ -24,7 +27,21 @@ while [ "$#" -gt 0 ]; do
       fi
 
       dist="$2"
+      dist_provided=true
       shift 2
+      ;;
+    --cdn-dist)
+      if [ -z "$2" ]; then
+        echo "Missing value for --cdn-dist"
+        exit 1
+      fi
+
+      cdn_dist="$2"
+      shift 2
+      ;;
+    --split)
+      split_output=true
+      shift
       ;;
     --no-cjs)
       build_cjs=false
@@ -65,11 +82,23 @@ echo "⚡️ Building package"
 root="$(pwd)/$(dirname "$0")/../.."
 cd "$root" || exit 1
 
-# XXX: $dir must be an absolute path!
-dir=${dist:-"$root/dist"}
+# XXX: $dist must be an absolute path!
+dist=${dist:-"$root/dist"}
+
+if [ "$split_output" = true ] || [ "$dist_provided" = false ]; then
+  dir="$dist/date-fns"
+  cdn_dir=${cdn_dist:-"$dist/date-fns-cdn"}
+  rm -rf "$dist"
+else
+  dir="$dist"
+  cdn_dir=${cdn_dist:-"$dist-cdn"}
+  rm -rf "$dir"
+fi
+
+export DATE_FNS_PACKAGE_OUTPUT_PATH="$dir"
+export DATE_FNS_CDN_OUTPUT_PATH="$cdn_dir"
 
 # Clean up output dir
-rm -rf "$dir"
 mkdir -p "$dir"
 
 #endregion
@@ -137,7 +166,7 @@ echo "🚧 Formatting code..."
 
 # Make it prettier
 if [ "$format_code" = true ]; then
-  pnpm prettier --write --ignore-path "" "$dir" 1> /dev/null
+  pnpm prettier --write --ignore-path "" --with-node-modules "$dir" 1> /dev/null
 
   echo "🟢 Formatting is complete!"
 else
@@ -213,7 +242,7 @@ echo
 if [ "$build_cdn" = true ]; then
   echo "🚧 Building CDN versions..."
 
-  bun ./scripts/build/cdn.ts "$dir"
+  node ./scripts/build/cdn.ts
 
   echo "🟢 CDN versions are ready!"
 else

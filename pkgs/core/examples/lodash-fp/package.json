@@ -7,7 +7,7 @@
   "main": "example.js",
   "scripts": {
     "build": "pnpm run build-date-fns && pnpm run build-esbuild",
-    "build-date-fns": "rm -rf node_modules/date-fns && cp -r ../../dist node_modules/date-fns || ../../scripts/build/package.sh --dist \"$(pwd)/node_modules/date-fns\"",
+    "build-date-fns": "rm -rf node_modules/date-fns && cp -r ../../dist/date-fns node_modules/date-fns || ../../scripts/build/package.sh --dist \"$(pwd)/node_modules/date-fns\" --no-cdn",
     "build-esbuild": "esbuild example.js --outdir=dist",
     "stats-size": "gzip-size dist/example.min.js",
     "test": "test $(env TZ=UTC node ./dist/example.js) = true"

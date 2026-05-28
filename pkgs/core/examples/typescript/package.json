@@ -6,7 +6,7 @@
   "author": "Sasha Koss <koss@nocorp.me>",
   "scripts": {
     "build": "pnpm run build-date-fns && tsc && pnpm run build-tsc",
-    "build-date-fns": "rm -rf node_modules/date-fns && cp -r ../../dist node_modules/date-fns || ../../scripts/build/package.sh --dist \"$(pwd)/node_modules/date-fns\"",
+    "build-date-fns": "rm -rf node_modules/date-fns && cp -r ../../dist/date-fns node_modules/date-fns || ../../scripts/build/package.sh --dist \"$(pwd)/node_modules/date-fns\" --no-cdn",
     "build-tsc": "tsc --outDir dist",
     "build-esbuild": "esbuild constants.ts example.ts fp.ts misc.ts --outdir=dist",
     "test": "pnpm run test-example && pnpm run test-fp && pnpm run test-misc && pnpm run test-constants",

@@ -21,13 +21,22 @@ git commit -m "Prepare $VERSION"
 git tag -a "$VERSION" -m "$VERSION"
 git push
 
-# Build the package
+# Build the packages
 package_path="$(pwd)/../../tmp/package"
-./scripts/build/package.sh --dist "$package_path"
+./scripts/build/package.sh --dist "$package_path" --split
 
 # Right now, we do releases manually, but when we move to GitHub Actions we'll need this line:
 # echo "//registry.npmjs.org/:_authToken=$NPM_KEY" > ~/.npmrc
-cd "$package_path" || exit 1
+cd "$package_path/date-fns" || exit 1
+if [ "$IS_PRE_RELEASE" = true ]
+then
+  pnpm publish --tag next
+else
+  pnpm publish
+fi
+cd - || exit
+
+cd "$package_path/date-fns-cdn" || exit 1
 if [ "$IS_PRE_RELEASE" = true ]
 then
   pnpm publish --tag next

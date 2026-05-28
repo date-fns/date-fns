@@ -25,7 +25,7 @@ export function testScript(script, cb) {
       .concat(script)
       .map(
         (script) =>
-          `<script src="http://127.0.0.1:9182/node_modules/date-fns/${script}"></script>`,
+          `<script src="http://127.0.0.1:9182/node_modules/@date-fns/cdn/${script}"></script>`,
       )
       .join("\n"),
     options,

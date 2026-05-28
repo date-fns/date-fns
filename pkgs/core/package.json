@@ -17,7 +17,6 @@
   "main": "index.cjs",
   "module": "index.js",
   "browser": "./index",
-  "jsdelivr": "./cdn.min.js",
   "exports": {
     "./package.json": "./package.json",
     ".": "./src/index.ts",
@@ -8186,7 +8185,6 @@
     "@octokit/core": "^3.6.0",
     "@size-limit/esbuild": "^11.2.0",
     "@size-limit/file": "^11.2.0",
-    "@types/bun": "^1.2.19",
     "@types/lodash": "^4.17.20",
     "@types/node": "^25.7.0",
     "@typescript/native-preview": "7.0.0-dev.20260421.2",
@@ -8206,6 +8204,7 @@
     "oxlint-tsgolint": "^0.1.6",
     "playwright": "^1.60.0",
     "prettier": "^3.6.2",
+    "rolldown": "^1.0.2",
     "simple-git": "^2.48.0",
     "size-limit": "^11.2.0",
     "typedoc": "^0.26.11",

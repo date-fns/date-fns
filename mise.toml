@@ -6,7 +6,6 @@ config_roots = ["pkgs/*"]
 # Stack
 node = "latest"
 pnpm = "latest"
-bun = "latest"
 
 # Tools
 gh = "latest"

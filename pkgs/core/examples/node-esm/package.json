@@ -7,8 +7,8 @@
   "type": "module",
   "main": "example.ts",
   "scripts": {
-    "build": "rm -rf node_modules/date-fns && mkdir -p node_modules && cp -r ../../dist node_modules/date-fns || pnpm run build-date-fns",
-    "build-date-fns": "../../scripts/build/package.sh --dist \"$(pwd)/node_modules/date-fns\"",
+    "build": "rm -rf node_modules/date-fns && mkdir -p node_modules && cp -r ../../dist/date-fns node_modules/date-fns || pnpm run build-date-fns",
+    "build-date-fns": "../../scripts/build/package.sh --dist \"$(pwd)/node_modules/date-fns\" --no-cdn",
     "test": "pnpm run test-example && pnpm run test-fp && pnpm run test-misc && pnpm run test-constants",
     "test-example": "test $(env TZ=UTC node ./example.js) = true",
     "test-fp": "test $(env TZ=UTC node ./fp.js) = true",

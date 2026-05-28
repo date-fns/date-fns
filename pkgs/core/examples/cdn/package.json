@@ -7,8 +7,8 @@
   "type": "module",
   "main": "example.ts",
   "scripts": {
-    "build": "rm -rf node_modules/date-fns && mkdir -p node_modules && cp -r ../../dist node_modules/date-fns || pnpm run build-date-fns",
-    "build-date-fns": "../../scripts/build/package.sh --dist \"$(pwd)/node_modules/date-fns\"",
+    "build": "rm -rf node_modules/date-fns node_modules/@date-fns/cdn && mkdir -p node_modules/@date-fns && cp -r ../../dist/date-fns node_modules/date-fns && cp -r ../../dist/date-fns-cdn node_modules/@date-fns/cdn || pnpm run build-date-fns",
+    "build-date-fns": "mkdir -p node_modules/@date-fns && ../../scripts/build/package.sh --dist \"$(pwd)/node_modules/date-fns\" --cdn-dist \"$(pwd)/node_modules/@date-fns/cdn\"",
     "test": "pnpm run test-basic && pnpm run test-fp && pnpm run test-locale && pnpm run test-locales",
     "test-basic": "test $(env TZ=UTC node ./basic.js) = true",
     "test-fp": "test $(env TZ=UTC node ./fp.js) = true",

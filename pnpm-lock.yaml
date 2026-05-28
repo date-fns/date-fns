@@ -62,9 +62,6 @@ importers:
       '@size-limit/file':
         specifier: ^11.2.0
         version: 11.2.0(size-limit@11.2.0)
-      '@types/bun':
-        specifier: ^1.2.19
-        version: 1.2.19(@types/react@19.1.9)
       '@types/lodash':
         specifier: ^4.17.20
         version: 4.17.20
@@ -122,6 +119,9 @@ importers:
       prettier:
         specifier: ^3.6.2
         version: 3.6.2
+      rolldown:
+        specifier: ^1.0.2
+        version: 1.0.2
       simple-git:
         specifier: ^2.48.0
         version: 2.48.0
@@ -2804,9 +2804,6 @@ packages:
   '@types/body-parser@1.19.6':
     resolution: {integrity: sha512-HLFeCYgz89uk22N5Qg3dvGvsv46B8GLvKKo1zKG4NybA8U2DiEO3w9lqGg29t/tfLRJpJ6iQxnVw4OnB7MoM9g==}
 
-  '@types/bun@1.2.19':
-    resolution: {integrity: sha512-d9ZCmrH3CJ2uYKXQIUuZ/pUnTqIvLDS0SK7pFmbx8ma+ziH/FRMoAq5bYpRG7y+w1gl+HgyNZbtqgMq4W4e2Lg==}
-
   '@types/caseless@0.12.5':
     resolution: {integrity: sha512-hWtVTC2q7hc7xZ/RLbxapMvDMgUnDvKvMOpKal4DrMyfGBUfB1oKaZlIRr6mJL+If3bAP6sV/QneGzF6tJjZDg==}
 
@@ -2875,9 +2872,6 @@ packages:
 
   '@types/range-parser@1.2.7':
     resolution: {integrity: sha512-hKormJbkJqzQGhziax5PItDUTMAM9uE2XXQmM37dyd4hVM+5aVl7oVxMVUiVQn2oCQFN/LKCZdvSM0pFRqbSmQ==}
-
-  '@types/react@19.1.9':
-    resolution: {integrity: sha512-WmdoynAX8Stew/36uTSVMcLJJ1KRh6L3IZRx1PZ7qJtBqT3dYTgyDTx8H1qoRghErydW7xw9mSJ3wS//tCRpFA==}
 
   '@types/request@2.48.13':
     resolution: {integrity: sha512-FGJ6udDNUCjd19pp0Q3iTiDkwhYup7J8hpMW9c4k53NrccQFFWKRho6hvtPPEhnXWKvukfwAlB6DbDz4yhH5Gg==}
@@ -3170,11 +3164,6 @@ packages:
   buffer-from@1.1.2:
     resolution: {integrity: sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==}
 
-  bun-types@1.2.19:
-    resolution: {integrity: sha512-uAOTaZSPuYsWIXRpj7o56Let0g/wjihKCkeRqUBhlLVM/Bt+Fj9xTo+LhC1OV1XDaGkz4hNC80et5xgy+9KTHQ==}
-    peerDependencies:
-      '@types/react': ^19
-
   bytes-iec@3.1.1:
     resolution: {integrity: sha512-fey6+4jDK7TFtFg/klGSvNKJctyU7n2aQdnM+CO0ruLPbqqMOM8Tio0Pc+deqUeVKX1tL5DQep1zQ7+37aTAsA==}
     engines: {node: '>= 0.8'}
@@ -3319,9 +3308,6 @@ packages:
   cross-spawn@7.0.6:
     resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
     engines: {node: '>= 8'}
-
-  csstype@3.2.3:
-    resolution: {integrity: sha512-z1HGKcYy2xA8AGQfwrn0PAy+PB7X/GSj3UVJW9qKyn43xWa+gl5nXmU4qqLMRzWVLFC8KusUX8T/0kCiOYpAIQ==}
 
   dashdash@1.14.1:
     resolution: {integrity: sha512-jRFi8UDGo6j+odZiEpjazZaWqEal3w/basFjQHQEwVtZJGDpxbH1MeYluwCS8Xq5wmLJooDlMgvVarmWfGM44g==}
@@ -7453,12 +7439,6 @@ snapshots:
       '@types/connect': 3.4.38
       '@types/node': 25.7.0
 
-  '@types/bun@1.2.19(@types/react@19.1.9)':
-    dependencies:
-      bun-types: 1.2.19(@types/react@19.1.9)
-    transitivePeerDependencies:
-      - '@types/react'
-
   '@types/caseless@0.12.5':
     optional: true
 
@@ -7538,10 +7518,6 @@ snapshots:
   '@types/qs@6.14.0': {}
 
   '@types/range-parser@1.2.7': {}
-
-  '@types/react@19.1.9':
-    dependencies:
-      csstype: 3.2.3
 
   '@types/request@2.48.13':
     dependencies:
@@ -7680,9 +7656,9 @@ snapshots:
       obug: 2.1.1
       std-env: 4.1.0
       tinyrainbow: 3.1.0
-      vitest: 4.1.6(@opentelemetry/api@1.9.0)(@types/node@20.19.9)(@vitest/browser-playwright@4.1.6)(@vitest/coverage-v8@4.1.6)(vite@7.0.6(@types/node@20.19.9)(jiti@2.7.0)(terser@5.47.1)(tsx@4.22.3)(yaml@2.8.0))
+      vitest: 4.1.6(@opentelemetry/api@1.9.0)(@types/node@25.7.0)(@vitest/browser-playwright@4.1.6)(@vitest/coverage-v8@4.1.6)(vite@7.0.6(@types/node@25.7.0)(jiti@2.7.0)(terser@5.47.1)(tsx@4.22.3)(yaml@2.8.0))
     optionalDependencies:
-      '@vitest/browser': 4.1.6(vite@7.0.6(@types/node@20.19.9)(jiti@2.7.0)(terser@5.47.1)(tsx@4.22.3)(yaml@2.8.0))(vitest@4.1.6)
+      '@vitest/browser': 4.1.6(vite@7.0.6(@types/node@25.7.0)(jiti@2.7.0)(terser@5.47.1)(tsx@4.22.3)(yaml@2.8.0))(vitest@4.1.6)
 
   '@vitest/expect@4.1.6':
     dependencies:
@@ -7917,11 +7893,6 @@ snapshots:
 
   buffer-from@1.1.2: {}
 
-  bun-types@1.2.19(@types/react@19.1.9):
-    dependencies:
-      '@types/node': 25.7.0
-      '@types/react': 19.1.9
-
   bytes-iec@3.1.1: {}
 
   cac@6.7.14: {}
@@ -8067,8 +8038,6 @@ snapshots:
       path-key: 3.1.1
       shebang-command: 2.0.0
       which: 2.0.2
-
-  csstype@3.2.3: {}
 
   dashdash@1.14.1:
     dependencies:
