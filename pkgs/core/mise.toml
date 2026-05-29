@@ -38,7 +38,10 @@ run = "node ./scripts/build/localeSnapshots/index.ts --test"
 env = { TZ = "utc" }
 
 [tasks."test/smoke"]
-run = "./scripts/test/smoke.sh"
+usage = '''
+arg "[test]" help="Smoke test to run" default=""
+'''
+run = "./scripts/test/smoke.sh ${usage_test}"
 
 [tasks."test/types"]
 run = "./scripts/test/types.sh"
@@ -50,3 +53,46 @@ env = { TZ = "utc" }
 [tasks."release/docs"]
 run = "./scripts/release/docs.sh"
 env = { APP_ENV = "production" }
+
+[tasks."size/cdn-polyfill"]
+usage = '''
+flag "-w --watch" help="Watch for changes and re-run the size check" default="false"
+'''
+run = '''
+#!/usr/bin/env bash
+
+file="src/_lib/cdnPolyfill.js"
+
+if [[ "${usage_watch:-false}" == "true" ]]; then
+  watchexec --watch "$file" --clear -- mise run size/cdn-polyfill
+  exit
+fi
+
+gray() {
+  printf "\e[0;30m$1\x1b[0m"
+}
+
+blue() {
+  printf "\e[0;34m$1\x1b[0m"
+}
+
+result=$(pnpm exec rolldown -m "$file")
+
+echo -e "$(blue "$file:")\n"
+echo -e "$(echo "$result" | gzip -c | wc -c) B\n"
+echo -e "$(gray "$result")\n"
+'''
+quiet = true
+
+[tasks."size/cdn-polyfill:watch"]
+run = { task = "size/cdn-polyfill", args = ["--watch"] }
+quiet = true
+
+[tasks."workbench/size-cdn-polyfill"]
+run = { tasks = [
+  "size/cdn-polyfill:watch",
+  "workbench/size-cdn-polyfill-test",
+] }
+
+[tasks."workbench/size-cdn-polyfill-test"]
+run = "watchexec --watch src/_lib/cdnPolyfill.js -- 'node ./scripts/build/cdnPolyfills.ts examples/cdn/node_modules/date-fns && cd examples/cdn && pnpm test'"

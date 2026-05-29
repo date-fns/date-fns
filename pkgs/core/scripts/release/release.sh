@@ -23,7 +23,12 @@ git push
 
 # Build the packages
 package_path="$(pwd)/../../tmp/package"
-./scripts/build/package.sh --dist "$package_path" --split
+if [ "$IS_PRE_RELEASE" = true ]
+then
+  ./scripts/build/package.sh --dist "$package_path" --split-cdn
+else
+  ./scripts/build/package.sh --dist "$package_path"
+fi
 
 # Right now, we do releases manually, but when we move to GitHub Actions we'll need this line:
 # echo "//registry.npmjs.org/:_authToken=$NPM_KEY" > ~/.npmrc

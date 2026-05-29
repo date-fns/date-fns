@@ -18,33 +18,66 @@ if (!process.env.DATE_FNS_CDN_OUTPUT_PATH)
   throw new Error("DATE_FNS_CDN_OUTPUT_PATH is not set");
 
 const execFileAsync = promisify(execFile);
-const packageOut = relative(process.cwd(), process.env.DATE_FNS_PACKAGE_OUTPUT_PATH);
+const packageOut = relative(
+  process.cwd(),
+  process.env.DATE_FNS_PACKAGE_OUTPUT_PATH,
+);
 const out = relative(process.cwd(), process.env.DATE_FNS_CDN_OUTPUT_PATH);
 const entriesOut = join(out, "_entries");
+const cdnPackage = process.env.DATE_FNS_CDN_PACKAGE === "true";
+const sourceMaps = process.env.DATE_FNS_CDN_SOURCE_MAPS === "true";
+const warn = process.env.DATE_FNS_CDN_WARN === "true";
+const warning =
+  'console.log("date-fns CDN files have moved to @date-fns/cdn. Please update your URLs. See: https://date-fns.org/docs/CDN");';
 
 const indexPath = join(out, "cdn.js");
 const fpIndexPath = join(out, "fp", "cdn.js");
 const localesIndexPath = join(out, "locale", "cdn.js");
+const locales = await listLocales();
+const outPaths = [
+  indexPath,
+  fpIndexPath,
+  localesIndexPath,
+  ...locales.map((locale) => join(out, "locale", locale.code, "cdn.js")),
+];
 
-await rm(out, { recursive: true, force: true });
+if (cdnPackage) {
+  await rm(out, { recursive: true, force: true });
+} else {
+  await Promise.all(
+    outPaths
+      .flatMap((path) => [
+        path,
+        `${path}.map`,
+        minPath(path),
+        `${minPath(path)}.map`,
+      ])
+      .map((path) => rm(path, { force: true })),
+  );
+}
+
 await mkdir(entriesOut, { recursive: true });
 
-await Promise.all([
-  cp("LICENSE.md", join(out, "LICENSE.md")),
-  writePackageJSON(),
-]);
+if (cdnPackage) {
+  await Promise.all([
+    cp("LICENSE.md", join(out, "LICENSE.md")),
+    writeFile(
+      join(out, "README.md"),
+      "# @date-fns/cdn\n\nSee the date-fns CDN documentation: https://date-fns.org/docs/CDN\n",
+    ),
+    writePackageJSON(),
+  ]);
+}
 
 const entryPairs = await Promise.all([
-  listLocales().then((locales) =>
-    Promise.all(
-      locales.map(async (locale) => {
-        const outPath = join(out, "locale", locale.code, "cdn.js");
-        const entryPath = join(entriesOut, "locale", locale.code, "cdn.js");
-        await mkdir(dirname(entryPath), { recursive: true });
-        await writeFile(entryPath, localeTemplate(locale, entryPath));
-        return [entryPath, outPath] as const;
-      }),
-    ),
+  Promise.all(
+    locales.map(async (locale) => {
+      const outPath = join(out, "locale", locale.code, "cdn.js");
+      const entryPath = join(entriesOut, "locale", locale.code, "cdn.js");
+      await mkdir(dirname(entryPath), { recursive: true });
+      await writeFile(entryPath, localeTemplate(locale, entryPath));
+      return [entryPath, outPath] as const;
+    }),
   ),
 
   writeEntry(indexPath, indexTemplate(entryPathFor(indexPath))),
@@ -63,13 +96,22 @@ await promiseQueue(
 
     await execFileAsync(
       "pnpm",
-      ["babel", outPath, "--out-file", outPath, "--source-maps"],
+      [
+        "babel",
+        outPath,
+        "--out-file",
+        outPath,
+        ...(sourceMaps ? ["--source-maps"] : []),
+      ],
       { env: { ...process.env, BABEL_ENV: "cdn" } },
     );
 
     // Wrap into IIFE, to avoid polluting global scope.
     const content = await readFile(outPath, "utf-8");
-    await writeFile(outPath, `(() => {\n${content}\n})();`);
+    await writeFile(
+      outPath,
+      `(() => {\n${content}\n${warn ? warning : ""}\n})();`,
+    );
 
     await bundle(outPath, minPath(outPath), { minify: true });
   }),
@@ -96,7 +138,7 @@ async function bundle(entryPath: string, outPath: string, options = {}) {
     output: {
       file: outPath,
       format: "esm",
-      sourcemap: true,
+      sourcemap: sourceMaps,
       ...options,
     },
   });

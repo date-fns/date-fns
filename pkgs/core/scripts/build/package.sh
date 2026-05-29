@@ -13,7 +13,7 @@ format_code=true
 include_docs=true
 include_fp=true
 include_i18n=true
-split_output=false
+split_cdn=false
 dist_provided=false
 dist=
 cdn_dist=
@@ -39,8 +39,8 @@ while [ "$#" -gt 0 ]; do
       cdn_dist="$2"
       shift 2
       ;;
-    --split)
-      split_output=true
+    --split-cdn)
+      split_cdn=true
       shift
       ;;
     --no-cjs)
@@ -84,19 +84,16 @@ cd "$root" || exit 1
 
 # XXX: $dist must be an absolute path!
 dist=${dist:-"$root/dist"}
+dir="$dist/date-fns"
+cdn_dir=${cdn_dist:-"$dist/date-fns-cdn"}
 
-if [ "$split_output" = true ] || [ "$dist_provided" = false ]; then
-  dir="$dist/date-fns"
-  cdn_dir=${cdn_dist:-"$dist/date-fns-cdn"}
+if [ "$dist_provided" = false ]; then
   rm -rf "$dist"
 else
-  dir="$dist"
-  cdn_dir=${cdn_dist:-"$dist-cdn"}
-  rm -rf "$dir"
+  rm -rf "$dir" "$cdn_dir"
 fi
 
 export DATE_FNS_PACKAGE_OUTPUT_PATH="$dir"
-export DATE_FNS_CDN_OUTPUT_PATH="$cdn_dir"
 
 # Clean up output dir
 mkdir -p "$dir"
@@ -242,7 +239,21 @@ echo
 if [ "$build_cdn" = true ]; then
   echo "🚧 Building CDN versions..."
 
-  node ./scripts/build/cdn.ts
+  DATE_FNS_CDN_OUTPUT_PATH="$cdn_dir" \
+    DATE_FNS_CDN_PACKAGE=true \
+    DATE_FNS_CDN_SOURCE_MAPS=true \
+    DATE_FNS_CDN_WARN=false \
+    node ./scripts/build/cdn.ts
+
+  if [ "$split_cdn" = true ]; then
+    node ./scripts/build/cdnPolyfills.ts "$dir"
+  else
+    DATE_FNS_CDN_OUTPUT_PATH="$dir" \
+      DATE_FNS_CDN_PACKAGE=false \
+      DATE_FNS_CDN_SOURCE_MAPS=false \
+      DATE_FNS_CDN_WARN=true \
+      node ./scripts/build/cdn.ts
+  fi
 
   echo "🟢 CDN versions are ready!"
 else

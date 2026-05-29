@@ -2,12 +2,14 @@
 
 The CDN versions of date-fns are available as the [`@date-fns/cdn`](https://www.jsdelivr.com/package/npm/@date-fns/cdn) package on jsDelivr and other CDNs. They expose the date-fns functionality via the `window.dateFns` global variable.
 
+> ⚠️ The legacy CDN files in the `date-fns` package are deprecated and will be removed in a future version. They remain available for compatibility, but they log a migration notice in the console. Please update your URLs from `date-fns` to `@date-fns/cdn`.
+
 Unlike the npm package, the CDN is transpiled to be compatible with IE11, so it supports a wide variety of legacy browsers and environments.
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@date-fns/cdn@4.3.0/cdn.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@date-fns/cdn@4.3.0/locale/es/cdn.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@date-fns/cdn@4.3.0/locale/ru/cdn.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@date-fns/cdn@4.4.0/cdn.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@date-fns/cdn@4.4.0/locale/es/cdn.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@date-fns/cdn@4.4.0/locale/ru/cdn.min.js"></script>
 <script>
   dateFns.formatRelative(dateFns.subDays(new Date(), 3), new Date());
   //=> "last Friday at 7:26 p.m."
@@ -22,6 +24,13 @@ Unlike the npm package, the CDN is transpiled to be compatible with IE11, so it 
   });
   //=> "в прошлую пятницу в 19:26"
 </script>
+```
+
+Legacy URLs still work for now but should be replaced:
+
+```diff
+- https://cdn.jsdelivr.net/npm/date-fns@VERSION/cdn.min.js
++ https://cdn.jsdelivr.net/npm/@date-fns/cdn@VERSION/cdn.min.js
 ```
 
 The CDN versions are available for the main module, all & individual locales, and the FP submodule.
@@ -42,7 +51,7 @@ https://cdn.jsdelivr.net/npm/@date-fns/cdn@VERSION/cdn.min.js
 You can access it via the `dateFns` global variable:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@date-fns/cdn@4.3.0/cdn.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@date-fns/cdn@4.4.0/cdn.min.js"></script>
 <script>
   dateFns.addDays(new Date(2014, 1, 11), 10);
   //=> Tue Feb 21 2014 00:00:00
@@ -61,7 +70,7 @@ https://cdn.jsdelivr.net/npm/@date-fns/cdn@VERSION/fp/cdn.min.js
 You can access it via the `dateFns.fp` global variable:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@date-fns/cdn@4.3.0/fp/cdn.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@date-fns/cdn@4.4.0/fp/cdn.min.js"></script>
 <script>
   dateFns.fp.addDays(10, new Date(2014, 1, 11));
   //=> Tue Feb 21 2014 00:00:00
@@ -80,8 +89,8 @@ https://cdn.jsdelivr.net/npm/@date-fns/cdn@VERSION/locale/cdn.min.js
 You can access them via the `dateFns.locale` global variable:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@date-fns/cdn@4.3.0/cdn.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@date-fns/cdn@4.3.0/locale/cdn.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@date-fns/cdn@4.4.0/cdn.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@date-fns/cdn@4.4.0/locale/cdn.min.js"></script>
 <script>
   dateFns.formatRelative(dateFns.subDays(new Date(), 3), new Date(), {
     locale: dateFns.locale.es,
@@ -100,8 +109,8 @@ https://cdn.jsdelivr.net/npm/@date-fns/cdn@VERSION/locale/LOCALE/cdn.min.js
 You can access them via the `dateFns.locale.LOCALE` global variable:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@date-fns/cdn@4.3.0/cdn.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@date-fns/cdn@4.3.0/locale/es/cdn.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@date-fns/cdn@4.4.0/cdn.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@date-fns/cdn@4.4.0/locale/es/cdn.min.js"></script>
 <script>
   dateFns.formatRelative(dateFns.subDays(new Date(), 3), new Date(), {
     locale: dateFns.locale.es,

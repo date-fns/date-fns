@@ -9,10 +9,7 @@ describe("formatISO", () => {
     const tzOffsetExtended = generateOffset(date);
     expect(formatISO(date)).toBe(`2019-03-03T19:00:52${tzOffsetExtended}`);
 
-    const getTimezoneOffsetStub = vi.spyOn(
-      Date.prototype,
-      "getTimezoneOffset",
-    );
+    const getTimezoneOffsetStub = vi.spyOn(Date.prototype, "getTimezoneOffset");
 
     getTimezoneOffsetStub.mockReturnValue(480);
     const tzNegativeOffsetExtended = generateOffset(date);

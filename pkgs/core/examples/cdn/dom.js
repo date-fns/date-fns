@@ -1,5 +1,5 @@
-import { JSDOM, ResourceLoader } from "jsdom";
 import { readFile } from "fs/promises";
+import { JSDOM, ResourceLoader, VirtualConsole } from "jsdom";
 import { resolve } from "path";
 
 class CustomResourceLoader extends ResourceLoader {
@@ -13,23 +13,39 @@ const resources = new CustomResourceLoader({
   proxy: "http://127.0.0.1:9182",
   strictSSL: false,
 });
+const virtualConsole = new VirtualConsole();
+
+virtualConsole.on("jsdomError", (error) => console.error(error));
 
 const options = {
   runScripts: "dangerously",
   resources,
+  virtualConsole,
 };
 
-export function testScript(script, cb) {
+export function testScript(props) {
+  const {
+    script,
+    scripts,
+    run,
+    beforeParse,
+    pkg = process.env.DATE_FNS_CDN_TEST_PKG || "@date-fns/cdn",
+  } = props;
+
   const dom = new JSDOM(
     []
-      .concat(script)
-      .map(
-        (script) =>
-          `<script src="http://127.0.0.1:9182/node_modules/@date-fns/cdn/${script}"></script>`,
-      )
+      .concat(script || scripts)
+      .map((script) => {
+        if (script.src) return `<script src="${script.src}"></script>`;
+
+        const path = typeof script === "string" ? script : script.path;
+        const scriptPkg = typeof script === "string" ? pkg : script.pkg;
+
+        return `<script src="http://127.0.0.1:9182/node_modules/${scriptPkg}/${path}"></script>`;
+      })
       .join("\n"),
-    options,
+    { ...options, beforeParse },
   );
 
-  dom.window.addEventListener("DOMContentLoaded", () => cb(dom));
+  dom.window.addEventListener("load", () => run(dom));
 }

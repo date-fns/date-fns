@@ -8,7 +8,21 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
-## v4.3.0
+## v5.0.0-alpha.0 - 2026-05-30
+
+### Changed
+
+- **BREAKING**: The CDN scripts are now available via the `@date-fns/cdn` npm package instead of `date-fns`. Users relying on the latest CDN version (e.g., `https://cdn.jsdelivr.net/npm/date-fns/cdn.min.js`) would be served a polyfill that inserts a script with the correct URL (`https://cdn.jsdelivr.net/npm/@date-fns/cdn/cdn.min.js`) into the page.
+
+## v4.4.0 - 2026-05-30
+
+### Changed
+
+- **DEPRECATED**: The `date-fns` CDN scripts are now deprecated and will be removed in the next major release. Please switch to the new `@date-fns/cdn` package for CDN usage.
+
+- Removed CDN source maps to reduce the package size. If you rely on them, please switch to the new `@date-fns/cdn` package that still includes them.
+
+## v4.3.0 - 2026-05-22
 
 Kudos to [@ImRodry](https://github.com/ImRodry) and [@puneetdixit200](https://github.com/puneetdixit200) for their contributions.
 

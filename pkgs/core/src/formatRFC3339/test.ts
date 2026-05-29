@@ -10,10 +10,7 @@ describe("formatRFC3339", () => {
       `2019-03-03T19:00:52${generateOffset(date)}`,
     );
 
-    const getTimezoneOffsetStub = vi.spyOn(
-      Date.prototype,
-      "getTimezoneOffset",
-    );
+    const getTimezoneOffsetStub = vi.spyOn(Date.prototype, "getTimezoneOffset");
 
     getTimezoneOffsetStub.mockReturnValue(0);
     expect(formatRFC3339(date)).toBe("2019-03-03T19:00:52Z");
