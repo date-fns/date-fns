@@ -1,6 +1,6 @@
 {
   "name": "date-fns",
-  "version": "4.4.0",
+  "version": "5.0.0-alpha.0",
   "description": "Modern JavaScript date utility library",
   "license": "MIT",
   "contributors": [
