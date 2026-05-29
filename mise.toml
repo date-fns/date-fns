@@ -27,6 +27,9 @@ run = "pnpm tsgo --build"
 [tasks."types:watch"]
 run = "pnpm tsgo --build --watch"
 
+[tasks.format]
+run = "pnpm oxfmt"
+
 [tasks."lint"]
 run = "pnpm oxlint"
 
