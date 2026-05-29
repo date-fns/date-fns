@@ -43,7 +43,7 @@ Promise.all([
     const buildOptions = {
       entrypoints: paths,
       outdir: ".",
-      sourcemap: "external" as const,
+      sourcemap: "none" as const,
       root: ".",
     };
 
@@ -55,7 +55,7 @@ Promise.all([
       paths.map((path) => async () => {
         // Use Babel to transpile
         assertShellOutput(
-          await $`env BABEL_ENV=cdn pnpm babel ${path} --out-file ${path} --source-maps`,
+          await $`env BABEL_ENV=cdn pnpm babel ${path} --out-file ${path}`,
         );
 
         // Wrap into IIFE, to avoid polluting global scope
