@@ -10,6 +10,12 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## v5.0.0-alpha.0 - 2026-05-30
 
+v5 focuses on reducing the date-fns package size. Compared to v4.3.0, this version reduces the zipped package size from `5.83 MB` down to `2.89 MB`.
+
+It removes the CDN scripts from the `date-fns` package and moves them to a separate `@date-fns/cdn` package.
+
+It is just the first step in optimizing the package size. Expect further size reduction in the future versions.
+
 ### Changed
 
 - **BREAKING**: The CDN scripts are now available via the `@date-fns/cdn` npm package instead of `date-fns`. Users relying on the latest CDN version (e.g., `https://cdn.jsdelivr.net/npm/date-fns/cdn.min.js`) would be served a polyfill that inserts a script with the correct URL (`https://cdn.jsdelivr.net/npm/@date-fns/cdn/cdn.min.js`) into the page.
