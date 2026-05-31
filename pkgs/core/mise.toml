@@ -1,0 +1,98 @@
+[tasks."install/playwright"]
+run = "pnpm playwright install chromium --with-deps"
+# NOTE: It prompts for sudo to install OS dependencies
+raw = true
+
+[tasks."test"]
+depends = ["test/unit", "test/tz"]
+
+[tasks."test/unit"]
+run = "pnpm vitest run"
+
+[tasks."test/unit:watch"]
+run = "pnpm vitest"
+
+[tasks."test/browser"]
+run = "pnpm vitest run --browser"
+
+[tasks."test/browser:watch"]
+run = "pnpm vitest --browser"
+
+[tasks."test/node"]
+run = "./scripts/test/node.sh"
+
+[tasks."test/edge"]
+run = "./scripts/test/tz.sh"
+
+[tasks."test/tz"]
+run = "pnpm exec date-fns-test-tz ./src/"
+
+[tasks."test/tz:offset"]
+run = "pnpm exec date-fns-test-tz ./src/ --offset"
+
+[tasks."test/tz:iana"]
+run = "pnpm exec date-fns-test-tz ./src/ --iana"
+
+[tasks."test/locales"]
+run = "node ./scripts/build/localeSnapshots/index.ts --test"
+env = { TZ = "utc" }
+
+[tasks."test/smoke"]
+usage = '''
+arg "[test]" help="Smoke test to run" default=""
+'''
+run = "./scripts/test/smoke.sh ${usage_test}"
+
+[tasks."test/types"]
+run = "./scripts/test/types.sh"
+
+[tasks."gen/locales/snapshots"]
+run = "node ./scripts/build/localeSnapshots/index.ts"
+env = { TZ = "utc" }
+
+[tasks."release/docs"]
+run = "./scripts/release/docs.sh"
+env = { APP_ENV = "production" }
+
+[tasks."size/cdn-polyfill"]
+usage = '''
+flag "-w --watch" help="Watch for changes and re-run the size check" default="false"
+'''
+run = '''
+#!/usr/bin/env bash
+
+file="src/_lib/cdnPolyfill.js"
+
+if [[ "${usage_watch:-false}" == "true" ]]; then
+  watchexec --watch "$file" --clear -- mise run size/cdn-polyfill
+  exit
+fi
+
+gray() {
+  printf "\e[0;30m$1\x1b[0m"
+}
+
+blue() {
+  printf "\e[0;34m$1\x1b[0m"
+}
+
+result=$(pnpm exec rolldown -m "$file")
+
+echo -e "$(blue "$file:")\n"
+echo -e "$(echo "$result" | gzip -c | wc -c) B\n"
+echo -e "$(gray "$result")\n"
+'''
+quiet = true
+
+[tasks."size/cdn-polyfill:watch"]
+run = { task = "size/cdn-polyfill", args = ["--watch"] }
+quiet = true
+
+[tasks."workbench/size-cdn-polyfill"]
+run = { tasks = [
+  "size/cdn-polyfill:watch",
+  "workbench/size-cdn-polyfill-test",
+] }
+
+[tasks."workbench/size-cdn-polyfill-test"]
+run = "watchexec --watch src/_lib/cdnPolyfill.js -- 'node ./scripts/build/cdnPolyfills.ts examples/cdn/node_modules/date-fns && cd examples/cdn && pnpm test'"

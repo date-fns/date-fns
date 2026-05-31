@@ -7,15 +7,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: "npm"
-      - run: npm install
+      - uses: actions/checkout@v6
+      - uses: jdx/mise-action@v4
+      - run: pnpm install
 
-      - run: npx playwright install chromium
-      - name: Unit tests
-        uses: coactions/setup-xvfb@v1
-        with:
-          run: npx vitest run --browser
+      - name: Prepare Display
+        run: Xvfb :99 -screen 0 1600x1200x24 &
+        shell: bash
+
+      - name: Install Playwright
+        run: mise //pkgs/core:install/playwright
+
+      - name: Browser tests
+        run: mise //pkgs/core:test/browser

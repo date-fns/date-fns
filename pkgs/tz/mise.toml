@@ -1,0 +1,25 @@
+[tools]
+"npm:jsvu" = "latest"
+
+[tasks."test"]
+depends = ["test/unit", "test/node", "test/engines"]
+
+[tasks."test/unit"]
+run = "pnpm vitest --run"
+env = { TZ = "Asia/Singapore" }
+
+[tasks."test/unit:watch"]
+run = "pnpm vitest"
+env = { TZ = "Asia/Singapore" }
+
+[tasks."test/tz"]
+run = "pnpm exec date-fns-test-tz ./src/"
+
+[tasks."test/edge"]
+run = "pnpm exec date-fns-test-tz ./test/edge/"
+
+[tasks."test/node"]
+run = "./scripts/test/node.sh"
+
+[tasks."test/engines"]
+run = "./scripts/test/engines.sh"

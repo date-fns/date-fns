@@ -1,0 +1,14 @@
+[tasks."test"]
+depends = ["test/unit", "test/node"]
+
+[tasks."test/unit"]
+run = "pnpm vitest run"
+
+[tasks."test/unit:watch"]
+run = "pnpm vitest"
+
+[tasks."test/tz"]
+run = "pnpm exec date-fns-test-tz ./src/"
+
+[tasks."test/node"]
+run = "./scripts/test/node.sh"

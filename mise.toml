@@ -1,6 +1,37 @@
-[tools]
-node = "lts"
-bun = "latest"
+experimental_monorepo_root = true
+[monorepo]
+config_roots = ["pkgs/*"]
 
-[hooks]
-postinstall = 'npx corepack enable'
+[tools]
+# Stack
+node = "latest"
+pnpm = "latest"
+
+# Tools
+gh = "latest"
+watchexec = "latest"
+jaq = "latest"
+
+[settings]
+# Enable extra features
+experimental = true
+# Ignore idiomatic version files
+idiomatic_version_file_enable_tools = []
+
+[env]
+MISE_EXPERIMENTAL = true # Enable monorepo root support
+
+[tasks."types"]
+run = "pnpm tsgo --build"
+
+[tasks."types:watch"]
+run = "pnpm tsgo --build --watch"
+
+[tasks.format]
+run = "pnpm oxfmt"
+
+[tasks."lint"]
+run = "pnpm oxlint"
+
+[tasks."lint:watch"]
+run = "watchexec --exts ts,js --clear -- pnpm oxlint"

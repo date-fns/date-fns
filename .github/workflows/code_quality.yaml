@@ -7,18 +7,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: "npm"
-      - run: npm install
+      - uses: actions/checkout@v6
+      - uses: jdx/mise-action@v4
+      - run: pnpm install
 
       - name: Types
-        run: npx tsc --noEmit
+        run: mise //:types
 
       - name: Linting
-        run: npm run lint
+        run: mise //:lint
 
       - name: Locale snapshots
-        run: npm run locale-snapshots -- test
+        run: mise //pkgs/core:test/locales

@@ -1,0 +1,9 @@
+packages:
+  - pkgs/*
+  - pkgs/tz/test/engines
+
+allowBuilds:
+  "@parcel/watcher": true
+  "@swc/core": true
+  esbuild: true
+  protobufjs: true

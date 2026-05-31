@@ -1,0 +1,27 @@
+import type { Locale } from "../types.ts";
+import { formatDistance } from "./_lib/formatDistance/index.ts";
+import { formatLong } from "./_lib/formatLong/index.ts";
+import { formatRelative } from "./_lib/formatRelative/index.ts";
+import { localize } from "./_lib/localize/index.ts";
+import { match } from "./_lib/match/index.ts";
+
+/**
+ * @category Locales
+ * @summary French locale.
+ * @language French
+ * @iso-639-2 fra
+ * @author Jean Dupouy [@izeau](https://github.com/izeau)
+ * @author François B [@fbonzon](https://github.com/fbonzon)
+ */
+export const fr: Locale = {
+  code: "fr",
+  formatDistance: formatDistance,
+  formatLong: formatLong,
+  formatRelative: formatRelative,
+  localize: localize,
+  match: match,
+  options: {
+    weekStartsOn: 1 /* Monday */,
+    firstWeekContainsDate: 4,
+  },
+};

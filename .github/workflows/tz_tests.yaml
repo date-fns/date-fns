@@ -7,8 +7,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: oven-sh/setup-bun@v1
-      - run: bun install
-      - run: bun ./scripts/test/tzOffset.ts
-      - run: bun ./scripts/test/tzIANA.ts
+      - uses: actions/checkout@v6
+      - uses: jdx/mise-action@v4
+      - run: pnpm install
+
+      - name: Time zone tests
+        run: mise //pkgs/core:test/tz
