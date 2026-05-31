@@ -21,6 +21,13 @@ describe("formatRFC3339", () => {
     getTimezoneOffsetStub.mockRestore();
   });
 
+  it("pads years before 1000 to four digits", () => {
+    const date = new Date(999, 0 /* Jan */, 1, 0, 0, 0);
+    expect(formatRFC3339(date)).toBe(
+      `0999-01-01T00:00:00${generateOffset(date)}`,
+    );
+  });
+
   it("accepts a timestamp", () => {
     const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456);
     const time = date.getTime();
