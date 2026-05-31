@@ -59,6 +59,7 @@ export * from "./kk/index.ts";
 export * from "./km/index.ts";
 export * from "./kn/index.ts";
 export * from "./ko/index.ts";
+export * from "./ky/index.ts";
 export * from "./lb/index.ts";
 export * from "./lt/index.ts";
 export * from "./lv/index.ts";
