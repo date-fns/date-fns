@@ -723,6 +723,7 @@
     "./locale/km": "./locale/src/km/index.ts",
     "./locale/kn": "./locale/src/kn/index.ts",
     "./locale/ko": "./locale/src/ko/index.ts",
+    "./locale/ky": "./locale/src/ky/index.ts",
     "./locale/lb": "./locale/src/lb/index.ts",
     "./locale/lt": "./locale/src/lt/index.ts",
     "./locale/lv": "./locale/src/lv/index.ts",
@@ -7801,6 +7802,16 @@
         "import": {
           "types": "./locale/ko.d.ts",
           "default": "./locale/ko.js"
+        }
+      },
+      "./locale/ky": {
+        "require": {
+          "types": "./locale/ky.d.cts",
+          "default": "./locale/ky.cjs"
+        },
+        "import": {
+          "types": "./locale/ky.d.ts",
+          "default": "./locale/ky.js"
         }
       },
       "./locale/lb": {

@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { parse } from "./index.ts";
+import { format } from "../format/index.ts";
 import { assertType } from "../_lib/test/index.ts";
+import { ky } from "../locale/ky/index.ts";
 import { UTCDate } from "@date-fns/utc";
 import { TZDate, tz } from "@date-fns/tz";
 
@@ -1269,6 +1271,24 @@ describe("parse", () => {
     it("narrow", () => {
       const result = parse("5 in the evening", "h BBBBB", referenceDate);
       expect(result).toEqual(new Date(1986, 3 /* Apr */, 4, 17));
+    });
+
+    it("parses narrow Kyrgyz day periods emitted by format", () => {
+      const examples: [string, Date, number][] = [
+        ["bbbbb", new Date(1986, 3 /* Apr */, 4, 12), 12],
+        ["BBBBB", new Date(1986, 3 /* Apr */, 4, 11), 4],
+        ["BBBBB", new Date(1986, 3 /* Apr */, 4, 14), 12],
+        ["BBBBB", new Date(1986, 3 /* Apr */, 4, 19), 17],
+      ];
+
+      examples.forEach(([token, date, expectedHours]) => {
+        const value = format(date, token, { locale: ky });
+        const result = parse(value, token, referenceDate, {
+          locale: ky,
+        });
+
+        expect(result).toEqual(new Date(1986, 3 /* Apr */, 4, expectedHours));
+      });
     });
 
     describe("validation", () => {
