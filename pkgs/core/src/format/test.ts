@@ -8,6 +8,9 @@ import {
   type MockInstance,
   vi,
 } from "vitest";
+import { assertType, fakeDate } from "../_lib/test/index.ts";
+import { format as fpFormat } from "../fp/format/index.ts";
+import { formatWithOptions as fpFormatWithOptions } from "../fp/formatWithOptions/index.ts";
 import type { FormatPart } from "../types.ts";
 import { format, formatDate } from "./index.ts";
 
@@ -67,6 +70,68 @@ describe("format", () => {
     expect(formatDate(date, "yyyy-MM-dd'\n'HH:mm:ss")).toBe(
       format(date, "yyyy-MM-dd'\n'HH:mm:ss"),
     );
+  });
+
+  describe("without date argument", { concurrent: false }, () => {
+    const { fakeNow } = fakeDate(new Date(2014, 3 /* Apr */, 4, 10, 32, 55));
+
+    it("defaults to the current date", () => {
+      const result = format("yyyy-MM-dd HH:mm:ss");
+
+      expect(result).toBe("2014-04-04 10:32:55");
+      expect(formatDate("yyyy-MM-dd")).toBe("2014-04-04");
+      assertType<assertType.Equal<string, typeof result>>(true);
+    });
+
+    it("defaults to the current date when the date argument is undefined", () => {
+      expect(format(undefined, "yyyy-MM-dd")).toBe("2014-04-04");
+    });
+
+    it("allows an optional date argument", () => {
+      function formatMaybeDate(date: Date | undefined) {
+        const result = format(date, "yyyy-MM-dd");
+        assertType<assertType.Equal<string, typeof result>>(true);
+        return result;
+      }
+
+      expect(formatMaybeDate(undefined)).toBe("2014-04-04");
+    });
+
+    it("reads the current date from Date.now", () => {
+      const now = new Date(2024, 3 /* Apr */, 10, 12, 34, 56, 789).getTime();
+      const dateNow = vi.spyOn(Date, "now").mockReturnValue(now);
+
+      try {
+        expect(format("yyyy-MM-dd HH:mm:ss.SSS")).toBe(
+          "2024-04-10 12:34:56.789",
+        );
+      } finally {
+        dateNow.mockRestore();
+      }
+    });
+
+    it("accepts options", () => {
+      fakeNow(new Date("2024-09-17T10:00:00Z"));
+
+      expect(format("yyyy-MM-dd", { in: tz("Pacific/Midway") })).toBe(
+        "2024-09-16",
+      );
+      expect(format("yyyy-MM-dd", { in: tz("Pacific/Kiritimati") })).toBe(
+        "2024-09-18",
+      );
+    });
+
+    it("keeps FP format date arguments required in types", () => {
+      type FpFormatDateArg = Parameters<typeof fpFormat>[1];
+      type FpFormatWithOptionsDateArg = Parameters<
+        typeof fpFormatWithOptions
+      >[2];
+
+      assertType<undefined extends FpFormatDateArg ? false : true>(true);
+      assertType<undefined extends FpFormatWithOptionsDateArg ? false : true>(
+        true,
+      );
+    });
   });
 
   describe("ordinal numbers", () => {

@@ -52,8 +52,7 @@ export type { FormatOptions as FormatDateOptions };
  * The {@link format} function options.
  */
 export interface FormatOptions
-  extends
-    LocalizedOptions<"options" | "localize" | "formatLong">,
+  extends LocalizedOptions<"options" | "localize" | "formatLong">,
     WeekOptions,
     FirstWeekContainsDateOptions,
     AdditionalTokensOptions,
@@ -64,6 +63,7 @@ export interface FormatOptions
  * @alias formatDate
  * @category Common Helpers
  * @summary Format the date.
+ * @pure false
  *
  * @description
  * Return the formatted date string in the given format. The result may vary by locale.
@@ -310,7 +310,7 @@ export interface FormatOptions
  * 9. `D` and `DD` tokens represent days of the year but they are often confused with days of the month.
  *    You should enable `options.useAdditionalDayOfYearTokens` to use them. See: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
  *
- * @param date - The original date
+ * @param date - The original date, or omit to use the current date
  * @param format - The string of tokens
  * @param options - An object with options
  *
@@ -342,30 +342,66 @@ export interface FormatOptions
  * // Escape string by single quote characters:
  * const result = format(new Date(2014, 6, 2, 15), "h 'o''clock'")
  * //=> "3 o'clock"
+ *
+ * @example
+ * // If today is 10 April 2024, format the current date:
+ * const result = format("yyyy-MM-dd")
+ * //=> "2024-04-10"
  */
+export function format(formatStr: string, options?: FormatOptions): string;
+export function format(
+  date: undefined,
+  formatStr: string,
+  options?: FormatOptions,
+): string;
+export function format(
+  date: (DateArg<Date> & {}) | undefined,
+  formatStr: string,
+  options?: FormatOptions,
+): string;
 export function format(
   date: DateArg<Date> & {},
   formatStr: string,
   options?: FormatOptions,
+): string;
+export function format(
+  dateOrFormatStr: (DateArg<Date> & {}) | undefined,
+  formatStrOrOptions?: string | FormatOptions,
+  options?: FormatOptions,
 ): string {
+  let date: DateArg<Date> & {};
+  let formatStr: string;
+  let resolvedOptions: FormatOptions | undefined;
+
+  if (typeof formatStrOrOptions === "string") {
+    date = dateOrFormatStr === undefined ? Date.now() : dateOrFormatStr;
+    formatStr = formatStrOrOptions;
+    resolvedOptions = options;
+  } else {
+    date = Date.now();
+    formatStr = dateOrFormatStr as string;
+    resolvedOptions = formatStrOrOptions;
+  }
+
   const defaultOptions = getDefaultOptions();
-  const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale;
+  const locale =
+    resolvedOptions?.locale ?? defaultOptions.locale ?? defaultLocale;
 
   const firstWeekContainsDate =
-    options?.firstWeekContainsDate ??
-    options?.locale?.options?.firstWeekContainsDate ??
+    resolvedOptions?.firstWeekContainsDate ??
+    resolvedOptions?.locale?.options?.firstWeekContainsDate ??
     defaultOptions.firstWeekContainsDate ??
     defaultOptions.locale?.options?.firstWeekContainsDate ??
     1;
 
   const weekStartsOn =
-    options?.weekStartsOn ??
-    options?.locale?.options?.weekStartsOn ??
+    resolvedOptions?.weekStartsOn ??
+    resolvedOptions?.locale?.options?.weekStartsOn ??
     defaultOptions.weekStartsOn ??
     defaultOptions.locale?.options?.weekStartsOn ??
     0;
 
-  const originalDate = toDate(date, options?.in);
+  const originalDate = toDate(date, resolvedOptions?.in);
 
   if (!isValid(originalDate)) {
     throw new RangeError("Invalid time value");
@@ -427,9 +463,9 @@ export function format(
       const token = part.value;
 
       if (
-        (!options?.useAdditionalWeekYearTokens &&
+        (!resolvedOptions?.useAdditionalWeekYearTokens &&
           isProtectedWeekYearToken(token)) ||
-        (!options?.useAdditionalDayOfYearTokens &&
+        (!resolvedOptions?.useAdditionalDayOfYearTokens &&
           isProtectedDayOfYearToken(token))
       ) {
         warnOrThrowProtectedError(token, formatStr, String(date));
