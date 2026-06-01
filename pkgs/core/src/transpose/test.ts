@@ -15,4 +15,10 @@ describe("transpose", () => {
     expect(result.getSeconds()).toBe(56);
     expect(result.getMilliseconds()).toBe(789);
   });
+
+  it("preserves invalid dates", () => {
+    const result = transpose(new Date(NaN), Date);
+    expect(result instanceof Date).toBe(true);
+    expect(isNaN(+result)).toBe(true);
+  });
 });
