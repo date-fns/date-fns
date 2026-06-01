@@ -40,7 +40,7 @@ export interface SetOptions<
  * //=> Tue Oct 20 2015 00:00:00
  *
  * @example
- * // Set 12 PM to 1 September 2014 01:23:45 to 1 September 2014 12:00:00:
+ * // Set 12 PM to 1 September 2014 01:23:45 to 1 September 2014 12:23:45:
  * const result = set(new Date(2014, 8, 1, 1, 23, 45), { hours: 12 })
  * //=> Mon Sep 01 2014 12:23:45
  */
