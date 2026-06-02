@@ -20,6 +20,19 @@ It's like [Lodash](https://lodash.com) for dates
 - **I18n**: Dozens of locales. Include only what you need.
 - [and many more benefits](https://date-fns.org/)
 
+---
+
+Sponsored by:
+
+<a href="https://coderabbit.link/datefns">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://www.coderabbit.ai/content/assets/white-typemark.svg">
+    <img alt="CodeRabbit" src="https://www.coderabbit.ai/content/assets/orange-typemark.svg" width="170">
+  </picture>
+</a>
+
+---
+
 ```js
 import { compareAsc, format } from "date-fns";
 
@@ -50,8 +63,6 @@ npm install date-fns --save
 
 [See date-fns.org](https://date-fns.org/) for more details, API,
 and other docs.
-
-<br />
 
 ## License
 
