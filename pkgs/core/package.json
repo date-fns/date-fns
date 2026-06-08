@@ -8204,5 +8204,8 @@
     "typedoc": "^0.28.19",
     "typedoc-plugin-missing-exports": "^4.1.3",
     "vitest": "^4.1.6"
+  },
+  "bugs": {
+    "url": "https://github.com/date-fns/date-fns/issues"
   }
 }
