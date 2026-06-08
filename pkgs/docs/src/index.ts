@@ -1,5 +1,5 @@
-export * from "./db.js";
-export * from "./consts.js";
-export * from "./json.js";
-export * from "./utils.js";
-export type { DateFnsDocs } from "./types.js";
+export * from "./db.ts";
+export * from "./consts.ts";
+export * from "./json.ts";
+export * from "./utils.ts";
+export type { DateFnsDocs } from "./types.ts";

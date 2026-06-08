@@ -1,5 +1,5 @@
 import { schema, type Typesaurus } from "typesaurus";
-import type { DateFnsDocs } from "./types.js";
+import type { DateFnsDocs } from "./types.ts";
 
 export const db = schema(($) => ({
   packages: $.collection<DateFnsDocs.Package>(),

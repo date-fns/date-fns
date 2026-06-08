@@ -60,7 +60,7 @@ export namespace DateFnsDocs {
   /**
    * The submodule type.
    */
-  export type Submodule = (typeof import("./consts.js").allSubmodules)[number];
+  export type Submodule = (typeof import("./consts.ts").allSubmodules)[number];
 
   /**
    * The package model.
@@ -233,35 +233,35 @@ export namespace DateFnsDocs {
       text?: string;
     };
   }
-
-  /**
-   * The copy of TypeDoc ReflectionKind enum. We copy it here to avoid importing
-   * typedoc.
-   */
-  export enum ReflectionKind {
-    Project = 1,
-    Module = 2,
-    Namespace = 4,
-    Enum = 8,
-    EnumMember = 16,
-    Variable = 32,
-    Function = 64,
-    Class = 128,
-    Interface = 256,
-    Constructor = 512,
-    Property = 1024,
-    Method = 2048,
-    CallSignature = 4096,
-    IndexSignature = 8192,
-    ConstructorSignature = 16384,
-    Parameter = 32768,
-    TypeLiteral = 65536,
-    TypeParameter = 131072,
-    Accessor = 262144,
-    GetSignature = 524288,
-    SetSignature = 1048576,
-    TypeAlias = 2097152,
-    Reference = 4194304,
-    Document = 8388608,
-  }
 }
+
+/**
+ * The copy of TypeDoc ReflectionKind enum. We copy it here to avoid importing
+ * typedoc.
+ */
+export const DateFnsDocsReflectionKind = {
+  Project: 1,
+  Module: 2,
+  Namespace: 4,
+  Enum: 8,
+  EnumMember: 16,
+  Variable: 32,
+  Function: 64,
+  Class: 128,
+  Interface: 256,
+  Constructor: 512,
+  Property: 1024,
+  Method: 2048,
+  CallSignature: 4096,
+  IndexSignature: 8192,
+  ConstructorSignature: 16384,
+  Parameter: 32768,
+  TypeLiteral: 65536,
+  TypeParameter: 131072,
+  Accessor: 262144,
+  GetSignature: 524288,
+  SetSignature: 1048576,
+  TypeAlias: 2097152,
+  Reference: 4194304,
+  Document: 8388608,
+};

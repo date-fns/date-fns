@@ -123,24 +123,16 @@
     "test": "vitest run"
   },
   "devDependencies": {
-    "@arethetypeswrong/cli": "^0.18.2",
-    "@babel/cli": "^7.28.0",
-    "@babel/core": "^7.28.0",
-    "@babel/plugin-transform-modules-commonjs": "^7.27.1",
-    "@babel/preset-env": "^7.28.0",
-    "@babel/preset-typescript": "^7.27.1",
     "@date-fns/dev": "workspace:*",
     "@parcel/watcher": "^2.4.1",
     "@swc/core": "^1.4.13",
     "@typescript/native-preview": "7.0.0-dev.20260421.2",
-    "babel-plugin-replace-import-extension": "^1.1.5",
     "bytes-iec": "^3.1.1",
     "date-fns": "workspace:*",
     "glob": "^10.3.12",
     "minimatch": "^10.0.1",
     "picocolors": "^1.0.0",
-    "prettier": "^3.6.2",
-    "rolldown": "1.0.0-beta.30",
+    "rolldown": "^1.1.0",
     "tinybench": "^2.7.0",
     "vitest": "^4.1.6"
   }

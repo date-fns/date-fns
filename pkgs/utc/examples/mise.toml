@@ -1,0 +1,3 @@
+[tasks.install]
+depends = "//pkgs/utc:build/package"
+run = "pnpm install"

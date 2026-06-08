@@ -5,18 +5,8 @@
   "license": "MIT",
   "author": "Sasha Koss <koss@nocorp.me>",
   "main": "example.js",
-  "scripts": {
-    "build": "pnpm run build-date-fns && pnpm run build-webpack",
-    "build-date-fns": "rm -rf node_modules/date-fns && cp -r ../../dist/date-fns node_modules/date-fns || ../../scripts/build/package.sh --dist \"$(pwd)/node_modules/date-fns\" --no-cdn",
-    "build-webpack": "webpack",
-    "stats-size": "echo \"Minimal size: $(gzip-size dist/minimal.min.js)\nFormat size: $(gzip-size dist/example.min.js)\nFP size: $(gzip-size dist/fp.min.js)\nMisc size: $(gzip-size dist/misc.min.js)\"",
-    "test": "pnpm run test-example && pnpm run test-fp && pnpm run test-misc && pnpm run test-constants",
-    "test-example": "test $(env TZ=UTC node ./dist/example.js) = true",
-    "test-fp": "test $(env TZ=UTC node ./dist/fp.js) = true",
-    "test-misc": "test $(env TZ=UTC node ./dist/misc.js) = true",
-    "test-constants": "test $(env TZ=UTC node ./dist/constants.js) = true"
-  },
   "dependencies": {
+    "date-fns": "../../dist/date-fns",
     "gzip-size-cli": "^2.1.0",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4"

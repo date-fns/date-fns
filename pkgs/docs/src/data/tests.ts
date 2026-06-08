@@ -1,6 +1,6 @@
 import type { DocNode } from "@deno/doc";
 import { describe, expect, it } from "vitest";
-import { isExportNode, isModuleDocNode, repoPath } from "./index.js";
+import { isExportNode, isModuleDocNode, repoPath } from "./index.ts";
 
 describe("isExportNode", () => {
   it("returns true for export nodes", () => {

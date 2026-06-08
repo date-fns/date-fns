@@ -1,0 +1,11 @@
+{
+  "name": "@date-fns/example-ts",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "date-fns": "../../dist/date-fns"
+  },
+  "devDependencies": {
+    "typescript": "^6.0.3"
+  }
+}

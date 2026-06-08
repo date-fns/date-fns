@@ -11,13 +11,13 @@ import { readFile, writeFile } from "fs/promises";
 import path from "path";
 import type { Locale } from "../../../src/types.ts";
 import { listLocales } from "../../_lib/listLocales.ts";
-import { formatCode } from "../_lib/prettier.ts";
 import { convertLocaleToConst } from "./_lib/locale.ts";
 import renderFormatDistance from "./renderFormatDistance/index.ts";
 import renderFormatDistanceStrict from "./renderFormatDistanceStrict/index.ts";
 import renderFormatDuration from "./renderFormatDuration/index.ts";
 import renderFormatParse from "./renderFormatParse/index.ts";
 import renderFormatRelative from "./renderFormatRelative/index.ts";
+import { format as oxfmt } from "oxfmt";
 
 const mode = process.argv[2] || "generate";
 
@@ -55,7 +55,7 @@ ${renderFormatDuration(locale)}
           path.resolve(process.cwd(), path.dirname(fullPath)),
           "snapshot.md",
         );
-        const formattedSnapshot = await formatCode(snapshot, "markdown");
+        const formattedSnapshot = (await oxfmt(snapshotPath, snapshot)).code;
 
         if (mode === "test") {
           return readFile(snapshotPath, "utf8").then((snapshotFileContent) => {

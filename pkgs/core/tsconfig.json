@@ -1,4 +1,8 @@
 {
   "extends": "@date-fns/dev/config/tsconfig",
-  "references": [{ "path": "../tz" }, { "path": "../utc" }]
+  "references": [
+    { "path": "../tz" },
+    { "path": "../utc" },
+    { "path": "../docs" }
+  ]
 }

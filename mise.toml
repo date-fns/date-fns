@@ -1,6 +1,6 @@
 experimental_monorepo_root = true
 [monorepo]
-config_roots = ["pkgs/*"]
+config_roots = ["pkgs/*", "pkgs/*/examples", "pkgs/*/examples/*"]
 
 [tools]
 # Stack
@@ -35,3 +35,11 @@ run = "pnpm oxlint"
 
 [tasks."lint:watch"]
 run = "watchexec --exts ts,js --clear -- pnpm oxlint"
+
+[tasks."source/install"]
+description = '''
+  Phantom task that provides the install lock files (i.e., pnpm-lock.yaml)
+  sources to use as a dependency for tasks that rely on them, i.e.,
+  `...:build/package`.
+'''
+sources = ["pnpm-lock.yaml"]

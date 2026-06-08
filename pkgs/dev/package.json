@@ -4,6 +4,7 @@
   "private": true,
   "description": "date-fns dev package",
   "bin": {
+    "date-fns-build-package": "./src/build/package.ts",
     "date-fns-test-tz": "./src/test/tz.ts"
   },
   "type": "module",
@@ -12,6 +13,8 @@
   },
   "devDependencies": {
     "@typescript/native-preview": "7.0.0-dev.20260421.2",
+    "oxfmt": "^0.53.0",
+    "rolldown": "^1.1.0",
     "zx": "^8.8.5"
   }
 }

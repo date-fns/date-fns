@@ -21,6 +21,6 @@
     "@typescript/native-preview": "7.0.0-dev.20260421.2",
     "metro": "^0.83.1",
     "metro-core": "^0.83.1",
-    "rolldown": "1.0.0-beta.30"
+    "rolldown": "1.1.0"
   }
 }

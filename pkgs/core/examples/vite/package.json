@@ -3,13 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "scripts": {
-    "build": "pnpm run build-date-fns && tsc && vite build",
-    "build-date-fns": "rm -rf node_modules/date-fns && cp -r ../../dist/date-fns node_modules/date-fns || ../../scripts/build/package.sh --dist \"$(pwd)/node_modules/date-fns\" --no-cdn",
-    "test": "echo \"We're just testing if it builds atm\""
-  },
   "dependencies": {
-    "date-fns": "^3.0.0",
+    "date-fns": "../../dist/date-fns",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

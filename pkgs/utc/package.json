@@ -76,19 +76,12 @@
     "build": "make build"
   },
   "devDependencies": {
-    "@arethetypeswrong/cli": "^0.16.2",
-    "@babel/cli": "^7.24.1",
-    "@babel/core": "^7.24.4",
-    "@babel/plugin-transform-modules-commonjs": "^7.24.1",
-    "@babel/preset-env": "^7.24.4",
-    "@babel/preset-typescript": "^7.24.1",
     "@date-fns/dev": "workspace:*",
     "@parcel/watcher": "^2.4.1",
     "@typescript/native-preview": "7.0.0-dev.20260421.2",
-    "babel-plugin-replace-import-extension": "^1.1.4",
     "glob": "^11.0.0",
     "minimatch": "^10.0.1",
-    "prettier": "^3.6.2",
+    "rolldown": "^1.1.0",
     "vitest": "^4.1.6"
   }
 }

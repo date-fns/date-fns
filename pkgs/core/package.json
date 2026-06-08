@@ -8173,11 +8173,6 @@
     "stats": "cloc . --exclude-dir=node_modules,lib,examples,tmp,.git --exclude-ext=yaml,yml,json,svg,xml"
   },
   "devDependencies": {
-    "@arethetypeswrong/cli": "^0.18.2",
-    "@babel/cli": "^7.28.0",
-    "@babel/core": "^7.28.0",
-    "@babel/preset-env": "^7.28.0",
-    "@babel/preset-typescript": "^7.27.1",
     "@date-fns/dev": "workspace:*",
     "@date-fns/docs": "workspace:*",
     "@date-fns/tz": "workspace:*",
@@ -8191,7 +8186,6 @@
     "@vitest/browser": "^4.1.6",
     "@vitest/browser-playwright": "^4.1.6",
     "@vitest/coverage-v8": "^4.1.6",
-    "babel-plugin-replace-import-extension": "^1.1.5",
     "cloc": "^2.11.0",
     "coveralls": "^3.1.1",
     "firebase": "^3.9.0",
@@ -8199,16 +8193,16 @@
     "js-fns": "^2.5.2",
     "jscodeshift": "^0.15.2",
     "lodash": "^4.17.21",
-    "oxfmt": "^0.49.0",
-    "oxlint": "^1.14.0",
+    "oxfmt": "^0.53.0",
+    "oxlint": "^1.68.0",
     "oxlint-tsgolint": "^0.1.6",
     "playwright": "^1.60.0",
-    "prettier": "^3.6.2",
-    "rolldown": "^1.0.2",
+    "rolldown": "^1.1.0",
     "simple-git": "^2.48.0",
     "size-limit": "^11.2.0",
-    "typedoc": "^0.26.11",
-    "typedoc-plugin-missing-exports": "^3.1.0",
+    "smolcanon": "^0.1.0",
+    "typedoc": "^0.28.19",
+    "typedoc-plugin-missing-exports": "^4.1.3",
     "vitest": "^4.1.6"
   }
 }

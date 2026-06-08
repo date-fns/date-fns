@@ -1,0 +1,10 @@
+[tasks.install]
+depends = "//pkgs/utc/examples:install"
+
+[tasks.test]
+depends = ["install", "types"]
+run = "node test.ts"
+
+[tasks.types]
+depends = "install"
+run = "pnpm tsc"

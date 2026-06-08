@@ -1,3 +1,19 @@
+[tasks."build/package"]
+depends = ["//pkgs/dev:source/build", "//:source/install"]
+run = "make build"
+sources = [
+  "package.json",
+  "tsconfig.dist.json",
+  "Makefile",
+  "copy.mjs",
+  "src/**/*",
+  "!src/**/tests.ts",
+  "README.md",
+  "LICENSE.md",
+  "CHANGELOG.md",
+]
+outputs = ["dist/**/*"]
+
 [tasks."test"]
 depends = ["test/unit", "test/node"]
 
@@ -12,3 +28,9 @@ run = "pnpm exec date-fns-test-tz ./src/"
 
 [tasks."test/node"]
 run = "./scripts/test/node.sh"
+
+[tasks."test/smoke"]
+usage = '''
+arg "[test]" help="Smoke test to run" default="..."
+'''
+depends = "//pkgs/utc/examples/{{usage.test}}:test"

@@ -35,11 +35,7 @@ async function addNextJSFallbacks(dir: string): Promise<void> {
           readFile(fullPath, "utf8").then((content) =>
             writeFile(
               fullPath,
-              content +
-                `
-
-// Fallback for modularized imports:
-export default ${constName(relateivePath)};`,
+              addDefaultExport(content, constName(relateivePath)),
             ),
           ),
         );
@@ -70,4 +66,20 @@ function isModule(relateivePath: string) {
 function constName(relateivePath: string) {
   const base = basename(dirname(relateivePath));
   return localeRe.test(relateivePath) ? convertLocaleToConst(base) : base;
+}
+
+function addDefaultExport(content: string, name: string) {
+  if (/\bexport\s+default\b/.test(content)) return content;
+
+  const fallback = `
+
+// Fallback for modularized imports:
+export default ${name};`;
+  const sourceMapIndex = content.lastIndexOf("\n//# sourceMappingURL=");
+
+  if (sourceMapIndex === -1) return content + fallback;
+
+  return (
+    content.slice(0, sourceMapIndex) + fallback + content.slice(sourceMapIndex)
+  );
 }

@@ -1,6 +1,22 @@
 [tools]
 "npm:jsvu" = "latest"
 
+[tasks."build/package"]
+depends = ["//pkgs/dev:source/build", "//:source/install"]
+run = "make build"
+sources = [
+  "package.json",
+  "tsconfig.dist.json",
+  "Makefile",
+  "copy.mjs",
+  "src/**/*",
+  "!src/**/tests.ts",
+  "README.md",
+  "LICENSE.md",
+  "CHANGELOG.md",
+]
+outputs = ["dist/**/*"]
+
 [tasks."test"]
 depends = ["test/unit", "test/node", "test/engines"]
 
@@ -23,3 +39,9 @@ run = "./scripts/test/node.sh"
 
 [tasks."test/engines"]
 run = "./scripts/test/engines.sh"
+
+[tasks."test/smoke"]
+usage = '''
+arg "[test]" help="Smoke test to run" default="..."
+'''
+depends = "//pkgs/tz/examples/{{usage.test}}:test"

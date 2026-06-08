@@ -1,0 +1,8 @@
+{
+  "name": "@date-fns/utc-example-esm",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@date-fns/utc": "../../dist"
+  }
+}

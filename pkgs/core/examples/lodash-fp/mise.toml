@@ -1,0 +1,14 @@
+[tasks.install]
+depends = "//pkgs/core/examples:install"
+
+[tasks.build]
+depends = "install"
+run = "pnpm exec esbuild example.js --outdir=dist"
+
+[tasks.test]
+depends = "build"
+run = "test $(env TZ=UTC node ./dist/example.js) = true"
+
+[tasks."stats/size"]
+depends = "build"
+run = "pnpm exec gzip-size dist/example.min.js"

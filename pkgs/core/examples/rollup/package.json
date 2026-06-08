@@ -6,21 +6,11 @@
   "author": "Sasha Koss <koss@nocorp.me>",
   "type": "module",
   "main": "example.js",
-  "scripts": {
-    "build": "pnpm run build-date-fns && pnpm run build-rollup",
-    "build-date-fns": "rm -rf node_modules/date-fns && cp -r ../../dist/date-fns node_modules/date-fns || ../../scripts/build/package.sh --dist \"$(pwd)/node_modules/date-fns\" --no-cdn",
-    "build-rollup": "rollup --config",
-    "stats-size": "echo \"Minimal size: $(gzip-size dist/minimal.js)\nFormat size: $(gzip-size dist/example.js)\nFP size: $(gzip-size dist/fp.js)\nMisc size: $(gzip-size dist/misc.js)\"",
-    "test": "pnpm run test-example && pnpm run test-fp && pnpm run test-misc && pnpm run test-constants",
-    "test-example": "test $(env TZ=UTC node ./dist/example.js) = true",
-    "test-fp": "test $(env TZ=UTC node ./dist/fp.js) = true",
-    "test-misc": "test $(env TZ=UTC node ./dist/misc.js) = true",
-    "test-constants": "test $(env TZ=UTC node ./dist/constants.js) = true"
-  },
   "dependencies": {
     "@rollup/plugin-commonjs": "^25.0.4",
     "@rollup/plugin-node-resolve": "^15.2.1",
     "@rollup/plugin-terser": "^0.4.4",
+    "date-fns": "../../dist/date-fns",
     "gzip-size-cli": "^5.1.0",
     "rollup": "^3.28.1"
   }

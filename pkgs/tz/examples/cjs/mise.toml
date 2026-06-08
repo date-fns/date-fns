@@ -1,0 +1,6 @@
+[tasks.install]
+depends = "//pkgs/tz/examples:install"
+
+[tasks.test]
+depends = "install"
+run = "node test.cjs"

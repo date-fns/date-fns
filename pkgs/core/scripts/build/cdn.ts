@@ -2,11 +2,9 @@
  * The script builds the CDN version of the library.
  */
 
-import { execFile } from "child_process";
 import { cp, mkdir, readFile, rm, writeFile } from "fs/promises";
 import { availableParallelism } from "node:os";
 import { dirname, join, relative } from "path";
-import { promisify } from "util";
 import { build } from "rolldown";
 import { listLocales, type LocaleFile } from "../_lib/listLocales.ts";
 import { promiseQueue } from "../test/_lib/queue.ts";
@@ -17,7 +15,6 @@ if (!process.env.DATE_FNS_PACKAGE_OUTPUT_PATH)
 if (!process.env.DATE_FNS_CDN_OUTPUT_PATH)
   throw new Error("DATE_FNS_CDN_OUTPUT_PATH is not set");
 
-const execFileAsync = promisify(execFile);
 const packageOut = relative(
   process.cwd(),
   process.env.DATE_FNS_PACKAGE_OUTPUT_PATH,
@@ -93,18 +90,6 @@ const entryPairs = await Promise.all([
 await promiseQueue(
   entryPairs.map(([entryPath, outPath]) => async () => {
     await bundle(entryPath, outPath);
-
-    await execFileAsync(
-      "pnpm",
-      [
-        "babel",
-        outPath,
-        "--out-file",
-        outPath,
-        ...(sourceMaps ? ["--source-maps"] : []),
-      ],
-      { env: { ...process.env, BABEL_ENV: "cdn" } },
-    );
 
     // Wrap into IIFE, to avoid polluting global scope.
     const content = await readFile(outPath, "utf-8");

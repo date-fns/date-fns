@@ -7,16 +7,16 @@ import { pick } from "js-fns";
 import path from "path";
 import { stringifyJSON } from "typeroo/json";
 import { batch } from "typesaurus";
-import { allSubmodules, packageName } from "./consts.js";
-import { db } from "./db.js";
-import { readRefsFromJSON } from "./json.js";
-import type { DateFnsDocs } from "./types.js";
+import { allSubmodules, packageName } from "./consts.ts";
+import { db } from "./db.ts";
+import { readRefsFromJSON } from "./json.ts";
+import type { DateFnsDocs } from "./types.ts";
 import {
   findCategory,
   findFnSummary,
   findFnTag,
   findSummary,
-} from "./utils.js";
+} from "./utils.ts";
 
 firebaseAdmin.initializeApp();
 

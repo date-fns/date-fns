@@ -4,4 +4,4 @@
 
 set -ex
 
-pnpm typedoc
+pnpm exec typedoc --tsconfig tsconfig.dist.json

@@ -5,8 +5,8 @@
   "description": "date-fns monorepo root",
   "devDependencies": {
     "@typescript/native-preview": "7.0.0-dev.20260421.2",
-    "oxfmt": "^0.50.0",
-    "oxlint": "^1.65.0",
+    "oxfmt": "^0.53.0",
+    "oxlint": "^1.68.0",
     "oxlint-tsgolint": "^0.22.1",
     "vitest": "^4.1.6"
   }

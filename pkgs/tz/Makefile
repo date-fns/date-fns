@@ -14,14 +14,10 @@ types:
 types-watch:
 	@pnpm tsgo --noEmit --watch
 
-test-types: build
-	@cd dist && pnpm pack --out ../tmp/dist.tgz
-	@pnpm attw tmp/dist.tgz
-
 build: prepare-build
 	@pnpm tsgo -p tsconfig.dist.json
-	@env BABEL_ENV=esm pnpm babel src --config-file ./babel.config.json --source-root src --out-dir dist --extensions .js,.ts --out-file-extension .js --quiet
-	@env BABEL_ENV=cjs pnpm babel src --config-file ./babel.config.json --source-root src --out-dir dist --extensions .js,.ts --out-file-extension .cjs --quiet
+	@pnpm exec date-fns-build-package src dist esm
+	@pnpm exec date-fns-build-package src dist cjs
 	@node copy.mjs
 	@make build-cts
 	@jaq -i '. + .publishConfig' dist/package.json
