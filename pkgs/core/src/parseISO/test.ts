@@ -242,6 +242,17 @@ describe("parseISO", () => {
         expect(result instanceof Date).toBe(true);
         expect(isNaN(result.getTime())).toBe(true);
       });
+
+      it("returns `Invalid Date` for week 53 of a 52-week ISO year", () => {
+        const result = parseISO("2021-W53-1");
+        expect(result instanceof Date).toBe(true);
+        expect(isNaN(result.getTime())).toBe(true);
+      });
+
+      it("parses week 53 of a 53-week ISO year", () => {
+        const result = parseISO("2020-W53-1");
+        expect(result).toEqual(new Date(Date.UTC(2020, 11 /* Dec */, 28)));
+      });
     });
 
     describe("calendar dates", () => {
