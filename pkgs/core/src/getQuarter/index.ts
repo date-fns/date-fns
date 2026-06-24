@@ -9,15 +9,15 @@ export interface GetQuarterOptions extends ContextOptions<Date> {}
 /**
  * @name getQuarter
  * @category Quarter Helpers
- * @summary Get the year quarter of the given date.
+ * @summary Get the year quarter (1-based) of the given date.
  *
  * @description
- * Get the year quarter of the given date.
+ * Get the year quarter (1-based) of the given date.
  *
  * @param date - The given date
  * @param options - An object with options
  *
- * @returns The quarter
+ * @returns The quarter (1 - 4)
  *
  * @example
  * // Which quarter is 2 July 2014?
