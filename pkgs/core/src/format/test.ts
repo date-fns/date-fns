@@ -881,7 +881,7 @@ describe("format", () => {
         expect(warn).toBeCalledWith(
           "Use `d` instead of `D` (in `yyyy-MM-D`) for formatting days of the month to the input `" +
             date +
-            "`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md",
+            "`; see: https://github.com/date-fns/date-fns/blob/main/docs/unicodeTokens.md",
         );
       });
 
@@ -894,7 +894,7 @@ describe("format", () => {
         expect(warn).toBeCalledWith(
           "Use `dd` instead of `DD` (in `yyyy-MM-DD`) for formatting days of the month to the input `" +
             date +
-            "`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md",
+            "`; see: https://github.com/date-fns/date-fns/blob/main/docs/unicodeTokens.md",
         );
       });
 
@@ -907,7 +907,7 @@ describe("format", () => {
         expect(warn).toBeCalledWith(
           "Use `ddd` instead of `DDD` (in `yyyy-MM-DDD`) for formatting days of the month to the input `" +
             date +
-            "`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md",
+            "`; see: https://github.com/date-fns/date-fns/blob/main/docs/unicodeTokens.md",
         );
       });
 
@@ -920,7 +920,7 @@ describe("format", () => {
         expect(warn).toBeCalledWith(
           "Use `dddd` instead of `DDDD` (in `yyyy-MM-DDDD`) for formatting days of the month to the input `" +
             date +
-            "`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md",
+            "`; see: https://github.com/date-fns/date-fns/blob/main/docs/unicodeTokens.md",
         );
       });
 
@@ -933,7 +933,7 @@ describe("format", () => {
         expect(warn).toBeCalledWith(
           "Use `ddddd` instead of `DDDDD` (in `yyyy-MM-DDDDD`) for formatting days of the month to the input `" +
             date +
-            "`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md",
+            "`; see: https://github.com/date-fns/date-fns/blob/main/docs/unicodeTokens.md",
         );
       });
 
@@ -946,7 +946,7 @@ describe("format", () => {
         expect(warn).toBeCalledWith(
           "Use `y` instead of `Y` (in `Y-MM-dd`) for formatting years to the input `" +
             date +
-            "`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md",
+            "`; see: https://github.com/date-fns/date-fns/blob/main/docs/unicodeTokens.md",
         );
       });
 
@@ -959,7 +959,7 @@ describe("format", () => {
         expect(warn).toBeCalledWith(
           "Use `yy` instead of `YY` (in `YY-MM-dd`) for formatting years to the input `" +
             date +
-            "`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md",
+            "`; see: https://github.com/date-fns/date-fns/blob/main/docs/unicodeTokens.md",
         );
       });
 
@@ -972,7 +972,7 @@ describe("format", () => {
         expect(warn).toBeCalledWith(
           "Use `yyy` instead of `YYY` (in `YYY-MM-dd`) for formatting years to the input `" +
             date +
-            "`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md",
+            "`; see: https://github.com/date-fns/date-fns/blob/main/docs/unicodeTokens.md",
         );
       });
 
@@ -985,7 +985,7 @@ describe("format", () => {
         expect(warn).toBeCalledWith(
           "Use `yyyy` instead of `YYYY` (in `YYYY-MM-dd`) for formatting years to the input `" +
             date +
-            "`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md",
+            "`; see: https://github.com/date-fns/date-fns/blob/main/docs/unicodeTokens.md",
         );
       });
 
@@ -998,7 +998,7 @@ describe("format", () => {
         expect(warn).toBeCalledWith(
           "Use `yyyyy` instead of `YYYYY` (in `YYYYY-MM-dd`) for formatting years to the input `" +
             date +
-            "`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md",
+            "`; see: https://github.com/date-fns/date-fns/blob/main/docs/unicodeTokens.md",
         );
       });
     });
