@@ -52,10 +52,14 @@ export function isWithinInterval(
   options?: IsWithinIntervalOptions | undefined,
 ): boolean {
   const time = +toDate(date, options?.in);
-  const [startTime, endTime] = [
-    +toDate(interval.start, options?.in),
-    +toDate(interval.end, options?.in),
-  ].sort((a, b) => a - b);
+  let startTime = +toDate(interval.start, options?.in);
+  let endTime = +toDate(interval.end, options?.in);
+
+  if (startTime > endTime) {
+    const swap = startTime;
+    startTime = endTime;
+    endTime = swap;
+  }
 
   return time >= startTime && time <= endTime;
 }
