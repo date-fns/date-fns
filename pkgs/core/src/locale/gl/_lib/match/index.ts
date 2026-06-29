@@ -54,7 +54,7 @@ const parseMonthPatterns = {
     /^mar/i,
     /^abr/i,
     /^mai/i,
-    /^xun/i,
+    /^xu[nñ]/i,
     /^xul/i,
     /^ago/i,
     /^set/i,
