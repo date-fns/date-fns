@@ -61,14 +61,21 @@ export function areIntervalsOverlapping(
   intervalRight: Interval,
   options?: AreIntervalsOverlappingOptions,
 ): boolean {
-  const [leftStartTime, leftEndTime] = [
-    +toDate(intervalLeft.start, options?.in),
-    +toDate(intervalLeft.end, options?.in),
-  ].sort((a, b) => a - b);
-  const [rightStartTime, rightEndTime] = [
-    +toDate(intervalRight.start, options?.in),
-    +toDate(intervalRight.end, options?.in),
-  ].sort((a, b) => a - b);
+  let leftStartTime = +toDate(intervalLeft.start, options?.in);
+  let leftEndTime = +toDate(intervalLeft.end, options?.in);
+  if (leftStartTime > leftEndTime) {
+    const swap = leftStartTime;
+    leftStartTime = leftEndTime;
+    leftEndTime = swap;
+  }
+
+  let rightStartTime = +toDate(intervalRight.start, options?.in);
+  let rightEndTime = +toDate(intervalRight.end, options?.in);
+  if (rightStartTime > rightEndTime) {
+    const swap = rightStartTime;
+    rightStartTime = rightEndTime;
+    rightEndTime = swap;
+  }
 
   if (options?.inclusive)
     return leftStartTime <= rightEndTime && rightStartTime <= leftEndTime;

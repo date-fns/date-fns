@@ -43,14 +43,21 @@ export function getOverlappingDaysInIntervals(
   intervalLeft: Interval,
   intervalRight: Interval,
 ): number {
-  const [leftStart, leftEnd] = [
-    +toDate(intervalLeft.start),
-    +toDate(intervalLeft.end),
-  ].sort((a, b) => a - b);
-  const [rightStart, rightEnd] = [
-    +toDate(intervalRight.start),
-    +toDate(intervalRight.end),
-  ].sort((a, b) => a - b);
+  let leftStart = +toDate(intervalLeft.start);
+  let leftEnd = +toDate(intervalLeft.end);
+  if (leftStart > leftEnd) {
+    const swap = leftStart;
+    leftStart = leftEnd;
+    leftEnd = swap;
+  }
+
+  let rightStart = +toDate(intervalRight.start);
+  let rightEnd = +toDate(intervalRight.end);
+  if (rightStart > rightEnd) {
+    const swap = rightStart;
+    rightStart = rightEnd;
+    rightEnd = swap;
+  }
 
   // Prevent NaN result if intervals don't overlap at all.
   const isOverlapping = leftStart < rightEnd && rightStart < leftEnd;
