@@ -4,80 +4,80 @@ type FormatDistanceTokenForm = { one: string; other: string } | string;
 
 const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenForm> = {
   lessThanXSeconds: {
-    one: "moins d’une seconde",
-    other: "moins de {{count}} secondes",
+    one: "latsakin'ny 1 segondra",
+    other: "latsakin'ny {{count}} segondra",
   },
 
   xSeconds: {
-    one: "1 seconde",
-    other: "{{count}} secondes",
+    one: "1 segondra",
+    other: "{{count}} segondra",
   },
 
-  halfAMinute: "30 secondes",
+  halfAMinute: "30 segondra",
 
   lessThanXMinutes: {
-    one: "moins d’une minute",
-    other: "moins de {{count}} minutes",
+    one: "latsakin'ny iray minitra",
+    other: "latsakin'ny {{count}} minitra",
   },
 
   xMinutes: {
-    one: "1 minute",
-    other: "{{count}} minutes",
+    one: "1 minitra",
+    other: "{{count}} minitra",
   },
 
   aboutXHours: {
-    one: "environ 1 heure",
-    other: "environ {{count}} heures",
+    one: "adiny iray eo ho eo",
+    other: "adiny {{count}} eo ho eo",
   },
 
   xHours: {
-    one: "1 heure",
-    other: "{{count}} heures",
+    one: "adiny iray",
+    other: "adiny {{count}}",
   },
 
   xDays: {
-    one: "1 jour",
-    other: "{{count}} jours",
+    one: "1 andro",
+    other: "{{count}} andro",
   },
 
   aboutXWeeks: {
-    one: "environ 1 semaine",
-    other: "environ {{count}} semaines",
+    one: "herinandro eo ho eo",
+    other: "{{count}} herin'andro eo ho eo",
   },
 
   xWeeks: {
-    one: "1 semaine",
-    other: "{{count}} semaines",
+    one: "1 herin'andro",
+    other: "{{count}} herin'andro",
   },
 
   aboutXMonths: {
-    one: "environ 1 mois",
-    other: "environ {{count}} mois",
+    one: "1 volana eo ho eo",
+    other: "{{count}} volana eo ho eo",
   },
 
   xMonths: {
-    one: "1 mois",
-    other: "{{count}} mois",
+    one: "1 volana",
+    other: "{{count}} volana",
   },
 
   aboutXYears: {
-    one: "environ 1 an",
-    other: "environ {{count}} ans",
+    one: "heritaona eo ho eo",
+    other: "{{count}} taona eo ho eo",
   },
 
   xYears: {
-    one: "1 an",
-    other: "{{count}} ans",
+    one: "1 taona",
+    other: "{{count}} taona",
   },
 
   overXYears: {
-    one: "plus d’un an",
-    other: "plus de {{count}} ans",
+    one: "heritaona mahery",
+    other: "maherin'ny {{count}} taona",
   },
 
   almostXYears: {
-    one: "presqu’un an",
-    other: "presque {{count}} ans",
+    one: "madiva ho heritaona",
+    other: "madiva ho {{count}} taona",
   },
 };
 
@@ -94,9 +94,9 @@ export const formatDistance: FormatDistanceFn = (token, count, options) => {
 
   if (options?.addSuffix) {
     if (options.comparison && options.comparison > 0) {
-      return "dans " + result;
+      return "afaka " + result;
     } else {
-      return "il y a " + result;
+      return "tamin'ny " + result;
     }
   }
 
