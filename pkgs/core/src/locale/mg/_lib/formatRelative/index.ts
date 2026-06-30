@@ -1,11 +1,11 @@
 import type { FormatRelativeFn } from "../../../types.js";
 
 const formatRelativeLocale = {
-  lastWeek: "eeee 'dernier à' p",
-  yesterday: "'hier à' p",
-  today: "'aujourd’hui à' p",
-  tomorrow: "'demain à' p'",
-  nextWeek: "eeee 'prochain à' p",
+  lastWeek: "'tamin'ny' eeee 'heriny tamin'ny' p",
+  yesterday: "'omaly tamin'ny' p",
+  today: "'androany amin'ny' p",
+  tomorrow: "'rahampitso amin'ny' p'",
+  nextWeek: "'amin'ny' eeee 'heriny amin'ny' p",
   other: "P",
 };
 
