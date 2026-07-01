@@ -9,7 +9,12 @@ const eraValues = {
 
 const quarterValues = {
   narrow: ["T1", "T2", "T3", "T4"] as const,
-  abbreviated: ["tel. voalohany", "tel. faha-2", "tel. faha-3", "tel. faha-4"] as const,
+  abbreviated: [
+    "tel. voalohany",
+    "tel. faha-2",
+    "tel. faha-3",
+    "tel. faha-4",
+  ] as const,
   wide: [
     "telovolana voalohany",
     "telovolana faha-2",
@@ -51,16 +56,16 @@ const monthValues = {
 };
 
 const dayValues = {
-  narrow: ["D", "L", "M", "M", "J", "V", "S"] as const,
-  short: ["di", "lu", "ma", "me", "je", "ve", "sa"] as const,
+  narrow: ["A", "A", "T", "A", "A", "Z", "S"] as const,
+  short: ["ah", "at", "ta", "ar", "ak", "zo", "sa"] as const,
   abbreviated: [
-    "dim.",
-    "lun.",
-    "mar.",
-    "mer.",
-    "jeu.",
-    "ven.",
-    "sam.",
+    "alah.",
+    "alat.",
+    "tal.",
+    "alar.",
+    "alak.",
+    "zom.",
+    "sab.",
   ] as const,
   wide: [
     "Alahady",
@@ -112,16 +117,11 @@ const ordinalNumber: LocalizeFn<number> = (dirtyNumber, options) => {
 
   if (number === 0) return "0";
 
-  const feminineUnits = ["year", "week", "hour", "minute", "second"];
-  let suffix;
-
   if (number === 1) {
-    suffix = unit && feminineUnits.includes(unit) ? "ère" : "er";
-  } else {
-    suffix = "ème";
+    return "voalohany";
   }
 
-  return number + suffix;
+  return "faha-" + number;
 };
 
 const LONG_MONTHS_TOKENS = ["MMM", "MMMM"];
