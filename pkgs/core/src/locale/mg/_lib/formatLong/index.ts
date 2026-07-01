@@ -16,8 +16,8 @@ const timeFormats = {
 };
 
 const dateTimeFormats = {
-  full: "{{date}} 'amin'ny' {{time}}",
-  long: "{{date}} 'amin'ny' {{time}}",
+  full: "{{date}} 'amin''ny' {{time}}",
+  long: "{{date}} 'amin''ny' {{time}}",
   medium: "{{date}}, {{time}}",
   short: "{{date}}, {{time}}",
 };

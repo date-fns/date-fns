@@ -7,14 +7,14 @@ import { match } from "./_lib/match/index.js";
 
 /**
  * @category Locales
- * @summary French locale.
- * @language French
- * @iso-639-2 fra
+ * @summary Malagasy locale.
+ * @language Malagasy
+ * @iso-639-2 mlg
  * @author Jean Dupouy [@izeau](https://github.com/izeau)
  * @author François B [@fbonzon](https://github.com/fbonzon)
  */
-export const fr: Locale = {
-  code: "fr",
+export const mg: Locale = {
+  code: "mg",
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
