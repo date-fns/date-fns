@@ -97,7 +97,7 @@ const dayPeriodValues = {
     morning: "maraina",
     afternoon: "tolak'andro",
     evening: "hariva",
-    night: "maraina",
+    night: "alina",
   },
   wide: {
     am: "AM",
@@ -107,7 +107,7 @@ const dayPeriodValues = {
     morning: "maraina",
     afternoon: "tolak'andro",
     evening: "hariva",
-    night: "maraina",
+    night: "alina",
   },
 };
 
