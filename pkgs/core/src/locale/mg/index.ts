@@ -10,8 +10,7 @@ import { match } from "./_lib/match/index.js";
  * @summary Malagasy locale.
  * @language Malagasy
  * @iso-639-2 mlg
- * @author Jean Dupouy [@izeau](https://github.com/izeau)
- * @author François B [@fbonzon](https://github.com/fbonzon)
+ * @author Aina Rakotoarilala [@rakotoarilala51](https://github.com/rakotoarilala51)
  */
 export const mg: Locale = {
   code: "mg",
