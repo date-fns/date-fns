@@ -1,0 +1,26 @@
+{
+  "name": "@date-fns/tz-test-engines",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "@babel/runtime": "^7.28.2",
+    "@formatjs/intl-datetimeformat": "^6.18.0",
+    "@formatjs/intl-getcanonicallocales": "^2.5.5",
+    "@formatjs/intl-locale": "^4.2.11",
+    "@formatjs/intl-numberformat": "^8.15.4",
+    "@formatjs/intl-pluralrules": "^5.4.4",
+    "@react-native/babel-preset": "^0.80.2",
+    "metro-runtime": "^0.83.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.28.0",
+    "@babel/preset-typescript": "^7.27.1",
+    "@date-fns/dev": "workspace:*",
+    "@date-fns/tz": "workspace:*",
+    "@formatjs/intl": "^3.1.6",
+    "@typescript/native-preview": "7.0.0-dev.20260421.2",
+    "metro": "^0.83.1",
+    "metro-core": "^0.83.1",
+    "rolldown": "1.1.0"
+  }
+}

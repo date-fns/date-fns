@@ -6,23 +6,10 @@ jobs:
   tests:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node: [18, 20, 22]
-
     steps:
-      - uses: actions/checkout@v4
-        with:
-          submodules: "recursive"
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node }}
-          cache: "pnpm"
+      - uses: actions/checkout@v6
+      - uses: jdx/mise-action@v4
       - run: pnpm install
 
-      - name: Unit tests
-        run: pnpm vitest run
-
-      - name: TZ tests
-        run: ./scripts/test/tz.sh
+      - name: Node.js tests
+        run: mise //pkgs/core:test/node

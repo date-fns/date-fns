@@ -1,0 +1,12 @@
+{
+  "name": "@date-fns/tz-example-cts",
+  "private": true,
+  "type": "commonjs",
+  "dependencies": {
+    "@date-fns/tz": "../../dist"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.1",
+    "typescript": "^6.0.3"
+  }
+}

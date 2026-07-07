@@ -7,21 +7,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-        with:
-          submodules: "recursive"
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: "pnpm"
+      - uses: actions/checkout@v6
+      - uses: jdx/mise-action@v4
       - run: pnpm install
 
       - name: Types
-        run: pnpm tsc --build --pretty
+        run: mise //:types
 
       - name: Linting
-        run: pnpm run lint
+        run: mise //:lint
 
       - name: Locale snapshots
-        run: pnpm run locale-snapshots -- test
+        run: mise //pkgs/core:test/locales

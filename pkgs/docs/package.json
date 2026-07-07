@@ -1,0 +1,64 @@
+{
+  "name": "@date-fns/docs",
+  "version": "0.38.0",
+  "description": "date-fns documentation utilities & types",
+  "keywords": [
+    "date-fns"
+  ],
+  "homepage": "https://github.com/date-fns/date-fns#readme",
+  "bugs": {
+    "url": "https://github.com/date-fns/date-fns/issues"
+  },
+  "license": "MIT",
+  "author": "Sasha Koss <koss@nocorp.me>",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/date-fns/date-fns.git"
+  },
+  "bin": {
+    "date-fns-docs": "./src/bin.ts"
+  },
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "publishConfig": {
+    "bin": {
+      "date-fns-docs": "./bin.js"
+    },
+    "exports": {
+      "./package.json": "./package.json",
+      ".": {
+        "types": "./index.d.ts",
+        "default": "./index.js"
+      }
+    }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "firebase-admin": "^12.4.0",
+    "js-fns": "^2.5.2",
+    "typedoc": "^0.26.7",
+    "typeroo": "^0.16.0",
+    "typesaurus": "^10.7.0"
+  },
+  "devDependencies": {
+    "@date-fns/dev": "workspace:*",
+    "@deno/doc": "jsr:^0.181.0",
+    "@types/mdast": "^4.0.4",
+    "@types/node": "^20.19.9",
+    "@typescript/native-preview": "7.0.0-dev.20260421.2",
+    "json-bond": "^1.0.0",
+    "marked": "^16.1.2",
+    "mdast-util-to-markdown": "^2.1.2",
+    "smolcanon": "^0.1.0",
+    "smolxxh": "^0.1.0",
+    "tsdown": "^0.14.2",
+    "tsx": "^4.22.3",
+    "vitest": "^4.1.6"
+  },
+  "packageManager": "pnpm@10.14.0+sha512.ad27a79641b49c3e481a16a805baa71817a04bbe06a38d17e60e2eaee83f6a146c6a688125f5792e48dd5ba30e7da52a5cda4c3992b9ccf333f9ce223af84748"
+}

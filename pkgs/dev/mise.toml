@@ -1,0 +1,6 @@
+[tasks."source/build"]
+description = '''
+  Phantom task that provides the build script sources to use as a dependency for
+  tasks that use it, i.e., `...:build/package`.
+'''
+sources = ["package.json", "src/build/**/*.ts"]

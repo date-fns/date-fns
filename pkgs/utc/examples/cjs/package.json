@@ -1,0 +1,8 @@
+{
+  "name": "@date-fns/utc-example-cjs",
+  "private": true,
+  "type": "commonjs",
+  "dependencies": {
+    "@date-fns/utc": "../../dist"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "@date-fns/tz-playground",
+  "type": "module",
+  "dependencies": {
+    "@date-fns/tz": "workspace:*",
+    "@hono/node-server": "^1.18.0",
+    "hono": "^4.8.10"
+  },
+  "devDependencies": {
+    "@types/node": "^24.1.0",
+    "concurrently": "^9.2.0",
+    "playwright": "^1.54.2",
+    "rolldown": "1.0.0-beta.30",
+    "tsx": "^4.20.3",
+    "typescript": "5.9.2"
+  }
+}

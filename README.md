@@ -1,6 +1,6 @@
 🔥️ **NEW**: [date-fns v4.0 with first-class time zone support is out!](https://blog.date-fns.org/v40-with-time-zone-support/)
 
-<img alt="date-fns" title="date-fns" src="https://raw.githubusercontent.com/date-fns/date-fns/master/docs/logotype.svg" width="150" />
+<img alt="date-fns" title="date-fns" src="https://raw.githubusercontent.com/date-fns/date-fns/refs/heads/main/pkgs/core/docs/logotype.svg" width="150" />
 
 date-fns provides the most comprehensive, yet simple and consistent toolset for manipulating JavaScript dates in a browser & Node.js
 

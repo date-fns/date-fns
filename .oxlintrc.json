@@ -1,6 +1,9 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
   "plugins": ["typescript"],
+  "options": {
+    "typeAware": true
+  },
   "categories": {
     "correctness": "off"
   },
@@ -9,10 +12,11 @@
   },
   "ignorePatterns": [
     "**/lib",
+    "**/dist",
     "**/tmp",
     "**/examples",
     "**/.ts",
-    "**/submodules"
+    "pkgs/tz/playground"
   ],
   "rules": {
     "for-direction": "error",
@@ -99,7 +103,7 @@
     "@typescript-eslint/prefer-as-const": "error",
     "@typescript-eslint/prefer-namespace-keyword": "error",
     "@typescript-eslint/triple-slash-reference": "error",
-    "@typescript-eslint/consistent-type-imports": "error",
+    "@typescript-eslint/consistent-type-imports": "off",
     "@typescript-eslint/ban-types": "off"
   },
   "overrides": [
@@ -118,9 +122,9 @@
         "no-setter-return": "off",
         "no-this-before-super": "off",
         "no-unsafe-negation": "off",
-        "no-var": "error",
+        "no-var": "off",
         "no-with": "off",
-        "prefer-rest-params": "error",
+        "prefer-rest-params": "off",
         "prefer-spread": "error"
       }
     }

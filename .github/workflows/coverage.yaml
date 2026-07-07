@@ -10,12 +10,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v2
-        with:
-          node-version: 22
+      - uses: actions/checkout@v6
+      - uses: jdx/mise-action@v4
       - run: pnpm install
+
+      # TODO: Enable or remove
       - run: pnpm vitest run --coverage
         env:
           COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}

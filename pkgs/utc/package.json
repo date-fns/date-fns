@@ -1,0 +1,87 @@
+{
+  "name": "@date-fns/utc",
+  "version": "2.1.1",
+  "description": "UTC date utils",
+  "keywords": [
+    "Date",
+    "Time zones",
+    "UTC",
+    "date-fns"
+  ],
+  "homepage": "https://github.com/date-fns/date-fns#readme",
+  "bugs": {
+    "url": "https://github.com/date-fns/date-fns/issues"
+  },
+  "license": "MIT",
+  "author": "Sasha Koss <koss@nocorp.me>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/date-fns/date-fns.git"
+  },
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./date": "./src/date/index.ts",
+    "./date/mini": "./src/date/mini.ts",
+    "./utc": "./src/utc/index.ts"
+  },
+  "publishConfig": {
+    "main": "index.cjs",
+    "module": "index.js",
+    "exports": {
+      "./package.json": "./package.json",
+      ".": {
+        "require": {
+          "types": "./index.d.cts",
+          "default": "./index.cjs"
+        },
+        "import": {
+          "types": "./index.d.ts",
+          "default": "./index.js"
+        }
+      },
+      "./date": {
+        "require": {
+          "types": "./date/index.d.cts",
+          "default": "./date/index.cjs"
+        },
+        "import": {
+          "default": "./date/index.js"
+        }
+      },
+      "./date/mini": {
+        "require": {
+          "types": "./date/mini.d.cts",
+          "default": "./date/mini.cjs"
+        },
+        "import": {
+          "types": "./date/mini.d.ts",
+          "default": "./date/mini.js"
+        }
+      },
+      "./utc": {
+        "require": {
+          "types": "./utc/index.d.cts",
+          "default": "./utc/index.cjs"
+        },
+        "import": {
+          "types": "./utc/index.d.ts",
+          "default": "./utc/index.js"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "test": "env TZ=Asia/Kolkata vitest",
+    "build": "make build"
+  },
+  "devDependencies": {
+    "@date-fns/dev": "workspace:*",
+    "@parcel/watcher": "^2.4.1",
+    "@typescript/native-preview": "7.0.0-dev.20260421.2",
+    "glob": "^11.0.0",
+    "minimatch": "^10.0.1",
+    "rolldown": "^1.1.0",
+    "vitest": "^4.1.6"
+  }
+}

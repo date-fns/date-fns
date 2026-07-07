@@ -1,0 +1,8 @@
+{
+  "name": "date-fns-example-esm",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "date-fns": "../../dist/date-fns"
+  }
+}
