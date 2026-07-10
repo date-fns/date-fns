@@ -1,5 +1,6 @@
 import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
+import { getDstTransitions } from "../_lib/test/tzOffsetTransitions.ts";
 import type { ContextOptions, DateArg } from "../types.ts";
 import { differenceInMonths } from "./index.ts";
 
@@ -122,6 +123,41 @@ describe("differenceInMonths", () => {
       const resultIsNegative = isNegativeZero(result);
       expect(resultIsNegative).toBe(false);
     });
+
+    const dstTransitions = getDstTransitions(2020);
+    const dstOnly = dstTransitions.start && dstTransitions.end ? it : it.skip;
+    const dstTz =
+      Intl.DateTimeFormat().resolvedOptions().timeZone || process.env.tz;
+    dstOnly(
+      `does not report a full month when the period is a DST offset short of one, in local timezone: ${dstTz || "(unknown)"}`,
+      () => {
+        const { start, end } = dstTransitions;
+        const MINUTE = 1000 * 60;
+
+        expect(start).not.toBe(undefined);
+        expect(end).not.toBe(undefined);
+
+        if (start === undefined || end === undefined) {
+          return;
+        }
+
+        // It's usually 1 hour, but for some timezones, e.g. Australia/Lord_Howe, it is 30 minutes
+        const dstOffset =
+          (end.getTimezoneOffset() - start.getTimezoneOffset()) * MINUTE;
+
+        // Exactly one month later at the same local time is a full month.
+        const fullMonthLater = new Date(start);
+        fullMonthLater.setMonth(fullMonthLater.getMonth() + 1);
+        expect(differenceInMonths(fullMonthLater, start)).toBe(1);
+
+        // One month later, minus the DST offset, is exactly one DST-sized
+        // gap short of a full month and must not round up to 1.
+        const dstOffsetShortOfAMonth = new Date(
+          fullMonthLater.getTime() - dstOffset,
+        );
+        expect(differenceInMonths(dstOffsetShortOfAMonth, start)).toBe(0);
+      },
+    );
   });
 
   it("returns NaN if the first date is `Invalid Date`", () => {
