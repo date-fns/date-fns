@@ -671,6 +671,7 @@
     "./locale/ar-MA": "./locale/src/ar-MA/index.ts",
     "./locale/ar-SA": "./locale/src/ar-SA/index.ts",
     "./locale/ar-TN": "./locale/src/ar-TN/index.ts",
+    "./locale/ary": "./locale/src/ary/index.ts",
     "./locale/az": "./locale/src/az/index.ts",
     "./locale/be": "./locale/src/be/index.ts",
     "./locale/be-tarask": "./locale/src/be-tarask/index.ts",
@@ -7281,6 +7282,16 @@
         "import": {
           "types": "./locale/ar-TN.d.ts",
           "default": "./locale/ar-TN.js"
+        }
+      },
+      "./locale/ary": {
+        "require": {
+          "types": "./locale/ary.d.cts",
+          "default": "./locale/ary.cjs"
+        },
+        "import": {
+          "types": "./locale/ary.d.ts",
+          "default": "./locale/ary.js"
         }
       },
       "./locale/az": {

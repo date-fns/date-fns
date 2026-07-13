@@ -7,6 +7,7 @@ export * from "./ar-EG/index.ts";
 export * from "./ar-MA/index.ts";
 export * from "./ar-SA/index.ts";
 export * from "./ar-TN/index.ts";
+export * from "./ary/index.ts";
 export * from "./az/index.ts";
 export * from "./be/index.ts";
 export * from "./be-tarask/index.ts";
