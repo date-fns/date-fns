@@ -72,6 +72,7 @@ export * from "./formatDuration/index.ts";
 export * from "./formatISO/index.ts";
 export * from "./formatISO9075/index.ts";
 export * from "./formatISODuration/index.ts";
+export { isISOMatch } from "./isISOMatch/index.ts";
 export * from "./formatRFC3339/index.ts";
 export * from "./formatRFC7231/index.ts";
 export * from "./formatRelative/index.ts";
