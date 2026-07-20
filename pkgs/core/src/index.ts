@@ -69,6 +69,7 @@ export * from "./formatDistanceStrict/index.ts";
 export * from "./formatDistanceToNow/index.ts";
 export * from "./formatDistanceToNowStrict/index.ts";
 export * from "./formatDuration/index.ts";
+export * from "./formatDatetimeLocal/index.ts";
 export * from "./formatISO/index.ts";
 export * from "./formatISO9075/index.ts";
 export * from "./formatISODuration/index.ts";
