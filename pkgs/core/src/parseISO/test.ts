@@ -218,6 +218,12 @@ describe("parseISO", () => {
         expect(result instanceof Date).toBe(true);
         expect(isNaN(result.getTime())).toBe(true);
       });
+
+      it("returns `Invalid Date` if the date part after the year is malformed", () => {
+        const result = parseISO("2014-!");
+        expect(result instanceof Date).toBe(true);
+        expect(isNaN(result.getTime())).toBe(true);
+      });
     });
   });
 
