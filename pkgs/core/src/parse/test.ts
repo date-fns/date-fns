@@ -46,6 +46,12 @@ describe("parse", () => {
       expect(result).toEqual(new Date(-43, 0 /* Jan */, 1));
     });
 
+    it("falls back to the abbreviated variant when the wide one doesn't match", () => {
+      // characterizes current behavior; not asserting correctness
+      const result = parse("2018 AD", "yyyy GGGG", referenceDate);
+      expect(result).toEqual(new Date(2018, 0 /* Jan */, 1));
+    });
+
     it("with week-numbering year", () => {
       const result = parse("44 B", "Y GGGGG", referenceDate);
       expect(result).toEqual(new Date(-44, 11 /* Dec */, 30));
@@ -109,6 +115,46 @@ describe("parse", () => {
       it("gets the 100 year range from `referenceDate`", () => {
         const result = parse("02", "yy", new Date(1860, 6 /* Jul */, 2));
         expect(result).toEqual(new Date(1902, 0 /* Jan */, 1));
+      });
+
+      it("gets the previous century when the two-digit year is more than fifty years ahead of `referenceDate`", () => {
+        // See the `yy` example in the docs:
+        // parse('75', 'yy', new Date(2018, 0, 1)) //=> Wed Jan 01 1975 00:00:00
+        const result = parse("75", "yy", new Date(2018, 0 /* Jan */, 1));
+        expect(result).toEqual(new Date(1975, 0 /* Jan */, 1));
+      });
+
+      it("works when `referenceDate` is in the first fifty years of the Common Era", () => {
+        // characterizes current behavior; not asserting correctness
+        const earlyReferenceDate = new Date(1986, 0 /* Jan */, 1);
+        earlyReferenceDate.setFullYear(25);
+        const result = parse("02", "yy", earlyReferenceDate);
+        const expectedResult = new Date(0);
+        expectedResult.setFullYear(2, 0 /* Jan */, 1);
+        expectedResult.setHours(0, 0, 0, 0);
+        expect(result).toEqual(expectedResult);
+      });
+
+      it("interprets the two-digit year zero as year 100 when `referenceDate` is in the first fifty years of the Common Era", () => {
+        // characterizes current behavior; not asserting correctness
+        const earlyReferenceDate = new Date(1986, 0 /* Jan */, 1);
+        earlyReferenceDate.setFullYear(25);
+        const result = parse("00", "yy", earlyReferenceDate);
+        const expectedResult = new Date(0);
+        expectedResult.setFullYear(100, 0 /* Jan */, 1);
+        expectedResult.setHours(0, 0, 0, 0);
+        expect(result).toEqual(expectedResult);
+      });
+
+      it("works when `referenceDate` is a B.C. year", () => {
+        // characterizes current behavior; not asserting correctness
+        const bcReferenceDate = new Date(1986, 0 /* Jan */, 1);
+        bcReferenceDate.setFullYear(-50);
+        const result = parse("02", "yy", bcReferenceDate);
+        const expectedResult = new Date(0);
+        expectedResult.setFullYear(-1, 0 /* Jan */, 1);
+        expectedResult.setHours(0, 0, 0, 0);
+        expect(result).toEqual(expectedResult);
       });
     });
 
@@ -426,6 +472,22 @@ describe("parse", () => {
       expect(result).toEqual(new Date(1986, 0 /* Jan */, 1));
     });
 
+    it("falls back to the narrow variant when the abbreviated one doesn't match", () => {
+      // characterizes current behavior; not asserting correctness
+      const result = parse("1", "QQQ", referenceDate);
+      expect(result).toEqual(new Date(1986, 0 /* Jan */, 1));
+    });
+
+    it("falls back to narrower variants when the wide one doesn't match", () => {
+      // characterizes current behavior; not asserting correctness
+      expect(parse("Q1", "QQQQ", referenceDate)).toEqual(
+        new Date(1986, 0 /* Jan */, 1),
+      );
+      expect(parse("1", "QQQQ", referenceDate)).toEqual(
+        new Date(1986, 0 /* Jan */, 1),
+      );
+    });
+
     describe("validation", () => {
       const tokensToValidate: Array<
         [string, string, { useAdditionalDayOfYearTokens: boolean }?]
@@ -490,6 +552,22 @@ describe("parse", () => {
     it("narrow", () => {
       const result = parse("1", "qqqqq", referenceDate);
       expect(result).toEqual(new Date(1986, 0 /* Jan */, 1));
+    });
+
+    it("falls back to the narrow variant when the abbreviated one doesn't match", () => {
+      // characterizes current behavior; not asserting correctness
+      const result = parse("1", "qqq", referenceDate);
+      expect(result).toEqual(new Date(1986, 0 /* Jan */, 1));
+    });
+
+    it("falls back to narrower variants when the wide one doesn't match", () => {
+      // characterizes current behavior; not asserting correctness
+      expect(parse("Q1", "qqqq", referenceDate)).toEqual(
+        new Date(1986, 0 /* Jan */, 1),
+      );
+      expect(parse("1", "qqqq", referenceDate)).toEqual(
+        new Date(1986, 0 /* Jan */, 1),
+      );
     });
 
     describe("validation", () => {
@@ -558,6 +636,27 @@ describe("parse", () => {
       expect(result).toEqual(new Date(1986, 0 /* Jan */, 1));
     });
 
+    it("falls back to the narrow variant when the abbreviated one doesn't match", () => {
+      // characterizes current behavior; not asserting correctness
+      const result = parse("J", "MMM", referenceDate);
+      expect(result).toEqual(new Date(1986, 0 /* Jan */, 1));
+    });
+
+    it("falls back to narrower variants when the wide one doesn't match", () => {
+      // characterizes current behavior; not asserting correctness
+      expect(parse("Feb", "MMMM", referenceDate)).toEqual(
+        new Date(1986, 1 /* Feb */, 1),
+      );
+      expect(parse("J", "MMMM", referenceDate)).toEqual(
+        new Date(1986, 0 /* Jan */, 1),
+      );
+    });
+
+    it("returns `Invalid Date` when the string doesn't match a numeric month", () => {
+      const result = parse("abc", "MM", referenceDate);
+      expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
+    });
+
     describe("validation", () => {
       const tokensToValidate: Array<
         [string, string, { useAdditionalDayOfYearTokens: boolean }?]
@@ -621,6 +720,22 @@ describe("parse", () => {
     it("narrow", () => {
       const result = parse("J", "LLLLL", referenceDate);
       expect(result).toEqual(new Date(1986, 0 /* Jan */, 1));
+    });
+
+    it("falls back to the narrow variant when the abbreviated one doesn't match", () => {
+      // characterizes current behavior; not asserting correctness
+      const result = parse("J", "LLL", referenceDate);
+      expect(result).toEqual(new Date(1986, 0 /* Jan */, 1));
+    });
+
+    it("falls back to narrower variants when the wide one doesn't match", () => {
+      // characterizes current behavior; not asserting correctness
+      expect(parse("Feb", "LLLL", referenceDate)).toEqual(
+        new Date(1986, 1 /* Feb */, 1),
+      );
+      expect(parse("J", "LLLL", referenceDate)).toEqual(
+        new Date(1986, 0 /* Jan */, 1),
+      );
     });
 
     describe("validation", () => {
@@ -777,6 +892,11 @@ describe("parse", () => {
       expect(result).toEqual(new Date(1986, 3 /* Apr */, 28));
     });
 
+    it("returns `Invalid Date` when the string doesn't match an ordinal number", () => {
+      const result = parse("foobar", "do", referenceDate);
+      expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
+    });
+
     it("zero-padding", () => {
       const result = parse("01", "dd", referenceDate);
       expect(result).toEqual(new Date(1986, 3 /* Apr */, 1));
@@ -901,6 +1021,35 @@ describe("parse", () => {
       expect(result).toEqual(new Date(1986, 3 /* Apr */, 3));
     });
 
+    it("falls back to narrower variants when the abbreviated one doesn't match", () => {
+      // characterizes current behavior; not asserting correctness
+      expect(parse("Mo", "EEE", referenceDate)).toEqual(
+        new Date(1986, 2 /* Mar */, 31),
+      );
+      expect(parse("M", "EEE", referenceDate)).toEqual(
+        new Date(1986, 2 /* Mar */, 31),
+      );
+    });
+
+    it("falls back to the narrow variant when the short one doesn't match", () => {
+      // characterizes current behavior; not asserting correctness
+      const result = parse("M", "EEEEEE", referenceDate);
+      expect(result).toEqual(new Date(1986, 2 /* Mar */, 31));
+    });
+
+    it("falls back to narrower variants when the wide one doesn't match", () => {
+      // characterizes current behavior; not asserting correctness
+      expect(parse("Mon", "EEEE", referenceDate)).toEqual(
+        new Date(1986, 2 /* Mar */, 31),
+      );
+      expect(parse("Mo", "EEEE", referenceDate)).toEqual(
+        new Date(1986, 2 /* Mar */, 31),
+      );
+      expect(parse("M", "EEEE", referenceDate)).toEqual(
+        new Date(1986, 2 /* Mar */, 31),
+      );
+    });
+
     it("allows to specify which day is the first day of the week", () => {
       const result = parse("Thursday", "EEEE", referenceDate, {
         weekStartsOn: /* Fri */ 5,
@@ -969,6 +1118,35 @@ describe("parse", () => {
     it("short", () => {
       const result = parse("Fr", "iiiiii", referenceDate);
       expect(result).toEqual(new Date(1986, 3 /* Apr */, 4));
+    });
+
+    it("falls back to narrower variants when the abbreviated one doesn't match", () => {
+      // characterizes current behavior; not asserting correctness
+      expect(parse("Mo", "iii", referenceDate)).toEqual(
+        new Date(1986, 2 /* Mar */, 31),
+      );
+      expect(parse("M", "iii", referenceDate)).toEqual(
+        new Date(1986, 2 /* Mar */, 31),
+      );
+    });
+
+    it("falls back to the narrow variant when the short one doesn't match", () => {
+      // characterizes current behavior; not asserting correctness
+      const result = parse("M", "iiiiii", referenceDate);
+      expect(result).toEqual(new Date(1986, 2 /* Mar */, 31));
+    });
+
+    it("falls back to narrower variants when the wide one doesn't match", () => {
+      // characterizes current behavior; not asserting correctness
+      expect(parse("Mon", "iiii", referenceDate)).toEqual(
+        new Date(1986, 2 /* Mar */, 31),
+      );
+      expect(parse("Mo", "iiii", referenceDate)).toEqual(
+        new Date(1986, 2 /* Mar */, 31),
+      );
+      expect(parse("M", "iiii", referenceDate)).toEqual(
+        new Date(1986, 2 /* Mar */, 31),
+      );
     });
 
     describe("validation", () => {
@@ -1041,6 +1219,35 @@ describe("parse", () => {
     it("short", () => {
       const result = parse("Fr", "eeeeee", referenceDate);
       expect(result).toEqual(new Date(1986, 3 /* Apr */, 4));
+    });
+
+    it("falls back to narrower variants when the abbreviated one doesn't match", () => {
+      // characterizes current behavior; not asserting correctness
+      expect(parse("Mo", "eee", referenceDate)).toEqual(
+        new Date(1986, 2 /* Mar */, 31),
+      );
+      expect(parse("M", "eee", referenceDate)).toEqual(
+        new Date(1986, 2 /* Mar */, 31),
+      );
+    });
+
+    it("falls back to the narrow variant when the short one doesn't match", () => {
+      // characterizes current behavior; not asserting correctness
+      const result = parse("M", "eeeeee", referenceDate);
+      expect(result).toEqual(new Date(1986, 2 /* Mar */, 31));
+    });
+
+    it("falls back to narrower variants when the wide one doesn't match", () => {
+      // characterizes current behavior; not asserting correctness
+      expect(parse("Mon", "eeee", referenceDate)).toEqual(
+        new Date(1986, 2 /* Mar */, 31),
+      );
+      expect(parse("Mo", "eeee", referenceDate)).toEqual(
+        new Date(1986, 2 /* Mar */, 31),
+      );
+      expect(parse("M", "eeee", referenceDate)).toEqual(
+        new Date(1986, 2 /* Mar */, 31),
+      );
     });
 
     it("allows to specify which day is the first day of the week", () => {
@@ -1122,6 +1329,35 @@ describe("parse", () => {
       expect(result).toEqual(new Date(1986, 3 /* Apr */, 4));
     });
 
+    it("falls back to narrower variants when the abbreviated one doesn't match", () => {
+      // characterizes current behavior; not asserting correctness
+      expect(parse("Mo", "ccc", referenceDate)).toEqual(
+        new Date(1986, 2 /* Mar */, 31),
+      );
+      expect(parse("M", "ccc", referenceDate)).toEqual(
+        new Date(1986, 2 /* Mar */, 31),
+      );
+    });
+
+    it("falls back to the narrow variant when the short one doesn't match", () => {
+      // characterizes current behavior; not asserting correctness
+      const result = parse("M", "cccccc", referenceDate);
+      expect(result).toEqual(new Date(1986, 2 /* Mar */, 31));
+    });
+
+    it("falls back to narrower variants when the wide one doesn't match", () => {
+      // characterizes current behavior; not asserting correctness
+      expect(parse("Mon", "cccc", referenceDate)).toEqual(
+        new Date(1986, 2 /* Mar */, 31),
+      );
+      expect(parse("Mo", "cccc", referenceDate)).toEqual(
+        new Date(1986, 2 /* Mar */, 31),
+      );
+      expect(parse("M", "cccc", referenceDate)).toEqual(
+        new Date(1986, 2 /* Mar */, 31),
+      );
+    });
+
     it("allows to specify which day is the first day of the week", () => {
       const result = parse("7th", "co", referenceDate, {
         weekStartsOn: /* Fri */ 5,
@@ -1191,6 +1427,18 @@ describe("parse", () => {
       expect(result).toEqual(new Date(1986, 3 /* Apr */, 4, 11));
     });
 
+    it("falls back to the narrow variant when the abbreviated one doesn't match", () => {
+      // characterizes current behavior; not asserting correctness
+      const result = parse("mi", "aaa", referenceDate);
+      expect(result).toEqual(new Date(1986, 3 /* Apr */, 4, 0));
+    });
+
+    it("falls back to narrower variants when the wide one doesn't match", () => {
+      // characterizes current behavior; not asserting correctness
+      const result = parse("mi", "aaaa", referenceDate);
+      expect(result).toEqual(new Date(1986, 3 /* Apr */, 4, 0));
+    });
+
     describe("validation", () => {
       [
         ["a", "AM"],
@@ -1228,6 +1476,18 @@ describe("parse", () => {
 
     it("narrow", () => {
       const result = parse("mi", "bbbbb", referenceDate);
+      expect(result).toEqual(new Date(1986, 3 /* Apr */, 4, 0));
+    });
+
+    it("falls back to the narrow variant when the abbreviated one doesn't match", () => {
+      // characterizes current behavior; not asserting correctness
+      const result = parse("mi", "bbb", referenceDate);
+      expect(result).toEqual(new Date(1986, 3 /* Apr */, 4, 0));
+    });
+
+    it("falls back to narrower variants when the wide one doesn't match", () => {
+      // characterizes current behavior; not asserting correctness
+      const result = parse("mi", "bbbb", referenceDate);
       expect(result).toEqual(new Date(1986, 3 /* Apr */, 4, 0));
     });
 
@@ -1269,6 +1529,23 @@ describe("parse", () => {
     it("narrow", () => {
       const result = parse("5 in the evening", "h BBBBB", referenceDate);
       expect(result).toEqual(new Date(1986, 3 /* Apr */, 4, 17));
+    });
+
+    it("morning", () => {
+      const result = parse("in the morning", "BBBB", referenceDate);
+      expect(result).toEqual(new Date(1986, 3 /* Apr */, 4, 4));
+    });
+
+    it("falls back to the narrow variant when the abbreviated one doesn't match", () => {
+      // characterizes current behavior; not asserting correctness
+      const result = parse("mi", "B", referenceDate);
+      expect(result).toEqual(new Date(1986, 3 /* Apr */, 4, 0));
+    });
+
+    it("falls back to narrower variants when the wide one doesn't match", () => {
+      // characterizes current behavior; not asserting correctness
+      const result = parse("mi", "BBBB", referenceDate);
+      expect(result).toEqual(new Date(1986, 3 /* Apr */, 4, 0));
     });
 
     describe("validation", () => {
@@ -1387,6 +1664,11 @@ describe("parse", () => {
     it("zero-padding", () => {
       const result = parse("1", "KK", referenceDate);
       expect(result).toEqual(new Date(1986, 3 /* Apr */, 4, 1));
+    });
+
+    it("converts the hour to PM when the day period is PM", () => {
+      const result = parse("11 PM", "K a", referenceDate);
+      expect(result).toEqual(new Date(1986, 3 /* Apr */, 4, 23));
     });
 
     describe("validation", () => {
@@ -1593,6 +1875,11 @@ describe("parse", () => {
           referenceDate,
         );
         expect(result).toEqual(new Date("2016-11-25T16:38:38.123+05:00"));
+      });
+
+      it("returns `Invalid Date` when the string doesn't match the timezone format", () => {
+        const result = parse("2016-11-25 abc", "yyyy-MM-dd X", referenceDate);
+        expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
       });
     });
 
