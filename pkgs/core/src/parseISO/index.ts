@@ -244,7 +244,8 @@ function parseTimezone(timezoneString: string): number {
   if (timezoneString === "Z") return 0;
 
   const captures = timezoneString.match(timezoneRegex);
-  if (!captures) return 0;
+  // Invalid ISO-formatted timezone
+  if (!captures) return NaN;
 
   const sign = captures[1] === "+" ? -1 : 1;
   const hours = parseInt(captures[2]);

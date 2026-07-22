@@ -46,6 +46,21 @@ describe("parse", () => {
       expect(result).toEqual(new Date(-43, 0 /* Jan */, 1));
     });
 
+    it("narrow fallback for the abbreviated token", () => {
+      const result = parse("44 B", "y G", referenceDate);
+      expect(result).toEqual(new Date(-43, 0 /* Jan */, 1));
+    });
+
+    it("abbreviated fallback for the wide token", () => {
+      const result = parse("2018 AD", "yyyy GGGG", referenceDate);
+      expect(result).toEqual(new Date(2018, 0 /* Jan */, 1));
+    });
+
+    it("narrow fallback for the wide token", () => {
+      const result = parse("44 B", "y GGGG", referenceDate);
+      expect(result).toEqual(new Date(-43, 0 /* Jan */, 1));
+    });
+
     it("with week-numbering year", () => {
       const result = parse("44 B", "Y GGGGG", referenceDate);
       expect(result).toEqual(new Date(-44, 11 /* Dec */, 30));
@@ -109,6 +124,41 @@ describe("parse", () => {
       it("gets the 100 year range from `referenceDate`", () => {
         const result = parse("02", "yy", new Date(1860, 6 /* Jul */, 2));
         expect(result).toEqual(new Date(1902, 0 /* Jan */, 1));
+      });
+
+      it("gets the previous century when the year is out of the range", () => {
+        const result = parse("50", "yy", referenceDate);
+        expect(result).toEqual(new Date(1950, 0 /* Jan */, 1));
+      });
+
+      it("works with a reference date close to the first century", () => {
+        const closeReferenceDate = new Date(0);
+        closeReferenceDate.setFullYear(25, 0 /* Jan */, 1);
+        const expectedResult = new Date(0);
+        expectedResult.setFullYear(50, 0 /* Jan */, 1);
+        expectedResult.setHours(0, 0, 0, 0);
+        const result = parse("50", "yy", closeReferenceDate);
+        expect(result).toEqual(expectedResult);
+      });
+
+      it("interprets 00 as year 100 with a reference date close to the first century", () => {
+        const closeReferenceDate = new Date(0);
+        closeReferenceDate.setFullYear(25, 0 /* Jan */, 1);
+        const expectedResult = new Date(0);
+        expectedResult.setFullYear(100, 0 /* Jan */, 1);
+        expectedResult.setHours(0, 0, 0, 0);
+        const result = parse("00", "yy", closeReferenceDate);
+        expect(result).toEqual(expectedResult);
+      });
+
+      it("works with a BC reference date", () => {
+        const bcReferenceDate = new Date(0);
+        bcReferenceDate.setFullYear(-5, 0 /* Jan */, 1);
+        const expectedResult = new Date(0);
+        expectedResult.setFullYear(-49, 0 /* Jan */, 1);
+        expectedResult.setHours(0, 0, 0, 0);
+        const result = parse("50", "yy", bcReferenceDate);
+        expect(result).toEqual(expectedResult);
       });
     });
 
@@ -426,6 +476,21 @@ describe("parse", () => {
       expect(result).toEqual(new Date(1986, 0 /* Jan */, 1));
     });
 
+    it("narrow fallback for the abbreviated token", () => {
+      const result = parse("1", "QQQ", referenceDate);
+      expect(result).toEqual(new Date(1986, 0 /* Jan */, 1));
+    });
+
+    it("abbreviated fallback for the wide token", () => {
+      const result = parse("Q3", "QQQQ", referenceDate);
+      expect(result).toEqual(new Date(1986, 6 /* Jul */, 1));
+    });
+
+    it("narrow fallback for the wide token", () => {
+      const result = parse("2", "QQQQ", referenceDate);
+      expect(result).toEqual(new Date(1986, 3 /* Apr */, 1));
+    });
+
     describe("validation", () => {
       const tokensToValidate: Array<
         [string, string, { useAdditionalDayOfYearTokens: boolean }?]
@@ -490,6 +555,21 @@ describe("parse", () => {
     it("narrow", () => {
       const result = parse("1", "qqqqq", referenceDate);
       expect(result).toEqual(new Date(1986, 0 /* Jan */, 1));
+    });
+
+    it("narrow fallback for the abbreviated token", () => {
+      const result = parse("1", "qqq", referenceDate);
+      expect(result).toEqual(new Date(1986, 0 /* Jan */, 1));
+    });
+
+    it("abbreviated fallback for the wide token", () => {
+      const result = parse("Q3", "qqqq", referenceDate);
+      expect(result).toEqual(new Date(1986, 6 /* Jul */, 1));
+    });
+
+    it("narrow fallback for the wide token", () => {
+      const result = parse("2", "qqqq", referenceDate);
+      expect(result).toEqual(new Date(1986, 3 /* Apr */, 1));
     });
 
     describe("validation", () => {
@@ -558,6 +638,21 @@ describe("parse", () => {
       expect(result).toEqual(new Date(1986, 0 /* Jan */, 1));
     });
 
+    it("narrow fallback for the abbreviated token", () => {
+      const result = parse("J", "MMM", referenceDate);
+      expect(result).toEqual(new Date(1986, 0 /* Jan */, 1));
+    });
+
+    it("abbreviated fallback for the wide token", () => {
+      const result = parse("Nov", "MMMM", referenceDate);
+      expect(result).toEqual(new Date(1986, 10 /* Nov */, 1));
+    });
+
+    it("narrow fallback for the wide token", () => {
+      const result = parse("J", "MMMM", referenceDate);
+      expect(result).toEqual(new Date(1986, 0 /* Jan */, 1));
+    });
+
     describe("validation", () => {
       const tokensToValidate: Array<
         [string, string, { useAdditionalDayOfYearTokens: boolean }?]
@@ -620,6 +715,21 @@ describe("parse", () => {
 
     it("narrow", () => {
       const result = parse("J", "LLLLL", referenceDate);
+      expect(result).toEqual(new Date(1986, 0 /* Jan */, 1));
+    });
+
+    it("narrow fallback for the abbreviated token", () => {
+      const result = parse("J", "LLL", referenceDate);
+      expect(result).toEqual(new Date(1986, 0 /* Jan */, 1));
+    });
+
+    it("abbreviated fallback for the wide token", () => {
+      const result = parse("Nov", "LLLL", referenceDate);
+      expect(result).toEqual(new Date(1986, 10 /* Nov */, 1));
+    });
+
+    it("narrow fallback for the wide token", () => {
+      const result = parse("J", "LLLL", referenceDate);
       expect(result).toEqual(new Date(1986, 0 /* Jan */, 1));
     });
 
@@ -901,6 +1011,36 @@ describe("parse", () => {
       expect(result).toEqual(new Date(1986, 3 /* Apr */, 3));
     });
 
+    it("short fallback for the abbreviated token", () => {
+      const result = parse("Th", "EEE", referenceDate);
+      expect(result).toEqual(new Date(1986, 3 /* Apr */, 3));
+    });
+
+    it("narrow fallback for the abbreviated token", () => {
+      const result = parse("W", "EEE", referenceDate);
+      expect(result).toEqual(new Date(1986, 3 /* Apr */, 2));
+    });
+
+    it("narrow fallback for the short token", () => {
+      const result = parse("W", "EEEEEE", referenceDate);
+      expect(result).toEqual(new Date(1986, 3 /* Apr */, 2));
+    });
+
+    it("abbreviated fallback for the wide token", () => {
+      const result = parse("Mon", "EEEE", referenceDate);
+      expect(result).toEqual(new Date(1986, 2 /* Mar */, 31));
+    });
+
+    it("short fallback for the wide token", () => {
+      const result = parse("Th", "EEEE", referenceDate);
+      expect(result).toEqual(new Date(1986, 3 /* Apr */, 3));
+    });
+
+    it("narrow fallback for the wide token", () => {
+      const result = parse("W", "EEEE", referenceDate);
+      expect(result).toEqual(new Date(1986, 3 /* Apr */, 2));
+    });
+
     it("allows to specify which day is the first day of the week", () => {
       const result = parse("Thursday", "EEEE", referenceDate, {
         weekStartsOn: /* Fri */ 5,
@@ -969,6 +1109,36 @@ describe("parse", () => {
     it("short", () => {
       const result = parse("Fr", "iiiiii", referenceDate);
       expect(result).toEqual(new Date(1986, 3 /* Apr */, 4));
+    });
+
+    it("short fallback for the abbreviated token", () => {
+      const result = parse("Th", "iii", referenceDate);
+      expect(result).toEqual(new Date(1986, 3 /* Apr */, 3));
+    });
+
+    it("narrow fallback for the abbreviated token", () => {
+      const result = parse("W", "iii", referenceDate);
+      expect(result).toEqual(new Date(1986, 3 /* Apr */, 2));
+    });
+
+    it("narrow fallback for the short token", () => {
+      const result = parse("W", "iiiiii", referenceDate);
+      expect(result).toEqual(new Date(1986, 3 /* Apr */, 2));
+    });
+
+    it("abbreviated fallback for the wide token", () => {
+      const result = parse("Mon", "iiii", referenceDate);
+      expect(result).toEqual(new Date(1986, 2 /* Mar */, 31));
+    });
+
+    it("short fallback for the wide token", () => {
+      const result = parse("Th", "iiii", referenceDate);
+      expect(result).toEqual(new Date(1986, 3 /* Apr */, 3));
+    });
+
+    it("narrow fallback for the wide token", () => {
+      const result = parse("W", "iiii", referenceDate);
+      expect(result).toEqual(new Date(1986, 3 /* Apr */, 2));
     });
 
     describe("validation", () => {
@@ -1041,6 +1211,36 @@ describe("parse", () => {
     it("short", () => {
       const result = parse("Fr", "eeeeee", referenceDate);
       expect(result).toEqual(new Date(1986, 3 /* Apr */, 4));
+    });
+
+    it("short fallback for the abbreviated token", () => {
+      const result = parse("Th", "eee", referenceDate);
+      expect(result).toEqual(new Date(1986, 3 /* Apr */, 3));
+    });
+
+    it("narrow fallback for the abbreviated token", () => {
+      const result = parse("W", "eee", referenceDate);
+      expect(result).toEqual(new Date(1986, 3 /* Apr */, 2));
+    });
+
+    it("narrow fallback for the short token", () => {
+      const result = parse("W", "eeeeee", referenceDate);
+      expect(result).toEqual(new Date(1986, 3 /* Apr */, 2));
+    });
+
+    it("abbreviated fallback for the wide token", () => {
+      const result = parse("Mon", "eeee", referenceDate);
+      expect(result).toEqual(new Date(1986, 2 /* Mar */, 31));
+    });
+
+    it("short fallback for the wide token", () => {
+      const result = parse("Th", "eeee", referenceDate);
+      expect(result).toEqual(new Date(1986, 3 /* Apr */, 3));
+    });
+
+    it("narrow fallback for the wide token", () => {
+      const result = parse("W", "eeee", referenceDate);
+      expect(result).toEqual(new Date(1986, 3 /* Apr */, 2));
     });
 
     it("allows to specify which day is the first day of the week", () => {
@@ -1122,6 +1322,36 @@ describe("parse", () => {
       expect(result).toEqual(new Date(1986, 3 /* Apr */, 4));
     });
 
+    it("short fallback for the abbreviated token", () => {
+      const result = parse("Th", "ccc", referenceDate);
+      expect(result).toEqual(new Date(1986, 3 /* Apr */, 3));
+    });
+
+    it("narrow fallback for the abbreviated token", () => {
+      const result = parse("W", "ccc", referenceDate);
+      expect(result).toEqual(new Date(1986, 3 /* Apr */, 2));
+    });
+
+    it("narrow fallback for the short token", () => {
+      const result = parse("W", "cccccc", referenceDate);
+      expect(result).toEqual(new Date(1986, 3 /* Apr */, 2));
+    });
+
+    it("abbreviated fallback for the wide token", () => {
+      const result = parse("Mon", "cccc", referenceDate);
+      expect(result).toEqual(new Date(1986, 2 /* Mar */, 31));
+    });
+
+    it("short fallback for the wide token", () => {
+      const result = parse("Th", "cccc", referenceDate);
+      expect(result).toEqual(new Date(1986, 3 /* Apr */, 3));
+    });
+
+    it("narrow fallback for the wide token", () => {
+      const result = parse("W", "cccc", referenceDate);
+      expect(result).toEqual(new Date(1986, 3 /* Apr */, 2));
+    });
+
     it("allows to specify which day is the first day of the week", () => {
       const result = parse("7th", "co", referenceDate, {
         weekStartsOn: /* Fri */ 5,
@@ -1191,6 +1421,16 @@ describe("parse", () => {
       expect(result).toEqual(new Date(1986, 3 /* Apr */, 4, 11));
     });
 
+    it("narrow fallback for the abbreviated token", () => {
+      const result = parse("5 p", "h a", referenceDate);
+      expect(result).toEqual(new Date(1986, 3 /* Apr */, 4, 17));
+    });
+
+    it("narrow fallback for the wide token", () => {
+      const result = parse("5 p", "h aaaa", referenceDate);
+      expect(result).toEqual(new Date(1986, 3 /* Apr */, 4, 17));
+    });
+
     describe("validation", () => {
       [
         ["a", "AM"],
@@ -1231,6 +1471,16 @@ describe("parse", () => {
       expect(result).toEqual(new Date(1986, 3 /* Apr */, 4, 0));
     });
 
+    it("narrow fallback for the abbreviated token", () => {
+      const result = parse("mi", "b", referenceDate);
+      expect(result).toEqual(new Date(1986, 3 /* Apr */, 4, 0));
+    });
+
+    it("narrow fallback for the wide token", () => {
+      const result = parse("mi", "bbbb", referenceDate);
+      expect(result).toEqual(new Date(1986, 3 /* Apr */, 4, 0));
+    });
+
     describe("validation", () => {
       [
         ["a", "AM"],
@@ -1268,6 +1518,21 @@ describe("parse", () => {
 
     it("narrow", () => {
       const result = parse("5 in the evening", "h BBBBB", referenceDate);
+      expect(result).toEqual(new Date(1986, 3 /* Apr */, 4, 17));
+    });
+
+    it("morning", () => {
+      const result = parse("in the morning", "B", referenceDate);
+      expect(result).toEqual(new Date(1986, 3 /* Apr */, 4, 4));
+    });
+
+    it("narrow fallback for the abbreviated token", () => {
+      const result = parse("5 p", "h B", referenceDate);
+      expect(result).toEqual(new Date(1986, 3 /* Apr */, 4, 17));
+    });
+
+    it("narrow fallback for the wide token", () => {
+      const result = parse("5 p", "h BBBB", referenceDate);
       expect(result).toEqual(new Date(1986, 3 /* Apr */, 4, 17));
     });
 
@@ -1387,6 +1652,16 @@ describe("parse", () => {
     it("zero-padding", () => {
       const result = parse("1", "KK", referenceDate);
       expect(result).toEqual(new Date(1986, 3 /* Apr */, 4, 1));
+    });
+
+    it("with AM", () => {
+      const result = parse("11 AM", "K a", referenceDate);
+      expect(result).toEqual(new Date(1986, 3 /* Apr */, 4, 11));
+    });
+
+    it("with PM", () => {
+      const result = parse("11 PM", "K a", referenceDate);
+      expect(result).toEqual(new Date(1986, 3 /* Apr */, 4, 23));
     });
 
     describe("validation", () => {
@@ -2238,6 +2513,21 @@ describe("parse", () => {
       const dateString = "2017-01-01";
       const formatString = "MMMM do yyyy";
       const result = parse(dateString, formatString, referenceDate);
+      expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
+    });
+
+    it("returns `Invalid Date` if a numeric token fails to parse a value", () => {
+      const result = parse("abc", "MM", referenceDate);
+      expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
+    });
+
+    it("returns `Invalid Date` if an ordinal token fails to parse a value", () => {
+      const result = parse("abc", "do", referenceDate);
+      expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
+    });
+
+    it("returns `Invalid Date` if a timezone token fails to parse a value", () => {
+      const result = parse("abc", "xx", referenceDate);
       expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
     });
 

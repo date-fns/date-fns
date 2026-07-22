@@ -247,6 +247,32 @@ describe("roundToNearestHours", () => {
     });
   });
 
+  it("returns `Invalid Date` if nearestTo is less than 1", () => {
+    const result = roundToNearestHours(makeDate(15), {
+      // @ts-expect-error - testing the runtime validation of the option
+      nearestTo: 0,
+    });
+    expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
+  });
+
+  it("returns `Invalid Date` if nearestTo is greater than 12", () => {
+    const result = roundToNearestHours(makeDate(15), {
+      // @ts-expect-error - testing the runtime validation of the option
+      nearestTo: 13,
+    });
+    expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
+  });
+
+  it("returns invalid date of the context type if nearestTo is out of range", () => {
+    const result = roundToNearestHours("2024-04-10T07:00:00Z", {
+      // @ts-expect-error - testing the runtime validation of the option
+      nearestTo: 13,
+      in: tz("Asia/Singapore"),
+    });
+    expect(result).toBeInstanceOf(TZDate);
+    expect(isNaN(result.getTime())).toBe(true);
+  });
+
   it("resolves the date type by default", () => {
     const result = roundToNearestHours(Date.now());
     expect(result).toBeInstanceOf(Date);

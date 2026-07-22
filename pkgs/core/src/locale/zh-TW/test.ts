@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { format } from "../../format/index.ts";
 import { parse } from "../../parse/index.ts";
 import { zhTW } from "./index.ts";
 
@@ -29,5 +30,85 @@ describe("zh-TW locale", () => {
         locale: zhTW,
       }),
     ).toEqual(new Date(2022, 11 /* Dec */, 27));
+  });
+
+  describe("formatDistance", () => {
+    it("works with a token without forms", () => {
+      expect(zhTW.formatDistance("halfAMinute", 30)).toBe("半分鐘");
+    });
+
+    it("works with the one form", () => {
+      expect(zhTW.formatDistance("xSeconds", 1)).toBe("1 秒");
+    });
+
+    it("works with the other form", () => {
+      expect(zhTW.formatDistance("xSeconds", 30)).toBe("30 秒");
+    });
+
+    it("adds a suffix for the future", () => {
+      expect(
+        zhTW.formatDistance("xDays", 2, { addSuffix: true, comparison: 1 }),
+      ).toBe("2 天內");
+    });
+
+    it("adds a suffix for the past", () => {
+      expect(
+        zhTW.formatDistance("xDays", 2, { addSuffix: true, comparison: -1 }),
+      ).toBe("2 天前");
+    });
+  });
+
+  describe("formatRelative", () => {
+    const baseDate = new Date(1986, 3 /* Apr */, 4, 10, 32);
+
+    it("returns the format for the token", () => {
+      expect(zhTW.formatRelative("today", baseDate, baseDate)).toBe("'今天' p");
+    });
+  });
+
+  describe("ordinalNumber", () => {
+    const date = new Date(2017, 0 /* Jan */, 4, 10, 32, 5);
+
+    it("suffixes dates", () => {
+      expect(format(date, "do", { locale: zhTW })).toBe("4日");
+    });
+
+    it("suffixes hours", () => {
+      expect(format(date, "ho", { locale: zhTW })).toBe("10時");
+    });
+
+    it("suffixes minutes", () => {
+      expect(format(date, "mo", { locale: zhTW })).toBe("32分");
+    });
+
+    it("suffixes seconds", () => {
+      expect(format(date, "so", { locale: zhTW })).toBe("5秒");
+    });
+
+    it("prefixes other units", () => {
+      expect(format(date, "Qo", { locale: zhTW })).toBe("第 1");
+    });
+  });
+
+  describe("quarter", () => {
+    it("formats a quarter", () => {
+      expect(
+        format(new Date(2017, 0 /* Jan */, 1), "QQQ", { locale: zhTW }),
+      ).toBe("第一刻");
+    });
+
+    it("parses an ordinal quarter", () => {
+      const result = parse("第 3", "Qo", new Date(2017, 0 /* Jan */, 1), {
+        locale: zhTW,
+      });
+      expect(result).toEqual(new Date(2017, 6 /* Jul */, 1));
+    });
+
+    it("parses a narrow quarter", () => {
+      const result = parse("3", "QQQQQ", new Date(2017, 0 /* Jan */, 1), {
+        locale: zhTW,
+      });
+      expect(result).toEqual(new Date(2017, 6 /* Jul */, 1));
+    });
   });
 });

@@ -291,6 +291,12 @@ describe("parseISO", () => {
     });
 
     describe("date", () => {
+      it("returns `Invalid Date` for malformed date component", () => {
+        const result = parseISO("2014-1");
+        expect(result instanceof Date).toBe(true);
+        expect(isNaN(result.getTime())).toBe(true);
+      });
+
       it("returns `Invalid Date` when it contains spaces after the date", () => {
         const result = parseISO("2014-02-11  basketball");
         expect(result instanceof Date).toBe(true);
@@ -344,6 +350,12 @@ describe("parseISO", () => {
     describe("timezones", () => {
       it("returns `Invalid Date` for invalid timezone minutes", () => {
         const result = parseISO("2014-02-11T21:35:45+04:60");
+        expect(result instanceof Date).toBe(true);
+        expect(isNaN(result.getTime())).toBe(true);
+      });
+
+      it("returns `Invalid Date` for malformed timezone", () => {
+        const result = parseISO("2014-02-11T21:35:45+04:5");
         expect(result instanceof Date).toBe(true);
         expect(isNaN(result.getTime())).toBe(true);
       });

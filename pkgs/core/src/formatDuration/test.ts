@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import type { Locale } from "../locale/types.ts";
 import { formatDuration } from "./index.ts";
 
 describe("formatDuration", () => {
@@ -72,5 +73,11 @@ describe("formatDuration", () => {
     expect(formatDuration({ months: 9, days: 2 }, { delimiter: ", " })).toBe(
       "9 months, 2 days",
     );
+  });
+
+  it("returns an empty string if the locale has no formatDistance", () => {
+    expect(
+      formatDuration({ months: 9, days: 2 }, { locale: {} as Locale }),
+    ).toBe("");
   });
 });

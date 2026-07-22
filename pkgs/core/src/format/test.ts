@@ -597,6 +597,10 @@ describe("format", () => {
       const resultNegative30Offset = format(date, "X XX XXX XXXX XXXXX");
       expect(resultNegative30Offset).toBe("-0730 -0730 -07:30 -0730 -07:30");
 
+      getTimezoneOffsetStub.mockReturnValue(-480);
+      const resultPositiveOffset = format(date, "X XX XXX XXXX XXXXX");
+      expect(resultPositiveOffset).toBe("+08 +0800 +08:00 +0800 +08:00");
+
       getTimezoneOffsetStub.mockRestore();
     });
 
@@ -634,6 +638,16 @@ describe("format", () => {
       const resultNegative30Offset = format(date, "O OO OOO OOOO");
       expect(resultNegative30Offset).toBe(
         "GMT-7:30 GMT-7:30 GMT-7:30 GMT-07:30",
+      );
+
+      getTimezoneOffsetStub.mockReturnValue(-480);
+      const resultPositiveOffset = format(date, "O OO OOO OOOO");
+      expect(resultPositiveOffset).toBe("GMT+8 GMT+8 GMT+8 GMT+08:00");
+
+      getTimezoneOffsetStub.mockReturnValue(-330);
+      const resultPositive30Offset = format(date, "O OO OOO OOOO");
+      expect(resultPositive30Offset).toBe(
+        "GMT+5:30 GMT+5:30 GMT+5:30 GMT+05:30",
       );
 
       getTimezoneOffsetStub.mockRestore();

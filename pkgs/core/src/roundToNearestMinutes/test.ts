@@ -261,6 +261,22 @@ describe("roundToNearestMinutes", () => {
     expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
   });
 
+  it("returns `Invalid Date` if nearestTo is less than 1", () => {
+    const result = roundToNearestMinutes(makeDate(15), {
+      // @ts-expect-error - testing the runtime validation of the option
+      nearestTo: 0,
+    });
+    expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
+  });
+
+  it("returns `Invalid Date` if nearestTo is greater than 30", () => {
+    const result = roundToNearestMinutes(makeDate(15), {
+      // @ts-expect-error - testing the runtime validation of the option
+      nearestTo: 31,
+    });
+    expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
+  });
+
   it("resolves the date type by default", () => {
     const result = roundToNearestMinutes(Date.now());
     expect(result).toBeInstanceOf(Date);

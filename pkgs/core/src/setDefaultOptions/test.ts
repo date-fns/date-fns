@@ -43,6 +43,11 @@ describe("setDefaultOptions", () => {
     });
   });
 
+  it("ignores inherited properties", () => {
+    setDefaultOptions(Object.create({ weekStartsOn: 1 }) as DefaultOptions);
+    expect(getInternalDefaultOptions()).toEqual({});
+  });
+
   it("merges with previous `defaultOptions` calls", () => {
     setDefaultOptions({ weekStartsOn: 1 });
     setDefaultOptions({ firstWeekContainsDate: 4 });
