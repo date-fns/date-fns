@@ -3,6 +3,7 @@ import { parse } from "./index.ts";
 import { assertType } from "../_lib/test/index.ts";
 import { UTCDate } from "@date-fns/utc";
 import { TZDate, tz } from "@date-fns/tz";
+import { bs, hr, srLatn } from "../locale/index.ts";
 
 describe("parse", () => {
   const referenceDate = new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 900);
@@ -906,6 +907,26 @@ describe("parse", () => {
         weekStartsOn: /* Fri */ 5,
       });
       expect(result).toEqual(new Date(1986, 3 /* Apr */, 10));
+    });
+
+    it("parses localized weekday names for hr, bs and sr-Latn (issue with English parse patterns)", () => {
+      // These locales previously shipped English `parseDayPatterns`
+      // (su/m/tu/w/th/f/sa), so parsing their own weekday output failed.
+      const cases = [
+        [hr, "ponedjeljak", 1 /* Mon */],
+        [hr, "srijeda", 3 /* Wed */],
+        [hr, "subota", 6 /* Sat */],
+        [bs, "utorak", 2 /* Tue */],
+        [bs, "srijeda", 3 /* Wed */],
+        [bs, "subota", 6 /* Sat */],
+        [srLatn, "sreda", 3 /* Wed */],
+        [srLatn, "petak", 5 /* Fri */],
+        [srLatn, "subota", 6 /* Sat */],
+      ] as const;
+      for (const [locale, input, day] of cases) {
+        const result = parse(input, "EEEE", referenceDate, { locale });
+        expect(result.getDay()).toBe(day);
+      }
     });
 
     describe("validation", () => {
