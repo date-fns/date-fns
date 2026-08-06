@@ -1,5 +1,6 @@
 import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
+import { addMonths } from "../addMonths/index.ts";
 import type { ContextOptions, DateArg } from "../types.ts";
 import { differenceInMonths } from "./index.ts";
 
@@ -121,6 +122,94 @@ describe("differenceInMonths", () => {
 
       const resultIsNegative = isNegativeZero(result);
       expect(resultIsNegative).toBe(false);
+    });
+
+    it("counts a whole year between Feb 28 2026 and Feb 28 2027", () => {
+      const result = differenceInMonths(
+        new Date(2027, 1 /* Feb */, 28),
+        new Date(2026, 1 /* Feb */, 28),
+      );
+      expect(result).toBe(12);
+    });
+
+    it("gives the same magnitude whichever way round the arguments go", () => {
+      // The later date landing on the last day of February used to change the
+      // magnitude depending on argument order.
+      expect(
+        differenceInMonths(
+          new Date(2027, 1 /* Feb */, 28),
+          new Date(2026, 1 /* Feb */, 28),
+        ),
+      ).toBe(12);
+      expect(
+        differenceInMonths(
+          new Date(2026, 1 /* Feb */, 28),
+          new Date(2027, 1 /* Feb */, 28),
+        ),
+      ).toBe(-12);
+
+      expect(
+        differenceInMonths(
+          new Date(2025, 1 /* Feb */, 28),
+          new Date(2024, 4 /* May */, 30),
+        ),
+      ).toBe(9);
+      expect(
+        differenceInMonths(
+          new Date(2024, 4 /* May */, 30),
+          new Date(2025, 1 /* Feb */, 28),
+        ),
+      ).toBe(-9);
+    });
+
+    it("round-trips with addMonths, which clamps to the month end", () => {
+      // In a common year 31 January + 1 month clamps to the 28th...
+      const jan31 = new Date(2026, 0 /* Jan */, 31);
+      expect(addMonths(jan31, 1)).toEqual(new Date(2026, 1 /* Feb */, 28));
+      expect(differenceInMonths(addMonths(jan31, 1), jan31)).toBe(1);
+      expect(differenceInMonths(addMonths(jan31, 3), jan31)).toBe(3);
+
+      // ...and in a leap year it clamps to the 29th instead
+      const leapJan31 = new Date(2024, 0 /* Jan */, 31);
+      expect(addMonths(leapJan31, 1)).toEqual(new Date(2024, 1 /* Feb */, 29));
+      expect(differenceInMonths(addMonths(leapJan31, 1), leapJan31)).toBe(1);
+
+      const leapDay = new Date(2024, 1 /* Feb */, 29);
+      expect(differenceInMonths(addMonths(leapDay, 12), leapDay)).toBe(12);
+    });
+
+    it("follows the century leap year rules", () => {
+      // 2000 is divisible by 400, so it is a leap year and 29 February exists
+      const y2kJan31 = new Date(2000, 0 /* Jan */, 31);
+      expect(addMonths(y2kJan31, 1)).toEqual(new Date(2000, 1 /* Feb */, 29));
+      expect(differenceInMonths(addMonths(y2kJan31, 1), y2kJan31)).toBe(1);
+      expect(
+        differenceInMonths(
+          new Date(2001, 1 /* Feb */, 28),
+          new Date(2000, 1 /* Feb */, 29),
+        ),
+      ).toBe(12);
+      expect(
+        differenceInMonths(
+          new Date(2000, 1 /* Feb */, 29),
+          new Date(2001, 1 /* Feb */, 28),
+        ),
+      ).toBe(-12);
+
+      // 1900 and 2100 are divisible by 100 but not 400, so February has 28 days
+      const jan31In1900 = new Date(1900, 0 /* Jan */, 31);
+      expect(addMonths(jan31In1900, 1)).toEqual(
+        new Date(1900, 1 /* Feb */, 28),
+      );
+      expect(differenceInMonths(addMonths(jan31In1900, 1), jan31In1900)).toBe(
+        1,
+      );
+      expect(
+        differenceInMonths(
+          new Date(2101, 1 /* Feb */, 28),
+          new Date(2100, 1 /* Feb */, 28),
+        ),
+      ).toBe(12);
     });
   });
 
