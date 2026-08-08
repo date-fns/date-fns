@@ -59,7 +59,8 @@ export function addDays<
   options?: AddDaysOptions<ResultDate> | undefined,
 ): ResultDate {
   const _date = toDate(date, options?.in);
-  if (isNaN(amount)) return constructFrom(options?.in || date, NaN);
+  if (typeof amount !== "number" || isNaN(amount))
+    return constructFrom(options?.in || date, NaN);
 
   // If 0 days, no-op to avoid changing times in the hour before end of DST
   if (!amount) return _date;

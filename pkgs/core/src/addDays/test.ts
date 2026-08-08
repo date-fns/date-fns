@@ -32,6 +32,12 @@ describe("addDays", () => {
     expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
   });
 
+  it("returns `Invalid Date` if the given amount is not a number", () => {
+    // @ts-expect-error - We're testing an invalid amount
+    const result = addDays(new Date(2014, 8 /* Sep */, 1), "10");
+    expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
+  });
+
   it("resolves the date type by default", () => {
     const result = addDays(Date.now(), 5);
     expect(result).toBeInstanceOf(Date);

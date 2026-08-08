@@ -69,6 +69,12 @@ describe("addBusinessDays", () => {
     expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
   });
 
+  it("returns `Invalid Date` if the given amount is not a number", () => {
+    // @ts-expect-error - We're testing an invalid amount
+    const result = addBusinessDays(new Date(2014, 8 /* Sep */, 1), "10");
+    expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
+  });
+
   it("starting from a weekend day should land on a weekday when reducing a divisible by 5", () => {
     const subtractResult = addBusinessDays(new Date(2019, 7, 18), -5);
     expect(subtractResult).toEqual(new Date(2019, 7, 12));
