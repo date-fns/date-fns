@@ -1,7 +1,7 @@
 import { normalizeDates } from "../_lib/normalizeDates/index.ts";
+import { addMonths } from "../addMonths/index.ts";
 import { compareAsc } from "../compareAsc/index.ts";
 import { differenceInCalendarMonths } from "../differenceInCalendarMonths/index.ts";
-import { isLastDayOfMonth } from "../isLastDayOfMonth/index.ts";
 import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
@@ -30,35 +30,26 @@ export function differenceInMonths(
   earlierDate: DateArg<Date> & {},
   options?: DifferenceInMonthsOptions | undefined,
 ): number {
-  const [laterDate_, workingLaterDate, earlierDate_] = normalizeDates(
+  const [laterDate_, earlierDate_] = normalizeDates(
     options?.in,
-    laterDate,
     laterDate,
     earlierDate,
   );
 
-  const sign = compareAsc(workingLaterDate, earlierDate_);
+  const sign = compareAsc(laterDate_, earlierDate_);
   const difference = Math.abs(
-    differenceInCalendarMonths(workingLaterDate, earlierDate_),
+    differenceInCalendarMonths(laterDate_, earlierDate_),
   );
 
   if (difference < 1) return 0;
 
-  if (workingLaterDate.getMonth() === 1 && workingLaterDate.getDate() > 27)
-    workingLaterDate.setDate(30);
+  // `addMonths` clamps to the end of a shorter month, so January 31st plus one
+  // month is February 28th. Stepping the earlier date forward keeps this in
+  // step with `add`, which is how callers subtract the months again.
+  const anniversary = addMonths(earlierDate_, sign * difference);
+  const overshot =
+    sign > 0 ? +anniversary > +laterDate_ : +anniversary < +laterDate_;
 
-  workingLaterDate.setMonth(workingLaterDate.getMonth() - sign * difference);
-
-  let isLastMonthNotFull = compareAsc(workingLaterDate, earlierDate_) === -sign;
-
-  if (
-    isLastDayOfMonth(laterDate_) &&
-    difference === 1 &&
-    compareAsc(laterDate_, earlierDate_) === 1
-  ) {
-    isLastMonthNotFull = false;
-  }
-
-  const result = sign * (difference - +isLastMonthNotFull);
+  const result = sign * (difference - +overshot);
   return result === 0 ? 0 : result;
 }
