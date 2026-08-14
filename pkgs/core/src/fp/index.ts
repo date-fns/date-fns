@@ -24,6 +24,7 @@ export * from "./addWeeksWithOptions/index.ts";
 export * from "./addWithOptions/index.ts";
 export * from "./addYears/index.ts";
 export * from "./addYearsWithOptions/index.ts";
+export * from "./allClosestIndicesTo/index.ts";
 export * from "./areIntervalsOverlapping/index.ts";
 export * from "./areIntervalsOverlappingWithOptions/index.ts";
 export * from "./clamp/index.ts";

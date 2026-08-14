@@ -35,6 +35,7 @@
     "./addSeconds": "./src/addSeconds/index.ts",
     "./addWeeks": "./src/addWeeks/index.ts",
     "./addYears": "./src/addYears/index.ts",
+    "./allClosestIndicesTo": "./src/allClosestIndicesTo/index.ts",
     "./areIntervalsOverlapping": "./src/areIntervalsOverlapping/index.ts",
     "./clamp": "./src/clamp/index.ts",
     "./closestIndexTo": "./src/closestIndexTo/index.ts",
@@ -292,6 +293,7 @@
     "./fp/addWithOptions": "./fp/src/addWithOptions/index.ts",
     "./fp/addYears": "./fp/src/addYears/index.ts",
     "./fp/addYearsWithOptions": "./fp/src/addYearsWithOptions/index.ts",
+    "./fp/allClosestIndicesTo": "./fp/src/allClosestIndicesTo/index.ts",
     "./fp/areIntervalsOverlapping": "./fp/src/areIntervalsOverlapping/index.ts",
     "./fp/areIntervalsOverlappingWithOptions": "./fp/src/areIntervalsOverlappingWithOptions/index.ts",
     "./fp/clamp": "./fp/src/clamp/index.ts",
@@ -921,6 +923,16 @@
         "import": {
           "types": "./addYears.d.ts",
           "default": "./addYears.js"
+        }
+      },
+      "./allClosestIndicesTo": {
+        "require": {
+          "types": "./allClosestIndicesTo.d.cts",
+          "default": "./allClosestIndicesTo.cjs"
+        },
+        "import": {
+          "types": "./allClosestIndicesTo.d.ts",
+          "default": "./allClosestIndicesTo.js"
         }
       },
       "./areIntervalsOverlapping": {
@@ -3491,6 +3503,16 @@
         "import": {
           "types": "./fp/addYearsWithOptions.d.ts",
           "default": "./fp/addYearsWithOptions.js"
+        }
+      },
+      "./fp/allClosestIndicesTo": {
+        "require": {
+          "types": "./fp/allClosestIndicesTo.d.cts",
+          "default": "./fp/allClosestIndicesTo.cjs"
+        },
+        "import": {
+          "types": "./fp/allClosestIndicesTo.d.ts",
+          "default": "./fp/allClosestIndicesTo.js"
         }
       },
       "./fp/areIntervalsOverlapping": {

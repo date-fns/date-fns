@@ -14,6 +14,7 @@
     "./src/addSeconds/index.ts",
     "./src/addWeeks/index.ts",
     "./src/addYears/index.ts",
+    "./src/allClosestIndicesTo/index.ts",
     "./src/areIntervalsOverlapping/index.ts",
     "./src/clamp/index.ts",
     "./src/closestIndexTo/index.ts",

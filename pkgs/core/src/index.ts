@@ -12,6 +12,7 @@ export * from "./addQuarters/index.ts";
 export * from "./addSeconds/index.ts";
 export * from "./addWeeks/index.ts";
 export * from "./addYears/index.ts";
+export * from "./allClosestIndicesTo/index.ts";
 export * from "./areIntervalsOverlapping/index.ts";
 export * from "./clamp/index.ts";
 export * from "./closestIndexTo/index.ts";
