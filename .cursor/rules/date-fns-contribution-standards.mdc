@@ -1,0 +1,57 @@
+---
+description: date-fns contribution standards — packages, PRs, tests, i18n, and what not to change
+alwaysApply: true
+---
+
+# date-fns Contribution Standards
+
+## Packages
+
+- `pkgs/core`: core `date-fns`
+- `pkgs/utc`: `@date-fns/utc` (`UTCDate`)
+- `pkgs/tz`: `@date-fns/tz` (`TZDate` and time zone helpers)
+
+Use Node.js 22+ and `pnpm`. Lint with `pnpm run lint` (Prettier + ESLint).
+
+## Do not change
+
+- Changelog
+- Library version
+- Git history, commits, or remotes unless the human explicitly asks (or this rule requires a checkout/rebase)
+
+## Functions and tests
+
+Put each function in its own directory: `pkgs/core/src/<fn>/index.ts` with colocated `test.ts`.
+
+Mirror existing helpers: convert input with `toDate`, preserve date extensions via `constructFrom` / `options?.in`, do not mutate the argument, and document with TSDoc (`@name`, `@category`, `@param`, `@example`).
+
+```typescript
+// ✅ GOOD — colocated Vitest, month comments, type resolution
+it("adds the given number of days", () => {
+  const result = addDays(new Date(2014, 8 /* Sep */, 1), 10);
+  expect(result).toEqual(new Date(2014, 8 /* Sep */, 11));
+});
+```
+
+```sh
+pnpm vitest run              # Node
+pnpm vitest run --browser    # Browser
+```
+
+Reject PRs that only duplicate native APIs or inflate bundle size; new features belong in a focused package when they do not fit core.
+
+## I18n
+
+Follow `pkgs/core/docs/i18nContributionGuide.md`. After locale changes, regenerate snapshots:
+
+```sh
+mise //pkgs/core:gen/locales/snapshots
+```
+
+## PRs
+
+Checkout with `gh pr checkout <pr_number>`. If the working tree is dirty, stop and ask the human.
+
+Rebase onto latest `main` only when asked; do not push. After a rebase, say so in the summary.
+
+When done, report what changed. Do not commit or push unless explicitly requested.
