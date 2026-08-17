@@ -27,6 +27,11 @@ export interface ParseISOOptions<
  * Function accepts complete ISO 8601 formats as well as partial implementations.
  * ISO 8601: http://en.wikipedia.org/wiki/ISO_8601
  *
+ * Use this when the string may be a partial ISO 8601 value (date-only,
+ * week dates, ordinal dates, extended years). For a complete JSON / ISO
+ * datetime such as `JSON.stringify(new Date())` output, prefer
+ * {@link parseJSON}, which is a smaller parser for that narrower set.
+ *
  * If the argument isn't a string, the function cannot parse the string or
  * the values are invalid, it returns Invalid Date.
  *
