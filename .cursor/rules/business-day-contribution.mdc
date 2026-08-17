@@ -1,0 +1,30 @@
+---
+description: Business-day and weekend helpers — Mon–Fri, caller-supplied exclusions, no bundled holiday data
+globs:
+  - "pkgs/core/src/{addBusinessDays,subBusinessDays,differenceInBusinessDays}/**"
+  - "pkgs/core/src/{isWeekend,eachWeekendOfInterval,eachWeekendOfMonth,eachWeekendOfYear}/**"
+alwaysApply: false
+---
+
+# Business days and weekends
+
+Business days are **Mon–Fri**. Weekends are Saturday (`6`) and Sunday (`0`).
+
+Core holds no bundled holiday calendar data and shouldn't gain any — holiday data lives in separate ecosystem packages like `date-fns-holiday-us`. Business-day functions may accept a caller-supplied exclusion list or predicate; they must not embed holiday data themselves.
+
+- Reuse `isWeekend` (and `isSaturday`/`isSunday` as `addBusinessDays` already does). Weekend lists: `eachWeekendOfInterval` filters with `isWeekend`; month/year wrappers stay thin.
+- Keep `subBusinessDays` as `addBusinessDays(date, -amount, options)`.
+- Convert with `toDate`, pass `options?.in`, use `constructFrom` for Invalid Date; never mutate the input.
+- After `setDate` arithmetic, restore hours (`_date.setHours(hours)`) so DST does not lag the clock.
+- `differenceInBusinessDays` strips times like `differenceInCalendarDays`, uses `normalizeDates`, and returns `0` not `-0`.
+- Handle weekend starts, amounts divisible by 5 that land on a weekend, Friday+1 → Monday, large ranges, negative amounts, Invalid Date, and NaN amount.
+- Tests: colocated Vitest, month comments (`8 /* Sep */`), weekend-start cases, large counts.
+
+```typescript
+// ✅ GOOD — Friday + 1 business day → Monday
+it("returns the Monday when 1 day is added on the Friday", () => {
+  expect(addBusinessDays(new Date(2020, 0 /* Jan */, 10), 1)).toEqual(
+    new Date(2020, 0 /* Jan */, 13),
+  );
+});
+```
