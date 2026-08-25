@@ -22,10 +22,22 @@ export const numericPatterns = {
   fourDigitsSigned: /^-?\d{1,4}/, // 0 to 9999, -0 to -9999
 };
 
-export const timezonePatterns = {
+// Used by the uppercase X token family (ISOTimezoneWithZParser), where a
+// bare 'Z' is a valid ISO-8601 UTC designator.
+export const timezonePatternsWithZ = {
   basicOptionalMinutes: /^([+-])(\d{2})(\d{2})?|Z/,
   basic: /^([+-])(\d{2})(\d{2})|Z/,
   basicOptionalSeconds: /^([+-])(\d{2})(\d{2})((\d{2}))?|Z/,
   extended: /^([+-])(\d{2}):(\d{2})|Z/,
   extendedOptionalSeconds: /^([+-])(\d{2}):(\d{2})(:(\d{2}))?|Z/,
+};
+
+// Used by the lowercase x token family (ISOTimezoneParser), which per
+// ISO-8601 does not accept 'Z' -- only a signed numeric offset.
+export const timezonePatternsWithoutZ = {
+  basicOptionalMinutes: /^([+-])(\d{2})(\d{2})?/,
+  basic: /^([+-])(\d{2})(\d{2})/,
+  basicOptionalSeconds: /^([+-])(\d{2})(\d{2})((\d{2}))?/,
+  extended: /^([+-])(\d{2}):(\d{2})/,
+  extendedOptionalSeconds: /^([+-])(\d{2}):(\d{2})(:(\d{2}))?/,
 };
