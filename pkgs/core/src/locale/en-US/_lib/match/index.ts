@@ -72,19 +72,22 @@ const parseDayPatterns = {
 };
 
 const matchDayPeriodPatterns = {
-  narrow: /^(a|p|mi|n|(in the|at) (morning|afternoon|evening|night))/i,
+  // Longer forms first so "night" is not truncated to "n" and "afternoon" to "a".
+  narrow:
+    /^(midnight|noon|morning|afternoon|evening|night|(in the|at) (morning|afternoon|evening|night)|mi|n|[ap])/i,
   any: /^([ap]\.?\s?m\.?|midnight|noon|(in the|at) (morning|afternoon|evening|night))/i,
 };
 const parseDayPeriodPatterns = {
   any: {
-    am: /^a/i,
-    pm: /^p/i,
     midnight: /^mi/i,
-    noon: /^no/i,
     morning: /morning/i,
     afternoon: /afternoon/i,
     evening: /evening/i,
     night: /night/i,
+    // "n" is the narrow noon form; do not use /^n/i, which would also match "night".
+    noon: /^(n|noon)$/i,
+    am: /^a/i,
+    pm: /^p/i,
   },
 };
 
