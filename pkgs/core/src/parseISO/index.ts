@@ -292,8 +292,25 @@ function validateDayOfYearDate(year: number, dayOfYear: number): boolean {
   return dayOfYear >= 1 && dayOfYear <= (isLeapYearIndex(year) ? 366 : 365);
 }
 
-function validateWeekDate(_year: number, week: number, day: number): boolean {
-  return week >= 1 && week <= 53 && day >= 0 && day <= 6;
+function validateWeekDate(year: number, week: number, day: number): boolean {
+  return week >= 1 && week <= weeksInISOWeekYear(year) && day >= 0 && day <= 6;
+}
+
+// An ISO week-year has 53 weeks when 1 January falls on a Thursday, or on a
+// Wednesday in a leap year; every other ISO week-year has 52 weeks.
+function weeksInISOWeekYear(isoWeekYear: number): number {
+  const januaryFirst = new Date(0);
+  januaryFirst.setUTCFullYear(isoWeekYear, 0, 1);
+  const januaryFirstDay = januaryFirst.getUTCDay();
+
+  if (
+    januaryFirstDay === 4 ||
+    (januaryFirstDay === 3 && isLeapYearIndex(isoWeekYear))
+  ) {
+    return 53;
+  }
+
+  return 52;
 }
 
 function validateTime(
