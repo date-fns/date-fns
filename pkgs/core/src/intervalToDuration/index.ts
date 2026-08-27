@@ -45,10 +45,20 @@ export function intervalToDuration(
   if (years) duration.years = years;
 
   const remainingMonths = add(start, { years: duration.years });
-  const months = differenceInMonths(end, remainingMonths);
+  let months = differenceInMonths(end, remainingMonths);
+  let remainingDays = add(remainingMonths, { months });
+
+  // Don't add a month that would pass `end`; later units would change sign (#4150).
+  const monthSign = months < 0 ? -1 : months > 0 ? 1 : 0;
+  while (
+    monthSign !== 0 &&
+    (monthSign > 0 ? +remainingDays > +end : +remainingDays < +end)
+  ) {
+    months -= monthSign;
+    remainingDays = add(remainingMonths, { months });
+  }
   if (months) duration.months = months;
 
-  const remainingDays = add(remainingMonths, { months: duration.months });
   const days = differenceInDays(end, remainingDays);
   if (days) duration.days = days;
 

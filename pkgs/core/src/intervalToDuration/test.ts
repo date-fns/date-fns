@@ -73,6 +73,28 @@ describe("intervalToDuration", () => {
   });
 
   describe("edge cases", () => {
+    it("returns non-negative components when end is after start - issue 4150", () => {
+      const result = intervalToDuration({
+        start: new Date(2026, 0 /* Jan */, 28, 22, 45),
+        end: new Date(2026, 1 /* Feb */, 28, 16, 23),
+      });
+
+      expect(result).toEqual({
+        days: 30,
+        hours: 17,
+        minutes: 38,
+      });
+    });
+
+    it("counts the month once the time of day is reached - issue 4150", () => {
+      const result = intervalToDuration({
+        start: new Date(2026, 0 /* Jan */, 28, 16, 23),
+        end: new Date(2026, 1 /* Feb */, 28, 16, 23),
+      });
+
+      expect(result).toEqual({ months: 1 });
+    });
+
     it("returns correct duration for dates in the end of Feb - issue 2255", () => {
       expect(
         intervalToDuration({
