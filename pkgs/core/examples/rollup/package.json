@@ -1,0 +1,17 @@
+{
+  "name": "@date-fns/example-rollup",
+  "version": "0.1.0",
+  "description": "Example of date-fns usage with Rollup",
+  "license": "MIT",
+  "author": "Sasha Koss <koss@nocorp.me>",
+  "type": "module",
+  "main": "example.js",
+  "dependencies": {
+    "@rollup/plugin-commonjs": "^25.0.4",
+    "@rollup/plugin-node-resolve": "^15.2.1",
+    "@rollup/plugin-terser": "^0.4.4",
+    "date-fns": "../../dist/date-fns",
+    "gzip-size-cli": "^5.1.0",
+    "rollup": "^3.28.1"
+  }
+}

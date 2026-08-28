@@ -1,0 +1,27 @@
+[tasks.install]
+depends = "//pkgs/core/examples:install"
+
+[tasks.build]
+depends = "install"
+run = "pnpm exec webpack"
+
+[tasks.test]
+depends = "build"
+run = '''
+#!/usr/bin/env bash
+test $(node ./dist/example.js) = true
+test $(node ./dist/fp.js) = true
+test $(node ./dist/misc.js) = true
+test $(node ./dist/constants.js) = true
+'''
+env = { TZ = "UTC" }
+
+[tasks."stats/size"]
+depends = "build"
+run = '''
+#!/usr/bin/env bash
+echo "Minimal size: $(pnpm exec gzip-size dist/minimal.min.js)
+Format size: $(pnpm exec gzip-size dist/example.min.js)
+FP size: $(pnpm exec gzip-size dist/fp.min.js)
+Misc size: $(pnpm exec gzip-size dist/misc.min.js)"
+'''

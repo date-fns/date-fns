@@ -1,6 +1,6 @@
 🔥️ **NEW**: [date-fns v4.0 with first-class time zone support is out!](https://blog.date-fns.org/v40-with-time-zone-support/)
 
-<img alt="date-fns" title="date-fns" src="https://raw.githubusercontent.com/date-fns/date-fns/master/docs/logotype.svg" width="150" />
+<img alt="date-fns" title="date-fns" src="https://raw.githubusercontent.com/date-fns/date-fns/refs/heads/main/pkgs/core/docs/logotype.svg" width="150" />
 
 date-fns provides the most comprehensive, yet simple and consistent toolset for manipulating JavaScript dates in a browser & Node.js
 
@@ -19,6 +19,19 @@ It's like [Lodash](https://lodash.com) for dates
 - **TypeScript**: The library is 100% TypeScript with brand-new handcrafted types.
 - **I18n**: Dozens of locales. Include only what you need.
 - [and many more benefits](https://date-fns.org/)
+
+---
+
+Sponsored by:
+
+<a href="https://coderabbit.link/datefns">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://www.coderabbit.ai/content/assets/white-typemark.svg">
+    <img alt="CodeRabbit" src="https://www.coderabbit.ai/content/assets/orange-typemark.svg" width="170">
+  </picture>
+</a>
+
+---
 
 ```js
 import { compareAsc, format } from "date-fns";
@@ -50,8 +63,6 @@ npm install date-fns --save
 
 [See date-fns.org](https://date-fns.org/) for more details, API,
 and other docs.
-
-<br />
 
 ## License
 

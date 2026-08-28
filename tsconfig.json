@@ -1,12 +1,10 @@
 {
-  "files": [],
+  "include": [],
   "references": [
-    { "path": "./src" },
-    { "path": "./submodules/tz" },
-    { "path": "./submodules/utc" },
-    { "path": "./submodules/docs" },
-    { "path": "./submodules/build" },
-    { "path": "./scripts" },
-    { "path": "./test" }
+    { "path": "./pkgs/core/" },
+    { "path": "./pkgs/docs/" },
+    { "path": "./pkgs/utc/" },
+    { "path": "./pkgs/tz/" },
+    { "path": "./pkgs/tz/test/engines/" }
   ]
 }

@@ -1,0 +1,12 @@
+{
+  "name": "@date-fns/example-node-esm",
+  "version": "0.1.0",
+  "description": "Example of date-fns usage with Node.js ESM",
+  "license": "MIT",
+  "author": "Sasha Koss <koss@nocorp.me>",
+  "type": "module",
+  "main": "example.ts",
+  "dependencies": {
+    "date-fns": "../../dist/date-fns"
+  }
+}

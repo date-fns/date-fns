@@ -1,0 +1,14 @@
+{
+  "name": "@date-fns/example-webpack4",
+  "version": "0.1.0",
+  "description": "Example of date-fns usage with webpack 4.x",
+  "license": "MIT",
+  "author": "Sasha Koss <koss@nocorp.me>",
+  "main": "example.js",
+  "dependencies": {
+    "date-fns": "../../dist/date-fns",
+    "gzip-size-cli": "^2.1.0",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
+  }
+}

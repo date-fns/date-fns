@@ -1,0 +1,38 @@
+import type { Match } from "../../../locale/types.ts";
+import { numericPatterns } from "../constants.ts";
+import { Parser } from "../Parser.ts";
+import type { ParseFlags, ParseResult } from "../types.ts";
+import { parseNDigits, parseNumericPattern } from "../utils.ts";
+
+export class MinuteParser extends Parser<number> {
+  priority = 60;
+
+  parse(dateString: string, token: string, match: Match): ParseResult<number> {
+    switch (token) {
+      case "m":
+        return parseNumericPattern(numericPatterns.minute, dateString);
+      case "mo":
+        return match.ordinalNumber(dateString, { unit: "minute" });
+      default:
+        return parseNDigits(token.length, dateString);
+    }
+  }
+
+  override validate<DateType extends Date>(
+    _date: DateType,
+    value: number,
+  ): boolean {
+    return value >= 0 && value <= 59;
+  }
+
+  set<DateType extends Date>(
+    date: DateType,
+    _flags: ParseFlags,
+    value: number,
+  ): DateType {
+    date.setMinutes(value, 0, 0);
+    return date;
+  }
+
+  incompatibleTokens = ["t", "T"];
+}

@@ -1,0 +1,170 @@
+[tasks."install/playwright"]
+run = "pnpm playwright install chromium --with-deps"
+# NOTE: It prompts for sudo to install OS dependencies
+raw = true
+
+# TODO: Find a way to simply these two tasks below.
+
+[tasks."build/package"]
+usage = '''
+flag "--split-cdn" default=#false help="Build split CDN output"
+flag "--no-cjs" default=#false help="Skip CJS build"
+flag "--no-cdn" default=#false help="Skip CDN build"
+flag "--no-docs" default=#false help="Skip docs"
+flag "--no-fp" default=#false help="Skip FP files"
+flag "--no-i18n" default=#false help="Skip i18n files"
+'''
+run = [
+  '''
+	#!/usr/bin/env node
+	import * as fs from "node:fs/promises";
+
+	const args = {{ usage | json_encode() | safe }};
+	const enabledArgs = Object.keys(args).sort().filter(arg => args[arg]);
+	const newJson = JSON.stringify(enabledArgs);
+
+	await fs.mkdir("tmp", { recursive: true });
+
+	const path = "tmp/build-package-args.json";
+	try {
+		const prevJson = await fs.readFile(path, "utf8");
+		if (prevJson === newJson) process.exit(0);
+	} catch {}
+
+	await fs.writeFile(path, newJson);
+	''',
+  { task = "build/package/cached{% if usage.split_cdn %} --split-cdn{% endif %}{% if usage.no_cjs %} --no-cjs{% endif %}{% if usage.no_cdn %} --no-cdn{% endif %}{% if usage.no_docs %} --no-docs{% endif %}{% if usage.no_fp %} --no-fp{% endif %}{% if usage.no_i18n %} --no-i18n{% endif %}" },
+]
+
+[tasks."build/package/cached"]
+usage = '''
+flag "--split-cdn" help="Build split CDN output"
+flag "--no-cjs" help="Skip CJS build"
+flag "--no-cdn" help="Skip CDN build"
+flag "--no-docs" help="Skip docs"
+flag "--no-fp" help="Skip FP files"
+flag "--no-i18n" help="Skip i18n files"
+'''
+depends = ["//pkgs/dev:source/build", "//:source/install"]
+run = '''
+#!/usr/bin/env bash
+args=()
+[ "$usage_split_cdn" = "true" ] && args+=(--split-cdn)
+[ "$usage_no_cjs" = "true" ] && args+=(--no-cjs)
+[ "$usage_no_cdn" = "true" ] && args+=(--no-cdn)
+[ "$usage_no_docs" = "true" ] && args+=(--no-docs)
+[ "$usage_no_fp" = "true" ] && args+=(--no-fp)
+[ "$usage_no_i18n" = "true" ] && args+=(--no-i18n)
+scripts/build/package.sh "${args[@]}"
+'''
+sources = [
+  "tmp/build-package-args.json",
+  "package.json",
+  "tsconfig.dist.json",
+  ".browserslistrc",
+  "scripts/build/**/*",
+  "src/**/*",
+  "!src/**/test.ts",
+  "!src/**/test.*.ts",
+  "!src/_lib/test/**/*",
+  "!src/**/*.tp.ts",
+  "!src/tp/**/*",
+  "!src/_lib/tp/**/*",
+  "docs/**/*",
+  "../../README.md",
+  "../../SECURITY.md",
+  "LICENSE.md",
+  "CHANGELOG.md",
+]
+outputs = ["dist/**/*"]
+
+[tasks."test"]
+depends = ["test/unit", "test/tz"]
+
+[tasks."test/unit"]
+run = "pnpm vitest run"
+
+[tasks."test/unit:watch"]
+run = "pnpm vitest"
+
+[tasks."test/browser"]
+run = "pnpm vitest run --browser"
+
+[tasks."test/browser:watch"]
+run = "pnpm vitest --browser"
+
+[tasks."test/node"]
+run = "./scripts/test/node.sh"
+
+[tasks."test/edge"]
+run = "./scripts/test/tz.sh"
+
+[tasks."test/tz"]
+run = "pnpm exec date-fns-test-tz ./src/"
+
+[tasks."test/tz:offset"]
+run = "pnpm exec date-fns-test-tz ./src/ --offset"
+
+[tasks."test/tz:iana"]
+run = "pnpm exec date-fns-test-tz ./src/ --iana"
+
+[tasks."test/locales"]
+run = "node ./scripts/build/localeSnapshots/index.ts --test"
+env = { TZ = "utc" }
+
+[tasks."test/smoke"]
+usage = '''
+arg "[test]" help="Smoke test to run" default="..."
+'''
+depends = "//pkgs/core/examples/{{usage.test}}:test"
+
+[tasks."gen/locales/snapshots"]
+run = "node ./scripts/build/localeSnapshots/index.ts"
+env = { TZ = "utc" }
+
+[tasks."release/docs"]
+run = "./scripts/release/docs.sh"
+env = { APP_ENV = "production" }
+
+[tasks."size/cdn-polyfill"]
+usage = '''
+flag "-w --watch" help="Watch for changes and re-run the size check" default="false"
+'''
+run = '''
+#!/usr/bin/env bash
+
+file="src/_lib/cdnPolyfill.js"
+
+if [[ "${usage_watch:-false}" == "true" ]]; then
+  watchexec --watch "$file" --clear -- mise run size/cdn-polyfill
+  exit
+fi
+
+gray() {
+  printf "\e[0;30m$1\x1b[0m"
+}
+
+blue() {
+  printf "\e[0;34m$1\x1b[0m"
+}
+
+result=$(pnpm exec rolldown -m "$file")
+
+echo -e "$(blue "$file:")\n"
+echo -e "$(echo "$result" | gzip -c | wc -c) B\n"
+echo -e "$(gray "$result")\n"
+'''
+quiet = true
+
+[tasks."size/cdn-polyfill:watch"]
+run = { task = "size/cdn-polyfill", args = ["--watch"] }
+quiet = true
+
+[tasks."workbench/size-cdn-polyfill"]
+run = { tasks = [
+  "size/cdn-polyfill:watch",
+  "workbench/size-cdn-polyfill-test",
+] }
+
+[tasks."workbench/size-cdn-polyfill-test"]
+run = "watchexec --watch src/_lib/cdnPolyfill.js -- 'node ./scripts/build/cdnPolyfills.ts examples/cdn/node_modules/date-fns && cd examples/cdn && pnpm test'"

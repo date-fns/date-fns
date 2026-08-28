@@ -1,7 +1,0 @@
-{
-  "compilerOptions": {
-    "outDir": "dist",
-    "lib": ["dom", "es2020", "ESNext.Intl"],
-    "types": []
-  }
-}

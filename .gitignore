@@ -7,7 +7,7 @@ npm-debug.log*
 # Dev Container
 /.devcontainer/state/
 # Dist
-/lib/
+dist/
 # Dev
 tmp
 .envrc
