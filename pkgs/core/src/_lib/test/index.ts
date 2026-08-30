@@ -18,7 +18,7 @@ export function resetDefaultOptions(): void {
 }
 
 // This makes sure we create the consistent offsets across timezones, no matter where these tests are ran.
-export function generateOffset(originalDate: Date) {
+export function generateOffset(originalDate: Date, delimiter: string = ":") {
   // Add the timezone.
   let offset = "";
   const tzOffset = originalDate.getTimezoneOffset();
@@ -30,7 +30,7 @@ export function generateOffset(originalDate: Date) {
     // If less than 0, the sign is +, because it is ahead of time.
     const sign = tzOffset < 0 ? "+" : "-";
 
-    offset = `${sign}${hourOffset}:${minuteOffset}`;
+    offset = `${sign}${hourOffset}${delimiter}${minuteOffset}`;
   } else {
     offset = "Z";
   }
