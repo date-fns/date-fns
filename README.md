@@ -57,6 +57,8 @@ To install the package run:
 
 ```bash
 npm install date-fns --save
+# or
+deno install date-fns
 ```
 
 ## Docs
