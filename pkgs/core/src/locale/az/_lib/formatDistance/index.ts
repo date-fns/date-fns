@@ -10,7 +10,7 @@ type FormatDistanceTokenValue =
 const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   lessThanXSeconds: {
     one: "bir saniyədən az",
-    other: "{{count}} bir saniyədən az",
+    other: "{{count}} saniyədən az",
   },
 
   xSeconds: {
@@ -22,7 +22,7 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
 
   lessThanXMinutes: {
     one: "bir dəqiqədən az",
-    other: "{{count}} bir dəqiqədən az",
+    other: "{{count}} dəqiqədən az",
   },
 
   xMinutes: {
