@@ -91,6 +91,26 @@ describe("constructFrom", () => {
   });
 
   describe("edge cases", () => {
+    it("falls back when a custom Date constructor takes extra arguments", () => {
+      class RangeDate extends Date {
+        range: number;
+        constructor(
+          range: number,
+          ...args: ConstructorParameters<typeof Date>
+        ) {
+          super(...args);
+          this.range = range;
+        }
+      }
+
+      const referenceDate = new RangeDate(5, new Date(2026, 1, 3, 5));
+      const value = new Date(2024, 0, 1);
+      const result = constructFrom(referenceDate, value);
+
+      expect(result instanceof Date).toBe(true);
+      expect(result.getTime()).toEqual(value.getTime());
+    });
+
     it("does not trip over null", () => {
       const value = 1635244800000; // October 26, 2023
       // @ts-expect-error - We want to pass null here
