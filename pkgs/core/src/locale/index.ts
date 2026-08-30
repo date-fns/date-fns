@@ -71,6 +71,7 @@ export * from "./nl/index.ts";
 export * from "./nl-BE/index.ts";
 export * from "./nn/index.ts";
 export * from "./oc/index.ts";
+export * from "./pa/index.ts";
 export * from "./pl/index.ts";
 export * from "./pt/index.ts";
 export * from "./pt-BR/index.ts";
