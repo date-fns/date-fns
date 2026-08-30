@@ -624,6 +624,46 @@ describe("intlFormatDistance", () => {
           expect(result).toBe("53 weeks ago");
         });
       });
+
+      describe("months", () => {
+        it("works with the future", () => {
+          const result = intlFormatDistance(
+            new Date(1986, 7, 4, 10, 30, 0),
+            new Date(1986, 3, 4, 10, 30, 0),
+            { unit: "month" },
+          );
+          expect(result).toBe("in 4 months");
+        });
+
+        it("works with the past", () => {
+          const result = intlFormatDistance(
+            new Date(1986, 3, 4, 10, 30, 0),
+            new Date(1986, 7, 4, 10, 30, 0),
+            { unit: "month" },
+          );
+          expect(result).toBe("4 months ago");
+        });
+      });
+
+      describe("years", () => {
+        it("works with the future", () => {
+          const result = intlFormatDistance(
+            new Date(1988, 3, 4, 10, 30, 0),
+            new Date(1986, 3, 4, 10, 30, 0),
+            { unit: "year" },
+          );
+          expect(result).toBe("in 2 years");
+        });
+
+        it("works with the past", () => {
+          const result = intlFormatDistance(
+            new Date(1986, 3, 4, 10, 30, 0),
+            new Date(1988, 3, 4, 10, 30, 0),
+            { unit: "year" },
+          );
+          expect(result).toBe("2 years ago");
+        });
+      });
     });
 
     describe("numeric option", () => {
