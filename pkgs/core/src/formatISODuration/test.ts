@@ -72,4 +72,19 @@ describe("formatISODuration", () => {
 
     expect(result).toBe("P0Y0M0DT0H0M0S");
   });
+
+  it("formats the duration used as the documented example", () => {
+    // Guards the @example in index.ts, which claimed 'P39Y2M20DT0H0M0S' and
+    // dropped the hours and minutes it was given.
+    const result = formatISODuration({
+      years: 39,
+      months: 2,
+      days: 20,
+      hours: 7,
+      minutes: 5,
+      seconds: 0,
+    });
+
+    expect(result).toBe("P39Y2M20DT7H5M0S");
+  });
 });
