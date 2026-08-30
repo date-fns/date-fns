@@ -84,7 +84,7 @@ export function formatISO(
       // If less than 0, the sign is +, because it is ahead of time.
       const sign = offset < 0 ? "+" : "-";
 
-      tzOffset = `${sign}${hourOffset}:${minuteOffset}`;
+      tzOffset = `${sign}${hourOffset}${timeDelimiter}${minuteOffset}`;
     } else {
       tzOffset = "Z";
     }

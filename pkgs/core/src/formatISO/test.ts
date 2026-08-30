@@ -32,7 +32,7 @@ describe("formatISO", () => {
 
   it("formats ISO-8601 basic format", () => {
     const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456);
-    const tzOffsetBasic = generateOffset(date);
+    const tzOffsetBasic = generateOffset(date, "");
     expect(formatISO(date, { format: "basic" })).toBe(
       `20191004T123013${tzOffsetBasic}`,
     );
@@ -51,13 +51,14 @@ describe("formatISO", () => {
 
   it("formats only time", () => {
     const date = new Date(2019, 2 /* Mar */, 3, 19, 0, 52, 123);
-    const tzOffset = generateOffset(date);
+    const tzOffsetExtended = generateOffset(date);
+    const tzOffsetBasic = generateOffset(date, "");
 
     expect(
       formatISO(date, { representation: "time", format: "extended" }),
-    ).toBe(`19:00:52${tzOffset}`);
+    ).toBe(`19:00:52${tzOffsetExtended}`);
     expect(formatISO(date, { representation: "time", format: "basic" })).toBe(
-      `190052${tzOffset}`,
+      `190052${tzOffsetBasic}`,
     );
   });
 
