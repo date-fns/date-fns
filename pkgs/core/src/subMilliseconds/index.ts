@@ -9,6 +9,11 @@ export interface SubMillisecondsOptions<
 > extends ContextOptions<DateType> {}
 
 /**
+ * @name subMilliseconds
+ * @category Millisecond Helpers
+ * @summary Subtract the specified number of milliseconds from the given date.
+ *
+ * @description
  * Subtract the specified number of milliseconds from the given date.
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
