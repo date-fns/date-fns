@@ -28,9 +28,9 @@ const parseQuarterPatterns = {
 
 const matchMonthPatterns = {
   // eslint-disable-next-line no-misleading-character-class
-  narrow: /^[जफ़माअप्मईजूनजुअगसिअक्तनदि]/i,
-  abbreviated: /^(जन|फ़र|मार्च|अप्|मई|जून|जुल|अग|सित|अक्तू|नव|दिस)/i,
-  wide: /^(जनवरी|फ़रवरी|मार्च|अप्रैल|मई|जून|जुलाई|अगस्त|सितंबर|अक्तूबर|नवंबर|दिसंबर)/i,
+  narrow: /^[जफ़माअप्मईजूनजुअगसिअक्तटनदि]/i,
+  abbreviated: /^(जन|फ़र|मार्च|अप्|मई|जून|जुल|अग|सित|अक्[तट]ू|नव|दिस)/i,
+  wide: /^(जनवरी|फ़रवरी|मार्च|अप्रैल|मई|जून|जुलाई|अगस्त|सितंबर|अक्[तट]ूबर|नवंबर|दिसंबर)/i,
 };
 const parseMonthPatterns = {
   narrow: [
@@ -43,7 +43,7 @@ const parseMonthPatterns = {
     /^जु/i,
     /^अग/i,
     /^सि/i,
-    /^अक्तू/i,
+    /^अक्[तट]ू/i,
     /^न/i,
     /^दि/i,
   ] as const,
@@ -57,7 +57,7 @@ const parseMonthPatterns = {
     /^जु/i,
     /^अग/i,
     /^सि/i,
-    /^अक्तू/i,
+    /^अक्[तट]ू/i,
     /^नव/i,
     /^दिस/i,
   ] as const,
