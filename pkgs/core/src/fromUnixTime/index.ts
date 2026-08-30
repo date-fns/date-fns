@@ -14,7 +14,8 @@ export interface FromUnixTimeOptions<
  * @summary Create a date from a Unix timestamp.
  *
  * @description
- * Create a date from a Unix timestamp (in seconds). Decimal values will be discarded.
+ * Create a date from a Unix timestamp (in seconds). Fractional seconds are
+ * kept as milliseconds.
  *
  * @param unixTime - The given Unix timestamp (in seconds)
  * @param options - An object with options. Allows to pass a context.
@@ -27,6 +28,11 @@ export interface FromUnixTimeOptions<
  * // Create the date 29 February 2012 11:45:05:
  * const result = fromUnixTime(1330515905)
  * //=> Wed Feb 29 2012 11:45:05
+ *
+ * @example
+ * // Fractional seconds become milliseconds:
+ * const result = fromUnixTime(1330515905.25)
+ * //=> Wed Feb 29 2012 11:45:05.250
  */
 export function fromUnixTime<DateType extends Date = Date>(
   unixTime: number,
