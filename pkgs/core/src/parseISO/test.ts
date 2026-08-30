@@ -242,6 +242,19 @@ describe("parseISO", () => {
         expect(result instanceof Date).toBe(true);
         expect(isNaN(result.getTime())).toBe(true);
       });
+
+      it("returns `Invalid Date` for the 53rd week of a 52-week ISO year", () => {
+        // 2021 is a 52-week ISO year (1 January 2021 is a Friday)
+        const result = parseISO("2021-W53-1");
+        expect(result instanceof Date).toBe(true);
+        expect(isNaN(result.getTime())).toBe(true);
+      });
+
+      it("parses the 53rd week of a 53-week ISO year", () => {
+        // 2020 is a 53-week ISO year (1 January 2020 is a Wednesday and 2020 is a leap year)
+        const result = parseISO("2020-W53-1");
+        expect(result).toEqual(new Date(2020, 11 /* Dec */, 28));
+      });
     });
 
     describe("calendar dates", () => {
