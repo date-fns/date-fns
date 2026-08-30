@@ -11,7 +11,8 @@ export function tpyAddDays<
   options?: AddDaysOptions<ResultDate> | undefined,
 ): ResultDate {
   let [temporal, invalidDate] = toTpInstant(date, options);
-  if (!temporal || isNaN(amount)) return invalidDate;
+  if (!temporal || typeof amount !== "number" || isNaN(amount))
+    return invalidDate;
 
   const result = temporal.add({ days: amount });
 
