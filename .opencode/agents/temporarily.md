@@ -15,17 +15,29 @@ Create a `src/<fn>/index.tp.ts` file that exports the same function as `src/<fn>
 
 See `src/add/index.tp.ts` for the example of how to do it.
 
-If the Temporal API doesn't have a direct alternative for the date-fns function, reimplement it using the date-fns function code in `index.ts` as the reference implementation. Prefer using the verbatim code (comments if relevant, variable names, etc.) for the parts you copy.
+If the Temporal API doesn't have a direct alternative for the date-fns function, reimplement it using the date-fns function code in `index.ts` as the reference implementation. Prefer using the verbatim code (comments if relevant, variable names, etc.) for the parts you copy. Follow the extraction guidance below to decide whether that algorithm belongs directly in `index.tp.ts` or in reusable `src/tp/` functions.
 
 See `src/addBusinessDays/index.tp.ts` for the example of reimplementing a date-fns function that doesn't have a direct alternative in the Temporal API.
 
+### 1.1. Extract Temporal-Native Implementations
+
+When the Temporal API has no direct alternative, consider whether the fallback algorithm belongs in `src/tp/<fn>/index.ts` as a reusable Temporal-native function named `tpXxx`. Extract it when all of these signals are present:
+
+- Temporal has no direct API for the operation.
+- The implementation requires meaningful additional logic that can be extracted, rather than a straightforward Temporal method call.
+- The extracted logic can accept and return Temporal objects without depending on core date-fns functions, `tpyXxx` functions, or conversions to and from `Date`.
+
+In that case, keep `src/<fn>/index.tp.ts` as the `Date` compatibility boundary: convert the input to Temporal, call `tpXxx`, and convert the result back to `Date`. Put any reusable Temporal-only helpers required by the algorithm in their own `src/tp/<helper>/index.ts` modules as well.
+
+For example, `src/tp/addISOWeekYears/index.ts` contains the ISO week-year algorithm and uses `tpStartOfISOWeekYear` from `src/tp/startOfISOWeekYear/index.ts`, while `src/addISOWeekYears/index.tp.ts` only handles `Date` conversion and invalid inputs.
+
 If a function depends on other date-fns functions, depending on if it is supposed to work with `Date` or Temporal objects, use one of the following approaches:
 
-### 1.1. `Date`-based functions
+### 1.2. `Date`-based functions
 
 If it requires working with `Date` objects (i.e., the function you're reimplementing is simply a wrapper around other date-fns functions), then instead of importing that function from `src/<fn-dependency>/index.ts`, import the Temporal version of that function from `src/<fn-dependency>/index.tp.ts`. If the `src/<fn-dependency>/index.tp.ts` is missing, implement it first before implementing the Temporal version of the function you're working on. For example, if `src/<fn>/index.ts` imports `isValid` from `src/isValid/index.ts`, then `src/<fn>/index.tp.ts` should import `tpyIsValid` from `src/isValid/index.tp.ts`.
 
-### 1.2. Temporal-Based Functions
+### 1.3. Temporal-Based Functions
 
 If it requires working with Temporal objects (i.e., the function you're reimplementing requires using a date-fns-style function that accepts and/or returns Temporal instances), then instead of importing that function from `src/<fn-dependency>/index.ts`, import the Temporal version of that function from `src/tp/<fn-dependency>/index.ts`. If the `src/tp/<fn-dependency>/index.ts` is missing, implement it first before implementing the Temporal version of the function you're working on. For example, if `src/<fn>/index.ts` imports `isWeekend` from `src/isWeekend/index.ts`, then `src/<fn>/index.tp.ts` should import `tpIsWeekend` from `src/tp/isWeekend/index.ts`.
 

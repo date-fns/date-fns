@@ -17,6 +17,17 @@ export interface AddMonthsOptions<
  * @description
  * Add the specified number of months to the given date.
  *
+ * **You don't need date-fns\***:
+ *
+ * Temporal has a built-in `add` method on its classes that support calendar units:
+ *
+ * - [`Temporal.PlainDate.prototype.add()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal/PlainDate/add)
+ * - [`Temporal.PlainDateTime.prototype.add()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal/PlainDateTime/add)
+ * - [`Temporal.PlainYearMonth.prototype.add()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal/PlainYearMonth/add)
+ * - [`Temporal.ZonedDateTime.prototype.add()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal/ZonedDateTime/add)
+ *
+ * \* **Not really**, see: https://date-fns.org/you-dont-need-date-fns
+ *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
  *
@@ -34,6 +45,12 @@ export interface AddMonthsOptions<
  * // Add one month to 30 January 2023:
  * const result = addMonths(new Date(2023, 0, 30), 1)
  * //=> Tue Feb 28 2023 00:00:00
+ *
+ * @example
+ * // Using Temporal:
+ * // Add 5 months to 1 September 2014:
+ * Temporal.PlainDate.from("2014-09-01").add({ months: 5 }).toString();
+ * //=> "2015-02-01"
  */
 export function addMonths<
   DateType extends Date,
