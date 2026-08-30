@@ -23,9 +23,17 @@ export const numericPatterns = {
 };
 
 export const timezonePatterns = {
-  basicOptionalMinutes: /^([+-])(\d{2})(\d{2})?|Z/,
-  basic: /^([+-])(\d{2})(\d{2})|Z/,
-  basicOptionalSeconds: /^([+-])(\d{2})(\d{2})((\d{2}))?|Z/,
-  extended: /^([+-])(\d{2}):(\d{2})|Z/,
-  extendedOptionalSeconds: /^([+-])(\d{2}):(\d{2})(:(\d{2}))?|Z/,
+  basicOptionalMinutes: /^([+-])(\d{2})(\d{2})?/,
+  basic: /^([+-])(\d{2})(\d{2})/,
+  basicOptionalSeconds: /^([+-])(\d{2})(\d{2})((\d{2}))?/,
+  extended: /^([+-])(\d{2}):(\d{2})/,
+  extendedOptionalSeconds: /^([+-])(\d{2}):(\d{2})(:(\d{2}))?/,
+};
+
+export const timezonePatternsWithZ = {
+  basicOptionalMinutes: /^(?:([+-])(\d{2})(\d{2})?|Z)/,
+  basic: /^(?:([+-])(\d{2})(\d{2})|Z)/,
+  basicOptionalSeconds: /^(?:([+-])(\d{2})(\d{2})((\d{2}))?|Z)/,
+  extended: /^(?:([+-])(\d{2}):(\d{2})|Z)/,
+  extendedOptionalSeconds: /^(?:([+-])(\d{2}):(\d{2})(:(\d{2}))?|Z)/,
 };
