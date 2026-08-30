@@ -37,16 +37,16 @@ export interface DifferenceInWeeksOptions
  *
  * @example
  * // How many full weeks are between
- * // 1 March 2020 0:00 and 6 June 2020 0:00 ?
+ * // 6 March 2020 0:00 and 1 June 2020 0:00 ?
  * // Note: because local time is used, the
- * // result will always be 8 weeks (54 days),
+ * // result will always be 12 weeks (87 days),
  * // even if DST starts and the period has
- * // only 54*24-1 hours.
+ * // only 87*24-1 hours.
  * const result = differenceInWeeks(
  *   new Date(2020, 5, 1),
  *   new Date(2020, 2, 6)
  * )
- * //=> 8
+ * //=> 12
  */
 export function differenceInWeeks(
   laterDate: DateArg<Date> & {},
