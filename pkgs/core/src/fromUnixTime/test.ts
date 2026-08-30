@@ -9,6 +9,23 @@ describe("fromUnixTime", () => {
     expect(result.getTime()).toBe(1330515499000);
   });
 
+  it("preserves fractional seconds as milliseconds", () => {
+    // The implementation multiplies by 1000, so fractional seconds in the
+    // Unix timestamp become milliseconds. The docs previously (incorrectly)
+    // stated that decimal values would be discarded — these tests pin the
+    // actual behavior. See #4248.
+    const result = fromUnixTime(1640888727.872);
+    expect(result.getTime()).toBe(1640888727872);
+  });
+
+  it("preserves small fractional values as milliseconds", () => {
+    expect(fromUnixTime(0.001).getTime()).toBe(1);
+  });
+
+  it("preserves negative fractional values as milliseconds", () => {
+    expect(fromUnixTime(-0.001).getTime()).toBe(-1);
+  });
+
   it("returns invalid if the given timestamp is invalid", () => {
     const result = fromUnixTime(NaN);
     expect(isNaN(result.getTime())).toBe(true);
