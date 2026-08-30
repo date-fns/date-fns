@@ -1,5 +1,6 @@
 import { normalizeDates } from "../_lib/normalizeDates/index.ts";
 import { compareAsc } from "../compareAsc/index.ts";
+import { constructFrom } from "../constructFrom/index.ts";
 import { differenceInCalendarMonths } from "../differenceInCalendarMonths/index.ts";
 import { isLastDayOfMonth } from "../isLastDayOfMonth/index.ts";
 import type { ContextOptions, DateArg } from "../types.ts";
@@ -47,9 +48,35 @@ export function differenceInMonths(
   if (workingLaterDate.getMonth() === 1 && workingLaterDate.getDate() > 27)
     workingLaterDate.setDate(30);
 
+  // Capture the wall-clock time before shifting the month back so we can
+  // detect a rare case below: if the shift lands on a local time that
+  // doesn't exist (a DST "spring forward" gap, e.g. 2:00 AM on the day
+  // clocks jump to 3:00 AM, or a 30-minute gap in some time zones), the
+  // engine silently normalizes it forward, which would otherwise corrupt
+  // the comparison that follows.
+  const workingLaterDateClockMinutes =
+    workingLaterDate.getHours() * 60 + workingLaterDate.getMinutes();
+
   workingLaterDate.setMonth(workingLaterDate.getMonth() - sign * difference);
 
-  let isLastMonthNotFull = compareAsc(workingLaterDate, earlierDate_) === -sign;
+  let isLastMonthNotFull: boolean;
+  if (
+    workingLaterDate.getHours() * 60 + workingLaterDate.getMinutes() !==
+    workingLaterDateClockMinutes
+  ) {
+    // The backward shift landed in a DST gap and got silently normalized,
+    // corrupting workingLaterDate. Shift earlierDate_ forward by the same
+    // number of months instead and compare against the untouched laterDate_
+    // - moving forward from a valid, already-normalized date can't land back
+    // in the same gap.
+    const workingEarlierDate = constructFrom(earlierDate_, +earlierDate_);
+    workingEarlierDate.setMonth(
+      workingEarlierDate.getMonth() + sign * difference,
+    );
+    isLastMonthNotFull = compareAsc(workingEarlierDate, laterDate_) === sign;
+  } else {
+    isLastMonthNotFull = compareAsc(workingLaterDate, earlierDate_) === -sign;
+  }
 
   if (
     isLastDayOfMonth(laterDate_) &&
