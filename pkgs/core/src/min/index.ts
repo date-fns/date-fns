@@ -43,10 +43,13 @@ export function min<DateType extends Date, ResultDate extends Date = DateType>(
 
   dates.forEach((date) => {
     // Use the first date object as the context function
-    if (!context && typeof date === "object")
+    if (!context && date && typeof date === "object")
       context = constructFrom.bind(null, date) as ContextFn<ResultDate>;
 
-    const date_ = toDate(date, context);
+    // `toDate` coerces `null` to the epoch, but like any other invalid input
+    // it must result in an invalid date (v3 parity).
+    const date_ =
+      date === null ? constructFrom(context, NaN) : toDate(date, context);
     if (!result || result > date_ || isNaN(+date_)) result = date_;
   });
 

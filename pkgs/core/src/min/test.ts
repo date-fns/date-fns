@@ -40,6 +40,20 @@ describe("min", () => {
     expect(isNaN(+result)).toBe(true);
   });
 
+  it("returns `Invalid Date` if any given date is `null`", () => {
+    // `null` used to poison the shared context and coerce to the epoch
+    // instead of an invalid date: https://github.com/date-fns/date-fns/issues/3999
+    const result = min([null as unknown as Date]);
+    expect(isNaN(+result)).toBe(true);
+
+    const mixed = min([
+      new Date(1989, 6 /* Jul */, 10),
+      null as unknown as Date,
+      new Date(1987, 1 /* Feb */, 11),
+    ]);
+    expect(isNaN(+mixed)).toBe(true);
+  });
+
   it("returns `Invalid Date` for empty array", () => {
     const result = min([]);
     expect(isNaN(+result)).toBe(true);
