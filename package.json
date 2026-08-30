@@ -9,5 +9,8 @@
     "oxlint": "^1.68.0",
     "oxlint-tsgolint": "^0.22.1",
     "vitest": "^4.1.6"
+  },
+  "dependencies": {
+    "firebase-admin": "14.0.0"
   }
 }
