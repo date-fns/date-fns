@@ -18,6 +18,70 @@ import type {
 } from "../types.ts";
 
 /**
+ * A per-unit custom formatter for {@link formatDistanceStrict}. Each entry
+ * receives the unit value and returns the string to render for that unit.
+ */
+export type FormatDistanceUnitFormatters = Partial<
+  Record<FormatDistanceStrictUnit, (value: number) => string>
+>;
+
+/**
+ * The label style for {@link formatDistanceStrict}.
+ *
+ * - `long` (default): the locale's long form, e.g. `5 minutes`.
+ * - `short`: a compact, locale-agnostic form, e.g. `5 mins`.
+ * - `narrow`: a minimal, locale-agnostic form, e.g. `5m`.
+ * - a per-unit formatter map for full control.
+ */
+export type FormatDistanceStyle =
+  | "long"
+  | "short"
+  | "narrow"
+  | FormatDistanceUnitFormatters;
+
+const NARROW_DISTANCE_UNITS: Record<FormatDistanceStrictUnit, string> = {
+  second: "s",
+  minute: "m",
+  hour: "h",
+  day: "d",
+  month: "mo",
+  year: "y",
+};
+
+const SHORT_DISTANCE_UNITS: Record<FormatDistanceStrictUnit, string> = {
+  second: "secs",
+  minute: "mins",
+  hour: "hrs",
+  day: "days",
+  month: "mos",
+  year: "yrs",
+};
+
+function distanceStyleFormatter(
+  style: FormatDistanceStyle,
+): FormatDistanceUnitFormatters {
+  if (style === "long") return {};
+  if (style === "narrow") {
+    return Object.fromEntries(
+      (Object.keys(NARROW_DISTANCE_UNITS) as FormatDistanceStrictUnit[]).map(
+        (unit) => [unit, (value: number) => `${value}${NARROW_DISTANCE_UNITS[unit]}`],
+      ),
+    ) as FormatDistanceUnitFormatters;
+  }
+  if (style === "short") {
+    return Object.fromEntries(
+      (Object.keys(SHORT_DISTANCE_UNITS) as FormatDistanceStrictUnit[]).map(
+        (unit) => [
+          unit,
+          (value: number) => `${value} ${SHORT_DISTANCE_UNITS[unit]}`,
+        ],
+      ),
+    ) as FormatDistanceUnitFormatters;
+  }
+  return style as FormatDistanceUnitFormatters;
+}
+
+/**
  * The {@link formatDistanceStrict} function options.
  */
 export interface FormatDistanceStrictOptions
@@ -29,6 +93,14 @@ export interface FormatDistanceStrictOptions
   addSuffix?: boolean;
   /** If specified, will force the unit */
   unit?: FormatDistanceStrictUnit;
+  /**
+   * The label style for the distance. `long` (the default) uses the locale's
+   * long form; `short` and `narrow` use locale-agnostic compact forms
+   * (e.g. `5m`, `2h`, `1d`); a per-unit formatter map gives full control.
+   *
+   * @default "long"
+   */
+  style?: FormatDistanceStyle;
 }
 
 /**
@@ -145,6 +217,17 @@ export function formatDistanceStrict(
   );
 
   const roundingMethod = getRoundingMethod(options?.roundingMethod ?? "round");
+  const style = options?.style ?? "long";
+  const styleFormatters = distanceStyleFormatter(style);
+  const formatUnit = (
+    token: "xSeconds" | "xMinutes" | "xHours" | "xDays" | "xMonths" | "xYears",
+    unit: FormatDistanceStrictUnit,
+    value: number,
+  ): string => {
+    const custom = styleFormatters[unit];
+    if (custom) return custom(value);
+    return locale.formatDistance(token, value, localizeOptions);
+  };
 
   const milliseconds = earlierDate_.getTime() - laterDate_.getTime();
   const minutes = milliseconds / millisecondsInMinute;
@@ -181,33 +264,33 @@ export function formatDistanceStrict(
   // 0 up to 60 seconds
   if (unit === "second") {
     const seconds = roundingMethod(milliseconds / 1000);
-    return locale.formatDistance("xSeconds", seconds, localizeOptions);
+    return formatUnit("xSeconds", "second", seconds);
 
     // 1 up to 60 mins
   } else if (unit === "minute") {
     const roundedMinutes = roundingMethod(minutes);
-    return locale.formatDistance("xMinutes", roundedMinutes, localizeOptions);
+    return formatUnit("xMinutes", "minute", roundedMinutes);
 
     // 1 up to 24 hours
   } else if (unit === "hour") {
     const hours = roundingMethod(minutes / 60);
-    return locale.formatDistance("xHours", hours, localizeOptions);
+    return formatUnit("xHours", "hour", hours);
 
     // 1 up to 30 days
   } else if (unit === "day") {
     const days = roundingMethod(dstNormalizedMinutes / minutesInDay);
-    return locale.formatDistance("xDays", days, localizeOptions);
+    return formatUnit("xDays", "day", days);
 
     // 1 up to 12 months
   } else if (unit === "month") {
     const months = roundingMethod(dstNormalizedMinutes / minutesInMonth);
     return months === 12 && defaultUnit !== "month"
-      ? locale.formatDistance("xYears", 1, localizeOptions)
-      : locale.formatDistance("xMonths", months, localizeOptions);
+      ? formatUnit("xYears", "year", 1)
+      : formatUnit("xMonths", "month", months);
 
     // 1 year up to max Date
   } else {
     const years = roundingMethod(dstNormalizedMinutes / minutesInYear);
-    return locale.formatDistance("xYears", years, localizeOptions);
+    return formatUnit("xYears", "year", years);
   }
 }
