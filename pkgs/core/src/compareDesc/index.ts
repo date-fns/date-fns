@@ -10,6 +10,12 @@ import type { DateArg } from "../types.ts";
  * Compare the two dates and return -1 if the first date is after the second,
  * 1 if the first date is before the second or 0 if dates are equal.
  *
+ * **You don't need date-fns\***:
+ *
+ * Temporal has a built-in [`Temporal.Instant.compare()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal/Instant/compare) method. Swap the arguments for reverse chronological order.
+ *
+ * \* **Not really**, see: https://date-fns.org/you-dont-need-date-fns
+ *
  * @param dateLeft - The first date to compare
  * @param dateRight - The second date to compare
  *
@@ -32,6 +38,14 @@ import type { DateArg } from "../types.ts";
  * //   Mon Jul 10 1989 00:00:00,
  * //   Wed Feb 11 1987 00:00:00
  * // ]
+ *
+ * @example
+ * // Using Temporal:
+ * const result = Temporal.Instant.compare(
+ *   Temporal.Instant.from("1989-07-10T00:00:00Z"),
+ *   Temporal.Instant.from("1987-02-11T00:00:00Z"),
+ * )
+ * //=> 1
  */
 export function compareDesc(
   dateLeft: DateArg<Date> & {},

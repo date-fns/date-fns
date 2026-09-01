@@ -17,6 +17,12 @@ export interface DifferenceInCalendarISOWeekYearsOptions extends ContextOptions<
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
+ * **You don't need date-fns\***:
+ *
+ * Temporal dates expose the ISO week-numbering year through the [`yearOfWeek`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal/PlainDate/yearOfWeek) property. Subtract the two values to get the difference.
+ *
+ * \* **Not really**, see: https://date-fns.org/you-dont-need-date-fns
+ *
  * @param laterDate - The later date
  * @param earlierDate - The earlier date
  * @param options - An object with options
@@ -29,6 +35,13 @@ export interface DifferenceInCalendarISOWeekYearsOptions extends ContextOptions<
  *   new Date(2012, 0, 1),
  *   new Date(2010, 0, 1)
  * )
+ * //=> 2
+ *
+ * @example
+ * // Using Temporal:
+ * const later = Temporal.PlainDate.from("2012-01-01")
+ * const earlier = Temporal.PlainDate.from("2010-01-01")
+ * const result = later.yearOfWeek - earlier.yearOfWeek
  * //=> 2
  */
 export function differenceInCalendarISOWeekYears(

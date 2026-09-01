@@ -8,6 +8,12 @@ import { daysInWeek } from "../constants/index.ts";
  * @description
  * Convert a number of days to a full number of weeks.
  *
+ * **You don't need date-fns\***:
+ *
+ * Temporal has no built-in conversion from a number of days to truncated whole weeks, so you still need date-fns for this.
+ *
+ * \* **Not really**, see: https://date-fns.org/you-dont-need-date-fns
+ *
  * @param days - The number of days to be converted
  *
  * @returns The number of days converted in weeks

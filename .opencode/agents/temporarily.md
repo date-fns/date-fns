@@ -86,6 +86,8 @@ Use a meaningful threshold for claiming that Temporal replaces the function. A f
 
 A function does not qualify merely because arbitrary code can be assembled from Temporal primitives. It does not count as "You don't need date-fns" when reproducing the behavior requires a custom algorithm, including branching, iteration, sorting, reduction, multiple comparison steps, or intermediate state. Extracting the implementation into a `tpXxx` function is a strong signal that it does not qualify.
 
+The Temporal API must also model the function's real inputs and context naturally. A solution does not qualify if it needs a fabricated `relativeTo` date, time zone, calendar, reference object, or other synthetic value solely to make a Temporal method usable. Converting the caller's actual date or context to the corresponding Temporal type is expected and does not count as synthetic context.
+
 When the function does not meet the threshold, state in the "You don't need date-fns" section that Temporal has no built-in alternative and that date-fns is still needed. Do not describe how the behavior could be manually reimplemented there, and do not add a Temporal example.
 
 See `src/addBusinessDays/index.ts` for the example of no direct alternative in the Temporal API.

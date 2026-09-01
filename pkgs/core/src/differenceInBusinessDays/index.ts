@@ -22,6 +22,12 @@ export interface DifferenceInBusinessDaysOptions extends ContextOptions<Date> {}
  * Like `differenceInCalendarDays`, the function removes the times from
  * the dates before calculating the difference.
  *
+ * **You don't need date-fns\***:
+ *
+ * Temporal doesn't have built-in business day arithmetic, so you still need date-fns for this.
+ *
+ * \* **Not really**, see: https://date-fns.org/you-dont-need-date-fns
+ *
  * @param laterDate - The later date
  * @param earlierDate - The earlier date
  * @param options - An object with options

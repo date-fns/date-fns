@@ -37,6 +37,12 @@ export type ClosestToResult<
  * @description
  * Return a date from the array closest to the given date.
  *
+ * **You don't need date-fns\***:
+ *
+ * Temporal doesn't have a built-in operation for finding the closest date, so you still need date-fns for this.
+ *
+ * \* **Not really**, see: https://date-fns.org/you-dont-need-date-fns
+ *
  * @typeParam DateToCompare - Date to compare argument type.
  * @typeParam DatesType - Dates array argument type.
  * @typeParam Options - Options type.

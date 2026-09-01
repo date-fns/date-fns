@@ -9,6 +9,12 @@ import type { DateArg } from "../types.ts";
  * @description
  * Return an index of the closest date from the array comparing to the given date.
  *
+ * **You don't need date-fns\***:
+ *
+ * Temporal doesn't have a built-in operation for finding the closest value in an array, so you still need date-fns for this.
+ *
+ * \* **Not really**, see: https://date-fns.org/you-dont-need-date-fns
+ *
  * @param dateToCompare - The date to compare with
  * @param dates - The array to search
  *
