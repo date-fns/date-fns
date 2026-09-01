@@ -17,6 +17,12 @@ export interface AreIntervalsOverlappingOptions extends ContextOptions<Date> {
  * @description
  * Is the given time interval overlapping with another time interval? Adjacent intervals do not count as overlapping unless `inclusive` is set to `true`.
  *
+ * **You don't need date-fns\***:
+ *
+ * Temporal doesn't have built-in interval overlap checks, so you still need date-fns for this.
+ *
+ * \* **Not really**, see: https://date-fns.org/you-dont-need-date-fns
+ *
  * @param intervalLeft - The first interval to compare.
  * @param intervalRight - The second interval to compare.
  * @param options - The object with options

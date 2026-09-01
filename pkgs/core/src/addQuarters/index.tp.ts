@@ -1,4 +1,4 @@
-import { tpyAddMonths } from "../addMonths/index.tp.ts";
+import { fromTp, toTpInstant } from "../_lib/tp/index.ts";
 import type { DateArg } from "../types.ts";
 import type { AddQuartersOptions } from "./index.ts";
 
@@ -10,5 +10,8 @@ export function tpyAddQuarters<
   amount: number,
   options?: AddQuartersOptions<ResultDate> | undefined,
 ): ResultDate {
-  return tpyAddMonths(date, amount * 3, options);
+  const [temporal, invalidDate] = toTpInstant(date, options);
+  if (!temporal || isNaN(amount)) return invalidDate;
+
+  return fromTp(temporal.add({ months: amount * 3 }), date, options);
 }

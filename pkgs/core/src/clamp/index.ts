@@ -44,6 +44,12 @@ export type ClampResult<
  * - When the date is greater than the end of the interval, the end is returned.
  * - Otherwise the date is returned.
  *
+ * **You don't need date-fns\***:
+ *
+ * Temporal doesn't have a built-in clamp operation, so you still need date-fns for this.
+ *
+ * \* **Not really**, see: https://date-fns.org/you-dont-need-date-fns
+ *
  * @typeParam DateType - Date argument type.
  * @typeParam IntervalType - Interval argument type.
  * @typeParam Options - Options type.
