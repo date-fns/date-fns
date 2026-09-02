@@ -88,6 +88,12 @@ describe("tzOffset", () => {
   });
 
   describe("fractional time zones", () => {
+    it("works with sub-hour western offsets", () => {
+      expect(
+        tzOffset("Africa/Monrovia", new Date("1970-01-01T00:00:00Z")),
+      ).toBe(-44.5);
+    });
+
     it("works negative fractional time zones", () => {
       const dst = new Date("2023-03-15T18:00:00.000Z");
       const date = new Date("2023-03-03T18:00:00.000Z");

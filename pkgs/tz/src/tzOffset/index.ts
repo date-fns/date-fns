@@ -54,8 +54,7 @@ function calcOffset(cacheStr: string, values: string[]): number {
   const minutes = +(values[1] || 0);
   // Convert seconds to minutes by dividing by 60 to keep the function return in minutes.
   const seconds = +(values[2] || 0) / 60;
+  const sign = values[0]?.trim().startsWith("-") ? -1 : 1;
   return (offsetCache[cacheStr] =
-    hours * 60 + minutes > 0
-      ? hours * 60 + minutes + seconds
-      : hours * 60 - minutes - seconds);
+    sign * (Math.abs(hours) * 60 + minutes + seconds));
 }
