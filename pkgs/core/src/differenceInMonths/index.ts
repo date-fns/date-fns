@@ -44,7 +44,11 @@ export function differenceInMonths(
 
   if (difference < 1) return 0;
 
-  if (workingLaterDate.getMonth() === 1 && workingLaterDate.getDate() > 27)
+  if (
+    sign > 0 &&
+    workingLaterDate.getMonth() === 1 &&
+    workingLaterDate.getDate() > 27
+  )
     workingLaterDate.setDate(30);
 
   workingLaterDate.setMonth(workingLaterDate.getMonth() - sign * difference);
