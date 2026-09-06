@@ -129,6 +129,22 @@ describe("parseJSON", () => {
     expect(parseJSON("2020-10-10").toString()).toBe("Invalid Date");
   });
 
+  // Regression: callers commonly pass values typed `string` that are
+  // `null`/`undefined`/non-string at runtime (e.g. from an untyped API
+  // response). These used to throw (`dateStr.match is not a function`)
+  // instead of returning Invalid Date.
+  it("returns an invalid date if argument is null", () => {
+    expect(parseJSON(null as unknown as string).toString()).toBe(
+      "Invalid Date",
+    );
+  });
+
+  it("returns an invalid date if argument is undefined", () => {
+    expect(parseJSON(undefined as unknown as string).toString()).toBe(
+      "Invalid Date",
+    );
+  });
+
   it("resolves the date type by default", () => {
     const result = parseJSON("2024-04-10T07:00:00Z");
     expect(result).toBeInstanceOf(Date);
