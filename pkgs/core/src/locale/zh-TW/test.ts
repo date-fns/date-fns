@@ -1,8 +1,36 @@
 import { describe, expect, it } from "vitest";
+import { format } from "../../format/index.ts";
 import { parse } from "../../parse/index.ts";
 import { zhTW } from "./index.ts";
 
 describe("zh-TW locale", () => {
+  it.each(["G", "GG", "GGG", "GGGG", "GGGGG"])(
+    "round-trips both eras with %s",
+    (token) => {
+      for (const year of [-2025, 0, 1, 2026]) {
+        const date = new Date(2000, 0, 1);
+        date.setFullYear(year);
+        const pattern = `${token} y`;
+        const text = format(date, pattern, { locale: zhTW });
+
+        expect(
+          parse(text, pattern, new Date(2000, 0, 1), { locale: zhTW }),
+        ).toEqual(date);
+      }
+    },
+  );
+
+  it("distinguishes the full BCE era from the CE prefix", () => {
+    expect(zhTW.match.era("公元前 2026", { width: "wide" })).toEqual({
+      value: 0,
+      rest: " 2026",
+    });
+    expect(zhTW.match.era("公元 2026", { width: "wide" })).toEqual({
+      value: 1,
+      rest: " 2026",
+    });
+  });
+
   it("parses October with localized month tokens", () => {
     expect(
       parse("2022年10月27日", "yyyy年MMMdd日", new Date(), {
