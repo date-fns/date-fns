@@ -15,6 +15,7 @@ export interface FormatISOOptions
  *
  * @description
  * Return the formatted date string in ISO 8601 format. Options may be passed to control the parts and notations of the date.
+ * Years outside the range 0000–9999 use a sign and six digits.
  *
  * @param date - The original date
  * @param options - An object with options.
@@ -66,9 +67,13 @@ export function formatISO(
   if (representation !== "time") {
     const day = addLeadingZeros(date_.getDate(), 2);
     const month = addLeadingZeros(date_.getMonth() + 1, 2);
-    const year = addLeadingZeros(date_.getFullYear(), 4);
+    const yearNumber = date_.getFullYear();
+    const year =
+      yearNumber >= 0 && yearNumber <= 9999
+        ? addLeadingZeros(yearNumber, 4)
+        : `${yearNumber < 0 ? "" : "+"}${addLeadingZeros(yearNumber, 6)}`;
 
-    // yyyyMMdd or yyyy-MM-dd.
+    // Basic or extended date, with expanded years when needed.
     result = `${year}${dateDelimiter}${month}${dateDelimiter}${day}`;
   }
 
