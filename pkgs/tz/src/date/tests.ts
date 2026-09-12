@@ -1357,6 +1357,55 @@ describe("TZDate", () => {
         }
       });
 
+      it("resolves a wall time made ambiguous by a DST fall-back to the earlier occurrence regardless of the system time zone", () => {
+        // https://github.com/date-fns/date-fns/issues/4124
+        // Europe/Paris falls back from +02:00 to +01:00 on 2025-10-26 at 03:00,
+        // so the wall time 02:00 occurs twice. Native `Date` resolves such
+        // times to the earlier occurrence, and so must `TZDate` no matter
+        // which system time zone the process runs in.
+        const date = new TZDate(
+          "2025-10-26T00:00:00.000+02:00",
+          "Europe/Paris",
+        );
+        date.setSeconds(2 * 60 * 60);
+        expect(date.toISOString()).toBe("2025-10-26T02:00:00.000+02:00");
+
+        const other = new TZDate(
+          "2025-10-26T00:00:00.000+02:00",
+          "Europe/Paris",
+        );
+        other.setSeconds(3 * 60 * 60);
+        expect(other.toISOString()).toBe("2025-10-26T03:00:00.000+01:00");
+      });
+
+      it("resolves an ambiguous wall time in the constructor to the earlier occurrence regardless of the system time zone", () => {
+        const date = new TZDate(2025, 9, 26, 2, 0, 0, 0, "Europe/Paris");
+        expect(date.toISOString()).toBe("2025-10-26T02:00:00.000+02:00");
+        expect(date.getTimezoneOffset()).toBe(-120);
+      });
+
+      it("resolves an ambiguous wall time after setHours to the earlier occurrence regardless of the system time zone", () => {
+        const date = new TZDate(
+          "2025-10-26T00:00:00.000+02:00",
+          "Europe/Paris",
+        );
+        date.setHours(2, 30, 0, 0);
+        expect(date.toISOString()).toBe("2025-10-26T02:30:00.000+02:00");
+      });
+
+      it("resolves the second hour of a two hour fall-back to the earlier occurrence", () => {
+        // Antarctica/Troll falls back from +02:00 straight to +00:00 on
+        // 2025-10-26, so the wall times 01:00 to 02:59 occur twice. Native
+        // `Date` resolves even the second of those hours to the earlier
+        // occurrence.
+        const date = new TZDate(
+          "2025-10-26T00:00:00.000+02:00",
+          "Antarctica/Troll",
+        );
+        date.setHours(2, 30, 0, 0);
+        expect(date.toISOString()).toBe("2025-10-26T02:30:00.000+02:00");
+      });
+
       it("returns the timestamp after setting", () => {
         const date = new TZDate(defaultDateStr, "America/New_York");
         expect(date.setSeconds(56)).toBe(+date);
