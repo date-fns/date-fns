@@ -488,6 +488,48 @@ function adjustToSystemTZ(date, constructorArgs) {
 
   //#endregion
 
+  //#region Fall-back occurrence selection
+
+  // When the requested wall-clock time occurs twice in the target time zone
+  // (DST fall-back), native `Date` resolves the ambiguity to the earlier
+  // occurrence. The intermediate system-zone steps above may have resolved it
+  // the other way, so restore the earlier occurrence when the wall time is
+  // ambiguous.
+
+  // Target offset at the current external timestamp, east-positive.
+  const currentOffsetMs = Math.round(tzOffset(date.timeZone, date) * 60 * 1000);
+
+  // Largest target offset found before the external timestamp. DST shifts are
+  // at most two hours in current time zone data, so probing one and two real
+  // hours back covers the whole overlap of a fall-back; for wall times inside
+  // the overlap both probes share the pre-transition offset.
+  const hourEarlier = new Date(+date - 60 * 60 * 1000);
+  const twoHoursEarlier = new Date(+date - 2 * 60 * 60 * 1000);
+  const earlierOffsetMs = Math.max(
+    Math.round(tzOffset(date.timeZone, hourEarlier) * 60 * 1000),
+    Math.round(tzOffset(date.timeZone, twoHoursEarlier) * 60 * 1000),
+  );
+
+  if (earlierOffsetMs > currentOffsetMs) {
+    // The target zone falls back around the requested wall time, so it occurs
+    // twice; prefer the earlier occurrence like native `Date` does.
+    // Wall-clock time of the internal fields expressed as UTC.
+    const wallAsUTC = +date + currentOffsetMs;
+
+    // Timestamp of the earlier occurrence, valid only when it really uses
+    // the earlier offset.
+    const earlierTime = wallAsUTC - earlierOffsetMs;
+    const offsetAtEarlierTime = Math.round(
+      tzOffset(date.timeZone, new Date(earlierTime)) * 60 * 1000,
+    );
+
+    if (offsetAtEarlierTime === earlierOffsetMs) {
+      Date.prototype.setTime.call(date, earlierTime);
+    }
+  }
+
+  //#endregion
+
   // Rebuild internal wall-clock fields from the final external timestamp.
   syncToInternal(date);
 
