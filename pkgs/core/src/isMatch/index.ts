@@ -274,7 +274,7 @@ export interface IsMatchOptions
  * If `formatString` matches with `dateString` but does not provides tokens, `referenceDate` will be returned.
  *
  * @param dateStr - The date string to verify
- * @param format - The string of tokens
+ * @param formatStr - The string of tokens
  * @param options - An object with options.
  *   see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
  *   see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
