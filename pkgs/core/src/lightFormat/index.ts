@@ -73,7 +73,7 @@ type Token = keyof typeof lightFormatters;
  * |                                 | SSSS    | ...                               |
  *
  * @param date - The original date
- * @param format - The string of tokens
+ * @param formatStr - The string of tokens
  *
  * @returns The formatted date string
  *
