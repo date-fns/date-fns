@@ -80,7 +80,9 @@ const parseDayPeriodPatterns = {
     am: /^a/i,
     pm: /^p/i,
     midnight: /^mi/i,
-    noon: /^no/i,
+    // narrow noon formats to "n" (bbbbb), so the pattern must match a bare "n"
+    // as well as "noon"; night parses from "…night", never a leading "n" (#4271)
+    noon: /^n/i,
     morning: /morning/i,
     afternoon: /afternoon/i,
     evening: /evening/i,
