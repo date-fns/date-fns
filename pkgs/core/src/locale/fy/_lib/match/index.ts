@@ -49,9 +49,9 @@ const parseMonthPatterns = {
   any: [
     /^jan/i,
     /^feb/i,
-    /^m(r|a)/i,
+    /^m(r|aar)/i,
     /^apr/i,
-    /^mai/i,
+    /^maa?i/i,
     /^jun/i,
     /^jul/i,
     /^aug/i,
