@@ -26,13 +26,13 @@ const parseQuarterPatterns = {
 };
 
 const matchMonthPatterns = {
-  narrow: /^([123456789]|1[012])/,
+  narrow: /^(1[012]|[123456789])/,
   abbreviated: /^([123456789]|1[012])月/i,
   wide: /^([123456789]|1[012])月/i,
 };
 const parseMonthPatterns = {
   any: [
-    /^1\D/,
+    /^1(\D|$)/,
     /^2/,
     /^3/,
     /^4/,
