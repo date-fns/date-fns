@@ -1,10 +1,11 @@
-/** Shifts the month by a relative amount, allowing day-of-month overflow. */
 export function tpSetMonth(
   date: Temporal.ZonedDateTime,
-  amount: number,
+  month: number,
 ): Temporal.ZonedDateTime {
-  const target = date.toPlainDate().toPlainYearMonth().add({ months: amount });
-  return date
-    .with({ year: target.year, month: target.month, day: 1 })
-    .add({ days: date.day - 1 });
+  const target = date
+    .toPlainDate()
+    .toPlainYearMonth()
+    .with({ month: 1 })
+    .add({ months: month });
+  return date.with({ year: target.year, month: target.month });
 }

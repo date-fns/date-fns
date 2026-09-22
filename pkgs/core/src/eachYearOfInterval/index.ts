@@ -35,6 +35,12 @@ export type EachYearOfIntervalResult<
  * @description
  * Return the array of yearly timestamps within the specified time interval.
  *
+ * **You don't need date-fns\***:
+ *
+ * Temporal doesn't have built-in yearly interval enumeration, so you still need date-fns for this.
+ *
+ * \* **Not really**, see: https://date-fns.org/you-dont-need-date-fns
+ *
  * @typeParam IntervalType - Interval type.
  * @typeParam Options - Options type.
  *

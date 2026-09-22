@@ -49,10 +49,10 @@ Excluded functions are marked as processed because their exclusion has been revi
 - [x] eachMonthOfInterval
 - [x] eachQuarterOfInterval
 - [x] eachWeekOfInterval
-- [ ] eachWeekendOfInterval
-- [ ] eachWeekendOfMonth
-- [ ] eachWeekendOfYear
-- [ ] eachYearOfInterval
+- [x] eachWeekendOfInterval
+- [x] eachWeekendOfMonth
+- [x] eachWeekendOfYear
+- [x] eachYearOfInterval
 - [ ] endOfDay
 - [ ] endOfDecade
 - [ ] endOfHour
@@ -201,7 +201,7 @@ Excluded functions are marked as processed because their exclusion has been revi
 - [ ] secondsToMilliseconds
 - [ ] secondsToMinutes
 - [ ] set
-- [ ] setDate
+- [x] setDate
 - [ ] setDay
 - [ ] setDayOfYear
 - [ ] setDefaultOptions
@@ -211,7 +211,7 @@ Excluded functions are marked as processed because their exclusion has been revi
 - [ ] setISOWeekYear
 - [ ] setMilliseconds
 - [ ] setMinutes
-- [ ] setMonth
+- [x] setMonth
 - [ ] setQuarter
 - [ ] setSeconds
 - [ ] setWeek
@@ -224,7 +224,7 @@ Excluded functions are marked as processed because their exclusion has been revi
 - [x] startOfISOWeekYear
 - [ ] startOfMinute
 - [ ] startOfMonth
-- [ ] startOfQuarter
+- [x] startOfQuarter
 - [ ] startOfSecond
 - [ ] startOfToday
 - [ ] startOfTomorrow

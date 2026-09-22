@@ -1,5 +1,5 @@
 import { tpSetDate } from "../setDate/index.ts";
-import { tpSetMonth } from "../setMonth/index.ts";
+import { tpShiftMonthsWithOverflow } from "../_lib/shiftMonthsWithOverflow/index.ts";
 
 export function tpDifferenceInMonths(
   laterDate: Temporal.ZonedDateTime,
@@ -18,7 +18,10 @@ export function tpDifferenceInMonths(
   if (workingLaterDate.month === 2 && workingLaterDate.day > 27)
     workingLaterDate = tpSetDate(workingLaterDate, 30);
 
-  workingLaterDate = tpSetMonth(workingLaterDate, -sign * difference);
+  workingLaterDate = tpShiftMonthsWithOverflow(
+    workingLaterDate,
+    -sign * difference,
+  );
 
   let isLastMonthNotFull =
     Temporal.ZonedDateTime.compare(workingLaterDate, earlierDate) === -sign;

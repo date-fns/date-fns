@@ -35,6 +35,12 @@ export type EachWeekendOfIntervalResult<
  * @description
  * Get all the Saturdays and Sundays in the given date interval.
  *
+ * **You don't need date-fns\***:
+ *
+ * Temporal doesn't have built-in weekend enumeration, so you still need date-fns for this.
+ *
+ * \* **Not really**, see: https://date-fns.org/you-dont-need-date-fns
+ *
  * @typeParam IntervalType - Interval type.
  * @typeParam Options - Options type.
  *
