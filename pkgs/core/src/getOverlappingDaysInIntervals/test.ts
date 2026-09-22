@@ -153,6 +153,17 @@ describe("getOverlappingDaysInIntervals", () => {
       );
       expect(numOverlappingDays).toBe(1);
     });
+
+    it("returns 0 for a zero-length interval inside another interval", () => {
+      const interval = {
+        start: new Date(2016, 10, 14),
+        end: new Date(2016, 10, 16),
+      };
+      const date = new Date(2016, 10, 15);
+      const emptyInterval = { start: date, end: date };
+      expect(getOverlappingDaysInIntervals(interval, emptyInterval)).toBe(0);
+      expect(getOverlappingDaysInIntervals(emptyInterval, interval)).toBe(0);
+    });
   });
 
   it("accepts a timestamp", () => {
