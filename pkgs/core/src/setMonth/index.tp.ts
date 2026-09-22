@@ -13,10 +13,5 @@ export function tpySetMonth<
 ): ResultDate {
   const [temporal, invalidDate] = toTpInstant(date, options);
   if (!temporal || !Number.isFinite(month)) return invalidDate;
-  try {
-    return fromTp(tpSetMonth(temporal, Math.trunc(month)), date, options);
-  } catch (error) {
-    if (error instanceof RangeError) return invalidDate;
-    throw error;
-  }
+  return fromTp(tpSetMonth(temporal, Math.trunc(month)), date, options);
 }

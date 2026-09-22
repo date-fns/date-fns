@@ -60,13 +60,13 @@ Excluded functions are marked as processed because their exclusion has been revi
 - [x] endOfISOWeekYear
 - [x] endOfMinute
 - [x] endOfMonth
-- [ ] endOfQuarter
-- [ ] endOfSecond
-- [ ] endOfToday
-- [ ] endOfTomorrow
-- [ ] endOfWeek
-- [ ] endOfYear
-- [ ] endOfYesterday
+- [x] endOfQuarter
+- [x] endOfSecond
+- [x] endOfToday
+- [x] endOfTomorrow
+- [x] endOfWeek
+- [x] endOfYear
+- [x] endOfYesterday
 - [ ] formatDate
 - [ ] format
 - [ ] formatDistance

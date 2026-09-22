@@ -12,10 +12,5 @@ export function tpyEndOfISOWeekYear<
 ): ResultDate {
   const [temporal, invalidDate] = toTpInstant(date, options);
   if (!temporal) return invalidDate;
-  try {
-    return fromTp(tpEndOfISOWeekYear(temporal), date, options);
-  } catch (error) {
-    if (error instanceof RangeError) return invalidDate;
-    throw error;
-  }
+  return fromTp(tpEndOfISOWeekYear(temporal), date, options);
 }

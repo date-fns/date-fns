@@ -12,10 +12,5 @@ export function tpyEndOfDecade<
 ): ResultDate {
   const [temporal, invalidDate] = toTpInstant(date, options);
   if (!temporal) return invalidDate;
-  try {
-    return fromTp(tpEndOfDecade(temporal), date, options);
-  } catch (error) {
-    if (error instanceof RangeError) return invalidDate;
-    throw error;
-  }
+  return fromTp(tpEndOfDecade(temporal), date, options);
 }
