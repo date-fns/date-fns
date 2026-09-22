@@ -53,13 +53,13 @@ Excluded functions are marked as processed because their exclusion has been revi
 - [x] eachWeekendOfMonth
 - [x] eachWeekendOfYear
 - [x] eachYearOfInterval
-- [ ] endOfDay
-- [ ] endOfDecade
-- [ ] endOfHour
-- [ ] endOfISOWeek
-- [ ] endOfISOWeekYear
-- [ ] endOfMinute
-- [ ] endOfMonth
+- [x] endOfDay
+- [x] endOfDecade
+- [x] endOfHour
+- [x] endOfISOWeek
+- [x] endOfISOWeekYear
+- [x] endOfMinute
+- [x] endOfMonth
 - [ ] endOfQuarter
 - [ ] endOfSecond
 - [ ] endOfToday

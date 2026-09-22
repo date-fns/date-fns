@@ -1,4 +1,4 @@
-import { expect, it, vi } from "vitest";
+import { vi } from "vitest";
 import { tpySetDate } from "./index.tp.ts";
 
 vi.mock(import("./index.ts"), () => ({ setDate: tpySetDate }));

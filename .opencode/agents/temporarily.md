@@ -79,6 +79,8 @@ Write a `test.tp.ts` file that passes the same `Date`-based tests as the origina
 
 See `src/add/test.tp.ts` and `src/addBusinessDays/test.tp.ts` for the example of how to do it.
 
+Keep `test.tp.ts` limited to importing the Temporal implementation, registering the `vi.mock`, and importing the existing `test.ts` suite. Reuse only the current tests: do not add standalone test cases, assertions, edge cases, or regression suites to `test.tp.ts`, and do not add them to `test.ts` or separate helper test files as part of this workflow. Additional coverage can be added later when explicitly requested.
+
 To run Temporal tests, use `pnpm vitest run --project temporarily`.
 
 ## 3. Add JSDoc Example
@@ -86,6 +88,8 @@ To run Temporal tests, use `pnpm vitest run --project temporarily`.
 Add a `@example` section to the JSDoc annotations of the function that shows how to use the Temporal API to achieve the same result as the function does. See `src/add/index.ts` for the example of how to do it. Make sure to follow the idea, the structure, and the style of the example. The example should always start with the `// Using Temporal:` comment so we can detect these examples when rendering the documentation website.
 
 Only add the example when the function meets the "You don't need date-fns" threshold below. If Temporal has no direct alternative, skip the example rather than demonstrating a custom reimplementation.
+
+Use the simplest Temporal type that naturally models the operation. Prefer `Temporal.PlainDate` for calendar-date operations and `Temporal.PlainDateTime` for zone-independent wall-clock operations. Use `Temporal.ZonedDateTime` when the behavior depends on a time zone, DST, or the relationship between local time and an instant. Do not add a named time zone merely as example boilerplate, but do not remove meaningful zone semantics to shorten an example. `ZonedDateTime.from()` requires a time zone; omitting it requires choosing an appropriate different Temporal type, not just deleting the zone annotation.
 
 ## 4. Add "You Don't Need date-fns" Section
 
@@ -100,6 +104,17 @@ Use a meaningful threshold for claiming that Temporal replaces the function. A f
 
 A function does not qualify merely because arbitrary code can be assembled from Temporal primitives. It does not count as "You don't need date-fns" when reproducing the behavior requires a custom algorithm, including branching, iteration, sorting, reduction, multiple comparison steps, or intermediate state. Extracting the implementation into a `tpXxx` function is a strong signal that it does not qualify.
 
+### Practical Simplicity Threshold
+
+A built-in method call is necessary but not sufficient: the replacement must also be concise, idiomatic, and immediately recognizable as the intended operation. Evaluate the operation itself separately from input construction and output formatting; counting calls or fitting code onto one line is not a sufficient test.
+
+- A named operation such as `.startOfDay()`, a property such as `.daysInMonth`, or a small field update such as `.with({ month })` qualifies when it preserves the intended semantics.
+- A generic `.with()` call that manually encodes a boundary by enumerating multiple lower-order fields does not qualify. In particular, setting hours, minutes, seconds, milliseconds, microseconds, and nanoseconds to reproduce `endOfDay` is a custom boundary recipe, even though it uses one Temporal call. Apply the same rule to analogous end-of-unit recipes.
+- Recipes requiring coordinated magic values, precision cleanup, or offset/disambiguation corrections to make a verbose field update equivalent do not become direct alternatives merely because all of that configuration fits into one call. An ordinary option on an otherwise clear named operation is not by itself disqualifying.
+- Do not hide the recipe in a helper, string literal, spread, or prebuilt object to make the example appear concise. Judge the full logic needed to achieve the behavior.
+
+When this simplicity threshold fails, use the no-built-in-alternative wording and omit the Temporal example, as for other unsupported operations. This classification concerns the documentation claim; the Temporal compatibility implementation should still use the most appropriate Temporal APIs and preserve the Date-based behavior.
+
 The Temporal API must also model the function's real inputs and context naturally. A solution does not qualify if it needs a fabricated `relativeTo` date, time zone, calendar, reference object, or other synthetic value solely to make a Temporal method usable. Converting the caller's actual date or context to the corresponding Temporal type is expected and does not count as synthetic context.
 
 When the function does not meet the threshold, state in the "You don't need date-fns" section that Temporal has no built-in alternative and that date-fns is still needed. Do not describe how the behavior could be manually reimplemented there, and do not add a Temporal example.
@@ -113,5 +128,8 @@ Use `.agents/plans/temporarilyfication.md` as the source of truth for processing
 Checklist:
 
 - If provided with an example, did you follow the idea, the structure, and the style of the example?
+- Does `test.tp.ts` only mock the implementation and reuse the existing `test.ts` suite, without adding new test cases elsewhere?
 - Does the "You don't need date-fns" claim rely on an actual Temporal capability rather than a custom algorithm built from primitives?
+- Does the replacement pass the practical simplicity threshold, rather than hiding a verbose boundary recipe in a single method call?
+- Does the example use the simplest appropriate Temporal type while preserving meaningful time-zone semantics?
 - Did you update `.agents/plans/temporarilyfication.md` for every function completed or newly exported?
