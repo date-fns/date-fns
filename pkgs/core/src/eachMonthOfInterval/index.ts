@@ -32,6 +32,12 @@ export type EachMonthOfIntervalResult<
  * @description
  * Return the array of months within the specified time interval.
  *
+ * **You don't need date-fns\***:
+ *
+ * Temporal doesn't have a built-in alternative for enumerating each month in an interval, so you still need date-fns for this.
+ *
+ * \* **Not really**, see: https://date-fns.org/you-dont-need-date-fns
+ *
  * @typeParam IntervalType - Interval type.
  * @typeParam Options - Options type.
  *

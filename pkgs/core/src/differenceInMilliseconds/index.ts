@@ -9,6 +9,12 @@ import type { DateArg } from "../types.ts";
  * @description
  * Get the number of milliseconds between the given dates.
  *
+ * **You don't need date-fns\***:
+ *
+ * Temporal instants expose their Unix timestamp through [`Temporal.Instant.prototype.epochMilliseconds`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal/Instant/epochMilliseconds), so subtract the earlier value from the later value.
+ *
+ * \* **Not really**, see: https://date-fns.org/you-dont-need-date-fns
+ *
  * @param laterDate - The later date
  * @param earlierDate - The earlier date
  *
@@ -21,6 +27,13 @@ import type { DateArg } from "../types.ts";
  *   new Date(2014, 6, 2, 12, 30, 21, 700),
  *   new Date(2014, 6, 2, 12, 30, 20, 600)
  * )
+ * //=> 1100
+ *
+ * @example
+ * // Using Temporal:
+ * const earlier = Temporal.Instant.from("2014-07-02T12:30:20.600Z")
+ * const later = Temporal.Instant.from("2014-07-02T12:30:21.700Z")
+ * const result = later.epochMilliseconds - earlier.epochMilliseconds
  * //=> 1100
  */
 export function differenceInMilliseconds(

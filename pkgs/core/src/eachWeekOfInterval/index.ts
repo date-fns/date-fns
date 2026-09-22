@@ -46,6 +46,12 @@ export type EachWeekOfIntervalResult<
  * @description
  * Return the array of weeks within the specified time interval.
  *
+ * **You don't need date-fns\***:
+ *
+ * Temporal doesn't have a built-in alternative for enumerating each week in an interval with a configurable first day, so you still need date-fns for this.
+ *
+ * \* **Not really**, see: https://date-fns.org/you-dont-need-date-fns
+ *
  * @param interval - The interval.
  * @param options - An object with options.
  *

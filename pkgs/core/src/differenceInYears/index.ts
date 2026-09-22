@@ -16,6 +16,12 @@ export interface DifferenceInYearsOptions extends ContextOptions<Date> {}
  * @description
  * Get the number of full years between the given dates.
  *
+ * **You don't need date-fns\***:
+ *
+ * Temporal has no built-in alternative that matches date-fns full-year leap-day semantics, so you still need date-fns for this.
+ *
+ * \* **Not really**, see: https://date-fns.org/you-dont-need-date-fns
+ *
  * @param laterDate - The later date
  * @param earlierDate - The earlier date
  * @param options - An object with options

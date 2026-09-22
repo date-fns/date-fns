@@ -16,6 +16,12 @@ export interface DifferenceInMinutesOptions extends RoundingOptions {}
  * @description
  * Get the signed number of full (rounded towards 0) minutes between the given dates.
  *
+ * **You don't need date-fns\***:
+ *
+ * Temporal has a built-in [`Temporal.Instant.prototype.until()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal/Instant/until) method that can return the elapsed minutes between two instants.
+ *
+ * \* **Not really**, see: https://date-fns.org/you-dont-need-date-fns
+ *
  * @param dateLeft - The later date
  * @param dateRight - The earlier date
  * @param options - An object with options.
@@ -37,6 +43,17 @@ export interface DifferenceInMinutesOptions extends RoundingOptions {}
  *   new Date(2000, 0, 1, 10, 1, 59)
  * )
  * //=> -1
+ *
+ * @example
+ * // Using Temporal:
+ * const earlier = Temporal.Instant.from("2014-07-02T12:07:59Z")
+ * const later = Temporal.Instant.from("2014-07-02T12:20:00Z")
+ * const result = earlier.until(later, {
+ *   largestUnit: "minutes",
+ *   smallestUnit: "minutes",
+ *   roundingMode: "trunc",
+ * }).minutes
+ * //=> 12
  */
 export function differenceInMinutes(
   dateLeft: DateArg<Date> & {},

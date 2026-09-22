@@ -19,6 +19,12 @@ export interface DifferenceInISOWeekYearsOptions extends ContextOptions<Date> {}
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
+ * **You don't need date-fns\***:
+ *
+ * Temporal doesn't have a built-in operation for the number of full ISO week-numbering years between two dates, so you still need date-fns for this.
+ *
+ * \* **Not really**, see: https://date-fns.org/you-dont-need-date-fns
+ *
  * @param laterDate - The later date
  * @param earlierDate - The earlier date
  * @param options - The options

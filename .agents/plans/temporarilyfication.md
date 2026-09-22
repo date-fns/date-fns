@@ -2,6 +2,8 @@
 
 Track the transition of every public core function to the Temporal workflow in `.opencode/agents/temporarily.md`.
 
+Excluded functions are marked as processed because their exclusion has been reviewed and completed: `constructFrom` and `constructNow`.
+
 - [x] add
 - [x] addBusinessDays
 - [x] addDays
@@ -134,8 +136,8 @@ Track the transition of every public core function to the Temporal workflow in `
 - [ ] isSameSecond
 - [ ] isSameWeek
 - [ ] isSameYear
-- [ ] isSaturday
-- [ ] isSunday
+- [x] isSaturday
+- [x] isSunday
 - [ ] isThisHour
 - [ ] isThisISOWeek
 - [ ] isThisMinute
@@ -150,7 +152,7 @@ Track the transition of every public core function to the Temporal workflow in `
 - [ ] isTuesday
 - [ ] isValid
 - [ ] isWednesday
-- [ ] isWeekend
+- [x] isWeekend
 - [ ] isWithinInterval
 - [ ] isYesterday
 - [ ] lastDayOfDecade
@@ -219,14 +221,14 @@ Track the transition of every public core function to the Temporal workflow in `
 - [ ] startOfDecade
 - [ ] startOfHour
 - [ ] startOfISOWeek
-- [ ] startOfISOWeekYear
+- [x] startOfISOWeekYear
 - [ ] startOfMinute
 - [ ] startOfMonth
 - [ ] startOfQuarter
 - [ ] startOfSecond
 - [ ] startOfToday
 - [ ] startOfTomorrow
-- [ ] startOfWeek
+- [x] startOfWeek
 - [ ] startOfWeekYear
 - [ ] startOfYear
 - [ ] startOfYesterday

@@ -16,6 +16,12 @@ export interface DifferenceInQuartersOptions
  * @description
  * Get the number of quarters between the given dates.
  *
+ * **You don't need date-fns\***:
+ *
+ * Temporal has no built-in alternative that matches date-fns full-quarter and rounding semantics, so you still need date-fns for this.
+ *
+ * \* **Not really**, see: https://date-fns.org/you-dont-need-date-fns
+ *
  * @param laterDate - The later date
  * @param earlierDate - The earlier date
  * @param options - An object with options.

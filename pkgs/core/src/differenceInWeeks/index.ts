@@ -24,6 +24,12 @@ export interface DifferenceInWeeksOptions
  * To ignore DST and only measure exact 7*24-hour periods, use this instead:
  * `Math.trunc(differenceInHours(dateLeft, dateRight)/(7*24))|0`.
  *
+ * **You don't need date-fns\***:
+ *
+ * Temporal has no built-in alternative that matches date-fns full-local-day-based week calculation and rounding semantics, so you still need date-fns for this.
+ *
+ * \* **Not really**, see: https://date-fns.org/you-dont-need-date-fns
+ *
  * @param laterDate - The later date
  * @param earlierDate - The earlier date
  * @param options - An object with options
