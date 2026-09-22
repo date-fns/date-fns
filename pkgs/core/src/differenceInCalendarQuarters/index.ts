@@ -15,6 +15,12 @@ export interface DifferenceInCalendarQuartersOptions extends ContextOptions<Date
  * @description
  * Get the number of calendar quarters between the given dates.
  *
+ * **You don't need date-fns\***:
+ *
+ * Temporal has no built-in operation for the difference between calendar quarters, so you still need date-fns for this.
+ *
+ * \* **Not really**, see: https://date-fns.org/you-dont-need-date-fns
+ *
  * @param laterDate - The later date
  * @param earlierDate - The earlier date
  * @param options - An object with options

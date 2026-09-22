@@ -18,6 +18,12 @@ export interface DifferenceInCalendarDaysOptions extends ContextOptions<Date> {}
  * Get the number of calendar days between the given dates. This means that the times are removed
  * from the dates and then the difference in days is calculated.
  *
+ * **You don't need date-fns\***:
+ *
+ * Temporal has a built-in [`Temporal.PlainDate.prototype.until()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal/PlainDate/until) method.
+ *
+ * \* **Not really**, see: https://date-fns.org/you-dont-need-date-fns
+ *
  * @param laterDate - The later date
  * @param earlierDate - The earlier date
  * @param options - The options object
@@ -39,6 +45,13 @@ export interface DifferenceInCalendarDaysOptions extends ContextOptions<Date> {}
  *   new Date(2011, 6, 2, 23, 59)
  * )
  * //=> 1
+ *
+ * @example
+ * // Using Temporal:
+ * const result = Temporal.PlainDate.from("2011-07-02")
+ *   .until(Temporal.PlainDate.from("2012-07-02"), { largestUnit: "days" })
+ *   .days
+ * //=> 366
  */
 export function differenceInCalendarDays(
   laterDate: DateArg<Date> & {},

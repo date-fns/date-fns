@@ -1,6 +1,6 @@
 import { normalizeDates } from "../_lib/normalizeDates/index.ts";
 import { tpyClosestIndexTo } from "../closestIndexTo/index.tp.ts";
-import { tpyConstructFrom } from "../constructFrom/index.tp.ts";
+import { constructFrom } from "../constructFrom/index.ts";
 import type { DateArg } from "../types.ts";
 import type { ClosestToOptions, ClosestToResult } from "./index.ts";
 
@@ -22,7 +22,7 @@ export function tpyClosestTo<
   const index = tpyClosestIndexTo(dateToCompare_, dates_);
 
   if (typeof index === "number" && isNaN(index))
-    return tpyConstructFrom(dateToCompare_, NaN) as ClosestToResult<
+    return constructFrom(dateToCompare_, NaN) as ClosestToResult<
       DateToCompare,
       DatesType,
       Options

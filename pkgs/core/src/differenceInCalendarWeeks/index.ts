@@ -23,6 +23,12 @@ export interface DifferenceInCalendarWeeksOptions
  * @description
  * Get the number of calendar weeks between the given dates.
  *
+ * **You don't need date-fns\***:
+ *
+ * Temporal doesn't have a built-in operation for the difference between calendar weeks with a configurable first day, so you still need date-fns for this.
+ *
+ * \* **Not really**, see: https://date-fns.org/you-dont-need-date-fns
+ *
  * @param laterDate - The later date
  * @param earlierDate - The earlier date
  * @param options - An object with options.

@@ -1,0 +1,250 @@
+# Temporarilyfication
+
+Track the transition of every public core function to the Temporal workflow in `.opencode/agents/temporarily.md`.
+
+- [x] add
+- [x] addBusinessDays
+- [x] addDays
+- [x] addHours
+- [x] addISOWeekYears
+- [x] addMilliseconds
+- [x] addMinutes
+- [x] addMonths
+- [x] addQuarters
+- [x] addSeconds
+- [x] addWeeks
+- [x] addYears
+- [x] areIntervalsOverlapping
+- [x] clamp
+- [x] closestIndexTo
+- [x] closestTo
+- [x] compareAsc
+- [x] compareDesc
+- [x] constructFrom
+- [x] constructNow
+- [x] daysToWeeks
+- [x] differenceInBusinessDays
+- [x] differenceInCalendarDays
+- [x] differenceInCalendarISOWeekYears
+- [x] differenceInCalendarISOWeeks
+- [x] differenceInCalendarMonths
+- [x] differenceInCalendarQuarters
+- [x] differenceInCalendarWeeks
+- [x] differenceInCalendarYears
+- [x] differenceInDays
+- [x] differenceInHours
+- [x] differenceInISOWeekYears
+- [x] differenceInMilliseconds
+- [x] differenceInMinutes
+- [x] differenceInMonths
+- [x] differenceInQuarters
+- [x] differenceInSeconds
+- [x] differenceInWeeks
+- [x] differenceInYears
+- [x] eachDayOfInterval
+- [x] eachHourOfInterval
+- [x] eachMinuteOfInterval
+- [x] eachMonthOfInterval
+- [x] eachQuarterOfInterval
+- [x] eachWeekOfInterval
+- [ ] eachWeekendOfInterval
+- [ ] eachWeekendOfMonth
+- [ ] eachWeekendOfYear
+- [ ] eachYearOfInterval
+- [ ] endOfDay
+- [ ] endOfDecade
+- [ ] endOfHour
+- [ ] endOfISOWeek
+- [ ] endOfISOWeekYear
+- [ ] endOfMinute
+- [ ] endOfMonth
+- [ ] endOfQuarter
+- [ ] endOfSecond
+- [ ] endOfToday
+- [ ] endOfTomorrow
+- [ ] endOfWeek
+- [ ] endOfYear
+- [ ] endOfYesterday
+- [ ] formatDate
+- [ ] format
+- [ ] formatDistance
+- [ ] formatDistanceStrict
+- [ ] formatDistanceToNow
+- [ ] formatDistanceToNowStrict
+- [ ] formatDuration
+- [ ] formatISO
+- [ ] formatISO9075
+- [ ] formatISODuration
+- [ ] formatRFC3339
+- [ ] formatRFC7231
+- [ ] formatRelative
+- [ ] fromUnixTime
+- [ ] getDate
+- [ ] getDay
+- [ ] getDayOfYear
+- [ ] getDaysInMonth
+- [ ] getDaysInYear
+- [ ] getDecade
+- [ ] getDefaultOptions
+- [ ] getHours
+- [ ] getISODay
+- [ ] getISOWeek
+- [ ] getISOWeekYear
+- [ ] getISOWeeksInYear
+- [ ] getMilliseconds
+- [ ] getMinutes
+- [ ] getMonth
+- [ ] getOverlappingDaysInIntervals
+- [ ] getQuarter
+- [ ] getSeconds
+- [ ] getTime
+- [ ] getUnixTime
+- [ ] getWeek
+- [ ] getWeekOfMonth
+- [ ] getWeekYear
+- [ ] getWeeksInMonth
+- [ ] getYear
+- [ ] hoursToMilliseconds
+- [ ] hoursToMinutes
+- [ ] hoursToSeconds
+- [ ] interval
+- [ ] intervalToDuration
+- [ ] intlFormat
+- [ ] intlFormatDistance
+- [ ] isAfter
+- [ ] isBefore
+- [ ] isDate
+- [ ] isEqual
+- [ ] isExists
+- [ ] isFirstDayOfMonth
+- [ ] isFriday
+- [ ] isFuture
+- [ ] isLastDayOfMonth
+- [ ] isLeapYear
+- [ ] isMatch
+- [ ] isMonday
+- [ ] isPast
+- [ ] isSameDay
+- [ ] isSameHour
+- [ ] isSameISOWeek
+- [ ] isSameISOWeekYear
+- [ ] isSameMinute
+- [ ] isSameMonth
+- [ ] isSameQuarter
+- [ ] isSameSecond
+- [ ] isSameWeek
+- [ ] isSameYear
+- [ ] isSaturday
+- [ ] isSunday
+- [ ] isThisHour
+- [ ] isThisISOWeek
+- [ ] isThisMinute
+- [ ] isThisMonth
+- [ ] isThisQuarter
+- [ ] isThisSecond
+- [ ] isThisWeek
+- [ ] isThisYear
+- [ ] isThursday
+- [ ] isToday
+- [ ] isTomorrow
+- [ ] isTuesday
+- [ ] isValid
+- [ ] isWednesday
+- [ ] isWeekend
+- [ ] isWithinInterval
+- [ ] isYesterday
+- [ ] lastDayOfDecade
+- [ ] lastDayOfISOWeek
+- [ ] lastDayOfISOWeekYear
+- [ ] lastDayOfMonth
+- [ ] lastDayOfQuarter
+- [ ] lastDayOfWeek
+- [ ] lastDayOfYear
+- [ ] lightFormat
+- [ ] max
+- [ ] milliseconds
+- [ ] millisecondsToHours
+- [ ] millisecondsToMinutes
+- [ ] millisecondsToSeconds
+- [ ] min
+- [ ] minutesToHours
+- [ ] minutesToMilliseconds
+- [ ] minutesToSeconds
+- [ ] monthsToQuarters
+- [ ] monthsToYears
+- [ ] nextDay
+- [ ] nextFriday
+- [ ] nextMonday
+- [ ] nextSaturday
+- [ ] nextSunday
+- [ ] nextThursday
+- [ ] nextTuesday
+- [ ] nextWednesday
+- [ ] parse
+- [ ] parseISO
+- [ ] parseJSON
+- [ ] previousDay
+- [ ] previousFriday
+- [ ] previousMonday
+- [ ] previousSaturday
+- [ ] previousSunday
+- [ ] previousThursday
+- [ ] previousTuesday
+- [ ] previousWednesday
+- [ ] quartersToMonths
+- [ ] quartersToYears
+- [ ] roundToNearestHours
+- [ ] roundToNearestMinutes
+- [ ] secondsToHours
+- [ ] secondsToMilliseconds
+- [ ] secondsToMinutes
+- [ ] set
+- [ ] setDate
+- [ ] setDay
+- [ ] setDayOfYear
+- [ ] setDefaultOptions
+- [ ] setHours
+- [ ] setISODay
+- [ ] setISOWeek
+- [ ] setISOWeekYear
+- [ ] setMilliseconds
+- [ ] setMinutes
+- [ ] setMonth
+- [ ] setQuarter
+- [ ] setSeconds
+- [ ] setWeek
+- [ ] setWeekYear
+- [ ] setYear
+- [ ] startOfDay
+- [ ] startOfDecade
+- [ ] startOfHour
+- [ ] startOfISOWeek
+- [ ] startOfISOWeekYear
+- [ ] startOfMinute
+- [ ] startOfMonth
+- [ ] startOfQuarter
+- [ ] startOfSecond
+- [ ] startOfToday
+- [ ] startOfTomorrow
+- [ ] startOfWeek
+- [ ] startOfWeekYear
+- [ ] startOfYear
+- [ ] startOfYesterday
+- [ ] sub
+- [ ] subBusinessDays
+- [ ] subDays
+- [ ] subHours
+- [ ] subISOWeekYears
+- [ ] subMilliseconds
+- [ ] subMinutes
+- [ ] subMonths
+- [ ] subQuarters
+- [ ] subSeconds
+- [ ] subWeeks
+- [ ] subYears
+- [ ] toDate
+- [ ] transpose
+- [ ] weeksToDays
+- [ ] yearsToDays
+- [ ] yearsToMonths
+- [ ] yearsToQuarters

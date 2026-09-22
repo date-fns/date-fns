@@ -14,6 +14,12 @@ export interface DifferenceInCalendarYearsOptions extends ContextOptions<Date> {
  * @description
  * Get the number of calendar years between the given dates.
  *
+ * **You don't need date-fns\***:
+ *
+ * Temporal dates expose the calendar year through the [`year`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal/PlainDate/year) property. Subtract the two values to get the difference.
+ *
+ * \* **Not really**, see: https://date-fns.org/you-dont-need-date-fns
+ *
  * @param laterDate - The later date
  * @param earlierDate - The earlier date
  * @param options - An object with options
@@ -26,6 +32,13 @@ export interface DifferenceInCalendarYearsOptions extends ContextOptions<Date> {
  *   new Date(2015, 1, 11),
  *   new Date(2013, 11, 31)
  * );
+ * //=> 2
+ *
+ * @example
+ * // Using Temporal:
+ * const later = Temporal.PlainDate.from("2015-02-11")
+ * const earlier = Temporal.PlainDate.from("2013-12-31")
+ * const result = later.year - earlier.year
  * //=> 2
  */
 export function differenceInCalendarYears(

@@ -14,6 +14,12 @@ export interface DifferenceInCalendarMonthsOptions extends ContextOptions<Date> 
  * @description
  * Get the number of calendar months between the given dates.
  *
+ * **You don't need date-fns\***:
+ *
+ * Temporal has a built-in [`Temporal.PlainYearMonth.prototype.until()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal/PlainYearMonth/until) method.
+ *
+ * \* **Not really**, see: https://date-fns.org/you-dont-need-date-fns
+ *
  * @param laterDate - The later date
  * @param earlierDate - The earlier date
  * @param options - An object with options
@@ -26,6 +32,13 @@ export interface DifferenceInCalendarMonthsOptions extends ContextOptions<Date> 
  *   new Date(2014, 8, 1),
  *   new Date(2014, 0, 31)
  * )
+ * //=> 8
+ *
+ * @example
+ * // Using Temporal:
+ * const result = Temporal.PlainYearMonth.from("2014-01")
+ *   .until(Temporal.PlainYearMonth.from("2014-09"), { largestUnit: "months" })
+ *   .months
  * //=> 8
  */
 export function differenceInCalendarMonths(
