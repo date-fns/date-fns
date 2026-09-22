@@ -12,7 +12,7 @@ If you're looking for time zone support prior to date-fns v4, see the third-part
 
 There are two ways to start working with time zones:
 
-- [Using the `Date` extensions `TZDate` and `UTCDate`](#using-tzdate-utcdate)
+- [Using the `Date` extensions `TZDate` and `UTCDate`](#using-tzdate--utcdate)
 - [Using the date-fns functions' `in` option](#using-in-option)
 
 ### Using `TZDate` & `UTCDate`

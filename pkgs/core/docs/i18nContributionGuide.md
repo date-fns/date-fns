@@ -5,29 +5,29 @@
 - [Adding a new locale](#adding-a-new-locale)
   - [Choosing a directory name for a locale](#choosing-a-directory-name-for-a-locale)
 
-  - [index.js](#index.js)
+  - [index.js](#indexjs)
 
   - [localize](#localize)
-    - [localize.ordinalNumber](#localize.ordinalnumber)
+    - [localize.ordinalNumber](#localizeordinalnumber)
 
-    - [localize.era and using buildLocalizeFn function](#localize.era-and-using-buildlocalizefn-function)
+    - [localize.era and using buildLocalizeFn function](#localizeera-and-using-buildlocalizefn-function)
 
     - [Formatting localizers](#formatting-localizers)
 
-    - [localize.quarter](#localize.quarter)
+    - [localize.quarter](#localizequarter)
 
-    - [localize.month](#localize.month)
+    - [localize.month](#localizemonth)
 
-    - [localize.day](#localize.day)
+    - [localize.day](#localizeday)
 
-    - [localize.dayPeriod](#localize.dayperiod)
+    - [localize.dayPeriod](#localizedayperiod)
 
   - [formatLong](#formatlong)
-    - [formatLong.dateFormats](#formatlong.dateformats)
+    - [formatLong.dateFormats](#formatlongdateformats)
 
-    - [formatLong.timeFormats](#formatlong.timeformats)
+    - [formatLong.timeFormats](#formatlongtimeformats)
 
-    - [formatLong.dateTimeFormats](#formatlong.datetimeformats)
+    - [formatLong.dateTimeFormats](#formatlongdatetimeformats)
 
   - [formatRelative](#formatrelative)
 

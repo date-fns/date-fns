@@ -44,7 +44,7 @@ Here is the list of them, in order of nesting:
 
 The later submodules are also included inside the former if you want to use multiple features from the list.
 
-To use submodule features, [install the npm package](#npm) and then import a function from a submodule:
+To use submodule features, [install the npm package](#installation) and then import a function from a submodule:
 
 ```js
 // The main submodule:
