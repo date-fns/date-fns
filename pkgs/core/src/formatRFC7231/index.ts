@@ -50,7 +50,7 @@ export function formatRFC7231(date: DateArg<Date> & {}): string {
   const dayName = days[_date.getUTCDay()];
   const dayOfMonth = addLeadingZeros(_date.getUTCDate(), 2);
   const monthName = months[_date.getUTCMonth()];
-  const year = _date.getUTCFullYear();
+  const year = addLeadingZeros(_date.getUTCFullYear(), 4);
 
   const hour = addLeadingZeros(_date.getUTCHours(), 2);
   const minute = addLeadingZeros(_date.getUTCMinutes(), 2);

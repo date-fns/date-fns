@@ -52,7 +52,7 @@ export function formatRFC3339(
 
   const day = addLeadingZeros(date_.getDate(), 2);
   const month = addLeadingZeros(date_.getMonth() + 1, 2);
-  const year = date_.getFullYear();
+  const year = addLeadingZeros(date_.getFullYear(), 4);
 
   const hour = addLeadingZeros(date_.getHours(), 2);
   const minute = addLeadingZeros(date_.getMinutes(), 2);

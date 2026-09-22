@@ -15,4 +15,19 @@ describe("formatRFC7231", () => {
   it("throws RangeError if the time value is invalid", () => {
     expect(formatRFC7231.bind(null, new Date(NaN))).toThrow(RangeError);
   });
+
+  it("pads years below 1000 to four digits", () => {
+    // RFC 7231 defines the HTTP-date year as `4DIGIT`, so a year below 1000 has
+    // to be zero padded rather than emitted at its natural width.
+    const date = new Date(Date.UTC(2019, 0 /* Jan */, 1, 12, 0, 0));
+
+    date.setUTCFullYear(999);
+    expect(formatRFC7231(date)).toBe("Tue, 01 Jan 0999 12:00:00 GMT");
+
+    date.setUTCFullYear(99);
+    expect(formatRFC7231(date)).toBe("Thu, 01 Jan 0099 12:00:00 GMT");
+
+    date.setUTCFullYear(1);
+    expect(formatRFC7231(date)).toBe("Mon, 01 Jan 0001 12:00:00 GMT");
+  });
 });

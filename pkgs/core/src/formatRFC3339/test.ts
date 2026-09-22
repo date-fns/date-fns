@@ -62,4 +62,24 @@ describe("formatRFC3339", () => {
       ).toBe("2024-09-18T00:00:00+14:00");
     });
   });
+
+  it("pads years below 1000 to four digits", () => {
+    // RFC 3339 defines `date-fullyear = 4DIGIT`, so a year below 1000 has to be
+    // zero padded rather than emitted at its natural width.
+    const getTimezoneOffsetStub = vi.spyOn(Date.prototype, "getTimezoneOffset");
+    getTimezoneOffsetStub.mockReturnValue(0);
+
+    const date = new Date(2019, 0 /* Jan */, 1, 12, 0, 0);
+
+    date.setFullYear(999);
+    expect(formatRFC3339(date)).toBe("0999-01-01T12:00:00Z");
+
+    date.setFullYear(99);
+    expect(formatRFC3339(date)).toBe("0099-01-01T12:00:00Z");
+
+    date.setFullYear(1);
+    expect(formatRFC3339(date)).toBe("0001-01-01T12:00:00Z");
+
+    getTimezoneOffsetStub.mockRestore();
+  });
 });
