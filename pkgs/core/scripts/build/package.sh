@@ -106,7 +106,7 @@ echo
 echo "🚧 Building TypeScript definitions..."
 
 # Generate TypeScript
-pnpm tsgo --project tsconfig.dist.json --outDir "$main_dir"
+pnpm tsc --project tsconfig.dist.json --outDir "$main_dir"
 
 echo "🟢 TypeScript definitions are ready!"
 

@@ -3,6 +3,7 @@ import { defineConfig } from "vitest/config";
 
 export default defineConfig({
   test: {
+    name: "core",
     projects: [
       {
         test: {
@@ -13,7 +14,7 @@ export default defineConfig({
 
           // Speed up tests
           isolate: false,
-          pool: "threads",
+          pool: "forks",
           sequence: { concurrent: true },
 
           browser: {
@@ -33,7 +34,7 @@ export default defineConfig({
 
           // Speed up tests
           isolate: false,
-          pool: "threads",
+          pool: "forks",
           sequence: { concurrent: true },
 
           browser: {
@@ -46,8 +47,6 @@ export default defineConfig({
       },
     ],
 
-    experimental: {
-      fsModuleCache: true,
-    },
+    fsModuleCache: true,
   },
 });

@@ -27,7 +27,7 @@ import { startOfWeek } from "../startOfWeek/index.ts";
 import { startOfWeekYear } from "../startOfWeekYear/index.ts";
 import { resetDefaultOptions } from "../_lib/test/index.ts";
 
-describe("setDefaultOptions", () => {
+describe("setDefaultOptions", { concurrent: false }, () => {
   afterEach(resetDefaultOptions);
 
   it("changes the internal `defaultOptions` object", () => {

@@ -6,7 +6,7 @@
     "date-fns": "../../dist/date-fns"
   },
   "devDependencies": {
-    "@types/node": "^25.7.0",
+    "@types/node": "26",
     "typescript": "^6.0.3"
   }
 }

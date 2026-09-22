@@ -126,7 +126,6 @@
     "@date-fns/dev": "workspace:*",
     "@parcel/watcher": "^2.4.1",
     "@swc/core": "^1.4.13",
-    "@typescript/native-preview": "7.0.0-dev.20260421.2",
     "bytes-iec": "^3.1.1",
     "date-fns": "workspace:*",
     "glob": "^10.3.12",
@@ -134,6 +133,7 @@
     "picocolors": "^1.0.0",
     "rolldown": "^1.1.0",
     "tinybench": "^2.7.0",
-    "vitest": "^4.1.6"
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.1"
   }
 }

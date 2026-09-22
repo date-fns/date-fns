@@ -7,7 +7,7 @@
     "hono": "^4.8.10"
   },
   "devDependencies": {
-    "@types/node": "^24.1.0",
+    "@types/node": "26",
     "concurrently": "^9.2.0",
     "playwright": "^1.54.2",
     "rolldown": "1.0.0-beta.30",

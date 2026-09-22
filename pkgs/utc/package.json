@@ -78,10 +78,10 @@
   "devDependencies": {
     "@date-fns/dev": "workspace:*",
     "@parcel/watcher": "^2.4.1",
-    "@typescript/native-preview": "7.0.0-dev.20260421.2",
     "glob": "^11.0.0",
     "minimatch": "^10.0.1",
     "rolldown": "^1.1.0",
-    "vitest": "^4.1.6"
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.1"
   }
 }

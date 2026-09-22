@@ -12,9 +12,9 @@
     "./config/tsconfig": "./config/tsconfig.json"
   },
   "devDependencies": {
-    "@typescript/native-preview": "7.0.0-dev.20260421.2",
-    "oxfmt": "^0.53.0",
+    "oxfmt": "^0.70.0",
     "rolldown": "^1.1.0",
+    "typescript": "^7.0.2",
     "zx": "^8.8.5"
   }
 }

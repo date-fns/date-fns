@@ -17,10 +17,10 @@
     "@babel/preset-typescript": "^7.27.1",
     "@date-fns/dev": "workspace:*",
     "@date-fns/tz": "workspace:*",
-    "@formatjs/intl": "^3.1.6",
-    "@typescript/native-preview": "7.0.0-dev.20260421.2",
+    "@formatjs/intl": "^6.1.2",
     "metro": "^0.83.1",
     "metro-core": "^0.83.1",
-    "rolldown": "1.1.0"
+    "rolldown": "1.1.0",
+    "typescript": "^7.0.2"
   }
 }

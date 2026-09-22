@@ -4,10 +4,10 @@
   "private": true,
   "description": "date-fns monorepo root",
   "devDependencies": {
-    "@typescript/native-preview": "7.0.0-dev.20260421.2",
-    "oxfmt": "^0.53.0",
-    "oxlint": "^1.68.0",
-    "oxlint-tsgolint": "^0.22.1",
-    "vitest": "^4.1.6"
+    "oxfmt": "^0.70.0",
+    "oxlint": "^1.85.0",
+    "oxlint-tsgolint": "^7.0.2002",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.1"
   }
 }

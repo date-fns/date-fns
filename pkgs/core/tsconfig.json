@@ -4,5 +4,8 @@
     { "path": "../tz" },
     { "path": "../utc" },
     { "path": "../docs" }
-  ]
+  ],
+  "compilerOptions": {
+    "types": ["node"]
+  }
 }

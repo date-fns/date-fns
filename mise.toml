@@ -1,10 +1,10 @@
-experimental_monorepo_root = true
+monorepo_root = true
 [monorepo]
 config_roots = ["pkgs/*", "pkgs/*/examples", "pkgs/*/examples/*"]
 
 [tools]
 # Stack
-node = "latest"
+node = "26"
 pnpm = "latest"
 
 # Tools
@@ -13,19 +13,14 @@ watchexec = "latest"
 jaq = "latest"
 
 [settings]
-# Enable extra features
-experimental = true
 # Ignore idiomatic version files
 idiomatic_version_file_enable_tools = []
 
-[env]
-MISE_EXPERIMENTAL = true # Enable monorepo root support
-
 [tasks."types"]
-run = "pnpm tsgo --build"
+run = "pnpm tsc --build"
 
 [tasks."types:watch"]
-run = "pnpm tsgo --build --watch"
+run = "pnpm tsc --build --watch"
 
 [tasks.format]
 run = "pnpm oxfmt"

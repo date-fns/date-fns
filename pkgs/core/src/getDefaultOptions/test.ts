@@ -9,7 +9,7 @@ import {
 import { eo } from "../locale/eo/index.ts";
 import { resetDefaultOptions } from "../_lib/test/index.ts";
 
-describe("getDefaultOptions", () => {
+describe("getDefaultOptions", { concurrent: false }, () => {
   afterEach(resetDefaultOptions);
 
   it("returns an empty object", () => {

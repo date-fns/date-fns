@@ -11,7 +11,7 @@ import {
 import type { FormatPart } from "../types.ts";
 import { format, formatDate } from "./index.ts";
 
-describe("format", () => {
+describe("format", { concurrent: false }, () => {
   const date = new Date(1986, 3 /* Apr */, 4, 10, 32, 55, 123);
 
   const offset = date.getTimezoneOffset();
