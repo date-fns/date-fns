@@ -67,8 +67,8 @@ const matchDayPatterns = {
   wide: /^(nedjelja|ponedjeljak|utorak|srijeda|(četvrtak|cetvrtak)|petak|subota)/i,
 };
 const parseDayPatterns = {
-  narrow: [/^s/i, /^m/i, /^t/i, /^w/i, /^t/i, /^f/i, /^s/i] as const,
-  any: [/^su/i, /^m/i, /^tu/i, /^w/i, /^th/i, /^f/i, /^sa/i] as const,
+  narrow: [/^n/i, /^p/i, /^u/i, /^s/i, /^(č|c)/i, /^p/i, /^s/i] as const,
+  any: [/^ne/i, /^po/i, /^u/i, /^sr/i, /^(č|c)/i, /^pe/i, /^su/i] as const,
 };
 
 const matchDayPeriodPatterns = {
