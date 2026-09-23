@@ -61,7 +61,8 @@ export function addMonths<
   options?: AddMonthsOptions<ResultDate> | undefined,
 ): ResultDate {
   const _date = toDate(date, options?.in);
-  if (isNaN(amount)) return constructFrom(options?.in || date, NaN);
+  if (typeof amount !== "number" || isNaN(amount))
+    return constructFrom(options?.in || date, NaN);
   if (!amount) {
     // If 0 months, no-op to avoid changing times in the hour before end of DST
     return _date;
