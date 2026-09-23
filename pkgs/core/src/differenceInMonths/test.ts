@@ -45,6 +45,32 @@ describe("differenceInMonths", () => {
       expect(result).toBe(1);
     });
 
+    it("doesn't count a month that the time of day hasn't completed", () => {
+      // see https://github.com/date-fns/date-fns/issues/4150
+      const result = differenceInMonths(
+        new Date(2021, 1 /* Feb */, 28, 17, 23),
+        new Date(2021, 0 /* Jan */, 28, 23, 45),
+      );
+      expect(result).toBe(0);
+    });
+
+    it("doesn't count a month when the anniversary day still exists", () => {
+      // Feb 2024 has 29 days, so Jan 29 has an anniversary that Feb 28 misses
+      const result = differenceInMonths(
+        new Date(2024, 1 /* Feb */, 28),
+        new Date(2024, 0 /* Jan */, 29),
+      );
+      expect(result).toBe(0);
+    });
+
+    it("counts the month once the time of day is reached", () => {
+      const result = differenceInMonths(
+        new Date(2021, 1 /* Feb */, 28, 23, 45),
+        new Date(2021, 0 /* Jan */, 28, 23, 45),
+      );
+      expect(result).toBe(1);
+    });
+
     it("it returns diff of 1 month between Nov, 30 2021 and Oct, 31 2021", () => {
       const result = differenceInMonths(
         new Date(2021, 10 /* Nov */, 30),
