@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { format } from "../../format/index.ts";
 import { parse } from "../../parse/index.ts";
 import { zhCN } from "./index.ts";
 
@@ -29,5 +30,37 @@ describe("zh-CN locale", () => {
         locale: zhCN,
       }),
     ).toEqual(new Date(2022, 11 /* Dec */, 27));
+  });
+});
+
+describe("zh-CN quarter", () => {
+  // see https://github.com/date-fns/date-fns/issues/4270
+
+  it("parses the quarters it formats", () => {
+    const referenceDate = new Date(2024, 0 /* Jan */, 1);
+
+    (["QQQ", "QQQQ"] as const).forEach((formatString) => {
+      expect(
+        parse(
+          format(new Date(2024, 6 /* Jul */, 1), formatString, {
+            locale: zhCN,
+          }),
+          formatString,
+          referenceDate,
+          { locale: zhCN },
+        ),
+      ).toEqual(new Date(2024, 6 /* Jul */, 1));
+    });
+  });
+
+  it("still parses the legacy 刻 quarter forms", () => {
+    const referenceDate = new Date(2024, 0 /* Jan */, 1);
+
+    expect(parse("第三刻", "QQQ", referenceDate, { locale: zhCN })).toEqual(
+      new Date(2024, 6 /* Jul */, 1),
+    );
+    expect(parse("第三刻钟", "QQQQ", referenceDate, { locale: zhCN })).toEqual(
+      new Date(2024, 6 /* Jul */, 1),
+    );
   });
 });
