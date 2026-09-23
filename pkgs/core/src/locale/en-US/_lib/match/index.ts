@@ -72,12 +72,13 @@ const parseDayPatterns = {
 };
 
 const matchDayPeriodPatterns = {
-  narrow: /^(a|p|mi|n|(in the|at) (morning|afternoon|evening|night))/i,
+  narrow: /^((in the|at) (morning|afternoon|evening|night)|a|p|mi|n)/i,
   any: /^([ap]\.?\s?m\.?|midnight|noon|(in the|at) (morning|afternoon|evening|night))/i,
 };
 const parseDayPeriodPatterns = {
   any: {
-    am: /^a/i,
+    // `(?!t )` so the `at night` family is not swallowed by the `am` pattern
+    am: /^a(?!t )/i,
     pm: /^p/i,
     midnight: /^mi/i,
     noon: /^no/i,
