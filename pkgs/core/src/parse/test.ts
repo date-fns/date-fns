@@ -1226,9 +1226,14 @@ describe("parse", () => {
       expect(result).toEqual(new Date(1986, 3 /* Apr */, 4, 0));
     });
 
-    it("narrow", () => {
+    it("narrow midnight", () => {
       const result = parse("mi", "bbbbb", referenceDate);
       expect(result).toEqual(new Date(1986, 3 /* Apr */, 4, 0));
+    });
+
+    it("narrow noon", () => {
+      const result = parse("n", "bbbbb", referenceDate);
+      expect(result).toEqual(new Date(1986, 3 /* Apr */, 4, 12));
     });
 
     describe("validation", () => {

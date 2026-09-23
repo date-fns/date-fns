@@ -80,7 +80,7 @@ const parseDayPeriodPatterns = {
     am: /^a/i,
     pm: /^p/i,
     midnight: /^mi/i,
-    noon: /^no/i,
+    noon: /^(no|n$)/i,
     morning: /morning/i,
     afternoon: /afternoon/i,
     evening: /evening/i,
