@@ -2,8 +2,8 @@ import type { FormatLong } from "../../../types.js";
 import { buildFormatLongFn } from "../../../_lib/buildFormatLongFn/index.js";
 
 const dateFormats = {
-  full: "EEEE, do MMMM y 'ж.'",
-  long: "do MMMM y 'ж.'",
+  full: "y'-жыл 'd'-'MMMM, EEEE",
+  long: "y'-жыл 'd'-'MMMM",
   medium: "d MMM y 'ж.'",
   short: "dd.MM.yyyy",
 };
