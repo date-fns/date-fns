@@ -9,6 +9,13 @@ describe("fromUnixTime", () => {
     expect(result.getTime()).toBe(1330515499000);
   });
 
+  it("keeps fractional seconds as milliseconds", () => {
+    // see https://github.com/date-fns/date-fns/issues/4248
+    expect(fromUnixTime(1330515499.872).getTime()).toBe(1330515499872);
+    expect(fromUnixTime(0.001).getTime()).toBe(1);
+    expect(fromUnixTime(-0.001).getTime()).toBe(-1);
+  });
+
   it("returns invalid if the given timestamp is invalid", () => {
     const result = fromUnixTime(NaN);
     expect(isNaN(result.getTime())).toBe(true);
