@@ -311,7 +311,7 @@ function validateTime(
     minutes >= 0 &&
     minutes < 60 &&
     hours >= 0 &&
-    hours < 25
+    hours < 24
   );
 }
 
