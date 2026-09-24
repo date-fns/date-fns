@@ -235,6 +235,8 @@ export * from "./isWeekend/index.ts";
 export * from "./isWeekendWithOptions/index.ts";
 export * from "./isWithinInterval/index.ts";
 export * from "./isWithinIntervalWithOptions/index.ts";
+export * from "./isWorkingDay/index.ts";
+export * from "./isWorkingDayWithOptions/index.ts";
 export * from "./lastDayOfDecade/index.ts";
 export * from "./lastDayOfDecadeWithOptions/index.ts";
 export * from "./lastDayOfISOWeek/index.ts";
