@@ -61,7 +61,11 @@ Please follow the main contributing rules, to maintain date-fns' top quality:
 
 1. Install [Node.js 22 or greater (LTS recommended)](https://nodejs.org/en/download/)
 
-2. Fork the project, and clone your fork of the repo
+2. Fork the project, and clone your fork of the repo:
+
+```sh
+git clone --recurse-submodules https://github.com/YOUR_USERNAME/date-fns.git
+```
 
 3. Run `pnpm install` to install the dependencies
 
