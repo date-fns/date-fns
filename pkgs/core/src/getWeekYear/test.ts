@@ -1,6 +1,10 @@
 import { tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
-import type { ContextOptions, DateArg } from "../types.ts";
+import type {
+  ContextOptions,
+  DateArg,
+  FirstWeekContainsDate,
+} from "../types.ts";
 import { getWeekYear } from "./index.ts";
 
 describe("getWeekYear", () => {
@@ -47,6 +51,51 @@ describe("getWeekYear", () => {
       },
     });
     expect(result).toBe(2004);
+  });
+
+  it("supports all firstWeekContainsDate values at year boundaries", () => {
+    const cases = [
+      [1, 2026],
+      [2, 2026],
+      [3, 2026],
+      [4, 2025],
+      [5, 2025],
+      [6, 2025],
+      [7, 2025],
+    ] as const;
+
+    for (const [firstWeekContainsDate, expected] of cases) {
+      expect(
+        getWeekYear(new Date(2025, 11 /* Dec */, 28), {
+          weekStartsOn: 0,
+          firstWeekContainsDate,
+        }),
+      ).toBe(expected);
+    }
+  });
+
+  it("accepts all values in options and custom locale options", () => {
+    const date = new Date(2025, 11 /* Dec */, 28);
+
+    const firstWeekContainsDates: FirstWeekContainsDate[] = [
+      1, 2, 3, 4, 5, 6, 7,
+    ];
+
+    for (const firstWeekContainsDate of firstWeekContainsDates) {
+      getWeekYear(date, { firstWeekContainsDate });
+      getWeekYear(date, {
+        locale: { options: { firstWeekContainsDate } },
+      });
+    }
+
+    // @ts-expect-error
+    getWeekYear(date, { firstWeekContainsDate: 0 });
+    // @ts-expect-error
+    getWeekYear(date, { firstWeekContainsDate: 8 });
+    // @ts-expect-error
+    getWeekYear(date, { locale: { options: { firstWeekContainsDate: 0 } } });
+    // @ts-expect-error
+    getWeekYear(date, { locale: { options: { firstWeekContainsDate: 8 } } });
   });
 
   describe("context", () => {
