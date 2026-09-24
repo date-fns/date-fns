@@ -14,6 +14,8 @@ export interface ParseJSONOptions<
  *
  * This is a minimal implementation for converting dates retrieved from a JSON API to
  * a `Date` instance which can be used with other functions in the `date-fns` library.
+ * Unlike {@link parseISO}, it does not accept partial ISO 8601 values (date-only,
+ * week dates, ordinal dates). Use {@link parseISO} when the input may be incomplete.
  * The following formats are supported:
  *
  * - `2000-03-15T05:20:10.123Z`: The output of `.toISOString()` and `JSON.stringify(new Date())`
