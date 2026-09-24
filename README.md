@@ -59,6 +59,33 @@ To install the package run:
 npm install date-fns --save
 ```
 
+Or using other package managers:
+
+```bash
+pnpm add date-fns
+yarn add date-fns
+```
+
+## Quick Start
+
+Here's a quick example to get you started:
+
+```js
+import { format, formatDistance, formatRelative, subDays } from "date-fns";
+
+// Format a date
+format(new Date(), "yyyy-MM-dd");
+//=> '2024-01-15'
+
+// Get relative time (e.g., "2 days ago")
+formatDistance(subDays(new Date(), 2), new Date());
+//=> '2 days'
+
+// Get relative time with "today", "yesterday", etc.
+formatRelative(subDays(new Date(), 1), new Date());
+//=> 'yesterday'
+```
+
 ## Docs
 
 [See date-fns.org](https://date-fns.org/) for more details, API,
