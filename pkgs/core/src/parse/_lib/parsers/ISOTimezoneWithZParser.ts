@@ -1,6 +1,6 @@
 import { constructFrom } from "../../../constructFrom/index.ts";
 import { getTimezoneOffsetInMilliseconds } from "../../../_lib/getTimezoneOffsetInMilliseconds/index.ts";
-import { timezonePatterns } from "../constants.ts";
+import { timezonePatternsWithZ } from "../constants.ts";
 import { Parser } from "../Parser.ts";
 import type { ParseFlags, ParseResult } from "../types.ts";
 import { parseTimezonePattern } from "../utils.ts";
@@ -13,24 +13,24 @@ export class ISOTimezoneWithZParser extends Parser<number> {
     switch (token) {
       case "X":
         return parseTimezonePattern(
-          timezonePatterns.basicOptionalMinutes,
+          timezonePatternsWithZ.basicOptionalMinutes,
           dateString,
         );
       case "XX":
-        return parseTimezonePattern(timezonePatterns.basic, dateString);
+        return parseTimezonePattern(timezonePatternsWithZ.basic, dateString);
       case "XXXX":
         return parseTimezonePattern(
-          timezonePatterns.basicOptionalSeconds,
+          timezonePatternsWithZ.basicOptionalSeconds,
           dateString,
         );
       case "XXXXX":
         return parseTimezonePattern(
-          timezonePatterns.extendedOptionalSeconds,
+          timezonePatternsWithZ.extendedOptionalSeconds,
           dateString,
         );
       case "XXX":
       default:
-        return parseTimezonePattern(timezonePatterns.extended, dateString);
+        return parseTimezonePattern(timezonePatternsWithZ.extended, dateString);
     }
   }
 
