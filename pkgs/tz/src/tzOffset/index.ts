@@ -47,7 +47,7 @@ export function tzOffset(timeZone: string | undefined, date: Date): number {
   }
 }
 
-const offsetRe = /([+-]\d\d):?(\d\d)?/;
+const offsetRe = /^([+-](?:[01]\d|2[0-3]))(?::?([0-5]\d))?$/;
 
 function calcOffset(cacheStr: string, values: string[]): number {
   const hours = +(values[0] || 0);
