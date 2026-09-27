@@ -1,7 +1,15 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { UTCDate } from "./index.js";
+import { UTCDateMini } from "./mini.js";
 
 describe("UTCDate", () => {
+  it.each([UTCDate, UTCDateMini])(
+    "exposes the UTC time zone (%s)",
+    (DateClass) => {
+      expect(new DateClass().timeZone).toBe("UTC");
+    },
+  );
+
   it("creates date in UTC", () => {
     const tzOffset = -new Date(1987, 1, 11).getTimezoneOffset();
     const hoursOffset = Math.trunc(tzOffset / 60);

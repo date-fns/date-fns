@@ -14,6 +14,10 @@ export class UTCDateMini extends Date {
     );
   }
 
+  get timeZone() {
+    return "UTC";
+  }
+
   getTimezoneOffset() {
     return 0;
   }
