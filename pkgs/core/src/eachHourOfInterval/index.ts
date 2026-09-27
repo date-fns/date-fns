@@ -43,7 +43,7 @@ export type EachHourOfIntervalResult<
  * @typeParam Options - Options type.
  *
  * @param interval - The interval.
- * @param options - An object with options.
+ * @param options - An object with options. Fractional steps are truncated.
  *
  * @returns The array with starts of hours from the hour of the interval start to the hour of the interval end
  *
@@ -74,7 +74,7 @@ export function eachHourOfInterval<
   const date = reversed ? end : start;
   date.setMinutes(0, 0, 0);
 
-  let step = options?.step ?? 1;
+  let step = Math.trunc(options?.step ?? 1);
   if (!step) return [];
   if (step < 0) {
     step = -step;
