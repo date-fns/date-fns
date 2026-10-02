@@ -13,7 +13,7 @@ export function tpyAddMonths<
   const [temporal, invalidDate] = toTpInstant(date, options);
   if (!temporal || isNaN(amount)) return invalidDate;
 
-  const result = temporal.add({ months: amount });
+  const result = temporal.add({ months: Math.trunc(amount) });
 
   return fromTp(result, date, options);
 }

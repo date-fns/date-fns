@@ -11,6 +11,21 @@ describe("addMonths", () => {
     expect(result).toEqual(new Date(2015, 1 /* Feb */, 1));
   });
 
+  it.each([
+    [-1.5, new Date(2026, 1 /* Feb */, 28)],
+    [-0.5, new Date(2026, 2 /* Mar */, 31)],
+    [0.5, new Date(2026, 2 /* Mar */, 31)],
+    [1.5, new Date(2026, 3 /* Apr */, 30)],
+  ])("truncates fractional month amounts (%s)", (amount, expected) => {
+    const result = addMonths(new Date(2026, 2 /* Mar */, 31), amount);
+    expect(result).toEqual(expected);
+  });
+
+  it("truncates negative fractional months when crossing a year boundary", () => {
+    const result = addMonths(new Date(2026, 0 /* Jan */, 31), -0.5);
+    expect(result).toEqual(new Date(2026, 0 /* Jan */, 31));
+  });
+
   it("accepts a timestamp", () => {
     const result = addMonths(new Date(2014, 8 /* Sep */, 1).getTime(), 12);
     expect(result).toEqual(new Date(2015, 8 /* Sep */, 1));
@@ -145,6 +160,15 @@ describe("addMonths", () => {
       const date = new Date(dstTransitions.end!);
       const result = addMonths(date, 0);
       expect(result).toEqual(date);
+    },
+  );
+
+  dstOnly(
+    `preserves the time when a fractional increment truncates to zero: ${tzName || "(unknown)"}`,
+    () => {
+      const date = new Date(dstTransitions.end!.getTime() + 0.5 * HOUR);
+      expect(addMonths(date, -0.5)).toEqual(date);
+      expect(addMonths(date, 0.5)).toEqual(date);
     },
   );
 

@@ -32,7 +32,7 @@ export interface AddMonthsOptions<
  * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
  *
  * @param date - The date to be changed
- * @param amount - The amount of months to be added.
+ * @param amount - The amount of months to be added. Fractional amounts are truncated towards zero.
  * @param options - The options object
  *
  * @returns The new date with the months added
@@ -62,6 +62,7 @@ export function addMonths<
 ): ResultDate {
   const _date = toDate(date, options?.in);
   if (isNaN(amount)) return constructFrom(options?.in || date, NaN);
+  amount = Math.trunc(amount);
   if (!amount) {
     // If 0 months, no-op to avoid changing times in the hour before end of DST
     return _date;
