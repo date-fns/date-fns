@@ -12,6 +12,7 @@ export * from "./be/index.ts";
 export * from "./be-tarask/index.ts";
 export * from "./bg/index.ts";
 export * from "./bn/index.ts";
+export * from "./br/index.ts";
 export * from "./bs/index.ts";
 export * from "./ca/index.ts";
 export * from "./ckb/index.ts";
