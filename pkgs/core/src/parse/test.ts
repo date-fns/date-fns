@@ -1735,6 +1735,15 @@ describe("parse", () => {
         expect(result).toEqual(new Date("2016-11-25T16:38:38.123Z"));
       });
 
+      it("rejects Z designator", () => {
+        const result = parse(
+          "2016-11-25T16:38:38.123Z",
+          "yyyy-MM-dd'T'HH:mm:ss.SSSx",
+          referenceDate,
+        );
+        expect(result).toEqual(new Date(NaN));
+      });
+
       it("hours", () => {
         const result = parse(
           "2016-11-25T16:38:38.123+05",
