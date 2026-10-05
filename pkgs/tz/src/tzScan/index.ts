@@ -77,8 +77,23 @@ export function tzScan(
             // Find the hour where the offset changes
             const hourOffset = tzOffset(timeZone, hourDate);
             if (hourOffset !== lastOffset) {
+              // The scan follows the start's minutes, and transitions can occur
+              // between whole UTC hours. Find the first changed millisecond.
+              let left = +hourDate - 60 * 60 * 1000;
+              let right = +hourDate;
+              if (Number.isFinite(lastOffset) && Number.isFinite(hourOffset)) {
+                while (right - left > 1) {
+                  const middle = left + Math.floor((right - left) / 2);
+                  if (tzOffset(timeZone, new Date(middle)) === lastOffset) {
+                    left = middle;
+                  } else {
+                    right = middle;
+                  }
+                }
+              }
+
               changes.push({
-                date: new Date(hourDate),
+                date: new Date(right),
                 change: hourOffset - lastOffset,
                 offset: hourOffset,
               });
