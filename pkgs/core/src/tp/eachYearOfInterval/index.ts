@@ -7,7 +7,7 @@ export function tpEachYearOfInterval(
   const endDate = reversed ? start : end;
   let date = (reversed ? end : start).startOfDay().with({ month: 1, day: 1 });
 
-  let step = stepOption ?? 1;
+  let step = Math.trunc(stepOption ?? 1);
   if (!step) return [];
   if (step < 0) {
     step = -step;

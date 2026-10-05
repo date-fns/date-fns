@@ -138,9 +138,22 @@ describe("eachYearOfInterval", () => {
       ]);
     });
 
-    it("returns empty array if `options.step` is less than 1", () => {
-      const result = eachYearOfInterval(interval, { step: 0 });
-      expect(result).toEqual([]);
+    it.each([0, 0.5, -0.5])(
+      "returns empty array if the absolute step is less than 1 (%s)",
+      (step) => {
+        const result = eachYearOfInterval(interval, { step });
+        expect(result).toEqual([]);
+      },
+    );
+
+    it.each([2.5, -2.5])("truncates fractional steps (%s)", (step) => {
+      const result = eachYearOfInterval(interval, { step });
+      const expected = [
+        new Date(2012, 0 /* Jan */, 1),
+        new Date(2014, 0 /* Jan */, 1),
+        new Date(2016, 0 /* Jan */, 1),
+      ];
+      expect(result).toEqual(step < 0 ? expected.reverse() : expected);
     });
 
     it("returns empty array if `options.step` is NaN", () => {

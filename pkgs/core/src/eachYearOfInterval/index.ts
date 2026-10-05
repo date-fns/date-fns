@@ -45,7 +45,7 @@ export type EachYearOfIntervalResult<
  * @typeParam Options - Options type.
  *
  * @param interval - The interval.
- * @param options - An object with options.
+ * @param options - An object with options. Fractional steps are truncated.
  *
  * @returns The array with starts of yearly timestamps from the month of the interval start to the month of the interval end
  *
@@ -77,7 +77,7 @@ export function eachYearOfInterval<
   date.setHours(0, 0, 0, 0);
   date.setMonth(0, 1);
 
-  let step = options?.step ?? 1;
+  let step = Math.trunc(options?.step ?? 1);
   if (!step) return [];
   if (step < 0) {
     step = -step;

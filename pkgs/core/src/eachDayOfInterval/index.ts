@@ -45,7 +45,7 @@ export type EachDayOfIntervalResult<
  * @typeParam Options - Options type.
  *
  * @param interval - The interval.
- * @param options - An object with options.
+ * @param options - An object with options. Fractional steps are truncated.
  *
  * @returns The array with starts of days from the day of the interval start to the day of the interval end
  *
@@ -77,7 +77,7 @@ export function eachDayOfInterval<
   const date = reversed ? end : start;
   date.setHours(0, 0, 0, 0);
 
-  let step = options?.step ?? 1;
+  let step = Math.trunc(options?.step ?? 1);
   if (!step) return [];
   if (step < 0) {
     step = -step;
