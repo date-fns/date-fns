@@ -31,7 +31,7 @@ const matchMonthPatterns = {
   // note the order of 'thg 1' since it is sub-string of 'thg 10', so must be lower priority
   abbreviated: /^thg[ _]?(0?[1-9](?!\d)|10|11|12)/i,
   // note the order of 'Mười' since it is sub-string of Mười Một, so must be lower priority
-  wide: /^tháng ?(Một|Hai|Ba|Tư|Năm|Sáu|Bảy|Tám|Chín|Mười|Mười ?Một|Mười ?Hai|0?[1-9](?!\d)|10|11|12)/i,
+  wide: /^tháng ?(Một|Hai|Ba|Tư|Năm|Sáu|Bảy|Tám|Chín|Mười ?Một|Mười ?Hai|Mười|0?[1-9](?!\d)|10|11|12)/i, // 2026-10-09
 };
 const parseMonthPatterns = {
   narrow: [
@@ -72,7 +72,7 @@ const parseMonthPatterns = {
     /^tháng ?(Bảy|0?7)/i,
     /^tháng ?(Tám|0?8)/i,
     /^tháng ?(Chín|0?9)/i,
-    /^tháng ?(Mười|10)/i,
+    /^tháng ?(Mười(?! ?(Một|Hai))|10)/i, // 2026-10-09
     /^tháng ?(Mười ?Một|11)/i,
     /^tháng ?(Mười ?Hai|12)/i,
   ] as const,
