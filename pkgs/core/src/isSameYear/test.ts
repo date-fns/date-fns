@@ -68,3 +68,31 @@ describe("isSameYear", () => {
     });
   });
 });
+
+describe("isSameYear with the yearStartsOn option", () => {
+  it("returns true for dates in the same fiscal year across a calendar year boundary", () => {
+    const result = isSameYear(
+      new Date(2025, 11 /* Dec */, 15),
+      new Date(2026, 1 /* Feb */, 15),
+      { yearStartsOn: 3 /* Apr */ },
+    );
+    expect(result).toBe(true);
+  });
+
+  it("returns false when one date is in the next fiscal year", () => {
+    const result = isSameYear(
+      new Date(2026, 2 /* Mar */, 31),
+      new Date(2026, 3 /* Apr */, 1),
+      { yearStartsOn: 3 /* Apr */ },
+    );
+    expect(result).toBe(false);
+  });
+
+  it("keeps the calendar year comparison when the option is not passed", () => {
+    const result = isSameYear(
+      new Date(2025, 11 /* Dec */, 15),
+      new Date(2026, 1 /* Feb */, 15),
+    );
+    expect(result).toBe(false);
+  });
+});

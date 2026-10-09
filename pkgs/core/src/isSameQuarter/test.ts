@@ -106,3 +106,32 @@ describe("isSameQuarter", () => {
     });
   });
 });
+
+describe("isSameQuarter with the yearStartsOn option", () => {
+  it("returns true for dates in the same fiscal quarter", () => {
+    const result = isSameQuarter(
+      new Date(2014, 7 /* Aug */, 5),
+      new Date(2014, 8 /* Sep */, 30),
+      { yearStartsOn: 3 /* Apr */ },
+    );
+    expect(result).toBe(true);
+  });
+
+  it("returns false for dates in different fiscal quarters", () => {
+    const result = isSameQuarter(
+      new Date(2014, 5 /* Jun */, 30),
+      new Date(2014, 6 /* Jul */, 1),
+      { yearStartsOn: 3 /* Apr */ },
+    );
+    expect(result).toBe(false);
+  });
+
+  it("groups Jan and Feb together when the fiscal year wraps around the calendar year", () => {
+    const result = isSameQuarter(
+      new Date(2026, 0 /* Jan */, 15),
+      new Date(2026, 1 /* Feb */, 15),
+      { yearStartsOn: 9 /* Oct */ },
+    );
+    expect(result).toBe(true);
+  });
+});

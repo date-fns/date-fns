@@ -57,3 +57,29 @@ describe("startOfQuarter", () => {
     });
   });
 });
+
+describe("startOfQuarter with the yearStartsOn option", () => {
+  it("returns the start of the fiscal quarter", () => {
+    const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0);
+    const result = startOfQuarter(date, { yearStartsOn: 3 /* Apr */ });
+    expect(result).toEqual(new Date(2014, 6 /* Jul */, 1));
+  });
+
+  it("handles fiscal quarters that wrap around the calendar year", () => {
+    const date = new Date(2026, 0 /* Jan */, 15);
+    const result = startOfQuarter(date, { yearStartsOn: 9 /* Oct */ });
+    expect(result).toEqual(new Date(2026, 0 /* Jan */, 1));
+  });
+
+  it("uses the previous calendar year when the date is before the fiscal year start", () => {
+    const date = new Date(2026, 1 /* Feb */, 15);
+    const result = startOfQuarter(date, { yearStartsOn: 3 /* Apr */ });
+    expect(result).toEqual(new Date(2026, 0 /* Jan */, 1));
+  });
+
+  it("behaves like the calendar quarter when the option is not passed", () => {
+    const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0);
+    const result = startOfQuarter(date);
+    expect(result).toEqual(new Date(2014, 6 /* Jul */, 1));
+  });
+});

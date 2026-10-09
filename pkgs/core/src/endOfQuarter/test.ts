@@ -64,3 +64,29 @@ describe("endOfQuarter", () => {
     });
   });
 });
+
+describe("endOfQuarter with the yearStartsOn option", () => {
+  it("returns the end of the fiscal quarter", () => {
+    const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0);
+    const result = endOfQuarter(date, { yearStartsOn: 3 /* Apr */ });
+    expect(result).toEqual(new Date(2014, 8 /* Sep */, 30, 23, 59, 59, 999));
+  });
+
+  it("handles fiscal quarters that wrap around the calendar year", () => {
+    const date = new Date(2025, 11 /* Dec */, 15);
+    const result = endOfQuarter(date, { yearStartsOn: 9 /* Oct */ });
+    expect(result).toEqual(new Date(2025, 11 /* Dec */, 31, 23, 59, 59, 999));
+  });
+
+  it("ends on the last day of the fiscal quarter that started the previous calendar year", () => {
+    const date = new Date(2026, 1 /* Feb */, 15);
+    const result = endOfQuarter(date, { yearStartsOn: 3 /* Apr */ });
+    expect(result).toEqual(new Date(2026, 2 /* Mar */, 31, 23, 59, 59, 999));
+  });
+
+  it("behaves like the calendar quarter when the option is not passed", () => {
+    const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0);
+    const result = endOfQuarter(date);
+    expect(result).toEqual(new Date(2014, 8 /* Sep */, 30, 23, 59, 59, 999));
+  });
+});

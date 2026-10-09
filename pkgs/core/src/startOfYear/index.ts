@@ -6,7 +6,14 @@ import type { ContextOptions, DateArg } from "../types.ts";
  */
 export interface StartOfYearOptions<
   DateType extends Date = Date,
-> extends ContextOptions<DateType> {}
+> extends ContextOptions<DateType> {
+  /**
+   * The month the year starts on (0 = January). Allows working with
+   * fiscal or academic years that don't begin in January.
+   * @default 0
+   */
+  yearStartsOn?: number;
+}
 
 /**
  * @name startOfYear
@@ -38,7 +45,13 @@ export function startOfYear<
   options?: StartOfYearOptions<ResultDate> | undefined,
 ): ResultDate {
   const date_ = toDate(date, options?.in);
-  date_.setFullYear(date_.getFullYear(), 0, 1);
+  const yearStartsOn = options?.yearStartsOn ?? 0;
+  // A date before the fiscal year's start month belongs to the fiscal
+  // year that started the previous calendar year (e.g. for a year
+  // starting in April, February 2026 is in the year starting April 2025).
+  const year =
+    date_.getFullYear() - (date_.getMonth() < yearStartsOn ? 1 : 0);
+  date_.setFullYear(year, yearStartsOn, 1);
   date_.setHours(0, 0, 0, 0);
   return date_;
 }

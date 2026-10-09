@@ -85,3 +85,29 @@ describe("startOfYear", () => {
     });
   });
 });
+
+describe("startOfYear with the yearStartsOn option", () => {
+  it("returns the start of the fiscal year", () => {
+    const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0);
+    const result = startOfYear(date, { yearStartsOn: 3 /* Apr */ });
+    expect(result).toEqual(new Date(2014, 3 /* Apr */, 1));
+  });
+
+  it("uses the previous calendar year when the date is before the fiscal year start", () => {
+    const date = new Date(2026, 1 /* Feb */, 15);
+    const result = startOfYear(date, { yearStartsOn: 3 /* Apr */ });
+    expect(result).toEqual(new Date(2025, 3 /* Apr */, 1));
+  });
+
+  it("keeps the calendar year when the date is after the fiscal year start", () => {
+    const date = new Date(2026, 4 /* May */, 15);
+    const result = startOfYear(date, { yearStartsOn: 3 /* Apr */ });
+    expect(result).toEqual(new Date(2026, 3 /* Apr */, 1));
+  });
+
+  it("behaves like the calendar year when the option is not passed", () => {
+    const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0);
+    const result = startOfYear(date);
+    expect(result).toEqual(new Date(2014, 0 /* Jan */, 1));
+  });
+});

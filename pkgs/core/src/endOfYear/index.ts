@@ -6,7 +6,14 @@ import type { ContextOptions, DateArg } from "../types.ts";
  */
 export interface EndOfYearOptions<
   DateType extends Date = Date,
-> extends ContextOptions<DateType> {}
+> extends ContextOptions<DateType> {
+  /**
+   * The month the year starts on (0 = January). Allows working with
+   * fiscal or academic years that don't begin in January.
+   * @default 0
+   */
+  yearStartsOn?: number;
+}
 
 /**
  * @name endOfYear
@@ -35,8 +42,13 @@ export function endOfYear<
   ResultDate extends Date = DateType,
 >(date: DateArg<DateType>, options?: EndOfYearOptions<ResultDate>): ResultDate {
   const _date = toDate(date, options?.in);
-  const year = _date.getFullYear();
-  _date.setFullYear(year + 1, 0, 0);
+  const yearStartsOn = options?.yearStartsOn ?? 0;
+  // A date before the fiscal year's start month belongs to the fiscal
+  // year that started the previous calendar year; the end is the day
+  // before that fiscal year's start shifted one year forward.
+  const year =
+    _date.getFullYear() - (_date.getMonth() < yearStartsOn ? 1 : 0);
+  _date.setFullYear(year + 1, yearStartsOn, 0);
   _date.setHours(23, 59, 59, 999);
   return _date;
 }
