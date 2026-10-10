@@ -33,6 +33,54 @@ describe("closestTo", () => {
     expect(result).toEqual(new Date(2015, 7 /* Aug */, 31));
   });
 
+  it("accepts arrays too large to spread into function arguments", () => {
+    const dates = Array.from({ length: 200_000 }, (_, index) => index);
+    expect(closestTo(123_456, dates)).toEqual(new Date(123_456));
+  });
+
+  it("resolves the first date object type in a large array", () => {
+    const dates: (Date | number)[] = Array.from(
+      { length: 200_000 },
+      (_, index) => index,
+    );
+    dates[dates.length - 1] = new TZDate(0, "America/New_York");
+
+    const result = closestTo(123_456, dates);
+    expect(result).toBeInstanceOf(TZDate);
+    expect(result?.getTime()).toBe(123_456);
+    expect((result as TZDate).timeZone).toBe("America/New_York");
+  });
+
+  it("uses the explicit context with a large array", () => {
+    const dates = Array.from({ length: 200_000 }, (_, index) => index);
+    const result = closestTo(new UTCDate(123_456), dates, {
+      in: tz("Asia/Tokyo"),
+    });
+
+    expect(result).toBeInstanceOf(TZDate);
+    expect(result?.getTime()).toBe(123_456);
+    expect(result?.timeZone).toBe("Asia/Tokyo");
+  });
+
+  it("returns Invalid Date for an invalid candidate in a large array", () => {
+    const dates: (Date | number)[] = Array.from(
+      { length: 200_000 },
+      (_, index) => index,
+    );
+    dates[dates.length - 1] = new Date(NaN);
+
+    const result = closestTo(123_456, dates);
+    expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
+  });
+
+  it("preserves Invalid Date behavior for a sparse array", () => {
+    const dates = [new Date(0), new Date(1)];
+    dates.length = 3;
+
+    const result = closestTo(0, dates);
+    expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
+  });
+
   it("returns undefined if the given array is empty", () => {
     const date = new Date(2014, 6 /* Jul */, 2).getTime();
     const result = closestTo(date, []);

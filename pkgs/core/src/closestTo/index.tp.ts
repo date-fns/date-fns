@@ -1,4 +1,4 @@
-import { normalizeDates } from "../_lib/normalizeDates/index.ts";
+import { normalizeDateArray } from "../_lib/normalizeDates/index.ts";
 import { tpyClosestIndexTo } from "../closestIndexTo/index.tp.ts";
 import { constructFrom } from "../constructFrom/index.ts";
 import type { DateArg } from "../types.ts";
@@ -13,11 +13,10 @@ export function tpyClosestTo<
   dates: DatesType,
   options?: Options | undefined,
 ): ClosestToResult<DateToCompare, DatesType, Options> | undefined {
-  const [dateToCompare_, ...dates_] = normalizeDates(
-    options?.in,
+  const [dateToCompare_, ...dates_] = normalizeDateArray(options?.in, [
     dateToCompare,
     ...dates,
-  );
+  ]);
 
   const index = tpyClosestIndexTo(dateToCompare_, dates_);
 
