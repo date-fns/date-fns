@@ -13,7 +13,11 @@ export function tpyAddMonths<
   const [temporal, invalidDate] = toTpInstant(date, options);
   if (!temporal || isNaN(amount)) return invalidDate;
 
-  const result = temporal.add({ months: amount });
+  // Truncate toward zero before calendar arithmetic, matching the non-Temporal
+  // implementation. Temporal's add() requires an integer month count, so a
+  // fractional value would otherwise throw or move the date by the wrong
+  // number of whole months.
+  const result = temporal.add({ months: Math.trunc(amount) });
 
   return fromTp(result, date, options);
 }
