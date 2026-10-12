@@ -27,6 +27,12 @@ describe("subMonths", () => {
     expect(result).toEqual(new Date(2014, 8 /* Sep */, 30));
   });
 
+  it("truncates a positive fractional amount toward zero instead of an extra month", () => {
+    const date = new Date(2026, 2 /* Mar */, 31);
+    expect(subMonths(date, 0.5)).toEqual(new Date(2026, 2 /* Mar */, 31));
+    expect(subMonths(date, 1.5)).toEqual(new Date(2026, 1 /* Feb */, 28));
+  });
+
   it("handles dates before 100 AD", () => {
     const initialDate = new Date(0);
     initialDate.setFullYear(1, 2 /* Mar */, 31);

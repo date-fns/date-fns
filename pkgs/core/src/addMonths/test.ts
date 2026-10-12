@@ -148,6 +148,32 @@ describe("addMonths", () => {
     },
   );
 
+  it("truncates a fractional amount toward zero instead of an extra month", () => {
+    // Truncation happens before calendar arithmetic: -0.5 truncates to 0, so
+    // the date stays on the last day of March rather than moving to February.
+    const date = new Date(2026, 2 /* Mar */, 31);
+    expect(addMonths(date, -0.5)).toEqual(new Date(2026, 2 /* Mar */, 31));
+    expect(addMonths(date, -1.5)).toEqual(new Date(2026, 1 /* Feb */, 28));
+    expect(addMonths(date, 0.5)).toEqual(new Date(2026, 2 /* Mar */, 31));
+    expect(addMonths(date, 1.5)).toEqual(new Date(2026, 3 /* Apr */, 30));
+  });
+
+  it("truncates fractional amounts for negative base dates regardless of the starting month", () => {
+    // The result must not depend on the starting month: January -1.5 is
+    // truncated to -1 and lands on December, exactly like March -1.5.
+    const january = new Date(2026, 0 /* Jan */, 31);
+    expect(addMonths(january, -1.5)).toEqual(new Date(2025, 11 /* Dec */, 31));
+  });
+
+  dstOnly(
+    `treats a fractional amount that truncates to zero as a zero increment: ${tzName || "(unknown)"}`,
+    () => {
+      const date = new Date(dstTransitions.end!);
+      expect(addMonths(date, 0.5)).toEqual(date);
+      expect(addMonths(date, -0.5)).toEqual(date);
+    },
+  );
+
   it("resolves the date type by default", () => {
     const result = addMonths(Date.now(), 5);
     expect(result).toBeInstanceOf(Date);
