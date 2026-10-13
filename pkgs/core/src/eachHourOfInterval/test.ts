@@ -153,6 +153,37 @@ describe("eachHourOfInterval", () => {
       const result = eachHourOfInterval(interval, { step: NaN });
       expect(result).toEqual([]);
     });
+
+    it("truncates fractional steps toward zero", () => {
+      const result = eachHourOfInterval(interval, { step: 1.5 });
+      expect(result).toEqual([
+        new Date(2014, 9 /* Oct */, 6, 12),
+        new Date(2014, 9 /* Oct */, 6, 13),
+        new Date(2014, 9 /* Oct */, 6, 14),
+        new Date(2014, 9 /* Oct */, 6, 15),
+        new Date(2014, 9 /* Oct */, 6, 16),
+        new Date(2014, 9 /* Oct */, 6, 17),
+        new Date(2014, 9 /* Oct */, 6, 18),
+      ]);
+    });
+
+    it("truncates fractional negative steps toward zero", () => {
+      const result = eachHourOfInterval(interval, { step: -1.5 });
+      expect(result).toEqual([
+        new Date(2014, 9 /* Oct */, 6, 18),
+        new Date(2014, 9 /* Oct */, 6, 17),
+        new Date(2014, 9 /* Oct */, 6, 16),
+        new Date(2014, 9 /* Oct */, 6, 15),
+        new Date(2014, 9 /* Oct */, 6, 14),
+        new Date(2014, 9 /* Oct */, 6, 13),
+        new Date(2014, 9 /* Oct */, 6, 12),
+      ]);
+    });
+
+    it("returns empty array if `options.step` truncates to zero", () => {
+      expect(eachHourOfInterval(interval, { step: 0.5 })).toEqual([]);
+      expect(eachHourOfInterval(interval, { step: -0.5 })).toEqual([]);
+    });
   });
 
   it("resolves the date type by default", () => {
