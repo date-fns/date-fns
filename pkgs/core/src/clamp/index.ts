@@ -7,8 +7,8 @@ import type { ContextOptions, DateArg, Interval } from "../types.ts";
  * The {@link clamp} function options.
  */
 export interface ClampOptions<
-  ContextDate extends Date = Date,
-> extends ContextOptions<ContextDate> {}
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 
 /**
  * The {@link clamp} function result type. It resolves the proper data type.
