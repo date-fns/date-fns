@@ -8,6 +8,7 @@ import {
 import { constructFrom } from "../constructFrom/index.ts";
 import { getDefaultOptions } from "../getDefaultOptions/index.ts";
 import { toDate } from "../toDate/index.ts";
+import { transpose } from "../transpose/index.ts";
 import type {
   AdditionalTokensOptions,
   ContextOptions,
@@ -18,6 +19,7 @@ import type {
 } from "../types.ts";
 import type { Setter } from "./_lib/Setter.ts";
 import { DateTimezoneSetter } from "./_lib/Setter.ts";
+import { UTCDate } from "./_lib/UTCDate.ts";
 import { parsers } from "./_lib/parsers/index.ts";
 import type { ParseFlags, ParserOptions } from "./_lib/types.ts";
 
@@ -507,7 +509,11 @@ export function parse<
     )
     .map((setterArray) => setterArray[0]);
 
-  let date = toDate(referenceDate, options?.in);
+  const reference = toDate(referenceDate, options?.in);
+  const hasTimezone = usedTokens.some(
+    ({ token }) => token === "X" || token === "x",
+  );
+  let date: Date = hasTimezone ? transpose(reference, UTCDate) : reference;
 
   if (isNaN(+date)) return invalidDate();
 
@@ -528,7 +534,7 @@ export function parse<
     }
   }
 
-  return date;
+  return hasTimezone ? constructFrom(reference, date) : (date as ResultDate);
 }
 
 function cleanEscapedString(input: string) {
