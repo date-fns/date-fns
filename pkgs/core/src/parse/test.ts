@@ -2528,6 +2528,16 @@ describe("parse", () => {
   });
 
   describe("time zones", () => {
+    it("parses explicit UTC timestamps during a DST gap", () => {
+      const result = parse(
+        "2024-03-10T02:30:00Z",
+        "yyyy-MM-dd'T'HH:mm:ssX",
+        new Date(0),
+        { in: tz("America/New_York") },
+      );
+      expect(result.getTime()).toBe(new Date("2024-03-10T02:30:00Z").getTime());
+    });
+
     it("properly parses dates around DST transitions", () => {
       const format = "yyyy-MM-dd HH:mm";
       const ny = tz("America/New_York");
