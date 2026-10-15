@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { format } from "../format/index.ts";
 import { parse } from "./index.ts";
 import { assertType } from "../_lib/test/index.ts";
 import { UTCDate } from "@date-fns/utc";
@@ -1231,6 +1232,20 @@ describe("parse", () => {
       expect(result).toEqual(new Date(1986, 3 /* Apr */, 4, 0));
     });
 
+    it("narrow noon", () => {
+      const result = parse("n", "bbbbb", referenceDate);
+      expect(result).toEqual(new Date(1986, 3 /* Apr */, 4, 12));
+    });
+
+    it("round-trips narrow values produced by format", () => {
+      [0, 1, 11, 12, 13, 23].forEach((hours) => {
+        const date = new Date(1986, 3 /* Apr */, 4, hours);
+        const formatted = format(date, "h bbbbb");
+        const result = parse(formatted, "h bbbbb", referenceDate);
+        expect(result).toEqual(date);
+      });
+    });
+
     describe("validation", () => {
       [
         ["a", "AM"],
@@ -1269,6 +1284,16 @@ describe("parse", () => {
     it("narrow", () => {
       const result = parse("5 in the evening", "h BBBBB", referenceDate);
       expect(result).toEqual(new Date(1986, 3 /* Apr */, 4, 17));
+    });
+
+    it("narrow night", () => {
+      const result = parse("2 at night", "h BBBBB", referenceDate);
+      expect(result).toEqual(new Date(1986, 3 /* Apr */, 4, 2));
+    });
+
+    it("narrow noon", () => {
+      const result = parse("12 n", "h BBBBB", referenceDate);
+      expect(result).toEqual(new Date(1986, 3 /* Apr */, 4, 12));
     });
 
     describe("validation", () => {
