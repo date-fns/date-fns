@@ -14,7 +14,10 @@ export function tpEachWeekOfInterval(
     hour: 15,
   });
 
-  let step = stepOption ?? 1;
+  // Truncate the step toward zero so fractional values resolve to whole
+  // weeks, matching the Date implementation. This also avoids a RangeError
+  // from Temporal's `add`, which rejects non-integer duration fields.
+  let step = Math.trunc(stepOption ?? 1);
   if (!step) return [];
   if (step < 0) {
     step = -step;

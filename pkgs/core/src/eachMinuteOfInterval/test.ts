@@ -157,6 +157,27 @@ describe("eachMinuteOfInterval", () => {
       const result = eachMinuteOfInterval(interval, { step: NaN });
       expect(result).toEqual([]);
     });
+
+    it("truncates a fractional step toward zero", () => {
+      const result = eachMinuteOfInterval(interval, { step: 2.9 });
+      expect(result).toEqual([
+        new Date(2020, 9, 14, 13, 1),
+        new Date(2020, 9, 14, 13, 3),
+        new Date(2020, 9, 14, 13, 5),
+        new Date(2020, 9, 14, 13, 7),
+      ]);
+    });
+
+    it("returns only starts of minutes for a fractional step", () => {
+      const result = eachMinuteOfInterval(interval, { step: 1.5 });
+      expect(result.every((date) => date.getSeconds() === 0)).toBe(true);
+      expect(result.every((date) => date.getMilliseconds() === 0)).toBe(true);
+    });
+
+    it("returns empty array if `options.step` truncates to zero", () => {
+      expect(eachMinuteOfInterval(interval, { step: 0.5 })).toEqual([]);
+      expect(eachMinuteOfInterval(interval, { step: -0.5 })).toEqual([]);
+    });
   });
 
   it("resolves the date type by default", () => {
