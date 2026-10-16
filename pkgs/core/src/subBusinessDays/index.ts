@@ -15,6 +15,7 @@ export interface SubBusinessDaysOptions<
  *
  * @description
  * Subtract the specified number of business days (mon - fri) from the given date, ignoring weekends.
+ * Fractional amounts are truncated toward zero.
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.

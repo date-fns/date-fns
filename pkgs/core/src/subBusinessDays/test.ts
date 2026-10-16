@@ -15,6 +15,15 @@ describe("subBusinessDays", () => {
     expect(result).toEqual(new Date(2014, 8 /* Sep */, 1));
   });
 
+  it.each([
+    [0.5, new Date(2014, 8, 1)],
+    [-0.5, new Date(2014, 8, 1)],
+    [5.5, new Date(2014, 7, 25)],
+    [-5.5, new Date(2014, 8, 8)],
+  ])("truncates fractional amount %s toward zero", (amount, expected) => {
+    expect(subBusinessDays(new Date(2014, 8, 1), amount)).toEqual(expected);
+  });
+
   it("can handle a large number of business days", () => {
     const result = subBusinessDays(new Date(15000, 0 /* Jan */, 1), 3387885);
     expect(result).toEqual(new Date(2014, 0 /* Jan */, 1));

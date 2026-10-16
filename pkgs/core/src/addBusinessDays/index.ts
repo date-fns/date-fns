@@ -19,6 +19,7 @@ export interface AddBusinessDaysOptions<
  *
  * @description
  * Add the specified number of business days (mon - fri) to the given date, ignoring weekends.
+ * Fractional amounts are truncated toward zero.
  *
  * **You don't need date-fns\***:
  *
@@ -49,10 +50,14 @@ export function addBusinessDays<
   options?: AddBusinessDaysOptions<ResultDate> | undefined,
 ): ResultDate {
   const _date = toDate(date, options?.in);
-  const startedOnWeekend = isWeekend(_date, options);
+  amount = Math.trunc(amount);
 
   if (isNaN(amount)) return constructFrom(options?.in, NaN);
 
+  // Avoid changing the repeated hour at the end of DST for a zero increment.
+  if (!amount) return _date;
+
+  const startedOnWeekend = isWeekend(_date, options);
   const hours = _date.getHours();
   const sign = amount < 0 ? -1 : 1;
   const fullWeeks = Math.trunc(amount / 5);

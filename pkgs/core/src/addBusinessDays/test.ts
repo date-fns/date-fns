@@ -16,6 +16,29 @@ describe("addBusinessDays", () => {
     expect(result).toEqual(new Date(2014, 8 /* Sep */, 1));
   });
 
+  it.each([
+    [0.5, new Date(2014, 8, 1)],
+    [-0.5, new Date(2014, 8, 1)],
+    [1.5, new Date(2014, 8, 2)],
+    [-1.5, new Date(2014, 7, 29)],
+    [5.5, new Date(2014, 8, 8)],
+    [-5.5, new Date(2014, 7, 25)],
+  ])("truncates fractional amount %s toward zero", (amount, expected) => {
+    expect(addBusinessDays(new Date(2014, 8, 1), amount)).toEqual(expected);
+  });
+
+  it.each([0.5, -0.5])(
+    "does not move a weekend date for amount %s",
+    (amount) => {
+      for (const day of [6, 7]) {
+        const date = new Date(2014, 8, day, 12, 30);
+        const result = addBusinessDays(date, amount);
+        expect(result).toEqual(date);
+        expect(result).not.toBe(date);
+      }
+    },
+  );
+
   it("returns the Monday when 1 day is added on the Friday", () => {
     expect(addBusinessDays(new Date(2020, 0 /* Jan */, 10), 1)).toEqual(
       // Friday
@@ -95,7 +118,31 @@ describe("addBusinessDays", () => {
     assertType<assertType.Equal<UTCDate, typeof result>>(true);
   });
 
+  it.each([0, 0.5, -0.5])(
+    "preserves the date extension for a zero increment of %s",
+    (amount) => {
+      const date = new UTCDate(2014, 8, 1);
+      const result = addBusinessDays(date, amount);
+      expect(result).toBeInstanceOf(UTCDate);
+      expect(result.getTime()).toBe(date.getTime());
+      expect(result).not.toBe(date);
+    },
+  );
+
   describe("context", () => {
+    it.each([0, 0.5, -0.5])(
+      "preserves the context date type for a zero increment of %s",
+      (amount) => {
+        const date = new Date("2024-11-03T06:30:00Z");
+        const result = addBusinessDays(date, amount, {
+          in: tz("America/New_York"),
+        });
+        expect(result).toBeInstanceOf(TZDate);
+        expect(result.getTime()).toBe(date.getTime());
+        expect(result).not.toBe(date);
+      },
+    );
+
     it("allows to specify the context", () => {
       expect(
         addBusinessDays("2024-08-20T15:00:00Z", 3, {
@@ -136,6 +183,14 @@ describe("addBusinessDays", () => {
     Intl.DateTimeFormat().resolvedOptions().timeZone || process.env.tz;
 
   dstOnlyDescribe(`DST (${tzName || "(unknown)"})`, () => {
+    it.each([0, 0.5, -0.5])(
+      "does not change the repeated DST-end hour for amount %s",
+      (amount) => {
+        const date = new Date(dstTransitions.end!.getTime() + 30 * 60 * 1000);
+        expect(addBusinessDays(date, amount)).toEqual(date);
+      },
+    );
+
     it("works across DST-start weekend", () => {
       const date = new Date(dstTransitions.start!);
       date.setDate(date.getDate() - ((date.getDay() + 2) % 7));

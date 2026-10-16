@@ -14,8 +14,12 @@ export function tpyAddBusinessDays<
   amount: number,
   options?: AddBusinessDaysOptions<ResultDate> | undefined,
 ): ResultDate {
+  amount = Math.trunc(amount);
   let [temporal, invalidDate] = toTpInstant(date, options);
   if (!temporal || isNaN(amount)) return invalidDate;
+
+  if (!amount)
+    return constructFrom(options?.in || date, temporal.epochMilliseconds);
 
   const startedOnWeekend = tpIsWeekend(temporal);
   const hours = temporal.hour;
