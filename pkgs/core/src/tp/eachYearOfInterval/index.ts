@@ -7,7 +7,10 @@ export function tpEachYearOfInterval(
   const endDate = reversed ? start : end;
   let date = (reversed ? end : start).startOfDay().with({ month: 1, day: 1 });
 
-  let step = stepOption ?? 1;
+  // Truncate the step toward zero so fractional values resolve to whole
+  // years, matching the Date implementation. The step is normalized once
+  // here instead of on every iteration below. See #4336.
+  let step = Math.trunc(stepOption ?? 1);
   if (!step) return [];
   if (step < 0) {
     step = -step;
@@ -18,7 +21,7 @@ export function tpEachYearOfInterval(
   while (Temporal.ZonedDateTime.compare(date, endDate) <= 0) {
     dates.push(date);
     if (!Number.isFinite(step)) break;
-    date = date.with({ year: Math.trunc(date.year + step) });
+    date = date.with({ year: date.year + step });
   }
   return reversed ? dates.reverse() : dates;
 }

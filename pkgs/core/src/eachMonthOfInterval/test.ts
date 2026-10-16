@@ -162,6 +162,20 @@ describe("eachMonthOfInterval", () => {
       const result = eachMonthOfInterval(interval, { step: NaN });
       expect(result).toEqual([]);
     });
+
+    it("truncates a fractional step toward zero (regression for #4336)", () => {
+      const result = eachMonthOfInterval(interval, { step: 2.9 });
+      expect(result).toEqual([
+        new Date(2014, 2 /* Mar */, 1),
+        new Date(2014, 4 /* May */, 1),
+        new Date(2014, 6 /* Jul */, 1),
+      ]);
+    });
+
+    it("treats a step that truncates to zero as empty instead of looping forever (regression for #4336)", () => {
+      expect(eachMonthOfInterval(interval, { step: 0.5 })).toEqual([]);
+      expect(eachMonthOfInterval(interval, { step: -0.5 })).toEqual([]);
+    });
   });
 
   it("resolves the date type by default", () => {
