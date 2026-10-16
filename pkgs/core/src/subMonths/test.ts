@@ -48,6 +48,23 @@ describe("subMonths", () => {
     expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
   });
 
+  it("truncates a positive fractional amount toward zero", () => {
+    const date = new Date(2026, 2 /* Mar */, 31);
+    expect(subMonths(date, 0.5)).toEqual(new Date(2026, 2 /* Mar */, 31));
+    expect(subMonths(date, 0.9)).toEqual(new Date(2026, 2 /* Mar */, 31));
+  });
+
+  it("truncates a positive fractional amount before the calendar arithmetic", () => {
+    const date = new Date(2026, 2 /* Mar */, 31);
+    expect(subMonths(date, 1.5)).toEqual(new Date(2026, 1 /* Feb */, 28));
+  });
+
+  it("truncates a negative fractional amount toward zero", () => {
+    const date = new Date(2026, 2 /* Mar */, 31);
+    expect(subMonths(date, -1.7)).toEqual(new Date(2026, 3 /* Apr */, 30));
+    expect(subMonths(date, -0.5)).toEqual(new Date(2026, 2 /* Mar */, 31));
+  });
+
   it("resolves the date type by default", () => {
     const result = subMonths(Date.now(), 5);
     expect(result).toBeInstanceOf(Date);

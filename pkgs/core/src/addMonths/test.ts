@@ -148,6 +148,41 @@ describe("addMonths", () => {
     },
   );
 
+  it("truncates a negative fractional amount toward zero", () => {
+    const date = new Date(2026, 2 /* Mar */, 31);
+    expect(addMonths(date, -0.5)).toEqual(new Date(2026, 2 /* Mar */, 31));
+    expect(addMonths(date, -0.9)).toEqual(new Date(2026, 2 /* Mar */, 31));
+  });
+
+  it("truncates a negative fractional amount before the calendar arithmetic", () => {
+    const date = new Date(2026, 2 /* Mar */, 31);
+    expect(addMonths(date, -1.5)).toEqual(new Date(2026, 1 /* Feb */, 28));
+  });
+
+  it("truncates a positive fractional amount toward zero", () => {
+    const date = new Date(2026, 2 /* Mar */, 31);
+    expect(addMonths(date, 1.7)).toEqual(new Date(2026, 3 /* Apr */, 30));
+    expect(addMonths(date, 0.9)).toEqual(new Date(2026, 2 /* Mar */, 31));
+  });
+
+  it("does not depend on the starting month", () => {
+    expect(addMonths(new Date(2026, 0 /* Jan */, 31), -1.5)).toEqual(
+      new Date(2025, 11 /* Dec */, 31),
+    );
+  });
+
+  it("keeps the time of day for amounts that truncate to zero", () => {
+    const date = new Date(2026, 2 /* Mar */, 31, 12, 30, 15, 250);
+    expect(addMonths(date, -0.5)).toEqual(date);
+    expect(addMonths(date, 0.5)).toEqual(date);
+  });
+
+  dstOnly("is a no-op for fractional amounts that truncate to zero", () => {
+    const date = new Date(dstTransitions.end!);
+    expect(addMonths(date, -0.5)).toEqual(date);
+    expect(addMonths(date, 0.5)).toEqual(date);
+  });
+
   it("resolves the date type by default", () => {
     const result = addMonths(Date.now(), 5);
     expect(result).toBeInstanceOf(Date);
