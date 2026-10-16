@@ -9,7 +9,10 @@ export function tpEachQuarterOfInterval(
   const endDateQuarter = tpStartOfQuarter(reversed ? start : end);
   let date = tpStartOfQuarter(reversed ? end : start);
 
-  let step = stepOption ?? 1;
+  // Truncate the step toward zero so fractional values resolve to whole
+  // quarters, matching the Date implementation. This also avoids a RangeError
+  // from Temporal's `add`, which rejects non-integer duration fields.
+  let step = Math.trunc(stepOption ?? 1);
   if (!step) return [];
   if (step < 0) {
     step = -step;
