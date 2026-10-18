@@ -58,19 +58,23 @@ const parseMonthPatterns = {
     /^қар/i,
     /^жел/i,
   ] as const,
+  // Several month names share a first letter: мамыр/маусым both start with
+  // "м", and қаңтар/қыркүйек/қазан/қараша all start with "қ". Single-letter
+  // patterns therefore resolve to whichever month comes first in this list,
+  // so the prefixes have to be long enough to tell the months apart.
   any: [
-    /^қ/i,
-    /^а/i,
-    /^н/i,
-    /^с/i,
-    /^м/i,
-    /^м/i,
-    /^ш/i,
-    /^т/i,
-    /^қ/i,
-    /^қ/i,
-    /^қ/i,
-    /^ж/i,
+    /^қаң/i,
+    /^ақп/i,
+    /^нау/i,
+    /^сәу/i,
+    /^мам/i,
+    /^мау/i,
+    /^шіл/i,
+    /^там/i,
+    /^қыр/i,
+    /^қаз/i,
+    /^қар/i,
+    /^жел/i,
   ] as const,
 };
 
@@ -85,7 +89,7 @@ const parseDayPatterns = {
   any: [
     /^ж[ек]/i,
     /^д[үй]/i,
-    /^сe[й]/i,
+    /^се[й]/i,
     /^сә[р]/i,
     /^б[ей]/i,
     /^ж[ұм]/i,
