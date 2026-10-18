@@ -44,19 +44,24 @@ const parseMonthPatterns = {
     /^s/i,
     /^d/i,
   ] as const,
+  // The wide month names carry a definite article ("Am Faoilleach",
+  // "An Gearran", "An t-Ògmhios"), so the article has to be part of the
+  // pattern. The stems also have to be long enough to tell apart the two
+  // months starting with "D" (Dàmhair and Dùbhlachd) and the two starting
+  // with "G" (Gearran and Giblean).
   any: [
-    /^fa/i,
-    /^ge/i,
-    /^mà/i,
-    /^gi/i,
-    /^c/i,
-    /^ò/i,
-    /^i/i,
-    /^l/i,
-    /^su/i,
-    /^d/i,
-    /^sa/i,
-    /^d/i,
+    /^(am )?fa/i,
+    /^(an )?ge/i,
+    /^(am )?mà/i,
+    /^(an )?gi/i,
+    /^(an )?c/i,
+    /^(an t-)?ò/i,
+    /^(an t-)?i/i,
+    /^(an )?l/i,
+    /^(an t-)?su/i,
+    /^(an )?dà/i,
+    /^(an t-)?sa/i,
+    /^(an )?dù/i,
   ] as const,
 };
 
@@ -68,7 +73,19 @@ const matchDayPatterns = {
 };
 const parseDayPatterns = {
   narrow: [/^d/i, /^l/i, /^m/i, /^c/i, /^a/i, /^h/i, /^s/i] as const,
-  any: [/^d/i, /^l/i, /^m/i, /^c/i, /^a/i, /^h/i, /^s/i] as const,
+  // Every wide and abbreviated weekday name begins with "Di"
+  // ("Didòmhnaich", "Diluain", ... and "Did", "Dil", ...), so matching on
+  // the first letter alone resolves all of them to Sunday. Each pattern
+  // therefore accepts the "Di" form alongside the short form ("Dò", "Lu").
+  any: [
+    /^(dò|did)/i,
+    /^(lu|dil)/i,
+    /^(mà|dim)/i,
+    /^(ci|dic)/i,
+    /^(ar|dia)/i,
+    /^(ha|dih)/i,
+    /^(sa|dis)/i,
+  ] as const,
 };
 
 const matchDayPeriodPatterns = {
