@@ -1,5 +1,19 @@
-import { daysInYear } from "../constants/index.ts";
+import {
+  daysInYear,
+  millisecondsInDay,
+  millisecondsInHour,
+  millisecondsInMinute,
+  millisecondsInSecond,
+  millisecondsInWeek,
+  monthsInYear,
+} from "../constants/index.ts";
 import type { Duration } from "../types.ts";
+
+// Both are exact integers: 365.2425 * 86400000 = 31556952000, and that
+// divided by 12 = 2629746000. Scaling days to milliseconds before applying
+// the amount keeps whole durations free of binary floating point drift.
+const millisecondsInYear = daysInYear * millisecondsInDay;
+const millisecondsInMonth = millisecondsInYear / monthsInYear;
 
 /**
  * @name milliseconds
@@ -39,18 +53,15 @@ export function milliseconds({
   minutes,
   seconds,
 }: Duration): number {
-  let totalDays = 0;
+  let total = 0;
 
-  if (years) totalDays += years * daysInYear;
-  if (months) totalDays += months * (daysInYear / 12);
-  if (weeks) totalDays += weeks * 7;
-  if (days) totalDays += days;
+  if (years) total += years * millisecondsInYear;
+  if (months) total += months * millisecondsInMonth;
+  if (weeks) total += weeks * millisecondsInWeek;
+  if (days) total += days * millisecondsInDay;
+  if (hours) total += hours * millisecondsInHour;
+  if (minutes) total += minutes * millisecondsInMinute;
+  if (seconds) total += seconds * millisecondsInSecond;
 
-  let totalSeconds = totalDays * 24 * 60 * 60;
-
-  if (hours) totalSeconds += hours * 60 * 60;
-  if (minutes) totalSeconds += minutes * 60;
-  if (seconds) totalSeconds += seconds;
-
-  return Math.trunc(totalSeconds * 1000);
+  return Math.trunc(total);
 }
