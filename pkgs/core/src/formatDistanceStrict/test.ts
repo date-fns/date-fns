@@ -379,6 +379,102 @@ describe("formatDistanceStrict", () => {
     });
   });
 
+  describe("unit promotion when rounding up to next unit boundary", () => {
+    const base = new Date(2021, 0, 1, 0, 0, 0);
+    const at = (ms: number) => new Date(+base + ms);
+
+    describe("seconds to minutes", () => {
+      it("promotes to 1 minute when rounding up to 60 seconds", () => {
+        expect(formatDistanceStrict(base, at(59499))).toBe("59 seconds");
+        expect(formatDistanceStrict(base, at(59500))).toBe("1 minute");
+        expect(
+          formatDistanceStrict(base, at(59100), { roundingMethod: "ceil" }),
+        ).toBe("1 minute");
+      });
+
+      it("respects addSuffix when promoting seconds to 1 minute", () => {
+        expect(formatDistanceStrict(at(59500), base, { addSuffix: true })).toBe(
+          "in 1 minute",
+        );
+        expect(formatDistanceStrict(base, at(59500), { addSuffix: true })).toBe(
+          "1 minute ago",
+        );
+      });
+
+      it("keeps seconds if unit is explicitly set to second", () => {
+        expect(formatDistanceStrict(base, at(59500), { unit: "second" })).toBe(
+          "60 seconds",
+        );
+      });
+    });
+
+    describe("minutes to hours", () => {
+      it("promotes to 1 hour when rounding up to 60 minutes", () => {
+        // 59 minutes 29 seconds rounds down to 59 minutes
+        expect(formatDistanceStrict(base, at((59 * 60 + 29) * 1000))).toBe(
+          "59 minutes",
+        );
+        // 59 minutes 30 seconds rounds up to 60 minutes -> promotes to 1 hour
+        expect(formatDistanceStrict(base, at((59 * 60 + 30) * 1000))).toBe(
+          "1 hour",
+        );
+        expect(
+          formatDistanceStrict(base, at(3541000), { roundingMethod: "ceil" }),
+        ).toBe("1 hour");
+      });
+
+      it("respects addSuffix when promoting minutes to 1 hour", () => {
+        expect(
+          formatDistanceStrict(at(3599500), base, { addSuffix: true }),
+        ).toBe("in 1 hour");
+        expect(
+          formatDistanceStrict(base, at(3599500), { addSuffix: true }),
+        ).toBe("1 hour ago");
+      });
+
+      it("keeps minutes if unit is explicitly set to minute", () => {
+        expect(
+          formatDistanceStrict(base, at((59 * 60 + 30) * 1000), {
+            unit: "minute",
+          }),
+        ).toBe("60 minutes");
+      });
+    });
+
+    describe("hours to days", () => {
+      it("promotes to 1 day when rounding up to 24 hours", () => {
+        // 23 hours 29 minutes rounds down to 23 hours
+        expect(
+          formatDistanceStrict(base, at((23 * 3600 + 29 * 60) * 1000)),
+        ).toBe("23 hours");
+        // 23 hours 30 minutes rounds up to 24 hours -> promotes to 1 day
+        expect(
+          formatDistanceStrict(base, at((23 * 3600 + 30 * 60) * 1000)),
+        ).toBe("1 day");
+        expect(
+          formatDistanceStrict(base, at(82801000), { roundingMethod: "ceil" }),
+        ).toBe("1 day");
+      });
+
+      it("respects addSuffix when promoting hours to 1 day", () => {
+        expect(
+          formatDistanceStrict(at(86399500), base, { addSuffix: true }),
+        ).toBe("in 1 day");
+        expect(
+          formatDistanceStrict(base, at(86399500), { addSuffix: true }),
+        ).toBe("1 day ago");
+      });
+
+      it("keeps hours if unit is explicitly set to hour", () => {
+        expect(
+          formatDistanceStrict(base, at((23 * 3600 + 30 * 60) * 1000), {
+            unit: "hour",
+          }),
+        ).toBe("24 hours");
+      });
+    });
+  });
+
   describe("custom locale", () => {
     it("can be passed to the function", () => {
       const formatDistance: FormatDistanceFn = (token, count, options) => {
