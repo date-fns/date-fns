@@ -24,7 +24,7 @@ import type {
 export { formatters, longFormatters };
 
 // This RegExp consists of three parts separated by `|`:
-// - [yYQqMLwIdDecihHKkms]o matches any available ordinal number token
+// - [yYQqMLwWIdDecihHKkms]o matches any available ordinal number token
 //   (one of the certain letters followed by `o`)
 // - (\w)\1* matches any sequences of the same letter
 // - '' matches two quote characters in a row
@@ -35,7 +35,7 @@ export { formatters, longFormatters };
 //   then the sequence will continue until the end of the string.
 // - . matches any single character unmatched by previous parts of the RegExps
 const formattingTokensRegExp =
-  /[yYQqMLwIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)|./g;
+  /[yYQqMLwWIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)|./g;
 
 // This RegExp catches symbols escaped by quotes, and also
 // sequences of symbols P, p, and the combinations like `PPPPPPPppppp`
@@ -137,6 +137,9 @@ export interface FormatOptions
  * | ISO week of year                | I       | 1, 2, ..., 53                     | 7     |
  * |                                 | Io      | 1st, 2nd, ..., 53th               | 7     |
  * |                                 | II      | 01, 02, ..., 53                   | 7     |
+ * | Week of month                   | W       | 1, 2, ..., 5                      | 10    |
+ * |                                 | Wo      | 1st, 2nd, ..., 5th                | 7,10  |
+ * |                                 | WW      | 01, 02, ..., 05                   | 10    |
  * | Day of month                    | d       | 1, 2, ..., 31                     |       |
  * |                                 | do      | 1st, 2nd, ..., 31st               | 7     |
  * |                                 | dd      | 01, 02, ..., 31                   |       |
@@ -309,6 +312,9 @@ export interface FormatOptions
  *
  * 9. `D` and `DD` tokens represent days of the year but they are often confused with days of the month.
  *    You should enable `options.useAdditionalDayOfYearTokens` to use them. See: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
+ *
+ * 10. `W`, `Wo`, and `WW` tokens represent the week of the month and follow [getWeekOfMonth](https://date-fns.org/docs/getWeekOfMonth)
+ *     semantics (dependent on `options.weekStartsOn`, with the first day of the month starting week 1).
  *
  * @param date - The original date
  * @param format - The string of tokens
