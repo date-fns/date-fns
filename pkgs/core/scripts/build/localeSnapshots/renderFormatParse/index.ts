@@ -2,7 +2,7 @@ import { format } from "../../../../src/format/index.ts";
 import { isValid } from "../../../../src/isValid/index.ts";
 import { parse } from "../../../../src/parse/index.ts";
 import { toDate } from "../../../../src/toDate/index.ts";
-import type { Locale } from "../../../../src/types.ts";
+import type { Locale } from "../../../../src/locale/types.ts";
 import formatParseTokens from "./formatParseTokens.ts";
 
 export default function renderFormatParse(locale: Locale) {

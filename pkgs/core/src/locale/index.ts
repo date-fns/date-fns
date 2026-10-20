@@ -1,98 +1,128 @@
 // This file is generated automatically by `scripts/build/indices.ts`. Please, don't change it.
 
-export * from "./af/index.ts";
-export * from "./ar/index.ts";
-export * from "./ar-DZ/index.ts";
-export * from "./ar-EG/index.ts";
-export * from "./ar-MA/index.ts";
-export * from "./ar-SA/index.ts";
-export * from "./ar-TN/index.ts";
-export * from "./az/index.ts";
-export * from "./be/index.ts";
-export * from "./be-tarask/index.ts";
-export * from "./bg/index.ts";
-export * from "./bn/index.ts";
-export * from "./bs/index.ts";
-export * from "./ca/index.ts";
-export * from "./ckb/index.ts";
-export * from "./cs/index.ts";
-export * from "./cy/index.ts";
-export * from "./da/index.ts";
-export * from "./de/index.ts";
-export * from "./de-AT/index.ts";
-export * from "./el/index.ts";
-export * from "./en-AU/index.ts";
-export * from "./en-CA/index.ts";
-export * from "./en-GB/index.ts";
-export * from "./en-IE/index.ts";
-export * from "./en-IN/index.ts";
-export * from "./en-NZ/index.ts";
-export * from "./en-US/index.ts";
-export * from "./en-ZA/index.ts";
-export * from "./eo/index.ts";
-export * from "./es/index.ts";
-export * from "./et/index.ts";
-export * from "./eu/index.ts";
-export * from "./fa-IR/index.ts";
-export * from "./fi/index.ts";
-export * from "./fr/index.ts";
-export * from "./fr-CA/index.ts";
-export * from "./fr-CH/index.ts";
-export * from "./fy/index.ts";
-export * from "./gd/index.ts";
-export * from "./gl/index.ts";
-export * from "./gu/index.ts";
-export * from "./he/index.ts";
-export * from "./hi/index.ts";
-export * from "./hr/index.ts";
-export * from "./ht/index.ts";
-export * from "./hu/index.ts";
-export * from "./hy/index.ts";
-export * from "./id/index.ts";
-export * from "./is/index.ts";
-export * from "./it/index.ts";
-export * from "./it-CH/index.ts";
-export * from "./ja/index.ts";
-export * from "./ja-Hira/index.ts";
-export * from "./ka/index.ts";
-export * from "./kk/index.ts";
-export * from "./km/index.ts";
-export * from "./kn/index.ts";
-export * from "./ko/index.ts";
-export * from "./lb/index.ts";
-export * from "./lt/index.ts";
-export * from "./lv/index.ts";
-export * from "./mk/index.ts";
-export * from "./mn/index.ts";
-export * from "./ms/index.ts";
-export * from "./mt/index.ts";
-export * from "./nb/index.ts";
-export * from "./nl/index.ts";
-export * from "./nl-BE/index.ts";
-export * from "./nn/index.ts";
-export * from "./oc/index.ts";
-export * from "./pl/index.ts";
-export * from "./pt/index.ts";
-export * from "./pt-BR/index.ts";
-export * from "./ro/index.ts";
-export * from "./ru/index.ts";
-export * from "./se/index.ts";
-export * from "./sk/index.ts";
-export * from "./sl/index.ts";
-export * from "./sq/index.ts";
-export * from "./sr/index.ts";
-export * from "./sr-Latn/index.ts";
-export * from "./sv/index.ts";
-export * from "./ta/index.ts";
-export * from "./te/index.ts";
-export * from "./th/index.ts";
-export * from "./tr/index.ts";
-export * from "./ug/index.ts";
-export * from "./uk/index.ts";
-export * from "./uz/index.ts";
-export * from "./uz-Cyrl/index.ts";
-export * from "./vi/index.ts";
-export * from "./zh-CN/index.ts";
-export * from "./zh-HK/index.ts";
-export * from "./zh-TW/index.ts";
-export type * from "./types.ts";
+export { af } from "./af/index.ts";
+export { ar } from "./ar/index.ts";
+export { arDZ } from "./ar-DZ/index.ts";
+export { arEG } from "./ar-EG/index.ts";
+export { arMA } from "./ar-MA/index.ts";
+export { arSA } from "./ar-SA/index.ts";
+export { arTN } from "./ar-TN/index.ts";
+export { az } from "./az/index.ts";
+export { be } from "./be/index.ts";
+export { beTarask } from "./be-tarask/index.ts";
+export { bg } from "./bg/index.ts";
+export { bn } from "./bn/index.ts";
+export { bs } from "./bs/index.ts";
+export { ca } from "./ca/index.ts";
+export { ckb } from "./ckb/index.ts";
+export { cs } from "./cs/index.ts";
+export { cy } from "./cy/index.ts";
+export { da } from "./da/index.ts";
+export { de } from "./de/index.ts";
+export { deAT } from "./de-AT/index.ts";
+export { el } from "./el/index.ts";
+export { enAU } from "./en-AU/index.ts";
+export { enCA } from "./en-CA/index.ts";
+export { enGB } from "./en-GB/index.ts";
+export { enIE } from "./en-IE/index.ts";
+export { enIN } from "./en-IN/index.ts";
+export { enNZ } from "./en-NZ/index.ts";
+export { enUS } from "./en-US/index.ts";
+export { enZA } from "./en-ZA/index.ts";
+export { eo } from "./eo/index.ts";
+export { es } from "./es/index.ts";
+export { et } from "./et/index.ts";
+export { eu } from "./eu/index.ts";
+export { faIR } from "./fa-IR/index.ts";
+export { fi } from "./fi/index.ts";
+export { fr } from "./fr/index.ts";
+export { frCA } from "./fr-CA/index.ts";
+export { frCH } from "./fr-CH/index.ts";
+export { fy } from "./fy/index.ts";
+export { gd } from "./gd/index.ts";
+export { gl } from "./gl/index.ts";
+export { gu } from "./gu/index.ts";
+export { he } from "./he/index.ts";
+export { hi } from "./hi/index.ts";
+export { hr } from "./hr/index.ts";
+export { ht } from "./ht/index.ts";
+export { hu } from "./hu/index.ts";
+export { hy } from "./hy/index.ts";
+export { id } from "./id/index.ts";
+export { is } from "./is/index.ts";
+export { it } from "./it/index.ts";
+export { itCH } from "./it-CH/index.ts";
+export { ja } from "./ja/index.ts";
+export { jaHira } from "./ja-Hira/index.ts";
+export { ka } from "./ka/index.ts";
+export { kk } from "./kk/index.ts";
+export { km } from "./km/index.ts";
+export { kn } from "./kn/index.ts";
+export { ko } from "./ko/index.ts";
+export { lb } from "./lb/index.ts";
+export { lt } from "./lt/index.ts";
+export { lv } from "./lv/index.ts";
+export { mk } from "./mk/index.ts";
+export { mn } from "./mn/index.ts";
+export { ms } from "./ms/index.ts";
+export { mt } from "./mt/index.ts";
+export { nb } from "./nb/index.ts";
+export { nl } from "./nl/index.ts";
+export { nlBE } from "./nl-BE/index.ts";
+export { nn } from "./nn/index.ts";
+export { oc } from "./oc/index.ts";
+export { pl } from "./pl/index.ts";
+export { pt } from "./pt/index.ts";
+export { ptBR } from "./pt-BR/index.ts";
+export { ro } from "./ro/index.ts";
+export { ru } from "./ru/index.ts";
+export { se } from "./se/index.ts";
+export { sk } from "./sk/index.ts";
+export { sl } from "./sl/index.ts";
+export { sq } from "./sq/index.ts";
+export { sr } from "./sr/index.ts";
+export { srLatn } from "./sr-Latn/index.ts";
+export { sv } from "./sv/index.ts";
+export { ta } from "./ta/index.ts";
+export { te } from "./te/index.ts";
+export { th } from "./th/index.ts";
+export { tr } from "./tr/index.ts";
+export { ug } from "./ug/index.ts";
+export { uk } from "./uk/index.ts";
+export { uz } from "./uz/index.ts";
+export { uzCyrl } from "./uz-Cyrl/index.ts";
+export { vi } from "./vi/index.ts";
+export { zhCN } from "./zh-CN/index.ts";
+export { zhHK } from "./zh-HK/index.ts";
+export { zhTW } from "./zh-TW/index.ts";
+export type {
+  Locale,
+  LocaleOptions,
+  FormatDistanceFn,
+  FormatDistanceFnOptions,
+  FormatDistanceTokenFn,
+  FormatDistanceLocale,
+  FormatDistanceToken,
+  FormatRelativeFn,
+  FormatRelativeFnOptions,
+  FormatRelativeTokenFn,
+  FormatRelativeTokenFnOptions,
+  FormatRelativeToken,
+  FormatPart,
+  Localize,
+  LocalizeFn,
+  LocalizeFnOptions,
+  Match,
+  MatchFn,
+  MatchFnOptions,
+  MatchValueCallback,
+  MatchFnResult,
+  FormatLong,
+  FormatLongFn,
+  FormatLongFnOptions,
+  FormatLongWidth,
+  LocaleUnitValue,
+  LocaleWidth,
+  LocaleDayPeriod,
+  LocaleUnit,
+} from "./types.ts";

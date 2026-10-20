@@ -11,8 +11,11 @@ import { readFile, writeFile } from "fs/promises";
 import { listFPFns } from "../_lib/listFPFns.ts";
 import { listFns } from "../_lib/listFns.ts";
 import { listLocales } from "../_lib/listLocales.ts";
+import { namedExports, namedExportsToStr } from "../_lib/namedExports.ts";
+import path from "node:path";
+import { format } from "oxfmt";
 
-interface File {
+interface ModuleFile {
   name: string;
   path: string;
   fullPath: string;
@@ -25,23 +28,29 @@ interface File {
 
   await Promise.all([
     generatePackageJSON({ fns, fpFns, locales }).then((json) =>
-      writeFile("package.json", json),
+      formatWriteFile("package.json", json),
     ),
 
-    writeFile("src/index.ts", generateIndex({ files: fns })),
+    generateIndex({ kind: "fns", files: fns }).then((index) =>
+      formatWriteFile("src/index.ts", index),
+    ),
 
-    writeFile("src/fp/index.ts", generateIndex({ files: fpFns, isFP: true })),
+    generateIndex({ kind: "fp", files: fpFns }).then((index) =>
+      formatWriteFile("src/fp/index.ts", index),
+    ),
 
-    writeFile("src/locale/index.ts", generateIndex({ files: locales })),
+    generateIndex({ kind: "locale", files: locales }).then((index) =>
+      formatWriteFile("src/locale/index.ts", index),
+    ),
 
-    writeFile("typedoc.json", generateTypeDoc(fns)),
+    formatWriteFile("typedoc.json", generateTypeDoc(fns)),
   ]);
 })();
 
 interface GeneratePackageJSONProps {
-  fns: File[];
-  fpFns: File[];
-  locales: File[];
+  fns: ModuleFile[];
+  fpFns: ModuleFile[];
+  locales: ModuleFile[];
 }
 
 async function generatePackageJSON({
@@ -86,7 +95,7 @@ async function generatePackageJSON({
   return JSON.stringify(packageJSON, null, 2);
 }
 
-function mapFiles(files: File[]) {
+function mapFiles(files: ModuleFile[]) {
   return files.map((file) => file.path);
 }
 
@@ -117,19 +126,60 @@ function mapPublishExports(paths: string[], prefix = ".") {
   });
 }
 
-interface GenerateIndexProps {
-  files: File[];
-  isFP?: boolean;
+namespace generateIndex {
+  export interface Props {
+    kind: Kind;
+    files: ModuleFile[];
+  }
+
+  export type Kind = "fp" | "locale" | "fns";
 }
 
-function generateIndex({ files, isFP }: GenerateIndexProps): string {
-  const lines = files
-    .map((file) => `export * from "${file.path}/index.ts";`)
-    .concat(`export type * from "${isFP ? ".." : "."}/types.ts";`);
+async function generateIndex(props: generateIndex.Props): Promise<string> {
+  const { kind, files } = props;
+  const allExports = new Set<string>();
+
+  function registerExports(fullPath: string, exports: string[]) {
+    const duplicates = new Set(exports.filter((name) => allExports.has(name)));
+    if (duplicates.size) {
+      const duplicatesStr = [...duplicates].join(", ");
+      throw new Error(
+        `Duplicate exports found in ${fullPath}: ${duplicatesStr}`,
+      );
+    }
+    exports.forEach((name) => allExports.add(name));
+  }
+
+  async function readAsExportLine(fullPath: string, exportPath: string) {
+    const content = await readFile(fullPath, "utf8");
+    const exportsArr = await namedExports(fullPath, content);
+    registerExports(
+      fullPath,
+      exportsArr.map(({ name }) => name),
+    );
+    const exports = namedExportsToStr(exportsArr);
+
+    return `export ${exports} from "${exportPath}";`;
+  }
+
+  function generateTypesExportLine() {
+    const fullPath = path.join(
+      process.cwd(),
+      kind === "locale" ? "src/locale/types.ts" : "src/types.ts",
+    );
+    const relPath = `${kind === "fp" ? ".." : "."}/types.ts`;
+    return readAsExportLine(fullPath, relPath);
+  }
+
+  const exportLines = await Promise.all(
+    files
+      .map((file) => readAsExportLine(file.fullPath, `${file.path}/index.ts`))
+      .concat(generateTypesExportLine()),
+  );
 
   return `// This file is generated automatically by \`scripts/build/indices.ts\`. Please, don't change it.
 
-${lines.join("\n")}
+${exportLines.join("\n")}
 `;
 }
 
@@ -149,4 +199,14 @@ function generateTypeDoc(fns: Awaited<ReturnType<typeof listFns>>) {
       2,
     )
   );
+}
+
+async function formatWriteFile(filePath: string, content: string) {
+  const formatted = await format(filePath, content, { printWidth: 80 });
+  if (formatted.errors.length) {
+    throw new Error(
+      `Formatting failed: ${formatted.errors.map((e) => e.message).join(", ")}`,
+    );
+  }
+  return writeFile(filePath, formatted.code, "utf8");
 }

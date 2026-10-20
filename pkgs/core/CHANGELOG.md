@@ -8,6 +8,16 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## v5.0.0-alpha.1 - Unreleased
+
+### Changed
+
+- **BREAKING**: `date-fns/parse` no longer exports `longFormatters` directly. Import it from `date-fns/format` if needed.
+
+- **BREAKING**: `date-fns/types` no longer re-exports `date-fns/locale/types` and `date-fns/fp/types`.
+
+- All barrel file exports are now explicit.
+
 ## v5.0.0-alpha.0 - 2026-05-30
 
 v5 focuses on reducing the date-fns package size. Compared to v4.3.0, this version reduces the zipped package size from `5.83 MB` down to `2.89 MB`.

@@ -28,6 +28,7 @@
     "resolveJsonModule": true,
     // Env
     "lib": ["ESNext"],
+    "types": ["vitest/importMeta"],
     // TODO: Enable when we can:
     // "erasableSyntaxOnly": true, // Disallow using using runtime TS features
     // Checks

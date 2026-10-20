@@ -9,7 +9,7 @@
 
 import { readFile, writeFile } from "fs/promises";
 import path from "path";
-import type { Locale } from "../../../src/types.ts";
+import type { Locale } from "../../../src/locale/types.ts";
 import { listLocales } from "../../_lib/listLocales.ts";
 import { convertLocaleToConst } from "./_lib/locale.ts";
 import renderFormatDistance from "./renderFormatDistance/index.ts";

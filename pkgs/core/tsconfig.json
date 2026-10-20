@@ -6,6 +6,6 @@
     { "path": "../docs" }
   ],
   "compilerOptions": {
-    "types": ["node"]
+    "types": ["node", "vitest/importMeta"]
   }
 }
