@@ -8,6 +8,14 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## Unreleased
+
+Kudos to [@miodragnikac](https://github.com/miodragnikac) for the Montenegrin locale.
+
+### Added
+
+- Added Montenegrin (`cnr`) locale by [@miodragnikac](https://github.com/miodragnikac).
+
 ## v5.0.0-alpha.0 - 2026-05-30
 
 ### Changed
