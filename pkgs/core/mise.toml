@@ -3,6 +3,9 @@ run = "pnpm playwright install chromium --with-deps"
 # NOTE: It prompts for sudo to install OS dependencies
 raw = true
 
+[tasks.build]
+run = "./scripts/build/build.sh"
+
 # TODO: Find a way to simply these two tasks below.
 
 [tasks."build/package"]

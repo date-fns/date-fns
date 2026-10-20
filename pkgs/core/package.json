@@ -8192,6 +8192,7 @@
     "js-fns": "^2.5.2",
     "jscodeshift": "^0.15.2",
     "lodash": "^4.17.21",
+    "oxc-parser": "^0.154.0",
     "oxfmt": "^0.70.0",
     "oxlint": "^1.85.0",
     "oxlint-tsgolint": "^7.0.2002",

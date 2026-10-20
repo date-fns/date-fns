@@ -1,9 +1,9 @@
 import type {
   FirstWeekContainsDateOptions,
-  Locale,
   LocalizedOptions,
   WeekOptions,
 } from "../../types.ts";
+import type { Locale } from "../../locale/types.ts";
 
 export type DefaultOptions = LocalizedOptions<keyof Locale> &
   WeekOptions &

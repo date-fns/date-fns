@@ -1,5 +1,5 @@
 import { formatDuration } from "../../../../src/formatDuration/index.ts";
-import type { Locale } from "../../../../src/types.ts";
+import type { Locale } from "../../../../src/locale/types.ts";
 
 const durations = [
   "years",

@@ -1,5 +1,5 @@
 import { formatDistance } from "../../../../src/formatDistance/index.ts";
-import type { Locale } from "../../../../src/types.ts";
+import type { Locale } from "../../../../src/locale/types.ts";
 import { baseDate, dates } from "../_lib/distanceDates.ts";
 
 export default function renderFormatDistance(locale: Locale) {
