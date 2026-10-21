@@ -26,8 +26,9 @@ const parseQuarterPatterns = {
 
 const matchMonthPatterns = {
   narrow: /^[يفمأمسند]/i,
-  abbreviated: /^(ين|ف|مار|أب|ماي|يون|يول|أغ|س|أك|ن|د)/i,
-  wide: /^(ين|ف|مار|أب|ماي|يون|يول|أغ|س|أك|ن|د)/i,
+  abbreviated:
+    /^(ينا|فبر|مارس|أبريل|مايو|يونـ?|يولـ?|أغسـ?|سبتـ?|أكتـ?|نوفـ?|ديسـ?|ين|ف|مار|أب|ماي|يون|يول|أغ|س|أك|ن|د)/i,
+  wide: /^(يناير|فبراير|مارس|أبريل|مايو|يونيو|يوليو|أغسطس|سبتمبر|أكتوبر|نوفمبر|ديسمبر|ين|ف|مار|أب|ماي|يون|يول|أغ|س|أك|ن|د)/i,
 };
 const parseMonthPatterns = {
   narrow: [
@@ -63,7 +64,7 @@ const parseMonthPatterns = {
 const matchDayPatterns = {
   narrow: /^[حنثرخجس]/i,
   short: /^(أحد|اثنين|ثلاثاء|أربعاء|خميس|جمعة|سبت)/i,
-  abbreviated: /^(أحد|اثن|ثلا|أرب|خمي|جمعة|سبت)/i,
+  abbreviated: /^(أحد|اثنـ?|ثلا|أربـ?|خميـ?|جمعة|سبت)/i,
   wide: /^(الأحد|الاثنين|الثلاثاء|الأربعاء|الخميس|الجمعة|السبت)/i,
 };
 const parseDayPatterns = {
@@ -81,19 +82,20 @@ const parseDayPatterns = {
 };
 
 const matchDayPeriodPatterns = {
-  narrow: /^(a|p|mi|n|(in the|at) (morning|afternoon|evening|night))/i,
-  any: /^([ap]\.?\s?m\.?|midnight|noon|(in the|at) (morning|afternoon|evening|night))/i,
+  narrow:
+    /^(نصف الليل|ن|ظهر|ظ|في الصباح|صباحاً|بعد الظـ?هر|في المساء|مساءاً|في الليل|ليلاً|ص|م|a|p|mi|n|(in the|at) (morning|afternoon|evening|night))/i,
+  any: /^(نصف الليل|ن|ظهر|ظ|في الصباح|صباحاً|بعد الظـ?هر|في المساء|مساءاً|في الليل|ليلاً|ص|م|[ap]\.?\s?m\.?|midnight|noon|(in the|at) (morning|afternoon|evening|night))/i,
 };
 const parseDayPeriodPatterns = {
   any: {
-    am: /^a/i,
-    pm: /^p/i,
-    midnight: /^mi/i,
-    noon: /^no/i,
-    morning: /morning/i,
-    afternoon: /afternoon/i,
-    evening: /evening/i,
-    night: /night/i,
+    am: /^(ص$|a)/i,
+    pm: /^(م$|p)/i,
+    midnight: /^((ن|نصف الليل)$|mi)/i,
+    noon: /^((ظ|ظهر)$|no)/i,
+    morning: /^(في الصباح|صباحاً)$|morning/i,
+    afternoon: /^بعد الظـ?هر$|afternoon/i,
+    evening: /^(في المساء|مساءاً)$|evening/i,
+    night: /^(في الليل|ليلاً)$|night/i,
   },
 };
 
