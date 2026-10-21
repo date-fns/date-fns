@@ -1,0 +1,15 @@
+{
+  "name": "@date-fns/example-rolldown-lazy-barrel",
+  "version": "0.1.0",
+  "description": "Compare date-fns barrel compilation with Rolldown lazy barrels",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "node build.js disabled && node build.js enabled",
+    "test": "node test.js"
+  },
+  "dependencies": {
+    "date-fns": "../../dist/date-fns",
+    "rolldown": "1.2.14"
+  }
+}
