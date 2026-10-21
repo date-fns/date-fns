@@ -10,6 +10,14 @@ describe("subMonths", () => {
     expect(result).toEqual(new Date(2014, 8 /* Sep */, 1));
   });
 
+  it.each([
+    [0.5, new Date(2026, 2 /* Mar */, 31)],
+    [1.5, new Date(2026, 1 /* Feb */, 28)],
+  ])("truncates fractional month amounts (%s)", (amount, expected) => {
+    const result = subMonths(new Date(2026, 2 /* Mar */, 31), amount);
+    expect(result).toEqual(expected);
+  });
+
   it("accepts a timestamp", () => {
     const result = subMonths(new Date(2015, 8 /* Sep */, 1).getTime(), 12);
     expect(result).toEqual(new Date(2014, 8 /* Sep */, 1));

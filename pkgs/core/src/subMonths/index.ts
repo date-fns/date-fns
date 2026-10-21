@@ -20,7 +20,7 @@ export interface SubMonthsOptions<
  * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
  *
  * @param date - The date to be changed
- * @param amount - The amount of months to be subtracted.
+ * @param amount - The amount of months to be subtracted. Fractional amounts are truncated towards zero.
  * @param options - An object with options
  *
  * @returns The new date with the months subtracted
