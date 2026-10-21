@@ -45,7 +45,7 @@ const parseMonthPatterns = {
     /^դ/i,
   ] as const,
   any: [
-    /^հու/i,
+    /^հուն(վ|$)/i, // 2026-10-09
     /^փ/i,
     /^մար/i,
     /^ա/i,
