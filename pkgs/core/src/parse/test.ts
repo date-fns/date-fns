@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { parse } from "./index.ts";
 import { assertType } from "../_lib/test/index.ts";
+import { ja } from "../locale/ja/index.ts";
 import { UTCDate } from "@date-fns/utc";
 import { TZDate, tz } from "@date-fns/tz";
 
@@ -2172,6 +2173,39 @@ describe("parse", () => {
       it("returns `Invalid Date` for invalid second", () => {
         const result = parse("60", "ss", referenceDate);
         expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
+      });
+    });
+  });
+
+  describe("Japanese months", () => {
+    ["MMMMM", "LLLLL"].forEach((token) => {
+      for (let month = 1; month <= 12; month++) {
+        it(`parses narrow month ${month} with ${token}`, () => {
+          const result = parse(String(month), token, referenceDate, {
+            locale: ja,
+          });
+          expect(result).toEqual(new Date(1986, month - 1, 1));
+        });
+      }
+
+      [1, 10, 11, 12].forEach((month) => {
+        it(`parses narrow month ${month} followed by a date with ${token}`, () => {
+          const result = parse(`${month}-20`, `${token}-dd`, referenceDate, {
+            locale: ja,
+          });
+          expect(result).toEqual(new Date(1986, month - 1, 20));
+        });
+      });
+    });
+
+    ["MMM", "MMMM", "LLL", "LLLL"].forEach((token) => {
+      [1, 10, 11, 12].forEach((month) => {
+        it(`parses month ${month} with ${token}`, () => {
+          const result = parse(`${month}月`, token, referenceDate, {
+            locale: ja,
+          });
+          expect(result).toEqual(new Date(1986, month - 1, 1));
+        });
       });
     });
   });
