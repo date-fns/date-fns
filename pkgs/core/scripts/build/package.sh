@@ -8,6 +8,7 @@
 set -e
 
 build_cjs=true
+force_node_cjs=true
 build_cdn=true
 include_docs=true
 include_fp=true
@@ -22,6 +23,10 @@ while [ "$#" -gt 0 ]; do
 		;;
 	--no-cjs)
 		build_cjs=false
+		shift
+		;;
+	--no-force-node-cjs)
+		force_node_cjs=false
 		shift
 		;;
 	--no-cdn)
@@ -46,6 +51,10 @@ while [ "$#" -gt 0 ]; do
 		;;
 	esac
 done
+
+if [ "$build_cjs" = false ]; then
+	force_node_cjs=false
+fi
 
 echo "⚡️ Building package"
 
@@ -164,6 +173,12 @@ echo "🚧 Cleaning up package.json..."
 package_json_path="$main_dir/package.json"
 jaq -i '. + .publishConfig' "$package_json_path"
 jaq -i 'del(.devDependencies, .scripts, .publishConfig)' "$package_json_path"
+if [ "$force_node_cjs" = false ]; then
+	jaq -i 'del(.exports[] | select(type == "object") | .node)' "$package_json_path"
+fi
+if [ "$build_cjs" = false ]; then
+	jaq -i 'del(.exports[] | select(type == "object") | .require)' "$package_json_path"
+fi
 
 echo "🟢 package.json is ready!"
 
@@ -243,6 +258,7 @@ fi
 
 # For using as outputs cache
 echo "build_cjs=$build_cjs
+force_node_cjs=$force_node_cjs
 build_cdn=$build_cdn
 format_code=$format_code
 include_docs=$include_docs
