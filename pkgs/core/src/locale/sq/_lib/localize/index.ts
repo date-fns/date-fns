@@ -2,15 +2,41 @@ import type { Localize, LocalizeFn } from "../../../types.ts";
 import { buildLocalizeFn } from "../../../_lib/buildLocalizeFn/index.ts";
 
 const eraValues = {
-  narrow: ["P", "M"] as const,
-  abbreviated: ["PK", "MK"] as const,
-  wide: ["Para Krishtit", "Mbas Krishtit"] as const,
+  narrow: ["p.K.", "mb.K."] as const,
+  abbreviated: ["p.K.", "mb.K."] as const,
+  wide: ["para Krishtit", "mbas Krishtit"] as const,
 };
 
 const quarterValues = {
   narrow: ["1", "2", "3", "4"] as const,
-  abbreviated: ["Q1", "Q2", "Q3", "Q4"] as const,
-  wide: ["4-mujori I", "4-mujori II", "4-mujori III", "4-mujori IV"] as const,
+  abbreviated: [
+    "Tremujori I",
+    "Tremujori II",
+    "Tremujori III",
+    "Tremujori IV",
+  ] as const,
+  wide: [
+    "Tremujori i 1-rë",
+    "Tremujori i 2-të",
+    "Tremujori i 3-të",
+    "Tremujori i 4-t",
+  ] as const,
+};
+
+const formattingQuarterValues = {
+  narrow: ["1", "2", "3", "4"] as const,
+  abbreviated: [
+    "tremujori I",
+    "tremujori II",
+    "tremujori III",
+    "tremujori IV",
+  ] as const,
+  wide: [
+    "tremujori i parë",
+    "tremujori i dytë",
+    "tremujori i tretë",
+    "tremujori i katërt",
+  ] as const,
 };
 
 // Note: in English, the names of days of the week and months are capitalized.
@@ -18,80 +44,93 @@ const quarterValues = {
 // Generally, formatted dates should look like they are in the middle of a sentence,
 // e.g. in Spanish language the weekdays and months should be in the lowercase.
 const monthValues = {
-  narrow: ["J", "S", "M", "P", "M", "Q", "K", "G", "S", "T", "N", "D"] as const,
+  narrow: [
+    "j",
+    "sh",
+    "m",
+    "p",
+    "m",
+    "q",
+    "k",
+    "g",
+    "sh",
+    "t",
+    "n",
+    "dh",
+  ] as const,
   abbreviated: [
-    "Jan",
-    "Shk",
-    "Mar",
-    "Pri",
-    "Maj",
-    "Qer",
-    "Kor",
-    "Gus",
-    "Sht",
-    "Tet",
-    "Nën",
-    "Dhj",
+    "jan",
+    "shk",
+    "mar",
+    "pri",
+    "maj",
+    "qer",
+    "korr",
+    "gush",
+    "sht",
+    "tet",
+    "nën",
+    "dhj",
   ] as const,
   wide: [
-    "Janar",
-    "Shkurt",
-    "Mars",
-    "Prill",
-    "Maj",
-    "Qershor",
-    "Korrik",
-    "Gusht",
-    "Shtator",
-    "Tetor",
-    "Nëntor",
-    "Dhjetor",
+    "janar",
+    "shkurt",
+    "mars",
+    "prill",
+    "maj",
+    "qershor",
+    "korrik",
+    "gusht",
+    "shtator",
+    "tetor",
+    "nëntor",
+    "dhjetor",
   ] as const,
 };
 
 const dayValues = {
-  narrow: ["D", "H", "M", "M", "E", "P", "S"] as const,
-  short: ["Di", "Hë", "Ma", "Më", "En", "Pr", "Sh"] as const,
-  abbreviated: ["Die", "Hën", "Mar", "Mër", "Enj", "Pre", "Sht"] as const,
+  narrow: ["d", "h", "m", "m", "e", "p", "sh"] as const,
+  short: ["die", "hën", "mar", "mër", "enj", "pre", "sht"] as const,
+  abbreviated: ["die", "hën", "mar", "mër", "enj", "pre", "sht"] as const,
   wide: [
-    "Dielë",
-    "Hënë",
-    "Martë",
-    "Mërkurë",
-    "Enjte",
-    "Premte",
-    "Shtunë",
+    "e diel",
+    "e hënë",
+    "e martë",
+    "e mërkurë",
+    "e enjte",
+    "e premte",
+    "e shtunë",
   ] as const,
 };
 
 const dayPeriodValues = {
   narrow: {
-    am: "p",
-    pm: "m",
-    midnight: "m",
-    noon: "d",
+    am: "p.d.",
+    pm: "m.d.",
+    midnight: "mesnatë",
+    noon: "mesditë",
     morning: "mëngjes",
-    afternoon: "dite",
+    afternoon: "pasdite",
     evening: "mbrëmje",
     night: "natë",
   },
   abbreviated: {
-    am: "PD",
-    pm: "MD",
-    midnight: "mesnëtë",
-    noon: "drek",
+    am: "p.d.",
+    pm: "m.d.",
+    midnight: "mesnatë",
+    noon: "mesditë",
     morning: "mëngjes",
-    afternoon: "mbasdite",
+    afternoon: "pasdite",
     evening: "mbrëmje",
     night: "natë",
   },
   wide: {
-    am: "p.d.",
-    pm: "m.d.",
-    midnight: "mesnëtë",
-    noon: "drek",
+    am: "paradite",
+    pm: "pasdite",
+    midnight: "mesnatë",
+    noon: "mesditë",
     morning: "mëngjes",
-    afternoon: "mbasdite",
+    afternoon: "pasdite",
     evening: "mbrëmje",
     night: "natë",
   },
@@ -99,34 +138,34 @@ const dayPeriodValues = {
 
 const formattingDayPeriodValues = {
   narrow: {
-    am: "p",
-    pm: "m",
-    midnight: "m",
-    noon: "d",
-    morning: "në mëngjes",
-    afternoon: "në mbasdite",
-    evening: "në mbrëmje",
-    night: "në mesnatë",
-  },
-  abbreviated: {
-    am: "PD",
-    pm: "MD",
-    midnight: "mesnatë",
-    noon: "drek",
-    morning: "në mëngjes",
-    afternoon: "në mbasdite",
-    evening: "në mbrëmje",
-    night: "në mesnatë",
-  },
-  wide: {
     am: "p.d.",
     pm: "m.d.",
-    midnight: "mesnatë",
-    noon: "drek",
-    morning: "në mëngjes",
-    afternoon: "në mbasdite",
-    evening: "në mbrëmje",
-    night: "në mesnatë",
+    midnight: "e mesnatës",
+    noon: "e mesditës",
+    morning: "e mëngjesit",
+    afternoon: "e pasdites",
+    evening: "e mbrëmjes",
+    night: "e natës",
+  },
+  abbreviated: {
+    am: "p.d.",
+    pm: "m.d.",
+    midnight: "e mesnatës",
+    noon: "e mesditës",
+    morning: "e mëngjesit",
+    afternoon: "e pasdites",
+    evening: "e mbrëmjes",
+    night: "e natës",
+  },
+  wide: {
+    am: "e paradites",
+    pm: "e pasdites",
+    midnight: "e mesnatës",
+    noon: "e mesditës",
+    morning: "e mëngjesit",
+    afternoon: "e pasdites",
+    evening: "e mbrëmjes",
+    night: "e natës",
   },
 };
 
@@ -136,7 +175,8 @@ const ordinalNumber: LocalizeFn<number> = (dirtyNumber, options) => {
   if (options?.unit === "hour") return String(number);
 
   if (number === 1) return number + "-rë";
-  if (number === 4) return number + "t";
+
+  if (number % 10 === 4 && number % 100 !== 14) return number + "-t";
 
   return number + "-të";
 };
@@ -152,6 +192,8 @@ export const localize: Localize = {
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: "wide",
+    formattingValues: formattingQuarterValues,
+    defaultFormattingWidth: "wide",
     argumentCallback: (quarter) => quarter - 1,
   }),
 

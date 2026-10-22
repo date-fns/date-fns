@@ -3,30 +3,35 @@ import type { Match } from "../../../types.ts";
 import { buildMatchFn } from "../../../_lib/buildMatchFn/index.ts";
 import { buildMatchPatternFn } from "../../../_lib/buildMatchPatternFn/index.ts";
 
-const matchOrdinalNumberPattern = /^(\d+)(-rë|-të|t|)?/i;
+const matchOrdinalNumberPattern = /^(\d+)(-?(rë|të|t))?/i;
 const parseOrdinalNumberPattern = /\d+/i;
 
 const matchEraPatterns = {
-  narrow: /^(p|m)/i,
-  abbreviated: /^(b\.?\s?c\.?|b\.?\s?c\.?\s?e\.?|a\.?\s?d\.?|c\.?\s?e\.?)/i,
+  narrow: /^(p\.?\s?k\.?|mb\.?\s?k\.?)/i,
+  abbreviated: /^(p\.?\s?k\.?|mb\.?\s?k\.?)/i,
   wide: /^(para krishtit|mbas krishtit)/i,
 };
 const parseEraPatterns = {
-  any: [/^b/i, /^(p|m)/i] as const,
+  any: [/^p/i, /^m/i] as const,
 };
 
 const matchQuarterPatterns = {
   narrow: /^[1234]/i,
-  abbreviated: /^q[1234]/i,
-  wide: /^[1234]-mujori (i{1,3}|iv)/i,
+  abbreviated: /^tremujori (iv|i{1,3})/i,
+  wide: /^tremujori i (parë|dytë|tretë|katërt|[1234]-(rë|të|t))/i,
 };
 const parseQuarterPatterns = {
-  any: [/1/i, /2/i, /3/i, /4/i] as const,
+  any: [
+    /(^|\s)(i|parë|1(-rë)?)$/i,
+    /(^|\s)(ii|dytë|2(-të)?)$/i,
+    /(^|\s)(iii|tretë|3(-të)?)$/i,
+    /(^|\s)(iv|katërt|4(-t)?)$/i,
+  ] as const,
 };
 
 const matchMonthPatterns = {
-  narrow: /^[jsmpqkftnd]/i,
-  abbreviated: /^(jan|shk|mar|pri|maj|qer|kor|gus|sht|tet|nën|dhj)/i,
+  narrow: /^(sh|dh|[jsmpqkgtnd])/i,
+  abbreviated: /^(jan|shk|mar|pri|maj|qer|korr?|gush?|sht|tet|nën|dhj)/i,
   wide: /^(janar|shkurt|mars|prill|maj|qershor|korrik|gusht|shtator|tetor|nëntor|dhjetor)/i,
 };
 const parseMonthPatterns = {
@@ -61,30 +66,37 @@ const parseMonthPatterns = {
 };
 
 const matchDayPatterns = {
-  narrow: /^[dhmeps]/i,
-  short: /^(di|hë|ma|më|en|pr|sh)/i,
+  narrow: /^(sh|[dhmeps])/i,
+  short: /^(die|hën|mar|mër|enj|pre|sht|di|hë|ma|më|en|pr|sh)/i,
   abbreviated: /^(die|hën|mar|mër|enj|pre|sht)/i,
-  wide: /^(dielë|hënë|martë|mërkurë|enjte|premte|shtunë)/i,
+  wide: /^(e\s+)?(dielë?|hënë|martë|mërkurë|enjte|premte|shtunë)/i,
 };
 const parseDayPatterns = {
   narrow: [/^d/i, /^h/i, /^m/i, /^m/i, /^e/i, /^p/i, /^s/i] as const,
-  any: [/^d/i, /^h/i, /^ma/i, /^më/i, /^e/i, /^p/i, /^s/i] as const,
+  any: [
+    /^(e\s+)?d/i,
+    /^(e\s+)?h/i,
+    /^(e\s+)?ma/i,
+    /^(e\s+)?më/i,
+    /^(e\s+)?en/i,
+    /^(e\s+)?p/i,
+    /^(e\s+)?s/i,
+  ] as const,
 };
 
 const matchDayPeriodPatterns = {
-  narrow: /^(p|m|me|në (mëngjes|mbasdite|mbrëmje|mesnatë))/i,
-  any: /^([pm]\.?\s?d\.?|drek|në (mëngjes|mbasdite|mbrëmje|mesnatë))/i,
+  any: /^([pm]\.?\s?d\.?|(e\s+)?(mesnat(ës|ë)|mesdit(ës|ë)|mëngjes(it)?|paradit(es|e)|pasdit(es|e)|mbrëmj(es|e)|nat(ës|ë)))/i,
 };
 const parseDayPeriodPatterns = {
   any: {
-    am: /^p/i,
-    pm: /^m/i,
-    midnight: /^me/i,
-    noon: /^dr/i,
+    am: /^(p\.?\s?d|(e\s+)?paradit)/i,
+    pm: /^(m\.?\s?d|(e\s+)?pasdit)/i,
+    midnight: /mesnat/i,
+    noon: /mesdit/i,
     morning: /mëngjes/i,
-    afternoon: /mbasdite/i,
-    evening: /mbrëmje/i,
-    night: /natë/i,
+    afternoon: /pasdit/i,
+    evening: /mbrëmj/i,
+    night: /nat/i,
   },
 };
 
