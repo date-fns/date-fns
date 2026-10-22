@@ -32,6 +32,7 @@ export interface ParseJSONOptions<
  * - A `number` will be treated as a timestamp
  *
  * Any other input type or invalid date strings will return an `Invalid Date`.
+ * The entire string must match a supported format; surrounding text is not accepted.
  *
  * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
  *
@@ -45,7 +46,7 @@ export function parseJSON<ResultDate extends Date = Date>(
   options?: ParseJSONOptions<ResultDate> | undefined,
 ): ResultDate {
   const parts = dateStr.match(
-    /(\d{4})-(\d{2})-(\d{2})[T ](\d{2}):(\d{2}):(\d{2})(?:\.(\d{0,7}))?(?:Z|(.)(\d{2}):?(\d{2})?)?/,
+    /^(\d{4})-(\d{2})-(\d{2})[T ](\d{2}):(\d{2}):(\d{2})(?:\.(\d{0,7}))?(?:Z|([+-])(\d{2}):?(\d{2})?)?$/,
   );
 
   if (!parts) return toDate(NaN, options?.in);
