@@ -333,6 +333,83 @@ describe("format", { concurrent: false }, () => {
       const result = format(date, "I Io II");
       expect(result).toBe("14 14th 14");
     });
+
+    describe("week of month", () => {
+      it("works as expected", () => {
+        const result = format(new Date(2017, 10 /* Nov */, 9), "W Wo WW");
+        expect(result).toBe("2 2nd 02");
+      });
+
+      it("returns week 1 for the first day of the month", () => {
+        const result = format(new Date(2017, 10 /* Nov */, 1), "W");
+        expect(result).toBe("1");
+      });
+
+      it("returns the week of the month for the last day of the month", () => {
+        const result = format(new Date(2017, 10 /* Nov */, 30), "W");
+        expect(result).toBe("5");
+      });
+
+      it("allows to specify `weekStartsOn` in options", () => {
+        const result = format(new Date(2017, 9 /* Oct */, 31), "W", {
+          weekStartsOn: 1,
+        });
+        expect(result).toBe("6");
+      });
+
+      it("allows to specify which day is the first day of the week in locale", () => {
+        const customLocale = {
+          options: { weekStartsOn: 1 as const },
+          localize: {
+            ordinalNumber: (n: number) => String(n),
+          },
+        };
+        const result = format(new Date(2017, 9 /* Oct */, 31), "W", {
+          // @ts-expect-error - It's ok to have incomplete locale
+          locale: customLocale,
+        });
+        expect(result).toBe("6");
+      });
+
+      it("options.weekStartsOn overwrites the first day of the week specified in locale", () => {
+        const customLocale = {
+          options: { weekStartsOn: 0 as const },
+          localize: {
+            ordinalNumber: (n: number) => String(n),
+          },
+        };
+        const result = format(new Date(2017, 9 /* Oct */, 31), "W", {
+          weekStartsOn: 1,
+          // @ts-expect-error - It's ok to have incomplete locale
+          locale: customLocale,
+        });
+        expect(result).toBe("6");
+      });
+
+      it("uses locale ordinalNumber with week unit", () => {
+        const customLocale = {
+          localize: {
+            ordinalNumber: (num: number, options?: { unit?: string }) => {
+              return `${num}-${options?.unit}`;
+            },
+          },
+        };
+        const result = format(new Date(2017, 10 /* Nov */, 9), "Wo", {
+          // @ts-expect-error - It's ok to have incomplete locale
+          locale: customLocale,
+        });
+        expect(result).toBe("2-week");
+      });
+
+      it("formats with other tokens and handles escaped 'W'", () => {
+        const result = format(new Date(2017, 10 /* Nov */, 9), "yyyy-'W'WW-dd");
+        expect(result).toBe("2017-W02-09");
+      });
+
+      it("throws RangeError if the time value is invalid", () => {
+        expect(() => format(new Date(NaN), "W Wo WW")).toThrow(RangeError);
+      });
+    });
   });
 
   describe("day", () => {

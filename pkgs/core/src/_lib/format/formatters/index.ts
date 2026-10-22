@@ -2,6 +2,7 @@ import { getDayOfYear } from "../../../getDayOfYear/index.ts";
 import { getISOWeek } from "../../../getISOWeek/index.ts";
 import { getISOWeekYear } from "../../../getISOWeekYear/index.ts";
 import { getWeek } from "../../../getWeek/index.ts";
+import { getWeekOfMonth } from "../../../getWeekOfMonth/index.ts";
 import { getWeekYear } from "../../../getWeekYear/index.ts";
 import type { LocaleDayPeriod, Localize } from "../../../locale/types.ts";
 import type {
@@ -61,7 +62,7 @@ type Formatter = (
  * |  t! | Seconds timestamp              |  T! | Milliseconds timestamp         |
  * |  u  | Extended year                  |  U* | Cyclic year                    |
  * |  v* | Timezone (generic non-locat.)  |  V* | Timezone (location)            |
- * |  w  | Local week of year             |  W* | Week of month                  |
+ * |  w  | Local week of year             |  W  | Week of month                  |
  * |  x  | Timezone (ISO-8601 w/o Z)      |  X  | Timezone (ISO-8601)            |
  * |  y  | Year (abs)                     |  Y  | Local week-numbering year      |
  * |  z  | Timezone (specific non-locat.) |  Z* | Timezone (aliases)             |
@@ -294,6 +295,17 @@ export const formatters: { [token: string]: Formatter } = {
     const week = getWeek(date, options);
 
     if (token === "wo") {
+      return localize.ordinalNumber(week, { unit: "week" });
+    }
+
+    return addLeadingZeros(week, token.length);
+  },
+
+  // Week of month
+  W: function (date, token, localize, options) {
+    const week = getWeekOfMonth(date, options);
+
+    if (token === "Wo") {
       return localize.ordinalNumber(week, { unit: "week" });
     }
 
