@@ -1743,6 +1743,15 @@ describe("parse", () => {
         );
         expect(result).toEqual(new Date("2016-11-25T16:38:38.123+05:00"));
       });
+
+      it("returns `Invalid Date` for 'Z' (unlike the uppercase X token, x does not accept the UTC designator)", () => {
+        const result = parse(
+          "2016-11-25T16:38:38.123Z",
+          "yyyy-MM-dd'T'HH:mm:ss.SSSx",
+          referenceDate,
+        );
+        expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
+      });
     });
 
     describe("xx", () => {
@@ -1763,6 +1772,15 @@ describe("parse", () => {
         );
         expect(result).toEqual(new Date("2016-11-25T16:38:38.123Z"));
       });
+
+      it("returns `Invalid Date` for 'Z'", () => {
+        const result = parse(
+          "2016-11-25T16:38:38.123Z",
+          "yyyy-MM-dd'T'HH:mm:ss.SSSxx",
+          referenceDate,
+        );
+        expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
+      });
     });
 
     describe("xxx", () => {
@@ -1782,6 +1800,15 @@ describe("parse", () => {
           referenceDate,
         );
         expect(result).toEqual(new Date("2016-11-25T16:38:38.123Z"));
+      });
+
+      it("returns `Invalid Date` for 'Z'", () => {
+        const result = parse(
+          "2016-11-25T16:38:38.123Z",
+          "yyyy-MM-dd'T'HH:mm:ss.SSSxxx",
+          referenceDate,
+        );
+        expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
       });
     });
 
