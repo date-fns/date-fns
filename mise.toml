@@ -1,6 +1,11 @@
 monorepo_root = true
 [monorepo]
-config_roots = ["pkgs/*", "pkgs/*/examples", "pkgs/*/examples/*"]
+config_roots = [
+  "pkgs/*",
+  "pkgs/*/examples",
+  "pkgs/*/examples/*",
+  "pkgs/*/perf/*",
+]
 
 [tools]
 # Stack

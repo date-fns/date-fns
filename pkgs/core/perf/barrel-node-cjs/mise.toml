@@ -1,0 +1,12 @@
+[tasks."node/build"]
+run = "node build-node.ts"
+sources = ["build-node.ts", "mise.toml"]
+outputs = [".node/out/Release/node", ".node/.git/benchmark-build.json"]
+
+[tasks."node/build:fetch"]
+description = "Fetch the latest Node.js PR revision and rebuild"
+run = "mise run --force //pkgs/core/perf/barrel-node-cjs:node/build"
+
+[tasks.run]
+depends = ["node/build"]
+run = "node run.ts"
