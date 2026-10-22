@@ -95,6 +95,27 @@ describe("addBusinessDays", () => {
     assertType<assertType.Equal<UTCDate, typeof result>>(true);
   });
 
+  it("preserves UTCDate when the given amount is NaN", () => {
+    const date = new UTCDate(2024, 0, 1);
+    const result = addBusinessDays(date, NaN);
+
+    expect(result).toBeInstanceOf(UTCDate);
+    expect(result.getTime()).toBeNaN();
+    expect(date.getTime()).not.toBeNaN();
+    assertType<assertType.Equal<UTCDate, typeof result>>(true);
+  });
+
+  it("preserves TZDate and its time zone when the given amount is NaN", () => {
+    const date = new TZDate(2024, 0, 1, "Asia/Singapore");
+    const result = addBusinessDays(date, NaN);
+
+    expect(result).toBeInstanceOf(TZDate);
+    expect(result.getTime()).toBeNaN();
+    expect(result.timeZone).toBe("Asia/Singapore");
+    expect(date.getTime()).not.toBeNaN();
+    assertType<assertType.Equal<TZDate, typeof result>>(true);
+  });
+
   describe("context", () => {
     it("allows to specify the context", () => {
       expect(
@@ -125,6 +146,17 @@ describe("addBusinessDays", () => {
         in: tz("Asia/Tokyo"),
       });
       expect(result).toBeInstanceOf(TZDate);
+      assertType<assertType.Equal<TZDate, typeof result>>(true);
+    });
+
+    it("uses the context date type when the given amount is NaN", () => {
+      const result = addBusinessDays(new UTCDate(2024, 0, 1), NaN, {
+        in: tz("Asia/Tokyo"),
+      });
+
+      expect(result).toBeInstanceOf(TZDate);
+      expect(result.getTime()).toBeNaN();
+      expect(result.timeZone).toBe("Asia/Tokyo");
       assertType<assertType.Equal<TZDate, typeof result>>(true);
     });
   });

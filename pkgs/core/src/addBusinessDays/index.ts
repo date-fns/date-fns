@@ -51,7 +51,7 @@ export function addBusinessDays<
   const _date = toDate(date, options?.in);
   const startedOnWeekend = isWeekend(_date, options);
 
-  if (isNaN(amount)) return constructFrom(options?.in, NaN);
+  if (isNaN(amount)) return constructFrom(options?.in || date, NaN);
 
   const hours = _date.getHours();
   const sign = amount < 0 ? -1 : 1;
