@@ -274,6 +274,91 @@ describe("formatDistance", () => {
     }
   });
 
+  describe("DST", () => {
+    it.each([0, 3])(
+      "formats 24 elapsed hours in month %i as a day",
+      (month) => {
+        const start = new TZDate(2018, month, 1, 0, 0, 0, "Australia/Sydney");
+        const end = new TZDate(
+          +start + 24 * 60 * 60 * 1000,
+          "Australia/Sydney",
+        );
+        for (const includeSeconds of [false, true]) {
+          const options = { includeSeconds };
+          expect(formatDistance(start, end, options)).toBe("1 day");
+          expect(formatDistance(end, start, options)).toBe("1 day");
+          expect(
+            formatDistance(start, end, { ...options, addSuffix: true }),
+          ).toBe("1 day ago");
+          expect(
+            formatDistance(end, start, { ...options, addSuffix: true }),
+          ).toBe("in 1 day");
+        }
+      },
+    );
+
+    it.each([
+      ["2018-04-01T02:59:59+11:00", "2018-04-01T02:00:00+10:00"],
+      ["2018-10-07T01:59:59+10:00", "2018-10-07T03:00:00+11:00"],
+    ])("formats one elapsed second across %s to %s", (earlier, later) => {
+      for (const includeSeconds of [false, true]) {
+        const options = { in: tz("Australia/Sydney"), includeSeconds };
+        const expected = includeSeconds
+          ? "less than 5 seconds"
+          : "less than a minute";
+        expect(formatDistance(earlier, later, options)).toBe(expected);
+        expect(formatDistance(later, earlier, options)).toBe(expected);
+        expect(
+          formatDistance(earlier, later, { ...options, addSuffix: true }),
+        ).toBe(`${expected} ago`);
+        expect(
+          formatDistance(later, earlier, { ...options, addSuffix: true }),
+        ).toBe(`in ${expected}`);
+      }
+    });
+
+    it.each([
+      [
+        "Australia/Sydney",
+        "2018-04-01T00:00+11:00",
+        "2018-04-02T00:00+10:00",
+        "1 day",
+      ],
+      [
+        "Australia/Sydney",
+        "2018-10-07T00:00+10:00",
+        "2018-10-08T00:00+11:00",
+        "about 23 hours",
+      ],
+      [
+        "Australia/Sydney",
+        "2018-03-31T00:00+11:00",
+        "2018-04-03T00:00+10:00",
+        "3 days",
+      ],
+      [
+        "Australia/Sydney",
+        "2018-10-07T00:00+10:00",
+        "2018-11-07T00:00+11:00",
+        "about 1 month",
+      ],
+      [
+        "Australia/Sydney",
+        "2018-01-01T00:00+11:00",
+        "2019-01-01T00:00+11:00",
+        "about 1 year",
+      ],
+      ["UTC", "2018-04-01T00:00Z", "2018-04-02T00:00Z", "1 day"],
+    ])(
+      "formats calendar intervals in %s from %s to %s",
+      (zone, start, end, expected) => {
+        const options = { in: tz(zone) };
+        expect(formatDistance(start, end, options)).toBe(expected);
+        expect(formatDistance(end, start, options)).toBe(expected);
+      },
+    );
+  });
+
   describe("context", () => {
     it("allows to specify the context", () => {
       expect(
