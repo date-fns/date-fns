@@ -39,6 +39,9 @@ export function transpose<InputDate extends Date, ResultDate extends Date>(
   const date_ = isConstructor(constructor)
     ? new constructor(0)
     : constructFrom(constructor, 0);
+
+  if (isNaN(+date)) return constructFrom(date_, NaN);
+
   date_.setFullYear(date.getFullYear(), date.getMonth(), date.getDate());
   date_.setHours(
     date.getHours(),
