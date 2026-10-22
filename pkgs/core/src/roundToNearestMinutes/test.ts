@@ -294,6 +294,15 @@ describe("roundToNearestMinutes", () => {
       expect(result).toBeInstanceOf(TZDate);
       assertType<assertType.Equal<TZDate, typeof result>>(true);
     });
+
+    it("resolves the context date type when nearestTo is out of range", () => {
+      const result = roundToNearestMinutes("2014-09-01T00:00:00Z", {
+        nearestTo: 31,
+        in: tz("Asia/Tokyo"),
+      });
+      expect(result).toBeInstanceOf(TZDate);
+      expect(isNaN(+result)).toBe(true);
+    });
   });
 });
 
