@@ -54,6 +54,9 @@ function isConstructor(
 ): constructor is GenericDateConstructor {
   return (
     typeof constructor === "function" &&
-    constructor.prototype?.constructor === constructor
+    // Detect a date constructor by the methods on its prototype rather than by
+    // `prototype.constructor`, which fake timers (e.g. Jest, Vitest) reassign to
+    // the native Date, making the constructor look like a plain function.
+    typeof constructor.prototype?.setFullYear === "function"
   );
 }
