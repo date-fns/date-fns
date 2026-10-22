@@ -247,6 +247,26 @@ describe("roundToNearestHours", () => {
     });
   });
 
+  it("returns `Invalid Date` if `nearestTo` is out of the [1, 12] range", () => {
+    // `NearestHours` goes from 1 to 12; characterizes current behavior for
+    // out-of-range values; not asserting correctness
+    const resultTooLow = roundToNearestHours(makeDate(15, 10), {
+      // @ts-expect-error - We want to pass an invalid value here
+      nearestTo: 0,
+    });
+    expect(resultTooLow instanceof Date && isNaN(resultTooLow.getTime())).toBe(
+      true,
+    );
+
+    const resultTooHigh = roundToNearestHours(makeDate(15, 10), {
+      // @ts-expect-error - We want to pass an invalid value here
+      nearestTo: 13,
+    });
+    expect(
+      resultTooHigh instanceof Date && isNaN(resultTooHigh.getTime()),
+    ).toBe(true);
+  });
+
   it("resolves the date type by default", () => {
     const result = roundToNearestHours(Date.now());
     expect(result).toBeInstanceOf(Date);
