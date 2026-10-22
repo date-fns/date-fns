@@ -151,6 +151,7 @@
     "./src/isWednesday/index.ts",
     "./src/isWeekend/index.ts",
     "./src/isWithinInterval/index.ts",
+    "./src/isWorkingDay/index.ts",
     "./src/isYesterday/index.ts",
     "./src/lastDayOfDecade/index.ts",
     "./src/lastDayOfISOWeek/index.ts",

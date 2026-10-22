@@ -149,6 +149,7 @@ export * from "./isValid/index.ts";
 export * from "./isWednesday/index.ts";
 export * from "./isWeekend/index.ts";
 export * from "./isWithinInterval/index.ts";
+export * from "./isWorkingDay/index.ts";
 export * from "./isYesterday/index.ts";
 export * from "./lastDayOfDecade/index.ts";
 export * from "./lastDayOfISOWeek/index.ts";

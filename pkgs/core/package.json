@@ -172,6 +172,7 @@
     "./isWednesday": "./src/isWednesday/index.ts",
     "./isWeekend": "./src/isWeekend/index.ts",
     "./isWithinInterval": "./src/isWithinInterval/index.ts",
+    "./isWorkingDay": "./src/isWorkingDay/index.ts",
     "./isYesterday": "./src/isYesterday/index.ts",
     "./lastDayOfDecade": "./src/lastDayOfDecade/index.ts",
     "./lastDayOfISOWeek": "./src/lastDayOfISOWeek/index.ts",
@@ -503,6 +504,8 @@
     "./fp/isWeekendWithOptions": "./fp/src/isWeekendWithOptions/index.ts",
     "./fp/isWithinInterval": "./fp/src/isWithinInterval/index.ts",
     "./fp/isWithinIntervalWithOptions": "./fp/src/isWithinIntervalWithOptions/index.ts",
+    "./fp/isWorkingDay": "./fp/src/isWorkingDay/index.ts",
+    "./fp/isWorkingDayWithOptions": "./fp/src/isWorkingDayWithOptions/index.ts",
     "./fp/lastDayOfDecade": "./fp/src/lastDayOfDecade/index.ts",
     "./fp/lastDayOfDecadeWithOptions": "./fp/src/lastDayOfDecadeWithOptions/index.ts",
     "./fp/lastDayOfISOWeek": "./fp/src/lastDayOfISOWeek/index.ts",
@@ -2291,6 +2294,16 @@
         "import": {
           "types": "./isWithinInterval.d.ts",
           "default": "./isWithinInterval.js"
+        }
+      },
+      "./isWorkingDay": {
+        "require": {
+          "types": "./isWorkingDay.d.cts",
+          "default": "./isWorkingDay.cjs"
+        },
+        "import": {
+          "types": "./isWorkingDay.d.ts",
+          "default": "./isWorkingDay.js"
         }
       },
       "./isYesterday": {
@@ -5601,6 +5614,26 @@
         "import": {
           "types": "./fp/isWithinIntervalWithOptions.d.ts",
           "default": "./fp/isWithinIntervalWithOptions.js"
+        }
+      },
+      "./fp/isWorkingDay": {
+        "require": {
+          "types": "./fp/isWorkingDay.d.cts",
+          "default": "./fp/isWorkingDay.cjs"
+        },
+        "import": {
+          "types": "./fp/isWorkingDay.d.ts",
+          "default": "./fp/isWorkingDay.js"
+        }
+      },
+      "./fp/isWorkingDayWithOptions": {
+        "require": {
+          "types": "./fp/isWorkingDayWithOptions.d.cts",
+          "default": "./fp/isWorkingDayWithOptions.cjs"
+        },
+        "import": {
+          "types": "./fp/isWorkingDayWithOptions.d.ts",
+          "default": "./fp/isWorkingDayWithOptions.js"
         }
       },
       "./fp/lastDayOfDecade": {
