@@ -9,8 +9,8 @@ const eraValues = {
 
 const quarterValues = {
   narrow: ["1", "2", "3", "4"] as const,
-  abbreviated: ["第一刻", "第二刻", "第三刻", "第四刻"] as const,
-  wide: ["第一刻鐘", "第二刻鐘", "第三刻鐘", "第四刻鐘"] as const,
+  abbreviated: ["第一季", "第二季", "第三季", "第四季"] as const,
+  wide: ["第一季度", "第二季度", "第三季度", "第四季度"] as const,
 };
 
 const monthValues = {
@@ -149,19 +149,10 @@ const formattingDayPeriodValues = {
 
 const ordinalNumber: LocalizeFn<number> = (dirtyNumber, options) => {
   const number = Number(dirtyNumber);
-
-  switch (options?.unit) {
-    case "date":
-      return number + "日";
-    case "hour":
-      return number + "時";
-    case "minute":
-      return number + "分";
-    case "second":
-      return number + "秒";
-    default:
-      return "第 " + number;
-  }
+  // Chinese numbers do not have ordinal numbers (st, nd, rd...).
+  // Instead, we should keep it clean. If developers need unit they
+  // should add it by them self
+  return "第" + number;
 };
 
 export const localize: Localize = {
