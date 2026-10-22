@@ -19,11 +19,13 @@ export class TZDate extends TZDateMini {
   }
 
   toString() {
+    if (isNaN(this.getTime())) return "Invalid Date";
     // "Tue Aug 13 2024 07:50:19 GMT+0800 (Singapore Standard Time)";
     return `${this.toDateString()} ${this.toTimeString()}`;
   }
 
   toDateString() {
+    if (isNaN(this.getTime())) return "Invalid Date";
     // toUTCString returns RFC 7231 ("Mon, 12 Aug 2024 23:36:08 GMT")
     const [day, date, month, year] = this.internal.toUTCString().split(" ");
     // "Tue Aug 13 2024"
@@ -31,6 +33,7 @@ export class TZDate extends TZDateMini {
   }
 
   toTimeString() {
+    if (isNaN(this.getTime())) return "Invalid Date";
     // toUTCString returns RFC 7231 ("Mon, 12 Aug 2024 23:36:08 GMT")
     const time = this.internal.toUTCString().split(" ")[4];
     const [sign, hours, minutes] = this.tzComponents();
