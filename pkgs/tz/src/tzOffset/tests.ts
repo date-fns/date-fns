@@ -67,6 +67,7 @@ describe("tzOffset", () => {
     it("works with ±HH:MM", () => {
       expect(tzOffset("-05:00", date)).toBe(-300);
       expect(tzOffset("-02:30", date)).toBe(-150);
+      expect(tzOffset("-00:30", date)).toBe(-30);
       expect(tzOffset("+05:00", date)).toBe(300);
       expect(tzOffset("+02:30", date)).toBe(150);
       expect(tzOffset("+05:00", new Date("1880-01-15T00:00:00Z"))).toBe(300);
@@ -75,6 +76,7 @@ describe("tzOffset", () => {
     it("works with ±HHMM", () => {
       expect(tzOffset("-0500", date)).toBe(-300);
       expect(tzOffset("-0230", date)).toBe(-150);
+      expect(tzOffset("-0030", date)).toBe(-30);
       expect(tzOffset("+0500", date)).toBe(300);
       expect(tzOffset("+0230", date)).toBe(150);
       expect(tzOffset("+0230", new Date("1880-01-15T00:00:00Z"))).toBe(150);
@@ -100,6 +102,12 @@ describe("tzOffset", () => {
       const date = new Date("2024-04-06T16:30:00.000Z");
       expect(tzOffset("Australia/Adelaide", dst)).toBe(630);
       expect(tzOffset("Australia/Adelaide", date)).toBe(570);
+    });
+
+    it("works with negative offsets of less than an hour", () => {
+      // Liberia used UTC-00:44:30 until January 1972
+      const date = new Date("1970-01-15T00:00:00Z");
+      expect(tzOffset("Africa/Monrovia", date)).toBe(-44.5);
     });
   });
 
