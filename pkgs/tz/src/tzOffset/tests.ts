@@ -56,6 +56,19 @@ describe("tzOffset", () => {
     expect(tzOffset("America/New_York", new Date(NaN))).toBe(NaN);
   });
 
+  it.each([
+    "prefix+02:30",
+    "+02:30suffix",
+    "+24:00",
+    "-25",
+    "+12:60",
+    "+1260",
+    "+02:",
+    "+02\n",
+  ])("rejects the malformed offset %s", (timeZone) => {
+    expect(tzOffset(timeZone, new Date("2020-01-15T00:00:00Z"))).toBeNaN();
+  });
+
   describe("time zone name formats", () => {
     const date = new Date("2020-01-15T00:00:00Z");
 
