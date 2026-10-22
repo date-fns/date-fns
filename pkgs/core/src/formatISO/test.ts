@@ -1,6 +1,8 @@
 import { tz } from "@date-fns/tz";
+import { UTCDate } from "@date-fns/utc";
 import { describe, expect, it, vi } from "vitest";
 import { generateOffset } from "../_lib/test/index.ts";
+import { parseISO } from "../parseISO/index.ts";
 import { formatISO } from "./index.ts";
 
 describe("formatISO", () => {
@@ -37,6 +39,52 @@ describe("formatISO", () => {
       `20191004T123013${tzOffsetBasic}`,
     );
   });
+
+  it.each([
+    { year: -100000, formattedYear: "-100000" },
+    { year: -10000, formattedYear: "-010000" },
+    { year: -1, formattedYear: "-000001" },
+    { year: 0, formattedYear: "0000" },
+    { year: 1, formattedYear: "0001" },
+    { year: 9999, formattedYear: "9999" },
+    { year: 10000, formattedYear: "+010000" },
+    { year: 100000, formattedYear: "+100000" },
+  ])("formats year $year", ({ year, formattedYear }) => {
+    const date = new UTCDate(0);
+    date.setFullYear(year, 0 /* Jan */, 2);
+    date.setHours(12, 30, 45);
+
+    expect(formatISO(date)).toBe(`${formattedYear}-01-02T12:30:45Z`);
+    expect(formatISO(date, { format: "basic" })).toBe(
+      `${formattedYear}0102T123045Z`,
+    );
+    expect(formatISO(date, { representation: "date" })).toBe(
+      `${formattedYear}-01-02`,
+    );
+    expect(formatISO(date, { format: "basic", representation: "date" })).toBe(
+      `${formattedYear}0102`,
+    );
+    expect(formatISO(date, { representation: "time" })).toBe("12:30:45Z");
+    expect(formatISO(date, { format: "basic", representation: "time" })).toBe(
+      "123045Z",
+    );
+    expect(parseISO(formatISO(date)).getTime()).toBe(date.getTime());
+    expect(parseISO(formatISO(date, { format: "basic" })).getTime()).toBe(
+      date.getTime(),
+    );
+  });
+
+  it.each([-8640000000000000, 8640000000000000])(
+    "round-trips the Date limit %i through parseISO",
+    (time) => {
+      const date = new UTCDate(time);
+      expect(formatISO(date)).toBe(date.toISOString().replace(".000", ""));
+      expect(parseISO(formatISO(date)).getTime()).toBe(time);
+      expect(parseISO(formatISO(date, { format: "basic" })).getTime()).toBe(
+        time,
+      );
+    },
+  );
 
   it("formats only date", () => {
     const date = new Date(2019, 11 /* Dec */, 11, 1, 0, 0, 789);
