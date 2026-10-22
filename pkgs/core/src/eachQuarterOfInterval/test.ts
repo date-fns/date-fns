@@ -245,5 +245,33 @@ describe("eachQuarterOfInterval", () => {
       const result = eachQuarterOfInterval(interval, { step: NaN });
       expect(result).toEqual([]);
     });
+
+    it("truncates a fractional step toward zero", () => {
+      const result = eachQuarterOfInterval(interval, { step: 1.9 });
+      expect(result).toEqual([
+        new Date(2014, 0 /* Jan */, 1),
+        new Date(2014, 3 /* Apr */, 1),
+        new Date(2014, 6 /* Jul */, 1),
+      ]);
+    });
+
+    it("returns only starts of quarters for a fractional step", () => {
+      const result = eachQuarterOfInterval(
+        {
+          start: new Date(2014, 0 /* Jan */, 1),
+          end: new Date(2015, 11 /* Dec */, 31),
+        },
+        { step: 2.9 },
+      );
+      // Every returned date must be the first day of a quarter month.
+      expect(
+        result.every((date) => date.getDate() === 1 && date.getMonth() % 3 === 0),
+      ).toBe(true);
+    });
+
+    it("returns empty array if `options.step` truncates to zero", () => {
+      expect(eachQuarterOfInterval(interval, { step: 0.5 })).toEqual([]);
+      expect(eachQuarterOfInterval(interval, { step: -0.5 })).toEqual([]);
+    });
   });
 });
