@@ -77,7 +77,10 @@ export function eachDayOfInterval<
   const date = reversed ? end : start;
   date.setHours(0, 0, 0, 0);
 
-  let step = options?.step ?? 1;
+  // Truncate the step toward zero so fractional values resolve to whole
+  // days. Without this, a step like 0.5 is dropped by `Date.setDate`,
+  // leaving the date unchanged and causing an infinite loop. See #4336.
+  let step = Math.trunc(options?.step ?? 1);
   if (!step) return [];
   if (step < 0) {
     step = -step;

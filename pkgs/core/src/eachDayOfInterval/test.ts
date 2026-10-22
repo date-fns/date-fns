@@ -163,6 +163,21 @@ describe("eachDayOfInterval", () => {
       const result = eachDayOfInterval(interval, { step: NaN });
       expect(result).toEqual([]);
     });
+
+    it("truncates a fractional step toward zero (regression for #4336)", () => {
+      const result = eachDayOfInterval(interval, { step: 2.9 });
+      expect(result).toEqual([
+        new Date(2014, 9 /* Oct */, 6),
+        new Date(2014, 9 /* Oct */, 8),
+        new Date(2014, 9 /* Oct */, 10),
+        new Date(2014, 9 /* Oct */, 12),
+      ]);
+    });
+
+    it("treats a step that truncates to zero as empty instead of looping forever (regression for #4336)", () => {
+      expect(eachDayOfInterval(interval, { step: 0.5 })).toEqual([]);
+      expect(eachDayOfInterval(interval, { step: -0.5 })).toEqual([]);
+    });
   });
 
   it("resolves the date type by default", () => {

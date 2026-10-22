@@ -7,7 +7,10 @@ export function tpEachDayOfInterval(
   const endDate = reversed ? start : end;
   let date = (reversed ? end : start).startOfDay();
 
-  let step = stepOption ?? 1;
+  // Truncate the step toward zero so fractional values resolve to whole
+  // days, matching the Date implementation and avoiding a RangeError from
+  // Temporal's `add`, which rejects non-integer duration fields. See #4336.
+  let step = Math.trunc(stepOption ?? 1);
   if (!step) return [];
   if (step < 0) {
     step = -step;
