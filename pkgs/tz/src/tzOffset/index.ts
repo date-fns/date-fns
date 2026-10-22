@@ -29,7 +29,7 @@ export function tzOffset(timeZone: string | undefined, date: Date): number {
     ).format);
 
     // Get `"-08:00"`.
-    const offsetStr = format(date).split("GMT")[1]!;
+    const offsetStr = format(date).split(/GMT|UTC/)[1]!;
 
     // Avoid parsing the same offset string.
     if (offsetStr in offsetCache) return offsetCache[offsetStr]!;

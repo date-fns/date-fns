@@ -123,6 +123,12 @@ describe("tzOffset", () => {
       expect(tzOffset("Asia/Manila", date)).toBe(480);
     });
 
+    it("reads offset when format uses UTC instead of GMT", () => {
+      mockFormat.mockReturnValue("5 UTC+08:00");
+      const date = new Date("2020-01-15T00:00:00Z");
+      expect(tzOffset("Asia/Shanghai", date)).toBe(480);
+    });
+
     it("reads offset from polyfill", () => {
       mockFormat.mockReturnValue("5:53 PM GMT-9:30");
       const date = new Date("2020-01-15T00:00:00Z");
