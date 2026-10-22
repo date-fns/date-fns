@@ -14,7 +14,8 @@ export interface FromUnixTimeOptions<
  * @summary Create a date from a Unix timestamp.
  *
  * @description
- * Create a date from a Unix timestamp (in seconds). Decimal values will be discarded.
+ * Create a date from a Unix timestamp (in seconds). Fractional seconds are
+ * preserved as milliseconds.
  *
  * @param unixTime - The given Unix timestamp (in seconds)
  * @param options - An object with options. Allows to pass a context.
