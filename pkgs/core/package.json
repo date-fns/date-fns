@@ -735,6 +735,7 @@
     "./locale/nl-BE": "./locale/src/nl-BE/index.ts",
     "./locale/nn": "./locale/src/nn/index.ts",
     "./locale/oc": "./locale/src/oc/index.ts",
+    "./locale/pa": "./locale/src/pa/index.ts",
     "./locale/pl": "./locale/src/pl/index.ts",
     "./locale/pt": "./locale/src/pt/index.ts",
     "./locale/pt-BR": "./locale/src/pt-BR/index.ts",
@@ -7921,6 +7922,16 @@
         "import": {
           "types": "./locale/oc.d.ts",
           "default": "./locale/oc.js"
+        }
+      },
+      "./locale/pa": {
+        "require": {
+          "types": "./locale/pa.d.cts",
+          "default": "./locale/pa.cjs"
+        },
+        "import": {
+          "types": "./locale/pa.d.ts",
+          "default": "./locale/pa.js"
         }
       },
       "./locale/pl": {
