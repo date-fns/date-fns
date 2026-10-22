@@ -16,7 +16,7 @@ export interface FromUnixTimeOptions<
  * @description
  * Create a date from a Unix timestamp (in seconds). Decimal values will be discarded.
  *
- * @param unixTime - The given Unix timestamp (in seconds)
+ * @param unixTime - The given Unix timestamp (in seconds). Accepts a `number` or `bigint`.
  * @param options - An object with options. Allows to pass a context.
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
@@ -29,8 +29,9 @@ export interface FromUnixTimeOptions<
  * //=> Wed Feb 29 2012 11:45:05
  */
 export function fromUnixTime<DateType extends Date = Date>(
-  unixTime: number,
+  unixTime: number | bigint,
   options?: FromUnixTimeOptions<DateType> | undefined,
 ): DateType {
-  return toDate(unixTime * 1000, options?.in);
+  const timestamp = typeof unixTime === "bigint" ? Number(unixTime) : unixTime;
+  return toDate(timestamp * 1000, options?.in);
 }

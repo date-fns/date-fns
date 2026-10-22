@@ -9,6 +9,11 @@ describe("fromUnixTime", () => {
     expect(result.getTime()).toBe(1330515499000);
   });
 
+  it("returns the date derived from a bigint UNIX timestamp", () => {
+    const result = fromUnixTime(1330515499n);
+    expect(result.getTime()).toBe(1330515499000);
+  });
+
   it("returns invalid if the given timestamp is invalid", () => {
     const result = fromUnixTime(NaN);
     expect(isNaN(result.getTime())).toBe(true);
