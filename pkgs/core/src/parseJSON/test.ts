@@ -53,6 +53,31 @@ describe("parseJSON", () => {
     expect(parsedDate.toISOString()).toBe(date);
   });
 
+  it.each([
+    "0000-01-01T00:00:00.000Z",
+    "0000-02-29T12:34:56.789Z",
+    "0001-01-01T00:00:00.000Z",
+    "0099-12-31T23:59:59.999Z",
+    "0100-01-01T00:00:00.000Z",
+  ])("preserves the year in %s", (date) => {
+    expect(parseJSON(date).toISOString()).toBe(date);
+  });
+
+  it.each([
+    ["0000-01-01T00:30:00+01:00", "-000001-12-31T23:30:00.000Z"],
+    ["0001-01-01T00:30:00+01:00", "0000-12-31T23:30:00.000Z"],
+    ["0099-12-31T23:30:00-01:00", "0100-01-01T00:30:00.000Z"],
+    ["0000-03-01T00:15:00+05:45", "0000-02-29T18:30:00.000Z"],
+  ])("applies the offset to the full year in %s", (date, expected) => {
+    expect(parseJSON(date).toISOString()).toBe(expected);
+  });
+
+  it("preserves low years in SQL dates without a time zone", () => {
+    expect(parseJSON("0001-02-03 04:05:06.1234567").toISOString()).toBe(
+      "0001-02-03T04:05:06.123Z",
+    );
+  });
+
   it("parses a fully formed ISO date with Z without ms", () => {
     const date = "2000-03-15T05:20:10Z";
     const expectedDate = "2000-03-15T05:20:10.000Z";
@@ -136,6 +161,12 @@ describe("parseJSON", () => {
   });
 
   describe("context", () => {
+    it("preserves low years when the context returns a date extension", () => {
+      const result = parseJSON("0001-01-01T00:00:00Z", { in: tz("UTC") });
+      expect(result).toBeInstanceOf(TZDate);
+      expect(+result).toBe(+new Date("0001-01-01T00:00:00Z"));
+    });
+
     it("allows to specify the context", () => {
       expect(
         parseJSON("2024-04-10T07:00:00Z", {
