@@ -15,6 +15,7 @@ export * from "./bn/index.ts";
 export * from "./bs/index.ts";
 export * from "./ca/index.ts";
 export * from "./ckb/index.ts";
+export * from "./cnr/index.ts";
 export * from "./cs/index.ts";
 export * from "./cy/index.ts";
 export * from "./da/index.ts";

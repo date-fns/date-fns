@@ -679,6 +679,7 @@
     "./locale/bs": "./locale/src/bs/index.ts",
     "./locale/ca": "./locale/src/ca/index.ts",
     "./locale/ckb": "./locale/src/ckb/index.ts",
+    "./locale/cnr": "./locale/src/cnr/index.ts",
     "./locale/cs": "./locale/src/cs/index.ts",
     "./locale/cy": "./locale/src/cy/index.ts",
     "./locale/da": "./locale/src/da/index.ts",
@@ -7361,6 +7362,16 @@
         "import": {
           "types": "./locale/ckb.d.ts",
           "default": "./locale/ckb.js"
+        }
+      },
+      "./locale/cnr": {
+        "require": {
+          "types": "./locale/cnr.d.cts",
+          "default": "./locale/cnr.cjs"
+        },
+        "import": {
+          "types": "./locale/cnr.d.ts",
+          "default": "./locale/cnr.js"
         }
       },
       "./locale/cs": {
