@@ -21,7 +21,14 @@ const matchQuarterPatterns = {
   wide: /^quý ([1234]|i{1,3}v?)/i,
 };
 const parseQuarterPatterns = {
-  any: [/(1|i)$/i, /(2|ii)$/i, /(3|iii)$/i, /(4|iv)$/i] as const,
+  // Anchor each numeral on a character that cannot be part of one, so the
+  // trailing "I" of II and III does not satisfy the Q1 pattern first.
+  any: [
+    /(?:^|[^iv])(1|i)$/i,
+    /(?:^|[^iv])(2|ii)$/i,
+    /(?:^|[^iv])(3|iii)$/i,
+    /(?:^|[^iv])(4|iv)$/i,
+  ] as const,
 };
 
 const matchMonthPatterns = {
