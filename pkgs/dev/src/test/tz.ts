@@ -11,6 +11,9 @@ if (!testIana && !testOffset) {
   testIana = true;
   testOffset = true;
 }
+const vitestProjectIdx = args.findIndex((arg) => arg === "--project");
+const vitestProject =
+  (vitestProjectIdx !== -1 && args[vitestProjectIdx + 1]) || null;
 
 const ianaTimeZones = [
   "Africa/Abidjan",
@@ -410,7 +413,7 @@ async function testTimeZone(timeZone: string) {
   // spawn, which simply hangs the system.
   const result = await $({
     nothrow: true,
-  })`VITEST_MAX_WORKERS=1 TZ=${timeZone} pnpm vitest run ${testsPath}`.quiet();
+  })`env VITEST_MAX_WORKERS=1 ${vitestCmd(timeZone)}`.quiet();
   if (result.exitCode) {
     failedTimeZones.push(timeZone);
     console.log(`🔴 ${timeZone}: FAIL`);
@@ -441,15 +444,21 @@ async function testTimeZones(timeZones: string[]) {
     console.log(`🔴 ${failedTimeZones.length} time zones failed:\n`);
 
     failedTimeZones.forEach((timeZone) => {
-      console.log(
-        `- ${timeZone} (\`TZ=${timeZone} pnpm vitest run ${testsPath}\`)`,
-      );
+      console.log(`- ${timeZone} (\`${vitestCmd(timeZone).join(" ")}\`)`);
     });
 
     process.exit(1);
   }
 
   console.log(`🟢 All ${timeZones.length} time zones passed!`);
+}
+
+function vitestCmd(timeZone: string): string[] {
+  const cmd = [`TZ=${timeZone}`, "pnpm", "vitest", "run", testsPath];
+  if (vitestProject) {
+    cmd.push("--project", vitestProject);
+  }
+  return cmd;
 }
 
 function promiseQueue<Type>(

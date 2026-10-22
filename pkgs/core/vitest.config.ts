@@ -4,6 +4,7 @@ import { defineConfig } from "vitest/config";
 export default defineConfig({
   test: {
     name: "core",
+
     projects: [
       {
         test: {
@@ -16,15 +17,26 @@ export default defineConfig({
           isolate: false,
           pool: "forks",
           sequence: { concurrent: true },
+        },
+      },
+
+      {
+        test: {
+          name: "browser",
+
+          include: ["src/**/test.ts"],
+
+          // Speed up tests
+          isolate: false,
 
           browser: {
-            // Enable it via --browser
-            // enabled: true,
+            enabled: true,
             provider: playwright(),
             instances: [{ browser: "chromium" }],
           },
         },
       },
+
       {
         test: {
           name: "temporarily",

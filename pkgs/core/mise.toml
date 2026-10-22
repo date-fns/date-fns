@@ -82,16 +82,16 @@ outputs = ["dist/**/*"]
 depends = ["test/unit", "test/tz"]
 
 [tasks."test/unit"]
-run = "pnpm vitest run"
+run = "pnpm vitest run --project main"
 
 [tasks."test/unit:watch"]
-run = "pnpm vitest"
+run = "pnpm vitest --project main"
 
 [tasks."test/browser"]
-run = "pnpm vitest run --browser"
+run = "pnpm vitest run --project browser"
 
 [tasks."test/browser:watch"]
-run = "pnpm vitest --browser"
+run = "pnpm vitest --project browser"
 
 [tasks."test/node"]
 run = "./scripts/test/node.sh"
@@ -100,13 +100,19 @@ run = "./scripts/test/node.sh"
 run = "./scripts/test/tz.sh"
 
 [tasks."test/tz"]
-run = "pnpm exec date-fns-test-tz ./src/"
+run = "pnpm exec date-fns-test-tz ./src/ --project main"
 
 [tasks."test/tz:offset"]
-run = "pnpm exec date-fns-test-tz ./src/ --offset"
+run = "pnpm exec date-fns-test-tz ./src/ --project main --offset"
 
 [tasks."test/tz:iana"]
-run = "pnpm exec date-fns-test-tz ./src/ --iana"
+run = "pnpm exec date-fns-test-tz ./src/ --project main --iana"
+
+[tasks."test/temporarily"]
+run = "pnpm vitest run --project temporarily"
+
+[tasks."test/temporarily:watch"]
+run = "pnpm vitest --project temporarily"
 
 [tasks."test/locales"]
 run = "node ./scripts/build/localeSnapshots/index.ts --test"
