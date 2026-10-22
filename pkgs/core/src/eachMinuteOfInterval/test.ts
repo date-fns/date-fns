@@ -181,7 +181,7 @@ describe("eachMinuteOfInterval", () => {
 
   it("resolves the end date object type if the start isn't object", () => {
     const interval = {
-      start: Date.now(),
+      start: +new Date("2024-09-01T00:05:00Z"),
       end: new UTCDate("2024-09-01T00:00:00Z"),
     };
     const result = eachMinuteOfInterval(interval);
