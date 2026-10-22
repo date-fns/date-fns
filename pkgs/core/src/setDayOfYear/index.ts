@@ -26,7 +26,7 @@ export interface SetDayOfYearOptions<
  * @returns The new date with the day of the year set
  *
  * @example
- * // Set the 2nd day of the year to 2 July 2014:
+ * // Set the day of the year of 2 July 2014 to the 2nd:
  * const result = setDayOfYear(new Date(2014, 6, 2), 2)
  * //=> Thu Jan 02 2014 00:00:00
  */
