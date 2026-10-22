@@ -29,7 +29,11 @@ await build({
   },
 });
 
-await $`pnpm exec oxfmt ${outDir}`;
+// Pass files explicitly: directory traversal skips ignored build directories.
+const outputFiles = (await readdir(outDir, { recursive: true }))
+  .filter((path) => path.endsWith(`.${extension}`))
+  .map((path) => join(outDir, path));
+await $`pnpm exec oxfmt ${outputFiles}`;
 
 async function listEntries(dir: string): Promise<string[]> {
   const entries = await readdir(dir, { withFileTypes: true });
