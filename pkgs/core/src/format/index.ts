@@ -339,6 +339,11 @@ export interface FormatOptions
  * //=> '2-a de julio 2014'
  *
  * @example
+ * // Include literal text by wrapping it in single quotes:
+ * const result = format(new Date(2014, 6, 2), "'Date:' MM/dd/yyyy")
+ * //=> 'Date: 07/02/2014'
+ *
+ * @example
  * // Escape string by single quote characters:
  * const result = format(new Date(2014, 6, 2, 15), "h 'o''clock'")
  * //=> "3 o'clock"
