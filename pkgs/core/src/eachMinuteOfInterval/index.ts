@@ -78,7 +78,10 @@ export function eachMinuteOfInterval<
   const endTime = reversed ? +start : +end;
   let date = reversed ? end : start;
 
-  let step = options?.step ?? 1;
+  // Truncate the step toward zero so fractional values resolve to whole
+  // minutes. Without this, a step like 0.5 advances by 30 seconds and the
+  // function returns values that aren't starts of minutes.
+  let step = Math.trunc(options?.step ?? 1);
   if (!step) return [];
   if (step < 0) {
     step = -step;
