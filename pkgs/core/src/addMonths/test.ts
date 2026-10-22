@@ -49,6 +49,22 @@ describe("addMonths", () => {
     expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
   });
 
+  it("truncates fractional month amounts toward zero", () => {
+    // See https://github.com/date-fns/date-fns/issues/4346
+    const date = new Date(2026, 2 /* Mar */, 31);
+    expect(addMonths(date, -0.5)).toEqual(new Date(2026, 2 /* Mar */, 31));
+    expect(addMonths(date, -1.5)).toEqual(new Date(2026, 1 /* Feb */, 28));
+    expect(addMonths(date, 0.5)).toEqual(new Date(2026, 2 /* Mar */, 31));
+    expect(addMonths(date, 1.5)).toEqual(new Date(2026, 3 /* Apr */, 30));
+  });
+
+  it("truncates fractional month amounts toward zero regardless of the starting month", () => {
+    const jan = new Date(2026, 0 /* Jan */, 15);
+    expect(addMonths(jan, -1.5)).toEqual(new Date(2025, 11 /* Dec */, 15));
+    const dec = new Date(2026, 11 /* Dec */, 15);
+    expect(addMonths(dec, 1.5)).toEqual(new Date(2027, 0 /* Jan */, 15));
+  });
+
   const dstTransitions = getDstTransitions(2017);
   const dstOnly = dstTransitions.start && dstTransitions.end ? it : it.skip;
   const tzName =
