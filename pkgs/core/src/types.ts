@@ -148,11 +148,11 @@ export type Month = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
  * FirstWeekContainsDate is used to determine which week is the first week of
  * the year, based on what day the January, 1 is in that week.
  *
- * The day in that week can only be 1 (Monday) or 4 (Thursday).
+ * The day in that week can be 1 through 7.
  *
  * Please see https://en.wikipedia.org/wiki/Week#The_ISO_week_date_system for more information.
  */
-export type FirstWeekContainsDate = 1 | 4;
+export type FirstWeekContainsDate = 1 | 2 | 3 | 4 | 5 | 6 | 7;
 
 /**
  * The date values, used to set or get date object values.
