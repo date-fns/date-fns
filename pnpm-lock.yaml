@@ -107,6 +107,9 @@ importers:
       smolcanon:
         specifier: ^0.1.0
         version: 0.1.0
+      tsx:
+        specifier: 4.22.3
+        version: 4.22.3
       typedoc:
         specifier: ^0.28.20
         version: 0.28.20(typescript@7.0.2)
