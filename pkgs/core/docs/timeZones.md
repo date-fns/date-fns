@@ -55,7 +55,7 @@ differenceInBusinessDays(earlierDate, laterDate);
 //=> -261
 ```
 
-In the given example, the one-day difference comes from the fact that in New York (UTC-5), the `earlierDate` will be `Dec 31` rather than `Jan 1`:
+In the given example, the one-day difference comes from the fact that in New York (UTC-5), the `laterDate` will be `Dec 31` rather than `Jan 1`:
 
 ```ts
 laterDate.withTimeZone("Asia/Singapore").toString();
@@ -103,15 +103,15 @@ import { tz } from "@date-fns/tz";
 
 // Singapore is the system time zone:
 const sgDate = new Date(2024, 8 /* Sep */, 7, 6, 5, 4);
-//=> 'Wed Sep 07 2024 06:05:04 GMT+0800 (Singapore Standard Time)'
+//=> 'Sat Sep 07 2024 06:05:04 GMT+0800 (Singapore Standard Time)'
 
 // Transpose the date to Los Angeles time zone:
 const laDate = transpose(sgDate, tz("America/Los_Angeles"));
-//=> 'Wed Sep 07 2024 06:05:04 GMT-0700 (Pacific Daylight Time)'
+//=> 'Sat Sep 07 2024 06:05:04 GMT-0700 (Pacific Daylight Time)'
 
 // Transpose back to local time zone using Date:
 const systemDate = transpose(laDate, Date);
-//=> 'Wed Sep 07 2024 06:05:04 GMT+0800 (Singapore Standard Time)'
+//=> 'Sat Sep 07 2024 06:05:04 GMT+0800 (Singapore Standard Time)'
 ```
 
 This is the `date-fns-tz`'s `fromZonedTime` and `toZonedTime` equivalent.

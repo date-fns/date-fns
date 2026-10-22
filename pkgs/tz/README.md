@@ -217,7 +217,7 @@ tzOffset("America/New_York", date);
 //=> -300
 
 // Summer time:
-tzOffset("America/New_York", "2020-01-15T00:00:00Z");
+tzOffset("America/New_York", new Date("2020-07-15T00:00:00Z"));
 //=> -240
 ```
 
