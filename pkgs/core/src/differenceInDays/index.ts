@@ -15,6 +15,7 @@ export interface DifferenceInDaysOptions extends ContextOptions<Date> {}
  * @description
  * Get the number of full day periods between two dates. Fractional days are
  * truncated towards zero.
+ * The result may be negative if the first date is earlier than the second.
  *
  * One "full day" is the distance between a local time in one day to the same
  * local time on the next or previous day. A full day can sometimes be less than
