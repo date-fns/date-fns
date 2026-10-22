@@ -41,13 +41,18 @@ export function tzOffset(timeZone: string | undefined, date: Date): number {
     // `±HH:MM/±HHMM/±HH`. See: https://github.com/nodejs/node/issues/53419.
     if (timeZone! in offsetCache) return offsetCache[timeZone!]!;
     const captures = timeZone?.match(offsetRe);
-    if (captures) return calcOffset(timeZone!, captures.slice(1));
+    if (captures) {
+      const hours = Math.abs(+captures[1]);
+      const minutes = +(captures[2] || 0);
+      if (hours > 23 || minutes > 59) return NaN;
+      return calcOffset(timeZone!, captures.slice(1));
+    }
 
     return NaN;
   }
 }
 
-const offsetRe = /([+-]\d\d):?(\d\d)?/;
+const offsetRe = /^([+-]\d{2})(?::?(\d{2}))?$/;
 
 function calcOffset(cacheStr: string, values: string[]): number {
   const hours = +(values[0] || 0);
