@@ -71,6 +71,20 @@ describe("eachMinuteOfInterval", () => {
     ]);
   });
 
+  it("aligns the reversed result to the start of each minute when the end date has seconds", () => {
+    const result = eachMinuteOfInterval({
+      start: new Date(2020, 10, 14, 13, 3, 0),
+      end: new Date(2020, 10, 14, 13, 0, 30),
+    });
+
+    expect(result).toEqual([
+      new Date(2020, 10, 14, 13, 3),
+      new Date(2020, 10, 14, 13, 2),
+      new Date(2020, 10, 14, 13, 1),
+      new Date(2020, 10, 14, 13, 0),
+    ]);
+  });
+
   it("returns an empty array if the start date is `Invalid Date`", () => {
     const result = eachMinuteOfInterval({
       start: new Date(NaN),
