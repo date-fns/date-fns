@@ -3,6 +3,10 @@
   "version": "4.4.0",
   "description": "Modern JavaScript date utility library",
   "license": "MIT",
+  "homepage": "https://date-fns.org",
+  "bugs": {
+    "url": "https://github.com/date-fns/date-fns/issues"
+  },
   "contributors": [
     "Sasha Koss <koss@nocorp.me>",
     "Lesha Koss <regiusprod@gmail.com>"
