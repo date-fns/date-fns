@@ -20,3 +20,30 @@ assert.deepStrictEqual(
     "Sat Mar 28 2020 00:00:00 GMT+0300 (GMT+03:00)",
   ],
 );
+
+assert.deepStrictEqual(
+  eachDayOfInterval({
+    start: new Date(2020, 2, 28),
+    end: new Date(2020, 2, 26),
+  }).map((d) => d.toString()),
+  [
+    "Sat Mar 28 2020 00:00:00 GMT+0300 (GMT+03:00)",
+    "Fri Mar 27 2020 01:00:00 GMT+0300 (GMT+03:00)",
+    "Thu Mar 26 2020 00:00:00 GMT+0200 (GMT+03:00)",
+  ],
+);
+
+assert.deepStrictEqual(
+  eachDayOfInterval(
+    {
+      start: new Date(2020, 2, 26),
+      end: new Date(2020, 2, 28),
+    },
+    { step: -1 },
+  ).map((d) => d.toString()),
+  [
+    "Sat Mar 28 2020 00:00:00 GMT+0300 (GMT+03:00)",
+    "Fri Mar 27 2020 01:00:00 GMT+0300 (GMT+03:00)",
+    "Thu Mar 26 2020 00:00:00 GMT+0200 (GMT+03:00)",
+  ],
+);
