@@ -676,6 +676,7 @@
     "./locale/be-tarask": "./locale/src/be-tarask/index.ts",
     "./locale/bg": "./locale/src/bg/index.ts",
     "./locale/bn": "./locale/src/bn/index.ts",
+    "./locale/br": "./locale/src/br/index.ts",
     "./locale/bs": "./locale/src/bs/index.ts",
     "./locale/ca": "./locale/src/ca/index.ts",
     "./locale/ckb": "./locale/src/ckb/index.ts",
@@ -7331,6 +7332,16 @@
         "import": {
           "types": "./locale/bn.d.ts",
           "default": "./locale/bn.js"
+        }
+      },
+      "./locale/br": {
+        "require": {
+          "types": "./locale/br.d.cts",
+          "default": "./locale/br.cjs"
+        },
+        "import": {
+          "types": "./locale/br.d.ts",
+          "default": "./locale/br.js"
         }
       },
       "./locale/bs": {
