@@ -26,8 +26,8 @@ Help is always welcome. There are areas where you can help:
 - The core functionality (performance improvements, bug fixes,
   new features, etc.).
 
-- Documentation ([markdown documents](https://github.com/date-fns/date-fns/tree/master/docs),
-  [TSDoc annotations in source code](https://github.com/date-fns/date-fns/blob/master/src/toDate/index.ts)).
+- Documentation ([markdown documents](https://github.com/date-fns/date-fns/tree/main/pkgs/core/docs),
+  [TSDoc annotations in source code](https://github.com/date-fns/date-fns/blob/main/pkgs/core/src/toDate/index.ts)).
 
 - Test suite & development environment improvements.
 
