@@ -94,7 +94,7 @@ function mapWrkspExports(paths: string[], prefix = ".") {
   return paths.map((path) => {
     const subPth = path.slice(1);
     const pth = `${prefix}${subPth}`;
-    return [pth, `${prefix}/src${subPth}/index.ts`];
+    return [pth, `./src${pth.slice(1)}/index.ts`];
   });
 }
 
