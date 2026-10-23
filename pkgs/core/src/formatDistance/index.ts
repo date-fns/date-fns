@@ -27,6 +27,11 @@ export interface FormatDistanceOptions
  * @description
  * Return the distance between the given dates in words.
  *
+ * Seconds, minutes and hours use elapsed time; days and longer units account
+ * for daylight saving changes. Consecutive midnights separated by 23 hours
+ * at the start of daylight saving time return 'about 23 hours', rather than
+ * '1 day'.
+ *
  * | Distance between dates                                            | Result              |
  * |-------------------------------------------------------------------|---------------------|
  * | 0 ... 30 secs                                                     | less than a minute  |
@@ -125,7 +130,8 @@ export function formatDistance(
     (getTimezoneOffsetInMilliseconds(earlierDate_) -
       getTimezoneOffsetInMilliseconds(laterDate_)) /
     1000;
-  const minutes = Math.round((seconds - offsetInSeconds) / 60);
+  const minutes = Math.round(seconds / 60);
+  const dstNormalizedMinutes = Math.round((seconds - offsetInSeconds) / 60);
   let months;
 
   // 0 up to 2 mins
@@ -166,17 +172,17 @@ export function formatDistance(
     return locale.formatDistance("aboutXHours", hours, localizeOptions);
 
     // 1 day up to 1.75 days
-  } else if (minutes < minutesInAlmostTwoDays) {
+  } else if (dstNormalizedMinutes < minutesInAlmostTwoDays) {
     return locale.formatDistance("xDays", 1, localizeOptions);
 
     // 1.75 days up to 30 days
-  } else if (minutes < minutesInMonth) {
-    const days = Math.round(minutes / minutesInDay);
+  } else if (dstNormalizedMinutes < minutesInMonth) {
+    const days = Math.round(dstNormalizedMinutes / minutesInDay);
     return locale.formatDistance("xDays", days, localizeOptions);
 
     // 1 month up to 2 months
-  } else if (minutes < minutesInMonth * 2) {
-    months = Math.round(minutes / minutesInMonth);
+  } else if (dstNormalizedMinutes < minutesInMonth * 2) {
+    months = Math.round(dstNormalizedMinutes / minutesInMonth);
     return locale.formatDistance("aboutXMonths", months, localizeOptions);
   }
 
@@ -184,7 +190,7 @@ export function formatDistance(
 
   // 2 months up to 12 months
   if (months < 12) {
-    const nearestMonth = Math.round(minutes / minutesInMonth);
+    const nearestMonth = Math.round(dstNormalizedMinutes / minutesInMonth);
     return locale.formatDistance("xMonths", nearestMonth, localizeOptions);
 
     // 1 year up to max Date
