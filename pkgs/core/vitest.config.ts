@@ -10,8 +10,12 @@ export default defineConfig({
         test: {
           name: "main",
 
-          dir: "src", // Limit glob scope
-          include: ["**/test.ts"],
+          include: ["src/**/test.ts"],
+          includeSource: [
+            // Currently unused, uncomment to enable in-source tests:
+            // "src/**/*.ts",
+            "scripts/**/*.ts",
+          ],
 
           // Speed up tests
           isolate: false,

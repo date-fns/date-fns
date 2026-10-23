@@ -14,10 +14,10 @@ import type {
   ContextOptions,
   DateArg,
   FirstWeekContainsDateOptions,
-  FormatPart,
   LocalizedOptions,
   WeekOptions,
 } from "../types.ts";
+import type { FormatPart } from "../locale/types.ts";
 
 // Rexports of internal for libraries to use.
 // See: https://github.com/date-fns/date-fns/issues/3638#issuecomment-1877082874
