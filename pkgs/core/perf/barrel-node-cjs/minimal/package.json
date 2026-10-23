@@ -1,0 +1,15 @@
+{
+  "name": "date-fns-barrel-node-cjs-minimal",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "./restore.ts && npm run test:run",
+    "test:patched": "./patch.ts && npm run test:run",
+    "test:run": "./generate.ts && vitest run --clearCache && time vitest run --reporter=minimal",
+    "lscpu": "lscpu | grep -E 'Model name|Architecture|Socket\\(s\\)|Core\\(s\\) per socket|Thread\\(s\\) per core|CPU\\(s\\):|CPU max MHz|CPU min MHz|L[123] cache'"
+  },
+  "devDependencies": {
+    "date-fns": "^4.4.0",
+    "vitest": "^5.0.5"
+  }
+}
