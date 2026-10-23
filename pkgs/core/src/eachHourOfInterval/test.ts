@@ -5,6 +5,21 @@ import { assertType } from "../_lib/test/index.ts";
 import { eachHourOfInterval } from "./index.ts";
 
 describe("eachHourOfInterval", () => {
+  it("truncates a fractional step instead of stalling on the same hour", () => {
+    const interval = {
+      start: new Date(2024, 0, 1, 0),
+      end: new Date(2024, 0, 1, 3),
+    };
+    // Fractional steps below one hour truncate to zero and yield no hours,
+    // like a zero step, instead of looping forever.
+    expect(eachHourOfInterval(interval, { step: 0.5 })).toEqual([]);
+    expect(eachHourOfInterval(interval, { step: -0.5 })).toEqual([]);
+    // Fractional steps above one hour use their whole-hour part.
+    expect(eachHourOfInterval(interval, { step: 1.5 })).toEqual(
+      eachHourOfInterval(interval, { step: 1 }),
+    );
+  });
+
   it("returns an array with starts of hours from the hour of the start date to the hour of the end date", () => {
     const result = eachHourOfInterval({
       start: new Date(2014, 9 /* Oct */, 6, 12),
