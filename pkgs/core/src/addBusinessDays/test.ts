@@ -136,6 +136,13 @@ describe("addBusinessDays", () => {
     Intl.DateTimeFormat().resolvedOptions().timeZone || process.env.tz;
 
   dstOnlyDescribe(`DST (${tzName || "(unknown)"})`, () => {
+    it("doesn't change the date if zero increment is used", () => {
+      const date = new Date(dstTransitions.end!);
+      const result = addBusinessDays(date, 0);
+      expect(result).toEqual(date);
+      expect(result).not.toBe(date);
+    });
+
     it("works across DST-start weekend", () => {
       const date = new Date(dstTransitions.start!);
       date.setDate(date.getDate() - ((date.getDay() + 2) % 7));

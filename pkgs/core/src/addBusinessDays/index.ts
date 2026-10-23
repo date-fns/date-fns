@@ -53,6 +53,9 @@ export function addBusinessDays<
 
   if (isNaN(amount)) return constructFrom(options?.in, NaN);
 
+  // Avoid changing the repeated hour at the end of DST for a zero increment.
+  if (!amount) return _date;
+
   const hours = _date.getHours();
   const sign = amount < 0 ? -1 : 1;
   const fullWeeks = Math.trunc(amount / 5);
