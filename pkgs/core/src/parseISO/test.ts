@@ -316,6 +316,12 @@ describe("parseISO", () => {
         expect(isNaN(result.getTime())).toBe(true);
       });
 
+      it("returns `Invalid Date` for float hours above 24 (e.g. 24.5)", () => {
+        const result = parseISO("2014-02-11T24.5");
+        expect(result instanceof Date).toBe(true);
+        expect(isNaN(result.getTime())).toBe(true);
+      });
+
       it("returns `Invalid Date` for invalid minutes", () => {
         const result = parseISO("2014-02-11T21:60");
         expect(result instanceof Date).toBe(true);
