@@ -80,6 +80,13 @@ describe("tzOffset", () => {
       expect(tzOffset("+0230", new Date("1880-01-15T00:00:00Z"))).toBe(150);
     });
 
+    it("returns NaN for malformed UTC offsets", () => {
+      expect(tzOffset("prefix+02:30", date)).toBe(NaN);
+      expect(tzOffset("+02:30suffix", date)).toBe(NaN);
+      expect(tzOffset("+24:00", date)).toBe(NaN);
+      expect(tzOffset("+12:60", date)).toBe(NaN);
+      expect(tzOffset("+02:", date)).toBe(NaN);
+    });
     it("works with ±HH", () => {
       expect(tzOffset("-05", date)).toBe(-300);
       expect(tzOffset("+05", date)).toBe(300);
