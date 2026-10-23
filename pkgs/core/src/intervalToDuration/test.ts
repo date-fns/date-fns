@@ -34,6 +34,19 @@ describe("intervalToDuration", () => {
     });
   });
 
+  it("doesn't return negative components when the end is later than the start", () => {
+    // see https://github.com/date-fns/date-fns/issues/4150
+    const start = new Date(2026, 0 /* Jan */, 28, 23, 45);
+    const end = new Date(2026, 1 /* Feb */, 28, 17, 23);
+    const result = intervalToDuration({ start, end });
+
+    expect(result).toEqual({
+      days: 30,
+      hours: 17,
+      minutes: 38,
+    });
+  });
+
   it("returns duration of 0 when the dates are the same", () => {
     const start = new Date(2020, 2, 1, 12, 0, 0);
     const end = new Date(2020, 2, 1, 12, 0, 0);
