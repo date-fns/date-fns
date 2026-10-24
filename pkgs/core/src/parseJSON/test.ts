@@ -129,6 +129,26 @@ describe("parseJSON", () => {
     expect(parseJSON("2020-10-10").toString()).toBe("Invalid Date");
   });
 
+  it.each([
+    "prefix2000-03-15T05:20:10Z",
+    "2000-03-15T05:20:10Zsuffix",
+    "2000-03-15T05:20:10x05:30",
+    "2000-03-15T05:20:10 05:30",
+    "2000-03-15T05:20:10Z+01:00",
+    "2000-03-15T05:20:10+05:3",
+  ])("rejects a malformed complete input: %s", (input) => {
+    expect(isNaN(parseJSON(input).getTime())).toBe(true);
+  });
+
+  it("preserves the context date type when rejecting trailing text", () => {
+    const result = parseJSON("2000-03-15T05:20:10Zsuffix", {
+      in: tz("Asia/Singapore"),
+    });
+    expect(result).toBeInstanceOf(TZDate);
+    expect(result.timeZone).toBe("Asia/Singapore");
+    expect(isNaN(result.getTime())).toBe(true);
+  });
+
   it("resolves the date type by default", () => {
     const result = parseJSON("2024-04-10T07:00:00Z");
     expect(result).toBeInstanceOf(Date);
