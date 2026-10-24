@@ -76,7 +76,11 @@ export function eachQuarterOfInterval<
   const endTime = reversed ? +startOfQuarter(start) : +startOfQuarter(end);
   let date = reversed ? startOfQuarter(end) : startOfQuarter(start);
 
-  let step = options?.step ?? 1;
+  // Truncate the step toward zero so fractional values resolve to whole
+  // quarters. Without this, `addQuarters` multiplies the step by 3 before
+  // `Date.setMonth` truncates it, so a step like 2.9 advances 8 months and
+  // the function returns dates that aren't starts of quarters.
+  let step = Math.trunc(options?.step ?? 1);
   if (!step) return [];
   if (step < 0) {
     step = -step;
