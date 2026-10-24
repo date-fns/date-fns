@@ -77,7 +77,10 @@ export function eachMonthOfInterval<
   date.setHours(0, 0, 0, 0);
   date.setDate(1);
 
-  let step = options?.step ?? 1;
+  // Truncate the step toward zero so fractional values resolve to whole
+  // months. Without this, a step like 0.5 is dropped by `Date.setMonth`,
+  // leaving the date unchanged and causing an infinite loop. See #4336.
+  let step = Math.trunc(options?.step ?? 1);
   if (!step) return [];
   if (step < 0) {
     step = -step;
