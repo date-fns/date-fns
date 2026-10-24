@@ -73,9 +73,11 @@ export function eachDayOfInterval<
   const { start, end } = normalizeInterval(options?.in, interval);
 
   let reversed = +start > +end;
-  const endTime = reversed ? +start : +end;
   const date = reversed ? end : start;
-  date.setHours(0, 0, 0, 0);
+  const endDate = reversed ? start : end;
+  date.setHours(15, 0, 0, 0);
+  endDate.setHours(15, 0, 0, 0);
+  const endTime = +endDate;
 
   let step = options?.step ?? 1;
   if (!step) return [];
@@ -87,9 +89,10 @@ export function eachDayOfInterval<
   const dates: EachDayOfIntervalResult<IntervalType, Options> = [];
 
   while (+date <= endTime) {
+    date.setHours(0, 0, 0, 0);
     dates.push(constructFrom(start, date));
     date.setDate(date.getDate() + step);
-    date.setHours(0, 0, 0, 0);
+    date.setHours(15, 0, 0, 0);
   }
 
   return reversed ? dates.reverse() : dates;
