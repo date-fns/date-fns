@@ -49,6 +49,27 @@ describe("addMonths", () => {
     expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
   });
 
+  it("truncates fractional amounts toward zero (negative fraction does not subtract a whole month)", () => {
+    expect(addMonths(new Date(2026, 2 /* Mar */, 31), -0.5)).toEqual(
+      new Date(2026, 2 /* Mar */, 31),
+    );
+    expect(addMonths(new Date(2026, 2 /* Mar */, 31), -1.5)).toEqual(
+      new Date(2026, 1 /* Feb */, 28),
+    );
+    expect(addMonths(new Date(2026, 0 /* Jan */, 31), -1.5)).toEqual(
+      new Date(2025, 11 /* Dec */, 31),
+    );
+  });
+
+  it("truncates positive fractional amounts (does not add an extra month)", () => {
+    expect(addMonths(new Date(2026, 2 /* Mar */, 31), 0.5)).toEqual(
+      new Date(2026, 2 /* Mar */, 31),
+    );
+    expect(addMonths(new Date(2026, 2 /* Mar */, 31), 1.9)).toEqual(
+      new Date(2026, 3 /* Apr */, 30),
+    );
+  });
+
   const dstTransitions = getDstTransitions(2017);
   const dstOnly = dstTransitions.start && dstTransitions.end ? it : it.skip;
   const tzName =
