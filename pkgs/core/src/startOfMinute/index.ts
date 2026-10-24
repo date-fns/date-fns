@@ -38,6 +38,7 @@ export function startOfMinute<
   options?: StartOfMinuteOptions<ResultDate> | undefined,
 ): ResultDate {
   const date_ = toDate(date, options?.in);
-  date_.setSeconds(0, 0);
+  // Avoid resolving a repeated local time to its earlier occurrence.
+  date_.setTime(+date_ - date_.getSeconds() * 1000 - date_.getMilliseconds());
   return date_;
 }

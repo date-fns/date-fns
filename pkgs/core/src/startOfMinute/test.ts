@@ -40,7 +40,38 @@ describe("startOfMinute", () => {
     assertType<assertType.Equal<UTCDate, typeof result>>(true);
   });
 
+  it("handles timestamps before the Unix epoch", () => {
+    const date = new UTCDate(-1);
+    const result = startOfMinute(date);
+    expect(result).toBeInstanceOf(UTCDate);
+    expect(result.getTime()).toBe(-60_000);
+    expect(date.getTime()).toBe(-1);
+  });
+
+  it.each([
+    ["Europe/Vienna", "2023-10-29T01:06:45.123Z", "2023-10-29T01:06:00.000Z"],
+    [
+      "Australia/Lord_Howe",
+      "2024-04-06T15:15:45.123Z",
+      "2024-04-06T15:15:00.000Z",
+    ],
+  ])("preserves the repeated minute in %s", (timeZone, input, expected) => {
+    const date = new TZDate(input, timeZone);
+    const result = startOfMinute(date);
+    expect(result).toBeInstanceOf(TZDate);
+    expect(result.timeZone).toBe(timeZone);
+    expect(result.getTime()).toBe(new Date(expected).getTime());
+    expect(date.getTime()).toBe(new Date(input).getTime());
+  });
+
   describe("context", () => {
+    it("preserves the repeated minute in the context time zone", () => {
+      const result = startOfMinute("2023-10-29T01:06:45.123Z", {
+        in: tz("Europe/Vienna"),
+      });
+      expect(result.toISOString()).toBe("2023-10-29T02:06:00.000+01:00");
+    });
+
     it("allows to specify the context", () => {
       expect(
         startOfMinute("2024-04-10T07:12:34.567Z", {

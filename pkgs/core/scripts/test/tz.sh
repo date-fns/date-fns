@@ -18,6 +18,9 @@ env TZ=Australia/Melbourne node ./test/dst/formatDistanceStrict/melbourne.ts
 env TZ=Africa/Cairo node ./test/dst/formatDistanceStrict/cairo.ts
 env TZ=Asia/Singapore node ./test/dst/getOverlappingDaysInIntervals/basic.ts
 env TZ=Asia/Chita node ./test/dst/getOverlappingDaysInIntervals/basic.ts
+env TZ=Europe/Vienna node ./test/dst/startOfMinute/basic.ts
+env TZ=Australia/Lord_Howe node ./test/dst/startOfMinute/basic.ts
+env TZ=Europe/Prague node ./test/dst/startOfMinute/basic.ts
 echo "✅ DST tests passed"
 
 echo "Running formatISO tests"
