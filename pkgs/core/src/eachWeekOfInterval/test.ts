@@ -281,5 +281,28 @@ describe("eachWeekOfInterval", () => {
       const result = eachWeekOfInterval(interval, { step: NaN });
       expect(result).toEqual([]);
     });
+
+    it("truncates a fractional step toward zero", () => {
+      const result = eachWeekOfInterval(interval, { step: 2.9 });
+      expect(result).toEqual([
+        new Date(2014, 9 /* Oct */, 5),
+        new Date(2014, 9 /* Oct */, 19),
+        new Date(2014, 10 /* Nov */, 2),
+        new Date(2014, 10 /* Nov */, 16),
+      ]);
+    });
+
+    it("returns only starts of weeks for a fractional step", () => {
+      const result = eachWeekOfInterval(interval, { step: 1.5 });
+      // Every returned date must be the same weekday as the first one,
+      // i.e. a start of week, rather than drifting mid-week.
+      const weekday = result[0]?.getDay();
+      expect(result.every((date) => date.getDay() === weekday)).toBe(true);
+    });
+
+    it("returns empty array if `options.step` truncates to zero", () => {
+      expect(eachWeekOfInterval(interval, { step: 0.5 })).toEqual([]);
+      expect(eachWeekOfInterval(interval, { step: -0.5 })).toEqual([]);
+    });
   });
 });

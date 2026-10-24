@@ -97,7 +97,11 @@ export function eachWeekOfInterval<
   const endTime = +endDateWeek.getTime();
   let currentDate = startDateWeek;
 
-  let step = options?.step ?? 1;
+  // Truncate the step toward zero so fractional values resolve to whole
+  // weeks. Without this, a step like 0.5 advances by 3 days (`addWeeks`
+  // multiplies by 7 and `Date.setDate` truncates), so the function returns
+  // values that aren't starts of weeks.
+  let step = Math.trunc(options?.step ?? 1);
   if (!step) return [];
   if (step < 0) {
     step = -step;
