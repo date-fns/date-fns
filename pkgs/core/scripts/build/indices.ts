@@ -80,6 +80,14 @@ async function generatePackageJSON({
             types: "./index.d.cts",
             default: "./index.cjs",
           },
+          bun: {
+            types: "./index.d.ts",
+            default: "./index.js",
+          },
+          deno: {
+            types: "./index.d.ts",
+            default: "./index.js",
+          },
           node: {
             types: "./index.d.cts",
             default: "./index.cjs",
@@ -120,6 +128,14 @@ function mapPublishExports(paths: string[], prefix = ".") {
         require: {
           types: `${pth}.d.cts`,
           default: `${pth}.cjs`,
+        },
+        bun: {
+          types: `${pth}.d.ts`,
+          default: `${pth}.js`,
+        },
+        deno: {
+          types: `${pth}.d.ts`,
+          default: `${pth}.js`,
         },
         node: {
           types: `${pth}.d.cts`,

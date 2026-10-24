@@ -174,7 +174,7 @@ package_json_path="$main_dir/package.json"
 jaq -i '. + .publishConfig' "$package_json_path"
 jaq -i 'del(.devDependencies, .scripts, .publishConfig)' "$package_json_path"
 if [ "$force_node_cjs" = false ]; then
-	jaq -i 'del(.exports[] | select(type == "object") | .node)' "$package_json_path"
+	jaq -i 'del(.exports[] | select(type == "object") | .bun, .deno, .node)' "$package_json_path"
 fi
 if [ "$build_cjs" = false ]; then
 	jaq -i 'del(.exports[] | select(type == "object") | .require)' "$package_json_path"
