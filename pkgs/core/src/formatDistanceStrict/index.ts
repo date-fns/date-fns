@@ -7,8 +7,10 @@ import { compareAsc } from "../compareAsc/index.ts";
 import {
   millisecondsInMinute,
   minutesInDay,
+  minutesInHour,
   minutesInMonth,
   minutesInYear,
+  secondsInMinute,
 } from "../constants/index.ts";
 import type {
   ContextOptions,
@@ -112,6 +114,15 @@ export type FormatDistanceStrictUnit =
  * //=> '1 month'
  *
  * @example
+ * // What is the distance between 1 January 2015 00:00:00
+ * // and 1 January 2015 00:00:59.5?
+ * const result = formatDistanceStrict(
+ *   new Date(2015, 0, 1, 0, 0, 0),
+ *   new Date(2015, 0, 1, 0, 0, 59, 500)
+ * )
+ * //=> '1 minute'
+ *
+ * @example
  * // What is the distance between 1 August 2016 and 1 January 2015 in Esperanto?
  * import { eoLocale } from 'date-fns/locale/eo'
  * const result = formatDistanceStrict(new Date(2016, 7, 1), new Date(2015, 0, 1), {
@@ -178,25 +189,41 @@ export function formatDistanceStrict(
     unit = defaultUnit;
   }
 
+  // Rounding happens after the unit is picked, so a value just below a unit
+  // boundary can round up to the size of the next unit (59.5s becomes
+  // "60 seconds"). When that happens, promote the result to the next unit so
+  // it reads "1 minute", matching the ranges documented above. An explicitly
+  // requested unit is always kept, the same way months already work.
+  const hoursInDay = minutesInDay / minutesInHour;
+  const daysInMonth = minutesInMonth / minutesInDay;
+
   // 0 up to 60 seconds
   if (unit === "second") {
     const seconds = roundingMethod(milliseconds / 1000);
-    return locale.formatDistance("xSeconds", seconds, localizeOptions);
+    return seconds === secondsInMinute && defaultUnit !== "second"
+      ? locale.formatDistance("xMinutes", 1, localizeOptions)
+      : locale.formatDistance("xSeconds", seconds, localizeOptions);
 
     // 1 up to 60 mins
   } else if (unit === "minute") {
     const roundedMinutes = roundingMethod(minutes);
-    return locale.formatDistance("xMinutes", roundedMinutes, localizeOptions);
+    return roundedMinutes === minutesInHour && defaultUnit !== "minute"
+      ? locale.formatDistance("xHours", 1, localizeOptions)
+      : locale.formatDistance("xMinutes", roundedMinutes, localizeOptions);
 
     // 1 up to 24 hours
   } else if (unit === "hour") {
     const hours = roundingMethod(minutes / 60);
-    return locale.formatDistance("xHours", hours, localizeOptions);
+    return hours === hoursInDay && defaultUnit !== "hour"
+      ? locale.formatDistance("xDays", 1, localizeOptions)
+      : locale.formatDistance("xHours", hours, localizeOptions);
 
     // 1 up to 30 days
   } else if (unit === "day") {
     const days = roundingMethod(dstNormalizedMinutes / minutesInDay);
-    return locale.formatDistance("xDays", days, localizeOptions);
+    return days === daysInMonth && defaultUnit !== "day"
+      ? locale.formatDistance("xMonths", 1, localizeOptions)
+      : locale.formatDistance("xDays", days, localizeOptions);
 
     // 1 up to 12 months
   } else if (unit === "month") {

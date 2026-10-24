@@ -379,6 +379,61 @@ describe("formatDistanceStrict", () => {
     });
   });
 
+  describe("when rounding reaches the size of the next unit", () => {
+    const base = new Date(2021, 0, 1);
+    const after = (ms: number) => new Date(+base + ms);
+
+    it("promotes 60 seconds to 1 minute", () => {
+      const result = formatDistanceStrict(base, after(59500));
+      expect(result).toBe("1 minute");
+    });
+
+    it("promotes 60 minutes to 1 hour", () => {
+      const result = formatDistanceStrict(base, after(3599500));
+      expect(result).toBe("1 hour");
+    });
+
+    it("promotes 24 hours to 1 day", () => {
+      const result = formatDistanceStrict(base, after(86399500));
+      expect(result).toBe("1 day");
+    });
+
+    it("promotes 30 days to 1 month", () => {
+      const result = formatDistanceStrict(base, after(2591999500), {
+        in: tz("UTC"),
+      });
+      expect(result).toBe("1 month");
+    });
+
+    it('promotes when the roundingMethod is "ceil"', () => {
+      const result = formatDistanceStrict(base, after(59001), {
+        roundingMethod: "ceil",
+      });
+      expect(result).toBe("1 minute");
+    });
+
+    it('does not promote when the roundingMethod is "floor"', () => {
+      const result = formatDistanceStrict(base, after(59900), {
+        roundingMethod: "floor",
+      });
+      expect(result).toBe("59 seconds");
+    });
+
+    it("keeps the unit when it is forced via options.unit", () => {
+      const result = formatDistanceStrict(base, after(59500), {
+        unit: "second",
+      });
+      expect(result).toBe("60 seconds");
+    });
+
+    it("promotes before the suffix is added", () => {
+      const result = formatDistanceStrict(base, after(59500), {
+        addSuffix: true,
+      });
+      expect(result).toBe("1 minute ago");
+    });
+  });
+
   describe("custom locale", () => {
     it("can be passed to the function", () => {
       const formatDistance: FormatDistanceFn = (token, count, options) => {
