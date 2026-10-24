@@ -1,8 +1,10 @@
 # Forced CommonJS for Node.js Performance
 
-This benchmark measures how selecting CommonJS instead of ESM for date-fns affects Node.js startup and Vitest execution time. Consumers use identical ESM imports; only the package's `node` export conditions change.
+This benchmark measures how the Node-CJS export policy for date-fns affects Node.js, Bun and Deno startup and Vitest execution time. Consumers use identical ESM imports. Only the `node` CJS export condition is toggled; the `bun` and `deno` ESM overrides are preserved unchanged in both variants.
 
-It compares barrel and direct imports for date arithmetic and formatting, plus an empty control. Native measurements run on Node 22, 24, 25, 26 and a local build of [Node PR #65812](https://github.com/nodejs/node/pull/65812). Vitest runs on Node 24.
+Node and Vitest compare CJS against ESM. Bun and Deno load ESM in both variants, checking the policy's impact on those runtimes. Report columns identify the policy and baseline; raw JSON retains the historical `forced-cjs` variant and `cjs` statistics keys for the policy.
+
+It compares barrel and direct imports for date arithmetic and formatting, plus an empty control. Native measurements run on Node 22, 24, 25, 26, a local build of [Node PR #65812](https://github.com/nodejs/node/pull/65812), and the latest Bun and Deno. Exact runtime versions are recorded in the report. Vitest runs on Node 24 only.
 
 ## Run
 
@@ -26,13 +28,13 @@ Each run replaces the [report](./report.md) and [raw results](./report.json).
 
 ## Reading the results
 
-- **Node first import:** time to load and evaluate dependencies.
-- **Node cached import:** repeated imports of an already-loaded consumer.
-- **Node static process:** total command startup and execution time.
+- **Runtime first import:** time to load and evaluate dependencies.
+- **Runtime cached import:** repeated imports of an already-loaded consumer.
+- **Runtime static process:** total command startup and execution time.
 - **Vitest collection:** test-file loading and registration; parallel values sum overlapping durations.
 - **Vitest total:** elapsed time for one test file or the complete parallel suite.
 
-Samples use fresh processes and paired, balanced variant order. Both package copies contain identical runtime files; correctness and equivalent module graphs are checked outside timing. Compile/transform caches and dependency optimization are disabled; the filesystem cache is not flushed.
+Samples use fresh processes and paired, balanced variant order. Both package copies contain identical runtime files. Node and Vitest receive equivalent-module-graph audits; Bun and Deno receive correctness and export-resolution checks. Deno runs with full permissions and uses the fixture's local node_modules. Node compile caches, Vitest transform caches and dependency optimization are disabled; runtime disk caches and the filesystem cache are not flushed.
 
 Tables show medians, p10–p90 ranges, ratios and time saved. These measure import-bound startup costs, not faster date calculations. Benefits vary by runtime and workload; fixes in newer Node versions do not remove savings on affected LTS releases.
 

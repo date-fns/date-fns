@@ -33,7 +33,9 @@ const workers = Number(process.env.WORKERS ?? 4);
 const seed = Number(process.env.SEED ?? 20261022);
 
 const runtimes = await resolveRuntimes();
-const lts = runtimes.find(({ major }) => major === 24)!;
+const lts = runtimes.find(
+  ({ name, major }) => name === "node" && major === 24,
+)!;
 const node = lts.binary;
 
 const keep = process.env.KEEP_FIXTURES === "1";
@@ -98,11 +100,11 @@ type Case = keyof typeof cases;
 const variants = ["forced-cjs", "esm"] as const;
 
 const baseMetrics = {
-  "Node first import":
+  "Runtime first import":
     "First dynamic import of an ESM consumer with static date-fns imports; excludes process startup and the correctness check.",
-  "Node cached import":
+  "Runtime cached import":
     "Average of 100 repeated imports of the same consumer in that process; module-cache-hit control, not function throughput.",
-  "Node static process":
+  "Runtime static process":
     "Parent-observed wall time for an ESM entry point with static imports, including process startup, correctness check and exit.",
   "Vitest single collection":
     "Importing one test file and collecting its test; includes dependency loading and test registration, excludes setup and test execution.",
@@ -116,7 +118,7 @@ const baseMetrics = {
 
 const metrics = Object.fromEntries(
   Object.entries(baseMetrics).flatMap(([metric, description]) =>
-    metric.startsWith("Node")
+    metric.startsWith("Runtime")
       ? runtimes.map(({ label }) => [`${metric} (${label})`, description])
       : [[metric, `${description} Node ${lts.versions.node} (latest LTS).`]],
   ),
@@ -175,7 +177,7 @@ const metadata = {
   files,
   workers,
   seed,
-  compileCache: "disabled",
+  compileCache: "Node disabled; Bun and Deno defaults",
   filesystemCache: "not flushed; expected warm after build/preflight",
   pool: "forks",
   isolate: true,
@@ -326,8 +328,8 @@ async function vitest(
 }
 
 try {
-  // The build flag only removes export-map `node` conditions. Build once, clone,
-  // apply that exact operation, then verify byte-identical runtime artifacts.
+  // Toggle only the node export condition, preserving bun and deno overrides.
+  // Build once, clone, then verify byte-identical runtime artifacts.
   await $({
     cwd: core,
     stdio: "inherit",
@@ -353,6 +355,8 @@ try {
       if (typeof entry !== "object" || entry === null) continue;
 
       const conditions = entry as {
+        bun?: { default: string };
+        deno?: { default: string };
         node?: { default: string };
         import: { default: string };
         require: { default: string };
@@ -360,6 +364,8 @@ try {
 
       assert.equal(conditions.node?.default, conditions.require.default);
       assert(conditions.import.default.endsWith(".js"));
+      assert.deepEqual(conditions.bun, conditions.import);
+      assert.deepEqual(conditions.deno, conditions.import);
 
       if (variant === "esm") delete conditions.node;
     }
@@ -433,9 +439,10 @@ let cached;
 for (let i = 0; i < 100; i++) cached = await import("./${name}.mjs");
 const cachedMs = (performance.now() - cachedStart) / 100;
 assert.equal(cached, consumer);
+const expectedExtension = ${JSON.stringify(variant)} === "esm" || process.versions.bun || process.versions.deno ? ".js" : ".cjs";
 for (const path of ${JSON.stringify(test.paths)}) {
   const resolved = import.meta.resolve(path);
-  assert(resolved.includes("/node_modules/date-fns/") && resolved.endsWith("${variant === "esm" ? ".js" : ".cjs"}"));
+  assert(resolved.includes("/node_modules/date-fns/") && resolved.endsWith(expectedExtension), path + " resolved to " + resolved + "; expected " + expectedExtension);
 }
 console.log(JSON.stringify({ first, cached: cachedMs }));
 `,
@@ -467,6 +474,22 @@ console.log(JSON.stringify({ first, cached: cachedMs }));
 
       for (const runtime of runtimes) {
         if (runtime === lts) continue;
+
+        if (runtime.name !== "node") {
+          await execute(
+            [...runtime.args, `${name}-run.mjs`],
+            directory,
+            {},
+            runtime.binary,
+          );
+          await execute(
+            [...runtime.args, `${name}-static.mjs`],
+            directory,
+            {},
+            runtime.binary,
+          );
+          continue;
+        }
 
         await execute(
           ["--import", "./audit.mjs", `${name}-run.mjs`],
@@ -538,13 +561,25 @@ console.log(JSON.stringify({ first, cached: cachedMs }));
         const start = performance.now();
         if (mode === "node") {
           diagnostic = JSON.parse(
-            await execute([`${name}-run.mjs`], directory, {}, runtime.binary),
+            await execute(
+              [...runtime.args, `${name}-run.mjs`],
+              directory,
+              {},
+              runtime.binary,
+            ),
           );
-          measured[`Node first import (${runtime.label})`] = diagnostic.first;
-          measured[`Node cached import (${runtime.label})`] = diagnostic.cached;
+          measured[`Runtime first import (${runtime.label})`] =
+            diagnostic.first;
+          measured[`Runtime cached import (${runtime.label})`] =
+            diagnostic.cached;
         } else if (mode === "static") {
-          await execute([`${name}-static.mjs`], directory, {}, runtime.binary);
-          measured[`Node static process (${runtime.label})`] =
+          await execute(
+            [...runtime.args, `${name}-static.mjs`],
+            directory,
+            {},
+            runtime.binary,
+          );
+          measured[`Runtime static process (${runtime.label})`] =
             performance.now() - start;
         } else {
           diagnostic = await vitest(name, index, mode === "parallel", false);
@@ -602,9 +637,9 @@ console.log(JSON.stringify({ first, cached: cachedMs }));
   const lines = [
     "# Forced CommonJS for Node.js Performance Impact",
     "",
-    "Both consumers use identical ESM `import` syntax. Only the package export condition changes: native ESM files versus CommonJS files loaded through ESM interoperability.",
+    "Both consumers use identical ESM `import` syntax. Only the node CJS export condition is toggled; bun and deno ESM overrides are identical in both variants. Node and Vitest load CJS versus ESM. Bun and Deno load ESM in both variants, measuring the node condition's impact rather than a format comparison.",
     "",
-    `Native Node versions: ${runtimes.map(({ label }) => label).join(", ")}. Vitest ${metadata.vitest} on Node ${lts.versions.node} only (latest LTS); ${metadata.platform}/${metadata.arch}; ${metadata.cpu}.`,
+    `Native runtimes: ${runtimes.map(({ label }) => label).join(", ")}. Vitest ${metadata.vitest} on Node ${lts.versions.node} only (latest LTS); ${metadata.platform}/${metadata.arch}; ${metadata.cpu}.`,
     ...(!runtimes.some(({ git }) => git) ? ["", ...gitMissingReport] : []),
     `${samples} measured process pairs per row; ${warmups} discarded warmup rounds; seed ${seed}. Suite: ${files} files, one assertion test per file, ${workers} concurrent fork workers, isolation enabled.`,
     "",
@@ -612,13 +647,13 @@ console.log(JSON.stringify({ first, cached: cachedMs }));
     "",
     `date-fns ${manifests.esm.version}; ${manifests.esm.exportEntries} export-map entries. Package manifests: ESM ${manifests.esm.bytes} bytes, forced CJS ${manifests["forced-cjs"].bytes} bytes.`,
     "",
-    "Results are reported separately for each Node version, including the local PR build when available. Improvements in newer runtimes do not remove savings on affected LTS releases.",
+    "Results are reported separately for each runtime, including the local Node PR build when available. Improvements in newer runtimes do not remove savings on affected LTS releases.",
     "",
-    "Each sample uses fresh module caches. The filesystem cache is not flushed; compile/transform caches and dependency optimization are disabled. Correctness and module-loading checks run outside timing.",
+    "Each sample uses fresh processes and in-memory module caches. Node compile caches, Vitest transform caches and dependency optimization are disabled; runtime disk caches and the filesystem cache are not flushed. Correctness and module-loading preflight checks run outside timing.",
     "",
     "Subprocesses are launched sequentially with zx. Parent-observed process/suite totals include launcher and shell startup overhead; child-reported import/collection timers exclude it.",
     "",
-    "Times below are medians in milliseconds, with the observed p10–p90 range in brackets. Lower is better. ESM/CJS = 2 means CJS took half as long (50% less time); below 1 means CJS lost. Saved time is ESM minus CJS; negative values are regressions.",
+    "Times below are medians in milliseconds, with the observed p10–p90 range in brackets. Lower is better. Baseline/policy = 2 means the Node-CJS policy took half as long (50% less time); below 1 means the policy lost. Saved time is ESM baseline minus policy; negative values are regressions. Raw JSON retains the historical forced-cjs variant and cjs statistics keys for the policy, including when Bun and Deno load ESM.",
     "",
     samples < 10
       ? "Confidence intervals are omitted for runs with fewer than 10 sample pairs."
@@ -626,7 +661,7 @@ console.log(JSON.stringify({ first, cached: cachedMs }));
     "",
     "## Native modules loaded (file count)",
     "",
-    "Distinct date-fns files per consumer, counted outside timing. Both formats are checked for equivalent module graphs in Node and each isolated Vitest file.",
+    "Distinct date-fns files per consumer, counted outside timing. Both formats are checked for equivalent module graphs in Node and each isolated Vitest file. Bun and Deno receive correctness and export-resolution checks; Node loader-hook graph audits are not available for those runtimes.",
     "",
     "| Consumer | CJS (files) | ESM (files) |",
     "| --- | ---: | ---: |",
@@ -643,11 +678,11 @@ console.log(JSON.stringify({ first, cached: cachedMs }));
       "",
       description,
       "",
-      "| Consumer | CJS ms [p10–p90] | ESM ms [p10–p90] | ESM/CJS [95% interval] | Saved ms | Less time |",
+      "| Consumer | Node-CJS policy ms [p10–p90] | ESM baseline ms [p10–p90] | Baseline/policy [95% interval] | Saved ms | Less time |",
       "| --- | ---: | ---: | ---: | ---: | ---: |",
     );
 
-    const digits = metric.startsWith("Node cached import") ? 4 : 2;
+    const digits = metric.startsWith("Runtime cached import") ? 4 : 2;
 
     for (const [name, test] of Object.entries(cases)) {
       const s = summaries[`${metric}: ${name}`];
@@ -663,7 +698,7 @@ console.log(JSON.stringify({ first, cached: cachedMs }));
   lines.push(
     "## How to interpret this",
     "",
-    "Start with **Vitest parallel total** for test-suite elapsed time and **Node static process** for command startup. Parallel collection times overlap and are summed. Empty controls show runner overhead and are not subtracted.",
+    "Start with **Vitest parallel total** for test-suite elapsed time and **Runtime static process** for command startup. Parallel collection times overlap and are summed. Empty controls show runner overhead and are not subtracted.",
     "",
     "Direct imports avoid the barrel; cached imports reuse an already-loaded consumer. Long-lived processes amortize initial loading, while isolated tests and short-lived commands pay it repeatedly.",
     "",

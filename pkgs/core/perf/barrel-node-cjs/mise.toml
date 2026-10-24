@@ -10,3 +10,6 @@ run = "mise run --force //pkgs/core/perf/barrel-node-cjs:node/build"
 [tasks.run]
 depends = ["node/build"]
 run = "node run.ts"
+[tools]
+bun = "latest"
+deno = "latest"
