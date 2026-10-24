@@ -181,17 +181,23 @@ export function formatDistanceStrict(
   // 0 up to 60 seconds
   if (unit === "second") {
     const seconds = roundingMethod(milliseconds / 1000);
-    return locale.formatDistance("xSeconds", seconds, localizeOptions);
+    return seconds >= 60 && defaultUnit !== "second"
+      ? locale.formatDistance("xMinutes", 1, localizeOptions)
+      : locale.formatDistance("xSeconds", seconds, localizeOptions);
 
     // 1 up to 60 mins
   } else if (unit === "minute") {
     const roundedMinutes = roundingMethod(minutes);
-    return locale.formatDistance("xMinutes", roundedMinutes, localizeOptions);
+    return roundedMinutes >= 60 && defaultUnit !== "minute"
+      ? locale.formatDistance("xHours", 1, localizeOptions)
+      : locale.formatDistance("xMinutes", roundedMinutes, localizeOptions);
 
     // 1 up to 24 hours
   } else if (unit === "hour") {
     const hours = roundingMethod(minutes / 60);
-    return locale.formatDistance("xHours", hours, localizeOptions);
+    return hours >= 24 && defaultUnit !== "hour"
+      ? locale.formatDistance("xDays", 1, localizeOptions)
+      : locale.formatDistance("xHours", hours, localizeOptions);
 
     // 1 up to 30 days
   } else if (unit === "day") {
@@ -201,7 +207,7 @@ export function formatDistanceStrict(
     // 1 up to 12 months
   } else if (unit === "month") {
     const months = roundingMethod(dstNormalizedMinutes / minutesInMonth);
-    return months === 12 && defaultUnit !== "month"
+    return months >= 12 && defaultUnit !== "month"
       ? locale.formatDistance("xYears", 1, localizeOptions)
       : locale.formatDistance("xMonths", months, localizeOptions);
 
