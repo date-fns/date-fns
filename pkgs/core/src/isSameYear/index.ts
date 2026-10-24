@@ -4,7 +4,14 @@ import type { ContextOptions, DateArg } from "../types.ts";
 /**
  * The {@link isSameYear} function options.
  */
-export interface IsSameYearOptions extends ContextOptions<Date> {}
+export interface IsSameYearOptions extends ContextOptions<Date> {
+  /**
+   * The month the year starts on (0 = January). Allows working with
+   * fiscal or academic years that don't begin in January.
+   * @default 0
+   */
+  yearStartsOn?: number;
+}
 
 /**
  * @name isSameYear
@@ -35,5 +42,14 @@ export function isSameYear(
     laterDate,
     earlierDate,
   );
-  return laterDate_.getFullYear() === earlierDate_.getFullYear();
+  const yearStartsOn = options?.yearStartsOn ?? 0;
+  if (!yearStartsOn) {
+    return laterDate_.getFullYear() === earlierDate_.getFullYear();
+  }
+  // A date before the fiscal year's start month belongs to the fiscal
+  // year that started the previous calendar year, so the effective year
+  // is decremented for those dates before comparing.
+  const fiscalYear = (date: Date): number =>
+    date.getFullYear() - (date.getMonth() < yearStartsOn ? 1 : 0);
+  return fiscalYear(laterDate_) === fiscalYear(earlierDate_);
 }

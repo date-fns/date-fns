@@ -63,3 +63,23 @@ describe("endOfYear", () => {
     });
   });
 });
+
+describe("endOfYear with the yearStartsOn option", () => {
+  it("returns the end of the fiscal year", () => {
+    const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0);
+    const result = endOfYear(date, { yearStartsOn: 3 /* Apr */ });
+    expect(result).toEqual(new Date(2015, 2 /* Mar */, 31, 23, 59, 59, 999));
+  });
+
+  it("ends on the last day of the fiscal year that started the previous calendar year", () => {
+    const date = new Date(2026, 1 /* Feb */, 15);
+    const result = endOfYear(date, { yearStartsOn: 3 /* Apr */ });
+    expect(result).toEqual(new Date(2026, 2 /* Mar */, 31, 23, 59, 59, 999));
+  });
+
+  it("behaves like the calendar year when the option is not passed", () => {
+    const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0);
+    const result = endOfYear(date);
+    expect(result).toEqual(new Date(2014, 11 /* Dec */, 31, 23, 59, 59, 999));
+  });
+});

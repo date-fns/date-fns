@@ -6,7 +6,15 @@ import type { ContextOptions, DateArg } from "../types.ts";
  */
 export interface EndOfQuarterOptions<
   DateType extends Date = Date,
-> extends ContextOptions<DateType> {}
+> extends ContextOptions<DateType> {
+  /**
+   * The month the year starts on (0 = January). Allows working with
+   * fiscal or academic years whose quarters don't align with the
+   * calendar quarters.
+   * @default 0
+   */
+  yearStartsOn?: number;
+}
 
 /**
  * @name endOfQuarter
@@ -45,9 +53,16 @@ export function endOfQuarter<
   options?: EndOfQuarterOptions<ResultDate> | undefined,
 ): ResultDate {
   const _date = toDate(date, options?.in);
+  const yearStartsOn = options?.yearStartsOn ?? 0;
   const currentMonth = _date.getMonth();
-  const month = currentMonth - (currentMonth % 3) + 3;
-  _date.setMonth(month, 0);
+  // A date before the fiscal year's start month belongs to the fiscal
+  // year that started the previous calendar year. The end of the quarter
+  // is the day before the next quarter's start (day 0 of the following
+  // month, where the `setMonth` overflow rolls past December correctly).
+  const year = currentMonth < yearStartsOn ? _date.getFullYear() - 1 : _date.getFullYear();
+  const monthInFiscalYear = currentMonth - yearStartsOn + (currentMonth < yearStartsOn ? 12 : 0);
+  const month = yearStartsOn + monthInFiscalYear - (monthInFiscalYear % 3) + 3;
+  _date.setFullYear(year, month, 0);
   _date.setHours(23, 59, 59, 999);
   return _date;
 }

@@ -6,7 +6,15 @@ import type { ContextOptions, DateArg } from "../types.ts";
  */
 export interface StartOfQuarterOptions<
   DateType extends Date = Date,
-> extends ContextOptions<DateType> {}
+> extends ContextOptions<DateType> {
+  /**
+   * The month the year starts on (0 = January). Allows working with
+   * fiscal or academic years whose quarters don't align with the
+   * calendar quarters.
+   * @default 0
+   */
+  yearStartsOn?: number;
+}
 
 /**
  * @name startOfQuarter
@@ -44,9 +52,16 @@ export function startOfQuarter<
   options?: StartOfQuarterOptions<ResultDate> | undefined,
 ): ResultDate {
   const _date = toDate(date, options?.in);
+  const yearStartsOn = options?.yearStartsOn ?? 0;
   const currentMonth = _date.getMonth();
-  const month = currentMonth - (currentMonth % 3);
-  _date.setMonth(month, 1);
+  // A date before the fiscal year's start month belongs to the fiscal
+  // year that started the previous calendar year. Quarters start every
+  // 3 months from `yearStartsOn`; when that lands past December the
+  // `setMonth` overflow rolls it into the following calendar year.
+  const year = currentMonth < yearStartsOn ? _date.getFullYear() - 1 : _date.getFullYear();
+  const monthInFiscalYear = currentMonth - yearStartsOn + (currentMonth < yearStartsOn ? 12 : 0);
+  const month = yearStartsOn + monthInFiscalYear - (monthInFiscalYear % 3);
+  _date.setFullYear(year, month, 1);
   _date.setHours(0, 0, 0, 0);
   return _date;
 }

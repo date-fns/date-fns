@@ -5,7 +5,15 @@ import type { ContextOptions, DateArg } from "../types.ts";
 /**
  * The {@link isSameQuarter} function options.
  */
-export interface IsSameQuarterOptions extends ContextOptions<Date> {}
+export interface IsSameQuarterOptions extends ContextOptions<Date> {
+  /**
+   * The month the year starts on (0 = January). Allows working with
+   * fiscal or academic years whose quarters don't align with the
+   * calendar quarters.
+   * @default 0
+   */
+  yearStartsOn?: number;
+}
 
 /**
  * @name isSameQuarter
@@ -41,5 +49,7 @@ export function isSameQuarter(
     laterDate,
     earlierDate,
   );
-  return +startOfQuarter(dateLeft_) === +startOfQuarter(dateRight_);
+  return (
+    +startOfQuarter(dateLeft_, options) === +startOfQuarter(dateRight_, options)
+  );
 }
