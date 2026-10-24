@@ -30,7 +30,7 @@ export interface EndOfISOWeekYearOptions<
  * \* **Not really**, see: https://date-fns.org/you-dont-need-date-fns
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- * @typeParam ContextDate - The `Date` type of the context function.
+ * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
  *
  * @param date - The original date
  * @param options - The options

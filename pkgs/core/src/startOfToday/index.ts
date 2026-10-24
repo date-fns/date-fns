@@ -17,7 +17,7 @@ export interface StartOfTodayOptions<
  * @description
  * Return the start of today.
  *
- * @typeParam ContextDate - The `Date` type of the context function.
+ * @typeParam DateType - The `Date` type of the context function.
  *
  * @param options - An object with options
  *
@@ -28,8 +28,8 @@ export interface StartOfTodayOptions<
  * const result = startOfToday()
  * //=> Mon Oct 6 2014 00:00:00
  */
-export function startOfToday<ContextDate extends Date>(
-  options?: StartOfTodayOptions<ContextDate> | undefined,
-): ContextDate {
+export function startOfToday<DateType extends Date = Date>(
+  options?: StartOfTodayOptions<DateType> | undefined,
+): DateType {
   return startOfDay(Date.now(), options);
 }

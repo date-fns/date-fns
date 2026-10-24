@@ -15,7 +15,7 @@ export interface StartOfTomorrowOptions<
  * @summary Return the start of tomorrow.
  * @pure false
  *
- * @typeParam ContextDate - The `Date` type of the context function.
+ * @typeParam DateType - The `Date` type of the context function.
  *
  * @param options - An object with options
  *
@@ -29,9 +29,9 @@ export interface StartOfTomorrowOptions<
  * const result = startOfTomorrow()
  * //=> Tue Oct 7 2014 00:00:00
  */
-export function startOfTomorrow<ContextDate extends Date>(
-  options?: StartOfTomorrowOptions<ContextDate> | undefined,
-): ContextDate {
+export function startOfTomorrow<DateType extends Date = Date>(
+  options?: StartOfTomorrowOptions<DateType> | undefined,
+): DateType {
   const now = constructNow(options?.in);
   const year = now.getFullYear();
   const month = now.getMonth();
