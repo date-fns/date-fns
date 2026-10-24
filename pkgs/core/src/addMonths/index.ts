@@ -62,7 +62,12 @@ export function addMonths<
 ): ResultDate {
   const _date = toDate(date, options?.in);
   if (isNaN(amount)) return constructFrom(options?.in || date, NaN);
-  if (!amount) {
+  // Fractional amounts are truncated toward zero before the calendar arithmetic
+  // below: `setMonth` rounds its arguments, so passing e.g. -0.5 through would
+  // combine the current month with the amount first and only then round, moving
+  // a whole extra month.
+  const amountInMonths = Math.trunc(amount);
+  if (!amountInMonths) {
     // If 0 months, no-op to avoid changing times in the hour before end of DST
     return _date;
   }
@@ -77,7 +82,7 @@ export function addMonths<
   // month and using a date of 0 to back up one day to the end of the desired
   // month.
   const endOfDesiredMonth = constructFrom(options?.in || date, _date.getTime());
-  endOfDesiredMonth.setMonth(_date.getMonth() + amount + 1, 0);
+  endOfDesiredMonth.setMonth(_date.getMonth() + amountInMonths + 1, 0);
   const daysInMonth = endOfDesiredMonth.getDate();
   if (dayOfMonth >= daysInMonth) {
     // If we're already at the end of the month, then this is the correct date
