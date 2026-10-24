@@ -11,52 +11,54 @@ const root = resolve(outputPath);
 const relativeRoot = relative(process.cwd(), root);
 
 async function main() {
-  return getFiles(relativeRoot)
-    .then((files) =>
-      Promise.all(
-        files.map(async (filePath) => {
-          const content = await readFile(filePath, "utf-8");
-          const newFilePath = flattenPath(relativeRoot, filePath);
-          const isCJS = /\.cjs$/.test(filePath);
-          const replaceRE = isCJS ? /require\("([^"]+)"\)/g : /from "([^"]+)"/g;
+  try {
+    const files = await getFiles(relativeRoot);
+    for (const filePath of files) {
+      const content = await readFile(filePath, "utf-8");
+      const newFilePath = flattenPath(relativeRoot, filePath);
+      const isCJS = /\.cjs$/.test(filePath);
+      const replaceRE = isCJS
+        ? /require\((["'])([^"']+)\1\)/g
+        : /from (["'])([^"']+)\1/g;
 
-          let newContent = content.replace(replaceRE, (_str, relImportPath) => {
-            const newRelImportPath = flattenImportPath(
-              relativeRoot,
-              filePath,
-              relImportPath,
-            );
-            return isCJS
-              ? `require("${newRelImportPath}")`
-              : `from "${newRelImportPath}"`;
-          });
+      let newContent = content.replace(
+        replaceRE,
+        (_str, quote, relImportPath) => {
+          const newRelImportPath = flattenImportPath(
+            relativeRoot,
+            filePath,
+            relImportPath,
+          );
+          return isCJS
+            ? `require(${quote}${newRelImportPath}${quote})`
+            : `from ${quote}${newRelImportPath}${quote}`;
+        },
+      );
 
-          if (!isCJS)
-            newContent = newContent.replace(
-              /import\("([^"]+)"\)/g,
-              (_str, relImportPath) =>
-                `import("${flattenImportPath(relativeRoot, filePath, relImportPath)}")`,
-            );
+      if (!isCJS)
+        newContent = newContent.replace(
+          /import\((["'])([^"']+)\1\)/g,
+          (_str, quote, relImportPath) =>
+            `import(${quote}${flattenImportPath(relativeRoot, filePath, relImportPath)}${quote})`,
+        );
 
-          // Non-empty dirs won't delete, so we can add all dirs
-          dirsToRemove.add(dirname(filePath));
+      dirsToRemove.add(dirname(filePath));
 
-          if (newFilePath !== filePath)
-            return Promise.all([
-              writeFile(newFilePath, newContent),
-              unlink(filePath),
-            ]);
-          else return writeFile(filePath, newContent);
-        }),
-      ),
-    )
-    .then(() =>
-      Promise.all([...dirsToRemove].map((dir) => rmdir(dir).catch(() => {}))),
-    )
-    .catch((error) => {
-      console.error(error);
-      process.exit(1);
-    });
+      if (resolve(newFilePath) !== resolve(filePath)) {
+        await writeFile(newFilePath, newContent);
+        await unlink(filePath);
+      } else {
+        await writeFile(filePath, newContent);
+      }
+    }
+
+    for (const dir of dirsToRemove) {
+      await rmdir(dir).catch(() => {});
+    }
+  } catch (error) {
+    console.error(error);
+    process.exit(1);
+  }
 }
 
 const ignoreProcess = [new RegExp(`^${relativeRoot}/docs`)];
@@ -97,16 +99,24 @@ function flattenImportPath(
   const newFullImportPath = flattenPath(relativeRoot, importPath);
 
   // Determine the relative path between newFilePath and newFullImportPath
-  const newImportPath = relative(dirname(newFilePath), newFullImportPath);
+  let newImportPath = relative(dirname(newFilePath), newFullImportPath).replace(
+    /\\/g,
+    "/",
+  );
+
+  const ext = /\.cjs$/.test(filePath) ? ".cjs" : ".js";
+  newImportPath = newImportPath.replace(/\.[jt]s$/, ext);
 
   return newImportPath.startsWith(".") ? newImportPath : "./" + newImportPath;
 }
 
 function flattenPath(relativeRoot: string, oldPath: string) {
-  const ignoreMove = [new RegExp(`^${relativeRoot}/index`)];
+  const normalizedPath = oldPath.replace(/\\/g, "/");
+  const normalizedRoot = relativeRoot.replace(/\\/g, "/");
+  const ignoreMove = [new RegExp(`^${normalizedRoot}/index`)];
 
-  if (ignoreMove.some((r) => r.test(oldPath))) return oldPath;
-  return oldPath
+  if (ignoreMove.some((r) => r.test(normalizedPath))) return normalizedPath;
+  return normalizedPath
     .replace(/([^/]+)\/index\.(.+)$/, "$1.$2")
     .replace(/([^/]+)\/index$/, "$1");
 }

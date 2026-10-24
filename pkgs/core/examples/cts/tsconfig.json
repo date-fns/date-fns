@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "allowImportingTsExtensions": true,
     "module": "nodenext",
     "moduleResolution": "nodenext",
     "noEmit": true,
