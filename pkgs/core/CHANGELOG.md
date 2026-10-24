@@ -12,6 +12,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ### Changed
 
+- **BREAKING**: CommonJS is now forced for Node.js environments via `node` exports. It solves the ESM barrel loading performance issue for Node.js.
+
 - **BREAKING**: `date-fns/parse` no longer exports `longFormatters` directly. Import it from `date-fns/format` if needed.
 
 - **BREAKING**: `date-fns/types` no longer re-exports `date-fns/locale/types` and `date-fns/fp/types`.

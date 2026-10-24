@@ -122,6 +122,9 @@ importers:
       vitest:
         specifier: ^5.0.1
         version: 5.0.5(@opentelemetry/api@1.9.0)(@types/node@26.6.2)(@vitest/browser-playwright@5.0.5)(@vitest/coverage-v8@5.0.5)(@vitest/ui@5.0.5)(vite@8.3.4(@types/node@26.6.2)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.47.1)(tsx@4.22.3)(yaml@2.9.0))
+      zx:
+        specifier: ^8.8.5
+        version: 8.8.5
 
   pkgs/dev:
     devDependencies:
