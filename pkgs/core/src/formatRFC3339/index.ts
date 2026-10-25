@@ -18,6 +18,8 @@ export interface FormatRFC3339Options extends ContextOptions<Date> {
  *
  * @description
  * Return the formatted date string in RFC 3339 format. Options may be passed to control the parts and notations of the date.
+ * The offset reflects the time zone used to interpret the date (the system time zone by default).
+ * The examples below assume UTC; other time zones produce an offset instead of `Z`.
  *
  * @param date - The original date
  * @param options - An object with options.
