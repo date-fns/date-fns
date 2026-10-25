@@ -19,7 +19,8 @@ import renderFormatParse from "./renderFormatParse/index.ts";
 import renderFormatRelative from "./renderFormatRelative/index.ts";
 import { format as oxfmt } from "oxfmt";
 
-const mode = process.argv[2] || "generate";
+// Accept both `test` and `--test`; the `test/locales` task passes the latter.
+const mode = (process.argv[2] || "generate").replace(/^--/, "");
 
 if (process.env.TZ?.toLowerCase() !== "utc")
   throw new Error("The locale snapshots generation must be run with TZ=utc");
