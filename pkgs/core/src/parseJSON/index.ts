@@ -50,16 +50,14 @@ export function parseJSON<ResultDate extends Date = Date>(
 
   if (!parts) return toDate(NaN, options?.in);
 
-  return toDate(
-    Date.UTC(
-      +parts[1],
-      +parts[2] - 1,
-      +parts[3],
-      +parts[4] - (+parts[9] || 0) * (parts[8] == "-" ? -1 : 1),
-      +parts[5] - (+parts[10] || 0) * (parts[8] == "-" ? -1 : 1),
-      +parts[6],
-      +((parts[7] || "0") + "00").substring(0, 3),
-    ),
-    options?.in,
+  const date = new Date(0);
+  // Date.UTC maps years 0–99 to 1900–1999, so set the full year directly.
+  date.setUTCFullYear(+parts[1], +parts[2] - 1, +parts[3]);
+  date.setUTCHours(
+    +parts[4] - (+parts[9] || 0) * (parts[8] == "-" ? -1 : 1),
+    +parts[5] - (+parts[10] || 0) * (parts[8] == "-" ? -1 : 1),
+    +parts[6],
+    +((parts[7] || "0") + "00").substring(0, 3),
   );
+  return toDate(+date, options?.in);
 }
