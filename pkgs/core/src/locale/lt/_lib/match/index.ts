@@ -18,12 +18,17 @@ const parseEraPatterns = {
 
 const matchQuarterPatterns = {
   narrow: /^([1234])/i,
-  abbreviated: /^(I|II|III|IV)\s?ketv?\.?/i,
+  abbreviated: /^(I|II|III|IV)\s?(ketv?|k)\.?/i,
   wide: /^(I|II|III|IV)\s?ketvirtis/i,
 };
 const parseQuarterPatterns = {
   narrow: [/1/i, /2/i, /3/i, /4/i] as const,
-  any: [/I$/i, /II$/i, /III/i, /IV/i] as const,
+  any: [
+    /^I(?![IV])/i,
+    /^II(?![IV])/i,
+    /^III(?![IV])/i,
+    /^IV(?![IV])/i,
+  ] as const,
 };
 
 const matchMonthPatterns = {
