@@ -80,6 +80,14 @@ describe("differenceInWeeks", () => {
     expect(result).toBe(1);
   });
 
+  it("matches the documented example spanning a DST change (6 March 2020 to 1 June 2020)", () => {
+    const result = differenceInWeeks(
+      new Date(2020, 5 /* Jun */, 1),
+      new Date(2020, 2 /* Mar */, 6),
+    );
+    expect(result).toBe(12);
+  });
+
   describe("edge cases", () => {
     it("the difference is less than a week, but the given dates are in different calendar weeks", () => {
       const result = differenceInWeeks(
