@@ -124,15 +124,18 @@ npm link date-fns
 
 ### Lint the Code
 
-The project follows [Prettier] code style and uses [ESLint] as the linter.
-To lint the code, run:
+The project uses [Oxfmt] for formatting and [Oxlint] for linting.
+From the repository root, check formatting and lint the code with:
 
 ```bash
-pnpm run lint
+pnpm exec oxfmt --check .
+pnpm exec oxlint
 ```
 
-[prettier]: https://prettier.io/
-[eslint]: https://eslint.org/
+To apply formatting fixes, run `pnpm exec oxfmt`.
+
+[oxfmt]: https://oxc.rs/docs/guide/usage/formatter
+[oxlint]: https://oxc.rs/docs/guide/usage/linter
 
 ## Documentation
 
