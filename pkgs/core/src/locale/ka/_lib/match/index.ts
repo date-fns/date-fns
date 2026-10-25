@@ -28,7 +28,9 @@ const parseQuarterPatterns = {
 };
 
 const matchMonthPatterns = {
-  any: /^(ია|თე|მა|აპ|მს|ვნ|ვლ|აგ|სე|ოქ|ნო|დე)/i,
+  narrow: /^(ია|თე|მა|აპ|მს|ვნ|ვლ|აგ|სე|ოქ|ნო|დე)/i,
+  abbreviated: /^(იან|თებ|მარ|აპრ|მაი|ივნ|ივლ|აგვ|სექ|ოქტ|ნოე|დეკ)/i,
+  wide: /^(იანვარი|თებერვალი|მარტი|აპრილი|მაისი|ივნისი|ივლისი|აგვისტო|სექტემბერი|ოქტომბერი|ნოემბერი|დეკემბერი)/i,
 };
 const parseMonthPatterns = {
   any: [
@@ -96,7 +98,7 @@ export const match: Match = {
 
   month: buildMatchFn({
     matchPatterns: matchMonthPatterns,
-    defaultMatchWidth: "any",
+    defaultMatchWidth: "wide",
     parsePatterns: parseMonthPatterns,
     defaultParseWidth: "any",
   }),
