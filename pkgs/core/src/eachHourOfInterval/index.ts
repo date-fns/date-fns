@@ -74,7 +74,7 @@ export function eachHourOfInterval<
   const date = reversed ? end : start;
   date.setMinutes(0, 0, 0);
 
-  let step = options?.step ?? 1;
+  let step = Math.trunc(options?.step ?? 1);
   if (!step) return [];
   if (step < 0) {
     step = -step;
