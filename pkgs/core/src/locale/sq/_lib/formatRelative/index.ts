@@ -1,17 +1,36 @@
+import type { Day } from "../../../../types.ts";
 import type { FormatRelativeFn } from "../../../types.ts";
 
+const accusativeWeekdays = [
+  "dielën",
+  "hënën",
+  "martën",
+  "mërkurën",
+  "enjten",
+  "premten",
+  "shtunën",
+] as const;
+
 const formatRelativeLocale = {
-  lastWeek: "'të' eeee 'e shkuar në' p",
+  lastWeek: (day: Day) => "'të " + accusativeWeekdays[day] + " e kaluar në' p",
   yesterday: "'dje në' p",
   today: "'sot në' p",
   tomorrow: "'nesër në' p",
-  nextWeek: "eeee 'at' p",
+  nextWeek: (day: Day) => "'të " + accusativeWeekdays[day] + " në' p",
   other: "P",
 };
 
 export const formatRelative: FormatRelativeFn = (
   token,
-  _date,
+  date,
   _baseDate,
   _options,
-) => formatRelativeLocale[token];
+) => {
+  const format = formatRelativeLocale[token];
+
+  if (typeof format === "function") {
+    return format(date.getDay() as Day);
+  }
+
+  return format;
+};
