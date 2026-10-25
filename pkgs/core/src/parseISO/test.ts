@@ -362,6 +362,28 @@ describe("parseISO", () => {
       expect(result instanceof Date).toBe(true);
       expect(isNaN(result.getTime())).toBe(true);
     });
+
+    // Regression: callers commonly pass values typed `string` that are
+    // `null`/`undefined`/non-string at runtime (e.g. from an untyped API
+    // response). The docs promise Invalid Date for a non-string argument;
+    // it used to throw instead.
+    it("returns Invalid Date if argument is null", () => {
+      const result = parseISO(null as unknown as string);
+      expect(result instanceof Date).toBe(true);
+      expect(isNaN(result.getTime())).toBe(true);
+    });
+
+    it("returns Invalid Date if argument is undefined", () => {
+      const result = parseISO(undefined as unknown as string);
+      expect(result instanceof Date).toBe(true);
+      expect(isNaN(result.getTime())).toBe(true);
+    });
+
+    it("returns Invalid Date if argument is a number", () => {
+      const result = parseISO(20140211 as unknown as string);
+      expect(result instanceof Date).toBe(true);
+      expect(isNaN(result.getTime())).toBe(true);
+    });
   });
 
   it("resolves the date type by default", () => {
