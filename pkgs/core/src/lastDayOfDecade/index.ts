@@ -27,7 +27,7 @@ export interface LastDayOfDecadeOptions<
  * @example
  * // The last day of a decade for 21 December 2012 21:12:00:
  * const result = lastDayOfDecade(new Date(2012, 11, 21, 21, 12, 00))
- * //=> Wed Dec 31 2019 00:00:00
+ * //=> Tue Dec 31 2019 00:00:00
  */
 export function lastDayOfDecade<
   DateType extends Date,
