@@ -12,7 +12,7 @@ const matchEraPatterns = {
   wide: /^(Prije Krista|prije nove ere|Poslije Krista|nova era)/i,
 };
 const parseEraPatterns = {
-  any: [/^pr/i, /^(po|nova)/i] as const,
+  any: [/^pr/i, /^(AD|po|nova)/i] as const,
 };
 
 const matchQuarterPatterns = {
