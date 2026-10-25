@@ -7,12 +7,12 @@ const matchOrdinalNumberPattern = /^(\d+)(-?(ci|inci|nci|uncu|üncü|ncı))?/i;
 const parseOrdinalNumberPattern = /\d+/i;
 
 const matchEraPatterns = {
-  narrow: /^(b|a)$/i,
-  abbreviated: /^(b\.?\s?c\.?|b\.?\s?c\.?\s?e\.?|a\.?\s?d\.?|c\.?\s?e\.?)$/i,
-  wide: /^(bizim eradan əvvəl|bizim era)$/i,
+  narrow: /^(e\.ə\.?|b\.e\.?)$/i,
+  abbreviated: /^(e\.ə\.?|b\.e\.?)$/i,
+  wide: /^(eramızdan əvvəl|bizim era)$/i,
 };
 const parseEraPatterns = {
-  any: [/^b$/i, /^(a|c)$/i] as const,
+  any: [/^e/i, /^b/i] as const,
 };
 
 const matchQuarterPatterns = {
@@ -27,7 +27,7 @@ const parseQuarterPatterns = {
 const matchMonthPatterns = {
   narrow: /^[(?-i)yfmaisond]$/i,
   abbreviated: /^(Yan|Fev|Mar|Apr|May|İyun|İyul|Avq|Sen|Okt|Noy|Dek)$/i,
-  wide: /^(Yanvar|Fevral|Mart|Aprel|May|İyun|İyul|Avgust|Sentyabr|Oktyabr|Noyabr|Dekabr)$/i,
+  wide: /^(Yanvar|Fevral|Mart|Aprel|May|İyun|İyul|Avqust|Sentyabr|Oktyabr|Noyabr|Dekabr)$/i,
 };
 const parseMonthPatterns = {
   narrow: [
@@ -52,7 +52,7 @@ const parseMonthPatterns = {
     /^May$/i,
     /^İyun$/i,
     /^İyul$/i,
-    /^Avg$/i,
+    /^Avq$/i,
     /^Sen$/i,
     /^Okt$/i,
     /^Noy$/i,
@@ -66,7 +66,7 @@ const parseMonthPatterns = {
     /^May$/i,
     /^İyun$/i,
     /^İyul$/i,
-    /^Avgust$/i,
+    /^Avqust$/i,
     /^Sentyabr$/i,
     /^Oktyabr$/i,
     /^Noyabr$/i,
