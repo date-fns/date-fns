@@ -62,6 +62,9 @@ export function addMonths<
 ): ResultDate {
   const _date = toDate(date, options?.in);
   if (isNaN(amount)) return constructFrom(options?.in || date, NaN);
+  // Truncate fractional month amounts toward zero before calendar arithmetic,
+  // so that e.g. -0.5 does not move a whole month back. See #4346.
+  amount = Math.trunc(amount);
   if (!amount) {
     // If 0 months, no-op to avoid changing times in the hour before end of DST
     return _date;
