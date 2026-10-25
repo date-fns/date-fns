@@ -62,6 +62,9 @@ export function getOverlappingDaysInIntervals(
   const overlapRight = rightEnd > leftEnd ? leftEnd : rightEnd;
   const right = overlapRight - getTimezoneOffsetInMilliseconds(overlapRight);
 
-  // Ceil the number to include partial days too.
-  return Math.ceil((right - left) / millisecondsInDay);
+  // Count positive overlaps as at least one day, including during clock rollbacks.
+  return Math.max(
+    overlapRight > overlapLeft ? 1 : 0,
+    Math.ceil((right - left) / millisecondsInDay),
+  );
 }
