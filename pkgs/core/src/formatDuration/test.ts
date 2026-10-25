@@ -73,4 +73,17 @@ describe("formatDuration", () => {
       "9 months, 2 days",
     );
   });
+
+  it("returns an empty string if the locale has no formatDistance", () => {
+    // characterizes current behavior; not asserting correctness
+    expect(
+      formatDuration(
+        { months: 9 },
+        {
+          // @ts-expect-error - It's ok to have incomplete locale
+          locale: {},
+        },
+      ),
+    ).toBe("");
+  });
 });
