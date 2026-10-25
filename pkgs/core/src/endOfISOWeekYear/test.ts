@@ -1,5 +1,5 @@
 import { tz, TZDate } from "@date-fns/tz";
-import { UTCDate } from "@date-fns/utc";
+import { UTCDate, UTCDateMini, utc } from "@date-fns/utc";
 import { describe, expect, it } from "vitest";
 import { assertType } from "../_lib/test/index.ts";
 import { endOfISOWeekYear } from "./index.ts";
@@ -51,7 +51,20 @@ describe("endOfISOWeekYear", () => {
     assertType<assertType.Equal<UTCDate, typeof result>>(true);
   });
 
+  it.each([UTCDate, UTCDateMini])(
+    "preserves the UTC ISO week-year (%s)",
+    (DateClass) => {
+      const result = endOfISOWeekYear(new DateClass("2024-12-30T00:00:00Z"));
+      expect(result.toISOString()).toBe("2025-12-28T23:59:59.999Z");
+    },
+  );
+
   describe("context", () => {
+    it("preserves the UTC ISO week-year with the UTC context", () => {
+      const result = endOfISOWeekYear("2024-12-30T00:00:00Z", { in: utc });
+      expect(result.toISOString()).toBe("2025-12-28T23:59:59.999Z");
+    });
+
     it("allows to specify the context", () => {
       expect(
         endOfISOWeekYear("2024-04-10T07:00:00Z", {

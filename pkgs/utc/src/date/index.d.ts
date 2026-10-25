@@ -13,5 +13,8 @@
  * For a minimal version, see `UTCDateMini`.
  */
 export class UTCDate extends Date {
+  /** The UTC time zone identifier. */
+  readonly timeZone: "UTC";
+
   getTimezoneOffset(): 0;
 }

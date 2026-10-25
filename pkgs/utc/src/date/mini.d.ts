@@ -7,8 +7,8 @@ import { type UTCDate } from "./index.js";
  * Combined with date-fns, it allows using the class the same way as
  * the original date class.
  *
- * This minimal version provides only getters, setters, and `getTimezoneOffset`,
- * leaving the formatter functions out.
+ * This minimal version provides getters, setters, `getTimezoneOffset`, and the
+ * read-only `timeZone` identifier, leaving the formatter functions out.
  *
  * For the complete version, see `UTCDate`.
  */
