@@ -48,6 +48,15 @@ export class TZDate extends Date {
   constructor(timestamp: number, timeZone?: string);
 
   /**
+   * Constructs a new `TZDate` instance from date string, date object, or Unix timestamp in milliseconds
+   * and time zone.
+   *
+   * @param date - Date, date string, or Unix timestamp in milliseconds to create a new instance from
+   * @param timeZone - Time zone name (IANA or UTC offset)
+   */
+  constructor(date: Date | number | string, timeZone?: string);
+
+  /**
    * Constructs a new `TZDate` instance from the year, month, and time zone.
    *
    * @param year - Year
