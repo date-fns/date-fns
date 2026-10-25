@@ -29,6 +29,30 @@ describe("differenceInMonths", () => {
   });
 
   describe("edge cases", () => {
+    it("it returns diff of -1 month between Feb 29 2020 and Mar 31 2020", () => {
+      const result = differenceInMonths(
+        new Date(2020, 1 /* Feb */, 29),
+        new Date(2020, 2 /* Mar */, 31),
+      );
+      expect(result).toBe(-1);
+    });
+
+    it("it returns diff of -1 month between Feb 28 2021 and Mar 31 2021", () => {
+      const result = differenceInMonths(
+        new Date(2021, 1 /* Feb */, 28),
+        new Date(2021, 2 /* Mar */, 31),
+      );
+      expect(result).toBe(-1);
+    });
+
+    it("it returns diff of 1 month between Mar 31 2020 and Feb 29 2020", () => {
+      const result = differenceInMonths(
+        new Date(2020, 2 /* Mar */, 31),
+        new Date(2020, 1 /* Feb */, 29),
+      );
+      expect(result).toBe(1);
+    });
+
     it("it returns diff of 1 month between Feb 28 2021 and Jan 30 2021", () => {
       const result = differenceInMonths(
         new Date(2021, 1 /* Feb */, 28),
