@@ -1,5 +1,6 @@
 import { TZDate, tz } from "@date-fns/tz";
 import { describe, expect, it } from "vitest";
+import { getDstTransitions } from "../_lib/test/tzOffsetTransitions.ts";
 import type { ContextOptions, DateArg } from "../types.ts";
 import { differenceInMonths } from "./index.ts";
 
@@ -122,6 +123,62 @@ describe("differenceInMonths", () => {
       const resultIsNegative = isNegativeZero(result);
       expect(resultIsNegative).toBe(false);
     });
+  });
+
+  describe("DST", () => {
+    // https://github.com/date-fns/date-fns/issues/1758
+    // Regression test: a period that is one DST-gap-sized interval short of a
+    // full month must not be miscounted as a full month just because the
+    // internal month-shifting arithmetic happens to land on a local time
+    // that doesn't exist (a spring-forward gap, e.g. 2:00-2:59 AM on the day
+    // clocks jump to 3:00 AM).
+    for (const year of [2020, 2021, 2022, 2023, 2024]) {
+      const dstTransitions = getDstTransitions(year);
+      const { start } = dstTransitions;
+      const dstOnly = start ? it : it.skip;
+      const tz =
+        Intl.DateTimeFormat().resolvedOptions().timeZone || process.env.TZ;
+
+      dstOnly(
+        `does not count a month across a DST spring-forward gap (${year}): ${tz || "(unknown)"}`,
+        () => {
+          if (!start) return;
+
+          const gapMinutes =
+            new Date(start.getTime() - 1).getTimezoneOffset() -
+            start.getTimezoneOffset();
+          const gapMinutesTotal =
+            start.getHours() * 60 + start.getMinutes() - gapMinutes;
+          const gapHour = ((Math.floor(gapMinutesTotal / 60) % 24) + 24) % 24;
+          const gapMinute = ((gapMinutesTotal % 60) + 60) % 60;
+
+          // A perfectly ordinary time one month after the transition, at
+          // the wall-clock reading that falls inside the gap back in the
+          // transition month.
+          const laterDate = new Date(
+            start.getFullYear(),
+            start.getMonth() + 1,
+            start.getDate(),
+            gapHour,
+            gapMinute,
+          );
+          // Skip years/zones where the transition day doesn't exist in the
+          // following month (e.g. day 31 in a 30-day month) - not what this
+          // test is checking.
+          if (laterDate.getMonth() !== (start.getMonth() + 1) % 12) return;
+
+          const earlierDate = new Date(
+            start.getFullYear(),
+            start.getMonth(),
+            start.getDate(),
+            start.getHours(),
+            start.getMinutes(),
+          );
+
+          expect(differenceInMonths(laterDate, earlierDate)).toBe(0);
+        },
+      );
+    }
   });
 
   it("returns NaN if the first date is `Invalid Date`", () => {
