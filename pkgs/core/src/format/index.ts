@@ -311,7 +311,7 @@ export interface FormatOptions
  *    You should enable `options.useAdditionalDayOfYearTokens` to use them. See: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
  *
  * @param date - The original date
- * @param format - The string of tokens
+ * @param formatStr - The string of tokens
  * @param options - An object with options
  *
  * @returns The formatted date string
