@@ -7,12 +7,12 @@ const matchOrdinalNumberPattern = /^(第\s*)?\d+(日|時|分|秒)?/i;
 const parseOrdinalNumberPattern = /\d+/i;
 
 const matchEraPatterns = {
-  narrow: /^(前)/i,
-  abbreviated: /^(前)/i,
+  narrow: /^(前|公元)/i,
+  abbreviated: /^(前|公元)/i,
   wide: /^(公元前|公元)/i,
 };
 const parseEraPatterns = {
-  any: [/^(前)/i, /^(公元)/i] as const,
+  any: [/^(公元)?前/i, /^公元(?!前)/i] as const,
 };
 
 const matchQuarterPatterns = {
