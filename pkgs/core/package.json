@@ -43,6 +43,7 @@
     "./compareDesc": "./src/compareDesc/index.ts",
     "./constructFrom": "./src/constructFrom/index.ts",
     "./constructNow": "./src/constructNow/index.ts",
+    "./Date": "./src/Date/index.ts",
     "./daysToWeeks": "./src/daysToWeeks/index.ts",
     "./differenceInBusinessDays": "./src/differenceInBusinessDays/index.ts",
     "./differenceInCalendarDays": "./src/differenceInCalendarDays/index.ts",

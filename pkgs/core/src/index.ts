@@ -20,6 +20,7 @@ export * from "./compareAsc/index.ts";
 export * from "./compareDesc/index.ts";
 export * from "./constructFrom/index.ts";
 export * from "./constructNow/index.ts";
+export * from "./Date/index.ts";
 export * from "./daysToWeeks/index.ts";
 export * from "./differenceInBusinessDays/index.ts";
 export * from "./differenceInCalendarDays/index.ts";
