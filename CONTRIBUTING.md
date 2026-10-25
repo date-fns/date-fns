@@ -61,9 +61,15 @@ Please follow the main contributing rules, to maintain date-fns' top quality:
 
 1. Install [Node.js 22 or greater (LTS recommended)](https://nodejs.org/en/download/)
 
-2. Fork the project, and clone your fork of the repo
+2. Install [bun](https://bun.sh/) (required for the CDN build step):
 
-3. Run `pnpm install` to install the dependencies
+   ```sh
+   npm install -g bun
+   ```
+
+3. Fork the project, and clone your fork of the repo
+
+4. Run `pnpm install` to install the dependencies
 
 ## Testing
 
@@ -108,6 +114,9 @@ undefined
 ### Test build
 
 To test the build, run:
+
+> **Note:** The build script requires [bun](https://bun.sh/) for the CDN build step.
+> Install it with `npm install -g bun` if you haven't already (see [Getting Started](#getting-started)).
 
 ```sh
 ./scripts/build/package.sh
