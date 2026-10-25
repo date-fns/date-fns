@@ -18,7 +18,7 @@ const parseEraPatterns = {
 
 const matchQuarterPatterns = {
   narrow: /^[1234]/i,
-  abbreviated: /^[1234](-?[врт]?o?)? тримес.?/i,
+  abbreviated: /^[1234](-?[врт]?[oо]?)? тримес.?/i,
   wide: /^[1234](-?[врт]?о?)? тримесечие/i,
 };
 const parseQuarterPatterns = {

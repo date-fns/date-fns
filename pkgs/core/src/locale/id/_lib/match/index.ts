@@ -17,7 +17,7 @@ const parseEraPatterns = {
 
 const matchQuarterPatterns = {
   narrow: /^[1234]/i,
-  abbreviated: /^K-?\s[1234]/i,
+  abbreviated: /^K-?\s?[1234]/i,
   wide: /^Kuartal ke-?\s?[1234]/i,
 };
 const parseQuarterPatterns = {
