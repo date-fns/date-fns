@@ -1,4 +1,4 @@
-import { normalizeDates } from "../_lib/normalizeDates/index.ts";
+import { normalizeDateArray } from "../_lib/normalizeDates/index.ts";
 import { closestIndexTo } from "../closestIndexTo/index.ts";
 import { constructFrom } from "../constructFrom/index.ts";
 import type { ContextOptions, DateArg } from "../types.ts";
@@ -70,11 +70,10 @@ export function closestTo<
   dates: DatesType,
   options?: Options | undefined,
 ): ClosestToResult<DateToCompare, DatesType, Options> | undefined {
-  const [dateToCompare_, ...dates_] = normalizeDates(
-    options?.in,
+  const [dateToCompare_, ...dates_] = normalizeDateArray(options?.in, [
     dateToCompare,
     ...dates,
-  );
+  ]);
 
   const index = closestIndexTo(dateToCompare_, dates_);
 

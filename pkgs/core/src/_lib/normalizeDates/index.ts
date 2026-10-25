@@ -20,6 +20,13 @@ export function normalizeDates(
   context: ContextFn<Date> | undefined,
   ...dates: Array<DateArg<Date> & {}>
 ) {
+  return normalizeDateArray(context, dates);
+}
+
+export function normalizeDateArray(
+  context: ContextFn<Date> | undefined,
+  dates: Array<DateArg<Date> & {}>,
+): Date[] {
   const normalize = constructFrom.bind(
     null,
     context || dates.find((date) => typeof date === "object"),
