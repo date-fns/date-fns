@@ -4,6 +4,67 @@ import { defaultLocale } from "../_lib/defaultLocale/index.ts";
 import { getDefaultOptions } from "../_lib/defaultOptions/index.ts";
 
 /**
+ * A per-unit custom formatter. Each entry receives the unit value and returns the
+ * string to render for that unit (e.g. `(5) => "5h"`).
+ */
+export type DurationUnitFormatters = Partial<
+  Record<DurationUnit, (value: number) => string>
+>;
+
+/**
+ * The label style for {@link formatDuration}.
+ *
+ * - `long` (default): the locale's long form, e.g. `5 hours 9 minutes`.
+ * - `short`: a compact, locale-agnostic form, e.g. `5 hrs 9 mins`.
+ * - `narrow`: a minimal, locale-agnostic form, e.g. `5h 9m`.
+ * - a per-unit formatter map for full control.
+ */
+export type DurationStyle = "long" | "short" | "narrow" | DurationUnitFormatters;
+
+const NARROW_UNITS: Record<DurationUnit, string> = {
+  years: "y",
+  months: "mo",
+  weeks: "w",
+  days: "d",
+  hours: "h",
+  minutes: "m",
+  seconds: "s",
+};
+
+const SHORT_UNITS: Record<DurationUnit, string> = {
+  years: "yrs",
+  months: "mos",
+  weeks: "wks",
+  days: "days",
+  hours: "hrs",
+  minutes: "mins",
+  seconds: "secs",
+};
+
+const styleFormatter = (
+  style: DurationStyle
+): DurationUnitFormatters => {
+  if (style === "long") return {};
+  if (style === "narrow") {
+    return Object.fromEntries(
+      (Object.keys(NARROW_UNITS) as DurationUnit[]).map((unit) => [
+        unit,
+        (value: number) => `${value}${NARROW_UNITS[unit]}`,
+      ])
+    ) as DurationUnitFormatters;
+  }
+  if (style === "short") {
+    return Object.fromEntries(
+      (Object.keys(SHORT_UNITS) as DurationUnit[]).map((unit) => [
+        unit,
+        (value: number) => `${value} ${SHORT_UNITS[unit]}`,
+      ])
+    ) as DurationUnitFormatters;
+  }
+  return style as DurationUnitFormatters;
+};
+
+/**
  * The {@link formatDuration} function options.
  */
 export interface FormatDurationOptions extends LocalizedOptions<"formatDistance"> {
@@ -13,6 +74,14 @@ export interface FormatDurationOptions extends LocalizedOptions<"formatDistance"
   zero?: boolean;
   /** The delimiter string to use */
   delimiter?: string;
+  /**
+   * The label style for each unit. `long` (the default) uses the locale's long
+   * form; `short` and `narrow` use locale-agnostic compact forms; a per-unit
+   * formatter map gives full control over each unit's label.
+   *
+   * @default "long"
+   */
+  style?: DurationStyle;
 }
 
 const defaultFormat: DurationUnit[] = [
@@ -92,19 +161,25 @@ export function formatDuration(
   const format = options?.format ?? defaultFormat;
   const zero = options?.zero ?? false;
   const delimiter = options?.delimiter ?? " ";
+  const style = options?.style ?? "long";
+  const styleFormatters = styleFormatter(style);
 
-  if (!locale.formatDistance) {
+  if (!locale.formatDistance && style === "long") {
     return "";
   }
 
   const result = format
     .reduce((acc, unit) => {
-      const token = `x${unit.replace(/(^.)/, (m) =>
-        m.toUpperCase(),
-      )}` as FormatDistanceToken;
       const value = duration[unit];
       if (value !== undefined && (zero || duration[unit])) {
-        return acc.concat(locale.formatDistance(token, value));
+        const customFormatter = styleFormatters[unit];
+        if (customFormatter) {
+          return acc.concat(customFormatter(value));
+        }
+        const token = `x${unit.replace(/(^.)/, (m) =>
+          m.toUpperCase(),
+        )}` as FormatDistanceToken;
+        return acc.concat(locale.formatDistance!(token, value));
       }
       return acc;
     }, [] as string[])
