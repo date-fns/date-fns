@@ -1692,6 +1692,49 @@ describe("TZDate", () => {
   });
 
   describe("representation", () => {
+    describe("invalid dates", () => {
+      const invalidDates = [
+        ["NaN timestamp", () => new TZDate(NaN, "UTC")],
+        ["infinite timestamp", () => new TZDate(Infinity, "Asia/Singapore")],
+        [
+          "invalid input string",
+          () => new TZDate("invalid", "America/New_York"),
+        ],
+        ["invalid time zone", () => new TZDate(0, "invalid")],
+        [
+          "invalidated date",
+          () => {
+            const date = new TZDate(0, "UTC");
+            date.setTime(NaN);
+            return date;
+          },
+        ],
+      ] as const;
+
+      it.each(invalidDates)(
+        "formats %s like native Date",
+        (_name, createDate) => {
+          const date = createDate();
+          const nativeDate = new Date(NaN);
+          expect(date.toString()).toBe(nativeDate.toString());
+          expect(date.toDateString()).toBe(nativeDate.toDateString());
+          expect(date.toTimeString()).toBe(nativeDate.toTimeString());
+          expect(String(date)).toBe("Invalid Date");
+          expect(`${date}`).toBe("Invalid Date");
+          expect(date + "").toBe("Invalid Date");
+        },
+      );
+
+      it.each(invalidDates)(
+        "keeps ISO/JSON behavior for %s",
+        (_name, createDate) => {
+          const date = createDate();
+          expect(() => date.toISOString()).toThrow(RangeError);
+          expect(date.toJSON()).toBeNull();
+        },
+      );
+    });
+
     describe("[Symbol.toPrimitive]", () => {
       it("returns string representation of the date when the hint is 'string'", () => {
         expect(
