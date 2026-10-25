@@ -12,7 +12,7 @@ const matchEraPatterns = {
   wide: /^(기원전|서기)/i,
 };
 const parseEraPatterns = {
-  any: [/^(bc|기원전)/i, /^(ad|서기)/i] as const,
+  any: [/^(b|기원전)/i, /^(a|c|서기)/i] as const,
 };
 
 const matchQuarterPatterns = {
