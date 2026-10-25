@@ -89,6 +89,7 @@ export * from "./th/index.ts";
 export * from "./tr/index.ts";
 export * from "./ug/index.ts";
 export * from "./uk/index.ts";
+export * from "./ur/index.ts";
 export * from "./uz/index.ts";
 export * from "./uz-Cyrl/index.ts";
 export * from "./vi/index.ts";

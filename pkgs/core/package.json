@@ -8200,6 +8200,7 @@
     "simple-git": "^2.48.0",
     "size-limit": "^11.2.0",
     "smolcanon": "^0.1.0",
+    "tsx": "4.22.3",
     "typedoc": "^0.28.20",
     "typedoc-plugin-missing-exports": "^4.1.4",
     "typescript": "^7.0.2",
