@@ -51,8 +51,9 @@ const parseMonthPatterns = {
     /^تش-د/i,
     /^ک-ی/i,
   ] as const,
+  // 2026-10-09: Recognize both full names and abbreviations without an empty branch.
   any: [
-    /^کان-دوو/i,
+    /^کان(-دوو|وونی دووەم)/i,
     /^شوب/i,
     /^ئاد/i,
     /^نیس/i,
@@ -60,10 +61,10 @@ const parseMonthPatterns = {
     /^حوز/i,
     /^تەم/i,
     /^ئاب/i,
-    /^ئەل/i,
-    /^تش-یەک/i,
-    /^تش-دوو/i,
-    /^|کان-یەک/i,
+    /^ئە(ل|یلول)/i,
+    /^(تش-یەک|تشرینی یەکەم)/i,
+    /^(تش-دوو|تشرینی دووەم)/i,
+    /^کان(-یەک|وونی یەکەم)/i,
   ] as const,
 };
 
