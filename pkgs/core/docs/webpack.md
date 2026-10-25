@@ -33,7 +33,7 @@ In order to exclude unused languages we can use webpacks [ContextReplacementPlug
 import webpack from "webpack";
 import { supportedLocales } from "./config.js";
 
-export default config = {
+export default (config = {
   resolve: {
     alias: {
       "date-fns-locale": path.dirname(require.resolve("date-fns/package.json")),
@@ -45,7 +45,7 @@ export default config = {
       new RegExp(`(${locales.join("|")})\.js$`),
     ),
   ],
-};
+});
 ```
 
 This results in a language bundle of ~23kb .

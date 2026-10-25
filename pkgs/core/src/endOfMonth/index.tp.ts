@@ -11,23 +11,18 @@ export function tpyEndOfMonth<
 ): ResultDate {
   const [temporal, invalidDate] = toTpInstant(date, options);
   if (!temporal) return invalidDate;
-  try {
-    return fromTp(
-      temporal.with(
-        {
-          day: temporal.daysInMonth,
-          hour: 23,
-          minute: 59,
-          second: 59,
-          millisecond: 999,
-        },
-        { offset: "ignore" },
-      ),
-      date,
-      options,
-    );
-  } catch (error) {
-    if (error instanceof RangeError) return invalidDate;
-    throw error;
-  }
+  return fromTp(
+    temporal.with(
+      {
+        day: temporal.daysInMonth,
+        hour: 23,
+        minute: 59,
+        second: 59,
+        millisecond: 999,
+      },
+      { offset: "ignore" },
+    ),
+    date,
+    options,
+  );
 }

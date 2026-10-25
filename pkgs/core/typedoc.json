@@ -250,5 +250,7 @@
     "./src/constants/index.ts"
   ],
   "json": "./tmp/docs.json",
-  "plugin": ["typedoc-plugin-missing-exports"]
+  "plugin": [
+    "typedoc-plugin-missing-exports"
+  ]
 }
