@@ -81,6 +81,20 @@ describe("eachYearOfInterval", () => {
     ]);
   });
 
+  it("returns starts of years when the interval start is on a day that has no midnight", () => {
+    // In America/Havana the clocks move from 00:00 to 01:00 on 12 March 2023,
+    // so that day has no midnight.
+    const result = eachYearOfInterval({
+      start: new TZDate(2023, 2 /* Mar */, 12, 12, "America/Havana"),
+      end: new TZDate(2025, 4 /* May */, 20, 12, "America/Havana"),
+    });
+    expect(result.map((d) => d.toISOString())).toEqual([
+      "2023-01-01T00:00:00.000-05:00",
+      "2024-01-01T00:00:00.000-05:00",
+      "2025-01-01T00:00:00.000-05:00",
+    ]);
+  });
+
   it("returns an empty array if the start date is `Invalid Date`", () => {
     const result = eachYearOfInterval({
       start: new Date(NaN),
