@@ -292,8 +292,18 @@ function validateDayOfYearDate(year: number, dayOfYear: number): boolean {
   return dayOfYear >= 1 && dayOfYear <= (isLeapYearIndex(year) ? 366 : 365);
 }
 
-function validateWeekDate(_year: number, week: number, day: number): boolean {
-  return week >= 1 && week <= 53 && day >= 0 && day <= 6;
+function isoWeeksInYear(year: number): number {
+  const date = new Date(0);
+  date.setUTCFullYear(year, 0, 1);
+  const jan1Day = date.getUTCDay();
+  // An ISO week-numbering year has 53 weeks if January 1st is a Thursday,
+  // or if it's a leap year and January 1st is a Wednesday; otherwise 52.
+  const has53Weeks = jan1Day === 4 || (jan1Day === 3 && isLeapYearIndex(year));
+  return has53Weeks ? 53 : 52;
+}
+
+function validateWeekDate(year: number, week: number, day: number): boolean {
+  return week >= 1 && week <= isoWeeksInYear(year) && day >= 0 && day <= 6;
 }
 
 function validateTime(
