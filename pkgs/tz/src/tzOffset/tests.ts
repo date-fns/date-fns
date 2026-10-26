@@ -88,6 +88,17 @@ describe("tzOffset", () => {
   });
 
   describe("fractional time zones", () => {
+    it("works with negative sub-hour offsets", () => {
+      const date = new Date("1970-01-01T00:00:00Z");
+      expect(tzOffset("Africa/Monrovia", date)).toBe(-44.5);
+      expect(
+        tzOffset("Africa/Monrovia", new Date("1970-01-02T00:00:00Z")),
+      ).toBe(-44.5);
+      expect(
+        tzOffset("Africa/Monrovia", new Date("2020-01-15T00:00:00Z")),
+      ).toBe(0);
+    });
+
     it("works negative fractional time zones", () => {
       const dst = new Date("2023-03-15T18:00:00.000Z");
       const date = new Date("2023-03-03T18:00:00.000Z");
@@ -115,6 +126,33 @@ describe("tzOffset", () => {
 
     afterEach(() => {
       vi.mocked(Intl.DateTimeFormat).mockRestore();
+    });
+
+    it.each([
+      ["-00:01", -1],
+      ["-00:30", -30],
+      ["-00:59", -59],
+      ["-0030", -30],
+      ["+00:30", 30],
+      ["+0030", 30],
+      ["-00", 0],
+      ["+00", 0],
+    ])("falls back to manual parsing for %s", async (timeZone, expected) => {
+      vi.resetModules();
+      const { tzOffset } = await import("./index.ts");
+      vi.mocked(Intl.DateTimeFormat).mockImplementation(function () {
+        throw new RangeError("Unsupported time zone");
+      });
+
+      const date = new Date("2020-01-15T00:00:00Z");
+      const offset = tzOffset(timeZone, date);
+      expect(Intl.DateTimeFormat).toHaveBeenCalledOnce();
+      expect(offset).toBeCloseTo(expected, 10);
+      expect(tzOffset(timeZone, new Date("2020-01-16T00:00:00Z"))).toBeCloseTo(
+        expected,
+        10,
+      );
+      expect(Intl.DateTimeFormat).toHaveBeenCalledTimes(2);
     });
 
     it("reads offset from expected format", () => {
