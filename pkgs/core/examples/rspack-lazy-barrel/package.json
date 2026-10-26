@@ -1,0 +1,15 @@
+{
+  "name": "@date-fns/example-rspack-lazy-barrel",
+  "version": "0.1.0",
+  "description": "Compare date-fns barrel compilation with Rspack lazy barrels",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "node build.js disabled && node build.js enabled",
+    "test": "node test.js"
+  },
+  "dependencies": {
+    "@rspack/core": "1.7.12",
+    "date-fns": "../../dist/date-fns"
+  }
+}

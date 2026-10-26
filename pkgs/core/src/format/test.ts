@@ -8,7 +8,7 @@ import {
   type MockInstance,
   vi,
 } from "vitest";
-import type { FormatPart } from "../types.ts";
+import type { FormatPart } from "../locale/types.ts";
 import { format, formatDate } from "./index.ts";
 
 describe("format", { concurrent: false }, () => {

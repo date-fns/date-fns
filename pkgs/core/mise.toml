@@ -3,12 +3,16 @@ run = "pnpm playwright install chromium --with-deps"
 # NOTE: It prompts for sudo to install OS dependencies
 raw = true
 
+[tasks.build]
+run = "./scripts/build/build.sh"
+
 # TODO: Find a way to simply these two tasks below.
 
 [tasks."build/package"]
 usage = '''
 flag "--split-cdn" default=#false help="Build split CDN output"
 flag "--no-cjs" default=#false help="Skip CJS build"
+flag "--no-force-node-cjs" default=#false help="Use ESM for Node.js imports"
 flag "--no-cdn" default=#false help="Skip CDN build"
 flag "--no-docs" default=#false help="Skip docs"
 flag "--no-fp" default=#false help="Skip FP files"
@@ -33,13 +37,14 @@ run = [
 
 	await fs.writeFile(path, newJson);
 	''',
-  { task = "build/package/cached{% if usage.split_cdn %} --split-cdn{% endif %}{% if usage.no_cjs %} --no-cjs{% endif %}{% if usage.no_cdn %} --no-cdn{% endif %}{% if usage.no_docs %} --no-docs{% endif %}{% if usage.no_fp %} --no-fp{% endif %}{% if usage.no_i18n %} --no-i18n{% endif %}" },
+  { task = "build/package/cached{% if usage.split_cdn %} --split-cdn{% endif %}{% if usage.no_cjs %} --no-cjs{% endif %}{% if usage.no_force_node_cjs %} --no-force-node-cjs{% endif %}{% if usage.no_cdn %} --no-cdn{% endif %}{% if usage.no_docs %} --no-docs{% endif %}{% if usage.no_fp %} --no-fp{% endif %}{% if usage.no_i18n %} --no-i18n{% endif %}" },
 ]
 
 [tasks."build/package/cached"]
 usage = '''
 flag "--split-cdn" help="Build split CDN output"
 flag "--no-cjs" help="Skip CJS build"
+flag "--no-force-node-cjs" help="Use ESM for Node.js imports"
 flag "--no-cdn" help="Skip CDN build"
 flag "--no-docs" help="Skip docs"
 flag "--no-fp" help="Skip FP files"
@@ -51,6 +56,7 @@ run = '''
 args=()
 [ "$usage_split_cdn" = "true" ] && args+=(--split-cdn)
 [ "$usage_no_cjs" = "true" ] && args+=(--no-cjs)
+[ "$usage_no_force_node_cjs" = "true" ] && args+=(--no-force-node-cjs)
 [ "$usage_no_cdn" = "true" ] && args+=(--no-cdn)
 [ "$usage_no_docs" = "true" ] && args+=(--no-docs)
 [ "$usage_no_fp" = "true" ] && args+=(--no-fp)
