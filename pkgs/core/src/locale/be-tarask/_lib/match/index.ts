@@ -58,7 +58,7 @@ const parseMonthPatterns = {
     /^в/i,
     /^ка/i,
     /^ліс/i,
-    /^сн/i,
+    /^сьн/i,
   ] as const,
 };
 
