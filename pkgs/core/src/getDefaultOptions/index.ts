@@ -21,9 +21,9 @@ import { getDefaultOptions as getInternalDefaultOptions } from "../_lib/defaultO
  * //=> {}
  *
  * @example
- * setDefaultOptions({ weekStarsOn: 1, firstWeekContainsDate: 4 })
+ * setDefaultOptions({ weekStartsOn: 1, firstWeekContainsDate: 4 })
  * const result = getDefaultOptions()
- * //=> { weekStarsOn: 1, firstWeekContainsDate: 4 }
+ * //=> { weekStartsOn: 1, firstWeekContainsDate: 4 }
  */
 export function getDefaultOptions(): DefaultOptions {
   return Object.assign({}, getInternalDefaultOptions());

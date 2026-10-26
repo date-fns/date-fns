@@ -31,7 +31,7 @@ export interface FormatISOOptions
  * @example
  * // Represent 18 September 2019 in ISO 8601, short format (local time zone is UTC):
  * const result = formatISO(new Date(2019, 8, 18, 19, 0, 52), { format: 'basic' })
- * //=> '20190918T190052'
+ * //=> '20190918T190052Z'
  *
  * @example
  * // Represent 18 September 2019 in ISO 8601 format, date only:

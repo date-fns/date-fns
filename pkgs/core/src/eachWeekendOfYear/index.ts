@@ -36,12 +36,11 @@ export interface EachWeekendOfYearOptions<
  * // Lists all Saturdays and Sundays in the year
  * const result = eachWeekendOfYear(new Date(2020, 1, 1))
  * //=> [
- * //   Sat Jan 03 2020 00:00:00,
- * //   Sun Jan 04 2020 00:00:00,
+ * //   Sat Jan 04 2020 00:00:00,
+ * //   Sun Jan 05 2020 00:00:00,
  * //   ...
  * //   Sun Dec 27 2020 00:00:00
  * // ]
- * ]
  */
 export function eachWeekendOfYear<
   DateType extends Date,

@@ -91,9 +91,9 @@ export interface FormatDistanceOptions
  *
  * @example
  * // What is the distance between 1 August 2016 and 1 January 2015 in Esperanto?
- * import { eoLocale } from 'date-fns/locale/eo'
+ * import { eo } from 'date-fns/locale'
  * const result = formatDistance(new Date(2016, 7, 1), new Date(2015, 0, 1), {
- *   locale: eoLocale
+ *   locale: eo
  * })
  * //=> 'pli ol 1 jaro'
  */

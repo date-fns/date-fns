@@ -83,10 +83,10 @@ export interface FormatDistanceToNowOptions
  * @example
  * // If today is 1 January 2015,
  * // what is the distance to 1 August 2016 in Esperanto?
- * const eoLocale = require('date-fns/locale/eo')
+ * import { eo } from 'date-fns/locale'
  * const result = formatDistanceToNow(
  *   new Date(2016, 7, 1),
- *   {locale: eoLocale}
+ *   {locale: eo}
  * )
  * //=> 'pli ol 1 jaro'
  */

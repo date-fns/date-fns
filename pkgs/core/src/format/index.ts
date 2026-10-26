@@ -332,9 +332,9 @@ export interface FormatOptions
  *
  * @example
  * // Represent 2 July 2014 in Esperanto:
- * import { eoLocale } from 'date-fns/locale/eo'
+ * import { eo } from 'date-fns/locale'
  * const result = format(new Date(2014, 6, 2), "do 'de' MMMM yyyy", {
- *   locale: eoLocale
+ *   locale: eo
  * })
  * //=> '2-a de julio 2014'
  *

@@ -51,16 +51,16 @@ export type EachMinuteOfIntervalResult<
  * @returns The array with starts of minutes from the minute of the interval start to the minute of the interval end
  *
  * @example
- * // Each minute between 14 October 2020, 13:00 and 14 October 2020, 13:03
+ * // Each minute between 14 October 2014, 13:00 and 14 October 2014, 13:03
  * const result = eachMinuteOfInterval({
  *   start: new Date(2014, 9, 14, 13),
  *   end: new Date(2014, 9, 14, 13, 3)
  * })
  * //=> [
- * //   Wed Oct 14 2014 13:00:00,
- * //   Wed Oct 14 2014 13:01:00,
- * //   Wed Oct 14 2014 13:02:00,
- * //   Wed Oct 14 2014 13:03:00
+ * //   Tue Oct 14 2014 13:00:00,
+ * //   Tue Oct 14 2014 13:01:00,
+ * //   Tue Oct 14 2014 13:02:00,
+ * //   Tue Oct 14 2014 13:03:00
  * // ]
  */
 export function eachMinuteOfInterval<
