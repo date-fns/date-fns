@@ -18,9 +18,9 @@ import { tzOffset } from "../tzOffset/index.ts";
 // - `syncToInternal` starts from the external timestamp and rebuilds internal
 //   wall-clock fields using `this.timeZone` offset.
 //
-// - `syncFromInternal` starts from internal wall-clock fields, writes them into
-//   the external date, then adjusts that timestamp for the system/target offset
-//   difference and DST edge cases.
+// - `syncFromInternal` starts from internal wall-clock fields and resolves them
+//   to the external timestamp using `this.timeZone` offsets, so the system time
+//   zone never sees them.
 //
 // The public TZDate value is the combination of both: external is the instant,
 // internal is the wall-clock view of that instant in `this.timeZone`.
@@ -60,14 +60,8 @@ export class TZDateMini extends Date {
         // `Date` passed: use its timestamp
         this.setTime(+args[0]);
       } else {
-        // `Date` values passed:
-
-        // Set it as external date.
-        this.setTime(+new Date(...args));
-
-        // Adjust internal and external dates considering that we might have
-        // landed on the DST hour.
-        adjustToSystemTZ(this, args);
+        // `Date` values passed: resolve them as the target-zone wall-clock time
+        this.setTime(wallTimeToTime(this.timeZone, Date.UTC(...args)));
       }
     }
   }
@@ -183,347 +177,55 @@ function syncToInternal(date) {
  * @param {Date} date - The date to sync
  */
 function syncFromInternal(date) {
-  // Copy target-zone wall-clock fields from internal into external using native
-  // local setters. At this point external holds the right field values but they
-  // are interpreted in the system time zone; `adjustToSystemTZ` fixes that.
-  Date.prototype.setFullYear.call(
-    date,
-    date.internal.getUTCFullYear(),
-    date.internal.getUTCMonth(),
-    date.internal.getUTCDate(),
-  );
-  Date.prototype.setHours.call(
-    date,
-    date.internal.getUTCHours(),
-    date.internal.getUTCMinutes(),
-    date.internal.getUTCSeconds(),
-    date.internal.getUTCMilliseconds(),
-  );
+  const time = wallTimeToTime(date.timeZone, +date.internal);
 
-  // Now we have to adjust the date to the system time zone
-  adjustToSystemTZ(date);
+  // Setters apply historical offsets with minute precision, so we move
+  // the time by the offset seconds, i.e., 25 seconds for UTC+06:55:25.
+  const secondsOffset =
+    Math.round(-tzOffset(date.timeZone, new Date(time)) * 60) % 60;
+
+  Date.prototype.setTime.call(date, time + secondsOffset * 1000);
+
+  // Rebuild internal, as the wall-clock time might have moved out of a DST gap.
+  syncToInternal(date);
 }
 
 /**
  * @internal
- * Function adjusts the date to the system time zone. It uses the time zone
- * differences to calculate the offset and adjust the date.
+ * Function resolves the wall-clock time in the given time zone to a timestamp,
+ * the same way native `Date` does in the system time zone: ambiguous time
+ * (DST end) resolves to the earlier moment, and nonexistent time (DST start)
+ * moves forward by the DST shift.
  *
- * We use it when constructing `TZDate` and syncing the external date from
- * the internal one.
+ * @param {string} timeZone - Time zone to resolve the wall-clock time in
+ * @param {number} wallTime - Wall-clock time fields stored as a UTC timestamp
  *
- * @param {TZDate} date - `TZDate` to adjust.
+ * @returns {number} Timestamp
  */
-function adjustToSystemTZ(date, constructorArgs) {
-  // Keep the intended target-zone wall-clock value before native Date/system
-  // time zone normalization can move it. Later corrections compare against this
-  // value to distinguish intended DST normalization from accidental drift.
-  const expectedInternalTime = Array.isArray(constructorArgs)
-    ? constructorArgsToInternalTime(constructorArgs)
-    : +date.internal;
-  //#region Initial offset calculation
+function wallTimeToTime(timeZone, wallTime) {
+  // Offsets a day around cover any offset that the wall-clock time can map to.
+  const offsetBefore = offsetMs(timeZone, wallTime - 864e5);
+  const offsetAfter = offsetMs(timeZone, wallTime + 864e5);
 
-  // Current target time zone offset at the native timestamp. It may include
-  // historical offset seconds, which we preserve for the seconds adjustment.
-  const offsetWithSeconds = tzOffset(date.timeZone, date);
+  const times = [wallTime - offsetBefore, wallTime - offsetAfter].filter(
+    (time) => offsetMs(timeZone, time) === wallTime - time,
+  );
+  if (times.length) return Math.min(...times);
 
-  // Minute-precision target offset used by minute-based timestamp adjustments.
-  // Historical offsets can contain seconds, so we strip the fractional minute
-  // here and handle remaining seconds in the seconds adjustment below.
-  const offset =
-    offsetWithSeconds > 0
-      ? Math.floor(offsetWithSeconds)
-      : Math.ceil(offsetWithSeconds);
-
-  //#endregion
-
-  //#region System DST adjustment
-
-  // Native `Date` may normalize the requested wall time when the system time
-  // zone skips that hour for DST.
-  //
-  // We compare the system wall-clock hour represented by the external date with
-  // the wall-clock hour stored in the internal date. If they differ, the next
-  // offset-diff calculation may need the previous system offset, because the
-  // current external timestamp is already after the system DST jump.
-
-  // Previous-hour reference used to detect whether the system offset changed
-  // immediately before the current native timestamp.
-  const prevHour = new Date(+date);
-
-  // Use UTC math so subtracting one hour cannot be normalized back into the
-  // same missing local DST hour.
-  prevHour.setUTCHours(prevHour.getUTCHours() - 1);
-
-  // Current system offset at the native timestamp.
-  const systemOffset = -new Date(+date).getTimezoneOffset();
-
-  // System offset one real hour before the native timestamp.
-  const prevHourSystemOffset = -new Date(+prevHour).getTimezoneOffset();
-
-  // Non-zero when the system offset changed between `prevHour` and `date`.
-  const systemDSTChange = systemOffset - prevHourSystemOffset;
-
-  // System offset to use in the later system-target offset difference.
-  // Defaults to the current system offset and switches to the previous offset
-  // only when native `Date` normalized a missing system wall time.
-  let systemOffsetForDiff = systemOffset;
-  if (systemDSTChange && systemOffset !== offset) {
-    // System wall-clock hour represented by the current external timestamp.
-    const systemHour = Date.prototype.getHours.apply(date);
-
-    // Target wall-clock hour currently stored in internal fields. Constructors
-    // get it from arguments because internal may have already been synced from
-    // the normalized external timestamp; setters get it directly from internal.
-    const expectedHour = Array.isArray(constructorArgs)
-      ? constructorArgs[3] || 0
-      : date.internal.getUTCHours();
-
-    if (systemHour !== expectedHour) {
-      // Check whether using the current system offset would keep the target
-      // offset unchanged. If so, the only DST jump we crossed is the system
-      // one, so the diff should use the pre-DST system offset.
-      const testDate = new Date(+date);
-
-      // Difference that the later offset-diff step would apply with the
-      // current system offset.
-      const testOffsetDiff = systemOffset - offset;
-      if (testOffsetDiff)
-        testDate.setUTCMinutes(testDate.getUTCMinutes() + testOffsetDiff);
-
-      // Target offset after applying the current system offset difference.
-      const testOffsetWithSeconds = tzOffset(date.timeZone, testDate);
-
-      // Target offset without historical seconds, matching `offset`.
-      const testOffset =
-        testOffsetWithSeconds > 0
-          ? Math.floor(testOffsetWithSeconds)
-          : Math.ceil(testOffsetWithSeconds);
-
-      if (testOffset === offset) systemOffsetForDiff = prevHourSystemOffset;
-    }
-  }
-
-  //#endregion
-
-  //#region System diff adjustment
-
-  // Move external from the system-zone interpretation of internal fields toward
-  // the timestamp that represents those fields in the target time zone.
-  //
-  // At this point native `Date` has treated the internal wall-clock fields as if
-  // they belonged to the system zone. The system-target offset difference moves
-  // external by the distance between that system interpretation and the target
-  // interpretation.
-
-  // Difference between the system offset selected above and the minute-precision
-  // target offset. Positive values move external forward; negative values move
-  // it backward.
-  const offsetDiff = systemOffsetForDiff - offset;
-
-  if (offsetDiff)
-    // Apply the system-target minute difference to external. Internal is
-    // rebuilt from the final external timestamp after all adjustments are
-    // complete.
-    //
-    //   o  external as target: 2023-01-31 23:00
-    //   |
-    //   |  add `offsetDiff`
-    //   v
-    //   x  external as target: 2023-02-01 12:00
-    //
-    Date.prototype.setUTCMinutes.call(
-      date,
-      Date.prototype.getUTCMinutes.call(date) + offsetDiff,
-    );
-
-  //#endregion
-
-  //#region Seconds system diff adjustment
-
-  // Historical time zone offsets can include seconds, but the minute-based
-  // offset adjustment above intentionally used minute precision.
-  //
-  // This adjustment applies the remaining seconds difference to external. For
-  // example, historical Singapore used UTC+06:55:25, while ISO formatting shows
-  // only `+06:55`; without the seconds correction, setter paths keep the wrong
-  // wall-clock seconds.
-
-  // Clone external as a native `Date` so we can inspect how the system time zone
-  // represents the same timestamp.
-  const systemDate = new Date(+date);
-
-  // Zero UTC seconds before reading system seconds. Any remaining local seconds
-  // then come from the system time zone offset rather than from the timestamp's
-  // own seconds value.
-  systemDate.setUTCSeconds(0);
-
-  // Seconds part contributed by the system time zone offset. Negative offsets
-  // need wrapping because `Date#getSeconds()` returns values in the 0..59 range.
-  const systemSecondsOffset =
-    systemOffset > 0
-      ? systemDate.getSeconds()
-      : (systemDate.getSeconds() - 60) % 60;
-
-  // Seconds part contributed by the target time zone offset.
-  const secondsOffset = Math.round(-(tzOffset(date.timeZone, date) * 60)) % 60;
-
-  if (secondsOffset || systemSecondsOffset)
-    // Apply the remaining second-level system-target difference to external.
-    //
-    //   o  external as Asia/Singapore: 1900-01-01 00:00:56
-    //   |
-    //   |  + `secondsOffset`
-    //   |  + `systemSecondsOffset`
-    //   v
-    //   x  external as Asia/Singapore: 1900-01-01 00:00:31
-    //
-    Date.prototype.setUTCSeconds.call(
-      date,
-      Date.prototype.getUTCSeconds.call(date) +
-        secondsOffset +
-        systemSecondsOffset,
-    );
-
-  //#endregion
-
-  //#region Post-adjustment DST fix
-
-  // The first system-target offset move can cross a target-zone DST boundary.
-  //
-  // When that happens, the target offset at the new external timestamp differs
-  // from the target offset used for `offsetDiff`. We compare the original move
-  // with the move that would be calculated at the new timestamp, then apply the
-  // difference to external.
-
-  // Target offset at the current external timestamp, including historical
-  // seconds for the later seconds adjustment.
-  const postOffsetWithSeconds = tzOffset(date.timeZone, date);
-
-  // Minute-precision target offset at the current external timestamp.
-  const postOffset =
-    postOffsetWithSeconds > 0
-      ? Math.floor(postOffsetWithSeconds)
-      : Math.ceil(postOffsetWithSeconds);
-
-  // System offset at the current external timestamp.
-  const postSystemOffset = -new Date(+date).getTimezoneOffset();
-
-  // System-target offset difference at the current external timestamp.
-  const postOffsetDiff = postSystemOffset - postOffset;
-
-  // Whether the target offset changed after the first offset move.
-  const offsetChanged = postOffset !== offset;
-
-  // Difference between the current offset move and the move already applied.
-  const postDiff = postOffsetDiff - offsetDiff;
-
-  // If the first offset move already normalized a target DST gap forward, the
-  // generic post-DST correction below would undo that valid normalization. This
-  // happens, for example, with America/New_York 02:00 during spring-forward when
-  // the system zone also changes offset around the same instant.
-  const targetDSTShift = postOffset - offset;
-
-  // Candidate timestamp that would represent the requested wall-clock time with
-  // the post-transition target offset. If it still does not round-trip to the
-  // requested wall-clock fields, the requested time is inside a target DST gap.
-  const postOffsetCandidate = expectedInternalTime - postOffset * 60 * 1000;
-
-  // Only positive target offset shifts are spring-forward gaps. Negative shifts
-  // are fall-back overlaps and still need the regular post-adjustment path.
-  const normalizedTargetDSTGap =
-    targetDSTShift > 0 &&
-    targetInternalTime(date) - expectedInternalTime ===
-      targetDSTShift * 60 * 1000 &&
-    targetInternalTime(date, postOffsetCandidate) !== expectedInternalTime;
-
-  if (offsetChanged && postDiff && !normalizedTargetDSTGap) {
-    // Apply the target-DST correction to external. In the backward-crossing case
-    // shown here, this lands on an intermediate value that needs `offsetChange`
-    // below.
-    //
-    //   o  external as America/New_York: 2023-03-12 03:00 EDT
-    //   |
-    //   |  + `postDiff`
-    //   v
-    //   x  external as America/New_York: 2023-03-12 01:00 EST
-    //
-    Date.prototype.setUTCMinutes.call(
-      date,
-      Date.prototype.getUTCMinutes.call(date) + postDiff,
-    );
-
-    // Target offset after applying `postDiff`. It may change again if the
-    // correction itself crosses a target-zone DST boundary.
-    const newOffsetWithSeconds = tzOffset(date.timeZone, date);
-
-    // Minute-precision target offset after applying `postDiff`.
-    const newOffset =
-      newOffsetWithSeconds > 0
-        ? Math.floor(newOffsetWithSeconds)
-        : Math.ceil(newOffsetWithSeconds);
-
-    // Offset change caused by the `postDiff` move itself.
-    const offsetChange = postOffset - newOffset;
-
-    // If the correction moved external backward across the target DST boundary,
-    // apply the boundary change so external lands on the valid target-zone
-    // timestamp. Forward crossings are already normalized by native Date, and
-    // applying this correction there would undo the valid post-DST result.
-    if (offsetChange && postDiff < 0) {
-      // Apply the second target-DST correction to external.
-      //
-      //   o  external as America/New_York: 2023-03-12 01:00 EST
-      //   |
-      //   |  + `offsetChange`
-      //   v
-      //   x  external as America/New_York: 2023-03-12 03:00 EDT
-      //
-      Date.prototype.setUTCMinutes.call(
-        date,
-        Date.prototype.getUTCMinutes.call(date) + offsetChange,
-      );
-    }
-  }
-
-  //#endregion
-
-  // Rebuild internal wall-clock fields from the final external timestamp.
-  syncToInternal(date);
-
-  // Native Date can normalize historical system offsets with minute and second
-  // precision before we adjust to the target time zone. Correct only small
-  // historical drift so DST gap normalization (usually one hour) remains intact.
-  const expectedTime = constructorArgs
-    ? expectedInternalTime
-    : expectedInternalTime + secondsOffset * 1000;
-  const drift = expectedTime - +date.internal;
-
-  if (drift && Math.abs(drift) < 30 * 60 * 1000) {
-    Date.prototype.setTime.call(date, +date + drift);
-    syncToInternal(date);
-  }
+  // Nonexistent time: apply the offset before the DST shift to move it forward.
+  return wallTime - offsetBefore;
 }
 
-function constructorArgsToInternalTime(args) {
-  // Mirror Date's date-value constructor defaults while preserving explicit
-  // `undefined` behavior. Missing month/day default, but passed `undefined`
-  // should remain invalid just like `Date.UTC(year, undefined, ...)`.
-  return Date.UTC(
-    args[0],
-    args.length > 1 ? args[1] : 0,
-    args.length > 2 ? args[2] : 1,
-    ...args.slice(3),
-  );
-}
-
-function targetInternalTime(date, time) {
-  // Compute the target-zone wall-clock representation for a timestamp without
-  // mutating the TZDate. This mirrors syncToInternal for temporary checks.
-  const internal = new Date(time ?? +date);
-  internal.setUTCSeconds(
-    internal.getUTCSeconds() -
-      Math.round(-tzOffset(date.timeZone, internal) * 60),
-  );
-  return +internal;
+/**
+ * @internal
+ * Function returns the time zone offset at the given time in milliseconds,
+ * rounded to seconds like in `syncToInternal`.
+ *
+ * @param {string} timeZone - Time zone to get the offset in
+ * @param {number} time - Timestamp to get the offset at
+ *
+ * @returns {number} Offset in milliseconds
+ */
+function offsetMs(timeZone, time) {
+  return Math.round(tzOffset(timeZone, new Date(time)) * 60) * 1000;
 }
