@@ -16,6 +16,7 @@ import { getWeek } from "../getWeek/index.ts";
 import { getWeekOfMonth } from "../getWeekOfMonth/index.ts";
 import { getWeeksInMonth } from "../getWeeksInMonth/index.ts";
 import { getWeekYear } from "../getWeekYear/index.ts";
+import { intlFormatDistance } from "../intlFormatDistance/index.ts";
 import { isMatch } from "../isMatch/index.ts";
 import { isSameWeek } from "../isSameWeek/index.ts";
 import { lastDayOfWeek } from "../lastDayOfWeek/index.ts";
@@ -157,6 +158,55 @@ describe("setDefaultOptions", { concurrent: false }, () => {
           locale: enUS,
         }),
       ).toEqual("yesterday at 12:00 AM");
+    });
+
+    it("intlFormatDistance", () => {
+      // For reference: not setting any options preserves native host-runtime behavior
+      const hostExpected = new Intl.RelativeTimeFormat(undefined, {
+        numeric: "always",
+      }).format(-1, "year");
+      expect(
+        intlFormatDistance(new Date(2014, 0, 1), new Date(2015, 0, 1), {
+          unit: "year",
+          numeric: "always",
+        }),
+      ).toEqual(hostExpected);
+
+      // Configured English locale is respected
+      setDefaultOptions({ locale: enUS });
+      expect(
+        intlFormatDistance(new Date(2014, 0, 1), new Date(2015, 0, 1), {
+          unit: "year",
+          numeric: "always",
+        }),
+      ).toEqual("1 year ago");
+
+      // Configured non-English locale is respected
+      setDefaultOptions({ locale: eo });
+      expect(
+        intlFormatDistance(new Date(2014, 0, 1), new Date(2015, 0, 1), {
+          unit: "year",
+          numeric: "always",
+        }),
+      ).toEqual("antaŭ 1 jaro");
+
+      // Explicit options.locale overrides the configured default
+      expect(
+        intlFormatDistance(new Date(2014, 0, 1), new Date(2015, 0, 1), {
+          unit: "year",
+          numeric: "always",
+          locale: "en-US",
+        }),
+      ).toEqual("1 year ago");
+
+      // Resetting configured locale restores host-runtime behavior
+      setDefaultOptions({ locale: undefined });
+      expect(
+        intlFormatDistance(new Date(2014, 0, 1), new Date(2015, 0, 1), {
+          unit: "year",
+          numeric: "always",
+        }),
+      ).toEqual(hostExpected);
     });
 
     it("isMatch", () => {
