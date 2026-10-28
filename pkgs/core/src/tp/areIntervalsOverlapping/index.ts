@@ -3,7 +3,7 @@ import type { TpInterval } from "../types.ts";
 export function tpAreIntervalsOverlapping(
   intervalLeft: TpInterval,
   intervalRight: TpInterval,
-  options?: { inclusive?: boolean } | undefined,
+  options?: { inclusive?: boolean | undefined } | undefined,
 ): boolean {
   const [leftStart, leftEnd] = [intervalLeft.start, intervalLeft.end].sort(
     Temporal.ZonedDateTime.compare,

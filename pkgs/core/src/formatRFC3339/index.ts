@@ -8,7 +8,7 @@ import type { ContextOptions, DateArg } from "../types.ts";
  */
 export interface FormatRFC3339Options extends ContextOptions<Date> {
   /** The number of digits after the decimal point after seconds, defaults to 0 */
-  fractionDigits?: 0 | 1 | 2 | 3;
+  fractionDigits?: 0 | 1 | 2 | 3 | undefined;
 }
 
 /**

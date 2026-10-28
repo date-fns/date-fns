@@ -59,10 +59,10 @@ export type FormatDistanceFn = (
  */
 export interface FormatDistanceFnOptions {
   /** Add "X ago"/"in X" in the locale language */
-  addSuffix?: boolean;
+  addSuffix?: boolean | undefined;
   /** The distance vector. -1 represents past and 1 future. Tells which suffix
    * to use. */
-  comparison?: -1 | 0 | 1;
+  comparison?: -1 | 0 | 1 | undefined;
 }
 
 /**
@@ -231,13 +231,13 @@ export type LocalizeFn<Value extends LocaleUnitValue | number> = (
 export interface LocalizeFnOptions {
   /** The width to use formatting the value, defines how short or long
    * the formatted string might be. */
-  width?: LocaleWidth;
+  width?: LocaleWidth | undefined;
   /** The context where the formatted value is used - standalone: the result
    * should make grammatical sense as is and formatting: the result is a part
    * of the formatted string. See: https://date-fns.org/docs/I18n-Contribution-Guide */
-  context?: "formatting" | "standalone";
+  context?: "formatting" | "standalone" | undefined;
   /** The unit to format */
-  unit?: LocaleUnit;
+  unit?: LocaleUnit | undefined;
 }
 
 /// Match types
@@ -285,7 +285,7 @@ export type MatchFn<Result, ExtraOptions = Record<string, unknown>> = (
 export interface MatchFnOptions<Result> {
   /** The width to use matching the value, defines how short or long
    * the matched string might be. */
-  width?: LocaleWidth;
+  width?: LocaleWidth | undefined;
   /**
    * @deprecated Map the value manually instead.
    * @example
@@ -351,7 +351,7 @@ export type FormatLongFn = (options: FormatLongFnOptions) => string;
  */
 export interface FormatLongFnOptions {
   /** Format width to set */
-  width?: FormatLongWidth;
+  width?: FormatLongWidth | undefined;
 }
 
 /**

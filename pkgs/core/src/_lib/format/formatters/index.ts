@@ -3,15 +3,13 @@ import { getISOWeek } from "../../../getISOWeek/index.ts";
 import { getISOWeekYear } from "../../../getISOWeekYear/index.ts";
 import { getWeek } from "../../../getWeek/index.ts";
 import { getWeekYear } from "../../../getWeekYear/index.ts";
-import type { LocaleDayPeriod, Localize } from "../../../locale/types.ts";
+import type { Locale, LocaleDayPeriod, Localize } from "../../../locale/types.ts";
 import type {
   Day,
   Era,
-  FirstWeekContainsDateOptions,
-  LocalizedOptions,
+  FirstWeekContainsDate,
   Month,
   Quarter,
-  WeekOptions,
 } from "../../../types.ts";
 import { addLeadingZeros } from "../../addLeadingZeros/index.ts";
 import { lightFormatters } from "../lightFormatters/index.ts";
@@ -31,9 +29,11 @@ type Formatter = (
   date: Date,
   token: string,
   localize: Localize,
-  options: Required<
-    LocalizedOptions<"options"> & WeekOptions & FirstWeekContainsDateOptions
-  >,
+  options: {
+    locale: Pick<Locale, "options">;
+    weekStartsOn: Day;
+    firstWeekContainsDate: FirstWeekContainsDate;
+  },
 ) => string;
 
 /*

@@ -13,7 +13,7 @@ export interface ParseISOOptions<
   DateType extends Date = Date,
 > extends ContextOptions<DateType> {
   /** The additional number of digits in the extended year format */
-  additionalDigits?: 0 | 1 | 2;
+  additionalDigits?: 0 | 1 | 2 | undefined;
 }
 
 /**
