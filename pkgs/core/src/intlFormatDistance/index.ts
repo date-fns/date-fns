@@ -1,3 +1,4 @@
+import { getDefaultOptions } from "../_lib/defaultOptions/index.ts";
 import { normalizeDates } from "../_lib/normalizeDates/index.ts";
 import {
   secondsInDay,
@@ -216,7 +217,10 @@ export function intlFormatDistance(
     }
   }
 
-  const rtf = new Intl.RelativeTimeFormat(options?.locale, {
+  const defaultOptions = getDefaultOptions();
+  const locale = options?.locale ?? defaultOptions.locale?.code;
+
+  const rtf = new Intl.RelativeTimeFormat(locale, {
     numeric: "auto",
     ...options,
   });
