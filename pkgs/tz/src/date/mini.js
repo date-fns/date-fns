@@ -499,10 +499,44 @@ function adjustToSystemTZ(date, constructorArgs) {
     : expectedInternalTime + secondsOffset * 1000;
   const drift = expectedTime - +date.internal;
 
-  if (drift && Math.abs(drift) < 30 * 60 * 1000) {
+  // Larger drift can come from the system time zone DST gap, i.e., setting
+  // 02:30 in America/Phoenix with the system time zone America/Los_Angeles
+  // gives 03:30. We correct it only if the expected wall-clock time exists in
+  // the target time zone, so that the target DST gap normalization stays intact.
+  if (
+    drift &&
+    (Math.abs(drift) < 30 * 60 * 1000 ||
+      targetInternalTime(date, +date + drift) === expectedTime)
+  ) {
     Date.prototype.setTime.call(date, +date + drift);
     syncToInternal(date);
   }
+
+  //#region Target DST end fix
+
+  // When the wall-clock time is repeated in the target time zone (DST end),
+  // the system time zone might make us land on the later moment. Like native
+  // `Date`, we want the earlier one.
+
+  // Target offset a day before, which is the offset before the DST end.
+  const prevDayOffset = tzOffset(
+    date.timeZone,
+    new Date(+date - 24 * 60 * 60 * 1000),
+  );
+
+  // Timestamp of the same wall-clock time with the offset before the DST end.
+  const earlierTime =
+    +date - (prevDayOffset - tzOffset(date.timeZone, date)) * 60 * 1000;
+
+  if (
+    earlierTime < +date &&
+    targetInternalTime(date, earlierTime) === +date.internal
+  ) {
+    Date.prototype.setTime.call(date, earlierTime);
+    syncToInternal(date);
+  }
+
+  //#endregion
 }
 
 function constructorArgsToInternalTime(args) {
