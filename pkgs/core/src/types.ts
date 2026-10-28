@@ -75,19 +75,19 @@ export interface GenericDateConstructor<DateType extends Date = Date> {
  */
 export interface Duration {
   /** The number of years in the duration */
-  years?: number;
+  years?: number | undefined;
   /** The number of months in the duration */
-  months?: number;
+  months?: number | undefined;
   /** The number of weeks in the duration */
-  weeks?: number;
+  weeks?: number | undefined;
   /** The number of days in the duration */
-  days?: number;
+  days?: number | undefined;
   /** The number of hours in the duration */
-  hours?: number;
+  hours?: number | undefined;
   /** The number of minutes in the duration */
-  minutes?: number;
+  minutes?: number | undefined;
   /** The number of seconds in the duration */
-  seconds?: number;
+  seconds?: number | undefined;
 }
 
 /**
@@ -159,19 +159,19 @@ export type FirstWeekContainsDate = 1 | 4;
  */
 export interface DateValues {
   /** The year */
-  year?: number;
+  year?: number | undefined;
   /** The month */
-  month?: number;
+  month?: number | undefined;
   /** The day of the month */
-  date?: number;
+  date?: number | undefined;
   /** The hours */
-  hours?: number;
+  hours?: number | undefined;
   /** The minutes */
-  minutes?: number;
+  minutes?: number | undefined;
   /** The seconds */
-  seconds?: number;
+  seconds?: number | undefined;
   /** The milliseconds */
-  milliseconds?: number;
+  milliseconds?: number | undefined;
 }
 
 /**
@@ -200,7 +200,7 @@ export type ISOStringRepresentation = "complete" | "date" | "time";
  */
 export interface StepOptions {
   /** The step to use when iterating */
-  step?: number;
+  step?: number | undefined;
 }
 
 /**
@@ -208,7 +208,7 @@ export interface StepOptions {
  */
 export interface WeekOptions {
   /** Which day the week starts on. */
-  weekStartsOn?: Day;
+  weekStartsOn?: Day | undefined;
 }
 
 /**
@@ -216,7 +216,7 @@ export interface WeekOptions {
  */
 export interface FirstWeekContainsDateOptions {
   /** See {@link FirstWeekContainsDate} for more details. */
-  firstWeekContainsDate?: FirstWeekContainsDate;
+  firstWeekContainsDate?: FirstWeekContainsDate | undefined;
 }
 
 /**
@@ -226,7 +226,7 @@ export interface FirstWeekContainsDateOptions {
  */
 export interface LocalizedOptions<LocaleFields extends keyof Locale> {
   /** The locale to use in the function. */
-  locale?: Pick<Locale, LocaleFields>;
+  locale?: Pick<Locale, LocaleFields> | undefined;
 }
 
 /**
@@ -235,10 +235,10 @@ export interface LocalizedOptions<LocaleFields extends keyof Locale> {
 export interface ISOFormatOptions {
   /** The format to use: basic with minimal number of separators or extended
    * with separators added to enhance human readability */
-  format?: ISOStringFormat;
+  format?: ISOStringFormat | undefined;
   /** The date representation - what component to format: date, time\
    * or both (complete) */
-  representation?: ISOStringRepresentation;
+  representation?: ISOStringRepresentation | undefined;
 }
 
 /**
@@ -246,7 +246,7 @@ export interface ISOFormatOptions {
  */
 export interface RoundingOptions {
   /** The rounding method to use */
-  roundingMethod?: RoundingMethod;
+  roundingMethod?: RoundingMethod | undefined;
 }
 
 /**
@@ -255,10 +255,10 @@ export interface RoundingOptions {
 export interface AdditionalTokensOptions {
   /** If true, allows usage of the week-numbering year tokens `YY` and `YYYY`.
    * See: https://date-fns.org/docs/Unicode-Tokens */
-  useAdditionalWeekYearTokens?: boolean;
+  useAdditionalWeekYearTokens?: boolean | undefined;
   /** If true, allows usage of the day of year tokens `D` and `DD`.
    * See: https://date-fns.org/docs/Unicode-Tokens */
-  useAdditionalDayOfYearTokens?: boolean;
+  useAdditionalDayOfYearTokens?: boolean | undefined;
 }
 
 /**
@@ -316,7 +316,7 @@ export type NearestMinutesOptions = NearestToUnitOptions<NearestMinutes>;
 export interface NearestToUnitOptions<Unit extends number> {
   /** The nearest unit to round to. E.g. for minutes `15` to round to quarter
    * hours. */
-  nearestTo?: Unit;
+  nearestTo?: Unit | undefined;
 }
 
 /**

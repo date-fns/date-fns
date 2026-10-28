@@ -8,11 +8,11 @@ import { getDefaultOptions } from "../_lib/defaultOptions/index.ts";
  */
 export interface FormatDurationOptions extends LocalizedOptions<"formatDistance"> {
   /** The array of units to format */
-  format?: DurationUnit[];
+  format?: DurationUnit[] | undefined;
   /** Should be zeros be included in the output? */
-  zero?: boolean;
+  zero?: boolean | undefined;
   /** The delimiter string to use */
-  delimiter?: string;
+  delimiter?: string | undefined;
 }
 
 const defaultFormat: DurationUnit[] = [

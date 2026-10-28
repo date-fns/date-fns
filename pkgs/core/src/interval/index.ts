@@ -8,7 +8,7 @@ export interface IntervalOptions<
   ContextDate extends Date = Date,
 > extends ContextOptions<ContextDate> {
   /** Asserts that the interval is positive (start is after the end). */
-  assertPositive?: boolean;
+  assertPositive?: boolean | undefined;
 }
 
 /**
