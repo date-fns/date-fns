@@ -26,6 +26,7 @@ export interface ParseISOOptions<
  *
  * Function accepts complete ISO 8601 formats as well as partial implementations.
  * ISO 8601: http://en.wikipedia.org/wiki/ISO_8601
+ * Sub-millisecond precision is discarded.
  *
  * If the argument isn't a string, the function cannot parse the string or
  * the values are invalid, it returns Invalid Date.
@@ -223,21 +224,57 @@ function parseTime(timeString: string): number {
   const captures = timeString.match(timeRegex);
   if (!captures) return NaN; // Invalid ISO-formatted time
 
-  const hours = parseTimeUnit(captures[1]);
-  const minutes = parseTimeUnit(captures[2]);
-  const seconds = parseTimeUnit(captures[3]);
+  const [hours, hoursFraction] = parseTimeUnit(captures[1]);
+  const [minutes, minutesFraction] = parseTimeUnit(captures[2]);
+  const [seconds, secondsFraction] = parseTimeUnit(captures[3]);
 
-  if (!validateTime(hours, minutes, seconds)) {
+  if (
+    !validateTime(
+      hours,
+      minutes,
+      seconds,
+      hoursFraction,
+      minutesFraction,
+      secondsFraction,
+    )
+  ) {
     return NaN;
   }
 
+  // Convert the decimal fractions to whole milliseconds before adding the date.
+  // Working from the last digit keeps both sub-ms truncation and exact ms values
+  // independent of floating-point rounding, including fractional hours/minutes.
+  let milliseconds = 0;
+  for (
+    let i =
+      Math.max(
+        hoursFraction.length,
+        minutesFraction.length,
+        secondsFraction.length,
+      ) - 1;
+    i >= 0;
+    i--
+  ) {
+    milliseconds = Math.floor(
+      (Number(hoursFraction[i] || 0) * millisecondsInHour +
+        Number(minutesFraction[i] || 0) * millisecondsInMinute +
+        Number(secondsFraction[i] || 0) * 1000 +
+        milliseconds) /
+        10,
+    );
+  }
+
   return (
-    hours * millisecondsInHour + minutes * millisecondsInMinute + seconds * 1000
+    hours * millisecondsInHour +
+    minutes * millisecondsInMinute +
+    seconds * 1000 +
+    milliseconds
   );
 }
 
-function parseTimeUnit(value: string): number {
-  return (value && parseFloat(value.replace(",", "."))) || 0;
+function parseTimeUnit(value: string): [number, string] {
+  const [integer, fraction = ""] = (value || "0").split(/[.,]/);
+  return [Number(integer), fraction];
 }
 
 function parseTimezone(timezoneString: string): number {
@@ -300,9 +337,16 @@ function validateTime(
   hours: number,
   minutes: number,
   seconds: number,
+  hoursFraction: string,
+  minutesFraction: string,
+  secondsFraction: string,
 ): boolean {
-  if (hours === 24) {
-    return minutes === 0 && seconds === 0;
+  if (hours === 24 && !/[1-9]/.test(hoursFraction)) {
+    return (
+      minutes === 0 &&
+      seconds === 0 &&
+      !/[1-9]/.test(minutesFraction + secondsFraction)
+    );
   }
 
   return (

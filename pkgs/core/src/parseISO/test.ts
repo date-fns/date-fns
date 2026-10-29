@@ -1,4 +1,5 @@
 import { TZDate, tz } from "@date-fns/tz";
+import { UTCDate } from "@date-fns/utc";
 import { describe, expect, it } from "vitest";
 import { assertType } from "../_lib/test/index.ts";
 import { parseISO } from "./index.ts";
@@ -174,6 +175,50 @@ describe("parseISO", () => {
         expect(result).toEqual(
           new Date(2014, 1 /* Feb */, 11, 11, 30, 30, 768),
         );
+      });
+
+      it("truncates sub-ms seconds without advancing the local date", () => {
+        expect(parseISO("2014-02-11T11:30:30.9999999")).toEqual(
+          new Date(2014, 1, 11, 11, 30, 30, 999),
+        );
+        expect(parseISO("2014-02-11T23:59:59.999999999")).toEqual(
+          new Date(2014, 1, 11, 23, 59, 59, 999),
+        );
+      });
+
+      it.each([
+        ["2022-10-24T23:59:59.999999999+02:00", 1666648799999],
+        ["1969-12-31T23:59:59.999999999Z", -1],
+        ["1970-01-01T00:00:01.001Z", 1001],
+        ["1970-01-01T00:00:08.001Z", 8001],
+        ["1970-01-01T00:00:32.001Z", 32001],
+        ["2014-02-11T00:00:01.001Z", 1392076801001],
+        ["2014-02-11T00:00:08.001Z", 1392076808001],
+        ["2014-02-11T00:00:32.001Z", 1392076832001],
+        ["1970-01-01T00:00:00.000999999Z", 0],
+        ["1970-01-01T00:00:01.000999999Z", 1000],
+        ["1970-01-01T00:00:00,999999999Z", 999],
+        ["1970-01-01T01:00:00.999999999+01:00", 999],
+        ["1969-12-31T23:00:00.999999999-01:00", 999],
+        ["1970-01-01T00:00.000016666666Z", 0],
+        ["1970-01-01T00:00.000016666667Z", 1],
+        ["1970-01-01T00:00.016683333333Z", 1000],
+        ["1970-01-01T00:00.016683333334Z", 1001],
+        ["1970-01-01T00.0000002777777Z", 0],
+        ["1970-01-01T00.0000002777778Z", 1],
+        ["1970-01-01T00.000278055555Z", 1000],
+        ["1970-01-01T00.000278055556Z", 1001],
+        ["1970-01-01T00,000278055556Z", 1001],
+        ["1970-01-01T00.0000001:00.00001:00.0001Z", 1],
+        ["1970-01-01T00:00:01.99999999999999999999Z", 1999],
+        ["1970-01-01T00:12.99999999999999999999Z", 779999],
+        ["1970-01-01T12.99999999999999999999Z", 46799999],
+        ["1970-01-01T00:00:59.99999999999999999999Z", 59999],
+        ["1970-01-01T00:59.99999999999999999999Z", 3599999],
+        ["1970-01-01T23.99999999999999999999Z", 86399999],
+        ["1970-01-01T24.00000000000000000000Z", 86400000],
+      ])("preserves whole milliseconds for %s", (input, expected) => {
+        expect(parseISO(input).getTime()).toBe(expected);
       });
 
       it("parses , as decimal mark", () => {
@@ -402,6 +447,23 @@ describe("parseISO", () => {
           in: tz("America/Los_Angeles"),
         }).toISOString(),
       ).toBe("2024-04-10T00:00:00.000-07:00");
+    });
+
+    it("preserves sub-ms precision handling in date extension contexts", () => {
+      const input = "2022-10-24T23:59:59.999999999+02:00";
+      const utcResult = parseISO(input, { in: (value) => new UTCDate(value) });
+      expect(utcResult).toBeInstanceOf(UTCDate);
+      expect(utcResult.toISOString()).toBe("2022-10-24T21:59:59.999Z");
+
+      const zonedResult = parseISO(input, { in: tz("Asia/Singapore") });
+      expect(zonedResult).toBeInstanceOf(TZDate);
+      expect(zonedResult.toISOString()).toBe("2022-10-25T05:59:59.999+08:00");
+
+      expect(
+        parseISO("2022-10-24T23:59:59.999999999", {
+          in: tz("Asia/Singapore"),
+        }).toISOString(),
+      ).toBe("2022-10-24T23:59:59.999+08:00");
     });
 
     it("resolves the context date type", () => {
