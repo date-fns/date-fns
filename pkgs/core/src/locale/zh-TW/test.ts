@@ -1,8 +1,48 @@
 import { describe, expect, it } from "vitest";
+import { format } from "../../format/index.ts";
 import { parse } from "../../parse/index.ts";
 import { zhTW } from "./index.ts";
 
 describe("zh-TW locale", () => {
+  it("matches narrow morning and preserves the remaining input", () => {
+    expect(zhTW.match.dayPeriod("早 rest", { width: "narrow" })).toEqual({
+      value: "morning",
+      rest: " rest",
+    });
+  });
+
+  it.each([
+    ["早上", 6],
+    ["正午", 12],
+    ["凌晨", 2],
+    ["午夜", 0],
+    ["上午", 9],
+    ["下午", 15],
+    ["晚上", 20],
+  ])("retains the existing %s day period", (label, hour) => {
+    const text = `${label} ${hour % 12 || 12}:30`;
+    expect(
+      parse(text, "B h:mm", new Date(2024, 0, 1), { locale: zhTW }),
+    ).toEqual(new Date(2024, 0, 1, hour, 30));
+  });
+
+  it.each([
+    ["B", 6, "早晨"],
+    ["BBBB", 6, "早晨"],
+    ["B", 2, "夜間"],
+    ["BBBB", 2, "夜間"],
+    ["BBBBB", 2, "夜"],
+    ["bbbbb", 12, "午"],
+  ])("parses its formatted %s day period at hour %i", (token, hour, label) => {
+    const date = new Date(2024, 3, 4, hour, 30);
+    const pattern = `yyyy-MM-dd ${token} h:mm`;
+    const text = format(date, pattern, { locale: zhTW });
+    expect(text).toContain(` ${label} `);
+    expect(
+      parse(text, pattern, new Date(2024, 0, 1), { locale: zhTW }),
+    ).toEqual(date);
+  });
+
   it("parses October with localized month tokens", () => {
     expect(
       parse("2022年10月27日", "yyyy年MMMdd日", new Date(), {

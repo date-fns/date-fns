@@ -71,18 +71,18 @@ const parseDayPatterns = {
 };
 
 const matchDayPeriodPatterns = {
-  any: /^(上午?|下午?|午夜|[中正]午|早上?|下午|晚上?|凌晨)/i,
+  any: /^(上午?|下午?|午夜|[中正]?午|早(晨|上)?|晚上?|凌晨|夜間?)/i,
 };
 const parseDayPeriodPatterns = {
   any: {
     am: /^上午?/i,
     pm: /^下午?/i,
     midnight: /^午夜/i,
-    noon: /^[中正]午/i,
-    morning: /^早上/i,
+    noon: /^[中正]?午/i,
+    morning: /^早(晨|上)?/i,
     afternoon: /^下午/i,
     evening: /^晚上?/i,
-    night: /^凌晨/i,
+    night: /^(凌晨|夜間?)/i,
   },
 };
 
