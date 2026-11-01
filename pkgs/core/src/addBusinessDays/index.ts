@@ -30,7 +30,7 @@ export interface AddBusinessDaysOptions<
  * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
  *
  * @param date - The date to be changed
- * @param amount - The amount of business days to be added.
+ * @param amount - The amount of business days to be added, truncated toward zero
  * @param options - An object with options
  *
  * @returns The new date with the business days added
@@ -52,6 +52,8 @@ export function addBusinessDays<
   const startedOnWeekend = isWeekend(_date, options);
 
   if (isNaN(amount)) return constructFrom(options?.in, NaN);
+
+  amount = Math.trunc(amount);
 
   const hours = _date.getHours();
   const sign = amount < 0 ? -1 : 1;
