@@ -72,13 +72,13 @@ const dayValues = {
   short: ["Su", "Ll", "Ma", "Me", "Ia", "Gw", "Sa"] as const,
   abbreviated: ["Sul", "Llun", "Maw", "Mer", "Iau", "Gwe", "Sad"] as const,
   wide: [
-    "dydd Sul",
-    "dydd Llun",
-    "dydd Mawrth",
-    "dydd Mercher",
-    "dydd Iau",
-    "dydd Gwener",
-    "dydd Sadwrn",
+    "Dydd Sul",
+    "Dydd Llun",
+    "Dydd Mawrth",
+    "Dydd Mercher",
+    "Dydd Iau",
+    "Dydd Gwener",
+    "Dydd Sadwrn",
   ] as const,
 };
 
