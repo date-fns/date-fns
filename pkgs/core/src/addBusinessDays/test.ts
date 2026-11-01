@@ -16,6 +16,28 @@ describe("addBusinessDays", () => {
     expect(result).toEqual(new Date(2014, 8 /* Sep */, 1));
   });
 
+  it.each([
+    [0.5, 8],
+    [-0.5, 8],
+    [1.5, 9],
+    [-1.5, 5],
+    [5.5, 15],
+    [-5.5, 1],
+  ])("truncates %s business days toward zero", (amount, day) => {
+    const date = new Date(2024, 0, 8, 12, 30);
+    const result = addBusinessDays(date, amount);
+    expect(result).toEqual(new Date(2024, 0, day, 12, 30));
+    expect(date).toEqual(new Date(2024, 0, 8, 12, 30));
+  });
+
+  it.each([0.5, -0.5])(
+    "preserves weekends when %s truncates to zero",
+    (amount) => {
+      const date = new Date(2024, 0, 6, 12, 30);
+      expect(addBusinessDays(date, amount)).toEqual(date);
+    },
+  );
+
   it("returns the Monday when 1 day is added on the Friday", () => {
     expect(addBusinessDays(new Date(2020, 0 /* Jan */, 10), 1)).toEqual(
       // Friday

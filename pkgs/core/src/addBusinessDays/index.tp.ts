@@ -17,6 +17,8 @@ export function tpyAddBusinessDays<
   let [temporal, invalidDate] = toTpInstant(date, options);
   if (!temporal || isNaN(amount)) return invalidDate;
 
+  amount = Math.trunc(amount);
+
   const startedOnWeekend = tpIsWeekend(temporal);
   const hours = temporal.hour;
   const sign = amount < 0 ? -1 : 1;
