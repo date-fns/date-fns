@@ -20,7 +20,7 @@ export const cy: Locale = {
   localize: localize,
   match: match,
   options: {
-    weekStartsOn: 0 /* Sunday */,
+    weekStartsOn: 1 /* Monday */,
     firstWeekContainsDate: 1,
   },
 };
