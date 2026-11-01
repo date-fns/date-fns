@@ -1864,6 +1864,45 @@ describe("parse", () => {
     });
   });
 
+  describe("timezone component validation", () => {
+    (
+      [
+        ["X", "0160", "0159", 119 * 60_000],
+        ["XX", "0160", "0159", 119 * 60_000],
+        ["XXX", "01:60", "01:59", 119 * 60_000],
+        ["XXXX", "0160", "0159", 119 * 60_000],
+        ["XXXXX", "01:60", "01:59", 119 * 60_000],
+        ["XXXX", "015960", "015959", 119 * 60_000 + 59_000],
+        ["XXXXX", "01:59:60", "01:59:59", 119 * 60_000 + 59_000],
+      ] as const
+    ).forEach(([upperToken, invalidOffset, validOffset, milliseconds]) => {
+      [upperToken, upperToken.toLowerCase()].forEach((token) => {
+        ["+", "-"].forEach((sign) => {
+          it(`rejects the out-of-range offset ${sign}${invalidOffset} with ${token}`, () => {
+            const result = parse(
+              `2016-11-25T16:38:38.123${sign}${invalidOffset}`,
+              `yyyy-MM-dd'T'HH:mm:ss.SSS${token}`,
+              referenceDate,
+            );
+            expect(result).toEqual(new Date(NaN));
+          });
+
+          it(`accepts the boundary offset ${sign}${validOffset} with ${token}`, () => {
+            const result = parse(
+              `2016-11-25T16:38:38.123${sign}${validOffset}`,
+              `yyyy-MM-dd'T'HH:mm:ss.SSS${token}`,
+              referenceDate,
+            );
+            const offset = milliseconds * (sign === "+" ? 1 : -1);
+            expect(result).toEqual(
+              new Date(Date.parse("2016-11-25T16:38:38.123Z") - offset),
+            );
+          });
+        });
+      });
+    });
+  });
+
   describe("seconds timestamp", () => {
     it("numeric", () => {
       const result = parse("512969520", "t", referenceDate);
