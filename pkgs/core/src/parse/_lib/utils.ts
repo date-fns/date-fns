@@ -60,6 +60,10 @@ export function parseTimezonePattern(
   const minutes = matchResult[3] ? parseInt(matchResult[3], 10) : 0;
   const seconds = matchResult[5] ? parseInt(matchResult[5], 10) : 0;
 
+  if (minutes > 59 || seconds > 59) {
+    return null;
+  }
+
   return {
     value:
       sign *
