@@ -21,7 +21,7 @@ export const ckb: Locale = {
   localize,
   match,
   options: {
-    weekStartsOn: 0 /* Sunday */,
+    weekStartsOn: 6 /* Saturday */,
     firstWeekContainsDate: 1,
   },
 };
