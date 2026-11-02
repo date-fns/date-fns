@@ -37,13 +37,19 @@ export interface IsWithinIntervalOptions extends ContextOptions<Date> {}
  * // => false
  *
  * @example
- * // For date equal to the interval start:
- * isWithinInterval(date, { start, end: date })
+ * // For the date equal to the interval start:
+ * isWithinInterval(new Date(2014, 0, 1), {
+ *   start: new Date(2014, 0, 1),
+ *   end: new Date(2014, 0, 7)
+ * })
  * // => true
  *
  * @example
- * // For date equal to the interval end:
- * isWithinInterval(date, { start: date, end })
+ * // For the date equal to the interval end:
+ * isWithinInterval(new Date(2014, 0, 7), {
+ *   start: new Date(2014, 0, 1),
+ *   end: new Date(2014, 0, 7)
+ * })
  * // => true
  */
 export function isWithinInterval(
