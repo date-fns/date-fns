@@ -20,10 +20,10 @@ const parseEraPatterns = {
 const matchQuarterPatterns = {
   narrow: /^[1234]/i,
   abbreviated: /^ति[1234]/i,
-  wide: /^[1234](पहली|दूसरी|तीसरी|चौथी)? तिमाही/i,
+  wide: /^([1234]?(पहली|दूसरी|तीसरी|चौथी)|[1234]) तिमाही/i,
 };
 const parseQuarterPatterns = {
-  any: [/1/i, /2/i, /3/i, /4/i] as const,
+  any: [/1|पहली/i, /2|दूसरी/i, /3|तीसरी/i, /4|चौथी/i] as const,
 };
 
 const matchMonthPatterns = {
