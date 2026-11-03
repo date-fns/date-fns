@@ -12,7 +12,7 @@ const matchEraPatterns = {
   wide: /^(ઈસવીસન\sપૂર્વે|ઈસવીસન)/i,
 };
 const parseEraPatterns = {
-  any: [/^ઈસપૂ/i, /^ઈસ/i] as const,
+  any: [/^(ઈસપૂ|ઈ\.સ\.પૂર્વે|ઈસવીસન\sપૂર્વે)/i, /^(ઈસ|ઈ\.સ\.)/i] as const,
 };
 
 const matchQuarterPatterns = {
