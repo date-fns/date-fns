@@ -475,6 +475,16 @@ describe("TZDate", () => {
           date.setFullYear(2021);
           expect(date.toISOString()).toBe("2021-01-01T00:00:00.000-05:00");
         }
+        {
+          const date = new TZDate(1880, 0, 1, "Asia/Singapore");
+          date.setFullYear(1881);
+          expect(date.toISOString()).toBe("1881-01-01T00:00:00.000+06:55");
+        }
+        {
+          const date = new TZDate(1880, 0, 1, "America/New_York");
+          date.setFullYear(1881);
+          expect(date.toISOString()).toBe("1881-01-01T00:00:00.000-04:56");
+        }
       });
 
       it("returns the timestamp after setting", () => {
@@ -640,6 +650,16 @@ describe("TZDate", () => {
           const date = new TZDate(2020, 0, 1, "America/New_York");
           date.setMonth(1);
           expect(date.toISOString()).toBe("2020-02-01T00:00:00.000-05:00");
+        }
+        {
+          const date = new TZDate(1880, 0, 1, "Asia/Singapore");
+          date.setMonth(1);
+          expect(date.toISOString()).toBe("1880-02-01T00:00:00.000+06:55");
+        }
+        {
+          const date = new TZDate(1880, 0, 1, "America/New_York");
+          date.setMonth(1);
+          expect(date.toISOString()).toBe("1880-02-01T00:00:00.000-04:56");
         }
       });
 
@@ -807,6 +827,16 @@ describe("TZDate", () => {
           date.setDate(2);
           expect(date.toISOString()).toBe("2020-01-02T00:00:00.000-05:00");
         }
+        {
+          const date = new TZDate(1880, 0, 1, "Asia/Singapore");
+          date.setDate(2);
+          expect(date.toISOString()).toBe("1880-01-02T00:00:00.000+06:55");
+        }
+        {
+          const date = new TZDate(1880, 0, 1, "America/New_York");
+          date.setDate(2);
+          expect(date.toISOString()).toBe("1880-01-02T00:00:00.000-04:56");
+        }
       });
 
       it("returns the timestamp after setting", () => {
@@ -968,8 +998,18 @@ describe("TZDate", () => {
         }
         {
           const date = new TZDate(2020, 0, 1, "America/New_York");
-          date.setDate(14);
-          expect(date.toISOString()).toBe("2020-01-14T00:00:00.000-05:00");
+          date.setHours(14);
+          expect(date.toISOString()).toBe("2020-01-01T14:00:00.000-05:00");
+        }
+        {
+          const date = new TZDate(1880, 0, 1, "Asia/Singapore");
+          date.setHours(14);
+          expect(date.toISOString()).toBe("1880-01-01T14:00:00.000+06:55");
+        }
+        {
+          const date = new TZDate(1880, 0, 1, "America/New_York");
+          date.setHours(14);
+          expect(date.toISOString()).toBe("1880-01-01T14:00:00.000-04:56");
         }
       });
 
@@ -1166,6 +1206,16 @@ describe("TZDate", () => {
           date.setMinutes(30);
           expect(date.toISOString()).toBe("2020-01-01T00:30:00.000-05:00");
         }
+        {
+          const date = new TZDate(1880, 0, 1, "Asia/Singapore");
+          date.setMinutes(30);
+          expect(date.toISOString()).toBe("1880-01-01T00:30:00.000+06:55");
+        }
+        {
+          const date = new TZDate(1880, 0, 1, "America/New_York");
+          date.setMinutes(30);
+          expect(date.toISOString()).toBe("1880-01-01T00:30:00.000-04:56");
+        }
       });
 
       it("returns the timestamp after setting", () => {
@@ -1348,12 +1398,12 @@ describe("TZDate", () => {
         {
           const date = new TZDate(1880, 0, 1, "Asia/Singapore");
           date.setSeconds(56);
-          expect(date.toISOString()).toBe("1880-01-01T00:00:31.000+06:55"); // 56s - 25s = 31s
+          expect(date.toISOString()).toBe("1880-01-01T00:00:56.000+06:55");
         }
         {
           const date = new TZDate(1880, 0, 1, "America/New_York");
           date.setSeconds(56);
-          expect(date.toISOString()).toBe("1880-01-01T00:00:58.000-04:56"); // 56s + 2s = 58s
+          expect(date.toISOString()).toBe("1880-01-01T00:00:56.000-04:56");
         }
       });
 
@@ -1427,14 +1477,14 @@ describe("TZDate", () => {
           expect(utcStr(date)).toBe("2020-01-01T05:00:56.000Z");
         }
         {
-          // 1880-12-31 17:04:35 (UTC) -> ...
+          // 1879-12-31 17:04:35 (UTC) -> ...
           const date = new TZDate(1880, 0, 1, "Asia/Singapore");
-          // ... -> 1880-12-31 17:05:56 (UTC) ->
+          // ... -> 1879-12-31 17:04:56 (UTC) ->
           date.setUTCSeconds(56);
           expect(utcStr(date)).toBe("1879-12-31T17:04:56.000Z");
         }
         {
-          // 1880-01-01 04:56:58 (UTC) -> ...
+          // 1880-01-01 04:56:02 (UTC) -> ...
           const date = new TZDate(1880, 0, 1, "America/New_York");
           // ... -> 1880-01-01 04:56:56 (UTC) ->
           date.setUTCSeconds(56);
@@ -1552,6 +1602,16 @@ describe("TZDate", () => {
           const date = new TZDate(2020, 0, 1, "America/New_York");
           date.setMilliseconds(789);
           expect(date.toISOString()).toBe("2020-01-01T00:00:00.789-05:00");
+        }
+        {
+          const date = new TZDate(1880, 0, 1, "Asia/Singapore");
+          date.setMilliseconds(789);
+          expect(date.toISOString()).toBe("1880-01-01T00:00:00.789+06:55");
+        }
+        {
+          const date = new TZDate(1880, 0, 1, "America/New_York");
+          date.setMilliseconds(789);
+          expect(date.toISOString()).toBe("1880-01-01T00:00:00.789-04:56");
         }
       });
 

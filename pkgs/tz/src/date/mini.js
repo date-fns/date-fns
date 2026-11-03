@@ -224,7 +224,7 @@ function adjustToSystemTZ(date, constructorArgs) {
   //#region Initial offset calculation
 
   // Current target time zone offset at the native timestamp. It may include
-  // historical offset seconds, which we preserve for the seconds adjustment.
+  // historical offset seconds.
   const offsetWithSeconds = tzOffset(date.timeZone, date);
 
   // Minute-precision target offset used by minute-based timestamp adjustments.
@@ -346,8 +346,9 @@ function adjustToSystemTZ(date, constructorArgs) {
   //
   // This adjustment applies the remaining seconds difference to external. For
   // example, historical Singapore used UTC+06:55:25, while ISO formatting shows
-  // only `+06:55`; without the seconds correction, setter paths keep the wrong
-  // wall-clock seconds.
+  // only `+06:55`; after the minute-precision adjustment, external is 25 seconds
+  // after the correct timestamp, so it reads as the wrong wall-clock seconds in
+  // the target time zone.
 
   // Clone external as a native `Date` so we can inspect how the system time zone
   // represents the same timestamp.
@@ -370,13 +371,15 @@ function adjustToSystemTZ(date, constructorArgs) {
 
   if (secondsOffset || systemSecondsOffset)
     // Apply the remaining second-level system-target difference to external.
+    // In this example, the system time zone has no offset seconds, so
+    // `systemSecondsOffset` is 0:
     //
-    //   o  external as Asia/Singapore: 1900-01-01 00:00:56
+    //   o  external as Asia/Singapore: 1900-01-01 00:01:21
     //   |
-    //   |  + `secondsOffset`
+    //   |  + `secondsOffset` (-25 seconds)
     //   |  + `systemSecondsOffset`
     //   v
-    //   x  external as Asia/Singapore: 1900-01-01 00:00:31
+    //   x  external as Asia/Singapore: 1900-01-01 00:00:56
     //
     Date.prototype.setUTCSeconds.call(
       date,
@@ -396,8 +399,8 @@ function adjustToSystemTZ(date, constructorArgs) {
   // with the move that would be calculated at the new timestamp, then apply the
   // difference to external.
 
-  // Target offset at the current external timestamp, including historical
-  // seconds for the later seconds adjustment.
+  // Target offset at the current external timestamp. It may include historical
+  // offset seconds.
   const postOffsetWithSeconds = tzOffset(date.timeZone, date);
 
   // Minute-precision target offset at the current external timestamp.
@@ -494,10 +497,7 @@ function adjustToSystemTZ(date, constructorArgs) {
   // Native Date can normalize historical system offsets with minute and second
   // precision before we adjust to the target time zone. Correct only small
   // historical drift so DST gap normalization (usually one hour) remains intact.
-  const expectedTime = constructorArgs
-    ? expectedInternalTime
-    : expectedInternalTime + secondsOffset * 1000;
-  const drift = expectedTime - +date.internal;
+  const drift = expectedInternalTime - +date.internal;
 
   if (drift && Math.abs(drift) < 30 * 60 * 1000) {
     Date.prototype.setTime.call(date, +date + drift);

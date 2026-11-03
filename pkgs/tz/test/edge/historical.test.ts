@@ -6,7 +6,7 @@ describe("historical offset seconds", () => {
     const date = new TZDate(1900, 0, 1, "Asia/Singapore");
     date.setSeconds(56);
 
-    expect(date.toISOString()).toBe("1900-01-01T00:00:31.000+06:55");
+    expect(date.toISOString()).toBe("1900-01-01T00:00:56.000+06:55");
   });
 
   it("does not leak system-zone offset seconds into constructors", () => {
@@ -23,6 +23,6 @@ describe("historical offset seconds", () => {
     const date = new TZDate(1880, 0, 1, "Asia/Singapore");
     date.setSeconds(56);
 
-    expect(date.toISOString()).toBe("1880-01-01T00:00:31.000+06:55");
+    expect(date.toISOString()).toBe("1880-01-01T00:00:56.000+06:55");
   });
 });

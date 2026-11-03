@@ -1,4 +1,9 @@
-import { eachDayOfInterval, eachHourOfInterval, parse } from "date-fns";
+import {
+  eachDayOfInterval,
+  eachHourOfInterval,
+  parse,
+  startOfDay,
+} from "date-fns";
 import { describe, expect, it } from "vitest";
 import { TZDate } from "./date/index.js";
 import { tz } from "./tz/index.ts";
@@ -90,6 +95,17 @@ describe("date-fns integration", () => {
       expect(
         parse("2023-03-13 03:30", format, new Date(), { in: ny }).toISOString(),
       ).toBe("2023-03-13T03:30:00.000-04:00");
+    });
+  });
+
+  describe("historical offsets with seconds", () => {
+    it("keeps the day in startOfDay", () => {
+      // Berlin used UTC+00:53:28 until 1893, so shifting the wall-clock time
+      // by the offset seconds would move midnight to the previous day.
+      const date = new TZDate(1870, 2, 15, 10, "Europe/Berlin");
+      expect(startOfDay(date).toISOString()).toBe(
+        "1870-03-15T00:00:00.000+00:53",
+      );
     });
   });
 });
