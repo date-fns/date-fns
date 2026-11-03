@@ -9,6 +9,8 @@ set -ex
 export NODE_ENV=test
 
 echo "Running DST tests"
+env TZ=America/New_York node ./test/dst/roundToNearestMinutes/basic.ts
+env TZ=Australia/Lord_Howe node ./test/dst/roundToNearestMinutes/basic.ts
 env TZ=America/Sao_Paulo node ./test/dst/parseISO/basic.ts
 env TZ=Australia/Sydney node ./test/dst/parseISO/sydney.ts
 env TZ=Pacific/Apia node ./test/dst/parseISO/samoa.ts

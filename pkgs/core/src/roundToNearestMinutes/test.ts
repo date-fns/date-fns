@@ -274,6 +274,27 @@ describe("roundToNearestMinutes", () => {
   });
 
   describe("context", () => {
+    it("preserves the repeated minute in the specified time zone", () => {
+      const date = new Date("2024-11-03T06:30:15.123Z");
+      const result = roundToNearestMinutes(date, {
+        roundingMethod: "ceil",
+        in: tz("America/New_York"),
+      });
+
+      expect(result).toBeInstanceOf(TZDate);
+      expect(result.toISOString()).toBe("2024-11-03T01:31:00.000-05:00");
+      expect(date.toISOString()).toBe("2024-11-03T06:30:15.123Z");
+    });
+
+    it("rounds to local increments in a quarter-hour-offset time zone", () => {
+      expect(
+        roundToNearestMinutes("2024-04-10T07:00:00Z", {
+          nearestTo: 7,
+          in: tz("Asia/Kathmandu"),
+        }).toISOString(),
+      ).toBe("2024-04-10T12:42:00.000+05:45");
+    });
+
     it("allows to specify the context", () => {
       expect(
         roundToNearestMinutes("2024-04-10T07:00:00Z", {
