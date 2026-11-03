@@ -1,4 +1,5 @@
 import { getRoundingMethod } from "../_lib/getRoundingMethod/index.ts";
+import { getTimezoneOffsetInMilliseconds } from "../_lib/getTimezoneOffsetInMilliseconds/index.ts";
 import { constructFrom } from "../constructFrom/index.ts";
 import { toDate } from "../toDate/index.ts";
 import type {
@@ -87,6 +88,13 @@ export function roundToNearestHours<
 
   const roundedHours = roundingMethod(hours / nearestTo) * nearestTo;
 
+  const offset = getTimezoneOffsetInMilliseconds(date_);
   date_.setHours(roundedHours, 0, 0, 0);
+  const roundedOffset = getTimezoneOffsetInMilliseconds(date_);
+  if (roundedOffset !== offset) {
+    const adjustedDate = constructFrom(date_, +date_ + offset - roundedOffset);
+    if (getTimezoneOffsetInMilliseconds(adjustedDate) === offset)
+      return adjustedDate;
+  }
   return date_;
 }

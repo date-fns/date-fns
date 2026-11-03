@@ -260,6 +260,15 @@ describe("roundToNearestHours", () => {
   });
 
   describe("context", () => {
+    it("preserves the repeated hour in the specified time zone", () => {
+      const date = new TZDate("2024-11-03T06:15:00Z", "America/New_York");
+      const result = roundToNearestHours(date, { roundingMethod: "floor" });
+
+      expect(result).toBeInstanceOf(TZDate);
+      expect(result.toISOString()).toBe("2024-11-03T01:00:00.000-05:00");
+      expect(date.toISOString()).toBe("2024-11-03T01:15:00.000-05:00");
+    });
+
     it("allows to specify the context", () => {
       expect(
         roundToNearestHours("2024-04-10T07:00:00Z", {
