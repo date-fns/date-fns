@@ -75,6 +75,15 @@ const matchDayPatterns = {
 };
 const parseDayPatterns = {
   narrow: [/^p/i, /^p/i, /^s/i, /^ç/i, /^p/i, /^c/i, /^c/i] as const,
+  abbreviated: [
+    /^paz/i,
+    /^pzt/i,
+    /^sal/i,
+    /^çar/i,
+    /^per/i,
+    /^cum/i,
+    /^cts/i,
+  ] as const,
   any: [/^pz/i, /^pt/i, /^sa/i, /^ça/i, /^pe/i, /^cu/i, /^ct/i] as const,
   wide: [
     /^pazar(?!tesi)/i,
