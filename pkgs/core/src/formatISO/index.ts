@@ -15,6 +15,7 @@ export interface FormatISOOptions
  *
  * @description
  * Return the formatted date string in ISO 8601 format. Options may be passed to control the parts and notations of the date.
+ * The time zone offset is truncated to minute precision.
  *
  * @param date - The original date
  * @param options - An object with options.
@@ -78,7 +79,7 @@ export function formatISO(
     const offset = date_.getTimezoneOffset();
 
     if (offset !== 0) {
-      const absoluteOffset = Math.abs(offset);
+      const absoluteOffset = Math.trunc(Math.abs(offset));
       const hourOffset = addLeadingZeros(Math.trunc(absoluteOffset / 60), 2);
       const minuteOffset = addLeadingZeros(absoluteOffset % 60, 2);
       // If less than 0, the sign is +, because it is ahead of time.

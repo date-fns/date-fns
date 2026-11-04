@@ -61,6 +61,43 @@ describe("formatISO", () => {
     );
   });
 
+  it.each([
+    { offset: 1.25, suffix: "-00:01" },
+    { offset: -1.25, suffix: "+00:01" },
+    { offset: 59.75, suffix: "-00:59" },
+    { offset: -59.75, suffix: "+00:59" },
+    { offset: 60.75, suffix: "-01:00" },
+    { offset: -60.75, suffix: "+01:00" },
+    { offset: 0.75, suffix: "-00:00" },
+    { offset: -0.75, suffix: "+00:00" },
+    { offset: 345, suffix: "-05:45" },
+    { offset: -345, suffix: "+05:45" },
+    { offset: 0, suffix: "Z" },
+  ])("formats the offset $offset at minute precision", ({ offset, suffix }) => {
+    const date = new Date(2019, 2 /* Mar */, 3, 19, 0, 52, 123);
+    const timestamp = date.getTime();
+    const getTimezoneOffsetStub = vi
+      .spyOn(Date.prototype, "getTimezoneOffset")
+      .mockReturnValue(offset);
+
+    try {
+      expect(formatISO(date)).toBe(`2019-03-03T19:00:52${suffix}`);
+      expect(formatISO(date, { format: "basic" })).toBe(
+        `20190303T190052${suffix}`,
+      );
+      expect(formatISO(date, { representation: "time" })).toBe(
+        `19:00:52${suffix}`,
+      );
+      expect(formatISO(date, { representation: "time", format: "basic" })).toBe(
+        `190052${suffix}`,
+      );
+      expect(formatISO(date, { representation: "date" })).toBe("2019-03-03");
+      expect(date.getTime()).toBe(timestamp);
+    } finally {
+      getTimezoneOffsetStub.mockRestore();
+    }
+  });
+
   it("throws RangeError if the time value is invalid", () => {
     expect(formatISO.bind(null, new Date(NaN))).toThrow(RangeError);
   });
