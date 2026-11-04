@@ -66,12 +66,13 @@ const parseMonthPatterns = {
 const matchDayPatterns = {
   narrow: /^[spotc]/i,
   short: /^(sv|pi|o|t|c|pk|s)/i,
-  abbreviated: /^(svētd\.|pirmd\.|otrd.\|trešd\.|ceturtd\.|piektd\.|sestd\.)/i,
+  abbreviated: /^(svētd\.|pirmd\.|otrd\.|trešd\.|ceturtd\.|piektd\.|sestd\.)/i,
   wide: /^(svētdien(a|ā)|pirmdien(a|ā)|otrdien(a|ā)|trešdien(a|ā)|ceturtdien(a|ā)|piektdien(a|ā)|sestdien(a|ā))/i,
 };
 const parseDayPatterns = {
   narrow: [/^s/i, /^p/i, /^o/i, /^t/i, /^c/i, /^p/i, /^s/i] as const,
-  any: [/^sv/i, /^pi/i, /^o/i, /^t/i, /^c/i, /^p/i, /^se/i] as const,
+  short: [/^sv/i, /^pi/i, /^o/i, /^t/i, /^c/i, /^pk/i, /^s/i] as const,
+  any: [/^sv/i, /^pirm/i, /^o/i, /^t/i, /^c/i, /^piekt/i, /^se/i] as const,
 };
 
 const matchDayPeriodPatterns = {
