@@ -63,7 +63,8 @@ const parseMonthPatterns = {
 const matchDayPatterns = {
   narrow: /^[petknrl]/i,
   short: /^[petknrl]/i,
-  abbreviated: /^(püh?|esm?|tei?|kolm?|nel?|ree?|laup?)\.?/i,
+  abbreviated:
+    /^(pühap|esmasp|teisip|kolmap|neljap|reede|püh?|esm?|tei?|kolm?|nel?|ree?|laup?)\.?/i,
   wide: /^(pühapäev|esmaspäev|teisipäev|kolmapäev|neljapäev|reede|laupäev)/i,
 };
 const parseDayPatterns = {
