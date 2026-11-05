@@ -64,7 +64,7 @@ const parseMonthPatterns = {
 const matchDayPatterns = {
   narrow: /^[κδτπσ]/i,
   short: /^(κυ|δε|τρ|τε|π[εέ]|π[αά]|σ[αά])/i,
-  abbreviated: /^(κυρ|δευ|τρι|τετ|πεμ|παρ|σαβ)/i,
+  abbreviated: /^(κυρ|δευ|τρ[ίι]|τετ|π[έε]μ|παρ|σ[άα]β)/i,
   wide: /^(κυριακ(ή|η)|δευτ(έ|ε)ρα|τρ(ί|ι)τη|τετ(ά|α)ρτη|π(έ|ε)μπτη|παρασκευ(ή|η)|σ(ά|α)ββατο)/i,
 };
 const parseDayPatterns = {
