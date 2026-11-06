@@ -9,7 +9,7 @@ const parseOrdinalNumberPattern = /\d+/i;
 const matchEraPatterns = {
   narrow: /^([ap]k)/i,
   abbreviated: /^([ap]\.?\s?k\.?\s?e\.?)/i,
-  wide: /^((antaǔ |post )?komuna erao)/i,
+  wide: /^((anta[ŭǔ] |post )?komuna erao)/i,
 };
 const parseEraPatterns = {
   any: [/^a/i, /^[kp]/i] as const,
