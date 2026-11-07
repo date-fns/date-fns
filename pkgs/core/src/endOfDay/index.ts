@@ -45,6 +45,12 @@ export function endOfDay<
   options?: EndOfDayOptions<ResultDate> | undefined,
 ): ResultDate {
   const _date = toDate(date, options?.in);
-  _date.setHours(23, 59, 59, 999);
+
+  // Resolve the start of the next day and step back 1 ms, so a 23:59:59.999
+  // repeated by a DST fall-back never resolves to its first occurrence.
+  _date.setDate(_date.getDate() + 1);
+  _date.setHours(0, 0, 0, 0);
+  _date.setTime(_date.getTime() - 1);
+
   return _date;
 }

@@ -57,5 +57,14 @@ describe("endOfYesterday", { concurrent: false }, () => {
       expect(result).toBeInstanceOf(TZDate);
       assertType<assertType.Equal<TZDate, typeof result>>(true);
     });
+
+    it("resolves a repeated (DST) end of yesterday to its last occurrence", () => {
+      // In America/Santiago, DST ends at midnight on 2026-04-05, so the last
+      // hour of April 4 (yesterday) happens twice: first at -03:00, then at
+      // -04:00.
+      fakeNow(new Date("2026-04-05T12:00:00-04:00"));
+      const result = endOfYesterday({ in: tz("America/Santiago") });
+      expect(result.toISOString()).toBe("2026-04-04T23:59:59.999-04:00");
+    });
   });
 });

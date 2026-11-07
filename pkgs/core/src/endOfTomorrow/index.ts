@@ -45,7 +45,13 @@ export function endOfTomorrow<
   const day = now.getDate();
 
   const date = constructNow(options?.in);
-  date.setFullYear(year, month, day + 1);
-  date.setHours(23, 59, 59, 999);
+
+  // Resolve the start of the day after tomorrow and step back 1 ms, so a
+  // 23:59:59.999 repeated by a DST fall-back never resolves to its first
+  // occurrence.
+  date.setFullYear(year, month, day + 2);
+  date.setHours(0, 0, 0, 0);
+  date.setTime(date.getTime() - 1);
+
   return options?.in ? options.in(date) : (date as ResultDate);
 }
