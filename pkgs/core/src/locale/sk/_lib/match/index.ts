@@ -64,7 +64,7 @@ const matchDayPatterns = {
   narrow: /^[npusšp]/i,
   short: /^(ne|po|ut|st|št|pi|so)/i,
   abbreviated: /^(ne|po|ut|st|št|pi|so)/i,
-  wide: /^(nede[ľl]a|pondelok|utorok|streda|[šs]tvrtok|piatok|sobota])/i,
+  wide: /^(nede[ľl]a|pondelok|utorok|streda|[šs]tvrtok|piatok|sobota)/i,
 };
 const parseDayPatterns = {
   narrow: [/^n/i, /^p/i, /^u/i, /^s/i, /^š/i, /^p/i, /^s/i] as const,
