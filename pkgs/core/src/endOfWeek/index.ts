@@ -63,7 +63,8 @@ export function endOfWeek<
   const day = _date.getDay();
   const diff = (day < weekStartsOn ? -7 : 0) + 6 - (day - weekStartsOn);
 
-  _date.setDate(_date.getDate() + diff);
-  _date.setHours(23, 59, 59, 999);
+  _date.setDate(_date.getDate() + diff + 1);
+  _date.setHours(0, 0, 0, 0);
+  _date.setTime(_date.getTime() - 1);
   return _date;
 }

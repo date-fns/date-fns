@@ -43,7 +43,8 @@ export function endOfYear<
 >(date: DateArg<DateType>, options?: EndOfYearOptions<ResultDate>): ResultDate {
   const _date = toDate(date, options?.in);
   const year = _date.getFullYear();
-  _date.setFullYear(year + 1, 0, 0);
-  _date.setHours(23, 59, 59, 999);
+  _date.setFullYear(year + 1, 0, 1);
+  _date.setHours(0, 0, 0, 0);
+  _date.setTime(_date.getTime() - 1);
   return _date;
 }

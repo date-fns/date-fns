@@ -62,5 +62,11 @@ describe("endOfDay", () => {
       expect(result).toBeInstanceOf(TZDate);
       assertType<assertType.Equal<TZDate, typeof result>>(true);
     });
+    it("handles time zones where DST ends at midnight (repeated 23:xx hour)", () => {
+      const date = new Date("2026-04-05T03:30:00Z");
+      const result = endOfDay(date, { in: tz("America/Santiago") });
+      expect(result.toISOString()).toBe("2026-04-04T23:59:59.999-04:00");
+      expect(result.getTime()).toBeGreaterThan(date.getTime());
+    });
   });
 });
