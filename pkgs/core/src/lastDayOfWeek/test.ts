@@ -38,6 +38,30 @@ describe("lastDayOfWeek", () => {
     expect(result).toEqual(new Date(2014, 8 /* Sep */, 7));
   });
 
+  it("does not carry a midnight DST gap from the input day to the last day", () => {
+    const date = new TZDate(2018, 10 /* Nov */, 4, 12, "America/Sao_Paulo");
+    const result = lastDayOfWeek(date);
+
+    expect(result.toISOString()).toBe("2018-11-10T00:00:00.000-02:00");
+    expect(date.getHours()).toBe(12);
+  });
+
+  it("normalizes midnight on the last day when it falls in a DST gap", () => {
+    const date = new TZDate(2018, 10 /* Nov */, 1, 12, "America/Sao_Paulo");
+    const result = lastDayOfWeek(date, { weekStartsOn: 1 });
+
+    expect(result.toISOString()).toBe("2018-11-04T01:00:00.000-02:00");
+  });
+
+  it("does not carry the input time into a late-day DST gap on the last day", () => {
+    const date = new TZDate(2024, 2 /* Mar */, 25, 23, 30, "America/Nuuk");
+    const result = lastDayOfWeek(date);
+
+    expect(result.toISOString()).toBe("2024-03-30T00:00:00.000-02:00");
+    expect(date.getHours()).toBe(23);
+    expect(date.getMinutes()).toBe(30);
+  });
+
   it("accepts a timestamp", () => {
     const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0).getTime();
     const result = lastDayOfWeek(date);
