@@ -118,7 +118,7 @@ const patterns = {
 const dateRegex =
   /^-?(?:(\d{3})|(\d{2})(?:-?(\d{2}))?|W(\d{2})(?:-?(\d{1}))?|)$/;
 const timeRegex =
-  /^(\d{2}(?:[.,]\d*)?)(?::?(\d{2}(?:[.,]\d*)?))?(?::?(\d{2}(?:[.,]\d*)?))?$/;
+  /^(\d{2}(?:[.,]\d+)?)(?::?(\d{2}(?:[.,]\d+)?))?(?::?(\d{2}(?:[.,]\d+)?))?$/;
 const timezoneRegex = /^([+-])(\d{2})(?::?(\d{2}))?$/;
 
 function splitDateString(dateString: string): DateString {
@@ -221,7 +221,13 @@ function parseDateUnit(value: string): number {
 
 function parseTime(timeString: string): number {
   const captures = timeString.match(timeRegex);
-  if (!captures) return NaN; // Invalid ISO-formatted time
+  if (
+    !captures ||
+    (captures[2] && /[.,]/.test(captures[1])) ||
+    (captures[3] && /[.,]/.test(captures[2]))
+  ) {
+    return NaN; // Fractions are only allowed on the lowest-order component.
+  }
 
   const hours = parseTimeUnit(captures[1]);
   const minutes = parseTimeUnit(captures[2]);
