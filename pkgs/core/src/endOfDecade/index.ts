@@ -49,7 +49,12 @@ export function endOfDecade<
   const _date = toDate(date, options?.in);
   const year = _date.getFullYear();
   const decade = 9 + Math.floor(year / 10) * 10;
-  _date.setFullYear(decade, 11, 31);
-  _date.setHours(23, 59, 59, 999);
+
+  // Resolve the start of the next decade and step back 1 ms, so a 23:59:59.999
+  // repeated by a DST fall-back never resolves to its first occurrence.
+  _date.setFullYear(decade + 1, 0, 1);
+  _date.setHours(0, 0, 0, 0);
+  _date.setTime(_date.getTime() - 1);
+
   return _date;
 }

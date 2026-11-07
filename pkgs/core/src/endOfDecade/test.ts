@@ -71,5 +71,13 @@ describe("endOfDecade", () => {
       expect(result).toBeInstanceOf(TZDate);
       assertType<assertType.Equal<TZDate, typeof result>>(true);
     });
+
+    it("resolves the end of a decade after a repeated (DST) hour", () => {
+      // In America/Santiago, DST ends at midnight on 2026-04-05, so the last
+      // hour of April 4 happens twice.
+      const date = new Date("2026-04-04T23:30:00-04:00");
+      const result = endOfDecade(date, { in: tz("America/Santiago") });
+      expect(result.toISOString()).toBe("2029-12-31T23:59:59.999-03:00");
+    });
   });
 });

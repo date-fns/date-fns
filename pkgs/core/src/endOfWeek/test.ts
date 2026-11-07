@@ -125,5 +125,14 @@ describe("endOfWeek", () => {
       expect(result).toBeInstanceOf(TZDate);
       assertType<assertType.Equal<TZDate, typeof result>>(true);
     });
+
+    it("resolves a repeated (DST) end of the week to its last occurrence", () => {
+      // In America/Santiago, DST ends at midnight on 2026-04-05, so the last
+      // hour of April 4 (the week's last day) happens twice: first at -03:00,
+      // then at -04:00.
+      const date = new Date("2026-04-04T23:30:00-04:00");
+      const result = endOfWeek(date, { in: tz("America/Santiago") });
+      expect(result.toISOString()).toBe("2026-04-04T23:59:59.999-04:00");
+    });
   });
 });

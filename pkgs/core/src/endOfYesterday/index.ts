@@ -41,7 +41,12 @@ export function endOfYesterday<
 >(options?: EndOfYesterdayOptions<ResultDate> | undefined): ResultDate {
   const now = constructNow(options?.in);
   const date = constructFrom(options?.in, 0);
-  date.setFullYear(now.getFullYear(), now.getMonth(), now.getDate() - 1);
-  date.setHours(23, 59, 59, 999);
+
+  // Resolve the start of today and step back 1 ms, so a 23:59:59.999 repeated
+  // by a DST fall-back never resolves to its first occurrence.
+  date.setFullYear(now.getFullYear(), now.getMonth(), now.getDate());
+  date.setHours(0, 0, 0, 0);
+  date.setTime(date.getTime() - 1);
+
   return date;
 }
