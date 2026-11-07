@@ -341,6 +341,43 @@ describe("parseISO", () => {
       });
     });
 
+    describe("fractional time syntax", () => {
+      it.each([
+        ["12.5", "12:30:00"],
+        ["12,0", "12:00:00"],
+        ["12:30.5", "12:30:30"],
+        ["1230,5", "12:30:30"],
+        ["12:30.0", "12:30:00"],
+        ["12:30:45.5", "12:30:45.500"],
+        ["123045,5", "12:30:45.500"],
+      ])("accepts a fraction on the last component: %s", (time, expected) => {
+        expect(parseISO(`2014-02-11T${time}Z`)).toEqual(
+          new Date(`2014-02-11T${expected}Z`),
+        );
+      });
+
+      it.each([
+        "12.5:30",
+        "12,5:30:45",
+        "12:30.5:45",
+        "1230,5:45",
+        "12.0:00",
+        "12:30.0:00",
+      ])(
+        "rejects a fraction followed by a lower-order component: %s",
+        (time) => {
+          expect(parseISO(`2014-02-11T${time}Z`)).toEqual(new Date(NaN));
+        },
+      );
+
+      it.each(["12.", "12,", "12:30.", "12:30,", "12:30:45.", "12:30:45,"])(
+        "rejects a decimal separator without fraction digits: %s",
+        (time) => {
+          expect(parseISO(`2014-02-11T${time}Z`)).toEqual(new Date(NaN));
+        },
+      );
+    });
+
     describe("timezones", () => {
       it("returns `Invalid Date` for invalid timezone minutes", () => {
         const result = parseISO("2014-02-11T21:35:45+04:60");
