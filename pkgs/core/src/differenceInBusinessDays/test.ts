@@ -12,6 +12,23 @@ describe("differenceInBusinessDays", () => {
     expect(result).toBe(135);
   });
 
+  it("counts calendar weekdays across a skipped local date", () => {
+    // Samoa skipped Friday, 30 December 2011 when crossing the date line.
+    const thursday = new TZDate(2011, 11 /* Dec */, 29, "Pacific/Apia");
+    const saturday = new TZDate(2011, 11 /* Dec */, 31, "Pacific/Apia");
+
+    expect(differenceInBusinessDays(saturday, thursday)).toBe(2);
+    expect(differenceInBusinessDays(thursday, saturday)).toBe(-1);
+  });
+
+  it("counts full weeks consistently with partial weeks across a skipped date", () => {
+    const monday = new TZDate(2011, 11 /* Dec */, 26, "Pacific/Apia");
+    const nextMonday = new TZDate(2012, 0 /* Jan */, 2, "Pacific/Apia");
+
+    expect(differenceInBusinessDays(nextMonday, monday)).toBe(5);
+    expect(differenceInBusinessDays(monday, nextMonday)).toBe(-5);
+  });
+
   it("can handle long ranges", () => {
     const result = differenceInBusinessDays(
       new Date(15000, 0 /* Jan */, 1),

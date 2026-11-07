@@ -1,9 +1,6 @@
 import { normalizeDates } from "../_lib/normalizeDates/index.ts";
-import { addDays } from "../addDays/index.ts";
 import { differenceInCalendarDays } from "../differenceInCalendarDays/index.ts";
-import { isSameDay } from "../isSameDay/index.ts";
 import { isValid } from "../isValid/index.ts";
-import { isWeekend } from "../isWeekend/index.ts";
 import type { ContextOptions, DateArg } from "../types.ts";
 
 /**
@@ -85,13 +82,14 @@ export function differenceInBusinessDays(
   const weeks = Math.trunc(diff / 7);
 
   let result = weeks * 5;
-  let movingDate = addDays(earlierDate_, weeks * 7);
+  let day = earlierDate_.getDay();
+  let remainingDays = Math.abs(diff % 7);
 
-  // the loop below will run at most 6 times to account for the remaining days that don't makeup a full week
-  while (!isSameDay(laterDate_, movingDate)) {
-    // sign is used to account for both negative and positive differences
-    result += isWeekend(movingDate, options) ? 0 : sign;
-    movingDate = addDays(movingDate, sign);
+  // Count calendar weekdays directly so skipped local dates cannot stall the loop.
+  while (remainingDays > 0) {
+    result += day === 0 || day === 6 ? 0 : sign;
+    day = (day + sign + 7) % 7;
+    remainingDays -= 1;
   }
 
   // Prevent negative zero
