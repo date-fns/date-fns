@@ -88,7 +88,7 @@ export function parseNDigits(
     case 4:
       return parseNumericPattern(numericPatterns.fourDigits, dateString);
     default:
-      return parseNumericPattern(new RegExp("^\\d{1," + n + "}"), dateString);
+      return parseNumericPattern(new RegExp("^\\d{" + n + "}"), dateString);
   }
 }
 
@@ -106,8 +106,24 @@ export function parseNDigitsSigned(
     case 4:
       return parseNumericPattern(numericPatterns.fourDigitsSigned, dateString);
     default:
-      return parseNumericPattern(new RegExp("^-?\\d{1," + n + "}"), dateString);
+      return parseNumericPattern(new RegExp("^-?\\d{" + n + "}"), dateString);
   }
+}
+
+// Parses 1 to n digits. Used by the single-letter year tokens (`y`, `Y`, `R`,
+// `u`), which accept a variable-width number (e.g. `y` matches 44, 1, 1900).
+export function parseUpToNDigits(
+  n: number,
+  dateString: string,
+): ParseResult<number> {
+  return parseNumericPattern(new RegExp("^\\d{1," + n + "}"), dateString);
+}
+
+export function parseUpToNDigitsSigned(
+  n: number,
+  dateString: string,
+): ParseResult<number> {
+  return parseNumericPattern(new RegExp("^-?\\d{1," + n + "}"), dateString);
 }
 
 export function dayPeriodEnumToHours(dayPeriod: LocaleDayPeriod): number {

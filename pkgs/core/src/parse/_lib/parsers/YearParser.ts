@@ -1,7 +1,12 @@
 import type { Match } from "../../../locale/types.ts";
 import { Parser } from "../Parser.ts";
 import type { ParseFlags, ParseResult } from "../types.ts";
-import { mapValue, normalizeTwoDigitYear, parseNDigits } from "../utils.ts";
+import {
+  mapValue,
+  normalizeTwoDigitYear,
+  parseNDigits,
+  parseUpToNDigits,
+} from "../utils.ts";
 
 export interface YearParserValue {
   year: number;
@@ -32,7 +37,7 @@ export class YearParser extends Parser<YearParserValue> {
 
     switch (token) {
       case "y":
-        return mapValue(parseNDigits(4, dateString), valueCallback);
+        return mapValue(parseUpToNDigits(4, dateString), valueCallback);
       case "yo":
         return mapValue(
           match.ordinalNumber(dateString, {

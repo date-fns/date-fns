@@ -2,7 +2,7 @@ import { startOfISOWeek } from "../../../startOfISOWeek/index.ts";
 import { constructFrom } from "../../../constructFrom/index.ts";
 import { Parser } from "../Parser.ts";
 import type { ParseFlags, ParseResult } from "../types.ts";
-import { parseNDigitsSigned } from "../utils.ts";
+import { parseNDigitsSigned, parseUpToNDigitsSigned } from "../utils.ts";
 
 // ISO week-numbering year
 export class ISOWeekYearParser extends Parser<number> {
@@ -10,7 +10,7 @@ export class ISOWeekYearParser extends Parser<number> {
 
   parse(dateString: string, token: string): ParseResult<number> {
     if (token === "R") {
-      return parseNDigitsSigned(4, dateString);
+      return parseUpToNDigitsSigned(4, dateString);
     }
 
     return parseNDigitsSigned(token.length, dateString);
