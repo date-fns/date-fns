@@ -154,8 +154,19 @@ describe("eachMonthOfInterval", () => {
     });
 
     it("returns empty array if `options.step` is less than 1", () => {
-      const result = eachMonthOfInterval(interval, { step: 0 });
-      expect(result).toEqual([]);
+      expect(eachMonthOfInterval(interval, { step: 0 })).toEqual([]);
+      // A step between -1 and 1 used to pass the zero check and then
+      // advance the date by nothing, looping until the process ran out
+      // of memory. The name of this test always promised these.
+      expect(eachMonthOfInterval(interval, { step: 0.5 })).toEqual([]);
+      expect(eachMonthOfInterval(interval, { step: -0.5 })).toEqual([]);
+      expect(eachMonthOfInterval(interval, { step: 0.25 })).toEqual([]);
+    });
+
+    it("truncates a fractional `options.step` towards zero", () => {
+      expect(eachMonthOfInterval(interval, { step: 1.5 })).toEqual(
+        eachMonthOfInterval(interval, { step: 1 }),
+      );
     });
 
     it("returns empty array if `options.step` is NaN", () => {
