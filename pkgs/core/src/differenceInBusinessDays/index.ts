@@ -18,6 +18,7 @@ export interface DifferenceInBusinessDaysOptions extends ContextOptions<Date> {}
  * Business days being days that aren't in the weekend.
  * Like `differenceInCalendarDays`, the function removes the times from
  * the dates before calculating the difference.
+ * Calendar weekdays are counted even if a local date was skipped.
  *
  * **You don't need date-fns\***:
  *

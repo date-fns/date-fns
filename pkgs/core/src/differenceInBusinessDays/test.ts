@@ -94,6 +94,19 @@ describe("differenceInBusinessDays", () => {
   });
 
   describe("context", () => {
+    it("counts skipped calendar weekdays in the context without mutating Date inputs", () => {
+      const thursday = new Date("2011-12-29T00:00:00-10:00");
+      const saturday = new Date("2011-12-31T00:00:00+14:00");
+      const thursdayTime = thursday.getTime();
+      const saturdayTime = saturday.getTime();
+      const options = { in: tz("Pacific/Apia") };
+
+      expect(differenceInBusinessDays(saturday, thursday, options)).toBe(2);
+      expect(differenceInBusinessDays(thursday, saturday, options)).toBe(-1);
+      expect(thursday.getTime()).toBe(thursdayTime);
+      expect(saturday.getTime()).toBe(saturdayTime);
+    });
+
     it("allows to specify the context", () => {
       expect(
         differenceInBusinessDays(
