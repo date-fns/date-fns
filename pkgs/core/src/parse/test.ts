@@ -1385,7 +1385,7 @@ describe("parse", () => {
     });
 
     it("zero-padding", () => {
-      const result = parse("1", "KK", referenceDate);
+      const result = parse("01", "KK", referenceDate);
       expect(result).toEqual(new Date(1986, 3 /* Apr */, 4, 1));
     });
 
