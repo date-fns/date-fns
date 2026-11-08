@@ -77,7 +77,10 @@ export function eachMonthOfInterval<
   date.setHours(0, 0, 0, 0);
   date.setDate(1);
 
-  let step = options?.step ?? 1;
+  // Truncated before the zero check, not after: `setMonth` coerces its
+  // argument to an integer, so a step between -1 and 1 would advance the
+  // date by nothing and loop forever.
+  let step = Math.trunc(options?.step ?? 1);
   if (!step) return [];
   if (step < 0) {
     step = -step;
