@@ -1,13 +1,13 @@
 import { Parser } from "../Parser.ts";
 import type { ParseFlags, ParseResult } from "../types.ts";
-import { parseNDigitsSigned } from "../utils.ts";
+import { parseNDigitsSigned, parseUpToNDigitsSigned } from "../utils.ts";
 
 export class ExtendedYearParser extends Parser<number> {
   priority = 130;
 
   parse(dateString: string, token: string): ParseResult<number> {
     if (token === "u") {
-      return parseNDigitsSigned(4, dateString);
+      return parseUpToNDigitsSigned(4, dateString);
     }
 
     return parseNDigitsSigned(token.length, dateString);

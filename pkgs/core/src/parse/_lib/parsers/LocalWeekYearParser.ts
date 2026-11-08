@@ -3,7 +3,12 @@ import type { Match } from "../../../locale/types.ts";
 import { startOfWeek } from "../../../startOfWeek/index.ts";
 import { Parser } from "../Parser.ts";
 import type { ParseFlags, ParseResult, ParserOptions } from "../types.ts";
-import { mapValue, normalizeTwoDigitYear, parseNDigits } from "../utils.ts";
+import {
+  mapValue,
+  normalizeTwoDigitYear,
+  parseNDigits,
+  parseUpToNDigits,
+} from "../utils.ts";
 import type { YearParserValue } from "./YearParser.ts";
 
 // Local week-numbering year
@@ -22,7 +27,7 @@ export class LocalWeekYearParser extends Parser<YearParserValue> {
 
     switch (token) {
       case "Y":
-        return mapValue(parseNDigits(4, dateString), valueCallback);
+        return mapValue(parseUpToNDigits(4, dateString), valueCallback);
       case "Yo":
         return mapValue(
           match.ordinalNumber(dateString, {
