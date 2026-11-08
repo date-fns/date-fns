@@ -11,15 +11,15 @@ export const numericPatterns = {
   second: /^[0-5]?\d/, // 0 to 59
 
   singleDigit: /^\d/, // 0 to 9
-  twoDigits: /^\d{1,2}/, // 0 to 99
-  threeDigits: /^\d{1,3}/, // 0 to 999
-  fourDigits: /^\d{1,4}/, // 0 to 9999
+  twoDigits: /^\d{2}/, // 0 to 99
+  threeDigits: /^\d{3}/, // 0 to 999
+  fourDigits: /^\d{4}/, // 0 to 9999
 
   anyDigitsSigned: /^-?\d+/,
   singleDigitSigned: /^-?\d/, // 0 to 9, -0 to -9
-  twoDigitsSigned: /^-?\d{1,2}/, // 0 to 99, -0 to -99
-  threeDigitsSigned: /^-?\d{1,3}/, // 0 to 999, -0 to -999
-  fourDigitsSigned: /^-?\d{1,4}/, // 0 to 9999, -0 to -9999
+  twoDigitsSigned: /^-?\d{2}/, // 0 to 99, -0 to -99
+  threeDigitsSigned: /^-?\d{3}/, // 0 to 999, -0 to -999
+  fourDigitsSigned: /^-?\d{4}/, // 0 to 9999, -0 to -9999
 };
 
 export const timezonePatterns = {
