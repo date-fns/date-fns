@@ -68,11 +68,16 @@ describe("formatISO", () => {
     { offset: -59.75, suffix: "+00:59" },
     { offset: 60.75, suffix: "-01:00" },
     { offset: -60.75, suffix: "+01:00" },
-    { offset: 0.75, suffix: "-00:00" },
-    { offset: -0.75, suffix: "+00:00" },
+    { offset: 0.75, suffix: "Z" },
+    { offset: -0.75, suffix: "Z" },
+    { offset: 0.999, suffix: "Z" },
+    { offset: -0.999, suffix: "Z" },
+    { offset: 1, suffix: "-00:01" },
+    { offset: -1, suffix: "+00:01" },
     { offset: 345, suffix: "-05:45" },
     { offset: -345, suffix: "+05:45" },
     { offset: 0, suffix: "Z" },
+    { offset: -0, suffix: "Z" },
   ])("formats the offset $offset at minute precision", ({ offset, suffix }) => {
     const date = new Date(2019, 2 /* Mar */, 3, 19, 0, 52, 123);
     const timestamp = date.getTime();
