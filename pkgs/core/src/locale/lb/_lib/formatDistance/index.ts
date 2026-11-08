@@ -198,7 +198,7 @@ function isFinalNNeeded(nextWords: string): boolean {
   }
 
   // Numbers would need to converted into words for checking.
-  // Therefore, I have listed the digits that require a preceeding n with a few exceptions.
+  // Therefore, I have listed the digits that require a preceding n with a few exceptions.
   const firstWord = nextWords.split(" ")[0];
   const number = parseInt(firstWord);
   if (
