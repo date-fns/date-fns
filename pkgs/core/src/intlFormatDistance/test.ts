@@ -849,4 +849,41 @@ describe("intlFormatDistance", () => {
       ).toBe("3 hours ago");
     });
   });
+
+  describe("formatter reuse", () => {
+    const later = new Date(1986, 3, 5, 10, 30, 0);
+    const earlier = new Date(1986, 3, 4, 10, 30, 0);
+
+    it("formats each option set correctly when calls are interleaved", () => {
+      const variants: Array<
+        [Parameters<typeof intlFormatDistance>[2], string]
+      > = [
+        [undefined, "tomorrow"],
+        [{ locale: "es" }, "mañana"],
+        [{ locale: ["de", "en"] }, "morgen"],
+        [{ numeric: "always" }, "in 1 day"],
+        [{ numeric: "always", locale: "de" }, "in 1 Tag"],
+        [{ unit: "hour" }, "in 24 hours"],
+        [{ locale: "es", in: tz("Asia/Singapore") }, "mañana"],
+        [{ in: tz("America/New_York") }, "tomorrow"],
+      ];
+      for (let pass = 0; pass < 2; pass++) {
+        for (const [options, expected] of variants) {
+          expect(intlFormatDistance(later, earlier, options)).toBe(expected);
+        }
+      }
+    });
+
+    it("throws on invalid options every time", () => {
+      intlFormatDistance(later, earlier, { style: "long" });
+      for (let pass = 0; pass < 2; pass++) {
+        expect(() =>
+          intlFormatDistance(later, earlier, { locale: "en_US" }),
+        ).toThrow(RangeError);
+        expect(() =>
+          intlFormatDistance(later, earlier, { style: "tiny" as "long" }),
+        ).toThrow(RangeError);
+      }
+    });
+  });
 });

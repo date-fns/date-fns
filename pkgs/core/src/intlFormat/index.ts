@@ -1,3 +1,4 @@
+import { getDateTimeFormat } from "../_lib/intlFormatters/index.ts";
 import { toDate } from "../toDate/index.ts";
 import type { DateArg, MaybeArray } from "../types.ts";
 
@@ -133,7 +134,7 @@ export function intlFormat(
     localeOptions = formatOrLocale;
   }
 
-  return new Intl.DateTimeFormat(localeOptions?.locale, formatOptions).format(
+  return getDateTimeFormat(localeOptions?.locale, formatOptions).format(
     toDate(date),
   );
 }

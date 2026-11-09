@@ -1,3 +1,4 @@
+import { getRelativeTimeFormat } from "../_lib/intlFormatters/index.ts";
 import { normalizeDates } from "../_lib/normalizeDates/index.ts";
 import {
   secondsInDay,
@@ -216,9 +217,11 @@ export function intlFormatDistance(
     }
   }
 
-  const rtf = new Intl.RelativeTimeFormat(options?.locale, {
+  // `in` and `locale` aren't formatter options and can prevent caching.
+  const { in: _context, locale: _locale, ...formatOptions } = options || {};
+  const rtf = getRelativeTimeFormat(options?.locale, {
     numeric: "auto",
-    ...options,
+    ...formatOptions,
   });
 
   return rtf.format(value, unit);
