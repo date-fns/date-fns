@@ -1,3 +1,8 @@
+const maxCacheSize = 1000;
+
+// `Intl.DateTimeFormat` is slow to create.
+const nameFormatCache = new Map<string, Intl.DateTimeFormat>();
+
 /**
  * Time zone name format.
  */
@@ -31,14 +36,37 @@ export function tzName(
   date: Date,
   format: TZNameFormat = "long",
 ): string {
-  return new Intl.DateTimeFormat("en-US", {
-    // Enforces engine to render the time. Without the option JavaScriptCore omits it.
-    hour: "numeric",
-    timeZone: timeZone,
-    timeZoneName: format,
-  })
+  return getNameFormat(timeZone, format)
     .format(date)
     .split(/\s/g) // Format.JS uses non-breaking spaces
     .slice(2) // Skip the hour and AM/PM parts
     .join(" ");
+}
+
+function getNameFormat(
+  timeZone: string,
+  format: TZNameFormat,
+): Intl.DateTimeFormat {
+  const create = () =>
+    new Intl.DateTimeFormat("en-US", {
+      // Enforces engine to render the time. Without the option JavaScriptCore omits it.
+      hour: "numeric",
+      timeZone: timeZone,
+      timeZoneName: format,
+    });
+
+  // Non-strings (e.g., `undefined` for the system time zone) aren't cached.
+  if (typeof timeZone !== "string" || typeof format !== "string")
+    return create();
+
+  const key = timeZone + "|" + format;
+  let nameFormat = nameFormatCache.get(key);
+  if (!nameFormat) {
+    // Throws on invalid arguments, before caching.
+    nameFormat = create();
+    if (nameFormatCache.size >= maxCacheSize)
+      nameFormatCache.delete(nameFormatCache.keys().next().value!);
+    nameFormatCache.set(key, nameFormat);
+  }
+  return nameFormat;
 }
