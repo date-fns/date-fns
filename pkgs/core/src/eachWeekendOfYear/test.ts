@@ -14,6 +14,16 @@ describe("eachWeekendOfYear", () => {
     expect(result[103]).toEqual(new Date(2020, 11, 27));
   });
 
+  it("returns 105 weekends when the year starts and ends on a weekend", () => {
+    // 2022 starts on Saturday and ends on Saturday, so both boundary days
+    // are weekends and the year contains 53 full weekend pairs.
+    const result = eachWeekendOfYear(new Date(2022, 0, 1));
+    expect(result.length).toBe(105);
+    expect(result.every((date) => isWeekend(date))).toBe(true);
+    expect(result[0]).toEqual(new Date(2022, 0, 1));
+    expect(result[104]).toEqual(new Date(2022, 11, 31));
+  });
+
   it("returns an empty array when the given date is `Invalid Date`", () => {
     const result = eachWeekendOfYear(new Date(NaN));
     expect(result).toEqual([]);
