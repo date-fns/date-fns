@@ -24,6 +24,15 @@ describe("eachWeekendOfMonth", () => {
     expect(result).toEqual([]);
   });
 
+  it("returns 9 weekends when the month starts and ends on a weekend", () => {
+    // November 2020 starts on Sunday and ends on Sunday, so it contains
+    // five Saturdays and four Sundays instead of the usual four and four.
+    const result = eachWeekendOfMonth(new Date(2020, 10 /* Nov */, 1));
+    expect(result.length).toBe(9);
+    expect(result[0]).toEqual(new Date(2020, 10 /* Nov */, 1));
+    expect(result[8]).toEqual(new Date(2020, 10 /* Nov */, 29));
+  });
+
   it("resolves the date type by default", () => {
     const result = eachWeekendOfMonth(Date.now());
     expect(result[0]).toBeInstanceOf(Date);
