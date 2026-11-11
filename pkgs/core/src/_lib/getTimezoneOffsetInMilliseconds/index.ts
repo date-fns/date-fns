@@ -18,15 +18,21 @@ export function getTimezoneOffsetInMilliseconds(
   const _date = toDate(date);
   const utcDate = new Date(
     Date.UTC(
-      _date.getFullYear(),
-      _date.getMonth(),
-      _date.getDate(),
+      0,
+      0,
+      1,
       _date.getHours(),
       _date.getMinutes(),
       _date.getSeconds(),
       _date.getMilliseconds(),
     ),
   );
-  utcDate.setUTCFullYear(_date.getFullYear());
+  // Date.UTC maps years 0-99 to 1900-1999, so set the calendar fields
+  // together after construction to preserve leap days in those years.
+  utcDate.setUTCFullYear(
+    _date.getFullYear(),
+    _date.getMonth(),
+    _date.getDate(),
+  );
   return +date - +utcDate;
 }
