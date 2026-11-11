@@ -29,6 +29,20 @@ describe("differenceInCalendarDays", () => {
   });
 
   describe("edge cases", () => {
+    it("counts days across the leap day in year 0", () => {
+      const date = (day: number) => {
+        const result = new Date(0);
+        result.setFullYear(0, 1 /* Feb */, day);
+        result.setHours(12, 0, 0, 0);
+        return result;
+      };
+
+      expect(differenceInCalendarDays(date(29), date(28))).toBe(1);
+      expect(differenceInCalendarDays(date(28), date(29))).toBe(-1);
+      expect(differenceInCalendarDays(date(30), date(29))).toBe(1);
+      expect(differenceInCalendarDays(date(29), date(30))).toBe(-1);
+    });
+
     it("the difference is less than a day, but the given dates are in different calendar days", () => {
       const result = differenceInCalendarDays(
         new Date(2014, 8 /* Sep */, 5, 0, 0),
