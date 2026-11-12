@@ -1,4 +1,12 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import {
+  afterEach,
+  beforeAll,
+  beforeEach,
+  describe,
+  expect,
+  it,
+  vi,
+} from "vitest";
 import { tzOffset } from "./index.ts";
 
 describe("tzOffset", () => {
@@ -49,6 +57,38 @@ describe("tzOffset", () => {
   it("returns 0 if the offset is 0", () => {
     const date = new Date("2020-01-15T00:00:00Z");
     expect(tzOffset("Europe/London", date)).toBe(0);
+  });
+
+  it.each([
+    new Date(-8.64e15),
+    new Date("0001-01-01T00:00:00Z"),
+    new Date("1880-01-15T00:00:00Z"),
+    new Date("2026-03-29T01:00:00Z"),
+    new Date("2026-10-25T01:00:00Z"),
+    new Date(8.64e15),
+  ])("returns 0 for UTC at %s", (date) => {
+    expect(tzOffset("UTC", date)).toBe(0);
+  });
+
+  it("returns NaN for an invalid date in UTC", () => {
+    expect(tzOffset("UTC", new Date(NaN))).toBe(NaN);
+  });
+
+  it.each([Infinity, -Infinity, 8.64e15 + 1, -8.64e15 - 1])(
+    "returns NaN for an out-of-range UTC timestamp %s",
+    (timestamp) => {
+      const date = new Date(0);
+      date.valueOf = () => timestamp;
+      expect(tzOffset("UTC", date)).toBe(NaN);
+    },
+  );
+
+  it("returns NaN if UTC timestamp coercion throws", () => {
+    const date = new Date(0);
+    date.valueOf = () => {
+      throw new Error("Cannot convert date");
+    };
+    expect(tzOffset("UTC", date)).toBe(NaN);
   });
 
   it("returns NaN if the offset the date or time zone are invalid", () => {
@@ -105,6 +145,13 @@ describe("tzOffset", () => {
 
   describe("Intl.DateTimeFormat format", { concurrent: false }, () => {
     let mockFormat = vi.fn();
+    let uncachedTzOffset: typeof tzOffset;
+
+    beforeAll(async () => {
+      vi.resetModules();
+      uncachedTzOffset = (await import("./index.ts")).tzOffset;
+    });
+
     beforeEach(() => {
       mockFormat = vi.fn(() => "5 GMT+08:00");
       const dtf = new Intl.DateTimeFormat();
@@ -132,7 +179,16 @@ describe("tzOffset", () => {
     it("reads offset from polyfill (without offset)", () => {
       mockFormat.mockReturnValue("5:53 PM GMT");
       const date = new Date("2020-01-15T00:00:00Z");
-      expect(tzOffset("UTC", date)).toBe(0);
+      expect(tzOffset("Etc/UTC", date)).toBe(0);
+    });
+
+    it("does not format dates to find the UTC offset", () => {
+      mockFormat.mockReturnValue("5:53 PM GMT");
+
+      expect(uncachedTzOffset("UTC", new Date("2020-01-15T00:00:00Z"))).toBe(0);
+      expect(mockFormat).not.toHaveBeenCalled();
+      expect(Intl.DateTimeFormat).not.toHaveBeenCalled();
+      expect(uncachedTzOffset("UTC", new Date(NaN))).toBe(NaN);
     });
   });
 });
