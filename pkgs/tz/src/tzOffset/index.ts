@@ -21,6 +21,12 @@ const offsetCache: Record<string, number> = {};
  */
 export function tzOffset(timeZone: string | undefined, date: Date): number {
   try {
+    if (timeZone === "UTC") {
+      // Match Intl's valid timestamp range without formatting a fixed offset.
+      const timestamp = +date;
+      return Math.abs(timestamp) <= 8.64e15 ? 0 : NaN;
+    }
+
     // Create `Intl.DateTimeFormat` with `"longOffset"` that gives us consistent
     // date strings like `"5/19/2026, GMT-08:00"`.
     const format = (offsetFormatCache[timeZone!] ||= new Intl.DateTimeFormat(
