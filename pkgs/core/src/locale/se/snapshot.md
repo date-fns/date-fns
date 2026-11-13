@@ -285,7 +285,7 @@
 |                                 |              | 1987-03-11T12:13:14.015Z | gaskavahkku njukčamánnu 11. b. 1987                                | 1987-03-11T00:00:00.000Z |
 |                                 |              | 1987-04-11T12:13:14.015Z | lávvardat cuoŋománnu 11. b. 1987                                   | 1987-04-11T00:00:00.000Z |
 |                                 |              | 1453-05-29T23:59:59.999Z | sotnabeaivi miessemánnu 29. b. 1453                                | 1453-05-29T00:00:00.000Z |
-|                                 |              | 1987-06-11T12:13:14.015Z | duorastat geassemánnu 11. b. 1987                                  | 1987-06-11T00:00:00.000Z |
+|                                 |              | 1987-06-11T12:13:14.015Z | duorasdat geassemánnu 11. b. 1987                                  | 1987-06-11T00:00:00.000Z |
 |                                 |              | 1987-07-11T12:13:14.015Z | lávvardat suoidnemánnu 11. b. 1987                                 | 1987-07-11T00:00:00.000Z |
 |                                 |              | 1987-08-11T12:13:14.015Z | maŋŋebárga borgemánnu 11. b. 1987                                  | 1987-08-11T00:00:00.000Z |
 |                                 |              | 1987-09-11T12:13:14.015Z | bearjadat čakčamánnu 11. b. 1987                                   | 1987-09-11T00:00:00.000Z |
@@ -381,7 +381,7 @@
 |                                 |              | 1987-03-11T12:13:14.015Z | gaskavahkku njukčamánnu 11. b. 1987 dii. dii. 12:13:14 GMT+00:00   | Errored                  |
 |                                 |              | 1987-04-11T12:13:14.015Z | lávvardat cuoŋománnu 11. b. 1987 dii. dii. 12:13:14 GMT+00:00      | Errored                  |
 |                                 |              | 1453-05-29T23:59:59.999Z | sotnabeaivi miessemánnu 29. b. 1453 dii. dii. 23:59:59 GMT+00:00   | Errored                  |
-|                                 |              | 1987-06-11T12:13:14.015Z | duorastat geassemánnu 11. b. 1987 dii. dii. 12:13:14 GMT+00:00     | Errored                  |
+|                                 |              | 1987-06-11T12:13:14.015Z | duorasdat geassemánnu 11. b. 1987 dii. dii. 12:13:14 GMT+00:00     | Errored                  |
 |                                 |              | 1987-07-11T12:13:14.015Z | lávvardat suoidnemánnu 11. b. 1987 dii. dii. 12:13:14 GMT+00:00    | Errored                  |
 |                                 |              | 1987-08-11T12:13:14.015Z | maŋŋebárga borgemánnu 11. b. 1987 dii. dii. 12:13:14 GMT+00:00     | Errored                  |
 |                                 |              | 1987-09-11T12:13:14.015Z | bearjadat čakčamánnu 11. b. 1987 dii. dii. 12:13:14 GMT+00:00      | Errored                  |

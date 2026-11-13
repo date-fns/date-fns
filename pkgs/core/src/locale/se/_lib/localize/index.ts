@@ -54,7 +54,7 @@ const dayValues = {
     "vuossárga",
     "maŋŋebárga",
     "gaskavahkku",
-    "duorastat",
+    "duorasdat",
     "bearjadat",
     "lávvardat",
   ] as const,

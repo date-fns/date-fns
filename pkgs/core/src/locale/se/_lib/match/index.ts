@@ -65,7 +65,7 @@ const matchDayPatterns = {
   narrow: /^[svmgdbl]/i,
   short: /^(sotn|vuos|maŋ|gask|duor|bear|láv)/i,
   abbreviated: /^(sotn|vuos|maŋ|gask|duor|bear|láv)/i,
-  wide: /^(sotnabeaivi|vuossárga|maŋŋebárga|gaskavahkku|duorastat|bearjadat|lávvardat)/i,
+  wide: /^(sotnabeaivi|vuossárga|maŋŋebárga|gaskavahkku|duorasdat|bearjadat|lávvardat)/i,
 };
 const parseDayPatterns = {
   any: [/^s/i, /^v/i, /^m/i, /^g/i, /^d/i, /^b/i, /^l/i] as const,
