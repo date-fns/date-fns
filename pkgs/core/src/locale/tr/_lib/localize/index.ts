@@ -12,7 +12,7 @@ const eraValues = {
 const quarterValues = {
   narrow: ["1", "2", "3", "4"] as const,
   abbreviated: ["1Ç", "2Ç", "3Ç", "4Ç"] as const,
-  wide: ["İlk çeyrek", "İkinci Çeyrek", "Üçüncü çeyrek", "Son çeyrek"] as const,
+  wide: ["İlk çeyrek", "İkinci çeyrek", "Üçüncü çeyrek", "Son çeyrek"] as const,
 };
 
 const monthValues = {
