@@ -85,7 +85,7 @@ export function eachHourOfInterval<
 
   while (+date <= endTime) {
     dates.push(constructFrom(start, date));
-    date.setHours(date.getHours() + step);
+    date.setHours(date.getHours() + step, 0, 0, 0);
   }
 
   return reversed ? dates.reverse() : dates;

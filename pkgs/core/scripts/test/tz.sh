@@ -13,6 +13,7 @@ env TZ=America/Sao_Paulo node ./test/dst/parseISO/basic.ts
 env TZ=Australia/Sydney node ./test/dst/parseISO/sydney.ts
 env TZ=Pacific/Apia node ./test/dst/parseISO/samoa.ts
 env TZ=Asia/Damascus node ./test/dst/eachDayOfInterval/basic.ts
+env TZ=Australia/Lord_Howe node ./test/dst/eachHourOfInterval/lord-howe.ts
 env TZ=America/Santiago node ./test/dst/addBusinessDays/basic.ts
 env TZ=Australia/Melbourne node ./test/dst/formatDistanceStrict/melbourne.ts
 env TZ=Africa/Cairo node ./test/dst/formatDistanceStrict/cairo.ts
