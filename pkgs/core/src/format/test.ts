@@ -1019,4 +1019,19 @@ describe("format", { concurrent: false }, () => {
       ).toBe("2024-09-18");
     });
   });
+
+  describe("options", () => {
+    it("supports exactOptionalPropertyTypes by allowing undefined in options properties (#4411)", () => {
+      const date = new Date(2024, 0, 1);
+      const formatted = format(date, "yyyy-MM-dd", {
+        locale: undefined,
+        weekStartsOn: undefined,
+        firstWeekContainsDate: undefined,
+        useAdditionalWeekYearTokens: undefined,
+        useAdditionalDayOfYearTokens: undefined,
+        in: undefined,
+      });
+      expect(formatted).toBe("2024-01-01");
+    });
+  });
 });

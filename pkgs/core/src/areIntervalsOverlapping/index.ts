@@ -6,7 +6,7 @@ import type { ContextOptions, Interval } from "../types.ts";
  */
 export interface AreIntervalsOverlappingOptions extends ContextOptions<Date> {
   /** Whether the comparison is inclusive or not */
-  inclusive?: boolean;
+  inclusive?: boolean | undefined;
 }
 
 /**

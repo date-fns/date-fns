@@ -3,7 +3,7 @@ import type { MatchFn, MatchValueCallback } from "../../types.ts";
 export interface BuildMatchPatternFnArgs<Result> {
   matchPattern: RegExp;
   parsePattern: RegExp;
-  valueCallback?: MatchValueCallback<string, Result>;
+  valueCallback?: MatchValueCallback<string, Result> | undefined;
 }
 
 export function buildMatchPatternFn<Result>(

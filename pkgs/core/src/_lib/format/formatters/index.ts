@@ -31,9 +31,17 @@ type Formatter = (
   date: Date,
   token: string,
   localize: Localize,
-  options: Required<
-    LocalizedOptions<"options"> & WeekOptions & FirstWeekContainsDateOptions
-  >,
+  options: {
+    [
+      K in keyof (LocalizedOptions<"options"> &
+        WeekOptions &
+        FirstWeekContainsDateOptions)
+    ]-?: NonNullable<
+      (LocalizedOptions<"options"> &
+        WeekOptions &
+        FirstWeekContainsDateOptions)[K]
+    >;
+  },
 ) => string;
 
 /*

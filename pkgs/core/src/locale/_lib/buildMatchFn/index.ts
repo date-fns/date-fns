@@ -16,10 +16,12 @@ export interface BuildMatchFnArgs<
   defaultMatchWidth: DefaultMatchWidth;
   parsePatterns: BuildMatchFnParsePatterns<Result, DefaultParseWidth>;
   defaultParseWidth: DefaultParseWidth;
-  valueCallback?: MatchValueCallback<
-    Result extends LocaleDayPeriod ? string : number,
-    Result
-  >;
+  valueCallback?:
+    | MatchValueCallback<
+        Result extends LocaleDayPeriod ? string : number,
+        Result
+      >
+    | undefined;
 }
 
 export type BuildMatchFnMatchPatterns<DefaultWidth extends LocaleWidth> = {
