@@ -29,7 +29,7 @@ export class TZDateMini extends Date {
   //#region static
 
   constructor(...args) {
-    super();
+    super(0);
 
     // Time zone string is always the last string argument unless date string
     // is passed (as a single argument).
@@ -37,7 +37,7 @@ export class TZDateMini extends Date {
       this.timeZone = args.pop();
     }
 
-    this.internal = new Date();
+    this.internal = new Date(0);
 
     // Validate the time zone by checking its offset.
     if (isNaN(tzOffset(this.timeZone, this))) {

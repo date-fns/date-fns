@@ -112,6 +112,8 @@ new TZDate("2024-09-12T00:00:00Z", "Asia/Singapore");
 
 The constructor mirrors the original `Date` parameters except for the last time zone parameter.
 
+Passing an explicit date does not read the current time. This also applies to `TZDate.tz` and the `tz` context function. Calling the constructor or `TZDate.tz` without a date uses the current time.
+
 #### `TZDate.tz`
 
 The static `tz` function allows you to construct a `TZDate` instance with just a time zone:
