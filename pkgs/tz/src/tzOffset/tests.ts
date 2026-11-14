@@ -72,6 +72,11 @@ describe("tzOffset", () => {
       expect(tzOffset("+05:00", new Date("1880-01-15T00:00:00Z"))).toBe(300);
     });
 
+    it("keeps the sign of negative offsets with zero hours", () => {
+      expect(tzOffset("-00:30", date)).toBe(-30);
+      expect(tzOffset("-0030", date)).toBe(-30);
+    });
+
     it("works with ±HHMM", () => {
       expect(tzOffset("-0500", date)).toBe(-300);
       expect(tzOffset("-0230", date)).toBe(-150);
