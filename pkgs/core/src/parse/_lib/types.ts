@@ -5,12 +5,20 @@ import type {
 } from "../../types.ts";
 
 export interface ParseFlags {
-  timestampIsSet?: boolean;
-  era?: number;
+  timestampIsSet?: boolean | undefined;
+  era?: number | undefined;
 }
 
-export type ParserOptions = Required<
-  LocalizedOptions<"options"> & FirstWeekContainsDateOptions & WeekOptions
->;
+export type ParserOptions = {
+  [
+    K in keyof (LocalizedOptions<"options"> &
+      FirstWeekContainsDateOptions &
+      WeekOptions)
+  ]-?: NonNullable<
+    (LocalizedOptions<"options"> &
+      FirstWeekContainsDateOptions &
+      WeekOptions)[K]
+  >;
+};
 
 export type ParseResult<TValue> = { value: TValue; rest: string } | null;

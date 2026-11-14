@@ -26,9 +26,9 @@ export interface FormatDistanceStrictOptions
     RoundingOptions,
     ContextOptions<Date> {
   /** Add "X ago"/"in X" in the locale language */
-  addSuffix?: boolean;
+  addSuffix?: boolean | undefined;
   /** If specified, will force the unit */
-  unit?: FormatDistanceStrictUnit;
+  unit?: FormatDistanceStrictUnit | undefined;
 }
 
 /**
