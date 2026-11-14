@@ -1841,6 +1841,10 @@ describe("TZDate", () => {
           "Thu Jan 01 1880 00:00:00 GMT+0105 (GMT+01:05:21)",
         );
       });
+
+      it("returns Invalid Date for invalid dates", () => {
+        expect(new TZDate(NaN, "Asia/Tokyo").toString()).toBe("Invalid Date");
+      });
     });
 
     describe("toDateString", () => {
@@ -1868,6 +1872,12 @@ describe("TZDate", () => {
         );
         expect(new TZDate(1880, 0, 1, "Europe/Vienna").toDateString()).toBe(
           "Thu Jan 01 1880",
+        );
+      });
+
+      it("returns Invalid Date for invalid dates", () => {
+        expect(new TZDate(NaN, "Asia/Tokyo").toDateString()).toBe(
+          "Invalid Date",
         );
       });
     });
@@ -1900,6 +1910,12 @@ describe("TZDate", () => {
         );
         expect(new TZDate(1880, 0, 1, "Europe/Vienna").toTimeString()).toBe(
           "00:00:00 GMT+0105 (GMT+01:05:21)",
+        );
+      });
+
+      it("returns Invalid Date for invalid dates", () => {
+        expect(new TZDate(NaN, "Asia/Tokyo").toTimeString()).toBe(
+          "Invalid Date",
         );
       });
     });
