@@ -9,8 +9,8 @@ const dateFormats = {
 };
 
 const timeFormats = {
-  full: "a H시 mm분 ss초 zzzz",
-  long: "a H:mm:ss z",
+  full: "a h시 mm분 ss초 zzzz",
+  long: "a h:mm:ss z",
   medium: "HH:mm:ss",
   short: "HH:mm",
 };
