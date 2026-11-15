@@ -47,6 +47,7 @@ export function endOfQuarter<
   const _date = toDate(date, options?.in);
   const currentMonth = _date.getMonth();
   const month = currentMonth - (currentMonth % 3) + 3;
+  _date.setHours(0, 0, 0, 0);
   _date.setMonth(month, 1);
   _date.setHours(0, 0, 0, 0);
   _date.setTime(_date.getTime() - 1);

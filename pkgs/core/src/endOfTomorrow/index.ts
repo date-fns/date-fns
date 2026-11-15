@@ -45,6 +45,7 @@ export function endOfTomorrow<
   const day = now.getDate();
 
   const date = constructNow(options?.in);
+  date.setHours(0, 0, 0, 0);
   date.setFullYear(year, month, day + 2);
   date.setHours(0, 0, 0, 0);
   date.setTime(date.getTime() - 1);

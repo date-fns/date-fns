@@ -68,5 +68,11 @@ describe("endOfDay", () => {
       expect(result.toISOString()).toBe("2026-04-04T23:59:59.999-04:00");
       expect(result.getTime()).toBeGreaterThan(date.getTime());
     });
+    it("handles time zones where DST starts at late night (skipped 23:xx hour)", () => {
+      const date = new Date("2024-03-30T01:30:00Z");
+      const result = endOfDay(date, { in: tz("America/Nuuk") });
+      expect(result.toISOString()).toBe("2024-03-29T23:59:59.999-02:00");
+      expect(result.getTime()).toBeGreaterThan(date.getTime());
+    });
   });
 });
