@@ -1,0 +1,30 @@
+{
+  "extends": "./tsconfig",
+  "compilerOptions": {
+    "sourceMap": true,
+    "outDir": "dist",
+    "rootDir": "./src",
+    "skipLibCheck": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "composite": false,
+    "incremental": false
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": [
+    "dist",
+    "node_modules",
+    "config",
+    "test.js",
+    "src/tp",
+    "src/_lib/tp",
+    "src/**/index.tp.ts",
+    "**/test.ts",
+    "**/test.tp.ts",
+    "test",
+    "scripts",
+    "examples",
+    "tmp",
+    "docs"
+  ]
+}

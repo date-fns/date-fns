@@ -1,0 +1,14 @@
+{
+  "name": "@date-fns/example-lodash-fp",
+  "version": "0.1.0",
+  "description": "Example of date-fns usage with Lodash FP submodule",
+  "license": "MIT",
+  "author": "Sasha Koss <koss@nocorp.me>",
+  "main": "example.js",
+  "dependencies": {
+    "date-fns": "../../dist/date-fns",
+    "esbuild": "^0.19.2",
+    "gzip-size-cli": "^1.0.0",
+    "lodash": "^4.17.4"
+  }
+}

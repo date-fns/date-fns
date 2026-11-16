@@ -1,0 +1,27 @@
+import type { Locale } from "../types.ts";
+import { formatDistance } from "./_lib/formatDistance/index.ts";
+import { formatLong } from "./_lib/formatLong/index.ts";
+import { formatRelative } from "./_lib/formatRelative/index.ts";
+import { localize } from "./_lib/localize/index.ts";
+import { match } from "./_lib/match/index.ts";
+
+/**
+ * @category Locales
+ * @summary Catalan locale.
+ * @language Catalan
+ * @iso-639-2 cat
+ * @author Guillermo Grau [@guigrpa](https://github.com/guigrpa)
+ * @author Alex Vizcaino [@avizcaino](https://github.com/avizcaino)
+ */
+export const ca: Locale = {
+  code: "ca",
+  formatDistance: formatDistance,
+  formatLong: formatLong,
+  formatRelative: formatRelative,
+  localize: localize,
+  match: match,
+  options: {
+    weekStartsOn: 1 /* Monday */,
+    firstWeekContainsDate: 4,
+  },
+};

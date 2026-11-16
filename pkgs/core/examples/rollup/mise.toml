@@ -1,0 +1,26 @@
+[tasks.install]
+depends = "//pkgs/core/examples:install"
+
+[tasks.build]
+depends = "install"
+run = "pnpm exec rollup --config"
+
+[tasks.test]
+depends = "build"
+run = '''
+#!/usr/bin/env bash
+test $(node ./dist/example.js) = true
+test $(node ./dist/fp.js) = true
+test $(node ./dist/misc.js) = true
+test $(node ./dist/constants.js) = true
+'''
+env = { TZ = "UTC" }
+
+[tasks."stats/size"]
+depends = "build"
+run = '''
+echo "Minimal size: $(pnpm exec gzip-size dist/minimal.js)
+Format size: $(pnpm exec gzip-size dist/example.js)
+FP size: $(pnpm exec gzip-size dist/fp.js)
+Misc size: $(pnpm exec gzip-size dist/misc.js)"
+'''

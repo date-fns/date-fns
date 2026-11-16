@@ -1,0 +1,4 @@
+{
+  "extends": "@date-fns/dev/config/tsconfig",
+  "exclude": ["./test/engines"]
+}

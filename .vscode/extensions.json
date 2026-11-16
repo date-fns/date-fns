@@ -1,0 +1,7 @@
+{
+  "recommendations": [
+    "ms-vscode-remote.remote-containers",
+    "oxc.oxc-vscode",
+    "typescriptteam.native-preview"
+  ]
+}

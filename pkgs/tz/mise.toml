@@ -1,0 +1,47 @@
+[tools]
+"npm:jsvu" = "latest"
+
+[tasks."build/package"]
+depends = ["//pkgs/dev:source/build", "//:source/install"]
+run = "make build"
+sources = [
+  "package.json",
+  "tsconfig.dist.json",
+  "Makefile",
+  "copy.mjs",
+  "src/**/*",
+  "!src/**/tests.ts",
+  "README.md",
+  "LICENSE.md",
+  "CHANGELOG.md",
+]
+outputs = ["dist/**/*"]
+
+[tasks."test"]
+depends = ["test/unit", "test/node", "test/engines"]
+
+[tasks."test/unit"]
+run = "pnpm vitest --run"
+env = { TZ = "Asia/Singapore" }
+
+[tasks."test/unit:watch"]
+run = "pnpm vitest"
+env = { TZ = "Asia/Singapore" }
+
+[tasks."test/tz"]
+run = "pnpm exec date-fns-test-tz ./src/"
+
+[tasks."test/edge"]
+run = "pnpm exec date-fns-test-tz ./test/edge/"
+
+[tasks."test/node"]
+run = "./scripts/test/node.sh"
+
+[tasks."test/engines"]
+run = "./scripts/test/engines.sh"
+
+[tasks."test/smoke"]
+usage = '''
+arg "[test]" help="Smoke test to run" default="..."
+'''
+depends = "//pkgs/tz/examples/{{usage.test}}:test"

@@ -1,11 +1,21 @@
-node_modules
+# Node.js
+node_modules/
+.pnpm-store/
 npm-debug.log*
-yarn-error.log*
+# TypeScript
+.ts/
+# Dev Container
+/.devcontainer/state/
+# Dist
+dist/
+# Dev
 tmp
-dist
 .envrc
 docs.json
 .idea
-.vscode
 coverage
 /secrets
+# Secrets
+.env
+.env.*
+!.env.example

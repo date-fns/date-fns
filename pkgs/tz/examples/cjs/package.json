@@ -1,0 +1,8 @@
+{
+  "name": "@date-fns/tz-example-cjs",
+  "private": true,
+  "type": "commonjs",
+  "dependencies": {
+    "@date-fns/tz": "../../dist"
+  }
+}

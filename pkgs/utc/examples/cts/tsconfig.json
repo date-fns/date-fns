@@ -1,0 +1,29 @@
+{
+  "files": ["test.ts"],
+  "compilerOptions": {
+    // Resolve
+    "rootDir": ".",
+    "paths": {},
+    // Output
+    "noEmit": true,
+    // Modules
+    "module": "node16",
+    "moduleResolution": "node16",
+    "isolatedModules": true,
+    "moduleDetection": "force", // Stop treating files without imports/exports as single global scripts
+    "allowImportingTsExtensions": true, // Use .ts extensions to make imports work in Node.js
+    "verbatimModuleSyntax": true, // Enforce type-only imports
+    "resolveJsonModule": true,
+    // Env
+    "types": ["node"],
+    "erasableSyntaxOnly": true, // Disallow using using runtime TS features
+    // Checks
+    "skipLibCheck": false,
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitOverride": true,
+    "checkJs": true
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "@date-fns/utc-example-ts",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@date-fns/utc": "../../dist"
+  },
+  "devDependencies": {
+    "typescript": "^6.0.3"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "@date-fns/example-cdn",
+  "version": "0.1.0",
+  "description": "Example of date-fns usage with CDN versions",
+  "license": "MIT",
+  "author": "Sasha Koss <koss@nocorp.me>",
+  "type": "module",
+  "main": "example.ts",
+  "dependencies": {
+    "@date-fns/cdn": "../../dist/date-fns-cdn",
+    "date-fns": "../../dist/date-fns",
+    "jsdom": "^24.0.0"
+  }
+}

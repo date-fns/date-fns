@@ -1,0 +1,17 @@
+[tasks.install]
+depends = "//pkgs/core/examples:install"
+
+[tasks.test]
+depends = "install"
+run = '''
+#!/usr/bin/env bash
+test $(node ./basic.js) = true
+test $(node ./fp.js) = true
+test $(node ./locale.js) = true
+test $(node ./locales.js) = true
+test $(node ./legacy.js) = true
+test $(node ./legacyStrict.js) = true
+'''
+# `DATE_FNS_CDN_TEST_PKG` makes tests to use `date-fns` instead of
+# `@date-fns/cdn` until v5 is out.
+env = { TZ = "UTC", DATE_FNS_CDN_TEST_PKG = "date-fns" }

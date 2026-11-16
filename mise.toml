@@ -1,0 +1,40 @@
+monorepo_root = true
+[monorepo]
+config_roots = ["pkgs/*", "pkgs/*/examples", "pkgs/*/examples/*"]
+
+[tools]
+# Stack
+node = "26"
+pnpm = "latest"
+
+# Tools
+gh = "latest"
+watchexec = "latest"
+jaq = "latest"
+
+[settings]
+# Ignore idiomatic version files
+idiomatic_version_file_enable_tools = []
+
+[tasks."types"]
+run = "pnpm tsc --build"
+
+[tasks."types:watch"]
+run = "pnpm tsc --build --watch"
+
+[tasks.format]
+run = "pnpm oxfmt"
+
+[tasks."lint"]
+run = "pnpm oxlint"
+
+[tasks."lint:watch"]
+run = "watchexec --exts ts,js --clear -- pnpm oxlint"
+
+[tasks."source/install"]
+description = '''
+  Phantom task that provides the install lock files (i.e., pnpm-lock.yaml)
+  sources to use as a dependency for tasks that rely on them, i.e.,
+  `...:build/package`.
+'''
+sources = ["pnpm-lock.yaml"]

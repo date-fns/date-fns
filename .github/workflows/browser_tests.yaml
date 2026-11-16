@@ -1,0 +1,22 @@
+name: Browser tests
+
+on: [push, pull_request]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+      - uses: jdx/mise-action@v4
+      - run: pnpm install
+
+      - name: Prepare Display
+        run: Xvfb :99 -screen 0 1600x1200x24 &
+        shell: bash
+
+      - name: Install Playwright
+        run: mise //pkgs/core:install/playwright
+
+      - name: Browser tests
+        run: mise //pkgs/core:test/browser

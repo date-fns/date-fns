@@ -1,0 +1,7 @@
+{
+  "extends": ".",
+  "include": ["src/**/*.ts"],
+  "compilerOptions": {
+    "emitDeclarationOnly": false
+  }
+}

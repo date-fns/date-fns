@@ -1,0 +1,9 @@
+{
+  "extends": "@date-fns/dev/config/tsconfig",
+  "references": [{ "path": "../../" }],
+  "compilerOptions": {
+    "verbatimModuleSyntax": false,
+    "module": "commonjs",
+    "moduleResolution": "bundler"
+  }
+}

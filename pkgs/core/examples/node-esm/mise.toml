@@ -1,0 +1,13 @@
+[tasks.install]
+depends = "//pkgs/core/examples:install"
+
+[tasks.test]
+depends = "install"
+run = '''
+#!/usr/bin/env bash
+test $(node ./example.js) = true
+test $(node ./fp.js) = true
+test $(node ./misc.js) = true
+test $(node ./constants.js) = true
+'''
+env = { TZ = "UTC" }

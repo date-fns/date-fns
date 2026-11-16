@@ -1,0 +1,9 @@
+[tasks.install]
+depends = "//pkgs/core/examples:install"
+
+[tasks.build]
+depends = "install"
+run = "pnpm exec vite build"
+
+[tasks.test]
+depends = "build"

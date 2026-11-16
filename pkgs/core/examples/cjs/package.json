@@ -1,0 +1,8 @@
+{
+  "name": "date-fns-example-cjs",
+  "private": true,
+  "type": "commonjs",
+  "dependencies": {
+    "date-fns": "../../dist/date-fns"
+  }
+}

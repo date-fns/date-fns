@@ -1,0 +1,21 @@
+name: Code quality
+
+on: [push, pull_request]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+      - uses: jdx/mise-action@v4
+      - run: pnpm install
+
+      - name: Types
+        run: mise //:types
+
+      - name: Linting
+        run: mise //:lint
+
+      - name: Locale snapshots
+        run: mise //pkgs/core:test/locales
