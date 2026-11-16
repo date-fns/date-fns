@@ -31,8 +31,8 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   },
 
   aboutXHours: {
-    one: "tahminan 1 soat",
-    other: "tahminan {{count}} soat",
+    one: "taxminan 1 soat",
+    other: "taxminan {{count}} soat",
   },
 
   xHours: {
@@ -46,8 +46,8 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   },
 
   aboutXWeeks: {
-    one: "tahminan 1 hafta",
-    other: "tahminan {{count}} hafta",
+    one: "taxminan 1 hafta",
+    other: "taxminan {{count}} hafta",
   },
 
   xWeeks: {
@@ -56,8 +56,8 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   },
 
   aboutXMonths: {
-    one: "tahminan 1 oy",
-    other: "tahminan {{count}} oy",
+    one: "taxminan 1 oy",
+    other: "taxminan {{count}} oy",
   },
 
   xMonths: {
@@ -66,8 +66,8 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   },
 
   aboutXYears: {
-    one: "tahminan 1 yil",
-    other: "tahminan {{count}} yil",
+    one: "taxminan 1 yil",
+    other: "taxminan {{count}} yil",
   },
 
   xYears: {
@@ -100,7 +100,7 @@ export const formatDistance: FormatDistanceFn = (token, count, options) => {
 
   if (options?.addSuffix) {
     if (options.comparison && options.comparison > 0) {
-      return result + " dan keyin";
+      return result + "dan keyin";
     } else {
       return result + " oldin";
     }
