@@ -8,6 +8,7 @@ import {
   type MockInstance,
   vi,
 } from "vitest";
+import { cs } from "../locale/cs/index.ts";
 import type { FormatPart } from "../types.ts";
 import { format, formatDate } from "./index.ts";
 
@@ -307,6 +308,12 @@ describe("format", { concurrent: false }, () => {
     it("stand-alone month", () => {
       const result = format(date, "L Lo LL LLL LLLL LLLLL");
       expect(result).toBe("4 4th 04 Apr April A");
+    });
+
+    it("formatting and stand-alone months differ in some locales", () => {
+      const date = new Date(2017, 10 /* Nov */, 6);
+      expect(format(date, "do LLLL", { locale: cs })).toBe("6. listopad");
+      expect(format(date, "do MMMM", { locale: cs })).toBe("6. listopadu");
     });
   });
 
