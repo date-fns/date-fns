@@ -247,7 +247,8 @@
     "./src/yearsToDays/index.ts",
     "./src/yearsToMonths/index.ts",
     "./src/yearsToQuarters/index.ts",
-    "./src/constants/index.ts"
+    "./src/constants/index.ts",
+    "./src/types.ts"
   ],
   "json": "./tmp/docs.json",
   "plugin": [
