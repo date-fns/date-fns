@@ -9,8 +9,8 @@ import type { DateArg } from "../types.ts";
  * @description
  * Are the given dates equal?
  *
- * @param dateLeft - The first date to compare
- * @param dateRight - The second date to compare
+ * @param leftDate - The first date to compare
+ * @param rightDate - The second date to compare
  *
  * @returns The dates are equal
  *

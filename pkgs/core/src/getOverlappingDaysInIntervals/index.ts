@@ -18,7 +18,6 @@ import type { Interval } from "../types.ts";
  *
  * @param intervalLeft - The first interval to compare.
  * @param intervalRight - The second interval to compare.
- * @param options - An object with options
  *
  * @returns The number of days that overlap in two time intervals
  *
