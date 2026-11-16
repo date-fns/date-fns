@@ -141,7 +141,7 @@ function generateTypeDoc(fns: Awaited<ReturnType<typeof listFns>>) {
         name: "date-fns",
         entryPoints: fns
           .map((fn) => fn.fullPath)
-          .concat(["./src/constants/index.ts"]),
+          .concat(["./src/constants/index.ts", "./src/types.ts"]),
         json: "./tmp/docs.json",
         plugin: ["typedoc-plugin-missing-exports"],
       },
