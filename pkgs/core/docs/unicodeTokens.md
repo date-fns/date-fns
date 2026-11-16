@@ -51,4 +51,38 @@ parse("365+1987", "DD+YYYY", new Date(), {
 //=> 'Wed Dec 31 1986 00:00:00 GMT+0200 (EET)'
 ```
 
+## Formatting vs stand-alone tokens
+
+Some units have two sets of tokens: "formatting" and "stand-alone":
+
+| Unit        | Formatting    | Stand-alone |
+| ----------- | ------------- | ----------- |
+| Quarter     | `Q`           | `q`         |
+| Month       | `M`           | `L`         |
+| Day of week | `E`, `e`, `i` | `c`         |
+
+In the default `en-US` locale they produce the same result, but in some
+languages they are different. "Formatting" units are declined according to
+the rules of the language in the context of a date, while "stand-alone" units
+are always nominative singular. For example, in Czech, the stand-alone month
+name is "listopad", but when used in a date with a day of the month, it's put
+into the genitive case "listopadu":
+
+```js
+import { cs } from "date-fns/locale/cs";
+
+format(new Date(2017, 10, 6), "do LLLL", { locale: cs });
+//=> '6. listopad'
+
+format(new Date(2017, 10, 6), "do MMMM", { locale: cs });
+//=> '6. listopadu'
+```
+
+Use formatting tokens when the unit is a part of a date (e.g. "6 November")
+and stand-alone tokens when the unit is used on its own (e.g. a calendar
+header showing just the month name).
+
+`parse` will try to match both formatting and stand-alone units
+interchangeably.
+
 [Unicode tokens]: https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table
