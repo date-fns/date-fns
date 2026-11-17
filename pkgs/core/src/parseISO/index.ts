@@ -341,11 +341,11 @@ function validateTime(
   minutesFraction: string,
   secondsFraction: string,
 ): boolean {
-  if (hours === 24 && !/[1-9]/.test(hoursFraction)) {
+  if (hours === 24) {
     return (
       minutes === 0 &&
       seconds === 0 &&
-      !/[1-9]/.test(minutesFraction + secondsFraction)
+      !/[1-9]/.test(hoursFraction + minutesFraction + secondsFraction)
     );
   }
 

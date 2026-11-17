@@ -221,6 +221,14 @@ describe("parseISO", () => {
         expect(parseISO(input).getTime()).toBe(expected);
       });
 
+      it.each([
+        "1970-01-01T24.00000000000000000001Z",
+        "1970-01-01T24.00000000000000000001:01Z",
+        "1970-01-01T24.00000000000000000001:00:01Z",
+      ])("rejects a nonzero fractional hour at midnight in %s", (input) => {
+        expect(parseISO(input).getTime()).toBeNaN();
+      });
+
       it("parses , as decimal mark", () => {
         const result = parseISO("2014-02-11T11,5");
         expect(result).toEqual(new Date(2014, 1 /* Feb */, 11, 11, 30));
