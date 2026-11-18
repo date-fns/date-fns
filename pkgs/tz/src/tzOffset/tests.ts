@@ -64,12 +64,27 @@ describe("tzOffset", () => {
       expect(tzOffset("Asia/Pyongyang", date)).toBe(540);
     });
 
+    it("works with historical sub-hour offsets of IANA time zones", () => {
+      // Monrovia was GMT-00:44:30 until 1972, Dublin GMT-00:25:21 until 1916.
+      expect(
+        tzOffset("Africa/Monrovia", new Date("1970-01-15T00:00:00Z")),
+      ).toBe(-44.5);
+      expect(tzOffset("Europe/Dublin", new Date("1880-01-15T00:00:00Z"))).toBe(
+        -25.35,
+      );
+    });
+
     it("works with ±HH:MM", () => {
       expect(tzOffset("-05:00", date)).toBe(-300);
       expect(tzOffset("-02:30", date)).toBe(-150);
       expect(tzOffset("+05:00", date)).toBe(300);
       expect(tzOffset("+02:30", date)).toBe(150);
       expect(tzOffset("+05:00", new Date("1880-01-15T00:00:00Z"))).toBe(300);
+    });
+
+    it("keeps the sign of negative offsets with zero hours", () => {
+      expect(tzOffset("-00:30", date)).toBe(-30);
+      expect(tzOffset("-0030", date)).toBe(-30);
     });
 
     it("works with ±HHMM", () => {
