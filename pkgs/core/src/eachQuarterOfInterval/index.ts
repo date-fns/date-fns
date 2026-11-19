@@ -82,6 +82,7 @@ export function eachQuarterOfInterval<
     step = -step;
     reversed = !reversed;
   }
+  if (step < 1) return [];
 
   const dates: EachQuarterOfIntervalResult<IntervalType, Options> = [];
 

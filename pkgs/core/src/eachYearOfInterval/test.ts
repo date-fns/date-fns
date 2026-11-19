@@ -143,6 +143,10 @@ describe("eachYearOfInterval", () => {
       expect(result).toEqual([]);
     });
 
+    it("returns empty array if `options.step` is between 0 and 1", () => {
+      expect(eachYearOfInterval(interval, { step: 0.5 })).toEqual([]);
+    });
+
     it("returns empty array if `options.step` is NaN", () => {
       const result = eachYearOfInterval(interval, { step: NaN });
       expect(result).toEqual([]);

@@ -83,6 +83,7 @@ export function eachMonthOfInterval<
     step = -step;
     reversed = !reversed;
   }
+  if (step < 1) return [];
 
   const dates: EachMonthOfIntervalResult<IntervalType, Options> = [];
 

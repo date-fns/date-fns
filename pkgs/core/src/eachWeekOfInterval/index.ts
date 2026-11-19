@@ -103,6 +103,7 @@ export function eachWeekOfInterval<
     step = -step;
     reversed = !reversed;
   }
+  if (step < 1) return [];
 
   const dates: EachWeekOfIntervalResult<IntervalType, Options> = [];
 

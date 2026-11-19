@@ -83,6 +83,7 @@ export function eachDayOfInterval<
     step = -step;
     reversed = !reversed;
   }
+  if (step < 1) return [];
 
   const dates: EachDayOfIntervalResult<IntervalType, Options> = [];
 

@@ -84,6 +84,7 @@ export function eachMinuteOfInterval<
     step = -step;
     reversed = !reversed;
   }
+  if (step < 1) return [];
 
   const dates: EachMinuteOfIntervalResult<IntervalType, Options> = [];
 

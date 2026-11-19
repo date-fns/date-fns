@@ -83,6 +83,7 @@ export function eachYearOfInterval<
     step = -step;
     reversed = !reversed;
   }
+  if (step < 1) return [];
 
   const dates: EachYearOfIntervalResult<IntervalType, Options> = [];
 

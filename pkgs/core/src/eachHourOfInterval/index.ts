@@ -80,6 +80,7 @@ export function eachHourOfInterval<
     step = -step;
     reversed = !reversed;
   }
+  if (step < 1) return [];
 
   const dates: EachHourOfIntervalResult<IntervalType, Options> = [];
 
