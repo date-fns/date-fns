@@ -159,6 +159,11 @@ describe("eachDayOfInterval", () => {
       expect(result).toEqual([]);
     });
 
+    it("returns empty array if `options.step` is between 0 and 1", () => {
+      expect(eachDayOfInterval(interval, { step: 0.5 })).toEqual([]);
+      expect(eachDayOfInterval(interval, { step: -0.5 })).toEqual([]);
+    });
+
     it("returns empty array if `options.step` is NaN", () => {
       const result = eachDayOfInterval(interval, { step: NaN });
       expect(result).toEqual([]);

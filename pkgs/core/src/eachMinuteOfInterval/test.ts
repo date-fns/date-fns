@@ -153,6 +153,10 @@ describe("eachMinuteOfInterval", () => {
       expect(result).toEqual([]);
     });
 
+    it("returns empty array if `options.step` is between 0 and 1", () => {
+      expect(eachMinuteOfInterval(interval, { step: 0.5 })).toEqual([]);
+    });
+
     it("returns empty array if `options.step` is NaN", () => {
       const result = eachMinuteOfInterval(interval, { step: NaN });
       expect(result).toEqual([]);
