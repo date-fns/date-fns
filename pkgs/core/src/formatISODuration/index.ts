@@ -28,11 +28,27 @@ export function formatISODuration(duration: Duration): string {
   const {
     years = 0,
     months = 0,
+    weeks = 0,
     days = 0,
     hours = 0,
     minutes = 0,
     seconds = 0,
   } = duration;
 
-  return `P${years}Y${months}M${days}DT${hours}H${minutes}M${seconds}S`;
+  // ISO 8601 does not allow combining weeks with any other unit, so a
+  // duration of only weeks is formatted as `P<n>W`, and weeks are otherwise
+  // folded into days (7 days per week) to preserve the total duration.
+  if (
+    weeks !== 0 &&
+    years === 0 &&
+    months === 0 &&
+    days === 0 &&
+    hours === 0 &&
+    minutes === 0 &&
+    seconds === 0
+  ) {
+    return `P${weeks}W`;
+  }
+
+  return `P${years}Y${months}M${days + weeks * 7}DT${hours}H${minutes}M${seconds}S`;
 }

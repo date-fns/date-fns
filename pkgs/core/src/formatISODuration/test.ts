@@ -72,4 +72,22 @@ describe("formatISODuration", () => {
 
     expect(result).toBe("P0Y0M0DT0H0M0S");
   });
+
+  it("Weeks returns P2W (2 weeks)", () => {
+    const result = formatISODuration({ weeks: 2 });
+
+    expect(result).toBe("P2W");
+  });
+
+  it("Weeks combined with days are folded into days", () => {
+    const result = formatISODuration({ weeks: 2, days: 3 });
+
+    expect(result).toBe("P0Y0M17DT0H0M0S");
+  });
+
+  it("Weeks combined with time are folded into days", () => {
+    const result = formatISODuration({ weeks: 1, hours: 2 });
+
+    expect(result).toBe("P0Y0M7DT2H0M0S");
+  });
 });
