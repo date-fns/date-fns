@@ -83,25 +83,20 @@ const matchDayPatterns = {
   abbreviated: /^(dg\.|dl\.|dt\.|dm\.|dj\.|dv\.|ds\.)/i,
   wide: /^(diumenge|dilluns|dimarts|dimecres|dijous|divendres|dissabte)/i,
 };
+const parseAbbreviatedDayPatterns = [
+  /^dg\./i,
+  /^dl\./i,
+  /^dt\./i,
+  /^dm\./i,
+  /^dj\./i,
+  /^dv\./i,
+  /^ds\./i,
+] as const;
+
 const parseDayPatterns = {
-  narrow: [
-    /^dg./i,
-    /^dl./i,
-    /^dt./i,
-    /^dm./i,
-    /^dj./i,
-    /^dv./i,
-    /^ds./i,
-  ] as const,
-  abbreviated: [
-    /^dg./i,
-    /^dl./i,
-    /^dt./i,
-    /^dm./i,
-    /^dj./i,
-    /^dv./i,
-    /^ds./i,
-  ] as const,
+  narrow: parseAbbreviatedDayPatterns,
+  short: parseAbbreviatedDayPatterns,
+  abbreviated: parseAbbreviatedDayPatterns,
   wide: [
     /^diumenge/i,
     /^dilluns/i,
@@ -109,7 +104,7 @@ const parseDayPatterns = {
     /^dimecres/i,
     /^dijous/i,
     /^divendres/i,
-    /^disssabte/i,
+    /^dissabte/i,
   ] as const,
 };
 
