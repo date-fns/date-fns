@@ -9,10 +9,16 @@ export function tpEachMinuteOfInterval(
     microsecond: 0,
     nanosecond: 0,
   });
+  const endOfMinute = end.with({
+    second: 0,
+    millisecond: 0,
+    microsecond: 0,
+    nanosecond: 0,
+  });
 
-  let reversed = Temporal.ZonedDateTime.compare(startOfMinute, end) > 0;
-  const endDate = reversed ? startOfMinute : end;
-  let date = reversed ? end : startOfMinute;
+  let reversed = Temporal.ZonedDateTime.compare(startOfMinute, endOfMinute) > 0;
+  const endDate = reversed ? startOfMinute : endOfMinute;
+  let date = reversed ? endOfMinute : startOfMinute;
 
   let step = stepOption ?? 1;
   if (!step) return [];

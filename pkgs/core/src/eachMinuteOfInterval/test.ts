@@ -71,6 +71,33 @@ describe("eachMinuteOfInterval", () => {
     ]);
   });
 
+  it("returns minute starts if the start date is not on a minute", () => {
+    const result = eachMinuteOfInterval({
+      start: new Date(2020, 10, 14, 13, 0, 30),
+      end: new Date(2020, 10, 14, 13, 2, 10),
+    });
+
+    expect(result).toEqual([
+      new Date(2020, 10, 14, 13, 0),
+      new Date(2020, 10, 14, 13, 1),
+      new Date(2020, 10, 14, 13, 2),
+    ]);
+  });
+
+  it("returns minute starts if a reversed interval does not end on a minute", () => {
+    const result = eachMinuteOfInterval({
+      start: new Date(2020, 10, 14, 13, 0, 30),
+      end: new Date(2020, 10, 14, 12, 57, 10),
+    });
+
+    expect(result).toEqual([
+      new Date(2020, 10, 14, 13, 0),
+      new Date(2020, 10, 14, 12, 59),
+      new Date(2020, 10, 14, 12, 58),
+      new Date(2020, 10, 14, 12, 57),
+    ]);
+  });
+
   it("returns an empty array if the start date is `Invalid Date`", () => {
     const result = eachMinuteOfInterval({
       start: new Date(NaN),

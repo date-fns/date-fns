@@ -73,6 +73,7 @@ export function eachMinuteOfInterval<
   const { start, end } = normalizeInterval(options?.in, interval);
   // Set to the start of the minute
   start.setSeconds(0, 0);
+  end.setSeconds(0, 0);
 
   let reversed = +start > +end;
   const endTime = reversed ? +start : +end;
