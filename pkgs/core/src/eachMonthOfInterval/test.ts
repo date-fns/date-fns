@@ -96,6 +96,19 @@ describe("eachMonthOfInterval", () => {
     ]);
   });
 
+  it("returns starts of months at midnight if the start day has no midnight", () => {
+    // Santiago's clocks skipped 00:00–00:59 on 2021-09-05
+    const result = eachMonthOfInterval({
+      start: new TZDate(2021, 8, 5, 12, "America/Santiago"),
+      end: new TZDate(2021, 10, 5, 12, "America/Santiago"),
+    });
+    expect(result.map(Number)).toEqual([
+      +new TZDate(2021, 8, 1, "America/Santiago"),
+      +new TZDate(2021, 9, 1, "America/Santiago"),
+      +new TZDate(2021, 10, 1, "America/Santiago"),
+    ]);
+  });
+
   it("returns an empty array if the start date is `Invalid Date`", () => {
     const result = eachMonthOfInterval({
       start: new Date(NaN),

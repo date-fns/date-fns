@@ -5,7 +5,7 @@ export function tpEachYearOfInterval(
 ): Temporal.ZonedDateTime[] {
   let reversed = Temporal.ZonedDateTime.compare(start, end) > 0;
   const endDate = reversed ? start : end;
-  let date = (reversed ? end : start).startOfDay().with({ month: 1, day: 1 });
+  let date = (reversed ? end : start).with({ month: 1, day: 1 }).startOfDay();
 
   let step = stepOption ?? 1;
   if (!step) return [];

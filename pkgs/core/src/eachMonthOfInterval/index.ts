@@ -74,8 +74,8 @@ export function eachMonthOfInterval<
   let reversed = +start > +end;
   const endTime = reversed ? +start : +end;
   const date = reversed ? end : start;
-  date.setHours(0, 0, 0, 0);
   date.setDate(1);
+  date.setHours(0, 0, 0, 0);
 
   let step = options?.step ?? 1;
   if (!step) return [];
