@@ -14,5 +14,6 @@ export function tpAddISOWeekYears(
   }).days;
   return tpStartOfISOWeekYear(weekYear + amount)
     .add({ days: diff })
-    .toZonedDateTime(date.timeZoneId);
+    .toZonedDateTime(date.timeZoneId)
+    .withPlainTime(date.toPlainTime());
 }

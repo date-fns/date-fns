@@ -24,6 +24,14 @@ describe("setISOWeekYear", () => {
     expect(date).toEqual(new Date(2008, 11 /* Dec */, 29));
   });
 
+  it("preserves the time of day", () => {
+    const result = setISOWeekYear(
+      new Date(2008, 11 /* Dec */, 29, 12, 30, 45, 123),
+      2007,
+    );
+    expect(result).toEqual(new Date(2007, 0 /* Jan */, 1, 12, 30, 45, 123));
+  });
+
   it("sets ISO week-numbering years less than 100", () => {
     const initialDate = new Date(2008, 11 /* Dec */, 29);
     const expectedResult = new Date(0);
@@ -72,12 +80,12 @@ describe("setISOWeekYear", () => {
         setISOWeekYear("2024-04-10T07:00:00Z", 2024, {
           in: tz("Asia/Singapore"),
         }).toISOString(),
-      ).toBe("2024-04-10T00:00:00.000+08:00");
+      ).toBe("2024-04-10T15:00:00.000+08:00");
       expect(
         setISOWeekYear("2024-04-10T07:00:00Z", 2024, {
           in: tz("America/New_York"),
         }).toISOString(),
-      ).toBe("2024-04-10T00:00:00.000-04:00");
+      ).toBe("2024-04-10T03:00:00.000-04:00");
     });
 
     it("resolves the context date type", () => {

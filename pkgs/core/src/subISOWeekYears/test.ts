@@ -26,6 +26,12 @@ describe("subISOWeekYears", () => {
     expect(date).toEqual(new Date(2014, 8 /* Sep */, 1));
   });
 
+  it("preserves the time of day when subtracting 0 ISO week-numbering years", () => {
+    const date = new Date(2023, 2 /* Mar */, 10, 12, 30, 45, 123);
+    const result = subISOWeekYears(date, 0);
+    expect(result).toEqual(date);
+  });
+
   it("handles dates before 100 AD", () => {
     const initialDate = new Date(0);
     initialDate.setFullYear(15, 5 /* Jun */, 26);
@@ -65,12 +71,12 @@ describe("subISOWeekYears", () => {
         subISOWeekYears("2024-01-01T00:00:00Z", 5, {
           in: tz("America/New_York"),
         }).toISOString(),
-      ).toBe("2018-12-30T00:00:00.000-05:00");
+      ).toBe("2018-12-30T19:00:00.000-05:00");
       expect(
         subISOWeekYears("2024-01-01T00:00:00Z", 5, {
           in: tz("Asia/Tokyo"),
         }).toISOString(),
-      ).toBe("2018-12-31T00:00:00.000+09:00");
+      ).toBe("2018-12-31T09:00:00.000+09:00");
     });
 
     it("resolves the context date type", () => {
