@@ -59,6 +59,27 @@ To install the package run:
 npm install date-fns --save
 ```
 
+## TypeScript
+
+The `intlFormatDistance` types use `Intl.RelativeTimeFormatOptions` from
+TypeScript's `ES2020.Intl` library.
+
+If TypeScript reports that this type is missing, add `"ES2020.Intl"` to
+`compilerOptions.lib` in `tsconfig.json`. Keep the library entries your project
+already uses. For example, a browser project that uses `ES2019` can use this
+configuration.
+
+```json
+{
+  "compilerOptions": {
+    "lib": ["ES2019", "DOM", "ES2020.Intl"]
+  }
+}
+```
+
+The `ES2020` library and later ECMAScript libraries already include these
+types. You can keep your current `target`.
+
 ## Docs
 
 [See date-fns.org](https://date-fns.org/) for more details, API,
