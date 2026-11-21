@@ -17,7 +17,8 @@ type FormatDistanceTokenValue =
     };
 
 const translations = {
-  xseconds_other: "sekundė_sekundžių_sekundes",
+  xseconds_one: "sekundė_sekundės_sekundę",
+  xseconds_other: "sekundės_sekundžių_sekundes",
   xminutes_one: "minutė_minutės_minutę",
   xminutes_other: "minutės_minučių_minutes",
   xhours_one: "valanda_valandos_valandą",
@@ -48,6 +49,17 @@ const translateSingular: Translater = (_number, addSuffix, key, isFuture) => {
   return !addSuffix ? forms(key)[0] : isFuture ? forms(key)[1] : forms(key)[2];
 };
 
+const translateCountedSeconds: Translater = (
+  number,
+  addSuffix,
+  _key,
+  isFuture,
+) => {
+  if (special(number % 100)) return `${number} ${forms("xseconds_other")[1]}`;
+  const key = number % 10 === 1 ? "xseconds_one" : "xseconds_other";
+  return `${number} ${translateSingular(number, addSuffix, key, isFuture)}`;
+};
+
 const translate: Translater = (number, addSuffix, key, isFuture) => {
   const result = number + " ";
   if (number === 1) {
@@ -74,12 +86,12 @@ function forms(key: TranslationKey): string[] {
 const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   lessThanXSeconds: {
     one: translateSeconds,
-    other: translate,
+    other: translateCountedSeconds,
   },
 
   xSeconds: {
     one: translateSeconds,
-    other: translate,
+    other: translateCountedSeconds,
   },
 
   halfAMinute: "pusė minutės",
