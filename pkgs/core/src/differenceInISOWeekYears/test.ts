@@ -139,7 +139,7 @@ describe("differenceInISOWeekYears", () => {
           "2022-01-02T06:00:00Z",
           { in: tz("America/New_York") },
         ),
-      ).toBe(1);
+      ).toBe(2);
     });
 
     it("doesn't enforce argument and context to be of the same type", () => {

@@ -24,6 +24,12 @@ describe("addISOWeekYears", () => {
     expect(date).toEqual(new Date(2014, 8 /* Sep */, 1));
   });
 
+  it("preserves the time of day when adding 0 ISO week-numbering years", () => {
+    const date = new Date(2023, 2 /* Mar */, 10, 12, 30, 45, 123);
+    const result = addISOWeekYears(date, 0);
+    expect(result).toEqual(date);
+  });
+
   it("handles dates before 100 AD", () => {
     const initialDate = new Date(0);
     initialDate.setFullYear(10, 6 /* Jul */, 2);
@@ -63,7 +69,7 @@ describe("addISOWeekYears", () => {
         addISOWeekYears("2023-07-01T10:00:00Z", 1, {
           in: tz("Asia/Singapore"),
         }).toISOString(),
-      ).toBe("2024-06-29T00:00:00.000+08:00");
+      ).toBe("2024-06-29T18:00:00.000+08:00");
     });
 
     it("resolves the context date type", () => {

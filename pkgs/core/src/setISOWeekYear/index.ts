@@ -44,7 +44,7 @@ export function setISOWeekYear<
   weekYear: number,
   options?: SetISOWeekYearOptions<ResultDate> | undefined,
 ): ResultDate {
-  let _date = toDate(date, options?.in);
+  const _date = toDate(date, options?.in);
   const diff = differenceInCalendarDays(
     _date,
     startOfISOWeekYear(_date, options),
@@ -52,7 +52,18 @@ export function setISOWeekYear<
   const fourthOfJanuary = constructFrom(options?.in || date, 0);
   fourthOfJanuary.setFullYear(weekYear, 0, 4);
   fourthOfJanuary.setHours(0, 0, 0, 0);
-  _date = startOfISOWeekYear(fourthOfJanuary);
-  _date.setDate(_date.getDate() + diff);
-  return _date;
+  const date_ = startOfISOWeekYear(fourthOfJanuary);
+  date_.setDate(date_.getDate() + diff);
+
+  // The ISO week-numbering year only determines the date, so the time of day is
+  // carried over, the same way `setWeek` and `setISOWeek` do it. Without it
+  // `addISOWeekYears(date, 0)` would reset the time to midnight.
+  date_.setHours(
+    _date.getHours(),
+    _date.getMinutes(),
+    _date.getSeconds(),
+    _date.getMilliseconds(),
+  );
+
+  return date_;
 }
