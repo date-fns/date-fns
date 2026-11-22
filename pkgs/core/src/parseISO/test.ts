@@ -347,6 +347,20 @@ describe("parseISO", () => {
         expect(result instanceof Date).toBe(true);
         expect(isNaN(result.getTime())).toBe(true);
       });
+
+      it("returns `Invalid Date` for invalid timezone hours", () => {
+        const result1 = parseISO("2014-02-11T21:35:45+24:00");
+        expect(result1 instanceof Date).toBe(true);
+        expect(isNaN(result1.getTime())).toBe(true);
+
+        const result2 = parseISO("2014-02-11T21:35:45+99:00");
+        expect(result2 instanceof Date).toBe(true);
+        expect(isNaN(result2.getTime())).toBe(true);
+
+        const result3 = parseISO("2014-02-11T21:35:45-2400");
+        expect(result3 instanceof Date).toBe(true);
+        expect(isNaN(result3.getTime())).toBe(true);
+      });
     });
   });
 

@@ -315,6 +315,6 @@ function validateTime(
   );
 }
 
-function validateTimezone(_hours: number, minutes: number): boolean {
-  return minutes >= 0 && minutes <= 59;
+function validateTimezone(hours: number, minutes: number): boolean {
+  return hours >= 0 && hours <= 23 && minutes >= 0 && minutes <= 59;
 }
