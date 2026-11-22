@@ -763,6 +763,17 @@ describe("parse", () => {
           );
         });
       });
+
+      it("validates week number against the number of ISO weeks in the year", () => {
+        const result1 = parse("2019-53", "RRRR-II", referenceDate);
+        expect(isNaN(result1.getTime())).toBe(true);
+
+        const result2 = parse("2021-53", "RRRR-II", referenceDate);
+        expect(isNaN(result2.getTime())).toBe(true);
+
+        const result3 = parse("2020-53", "RRRR-II", referenceDate);
+        expect(isNaN(result3.getTime())).toBe(false);
+      });
     });
   });
 

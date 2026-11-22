@@ -1,9 +1,10 @@
+import { getISOWeeksInYear } from "../../../getISOWeeksInYear/index.ts";
 import type { Match } from "../../../locale/types.ts";
 import { setISOWeek } from "../../../setISOWeek/index.ts";
 import { startOfISOWeek } from "../../../startOfISOWeek/index.ts";
 import { numericPatterns } from "../constants.ts";
 import { Parser } from "../Parser.ts";
-import type { ParseFlags, ParseResult } from "../types.ts";
+import type { ParseFlags, ParseResult, ParserOptions } from "../types.ts";
 import { parseNDigits, parseNumericPattern } from "../utils.ts";
 
 // ISO week of year
@@ -22,10 +23,11 @@ export class ISOWeekParser extends Parser<number> {
   }
 
   override validate<DateType extends Date>(
-    _date: DateType,
+    date: DateType,
     value: number,
+    options?: ParserOptions,
   ): boolean {
-    return value >= 1 && value <= 53;
+    return value >= 1 && value <= getISOWeeksInYear(date, options);
   }
 
   set<DateType extends Date>(
