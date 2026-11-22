@@ -1861,6 +1861,36 @@ describe("parse", () => {
           );
         });
       });
+
+      it("returns Invalid Date for out-of-range timezone offset hours, minutes, or seconds", () => {
+        const result1 = parse(
+          "2020-01-01T00:00:00+99:00",
+          "yyyy-MM-dd'T'HH:mm:ssxxx",
+          referenceDate,
+        );
+        expect(isNaN(result1.getTime())).toBe(true);
+
+        const result2 = parse(
+          "2020-01-01T00:00:00+05:60",
+          "yyyy-MM-dd'T'HH:mm:ssxxx",
+          referenceDate,
+        );
+        expect(isNaN(result2.getTime())).toBe(true);
+
+        const result3 = parse(
+          "2020-01-01T00:00:00+05:00:99",
+          "yyyy-MM-dd'T'HH:mm:ssxxxxx",
+          referenceDate,
+        );
+        expect(isNaN(result3.getTime())).toBe(true);
+
+        const result4 = parse(
+          "2020-01-01T00:00:00+24:00",
+          "yyyy-MM-dd'T'HH:mm:ssXXX",
+          referenceDate,
+        );
+        expect(isNaN(result4.getTime())).toBe(true);
+      });
     });
   });
 
