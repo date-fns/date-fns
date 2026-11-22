@@ -51,6 +51,7 @@ export function lastDayOfWeek<
 
   _date.setHours(0, 0, 0, 0);
   _date.setDate(_date.getDate() + diff);
+  _date.setHours(0, 0, 0, 0);
 
   return _date;
 }

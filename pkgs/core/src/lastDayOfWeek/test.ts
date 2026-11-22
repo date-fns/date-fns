@@ -82,6 +82,30 @@ describe("lastDayOfWeek", () => {
     });
   });
 
+  it("returns midnight when the input day has no midnight (DST gap)", () => {
+    // In America/Sao_Paulo the clocks skipped 00:00-00:59 on 4 Nov 2018,
+    // so that day has no midnight. Clearing the time first lands on 01:00,
+    // which must not be carried over to the last day of the week.
+    const date = new TZDate(2018, 10 /* Nov */, 4, 12, "America/Sao_Paulo");
+    const result = lastDayOfWeek(date);
+    expect(result.toISOString()).toBe("2018-11-10T00:00:00.000-02:00");
+    expect(date.getHours()).toBe(12);
+  });
+
+  it("keeps 01:00 when the last day itself has no midnight", () => {
+    const date = new TZDate(2018, 10 /* Nov */, 1, 12, "America/Sao_Paulo");
+    const result = lastDayOfWeek(date, { weekStartsOn: 1 });
+    expect(result.toISOString()).toBe("2018-11-04T01:00:00.000-02:00");
+  });
+
+  it("does not carry the input time into a late-day DST gap on the last day", () => {
+    const date = new TZDate(2024, 2 /* Mar */, 25, 23, 30, "America/Nuuk");
+    const result = lastDayOfWeek(date);
+    expect(result.toISOString()).toBe("2024-03-30T00:00:00.000-02:00");
+    expect(date.getHours()).toBe(23);
+    expect(date.getMinutes()).toBe(30);
+  });
+
   it("returns `Invalid Date` if the given date is invalid", () => {
     const result = lastDayOfWeek(new Date(NaN));
     expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
