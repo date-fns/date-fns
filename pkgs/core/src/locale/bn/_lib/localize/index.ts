@@ -208,12 +208,12 @@ const ordinalNumber: LocalizeFn<number> = (dirtyNumber, options) => {
   }
 };
 
-// function localeToNumber(locale: string): number {
-//   const enNumber = locale.toString().replace(/[১২৩৪৫৬৭৮৯০]/g, function (match) {
-//     return numberValues.number[match as keyof typeof numberValues.number]
-//   })
-//   return Number(enNumber)
-// }
+export function localeToNumber(locale: string): number {
+  const enNumber = locale.replace(/[০-৯]/g, function (match) {
+    return numberValues.number[match as keyof typeof numberValues.number];
+  });
+  return Number(enNumber);
+}
 
 export function numberToLocale(enNumber: number) {
   return enNumber.toString().replace(/\d/g, function (match) {
