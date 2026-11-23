@@ -2,9 +2,10 @@ import type { Quarter } from "../../../../types.ts";
 import type { Match } from "../../../types.ts";
 import { buildMatchFn } from "../../../_lib/buildMatchFn/index.ts";
 import { buildMatchPatternFn } from "../../../_lib/buildMatchPatternFn/index.ts";
+import { localeToNumber } from "../localize/index.ts";
 
-const matchOrdinalNumberPattern = /^(\d+)(ম|য়|র্থ|ষ্ঠ|শে|ই|তম)?/i;
-const parseOrdinalNumberPattern = /\d+/i;
+const matchOrdinalNumberPattern = /^([0-9০-৯]+)(লা|রা|ঠা|ম|য়|র্থ|ষ্ঠ|শে|ই|তম)?/i;
+const parseOrdinalNumberPattern = /[0-9০-৯]+/i;
 
 const matchEraPatterns = {
   narrow: /^(খ্রিঃপূঃ|খ্রিঃ)/i,
@@ -107,7 +108,7 @@ export const match: Match = {
   ordinalNumber: buildMatchPatternFn({
     matchPattern: matchOrdinalNumberPattern,
     parsePattern: parseOrdinalNumberPattern,
-    valueCallback: (value) => parseInt(value, 10),
+    valueCallback: localeToNumber,
   }),
 
   era: buildMatchFn({
