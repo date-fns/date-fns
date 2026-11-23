@@ -73,7 +73,7 @@ const parseDayPatterns = {
     /^(it-)?tn/i,
     /^(it-)?tl/i,
     /^(l-)?er/i,
-    /^(il-)?ham/i,
+    /^(il-)?ħam/i,
     /^(il-)?ġi/i,
     /^(is-)?si/i,
   ] as const,
