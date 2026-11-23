@@ -89,7 +89,7 @@ const parseDayPatterns = {
 
 const matchDayPeriodPatterns = {
   narrow: /^(öö|ös|gy|ö|sa|ös|ak|ge)/i,
-  any: /^(ö\.?\s?[ös]\.?|öğleden sonra|gece yarısı|öğle|(sabah|öğ|akşam|gece)(leyin))/i,
+  any: /^(ö\.?\s?[ös]\.?|öğleden sonra|gece yarısı|öğlen?|(sabah|öğ|akşam|gece)(leyin))/i,
 };
 const parseDayPeriodPatterns = {
   any: {
