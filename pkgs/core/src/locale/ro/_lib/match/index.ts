@@ -67,9 +67,9 @@ const parseMonthPatterns = {
 
 const matchDayPatterns = {
   narrow: /^[dlmjvs]/i,
-  short: /^(d|l|ma|mi|j|v|s)/i,
-  abbreviated: /^(dum|lun|mar|mie|jo|vi|sâ)/i,
-  wide: /^(duminica|luni|marţi|miercuri|joi|vineri|sâmbătă)/i,
+  short: /^(du?|lu?|ma|mi|jo?|vi?|sâ?)/i,
+  abbreviated: /^(dum|lun|mar|mie|joi?|vin?|sâm?)/i,
+  wide: /^(duminic[ăa]|luni|mar[țţ]i|miercuri|joi|vineri|sâmbătă)/i,
 };
 const parseDayPatterns = {
   narrow: [/^d/i, /^l/i, /^m/i, /^m/i, /^j/i, /^v/i, /^s/i] as const,
