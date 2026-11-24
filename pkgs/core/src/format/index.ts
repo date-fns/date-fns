@@ -35,7 +35,7 @@ export { formatters, longFormatters };
 //   then the sequence will continue until the end of the string.
 // - . matches any single character unmatched by previous parts of the RegExps
 const formattingTokensRegExp =
-  /[yYQqMLwIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)|./g;
+  /[yYQqMLwWIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)|./g;
 
 // This RegExp catches symbols escaped by quotes, and also
 // sequences of symbols P, p, and the combinations like `PPPPPPPppppp`
@@ -134,6 +134,9 @@ export interface FormatOptions
  * | Local week of year              | w       | 1, 2, ..., 53                     |       |
  * |                                 | wo      | 1st, 2nd, ..., 53th               | 7     |
  * |                                 | ww      | 01, 02, ..., 53                   |       |
+ * | Week of month                   | W       | 1, 2, ..., 5                      |       |
+ * |                                 | Wo      | 1st, 2nd, ..., 5th                |       |
+ * |                                 | WW      | 01, 02, ..., 05                   |       |
  * | ISO week of year                | I       | 1, 2, ..., 53                     | 7     |
  * |                                 | Io      | 1st, 2nd, ..., 53th               | 7     |
  * |                                 | II      | 01, 02, ..., 53                   | 7     |
