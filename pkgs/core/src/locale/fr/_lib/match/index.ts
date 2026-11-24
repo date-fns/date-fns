@@ -74,7 +74,7 @@ const parseDayPatterns = {
 
 const matchDayPeriodPatterns = {
   narrow: /^(a|p|minuit|midi|mat\.?|ap\.?m\.?|soir|nuit)/i,
-  any: /^([ap]\.?\s?m\.?|du matin|de l'après[-\s]midi|du soir|de la nuit)/i,
+  any: /^([ap]\.?\s?m\.?|du matin|de l['’]après[-\s]midi|du soir|de la nuit)/i,
 };
 const parseDayPeriodPatterns = {
   any: {
