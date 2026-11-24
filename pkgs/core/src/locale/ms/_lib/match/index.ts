@@ -78,7 +78,7 @@ const matchDayPeriodPatterns = {
 const parseDayPeriodPatterns = {
   any: {
     am: /^a/i,
-    pm: /^pm/i,
+    pm: /^p\.?\s?m/i,
     midnight: /^tengah m/i,
     noon: /^tengah h/i,
     morning: /pa/i,
