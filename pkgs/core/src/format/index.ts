@@ -134,9 +134,9 @@ export interface FormatOptions
  * | Local week of year              | w       | 1, 2, ..., 53                     |       |
  * |                                 | wo      | 1st, 2nd, ..., 53th               | 7     |
  * |                                 | ww      | 01, 02, ..., 53                   |       |
- * | Week of month                  | W       | 1, 2, ..., 5                      | 7     |
- * |                                 | Wo      | 1st, 2nd, ..., 5th                | 7     |
- * |                                 | WW      | 01, 02, ..., 05                   | 7     |
+ * | Week of month                   | W       | 1, 2, ..., 5                      |       |
+ * |                                 | Wo      | 1st, 2nd, ..., 5th                |       |
+ * |                                 | WW      | 01, 02, ..., 05                   |       |
  * | ISO week of year                | I       | 1, 2, ..., 53                     | 7     |
  * |                                 | Io      | 1st, 2nd, ..., 53th               | 7     |
  * |                                 | II      | 01, 02, ..., 53                   | 7     |
