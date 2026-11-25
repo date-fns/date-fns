@@ -96,7 +96,7 @@ const parseDayPeriodPatterns = {
     am: /^ö\.?ö\.?/i,
     pm: /^ö\.?s\.?/i,
     midnight: /^(gy|gece yarısı)/i,
-    noon: /^öğ/i,
+    noon: /^(ö|öğlen?)$/i,
     morning: /^sa/i,
     afternoon: /^öğleden sonra/i,
     evening: /^ak/i,
