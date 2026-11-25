@@ -72,7 +72,7 @@ const matchDayPatterns = {
 };
 const parseDayPatterns = {
   narrow: [/^d/i, /^l/i, /^m/i, /^m/i, /^x/i, /^v/i, /^s/i] as const,
-  any: [/^do/i, /^lu/i, /^ma/i, /^me/i, /^xo/i, /^ve/i, /^sa/i] as const,
+  any: [/^do/i, /^lu/i, /^ma/i, /^m[eé]/i, /^xo/i, /^ve/i, /^s[áa]/i] as const,
 };
 
 const matchDayPeriodPatterns = {
