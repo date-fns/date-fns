@@ -61,14 +61,14 @@ const parseMonthPatterns = {
 };
 
 const matchDayPatterns = {
-  narrow: /^(អា|ច|អ|ព|ព្រ|សុ|ស)/i,
-  short: /^(អា|ច|អ|ព|ព្រ|សុ|ស)/i,
-  abbreviated: /^(អា|ច|អ|ព|ព្រ|សុ|ស)/i,
+  narrow: /^(អា|ច|អ|ព្រ|ព|សុ|ស)/i,
+  short: /^(អា|ច|អ|ព្រ|ព|សុ|ស)/i,
+  abbreviated: /^(អា|ច|អ|ព្រ|ព|សុ|ស)/i,
   wide: /^(អាទិត្យ|ចន្ទ|អង្គារ|ពុធ|ព្រហស្បតិ៍|សុក្រ|សៅរ៍)/i,
 };
 const parseDayPatterns = {
-  narrow: [/^អា/i, /^ច/i, /^អ/i, /^ព/i, /^ព្រ/i, /^សុ/i, /^ស/i] as const,
-  any: [/^អា/i, /^ច/i, /^អ/i, /^ព/i, /^ព្រ/i, /^សុ/i, /^សៅ/i] as const,
+  narrow: [/^អា/i, /^ច/i, /^អ/i, /^ព(?!្រ)/i, /^ព្រ/i, /^សុ/i, /^ស/i] as const,
+  any: [/^អា/i, /^ច/i, /^អ/i, /^ព(?!្រ)/i, /^ព្រ/i, /^សុ/i, /^ស/i] as const,
 };
 
 const matchDayPeriodPatterns = {
