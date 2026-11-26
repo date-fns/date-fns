@@ -1,8 +1,37 @@
 import { describe, expect, it } from "vitest";
+import { format } from "../../format/index.ts";
 import { parse } from "../../parse/index.ts";
 import { zhCN } from "./index.ts";
 
 describe("zh-CN locale", () => {
+  it.each(["B", "BBBB", "BBBBB"])(
+    "parses the morning and night labels formatted by %s",
+    (token) => {
+      const reference = new Date(2025, 0, 15);
+      const pattern = token + " h:mm";
+      for (const hour of [2, 9]) {
+        const date = new Date(2025, 0, 15, hour, 30);
+        const text = format(date, pattern, { locale: zhCN });
+        expect(parse(text, pattern, reference, { locale: zhCN })).toEqual(date);
+      }
+    },
+  );
+
+  it("recognizes the narrow morning label as morning", () => {
+    expect(zhCN.match.dayPeriod("早")).toEqual({ value: "morning", rest: "" });
+  });
+
+  it("parses narrow noon without consuming the start of midnight", () => {
+    const reference = new Date(2025, 0, 15);
+    const noon = new Date(2025, 0, 15, 12);
+    const text = format(noon, "bbbbb", { locale: zhCN });
+    expect(text).toBe("午");
+    expect(parse(text, "bbbbb", reference, { locale: zhCN })).toEqual(noon);
+    expect(parse("午夜", "bbbbb", reference, { locale: zhCN })).toEqual(
+      reference,
+    );
+  });
+
   it("parses October with localized month tokens", () => {
     expect(
       parse("2022年10月27日", "yyyy年MMMdd日", new Date(), {
