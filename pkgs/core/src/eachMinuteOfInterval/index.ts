@@ -1,5 +1,6 @@
 import { normalizeInterval } from "../_lib/normalizeInterval/index.ts";
 import { addMinutes } from "../addMinutes/index.ts";
+import { millisecondsInSecond } from "../constants/index.ts";
 import { constructFrom } from "../constructFrom/index.ts";
 import type { ContextOptions, Interval, StepOptions } from "../types.ts";
 
@@ -71,8 +72,12 @@ export function eachMinuteOfInterval<
   options?: Options,
 ): EachMinuteOfIntervalResult<IntervalType, Options> {
   const { start, end } = normalizeInterval(options?.in, interval);
-  // Set to the start of the minute
-  start.setSeconds(0, 0);
+  // Subtract the local seconds and milliseconds to preserve the minute's occurrence.
+  start.setTime(
+    +start -
+      start.getSeconds() * millisecondsInSecond -
+      start.getMilliseconds(),
+  );
 
   let reversed = +start > +end;
   const endTime = reversed ? +start : +end;
