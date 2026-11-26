@@ -73,12 +73,12 @@ const parseDayPatterns = {
 };
 
 const matchDayPeriodPatterns = {
-  narrow: /^(a|p|minuit|midi|mat\.?|ap\.?m\.?|soir|nuit)/i,
-  any: /^([ap]\.?\s?m\.?|du matin|de l['’]après[-\s]midi|du soir|de la nuit)/i,
+  narrow: /^(ap\.?m\.?|a|p|minuit|midi|mat\.?|soir|nuit)/i,
+  any: /^([ap]\.?\s?m\.?|du matin|(?:de l['’])?après[-\s]midi|du soir|de la nuit)/i,
 };
 const parseDayPeriodPatterns = {
   any: {
-    am: /^a/i,
+    am: /^a(?!p)/i,
     pm: /^p/i,
     midnight: /^min/i,
     noon: /^mid/i,
