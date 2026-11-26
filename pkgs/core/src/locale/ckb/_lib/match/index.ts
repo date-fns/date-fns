@@ -86,8 +86,8 @@ const matchDayPeriodPatterns = {
 };
 const parseDayPeriodPatterns = {
   any: {
-    am: /^د/i,
-    pm: /^پ/i,
+    am: /^پ/i,
+    pm: /^د/i,
     midnight: /^ن-ش/i,
     noon: /^ن/i,
     morning: /بەیانی/i,

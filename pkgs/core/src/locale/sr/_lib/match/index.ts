@@ -72,12 +72,12 @@ const parseDayPatterns = {
 };
 
 const matchDayPeriodPatterns = {
-  any: /^(ам|пм|поноћ|(по)?подне|увече|ноћу|после подне|ујутру)/i,
+  any: /^(ам|пм|am|pm|поноћ|(по)?подне|увече|ноћу|после подне|ујутру)/i,
 };
 const parseDayPeriodPatterns = {
   any: {
-    am: /^a/i,
-    pm: /^p/i,
+    am: /^(ам|am)/i,
+    pm: /^(пм|pm)/i,
     midnight: /^поно/i,
     noon: /^под/i,
     morning: /ујутру/i,

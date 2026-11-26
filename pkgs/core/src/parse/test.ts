@@ -1,5 +1,9 @@
 import { describe, expect, it } from "vitest";
 import { parse } from "./index.ts";
+import { format } from "../format/index.ts";
+import { az } from "../locale/az/index.ts";
+import { ckb } from "../locale/ckb/index.ts";
+import { sr } from "../locale/sr/index.ts";
 import { assertType } from "../_lib/test/index.ts";
 import { UTCDate } from "@date-fns/utc";
 import { TZDate, tz } from "@date-fns/tz";
@@ -1166,6 +1170,21 @@ describe("parse", () => {
   });
 
   describe("AM, PM", () => {
+    describe.each([az, ckb, sr])("$code", (locale) => {
+      it.each(["a h:mm", "aaaa h:mm", "aaaaa h:mm"])(
+        "round-trips %s",
+        (pattern) => {
+          for (const hour of [0, 3, 12, 15]) {
+            const date = new Date(1986, 3 /* Apr */, 4, hour, 30);
+            const text = format(date, pattern, { locale });
+            expect(parse(text, pattern, referenceDate, { locale })).toEqual(
+              date,
+            );
+          }
+        },
+      );
+    });
+
     it("abbreviated", () => {
       const result = parse("5 AM", "h a", referenceDate);
       expect(result).toEqual(new Date(1986, 3 /* Apr */, 4, 5));
