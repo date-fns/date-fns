@@ -120,13 +120,13 @@ const parseDayPatterns = {
 };
 
 const matchDayPeriodPatterns = {
-  narrow: /^(a|p|gecəyarı|gün|səhər|gündüz|axşam|gecə)$/i,
-  any: /^(am|pm|a\.m\.|p\.m\.|AM|PM|gecəyarı|gün|səhər|gündüz|axşam|gecə)$/i,
+  narrow: /^(gecəyarı|gündüz|gün|səhər|axşam|gecə|[ap])/i,
+  any: /^([ap]m|[ap]\.m\.|gecəyarı|gündüz|gün|səhər|axşam|gecə)/i,
 };
 const parseDayPeriodPatterns = {
   any: {
-    am: /^a$/i,
-    pm: /^p$/i,
+    am: /^a(?:m|\.m\.)?$/i,
+    pm: /^p(?:m|\.m\.)?$/i,
     midnight: /^gecəyarı$/i,
     noon: /^gün$/i,
     morning: /səhər$/i,
