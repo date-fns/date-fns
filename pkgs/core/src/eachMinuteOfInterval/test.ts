@@ -31,6 +31,24 @@ describe("eachMinuteOfInterval", () => {
     expect(result[2]).toEqual(new Date(2020, 10, 14, 13, 2));
   });
 
+  it("preserves the first occurrence of a repeated minute in a TZDate", () => {
+    const start = new TZDate(Date.UTC(2021, 9, 31, 0, 45), "Europe/London");
+    const end = new TZDate(Date.UTC(2021, 9, 31, 0, 51), "Europe/London");
+
+    const result = eachMinuteOfInterval({ start, end });
+
+    expect(result).toHaveLength(7);
+    expect(result.map((date) => date.toISOString())).toEqual([
+      "2021-10-31T01:45:00.000+01:00",
+      "2021-10-31T01:46:00.000+01:00",
+      "2021-10-31T01:47:00.000+01:00",
+      "2021-10-31T01:48:00.000+01:00",
+      "2021-10-31T01:49:00.000+01:00",
+      "2021-10-31T01:50:00.000+01:00",
+      "2021-10-31T01:51:00.000+01:00",
+    ]);
+  });
+
   it("should accept timestamps", () => {
     const start = new Date(2020, 10, 14, 13, 0).getTime();
     const end = new Date(2020, 10, 14, 13, 2).getTime();
@@ -228,6 +246,22 @@ describe("eachMinuteOfInterval", () => {
   });
 
   describe("context", () => {
+    it("aligns pre-epoch dates to local minutes in a zone with a seconds offset", () => {
+      // Paris was 9 minutes and 21 seconds ahead of UTC.
+      const result = eachMinuteOfInterval(
+        {
+          start: "1890-01-01T00:01:23.456Z",
+          end: "1890-01-01T00:02:00.000Z",
+        },
+        { in: tz("Europe/Paris") },
+      );
+
+      expect(result.map((date) => new Date(+date).toISOString())).toEqual([
+        "1890-01-01T00:00:39.000Z",
+        "1890-01-01T00:01:39.000Z",
+      ]);
+    });
+
     it("allows to specify the context", () => {
       const interval = {
         start: "2024-04-10T07:00:00Z",
