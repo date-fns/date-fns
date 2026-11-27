@@ -48,8 +48,9 @@ export function endOfQuarter<
   const currentMonth = _date.getMonth();
   const month = currentMonth - (currentMonth % 3) + 3;
 
-  // Resolve the start of the next quarter and step back 1 ms, so a 23:59:59.999
-  // repeated by a DST fall-back never resolves to its first occurrence.
+  // Reset the clock time before positioning the next quarter so late-night
+  // inputs cannot cross a forward-DST gap, then step back 1 ms from midnight.
+  _date.setHours(0, 0, 0, 0);
   _date.setMonth(month, 1);
   _date.setHours(0, 0, 0, 0);
   _date.setTime(_date.getTime() - 1);

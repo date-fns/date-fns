@@ -63,9 +63,10 @@ export function endOfWeek<
   const day = _date.getDay();
   const diff = (day < weekStartsOn ? -7 : 0) + 6 - (day - weekStartsOn);
 
-  // Resolve the start of the day after the week and step back 1 ms, so a
-  // 23:59:59.999 repeated by a DST fall-back never resolves to its first
-  // occurrence.
+  // Reset the clock time before advancing so late-night inputs cannot cross
+  // a forward-DST gap, then step back 1 ms from midnight so a repeated
+  // 23:59:59.999 resolves to its last occurrence.
+  _date.setHours(0, 0, 0, 0);
   _date.setDate(_date.getDate() + diff + 1);
   _date.setHours(0, 0, 0, 0);
   _date.setTime(_date.getTime() - 1);

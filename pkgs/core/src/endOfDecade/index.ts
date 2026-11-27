@@ -50,8 +50,9 @@ export function endOfDecade<
   const year = _date.getFullYear();
   const decade = 9 + Math.floor(year / 10) * 10;
 
-  // Resolve the start of the next decade and step back 1 ms, so a 23:59:59.999
-  // repeated by a DST fall-back never resolves to its first occurrence.
+  // Reset the clock time before positioning the next decade so late-night
+  // inputs cannot cross a forward-DST gap, then step back 1 ms from midnight.
+  _date.setHours(0, 0, 0, 0);
   _date.setFullYear(decade + 1, 0, 1);
   _date.setHours(0, 0, 0, 0);
   _date.setTime(_date.getTime() - 1);

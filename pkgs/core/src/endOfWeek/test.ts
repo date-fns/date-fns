@@ -134,5 +134,16 @@ describe("endOfWeek", () => {
       const result = endOfWeek(date, { in: tz("America/Santiago") });
       expect(result.toISOString()).toBe("2026-04-04T23:59:59.999-04:00");
     });
+
+    it("does not carry late-night clock time across a forward DST gap", () => {
+      // In America/Nuuk, 2024-03-30 skips 23:00..23:59 directly to 2024-03-31 00:00.
+      // With weekStartsOn: 6, Friday 2024-03-29 is the last day of the week.
+      const date = new Date("2024-03-29T23:30:00-02:00");
+      const result = endOfWeek(date, {
+        weekStartsOn: 6,
+        in: tz("America/Nuuk"),
+      });
+      expect(result.toISOString()).toBe("2024-03-29T23:59:59.999-02:00");
+    });
   });
 });
