@@ -46,7 +46,13 @@ export function endOfMonth<
 ): ResultDate {
   const _date = toDate(date, options?.in);
   const month = _date.getMonth();
-  _date.setFullYear(_date.getFullYear(), month + 1, 0);
-  _date.setHours(23, 59, 59, 999);
+
+  // Reset the clock time before positioning the next month so late-night
+  // inputs cannot cross a forward-DST gap, then step back 1 ms from midnight.
+  _date.setHours(0, 0, 0, 0);
+  _date.setFullYear(_date.getFullYear(), month + 1, 1);
+  _date.setHours(0, 0, 0, 0);
+  _date.setTime(_date.getTime() - 1);
+
   return _date;
 }

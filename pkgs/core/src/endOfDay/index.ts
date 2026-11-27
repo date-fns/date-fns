@@ -45,6 +45,14 @@ export function endOfDay<
   options?: EndOfDayOptions<ResultDate> | undefined,
 ): ResultDate {
   const _date = toDate(date, options?.in);
-  _date.setHours(23, 59, 59, 999);
+
+  // Reset the clock time before advancing so late-night inputs cannot cross
+  // a forward-DST gap into the day after, then step back 1 ms from midnight
+  // so a repeated 23:59:59.999 resolves to its last occurrence.
+  _date.setHours(0, 0, 0, 0);
+  _date.setDate(_date.getDate() + 1);
+  _date.setHours(0, 0, 0, 0);
+  _date.setTime(_date.getTime() - 1);
+
   return _date;
 }
