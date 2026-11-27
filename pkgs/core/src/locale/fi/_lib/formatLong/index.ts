@@ -2,7 +2,7 @@ import type { FormatLong } from "../../../types.ts";
 import { buildFormatLongFn } from "../../../_lib/buildFormatLongFn/index.ts";
 
 const dateFormats = {
-  full: "eeee d. MMMM y",
+  full: "EEEE d. MMMM y",
   long: "d. MMMM y",
   medium: "d. MMM y",
   short: "d.M.y",
