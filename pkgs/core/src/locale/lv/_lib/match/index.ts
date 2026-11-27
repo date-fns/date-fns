@@ -29,7 +29,7 @@ const parseQuarterPatterns = {
 const matchMonthPatterns = {
   narrow: /^[jfmasond]/i,
   abbreviated:
-    /^(janv\.|febr\.|marts|apr\.|maijs|jūn\.|jūl\.|aug\.|sept\.|okt\.|nov\.|dec\.)/i,
+    /^(janv\.|febr\.|mart[sā]|apr\.|maijs|jūn\.|jūl\.|aug\.|sept\.|okt\.|nov\.|dec\.)/i,
   wide: /^(janvār(is|ī)|februār(is|ī)|mart[sā]|aprīl(is|ī)|maij[sā]|jūnij[sā]|jūlij[sā]|august[sā]|septembr(is|ī)|oktobr(is|ī)|novembr(is|ī)|decembr(is|ī))/i,
 };
 const parseMonthPatterns = {
