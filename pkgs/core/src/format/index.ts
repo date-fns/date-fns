@@ -5,6 +5,8 @@ import { longFormatters } from "../_lib/format/longFormatters/index.ts";
 import {
   isProtectedDayOfYearToken,
   isProtectedWeekYearToken,
+  isNonStandardUnicodeToken,
+  throwNonStandardUnicodeTokenError,
   warnOrThrowProtectedError,
 } from "../_lib/protectedTokens/index.ts";
 import { isValid } from "../isValid/index.ts";
@@ -16,6 +18,7 @@ import type {
   FirstWeekContainsDateOptions,
   FormatPart,
   LocalizedOptions,
+  StandardTokensOptions,
   WeekOptions,
 } from "../types.ts";
 
@@ -41,6 +44,15 @@ const formattingTokensRegExp =
 // sequences of symbols P, p, and the combinations like `PPPPPPPppppp`
 const longFormattingTokensRegExp = /P+p+|P+|p+|''|'(''|[^'])+('|$)|./g;
 
+// This RegExp is the same as `formattingTokensRegExp`, but it only matches
+// the tokens defined in the Unicode Technical Standard #35. It's used when
+// `options.useStandardUnicodeTokensOnly` is enabled: the non-standard tokens
+// (`i`, `I`, `R`, `t`, `T`, `o`, `P`, `p`) are either rejected by the
+// `isNonStandardUnicodeToken` check or fall through to the unescaped latin
+// alphabet character error.
+const standardFormattingTokensRegExp =
+  /([yYQqMLwdDeEcGhHKkmsSXxOzuabB])\1*|''|'(''|[^'])+('|$)|./g;
+
 const escapedStringRegExp = /^'([^]*?)'?$/;
 const doubleQuoteRegExp = /''/g;
 const unescapedLatinCharacterRegExp = /[a-zA-Z]/;
@@ -57,6 +69,7 @@ export interface FormatOptions
     WeekOptions,
     FirstWeekContainsDateOptions,
     AdditionalTokensOptions,
+    StandardTokensOptions,
     ContextOptions<Date> {}
 
 /**
@@ -78,6 +91,14 @@ export interface FormatOptions
  * Format of the string is based on Unicode Technical Standard #35:
  * https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table
  * with a few additions (see note 7 below the table).
+ *
+ * To only allow the tokens from the standard, set `options.useStandardUnicodeTokensOnly`
+ * to `true`. Then the patterns from note 7 will throw a `RangeError`:
+ *
+ * ```javascript
+ * format(new Date(2017, 10, 6), 'do MMMM', { useStandardUnicodeTokensOnly: true })
+ * //=> RangeError: Format string contains an unescaped latin alphabet character `o`
+ * ```
  *
  * Accepted patterns:
  * | Unit                            | Pattern | Result examples                   | Notes |
@@ -304,6 +325,8 @@ export interface FormatOptions
  *    - `P`: long localized date
  *    - `p`: long localized time
  *
+ *    You can reject these patterns by enabling `options.useStandardUnicodeTokensOnly`.
+ *
  * 8. `YY` and `YYYY` tokens represent week-numbering years but they are often confused with years.
  *    You should enable `options.useAdditionalWeekYearTokens` to use them. See: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
  *
@@ -324,6 +347,7 @@ export interface FormatOptions
  * @throws use `d` instead of `D` for formatting days of the month using [format provided] to the input [input provided]; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
  * @throws use `dd` instead of `DD` for formatting days of the month using [format provided] to the input [input provided]; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
  * @throws format string contains an unescaped latin alphabet character
+ * @throws format string contains a token that is not in the Unicode Technical Standard #35 (when `options.useStandardUnicodeTokensOnly` is enabled)
  *
  * @example
  * // Represent 11 February 2014 in middle-endian format:
@@ -371,19 +395,22 @@ export function format(
     throw new RangeError("Invalid time value");
   }
 
-  let parts: FormatPart[] = formatStr
-    .match(longFormattingTokensRegExp)!
-    .map((substring) => {
-      const firstCharacter = substring[0];
-      if (firstCharacter === "p" || firstCharacter === "P") {
-        const longFormatter = longFormatters[firstCharacter];
-        return longFormatter(substring, locale.formatLong);
-      }
-      return substring;
-    })
-    .join("")
-    .match(formattingTokensRegExp)!
-    .map((substring) => {
+  const substrings = options?.useStandardUnicodeTokensOnly
+    ? formatStr.match(standardFormattingTokensRegExp)!
+    : formatStr
+        .match(longFormattingTokensRegExp)!
+        .map((substring) => {
+          const firstCharacter = substring[0];
+          if (firstCharacter === "p" || firstCharacter === "P") {
+            const longFormatter = longFormatters[firstCharacter];
+            return longFormatter(substring, locale.formatLong);
+          }
+          return substring;
+        })
+        .join("")
+        .match(formattingTokensRegExp)!;
+
+  let parts: FormatPart[] = substrings.map((substring) => {
       // Replace two single quote characters with one single quote character
       if (substring === "''") {
         return { isToken: false, value: "'" };
@@ -392,6 +419,13 @@ export function format(
       const firstCharacter = substring[0];
       if (firstCharacter === "'") {
         return { isToken: false, value: cleanEscapedString(substring) };
+      }
+
+      if (
+        options?.useStandardUnicodeTokensOnly &&
+        isNonStandardUnicodeToken(substring)
+      ) {
+        throwNonStandardUnicodeTokenError(substring, formatStr, String(date));
       }
 
       if (formatters[firstCharacter]) {

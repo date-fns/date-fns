@@ -3,6 +3,8 @@ import { longFormatters } from "../_lib/format/longFormatters/index.ts";
 import {
   isProtectedDayOfYearToken,
   isProtectedWeekYearToken,
+  isNonStandardUnicodeToken,
+  throwNonStandardUnicodeTokenError,
   warnOrThrowProtectedError,
 } from "../_lib/protectedTokens/index.ts";
 import { constructFrom } from "../constructFrom/index.ts";
@@ -14,6 +16,7 @@ import type {
   DateArg,
   FirstWeekContainsDateOptions,
   LocalizedOptions,
+  StandardTokensOptions,
   WeekOptions,
 } from "../types.ts";
 import type { Setter } from "./_lib/Setter.ts";
@@ -34,6 +37,7 @@ export interface ParseOptions<DateType extends Date = Date>
     FirstWeekContainsDateOptions,
     WeekOptions,
     AdditionalTokensOptions,
+    StandardTokensOptions,
     ContextOptions<DateType> {}
 
 // This RegExp consists of three parts separated by `|`:
@@ -53,6 +57,15 @@ const formattingTokensRegExp =
 // This RegExp catches symbols escaped by quotes, and also
 // sequences of symbols P, p, and the combinations like `PPPPPPPppppp`
 const longFormattingTokensRegExp = /P+p+|P+|p+|''|'(''|[^'])+('|$)|./g;
+
+// This RegExp is the same as `formattingTokensRegExp`, but it only matches
+// the tokens defined in the Unicode Technical Standard #35. It's used when
+// `options.useStandardUnicodeTokensOnly` is enabled: the non-standard tokens
+// (`i`, `I`, `R`, `t`, `T`, `o`, `P`, `p`) are either rejected by the
+// `isNonStandardUnicodeToken` check or fall through to the unescaped latin
+// alphabet character error.
+const standardFormattingTokensRegExp =
+  /([yYQqMLwdDeEcGhHKkmsSXxOzuabB])\1*|''|'(''|[^'])+('|$)|./g;
 
 const escapedStringRegExp = /^'([^]*?)'?$/;
 const doubleQuoteRegExp = /''/g;
@@ -77,6 +90,14 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/;
  * Format of the format string is based on Unicode Technical Standard #35:
  * https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table
  * with a few additions (see note 5 below the table).
+ *
+ * To only allow the tokens from the standard, set `options.useStandardUnicodeTokensOnly`
+ * to `true`. Then the patterns from note 5 will throw a `RangeError`:
+ *
+ * ```javascript
+ * parse('1st', 'do', new Date(), { useStandardUnicodeTokensOnly: true })
+ * //=> RangeError: Format string contains an unescaped latin alphabet character `o`
+ * ```
  *
  * Not all tokens are compatible. Combinations that don't make sense or could lead to bugs are prohibited
  * and will throw `RangeError`. For example usage of 24-hour format token with AM/PM token will throw an exception:
@@ -287,9 +308,13 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/;
  *    - `i`: ISO day of week
  *    - `I`: ISO week of year
  *    - `R`: ISO week-numbering year
+ *    - `t`: seconds timestamp
+ *    - `T`: milliseconds timestamp
  *    - `o`: ordinal number modifier
  *    - `P`: long localized date
  *    - `p`: long localized time
+ *
+ *    You can reject these patterns by enabling `options.useStandardUnicodeTokensOnly`.
  *
  * 6. `YY` and `YYYY` tokens represent week-numbering years but they are often confused with years.
  *    You should enable `options.useAdditionalWeekYearTokens` to use them. See: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
@@ -344,6 +369,7 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/;
  * @throws use `d` instead of `D` for formatting days of the month using [format provided] to the input [input provided]; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
  * @throws use `dd` instead of `DD` for formatting days of the month using [format provided] to the input [input provided]; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
  * @throws format string contains an unescaped latin alphabet character
+ * @throws format string contains a token that is not in the Unicode Technical Standard #35 (when `options.useStandardUnicodeTokensOnly` is enabled)
  *
  * @example
  * // Parse 11 February 2014 from middle-endian format:
@@ -400,18 +426,20 @@ export function parse<
     new DateTimezoneSetter(options?.in, referenceDate),
   ];
 
-  const tokens = formatStr
-    .match(longFormattingTokensRegExp)!
-    .map((substring) => {
-      const firstCharacter = substring[0];
-      if (firstCharacter in longFormatters) {
-        const longFormatter = longFormatters[firstCharacter];
-        return longFormatter(substring, locale.formatLong);
-      }
-      return substring;
-    })
-    .join("")
-    .match(formattingTokensRegExp)!;
+  const tokens = options?.useStandardUnicodeTokensOnly
+    ? formatStr.match(standardFormattingTokensRegExp)!
+    : formatStr
+        .match(longFormattingTokensRegExp)!
+        .map((substring) => {
+          const firstCharacter = substring[0];
+          if (firstCharacter in longFormatters) {
+            const longFormatter = longFormatters[firstCharacter];
+            return longFormatter(substring, locale.formatLong);
+          }
+          return substring;
+        })
+        .join("")
+        .match(formattingTokensRegExp)!;
 
   const usedTokens: Array<{ token: string; fullToken: string }> = [];
 
@@ -427,6 +455,12 @@ export function parse<
       isProtectedDayOfYearToken(token)
     ) {
       warnOrThrowProtectedError(token, formatStr, dateStr);
+    }
+    if (
+      options?.useStandardUnicodeTokensOnly &&
+      isNonStandardUnicodeToken(token)
+    ) {
+      throwNonStandardUnicodeTokenError(token, formatStr, dateStr);
     }
 
     const firstCharacter = token[0];
