@@ -2348,6 +2348,124 @@ describe("parse", () => {
     });
   });
 
+
+  describe("useStandardUnicodeTokensOnly option", () => {
+    it("throws an error if the ISO day of week token `i` is used", () => {
+      expect(() =>
+        parse("1", "i", referenceDate, {
+          useStandardUnicodeTokensOnly: true,
+        }),
+      ).toThrow(
+        "Use a token from the Unicode Technical Standard #35 instead of `i`",
+      );
+    });
+
+    it("throws an error if the ISO week of year token `I` is used", () => {
+      expect(() =>
+        parse("1", "I", referenceDate, {
+          useStandardUnicodeTokensOnly: true,
+        }),
+      ).toThrow(RangeError);
+    });
+
+    it("throws an error if the ISO week-numbering year token `R` is used", () => {
+      expect(() =>
+        parse("2019", "R", referenceDate, {
+          useStandardUnicodeTokensOnly: true,
+        }),
+      ).toThrow(RangeError);
+    });
+
+    it("throws an error if the seconds timestamp token `t` is used", () => {
+      expect(() =>
+        parse("512969520", "t", referenceDate, {
+          useStandardUnicodeTokensOnly: true,
+        }),
+      ).toThrow(RangeError);
+    });
+
+    it("throws an error if the milliseconds timestamp token `T` is used", () => {
+      expect(() =>
+        parse("512969520900", "T", referenceDate, {
+          useStandardUnicodeTokensOnly: true,
+        }),
+      ).toThrow(RangeError);
+    });
+
+    it("throws an error if the ordinal number modifier `o` is used", () => {
+      expect(() =>
+        parse("4th", "do", referenceDate, {
+          useStandardUnicodeTokensOnly: true,
+        }),
+      ).toThrow(
+        "Format string contains an unescaped latin alphabet character `o`",
+      );
+    });
+
+    it("throws an error if the long localized date token `P` is used", () => {
+      expect(() =>
+        parse("05/26/1995", "P", referenceDate, {
+          useStandardUnicodeTokensOnly: true,
+        }),
+      ).toThrow(RangeError);
+    });
+
+    it("throws an error if the long localized time token `p` is used", () => {
+      expect(() =>
+        parse("10:32 AM", "p", referenceDate, {
+          useStandardUnicodeTokensOnly: true,
+        }),
+      ).toThrow(RangeError);
+    });
+
+    it("parses standard tokens the same way as without the option", () => {
+      expect(
+        parse("2019-05-26", "yyyy-MM-dd", referenceDate, {
+          useStandardUnicodeTokensOnly: true,
+        }),
+      ).toEqual(parse("2019-05-26", "yyyy-MM-dd", referenceDate));
+    });
+
+    it("allows the non-standard tokens escaped by single quotes", () => {
+      expect(
+        parse("i", "'i'", referenceDate, {
+          useStandardUnicodeTokensOnly: true,
+        }),
+      ).toEqual(referenceDate);
+    });
+
+    it("allows the non-standard tokens if the option is not set", () => {
+      expect(parse("1", "i", referenceDate)).toEqual(
+        new Date(1986, 2 /* Mar */, 31),
+      );
+    });
+
+    it("reports the first non-standard token when several are used", () => {
+      expect(() =>
+        parse("4", "io", referenceDate, {
+          useStandardUnicodeTokensOnly: true,
+        }),
+      ).toThrow(
+        "Use a token from the Unicode Technical Standard #35 instead of `i`",
+      );
+    });
+
+    it("handles an empty format string the same way as without the option", () => {
+      expect(
+        parse("", "", referenceDate, {
+          useStandardUnicodeTokensOnly: true,
+        }),
+      ).toEqual(parse("", "", referenceDate));
+    });
+
+    it("does not make non-ASCII digits parseable", () => {
+      const result = parse("٤", "d", referenceDate, {
+        useStandardUnicodeTokensOnly: true,
+      });
+      expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
+    });
+  });
+
   describe("long format", () => {
     it("short date", () => {
       const expected = new Date(1995, 4 /* May */, 26);

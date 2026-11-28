@@ -262,6 +262,16 @@ export interface AdditionalTokensOptions {
 }
 
 /**
+ * Standard Unicode tokens options. Used to build function options.
+ */
+export interface StandardTokensOptions {
+  /** If true, allows usage of only the tokens defined in the Unicode Technical
+   * Standard #35 and throws a `RangeError` for the non-standard tokens
+   * (see the note in the function documentation). */
+  useStandardUnicodeTokensOnly?: boolean;
+}
+
+/**
  * Nearest minute type. Goes from 1 to 30, where 1 is the nearest minute and 30
  * is nearest half an hour.
  */

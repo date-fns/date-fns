@@ -1004,6 +1004,113 @@ describe("format", { concurrent: false }, () => {
     });
   });
 
+
+  describe("useStandardUnicodeTokensOnly option", () => {
+    it("throws an error if the ISO day of week token `i` is used", () => {
+      expect(() =>
+        format(date, "yyyy-MM-dd-i", {
+          useStandardUnicodeTokensOnly: true,
+        }),
+      ).toThrow(
+        "Use a token from the Unicode Technical Standard #35 instead of `i`",
+      );
+    });
+
+    it("throws an error if the ISO week of year token `I` is used", () => {
+      expect(() =>
+        format(date, "yyyy-II-dd", {
+          useStandardUnicodeTokensOnly: true,
+        }),
+      ).toThrow(RangeError);
+    });
+
+    it("throws an error if the ISO week-numbering year token `R` is used", () => {
+      expect(() =>
+        format(date, "yyyy-RR-dd", {
+          useStandardUnicodeTokensOnly: true,
+        }),
+      ).toThrow(RangeError);
+    });
+
+    it("throws an error if the seconds timestamp token `t` is used", () => {
+      expect(() =>
+        format(date, "t", {
+          useStandardUnicodeTokensOnly: true,
+        }),
+      ).toThrow(RangeError);
+    });
+
+    it("throws an error if the milliseconds timestamp token `T` is used", () => {
+      expect(() =>
+        format(date, "T", {
+          useStandardUnicodeTokensOnly: true,
+        }),
+      ).toThrow(RangeError);
+    });
+
+    it("throws an error if the ordinal number modifier `o` is used", () => {
+      expect(() =>
+        format(date, "do", {
+          useStandardUnicodeTokensOnly: true,
+        }),
+      ).toThrow(
+        "Format string contains an unescaped latin alphabet character `o`",
+      );
+    });
+
+    it("throws an error if the long localized date token `P` is used", () => {
+      expect(() =>
+        format(date, "yyyy-MM-dd P", {
+          useStandardUnicodeTokensOnly: true,
+        }),
+      ).toThrow(RangeError);
+    });
+
+    it("throws an error if the long localized time token `p` is used", () => {
+      expect(() =>
+        format(date, "yyyy-MM-dd p", {
+          useStandardUnicodeTokensOnly: true,
+        }),
+      ).toThrow(RangeError);
+    });
+
+    it("formats standard tokens the same way as without the option", () => {
+      const formatString = "yyyy-MM-dd HH:mm:ss";
+      expect(
+        format(date, formatString, { useStandardUnicodeTokensOnly: true }),
+      ).toBe(format(date, formatString));
+    });
+
+    it("allows the non-standard tokens escaped by single quotes", () => {
+      expect(format(date, "'i'", { useStandardUnicodeTokensOnly: true })).toBe(
+        "i",
+      );
+      expect(format(date, "'do'", { useStandardUnicodeTokensOnly: true })).toBe(
+        "do",
+      );
+    });
+
+    it("does not disable the additional tokens options", () => {
+      expect(() =>
+        format(date, "YY", { useStandardUnicodeTokensOnly: true }),
+      ).toThrow("Use `yy` instead of `YY`");
+    });
+
+    it("allows the non-standard tokens if the option is not set", () => {
+      expect(format(date, "yyyy-MM-dd-i")).toBe("1986-04-04-5");
+    });
+
+    it("reports the first non-standard token when several are used", () => {
+      expect(() =>
+        format(date, "io", {
+          useStandardUnicodeTokensOnly: true,
+        }),
+      ).toThrow(
+        "Use a token from the Unicode Technical Standard #35 instead of `i`",
+      );
+    });
+  });
+
   describe("context", () => {
     it("allows to specify the context", () => {
       const date = "2024-09-17T10:00:00Z";
