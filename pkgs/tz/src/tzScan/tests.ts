@@ -2,6 +2,21 @@ import { describe, expect, it } from "vitest";
 import { tzScan } from "./index.ts";
 
 describe("tzScan", () => {
+  it("finds a transition after a month-end start", () => {
+    const changes = tzScan("Africa/Juba", {
+      start: new Date("2021-01-31T00:00:00Z"),
+      end: new Date("2021-03-04T00:00:00Z"),
+    });
+
+    expect(changes).toEqual([
+      {
+        date: new Date("2021-01-31T21:00:00Z"),
+        change: -60,
+        offset: 120,
+      },
+    ]);
+  });
+
   it("searches for DST changes in the given period", () => {
     const changes = tzScan("America/New_York", {
       start: new Date("2020-01-01T00:00:00Z"),

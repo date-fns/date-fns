@@ -45,18 +45,19 @@ export function tzScan(
   const endMonthTime = +endDate;
   let lastOffset = tzOffset(timeZone, monthDate);
   while (+monthDate < endMonthTime) {
+    const previousMonthTime = +monthDate;
+
     // Month forward
     monthDate.setUTCMonth(monthDate.getUTCMonth() + 1);
 
     // Find the month where the offset changes
     const offset = tzOffset(timeZone, monthDate);
     if (offset != lastOffset) {
-      // Rewind a month back to find the day where the offset changes
-      const dayDate = new Date(monthDate);
-      dayDate.setUTCMonth(dayDate.getUTCMonth() - 1);
+      // Month arithmetic can overflow into another month. Use the actual
+      // previous sample as the start of the day scan.
+      const dayDate = new Date(previousMonthTime);
 
       const endDayTime = +monthDate;
-      lastOffset = tzOffset(timeZone, dayDate);
       while (+dayDate < endDayTime) {
         // Day forward
         dayDate.setUTCDate(dayDate.getUTCDate() + 1);
